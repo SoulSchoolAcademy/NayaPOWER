@@ -12,9 +12,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Python syntax check
-        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
+        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/control-plane/claiming.py .naya/runtime/execution_controller.py .naya/tests/test_claiming.py .naya/tests/test_execution_controller.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
         run: python .naya/control-plane/validate_control_plane.py --self-test
+      - name: Execution claiming self-test
+        run: python .naya/control-plane/claiming.py self-test
+      - name: Canonical execution claiming validation
+        run: python .naya/control-plane/claiming.py validate
+      - name: Execution boundary adversarial tests
+        run: python .naya/tests/test_execution_controller.py
+      - name: Execution boundary self-test
+        run: python .naya/runtime/execution_controller.py self-test
+      - name: Validate execution state boundary
+        run: python .naya/runtime/execution_controller.py validate
       - name: Cold Naya control-plane acceptance
         run: python .naya/runtime/cold_start_control_plane_acceptance.py
       - name: Cold Naya boot and no-orphan acceptance
