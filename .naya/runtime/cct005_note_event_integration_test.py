@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# CCT-005 integration audit: isolated CI execution fixture.
 from __future__ import annotations
 
 import copy
