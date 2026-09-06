@@ -1,9 +1,0 @@
-{
-  "name": "nayanet-v7-intelligent-hub",
-  "main": "worker.js",
-  "compatibility_date": "2026-09-05",
-  "assets": {
-    "directory": ".",
-    "binding": "ASSETS"
-  }
-}
