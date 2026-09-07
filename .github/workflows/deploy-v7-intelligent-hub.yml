@@ -1,4 +1,4 @@
-# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V3
+# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V3 — account-pinned production path
 name: Deploy V7 Intelligent Hub from canonical 2:05 source
 
 on:
@@ -10,7 +10,6 @@ on:
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
@@ -109,7 +108,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && '262c881746ea6e9978ca18b3eb831907' || '' }}
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
 
