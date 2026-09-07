@@ -1,4 +1,4 @@
-# 2026 09 07 — canonical 2:05 source + Smart Feed V3 release build
+# 2026 09 07 — canonical 2:05 source + latest Smart Feed release build
 name: Build Current NayaNET Hub from canonical 2:05 source
 
 on:
@@ -43,13 +43,15 @@ jobs:
           feed=feeds[0]
           print('AUTHORITATIVE_SOURCE=',hub)
           print('AUTHORITATIVE_FEED_LAYER=',feed)
+          with open('.feed-layer-name','w',encoding='utf-8') as f: f.write(feed)
+          with open('.source-name','w',encoding='utf-8') as f: f.write(str(hub))
           PY
-      - name: Validate canonical source and feed layer
+          echo "FEED=$(cat .feed-layer-name)" >> "$GITHUB_ENV"
+          echo "SOURCE=$(cat .source-name)" >> "$GITHUB_ENV"
+      - name: Validate canonical source and latest feed layer
         shell: bash
         run: |
           set -euo pipefail
-          SOURCE='2026 09 07 2:05 NAYANET HUB.HTML'
-          FEED='2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
           test -s "$SOURCE"
           test -s "$FEED"
           test "$(grep -oi '<!doctype html>' "$SOURCE" | wc -l | tr -d ' ')" -eq 1
@@ -70,12 +72,10 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          SOURCE='2026 09 07 2:05 NAYANET HUB.HTML'
-          FEED='2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
           python3 - <<'PY'
           from pathlib import Path
-          src=Path('2026 09 07 2:05 NAYANET HUB.HTML').read_text()
-          layer=Path('2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js').read_text()
+          src=Path(Path('.source-name').read_text()).read_text()
+          layer=Path(Path('.feed-layer-name').read_text()).read_text()
           marker='</body>'
           if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
           Path('index.html').write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
@@ -111,6 +111,6 @@ jobs:
       - name: Upload feed layer inspection
         uses: actions/upload-artifact@v4
         with:
-          name: NayaNET-Intelligent-Feed-V3
-          path: '2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
+          name: NayaNET-Intelligent-Feed-Latest
+          path: '*NAYANET INTELLIGENT FEED V2.js'
           if-no-files-found: error
