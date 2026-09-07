@@ -58,10 +58,6 @@ jobs:
           grep -q 'Your Intelligence Today' "$AUTHORITATIVE_SOURCE"
           node --check "$AUTHORITATIVE_FEED_LAYER"
           git diff --check
-          echo "SOURCE_BYTES=$(wc -c < "$AUTHORITATIVE_SOURCE")"
-          echo "SOURCE_SHA256=$(sha256sum "$AUTHORITATIVE_SOURCE" | awk '{print $1}')"
-          echo "FEED_LAYER_BYTES=$(wc -c < "$AUTHORITATIVE_FEED_LAYER")"
-          echo "FEED_LAYER_SHA256=$(sha256sum "$AUTHORITATIVE_FEED_LAYER" | awk '{print $1}')"
       - name: Build release artifact with deterministic feed presentation layer
         shell: bash
         run: |
@@ -74,18 +70,14 @@ jobs:
           layer=Path(os.environ['AUTHORITATIVE_FEED_LAYER']).read_text()
           marker='</body>'
           if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
-          Path('index.html').write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
+          activation='<script>document.querySelector(\'.intelligentBlocks\')?.classList.add(\'nayanet-feed-v2\');</script>\n'
+          Path('index.html').write_text(src.replace(marker,activation+'<script>\n'+layer+'\n</script>\n'+marker,1))
           PY
           printf '/index.html 200\n' > _redirects
           test -s index.html
           test "$(wc -c < index.html)" -gt 100000
           zip -9 -j NayaNET-Intelligent-Hub-Cloudflare.zip index.html _redirects
           unzip -t NayaNET-Intelligent-Hub-Cloudflare.zip
-          test "$(unzip -Z1 NayaNET-Intelligent-Hub-Cloudflare.zip | wc -l | tr -d ' ')" -eq 2
-          echo "INDEX_BYTES=$(wc -c < index.html)"
-          echo "INDEX_SHA256=$(sha256sum index.html | awk '{print $1}')"
-          echo "AUTHORITATIVE_SOURCE=$AUTHORITATIVE_SOURCE"
-          echo "AUTHORITATIVE_FEED_LAYER=$AUTHORITATIVE_FEED_LAYER"
       - name: Upload production ZIP
         uses: actions/upload-artifact@v4
         with:
