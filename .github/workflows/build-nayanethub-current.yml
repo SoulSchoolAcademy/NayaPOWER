@@ -1,4 +1,4 @@
-# 2026 09 07 8:36 PM — force canonical Intelligent Feed V2 release build
+# 2026 09 07 10:05 PM — repair release artifact environment export
 name: Build Current NayaNET Hub from latest timestamped NAYANETHUBONE artifact
 
 on:
@@ -49,7 +49,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          set -a
           source source.env
+          set +a
           test -s "$AUTHORITATIVE_SOURCE"
           test -s "$AUTHORITATIVE_FEED_LAYER"
           test "$(grep -oi '<!doctype html>' "$AUTHORITATIVE_SOURCE" | wc -l | tr -d ' ')" -eq 1
@@ -63,7 +65,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          set -a
           source source.env
+          set +a
           python3 - <<'PY'
           from pathlib import Path
           import os
