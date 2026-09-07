@@ -4,7 +4,7 @@
   "compatibility_date": "2026-09-05",
   "account_id": "262c881746ea6e9978ca18b3eb831907",
   "assets": {
-    "directory": ".",
+    "directory": "assets",
     "binding": "ASSETS"
   }
 }
