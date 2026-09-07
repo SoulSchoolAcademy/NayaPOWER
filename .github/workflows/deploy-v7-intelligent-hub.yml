@@ -1,3 +1,4 @@
+# 2026-09-07 canonical ten-star release gate — source → build → artifact → deploy → runtime → Smart Link
 # NayaNET V7 — canonical Hub deployment and runtime proof
 name: Deploy V7 Intelligent Hub
 on:
