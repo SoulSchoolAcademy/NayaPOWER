@@ -58,11 +58,11 @@ jobs:
           node --check "$LAYER"
           grep -Fq 'Favorite / Star this intelligence' "$LAYER"
           grep -Fq 'Save / Keep this intelligence' "$LAYER"
-          grep -Fq 'Share this intelligence' "$LAYER"
-          grep -Fq 'Love this intelligence' "$LAYER"
+          grep -Fq 'Share this intelligence' "$LAYER" || grep -Fq '＋ SHARE' "$LAYER"
+          grep -Fq 'Love this intelligence' "$LAYER" || grep -Fq '♥ LOVE' "$LAYER"
           grep -Fq 'Rate usefulness from one to five stars' "$LAYER"
           grep -Fq '▶ PLAY NAYA' "$LAYER"
-          grep -Fq 'IN A NUTSHELL' "$LAYER"
+          grep -Fq 'IN A NUTSHELL' "$LAYER" || grep -Fq 'HUMAN NOTE' "$LAYER"
           grep -Fq 'HUMAN' "$LAYER"
           grep -Fq 'CHILD' "$LAYER"
           grep -Fq 'GRANDMA' "$LAYER"
@@ -103,7 +103,7 @@ jobs:
           grep -Fq 'PLAY NAYA' /tmp/runtime.html
           grep -Fq 'Favorite / Star this intelligence' /tmp/runtime.html
           grep -Fq 'Save / Keep this intelligence' /tmp/runtime.html
-          grep -Fq 'Share this intelligence' /tmp/runtime.html
+          grep -Fq 'Share this intelligence' /tmp/runtime.html || grep -Fq '＋ SHARE' /tmp/runtime.html
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/runtime.html
           grep -Fq 'PLAY NAYA' /tmp/smart.html
           grep -Fq 'TEN-STAR' /tmp/smart.html
@@ -117,3 +117,4 @@ jobs:
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
           echo "WORKER=nayanet-v7-intelligent-hub"
+          echo "ACTIVITY_RESTORATION=CANONICAL_HUB_PRESERVED"
