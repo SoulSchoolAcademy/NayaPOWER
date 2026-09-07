@@ -1,0 +1,30 @@
+name: NayaNET Hub One Diagnostic
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect NAYANETHUBONE
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('NAYANETHUBONE').read_text()
+          print('LENGTH',len(s))
+          print('SMART NOTES COUNT',len(re.findall(r'Smart Notes',s,re.I)))
+          for term in ['Your life creates intelligence','Smart Notes','Collective','Personal','Rank','Comment','Share','Save','Favorite','Smart Mail','Connections','Intelligent layer','Collective contributions','Connection notifications']:
+              print('\n===',term,'===')
+              hits=list(re.finditer(re.escape(term),s,re.I))
+              print('COUNT',len(hits))
+              for h in hits[:8]:
+                  a=max(0,h.start()-500); b=min(len(s),h.end()+900)
+                  print(s[a:b].replace('\\n',' ')[:1500])
+          print('\n=== SIDEBAR NAV REGION ===')
+          for m in re.finditer(r'<nav[^>]*class=[\"\']nav[\"\'][^>]*>(.*?)</nav>',s,re.I|re.S):
+              print(m.group(1)[:12000])
+          PY
