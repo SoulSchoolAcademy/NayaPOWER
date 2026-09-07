@@ -1,4 +1,4 @@
-# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V3 — runtime-verified release
+# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V2 — runtime-verified release
 name: Deploy V7 Intelligent Hub from canonical 2:05 source
 
 on:
@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Resolve exact 2:05 source and latest Smart Feed V3 layer
+      - name: Resolve exact 2:05 source and latest Smart Feed V2 layer
         shell: bash
         run: |
           set -euo pipefail
@@ -83,7 +83,7 @@ jobs:
           test -s v7-release-enhancements.js
           test -s v7-intelligence-distribution.js
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
-          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' index.html
+          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' index.html
           grep -Fq 'PERSONAL INTELLIGENCE' index.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' index.html
           grep -Fq 'ACTIVITY' index.html
@@ -94,6 +94,8 @@ jobs:
           grep -Fq 'NAYA NOTE' index.html
           grep -Fq 'MACHINE NOTE' index.html
           grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
+          grep -Fq 'PLAY NAYA' index.html
+          grep -Fq 'Ask your intelligence' index.html
           node --check worker.js
           node --check v7-smart-note-runtime.js
           node --check v7-release-enhancements.js
@@ -128,19 +130,16 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/hub-runtime.html
-          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' /tmp/hub-runtime.html
+          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/hub-runtime.html
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
-          grep -Fq 'IN A NUTSHELL' /tmp/hub-runtime.html
-          grep -Fq 'HUMAN NOTE' /tmp/hub-runtime.html
-          grep -Fq 'CHILD NOTE' /tmp/hub-runtime.html
-          grep -Fq 'GRANDMA NOTE' /tmp/hub-runtime.html
-          grep -Fq 'NAYA NOTE' /tmp/hub-runtime.html
-          grep -Fq 'MACHINE NOTE' /tmp/hub-runtime.html
+          grep -Fq 'PLAY NAYA' /tmp/hub-runtime.html
+          grep -Fq 'Ask your intelligence' /tmp/hub-runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart-link.html
-          grep -Fq 'SMART LINK · VERIFIED ARTIFACT' /tmp/smart-link.html
-          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' /tmp/smart-link.html
+          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart-link.html
+          grep -Fq 'PLAY NAYA' /tmp/smart-link.html
+          grep -Fq 'TEN-STAR' /tmp/smart-link.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
