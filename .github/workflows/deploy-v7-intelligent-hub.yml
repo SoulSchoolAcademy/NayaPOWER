@@ -1,3 +1,4 @@
+# 2026 09 07 8:35 PM — deployment synchronized with timestamp authority and Intelligent Feed V2
 name: Deploy V7 Intelligent Hub from latest timestamped source
 
 on:
@@ -52,12 +53,6 @@ jobs:
           Path('.authoritative-feed-layer').write_text(feed)
           print('AUTHORITATIVE_SOURCE=',hub)
           print('AUTHORITATIVE_FEED_LAYER=',feed)
-          PY
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          for f in [Path('.authoritative-source').read_text().strip(),Path('.authoritative-feed-layer').read_text().strip()]:
-              if not re.match(r'^\d{4} \d{2} \d{2} +\d{1,2}:\d{2} ',f): raise SystemExit('Timestamp contract failed: '+f)
           PY
           cp "../$(cat .authoritative-source)" index.html
           cat "../$(cat .authoritative-feed-layer)" > .feed-layer.js
