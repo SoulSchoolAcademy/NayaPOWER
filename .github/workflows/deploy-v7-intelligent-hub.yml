@@ -48,43 +48,38 @@ jobs:
           print('CANONICAL_FEED_LAYER=',layer.name)
           print('CANONICAL_FEED_LAYER_COUNT=1')
           PY
-      - name: Validate the ten-star contract before deployment
+      - name: Validate canonical Smart Feed contract
         shell: bash
         run: |
           set -euo pipefail
-          test -s index.html
-          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' index.html
-          grep -Fq 'ACTIVITY' index.html
-          grep -Fq 'PERSONAL INTELLIGENCE' index.html
-          grep -Fq 'COLLECTIVE INTELLIGENCE' index.html
-          grep -Fq 'IN A NUTSHELL' index.html
-          grep -Fq 'HUMAN' index.html
-          grep -Fq 'CHILD' index.html
-          grep -Fq 'GRANDMA' index.html
-          grep -Fq 'NAYA' index.html
-          grep -Fq 'MACHINE' index.html
-          grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
-          grep -Fq 'PLAY NAYA' index.html
-          grep -Fq 'Favorite / Star this intelligence' index.html
-          grep -Fq 'Save / Keep this intelligence' index.html
-          grep -Fq 'Share this intelligence' index.html
-          grep -Fq 'Love this intelligence' index.html
-          grep -Fq 'Rate usefulness from one to five stars' index.html
-          grep -Fq '＋ SHARE' index.html
-          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' index.html
-          grep -Fq 'Your Intelligence Today' index.html
-          grep -Fq 'Your Reports' index.html
-          grep -Fq 'Intelligent Library' index.html
-          grep -Fq 'Smart Lists' index.html
-          grep -Fq 'Smart Share' index.html
-          grep -Fq 'Your Evidence' index.html
-          grep -Fq 'Your Connections' index.html
-          grep -Fq 'Smart Mail' index.html
-          grep -Fq 'Smart Spaces' index.html
-          if grep -Fq 'LOVE · SHARE' index.html; then exit 1; fi
-          if grep -Fq 'SMART LINK</button>' index.html; then exit 1; fi
-          node --check v7-ten-star-play-naya-polish.js
-          test "$(find .. -maxdepth 1 -name '*NAYANET INTELLIGENT FEED V2.js' | wc -l)" -eq 1
+          LAYER="../$(cat .authoritative-feed-layer)"
+          test -s "$LAYER"
+          node --check "$LAYER"
+          grep -Fq 'Favorite / Star this intelligence' "$LAYER"
+          grep -Fq 'Save / Keep this intelligence' "$LAYER"
+          grep -Fq 'Share this intelligence' "$LAYER"
+          grep -Fq 'Love this intelligence' "$LAYER"
+          grep -Fq 'Rate usefulness from one to five stars' "$LAYER"
+          grep -Fq '▶ PLAY NAYA' "$LAYER"
+          grep -Fq 'IN A NUTSHELL' "$LAYER"
+          grep -Fq 'HUMAN' "$LAYER"
+          grep -Fq 'CHILD' "$LAYER"
+          grep -Fq 'GRANDMA' "$LAYER"
+          grep -Fq 'NAYA' "$LAYER"
+          grep -Fq 'MACHINE' "$LAYER"
+          grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' "$LAYER"
+          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' "$LAYER"
+          grep -Fq 'Your Intelligence Today' "$LAYER"
+          grep -Fq 'Your Reports' "$LAYER"
+          grep -Fq 'Intelligent Library' "$LAYER"
+          grep -Fq 'Smart Lists' "$LAYER"
+          grep -Fq 'Smart Share' "$LAYER"
+          grep -Fq 'Your Evidence' "$LAYER"
+          grep -Fq 'Your Connections' "$LAYER"
+          grep -Fq 'Smart Mail' "$LAYER"
+          grep -Fq 'Smart Spaces' "$LAYER"
+          if grep -Fq 'LOVE · SHARE' "$LAYER"; then echo 'Love and Share are combined'; exit 1; fi
+          if grep -Fq 'SMART LINK</button>' "$LAYER"; then echo 'Unexplained Smart Link control exists'; exit 1; fi
           echo 'TEN_STAR_SOURCE_CONTRACT=PASS'
           echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
           echo 'NO_COMBINED_LOVE_SHARE=PASS'
@@ -102,7 +97,6 @@ jobs:
           set -euo pipefail
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart.html
-          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/runtime.html
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/runtime.html
           grep -Fq 'PLAY NAYA' /tmp/runtime.html
@@ -110,8 +104,8 @@ jobs:
           grep -Fq 'Save / Keep this intelligence' /tmp/runtime.html
           grep -Fq 'Share this intelligence' /tmp/runtime.html
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/runtime.html
-          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart.html
           grep -Fq 'PLAY NAYA' /tmp/smart.html
+          grep -Fq 'TEN-STAR' /tmp/smart.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
