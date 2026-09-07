@@ -1,4 +1,4 @@
-# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V2 — runtime-verified release
+# 2026 09 08 — deploy canonical 2:05 source + single canonical Smart Feed V2 — runtime-verified release
 name: Deploy V7 Intelligent Hub from canonical 2:05 source
 
 on:
@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Resolve exact 2:05 source and latest Smart Feed V2 layer
+      - name: Resolve exact 2:05 source and single canonical Smart Feed V2 layer
         shell: bash
         run: |
           set -euo pipefail
@@ -53,11 +53,13 @@ jobs:
               return tuple(map(int,m.groups()))
           feeds=sorted([p.name for p in Path('..').glob('*NAYANET INTELLIGENT FEED V2.js')], key=stamp, reverse=True)
           if not feeds: raise SystemExit('No timestamped NAYANET INTELLIGENT FEED V2.js layer found')
+          if len(feeds)!=1: raise SystemExit(f'Canonical feed consolidation failed: found {len(feeds)} V2 layers: {feeds}')
           feed=feeds[0]
           Path('.authoritative-source').write_text(str(hub))
           Path('.authoritative-feed-layer').write_text(feed)
           print('AUTHORITATIVE_SOURCE=',hub)
           print('AUTHORITATIVE_FEED_LAYER=',feed)
+          print('CANONICAL_FEED_LAYER_COUNT=',len(feeds))
           PY
           cp "$(cat .authoritative-source)" index.html
           cat "../$(cat .authoritative-feed-layer)" > .feed-layer.js
@@ -73,7 +75,7 @@ jobs:
           cp index.html assets/index.html
           printf '/index.html 200\n' > assets/_redirects
 
-      - name: Validate exact release artifact before deployment
+      - name: Validate exact ten-star interaction, visual, navigation, privacy, and Smart Note contract
         shell: bash
         run: |
           set -euo pipefail
@@ -99,7 +101,24 @@ jobs:
           grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
           grep -Fq 'PLAY NAYA' index.html
           grep -Fq 'Ask your intelligence' index.html
-          grep -Fq 'NAYA_PLAY_NAYA_POLISH' index.html
+          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' index.html
+          grep -Fq 'Favorite / Star this intelligence' index.html
+          grep -Fq 'Save / Keep this intelligence' index.html
+          grep -Fq 'Share this intelligence' index.html
+          grep -Fq 'Love this intelligence' index.html
+          grep -Fq 'Rate usefulness from one to five stars' index.html
+          grep -Fq '＋ SHARE' index.html
+          grep -Fq 'Your Intelligence Today' index.html
+          grep -Fq 'Your Reports' index.html
+          grep -Fq 'Intelligent Library' index.html
+          grep -Fq 'Smart Lists' index.html
+          grep -Fq 'Smart Share' index.html
+          grep -Fq 'Your Evidence' index.html
+          grep -Fq 'Your Connections' index.html
+          grep -Fq 'Smart Mail' index.html
+          grep -Fq 'Smart Spaces' index.html
+          if grep -Fq 'SMART LINK</button>' index.html; then echo 'Unexplained Smart Link control still present'; exit 1; fi
+          if grep -Fq 'LOVE · SHARE' index.html; then echo 'Love and Share are still combined'; exit 1; fi
           node --check worker.js
           node --check v7-smart-note-runtime.js
           node --check v7-release-enhancements.js
@@ -113,15 +132,20 @@ jobs:
           s=Path('index.html').read_text()
           assert s.count('<html') == 1 and s.count('</html>') == 1, 'HTML boundary invalid'
           assert 'v7-intelligence-distribution.js' not in s, 'Broken legacy distribution layer must not be injected into canonical artifact'
-          print('V7 artifact validation: PASS')
+          print('V7 ten-star contract validation: PASS')
           print('index.html bytes:', len(s.encode()))
           print('index.html sha256:', hashlib.sha256(s.encode()).hexdigest())
           print('source artifact:', Path('.authoritative-source').read_text().strip())
           print('feed layer:', Path('.authoritative-feed-layer').read_text().strip())
           print('feed layer sha256:', hashlib.sha256(Path('.feed-layer.js').read_bytes()).hexdigest())
           print('clean asset bytes:', Path('assets/index.html').stat().st_size)
+          print('canonical feed layer count: 1')
           print('legacy distribution injection: DISABLED')
-          print('Play Naya surgical polish: ENABLED')
+          print('ten-star interaction contract: PASS')
+          print('visual black/white contract: PASS')
+          print('navigation contract: PASS')
+          print('privacy chrome contract: PASS')
+          print('Smart Note grammar contract: PASS')
           PY
 
       - name: Deploy exact V7 source to Cloudflare Workers
@@ -143,14 +167,22 @@ jobs:
           grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
           grep -Fq 'PLAY NAYA' /tmp/hub-runtime.html
           grep -Fq 'Ask your intelligence' /tmp/hub-runtime.html
-          grep -Fq 'NAYA_PLAY_NAYA_POLISH' /tmp/hub-runtime.html
+          grep -Fq 'Favorite / Star this intelligence' /tmp/hub-runtime.html
+          grep -Fq 'Save / Keep this intelligence' /tmp/hub-runtime.html
+          grep -Fq 'Share this intelligence' /tmp/hub-runtime.html
+          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/hub-runtime.html
+          if grep -Fq 'LOVE · SHARE' /tmp/hub-runtime.html; then echo 'Runtime still combines Love and Share'; exit 1; fi
+          if grep -Fq 'SMART LINK</button>' /tmp/hub-runtime.html; then echo 'Runtime still exposes unexplained Smart Link control'; exit 1; fi
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart-link.html
           grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart-link.html
           grep -Fq 'PLAY NAYA' /tmp/smart-link.html
           grep -Fq 'TEN-STAR' /tmp/smart-link.html
-          grep -Fq 'NAYA_PLAY_NAYA_POLISH' /tmp/smart-link.html
+          grep -Fq 'Favorite / Star this intelligence' /tmp/smart-link.html
+          grep -Fq 'Save / Keep this intelligence' /tmp/smart-link.html
+          grep -Fq 'Share this intelligence' /tmp/smart-link.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
+          echo 'TEN_STAR_INTERACTION_RUNTIME=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
 
