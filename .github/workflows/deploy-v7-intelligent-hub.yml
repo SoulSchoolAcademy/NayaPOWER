@@ -1,4 +1,4 @@
-# 2026 09 07 — deploy exact 2:05 source + Smart Feed V3
+# 2026 09 07 — deploy exact 2:05 source + latest Smart Feed V3
 name: Deploy V7 Intelligent Hub from canonical 2:05 source
 
 on:
@@ -10,6 +10,7 @@ on:
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
@@ -88,19 +89,20 @@ jobs:
           node --check worker.js
           node --check v7-smart-note-runtime.js
           node --check v7-release-enhancements.js
-          node --check v7-intelligence-distribution.js
           node --check .feed-layer.js
           python3 - <<'PY'
           from pathlib import Path
           import hashlib
           s=Path('index.html').read_text()
           assert s.count('<html') == 1 and s.count('</html>') == 1, 'HTML boundary invalid'
+          assert 'v7-intelligence-distribution.js' not in s, 'Broken legacy distribution layer must not be injected into canonical artifact'
           print('V7 artifact validation: PASS')
           print('index.html bytes:', len(s.encode()))
           print('index.html sha256:', hashlib.sha256(s.encode()).hexdigest())
           print('source artifact:', Path('.authoritative-source').read_text().strip())
           print('feed layer:', Path('.authoritative-feed-layer').read_text().strip())
           print('feed layer sha256:', hashlib.sha256(Path('.feed-layer.js').read_bytes()).hexdigest())
+          print('legacy distribution injection: DISABLED')
           PY
 
       - name: Deploy exact V7 source to Cloudflare Workers
@@ -121,9 +123,15 @@ jobs:
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
+          grep -Fq 'IN A NUTSHELL' /tmp/hub-runtime.html
+          grep -Fq 'HUMAN NOTE' /tmp/hub-runtime.html
+          grep -Fq 'CHILD NOTE' /tmp/hub-runtime.html
+          grep -Fq 'GRANDMA NOTE' /tmp/hub-runtime.html
+          grep -Fq 'NAYA NOTE' /tmp/hub-runtime.html
+          grep -Fq 'MACHINE NOTE' /tmp/hub-runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$base/intelligence/nayanet-intelligent-feeds" -o /tmp/smart-link.html
           grep -Fq 'SMART LINK · VERIFIED ARTIFACT' /tmp/smart-link.html
-          grep -Fq 'DON' /tmp/smart-link.html
+          grep -Fq 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' /tmp/smart-link.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo 'RUNTIME=https://noisy-block-35d0.nayanet.workers.dev/'
