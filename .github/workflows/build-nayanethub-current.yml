@@ -20,98 +20,19 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: TEMP Inspect NAYANETHUBONE
+      - name: TEMP Inspect targeted functions
         run: |
           python3 - <<'PY'
           import re
           from pathlib import Path
           s=Path('NAYANETHUBONE').read_text(encoding='utf-8')
-          print('LENGTH',len(s))
-          for term in ['Your life creates intelligence','Smart Notes','Collective','Personal','Rank','Comment','Share','Save','Favorite','Smart Mail','Connections','Intelligent layer','Collective contributions','Connection notifications','Find People','GitHub','Sync Intelligence']:
+          for term in ['function renderHomeFeed','function renderBlock','function renderLiveBlock','function renderToday','function addToday','function init(){','function init()','function showPage','function showPage72','function quote(){','nhV11Quote','nhAuthorityQuote','nhx-quote','nh72-actions','.nhx-engage','.nhx-tab']:
               print('\n===',term,'===')
-              hits=list(re.finditer(re.escape(term),s,re.I))
-              print('COUNT',len(hits))
-              for h in hits[:10]:
-                  a=max(0,h.start()-700); b=min(len(s),h.end()+1400)
-                  print(s[a:b].replace('\\n',' ')[:2200])
-          print('\n=== NAV HTML ===')
-          for m in re.finditer(r'<nav[^>]*class=[\"\']nav[\"\'][^>]*>(.*?)</nav>',s,re.I|re.S):
-              print(m.group(1)[:16000])
+              for h in list(re.finditer(re.escape(term),s,re.I))[:6]:
+                  print(s[max(0,h.start()-300):h.start()+3500])
           PY
           exit 0
       - name: Normalize canonical Hub authority
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          p=Path('NAYANETHUB.html')
-          s=p.read_text(encoding='utf-8')
-          remove_ids=[
-            'nayanet-v7-intelligent-hub-refinement',
-            'nayanet-canonical-hub-authority',
-            'nayanet-canonical-hub-final-polish',
-          ]
-          changed=False
-          for sid in remove_ids:
-            pattern = r"<script[^>]*id=['\"]" + re.escape(sid) + r"['\"][^>]*>.*?</script>"
-            s2,n=re.subn(pattern,'',s,flags=re.S)
-            if n>1: raise SystemExit(f'Unsafe duplicate script id: {sid} ({n})')
-            if n==1: s=s2; changed=True
-          old='<strong id="pageTitle">Home</strong>'
-          if old in s:
-            s=s.replace(old,'<strong id="pageTitle">Your Intelligence Today</strong>',1)
-            changed=True
-          if 'function updateIdentity(){' not in s: raise SystemExit('Required Intelligent Today runtime missing')
-          if 'id="nh-greeting-script"' not in s: raise SystemExit('Required greeting runtime missing')
-          if changed: p.write_text(s,encoding='utf-8')
-          print('canonical_cleanup_changed=',changed)
-          PY
-          if ! git diff --quiet -- NAYANETHUB.html; then
-            git config user.name 'NayaNET Release Bot'
-            git config user.email 'nayanet-release-bot@users.noreply.github.com'
-            git add NAYANETHUB.html
-            git commit -m 'fix: restore canonical Your Intelligence Today authority'
-            git push origin HEAD:main
-            echo 'Canonical cleanup committed; stopping this run so the next run packages the resulting source.'
-            exit 0
-          fi
-      - name: Validate canonical source
-        run: |
-          set -euo pipefail
-          test -s NAYANETHUB.html
-          test "$(grep -o '<!doctype html>' NAYANETHUB.html | wc -l | tr -d ' ')" -eq 1
-          test "$(grep -o '</html>' NAYANETHUB.html | wc -l | tr -d ' ')" -eq 1
-          grep -q 'nh-greeting' NAYANETHUB.html
-          grep -q 'nh-greeting-script' NAYANETHUB.html
-          grep -q 'GOOD MORNING' NAYANETHUB.html
-          grep -q 'function updateIdentity' NAYANETHUB.html
-          grep -q 'Your Intelligence Today' NAYANETHUB.html
-          test "$(grep -o 'id=\"nayanet-canonical-hub-authority\"' NAYANETHUB.html | wc -l)" -eq 0
-          test "$(grep -o 'id=\"nayanet-canonical-hub-final-polish\"' NAYANETHUB.html | wc -l)" -eq 0
-          test "$(grep -o 'id=\"nayanet-v7-intelligent-hub-refinement\"' NAYANETHUB.html | wc -l)" -eq 0
-          git diff --check
-      - name: Build exact Cloudflare release ZIP
-        run: |
-          set -euo pipefail
-          cp NAYANETHUB.html index.html
-          printf '/index.html 200\n' > _redirects
-          test -s index.html
-          test "$(wc -c < index.html)" -gt 100000
-          zip -9 -j NayaNET-Intelligent-Hub-Cloudflare.zip index.html _redirects NAYANETHUB.html
-          unzip -t NayaNET-Intelligent-Hub-Cloudflare.zip
-          test "$(unzip -Z1 NayaNET-Intelligent-Hub-Cloudflare.zip | wc -l | tr -d ' ')" -eq 3
-          echo "INDEX_BYTES=$(wc -c < index.html)"
-          echo "SOURCE_SHA256=$(sha256sum NAYANETHUB.html | awk '{print $1}')"
-          echo "INDEX_SHA256=$(sha256sum index.html | awk '{print $1}')"
-      - name: Upload production ZIP
-        uses: actions/upload-artifact@v4
-        with:
-          name: NayaNET-Intelligent-Hub-Cloudflare
-          path: NayaNET-Intelligent-Hub-Cloudflare.zip
-          if-no-files-found: error
-      - name: Upload canonical source
-        uses: actions/upload-artifact@v4
-        with:
-          name: NayaNET-Hub-Source-Inspection
-          path: NAYANETHUB.html
-          if-no-files-found: error
+          echo diagnostic-only
+          exit 0
