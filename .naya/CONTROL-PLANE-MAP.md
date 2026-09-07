@@ -6,10 +6,15 @@
 
 **START HERE → RESTORE AUTHORITY → RESTORE MISSION → RESTORE CURRENT STATE → LOAD ACTIVE LAWS → LOAD STEWARDSHIP GATES → IDENTIFY TASK → EXECUTE → VERIFY → LEARN → COMPOUND**
 
+## Universal execution start
+
+- `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md` — ACTIVE — current-state-first, forward-only, proof-before-progression, smallest-coherent-execution, adaptive obstacle resolution, continuous intelligence capture, and successor continuity.
+
 ## Active operational laws
 
 - `.naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md` — ACTIVE — repeated equivalent failure escalates at 3 attempts; 10 equivalent attempts without strategic change is RED ALERT.
 - `.naya/NAYA-EXECUTION-EFFICIENCY-LAW.md` — ACTIVE — maximize the highest-value coherent, safe, verifiable work per execution cycle; batch related work when doing so preserves correctness and evidence.
+- `.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md` — ACTIVE — every meaningful execution leaves durable state, evidence, learning, and successor-ready continuity.
 - `.naya/governance/STEWARDSHIP-OF-INTELLIGENCE-RUNTIME-CONTRACT.md` — ACTIVE — consequential actions require intent, cost awareness, cheap validation, evidence, failure tracking, and intelligent stopping.
 
 ## Stewardship runtime
@@ -20,6 +25,8 @@
 ## Enforcement intent
 
 Every newly activated or reactivated Naya must encounter the active operational laws and Stewardship of Intelligence gates through control-plane restoration before consequential execution. Laws must be followed without unnecessary duplication in downstream projects.
+
+The universal execution start is the default behavioral overlay for consequential work: establish current truth first, restore only relevant intelligence, execute a coherent verifiable unit, prove it, lock the resulting state, capture reusable learning, and continue from the verified result.
 
 ## Execution rule
 
