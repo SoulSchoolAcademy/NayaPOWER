@@ -1,0 +1,36 @@
+{
+  "event_id": "SN-20260907-FORWARD-ONLY-EXECUTION-AND-COMPOUNDING-INTELLIGENCE",
+  "version": "1.0",
+  "timestamp": "2026-09-07",
+  "type": "smart-note",
+  "status": "PERSISTED",
+  "subject": "Naya Power Forward-Only Execution + Compounding Intelligence",
+  "source": "Shawn + Naya Power working session",
+  "canonical_note_path": ".naya/notes/2026-09-07-NAYA-POWER-FORWARD-ONLY-EXECUTION-AND-COMPOUNDING-INTELLIGENCE.md",
+  "perspectives": {
+    "ai_naya": "Restore the latest verified current state first. Execute the smallest coherent independently verifiable step. Never move backward to an older artifact or unverified state. When blocked, apply known solutions, use the safest supported route, verify, record the lesson, and continue.",
+    "human": "Shawn wants continuity without repeatedly explaining context. Important lessons, decisions, current state, and proven procedures must become durable retrievable Naya Power intelligence so future Naya instances can continue the work.",
+    "machine": "Use CURRENT STATE → PLAN → EXECUTE → PROVE → LOCK → NEXT. Track authoritative artifact, path, branch, version/SHA, scope, acceptance tests, checkpoint, verification evidence, resulting state, and next action. No unverified result becomes the next starting state.",
+    "child": "Look at the machine that is really on the table, change one safe piece, test it, and only then build the next piece. Do not rebuild from memory.",
+    "grandma": "Keep the recipe that worked, write down what you learned, check today's version before starting, make one sensible change, test it, and keep the proof."
+  },
+  "laws": [
+    "CURRENT-STATE-FIRST",
+    "FORWARD-ONLY-PROGRESSION",
+    "PROOF-BEFORE-PROGRESSION",
+    "ADAPTIVE-OBSTACLE-RESOLUTION",
+    "SMALLEST-COHERENT-EXECUTION",
+    "CURRENT-KNOWLEDGE-OVER-EXHAUSTIVE-HISTORY",
+    "COMPOUNDING-BY-PROMOTION",
+    "NO-REPEATED-EXPLANATION-TAX"
+  ],
+  "verification": {
+    "observed": true,
+    "captured": true,
+    "persisted": true,
+    "verified": true,
+    "propagated": false,
+    "note": "Canonical note and event were committed to GitHub. Intelligent Feed/PIS propagation was not independently verified in this operation."
+  },
+  "next_action": "Use this governance as the operating rule for the next Intelligent Hub execution: re-establish current authoritative state, audit the receiver, then execute the smallest independently verifiable receiver improvement."
+}
