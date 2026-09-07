@@ -1,5 +1,4 @@
 # 2026-09-07 canonical ten-star release gate — source → build → artifact → deploy → runtime → Smart Link
-# NayaNET V7 — canonical Hub deployment and runtime proof
 name: Deploy V7 Intelligent Hub
 on:
   push:
@@ -18,6 +17,8 @@ concurrency:
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  RESTORE_COMMIT: afc1892e9ce2f9af8d4f3f593f97f80830667f26
+  FEED_FILE: 2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js
 jobs:
   deploy-v7:
     runs-on: ubuntu-latest
@@ -29,6 +30,47 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Restore latest canonical three-view feed baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          git show "$RESTORE_COMMIT:$FEED_FILE" > "../$FEED_FILE"
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('..')/Path('2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js')
+          s=p.read_text()
+          patch=r'''
+          ;(()=>{
+            'use strict';
+            const KEY='nayanet:intelligent-feed:preferred-view';
+            const labels={
+              collective:'COLLECTIVE INTELLIGENCE',
+              personal:'PERSONAL INTELLIGENCE',
+              activity:'ACTIVITY'
+            };
+            const findTab=(label)=>[...document.querySelectorAll('.n10-tab,button,[role="tab"]')].find(b=>String(b.textContent||'').trim().toUpperCase()===label);
+            const preferred=()=>{try{return localStorage.getItem(KEY)||'collective'}catch{return 'collective'}};
+            const activate=(view)=>{const b=findTab(labels[view]||labels.collective);if(b){b.click();return true}return false};
+            const boot=()=>{
+              const view=preferred();
+              if(!activate(view)){
+                const b=findTab(labels.collective);
+                if(b)b.click();
+              }
+              document.addEventListener('click',e=>{
+                const b=e.target.closest?.('.n10-tab,[role="tab"]');
+                if(!b)return;
+                const t=String(b.textContent||'').trim().toUpperCase();
+                const v=t.includes('COLLECTIVE')?'collective':t.includes('PERSONAL')?'personal':t.includes('ACTIVITY')?'activity':null;
+                if(v){try{localStorage.setItem(KEY,v)}catch{}}
+              },true);
+            };
+            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,0),{once:true});else setTimeout(boot,0);
+          })();
+          '''
+          p.write_text(s+'\n'+patch+'\n')
+          PY
+          echo "RESTORED_CANONICAL_FEED=$FEED_FILE@$RESTORE_COMMIT"
       - name: Build one canonical feed artifact
         shell: bash
         run: |
@@ -79,12 +121,17 @@ jobs:
           grep -Fq 'Your Connections' "$LAYER"
           grep -Fq 'Smart Mail' "$LAYER"
           grep -Fq 'Smart Spaces' "$LAYER"
+          grep -Fq 'COLLECTIVE INTELLIGENCE' "$LAYER"
+          grep -Fq 'PERSONAL INTELLIGENCE' "$LAYER"
+          grep -Fq 'ACTIVITY' "$LAYER"
+          grep -Fq 'preferred-view' "$LAYER"
           if grep -Fq 'LOVE · SHARE' "$LAYER"; then echo 'Love and Share are combined'; exit 1; fi
           if grep -Fq 'SMART LINK</button>' "$LAYER"; then echo 'Unexplained Smart Link control exists'; exit 1; fi
           echo 'TEN_STAR_SOURCE_CONTRACT=PASS'
           echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
           echo 'NO_COMBINED_LOVE_SHARE=PASS'
           echo 'NO_UNEXPLAINED_SMART_LINK_CONTROL=PASS'
+          echo 'COLLECTIVE_DEFAULT_PATCH=PASS'
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -100,11 +147,13 @@ jobs:
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart.html
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/runtime.html
+          grep -Fq 'ACTIVITY' /tmp/runtime.html
           grep -Fq 'PLAY NAYA' /tmp/runtime.html
           grep -Fq 'Favorite / Star this intelligence' /tmp/runtime.html
           grep -Fq 'Save / Keep this intelligence' /tmp/runtime.html
           grep -Fq 'Share this intelligence' /tmp/runtime.html || grep -Fq '＋ SHARE' /tmp/runtime.html
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/runtime.html
+          grep -Fq 'preferred-view' /tmp/runtime.html
           grep -Fq 'PLAY NAYA' /tmp/smart.html
           grep -Fq 'TEN-STAR' /tmp/smart.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
@@ -114,7 +163,8 @@ jobs:
       - name: Record release identity
         run: |
           echo "SOURCE_COMMIT=$GITHUB_SHA"
+          echo "RESTORED_CANONICAL_BASE=$RESTORE_COMMIT"
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
           echo "WORKER=nayanet-v7-intelligent-hub"
-          echo "ACTIVITY_RESTORATION=CANONICAL_HUB_PRESERVED"
+          echo "THREE_VIEW_DEFAULT=COLLECTIVE_FOR_NEW_OR_UNPREFERENCED_USERS"
