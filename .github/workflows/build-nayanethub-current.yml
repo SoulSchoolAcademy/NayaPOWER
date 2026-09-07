@@ -34,14 +34,13 @@ jobs:
           def stamp(name):
               m=re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ', name)
               if not m: raise SystemExit(f'Invalid timestamped artifact name: {name}')
-              y,mo,d,h,mi=map(int,m.groups())
-              return (y,mo,d,h,mi)
+              return tuple(map(int,m.groups()))
           hubs=sorted([p.name for p in Path('.').glob('*NAYANETHUBONE.html')], key=stamp, reverse=True)
           feeds=sorted([p.name for p in Path('.').glob('*NAYANET INTELLIGENT FEED V2.js')], key=stamp, reverse=True)
           if not hubs: raise SystemExit('No timestamped NAYANETHUBONE.html source found')
           if not feeds: raise SystemExit('No timestamped NAYANET INTELLIGENT FEED V2.js layer found')
           hub=hubs[0]; feed=feeds[0]
-          Path('source.env').write_text(f'AUTHORITATIVE_SOURCE={hub}\nSOURCE_TIMESTAMP={hub.rsplit(" NAYANETHUBONE.html",1)[0]}\nAUTHORITATIVE_FEED_LAYER={feed}\nFEED_TIMESTAMP={feed.rsplit(" NAYANET INTELLIGENT FEED V2.js",1)[0]}\n')
+          Path('source.env').write_text(f'AUTHORITATIVE_SOURCE={hub!r}\nSOURCE_TIMESTAMP={hub.rsplit(" NAYANETHUBONE.html",1)[0]!r}\nAUTHORITATIVE_FEED_LAYER={feed!r}\nFEED_TIMESTAMP={feed.rsplit(" NAYANET INTELLIGENT FEED V2.js",1)[0]!r}\n')
           print('AUTHORITATIVE_SOURCE=',hub)
           print('AUTHORITATIVE_FEED_LAYER=',feed)
           PY
@@ -70,12 +69,12 @@ jobs:
           source source.env
           python3 - <<'PY'
           from pathlib import Path
-          src=Path(__import__('os').environ['AUTHORITATIVE_SOURCE']).read_text()
-          layer=Path(__import__('os').environ['AUTHORITATIVE_FEED_LAYER']).read_text()
+          import os
+          src=Path(os.environ['AUTHORITATIVE_SOURCE']).read_text()
+          layer=Path(os.environ['AUTHORITATIVE_FEED_LAYER']).read_text()
           marker='</body>'
           if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
-          built=src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1)
-          Path('index.html').write_text(built)
+          Path('index.html').write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
           PY
           printf '/index.html 200\n' > _redirects
           test -s index.html
