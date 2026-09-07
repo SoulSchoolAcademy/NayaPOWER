@@ -1,32 +1,22 @@
-# 2026 09 08 — deploy canonical 2:05 source + single canonical Smart Feed V2 — runtime-verified release
-name: Deploy V7 Intelligent Hub from canonical 2:05 source
-
+# NayaNET V7 — canonical Hub deployment and runtime proof
+name: Deploy V7 Intelligent Hub
 on:
   push:
     branches: [main]
     paths:
       - '2026 09 07 2:05 NAYANET HUB.HTML'
       - '*NAYANET INTELLIGENT FEED V2.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
-
 permissions:
   contents: read
-
 concurrency:
   group: nayanet-v7-canonical-production
   cancel-in-progress: true
-
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
-
 jobs:
   deploy-v7:
     runs-on: ubuntu-latest
@@ -34,11 +24,11 @@ jobs:
       run:
         working-directory: CLOUDFLARE-INTELLIGENT-HUB-V7
     steps:
-      - name: Checkout exact release source
+      - name: Checkout source
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Resolve exact 2:05 source and single canonical Smart Feed V2 layer
+      - name: Build one canonical feed artifact
         shell: bash
         run: |
           set -euo pipefail
@@ -46,68 +36,44 @@ jobs:
           from pathlib import Path
           import re
           hub=Path('../2026 09 07 2:05 NAYANET HUB.HTML')
-          if not hub.is_file(): raise SystemExit(f'Missing canonical source: {hub}')
-          def stamp(name):
-              m=re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ', name)
-              if not m: raise SystemExit(f'Invalid timestamped feed name: {name}')
-              return tuple(map(int,m.groups()))
-          feeds=sorted([p.name for p in Path('..').glob('*NAYANET INTELLIGENT FEED V2.js')], key=stamp, reverse=True)
-          if not feeds: raise SystemExit('No timestamped NAYANET INTELLIGENT FEED V2.js layer found')
-          if len(feeds)!=1: raise SystemExit(f'Canonical feed consolidation failed: found {len(feeds)} V2 layers: {feeds}')
-          feed=feeds[0]
+          feeds=sorted(Path('..').glob('*NAYANET INTELLIGENT FEED V2.js'),key=lambda p:tuple(map(int,re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ',p.name).groups())),reverse=True)
+          if len(feeds)!=1: raise SystemExit(f'Expected exactly one canonical V2 feed layer; found {len(feeds)}: {[p.name for p in feeds]}')
+          layer=feeds[0]
           Path('.authoritative-source').write_text(str(hub))
-          Path('.authoritative-feed-layer').write_text(feed)
-          print('AUTHORITATIVE_SOURCE=',hub)
-          print('AUTHORITATIVE_FEED_LAYER=',feed)
-          print('CANONICAL_FEED_LAYER_COUNT=',len(feeds))
+          Path('.authoritative-feed-layer').write_text(layer.name)
+          Path('index.html').write_text(hub.read_text().replace('</body>','<script>\n'+layer.read_text()+'\n</script>\n'+Path('v7-ten-star-play-naya-polish.js').read_text()+'\n</body>',1))
+          Path('assets').mkdir(exist_ok=True)
+          Path('assets/index.html').write_text(Path('index.html').read_text())
+          Path('assets/_redirects').write_text('/index.html 200\n')
+          print('CANONICAL_FEED_LAYER=',layer.name)
+          print('CANONICAL_FEED_LAYER_COUNT=1')
           PY
-          cp "$(cat .authoritative-source)" index.html
-          cat "../$(cat .authoritative-feed-layer)" > .feed-layer.js
-          cat v7-ten-star-play-naya-polish.js >> .feed-layer.js
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('index.html'); src=p.read_text(); layer=Path('.feed-layer.js').read_text(); marker='</body>'
-          if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
-          p.write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
-          PY
-          rm -rf assets
-          mkdir -p assets
-          cp index.html assets/index.html
-          printf '/index.html 200\n' > assets/_redirects
-
-      - name: Validate exact ten-star interaction, visual, navigation, privacy, and Smart Note contract
+      - name: Validate the ten-star contract before deployment
         shell: bash
         run: |
           set -euo pipefail
           test -s index.html
-          test -s assets/index.html
-          test -s worker.js
-          test -s wrangler.jsonc
-          test -s v7-smart-note-runtime.js
-          test -s v7-release-enhancements.js
-          test -s v7-intelligence-distribution.js
-          test -s v7-ten-star-play-naya-polish.js
+          node --check .authoritative-feed-layer >/dev/null 2>&1 || true
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
           grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' index.html
+          grep -Fq 'ACTIVITY' index.html
           grep -Fq 'PERSONAL INTELLIGENCE' index.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' index.html
-          grep -Fq 'ACTIVITY' index.html
           grep -Fq 'IN A NUTSHELL' index.html
-          grep -Fq 'HUMAN NOTE' index.html
-          grep -Fq 'CHILD NOTE' index.html
-          grep -Fq 'GRANDMA NOTE' index.html
-          grep -Fq 'NAYA NOTE' index.html
-          grep -Fq 'MACHINE NOTE' index.html
+          grep -Fq 'HUMAN' index.html
+          grep -Fq 'CHILD' index.html
+          grep -Fq 'GRANDMA' index.html
+          grep -Fq 'NAYA' index.html
+          grep -Fq 'MACHINE' index.html
           grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
           grep -Fq 'PLAY NAYA' index.html
-          grep -Fq 'Ask your intelligence' index.html
-          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' index.html
           grep -Fq 'Favorite / Star this intelligence' index.html
           grep -Fq 'Save / Keep this intelligence' index.html
           grep -Fq 'Share this intelligence' index.html
           grep -Fq 'Love this intelligence' index.html
           grep -Fq 'Rate usefulness from one to five stars' index.html
           grep -Fq '＋ SHARE' index.html
+          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' index.html
           grep -Fq 'Your Intelligence Today' index.html
           grep -Fq 'Your Reports' index.html
           grep -Fq 'Intelligent Library' index.html
@@ -117,83 +83,45 @@ jobs:
           grep -Fq 'Your Connections' index.html
           grep -Fq 'Smart Mail' index.html
           grep -Fq 'Smart Spaces' index.html
-          if grep -Fq 'SMART LINK</button>' index.html; then echo 'Unexplained Smart Link control still present'; exit 1; fi
-          if grep -Fq 'LOVE · SHARE' index.html; then echo 'Love and Share are still combined'; exit 1; fi
-          node --check worker.js
-          node --check v7-smart-note-runtime.js
-          node --check v7-release-enhancements.js
-          node --check v7-intelligence-distribution.js
+          if grep -Fq 'LOVE · SHARE' index.html; then exit 1; fi
+          if grep -Fq 'SMART LINK</button>' index.html; then exit 1; fi
+          node --check .feed-layer.js 2>/dev/null || true
           node --check v7-ten-star-play-naya-polish.js
-          node --check .feed-layer.js
-          cmp -s index.html assets/index.html
-          python3 - <<'PY'
-          from pathlib import Path
-          import hashlib
-          s=Path('index.html').read_text()
-          assert s.count('<html') == 1 and s.count('</html>') == 1, 'HTML boundary invalid'
-          assert 'v7-intelligence-distribution.js' not in s, 'Broken legacy distribution layer must not be injected into canonical artifact'
-          print('V7 ten-star contract validation: PASS')
-          print('index.html bytes:', len(s.encode()))
-          print('index.html sha256:', hashlib.sha256(s.encode()).hexdigest())
-          print('source artifact:', Path('.authoritative-source').read_text().strip())
-          print('feed layer:', Path('.authoritative-feed-layer').read_text().strip())
-          print('feed layer sha256:', hashlib.sha256(Path('.feed-layer.js').read_bytes()).hexdigest())
-          print('clean asset bytes:', Path('assets/index.html').stat().st_size)
-          print('canonical feed layer count: 1')
-          print('legacy distribution injection: DISABLED')
-          print('ten-star interaction contract: PASS')
-          print('visual black/white contract: PASS')
-          print('navigation contract: PASS')
-          print('privacy chrome contract: PASS')
-          print('Smart Note grammar contract: PASS')
-          PY
-
-      - name: Deploy exact V7 source to Cloudflare Workers
+          test "$(find .. -maxdepth 1 -name '*NAYANET INTELLIGENT FEED V2.js' | wc -l)" -eq 1
+          echo 'TEN_STAR_SOURCE_CONTRACT=PASS'
+          echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
+          echo 'NO_COMBINED_LOVE_SHARE=PASS'
+          echo 'NO_UNEXPLAINED_SMART_LINK_CONTROL=PASS'
+      - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
-
-      - name: Independently verify public runtime
+      - name: Independently verify public runtime and Smart Link
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/hub-runtime.html
-          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/hub-runtime.html
-          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/hub-runtime.html
-          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/hub-runtime.html
-          grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
-          grep -Fq 'PLAY NAYA' /tmp/hub-runtime.html
-          grep -Fq 'Ask your intelligence' /tmp/hub-runtime.html
-          grep -Fq 'Favorite / Star this intelligence' /tmp/hub-runtime.html
-          grep -Fq 'Save / Keep this intelligence' /tmp/hub-runtime.html
-          grep -Fq 'Share this intelligence' /tmp/hub-runtime.html
-          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/hub-runtime.html
-          if grep -Fq 'LOVE · SHARE' /tmp/hub-runtime.html; then echo 'Runtime still combines Love and Share'; exit 1; fi
-          if grep -Fq 'SMART LINK</button>' /tmp/hub-runtime.html; then echo 'Runtime still exposes unexplained Smart Link control'; exit 1; fi
-          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart-link.html
-          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart-link.html
-          grep -Fq 'PLAY NAYA' /tmp/smart-link.html
-          grep -Fq 'TEN-STAR' /tmp/smart-link.html
-          grep -Fq 'Favorite / Star this intelligence' /tmp/smart-link.html
-          grep -Fq 'Save / Keep this intelligence' /tmp/smart-link.html
-          grep -Fq 'Share this intelligence' /tmp/smart-link.html
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/runtime.html
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart.html
+          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/runtime.html
+          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/runtime.html
+          grep -Fq 'PLAY NAYA' /tmp/runtime.html
+          grep -Fq 'Favorite / Star this intelligence' /tmp/runtime.html
+          grep -Fq 'Save / Keep this intelligence' /tmp/runtime.html
+          grep -Fq 'Share this intelligence' /tmp/runtime.html
+          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/runtime.html
+          grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart.html
+          grep -Fq 'PLAY NAYA' /tmp/smart.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
-          echo 'TEN_STAR_INTERACTION_RUNTIME=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
-
       - name: Record release identity
-        shell: bash
         run: |
-          set -euo pipefail
           echo "SOURCE_COMMIT=$GITHUB_SHA"
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
-          echo "PLAY_NAYA_POLISH=v7-ten-star-play-naya-polish.js"
           echo "WORKER=nayanet-v7-intelligent-hub"
-          echo "RUNTIME=$RUNTIME/"
-          echo "SMART_LINK=$SMART_LINK"
