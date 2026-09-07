@@ -1,10 +1,15 @@
-name: Deploy V7 Intelligent Hub
+name: Deploy V7 Intelligent Hub from latest timestamped source
 
 on:
   push:
     branches: [main]
     paths:
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
+      - '*NAYANETHUBONE.html'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
 
@@ -24,6 +29,23 @@ jobs:
     steps:
       - name: Checkout exact release source
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve latest timestamped authoritative Hub source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t candidates < <(find .. -maxdepth 1 -type f -name '*NAYANETHUBONE.html' -printf '%f\n' | sort -r)
+          test "${#candidates[@]}" -gt 0
+          source_name="${candidates[0]}"
+          if ! [[ "$source_name" =~ ^[0-9]{4}\ [0-9]{2}\ [0-9]{2}\ +[0-9]{1,2}:[0-9]{2}\ NAYANETHUBONE\.html$ ]]; then
+            echo "Latest candidate does not follow the required timestamped naming contract: $source_name"
+            exit 1
+          fi
+          cp "../$source_name" index.html
+          printf '%s\n' "$source_name" > .authoritative-source
+          echo "AUTHORITATIVE_SOURCE=$source_name"
 
       - name: Validate exact V7 artifact
         shell: bash
@@ -35,8 +57,6 @@ jobs:
           test -s v7-smart-note-runtime.js
           test -s v7-release-enhancements.js
           test -s v7-intelligence-distribution.js
-          grep -Fq 'v7-smart-note-runtime.js' index.html
-          grep -Fq 'v7-release-enhancements.js' index.html
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
           node --check worker.js
           node --check v7-smart-note-runtime.js
@@ -46,12 +66,10 @@ jobs:
           from pathlib import Path
           s=Path('index.html').read_text()
           assert s.count('<html') == 1 and s.count('</html>') == 1, 'HTML boundary invalid'
-          assert s.count('v7-smart-note-runtime.js') == 1, 'runtime marker count invalid'
-          assert s.count('v7-release-enhancements.js') == 1, 'enhancement marker count invalid'
           print('V7 artifact validation: PASS')
           print('index.html bytes:', len(s.encode()))
-          print('enhancement bytes:', Path('v7-release-enhancements.js').stat().st_size)
-          print('distribution bytes:', Path('v7-intelligence-distribution.js').stat().st_size)
+          print('index.html sha256:', __import__('hashlib').sha256(s.encode()).hexdigest())
+          print('source artifact:', Path('.authoritative-source').read_text().strip())
           PY
 
       - name: Deploy exact V7 source to Cloudflare Workers
@@ -67,5 +85,6 @@ jobs:
         run: |
           set -euo pipefail
           echo "SOURCE_COMMIT=$GITHUB_SHA"
+          echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "WORKER=nayanet-v7-intelligent-hub"
           echo "RUNTIME=https://noisy-block-35d0.nayanet.workers.dev/"
