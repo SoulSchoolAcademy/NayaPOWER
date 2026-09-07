@@ -25,7 +25,7 @@ MEMORY = NAYA / "memory"
 STATE_PATH = MEMORY / "STATE.json"
 MANIFEST_PATH = NAYA / "naya-context-manifest.json"
 BRIEFING_PATH = MEMORY / "NAYAPOWER-RUNTIME-BRIEFING.md"
-FEED_PATH = NAYA / "SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md"
+FEED_PATH = NAYA / "INTELLIGENT-FEED.md"
 PROJECT_PATH = NAYA / "projects" / "CURRENT-PROJECT.md"
 START_PATH = ROOT / "START-HERE.md"
 CHECKPOINT_DIR = NAYA / "checkpoints"
@@ -177,7 +177,7 @@ def orientation_snapshot(repo: dict[str, Any], state: dict[str, Any]) -> dict[st
     if not briefing:
         contradictions.append("missing Runtime Briefing")
     if not feed:
-        contradictions.append("missing Superbrain Running Feed")
+        contradictions.append("missing Intelligent Feed")
     if not project:
         contradictions.append("missing CURRENT-PROJECT")
     if not start:
@@ -284,7 +284,7 @@ def build_restore(query: str = "", at: str | None = None, limit: int = 10) -> di
         "validation": {"passed": not structural_errors, "errors": structural_errors},
         "mission": state.get("current_mission"),
         "protected": state.get("protected", []),
-        "known": ["Canonical repository is SoulSchoolAcademy/NayaPOWER", "Runtime Briefing + Running Feed + Current Project are orientation projections; observed repository reality is primary"],
+        "known": ["Canonical repository is SoulSchoolAcademy/NayaPOWER", "Runtime Briefing + Intelligent Feed + Current Project are orientation projections; observed repository reality is primary"],
         "unknown": state.get("unknown", []),
         "what_changed": state.get("recent_changes", []),
         "what_is_unfinished": state.get("unknown", []),
