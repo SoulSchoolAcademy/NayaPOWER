@@ -1,7 +1,6 @@
 name: Build Current NayaNET Hub from NAYANETHUB
 
-# Canonical Hub release gate. The repository's NAYANETHUB.html is the source of truth;
-# this workflow packages the exact source into the Cloudflare-ready root index.html.
+# TEMPORARY SURGICAL DIAGNOSTIC — restored exactly after inspection.
 on:
   push:
     branches: [main]
@@ -21,6 +20,25 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: TEMP Inspect NAYANETHUBONE
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('NAYANETHUBONE').read_text(encoding='utf-8')
+          print('LENGTH',len(s))
+          for term in ['Your life creates intelligence','Smart Notes','Collective','Personal','Rank','Comment','Share','Save','Favorite','Smart Mail','Connections','Intelligent layer','Collective contributions','Connection notifications','Find People','GitHub','Sync Intelligence']:
+              print('\n===',term,'===')
+              hits=list(re.finditer(re.escape(term),s,re.I))
+              print('COUNT',len(hits))
+              for h in hits[:10]:
+                  a=max(0,h.start()-700); b=min(len(s),h.end()+1400)
+                  print(s[a:b].replace('\\n',' ')[:2200])
+          print('\n=== NAV HTML ===')
+          for m in re.finditer(r'<nav[^>]*class=[\"\']nav[\"\'][^>]*>(.*?)</nav>',s,re.I|re.S):
+              print(m.group(1)[:16000])
+          PY
+          exit 0
       - name: Normalize canonical Hub authority
         run: |
           python3 - <<'PY'
