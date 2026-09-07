@@ -1,0 +1,44 @@
+{
+  "event_id": "SN-20260907-SMART-NOTE-PROTOCOL-FAILURE",
+  "version": "1.0",
+  "timestamp": "2026-09-07T22:00:00-07:00",
+  "type": "smart-note",
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "Smart Note protocol failure: missing evidence receipt and unproven Hub propagation",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "branch": "main",
+  "smart_note_path": ".naya/notes/2026-09-07-SMART-NOTE-PROTOCOL-FAILURE-ACTIVITY-INTELLIGENCE-WISDOM-LOCK.md",
+  "feed_path": ".naya/INTELLIGENT-FEED.md",
+  "perspectives": {
+    "human": "Shawn requires remember/note/Smart Note requests to execute the actual capture protocol and return visible evidence, including Human, Naya, Machine, Child, Grammar, Nutshell, canonical event, feed projection, and verification state.",
+    "naya": "The prior response incorrectly substituted a roadmap/document update for the requested Smart Note transaction and bypassed the evidence receipt gate.",
+    "machine": "Reconcile four logical transaction artifacts with six semantic Intelligent Block perspectives and enforce a pre-response completion gate. No verified receipt means INCOMPLETE.",
+    "child": "When Shawn says remember this, actually save it, prove it, and show him where it is.",
+    "grammar": "A Smart Note request is an operation, not a documentation suggestion: execute, verify, and show evidence before claiming completion.",
+    "nutshell": "Remember = Capture → Persist → Verify → Show."
+  },
+  "activity_projection": {
+    "type": "Activity/Now",
+    "state": "Naya identified and repaired a Smart Note protocol execution gap; enforcement is being strengthened before further Hub propagation claims.",
+    "visibility": "private"
+  },
+  "intelligence_projection": {
+    "type": "Personal Intelligence",
+    "insight": "Conversational confirmation must never substitute for a verified Smart Note transaction. Evidence is part of completion.",
+    "visibility": "private"
+  },
+  "verification": {
+    "repository_note_persisted": true,
+    "event_persisted": true,
+    "human_perspective_present": true,
+    "naya_perspective_present": true,
+    "machine_perspective_present": true,
+    "child_perspective_present": true,
+    "grammar_perspective_present": true,
+    "nutshell_perspective_present": true,
+    "hub_runtime_propagation": false,
+    "hub_runtime_propagation_claimed": false,
+    "receipt_status": "INCOMPLETE_FOR_HUB_PROPAGATION"
+  },
+  "next_action": "Enforce the Smart Note pre-response receipt gate and then implement/verify the Activity/Now and Personal Intelligence projections in NAYANETHUBONE.html as a separate controlled work package."
+}
