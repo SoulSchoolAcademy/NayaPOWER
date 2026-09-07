@@ -1,0 +1,36 @@
+{
+  "event_id": "SN-20260907-EXECUTION-OBSTACLE-SOLUTION-LOOP",
+  "timestamp": "2026-09-07",
+  "type": "smart-note",
+  "status": "canonical",
+  "subject": "Naya must solve execution obstacles, apply known solutions, verify, and compound the learning",
+  "project": "NayaPOWER / NayaNET Intelligent Hub",
+  "smart_note_path": ".naya/notes/2026-09-07-SMART-NOTE-EXECUTION-OBSTACLE-SOLUTION-LOOP.md",
+  "perspectives": {
+    "ai_naya": "When an execution obstacle appears, Naya must solve it rather than repeatedly report it to Shawn. Search NayaPOWER for known solutions first, use the safest available route, verify, persist the lesson, and continue.",
+    "human": "Shawn should not have to repeatedly solve technical execution obstacles that Naya has already been given solutions for. If Shawn has already supplied the solution, Naya must apply it.",
+    "machine": "Use source-of-truth inspection, known-solution retrieval, direct supported operations, controlled complete retrieval, guarded surgical writes, independent source/deployment/runtime verification, route changes after repeated failure, and durable learning persistence.",
+    "child": "If you know how to open the door, stop hitting the wall. Use what worked before, check that it worked, and remember the lesson.",
+    "grandma": "Use the safest proven way first. If it truly will not work, try another sensible way. Once solved, preserve the wisdom so nobody has to repeat the trouble."
+  },
+  "nine_recurring_problems": [
+    {"problem":"Whole-file retrieval is truncated or incomplete","solution":"Use direct GitHub editing when supported; otherwise retrieve complete evidence through controlled chunks/validated representations and never guess missing source."},
+    {"problem":"AI reports a blocker back to Shawn instead of solving it","solution":"Search NayaPOWER for the known solution, execute the safest available alternative, and escalate only after reasonable supported routes are exhausted."},
+    {"problem":"Smart Note is explained instead of created","solution":"Execute the Smart Note protocol on the actual event: create the multi-perspective node, persist, index, verify, and provide the Smart Link/receipt."},
+    {"problem":"A discovered solution is not retained","solution":"Persist the discovery as a canonical Smart Note/Note Event and make it retrievable."},
+    {"problem":"Repeated retries consume resources without changing route","solution":"STOP, INSPECT, DIAGNOSE, CHANGE ROUTE; after three failures on one route, stop blind retries."},
+    {"problem":"Source commit is mistaken for deployment success","solution":"Verify source, artifact, deployment, exact public runtime, and observed behavior separately."},
+    {"problem":"Workaround creates duplicate architecture or files","solution":"Inspect first and patch in place; preserve one canonical feed, authoritative artifact, and existing data/persistence paths."},
+    {"problem":"AI asks Shawn to repeat information already in NayaPOWER","solution":"Restore from canonical repository intelligence before asking the human to repeat context."},
+    {"problem":"Execution ends with explanation instead of continuation","solution":"End consequential work with verified state, receipts, remaining gaps, and the strongest next action."}
+  ],
+  "protected_law": "DO NOT REPEAT A KNOWN BLOCKER WITHOUT FIRST APPLYING THE KNOWN SOLUTION.",
+  "execution_loop": ["STOP","THINK","SEARCH KNOWN SOLUTIONS","TRY SAFEST ALTERNATIVE","VERIFY","RECORD LESSON","CONTINUE"],
+  "provenance": {
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "branch": "main",
+    "smart_note_commit": "26566dee9b32b0b75dc5d29dd8f9a44208f08203",
+    "pis_runtime_propagation": "not separately verified"
+  },
+  "next_action": "On the next consequential execution obstacle, retrieve this event and related NayaPOWER laws before escalating the blocker to Shawn."
+}
