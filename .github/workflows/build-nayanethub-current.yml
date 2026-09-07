@@ -2,7 +2,7 @@ name: Build Current NayaNET Hub from NAYANETHUBONE
 
 on:
   push:
-    branches: [main]
+    branches: [main, hub-surgical-work-20260907]
     paths:
       - 'NAYANETHUBONE.html'
       - '.github/workflows/build-nayanethub-current.yml'
@@ -22,6 +22,43 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Surgical inspection report
+        shell: python
+        run: |
+          from pathlib import Path
+          import re, hashlib
+          p=Path('NAYANETHUBONE.html')
+          s=p.read_text(encoding='utf-8')
+          print('FILE_BYTES', p.stat().st_size)
+          print('FILE_SHA256', hashlib.sha256(s.encode()).hexdigest())
+          pats={
+            'smart_notes_nav': r'Smart Notes',
+            'smart_share': r'Smart Share',
+            'your_intelligence_today': r'Your Intelligence Today',
+            'daily_report': r'DAILY INTELLIGENCE REPORT|Daily Intelligence Report',
+            'connect_github': r'CONNECT GITHUB|Connect GitHub',
+            'sync_intelligence': r'SYNC INTELLIGENCE|Sync Intelligence',
+            'smart_spaces': r'Smart Spaces',
+            'smart_lists': r'Smart Lists',
+            'smart_mail_new': r'NEW',
+            'smart_notes_toggle': r'Smart Notes.*?(?:ON|OFF)|smart.?notes.*?(?:toggle|switch)',
+            'intelligent_layer': r'Intelligent Layer|intelligentLayer',
+            'flashing_quote': r'Your life creates intelligence every day',
+            'country_fallback': r'Canada|🇨🇦',
+            'greeting': r'Good morning|Good afternoon|Good evening',
+            'collective': r'COLLECTIVE|Collective',
+            'personal': r'PERSONAL|Personal',
+            'five_star': r'★★★★★|5 stars|five.?star',
+            'inline_comment': r'Add your perspective|Comment',
+            'quote_function': r'function quote\s*\(',
+            'supabase': r'Supabase',
+            'localstorage': r'localStorage',
+          }
+          for k,pat in pats.items(): print(k, len(re.findall(pat,s,re.I|re.S)))
+          print('SCRIPT_TAGS', len(re.findall(r'<script\\b',s,re.I)))
+          print('STYLE_TAGS', len(re.findall(r'<style\\b',s,re.I)))
+          print('DOCTYPE', len(re.findall(r'<!doctype html>',s,re.I)))
+          print('HTML_END', s[-1000:])
       - name: Validate authoritative Hub source
         run: |
           set -euo pipefail
