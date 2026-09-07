@@ -1,0 +1,26 @@
+name: NayaNET Hub One Surgical Inspect
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('NAYANETHUBONE').read_text(encoding='utf-8')
+          print('BYTES',len(s))
+          terms=['Smart Notes','Smart Mail','Connect GitHub','Sync Intelligence','Daily Intelligence','Intelligence Today','Your Intelligence Today','Your life creates intelligence','Intelligence layer','Collective contributions','Connection notifications','function showPage','function render','function init','noteList','noteTab','toggleList']
+          for term in terms:
+            hits=list(re.finditer(re.escape(term),s,re.I))
+            print('\n###',term,'COUNT',len(hits))
+            for h in hits[:5]:
+              print(s[max(0,h.start()-700):min(len(s),h.end()+1600)])
+          PY
