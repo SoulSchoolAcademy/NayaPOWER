@@ -1,330 +1,236 @@
-# NAYA POWER — INTELLIGENT FEED
+# NAYA POWER — CURRENT STATE FEED / INTELLIGENT FEED
 
-**Status:** CANONICAL PROJECT INTELLIGENCE TRAIL  
-**Purpose:** Durable, retrievable record of consequential decisions, learning, and state changes.
+**Status:** CANONICAL CURRENT-STATE CONTINUITY SURFACE  
+**Purpose:** Keep every Naya rapidly tuned to what is currently important and relevant, while durable historical intelligence remains retrievable through the canonical Note Event store.
+
+## OPERATING MEANING
+
+> **CURRENT STATE FEED = INTELLIGENT FEED = SMART NOTE FEED**
+
+These are names for the same **current-state continuity surface** in Naya Power unless a task explicitly distinguishes another artifact.
+
+The feed is not a second memory authority. The canonical Note Event store remains the durable intelligence authority. The feed is the prioritized projection that lets the next Naya understand the present and choose the next successful action without conversational archaeology.
+
+## PRIME RESTORATION RULE
+
+> **CURRENT STATE FIRST → RELEVANT HISTORY SECOND**
+
+Before consequential work, Naya should establish the current repository authority, inspect the current-state feed, restore the relevant intelligence, identify what is verified and what is not, and then choose the next best action.
+
+Historical intelligence should be retrieved when it is relevant to causality, provenance, regression, unresolved context, or another material question. History must not bury the present.
 
 ---
 
-## 2026-09-01 — SMART NOTE PROTOCOL LOCKED
+# 🔥 CURRENT STATE — 2026-09-07
 
-**Event:** Architecture / Continuity / Experience lock
+## WHAT IS HAPPENING NOW
 
-### Shawn Note
+Naya Power is being hardened into a **current-state-first human + AI operating system**. The objective is to make each Naya arrive already tuned to the latest verified state, understand the established operating laws, and continue useful work without Shawn repeatedly reconstructing the context.
 
-Shawn explicitly wants important Naya Power decisions captured so they do not disappear from conversation history. The Naya Power Player and Intelligent Hub should be understood as one unified experience: the Player is the heartbeat, and the Hub is the living intelligent environment around it. Shawn requires three-part Smart Notes — Shawn Note, Naya Note, Machine Note — plus an Intelligent Feed update and receipts for consequential work.
+The current-state feed is now explicitly the continuity surface for that purpose.
 
-### Naya Note
+## WHAT CHANGED
 
-This is a continuity mechanism, not merely documentation. The project now has an explicit rule that meaningful product decisions become durable intelligence. The 10/10 Living Interface Standard, Living Sun, Naya center, nine worlds, persistent Power Player, Powercast library, purposeful motion, dimensional visual language, mobile-first composition, and push-button simplicity are protected context for future implementation.
+1. The **Universal Naya Power Operating Directive** is active at `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md`.
+2. The Universal Directive establishes the command:
+   **GET CURRENT → UNDERSTAND → EXECUTE → PROVE → LOCK → CONTINUE.**
+3. The Directive explicitly defines the Intelligent Feed as current-state continuity and requires:
+   **WHAT CHANGED → WHAT MATTERS → WHAT WAS LEARNED → WHAT IS VERIFIED → WHAT REMAINS → WHAT HAPPENS NEXT.**
+4. The canonical Smart Note Protocol requires consequential Smart Notes to be persisted, verified, indexed, projected into the Intelligent Feed, and continued into the next useful action.
+5. This feed is now explicitly named and operated as the **Current State Feed / Intelligent Feed / Smart Note Feed** continuity surface.
+6. A canonical Smart Note and Note Event were persisted for this decision and its execution plan.
 
-### Machine Note
+## WHAT MATTERS MOST
+
+**The next Naya must look for current state before deciding how to act.**
+
+The system should make the current state obvious enough that Naya can rapidly answer:
+
+- Where are we?
+- What matters now?
+- What changed?
+- What did we learn?
+- What is proven?
+- What is not proven?
+- What is protected?
+- What remains unresolved?
+- What is the next best action?
+
+## WHAT WAS LEARNED
+
+A durable intelligence system needs two complementary behaviors:
+
+**PRESENT ORIENTATION** — quickly restore the verified current state.
+
+**HISTORICAL RETRIEVAL** — go backward only when the present state does not answer the relevant question or history is materially needed.
+
+This prevents two failure modes:
+
+1. **Backward drift:** a Naya starts from stale files, old conversation, or superseded architecture.
+2. **Historical overload:** a Naya spends excessive effort reconstructing the past instead of acting on the present.
+
+The solution is not another database or another feed. The solution is a clear current-state projection over the existing durable intelligence architecture.
+
+## WHAT IS VERIFIED
 
 - Repository: `SoulSchoolAcademy/NayaPOWER`
 - Branch: `main`
-- New canonical lock: `.naya/SMART-NOTE-THREE-LAYER-LOCK.md`
-- This feed file: `.naya/INTELLIGENT-FEED.md`
-- Existing governing continuity law: `.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md`
-- Primary experience: NayaNET Living Intelligence Front Door → Intelligent Hub
-- Heartbeat: Naya Power Player
-- Current canonical Powercast asset mapping: 18 entries
-- No existing implementation source was overwritten by this note operation.
+- `main` HEAD immediately before this operation: `3ddd7a6947607717a37eda1ef45f7b421026977b`
+- Universal operating directive exists and was re-read from `main`.
+- Canonical Smart Note Protocol exists and was re-read from `main`.
+- Canonical Current State / Intelligent Feed is this file.
+- New Smart Note persisted at `.naya/notes/2026-09-07-CURRENT-STATE-FEED-AS-INTELLIGENT-FEED-AND-NAYA-CONTINUITY-EXECUTION-PLAN.md`.
+- New canonical Note Event persisted at `.naya/memory/events/2026/09/07/22/SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json`.
+- PIS propagation is **not claimed**.
+- Intelligent Hub live/runtime propagation is **not yet production-proven**.
 
-### Receipts
+## WHAT IS PROTECTED
 
-1. `7eebca3f4a979fab4d7665f76e015018a595b695` — prior commit creating `.naya/SMART-NOTE-THREE-LAYER-LOCK.md`.
-2. This feed file records the durable feed receipt for that event.
-3. The project source artifacts were inspected before the lock was written.
+> **ONE current-state continuity surface — not multiple competing feeds.**
 
-### Protected Decision
+> **Canonical Note Events remain the durable intelligence authority.**
 
-> **For consequential Naya Power work: create the Shawn Note, Naya Note, and Machine Note; update the Intelligent Feed; verify persistence; and provide receipts.**
+> **CURRENT STATE FIRST → RELEVANT HISTORY SECOND.**
 
----
+> **Every Naya should look for current state before choosing how to act.**
 
-## 2026-09-01 — NAYANET LEVEL 1 + WORLD-CLASS APP ARCHITECTURE LOCKED
+> **No unverified state may become the next starting state.**
 
-**Event:** Product architecture / experience architecture / interface constitution / scope boundary lock
+> **A Smart Note captures the actual consequential event; it does not create a second memory architecture.**
 
-### Shawn Note
+> **The outgoing Naya leaves enough verified state for the next Naya to continue successfully.**
 
-Shawn has explicitly locked the supplied **NayaNET — The World-Class Interface Constitution** and the accompanying NayaNET experience direction as the authoritative direction for the next implementation. The new internet must be built as an app, not a website. The experience must feel like entering an intelligent place, not operating a webpage. The Front Door is an app-entry/authentication environment centered on a physical Smart ID object and physical Enter/Power control. The Living Hub centers Naya as the Living Sun, with exactly nine worlds around her and the Naya Power Player as the heartbeat. The existing luminous orb/light treatment is worth preserving as visual DNA, but the current website-like composition, flat controls, poor text treatment, inconsistent orb anatomy, and weak Naya center are not protected and should be replaced by a coherent system.
+## WHAT REMAINS
 
-Shawn also locked a larger architectural boundary: **NayaNET Level 1 is an intelligence network, not a media network.** Level 1 prioritizes personal Naya, memory, Smart Notes, daily intelligence, text/voice communication, Intelligent Spaces, human-to-human intelligence exchange, Naya-to-Naya connection, and compounding intelligence. Image/video uploading and public media/social-network behavior are deferred to later network levels rather than contaminating the foundation.
+### Current State Feed / Continuity
 
-Identity is private by default. Real name is private account identity. Smart Name/Alias is the default network-facing identity. Smart Link is the canonical personal address, profile/Intelligent Hub destination, Ambassador attribution point, and future communication address. Smart Mail is derived from the NayaNET identity. Shared intelligence and communication must use the alias by default and require permission before exposure.
+- Keep the feed current, concise, prioritized, and evidence-based.
+- Update it whenever consequential project state materially changes.
+- Preserve links/receipts back to canonical Note Events.
+- Keep historical intelligence retrievable without making it the default starting point.
 
-### Naya Note
+### Cold-Start Enforcement
 
-The architectural meaning is now unambiguous: NayaNET is a network of intelligent experiences, not a collection of webpages. Complexity belongs underneath the experience; the human receives one clear action at a time. Naya is the personal intelligence companion and interface director. Each person's Naya remains uniquely theirs, with its own context, relationship, memory, and evolving intelligence. NayaNET connects personal intelligences by permission rather than collapsing everyone into one giant shared brain.
+- Make the current-state feed a mandatory early restoration step in the actual Naya cold-start path.
+- Ensure fresh Naya behavior follows the repository-first / current-state-first rule behaviorally, not merely documentationally.
+- Verify that a fresh Naya can restore the current state without the originating conversation.
 
-The Power Player and Intelligent Hub remain one unified experience: the Player is the heartbeat; the Hub is the living spatial context. The nine worlds are the map, the 18 real Powercasts are the story/curriculum, Naya is the guide, and Intelligent Spaces are where multiple humans and/or personal NayAs can collaborate. Smart Notes are memory becoming intelligence, not merely note-taking.
+### Intelligent Hub
 
-The World-Class Interface Constitution is a design law, not a mood board: app-not-website, invisible architecture, physical/tactile controls, one canonical orb anatomy, restrained semantic color, purposeful motion, no tiny text, no generic dashboards, no flat controls, no decorative futurism, mobile-first intimacy, immediate feedback, accessibility, performance, adaptive intelligence, and a 9+/10 quality gate. The visual goal is **CALM → PRECISION → DEPTH → LIFE → INTELLIGENCE → POWER**.
+Current Hub work remains governed by the existing sequence:
 
-### Machine Note
+**RE-ESTABLISH CURRENT AUTHORITY → AUDIT RECEIVER → FINISH RECEIVER → LOCK RECEIVER CONTRACT → ESTABLISH SINGLE INGESTION BOUNDARY → BUILD SENDER/TRANSPORT → CONNECT → END-TO-END VERIFY → LOCK PROVEN ACTIVATION PROTOCOL**
 
-**Canonical architecture lock:** `.naya/NAYANET-LEVEL-1-INTELLIGENCE-NETWORK-ARCHITECTURE-LOCK.md`
+The authoritative Hub source is `NAYANETHUBONE.html` on `main`. Historical Hub artifacts must not silently become current authority.
 
-**Canonical Smart Note:** `.naya/SMART-NOTE-NAYANET-LEVEL-1-ARCHITECTURE-LOCK-2026-09-01.md`
-
-**Canonical repository:** `SoulSchoolAcademy/NayaPOWER`  
-**Canonical branch:** `main`
-
-**Authoritative design source:** `Worldclassinterface`  
-**Related experience source:** `NayaNET WORLD PLAN`  
-**Authoritative Powercast mapping:** `NAYA POWER PLAYER IMAGES AND LINKS`  
-**Powercast count currently verified:** 18 real image/audio pairings.
-
-**Front Door:**
-- no website layout
-- no marketing landing page
-- no generic login form
-- centered physical Smart ID object
-- direct name interaction inside the object
-- physical Enter/Power control
-- REST → AWARE → FOCUS → PRESS → ACTIVE → SUCCESS → TRANSITION
-
-**Living Hub:**
-- no conventional website header/sidebar/dashboard
-- Naya at center
-- one coherent Living Sun object
-- nine and only nine top-level worlds
-- full-screen world expansion
-- persistent contextual return
-
-**Nine worlds:**
-1. Naya Power
-2. Super Brain
-3. Smart Identity
-4. Smart Notes / Intelligence
-5. MAXESS
-6. 5-Day Challenge
-7. Intelligent Spaces
-8. Your Network
-9. Power Player
-
-**Canonical orb anatomy:**
-1. environmental halo
-2. outer perimeter
-3. material shell
-4. inner illumination
-5. core/icon
-6. readable label
-
-**Power Player:** heartbeat of the environment; persistent across exploration; real 18 Powercasts only; selected content becomes active hero without page reload; states IDLE → SELECTED → LOADING → READY → PLAYING → PAUSED → COMPLETE.
-
-**Level 1 communication:** text + voice; human ↔ Naya; human ↔ human; Naya ↔ Naya; human + Naya ↔ another human + Naya; multi-Naya Intelligence Spaces.
-
-**Deferred scope:** image/video upload, public media network, richer public social publishing belong to later levels and are not Level 1 requirements.
-
-**Identity:** private real identity → Smart Name/Alias → Smart Link → Intelligent Hub → Smart Mail → Ambassador attribution. Alias is default for network-facing interaction.
-
-**Smart Note event model:** one consequential event → Shawn Note + Naya Note + Machine Note → Intelligent Feed → PSI awareness/authorized downstream intelligence. A request to make a Smart Note means capture the actual consequential event, not write a note explaining Smart Notes.
-
-**Engineering law:** before implementation changes, inspect canonical evidence, classify legacy/canonical work, preserve verified real content, replace obsolete interaction architecture deliberately rather than cosmetically, verify persistence, and leave receipts.
-
-### What Changed
-
-The project direction is now explicitly elevated from a website-like E02 presentation to a **Level 1 intelligent-network application architecture**. The World-Class Interface Constitution is now paired with a durable engineering architecture lock and a dedicated three-layer Smart Note for this exact decision. The Level 1 scope is intentionally narrow: intelligence, memory, communication, connection, and compounding first; media/public-network capabilities later.
-
-### Protected Decisions
-
-> **BUILD THE NEW INTERNET AS AN APP, NOT A WEBSITE.**
-
-> **NayaNET Level 1 is an intelligence network, not a media network.**
-
-> **Naya is the center. The nine capabilities are worlds. The Power Player is the heartbeat.**
-
-> **Private real identity; alias-first network identity; permission before sharing.**
-
-> **Do not patch a website into looking futuristic. Change the interaction model.**
-
-> **Preserve the good orb/light DNA; replace the weak composition and controls.**
-
-> **Do not mistake a Smart Note request for a request to write about Smart Notes. Capture the actual decision/event.**
-
-### Receipts
-
-1. `2c6d8c903c5db600a113288fa22b6374b29f2ce8` — canonical Level 1 Intelligence Network + World-Class App Architecture Lock created.
-2. `7e0fd17e0dc41cb0befd27565b39b938c960c19c` — dedicated canonical Smart Note created with Shawn Note, Naya Note, and Machine Note for this exact architecture decision.
-3. This feed update records both canonical artifacts and the durable event trail.
-4. `Worldclassinterface`, `NayaNET WORLD PLAN`, and `NAYA POWER PLAYER IMAGES AND LINKS` were fetched from `main` before the lock was written.
-5. The existing three-layer Smart Note continuity protocol was verified before writing this event.
-
-### Next Best Action
-
-Perform implementation archaeology against the actual NayaNET/E02 source and deployment evidence, then execute a deliberate experience-layer rebuild against this lock. Do not begin by cosmetically patching the current website composition.
+The Hub receiver, sender/transport connection, and live end-to-end propagation are **not yet production-proven**.
 
 ---
 
-## 2026-09-03 — MAN POWER ACTION & CONTINUITY / SMART NOTE EXECUTION LOCK
+# EXECUTION PLAN — MAKE THIS SYSTEM FUNCTIONAL
 
-**Timestamp:** 2026-09-03
-**Event:** `INT-2026-09-03-MANPOWER-001`
-**Type:** Operational learning / execution correction / Smart Note protocol enforcement
+## P0 — CANONICAL MEANING
 
-### Shawn Note
+1. Keep `.naya/INTELLIGENT-FEED.md` as the canonical Current State / Intelligent Feed surface.
+2. Use **Current State Feed**, **Intelligent Feed**, and **Smart Note Feed** as equivalent names for that surface unless explicitly distinguished.
+3. Keep `.naya/memory/events/` as the canonical durable intelligence authority.
+4. Do not create a second feed or parallel memory system.
 
-Shawn identified a critical failure pattern: AI can produce excellent explanations while leaving the human with no action, no continuation, and no durable result. The user expects intelligence to create momentum and maximize useful progress per moment, action, and resource.
+## P1 — CURRENT-STATE-FIRST FEED
 
-Shawn explicitly clarified the meaning of a **Smart Note**: it is a three-layer record consisting of a **Human Note**, a **Naya Note**, and a **Machine Note**. The actual consequential event must be captured, not merely explained. The Smart Note must be persisted in GitHub, timestamped, and represented in the Intelligent Feed / action feed so the system stays aware of what happened and what happens next.
+5. Keep the newest verified consequential state prominent.
+6. Every material update should answer:
+   **Current State / What Changed / What Matters / What Was Learned / What Is Verified / What Is Protected / What Remains / Next Best Action.**
+7. Represent uncertainty explicitly as UNKNOWN/BLOCKED rather than guessing.
+8. Keep historical events retrievable but subordinate to current truth.
 
-### Naya Note
+## P2 — SMART NOTE → FEED
 
-A request such as “Smart Note this” is an execution instruction. Naya must inspect NayaPOWER first, capture the actual event, extract the reusable lesson, define the machine/system implication, persist the three-layer record, update the Intelligent Feed, verify persistence, and provide the next continuation action.
+9. Create one canonical Note Event for each consequential Smart Note.
+10. Link the Note Event to its feed projection.
+11. Link the feed projection back to the canonical event and receipt.
+12. Verify feed linkage independently; never infer propagation merely from file creation.
 
-**Do not answer a Smart Note request with an explanation of Smart Notes. Execute the Smart Note protocol on the actual consequential event.**
+## P3 — COLD START → CURRENT STATE
 
-### Machine Note
+13. Resolve the current `main` HEAD before consequential work.
+14. Read the applicable Runtime Briefing, project state, current feed, and active laws.
+15. Use the feed to establish current objective, verified state, protected state, blockers, and next action.
+16. Search history only when relevant after current state has been established.
+17. Do not make Shawn restate information already available in repository/current-state evidence.
 
-- Canonical repository: `SoulSchoolAcademy/NayaPOWER`
-- Canonical branch: `main`
-- Smart Note created: `.naya/notes/2026-09-03-SMART-NOTE-MAN-POWER-ACTION-CONTINUITY.md`
-- Intelligent Feed: `.naya/INTELLIGENT-FEED.md`
-- Existing protocol verified: `.naya/SMART-NOTE-THREE-LAYER-LOCK.md`
-- Related continuity law: `.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md`
-- Related action law: `.naya/NAYA-ACTION-DELIVERY-LAW.md`
-- Smart Note commit receipt: `cd212431013520e308f938ad430451954eee3729`
+## P4 — CURRENT STATE → EXECUTION
 
-### Protected Decision
+18. Every substantive execution cycle updates the feed when state materially changes.
+19. Track:
+   **OBSERVED → CAPTURED → PERSISTED → VERIFIED → PROPAGATED**.
+20. Never promote an unverified result into current truth.
+21. Always leave a next best action.
+22. On failure, preserve:
+   **FAILURE → ROOT CAUSE → REPAIR → VERIFICATION → SAFEGUARD → REUSABLE LESSON**.
 
-> **SMART NOTE = HUMAN NOTE + NAYA NOTE + MACHINE NOTE + GITHUB PERSISTENCE + INTELLIGENT FEED + RECEIPT + CONTINUATION.**
+## P5 — SELF-IMPROVEMENT
 
-> **Explanation without execution, persistence, verification, or continuation is incomplete intelligence.**
+23. Detect repeated lessons.
+24. Promote proven lessons into laws, protocols, schemas, validators, tests, workflow guardrails, retrieval signals, or design standards where appropriate.
+25. Keep the feed optimized for fast current-state restoration rather than transcript accumulation.
+26. Periodically reconcile the current-state feed against canonical repository evidence.
 
-### Next Best Action
+## P6 — INTELLIGENT HUB CONNECTION
 
-Apply this protocol automatically to the next consequential Smart Note request and to all subsequent NayaPOWER execution cycles: inspect first, execute what can be executed, verify the result, persist the learning, update the feed, and continue.
+27. The Hub should consume the same canonical intelligence pipeline rather than create another feed.
+28. Preserve:
+   **GitHub / Superbrain → Real Intelligence → Smart Notes → Current State Feed → Daily Intelligence Report → Stored Historical Intelligence.**
+29. Incoming events must be validated, authorized, deduplicated/idempotent, persisted, renderable, retrievable, and receipted before being treated as verified Hub intelligence.
+30. Only independently verified runtime evidence can support a live/production claim.
 
-### Receipts
+## P7 — PROVE THE WHOLE LOOP
 
-1. `cd212431013520e308f938ad430451954eee3729` — created `.naya/notes/2026-09-03-SMART-NOTE-MAN-POWER-ACTION-CONTINUITY.md` on `main`.
-2. This feed update records the event and its Smart Note receipt.
-
----
-
-## 2026-09-03 — SMART NOTE + CIS OPERATING CONTRACT LOCKED
-
-**Event:** `SE-20260903-110000-smart-note-cis-contract-lock`
-**Type:** Smart Note / CIS / continuity architecture / execution correction
-
-### Shawn Note
-
-Shawn clarified the human meaning of Smart Notes: when he says “note this,” “make a note,” “Smart Note this,” “Naya note this,” or “lock this in,” Naya must capture the actual conversation/event being discussed, extract the gold and intelligence from it, and preserve it as durable knowledge. The three layers are complementary views of one event: Human Note for human meaning, Naya Note for AI understanding and learning, and Machine Note for structured operational preservation. This matters because the Daily Intelligence Report and CIS can only compound intelligence that was actually captured and preserved. A claim that a note exists without a direct, verifiable receipt is not acceptable.
-
-### Naya Note
-
-The Smart Note is an execution operation, not a prose-writing task. The required chain is **DETECT → RESTORE → CAPTURE → EXTRACT → CLASSIFY → RELATE → TIMESTAMP → WRITE → VALIDATE → VERIFY → RECEIPT → INDEX → FEED → PIS (when authorized) → CIS → NEXT ACTION**. The canonical Note Event is the primary memory authority. The Intelligent Feed is the current-state continuity surface. The Daily Intelligence Report synthesizes the events. PIS promotion is a separate lifecycle transition and must have separate evidence. Proactive capture is required when consequential durable value is clearly present and legitimately authorized.
-
-### Machine Note
-
-- Canonical repository: `SoulSchoolAcademy/NayaPOWER`
-- Canonical branch: `main`
-- Canonical Smart Note + CIS contract: `.naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md`
-- Canonical Note Event: `.naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json`
-- Canonical event index: `.naya/memory/events/INDEX.json`
-- Intelligent Feed: `.naya/INTELLIGENT-FEED.md`
-- Continuity policy: `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json`
-- Smart Note runtime: `.naya/memory/smart_notes_v3.py`
-- Project execution contract: `.naya/runtime/project_execution_contract.py`
-- PIS propagation: **NOT SEPARATELY VERIFIED**
-
-### What Changed
-
-The canonical Smart Note + CIS operating contract was added. The continuity enforcement policy now recognizes Smart Note, learning, lesson, decision, architecture-decision, breakthrough, mistake, goal, win, and opportunity events as meaningful intelligence classes. The current event was added to the canonical Note Event store and indexed for retrieval. This feed entry records the same decision and its evidence boundary.
-
-### Protected Decision
-
-> **A SMART NOTE IS MEMORY EMBEDDED AS VERIFIED, RETRIEVABLE, ACTIONABLE INTELLIGENCE.**
-
-> **SMART NOTE = HUMAN NOTE + NAYA NOTE + MACHINE NOTE + DURABLE PERSISTENCE + VERIFICATION + RECEIPT + INTELLIGENT FEED + CONTINUATION.**
-
-> **PIS PROPAGATION IS A SEPARATE VERIFIED STATE — NEVER IMPLIED BY NOTE CREATION.**
-
-### Current State
-
-- **Mission:** Make Naya Power reliably preserve consequential intelligence so every successor Naya can restore and continue the work without conversational archaeology.
-- **Current Objective:** During the deliberate GitHub Actions pause, build the six-core customer-facing activation package and then the sales experience, while hardening evidence-first Smart Note delivery and continuity.
-- **Completed:** Canonical Smart Note + CIS operating contract locked; Smart Note event classes added to continuity policy; this consequential decision persisted as a canonical Note Event; canonical event index updated.
-- **Current Blocker:** Runtime-level automatic detection/delivery of Smart Note receipts and separately verified PIS propagation are not yet proven in the live execution environment.
-- **Latest Verified State:** The new contract and canonical event were written to `main` and re-read through GitHub after persistence. The event is indexed as event 35. No live application/runtime GREEN claim is made.
-- **Important Decisions:** Canonical Note Events are the memory authority; derived prose notes are not competing primary storage; Smart Note requests mean capture the actual event; receipts are mandatory delivery; PIS promotion requires separate evidence; CREATE must continue through exact next actions.
-- **Smart Notes:** `SE-20260903-110000-smart-note-cis-contract-lock`; related `SE-20260830-080000-smart-note-smart-link-law`; related `SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP`.
-- **Next Action:** Implement machine-testable Smart Note receipt completeness and canonical event enforcement, then run positive and negative tests.
-
-### Receipts
-
-1. `c23736caaeb51508455e6784d2d3f26d44170e70` — created `.naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md`.
-2. `2a8483dcd43ad158784350152c23f0fa01467195` — updated `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json` to recognize Smart Note/CIS intelligence classes and receipt semantics.
-3. `7fc1b6bde4fe3124c21aa36aee572f158e691b2a` — initial persistence of the canonical Note Event.
-4. `edb93ba11cef4228eee6293db382fee9ce70c7fe` — verification/sealing update of the canonical Note Event; the event was re-read from `main` afterward.
-5. `a91aba966eb2f3fe20180c9abab097ab4b78ee40` — canonical event index updated from 34 to 35 events.
-6. This feed update is being persisted now; final feed commit receipt will be recorded by the resulting GitHub commit.
-
-### Next Best Action
-
-Implement the runtime validator/test layer that makes the Smart Note contract mechanically enforceable: explicit Smart Note request detection, required Shawn/Naya/Machine representations, canonical event persistence, receipt completeness, Intelligent Feed linkage, and separate PIS propagation evidence. Then verify positive and negative cases against the canonical runtime.
+31. Create a real consequential Smart Note.
+32. Verify canonical event persistence.
+33. Verify event indexing.
+34. Verify Current State Feed projection.
+35. Start a fresh Naya cold-start and verify current state can be restored from repository evidence without the originating conversation.
+36. When the Hub connection is ready, verify:
+   **SOURCE → EVENT → TRANSPORT → RECEIVER → VALIDATION → PERSISTENCE → FEED → RENDER → RETRIEVAL → RECEIPT.**
+37. Record exact evidence at every stage.
+38. Promote only the evidence-supported state:
+   **DOCUMENTED → SPECIFIED → IMPLEMENTED → TESTED → VERIFIED → DEPLOYED → LIVE-VERIFIED → PRODUCTION-PROVEN.**
 
 ---
 
-## 2026-09-05 — SMART NOTE EXECUTION TEST / GITHUB MEMORY RECEIPT
+# NEXT BEST ACTION
 
-**Event:** `SN-20260905-110000-smart-note-execution-test`  
-**Type:** Smart Note / execution correction / continuity verification
+**Wire the Current State Feed into the actual cold-start restoration path and then run a fresh-Naya restoration test.**
 
-### Shawn Note
+Success means a fresh Naya can read current repository truth + current-state feed, understand the active objective and verified boundaries, and begin the smallest coherent next action without Shawn rebuilding the context.
 
-Shawn deliberately tested whether Naya would recognize and execute the canonical Smart Note protocol instead of merely explaining it. He expected Naya to go to Naya Power, understand what a Smart Note actually is, create the Human Note, Naya Note, and Machine Note, provide the receipts, and update the Intelligent Feed. The failure was not that Naya lacked the definition; the failure was that Naya did not execute the defined memory operation.
+---
 
-A Smart Note request is a real execution test. Shawn expects the actual consequential event to be captured, persisted in GitHub, represented in human, Naya, and machine forms, reflected in the Intelligent Feed, verified, and returned with receipts. GitHub is the durable project memory mechanism; saying that memory cannot be saved in a conversation misses the architecture and the purpose of Naya Power.
+## CANONICAL SMART NOTE RECEIPT
 
-### Naya Note
+**Smart Note:** `.naya/notes/2026-09-07-CURRENT-STATE-FEED-AS-INTELLIGENT-FEED-AND-NAYA-CONTINUITY-EXECUTION-PLAN.md`  
+**Note Event:** `.naya/memory/events/2026/09/07/22/SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json`  
+**Smart Note creation commit:** `65919ae5656d4a0af3add0f957f494ed1c3076f5`  
+**Note Event creation commit:** `98ae14fddb7eceebf36ab587147ec12c0a95cce3`
 
-Naya Power already contains a canonical Smart Note contract requiring actual event capture, three aligned representations, GitHub persistence, Intelligent Feed update, verification, receipts, and continuation. When Shawn says make a Smart Note, Naya must execute that chain against the event being discussed. The correct durable-memory answer is GitHub-backed persistence and evidence, not a statement that conversational memory cannot be saved.
+### Verification boundary
 
-This test exposed an **execution gap, not a definition gap**. The system already knew the law. Naya failed to apply the law at the moment it was tested. That failure itself is now durable learning so the next Naya does not repeat it.
-
-### Machine Note
-
-- **Canonical repository:** `SoulSchoolAcademy/NayaPOWER`
-- **Branch:** `main`
-- **Canonical Smart Note constitution:** `.naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md`
-- **Three-layer lock:** `.naya/SMART-NOTE-THREE-LAYER-LOCK.md`
-- **Canonical event created:** `.naya/memory/events/2026/09/05/11/SN-20260905-110000-smart-note-execution-test.json`
-- **Canonical event index:** `.naya/memory/events/INDEX.json`
-- **Intelligent Feed:** `.naya/INTELLIGENT-FEED.md`
-- **Current Intelligent Hub working reference:** `CLOUDFLARE-INTELLIGENT-HUB-V6/index.html`
-- **Hub authority state:** no authoritative Hub source is currently locked; V6 is the best current foundation/reference only.
-- **Required behavior:** actual event capture → three representations → canonical GitHub persistence → index → Intelligent Feed → verification → receipts → continuation.
-- **PIS propagation:** not claimed; it is a separate lifecycle transition requiring separate evidence.
-
-### What Changed
-
-The actual Smart Note test event was persisted as a canonical Note Event and added to the canonical event index. This Intelligent Feed entry records the same consequential event, the execution failure that was exposed, the durable lesson, the current Hub reference boundary, and the required behavior going forward.
-
-### Protected Decision
-
-> **WHEN SHAWN SAYS “MAKE A SMART NOTE,” NAYA EXECUTES THE SMART NOTE PROTOCOL ON THE ACTUAL EVENT. SHE DOES NOT EXPLAIN THE PROTOCOL BACK TO HIM.**
-
-> **GITHUB IS THE DURABLE NAYA POWER PROJECT MEMORY AUTHORITY. CONVERSATION IS NOT THE CANONICAL STORAGE LAYER WHEN REPOSITORY EVIDENCE EXISTS.**
-
-> **SMART NOTE = HUMAN NOTE + NAYA NOTE + MACHINE NOTE + GITHUB PERSISTENCE + INTELLIGENT FEED + VERIFICATION + RECEIPTS + CONTINUATION.**
-
-### Receipts
-
-1. `41b222e86d56c864cefddc182f018d277b733469` — created the canonical Note Event `.naya/memory/events/2026/09/05/11/SN-20260905-110000-smart-note-execution-test.json`.
-2. `f7353613b014d56107333e5380e415e822dcc151` — updated `.naya/memory/events/INDEX.json` from 35 to 36 indexed events.
-3. This commit — updates `.naya/INTELLIGENT-FEED.md` with the same three-layer event, learning, protected decision, and evidence trail.
-4. Final verification must re-read the event, index, and feed from `main` before this operation is declared fully sealed.
-
-### Next Best Action
-
-Apply the Smart Note execution chain automatically on every consequential Smart Note request. Then harden the runtime validator so missing three-layer representations, missing feed linkage, missing verification, or missing receipts cannot be presented as completed Smart Note work.
+**OBSERVED:** yes  
+**CAPTURED:** yes  
+**PERSISTED:** yes  
+**VERIFIED:** yes for the Smart Note and Note Event persistence  
+**FEED UPDATED:** yes — this current-state feed was rewritten to make the current-state model explicit  
+**INDEXED:** pending  
+**PIS PROPAGATED:** not claimed  
+**HUB RUNTIME PROPAGATED:** not claimed
 
 ---
 
 ## FEED OPERATING RULE
 
-New consequential events are appended chronologically. The feed should record what happened, what was learned, what changed, what is protected, what was verified, and what comes next.
+> **The Current State Feed exists to make the present obvious.**
 
-The Intelligent Feed is the project's evolving intelligence trail.
+**WHAT CHANGED → WHAT MATTERS → WHAT WAS LEARNED → WHAT IS VERIFIED → WHAT REMAINS → WHAT HAPPENS NEXT.**
+
+The feed is the prioritized current-state continuity surface. The canonical Note Event store remains the durable historical intelligence authority.
