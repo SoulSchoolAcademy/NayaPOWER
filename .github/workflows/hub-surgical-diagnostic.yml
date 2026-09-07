@@ -46,6 +46,10 @@ jobs:
           }
           for k,pat in pats.items():
             print(k, len(re.findall(pat,s,re.I|re.S)))
-          print('SCRIPT_TAGS', len(re.findall(r'<script\\b',s,re.I)))
-          print('STYLE_TAGS', len(re.findall(r'<style\\b',s,re.I)))
           print('HTML_END', s[-500:])
+      - name: Upload exact Hub source
+        uses: actions/upload-artifact@v4
+        with:
+          name: NayaNET-Hub-Exact-Source
+          path: NAYANETHUBONE.html
+          if-no-files-found: error
