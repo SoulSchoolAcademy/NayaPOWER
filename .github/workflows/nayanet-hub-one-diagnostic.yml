@@ -27,4 +27,5 @@ jobs:
           print('\n=== SIDEBAR NAV REGION ===')
           for m in re.finditer(r'<nav[^>]*class=[\"\']nav[\"\'][^>]*>(.*?)</nav>',s,re.I|re.S):
               print(m.group(1)[:12000])
+          # trigger diagnostic execution on a second commit
           PY
