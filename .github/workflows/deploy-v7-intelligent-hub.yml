@@ -1,4 +1,4 @@
-# 2026 09 07 8:35 PM — deployment synchronized with timestamp authority and Intelligent Feed V2
+# 2026 09 07 8:38 PM — deployment synchronized with timestamp authority and Intelligent Feed V2
 name: Deploy V7 Intelligent Hub from latest timestamped source
 
 on:
@@ -60,7 +60,8 @@ jobs:
           from pathlib import Path
           p=Path('index.html'); src=p.read_text(); layer=Path('.feed-layer.js').read_text(); marker='</body>'
           if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
-          p.write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
+          activation='<script>document.querySelector(\'.intelligentBlocks\')?.classList.add(\'nayanet-feed-v2\');</script>\n'
+          p.write_text(src.replace(marker,activation+'<script>\n'+layer+'\n</script>\n'+marker,1))
           PY
 
       - name: Validate exact V7 artifact
