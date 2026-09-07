@@ -72,9 +72,16 @@ jobs:
           echo "AUTHORITATIVE_SOURCE=NAYANETHUBONE.html"
           echo "SOURCE_BYTES=$(wc -c < NAYANETHUBONE.html)"
           echo "SOURCE_SHA256=$(sha256sum NAYANETHUBONE.html | awk '{print $1}')"
+      - name: Upload exact authoritative source
+        uses: actions/upload-artifact@v4
+        with:
+          name: NayaNET-Hub-Exact-Source
+          path: NAYANETHUBONE.html
+          if-no-files-found: error
       - name: Build exact deployment artifact from authoritative source
         run: |
           set -euo pipefail
+          rm -f NayaNET-Intelligent-Hub-Cloudflare.zip
           cp NAYANETHUBONE.html index.html
           printf '/index.html 200\n' > _redirects
           test -s index.html
@@ -89,10 +96,4 @@ jobs:
         with:
           name: NayaNET-Intelligent-Hub-Cloudflare
           path: NayaNET-Intelligent-Hub-Cloudflare.zip
-          if-no-files-found: error
-      - name: Upload authoritative source inspection
-        uses: actions/upload-artifact@v4
-        with:
-          name: NayaNET-Hub-Source-Inspection
-          path: NAYANETHUBONE.html
           if-no-files-found: error
