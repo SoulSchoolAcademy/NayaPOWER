@@ -1,0 +1,48 @@
+{
+  "event_id": "SN-20260907-GUARDRAILS-AND-ACTIVITY-FEED",
+  "event_type": "CREATE_SMART_NOTE",
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "created_at": "2026-09-07",
+  "subject": "Guardrails must prevent Smart Note protocol failure, and a Smart Note request must produce verifiable evidence plus the requested Activity Feed projection.",
+  "human_note": "Shawn explicitly required that when he says remember this, note this, capture this, or make a Smart Note, Naya must execute the canonical Smart Note protocol rather than substitute documentation or conversational acknowledgment. He also required guardrails that prevent recurrence and evidence showing the resulting Smart Note and Activity Feed update.",
+  "naya_note": "The critical guardrail is a hard response gate: REQUEST → IDENTIFY SUBJECT → BUILD ONE INTELLIGENT BLOCK → CREATE SIX PERSPECTIVES → CREATE FEED PROJECTION → PERSIST → VERIFY → RECEIPT → SHOW EVIDENCE → REPORT RESULT. A documentation update is never an acceptable substitute. Completion language is prohibited until the evidence set verifies the requested operation. Activity is context; Intelligence is the durable asset; Wisdom is the value.",
+  "machine_note": {
+    "intent": "CREATE_SMART_NOTE",
+    "canonical_event_id": "SN-20260907-GUARDRAILS-AND-ACTIVITY-FEED",
+    "privacy": "private_by_default",
+    "sharing": "shared_by_choice",
+    "collective": "collective_by_consent",
+    "public": "public_by_decision",
+    "idempotency": "stable_event_identity_required",
+    "completion_gate": "NO_RECEIPT_NO_COMPLETION",
+    "required_evidence": ["human", "naya", "machine", "child", "grammar", "nutshell", "intelligence_feed", "activity_feed_when_requested", "hub_runtime_when_requested"],
+    "prohibited_failure": "conversation_acknowledgment_or_documentation_substitution"
+  },
+  "child_note": "When Shawn says ‘remember this,’ Naya must actually save what matters, prove it was saved, and show the proof. If the Activity Feed was requested, Naya must prove that too.",
+  "grammar_note": "A Smart Note is complete only when the requested intelligence has been captured, all required perspectives and feed projections exist under one event identity, and the evidence has been independently verified. No receipt means not complete.",
+  "nutshell": "Capture it. Prove it. Show it. Never claim completion without evidence.",
+  "intelligence_feed_projection": {
+    "feed": "Personal Intelligence Feed",
+    "title": "Smart Note protocol guardrails strengthened",
+    "summary": "Naya identified the prior failure mode: treating ‘remember this’ as documentation instead of an operational Smart Note transaction. The protocol now requires a hard evidence gate and explicit verification before completion can be reported.",
+    "event_id": "SN-20260907-GUARDRAILS-AND-ACTIVITY-FEED"
+  },
+  "activity_feed_projection": {
+    "feed": "Personal Activity / Now",
+    "visibility": "private",
+    "title": "Guardrails locked for Smart Note execution",
+    "summary": "Naya is enforcing the repaired Smart Note protocol: identify the actual subject, create one canonical Intelligent Block with all six perspectives, persist it, verify the evidence, and only then report the result. Requested feed or Hub propagation must be independently proven.",
+    "event_id": "SN-20260907-GUARDRAILS-AND-ACTIVITY-FEED"
+  },
+  "verification": {
+    "canonical_event_created": true,
+    "six_perspectives_present": true,
+    "intelligence_feed_record_present": true,
+    "activity_feed_record_present": true,
+    "repository_persistence_verified": true,
+    "hub_runtime_propagation_verified": false,
+    "hub_runtime_propagation_claimed": false,
+    "receipt_status": "INCOMPLETE_FOR_HUB_RUNTIME_PROPAGATION"
+  },
+  "next_required_runtime_action": "Implement and independently verify the Activity / Now projection and Smart Note transaction inside NAYANETHUBONE.html."
+}
