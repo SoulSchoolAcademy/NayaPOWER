@@ -41,7 +41,6 @@ jobs:
           feeds=sorted([p.name for p in Path('.').glob('*NAYANET INTELLIGENT FEED V2.js')], key=stamp, reverse=True)
           if not feeds: raise SystemExit('No timestamped NAYANET INTELLIGENT FEED V2.js layer found')
           feed=feeds[0]
-          Path('source.env').write_text(f'AUTHORITATIVE_SOURCE={hub!s}\nAUTHORITATIVE_FEED_LAYER={feed!r}\n')
           print('AUTHORITATIVE_SOURCE=',hub)
           print('AUTHORITATIVE_FEED_LAYER=',feed)
           PY
@@ -49,37 +48,34 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          set -a
-          source source.env
-          set +a
-          test -s "$AUTHORITATIVE_SOURCE"
-          test -s "$AUTHORITATIVE_FEED_LAYER"
-          test "$(grep -oi '<!doctype html>' "$AUTHORITATIVE_SOURCE" | wc -l | tr -d ' ')" -eq 1
-          test "$(grep -o '</html>' "$AUTHORITATIVE_SOURCE" | wc -l | tr -d ' ')" -eq 1
-          grep -q 'nayanet-login-welcome' "$AUTHORITATIVE_SOURCE"
-          grep -Eq 'Good (morning|afternoon|evening), Shawn\.' "$AUTHORITATIVE_SOURCE"
-          grep -q 'NayaNET' "$AUTHORITATIVE_SOURCE"
-          node --check "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'PERSONAL INTELLIGENCE' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'COLLECTIVE INTELLIGENCE' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'ACTIVITY' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'CHILD NOTE' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'GRANDMA NOTE' "$AUTHORITATIVE_FEED_LAYER"
-          grep -q 'SMART LINK' "$AUTHORITATIVE_FEED_LAYER"
+          SOURCE='2026 09 07 2:05 NAYANET HUB.HTML'
+          FEED='2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
+          test -s "$SOURCE"
+          test -s "$FEED"
+          test "$(grep -oi '<!doctype html>' "$SOURCE" | wc -l | tr -d ' ')" -eq 1
+          test "$(grep -o '</html>' "$SOURCE" | wc -l | tr -d ' ')" -eq 1
+          grep -q 'nayanet-login-welcome' "$SOURCE"
+          grep -Eq 'Good (morning|afternoon|evening), Shawn\.' "$SOURCE"
+          grep -q 'NayaNET' "$SOURCE"
+          node --check "$FEED"
+          grep -q 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' "$FEED"
+          grep -q 'PERSONAL INTELLIGENCE' "$FEED"
+          grep -q 'COLLECTIVE INTELLIGENCE' "$FEED"
+          grep -q 'ACTIVITY' "$FEED"
+          grep -q 'CHILD NOTE' "$FEED"
+          grep -q 'GRANDMA NOTE' "$FEED"
+          grep -q 'SMART LINK' "$FEED"
           git diff --check
       - name: Build release artifact from exact 2:05 source
         shell: bash
         run: |
           set -euo pipefail
-          set -a
-          source source.env
-          set +a
+          SOURCE='2026 09 07 2:05 NAYANET HUB.HTML'
+          FEED='2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
           python3 - <<'PY'
           from pathlib import Path
-          import os
-          src=Path(os.environ['AUTHORITATIVE_SOURCE']).read_text()
-          layer=Path(os.environ['AUTHORITATIVE_FEED_LAYER']).read_text()
+          src=Path('2026 09 07 2:05 NAYANET HUB.HTML').read_text()
+          layer=Path('2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js').read_text()
           marker='</body>'
           if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
           Path('index.html').write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
@@ -98,7 +94,6 @@ jobs:
           grep -q 'PERSONAL INTELLIGENCE' index.html
           grep -q 'COLLECTIVE INTELLIGENCE' index.html
           grep -q 'ACTIVITY' index.html
-          node --check <(python3 -c "from pathlib import Path; import re; s=Path('index.html').read_text(); print('')") 2>/dev/null || true
           zip -9 -j NayaNET-Intelligent-Hub-Cloudflare.zip index.html _redirects
           unzip -t NayaNET-Intelligent-Hub-Cloudflare.zip
       - name: Upload production ZIP
@@ -117,5 +112,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: NayaNET-Intelligent-Feed-V3
-          path: '*NAYANET INTELLIGENT FEED V2.js'
+          path: '2026 09 07 10:45 PM NAYANET INTELLIGENT FEED V2.js'
           if-no-files-found: error
