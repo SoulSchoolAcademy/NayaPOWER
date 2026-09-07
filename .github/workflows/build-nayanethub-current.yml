@@ -1,14 +1,14 @@
-name: Build Current NayaNET Hub from NAYANETHUBONE
+name: Build Current NayaNET Hub from latest timestamped NAYANETHUBONE artifact
 
 on:
   push:
     branches: [main]
     paths:
-      - 'NAYANETHUBONE.html'
+      - '*NAYANETHUBONE.html'
       - '.github/workflows/build-nayanethub-current.yml'
   pull_request:
     paths:
-      - 'NAYANETHUBONE.html'
+      - '*NAYANETHUBONE.html'
       - '.github/workflows/build-nayanethub-current.yml'
   workflow_dispatch:
 
@@ -22,23 +22,40 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Resolve latest timestamped authoritative Hub source
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t candidates < <(find . -maxdepth 1 -type f -name '*NAYANETHUBONE.html' -printf '%f\n' | sort -r)
+          test "${#candidates[@]}" -gt 0
+          source_name="${candidates[0]}"
+          if ! [[ "$source_name" =~ ^[0-9]{4}\ [0-9]{2}\ [0-9]{2}\ +[0-9]{1,2}:[0-9]{2}\ NAYANETHUBONE\.html$ ]]; then
+            echo "Latest candidate does not follow the required timestamped naming contract: $source_name"
+            exit 1
+          fi
+          printf 'AUTHORITATIVE_SOURCE=%s\n' "$source_name" | tee source.env
+          printf 'SOURCE_TIMESTAMP=%s\n' "${source_name% NAYANETHUBONE.html}" | tee -a source.env
       - name: Validate authoritative Hub source
+        shell: bash
         run: |
           set -euo pipefail
-          test -s NAYANETHUBONE.html
-          test "$(grep -o '<!doctype html>' NAYANETHUBONE.html | wc -l | tr -d ' ')" -eq 1
-          test "$(grep -o '</html>' NAYANETHUBONE.html | wc -l | tr -d ' ')" -eq 1
-          grep -q 'nayanet-login-welcome' NAYANETHUBONE.html
-          grep -q 'Good morning, Shawn.' NAYANETHUBONE.html
-          grep -q 'Your Intelligence Today' NAYANETHUBONE.html
+          source source.env
+          test -s "$AUTHORITATIVE_SOURCE"
+          test "$(grep -o '<!doctype html>' "$AUTHORITATIVE_SOURCE" | wc -l | tr -d ' ')" -eq 1
+          test "$(grep -o '</html>' "$AUTHORITATIVE_SOURCE" | wc -l | tr -d ' ')" -eq 1
+          grep -q 'nayanet-login-welcome' "$AUTHORITATIVE_SOURCE"
+          grep -q 'Good morning, Shawn.' "$AUTHORITATIVE_SOURCE"
+          grep -q 'Your Intelligence Today' "$AUTHORITATIVE_SOURCE"
           git diff --check
-          echo "AUTHORITATIVE_SOURCE=NAYANETHUBONE.html"
-          echo "SOURCE_BYTES=$(wc -c < NAYANETHUBONE.html)"
-          echo "SOURCE_SHA256=$(sha256sum NAYANETHUBONE.html | awk '{print $1}')"
+          echo "AUTHORITATIVE_SOURCE=$AUTHORITATIVE_SOURCE"
+          echo "SOURCE_BYTES=$(wc -c < "$AUTHORITATIVE_SOURCE")"
+          echo "SOURCE_SHA256=$(sha256sum "$AUTHORITATIVE_SOURCE" | awk '{print $1}')"
       - name: Build exact deployment artifact from authoritative source
+        shell: bash
         run: |
           set -euo pipefail
-          cp NAYANETHUBONE.html index.html
+          source source.env
+          cp "$AUTHORITATIVE_SOURCE" index.html
           printf '/index.html 200\n' > _redirects
           test -s index.html
           test "$(wc -c < index.html)" -gt 100000
@@ -47,6 +64,7 @@ jobs:
           test "$(unzip -Z1 NayaNET-Intelligent-Hub-Cloudflare.zip | wc -l | tr -d ' ')" -eq 2
           echo "INDEX_BYTES=$(wc -c < index.html)"
           echo "INDEX_SHA256=$(sha256sum index.html | awk '{print $1}')"
+          echo "SOURCE_AND_INDEX_SHA256=$(sha256sum "$AUTHORITATIVE_SOURCE" index.html | awk '{print $1, $2}')"
       - name: Upload production ZIP
         uses: actions/upload-artifact@v4
         with:
@@ -57,5 +75,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: NayaNET-Hub-Source-Inspection
-          path: NAYANETHUBONE.html
+          path: '*NAYANETHUBONE.html'
           if-no-files-found: error
