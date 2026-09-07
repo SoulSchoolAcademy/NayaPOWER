@@ -83,7 +83,7 @@ jobs:
           test -s v7-release-enhancements.js
           test -s v7-intelligence-distribution.js
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
-          grep -Fq 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' index.html
+          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' index.html
           grep -Fq 'PERSONAL INTELLIGENCE' index.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' index.html
           grep -Fq 'ACTIVITY' index.html
@@ -128,7 +128,7 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/hub-runtime.html
-          grep -Fq 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' /tmp/hub-runtime.html
+          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' /tmp/hub-runtime.html
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/hub-runtime.html
           grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
@@ -140,7 +140,7 @@ jobs:
           grep -Fq 'MACHINE NOTE' /tmp/hub-runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart-link.html
           grep -Fq 'SMART LINK · VERIFIED ARTIFACT' /tmp/smart-link.html
-          grep -Fq 'HOW NAYANET INTELLIGENT FEEDS TURN EXPERIENCE INTO COMPOUNDING INTELLIGENCE' /tmp/smart-link.html
+          grep -Fq 'TEN-STAR NAYANET DELIVERY — INSPECT → ROUTE AROUND THE WALL → SURGICAL CHANGE → VERIFY LIVE' /tmp/smart-link.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
