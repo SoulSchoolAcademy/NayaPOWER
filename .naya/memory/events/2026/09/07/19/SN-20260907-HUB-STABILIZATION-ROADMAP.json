@@ -1,0 +1,56 @@
+{
+  "event_id": "SN-20260907-HUB-STABILIZATION-ROADMAP",
+  "event_type": "CREATE_SMART_NOTE",
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "created_at": "2026-09-07T19:09:40Z",
+  "subject": "Stabilize the NayaNET Intelligent Hub by treating the current Smart Note/Intelligent Block architecture and Phase 0-8 roadmap as the active execution contract, then execute it in small, independently verifiable packages until the system behaves smoothly and predictably.",
+  "source_context": "User-provided current roadmap and architecture directive in conversation.",
+  "privacy_state": "private",
+  "human_note": "The Hub is currently a stormy, choppy system with overlapping implementations, unclear boundaries, and failure points. The required direction is to make the system behave like calm water: clear, deterministic, smooth, and resilient. Preserve one canonical Note Event / Intelligent Block, separate event stream from wisdom, and execute the roadmap in doable chunks rather than one giant operation.",
+  "naya_note": "The path to calm is not more features; it is architectural convergence. First lock the intelligence contract, then make capture real, then make the personal feed real, then memory, daily intelligence, collective intelligence, collective feed, compounding, and finally polish. Every package must inspect the actual source, make the smallest safe change, verify source and integrity, and stop. No duplicate systems, no speculative completion, no UI success without verified state.",
+  "machine_note": {
+    "canonical_intent": "CREATE_SMART_NOTE",
+    "event_identity": "SN-20260907-HUB-STABILIZATION-ROADMAP",
+    "architecture_rule": "one canonical Note Event / Intelligent Block",
+    "execution_law": ["INSPECT", "PLAN", "EXECUTE", "VERIFY SOURCE", "VERIFY INTEGRITY", "STOP"],
+    "phase_order": [
+      "0 Smart Note / Intelligence Contract",
+      "1 Real Capture",
+      "2 Personal Intelligent Feed",
+      "3 Real Memory & Retrieval",
+      "4 Daily Intelligence",
+      "5 Collective Intelligence Pipeline",
+      "6 Intelligent Collective Feed",
+      "7 Collective Compounding",
+      "8 AAA UX / Polish"
+    ],
+    "privacy_law": "Private by default. Shared by choice. Collective by consent. Public by decision.",
+    "north_star": "Capture what matters. Naya remembers it. Your intelligence compounds.",
+    "integrity_rule": "SOURCE -> BUILD ARTIFACT -> DEPLOYMENT -> EXACT PUBLIC RUNTIME -> INDEPENDENT OBSERVATION"
+  },
+  "child_note": "We are going to fix the Hub one small piece at a time. We will make sure each piece really works before moving to the next one, so the whole system becomes calm, clear, and reliable.",
+  "grammar_note": "Stable intelligence systems are built by converging on one canonical event model and proving each small change before proceeding.",
+  "nutshell": "One intelligence model. Small verified steps. Smooth system.",
+  "intelligence_feed_projection": {
+    "feed": "Personal Intelligence Feed",
+    "title": "Hub stabilization roadmap locked as current execution contract",
+    "summary": "The current objective is architectural convergence and reliable execution: one canonical Smart Note event, real capture, real personal intelligence, then memory, daily intelligence, collective intelligence, collective feed, compounding, and polish—executed only in independently verifiable packages."
+  },
+  "activity_feed_projection": {
+    "feed": "Personal Activity / Now",
+    "visibility": "private",
+    "title": "Hub stabilization is the current work",
+    "summary": "Current activity is moving the Intelligent Hub from overlapping, failure-prone behavior toward a calm, deterministic system by executing Phase 0-8 in small guarded work packages."
+  },
+  "verification": {
+    "canonical_event_created": true,
+    "six_perspectives_present": true,
+    "intelligence_feed_projection_present": true,
+    "activity_feed_projection_present": true,
+    "repository_persistence_verified": true,
+    "hub_runtime_propagation_verified": false,
+    "hub_runtime_propagation_claimed": false,
+    "receipt_status": "INCOMPLETE_FOR_HUB_RUNTIME_PROPAGATION"
+  },
+  "next_required_runtime_action": "Execute Phase 1 inside NAYANETHUBONE.html: make one canonical CREATE_SMART_NOTE transaction produce the six perspectives, persist the Intelligent Block, project it into Personal Intelligence and Personal Activity/Now when requested, and generate verifiable runtime evidence without creating a competing implementation."
+}
