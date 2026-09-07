@@ -11,6 +11,7 @@ on:
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-intelligence-distribution.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
@@ -60,6 +61,7 @@ jobs:
           PY
           cp "$(cat .authoritative-source)" index.html
           cat "../$(cat .authoritative-feed-layer)" > .feed-layer.js
+          cat v7-ten-star-play-naya-polish.js >> .feed-layer.js
           python3 - <<'PY'
           from pathlib import Path
           p=Path('index.html'); src=p.read_text(); layer=Path('.feed-layer.js').read_text(); marker='</body>'
@@ -82,6 +84,7 @@ jobs:
           test -s v7-smart-note-runtime.js
           test -s v7-release-enhancements.js
           test -s v7-intelligence-distribution.js
+          test -s v7-ten-star-play-naya-polish.js
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
           grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' index.html
           grep -Fq 'PERSONAL INTELLIGENCE' index.html
@@ -96,9 +99,12 @@ jobs:
           grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
           grep -Fq 'PLAY NAYA' index.html
           grep -Fq 'Ask your intelligence' index.html
+          grep -Fq 'NAYA_PLAY_NAYA_POLISH' index.html
           node --check worker.js
           node --check v7-smart-note-runtime.js
           node --check v7-release-enhancements.js
+          node --check v7-intelligence-distribution.js
+          node --check v7-ten-star-play-naya-polish.js
           node --check .feed-layer.js
           cmp -s index.html assets/index.html
           python3 - <<'PY'
@@ -115,6 +121,7 @@ jobs:
           print('feed layer sha256:', hashlib.sha256(Path('.feed-layer.js').read_bytes()).hexdigest())
           print('clean asset bytes:', Path('assets/index.html').stat().st_size)
           print('legacy distribution injection: DISABLED')
+          print('Play Naya surgical polish: ENABLED')
           PY
 
       - name: Deploy exact V7 source to Cloudflare Workers
@@ -136,10 +143,12 @@ jobs:
           grep -Fq 'ACTIVITY' /tmp/hub-runtime.html
           grep -Fq 'PLAY NAYA' /tmp/hub-runtime.html
           grep -Fq 'Ask your intelligence' /tmp/hub-runtime.html
+          grep -Fq 'NAYA_PLAY_NAYA_POLISH' /tmp/hub-runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart-link.html
           grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' /tmp/smart-link.html
           grep -Fq 'PLAY NAYA' /tmp/smart-link.html
           grep -Fq 'TEN-STAR' /tmp/smart-link.html
+          grep -Fq 'NAYA_PLAY_NAYA_POLISH' /tmp/smart-link.html
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
@@ -152,6 +161,7 @@ jobs:
           echo "SOURCE_COMMIT=$GITHUB_SHA"
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
+          echo "PLAY_NAYA_POLISH=v7-ten-star-play-naya-polish.js"
           echo "WORKER=nayanet-v7-intelligent-hub"
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
