@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '*NAYANETHUBONE.html'
+      - '*NAYANET INTELLIGENT FEED V2.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-smart-note-runtime.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-release-enhancements.js'
@@ -31,21 +32,41 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Resolve latest timestamped authoritative Hub source
+      - name: Resolve latest timestamped authoritative Hub source and feed layer
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t candidates < <(find .. -maxdepth 1 -type f -name '*NAYANETHUBONE.html' -printf '%f\n' | sort -r)
-          test "${#candidates[@]}" -gt 0
-          source_name="${candidates[0]}"
-          if ! [[ "$source_name" =~ ^[0-9]{4}\ [0-9]{2}\ [0-9]{2}\ +[0-9]{1,2}:[0-9]{2}\ NAYANETHUBONE\.html$ ]]; then
-            echo "Latest candidate does not follow the required timestamped naming contract: $source_name"
-            exit 1
-          fi
-          cp "../$source_name" index.html
-          printf '%s\n' "$source_name" > .authoritative-source
-          echo "AUTHORITATIVE_SOURCE=$source_name"
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          def stamp(name):
+              m=re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ', name)
+              if not m: raise SystemExit(f'Invalid timestamped artifact name: {name}')
+              return tuple(map(int,m.groups()))
+          hubs=sorted([p.name for p in Path('..').glob('*NAYANETHUBONE.html')], key=stamp, reverse=True)
+          feeds=sorted([p.name for p in Path('..').glob('*NAYANET INTELLIGENT FEED V2.js')], key=stamp, reverse=True)
+          if not hubs: raise SystemExit('No timestamped NAYANETHUBONE.html source found')
+          if not feeds: raise SystemExit('No timestamped NAYANET INTELLIGENT FEED V2.js layer found')
+          hub=hubs[0]; feed=feeds[0]
+          Path('.authoritative-source').write_text(hub)
+          Path('.authoritative-feed-layer').write_text(feed)
+          print('AUTHORITATIVE_SOURCE=',hub)
+          print('AUTHORITATIVE_FEED_LAYER=',feed)
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          for f in [Path('.authoritative-source').read_text().strip(),Path('.authoritative-feed-layer').read_text().strip()]:
+              if not re.match(r'^\d{4} \d{2} \d{2} +\d{1,2}:\d{2} ',f): raise SystemExit('Timestamp contract failed: '+f)
+          PY
+          cp "../$(cat .authoritative-source)" index.html
+          cat "../$(cat .authoritative-feed-layer)" > .feed-layer.js
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('index.html'); src=p.read_text(); layer=Path('.feed-layer.js').read_text(); marker='</body>'
+          if src.count(marker)!=1: raise SystemExit('Expected exactly one </body> boundary')
+          p.write_text(src.replace(marker,'<script>\n'+layer+'\n</script>\n'+marker,1))
+          PY
 
       - name: Validate exact V7 artifact
         shell: bash
@@ -58,18 +79,30 @@ jobs:
           test -s v7-release-enhancements.js
           test -s v7-intelligence-distribution.js
           grep -Fq 'NayaNET — Intelligent Hub V7' index.html
+          grep -Fq 'nayanet-feed-v2-style' index.html
+          grep -Fq 'IN A NUTSHELL' index.html
+          grep -Fq 'HUMAN NOTE' index.html
+          grep -Fq 'CHILD NOTE' index.html
+          grep -Fq 'GRANDMA NOTE' index.html
+          grep -Fq 'NAYA NOTE' index.html
+          grep -Fq 'MACHINE NOTE' index.html
+          grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' index.html
           node --check worker.js
           node --check v7-smart-note-runtime.js
           node --check v7-release-enhancements.js
           node --check v7-intelligence-distribution.js
+          node --check .feed-layer.js
           python - <<'PY'
           from pathlib import Path
+          import hashlib
           s=Path('index.html').read_text()
           assert s.count('<html') == 1 and s.count('</html>') == 1, 'HTML boundary invalid'
           print('V7 artifact validation: PASS')
           print('index.html bytes:', len(s.encode()))
-          print('index.html sha256:', __import__('hashlib').sha256(s.encode()).hexdigest())
+          print('index.html sha256:', hashlib.sha256(s.encode()).hexdigest())
           print('source artifact:', Path('.authoritative-source').read_text().strip())
+          print('feed layer:', Path('.authoritative-feed-layer').read_text().strip())
+          print('feed layer sha256:', hashlib.sha256(Path('.feed-layer.js').read_bytes()).hexdigest())
           PY
 
       - name: Deploy exact V7 source to Cloudflare Workers
@@ -86,5 +119,6 @@ jobs:
           set -euo pipefail
           echo "SOURCE_COMMIT=$GITHUB_SHA"
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
+          echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
           echo "WORKER=nayanet-v7-intelligent-hub"
           echo "RUNTIME=https://noisy-block-35d0.nayanet.workers.dev/"
