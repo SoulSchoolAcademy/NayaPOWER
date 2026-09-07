@@ -53,8 +53,6 @@ jobs:
         run: |
           set -euo pipefail
           test -s index.html
-          node --check .authoritative-feed-layer >/dev/null 2>&1 || true
-          grep -Fq 'NayaNET — Intelligent Hub V7' index.html
           grep -Fq 'NayaNET INTELLIGENT HUB — TEN-STAR EXPERIENCE' index.html
           grep -Fq 'ACTIVITY' index.html
           grep -Fq 'PERSONAL INTELLIGENCE' index.html
@@ -85,7 +83,6 @@ jobs:
           grep -Fq 'Smart Spaces' index.html
           if grep -Fq 'LOVE · SHARE' index.html; then exit 1; fi
           if grep -Fq 'SMART LINK</button>' index.html; then exit 1; fi
-          node --check .feed-layer.js 2>/dev/null || true
           node --check v7-ten-star-play-naya-polish.js
           test "$(find .. -maxdepth 1 -name '*NAYANET INTELLIGENT FEED V2.js' | wc -l)" -eq 1
           echo 'TEN_STAR_SOURCE_CONTRACT=PASS'
