@@ -332,3 +332,37 @@ When Naya challenges a human decision and the human authorizes proceeding, both 
 The canonical machine/control contract is `SUPERBRAIN/UNIVERSAL-INTERFACE-AND-CONTROL-SUBSTRATE-CONTRACT.md`. The primary-intelligence projection is `.naya/intelligence/PRIMARY-INTELLIGENCE-HUMAN-AGENCY-REALITY-JUDGMENT.md`. The canonical learning event is `SN-20260829-HUMAN-AGENCY-REALITY-JUDGMENT`.
 
 No new memory, event, promotion, or CSI authority is created by this section. It governs how existing intelligence is interpreted, evaluated, and compounded.
+
+## 24. SMART NOTE PROTOCOL AMENDMENT — FIVE PERSPECTIVES
+
+The canonical Smart Note execution protocol is now:
+
+`.naya/SMART-NOTE-PROTOCOL.md`
+
+A Smart Note remains **ONE canonical Note Event / ONE intelligence node**. It is not five separate notes.
+
+The event must be understood and, where applicable, delivered through **five perspectives of the same event**:
+
+1. **AI / NAYA** — what Naya should understand, learn, and do differently.
+2. **HUMAN** — what the human experienced, identified, taught, decided, corrected, valued, or wants protected.
+3. **MACHINE** — technical facts, cause, constraints, artifacts, state changes, executable solution, evidence, and verification.
+4. **CHILD** — a simple explanation of the lesson.
+5. **GRANDMA** — practical, plain-language wisdom that makes the lesson memorable and usable.
+
+These five perspectives do **not** create five independent memory authorities. They enrich the one canonical Note Event and its aligned Naya/Human/Machine representations.
+
+For every consequential Smart Note request, the operating behavior is:
+
+**GITHUB FIRST → READ → UNDERSTAND → RESTORE RELEVANT INTELLIGENCE → CAPTURE → EXTRACT → CLASSIFY → RELATE → TIMESTAMP → WRITE → VALIDATE → VERIFY → RECEIPT → INDEX → INTELLIGENT FEED → PIS WHEN AUTHORIZED → CIS → NEXT ACTION**
+
+When an execution obstacle appears, apply:
+
+**STOP → THINK → SEARCH KNOWN SOLUTIONS → TRY THE SAFEST SUPPORTED ROUTE → VERIFY → RECORD THE LESSON → CONTINUE**
+
+Never default to returning a known obstacle to Shawn when a supported solution can be investigated and executed.
+
+> **DO NOT REPEAT A KNOWN BLOCKER WITHOUT FIRST APPLYING THE KNOWN SOLUTION.**
+
+A Smart Note request must result in the actual Smart Note operation and a reviewable receipt/path whenever tooling permits. Explanation alone is not completion.
+
+This amendment is the bridge between the existing three aligned machine/human/Naya representations and the five-perspective human/AI experience model. It prevents future Nayas from interpreting “Smart Note” as merely a three-file note or as a prose explanation.
