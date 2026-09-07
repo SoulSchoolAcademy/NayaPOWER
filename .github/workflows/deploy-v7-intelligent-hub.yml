@@ -108,7 +108,7 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && '262c881746ea6e9978ca18b3eb831907' || '' }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
 
