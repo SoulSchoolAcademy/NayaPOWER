@@ -1,4 +1,4 @@
-# 2026 09 07 10:05 PM — repair release artifact environment export
+# 2026 09 07 10:12 PM — fix V2 release marker validation
 name: Build Current NayaNET Hub from latest timestamped NAYANETHUBONE artifact
 
 on:
@@ -81,7 +81,7 @@ jobs:
           printf '/index.html 200\n' > _redirects
           test -s index.html
           test "$(wc -c < index.html)" -gt 100000
-          grep -q 'nayanet-feed-v2-style' index.html
+          grep -q 'nayanet-intelligent-feed-v2-style' index.html
           grep -q 'IN A NUTSHELL' index.html
           grep -q 'HUMAN NOTE' index.html
           grep -q 'CHILD NOTE' index.html
