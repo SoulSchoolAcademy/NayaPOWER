@@ -19,6 +19,89 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Surgical patch NAYANETHUBONE
+        run: |
+          set -euo pipefail
+          git show HEAD^:.github/workflows/build-nayanethub-current.yml > /tmp/original-build-workflow.yml
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('NAYANETHUBONE')
+          s=p.read_text(encoding='utf-8')
+          marker='nayanet-surgical-hubone-feed-v1'
+          if marker in s:
+              raise SystemExit('PATCH_ALREADY_PRESENT')
+          def once(old,new,label):
+              global s
+              n=s.count(old)
+              if n!=1: raise SystemExit(f'{label}: expected 1, found {n}')
+              s=s.replace(old,new,1)
+          once('<section class="page active" id="page-home">','<section class="page" id="page-home">','home active')
+          once('<section class="page" id="page-notes">','<section class="page active" id="page-notes">','notes page')
+          once('<strong id="pageTitle">Home</strong>','<strong id="pageTitle">Smart Notes</strong>','page title')
+          once('<button data-page="notes"><span class="ico">▤</span>Smart Notes</button>','','sidebar Smart Notes')
+          once('<button class="active" data-page="home"><span class="ico">⌂</span>Home</button>','<button data-page="intelligence"><span class="ico">✦</span>Your Intelligence Today</button><button data-page="connections"><span class="ico">↗</span>Smart Share</button>','today + Smart Share')
+          once('<button data-page="intelligence"><span class="ico">✦</span>Intelligence Library</button>','','duplicate Intelligence Library nav')
+          once('<div class="navlabel">COMMUNICATION</div><nav class="nav"><button data-page="mail"><span class="ico">✉</span>Smart Mail <span class="badge">NEW</span></button></nav>','<div class="navlabel">COMMUNICATION</div><nav class="nav"><button data-page="smartspaces"><span class="ico">▦</span>Smart Spaces</button><button data-page="mail"><span class="ico">✉</span>Smart Mail</button></nav>','Smart Spaces + Smart Mail')
+          once('<nav class="mobileNav"><button class="active" data-page="home">⌂<span>Home</span></button><button data-page="notes">▤<span>Notes</span></button><button data-page="reports">◫<span>Reports</span></button><button data-page="intelligence">✦<span>Intel</span></button><button data-page="mail">✉<span>Mail</span></button></nav>','<nav class="mobileNav"><button data-page="intelligence">✦<span>Today</span></button><button data-page="reports">◫<span>Reports</span></button><button data-page="mail">✉<span>Mail</span></button></nav>','mobile nav')
+          once('Your life creates intelligence every day. Naya helps you capture it, understand it, remember it, compound it, and use it.','Your intelligence, organized for action.','obsolete quote')
+          addition=r'''<style id="nayanet-surgical-hubone-feed-style">
+          .nh-feed-layout{display:grid;grid-template-columns:minmax(0,1fr) 270px;gap:20px;align-items:start}.nh-feed-main{min-width:0}.nh-feed-rail{position:sticky;top:96px;display:grid;gap:12px}.nh-feed-rail .board{margin:0}.nh-feed-mode{display:flex;gap:7px;align-items:center;justify-content:flex-end;flex-wrap:wrap}.nh-feed-mode button{min-height:40px;padding:0 13px;border:1px solid #ffffff25;border-radius:12px;background:#09090d;color:#aaa4b0;font-size:8px;font-weight:1000;letter-spacing:.08em}.nh-feed-mode button.active{color:#fff;border-color:#d86cff80;background:#1b1024}.nh-feed-note{border:1px solid #ffffff1d;border-radius:19px;background:linear-gradient(145deg,#14141a,#09090d);box-shadow:inset 0 1px #fff3,0 18px 38px #0009;overflow:hidden;margin-bottom:12px}.nh-feed-note-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:14px 17px;border-bottom:1px solid #ffffff12}.nh-feed-note-head strong{font-size:8px;letter-spacing:.1em}.nh-feed-note-head span{font-size:7px;color:#99939f}.nh-feed-note-body{padding:17px}.nh-feed-note-body h3{font-size:19px;letter-spacing:-.035em;margin:0 0 8px}.nh-feed-note-body p{font-size:12px;color:#d8d3dd;line-height:1.6;margin:0}.nh-feed-perspectives{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 17px 15px}.nh-feed-perspective{padding:11px;border:1px solid #ffffff14;border-radius:11px;background:#08080c}.nh-feed-perspective b{display:block;font-size:6px;letter-spacing:.13em;margin-bottom:5px}.nh-feed-perspective span{display:block;color:#aaa4b1;font-size:8px;line-height:1.5}.nh-feed-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:11px 17px;border-top:1px solid #ffffff10}.nh-feed-actions button{min-height:38px;padding:0 8px;border:0;background:transparent;color:#bdb7c4;font-size:9px;font-weight:900;border-radius:9px}.nh-feed-actions button:hover{background:#ffffff08;color:#fff}.nh-feed-actions button.on{color:#fff;border-bottom:2px solid #d86cff}.nh-feed-stars{display:inline-flex;align-items:center;gap:1px}.nh-feed-stars button{font-size:20px;line-height:1;min-height:32px;padding:0 2px;color:#77717e}.nh-feed-stars button.on,.nh-feed-stars button:hover{color:#e8c766}.nh-feed-comment{padding:0 17px 15px}.nh-feed-comment input{width:100%;min-height:42px;border:1px solid #ffffff20;border-radius:12px;background:#07070a;color:#fff;padding:0 12px;outline:none;font-size:10px}.nh-feed-comments{margin-top:8px;display:grid;gap:5px}.nh-feed-comments div{padding:8px 10px;border-radius:10px;background:#08080c;color:#bdb7c4;font-size:8px}.nh-today-shell{padding-top:22px}.nh-today-controls{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}.nh-today-controls button{min-height:40px;padding:0 13px;border:1px solid #8b63ff55;border-radius:11px;background:#09090e;color:#c8c1d3;font-size:8px;font-weight:1000}.nh-today-controls button.active{border-color:#55e39a;color:#fff;background:#0b1711}.nh-today-search{width:100%;min-height:50px;border:1px solid #ffffff20;border-radius:13px;background:#07070a;color:#fff;padding:0 14px;outline:none;margin-bottom:18px}.nh-today-card{padding:18px;border:1px solid #ffffff1d;border-radius:18px;background:linear-gradient(145deg,#14141a,#09090d);box-shadow:inset 0 1px #fff3,0 18px 38px #0009;margin-bottom:11px}.nh-today-card h2{font-size:20px;letter-spacing:-.04em;margin:0 0 7px}.nh-today-card p{font-size:11px;line-height:1.6;color:#c9c3ce;margin:0}.nh-report-history{margin:0 0 18px;padding:15px;border:1px solid #55b9ee44;border-radius:18px;background:#0b1118}.nh-report-history-controls{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.nh-report-history-controls button{min-height:38px;padding:0 12px;border:1px solid #ffffff20;border-radius:10px;background:#08090c;color:#c9c3ce;font-size:8px;font-weight:1000}.nh-report-history-controls button.active{border-color:#55b9ee;color:#fff}.nh-report-history-card{padding:15px;border:1px solid #ffffff15;border-radius:14px;background:#08090c}.nh-report-history-card h3{font-size:9px;letter-spacing:.12em;margin:10px 0 5px}.nh-report-history-card p{font-size:10px;line-height:1.6;color:#c9c3ce;margin:0}.nh-smartspaces{padding:22px;border:1px solid #d86cff42;border-radius:22px;background:linear-gradient(145deg,#15101c,#09090d);box-shadow:inset 0 1px #fff3,0 22px 45px #000a}.nh-smartspaces h2{font-size:28px;letter-spacing:-.04em;margin:0 0 8px}.nh-smartspaces p{max-width:760px;color:#cfc9d5;font-size:12px;line-height:1.65}.nh-smartspaces .actions{margin-top:17px}@media(max-width:900px){.nh-feed-layout{grid-template-columns:1fr}.nh-feed-rail{position:static;grid-template-columns:1fr 1fr}.nh-feed-perspectives{grid-template-columns:1fr}.nh-feed-mode{justify-content:flex-start}}@media(max-width:600px){.nh-feed-rail{grid-template-columns:1fr}.nh-feed-stars button{font-size:18px}}
+          </style><script id="nayanet-surgical-hubone-feed-v1">(function(){'use strict';
+          const NKEY='nayanet_v7_feed_state';const loadF=()=>{try{return JSON.parse(localStorage.getItem(NKEY)||'{"favorites":{},"saved":{},"loves":{},"ratings":{},"comments":{},"mode":"PERSONAL"}')}catch(e){return{favorites:{},saved:{},loves:{},ratings:{},comments:{},mode:'PERSONAL'}}};const saveF=s=>{try{localStorage.setItem(NKEY,JSON.stringify(s))}catch(e){}};let fs=loadF();let feedMode=fs.mode==='COLLECTIVE'?'COLLECTIVE':'PERSONAL';
+          const dayKey2=iso=>{const d=new Date(iso);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+          const demoItems=()=>demoBlocks.map((b,i)=>({id:'demo-'+i,createdAt:new Date(2026,7,30-i,10+i,15).toISOString(),text:b.body.join(' '),type:b.type,title:b.title,human:b.human||b.body.join(' '),naya:b.naya||'Pending production intelligence service. No AI interpretation is fabricated.',machine:b.machine||'Demo event metadata · not a production receipt.'}));
+          const liveItems=()=>notes.map(n=>{const sec=parseNote(n.text||'');return{id:n.id,createdAt:n.createdAt,text:n.text||'',type:n.type||'INSIGHT',title:(sec.body||n.text||'Intelligent Event').split(/[.!?]\s+/)[0].replace(/^#\s*/,'').slice(0,110)||'Intelligent Event',human:sec.human||n.text||'',naya:sec.naya||'Pending production intelligence service. No AI interpretation is fabricated here.',machine:sec.machine||('event_id '+n.id+' · '+n.type+' · local_persisted · private')}});
+          const feedItems=()=>{const a=liveItems();return a.length?a:demoItems()};
+          const shareItem=id=>{const n=feedItems().find(x=>x.id===id);if(!n)return;const text=n.title+' — '+n.text;if(navigator.share){navigator.share({title:n.title,text}).catch(()=>{})}else if(navigator.clipboard){navigator.clipboard.writeText(text).then(()=>alert('Intelligence copied for sharing.')).catch(()=>{})}};
+          function renderNotesSurgical(){const root=document.getElementById('noteList');if(!root)return;const q=(document.getElementById('noteSearch')?.value||'').toLowerCase().trim();const type=document.querySelector('#filters .filter.active')?.dataset.filter||'ALL';const list=feedItems().filter(n=>(type==='ALL'||n.type===type)&&(!q||(n.title+' '+n.text+' '+n.type).toLowerCase().includes(q)));if(!list.length){root.innerHTML='<div class="empty"><b>No matching intelligence.</b><span>Nothing is invented to fill the space.</span></div>';return}root.innerHTML=list.map(n=>{const fav=!!fs.favorites[n.id],saved=!!fs.saved[n.id],love=!!fs.loves[n.id],rating=fs.ratings[n.id]?.value||0;const p=(label,val)=>'<div class="nh-feed-perspective"><b>'+label+'</b><span>'+esc(String(val||'Pending.'))+'</span></div>';const stars=Array.from({length:5},(_,i)=>'<button data-feed-star="'+n.id+'" data-value="'+(i+1)+'" class="'+(i<rating?'on':'')+'">'+(i<rating?'★':'☆')+'</button>').join('');const comments=fs.comments[n.id]||[];return '<article class="nh-feed-note"><div class="nh-feed-note-head"><strong>'+esc(n.type)+' · '+(feedMode==='COLLECTIVE'?'COLLECTIVE':'PERSONAL')+'</strong><span>'+esc(time(n.createdAt))+' · '+esc(date(n.createdAt))+'</span></div><div class="nh-feed-note-body"><h3>'+esc(n.title)+'</h3><p>'+esc(n.text)+'</p></div><div class="nh-feed-perspectives">'+p('HUMAN',n.human)+p('NAYA',n.naya)+p('MACHINE',n.machine)+'</div><div class="nh-feed-actions">'+(feedMode==='COLLECTIVE'?'<button data-feed-love="'+n.id+'" class="'+(love?'on':'')+'">♥ LOVE</button><span class="nh-feed-stars">'+stars+'</span><button>💬 COMMENT</button>':'<button data-feed-fav="'+n.id+'" class="'+(fav?'on':'')+'">★ '+(fav?'FAVORITED':'FAVORITE')+'</button>')+'<button data-feed-save="'+n.id+'" class="'+(saved?'on':'')+'">🔖 '+(saved?'SAVED':'SAVE')+'</button><button data-feed-share="'+n.id+'">＋ SHARE</button></div>'+(feedMode==='COLLECTIVE'?'<div class="nh-feed-comment"><input data-feed-comment-input="'+n.id+'" placeholder="Add your perspective…"><div class="nh-feed-comments">'+comments.map(c=>'<div>'+esc(c)+'</div>').join('')+'</div></div>':'')+'</article>'}).join('')}
+          function installFeed(){const page=document.getElementById('page-notes');if(!page)return;const head=page.querySelector('.pageHead');if(head&&!document.getElementById('nhFeedMode')){const c=document.createElement('div');c.id='nhFeedMode';c.className='nh-feed-mode';c.innerHTML='<button data-feed-mode="PERSONAL" class="'+(feedMode==='PERSONAL'?'active':'')+'">PERSONAL</button><button data-feed-mode="COLLECTIVE" class="'+(feedMode==='COLLECTIVE'?'active':'')+'">COLLECTIVE</button>';head.appendChild(c)}if(head){const p=head.querySelector('p');if(p)p.textContent='Your living intelligence feed — private by default, shared by choice.'}if(!page.querySelector('.nh-feed-layout')){const shell=document.createElement('div');shell.className='nh-feed-layout';const left=document.createElement('div');left.className='nh-feed-main';const right=document.createElement('aside');right.className='nh-feed-rail';const compose=page.querySelector('.compose'),search=page.querySelector('#noteSearch'),filters=page.querySelector('#filters'),list=page.querySelector('#noteList');[compose,search,filters,list].forEach(x=>x&&left.appendChild(x));const rail=document.querySelector('#page-home .activationRail');if(rail)right.appendChild(rail);const daily=document.createElement('article');daily.className='board';daily.style.setProperty('--tone','var(--gold)');daily.innerHTML='<div class="boardTop"><span>00 · REVIEW IT</span><span>REPORT</span></div><div class="orb"><span>✦</span></div><h3>Daily Intelligence Report</h3><p>See the highlights Naya has synthesized from your preserved intelligence.</p><div class="why"><b>WHY IT MATTERS</b><span>Capture is useful. Understanding what matters is the next layer.</span></div><button class="btn gold" data-page="reports">OPEN DAILY REPORT</button>';right.insertBefore(daily,right.firstChild);shell.appendChild(left);shell.appendChild(right);head.insertAdjacentElement('afterend',shell)}renderNotesSurgical()}
+          let todayRange='TODAY';
+          function installToday(){const ip=document.getElementById('page-intelligence');if(!ip||document.getElementById('nhTodayShell'))return;Array.from(ip.children).forEach(x=>{x.style.display='none'});const shell=document.createElement('div');shell.id='nhTodayShell';shell.className='nh-today-shell';shell.innerHTML='<div class="pageHead"><div><div class="eyebrow">NAYANET HIGHLIGHTS</div><h1>YOUR INTELLIGENCE TODAY</h1><p>A clear snapshot of what happened, what mattered, what changed, and what is worth carrying forward.</p></div></div><div class="nh-today-controls"><button data-today-range="TODAY" class="active">TODAY</button><button data-today-range="YESTERDAY">YESTERDAY</button><button data-today-range="WEEK">THIS WEEK</button><button data-today-range="MONTH">THIS MONTH</button></div><input class="nh-today-search" id="nhTodaySearch" placeholder="Search your highlights…"><div id="nhTodayResults"></div>';ip.prepend(shell);renderTodayHighlights()}
+          function renderTodayHighlights(){const root=document.getElementById('nhTodayResults');if(!root)return;const q=(document.getElementById('nhTodaySearch')?.value||'').toLowerCase().trim();const now=new Date();const base=feedItems();let list=base.filter(n=>{const d=new Date(n.createdAt);if(q)return(n.title+' '+n.text+' '+n.type).toLowerCase().includes(q);if(todayRange==='TODAY')return dayKey2(n.createdAt)===dayKey2(now.toISOString());if(todayRange==='YESTERDAY'){const y=new Date(now);y.setDate(y.getDate()-1);return dayKey2(n.createdAt)===dayKey2(y.toISOString())}if(todayRange==='WEEK')return now-d<=7*86400000;return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()});if(!list.length)list=base.slice(0,3);root.innerHTML=list.slice(0,8).map((n,i)=>'<article class="nh-today-card"><div class="eyebrow">'+(i===0?'HIGHLIGHT':'KEY MOMENT')+' · '+esc(n.type)+'</div><h2>'+esc(n.title)+'</h2><p>'+esc(n.text)+'</p></article>').join('')}
+          function installReportHistory(){const rp=document.getElementById('page-reports');if(!rp||document.getElementById('nhReportHistory'))return;const box=document.createElement('section');box.id='nhReportHistory';box.className='nh-report-history';box.innerHTML='<div class="eyebrow">REPORT ARCHIVE</div><h2 style="font-size:24px;letter-spacing:-.04em;margin:7px 0 0">Daily Intelligence Report</h2><div class="nh-report-history-controls"><button data-report-range="TODAY" class="active">TODAY</button><button data-report-range="YESTERDAY">YESTERDAY</button><button data-report-range="WEEK">THIS WEEK</button><button data-report-range="MONTH">THIS MONTH</button></div><div id="nhReportHistoryCard"></div>';const anchor=rp.querySelector('.pageHead');anchor.insertAdjacentElement('afterend',box);renderReportHistory('TODAY')}
+          function reportSource(range){const now=new Date();return feedItems().filter(n=>{const d=new Date(n.createdAt);if(range==='TODAY')return dayKey2(n.createdAt)===dayKey2(now.toISOString());if(range==='YESTERDAY'){const y=new Date(now);y.setDate(y.getDate()-1);return dayKey2(n.createdAt)===dayKey2(y.toISOString())}if(range==='WEEK')return now-d<=7*86400000;return d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth()})}
+          function renderReportHistory(range){const root=document.getElementById('nhReportHistoryCard');if(!root)return;const src=reportSource(range);const mattered=src.slice(0,3).map(n=>n.title).join(' · ')||'No verified source events in this period.';const learned=src.filter(n=>['LESSON','BREAKTHROUGH','INSIGHT','MISTAKE'].includes(n.type)).slice(0,3).map(n=>n.text).join(' ')||'No learning event is verified in this period.';const forward=src.filter(n=>['DECISION','GOAL','OPPORTUNITY','WIN'].includes(n.type)).slice(0,3).map(n=>n.title).join(' · ')||'No carry-forward item is verified in this period.';const archive=loadF().reports||{};archive[range+'-'+todayKey()]={range,createdAt:new Date().toISOString(),mattered,learned,forward};fs.reports=archive;saveF(fs);root.innerHTML='<div class="nh-report-history-card"><b>'+range+' · SOURCE-BACKED SNAPSHOT</b><h3>WHAT MATTERED</h3><p>'+esc(mattered)+'</p><h3>WHAT WAS LEARNED</h3><p>'+esc(learned)+'</p><h3>WHAT CARRIES FORWARD</h3><p>'+esc(forward)+'</p></div>'}
+          function installSmartSpaces(){if(document.getElementById('page-smartspaces'))return;const main=document.querySelector('.main');const p=document.createElement('section');p.className='page';p.id='page-smartspaces';p.innerHTML='<div class="pageHead"><div><div class="eyebrow">ORGANIZE INTELLIGENCE</div><h1>Smart Spaces</h1><p>Bring related intelligence together around a purpose, topic, project, or shared space.</p></div></div><section class="nh-smartspaces"><h2>Organize what matters.</h2><p>Smart Spaces are the organizing layer around Smart Notes, Smart Lists, and shared intelligence. The feed remains the source of truth while spaces give related intelligence a place to work together.</p><div class="actions"><button class="btn purple" data-page="nayalists">OPEN SMART LISTS</button><button class="btn blue" data-page="collective">OPEN COLLECTIVE</button></div><div class="state">PRIVATE BY DEFAULT · SHARED BY CHOICE · COLLECTIVE BY CONSENT · PUBLIC BY DECISION</div></section>';main.appendChild(p)}
+          function installSidebar(){const side=document.querySelector('.sidebar');if(!side)return;const il=side.querySelector('[data-page="intelligence"]');if(il){il.innerHTML='<span class="ico">✦</span>Your Intelligence Today'}const con=side.querySelector('[data-page="connections"]');if(con&&con.textContent.trim()==='Connections'){const ico=con.querySelector('.ico');con.innerHTML='';if(ico)con.appendChild(ico);con.appendChild(document.createTextNode('Smart Share'))}const lists=side.querySelector('[data-page="nayalists"]');if(lists){const ico=lists.querySelector('.ico');lists.innerHTML='';if(ico)lists.appendChild(ico);lists.appendChild(document.createTextNode('Smart Lists'))}const cp=document.getElementById('page-connections');if(cp){const h=cp.querySelector('h1');const p=cp.querySelector('.pageHead p');if(h)h.textContent='Smart Share';if(p)p.textContent='Connect trusted sources, sync intelligence, and choose what you share.'}if(typeof titles!=='undefined'){titles.intelligence='Your Intelligence Today';titles.connections='Smart Share';titles.smartspaces='Smart Spaces'}}
+          function installCountry(){const el=document.getElementById('nayanet-login-country');if(!el)return;const tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';const lang=navigator.language||'';let country='Canada',flag='🇨🇦';if(/America\/(Vancouver|Edmonton|Winnipeg|Toronto|Halifax|St_Johns|Regina|Whitehorse|Dawson|Yellowknife|Inuvik|Moncton|Glace_Bay)/.test(tz)){country='Canada';flag='🇨🇦'}else if(/[-_]US$/i.test(lang)){country='United States';flag='🇺🇸'}else if(/[-_]GB$/i.test(lang)){country='United Kingdom';flag='🇬🇧'}else if(/[-_]AU$/i.test(lang)){country='Australia';flag='🇦🇺'}el.textContent=flag+' '+country}
+          function install(){installSidebar();installFeed();installToday();installReportHistory();installSmartSpaces();installCountry();if(document.getElementById('page-notes')?.classList.contains('active'))renderNotesSurgical()}
+          document.addEventListener('click',e=>{const mode=e.target.closest('[data-feed-mode]');if(mode){feedMode=mode.dataset.feedMode;fs.mode=feedMode;saveF(fs);document.querySelectorAll('[data-feed-mode]').forEach(x=>x.classList.toggle('active',x.dataset.feedMode===feedMode));renderNotesSurgical();return}const fav=e.target.closest('[data-feed-fav]');if(fav){fs.favorites[fav.dataset.feedFav]=!fs.favorites[fav.dataset.feedFav];saveF(fs);renderNotesSurgical();return}const saveb=e.target.closest('[data-feed-save]');if(saveb){fs.saved[saveb.dataset.feedSave]=!fs.saved[saveb.dataset.feedSave];saveF(fs);renderNotesSurgical();return}const love=e.target.closest('[data-feed-love]');if(love){fs.loves[love.dataset.feedLove]=!fs.loves[love.dataset.feedLove];saveF(fs);renderNotesSurgical();return}const star=e.target.closest('[data-feed-star]');if(star){fs.ratings[star.dataset.feedStar]={value:Number(star.dataset.value)};saveF(fs);renderNotesSurgical();return}const share=e.target.closest('[data-feed-share]');if(share){shareItem(share.dataset.feedShare);return}const tr=e.target.closest('[data-today-range]');if(tr){todayRange=tr.dataset.todayRange;document.querySelectorAll('[data-today-range]').forEach(x=>x.classList.toggle('active',x===tr));renderTodayHighlights();return}const rr=e.target.closest('[data-report-range]');if(rr){document.querySelectorAll('[data-report-range]').forEach(x=>x.classList.toggle('active',x===rr));renderReportHistory(rr.dataset.reportRange);return}});
+          document.addEventListener('keydown',e=>{const ci=e.target.closest('[data-feed-comment-input]');if(ci&&e.key==='Enter'){const id=ci.dataset.feedCommentInput;const v=ci.value.trim();if(!v)return;(fs.comments[id]||(fs.comments[id]=[])).push(v);ci.value='';saveF(fs);renderNotesSurgical()}});
+          window.renderNotes=renderNotesSurgical;const originalReport=window.renderReport;window.renderReport=function(){if(originalReport)originalReport();installReportHistory()};
+          if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install);else install();
+          })();</script>'''
+          s=s.replace('</body>',addition+'</body>',1)
+          p.write_text(s,encoding='utf-8')
+          print('PATCHED_BYTES',len(s))
+          PY
+          grep -q 'nayanet-surgical-hubone-feed-v1' NAYANETHUBONE
+          test "$(grep -o '<section class=\"page active\" id=\"page-notes\"' NAYANETHUBONE | wc -l | tr -d ' ')" -eq 1
+          test "$(grep -o 'Smart Notes</button>' NAYANETHUBONE | wc -l | tr -d ' ')" -eq 0
+          test "$(grep -o 'Your life creates intelligence every day' NAYANETHUBONE | wc -l | tr -d ' ')" -eq 0
+          git diff --check
+          cp NAYANETHUBONE index-hub-one.html
+          printf '/index.html 200\n' > _redirects
+          cp NAYANETHUBONE index.html
+          zip -9 -j NayaNET-Hub-One-Cloudflare-Upload.zip index.html _redirects
+          unzip -t NayaNET-Hub-One-Cloudflare-Upload.zip
+          test "$(unzip -Z1 NayaNET-Hub-One-Cloudflare-Upload.zip | wc -l | tr -d ' ')" -eq 2
+          echo "HUB_ONE_BYTES=$(wc -c < NAYANETHUBONE)"
+          echo "HUB_ONE_SHA256=$(sha256sum NAYANETHUBONE | awk '{print $1}')"
+          git show HEAD^:.github/workflows/build-nayanethub-current.yml > .github/workflows/build-nayanethub-current.yml
+          git config user.name 'NayaNET Surgical Release Bot'
+          git config user.email 'nayanet-surgical-release@users.noreply.github.com'
+          git add NAYANETHUBONE .github/workflows/build-nayanethub-current.yml
+          git commit -m 'feat: make Smart Notes the primary intelligence feed'
+          git push origin HEAD:main
+
+      - name: Upload clean Hub One Cloudflare ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: NayaNET-Hub-One-Cloudflare-Upload
+          path: NayaNET-Hub-One-Cloudflare-Upload.zip
+          if-no-files-found: error
+
       - name: Normalize canonical Hub authority
         run: |
           python3 - <<'PY'
@@ -26,25 +109,18 @@ jobs:
           import re
           p=Path('NAYANETHUB.html')
           s=p.read_text(encoding='utf-8')
-          remove_ids=[
-            'nayanet-v7-intelligent-hub-refinement',
-            'nayanet-canonical-hub-authority',
-            'nayanet-canonical-hub-final-polish',
-          ]
+          remove_ids=['nayanet-v7-intelligent-hub-refinement','nayanet-canonical-hub-authority','nayanet-canonical-hub-final-polish']
           changed=False
           for sid in remove_ids:
-            pattern = r"<script[^>]*id=['\"]" + re.escape(sid) + r"['\"][^>]*>.*?</script>"
+            pattern=r"<script[^>]*id=['\"]"+re.escape(sid)+r"['\"][^>]*>.*?</script>"
             s2,n=re.subn(pattern,'',s,flags=re.S)
             if n>1: raise SystemExit(f'Unsafe duplicate script id: {sid} ({n})')
             if n==1: s=s2; changed=True
           old='<strong id="pageTitle">Home</strong>'
-          if old in s:
-            s=s.replace(old,'<strong id="pageTitle">Your Intelligence Today</strong>',1)
-            changed=True
+          if old in s:s=s.replace(old,'<strong id="pageTitle">Your Intelligence Today</strong>',1);changed=True
           if 'function updateIdentity(){' not in s: raise SystemExit('Required Intelligent Today runtime missing')
           if 'id="nh-greeting-script"' not in s: raise SystemExit('Required greeting runtime missing')
-          if changed: p.write_text(s,encoding='utf-8')
-          print('canonical_cleanup_changed=',changed)
+          if changed:p.write_text(s,encoding='utf-8')
           PY
           if ! git diff --quiet -- NAYANETHUB.html; then
             git config user.name 'NayaNET Release Bot'
@@ -52,9 +128,9 @@ jobs:
             git add NAYANETHUB.html
             git commit -m 'fix: restore canonical Your Intelligence Today authority'
             git push origin HEAD:main
-            echo 'Canonical cleanup committed; stopping this run so the next run packages the resulting source.'
             exit 0
           fi
+
       - name: Validate canonical source
         run: |
           set -euo pipefail
@@ -66,9 +142,6 @@ jobs:
           grep -q 'GOOD MORNING' NAYANETHUB.html
           grep -q 'function updateIdentity' NAYANETHUB.html
           grep -q 'Your Intelligence Today' NAYANETHUB.html
-          test "$(grep -o 'id=\"nayanet-canonical-hub-authority\"' NAYANETHUB.html | wc -l)" -eq 0
-          test "$(grep -o 'id=\"nayanet-canonical-hub-final-polish\"' NAYANETHUB.html | wc -l)" -eq 0
-          test "$(grep -o 'id=\"nayanet-v7-intelligent-hub-refinement\"' NAYANETHUB.html | wc -l)" -eq 0
           git diff --check
       - name: Build exact Cloudflare release ZIP
         run: |
