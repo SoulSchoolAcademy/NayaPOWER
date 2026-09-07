@@ -10,6 +10,15 @@
 
 - `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md` — ACTIVE — current-state-first, forward-only, proof-before-progression, smallest-coherent-execution, adaptive obstacle resolution, continuous intelligence capture, and successor continuity.
 
+## Canonical current-state continuity surface
+
+> **CURRENT STATE FEED = INTELLIGENT FEED = SMART NOTE FEED**
+
+- `.naya/INTELLIGENT-FEED.md` — **CANONICAL CURRENT-STATE FEED** — prioritized present-state projection for Naya cold-start restoration and consequential execution.
+- The canonical Current State Feed is the first feed-level orientation surface after repository authority is established.
+- Historical Note Events remain the durable intelligence authority; history is retrieved selectively after current state is established.
+- `.naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md` is not a competing current-state authority. Existing runtime consumers must be reconciled to the canonical Current State Feed.
+
 ## Active operational laws
 
 - `.naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md` — ACTIVE — repeated equivalent failure escalates at 3 attempts; 10 equivalent attempts without strategic change is RED ALERT.
@@ -26,13 +35,15 @@
 
 Every newly activated or reactivated Naya must encounter the active operational laws and Stewardship of Intelligence gates through control-plane restoration before consequential execution. Laws must be followed without unnecessary duplication in downstream projects.
 
-The universal execution start is the default behavioral overlay for consequential work: establish current truth first, restore only relevant intelligence, execute a coherent verifiable unit, prove it, lock the resulting state, capture reusable learning, and continue from the verified result.
+The universal execution start is the default behavioral overlay for consequential work: establish current truth first, restore the canonical Current State Feed, restore only relevant historical intelligence, execute a coherent verifiable unit, prove it, lock the resulting state, capture reusable learning, and continue from the verified result.
+
+The Current State Feed must be treated as a **control-plane input**, not merely a documentation page. A runtime that still reads a different feed as its primary orientation surface is not fully reconciled and must not be treated as current-state enforcement complete.
 
 ## Execution rule
 
 If repeated failure occurs, apply the Escalation Law and Stewardship failure gate. If multiple safe related tasks can be completed and verified in the same execution context, apply the Execution Efficiency Law. Neither law permits skipping authority, safety, testing, evidence, or verification.
 
-Before consequential execution, establish objective, current truth, causal plan, verification plan, stop condition, and reasonable cost estimate. Prefer the cheapest reliable validation first.
+Before consequential execution, establish objective, current truth, current-state feed, causal plan, verification plan, stop condition, and reasonable cost estimate. Prefer the cheapest reliable validation first.
 
 ## Failure rule
 
@@ -44,4 +55,4 @@ Operational claims must distinguish implemented, tested, verified, runtime-prove
 
 ## Learning rule
 
-Material failures and consequential governance decisions should become canonical Note Events when appropriate, with aligned human/Naya/machine representations, verification receipts, authorized intelligence promotion, and Intelligent Feed/CIS visibility. Documentation alone is not prevention; future behavior must be capable of changing.
+Material failures and consequential governance decisions should become canonical Note Events when appropriate, with aligned human/Naya/machine representations, verification receipts, authorized intelligence promotion, and Current State Feed/CIS visibility. Documentation alone is not prevention; future behavior must be capable of changing.
