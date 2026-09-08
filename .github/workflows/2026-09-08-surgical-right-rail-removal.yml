@@ -16,95 +16,73 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Repair main feed without touching the application shell
+      - name: Remove only the old right-side feed/rail
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           import re
 
-          path = Path('2026 09 08 9:59 NAYANET HUB.html')
+          path = Path('2026 09 08 452 NayaNET Hub.html')
           html = path.read_text(encoding='utf-8')
           original = html
 
-          # The right rail is already absent from the canonical source in some states.
-          # If it is present, remove exactly that named element. Never remove its parent,
-          # the feed, the left sidebar, or any other page.
-          html, removed = re.subn(
-              r'<aside\s+class=["\']activationRail["\'][\s\S]*?</aside>',
-              '', html, count=1, flags=re.I
+          # TARGET: the old right-side rail/feed. It is identified by the activationRail
+          # class, not by visual position or by the word "sidebar".
+          rail = re.compile(
+              r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>',
+              re.I
           )
-          print(f'RIGHT_RAIL_SOURCE_REMOVALS={removed}')
+          html, removed = rail.subn('', html, count=1)
+          print(f'RIGHT_RAIL_REMOVED={removed}')
+          if removed != 1:
+              raise SystemExit('RIGHT_RAIL_NOT_FOUND_EXACTLY_ONCE')
 
-          # Remove the known additive intelligence tail that caused the raw-code / duplicate
-          # runtime contamination. The canonical shell above this marker is preserved intact.
-          marker = '<!-- NAYANET-NAYAHUB-INTELLIGENCE-LAYER -->'
-          if marker in html:
-              html = html.split(marker, 1)[0].rstrip() + '\n</body></html>'
-              print('INJECTED_TAIL=REMOVED')
-          else:
-              print('INJECTED_TAIL=NOT_PRESENT')
-
-          # Keep one authoritative feed host. V3/V4 are injected by the deploy workflow.
-          if 'id="nayanet-elite-feed"' not in html and "id='nayanet-elite-feed'" not in html:
-              html, host_added = re.subn(
-                  r'(<section\s+[^>]*class=["\'][^"\']*\bhomeFeed\b[^"\']*["\'][^>]*>)',
-                  r'\1<div id="nayanet-elite-feed" aria-label="NayaNET Intelligent Feed"></div>',
-                  html, count=1, flags=re.I
-              )
-              if host_added != 1:
-                  raise SystemExit(f'INTELLIGENT_FEED_HOST_INSERT_FAILED={host_added}')
-              print('V3_HOST=ADDED')
-          else:
-              print('V3_HOST=ALREADY_PRESENT')
-
-          # Reclaim the removed right-side column without touching the left sidebar.
+          # Reclaim the exact 250px column formerly occupied by that rail.
           old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
           new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
-          if old_grid in html:
-              html = html.replace(old_grid, new_grid, 1)
-          elif new_grid in html:
-              pass
-          else:
+          if old_grid not in html:
               raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
+          html = html.replace(old_grid, new_grid, 1)
 
-          # COLLATERAL-DAMAGE GATE.
+          # Hard preservation gates: the center Smart/Intelligent Feed and navigation must
+          # still exist. This workflow is forbidden from rebuilding or injecting a feed.
           protected = {
-              'LEFT_SIDEBAR': bool(re.search(r'<aside\s+class=["\']sidebar["\']', html, re.I)),
-              'HOME_WORKSPACE': 'class="homeWorkspace"' in html or "class='homeWorkspace'" in html,
-              'HOME_FEED': bool(re.search(r'class=["\'][^"\']*\bhomeFeed\b', html, re.I)),
-              'INTELLIGENT_FEED': 'nayanet-elite-feed' in html,
-              'SMART_NOTES_PAGE': 'id="page-notes"' in html,
-              'COLLECTIVE_PAGE': 'id="page-collective"' in html,
-              'ACTIVITY_WORDING': 'ACTIVITY' in html,
+              'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{', html)),
+              'HOME_WORKSPACE': 'homeWorkspace' in html,
+              'HOME_FEED': bool(re.search(r'homeFeed', html)),
+              'INTELLIGENT_FEED': bool(re.search(r'intelligentFeed|intelligentBlocks|nayanet-elite-feed', html, re.I)),
+              'ACTIVITY': bool(re.search(r'Activity Intelligence|ACTIVITY|activity', html, re.I)),
+              'PERSONAL_INTELLIGENCE': bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE', html, re.I)),
+              'COLLECTIVE_INTELLIGENCE': bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE', html, re.I)),
           }
-          missing = [k for k,v in protected.items() if not v]
+          missing = [k for k, ok in protected.items() if not ok]
           if missing:
               raise SystemExit('PROTECTED_SURFACE_MISSING=' + ','.join(missing))
 
-          if re.search(r'<aside\s+class=["\']activationRail["\']', html, re.I):
-              raise SystemExit('RIGHT_RAIL_DOM_STILL_PRESENT')
-          if marker in html:
-              raise SystemExit('INJECTED_TAIL_STILL_PRESENT')
-
+          if rail.search(html):
+              raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
           if html == original:
               raise SystemExit('NO_SOURCE_CHANGE')
 
           path.write_text(html, encoding='utf-8')
-          print('MAIN_FEED=V3_HOST_RESTORED')
-          print('LEFT_SIDEBAR=PRESERVED')
-          print('SMART_NOTES=PRESERVED')
-          print('COLLECTIVE=PRESERVED')
-          print('RIGHT_RAIL=REMOVED_OR_ALREADY_REMOVED')
+          print('CENTER_SMART_FEED=PRESERVED')
+          print('ACTIVITY=PRESERVED')
+          print('PERSONAL_INTELLIGENCE=PRESERVED')
+          print('COLLECTIVE_INTELLIGENCE=PRESERVED')
+          print('LEFT_NAV=PRESERVED')
+          print('RIGHT_OLD_FEED_RAIL=REMOVED')
+          print('CENTER_FEED_WIDTH=EXPANDED')
+          print('NO_FEED_REBUILD=TRUE')
           print('COLLATERAL_DAMAGE_GATE=PASS')
           PY
 
-      - name: Commit the repaired canonical source
+      - name: Commit only the surgical source change
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add '2026 09 08 9:59 NAYANET HUB.html'
+          git add '2026 09 08 452 NayaNET Hub.html'
           git diff --cached --quiet && { echo 'NO_SOURCE_CHANGE_NEEDED'; exit 0; }
-          git commit -m 'Repair Hub source: restore V3 feed and remove injected tail'
+          git commit -m 'Surgical Hub fix: remove old right-side feed and widen Smart Feed'
           git push
