@@ -1,0 +1,61 @@
+name: Reconstruct V7 Release Artifact
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2026 09 07  1:14 NAYANETHUBONE.html'
+      - '*NAYANET INTELLIGENT FEED V2.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
+      - '.github/workflows/reconstruct-v7-artifact.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  reconstruct:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reconstruct exact committed artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          hub=Path('2026 09 07  1:14 NAYANETHUBONE.html')
+          feeds=sorted(Path('.').glob('*NAYANET INTELLIGENT FEED V2.js'))
+          if len(feeds)!=1: raise SystemExit(f'Expected one V2 feed layer, found {len(feeds)}')
+          layer=feeds[0]
+          base=hub.read_text(encoding='utf-8')
+          feed=layer.read_text(encoding='utf-8')
+          polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text(encoding='utf-8')
+          if '</body>' not in base: raise SystemExit('Missing closing body boundary')
+          artifact=base.replace('</body>','<script>\n'+feed+'\n</script>\n<script>\n'+polish+'\n</script>\n</body>',1)
+          if 'COLLECTIVE INTELLIGENCE' not in artifact or 'PERSONAL INTELLIGENCE' not in artifact or 'ACTIVITY' not in artifact: raise SystemExit('Three-view feed missing from artifact')
+          if 'IN A NUTSHELL' not in artifact or 'HOW TO USE IT' not in artifact: raise SystemExit('Intelligent Block grammar missing from artifact')
+          if 'n10-standard' in artifact: raise SystemExit('Forbidden n10-standard regression present')
+          if 'CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND' in artifact: raise SystemExit('Forbidden giant footer regression present')
+          out=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html')
+          assets=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/assets')
+          assets.mkdir(exist_ok=True)
+          out.write_text(artifact,encoding='utf-8')
+          (assets/'index.html').write_text(artifact,encoding='utf-8')
+          (assets/'_redirects').write_text('/index.html 200\n',encoding='utf-8')
+          print('V7_RELEASE_ARTIFACT_BYTES=',len(artifact.encode()))
+          PY
+          node --check <(python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script(?:[^>]*)>(.*?)</script>',s,re.S|re.I)
+          print('\n'.join(scripts))
+          PY
+          )
+      - name: Commit reconstructed artifact
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add CLOUDFLARE-INTELLIGENT-HUB-V7/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/_redirects
+          git commit -m 'Reconstruct canonical V7 release artifact [skip ci]' || true
+          git push || true
