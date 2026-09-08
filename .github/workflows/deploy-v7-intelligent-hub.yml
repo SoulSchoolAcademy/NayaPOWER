@@ -45,20 +45,26 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
-          S='2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
-          A='CLOUDFLARE-INTELLIGENT-HUB-V7/index.html'
-          node --check "$L"
-          node --check "$S"
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
-          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n15-style' '.homeWorkspace' 'grid-template-columns:minmax(0,1fr) 250px!important' '.activationRail' 'visibility:visible!important' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" "$S"; done
-          ! grep -Fq '.activationRail{display:none!important}' "$S"
-          ! grep -Fq 'grid-template-columns:minmax(0,1fr)!important}' "$S"
-          grep -Fq 'n15-style' "$A"
-          grep -Fq 'COLLECTIVE INTELLIGENCE' "$A"
-          grep -Fq 'HOW NAYANET' "$A"
-          grep -Fq 'ORIGINAL RIGHT OPERATIONS RAIL' "$A"
+          node --check '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+          node --check '2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
+          python3 - <<'PY'
+          from pathlib import Path
+          feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
+          layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js').read_text()
+          artifact=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text()
+          feed_required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LESSON','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND']
+          layer_required=['YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','SMART NOTES','INTELLIGENT BLOCKS','n15-style','grid-template-columns:minmax(0,1fr) 250px!important','activationRail','visibility:visible!important','ORIGINAL RIGHT OPERATIONS RAIL']
+          for label,text,need in [('FEED',feed,feed_required),('LAYER',layer,layer_required),('ARTIFACT',artifact,['n15-style','COLLECTIVE INTELLIGENCE','HOW NAYANET','ORIGINAL RIGHT OPERATIONS RAIL'])]:
+              missing=[x for x in need if x not in text]
+              if missing: raise SystemExit(f'{label} missing: {missing}')
+          for forbidden in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE','n10-standard']:
+              if forbidden in feed: raise SystemExit(f'FORBIDDEN FEED MARKER: {forbidden}')
+          if '.activationRail{display:none!important}' in layer: raise SystemExit('FORBIDDEN: activation rail hidden')
+          if 'grid-template-columns:minmax(0,1fr)!important}' in layer: raise SystemExit('FORBIDDEN: one-column home workspace')
+          print('SOURCE_CONTRACT=PASS')
+          print('RIGHT_OPERATIONS_RAIL=PASS')
+          print('WIDE_CENTER_FEED=PASS')
+          PY
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -73,15 +79,21 @@ jobs:
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'n15-style' 'grid-template-columns:minmax(0,1fr) 250px' 'activationRail' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" /tmp/root; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" /tmp/root; done
-          ! grep -Fq '.activationRail{display:none!important}' /tmp/root
-          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
-          grep -Fq 'HOW NAYANET' /tmp/smart
-          grep -Fq 'ORIGINAL RIGHT OPERATIONS RAIL' /tmp/smart
-          echo 'PUBLIC_RUNTIME_ROOT=PASS'
-          echo 'PUBLIC_SMART_LINK=PASS'
-          echo 'V15_RIGHT_RAIL=PASS'
-          echo 'WIDE_CENTER_FEED=PASS'
+          python3 - <<'PY'
+          from pathlib import Path
+          root=Path('/tmp/root').read_text()
+          smart=Path('/tmp/smart').read_text()
+          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n15-style','grid-template-columns:minmax(0,1fr) 250px','activationRail','ORIGINAL RIGHT OPERATIONS RAIL']
+          for source,text in [('ROOT',root),('SMART_LINK',smart)]:
+              missing=[x for x in required if x not in text]
+              if missing: raise SystemExit(f'{source} missing runtime markers: {missing}')
+          for forbidden in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE','n10-standard']:
+              if forbidden in root: raise SystemExit(f'FORBIDDEN RUNTIME MARKER: {forbidden}')
+          if '.activationRail{display:none!important}' in root: raise SystemExit('FORBIDDEN RUNTIME: activation rail hidden')
+          print('PUBLIC_RUNTIME_ROOT=PASS')
+          print('PUBLIC_SMART_LINK=PASS')
+          print('V15_RIGHT_RAIL=PASS')
+          print('WIDE_CENTER_FEED=PASS')
+          PY
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
