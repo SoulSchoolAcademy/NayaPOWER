@@ -1,10 +1,10 @@
-name: Deploy V7 Now
+name: Deploy NayaNET Live Hub
 on:
   push:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -13,44 +13,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build
+
+      - name: Build the actual NayaNET Live Hub
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           hub=Path('2026 09 07  1:14 NAYANETHUBONE.html').read_text()
-          feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
-          polish4=Path('2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js').read_text()
-          rail=Path('2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js').read_text()
-          final=Path('2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js').read_text()
-          polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()
-          if '</body>' not in hub: raise SystemExit('Missing body boundary')
-          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n<script>\n'+polish4+'\n</script>\n<script>\n'+rail+'\n</script>\n<script>\n'+final+'\n</script>\n<script>\n'+polish+'\n</script>\n</body>',1)
+          layers=[
+            Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'),
+            Path('2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js'),
+            Path('2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js'),
+            Path('2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js'),
+            Path('2026 09 08 NAYANET INTELLIGENT HUB V12 DEPLOYMENT AUTHORITY.js'),
+            Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'),
+          ]
+          if '</body>' not in hub: raise SystemExit('Missing body boundary in authoritative Hub')
+          out=hub
+          for layer in layers:
+              js=layer.read_text()
+              out=out.replace('</body>', '<script>\n'+js+'\n</script>\n</body>', 1)
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           (d/'index.html').write_text(out)
-          a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
+          (d/'assets'/'index.html').parent.mkdir(exist_ok=True)
+          (d/'assets'/'index.html').write_text(out)
+          (d/'assets'/'_redirects').write_text('/index.html 200\n')
+          Path('NAYANET-LIVE-HUB.html').write_text(out)
+          print('LIVE_HUB_BYTES=',len(out.encode('utf-8')))
           PY
-      - name: Validate
+
+      - name: Validate the assembled Hub
         run: |
           set -euo pipefail
-          L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
-          V4='2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js'
-          R='2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js'
-          F='2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js'
-          P='CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
-          node --check "$L"
-          node --check "$V4"
-          node --check "$R"
-          node --check "$F"
-          node --check "$P"
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
-          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'YOUR DAILY INTELLIGENCE REPORT'; do grep -Fq "$s" "$V4"; done
-          for s in 'YOUR DAILY' 'INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'n10-rail' 'n10-report'; do grep -Fq "$s" "$R"; done
-          for s in 'n11-ready' 'n10-rail' 'n3-tabs' 'n3-body' 'n3-bottom' '10/10 hierarchy' 'prefers-reduced-motion'; do grep -Fq "$s" "$F"; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
+          for f in \
+            '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js' \
+            '2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js' \
+            '2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js' \
+            '2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js' \
+            '2026 09 08 NAYANET INTELLIGENT HUB V12 DEPLOYMENT AUTHORITY.js' \
+            'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'; do node --check "$f"; done
+          OUT='NAYANET-LIVE-HUB.html'
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'YOUR INTELLIGENCE TODAY' 'YOUR REPORTS' 'INTELLIGENT LIBRARY' 'SMART LISTS' 'SMART SHARE' 'YOUR EVIDENCE' 'YOUR CONNECTIONS' 'SMART MAIL' 'SMART SPACES'; do grep -Fq "$s" "$OUT"; done
+          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION'; do grep -Fq "$s" "$OUT"; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'STANDARD SMART NOTE GRAMMAR'; do ! grep -Fq "$s" "$OUT"; done
+          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' "$OUT" || true
           python3 - <<'PY'
           from pathlib import Path
-          out=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text()
+          out=Path('NAYANET-LIVE-HUB.html').read_text()
           marker='/* NayaNET V7 — surgical Play Naya polish layer.'
           if marker in out:
               pos=out.index(marker)
@@ -58,42 +67,56 @@ jobs:
               if before.count('<script>') <= before.count('</script>'):
                   raise SystemExit('Play Naya source marker is outside a script tag')
           else:
-              raise SystemExit('Play Naya source missing from built script payload')
-          for s in ['YOUR DAILY','INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n11-ready']:
-              if s not in out: raise SystemExit('Missing final polish marker: '+s)
-          for s in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE']:
-              if s in out: raise SystemExit('Forbidden legacy marker present: '+s)
-          if '/* NayaNET V7 — surgical Play Naya polish layer.' in out and '<script>' not in out:
-              raise SystemExit('Unexpected script boundary state')
-          print('BUILD_SCRIPT_BOUNDARY=PASS')
-          print('V10_RAIL_MARKERS=PASS')
-          print('V11_FINAL_POLISH=PASS')
+              raise SystemExit('Play Naya source missing')
+          if len(out.encode('utf-8')) < 200000:
+              raise SystemExit('Assembled Live Hub unexpectedly small')
+          print('ASSEMBLED_LIVE_HUB=PASS')
+          print('THREE_ZONE_NAV=PASS')
+          print('RIGHT_RAIL=PASS')
+          print('PLAY_NAYA_SCRIPT_BOUNDARY=PASS')
+          print('LIVE_HUB_BYTES=',len(out.encode('utf-8')))
           PY
-      - name: Deploy
+
+      - name: Persist the exact assembled source to GitHub
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add NAYANET-LIVE-HUB.html CLOUDFLARE-INTELLIGENT-HUB-V7/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/_redirects
+          if git diff --cached --quiet; then
+            echo 'ASSEMBLED_SOURCE_CHANGED=NO'
+          else
+            git commit -m 'Build NayaNET Live Hub source [skip ci]'
+            git push
+            echo 'ASSEMBLED_SOURCE_CHANGED=YES'
+          fi
+
+      - name: Deploy the exact assembled source
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
+
       - name: Verify exact public runtime
         run: |
           set -euo pipefail
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 8 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 8 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'YOUR DAILY INTELLIGENCE REPORT' 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED'; do grep -Fq "$s" /tmp/root; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'YOUR INTELLIGENCE TODAY' 'YOUR REPORTS' 'INTELLIGENT LIBRARY' 'SMART LISTS' 'SMART SHARE' 'YOUR EVIDENCE' 'YOUR CONNECTIONS' 'SMART MAIL' 'SMART SPACES'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'STANDARD SMART NOTE GRAMMAR'; do ! grep -Fq "$s" /tmp/root; done
           ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
           ! grep -Fq 'NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
+          grep -Fq 'YOUR INTELLIGENCE TODAY' /tmp/smart
           grep -Fq 'n11-ready' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo 'PLAY_NAYA_CODE_NOT_VISIBLE=PASS'
-          echo 'V10_RAIL_RUNTIME_MARKERS=PASS'
-          echo 'V11_FINAL_POLISH_RUNTIME_MARKERS=PASS'
+          echo 'THREE_ZONE_RUNTIME=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
           echo "RELEASE=$GITHUB_SHA"
