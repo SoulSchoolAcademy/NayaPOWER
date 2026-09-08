@@ -1,7 +1,7 @@
 # 🔱 PRIMARY INTELLIGENCE HUB — NAYAPOWER × MAXIS
 
 **Status:** CANONICAL NAVIGATION / SYNTHESIS LAYER
-**Date:** 2026-09-07
+**Date:** 2026-09-08
 
 ## PURPOSE
 
@@ -33,6 +33,8 @@ When applicable, the Naya Note propagates into PIS through the canonical intelli
 
 **Execution-boundary rule (2026-09-07):** a temporary mutating workflow may be used for a tightly bounded surgical operation only when its scope is explicit and the final state restores the canonical read-only verification path. The restored final workflow, not the intermediate mutating state, is the durable authority.
 
+**Feed-canonicalization rule (2026-09-08):** promoting Intelligent Feed into canonical Hub source is a material authority/routing transition. It requires lineage-preserving provenance, source-to-artifact parity, and live-render verification; an automated bot commit alone is not release proof.
+
 ## LEARNING LOOP
 
 **OBSERVE → REPORT → LEARN → UPDATE SYSTEM → VERIFY → CARRY FORWARD**
@@ -43,33 +45,32 @@ When applicable, the Naya Note propagates into PIS through the canonical intelli
 
 Higher-level reports synthesize lower-level reports. They never silently overwrite source evidence.
 
-## 2026-09-07 DAILY SYNTHESIS
+## 2026-09-08 DAILY SYNTHESIS
 
 ### Material changes
 
-- NayaPOWER advanced to live `main` `cce587706dc2ec1c58e21a6bd1f12c7876cacee3` during the reporting cycle; the source operation began at `2270db7582486926185786e455900c53770c4bb9`.
-- A surgical NayaNET Hub welcome patch was run through the existing Claim Evidence QA boundary in the preceding commit.
-- The latest commit restored `.github/workflows/naya-claim-evidence-enforcement.yml` to read-only permissions, removed temporary self-mutating steps, and preserved the canonical verification path.
-- The welcome surface targets `Good morning/afternoon/evening, Shawn.` plus current time, date, and country display.
-- MAXIS remained at `e1f727da77eb04e6b79ed40c218b545a2b372e78` with no newer product implementation observed.
+- NayaPOWER current `main` is `9f0f641b0557489a1ff01b1c02b233d3d5628347`.
+- The recent sequence made Intelligent Feed visual finish explicit, executed a canonical Intelligent Hub release, and promoted Intelligent Feed into canonical Hub source.
+- The final promotion commit was authored by `github-actions[bot]`, creating durable repository provenance for the promotion operation.
+- MAXIS remained at `e1f727da77eb04e6b79ed40c218b545a2b372e78`; no newer product implementation was observed.
 
-### Compounding delta from 2026-09-06
+### Compounding delta from 2026-09-07
 
-- Prior day established the canonical Smart Note backend transaction contract.
-- Today established a bounded surgical UI mutation pattern and then restored the permanent verification workflow.
-- The new durable lesson is about authority restoration and final-state proof; the Smart Note transaction, artifact-chain, and briefing-freshness lessons remain active.
+- Prior day established temporary mutation → canonical restoration for a surgical Hub change.
+- Today advanced the system from Hub modification to Feed→Hub canonicalization and automated promotion.
+- The new durable lesson is that automated promotion must be proven as a full chain: workflow execution, artifact integrity, deployment parity, and live rendering. The previous lessons on restored read-only verification, Smart Note transactions, artifact proof, and briefing freshness remain active.
 
 ### Current conclusion
 
-The Hub change and workflow restoration are source-recorded, but live deployment/render behavior, final artifact parity, browser behavior, and country-accuracy behavior remain UNKNOWN. NayaPOWER governance GREEN and MAXIS runtime/production parity remain unproven.
+Intelligent Feed promotion into canonical Hub source is recorded in automated repository history. The full release/artifact/deployment/live-render chain remains UNKNOWN. NayaPOWER governance GREEN and MAXIS runtime/production parity remain unproven.
 
 ### Exact next proof target
 
-`EXACT FINAL SHA → FINAL WORKFLOW PERMISSIONS/CONTENT → RUN/JOB/STEPS/LOGS → DEPLOYED ARTIFACT → ONE WELCOME BLOCK → BROWSER RENDER → TIME/DATE/COUNTRY CHECK → REGRESSION CHECK`
+`EXACT SHA → PROMOTION WORKFLOW → RUN/JOB/STEPS/LOGS → GENERATED HUB SOURCE → ARTIFACT/HASH → DEPLOYMENT REVISION → LIVE HUB RENDER → FEED/HUB LINEAGE CHECK`
 
 ### New durable lesson
 
-**A temporary mutation path is not complete until the canonical verification workflow is restored and the final deployed state is independently observed.**
+**Automated source promotion is not runtime or production proof; canonicalization must preserve lineage and be independently observed at the live Hub.**
 
 ## CUMULATIVE LESSONS
 
@@ -97,6 +98,8 @@ The Hub change and workflow restoration are source-recorded, but live deployment
 22. Idempotency, verification, and chronological retrieval are part of the canonical Smart Note delivery contract.
 23. Temporary mutation authority must be bounded, reversible, and removed from the durable verification path.
 24. Final-state proof must validate the restored canonical system, not only the intermediate change.
+25. Automated repository promotion proves a write occurred, not that the workflow, artifact, deployment, or live behavior succeeded.
+26. Feed-to-Hub canonicalization must preserve event lineage and remain independently observable.
 
 ## CURRENT OPEN UNKNOWN / BLOCKS
 
@@ -110,8 +113,10 @@ The Hub change and workflow restoration are source-recorded, but live deployment
 
 ### NayaPOWER / NayaNET
 
-- Final deployed Hub artifact/source parity.
-- Live welcome rendering and regression behavior.
+- Feed→Hub release execution evidence.
+- Artifact existence, retrieval, and hash verification.
+- Source→artifact→deployment parity.
+- Live Hub rendering and representative event lineage.
 - Country accuracy beyond locale-based fallback.
 - Supabase Edge Function/migration deployment and schema application state.
 - Live authenticated transaction, logs, and response evidence.
@@ -127,7 +132,7 @@ The Hub change and workflow restoration are source-recorded, but live deployment
 
 ## CURRENT HIGHEST-VALUE ACTION
 
-**Execute and observe the final Hub state at exact current SHA, prove the restored workflow, verify the live welcome surface and artifact parity, then resume the canonical Smart Note transaction proof.**
+**Prove the Feed→Hub canonicalization and release chain at exact current SHA, including workflow evidence, artifact retrieval/hash, deployment parity, live rendering, and event lineage; then resume Smart Note transaction-to-Hub proof.**
 
 ## DAILY UPDATE CONTRACT
 
