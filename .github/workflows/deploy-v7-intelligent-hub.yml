@@ -11,7 +11,7 @@ on:
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 concurrency:
   group: nayanet-v7-canonical-production
   cancel-in-progress: true
@@ -33,16 +33,7 @@ jobs:
           from pathlib import Path
           p=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
           text=p.read_text()
-          required=[
-            '**STATUS:** CANONICAL',
-            '**NORTH STAR:** Turn human experience and human–AI interaction into persistent, verified, reusable, compounding intelligence.',
-            'NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.',
-            'SELECT PROVEN METHOD',
-            'OBSERVE EXACT RUNTIME',
-            'SOURCE INTENT IS NOT RUNTIME TRUTH.',
-            'THE COLD-NAYA TEST',
-            'THE SYSTEM COMPOUNDS.'
-          ]
+          required=['**STATUS:** CANONICAL','**NORTH STAR:** Turn human experience and human–AI interaction into persistent, verified, reusable, compounding intelligence.','NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.','SELECT PROVEN METHOD','OBSERVE EXACT RUNTIME','SOURCE INTENT IS NOT RUNTIME TRUTH.','THE COLD-NAYA TEST','THE SYSTEM COMPOUNDS.']
           missing=[x for x in required if x not in text]
           if missing: raise SystemExit(f'DIRECTIVE missing: {missing}')
           print('NAYA_MASTER_EXECUTION_DIRECTIVE=PASS')
@@ -55,23 +46,26 @@ jobs:
           from pathlib import Path
           p=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md')
           text=p.read_text()
-          required=[
-            '**STATUS:** CANONICAL OPERATING DIRECTIVE',
-            '**NORTH STAR:** The human defines the outcome. Naya owns the execution.',
-            'NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.',
-            'RETRIEVE → UNDERSTAND → REUSE → ADAPT → EXECUTE',
-            'ONE-NEXT-ACTION RULE',
-            'ANTI-CAT RULE',
-            'WHEN YOU HIT A WALL, SOLVE THE WALL.',
-            'SOURCE INTENT IS NOT RUNTIME TRUTH.',
-            'No receipt = incomplete delivery record.',
-            'THE HUMAN DEFINES THE OUTCOME.',
-            'NAYA OWNS THE EXECUTION.'
-          ]
+          required=['**STATUS:** CANONICAL OPERATING DIRECTIVE','**NORTH STAR:** The human defines the outcome. Naya owns the execution.','NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.','RETRIEVE → UNDERSTAND → REUSE → ADAPT → EXECUTE','ONE-NEXT-ACTION RULE','ANTI-CAT RULE','WHEN YOU HIT A WALL, SOLVE THE WALL.','SOURCE INTENT IS NOT RUNTIME TRUTH.','No receipt = incomplete delivery record.','THE HUMAN DEFINES THE OUTCOME.','NAYA OWNS THE EXECUTION.']
           missing=[x for x in required if x not in text]
           if missing: raise SystemExit(f'ULTIMATE_EXECUTION_DIRECTIVE missing: {missing}')
           print('NAYANET_ULTIMATE_EXECUTION_DIRECTIVE=PASS')
           PY
+      - name: Promote proven feed into visible canonical source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 CLOUDFLARE-INTELLIGENT-HUB-V7/promote-canonical-feed.py
+          if git diff --quiet -- '2026 09 07  1:14 NAYANETHUBONE.html'; then
+            echo 'CANONICAL_SOURCE_CHANGE=NONE'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add '2026 09 07  1:14 NAYANETHUBONE.html'
+            git commit -m 'Promote Intelligent Feed into canonical Hub source'
+            git push origin HEAD:main
+            echo 'CANONICAL_SOURCE_CHANGE=COMMITTED'
+          fi
       - name: Build canonical artifact
         shell: bash
         run: |
@@ -82,13 +76,20 @@ jobs:
           feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
           interior=Path('2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js')
           layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js')
+          polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js')
           base=hub.read_text()
           if '</body>' not in base: raise SystemExit('Missing body boundary')
-          inject='<script>\n'+feed.read_text()+'\n</script>\n<script>\n'+interior.read_text()+'\n</script>\n<script>\n'+layer.read_text()+'\n</script>\n'+Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
-          out=base.replace('</body>',inject+'</body>',1)
+          if 'NAYANET_CANONICAL_FEED_V17' in base:
+              out=base
+              print('BUILD_MODE=CANONICAL_SOURCE_DIRECT')
+          else:
+              inject='<script>\n'+feed.read_text()+'\n</script>\n<script>\n'+interior.read_text()+'\n</script>\n<script>\n'+layer.read_text()+'\n</script>\n'+polish.read_text()+'\n'
+              out=base.replace('</body>',inject+'</body>',1)
+              print('BUILD_MODE=LEGACY_FALLBACK_INJECTION')
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').write_text(out)
           a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
+          print('CANONICAL_ARTIFACT_BYTES=',len(out.encode('utf-8')))
           PY
       - name: Validate source contract
         shell: bash
@@ -102,12 +103,14 @@ jobs:
           feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
           interior=Path('2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js').read_text()
           layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js').read_text()
+          canonical=Path('2026 09 07  1:14 NAYANETHUBONE.html').read_text()
           artifact=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text()
           feed_required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LESSON','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND']
           interior_required=['NayaNET Intelligent Feed V4','SPECTRUM','WHAT WE LEARNED · WHAT IT MEANS','n4-learning','n4-interior-style','INTERIOR_EVOLUTION_ACTIVE']
           layer_required=['n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px!important','activationRail','visibility:visible!important','FULL PAGE','WIDESCREEN','LEFT NAV stays LEFT. RIGHT OPERATIONS stay RIGHT.']
+          canonical_required=['NAYANET_CANONICAL_FEED_V17','NAYANET_CANONICAL_FEED_V17_START','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','INTERIOR_EVOLUTION_ACTIVE','n16-style','n16-presentation-control']
           artifact_required=['YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n16-style','n16-presentation-control','nayanet-focus-mode','COLLECTIVE INTELLIGENCE','HOW NAYANET','activationRail','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS']
-          for label,text,need in [('FEED',feed,feed_required),('INTERIOR',interior,interior_required),('LAYER',layer,layer_required),('ARTIFACT',artifact,artifact_required)]:
+          for label,text,need in [('FEED',feed,feed_required),('INTERIOR',interior,interior_required),('LAYER',layer,layer_required),('CANONICAL',canonical,canonical_required),('ARTIFACT',artifact,artifact_required)]:
               missing=[x for x in need if x not in text]
               if missing: raise SystemExit(f'{label} missing: {missing}')
           for forbidden in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE','n10-standard']:
@@ -115,6 +118,7 @@ jobs:
           if '.activationRail{display:none!important}' in layer: raise SystemExit('FORBIDDEN: activation rail hidden')
           if 'grid-template-columns:minmax(0,1fr)!important}' in layer: raise SystemExit('FORBIDDEN: one-column home workspace')
           print('SOURCE_CONTRACT=PASS')
+          print('CANONICAL_SOURCE_INTEGRATION=PASS')
           print('INTERIOR_EVOLUTION=PASS')
           print('V16_PRESENTATION=PASS')
           print('RIGHT_OPERATIONS_RAIL=PASS')
@@ -136,9 +140,8 @@ jobs:
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
           python3 - <<'PY'
           from pathlib import Path
-          root=Path('/tmp/root').read_text()
-          smart=Path('/tmp/smart').read_text()
-          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS']
+          root=Path('/tmp/root').read_text(); smart=Path('/tmp/smart').read_text()
+          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS','NAYANET_CANONICAL_FEED_V17']
           for source,text in [('ROOT',root),('SMART_LINK',smart)]:
               missing=[x for x in required if x not in text]
               if missing: raise SystemExit(f'{source} missing runtime markers: {missing}')
@@ -147,6 +150,7 @@ jobs:
           if '.activationRail{display:none!important}' in root: raise SystemExit('FORBIDDEN RUNTIME: activation rail hidden')
           print('PUBLIC_RUNTIME_ROOT=PASS')
           print('PUBLIC_SMART_LINK=PASS')
+          print('CANONICAL_SOURCE_INTEGRATION=PASS')
           print('INTERIOR_EVOLUTION=PASS')
           print('V16_PRESENTATION=PASS')
           print('RIGHT_OPERATIONS_RAIL=PASS')
