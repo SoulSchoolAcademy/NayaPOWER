@@ -32,14 +32,10 @@ jobs:
           from pathlib import Path
           hub=Path('2026 09 07  1:14 NAYANETHUBONE.html')
           feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
-          v13=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js')
+          layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js')
           base=hub.read_text()
           if '</body>' not in base: raise SystemExit('Missing body boundary')
-          inject=(
-            '<script>\n'+feed.read_text()+'\n</script>\n'
-            '<script>\n'+v13.read_text()+'\n</script>\n'
-            +Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
-          )
+          inject='<script>\n'+feed.read_text()+'\n</script>\n<script>\n'+layer.read_text()+'\n</script>\n'+Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
           out=base.replace('</body>',inject+'</body>',1)
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').write_text(out)
@@ -56,11 +52,13 @@ jobs:
           node --check "$S"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
-          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n14-style' 'homeWorkspace{grid-template-columns:minmax(0,1fr)' '.activationRail{display:none!important}' 'max-width:none!important'; do grep -Fq "$s" "$S"; done
-          grep -Fq 'n14-style' "$A"
-          grep -Fq 'n13-original-ops' "$A"
+          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n15-style' '.homeWorkspace' 'grid-template-columns:minmax(0,1fr) 250px' '.activationRail' 'display:grid!important' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" "$S"; done
+          ! grep -Fq '.activationRail{display:none!important}' "$S"
+          ! grep -Fq 'grid-template-columns:minmax(0,1fr)!important}' "$S"
+          grep -Fq 'n15-style' "$A"
           grep -Fq 'COLLECTIVE INTELLIGENCE' "$A"
           grep -Fq 'HOW NAYANET' "$A"
+          grep -Fq 'ORIGINAL RIGHT OPERATIONS RAIL' "$A"
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -75,14 +73,15 @@ jobs:
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'n14-style' 'n13-original-ops' 'homeWorkspace{grid-template-columns:minmax(0,1fr)' '.activationRail{display:none!important}'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'n15-style' 'grid-template-columns:minmax(0,1fr) 250px' 'activationRail' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" /tmp/root; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" /tmp/root; done
+          ! grep -Fq '.activationRail{display:none!important}' /tmp/root
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
-          grep -Fq 'n13-original-ops' /tmp/smart
+          grep -Fq 'ORIGINAL RIGHT OPERATIONS RAIL' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
-          echo 'V14_STRUCTURAL_RECOVERY=PASS'
-          echo 'ELITE_FEED_LAYOUT=PASS'
+          echo 'V15_RIGHT_RAIL=PASS'
+          echo 'WIDE_CENTER_FEED=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
