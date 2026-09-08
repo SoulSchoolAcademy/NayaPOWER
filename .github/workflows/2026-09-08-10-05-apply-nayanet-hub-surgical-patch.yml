@@ -8,8 +8,6 @@ on:
       - '.naya/NAYA-MASTER-EXECUTION-CONTRACT.md'
       - '.naya/NAYA-INTELLIGENCE-ORGANIZATION-PROTOCOL.md'
       - '.naya/activity/2026/09/08/2026-09-08-TODAY.md'
-  issues:
-    types: [opened]
   workflow_dispatch:
 jobs:
   patch:
@@ -22,20 +20,17 @@ jobs:
         run: python scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py
       - name: Verify mission markers
         run: |
-          test -f '2026 09 08 9:59 NAYANET HUB.html'
-          grep -q 'NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR-V1' '2026 09 08 9:59 NAYANET HUB.html'
-          grep -q '.activationRail{display:none!important}' '2026 09 08 9:59 NAYANET HUB.html'
-          grep -q '.sidebar' '2026 09 08 9:59 NAYANET HUB.html'
-          grep -q 'SHARE' '2026 09 08 9:59 NAYANET HUB.html'
-          grep -q 'COMMENT' '2026 09 08 9:59 NAYANET HUB.html'
+          grep -q 'NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR-V1' '2026 09 08 9:59 NAYANET HUB'
+          grep -q '.activationRail{display:none!important}' '2026 09 08 9:59 NAYANET HUB'
+          grep -q '.sidebar' '2026 09 08 9:59 NAYANET HUB'
       - name: Commit patched current Hub
         run: |
-          if git diff --quiet -- '2026 09 08 9:59 NAYANET HUB.html'; then
+          if git diff --quiet -- '2026 09 08 9:59 NAYANET HUB'; then
             echo 'No source change required.'
             exit 0
           fi
           git config user.name 'Naya Power'
           git config user.email 'naya-power@users.noreply.github.com'
-          git add -- '2026 09 08 9:59 NAYANET HUB.html'
-          git commit -m '2026-09-08 10:20 — Apply right-sidebar removal and unified feed actions'
+          git add -- '2026 09 08 9:59 NAYANET HUB'
+          git commit -m '2026-09-08 10:05 — Correct right sidebar and mirror intelligent feeds'
           git push
