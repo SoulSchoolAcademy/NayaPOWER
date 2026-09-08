@@ -15,8 +15,8 @@ concurrency:
   group: nayanet-v7-canonical-production
   cancel-in-progress: true
 env:
-  RUNTIME: https://noisy-block-35d0.nayanet.workers.dev
-  SMART_LINK: https://noisy-block-35d0.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   HUB_FILE: 2026 09 07  1:14 NAYANETHUBONE.html
 jobs:
   deploy-v7:
@@ -61,32 +61,7 @@ jobs:
           LAYER="../$(cat .authoritative-feed-layer)"
           test -s "$LAYER"
           node --check "$LAYER"
-          grep -Fq 'COLLECTIVE INTELLIGENCE' "$LAYER"
-          grep -Fq 'PERSONAL INTELLIGENCE' "$LAYER"
-          grep -Fq 'ACTIVITY' "$LAYER"
-          grep -Fq 'IN A NUTSHELL' "$LAYER"
-          grep -Fq 'HUMAN NOTE' "$LAYER"
-          grep -Fq 'CHILD NOTE' "$LAYER"
-          grep -Fq 'GRANDMA NOTE' "$LAYER"
-          grep -Fq 'NAYA NOTE' "$LAYER"
-          grep -Fq 'MACHINE NOTE' "$LAYER"
-          grep -Fq 'LESSON' "$LAYER"
-          grep -Fq 'HOW TO USE IT' "$LAYER"
-          grep -Fq 'Favorite / Star this intelligence' "$LAYER"
-          grep -Fq 'Save / Keep this intelligence' "$LAYER"
-          grep -Fq 'Share this intelligence' "$LAYER"
-          grep -Fq 'PLAY NAYA' "$LAYER"
-          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' "$LAYER"
-          grep -Fq 'Your Intelligence Today' "$LAYER"
-          grep -Fq 'Your Reports' "$LAYER"
-          grep -Fq 'Intelligent Library' "$LAYER"
-          grep -Fq 'Smart Lists' "$LAYER"
-          grep -Fq 'Smart Share' "$LAYER"
-          grep -Fq 'Your Evidence' "$LAYER"
-          grep -Fq 'Your Connections' "$LAYER"
-          grep -Fq 'Smart Mail' "$LAYER"
-          grep -Fq 'Smart Spaces' "$LAYER"
-          grep -Fq 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' "$LAYER"
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'Private by default. Shared by choice. Collective by consent. Public by decision.' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Lists' 'Smart Share' 'Your Evidence' 'Your Connections' 'Smart Mail' 'Smart Spaces' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY'; do grep -Fq "$s" "$LAYER"; done
           if grep -Fq 'LOVE · SHARE' "$LAYER"; then echo 'Love and Share are combined'; exit 1; fi
           if grep -Fq 'SMART LINK</button>' "$LAYER"; then echo 'Unexplained Smart Link control exists'; exit 1; fi
           echo 'ELITE_THREE_VIEW_SOURCE_CONTRACT=PASS'
