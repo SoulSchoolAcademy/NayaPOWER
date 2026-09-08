@@ -1,0 +1,1 @@
+Trigger the post-architecture live Hub dispatcher.
