@@ -36,7 +36,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-          hub=Path('..')/Path('${HUB_FILE}')
+          hub=Path('../2026 09 07  1:14 NAYANETHUBONE.html')
           feeds=sorted(Path('..').glob('*NAYANET INTELLIGENT FEED V2.js'),key=lambda p:tuple(map(int,re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ',p.name).groups())),reverse=True)
           if len(feeds)!=1: raise SystemExit(f'Expected exactly one canonical V2 feed layer; found {len(feeds)}: {[p.name for p in feeds]}')
           layer=feeds[0]
@@ -78,7 +78,7 @@ jobs:
           grep -Fq 'PLAY NAYA' "$LAYER"
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' "$LAYER"
           grep -Fq 'Your Intelligence Today' "$LAYER"
-          grep -Fq 'Your Reports' "$LAYER"
+          grep -Fq 'Your Reports' "$LAYER'
           grep -Fq 'Intelligent Library' "$LAYER"
           grep -Fq 'Smart Lists' "$LAYER"
           grep -Fq 'Smart Share' "$LAYER"
