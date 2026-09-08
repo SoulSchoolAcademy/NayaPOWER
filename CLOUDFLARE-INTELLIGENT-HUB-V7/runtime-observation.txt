@@ -1,16 +1,16 @@
-OBSERVED_AT=2026-09-08T00:18:20Z
+OBSERVED_AT=2026-09-08T00:18:42Z
 ROOT=https://noisy-block-35d0.nayanet.workers.dev/
 SMART_LINK=https://noisy-block-35d0.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
 --- ROOT ---
 HTTP/2 200 
-date: Tue, 08 Sep 2026 00:18:20 GMT
+date: Tue, 08 Sep 2026 00:18:42 GMT
 content-type: text/html
 cf-cache-status: HIT
 cache-control: public, max-age=0, must-revalidate
 nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
-report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=3XacHa8w3KVvgZvwpk29623wxfO8MZLLCV52Bmj%2BWPAa8FEVd1SCqoisDNCRoXiYERHjrKuilzonidgb3OyuK9aZy0RyyCxAsMgZ1o9YhF3mMAX8q2CEAUppnz1wePuJFMGuZ1WMKFnF3hStJGE4O31CODNbnEk%3D"}]}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=Ugk1%2BTYoX4tr22N%2BDYsTG1g8dwSpWGoe93i6iLf42jFib1TDja5rBPS072H1HGTpQ8eISCOQYZMIkEMvwVpRaWILTBiqO0%2BzbNikHWPoMPGV9NuQfxo%2F4FopuQg0Q7TYUjFQNqhfM8%2Bie4zD9%2Brlv3X9rSw0N1Q%3D"}]}
 server: cloudflare
-cf-ray: a379c67e0acdfca9-SJC
+cf-ray: a379c7083a990008-ORD
 alt-svc: h3=":443"; ma=86400
 
 ROOT_BYTES=48247
@@ -19,12 +19,12 @@ ROOT_PREFIX:
 :root{--bg:#050507;--panel:#0b0b10;--ink:#fff;--muted:#a9a4b1;--line:#ffffff18;--green:#55e39a;--sapphire:#55b9ee;--indigo:#6675ff;--magenta:#d86cff;--gold:#e8c766;--ease:cubic-bezier(.16,.84,.22,1)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(900px 600px at 62% -8%,#6675ff16,transparent 68%),radial-gradient(800px 650px at 100% 100%,#d86cff12,transparent 70%),#050507;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,input,textarea{font:inherit}button{cursor:pointer;color:inherit}.app{min-height:100vh;display:grid;grid-template-columns:250px 1fr}.sidebar{position:sticky;top:0;height:100vh;padding:18px 13px;background:#07070af4;border-right:1px solid var(--line);backdrop-filter:blur(28px);z-index:20}.brand{display:flex;align-items:center;gap:10px;padding:3px 9px 21px}.brandLogo{width:43px;height:43px;border-radius:13px;o
 --- SMART LINK ---
 HTTP/2 404 
-date: Tue, 08 Sep 2026 00:18:20 GMT
+date: Tue, 08 Sep 2026 00:18:42 GMT
 content-length: 0
-report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=EBq3bbAbzsOHnmIGBvr3bd2EYIq8u2kZBeay5AqJGWxAp%2BN%2FNHc37zlYEpagRnEDqaknES3dH8rWUqpwIltOMrgOOoYODD%2FEEXHkioFV2NxFUhDHFfQeCProWGiGTabfRKSVF2JUZmArm9mqBPhN%2FMmx517amCo%3D"}]}
+report-to: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=sXxl5p4M6gsjoOgwdzk39UxCN2%2FI1OOSzF%2FS2AWlwvgGiRjdO1LPcfB4WUzFOhmPleAAYpuno8UV4DLNxv05%2B%2BKbEPeVwV2fgBfUhLdIXJLFS485bfkCgsSzJ1ug0H67%2BqDoreXLXf84URrLPvvxaTMxEd3VB%2FE%3D"}]}
 nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
 server: cloudflare
-cf-ray: a379c67e8ed7c52e-SJC
+cf-ray: a379c708febc60b2-ORD
 alt-svc: h3=":443"; ma=86400
 
 SMART_BYTES=0
