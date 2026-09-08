@@ -53,8 +53,8 @@ jobs:
           layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js').read_text()
           artifact=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text()
           feed_required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LESSON','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND']
-          layer_required=['n15-style','grid-template-columns:minmax(0,1fr) 250px!important','activationRail','visibility:visible!important','ORIGINAL RIGHT OPERATIONS RAIL']
-          artifact_required=['YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n15-style','COLLECTIVE INTELLIGENCE','HOW NAYANET','ORIGINAL RIGHT OPERATIONS RAIL','activationRail']
+          layer_required=['n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px!important','activationRail','visibility:visible!important','FULL PAGE','WIDESCREEN','LEFT NAV stays LEFT. RIGHT OPERATIONS stay RIGHT.']
+          artifact_required=['YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n16-style','n16-presentation-control','nayanet-focus-mode','COLLECTIVE INTELLIGENCE','HOW NAYANET','activationRail']
           for label,text,need in [('FEED',feed,feed_required),('LAYER',layer,layer_required),('ARTIFACT',artifact,artifact_required)]:
               missing=[x for x in need if x not in text]
               if missing: raise SystemExit(f'{label} missing: {missing}')
@@ -63,6 +63,7 @@ jobs:
           if '.activationRail{display:none!important}' in layer: raise SystemExit('FORBIDDEN: activation rail hidden')
           if 'grid-template-columns:minmax(0,1fr)!important}' in layer: raise SystemExit('FORBIDDEN: one-column home workspace')
           print('SOURCE_CONTRACT=PASS')
+          print('V16_PRESENTATION=PASS')
           print('RIGHT_OPERATIONS_RAIL=PASS')
           print('WIDE_CENTER_FEED=PASS')
           PY
@@ -84,7 +85,7 @@ jobs:
           from pathlib import Path
           root=Path('/tmp/root').read_text()
           smart=Path('/tmp/smart').read_text()
-          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n15-style','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','ORIGINAL RIGHT OPERATIONS RAIL']
+          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED']
           for source,text in [('ROOT',root),('SMART_LINK',smart)]:
               missing=[x for x in required if x not in text]
               if missing: raise SystemExit(f'{source} missing runtime markers: {missing}')
@@ -93,7 +94,8 @@ jobs:
           if '.activationRail{display:none!important}' in root: raise SystemExit('FORBIDDEN RUNTIME: activation rail hidden')
           print('PUBLIC_RUNTIME_ROOT=PASS')
           print('PUBLIC_SMART_LINK=PASS')
-          print('V15_RIGHT_RAIL=PASS')
+          print('V16_PRESENTATION=PASS')
+          print('RIGHT_OPERATIONS_RAIL=PASS')
           print('WIDE_CENTER_FEED=PASS')
           PY
           echo "RUNTIME=$RUNTIME/"
