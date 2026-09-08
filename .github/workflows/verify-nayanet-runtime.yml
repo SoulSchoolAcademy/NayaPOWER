@@ -1,0 +1,39 @@
+name: Verify NayaNET V7 Runtime
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-nayanet-runtime.yml'
+      - '2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js'
+  workflow_dispatch:
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Probe exact public runtime with cache-busting
+        shell: bash
+        run: |
+          set -euo pipefail
+          Q="release=${GITHUB_SHA}"
+          echo "ROOT=$RUNTIME/?$Q"
+          echo "SMART=$SMART_LINK?$Q"
+          curl -sS -D /tmp/root.headers -o /tmp/root.html --retry 5 --retry-delay 2 "$RUNTIME/?$Q"
+          curl -sS -D /tmp/smart.headers -o /tmp/smart.html --retry 5 --retry-delay 2 "$SMART_LINK?$Q"
+          echo '--- ROOT STATUS ---'
+          head -n 5 /tmp/root.headers
+          echo '--- SMART STATUS ---'
+          head -n 5 /tmp/smart.headers
+          echo '--- ROOT MARKERS ---'
+          grep -o 'COLLECTIVE INTELLIGENCE\|PERSONAL INTELLIGENCE\|ACTIVITY\|IN A NUTSHELL\|HOW TO USE IT\|YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/root.html | sort | uniq -c || true
+          echo '--- SMART MARKERS ---'
+          grep -o 'COLLECTIVE INTELLIGENCE\|PERSONAL INTELLIGENCE\|ACTIVITY\|IN A NUTSHELL\|HOW TO USE IT\|YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/smart.html | sort | uniq -c || true
+          echo '--- ROOT LENGTH ---'
+          wc -c /tmp/root.html
+          echo '--- SMART LENGTH ---'
+          wc -c /tmp/smart.html
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/root.html
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart.html
+          echo 'CACHE_BUSTED_RUNTIME=PASS'
