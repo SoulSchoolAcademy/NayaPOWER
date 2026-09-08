@@ -26,26 +26,46 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Verify canonical Naya execution directive
+      - name: Verify canonical NayaNET execution directive
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
 
+          ultimate=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md')
           directive=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
           constitution=Path('SUPERBRAIN/MASTER-NOTES/NAYA-ULTIMATE-MASTER-DESIGN-CODING-CONTRACT.md')
           continuity=Path('.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md')
           obstacle=Path('.naya/notes/2026-09-07-SMART-NOTE-EXECUTION-OBSTACLE-SOLUTION-LOOP.md')
 
-          for p in [directive,constitution,continuity,obstacle]:
+          for p in [ultimate,directive,constitution,continuity,obstacle]:
               if not p.exists():
                   raise SystemExit(f'MISSING GOVERNANCE ARTIFACT: {p}')
 
+          ultimate_text=ultimate.read_text()
           text=directive.read_text()
           constitution_text=constitution.read_text()
           continuity_text=continuity.read_text()
           obstacle_text=obstacle.read_text()
+
+          ultimate_required=[
+              '**STATUS:** CANONICAL OPERATING DIRECTIVE',
+              '**NORTH STAR:** The human defines the outcome. Naya owns the execution.',
+              'UNDERSTAND → PLAN → EXECUTE → VERIFY → DELIVER → LEARN → COMPOUND',
+              'NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.',
+              'RETRIEVE → UNDERSTAND → REUSE → ADAPT → EXECUTE',
+              'SOURCE → ARCHITECTURE → BUILD → DEPLOYMENT → RUNTIME',
+              'STOP. RETURN TO MISSION.',
+              'WHEN YOU HIT A WALL, SOLVE THE WALL.',
+              'SOURCE INTENT IS NOT RUNTIME TRUTH.',
+              'RUNTIME MISMATCH = RELEASE-BLOCKING INTEGRITY ISSUE.',
+              'THE SMART NOTE PRESERVES THE LESSON.',
+              'THE NEXT EXECUTION USES THE LESSON.'
+          ]
+          missing=[x for x in ultimate_required if x not in ultimate_text]
+          if missing:
+              raise SystemExit(f'ULTIMATE_DIRECTIVE_CONTRACT_FAILURE: {missing}')
 
           required=[
               '**STATUS:** CANONICAL',
@@ -64,7 +84,7 @@ jobs:
           ]
           missing=[x for x in required if x not in text]
           if missing:
-              raise SystemExit(f'DIRECTIVE CONTRACT FAILURE: {missing}')
+              raise SystemExit(f'HUB_DIRECTIVE_CONTRACT_FAILURE: {missing}')
 
           for marker in [
               'AN AI DOES NOT LEAVE SILENTLY.',
@@ -72,18 +92,19 @@ jobs:
               'NO SILENT LOSS. NO FALSE RECEIPTS. NO FALSE CONTINUITY.'
           ]:
               if marker not in continuity_text:
-                  raise SystemExit(f'CONTINUITY LAW FAILURE: {marker}')
+                  raise SystemExit(f'CONTINUITY_LAW_FAILURE: {marker}')
 
           for marker in [
               'DO NOT REPEAT A KNOWN BLOCKER WITHOUT FIRST APPLYING THE KNOWN SOLUTION.',
               'STOP → THINK → SEARCH KNOWN SOLUTIONS → TRY THE SAFEST ALTERNATIVE → VERIFY → RECORD THE LESSON → CONTINUE'
           ]:
               if marker not in obstacle_text:
-                  raise SystemExit(f'EXECUTION LEARNING FAILURE: {marker}')
+                  raise SystemExit(f'EXECUTION_LEARNING_FAILURE: {marker}')
 
           if 'STATUS: CANONICAL MASTER CONSTITUTION' not in constitution_text:
-              raise SystemExit('ULTIMATE MASTER CONTRACT IS NOT CANONICAL')
+              raise SystemExit('ULTIMATE_MASTER_CONTRACT_IS_NOT_CANONICAL')
 
+          print('NAYANET_ULTIMATE_EXECUTION_DIRECTIVE=PASS')
           print('NAYA_MASTER_EXECUTION_DIRECTIVE=PASS')
           print('ULTIMATE_MASTER_CONTRACT=PASS')
           print('CONTINUITY_LAW=PASS')
@@ -97,13 +118,15 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
+          ultimate=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md').read_text()
           directive=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md').read_text()
           forbidden=[
               'declare success without runtime evidence',
               'repeat a known blocker without first applying the known solution'
           ]
-          for marker in forbidden:
-              if marker in directive:
-                  raise SystemExit(f'GOVERNANCE CONTRADICTION: {marker}')
+          for source,text in [('ULTIMATE',ultimate),('HUB',directive)]:
+              for marker in forbidden:
+                  if marker in text:
+                      raise SystemExit(f'GOVERNANCE_CONTRADICTION {source}: {marker}')
           print('GOVERNANCE_CONSISTENCY=PASS')
           PY
