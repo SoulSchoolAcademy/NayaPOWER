@@ -16,7 +16,7 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Remove only the old right-side feed/rail
+      - name: Verify and surgically remove only the old right-side feed/rail
         run: |
           set -euo pipefail
           python3 - <<'PY'
@@ -33,20 +33,21 @@ jobs:
           )
           html, removed = rail.subn('', html, count=1)
           print(f'RIGHT_RAIL_REMOVED={removed}')
-          if removed != 1:
-              raise SystemExit('RIGHT_RAIL_NOT_FOUND_EXACTLY_ONCE')
+          if removed > 1:
+              raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
 
-          old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
-          new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
-          if old_grid not in html:
-              raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
-          html = html.replace(old_grid, new_grid, 1)
+          if removed == 1:
+              old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
+              new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
+              if old_grid not in html:
+                  raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
+              html = html.replace(old_grid, new_grid, 1)
 
           protected = {
               'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{', html)),
               'HOME_WORKSPACE': 'homeWorkspace' in html,
               'HOME_FEED': bool(re.search(r'homeFeed', html)),
-              'INTELLIGENT_FEED': bool(re.search(r'intelligentFeed|intelligentBlocks|nayanet-elite-feed', html, re.I)),
+              'INTELLIGENT_FEED': bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed', html, re.I)),
               'ACTIVITY': bool(re.search(r'Activity Intelligence|ACTIVITY|activity', html, re.I)),
               'PERSONAL_INTELLIGENCE': bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE', html, re.I)),
               'COLLECTIVE_INTELLIGENCE': bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE', html, re.I)),
@@ -56,22 +57,25 @@ jobs:
               raise SystemExit('PROTECTED_SURFACE_MISSING=' + ','.join(missing))
           if rail.search(html):
               raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
-          if html == original:
-              raise SystemExit('NO_SOURCE_CHANGE')
 
-          path.write_text(html, encoding='utf-8')
-          print('CENTER_SMART_FEED=PRESERVED')
-          print('ACTIVITY=PRESERVED')
-          print('PERSONAL_INTELLIGENCE=PRESERVED')
-          print('COLLECTIVE_INTELLIGENCE=PRESERVED')
-          print('LEFT_NAV=PRESERVED')
-          print('RIGHT_OLD_FEED_RAIL=REMOVED')
-          print('CENTER_FEED_WIDTH=EXPANDED')
-          print('NO_FEED_REBUILD=TRUE')
-          print('COLLATERAL_DAMAGE_GATE=PASS')
+          if removed == 1:
+              path.write_text(html, encoding='utf-8')
+              print('CENTER_SMART_FEED=PRESERVED')
+              print('ACTIVITY=PRESERVED')
+              print('PERSONAL_INTELLIGENCE=PRESERVED')
+              print('COLLECTIVE_INTELLIGENCE=PRESERVED')
+              print('LEFT_NAV=PRESERVED')
+              print('RIGHT_OLD_FEED_RAIL=REMOVED')
+              print('CENTER_FEED_WIDTH=EXPANDED')
+              print('NO_FEED_REBUILD=TRUE')
+              print('COLLATERAL_DAMAGE_GATE=PASS')
+          else:
+              print('RIGHT_RAIL_ALREADY_REMOVED=TRUE')
+              print('CENTER_SMART_FEED=PRESENT')
+              print('NO_SOURCE_CHANGE_NEEDED=TRUE')
           PY
 
-      - name: Commit and win the main-branch race safely
+      - name: Commit only if a surgical source change is still needed
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
