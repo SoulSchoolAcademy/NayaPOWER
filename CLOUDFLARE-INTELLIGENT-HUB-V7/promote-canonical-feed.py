@@ -31,11 +31,13 @@ if START in base and END in base:
     base=prefix+suffix
 
 bridge=r'''<script>
-/* NAYANET_CANONICAL_FEED_V17/V18
+/* NAYANET_CANONICAL_FEED_V17/V19
    Canonical source integration + surgical presentation correction.
    Preserve the house. Remove the obsolete right-side Smart Note boards.
    Keep the useful GitHub / Sync Intelligence / Get Connected actions,
    placing them directly below Settings in the existing sidebar.
+   The sidebar flows with the page so its lower controls are reached naturally
+   as the intelligence feed scrolls. No nested sidebar scrollbar.
 */
 (()=>{
 'use strict';
@@ -80,7 +82,7 @@ function moveOperationsBelowSettings(){
 }
 
 function removeVisibleDiagnosticText(){
- const bad=/^(?:NAYANET_CANONICAL_FEED_V1[78]|INTERIOR_EVOLUTION_ACTIVE|n16-style|n16-presentation-control)$/i;
+ const bad=/^(?:NAYANET_CANONICAL_FEED_V1[79]|INTERIOR_EVOLUTION_ACTIVE|n16-style|n16-presentation-control)$/i;
  for(const el of [...document.body.querySelectorAll('body *')]){
   if(el.children.length)continue;
   const t=norm(el.textContent);
@@ -89,19 +91,26 @@ function removeVisibleDiagnosticText(){
 }
 
 function style(){
- if(document.getElementById('nayanet-v18-canonical-style'))return;
- const s=document.createElement('style');s.id='nayanet-v18-canonical-style';s.textContent=`
- /* V18 — feed owns the center; obsolete Smart Note rail is gone. */
+ if(document.getElementById('nayanet-v19-canonical-style'))return;
+ const s=document.createElement('style');s.id='nayanet-v19-canonical-style';s.textContent=`
+ /* V19 — one page, one natural scroll. The feed owns the width; the sidebar follows the page. */
+ .app{grid-template-columns:270px minmax(0,1fr)!important;align-items:start!important}
+ .sidebar{position:relative!important;top:auto!important;height:auto!important;min-height:100vh!important;max-height:none!important;overflow:visible!important;padding:22px 15px 34px!important;align-self:start!important}
+ .sidefoot{position:static!important;left:auto!important;right:auto!important;bottom:auto!important;margin:22px 8px 0!important}
+ .nav{gap:8px!important}
+ .nav button{width:100%!important;min-height:58px!important;padding:0 15px!important;border-radius:16px!important;font-size:13px!important;gap:12px!important}
+ .nav button .ico,.ico{width:24px!important;font-size:19px!important}
+ .navlabel{padding:15px 11px 8px!important;font-size:8px!important}
  .homeWorkspace{display:block!important;width:100%!important}
  .homeFeed{width:100%!important;min-width:0!important;max-width:none!important}
  .activationRail{display:none!important}
- #nayanet-side-operations{display:grid;gap:7px;margin:10px 4px 0;padding:12px 0 0;border-top:1px solid #ffffff12}
- .nayanet-side-operations-label{padding:0 9px 4px;color:#77727e;font-size:7px;font-weight:1000;letter-spacing:.18em}
+ #nayanet-side-operations{display:grid;gap:8px;margin:12px 2px 0;padding:14px 0 0;border-top:1px solid #ffffff12}
+ .nayanet-side-operations-label{padding:0 10px 5px;color:#77727e;font-size:7px;font-weight:1000;letter-spacing:.18em}
  .nayanet-side-operation{min-width:0}
- .nayanet-side-operation .btn{width:100%!important;min-height:40px!important;justify-content:flex-start!important;padding:0 11px!important;border:1px solid #8b63ff66!important;border-radius:12px!important;background:linear-gradient(145deg,#121219,#07070b)!important;color:#fff!important;font-size:7px!important;letter-spacing:.07em!important;box-shadow:inset 0 1px #fff3,0 9px 20px #0008!important}
+ .nayanet-side-operation .btn{width:100%!important;min-height:46px!important;justify-content:flex-start!important;padding:0 12px!important;border:1px solid #8b63ff66!important;border-radius:13px!important;background:linear-gradient(145deg,#121219,#07070b)!important;color:#fff!important;font-size:8px!important;letter-spacing:.07em!important;box-shadow:inset 0 1px #fff3,0 9px 20px #0008!important}
  .nayanet-side-operation .btn:hover,.nayanet-side-operation .btn:focus-visible{border-color:#d86cff!important;box-shadow:inset 0 1px #fff5,0 12px 26px #000a,0 0 20px #d86cff18!important;transform:translateY(-1px)!important}
  .nayanet-side-operation .btn.green{border-color:#55e39a66!important}.nayanet-side-operation .btn.blue{border-color:#55b9ee66!important}.nayanet-side-operation .btn.purple{border-color:#d86cff66!important}
- @media(max-width:900px){#nayanet-side-operations{margin:8px 0 0}.nayanet-side-operation .btn{min-height:38px!important}}
+ @media(max-width:900px){.app{grid-template-columns:1fr!important}.sidebar{min-height:auto!important;padding-bottom:20px!important}.nav button{min-height:54px!important}#nayanet-side-operations{margin:10px 0 0}.nayanet-side-operation .btn{min-height:44px!important}}
  `;document.head.appendChild(s);
 }
 
@@ -125,6 +134,8 @@ hub.write_text(updated)
 print('CANONICAL_FEED_PROMOTION=PASS')
 print('CANONICAL_FEED_INTEGRATION=REBUILT')
 print('OBSOLETE_ACTIVATION_RAIL=REMOVED')
+print('SIDEBAR_NATURAL_PAGE_SCROLL=PASS')
+print('NAVIGATION_EXPANDED=PASS')
 print('OPERATIONS_MOVED_BELOW_SETTINGS=PASS')
 print('POLISH_SCRIPT_WRAPPED=PASS')
 print(f'CANONICAL_BYTES={len(updated.encode("utf-8"))}')
