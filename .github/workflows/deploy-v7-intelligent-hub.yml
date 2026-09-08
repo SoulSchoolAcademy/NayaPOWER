@@ -7,7 +7,6 @@ on:
       - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
       - '2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
-      - '.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
 permissions:
