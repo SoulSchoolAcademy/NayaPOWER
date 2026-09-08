@@ -8,19 +8,29 @@ layer=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.
 polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js')
 
 base=hub.read_text()
-if MARKER in base:
-    print('CANONICAL_FEED_PROMOTION=ALREADY_PRESENT')
-    raise SystemExit(0)
 if '</body>' not in base:
     raise SystemExit('Missing </body> boundary in canonical Hub')
 
-# Promote the proven feed/presentation layers into the visible canonical source.
-# This makes the source file itself the inspectable working artifact instead of
-# hiding the real product change in a generated deployment-only file.
-# The sidebar normalization is deliberately tiny and additive: it does not
-# rebuild navigation; it only removes obsolete duplicate feed labels and gives
-# the three canonical intelligence views their current names when matching
-# existing navigation targets are present.
+legacy_replacements={
+    'SHARED INTELLIGENCE':'COLLECTIVE INTELLIGENCE',
+    'COLLECTIVE SIGNAL':'COLLECTIVE INTELLIGENCE',
+    'NETWORK WISDOM':'COLLECTIVE INTELLIGENCE',
+    'YOUR COMPOUNDING INTELLIGENCE':'PERSONAL INTELLIGENCE',
+    'n10-standard':'n16-standard',
+}
+normalized=base
+for old,new in legacy_replacements.items():
+    normalized=normalized.replace(old,new)
+
+if MARKER in normalized:
+    if normalized != base:
+        hub.write_text(normalized)
+        print('CANONICAL_FEED_PROMOTION=LEGACY_TERMINOLOGY_REPAIRED')
+        print(f'CANONICAL_BYTES={len(normalized.encode("utf-8"))}')
+    else:
+        print('CANONICAL_FEED_PROMOTION=ALREADY_PRESENT')
+    raise SystemExit(0)
+
 bridge=r'''<script>
 /* NAYANET_CANONICAL_FEED_V17
    Canonical source integration: the visible 1:14 Hub now carries the proven
@@ -45,7 +55,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 '''
 
 inject='\n<!-- NAYANET_CANONICAL_FEED_V17_START -->\n'+bridge+'\n<script>\n'+feed.read_text()+'\n</script>\n<script>\n'+interior.read_text()+'\n</script>\n<script>\n'+layer.read_text()+'\n</script>\n'+polish.read_text()+'\n<!-- NAYANET_CANONICAL_FEED_V17_END -->\n'
-updated=base.replace('</body>',inject+'</body>',1)
+updated=normalized.replace('</body>',inject+'</body>',1)
 hub.write_text(updated)
 print('CANONICAL_FEED_PROMOTION=PASS')
 print(f'CANONICAL_BYTES={len(updated.encode("utf-8"))}')
