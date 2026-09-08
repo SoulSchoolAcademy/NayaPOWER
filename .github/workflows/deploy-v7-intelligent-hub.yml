@@ -7,6 +7,7 @@ on:
       - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
       - '2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
+      - '.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
 permissions:
@@ -24,6 +25,28 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Validate Naya execution directive
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
+          text=p.read_text()
+          required=[
+            '**STATUS:** CANONICAL',
+            '**NORTH STAR:** Turn human experience and human–AI interaction into persistent, verified, reusable, compounding intelligence.',
+            'NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.',
+            'SELECT PROVEN METHOD',
+            'OBSERVE EXACT RUNTIME',
+            'SOURCE INTENT IS NOT RUNTIME TRUTH.',
+            'THE COLD-NAYA TEST',
+            'THE SYSTEM COMPOUNDS.'
+          ]
+          missing=[x for x in required if x not in text]
+          if missing: raise SystemExit(f'DIRECTIVE missing: {missing}')
+          print('NAYA_MASTER_EXECUTION_DIRECTIVE=PASS')
+          PY
       - name: Build canonical artifact
         shell: bash
         run: |
