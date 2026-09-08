@@ -1,0 +1,91 @@
+name: Surgical NayaNET Right Rail Removal
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  surgical-edit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Remove ONLY the right activation rail and reclaim its space
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('2026 09 08 9:59 NAYANET HUB.html')
+          html = path.read_text(encoding='utf-8')
+          original = html
+
+          # SURGICAL TARGET: ONLY the right activation/operations rail.
+          # Never replace .homeFeed, .homeWorkspace, .sidebar, or any other page.
+          html, removed = re.subn(
+              r'<aside\s+class=["\']activationRail["\'][\s\S]*?</aside>',
+              '',
+              html,
+              count=1,
+              flags=re.I,
+          )
+          if removed != 1:
+              raise SystemExit(f'RIGHT_RAIL_NOT_REMOVED={removed}')
+
+          # RECLAIM THE FREED COLUMN: exact CSS declaration only.
+          old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
+          new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
+          if old_grid not in html:
+              raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
+          html = html.replace(old_grid, new_grid, 1)
+
+          # The existing mobile one-column rule is already correct; do not touch it.
+
+          # COLLATERAL-DAMAGE GATE.
+          protected = {
+              'LEFT_SIDEBAR': bool(re.search(r'<aside\s+class=["\']sidebar["\']', html, re.I)),
+              'HOME_WORKSPACE': 'class="homeWorkspace"' in html or "class='homeWorkspace'" in html,
+              'HOME_FEED': bool(re.search(r'<section\s+class=["\']homeFeed["\']', html, re.I)),
+              'INTELLIGENT_FEED': 'homeIntelligentBlocks' in html,
+              'SMART_NOTES_PAGE': 'id="page-notes"' in html,
+              'COLLECTIVE_PAGE': 'id="page-collective"' in html,
+              'ACTIVITY_WORDING': 'ACTIVITY' in html,
+          }
+          missing = [k for k,v in protected.items() if not v]
+          if missing:
+              raise SystemExit('PROTECTED_SURFACE_MISSING=' + ','.join(missing))
+
+          if re.search(r'<aside\s+class=["\']activationRail["\']', html, re.I):
+              raise SystemExit('RIGHT_RAIL_DOM_STILL_PRESENT')
+
+          # Ensure the requested operation did not accidentally alter unrelated source.
+          # The only structural removals permitted are inside the named activationRail.
+          if html == original:
+              raise SystemExit('NO_SOURCE_CHANGE')
+
+          path.write_text(html, encoding='utf-8')
+          print('TARGET=activationRail')
+          print('RIGHT_RAIL=REMOVED')
+          print('HOME_WORKSPACE=FULL_WIDTH')
+          print('LEFT_SIDEBAR=PRESERVED')
+          print('HOME_FEED=PRESERVED')
+          print('SMART_NOTES=PRESERVED')
+          print('COLLATERAL_DAMAGE_GATE=PASS')
+          PY
+
+      - name: Commit the surgical source change
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 08 9:59 NAYANET HUB.html'
+          git diff --cached --quiet && { echo 'NO_CHANGE_NEEDED'; exit 0; }
+          git commit -m 'Surgical Hub change: remove only right activation rail'
+          git push
