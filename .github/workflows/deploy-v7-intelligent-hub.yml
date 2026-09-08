@@ -109,7 +109,7 @@ jobs:
           interior_required=['NayaNET Intelligent Feed V4','SPECTRUM','WHAT WE LEARNED · WHAT IT MEANS','n4-learning','n4-interior-style','INTERIOR_EVOLUTION_ACTIVE']
           layer_required=['n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px!important','activationRail','visibility:visible!important','FULL PAGE','WIDESCREEN','LEFT NAV stays LEFT. RIGHT OPERATIONS stay RIGHT.']
           canonical_required=['NAYANET_CANONICAL_FEED_V17','NAYANET_CANONICAL_FEED_V17_START','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','INTERIOR_EVOLUTION_ACTIVE','n16-style','n16-presentation-control']
-          artifact_required=['YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n16-style','n16-presentation-control','nayanet-focus-mode','COLLECTIVE INTELLIGENCE','HOW NAYANET','activationRail','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS']
+          artifact_required=['n16-style','n16-presentation-control','nayanet-focus-mode','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','WHAT WE LEARNED · WHAT IT MEANS','activationRail','INTERIOR_EVOLUTION_ACTIVE']
           for label,text,need in [('FEED',feed,feed_required),('INTERIOR',interior,interior_required),('LAYER',layer,layer_required),('CANONICAL',canonical,canonical_required),('ARTIFACT',artifact,artifact_required)]:
               missing=[x for x in need if x not in text]
               if missing: raise SystemExit(f'{label} missing: {missing}')
@@ -141,7 +141,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           root=Path('/tmp/root').read_text(); smart=Path('/tmp/smart').read_text()
-          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS','NAYANET_CANONICAL_FEED_V17']
+          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS','NAYANET_CANONICAL_FEED_V17']
           for source,text in [('ROOT',root),('SMART_LINK',smart)]:
               missing=[x for x in required if x not in text]
               if missing: raise SystemExit(f'{source} missing runtime markers: {missing}')
