@@ -78,7 +78,7 @@ jobs:
           grep -Fq 'PLAY NAYA' "$LAYER"
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' "$LAYER"
           grep -Fq 'Your Intelligence Today' "$LAYER"
-          grep -Fq 'Your Reports' "$LAYER'
+          grep -Fq 'Your Reports' "$LAYER"
           grep -Fq 'Intelligent Library' "$LAYER"
           grep -Fq 'Smart Lists' "$LAYER"
           grep -Fq 'Smart Share' "$LAYER"
