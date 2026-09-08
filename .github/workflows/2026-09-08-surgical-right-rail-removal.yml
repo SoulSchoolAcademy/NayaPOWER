@@ -27,8 +27,6 @@ jobs:
           html = path.read_text(encoding='utf-8')
           original = html
 
-          # TARGET: the old right-side rail/feed. It is identified by the activationRail
-          # class, not by visual position or by the word "sidebar".
           rail = re.compile(
               r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>',
               re.I
@@ -38,15 +36,12 @@ jobs:
           if removed != 1:
               raise SystemExit('RIGHT_RAIL_NOT_FOUND_EXACTLY_ONCE')
 
-          # Reclaim the exact 250px column formerly occupied by that rail.
           old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
           new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
           if old_grid not in html:
               raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
           html = html.replace(old_grid, new_grid, 1)
 
-          # Hard preservation gates: the center Smart/Intelligent Feed and navigation must
-          # still exist. This workflow is forbidden from rebuilding or injecting a feed.
           protected = {
               'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{', html)),
               'HOME_WORKSPACE': 'homeWorkspace' in html,
@@ -59,7 +54,6 @@ jobs:
           missing = [k for k, ok in protected.items() if not ok]
           if missing:
               raise SystemExit('PROTECTED_SURFACE_MISSING=' + ','.join(missing))
-
           if rail.search(html):
               raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
           if html == original:
@@ -77,7 +71,7 @@ jobs:
           print('COLLATERAL_DAMAGE_GATE=PASS')
           PY
 
-      - name: Commit only the surgical source change
+      - name: Commit and safely rebase before push
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
@@ -85,4 +79,6 @@ jobs:
           git add '2026 09 08 452 NayaNET Hub.html'
           git diff --cached --quiet && { echo 'NO_SOURCE_CHANGE_NEEDED'; exit 0; }
           git commit -m 'Surgical Hub fix: remove old right-side feed and widen Smart Feed'
-          git push
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
