@@ -1,3 +1,4 @@
+# CANONICAL_RELEASE_RECONCILIATION_2026-09-08
 name: Deploy V7 Intelligent Hub
 on:
   push:
