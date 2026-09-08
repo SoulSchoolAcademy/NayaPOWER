@@ -504,100 +504,11 @@ let runs=0; const timer=setInterval(()=>{init(); if(++runs>12) clearInterval(tim
 
 </script>
 <script>
-/* NayaNET V7 — Intelligent Hub 10/10 rail + hierarchy polish.
-   Surgical layer: preserves existing controls and functionality, changes only placement and visual authority.
-*/
-(()=>{
-'use strict';
-if(window.__NAYANET_V7_10_RAIL__) return;
-window.__NAYANET_V7_10_RAIL__=true;
-
-const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase();
-const targets={github:'CONNECT GITHUB',sync:'SYNC INTELLIGENCE',connect:'GET CONNECTED'};
-const style=document.createElement('style');
-style.textContent=`
-.n10-rail{position:fixed;z-index:18;top:92px;right:18px;width:292px;display:grid;gap:14px;padding:0 0 18px;max-height:calc(100vh - 108px);overflow:auto;scrollbar-width:none}.n10-rail::-webkit-scrollbar{display:none}
-.n10-report,.n10-connect{border:1px solid #ffffff18;border-radius:22px;background:#000;box-shadow:inset 0 1px #fff5,0 22px 55px #000d}.n10-report{position:relative;padding:18px;overflow:hidden;border-color:#e8c76642;box-shadow:inset 0 1px #fff6,0 22px 55px #000d,0 0 30px #e8c7660b}.n10-report:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:#e8c766;box-shadow:0 0 22px #e8c766}.n10-report:after{content:"";position:absolute;right:-65px;top:-85px;width:180px;height:180px;background:radial-gradient(circle,#e8c766,transparent 68%);opacity:.12;pointer-events:none}.n10-report-icon{position:relative;width:40px;height:40px;border:1px solid #e8c76672;border-radius:13px;display:grid;place-items:center;color:#e8c766;background:#e8c7660b;box-shadow:0 0 22px #e8c76628,inset 0 1px #fff4;font-size:20px;margin-bottom:13px}.n10-report-copy{position:relative}.n10-report-copy span{display:block;color:#e8c766;font-size:7px;font-weight:1000;letter-spacing:.2em}.n10-report-copy strong{display:block;color:#fff;font-size:15px;line-height:1.12;letter-spacing:-.025em;margin-top:5px}.n10-report-copy small{display:block;color:#c8c3cd;font-size:9px;line-height:1.45;margin-top:7px}.n10-report-btn{position:relative;margin-top:14px;width:100%;min-height:39px;border:1px solid #e8c76668;border-radius:11px;background:#050505;color:#fff;font-size:8px;font-weight:1000;letter-spacing:.1em;box-shadow:inset 0 1px #fff4,0 10px 24px #000a}.n10-report-btn:hover{border-color:#e8c766;color:#fff;box-shadow:inset 0 1px #fff6,0 12px 27px #000b,0 0 20px #e8c76618}.n10-connect{padding:15px;background:#000}.n10-rail-label{padding:2px 3px 10px;color:#8f8995;font-size:7px;font-weight:1000;letter-spacing:.19em}.n10-connect-btn{width:100%;display:grid;grid-template-columns:32px 1fr 14px;align-items:center;gap:9px;min-height:58px;padding:9px 8px;border:1px solid #ffffff14;border-radius:13px;background:#030304;color:#fff;text-align:left;margin-top:7px;box-shadow:inset 0 1px #fff2,0 9px 20px #0009}.n10-connect-btn:hover{border-color:#ffffff38;background:#07070a;transform:translateY(-1px)}.n10-connect-btn i{width:32px;height:32px;display:grid;place-items:center;border-radius:10px;background:#08080a;border:1px solid #ffffff18;color:#fff;font-style:normal;font-size:14px}.n10-connect-btn span b{display:block;color:#fff;font-size:8px;letter-spacing:.08em}.n10-connect-btn span small{display:block;color:#a9a4b1;font-size:8px;line-height:1.35;margin-top:3px}.n10-connect-btn em{font-style:normal;color:#77717d;font-size:18px}.n10-main{margin-right:322px}.n10-main .topbar{padding-right:4px}
-[data-nayanet-legacy-control=hidden]{display:none!important}
-.n10-rail-ready #nayanet-elite-feed{width:100%;max-width:none}.n10-rail-ready #nayanet-elite-feed .n3-bottom{margin-top:38px;padding-top:25px}
-@media(max-width:1120px){.n10-rail{position:relative;top:auto;right:auto;width:auto;max-height:none;margin:0 18px 28px}.n10-main{margin-right:0}.n10-rail-ready #nayanet-elite-feed{max-width:1180px}}
-@media(max-width:820px){.n10-rail{margin:0 12px 24px}.n10-report{padding:16px}.n10-connect{padding:13px}}
-`;
-document.head.appendChild(style);
-function findControl(label){const want=norm(label);return [...document.querySelectorAll('button,a,[role="button"]')].find(el=>{const t=norm(el.textContent);return t===want||t.includes(want)})||null;}
-function compactParent(el){let p=el;for(let i=0;i<5&&p&&p!==document.body;i++,p=p.parentElement){const t=norm(p.textContent);if(t.length<260&&p.children.length<=7)return p;}return el;}
-function invoke(label){const el=findControl(label);if(!el)return;el.click();}
-function removeLegacySidebarItems(){document.querySelectorAll('.sidebar .nav button,.sidebar a,.sidebar [role="button"]').forEach(el=>{const t=norm(el.textContent);if(t.includes('SMART NOTES')||t.includes('INTELLIGENT BLOCKS'))(el.closest('button,a')||el).remove();});}
-function hideLegacyBottomControls(){['CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED'].forEach(label=>{const want=norm(label);[...document.querySelectorAll('button,a,[role="button"]')].forEach(el=>{if(el.closest('.n10-rail'))return;const t=norm(el.textContent);if(!(t===want||t.includes(want)))return;const p=compactParent(el);if(p)p.dataset.nayanetLegacyControl='hidden';});});}
-function ensureRail(){let rail=document.querySelector('.n10-rail');if(!rail){rail=document.createElement('aside');rail.className='n10-rail';rail.innerHTML=`<section class="n10-report" aria-label="Daily Intelligence Report"><div class="n10-report-icon">✦</div><div class="n10-report-copy"><span>YOUR DAILY</span><strong>INTELLIGENCE REPORT</strong><small>Today’s intelligence, distilled for you.</small></div><button class="n10-report-btn" type="button">OPEN REPORT</button></section><section class="n10-connect" aria-label="Intelligence connections"><div class="n10-rail-label">INTELLIGENCE CONNECTIONS</div><button class="n10-connect-btn" data-action="CONNECT GITHUB"><i>◈</i><span><b>CONNECT GITHUB</b><small>Bring your repository intelligence in.</small></span><em>›</em></button><button class="n10-connect-btn" data-action="SYNC INTELLIGENCE"><i>↻</i><span><b>SYNC INTELLIGENCE</b><small>Refresh your connected knowledge.</small></span><em>›</em></button><button class="n10-connect-btn" data-action="GET CONNECTED"><i>✦</i><span><b>GET CONNECTED</b><small>Connect the intelligence network.</small></span><em>›</em></button></section>`;document.body.appendChild(rail)}const report=rail.querySelector('.n10-report-btn');if(report&&!report.dataset.bound){report.dataset.bound='1';report.onclick=()=>{const candidates=[...document.querySelectorAll('button,a,[role="button"]')];const el=candidates.find(x=>norm(x.textContent).includes('DAILY INTELLIGENCE REPORT'))||candidates.find(x=>norm(x.textContent).includes('DAILY INTELLIGENCE BRIEFING'));if(el&&el!==report)el.click();else window.location.hash='daily-intelligence-report';};}rail.querySelectorAll('.n10-connect-btn').forEach(btn=>{if(btn.dataset.bound)return;btn.dataset.bound='1';btn.onclick=()=>invoke(btn.dataset.action);});}
-function relocateFooter(){const root=document.querySelector('#nayanet-elite-feed');if(!root)return;const footer=root.querySelector('.n3-bottom');const body=root.querySelector('.n3-body');if(footer&&body&&footer.previousElementSibling!==body)root.appendChild(footer);}
-function polishLayout(){document.documentElement.classList.add('n10-rail-ready');const main=document.querySelector('.main');if(main)main.classList.add('n10-main');}
-function init(){removeLegacySidebarItems();ensureRail();hideLegacyBottomControls();relocateFooter();polishLayout();}
-init();new MutationObserver(init).observe(document.body,{childList:true,subtree:true});
-})();
+/* RETIRED — superseded by surgical V13 restoration. */
 
 </script>
 <script>
-/* NayaNET V11 — final 10/10 hierarchy and spatial polish.
-   Surgical layer over V10. No new intelligence model; only authority, spacing,
-   alignment, responsive ergonomics, and visual hierarchy are refined.
-*/
-(()=>{
-'use strict';
-if(window.__NAYANET_V11_FINAL_POLISH__) return;
-window.__NAYANET_V11_FINAL_POLISH__=true;
-const style=document.createElement('style');
-style.textContent=`
-:root{--n11-gold:#e8c766;--n11-line:#ffffff18}
-/* CENTER = intelligence; RIGHT = intelligence operations. */
-.n11-ready .main{margin-right:336px!important;padding-left:32px!important;padding-right:32px!important}
-.n11-ready #nayanet-elite-feed{width:100%!important;max-width:1180px!important;margin-left:auto!important;margin-right:auto!important}
-.n11-ready #nayanet-elite-feed .n3-tabs{margin-bottom:12px!important}
-.n11-ready #nayanet-elite-feed .n3-body{margin-top:0!important;padding-top:0!important}
-.n11-ready #nayanet-elite-feed .n3-bottom{margin-top:34px!important;padding-top:24px!important}
-/* The rail starts beneath the global top bar and never competes with it. */
-.n10-rail{top:88px!important;right:16px!important;width:304px!important;gap:12px!important;max-height:calc(100vh - 104px)!important}
-.n10-report{border-radius:20px!important;padding:19px!important;border-color:#e8c76658!important;box-shadow:inset 0 1px #fff7,0 24px 60px #000e,0 0 34px #e8c76612!important}
-.n10-report-icon{width:42px!important;height:42px!important;border-radius:13px!important;margin-bottom:12px!important}
-.n10-report-copy span{font-size:7px!important;color:#e8c766!important}
-.n10-report-copy strong{font-size:16px!important;color:#fff!important}
-.n10-report-copy small{color:#d4cfda!important;font-size:9px!important}
-.n10-report-btn{min-height:41px!important;border-radius:12px!important;background:#050505!important}
-.n10-connect{border-radius:20px!important;padding:14px!important}
-.n10-rail-label{color:#9b95a2!important;padding:2px 4px 8px!important}
-.n10-connect-btn{min-height:60px!important;border-radius:13px!important;background:#020203!important}
-.n10-connect-btn:hover,.n10-connect-btn:focus-visible{border-color:#ffffff42!important;background:#08080b!important;transform:translateY(-1px)}
-.n10-connect-btn:focus-visible,.n10-report-btn:focus-visible{outline:2px solid #e8c766!important;outline-offset:2px}
-/* Remove accidental competing authority if a legacy layer recreates these labels. */
-.n11-ready .sidebar .n10-legacy-intelligence,.n11-ready .sidebar [data-intelligence-block],.n11-ready .sidebar [data-smart-note]{display:none!important}
-@media(max-width:1120px){
- .n11-ready .main{margin-right:0!important;padding-left:24px!important;padding-right:24px!important}
- .n10-rail{position:relative!important;top:auto!important;right:auto!important;width:auto!important;margin:8px 24px 28px!important;max-height:none!important}
- .n11-ready #nayanet-elite-feed{max-width:1180px!important}
-}
-@media(max-width:820px){
- .n11-ready .main{padding-left:12px!important;padding-right:12px!important}
- .n10-rail{margin:8px 12px 22px!important}
- .n10-report{padding:16px!important}
- .n10-connect{padding:12px!important}
- .n10-connect-btn{min-height:56px!important}
-}
-@media(prefers-reduced-motion:reduce){.n10-connect-btn{transition:none!important}}
-`;
-document.head.appendChild(style);
-function apply(){
- document.documentElement.classList.add('n11-ready');
- const feed=document.querySelector('#nayanet-elite-feed');
- if(!feed)return;
- const tabs=feed.querySelector('.n3-tabs');
- const body=feed.querySelector('.n3-body');
- const footer=feed.querySelector('.n3-bottom');
- if(tabs&&body){body.style.marginTop='0';body.style.paddingTop='0';}
- if(footer&&body&&footer.previousElementSibling!==body)feed.appendChild(footer);
-}
-apply();
-new MutationObserver(apply).observe(document.body,{childList:true,subtree:true});
-})();
+/* RETIRED — superseded by surgical V13 restoration. */
 
 </script>
 <script>
