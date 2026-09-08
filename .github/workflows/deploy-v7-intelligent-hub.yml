@@ -52,7 +52,7 @@ jobs:
           node --check "$S"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
-          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n15-style' '.homeWorkspace' 'grid-template-columns:minmax(0,1fr) 250px' '.activationRail' 'display:grid!important' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" "$S"; done
+          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n15-style' '.homeWorkspace' 'grid-template-columns:minmax(0,1fr) 250px!important' '.activationRail' 'visibility:visible!important' 'ORIGINAL RIGHT OPERATIONS RAIL'; do grep -Fq "$s" "$S"; done
           ! grep -Fq '.activationRail{display:none!important}' "$S"
           ! grep -Fq 'grid-template-columns:minmax(0,1fr)!important}' "$S"
           grep -Fq 'n15-style' "$A"
