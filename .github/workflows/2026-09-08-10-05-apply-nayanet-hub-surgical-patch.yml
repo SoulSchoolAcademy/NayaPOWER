@@ -5,6 +5,9 @@ on:
     paths:
       - 'scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py'
       - '.github/workflows/2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml'
+      - '.naya/NAYA-MASTER-EXECUTION-CONTRACT.md'
+      - '.naya/NAYA-INTELLIGENCE-ORGANIZATION-PROTOCOL.md'
+      - '.naya/activity/2026/09/08/2026-09-08-TODAY.md'
   workflow_dispatch:
 jobs:
   patch:
