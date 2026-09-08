@@ -35,31 +35,25 @@ jobs:
           feed = feed_path.read_text(encoding='utf-8')
           interior = interior_path.read_text(encoding='utf-8')
 
-          # The right rail may already be gone from the canonical source. If it is still
-          # present, remove exactly that named element and nothing else.
           hub, removed_rail = re.subn(
               r'<aside\s+class=["\']activationRail["\'][\s\S]*?</aside>',
               '', hub, count=1, flags=re.I
           )
           print(f'RIGHT_RAIL_SOURCE_REMOVALS={removed_rail}')
 
-          # Remove the prior injected enhancement stack from the canonical source.
-          # This is the accidental bottom-of-page/code-layer contamination reported in the runtime.
+          # The old additive intelligence stack begins at this exact marker and is
+          # not part of the canonical shell. Cut ONLY that tail, then rebuild the
+          # authoritative V3/V4 feed below. This removes the accidental raw-code tail
+          # without touching the shell/pages above the marker.
           marker = '<!-- NAYANET-NAYAHUB-INTELLIGENCE-LAYER -->'
           if marker in hub:
-              head, _ = hub.split(marker, 1)
-              body_close = head.find('</body>')
-              if body_close < 0:
-                  raise SystemExit('BODY_CLOSE_MISSING_AFTER_GARBAGE_MARKER')
-              hub = head[:body_close] + '</body></html>'
+              hub = hub.split(marker, 1)[0].rstrip() + '\n</body></html>'
 
-          # Remove any stale injected V3/V4 wrappers if they exist, so there is one feed authority.
           hub = re.sub(r'<script\s+id=["\']nayanet-live-feed-v3["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
           hub = re.sub(r'<script\s+id=["\']nayanet-live-feed-v4["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
           hub = re.sub(r'<style\s+id=["\']nayanet-live-canonical-authority["\'][\s\S]*?</style>\s*', '', hub, flags=re.I)
           hub = re.sub(r'<script\s+id=["\']nayanet-live-canonical-runtime["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
 
-          # Keep the existing application shell/pages. Add one authoritative feed host.
           if 'id="nayanet-elite-feed"' not in hub and "id='nayanet-elite-feed'" not in hub:
               insertion = '<div id="nayanet-elite-feed" aria-label="NayaNET Intelligent Feed"></div>'
               hub, added = re.subn(
@@ -70,7 +64,6 @@ jobs:
               if added != 1:
                   raise SystemExit(f'FEED_HOST_INSERTION={added}')
 
-          # Reclaim the removed right-side column. Do not touch the left sidebar.
           hub = hub.replace(
               '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}',
               '.homeWorkspace{display:block;width:100%;max-width:none}', 1
@@ -80,7 +73,6 @@ jobs:
               '.homeWorkspace{display:block;width:100%;max-width:none}', 1
           )
 
-          # Inject ONLY the authoritative V3/V4 feed engines and a small runtime guard.
           injected = '''\n<script id="nayanet-live-feed-v3">\n''' + feed + '''\n</script>\n<script id="nayanet-live-feed-v4">\n''' + interior + '''\n</script>\n<style id="nayanet-feed-clean-runtime">\n#page-home .homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}\n#page-home .homeWorkspace>.homeFeed>.intelligentFeed{display:none!important}\n#nayanet-elite-feed{display:block!important;width:100%!important;max-width:none!important;margin:0!important}\n.activationRail{display:none!important;width:0!important;height:0!important;max-width:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}\n@media(max-width:900px){#page-home .homeWorkspace>.homeFeed>.intelligentFeed{display:none!important}#nayanet-elite-feed{width:100%!important}}\n</style>\n'''
           hub = hub.replace('</body>', injected + '</body>', 1)
 
