@@ -5,6 +5,7 @@ on:
     paths:
       - '2026 09 07  1:14 NAYANETHUBONE.html'
       - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+      - '2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
@@ -30,10 +31,15 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           hub=Path('2026 09 07  1:14 NAYANETHUBONE.html')
-          layer=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
+          feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
+          v13=Path('2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js')
           base=hub.read_text()
           if '</body>' not in base: raise SystemExit('Missing body boundary')
-          inject='<script>\n'+layer.read_text()+'\n</script>\n'+Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
+          inject=(
+            '<script>\n'+feed.read_text()+'\n</script>\n'
+            '<script>\n'+v13.read_text()+'\n</script>\n'
+            +Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
+          )
           out=base.replace('</body>',inject+'</body>',1)
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').write_text(out)
@@ -44,9 +50,12 @@ jobs:
         run: |
           set -euo pipefail
           L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+          S='2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
           node --check "$L"
+          node --check "$S"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
+          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS'; do grep -Fq "$s" "$S"; done
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -65,7 +74,9 @@ jobs:
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
+          grep -Fq 'n13-original-ops' /tmp/root
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
+          echo 'V13_SURGICAL_LAYER=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
