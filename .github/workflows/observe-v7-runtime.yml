@@ -19,8 +19,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          root='https://noisy-block-35d0.nayanet.workers.dev/'
-          smart='https://noisy-block-35d0.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
+          root='https://nayanet-v7-intelligent-hub.nayanet.workers.dev/'
+          smart='https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
           mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
           {
             echo "OBSERVED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
