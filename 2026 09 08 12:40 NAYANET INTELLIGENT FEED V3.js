@@ -47,3 +47,32 @@ function mount(){if(document.getElementById(ROOT))return;const page=document.que
 const style=document.createElement('style');style.textContent=css;document.head.appendChild(style);const boot=()=>setTimeout(mount,0);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
 /* RELEASE CONTRACT: direct-under-tabs feeds | no signal cards | no shared-intelligence header | no Your Intelligence header | HOW NAYANET'S INTELLIGENT FEEDS WORK Smart Note | three alive tabs | premium dimensional blocks | YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY */
+
+/* NAYANET_FEED_V5_FINAL_VISIBLE — explicit final visual enforcement in the canonical promotion pipeline. */
+(()=>{
+'use strict';
+function finish(){
+ const root=document.getElementById('nayanet-elite-feed');
+ if(!root)return;
+ root.dataset.finalVisible='true';
+ root.setAttribute('data-canonical-feed-finish','NAYANET_FEED_V5_FINAL_VISIBLE');
+ if(!document.getElementById('nayanet-feed-v5-final-style')){
+  const s=document.createElement('style');s.id='nayanet-feed-v5-final-style';s.textContent=`
+  #nayanet-elite-feed{width:100%!important;max-width:none!important}
+  #nayanet-elite-feed .n3-body{gap:22px!important}
+  #nayanet-elite-feed .n3-block{background:#000!important;color:#fff!important;border:1px solid color-mix(in srgb,var(--accent) 72%,#fff 8%)!important;border-radius:30px!important;box-shadow:inset 0 1px #fff7,0 30px 80px #000f,0 0 46px color-mix(in srgb,var(--accent) 15%,transparent)!important}
+  #nayanet-elite-feed .n3-block:before{width:4px!important;background:var(--accent)!important;box-shadow:0 0 28px var(--accent),0 0 70px color-mix(in srgb,var(--accent) 32%,transparent)!important}
+  #nayanet-elite-feed .n3-head{background:#000!important;border-bottom:1px solid #ffffff18!important}
+  #nayanet-elite-feed .n3-title,#nayanet-elite-feed .n3-eyebrow,#nayanet-elite-feed .n3-nutshell p,#nayanet-elite-feed .n3-phead b,#nayanet-elite-feed .n3-pbody,#nayanet-elite-feed .n3-bottom strong,#nayanet-elite-feed .n3-bottom span{color:#fff!important}
+  #nayanet-elite-feed .n3-nutshell{background:#000!important;border:1px solid #fff8!important;box-shadow:inset 0 1px #fff,0 20px 48px #000f,0 0 26px #fff2!important}
+  #nayanet-elite-feed .n3-perspective{background:#000!important;border-color:color-mix(in srgb,var(--p) 82%,#fff 5%)!important;box-shadow:inset 0 1px #fff3,0 14px 34px #000e,0 0 30px color-mix(in srgb,var(--p) 14%,transparent)!important}
+  #nayanet-elite-feed .n3-picon{background:#000!important;border-color:var(--p)!important}
+  #nayanet-elite-feed .n3-tab{background:#000!important;color:#fff!important}
+  #nayanet-elite-feed .n3-tab.active{border-color:var(--tone)!important;box-shadow:inset 0 1px #fff5,0 0 30px color-mix(in srgb,var(--tone) 24%,transparent)!important}
+  @media(max-width:820px){#nayanet-elite-feed .n3-block{border-radius:23px!important}}
+  `;document.head.appendChild(s);
+ }
+}
+function boot(){finish();setTimeout(finish,300);setTimeout(finish,900);setTimeout(finish,1800);}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+})();
