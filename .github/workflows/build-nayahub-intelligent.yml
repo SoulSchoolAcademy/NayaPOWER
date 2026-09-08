@@ -11,6 +11,7 @@ on:
       - 'scripts/nayanet-hub-authority-correction.js'
       - 'scripts/nayanet-hub-final-polish.js'
       - 'scripts/nayanet-hub-final-execution.js'
+      - 'scripts/nayanet-hub-sidebar-feed-tenstar.js'
       - '.github/workflows/build-nayahub-intelligent.yml'
   pull_request:
     types: [closed]
@@ -34,11 +35,11 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          src=Path('NAYAHUB.html'); layer=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'); completion=Path('nayanet-hub-collections.js'); authority=Path('scripts/nayanet-hub-authority-correction.js'); polish=Path('scripts/nayanet-hub-final-polish.js'); final_exec=Path('scripts/nayanet-hub-final-execution.js')
+          src=Path('NAYAHUB.html'); layer=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'); completion=Path('nayanet-hub-collections.js'); authority=Path('scripts/nayanet-hub-authority-correction.js'); polish=Path('scripts/nayanet-hub-final-polish.js'); final_exec=Path('scripts/nayanet-hub-final-execution.js'); tenstar=Path('scripts/nayanet-hub-sidebar-feed-tenstar.js')
           html=src.read_text(encoding='utf-8')
           if html.count('<!doctype html>')!=1 or html.count('</html>')!=1: raise SystemExit('NAYAHUB.html is not a complete document')
           layer_text=layer.read_text(encoding='utf-8').replace("setTimeout(()=>showLibrary(),100));window.NayaNETV7","setTimeout(()=>showLibrary(),100)));window.NayaNETV7")
-          layers=[('NAYANET-NAYAHUB-INTELLIGENCE-LAYER',layer_text,'nayanet-nayahub-intelligence'),('NAYANET-NAYAHUB-COLLECTIONS-LAYER',completion.read_text(encoding='utf-8'),'nayanet-nayahub-collections'),('NAYANET-CANONICAL-HUB-AUTHORITY-V1',authority.read_text(encoding='utf-8'),'nayanet-canonical-hub-authority'),('NAYANET-CANONICAL-HUB-FINAL-POLISH-V1',polish.read_text(encoding='utf-8'),'nayanet-canonical-hub-final-polish'),('NAYANET-HUB-FINAL-EXECUTION-V1',final_exec.read_text(encoding='utf-8'),'nayanet-hub-final-execution')]
+          layers=[('NAYANET-NAYAHUB-INTELLIGENCE-LAYER',layer_text,'nayanet-nayahub-intelligence'),('NAYANET-NAYAHUB-COLLECTIONS-LAYER',completion.read_text(encoding='utf-8'),'nayanet-nayahub-collections'),('NAYANET-CANONICAL-HUB-AUTHORITY-V1',authority.read_text(encoding='utf-8'),'nayanet-canonical-hub-authority'),('NAYANET-CANONICAL-HUB-FINAL-POLISH-V1',polish.read_text(encoding='utf-8'),'nayanet-canonical-hub-final-polish'),('NAYANET-HUB-FINAL-EXECUTION-V1',final_exec.read_text(encoding='utf-8'),'nayanet-hub-final-execution'),('NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1',tenstar.read_text(encoding='utf-8'),'nayanet-hub-sidebar-feed-tenstar')]
           for marker,body,script_id in layers:
               if '<!-- '+marker+' -->' not in html:
                   html=html.replace('</body>','\n<!-- '+marker+' -->\n<script id="'+script_id+'">\n'+body+'\n</script>\n</body>',1)
@@ -63,6 +64,7 @@ jobs:
           grep -q 'NAYANET-CANONICAL-HUB-AUTHORITY-V1' index.html
           grep -q 'NAYANET-CANONICAL-HUB-FINAL-POLISH-V1' index.html
           grep -q 'NAYANET-HUB-FINAL-EXECUTION-V1' index.html
+          grep -q 'NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1' index.html
           grep -q 'DAILY INTELLIGENCE BRIEFING' index.html
           grep -q 'SHARE TO COLLECTIVE' index.html
           grep -q 'SAVE TO MY INTELLIGENCE' index.html
@@ -71,6 +73,8 @@ jobs:
           from pathlib import Path
           import re,zipfile
           s=Path('index.html').read_text(encoding='utf-8');assert s.count('<!doctype html>')==1 and s.count('</html>')==1
+          assert 'grid-template-columns:minmax(0,1fr)!important' in s
+          assert 'NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1' in s
           scripts=re.findall(r'<script(?:[^>]*)>(.*?)</script>',s,re.S|re.I)
           print('VALIDATED',len(s),'bytes',len(scripts),'embedded scripts; browser execution preserved from canonical source')
           with zipfile.ZipFile('NayaNET-Intelligent-Hub-Cloudflare.zip','w',zipfile.ZIP_DEFLATED) as z:
