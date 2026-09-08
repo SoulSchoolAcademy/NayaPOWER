@@ -1,0 +1,97 @@
+name: 2026-09-08 NayaNET Hub Release Final
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2026 09 08 9:59 NAYANET HUB.html'
+      - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+      - '2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js'
+      - '.github/workflows/2026-09-08-nayanet-hub-release-final.yml'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nayanet-hub-final
+  cancel-in-progress: true
+
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Build exact current Hub into the production artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          hub = Path('2026 09 08 9:59 NAYANET HUB.html').read_text(encoding='utf-8')
+          feed = Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text(encoding='utf-8')
+          interior = Path('2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js').read_text(encoding='utf-8')
+
+          # 1) Remove only the right activation/operations rail.
+          hub, n = re.subn(r'<aside\\s+class=["\']activationRail["\'][\\s\\S]*?</aside>', '', hub, count=1, flags=re.I)
+          if n != 1: raise SystemExit(f'RIGHT_RAIL_REMOVAL_FAILED={n}')
+
+          # 2) Preserve the existing center feed host and replace only its interior.
+          hub, n = re.subn(r'<section class=["\']homeFeed["\'][\\s\\S]*?</section>\\s*</section>', '<section class="homeFeed"><div id="nayanet-elite-feed" aria-label="NayaNET Intelligent Feed"></div></section>', hub, count=1, flags=re.I)
+          if n != 1: raise SystemExit(f'HOME_FEED_HOST_REPLACEMENT_FAILED={n}')
+
+          # 3) Use the existing V3 feed source, but prevent its old sidebar relabel operation.
+          feed = feed.replace('relabelSidebar();', '', 1)
+
+          # 4) Inject the feed and a post-mount reconciler. The reconciler moves the feed into the center host,
+          #    so the feed source itself does not need to know about this Hub shell's DOM structure.
+          runtime = '''<script id="nayanet-canonical-feed-v3">\n''' + feed + '''\n</script>\n<script id="nayanet-canonical-feed-v4">\n''' + interior + '''\n</script>\n<script id="nayanet-canonical-production-guard">\n(()=>{const moveFeed=()=>{const root=document.getElementById('nayanet-elite-feed'),host=document.querySelector('#page-home .homeFeed');if(root&&host&&root.parentElement!==host)host.replaceChildren(root);document.querySelectorAll('.activationRail').forEach(x=>x.remove());const ws=document.querySelector('.homeWorkspace');if(ws){ws.style.setProperty('display','block','important');ws.style.setProperty('grid-template-columns','1fr','important');ws.style.setProperty('width','100%','important')}document.querySelectorAll('.homeFeed,#nayanet-elite-feed').forEach(x=>x.style.setProperty('width','100%','important'))};const actions=()=>{document.querySelectorAll('#nayanet-elite-feed .n3-block').forEach(b=>{if(b.querySelector('.nhm-actions'))return;const title=(b.querySelector('.n3-title')?.textContent||'Intelligent Block').trim();const bar=document.createElement('div');bar.className='nhm-actions';bar.innerHTML='<button>＋ SHARE</button><button>👍 LIKE</button><button>♥ LOVE</button><button>★ RANK</button><button>💬 COMMENT</button><button>🔖 SAVE</button>';bar.querySelectorAll('button').forEach((x,i)=>{x.onclick=()=>{if(i===0){const t=title+'\\n\\n'+(b.querySelector('.n3-nutshell p')?.textContent||'');navigator.clipboard?.writeText(t+'\\n\\nNayaNET — Create. Connect. Grow with US.').catch(()=>{});x.textContent='✓ COPIED';setTimeout(()=>x.textContent='＋ SHARE',1200)}else if(i===4){const c=prompt('Add a comment to this Intelligent Block:');if(c)x.textContent='💬 COMMENT ✓'}else if(i===3){const r=prompt('Rank this intelligence 1–5:');if(r)x.textContent='★ RANK '+r+'/5'}else{x.classList.toggle('active')}})});b.appendChild(bar)})};const activity=()=>{const root=document.getElementById('nayanet-elite-feed');if(!root||root.dataset.activityGuard)return;root.dataset.activityGuard='1';root.addEventListener('click',e=>{const tab=e.target.closest('.n3-tab');if(!tab||tab.dataset.view!=='activity')return;e.preventDefault();e.stopImmediatePropagation();root.querySelectorAll('.n3-tab').forEach(x=>x.classList.toggle('active',x===tab));const body=root.querySelector('.n3-body');const src=[...body.querySelectorAll('.n3-block')];if(!src.length)return;body.innerHTML=src.map((b,i)=>{const c=b.cloneNode(true);const q=c.querySelector('.n3-eyebrow');if(q)q.textContent='INTELLIGENT BLOCK · ACTIVITY · EVENT '+String(i+1).padStart(2,'0');return c.outerHTML}).join('');actions()},true)};const boot=()=>{moveFeed();activity();actions();[100,500,1500,3000].forEach(ms=>setTimeout(()=>{moveFeed();activity();actions()},ms));new MutationObserver(()=>{moveFeed();actions()}).observe(document.body,{childList:true,subtree:true})};document.readyState==='loading'?document.addEventListener('DOMContentLoaded',boot,{once:true}):boot()})();\n</script>'''
+          hub = hub.replace('</body>', runtime + '</body>', 1)
+
+          authority = '''<style id="nayanet-canonical-release-authority">html,body{background:#000!important}.homeWorkspace{display:block!important;grid-template-columns:1fr!important;width:100%!important;max-width:none!important;gap:0!important}.homeFeed,#nayanet-elite-feed{width:100%!important;max-width:none!important}.activationRail{display:none!important;width:0!important;height:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}@media(max-width:900px){.sidebar{display:none!important}.app{display:block!important;grid-template-columns:1fr!important}.main{width:100%!important;padding-left:12px!important;padding-right:12px!important}}</style>'''
+          hub = hub.replace('</body>', authority + '</body>', 1)
+
+          out = Path('CLOUDFLARE-INTELLIGENT-HUB-V7')
+          (out/'assets').mkdir(parents=True, exist_ok=True)
+          (out/'index.html').write_text(hub, encoding='utf-8')
+          (out/'assets'/'index.html').write_text(hub, encoding='utf-8')
+
+          if 'class="activationRail"' in hub or "class='activationRail'" in hub: raise SystemExit('RIGHT_RAIL_PRESENT_IN_ARTIFACT')
+          if 'class="sidebar"' not in hub: raise SystemExit('LEFT_SIDEBAR_MISSING')
+          for marker in ['nayanet-elite-feed','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','nayanet-canonical-production-guard','nayanet-canonical-release-authority']:
+              if marker not in hub: raise SystemExit('MISSING='+marker)
+          print('BUILD_PASS bytes=',len(hub.encode('utf-8')))
+          PY
+
+      - name: Deploy production artifact
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify exact public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?release=${GITHUB_SHA}" -o /tmp/live.html
+          python3 - <<'PY'
+          from pathlib import Path
+          t=Path('/tmp/live.html').read_text(encoding='utf-8')
+          for m in ['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','nayanet-canonical-production-guard']:
+              if m not in t: raise SystemExit('LIVE_MISSING='+m)
+          if 'class="activationRail"' in t or "class='activationRail'" in t: raise SystemExit('LIVE_RIGHT_RAIL_PRESENT')
+          if 'class="sidebar"' not in t: raise SystemExit('LIVE_LEFT_SIDEBAR_MISSING')
+          print('PUBLIC_RUNTIME_VERIFIED')
+          print('SMART_LINK=https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds')
+          PY
