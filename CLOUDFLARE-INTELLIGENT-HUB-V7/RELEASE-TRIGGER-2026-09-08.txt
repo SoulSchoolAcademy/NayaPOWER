@@ -1,0 +1,3 @@
+Canonical Hub release trigger.
+Source: 2026 09 08 9:59 NAYANET HUB.html
+Release intent: deploy the current Hub source, remove only the right activation/operations rail, preserve the left sidebar, and ship the three-view Intelligent Feed with mirrored Intelligent Blocks.
