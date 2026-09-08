@@ -1,0 +1,50 @@
+name: Observe V7 Public Runtime
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/observe-v7-runtime.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Observe public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          root='https://noisy-block-35d0.nayanet.workers.dev/'
+          smart='https://noisy-block-35d0.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
+          {
+            echo "OBSERVED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "ROOT=$root"
+            echo "SMART_LINK=$smart"
+            echo '--- ROOT ---'
+            curl -sS -L --max-time 20 -D /tmp/root.headers -o /tmp/root.html "$root" || true
+            cat /tmp/root.headers || true
+            echo "ROOT_BYTES=$(wc -c < /tmp/root.html 2>/dev/null || echo 0)"
+            grep -o 'COLLECTIVE INTELLIGENCE\|PERSONAL INTELLIGENCE\|ACTIVITY\|IN A NUTSHELL\|HOW TO USE IT\|YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/root.html 2>/dev/null | sort | uniq -c || true
+            echo 'ROOT_PREFIX:'
+            head -c 1200 /tmp/root.html 2>/dev/null || true
+            echo
+            echo '--- SMART LINK ---'
+            curl -sS -L --max-time 20 -D /tmp/smart.headers -o /tmp/smart.html "$smart" || true
+            cat /tmp/smart.headers || true
+            echo "SMART_BYTES=$(wc -c < /tmp/smart.html 2>/dev/null || echo 0)"
+            grep -o 'COLLECTIVE INTELLIGENCE\|PERSONAL INTELLIGENCE\|ACTIVITY\|IN A NUTSHELL\|HOW TO USE IT\|YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/smart.html 2>/dev/null | sort | uniq -c || true
+            echo 'SMART_PREFIX:'
+            head -c 1200 /tmp/smart.html 2>/dev/null || true
+            echo
+          } > CLOUDFLARE-INTELLIGENT-HUB-V7/runtime-observation.txt
+      - name: Commit observation
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add CLOUDFLARE-INTELLIGENT-HUB-V7/runtime-observation.txt
+          git commit -m 'Record V7 public runtime observation [skip ci]' || true
+          git push || true
