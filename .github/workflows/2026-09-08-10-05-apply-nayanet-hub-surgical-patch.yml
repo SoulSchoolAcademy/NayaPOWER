@@ -1,15 +1,8 @@
 name: 2026-09-08 10:05 — Apply NayaNET Hub Surgical Patch
 on:
-  push:
+  pull_request:
     branches: [main]
-    paths:
-      - 'scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py'
-      - '.github/workflows/2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml'
-      - '.naya/NAYA-MASTER-EXECUTION-CONTRACT.md'
-      - '.naya/NAYA-INTELLIGENCE-ORGANIZATION-PROTOCOL.md'
-      - '.naya/activity/2026/09/08/2026-09-08-TODAY.md'
-  issues:
-    types: [opened]
+    types: [opened, synchronize, reopened]
   workflow_dispatch:
 jobs:
   patch:
@@ -18,6 +11,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
       - name: Apply surgical patch
         run: python scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py
       - name: Verify mission markers
@@ -28,7 +23,7 @@ jobs:
           grep -q '.sidebar' '2026 09 08 9:59 NAYANET HUB.html'
           grep -q 'SHARE' '2026 09 08 9:59 NAYANET HUB.html'
           grep -q 'COMMENT' '2026 09 08 9:59 NAYANET HUB.html'
-      - name: Commit patched current Hub
+      - name: Commit patched current Hub to PR branch
         run: |
           if git diff --quiet -- '2026 09 08 9:59 NAYANET HUB.html'; then
             echo 'No source change required.'
@@ -38,4 +33,4 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 08 9:59 NAYANET HUB.html'
           git commit -m '2026-09-08 10:20 — Apply right-sidebar removal and unified feed actions'
-          git push
+          git push origin HEAD:${{ github.head_ref }}
