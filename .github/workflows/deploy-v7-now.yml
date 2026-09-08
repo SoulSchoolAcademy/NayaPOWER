@@ -38,10 +38,21 @@ jobs:
           node --check "$V4"
           node --check "$P"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
-          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED'; do grep -Fq "$s" "$V4" || true; done
+          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'YOUR DAILY INTELLIGENCE REPORT'; do grep -Fq "$s" "$V4"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
-          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' "$P" "$L" "$V4"
-          grep -Fq '<script>' <(printf '%s\n' "$(cat "$P")") || true
+          python3 - <<'PY'
+          from pathlib import Path
+          out=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').read_text()
+          marker='/* NayaNET V7 — surgical Play Naya polish layer.'
+          if marker in out:
+              pos=out.index(marker)
+              before=out[:pos]
+              if before.count('<script>') <= before.count('</script>'):
+                  raise SystemExit('Play Naya source marker is outside a script tag')
+          else:
+              raise SystemExit('Play Naya source missing from built script payload')
+          print('BUILD_SCRIPT_BOUNDARY=PASS')
+          PY
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
