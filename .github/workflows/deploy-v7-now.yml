@@ -56,18 +56,17 @@ jobs:
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'YOUR INTELLIGENCE TODAY' 'YOUR REPORTS' 'INTELLIGENT LIBRARY' 'SMART LISTS' 'SMART SHARE' 'YOUR EVIDENCE' 'YOUR CONNECTIONS' 'SMART MAIL' 'SMART SPACES'; do grep -Fq "$s" "$OUT"; done
           for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION'; do grep -Fq "$s" "$OUT"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'STANDARD SMART NOTE GRAMMAR'; do ! grep -Fq "$s" "$OUT"; done
-          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' "$OUT" || true
           python3 - <<'PY'
           from pathlib import Path
           out=Path('NAYANET-LIVE-HUB.html').read_text()
           marker='/* NayaNET V7 — surgical Play Naya polish layer.'
-          if marker in out:
-              pos=out.index(marker)
-              before=out[:pos]
-              if before.count('<script>') <= before.count('</script>'):
-                  raise SystemExit('Play Naya source marker is outside a script tag')
-          else:
+          pos=out.find(marker)
+          if pos < 0:
               raise SystemExit('Play Naya source missing')
+          open_pos=out.rfind('<script>',0,pos)
+          close_pos=out.rfind('</script>',0,pos)
+          if open_pos < 0 or open_pos <= close_pos:
+              raise SystemExit('Play Naya source marker is outside the immediately containing script tag')
           if len(out.encode('utf-8')) < 200000:
               raise SystemExit('Assembled Live Hub unexpectedly small')
           print('ASSEMBLED_LIVE_HUB=PASS')
