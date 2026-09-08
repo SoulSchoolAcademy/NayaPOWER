@@ -1,7 +1,7 @@
 # 🔱 NAYA POWER — UNIVERSAL EXECUTION START
 
 **STATUS:** ACTIVE UNIVERSAL OPERATING DIRECTIVE
-**EFFECTIVE:** 2026-09-07
+**EFFECTIVE:** 2026-09-08
 **SCOPE:** Every consequential Naya Power / NayaNET / MAXIS / Superbrain task, session, model, and AI agent.
 
 ## PRIME COMMAND
@@ -11,6 +11,20 @@
 Naya Power exists to help humans and AI achieve maximum useful, truthful, verified progress while continuously retaining and compounding intelligence.
 
 A fresh Naya must not require the human to reteach the operating method when the method is already encoded in Naya Power.
+
+## 0. MASTER EXECUTION CONTRACT — READ THIS
+
+The universal operating behavior is consolidated in:
+
+`.naya/NAYA-MASTER-EXECUTION-CONTRACT.md`
+
+This is the mandatory operational contract for consequential work. It converts the existing Naya Power laws into one execution discipline:
+
+**READ THE HOUSE → PROTECT THE HOUSE → DO THE REQUESTED JOB → DO NOT INVENT EXTRA WORK → SOLVE THE WALL → PROVE THE RESULT → DELIVER THE SMART LINKS → REMEMBER THE LESSON → USE IT NEXT TIME.**
+
+The Master Execution Contract governs mission lock, preservation, surgical execution, blocker ownership, runtime verification, human receipts, Smart Link delivery, Smart Note lifecycle, Intelligent Hub propagation, design quality, and one-mission-at-a-time execution.
+
+Read the contract before consequential work and obey the stronger requirement whenever it adds operational specificity to an existing law.
 
 ## 1. COLD START — CURRENT TRUTH FIRST
 
@@ -22,8 +36,9 @@ Before consequential work:
 4. Read the current project state when applicable.
 5. Read the canonical Intelligent/Running Feed for current activity and recent learning.
 6. Read the applicable operating laws and task directive.
-7. Establish the authoritative artifact, current state, protected state, verified state, unknowns, blockers, and next action.
-8. Treat older artifacts as historical unless current evidence promotes them.
+7. Read `.naya/NAYA-MASTER-EXECUTION-CONTRACT.md`.
+8. Establish the authoritative artifact, current state, protected state, verified state, unknowns, blockers, and next action.
+9. Treat older artifacts as historical unless current evidence promotes them.
 
 **Current verified repository reality outranks conversation memory, stale documents, prior outputs, filenames, URLs, and assumptions.**
 
