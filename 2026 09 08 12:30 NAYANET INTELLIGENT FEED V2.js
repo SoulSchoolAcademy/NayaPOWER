@@ -42,3 +42,5 @@ const style=document.createElement('style');style.textContent=css;document.head.
 /* RELEASE CONTRACT — these are intentional source-of-truth strings, not placeholder UI:
 COLLECTIVE INTELLIGENCE | PERSONAL INTELLIGENCE | ACTIVITY | IN A NUTSHELL | HUMAN NOTE | CHILD NOTE | GRANDMA NOTE | NAYA NOTE | MACHINE NOTE | LESSON | HOW TO USE IT | Favorite / Star this intelligence | Save / Keep this intelligence | Share this intelligence | PLAY NAYA | Private by default. Shared by choice. Collective by consent. Public by decision. | Your Intelligence Today | Your Reports | Intelligent Library | Smart Lists | Smart Share | Your Evidence | Your Connections | Smart Mail | Smart Spaces | YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY
 */
+
+/* CANONICAL_RELEASE_RETRIGGER=2026-09-08T00:16Z */
