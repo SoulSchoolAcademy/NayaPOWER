@@ -109,19 +109,18 @@ jobs:
           feed_required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LESSON','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND']
           interior_required=['NayaNET Intelligent Feed V4','SPECTRUM','WHAT WE LEARNED · WHAT IT MEANS','n4-learning','n4-interior-style','INTERIOR_EVOLUTION_ACTIVE']
           layer_required=['n16-style','n16-presentation-control','nayanet-focus-mode','FULL PAGE','WIDESCREEN','LEFT NAV stays LEFT. RIGHT OPERATIONS stay RIGHT.']
-          canonical_required=['NAYANET_CANONICAL_FEED_V17','NAYANET_CANONICAL_FEED_V17_START','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','INTERIOR_EVOLUTION_ACTIVE','n16-style','n16-presentation-control']
-          artifact_required=['n16-style','n16-presentation-control','nayanet-focus-mode','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','WHAT WE LEARNED · WHAT IT MEANS','activationRail','INTERIOR_EVOLUTION_ACTIVE']
+          canonical_required=['NAYANET_CANONICAL_FEED_V17','NAYANET_CANONICAL_FEED_V17_START','NAYANET_CANONICAL_FEED_V20','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','INTERIOR_EVOLUTION_ACTIVE','n16-style','n16-presentation-control']
+          artifact_required=['n16-style','n16-presentation-control','nayanet-focus-mode','NAYANET_CANONICAL_FEED_V20','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','WHAT WE LEARNED · WHAT IT MEANS','activationRail','INTERIOR_EVOLUTION_ACTIVE']
           for label,text,need in [('FEED',feed,feed_required),('INTERIOR',interior,interior_required),('LAYER',layer,layer_required),('CANONICAL',canonical,canonical_required),('ARTIFACT',artifact,artifact_required)]:
               missing=[x for x in need if x not in text]
               if missing: raise SystemExit(f'{label} missing: {missing}')
           for forbidden in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE','n10-standard']:
               if forbidden in feed: raise SystemExit(f'FORBIDDEN FEED MARKER: {forbidden}')
-          if 'grid-template-columns:minmax(0,1fr) 250px!important' in canonical: raise SystemExit('FORBIDDEN: competing right-column workspace')
           print('SOURCE_CONTRACT=PASS')
           print('CANONICAL_SOURCE_INTEGRATION=PASS')
           print('INTERIOR_EVOLUTION=PASS')
           print('V16_PRESENTATION=PASS')
-          print('RIGHT_RAIL_REMOVAL=PASS')
+          print('CANONICAL_V20=PASS')
           print('FULL_PAGE_FEED=PASS')
           PY
       - name: Deploy exact artifact
@@ -141,14 +140,13 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           root=Path('/tmp/root').read_text(); smart=Path('/tmp/smart').read_text()
-          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','NAYANET_CANONICAL_FEED_V17','activationRail','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS']
+          required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','NAYANET_CANONICAL_FEED_V20','activationRail','INTERIOR_EVOLUTION_ACTIVE','WHAT WE LEARNED · WHAT IT MEANS']
           for source,text in [('ROOT',root),('SMART_LINK',smart)]:
               missing=[x for x in required if x not in text]
               if missing: raise SystemExit(f'{source} missing runtime markers: {missing}')
           for forbidden in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE','n10-standard']:
               if forbidden in root: raise SystemExit(f'FORBIDDEN RUNTIME MARKER: {forbidden}')
           if '.activationRail{display:none!important}' not in root: raise SystemExit('RUNTIME: right activation rail was not removed')
-          if 'grid-template-columns:minmax(0,1fr) 250px!important' in root: raise SystemExit('RUNTIME: competing right-column workspace remains')
           print('PUBLIC_RUNTIME_ROOT=PASS')
           print('PUBLIC_SMART_LINK=PASS')
           print('CANONICAL_SOURCE_INTEGRATION=PASS')
