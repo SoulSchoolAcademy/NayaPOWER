@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/observe-v7-runtime.yml'
+      - '2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js'
+      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js'
   workflow_dispatch:
 permissions:
   contents: write
