@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - '2026 09 07  1:14 NAYANETHUBONE.html'
-      - '*NAYANET INTELLIGENT FEED V2.js'
+      - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
@@ -18,6 +18,7 @@ env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   HUB_FILE: 2026 09 07  1:14 NAYANETHUBONE.html
+  FEED_FILE: 2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js
 jobs:
   deploy-v7:
     runs-on: ubuntu-latest
@@ -35,12 +36,10 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import re
           hub=Path('../2026 09 07  1:14 NAYANETHUBONE.html')
-          feeds=sorted(Path('..').glob('*NAYANET INTELLIGENT FEED V2.js'),key=lambda p:tuple(map(int,re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ',p.name).groups())),reverse=True)
-          if len(feeds)!=1: raise SystemExit(f'Expected exactly one canonical V2 feed layer; found {len(feeds)}: {[p.name for p in feeds]}')
-          layer=feeds[0]
+          layer=Path('../2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
           if not hub.exists(): raise SystemExit(f'Missing authoritative Hub: {hub}')
+          if not layer.exists(): raise SystemExit(f'Missing canonical feed layer: {layer}')
           Path('.authoritative-source').write_text(str(hub))
           Path('.authoritative-feed-layer').write_text(layer.name)
           base=hub.read_text()
@@ -58,13 +57,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          LAYER="../$(cat .authoritative-feed-layer)"
+          LAYER="../2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js"
           test -s "$LAYER"
           node --check "$LAYER"
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'Private by default. Shared by choice. Collective by consent. Public by decision.' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Lists' 'Smart Share' 'Your Evidence' 'Your Connections' 'Smart Mail' 'Smart Spaces' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY'; do grep -Fq "$s" "$LAYER"; done
-          if grep -Fq 'LOVE · SHARE' "$LAYER"; then echo 'Love and Share are combined'; exit 1; fi
-          if grep -Fq 'SMART LINK</button>' "$LAYER"; then echo 'Unexplained Smart Link control exists'; exit 1; fi
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Lists' 'Smart Share' 'Your Evidence' 'Your Connections' 'Smart Mail' 'Smart Spaces' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$LAYER"; done
+          if grep -Fq 'COLLECTIVE SIGNAL' "$LAYER"; then echo 'Legacy signal card exists'; exit 1; fi
+          if grep -Fq 'NETWORK WISDOM' "$LAYER"; then echo 'Legacy network wisdom card exists'; exit 1; fi
+          if grep -Fq 'SHARED INTELLIGENCE' "$LAYER"; then echo 'Legacy shared-intelligence header exists'; exit 1; fi
+          if grep -Fq 'YOUR COMPOUNDING INTELLIGENCE' "$LAYER"; then echo 'Legacy personal header exists'; exit 1; fi
+          if grep -Fq 'n10-standard' "$LAYER"; then echo 'Legacy oversized canonical block exists'; exit 1; fi
           echo 'ELITE_THREE_VIEW_SOURCE_CONTRACT=PASS'
+          echo 'DIRECT_UNDER_TABS_CONTRACT=PASS'
+          echo 'FEED_FOOTER_CONTRACT=PASS'
           echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
           echo 'KNOWN_GOOD_HUB_BASELINE=PASS'
       - name: Deploy exact artifact
@@ -81,8 +85,12 @@ jobs:
           Q="release=${GITHUB_SHA}"
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$Q" -o /tmp/runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$Q" -o /tmp/smart.html
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY'; do grep -Fq "$s" /tmp/runtime.html; done
-          for s in 'COLLECTIVE INTELLIGENCE' 'IN A NUTSHELL' 'HOW TO USE IT'; do grep -Fq "$s" /tmp/smart.html; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HOW NAYANET' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/runtime.html; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'IN A NUTSHELL' 'HOW NAYANET' 'HOW TO USE IT'; do grep -Fq "$s" /tmp/smart.html; done
+          if grep -Fq 'COLLECTIVE SIGNAL' /tmp/runtime.html; then echo 'REGRESSED_SIGNAL_CARD_PRESENT'; exit 1; fi
+          if grep -Fq 'NETWORK WISDOM' /tmp/runtime.html; then echo 'REGRESSED_NETWORK_WISDOM_CARD_PRESENT'; exit 1; fi
+          if grep -Fq 'SHARED INTELLIGENCE' /tmp/runtime.html; then echo 'REGRESSED_SHARED_INTELLIGENCE_HEADER_PRESENT'; exit 1; fi
+          if grep -Fq 'YOUR COMPOUNDING INTELLIGENCE' /tmp/runtime.html; then echo 'REGRESSED_PERSONAL_HEADER_PRESENT'; exit 1; fi
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
