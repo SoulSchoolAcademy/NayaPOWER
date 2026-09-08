@@ -1,0 +1,57 @@
+name: Deploy V7 Now
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          hub=Path('2026 09 07  1:14 NAYANETHUBONE.html').read_text()
+          feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
+          polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()
+          if '</body>' not in hub: raise SystemExit('Missing body boundary')
+          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n'+polish+'\n</body>',1)
+          d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
+          (d/'index.html').write_text(out)
+          a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
+          PY
+      - name: Validate
+        run: |
+          set -euo pipefail
+          L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+          node --check "$L"
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
+          command: deploy --config wrangler.jsonc
+      - name: Verify exact public runtime
+        run: |
+          set -euo pipefail
+          q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 8 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
+          curl -fsSL --retry 8 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
+          grep -Fq 'HOW NAYANET' /tmp/smart
+          echo 'PUBLIC_RUNTIME_ROOT=PASS'
+          echo 'PUBLIC_SMART_LINK=PASS'
+          echo "RUNTIME=$RUNTIME/"
+          echo "SMART_LINK=$SMART_LINK"
