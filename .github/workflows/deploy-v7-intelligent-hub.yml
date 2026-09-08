@@ -51,11 +51,16 @@ jobs:
           set -euo pipefail
           L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
           S='2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
+          A='CLOUDFLARE-INTELLIGENT-HUB-V7/index.html'
           node --check "$L"
           node --check "$S"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
-          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS'; do grep -Fq "$s" "$S"; done
+          for s in 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'SMART NOTES' 'INTELLIGENT BLOCKS' 'n14-style' 'homeWorkspace{grid-template-columns:minmax(0,1fr)' '.activationRail{display:none!important}' 'max-width:none!important'; do grep -Fq "$s" "$S"; done
+          grep -Fq 'n14-style' "$A"
+          grep -Fq 'n13-original-ops' "$A"
+          grep -Fq 'COLLECTIVE INTELLIGENCE' "$A"
+          grep -Fq 'HOW NAYANET' "$A"
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -70,13 +75,14 @@ jobs:
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/root; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'n14-style' 'n13-original-ops' 'homeWorkspace{grid-template-columns:minmax(0,1fr)' '.activationRail{display:none!important}'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" /tmp/root; done
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
-          grep -Fq 'n13-original-ops' /tmp/root
+          grep -Fq 'n13-original-ops' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
-          echo 'V13_SURGICAL_LAYER=PASS'
+          echo 'V14_STRUCTURAL_RECOVERY=PASS'
+          echo 'ELITE_FEED_LAYOUT=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
