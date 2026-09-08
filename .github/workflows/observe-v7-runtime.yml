@@ -1,3 +1,4 @@
+# Runtime observer for the canonical V7 release. Keep this workflow diagnostic-only.
 name: Observe V7 Public Runtime
 on:
   push:
