@@ -22,9 +22,10 @@ jobs:
           feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
           polish4=Path('2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js').read_text()
           rail=Path('2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js').read_text()
+          final=Path('2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js').read_text()
           polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()
           if '</body>' not in hub: raise SystemExit('Missing body boundary')
-          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n<script>\n'+polish4+'\n</script>\n<script>\n'+rail+'\n</script>\n<script>\n'+polish+'\n</script>\n</body>',1)
+          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n<script>\n'+polish4+'\n</script>\n<script>\n'+rail+'\n</script>\n<script>\n'+final+'\n</script>\n<script>\n'+polish+'\n</script>\n</body>',1)
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           (d/'index.html').write_text(out)
           a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
@@ -35,14 +36,17 @@ jobs:
           L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
           V4='2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js'
           R='2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js'
+          F='2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js'
           P='CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
           node --check "$L"
           node --check "$V4"
           node --check "$R"
+          node --check "$F"
           node --check "$P"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
           for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'YOUR DAILY INTELLIGENCE REPORT'; do grep -Fq "$s" "$V4"; done
           for s in 'YOUR DAILY' 'INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED' 'n10-rail' 'n10-report'; do grep -Fq "$s" "$R"; done
+          for s in 'n11-ready' 'n10-rail' 'n3-tabs' 'n3-body' 'n3-bottom' '10/10 hierarchy' 'prefers-reduced-motion'; do grep -Fq "$s" "$F"; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
           python3 - <<'PY'
           from pathlib import Path
@@ -55,12 +59,15 @@ jobs:
                   raise SystemExit('Play Naya source marker is outside a script tag')
           else:
               raise SystemExit('Play Naya source missing from built script payload')
+          for s in ['YOUR DAILY','INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED','n11-ready']:
+              if s not in out: raise SystemExit('Missing final polish marker: '+s)
+          for s in ['COLLECTIVE SIGNAL','NETWORK WISDOM','SHARED INTELLIGENCE','YOUR COMPOUNDING INTELLIGENCE']:
+              if s in out: raise SystemExit('Forbidden legacy marker present: '+s)
           if '/* NayaNET V7 — surgical Play Naya polish layer.' in out and '<script>' not in out:
               raise SystemExit('Unexpected script boundary state')
-          for s in ['YOUR DAILY','INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED']:
-              if s not in out: raise SystemExit('Missing rail marker: '+s)
           print('BUILD_SCRIPT_BOUNDARY=PASS')
           print('V10_RAIL_MARKERS=PASS')
+          print('V11_FINAL_POLISH=PASS')
           PY
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
@@ -81,10 +88,12 @@ jobs:
           ! grep -Fq 'NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
+          grep -Fq 'n11-ready' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo 'PLAY_NAYA_CODE_NOT_VISIBLE=PASS'
           echo 'V10_RAIL_RUNTIME_MARKERS=PASS'
+          echo 'V11_FINAL_POLISH_RUNTIME_MARKERS=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
           echo "RELEASE=$GITHUB_SHA"
