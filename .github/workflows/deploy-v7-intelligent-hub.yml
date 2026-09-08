@@ -15,8 +15,8 @@ concurrency:
   group: nayanet-v7-canonical-production
   cancel-in-progress: true
 env:
-  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
-  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  RUNTIME: https://noisy-block-35d0.nayanet.workers.dev
+  SMART_LINK: https://noisy-block-35d0.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   HUB_FILE: 2026 09 07  1:14 NAYANETHUBONE.html
 jobs:
   deploy-v7:
