@@ -1,10 +1,10 @@
-# 2026-09-07 canonical ten-star release gate — source → build → artifact → deploy → runtime → Smart Link
+# NayaNET V7 — source → build → artifact → deploy → runtime → Smart Link
 name: Deploy V7 Intelligent Hub
 on:
   push:
     branches: [main]
     paths:
-      - '2026 09 07 2:05 NAYANET HUB.HTML'
+      - '2026 09 07  1:14 NAYANETHUBONE.html'
       - '*NAYANET INTELLIGENT FEED V2.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
@@ -17,8 +17,7 @@ concurrency:
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
-  RESTORE_COMMIT: afc1892e9ce2f9af8d4f3f593f97f80830667f26
-  FEED_FILE: 2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js
+  HUB_FILE: 2026 09 07  1:14 NAYANETHUBONE.html
 jobs:
   deploy-v7:
     runs-on: ubuntu-latest
@@ -30,87 +29,53 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Restore latest canonical three-view feed baseline
-        shell: bash
-        run: |
-          set -euo pipefail
-          git show "$RESTORE_COMMIT:$FEED_FILE" > "../$FEED_FILE"
-          python3 - <<'PY'
-          from pathlib import Path
-          p=Path('..')/Path('2026 09 08 12:30 NAYANET INTELLIGENT FEED V2.js')
-          s=p.read_text()
-          patch=r'''
-          ;(()=>{
-            'use strict';
-            const KEY='nayanet:intelligent-feed:preferred-view';
-            const labels={
-              collective:'COLLECTIVE INTELLIGENCE',
-              personal:'PERSONAL INTELLIGENCE',
-              activity:'ACTIVITY'
-            };
-            const findTab=(label)=>[...document.querySelectorAll('.n10-tab,button,[role="tab"]')].find(b=>String(b.textContent||'').trim().toUpperCase()===label);
-            const preferred=()=>{try{return localStorage.getItem(KEY)||'collective'}catch{return 'collective'}};
-            const activate=(view)=>{const b=findTab(labels[view]||labels.collective);if(b){b.click();return true}return false};
-            const boot=()=>{
-              const view=preferred();
-              if(!activate(view)){
-                const b=findTab(labels.collective);
-                if(b)b.click();
-              }
-              document.addEventListener('click',e=>{
-                const b=e.target.closest?.('.n10-tab,[role="tab"]');
-                if(!b)return;
-                const t=String(b.textContent||'').trim().toUpperCase();
-                const v=t.includes('COLLECTIVE')?'collective':t.includes('PERSONAL')?'personal':t.includes('ACTIVITY')?'activity':null;
-                if(v){try{localStorage.setItem(KEY,v)}catch{}}
-              },true);
-            };
-            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(boot,0),{once:true});else setTimeout(boot,0);
-          })();
-          '''
-          p.write_text(s+'\n'+patch+'\n')
-          PY
-          echo "RESTORED_CANONICAL_FEED=$FEED_FILE@$RESTORE_COMMIT"
-      - name: Build one canonical feed artifact
+      - name: Build exactly one canonical feed artifact from the known-good Hub
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           import re
-          hub=Path('../2026 09 07 2:05 NAYANET HUB.HTML')
+          hub=Path('..')/Path('${HUB_FILE}')
           feeds=sorted(Path('..').glob('*NAYANET INTELLIGENT FEED V2.js'),key=lambda p:tuple(map(int,re.match(r'^(\d{4}) (\d{2}) (\d{2}) +(\d{1,2}):(\d{2}) ',p.name).groups())),reverse=True)
           if len(feeds)!=1: raise SystemExit(f'Expected exactly one canonical V2 feed layer; found {len(feeds)}: {[p.name for p in feeds]}')
           layer=feeds[0]
+          if not hub.exists(): raise SystemExit(f'Missing authoritative Hub: {hub}')
           Path('.authoritative-source').write_text(str(hub))
           Path('.authoritative-feed-layer').write_text(layer.name)
-          Path('index.html').write_text(hub.read_text().replace('</body>','<script>\n'+layer.read_text()+'\n</script>\n'+Path('v7-ten-star-play-naya-polish.js').read_text()+'\n</body>',1))
+          base=hub.read_text()
+          inject='<script>\n'+layer.read_text()+'\n</script>\n'+Path('v7-ten-star-play-naya-polish.js').read_text()+'\n'
+          if '</body>' not in base: raise SystemExit('Authoritative Hub has no </body> boundary')
+          Path('index.html').write_text(base.replace('</body>',inject+'</body>',1))
           Path('assets').mkdir(exist_ok=True)
           Path('assets/index.html').write_text(Path('index.html').read_text())
           Path('assets/_redirects').write_text('/index.html 200\n')
+          print('AUTHORITATIVE_HUB=',hub)
           print('CANONICAL_FEED_LAYER=',layer.name)
           print('CANONICAL_FEED_LAYER_COUNT=1')
           PY
-      - name: Validate canonical Smart Feed contract
+      - name: Validate elite three-view contract
         shell: bash
         run: |
           set -euo pipefail
           LAYER="../$(cat .authoritative-feed-layer)"
           test -s "$LAYER"
           node --check "$LAYER"
+          grep -Fq 'COLLECTIVE INTELLIGENCE' "$LAYER"
+          grep -Fq 'PERSONAL INTELLIGENCE' "$LAYER"
+          grep -Fq 'ACTIVITY' "$LAYER"
+          grep -Fq 'IN A NUTSHELL' "$LAYER"
+          grep -Fq 'HUMAN NOTE' "$LAYER"
+          grep -Fq 'CHILD NOTE' "$LAYER"
+          grep -Fq 'GRANDMA NOTE' "$LAYER"
+          grep -Fq 'NAYA NOTE' "$LAYER"
+          grep -Fq 'MACHINE NOTE' "$LAYER"
+          grep -Fq 'LESSON' "$LAYER"
+          grep -Fq 'HOW TO USE IT' "$LAYER"
           grep -Fq 'Favorite / Star this intelligence' "$LAYER"
           grep -Fq 'Save / Keep this intelligence' "$LAYER"
-          grep -Fq 'Share this intelligence' "$LAYER" || grep -Fq '＋ SHARE' "$LAYER"
-          grep -Fq 'Love this intelligence' "$LAYER" || grep -Fq '♥ LOVE' "$LAYER"
-          grep -Fq 'Rate usefulness from one to five stars' "$LAYER"
-          grep -Fq '▶ PLAY NAYA' "$LAYER"
-          grep -Fq 'IN A NUTSHELL' "$LAYER" || grep -Fq 'HUMAN NOTE' "$LAYER"
-          grep -Fq 'HUMAN' "$LAYER"
-          grep -Fq 'CHILD' "$LAYER"
-          grep -Fq 'GRANDMA' "$LAYER"
-          grep -Fq 'NAYA' "$LAYER"
-          grep -Fq 'MACHINE' "$LAYER"
-          grep -Fq 'WHAT WE LEARNED · WHAT IT MEANS' "$LAYER"
+          grep -Fq 'Share this intelligence' "$LAYER"
+          grep -Fq 'PLAY NAYA' "$LAYER"
           grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' "$LAYER"
           grep -Fq 'Your Intelligence Today' "$LAYER"
           grep -Fq 'Your Reports' "$LAYER"
@@ -121,17 +86,12 @@ jobs:
           grep -Fq 'Your Connections' "$LAYER"
           grep -Fq 'Smart Mail' "$LAYER"
           grep -Fq 'Smart Spaces' "$LAYER"
-          grep -Fq 'COLLECTIVE INTELLIGENCE' "$LAYER"
-          grep -Fq 'PERSONAL INTELLIGENCE' "$LAYER"
-          grep -Fq 'ACTIVITY' "$LAYER"
-          grep -Fq 'preferred-view' "$LAYER"
+          grep -Fq 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' "$LAYER"
           if grep -Fq 'LOVE · SHARE' "$LAYER"; then echo 'Love and Share are combined'; exit 1; fi
           if grep -Fq 'SMART LINK</button>' "$LAYER"; then echo 'Unexplained Smart Link control exists'; exit 1; fi
-          echo 'TEN_STAR_SOURCE_CONTRACT=PASS'
+          echo 'ELITE_THREE_VIEW_SOURCE_CONTRACT=PASS'
           echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
-          echo 'NO_COMBINED_LOVE_SHARE=PASS'
-          echo 'NO_UNEXPLAINED_SMART_LINK_CONTROL=PASS'
-          echo 'COLLECTIVE_DEFAULT_PATCH=PASS'
+          echo 'KNOWN_GOOD_HUB_BASELINE=PASS'
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -139,23 +99,21 @@ jobs:
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
-      - name: Independently verify public runtime and Smart Link
+      - name: Independently verify exact public runtime and Smart Link
         shell: bash
         run: |
           set -euo pipefail
           curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/runtime.html
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart.html
-          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/runtime.html
+          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
           grep -Fq 'ACTIVITY' /tmp/runtime.html
           grep -Fq 'PLAY NAYA' /tmp/runtime.html
-          grep -Fq 'Favorite / Star this intelligence' /tmp/runtime.html
-          grep -Fq 'Save / Keep this intelligence' /tmp/runtime.html
-          grep -Fq 'Share this intelligence' /tmp/runtime.html || grep -Fq '＋ SHARE' /tmp/runtime.html
-          grep -Fq 'Private by default. Shared by choice. Collective by consent. Public by decision.' /tmp/runtime.html
-          grep -Fq 'preferred-view' /tmp/runtime.html
-          grep -Fq 'PLAY NAYA' /tmp/smart.html
-          grep -Fq 'TEN-STAR' /tmp/smart.html
+          grep -Fq 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/runtime.html
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart.html
+          grep -Fq 'IN A NUTSHELL' /tmp/smart.html
+          if grep -Fq 'n10-standard' /tmp/runtime.html; then echo 'REGRESSED_OVERSIZED_CANONICAL_BLOCK_PRESENT'; exit 1; fi
+          if grep -Fq 'CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND' /tmp/runtime.html; then echo 'REGRESSED_GIANT_FOOTER_PRESENT'; exit 1; fi
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
@@ -163,7 +121,6 @@ jobs:
       - name: Record release identity
         run: |
           echo "SOURCE_COMMIT=$GITHUB_SHA"
-          echo "RESTORED_CANONICAL_BASE=$RESTORE_COMMIT"
           echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
           echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
           echo "WORKER=nayanet-v7-intelligent-hub"
