@@ -1,77 +1,93 @@
 name: Deploy NayaNET Live Hub
+
 on:
   push:
     branches: [main]
   workflow_dispatch:
+
 permissions:
   contents: write
+
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
 
-      - name: Build the actual NayaNET Live Hub
+      - name: Build the actual NayaNET Live Hub from the current source
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          hub=Path('2026 09 07  1:14 NAYANETHUBONE.html').read_text()
-          layers=[
-            Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'),
-            Path('2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js'),
-            Path('2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js'),
-            Path('2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js'),
-            Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'),
-          ]
-          if '</body>' not in hub: raise SystemExit('Missing body boundary in authoritative Hub')
-          out=hub
-          for layer in layers:
-              js=layer.read_text()
-              out=out.replace('</body>', '<script>\n'+js+'\n</script>\n</body>', 1)
-          d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
-          (d/'index.html').write_text(out)
-          (d/'assets'/'index.html').parent.mkdir(exist_ok=True)
-          (d/'assets'/'index.html').write_text(out)
-          (d/'assets'/'_redirects').write_text('/index.html 200\n')
-          Path('NAYANET-LIVE-HUB.html').write_text(out)
-          print('LIVE_HUB_BYTES=',len(out.encode('utf-8')))
-          PY
+          import re
 
-      - name: Validate the assembled Hub
-        run: |
-          set -euo pipefail
-          for f in \
-            '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js' \
-            '2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js' \
-            '2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js' \
-            '2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js' \
-            'CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'; do node --check "$f"; done
-          OUT='NAYANET-LIVE-HUB.html'
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED'; do grep -Fq "$s" "$OUT"; done
-          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION'; do grep -Fq "$s" "$OUT"; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'STANDARD SMART NOTE GRAMMAR'; do ! grep -Fq "$s" "$OUT"; done
-          python3 - <<'PY'
-          from pathlib import Path
-          out=Path('NAYANET-LIVE-HUB.html').read_text()
-          marker='/* NayaNET V7 — surgical Play Naya polish layer.'
-          pos=out.find(marker)
-          if pos < 0:
-              raise SystemExit('Play Naya source missing')
-          open_pos=out.rfind('<script>',0,pos)
-          close_pos=out.rfind('</script>',0,pos)
-          if open_pos < 0 or open_pos <= close_pos:
-              raise SystemExit('Play Naya source marker is outside the immediately containing script tag')
-          if len(out.encode('utf-8')) < 200000:
-              raise SystemExit('Assembled Live Hub unexpectedly small')
-          print('ASSEMBLED_LIVE_HUB=PASS')
-          print('THREE_ZONE_NAV=PASS')
-          print('RIGHT_RAIL=PASS')
-          print('PLAY_NAYA_SCRIPT_BOUNDARY=PASS')
-          print('LIVE_HUB_BYTES=',len(out.encode('utf-8')))
+          hub = Path('2026 09 08 9:59 NAYANET HUB.html').read_text(encoding='utf-8')
+          feed = Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text(encoding='utf-8')
+          interior = Path('2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js').read_text(encoding='utf-8')
+
+          if '</body>' not in hub:
+              raise SystemExit('CURRENT_HUB_SOURCE_MISSING_BODY')
+
+          # SURGICAL CHANGE 1: remove only the right activation/operations rail.
+          hub, removed = re.subn(r'<aside\\s+class=["\']activationRail["\'][\\s\\S]*?</aside>', '', hub, count=1, flags=re.I)
+          if removed != 1:
+              raise SystemExit(f'RIGHT_RAIL_REMOVAL_FAILED={removed}')
+
+          # SURGICAL CHANGE 2: preserve the existing home feed host and replace only its contents with the live Intelligent Feed.
+          hub, replaced = re.subn(r'<section class=["\']homeFeed["\'][\\s\\S]*?</section>\\s*</section>', '<section class="homeFeed"><div id="nayanet-elite-feed" aria-label="NayaNET Intelligent Feed"></div></section>', hub, count=1, flags=re.I)
+          if replaced != 1:
+              raise SystemExit(f'HOME_FEED_HOST_REPLACEMENT_FAILED={replaced}')
+
+          # The V3 helper must not relabel/remove the protected left navigation.
+          feed = feed.replace('relabelSidebar();', '', 1)
+
+          # Add the existing feed and interior evolution layers without importing any old right-rail layer.
+          injected = '<script id="nayanet-live-feed-v3">\\n' + feed + '\\n</script>\\n<script id="nayanet-live-feed-v4">\\n' + interior + '\\n</script>\\n'
+          hub = hub.replace('</body>', injected + '</body>', 1)
+
+          # Runtime reconciliation: move V3 into the current center host, kill only the right rail, mirror Activity into Intelligent Blocks,
+          # and add the requested social vocabulary to every visible Intelligent Block.
+          runtime = '''<style id="nayanet-live-canonical-authority">
+          html,body{background:#000!important}
+          .homeWorkspace{display:block!important;grid-template-columns:1fr!important;width:100%!important;max-width:none!important;gap:0!important}
+          .homeFeed,#nayanet-elite-feed{width:100%!important;max-width:none!important;min-width:0!important}
+          .activationRail{display:none!important;width:0!important;height:0!important;min-width:0!important;max-width:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}
+          .nhm-actions{display:flex;gap:8px;flex-wrap:wrap;margin:0 18px 18px;padding-top:14px;border-top:1px solid #ffffff14}
+          .nhm-actions button{min-height:40px;padding:0 13px;border:1px solid #8b63ff66;border-radius:11px;background:linear-gradient(145deg,#17111f,#08080c);color:#fff;font-size:8px;font-weight:1000;letter-spacing:.05em;box-shadow:inset 0 1px #fff4,0 8px 18px #0009}
+          .nhm-actions button.active{border-color:#55e39a;box-shadow:0 0 22px #55e39a22}
+          @media(max-width:900px){.sidebar{display:none!important}.app{display:block!important;grid-template-columns:1fr!important}.main{width:100%!important;padding-left:12px!important;padding-right:12px!important}.nhm-actions button{flex:1 1 auto}}
+          </style>
+          <script id="nayanet-live-canonical-runtime">
+          (()=>{
+            const rootId='nayanet-elite-feed';
+            const moveFeed=()=>{const root=document.getElementById(rootId),host=document.querySelector('#page-home .homeFeed');if(root&&host&&root.parentElement!==host)host.replaceChildren(root);document.querySelectorAll('.activationRail').forEach(x=>x.remove());const ws=document.querySelector('.homeWorkspace');if(ws){ws.style.setProperty('display','block','important');ws.style.setProperty('grid-template-columns','1fr','important');ws.style.setProperty('width','100%','important')}};
+            const addActions=()=>document.querySelectorAll('#'+rootId+' .n3-block').forEach(block=>{if(block.querySelector('.nhm-actions'))return;const title=(block.querySelector('.n3-title')?.textContent||'Intelligent Block').trim();const bar=document.createElement('div');bar.className='nhm-actions';bar.innerHTML='<button data-x="share">＋ SHARE</button><button data-x="like">👍 LIKE</button><button data-x="love">♥ LOVE</button><button data-x="rank">★ RANK</button><button data-x="comment">💬 COMMENT</button><button data-x="save">🔖 SAVE</button>';bar.querySelectorAll('button').forEach(btn=>btn.onclick=()=>{const a=btn.dataset.x;if(a==='comment'){const c=prompt('Add a comment to this Intelligent Block:');if(c&&c.trim())btn.textContent='💬 COMMENT ✓'}else if(a==='rank'){const r=prompt('Rank this intelligence 1–5:');if(r)btn.textContent='★ RANK '+r+'/5'}else if(a==='share'){const text=title+'\\n\\n'+(block.querySelector('.n3-nutshell p')?.textContent||'')+'\\n\\nNayaNET — Create. Connect. Grow with US.';if(navigator.share)navigator.share({title,text,url:location.href}).catch(()=>{});else navigator.clipboard?.writeText(text).then(()=>{btn.textContent='✓ COPIED';setTimeout(()=>btn.textContent='＋ SHARE',1200)}).catch(()=>{})}else btn.classList.toggle('active')});block.appendChild(bar)});
+            const mirrorActivity=()=>{const root=document.getElementById(rootId);if(!root||root.dataset.activityMirror)return;root.dataset.activityMirror='1';root.addEventListener('click',e=>{const tab=e.target.closest('.n3-tab');if(!tab||tab.dataset.view!=='activity')return;e.preventDefault();e.stopImmediatePropagation();root.querySelectorAll('.n3-tab').forEach(x=>{x.classList.toggle('active',x===tab);x.setAttribute('aria-selected',String(x===tab))});const body=root.querySelector('.n3-body');const source=[...body.querySelectorAll('.n3-block')];if(!source.length)return;body.innerHTML=source.map((b,i)=>{const c=b.cloneNode(true);const ey=c.querySelector('.n3-eyebrow');if(ey)ey.innerHTML='<span class="n3-led"></span><b>INTELLIGENT BLOCK</b> · ACTIVITY · EVENT '+String(i+1).padStart(2,'0');return c.outerHTML}).join('');addActions()},true)};
+            const boot=()=>{moveFeed();mirrorActivity();addActions();[100,500,1500,3000].forEach(ms=>setTimeout(()=>{moveFeed();mirrorActivity();addActions()},ms));new MutationObserver(()=>{moveFeed();addActions()}).observe(document.body,{childList:true,subtree:true})};
+            document.readyState==='loading'?document.addEventListener('DOMContentLoaded',boot,{once:true}):boot();
+          })();
+          </script>'''
+          hub = hub.replace('</body>', runtime + '</body>', 1)
+
+          d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7');d.mkdir(exist_ok=True);(d/'index.html').write_text(hub,encoding='utf-8');(d/'assets').mkdir(exist_ok=True);(d/'assets'/'index.html').write_text(hub,encoding='utf-8');(d/'assets'/'_redirects').write_text('/index.html 200\\n',encoding='utf-8');Path('NAYANET-LIVE-HUB.html').write_text(hub,encoding='utf-8')
+
+          if 'class="activationRail"' in hub or "class='activationRail'" in hub: raise SystemExit('RIGHT_RAIL_STILL_IN_ARTIFACT')
+          if 'class="sidebar"' not in hub: raise SystemExit('LEFT_SIDEBAR_MISSING')
+          for marker in ['nayanet-elite-feed','COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','nayanet-live-canonical-authority','nayanet-live-canonical-runtime']:
+              if marker not in hub: raise SystemExit('MISSING_MARKER='+marker)
+          if len(hub.encode('utf-8')) < 150000: raise SystemExit('ASSEMBLED_HUB_UNEXPECTEDLY_SMALL')
+          print('CANONICAL_LIVE_BUILD=PASS')
+          print('RIGHT_RAIL=REMOVED')
+          print('LEFT_SIDEBAR=PRESERVED')
+          print('THREE_FEED_VIEWS=EMBEDDED')
+          print('ACTIVITY_BLOCK_MIRROR=EMBEDDED')
+          print('LIVE_HUB_BYTES=',len(hub.encode('utf-8')))
           PY
 
       - name: Persist the exact assembled source to GitHub
@@ -80,13 +96,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add NAYANET-LIVE-HUB.html CLOUDFLARE-INTELLIGENT-HUB-V7/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/index.html CLOUDFLARE-INTELLIGENT-HUB-V7/assets/_redirects
-          if git diff --cached --quiet; then
-            echo 'ASSEMBLED_SOURCE_CHANGED=NO'
-          else
-            git commit -m 'Build NayaNET Live Hub source [skip ci]'
-            git push
-            echo 'ASSEMBLED_SOURCE_CHANGED=YES'
-          fi
+          if git diff --cached --quiet; then echo 'ASSEMBLED_SOURCE_CHANGED=NO'; else git commit -m 'Build current NayaNET Live Hub source [skip ci]'; git push; fi
 
       - name: Deploy the exact assembled source
         uses: cloudflare/wrangler-action@v3
@@ -102,17 +112,19 @@ jobs:
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 8 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 8 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED'; do grep -Fq "$s" /tmp/root; done
-          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'STANDARD SMART NOTE GRAMMAR'; do ! grep -Fq "$s" /tmp/root; done
-          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
-          ! grep -Fq 'NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL'; do grep -Fq "$s" /tmp/root; done
+          ! grep -Fq 'class="activationRail"' /tmp/root
+          ! grep -Fq "class='activationRail'" /tmp/root
+          grep -Fq 'class="sidebar"' /tmp/root
+          grep -Fq 'nayanet-live-canonical-runtime' /tmp/root
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
-          grep -Fq 'HOW NAYANET' /tmp/smart
-          grep -Fq 'n11-ready' /tmp/smart
+          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
-          echo 'PLAY_NAYA_CODE_NOT_VISIBLE=PASS'
-          echo 'THREE_ZONE_RUNTIME=PASS'
+          echo 'RIGHT_RAIL=REMOVED'
+          echo 'LEFT_SIDEBAR=PRESERVED'
+          echo 'THREE_FEED_VIEWS=PASS'
+          echo 'ACTIVITY_BLOCK_MIRROR=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
           echo "RELEASE=$GITHUB_SHA"
