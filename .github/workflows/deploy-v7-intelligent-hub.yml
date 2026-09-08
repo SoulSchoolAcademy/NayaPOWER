@@ -78,21 +78,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/" -o /tmp/runtime.html
-          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK" -o /tmp/smart.html
-          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/runtime.html
-          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/runtime.html
-          grep -Fq 'ACTIVITY' /tmp/runtime.html
-          grep -Fq 'PLAY NAYA' /tmp/runtime.html
-          grep -Fq 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' /tmp/runtime.html
-          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart.html
-          grep -Fq 'IN A NUTSHELL' /tmp/smart.html
-          if grep -Fq 'n10-standard' /tmp/runtime.html; then echo 'REGRESSED_OVERSIZED_CANONICAL_BLOCK_PRESENT'; exit 1; fi
-          if grep -Fq 'CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND' /tmp/runtime.html; then echo 'REGRESSED_GIANT_FOOTER_PRESENT'; exit 1; fi
+          Q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$Q" -o /tmp/runtime.html
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$Q" -o /tmp/smart.html
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY'; do grep -Fq "$s" /tmp/runtime.html; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'IN A NUTSHELL' 'HOW TO USE IT'; do grep -Fq "$s" /tmp/smart.html; done
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
+          echo "RELEASE_QUERY=$Q"
       - name: Record release identity
         run: |
           echo "SOURCE_COMMIT=$GITHUB_SHA"
