@@ -2,7 +2,10 @@
 
 **Status:** ACTIVE EXECUTION PLAN  
 **Date:** 2026-09-07  
-**Scope:** NayaNET Intelligent Hub ↔ Smart Notes ↔ Daily Intelligence Report ↔ GitHub synchronization
+**Scope:** NayaNET Intelligent Hub ↔ Smart Notes ↔ Daily Intelligence Report ↔ GitHub synchronization  
+**Governing directive:** `.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md`
+
+> **Execution authority:** The Master Execution Directive governs consequential Hub work. This roadmap defines the current receiver/pipeline implementation order beneath that directive. The roadmap may evolve as verified evidence is obtained; it must not override the governing laws of source truth, preservation, proven methods, anti-drift, blocker ownership, runtime verification, or compounding intelligence.
 
 ## 1. North Star
 
@@ -36,7 +39,7 @@ The source is a substantial V7 HTML application, but the inspection found severa
 
 1. The current source contains multiple additive/refinement layers that compete for the same feed, action, quote, navigation, and intelligence behaviors.
 2. The source currently contains older four-perspective presentation in multiple places: Human / Naya / Machine / Intelligent Feed. This must be aligned to the canonical five-perspective Smart Note model without creating a second event system.
-3. The source currently persists browser-local Smart Notes but does not yet expose one canonical external ingestion boundary for an incoming GitHub Smart Note event.
+3. The current source currently persists browser-local Smart Notes but does not yet expose one canonical external ingestion boundary for an incoming GitHub Smart Note event.
 4. The current source has no proven server-side receive → persist → render path for a new GitHub event.
 5. The current Daily Intelligence layer is primarily local/browser synthesis and does not yet provide the required stored Today / Yesterday / Week / Month historical report model.
 6. The source currently contains multiple action implementations and overlays; Personal and Collective action ordering must be normalized to one underlying action system.
