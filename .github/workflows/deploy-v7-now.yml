@@ -55,3 +55,4 @@ jobs:
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
+          echo "RELEASE=$GITHUB_SHA"
