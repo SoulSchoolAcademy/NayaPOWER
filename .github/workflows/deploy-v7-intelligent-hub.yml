@@ -7,6 +7,8 @@ on:
       - '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
       - '2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js'
       - 'CLOUDFLARE-INTELLIGENT-HUB-V7/**'
+      - '.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md'
+      - '.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md'
       - '.github/workflows/deploy-v7-intelligent-hub.yml'
   workflow_dispatch:
 permissions:
@@ -24,27 +26,24 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Validate Naya execution directive
+      - name: Validate NayaNET execution directive
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          p=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
-          text=p.read_text()
-          required=[
-            '**STATUS:** CANONICAL',
-            '**NORTH STAR:** Turn human experience and human–AI interaction into persistent, verified, reusable, compounding intelligence.',
-            'NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.',
-            'SELECT PROVEN METHOD',
-            'OBSERVE EXACT RUNTIME',
-            'SOURCE INTENT IS NOT RUNTIME TRUTH.',
-            'THE COLD-NAYA TEST',
-            'THE SYSTEM COMPOUNDS.'
-          ]
-          missing=[x for x in required if x not in text]
-          if missing: raise SystemExit(f'DIRECTIVE missing: {missing}')
-          print('NAYA_MASTER_EXECUTION_DIRECTIVE=PASS')
+          ultimate=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md')
+          hub=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
+          for p in [ultimate,hub]:
+              if not p.exists(): raise SystemExit(f'MISSING DIRECTIVE: {p}')
+          u=ultimate.read_text(); h=hub.read_text()
+          u_required=['**STATUS:** CANONICAL OPERATING DIRECTIVE','**NORTH STAR:** The human defines the outcome. Naya owns the execution.','RETRIEVE → UNDERSTAND → REUSE → ADAPT → EXECUTE','NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.','SOURCE INTENT IS NOT RUNTIME TRUTH.','WHEN YOU HIT A WALL, SOLVE THE WALL.']
+          h_required=['**STATUS:** CANONICAL','RETRIEVE PRIOR INTELLIGENCE','SELECT PROVEN METHOD','NAYA OWNS THE BLOCKER.','THE COLD-NAYA TEST','THE SYSTEM COMPOUNDS.']
+          for label,text,need in [('NAYANET_ULTIMATE',u,u_required),('HUB_DIRECTIVE',h,h_required)]:
+              missing=[x for x in need if x not in text]
+              if missing: raise SystemExit(f'{label} missing: {missing}')
+          print('NAYANET_ULTIMATE_EXECUTION_DIRECTIVE=PASS')
+          print('NAYA_HUB_EXECUTION_DIRECTIVE=PASS')
           PY
       - name: Build canonical artifact
         shell: bash
@@ -105,8 +104,7 @@ jobs:
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
           python3 - <<'PY'
           from pathlib import Path
-          root=Path('/tmp/root').read_text()
-          smart=Path('/tmp/smart').read_text()
+          root=Path('/tmp/root').read_text(); smart=Path('/tmp/smart').read_text()
           required=['COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY','HOW NAYANET','IN A NUTSHELL','HOW TO USE IT','PLAY NAYA','YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY','CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND','n16-style','n16-presentation-control','nayanet-focus-mode','grid-template-columns:minmax(0,1fr) 250px','activationRail','YOUR DAILY INTELLIGENCE REPORT','CONNECT GITHUB','SYNC INTELLIGENCE','GET CONNECTED']
           for source,text in [('ROOT',root),('SMART_LINK',smart)]:
               missing=[x for x in required if x not in text]
