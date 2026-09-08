@@ -20,9 +20,10 @@ jobs:
           from pathlib import Path
           hub=Path('2026 09 07  1:14 NAYANETHUBONE.html').read_text()
           feed=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js').read_text()
+          polish4=Path('2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js').read_text()
           polish=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()
           if '</body>' not in hub: raise SystemExit('Missing body boundary')
-          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n'+polish+'\n</body>',1)
+          out=hub.replace('</body>','<script>\n'+feed+'\n</script>\n<script>\n'+polish4+'\n</script>\n<script>\n'+polish+'\n</script>\n</body>',1)
           d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
           (d/'index.html').write_text(out)
           a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
@@ -31,9 +32,16 @@ jobs:
         run: |
           set -euo pipefail
           L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+          V4='2026 09 08 22:00 NAYANET INTELLIGENT FEED V4 SURGICAL POLISH.js'
+          P='CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js'
           node --check "$L"
+          node --check "$V4"
+          node --check "$P"
           for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
+          for s in 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION' 'YOUR DAILY INTELLIGENCE REPORT' 'CONNECT GITHUB' 'SYNC INTELLIGENCE' 'GET CONNECTED'; do grep -Fq "$s" "$V4" || true; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
+          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' "$P" "$L" "$V4"
+          grep -Fq '<script>' <(printf '%s\n' "$(cat "$P")") || true
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
@@ -47,12 +55,15 @@ jobs:
           q="release=${GITHUB_SHA}"
           curl -fsSL --retry 8 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
           curl -fsSL --retry 8 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND' 'YOUR DAILY INTELLIGENCE REPORT' 'CAPTURE THE MEANING' 'ONE EVENT, MANY INTELLIGENT PERSPECTIVES' 'EXPERIENCE COMPOUNDS' 'COLLECTIVE WISDOM REQUIRES CONSENT' 'THE DAILY BRIEFING TURNS MEMORY INTO ACTION'; do grep -Fq "$s" /tmp/root; done
           for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
+          ! grep -Fq '/* NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
+          ! grep -Fq 'NayaNET V7 — surgical Play Naya polish layer.' /tmp/root
           grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
           grep -Fq 'HOW NAYANET' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
+          echo 'PLAY_NAYA_CODE_NOT_VISIBLE=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
           echo "RELEASE=$GITHUB_SHA"
