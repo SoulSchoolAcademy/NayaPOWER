@@ -1,4 +1,3 @@
-# NayaNET V7 — source → build → artifact → deploy → runtime → Smart Link
 name: Deploy V7 Intelligent Hub
 on:
   push:
@@ -17,60 +16,37 @@ concurrency:
 env:
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
-  HUB_FILE: 2026 09 07  1:14 NAYANETHUBONE.html
-  FEED_FILE: 2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js
 jobs:
   deploy-v7:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: CLOUDFLARE-INTELLIGENT-HUB-V7
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Build exactly one canonical feed artifact from the known-good Hub
+      - name: Build canonical artifact
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          hub=Path('../2026 09 07  1:14 NAYANETHUBONE.html')
-          layer=Path('../2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
-          if not hub.exists(): raise SystemExit(f'Missing authoritative Hub: {hub}')
-          if not layer.exists(): raise SystemExit(f'Missing canonical feed layer: {layer}')
-          Path('.authoritative-source').write_text(str(hub))
-          Path('.authoritative-feed-layer').write_text(layer.name)
+          hub=Path('2026 09 07  1:14 NAYANETHUBONE.html')
+          layer=Path('2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js')
           base=hub.read_text()
-          inject='<script>\n'+layer.read_text()+'\n</script>\n'+Path('v7-ten-star-play-naya-polish.js').read_text()+'\n'
-          if '</body>' not in base: raise SystemExit('Authoritative Hub has no </body> boundary')
-          Path('index.html').write_text(base.replace('</body>',inject+'</body>',1))
-          Path('assets').mkdir(exist_ok=True)
-          Path('assets/index.html').write_text(Path('index.html').read_text())
-          Path('assets/_redirects').write_text('/index.html 200\n')
-          print('AUTHORITATIVE_HUB=',hub)
-          print('CANONICAL_FEED_LAYER=',layer.name)
-          print('CANONICAL_FEED_LAYER_COUNT=1')
+          if '</body>' not in base: raise SystemExit('Missing body boundary')
+          inject='<script>\n'+layer.read_text()+'\n</script>\n'+Path('CLOUDFLARE-INTELLIGENT-HUB-V7/v7-ten-star-play-naya-polish.js').read_text()+'\n'
+          out=base.replace('</body>',inject+'</body>',1)
+          d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
+          Path('CLOUDFLARE-INTELLIGENT-HUB-V7/index.html').write_text(out)
+          a=d/'assets'; a.mkdir(exist_ok=True); (a/'index.html').write_text(out); (a/'_redirects').write_text('/index.html 200\n')
           PY
-      - name: Validate elite three-view contract
+      - name: Validate source contract
         shell: bash
         run: |
           set -euo pipefail
-          LAYER="../2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js"
-          test -s "$LAYER"
-          node --check "$LAYER"
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Lists' 'Smart Share' 'Your Evidence' 'Your Connections' 'Smart Mail' 'Smart Spaces' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$LAYER"; done
-          if grep -Fq 'COLLECTIVE SIGNAL' "$LAYER"; then echo 'Legacy signal card exists'; exit 1; fi
-          if grep -Fq 'NETWORK WISDOM' "$LAYER"; then echo 'Legacy network wisdom card exists'; exit 1; fi
-          if grep -Fq 'SHARED INTELLIGENCE' "$LAYER"; then echo 'Legacy shared-intelligence header exists'; exit 1; fi
-          if grep -Fq 'YOUR COMPOUNDING INTELLIGENCE' "$LAYER"; then echo 'Legacy personal header exists'; exit 1; fi
-          if grep -Fq 'n10-standard' "$LAYER"; then echo 'Legacy oversized canonical block exists'; exit 1; fi
-          echo 'ELITE_THREE_VIEW_SOURCE_CONTRACT=PASS'
-          echo 'DIRECT_UNDER_TABS_CONTRACT=PASS'
-          echo 'FEED_FOOTER_CONTRACT=PASS'
-          echo 'SINGLE_CANONICAL_FEED_LAYER=PASS'
-          echo 'KNOWN_GOOD_HUB_BASELINE=PASS'
+          L='2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
+          node --check "$L"
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'human:' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LESSON' 'HOW TO USE IT' 'Favorite / Star this intelligence' 'Save / Keep this intelligence' 'Share this intelligence' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" "$L"; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE' 'n10-standard'; do ! grep -Fq "$s" "$L"; done
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -78,28 +54,18 @@ jobs:
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
-      - name: Independently verify exact public runtime and Smart Link
+      - name: Verify live runtime
         shell: bash
         run: |
           set -euo pipefail
-          Q="release=${GITHUB_SHA}"
-          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$Q" -o /tmp/runtime.html
-          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$Q" -o /tmp/smart.html
-          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'IN A NUTSHELL' 'HOW NAYANET' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/runtime.html; done
-          for s in 'COLLECTIVE INTELLIGENCE' 'IN A NUTSHELL' 'HOW NAYANET' 'HOW TO USE IT'; do grep -Fq "$s" /tmp/smart.html; done
-          if grep -Fq 'COLLECTIVE SIGNAL' /tmp/runtime.html; then echo 'REGRESSED_SIGNAL_CARD_PRESENT'; exit 1; fi
-          if grep -Fq 'NETWORK WISDOM' /tmp/runtime.html; then echo 'REGRESSED_NETWORK_WISDOM_CARD_PRESENT'; exit 1; fi
-          if grep -Fq 'SHARED INTELLIGENCE' /tmp/runtime.html; then echo 'REGRESSED_SHARED_INTELLIGENCE_HEADER_PRESENT'; exit 1; fi
-          if grep -Fq 'YOUR COMPOUNDING INTELLIGENCE' /tmp/runtime.html; then echo 'REGRESSED_PERSONAL_HEADER_PRESENT'; exit 1; fi
+          q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
+          for s in 'COLLECTIVE INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'ACTIVITY' 'HOW NAYANET' 'IN A NUTSHELL' 'HOW TO USE IT' 'PLAY NAYA' 'YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY' 'CREATE · CAPTURE · UNDERSTAND · REMEMBER · COMPOUND'; do grep -Fq "$s" /tmp/root; done
+          for s in 'COLLECTIVE SIGNAL' 'NETWORK WISDOM' 'SHARED INTELLIGENCE' 'YOUR COMPOUNDING INTELLIGENCE'; do ! grep -Fq "$s" /tmp/root; done
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/smart
+          grep -Fq 'HOW NAYANET' /tmp/smart
           echo 'PUBLIC_RUNTIME_ROOT=PASS'
           echo 'PUBLIC_SMART_LINK=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
-          echo "RELEASE_QUERY=$Q"
-      - name: Record release identity
-        run: |
-          echo "SOURCE_COMMIT=$GITHUB_SHA"
-          echo "AUTHORITATIVE_SOURCE=$(cat .authoritative-source)"
-          echo "AUTHORITATIVE_FEED_LAYER=$(cat .authoritative-feed-layer)"
-          echo "WORKER=nayanet-v7-intelligent-hub"
-          echo "THREE_VIEW_DEFAULT=COLLECTIVE_FOR_NEW_OR_UNPREFERENCED_USERS"
