@@ -1,0 +1,1 @@
+Trigger the authoritative Deploy NayaNET Live Hub workflow after routing it to the current 2026-09-08 canonical source.
