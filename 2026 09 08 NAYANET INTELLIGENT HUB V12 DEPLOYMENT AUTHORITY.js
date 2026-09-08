@@ -1,6 +1,7 @@
 /* NayaNET V12 — deployment authority layer.
    Surgical correction of the actual Hub hierarchy. Preserves existing nav controls,
    feed content, and connection handlers while enforcing the locked three-zone contract.
+   Deployment verification trigger: 2026-09-07.
 */
 (()=>{
 'use strict';
@@ -22,15 +23,12 @@ const desired=[
 
 const style=document.createElement('style');
 style.textContent=`
-/* V12: LEFT = navigation only. Smart Notes / Intelligent Blocks are feed content. */
 .n12-ready .sidebar .nav{display:grid!important;gap:5px!important}
 .n12-ready .sidebar .nav button,.n12-ready .sidebar .nav a,.n12-ready .sidebar .nav [role="button"]{min-height:46px!important}
 .n12-ready .sidebar .n12-nav-label{display:block!important;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .n12-ready .sidebar [data-n12-extra="1"]{display:none!important}
-/* CENTER = the intelligence views and the actual Intelligent Blocks. */
 .n12-ready #nayanet-elite-feed .n3-tabs{position:relative;z-index:2}
 .n12-ready #nayanet-elite-feed .n3-body{position:relative;z-index:1}
-/* RIGHT = operations rail; keep its authority visually separate from the feed. */
 .n12-ready .n10-rail{z-index:40!important}
 `;
 document.head.appendChild(style);
@@ -75,7 +73,7 @@ function enforceSidebar(){
  if(!items.length)return;
  const used=new Set();
  const chosen=[];
- desired.forEach((spec,index)=>{
+ desired.forEach((spec)=>{
    let found=items.find(el=>!used.has(el)&&aliasesMatch(el,spec.aliases));
    if(!found)found=items.find(el=>!used.has(el));
    if(found){used.add(found);chosen.push(found);setLabel(found,spec.label);found.removeAttribute('data-n12-extra');}
