@@ -1,6 +1,7 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 # DEFINITIVE-SMART-FEED-MASTER-V2
 # ONE-COMPOSITION-RUNTIME
+# RELEASE RETRIGGER: governance assertion repaired; deploy exact current main
 name: Deploy NayaNET Live Hub
 
 on:
