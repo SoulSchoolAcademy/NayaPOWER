@@ -1,59 +1,18 @@
 name: NayaNET Runtime QA
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    types: [opened, synchronize, reopened]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  smoke:
+  retired:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
     steps:
-      - uses: actions/checkout@v4
-      - name: Validate canonical Powercast registry
-        run: node -e "const fs=require('fs'); const x=JSON.parse(fs.readFileSync('powercasts.json','utf8')); if(!Array.isArray(x)||x.length!==18) process.exit(1); if(x.some(c=>!c.n||!c.title||!c.image||!c.audio)) process.exit(1); console.log('Powercasts:',x.length)"
-      - name: Syntax-check canonical runtime JavaScript
+      - name: Assert canonical runtime QA ownership
         run: |
-          node --check nayanet-10.js
-          node --check naya-data.js
-      - name: Validate canonical HTML runtime references
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          html=Path('index.html').read_text()
-          data=Path('naya-data.js').read_text()
-          required=['/nayanet-10-experience.css','/naya-data.js']
-          missing=[x for x in required if x not in html]
-          if missing: raise SystemExit('Missing canonical shell references: '+', '.join(missing))
-          if '/nayanet-10.js' in html: raise SystemExit('Runtime must boot after persistence hydration; direct runtime script is obsolete')
-          if '/styles.css' in html or '/app.js' in html: raise SystemExit('Obsolete runtime referenced by canonical shell')
-          if 'const RUNTIME_SRC = "/nayanet-10.js"' not in data: raise SystemExit('Persistence bridge does not own canonical runtime boot')
-          for path in ['index.html','nayanet-10-experience.css','nayanet-10.js','naya-data.js','powercasts.json','_headers','404.html']:
-            if not Path(path).is_file() or Path(path).stat().st_size==0: raise SystemExit('Missing asset: '+path)
-          print('Canonical hydrated shell/assets: OK')
-          PY
-      - name: Validate nine-world contract
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          js=Path('nayanet-10.js').read_text()
-          for value in ['Naya Power','Super Brain','Smart Identity','Intelligence','Power Player','MAXESS','5-Day Challenge','Intelligent Spaces','Your Network']:
-            if value not in js: raise SystemExit('Missing world: '+value)
-          for value in ['What happened? What matters about it?','SAVE SMART NOTE','ANCHOR MY GOAL','CREATE PRIVATE SPACE','OPEN MAXESS']:
-            if value not in js: raise SystemExit('Missing interaction: '+value)
-          print('Nine-worlds/actions: OK')
-          PY
-      - name: Verify canonical CSS is referenced exactly once
-        run: test "$(grep -o '/nayanet-10-experience.css' index.html | wc -l)" -eq 1
-      - name: Verify persistence bridge is referenced exactly once
-        run: test "$(grep -o '/naya-data.js' index.html | wc -l)" -eq 1
-      - name: Verify runtime boot contract is present exactly once
-        run: test "$(grep -o 'const RUNTIME_SRC = \"/nayanet-10.js\"' naya-data.js | wc -l)" -eq 1
+          echo 'LEGACY_E02_RUNTIME_QA=RETIRED'
+          echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
+          echo 'CURRENT_RUNTIME_QA=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'RULE=ONE_CURRENT_NAYANET_RUNTIME_QA_AUTHORITY'
