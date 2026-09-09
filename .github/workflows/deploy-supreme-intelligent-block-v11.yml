@@ -119,3 +119,5 @@ jobs:
           print('PUBLIC_FEED_ASSET=PASS')
           print('VERIFIED_RELEASE='+__import__('os').environ['GITHUB_SHA'])
           PY
+
+# FORCE RELEASE TRIGGER: user-authored commit required so deployment workflow executes.
