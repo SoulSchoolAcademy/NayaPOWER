@@ -1,13 +1,15 @@
 # NayaNET Intelligent Hub — Canonical Source + Design Token + Foundation Contract
 
 **Status:** FOUNDATION CONTRACT — FORWARD AUTHORITY
-**Version:** 1.0
+**Version:** 1.1
 **North Star:** INTELLIGENCE MADE VISIBLE.
 **Mission:** CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND.
 
 ## 1. Authority
 
 This contract is the implementation boundary for the new NayaNET Intelligent Hub. Historical Hub files remain reference-only and are not imported or executed by the new application. Vercel is excluded. The established Cloudflare Worker `aged-art-7c12` is the current production destination, subject to independent runtime verification on release.
+
+The project’s durable continuity is maintained in GitHub Issue #151, **NayaNET Intelligent Hub — LIVE ACTIVITY FEED / CONTINUITY LOG**. Every meaningful execution session must record current state, change, reason, verification/evidence, protected items, open blockers, locked decisions, next execution, and do-not-redo guidance there.
 
 ## 2. Canonical source boundary
 
@@ -175,6 +177,8 @@ The lenses are views over the same intelligence graph, not separate feeds or dat
 
 Feed ordering is derived from relevance, recency, importance, unfinished action, relationship, learning value, newness, trust, and user intent. The first vertical slice may use deterministic local fixtures, but must preserve the production data contract and clearly mark fixture status.
 
+Activity is a first-class continuity surface. Meaningful project/system events are recorded in GitHub Issue #151 so future Nayas can recover state and reasoning without relying on chat history. The eventual in-product Activity lens must consume the same canonical activity/event model rather than becoming a separate renderer or isolated store.
+
 ## 12. Design tokens
 
 ### Typography
@@ -300,6 +304,7 @@ It must prove the architecture before additional rooms are built. It must includ
 - Proven button/board/material design DNA is preserved and elevated rather than reinvented.
 - Source-to-runtime integrity must be independently proven.
 - No fake intelligence.
+- GitHub Issue #151 is the durable project continuity/activity log; meaningful execution state must be recorded there.
 
 ## 19. Execution law
 
