@@ -54,7 +54,7 @@ jobs:
                 const headers = new Headers(response.headers);
                 headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
                 headers.set('Pragma', 'no-cache');
-                headers.set('X-NayaNET-Release', 'CURRENT-HUB-V9');
+                headers.set('X-NayaNET-Release', 'SUPREME-INTELLIGENT-BLOCK-V10');
                 headers.set('X-NayaNET-Source', '2026 09 08 452 NayaNET Hub.html');
                 headers.set('X-NayaNET-Feed', 'nayanet-intelligent-feed-v6.js');
                 return new Response(response.body, { status: response.status, headers });
@@ -68,13 +68,13 @@ jobs:
           html=Path('release/assets/index.html').read_text(encoding='utf-8')
           js=Path('release/assets/nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
           html_checks=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','homeWorkspace','activationRail','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
-          js_checks=['__NAYA_INTELLIGENT_FEED_V9_PRESENTATION__','Intelligence, made visible.','THE INTELLIGENCE PATH','WHY THIS COMPOUNDS']
+          js_checks=['__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE__','Intelligence, made visible.','THE INTELLIGENCE DESCENT','WEAVER · HIGHER-ORDER SYNTHESIS','COMPOUNDING INTELLIGENCE']
           missing=[x for x in html_checks if x not in html]+[x for x in js_checks if x not in js]
           if missing: raise SystemExit(f'MISSING_MARKERS={missing}')
           if 'class="sidebar"' not in html: raise SystemExit('LEFT_SIDEBAR_MISSING')
           print('SOURCE_BYTES=',len(html.encode()))
           print('FEED_BYTES=',len(js.encode()))
-          print('V9_PRESENTATION_SOURCE_CHECK=PASS')
+          print('SUPREME_PRESENTATION_SOURCE_CHECK=PASS')
           PY
 
       - name: Deploy exact artifact
@@ -96,7 +96,7 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           html_required=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
-          js_required=['__NAYA_INTELLIGENT_FEED_V9_PRESENTATION__','Intelligence, made visible.','THE INTELLIGENCE PATH','WHY THIS COMPOUNDS']
+          js_required=['__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE__','Intelligence, made visible.','THE INTELLIGENCE DESCENT','WEAVER · HIGHER-ORDER SYNTHESIS','COMPOUNDING INTELLIGENCE']
           for f in ['/tmp/root','/tmp/smart']:
               t=Path(f).read_text(encoding='utf-8')
               missing=[x for x in html_required if x not in t]
@@ -105,8 +105,8 @@ jobs:
           feed=Path('/tmp/feed').read_text(encoding='utf-8')
           missing=[x for x in js_required if x not in feed]
           if missing: raise SystemExit(f'/tmp/feed MISSING={missing}')
-          print('V9_PUBLIC_HUB=PASS')
-          print('V9_PUBLIC_FEED_ASSET=PASS')
-          print('V9_SMART_LINK=PASS')
+          print('SUPREME_PUBLIC_HUB=PASS')
+          print('SUPREME_PUBLIC_FEED_ASSET=PASS')
+          print('SUPREME_SMART_LINK=PASS')
           print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
           PY
