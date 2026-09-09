@@ -4,6 +4,8 @@ from __future__ import annotations
 import argparse,json,os,re,sys
 from datetime import datetime,timezone
 from pathlib import Path
+RUNTIME=Path(__file__).resolve().parent
+if str(RUNTIME) not in sys.path: sys.path.insert(0,str(RUNTIME))
 from project_execution_contract import validate_next_execution_reference
 ROOT=Path(__file__).resolve().parents[2]
 MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';POLICY=MEMORY/'CONTINUITY-ENFORCEMENT-POLICY.json';REPORT=MEMORY/'CONTINUITY-VALIDATION-REPORT.json';RECEIPT=MEMORY/'CONTINUITY-GATE-RECEIPT.json'
@@ -49,8 +51,7 @@ def check_event(e,path,p):
     if parse_time(e.get('effective_at',e.get('created_at','')))>=parse_time(p.get('structured_handoff_effective_at',p['effective_at'])):
         ok,m=has_structured_handoff(e,p)
         if not ok:errors.append(f'{eid}: structured Future-Naya handoff missing required fields: {", ".join(m)}')
-    nex=e.get('next_execution');nex=nex.get('path') if isinstance(nex,dict) else nex
-    nex=nex or c.get('next_execution_path')
+    nex=e.get('next_execution');nex=nex.get('path') if isinstance(nex,dict) else nex;nex=nex or c.get('next_execution_path')
     if state=='COMPLETED':
         if not nex:errors.append(f'{eid}: completed execution requires a canonical NEXT-EXECUTION successor')
         else:errors.extend(f'{eid}: {x}' for x in validate_next_execution_reference(nex))
