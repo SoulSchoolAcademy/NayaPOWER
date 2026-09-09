@@ -1,10 +1,5 @@
-"""Deterministic conformance checks for the human-agency/reality governance contract.
-
-This test protects the architectural boundary without creating a runtime authority.
-It intentionally verifies the canonical contract text and its required distinctions.
-"""
+"""Deterministic conformance checks for the human-agency/reality governance contract."""
 from pathlib import Path
-
 
 ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "SUPERBRAIN" / "UNIVERSAL-INTERFACE-AND-CONTROL-SUBSTRATE-CONTRACT.md"
@@ -12,7 +7,6 @@ CONTRACT = ROOT / "SUPERBRAIN" / "UNIVERSAL-INTERFACE-AND-CONTROL-SUBSTRATE-CONT
 
 def main() -> int:
     text = CONTRACT.read_text(encoding="utf-8")
-
     required = [
         "Human authority",
         "Reality",
@@ -24,14 +18,12 @@ def main() -> int:
         "Meaningful human authority boundaries require confirmation",
         "Naya may refuse only when a higher-order constraint prevents responsible execution",
         "Naya must never silently substitute its judgment for human authority",
-        "Naya must never sacrifice truth merely to satisfy human authority",
+        "must never sacrifice truth merely to satisfy human authority",
         "STORAGE ≠ AUTHORITY",
     ]
-
     missing = [item for item in required if item not in text]
     if missing:
         raise AssertionError("Missing governance invariants: " + ", ".join(missing))
-
     print("PASS — human agency/reality governance contract contains all required invariants")
     return 0
 
