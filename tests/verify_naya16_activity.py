@@ -1,19 +1,14 @@
 #!/usr/bin/env python3
-"""Machine gate for Naya 16 activity-feed compliance.
-
-A governed execution commit must update SUPERBRAIN/NAYA-ACTIVITY-FEED.md and the
-new feed content must contain every mandatory report field. This gate is designed
-to make Naya 16 enforceable rather than merely documentary.
-"""
+"""Machine gate for Naya 16 activity-record compliance."""
 from __future__ import annotations
 
 import argparse
 import pathlib
 import subprocess
-import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 FEED = ROOT / "SUPERBRAIN" / "NAYA-ACTIVITY-FEED.md"
+ACTIVITY_DIR = "SUPERBRAIN/NAYA-ACTIVITY/"
 REQUIRED = [
     "### 01 — WHAT IS HAPPENING NOW?",
     "### 02 — WHAT ARE WE ACTUALLY TRYING TO ACHIEVE?",
@@ -38,13 +33,7 @@ REQUIRED = [
     "**16-PROTOCOL CHECK:**",
 ]
 GOVERNED_PREFIXES = (
-    "NAYANET/",
-    "SUPERBRAIN/",
-    ".naya/",
-    "scripts/",
-    "supabase/",
-    "tests/",
-    ".github/workflows/",
+    "NAYANET/", "SUPERBRAIN/", ".naya/", "scripts/", "supabase/", "tests/", ".github/workflows/",
 )
 
 
@@ -56,6 +45,14 @@ def changed_files(before: str, after: str) -> list[str]:
     return [x.strip() for x in subprocess.check_output(cmd, cwd=ROOT, text=True).splitlines() if x.strip()]
 
 
+def has_complete_report(text: str) -> bool:
+    return all(item in text for item in REQUIRED)
+
+
+def has_activity_record(files: list[str]) -> bool:
+    return any(p == "SUPERBRAIN/NAYA-ACTIVITY-FEED.md" or p.startswith(ACTIVITY_DIR) for p in files)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--before", default="")
@@ -63,29 +60,24 @@ def main() -> int:
     parser.add_argument("--negative-test", action="store_true")
     args = parser.parse_args()
 
-    if not FEED.exists():
-        print("NAYA16 FAIL: activity feed is missing")
-        return 1
-
-    content = FEED.read_text(encoding="utf-8")
-    missing = [item for item in REQUIRED if item not in content]
-    if missing:
-        print("NAYA16 FAIL: feed is missing required fields:")
-        for item in missing:
-            print(f" - {item}")
+    if not FEED.exists() or not has_complete_report(FEED.read_text(encoding="utf-8")):
+        print("NAYA16 FAIL: canonical activity feed is missing required report fields")
         return 1
 
     if args.negative_test:
-        print("NAYA16 NEGATIVE TEST: PASS (missing-feed condition is expected to be rejected by the policy gate)")
+        synthetic_governed_change = ["NAYANET/HUB/src/App.tsx"]
+        if has_activity_record(synthetic_governed_change):
+            print("NAYA16 NEGATIVE TEST FAIL: synthetic governed change incorrectly accepted")
+            return 1
+        print("NAYA16 NEGATIVE TEST PASS: governed change without activity record is rejected")
         return 0
 
     files = changed_files(args.before, args.after)
     governed = [p for p in files if p.startswith(GOVERNED_PREFIXES)]
-    feed_changed = "SUPERBRAIN/NAYA-ACTIVITY-FEED.md" in files
+    recorded = has_activity_record(files)
 
-    if governed and not feed_changed:
-        print("NAYA16 FAIL: governed execution changed files without an activity-feed record")
-        print("Changed governed files:")
+    if governed and not recorded:
+        print("NAYA16 FAIL: governed execution changed files without an activity record")
         for p in governed:
             print(f" - {p}")
         return 1
@@ -93,7 +85,7 @@ def main() -> int:
     print("NAYA16 PASS")
     print(f"changed_files={len(files)}")
     print(f"governed_files={len(governed)}")
-    print(f"activity_feed_changed={feed_changed}")
+    print(f"activity_record_present={recorded}")
     return 0
 
 
