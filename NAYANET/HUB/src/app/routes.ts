@@ -1,0 +1,1 @@
+export const routes={home:'/',feed:'/feed',notes:'/notes',today:'/today',reports:'/reports',library:'/library',collective:'/collective',evidence:'/evidence',connections:'/connections',mail:'/mail',space:'/space',settings:'/settings'} as const;
