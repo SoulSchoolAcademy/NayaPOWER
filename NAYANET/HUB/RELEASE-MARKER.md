@@ -20,6 +20,10 @@ Production URL: `https://aged-art-7c12.nayanet.workers.dev`
 
 `NAYANET/HUB → TYPECHECK → VITE BUILD → ARTIFACT INSPECTION → CLOUDFLARE → EXACT PUBLIC RUNTIME → VERIFICATION`
 
+## Current build repair
+
+The canonical typecheck now includes React/ReactDOM declarations and Vite client types. This marker is intentionally changed on a dedicated branch so the repair can enter `main` through an auditable merge and trigger the canonical release path.
+
 ## Important
 
 This is not a second application, renderer, room, or design system. The source under `NAYANET/HUB/` remains the sole forward implementation boundary. Historical Hub files remain reference-only.
