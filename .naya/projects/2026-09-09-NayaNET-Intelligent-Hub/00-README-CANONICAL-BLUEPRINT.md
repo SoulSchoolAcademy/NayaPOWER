@@ -1,69 +1,149 @@
 # NayaNET Intelligent Hub — Canonical Blueprint
 
-**Project:** 2026-09-09 NayaNET Intelligent Hub Forensic Rebuild  
-**Source snapshot under audit:** `2026 09 08 452 NayaNET Hub.html`  
-**Repository:** `SoulSchoolAcademy/NayaPOWER`  
-**Branch:** `main`  
-**Status:** FORENSIC BLUEPRINT / BUILD AUTHORITY  
+**Project:** 2026-09-09 NayaNET Intelligent Hub — Fresh Rebuild
+**Repository:** `SoulSchoolAcademy/NayaPOWER`
+**Branch:** `main`
+**Status:** FRESH-BUILD PRODUCT + ARCHITECTURE AUTHORITY
 
-## Purpose
+## Authority rule
 
-This project is the reconstruction-grade inventory of the NayaNET Intelligent Hub. It exists so a future Naya can rebuild the Hub without guessing, omitting behavior, inventing destinations, or confusing source intent with runtime truth.
+There is **NO legacy authoritative Hub source**.
 
-The blueprint is deliberately deeper than a component list. It records page states, entry/exit paths, controls, exact destinations, local data stores, renderer layers, intelligence flow, visual rules, responsive behavior, deployment, and verification.
+`2026 09 08 452 NayaNET Hub.html` is a frozen reference snapshot only. It is not edited for the new build.
 
-## Non-negotiable reconstruction laws
+Historical NAYANETHUBONE/9F material is reference/history only. It must not silently become the current implementation.
 
-1. **Source truth before redesign.** The audited source is the 2026-09-08-452 HTML snapshot plus its actual imported/embedded JavaScript.
-2. **Runtime truth before completion claims.** Source → artifact → deployment → exact public runtime → independent observation.
-3. **Adaptive Reconstruction + Surgical Evolution.** Never destroy the house to renovate one room.
-4. **One intelligence model.** Current State Feed = Intelligent Feed = Smart Note Feed. It is a projection of durable intelligence, not a competing memory authority.
-5. **Canonical durable intelligence authority:** Note Events / Smart Note persistence architecture in `.naya/memory/events/` and the production intelligence pipeline when connected.
-6. **Private by default · shared by choice · collective by consent · public by decision.**
-7. **No fake intelligence.** A local placeholder, demo block, canned response, or pending service is never described as production Naya intelligence.
-8. **No dead ends.** Every user action either completes, gives truthful state, or gives a concrete next route.
+The new Hub will receive a new canonical source path/name when implementation begins. Until then, this blueprint project is the product and architecture authority.
 
-## What is already proven by source inspection
+## North Star
 
-- Desktop shell has a left sidebar and main workspace; the current source contains no active right activation rail after its runtime guards remove it.
-- Mobile hides the desktop sidebar and uses a fixed five-item bottom navigation.
-- The shell contains Personal, Collective, Communication, and System navigation.
-- The source contains an ecosystem link bar with eight external destinations.
-- The source contains a bottom Feature Reports bar with five Google Drive links.
-- Home contains an Intelligent Feed mounted at `#homeIntelligentBlocks`.
-- Smart Notes, Reports, Intelligence Library, Collective, Evidence, Connections, Smart Mail, and Settings are implemented as page states in one HTML document.
-- Smart Notes use browser `localStorage` as the current static-package persistence boundary.
-- Search indexes locally preserved blocks; voice search uses browser SpeechRecognition when available.
-- GitHub verification calls the public GitHub API and can visibly distinguish verified from unverified state.
-- Smart Mail preserves drafts locally but does not deliver messages because a production communication endpoint is not connected in this package.
-- Naya avatar/branding is present, but a real remote Naya/Superbrain response service is not connected in this static source.
+**INTELLIGENCE MADE VISIBLE.**
 
-## Critical architecture discrepancy to resolve before rebuilding
+**CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND**
 
-`.naya/INTELLIGENT-FEED.md` states that `NAYANETHUBONE.html` is the authoritative Hub source. The current deployment workflow packages **`2026 09 08 452 NayaNET Hub.html`** as the exact current artifact and exposes `X-NayaNET-Source: 2026 09 08 452 NayaNET Hub.html`. This blueprint therefore treats the 2026-09-08-452 file as the **audited deployment source**, while preserving the discrepancy as a release-blocking governance item until one canonical source is explicitly locked.
+## Core product laws
 
-## Blueprint index
+1. Preserve proven requirements; do not accidentally delete them.
+2. One canonical event identity.
+3. Smart Note = durable intelligence event; Smart Feed = projection.
+4. Personal Intelligence, Collective Intelligence and Activity Feed share one event model.
+5. Private by default · Shared by choice · Collective by consent · Public by decision.
+6. Every button has a defined action.
+7. Every link has a defined destination.
+8. Every data transition has a defined source and persistence boundary.
+9. No fake intelligence, fake receipts, fake delivery or fake activity.
+10. No competing renderers fighting over the same DOM.
+11. Desktop has a left sidebar and no right Hub sidebar.
+12. Mobile has no persistent left sidebar and must retain access to every important room.
+13. Source → build → deployment → runtime → visible observation is the release proof chain.
 
-- [01 — Page Map](./01-PAGE-MAP.md)
-- [02 — Component Map](./02-COMPONENT-MAP.md)
-- [03 — Interaction + Link Map](./03-INTERACTION-LINK-MAP.md)
-- [04 — Intelligence Map](./04-INTELLIGENCE-MAP.md)
-- [05 — Visual + Responsive Map](./05-VISUAL-RESPONSIVE-MAP.md)
-- [06 — Engineering + Verification Map](./06-ENGINEERING-VERIFICATION-MAP.md)
-- [07 — Rebuild + Acceptance Contract](./07-REBUILD-ACCEPTANCE-CONTRACT.md)
+## Project documents
 
-## Primary audited source
+- `MASTER-BLUEPRINT.md` — master architecture and execution order
+- `01-PAGE-MAP.md` — pages, entry/exit points and exact destinations
+- `02-COMPONENT-MAP.md` — components, purpose, state, data and dependencies
+- `03-INTERACTION-LINK-MAP.md` — controls, clicks, functions, destinations and persistence
+- `04-INTELLIGENCE-MAP.md` — intelligence/event/data flow
+- `05-VISUAL-RESPONSIVE-MAP.md` — visual and responsive system
+- `06-ENGINEERING-VERIFICATION-MAP.md` — engineering and production proof
+- `07-REBUILD-ACCEPTANCE-CONTRACT.md` — definition of done
+- `08-SMART-FEED-INTELLIGENCE-SPEC.md` — locked Smart Feed / Intelligent Feed contract
+- `09-HUB-ROOM-BY-ROOM-SPEC.md` — the Hub's rooms and their responsibilities
+- `10-OPEN-DECISIONS-BEFORE-CODING.md` — remaining decisions that must not be guessed
 
-`2026 09 08 452 NayaNET Hub.html` is the source snapshot used for this forensic inventory. It contains the full shell, page states, external links, local persistence logic, intelligence layers, and renderer overrides. fileciteturn346file0
+## The house
 
-## Intelligence continuity authority
+### Shared structure
+- Top Bar
+- Ecosystem Link Bar
+- Left Sidebar
+- Lower Feature Reports Bar
+- Mobile Navigation
 
-The repository's current-state doctrine explicitly defines **CURRENT STATE FEED = INTELLIGENT FEED = SMART NOTE FEED** and says the feed is a prioritized projection over the durable Note Event store, not a second memory authority. fileciteturn351file0
+### Rooms
+- Home / Intelligence Today
+- Smart Feed / Intelligent Feed
+- Smart Notes
+- Daily Intelligence / Reports
+- Intelligence Library
+- Collective Intelligence
+- Evidence
+- Connections
+- Smart Mail
+- Smart Space
+- Settings
 
-## Deployment authority observed
+### Cross-room intelligence services
+- Search / Retrieval
+- Naya access
+- Persistence
+- Verification
 
-The current workflow copies the 2026-09-08-452 HTML to `release/assets/index.html`, copies `nayanet-intelligent-feed-v6.js`, deploys to the NayaNET V7 Worker, and then verifies the public runtime plus Smart Link and feed asset markers. fileciteturn358file0
+## Home requirements that must not disappear
+
+The new Home intentionally includes:
+
+- Good morning / time-of-day greeting
+- current time
+- current date
+- country/locale
+- intelligence philosophy statement
+- privacy statement
+- primary search / Ask Naya access
+- Smart Feed
+- clear current-state orientation
+
+Working philosophy wording:
+
+**MORE INTELLIGENCE. LESS WASTE.**
+
+If a more exact earlier canonical wording is recovered from frozen reference material, use that rather than guessing—but never remove the concept accidentally.
+
+## Smart Feed requirement
+
+The Smart Feed has three visible conceptual modes:
+
+- Personal Intelligence
+- Collective Intelligence
+- Activity Feed
+
+The Intelligent Block is one event with layered perspectives:
+
+**WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSON / MEANING / ACTION**
+
+Blocks must feel dimensional, elevated, tactile, premium, beautiful and exceptionally readable.
+
+See `08-SMART-FEED-INTELLIGENCE-SPEC.md`.
+
+## Exact frozen-reference ecosystem destinations
+
+- HOME → `https://hmclibrary.groovemember.net/home`
+- NAYA POWER → `https://academy.nayanet.app/`
+- 5 DAY CHALLENGE → `https://academy.nayanet.app/`
+- ENTER FREE → `https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab`
+- POWERCASTS → `https://nayanet.groovepages.com/powerplayer`
+- WHITE PAPER → `https://nayanet.groovepages.com/whitepaper`
+- ABOUT US → `https://nayanet.groovepages.com/aboutus`
+- HMC LOGIN → `https://hmclibrary.groovemember.net/login`
+
+## Exact frozen-reference lower-bar reports
+
+- SMART NOTES → Google Drive file `19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP`
+- NO DEAD ENDS → Google Drive file `1LgRmYAQ85AB6mmu6Qp2ovghyd1lP-FNh`
+- CONTEXT LAW → Google Drive file `1N-XzV3_RCTHuLdp4leZNlOo7ITFwrICR`
+- 10-STAR SERVICE → Google Drive file `1F9M66i5Av_oJcIa5dve-U0mMeAgYKczT`
+- ADAPTIVE LEARNING → Google Drive file `1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC`
+
+## Execution strategy
+
+Build progressively in dependency order, validating each completed room before moving to the next:
+
+**FOUNDATION → SHELL → HOME → SMART NOTE MODEL → SMART FEED → SEARCH → SECONDARY ROOMS → NAYA → PRODUCTION INTEGRATIONS → VERIFICATION**
+
+Never modify ten unrelated systems in one pass.
 
 ## Final rule
 
-No future Naya should have to infer what a button, board, link, feed, sidebar, persistence layer, or intelligence transition was intended to do. If behavior is not yet verified, the blueprint must say **UNKNOWN / NOT VERIFIED**, not invent an answer.
+The new Hub is not a repair job. It is a clean reconstruction informed by the old product.
+
+**Learn. Specify. Build. Verify. Lock. Then move to the next room.**
