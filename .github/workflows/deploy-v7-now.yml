@@ -1,29 +1,25 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
-# DEFINITIVE-SMART-FEED-MASTER-V2
-# ONE-COMPOSITION-RUNTIME
-# RELEASE RETRIGGER: governance assertion repaired; deploy exact current main
+# RELEASE PATH: NAYANET/HUB -> VITE BUILD -> CLOUDFLARE aged-art-7c12
 name: Deploy NayaNET Live Hub
 
 on:
   push:
     branches: [main]
     paths:
-      - '2026 09 08 452 NayaNET Hub.html'
-      - '.naya/build/NAYANET-SMART-FEED-MASTER-V2.html'
+      - 'NAYANET/HUB/**'
       - '.naya/build/SMART_FEED_RELEASE_TRIGGER'
       - '.github/workflows/deploy-v7-now.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: nayanet-canonical-live-hub
   cancel-in-progress: false
 
 env:
-  HUB: '2026 09 08 452 NayaNET Hub.html'
-  PAYLOAD: '.naya/build/NAYANET-SMART-FEED-MASTER-V2.html'
+  HUB: NAYANET/HUB
   RUNTIME: https://aged-art-7c12.nayanet.workers.dev
   SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   WORKER_NAME: aged-art-7c12
@@ -32,88 +28,63 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact main
+      - name: Checkout exact current main
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: main
 
-      - name: Replace failed feed experiment with one definitive master composition
-        shell: python
+      - name: Build the canonical NAYANET/HUB source
+        shell: bash
+        working-directory: NAYANET/HUB
         run: |
-          from pathlib import Path
-          import re
-          hub=Path('${{ env.HUB }}'); payload=Path('${{ env.PAYLOAD }}')
-          s=hub.read_text(encoding='utf-8'); p=payload.read_text(encoding='utf-8')
-          if 'NAYANET SMART FEED MASTER V2' not in p: raise SystemExit('PAYLOAD_MARKER_MISSING')
-          if 'NAYANET-SMART-FEED-MASTER-V2-RUNTIME' not in p: raise SystemExit('MASTER_V2_RUNTIME_MISSING')
-          patterns=[
-            r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?<!-- NAYANET SMART FEED MASTER V1 END -->\s*',
-            r'<!-- NAYANET SMART FEED FORCE MOUNT V2 -->[\s\S]*?</script>\s*',
-            r'<!-- NAYANET SMART FEED MASTER V2 -->[\s\S]*?<!-- NAYANET SMART FEED MASTER V2 END -->\s*'
-          ]
-          for pat in patterns: s=re.sub(pat,'',s)
-          if '</body>' not in s: raise SystemExit('BODY_BOUNDARY_MISSING')
-          s=s.replace('</body>',p+'\n</body>',1)
-          hub.write_text(s,encoding='utf-8')
-          print('DEFINITIVE_MASTER_V2_APPLIED=TRUE')
-          print('OLD_EXPERIMENTS_REMOVED=TRUE')
+          set -euo pipefail
+          npm install --no-audit --no-fund
+          npm run typecheck
+          npm run build
+          test -s dist/index.html
+          echo 'CANONICAL_HUB_BUILD=PASS'
 
-      - name: Idempotency and single-composition gate
+      - name: Verify the first-slice production contract in the built artifact
         shell: bash
         run: |
           set -euo pipefail
-          H="$HUB"
-          test "$(grep -o '<!-- NAYANET SMART FEED MASTER V2 -->' "$H" | wc -l)" -eq 1
-          test "$(grep -o '<!-- NAYANET SMART FEED MASTER V1 -->' "$H" | wc -l)" -eq 0
-          test "$(grep -o '<!-- NAYANET SMART FEED FORCE MOUNT V2 -->' "$H" | wc -l)" -eq 0
-          test "$(grep -o '<style id=\"NAYANET-SMART-FEED-MASTER-V2\">' "$H" | wc -l)" -eq 1
-          test "$(grep -o '<script id=\"NAYANET-SMART-FEED-MASTER-V2-RUNTIME\">' "$H" | wc -l)" -eq 1
-          echo 'SINGLE_COMPOSITION_GATE=PASS'
+          H="NAYANET/HUB/dist/index.html"
+          test -s "$H"
+          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" "$H" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
+          echo 'FIRST_SLICE_ARTIFACT_CONTRACT=PASS'
 
-      - name: JavaScript syntax gate
-        shell: python
-        run: |
-          from pathlib import Path
-          import re,subprocess
-          s=Path('${{ env.HUB }}').read_text(encoding='utf-8')
-          scripts=re.findall(r'<script[^>]*>([\s\S]*?)</script>',s)
-          targets=[x for x in scripts if 'NAYANET-SMART-FEED-MASTER-V2-RUNTIME' in x]
-          if len(targets)!=1: raise SystemExit('MASTER_V2_RUNTIME_COUNT_FAILED')
-          path='/tmp/smart-feed-v2.js'; Path(path).write_text(targets[0],encoding='utf-8')
-          r=subprocess.run(['node','--check',path],text=True,capture_output=True)
-          if r.returncode: print(r.stderr); raise SystemExit('SMART_FEED_V2_JS_SYNTAX_FAILED')
-          print('SMART_FEED_V2_JS_SYNTAX=PASS')
-
-      - name: Protected house gate
-        shell: bash
-        run: |
-          set -euo pipefail
-          H="$HUB"; test -s "$H"
-          for x in 'NAYANET SMART FEED MASTER V2' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
-          echo 'PROTECTED_HOUSE_GATE=PASS'
-
-      - name: Commit canonical 452 source only when content actually changed
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- "$HUB"
-          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_CANONICAL=TRUE'; else git commit -m 'Install definitive NayaNET Smart Feed master'; git push origin HEAD:main; fi
-
-      - name: Prepare isolated Cloudflare artifact for the actual live worker
+      - name: Prepare exact Cloudflare artifact for aged-art-7c12
         shell: bash
         run: |
           set -euo pipefail
           rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
           mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public
-          cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          printf '%s\n' '{"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
-          grep -Fq 'NAYANET SMART FEED MASTER V2' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          grep -Fq '<style id="NAYANET-SMART-FEED-MASTER-V2">' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          cp -R NAYANET/HUB/dist/. CLOUDFLARE-INTELLIGENT-HUB-V7/public/
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js <<'EOF'
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/')) {
+                return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+              }
+              return env.ASSETS.fetch(request);
+            }
+          };
+          EOF
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
+          {
+            "name": "aged-art-7c12",
+            "main": "worker.js",
+            "compatibility_date": "2026-09-08",
+            "account_id": "262c881746ea6e9978ca18b3eb831907",
+            "assets": { "directory": "./public", "binding": "ASSETS" }
+          }
+          EOF
+          test -s CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          echo 'CLOUDFLARE_ARTIFACT=READY'
 
-      - name: Deploy exact artifact to actual live worker
+      - name: Deploy exact artifact to the canonical Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -121,14 +92,30 @@ jobs:
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
 
-      - name: Independently verify exact public runtime
+      - name: Independently verify root and Smart Link runtime parity
         shell: bash
         run: |
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          for x in 'NAYANET SMART FEED MASTER V2' '<style id="NAYANET-SMART-FEED-MASTER-V2">' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE'; do grep -Fq "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
-          if grep -Fq 'id="nayaSmartFeedForceMount"' /tmp/root; then echo 'RUNTIME_OLD_FORCE_MOUNT_PRESENT=TRUE'; exit 1; fi
+          curl -fsSL --retry 10 --retry-delay 3 "$SMART_LINK?release=$GITHUB_SHA" -o /tmp/smart
+          cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
+          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
           echo 'PUBLIC_RUNTIME=PASS'
+          echo 'RUNTIME_ROUTE_PARITY=PASS'
           echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
           echo "SMART_LINK=$SMART_LINK"
-          echo "RELEASE_SHA=$GITHUB_SHA"
+          echo "SOURCE_COMMIT=$GITHUB_SHA"
+
+      - name: Record release evidence in GitHub Actions summary
+        shell: bash
+        run: |
+          {
+            echo '## NayaNET Canonical Hub Release'
+            echo
+            echo '**SOURCE:** `NAYANET/HUB/`'
+            echo '**WORKER:** `aged-art-7c12`'
+            echo '**RUNTIME:** https://aged-art-7c12.nayanet.workers.dev/'
+            echo '**SMART LINK:** https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
+            echo "**SOURCE COMMIT:** $GITHUB_SHA"
+            echo '**ROOT / SMART LINK PARITY:** PASS'
+          } >> "$GITHUB_STEP_SUMMARY"
