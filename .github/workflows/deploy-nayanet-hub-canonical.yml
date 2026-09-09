@@ -45,14 +45,18 @@ jobs:
           set -euo pipefail
           D="NAYANET/HUB/dist"
           test -s "$D/index.html"
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          test -s "$D/nayanet-cognitive-engine.js"
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL' 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
           sha256sum "$D/index.html" > /tmp/index.sha256
+          sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
           echo 'CANONICAL_HUB_BUILD=PASS'
           echo 'ARTIFACT_INSPECTION=PASS'
+          echo 'COGNITIVE_ENGINE_ARTIFACT=PASS'
           echo "ARTIFACT_FILES=$(find "$D" -type f | wc -l)"
           echo "ARTIFACT_BYTES=$(du -sb "$D" | cut -f1)"
           echo "INDEX_SHA256=$(cut -d' ' -f1 /tmp/index.sha256)"
+          echo "COGNITION_SHA256=$(cut -d' ' -f1 /tmp/cognition.sha256)"
       - name: Prepare exact Cloudflare artifact
         run: |
           set -euo pipefail
@@ -77,11 +81,12 @@ jobs:
             "assets": { "directory": "./public", "binding": "ASSETS" }
           }
           EOF
-          test -s release/public/index.html && test -s release/worker.js
+          test -s release/public/index.html && test -s release/public/nayanet-cognitive-engine.js && test -s release/worker.js
           echo "RELEASE_SOURCE_COMMIT=$GITHUB_SHA" > release/RELEASE-MANIFEST.txt
           echo "RELEASE_SOURCE=NAYANET/HUB" >> release/RELEASE-MANIFEST.txt
           echo "RELEASE_TARGET=aged-art-7c12" >> release/RELEASE-MANIFEST.txt
           cat /tmp/index.sha256 >> release/RELEASE-MANIFEST.txt
+          cat /tmp/cognition.sha256 >> release/RELEASE-MANIFEST.txt
           echo 'CLOUDFLARE_ARTIFACT=READY'
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
@@ -103,12 +108,16 @@ jobs:
           case "$js_src" in /*) ;; *) js_src="/$js_src" ;; esac
           js_status=$(curl -sS -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$GITHUB_SHA" || true)
           test "$js_status" = "200" && test -s /tmp/app-js
+          cognitive_status=$(curl -sS -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$GITHUB_SHA" || true)
+          test "$cognitive_status" = "200" && test -s /tmp/cognition
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" /tmp/root /tmp/app-js /tmp/cognition || { echo "PUBLIC_RUNTIME_COGNITION_MISSING=$x"; exit 1; }; done
           ! grep -Fq 'nayanet-intelligent-feed-v6.js' /tmp/root
           ! grep -Fq '2026 09 08 452 NayaNET Hub' /tmp/root
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
           echo 'RUNTIME_JS_ASSET=PASS'
+          echo 'RUNTIME_COGNITIVE_ENGINE=PASS'
           echo 'RUNTIME_INTELLIGENCE_MARKERS=PASS'
           echo 'RUNTIME_CANONICAL_REACT_MARKER=PASS'
           echo 'OLD_452_ARTIFACT=ABSENT'
