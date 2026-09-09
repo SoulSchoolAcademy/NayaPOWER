@@ -54,8 +54,42 @@ And the shared structural areas:
 - Mobile Navigation
 
 The detailed room contract is in `09-HUB-ROOM-BY-ROOM-SPEC.md`.
+The quick-entry room contracts are in `12-ROOM-EXECUTION-CONTRACTS.md`.
 
-## 3. SMART FEED AUTHORITY
+## 3. IDENTITY / ENTRANCE AUTHORITY
+
+The NayaNET entrance and Smart Identity Activation are upstream of the Intelligent Hub.
+
+Required flow:
+
+```text
+welcome.nayanet.app
+  ↓ user name
+identity.html?name=...
+  ↓ Smart Name + Smart Alias + identity key/state
+INTELLIGENT HUB
+  ↓
+personalized Home + user's namespace + authorized intelligence
+```
+
+The current Identity Activation page redirects to Naya Power Academy. That is a temporary/legacy destination for this flow. Once the new Hub production URL exists, activation must land in the new Hub instead.
+
+Academy remains an ecosystem destination inside the Hub, not the identity activation destination.
+
+The alias is the user's NayaNET namespace. For `shawn`:
+
+- Smart Name → Shawn
+- Smart Alias → shawn
+- Smart Link → shawn.nayanet.app
+- Smart Mail → shawn
+- Smart Space → shawn
+- Smart Notes / Feed / Reports / Library → Shawn's authorized intelligence context
+
+The current local browser keys are bootstrap behavior. Production identity must eventually be backed by an explicit persistent account/identity system.
+
+See `11-IDENTITY-BOOTSTRAP-CONTRACT.md`.
+
+## 4. SMART FEED AUTHORITY
 
 The Smart Feed / Intelligent Feed is the primary intelligence surface.
 
@@ -73,7 +107,7 @@ The Intelligent Block sequence is:
 
 The detailed Smart Feed specification is in `08-SMART-FEED-INTELLIGENCE-SPEC.md`.
 
-## 4. CURRENT-STATE DOCTRINE
+## 5. CURRENT-STATE DOCTRINE
 
 The feed follows:
 
@@ -91,18 +125,18 @@ It must answer:
 - What remains unresolved?
 - What happens next?
 
-## 5. PRIVACY LAW
+## 6. PRIVACY LAW
 
 **PRIVATE BY DEFAULT · SHARED BY CHOICE · COLLECTIVE BY CONSENT · PUBLIC BY DECISION**
 
 This is both product language and architecture law.
 
-## 6. PRESERVED HOME ORIENTATION
+## 7. PRESERVED HOME ORIENTATION
 
 The new Home must intentionally retain the orientation elements that were lost during prior iterations:
 
 - personalized greeting (`Good morning, Shawn` or time-appropriate equivalent)
-- current time
+- current local time
 - current date
 - country/locale
 - intelligence philosophy statement
@@ -114,7 +148,7 @@ Working philosophy language to preserve:
 
 If the exact earlier canonical wording is recovered from a frozen reference, it may be used instead of this working wording. It must never disappear accidentally.
 
-## 7. SOURCE REFERENCE — WHAT WE LEARNED
+## 8. SOURCE REFERENCE — WHAT WE LEARNED
 
 The frozen 2026-09-08 4:52 source contains substantial proven/product-relevant material:
 
@@ -139,7 +173,7 @@ The frozen 2026-09-08 4:52 source contains substantial proven/product-relevant m
 
 The source is evidence. The new architecture is the clean implementation.
 
-## 8. EXTERNAL DESTINATIONS TO PRESERVE
+## 9. EXTERNAL DESTINATIONS TO PRESERVE
 
 Frozen-reference mappings:
 
@@ -162,7 +196,7 @@ Five feature reports:
 
 Exact URLs are maintained in the Page and Interaction maps.
 
-## 9. ENGINEERING LAW
+## 10. ENGINEERING LAW
 
 The new Hub must not repeat the layered-renderer failure pattern.
 
@@ -194,12 +228,13 @@ Naya is behind an explicit Naya adapter.
 
 Search is behind an explicit retrieval/index adapter.
 
-## 10. DATA LAW
+## 11. DATA LAW
 
 One canonical event identity must flow through:
 
 ```text
-Human Input
+Identity
+ → Human Input
  → Smart Note / Note Event
  → Persistence
  → Naya enrichment (when available)
@@ -212,9 +247,11 @@ Human Input
  → Compounding Intelligence
 ```
 
+Smart Mail and Smart Space resolve against the same identity namespace.
+
 No duplicate intelligence databases merely for presentation.
 
-## 11. VISUAL LAW
+## 12. VISUAL LAW
 
 The Hub must feel like one extraordinary instrument:
 
@@ -239,7 +276,7 @@ The Hub must feel like one extraordinary instrument:
 
 Intelligent Blocks should appear elevated from their parent surface, with depth that makes them feel almost touchable, while remaining extremely easy to scan and read.
 
-## 12. RESPONSIVE LAW
+## 13. RESPONSIVE LAW
 
 ### Desktop
 - left sidebar
@@ -258,7 +295,7 @@ Intelligent Blocks should appear elevated from their parent surface, with depth 
 
 Desktop and mobile are separate designed experiences, not merely resized versions.
 
-## 13. VERIFICATION LAW
+## 14. VERIFICATION LAW
 
 Completion requires:
 
@@ -269,7 +306,7 @@ A green workflow is not proof.
 A source marker is not proof.
 The visible runtime is the final acceptance surface.
 
-## 14. PROJECT DOCUMENT INDEX
+## 15. PROJECT DOCUMENT INDEX
 
 ### Core architecture
 - `00-README-CANONICAL-BLUEPRINT.md`
@@ -288,15 +325,18 @@ The visible runtime is the final acceptance surface.
 - `08-SMART-FEED-INTELLIGENCE-SPEC.md`
 - `09-HUB-ROOM-BY-ROOM-SPEC.md`
 - `10-OPEN-DECISIONS-BEFORE-CODING.md`
+- `11-IDENTITY-BOOTSTRAP-CONTRACT.md`
+- `12-ROOM-EXECUTION-CONTRACTS.md`
 
-## 15. EXECUTION METHOD
+## 16. EXECUTION METHOD
 
 Build one room at a time, in dependency order.
 
 ### Stage A — Foundation
 - source boundary
-- data model
-- persistence adapter
+- identity bootstrap contract
+- canonical event/data model
+- persistence adapter boundary
 - routing/state model
 - verification harness
 
@@ -336,7 +376,7 @@ Build one room at a time, in dependency order.
 - accessibility verification
 - no-regression verification
 
-## 16. RULE FOR EVERY NAYA
+## 17. RULE FOR EVERY NAYA
 
 Before building any room, answer:
 
@@ -344,7 +384,7 @@ Before building any room, answer:
 
 If something is unknown, record the unknown. Never silently invent it.
 
-## 17. FINAL BUILD PRINCIPLE
+## 18. FINAL BUILD PRINCIPLE
 
 **We are not repairing the old Hub. We are learning from it and building the right Hub.**
 
