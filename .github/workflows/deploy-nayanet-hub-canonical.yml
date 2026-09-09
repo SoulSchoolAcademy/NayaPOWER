@@ -68,14 +68,11 @@ jobs:
           export default {
             async fetch(request, env) {
               const url = new URL(request.url);
-              const response = await env.ASSETS.fetch(
-                new Request(
-                  (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'))
-                    ? new URL('/index.html', request.url)
-                    : request.url,
-                  request
-                )
-              );
+              const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/');
+              const assetRequest = isSpaRoute
+                ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers })
+                : request;
+              const response = await env.ASSETS.fetch(assetRequest);
               const headers = new Headers(response.headers);
               headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
               headers.set('Pragma', 'no-cache');
@@ -111,11 +108,20 @@ jobs:
       - name: Independently verify exact public runtime
         run: |
           set -euo pipefail
-          curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          curl -fsSL --retry 10 --retry-delay 3 "$SMART_LINK?release=$GITHUB_SHA" -o /tmp/smart
+          status=0
+          for attempt in $(seq 1 20); do
+            status=$(curl -sS -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$GITHUB_SHA" || true)
+            echo "RUNTIME_ATTEMPT=$attempt HTTP=$status"
+            if [ "$status" = "200" ]; then break; fi
+            sleep 3
+          done
+          test "$status" = "200"
+          smart_status=$(curl -sS -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$GITHUB_SHA" || true)
+          test "$smart_status" = "200"
           cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
-          curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; exit 1; }
+          headers=$(curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA")
+          echo "$headers" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; echo "$headers"; exit 1; }
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
           echo 'RUNTIME_SOURCE_COMMIT_HEADER=PASS'
