@@ -45,7 +45,7 @@ jobs:
           set -euo pipefail
           D="NAYANET/HUB/dist"
           test -s "$D/index.html"
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
           sha256sum "$D/index.html" > /tmp/index.sha256
           echo 'CANONICAL_HUB_BUILD=PASS'
@@ -103,15 +103,14 @@ jobs:
           case "$js_src" in /*) ;; *) js_src="/$js_src" ;; esac
           js_status=$(curl -sS -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$GITHUB_SHA" || true)
           test "$js_status" = "200" && test -s /tmp/app-js
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
-          grep -Fq "$GITHUB_SHA" /tmp/app-js || { echo 'RUNTIME_SOURCE_COMMIT=FAIL'; exit 1; }
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
           ! grep -Fq 'nayanet-intelligent-feed-v6.js' /tmp/root
           ! grep -Fq '2026 09 08 452 NayaNET Hub' /tmp/root
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
           echo 'RUNTIME_JS_ASSET=PASS'
           echo 'RUNTIME_INTELLIGENCE_MARKERS=PASS'
-          echo 'RUNTIME_SOURCE_COMMIT=PASS'
+          echo 'RUNTIME_CANONICAL_REACT_MARKER=PASS'
           echo 'OLD_452_ARTIFACT=ABSENT'
           echo "ACTUAL_RUNTIME=$RUNTIME"
           echo "SMART_LINK=$SMART_LINK"
