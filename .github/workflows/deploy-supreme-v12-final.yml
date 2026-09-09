@@ -1,0 +1,63 @@
+name: Deploy Supreme Intelligent Block V12 Final
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 1}
+      - name: Verify V12 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          h=Path('2026 09 08 452 NayaNET Hub.html').read_text(); j=Path('nayanet-intelligent-feed-v6.js').read_text()
+          for x in ['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']: assert x in h,x
+          for x in ['__NAYA_INTELLIGENT_FEED_V12__','LEGACY-FIRST SUPREME RECONSTRUCTION','grid-template-columns:1fr!important']: assert x in j,x
+          print('V12_SOURCE=PASS',len(j.encode()))
+          PY
+      - name: Package
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf release; mkdir -p release/assets
+          cp '2026 09 08 452 NayaNET Hub.html' release/assets/index.html
+          cp 'nayanet-intelligent-feed-v6.js' release/assets/nayanet-intelligent-feed-v6.js
+          cat > release/wrangler.jsonc <<'JSON'
+          {"name":"nayanet-v7-intelligent-hub","main":"worker.js","compatibility_date":"2026-09-05","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"assets","binding":"ASSETS"}}
+          JSON
+          cat > release/worker.js <<'JS'
+          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/')){const r=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const h=new Headers(r.headers);h.set('Cache-Control','no-store');h.set('X-NayaNET-Release','SUPREME-INTELLIGENT-BLOCK-V12');return new Response(r.body,{status:r.status,headers:h})}return env.ASSETS.fetch(request)}}
+          JS
+      - name: Deploy Cloudflare production
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+      - name: Verify public production
+        shell: bash
+        run: |
+          set -euo pipefail
+          q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/nayanet-intelligent-feed-v6.js?$q" -o /tmp/feed
+          python3 - <<'PY'
+          from pathlib import Path
+          for f in ['/tmp/root','/tmp/smart']:
+            t=Path(f).read_text(); assert 'homeIntelligentBlocks' in t; assert 'class="sidebar"' in t
+          t=Path('/tmp/feed').read_text()
+          for x in ['__NAYA_INTELLIGENT_FEED_V12__','LEGACY-FIRST SUPREME RECONSTRUCTION','grid-template-columns:1fr!important']: assert x in t,x
+          print('V12_PUBLIC_RUNTIME=PASS');print('V12_PUBLIC_SMART_LINK=PASS');print('V12_PUBLIC_FEED=PASS');print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
+          PY
