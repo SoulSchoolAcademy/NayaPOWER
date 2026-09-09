@@ -1,4 +1,4 @@
-# TRIGGER: EXECUTE GUARDED LIVE 452 DEPLOYMENT
+# CURRENT 452 FEED STRUCTURE: intelligentFeed/intelligentBlocks are protected; no rebuild.
 name: Surgical NayaNET Right Rail Removal
 
 on:
@@ -23,13 +23,13 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-          path = Path('2026 09 08 452 NayaNET Hub.html')
-          html = path.read_text(encoding='utf-8')
-          rail = re.compile(r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>', re.I)
-          html, removed = rail.subn('', html, count=1)
+          path=Path('2026 09 08 452 NayaNET Hub.html')
+          html=path.read_text(encoding='utf-8')
+          rail=re.compile(r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>',re.I)
+          html,removed=rail.subn('',html,count=1)
           print(f'RIGHT_RAIL_REMOVED={removed}')
-          if removed > 1: raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
-          if removed == 1:
+          if removed>1: raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
+          if removed==1:
               old_grid='.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
               new_grid='.homeWorkspace{display:block;width:100%;max-width:none}'
               if old_grid not in html: raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
@@ -48,15 +48,18 @@ jobs:
           from pathlib import Path
           p=Path('2026 09 08 452 NayaNET Hub.html')
           s=p.read_text(encoding='utf-8')
-          marker='NAYANET-LIVE-RIGHT-RAIL-GUARD-V4'
+          marker='NAYANET-LIVE-RIGHT-RAIL-GUARD-V5'
           if marker not in s:
-              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4">.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}</style><script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4-RUNTIME">(function(){function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}purge();new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});setInterval(purge,400)})();</script>'''
+              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V5">.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}</style><script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V5-RUNTIME">(function(){function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}purge();new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});setInterval(purge,400)})();</script>'''
               if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
               s=s.replace('</head>',guard+'</head>',1)
               p.write_text(s,encoding='utf-8')
           final=p.read_text(encoding='utf-8')
-          for x in ['NAYANET-LIVE-RIGHT-RAIL-GUARD-V4','class="sidebar"','class="homeWorkspace"','id="nayanet-elite-feed"','Smart Notes']:
-              if x not in final: raise SystemExit('GUARD_SENTINEL_MISSING='+x)
+          if 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V5' not in final: raise SystemExit('GUARD_MISSING')
+          if 'class="sidebar"' not in final: raise SystemExit('LEFT_SIDEBAR_MISSING')
+          if 'homeWorkspace' not in final: raise SystemExit('HOME_WORKSPACE_MISSING')
+          if not any(x in final for x in ['intelligentFeed','intelligentBlocks','homeIntelligentBlocks','nayanet-elite-feed']): raise SystemExit('INTELLIGENT_FEED_MISSING')
+          if 'Smart Notes' not in final: raise SystemExit('SMART_NOTES_MISSING')
           print('LIVE_GUARD=PASS')
 
       - name: Commit only the surgical source change and guard
@@ -76,10 +79,10 @@ jobs:
           cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
           {"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"."}}
           EOF
-          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V4' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V5' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Eq 'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
 
       - name: Deploy exact guarded 452 artifact
         uses: cloudflare/wrangler-action@v3
@@ -92,11 +95,11 @@ jobs:
       - name: Independently verify public runtime
         run: |
           set -euo pipefail
-          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?surgical=v4' -o /tmp/live
-          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V4' /tmp/live
+          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?surgical=v5' -o /tmp/live
+          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V5' /tmp/live
           grep -Fq 'class="sidebar"' /tmp/live
-          grep -Fq 'id="nayanet-elite-feed"' /tmp/live
           grep -Fq 'class="homeWorkspace"' /tmp/live
+          grep -Eq 'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed' /tmp/live
           ! grep -Fq 'class="activationRail"' /tmp/live
           ! grep -Fq "class='activationRail'" /tmp/live
           echo 'PUBLIC_RUNTIME=VERIFIED'
