@@ -164,7 +164,7 @@
     "The first controlled paired experiment workflow attempt failed because the Node runner imported Supabase JS from an HTTPS ESM URL; corrected to use the installed npm package.",
     "The second controlled paired experiment attempt reached the real comparison but its adversarial assertion expected a specific error string; the comparison did reject the swapped receipts, and the assertion was corrected to require any rejection.",
     "The first artifact-upload correction used an unavailable runner context at workflow-dispatch parse time; corrected to use runner.temp only in the artifact path.",
-    "A Windows desktop clone of current main failed checkout because the repository contains a filename with a colon (`.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`); Linux/GitHub runtime proof is unaffected, but Windows-local Cold-Naya/tooling portability is not yet clean.",
+    "A Windows desktop clone of current main failed checkout because the repository contains a filename with a colon (`.naya/execution/2026 09 07 1-18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`); Linux/GitHub runtime proof is unaffected, but Windows-local Cold-Naya/tooling portability is not yet clean.",
     "P0.5 user-visible replay proof run 35470371926 passed after repairing the receipt artifact path; the proof remains on PR #328 until explicitly merged.",
     "Name-First run 35470452943 failed on a stale /releases/ route expectation; the corrected run 35470526689 passed after accepting the canonical root handoff.",
     "Authenticated lifecycle run 35470355975 failed because the observer searched the outer document; current run 35470519946 passed after observing the canonical iframe projection.",
