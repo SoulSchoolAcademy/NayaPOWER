@@ -20,71 +20,11 @@
     "evidence": "Execution receipts, CI artifacts, runtime/render/whole-journey evidence",
     "history": ".naya/memory/events/ and execution receipts"
   },
-  "protected": [
-    "NayaPOWER constitutional and governing laws",
-    "canonical source hierarchy",
-    "Mission State/current truth contract",
-    "MAXESS canonical scoring/result authority",
-    "MAXESS_RESULT_V1",
-    "independent Oscar challenge boundary",
-    "UNKNOWN-as-not-verified law",
-    "one-authority/anti-duplication law",
-    "continuous torch-pass and successor continuity",
-    "MAXIS Living Sun presentation direction as recorded in Issue #69, without coupling presentation to scoring truth"
-  ],
-  "major_systems": [
-    "Naya activation",
-    "Superbrain memory/CIS",
-    "Prompt Architect",
-    "Execution continuity",
-    "Verification/evidence",
-    "Oscar quality review",
-    "MAXIS/MAXESS integration",
-    "MAXIS Living Sun assessment presentation"
-  ],
-  "operational_laws": {
-    "execution_escalation": {
-      "path": ".naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md",
-      "status": "ACTIVE",
-      "scope": "Every consequential Naya/NayaPOWER/MAXIS execution, debugging cycle, investigation, verification cycle, and recovery attempt.",
-      "default_escalation_threshold": 3,
-      "red_line_threshold": 10,
-      "rule": "After three materially equivalent failures/blockers, stop blind repetition and perform a strategic reassessment. Attempt four must be materially different. More than ten materially equivalent attempts without strategy change is RED ALERT unless an explicit human-authorized exception is documented.",
-      "required_record": "ATTEMPT COUNT → OBSERVED RESULT → EVIDENCE → CURRENT HYPOTHESIS → ALTERNATIVE HYPOTHESIS → STRATEGY CHANGE → NEXT TEST"
-    }
-  },
-  "execution_map": {
-    "current_program": "Issue #66 — mechanically enforce the Naya Repository Operating Standard",
-    "blocks": ["B01-MAP", "B02-STATE-DRIFT", "B03-PROOF", "B04-CHECKPOINT", "B05-CONCURRENCY", "B06-COLD-NAYA", "B07-HEALTH", "B08-REPEATABILITY"],
-    "active_block": "B01-B03-MINIMUM-CONTROL-LOOP",
-    "definition_of_done": "Cold Naya can resolve identity, restore current state, identify the active block, and reject unsupported verification using machine-checkable artifacts."
-  },
-  "design_direction": {
-    "product": "MAXIS/MAXESS",
-    "selected_presentation": "NAYA LIVING SUN",
-    "decision_issue": 69,
-    "status": "DESIGN_SELECTED_IMPLEMENTATION_PENDING",
-    "core_principle": "The assessment is a living intelligence environment; the human choice visibly changes the environment while the question remains the visual priority.",
-    "hierarchy": ["QUESTION", "ANSWERS", "NAYA", "PROGRESS", "LIVING_FIELD"],
-    "interaction": "HUMAN_CHOICE → SYSTEM_RESPONSE → PROGRESSION",
-    "presentation_boundary": "Presentation consumes MAXESS state; MAXESS engine remains authoritative for questions, answers, progression, scoring, and results.",
-    "noncanonical_hypotheses": ["exactly 27 orbs", "fixed orb count", "literal solar-system physics", "particle-heavy effects"]
-  },
-  "verification_mechanisms": [
-    ".naya/control-plane/validate_control_plane.py",
-    ".naya/runtime/cold_start_activation.py",
-    "GitHub Actions evidence",
-    "execution receipts",
-    "runtime/render/whole-journey tests where applicable"
-  ],
-  "resolution_rules": [
-    "Resolve canonical identity before repository search.",
-    "Historical/superseded names are aliases, never current locators.",
-    "Current repository HEAD is authoritative over recorded HEAD claims.",
-    "UNKNOWN cannot satisfy VERIFIED or RACE_READY.",
-    "A block cannot be VERIFIED without appropriate evidence.",
-    "One highest-value next action must be exposed for the current block.",
-    "When materially equivalent execution fails three times, stop repeating the same approach and perform a strategic reassessment before another attempt.",
-    "After ten materially equivalent attempts without a material strategy change, treat the condition as RED ALERT and require a materially different route or documented human-authorized exception."
-  ]
+  "protected": ["NayaPOWER constitutional and governing laws","canonical source hierarchy","Mission State/current truth contract","MAXESS canonical scoring/result authority","MAXESS_RESULT_V1","independent Oscar challenge boundary","UNKNOWN-as-not-verified law","one-authority/anti-duplication law","continuous torch-pass and successor continuity","MAXIS Living Sun presentation direction as recorded in Issue #69, without coupling presentation to scoring truth"],
+  "major_systems": ["Naya activation","Superbrain memory/CIS","Prompt Architect","Execution continuity","Verification/evidence","Oscar quality review","MAXIS/MAXESS integration","MAXIS Living Sun assessment presentation"],
+  "operational_laws": {"execution_escalation": {"path":".naya/NAYA-EXECUTION-LOOP-ESCALATION-LAW.md","status":"ACTIVE","scope":"Every consequential Naya/NayaPOWER/MAXIS execution, debugging cycle, investigation, verification cycle, and recovery attempt.","default_escalation_threshold":3,"red_line_threshold":10,"rule":"After three materially equivalent failures/blockers, stop blind repetition and perform a strategic reassessment. Attempt four must be materially different. More than ten materially equivalent attempts without strategy change is RED ALERT unless an explicit human-authorized exception is documented.","required_record":"ATTEMPT COUNT → OBSERVED RESULT → EVIDENCE → CURRENT HYPOTHESIS → ALTERNATIVE HYPOTHESIS → STRATEGY CHANGE → NEXT TEST"}},
+  "execution_map": {"current_program":"Issue #66 — mechanically enforce the Naya Repository Operating Standard","blocks":["B01-MAP","B02-STATE-DRIFT","B03-PROOF","B04-CHECKPOINT","B05-CONCURRENCY","B06-COLD-NAYA","B07-HEALTH","B08-REPEATABILITY"],"active_block":"TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION","definition_of_done":"Cold Naya can resolve identity, restore current state, identify the active block, and reject unsupported verification using machine-checkable artifacts."},
+  "design_direction": {"product":"MAXIS/MAXESS","selected_presentation":"NAYA LIVING SUN","decision_issue":69,"status":"DESIGN_SELECTED_IMPLEMENTATION_PENDING","core_principle":"The assessment is a living intelligence environment; the human choice visibly changes the environment while the question remains the visual priority.","hierarchy":["QUESTION","ANSWERS","NAYA","PROGRESS","LIVING_FIELD"],"interaction":"HUMAN_CHOICE → SYSTEM_RESPONSE → PROGRESSION","presentation_boundary":"Presentation consumes MAXESS state; MAXESS engine remains authoritative for questions, answers, progression, scoring, and results.","noncanonical_hypotheses":["exactly 27 orbs","fixed orb count","literal solar-system physics","particle-heavy effects"]},
+  "verification_mechanisms":[".naya/control-plane/validate_control_plane.py",".naya/runtime/cold_start_activation.py","GitHub Actions evidence","execution receipts","runtime/render/whole-journey tests where applicable"],
+  "resolution_rules":["Resolve canonical identity before repository search.","Historical/superseded names are aliases, never current locators.","Current repository HEAD is authoritative over recorded HEAD claims.","UNKNOWN cannot satisfy VERIFIED or RACE_READY.","A block cannot be VERIFIED without appropriate evidence.","One highest-value next action must be exposed for the current block.","When materially equivalent execution fails three times, stop repeating the same approach and perform a strategic reassessment before another attempt.","After ten materially equivalent attempts without a material strategy change, treat the condition as RED ALERT and require a materially different route or documented human-authorized exception."]
 }
