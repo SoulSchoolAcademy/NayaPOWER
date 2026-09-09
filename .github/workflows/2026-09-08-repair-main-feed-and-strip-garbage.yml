@@ -1,118 +1,18 @@
-name: Repair NayaNET Main Feed
+name: Retired Legacy Hub Feed Repair
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-env:
-  HUB: '2026 09 08 9:59 NAYANET HUB.html'
-  FEED: '2026 09 08 12:40 NAYANET INTELLIGENT FEED V3.js'
-  INTERIOR: '2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js'
+  contents: read
 
 jobs:
-  repair:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Restore authoritative V3/V4 feed and remove injected garbage only
+      - name: Legacy repair retired
         run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-
-          hub_path = Path('${{ env.HUB }}')
-          feed_path = Path('${{ env.FEED }}')
-          interior_path = Path('${{ env.INTERIOR }}')
-          hub = hub_path.read_text(encoding='utf-8')
-          feed = feed_path.read_text(encoding='utf-8')
-          interior = interior_path.read_text(encoding='utf-8')
-
-          hub, removed_rail = re.subn(
-              r'<aside\s+class=["\']activationRail["\'][\s\S]*?</aside>',
-              '', hub, count=1, flags=re.I
-          )
-          print(f'RIGHT_RAIL_SOURCE_REMOVALS={removed_rail}')
-
-          # The old additive intelligence stack begins at this exact marker and is
-          # not part of the canonical shell. Cut ONLY that tail, then rebuild the
-          # authoritative V3/V4 feed below. This removes the accidental raw-code tail
-          # without touching the shell/pages above the marker.
-          marker = '<!-- NAYANET-NAYAHUB-INTELLIGENCE-LAYER -->'
-          if marker in hub:
-              hub = hub.split(marker, 1)[0].rstrip() + '\n</body></html>'
-
-          hub = re.sub(r'<script\s+id=["\']nayanet-live-feed-v3["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
-          hub = re.sub(r'<script\s+id=["\']nayanet-live-feed-v4["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
-          hub = re.sub(r'<style\s+id=["\']nayanet-live-canonical-authority["\'][\s\S]*?</style>\s*', '', hub, flags=re.I)
-          hub = re.sub(r'<script\s+id=["\']nayanet-live-canonical-runtime["\'][\s\S]*?</script>\s*', '', hub, flags=re.I)
-
-          if 'id="nayanet-elite-feed"' not in hub and "id='nayanet-elite-feed'" not in hub:
-              insertion = '<div id="nayanet-elite-feed" aria-label="NayaNET Intelligent Feed"></div>'
-              hub, added = re.subn(
-                  r'(<div\s+class=["\']homeWorkspace["\'][^>]*>)',
-                  r'\1' + insertion,
-                  hub, count=1, flags=re.I
-              )
-              if added != 1:
-                  raise SystemExit(f'FEED_HOST_INSERTION={added}')
-
-          hub = hub.replace(
-              '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}',
-              '.homeWorkspace{display:block;width:100%;max-width:none}', 1
-          )
-          hub = hub.replace(
-              '.homeWorkspace{grid-template-columns:minmax(0,1fr) 220px}',
-              '.homeWorkspace{display:block;width:100%;max-width:none}', 1
-          )
-
-          injected = '''\n<script id="nayanet-live-feed-v3">\n''' + feed + '''\n</script>\n<script id="nayanet-live-feed-v4">\n''' + interior + '''\n</script>\n<style id="nayanet-feed-clean-runtime">\n#page-home .homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}\n#page-home .homeWorkspace>.homeFeed>.intelligentFeed{display:none!important}\n#nayanet-elite-feed{display:block!important;width:100%!important;max-width:none!important;margin:0!important}\n.activationRail{display:none!important;width:0!important;height:0!important;max-width:0!important;overflow:hidden!important;visibility:hidden!important;pointer-events:none!important}\n@media(max-width:900px){#page-home .homeWorkspace>.homeFeed>.intelligentFeed{display:none!important}#nayanet-elite-feed{width:100%!important}}\n</style>\n'''
-          hub = hub.replace('</body>', injected + '</body>', 1)
-
-          checks = {
-              'LEFT_SIDEBAR': bool(re.search(r'<aside\s+class=["\']sidebar["\']', hub, re.I)),
-              'HOME_WORKSPACE': 'class="homeWorkspace"' in hub,
-              'HOME_FEED': 'class="homeFeed"' in hub,
-              'SMART_NOTES': 'id="page-notes"' in hub,
-              'COLLECTIVE': 'id="page-collective"' in hub,
-              'V3_HOST': 'id="nayanet-elite-feed"' in hub,
-              'V3_SCRIPT': 'id="nayanet-live-feed-v3"' in hub,
-              'V4_SCRIPT': 'id="nayanet-live-feed-v4"' in hub,
-          }
-          bad = [k for k,v in checks.items() if not v]
-          if bad:
-              raise SystemExit('PROTECTED_SENTINEL_MISSING=' + ','.join(bad))
-
-          if re.search(r'<aside\s+class=["\']activationRail["\']', hub, re.I):
-              raise SystemExit('RIGHT_RAIL_DOM_REMAINS')
-          if '<!-- NAYANET-NAYAHUB-INTELLIGENCE-LAYER -->' in hub:
-              raise SystemExit('GARBAGE_LAYER_MARKER_REMAINS')
-          if 'nayanet-v7-intelligent-upgrade' in hub or 'nayanet-v7-intelligent-hub-refinement' in hub:
-              raise SystemExit('OLD_INJECTED_UPGRADE_LAYER_REMAINS')
-
-          hub_path.write_text(hub, encoding='utf-8')
-          print('MAIN_FEED=V3_RESTORED')
-          print('INTERIOR=V4_RESTORED')
-          print('LEFT_SIDEBAR=PRESERVED')
-          print('SMART_NOTES=PRESERVED')
-          print('COLLECTIVE=PRESERVED')
-          print('GARBAGE_LAYER=REMOVED')
-          print('COLLATERAL_DAMAGE_GATE=PASS')
-          PY
-
-      - name: Commit repair
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$HUB"
-          git diff --cached --quiet && { echo 'NO_REPAIR_CHANGE_NEEDED'; exit 0; }
-          git commit -m 'Repair Hub: restore V3 V4 main feed and remove injected garbage'
-          git push
+          echo 'LEGACY_V3_V4_REPAIR=RETIRED'
+          echo 'CANONICAL_HUB_SOURCE=2026 09 08 452 NayaNET Hub.html'
+          echo 'CANONICAL_SMART_FEED=.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
+          echo 'RULE=DO_NOT_REWRITE_THE_HUB_WITH_HISTORICAL_FEED_LAYERS'
