@@ -34,7 +34,7 @@ jobs:
         uses: actions/checkout@v4
         with: {fetch-depth: 0, ref: main}
 
-      - name: Build canonical Smart Feed into exact 452 source
+      - name: Build canonical Smart Feed into exact 452 source — idempotent
         shell: python
         run: |
           from pathlib import Path
@@ -45,12 +45,23 @@ jobs:
           if 'id="nayaSmartFeedMaster"' not in p: raise SystemExit('SMART_FEED_ROOT_MISSING')
           if 'ACTIVITY INTELLIGENCE' not in p or 'PERSONAL INTELLIGENCE' not in p or 'COLLECTIVE INTELLIGENCE' not in p: raise SystemExit('SMART_FEED_LENSES_MISSING')
           if 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' not in f: raise SystemExit('FORCE_MOUNT_MARKER_MISSING')
+          # Remove every previous generated block before inserting exactly one copy.
           s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*','',s)
+          s=re.sub(r'<!-- NAYANET SMART FEED FORCE MOUNT V2 -->[\s\S]*?</script>\s*','',s)
           if '</body>' not in s: raise SystemExit('BODY_BOUNDARY_MISSING')
           s=s.replace('</body>',p+'\n'+f+'\n</body>',1)
           hub.write_text(s,encoding='utf-8')
           print('SMART_FEED_STATIC_PAYLOAD_APPLIED=TRUE')
           print('SMART_FEED_FORCE_MOUNT_APPLIED=TRUE')
+
+      - name: Idempotency gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          H="$HUB"
+          test "$(grep -o 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' "$H" | wc -l)" -eq 1
+          test "$(grep -o 'NAYANET-SMART-FEED-MASTER-V1' "$H" | wc -l)" -ge 1
+          echo 'IDEMPOTENCY_GATE=PASS'
 
       - name: JavaScript syntax gate
         shell: python
@@ -78,14 +89,14 @@ jobs:
           for x in 'NAYANET-SMART-FEED-MASTER-V1' 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' 'id="nayaSmartFeedMaster"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
           echo 'PROTECTED_HOUSE_GATE=PASS'
 
-      - name: Commit canonical 452 source if changed
+      - name: Commit canonical 452 source only when content actually changed
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$HUB"
-          if git diff --cached --quiet; then echo CURRENT; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
+          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_CANONICAL=TRUE'; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
 
       - name: Prepare isolated Cloudflare artifact for the actual live worker
         shell: bash
