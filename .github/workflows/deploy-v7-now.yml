@@ -43,16 +43,19 @@ jobs:
           npm run typecheck
           npm run build
           test -s dist/index.html
+          test -n "$(find dist -type f | head -n 1)"
           echo 'CANONICAL_HUB_BUILD=PASS'
 
-      - name: Verify the first-slice production contract in the built artifact
+      - name: Inspect the actual generated artifact
         shell: bash
         run: |
           set -euo pipefail
-          H="NAYANET/HUB/dist/index.html"
-          test -s "$H"
-          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" "$H" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
+          D="NAYANET/HUB/dist"
+          test -s "$D/index.html"
+          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" "$D" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
           echo 'FIRST_SLICE_ARTIFACT_CONTRACT=PASS'
+          echo "ARTIFACT_FILES=$(find "$D" -type f | wc -l)"
+          echo "ARTIFACT_BYTES=$(du -sb "$D" | cut -f1)"
 
       - name: Prepare exact Cloudflare artifact for aged-art-7c12
         shell: bash
@@ -66,12 +69,20 @@ jobs:
             async fetch(request, env) {
               const url = new URL(request.url);
               if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/')) {
-                return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+                const response = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+                const headers = new Headers(response.headers);
+                headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+                headers.set('Pragma', 'no-cache');
+                headers.set('X-NayaNET-Source-Commit', '__SOURCE_COMMIT__');
+                headers.set('X-NayaNET-Source', 'NAYANET/HUB');
+                headers.set('X-NayaNET-Release-Path', 'NAYANET/HUB -> VITE -> CLOUDFLARE aged-art-7c12');
+                return new Response(response.body, { status: response.status, headers });
               }
               return env.ASSETS.fetch(request);
             }
           };
           EOF
+          sed -i "s/__SOURCE_COMMIT__/${GITHUB_SHA}/g" CLOUDFLARE-INTELLIGENT-HUB-V7/worker.js
           cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
           {
             "name": "aged-art-7c12",
@@ -92,16 +103,19 @@ jobs:
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
 
-      - name: Independently verify root and Smart Link runtime parity
+      - name: Independently verify exact public runtime parity
         shell: bash
         run: |
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
           curl -fsSL --retry 10 --retry-delay 3 "$SMART_LINK?release=$GITHUB_SHA" -o /tmp/smart
           cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
-          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
+          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
+          ROOT_HEADERS=$(curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA")
+          echo "$ROOT_HEADERS" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; exit 1; }
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
+          echo 'RUNTIME_SOURCE_COMMIT_HEADER=PASS'
           echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
           echo "SMART_LINK=$SMART_LINK"
           echo "SOURCE_COMMIT=$GITHUB_SHA"
@@ -117,5 +131,9 @@ jobs:
             echo '**RUNTIME:** https://aged-art-7c12.nayanet.workers.dev/'
             echo '**SMART LINK:** https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
             echo "**SOURCE COMMIT:** $GITHUB_SHA"
+            echo '**BUILD:** PASS'
+            echo '**ARTIFACT:** PASS'
+            echo '**PUBLIC RUNTIME:** PASS'
             echo '**ROOT / SMART LINK PARITY:** PASS'
+            echo '**SOURCE COMMIT HEADER:** PASS'
           } >> "$GITHUB_STEP_SUMMARY"
