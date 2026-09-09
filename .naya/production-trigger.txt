@@ -1,5 +1,5 @@
-SUPREME-INTELLIGENT-BLOCK-V12 FINAL MERGE RELEASE
+SUPREME-INTELLIGENT-BLOCK-V12.1 FINAL MERGE RELEASE
 
-LEGACY-FIRST SUPREME RECONSTRUCTION: preserve the proven original board DOM, eliminate the failed two-column renderer, and elevate the existing boards in place.
+TRUE LEGACY BOARD RECONSTRUCTION: remove the rejected two-column presentation, eliminate visible implementation/code artifacts, preserve the real board content, and elevate the existing boards into a premium vertical intelligence experience.
 
-2026-09-09 08:12 PT — DEDICATED V12 WORKFLOW TRIGGER.
+2026-09-09 08:18 PT — PRODUCTION REDEPLOY TRIGGER.
