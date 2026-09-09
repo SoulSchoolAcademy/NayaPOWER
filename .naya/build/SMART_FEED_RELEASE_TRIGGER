@@ -1,4 +1,6 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-PROOF-FIRST-VISUAL-QA-V5
-Purpose: rerun the exact-runtime visual proof after correcting Playwright module resolution.
-Mission: capture desktop/mobile proof from the exact runtime Shawn opens after the canonical Smart Feed deployment.
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V6
+Purpose: execute the single locked Hub deployment lane and then run read-only exact-runtime visual proof.
+Mission: deploy the current 452 Hub to the exact runtime Shawn opens, verify the runtime, capture desktop/mobile evidence, and never let the verifier mutate main.
 Runtime: https://aged-art-7c12.nayanet.workers.dev/
+Deployment authority: .github/workflows/deploy-v7-now.yml
+Visual verifier: .github/workflows/nayanet-visual-proof.yml
