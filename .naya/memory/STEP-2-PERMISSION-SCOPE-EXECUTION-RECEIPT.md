@@ -1,6 +1,6 @@
 # Step 2 — Permission / Scope Enforcement Execution Receipt
 
-**Status:** EXECUTION IN PROGRESS
+**Status:** FINAL VERIFICATION RUN
 
 This receipt is the authoritative evidence record for Step 2. The repository CI gate must execute the permission tests, Smart Brain regression suite, and canonical validation before any GREEN declaration.
 
@@ -15,10 +15,10 @@ python .naya/memory/smart_notes_v3.py validate
 
 ## Acceptance
 
-All eleven permission tests must pass, including the ten required adversarial cases and authorization-before-ranking. The full Smart Brain regression suite and canonical validation must also pass. No test result may be inferred from source inspection.
+All adversarial permission tests, authorization-before-ranking proof, the full Smart Brain regression suite, and canonical validation must pass. No test result may be inferred from source inspection.
 
-## Current blocker
+## Runtime boundary
 
-Execution evidence is being obtained through the repository's GitHub Actions runner. The prior observed run failed before Step 2 at the unrelated cold-start activation gate; this dedicated Step 2 gate intentionally runs the Step 2 commands directly.
+The authorization gate is enforced before corpus construction and therefore before lexical/BM25/TF-IDF ranking. Relationship expansion is restricted to the already-authorized event map.
 
-**STEP 2 = PENDING EXECUTION EVIDENCE**
+**STEP 2 = AWAITING EXECUTED CI RESULT**
