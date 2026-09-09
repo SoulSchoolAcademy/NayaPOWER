@@ -1,0 +1,40 @@
+name: NayaNET surgical cognitive integration
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+jobs:
+  integrate:
+    if: ${{ !contains(github.event.head_commit.message, '[naya-cognitive-engine]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject canonical cognitive engine into latest timestamped Hub
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          hub=Path('2026 09 09 1213 NAYANET HUB.html')
+          engine=Path('SUPERBRAIN/PROJECT-COGNITION/NAYA-NET-COGNITIVE-ENGINE.js')
+          marker='<!-- NAYANET-PERSISTENT-COGNITIVE-EXECUTION-ENGINE-V1 -->'
+          if not hub.exists(): raise SystemExit('Latest timestamped Hub artifact not found')
+          src=hub.read_text(encoding='utf-8')
+          if marker in src:
+              print('Cognitive engine already integrated')
+              raise SystemExit(0)
+          code=engine.read_text(encoding='utf-8')
+          inject='\n'+marker+'\n<script id="naya-persistent-cognitive-execution-engine">\n'+code+'\n</script>\n'
+          pos=src.rfind('</body>')
+          if pos<0: pos=src.rfind('</html>')
+          if pos<0: raise SystemExit('No HTML closing boundary found')
+          hub.write_text(src[:pos]+inject+src[pos:],encoding='utf-8')
+          print('Injected canonical cognitive engine')
+          PY
+      - name: Commit surgical integration
+        run: |
+          git config user.name 'NayaNET Surgical Integrator'
+          git config user.email 'actions@github.com'
+          git add '2026 09 09 1213 NAYANET HUB.html'
+          git diff --cached --quiet && exit 0
+          git commit -m 'Integrate persistent Naya cognitive execution engine [naya-cognitive-engine]'
+          git push
