@@ -46,9 +46,9 @@ REQUIRED_TEXT = {
     ],
     "smart_note_constitution": [
         "NO RECEIPT = NOT COMPLETE",
-        "ONE CANONICAL EVENT",
-        "Four Logical Transaction Artifacts",
-        "Six semantic perspectives",
+        "One Canonical Event",
+        "four logical/persistence artifacts",
+        "six required semantic perspectives",
         "Idempotency",
     ],
     "constitutional_mandates": [
