@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Static 10/10 release gate for the NayaNET Intelligent Hub.
+"""Static 10/10 release gate for the production NayaNET Intelligent Hub.
 
 This verifier proves source-level invariants only. It deliberately refuses to
 claim authenticated persistence or live-runtime parity; those require runtime
@@ -14,7 +14,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED = {
-    "canonical_hub": ROOT / "2026 09 09 1213 NAYANET HUB.html",
+    "canonical_hub_index": ROOT / "NAYANET/HUB/index.html",
+    "canonical_hub_app": ROOT / "NAYANET/HUB/src/app/App.tsx",
+    "canonical_cognition_bridge": ROOT / "NAYANET/HUB/src/intelligence/cognition.ts",
+    "canonical_identity": ROOT / "NAYANET/HUB/src/identity/session.ts",
+    "canonical_deployment": ROOT / ".github/workflows/deploy-nayanet-hub-canonical.yml",
     "cognitive_engine": ROOT / "scripts/nayanet-cognitive-engine.js",
     "hub_layer": ROOT / "scripts/nayanet-hub-intelligence-layer.js",
     "smart_note_constitution": ROOT / "SMART_NOTE_CONSTITUTION.md",
@@ -25,10 +29,36 @@ REQUIRED = {
 }
 
 REQUIRED_TEXT = {
-    "canonical_hub": [
-        "NAYANET-COGNITIVE-ENGINE-V1:START",
-        "NAYANET-HUB-INTELLIGENCE-V2:START",
+    "canonical_hub_index": [
+        "nayanet-cognitive-engine.js",
+        "src/main.tsx",
+    ],
+    "canonical_hub_app": [
+        "NAYANET-HUB-REACT-CANONICAL",
+        "initializeCognition",
+        "rememberIntelligence",
+        "PERSISTED WITH RECEIPT",
+        "authenticated session",
+    ],
+    "canonical_cognition_bridge": [
+        "initializeCognition",
+        "rememberIntelligence",
+        "recordPersistent",
         "NayaNetCognition",
+    ],
+    "canonical_identity": [
+        "IdentityProvider",
+        "permissions",
+        "privacy_state",
+    ],
+    "canonical_deployment": [
+        "name: Deploy Canonical NayaNET Hub",
+        "NAYANET/HUB",
+        "aged-art-7c12",
+        "NayaNetCognition",
+        "recordPersistent",
+        "nayanet_record_cognition_event",
+        "PUBLIC_RUNTIME=PASS",
     ],
     "cognitive_engine": [
         "recordPersistent",
@@ -106,13 +136,11 @@ for label, needles in REQUIRED_TEXT.items():
     for needle in needles:
         check(f"contract:{label}:{needle}", needle in text)
 
-# The browser harness must not contain a credential-entry flow.
 harness = REQUIRED["lifecycle_harness"].read_text(encoding="utf-8", errors="replace")
 check("harness:no-password-input", "type=\"password\"" not in harness.lower())
 check("harness:no-credential-request", "enter your password" not in harness.lower())
 
-# Scan source/config text for obvious private-key or token leakage.
-scan_roots = [ROOT / "scripts", ROOT / "tests", ROOT / ".github", ROOT / "SUPERBRAIN"]
+scan_roots = [ROOT / "scripts", ROOT / "tests", ROOT / ".github", ROOT / "SUPERBRAIN", ROOT / "NAYANET/HUB/src"]
 scanned = 0
 for base in scan_roots:
     if not base.exists():
@@ -130,7 +158,6 @@ for base in scan_roots:
 
 check("secret-scan:executed", scanned > 0)
 
-# The final two gates are intentionally NOT converted into false passes here.
 print("INFO  gate-19-runtime-parity: EXTERNAL — requires exact public runtime observation")
 print("INFO  gate-20-final-10-proof: EXTERNAL — requires authenticated lifecycle receipts + runtime proof")
 
