@@ -42,6 +42,8 @@ jobs:
           marker='NAYANET-SMART-FEED-MASTER-V1'
           if marker not in p:
               raise SystemExit('PAYLOAD_MARKER_MISSING')
+          # Repair the one malformed generated return-string boundary in the payload.
+          p=p.replace('</article>}function render', '</article>'}function render')
           s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*(?=</head>)','',s,count=1)
           if '</head>' not in s:
               raise SystemExit('HEAD_BOUNDARY_MISSING')
