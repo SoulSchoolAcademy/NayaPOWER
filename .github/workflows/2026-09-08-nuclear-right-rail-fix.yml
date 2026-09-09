@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '.github/workflows/2026-09-08-nuclear-right-rail-fix.yml'
+      - '2026 09 08 452 NayaNET Hub.html'
   workflow_dispatch:
 
 permissions:
