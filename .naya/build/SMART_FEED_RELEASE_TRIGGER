@@ -1,4 +1,4 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-VISUAL-QA-RELEASE-V2
-Purpose: trigger the single canonical Smart Feed release path after fixing the non-idempotent injection loop.
-Mission: deploy the current canonical 452 Hub + Smart Feed master + deterministic force mount to the exact runtime Shawn opens.
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-PROOF-FIRST-VISUAL-QA-V3
+Purpose: trigger the canonical Smart Feed deployment and exact-runtime visual proof path.
+Mission: deploy the current canonical 452 Hub + Smart Feed master + deterministic force mount, then capture desktop/mobile proof from the exact runtime Shawn opens.
 Runtime: https://aged-art-7c12.nayanet.workers.dev/
