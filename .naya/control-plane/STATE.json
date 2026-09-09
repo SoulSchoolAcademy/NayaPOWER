@@ -3,70 +3,20 @@
   "status": "LIVE_BOUND",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "state_authority": "This file is a control-plane contract; live repository identity/HEAD must be resolved from the executing Git repository at validation time.",
-  "current_head": {"source": "git:HEAD", "mode": "LIVE_RESOLUTION", "recorded_head_is_not_authoritative": true},
-  "current_branch": {"source": "git:branch --show-current", "mode": "LIVE_RESOLUTION"},
-  "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "current_block": "TORCH-10-RUNTIME-FIRST-FAILURE-ISOLATION",
-  "current_block_status": "ACTIVE",
-  "current_deployment": {"source": "deployment evidence when applicable", "status": "UNKNOWN_UNTIL_CURRENT_EVIDENCE"},
-  "verified_evidence": {
-    "rule": "Only evidence linked in PROOF.json and current receipts may support VERIFIED claims.",
-    "known": [
-      "Live main is authoritative; recorded HEAD values are not authoritative.",
-      "Torch 6 Smart Note candidate, Torch 7 CSI compounding, Torch 8 Human Mission, and Torch 9 customer activation composition are implemented in live main.",
-      "Torch 9 has an isolated deterministic composition suite and the canonical Superbrain gate invokes it.",
-      "Torch 10 added .naya/runtime/runtime_failure_isolation.py to capture exact first-failure command output when Actions job logs are unavailable; this is diagnostic infrastructure and does not weaken gates or create authority.",
-      "The latest Superbrain Gate run observed at HEAD 08a979b60ca1f1430f1f0e49f2cb973a8ade5ae3 failed with jobs brain-gate and system-health-master-node, but the connected GitHub surface exposed no steps, no artifacts, and job-log retrieval returned BlobNotFound.",
-      "Multiple independent GitHub Actions workflows at the preceding HEAD c89125c6b4ebe8bc6fad2b1ef3ee55cb5dd76a8b also failed within the same short window with no exposed steps, which is consistent with an execution-environment/runner or platform-level failure but is not sufficient to claim an exact root cause.",
-      "GitHub status currently reports Actions operational; therefore the repository must not convert the historical/current observation into a provider-wide outage claim.",
-      "The canonical NayaNET federation protocol already defines NayaNET as a federation of independent private Naya Power Superbrains with permissioned bridges and collective intelligence by choice; no new federation authority is required."
-    ],
-    "latest_automation_observation": {
-      "observed_head": "08a979b60ca1f1430f1f0e49f2cb973a8ade5ae3",
-      "workflow": ".github/workflows/superbrain-gate.yml",
-      "workflow_run_id": 33283830828,
-      "status": "completed",
-      "conclusion": "failure",
-      "exact_internal_failure": "UNKNOWN_PRE_STEP_OR_RUNNER_OR_PLATFORM_FAILURE",
-      "steps_or_logs": "no job steps exposed; job logs returned BlobNotFound; no artifacts exposed"
-    },
-    "missing_evidence_state": "UNKNOWN"
-  },
-  "unknown": [
-    "Exact internal first failing step for Superbrain Gate run 33283830828 because GitHub exposes no steps and job-log retrieval returns BlobNotFound",
-    "Whether the failure is runner provisioning, workflow execution infrastructure, repository billing/quota, or another pre-step condition",
-    "Whether the new runtime_failure_isolation diagnostic will execute successfully on the next healthy Actions runner",
-    "Fresh successful Superbrain Gate result after the Torch 10 diagnostic infrastructure change",
-    "Fresh successful Naya Control Plane, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD",
-    "Local repository runtime execution from this connector session",
-    "External LLM cold-start behavioral proof beyond repository-level acceptance",
-    "Production proof unless a current production runtime observation exists"
-  ],
-  "failures": [
-    "Superbrain Gate run 33283830828 at HEAD 08a979b60ca1f1430f1f0e49f2cb973a8ade5ae3 completed FAILURE for both brain-gate and system-health-master-node; exact internal failure remains UNKNOWN because no steps/logs were exposed.",
-    "Multiple unrelated workflows at the preceding HEAD c89125c6b4ebe8bc6fad2b1ef3ee55cb5dd76a8b also completed FAILURE with no exposed steps, increasing confidence that this is not yet attributable to Torch 9 code alone.",
-    "The connected environment cannot execute the repository checkout directly."
-  ],
-  "risks": [
-    "Legacy .naya/memory/STATE.json may contain stale current_main.commit values; it must not outrank live Git HEAD.",
-    "Machine validation is repository-local and does not itself prove external provider behavior.",
-    "Automation failures without retrievable job evidence must remain UNKNOWN rather than being guessed or silently repaired.",
-    "A diagnostic workflow must never weaken the authoritative gate merely to expose evidence.",
-    "NayaNET federation remains design-level until consent, scope, authentication, authorization, encryption, provenance, privacy filtering, revocation, auditability, isolation, and abuse resistance are proven in implementation."
-  ],
-  "bottleneck": "Obtain actual repository runtime evidence from a functioning GitHub Actions job so Torch 9 and the broader Superbrain gate can be verified or the first true repository divergence can be repaired without guessing.",
-  "single_next_action": "Resolve live main HEAD; inspect the newest Superbrain Gate and related gate runs; if jobs execute, retrieve the machine-readable first-failure diagnostic artifact and repair only the first evidence-backed repository divergence; if jobs again fail before steps/artifacts are produced, preserve UNKNOWN and classify the blocker as an execution-environment gate rather than a code defect.",
-  "next_actions": ["Resolve live main HEAD; inspect the newest Superbrain Gate and related gate runs; if jobs execute, retrieve the machine-readable first-failure diagnostic artifact and repair only the first evidence-backed repository divergence; if jobs again fail before steps/artifacts are produced, preserve UNKNOWN and classify the blocker as an execution-environment gate rather than a code defect."],
-  "next_action_count": 1,
-  "ready_to_run_execution": "NEXT NAYA EXECUTION — TORCH 10 RUNTIME FIRST-FAILURE ISOLATION\n\nMISSION: Make NayaPOWER earn verified continuity and compounding intelligence. Do not redesign working architecture and do not guess.\nSOURCE OF TRUTH: SoulSchoolAcademy/NayaPOWER, branch main. Resolve live Git HEAD at execution start.\nEXECUTE: 1) Resolve live main HEAD. 2) Query GitHub Actions for that exact HEAD. 3) Inspect Superbrain Gate, Naya Control Plane, Continuous Torch-Pass, Claim Evidence, Smart Brain, Memory/Restore, and related authoritative gates. 4) For each relevant run inspect status, conclusion, jobs, steps, logs, and artifacts. 5) If the runtime first-failure diagnostic artifact exists, read it and identify the first nonzero command with exact stdout/stderr and exit code. 6) Reproduce only that command in an execution-capable repository environment. 7) Repair only the smallest evidence-backed repository cause. 8) Rerun the affected deterministic suite and then the full authoritative Superbrain Gate against the new exact HEAD. 9) If jobs fail before steps/artifacts are produced, do not guess: classify the blocker as UNKNOWN execution-environment evidence and preserve it. 10) Treat design as design, implementation as implementation, isolated tests as isolated evidence, repository Actions as repository runtime evidence, and production as production evidence. 11) Update the canonical feed and this state with exact evidence, UNKNOWNs, failures, lesson, and exactly one next action. 12) Torch-completeness: leave the next Naya a copy-ready executable continuation.\nACCEPTANCE: No competing authority; no weakened contracts; exact first failure identified or explicitly UNKNOWN; repaired boundary backed by observed evidence; deterministic suite passes; full gate passes before any GREEN claim. NEXT NAYA > CURRENT NAYA.",
-  "truth_rules": [
-    "LIVE authoritative source outranks recorded state.",
-    "RECORDED_BUT_STALE is not CURRENT.",
-    "UNKNOWN is not VERIFIED.",
-    "A block is not VERIFIED without claim-appropriate evidence.",
-    "Exactly one highest-value next action is exposed.",
-    "One-Shot means pursue the strongest correct result now; it never permits guessing, skipped verification, unsafe action, or unsupported repair.",
-    "A successor handoff is incomplete unless the next Naya can execute the next action from durable state without reconstructing the prior conversation.",
-    "No-Orphan law requires a directly executable NEXT NAYA EXECUTION PROMPT for every substantive execution; explanation-only termination is incomplete."
-  ]
+  "current_head": {"source":"git:HEAD","mode":"LIVE_RESOLUTION","recorded_head_is_not_authoritative":true},
+  "current_branch": {"source":"git:branch --show-current","mode":"LIVE_RESOLUTION"},
+  "mission":"Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+  "current_block":"TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION",
+  "current_block_status":"ACTIVE",
+  "current_deployment":{"source":"deployment evidence when applicable","status":"UNKNOWN_UNTIL_CURRENT_EVIDENCE"},
+  "verified_evidence":{"rule":"Only evidence linked in PROOF.json and current receipts may support VERIFIED claims.","known":["Live main is authoritative; recorded HEAD values are not authoritative.","Torch 6 Smart Note candidate, Torch 7 CSI compounding, Torch 8 Human Mission, and Torch 9 customer activation composition are implemented in live main.","Torch 9 has an isolated deterministic composition suite and the canonical Superbrain gate invokes it.","Torch 10 added .naya/runtime/runtime_failure_isolation.py to capture exact first-failure command output when Actions job logs are unavailable; this is diagnostic infrastructure and does not weaken gates or create authority.","A later Naya Control Plane run exposed a real deterministic control-plane divergence: MAP and BLOCK disagreed on the active block, and the claim regression exposed a test expectation inconsistent with the contract that same-scope claims conflict.","The control-plane divergence is being repaired surgically; no application architecture is changed by this repair."],"latest_automation_observation":{"status":"REQUIRES_FRESH_RUN_AFTER_CONTROL_PLANE_REPAIR","exact_internal_failure":"Previous observed divergence was MAP_AND_BLOCK_ACTIVE_BLOCK_MISMATCH and NAYA_CLAIM_DISJOINT_TEST_SCOPE_MISMATCH","steps_or_logs":"Observed in GitHub Actions run 34410551074"},"missing_evidence_state":"UNKNOWN"},
+  "unknown":["Fresh successful Naya Control Plane result after the current control-plane repairs","Fresh successful Superbrain Gate, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD","Exact current production runtime parity until a fresh canonical deployment completes and independently verifies it","Authenticated browser lifecycle and live Smart Note transaction from a real signed-in user session","External LLM cold-start behavioral proof beyond repository-level acceptance","Local repository runtime execution from this connector session"],
+  "failures":["Previous Naya Control Plane run 34410551074 failed on the cold-start acceptance because MAP.json and BLOCKS.json named different active blocks; its CCT regression failed because the disjoint-claim test used the same scope even though the claim contract intentionally treats same-scope claims as conflicts."],
+  "risks":["Legacy .naya/memory/STATE.json may contain stale current_main.commit values; it must not outrank live Git HEAD.","Machine validation is repository-local and does not itself prove external provider behavior.","Automation failures without retrievable job evidence must remain UNKNOWN rather than being guessed or silently repaired.","A diagnostic workflow must never weaken the authoritative gate merely to expose evidence.","NayaNET federation remains design-level until consent, scope, authentication, authorization, encryption, provenance, privacy filtering, revocation, auditability, isolation, and abuse resistance are proven in implementation."],
+  "bottleneck":"Obtain fresh authoritative runtime evidence after the surgical control-plane repairs, then close the remaining NayaNET production and authenticated cognition evidence gates.",
+  "single_next_action":"Resolve live main HEAD; inspect the newest authoritative runs for that exact HEAD; verify the control-plane repair, then repair only the first new evidence-backed divergence and rerun the authoritative gates. Preserve UNKNOWN for any external/authenticated/runtime proof not actually observed.",
+  "next_actions":["Resolve live main HEAD; inspect the newest authoritative runs for that exact HEAD; verify the control-plane repair, then repair only the first new evidence-backed divergence and rerun the authoritative gates. Preserve UNKNOWN for any external/authenticated/runtime proof not actually observed."],
+  "next_action_count":1,
+  "ready_to_run_execution":"NEXT NAYA EXECUTION — TORCH 12 AUTHORITATIVE RUNTIME EXECUTION\n\nMISSION: Make NayaPOWER earn verified continuity and compounding intelligence. Do not redesign working architecture and do not guess.\nSOURCE OF TRUTH: SoulSchoolAcademy/NayaPOWER, branch main. Resolve live Git HEAD at execution start.\nEXECUTE: 1) Resolve live main HEAD. 2) Query GitHub Actions for that exact HEAD. 3) Inspect Superbrain Gate, Naya Control Plane, Continuous Torch-Pass, Claim Evidence, Smart Brain, Memory/Restore, and related authoritative gates. 4) Retrieve steps, logs, and artifacts. 5) Identify the first evidence-backed divergence. 6) Repair only that boundary. 7) Rerun the affected deterministic suite and then the full authoritative gate. 8) Verify canonical deployment and exact public runtime when the deployment path is reached. 9) Keep authenticated browser lifecycle and real Smart Note receipts as UNKNOWN until independently observed. 10) Update state and successor evidence with exact receipts and one next action.\nACCEPTANCE: No competing authority; no weakened contracts; exact first failure identified or explicitly UNKNOWN; repaired boundary backed by evidence; deterministic suite passes; authoritative gates pass before GREEN claim. NEXT NAYA > CURRENT NAYA.",
+  "truth_rules":["LIVE authoritative source outranks recorded state.","RECORDED_BUT_STALE is not CURRENT.","UNKNOWN is not VERIFIED.","A block is not VERIFIED without claim-appropriate evidence.","Exactly one highest-value next action is exposed.","One-Shot means pursue the strongest correct result now; it never permits guessing, skipped verification, unsafe action, or unsupported repair.","A successor handoff is incomplete unless the next Naya can execute the next action from durable state without reconstructing the prior conversation.","No-Orphan law requires a directly executable NEXT NAYA EXECUTION PROMPT for every substantive execution; explanation-only termination is incomplete."]
 }
