@@ -54,10 +54,13 @@ jobs:
           test -n "$(find "$D" -type f | head -n 1)"
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
+          sha256sum "$D/index.html" > /tmp/index.sha256
+          find "$D" -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/artifact.sha256
           echo 'CANONICAL_HUB_BUILD=PASS'
           echo 'ARTIFACT_INSPECTION=PASS'
           echo "ARTIFACT_FILES=$(find "$D" -type f | wc -l)"
           echo "ARTIFACT_BYTES=$(du -sb "$D" | cut -f1)"
+          echo "INDEX_SHA256=$(cut -d' ' -f1 /tmp/index.sha256)"
 
       - name: Prepare exact Cloudflare artifact
         run: |
@@ -96,6 +99,10 @@ jobs:
           EOF
           test -s release/public/index.html
           test -s release/worker.js
+          echo "RELEASE_SOURCE_COMMIT=$GITHUB_SHA" > release/RELEASE-MANIFEST.txt
+          echo "RELEASE_SOURCE=NAYANET/HUB" >> release/RELEASE-MANIFEST.txt
+          echo "RELEASE_TARGET=aged-art-7c12" >> release/RELEASE-MANIFEST.txt
+          cat /tmp/index.sha256 >> release/RELEASE-MANIFEST.txt
           echo 'CLOUDFLARE_ARTIFACT=READY'
 
       - name: Deploy exact Cloudflare Worker
@@ -129,11 +136,15 @@ jobs:
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
           headers=$(curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA")
           echo "$headers" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; echo "$headers"; exit 1; }
+          echo "$headers" | grep -F 'X-NayaNET-Source: NAYANET/HUB' >/dev/null || { echo 'RUNTIME_SOURCE_HEADER=FAIL'; echo "$headers"; exit 1; }
+          echo "$headers" | grep -F 'X-NayaNET-Release-Path: NAYANET/HUB -> VITE -> CLOUDFLARE aged-art-7c12' >/dev/null || { echo 'RUNTIME_RELEASE_PATH_HEADER=FAIL'; echo "$headers"; exit 1; }
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
           echo 'RUNTIME_JS_ASSET=PASS'
           echo 'RUNTIME_INTELLIGENCE_MARKERS=PASS'
           echo 'RUNTIME_SOURCE_COMMIT_HEADER=PASS'
+          echo 'RUNTIME_SOURCE_HEADER=PASS'
+          echo 'RUNTIME_RELEASE_PATH_HEADER=PASS'
           echo "ACTUAL_RUNTIME=$RUNTIME"
           echo "SMART_LINK=$SMART_LINK"
           echo "JS_ASSET=$js_src"
