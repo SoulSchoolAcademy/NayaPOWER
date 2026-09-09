@@ -1,6 +1,8 @@
 name: 2026-09-08 Canonical Hub Smart Feed Release
 
 on:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
