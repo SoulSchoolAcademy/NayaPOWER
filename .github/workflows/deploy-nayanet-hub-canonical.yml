@@ -1,5 +1,6 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 # RELEASE PATH: NAYANET/HUB -> VITE BUILD -> CLOUDFLARE aged-art-7c12
+# RELEASE AUTHORITY: this workflow must build the exact current main head.
 name: Deploy Canonical NayaNET Hub
 on:
   push:
