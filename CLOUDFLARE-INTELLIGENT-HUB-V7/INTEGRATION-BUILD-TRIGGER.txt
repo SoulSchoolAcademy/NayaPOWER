@@ -1,1 +1,0 @@
-Build trigger for the complete integrated NayaNET Intelligent Hub V7 index.

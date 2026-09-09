@@ -1,1 +1,0 @@
-Third canonical release trigger: final robust production pipeline.

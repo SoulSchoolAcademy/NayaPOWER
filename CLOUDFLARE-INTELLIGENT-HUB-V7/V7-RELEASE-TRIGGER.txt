@@ -1,1 +1,0 @@
-V7 visible release trigger — deploy the current Smart Notes, Settings, Evidence, navigation, and runtime assets exactly from this commit.
