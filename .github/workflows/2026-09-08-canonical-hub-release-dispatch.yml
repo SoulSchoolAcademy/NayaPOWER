@@ -23,7 +23,6 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
-          import re
           p=Path('2026 09 08 452 NayaNET Hub.html')
           s=p.read_text(encoding='utf-8')
           marker='NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2'
@@ -34,19 +33,12 @@ jobs:
 </style>
 <script>
 (function(){
- function kill(){
-  try{
-   document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});
-   var w=document.querySelector('.homeWorkspace');
-   if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important')}
-  }catch(e){}
- }
- kill();
- new MutationObserver(kill).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
- setInterval(kill,500);
+ function kill(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important')}}catch(e){}}
+ kill();new MutationObserver(kill).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});setInterval(kill,500);
 })();
 </script>
 '''
+              if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
               s=s.replace('</head>',injection+'</head>',1)
               p.write_text(s,encoding='utf-8')
           final=p.read_text(encoding='utf-8')
@@ -63,21 +55,27 @@ jobs:
           git commit -m 'Nuclear Hub fix V2: remove right rail at runtime' || true
           git push origin HEAD:main || true
 
-      - name: Build and deploy exact 452 source
+      - name: Prepare exact Cloudflare Worker artifact
         shell: bash
         run: |
           set -euo pipefail
           rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
           mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
           cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
+          {
+            "name": "nayanet-v7-intelligent-hub",
+            "compatibility_date": "2026-09-08",
+            "assets": { "directory": "." }
+          }
+          EOF
           test -s CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          npx --yes wrangler@latest --version
 
-      - name: Deploy via Cloudflare Pages
+      - name: Deploy exact guarded artifact
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
