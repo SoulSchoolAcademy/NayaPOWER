@@ -61,3 +61,5 @@ jobs:
             git commit -m 'feat: physically integrate NayaNET cognitive engine into canonical Hub'
             git push
           fi
+
+# Integrity trigger: fresh verification pass.
