@@ -1,6 +1,6 @@
-# NayaNET Intelligent Hub — First Vertical Slice
+# NayaNET Intelligent Hub — Canonical Vite/Cloudflare Release Marker
 
-This marker exists solely to make the canonical Cloudflare release chain execute against the current `NAYANET/HUB/` source boundary.
+This marker exists solely to keep the canonical Cloudflare release chain observable against the current `NAYANET/HUB/` source boundary.
 
 ## Visible slice
 
@@ -15,6 +15,10 @@ IDENTITY CONTEXT → APPLICATION SHELL → HOME ORIENTATION → ASK NAYA / SEARC
 Cloudflare Worker: `aged-art-7c12`
 
 Production URL: `https://aged-art-7c12.nayanet.workers.dev`
+
+## Release law
+
+`NAYANET/HUB → TYPECHECK → VITE BUILD → ARTIFACT INSPECTION → CLOUDFLARE → EXACT PUBLIC RUNTIME → VERIFICATION`
 
 ## Important
 
