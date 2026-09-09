@@ -1,4 +1,5 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
+# Production deployment implementation. The existing hub-canonical-release-trigger.yml is the sole push adapter.
 name: Deploy Canonical NayaNET Hub
 on:
   workflow_dispatch:
