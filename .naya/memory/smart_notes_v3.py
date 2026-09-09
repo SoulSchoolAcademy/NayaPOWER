@@ -28,6 +28,7 @@ def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() el
 def hydrate_legacy_time(p,e):
     t=path_time(p)
     if t:e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
+    e.setdefault('status','HISTORICAL')
     return e
 def load_events():
     out=[]
@@ -44,6 +45,9 @@ def reps(e):
         if isinstance(e.get(key),dict):legacy.append(e[key])
     for key in ('shawn_note','ai_note','machine_note','intelligence_feed','pis_update'):
         if isinstance(e.get(key),str) and e.get(key):legacy.append({'representation':key,'content':e[key]})
+    if not legacy:
+        content=e.get('summary') or e.get('lesson') or e.get('next_action') or e.get('source_of_truth')
+        if content:legacy=[{'representation':'legacy','content':str(content)}]
     return legacy
 def all_text(e):
     p=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary',''),e.get('status','')]
@@ -78,7 +82,7 @@ def validate_event(e,p):
         except Exception as exc:er.append(f'{p}: invalid {k}: {exc}')
     if not isinstance(e.get('status'),str) or not e.get('status').strip():er.append(f'{p}: invalid status')
     if not reps(e):er.append(f'{p}: missing representations')
-    if not e.get('source') and not e.get('provenance') and not e.get('intelligence_feed') and not e.get('pis_update'):er.append(f'{p}: missing source')
+    if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):er.append(f'{p}: missing source')
     v=e.get('verification',{}) or {}
     if v.get('status')=='VERIFIED' and not v.get('canonical_url'):er.append(f'{p}: verified event missing canonical_url')
     dt=parsed.get('effective_at')
