@@ -8,7 +8,11 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+
+concurrency:
+  group: nayanet-exact-runtime-visual-proof
+  cancel-in-progress: false
 
 jobs:
   visual-proof:
@@ -87,21 +91,11 @@ jobs:
           EOF
           node proof.mjs
 
-      - name: Upload exact-runtime visual evidence
-        uses: actions/upload-artifact@v4
-        with:
-          name: NAYANET-EXACT-RUNTIME-VISUAL-PROOF-${{ github.sha }}
-          path: proof/
-          if-no-files-found: error
-          retention-days: 30
-
-      - name: Create permanent human release receipt
+      - name: Build human-readable proof receipt as artifact
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p .naya/activity/releases
-          RECEIPT=".naya/activity/releases/$(date -u +%Y-%m-%d-%H-%M)-SMART-FEED-VISUAL-PROOF.md"
-          cat > "$RECEIPT" <<EOF
+          cat > proof/RELEASE-RECEIPT.md <<EOF
           # NayaNET Smart Feed Exact-Runtime Visual Proof
 
           **STATUS:** VISUALLY VERIFIED — AWAITING HUMAN APPROVAL
@@ -123,14 +117,16 @@ jobs:
           - Persistent right activation rail was not visible in the captured runtime.
 
           ## Visual proof
-          The GitHub Actions artifact **NAYANET-EXACT-RUNTIME-VISUAL-PROOF-$GITHUB_SHA** contains the desktop and mobile screenshots captured directly from the exact public runtime above.
+          The screenshots and JSON state in this artifact were captured directly from the exact public runtime above.
 
           ## Human approval
           Shawn must open the exact runtime and judge the requested visual outcome. Until that happens, this release is not marked HUMAN-APPROVED or PRODUCTION-PROVEN.
           EOF
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add "$RECEIPT"
-          git commit -m 'Record exact-runtime Smart Feed visual proof'
-          git push origin HEAD:main
-          echo "RECEIPT=$RECEIPT"
+
+      - name: Upload exact-runtime visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: NAYANET-EXACT-RUNTIME-VISUAL-PROOF-${{ github.sha }}
+          path: proof/
+          if-no-files-found: error
+          retention-days: 30
