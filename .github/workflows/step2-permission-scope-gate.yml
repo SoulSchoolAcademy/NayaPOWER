@@ -28,3 +28,14 @@ jobs:
         run: python .naya/memory/test_smart_brain_v3.py -v
       - name: Canonical validation regression
         run: python .naya/memory/smart_notes_v3.py validate
+      - name: Emit Step 2 execution evidence
+        run: |
+          python -m unittest discover -s .naya/memory/tests -p 'test_*.py' -v 2>&1 | tee .naya/memory/STEP-2-TEST-OUTPUT.txt
+          git rev-parse HEAD > .naya/memory/STEP-2-TEST-COMMIT.txt
+      - name: Upload Step 2 evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: step-2-permission-scope-evidence
+          path: |
+            .naya/memory/STEP-2-TEST-OUTPUT.txt
+            .naya/memory/STEP-2-TEST-COMMIT.txt
