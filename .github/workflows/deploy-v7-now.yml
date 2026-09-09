@@ -10,6 +10,7 @@ on:
     paths:
       - '2026 09 08 452 NayaNET Hub.html'
       - '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
+      - '.naya/build/SMART_FEED_FORCE_MOUNT_V2.html'
       - '.naya/build/SMART_FEED_RELEASE_TRIGGER'
       - '.github/workflows/deploy-v7-now.yml'
   workflow_dispatch:
@@ -20,6 +21,7 @@ permissions:
 env:
   HUB: '2026 09 08 452 NayaNET Hub.html'
   PAYLOAD: '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
+  FORCE: '.naya/build/SMART_FEED_FORCE_MOUNT_V2.html'
   RUNTIME: https://aged-art-7c12.nayanet.workers.dev
   SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   WORKER_NAME: aged-art-7c12
@@ -37,16 +39,18 @@ jobs:
         run: |
           from pathlib import Path
           import re
-          hub=Path('${{ env.HUB }}'); payload=Path('${{ env.PAYLOAD }}')
-          s=hub.read_text(encoding='utf-8'); p=payload.read_text(encoding='utf-8')
+          hub=Path('${{ env.HUB }}'); payload=Path('${{ env.PAYLOAD }}'); force=Path('${{ env.FORCE }}')
+          s=hub.read_text(encoding='utf-8'); p=payload.read_text(encoding='utf-8'); f=force.read_text(encoding='utf-8')
           if 'NAYANET-SMART-FEED-MASTER-V1' not in p: raise SystemExit('PAYLOAD_MARKER_MISSING')
           if 'id="nayaSmartFeedMaster"' not in p: raise SystemExit('SMART_FEED_ROOT_MISSING')
           if 'ACTIVITY INTELLIGENCE' not in p or 'PERSONAL INTELLIGENCE' not in p or 'COLLECTIVE INTELLIGENCE' not in p: raise SystemExit('SMART_FEED_LENSES_MISSING')
+          if 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' not in f: raise SystemExit('FORCE_MOUNT_MARKER_MISSING')
           s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*','',s)
           if '</body>' not in s: raise SystemExit('BODY_BOUNDARY_MISSING')
-          s=s.replace('</body>',p+'\n</body>',1)
+          s=s.replace('</body>',p+'\n'+f+'\n</body>',1)
           hub.write_text(s,encoding='utf-8')
           print('SMART_FEED_STATIC_PAYLOAD_APPLIED=TRUE')
+          print('SMART_FEED_FORCE_MOUNT_APPLIED=TRUE')
 
       - name: JavaScript syntax gate
         shell: python
@@ -55,15 +59,15 @@ jobs:
           import re,subprocess
           s=Path('${{ env.HUB }}').read_text(encoding='utf-8')
           scripts=re.findall(r'<script[^>]*>([\s\S]*?)</script>',s)
-          target=None
+          targets=[]
           for x in scripts:
-              if 'function boot()' in x and 'nayaSmartFeedMaster' in x and 'nsfGrid' in x:
-                  target=x; break
-          if target is None: raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
-          Path('/tmp/smart-feed.js').write_text(target,encoding='utf-8')
-          r=subprocess.run(['node','--check','/tmp/smart-feed.js'],text=True,capture_output=True)
-          if r.returncode:
-              print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
+              if 'nayaSmartFeedMaster' in x or 'NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME' in x: targets.append(x)
+          if not targets: raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
+          for i,x in enumerate(targets):
+              path=f'/tmp/smart-feed-{i}.js'; Path(path).write_text(x,encoding='utf-8')
+              r=subprocess.run(['node','--check',path],text=True,capture_output=True)
+              if r.returncode:
+                  print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
           print('SMART_FEED_JS_SYNTAX=PASS')
 
       - name: Protected house gate
@@ -71,7 +75,7 @@ jobs:
         run: |
           set -euo pipefail
           H="$HUB"; test -s "$H"
-          for x in 'NAYANET-SMART-FEED-MASTER-V1' 'id="nayaSmartFeedMaster"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
+          for x in 'NAYANET-SMART-FEED-MASTER-V1' 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' 'id="nayaSmartFeedMaster"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
           echo 'PROTECTED_HOUSE_GATE=PASS'
 
       - name: Commit canonical 452 source if changed
@@ -92,6 +96,7 @@ jobs:
           cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
           printf '%s\n' '{"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
           grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          grep -Fq 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
           grep -Fq 'id="nayaSmartFeedMaster"' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
           echo 'TARGET_WORKER=aged-art-7c12'
 
@@ -109,6 +114,7 @@ jobs:
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
           grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' /tmp/root
+          grep -Fq 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' /tmp/root
           grep -Fq 'id="nayaSmartFeedMaster"' /tmp/root
           grep -Fq 'ACTIVITY INTELLIGENCE' /tmp/root
           grep -Fq 'PERSONAL INTELLIGENCE' /tmp/root
