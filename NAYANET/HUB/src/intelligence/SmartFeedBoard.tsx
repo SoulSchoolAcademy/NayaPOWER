@@ -1,0 +1,72 @@
+import {useMemo,useState} from'react';
+import type {IntelligentEvent,Lens} from'./types';
+
+type BoardProps={event:IntelligentEvent};
+type ActionKey='favorite'|'save'|'like'|'love';
+
+type Persisted={favorite:boolean;save:boolean;like:boolean;love:boolean;rating:number;comments:string[];links:string[];space?:{id:string;name:string;purpose:string;visibility:string;created_at:string}};
+
+const STORE='nayanet:smart-feed-board:v1';
+const load=():Persisted=>{try{return JSON.parse(localStorage.getItem(STORE)||'null')||{favorite:false,save:false,like:false,love:false,rating:0,comments:[],links:[]}}catch{return{favorite:false,save:false,like:false,love:false,rating:0,comments:[],links:[]}}};
+const persist=(s:Persisted)=>{try{localStorage.setItem(STORE,JSON.stringify(s))}catch{}};
+const lensCopy:Record<Lens,string>={personal:'What matters to you — private, relevant, and ready to use.',collective:'What we are learning together — only within an authorized consent boundary.',activity:'What is happening — the event layer before interpretation compounds.'};
+const related=[
+ {id:'runtime-truth',title:'Source Intent Is Not Runtime Truth',summary:'Verify source → artifact → deployment → exact runtime → independent observation.'},
+ {id:'surgical-evolution',title:'Adaptive Reconstruction + Surgical Evolution',summary:'Improve the existing system without destroying the system that already works.'},
+ {id:'visual-language',title:'Black Is the Reading Environment; Color Is the Intelligence Language',summary:'Use controlled illumination as semantic signal, not decoration.'}
+];
+
+function Button({children,onClick,active=false,kind='normal',disabled=false}:{children:React.ReactNode;onClick?:()=>void;active?:boolean;kind?:'normal'|'primary'|'gold';disabled?:boolean}){return <button className={`sfb-btn ${kind} ${active?'active':''}`} onClick={onClick} disabled={disabled}>{children}</button>}
+
+function Perspective({label,body,tone}:{label:string;body:string;tone:string}){return <section className="sfb-perspective" style={{'--tone':tone} as React.CSSProperties}><div className="sfb-perspective-head"><span className="sfb-dot"/><b>{label}</b></div><p>{body}</p></section>}
+
+export function SmartFeedBoard({event}:BoardProps){
+ const [lens,setLens]=useState<Lens>('personal');
+ const [query,setQuery]=useState('');
+ const [askOpen,setAskOpen]=useState(false);
+ const [ask,setAsk]=useState('');
+ const [connectOpen,setConnectOpen]=useState(false);
+ const [spaceOpen,setSpaceOpen]=useState(false);
+ const [status,setStatus]=useState('');
+ const [spaceName,setSpaceName]=useState('');
+ const [spacePurpose,setSpacePurpose]=useState('Turn this intelligence into a place to learn and act together.');
+ const [visibility,setVisibility]=useState('private');
+ const [state,setState]=useState<Persisted>(load);
+ const [comment,setComment]=useState('');
+ const saveState=(next:Persisted)=>{setState(next);persist(next)};
+ const searchable=useMemo(()=>[event.source.label,event.human_input.raw,event.context.topic||'',...(event.context.tags||[]),event.naya_interpretation.observation||'',event.naya_interpretation.interpretation||'',event.naya_interpretation.recommendation||'',event.weaver_synthesis.summary||'',event.lesson.text||'',event.meaning.text||'',event.action.text||'',...event.perspectives.map(p=>p.body)].join(' ').toLowerCase(),[event]);
+ const matches=query.trim()===''||searchable.includes(query.trim().toLowerCase());
+ const nayaAnswer=useMemo(()=>{const q=ask.trim().toLowerCase();if(!q)return 'Ask about the displayed event, its evidence, its meaning, or what should happen next. This preview uses the canonical event context and will not fabricate a remote Superbrain response.';if(q.includes('why')||q.includes('matter'))return event.meaning.text||event.naya_interpretation.interpretation||'The meaning is not established in this event.';if(q.includes('next')||q.includes('action'))return event.action.text||event.naya_interpretation.recommendation||'No next action is established in this event.';if(q.includes('trust')||q.includes('proof')||q.includes('source'))return `Trust state: ${event.trust.level}. Verification: ${event.machine_evidence.verification_state}. Uncertainty: ${event.naya_interpretation.uncertainty||'not stated'}.`;if(q.includes('connect')||q.includes('related'))return related.map(x=>x.title).join(' · ');return `From this Board: ${event.weaver_synthesis.summary||event.naya_interpretation.observation||event.human_input.raw}`},[ask,event]);
+ const toggle=(key:ActionKey)=>saveState({...state,[key]:!state[key]});
+ const rate=(n:number)=>saveState({...state,rating:n});
+ const addComment=()=>{if(!comment.trim())return;saveState({...state,comments:[...state.comments,comment.trim()]});setComment('');setStatus('COMMENT PERSISTED · LOCAL EVENT STORE');};
+ const connect=(id:string)=>{if(state.links.includes(id))return;saveState({...state,links:[...state.links,id]});setStatus('RELATIONSHIP PERSISTED · THIS BOARD NOW LINKS TO RELATED INTELLIGENCE');};
+ const createSpace=()=>{const name=spaceName.trim()||event.context.topic||'Smart Intelligence Space';const space={id:`space-${Date.now()}`,name,purpose:spacePurpose.trim(),visibility,created_at:new Date().toISOString()};saveState({...state,space});setSpaceOpen(false);setStatus(`SPACE CREATED LOCALLY · ${name} · ORIGINATING EVENT LINKED`)};
+ const share=async()=>{const text=`${event.source.label}\n\n${event.human_input.raw}\n\nNayaNET Intelligent Block`;try{if(navigator.share)await navigator.share({title:event.source.label,text});else await navigator.clipboard.writeText(text);setStatus('SHARE PAYLOAD READY · CONTEXT PRESERVED')}catch{setStatus('SHARE CANCELLED · NOTHING LOST')}};
+ return <article className="smart-feed-board" data-event-id={event.event_id}>
+   <header className="sfb-header"><div><div className="sfb-eyebrow"><span className="sfb-led"/>CANONICAL INTELLIGENCE · {event.source.label.toUpperCase()}</div><h2>{event.context.topic||'Intelligent Event'}</h2><div className="sfb-meta"><span>{new Date(event.created_at).toLocaleString()}</span><span>·</span><span>{event.status.toUpperCase()}</span><span>·</span><span>{event.privacy.visibility.toUpperCase()}</span></div></div><div className="sfb-header-actions"><button className={`sfb-icon ${state.favorite?'on':''}`} aria-label="Favorite intelligence" onClick={()=>toggle('favorite')}>{state.favorite?'★':'☆'}</button><button className={`sfb-icon ${state.save?'on':''}`} aria-label="Save intelligence" onClick={()=>toggle('save')}>{state.save?'▣':'▱'}</button></div></header>
+   <nav className="sfb-lenses" role="tablist" aria-label="Smart Feed lenses">{(['personal','collective','activity'] as Lens[]).map(x=><button key={x} role="tab" aria-selected={lens===x} className={lens===x?'selected':''} onClick={()=>setLens(x)}>{x==='personal'?'PERSONAL INTELLIGENCE':x==='collective'?'COLLECTIVE INTELLIGENCE':'ACTIVITY'}</button>)}</nav>
+   <div className="sfb-lens-note">{lensCopy[lens]}</div>
+   <div className="sfb-search"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} aria-label="Search this intelligence" placeholder="Search this intelligence…"/><span className="sfb-search-state">{matches?'MATCH':'NO MATCH'}</span></div>
+   {!matches?<div className="sfb-empty">No matching intelligence inside this canonical event. Nothing else is searched or invented.</div>:<>
+   <section className="sfb-nutshell"><div className="sfb-label">IN A NUTSHELL</div><h3>The most important thing to carry forward</h3><p>{event.weaver_synthesis.summary||event.human_input.raw}</p></section>
+   <section className="sfb-perspectives">
+    <Perspective label="01 · HUMAN" body={event.human_input.raw} tone="var(--human)"/>
+    <Perspective label="02 · CHILD" body={event.perspectives.find(p=>p.label==='CHILD')?.body||'Simple explanation is not yet established.'} tone="var(--child)"/>
+    <Perspective label="03 · GRANDMA" body={event.perspectives.find(p=>p.label==='GRANDMA')?.body||'Practical explanation is not yet established.'} tone="var(--grandma)"/>
+    <Perspective label="04 · NAYA" body={event.naya_interpretation.interpretation||'Naya interpretation is not connected in this runtime.'} tone="var(--naya)"/>
+    <Perspective label="05 · MACHINE / EVIDENCE" body={`${event.machine_evidence.items.join(' · ')} · VERIFICATION: ${event.machine_evidence.verification_state}`} tone="var(--machine)"/>
+    <Perspective label="06 · WEAVER / SYNTHESIS" body={event.weaver_synthesis.summary||'No derived synthesis is established.'} tone="var(--weaver)"/>
+   </section>
+   <section className="sfb-meaning-grid"><div><span>WHAT WE LEARNED</span><p>{event.lesson.text||'No lesson has been established.'}</p></div><div><span>WHAT IT MEANS</span><p>{event.meaning.text||'No meaning has been established.'}</p></div><div><span>WHAT TO DO</span><p>{event.action.text||'No action has been established.'}</p></div></section>
+   <section className="sfb-trust"><div><div className="sfb-label">TRUST · PROVENANCE · PRIVACY</div><h3>{event.trust.level.toUpperCase()} · {event.machine_evidence.verification_state.toUpperCase()}</h3></div><div className="sfb-trust-grid"><span><b>SOURCE</b>{event.source.label}</span><span><b>OBSERVED / DERIVED</b>Observed human input · derived Naya/Weaver fields are labelled.</span><span><b>UNCERTAINTY</b>{event.naya_interpretation.uncertainty||'None stated.'}</span><span><b>VISIBILITY</b>{event.privacy.visibility} · {event.privacy.consent_state}</span></div></section>
+   <section className="sfb-related"><div className="sfb-related-head"><div><div className="sfb-label">INTELLIGENCE GRAPH</div><h3>Connect this intelligence</h3></div><Button onClick={()=>setConnectOpen(!connectOpen)} active={connectOpen}>🔗 {state.links.length?`${state.links.length} LINKED`:'CONNECT'}</Button></div>{connectOpen&&<div className="sfb-related-list">{related.map(r=><button key={r.id} className={state.links.includes(r.id)?'linked':''} onClick={()=>connect(r.id)}><b>{state.links.includes(r.id)?'✓ LINKED · ':''}{r.title}</b><span>{r.summary}</span></button>)}</div>}</section>
+   {state.space&&<section className="sfb-space-linked"><div><div className="sfb-label">SMART SPACE LINK</div><h3>{state.space.name}</h3><p>{state.space.purpose}</p></div><span>{state.space.visibility.toUpperCase()} · ORIGIN LINKED</span></section>}
+   <section className="sfb-actions"><div className="sfb-action-row"><Button onClick={()=>setAskOpen(true)} kind="primary">✦ ASK NAYA</Button><Button onClick={()=>setConnectOpen(true)}>🔗 CONNECT</Button><Button onClick={()=>setSpaceOpen(true)} kind="primary">＋ CREATE SMART SPACE</Button><Button onClick={share}>＋ SHARE</Button><Button onClick={()=>toggle('save')} active={state.save}>🔖 {state.save?'SAVED':'SAVE'}</Button><Button onClick={()=>toggle('like')} active={state.like}>👍 LIKE</Button><Button onClick={()=>toggle('love')} active={state.love}>♥ LOVE</Button></div><div className="sfb-rating"><span>RATE / RANK</span>{[1,2,3,4,5].map(n=><button key={n} className={state.rating>=n?'rated':''} aria-label={`Rate ${n} stars`} onClick={()=>rate(n)}>★</button>)}</div></section>
+   <section className="sfb-comment"><div><div className="sfb-label">ADD TO THE INTELLIGENCE</div><p>{state.comments.length?`${state.comments.length} comment${state.comments.length===1?'':'s'} persisted.`:'Comments stay attached to this event.'}</p></div><div className="sfb-comment-row"><input value={comment} onChange={e=>setComment(e.target.value)} placeholder="Add a contextual comment…"/><Button onClick={addComment} disabled={!comment.trim()}>POST</Button></div></section>
+   </>}
+   {status&&<div className="sfb-status" role="status">{status}</div>}
+   {askOpen&&<div className="sfb-modal" role="dialog" aria-modal="true"><div className="sfb-dialog"><div className="sfb-label">IN-CONTEXT INTERROGATION</div><h3>Ask Naya about this intelligence</h3><p className="sfb-dialog-sub">The Board context is retained. This preview uses only the canonical event currently displayed.</p><textarea value={ask} onChange={e=>setAsk(e.target.value)} placeholder="Why does this matter? What is the evidence? What should happen next?"/><div className="sfb-answer"><b>NAYA · CONTEXTUAL ANSWER</b><p>{nayaAnswer}</p></div><div className="sfb-modal-actions"><Button onClick={()=>setAskOpen(false)}>CLOSE</Button><Button onClick={()=>setAsk('Why does this matter?')} kind="primary">ASK WHY</Button><Button onClick={()=>setAsk('What is the proof?')}>ASK PROOF</Button><Button onClick={()=>setAsk('What should happen next?')}>ASK NEXT</Button></div></div></div>}
+   {spaceOpen&&<div className="sfb-modal" role="dialog" aria-modal="true"><div className="sfb-dialog"><div className="sfb-label">CREATE SMART SPACE</div><h3>Turn this intelligence into a Smart Space</h3><p className="sfb-dialog-sub">The originating event becomes the seed context. People are not added automatically.</p><label>SPACE NAME<input value={spaceName} onChange={e=>setSpaceName(e.target.value)} placeholder="Name this Smart Space"/></label><label>PURPOSE<textarea value={spacePurpose} onChange={e=>setSpacePurpose(e.target.value)}/></label><label>VISIBILITY<select value={visibility} onChange={e=>setVisibility(e.target.value)}><option value="private">Private</option><option value="invited">Invite only</option><option value="collective">Collective · requires consent</option></select></label><div className="sfb-seed"><b>INTELLIGENCE SEED</b><span>{event.weaver_synthesis.summary||event.human_input.raw}</span></div><div className="sfb-modal-actions"><Button onClick={()=>setSpaceOpen(false)}>CANCEL</Button><Button onClick={createSpace} kind="primary">PUBLISH SPACE</Button></div></div></div>}
+ </article>
+}
