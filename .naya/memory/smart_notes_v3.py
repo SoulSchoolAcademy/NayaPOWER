@@ -7,8 +7,8 @@ from datetime import datetime,timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from permission_scope import AuthorizationRequest,Principal,authorize,filter_authorized
-ROOT=Path(__file__).resolve().parents[2]; MEMORY=ROOT/'.naya'/'memory'; EVENTS=MEMORY/'events'; INDEX=EVENTS/'INDEX.json'; VALIDATION_REPORT=MEMORY/'VALIDATION-REPORT.json'
-EVENT_RE=re.compile(r'^SE-[0-9]{8}-(?:[0-9]{6}-)?[A-Za-z0-9-]+$'); NOTE_RE=re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$'); VALID_STATUS={'ACTIVE','CANONICAL','HISTORICAL','SUPERSEDED','CONFLICTED','STALE'}
+ROOT=Path(__file__).resolve().parents[2];MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';INDEX=EVENTS/'INDEX.json';VALIDATION_REPORT=MEMORY/'VALIDATION-REPORT.json'
+EVENT_RE=re.compile(r'^SE-[A-Za-z0-9][A-Za-z0-9._-]*$');NOTE_RE=re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$');VALID_STATUS={'ACTIVE','CANONICAL','HISTORICAL','SUPERSEDED','CONFLICTED','STALE'}
 QUERY_EXPANSIONS={'decision':{'decision','decided','choice','architecture','direction'},'decisions':{'decision','decided','choice','architecture','direction'},'superbrain':{'superbrain','smart','brain','memory','continuity'},'memory':{'memory','canonical','event','notes','continuity'},'learning':{'learning','lesson','wisdom','cis','intelligence'},'lesson':{'learning','lesson','wisdom','cis'},'lessons':{'learning','lesson','wisdom','cis'},'search':{'search','retrieval','query','ranking'},'retrieve':{'search','retrieval','query','ranking'},'retrieval':{'search','retrieval','query','ranking'},'project':{'project','objective','mission','goal'},'next':{'next','action','execution','handoff'},'execution':{'execution','action','handoff','verification'},'verify':{'verify','verification','evidence','receipt','green'},'verification':{'verify','verification','evidence','receipt','green'},'receipt':{'receipt','evidence','verification','artifact'},'cis':{'cis','learning','intelligence','daily','compounding'}}
 def parse_time(v):
     if v.endswith('Z'):v=v[:-1]+'+00:00'
@@ -54,7 +54,7 @@ def normalize_targets(v):
     return [v]
 def validate_event(e,p):
     er=[];parsed={}
-    if not EVENT_RE.match(e.get('event_id','')):er.append(f'{p}: invalid event_id')
+    if not EVENT_RE.match(str(e.get('event_id',''))):er.append(f'{p}: invalid event_id')
     for k in ('created_at','effective_at'):
         try:parsed[k]=parse_time(e[k])
         except Exception as exc:er.append(f'{p}: invalid {k}: {exc}')
