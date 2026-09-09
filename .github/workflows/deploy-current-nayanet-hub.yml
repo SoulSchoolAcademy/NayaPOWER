@@ -6,6 +6,7 @@ on:
     paths:
       - '2026 09 08 452 NayaNET Hub.html'
       - 'nayanet-intelligent-feed-v6.js'
+      - '.naya/production-trigger.txt'
       - '.github/workflows/deploy-current-nayanet-hub.yml'
   workflow_dispatch:
 
