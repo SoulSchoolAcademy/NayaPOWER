@@ -1,0 +1,136 @@
+name: NayaNET Exact Runtime Visual Proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/build/SMART_FEED_RELEASE_TRIGGER'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  visual-proof:
+    runs-on: ubuntu-latest
+    env:
+      RUNTIME: https://aged-art-7c12.nayanet.workers.dev
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Install browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 --no-audit --no-fund
+          npx playwright install --with-deps chromium
+
+      - name: Capture exact-runtime desktop and mobile proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p proof
+          cat > /tmp/proof.mjs <<'EOF'
+          import { chromium, devices } from 'playwright';
+          import fs from 'node:fs';
+          const url = process.env.RUNTIME + '/?proof=' + process.env.GITHUB_SHA;
+          const browser = await chromium.launch({headless:true});
+          const results = [];
+          async function capture(name, contextOptions) {
+            const context = await browser.newContext(contextOptions);
+            const page = await context.newPage();
+            await page.goto(url, {waitUntil:'networkidle', timeout:60000});
+            await page.waitForTimeout(1500);
+            const state = await page.evaluate(() => {
+              const visible = el => {
+                if (!el) return false;
+                const s = getComputedStyle(el);
+                const r = el.getBoundingClientRect();
+                return s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0' && r.width > 0 && r.height > 0;
+              };
+              const rail = document.querySelector('.activationRail');
+              const sidebar = document.querySelector('.sidebar');
+              const feed = document.querySelector('#nayaSmartFeedMaster');
+              const force = document.querySelector('#nayaSmartFeedForceMount');
+              const main = document.querySelector('main.main');
+              return {
+                title: document.title,
+                sidebarVisible: visible(sidebar),
+                feedVisible: visible(feed),
+                forceMountVisible: visible(force),
+                rightRailVisible: visible(rail),
+                mainWidth: main?.getBoundingClientRect().width || 0,
+                viewportWidth: innerWidth,
+                activity: document.body.innerText.includes('ACTIVITY INTELLIGENCE'),
+                personal: document.body.innerText.includes('PERSONAL INTELLIGENCE'),
+                collective: document.body.innerText.includes('COLLECTIVE INTELLIGENCE')
+              };
+            });
+            if (!state.feedVisible || !state.forceMountVisible || !state.activity || !state.personal || !state.collective || state.rightRailVisible) {
+              console.log(JSON.stringify(state, null, 2));
+              throw new Error(`VISUAL_LAYOUT_FAILED_${name.toUpperCase()}`);
+            }
+            await page.screenshot({path:`proof/${name}.png`, fullPage:true});
+            fs.writeFileSync(`proof/${name}.json`, JSON.stringify(state, null, 2));
+            results.push({name, ...state});
+            await context.close();
+          }
+          await capture('desktop', {viewport:{width:1440,height:1000}, deviceScaleFactor:1});
+          await capture('mobile', {...devices['iPhone 13']});
+          fs.writeFileSync('proof/visual-proof.json', JSON.stringify({url, results}, null, 2));
+          await browser.close();
+          EOF
+          node /tmp/proof.mjs
+
+      - name: Upload exact-runtime visual evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: NAYANET-EXACT-RUNTIME-VISUAL-PROOF-${{ github.sha }}
+          path: proof/
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Create permanent human release receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .naya/activity/releases
+          RECEIPT=".naya/activity/releases/$(date -u +%Y-%m-%d-%H-%M)-SMART-FEED-VISUAL-PROOF.md"
+          cat > "$RECEIPT" <<EOF
+          # NayaNET Smart Feed Exact-Runtime Visual Proof
+
+          **STATUS:** VISUALLY VERIFIED — AWAITING HUMAN APPROVAL
+
+          **SOURCE COMMIT:** $GITHUB_SHA
+
+          **EXACT RUNTIME:** $RUNTIME/
+
+          **PROOF RUN:** https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/$GITHUB_RUN_ID
+
+          ## Technical proof
+          - Exact runtime fetched after deployment.
+          - Smart Feed master present.
+          - Force-mount present.
+          - Activity Intelligence present.
+          - Personal Intelligence present.
+          - Collective Intelligence present.
+          - Desktop and mobile browser sessions rendered successfully.
+          - Persistent right activation rail was not visible in the captured runtime.
+
+          ## Visual proof
+          The GitHub Actions artifact **NAYANET-EXACT-RUNTIME-VISUAL-PROOF-$GITHUB_SHA** contains the desktop and mobile screenshots captured directly from the exact public runtime above.
+
+          ## Human approval
+          Shawn must open the exact runtime and judge the requested visual outcome. Until that happens, this release is not marked HUMAN-APPROVED or PRODUCTION-PROVEN.
+          EOF
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$RECEIPT"
+          git commit -m 'Record exact-runtime Smart Feed visual proof'
+          git push origin HEAD:main
+          echo "RECEIPT=$RECEIPT"
