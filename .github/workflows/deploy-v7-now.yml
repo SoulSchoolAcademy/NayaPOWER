@@ -1,7 +1,6 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 # FINAL-TRIGGER-CANONICAL-SMART-FEED
-# EXPLICIT-RELEASE-TRIGGER-ENABLED
-# DATA-RUNTIME-SEPARATOR-FIXED
+# STATIC-PAYLOAD-RUNTIME
 name: Deploy NayaNET Live Hub
 
 on:
@@ -30,6 +29,7 @@ jobs:
       - name: Checkout exact main
         uses: actions/checkout@v4
         with: {fetch-depth: 0, ref: main}
+
       - name: Build canonical Smart Feed into exact 452 source
         shell: python
         run: |
@@ -38,36 +38,60 @@ jobs:
           hub=Path('${{ env.HUB }}'); payload=Path('${{ env.PAYLOAD }}')
           s=hub.read_text(encoding='utf-8'); p=payload.read_text(encoding='utf-8')
           if 'NAYANET-SMART-FEED-MASTER-V1' not in p: raise SystemExit('PAYLOAD_MARKER_MISSING')
-          m=re.search(r'var DATA=(\[[\s\S]*?\]);var current',p)
-          if not m: raise SystemExit('SMART_FEED_DATA_MISSING')
-          data_src=m.group(1)
-          runtime=r'''(function(){'use strict';var DATA=__DATA__;var current='activity',query='';function esc(s){return String(s||'').replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c})}function notes(){try{return JSON.parse(localStorage.getItem('nayanet_v7_live_notes')||'[]')}catch(e){return []}}function personal(){return notes().map(function(n){var t=String(n.text||'');return ['Personal Intelligence','#9b6cff','◎',t,t,'Keep the useful part of this experience.','Remember what this experience taught you.',n.naya||'Naya synthesis is pending. No AI interpretation is fabricated.',n.machine||'Private local event.','This preserved event is available for later synthesis.','This is Personal Intelligence and remains private by default.']})}function data(){var d=current==='personal'?personal():DATA.slice();if(current==='collective')d=DATA.slice(5);if(query)d=d.filter(function(x){return x.join(' ').toLowerCase().indexOf(query)>=0});return d}function card(x){var ps=[['HUMAN NOTE','human',x[4]],['CHILD NOTE','child',x[5]],['GRANDMA NOTE','grandma',x[6]],['NAYA NOTE','naya',x[7]],['MACHINE NOTE','machine',x[8]],['WHAT WE LEARNED','learned',x[9]],['WHAT IT MEANS','means',x[10]]];var inner=ps.map(function(p){return '<div class="nsf-mini nsf-'+p[1]+'"><b>'+p[0]+'</b><p>'+esc(p[2])+'</p></div>'}).join('');return '<article class="nsf-card" style="--tone:'+x[1]+'"><header class="nsf-card-head"><div class="nsf-id"><div class="nsf-glyph">'+x[2]+'</div><div class="nsf-titlewrap"><h2>'+esc(x[0])+'</h2><div class="nsf-meta">CANONICAL INTELLIGENCE · '+current.toUpperCase()+'</div></div></div><span class="nsf-canonical">INTELLIGENT BLOCK</span></header><div class="nsf-body"><div class="nsf-nutshell"><b>IN A NUTSHELL</b>'+esc(x[3])+'</div><div class="nsf-perspectives">'+inner+'</div></div><div class="nsf-footer"><span>PRIVATE BY DEFAULT · SHARED BY CHOICE · COLLECTIVE BY CONSENT</span><div class="nsf-actions"><button class="nsf-action" data-share="'+esc(x[0])+'">＋ SHARE</button><button class="nsf-action" data-copy="'+esc(x[0])+'">⧉ COPY INTELLIGENCE</button></div></div></article>'}function render(){var g=document.getElementById('nsfGrid'),c=document.getElementById('nsfCount');if(!g)return;var d=data();c.textContent=d.length+' INTELLIGENT '+(d.length===1?'BLOCK':'BLOCKS');g.innerHTML=d.length?d.map(card).join(''):'<div class="nsf-empty"><b>No intelligence matches that search.</b><span>Try another topic or return to Activity.</span></div>'}function boot(){var home=document.getElementById('page-home');if(!home||document.getElementById('nayaSmartFeedMaster'))return;var r=document.createElement('section');r.id='nayaSmartFeedMaster';r.className='naya-smart-feed';r.innerHTML='<div class="nsf-head"><div><div class="nsf-kicker">NAYANET · LIVING INTELLIGENCE LIBRARY</div><h1 class="nsf-title">Smart Feed</h1><p class="nsf-sub">One living intelligence stream with three lenses: Activity Intelligence, Personal Intelligence, and Collective Intelligence. Activity is the default starting point.</p></div><span class="nsf-status">ONE FEED · THREE LENSES</span></div><div class="nsf-tabs"><button class="nsf-tab active" data-view="activity">ACTIVITY INTELLIGENCE</button><button class="nsf-tab" data-view="personal">PERSONAL INTELLIGENCE</button><button class="nsf-tab" data-view="collective">COLLECTIVE INTELLIGENCE</button></div><div class="nsf-tools"><input class="nsf-search" id="nsfSearch" placeholder="Search this intelligence…" aria-label="Search Smart Feed"><span class="nsf-count" id="nsfCount"></span></div><div class="nsf-grid" id="nsfGrid"></div>';home.appendChild(r);r.addEventListener('click',function(e){var v=e.target.closest('[data-view]');if(v){current=v.dataset.view;r.querySelectorAll('.nsf-tab').forEach(function(t){t.classList.toggle('active',t===v)});render();return}var sh=e.target.closest('[data-share]');if(sh){var x=DATA.find(function(a){return a[0]===sh.dataset.share});if(!x)return;var text=[x[0],'','IN A NUTSHELL',x[3],'','NayaNET — Create. Connect. Grow with US.'].join('\n');if(navigator.share)navigator.share({title:x[0],text:text,url:location.href}).catch(function(){});else if(navigator.clipboard)navigator.clipboard.writeText(text);return}var cp=e.target.closest('[data-copy]');if(cp){var x=DATA.find(function(a){return a[0]===cp.dataset.copy});if(!x)return;var text=[x[0],'','IN A NUTSHELL',x[3],'','HUMAN NOTE',x[4],'','CHILD NOTE',x[5],'','GRANDMA NOTE',x[6],'','NAYA NOTE',x[7],'','MACHINE NOTE',x[8],'','WHAT WE LEARNED',x[9],'','WHAT IT MEANS',x[10]].join('\n');if(navigator.clipboard)navigator.clipboard.writeText(text);return}});r.querySelector('#nsfSearch').addEventListener('input',function(e){query=e.target.value.toLowerCase();render()});render()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();})();'''.replace('__DATA__',data_src)
-          p=re.sub(r'<script id="NAYANET-SMART-FEED-MASTER-V1-RUNTIME">[\s\S]*?</script>','<script id="NAYANET-SMART-FEED-MASTER-V1-RUNTIME">'+runtime+'</script>',p,count=1)
-          s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*(?=</head>)','',s,count=1)
-          if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
-          hub.write_text(s.replace('</head>',p+'\n</head>',1),encoding='utf-8')
+          if 'id="nayaSmartFeedMaster"' not in p: raise SystemExit('SMART_FEED_ROOT_MISSING')
+          if 'ACTIVITY INTELLIGENCE' not in p or 'PERSONAL INTELLIGENCE' not in p or 'COLLECTIVE INTELLIGENCE' not in p: raise SystemExit('SMART_FEED_LENSES_MISSING')
+          s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*','',s)
+          if '</body>' not in s: raise SystemExit('BODY_BOUNDARY_MISSING')
+          s=s.replace('</body>',p+'\n</body>',1)
+          hub.write_text(s,encoding='utf-8')
+          print('SMART_FEED_STATIC_PAYLOAD_APPLIED=TRUE')
+
       - name: JavaScript syntax gate
         shell: python
         run: |
           from pathlib import Path
           import re,subprocess
-          s=Path('${{ env.HUB }}').read_text(encoding='utf-8');m=re.search(r'<script id="NAYANET-SMART-FEED-MASTER-V1-RUNTIME">([\s\S]*?)</script>',s)
-          if not m: raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
-          Path('/tmp/smart-feed.js').write_text(m.group(1),encoding='utf-8');r=subprocess.run(['node','--check','/tmp/smart-feed.js'],text=True,capture_output=True)
-          if r.returncode: print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
+          s=Path('${{ env.HUB }}').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script[^>]*>([\s\S]*?)</script>',s)
+          target=None
+          for x in scripts:
+              if 'function boot()' in x and 'nayaSmartFeedMaster' in x and 'nsfGrid' in x:
+                  target=x; break
+          if target is None: raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
+          Path('/tmp/smart-feed.js').write_text(target,encoding='utf-8')
+          r=subprocess.run(['node','--check','/tmp/smart-feed.js'],text=True,capture_output=True)
+          if r.returncode:
+              print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
+          print('SMART_FEED_JS_SYNTAX=PASS')
+
       - name: Protected house gate
         shell: bash
         run: |
-          set -euo pipefail; H="$HUB"; test -s "$H"
+          set -euo pipefail
+          H="$HUB"; test -s "$H"
           for x in 'NAYANET-SMART-FEED-MASTER-V1' 'id="nayaSmartFeedMaster"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
+          echo 'PROTECTED_HOUSE_GATE=PASS'
+
       - name: Commit canonical 452 source if changed
         shell: bash
         run: |
-          set -euo pipefail; git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'; git add -- "$HUB"; if git diff --cached --quiet; then echo CURRENT; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- "$HUB"
+          if git diff --cached --quiet; then echo CURRENT; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
+
       - name: Prepare isolated Cloudflare artifact
         shell: bash
         run: |
-          set -euo pipefail; rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7; mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public; cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html; printf '%s\n' '{"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc; grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          set -euo pipefail
+          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public
+          cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          printf '%s\n' '{"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
+          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          grep -Fq 'id="nayaSmartFeedMaster"' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+
       - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
@@ -75,7 +99,19 @@ jobs:
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
+
       - name: Independently verify exact public runtime
         shell: bash
         run: |
-          set -euo pipefail; curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root; grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' /tmp/root; grep -Fq 'id="nayaSmartFeedMaster"' /tmp/root; grep -Fq 'ACTIVITY INTELLIGENCE' /tmp/root; grep -Fq 'PERSONAL INTELLIGENCE' /tmp/root; grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/root; grep -Fq 'class="sidebar"' /tmp/root; echo 'PUBLIC_RUNTIME=PASS'; echo "RUNTIME=$RUNTIME/"; echo "SMART_LINK=$SMART_LINK"
+          set -euo pipefail
+          curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
+          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' /tmp/root
+          grep -Fq 'id="nayaSmartFeedMaster"' /tmp/root
+          grep -Fq 'ACTIVITY INTELLIGENCE' /tmp/root
+          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/root
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/root
+          grep -Fq 'class="sidebar"' /tmp/root
+          grep -Fq 'class="homeFeed"' /tmp/root
+          echo 'PUBLIC_RUNTIME=PASS'
+          echo "RUNTIME=$RUNTIME/"
+          echo "SMART_LINK=$SMART_LINK"
