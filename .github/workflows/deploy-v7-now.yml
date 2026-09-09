@@ -113,14 +113,7 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' /tmp/root
-          grep -Fq 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' /tmp/root
-          grep -Fq 'id="nayaSmartFeedMaster"' /tmp/root
-          grep -Fq 'ACTIVITY INTELLIGENCE' /tmp/root
-          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/root
-          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/root
-          grep -Fq 'class="sidebar"' /tmp/root
-          grep -Fq 'class="homeFeed"' /tmp/root
+          for x in 'NAYANET-SMART-FEED-MASTER-V1' 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' 'id="nayaSmartFeedMaster"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'class="sidebar"' 'nayaSmartFeedForceMount'; do grep -Fq "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
           echo "SMART_LINK=$SMART_LINK"
