@@ -1,5 +1,6 @@
 # TRIGGER-ONLY ADAPTER — no deployment logic lives here.
 # The sole production deployment implementation is deploy-nayanet-hub-canonical-v2.yml.
+# This adapter intentionally runs on canonical Hub source changes so every product change receives the full build/deploy/runtime proof chain.
 name: Trigger Canonical NayaNET Hub Release
 
 on:
