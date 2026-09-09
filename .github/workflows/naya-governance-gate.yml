@@ -101,7 +101,7 @@ jobs:
               if marker not in obstacle_text:
                   raise SystemExit(f'EXECUTION_LEARNING_FAILURE: {marker}')
 
-          if 'STATUS: CANONICAL MASTER CONSTITUTION' not in constitution_text:
+          if '**STATUS:** CANONICAL MASTER CONSTITUTION' not in constitution_text:
               raise SystemExit('ULTIMATE_MASTER_CONTRACT_IS_NOT_CANONICAL')
 
           print('NAYANET_ULTIMATE_EXECUTION_DIRECTIVE=PASS')
