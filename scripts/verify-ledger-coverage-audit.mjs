@@ -1,6 +1,6 @@
-const { chromium } = require('playwright');
-const crypto = require('node:crypto');
-const fs = require('node:fs');
+import { chromium } from 'playwright';
+import crypto from 'node:crypto';
+import fs from 'node:fs';
 
 const hub = process.env.HUB_URL;
 const supabaseUrl = process.env.SUPABASE_URL;
