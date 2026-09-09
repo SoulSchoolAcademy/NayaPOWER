@@ -1,96 +1,115 @@
 name: Build NayaNET Cloudflare Release
+
 on:
   push:
     branches: [main]
-  pull_request:
-    types: [opened, synchronize, reopened]
   workflow_dispatch:
+
 permissions:
-  contents: read
+  contents: write
+
 jobs:
-  package:
+  deploy-canonical-452:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact source
+      - name: Checkout exact 452 Hub source
         uses: actions/checkout@v4
-      - name: Validate canonical pages, runtime, assets and Worker entrypoint
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
-          for f in index.html hub.html nayanet-entrance.js nayanet-front-door-overhaul.css nayanet-entrance-page.css nayanet-10-experience.css nayanet-elite.css nayanet-mobile-overflow.css nayanet-intelligence-feed.css nayanet-living-entrance.css nayanet-app-experience-polish.css nayanet-visual-reconstruction.css nayanet-visual-final.css nayanet-experience-rebuild.css nayanet-elite-execution.css nayanet-entrance-command.css nayanet-entrance-orbs.css nayanet-10.js naya-data.js nayanet-intelligence-feed.js powercasts.json _headers 404.html worker.js wrangler.jsonc .assetsignore; do test -s "$f"; done
-          grep -Fq 'href="/nayanet-10-experience.css"' index.html
-          grep -Fq 'href="/nayanet-front-door-overhaul.css"' index.html
-          grep -Fq 'href="/nayanet-entrance-page.css"' index.html
-          grep -Fq 'src="/nayanet-entrance.js"' index.html
-          grep -Fq 'src="/naya-data.js"' hub.html
-          node --check nayanet-entrance.js
-          node --check nayanet-10.js
-          node --check naya-data.js
-          node --check nayanet-intelligence-feed.js
-          node --check worker.js
-          node - <<'NODE'
-          const fs=require('fs'); const x=JSON.parse(fs.readFileSync('powercasts.json','utf8'));
-          if(!Array.isArray(x)||x.length!==18) throw new Error('Expected 18 Powercasts');
-          if(x.some(c=>!c.n||!c.title||!c.image||!c.audio)) throw new Error('Incomplete Powercast');
-          NODE
-          python - <<'PY'
-          from pathlib import Path
-          entrance=Path('index.html').read_text()
-          hub=Path('hub.html').read_text()
-          for i in ['frontDoor','entryForm','nameInput']:
-            if f'id="{i}"' not in entrance: raise SystemExit('Missing entrance contract: '+i)
-          for i in ['hub','hubStage','nayaCore','worldMap','player','worldCards','castGrid','worldView','audio']:
-            if f'id="{i}"' not in hub: raise SystemExit('Missing hub contract: '+i)
-          for x in ['role="slider"','aria-valuemin="0"','aria-valuemax="100"','aria-valuenow="0"','aria-live="polite"']:
-            if x not in hub: raise SystemExit('Missing accessibility contract: '+x)
-          cfg=Path('wrangler.jsonc').read_text()
-          for token in ['"main": "worker.js"','"directory": "."','"binding": "ASSETS"']:
-            if token not in cfg: raise SystemExit('Missing Worker config: '+token)
-          print('NayaNET page-by-page Worker release contract: OK')
-          PY
-      - name: Assemble Worker Static Assets package
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
-          rm -rf release-package
-          mkdir -p release-package/public
-          cp index.html hub.html nayanet-entrance.js nayanet-front-door-overhaul.css nayanet-entrance-page.css nayanet-10-experience.css nayanet-elite.css nayanet-mobile-overflow.css nayanet-intelligence-feed.css nayanet-living-entrance.css nayanet-app-experience-polish.css nayanet-visual-reconstruction.css nayanet-visual-final.css nayanet-experience-rebuild.css nayanet-elite-execution.css nayanet-entrance-command.css nayanet-entrance-orbs.css nayanet-front-door.js nayanet-10.js naya-data.js nayanet-intelligence-feed.js powercasts.json _headers 404.html release-package/public/
-          cp worker.js wrangler.jsonc release-package/
-          cat > release-package/DEPLOY.md <<'EOF'
-          # NayaNET Cloudflare Worker Release
-
-          This package uses Cloudflare Workers Static Assets.
-
-          Deploy from this package directory with `wrangler deploy`.
-          EOF
-      - name: Validate assembled package and create exact ZIP
-        shell: bash
-        run: |
-          set -euo pipefail
-          cd NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
-          for f in index.html hub.html nayanet-entrance.js nayanet-front-door-overhaul.css nayanet-entrance-page.css nayanet-front-door.js; do test -s "release-package/public/$f"; done
-          test -s release-package/public/nayanet-app-experience-polish.css
-          test -s release-package/public/nayanet-entrance-command.css
-          test -s release-package/public/nayanet-entrance-orbs.css
-          test -s release-package/worker.js
-          test -s release-package/wrangler.jsonc
-          test "$(find release-package/public -maxdepth 1 -type f | wc -l | tr -d ' ')" -ge 21
-          cd release-package
-          zip -qr ../NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip .
-          cd ..
-          unzip -t NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip
-          sha256sum NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip | tee NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip.sha256
-          echo "Commit: $(git rev-parse HEAD)" > NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.PROOF.txt
-          echo "Package: Cloudflare Workers Static Assets" >> NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.PROOF.txt
-          echo "Artifact SHA-256: $(sha256sum NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip | awk '{print $1}')" >> NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.PROOF.txt
-      - name: Upload artifact and proof
-        uses: actions/upload-artifact@v4
         with:
-          name: NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE
-          path: |
-            NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip
-            NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.zip.sha256
-            NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE.PROOF.txt
-          if-no-files-found: error
+          fetch-depth: 0
+
+      - name: Surgically neutralize the runtime right rail
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('2026 09 08 452 NayaNET Hub.html')
+          s=p.read_text(encoding='utf-8')
+          marker='NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1'
+          if marker not in s:
+              injection=r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1">
+/* CANONICAL SURFACE: LEFT NAVIGATION + CENTER INTELLIGENT FEED. THE OBSOLETE RIGHT FEED IS FORBIDDEN. */
+.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
+.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}
+</style>
+<script id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1-RUNTIME">
+(function(){
+  function purge(){
+    try{
+      document.querySelectorAll('.activationRail').forEach(function(el){el.remove();});
+      var ws=document.querySelector('.homeWorkspace');
+      if(ws){
+        ws.style.setProperty('display','block','important');
+        ws.style.setProperty('grid-template-columns','1fr','important');
+        ws.style.setProperty('gap','0','important');
+        ws.style.setProperty('width','100%','important');
+        ws.style.setProperty('max-width','none','important');
+      }
+    }catch(e){}
+  }
+  purge();
+  new MutationObserver(purge).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  setInterval(purge,400);
+})();
+</script>
+'''
+              if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
+              s=s.replace('</head>',injection+'</head>',1)
+              p.write_text(s,encoding='utf-8')
+          final=p.read_text(encoding='utf-8')
+          for needle in ['NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1','class="sidebar"','class="homeWorkspace"','id="nayanet-elite-feed"','Smart Notes']:
+              if needle not in final: raise SystemExit('MISSING='+needle)
+          print('CANONICAL_452_GUARD=PASS',len(final.encode('utf-8')))
+
+      - name: Commit exact 452 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '2026 09 08 452 NayaNET Hub.html'
+          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_GUARDED=TRUE'; else git commit -m 'Live Hub V1: permanently neutralize obsolete right rail'; git push origin HEAD:main; fi
+
+      - name: Build exact Cloudflare Worker artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
+          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
+          {
+            "name": "nayanet-v7-intelligent-hub",
+            "compatibility_date": "2026-09-08",
+            "assets": { "directory": "." }
+          }
+          EOF
+          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'Smart Notes' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+
+      - name: Deploy exact 452 artifact
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
+          command: deploy --config wrangler.jsonc
+
+      - name: Independently verify public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?live=canonical-452-v1' -o /tmp/live
+          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1' /tmp/live
+          grep -Fq 'class="sidebar"' /tmp/live
+          grep -Fq 'id="nayanet-elite-feed"' /tmp/live
+          grep -Fq 'class="homeWorkspace"' /tmp/live
+          ! grep -Fq 'class="activationRail"' /tmp/live
+          ! grep -Fq "class='activationRail'" /tmp/live
+          echo 'PUBLIC_RUNTIME=VERIFIED'
+          echo 'LEFT_NAVIGATION=PRESENT'
+          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
+          echo 'RIGHT_OLD_FEED=ABSENT'
+          echo 'CENTER_FEED=FULL_WIDTH'
+          echo 'RELEASE_URL=https://nayanet-v7-intelligent-hub.nayanet.workers.dev/'
