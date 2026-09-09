@@ -1,0 +1,21 @@
+name: Naya 16 Activity Enforcement
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  naya16:
+    name: Enforce Naya 16 activity record
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run Naya 16 validator
+        run: python tests/verify_naya16_activity.py --before HEAD^ --after HEAD
+      - name: Run validator negative-path self-check
+        run: python tests/verify_naya16_activity.py --negative-test
