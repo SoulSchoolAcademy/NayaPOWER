@@ -22,7 +22,9 @@ class ClaimTests(unittest.TestCase):
         self.assertEqual(conflicts(claim("B", "NAYA-B"), [claim()], now=NOW), ["A"])
 
     def test_disjoint_claim_is_safe(self):
-        self.assertEqual(conflicts(claim("B", "NAYA-B", files=("b.py",)), [claim()], now=NOW), [])
+        # A different scope and file set is genuinely disjoint. Same-scope claims
+        # intentionally conflict even when they touch different files.
+        self.assertEqual(conflicts(claim("B", "NAYA-B", scope="cct-004", files=("b.py",)), [claim()], now=NOW), [])
 
     def test_stale_base_commit_fails_closed(self):
         allowed, reason = authorize_write(claim(), current_commit="different", existing=[], now=NOW)
