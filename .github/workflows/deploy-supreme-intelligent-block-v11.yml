@@ -3,6 +3,8 @@ name: Deploy Supreme Intelligent Block V11
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -120,4 +122,4 @@ jobs:
           print('VERIFIED_RELEASE='+__import__('os').environ['GITHUB_SHA'])
           PY
 
-# FORCE RELEASE TRIGGER: user-authored commit required so deployment workflow executes.
+# PR-triggered production execution path.
