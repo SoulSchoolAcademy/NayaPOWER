@@ -35,7 +35,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p proof
-          cat > /tmp/proof.mjs <<'EOF'
+          cat > proof.mjs <<'EOF'
           import { chromium, devices } from 'playwright';
           import fs from 'node:fs';
           const url = process.env.RUNTIME + '/?proof=' + process.env.GITHUB_SHA;
@@ -85,7 +85,7 @@ jobs:
           fs.writeFileSync('proof/visual-proof.json', JSON.stringify({url, results}, null, 2));
           await browser.close();
           EOF
-          node /tmp/proof.mjs
+          node proof.mjs
 
       - name: Upload exact-runtime visual evidence
         uses: actions/upload-artifact@v4
