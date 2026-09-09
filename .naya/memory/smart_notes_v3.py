@@ -28,8 +28,7 @@ def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() el
 def hydrate_legacy_time(p,e):
     t=path_time(p)
     if t:e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
-    e.setdefault('status','HISTORICAL')
-    return e
+    e.setdefault('status','HISTORICAL');return e
 def load_events():
     out=[]
     for p in event_files():
@@ -111,7 +110,7 @@ def validate():
         rel=relationship_map(e)
         for k in ('related','depends_on','supersedes','superseded_by','source_events'):
             for t in normalize_targets(rel.get(k,[])):
-                if t and t not in ids and not str(t).startswith('EXT:'):er.append(f'{e["event_id"]}: unresolved {k}: {t}')
+                if t and t not in ids and not str(t).startswith(('EXT:','SN-')):er.append(f'{e["event_id"]}: unresolved {k}: {t}')
     if not INDEX.exists():er.append('missing events/INDEX.json')
     else:
         try:
