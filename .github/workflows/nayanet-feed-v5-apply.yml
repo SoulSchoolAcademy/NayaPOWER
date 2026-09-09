@@ -14,51 +14,24 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Inject V5 runtime into authoritative root and 452 source
+      - name: Switch authoritative feed runtime to corrected V6
         shell: bash
         run: |
           set -euo pipefail
-          SCRIPT='nayanet-intelligent-feed-v5.js'
-          MARKER='NAYANET_INTELLIGENT_FEED_V5_RUNTIME'
           for FILE in 'index.html' '2026 09 08 452 NayaNET Hub.html'; do
             test -f "$FILE"
-            if ! grep -q "$MARKER" "$FILE"; then
-              python3 - "$FILE" "$SCRIPT" "$MARKER" <<'PY'
-          import pathlib,sys
-          file,script,marker=sys.argv[1:]
-          p=pathlib.Path(file)
-          text=p.read_text(encoding='utf-8')
-          tag=f'<!-- {marker} -->\n<script src="./{script}"></script>\n'
-          if '</head>' not in text.lower():
-              raise SystemExit(f'No </head> found in {file}')
-          idx=text.lower().rfind('</head>')
-          text=text[:idx]+tag+text[idx:]
-          p.write_text(text,encoding='utf-8')
-          PY
-            fi
+            sed -i 's/nayanet-intelligent-feed-v5\.js/nayanet-intelligent-feed-v6.js/g' "$FILE"
           done
-
-      - name: Verify injection
-        shell: bash
-        run: |
-          set -euo pipefail
-          grep -q 'NAYANET_INTELLIGENT_FEED_V5_RUNTIME' index.html
-          grep -q 'nayanet-intelligent-feed-v5.js' index.html
-          grep -q 'NAYANET_INTELLIGENT_FEED_V5_RUNTIME' '2026 09 08 452 NayaNET Hub.html'
-          grep -q 'nayanet-intelligent-feed-v5.js' '2026 09 08 452 NayaNET Hub.html'
-          node --check nayanet-intelligent-feed-v5.js
-
-      - name: Commit applied runtime
+          node --check nayanet-intelligent-feed-v6.js
+          grep -q 'nayanet-intelligent-feed-v6.js' index.html
+          grep -q 'nayanet-intelligent-feed-v6.js' '2026 09 08 452 NayaNET Hub.html'
+      - name: Commit corrected runtime
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html '2026 09 08 452 NayaNET Hub.html'
-          if git diff --cached --quiet; then
-            echo 'No changes required.'
-            exit 0
-          fi
-          git commit -m 'Execute NayaNET Intelligent Feed V5 visual evolution'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Correct NayaNET Intelligent Feed V5 runtime'
           git push
