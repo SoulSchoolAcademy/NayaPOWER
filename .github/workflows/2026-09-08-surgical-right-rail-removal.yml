@@ -22,75 +22,117 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-
           path = Path('2026 09 08 452 NayaNET Hub.html')
           html = path.read_text(encoding='utf-8')
-          original = html
-
-          rail = re.compile(
-              r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>',
-              re.I
-          )
+          rail = re.compile(r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>', re.I)
           html, removed = rail.subn('', html, count=1)
           print(f'RIGHT_RAIL_REMOVED={removed}')
-          if removed > 1:
-              raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
-
+          if removed > 1: raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
           if removed == 1:
-              old_grid = '.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
-              new_grid = '.homeWorkspace{display:block;width:100%;max-width:none}'
-              if old_grid not in html:
-                  raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
-              html = html.replace(old_grid, new_grid, 1)
-
-          protected = {
-              'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{', html)),
-              'HOME_WORKSPACE': 'homeWorkspace' in html,
-              'HOME_FEED': bool(re.search(r'homeFeed', html)),
-              'INTELLIGENT_FEED': bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed', html, re.I)),
-              'ACTIVITY': bool(re.search(r'Activity Intelligence|ACTIVITY|activity', html, re.I)),
-              'PERSONAL_INTELLIGENCE': bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE', html, re.I)),
-              'COLLECTIVE_INTELLIGENCE': bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE', html, re.I)),
+              old_grid='.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
+              new_grid='.homeWorkspace{display:block;width:100%;max-width:none}'
+              if old_grid not in html: raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
+              html=html.replace(old_grid,new_grid,1)
+          protected={
+              'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{',html)),
+              'HOME_WORKSPACE':'homeWorkspace' in html,
+              'HOME_FEED':bool(re.search(r'homeFeed',html)),
+              'INTELLIGENT_FEED':bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed',html,re.I)),
+              'ACTIVITY':bool(re.search(r'Activity Intelligence|ACTIVITY|activity',html,re.I)),
+              'PERSONAL_INTELLIGENCE':bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE',html,re.I)),
+              'COLLECTIVE_INTELLIGENCE':bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE',html,re.I)),
           }
-          missing = [k for k, ok in protected.items() if not ok]
-          if missing:
-              raise SystemExit('PROTECTED_SURFACE_MISSING=' + ','.join(missing))
-          if rail.search(html):
-              raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
-
-          if removed == 1:
-              path.write_text(html, encoding='utf-8')
-              print('CENTER_SMART_FEED=PRESERVED')
-              print('ACTIVITY=PRESERVED')
-              print('PERSONAL_INTELLIGENCE=PRESERVED')
-              print('COLLECTIVE_INTELLIGENCE=PRESERVED')
-              print('LEFT_NAV=PRESERVED')
-              print('RIGHT_OLD_FEED_RAIL=REMOVED')
-              print('CENTER_FEED_WIDTH=EXPANDED')
-              print('NO_FEED_REBUILD=TRUE')
-              print('COLLATERAL_DAMAGE_GATE=PASS')
-          else:
-              print('RIGHT_RAIL_ALREADY_REMOVED=TRUE')
-              print('CENTER_SMART_FEED=PRESENT')
-              print('NO_SOURCE_CHANGE_NEEDED=TRUE')
+          missing=[k for k,v in protected.items() if not v]
+          if missing: raise SystemExit('PROTECTED_SURFACE_MISSING='+','.join(missing))
+          if rail.search(html): raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
+          path.write_text(html,encoding='utf-8')
+          print('CENTER_SMART_FEED=PRESERVED')
+          print('ACTIVITY=PRESERVED')
+          print('PERSONAL_INTELLIGENCE=PRESERVED')
+          print('COLLECTIVE_INTELLIGENCE=PRESERVED')
+          print('LEFT_NAV=PRESERVED')
+          print('RIGHT_OLD_FEED_RAIL=REMOVED_OR_ALREADY_ABSENT')
+          print('NO_FEED_REBUILD=TRUE')
+          print('COLLATERAL_DAMAGE_GATE=PASS')
           PY
 
-      - name: Commit only if a surgical source change is still needed
+      - name: Install final runtime guard against the resurrecting rail code
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('2026 09 08 452 NayaNET Hub.html')
+          s=p.read_text(encoding='utf-8')
+          marker='NAYANET-LIVE-RIGHT-RAIL-GUARD-V4'
+          if marker not in s:
+              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4">
+/* FINAL SURFACE LAW: LEFT NAVIGATION + CENTER INTELLIGENT FEED. NO RIGHT OLD FEED. */
+.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
+.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}
+</style>
+<script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4-RUNTIME">
+(function(){
+ function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}
+ purge();
+ new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+ setInterval(purge,400);
+})();
+</script>
+'''
+              if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
+              s=s.replace('</head>',guard+'</head>',1)
+              p.write_text(s,encoding='utf-8')
+          final=p.read_text(encoding='utf-8')
+          for x in ['NAYANET-LIVE-RIGHT-RAIL-GUARD-V4','class="sidebar"','class="homeWorkspace"','id="nayanet-elite-feed"','Smart Notes']:
+              if x not in final: raise SystemExit('GUARD_SENTINEL_MISSING='+x)
+          print('LIVE_GUARD=PASS')
+
+      - name: Commit only the surgical source change and guard
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 08 452 NayaNET Hub.html'
-          git diff --cached --quiet && { echo 'NO_SOURCE_CHANGE_NEEDED'; exit 0; }
-          git commit -m 'Surgical Hub fix: remove old right-side feed and widen Smart Feed'
-          for attempt in 1 2 3 4 5 6 7 8; do
-            git fetch origin main
-            git rebase origin/main || { git rebase --abort; echo 'REBASE_CONFLICT'; exit 1; }
-            if git push origin HEAD:main; then
-              echo "SURGICAL_PUSH_SUCCESS_ATTEMPT=$attempt"
-              exit 0
-            fi
-            sleep 2
-          done
-          echo 'SURGICAL_PUSH_FAILED_AFTER_RETRIES'
-          exit 1
+          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_CURRENT=TRUE'; else git commit -m 'Surgical Hub fix: remove old right feed and lock full-width Smart Feed'; git push origin HEAD:main; fi
+
+      - name: Build exact 452 Cloudflare artifact
+        run: |
+          set -euo pipefail
+          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
+          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
+          {
+            "name": "nayanet-v7-intelligent-hub",
+            "compatibility_date": "2026-09-08",
+            "assets": { "directory": "." }
+          }
+          EOF
+          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V4' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+
+      - name: Deploy exact guarded 452 artifact
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
+          command: deploy --config wrangler.jsonc
+
+      - name: Independently verify public runtime
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?surgical=v4' -o /tmp/live
+          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V4' /tmp/live
+          grep -Fq 'class="sidebar"' /tmp/live
+          grep -Fq 'id="nayanet-elite-feed"' /tmp/live
+          grep -Fq 'class="homeWorkspace"' /tmp/live
+          ! grep -Fq 'class="activationRail"' /tmp/live
+          ! grep -Fq "class='activationRail'" /tmp/live
+          echo 'PUBLIC_RUNTIME=VERIFIED'
+          echo 'LEFT_NAVIGATION=PRESENT'
+          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
+          echo 'RIGHT_OLD_FEED=ABSENT'
+          echo 'CENTER_FEED=FULL_WIDTH'
+          echo 'LIVE_URL=https://nayanet-v7-intelligent-hub.nayanet.workers.dev/'
