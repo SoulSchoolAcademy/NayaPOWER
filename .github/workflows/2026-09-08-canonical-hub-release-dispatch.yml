@@ -32,15 +32,27 @@ jobs:
           marker='NAYANET-SMART-FEED-MASTER-V1'
           if marker not in p:
               raise SystemExit('PAYLOAD_MARKER_MISSING')
-          # Idempotent: replace the prior master payload, never stack copies.
-          s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\\s\\S]*?</script>\\s*(?=</head>)','',s,count=1)
-          if marker in s:
-              s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\\s\\S]*?</script>\\s*(?=</head>)','',s,count=1)
+          s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*(?=</head>)','',s,count=1)
           if '</head>' not in s:
               raise SystemExit('HEAD_BOUNDARY_MISSING')
           s=s.replace('</head>',p+'\n</head>',1)
           hub.write_text(s,encoding='utf-8')
           print('SMART_FEED_MASTER_APPLIED=TRUE')
+
+      - name: Verify Smart Feed JavaScript syntax
+        shell: python
+        run: |
+          from pathlib import Path
+          import re, subprocess
+          s=Path('${{ env.HUB }}').read_text(encoding='utf-8')
+          m=re.search(r'<script id="NAYANET-SMART-FEED-MASTER-V1-RUNTIME">([\s\S]*?)</script>',s)
+          if not m:
+              raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
+          Path('/tmp/smart-feed.js').write_text(m.group(1),encoding='utf-8')
+          r=subprocess.run(['node','--check','/tmp/smart-feed.js'],text=True,capture_output=True)
+          if r.returncode:
+              print(r.stdout); print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
+          print('SMART_FEED_JS_SYNTAX=PASS')
 
       - name: Verify protected house and canonical feed
         shell: bash
