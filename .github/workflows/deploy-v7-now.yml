@@ -46,7 +46,6 @@ jobs:
           s=hub.read_text(encoding='utf-8'); p=payload.read_text(encoding='utf-8')
           if 'NAYANET SMART FEED MASTER V2' not in p: raise SystemExit('PAYLOAD_MARKER_MISSING')
           if 'NAYANET-SMART-FEED-MASTER-V2-RUNTIME' not in p: raise SystemExit('MASTER_V2_RUNTIME_MISSING')
-          # Remove every generated Smart Feed experiment previously injected by our lane.
           patterns=[
             r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?<!-- NAYANET SMART FEED MASTER V1 END -->\s*',
             r'<!-- NAYANET SMART FEED FORCE MOUNT V2 -->[\s\S]*?</script>\s*',
@@ -67,7 +66,8 @@ jobs:
           test "$(grep -o '<!-- NAYANET SMART FEED MASTER V2 -->' "$H" | wc -l)" -eq 1
           test "$(grep -o '<!-- NAYANET SMART FEED MASTER V1 -->' "$H" | wc -l)" -eq 0
           test "$(grep -o '<!-- NAYANET SMART FEED FORCE MOUNT V2 -->' "$H" | wc -l)" -eq 0
-          test "$(grep -o 'id=\"NAYANET-SMART-FEED-MASTER-V2\"' "$H" | wc -l)" -eq 1
+          test "$(grep -o '<style id=\"NAYANET-SMART-FEED-MASTER-V2\">' "$H" | wc -l)" -eq 1
+          test "$(grep -o '<script id=\"NAYANET-SMART-FEED-MASTER-V2-RUNTIME\">' "$H" | wc -l)" -eq 1
           echo 'SINGLE_COMPOSITION_GATE=PASS'
 
       - name: JavaScript syntax gate
@@ -89,7 +89,7 @@ jobs:
         run: |
           set -euo pipefail
           H="$HUB"; test -s "$H"
-          for x in 'NAYANET SMART FEED MASTER V2' 'id="NAYANET-SMART-FEED-MASTER-V2"' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
+          for x in 'NAYANET SMART FEED MASTER V2' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'id="page-notes"' 'id="page-collective"' 'id="page-evidence"' 'id="page-connections"' 'id="page-mail"'; do grep -Fq "$x" "$H" || { echo "MISSING=$x"; exit 1; }; done
           echo 'PROTECTED_HOUSE_GATE=PASS'
 
       - name: Commit canonical 452 source only when content actually changed
@@ -110,8 +110,7 @@ jobs:
           cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
           printf '%s\n' '{"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
           grep -Fq 'NAYANET SMART FEED MASTER V2' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          grep -Fq 'id="NAYANET-SMART-FEED-MASTER-V2"' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          echo 'TARGET_WORKER=aged-art-7c12'
+          grep -Fq '<style id="NAYANET-SMART-FEED-MASTER-V2">' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
 
       - name: Deploy exact artifact to actual live worker
         uses: cloudflare/wrangler-action@v3
@@ -126,7 +125,7 @@ jobs:
         run: |
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          for x in 'NAYANET SMART FEED MASTER V2' 'id="NAYANET-SMART-FEED-MASTER-V2"' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE'; do grep -Fq "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
+          for x in 'NAYANET SMART FEED MASTER V2' '<style id="NAYANET-SMART-FEED-MASTER-V2">' 'class="sidebar"' 'class="homeWorkspace"' 'class="homeFeed"' 'class="intelligentBlock"' 'ACTIVITY INTELLIGENCE' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE'; do grep -Fq "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
           if grep -Fq 'id="nayaSmartFeedForceMount"' /tmp/root; then echo 'RUNTIME_OLD_FORCE_MOUNT_PRESENT=TRUE'; exit 1; fi
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
