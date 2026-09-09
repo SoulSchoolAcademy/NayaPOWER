@@ -1,8 +1,6 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 name: Deploy Canonical NayaNET Hub
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
   workflow_call:
     secrets:
