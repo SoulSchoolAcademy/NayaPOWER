@@ -1,5 +1,4 @@
-# CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-08
-# DEPLOY TRIGGER: 452 surgical right-rail removal
+# CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 name: Deploy NayaNET Live Hub
 
 on:
@@ -7,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '2026 09 08 452 NayaNET Hub.html'
+      - '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
       - '.github/workflows/deploy-v7-now.yml'
   workflow_dispatch:
 
@@ -14,6 +14,8 @@ permissions:
   contents: write
 
 env:
+  HUB: '2026 09 08 452 NayaNET Hub.html'
+  PAYLOAD: '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
   RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
   SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
 
@@ -21,99 +23,94 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout exact main
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+          ref: main
 
-      - name: Build the exact current 452 Hub source — nuclear right-rail removal only
+      - name: Build canonical Smart Feed into exact 452 source
+        shell: python
         run: |
-          set -euo pipefail
-          python3 - <<'PY'
           from pathlib import Path
           import re
+          hub=Path('${{ env.HUB }}')
+          payload=Path('${{ env.PAYLOAD }}')
+          s=hub.read_text(encoding='utf-8')
+          p=payload.read_text(encoding='utf-8')
+          marker='NAYANET-SMART-FEED-MASTER-V1'
+          if marker not in p:
+              raise SystemExit('PAYLOAD_MARKER_MISSING')
+          s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*(?=</head>)','',s,count=1)
+          if '</head>' not in s:
+              raise SystemExit('HEAD_BOUNDARY_MISSING')
+          s=s.replace('</head>',p+'\n</head>',1)
+          hub.write_text(s,encoding='utf-8')
+          print('SMART_FEED_MASTER_APPLIED=TRUE')
 
-          hub_path = Path('2026 09 08 452 NayaNET Hub.html')
-          hub = hub_path.read_text(encoding='utf-8')
-          marker='NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3'
+      - name: JavaScript syntax gate
+        shell: python
+        run: |
+          from pathlib import Path
+          import re, subprocess
+          s=Path('${{ env.HUB }}').read_text(encoding='utf-8')
+          m=re.search(r'<script id="NAYANET-SMART-FEED-MASTER-V1-RUNTIME">([\s\S]*?)</script>',s)
+          if not m: raise SystemExit('SMART_FEED_RUNTIME_SCRIPT_MISSING')
+          Path('/tmp/smart-feed.js').write_text(m.group(1),encoding='utf-8')
+          r=subprocess.run(['node','--check','/tmp/smart-feed.js'],text=True,capture_output=True)
+          if r.returncode:
+              print(r.stderr); raise SystemExit('SMART_FEED_JS_SYNTAX_FAILED')
+          print('SMART_FEED_JS_SYNTAX=PASS')
 
-          if marker not in hub:
-              injection = r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3">
-/* FINAL SURFACE LAW: LEFT NAVIGATION + CENTER INTELLIGENT FEED. NO RIGHT OLD FEED. */
-.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
-.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}
-</style>
-<script id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3-RUNTIME">
-(function(){
-  function purge(){
-    try{
-      document.querySelectorAll('.activationRail').forEach(function(el){el.remove();});
-      var ws=document.querySelector('.homeWorkspace');
-      if(ws){
-        ws.style.setProperty('display','block','important');
-        ws.style.setProperty('grid-template-columns','1fr','important');
-        ws.style.setProperty('gap','0','important');
-        ws.style.setProperty('width','100%','important');
-        ws.style.setProperty('max-width','none','important');
-      }
-    }catch(e){}
-  }
-  purge();
-  new MutationObserver(purge).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
-  setInterval(purge,500);
-})();
-</script>
-'''
-              if '</head>' not in hub:
-                  raise SystemExit('CURRENT_HUB_SOURCE_MISSING_HEAD')
-              hub=hub.replace('</head>',injection+'</head>',1)
-              hub_path.write_text(hub,encoding='utf-8')
+      - name: Protected house gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          H="$HUB"
+          test -s "$H"
+          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' "$H"
+          grep -Fq 'id="nayaSmartFeedMaster"' "$H"
+          grep -Fq 'ACTIVITY INTELLIGENCE' "$H"
+          grep -Fq 'PERSONAL INTELLIGENCE' "$H"
+          grep -Fq 'COLLECTIVE INTELLIGENCE' "$H"
+          grep -Fq 'class="sidebar"' "$H"
+          grep -Fq 'class="homeWorkspace"' "$H"
+          grep -Fq 'class="homeFeed"' "$H"
+          grep -Fq 'id="page-notes"' "$H"
+          grep -Fq 'id="page-collective"' "$H"
+          grep -Fq 'id="page-evidence"' "$H"
+          grep -Fq 'id="page-connections"' "$H"
+          grep -Fq 'id="page-mail"' "$H"
+          echo 'PROTECTED_HOUSE_GATE=PASS'
 
-          required = {
-              'NUCLEAR_GUARD': marker in hub,
-              'LEFT_SIDEBAR': bool(re.search(r'class=["\'][^"\']*\bsidebar\b',hub,re.I)),
-              'HOME_WORKSPACE': bool(re.search(r'class=["\'][^"\']*\bhomeWorkspace\b',hub,re.I)),
-              'HOME_FEED': bool(re.search(r'class=["\'][^"\']*\bhomeFeed\b',hub,re.I)),
-              'INTELLIGENT_FEED': 'id="nayanet-elite-feed"' in hub,
-              'SMART_NOTES': 'Smart Notes' in hub,
-              'ACTIVITY': 'Activity' in hub,
-              'PERSONAL': 'Personal Intelligence' in hub,
-              'COLLECTIVE': 'Collective Intelligence' in hub,
-          }
-          failed=[k for k,v in required.items() if not v]
-          if failed: raise SystemExit('PROTECTED_SENTINEL_MISSING='+','.join(failed))
-          if '<script id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3-RUNTIME">' not in hub: raise SystemExit('RUNTIME_GUARD_MISSING')
-          print('SOURCE_GUARD=PASS')
-          print('SOURCE_BYTES=',len(hub.encode('utf-8')))
-          PY
-
-      - name: Commit canonical guarded source if needed
+      - name: Commit canonical 452 source if changed
+        shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '2026 09 08 452 NayaNET Hub.html'
-          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_GUARDED=TRUE'; else git commit -m 'Nuclear Hub V3: remove obsolete right rail and preserve center feed'; git push origin HEAD:main; fi
+          git add -- "$HUB"
+          if git diff --cached --quiet; then echo 'CANONICAL_SOURCE_ALREADY_CURRENT=TRUE'; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
 
-      - name: Build exact Cloudflare artifact
+      - name: Prepare isolated Cloudflare artifact
+        shell: bash
         run: |
           set -euo pipefail
           rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
-          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
-          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public
+          cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'JSON'
           {
             "name": "nayanet-v7-intelligent-hub",
             "compatibility_date": "2026-09-08",
-            "assets": { "directory": "." }
+            "assets": { "directory": "./public" }
           }
-          EOF
-          test -s CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          JSON
+          test -s CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          echo 'ARTIFACT_GATE=PASS'
 
-      - name: Deploy exact guarded artifact
+      - name: Deploy exact artifact
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -122,19 +119,18 @@ jobs:
           command: deploy --config wrangler.jsonc
 
       - name: Independently verify exact public runtime
+        shell: bash
         run: |
           set -euo pipefail
           curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V3' /tmp/root
+          grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' /tmp/root
+          grep -Fq 'id="nayaSmartFeedMaster"' /tmp/root
+          grep -Fq 'ACTIVITY INTELLIGENCE' /tmp/root
+          grep -Fq 'PERSONAL INTELLIGENCE' /tmp/root
+          grep -Fq 'COLLECTIVE INTELLIGENCE' /tmp/root
           grep -Fq 'class="sidebar"' /tmp/root
-          grep -Fq 'id="nayanet-elite-feed"' /tmp/root
           grep -Fq 'class="homeWorkspace"' /tmp/root
-          ! grep -Fq 'class="activationRail"' /tmp/root
-          ! grep -Fq "class='activationRail'" /tmp/root
           echo 'PUBLIC_RUNTIME=PASS'
-          echo 'LEFT_NAVIGATION=PRESENT'
-          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
-          echo 'RIGHT_OLD_FEED=ABSENT'
-          echo 'CENTER_FEED_WIDTH=FULL'
+          echo 'SMART_FEED_RUNTIME=PASS'
           echo "RUNTIME=$RUNTIME/"
           echo "SMART_LINK=$SMART_LINK"
