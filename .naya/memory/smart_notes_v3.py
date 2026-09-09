@@ -73,18 +73,11 @@ def load_events():
 
 
 def reps(e):
-    """Return representation records while tolerating legacy string envelopes."""
     r=e.get('representations',{})
     if isinstance(r,dict):
-        normalized=[]
-        for key,value in r.items():
-            if isinstance(value,dict):
-                normalized.append(value)
-            elif isinstance(value,str):
-                normalized.append({'representation':key,'content':value})
-        return normalized
+        return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
     if isinstance(r,list):
-        return [item if isinstance(item,dict) else {'content':str(item)} for item in r]
+        return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
     return []
 
 
@@ -294,6 +287,32 @@ def retrieve(query,limit=10,since=None,until=None,project=None,event_type=None,s
 
 def daily_report(day=None,tz_name='America/Vancouver',principal_id=None,scope=None,project=None,grants=()):
     zone=ZoneInfo(tz_name); local_day=datetime.now(zone).date()-timedelta(days=1) if day is None else datetime.fromisoformat(day).date(); start=datetime.combine(local_day,datetime.min.time(),zone); end=start+timedelta(days=1)
-    authorized=authorized_events(load_events(),principal_id,scope,project,grants)
-    selected=[e for _,e in authorized if start<=parse_time(e['effective_at']).astimezone(zone)<end]
-    return {'report_type':'DAILY_INTELLIGENCE_REPORT','source_event_ids':[e['event_id'] for e in selected],'verification_required':True}
+    loaded=[(p,e) for p,e in load_events() if not e.get('__parse_error__')]
+    authorized_loaded=authorized_events(loaded, principal_id, scope, project, grants)
+    selected=[]
+    for _,e in authorized_loaded:
+        dt=parse_time(e['effective_at']).astimezone(zone)
+        if start<=dt<end:selected.append(e)
+    selected.sort(key=lambda x:x['effective_at']); lessons=[]; changes=[]; nexts=[]
+    for e in selected:
+        for r in reps(e):
+            lessons += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or []; changes += r.get('what_changed',[]) or []; nexts += r.get('next_best_actions',[]) or []
+    uniq=lambda xs:list(dict.fromkeys(xs))
+    return {'report_type':'DAILY_INTELLIGENCE_REPORT','period':local_day.isoformat(),'timezone':tz_name,'event_count':len(selected),'source_event_ids':[e['event_id'] for e in selected],'what_happened':[e.get('title') or e.get('subject') for e in selected],'what_we_learned':uniq(lessons),'what_changed':uniq(changes),'wins':[e['event_id'] for e in selected if e.get('event_type') in {'milestone','success'} or e.get('type')=='milestone'],'next_best_actions':uniq(nexts),'open_loops':[e['event_id'] for e in selected if e.get('status') in {'CONFLICTED','STALE'}],'verification_required':True,'feed_status':'AUTHORIZED_PENDING_INTEGRATION'}
+
+
+def main():
+    ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); sub.add_parser('validate'); sub.add_parser('index')
+    r=sub.add_parser('retrieve'); r.add_argument('query'); r.add_argument('--limit',type=int,default=10); r.add_argument('--project'); r.add_argument('--event-type'); r.add_argument('--status'); r.add_argument('--tag'); r.add_argument('--since'); r.add_argument('--until'); r.add_argument('--principal-id',required=True); r.add_argument('--scope',required=True); r.add_argument('--access-project',required=True); r.add_argument('--grant',action='append',default=[])
+    d=sub.add_parser('daily-report'); d.add_argument('--day'); d.add_argument('--timezone',default='America/Vancouver'); d.add_argument('--principal-id',required=True); d.add_argument('--scope',required=True); d.add_argument('--project',required=True); d.add_argument('--grant',action='append',default=[])
+    a=ap.parse_args()
+    if a.cmd=='validate':
+        err=validate(); print('PASS — Smart Brain v3 validation is GREEN' if not err else 'FAIL\n'+'\n'.join('- '+x for x in err)); return 0 if not err else 1
+    if a.cmd=='index': print(json.dumps(build_index(),indent=2,ensure_ascii=False)); return 0
+    if a.cmd=='retrieve':
+        since=parse_time(a.since) if a.since else None; until=parse_time(a.until) if a.until else None
+        for s,e in retrieve(a.query,a.limit,since,until,a.project,a.event_type,a.status,a.tag,a.principal_id,a.scope,a.access_project,a.grant): print(f'{s:8.2f} {e["event_id"]} | {e.get("title") or e.get("subject")} | {e.get("status")}')
+        return 0
+    print(json.dumps(daily_report(a.day,a.timezone,a.principal_id,a.scope,a.project,a.grant),indent=2,ensure_ascii=False)); return 0
+
+if __name__=='__main__': raise SystemExit(main())
