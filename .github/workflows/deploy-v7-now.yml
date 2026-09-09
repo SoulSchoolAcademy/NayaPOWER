@@ -59,8 +59,8 @@ jobs:
         run: |
           set -euo pipefail
           H="$HUB"
-          test "$(grep -o 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' "$H" | wc -l)" -eq 1
-          test "$(grep -o 'NAYANET-SMART-FEED-MASTER-V1' "$H" | wc -l)" -ge 1
+          test "$(grep -o '<!-- NAYANET SMART FEED FORCE MOUNT V2 -->' "$H" | wc -l)" -eq 1
+          test "$(grep -o '<!-- NAYANET SMART FEED MASTER V1 -->' "$H" | wc -l)" -eq 1
           echo 'IDEMPOTENCY_GATE=PASS'
 
       - name: JavaScript syntax gate
