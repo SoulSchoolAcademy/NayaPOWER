@@ -1,0 +1,105 @@
+name: Deploy Current NayaNET Hub
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2026 09 08 452 NayaNET Hub.html'
+      - 'nayanet-intelligent-feed-v6.js'
+      - '.github/workflows/deploy-current-nayanet-hub.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nayanet-current-hub-production
+  cancel-in-progress: true
+
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Package exact current Hub source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/assets
+          cp '2026 09 08 452 NayaNET Hub.html' release/assets/index.html
+          cp 'nayanet-intelligent-feed-v6.js' release/assets/nayanet-intelligent-feed-v6.js
+          cat > release/wrangler.jsonc <<'JSON'
+          {
+            "name": "nayanet-v7-intelligent-hub",
+            "main": "worker.js",
+            "compatibility_date": "2026-09-05",
+            "account_id": "262c881746ea6e9978ca18b3eb831907",
+            "assets": { "directory": "assets", "binding": "ASSETS" }
+          }
+          JSON
+          cat > release/worker.js <<'JS'
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/')) {
+                const response = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+                const headers = new Headers(response.headers);
+                headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+                headers.set('Pragma', 'no-cache');
+                headers.set('X-NayaNET-Release', 'CURRENT-HUB-V8');
+                headers.set('X-NayaNET-Source', '2026 09 08 452 NayaNET Hub.html');
+                headers.set('X-NayaNET-Feed', 'nayanet-intelligent-feed-v6.js');
+                return new Response(response.body, { status: response.status, headers });
+              }
+              return env.ASSETS.fetch(request);
+            }
+          };
+          JS
+          python3 - <<'PY'
+          from pathlib import Path
+          html=Path('release/assets/index.html').read_text(encoding='utf-8')
+          js=Path('release/assets/nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
+          checks=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','homeWorkspace','activationRail','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          missing=[x for x in checks if x not in html+js]
+          if missing: raise SystemExit(f'MISSING_MARKERS={missing}')
+          if 'class="sidebar"' not in html: raise SystemExit('LEFT_SIDEBAR_MISSING')
+          print('SOURCE_BYTES=',len(html.encode()))
+          print('FEED_BYTES=',len(js.encode()))
+          print('SOURCE_CHECK=PASS')
+          PY
+
+      - name: Deploy exact artifact
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify public runtime and Smart Link
+        shell: bash
+        run: |
+          set -euo pipefail
+          q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
+          python3 - <<'PY'
+          from pathlib import Path
+          required=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          for f in ['/tmp/root','/tmp/smart']:
+              t=Path(f).read_text(encoding='utf-8')
+              missing=[x for x in required if x not in t]
+              if missing: raise SystemExit(f'{f} MISSING={missing}')
+              if 'class="sidebar"' not in t: raise SystemExit(f'{f} LEFT_SIDEBAR_MISSING')
+          print('PUBLIC_RUNTIME=PASS')
+          print('SMART_LINK=PASS')
+          print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
+          PY
