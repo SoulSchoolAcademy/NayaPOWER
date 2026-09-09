@@ -45,7 +45,8 @@ jobs:
           test -s "$D/index.html" && test -s "$D/nayanet-cognitive-engine.js"
           APP_JS=$(grep -oE 'assets/[^" ]+\.js' "$D/index.html" | head -1)
           test -n "$APP_JS" && test -s "$D/$APP_JS"
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL' 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D/nayanet-cognitive-engine.js" || { echo "COGNITION_ARTIFACT_MISSING=$x"; exit 1; }; done
           for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE' 'CAPTURE' 'EVENTS' 'RECEIPTS' 'MEMORY'; do if grep -RFiq "$x" "$D/index.html" "$D/$APP_JS"; then echo "FORBIDDEN_ARTIFACT=$x"; exit 1; fi; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
           sha256sum "$D/index.html" > /tmp/index.sha256; sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
