@@ -43,10 +43,14 @@ jobs:
           set -euo pipefail
           D="NAYANET/HUB/dist"
           test -s "$D/index.html" && test -s "$D/nayanet-cognitive-engine.js"
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL' 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          APP_JS=$(grep -oE 'assets/[^" ]+\.js' "$D/index.html" | head -1)
+          test -n "$APP_JS" && test -s "$D/$APP_JS"
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL' 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE' 'CAPTURE' 'EVENTS' 'RECEIPTS' 'MEMORY'; do if grep -RFiq "$x" "$D/index.html" "$D/$APP_JS"; then echo "FORBIDDEN_ARTIFACT=$x"; exit 1; fi; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
           sha256sum "$D/index.html" > /tmp/index.sha256; sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
-          echo 'CANONICAL_HUB_BUILD=PASS'; echo 'ARTIFACT_INSPECTION=PASS'; echo 'COGNITIVE_ENGINE_ARTIFACT=PASS'
+          echo "APP_JS=$APP_JS"
+          echo 'CANONICAL_HUB_BUILD=PASS'; echo 'ARTIFACT_INSPECTION=PASS'; echo 'COGNITIVE_ENGINE_ARTIFACT=PASS'; echo 'FORBIDDEN_PRODUCT_UI=ABSENT'
       - name: Prepare exact Cloudflare artifact
         run: |
           set -euo pipefail
@@ -80,10 +84,12 @@ jobs:
           case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
           if [ -n "$js_src" ]; then js_status=$(get "$RUNTIME$js_src?release=$GITHUB_SHA" /tmp/app-js); echo "JS_HTTP=$js_status"; [ "$js_status" = 200 ] && [ -s /tmp/app-js ] || { echo FAIL_JS_ASSET; fail=1; }; fi
           cognitive_status=$(get "$RUNTIME/nayanet-cognitive-engine.js?release=$GITHUB_SHA" /tmp/cognition); echo "COGNITION_HTTP=$cognitive_status"; [ "$cognitive_status" = 200 ] && [ -s /tmp/cognition ] || { echo FAIL_COGNITION_ASSET; fail=1; }
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null && echo "RUNTIME_MARKER_PASS=$x" || { echo "FAIL_RUNTIME_MARKER=$x"; fail=1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null && echo "RUNTIME_MARKER_PASS=$x" || { echo "FAIL_RUNTIME_MARKER=$x"; fail=1; }; done
           for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" /tmp/root /tmp/app-js /tmp/cognition 2>/dev/null && echo "RUNTIME_COGNITION_PASS=$x" || { echo "FAIL_RUNTIME_COGNITION=$x"; fail=1; }; done
+          for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE' 'CAPTURE' 'EVENTS' 'RECEIPTS' 'MEMORY'; do if grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null; then echo "FAIL_FORBIDDEN_RUNTIME=$x"; fail=1; else echo "RUNTIME_FORBIDDEN_ABSENT=$x"; fi; done
           grep -Fq 'nayanet-intelligent-feed-v6.js' /tmp/root && { echo FAIL_RETIRED_FEED; fail=1; } || echo RETIRED_FEED=ABSENT
           grep -Fq '2026 09 08 452 NayaNET Hub' /tmp/root && { echo FAIL_RETIRED_452; fail=1; } || echo RETIRED_452=ABSENT
+          grep -Fq "$GITHUB_SHA" /tmp/root /tmp/app-js 2>/dev/null && echo RUNTIME_SOURCE_COMMIT=PASS || { echo FAIL_RUNTIME_SOURCE_COMMIT; fail=1; }
           echo "ACTUAL_RUNTIME=$RUNTIME"; echo "SMART_LINK=$SMART_LINK"; echo "SOURCE_COMMIT=$GITHUB_SHA"
           [ "$fail" -eq 0 ] || exit 1
-          echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_COGNITIVE_ENGINE=PASS; echo RUNTIME_INTELLIGENCE_MARKERS=PASS; echo RUNTIME_CANONICAL_REACT_MARKER=PASS
+          echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_COGNITIVE_ENGINE=PASS; echo RUNTIME_INTELLIGENCE_MARKERS=PASS; echo RUNTIME_FORBIDDEN_PRODUCT_UI=ABSENT; echo RUNTIME_SOURCE_COMMIT=PASS
