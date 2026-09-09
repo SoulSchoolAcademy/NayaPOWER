@@ -1,45 +1,105 @@
-# CANONICAL VISIBLE FIRST-SLICE RELEASE — SOURCE → CLOUDFLARE → EXACT RUNTIME
+# CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
+# RELEASE PATH: NAYANET/HUB -> VITE BUILD -> CLOUDFLARE aged-art-7c12
 name: Deploy Canonical NayaNET Hub
+
 on:
   push:
     branches: [main]
-    paths: ['NAYANET/HUB/**','.github/workflows/deploy-nayanet-hub-canonical.yml']
+    paths:
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
   workflow_dispatch:
+
 permissions:
   contents: read
+
+concurrency:
+  group: nayanet-canonical-live-hub
+  cancel-in-progress: false
+
 env:
+  HUB: NAYANET/HUB
   WORKER_NAME: aged-art-7c12
   RUNTIME: https://aged-art-7c12.nayanet.workers.dev
+  SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+
 jobs:
   build-deploy-verify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with: {node-version: 22}
+      - name: Checkout exact current main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
       - name: Install
         working-directory: NAYANET/HUB
-        run: npm install
+        run: npm install --no-audit --no-fund
+
       - name: Typecheck
         working-directory: NAYANET/HUB
         run: npm run typecheck
+
       - name: Build
         working-directory: NAYANET/HUB
         run: npm run build
-      - name: Inspect artifact
-        working-directory: NAYANET/HUB
+
+      - name: Inspect actual generated artifact
         run: |
-          test -s dist/index.html
-          grep -q 'NayaNET' dist/index.html
-          grep -q 'Intelligent Hub' dist/index.html
-          test ! -e dist/nayanet-intelligent-feed-v6.js
-      - name: Prepare Cloudflare artifact
+          set -euo pipefail
+          D="NAYANET/HUB/dist"
+          test -s "$D/index.html"
+          test -n "$(find "$D" -type f | head -n 1)"
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          test ! -e "$D/nayanet-intelligent-feed-v6.js"
+          echo 'CANONICAL_HUB_BUILD=PASS'
+          echo 'ARTIFACT_INSPECTION=PASS'
+          echo "ARTIFACT_FILES=$(find "$D" -type f | wc -l)"
+          echo "ARTIFACT_BYTES=$(du -sb "$D" | cut -f1)"
+
+      - name: Prepare exact Cloudflare artifact
         run: |
-          mkdir -p release
-          cp -R NAYANET/HUB/dist/. release/
-          cat > release/wrangler.jsonc <<'EOF'
-          {"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./"}}
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp -R NAYANET/HUB/dist/. release/public/
+          cat > release/worker.js <<'EOF'
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              const response = await env.ASSETS.fetch(
+                new Request(
+                  (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'))
+                    ? new URL('/index.html', request.url)
+                    : request.url,
+                  request
+                )
+              );
+              const headers = new Headers(response.headers);
+              headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+              headers.set('Pragma', 'no-cache');
+              headers.set('X-NayaNET-Source-Commit', '__SOURCE_COMMIT__');
+              headers.set('X-NayaNET-Source', 'NAYANET/HUB');
+              headers.set('X-NayaNET-Release-Path', 'NAYANET/HUB -> VITE -> CLOUDFLARE aged-art-7c12');
+              return new Response(response.body, { status: response.status, headers });
+            }
+          };
           EOF
+          sed -i "s/__SOURCE_COMMIT__/${GITHUB_SHA}/g" release/worker.js
+          cat > release/wrangler.jsonc <<'EOF'
+          {
+            "name": "aged-art-7c12",
+            "main": "worker.js",
+            "compatibility_date": "2026-09-08",
+            "account_id": "262c881746ea6e9978ca18b3eb831907",
+            "assets": { "directory": "./public", "binding": "ASSETS" }
+          }
+          EOF
+          test -s release/public/index.html
+          test -s release/worker.js
+          echo 'CLOUDFLARE_ARTIFACT=READY'
+
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
         with:
@@ -47,14 +107,18 @@ jobs:
           accountId: '262c881746ea6e9978ca18b3eb831907'
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-      - name: Independent runtime observation
+
+      - name: Independently verify exact public runtime
         run: |
-          set -e
-          # Release gate: public runtime must be independently observable before any completion claim.
-          curl -fsSL "$RUNTIME/" -o runtime.html
-          grep -q 'NayaNET' runtime.html
-          grep -q 'Intelligent Hub' runtime.html
-          grep -q 'MORE INTELLIGENCE. LESS WASTE.' runtime.html
-          grep -q 'ONE CANONICAL INTELLIGENCE OBJECT' runtime.html
-          echo "PUBLIC_RUNTIME=$RUNTIME"
-          echo 'RUNTIME_OBSERVATION=PASS'
+          set -euo pipefail
+          curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
+          curl -fsSL --retry 10 --retry-delay 3 "$SMART_LINK?release=$GITHUB_SHA" -o /tmp/smart
+          cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
+          curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; exit 1; }
+          echo 'PUBLIC_RUNTIME=PASS'
+          echo 'RUNTIME_ROUTE_PARITY=PASS'
+          echo 'RUNTIME_SOURCE_COMMIT_HEADER=PASS'
+          echo "ACTUAL_RUNTIME=$RUNTIME"
+          echo "SMART_LINK=$SMART_LINK"
+          echo "SOURCE_COMMIT=$GITHUB_SHA"
