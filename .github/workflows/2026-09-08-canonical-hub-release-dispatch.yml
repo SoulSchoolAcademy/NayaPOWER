@@ -1,0 +1,97 @@
+name: 2026-09-08 Canonical Hub Release Dispatch
+
+on:
+  issues:
+    types: [opened]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    if: contains(github.event.issue.title, 'Hub') || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Surgical 452 source repair
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+          p=Path('2026 09 08 452 NayaNET Hub.html')
+          s=p.read_text(encoding='utf-8')
+          marker='NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2'
+          if marker not in s:
+              injection=r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2">
+.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
+.homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important;width:100%!important;max-width:none!important}
+</style>
+<script>
+(function(){
+ function kill(){
+  try{
+   document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});
+   var w=document.querySelector('.homeWorkspace');
+   if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important')}
+  }catch(e){}
+ }
+ kill();
+ new MutationObserver(kill).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
+ setInterval(kill,500);
+})();
+</script>
+'''
+              s=s.replace('</head>',injection+'</head>',1)
+              p.write_text(s,encoding='utf-8')
+          final=p.read_text(encoding='utf-8')
+          for needle in ['NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2','id="nayanet-elite-feed"','class="sidebar"','class="homeWorkspace"']:
+              if needle not in final: raise SystemExit('MISSING='+needle)
+          print('SOURCE_GUARD_PASS')
+
+      - name: Commit source repair
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '2026 09 08 452 NayaNET Hub.html'
+          git commit -m 'Nuclear Hub fix V2: remove right rail at runtime' || true
+          git push origin HEAD:main || true
+
+      - name: Build and deploy exact 452 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
+          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
+          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          test -s CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
+          npx --yes wrangler@latest --version
+
+      - name: Deploy via Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?nuclear=v2' -o /tmp/live
+          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V2' /tmp/live
+          grep -Fq 'class="sidebar"' /tmp/live
+          grep -Fq 'id="nayanet-elite-feed"' /tmp/live
+          ! grep -Fq 'class="activationRail"' /tmp/live
+          echo 'LIVE_RUNTIME_VERIFIED'
