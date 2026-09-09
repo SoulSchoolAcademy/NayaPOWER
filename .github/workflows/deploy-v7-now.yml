@@ -18,6 +18,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: nayanet-canonical-live-hub
+  cancel-in-progress: false
+
 env:
   HUB: '2026 09 08 452 NayaNET Hub.html'
   PAYLOAD: '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
@@ -45,7 +49,6 @@ jobs:
           if 'id="nayaSmartFeedMaster"' not in p: raise SystemExit('SMART_FEED_ROOT_MISSING')
           if 'ACTIVITY INTELLIGENCE' not in p or 'PERSONAL INTELLIGENCE' not in p or 'COLLECTIVE INTELLIGENCE' not in p: raise SystemExit('SMART_FEED_LENSES_MISSING')
           if 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' not in f: raise SystemExit('FORCE_MOUNT_MARKER_MISSING')
-          # Remove every previous generated block before inserting exactly one copy.
           s=re.sub(r'<!-- NAYANET SMART FEED MASTER V1 -->[\s\S]*?</script>\s*','',s)
           s=re.sub(r'<!-- NAYANET SMART FEED FORCE MOUNT V2 -->[\s\S]*?</script>\s*','',s)
           if '</body>' not in s: raise SystemExit('BODY_BOUNDARY_MISSING')
