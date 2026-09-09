@@ -76,30 +76,42 @@ def authorize(request: AuthorizationRequest, event: Mapping) -> bool:
     denied. Public access is not a bypass for scope or project isolation.
     Cross-scope access requires an explicit ``scope:<scope>`` grant, while
     cross-project access requires an explicit project/principal grant.
+
+    The principal's project is the authorization identity boundary. A caller
+    cannot self-authorize into another project merely by placing that project in
+    ``AuthorizationRequest.project``.
     """
     principal = request.principal
     principal_id = _norm(principal.principal_id)
     requested_scope = _norm(request.scope) or _norm(principal.scope)
-    requested_project = _norm(request.project) or _norm(principal.project)
+    requested_project = _norm(request.project)
+    principal_project = _norm(principal.project)
     stored_scope = event_scope(event)
     stored_project = event_project(event)
     access = access_class(event)
 
     if not principal_id or not requested_scope or not stored_scope or not stored_project or access is None:
         return False
+    if not principal_project:
+        return False
 
     grants = explicit_grants(event)
     same_scope = requested_scope == stored_scope
-    same_project = bool(requested_project and requested_project == stored_project)
+    same_project = principal_project == stored_project
     principal_granted = principal_id in grants
     principal_scope_granted = f"scope:{stored_scope}" in principal.grants
     principal_project_granted = f"project:{stored_project}" in principal.grants
     event_scope_granted = f"scope:{requested_scope}" in grants
-    event_project_granted = f"project:{requested_project}" in grants if requested_project else False
+    event_project_granted = f"project:{stored_project}" in grants
 
     explicit_scope_grant = principal_scope_granted or event_scope_granted
     explicit_project_grant = principal_project_granted or event_project_granted
     explicit_principal_grant = principal_granted
+
+    # A requested project must match the caller's identity project unless the
+    # caller has an explicit grant for that project.
+    if requested_project and requested_project != principal_project and not (explicit_project_grant or explicit_principal_grant):
+        return False
 
     scope_allowed = same_scope or explicit_scope_grant
     project_allowed = same_project or explicit_project_grant or explicit_principal_grant
