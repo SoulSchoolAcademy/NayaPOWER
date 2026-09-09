@@ -1,5 +1,5 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V8
-Purpose: execute the corrected single Smart Feed composition after fixing the release gate.
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V9
+Purpose: execute the corrected single Smart Feed composition after repairing the governance release gate.
 Mission: preserve the existing center feed and intelligence, remove the failed V1/force-mount presentation, install one substantial spectral Intelligent Block composition, deploy it to the exact runtime Shawn opens, then capture read-only desktop/mobile proof.
 Runtime: https://aged-art-7c12.nayanet.workers.dev/
 Deployment authority: .github/workflows/deploy-v7-now.yml
