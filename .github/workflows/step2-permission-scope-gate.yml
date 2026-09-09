@@ -32,6 +32,8 @@ jobs:
         run: python -m py_compile .naya/memory/permission_scope.py .naya/memory/smart_notes_v3.py .naya/memory/tests/test_permission_scope.py .naya/memory/test_smart_brain_v3.py
       - name: Ten adversarial permission tests
         run: python -m unittest discover -s .naya/memory/tests -p 'test_*.py' -v
+      - name: Rebuild derived event index before Smart Brain validation
+        run: python .naya/memory/smart_notes_v3.py index
       - name: Smart Brain regression suite
         run: python .naya/memory/test_smart_brain_v3.py -v
       - name: Canonical validation regression
@@ -47,3 +49,4 @@ jobs:
           path: |
             .naya/memory/STEP-2-TEST-OUTPUT.txt
             .naya/memory/STEP-2-TEST-COMMIT.txt
+            .naya/memory/events/INDEX.json
