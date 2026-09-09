@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+  actions: write
+
 jobs:
   control-plane:
     runs-on: ubuntu-latest
@@ -21,6 +25,20 @@ jobs:
         run: python .naya/runtime/cold_start_activation.py
       - name: MAP → STATE → BLOCK → PROOF acceptance
         run: python .naya/control-plane/validate_control_plane.py
+      - name: Dispatch guarded canonical 452 Hub deployment
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/2026-09-08-surgical-right-rail-removal.yml/dispatches \
+            -d '{"ref":"main"}'
+          echo 'GUARDED_452_HUB_DEPLOY_DISPATCHED=TRUE'
 
   cct-regression:
     runs-on: ubuntu-latest
