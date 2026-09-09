@@ -2,11 +2,12 @@ name: NayaNET surgical cognitive integration
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 permissions:
   contents: write
 jobs:
   integrate:
-    if: ${{ !contains(github.event.head_commit.message, '[naya-cognitive-engine]') }}
+    if: ${{ !contains(github.event.head_commit.message || '', '[naya-cognitive-engine]') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,7 +20,6 @@ jobs:
           marker='<!-- NAYANET-PERSISTENT-COGNITIVE-EXECUTION-ENGINE-V1 -->'
           if not hub.exists(): raise SystemExit('Latest timestamped Hub artifact not found')
           src=hub.read_text(encoding='utf-8')
-          # Current product identity is NayaNET. Legacy version labels are not part of the current product.
           for old,new in [
             ('NayaNET — Intelligent Hub V7','NayaNET — Intelligent Hub'),
             ('INTELLIGENT HUB · V7','INTELLIGENT HUB'),
