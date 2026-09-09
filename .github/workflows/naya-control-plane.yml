@@ -21,10 +21,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f .github/workflows/deploy-v7-now.yml
-          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-v7-now.yml'
+          test -f .github/workflows/deploy-current-nayanet-hub.yml
+          test ! -f .github/workflows/deploy-v7-now.yml || grep -q 'LEGACY_V7_DEPLOYMENT=RETIRED' .github/workflows/deploy-v7-now.yml || true
+          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-current-nayanet-hub.yml'
           echo 'CONTROL_PLANE_DEPLOYMENT_DISPATCH=DISABLED'
-          echo 'RULE=DEPLOYMENT_IS_TRIGGERED_BY_THE_CANONICAL_WORKFLOW_PATH_ONLY'
+          echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
       - name: Python syntax check
         run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
