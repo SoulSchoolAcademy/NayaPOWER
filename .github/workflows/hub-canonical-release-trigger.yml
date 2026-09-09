@@ -1,6 +1,5 @@
 # TRIGGER-ONLY ADAPTER — no deployment logic lives here.
-# The sole production deployment implementation remains deploy-nayanet-hub-canonical.yml.
-# Every Hub release must resolve the reusable workflow from the current main revision.
+# The sole production deployment implementation is deploy-nayanet-hub-canonical-v2.yml.
 name: Trigger Canonical NayaNET Hub Release
 
 on:
@@ -8,13 +7,13 @@ on:
     branches: [main]
     paths:
       - 'NAYANET/HUB/**'
-      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
+      - '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
       - '.github/workflows/hub-canonical-release-trigger.yml'
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - 'NAYANET/HUB/**'
-      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
+      - '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
       - '.github/workflows/hub-canonical-release-trigger.yml'
   workflow_dispatch:
 
@@ -23,5 +22,5 @@ permissions:
 
 jobs:
   canonical-release:
-    uses: ./.github/workflows/deploy-nayanet-hub-canonical.yml
+    uses: ./.github/workflows/deploy-nayanet-hub-canonical-v2.yml
     secrets: inherit
