@@ -24,9 +24,9 @@ def load_events():
         except Exception as exc:out.append((p,{'__parse_error__':str(exc)}))
     return out
 def reps(e):
-    r=e.get('representations',{})
-    if isinstance(r,dict):return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
-    if isinstance(r,list):return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
+    r=e.get('representations')
+    if isinstance(r,dict) and r:return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
+    if isinstance(r,list) and r:return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
     legacy=[]
     for key in ('human_shawn','human','naya','machine'):
         if isinstance(e.get(key),dict):legacy.append(e[key])
@@ -66,7 +66,7 @@ def validate_event(e,p):
     if not isinstance(e.get('status'),str) or not e.get('status').strip():er.append(f'{p}: invalid status')
     if not reps(e):er.append(f'{p}: missing representations')
     if not e.get('source') and not e.get('provenance'):er.append(f'{p}: missing source')
-    v=e.get('verification',{}) or {};vr=e.get('verification_receipt',{}) or {}
+    v=e.get('verification',{}) or {}
     if v.get('status')=='VERIFIED' and not v.get('canonical_url'):er.append(f'{p}: verified event missing canonical_url')
     dt=parsed.get('effective_at')
     if dt:
