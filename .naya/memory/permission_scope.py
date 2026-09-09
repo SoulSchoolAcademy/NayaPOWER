@@ -39,13 +39,15 @@ def _permissions(event: Mapping) -> Mapping:
     return value if isinstance(value, Mapping) else {}
 
 
-def access_class(event: Mapping) -> Access:
+def access_class(event: Mapping) -> Optional[Access]:
     permissions = _permissions(event)
-    raw = permissions.get("access", event.get("visibility", Access.PRIVATE.value))
+    if "access" not in permissions and "visibility" not in event:
+        return None
+    raw = permissions.get("access", event.get("visibility"))
     try:
         return Access(str(raw).upper())
-    except ValueError:
-        return Access.PRIVATE
+    except (TypeError, ValueError):
+        return None
 
 
 def event_scope(event: Mapping) -> Optional[str]:
@@ -71,8 +73,9 @@ def authorize(request: AuthorizationRequest, event: Mapping) -> bool:
     """Return True only when the event is explicitly within authorized scope.
 
     Missing identity, requested scope, event scope, or permission information is
-    denied. Public access is still limited by explicit scope when an event has one.
-    Cross-project access requires an explicit grant (or the principal's own project).
+    denied. Public access is not a bypass for scope or project isolation.
+    Cross-scope access requires an explicit ``scope:<scope>`` grant, while
+    cross-project access requires an explicit project/principal grant.
     """
     principal = request.principal
     principal_id = _norm(principal.principal_id)
@@ -80,28 +83,33 @@ def authorize(request: AuthorizationRequest, event: Mapping) -> bool:
     requested_project = _norm(request.project) or _norm(principal.project)
     stored_scope = event_scope(event)
     stored_project = event_project(event)
+    access = access_class(event)
 
-    if not principal_id or not requested_scope or not stored_scope:
+    if not principal_id or not requested_scope or not stored_scope or not stored_project or access is None:
         return False
 
     grants = explicit_grants(event)
-    access = access_class(event)
     same_scope = requested_scope == stored_scope
-    same_project = bool(requested_project and stored_project and requested_project == stored_project)
+    same_project = bool(requested_project and requested_project == stored_project)
     principal_granted = principal_id in grants
-    scope_granted = stored_scope in principal.grants
-    project_granted = bool(stored_project and f"project:{stored_project}" in principal.grants)
+    principal_scope_granted = f"scope:{stored_scope}" in principal.grants
+    principal_project_granted = f"project:{stored_project}" in principal.grants
+    event_scope_granted = f"scope:{requested_scope}" in grants
+    event_project_granted = f"project:{requested_project}" in grants if requested_project else False
 
-    if access is Access.PRIVATE:
-        return same_scope and (same_project or principal_granted or scope_granted or project_granted)
+    explicit_scope_grant = principal_scope_granted or event_scope_granted
+    explicit_project_grant = principal_project_granted or event_project_granted
+    explicit_principal_grant = principal_granted
 
-    if access is Access.SHARED:
-        return same_scope and (same_project or principal_granted or scope_granted or project_granted)
+    scope_allowed = same_scope or explicit_scope_grant
+    project_allowed = same_project or explicit_project_grant or explicit_principal_grant
 
-    # PUBLIC is not a bypass for an explicit scope boundary.
-    return same_scope or principal_granted or scope_granted or project_granted
+    if access in (Access.PRIVATE, Access.SHARED, Access.PUBLIC):
+        return scope_allowed and project_allowed
+
+    return False
 
 
 def filter_authorized(request: AuthorizationRequest, events: Iterable[Mapping]) -> list[Mapping]:
-    """Filter candidates before ranking/context assembly."""
+    """Filter candidates before ranking, relationship expansion, or context assembly."""
     return [event for event in events if authorize(request, event)]
