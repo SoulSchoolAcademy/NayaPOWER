@@ -1,0 +1,2 @@
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL
+Purpose: trigger the single canonical Smart Feed release path after retiring conflicting legacy Hub rewrite workflows.
