@@ -29,9 +29,14 @@ class PermissionScopeTests(unittest.TestCase):
 
     def test_explicit_cross_scope_grant_allows(self):
         principal = Principal("shawn", scope="personal", project="A", grants=frozenset({"scope:other"}))
-        other_scope_event = dict(self.private_b, scope="other")
-        request = AuthorizationRequest(principal, scope="other", project="B")
+        other_scope_event = dict(self.private_a, scope="other")
+        request = AuthorizationRequest(principal, scope="other", project="A")
         self.assertTrue(authorize(request, other_scope_event))
+
+    def test_explicit_cross_project_grant_allows(self):
+        principal = Principal("shawn", scope="personal", project="A", grants=frozenset({"project:B"}))
+        request = AuthorizationRequest(principal, scope="personal", project="B")
+        self.assertTrue(authorize(request, self.private_b))
 
     def test_unknown_scope_denied(self):
         self.assertFalse(authorize(AuthorizationRequest(Principal("shawn", project="A")), self.private_a))
@@ -72,8 +77,8 @@ class PermissionScopeTests(unittest.TestCase):
     def test_runtime_authorization_precedes_ranking(self):
         calls = []
         events = [
-            (Path("A.json"), {"event_id": "A-1", "scope": "personal", "project": "A", "permissions": {"access": "PRIVATE"}, "title": "ordinary authorized marker", "effective_at": "2026-09-09T10:00:00-07:00", "status": "ACTIVE"}),
-            (Path("B.json"), {"event_id": "B-1", "scope": "personal", "project": "B", "permissions": {"access": "PRIVATE"}, "title": "ultra secret marker", "effective_at": "2026-09-09T11:00:00-07:00", "status": "ACTIVE"}),
+            (Path("A.json"), {"event_id": "A-1", "scope": "personal", "project": "A", "permissions": {"access": "PRIVATE"}, "title": "ordinary authorized baseline", "effective_at": "2026-09-09T10:00:00-07:00", "status": "ACTIVE"}),
+            (Path("B.json"), {"event_id": "B-1", "scope": "personal", "project": "B", "permissions": {"access": "PRIVATE"}, "title": "ultra secret distinctive marker", "effective_at": "2026-09-09T11:00:00-07:00", "status": "ACTIVE"}),
         ]
         original_load = brain.load_events
         original_corpus = brain.corpus
@@ -83,12 +88,12 @@ class PermissionScopeTests(unittest.TestCase):
                 calls.append([e["event_id"] for e in authorized_events])
                 return original_corpus(authorized_events)
             brain.corpus = observed_corpus
-            results = brain.retrieve("ultra secret marker", principal_id="shawn", scope="personal", access_project="A", limit=10)
+            results = brain.retrieve("ultra secret distinctive marker", principal_id="shawn", scope="personal", access_project="A", limit=10)
         finally:
             brain.load_events = original_load
             brain.corpus = original_corpus
         self.assertEqual(calls, [["A-1"]])
-        self.assertEqual([e["event_id"] for _, e in results], [])
+        self.assertEqual(results, [])
 
 
 if __name__ == "__main__":
