@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Inject canonical cognitive engine into latest timestamped Hub
+      - name: Inject canonical Naya cognitive engine into latest timestamped Hub
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -19,6 +19,14 @@ jobs:
           marker='<!-- NAYANET-PERSISTENT-COGNITIVE-EXECUTION-ENGINE-V1 -->'
           if not hub.exists(): raise SystemExit('Latest timestamped Hub artifact not found')
           src=hub.read_text(encoding='utf-8')
+          # Current product identity is NayaNET. Legacy version labels are not part of the current product.
+          for old,new in [
+            ('NayaNET — Intelligent Hub V7','NayaNET — Intelligent Hub'),
+            ('INTELLIGENT HUB · V7','INTELLIGENT HUB'),
+            ('NAYANET INTELLIGENT HUB · V7','NAYANET INTELLIGENT HUB'),
+            ('NayaNET Intelligent Hub V7','NayaNET Intelligent Hub'),
+            ('NayaNET V7','NayaNET')]:
+              src=src.replace(old,new)
           if marker in src:
               print('Cognitive engine already integrated')
               raise SystemExit(0)
@@ -28,7 +36,7 @@ jobs:
           if pos<0: pos=src.rfind('</html>')
           if pos<0: raise SystemExit('No HTML closing boundary found')
           hub.write_text(src[:pos]+inject+src[pos:],encoding='utf-8')
-          print('Injected canonical cognitive engine')
+          print('Injected canonical Naya cognitive engine')
           PY
       - name: Commit surgical integration
         run: |
