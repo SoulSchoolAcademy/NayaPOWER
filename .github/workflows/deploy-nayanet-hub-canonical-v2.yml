@@ -114,11 +114,25 @@ jobs:
           VERSION_ID=$(python3 - <<'PY'
           import json
           data=json.load(open('/tmp/deployments.json'))
-          deployments=data.get('deployments',data)
-          if not deployments: raise SystemExit('NO_DEPLOYMENTS')
-          versions=deployments[0].get('versions',[])
-          if not versions: raise SystemExit('NO_DEPLOYMENT_VERSIONS')
-          print(versions[0].get('version_id') or versions[0].get('versionId') or '')
+          if isinstance(data, dict):
+              deployments=data.get('deployments') or []
+          elif isinstance(data, list):
+              deployments=data
+          else:
+              raise SystemExit('INVALID_DEPLOYMENTS_JSON')
+          if not deployments:
+              raise SystemExit('NO_DEPLOYMENTS')
+          newest=deployments[-1]
+          if not isinstance(newest, dict):
+              raise SystemExit('INVALID_DEPLOYMENT_ENTRY')
+          versions=newest.get('versions') or []
+          if not versions:
+              raise SystemExit('NO_DEPLOYMENT_VERSIONS')
+          version=versions[-1]
+          version_id=version.get('version_id') or version.get('versionId')
+          if not version_id:
+              raise SystemExit('NO_VERSION_ID')
+          print(version_id)
           PY
           )
           test -n "$VERSION_ID"
@@ -133,12 +147,11 @@ jobs:
           set -u
           for attempt in $(seq 1 12); do
             echo "RUNTIME_PROBE_ATTEMPT=$attempt"
-            fail=0
             get(){ curl -sS -o "$2" -w '%{http_code}' "$1" || true; }
             status=$(get "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" /tmp/root)
             smart_status=$(get "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" /tmp/smart)
             echo "ROOT_HTTP=$status SMART_HTTP=$smart_status"
-            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart; then
+            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart ]; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root 2>/dev/null | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_status=$(get "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" /tmp/app-js)
