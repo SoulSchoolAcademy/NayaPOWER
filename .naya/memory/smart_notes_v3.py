@@ -15,12 +15,21 @@ def parse_time(v):
     d=datetime.fromisoformat(v)
     if d.tzinfo is None:d=d.replace(tzinfo=ZoneInfo('America/Vancouver'))
     return d
+def path_time(p):
+    try:
+        y,m,d,h=map(int,p.relative_to(EVENTS).parts[:4]);return datetime(y,m,d,h,tzinfo=ZoneInfo('America/Vancouver')).isoformat()
+    except Exception:return None
 def tokens(t):return re.findall(r'[a-z0-9]+',str(t).lower())
 def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() else []
+def hydrate_legacy_time(p,e):
+    t=path_time(p)
+    if t:
+        e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
+    return e
 def load_events():
     out=[]
     for p in event_files():
-        try:out.append((p,json.loads(p.read_text(encoding='utf-8'))))
+        try:out.append((p,hydrate_legacy_time(p,json.loads(p.read_text(encoding='utf-8')))))
         except Exception as exc:out.append((p,{'__parse_error__':str(exc)}))
     return out
 def reps(e):
@@ -39,7 +48,7 @@ def all_text(e):
         p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
     return ' '.join(map(str,p))
 def relationship_map(e):
-    r=e.get('relationships',{}) or {}
+    r=e.get('relationships',{}) or []
     if isinstance(r,dict):return r
     if isinstance(r,list):return {'related':r}
     return {}
