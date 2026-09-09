@@ -1,5 +1,5 @@
-SUPREME-INTELLIGENT-BLOCK-V12 deployment trigger
+SUPREME-INTELLIGENT-BLOCK-V12 FINAL MERGE RELEASE
 
-LEGACY-FIRST SUPREME RECONSTRUCTION: preserve the proven original board DOM, remove the failed two-column renderer, and elevate the existing boards in place.
+LEGACY-FIRST SUPREME RECONSTRUCTION: preserve the proven original board DOM, eliminate the failed two-column renderer, and elevate the existing boards in place.
 
-2026-09-09 — FINAL PRODUCTION EXECUTION TRIGGER: deploy V12 through the canonical current-Hub Cloudflare release path.
+2026-09-09 08:10 PT — MERGE RELEASE TRIGGER.
