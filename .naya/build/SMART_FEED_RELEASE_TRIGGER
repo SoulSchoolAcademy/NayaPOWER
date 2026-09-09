@@ -1,2 +1,3 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-VISUAL-QA-RELEASE
 Purpose: trigger the single canonical Smart Feed release path after retiring conflicting legacy Hub rewrite workflows.
+Mission: deploy the current canonical 452 Hub + Smart Feed master through the verified production chain.
