@@ -1,137 +1,18 @@
-name: Nuclear Hub Right Rail Fix
+name: Retired Nuclear Hub Right Rail Workflow
 
 on:
-  push:
-    paths:
-      - '.github/workflows/2026-09-08-nuclear-right-rail-fix.yml'
-      - '2026 09 08 452 NayaNET Hub.html'
-  issues:
-    types: [opened]
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-env:
-  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
-  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  contents: read
 
 jobs:
-  fix:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout canonical Hub source
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          ref: main
-
-      - name: Install final runtime kill switch
-        shell: python
+      - name: Legacy nuclear right rail workflow retired
         run: |
-          from pathlib import Path
-          p = Path('2026 09 08 452 NayaNET Hub.html')
-          s = p.read_text(encoding='utf-8')
-          marker = 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1'
-          if marker not in s:
-              injection = r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1">
-/* FINAL SURFACE LAW: left navigation + center Smart Feed only. The obsolete right feed/activation rail cannot exist. */
-.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
-.homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important;width:100%!important;max-width:none!important}
-body.nayanet-focus-mode .sidebar{display:block!important}
-body.nayanet-focus-mode .app{grid-template-columns:250px 1fr!important}
-body.nayanet-focus-mode .homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important}
-</style>
-<script>
-/* NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1 */
-(function(){
-  function purge(){
-    try{
-      document.body.classList.remove('nayanet-focus-mode');
-      document.querySelectorAll('.activationRail').forEach(function(el){el.remove();});
-      var ws=document.querySelector('.homeWorkspace');
-      if(ws){
-        ws.style.setProperty('display','block','important');
-        ws.style.setProperty('grid-template-columns','1fr','important');
-        ws.style.setProperty('gap','0','important');
-        ws.style.setProperty('width','100%','important');
-      }
-    }catch(e){}
-  }
-  purge();
-  if(document.documentElement){
-    new MutationObserver(function(){purge();}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
-  }
-  window.setInterval(purge,500);
-})();
-</script>
-'''
-              if '</head>' not in s:
-                  raise SystemExit('FAIL: no </head> boundary found')
-              s = s.replace('</head>', injection + '</head>', 1)
-              p.write_text(s, encoding='utf-8')
-          final = p.read_text(encoding='utf-8')
-          for x in ['NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1','.activationRail{display:none!important','document.querySelectorAll(\'.activationRail\')']:
-              if x not in final:
-                  raise SystemExit('FAIL: missing final guard: '+x)
-          if '<div class="sidebar"' not in final: raise SystemExit('FAIL: protected left sidebar missing')
-          if 'id="nayanet-elite-feed"' not in final: raise SystemExit('FAIL: protected Intelligent Feed missing')
-          if 'id="page-notes"' not in final: raise SystemExit('FAIL: protected Smart Notes page missing')
-          print('FINAL NUCLEAR GUARD VERIFIED')
-
-      - name: Commit canonical source change
-        shell: bash
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '2026 09 08 452 NayaNET Hub.html'
-          if git diff --cached --quiet; then
-            echo 'SOURCE_ALREADY_GUARDED=TRUE'
-          else
-            git commit -m 'Nuclear Hub fix: permanently remove right rail at runtime'
-            git push origin HEAD:main
-          fi
-
-      - name: Build exact live artifact from guarded source
-        shell: bash
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          hub = Path('2026 09 08 452 NayaNET Hub.html').read_text(encoding='utf-8')
-          if 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1' not in hub: raise SystemExit('NUCLEAR_GUARD_MISSING')
-          if '<div class="sidebar"' not in hub: raise SystemExit('LEFT_SIDEBAR_MISSING')
-          if 'id="nayanet-elite-feed"' not in hub: raise SystemExit('INTELLIGENT_FEED_MISSING')
-          if 'id="page-notes"' not in hub: raise SystemExit('SMART_NOTES_MISSING')
-          if '</body>' not in hub: raise SystemExit('BODY_MISSING')
-          d=Path('CLOUDFLARE-INTELLIGENT-HUB-V7'); d.mkdir(exist_ok=True)
-          (d/'index.html').write_text(hub,encoding='utf-8')
-          print('LIVE_ARTIFACT_BYTES=',len(hub.encode('utf-8')))
-          print('RIGHT_RAIL_SOURCE_ELEMENT=', 'activationRail' in hub)
-          PY
-
-      - name: Deploy exact guarded artifact
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 262c881746ea6e9978ca18b3eb831907
-          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
-          command: deploy --config wrangler.jsonc
-
-      - name: Independently verify public runtime
-        shell: bash
-        run: |
-          set -euo pipefail
-          cache_bust="release=${GITHUB_SHA}-nuclear"
-          curl -fsSL --retry 10 --retry-delay 3 "$RUNTIME/?$cache_bust" -o /tmp/root
-          grep -Fq 'class="sidebar"' /tmp/root
-          grep -Fq 'id="nayanet-elite-feed"' /tmp/root
-          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1' /tmp/root
-          ! grep -Fq 'class="activationRail"' /tmp/root
-          ! grep -Fq 'class='"'"'activationRail'"'"'' /tmp/root
-          echo 'PUBLIC_RUNTIME=VERIFIED'
-          echo 'LEFT_SIDEBAR=PRESENT'
-          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
-          echo 'RIGHT_ACTIVATION_RAIL=ABSENT'
-          echo "LIVE_URL=$RUNTIME/"
+          echo 'LEGACY_NUCLEAR_RIGHT_RAIL=RETIRED'
+          echo 'CANONICAL_DEPLOYMENT=.github/workflows/deploy-v7-now.yml'
+          echo 'CANONICAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
+          echo 'RULE=DO_NOT_MUTATE_OR_DEPLOY_THE_452_HUB_FROM_HISTORICAL_FIX_WORKFLOWS'
