@@ -3,7 +3,7 @@ name: NayaNET 10-10 Static Gate
 on:
   push:
     paths:
-      - '2026 09 09 1213 NAYANET HUB.html'
+      - 'NAYANET/HUB/**'
       - 'scripts/nayanet-cognitive-engine.js'
       - 'scripts/nayanet-hub-intelligence-layer.js'
       - 'SMART_NOTE_CONSTITUTION.md'
@@ -11,6 +11,7 @@ on:
       - 'SUPERBRAIN/**'
       - 'tests/**'
       - '.github/workflows/nayanet-10-10-static-gate.yml'
+      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
   workflow_dispatch:
 
 permissions:
@@ -24,16 +25,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-
       - name: Run source-level 10/10 gate
         run: python tests/verify_nayanet_10_10.py
-
-      - name: Verify canonical Hub is the tested source
+      - name: Verify production canonical Hub source
         run: |
-          test -f '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NayaNetCognition' '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NAYANET-HUB-INTELLIGENCE-V2:START' '2026 09 09 1213 NAYANET HUB.html'
-
+          set -euo pipefail
+          test -f 'NAYANET/HUB/index.html'
+          test -f 'NAYANET/HUB/src/app/App.tsx'
+          test -f 'NAYANET/HUB/src/intelligence/cognition.ts'
+          grep -q 'nayanet-cognitive-engine.js' 'NAYANET/HUB/index.html'
+          grep -q 'NAYANET-HUB-REACT-CANONICAL' 'NAYANET/HUB/src/app/App.tsx'
+          grep -q 'recordPersistent' 'NAYANET/HUB/src/intelligence/cognition.ts'
+          grep -q 'name: Deploy Canonical NayaNET Hub' '.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'STATIC_CANONICAL_SOURCE=PASS'
       - name: Publish gate boundary
         run: |
           echo 'STATIC_SOURCE_GATES=PASS'
