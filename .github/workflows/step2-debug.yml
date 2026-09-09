@@ -1,0 +1,26 @@
+name: Step 2 Temporary Diagnostic
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/memory/smart_notes_v3.py'
+      - '.naya/memory/permission_scope.py'
+      - '.naya/memory/tests/test_permission_scope.py'
+      - '.naya/memory/test_smart_brain_v3.py'
+permissions:
+  contents: read
+jobs:
+  diagnostic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Permission tests
+        continue-on-error: true
+        run: python -m unittest .naya/memory/tests/test_permission_scope.py -v
+      - name: Smart Brain regression
+        continue-on-error: true
+        run: python .naya/memory/test_smart_brain_v3.py -v
+      - name: Canonical validation
+        continue-on-error: true
+        run: python .naya/memory/smart_notes_v3.py validate
