@@ -1,236 +1,220 @@
-# 07 — Rebuild + Acceptance Contract
+# 07 — FRESH HUB REBUILD + AAA ACCEPTANCE CONTRACT
 
 ## Mission
 
-Rebuild the NayaNET Intelligent Hub from verified understanding, not from accumulated patches.
+Build the NayaNET Intelligent Hub correctly from a verified understanding of the old product, without continuing the accumulated patch architecture.
 
-The old product is the evidence base. The new implementation is a clean expression of the proven intent and preserved functionality.
+The `2026 09 08 452 NayaNET Hub.html` file is frozen reference evidence only. It is never edited to become the new Hub.
 
-## Phase 0 — Lock authority
+## Phase 0 — Establish the fresh foundation
 
-Before coding:
+- No legacy source is authoritative.
+- Create one new canonical Hub source.
+- Preserve historical references separately.
+- Define one canonical state model.
+- Define one persistence boundary.
+- Define one router/page-state model.
+- Define one renderer per surface.
+- Preserve every verified external destination.
+- Lock the room-by-room and Smart Feed specifications.
 
-- Select exactly one current Hub source.
-- Archive historical snapshots explicitly.
-- Select exactly one feed renderer.
-- Select exactly one persistence contract.
-- Select exactly one route/state model.
-- Record all external destinations from the Page Map.
-
-**BLOCKER:** the current repository contains a source-authority discrepancy. Resolve it first.
-
-## Phase 1 — Build the shell
+## Phase 1 — Build the house shell
 
 Acceptance:
 - desktop left sidebar works.
-- no desktop right sidebar.
-- mobile has no left sidebar.
-- mobile bottom nav works.
-- topbar works.
-- ecosystem links all work.
-- feature report links all work.
-- active state is correct after every navigation.
+- no desktop right Hub sidebar.
+- top bar works.
+- ecosystem bar works.
+- lower feature-report bar works.
+- mobile navigation works.
+- mobile has no persistent left sidebar.
+- active state is deterministic.
+- no content is hidden behind fixed UI.
 
-## Phase 2 — Build the intelligence model
-
-Acceptance:
-- one event = one canonical identity.
-- Human meaning is preserved exactly.
-- Naya output is clearly separated from Human input.
-- Machine evidence is clearly separated from semantic intelligence.
-- Feed is a projection, not a second memory store.
-- verification state is explicit.
-
-## Phase 3 — Build Smart Notes
+## Phase 2 — Build Home orientation
 
 Acceptance:
-- capture works.
-- type classification works or is explicitly user-editable.
+- personalized greeting.
+- current time.
+- current date.
+- country/locale.
+- intelligence philosophy statement.
+- privacy statement.
+- primary search / Naya access.
+- current-state orientation.
+
+Nothing in this orientation may disappear accidentally during later work.
+
+## Phase 3 — Build canonical intelligence event model
+
+Acceptance:
+- one event = one stable identity.
+- original Human input preserved.
+- Naya contribution separated.
+- Machine evidence separated.
+- privacy/visibility explicit.
+- verification explicit.
+- provenance explicit.
+
+## Phase 4 — Build Smart Notes
+
+Acceptance:
+- create works.
+- edit/delete behavior is explicitly defined.
+- type classification is truthful.
 - persistence works.
-- reload preserves notes.
+- reload works.
 - search works.
-- category filters work.
-- time filters work.
-- note opens into the same canonical event, not a duplicate object.
+- filters work.
+- opening a note opens the canonical event.
+- Smart Note is not duplicated by the feed.
 
-## Phase 4 — Build Intelligent Feed
+## Phase 5 — Build Smart Feed / Intelligent Feed
 
 Acceptance:
-- no two-column board renderer.
-- no random horizontal cards.
-- no code/debug artifacts.
+- Personal Intelligence works.
+- Collective Intelligence works truthfully.
+- Activity Feed works truthfully.
+- one event renders as one Intelligent Block.
+- WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSON / MEANING / ACTION is coherent.
+- layers are elevated and tactile.
+- typography is exceptionally readable.
+- icons are beautiful and understandable.
+- color matrix is intentional and semantic.
+- no two-column board wall.
 - no competing renderer.
-- no repeated DOM mutation loop.
-- every board is a single coherent intelligence object.
-- sequence supports:
-  WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSON / MEANING / ACTION.
-- feed answers current-state questions.
-- feed is chronological/current-state-first.
+- no debug/code artifacts.
+- no fake intelligence.
 
-## Phase 5 — Build retrieval
+## Phase 6 — Build Search / Retrieval
 
 Acceptance:
-- global intelligence search works.
-- Smart Notes search works.
-- result has source ID/provenance.
-- result can locate the original event.
-- search does not silently invent semantic answers.
+- searches canonical intelligence.
+- result provenance is visible.
+- result opens original event.
+- filters combine correctly.
+- empty/error states are useful.
+- semantic search only claims capabilities actually connected.
 
-## Phase 6 — Build Naya connection
-
-Acceptance:
-- real authenticated Naya adapter exists.
-- request/response is traceable.
-- Naya response is attached to the correct event.
-- machine receipt exists.
-- pending/blocked/failed states are visible.
-- no response is fabricated when the service is unavailable.
-
-## Phase 7 — Build Daily Intelligence
+## Phase 7 — Build Daily Intelligence / Reports
 
 Acceptance:
-- report is source-backed.
-- no fake activity fills empty periods.
-- report distinguishes observed facts from interpretation.
-- report carries forward learning and next action.
+- source-backed.
+- current window is explicit.
+- What Mattered / Learned / Carries Forward / Attention Next.
+- no invented activity.
+- report can point back to source events.
 
-## Phase 8 — Build Collective
+## Phase 8 — Build Intelligence Library
+
+Acceptance:
+- All / Recent / Favorites / Lists / Groups.
+- same canonical event identity.
+- organization does not clone events.
+- search and retrieval remain consistent.
+
+## Phase 9 — Build Collective
 
 Acceptance:
 - private by default.
-- explicit consent required.
-- de-identification boundary exists.
-- collective view never exposes raw private notes.
-- opt-out persists.
+- explicit consent.
+- de-identification boundary.
+- revocation.
+- no silent publication.
 
-## Phase 9 — Build Smart Mail
+## Phase 10 — Build Evidence + Connections
 
 Acceptance:
-- compose works.
+- source status is truthful.
+- verification produces evidence.
+- failures remain failures.
+- connected source adapters are explicit.
+- no fake connection state.
+
+## Phase 11 — Build Smart Mail
+
+Acceptance:
+- Inbox/Sent/Drafts/Connections/Rooms/Groups/Lists are real states.
 - drafts persist.
-- send only becomes SENT after actual transport receipt.
-- failed/pending states remain truthful.
-- inbox/sent/drafts/rooms/groups/lists are real states, not decorative tabs.
+- delivery only becomes SENT after actual transport receipt.
+- failure and pending states are explicit.
 
-## Phase 10 — Build Settings
+## Phase 12 — Build Smart Space
 
-Acceptance:
-- each setting has defined effect.
-- setting persistence is proven.
-- reset works.
-- settings do not exist merely to look configurable.
+Acceptance depends on the definition locked in `10-OPEN-DECISIONS-BEFORE-CODING.md`.
 
-## Phase 11 — Visual excellence
+## Phase 13 — Build Settings
 
 Acceptance:
-- premium black/obsidian/purple/white/gold system.
-- cinematic editorial intelligence.
-- strong hierarchy.
-- no generic SaaS cards.
-- no glassmorphism overload.
-- no clutter.
-- no competing visual centers.
-- all controls feel intentional.
-- desktop and mobile both feel designed, not merely collapsed.
+- every setting has a defined effect.
+- default is known.
+- persistence is known.
+- enforcement point is known.
+- reset works where specified.
 
-## Phase 12 — Verification
+## Phase 14 — Connect Naya
 
-### Source
-- exact current source file identified.
-- source markers present.
+Acceptance:
+- authenticated adapter.
+- request/response schema.
+- event linkage.
+- machine receipt.
+- pending/blocked/failed states.
+- no fabricated response.
 
-### Artifact
-- build contains exact source.
-- assets resolve.
+## Phase 15 — Visual excellence
 
-### Deployment
-- expected worker/version deployed.
+Acceptance:
+- premium black/obsidian foundation.
+- purple intelligence light.
+- white typography.
+- restrained sapphire/green/gold semantics.
+- cinematic/editorial/architectural feel.
+- tactile elevation.
+- clear hierarchy.
+- no generic SaaS dashboard.
+- no visual clutter.
 
-### Runtime
-- exact public URL returns expected artifact.
-- Smart Link returns expected artifact.
-- feed asset returns expected renderer.
+## Phase 16 — Production proof
 
-### Visual
-- browser observation confirms page.
-- no right sidebar.
-- no garbage/debug.
-- correct boards.
-- correct links.
+Every release must prove:
 
-### Interaction
-Test every critical action:
-- Home
-- Smart Notes
-- Reports
-- Intelligence Library
-- Collective
-- Evidence
-- Connections
-- Smart Mail
-- Settings
-- ecosystem links
-- feature reports
-- create note
+**SOURCE → BUILD → DEPLOY → EXACT RUNTIME → DOM → VISIBLE SCREEN → INTERACTION → PERSISTENCE → MOBILE → NO REGRESSION**
+
+### Required tests
+
+- every sidebar item
+- every topbar control
+- every lower-bar report
+- every ecosystem link
+- Home orientation
 - search
-- filters
-- feed engagement
-- verify GitHub
-- compose mail
-- settings save/reset
-- collective toggle
-
-### Persistence
-- create note → reload → note remains.
-- setting → reload → setting remains.
-- draft → reload → draft remains.
-- engagement → reload → state remains.
-
-### Responsive
-- desktop.
-- tablet.
-- mobile.
-- narrow mobile.
-- keyboard/focus.
-- reduced motion.
-
-## Completion standard
-
-A Hub task is complete only when:
-
-**SOURCE → BUILD → DEPLOY → RUNTIME → OBSERVATION → INTERACTION → PERSISTENCE → MOBILE → NO REGRESSION**
-
-is proven.
-
-A successful GitHub commit is not a successful product release.
-
-A successful workflow is not visual proof.
-
-A source marker is not proof that the correct DOM is visible.
+- Smart Note creation
+- Smart Note persistence
+- feed rendering
+- feed perspective interactions
+- Daily Intelligence
+- Library
+- Collective consent
+- Evidence
+- Connections verification
+- Smart Mail compose/draft
+- Settings save/reset
+- mobile navigation
+- keyboard/focus
+- reduced motion
 
 ## AAA scorecard
 
 ### A — Architecture
-- one source
-- one state model
-- one renderer
-- one persistence boundary
-- explicit adapters
+One source. One state model. One renderer per surface. Explicit adapters. Explicit persistence.
 
 ### A — Application
-- all pages work
-- all buttons work
-- all links work
-- all data transitions are understandable
-- no dead ends
+Every room works. Every button works. Every link works. Every data transition is understandable. No dead ends.
 
 ### A — Assurance
-- runtime verified
-- evidence preserved
-- regressions tested
-- truth states explicit
-- no fabricated intelligence
+Runtime observed. Interactions tested. Persistence tested. Mobile tested. Truth states verified. No fabricated intelligence.
 
-## Final build principle
+## Final rule
 
-**Learn from every failed patch. Preserve what was proven. Remove what created ambiguity. Rebuild the system so the next Naya has to reason less, guess less, and verify more.**
+**Do not move to the next room because the code looks finished. Move only when the room is actually finished and verified.**
