@@ -11,3 +11,5 @@ Release law:
 `SOURCE → TYPECHECK → VITE BUILD → ARTIFACT → CLOUDFLARE → EXACT RUNTIME → JS/CSS ASSET OBSERVATION → INTERACTION → 99.99 MIRROR`
 
 The runtime verifier intentionally inspects the generated React JavaScript asset, not only `index.html`, because the Hub's intelligence UI is client-rendered.
+
+This commit is an auditable trigger for the canonical release path.
