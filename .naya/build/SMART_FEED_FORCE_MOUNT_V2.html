@@ -21,6 +21,7 @@
       if(!main)return false;
       var shell=document.createElement('div');
       shell.id='nayaSmartFeedForceMount';
+      shell.className='homeFeed';
       var host=master.closest('#NAYANET-SMART-FEED-MASTER-V1-CONTENT');
       if(host)host.hidden=false;
       shell.appendChild(master);
@@ -28,7 +29,7 @@
       var homeWorkspace=page.querySelector('.homeWorkspace');
       if(homeWorkspace)homeWorkspace.style.setProperty('display','none','important');
       var homeFeed=page.querySelector('.homeFeed');
-      if(homeFeed)homeFeed.style.setProperty('display','none','important');
+      if(homeFeed && homeFeed!==shell)homeFeed.style.setProperty('display','none','important');
       document.querySelectorAll('.activationRail').forEach(function(x){x.remove();});
       return true;
     }catch(e){return false;}
