@@ -1,134 +1,18 @@
 name: NayaNET Browser Runtime QA
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
-      - 'NAYAHUB.html'
-      - 'nayanet-hub-collections.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'
-      - '.github/workflows/nayanet-browser-runtime-qa.yml'
-  pull_request:
-    branches: [main]
-    paths:
-      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
-      - 'NAYAHUB.html'
-      - 'nayanet-hub-collections.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'
-      - '.github/workflows/nayanet-browser-runtime-qa.yml'
   workflow_dispatch:
 
 permissions:
-  contents: write
-  actions: read
+  contents: read
 
 jobs:
-  intelligent-hub-build:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout current NAYAHUB source
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Build surgical release
-        shell: bash
+      - name: Assert canonical browser QA ownership
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          src=Path('NAYAHUB.html');layer=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js');completion=Path('nayanet-hub-collections.js')
-          html=src.read_text(encoding='utf-8')
-          if html.count('<!doctype html>')!=1 or html.count('</html>')!=1: raise SystemExit('NAYAHUB is not one complete document')
-          html=html.replace(r",'\':'&#92;'",r",'\\':'&#92;'")
-          layer_text=layer.read_text(encoding='utf-8').replace("setTimeout(()=>showLibrary(),100));window.NayaNETV7","setTimeout(()=>showLibrary(),100)));window.NayaNETV7")
-          m1='<!-- NAYANET-NAYAHUB-INTELLIGENCE-LAYER -->';m2='<!-- NAYANET-NAYAHUB-COLLECTIONS-LAYER -->'
-          if m1 not in html: html=html.replace('</body>','\n'+m1+'\n<script>\n'+layer_text+'\n</script>\n</body>',1)
-          if m2 not in html: html=html.replace('</body>','\n'+m2+'\n<script>\n'+completion.read_text(encoding='utf-8')+'\n</script>\n</body>',1)
-          src.write_text(html,encoding='utf-8');Path('index.html').write_text(html,encoding='utf-8');Path('_redirects').write_text('/intelligence/* /index.html 200\n',encoding='utf-8')
-          print('NAYAHUB bytes',src.stat().st_size,'INDEX bytes',Path('index.html').stat().st_size)
-          PY
-      - name: Validate and package
-        shell: bash
-        run: |
-          set -e
-          grep -q 'Search your intelligence' index.html
-          grep -q 'Intelligent Library' index.html
-          grep -q 'SHARE INTELLIGENCE' index.html
-          grep -q 'ASK NAYA' index.html
-          grep -q 'IntelligenceIndex' index.html
-          grep -q 'IntelligenceStore' index.html
-          grep -q '＋ SHARE' index.html
-          grep -q '♡ LOVE' index.html
-          grep -q '★ RANK' index.html
-          grep -q '💬 COMMENT' index.html
-          grep -q 'Include my NayaNET link' index.html
-          ! grep -q 'prompt(' index.html
-          python3 - <<'PY'
-          from pathlib import Path
-          import re,zipfile
-          s=Path('index.html').read_text(encoding='utf-8');assert s.count('<!doctype html>')==1 and s.count('</html>')==1
-          scripts=re.findall(r'<script(?:[^>]*)>(.*?)</script>',s,re.S|re.I);Path('/tmp/embedded.js').write_text('\n'.join(scripts),encoding='utf-8')
-          with zipfile.ZipFile('NayaNET-Intelligent-Hub-Cloudflare.zip','w',zipfile.ZIP_DEFLATED) as z:z.write('index.html','index.html');z.write('_redirects','_redirects')
-          with zipfile.ZipFile('NayaNET-Intelligent-Hub-Cloudflare.zip') as z:assert z.namelist()[0]=='index.html'
-          print('VALIDATED',len(s),'bytes')
-          PY
-          node --check /tmp/embedded.js
-      - name: Commit and upload release
-        shell: bash
-        run: |
-          git config user.name 'github-actions[bot]';git config user.email '41898282+github-actions[bot]@users.noreply.github.com';git add NAYAHUB.html index.html _redirects
-          if git diff --cached --quiet; then echo 'No source changes'; else git commit -m 'Surgical NayaNET Intelligent Hub release from NAYAHUB [skip ci]';git push;fi
-      - name: Upload Cloudflare package
-        uses: actions/upload-artifact@v4
-        with:
-          name: NayaNET-Intelligent-Hub-Cloudflare
-          path: |
-            NayaNET-Intelligent-Hub-Cloudflare.zip
-            index.html
-            _redirects
-          if-no-files-found: error
-
-  browser-runtime:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
-    steps:
-      - name: Checkout exact source
-        uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - name: Install Playwright and Chromium
-        working-directory: .
-        run: |
-          npm install --no-save --no-package-lock @playwright/test
-          npx playwright install --with-deps chromium
-      - name: Start static server
-        working-directory: .
-        run: |
-          python3 -m http.server 4173 --directory NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE >/tmp/nayanet-http.log 2>&1 &
-          echo $! >/tmp/nayanet-http.pid
-          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:4173/index.html >/dev/null && exit 0; sleep 1; done
-          cat /tmp/nayanet-http.log
-          exit 1
-      - name: Run browser smoke and interaction contract
-        working-directory: .
-        env:
-          NODE_PATH: ${{ github.workspace }}/node_modules
-        run: |
-          cat > nayanet-runtime.spec.js <<'JS'
-          const { test, expect } = require('@playwright/test');
-          test.use({ baseURL: 'http://127.0.0.1:4173', viewport: { width: 1440, height: 1000 } });
-          test('front door renders, is centered, and is functionally alive', async ({ page }) => {
-            const errors=[]; page.on('pageerror',e=>errors.push(String(e))); await page.goto('/index.html',{waitUntil:'networkidle'}); await expect(page.locator('#frontDoor')).toBeVisible(); await expect(page.locator('#nameInput')).toBeVisible(); await expect(page.locator('.threshold-doors')).toBeVisible(); await expect(page.locator('.threshold-doors button')).toHaveCount(5); await expect(page.locator('.console-enter')).toBeVisible(); await page.locator('#nameInput').fill('Runtime Tester'); await page.locator('#entryForm').evaluate(form=>form.requestSubmit()); await expect(page.locator('#hub')).toBeVisible({timeout:10000}); expect(errors,errors.join('\n')).toEqual([]);
-          });
-          test('responsive layouts have no horizontal overflow', async ({ page }) => { for(const viewport of [{width:390,height:844},{width:768,height:1024},{width:1440,height:1000}]){await page.setViewportSize(viewport);await page.goto('/index.html',{waitUntil:'networkidle'});const overflow=await page.evaluate(()=>document.documentElement.scrollWidth-innerWidth);expect(overflow).toBeLessThanOrEqual(1)}});
-          JS
-          npx playwright test nayanet-runtime.spec.js --reporter=line
-          rm -f nayanet-runtime.spec.js
-      - name: Stop static server
-        if: always()
-        working-directory: .
-        run: kill "$(cat /tmp/nayanet-http.pid 2>/dev/null)" 2>/dev/null || true
+          echo 'LEGACY_E02_BROWSER_QA=RETIRED'
+          echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
+          echo 'CURRENT_RUNTIME_QA=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'RULE=ONE_CURRENT_NAYANET_BROWSER_QA_AUTHORITY'
