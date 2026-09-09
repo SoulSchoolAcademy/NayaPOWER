@@ -17,14 +17,17 @@ def parse_time(v):
     return d
 def path_time(p):
     try:
-        y,m,d,h=map(int,p.relative_to(EVENTS).parts[:4]);return datetime(y,m,d,h,tzinfo=ZoneInfo('America/Vancouver')).isoformat()
+        parts=p.relative_to(EVENTS).parts
+        if len(parts)>=5:y,m,d,h=map(int,parts[:4])
+        elif len(parts)==4:y,m,d=map(int,parts[:3]);h=0
+        else:return None
+        return datetime(y,m,d,h,tzinfo=ZoneInfo('America/Vancouver')).isoformat()
     except Exception:return None
 def tokens(t):return re.findall(r'[a-z0-9]+',str(t).lower())
 def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() else []
 def hydrate_legacy_time(p,e):
     t=path_time(p)
-    if t:
-        e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
+    if t:e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
     return e
 def load_events():
     out=[]
@@ -44,8 +47,7 @@ def all_text(e):
     p=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary',''),e.get('status','')]
     for k in ('tags','aliases','concepts'):p+=e.get(k,[]) or []
     for r in reps(e):
-        p += [r.get('title',''),r.get('summary',''),r.get('content',''),r.get('understanding',''),r.get('meaning',''),r.get('decision',''),r.get('lesson','')]
-        p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
+        p += [r.get('title',''),r.get('summary',''),r.get('content',''),r.get('understanding',''),r.get('meaning',''),r.get('decision',''),r.get('lesson','')];p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
     return ' '.join(map(str,p))
 def relationship_map(e):
     r=e.get('relationships',{}) or []
@@ -80,13 +82,13 @@ def validate_event(e,p):
     dt=parsed.get('effective_at')
     if dt:
         raw=str(e.get('effective_at',''));b=e.get('time_bucket',{}) or {};h=b.get('hour') if len(raw)<=10 else f'{dt:%H}'
+        try:rel=p.relative_to(EVENTS)
+        except ValueError:rel=Path(p)
         if h is None:
-            try:h=Path(p).parent.name
+            try:h=rel.parts[3] if len(rel.parts)>=5 else '00'
             except Exception:h=f'{dt:%H}'
-        expected=f'{dt:%Y/%m/%d}/{int(h):02d}/{e["event_id"]}.json'
-        try:rel=str(p.relative_to(EVENTS))
-        except ValueError:rel=str(p)
-        if rel!=expected:er.append(f'{p}: physical time bucket mismatch; expected {expected}')
+        expected=f'{dt:%Y/%m/%d}/{int(h):02d}/{e["event_id"]}.json' if len(rel.parts)>=5 else f'{dt:%Y/%m/%d}/{e["event_id"]}.json'
+        if str(rel)!=expected:er.append(f'{p}: physical time bucket mismatch; expected {expected}')
     for r in reps(e):
         rid=r.get('id')
         if rid and not NOTE_RE.match(str(rid)):er.append(f'{p}: invalid representation id {rid}')
