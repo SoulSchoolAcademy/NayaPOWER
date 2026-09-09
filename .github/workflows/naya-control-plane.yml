@@ -21,9 +21,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f .github/workflows/deploy-current-nayanet-hub.yml
-          test ! -f .github/workflows/deploy-v7-now.yml || grep -q 'LEGACY_V7_DEPLOYMENT=RETIRED' .github/workflows/deploy-v7-now.yml || true
-          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-current-nayanet-hub.yml'
+          test -f .github/workflows/deploy-nayanet-hub-canonical.yml
+          test -f .github/workflows/deploy-v7-now.yml
+          grep -q 'RETIRED HUB DEPLOYMENT PATH' .github/workflows/deploy-v7-now.yml
+          grep -q 'name: Deploy Canonical NayaNET Hub' .github/workflows/deploy-nayanet-hub-canonical.yml
+          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
           echo 'CONTROL_PLANE_DEPLOYMENT_DISPATCH=DISABLED'
           echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
       - name: Python syntax check
