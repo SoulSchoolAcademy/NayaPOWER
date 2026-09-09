@@ -1,6 +1,7 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
 # FINAL-TRIGGER-CANONICAL-SMART-FEED
 # STATIC-PAYLOAD-RUNTIME
+# IMPORTANT: production authority is the exact runtime Shawn is actually opening.
 name: Deploy NayaNET Live Hub
 
 on:
@@ -19,8 +20,9 @@ permissions:
 env:
   HUB: '2026 09 08 452 NayaNET Hub.html'
   PAYLOAD: '.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
-  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
-  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  RUNTIME: https://aged-art-7c12.nayanet.workers.dev
+  SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+  WORKER_NAME: aged-art-7c12
 
 jobs:
   deploy:
@@ -81,18 +83,19 @@ jobs:
           git add -- "$HUB"
           if git diff --cached --quiet; then echo CURRENT; else git commit -m 'Build canonical NayaNET Smart Feed master'; git push origin HEAD:main; fi
 
-      - name: Prepare isolated Cloudflare artifact
+      - name: Prepare isolated Cloudflare artifact for the actual live worker
         shell: bash
         run: |
           set -euo pipefail
           rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
           mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public
           cp "$HUB" CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          printf '%s\n' '{"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
+          printf '%s\n' '{"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}' > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc
           grep -Fq 'NAYANET-SMART-FEED-MASTER-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
           grep -Fq 'id="nayaSmartFeedMaster"' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
+          echo 'TARGET_WORKER=aged-art-7c12'
 
-      - name: Deploy exact artifact
+      - name: Deploy exact artifact to actual live worker
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -100,7 +103,7 @@ jobs:
           workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
           command: deploy --config wrangler.jsonc
 
-      - name: Independently verify exact public runtime
+      - name: Independently verify exact public runtime actually used by Shawn
         shell: bash
         run: |
           set -euo pipefail
@@ -113,5 +116,6 @@ jobs:
           grep -Fq 'class="sidebar"' /tmp/root
           grep -Fq 'class="homeFeed"' /tmp/root
           echo 'PUBLIC_RUNTIME=PASS'
-          echo "RUNTIME=$RUNTIME/"
+          echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
           echo "SMART_LINK=$SMART_LINK"
+          echo "RELEASE_SHA=$GITHUB_SHA"
