@@ -12,6 +12,6 @@ Release law:
 
 The runtime verifier intentionally inspects the generated React JavaScript asset, not only `index.html`, because the Hub's intelligence UI is client-rendered.
 
-This commit is an auditable trigger for the canonical release path.
+This pull request is an auditable trigger for the canonical release path.
 
 Trigger architecture: `hub-canonical-release-trigger.yml` is trigger-only; all build/deploy/verify logic remains centralized in the canonical workflow.
