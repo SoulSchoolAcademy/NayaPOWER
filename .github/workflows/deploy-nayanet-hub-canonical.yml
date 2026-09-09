@@ -60,7 +60,7 @@ jobs:
           rm -rf release && mkdir -p release/public
           cp -R NAYANET/HUB/dist/. release/public/
           cat > release/worker.js <<'EOF'
-          export default { async fetch(request, env) { const url = new URL(request.url); const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; return env.ASSETS.fetch(assetRequest); } };
+          export default { async fetch(request, env) { const url = new URL(request.url); const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB React'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
           cat > release/wrangler.jsonc <<'EOF'
           {"name":"aged-art-7c12","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"./public","binding":"ASSETS"}}
