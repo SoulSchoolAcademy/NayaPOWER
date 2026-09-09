@@ -1,6 +1,7 @@
-SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V6
-Purpose: execute the single locked Hub deployment lane and then run read-only exact-runtime visual proof.
-Mission: deploy the current 452 Hub to the exact runtime Shawn opens, verify the runtime, capture desktop/mobile evidence, and never let the verifier mutate main.
+SMART_FEED_RELEASE_TRIGGER=2026-09-09-CANONICAL-LIVE-HUB-V7
+Purpose: replace the failed Smart Feed presentation with one definitive Intelligent Block composition built from the strongest existing Hub visual language.
+Mission: preserve the existing center feed and intelligence, remove the failed V1/force-mount presentation, synthesize one substantial spectral Intelligent Block, deploy it to the exact runtime Shawn opens, then capture read-only desktop/mobile proof.
 Runtime: https://aged-art-7c12.nayanet.workers.dev/
 Deployment authority: .github/workflows/deploy-v7-now.yml
 Visual verifier: .github/workflows/nayanet-visual-proof.yml
+Non-negotiable: LEFT SIDEBAR | ONE MAIN SMART FEED | NO RIGHT RAIL | NO SECOND FEED | NO COMPRESSED TWO-COLUMN BOARD GRID.
