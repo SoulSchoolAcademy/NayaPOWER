@@ -9,6 +9,12 @@ on:
       - 'NAYANET/HUB/**'
       - '.github/workflows/deploy-nayanet-hub-canonical.yml'
       - '.github/workflows/hub-canonical-release-trigger.yml'
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
+      - '.github/workflows/hub-canonical-release-trigger.yml'
   workflow_dispatch:
 
 permissions:
