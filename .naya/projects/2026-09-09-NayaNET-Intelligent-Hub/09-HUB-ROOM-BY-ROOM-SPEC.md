@@ -134,57 +134,125 @@ WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSO
 
 ## 8. ROOM: CONNECTIONS
 
-**Purpose:** Manage and inspect connected intelligence/data sources.
+**Purpose:** Manage the user's saved human NayaNET network.
+
+**Critical definition:** Connections is **not** the room for GitHub, APIs, technical integrations, sync providers, or machine/data-source connections. Those belong in system/adapter architecture.
+
+A person enters Connections because the user **met/interacted with them through a NayaNET Smart Space and deliberately chose to save that relationship**.
+
+**Core lifecycle:**
+`DISCOVER → JOIN SPACE → INTERACT → CHOOSE PERSON → SAVE CONNECTION → ORGANIZE → MESSAGE / RECONNECT`
 
 **Must contain:**
-- source list
-- source status
-- verification controls
-- connection details
-- authorized/unauthorized state
-- discovery boundary
-- route into Smart Mail where appropriate
+- saved people
+- Smart Name
+- Smart Alias
+- user-defined connection groups/categories
+- connection search
+- connection detail
+- remove/archive connection
+- Message / Smart Mail action
+- Create / Request Smart Space action where permitted
 
-**Reference behavior:** GitHub verification is currently a read-only source check. Production connection architecture should use explicit adapters.
+**Connection rules:**
+- Joining a Space does not automatically create a saved Connection.
+- Saving a Connection is an explicit user action.
+- A person may belong to multiple user-defined groups.
+- Groups are organizational containers, not separate identities.
+- Connections must be searchable without fabricating contacts.
+
+**Example groups:** Friends, Family, Church, Business, Project, Team, Community, Topic, Mastermind, or any custom user-defined category.
+
+**Important relationship:** Saved Connections become a natural recipient source for Smart Mail and Smart Messaging.
 
 ## 9. ROOM: SMART MAIL
 
-**Purpose:** Private NayaNET communication.
+**Purpose:** NayaNET communication with saved Connections and permitted recipients.
 
 **Must contain:**
 - Inbox
 - Sent
 - Drafts
 - Connections
-- Rooms
+- Rooms / Spaces where appropriate
 - Groups
 - Lists
 - compose
-- recipient
+- recipient selection
 - message body
 - communication modes
 - truthful delivery state
 - receipts
 
-**Important:** A draft is not a sent message. A pending transport is not delivery.
+**Group messaging requirement:** A user can select an organized Connection group and send one message to that selected group, subject to recipient/communication permissions.
 
-**Reference internal layout:** current reference contains a three-column mail workspace. This is an internal communication workspace, not a justification for a right sidebar in the primary Hub shell.
+**Important:** Smart Mail and Smart Messaging are related but distinct:
+- **Space Message:** shared with participants in a Smart Space.
+- **Direct Message:** private person-to-person communication.
+- **Smart Mail:** persistent communication workflow that can target saved Connections/groups and other permitted recipients.
+
+A Space may provide a route into messaging its participants where permissions allow.
+
+**Important:** A draft is not a sent message. A pending transport is not delivery.
 
 ## 10. ROOM: SMART SPACE
 
-**Purpose:** The user's persistent intelligence workspace/organization layer.
+**Purpose:** A living shared intelligence environment created around a topic, question, idea, project, challenge, opportunity, or Intelligent Board.
 
-**Must define before implementation:**
-- what objects live here
-- whether it is a workspace, dashboard, project area, or container
-- relationship to Lists and Groups
-- whether spaces have independent permissions
-- how spaces are created/renamed/deleted
-- how events move into/out of spaces
-- how search indexes spaces
-- how privacy works at space level
+**Core definition:**
+`TOPIC + PEOPLE + CONVERSATION + INTELLIGENCE + CONSENT`
 
-**Status:** PRODUCT DEFINITION REQUIRED before coding if this remains a named top-level room.
+A Smart Space is where people meet and communicate around something meaningful. It is not merely a group chat and is not a technical integration.
+
+**Primary creation path:** Every eligible Intelligent Board exposes **CREATE SMART SPACE**. The Board becomes seed context; people are never automatically added. The creator reviews the Space and explicitly publishes/invites it.
+
+**Other creation paths:**
+- Smart Note → Create Smart Space
+- Ask Naya → Create Smart Space
+- Existing Space → Create Related Space
+
+**After publication:** The Space invitation enters the Activity Feed so relevant users can discover and choose to join.
+
+**Joining:** Joining is explicit. Joining does not automatically save every participant as a permanent Connection.
+
+**Space contents:**
+- title/topic
+- description/opening question
+- source/seed context
+- shared conversation
+- participant list
+- Naya intelligence/weaving layer
+- emerging intelligence
+- distilled wisdom/lessons/meaning/actions
+- connection actions
+- messaging actions
+- consent/share controls
+- lifecycle controls
+
+**Space conversation:** Participants can post messages, reply where supported, ask Naya about the conversation, inspect participants, save Connections, and participate in intelligence distillation.
+
+**Intelligence loop:**
+`CONVERSATION → NAYA WEAVES → EMERGING INTELLIGENCE → DISTILLATION → REVIEW → SHARE WISDOM BY CONSENT → COLLECTIVE`
+
+**Connection loop:**
+`MEET → INTERACT → SAVE CONNECTION → ORGANIZE → SMART MAIL / DIRECT MESSAGE → CREATE/REQUEST ANOTHER SPACE`
+
+**Creator control:** The person who creates the Space is its Creator/Owner. The Creator can publish, manage creator-level controls, and **CLOSE SPACE**. Participants cannot unilaterally close someone else's Space.
+
+**Leave vs close:**
+- `LEAVE SPACE` = one participant exits.
+- `CLOSE SPACE` = Creator ends active participation/conversation for the Space.
+
+**Space lifecycle:**
+`PROPOSED → ACTIVE → QUIET → CLOSED`
+
+A Space may remain open indefinitely if its Creator chooses. It may also be closed when the conversation is complete. A closed Space remains subject to retention/privacy rules; closing does not make it public.
+
+**Share Wisdom:** Space intelligence is never automatically added to Collective Intelligence. Participants must deliberately review and consent to a proposed wisdom contribution.
+
+**Mastermind use case:** A group can deliberately create a Space to solve a problem, discover breakthroughs, distill the resulting intelligence, and intentionally contribute approved wisdom to the Collective.
+
+**See:** `13-SMART-SPACE-MESSAGING-CONNECTION-CONTRACT.md` for the complete product and verification contract.
 
 ## 11. ROOM: SETTINGS
 
@@ -207,8 +275,8 @@ WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSO
 - visibility defaults
 
 ### Connections
-- connected source controls
-- verification preferences
+- connection/privacy controls
+- communication permissions
 
 ### Experience
 - appearance/preferences where applicable
@@ -229,7 +297,7 @@ Every setting must specify: what it changes, scope, default, persistence, immedi
 **Required contents:**
 - current page/room title
 - global search entry or compact search control
-- connection/status indicator
+- truthful connection/status indicator where applicable
 - Naya presence/access
 - account/profile access if intentionally enabled
 
@@ -272,6 +340,7 @@ Mobile: positioned above mobile navigation without obscuring content.
 
 ### COMMUNICATION
 - Smart Mail
+- Smart Spaces where intentionally exposed as a top-level entry
 
 ### SYSTEM
 - Settings
@@ -286,7 +355,7 @@ Mobile: positioned above mobile navigation without obscuring content.
 
 **Reference five-item pattern:** Home, Notes, Reports, Intel, Mail.
 
-The new build may preserve this pattern while ensuring access to Collective, Evidence, Connections and Settings through a deliberate More/Menu mechanism.
+The new build may preserve this pattern while ensuring access to Collective, Evidence, Connections, Smart Spaces and Settings through a deliberate More/Menu mechanism.
 
 **Requirement:** no important room may become inaccessible on mobile.
 
@@ -309,7 +378,7 @@ Frozen-reference destinations:
 
 ## 17. SEARCH ENGINE
 
-**Purpose:** Find intelligence, not merely filter visible cards.
+**Purpose:** Find intelligence, people, Spaces, and retained relationships rather than merely filter visible cards.
 
 Must search across:
 - Smart Notes
@@ -320,10 +389,11 @@ Must search across:
 - Weaver synthesis
 - Lesson/Meaning/Action
 - tags
-- lists/groups/spaces
+- lists/groups/Spaces
+- saved Connections
 - reports where indexed
 
-Each result must show why it matched and open the original canonical event.
+Each result must show why it matched and open the original canonical object/event.
 
 Search modes may include:
 - exact/keyword
@@ -341,11 +411,13 @@ Naya should be available as an intelligent partner, not merely a portrait.
 Possible entry points:
 - Ask Naya
 - ask about this block
+- ask about this Space
 - explain
 - summarize
 - compare
 - find related intelligence
 - suggest next action
+- help distill Space intelligence
 
 All responses must declare their source/trust state where consequential.
 
@@ -353,19 +425,22 @@ All responses must declare their source/trust state where consequential.
 
 ```text
 HOME
- ├─ Search → Intelligence Library / canonical event
+ ├─ Search → Intelligence Library / canonical event / Connections / Spaces
  ├─ Capture → Smart Note
- ├─ Smart Note → Intelligent Feed
- ├─ Intelligent Feed → Search / Reports / Learning
- ├─ Naya → Event enrichment
+ ├─ Smart Note → Intelligent Feed / Create Space
+ ├─ Intelligent Board → Create Smart Space
+ ├─ Smart Space → Activity Feed / Conversation / Participants
+ ├─ Space participant → Save Connection
+ ├─ Connection → Groups / Search / Smart Mail / Direct Message / Create Space
+ ├─ Space conversation → Naya Weaving → Intelligence
+ ├─ Space intelligence → Wisdom Review → Collective by Consent
+ ├─ Naya → Event enrichment / Space weaving
  ├─ Machine → Evidence / receipt
- ├─ Collective → consented projection
- ├─ Share → privacy boundary → public/collective projection
  └─ Action → next event / learning
 
 SETTINGS → controls all applicable rooms
-CONNECTIONS → external source adapters
-SMART MAIL → communication adapters
+SMART MAIL → communication workflow
+TECHNICAL INTEGRATIONS → explicit system adapters, not Connections
 ```
 
 ## 20. VISUAL HOUSE LANGUAGE
@@ -386,6 +461,8 @@ Every room belongs to the same visual system:
 
 The Hub should feel like one extraordinary instrument, not ten unrelated pages.
 
+**Sizing law:** Controls, cards, navigation items, and connection objects must be compact enough to scan quickly. Do not use oversized UI merely to make the interface look premium. Premium means clarity, hierarchy, proportion, and purposeful space.
+
 ## 21. ROOM DEFINITION TEMPLATE
 
 Every future room must answer these questions before implementation:
@@ -397,7 +474,7 @@ Every future room must answer these questions before implementation:
 5. What objects live inside it?
 6. What can the user create?
 7. What can the user edit?
-8. What can the user delete?
+8. What can the user delete/close/leave?
 9. What can the user click?
 10. Where does every click go?
 11. What changes immediately?
