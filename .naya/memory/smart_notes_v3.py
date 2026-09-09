@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Naya Power Smart Brain v3."""
+"""Naya Power Smart Brain v3 — retrieval with a fail-closed authorization boundary."""
 from __future__ import annotations
 import argparse,json,math,re
 from collections import Counter
@@ -8,7 +8,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 from permission_scope import AuthorizationRequest,Principal,authorize,filter_authorized
 ROOT=Path(__file__).resolve().parents[2];MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';INDEX=EVENTS/'INDEX.json';VALIDATION_REPORT=MEMORY/'VALIDATION-REPORT.json'
-EVENT_RE=re.compile(r'^SE-[A-Za-z0-9][A-Za-z0-9._-]*$');NOTE_RE=re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$');VALID_STATUS={'ACTIVE','CANONICAL','HISTORICAL','SUPERSEDED','CONFLICTED','STALE'}
+EVENT_RE=re.compile(r'^SE-[A-Za-z0-9][A-Za-z0-9._-]*$');NOTE_RE=re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$')
 QUERY_EXPANSIONS={'decision':{'decision','decided','choice','architecture','direction'},'decisions':{'decision','decided','choice','architecture','direction'},'superbrain':{'superbrain','smart','brain','memory','continuity'},'memory':{'memory','canonical','event','notes','continuity'},'learning':{'learning','lesson','wisdom','cis','intelligence'},'lesson':{'learning','lesson','wisdom','cis'},'lessons':{'learning','lesson','wisdom','cis'},'search':{'search','retrieval','query','ranking'},'retrieve':{'search','retrieval','query','ranking'},'retrieval':{'search','retrieval','query','ranking'},'project':{'project','objective','mission','goal'},'next':{'next','action','execution','handoff'},'execution':{'execution','action','handoff','verification'},'verify':{'verify','verification','evidence','receipt','green'},'verification':{'verify','verification','evidence','receipt','green'},'receipt':{'receipt','evidence','verification','artifact'},'cis':{'cis','learning','intelligence','daily','compounding'}}
 def parse_time(v):
     if v.endswith('Z'):v=v[:-1]+'+00:00'
@@ -27,11 +27,16 @@ def reps(e):
     r=e.get('representations',{})
     if isinstance(r,dict):return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
     if isinstance(r,list):return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
-    return []
+    legacy=[]
+    for key in ('human_shawn','human','naya','machine'):
+        if isinstance(e.get(key),dict):legacy.append(e[key])
+    return legacy
 def all_text(e):
-    p=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary','')]
+    p=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary',''),e.get('status','')]
     for k in ('tags','aliases','concepts'):p+=e.get(k,[]) or []
-    for r in reps(e):p += [r.get('title',''),r.get('summary',''),r.get('content','')];p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
+    for r in reps(e):
+        p += [r.get('title',''),r.get('summary',''),r.get('content',''),r.get('understanding',''),r.get('meaning',''),r.get('decision',''),r.get('lesson','')]
+        p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
     return ' '.join(map(str,p))
 def relationship_map(e):
     r=e.get('relationships',{}) or {}
@@ -58,10 +63,10 @@ def validate_event(e,p):
     for k in ('created_at','effective_at'):
         try:parsed[k]=parse_time(e[k])
         except Exception as exc:er.append(f'{p}: invalid {k}: {exc}')
-    if e.get('status') not in VALID_STATUS:er.append(f'{p}: invalid status')
+    if not isinstance(e.get('status'),str) or not e.get('status').strip():er.append(f'{p}: invalid status')
     if not reps(e):er.append(f'{p}: missing representations')
-    if not e.get('source'):er.append(f'{p}: missing source')
-    v=e.get('verification',{}) or {}
+    if not e.get('source') and not e.get('provenance'):er.append(f'{p}: missing source')
+    v=e.get('verification',{}) or {};vr=e.get('verification_receipt',{}) or {}
     if v.get('status')=='VERIFIED' and not v.get('canonical_url'):er.append(f'{p}: verified event missing canonical_url')
     dt=parsed.get('effective_at')
     if dt:
@@ -74,7 +79,8 @@ def validate_event(e,p):
         except ValueError:rel=str(p)
         if rel!=expected:er.append(f'{p}: physical time bucket mismatch; expected {expected}')
     for r in reps(e):
-        if r.get('id') and not NOTE_RE.match(r['id']):er.append(f'{p}: invalid representation id {r["id"]}')
+        rid=r.get('id')
+        if rid and not NOTE_RE.match(str(rid)):er.append(f'{p}: invalid representation id {rid}')
     return er
 def validate():
     er=[];ids={};loaded=load_events()
@@ -135,8 +141,8 @@ def authority_score(e):
     s=0.0;a=str(e.get('authority','')).lower()
     if a in {'repository-execution','canonical','human-decision'}:s+=35
     if a in {'derived','audit','generated'}:s-=20
-    if (e.get('verification') or {}).get('status')=='VERIFIED':s+=35
-    return s+{'ACTIVE':30,'CANONICAL':25,'HISTORICAL':0,'CONFLICTED':-20,'STALE':-40,'SUPERSEDED':-70}.get(e.get('status'),0)
+    if (e.get('verification') or {}).get('status')=='VERIFIED' or (e.get('verification_receipt') or {}).get('verified'):s+=35
+    return s+{'ACTIVE':30,'CANONICAL':25,'HISTORICAL':0,'CONFLICTED':-20,'STALE':-40,'SUPERSEDED':-70}.get(str(e.get('status','')).upper(),0)
 def recency_score(e,latest):
     try:age=max(0,(latest-parse_time(e['effective_at'])).total_seconds()/86400)
     except Exception:return 0.0
