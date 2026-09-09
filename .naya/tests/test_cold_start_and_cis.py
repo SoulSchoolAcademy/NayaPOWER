@@ -26,7 +26,14 @@ def assert_restored(proc):
     required=["current_state","repository_reality","memory","validation","next_best_action"]
     missing=[k for k in required if k not in data]
     if missing: raise SystemExit("cold-start missing: "+", ".join(missing))
-    assert data["status"]=="VERIFIED"; assert data["repository_reality"]["available"] is True; assert data["repository_reality"]["clean"] is True; assert data["validation"]["passed"] is True; assert data["current_state"]; assert data["next_best_action"]
+    failures=[]
+    if data.get("status")!="VERIFIED": failures.append(f"status={data.get('status')!r}")
+    if data.get("repository_reality",{}).get("available") is not True: failures.append(f"repository_available={data.get('repository_reality',{}).get('available')!r}")
+    if data.get("repository_reality",{}).get("clean") is not True: failures.append(f"repository_clean={data.get('repository_reality',{}).get('clean')!r} working_tree_status={data.get('repository_reality',{}).get('working_tree_status')!r}")
+    if data.get("validation",{}).get("passed") is not True: failures.append(f"validation={data.get('validation')!r}")
+    if not data.get("current_state"): failures.append("current_state empty")
+    if not data.get("next_best_action"): failures.append(f"next_best_action={data.get('next_best_action')!r}")
+    if failures: raise SystemExit("cold-start assertion details: " + "; ".join(failures))
     return data
 
 def main():
