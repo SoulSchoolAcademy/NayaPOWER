@@ -7,43 +7,13 @@
     "intent": "Obtain one authoritative repository-runtime execution with observable diagnostic evidence, identify the first real divergence without guessing, repair only that boundary when evidence supports it, then close the outstanding customer activation runtime proof and advance the Superbrain.",
     "scope": ["live main resolution", "authoritative GitHub Actions inspection", "machine-readable runtime failure observability", "repository-capable execution", "first-divergence isolation", "Torch 9 customer activation runtime proof", "full Superbrain gate verification", "evidence-linked successor continuity"],
     "protected": ["existing Naya Repository Operating Standard", "existing Mission State/current-state authority", "canonical Note Event authority", "MAXESS scoring/result authority", "anti-duplication law", "evidence boundaries", "authorization and safety boundaries", "NayaNET federation boundary"],
-    "acceptance": [
-      "live Git HEAD is resolved and used as the current repository identity",
-      "newest authoritative Superbrain and related gate runs are inspected for that exact HEAD",
-      "machine-readable diagnostic artifacts are retrieved when produced",
-      "exact first failing command, stdout, stderr, and exit status are captured when repository runtime reaches the diagnostic",
-      "if runtime evidence is unavailable, UNKNOWN is preserved rather than converted into a guessed cause",
-      "no application architecture is changed without a concrete evidence-backed divergence",
-      "Torch 9 customer activation deterministic composition passes in repository runtime",
-      "the authoritative Superbrain Gate passes on the resulting exact HEAD before any GREEN claim",
-      "current state, collective feed, evidence, and successor continuation agree on the verified boundary",
-      "the next Naya receives one directly executable next action"
-    ],
-    "evidence": [
-      ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
-      ".naya/control-plane/MAP.json",
-      ".naya/control-plane/STATE.json",
-      ".naya/control-plane/BLOCKS.json",
-      ".naya/control-plane/PROOF.json",
-      ".naya/runtime/runtime_failure_isolation.py",
-      ".naya/runtime/customer_activation_loop_test.py",
-      ".github/workflows/superbrain-gate.yml",
-      "SUPERBRAIN/AI-BOOT/AI-OPERATING-FEED.md",
-      ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md"
-    ],
+    "acceptance": ["live Git HEAD is resolved and used as the current repository identity", "newest authoritative Superbrain and related gate runs are inspected for that exact HEAD", "machine-readable diagnostic artifacts are retrieved when produced", "exact first failing command, stdout, stderr, and exit status are captured when repository runtime reaches the diagnostic", "if runtime evidence is unavailable, UNKNOWN is preserved rather than converted into a guessed cause", "no application architecture is changed without a concrete evidence-backed divergence", "Torch 9 customer activation deterministic composition passes in repository runtime", "the authoritative Superbrain Gate passes on the resulting exact HEAD before any GREEN claim", "current state, collective feed, evidence, and successor continuation agree on the verified boundary", "the next Naya receives one directly executable next action"],
+    "evidence": [".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json", ".naya/control-plane/MAP.json", ".naya/control-plane/STATE.json", ".naya/control-plane/BLOCKS.json", ".naya/control-plane/PROOF.json", ".naya/runtime/runtime_failure_isolation.py", ".naya/runtime/customer_activation_loop_test.py", ".github/workflows/superbrain-gate.yml", "SUPERBRAIN/AI-BOOT/AI-OPERATING-FEED.md", ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md"],
     "target_state": "AUTHORITATIVE_RUNTIME_PROOF_AND_CUSTOMER_LOOP_VERIFIED",
-    "next_action": "Resolve live main HEAD f43b2b08b3dd954bc0255f80d914cbb79e8216a3; inspect the newest Superbrain Gate and related authoritative runs for that exact HEAD; retrieve any diagnostic artifacts; if a first runtime command is exposed, reproduce and repair only that evidence-backed boundary, then rerun Torch 9 and the full gate; if no steps/logs/artifacts are produced, preserve UNKNOWN and move execution to a repository-capable runtime rather than guessing.",
-    "next_actions": ["Resolve live main HEAD f43b2b08b3dd954bc0255f80d914cbb79e8216a3; inspect the newest Superbrain Gate and related authoritative runs for that exact HEAD; retrieve any diagnostic artifacts; if a first runtime command is exposed, reproduce and repair only that evidence-backed boundary, then rerun Torch 9 and the full gate; if no steps/logs/artifacts are produced, preserve UNKNOWN and move execution to a repository-capable runtime rather than guessing."],
+    "next_action": "Resolve live main HEAD at execution time; inspect the newest Superbrain Gate and related authoritative runs for that exact HEAD; retrieve any diagnostic artifacts; if a first runtime command is exposed, reproduce and repair only that evidence-backed boundary, then rerun Torch 9 and the full gate; if no steps/logs/artifacts are produced, preserve UNKNOWN and move execution to a repository-capable runtime rather than guessing.",
+    "next_actions": ["Resolve live main HEAD at execution time; inspect the newest Superbrain Gate and related authoritative runs for that exact HEAD; retrieve any diagnostic artifacts; if a first runtime command is exposed, reproduce and repair only that evidence-backed boundary, then rerun Torch 9 and the full gate; if no steps/logs/artifacts are produced, preserve UNKNOWN and move execution to a repository-capable runtime rather than guessing."],
     "next_action_count": 1
   },
   "status_vocabulary": ["INTENDED", "IMPLEMENTED", "COMPLETE", "VERIFIED", "RACE_READY", "PRODUCTION_PROVEN", "UNKNOWN", "FAILED", "STALE"],
-  "rules": {
-    "verified_requires_proof": true,
-    "unknown_is_not_green": true,
-    "recorded_is_not_current": true,
-    "one_next_action": true,
-    "one_shot_ten_first": true,
-    "no_dead_end_handoff": true,
-    "no_orphan_execution": true
-  }
+  "rules": {"verified_requires_proof": true,"unknown_is_not_green": true,"recorded_is_not_current": true,"one_next_action": true,"one_shot_ten_first": true,"no_dead_end_handoff": true,"no_orphan_execution": true}
 }
