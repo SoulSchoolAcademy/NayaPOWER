@@ -55,6 +55,8 @@ And the shared structural areas:
 
 The detailed room contract is in `09-HUB-ROOM-BY-ROOM-SPEC.md`.
 The quick-entry room contracts are in `12-ROOM-EXECUTION-CONTRACTS.md`.
+The Smart Space/Messaging/Connection contract is in `13-SMART-SPACE-MESSAGING-CONNECTION-CONTRACT.md`.
+The primary Smart Feed experience/execution contract is in `14-SMART-FEED-EXPERIENCE-CONTRACT.md`.
 
 ## 3. IDENTITY / ENTRANCE AUTHORITY
 
@@ -91,7 +93,7 @@ See `11-IDENTITY-BOOTSTRAP-CONTRACT.md`.
 
 ## 4. SMART FEED AUTHORITY
 
-The Smart Feed / Intelligent Feed is the primary intelligence surface.
+The Smart Feed / Intelligent Feed is the primary intelligence surface and the first major product experience to be built.
 
 It has three conceptual layers:
 
@@ -105,7 +107,8 @@ The Intelligent Block sequence is:
 
 **WISDOM → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WEAVER → LESSON / MEANING / ACTION**
 
-The detailed Smart Feed specification is in `08-SMART-FEED-INTELLIGENCE-SPEC.md`.
+The data/intelligence specification is in `08-SMART-FEED-INTELLIGENCE-SPEC.md`.
+The primary visual, interaction, responsive, and execution contract is in `14-SMART-FEED-EXPERIENCE-CONTRACT.md` and governs implementation decisions for the Feed.
 
 ## 5. CURRENT-STATE DOCTRINE
 
@@ -327,10 +330,12 @@ The visible runtime is the final acceptance surface.
 - `10-OPEN-DECISIONS-BEFORE-CODING.md`
 - `11-IDENTITY-BOOTSTRAP-CONTRACT.md`
 - `12-ROOM-EXECUTION-CONTRACTS.md`
+- `13-SMART-SPACE-MESSAGING-CONNECTION-CONTRACT.md`
+- `14-SMART-FEED-EXPERIENCE-CONTRACT.md`
 
 ## 16. EXECUTION METHOD
 
-Build one room at a time, in dependency order.
+Build in dependency order and lock each stage before advancing.
 
 ### Stage A — Foundation
 - source boundary
@@ -340,33 +345,37 @@ Build one room at a time, in dependency order.
 - routing/state model
 - verification harness
 
-### Stage B — House shell
+### Stage B — Experience-defining shell + Smart Feed
 - top bar
 - left sidebar
-- lower bar
-- ecosystem bar
 - mobile navigation
+- minimal lower/ecosystem access
 - Home orientation
-
-### Stage C — Intelligence core
-- Smart Note event model
-- Smart Feed
+- Smart Feed state
 - Intelligent Block renderer
-- Personal/Collective/Activity modes
-- Search
+- Personal/Collective/Activity lenses
+- Smart Note projection
+- search boundary
+- Create Smart Space bridge
 
-### Stage D — Intelligence rooms
-- Daily Intelligence
-- Intelligence Library
+### Stage C — Intelligence infrastructure
+- canonical Smart Note event model
+- retrieval/index
+- Reports
+- Library
 - Evidence
+
+### Stage D — Network / communication rooms
+- Smart Space
 - Connections
 - Collective
-
-### Stage E — Communication/system
 - Smart Mail
-- Smart Space
+
+### Stage E — System / intelligence partner
 - Settings
 - Naya adapter
+- production identity
+- external service adapters
 
 ### Stage F — Production proof
 - runtime verification
@@ -389,3 +398,5 @@ If something is unknown, record the unknown. Never silently invent it.
 **We are not repairing the old Hub. We are learning from it and building the right Hub.**
 
 Preserve proven value. Remove accumulated ambiguity. Make every room intentional. Make every connection explicit. Make every state truthful. Make the intelligence beautiful. Verify the exact runtime.
+
+**Execution leadership:** after each completed, verified stage, the next dependency is determined and supplied as the next execution prompt. The product owner should not have to repeatedly specify the next engineering task.
