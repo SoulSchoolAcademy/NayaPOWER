@@ -1,6 +1,4 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-REGISTER-2026-09-09
-# RELEASE PATH: NAYANET/HUB -> VITE BUILD -> CLOUDFLARE aged-art-7c12
-# RELEASE AUTHORITY: this workflow must build the exact current main head.
 name: Deploy Canonical NayaNET Hub
 on:
   push:
@@ -44,50 +42,25 @@ jobs:
         run: |
           set -euo pipefail
           D="NAYANET/HUB/dist"
-          test -s "$D/index.html"
-          test -s "$D/nayanet-cognitive-engine.js"
+          test -s "$D/index.html" && test -s "$D/nayanet-cognitive-engine.js"
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL' 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" "$D" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           test ! -e "$D/nayanet-intelligent-feed-v6.js"
-          sha256sum "$D/index.html" > /tmp/index.sha256
-          sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
-          echo 'CANONICAL_HUB_BUILD=PASS'
-          echo 'ARTIFACT_INSPECTION=PASS'
-          echo 'COGNITIVE_ENGINE_ARTIFACT=PASS'
-          echo "ARTIFACT_FILES=$(find "$D" -type f | wc -l)"
-          echo "ARTIFACT_BYTES=$(du -sb "$D" | cut -f1)"
-          echo "INDEX_SHA256=$(cut -d' ' -f1 /tmp/index.sha256)"
-          echo "COGNITION_SHA256=$(cut -d' ' -f1 /tmp/cognition.sha256)"
+          sha256sum "$D/index.html" > /tmp/index.sha256; sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
+          echo 'CANONICAL_HUB_BUILD=PASS'; echo 'ARTIFACT_INSPECTION=PASS'; echo 'COGNITIVE_ENGINE_ARTIFACT=PASS'
       - name: Prepare exact Cloudflare artifact
         run: |
           set -euo pipefail
           rm -rf release && mkdir -p release/public
           cp -R NAYANET/HUB/dist/. release/public/
           cat > release/worker.js <<'EOF'
-          export default {
-            async fetch(request, env) {
-              const url = new URL(request.url);
-              const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/');
-              const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request;
-              return env.ASSETS.fetch(assetRequest);
-            }
-          };
+          export default { async fetch(request, env) { const url = new URL(request.url); const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; return env.ASSETS.fetch(assetRequest); } };
           EOF
           cat > release/wrangler.jsonc <<'EOF'
-          {
-            "name": "aged-art-7c12",
-            "main": "worker.js",
-            "compatibility_date": "2026-09-08",
-            "account_id": "262c881746ea6e9978ca18b3eb831907",
-            "assets": { "directory": "./public", "binding": "ASSETS" }
-          }
+          {"name":"aged-art-7c12","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"./public","binding":"ASSETS"}}
           EOF
           test -s release/public/index.html && test -s release/public/nayanet-cognitive-engine.js && test -s release/worker.js
-          echo "RELEASE_SOURCE_COMMIT=$GITHUB_SHA" > release/RELEASE-MANIFEST.txt
-          echo "RELEASE_SOURCE=NAYANET/HUB" >> release/RELEASE-MANIFEST.txt
-          echo "RELEASE_TARGET=aged-art-7c12" >> release/RELEASE-MANIFEST.txt
-          cat /tmp/index.sha256 >> release/RELEASE-MANIFEST.txt
-          cat /tmp/cognition.sha256 >> release/RELEASE-MANIFEST.txt
-          echo 'CLOUDFLARE_ARTIFACT=READY'
+          printf 'RELEASE_SOURCE_COMMIT=%s\nRELEASE_SOURCE=NAYANET/HUB\nRELEASE_TARGET=aged-art-7c12\n' "$GITHUB_SHA" > release/RELEASE-MANIFEST.txt
+          cat /tmp/index.sha256 /tmp/cognition.sha256 >> release/RELEASE-MANIFEST.txt
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
         with:
@@ -97,31 +70,20 @@ jobs:
           command: deploy --config wrangler.jsonc
       - name: Independently verify exact public runtime and built assets
         run: |
-          set -euo pipefail
-          status=$(curl -sS -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$GITHUB_SHA" || true)
-          test "$status" = "200"
-          smart_status=$(curl -sS -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$GITHUB_SHA" || true)
-          test "$smart_status" = "200"
-          cmp -s /tmp/root /tmp/smart
-          js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2)
-          test -n "$js_src"
-          case "$js_src" in /*) ;; *) js_src="/$js_src" ;; esac
-          js_status=$(curl -sS -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$GITHUB_SHA" || true)
-          test "$js_status" = "200" && test -s /tmp/app-js
-          cognitive_status=$(curl -sS -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$GITHUB_SHA" || true)
-          test "$cognitive_status" = "200" && test -s /tmp/cognition
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
-          for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" /tmp/root /tmp/app-js /tmp/cognition || { echo "PUBLIC_RUNTIME_COGNITION_MISSING=$x"; exit 1; }; done
-          ! grep -Fq 'nayanet-intelligent-feed-v6.js' /tmp/root
-          ! grep -Fq '2026 09 08 452 NayaNET Hub' /tmp/root
-          echo 'PUBLIC_RUNTIME=PASS'
-          echo 'RUNTIME_ROUTE_PARITY=PASS'
-          echo 'RUNTIME_JS_ASSET=PASS'
-          echo 'RUNTIME_COGNITIVE_ENGINE=PASS'
-          echo 'RUNTIME_INTELLIGENCE_MARKERS=PASS'
-          echo 'RUNTIME_CANONICAL_REACT_MARKER=PASS'
-          echo 'OLD_452_ARTIFACT=ABSENT'
-          echo "ACTUAL_RUNTIME=$RUNTIME"
-          echo "SMART_LINK=$SMART_LINK"
-          echo "JS_ASSET=$js_src"
-          echo "SOURCE_COMMIT=$GITHUB_SHA"
+          set -u
+          fail=0
+          get(){ curl -sS -o "$2" -w '%{http_code}' "$1" || true; }
+          status=$(get "$RUNTIME/?release=$GITHUB_SHA" /tmp/root); echo "ROOT_HTTP=$status"; [ "$status" = 200 ] || { echo FAIL_ROOT_HTTP; fail=1; }
+          smart_status=$(get "$SMART_LINK?release=$GITHUB_SHA" /tmp/smart); echo "SMART_HTTP=$smart_status"; [ "$smart_status" = 200 ] || { echo FAIL_SMART_HTTP; fail=1; }
+          if [ -s /tmp/root ] && [ -s /tmp/smart ]; then cmp -s /tmp/root /tmp/smart && echo ROUTE_PARITY=PASS || { echo FAIL_ROUTE_PARITY; fail=1; }; else echo FAIL_ROUTE_BODY; fail=1; fi
+          js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root 2>/dev/null | head -1 | cut -d'"' -f2 || true); echo "JS_SRC=$js_src"; [ -n "$js_src" ] || { echo FAIL_JS_SOURCE_DISCOVERY; fail=1; }
+          case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
+          if [ -n "$js_src" ]; then js_status=$(get "$RUNTIME$js_src?release=$GITHUB_SHA" /tmp/app-js); echo "JS_HTTP=$js_status"; [ "$js_status" = 200 ] && [ -s /tmp/app-js ] || { echo FAIL_JS_ASSET; fail=1; }; fi
+          cognitive_status=$(get "$RUNTIME/nayanet-cognitive-engine.js?release=$GITHUB_SHA" /tmp/cognition); echo "COGNITION_HTTP=$cognitive_status"; [ "$cognitive_status" = 200 ] && [ -s /tmp/cognition ] || { echo FAIL_COGNITION_ASSET; fail=1; }
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null && echo "RUNTIME_MARKER_PASS=$x" || { echo "FAIL_RUNTIME_MARKER=$x"; fail=1; }; done
+          for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -RFiq "$x" /tmp/root /tmp/app-js /tmp/cognition 2>/dev/null && echo "RUNTIME_COGNITION_PASS=$x" || { echo "FAIL_RUNTIME_COGNITION=$x"; fail=1; }; done
+          grep -Fq 'nayanet-intelligent-feed-v6.js' /tmp/root && { echo FAIL_RETIRED_FEED; fail=1; } || echo RETIRED_FEED=ABSENT
+          grep -Fq '2026 09 08 452 NayaNET Hub' /tmp/root && { echo FAIL_RETIRED_452; fail=1; } || echo RETIRED_452=ABSENT
+          echo "ACTUAL_RUNTIME=$RUNTIME"; echo "SMART_LINK=$SMART_LINK"; echo "SOURCE_COMMIT=$GITHUB_SHA"
+          [ "$fail" -eq 0 ] || exit 1
+          echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_COGNITIVE_ENGINE=PASS; echo RUNTIME_INTELLIGENCE_MARKERS=PASS; echo RUNTIME_CANONICAL_REACT_MARKER=PASS
