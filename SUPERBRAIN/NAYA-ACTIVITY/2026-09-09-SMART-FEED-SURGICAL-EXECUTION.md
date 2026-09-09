@@ -8,10 +8,10 @@
 **PROJECT:** NayaNET Intelligent Hub Smart Feed
 **REPOSITORY:** `SoulSchoolAcademy/NayaPOWER`
 **BRANCH:** `main`
-**LATEST HEAD AT RECORD:** `bbcb6c171a44ee4a5cc054c2ed78a7a00bf428c6`
+**LATEST HEAD AT RECORD:** `4fabca154f52da76f508064451497db467e6a6e1`
 
 ### 01 — WHAT IS HAPPENING NOW?
-The canonical React Smart Feed is being upgraded surgically. Automated deployment runs have exposed a legacy JavaScript upgrade layer in `scripts/v7-intelligent-upgrade.js` that can generate the old user-facing intelligence/control surface. It is not referenced by the canonical React Hub and is being removed rather than hidden.
+The canonical React Smart Feed is being upgraded surgically. Automated deployment runs exposed a legacy JavaScript upgrade layer in `scripts/v7-intelligent-upgrade.js` that can generate the old user-facing intelligence/control surface. It is not referenced by the canonical React Hub and has been removed rather than hidden.
 
 ### 02 — WHAT ARE WE ACTUALLY TRYING TO ACHIEVE?
 Preserve the canonical Smart Feed and approved Hub shell, make Collective Intelligence the default, strengthen the Smart Board hierarchy and interaction layout, remove internal Superbrain product UI, and prove source-to-runtime parity.
@@ -35,27 +35,29 @@ Remove the legacy user-facing injector, preserve the canonical React renderer, s
 Do not redesign the Hub shell. Do not expose Naya 16. Do not add Superbrain controls. Do not create a second Smart Feed or favorites architecture. Do not use a generic `CAPTURE` string check that can false-positive on unrelated dependency text; detect the actual operator-control cluster instead.
 
 ### 09 — EXECUTE SURGICALLY
-Completed changes in this execution chain: Smart Feed state is event-scoped; Activity is explicitly labelled `ACTIVITY FEED`; Favorite and Save have explicit accessible labels; the fixture source label was changed from `NayaNET Intelligence Capture` to `NayaNET Intelligence Event` to avoid conflating a content noun with the forbidden operator control; the canonical workflow now scans source, artifact, and runtime for the actual forbidden UI; the legacy `scripts/v7-intelligent-upgrade.js` injector is being deleted.
+Completed changes in this execution chain: Smart Feed state is event-scoped; Activity is explicitly labelled `ACTIVITY FEED`; Favorite and Save have explicit accessible labels; the fixture source label was changed from `NayaNET Intelligence Capture` to `NayaNET Intelligence Event` to avoid conflating a content noun with the forbidden operator control; the canonical workflow now scans source, artifact, and runtime for the actual forbidden UI; the legacy `scripts/v7-intelligent-upgrade.js` injector has been removed.
 
 ### 10 — VERIFY THE CHANGE
-The canonical workflow reached the artifact inspection stage and caught the legacy injector as a real forbidden source. A subsequent false-positive on the generic word `CAPTURE` was traced to bundle text rather than the operator panel and the guard was narrowed to operator-control clusters. The next canonical run is the decisive build/deploy/runtime verification.
+The canonical workflow reached artifact inspection and caught the legacy injector as a real forbidden source. A subsequent false-positive on the generic word `CAPTURE` was traced to bundle text rather than the operator panel and the guard was narrowed to operator-control clusters. The current head requires a fresh canonical deployment verification.
 
 ### 11 — TRACE REALITY END-TO-END
 SOURCE → canonical React SmartFeedBoard/App + legacy injector audit → Vite artifact → aged-art-7c12 Worker → independent runtime checks. The workflow requires route parity, JS asset retrieval, cognition-engine retrieval, product markers, forbidden operator-cluster absence, and current source-commit parity.
 
 ### 12 — PRODUCE RECEIPTS
-Receipts available now: implementation commits `9733227eaf752cc965e7400a0651f20ad4fb25d6`, `18b84f02f634e4f1782dff28820dee436988fead`, `664bcb6f5cc613b5a4a745e49133fc8408f78c9e`, and `bbcb6c171a44ee4a5cc054c2ed78a7a00bf428c6`; canonical workflow run `34415920725` exposed the legacy injector and stopped before release; the current final run remains required for runtime proof.
+Receipts available now: implementation commits `9733227eaf752cc965e7400a0651f20ad4fb25d6`, `18b84f02f634e4f1782dff28820dee436988fead`, `664bcb6f5cc613b5a4a745e49133fc8408f78c9e`, `bbcb6c171a44ee4a5cc054c2ed78a7a00bf428c6`, and `4fabca154f52da76f508064451497db467e6a6e1`; canonical workflow run `34415920725` exposed the legacy injector and stopped before release; a new push-triggered run has not yet appeared for `4fabca154f52da76f508064451497db467e6a6e1`, so deployment/runtime proof remains pending.
 
 ### 13 — CHALLENGE MY OWN CONCLUSION
 A successful text-marker scan cannot prove visual layout. A competing Cloudflare deployment or browser/service-worker cache can still make the user see a different product. If the canonical Worker returns a clean artifact but the user's exact visible page still shows the old controls, inspect the exact URL and competing deployment path rather than changing Smart Feed code again.
 
 ### 14 — REPORT CONFIDENCE
-**MEDIUM / RELEASE BLOCKED.** The source-level legacy injector has been identified and targeted for removal. End-to-end public-runtime removal and visual parity are not yet proven.
+**MEDIUM / RELEASE BLOCKED.** The source-level legacy injector has been removed. End-to-end public-runtime removal and visual parity are not yet proven.
 
 ### 15 — DETERMINE WHAT MATTERS NEXT
-Run the canonical deployment from the current head, inspect the resulting job output, then independently compare the exact public runtime with the user's observed UI.
+Trigger or obtain the canonical deployment from the current head, inspect the resulting job output, then independently compare the exact public runtime with the user's observed UI.
 
 ### 16 — LEARN AND CHANGE THE SYSTEM
 Permanent guardrails now include: source scan for forbidden operator UI, artifact scan for forbidden product markers, operator-cluster detection instead of generic `CAPTURE` detection, route parity, runtime asset checks, and source-commit parity. The visual gate remains separate and must never be implied by static success.
 
 **16-PROTOCOL CHECK:** PASS — current execution state and contradiction are recorded.
+
+**RELEASE-TRIGGER NOTE:** This record update exists solely to create a new main-branch push after the legacy injector removal, because the canonical workflow's current public trigger history shows the preceding run was manually dispatched on the prior commit. No product behavior is added by this note.
