@@ -1,0 +1,64 @@
+name: NayaNET World-Class Feed — Vercel Production
+on:
+  push:
+    branches: [v7-intelligent-hub-live]
+    paths:
+      - 'index.html'
+      - 'nayanet-intelligent-feed-v5.js'
+      - '.github/workflows/naya-feed-vercel-deploy.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: nayanet-world-class-feed-production
+  cancel-in-progress: true
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact feed source
+        uses: actions/checkout@v4
+      - name: Bind exact Vercel project
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .vercel
+          cat > .vercel/project.json <<EOF
+          {"projectId":"prj_cHa9gwrtscCW8JuMDjcvw6DafaOK","orgId":"team_RQnhoOb3bAXxMlcr67GFTu3Q"}
+          EOF
+      - name: Verify feed source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s index.html
+          test -s nayanet-intelligent-feed-v5.js
+          grep -Fq 'nayanet-intelligent-feed-v5.js' index.html
+          node --check nayanet-intelligent-feed-v5.js
+          echo "WORLD-CLASS FEED SOURCE: PASS"
+          echo "SOURCE_COMMIT=$GITHUB_SHA"
+      - name: Deploy exact source to Vercel production
+        id: deploy
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "$VERCEL_TOKEN"
+          npx --yes vercel@latest deploy --prod --yes --token "$VERCEL_TOKEN" | tee /tmp/vercel.log
+          URL="$(grep -Eo 'https://[^[:space:]]+\.vercel\.app' /tmp/vercel.log | tail -n 1)"
+          test -n "$URL"
+          echo "DEPLOYMENT_URL=$URL" >> "$GITHUB_OUTPUT"
+          echo "DEPLOYMENT_URL=$URL"
+      - name: Independent live verification
+        env:
+          URL: ${{ steps.deploy.outputs.DEPLOYMENT_URL }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL "$URL/" -o /tmp/live.html
+          grep -Fq 'NayaNET' /tmp/live.html
+          grep -Fq 'nayanet-intelligent-feed-v5.js' /tmp/live.html
+          curl -fsSL "$URL/nayanet-intelligent-feed-v5.js" -o /tmp/live-feed.js
+          node --check /tmp/live-feed.js
+          echo "LIVE SOURCE/PUBLIC RUNTIME PARITY: PASS"
+          echo "VERIFIED_URL=$URL"
