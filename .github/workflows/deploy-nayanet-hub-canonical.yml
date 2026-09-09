@@ -1,3 +1,4 @@
+# CANONICAL VISIBLE FIRST-SLICE RELEASE — SOURCE → CLOUDFLARE → EXACT RUNTIME
 name: Deploy Canonical NayaNET Hub
 on:
   push:
