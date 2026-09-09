@@ -1,0 +1,42 @@
+name: NayaNET 10-10 Static Gate
+
+on:
+  push:
+    paths:
+      - '2026 09 09 1213 NAYANET HUB.html'
+      - 'scripts/nayanet-cognitive-engine.js'
+      - 'scripts/nayanet-hub-intelligence-layer.js'
+      - 'SMART_NOTE_CONSTITUTION.md'
+      - '00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md'
+      - 'SUPERBRAIN/**'
+      - 'tests/**'
+      - '.github/workflows/nayanet-10-10-static-gate.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Run source-level 10/10 gate
+        run: python tests/verify_nayanet_10_10.py
+
+      - name: Verify canonical Hub is the tested source
+        run: |
+          test -f '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NayaNetCognition' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NAYANET-HUB-INTELLIGENCE-V2:START' '2026 09 09 1213 NAYANET HUB.html'
+
+      - name: Publish gate boundary
+        run: |
+          echo 'STATIC_SOURCE_GATES=PASS'
+          echo 'AUTHENTICATED_LIFECYCLE=EXTERNAL_REQUIRED'
+          echo 'DEPLOYED_RUNTIME_PARITY=EXTERNAL_REQUIRED'
+          echo 'FINAL_10_10=BLOCKED_UNTIL_EXTERNAL_RECEIPTS'
