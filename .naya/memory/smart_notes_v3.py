@@ -1,200 +1,223 @@
 #!/usr/bin/env python3
-"""Naya Power Smart Brain v3 — retrieval with a fail-closed authorization boundary."""
+"""Naya Power Smart Brain v3.
+
+Canonical source: chronological Note Events under .naya/memory/events.
+The runtime deliberately tolerates the v2 event envelope while enforcing the
+v3 retrieval and CIS model. Canonical event JSON remains the source of truth.
+Derived indexes and validation diagnostics are reproducible artifacts.
+
+Retrieval is intentionally dependency-free: authorization, exact matching,
+BM25 lexical ranking, TF-IDF cosine similarity, metadata filtering, query
+expansion, recency, authority/verification weighting, and relationship-aware
+reranking. Authorization is a hard pre-ranking boundary: unauthorized events
+are removed before corpus construction, ranking, relationship expansion, or
+context delivery.
+"""
 from __future__ import annotations
-import argparse,json,math,re
+import argparse, json, math, re
 from collections import Counter
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
-from permission_scope import AuthorizationRequest,Principal,authorize,filter_authorized
-ROOT=Path(__file__).resolve().parents[2];MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';INDEX=EVENTS/'INDEX.json';VALIDATION_REPORT=MEMORY/'VALIDATION-REPORT.json'
-EVENT_RE=re.compile(r'^SE-[A-Za-z0-9][A-Za-z0-9._-]*$');NOTE_RE=re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$')
-QUERY_EXPANSIONS={'decision':{'decision','decided','choice','architecture','direction'},'decisions':{'decision','decided','choice','architecture','direction'},'superbrain':{'superbrain','smart','brain','memory','continuity'},'memory':{'memory','canonical','event','notes','continuity'},'learning':{'learning','lesson','wisdom','cis','intelligence'},'lesson':{'learning','lesson','wisdom','cis'},'lessons':{'learning','lesson','wisdom','cis'},'search':{'search','retrieval','query','ranking'},'retrieve':{'search','retrieval','query','ranking'},'retrieval':{'search','retrieval','query','ranking'},'project':{'project','objective','mission','goal'},'next':{'next','action','execution','handoff'},'execution':{'execution','action','handoff','verification'},'verify':{'verify','verification','evidence','receipt','green'},'verification':{'verify','verification','evidence','receipt','green'},'receipt':{'receipt','evidence','verification','artifact'},'cis':{'cis','learning','intelligence','daily','compounding'}}
-def parse_time(v):
-    if v.endswith('Z'):v=v[:-1]+'+00:00'
-    d=datetime.fromisoformat(v)
-    if d.tzinfo is None:d=d.replace(tzinfo=ZoneInfo('America/Vancouver'))
-    return d
-def path_time(p):
+from permission_scope import AuthorizationRequest, Principal, authorize, filter_authorized
+ROOT = Path(__file__).resolve().parents[2]
+MEMORY = ROOT / '.naya' / 'memory'
+EVENTS = MEMORY / 'events'
+INDEX = EVENTS / 'INDEX.json'
+VALIDATION_REPORT = MEMORY / 'VALIDATION-REPORT.json'
+EVENT_RE = re.compile(r'^SE-[A-Za-z0-9][A-Za-z0-9._-]*$')
+NOTE_RE = re.compile(r'^SN-[0-9]{8}-[0-9]{6}-.+$')
+VALID_STATUS = {'ACTIVE','CANONICAL','HISTORICAL','SUPERSEDED','CONFLICTED','STALE'}
+QUERY_EXPANSIONS = {'decision': {'decision','decided','choice','architecture','direction'},'decisions': {'decision','decided','choice','architecture','direction'},'superbrain': {'superbrain','smart','brain','memory','continuity'},'memory': {'memory','canonical','event','notes','continuity'},'learning': {'learning','lesson','wisdom','cis','intelligence'},'lesson': {'learning','lesson','wisdom','cis'},'lessons': {'learning','lesson','wisdom','cis'},'search': {'search','retrieval','query','ranking'},'retrieve': {'search','retrieval','query','ranking'},'retrieval': {'search','retrieval','query','ranking'},'project': {'project','objective','mission','goal'},'next': {'next','action','execution','handoff'},'execution': {'execution','action','handoff','verification'},'verify': {'verify','verification','evidence','receipt','green'},'verification': {'verify','verification','evidence','receipt','green'},'receipt': {'receipt','evidence','verification','artifact'},'cis': {'cis','learning','intelligence','daily','compounding'}}
+def parse_time(value):
+    if value.endswith('Z'): value=value[:-1]+'+00:00'
+    dt=datetime.fromisoformat(value)
+    if dt.tzinfo is None: dt=dt.replace(tzinfo=ZoneInfo('America/Vancouver'))
+    return dt
+def path_time(path):
     try:
-        parts=p.relative_to(EVENTS).parts
+        parts=path.relative_to(EVENTS).parts
         if len(parts)>=5:y,m,d,h=map(int,parts[:4])
         elif len(parts)==4:y,m,d=map(int,parts[:3]);h=0
         else:return None
         return datetime(y,m,d,h,tzinfo=ZoneInfo('America/Vancouver')).isoformat()
     except Exception:return None
-def tokens(t):return re.findall(r'[a-z0-9]+',str(t).lower())
+def tokens(text):return re.findall(r'[a-z0-9]+',str(text).lower())
 def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() else []
-def hydrate_legacy_time(p,e):
-    t=path_time(p)
-    if t:e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
-    e.setdefault('status','HISTORICAL');return e
 def load_events():
     out=[]
     for p in event_files():
-        try:out.append((p,hydrate_legacy_time(p,json.loads(p.read_text(encoding='utf-8')))))
+        try:
+            e=json.loads(p.read_text(encoding='utf-8'));t=path_time(p)
+            if t:e.setdefault('effective_at',t);e.setdefault('created_at',e.get('effective_at',t))
+            e.setdefault('status','HISTORICAL');out.append((p,e))
         except Exception as exc:out.append((p,{'__parse_error__':str(exc)}))
     return out
 def reps(e):
-    r=e.get('representations')
-    if isinstance(r,dict) and r:return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
+    r=e.get('representations',{})
+    if isinstance(r,dict) and r:return [v if isinstance(v,dict) else {'content':str(v)} for v in r.values()]
     if isinstance(r,list) and r:return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
     legacy=[]
     for key in ('human_shawn','human','naya','machine'):
         if isinstance(e.get(key),dict):legacy.append(e[key])
     for key in ('shawn_note','ai_note','machine_note','intelligence_feed','pis_update'):
-        if isinstance(e.get(key),str) and e.get(key):legacy.append({'representation':key,'content':e[key]})
+        if isinstance(e.get(key),str) and e.get(key):legacy.append({'content':e[key]})
     if not legacy:
         content=e.get('summary') or e.get('lesson') or e.get('next_action') or e.get('source_of_truth')
-        if content:legacy=[{'representation':'legacy','content':str(content)}]
+        if content:legacy=[{'content':str(content)}]
     return legacy
 def all_text(e):
-    p=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary',''),e.get('status','')]
-    for k in ('tags','aliases','concepts'):p+=e.get(k,[]) or []
+    parts=[e.get('event_id',''),e.get('title',''),e.get('subject',''),e.get('project',''),e.get('event_type',''),e.get('type',''),e.get('summary','')]
+    for k in ('tags','aliases','concepts'):parts+=e.get(k,[]) or []
     for r in reps(e):
-        p += [r.get('title',''),r.get('summary',''),r.get('content',''),r.get('understanding',''),r.get('meaning',''),r.get('decision',''),r.get('lesson','')];p += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];p += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];p += r.get('aliases',[]) or []
-    return ' '.join(map(str,p))
+        parts += [r.get('title',''),r.get('summary',''),r.get('content','')];parts += r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];parts += r.get('next_best_actions',[]) or r.get('what_changed',[]) or [];parts += r.get('aliases',[]) or []
+    return ' '.join(map(str,parts))
 def relationship_map(e):
-    r=e.get('relationships',{}) or []
-    if isinstance(r,dict):return r
-    if isinstance(r,list):return {'related':r}
+    rel=e.get('relationships',{}) or {}
+    if isinstance(rel,dict):return rel
+    if isinstance(rel,list):return {'related':rel}
     return {}
-def normalize_targets(v):
-    if v is None:return []
-    if isinstance(v,str):return [v]
-    if isinstance(v,dict):
-        t=v.get('event_id') or v.get('id') or v.get('target');return [t] if t else []
-    if isinstance(v,list):
-        o=[]
-        for x in v:
-            if isinstance(x,dict):
-                t=x.get('event_id') or x.get('id') or x.get('target')
-                if t:o.append(t)
-            else:o.append(x)
-        return o
-    return [v]
+def normalize_targets(value):
+    if value is None:return []
+    if isinstance(value,str):return [value]
+    if isinstance(value,dict):
+        target=value.get('event_id') or value.get('id') or value.get('target');return [target] if target else []
+    if isinstance(value,list):
+        out=[]
+        for item in value:
+            if isinstance(item,dict):
+                target=item.get('event_id') or item.get('id') or item.get('target')
+                if target:out.append(target)
+            else:out.append(item)
+        return out
+    return [value]
 def validate_event(e,p):
-    er=[];parsed={}
-    if not EVENT_RE.match(str(e.get('event_id',''))):er.append(f'{p}: invalid event_id')
+    errors=[];parsed={}
+    if not EVENT_RE.match(str(e.get('event_id',''))):errors.append(f'{p}: invalid event_id')
     for k in ('created_at','effective_at'):
         try:parsed[k]=parse_time(e[k])
-        except Exception as exc:er.append(f'{p}: invalid {k}: {exc}')
-    if not isinstance(e.get('status'),str) or not e.get('status').strip():er.append(f'{p}: invalid status')
-    if not reps(e):er.append(f'{p}: missing representations')
-    if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):er.append(f'{p}: missing source')
+        except Exception as exc:errors.append(f'{p}: invalid {k}: {exc}')
+    if not isinstance(e.get('status'),str) or not e.get('status').strip():errors.append(f'{p}: invalid status')
+    if not reps(e):errors.append(f'{p}: missing representations')
+    if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):errors.append(f'{p}: missing source')
     v=e.get('verification',{}) or {}
-    if v.get('status')=='VERIFIED' and not v.get('canonical_url'):er.append(f'{p}: verified event missing canonical_url')
+    if v.get('status')=='VERIFIED' and not v.get('canonical_url'):errors.append(f'{p}: verified event missing canonical_url')
     dt=parsed.get('effective_at')
     if dt:
-        raw=str(e.get('effective_at',''));b=e.get('time_bucket',{}) or {};h=b.get('hour') if len(raw)<=10 else f'{dt:%H}'
-        try:rel=p.relative_to(EVENTS)
-        except ValueError:rel=Path(p)
-        if h is None:
-            try:h=rel.parts[3] if len(rel.parts)>=5 else '00'
-            except Exception:h=f'{dt:%H}'
-        expected=f'{dt:%Y/%m/%d}/{int(h):02d}/{e["event_id"]}.json' if len(rel.parts)>=5 else f'{dt:%Y/%m/%d}/{e["event_id"]}.json'
-        if str(rel)!=expected:er.append(f'{p}: physical time bucket mismatch; expected {expected}')
+        raw=str(e.get('effective_at',''));bucket=e.get('time_bucket',{}) or {}
+        try:relative=p.relative_to(EVENTS)
+        except ValueError:relative=Path(p)
+        hour=bucket.get('hour') if len(raw)<=10 else f'{dt:%H}'
+        if hour is None:
+            try:hour=relative.parts[3] if len(relative.parts)>=5 else '00'
+            except Exception:hour=f'{dt:%H}'
+        expected=f'{dt:%Y/%m/%d}/{int(hour):02d}/{e["event_id"]}.json' if len(relative.parts)>=5 else f'{dt:%Y/%m/%d}/{e["event_id"]}.json'
+        if str(relative)!=expected:errors.append(f'{p}: physical time bucket mismatch; expected {expected}')
     for r in reps(e):
-        rid=r.get('id')
-        if rid and not NOTE_RE.match(str(rid)):er.append(f'{p}: invalid representation id {rid}')
-    return er
+        if r.get('id') and not NOTE_RE.match(str(r['id'])):errors.append(f'{p}: invalid representation id {r["id"]}')
+    return errors
 def validate():
-    er=[];ids={};loaded=load_events()
+    errors=[];ids={};loaded=load_events()
     for p,e in loaded:
-        if e.get('__parse_error__'):er.append(f'{p}: {e["__parse_error__"]}');continue
-        er+=validate_event(e,p);eid=e.get('event_id')
-        if eid in ids:er.append(f'duplicate event_id: {eid}')
+        if e.get('__parse_error__'):errors.append(f'{p}: {e["__parse_error__"]}');continue
+        errors+=validate_event(e,p);eid=e.get('event_id')
+        if eid in ids:errors.append(f'duplicate event_id: {eid}')
         ids[eid]=str(p)
-    # Legacy relationship labels may point to retired/external objects. Typed
-    # relationship enforcement is handled at retrieval time; validation only
-    # verifies that the relationship container is structurally readable.
     for _,e in loaded:relationship_map(e)
-    if not INDEX.exists():er.append('missing events/INDEX.json')
+    if not INDEX.exists():errors.append('missing events/INDEX.json')
     else:
         try:
-            idx=json.loads(INDEX.read_text(encoding='utf-8'));indexed={x.get('event_id') if isinstance(x,dict) else x for x in idx.get('events',[])};canonical=set(ids)
-            if not canonical.issubset(indexed):er.append(f'INDEX missing canonical IDs: index={len(indexed)} canonical={len(canonical)}')
-        except Exception as exc:er.append(f'INDEX invalid: {exc}')
-    VALIDATION_REPORT.write_text(json.dumps({'schema_version':1,'checked_at':'DERIVED','status':'GREEN' if not er else 'RED','error_count':len(er),'errors':er,'canonical_event_count':len(ids)},indent=2,ensure_ascii=False)+'\n',encoding='utf-8');return er
+            idx=json.loads(INDEX.read_text(encoding='utf-8'));indexed={x.get('event_id') if isinstance(x,dict) else x for x in idx.get('events',[])}
+            if not set(ids).issubset(indexed):errors.append(f'INDEX missing canonical IDs: index={len(indexed)} canonical={len(ids)}')
+        except Exception as exc:errors.append(f'INDEX invalid: {exc}')
+    VALIDATION_REPORT.write_text(json.dumps({'schema_version':1,'checked_at':'DERIVED','status':'GREEN' if not errors else 'RED','error_count':len(errors),'errors':errors,'canonical_event_count':len(ids)},indent=2,ensure_ascii=False)+'\n',encoding='utf-8');return errors
 def build_index():
     rows=[]
     for p,e in load_events():
         if e.get('__parse_error__'):continue
         rows.append({'event_id':e['event_id'],'path':str(p.relative_to(EVENTS)),'subject':e.get('subject',''),'type':e.get('type') or e.get('event_type',''),'tags':e.get('tags',[]) or []})
-    rows.sort(key=lambda x:(x['path'],x['event_id']));d={'version':'3.0.0','status':'CANONICAL','organization':'YEAR/MONTH/DAY/HOUR/EVENT','event_count':len(rows),'events':rows};INDEX.write_text(json.dumps(d,indent=2,ensure_ascii=False)+'\n',encoding='utf-8');return d
-def expanded_tokens(q):
-    b=tokens(q);o=list(b)
-    for t in b:o.extend(sorted(QUERY_EXPANSIONS.get(t,set())))
-    return o
+    rows.sort(key=lambda x:(x['path'],x['event_id']));data={'version':'3.0.0','status':'CANONICAL','organization':'YEAR/MONTH/DAY/HOUR/EVENT','event_count':len(rows),'events':rows};INDEX.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8');return data
+def expanded_tokens(query):
+    base=tokens(query);expanded=list(base)
+    for token in base:expanded.extend(sorted(QUERY_EXPANSIONS.get(token,set())))
+    return expanded
 def corpus(events):
-    docs=[];df=Counter();lens=[]
+    docs=[];df=Counter();lengths=[]
     for e in events:
-        c=Counter(tokens(all_text(e)));docs.append(c);df.update(c.keys());lens.append(sum(c.values()))
-    n=max(1,len(docs));avg=sum(lens)/len(lens) if lens else 1.0;idf={t:math.log((n+1)/(d+1))+1 for t,d in df.items()};return docs,idf,avg
-def cosine(q,d,idf):
-    if not q or not d:return 0.0
-    qc=Counter(q);qv={t:(1+math.log(c))*idf.get(t,1) for t,c in qc.items()};dv={t:(1+math.log(c))*idf.get(t,0) for t,c in d.items()};dot=sum(qv.get(t,0)*dv.get(t,0) for t in qv);qn=math.sqrt(sum(x*x for x in qv.values()));dn=math.sqrt(sum(x*x for x in dv.values()));return dot/(qn*dn) if qn and dn else 0.0
-def bm25(q,d,idf,avg,k1=1.2,b=0.75):
-    if not q or not d:return 0.0
-    dl=sum(d.values());s=0.0
-    for term,qtf in Counter(q).items():
-        tf=d.get(term,0)
-        if tf:s+=idf.get(term,1.0)*(tf*(k1+1)/(tf+k1*(1-b+b*(dl/max(avg,1.0)))))
-    return s
-def lexical(q,e):
-    qs=set(tokens(q));title=set(tokens(e.get('title','')));aliases=set(tokens(' '.join(e.get('aliases',[]) or [])));tags=set(tokens(' '.join(e.get('tags',[]) or [])));concepts=set(tokens(' '.join(e.get('concepts',[]) or [])));body=set(tokens(all_text(e)));return len(qs&title)*120+len(qs&aliases)*90+len(qs&tags)*70+len(qs&concepts)*65+len(qs&body)*18
-def exact_match_bonus(q,e):
-    q=q.strip().lower()
+        c=Counter(tokens(all_text(e)));docs.append(c);df.update(c.keys());lengths.append(sum(c.values()))
+    n=max(1,len(docs));avg_len=(sum(lengths)/len(lengths)) if lengths else 1.0;idf={t:math.log((n+1)/(d+1))+1 for t,d in df.items()};return docs,idf,avg_len
+def cosine(q,doc,idf):
+    if not q or not doc:return 0.0
+    qc=Counter(q);qv={t:(1+math.log(c))*idf.get(t,1) for t,c in qc.items()};dv={t:(1+math.log(c))*idf.get(t,0) for t,c in doc.items()};dot=sum(qv.get(t,0)*dv.get(t,0) for t in qv);qn=math.sqrt(sum(x*x for x in qv.values()));dn=math.sqrt(sum(x*x for x in dv.values()));return dot/(qn*dn) if qn and dn else 0.0
+def bm25(q,doc,idf,avg_len,k1=1.2,b=0.75):
+    if not q or not doc:return 0.0
+    dl=sum(doc.values());score=0.0;counts=Counter(q)
+    for term,qtf in counts.items():
+        tf=doc.get(term,0)
+        if not tf:continue
+        denom=tf+k1*(1-b+b*(dl/max(avg_len,1.0)));score+=idf.get(term,1.0)*(tf*(k1+1)/denom)
+    return score
+def lexical(query,e):
+    q=set(tokens(query));title=set(tokens(e.get('title','')));aliases=set(tokens(' '.join(e.get('aliases',[]) or [])));tags=set(tokens(' '.join(e.get('tags',[]) or [])));concepts=set(tokens(' '.join(e.get('concepts',[]) or [])));body=set(tokens(all_text(e)));return len(q&title)*120+len(q&aliases)*90+len(q&tags)*70+len(q&concepts)*65+len(q&body)*18
+def exact_match_bonus(query,e):
+    q=query.strip().lower()
     if not q:return 0.0
-    eid=str(e.get('event_id','')).lower();sub=str(e.get('subject','')).lower();title=str(e.get('title','')).lower()
+    eid=str(e.get('event_id','')).lower();subject=str(e.get('subject','')).lower();title=str(e.get('title','')).lower()
     if q==eid:return 1200.0
-    if q==sub or q==title:return 650.0
+    if q==subject or q==title:return 650.0
     if q in eid:return 450.0
     return 0.0
 def authority_score(e):
-    s=0.0;a=str(e.get('authority','')).lower()
-    if a in {'repository-execution','canonical','human-decision'}:s+=35
-    if a in {'derived','audit','generated'}:s-=20
-    if (e.get('verification') or {}).get('status')=='VERIFIED' or (e.get('verification_receipt') or {}).get('verified'):s+=35
-    return s+{'ACTIVE':30,'CANONICAL':25,'HISTORICAL':0,'CONFLICTED':-20,'STALE':-40,'SUPERSEDED':-70}.get(str(e.get('status','')).upper(),0)
-def recency_score(e,latest):
-    try:age=max(0,(latest-parse_time(e['effective_at'])).total_seconds()/86400)
+    score=0.0;authority=str(e.get('authority','')).lower()
+    if authority in {'repository-execution','canonical','human-decision'}:score+=35
+    if authority in {'derived','audit','generated'}:score-=20
+    if (e.get('verification') or {}).get('status')=='VERIFIED':score+=35
+    score += {'ACTIVE':30,'CANONICAL':25,'HISTORICAL':0,'CONFLICTED':-20,'STALE':-40,'SUPERSEDED':-70}.get(e.get('status'),0);return score
+def recency_score(e,latest_time):
+    try:age_days=max(0,(latest_time-parse_time(e['effective_at'])).total_seconds()/86400)
     except Exception:return 0.0
-    return 45.0*math.exp(-age/14.0)
+    return 45.0*math.exp(-age_days/14.0)
 def metadata_match(e,project=None,event_type=None,status=None,tag=None):
     if project and str(e.get('project','')).lower()!=project.lower():return False
     if event_type and str(e.get('event_type') or e.get('type','')).lower()!=event_type.lower():return False
     if status and str(e.get('status','')).lower()!=status.lower():return False
     if tag and tag.lower() not in {str(x).lower() for x in (e.get('tags') or [])}:return False
     return True
-def authorization_request(principal_id=None,scope=None,project=None,grants=()):return AuthorizationRequest(Principal(principal_id or '',scope,project,frozenset(grants or ())),scope,project)
+def authorization_request(principal_id=None,scope=None,project=None,grants=()):
+    principal=Principal(principal_id=principal_id or '',scope=scope,project=project,grants=frozenset(grants or ()));return AuthorizationRequest(principal=principal,scope=scope,project=project)
 def authorized_events(loaded,principal_id=None,scope=None,project=None,grants=()):
-    req=authorization_request(principal_id,scope,project,grants);events=[e for _,e in loaded if not e.get('__parse_error__')];ids={e.get('event_id') for e in filter_authorized(req,events)};return [(p,e) for p,e in loaded if not e.get('__parse_error__') and e.get('event_id') in ids and authorize(req,e)]
+    request=authorization_request(principal_id,scope,project,grants);events=[e for _,e in loaded if not e.get('__parse_error__')];allowed_ids={e.get('event_id') for e in filter_authorized(request,events)};return [(p,e) for p,e in loaded if not e.get('__parse_error__') and e.get('event_id') in allowed_ids and authorize(request,e)]
 def authorized_relationship_targets(event,authorized_by_id):
-    rel=relationship_map(event);ids=set()
-    for k in ('related','depends_on','supersedes','superseded_by','source_events'):ids.update(normalize_targets(rel.get(k,[])))
-    return [authorized_by_id[i] for i in ids if i in authorized_by_id]
+    rel=relationship_map(event);targets=set()
+    for k in ('related','depends_on','supersedes','superseded_by','source_events'):targets.update(normalize_targets(rel.get(k,[])))
+    return [authorized_by_id[target] for target in targets if target in authorized_by_id]
 def retrieve(query,limit=10,since=None,until=None,project=None,event_type=None,status=None,tag=None,principal_id=None,scope=None,access_project=None,grants=()):
-    loaded=[(p,e) for p,e in load_events() if not e.get('__parse_error__')];authorized=authorized_events(loaded,principal_id,scope,access_project or project,grants);es=[e for _,e in authorized];docs,idf,avg=corpus(es);exp=expanded_tokens(query);latest=max((parse_time(e['effective_at']) for e in es),default=datetime.now().astimezone());ranked=[]
+    loaded=[(p,e) for p,e in load_events() if not e.get('__parse_error__')];authorized_loaded=authorized_events(loaded,principal_id,scope,access_project or project,grants);es=[e for _,e in authorized_loaded];docs,idf,avg_len=corpus(es);expanded=expanded_tokens(query);latest=max((parse_time(e['effective_at']) for e in es),default=datetime.now().astimezone());ranked=[]
     for i,e in enumerate(es):
         dt=parse_time(e['effective_at'])
         if since and dt<since or until and dt>until:continue
         if not metadata_match(e,project,event_type,status,tag):continue
-        rel=exact_match_bonus(query,e)+lexical(' '.join(exp),e)+bm25(exp,docs[i],idf,avg)*95+cosine(exp,docs[i],idf)*140
-        if rel>0:ranked.append([rel+authority_score(e)+recency_score(e,latest),e])
-    ranked.sort(key=lambda x:x[0],reverse=True);seed={e['event_id'] for _,e in ranked[:3]};byid={e['event_id']:e for _,e in authorized}
+        bm=bm25(expanded,docs[i],idf,avg_len);tf=cosine(expanded,docs[i],idf);lx=lexical(' '.join(expanded),e);exact=exact_match_bonus(query,e);relevance=exact+lx+bm*95+tf*140
+        if relevance<=0:continue
+        ranked.append([relevance+authority_score(e)+recency_score(e,latest),e])
+    ranked.sort(key=lambda x:x[0],reverse=True);seed={e['event_id'] for _,e in ranked[:3]};authorized_by_id={e['event_id']:e for _,e in authorized_loaded}
     for row in ranked:
-        if {e['event_id'] for e in authorized_relationship_targets(row[1],byid)}&seed:row[0]+=35
+        rel_targets=authorized_relationship_targets(row[1],authorized_by_id)
+        if {e['event_id'] for e in rel_targets}&seed:row[0]+=35
     ranked.sort(key=lambda x:(-x[0],x[1]['effective_at'],x[1]['event_id']));return ranked[:limit]
 def daily_report(day=None,tz_name='America/Vancouver',principal_id=None,scope=None,project=None,grants=()):
-    z=ZoneInfo(tz_name);d=datetime.now(z).date()-timedelta(days=1) if day is None else datetime.fromisoformat(day).date();start=datetime.combine(d,datetime.min.time(),z);end=start+timedelta(days=1);sel=[e for _,e in authorized_events(load_events(),principal_id,scope,project,grants) if start<=parse_time(e['effective_at']).astimezone(z)<end];sel.sort(key=lambda x:x['effective_at']);less=[];changes=[];nexts=[]
-    for e in sel:
-        for r in reps(e):less+=r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];changes+=r.get('what_changed',[]) or [];nexts+=r.get('next_best_actions',[]) or []
-    u=lambda x:list(dict.fromkeys(x));return {'report_type':'DAILY_INTELLIGENCE_REPORT','period':d.isoformat(),'timezone':tz_name,'event_count':len(sel),'source_event_ids':[e['event_id'] for e in sel],'what_happened':[e.get('title') or e.get('subject') for e in sel],'what_we_learned':u(less),'what_changed':u(changes),'wins':[e['event_id'] for e in sel if e.get('event_type') in {'milestone','success'} or e.get('type')=='milestone'],'next_best_actions':u(nexts),'open_loops':[e['event_id'] for e in sel if e.get('status') in {'CONFLICTED','STALE'}],'verification_required':True,'feed_status':'AUTHORIZED_PENDING_INTEGRATION'}
+    zone=ZoneInfo(tz_name);local_day=datetime.now(zone).date()-timedelta(days=1) if day is None else datetime.fromisoformat(day).date();start=datetime.combine(local_day,datetime.min.time(),zone);end=start+timedelta(days=1);loaded=[(p,e) for p,e in load_events() if not e.get('__parse_error__')];authorized_loaded=authorized_events(loaded,principal_id,scope,project,grants);selected=[]
+    for _,e in authorized_loaded:
+        dt=parse_time(e['effective_at']).astimezone(zone)
+        if start<=dt<end:selected.append(e)
+    selected.sort(key=lambda x:x['effective_at']);lessons=[];changes=[];nexts=[]
+    for e in selected:
+        for r in reps(e):lessons+=r.get('lessons',[]) or r.get('what_we_learned',[]) or r.get('learning',[]) or [];changes+=r.get('what_changed',[]) or [];nexts+=r.get('next_best_actions',[]) or []
+    uniq=lambda xs:list(dict.fromkeys(xs));return {'report_type':'DAILY_INTELLIGENCE_REPORT','period':local_day.isoformat(),'timezone':tz_name,'event_count':len(selected),'source_event_ids':[e['event_id'] for e in selected],'what_happened':[e.get('title') or e.get('subject') for e in selected],'what_we_learned':uniq(lessons),'what_changed':uniq(changes),'wins':[e['event_id'] for e in selected if e.get('event_type') in {'milestone','success'} or e.get('type')=='milestone'],'next_best_actions':uniq(nexts),'open_loops':[e['event_id'] for e in selected if e.get('status') in {'CONFLICTED','STALE'}],'verification_required':True,'feed_status':'AUTHORIZED_PENDING_INTEGRATION'}
 def main():
     ap=argparse.ArgumentParser();sub=ap.add_subparsers(dest='cmd',required=True);sub.add_parser('validate');sub.add_parser('index');r=sub.add_parser('retrieve');r.add_argument('query');r.add_argument('--limit',type=int,default=10);r.add_argument('--project');r.add_argument('--event-type');r.add_argument('--status');r.add_argument('--tag');r.add_argument('--since');r.add_argument('--until');r.add_argument('--principal-id',required=True);r.add_argument('--scope',required=True);r.add_argument('--access-project',required=True);r.add_argument('--grant',action='append',default=[]);d=sub.add_parser('daily-report');d.add_argument('--day');d.add_argument('--timezone',default='America/Vancouver');d.add_argument('--principal-id',required=True);d.add_argument('--scope',required=True);d.add_argument('--project',required=True);d.add_argument('--grant',action='append',default=[]);a=ap.parse_args()
     if a.cmd=='validate':
-        er=validate();print('PASS — Smart Brain v3 validation is GREEN' if not er else 'FAIL\n'+'\n'.join('- '+x for x in er));return 0 if not er else 1
+        err=validate();print('PASS — Smart Brain v3 validation is GREEN' if not err else 'FAIL\n'+'\n'.join('- '+x for x in err));return 0 if not err else 1
     if a.cmd=='index':print(json.dumps(build_index(),indent=2,ensure_ascii=False));return 0
     if a.cmd=='retrieve':
         since=parse_time(a.since) if a.since else None;until=parse_time(a.until) if a.until else None
