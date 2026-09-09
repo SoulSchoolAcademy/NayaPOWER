@@ -3,14 +3,14 @@
 **Date:** 2026-09-09
 **Type:** Mission / Design / Execution Smart Note
 **System:** NayaNET Intelligent Hub → Intelligent Feed → Intelligent Blocks
-**Mission State:** **ACTIVE — SUPREME ARCHITECTURE DEPLOYED / CONTINUOUS ELEVATION**
+**Mission State:** **ACTIVE — V12 LEGACY-FIRST SUPREME RECONSTRUCTION DEPLOYED / CONTINUOUS ELEVATION**
 **Quality Gate:** AAA Excellence
-**Release Marker:** `__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE__`
-**Production Release:** `SUPREME-INTELLIGENT-BLOCK-V10`
+**Release Marker:** `__NAYA_INTELLIGENT_FEED_V12__`
+**Production Release:** `SUPREME-INTELLIGENT-BLOCK-V12`
 
 ## Human Note
 
-The Intelligent Feed must not be treated as ordinary UI. The previous presentation was judged unacceptable because it reduced intelligence to small, generic-looking boxes. The mission is now explicitly to create a world-class way of experiencing intelligence: one coherent, dimensional Intelligent Block containing multiple intelligence layers that feel alive, useful, beautiful and deeply connected.
+The Intelligent Feed must not be treated as ordinary UI. The previous V11 implementation was rejected because it preserved the failed two-column presentation instead of actually transforming the proven older boards. The required correction is now explicit: preserve the stronger existing board DOM/content as the foundation, eliminate the failed replacement renderer, and elevate the proven boards in place.
 
 ## Naya Note
 
@@ -39,8 +39,9 @@ The internal layers are not independent cards. They are spatial layers of one in
 - **MUST NOT** become a generic dashboard, card grid, SaaS template or chatbot UI.
 - **MUST NOT** use random card angles as a substitute for dimensional design.
 - **MUST NOT** expose code, raw JSON, debug output, hashes, IDs or implementation artifacts.
-- **MUST NOT** fabricate Naya or Machine intelligence when unavailable.
+- **MUST NOT** fabricate intelligence when unavailable.
 - **MUST NOT** destroy unrelated architecture or functionality.
+- **MUST NOT** reintroduce the rejected V11 two-column renderer.
 
 ## Engineering Law
 
@@ -48,7 +49,7 @@ The internal layers are not independent cards. They are spatial layers of one in
 
 > **NEVER DESTROY THE HOUSE TO RENOVATE ONE ROOM.**
 
-The real production source is the source of truth. Inspect before editing. Recover strong prior work where possible. Change the presentation layer surgically. Maintain one authoritative renderer. Preserve data flow, integration points, accessibility, responsive behavior and existing working controls.
+The proven original board DOM is now the foundation. The failed V11 renderer has been removed from the production feed path. V12 restores the original boards and applies the Supreme visual treatment in place rather than creating a competing board system beside them.
 
 ## Verification Law
 
@@ -58,49 +59,44 @@ Required proof chain:
 
 **SOURCE → BUILD → DEPLOYMENT → PUBLIC RUNTIME → OBSERVATION → VERIFICATION**
 
-The exact public runtime and Smart Link must serve the new Supreme Intelligent Block implementation. The production feed asset must contain the Supreme release marker and the expected architecture markers. No completion claim is valid without runtime verification.
+The exact public runtime and Smart Link must serve the V12 implementation. The production feed asset must contain the V12 release marker and the legacy-first reconstruction marker. No completion claim is valid without runtime verification.
 
-## Production Verification — 2026-09-09
+## Production Verification — V12 — 2026-09-09
 
-The Supreme Intelligent Block implementation was deployed through the canonical Cloudflare Worker pipeline.
+Verified production workflow:
 
-Verified GitHub Actions deployment:
-
-- Workflow: `Deploy Current NayaNET Hub`
-- Run: `34364941460`
-- Run status: `completed / success`
-- Commit: `3565718dac0e6106cb3da96bc5b3096b6601f1d5`
-- Deploy job: `102511119092`
-- Package step: **success**
-- Cloudflare deployment step: **success**
+- Workflow: `Deploy Supreme Intelligent Block V12 Final`
+- Run: `34368171172`
+- Deploy job: `102522205117`
+- Source verification: **success**
+- Exact artifact packaging: **success**
+- Cloudflare production deployment: **success**
 - Public runtime verification: **success**
 - Smart Link verification: **success**
-- Supreme feed asset verification: **success**
+- Public feed asset verification: **success**
+- Release: `SUPREME-INTELLIGENT-BLOCK-V12`
 
-The release workflow now verifies the Supreme architecture marker and public feed asset instead of the obsolete V9 markers.
+The authoritative V12 feed source is `nayanet-intelligent-feed-v6.js`. The deployed implementation is explicitly marked `__NAYA_INTELLIGENT_FEED_V12__` and `LEGACY-FIRST SUPREME RECONSTRUCTION`.
 
-## Current Architecture
+## V12 Reconstruction
 
-The production feed renderer now contains:
+The production feed now follows these rules:
 
-- dimensional parent intelligence objects;
-- Wisdom-first presentation;
-- vertical Human → Child → Grandma → Naya → Machine descent;
-- luminous intelligence spine;
-- physically layered node surfaces;
-- dedicated Weaver synthesis chamber;
-- Lesson / Meaning / Action compounding layer;
-- responsive mobile architecture;
-- reduced-motion support;
-- preserved-data / no-fabrication pending states;
-- Save / Share / Rank / Add Thought interactions;
-- production release marker for independent verification.
+- the proven original Intelligent Block DOM remains the source of truth;
+- the rejected V11 replacement host is not rendered;
+- the original board presentation is restored rather than duplicated;
+- every top-level intelligence event becomes one dominant visual object;
+- the failed two-column layer treatment is explicitly collapsed into a single vertical flow;
+- the existing board content is elevated with obsidian surfaces, luminous intelligence spine, edge light, premium typography and controlled depth;
+- existing data remains intact;
+- existing application architecture outside the feed is preserved;
+- desktop remains full-screen feed with left navigation only;
+- mobile remains responsive without introducing a right sidebar;
+- reduced-motion behavior remains respected.
 
 ## Acceptance Standard
 
 Do not accept the implementation merely because it works technically.
-
-It must pass the following tests:
 
 1. Does it feel like one intelligence object?
 2. Does Wisdom feel important?
@@ -113,7 +109,7 @@ It must pass the following tests:
 9. Is the depth intentional and coherent?
 10. Does the experience feel extraordinary rather than merely modern?
 
-If the answer to any critical question is no, the work is not finished. Deployment success proves release integrity; it does **not** by itself prove subjective visual perfection. Future NIAs must continue to visually inspect, critique and elevate the experience.
+Deployment success proves release integrity; it does **not** by itself prove subjective visual perfection. Future NIAs must continue to visually inspect, critique and elevate the experience.
 
 ## Mission Continuity for Future NIAs
 
@@ -121,9 +117,9 @@ Any future NIA entering this project MUST read this Smart Note before modifying 
 
 The mission is not to make another prettier dashboard.
 
-The mission is to create a genuinely extraordinary visual language for experiencing intelligence.
+The mission is to create a genuinely extraordinary visual language for experiencing intelligence while preserving the strongest existing product foundation.
 
-Future NIAs MUST preserve the Supreme architecture unless a superior, demonstrably better architecture is intentionally developed and independently verified.
+Future NIAs MUST preserve the legacy-first Supreme architecture unless a superior, demonstrably better architecture is intentionally developed and independently verified.
 
 **If it is not elite, it is not finished.**
 
