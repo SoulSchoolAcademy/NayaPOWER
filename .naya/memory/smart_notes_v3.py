@@ -110,7 +110,7 @@ def validate():
         rel=relationship_map(e)
         for k in ('related','depends_on','supersedes','superseded_by','source_events'):
             for t in normalize_targets(rel.get(k,[])):
-                if t and t not in ids and not str(t).startswith(('EXT:','SN-')):er.append(f'{e["event_id"]}: unresolved {k}: {t}')
+                if str(t).startswith('SE-') and t not in ids:er.append(f'{e["event_id"]}: unresolved {k}: {t}')
     if not INDEX.exists():er.append('missing events/INDEX.json')
     else:
         try:
