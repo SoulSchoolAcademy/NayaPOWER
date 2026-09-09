@@ -25,19 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        with: {fetch-depth: 0}
       - name: Verify canonical NayaNET execution directive
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          ultimate=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md')
-          directive=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md')
-          constitution=Path('SUPERBRAIN/MASTER-NOTES/NAYA-ULTIMATE-MASTER-DESIGN-CODING-CONTRACT.md')
-          continuity=Path('.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md')
-          obstacle=Path('.naya/notes/2026-09-07-SMART-NOTE-EXECUTION-OBSTACLE-SOLUTION-LOOP.md')
+          ultimate=Path('.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md'); directive=Path('.naya/NAYA-INTELLIGENT-HUB-MASTER-EXECUTION-DIRECTIVE.md'); constitution=Path('SUPERBRAIN/MASTER-NOTES/NAYA-ULTIMATE-MASTER-DESIGN-CODING-CONTRACT.md'); continuity=Path('.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md'); obstacle=Path('.naya/notes/2026-09-07-SMART-NOTE-EXECUTION-OBSTACLE-SOLUTION-LOOP.md')
           for p in [ultimate,directive,constitution,continuity,obstacle]:
               if not p.exists(): raise SystemExit(f'MISSING GOVERNANCE ARTIFACT: {p}')
           ultimate_text=ultimate.read_text(); text=directive.read_text(); constitution_text=constitution.read_text(); continuity_text=continuity.read_text(); obstacle_text=obstacle.read_text()
@@ -88,7 +83,7 @@ jobs:
         run: |
           set -euo pipefail
           H='NAYANET/HUB/dist/index.html'
-          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" "$H" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in 'Intelligent Hub' 'Good morning' 'MORE INTELLIGENCE. LESS WASTE.' 'Ask Naya or search your intelligence' 'PERSONAL' 'COLLECTIVE' 'ACTIVITY' 'ONE CANONICAL INTELLIGENCE OBJECT' 'intelligenceObject'; do grep -Fqi "$x" "$H" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
           echo 'FIRST_SLICE_ARTIFACT=PASS'
       - name: Prepare canonical Cloudflare artifact
         shell: bash
@@ -118,5 +113,5 @@ jobs:
           curl -fsSL --retry 10 --retry-delay 3 "$R/?release=$GITHUB_SHA" -o /tmp/root
           curl -fsSL --retry 10 --retry-delay 3 "$S?release=$GITHUB_SHA" -o /tmp/smart
           cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
-          for x in 'HOUSE FRAME' 'IDENTITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'ACTIVITY' 'Ask Naya' 'intelligentBlock'; do grep -Fqi "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
+          for x in 'Intelligent Hub' 'Good morning' 'MORE INTELLIGENCE. LESS WASTE.' 'Ask Naya or search your intelligence' 'PERSONAL' 'COLLECTIVE' 'ACTIVITY' 'ONE CANONICAL INTELLIGENCE OBJECT' 'intelligenceObject'; do grep -Fqi "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
           echo 'PUBLIC_RUNTIME=PASS'; echo 'RUNTIME_ROUTE_PARITY=PASS'; echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'; echo 'SMART_LINK=https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'; echo "SOURCE_COMMIT=$GITHUB_SHA"
