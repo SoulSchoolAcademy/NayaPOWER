@@ -54,7 +54,7 @@ jobs:
                 const headers = new Headers(response.headers);
                 headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
                 headers.set('Pragma', 'no-cache');
-                headers.set('X-NayaNET-Release', 'CURRENT-HUB-V8');
+                headers.set('X-NayaNET-Release', 'CURRENT-HUB-V9');
                 headers.set('X-NayaNET-Source', '2026 09 08 452 NayaNET Hub.html');
                 headers.set('X-NayaNET-Feed', 'nayanet-intelligent-feed-v6.js');
                 return new Response(response.body, { status: response.status, headers });
@@ -67,13 +67,13 @@ jobs:
           from pathlib import Path
           html=Path('release/assets/index.html').read_text(encoding='utf-8')
           js=Path('release/assets/nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
-          checks=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','homeWorkspace','activationRail','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          checks=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','homeWorkspace','activationRail','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','__NAYA_INTELLIGENT_FEED_V9_PRESENTATION__','Intelligence, made visible.','THE INTELLIGENCE PATH','WHY THIS COMPOUNDS']
           missing=[x for x in checks if x not in html+js]
           if missing: raise SystemExit(f'MISSING_MARKERS={missing}')
           if 'class="sidebar"' not in html: raise SystemExit('LEFT_SIDEBAR_MISSING')
           print('SOURCE_BYTES=',len(html.encode()))
           print('FEED_BYTES=',len(js.encode()))
-          print('SOURCE_CHECK=PASS')
+          print('V9_PRESENTATION_SOURCE_CHECK=PASS')
           PY
 
       - name: Deploy exact artifact
@@ -93,13 +93,13 @@ jobs:
           curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
           python3 - <<'PY'
           from pathlib import Path
-          required=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          required=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','__NAYA_INTELLIGENT_FEED_V9_PRESENTATION__','Intelligence, made visible.','THE INTELLIGENCE PATH','WHY THIS COMPOUNDS']
           for f in ['/tmp/root','/tmp/smart']:
               t=Path(f).read_text(encoding='utf-8')
               missing=[x for x in required if x not in t]
               if missing: raise SystemExit(f'{f} MISSING={missing}')
               if 'class="sidebar"' not in t: raise SystemExit(f'{f} LEFT_SIDEBAR_MISSING')
-          print('PUBLIC_RUNTIME=PASS')
-          print('SMART_LINK=PASS')
+          print('V9_PUBLIC_RUNTIME=PASS')
+          print('V9_SMART_LINK=PASS')
           print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
           PY
