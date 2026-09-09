@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Dispatch canonical Smart Feed release FIRST
+      - name: Dispatch single canonical live Hub deployment FIRST
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -29,9 +29,9 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${GH_TOKEN}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
-            https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/2026-09-08-canonical-hub-release-dispatch.yml/dispatches \
+            https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/deploy-v7-now.yml/dispatches \
             -d '{"ref":"main"}'
-          echo 'CANONICAL_SMART_FEED_RELEASE_DISPATCHED=TRUE'
+          echo 'CANONICAL_LIVE_HUB_RELEASE_DISPATCHED=TRUE'
       - name: Python syntax check
         run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
