@@ -2,4 +2,4 @@ SUPREME-INTELLIGENT-BLOCK-V11 deployment trigger
 
 Dedicated V11 production gate installed. This marker intentionally changed to trigger the release workflow after the workflow file exists on main.
 
-2026-09-09 07:56 PT — EXECUTE NOW: authoritative V11 source is ready; production deployment must run and verify the exact public runtime.
+2026-09-09 07:57 PT — FINAL PRODUCTION EXECUTION TRIGGER: merge this branch to invoke the canonical current-Hub Cloudflare release path.
