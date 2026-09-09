@@ -36,6 +36,8 @@ The new Hub will receive a new canonical source path/name when implementation be
 11. Desktop has a left sidebar and no right Hub sidebar.
 12. Mobile has no persistent left sidebar and must retain access to every important room.
 13. Source → build → deployment → runtime → visible observation is the release proof chain.
+14. Identity is established before personalized Hub state is rendered.
+15. Smart Name + Smart Alias establish the user's NayaNET namespace across intelligence, Smart Mail and Smart Space.
 
 ## Project documents
 
@@ -50,6 +52,8 @@ The new Hub will receive a new canonical source path/name when implementation be
 - `08-SMART-FEED-INTELLIGENCE-SPEC.md` — locked Smart Feed / Intelligent Feed contract
 - `09-HUB-ROOM-BY-ROOM-SPEC.md` — the Hub's rooms and their responsibilities
 - `10-OPEN-DECISIONS-BEFORE-CODING.md` — remaining decisions that must not be guessed
+- `11-IDENTITY-BOOTSTRAP-CONTRACT.md` — entrance → identity → Hub handoff and namespace contract
+- `12-ROOM-EXECUTION-CONTRACTS.md` — quick-entry contract for every room and dependency-ordered execution
 
 ## The house
 
@@ -78,6 +82,36 @@ The new Hub will receive a new canonical source path/name when implementation be
 - Naya access
 - Persistence
 - Verification
+- Identity Bootstrap
+
+## Identity and entrance flow
+
+The entrance and Smart Identity Activation are upstream infrastructure for the Hub, not separate unrelated experiences.
+
+```text
+welcome.nayanet.app
+  ↓ name
+identity.html?name=...
+  ↓ Smart Name + Smart Alias + identity key/state
+INTELLIGENT HUB
+  ↓
+personalized Home + user's namespace + authorized intelligence
+```
+
+The Identity Activation page must ultimately redirect into the new production Intelligent Hub, not directly to `academy.nayanet.app`. Academy remains an ecosystem destination inside the Hub.
+
+For alias `shawn`, the namespace is:
+
+- Smart Name → Shawn
+- Smart Alias → shawn
+- Smart Link → shawn.nayanet.app
+- Smart Mail → shawn
+- Smart Space → shawn
+- Smart Notes / Feed / Reports / Library → Shawn's authorized intelligence context
+
+The existing browser storage keys are bootstrap behavior only. The final production account/identity system must be explicit and persistent.
+
+See `11-IDENTITY-BOOTSTRAP-CONTRACT.md` and `12-ROOM-EXECUTION-CONTRACTS.md`.
 
 ## Home requirements that must not disappear
 
@@ -138,7 +172,7 @@ See `08-SMART-FEED-INTELLIGENCE-SPEC.md`.
 
 Build progressively in dependency order, validating each completed room before moving to the next:
 
-**FOUNDATION → SHELL → HOME → SMART NOTE MODEL → SMART FEED → SEARCH → SECONDARY ROOMS → NAYA → PRODUCTION INTEGRATIONS → VERIFICATION**
+**FOUNDATION → IDENTITY BOOTSTRAP → SHELL → HOME → SMART NOTE MODEL → SMART FEED → SEARCH → SECONDARY ROOMS → NAYA → PRODUCTION INTEGRATIONS → VERIFICATION**
 
 Never modify ten unrelated systems in one pass.
 
