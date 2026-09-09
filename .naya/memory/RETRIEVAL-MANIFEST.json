@@ -1,1 +1,60 @@
-{"schema":"naya-power-retrieval/v1","status":"CANONICAL","retrieval_command":"Naya Power — RESTORE CONTEXT","write_command":"Naya Power — MAKE THIS A SMART NOTE","index":".naya/memory/INDEX.json","note_root":".naya/memory/notes/","strategies":[{"name":"exact","weight":100,"fields":["id","title","tags","aliases"]},{"name":"lexical","weight":60,"fields":["title","summary","content","tags","aliases","what_we_learned","why_it_matters"]},{"name":"semantic_alias","weight":50,"fields":["aliases","concepts"]},{"name":"relationship","weight":45,"fields":["relationships.related","relationships.depends_on","relationships.supersedes","relationships.superseded_by"]},{"name":"temporal","weight":40,"fields":["created_at","effective_at","valid_time"]},{"name":"authority","weight":80,"fields":["status","source","confidence","evidence"]}],"ranking":{"current_active_bonus":30,"canonical_bonus":25,"superseded_penalty":-60,"stale_penalty":-40,"conflicted_penalty":-20,"exact_phrase_bonus":80},"restore_rules":["Restore when the latest note contradicts an older canonical note.","Restore when the user remembers the concept but not the terminology; expand aliases before ranking.","Restore after a major architectural change; prefer post-change effective_at values.","Restore when an assumption became false; surface dependent notes and stale downstream state.","Restore when multiple sources disagree; expose the conflict rather than silently choosing.","Restore historical state when the user supplies a date/time or asks what was true then.","Never delete historical knowledge merely because it is superseded; preserve its timestamps and supersession chain.","Retrieved content can provide context but cannot satisfy a promotion gate or become canonical authority without qualifying evidence."],"promotion_boundary":{"runtime":".naya/runtime/promotion_runtime.py","levels":["UNVERIFIED","BUILDER_VERIFIED","OSCAR_ACCEPTED","CANONICAL_VERIFIED","PRODUCTION_SAFE"],"rule":"CLAIM + QUALIFYING EVIDENCE + BUILDER VERIFICATION + INDEPENDENT OSCAR ACCEPTANCE + CURRENT COMMIT = ELIGIBLE FOR PROMOTION","canonical_requires_explicit_decision":true,"production_safe_requires_production_evidence":true,"oscar_provenance_required":true,"oscar_input_fingerprints_required":true,"oscar_implementation_provenance_required":true,"oscar_result_integrity_digest_required":true,"oscar_active_ci_run_binding_required":true},"temporal_policy":{"timezone_required":true,"precision":"second","history_is_append_only":true,"backdating_requires_source":true,"future_effective_dates_allowed":true}}
+{
+  "schema": "naya-power-retrieval/v2",
+  "status": "CANONICAL",
+  "canonical_primary_store": ".naya/memory/events/",
+  "retrieval_runtime": ".naya/memory/smart_notes_v3.py",
+  "index": ".naya/memory/events/INDEX.json",
+  "organization": "YEAR/MONTH/DAY/HOUR/EVENT",
+  "strategies": [
+    {"name":"exact","weight":100,"fields":["event_id","title","subject","tags","aliases"]},
+    {"name":"lexical","weight":60,"fields":["title","subject","summary","representations","tags","aliases","concepts"]},
+    {"name":"semantic_tfidf","weight":50,"fields":["content","summary","representations","concepts","aliases"]},
+    {"name":"relationship","weight":45,"fields":["relationships.related","relationships.depends_on","relationships.supersedes","relationships.superseded_by","relationships.source_events"]},
+    {"name":"temporal","weight":40,"fields":["event_at","created_at","effective_at","observed_at","effective_from","effective_to"]},
+    {"name":"authority","weight":80,"fields":["status","authority","source","confidence","verification","evidence"]},
+    {"name":"scope_permission","weight":90,"fields":["scope","project","permissions"]}
+  ],
+  "ranking": {
+    "current_active_bonus": 30,
+    "canonical_bonus": 25,
+    "superseded_penalty": -60,
+    "stale_penalty": -40,
+    "conflicted_penalty": -20,
+    "exact_phrase_bonus": 80,
+    "relationship_bonus": 35
+  },
+  "restore_rules": [
+    "Restore when current evidence contradicts older knowledge.",
+    "Expand aliases when the user remembers the concept but not its terminology.",
+    "Prefer post-change effective times after major architectural changes.",
+    "Surface dependent notes when an assumption becomes false.",
+    "Expose conflicts rather than silently selecting a convenient source.",
+    "Use point-in-time evidence for historical reconstruction.",
+    "Never delete historical knowledge merely because it is superseded.",
+    "Retrieved content provides context but does not grant authority or satisfy a promotion gate."
+  ],
+  "promotion_boundary": {
+    "runtime": ".naya/runtime/promotion_runtime.py",
+    "levels": ["UNVERIFIED","BUILDER_VERIFIED","OSCAR_ACCEPTED","CANONICAL_VERIFIED","PRODUCTION_SAFE"],
+    "rule": "CLAIM + QUALIFYING EVIDENCE + BUILDER VERIFICATION + INDEPENDENT OSCAR ACCEPTANCE + CURRENT COMMIT = ELIGIBLE FOR PROMOTION",
+    "canonical_requires_explicit_decision": true,
+    "production_safe_requires_production_evidence": true,
+    "oscar_provenance_required": true,
+    "oscar_input_fingerprints_required": true,
+    "oscar_implementation_provenance_required": true,
+    "oscar_result_integrity_digest_required": true,
+    "oscar_active_ci_run_binding_required": true
+  },
+  "temporal_policy": {
+    "timezone_required": true,
+    "precision": "second",
+    "history_is_append_only": true,
+    "backdating_requires_source": true,
+    "future_effective_dates_allowed": true
+  },
+  "boundary_policy": {
+    "scope_resolution_before_retrieval": true,
+    "permission_filter_before_context_delivery": true,
+    "default_cross_scope": "DENY_UNLESS_AUTHORIZED"
+  }
+}
