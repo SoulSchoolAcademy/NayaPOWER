@@ -1,0 +1,54 @@
+name: Deploy NayaNET Intelligent Hub E03 Foundation
+
+on:
+  push:
+    paths:
+      - 'NAYANET/E03-INTELLIGENT-HUB/**'
+      - '.github/workflows/deploy-nayanet-e03-foundation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+  VERCEL_ORG_ID: team_RQnhoOb3bAXxMlcr67GFTu3Q
+  VERCEL_PROJECT_ID: prj_AXKlAxTe88nWvalv4cZeZ22IZeEt
+
+jobs:
+  verify-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Validate E03 source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f NAYANET/E03-INTELLIGENT-HUB/index.html
+          test -f NAYANET/E03-INTELLIGENT-HUB/vercel.json
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('NAYANET/E03-INTELLIGENT-HUB/index.html').read_text(encoding='utf-8')
+          assert s.count('<!doctype html>')==1
+          assert s.count('</html>')==1
+          for token in ['INTELLIGENCE MADE VISIBLE.','MORE INTELLIGENCE. LESS WASTE.','PRIVATE BY DEFAULT','SMART FEED','data-route="/feed"','data-route="/connections"','mobileNav']:
+              assert token in s, token
+          forbidden=['MutationObserver','requestAnimationFrame','setInterval(']
+          for token in forbidden: assert token not in s, token
+          print('E03 SOURCE VALID')
+          PY
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      - name: Verify Vercel credential
+        run: test -n "$VERCEL_TOKEN"
+      - name: Deploy E03 foundation to Vercel
+        working-directory: NAYANET/E03-INTELLIGENT-HUB
+        run: vercel deploy --token "$VERCEL_TOKEN" --yes --prod --scope "$VERCEL_ORG_ID"
+      - name: Resolve production deployment
+        id: deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'Deployment completed through the dedicated E03 Vercel project.'
