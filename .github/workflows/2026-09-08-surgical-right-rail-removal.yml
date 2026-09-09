@@ -1,3 +1,4 @@
+# TRIGGER: EXECUTE GUARDED LIVE 452 DEPLOYMENT
 name: Surgical NayaNET Right Rail Removal
 
 on:
@@ -33,26 +34,11 @@ jobs:
               new_grid='.homeWorkspace{display:block;width:100%;max-width:none}'
               if old_grid not in html: raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
               html=html.replace(old_grid,new_grid,1)
-          protected={
-              'LEFT_NAV_SIDEBAR': bool(re.search(r'\.sidebar\s*\{',html)),
-              'HOME_WORKSPACE':'homeWorkspace' in html,
-              'HOME_FEED':bool(re.search(r'homeFeed',html)),
-              'INTELLIGENT_FEED':bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed',html,re.I)),
-              'ACTIVITY':bool(re.search(r'Activity Intelligence|ACTIVITY|activity',html,re.I)),
-              'PERSONAL_INTELLIGENCE':bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE',html,re.I)),
-              'COLLECTIVE_INTELLIGENCE':bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE',html,re.I)),
-          }
+          protected={'LEFT_NAV_SIDEBAR':bool(re.search(r'\.sidebar\s*\{',html)),'HOME_WORKSPACE':'homeWorkspace' in html,'HOME_FEED':bool(re.search(r'homeFeed',html)),'INTELLIGENT_FEED':bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed',html,re.I)),'ACTIVITY':bool(re.search(r'Activity Intelligence|ACTIVITY|activity',html,re.I)),'PERSONAL_INTELLIGENCE':bool(re.search(r'Personal Intelligence|PERSONAL INTELLIGENCE',html,re.I)),'COLLECTIVE_INTELLIGENCE':bool(re.search(r'Collective Intelligence|COLLECTIVE INTELLIGENCE',html,re.I))}
           missing=[k for k,v in protected.items() if not v]
           if missing: raise SystemExit('PROTECTED_SURFACE_MISSING='+','.join(missing))
           if rail.search(html): raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
           path.write_text(html,encoding='utf-8')
-          print('CENTER_SMART_FEED=PRESERVED')
-          print('ACTIVITY=PRESERVED')
-          print('PERSONAL_INTELLIGENCE=PRESERVED')
-          print('COLLECTIVE_INTELLIGENCE=PRESERVED')
-          print('LEFT_NAV=PRESERVED')
-          print('RIGHT_OLD_FEED_RAIL=REMOVED_OR_ALREADY_ABSENT')
-          print('NO_FEED_REBUILD=TRUE')
           print('COLLATERAL_DAMAGE_GATE=PASS')
           PY
 
@@ -64,20 +50,7 @@ jobs:
           s=p.read_text(encoding='utf-8')
           marker='NAYANET-LIVE-RIGHT-RAIL-GUARD-V4'
           if marker not in s:
-              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4">
-/* FINAL SURFACE LAW: LEFT NAVIGATION + CENTER INTELLIGENT FEED. NO RIGHT OLD FEED. */
-.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
-.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}
-</style>
-<script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4-RUNTIME">
-(function(){
- function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}
- purge();
- new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});
- setInterval(purge,400);
-})();
-</script>
-'''
+              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4">.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}</style><script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V4-RUNTIME">(function(){function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}purge();new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});setInterval(purge,400)})();</script>'''
               if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
               s=s.replace('</head>',guard+'</head>',1)
               p.write_text(s,encoding='utf-8')
@@ -101,11 +74,7 @@ jobs:
           mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
           cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
-          {
-            "name": "nayanet-v7-intelligent-hub",
-            "compatibility_date": "2026-09-08",
-            "assets": { "directory": "." }
-          }
+          {"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"."}}
           EOF
           grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V4' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
           grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
