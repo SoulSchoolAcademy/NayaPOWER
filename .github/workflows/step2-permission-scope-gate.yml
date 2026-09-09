@@ -9,6 +9,7 @@ on:
       - '.naya/memory/smart_notes_v3.py'
       - '.naya/memory/tests/test_permission_scope.py'
       - '.naya/memory/test_smart_brain_v3.py'
+      - '.naya/memory/events/INDEX.json'
       - '.github/workflows/step2-permission-scope-gate.yml'
   push:
     branches: [main]
@@ -17,6 +18,7 @@ on:
       - '.naya/memory/smart_notes_v3.py'
       - '.naya/memory/tests/test_permission_scope.py'
       - '.naya/memory/test_smart_brain_v3.py'
+      - '.naya/memory/events/INDEX.json'
       - '.github/workflows/step2-permission-scope-gate.yml'
   workflow_dispatch:
 
@@ -29,6 +31,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with: {fetch-depth: 0}
+      - name: Rebuild canonical event index
+        run: python .naya/memory/smart_notes_v3.py index
       - name: Python syntax gate
         run: python -m py_compile .naya/memory/permission_scope.py .naya/memory/smart_notes_v3.py .naya/memory/tests/test_permission_scope.py .naya/memory/test_smart_brain_v3.py
       - name: Ten adversarial permission tests
@@ -48,3 +52,4 @@ jobs:
           path: |
             .naya/memory/STEP-2-TEST-OUTPUT.txt
             .naya/memory/STEP-2-TEST-COMMIT.txt
+            .naya/memory/events/INDEX.json
