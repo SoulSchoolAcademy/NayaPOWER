@@ -22,7 +22,11 @@ Production URL: `https://aged-art-7c12.nayanet.workers.dev`
 
 ## Current build repair
 
-The canonical typecheck now includes React/ReactDOM declarations and Vite client types. This marker is intentionally changed on a dedicated branch so the repair can enter `main` through an auditable merge and trigger the canonical release path.
+React/ReactDOM declarations and Vite client types are explicit. The Cloudflare release workflow now uses a dedicated `public/` asset directory and an explicit SPA asset fetch for `/` and `/intelligence/*`, with runtime retries before release failure.
+
+## Authority
+
+`.github/workflows/deploy-nayanet-hub-canonical.yml` is the sole forward Hub production deployment workflow. Older Hub deployment workflows are retained as historical records but no longer have push-triggered production authority.
 
 ## Important
 
