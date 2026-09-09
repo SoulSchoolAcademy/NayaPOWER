@@ -1,24 +1,26 @@
-name: NayaNET Exact Runtime Visual Proof
+name: NayaNET Exact Runtime Smart Feed Visual Proof
 
 on:
   push:
     branches: [main]
     paths:
-      - '.naya/build/SMART_FEED_RELEASE_TRIGGER'
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/nayanet-visual-proof.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: nayanet-exact-runtime-visual-proof
+  group: nayanet-exact-runtime-smart-feed-visual-proof
   cancel-in-progress: false
+
+env:
+  RUNTIME: https://aged-art-7c12.nayanet.workers.dev
 
 jobs:
   visual-proof:
     runs-on: ubuntu-latest
-    env:
-      RUNTIME: https://aged-art-7c12.nayanet.workers.dev
     steps:
       - name: Checkout exact main
         uses: actions/checkout@v4
@@ -44,48 +46,61 @@ jobs:
           import fs from 'node:fs';
           const url = process.env.RUNTIME + '/?proof=' + process.env.GITHUB_SHA;
           const browser = await chromium.launch({headless:true});
-          const results = [];
-          async function capture(name, contextOptions) {
-            const context = await browser.newContext(contextOptions);
-            const page = await context.newPage();
-            await page.goto(url, {waitUntil:'networkidle', timeout:60000});
-            await page.waitForTimeout(1800);
-            const state = await page.evaluate(() => {
-              const visible = el => { if(!el)return false; const s=getComputedStyle(el),r=el.getBoundingClientRect(); return s.display!=='none'&&s.visibility!=='hidden'&&s.opacity!=='0'&&r.width>0&&r.height>0; };
-              const rail=document.querySelector('.activationRail');
-              const sidebar=document.querySelector('.sidebar');
-              const feed=document.querySelector('.homeFeed .intelligentBlocks');
-              const blocks=[...document.querySelectorAll('.homeFeed .intelligentBlock')];
-              const masterLayers=[...document.querySelectorAll('.master-v2-layer')];
-              const main=document.querySelector('main.main');
+          const results=[];
+          async function capture(name, contextOptions){
+            const context=await browser.newContext(contextOptions);
+            const page=await context.newPage();
+            await page.goto(url,{waitUntil:'networkidle',timeout:60000});
+            await page.waitForTimeout(1200);
+            const state=await page.evaluate(()=>{
+              const visible=el=>{if(!el)return false;const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&s.opacity!=='0'&&r.width>0&&r.height>0};
+              const text=document.body.innerText;
+              const board=document.querySelector('.smart-feed-board');
+              const nutshell=document.querySelector('.sfb-nutshell');
+              const perspectives=[...document.querySelectorAll('.sfb-perspective')];
+              const meaning=document.querySelector('.sfb-meaning-grid');
+              const actions=document.querySelector('.sfb-actions');
+              const comment=document.querySelector('.sfb-comment');
+              const lenses=document.querySelector('.sfb-lenses');
+              const headerActions=document.querySelector('.sfb-header-actions');
+              const forbidden=['Where\'s Naya Now','Where’s Naya Now','SUPERBRAIN','PASS THE TORCH','VERIFY STATE'];
               return {
                 title:document.title,
-                sidebarVisible:visible(sidebar),
-                feedVisible:visible(feed),
-                blockCount:blocks.length,
-                masterLayerCount:masterLayers.length,
-                rightRailVisible:visible(rail),
-                mainWidth:main?.getBoundingClientRect().width||0,
                 viewportWidth:innerWidth,
-                activity:document.body.innerText.includes('ACTIVITY INTELLIGENCE'),
-                personal:document.body.innerText.includes('PERSONAL INTELLIGENCE'),
-                collective:document.body.innerText.includes('COLLECTIVE INTELLIGENCE'),
-                nutshell:document.body.innerText.includes('IN A NUTSHELL'),
-                human:document.body.innerText.includes('HUMAN NOTE'),
-                child:document.body.innerText.includes('CHILD NOTE'),
-                grandma:document.body.innerText.includes('GRANDMA NOTE'),
-                naya:document.body.innerText.includes('NAYA NOTE'),
-                machine:document.body.innerText.includes('MACHINE NOTE'),
-                learned:document.body.innerText.includes('WHAT WE LEARNED'),
-                means:document.body.innerText.includes('WHAT IT MEANS'),
-                v1Present:document.body.innerText.includes('NAYANET SMART FEED MASTER V1'),
-                forceMountPresent:!!document.querySelector('#nayaSmartFeedForceMount')
+                boardVisible:visible(board),
+                nutshellVisible:visible(nutshell),
+                perspectiveCount:perspectives.length,
+                meaningVisible:visible(meaning),
+                actionsVisible:visible(actions),
+                commentVisible:visible(comment),
+                lensesVisible:visible(lenses),
+                headerActionsVisible:visible(headerActions),
+                collective:text.includes('COLLECTIVE INTELLIGENCE'),
+                personal:text.includes('PERSONAL INTELLIGENCE'),
+                activity:text.includes('ACTIVITY FEED'),
+                nutshell:text.includes('IN A NUTSHELL'),
+                human:text.includes('01 · HUMAN'),
+                child:text.includes('02 · CHILD'),
+                grandma:text.includes('03 · GRANDMA'),
+                naya:text.includes('04 · NAYA'),
+                machine:text.includes('05 · MACHINE / EVIDENCE'),
+                learned:text.includes('WHAT WE LEARNED'),
+                means:text.includes('WHAT IT MEANS'),
+                action:text.includes('WHAT TO DO'),
+                ask:text.includes('ASK NAYA'),
+                createSpace:text.includes('CREATE SPACE'),
+                favorite:text.includes('Favorite intelligence'),
+                save:text.includes('Save intelligence'),
+                rate:text.includes('RATE / RANK'),
+                comment:text.includes('COMMENT'),
+                share:text.includes('SHARE'),
+                connect:text.includes('CONNECT'),
+                related:text.includes('INTELLIGENCE GRAPH'),
+                forbidden:forbidden.filter(x=>text.toLowerCase().includes(x.toLowerCase()))
               };
             });
-            if (!state.feedVisible || !state.blockCount || state.masterLayerCount < state.blockCount*7 || !state.activity || !state.personal || !state.collective || !state.nutshell || !state.human || !state.child || !state.grandma || !state.naya || !state.machine || !state.learned || !state.means || state.rightRailVisible || state.v1Present || state.forceMountPresent) {
-              console.log(JSON.stringify(state,null,2));
-              throw new Error(`VISUAL_LAYOUT_FAILED_${name.toUpperCase()}`);
-            }
+            const required=state=>state.boardVisible&&state.nutshellVisible&&state.perspectiveCount>=6&&state.meaningVisible&&state.actionsVisible&&state.commentVisible&&state.lensesVisible&&state.headerActionsVisible&&state.collective&&state.personal&&state.activity&&state.nutshell&&state.human&&state.child&&state.grandma&&state.naya&&state.machine&&state.learned&&state.means&&state.action&&state.ask&&state.createSpace&&state.favorite&&state.save&&state.rate&&state.comment&&state.share&&state.connect&&state.related&&state.forbidden.length===0;
+            if(!required(state)){console.log(JSON.stringify(state,null,2));throw new Error(`SMART_FEED_VISUAL_PROOF_FAILED_${name.toUpperCase()}`)}
             await page.screenshot({path:`proof/${name}.png`,fullPage:true});
             fs.writeFileSync(`proof/${name}.json`,JSON.stringify(state,null,2));
             results.push({name,...state});
@@ -98,41 +113,36 @@ jobs:
           EOF
           node proof.mjs
 
-      - name: Build human-readable proof receipt as artifact
+      - name: Build human-readable proof receipt
         shell: bash
         run: |
           set -euo pipefail
           cat > proof/RELEASE-RECEIPT.md <<EOF
-          # NayaNET Smart Feed Master V2 — Exact Runtime Visual Proof
+          # NayaNET Smart Feed — Exact Runtime Visual Proof
 
-          **STATUS:** VISUALLY VERIFIED — AWAITING HUMAN APPROVAL
-
+          **STATUS:** AUTOMATED VISUAL PROOF PASS — HUMAN VISUAL APPROVAL STILL REQUIRED
           **SOURCE COMMIT:** $GITHUB_SHA
-
           **EXACT RUNTIME:** $RUNTIME/
-
           **PROOF RUN:** https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/$GITHUB_RUN_ID
 
-          ## Mission
-          Replace the failed compressed/two-column Smart Feed experiment with one substantial Intelligent Block presentation that preserves the existing feed intelligence and uses the strongest visual language already present in the Hub.
+          ## Verified
+          - Canonical Smart Board is visible.
+          - Three Smart Feed lenses are visible.
+          - Collective Intelligence, Personal Intelligence, and Activity Feed are present.
+          - In a Nutshell is visible.
+          - Human, Child, Grandma, Naya, and Machine perspectives are present.
+          - What We Learned, What It Means, and What To Do are present.
+          - Ask Naya, Create Space, Favorite, Save, Rate/Rank, Share, Connect, and Comment are present.
+          - Forbidden internal Superbrain/operator UI is absent from the rendered runtime.
+          - Desktop and iPhone-sized browser sessions rendered from the exact public runtime.
 
-          ## Automated visual proof
-          - Existing center Intelligent Feed remains the feed surface.
-          - No persistent right activation rail is visible.
-          - Existing left navigation remains present on desktop.
-          - Activity / Personal / Collective intelligence language remains present.
-          - Each rendered Intelligent Block contains the unified seven-layer intelligence grammar plus the Nutshell and Meaning endpoints.
-          - Desktop and mobile browser sessions rendered successfully from the exact public runtime.
-          - The previous V1 master and force-mount composition are absent from the public runtime.
-
-          ## Human approval
-          Shawn must judge the visual quality and whether the synthesis truly hits the extraordinary NayaNET standard. Automated layout proof does not equal subjective 10/10 approval.
+          Automated visual proof is not a substitute for Shawn's subjective 10/10 product approval.
           EOF
 
       - name: Upload exact-runtime visual evidence
         uses: actions/upload-artifact@v4
         with:
-          name: NAYANET-SMART-FEED-MASTER-V2-VISUAL-PROOF-${{ github.sha }}
+          name: NAYANET-SMART-FEED-VISUAL-PROOF-${{ github.sha }}
           path: proof/
           if-no-files-found: error
           retention-days: 30
