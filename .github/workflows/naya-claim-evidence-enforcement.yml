@@ -6,6 +6,7 @@ on:
     branches: [main]
 permissions:
   contents: read
+  actions: write
 jobs:
   claim-evidence:
     runs-on: ubuntu-latest
@@ -55,22 +56,8 @@ jobs:
           evidence_id = f'EV-{os.environ["GITHUB_RUN_ID"]}-evidence-runtime'
           now = datetime.now(timezone.utc).isoformat()
           criteria = ['test process exits successfully','all adversarial tests pass']
-          claim = {
-              'schema':'naya-power-claim/v1', 'claim_id':claim_id,
-              'statement':'The Claim/Evidence runtime adversarial test suite passes on the checked-out commit.',
-              'success_criteria':criteria,
-              'created_at':now, 'status':'VERIFIED', 'evidence_ids':[evidence_id],
-              'source':f'github-actions:{os.environ["GITHUB_RUN_ID"]}'
-          }
-          evidence = {
-              'schema':'naya-power-evidence/v1', 'evidence_id':evidence_id, 'claim_id':claim_id,
-              'observed_at':now, 'method':'ci_test',
-              'command':'python .naya/runtime/test_evidence_runtime.py',
-              'observed_output':output[-12000:], 'result':'PASS',
-              'commit_sha':target_sha, 'environment':'github-actions',
-              'source':f'workflow-run:{os.environ["GITHUB_RUN_ID"]}',
-              'criteria_covered':criteria
-          }
+          claim = {'schema':'naya-power-claim/v1','claim_id':claim_id,'statement':'The Claim/Evidence runtime adversarial test suite passes on the checked-out commit.','success_criteria':criteria,'created_at':now,'status':'VERIFIED','evidence_ids':[evidence_id],'source':f'github-actions:{os.environ["GITHUB_RUN_ID"]}'}
+          evidence = {'schema':'naya-power-evidence/v1','evidence_id':evidence_id,'claim_id':claim_id,'observed_at':now,'method':'ci_test','command':'python .naya/runtime/test_evidence_runtime.py','observed_output':output[-12000:],'result':'PASS','commit_sha':target_sha,'environment':'github-actions','source':f'workflow-run:{os.environ["GITHUB_RUN_ID"]}','criteria_covered':criteria}
           (root/'claims'/f'{claim_id}.json').write_text(json.dumps(claim,indent=2)+'\n',encoding='utf-8')
           (root/'records'/f'{evidence_id}.json').write_text(json.dumps(evidence,indent=2)+'\n',encoding='utf-8')
       - name: Validate evidence store against exact commit
@@ -97,18 +84,27 @@ jobs:
           from pathlib import Path
           claim_path = next(Path('.naya/evidence/claims').glob('*.json'))
           evidence_paths = sorted(Path('.naya/evidence/records').glob('*.json'))
-          package = {
-              'claim': json.loads(claim_path.read_text(encoding='utf-8')),
-              'evidence': [json.loads(p.read_text(encoding='utf-8')) for p in evidence_paths],
-              'oscar': json.loads(Path('.naya/evidence/oscar-result.json').read_text(encoding='utf-8')),
-              'target': 'OSCAR_ACCEPTED'
-          }
-          Path('/tmp/promotion-package.json').write_text(json.dumps(package, indent=2)+'\n', encoding='utf-8')
+          package = {'claim':json.loads(claim_path.read_text(encoding='utf-8')),'evidence':[json.loads(p.read_text(encoding='utf-8')) for p in evidence_paths],'oscar':json.loads(Path('.naya/evidence/oscar-result.json').read_text(encoding='utf-8')),'target':'OSCAR_ACCEPTED'}
+          Path('/tmp/promotion-package.json').write_text(json.dumps(package,indent=2)+'\n',encoding='utf-8')
           import subprocess, sys
-          subprocess.run([sys.executable, '.naya/runtime/promotion_runtime.py', '/tmp/promotion-package.json', '--commit', __import__('os').environ['TARGET_SHA']], check=True)
+          subprocess.run([sys.executable,'.naya/runtime/promotion_runtime.py','/tmp/promotion-package.json','--commit',__import__('os').environ['TARGET_SHA']],check=True)
       - name: Publish machine-readable evidence and Oscar result
         uses: actions/upload-artifact@v4
         with:
           name: naya-claim-evidence-${{ env.TARGET_SHA }}
           path: .naya/evidence/
           if-no-files-found: error
+      - name: Dispatch canonical surgical live Hub workflow
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/2026-09-08-surgical-right-rail-removal.yml/dispatches \
+            -d '{"ref":"main"}'
+          echo 'SURGICAL_LIVE_WORKFLOW_DISPATCHED=TRUE'
