@@ -1,101 +1,16 @@
-# CURRENT 452 FEED STRUCTURE: intelligentFeed/intelligentBlocks are protected; no rebuild.
-name: Surgical NayaNET Right Rail Removal
+name: Retired Surgical Right Rail Workflow
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  surgical-edit:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-      - name: Verify and surgically remove only the old right-side feed/rail
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          path=Path('2026 09 08 452 NayaNET Hub.html')
-          html=path.read_text(encoding='utf-8')
-          rail=re.compile(r'<(?P<tag>[A-Za-z][A-Za-z0-9]*)\b[^>]*\bclass=["\'][^"\']*\bactivationRail\b[^"\']*["\'][^>]*>[\s\S]*?</(?P=tag)>',re.I)
-          html,removed=rail.subn('',html,count=1)
-          if removed>1: raise SystemExit('RIGHT_RAIL_MULTIPLE_MATCHES')
-          if removed==1:
-              old_grid='.homeWorkspace{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:28px;align-items:start}'
-              new_grid='.homeWorkspace{display:block;width:100%;max-width:none}'
-              if old_grid not in html: raise SystemExit('HOME_WORKSPACE_GRID_SENTINEL_MISSING')
-              html=html.replace(old_grid,new_grid,1)
-          protected={'LEFT_NAV':'.sidebar{' in html,'WORKSPACE':'homeWorkspace' in html,'HOME_FEED':'homeFeed' in html,'INTELLIGENT_FEED':bool(re.search(r'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed',html,re.I)),'ACTIVITY':bool(re.search(r'Activity Intelligence|activity',html,re.I)),'PERSONAL':bool(re.search(r'Personal Intelligence',html,re.I)),'COLLECTIVE':bool(re.search(r'Collective Intelligence',html,re.I))}
-          missing=[k for k,v in protected.items() if not v]
-          if missing: raise SystemExit('PROTECTED_SURFACE_MISSING='+','.join(missing))
-          if rail.search(html): raise SystemExit('RIGHT_RAIL_STILL_PRESENT')
-          path.write_text(html,encoding='utf-8')
-          print('COLLATERAL_DAMAGE_GATE=PASS')
-          PY
-      - name: Install final runtime guard against the resurrecting rail code
-        shell: python
-        run: |
-          from pathlib import Path
-          p=Path('2026 09 08 452 NayaNET Hub.html')
-          s=p.read_text(encoding='utf-8')
-          marker='NAYANET-LIVE-RIGHT-RAIL-GUARD-V6'
-          if marker not in s:
-              guard=r'''<style id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V6">.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}</style><script id="NAYANET-LIVE-RIGHT-RAIL-GUARD-V6-RUNTIME">(function(){function purge(){try{document.querySelectorAll('.activationRail').forEach(function(x){x.remove()});var w=document.querySelector('.homeWorkspace');if(w){w.style.setProperty('display','block','important');w.style.setProperty('grid-template-columns','1fr','important');w.style.setProperty('gap','0','important');w.style.setProperty('width','100%','important');w.style.setProperty('max-width','none','important')}}catch(e){}}purge();new MutationObserver(purge).observe(document.documentElement,{subtree:true,childList:true,attributes:true,attributeFilter:['class','style']});setInterval(purge,400)})();</script>'''
-              if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
-              s=s.replace('</head>',guard+'</head>',1)
-              p.write_text(s,encoding='utf-8')
-          final=p.read_text(encoding='utf-8')
-          for x in ['NAYANET-LIVE-RIGHT-RAIL-GUARD-V6','class="sidebar"','homeWorkspace','Smart Notes']:
-              if x not in final: raise SystemExit('GUARD_SENTINEL_MISSING='+x)
-          if not any(x in final for x in ['intelligentFeed','intelligentBlocks','homeIntelligentBlocks','nayanet-elite-feed']): raise SystemExit('INTELLIGENT_FEED_MISSING')
-          print('LIVE_GUARD=PASS')
-      - name: Commit only the surgical source change and guard
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add '2026 09 08 452 NayaNET Hub.html'
-          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_CURRENT=TRUE'; else git commit -m 'Surgical Hub fix: remove old right feed and lock full-width Smart Feed'; git push origin HEAD:main; fi
-      - name: Build exact isolated 452 Cloudflare artifact
-        run: |
-          set -euo pipefail
-          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
-          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7/public
-          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
-          {"name":"nayanet-v7-intelligent-hub","compatibility_date":"2026-09-08","assets":{"directory":"./public"}}
-          EOF
-          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V6' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          grep -Fq 'homeWorkspace' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-          grep -Eq 'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed' CLOUDFLARE-INTELLIGENT-HUB-V7/public/index.html
-      - name: Deploy exact guarded 452 artifact
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 262c881746ea6e9978ca18b3eb831907
-          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
-          command: deploy --config wrangler.jsonc
-      - name: Independently verify public runtime
-        run: |
-          set -euo pipefail
-          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?surgical=v6' -o /tmp/live
-          grep -Fq 'NAYANET-LIVE-RIGHT-RAIL-GUARD-V6' /tmp/live
-          grep -Fq 'class="sidebar"' /tmp/live
-          grep -Fq 'homeWorkspace' /tmp/live
-          grep -Eq 'intelligentFeed|intelligentBlocks|homeIntelligentBlocks|nayanet-elite-feed' /tmp/live
-          ! grep -Fq 'class="activationRail"' /tmp/live
-          ! grep -Fq "class='activationRail'" /tmp/live
-          echo 'PUBLIC_RUNTIME=VERIFIED'
-          echo 'LEFT_NAVIGATION=PRESENT'
-          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
-          echo 'RIGHT_OLD_FEED=ABSENT'
-          echo 'CENTER_FEED=FULL_WIDTH'
-          echo 'LIVE_URL=https://nayanet-v7-intelligent-hub.nayanet.workers.dev/'
+      - run: |
+          echo 'LEGACY_RIGHT_RAIL_WORKFLOW=RETIRED'
+          echo 'CANONICAL_RELEASE=deploy-v7-now.yml'
+          echo 'RULE=DO_NOT_REWRITE_THE_HUB_WITH_HISTORICAL_FEED_LAYERS'
