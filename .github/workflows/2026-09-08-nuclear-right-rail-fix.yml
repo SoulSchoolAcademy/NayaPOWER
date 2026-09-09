@@ -1,0 +1,97 @@
+name: Nuclear Hub Right Rail Fix
+
+on:
+  push:
+    paths:
+      - '.github/workflows/2026-09-08-nuclear-right-rail-fix.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout canonical Hub source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Install final runtime kill switch
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('2026 09 08 452 NayaNET Hub.html')
+          s = p.read_text(encoding='utf-8')
+
+          marker = 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1'
+          if marker not in s:
+              injection = r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1">
+/* FINAL SURFACE LAW: left navigation + center Smart Feed only. The obsolete right feed/activation rail cannot exist. */
+.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important}
+.homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important;width:100%!important;max-width:none!important}
+body.nayanet-focus-mode .sidebar{display:block!important}
+body.nayanet-focus-mode .app{grid-template-columns:250px 1fr!important}
+body.nayanet-focus-mode .homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important}
+</style>
+<script>
+/* NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1 */
+(function(){
+  function purge(){
+    try{
+      document.body.classList.remove('nayanet-focus-mode');
+      document.querySelectorAll('.activationRail').forEach(function(el){el.remove();});
+      var ws=document.querySelector('.homeWorkspace');
+      if(ws){
+        ws.style.setProperty('display','block','important');
+        ws.style.setProperty('grid-template-columns','1fr','important');
+        ws.style.setProperty('gap','0','important');
+        ws.style.setProperty('width','100%','important');
+      }
+    }catch(e){}
+  }
+  purge();
+  if(document.documentElement){
+    new MutationObserver(function(){purge();}).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
+  }
+  window.setInterval(purge,500);
+})();
+</script>
+'''
+              if '</head>' not in s:
+                  raise SystemExit('FAIL: no </head> boundary found')
+              s = s.replace('</head>', injection + '</head>', 1)
+              p.write_text(s, encoding='utf-8')
+
+          final = p.read_text(encoding='utf-8')
+          required = [
+              'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-V1',
+              '.activationRail{display:none!important',
+              'ws.style.setProperty(\'display\',\'block\',\'important\')',
+              'document.querySelectorAll(\'.activationRail\')'
+          ]
+          for x in required:
+              if x not in final:
+                  raise SystemExit('FAIL: missing final guard: ' + x)
+          if '<div class="sidebar"' not in final:
+              raise SystemExit('FAIL: protected left sidebar missing')
+          if 'id="nayanet-elite-feed"' not in final:
+              raise SystemExit('FAIL: protected Intelligent Feed missing')
+          if 'id="page-notes"' not in final:
+              raise SystemExit('FAIL: protected Smart Notes page missing')
+          print('FINAL NUCLEAR GUARD VERIFIED')
+
+      - name: Commit and push exact target only
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- '2026 09 08 452 NayaNET Hub.html'
+          if git diff --cached --quiet; then
+            echo 'No source change required.'
+            exit 0
+          fi
+          git commit -m 'Nuclear Hub fix: permanently remove right rail at runtime'
+          git push origin HEAD:main
