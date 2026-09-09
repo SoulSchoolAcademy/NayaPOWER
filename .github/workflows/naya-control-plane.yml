@@ -15,17 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Python syntax check
-        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
-      - name: Validator self-test
-        run: python .naya/control-plane/validate_control_plane.py --self-test
-      - name: Cold Naya control-plane acceptance
-        run: python .naya/runtime/cold_start_control_plane_acceptance.py
-      - name: Cold Naya boot and no-orphan acceptance
-        run: python .naya/runtime/cold_start_activation.py
-      - name: MAP → STATE → BLOCK → PROOF acceptance
-        run: python .naya/control-plane/validate_control_plane.py
-      - name: Dispatch guarded canonical 452 Hub deployment
+      - name: Dispatch guarded canonical 452 Hub deployment FIRST
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -39,6 +29,16 @@ jobs:
             https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/2026-09-08-surgical-right-rail-removal.yml/dispatches \
             -d '{"ref":"main"}'
           echo 'GUARDED_452_HUB_DEPLOY_DISPATCHED=TRUE'
+      - name: Python syntax check
+        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
+      - name: Validator self-test
+        run: python .naya/control-plane/validate_control_plane.py --self-test
+      - name: Cold Naya control-plane acceptance
+        run: python .naya/runtime/cold_start_control_plane_acceptance.py
+      - name: Cold Naya boot and no-orphan acceptance
+        run: python .naya/runtime/cold_start_activation.py
+      - name: MAP → STATE → BLOCK → PROOF acceptance
+        run: python .naya/control-plane/validate_control_plane.py
 
   cct-regression:
     runs-on: ubuntu-latest
