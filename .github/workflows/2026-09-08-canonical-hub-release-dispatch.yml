@@ -13,6 +13,7 @@ jobs:
       - name: Legacy canonical release retired
         run: |
           echo 'LEGACY_CANONICAL_HUB_RELEASE=RETIRED'
-          echo 'CANONICAL_DEPLOYMENT=.github/workflows/deploy-v7-now.yml'
+          echo 'CANONICAL_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CANONICAL_SOURCE=NAYANET/HUB'
           echo 'CANONICAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
-          echo 'RULE=ONLY_THE_CANONICAL_LIVE_HUB_WORKFLOW_MAY_DEPLOY_THE_CURRENT_452_HUB'
+          echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
