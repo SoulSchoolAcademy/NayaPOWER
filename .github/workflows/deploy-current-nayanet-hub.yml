@@ -1,103 +1,19 @@
-# CANONICAL NayaNET Intelligent Hub deployment path
-# Source authority: 2026 09 09 1213 NAYANET HUB.html
-# Runtime authority: nayanet-v7-intelligent-hub.nayanet.workers.dev
 name: Deploy Current NayaNET Cognitive Hub
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '2026 09 09 1213 NAYANET HUB.html'
-      - 'scripts/nayanet-cognitive-engine.js'
-      - 'scripts/nayanet-hub-intelligence-layer.js'
-      - '.github/workflows/deploy-current-nayanet-hub.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
-concurrency:
-  group: nayanet-current-hub-production
-  cancel-in-progress: false
-
-env:
-  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
-
 jobs:
-  deploy:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact current main
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-          ref: main
-
-      - name: Verify canonical cognitive source
-        shell: bash
+      - name: Assert canonical deployment ownership
         run: |
-          set -euo pipefail
-          test -s '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NayaNetCognition' '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NAYANET-COGNITIVE-ENGINE-V1:START' '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NAYANET-HUB-INTELLIGENCE-V2:START' '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'NayaNetCognition' 'scripts/nayanet-cognitive-engine.js'
-          grep -q 'recordPersistent' 'scripts/nayanet-cognitive-engine.js'
-          grep -q 'searchRemote' 'scripts/nayanet-cognitive-engine.js'
-          grep -q 'handoff' 'scripts/nayanet-cognitive-engine.js'
-          git diff --check
-          sha256sum '2026 09 09 1213 NAYANET HUB.html'
-          echo 'CANONICAL_COGNITIVE_SOURCE=PASS'
-
-      - name: Package exact canonical artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf release && mkdir -p release/assets
-          cp '2026 09 09 1213 NAYANET HUB.html' release/assets/index.html
-          cat > release/wrangler.jsonc <<'JSON'
-          {"name":"nayanet-v7-intelligent-hub","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"assets","binding":"ASSETS"}}
-          JSON
-          cat > release/worker.js <<'JS'
-          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/')){const r=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const h=new Headers(r.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('Pragma','no-cache');h.set('X-NayaNET-Release','CANONICAL-COGNITIVE-HUB');h.set('X-NayaNET-Source','2026 09 09 1213 NAYANET HUB.html');return new Response(r.body,{status:r.status,headers:h});}return env.ASSETS.fetch(request)}}
-          JS
-          test -s release/assets/index.html
-          test -s release/worker.js
-          echo "RELEASE_SOURCE_COMMIT=$GITHUB_SHA" > release/RELEASE-MANIFEST.txt
-          echo "RELEASE_SOURCE=2026 09 09 1213 NAYANET HUB.html" >> release/RELEASE-MANIFEST.txt
-          sha256sum '2026 09 09 1213 NAYANET HUB.html' >> release/RELEASE-MANIFEST.txt
-          echo 'CANONICAL_ARTIFACT=READY'
-
-      - name: Deploy exact canonical artifact
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 262c881746ea6e9978ca18b3eb831907
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-
-      - name: Independently verify exact public runtime
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA" -o /tmp/root
-          python3 - <<'PY'
-          from pathlib import Path
-          t=Path('/tmp/root').read_text(encoding='utf-8')
-          required=[
-            'NayaNetCognition',
-            'NAYANET-COGNITIVE-ENGINE-V1:START',
-            'NAYANET-HUB-INTELLIGENCE-V2:START',
-            'recordPersistent',
-            'searchRemote',
-            'handoff',
-          ]
-          missing=[x for x in required if x not in t]
-          if missing: raise SystemExit(f'PUBLIC_RUNTIME_MISSING={missing}')
-          if '2026 09 08 452 NayaNET Hub' in t: raise SystemExit('STALE_452_RUNTIME_DETECTED')
-          print('PUBLIC_RUNTIME=PASS')
-          print('COGNITIVE_MARKERS=PASS')
-          print('STALE_452_ARTIFACT=ABSENT')
-          print('SOURCE_COMMIT='+__import__('os').environ['GITHUB_SHA'])
-          print('RUNTIME='+__import__('os').environ['RUNTIME'])
-          PY
+          echo 'LEGACY_TIMESTAMPED_HTML_DEPLOYMENT=RETIRED'
+          echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
+          echo 'CURRENT_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_RUNTIME=https://aged-art-7c12.nayanet.workers.dev'
+          echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
