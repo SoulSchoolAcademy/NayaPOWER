@@ -5,9 +5,61 @@ on:
   push:
     branches: [main]
 permissions:
-  contents: read
+  contents: write
   actions: write
 jobs:
+  cognitive-integration:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout canonical source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Integrate cognitive engine surgically
+        shell: python
+        run: |
+          from pathlib import Path
+          target = Path('2026 09 09 1213 NAYANET HUB.html')
+          engine = Path('scripts/nayanet-cognitive-engine.js').read_text(encoding='utf-8')
+          html = target.read_text(encoding='utf-8')
+          start = '<!-- NAYANET-COGNITIVE-ENGINE-V1:START -->'
+          end = '<!-- NAYANET-COGNITIVE-ENGINE-V1:END -->'
+          block = start + '<script id="nayanet-cognitive-engine">\n' + engine + '\n</script>' + end
+          if start in html and end in html:
+              a = html.index(start)
+              b = html.index(end, a) + len(end)
+              html = html[:a] + block + html[b:]
+          else:
+              marker = '</body>'
+              if marker not in html:
+                  raise SystemExit('BLOCKED: canonical HTML has no </body> insertion point')
+              html = html.replace(marker, block + marker, 1)
+          target.write_text(html, encoding='utf-8')
+      - name: Verify physical integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NAYANET-COGNITIVE-ENGINE-V1:START' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NayaNetCognition' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'nayanet-cognitive-engine' '2026 09 09 1213 NAYANET HUB.html'
+          echo 'PHYSICAL_INTEGRATION=PASS'
+      - name: Commit integrated canonical artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'NayaNET Cognitive Integrator'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 09 1213 NAYANET HUB.html'
+          if git diff --cached --quiet; then
+            echo 'INTEGRATION_COMMIT=NO_CHANGE'
+          else
+            git commit -m 'feat: physically integrate NayaNET cognitive engine into canonical Hub'
+            git push
+            echo 'INTEGRATION_COMMIT=CREATED'
+          fi
+
   claim-evidence:
     runs-on: ubuntu-latest
     env:
