@@ -105,7 +105,7 @@ jobs:
           workingDirectory: release
           command: deploy --config wrangler.jsonc
 
-      - name: Independently verify exact public runtime
+      - name: Independently verify exact public runtime and built assets
         run: |
           set -euo pipefail
           status=0
@@ -119,12 +119,26 @@ jobs:
           smart_status=$(curl -sS -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$GITHUB_SHA" || true)
           test "$smart_status" = "200"
           cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
-          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do grep -RFiq "$x" /tmp/root || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }; done
+
+          js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2)
+          test -n "$js_src"
+          case "$js_src" in /*) ;; *) js_src="/$js_src" ;; esac
+          js_status=$(curl -sS -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$GITHUB_SHA" || true)
+          test "$js_status" = "200"
+          test -s /tmp/app-js
+
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE'; do
+            grep -RFiq "$x" /tmp/root /tmp/app-js || { echo "PUBLIC_RUNTIME_MISSING=$x"; exit 1; }
+          done
+
           headers=$(curl -fsSI --retry 10 --retry-delay 3 "$RUNTIME/?release=$GITHUB_SHA")
           echo "$headers" | grep -F "X-NayaNET-Source-Commit: $GITHUB_SHA" >/dev/null || { echo 'RUNTIME_SOURCE_COMMIT_HEADER=FAIL'; echo "$headers"; exit 1; }
           echo 'PUBLIC_RUNTIME=PASS'
           echo 'RUNTIME_ROUTE_PARITY=PASS'
+          echo 'RUNTIME_JS_ASSET=PASS'
+          echo 'RUNTIME_INTELLIGENCE_MARKERS=PASS'
           echo 'RUNTIME_SOURCE_COMMIT_HEADER=PASS'
           echo "ACTUAL_RUNTIME=$RUNTIME"
           echo "SMART_LINK=$SMART_LINK"
+          echo "JS_ASSET=$js_src"
           echo "SOURCE_COMMIT=$GITHUB_SHA"
