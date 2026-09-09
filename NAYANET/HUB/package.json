@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "node -e \"require('fs').mkdirSync('public',{recursive:true});require('fs').copyFileSync('../../scripts/nayanet-cognitive-engine.js','public/nayanet-cognitive-engine.js')\" && vite build",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
