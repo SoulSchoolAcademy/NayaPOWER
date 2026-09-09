@@ -1,15 +1,7 @@
 #!/usr/bin/env python3
-"""Deterministic cold-start acceptance test for the canonical Naya boot contract.
-
-This models a fresh Naya entering NayaPOWER with no conversation memory. It proves
-repository-level activation state: authority, boot order, Code of Honor inheritance,
-task routing, policy content, operating-method contract, explicit state transitions,
-continuity/no-orphan contract, and natural-language activation intent recognition.
-It does not claim to execute an external LLM or provider; provider/model execution
-remains outside this repository contract.
-"""
+"""Deterministic cold-start acceptance test for the canonical Naya boot contract."""
 from __future__ import annotations
-import hashlib, json
+import hashlib,json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 MANIFEST=ROOT/'.naya/naya-context-manifest.json'; BOOT=ROOT/'.naya/NAYA-CONTEXT-BOOT-PROTOCOL.md'; START=ROOT/'SUPERBRAIN/AI-BOOT/START-HERE.md'; PROTOCOL=ROOT/'SUPERBRAIN/AI-BOOT/NAYA-POWER-ACTIVATION-PROTOCOL.md'; ACTIVATION_CLUSTERS=ROOT/'.naya/runtime/activation-intent-clusters.json'; POLICY=ROOT/'.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md'; CONSTITUTION=ROOT/'.naya/codex/11-RUNTIME-CONSTITUTION.md'; CODE_OF_HONOR=ROOT/'SUPERBRAIN/MASTER-NOTES/SN-20260827-NAYA-CODE-OF-HONOR.md'; SYSTEM_DIRECTIVE=ROOT/'SUPERBRAIN/MASTER-NOTES/SN-20260827-10-OF-10-SYSTEM-OPERATING-DIRECTIVE.md'; MASTER_NOTE=ROOT/'.naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md'; NO_ORPHAN=ROOT/'.naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md'
@@ -32,7 +24,7 @@ def main():
         if 'human_capability_and_mastery' not in route: fail(f'Human Capability & Mastery policy missing from task route: {route_name}')
     require(boot,EXPECTED_POLICY,'context boot'); require(start,EXPECTED_POLICY,'START HERE'); require(start,CODE_OF_HONOR_PATH,'START HERE Code of Honor'); require(start,SYSTEM_DIRECTIVE_PATH,'START HERE 10/10 System Directive'); require(start,NO_ORPHAN_PATH,'START HERE No-Orphan law'); require(boot,'does not override platform/safety constraints','authority preservation'); require(start,'ACTIVATE BEFORE SUBSTANTIVE WORK','policy activation'); require(start,'ready_to_run_execution','START HERE structured continuation')
     require(no_orphan,'# NEXT NAYA EXECUTION PROMPT','No-Orphan law'); require(no_orphan,'ready_to_run_execution','No-Orphan structured field'); require(no_orphan,'NO META-HANDOFFS','No-Orphan anti-orphan rule'); require(no_orphan,'A blocker does not remove the continuation obligation','No-Orphan blocker continuation'); require(no_orphan,'DO THE WORK. PROVE THE WORK. RECORD THE WORK. WRITE THE NEXT EXECUTION. PASS THE TORCH. CONTINUE.','No-Orphan final rule')
-    require(protocol,'NAYA POWER ON','activation protocol'); require(protocol,'ACTIVATION INTENT','activation-intent contract'); require(protocol,'RESTORE CONTEXT','restore-context activation'); require(protocol,'If the human uses different words that clearly mean','semantic activation rule'); require(protocol,'Do not activate from an unrelated mention','activation ambiguity rule'); require(protocol,'One activation, one contract','single-contract rule'); require(protocol,'THE HUMAN SHOULD SPEAK NATURALLY','natural-language principle')
+    require(protocol,'NAYA POWER ON','activation protocol'); require(protocol,'ACTIVATION INTENT','activation-intent contract'); require(protocol,'RESTORE CONTEXT','restore-context activation'); require(protocol,'If a human uses different words that clearly carry the same activation intent','semantic activation rule'); require(protocol,'Do not activate from an unrelated mention','activation ambiguity rule'); require(protocol,'One activation, one contract','single-contract rule'); require(protocol,'THE HUMAN SHOULD SPEAK NATURALLY','natural-language principle')
     if clusters.get('status')!='CANONICAL_MACHINE_REPRESENTATION': fail('activation intent cluster is not canonical machine representation')
     if clusters.get('authority')!='SUPERBRAIN/AI-BOOT/NAYA-POWER-ACTIVATION-PROTOCOL.md': fail('activation intent cluster points to a competing authority')
     if clusters.get('canonical_command')!='NAYA POWER ON': fail('canonical activation command is incorrect')
@@ -40,9 +32,7 @@ def main():
     flattened=[phrase for group in clusters.get('activation_intent_clusters',{}).values() for phrase in group]
     for phrase in required_examples:
         if phrase not in flattened: fail(f'activation intent cluster missing example: {phrase}')
-    require(clusters.get('semantic_rule',''),'clear intent is to activate','semantic activation rule')
-    require(clusters.get('ambiguity_rule',''),'genuinely ambiguous','ambiguity rule')
-    require(clusters.get('activation_behavior',''),'NAYA POWER ON → RESTORE','canonical activation behavior')
+    require(clusters.get('semantic_rule',''),'clear intent is to activate','semantic activation rule'); require(clusters.get('ambiguity_rule',''),'genuinely ambiguous','ambiguity rule'); require(clusters.get('activation_behavior',''),'NAYA POWER ON → RESTORE','canonical activation behavior')
     require(honor,'CREATE THE MOST HUMAN VALUE POSSIBLE WITH EVERY MEANINGFUL ACTION.','Code of Honor value law'); require(honor,VALUE_LOOP,'Code of Honor value-maximization method'); require(honor,'EFFORT ≠ VALUE','Code of Honor value distinction'); require(honor,'Every Naya operating through a NayaPOWER-governed Naya Brain inherits this Code of Honor','Code of Honor inheritance law'); require(honor,'Naya does not merely complete work. Naya creates value.','Code of Honor final standard')
     for phrase in ('SOURCE OF TRUTH','STATE','EXECUTION','VERIFICATION','RUNTIME','QUALITY','CONTINUITY','LEARNING','HANDOFF'): require(directive,phrase,'10/10 System Directive')
     require(policy,'DO NOT BUILD FOR THE MACHINE. BUILD FOR THE HUMAN.','human-outcome law'); require(policy,'No Naya may claim that a human understands something','understanding evidence law'); require(policy,'MEASURE','mastery loop'); require(policy,'MASTER','mastery loop'); require(policy,BLOCK_CYCLE,'continuous block cycle')
