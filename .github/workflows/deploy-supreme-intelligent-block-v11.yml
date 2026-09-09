@@ -1,0 +1,121 @@
+name: Deploy Supreme Intelligent Block V11
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nayanet-supreme-v11-production
+  cancel-in-progress: true
+
+env:
+  RUNTIME: https://nayanet-v7-intelligent-hub.nayanet.workers.dev
+  SMART_LINK: https://nayanet-v7-intelligent-hub.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify authoritative source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f '2026 09 08 452 NayaNET Hub.html'
+          test -f 'nayanet-intelligent-feed-v6.js'
+          python3 - <<'PY'
+          from pathlib import Path
+          html=Path('2026 09 08 452 NayaNET Hub.html').read_text(encoding='utf-8')
+          js=Path('nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
+          html_checks=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','homeWorkspace','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          js_checks=['__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE_V11__','Intelligence, made visible.','THE INTELLIGENCE DESCENT','WEAVER · HIGHER-ORDER SYNTHESIS','COMPOUNDING INTELLIGENCE']
+          missing=[x for x in html_checks if x not in html]+[x for x in js_checks if x not in js]
+          if missing: raise SystemExit(f'MISSING_SOURCE_MARKERS={missing}')
+          print('AUTHORITATIVE_SOURCE=PASS')
+          print('HTML_BYTES=',len(html.encode()))
+          print('FEED_BYTES=',len(js.encode()))
+          PY
+
+      - name: Package exact production artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/assets
+          cp '2026 09 08 452 NayaNET Hub.html' release/assets/index.html
+          cp 'nayanet-intelligent-feed-v6.js' release/assets/nayanet-intelligent-feed-v6.js
+          cat > release/wrangler.jsonc <<'JSON'
+          {
+            "name": "nayanet-v7-intelligent-hub",
+            "main": "worker.js",
+            "compatibility_date": "2026-09-05",
+            "account_id": "262c881746ea6e9978ca18b3eb831907",
+            "assets": { "directory": "assets", "binding": "ASSETS" }
+          }
+          JSON
+          cat > release/worker.js <<'JS'
+          export default {
+            async fetch(request, env) {
+              const url = new URL(request.url);
+              if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/')) {
+                const response = await env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request));
+                const headers = new Headers(response.headers);
+                headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+                headers.set('Pragma', 'no-cache');
+                headers.set('X-NayaNET-Release', 'SUPREME-INTELLIGENT-BLOCK-V11');
+                headers.set('X-NayaNET-Source', '2026 09 08 452 NayaNET Hub.html');
+                headers.set('X-NayaNET-Feed', 'nayanet-intelligent-feed-v6.js');
+                return new Response(response.body, { status: response.status, headers });
+              }
+              return env.ASSETS.fetch(request);
+            }
+          };
+          JS
+          python3 - <<'PY'
+          from pathlib import Path
+          js=Path('release/assets/nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
+          assert '__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE_V11__' in js
+          assert 'Intelligence, made visible.' in js
+          print('PACKAGE=PASS')
+          PY
+
+      - name: Deploy to Cloudflare production
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: 262c881746ea6e9978ca18b3eb831907
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify exact public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          q="release=${GITHUB_SHA}"
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/?$q" -o /tmp/root
+          curl -fsSL --retry 5 --retry-delay 3 "$SMART_LINK?$q" -o /tmp/smart
+          curl -fsSL --retry 5 --retry-delay 3 "$RUNTIME/nayanet-intelligent-feed-v6.js?$q" -o /tmp/feed
+          python3 - <<'PY'
+          from pathlib import Path
+          html_required=['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']
+          js_required=['__NAYA_INTELLIGENT_FEED_SUPREME_ARCHITECTURE_V11__','Intelligence, made visible.','THE INTELLIGENCE DESCENT','WEAVER · HIGHER-ORDER SYNTHESIS','COMPOUNDING INTELLIGENCE']
+          for f in ['/tmp/root','/tmp/smart']:
+              t=Path(f).read_text(encoding='utf-8')
+              missing=[x for x in html_required if x not in t]
+              if missing: raise SystemExit(f'{f} MISSING={missing}')
+              if 'class="sidebar"' not in t: raise SystemExit(f'{f} LEFT_SIDEBAR_MISSING')
+          feed=Path('/tmp/feed').read_text(encoding='utf-8')
+          missing=[x for x in js_required if x not in feed]
+          if missing: raise SystemExit(f'/tmp/feed MISSING={missing}')
+          print('PUBLIC_RUNTIME=PASS')
+          print('PUBLIC_SMART_LINK=PASS')
+          print('PUBLIC_FEED_ASSET=PASS')
+          print('VERIFIED_RELEASE='+__import__('os').environ['GITHUB_SHA'])
+          PY
