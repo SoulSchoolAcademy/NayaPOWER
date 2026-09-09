@@ -1,37 +1,13 @@
 # NayaNET Intelligent Hub — Canonical Vite/Cloudflare Release Marker
 
-This marker exists solely to keep the canonical Cloudflare release chain observable against the current `NAYANET/HUB/` source boundary.
+Canonical source boundary: `NAYANET/HUB/`
 
-## Visible slice
+Canonical runtime: `https://aged-art-7c12.nayanet.workers.dev`
 
-IDENTITY CONTEXT → APPLICATION SHELL → HOME ORIENTATION → ASK NAYA / SEARCH → PERSONAL / COLLECTIVE / ACTIVITY → ONE CANONICAL INTELLIGENCE OBJECT
+Canonical production workflow: `.github/workflows/deploy-nayanet-hub-canonical.yml`
 
-## North Star
+Release law:
 
-**INTELLIGENCE MADE VISIBLE.**
+`SOURCE → TYPECHECK → VITE BUILD → ARTIFACT → CLOUDFLARE → EXACT RUNTIME → JS/CSS ASSET OBSERVATION → INTERACTION → 99.99 MIRROR`
 
-## Runtime
-
-Cloudflare Worker: `aged-art-7c12`
-
-Production URL: `https://aged-art-7c12.nayanet.workers.dev`
-
-## Release law
-
-`NAYANET/HUB → TYPECHECK → VITE BUILD → ARTIFACT INSPECTION → CLOUDFLARE → EXACT PUBLIC RUNTIME → VERIFICATION`
-
-## Current build repair
-
-React/ReactDOM declarations and Vite client types are explicit. The Cloudflare release workflow uses a dedicated `public/` asset directory and explicit SPA asset fetch for `/` and `/intelligence/*`, with runtime retries before release failure.
-
-## Authority
-
-`.github/workflows/deploy-nayanet-hub-canonical.yml` is the sole forward Hub production deployment workflow. Older Hub deployment workflows are retained as historical records but no longer have push-triggered production authority.
-
-## Audit trigger
-
-This marker change is intentionally routed through an auditable merge so the canonical release workflow executes against the current `main` state.
-
-## Important
-
-This is not a second application, renderer, room, or design system. The source under `NAYANET/HUB/` remains the sole forward implementation boundary. Historical Hub files remain reference-only.
+The runtime verifier intentionally inspects the generated React JavaScript asset, not only `index.html`, because the Hub's intelligence UI is client-rendered.
