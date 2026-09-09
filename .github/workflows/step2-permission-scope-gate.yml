@@ -34,6 +34,8 @@ jobs:
         run: python -m unittest discover -s .naya/memory/tests -p 'test_*.py' -v
       - name: Smart Brain regression suite
         run: python .naya/memory/test_smart_brain_v3.py -v
+      - name: Rebuild derived event index before canonical validation
+        run: python .naya/memory/smart_notes_v3.py index
       - name: Canonical validation regression
         run: python .naya/memory/smart_notes_v3.py validate
       - name: Emit Step 2 execution evidence
@@ -47,3 +49,4 @@ jobs:
           path: |
             .naya/memory/STEP-2-TEST-OUTPUT.txt
             .naya/memory/STEP-2-TEST-COMMIT.txt
+            .naya/memory/events/INDEX.json
