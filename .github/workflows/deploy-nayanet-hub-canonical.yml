@@ -49,6 +49,7 @@ jobs:
       - name: Independent runtime observation
         run: |
           set -e
+          # Release gate: public runtime must be independently observable before any completion claim.
           curl -fsSL "$RUNTIME/" -o runtime.html
           grep -q 'NayaNET' runtime.html
           grep -q 'Intelligent Hub' runtime.html
