@@ -2,9 +2,7 @@ name: Deploy Canonical NayaNET Hub
 on:
   push:
     branches: [main]
-    paths:
-      - 'NAYANET/HUB/**'
-      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
+    paths: ['NAYANET/HUB/**','.github/workflows/deploy-nayanet-hub-canonical.yml']
   workflow_dispatch:
 permissions:
   contents: read
@@ -17,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: {node-version: 22, cache: npm, cache-dependency-path: NAYANET/HUB/package-lock.json}
+        with: {node-version: 22}
       - name: Install
         working-directory: NAYANET/HUB
         run: npm install
@@ -40,9 +38,6 @@ jobs:
           cp -R NAYANET/HUB/dist/. release/
           cat > release/wrangler.jsonc <<'EOF'
           {"name":"aged-art-7c12","compatibility_date":"2026-09-08","assets":{"directory":"./"}}
-          EOF
-          cat > release/_routes.json <<'EOF'
-          {"version":1,"include":["/*"],"exclude":[]}
           EOF
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v3
