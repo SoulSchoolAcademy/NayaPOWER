@@ -1,4 +1,5 @@
 import {useMemo,useState} from'react';
+import type {CSSProperties,ReactNode} from'react';
 import type {IntelligentEvent,Lens} from'./types';
 
 type BoardProps={event:IntelligentEvent};
@@ -16,9 +17,9 @@ const related=[
  {id:'visual-language',title:'Black Is the Reading Environment; Color Is the Intelligence Language',summary:'Use controlled illumination as semantic signal, not decoration.'}
 ];
 
-function Button({children,onClick,active=false,kind='normal',disabled=false}:{children:React.ReactNode;onClick?:()=>void;active?:boolean;kind?:'normal'|'primary'|'gold';disabled?:boolean}){return <button className={`sfb-btn ${kind} ${active?'active':''}`} onClick={onClick} disabled={disabled}>{children}</button>}
+function Button({children,onClick,active=false,kind='normal',disabled=false}:{children:ReactNode;onClick?:()=>void;active?:boolean;kind?:'normal'|'primary'|'gold';disabled?:boolean}){return <button className={`sfb-btn ${kind} ${active?'active':''}`} onClick={onClick} disabled={disabled}>{children}</button>}
 
-function Perspective({label,body,tone}:{label:string;body:string;tone:string}){return <section className="sfb-perspective" style={{'--tone':tone} as React.CSSProperties}><div className="sfb-perspective-head"><span className="sfb-dot"/><b>{label}</b></div><p>{body}</p></section>}
+function Perspective({label,body,tone}:{label:string;body:string;tone:string}){return <section className="sfb-perspective" style={{'--tone':tone} as CSSProperties}><div className="sfb-perspective-head"><span className="sfb-dot"/><b>{label}</b></div><p>{body}</p></section>}
 
 export function SmartFeedBoard({event}:BoardProps){
  const [lens,setLens]=useState<Lens>('personal');
