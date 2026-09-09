@@ -1,4 +1,4 @@
-name: Deploy Supreme Intelligent Block V12
+name: Deploy Supreme Intelligent Block V12.1
 
 on:
   push:
@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 1
-      - name: Verify authoritative V12 source
+      - name: Verify authoritative V12.1 source
         shell: bash
         run: |
           set -euo pipefail
@@ -35,9 +35,9 @@ jobs:
           html=Path('2026 09 08 452 NayaNET Hub.html').read_text(encoding='utf-8'); js=Path('nayanet-intelligent-feed-v6.js').read_text(encoding='utf-8')
           for x in ['homeIntelligentBlocks','nayanet-intelligent-feed-v6.js','sidebar','IN A NUTSHELL','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE']:
             assert x in html, x
-          for x in ['__NAYA_INTELLIGENT_FEED_V12__','LEGACY-FIRST SUPREME RECONSTRUCTION','grid-template-columns:1fr!important']:
+          for x in ['__NAYA_INTELLIGENT_FEED_V121__','TRUE LEGACY BOARD RECONSTRUCTION','grid-template-columns:none!important','display:none!important']:
             assert x in js, x
-          print('AUTHORITATIVE_V12_SOURCE=PASS');print('FEED_BYTES=',len(js.encode()))
+          print('AUTHORITATIVE_V12_1_SOURCE=PASS');print('FEED_BYTES=',len(js.encode()))
           PY
       - name: Package exact production artifact
         shell: bash
@@ -50,16 +50,16 @@ jobs:
           {"name":"nayanet-v7-intelligent-hub","main":"worker.js","compatibility_date":"2026-09-05","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"assets","binding":"ASSETS"}}
           JSON
           cat > release/worker.js <<'JS'
-          export default {async fetch(request,env){const url=new URL(request.url);if(url.pathname==='/'||url.pathname==='/index.html'||url.pathname.startsWith('/intelligence/')){const r=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const h=new Headers(r.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('Pragma','no-cache');h.set('X-NayaNET-Release','SUPREME-INTELLIGENT-BLOCK-V12');h.set('X-NayaNET-Source','2026 09 08 452 NayaNET Hub.html');h.set('X-NayaNET-Feed','nayanet-intelligent-feed-v6.js');return new Response(r.body,{status:r.status,headers:h})}return env.ASSETS.fetch(request)}}
+          export default {async fetch(request,env){const url=new URL(request.url);if(url.pathname==='/'||url.pathname==='/index.html'||url.pathname.startsWith('/intelligence/')){const r=await env.ASSETS.fetch(new Request(new URL('/index.html',request.url),request));const h=new Headers(r.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('Pragma','no-cache');h.set('X-NayaNET-Release','SUPREME-INTELLIGENT-BLOCK-V12.1');h.set('X-NayaNET-Source','2026 09 08 452 NayaNET Hub.html');h.set('X-NayaNET-Feed','nayanet-intelligent-feed-v6.js');return new Response(r.body,{status:r.status,headers:h})}return env.ASSETS.fetch(request)}}
           JS
-      - name: Deploy V12 to Cloudflare production
+      - name: Deploy V12.1 to Cloudflare production
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: 262c881746ea6e9978ca18b3eb831907
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-      - name: Verify V12 public runtime
+      - name: Verify V12.1 public runtime
         shell: bash
         run: |
           set -euo pipefail
@@ -75,7 +75,7 @@ jobs:
               assert x in t, (f,x)
             assert 'class="sidebar"' in t
           t=Path('/tmp/feed').read_text(encoding='utf-8')
-          for x in ['__NAYA_INTELLIGENT_FEED_V12__','LEGACY-FIRST SUPREME RECONSTRUCTION','grid-template-columns:1fr!important']:
+          for x in ['__NAYA_INTELLIGENT_FEED_V121__','TRUE LEGACY BOARD RECONSTRUCTION','grid-template-columns:none!important','display:none!important']:
             assert x in t, x
-          print('SUPREME_V12_PUBLIC_HUB=PASS');print('SUPREME_V12_PUBLIC_SMART_LINK=PASS');print('SUPREME_V12_PUBLIC_FEED_ASSET=PASS');print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
+          print('SUPREME_V12_1_PUBLIC_HUB=PASS');print('SUPREME_V12_1_PUBLIC_SMART_LINK=PASS');print('SUPREME_V12_1_PUBLIC_FEED_ASSET=PASS');print('RELEASE_SHA='+__import__('os').environ['GITHUB_SHA'])
           PY
