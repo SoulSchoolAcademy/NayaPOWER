@@ -1,3 +1,4 @@
+# Authoritative Step 2 rerun marker: execute the complete permission/scope gate against current main.
 name: Step 2 Permission Scope Gate
 
 on:
