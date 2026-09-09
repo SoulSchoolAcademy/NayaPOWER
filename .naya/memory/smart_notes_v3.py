@@ -53,7 +53,7 @@ QUERY_EXPANSIONS = {
 def parse_time(value):
     if value.endswith('Z'): value = value[:-1] + '+00:00'
     dt = datetime.fromisoformat(value)
-    if dt.tzinfo is None: raise ValueError('timestamp must include timezone')
+    if dt.tzinfo is None: dt = dt.replace(tzinfo=ZoneInfo('America/Vancouver'))
     return dt
 
 def tokens(text): return re.findall(r'[a-z0-9]+', str(text).lower())
@@ -69,10 +69,8 @@ def load_events():
 
 def reps(e):
     r=e.get('representations',{})
-    if isinstance(r,dict):
-        return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
-    if isinstance(r,list):
-        return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
+    if isinstance(r,dict): return [v if isinstance(v,dict) else {'representation':k,'content':str(v)} for k,v in r.items()]
+    if isinstance(r,list): return [v if isinstance(v,dict) else {'content':str(v)} for v in r]
     return []
 
 def all_text(e):
