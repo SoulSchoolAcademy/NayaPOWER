@@ -30,11 +30,11 @@ The Hub is not merely a dashboard, and GitHub is not the brain. The Superbrain m
 
 ## Existing canonical foundation
 
-NayaPOWER already has a canonical Superbrain foundation. The current Context Boot Protocol requires GitHub-first inspection, the canonical Runtime Briefing, current project state, selective deep loading, source-of-truth authority, deterministic restore, verification states, and a single intelligence architecture. fileciteturn17file0
+NayaPOWER already has a canonical Superbrain foundation. The current Context Boot Protocol requires GitHub-first inspection, the canonical Runtime Briefing, current project state, selective deep loading, source-of-truth authority, deterministic restore, verification states, and a single intelligence architecture.
 
-The existing memory runtime already establishes chronological Note Events as canonical primary memory, derived indexes, hybrid retrieval, time-first organization, verification receipts, relationship-aware retrieval, conflict handling, and CIS compounding. fileciteturn19file0
+The existing memory runtime establishes chronological Note Events as canonical primary memory, derived indexes, hybrid retrieval, time-first organization, verification receipts, relationship-aware retrieval, conflict handling, and CIS compounding.
 
-The Smart Brain Operating System further defines the event graph, layered retrieval, context assembly, lifecycle, provenance, and model-independent continuity. fileciteturn23file0
+The Smart Brain Operating System further defines the event graph, layered retrieval, context assembly, lifecycle, provenance, and model-independent continuity.
 
 This project **extends that foundation; it does not create a competing memory system.**
 
@@ -42,7 +42,7 @@ This project **extends that foundation; it does not create a competing memory sy
 
 Preserve, where known:
 
-- `event_at` — when the underlying event occurred;
+- `event_at` — when the underlying event happened;
 - `created_at` — when the record was created;
 - `updated_at` — when it materially changed;
 - `observed_at` — when source/state was observed;
@@ -63,7 +63,7 @@ Before adding infrastructure, inspect the existing canonical runtime and prove w
 
 ## Current truth
 
-The architecture is **documented and substantially implemented**, but it is **not yet honestly claimable as fully runtime-proven AAA**. The current canonical state explicitly records open proof gaps including real-checkout local execution, A→B→C compounding proof, PIS propagation, adversarial continuity tests, governance benchmark execution, and fresh successor behavioral acceptance. fileciteturn20file0
+The architecture is **documented and substantially implemented**, but it is **not yet honestly claimable as fully runtime-proven AAA**. The current canonical state records open proof gaps including real-checkout local execution, A→B→C compounding proof, PIS propagation, adversarial continuity tests, governance benchmark execution, and fresh successor behavioral acceptance.
 
 The next engineering objective is therefore integration and proof—not architectural reinvention.
 
