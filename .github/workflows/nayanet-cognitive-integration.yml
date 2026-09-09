@@ -19,25 +19,32 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Integrate cognitive engine surgically
+      - name: Integrate cognitive engine and Hub intelligence layer surgically
         shell: python
         run: |
           from pathlib import Path
           target = Path('2026 09 09 1213 NAYANET HUB.html')
           engine = Path('scripts/nayanet-cognitive-engine.js').read_text(encoding='utf-8')
+          layer = Path('scripts/nayanet-hub-intelligence-layer.js').read_text(encoding='utf-8')
           html = target.read_text(encoding='utf-8')
-          start = '<!-- NAYANET-COGNITIVE-ENGINE-V1:START -->'
-          end = '<!-- NAYANET-COGNITIVE-ENGINE-V1:END -->'
-          block = start + '<script id="nayanet-cognitive-engine">\n' + engine + '\n</script>' + end
-          if start in html and end in html:
-              a = html.index(start)
-              b = html.index(end, a) + len(end)
-              html = html[:a] + block + html[b:]
-          else:
-              marker = '</body>'
-              if marker not in html:
-                  raise SystemExit('BLOCKED: canonical HTML has no </body> insertion point')
-              html = html.replace(marker, block + marker, 1)
+
+          blocks = [
+              ('<!-- NAYANET-COGNITIVE-ENGINE-V1:START -->', '<!-- NAYANET-COGNITIVE-ENGINE-V1:END -->', 'nayanet-cognitive-engine', engine),
+              ('<!-- NAYANET-HUB-INTELLIGENCE-LAYER-V1:START -->', '<!-- NAYANET-HUB-INTELLIGENCE-LAYER-V1:END -->', 'nayanet-hub-intelligence-layer', layer),
+          ]
+
+          for start, end, script_id, source in blocks:
+              block = start + f'<script id="{script_id}">\n' + source + '\n</script>' + end
+              if start in html and end in html:
+                  a = html.index(start)
+                  b = html.index(end, a) + len(end)
+                  html = html[:a] + block + html[b:]
+              else:
+                  marker = '</body>'
+                  if marker not in html:
+                      raise SystemExit('BLOCKED: canonical HTML has no </body> insertion point')
+                  html = html.replace(marker, block + marker, 1)
+
           target.write_text(html, encoding='utf-8')
 
       - name: Verify physical integration
@@ -46,7 +53,9 @@ jobs:
           test -f '2026 09 09 1213 NAYANET HUB.html'
           grep -q 'NAYANET-COGNITIVE-ENGINE-V1:START' '2026 09 09 1213 NAYANET HUB.html'
           grep -q 'NayaNetCognition' '2026 09 09 1213 NAYANET HUB.html'
-          grep -q 'nayanet-cognitive-engine' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NAYANET-HUB-INTELLIGENCE-LAYER-V1:START' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'NayaNetHubIntelligence' '2026 09 09 1213 NAYANET HUB.html'
+          grep -q 'nayanet-hub-intelligence-layer' '2026 09 09 1213 NAYANET HUB.html'
           echo 'PHYSICAL_INTEGRATION=PASS'
 
       - name: Commit integrated canonical artifact
@@ -58,7 +67,7 @@ jobs:
           if git diff --cached --quiet; then
             echo 'NO_CHANGE=TRUE'
           else
-            git commit -m 'feat: physically integrate NayaNET cognitive engine into canonical Hub'
+            git commit -m 'feat: integrate NayaNET Hub intelligence control layer'
             git push
           fi
 
