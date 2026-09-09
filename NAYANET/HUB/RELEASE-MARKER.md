@@ -22,11 +22,15 @@ Production URL: `https://aged-art-7c12.nayanet.workers.dev`
 
 ## Current build repair
 
-React/ReactDOM declarations and Vite client types are explicit. The Cloudflare release workflow now uses a dedicated `public/` asset directory and an explicit SPA asset fetch for `/` and `/intelligence/*`, with runtime retries before release failure.
+React/ReactDOM declarations and Vite client types are explicit. The Cloudflare release workflow uses a dedicated `public/` asset directory and explicit SPA asset fetch for `/` and `/intelligence/*`, with runtime retries before release failure.
 
 ## Authority
 
 `.github/workflows/deploy-nayanet-hub-canonical.yml` is the sole forward Hub production deployment workflow. Older Hub deployment workflows are retained as historical records but no longer have push-triggered production authority.
+
+## Audit trigger
+
+This marker change is intentionally routed through an auditable merge so the canonical release workflow executes against the current `main` state.
 
 ## Important
 
