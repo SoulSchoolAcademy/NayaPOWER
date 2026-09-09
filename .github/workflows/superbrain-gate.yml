@@ -1,6 +1,7 @@
 name: Superbrain Gate
 
 # Canonical authoritative gate. Every push to main is evidence-producing; a repository commit is never treated as CI verification.
+# CURRENT VERIFICATION ANCHOR: 2026-09-09 control-plane repair must be re-observed on the exact current HEAD.
 # P1 COVERAGE: canonical event-write inventory + deliberate-bypass enforcement are part of the authoritative contract.
 # 10-STAR COLD-START: repository boot must prove the Code of Honor contract before downstream validation can be considered authoritative.
 on:
@@ -25,132 +26,85 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-
       - name: Compile Superbrain runtime
-        env:
-          PYTHONPYCACHEPREFIX: /tmp/naya-superbrain-pycache
+        env: { PYTHONPYCACHEPREFIX: /tmp/naya-superbrain-pycache }
         run: python -m py_compile .naya/memory/smart_notes_v3.py .naya/memory/duplicate_entity_audit.py .naya/memory/relationship_graph.py .naya/memory/entity_resolution.py .naya/memory/contradiction_supersession.py .naya/memory/superbrain_health.py .naya/memory/retrieval_benchmark.py .naya/memory/cis_state.py .naya/runtime/continuity_enforcement.py .naya/runtime/canonical_event_store.py .naya/runtime/canonical_write_inventory.py .naya/runtime/outbox.py .naya/runtime/restore_context.py .naya/runtime/project_execution_contract.py .naya/runtime/prompt_architect_contract.py .naya/runtime/activation_contract.py .naya/runtime/activation_engine.py .naya/runtime/customer_activation_mission_boundary.py .naya/runtime/customer_activation_loop_test.py .naya/runtime/cold_start_activation.py .naya/runtime/system_health.py .naya/runtime/cct_intelligent_block.py .naya/runtime/naya_claim.py .naya/runtime/cct_note_event_promotion.py .naya/runtime/cct_superbrain_coordination.py .naya/tests/test_superbrain_gate.py .naya/tests/test_continuity_enforcement.py .naya/tests/test_intelligence_layer.py .naya/tests/test_cold_start_and_cis.py .naya/tests/test_project_prompt_contracts.py .naya/tests/test_canonical_event_store.py .naya/tests/test_canonical_write_inventory.py .naya/tests/test_retrieval_quality.py .naya/tests/test_activation_engine.py .naya/runtime/test_20_pdf_activation.py .naya/runtime/cct_superbrain_coordination_test.py
-
       - name: Human agency and reality governance conformance
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python SUPERBRAIN/human_agency_governance_conformance_test.py
-
       - name: Canonical event-write boundary regression
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/tests/test_canonical_event_store.py
-
       - name: Canonical event-write coverage audit
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/tests/test_canonical_write_inventory.py && python .naya/runtime/canonical_write_inventory.py
-
       - name: Run cold-start and CIS acceptance checks
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/tests/test_cold_start_and_cis.py
-
       - name: Build canonical derived index before validation
         run: python .naya/memory/smart_notes_v3.py index > /tmp/superbrain-index.json
-
       - name: Validate canonical memory
         run: python .naya/memory/smart_notes_v3.py validate
-
       - name: Run duplicate/entity audit
         run: python .naya/memory/duplicate_entity_audit.py
-
       - name: Rebuild relationship graph
         run: python .naya/memory/relationship_graph.py
-
       - name: Run Superbrain regression suite
         run: python .naya/tests/test_superbrain_gate.py
-
       - name: Run retrieval quality and deliberate-failure suite
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/tests/test_retrieval_quality.py
-
       - name: Run execution continuity regression suite
         run: python .naya/tests/test_continuity_enforcement.py
-
       - name: Run project/prompt contract regression suite
         run: python .naya/tests/test_project_prompt_contracts.py
-
       - name: Run intelligence-layer regression suite
         run: python .naya/tests/test_intelligence_layer.py
-
       - name: Run zero-setup activation regression suite
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/tests/test_activation_engine.py
-
       - name: Run 20-PDF zero-setup activation boundary suite
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/runtime/test_20_pdf_activation.py
-
       - name: Run CCT -> Superbrain coordination boundary suite
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: PYTHONPATH=.naya/runtime python .naya/runtime/cct_superbrain_coordination_test.py
-
       - name: Run Torch 9 customer activation composition suite
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: PYTHONPATH=.naya/runtime python .naya/runtime/customer_activation_loop_test.py
-
       - name: Run human agency behavioral benchmark harness
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python SUPERBRAIN/human_agency_behavioral_benchmark.py
-
       - name: Enforce execution continuity on meaningful events
         run: python .naya/runtime/continuity_enforcement.py validate
-
       - name: Enforce project and Next Execution contracts
         run: python .naya/runtime/project_execution_contract.py validate
-
       - name: Prompt Architect deliberate-failure and positive checks
         run: python .naya/runtime/prompt_architect_contract.py self-test
-
       - name: Build and verify derived index
-        run: |
-          python .naya/memory/smart_notes_v3.py index > /tmp/superbrain-index.json
-          python .naya/memory/smart_notes_v3.py validate
-
+        run: python .naya/memory/smart_notes_v3.py index > /tmp/superbrain-index.json && python .naya/memory/smart_notes_v3.py validate
       - name: Retrieval baseline and smoke test
-        run: |
-          python .naya/memory/smart_notes_v3.py retrieve "Superbrain CIS Naya Power" --limit 5
-          python .naya/memory/retrieval_benchmark.py
-
+        run: python .naya/memory/smart_notes_v3.py retrieve "Superbrain CIS Naya Power" --limit 5 && python .naya/memory/retrieval_benchmark.py
       - name: Superbrain health metrics
         run: python .naya/memory/superbrain_health.py
-
       - name: Daily CIS smoke test
         run: python .naya/memory/cis_state.py --day 2026-08-25 --timezone America/Vancouver
-
       - name: Emit continuity gate receipt
         run: python .naya/runtime/continuity_enforcement.py receipt
-
       - name: Upload continuity gate receipt
         uses: actions/upload-artifact@v4
         with:
           name: superbrain-continuity-gate-receipt
           path: .naya/memory/CONTINUITY-GATE-RECEIPT.json
           if-no-files-found: error
-
       - name: Capture first runtime failure diagnostic
         if: ${{ failure() && !cancelled() }}
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/runtime/runtime_failure_isolation.py --mode brain-gate --output .naya/runtime/RUNTIME-FIRST-FAILURE-RECEIPT.json
-
       - name: Upload first runtime failure diagnostic
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
@@ -158,7 +112,6 @@ jobs:
           name: superbrain-first-failure-diagnostic
           path: .naya/runtime/RUNTIME-FIRST-FAILURE-RECEIPT.json
           if-no-files-found: ignore
-
   system-health:
     name: system-health-master-node
     if: always()
@@ -166,21 +119,15 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-
       - name: Set up Python
         uses: actions/setup-python@v6
-        with:
-          python-version: '3.12'
-
+        with: { python-version: '3.12' }
       - name: Verify Naya System Health / Master Node
         run: python .naya/runtime/system_health.py --receipt .naya/runtime/SYSTEM-HEALTH-RECEIPT.json
-
       - name: Capture system-health first failure diagnostic
         if: ${{ failure() && !cancelled() }}
-        env:
-          PYTHONDONTWRITEBYTECODE: "1"
+        env: { PYTHONDONTWRITEBYTECODE: "1" }
         run: python .naya/runtime/runtime_failure_isolation.py --mode system-health --output .naya/runtime/SYSTEM-HEALTH-FIRST-FAILURE-RECEIPT.json
-
       - name: Publish system health receipt
         if: always()
         uses: actions/upload-artifact@v4
