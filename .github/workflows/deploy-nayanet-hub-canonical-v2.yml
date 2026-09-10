@@ -33,25 +33,20 @@ jobs:
         with:
           fetch-depth: 0
           ref: main
-
       - name: Capture checked-out source SHA
         id: source
         run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
-
       - name: Install
         working-directory: NAYANET/HUB
         run: npm install --no-audit --no-fund
-
       - name: Typecheck
         working-directory: NAYANET/HUB
         run: npm run typecheck
-
       - name: Build
         working-directory: NAYANET/HUB
         env:
           VITE_RELEASE_COMMIT: ${{ steps.source.outputs.sha }}
         run: npm run build
-
       - name: Inspect actual generated artifact
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
@@ -86,7 +81,7 @@ jobs:
           mkdir -p release/public
           cp -R "$HUB/dist/." release/public/
           cat > release/worker.js <<'EOF'
-          export default { async fetch(request, env) { const url = new URL(request.url); const isSpaRoute = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB React'); headers.set('X-NayaNET-Source-Commit', env.SOURCE_COMMIT || 'unknown'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
+          export default { async fetch(request, env) { const url = new URL(request.url); const spaRoutes = new Set(['/','/index.html','/feed','/notes','/today','/reports','/library','/collective','/evidence','/connections','/mail','/space','/settings']); const isSpaRoute = spaRoutes.has(url.pathname) || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB React'); headers.set('X-NayaNET-Source-Commit', env.SOURCE_COMMIT || 'unknown'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
           cat > release/wrangler.jsonc <<'EOF'
           {"name":"aged-art-7c12","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"SOURCE_COMMIT_PLACEHOLDER"}}
@@ -94,7 +89,6 @@ jobs:
           sed -i "s/SOURCE_COMMIT_PLACEHOLDER/$SOURCE_COMMIT/" release/wrangler.jsonc
           printf 'RELEASE_SOURCE_COMMIT=%s\nRELEASE_SOURCE=NAYANET/HUB\nRELEASE_TARGET=aged-art-7c12\n' "$SOURCE_COMMIT" > release/RELEASE-MANIFEST.txt
           cat /tmp/index.sha256 /tmp/cognition.sha256 >> release/RELEASE-MANIFEST.txt
-
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v4
         with:
@@ -102,7 +96,6 @@ jobs:
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-
       - name: Inspect and explicitly promote newest Worker version to 100%
         working-directory: release
         env:
@@ -110,69 +103,38 @@ jobs:
         run: |
           set -euo pipefail
           npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
-          cat /tmp/deployments.json
           VERSION_ID=$(python3 - <<'PY'
           import json
           data=json.load(open('/tmp/deployments.json'))
-          if isinstance(data, dict):
-              deployments=data.get('deployments') or []
-          elif isinstance(data, list):
-              deployments=data
-          else:
-              raise SystemExit('INVALID_DEPLOYMENTS_JSON')
-          if not deployments:
-              raise SystemExit('NO_DEPLOYMENTS')
-          newest=deployments[-1]
-          if not isinstance(newest, dict):
-              raise SystemExit('INVALID_DEPLOYMENT_ENTRY')
-          versions=newest.get('versions') or []
-          if not versions:
-              raise SystemExit('NO_DEPLOYMENT_VERSIONS')
-          version=versions[-1]
-          version_id=version.get('version_id') or version.get('versionId')
-          if not version_id:
-              raise SystemExit('NO_VERSION_ID')
-          print(version_id)
+          deployments=data.get('deployments') if isinstance(data,dict) else data
+          if not deployments: raise SystemExit('NO_DEPLOYMENTS')
+          versions=deployments[-1].get('versions') or []
+          if not versions: raise SystemExit('NO_DEPLOYMENT_VERSIONS')
+          print(versions[-1].get('version_id') or versions[-1].get('versionId') or '')
           PY
           )
           test -n "$VERSION_ID"
-          echo "NEWEST_VERSION_ID=$VERSION_ID"
           npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
-          echo "PROMOTED_VERSION_ID=$VERSION_ID"
-
       - name: Independently verify exact public runtime and built assets
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
         run: |
           set -u
           for attempt in $(seq 1 12); do
-            echo "RUNTIME_PROBE_ATTEMPT=$attempt"
             get(){ curl -sS --max-time 8 -o "$2" -w '%{http_code}' "$1" || true; }
             status=$(get "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" /tmp/root)
             smart_status=$(get "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" /tmp/smart)
-            echo "ROOT_HTTP=$status SMART_HTTP=$smart_status"
             if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart ]; then
-              js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root 2>/dev/null | head -1 | cut -d'"' -f2 || true)
+              js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_status=$(get "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" /tmp/app-js)
               cognitive_status=$(get "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" /tmp/cognition)
               runtime_header=$(curl -sS --max-time 8 -I "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
-              echo "JS_SRC=$js_src JS_HTTP=$js_status COGNITION_HTTP=$cognitive_status RUNTIME_HEADER_SOURCE_COMMIT=$runtime_header"
               if [ "$js_status" = 200 ] && [ "$cognitive_status" = 200 ] && [ "$runtime_header" = "$SOURCE_COMMIT" ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
                 pass=1
-                for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null || { echo "FAIL_RUNTIME_MARKER=$x"; pass=0; }; done
-                for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null; then echo "FAIL_FORBIDDEN_RUNTIME=$x"; pass=0; fi; done
-                if [ "$pass" -eq 1 ]; then
-                  echo PUBLIC_RUNTIME=PASS
-                  echo RUNTIME_ROUTE_PARITY=PASS
-                  echo RUNTIME_JS_ASSET=PASS
-                  echo RUNTIME_COGNITIVE_ENGINE=PASS
-                  echo RUNTIME_INTELLIGENCE_MARKERS=PASS
-                  echo RUNTIME_FORBIDDEN_PRODUCT_UI=ABSENT
-                  echo RUNTIME_SOURCE_COMMIT=PASS
-                  echo RUNTIME_HEADER_SOURCE_COMMIT=PASS
-                  exit 0
-                fi
+                for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null || pass=0; done
+                for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null; then pass=0; fi; done
+                if [ "$pass" -eq 1 ]; then echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_SOURCE_COMMIT=PASS; exit 0; fi
               fi
             fi
             sleep 5
