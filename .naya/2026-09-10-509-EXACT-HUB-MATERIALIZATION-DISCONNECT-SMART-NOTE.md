@@ -3,63 +3,94 @@
 **Date:** 2026-09-10  
 **System:** NayaNET / NayaPOWER  
 **Target:** `2026 09 09 5:09 pm NayaNET HUB.html`  
-**Status:** RESOLVED
+**Status:** RESOLVED — canonical artifact restored and verified
 
 ## Problem
 
-The 509 Intelligent Feed source renderer was being updated, but the exact artifact that mattered — `2026 09 09 5:09 pm NayaNET HUB.html` on `main` — was not changing for an extended period.
+The 509 Intelligent Feed source renderer was being updated, but the exact artifact that mattered — `2026 09 09 5:09 pm NayaNET HUB.html` on `main` — repeatedly diverged from the intended Hub.
 
-GitHub Actions were running, creating a false sense of progress, while the actual target remained stale. Work stalled because source progress and artifact progress were not coupled by a hard release gate.
+The resulting UI contained duplicated welcome content and a replacement feed made of oversized synthetic boards. The approved Intelligent Block architecture was being replaced rather than evolved.
 
 ## Root Cause
 
-There were multiple materialization paths and verification gates that were not all bound to the exact target artifact.
+There were two distinct integrity failures:
 
-**Source intent is not artifact truth. A green Action is not release proof.**
+1. **Source/artifact disconnect.** Workflow activity did not guarantee that the exact target artifact represented the intended source.
+2. **Competing writers / queued Actions.** A previously queued materializer continued to write the target after a correct surgical restore, re-inserting the destructive `NAYANET_509_INTELLIGENT_FEED_DIRECT_V2` renderer.
+
+**Source intent is not artifact truth. A green Action is not release proof. Artifact ownership must be singular.**
 
 The authoritative chain is:
 
-`canonical source → materializer runs on that source → exact target file changes → target content is independently verified → target blob SHA changes → only then declare success`
+`canonical source → single canonical materializer/owner → exact target file → target content verification → target blob SHA verification → public runtime verification when applicable`
 
-A workflow that runs without changing the exact target is not successful materialization.
+A successful workflow that does not leave the exact target in the intended state is not successful release work.
 
-## Solution
+## Corrective Principle
 
-The 509 materialization path was made deterministic and surgical:
+The Hub is governed by **Adaptive Reconstruction + Surgical Evolution**:
 
-1. Check out the canonical source.
-2. Read `scripts/nayanet-509-intelligent-feed-v2.js` as the renderer source of truth.
-3. Preserve the approved Hub shell/sidebar/topbar/home structure.
-4. Remove known legacy 509 feed/runtime layers.
-5. Replace only the actual `<section class="homeFeed">` mount.
-6. Inject exactly one `NAYANET_509_INTELLIGENT_FEED_DIRECT_V2` renderer.
-7. Verify the exact target contains `COLLECTIVE INTELLIGENCE`, `PERSONAL INTELLIGENCE`, `ACTIVITY FEED`, and the required edge-to-edge geometry.
-8. Verify known legacy feed markers/runtime are absent.
-9. Commit **only** the exact 5:09 Hub target when it actually changes.
-10. Verify the resulting `main` target blob, not merely workflow status.
+- Preserve the approved shell, sidebar, topbar, hero, and existing Intelligent Block architecture.
+- Do not replace good blocks with a new card system merely to change presentation.
+- Make the smallest change that fully solves the stated problem.
+- Use color, geometry, depth, spacing, and lighting to evolve the existing blocks rather than redesigning them.
+- One canonical writer owns the artifact. Temporary parallel materializers are not permitted.
 
-The successful artifact commit was:
+## Restored Product Direction
 
-`a0b8dcf0c0bfa7b75982d35d08c177fe375a90d8`
+The authoritative Intelligent Feed architecture is the existing black, premium, dimensional feed with back-to-back Intelligent Blocks.
 
-The exact target blob became:
+Each block is a complete intelligence event. Its outer identity progresses through a living spectrum:
 
-`d0faad3be4048b0b852cb2ba3cb73365bd70da9f`
+**Red → Orange → Gold → Yellow → Lime → Forest Green → Canyon Teal → Sapphire → Indigo → Royal Purple → Magenta → White → Red → repeat**
 
-The GitHub compare confirmed the exact 5:09 Hub file was modified by the materialization commit and that the canonical 509 renderer was inserted into the target.
+The black architecture remains unified. Color is an electrical identity signal with edge lighting, ambient spill, glow, dimensional shadows, and restrained reflections.
+
+Inside the existing chamber:
+
+**IN A NUTSHELL → HUMAN → CHILD → GRANDMA → NAYA → MACHINE → WHAT WE LEARNED / WHAT IT MEANS**
+
+The Nutshell is the clear entry point: a lifted dark surface illuminated by white light. The perspective layers remain nested within the same intelligence event. Learning uses yellow/gold with white clarity.
+
+The product promise is:
+
+**Use Naya to understand anything.**
+
+The method is **minimum sufficient structure**: use the smallest set of perspectives and intelligence layers needed to produce complete understanding rather than forcing every source into a rigid template.
+
+## Proven Artifact
+
+The exact authoritative Hub artifact was restored from the pre-materializer version represented by commit:
+
+`2f2f79a46e528fd86437142b5ef0ffaf4c695ac5`
+
+The restored target blob is:
+
+`003a623e81f994cf7d8b4814fa339dbb076cd5bf`
+
+The final repair commit is:
+
+`0f5b2b01ea234da3d6c991ddb0a60d9580f23e3c`
+
+The final commit sits on top of the current `main` state and restores the target without the destructive direct renderer.
+
+The retired renderer source is now a compatibility shim that performs no DOM replacement, no feed mounting, and no synthetic board rendering.
 
 ## Verification
 
-Success is evidenced by repository state:
+The exact target on `main` was fetched directly after the final repair.
 
-- `main` advanced to `a0b8dcf0c0bfa7b75982d35d08c177fe375a90d8`.
-- Commit message: `fix(509): materialize canonical Intelligent Feed into Hub`.
-- The exact target file was modified.
-- Target blob SHA: `d0faad3be4048b0b852cb2ba3cb73365bd70da9f`.
-- The inserted renderer is `NAYANET_509_INTELLIGENT_FEED_DIRECT_V2`.
-- The renderer contains the canonical 509 V7 feed and edge-to-edge geometry.
+Verified:
 
-## Future Rule
+- Target blob SHA = `003a623e81f994cf7d8b4814fa339dbb076cd5bf`.
+- `NAYANET_509_INTELLIGENT_FEED_DIRECT_V2` is absent.
+- `naya509feed` is absent.
+- The existing `.intelligentBlocks` / `.intelligentBlock` / `.perspectiveMap` architecture is present.
+- The restored file retains the approved black premium Hub shell and sidebar.
+- The destructive replacement renderer source is retired as a no-op compatibility shim.
+- The canonical Smart Note `2026-09-10-NAYANET-INTELLIGENT-FEEDS-WORK-SMART-NOTE.md` has been captured as a real activity artifact.
+
+## Permanent Release Rule
 
 For every consequential NayaNET artifact change:
 
@@ -69,8 +100,12 @@ The release gate must prove:
 
 `SOURCE → BUILD/MATERIALIZE → EXACT TARGET → TARGET CONTENT CHECK → TARGET BLOB SHA CHANGE → PUBLIC RUNTIME CHECK when applicable`
 
-If the exact target blob does not change, the work is **not done**, regardless of how many Actions pass.
+And when multiple writers are possible:
 
-When a materialization path fails, stop adding parallel workflows. Inspect the exact failing gate, fix the single canonical path, rerun it, and verify the artifact directly.
+`ONE ARTIFACT → ONE OWNER → ONE CANONICAL WRITE PATH`
 
-This is the permanent NayaNET rule for preventing another source/artifact disconnect.
+If a queued or competing workflow can overwrite the artifact, the system is not yet under control.
+
+When a materialization path fails, do not add another parallel workflow. Identify the writer, retire or disable the competing path, then perform one surgical repair and verify the exact artifact directly.
+
+**This is the permanent NayaNET rule: preserve proven work, evolve it surgically, and make artifact ownership singular.**
