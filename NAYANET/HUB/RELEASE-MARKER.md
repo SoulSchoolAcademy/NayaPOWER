@@ -4,7 +4,7 @@ Canonical source boundary: `NAYANET/HUB/`
 
 Canonical runtime: `https://aged-art-7c12.nayanet.workers.dev`
 
-Canonical production workflow: `.github/workflows/deploy-nayanet-hub-canonical.yml`
+Canonical production workflow: `.github/workflows/deploy-nayanet-hub-canonical-v2.yml`
 
 Release law:
 
@@ -14,4 +14,4 @@ The runtime verifier intentionally inspects the generated React JavaScript asset
 
 This commit is an auditable trigger for the canonical release path.
 
-Trigger architecture: `hub-canonical-release-trigger.yml` is trigger-only; all build/deploy/verify logic remains centralized in the canonical workflow.
+Trigger architecture: `hub-canonical-release-trigger.yml` is trigger-only; all build/deploy/verify logic remains centralized in the canonical V2 workflow.
