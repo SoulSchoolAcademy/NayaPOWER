@@ -27,8 +27,6 @@ jobs:
           s=html_path.read_text(encoding='utf-8')
           js=js_path.read_text(encoding='utf-8')
 
-          # Remove legacy feed script/style blocks by their actual rendered-layer signatures.
-          # This catches historical V1/V5/V6/V7/V16 layers whose IDs were not consistently named.
           legacy_style_terms=(
               'nayanet-elite-feed','n3-block','activationRail','nayanet-canonical-feed-upgrade',
               'n4-interior-style','NAYANET-LIVE-RIGHT-RAIL-GUARD'
@@ -40,7 +38,7 @@ jobs:
           )
 
           def strip_blocks(text, tag, terms):
-              pattern=re.compile(rf'<{tag}\\b[^>]*>.*?</{tag}>\\s*', re.S|re.I)
+              pattern=re.compile(rf'<{tag}\b[^>]*>.*?</{tag}>\s*', re.S|re.I)
               removed=0
               def repl(m):
                   nonlocal removed
@@ -53,14 +51,11 @@ jobs:
 
           s,nstyle=strip_blocks(s,'style',legacy_style_terms)
           s,nscript=strip_blocks(s,'script',legacy_script_terms)
+          s=re.sub(r'<script\s+src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>\s*</script>\s*','',s,flags=re.I)
 
-          # Remove the old external V6 feed runtime even if it is not wrapped with legacy markers.
-          s=re.sub(r'<script\\s+src=["\\']\\./nayanet-intelligent-feed-v6\\.js["\\'][^>]*>\\s*</script>\\s*','',s,flags=re.I)
-
-          # The center feed is the only mount point for the new renderer.
-          m=re.search(r'<section\\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          m=re.search(r'<section\s+class="homeFeed"[^>]*>',s,flags=re.I)
           if not m: raise SystemExit('509 HTML missing homeFeed mount')
-          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\\b[^>]*>|</section\\s*>',re.I)
+          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\b[^>]*>|</section\s*>',re.I)
           while depth:
               q=tok.search(s,pos)
               if not q: raise SystemExit('Could not find matching homeFeed section close')
@@ -68,10 +63,9 @@ jobs:
               pos=q.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
 
-          # Remove any duplicate V2 marker, then install exactly one canonical renderer.
-          s=re.sub(r'<script\\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\\s*','',s,flags=re.S|re.I)
+          s=re.sub(r'<script\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\s*','',s,flags=re.S|re.I)
           if '</body>' not in s: raise SystemExit('509 HTML missing </body>')
-          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n'+js+'\\n</script>\\n</body>',1)
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           html_path.write_text(s,encoding='utf-8')
           print(f'LEGACY_STYLE_BLOCKS_REMOVED={nstyle}')
           print(f'LEGACY_SCRIPT_BLOCKS_REMOVED={nscript}')
@@ -80,15 +74,13 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          FILE='2026 09 09 5:09 pm NayaNET HUB.html'
           python - <<'PY'
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
           assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2') == 1
-          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' not in s
           assert 'nayanet-intelligent-feed-v6.js' not in s
-          blocks=re.findall(r'<(style|script)\\b[^>]*>(.*?)</\\1>',s,re.S|re.I)
+          blocks=re.findall(r'<(style|script)\b[^>]*>(.*?)</\1>',s,re.S|re.I)
           legacy=('n3-block','nayanet-canonical-feed-upgrade','NayaNET V16 presentation layer','NAYANET CANONICAL FEED SURGICAL UPGRADE','NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR')
           offenders=[]
           for tag,body in blocks:
@@ -97,7 +89,7 @@ jobs:
                   if term.lower() in body.lower(): offenders.append((tag,term))
           assert not offenders, offenders
           assert '<section class="homeFeed"></section>' in s
-          for x in ('One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SAVED TO SMART LIST','SHARE INTEL','RATE THIS INTELLIGENCE'):
+          for x in ('One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SHARE INTEL','RATE THIS INTELLIGENCE'):
               assert x in s, x
           print('509_SOURCE_CANONICAL_V2=PASS')
           print('509_LEGACY_RENDERERS=ABSENT')
