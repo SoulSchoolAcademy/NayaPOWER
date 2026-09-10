@@ -3,6 +3,7 @@
 /* MATERIALIZE-509-2026-09-10: trigger canonical artifact build. */
 /* MATERIALIZE-509-STRICT-CLEAN-2026-09-10: remove legacy feed layers and naked Play Naya payload. */
 /* CONTROL-PLANE-509-MATERIALIZATION-GATE-V1: source commit must produce a verified exact Hub artifact. */
+/* ISOLATED-RECOVERY-509-TRIGGER-V1: execute artifact verification from a controlled branch. */
 (()=>{'use strict';
 const ROOT='naya509feed';
 const LEGACY=['nayanet-elite-feed','homeIntelligentBlocks','nayanet-supreme-feed','page-intelligence-today','nhV11Quote','nhAuthorityQuote','nhV11Today','nh72Today','nayaSmartFeedForceMount','nayaSmartFeedMaster'];
