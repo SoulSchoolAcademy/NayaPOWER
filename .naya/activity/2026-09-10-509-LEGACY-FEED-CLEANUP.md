@@ -39,3 +39,7 @@ The corrected workflow verifies:
 - `git diff --check` passes
 
 The intended source end state is **V2 only inside the 509 home feed**: no first legacy boards, no second legacy boards, no stale code block, and no legacy V6 renderer capable of rebuilding them.
+
+## Materialization gate trigger
+
+A single controlled activity-file update is being used to trigger the canonical mainline materialization path. This line is a trigger record only; completion is not claimed until the exact 5:09 Hub file changes on `main` and passes its target verification gates.
