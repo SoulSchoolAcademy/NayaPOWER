@@ -30,9 +30,26 @@ jobs:
           p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
           js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
           s=p.read_text(encoding='utf-8')
+          # Remove prior 509 layer.
           for ident in ('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2','n509-final-style'):
               s=re.sub(r'<(?:script|style)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(?:script|style)>','',s,flags=re.S|re.I)
+          # Remove literal code containers.
           s=re.sub(r'<(?:pre|code)\b[^>]*>.*?</(?:pre|code)>','',s,flags=re.S|re.I)
+          # Remove legacy feed systems that can remount, resize, or overwrite the 509 feed.
+          legacy_patterns = [
+              r'<!--\s*NAYANET SMART FEED MASTER V1\s*-->.*?<!--\s*NAYANET SMART FEED FORCE MOUNT V2\s*-->',
+              r'<style id=["\']NAYANET-SMART-FEED-MASTER-V1["\'][^>]*>.*?</style>',
+              r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',
+              r'<style id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2["\'][^>]*>.*?</style>',
+              r'<script id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME["\'][^>]*>.*?</script>',
+              r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',
+          ]
+          for pat in legacy_patterns:
+              s=re.sub(pat,'',s,flags=re.S|re.I)
+          # Remove the known naked Play Naya polish payload when it exists outside a script tag.
+          s=re.sub(r'\s*/\*\s*NayaNET V7 — surgical Play Naya polish layer\..*?(?=</body>)','\n',s,flags=re.S|re.I)
+          # Remove any other naked JavaScript block left after a closing script tag, bounded by body end.
+          s=re.sub(r'(</script>)\s*(?:/\*.*?\*/\s*)?\(\(\)\s*=>\s*\{.*?(?=</body>)',r'\1\n',s,flags=re.S|re.I)
           start=s.find('<section class="homeFeed">')
           assert start>=0
           pos=start+len('<section class="homeFeed">')
@@ -41,7 +58,8 @@ jobs:
               m=token.search(s,pos); assert m
               depth += -1 if m.group(0).lower().startswith('</') else 1; pos=m.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
-          s=s.replace('</body>','<style id="n509-final-style">#naya509feed{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}#naya509feed .n509-board{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}</style>\n<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          css='''<style id="n509-final-style">#page-home .homeWorkspace,#page-home .homeFeed,#naya509feed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important}#page-home .homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important}#naya509feed .n509-board{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}</style>\n'''
+          s=s.replace('</body>',css+'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           p.write_text(s,encoding='utf-8')
           PY
       - name: Verify
@@ -55,8 +73,10 @@ jobs:
           grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q 'n509-final-style' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -qi '<pre\b' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -qi '<code\b' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'surgical Play Naya polish layer' '2026 09 09 5:09 pm NayaNET HUB.html'
           git diff --check
       - name: Commit
         shell: bash
@@ -66,5 +86,5 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'fix(509): remove stray code and force full-width feed'
+          git commit -m 'fix(509): strip legacy feed layers and naked Play Naya code'
           git push origin HEAD:${{ github.head_ref || github.ref_name }}
