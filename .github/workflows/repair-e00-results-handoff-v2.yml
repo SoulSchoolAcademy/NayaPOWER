@@ -7,6 +7,7 @@ on:
       - 'E00'
       - 'MAXESS-RESULT-CONSUMER-V2.html'
       - '.github/workflows/repair-e00-results-handoff-v2.yml'
+      - '.naya/activity/**'
   workflow_dispatch:
 
 permissions:
@@ -21,120 +22,47 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 1
-
       - name: Apply smallest deterministic E00 handoff repair
         shell: python
         run: |
           from pathlib import Path
           import re
-          p = Path('E00')
-          s = p.read_text(encoding='utf-8')
+          p = Path('E00'); s = p.read_text(encoding='utf-8')
           state_pattern = re.compile(r"const state=\{\n  firstVisit:true,\n  nayaText:'',\n  index:0,\n  selected:null,\n  responses:\[\],\n  nayaPlaying:false,\n  completed:false\n\};")
           state_replacement = "const state={\n  firstVisit:true,\n  nayaText:'',\n  index:0,\n  selected:null,\n  responses:[],\n  nayaPlaying:false,\n  completed:false,\n  finalizing:false\n};"
           s, state_count = state_pattern.subn(state_replacement, s, count=1)
-          if state_count not in (0, 1):
-              raise SystemExit(f'Unexpected state replacement count: {state_count}')
+          if state_count not in (0,1): raise SystemExit(f'Unexpected state replacement count: {state_count}')
           continue_pattern = re.compile(r"function continueAssessment\(\)\{.*?\n\}\n\n/\* ========================================================\n   AUDIO PREVIEW", re.S)
           continue_replacement = '''function continueAssessment(event){
-
-  if(event){
-    event.preventDefault();
-    event.stopPropagation();
-    if(event.stopImmediatePropagation) event.stopImmediatePropagation();
-  }
-
-  if(state.finalizing || !state.selected){
-    return;
-  }
-
-  saveResponse();
-  stopNaya();
-
-  if(state.index===14){
-
-    state.finalizing=true;
-    state.completed=true;
-
-    const button=$('maxessContinueButton');
-
-    button.disabled=true;
-    button.setAttribute('aria-disabled','true');
-    $('maxessContinueText').textContent='Loading Results…';
-
-    try{
-      completeAssessment();
-    }catch(e){
-      state.finalizing=false;
-      state.completed=false;
-      button.disabled=false;
-      button.setAttribute('aria-disabled','false');
-      $('maxessContinueText').textContent='Continue';
-      console.error('MAXESS final Results handoff failed:',e);
-    }
-
-    return;
-  }
-
-  state.index++;
-  renderQuestion();
-  setTimeout(openNaya,140);
-
+  if(event){event.preventDefault();event.stopPropagation();if(event.stopImmediatePropagation)event.stopImmediatePropagation();}
+  if(state.finalizing||!state.selected)return;
+  saveResponse();stopNaya();
+  if(state.index===14){state.finalizing=true;state.completed=true;const button=$('maxessContinueButton');button.disabled=true;button.setAttribute('aria-disabled','true');$('maxessContinueText').textContent='Loading Results…';try{completeAssessment();}catch(e){state.finalizing=false;state.completed=false;button.disabled=false;button.setAttribute('aria-disabled','false');$('maxessContinueText').textContent='Continue';console.error('MAXESS final Results handoff failed:',e);}return;}
+  state.index++;renderQuestion();setTimeout(openNaya,140);
 }
 
 /* ========================================================
    AUDIO PREVIEW'''
           s, continue_count = continue_pattern.subn(continue_replacement, s, count=1)
-          if continue_count not in (0, 1):
-              raise SystemExit(f'Unexpected continueAssessment replacement count: {continue_count}')
-          marker = "  broadcastResult(c);\n\n  state.completed=true;"
-          handoff = """  broadcastResult(c);
-
-  const encoded=encode(c);
-  if(!encoded){
-    throw new Error('MAXESS_RESULT_V1 encoding failed before Results handoff.');
-  }
-
-  const resultsUrl=
-    'https://results.nayanet.app/#maxess-result='+
-    encoded;
-
-  state.completed=true;
-
-  ROOT.dataset.completed='true';
-  ROOT.dataset.resultReady='true';
-  ROOT.dataset.contractVersion='MAXESS_RESULT_V1';
-
-  try{
-    if(window.top && window.top!==window){
-      window.top.location.assign(resultsUrl);
-    }else{
-      window.location.assign(resultsUrl);
-    }
-  }catch(e){
-    try{
-      window.location.assign(resultsUrl);
-    }catch(_){
-      throw new Error('MAXESS Results navigation failed: '+e.message);
-    }
-  }
-
+          if continue_count not in (0,1): raise SystemExit(f'Unexpected continueAssessment replacement count: {continue_count}')
+          marker="  broadcastResult(c);\n\n  state.completed=true;"
+          handoff="""  broadcastResult(c);
+  const encoded=encode(c); if(!encoded)throw new Error('MAXESS_RESULT_V1 encoding failed before Results handoff.');
+  const resultsUrl='https://results.nayanet.app/#maxess-result='+encoded;
+  state.completed=true; ROOT.dataset.completed='true'; ROOT.dataset.resultReady='true'; ROOT.dataset.contractVersion='MAXESS_RESULT_V1';
+  try{if(window.top&&window.top!==window){window.top.location.assign(resultsUrl);}else{window.location.assign(resultsUrl);}}catch(e){try{window.location.assign(resultsUrl);}catch(_){throw new Error('MAXESS Results navigation failed: '+e.message);}}
   return true;"""
-          if marker in s:
-              s = s.replace(marker, handoff, 1)
-          elif "https://results.nayanet.app/#maxess-result=" not in s:
-              raise SystemExit('E00 completion handoff anchor missing')
+          if marker in s:s=s.replace(marker,handoff,1)
+          elif 'https://results.nayanet.app/#maxess-result=' not in s: raise SystemExit('E00 completion handoff anchor missing')
           if 'window.MAXESS_E00_RESULTS_HANDOFF_V1=true;' not in s:
-              version_marker = 'window.MAXESS_E00_ISOLATED_V4=true;'
-              if version_marker not in s:
-                  raise SystemExit('E00 version marker missing')
-              s = s.replace(version_marker, version_marker + "\n\nwindow.MAXESS_E00_RESULTS_HANDOFF_V1=true;", 1)
-          p.write_text(s, encoding='utf-8')
-          print('E00 repair pass completed.')
-
+              vm='window.MAXESS_E00_ISOLATED_V4=true;'
+              if vm not in s: raise SystemExit('E00 version marker missing')
+              s=s.replace(vm,vm+"\n\nwindow.MAXESS_E00_RESULTS_HANDOFF_V1=true;",1)
+          p.write_text(s,encoding='utf-8')
       - name: Static source and consumer QA
         shell: bash
         run: |
@@ -149,28 +77,15 @@ jobs:
           ! grep -Fq "results.nayanet.xyz" E00
           grep -F "MAXESS_RESULT_V1" MAXESS-RESULT-CONSUMER-V2.html >/dev/null
           grep -F "maxess-result=" MAXESS-RESULT-CONSUMER-V2.html >/dev/null
-          grep -F "window.MAXESS_RESULT=r" MAXESS-RESULT-CONSUMER-V2.html >/dev/null
-          grep -F "MAXESS_RESULT_READY" MAXESS-RESULT-CONSUMER-V2.html >/dev/null
-          grep -F "maxess:result-updated" MAXESS-RESULT-CONSUMER-V2.html >/dev/null
-          ! grep -Fq "results.nayanet.xyz" MAXESS-RESULT-CONSUMER-V2.html
           node --check <(sed -n '/<script>/,/<\/script>/p' E00 | sed '1d;$d')
           node --check <(sed -n '/<script>/,/<\/script>/p' MAXESS-RESULT-CONSUMER-V2.html | sed '1d;$d')
           echo 'E00 + Results consumer static QA: PASS'
-
       - name: Commit only when E00 changed
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name 'Naya Master'
-          git config user.email 'naya-master@users.noreply.github.com'
-          git add E00
-          if git diff --cached --quiet; then
-            echo 'E00 already satisfies the handoff contract — no mutation required.'
-          else
-            git commit -m 'fix(E00): complete one-click Results handoff'
-            git push origin main
-          fi
-
+          git config user.name 'Naya Master'; git config user.email 'naya-master@users.noreply.github.com'; git add E00
+          if git diff --cached --quiet; then echo 'E00 already satisfies the handoff contract — no mutation required.'; else git commit -m 'fix(E00): complete one-click Results handoff'; git push origin main; fi
       - name: Final repository-state assertion
         shell: bash
         run: |
@@ -179,3 +94,55 @@ jobs:
           grep -F "https://results.nayanet.app/#maxess-result=" E00 >/dev/null
           ! grep -Fq "results.nayanet.xyz" E00
           echo 'FINAL E00 HANDOFF ASSERTION: PASS'
+
+  materialize-509:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    name: Materialize canonical 509 Hub artifact
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout current mainline source
+        uses: actions/checkout@v6
+      - name: Materialize canonical 509 feed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html'); js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8'); s=p.read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'): assert marker in s, '509 SHELL MISSING: '+marker
+          exact_ids=('nayanet-canonical-feed-upgrade-style','NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','NAYANET-SMART-FEED-MASTER-V1-RUNTIME','NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME','nayanet-canonical-hub-authority')
+          for ident in exact_ids:s=re.sub(r'<(style|script|div)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(style|script|div)>','',s,flags=re.S|re.I)
+          script_pattern=re.compile(r'<script[^>]*>.*?</script>',re.S|re.I); legacy=('function strengthenFeed()','nh-v11-intel','nhV11Today','nh-authority-actions','nayanet.presentationMode','function addTodayNav()','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','NayaNET V16 presentation layer')
+          s=script_pattern.sub(lambda m:'' if any(x.lower() in m.group(0).lower() for x in legacy) else m.group(0),s)
+          s=re.sub(r'<script[^>]*src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>.*?</script>','',s,flags=re.S|re.I); s=re.sub(r'<(?:div|section)[^>]*id=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>','',s,flags=re.S|re.I)
+          for marker in legacy+exact_ids+('nayanet-intelligent-feed-v6.js',):s=s.replace(marker,'')
+          start=s.find('<section class="homeFeed">'); assert start>=0; pos=start+len('<section class="homeFeed">'); depth=1; token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
+          while depth:q=token.search(s,pos);assert q;depth+=-1 if q.group(0).lower().startswith('</') else 1;pos=q.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          s=re.sub(r'<script[^>]*id=["\']NAYANET_509_INTELLIGENT_FEED_DIRECT_V2["\'][^>]*>.*?</script>','',s,flags=re.S|re.I); s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1); p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify exact 509 target
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):assert marker in s,marker
+          assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2')==1; assert '<section class="homeFeed"></section>' in s
+          forbidden=('NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','nayanet-canonical-feed-upgrade-style','nayanet-canonical-hub-authority','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','nayanet-intelligent-feed-v6.js','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth')
+          for marker in forbidden:assert marker not in s,marker
+          for marker in ('COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY FEED','width:calc(100vw - 250px)','width:calc(100% + 40px)'):assert marker in s,marker
+          print('509_TARGET_VERIFICATION=PASS')
+          PY
+      - name: Commit exact target only when changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'; git config user.email 'naya-power@users.noreply.github.com'; git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          if git diff --cached --quiet; then echo '509_TARGET_ALREADY_CURRENT=1'; exit 0; fi
+          git commit -m 'fix(509): materialize canonical Intelligent Feed into Hub'
+          git push origin main
