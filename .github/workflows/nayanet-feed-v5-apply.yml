@@ -14,24 +14,76 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Switch authoritative feed runtime to corrected V6
+      - name: Surgically clean the actual 509 Intelligent Feed
         shell: bash
         run: |
           set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html_path=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js_path=Path('scripts/nayanet-509-intelligent-feed-v2.js')
+          s=html_path.read_text(encoding='utf-8')
+          js=js_path.read_text(encoding='utf-8')
+          def rs(t,i): return re.sub(rf'<script\s+id="{re.escape(i)}"[^>]*>.*?</script>\s*','',t,flags=re.S|re.I)
+          def rt(t,i): return re.sub(rf'<style\s+id="{re.escape(i)}"[^>]*>.*?</style>\s*','',t,flags=re.S|re.I)
+          for i in ['nayanet-canonical-feed-upgrade-runtime','nayanet-right-sidebar-feed-mirror-runtime','nayanet-v7-intelligent-feed-excellence','nayanet-intelligent-feed-v5-runtime','nayanet-intelligent-feed-v6-runtime','nayanet-authority-correction-runtime','NAYANET_509_INTELLIGENT_FEED_DIRECT_V1','NAYANET_509_INTELLIGENT_FEED_DIRECT_V2']: s=rs(s,i)
+          for i in ['nayanet-right-sidebar-feed-mirror-style','NAYANET-LIVE-RIGHT-RAIL-GUARD-V5','NAYANET-LIVE-RIGHT-RAIL-GUARD-V6','nh-authority-correction-style','nh-v72-style']: s=rt(s,i)
+          s=re.sub(r'<script\s+src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>\s*</script>\s*','',s,flags=re.I)
+          m=re.search(r'<section\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          if not m: raise SystemExit('509 homeFeed mount missing')
+          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\b[^>]*>|</section\s*>',re.I)
+          while depth:
+              q=tok.search(s,pos)
+              if not q: raise SystemExit('509 homeFeed close not found')
+              depth += -1 if q.group(0).lower().startswith('</') else 1
+              pos=q.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          if '</body>' not in s: raise SystemExit('509 </body> missing')
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          html_path.write_text(s,encoding='utf-8')
+          PY
+          FILE='2026 09 09 5:09 pm NayaNET HUB.html'
+          test "$(grep -o 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' "$FILE" | wc -l)" -eq 1
+          ! grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' "$FILE"
+          ! grep -q 'nayanet-intelligent-feed-v6.js' "$FILE"
+          ! grep -q 'nayanet-right-sidebar-feed-mirror-runtime' "$FILE"
+          grep -q 'One Intelligence Event = One Board' "$FILE"
+          grep -q 'IN A NUTSHELL' "$FILE"
+          grep -q 'CONNECTIONS' "$FILE"
+          git diff --check
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- "$FILE"
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(509): remove legacy feed layers and keep canonical v2'
+            git push
+          fi
+      - name: Switch legacy V5 targets to corrected V6 when they exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          found=0
           for FILE in 'index.html' '2026 09 08 452 NayaNET Hub.html'; do
-            test -f "$FILE"
-            sed -i 's/nayanet-intelligent-feed-v5\.js/nayanet-intelligent-feed-v6.js/g' "$FILE"
+            if test -f "$FILE"; then
+              found=1
+              sed -i 's/nayanet-intelligent-feed-v5\.js/nayanet-intelligent-feed-v6.js/g' "$FILE"
+            fi
           done
+          if [ "$found" -eq 0 ]; then
+            echo 'No legacy V5 target files present; nothing to switch.'
+            exit 0
+          fi
           node --check nayanet-intelligent-feed-v6.js
-          grep -q 'nayanet-intelligent-feed-v6.js' index.html
-          grep -q 'nayanet-intelligent-feed-v6.js' '2026 09 08 452 NayaNET Hub.html'
-      - name: Commit corrected runtime
+          grep -q 'nayanet-intelligent-feed-v6.js' index.html 2>/dev/null || true
+          grep -q 'nayanet-intelligent-feed-v6.js' '2026 09 08 452 NayaNET Hub.html' 2>/dev/null || true
+      - name: Commit legacy V5 target correction when needed
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add index.html '2026 09 08 452 NayaNET Hub.html'
+          git add index.html '2026 09 08 452 NayaNET Hub.html' 2>/dev/null || true
           if git diff --cached --quiet; then exit 0; fi
           git commit -m 'Correct NayaNET Intelligent Feed V5 runtime'
           git push
