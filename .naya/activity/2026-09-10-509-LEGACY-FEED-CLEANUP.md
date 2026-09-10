@@ -47,3 +47,7 @@ A single controlled activity-file update is being used to trigger the canonical 
 ## Bound materializer trigger
 
 The materializer is now bound to the confirmed mainline Naya 16 activity gate so source changes, artifact materialization, target verification, and the resulting target commit occur in one observable chain. This is still a trigger record, not a completion claim.
+
+## Deterministic artifact gate trigger
+
+The mainline E00 activity gate now owns the 509 artifact materialization as a separate job with exact target verification and a write-only-if-changed rule. This trigger exists solely to exercise that deterministic chain; completion remains unclaimed until the exact Hub file on `main` changes and is independently verified.
