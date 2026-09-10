@@ -1,0 +1,14 @@
+{
+  "$schema": "naya/control-plane/claims/v1",
+  "status": "CANONICAL",
+  "policy": {
+    "active_claims_must_have_owner": true,
+    "active_claims_must_have_scope": true,
+    "active_claims_must_have_start_head": true,
+    "overlapping_active_scopes_are_forbidden": true,
+    "one_active_claim_per_block": true,
+    "expired_claims_are_not_valid": true,
+    "release_is_explicit": true
+  },
+  "claims": []
+}

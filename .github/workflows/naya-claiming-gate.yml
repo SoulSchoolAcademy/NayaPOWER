@@ -1,0 +1,52 @@
+name: Naya-to-Naya Claiming Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  claiming:
+    name: execution-claiming-enforcement
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile claiming and execution runtimes
+        run: python -m py_compile .naya/control-plane/claiming.py .naya/tests/test_claiming.py .naya/runtime/execution_controller.py .naya/tests/test_execution_controller.py .naya/runtime/risk_engine.py .naya/runtime/model_tool_gateway.py
+
+      - name: Run claiming adversarial tests
+        run: python .naya/tests/test_claiming.py
+
+      - name: Run execution boundary adversarial tests
+        run: python .naya/tests/test_execution_controller.py
+
+      - name: Run canonical claiming self-test
+        run: python .naya/control-plane/claiming.py self-test
+
+      - name: Run execution boundary self-test
+        run: python .naya/runtime/execution_controller.py self-test
+
+      - name: Run risk classifier self-test
+        run: python .naya/runtime/risk_engine.py self-test
+
+      - name: Run model/tool gateway self-test
+        run: python .naya/runtime/model_tool_gateway.py self-test
+
+      - name: Validate canonical claim registry
+        run: python .naya/control-plane/claiming.py validate
+
+      - name: Validate execution state boundary
+        run: python .naya/runtime/execution_controller.py validate
