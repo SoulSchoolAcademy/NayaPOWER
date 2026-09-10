@@ -21,70 +21,29 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           import re
-
-          html_path = Path('2026 09 09 5:09 pm NayaNET HUB.html')
-          js_path = Path('scripts/nayanet-509-intelligent-feed-v2.js')
-          s = html_path.read_text(encoding='utf-8')
-          js = js_path.read_text(encoding='utf-8')
-
-          def remove_script_by_id(text, script_id):
-              pattern = rf'<script\\s+id="{re.escape(script_id)}"[^>]*>.*?</script>\\s*'
-              return re.sub(pattern, '', text, flags=re.S | re.I)
-
-          def remove_style_by_id(text, style_id):
-              pattern = rf'<style\\s+id="{re.escape(style_id)}"[^>]*>.*?</style>\\s*'
-              return re.sub(pattern, '', text, flags=re.S | re.I)
-
-          legacy_script_ids = [
-              'nayanet-canonical-feed-upgrade-runtime',
-              'nayanet-right-sidebar-feed-mirror-runtime',
-              'nayanet-v7-intelligent-feed-excellence',
-              'nayanet-intelligent-feed-v5-runtime',
-              'nayanet-intelligent-feed-v6-runtime',
-              'nayanet-authority-correction-runtime',
-              'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1',
-              'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2',
-          ]
-          legacy_style_ids = [
-              'nayanet-right-sidebar-feed-mirror-style',
-              'NAYANET-LIVE-RIGHT-RAIL-GUARD-V5',
-              'NAYANET-LIVE-RIGHT-RAIL-GUARD-V6',
-              'nh-authority-correction-style',
-              'nh-v72-style',
-          ]
-          for ident in legacy_script_ids:
-              s = remove_script_by_id(s, ident)
-          for ident in legacy_style_ids:
-              s = remove_style_by_id(s, ident)
-
-          s = re.sub(r'<script\\s+src=["\']\\./nayanet-intelligent-feed-v6\\.js["\'][^>]*>\\s*</script>\\s*', '', s, flags=re.I)
-
-          start_match = re.search(r'<section\\s+class="homeFeed"[^>]*>', s, flags=re.I)
-          if not start_match:
-              raise SystemExit('509 HTML missing homeFeed mount')
-          start = start_match.start()
-          pos = start_match.end()
-          depth = 1
-          token = re.compile(r'<section\\b[^>]*>|</section\\s*>', re.I)
+          html_path=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js_path=Path('scripts/nayanet-509-intelligent-feed-v2.js')
+          s=html_path.read_text(encoding='utf-8')
+          js=js_path.read_text(encoding='utf-8')
+          def rs(t,i): return re.sub(rf'<script\s+id="{re.escape(i)}"[^>]*>.*?</script>\s*','',t,flags=re.S|re.I)
+          def rt(t,i): return re.sub(rf'<style\s+id="{re.escape(i)}"[^>]*>.*?</style>\s*','',t,flags=re.S|re.I)
+          for i in ['nayanet-canonical-feed-upgrade-runtime','nayanet-right-sidebar-feed-mirror-runtime','nayanet-v7-intelligent-feed-excellence','nayanet-intelligent-feed-v5-runtime','nayanet-intelligent-feed-v6-runtime','nayanet-authority-correction-runtime','NAYANET_509_INTELLIGENT_FEED_DIRECT_V1','NAYANET_509_INTELLIGENT_FEED_DIRECT_V2']: s=rs(s,i)
+          for i in ['nayanet-right-sidebar-feed-mirror-style','NAYANET-LIVE-RIGHT-RAIL-GUARD-V5','NAYANET-LIVE-RIGHT-RAIL-GUARD-V6','nh-authority-correction-style','nh-v72-style']: s=rt(s,i)
+          s=re.sub(r'<script\s+src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>\s*</script>\s*','',s,flags=re.I)
+          m=re.search(r'<section\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          if not m: raise SystemExit('509 HTML missing homeFeed mount')
+          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\b[^>]*>|</section\s*>',re.I)
           while depth:
-              m = token.search(s, pos)
-              if not m:
-                  raise SystemExit('Could not find matching homeFeed section close')
-              if m.group(0).lower().startswith('</'):
-                  depth -= 1
-              else:
-                  depth += 1
-              pos = m.end()
-          s = s[:start] + '<section class="homeFeed"></section>' + s[pos:]
-
-          block = '<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n' + js + '\\n</script>\\n'
-          if '</body>' not in s:
-              raise SystemExit('509 HTML missing </body>')
-          s = s.replace('</body>', block + '</body>', 1)
-          html_path.write_text(s, encoding='utf-8')
+              q=tok.search(s,pos)
+              if not q: raise SystemExit('Could not find matching homeFeed section close')
+              depth += -1 if q.group(0).lower().startswith('</') else 1
+              pos=q.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          if '</body>' not in s: raise SystemExit('509 HTML missing </body>')
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          html_path.write_text(s,encoding='utf-8')
           print('509_SOURCE_RECONSTRUCTION=V2_ONLY')
           PY
-
       - name: Verify the source contains only the new feed
         shell: bash
         run: |
@@ -115,7 +74,6 @@ jobs:
           grep -q 'RATE THIS INTELLIGENCE' "$FILE"
           git diff --check
           echo '509_SOURCE_VERIFICATION=PASS'
-
       - name: Commit the surgical 509 source reconstruction
         shell: bash
         run: |
