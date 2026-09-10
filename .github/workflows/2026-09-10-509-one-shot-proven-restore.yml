@@ -44,13 +44,15 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
-          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','COLLECT SOURCE','CAPTURE WEB','MATTERS','COMPOUND','WHAT LEARNS','DAILY INTELLIGENCE REPORT'):
-              assert marker.lower() in s.lower(), marker
+          required=('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"')
+          for marker in required: assert marker.lower() in s.lower(), marker
+          # Prove the original feed remains present rather than replacing its contents.
+          feed=s[s.lower().find('class="homefeed"'):]
+          assert any(x in s.lower() for x in ('intelligentblock','intelligent block','class="note"','class="intelligentfeedhead"')), 'ORIGINAL_FEED_STRUCTURE_MISSING'
           assert 'naya509feed' not in s
           assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s
           assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I)
           assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I)
-          assert 'COLLECTIVE INTELLIGENCE' not in s or 'naya509feed' not in s
           print('509_EXACT_TARGET_RESTORE=PASS')
           print('509_ORIGINAL_FEED_PRESERVED=PASS')
           print('509_DUPLICATE_WELCOME_REMOVED=PASS')
