@@ -1,0 +1,56 @@
+name: Deploy Canonical NayaNET Live Hub
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  deploy:
+    if: ${{ !contains(github.event.head_commit.message, '[nayanet-live]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Evolve the actual Vercel live branch
+        run: |
+          git fetch origin v7-intelligent-hub-live
+          git checkout v7-intelligent-hub-live
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('NAYANET-LIVE-HUB.html')
+          if not p.exists(): raise SystemExit('Live Hub source missing on v7-intelligent-hub-live')
+          s=p.read_text(encoding='utf-8')
+          if 'nayanet-canonical-feed-upgrade-style' in s: raise SystemExit('Live branch already contains canonical upgrade')
+          layer=r'''<!-- NAYANET CANONICAL FEED SURGICAL UPGRADE V1 -->
+          <style id="nayanet-canonical-feed-upgrade-style">
+          #nayanet-elite-feed .ncf-modebar{display:flex;gap:7px;flex-wrap:wrap;align-items:center;margin:0 0 16px;padding:7px;border:1px solid #ffffff15;border-radius:16px;background:#050507;box-shadow:inset 0 1px #fff3,0 16px 35px #0009}#nayanet-elite-feed .ncf-modebar span{font-size:7px;font-weight:1000;letter-spacing:.13em;color:#817b89;padding:0 6px}#nayanet-elite-feed .ncf-mode{min-height:36px;padding:0 11px;border:1px solid #ffffff1b;border-radius:10px;background:#0b0b10;color:#a9a3af;font-size:7px;font-weight:1000;letter-spacing:.06em}#nayanet-elite-feed .ncf-mode[aria-pressed=true]{color:#fff;border-color:#d86cff77;background:#1b1025;box-shadow:0 0 20px #d86cff14}#nayanet-elite-feed .ncf-depth{display:grid;grid-template-columns:1.1fr .9fr;gap:9px;margin:0 19px 13px}#nayanet-elite-feed .ncf-panel{padding:12px 13px;border:1px solid #ffffff14;border-radius:13px;background:#07070b}#nayanet-elite-feed .ncf-panel b{display:block;font-size:7px;letter-spacing:.14em;color:#d5a4ff;margin-bottom:5px}#nayanet-elite-feed .ncf-panel span{display:block;color:#bcb6c3;font-size:9px;line-height:1.55}#nayanet-elite-feed .ncf-trust{border-color:#55b9ee35}#nayanet-elite-feed .ncf-trust b{color:#8ed9ff!important}#nayanet-elite-feed .ncf-related{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}#nayanet-elite-feed .ncf-related a{padding:6px 8px;border:1px solid #ffffff18;border-radius:8px;background:#09090d;color:#c9c2cf;font-size:7px;text-decoration:none}#nayanet-elite-feed .ncf-related a:hover{border-color:#d86cff66;color:#fff}#nayanet-elite-feed.ncf-skim .n3-perspectives,#nayanet-elite-feed.ncf-skim .n3-footer{display:none!important}#nayanet-elite-feed.ncf-operate .n3-perspective{display:none!important}#nayanet-elite-feed.ncf-operate .n3-perspective:last-child{display:block!important}#nayanet-elite-feed.ncf-teach .n3-perspective{display:none!important}#nayanet-elite-feed.ncf-teach .n3-perspective:nth-child(2),#nayanet-elite-feed.ncf-teach .n3-perspective:nth-child(3){display:block!important}@media(max-width:760px){#nayanet-elite-feed .ncf-depth{grid-template-columns:1fr;margin-left:12px;margin-right:12px}#nayanet-elite-feed .ncf-mode{min-height:40px;flex:1 1 auto}}@media(prefers-reduced-motion:reduce){#nayanet-elite-feed .ncf-mode{transition:none!important}}
+          </style>
+          <script id="nayanet-canonical-feed-upgrade-runtime">(()=>{'use strict';const R='#nayanet-elite-feed',C=s=>String(s||'').replace(/\s+/g,' ').trim(),E=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));function mount(){const f=document.querySelector(R);if(!f||f.dataset.ncfReady)return false;f.dataset.ncfReady='1';const bar=document.createElement('div');bar.className='ncf-modebar';bar.innerHTML='<span>VIEW</span>'+['SKIM','LEARN','VERIFY','OPERATE','EXPLORE','TEACH'].map((m,i)=>`<button class="ncf-mode" data-m="${m}" aria-pressed="${i===0}">${m}</button>`).join('');f.insertBefore(bar,f.firstChild);const apply=m=>{f.className=f.className.replace(/\bncf-\w+/g,'');f.classList.add('ncf-'+m.toLowerCase());bar.querySelectorAll('.ncf-mode').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.m===m)));f.querySelectorAll('.n3-block').forEach((b,i)=>{if(b.querySelector('.ncf-depth'))return;const ps=[...b.querySelectorAll('.n3-perspective')],lesson=ps.find(x=>/LESSON/i.test(x.textContent||'')),use=ps.find(x=>/HOW TO USE IT/i.test(x.textContent||'')),others=[...f.querySelectorAll('.n3-block')].filter(x=>x!==b).slice(0,4),d=document.createElement('div');d.className='ncf-depth';d.innerHTML=`<div class="ncf-panel"><b>MEANING</b><span>${E(C(lesson?.querySelector('.n3-pbody')?.textContent)||'Meaning has not been independently synthesized in this runtime.')}</span></div><div class="ncf-panel"><b>NEXT ACTION</b><span>${E(C(use?.querySelector('.n3-pbody')?.textContent)||'No explicit action has been asserted by the source event.')}</span></div><div class="ncf-panel ncf-trust"><b>TRUST / PROVENANCE</b><span>Current canonical Hub feed is the presentation source. Interpretation is only shown where the source block provides it. Runtime/backend verification remains a separate release gate.</span></div><div class="ncf-panel"><b>RELATED INTELLIGENCE</b><span>No typed graph edge is asserted without canonical relationship data.</span><div class="ncf-related">${others.map(o=>`<a href="#">${E(C(o.querySelector('.n3-title')?.textContent)||'Related intelligence')}</a>`).join('')}</div></div>`;b.insertBefore(d,b.querySelector('.n3-perspectives'))})};bar.addEventListener('click',e=>{const b=e.target.closest('[data-m]');if(b)apply(b.dataset.m)});apply('SKIM');return true}const boot=()=>{if(!mount()){let n=0,t=setInterval(()=>{if(mount()||++n>24)clearInterval(t)},250)}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot()})();</script>
+          <!-- NAYANET CANONICAL FEED SURGICAL UPGRADE V1 END -->
+          '''
+          s=s.replace('</body>',layer+'\n</body>',1)
+          if s.count('nayanet-canonical-feed-upgrade-style')!=1: raise SystemExit('Live upgrade insertion gate failed')
+          if s.count('id="nayanet-elite-feed"')>1: raise SystemExit('Second feed renderer detected')
+          p.write_text(s,encoding='utf-8')
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('NAYANET-LIVE-HUB.html').read_text(encoding='utf-8')
+          for x in ['nayanet-canonical-feed-upgrade-style','SKIM','LEARN','VERIFY','OPERATE','EXPLORE','TEACH','TRUST / PROVENANCE','RELATED INTELLIGENCE']:
+              assert x in s,x
+          assert s.count('<html')==1 and s.count('</html>')==1
+          print('LIVE BRANCH SOURCE GATE PASS',len(s))
+          PY
+          git config user.name 'NayaNET Live Builder'
+          git config user.email 'actions@nayanet.local'
+          git add NAYANET-LIVE-HUB.html
+          git commit -m '[nayanet-live] deploy canonical Intelligent Feed evolution'
+          git push origin v7-intelligent-hub-live
+      - name: Remove one-time workflow from main
+        run: |
+          git checkout main
+          git rm .github/workflows/deploy-canonical-nayanet-live.yml
+          git commit -m '[nayanet-live] remove one-time deployment workflow'
+          git push origin main
