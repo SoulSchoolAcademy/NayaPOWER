@@ -55,8 +55,12 @@ jobs:
           D="$HUB/dist"
           test -s "$D/index.html"
           test -s "$D/nayanet-cognitive-engine.js"
-          APP_JS=$(grep -oE 'assets/[^" ]+\.js' "$D/index.html" | head -1)
+          APP_JS=$(find "$D/assets" -maxdepth 1 -type f -name '*.js' -print -quit | sed "s#^$D/##")
+          test -n "$APP_JS"
           test -s "$D/$APP_JS"
+          echo "ARTIFACT_INDEX=$D/index.html"
+          echo "ARTIFACT_APP_JS=$D/$APP_JS"
+          echo "ARTIFACT_COGNITION=$D/nayanet-cognitive-engine.js"
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -Fqi "$x" "$D/nayanet-cognitive-engine.js" || { echo "COGNITION_ARTIFACT_MISSING=$x"; exit 1; }; done
           if git grep -nEi -- 'Where.?s Naya Now|SUPERBRAIN|PASS THE TORCH|VERIFY STATE' -- NAYANET/HUB/src scripts >/tmp/forbidden-source 2>/dev/null; then cat /tmp/forbidden-source; echo FORBIDDEN_SOURCE_UI_FOUND; exit 1; fi
@@ -65,7 +69,6 @@ jobs:
           grep -Fq "$SOURCE_COMMIT" "$D/index.html" "$D/$APP_JS"
           sha256sum "$D/index.html" > /tmp/index.sha256
           sha256sum "$D/nayanet-cognitive-engine.js" > /tmp/cognition.sha256
-          echo "APP_JS=$APP_JS"
           echo "SOURCE_COMMIT=$SOURCE_COMMIT"
           echo CANONICAL_HUB_BUILD=PASS
           echo ARTIFACT_INSPECTION=PASS
