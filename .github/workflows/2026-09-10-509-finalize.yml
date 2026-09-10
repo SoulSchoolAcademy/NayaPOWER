@@ -1,0 +1,59 @@
+name: 2026-09-10 — 509 Finalize
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/nayanet-509-intelligent-feed-v2.js'
+      - '.github/workflows/2026-09-10-509-finalize.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace canonical 509 home feed
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
+          s=p.read_text(encoding='utf-8')
+          for ident in ('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2','n509-final-style'):
+              s=re.sub(r'<(?:script|style)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(?:script|style)>','',s,flags=re.S|re.I)
+          start=s.find('<section class="homeFeed">')
+          assert start>=0
+          pos=start+len('<section class="homeFeed">')
+          depth=1; token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
+          while depth:
+              m=token.search(s,pos); assert m
+              depth += -1 if m.group(0).lower().startswith('</') else 1; pos=m.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'CREATE SPACES' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q '7C4DFF' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q '6675FF' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q '55B9EE' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaNET HUB.html'
+          git diff --check
+      - name: Commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'fix(509): finalize canonical widescreen board feed'
+          git push
