@@ -1,0 +1,61 @@
+name: 2026-09-10 — 509 Intelligent Feed Direct Update
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/2026-09-10-509-intelligent-feed-direct.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update-509:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Replace the 509 center feed
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          marker='NAYANET_509_INTELLIGENT_FEED_DIRECT_V1'
+          if marker in s:
+              print('509 feed already updated')
+              raise SystemExit(0)
+          script=r'''<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V1">
+          (()=>{
+            const mount=()=>{const feed=document.querySelector('#page-home .homeWorkspace .homeFeed');if(!feed)return;
+              feed.innerHTML=`<style>
+              #naya509feed{max-width:1180px;margin:0 auto;padding:8px 0 90px;color:#fff;font-family:Inter,system-ui,sans-serif}
+              #naya509feed .head{padding:8px 2px 20px}.head h2{font-size:clamp(32px,4vw,52px);margin:0;letter-spacing:-.06em}.head p{color:#a9a4b1;font-size:12px;margin:8px 0 0}
+              #naya509feed .board{margin:0 0 24px;padding:17px;border:1px solid var(--tone);border-radius:30px;background:#050507;box-shadow:inset 0 1px #fff8,0 32px 90px #000e,0 0 42px var(--glow);overflow:visible}
+              .board h3{font-size:clamp(28px,3.3vw,46px);line-height:1.04;letter-spacing:-.055em;margin:2px 0 16px}.meta{color:#9993a0;font-size:8px;font-weight:900;letter-spacing:.13em;margin-bottom:8px}
+              .nutshell,.inner{border:1px solid var(--accent);border-radius:22px;background:linear-gradient(145deg,#0d0d12,#030305);box-shadow:inset 0 1px #fff7,0 20px 48px #000d,0 0 24px var(--glow);margin:0 0 11px;padding:23px}
+              .nutshell b,.inner b{display:block;font-size:8px;letter-spacing:.18em;margin-bottom:9px}.nutshell p,.inner p{font-size:16px;line-height:1.72;margin:0;color:#f4f0f7}.nutshell p{font-size:clamp(18px,1.6vw,23px)}
+              .inner{--accent:#6675ff}.inner.h{--accent:#d86cff}.inner.c{--accent:#7c4dff}.inner.g{--accent:#6675ff}.inner.n{--accent:#55b9ee}.inner.m{--accent:#55e39a}.inner.l{--accent:#e8c766}.inner.a{--accent:#fff}.inner.t{--accent:#6675ff}.inner.x{--accent:#55b9ee}
+              .actions{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:13px 2px 2px}.actions button{min-height:40px;padding:0 12px;border:1px solid #ffffff30;border-radius:11px;background:#0a0a0f;color:#fff;font-size:8px;font-weight:900;letter-spacing:.07em}.stars{color:#e8c766;letter-spacing:2px}
+              @media(max-width:760px){#naya509feed{padding-bottom:70px}.board{padding:11px!important;border-radius:23px!important}.nutshell,.inner{padding:18px}.inner p{font-size:14px}.actions{flex-wrap:wrap}.actions button{flex:1 1 120px}}
+              </style><div id="naya509feed"><div class="head"><h2>INTELLIGENT FEED</h2><p>One living stream of intelligence — experience, understanding, evidence, learning, meaning, action, trust, and connection.</p></div>
+              ${[
+                ['#7C4DFF','The Intelligent Feed Turns Experience Into Usable Intelligence','NayaNET is not simply showing people more information. It turns experience, information, evidence, and discovery into intelligence a human can understand, remember, trust, connect, and use.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']],
+                ['#6675FF','One Intelligence Event = One Board','One event should feel like one coherent intelligence object: one thing, understood from multiple useful perspectives, grounded in evidence, turned into learning and action, then connected to everything relevant.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']],
+                ['#55B9EE','Source Intent Is Not Runtime Truth','A source file can look correct while the wrong artifact is deployed. Consequential work is only verified when source, build, deployment, exact public runtime, and independent observation agree.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']]
+              ].map((b,i)=>{const text={Human:['What does this mean in real life?','A useful feed should help a person understand what happened and keep what will actually help later.'],Child:['Can this be understood simply without becoming wrong?','Something happened. We figure out what matters, keep the useful part, and make it easier to use next time.'],Grandma:['What wisdom should stay with me?','Do not just remember what happened. Remember what it taught you.'],Naya:['What does the intelligence reveal when connected?','The feed is a translation layer: experience becomes structured intelligence, then understanding, memory, connection, and action.'],Machine:['What does the evidence actually show?','The renderer should preserve source, provenance, observations, measurements, limitations, and runtime evidence.'],Learning:['What should I remember?','The interface adapts to intelligence. Intelligence does not adapt to the interface.'],Meaning:['Why does this matter?','The goal is lower cognitive burden with higher useful understanding.'],Action:['What can I do with this?','Choose one primary next move that converts understanding into use.'],Trust:['How much should I believe this, and why?','FACT and OBSERVATION must remain distinct from INTERPRETATION, HYPOTHESIS, and UNKNOWN.'],Connections:['What does this connect to?','Connect intelligence to Smart Notes, Smart Lists, Smart Spaces, Evidence, Reports, people, problems, solutions, and related events.']};return `<article class="board" style="--tone:${b[0]};--glow:${b[0]}22"><div class="meta">INTELLIGENCE EVENT ${i+1} · WORKING PROOF</div><h3>${b[1]}</h3><section class="nutshell" style="--accent:#fff"><b>IN A NUTSHELL</b><p>${b[2]}</p></section>${b[3].map((k,j)=>`<section class="inner ${['h','c','g','n','m','l','a','a','t','x'][j]}"><b>${k.toUpperCase()}</b><p>${text[k][1]}</p></section>`).join('')}<div class="actions"><div><button>♡ LOVE</button> <button>👍 LIKE</button> <button>☆ RANK</button></div><div class="stars">★★★★★</div><button>＋ CREATE SPACE</button><button>☆ SAVE</button><button>SHARE INTEL ＋</button></div></article>`}).join('')}</div>`;
+            };if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+          })();
+          </script>'''
+          p.write_text(s.replace('</body>',script+'\n</body>'),encoding='utf-8')
+          print('509 center feed replaced with direct inline Intelligent Feed renderer')
+          PY
+      - name: Verify 509 markers
+        run: |
+          grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'One Intelligence Event = One Board' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'Source Intent Is Not Runtime Truth' '2026 09 09 5:09 pm NayaNET HUB.html'
+      - name: Commit the actual 509 HTML
+        run: |
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          git commit -m 'feat(509): replace center Smart Feed with Intelligent Feed boards'
+          git push
