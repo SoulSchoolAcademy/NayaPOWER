@@ -43,3 +43,7 @@ The intended source end state is **V2 only inside the 509 home feed**: no first 
 ## Materialization gate trigger
 
 A single controlled activity-file update is being used to trigger the canonical mainline materialization path. This line is a trigger record only; completion is not claimed until the exact 5:09 Hub file changes on `main` and passes its target verification gates.
+
+## Bound materializer trigger
+
+The materializer is now bound to the confirmed mainline Naya 16 activity gate so source changes, artifact materialization, target verification, and the resulting target commit occur in one observable chain. This is still a trigger record, not a completion claim.
