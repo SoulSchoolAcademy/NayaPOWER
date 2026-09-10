@@ -16,46 +16,79 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
+          import re
           p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
           s=p.read_text(encoding='utf-8')
-          marker='NAYANET_509_INTELLIGENT_FEED_DIRECT_V1'
-          if marker in s:
-              print('509 feed already updated')
-              raise SystemExit(0)
-          script=r'''<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V1">
-          (()=>{
-            const mount=()=>{const feed=document.querySelector('#page-home .homeWorkspace .homeFeed');if(!feed)return;
-              feed.innerHTML=`<style>
-              #naya509feed{max-width:1180px;margin:0 auto;padding:8px 0 90px;color:#fff;font-family:Inter,system-ui,sans-serif}
-              #naya509feed .head{padding:8px 2px 20px}.head h2{font-size:clamp(32px,4vw,52px);margin:0;letter-spacing:-.06em}.head p{color:#a9a4b1;font-size:12px;margin:8px 0 0}
-              #naya509feed .board{margin:0 0 24px;padding:17px;border:1px solid var(--tone);border-radius:30px;background:#050507;box-shadow:inset 0 1px #fff8,0 32px 90px #000e,0 0 42px var(--glow);overflow:visible}
-              .board h3{font-size:clamp(28px,3.3vw,46px);line-height:1.04;letter-spacing:-.055em;margin:2px 0 16px}.meta{color:#9993a0;font-size:8px;font-weight:900;letter-spacing:.13em;margin-bottom:8px}
-              .nutshell,.inner{border:1px solid var(--accent);border-radius:22px;background:linear-gradient(145deg,#0d0d12,#030305);box-shadow:inset 0 1px #fff7,0 20px 48px #000d,0 0 24px var(--glow);margin:0 0 11px;padding:23px}
-              .nutshell b,.inner b{display:block;font-size:8px;letter-spacing:.18em;margin-bottom:9px}.nutshell p,.inner p{font-size:16px;line-height:1.72;margin:0;color:#f4f0f7}.nutshell p{font-size:clamp(18px,1.6vw,23px)}
-              .inner{--accent:#6675ff}.inner.h{--accent:#d86cff}.inner.c{--accent:#7c4dff}.inner.g{--accent:#6675ff}.inner.n{--accent:#55b9ee}.inner.m{--accent:#55e39a}.inner.l{--accent:#e8c766}.inner.a{--accent:#fff}.inner.t{--accent:#6675ff}.inner.x{--accent:#55b9ee}
-              .actions{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:13px 2px 2px}.actions button{min-height:40px;padding:0 12px;border:1px solid #ffffff30;border-radius:11px;background:#0a0a0f;color:#fff;font-size:8px;font-weight:900;letter-spacing:.07em}.stars{color:#e8c766;letter-spacing:2px}
-              @media(max-width:760px){#naya509feed{padding-bottom:70px}.board{padding:11px!important;border-radius:23px!important}.nutshell,.inner{padding:18px}.inner p{font-size:14px}.actions{flex-wrap:wrap}.actions button{flex:1 1 120px}}
-              </style><div id="naya509feed"><div class="head"><h2>INTELLIGENT FEED</h2><p>One living stream of intelligence — experience, understanding, evidence, learning, meaning, action, trust, and connection.</p></div>
-              ${[
-                ['#7C4DFF','The Intelligent Feed Turns Experience Into Usable Intelligence','NayaNET is not simply showing people more information. It turns experience, information, evidence, and discovery into intelligence a human can understand, remember, trust, connect, and use.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']],
-                ['#6675FF','One Intelligence Event = One Board','One event should feel like one coherent intelligence object: one thing, understood from multiple useful perspectives, grounded in evidence, turned into learning and action, then connected to everything relevant.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']],
-                ['#55B9EE','Source Intent Is Not Runtime Truth','A source file can look correct while the wrong artifact is deployed. Consequential work is only verified when source, build, deployment, exact public runtime, and independent observation agree.',['Human','Child','Grandma','Naya','Machine','Learning','Meaning','Action','Trust','Connections']]
-              ].map((b,i)=>{const text={Human:['What does this mean in real life?','A useful feed should help a person understand what happened and keep what will actually help later.'],Child:['Can this be understood simply without becoming wrong?','Something happened. We figure out what matters, keep the useful part, and make it easier to use next time.'],Grandma:['What wisdom should stay with me?','Do not just remember what happened. Remember what it taught you.'],Naya:['What does the intelligence reveal when connected?','The feed is a translation layer: experience becomes structured intelligence, then understanding, memory, connection, and action.'],Machine:['What does the evidence actually show?','The renderer should preserve source, provenance, observations, measurements, limitations, and runtime evidence.'],Learning:['What should I remember?','The interface adapts to intelligence. Intelligence does not adapt to the interface.'],Meaning:['Why does this matter?','The goal is lower cognitive burden with higher useful understanding.'],Action:['What can I do with this?','Choose one primary next move that converts understanding into use.'],Trust:['How much should I believe this, and why?','FACT and OBSERVATION must remain distinct from INTERPRETATION, HYPOTHESIS, and UNKNOWN.'],Connections:['What does this connect to?','Connect intelligence to Smart Notes, Smart Lists, Smart Spaces, Evidence, Reports, people, problems, solutions, and related events.']};return `<article class="board" style="--tone:${b[0]};--glow:${b[0]}22"><div class="meta">INTELLIGENCE EVENT ${i+1} · WORKING PROOF</div><h3>${b[1]}</h3><section class="nutshell" style="--accent:#fff"><b>IN A NUTSHELL</b><p>${b[2]}</p></section>${b[3].map((k,j)=>`<section class="inner ${['h','c','g','n','m','l','a','a','t','x'][j]}"><b>${k.toUpperCase()}</b><p>${text[k][1]}</p></section>`).join('')}<div class="actions"><div><button>♡ LOVE</button> <button>👍 LIKE</button> <button>☆ RANK</button></div><div class="stars">★★★★★</div><button>＋ CREATE SPACE</button><button>☆ SAVE</button><button>SHARE INTEL ＋</button></div></article>`}).join('')}</div>`;
-            };if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount);else mount();
+          marker='NAYANET_509_INTELLIGENT_FEED_DIRECT_V2'
+          script=r'''<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">
+          (()=>{'use strict';
+            const ROOT='naya509feed',OLD=['nayanet-elite-feed','homeIntelligentBlocks','nayanet-supreme-feed','page-intelligence-today','nhV11Quote','nhAuthorityQuote','nhV11Today','nh72Today'];
+            const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+            const data=[
+              {tone:'#7C4DFF',title:'The Intelligent Feed Turns Experience Into Usable Intelligence',nutshell:'NayaNET is not simply showing people more information. It turns experience, information, evidence, and discovery into intelligence a human can understand, remember, trust, connect, and use.'},
+              {tone:'#6675FF',title:'One Intelligence Event = One Board',nutshell:'One event should feel like one coherent intelligence object: one thing, understood from multiple useful perspectives, grounded in evidence, turned into learning and action, then connected to everything relevant.'},
+              {tone:'#55B9EE',title:'Source Intent Is Not Runtime Truth',nutshell:'A source file can look correct while the wrong artifact is deployed. Consequential work is only verified when source, build, deployment, exact public runtime, and independent observation agree.'}
+            ];
+            const sections=[
+              ['HUMAN','#D86CFF','A useful feed should help a person understand what happened, keep what matters, and use it later.'],
+              ['CHILD','#7C4DFF','Something happened. We figure out what matters, keep the useful part, and make it easier to use next time.'],
+              ['GRANDMA','#6675FF','Do not just remember what happened. Remember what it taught you.'],
+              ['NAYA','#55B9EE','Naya synthesizes patterns, implications, contradictions, opportunities, risks, relationships, and unanswered questions while separating known, inferred, uncertain, and unknown.'],
+              ['MACHINE','#55E39A','Evidence includes observations, measurements, tests, sources, architecture, runtime facts, and limitations. It stays readable and grounded.'],
+              ['LEARNING','#E8C766','The interface adapts to intelligence. Intelligence does not adapt to the interface.'],
+              ['MEANING','#FFFFFF','Understanding becomes valuable when it changes what a person can remember, recognize, decide, or do.'],
+              ['ACTION','#FFFFFF','Choose one primary next move that converts understanding into useful action.'],
+              ['TRUST','#6675FF','FACT and OBSERVATION remain distinct from INTERPRETATION, HYPOTHESIS, and UNKNOWN. Provenance stays visible.'],
+              ['CONNECTIONS','#55B9EE','Connect intelligence to Smart Notes, Smart Lists, Smart Spaces, Evidence, Reports, people, problems, solutions, research, conversations, and related events.']
+            ];
+            const style=`#${ROOT}{width:100%;max-width:1180px;margin:0 auto;padding:4px 0 110px;color:#fff;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}.n509-head{padding:8px 2px 22px}.n509-head h2{font-size:clamp(34px,4vw,54px);line-height:.92;letter-spacing:-.065em;margin:0}.n509-head p{color:#a9a4b1;font-size:13px;line-height:1.55;margin:9px 0 0}.n509-lenses{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 18px}.n509-lens{min-height:38px;padding:0 13px;border:1px solid #ffffff2c;border-radius:11px;background:#0a0a0f;color:#bdb7c4;font-size:8px;font-weight:950;letter-spacing:.08em}.n509-lens.active{color:#fff;border-color:#7c4dff;box-shadow:0 0 18px #7c4dff24;background:#171020}.n509-board{position:relative;margin:0 0 30px;padding:18px;border:1px solid var(--tone);border-radius:30px;background:linear-gradient(145deg,#0b0b10,#050507);box-shadow:inset 0 1px #fff8,0 34px 90px #000e,0 0 44px color-mix(in srgb,var(--tone) 18%,transparent);overflow:visible}.n509-board:before{content:"";position:absolute;inset:8px;border-radius:23px;pointer-events:none;border:1px solid color-mix(in srgb,var(--tone) 20%,transparent);box-shadow:inset 0 0 30px color-mix(in srgb,var(--tone) 5%,transparent)}.n509-meta{position:relative;color:#9f99a7;font-size:8px;font-weight:950;letter-spacing:.14em;margin:2px 3px 8px}.n509-board h3{position:relative;font-size:clamp(29px,3.5vw,48px);line-height:1.03;letter-spacing:-.055em;margin:0 3px 17px}.n509-inner{position:relative;margin:0 0 12px;padding:23px;border:1px solid var(--accent);border-radius:22px;background:linear-gradient(145deg,#111117,#050507);box-shadow:inset 0 1px #fff7,0 22px 52px #000d,0 0 25px color-mix(in srgb,var(--accent) 12%,transparent)}.n509-inner b{display:block;font-size:8px;letter-spacing:.18em;margin-bottom:9px}.n509-inner p{font-size:16px;line-height:1.72;color:#f4f0f7;margin:0}.n509-nutshell p{font-size:clamp(19px,1.7vw,24px);line-height:1.62}.n509-actions{position:relative;display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;padding:12px 2px 1px}.n509-actions button{min-height:42px;padding:0 13px;border:1px solid #ffffff30;border-radius:12px;background:linear-gradient(145deg,#121219,#07070b);color:#fff;font-size:8px;font-weight:950;letter-spacing:.06em;box-shadow:inset 0 1px #fff3,0 10px 24px #0009;transition:.18s ease}.n509-actions button:hover,.n509-actions button:focus-visible{transform:translateY(-2px);border-color:#fff8}.n509-actions .selected-love{border-color:#ff4b67;color:#ff7188}.n509-actions .selected-like{border-color:#6675ff;color:#9aa5ff}.n509-stars{font-size:15px;letter-spacing:3px;color:#e8c766;white-space:nowrap}.n509-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding-top:6px}.n509-rate{font-size:8px;font-weight:950;letter-spacing:.08em;color:#a9a4b1}.n509-rate-stars button{border:0!important;box-shadow:none!important;background:transparent!important;min-height:28px!important;padding:0 3px!important;font-size:18px!important;color:#625b69}.n509-rate-stars button.on{color:#e8c766}@media(max-width:760px){#${ROOT}{padding:3px 0 80px}.n509-board{padding:12px;border-radius:24px}.n509-inner{padding:18px;border-radius:19px}.n509-inner p{font-size:14px}.n509-actions button{flex:1 1 125px}.n509-bottom{display:block}.n509-rate{text-align:center;margin-bottom:5px}.n509-rate-stars{text-align:center}}
+`;
+            const getState=()=>{try{return JSON.parse(localStorage.getItem('naya509:intelligence-state')||'{}')}catch{return{}}};
+            const putState=s=>{try{localStorage.setItem('naya509:intelligence-state',JSON.stringify(s))}catch{}};
+            function removeLegacy(){OLD.forEach(id=>document.getElementById(id)?.remove());document.querySelectorAll('#page-home .homeWorkspace .homeFeed pre,#page-home .homeWorkspace .homeFeed code').forEach(n=>n.remove())}
+            function wire(root){
+              const state=getState();
+              root.querySelectorAll('.n509-board').forEach((board,i)=>{
+                const id='event-'+i; const st=state[id]||{};
+                const set=(k,v)=>{state[id]=Object.assign({},state[id],{[k]:v});putState(state)};
+                const love=board.querySelector('[data-action="love"]'),like=board.querySelector('[data-action="like"]');
+                if(st.love)love.classList.add('selected-love'); if(st.like)like.classList.add('selected-like');
+                love.onclick=()=>{const v=!state[id]?.love;set('love',v);love.classList.toggle('selected-love',v)};
+                like.onclick=()=>{const v=!state[id]?.like;set('like',v);like.classList.toggle('selected-like',v)};
+                board.querySelectorAll('[data-rate]').forEach(b=>b.onclick=()=>{set('rating',Number(b.dataset.rate));board.querySelectorAll('[data-rate]').forEach(x=>x.classList.toggle('on',Number(x.dataset.rate)<=Number(b.dataset.rate)))});
+                board.querySelector('[data-action="save"]').onclick=()=>{set('saved',true);const x=board.querySelector('[data-action="save"]');x.textContent='✓ SAVED TO SMART LIST';x.setAttribute('aria-pressed','true')};
+                board.querySelector('[data-action="space"]').onclick=()=>{const name=prompt('Name this Smart Space');if(name){const spaces=(()=>{try{return JSON.parse(localStorage.getItem('naya509:smart-spaces')||'[]')}catch{return[]}})();spaces.push({name,eventId:id,createdAt:new Date().toISOString()});localStorage.setItem('naya509:smart-spaces',JSON.stringify(spaces));board.querySelector('[data-action="space"]').textContent='✓ SPACE CREATED'}};
+                board.querySelector('[data-action="share"]').onclick=async()=>{const title=board.querySelector('h3')?.textContent||'NayaNET Intelligence';const text=board.querySelector('.n509-nutshell p')?.textContent||'';try{if(navigator.share)await navigator.share({title,text});else await navigator.clipboard.writeText(title+'\n\n'+text);board.querySelector('[data-action="share"]').textContent='✓ SHARED'}catch{}};
+                const saved=board.querySelector('[data-action="save"]);if(st.saved)saved.textContent='✓ SAVED TO SMART LIST';if(st.rating)board.querySelectorAll('[data-rate]').forEach(x=>x.classList.toggle('on',Number(x.dataset.rate)<=Number(st.rating)));
+              });
+            }
+            function render(){const feed=document.querySelector('#page-home .homeWorkspace .homeFeed');if(!feed)return false;removeLegacy();let root=document.getElementById(ROOT);if(!root){root=document.createElement('div');root.id=ROOT;feed.replaceChildren(root)}else if(root.parentElement!==feed)feed.replaceChildren(root);if(!document.getElementById('n509-style')){const st=document.createElement('style');st.id='n509-style';st.textContent=style;document.head.appendChild(st)}
+              root.innerHTML='<div class="n509-head"><h2>INTELLIGENT FEED</h2><p>One living stream of intelligence — experience, understanding, evidence, learning, meaning, action, trust, and connection.</p></div><div class="n509-lenses"><button class="n509-lens active" data-lens="ACTIVITY">ACTIVITY</button><button class="n509-lens" data-lens="PERSONAL">PERSONAL INTELLIGENCE</button><button class="n509-lens" data-lens="EFFECTIVE">EFFECTIVE INTELLIGENCE</button></div>'+data.map((e,i)=>'<article class="n509-board" data-lens="ACTIVITY" style="--tone:'+e.tone+'"><div class="n509-meta">INTELLIGENCE EVENT '+(i+1)+' · ONE EVENT = ONE BOARD</div><h3>'+esc(e.title)+'</h3><section class="n509-inner n509-nutshell" style="--accent:#fff"><b>IN A NUTSHELL</b><p>'+esc(e.nutshell)+'</p></section>'+sections.map(x=>'<section class="n509-inner" style="--accent:'+x[1]+'"><b>'+x[0]+'</b><p>'+esc(x[2])+'</p></section>').join('')+'<div class="n509-actions"><div><button data-action="love" aria-label="Love intelligence">♡ LOVE</button> <button data-action="like" aria-label="Like intelligence">👍 LIKE</button> <button data-action="rank" aria-label="Rank intelligence">☆ RANK</button></div><button data-action="space">＋ CREATE SPACE</button><button data-action="save">☆ SAVE</button><button data-action="share">SHARE INTEL ＋</button></div><div class="n509-bottom"><div class="n509-rate">RATE THIS INTELLIGENCE</div><div class="n509-rate-stars">'+[1,2,3,4,5].map(n=>'<button data-rate="'+n+'" aria-label="Rate '+n+' stars">★</button>').join('')+'</div></div></article>').join('');
+              root.querySelectorAll('[data-lens]').forEach(b=>b.onclick=()=>{root.querySelectorAll('.n509-lens').forEach(x=>x.classList.toggle('active',x===b));root.querySelectorAll('.n509-board').forEach((x,i)=>{const lens=b.dataset.lens;x.dataset.lens=lens;const meta=x.querySelector('.n509-meta');meta.textContent='INTELLIGENCE EVENT '+(i+1)+' · '+lens.replace('PERSONAL','PERSONAL INTELLIGENCE').replace('EFFECTIVE','EFFECTIVE INTELLIGENCE')})});
+              wire(root);return true
+            }
+            let attempts=0;const boot=()=>{if(render())return;if(++attempts<30)setTimeout(boot,250)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();new MutationObserver(()=>{if(!document.getElementById(ROOT))render()}).observe(document.body,{childList:true,subtree:true});
           })();
           </script>'''
-          p.write_text(s.replace('</body>',script+'\n</body>'),encoding='utf-8')
-          print('509 center feed replaced with direct inline Intelligent Feed renderer')
+          s=re.sub(r'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V1">.*?</script>\s*','',s,flags=re.S)
+          s=re.sub(r'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">.*?</script>\s*','',s,flags=re.S)
+          s=s.replace('</body>',script+'\n</body>')
+          p.write_text(s,encoding='utf-8')
+          print('509 center feed replaced with canonical V2 direct Intelligent Feed renderer')
           PY
       - name: Verify 509 markers
         run: |
-          grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' '2026 09 09 5:09 pm NayaNET HUB.html'
+          test "$(grep -o 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html' | wc -l)" -eq 1
           grep -q 'One Intelligence Event = One Board' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q 'Source Intent Is Not Runtime Truth' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'SAVE' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'CREATE SPACE' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'RATE THIS INTELLIGENCE' '2026 09 09 5:09 pm NayaNET HUB.html'
       - name: Commit the actual 509 HTML
         run: |
           git config user.name 'Naya Power'
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
-          git commit -m 'feat(509): replace center Smart Feed with Intelligent Feed boards'
+          git diff --cached --check
+          git commit -m 'feat(509): install canonical intelligent feed v2'
           git push
