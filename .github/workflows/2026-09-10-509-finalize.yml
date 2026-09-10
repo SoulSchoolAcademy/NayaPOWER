@@ -32,6 +32,7 @@ jobs:
           s=p.read_text(encoding='utf-8')
           for ident in ('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2','n509-final-style'):
               s=re.sub(r'<(?:script|style)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(?:script|style)>','',s,flags=re.S|re.I)
+          s=re.sub(r'<(?:pre|code)\b[^>]*>.*?</(?:pre|code)>','',s,flags=re.S|re.I)
           start=s.find('<section class="homeFeed">')
           assert start>=0
           pos=start+len('<section class="homeFeed">')
@@ -40,7 +41,7 @@ jobs:
               m=token.search(s,pos); assert m
               depth += -1 if m.group(0).lower().startswith('</') else 1; pos=m.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
-          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          s=s.replace('</body>','<style id="n509-final-style">#naya509feed{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}#naya509feed .n509-board{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}</style>\n<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           p.write_text(s,encoding='utf-8')
           PY
       - name: Verify
@@ -52,7 +53,10 @@ jobs:
           grep -q '6675FF' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q '55B9EE' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'n509-final-style' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -qi '<pre\b' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -qi '<code\b' '2026 09 09 5:09 pm NayaNET HUB.html'
           git diff --check
       - name: Commit
         shell: bash
@@ -62,5 +66,5 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'fix(509): finalize canonical widescreen board feed'
+          git commit -m 'fix(509): remove stray code and force full-width feed'
           git push origin HEAD:${{ github.head_ref || github.ref_name }}
