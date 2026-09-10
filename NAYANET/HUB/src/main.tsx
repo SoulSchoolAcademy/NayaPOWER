@@ -5,6 +5,7 @@ import './styles/tokens.css';
 import './styles/globals.css';
 import './styles/responsive.css';
 import './styles/smart-feed-board.css';
+import './styles/nayanet-v3.css';
 
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 
