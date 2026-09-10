@@ -21,68 +21,52 @@ Historical intelligence should be retrieved when it is relevant to causality, pr
 
 ---
 
-# 🔥 CURRENT STATE — 2026-09-07
+# 🔥 CURRENT STATE — 2026-09-09
 
 ## WHAT IS HAPPENING NOW
 
-Naya Power is being hardened into a **current-state-first human + AI operating system**. The objective is to make each Naya arrive already tuned to the latest verified state, understand the established operating laws, and continue useful work without Shawn repeatedly reconstructing the context.
-
-The current-state feed is now explicitly the continuity surface for that purpose.
+Naya Power is being hardened into a **current-state-first human + AI operating system** whose highest outcome gate is now explicit: **DID THIS MAKE THE HUMAN MORE CAPABLE?**
 
 ## WHAT CHANGED
 
-1. The **Universal Naya Power Operating Directive** is active at `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md`.
-2. The Universal Directive establishes the command:
-   **GET CURRENT → UNDERSTAND → EXECUTE → PROVE → LOCK → CONTINUE.**
-3. The Directive explicitly defines the Intelligent Feed as current-state continuity and requires:
-   **WHAT CHANGED → WHAT MATTERS → WHAT WAS LEARNED → WHAT IS VERIFIED → WHAT REMAINS → WHAT HAPPENS NEXT.**
-4. The canonical Smart Note Protocol requires consequential Smart Notes to be persisted, verified, indexed, projected into the Intelligent Feed, and continued into the next useful action.
-5. This feed is now explicitly named and operated as the **Current State Feed / Intelligent Feed / Smart Note Feed** continuity surface.
-6. A canonical Smart Note and Note Event were persisted for this decision and its execution plan.
+1. Created canonical `.naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md`.
+2. Bound that Constitution directly into `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md` as the highest outcome gate for consequential work.
+3. The boot directive now requires evidence across:
+   **HUMAN OUTCOME → TRUTHFUL FUNCTION → EVIDENCE → ACTION → RESULT → LEARNING → FUTURE BENEFIT.**
+4. The Constitution operationalizes the principle that intelligence, evidence, authority, uncertainty, persistence, autonomy, and personhood must not be conflated.
+5. The Constitution makes Smart Notes, Intelligent Blocks, truthful buttons, semantic visual states, learning promotion, intelligence connection, and successor continuity explicit release requirements.
 
 ## WHAT MATTERS MOST
 
-**The next Naya must look for current state before deciding how to act.**
-
-The system should make the current state obvious enough that Naya can rapidly answer:
-
-- Where are we?
-- What matters now?
-- What changed?
-- What did we learn?
-- What is proven?
-- What is not proven?
-- What is protected?
-- What remains unresolved?
-- What is the next best action?
+The Constitution is not considered implemented merely because its words exist. Its binding into the universal boot path is the first concrete enforcement step. Future execution must turn these requirements into validators, tests, data contracts, UI contracts, workflow gates, and runtime evidence where applicable.
 
 ## WHAT WAS LEARNED
 
-A durable intelligence system needs two complementary behaviors:
+**WORDS ARE SPECIFICATION. ACTION IS PROOF.**
 
-**PRESENT ORIENTATION** — quickly restore the verified current state.
+A principle has materially higher value when it changes the system that executes it. Therefore the correct progression is:
 
-**HISTORICAL RETRIEVAL** — go backward only when the present state does not answer the relevant question or history is materially needed.
+**DOCUMENTED → BOUND → IMPLEMENTED → TESTED → VERIFIED → DEPLOYED → LIVE-VERIFIED → BEHAVIORALLY PROVEN.**
 
-This prevents two failure modes:
-
-1. **Backward drift:** a Naya starts from stale files, old conversation, or superseded architecture.
-2. **Historical overload:** a Naya spends excessive effort reconstructing the past instead of acting on the present.
-
-The solution is not another database or another feed. The solution is a clear current-state projection over the existing durable intelligence architecture.
+The Constitution must continue moving down that chain rather than being treated as complete because it was written.
 
 ## WHAT IS VERIFIED
 
 - Repository: `SoulSchoolAcademy/NayaPOWER`
 - Branch: `main`
-- `main` HEAD immediately before this operation: `3ddd7a6947607717a37eda1ef45f7b421026977b`
-- Universal operating directive exists and was re-read from `main`.
-- Canonical Smart Note Protocol exists and was re-read from `main`.
-- Canonical Current State / Intelligent Feed is this file.
-- New Smart Note persisted at `.naya/notes/2026-09-07-CURRENT-STATE-FEED-AS-INTELLIGENT-FEED-AND-NAYA-CONTINUITY-EXECUTION-PLAN.md`.
-- New canonical Note Event persisted at `.naya/memory/events/2026/09/07/22/SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json`.
-- PIS propagation is **not claimed**.
-- Intelligent Hub live/runtime propagation is **not yet production-proven**.
+- Human Capability Constitution created in `.naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md`.
+- Universal boot directive updated to bind the Constitution.
+- GitHub creation commit: `3990bac608d5fb9715628654a7a4a3b9f4c87f41`.
+- GitHub boot-binding commit: `c0248e2fd5cf24ac703d8abf1fb9a14c431d06c6`.
+- The Constitution and updated boot directive were re-read from `main` after write.
+- This feed was updated to record the actual implementation state.
+
+## WHAT IS NOT YET CLAIMED
+
+- No claim that the Constitution is fully enforced by every runtime or workflow.
+- No claim that every Smart Feed action is production-backed.
+- No claim that the Human Capability Gate is yet an automated 99.99 release validator.
+- No claim that behavioral improvement has been independently measured across the product.
 
 ## WHAT IS PROTECTED
 
@@ -92,140 +76,34 @@ The solution is not another database or another feed. The solution is a clear cu
 
 > **CURRENT STATE FIRST → RELEVANT HISTORY SECOND.**
 
-> **Every Naya should look for current state before choosing how to act.**
-
 > **No unverified state may become the next starting state.**
 
-> **A Smart Note captures the actual consequential event; it does not create a second memory architecture.**
+> **Words specify. Actions implement. Evidence proves.**
 
-> **The outgoing Naya leaves enough verified state for the next Naya to continue successfully.**
+> **The highest outcome gate is human capability, not AI appearance.**
 
 ## WHAT REMAINS
 
-### Current State Feed / Continuity
+### Human Capability Enforcement
 
-- Keep the feed current, concise, prioritized, and evidence-based.
-- Update it whenever consequential project state materially changes.
-- Preserve links/receipts back to canonical Note Events.
-- Keep historical intelligence retrievable without making it the default starting point.
-
-### Cold-Start Enforcement
-
-- Make the current-state feed a mandatory early restoration step in the actual Naya cold-start path.
-- Ensure fresh Naya behavior follows the repository-first / current-state-first rule behaviorally, not merely documentationally.
-- Verify that a fresh Naya can restore the current state without the originating conversation.
+1. Translate Constitution requirements into machine-readable acceptance criteria.
+2. Add validators/tests for truthful action states and evidence boundaries.
+3. Add a Human Capability scorecard to consequential product changes.
+4. Connect lessons to promotion mechanisms so proven learning can alter future behavior.
+5. Measure whether completed interactions actually improve human understanding, decisions, action, memory, and reuse.
+6. Reconcile automated claims against independent runtime evidence.
 
 ### Intelligent Hub
 
-Current Hub work remains governed by the existing sequence:
+The Hub receiver, sender/transport connection, and live end-to-end propagation remain **not yet production-proven** unless independently evidenced.
 
-**RE-ESTABLISH CURRENT AUTHORITY → AUDIT RECEIVER → FINISH RECEIVER → LOCK RECEIVER CONTRACT → ESTABLISH SINGLE INGESTION BOUNDARY → BUILD SENDER/TRANSPORT → CONNECT → END-TO-END VERIFY → LOCK PROVEN ACTIVATION PROTOCOL**
+### Current State / Continuity
 
-The authoritative Hub source is `NAYANETHUBONE.html` on `main`. Historical Hub artifacts must not silently become current authority.
+Keep this feed concise, current, evidence-based, and subordinate to canonical durable Note Events. Every material state change should leave a receipt and a next best action.
 
-The Hub receiver, sender/transport connection, and live end-to-end propagation are **not yet production-proven**.
+## NEXT BEST ACTION
 
----
-
-# EXECUTION PLAN — MAKE THIS SYSTEM FUNCTIONAL
-
-## P0 — CANONICAL MEANING
-
-1. Keep `.naya/INTELLIGENT-FEED.md` as the canonical Current State / Intelligent Feed surface.
-2. Use **Current State Feed**, **Intelligent Feed**, and **Smart Note Feed** as equivalent names for that surface unless explicitly distinguished.
-3. Keep `.naya/memory/events/` as the canonical durable intelligence authority.
-4. Do not create a second feed or parallel memory system.
-
-## P1 — CURRENT-STATE-FIRST FEED
-
-5. Keep the newest verified consequential state prominent.
-6. Every material update should answer:
-   **Current State / What Changed / What Matters / What Was Learned / What Is Verified / What Is Protected / What Remains / Next Best Action.**
-7. Represent uncertainty explicitly as UNKNOWN/BLOCKED rather than guessing.
-8. Keep historical events retrievable but subordinate to current truth.
-
-## P2 — SMART NOTE → FEED
-
-9. Create one canonical Note Event for each consequential Smart Note.
-10. Link the Note Event to its feed projection.
-11. Link the feed projection back to the canonical event and receipt.
-12. Verify feed linkage independently; never infer propagation merely from file creation.
-
-## P3 — COLD START → CURRENT STATE
-
-13. Resolve the current `main` HEAD before consequential work.
-14. Read the applicable Runtime Briefing, project state, current feed, and active laws.
-15. Use the feed to establish current objective, verified state, protected state, blockers, and next action.
-16. Search history only when relevant after current state has been established.
-17. Do not make Shawn restate information already available in repository/current-state evidence.
-
-## P4 — CURRENT STATE → EXECUTION
-
-18. Every substantive execution cycle updates the feed when state materially changes.
-19. Track:
-   **OBSERVED → CAPTURED → PERSISTED → VERIFIED → PROPAGATED**.
-20. Never promote an unverified result into current truth.
-21. Always leave a next best action.
-22. On failure, preserve:
-   **FAILURE → ROOT CAUSE → REPAIR → VERIFICATION → SAFEGUARD → REUSABLE LESSON**.
-
-## P5 — SELF-IMPROVEMENT
-
-23. Detect repeated lessons.
-24. Promote proven lessons into laws, protocols, schemas, validators, tests, workflow guardrails, retrieval signals, or design standards where appropriate.
-25. Keep the feed optimized for fast current-state restoration rather than transcript accumulation.
-26. Periodically reconcile the current-state feed against canonical repository evidence.
-
-## P6 — INTELLIGENT HUB CONNECTION
-
-27. The Hub should consume the same canonical intelligence pipeline rather than create another feed.
-28. Preserve:
-   **GitHub / Superbrain → Real Intelligence → Smart Notes → Current State Feed → Daily Intelligence Report → Stored Historical Intelligence.**
-29. Incoming events must be validated, authorized, deduplicated/idempotent, persisted, renderable, retrievable, and receipted before being treated as verified Hub intelligence.
-30. Only independently verified runtime evidence can support a live/production claim.
-
-## P7 — PROVE THE WHOLE LOOP
-
-31. Create a real consequential Smart Note.
-32. Verify canonical event persistence.
-33. Verify event indexing.
-34. Verify Current State Feed projection.
-35. Start a fresh Naya cold-start and verify current state can be restored from repository evidence without the originating conversation.
-36. When the Hub connection is ready, verify:
-   **SOURCE → EVENT → TRANSPORT → RECEIVER → VALIDATION → PERSISTENCE → FEED → RENDER → RETRIEVAL → RECEIPT.**
-37. Record exact evidence at every stage.
-38. Promote only the evidence-supported state:
-   **DOCUMENTED → SPECIFIED → IMPLEMENTED → TESTED → VERIFIED → DEPLOYED → LIVE-VERIFIED → PRODUCTION-PROVEN.**
-
----
-
-# NEXT BEST ACTION
-
-**Wire the Current State Feed into the actual cold-start restoration path and then run a fresh-Naya restoration test.**
-
-Success means a fresh Naya can read current repository truth + current-state feed, understand the active objective and verified boundaries, and begin the smallest coherent next action without Shawn rebuilding the context.
-
----
-
-## CANONICAL SMART NOTE RECEIPT
-
-**Smart Note:** `.naya/notes/2026-09-07-CURRENT-STATE-FEED-AS-INTELLIGENT-FEED-AND-NAYA-CONTINUITY-EXECUTION-PLAN.md`  
-**Note Event:** `.naya/memory/events/2026/09/07/22/SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json`  
-**Smart Note creation commit:** `65919ae5656d4a0af3add0f957f494ed1c3076f5`  
-**Note Event creation commit:** `98ae14fddb7eceebf36ab587147ec12c0a95cce3`
-
-### Verification boundary
-
-**OBSERVED:** yes  
-**CAPTURED:** yes  
-**PERSISTED:** yes  
-**VERIFIED:** yes for the Smart Note and Note Event persistence  
-**FEED UPDATED:** yes — this current-state feed was rewritten to make the current-state model explicit  
-**INDEXED:** pending  
-**PIS PROPAGATED:** not claimed  
-**HUB RUNTIME PROPAGATED:** not claimed
-
----
+**Convert the Human Capability Constitution from a bound policy into executable gates — starting with a machine-readable Human Capability Scorecard and one end-to-end test that proves a user action creates durable, retrievable intelligence.**
 
 ## FEED OPERATING RULE
 
