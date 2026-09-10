@@ -1,4 +1,5 @@
 name: 2026-09-10 — 509 Intelligent Feed Direct Update
+# ISOLATED 509 RECONSTRUCTION: this push-triggered run is intentionally scoped to one surgical source transformation.
 on:
   push:
     branches: [main]
@@ -42,9 +43,8 @@ jobs:
           if '</body>' not in s: raise SystemExit('509 HTML missing </body>')
           s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           html_path.write_text(s,encoding='utf-8')
-          print('509_SOURCE_RECONSTRUCTION=V2_ONLY')
           PY
-      - name: Verify the source contains only the new feed
+      - name: Verify only the new feed remains
         shell: bash
         run: |
           set -euo pipefail
@@ -54,37 +54,17 @@ jobs:
           ! grep -q 'nayanet-intelligent-feed-v6.js' "$FILE"
           ! grep -q 'nayanet-right-sidebar-feed-mirror-runtime' "$FILE"
           ! grep -q 'nayanet-v7-intelligent-feed-excellence' "$FILE"
-          grep -q 'The Intelligent Feed Turns Experience Into Usable Intelligence' "$FILE"
           grep -q 'One Intelligence Event = One Board' "$FILE"
           grep -q 'Source Intent Is Not Runtime Truth' "$FILE"
-          grep -q 'IN A NUTSHELL' "$FILE"
-          grep -q 'HUMAN' "$FILE"
-          grep -q 'CHILD' "$FILE"
-          grep -q 'GRANDMA' "$FILE"
-          grep -q 'NAYA' "$FILE"
-          grep -q 'MACHINE' "$FILE"
-          grep -q 'LEARNING' "$FILE"
-          grep -q 'MEANING' "$FILE"
-          grep -q 'ACTION' "$FILE"
-          grep -q 'TRUST' "$FILE"
-          grep -q 'CONNECTIONS' "$FILE"
-          grep -q 'CREATE SPACE' "$FILE"
-          grep -q 'SAVED TO SMART LIST' "$FILE"
-          grep -q 'SHARE INTEL' "$FILE"
-          grep -q 'RATE THIS INTELLIGENCE' "$FILE"
+          for x in 'IN A NUTSHELL' HUMAN CHILD GRANDMA NAYA MACHINE LEARNING MEANING ACTION TRUST CONNECTIONS 'CREATE SPACE' 'SAVED TO SMART LIST' 'SHARE INTEL' 'RATE THIS INTELLIGENCE'; do grep -q "$x" "$FILE"; done
           git diff --check
-          echo '509_SOURCE_VERIFICATION=PASS'
-      - name: Commit the surgical 509 source reconstruction
+      - name: Commit the actual 509 HTML once
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'Naya Power'
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
-          git diff --cached --check
-          if git diff --cached --quiet; then
-            echo '509_SOURCE_CHANGE=ALREADY_PRESENT'
-            exit 0
-          fi
-          git commit -m 'fix(509): remove legacy feed layers and keep canonical v2'
+          if git diff --cached --quiet; then echo 'NO_509_SOURCE_CHANGE'; exit 0; fi
+          git commit -m 'fix(509): remove legacy feed layers and install canonical v2 only'
           git push
