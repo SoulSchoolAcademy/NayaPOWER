@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Run fail-closed deployment governance tests
         run: python .naya/runtime/deployment_governance_test.py
@@ -35,3 +35,83 @@ jobs:
           echo 'Automatic Git deployment: DENY'
           echo 'Preview deployment: DENY unless explicitly authorized'
           echo 'Production deployment: DENY unless explicitly authorized'
+
+  materialize-509:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout current mainline source
+        uses: actions/checkout@v6
+
+      - name: Materialize the canonical 509 feed into the exact Hub file
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
+          s=p.read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'):
+              assert marker in s, '509 SHELL MISSING: '+marker
+          exact_ids=('nayanet-canonical-feed-upgrade-style','NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','NAYANET-SMART-FEED-MASTER-V1-RUNTIME','NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME','nayanet-canonical-hub-authority')
+          for ident in exact_ids:
+              pattern=re.compile(r'<(style|script|div)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(style|script|div)>',re.S|re.I)
+              s=pattern.sub('',s)
+          script_pattern=re.compile(r'<script[^>]*>.*?</script>',re.S|re.I)
+          signatures=('function strengthenFeed()','nh-v11-intel','nhV11Today','nh-authority-actions','nayanet.presentationMode','function addTodayNav()')
+          def strip_old(m):
+              body=m.group(0); hits=sum(x.lower() in body.lower() for x in signatures); return '' if hits>=2 else body
+          s=script_pattern.sub(strip_old,s)
+          s=re.sub(r'<script[^>]*src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
+          s=re.sub(r'<(?:div|section)[^>]*id=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>','',s,flags=re.S|re.I)
+          start=s.find('<section class="homeFeed">'); assert start>=0, '509 homeFeed mount missing'
+          pos=start+len('<section class="homeFeed">'); depth=1; token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
+          while depth:
+              q=token.search(s,pos); assert q, '509 homeFeed close missing'; depth += -1 if q.group(0).lower().startswith('</') else 1; pos=q.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          s=re.sub(r'<script[^>]*id=["\']NAYANET_509_INTELLIGENT_FEED_DIRECT_V2["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          p.write_text(s,encoding='utf-8')
+          print('509_CENTER_FEED_REPLACED=1')
+          PY
+
+      - name: Verify the exact target before writing anything
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
+              assert marker in s, marker
+          assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2')==1
+          assert '<section class="homeFeed"></section>' in s
+          forbidden=('NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','nayanet-canonical-feed-upgrade-style','nayanet-canonical-hub-authority','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','nayanet-intelligent-feed-v6.js','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth')
+          for marker in forbidden: assert marker not in s, marker
+          for marker in ('COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY FEED','NAYANET V7 — canonical 509 widescreen feed renderer','width:calc(100vw - 250px)','width:calc(100% + 40px)'):
+              assert marker in s, marker
+          print('509_SINGLE_CANONICAL_FEED=PASS')
+          print('509_HUB_SHELL_PRESERVED=PASS')
+          print('509_CURRENT_BOARD_TITLES=PASS')
+          print('509_EDGE_TO_EDGE=PASS')
+          print('509_LEGACY_FEED_LAYERS=ABSENT')
+          PY
+          git diff --check
+
+      - name: Commit only when the exact target changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          if git diff --cached --quiet; then
+            echo '509_TARGET_ALREADY_CURRENT=1'
+            exit 0
+          fi
+          git commit -m 'fix(509): materialize canonical Intelligent Feed into Hub'
+          git push
