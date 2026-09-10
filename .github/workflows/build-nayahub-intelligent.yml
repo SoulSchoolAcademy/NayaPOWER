@@ -1,17 +1,12 @@
-name: Build NayaNET Intelligent Hub from NAYAHUB
+name: Build NayaNET Intelligent Hub from canonical 5:09 source
 
-# Release execution: canonical source is NAYAHUB.html; Cloudflare package root is index.html.
+# Release execution: the current approved 5:09 Hub is the canonical source for this build.
 
 on:
   push:
     paths:
-      - 'NAYAHUB.html'
-      - 'nayanet-hub-collections.js'
-      - 'CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'
-      - 'scripts/nayanet-hub-authority-correction.js'
-      - 'scripts/nayanet-hub-final-polish.js'
-      - 'scripts/nayanet-hub-final-execution.js'
-      - 'scripts/nayanet-hub-sidebar-feed-tenstar.js'
+      - '2026 09 09 5:09 pm NayaNET HUB.html'
+      - 'scripts/nayanet-509-intelligent-feed-v2.js'
       - '.github/workflows/build-nayahub-intelligent.yml'
   pull_request:
     types: [closed]
@@ -26,75 +21,69 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact canonical NAYAHUB source
+      - name: Checkout exact canonical 5:09 Hub source
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Surgical integration
+      - name: Surgical integration — remove stray code and install one widescreen feed
         shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          src=Path('NAYAHUB.html'); layer=Path('CLOUDFLARE-INTELLIGENT-HUB-V7/nayanet-v7-surgical-integration.js'); completion=Path('nayanet-hub-collections.js'); authority=Path('scripts/nayanet-hub-authority-correction.js'); polish=Path('scripts/nayanet-hub-final-polish.js'); final_exec=Path('scripts/nayanet-hub-final-execution.js'); tenstar=Path('scripts/nayanet-hub-sidebar-feed-tenstar.js')
+          import re
+          src=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          renderer=Path('scripts/nayanet-509-intelligent-feed-v2.js')
           html=src.read_text(encoding='utf-8')
-          if html.count('<!doctype html>')!=1 or html.count('</html>')!=1: raise SystemExit('NAYAHUB.html is not a complete document')
-          layer_text=layer.read_text(encoding='utf-8').replace("setTimeout(()=>showLibrary(),100));window.NayaNETV7","setTimeout(()=>showLibrary(),100)));window.NayaNETV7")
-          layers=[('NAYANET-NAYAHUB-INTELLIGENCE-LAYER',layer_text,'nayanet-nayahub-intelligence'),('NAYANET-NAYAHUB-COLLECTIONS-LAYER',completion.read_text(encoding='utf-8'),'nayanet-nayahub-collections'),('NAYANET-CANONICAL-HUB-AUTHORITY-V1',authority.read_text(encoding='utf-8'),'nayanet-canonical-hub-authority'),('NAYANET-CANONICAL-HUB-FINAL-POLISH-V1',polish.read_text(encoding='utf-8'),'nayanet-canonical-hub-final-polish'),('NAYANET-HUB-FINAL-EXECUTION-V1',final_exec.read_text(encoding='utf-8'),'nayanet-hub-final-execution'),('NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1',tenstar.read_text(encoding='utf-8'),'nayanet-hub-sidebar-feed-tenstar')]
-          for marker,body,script_id in layers:
-              if '<!-- '+marker+' -->' not in html:
-                  html=html.replace('</body>','\n<!-- '+marker+' -->\n<script id="'+script_id+'">\n'+body+'\n</script>\n</body>',1)
-          src.write_text(html,encoding='utf-8');Path('index.html').write_text(html,encoding='utf-8');Path('_redirects').write_text('/intelligence/* /index.html 200\n',encoding='utf-8')
-          print('NAYAHUB',src.stat().st_size,'INDEX',Path('index.html').stat().st_size)
+          if html.count('<!doctype html>')!=1 or html.count('</html>')!=1:
+              raise SystemExit('Canonical 5:09 Hub is not a complete document')
+          # Remove previously materialized copies of this layer so the build is deterministic.
+          html=re.sub(r'<style id="n509-final-style">.*?</style>', '', html, flags=re.S)
+          html=re.sub(r'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">.*?</script>', '', html, flags=re.S)
+          # Remove actual pre/code elements from the canonical artifact; these are the stray code blocks.
+          html=re.sub(r'<pre\b[^>]*>.*?</pre>', '', html, flags=re.S|re.I)
+          html=re.sub(r'<code\b[^>]*>.*?</code>', '', html, flags=re.S|re.I)
+          # Force the existing Hub feed surface to be full-width without changing the outer shell.
+          html += '''\n<style id="n509-final-style">#page-home .homeWorkspace,#page-home .homeFeed,#naya509feed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}#page-home .homeFeed{min-width:0!important;padding-left:0!important;padding-right:0!important}#naya509feed .n509-board{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}</style>\n'''
+          body=renderer.read_text(encoding='utf-8')
+          html += '\n<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+body+'\n</script>\n'
+          Path('index.html').write_text(html,encoding='utf-8')
+          Path('_redirects').write_text('/intelligence/* /index.html 200\n',encoding='utf-8')
+          print('CANONICAL_SOURCE_BYTES',src.stat().st_size)
+          print('INDEX_BYTES',Path('index.html').stat().st_size)
           PY
-      - name: Validate canonical Hub
+      - name: Validate exact requested changes
         shell: bash
         run: |
           set -e
-          grep -q 'Search your intelligence' index.html
-          grep -q 'Intelligent Library' index.html
-          grep -q 'SHARE INTELLIGENCE' index.html
-          grep -q 'ASK NAYA' index.html
-          grep -q 'IntelligenceIndex' index.html
-          grep -q 'IntelligenceStore' index.html
-          grep -q '＋ SHARE' index.html
-          grep -q '★ RANK' index.html
-          grep -q '💬 COMMENT' index.html
-          grep -q 'Your Intelligence Today' index.html
-          grep -q 'SMART NOTES' index.html
-          grep -q 'NAYANET-CANONICAL-HUB-AUTHORITY-V1' index.html
-          grep -q 'NAYANET-CANONICAL-HUB-FINAL-POLISH-V1' index.html
-          grep -q 'NAYANET-HUB-FINAL-EXECUTION-V1' index.html
-          grep -q 'NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1' index.html
-          grep -q 'DAILY INTELLIGENCE BRIEFING' index.html
-          grep -q 'SHARE TO COLLECTIVE' index.html
-          grep -q 'SAVE TO MY INTELLIGENCE' index.html
-          ! grep -q 'prompt(' index.html
+          test -s index.html
+          grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' index.html
+          grep -q 'n509-final-style' index.html
+          grep -q 'CREATE SPACES' index.html
+          grep -q '#7C4DFF' index.html
+          grep -q '#6675FF' index.html
+          grep -q '#55B9EE' index.html
+          ! grep -qi '<pre' index.html
+          ! grep -qi '<code' index.html
           python3 - <<'PY'
           from pathlib import Path
-          import re,zipfile
-          s=Path('index.html').read_text(encoding='utf-8');assert s.count('<!doctype html>')==1 and s.count('</html>')==1
-          assert 'grid-template-columns:minmax(0,1fr)!important' in s
-          assert 'NAYANET-HUB-SIDEBAR-FEED-TENSTAR-V1' in s
-          scripts=re.findall(r'<script(?:[^>]*)>(.*?)</script>',s,re.S|re.I)
-          print('VALIDATED',len(s),'bytes',len(scripts),'embedded scripts; browser execution preserved from canonical source')
-          with zipfile.ZipFile('NayaNET-Intelligent-Hub-Cloudflare.zip','w',zipfile.ZIP_DEFLATED) as z:
-              z.write('index.html','index.html');z.write('_redirects','_redirects')
-          with zipfile.ZipFile('NayaNET-Intelligent-Hub-Cloudflare.zip') as z:
-              assert z.namelist()==['index.html','_redirects']
-              assert z.getinfo('index.html').file_size>100000
-          print('ZIP_ROOT_OK index.html,_redirects')
+          s=Path('index.html').read_text(encoding='utf-8')
+          assert s.count('<!doctype html>')==1 and s.count('</html>')==1
+          assert 'width:100%!important;max-width:none!important' in s
+          assert 'grid-template-columns:repeat(3' not in s[s.find('id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"'):]
+          print('PASS: single canonical widescreen feed renderer; stray pre/code removed')
           PY
-      - name: Commit completed canonical NAYAHUB and index
+      - name: Commit completed canonical Hub and index
         shell: bash
         run: |
-          git config user.name 'github-actions[bot]';git config user.email '41898282+github-actions[bot]@users.noreply.github.com';git add NAYAHUB.html index.html _redirects
-          if git diff --cached --quiet; then echo 'No changes'; else git commit -m 'Build canonical NayaNET Intelligent Hub [skip ci]';git push;fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add index.html _redirects
+          if git diff --cached --quiet; then echo 'No generated changes'; else git commit -m 'Build canonical NayaNET Hub widescreen feed [skip ci]'; git push; fi
       - name: Upload Cloudflare package
         uses: actions/upload-artifact@v4
         with:
           name: NayaNET-Intelligent-Hub-Cloudflare
           path: |
-            NayaNET-Intelligent-Hub-Cloudflare.zip
             index.html
             _redirects
           if-no-files-found: error
