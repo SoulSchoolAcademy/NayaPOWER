@@ -1,0 +1,68 @@
+name: 2026-09-10 — 509 Canonical Surgical Repair
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/2026-09-10-509-canonical-repair.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Restore pre-509-insertion Hub artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='2026 09 09 5:09 pm NayaNET HUB.html'
+          PROVEN='445e8d7c21e46b9bcdfb76d636da837b507544bc'
+          git fetch --no-tags origin "$PROVEN"
+          git restore --source="$PROVEN" -- "$TARGET"
+      - name: Surgical cleanup and verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          # Remove only the duplicate secondary welcome from visible markup; preserve scripts.
+          parts=re.split(r'(<script\b[^>]*>.*?</script>)',s,flags=re.S|re.I)
+          for i in range(0,len(parts),2):
+              parts[i]=re.sub(r'<div class="heroIntro">\s*<h1>Good\s+(?:morning|afternoon|evening),\s*(?:Shawn|Sean)\.?\s*</h1>\s*<p>Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.?\s*</p>\s*</div>','',parts[i],flags=re.I)
+          p.write_text(''.join(parts),encoding='utf-8')
+          s=p.read_text(encoding='utf-8')
+          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s
+          assert 'naya509feed' not in s
+          assert '<div class="app">' in s
+          assert 'class="sidebar"' in s
+          assert 'class="topbar"' in s
+          assert 'id="page-home"' in s
+          assert 'class="homeWorkspace"' in s
+          assert 'class="homeFeed"' in s
+          visible='\n'.join(parts[::2])
+          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',visible,re.I)
+          # The original intelligent-feed renderer architecture must remain present.
+          assert 'intelligentBlock' in s
+          assert 'perspectiveMap' in s
+          print('509_CANONICAL_REPAIR=PASS')
+          print('509_BAD_DIRECT_RENDERER=ABSENT')
+          print('509_DUPLICATE_HERO_WELCOME=REMOVED')
+          print('509_ORIGINAL_FEED_ARCHITECTURE=PRESENT')
+          PY
+          git diff --check
+      - name: Commit repaired target and retire this writer
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          git rm --ignore-unmatch .github/workflows/2026-09-10-509-canonical-repair.yml
+          git commit -m 'fix(509): surgically restore original Hub feed architecture'
+          git push origin main
