@@ -27,7 +27,6 @@ jobs:
           s=html_path.read_text(encoding='utf-8')
           js=js_path.read_text(encoding='utf-8')
 
-          # Protect the working Hub shell. Never delete a whole global <style> block.
           required_shell=(
               '<div class="app">','class="sidebar"','class="topbar"',
               'id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'
@@ -36,7 +35,6 @@ jobs:
               if marker not in s:
                   raise SystemExit(f'509 SHELL MISSING: {marker}')
 
-          # Remove only known feed-runtime script blocks. Global page scripts/styles stay intact.
           legacy_script_terms=(
               'NAYANET_INTELLIGENT_FEED_V5_RUNTIME',
               'NayaNET V16 presentation layer',
@@ -44,7 +42,7 @@ jobs:
               'NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR',
               'nayanet-intelligent-feed-v6.js'
           )
-          script_pattern=re.compile(r'<script\\b[^>]*>(.*?)</script>\\s*',re.S|re.I)
+          script_pattern=re.compile(r'<script\b[^>]*>(.*?)</script>\s*',re.S|re.I)
           def strip_script(m):
               body=m.group(0)
               if 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' in body:
@@ -53,13 +51,12 @@ jobs:
                   return ''
               return body
           s=script_pattern.sub(strip_script,s)
-          s=re.sub(r'<script\\s+src=["\\']\\./nayanet-intelligent-feed-v6\\.js["\\'][^>]*>\\s*</script>\\s*','',s,flags=re.I)
+          s=re.sub(r'<script\s+src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>\s*</script>\s*','',s,flags=re.I)
 
-          # Locate the actual homeFeed section by balanced <section> tags and replace ONLY it.
-          m=re.search(r'<section\\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          m=re.search(r'<section\s+class="homeFeed"[^>]*>',s,flags=re.I)
           if not m: raise SystemExit('509 HTML missing homeFeed mount')
           start=m.start(); pos=m.end(); depth=1
-          tok=re.compile(r'<section\\b[^>]*>|</section\\s*>',re.I)
+          tok=re.compile(r'<section\b[^>]*>|</section\s*>',re.I)
           while depth:
               q=tok.search(s,pos)
               if not q: raise SystemExit('Could not find matching homeFeed section close')
@@ -67,9 +64,8 @@ jobs:
               pos=q.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
 
-          # Install exactly one canonical V2 renderer after the intact page markup.
-          s=re.sub(r'<script\\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\\s*','',s,flags=re.S|re.I)
-          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n'+js+'\\n</script>\\n</body>',1)
+          s=re.sub(r'<script\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\s*','',s,flags=re.S|re.I)
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           html_path.write_text(s,encoding='utf-8')
           print('509_CENTER_FEED_REPLACED=1')
           PY
@@ -81,15 +77,12 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
-          # Working shell must survive this operation.
           for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
               assert marker in s, marker
           assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2') == 1
           assert 'nayanet-intelligent-feed-v6.js' not in s
-          # homeFeed must be an empty mount; V2 owns its contents at runtime.
           assert '<section class="homeFeed"></section>' in s
-          # The dangerous historical runtime signatures must not remain in executable script blocks.
-          blocks=re.findall(r'<script\\b[^>]*>(.*?)</script>',s,re.S|re.I)
+          blocks=re.findall(r'<script\b[^>]*>(.*?)</script>',s,re.S|re.I)
           legacy=('NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','NAYANET CANONICAL FEED SURGICAL UPGRADE','NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR')
           offenders=[]
           for body in blocks:
