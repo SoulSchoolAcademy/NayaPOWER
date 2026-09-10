@@ -1,0 +1,58 @@
+name: NayaNET Ultimate Surgical Commit
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: ${{ !contains(github.event.head_commit.message, '[nayanet-ultimate]') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reuse proven surgical transformation
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, json, base64, urllib.request, urllib.error, shutil
+          wf=Path('.github/workflows/nayanet-ultimate-surgical-build-v2.yml').read_text(encoding='utf-8')
+          a=wf.index("python3 - <<'PY'")+len("python3 - <<'PY'\n")
+          z=wf.index('\n          PY',a)
+          script=wf[a:z]
+          Path('/tmp/build.py').write_text(script,encoding='utf-8')
+          subprocess.run(['python3','/tmp/build.py'],check=True)
+          token=__import__('os').environ['GH_TOKEN']
+          api='https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/'
+          def api_call(url,method='GET',payload=None):
+              data=None if payload is None else json.dumps(payload).encode()
+              req=urllib.request.Request(url,data=data,method=method,headers={'Authorization':'Bearer '+token,'Accept':'application/vnd.github+json','Content-Type':'application/json','X-GitHub-Api-Version':'2022-11-28'})
+              with urllib.request.urlopen(req) as r:return json.loads(r.read())
+          path='2026 09 09 5:09 pm NayaNET HUB'
+          content=Path(path).read_bytes()
+          meta=api_call(api+urllib.parse.quote(path))
+          payload={'message':'[nayanet-ultimate] apply verified surgical Hub evolution','content':base64.b64encode(content).decode(),'sha':meta['sha'],'branch':'main'}
+          result=api_call(api+urllib.parse.quote(path), 'PUT', payload)
+          print('REMOTE CANONICAL UPDATED',result['commit']['sha'])
+          PY
+      - name: Remote verification
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import urllib.request, json, os, base64
+          p='2026 09 09 5:09 pm NayaNET HUB'
+          u='https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/'+urllib.parse.quote(p)
+          req=urllib.request.Request(u,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+          d=json.loads(urllib.request.urlopen(req).read())
+          s=base64.b64decode(d['content']).decode()
+          for x in ['nayanet-ultimate-feed','Living Intelligence','ACTIVITY','PERSONAL','COLLECTIVE','SKIM','LEARN','VERIFY','OPERATE','EXPLORE','TEACH','LOCAL FIXTURE']:
+              assert x in s,x
+          print('REMOTE CANONICAL RELEASE GATE PASS')
+          print('REMOTE SHA',d['sha'])
+          PY
