@@ -1,1 +1,0 @@
-NayaNET Ultimate Surgical Build v2 trigger. This file exists only to trigger the executable workflow after the workflow file was installed.
