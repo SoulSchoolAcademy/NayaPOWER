@@ -29,34 +29,14 @@ jobs:
           import re
           p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
           s=p.read_text(encoding='utf-8')
-
-          # Remove the injected 509 renderer and its styles. The 509 board copy is not
-          # part of the approved Home content; it was a temporary diagnostic layer.
           for ident in ('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2','n509-final-style'):
               s=re.sub(r'<(?:script|style)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(?:script|style)>','',s,flags=re.S|re.I)
-
-          # Remove any remaining literal 509 board container if present.
           s=re.sub(r'<div[^>]*id=["\']naya509feed["\'][^>]*>.*?</div>','',s,flags=re.S|re.I)
-
-          # Remove the known naked Play Naya payload and any literal code containers.
           s=re.sub(r'\s*/\*\s*NayaNET V7 — surgical Play Naya polish layer\..*?(?=</body>)','\n',s,flags=re.S|re.I)
           s=re.sub(r'<(?:pre|code)\b[^>]*>.*?</(?:pre|code)>','',s,flags=re.S|re.I)
-
-          # Remove legacy feed systems that can remount or recreate the unwanted board.
-          legacy_patterns = [
-              r'<!--\s*NAYANET SMART FEED MASTER V1\s*-->.*?<!--\s*NAYANET SMART FEED FORCE MOUNT V2\s*-->',
-              r'<style id=["\']NAYANET-SMART-FEED-MASTER-V1["\'][^>]*>.*?</style>',
-              r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',
-              r'<style id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2["\'][^>]*>.*?</style>',
-              r'<script id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME["\'][^>]*>.*?</script>',
-          ]
-          for pat in legacy_patterns:
-              s=re.sub(pat,'',s,flags=re.S|re.I)
-
-          # Home must occupy the entire main content cell, exactly matching the width
-          # of the top search/header area. No 40px desktop gutter and no side column.
-          css='''<style id="nayanet-home-widescreen-fix">\n#page-home,#page-home .homeWorkspace,#page-home .homeFeed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important}\n#page-home .homeWorkspace{display:block!important;grid-template-columns:none!important;gap:0!important}\n#page-home .activationRail{display:none!important}\n#page-home .intelligentFeed{width:100%!important;max-width:none!important;margin:0!important}\n@media(min-width:901px){.main{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important}.topbar{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}.page{width:100%!important;max-width:none!important}}\n</style>\n'''
-          # Replace prior fix so repeated workflow runs remain deterministic.
+          legacy_patterns=[r'<!--\s*NAYANET SMART FEED MASTER V1\s*-->.*?<!--\s*NAYANET SMART FEED FORCE MOUNT V2\s*-->',r'<style id=["\']NAYANET-SMART-FEED-MASTER-V1["\'][^>]*>.*?</style>',r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',r'<style id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2["\'][^>]*>.*?</style>',r'<script id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME["\'][^>]*>.*?</script>']
+          for pat in legacy_patterns: s=re.sub(pat,'',s,flags=re.S|re.I)
+          css='''<style id="nayanet-home-widescreen-fix">\n#page-home,#page-home *{box-sizing:border-box}\n#page-home{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:34px 0 100px!important}\n#page-home>*,#page-home>div,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{width:100%!important;max-width:none!important;min-width:0!important;margin-left:0!important;margin-right:0!important}\n#page-home>*,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{padding-left:0!important;padding-right:0!important}\n#page-home .activationRail{display:none!important}\n@media(min-width:901px){.main{width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0 0 100px!important}.topbar{width:100%!important;max-width:none!important;margin:0!important}.page{width:100%!important;max-width:none!important;margin:0!important}}\n</style>\n'''
           s=re.sub(r'<style id="nayanet-home-widescreen-fix">.*?</style>\s*','',s,flags=re.S|re.I)
           s=s.replace('</body>',css+'</body>',1)
           p.write_text(s,encoding='utf-8')
@@ -74,7 +54,7 @@ jobs:
           ! grep -qi '<pre\b' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -qi '<code\b' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q 'nayanet-home-widescreen-fix' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q 'padding-left:0!important;padding-right:0!important' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q '#page-home>\*' '2026 09 09 5:09 pm NayaNET HUB.html'
           git diff --check
       - name: Commit
         shell: bash
@@ -84,5 +64,5 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'fix(509): make Home content truly edge-to-edge'
+          git commit -m 'fix(509): make Home content full viewport width'
           git push origin HEAD:${{ github.head_ref || github.ref_name }}
