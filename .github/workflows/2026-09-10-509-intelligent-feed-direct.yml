@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Remove stacked legacy feed layers without touching the Hub shell
+      - name: Replace only the 509 feed layers
         shell: bash
         run: |
           set -euo pipefail
@@ -25,12 +25,11 @@ jobs:
           p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
           js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
           s=p.read_text(encoding='utf-8')
-          shell=('class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>')
-          for x in shell:
-              assert x in s, '509 SHELL MISSING: '+x
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'):
+              assert marker in s, '509 SHELL MISSING: '+marker
 
-          # Delete only explicitly identified feed-specific style/script/content blocks.
-          ids=(
+          # Exact IDs: remove only these feed-specific layers, never a global style block.
+          exact_ids=(
               'nayanet-canonical-feed-upgrade-style',
               'NAYANET-SMART-FEED-MASTER-V1',
               'NAYANET-SMART-FEED-FORCE-MOUNT-V2',
@@ -38,42 +37,41 @@ jobs:
               'NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME',
               'nayanet-canonical-hub-authority'
           )
-          for ident in ids:
-              s=re.sub(r'<(style|script|div)\\b[^>]*\\bid=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</\\1>\\s*','',s,flags=re.S|re.I)
+          for ident in exact_ids:
+              pattern=re.compile(r'<(style|script|div)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(style|script|div)>',re.S|re.I)
+              s=pattern.sub('',s)
 
-          # Remove the older anonymous V11 feed enhancer by multiple unique signatures.
-          def strip_legacy_script(m):
+          # Remove the anonymous V11 feed enhancer only when multiple feed-specific signatures agree.
+          script_pattern=re.compile(r'<script[^>]*>.*?</script>',re.S|re.I)
+          signatures=('function strengthenFeed()','nh-v11-intel','nhV11Today','nh-authority-actions','nayanet.presentationMode','function addTodayNav()')
+          def strip_old(m):
               body=m.group(0)
-              hits=sum(term.lower() in body.lower() for term in (
-                  'function strengthenFeed()', 'nh-v11-intel', 'nhV11Today',
-                  'nh-authority-actions', 'nayanet.presentationMode', 'function addTodayNav()'
-              ))
+              hits=sum(x.lower() in body.lower() for x in signatures)
               return '' if hits>=2 else body
-          s=re.sub(r'<script\\b[^>]*>.*?</script>\\s*',strip_legacy_script,s,flags=re.S|re.I)
+          s=script_pattern.sub(strip_old,s)
+          s=re.sub(r'<script[^>]*src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
+          s=re.sub(r'<(?:div|section)[^>]*id=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>','',s,flags=re.S|re.I)
 
-          # Remove any old external V6 feed runtime.
-          s=re.sub(r'<script\\s+src=["\']\\./nayanet-intelligent-feed-v6\\.js["\'][^>]*>\\s*</script>\\s*','',s,flags=re.I)
-
-          # Remove any stale force-mounted feed and clear only the home feed region.
-          s=re.sub(r'<(?:div|section)\\b[^>]*\\bid=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>\\s*','',s,flags=re.S|re.I)
-          m=re.search(r'<section\\s+class="homeFeed"[^>]*>',s,flags=re.I)
-          assert m, '509 HTML missing homeFeed mount'
-          start=m.start(); pos=m.end(); depth=1
-          tok=re.compile(r'<section\\b[^>]*>|</section\\s*>',re.I)
+          # Replace ONLY the existing homeFeed section, preserving the surrounding page.
+          start=s.find('<section class="homeFeed">')
+          assert start>=0, '509 homeFeed mount missing'
+          pos=start+len('<section class="homeFeed">')
+          depth=1
+          token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
           while depth:
-              q=tok.search(s,pos)
-              assert q, '509 homeFeed closing section not found'
+              q=token.search(s,pos)
+              assert q, '509 homeFeed close missing'
               depth += -1 if q.group(0).lower().startswith('</') else 1
               pos=q.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
 
-          # Keep exactly one V2 runtime.
-          s=re.sub(r'<script\\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\\s*','',s,flags=re.S|re.I)
+          # Keep exactly one canonical V2 runtime.
+          s=re.sub(r'<script[^>]*id=["\']NAYANET_509_INTELLIGENT_FEED_DIRECT_V2["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
           s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           p.write_text(s,encoding='utf-8')
           print('509_CENTER_FEED_REPLACED=1')
           PY
-      - name: Prove shell preservation and single-feed source state
+      - name: Verify exact source state and shell preservation
         shell: bash
         run: |
           set -euo pipefail
@@ -81,18 +79,18 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
-          for x in ('class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
-              assert x in s, x
-          assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2') == 1
-          assert 'nayanet-intelligent-feed-v6.js' not in s
-          forbidden=('NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','nayanet-canonical-feed-upgrade-style','nayanet-canonical-hub-authority','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer')
-          for x in forbidden:
-              assert x not in s, x
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
+              assert marker in s, marker
+          assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2')==1
           assert '<section class="homeFeed"></section>' in s
-          for x in ('INTELLIGENT FEED','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SHARE INTEL','RATE THIS INTELLIGENCE'):
-              assert x in s, x
+          forbidden=('NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','nayanet-canonical-feed-upgrade-style','nayanet-canonical-hub-authority','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','nayanet-intelligent-feed-v6.js')
+          for marker in forbidden:
+              assert marker not in s, marker
+          for marker in ('INTELLIGENT FEED','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SHARE INTEL','RATE THIS INTELLIGENCE'):
+              assert marker in s, marker
           print('509_SINGLE_CANONICAL_FEED=PASS')
           print('509_HUB_SHELL_PRESERVED=PASS')
+          print('509_LEGACY_FEED_LAYERS=ABSENT')
           PY
           git diff --check
       - name: Commit the 509 HTML once
