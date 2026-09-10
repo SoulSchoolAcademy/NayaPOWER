@@ -1,5 +1,6 @@
 name: 2026-09-10 — 509 Intelligent Feed Direct Update
 # ISOLATED 509 RECONSTRUCTION: preserve the 5:09 Hub shell; remove stacked feed layers; install one V2 feed.
+# EXECUTION-GATE-2026-09-10: this workflow file is itself a push trigger so the 509 materializer cannot be left unexecuted.
 on:
   push:
     branches: [main]
@@ -28,7 +29,6 @@ jobs:
           for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'):
               assert marker in s, '509 SHELL MISSING: '+marker
 
-          # Exact IDs: remove only these feed-specific layers, never a global style block.
           exact_ids=(
               'nayanet-canonical-feed-upgrade-style',
               'NAYANET-SMART-FEED-MASTER-V1',
@@ -41,7 +41,6 @@ jobs:
               pattern=re.compile(r'<(style|script|div)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(style|script|div)>',re.S|re.I)
               s=pattern.sub('',s)
 
-          # Remove the anonymous V11 feed enhancer only when multiple feed-specific signatures agree.
           script_pattern=re.compile(r'<script[^>]*>.*?</script>',re.S|re.I)
           signatures=('function strengthenFeed()','nh-v11-intel','nhV11Today','nh-authority-actions','nayanet.presentationMode','function addTodayNav()')
           def strip_old(m):
@@ -52,7 +51,6 @@ jobs:
           s=re.sub(r'<script[^>]*src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
           s=re.sub(r'<(?:div|section)[^>]*id=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>','',s,flags=re.S|re.I)
 
-          # Replace ONLY the existing homeFeed section, preserving the surrounding page.
           start=s.find('<section class="homeFeed">')
           assert start>=0, '509 homeFeed mount missing'
           pos=start+len('<section class="homeFeed">')
@@ -65,7 +63,6 @@ jobs:
               pos=q.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
 
-          # Keep exactly one canonical V2 runtime.
           s=re.sub(r'<script[^>]*id=["\']NAYANET_509_INTELLIGENT_FEED_DIRECT_V2["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
           s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
           p.write_text(s,encoding='utf-8')
@@ -77,7 +74,6 @@ jobs:
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
-          import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
           for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
               assert marker in s, marker
