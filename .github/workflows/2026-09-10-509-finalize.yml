@@ -52,7 +52,7 @@ jobs:
           grep -q '6675FF' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q '55B9EE' '2026 09 09 5:09 pm NayaNET HUB.html'
           grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
-          ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaPOWER HUB.html'
+          ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaNET HUB.html'
           git diff --check
       - name: Commit
         shell: bash
