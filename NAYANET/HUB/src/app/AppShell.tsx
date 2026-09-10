@@ -15,8 +15,7 @@ export function AppShell({children}:ShellProps){
  const go=(next:string)=>{if(next===path)return;window.history.pushState({},'',next);setPath(next)};
  const current=nav.find(([,p])=>p===path);
  const label=current?.[0]||'NayaNET';
- return <div className="app" data-shell-owner="AppShell" data-route={path}>
-  <aside className="sidebar"><div className="brand"><div className="logo">N</div><div><b>NayaNET</b><small>INTELLIGENT HUB</small></div></div><div className="navlabel">NETWORK</div><nav className="nav" aria-label="NayaNET navigation">{nav.map(([name,route,icon])=><button key={route} className={path===route?'active':''} onClick={()=>go(route)} aria-current={path===route?'page':undefined}><span className="ico">{icon}</span>{name}</button>)}</nav><div className="sidefoot"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div></aside>
+ return <div className="app" data-shell-owner="AppShell" data-route={path} data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"><aside className="sidebar"><div className="brand"><div className="logo">N</div><div><b>NayaNET</b><small>INTELLIGENT HUB</small></div></div><div className="navlabel">NETWORK</div><nav className="nav" aria-label="NayaNET navigation">{nav.map(([name,route,icon])=><button key={route} className={path===route?'active':''} onClick={()=>go(route)} aria-current={path===route?'page':undefined}><span className="ico">{icon}</span>{name}</button>)}</nav><div className="sidefoot"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div></aside>
   <main className="main"><header className="topbar"><div className="crumb"><strong>{label}</strong><span> / NayaNET Intelligence</span></div><div className="topright"><div className="identity"><b>{id.smart_name}</b><span>@{id.smart_alias}</span></div></div></header><section className="home">{children(path)}</section></main>
  </div>
 }
