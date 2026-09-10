@@ -1,0 +1,78 @@
+name: 2026-09-10 — 509 Restore Proven Hub Feed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/2026-09-10-509-restore-good-feed.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore-509:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Restore last proven pre-regression Hub artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='2026 09 09 5:09 pm NayaNET HUB.html'
+          PROVEN='262b2eae951d9dcd23d1095a804ce1a646b7693e'
+          test -f "$TARGET"
+          git fetch --no-tags origin "$PROVEN"
+          git restore --source="$PROVEN" -- "$TARGET"
+      - name: Remove only the duplicate second welcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          # Remove a second welcome block only when it contains the identifying phrase.
+          patterns=[
+            r'<(?P<tag>div|section|header)[^>]*>\s*(?:<[^>]+>\s*)*Good\s+morning,\s+(?:Shawn|Sean)[\s\S]*?Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.[\s\S]*?</(?P=tag)>',
+            r'<(?P<tag>div|section|header)[^>]*>[\s\S]*?Good\s+morning,\s+(?:Shawn|Sean)[\s\S]*?Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.[\s\S]*?</(?P=tag)>'
+          ]
+          before=s
+          for pat in patterns:
+            s,n=re.subn(pat,'',s,count=1,flags=re.I)
+            if n: break
+          if s==before:
+            # Fail rather than silently changing the wrong thing; inspection must prove the target text exists.
+            if re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I):
+              raise SystemExit('DUPLICATE_WELCOME_PRESENT_BUT_BLOCK_NOT_MATCHED')
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify protected shell, preserved feed, and clean welcome state
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','COLLECT SOURCE','CAPTURE WEB','MATTERS','COMPOUND','WHAT LEARNS','DAILY INTELLIGENCE REPORT'): assert marker.lower() in s.lower(), marker
+          assert 'naya509feed' not in s, 'OUR 509 REPLACEMENT LAYER STILL PRESENT'
+          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s, 'OUR REPLACEMENT SCRIPT STILL PRESENT'
+          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I), 'DUPLICATE SECOND WELCOME REMAINS'
+          assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I), 'PRIMARY WELCOME MISSING'
+          print('509_RESTORE_VERIFICATION=PASS')
+          PY
+      - name: Commit only the restored Hub artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          if git diff --cached --quiet; then echo '509_RESTORE_NO_CHANGE=1'; exit 0; fi
+          git commit -m 'fix(509): restore proven Hub feed and remove duplicate welcome'
+          git push origin main
