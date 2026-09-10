@@ -1,0 +1,69 @@
+name: 2026-09-10 — 509 Final Recovery V2
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/2026-09-10-509-final-recovery-v2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  recover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Restore last proven Hub artifact and remove duplicate welcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='2026 09 09 5:09 pm NayaNET HUB.html'
+          PROVEN='262b2eae951d9dcd23d1095a804ce1a646b7693e'
+          git fetch --no-tags origin "$PROVEN"
+          git restore --source="$PROVEN" -- "$TARGET"
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          parts=re.split(r'(<script\b[^>]*>.*?</script>)',s,flags=re.S|re.I)
+          for i in range(0,len(parts),2):
+              parts[i]=re.sub(r'Good\s+morning,\s+(?:Shawn|Sean)\s*','',parts[i],flags=re.I)
+              parts[i]=re.sub(r'Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.?\s*','',parts[i],flags=re.I)
+          p.write_text(''.join(parts),encoding='utf-8')
+          PY
+      - name: Verify final artifact only
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          required=('class="app"','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"')
+          for marker in required: assert marker.lower() in s.lower(), marker
+          # The original feed must still have content/structure; reject an empty replacement mount.
+          m=re.search(r'<section[^>]*class=["\'][^"\']*homeFeed[^"\']*["\'][^>]*>(.*?)</section>',s,re.S|re.I)
+          assert m and m.group(1).strip(), 'ORIGINAL_HOME_FEED_EMPTY'
+          assert 'naya509feed' not in s
+          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s
+          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I)
+          assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I)
+          print('509_FINAL_RECOVERY_V2=PASS')
+          print('509_ORIGINAL_FEED_PRESERVED=PASS')
+          print('509_DUPLICATE_WELCOME_REMOVED=PASS')
+          PY
+          git diff --check
+      - name: Commit the exact target only
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          git commit -m 'fix(509): restore proven Hub feed and remove duplicate welcome'
+          git push origin main
