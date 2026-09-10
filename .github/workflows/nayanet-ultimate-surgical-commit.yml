@@ -20,14 +20,14 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import subprocess, json, base64, urllib.request, urllib.error, shutil
+          import subprocess, json, base64, urllib.request, urllib.parse, os
           wf=Path('.github/workflows/nayanet-ultimate-surgical-build-v2.yml').read_text(encoding='utf-8')
           a=wf.index("python3 - <<'PY'")+len("python3 - <<'PY'\n")
           z=wf.index('\n          PY',a)
           script=wf[a:z]
           Path('/tmp/build.py').write_text(script,encoding='utf-8')
           subprocess.run(['python3','/tmp/build.py'],check=True)
-          token=__import__('os').environ['GH_TOKEN']
+          token=os.environ['GH_TOKEN']
           api='https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/'
           def api_call(url,method='GET',payload=None):
               data=None if payload is None else json.dumps(payload).encode()
@@ -45,7 +45,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'
-          import urllib.request, json, os, base64
+          import urllib.request, urllib.parse, json, os, base64
           p='2026 09 09 5:09 pm NayaNET HUB'
           u='https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/contents/'+urllib.parse.quote(p)
           req=urllib.request.Request(u,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
