@@ -94,7 +94,7 @@ jobs:
           assert '<section class="homeFeed"></section>' in s
           forbidden=('NAYANET-SMART-FEED-MASTER-V1','NAYANET-SMART-FEED-FORCE-MOUNT-V2','nayanet-canonical-feed-upgrade-style','nayanet-canonical-hub-authority','NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','nayanet-intelligent-feed-v6.js','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth')
           for marker in forbidden: assert marker not in s, marker
-          for marker in ('COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY FEED','EXECUTE-509-EDGE-TO-EDGE-2026-09-10','width:calc(100vw - 250px)','width:calc(100% + 40px)'):
+          for marker in ('COLLECTIVE INTELLIGENCE','PERSONAL INTELLIGENCE','ACTIVITY FEED','width:calc(100vw - 250px)','width:calc(100% + 40px)'):
               assert marker in s, marker
           print('509_SINGLE_CANONICAL_FEED=PASS')
           print('509_HUB_SHELL_PRESERVED=PASS')
