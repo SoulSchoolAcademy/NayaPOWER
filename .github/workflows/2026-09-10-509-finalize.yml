@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref || github.ref_name }}
-      - name: Replace canonical 509 home feed
+      - name: Remove unwanted 509 layer and force true widescreen Home
         shell: bash
         run: |
           set -euo pipefail
@@ -28,55 +28,51 @@ jobs:
           from pathlib import Path
           import re
           p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
-          js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
           s=p.read_text(encoding='utf-8')
-          # Remove prior 509 layer.
+
+          # Remove the injected 509 renderer and its styles. The 509 board copy is not
+          # part of the approved Home content; it was a temporary diagnostic layer.
           for ident in ('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2','n509-final-style'):
               s=re.sub(r'<(?:script|style)[^>]*id=["\']'+re.escape(ident)+r'["\'][^>]*>.*?</(?:script|style)>','',s,flags=re.S|re.I)
-          # Remove literal code containers.
+
+          # Remove any remaining literal 509 board container if present.
+          s=re.sub(r'<div[^>]*id=["\']naya509feed["\'][^>]*>.*?</div>','',s,flags=re.S|re.I)
+
+          # Remove the known naked Play Naya payload and any literal code containers.
+          s=re.sub(r'\s*/\*\s*NayaNET V7 — surgical Play Naya polish layer\..*?(?=</body>)','\n',s,flags=re.S|re.I)
           s=re.sub(r'<(?:pre|code)\b[^>]*>.*?</(?:pre|code)>','',s,flags=re.S|re.I)
-          # Remove legacy feed systems that can remount, resize, or overwrite the 509 feed.
+
+          # Remove legacy feed systems that can remount or recreate the unwanted board.
           legacy_patterns = [
               r'<!--\s*NAYANET SMART FEED MASTER V1\s*-->.*?<!--\s*NAYANET SMART FEED FORCE MOUNT V2\s*-->',
               r'<style id=["\']NAYANET-SMART-FEED-MASTER-V1["\'][^>]*>.*?</style>',
               r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',
               r'<style id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2["\'][^>]*>.*?</style>',
               r'<script id=["\']NAYANET-SMART-FEED-FORCE-MOUNT-V2-RUNTIME["\'][^>]*>.*?</script>',
-              r'<script id=["\']NAYANET-SMART-FEED-MASTER-V1-RUNTIME["\'][^>]*>.*?</script>',
           ]
           for pat in legacy_patterns:
               s=re.sub(pat,'',s,flags=re.S|re.I)
-          # Remove the known naked Play Naya polish payload when it exists outside a script tag.
-          s=re.sub(r'\s*/\*\s*NayaNET V7 — surgical Play Naya polish layer\..*?(?=</body>)','\n',s,flags=re.S|re.I)
-          # Remove any other naked JavaScript block left after a closing script tag, bounded by body end.
-          s=re.sub(r'(</script>)\s*(?:/\*.*?\*/\s*)?\(\(\)\s*=>\s*\{.*?(?=</body>)',r'\1\n',s,flags=re.S|re.I)
-          start=s.find('<section class="homeFeed">')
-          assert start>=0
-          pos=start+len('<section class="homeFeed">')
-          depth=1; token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
-          while depth:
-              m=token.search(s,pos); assert m
-              depth += -1 if m.group(0).lower().startswith('</') else 1; pos=m.end()
-          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
-          css='''<style id="n509-final-style">#page-home .homeWorkspace,#page-home .homeFeed,#naya509feed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important}#page-home .homeWorkspace{display:block!important;grid-template-columns:1fr!important;gap:0!important}#naya509feed .n509-board{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}</style>\n'''
-          s=s.replace('</body>',css+'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+
+          # Home should use the same full available content width as the search/header area:
+          # no side gutter, no hidden activation rail, no second feed column.
+          css='''<style id="nayanet-home-widescreen-fix">\n#page-home,#page-home .homeWorkspace,#page-home .homeFeed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important}\n#page-home .homeWorkspace{display:block!important;grid-template-columns:none!important;gap:0!important}\n#page-home .activationRail{display:none!important}\n#page-home .intelligentFeed{width:100%!important;max-width:none!important;margin:0!important}\n@media(min-width:901px){.main{padding-left:40px!important;padding-right:40px!important}.topbar{margin-left:0!important;margin-right:0!important}}\n</style>\n'''
+          s=s.replace('</body>',css+'</body>',1)
           p.write_text(s,encoding='utf-8')
           PY
-      - name: Verify
+      - name: Verify exact cleanup and widescreen contract
         shell: bash
         run: |
           set -euo pipefail
-          grep -q 'CREATE SPACES' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q '7C4DFF' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q '6675FF' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q '55B9EE' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
-          grep -q 'n509-final-style' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'n509-final-style' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'naya509feed' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -q 'NAYANET-SMART-FEED-MASTER-V1' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -q 'NAYANET-SMART-FEED-FORCE-MOUNT-V2' '2026 09 09 5:09 pm NayaNET HUB.html'
+          ! grep -q 'surgical Play Naya polish layer' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -qi '<pre\b' '2026 09 09 5:09 pm NayaNET HUB.html'
           ! grep -qi '<code\b' '2026 09 09 5:09 pm NayaNET HUB.html'
-          ! grep -q 'surgical Play Naya polish layer' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q 'nayanet-home-widescreen-fix' '2026 09 09 5:09 pm NayaNET HUB.html'
+          grep -q '#page-home .homeWorkspace' '2026 09 09 5:09 pm NayaNET HUB.html'
           git diff --check
       - name: Commit
         shell: bash
@@ -86,5 +82,5 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
           if git diff --cached --quiet; then exit 0; fi
-          git commit -m 'fix(509): strip legacy feed layers and naked Play Naya code'
+          git commit -m 'fix(509): remove unwanted board layer and make home full width'
           git push origin HEAD:${{ github.head_ref || github.ref_name }}
