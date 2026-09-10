@@ -2,28 +2,23 @@
 # Surgical runtime-integrity repair. Build from NAYANET/HUB, deploy to aged-art-7c12,
 # explicitly promote the created Worker version to 100%, then prove the public runtime.
 name: Deploy Canonical NayaNET Hub V2
-
 on:
   workflow_dispatch:
   workflow_call:
     secrets:
       CLOUDFLARE_API_TOKEN:
         required: true
-
 permissions:
   contents: read
-
 concurrency:
   group: nayanet-canonical-live-hub
   cancel-in-progress: true
-
 env:
   HUB: NAYANET/HUB
   WORKER_NAME: aged-art-7c12
   RUNTIME: https://aged-art-7c12.nayanet.workers.dev
   SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
   ACCOUNT_ID: 262c881746ea6e9978ca18b3eb831907
-
 jobs:
   build-deploy-verify:
     runs-on: ubuntu-latest
@@ -58,9 +53,6 @@ jobs:
           APP_JS=$(find "$D/assets" -maxdepth 1 -type f -name '*.js' -print -quit | sed "s#^$D/##")
           test -n "$APP_JS"
           test -s "$D/$APP_JS"
-          echo "ARTIFACT_INDEX=$D/index.html"
-          echo "ARTIFACT_APP_JS=$D/$APP_JS"
-          echo "ARTIFACT_COGNITION=$D/nayanet-cognitive-engine.js"
           for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
           for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -Fqi "$x" "$D/nayanet-cognitive-engine.js" || { echo "COGNITION_ARTIFACT_MISSING=$x"; exit 1; }; done
           if git grep -nEi -- 'Where.?s Naya Now|SUPERBRAIN|PASS THE TORCH|VERIFY STATE' -- NAYANET/HUB/src scripts >/tmp/forbidden-source 2>/dev/null; then cat /tmp/forbidden-source; echo FORBIDDEN_SOURCE_UI_FOUND; exit 1; fi
@@ -122,21 +114,35 @@ jobs:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
         run: |
           set -u
-          for attempt in $(seq 1 12); do
-            get(){ curl -sS --max-time 8 -o "$2" -w '%{http_code}' "$1" || true; }
-            status=$(get "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" /tmp/root)
-            smart_status=$(get "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" /tmp/smart)
-            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart; then
+          echo "VERIFY_RUNTIME=$RUNTIME"
+          echo "VERIFY_SMART_LINK=$SMART_LINK"
+          echo "VERIFY_SOURCE_COMMIT=$SOURCE_COMMIT"
+          echo '--- DNS ---'
+          getent hosts aged-art-7c12.nayanet.workers.dev || true
+          echo '--- PUBLIC RUNTIME PROBE ---'
+          for attempt in $(seq 1 24); do
+            root_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/root.err || true)
+            smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/smart.err || true)
+            root_size=$(wc -c </tmp/root 2>/dev/null || echo 0)
+            smart_size=$(wc -c </tmp/smart 2>/dev/null || echo 0)
+            echo "ATTEMPT=$attempt ROOT_HTTP=$root_code ROOT_BYTES=$root_size SMART_HTTP=$smart_code SMART_BYTES=$smart_size"
+            if [ -s /tmp/root.err ]; then echo 'ROOT_ERROR:'; cat /tmp/root.err; fi
+            if [ -s /tmp/smart.err ]; then echo 'SMART_ERROR:'; cat /tmp/smart.err; fi
+            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && cmp -s /tmp/root /tmp/smart; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
-              js_status=$(get "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" /tmp/app-js)
-              cognitive_status=$(get "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" /tmp/cognition)
-              runtime_header=$(curl -sS --max-time 8 -I "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
-              if [ "$js_status" = 200 ] && [ "$cognitive_status" = 200 ] && [ "$runtime_header" = "$SOURCE_COMMIT" ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
+              js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/js.err || true)
+              cognitive_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/cognition.err || true)
+              runtime_header=$(curl -sS --connect-timeout 5 --max-time 10 -I "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/dev/null | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
+              echo "ASSET_JS=$js_src JS_HTTP=$js_code COGNITION_HTTP=$cognitive_code RUNTIME_HEADER=$runtime_header"
+              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && [ "$runtime_header" = "$SOURCE_COMMIT" ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
                 pass=1
                 for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null || pass=0; done
                 for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null; then pass=0; fi; done
                 if [ "$pass" -eq 1 ]; then echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_SOURCE_COMMIT=PASS; exit 0; fi
+                echo RUNTIME_MARKER_OR_FORBIDDEN_UI_CHECK_FAILED
+              else
+                echo RUNTIME_IDENTITY_OR_ASSET_CHECK_FAILED
               fi
             fi
             sleep 5
