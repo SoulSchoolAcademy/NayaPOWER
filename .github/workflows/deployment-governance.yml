@@ -68,6 +68,8 @@ jobs:
           s=script_pattern.sub(strip_old,s)
           s=re.sub(r'<script[^>]*src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
           s=re.sub(r'<(?:div|section)[^>]*id=["\']nayaSmartFeedForceMount["\'][^>]*>.*?</(?:div|section)>','',s,flags=re.S|re.I)
+          for marker in legacy_signatures + exact_ids + ('nayanet-intelligent-feed-v6.js',):
+              s=s.replace(marker,'')
           start=s.find('<section class="homeFeed">'); assert start>=0, '509 homeFeed mount missing'
           pos=start+len('<section class="homeFeed">'); depth=1; token=re.compile(r'<section[^>]*>|</section[^>]*>',re.I)
           while depth:
