@@ -21,52 +21,54 @@ Historical intelligence should be retrieved when it is relevant to causality, pr
 
 ---
 
-# 🔥 CURRENT STATE — 2026-09-09
+# 🔥 CURRENT STATE — 2026-09-10
 
 ## WHAT IS HAPPENING NOW
 
-Naya Power is being hardened into a **current-state-first human + AI operating system** whose highest outcome gate is now explicit: **DID THIS MAKE THE HUMAN MORE CAPABLE?**
+NayaNET Intelligent Hub work is now operating under a **canonical Ultimate Intelligent Feed Master Directive v1.0**, dated 2026-09-10. The directive defines the Smart Feed, Intelligent Feed, Intelligence Event, Intelligent Board, Activity/Personal Intelligence/Effective Intelligence lenses, Smart List, Smart Spaces, sidebar relationships, exact board controls, semantic visual system, living 3D elevation, responsive behavior, evidence gates, and non-regression rules.
 
-## WHAT CHANGED
+## WHAT CHANGED TODAY
 
-1. Created canonical `.naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md`.
-2. Bound that Constitution directly into `.naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md` as the highest outcome gate for consequential work.
-3. The boot directive now requires evidence across:
-   **HUMAN OUTCOME → TRUTHFUL FUNCTION → EVIDENCE → ACTION → RESULT → LEARNING → FUTURE BENEFIT.**
-4. The Constitution operationalizes the principle that intelligence, evidence, authority, uncertainty, persistence, autonomy, and personhood must not be conflated.
-5. The Constitution makes Smart Notes, Intelligent Blocks, truthful buttons, semantic visual states, learning promotion, intelligence connection, and successor continuity explicit release requirements.
+1. Created canonical `.naya/2026-09-10-07-59-NAYANET-INTELLIGENT-HUB-ULTIMATE-INTELLIGENT-FEED-MASTER-DIRECTIVE-v1.0.md` on the NayaNET canonical working branch.
+2. The directive explicitly establishes **PAGE → MAIN OBSIDIAN BOARD → ELEVATED INNER INTELLIGENCE BOARDS → TACTILE CONTROLS** as the required physical depth stack.
+3. The directive requires Human / Child / Grandma / Naya / Machine / Learning / Meaning / Action / Trust / Connections to be full-width vertical sections, content-length agnostic, with no grid-based card soup or typography shrinking.
+4. The directive defines Activity as movement, Personal Intelligence as ownership/relevance, and Effective Intelligence as usefulness/value over the same Intelligence Events.
+5. The directive binds Save/Favorite to Smart List, Create Space to Smart Spaces, Share Intel + to sharing, and Love/Like/Rank/Rate to persistent Intelligence Event interaction states.
+6. The directive establishes the 5:09 Hub as the proven foundation and requires forensic inspection plus surgical evolution rather than wholesale reconstruction.
+7. This current-state feed is updated so the next NIA sees the directive as current operating intelligence before making further Intelligent Hub changes.
 
 ## WHAT MATTERS MOST
 
-The Constitution is not considered implemented merely because its words exist. Its binding into the universal boot path is the first concrete enforcement step. Future execution must turn these requirements into validators, tests, data contracts, UI contracts, workflow gates, and runtime evidence where applicable.
+The new directive is a **specification, not proof of implementation**. Its words define the target. The Intelligent Hub must still move through implementation, testing, runtime verification, and behavioral proof.
+
+The highest visual requirement is **living depth**: the main Intelligence Board must visibly float above the page, and each inner intelligence surface must independently float above the main board. A border or a single generic shadow is insufficient.
 
 ## WHAT WAS LEARNED
 
-**WORDS ARE SPECIFICATION. ACTION IS PROOF.**
+**A clearer directive reduces interpretation drift, but documentation is not implementation.**
 
-A principle has materially higher value when it changes the system that executes it. Therefore the correct progression is:
+The correct progression remains:
 
 **DOCUMENTED → BOUND → IMPLEMENTED → TESTED → VERIFIED → DEPLOYED → LIVE-VERIFIED → BEHAVIORALLY PROVEN.**
-
-The Constitution must continue moving down that chain rather than being treated as complete because it was written.
 
 ## WHAT IS VERIFIED
 
 - Repository: `SoulSchoolAcademy/NayaPOWER`
-- Branch: `main`
-- Human Capability Constitution created in `.naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md`.
-- Universal boot directive updated to bind the Constitution.
-- GitHub creation commit: `3990bac608d5fb9715628654a7a4a3b9f4c87f41`.
-- GitHub boot-binding commit: `c0248e2fd5cf24ac703d8abf1fb9a14c431d06c6`.
-- The Constitution and updated boot directive were re-read from `main` after write.
-- This feed was updated to record the actual implementation state.
+- Canonical working branch: `nayanet-509-canonical`
+- Canonical current-state feed: `.naya/INTELLIGENT-FEED.md`
+- New master directive path: `.naya/2026-09-10-07-59-NAYANET-INTELLIGENT-HUB-ULTIMATE-INTELLIGENT-FEED-MASTER-DIRECTIVE-v1.0.md`
+- Master directive GitHub commit: `72f395849aea2dba5f4399bafd7cfbfeaf4b2cdc`
+- The directive is persisted in GitHub and is therefore available to NIA/AI workers that restore the canonical repository state.
+- This feed is being updated in the same GitHub/Superbrain continuity surface to record today's change.
 
 ## WHAT IS NOT YET CLAIMED
 
-- No claim that the Constitution is fully enforced by every runtime or workflow.
-- No claim that every Smart Feed action is production-backed.
-- No claim that the Human Capability Gate is yet an automated 99.99 release validator.
-- No claim that behavioral improvement has been independently measured across the product.
+- The Intelligent Board visual implementation is not claimed complete merely because the directive exists.
+- Living 3D elevation is not claimed verified in runtime until independently observed.
+- Smart List persistence is not claimed production-proven until tested end-to-end.
+- Smart Space creation/accumulation is not claimed production-proven until tested end-to-end.
+- Activity / Personal Intelligence / Effective Intelligence ranking behavior is not claimed fully implemented until verified.
+- No 10/10 claim is made from documentation alone.
 
 ## WHAT IS PROTECTED
 
@@ -80,30 +82,28 @@ The Constitution must continue moving down that chain rather than being treated 
 
 > **Words specify. Actions implement. Evidence proves.**
 
-> **The highest outcome gate is human capability, not AI appearance.**
+> **The 5:09 Hub is the foundation; Intelligent Board evolution must be surgical.**
+
+> **Living depth is a hard visual requirement, not optional polish.**
 
 ## WHAT REMAINS
 
-### Human Capability Enforcement
+### Intelligent Board Implementation
 
-1. Translate Constitution requirements into machine-readable acceptance criteria.
-2. Add validators/tests for truthful action states and evidence boundaries.
-3. Add a Human Capability scorecard to consequential product changes.
-4. Connect lessons to promotion mechanisms so proven learning can alter future behavior.
-5. Measure whether completed interactions actually improve human understanding, decisions, action, memory, and reuse.
-6. Reconcile automated claims against independent runtime evidence.
-
-### Intelligent Hub
-
-The Hub receiver, sender/transport connection, and live end-to-end propagation remain **not yet production-proven** unless independently evidenced.
-
-### Current State / Continuity
-
-Keep this feed concise, current, evidence-based, and subordinate to canonical durable Note Events. Every material state change should leave a receipt and a next best action.
+1. Inspect the exact 5:09 source and current runtime before editing.
+2. Map existing feed behavior against the v1.0 master directive.
+3. Identify which current middle-feed elements are proven value, prototype/reference material, or defects.
+4. Surgically implement the Intelligent Board using the locked vertical comprehension architecture.
+5. Implement and verify true multi-layer elevation: page → main board → inner surfaces → controls.
+6. Preserve content-length agnosticism and responsive readability.
+7. Implement truthful Smart List, Smart Space, reaction/rating, share, trust, and connection behavior.
+8. Verify Activity / Personal Intelligence / Effective Intelligence as lenses over the same Intelligence Events.
+9. Remove the obsolete View/Scam/Learn/Verify/Operate/Explore/Teach bar and the specified flashing/garbage center-feed elements without damaging the proven shell.
+10. Verify source → build → deployment → exact public runtime → independent observation before claiming release readiness.
 
 ## NEXT BEST ACTION
 
-**Convert the Human Capability Constitution from a bound policy into executable gates — starting with a machine-readable Human Capability Scorecard and one end-to-end test that proves a user action creates durable, retrievable intelligence.**
+**Perform a forensic 509-to-directive gap audit, then execute the smallest high-value surgical Intelligent Board implementation pass and verify it against the 15-point scorecard before advancing.**
 
 ## FEED OPERATING RULE
 
