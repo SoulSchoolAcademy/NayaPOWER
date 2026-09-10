@@ -476,10 +476,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <style id="nayanet-home-widescreen-fix">
 #page-home,#page-home *{box-sizing:border-box}
-#page-home{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:34px 0 100px!important}
-#page-home>*,#page-home>div,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{width:100%!important;max-width:none!important;min-width:0!important;margin-left:0!important;margin-right:0!important}
-#page-home>*,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{padding-left:0!important;padding-right:0!important}
-#page-home .activationRail{display:none!important}
-@media(min-width:901px){.main{width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0 0 100px!important}.topbar{width:100%!important;max-width:none!important;margin:0!important}.page{width:100%!important;max-width:none!important;margin:0!important}}
+#page-home .homeFeed{width:100%!important;max-width:none!important;min-width:0!important;margin-left:0!important;margin-right:0!important}
+#page-home .homeFeed .intelligentFeed{width:100%!important;max-width:none!important;min-width:0!important;margin-left:0!important;margin-right:0!important}
+@media(min-width:901px){
+  .main{min-width:0!important;padding:0 40px 100px!important}
+  .topbar{width:auto!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+  #page-home{width:auto!important;max-width:none!important;min-width:0!important;margin:0!important;padding:34px 0 100px!important}
+  #page-home .homeFeed{width:calc(100% + 80px)!important;max-width:none!important;margin-left:-40px!important;margin-right:-40px!important;padding-left:0!important;padding-right:0!important}
+  #page-home .homeFeed .intelligentFeed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+}
+@media(max-width:900px){
+  #page-home .homeFeed{width:100vw!important;max-width:100vw!important;margin-left:calc(50% - 50vw)!important;margin-right:calc(50% - 50vw)!important;padding-left:0!important;padding-right:0!important}
+  #page-home .homeFeed .intelligentFeed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}
+}
 </style>
 </body></html>
