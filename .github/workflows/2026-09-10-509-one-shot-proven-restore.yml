@@ -1,0 +1,68 @@
+name: 2026-09-10 — 509 One-Shot Proven Hub Restore
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/2026-09-10-509-one-shot-proven-restore.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Restore proven Hub state and remove duplicate welcome
+        shell: bash
+        run: |
+          set -euo pipefail
+          TARGET='2026 09 09 5:09 pm NayaNET HUB.html'
+          PROVEN='262b2eae951d9dcd23d1095a804ce1a646b7693e'
+          git fetch --no-tags origin "$PROVEN"
+          git restore --source="$PROVEN" -- "$TARGET"
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          parts=re.split(r'(<script\b[^>]*>.*?</script>)',s,flags=re.S|re.I)
+          for i in range(0,len(parts),2):
+              parts[i]=re.sub(r'Good\s+morning,\s+(?:Shawn|Sean)\s*','',parts[i],flags=re.I)
+              parts[i]=re.sub(r'Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.?\s*','',parts[i],flags=re.I)
+          p.write_text(''.join(parts),encoding='utf-8')
+          PY
+      - name: Verify exact target
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','COLLECT SOURCE','CAPTURE WEB','MATTERS','COMPOUND','WHAT LEARNS','DAILY INTELLIGENCE REPORT'):
+              assert marker.lower() in s.lower(), marker
+          assert 'naya509feed' not in s
+          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s
+          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I)
+          assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I)
+          assert 'COLLECTIVE INTELLIGENCE' not in s or 'naya509feed' not in s
+          print('509_EXACT_TARGET_RESTORE=PASS')
+          print('509_ORIGINAL_FEED_PRESERVED=PASS')
+          print('509_DUPLICATE_WELCOME_REMOVED=PASS')
+          PY
+          git diff --check
+      - name: Commit exact target and retire trigger
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git rm --ignore-unmatch .github/workflows/2026-09-10-509-one-shot-proven-restore.yml
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
+          git commit -m 'fix(509): restore proven Hub feed and remove duplicate welcome'
+          git push origin main
