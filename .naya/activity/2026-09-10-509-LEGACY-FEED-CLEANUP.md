@@ -17,11 +17,17 @@ The actual 509 source still contained multiple historical Intelligent Feed layer
 
 ## Execution
 
-The 509 direct-update workflow now performs a surgical reconstruction of the actual `homeFeed` section and installs exactly one V2 renderer. It also removes the known legacy feed runtime/style layers before installation.
+The 509 direct-update workflow performs a surgical reconstruction of the actual `homeFeed` section and installs exactly one V2 renderer. It also removes the known legacy feed runtime/style layers before installation.
+
+## Diagnostic evidence
+
+The first cleanup CI run reached the cleanup step but failed before changing the source because the regex matcher was over-escaped (`\\s` instead of `\s`). That was read from the exact job log. No source commit was claimed from that run.
+
+The workflow has now been corrected to use the actual regex whitespace matcher. This activity record is being changed once to trigger the corrected workflow; this is a diagnostic correction, not a blind rerun.
 
 ## Verification gates
 
-The workflow verifies:
+The corrected workflow verifies:
 
 - exactly one V2 renderer marker
 - V1 renderer absent
@@ -32,4 +38,4 @@ The workflow verifies:
 - Create Space, Save to Smart List, Share Intel, and rating controls present
 - `git diff --check` passes
 
-This record is intentionally the trigger for the cleanup workflow so the source transformation is executed by CI rather than described as completed before the resulting HTML commit exists.
+The intended source end state is **V2 only inside the 509 home feed**: no first legacy boards, no second legacy boards, no stale code block, and no legacy V6 renderer capable of rebuilding them.
