@@ -1,0 +1,40 @@
+{
+  "id": "SN-20260909-HUMAN-CAPABILITY-CONSTITUTION",
+  "type": "operating_principle_implementation",
+  "timestamp": "2026-09-09T19:31:00-07:00",
+  "status": "verified_persistence",
+  "title": "Human Capability Constitution bound into universal Naya boot",
+  "nutshell": "Words were converted into a canonical operating standard, bound into the universal boot path, and recorded in the current-state feed. Full behavioral enforcement remains unproven.",
+  "human": "Words have low value without action; NayaNET must prove understanding by changing the system.",
+  "child": "If we say the system should make people more capable, we must build and test behavior that actually helps people understand, decide, act, remember, and improve.",
+  "grandma": "A promise becomes useful when it changes how the house works for the next person.",
+  "naya": "Created the canonical Human Capability Constitution, bound it into the universal boot directive, updated current state, and preserved an explicit enforcement gap instead of claiming completion.",
+  "machine": {
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "branch": "main",
+    "constitution_path": ".naya/NAYANET-HUMAN-CAPABILITY-CONSTITUTION.md",
+    "constitution_commit": "3990bac608d5fb9715628654a7a4a3b9f4c87f41",
+    "constitution_blob_sha": "f1eefce46ef88f4d427abf52b73c5234f19de5a9",
+    "boot_path": ".naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md",
+    "boot_binding_commit": "c0248e2fd5cf24ac703d8abf1fb9a14c431d06c6",
+    "feed_path": ".naya/INTELLIGENT-FEED.md",
+    "feed_update_commit": "8085f7835fc25d84258472227c01400433d68658",
+    "smart_note_path": ".naya/notes/2026-09-09-HUMAN-CAPABILITY-CONSTITUTION-ACTION-AND-PROOF.md",
+    "smart_note_commit": "d3b34a22e0b86ee26b13b7ba42f1e4bf41cf34b9"
+  },
+  "weaver": "A principle becomes materially real when it changes the canonical execution path and leaves an auditable receipt. The next step is executable enforcement, not more prose.",
+  "lesson": "DOCUMENTED is not IMPLEMENTED; IMPLEMENTED is not VERIFIED; and policy text is not behavioral proof.",
+  "meaning": "The Constitution is now canonical and boot-bound. Its full effect remains an explicit engineering task.",
+  "next_action": "Build machine-readable Human Capability criteria, a validator/test, and an end-to-end proof that a consequential human action creates durable retrievable intelligence that improves a subsequent interaction.",
+  "evidence_state": [
+    "DOCUMENTED",
+    "BOUND",
+    "PERSISTED",
+    "RE-READ VERIFIED"
+  ],
+  "not_claimed": [
+    "FULL AUTOMATED ENFORCEMENT",
+    "BEHAVIORAL IMPROVEMENT MEASURED",
+    "PRODUCTION-WIDE HUMAN CAPABILITY PROOF"
+  ]
+}
