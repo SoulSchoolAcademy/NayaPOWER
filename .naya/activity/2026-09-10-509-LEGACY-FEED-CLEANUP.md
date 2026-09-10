@@ -51,3 +51,7 @@ The materializer is now bound to the confirmed mainline Naya 16 activity gate so
 ## Deterministic artifact gate trigger
 
 The mainline E00 activity gate now owns the 509 artifact materialization as a separate job with exact target verification and a write-only-if-changed rule. This trigger exists solely to exercise that deterministic chain; completion remains unclaimed until the exact Hub file on `main` changes and is independently verified.
+
+## Final deterministic materialization trigger
+
+The V2 E00 handoff workflow is now the observable mainline trigger for this artifact. The only completion signal that counts is a new commit changing the exact 5:09 Hub target after the 509 verification job passes.
