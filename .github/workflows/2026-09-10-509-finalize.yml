@@ -5,6 +5,11 @@ on:
     paths:
       - 'scripts/nayanet-509-intelligent-feed-v2.js'
       - '.github/workflows/2026-09-10-509-finalize.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/nayanet-509-intelligent-feed-v2.js'
+      - '.github/workflows/2026-09-10-509-finalize.yml'
   workflow_dispatch:
 permissions:
   contents: write
