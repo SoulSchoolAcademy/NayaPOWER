@@ -94,6 +94,53 @@ jobs:
           name: naya-claim-evidence-${{ env.TARGET_SHA }}
           path: .naya/evidence/
           if-no-files-found: error
+      - name: Surgical 509 legacy feed cleanup
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          html_path=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js_path=Path('scripts/nayanet-509-intelligent-feed-v2.js')
+          s=html_path.read_text(encoding='utf-8')
+          js=js_path.read_text(encoding='utf-8')
+          def rs(t,i): return re.sub(rf'<script\\s+id="{re.escape(i)}"[^>]*>.*?</script>\\s*','',t,flags=re.S|re.I)
+          def rt(t,i): return re.sub(rf'<style\\s+id="{re.escape(i)}"[^>]*>.*?</style>\\s*','',t,flags=re.S|re.I)
+          for i in ['nayanet-canonical-feed-upgrade-runtime','nayanet-right-sidebar-feed-mirror-runtime','nayanet-v7-intelligent-feed-excellence','nayanet-intelligent-feed-v5-runtime','nayanet-intelligent-feed-v6-runtime','nayanet-authority-correction-runtime','NAYANET_509_INTELLIGENT_FEED_DIRECT_V1','NAYANET_509_INTELLIGENT_FEED_DIRECT_V2']: s=rs(s,i)
+          for i in ['nayanet-right-sidebar-feed-mirror-style','NAYANET-LIVE-RIGHT-RAIL-GUARD-V5','NAYANET-LIVE-RIGHT-RAIL-GUARD-V6','nh-authority-correction-style','nh-v72-style']: s=rt(s,i)
+          s=re.sub(r'<script\\s+src=["\']\\./nayanet-intelligent-feed-v6\\.js["\'][^>]*>\\s*</script>\\s*','',s,flags=re.I)
+          m=re.search(r'<section\\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          if not m: raise SystemExit('homeFeed mount missing')
+          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\\b[^>]*>|</section\\s*>',re.I)
+          while depth:
+              q=tok.search(s,pos)
+              if not q: raise SystemExit('homeFeed close not found')
+              depth += -1 if q.group(0).lower().startswith('</') else 1
+              pos=q.end()
+          s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
+          if '</body>' not in s: raise SystemExit('</body> missing')
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          html_path.write_text(s,encoding='utf-8')
+          PY
+          FILE='2026 09 09 5:09 pm NayaNET HUB.html'
+          test "$(grep -o 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' "$FILE" | wc -l)" -eq 1
+          ! grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' "$FILE"
+          ! grep -q 'nayanet-intelligent-feed-v6.js' "$FILE"
+          ! grep -q 'nayanet-right-sidebar-feed-mirror-runtime' "$FILE"
+          grep -q 'One Intelligence Event = One Board' "$FILE"
+          grep -q 'Source Intent Is Not Runtime Truth' "$FILE"
+          grep -q 'IN A NUTSHELL' "$FILE"
+          grep -q 'CONNECTIONS' "$FILE"
+          git diff --check
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add -- "$FILE"
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(509): remove legacy feed layers and keep canonical v2'
+            git push
+          fi
       - name: Dispatch canonical NayaNET Hub deployment
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         env:
