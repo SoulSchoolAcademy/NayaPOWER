@@ -1,3 +1,4 @@
+# 2026-09-10 — authoritative source replacement trigger
 name: 2026-09-10 — 509 Intelligent Feed Direct Update
 on:
   push:
