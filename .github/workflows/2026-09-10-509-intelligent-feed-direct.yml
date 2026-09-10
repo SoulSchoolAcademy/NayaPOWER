@@ -1,5 +1,5 @@
 name: 2026-09-10 — 509 Intelligent Feed Direct Update
-# ISOLATED 509 RECONSTRUCTION: one surgical source transformation, then one HTML commit.
+# ISOLATED 509 RECONSTRUCTION: preserve the existing Hub shell and replace only the center feed.
 on:
   push:
     branches: [main]
@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Surgically remove every legacy 509 renderer and install V2
+      - name: Replace only the 509 center feed
         shell: bash
         run: |
           set -euo pipefail
@@ -27,35 +27,39 @@ jobs:
           s=html_path.read_text(encoding='utf-8')
           js=js_path.read_text(encoding='utf-8')
 
-          legacy_style_terms=(
-              'nayanet-elite-feed','n3-block','activationRail','nayanet-canonical-feed-upgrade',
-              'n4-interior-style','NAYANET-LIVE-RIGHT-RAIL-GUARD'
+          # Protect the working Hub shell. Never delete a whole global <style> block.
+          required_shell=(
+              '<div class="app">','class="sidebar"','class="topbar"',
+              'id="page-home"','class="homeWorkspace"','class="homeFeed"','</body>'
           )
+          for marker in required_shell:
+              if marker not in s:
+                  raise SystemExit(f'509 SHELL MISSING: {marker}')
+
+          # Remove only known feed-runtime script blocks. Global page scripts/styles stay intact.
           legacy_script_terms=(
-              'nayanet-elite-feed','n3-block','activationRail','NayaNET V16 presentation layer',
-              'NAYANET CANONICAL FEED SURGICAL UPGRADE','NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR',
-              'NAYANET_INTELLIGENT_FEED_V5_RUNTIME','nayanet-intelligent-feed-v6.js'
+              'NAYANET_INTELLIGENT_FEED_V5_RUNTIME',
+              'NayaNET V16 presentation layer',
+              'NAYANET CANONICAL FEED SURGICAL UPGRADE',
+              'NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR',
+              'nayanet-intelligent-feed-v6.js'
           )
+          script_pattern=re.compile(r'<script\\b[^>]*>(.*?)</script>\\s*',re.S|re.I)
+          def strip_script(m):
+              body=m.group(0)
+              if 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' in body:
+                  return body
+              if any(term.lower() in body.lower() for term in legacy_script_terms):
+                  return ''
+              return body
+          s=script_pattern.sub(strip_script,s)
+          s=re.sub(r'<script\\s+src=["\\']\\./nayanet-intelligent-feed-v6\\.js["\\'][^>]*>\\s*</script>\\s*','',s,flags=re.I)
 
-          def strip_blocks(text, tag, terms):
-              pattern=re.compile(rf'<{tag}\b[^>]*>.*?</{tag}>\s*', re.S|re.I)
-              removed=0
-              def repl(m):
-                  nonlocal removed
-                  body=m.group(0).lower()
-                  if any(term.lower() in body for term in terms):
-                      removed += 1
-                      return ''
-                  return m.group(0)
-              return pattern.sub(repl,text),removed
-
-          s,nstyle=strip_blocks(s,'style',legacy_style_terms)
-          s,nscript=strip_blocks(s,'script',legacy_script_terms)
-          s=re.sub(r'<script\s+src=["\']\./nayanet-intelligent-feed-v6\.js["\'][^>]*>\s*</script>\s*','',s,flags=re.I)
-
-          m=re.search(r'<section\s+class="homeFeed"[^>]*>',s,flags=re.I)
+          # Locate the actual homeFeed section by balanced <section> tags and replace ONLY it.
+          m=re.search(r'<section\\s+class="homeFeed"[^>]*>',s,flags=re.I)
           if not m: raise SystemExit('509 HTML missing homeFeed mount')
-          start=m.start(); pos=m.end(); depth=1; tok=re.compile(r'<section\b[^>]*>|</section\s*>',re.I)
+          start=m.start(); pos=m.end(); depth=1
+          tok=re.compile(r'<section\\b[^>]*>|</section\\s*>',re.I)
           while depth:
               q=tok.search(s,pos)
               if not q: raise SystemExit('Could not find matching homeFeed section close')
@@ -63,14 +67,13 @@ jobs:
               pos=q.end()
           s=s[:start]+'<section class="homeFeed"></section>'+s[pos:]
 
-          s=re.sub(r'<script\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\s*','',s,flags=re.S|re.I)
-          if '</body>' not in s: raise SystemExit('509 HTML missing </body>')
-          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n</body>',1)
+          # Install exactly one canonical V2 renderer after the intact page markup.
+          s=re.sub(r'<script\\s+id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"[^>]*>.*?</script>\\s*','',s,flags=re.S|re.I)
+          s=s.replace('</body>','<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n'+js+'\\n</script>\\n</body>',1)
           html_path.write_text(s,encoding='utf-8')
-          print(f'LEGACY_STYLE_BLOCKS_REMOVED={nstyle}')
-          print(f'LEGACY_SCRIPT_BLOCKS_REMOVED={nscript}')
+          print('509_CENTER_FEED_REPLACED=1')
           PY
-      - name: Verify the actual 509 source contains only the canonical V2 renderer
+      - name: Verify 509 source without damaging the Hub shell
         shell: bash
         run: |
           set -euo pipefail
@@ -78,21 +81,27 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
+          # Working shell must survive this operation.
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"'):
+              assert marker in s, marker
           assert s.count('NAYANET_509_INTELLIGENT_FEED_DIRECT_V2') == 1
           assert 'nayanet-intelligent-feed-v6.js' not in s
-          blocks=re.findall(r'<(style|script)\b[^>]*>(.*?)</\1>',s,re.S|re.I)
-          legacy=('n3-block','nayanet-canonical-feed-upgrade','NayaNET V16 presentation layer','NAYANET CANONICAL FEED SURGICAL UPGRADE','NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR')
+          # homeFeed must be an empty mount; V2 owns its contents at runtime.
+          assert '<section class="homeFeed"></section>' in s
+          # The dangerous historical runtime signatures must not remain in executable script blocks.
+          blocks=re.findall(r'<script\\b[^>]*>(.*?)</script>',s,re.S|re.I)
+          legacy=('NAYANET_INTELLIGENT_FEED_V5_RUNTIME','NayaNET V16 presentation layer','NAYANET CANONICAL FEED SURGICAL UPGRADE','NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR')
           offenders=[]
-          for tag,body in blocks:
+          for body in blocks:
               if 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' in body: continue
               for term in legacy:
-                  if term.lower() in body.lower(): offenders.append((tag,term))
+                  if term.lower() in body.lower(): offenders.append(term)
           assert not offenders, offenders
-          assert '<section class="homeFeed"></section>' in s
-          for x in ('One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SHARE INTEL','RATE THIS INTELLIGENCE'):
+          for x in ('INTELLIGENT FEED','The Intelligent Feed Turns Experience Into Usable Intelligence','One Intelligence Event = One Board','Source Intent Is Not Runtime Truth','IN A NUTSHELL','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','LEARNING','MEANING','ACTION','TRUST','CONNECTIONS','CREATE SPACE','SHARE INTEL','RATE THIS INTELLIGENCE'):
               assert x in s, x
           print('509_SOURCE_CANONICAL_V2=PASS')
-          print('509_LEGACY_RENDERERS=ABSENT')
+          print('509_HUB_SHELL_PRESERVED=PASS')
+          print('509_LEGACY_FEED_RUNTIME=ABSENT')
           PY
           git diff --check
       - name: Commit the actual 509 HTML once
@@ -103,5 +112,5 @@ jobs:
           git config user.email 'naya-power@users.noreply.github.com'
           git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
           if git diff --cached --quiet; then echo 'NO_509_SOURCE_CHANGE'; exit 0; fi
-          git commit -m 'fix(509): remove all legacy feed renderers and install canonical v2'
+          git commit -m 'fix(509): surgically replace center feed and preserve Hub shell'
           git push
