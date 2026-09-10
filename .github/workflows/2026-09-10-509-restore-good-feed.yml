@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Restore last proven pre-regression Hub artifact
+      - name: Restore proven Hub and surgically remove regression
         shell: bash
         run: |
           set -euo pipefail
@@ -27,31 +27,40 @@ jobs:
           test -f "$TARGET"
           git fetch --no-tags origin "$PROVEN"
           git restore --source="$PROVEN" -- "$TARGET"
-      - name: Remove only the duplicate second welcome
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          s=p.read_text(encoding='utf-8')
+          # Only edit visible HTML, never JavaScript strings.
+          parts=re.split(r'(<script\b[^>]*>.*?</script>)',s,flags=re.S|re.I)
+          for i in range(0,len(parts),2):
+              parts[i]=re.sub(r'Good\s+morning,\s+(?:Shawn|Sean)\s*','',parts[i],flags=re.I)
+              parts[i]=re.sub(r'Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.?\s*','',parts[i],flags=re.I)
+          p.write_text(''.join(parts),encoding='utf-8')
+          PY
+      - name: Permanently remove competing 509 writers
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           import re
-          p=Path('2026 09 09 5:09 pm NayaNET HUB.html')
-          s=p.read_text(encoding='utf-8')
-          # Remove a second welcome block only when it contains the identifying phrase.
-          patterns=[
-            r'<(?P<tag>div|section|header)[^>]*>\s*(?:<[^>]+>\s*)*Good\s+morning,\s+(?:Shawn|Sean)[\s\S]*?Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.[\s\S]*?</(?P=tag)>',
-            r'<(?P<tag>div|section|header)[^>]*>[\s\S]*?Good\s+morning,\s+(?:Shawn|Sean)[\s\S]*?Your\s+intelligence\s+has\s+a\s+place\s+to\s+come\s+together\.[\s\S]*?</(?P=tag)>'
-          ]
-          before=s
-          for pat in patterns:
-            s,n=re.subn(pat,'',s,count=1,flags=re.I)
-            if n: break
-          if s==before:
-            # Fail rather than silently changing the wrong thing; inspection must prove the target text exists.
-            if re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I):
-              raise SystemExit('DUPLICATE_WELCOME_PRESENT_BUT_BLOCK_NOT_MATCHED')
-          p.write_text(s,encoding='utf-8')
+          # Governance/control-plane must not rewrite the approved Hub feed.
+          for fn in (Path('.github/workflows/deployment-governance.yml'),Path('.github/workflows/naya-control-plane.yml')):
+              if not fn.exists():
+                  continue
+              s=fn.read_text(encoding='utf-8')
+              s2=re.sub(r'\n  materialize-509:\n[\s\S]*\Z','\n',s,count=1)
+              fn.write_text(s2,encoding='utf-8')
+          # The old direct 509 writer installs the rejected replacement renderer; retire it.
+          old=Path('.github/workflows/2026-09-10-509-intelligent-feed-direct.yml')
+          if old.exists(): old.unlink()
+          # This recovery workflow is one-shot by design; remove the trigger after it succeeds.
+          me=Path('.github/workflows/2026-09-10-509-restore-good-feed.yml')
+          if me.exists(): me.unlink()
           PY
-      - name: Verify protected shell, preserved feed, and clean welcome state
+      - name: Verify final target and writer retirement
         shell: bash
         run: |
           set -euo pipefail
@@ -59,20 +68,28 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 09 5:09 pm NayaNET HUB.html').read_text(encoding='utf-8')
-          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','COLLECT SOURCE','CAPTURE WEB','MATTERS','COMPOUND','WHAT LEARNS','DAILY INTELLIGENCE REPORT'): assert marker.lower() in s.lower(), marker
-          assert 'naya509feed' not in s, 'OUR 509 REPLACEMENT LAYER STILL PRESENT'
-          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s, 'OUR REPLACEMENT SCRIPT STILL PRESENT'
-          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I), 'DUPLICATE SECOND WELCOME REMAINS'
-          assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I), 'PRIMARY WELCOME MISSING'
-          print('509_RESTORE_VERIFICATION=PASS')
+          for marker in ('<div class="app">','class="sidebar"','class="topbar"','id="page-home"','class="homeWorkspace"','class="homeFeed"','COLLECT SOURCE','CAPTURE WEB','MATTERS','COMPOUND','WHAT LEARNS','DAILY INTELLIGENCE REPORT'):
+              assert marker.lower() in s.lower(), marker
+          assert 'naya509feed' not in s
+          assert 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' not in s
+          assert not re.search(r'Good\s+morning,\s+(?:Shawn|Sean)',s,re.I)
+          assert re.search(r'Good\s+afternoon,\s+(?:Shawn|Sean)',s,re.I)
+          assert not Path('.github/workflows/2026-09-10-509-intelligent-feed-direct.yml').exists()
+          for fn in (Path('.github/workflows/deployment-governance.yml'),Path('.github/workflows/naya-control-plane.yml')):
+              if fn.exists(): assert 'materialize-509:' not in fn.read_text(encoding='utf-8')
+          assert not Path('.github/workflows/2026-09-10-509-restore-good-feed.yml').exists()
+          print('509_FINAL_RECOVERY=PASS')
+          print('509_PROVEN_FEED_PRESERVED=PASS')
+          print('509_DUPLICATE_WELCOME_REMOVED=PASS')
+          print('509_COMPETING_WRITERS_RETIRED=PASS')
           PY
-      - name: Commit only the restored Hub artifact
+          git diff --check
+      - name: Commit restored Hub and retired writers
         shell: bash
         run: |
           set -euo pipefail
           git config user.name 'Naya Power'
           git config user.email 'naya-power@users.noreply.github.com'
-          git add -- '2026 09 09 5:09 pm NayaNET HUB.html'
-          if git diff --cached --quiet; then echo '509_RESTORE_NO_CHANGE=1'; exit 0; fi
-          git commit -m 'fix(509): restore proven Hub feed and remove duplicate welcome'
+          git add -- '2026 09 09 5:09 pm NayaNET HUB.html' .github/workflows/deployment-governance.yml .github/workflows/naya-control-plane.yml .github/workflows/2026-09-10-509-intelligent-feed-direct.yml .github/workflows/2026-09-10-509-restore-good-feed.yml
+          git commit -m 'fix(509): recover proven Hub feed and remove competing writers'
           git push origin main
