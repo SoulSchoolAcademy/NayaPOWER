@@ -1,5 +1,6 @@
 /* NayaNET V7 — canonical 509 widescreen feed renderer. */
 /* MATERIALIZE-509-2026-09-10: trigger canonical artifact build. */
+/* MATERIALIZE-509-STRICT-CLEAN-2026-09-10: remove legacy feed layers and naked Play Naya payload. */
 (()=>{'use strict';
 const ROOT='naya509feed';
 const LEGACY=['nayanet-elite-feed','homeIntelligentBlocks','nayanet-supreme-feed','page-intelligence-today','nhV11Quote','nhAuthorityQuote','nhV11Today','nh72Today','nayaSmartFeedForceMount','nayaSmartFeedMaster'];
