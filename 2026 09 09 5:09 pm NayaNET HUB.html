@@ -475,10 +475,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 <style id="nayanet-home-widescreen-fix">
-#page-home,#page-home .homeWorkspace,#page-home .homeFeed{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important;padding-left:0!important;padding-right:0!important;box-sizing:border-box!important}
-#page-home .homeWorkspace{display:block!important;grid-template-columns:none!important;gap:0!important}
+#page-home,#page-home *{box-sizing:border-box}
+#page-home{display:block!important;width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:34px 0 100px!important}
+#page-home>*,#page-home>div,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{width:100%!important;max-width:none!important;min-width:0!important;margin-left:0!important;margin-right:0!important}
+#page-home>*,#page-home .homeWorkspace,#page-home .homeFeed,#page-home .intelligentFeed{padding-left:0!important;padding-right:0!important}
 #page-home .activationRail{display:none!important}
-#page-home .intelligentFeed{width:100%!important;max-width:none!important;margin:0!important}
-@media(min-width:901px){.main{width:100%!important;max-width:none!important;margin:0!important;padding-left:0!important;padding-right:0!important}.topbar{width:100%!important;max-width:none!important;margin-left:0!important;margin-right:0!important}.page{width:100%!important;max-width:none!important}}
+@media(min-width:901px){.main{width:100%!important;max-width:none!important;min-width:0!important;margin:0!important;padding:0 0 100px!important}.topbar{width:100%!important;max-width:none!important;margin:0!important}.page{width:100%!important;max-width:none!important;margin:0!important}}
 </style>
 </body></html>
