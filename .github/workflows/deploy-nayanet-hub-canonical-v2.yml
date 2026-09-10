@@ -74,7 +74,6 @@ jobs:
           echo ARTIFACT_INSPECTION=PASS
           echo COGNITIVE_ENGINE_ARTIFACT=PASS
           echo FORBIDDEN_PRODUCT_UI=ABSENT
-
       - name: Prepare exact Cloudflare artifact
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
@@ -127,7 +126,7 @@ jobs:
             get(){ curl -sS --max-time 8 -o "$2" -w '%{http_code}' "$1" || true; }
             status=$(get "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" /tmp/root)
             smart_status=$(get "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" /tmp/smart)
-            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart ]; then
+            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_status=$(get "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" /tmp/app-js)
