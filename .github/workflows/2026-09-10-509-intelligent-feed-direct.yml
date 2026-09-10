@@ -13,34 +13,96 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Patch the actual 509 HTML
+      - name: Surgically remove every legacy 509 feed layer and install V2
         shell: bash
         run: |
           set -euo pipefail
           python - <<'PY'
           from pathlib import Path
           import re
-          html=Path('2026 09 09 5:09 pm NayaNET HUB.html')
-          js=Path('scripts/nayanet-509-intelligent-feed-v2.js').read_text(encoding='utf-8')
-          s=html.read_text(encoding='utf-8')
-          s=re.sub(r'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V1">.*?</script>\s*','',s,flags=re.S)
-          s=re.sub(r'<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">.*?</script>\s*','',s,flags=re.S)
-          block='<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\n'+js+'\n</script>\n'
+
+          html_path = Path('2026 09 09 5:09 pm NayaNET HUB.html')
+          js_path = Path('scripts/nayanet-509-intelligent-feed-v2.js')
+          s = html_path.read_text(encoding='utf-8')
+          js = js_path.read_text(encoding='utf-8')
+
+          def remove_script_by_id(text, script_id):
+              pattern = rf'<script\\s+id="{re.escape(script_id)}"[^>]*>.*?</script>\\s*'
+              return re.sub(pattern, '', text, flags=re.S | re.I)
+
+          def remove_style_by_id(text, style_id):
+              pattern = rf'<style\\s+id="{re.escape(style_id)}"[^>]*>.*?</style>\\s*'
+              return re.sub(pattern, '', text, flags=re.S | re.I)
+
+          # Remove every known feed-generation/runtime layer that can recreate the old boards.
+          legacy_script_ids = [
+              'nayanet-canonical-feed-upgrade-runtime',
+              'nayanet-right-sidebar-feed-mirror-runtime',
+              'nayanet-v7-intelligent-feed-excellence',
+              'nayanet-intelligent-feed-v5-runtime',
+              'nayanet-intelligent-feed-v6-runtime',
+              'nayanet-authority-correction-runtime',
+              'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1',
+              'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2',
+          ]
+          legacy_style_ids = [
+              'nayanet-right-sidebar-feed-mirror-style',
+              'NAYANET-LIVE-RIGHT-RAIL-GUARD-V5',
+              'NAYANET-LIVE-RIGHT-RAIL-GUARD-V6',
+              'nh-authority-correction-style',
+              'nh-v72-style',
+          ]
+          for ident in legacy_script_ids:
+              s = remove_script_by_id(s, ident)
+          for ident in legacy_style_ids:
+              s = remove_style_by_id(s, ident)
+
+          # Remove the external legacy V6 renderer that was still capable of restoring old feed UI.
+          s = re.sub(r'<script\\s+src=["\']\\./nayanet-intelligent-feed-v6\\.js["\'][^>]*>\\s*</script>\\s*', '', s, flags=re.I)
+
+          # Remove the entire old homeFeed DOM, including the first board set, second board set,
+          # injected code blocks, and stale feed containers. Keep the homeFeed mount point itself.
+          start_match = re.search(r'<section\\s+class="homeFeed"[^>]*>', s, flags=re.I)
+          if not start_match:
+              raise SystemExit('509 HTML missing homeFeed mount')
+          start = start_match.start()
+          pos = start_match.end()
+          depth = 1
+          token = re.compile(r'<section\\b[^>]*>|</section\\s*>', re.I)
+          while depth:
+              m = token.search(s, pos)
+              if not m:
+                  raise SystemExit('Could not find matching homeFeed section close')
+              if m.group(0).lower().startswith('</'):
+                  depth -= 1
+              else:
+                  depth += 1
+              pos = m.end()
+          s = s[:start] + '<section class="homeFeed"></section>' + s[pos:]
+
+          # Install exactly one canonical V2 renderer immediately before </body>.
+          block = '<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n' + js + '\\n</script>\\n'
           if '</body>' not in s:
               raise SystemExit('509 HTML missing </body>')
-          s=s.replace('</body>',block+'</body>',1)
-          html.write_text(s,encoding='utf-8')
-          print('509_SOURCE_RENDERER=V2')
+          s = s.replace('</body>', block + '</body>', 1)
+          html_path.write_text(s, encoding='utf-8')
+          print('509_SOURCE_RECONSTRUCTION=V2_ONLY')
           PY
-      - name: Verify the actual 509 source
+
+      - name: Verify the source contains only the new feed
         shell: bash
         run: |
           set -euo pipefail
           FILE='2026 09 09 5:09 pm NayaNET HUB.html'
           test "$(grep -o 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V2' "$FILE" | wc -l)" -eq 1
+          ! grep -q 'NAYANET_509_INTELLIGENT_FEED_DIRECT_V1' "$FILE"
+          ! grep -q 'nayanet-intelligent-feed-v6.js' "$FILE"
+          ! grep -q 'nayanet-right-sidebar-feed-mirror-runtime' "$FILE"
+          ! grep -q 'nayanet-v7-intelligent-feed-excellence' "$FILE"
           grep -q 'The Intelligent Feed Turns Experience Into Usable Intelligence' "$FILE"
           grep -q 'One Intelligence Event = One Board' "$FILE"
           grep -q 'Source Intent Is Not Runtime Truth' "$FILE"
+          grep -q 'IN A NUTSHELL' "$FILE"
           grep -q 'HUMAN' "$FILE"
           grep -q 'CHILD' "$FILE"
           grep -q 'GRANDMA' "$FILE"
@@ -57,7 +119,8 @@ jobs:
           grep -q 'RATE THIS INTELLIGENCE' "$FILE"
           git diff --check
           echo '509_SOURCE_VERIFICATION=PASS'
-      - name: Commit the actual 509 HTML
+
+      - name: Commit the surgical 509 source reconstruction
         shell: bash
         run: |
           set -euo pipefail
@@ -69,5 +132,5 @@ jobs:
             echo '509_SOURCE_CHANGE=ALREADY_PRESENT'
             exit 0
           fi
-          git commit -m 'feat(509): install canonical intelligent feed v2'
+          git commit -m 'fix(509): remove legacy feed layers and keep canonical v2'
           git push
