@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/2026-09-10-509-intelligent-feed-direct.yml'
       - 'scripts/nayanet-509-intelligent-feed-v2.js'
+      - '.naya/activity/2026-09-10-509-LEGACY-FEED-CLEANUP.md'
   workflow_dispatch:
 permissions:
   contents: write
@@ -34,7 +35,6 @@ jobs:
               pattern = rf'<style\\s+id="{re.escape(style_id)}"[^>]*>.*?</style>\\s*'
               return re.sub(pattern, '', text, flags=re.S | re.I)
 
-          # Remove every known feed-generation/runtime layer that can recreate the old boards.
           legacy_script_ids = [
               'nayanet-canonical-feed-upgrade-runtime',
               'nayanet-right-sidebar-feed-mirror-runtime',
@@ -57,11 +57,8 @@ jobs:
           for ident in legacy_style_ids:
               s = remove_style_by_id(s, ident)
 
-          # Remove the external legacy V6 renderer that was still capable of restoring old feed UI.
           s = re.sub(r'<script\\s+src=["\']\\./nayanet-intelligent-feed-v6\\.js["\'][^>]*>\\s*</script>\\s*', '', s, flags=re.I)
 
-          # Remove the entire old homeFeed DOM, including the first board set, second board set,
-          # injected code blocks, and stale feed containers. Keep the homeFeed mount point itself.
           start_match = re.search(r'<section\\s+class="homeFeed"[^>]*>', s, flags=re.I)
           if not start_match:
               raise SystemExit('509 HTML missing homeFeed mount')
@@ -80,7 +77,6 @@ jobs:
               pos = m.end()
           s = s[:start] + '<section class="homeFeed"></section>' + s[pos:]
 
-          # Install exactly one canonical V2 renderer immediately before </body>.
           block = '<script id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2">\\n' + js + '\\n</script>\\n'
           if '</body>' not in s:
               raise SystemExit('509 HTML missing </body>')
