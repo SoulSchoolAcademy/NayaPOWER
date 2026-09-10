@@ -24,7 +24,7 @@ jobs:
         working-directory: NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE
     steps:
       - name: Checkout exact release source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Validate canonical release source
         shell: bash
         run: |
@@ -74,7 +74,7 @@ jobs:
           grep -Fq 'ENTER NAYANET' index.html
           grep -Fq '2026-09-02-front-door-10' index.html
       - name: Deploy exact canonical E02 runtime to Cloudflare Workers
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
