@@ -15,7 +15,7 @@ permissions:
 
 concurrency:
   group: nayanet-canonical-live-hub
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   HUB: NAYANET/HUB
@@ -147,16 +147,16 @@ jobs:
           set -u
           for attempt in $(seq 1 12); do
             echo "RUNTIME_PROBE_ATTEMPT=$attempt"
-            get(){ curl -sS -o "$2" -w '%{http_code}' "$1" || true; }
+            get(){ curl -sS --max-time 8 -o "$2" -w '%{http_code}' "$1" || true; }
             status=$(get "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" /tmp/root)
             smart_status=$(get "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" /tmp/smart)
             echo "ROOT_HTTP=$status SMART_HTTP=$smart_status"
-            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart; then
+            if [ "$status" = 200 ] && [ "$smart_status" = 200 ] && cmp -s /tmp/root /tmp/smart ]; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root 2>/dev/null | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_status=$(get "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" /tmp/app-js)
               cognitive_status=$(get "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" /tmp/cognition)
-              runtime_header=$(curl -sSI "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
+              runtime_header=$(curl -sS --max-time 8 -I "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
               echo "JS_SRC=$js_src JS_HTTP=$js_status COGNITION_HTTP=$cognitive_status RUNTIME_HEADER_SOURCE_COMMIT=$runtime_header"
               if [ "$js_status" = 200 ] && [ "$cognitive_status" = 200 ] && [ "$runtime_header" = "$SOURCE_COMMIT" ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
                 pass=1
