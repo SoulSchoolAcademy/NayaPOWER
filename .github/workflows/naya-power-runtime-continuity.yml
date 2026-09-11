@@ -1,0 +1,28 @@
+name: Naya Power Runtime Continuity
+
+on:
+  push:
+    paths:
+      - '.naya/runtime/**'
+      - '.github/workflows/naya-power-runtime-continuity.yml'
+  pull_request:
+    paths:
+      - '.naya/runtime/**'
+      - '.github/workflows/naya-power-runtime-continuity.yml'
+
+jobs:
+  continuity-self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout runtime slice only
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .naya/runtime
+          sparse-checkout-cone-mode: true
+
+      - name: Run constitutional kernel self-test
+        run: python .naya/runtime/naya_power_kernel.py --self-test
+
+      - name: Run no-dead-end orchestrator self-test
+        run: python .naya/runtime/test_naya_power_orchestrator.py
