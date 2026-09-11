@@ -1,4 +1,5 @@
 import unittest
+from dataclasses import replace
 
 from smart_ledger_engine import (
     calculate_value,
@@ -27,12 +28,15 @@ class SmartLedgerEngineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             calculate_value(event)
 
-    def test_verification_requires_evidence(self):
+    def test_verification_requires_evidence_and_integrity(self):
         note = create_smart_note("Test", "Content")
         event = create_ledger_event(note)
         verified, receipt = verify_event(event)
         self.assertEqual(verified.status, "verified")
         self.assertEqual(receipt["verification_state"], "verified")
+        tampered = replace(event, object_ref="note:tampered")
+        with self.assertRaises(ValueError):
+            verify_event(tampered)
 
     def test_level_boundaries(self):
         self.assertEqual(determine_level(0)["level"], 1)
