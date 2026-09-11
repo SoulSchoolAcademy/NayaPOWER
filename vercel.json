@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "git": {
-    "deploymentEnabled": false
-  }
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "cd NAYANET/HUB && npm install && npm run build",
+  "outputDirectory": "NAYANET/HUB/dist"
 }
