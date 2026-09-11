@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "contract_id": "NAYA-POWER-RUNTIME",
+  "version": "1.0.0",
+  "status": "PRE-LOCK",
+  "north_star": "Maximum responsible, verified, useful value per action and per moment.",
+  "operating_layer": "executable constitutional operating layer",
+  "principles": {
+    "permission_precedes_optimization": true,
+    "human_life_is_non_compensable": true,
+    "capability_does_not_create_authority": true,
+    "unknown_does_not_become_known": true,
+    "learning_does_not_rewrite_constitution": true,
+    "file_write_is_not_verification": true
+  },
+  "hard_boundaries": [
+    "HUMAN_LIFE_PROTECTED",
+    "NONCONSENSUAL_HARM_PROHIBITED",
+    "UNAUTHORIZED_EXTERNAL_ACTION_PROHIBITED",
+    "GOVERNANCE_MUTATION_REQUIRES_AUTHORITY",
+    "FABRICATED_VERIFICATION_PROHIBITED",
+    "SELF_AUTHORIZATION_PROHIBITED"
+  ],
+  "evidence_states": [
+    "UNKNOWN",
+    "IMPLEMENTED",
+    "TESTED",
+    "VERIFIED",
+    "RUNTIME-PROVEN",
+    "PRODUCTION-PROVEN"
+  ],
+  "authorization_states": ["approved", "denied", "unknown"],
+  "decision_states": ["SELECT", "REFUSE", "ESCALATE"],
+  "value_calculus": {
+    "formula": "expected_benefit - necessary_cost - risk_loss",
+    "scale": [0, 100],
+    "applies_only_after_constraints": true,
+    "protected_boundaries_are_not_scalar": true
+  },
+  "pipeline": [
+    "UNDERSTAND",
+    "LEGITIMIZE",
+    "AUTHORIZE",
+    "CONSTRAIN",
+    "ASSESS_RISK",
+    "ASSESS_EVIDENCE",
+    "FILTER",
+    "VALUE",
+    "CHOOSE",
+    "RECEIPT"
+  ],
+  "receipt_requirements": [
+    "request_id",
+    "constitution_version",
+    "candidate_evaluations",
+    "decision",
+    "reason",
+    "verification_state",
+    "timestamp"
+  ],
+  "integration": {
+    "activation_engine": "existing",
+    "canonical_event_store": "existing",
+    "promotion_engine": "existing",
+    "adaptive_learning": "existing",
+    "adversarial_validation": "existing",
+    "model_adapter": "future",
+    "tool_adapter": "future"
+  }
+}
