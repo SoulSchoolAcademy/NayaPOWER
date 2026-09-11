@@ -16,6 +16,7 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,6 +41,14 @@ jobs:
               assert e['source']['type']=='smart_note'
           print(f"PIS_PROJECTION=PASS events={len(ids)}")
           PY
+
+      - name: Validate persistent PIS adapter source
+        run: |
+          grep -q "@supabase/supabase-js" NAYANET/HUB/src/data/pis.ts
+          grep -q "nayanet_intelligence_index" NAYANET/HUB/src/data/pis.ts
+          grep -q "getSession" NAYANET/HUB/src/data/pis.ts
+          grep -q "PIS_QUERY_LIMIT" NAYANET/HUB/src/data/pis.ts
+          echo 'PIS_PERSISTENT_ADAPTER_SOURCE=PASS'
 
       - name: Install Hub dependencies
         working-directory: NAYANET/HUB
