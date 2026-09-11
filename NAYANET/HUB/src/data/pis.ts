@@ -16,6 +16,7 @@ function indexRowToEvent(row:IndexRow):IntelligentEvent{
   const privacy=typeof metadata.privacy_state==='string'?metadata.privacy_state:'PRIVATE BY DEFAULT';
   const status=row.status||'RECORDED';
   const topic=typeof sourceContext.topic==='string'?sourceContext.topic:row.title;
+  const canonicalPath=typeof sourceContext.canonical_path==='string'?sourceContext.canonical_path:undefined;
   return {
     event_id:row.source_id,
     user_id:row.owner_id,
@@ -23,7 +24,7 @@ function indexRowToEvent(row:IndexRow):IntelligentEvent{
     updated_at:row.updated_at,
     source:{type:row.source_table==='smart_note_events'?'smart_note':row.source_table,label:row.title},
     human_input:{raw:row.title,captured_at:row.event_time},
-    context:{topic,tags:typeof sourceContext.tags==='string'?[sourceContext.tags]:Array.isArray(sourceContext.tags)?sourceContext.tags.filter((tag):tag is string=>typeof tag==='string'):[]},
+    context:{topic,canonical_path:canonicalPath,tags:typeof sourceContext.tags==='string'?[sourceContext.tags]:Array.isArray(sourceContext.tags)?sourceContext.tags.filter((tag):tag is string=>typeof tag==='string'):[]},
     naya_interpretation:{observation:typeof metadata.event_type==='string'?metadata.event_type:undefined,uncertainty:'Runtime PIS projection exposes indexed metadata only; deeper interpretation remains attached to the canonical Smart Note.'},
     machine_evidence:{items:[`PERSISTENT_INDEX:${row.id}`,`SOURCE:${row.source_table}:${row.source_id}`,`STATUS:${status}`],verification_state:typeof metadata.verified_at==='string'?'VERIFIED':'RECORDED'},
     weaver_synthesis:{summary:row.title,relationships:[]},
@@ -57,8 +58,12 @@ async function loadBuildPIS():Promise<PISFeed>{
 }
 
 export async function loadPrimaryIntelligence():Promise<PISFeed>{
-  const persistent=await loadPersistentPIS();
-  if(persistent)return persistent;
+  try{
+    const persistent=await loadPersistentPIS();
+    if(persistent)return persistent;
+  }catch(error){
+    console.warn('PIS persistent transport unavailable; using verified build projection.',error);
+  }
   return loadBuildPIS();
 }
 
