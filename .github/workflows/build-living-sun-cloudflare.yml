@@ -1,115 +1,21 @@
-# TRIGGER: VERIFIED 452 LIVE DEPLOYMENT
-name: Build NayaNET Cloudflare Release
+name: Retired — legacy Living Sun deploy
+
+# This workflow is intentionally non-deploying. The previous version mutated main
+# during deployment and created an unsafe self-triggering release loop. The active
+# canonical deployment is now .github/workflows/deploy-canonical-e02.yml.
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  deploy-canonical-452:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact 452 Hub source
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Surgically neutralize the runtime right rail
-        shell: python
+      - name: Confirm retirement
         run: |
-          from pathlib import Path
-          p=Path('2026 09 08 452 NayaNET Hub.html')
-          s=p.read_text(encoding='utf-8')
-          marker='NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1'
-          if marker not in s:
-              injection=r'''<style id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1">
-.activationRail{display:none!important;width:0!important;min-width:0!important;max-width:0!important;height:0!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important}
-.homeWorkspace{display:block!important;width:100%!important;max-width:none!important;grid-template-columns:1fr!important;gap:0!important}
-</style>
-<script id="NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1-RUNTIME">
-(function(){
-  function purge(){
-    try{
-      document.querySelectorAll('.activationRail').forEach(function(el){el.remove();});
-      var ws=document.querySelector('.homeWorkspace');
-      if(ws){
-        ws.style.setProperty('display','block','important');
-        ws.style.setProperty('grid-template-columns','1fr','important');
-        ws.style.setProperty('gap','0','important');
-        ws.style.setProperty('width','100%','important');
-        ws.style.setProperty('max-width','none','important');
-      }
-    }catch(e){}
-  }
-  purge();
-  new MutationObserver(purge).observe(document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['class','style']});
-  setInterval(purge,400);
-})();
-</script>
-'''
-              if '</head>' not in s: raise SystemExit('HEAD_BOUNDARY_MISSING')
-              s=s.replace('</head>',injection+'</head>',1)
-              p.write_text(s,encoding='utf-8')
-          final=p.read_text(encoding='utf-8')
-          for needle in ['NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1','class="sidebar"','class="homeWorkspace"','id="nayanet-elite-feed"','Smart Notes']:
-              if needle not in final: raise SystemExit('MISSING='+needle)
-          print('CANONICAL_452_GUARD=PASS',len(final.encode('utf-8')))
-
-      - name: Commit exact 452 source
-        shell: bash
-        run: |
-          set -euo pipefail
-          git config user.name 'github-actions[bot]'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -- '2026 09 08 452 NayaNET Hub.html'
-          if git diff --cached --quiet; then echo 'SOURCE_ALREADY_GUARDED=TRUE'; else git commit -m 'Live Hub V1: permanently neutralize obsolete right rail'; git push origin HEAD:main; fi
-
-      - name: Build exact Cloudflare Worker artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf CLOUDFLARE-INTELLIGENT-HUB-V7
-          mkdir -p CLOUDFLARE-INTELLIGENT-HUB-V7
-          cp '2026 09 08 452 NayaNET Hub.html' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          cat > CLOUDFLARE-INTELLIGENT-HUB-V7/wrangler.jsonc <<'EOF'
-          {
-            "name": "nayanet-v7-intelligent-hub",
-            "compatibility_date": "2026-09-08",
-            "assets": { "directory": "." }
-          }
-          EOF
-          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'class="sidebar"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'id="nayanet-elite-feed"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'class="homeWorkspace"' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-          grep -Fq 'Smart Notes' CLOUDFLARE-INTELLIGENT-HUB-V7/index.html
-
-      - name: Deploy exact 452 artifact
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 262c881746ea6e9978ca18b3eb831907
-          workingDirectory: CLOUDFLARE-INTELLIGENT-HUB-V7
-          command: deploy --config wrangler.jsonc
-
-      - name: Independently verify public runtime
-        shell: bash
-        run: |
-          set -euo pipefail
-          curl -fsSL --retry 10 --retry-delay 3 'https://nayanet-v7-intelligent-hub.nayanet.workers.dev/?live=canonical-452-v1' -o /tmp/live
-          grep -Fq 'NAYANET-NUCLEAR-RIGHT-RAIL-FIX-LIVE-V1' /tmp/live
-          grep -Fq 'class="sidebar"' /tmp/live
-          grep -Fq 'id="nayanet-elite-feed"' /tmp/live
-          grep -Fq 'class="homeWorkspace"' /tmp/live
-          ! grep -Fq 'class="activationRail"' /tmp/live
-          ! grep -Fq "class='activationRail'" /tmp/live
-          echo 'PUBLIC_RUNTIME=VERIFIED'
-          echo 'LEFT_NAVIGATION=PRESENT'
-          echo 'CENTER_INTELLIGENT_FEED=PRESENT'
-          echo 'RIGHT_OLD_FEED=ABSENT'
-          echo 'CENTER_FEED=FULL_WIDTH'
-          echo 'RELEASE_URL=https://nayanet-v7-intelligent-hub.nayanet.workers.dev/'
+          echo 'LEGACY_LIVING_SUN_DEPLOY=RETIRED'
+          echo 'ACTIVE_DEPLOY_WORKFLOW=.github/workflows/deploy-canonical-e02.yml'
+          echo 'REASON=deployment must never mutate main as part of release execution'
