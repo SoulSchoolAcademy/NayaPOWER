@@ -1,12 +1,5 @@
 #!/usr/bin/env python3
-"""Machine acceptance test for Naya-owned human-facing torch delivery.
-
-This test exercises the canonical continuity_enforcement runtime at its
-structured-handoff boundary. It proves that a post-boundary meaningful
-execution requires both the successor handoff fields and a Naya-authored
-human-facing continuation. The negative fixture deliberately removes the
-human continuation and must fail the runtime contract.
-"""
+"""Machine acceptance test for Naya-owned human-facing torch delivery."""
 from __future__ import annotations
 
 import json
@@ -44,6 +37,7 @@ def fixture() -> dict:
         "verification": {"status": "VERIFIED", "receipt": "RCPT-torch-delivery-test"},
         "receipt": {"receipt_id": "RCPT-torch-delivery-test"},
         "delivery": {"state": "VERIFIED"},
+        "next_execution": ".naya/handoffs/NEXT-EXECUTION-20260825-SUPERBRAIN-CONTRACT-ENFORCEMENT.md",
         "continuity": {
             "handoff_url": "https://example.invalid/torch-handoff",
             "learning_status": "LEARNED",
