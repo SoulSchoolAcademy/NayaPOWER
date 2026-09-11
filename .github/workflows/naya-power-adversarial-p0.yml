@@ -1,0 +1,46 @@
+name: Naya Power — P0 Adversarial Tests
+
+on:
+  push:
+    paths:
+      - 'tests/adversarial/**'
+      - 'NAYA-POWER-ADVERSARIAL-TEST-SUITE-V1.0.md'
+      - '.github/workflows/naya-power-adversarial-p0.yml'
+  workflow_dispatch:
+
+env:
+  PYTHONUNBUFFERED: '1'
+
+jobs:
+  harness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run P0 harness
+        run: python3 tests/adversarial/run_p0.py
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-power-p0-evidence
+          path: tests/adversarial/evidence/
+          if-no-files-found: error
+
+  live-runtime:
+    if: ${{ vars.NAYA_POWER_TARGET_URL != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run live P0 harness
+        env:
+          NAYA_POWER_TARGET_URL: ${{ vars.NAYA_POWER_TARGET_URL }}
+        run: python3 tests/adversarial/run_p0.py
+      - name: Upload live evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-power-p0-live-evidence
+          path: tests/adversarial/evidence/
+          if-no-files-found: error
