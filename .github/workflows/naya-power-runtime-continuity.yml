@@ -44,5 +44,14 @@ jobs:
       - name: Run live host bridge self-test
         run: python .naya/runtime/test_naya_power_live.py
 
+      - name: Run execution state machine self-test
+        run: python .naya/runtime/execution_controller.py self-test
+
+      - name: Run conservative risk classifier self-test
+        run: python .naya/runtime/risk_engine.py self-test
+
+      - name: Run model tool gateway self-test
+        run: python .naya/runtime/test_model_tool_gateway.py
+
       - name: Run executable activation gate
         run: python .naya/runtime/runtime_activation_check.py
