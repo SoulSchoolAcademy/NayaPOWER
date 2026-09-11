@@ -1,22 +1,20 @@
 {
   "schema": "naya/memory/receipt/v1",
-  "receipt_id": "NPR-LIVE-RUNTIME-2026-09-11-0351",
+  "receipt_id": "NPR-LIVE-RUNTIME-2026-09-11-0352",
   "status": "VERIFIED",
   "objective": "Make Naya Power executable, fail-closed at consequential execution boundaries, and continuously self-tested at the live ChatGPT action boundary.",
   "source_of_truth": "SoulSchoolAcademy/NayaPOWER main",
   "starting_main": "d8b366db3fcb909c330bebbc422c7fdd3d7ca00d",
   "runtime_merge": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
   "execution_gateway_merge": "2237d6c2e2dedf60ddb51269cd7ef0763f1d896f",
-  "selected_action": "EXTEND_LIVE_RUNTIME_WITH_FAIL_CLOSED_EXECUTION_GATEWAY",
-  "why": "The live host bridge was proven, but consequential execution still needed an explicit claim/state boundary and caller-independent risk derivation before side effects.",
+  "gateway_baseline_hardening_merge": "c1cf36a366d201ff13c88da76ed868ba3b34bbaa",
+  "selected_action": "BIND_CONSEQUENTIAL_AUTHORIZATION_TO_PROTECTED_BASELINE",
+  "why": "Review of the executable gateway found that an action could declare a protected baseline different from the claimed execution start head. That would weaken source-state integrity, so the gateway was hardened before live acceptance work.",
   "changes": [
-    "Added execution_controller.py with READY → CLAIMED → EXECUTING → OBSERVED → VERIFIED → HANDED_OFF transitions.",
-    "Added risk_engine.py with conservative derived risk classification.",
-    "Added model_tool_gateway.py requiring claimed execution context and matching derived risk.",
-    "Added test_model_tool_gateway.py covering missing claim, valid authorization, and caller-supplied lower-risk rejection.",
-    "Extended runtime_activation_check.py to require and self-test the execution boundary.",
-    "Extended runtime continuity workflow to compile, validate, and runner-test the new execution boundary.",
-    "Updated the live-host runbook to document the claim/gateway boundary."
+    "Gateway now rejects a protected baseline that does not equal the claimed execution start head.",
+    "Authorization output explicitly distinguishes side-effect authorization from side-effect execution.",
+    "Added stale-baseline regression coverage.",
+    "Runner-tested the complete runtime continuity workflow again before merge."
   ],
   "observations": [
     {
@@ -32,25 +30,31 @@
     {
       "run": "34559975679",
       "status": "PASS",
-      "result": "Checkout, Python 3.12, compileall, JSON validation, kernel, orchestrator, host adapter, live host, execution controller, risk engine, model/tool gateway, activation gate, and cleanup all completed successfully."
+      "result": "Execution controller, risk engine, model/tool gateway, activation gate, and all prior runtime checks passed with cleanup."
+    },
+    {
+      "run": "34560043195",
+      "status": "PASS",
+      "result": "Protected-baseline hardening plus full runtime continuity passed every substantive test and cleanup step; job conclusion success."
     }
   ],
   "learning": [
     "Do not trust model-declared risk; derive risk from action metadata and fail closed on mismatch.",
     "A consequential action needs an explicit execution claim before the tool side effect is authorized.",
+    "The authorization baseline must be bound to the exact source state from which execution was claimed.",
     "Execution must have an explicit observation and evidence path before VERIFIED or HANDED_OFF.",
     "Sparse checkout must use a non-cone runtime-only pattern in this repository because of the unrelated legacy long filename.",
     "Integration tests are valuable because they found a real continuation field mismatch that lower-level tests did not expose.",
     "Naya Power does not claim magical interception of hidden model inference; ChatGPT remains the reasoning host and the runtime governs the executable action boundary."
   ],
   "verification": {
-    "github_actions_run": "34559975679",
-    "job_id": "103140514433",
-    "commit_tested": "6ac16e2875015f85ee39a8eb9d565bb5d0b13fc2",
+    "github_actions_run": "34560043195",
+    "job_id": "103140712675",
+    "commit_tested": "fbf93bb8a2cfd6895f9b95832657dfa09017fa3c",
     "all_runtime_steps_success": true,
     "main_runtime_source_merged": true,
     "false_green_claim": false
   },
   "current_state": "READY_FOR_LIVE_CHATGPT_GOVERNED_WORK",
-  "next_action": "Use the actual NayaNET Intelligent Hub source as the first real acceptance workload; inspect source of truth, generate candidate actions, pass the selected consequential action through claim/gateway, execute with the authorized host tool, independently verify the exact outcome, record a receipt, promote the learning, and continue to the next highest-value action."
+  "next_action": "Use the actual NayaNET Intelligent Hub source as the first real acceptance workload; inspect source of truth, generate candidate actions, pass the selected consequential action through claim/gateway, execute with the authorized host tool, independently verify the exact outcome, record a receipt, promote the learning, and continue."
 }
