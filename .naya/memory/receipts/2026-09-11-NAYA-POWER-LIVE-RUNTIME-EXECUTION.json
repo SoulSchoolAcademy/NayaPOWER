@@ -1,0 +1,50 @@
+{
+  "schema": "naya/memory/receipt/v1",
+  "receipt_id": "NPR-LIVE-RUNTIME-2026-09-11-0348",
+  "status": "VERIFIED",
+  "objective": "Make Naya Power executable and continuously self-tested at the live ChatGPT action boundary.",
+  "source_of_truth": "SoulSchoolAcademy/NayaPOWER main",
+  "starting_main": "d8b366db3fcb909c330bebbc422c7fdd3d7ca00d",
+  "final_main_after_runtime_merge": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
+  "implementation_commit": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
+  "selected_action": "ADD_LIVE_HOST_BRIDGE_AND_HARDEN_RUNTIME_CONTINUITY",
+  "why": "The existing kernel, adapter, and orchestrator were executable but lacked a single live-host entrypoint and the continuous CI gate needed to prove the complete path.",
+  "changes": [
+    "Added .naya/runtime/naya_power_live.py",
+    "Added .naya/runtime/test_naya_power_live.py",
+    "Extended runtime_activation_check.py to require and test the live host bridge",
+    "Hardened runtime continuity CI with Python 3.12, compileall, JSON validation, and live-host testing",
+    "Changed sparse checkout to non-cone runtime-only patterns so the repository's unrelated legacy long filename cannot block runtime verification",
+    "Fixed an actual orchestrator continuation bug where escalation candidates exposed 'reasons' but continuation_for attempted to read 'reason'",
+    "Added NAYA-POWER-LIVE-HOST-RUNBOOK-V1.0.md"
+  ],
+  "observations": [
+    {
+      "run": "34559765072",
+      "status": "FAIL",
+      "failure": "Sparse checkout still attempted to materialize an unrelated repository filename that exceeds the runner filesystem limit."
+    },
+    {
+      "run": "34559794298",
+      "status": "PASS",
+      "result": "Kernel 5/5; Orchestrator 3/3; ChatGPT host adapter 4/4; Live host bridge 3/3; Activation gate ACTIVATED_AND_SELF_TESTED."
+    }
+  ],
+  "learning": [
+    "A sparse checkout using cone mode can still materialize root-level legacy files; use non-cone path patterns when repository-wide checkout contains unsafe filenames.",
+    "Executable integration tests found a real field-name mismatch that unit-level kernel tests did not cover.",
+    "A successful constitutional kernel is not enough; the live host seam and continuation path must be runner-tested together.",
+    "No external action or production outcome is called verified by the runtime merely because the runtime selected a candidate."
+  ],
+  "verification": {
+    "github_actions_run": "34559794298",
+    "job_id": "103139988566",
+    "commit_tested": "ac5d975b8cdf293bf6bfca8e90885473e7aae4d8",
+    "main_source_re_read": true,
+    "runtime_cli_present_on_main": true,
+    "runtime_workflow_present_on_main": true,
+    "false_green_claim": false
+  },
+  "current_state": "READY_FOR_LIVE_CHATGPT_GOVERNED_WORK",
+  "next_action": "Run the first real acceptance workload against the actual NayaNET Intelligent Hub source; use source-of-truth inspection, candidate generation, constitutional selection, execution, independent verification, receipt, learning, and immediate continuation."
+}
