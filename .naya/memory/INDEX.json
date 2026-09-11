@@ -1,6 +1,6 @@
 {
   "schema":"naya-power-memory-index/v2",
-  "generated_at":"2026-09-11T07:00:00-07:00",
+  "generated_at":"2026-09-11T07:45:00-07:00",
   "authority":"Naya Power canonical memory index",
   "notes":[
     "SN-20260823-220000-north-star",
@@ -16,7 +16,8 @@
     "SN-20260825-200000-smart-brain-hardening-human",
     "SN-20260825-200000-smart-brain-hardening-naya",
     "SN-20260826-000000-intent-meaning-one-naya-output-intelligence",
-    "SN-20260911-070000-decision-calculus-unified-runtime"
+    "SN-20260911-070000-decision-calculus-unified-runtime",
+    "SN-20260911-074500-note-event-to-pis-fresh-retrieval"
   ],
   "categories":{},
   "aliases":{},
