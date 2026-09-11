@@ -2,17 +2,29 @@
 """Naya Power Runtime Kernel v1.
 
 Small, deterministic, provider-neutral constitutional decision kernel.
-It governs candidate actions; it does not pretend to be the model or the tool.
-Dependency-free by design so the exact source can be executed in CI or locally.
+Hard constitutional gates remain here; eligible-action ranking is delegated to
+SUPERBRAIN's canonical deterministic Decision Calculus so there is one value
+authority instead of parallel ranking formulas.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+
+from SUPERBRAIN.naya_power_decision_calculus import (  # noqa: E402
+    Candidate as CalculusCandidate,
+    EVIDENCE_RANK as CALCULUS_EVIDENCE_RANK,
+    decision as calculate_decision,
+)
 
 CONTRACT_PATH = Path(__file__).with_name("NAYA-POWER-RUNTIME-CONTRACT.json")
 EVIDENCE_RANK = {
@@ -76,6 +88,39 @@ def validate_request(request: dict[str, Any], contract: dict[str, Any]) -> None:
             raise _error(f"candidate {candidate['id']}: fabricated verification claim without evidence")
 
 
+def _legacy_candidate_to_calculus(candidate: dict[str, Any]) -> CalculusCandidate:
+    """Adapt the legacy runtime contract into the canonical calculus.
+
+    Existing callers still provide benefit/cost/risk/evidence/reversibility.
+    We map only what the runtime actually knows. Dimensions unavailable in the
+    legacy contract use neutral values rather than invented evidence.
+    """
+    evidence = candidate["evidence_state"]
+    evidence_rank = CALCULUS_EVIDENCE_RANK[evidence]
+    uncertainty_by_evidence = {
+        "UNKNOWN": 100.0,
+        "IMPLEMENTED": 70.0,
+        "TESTED": 45.0,
+        "VERIFIED": 20.0,
+        "RUNTIME-PROVEN": 10.0,
+        "PRODUCTION-PROVEN": 0.0,
+    }
+    return CalculusCandidate(
+        name=candidate["id"],
+        useful_value=float(candidate["expected_benefit"]),
+        harm_avoidance=100.0 - float(candidate["risk_loss"]),
+        verification_strength=float(evidence_rank * 20),
+        quality=50.0,
+        reversibility=100.0 if candidate["reversible"] else 0.0,
+        cost_efficiency=100.0 - float(candidate["necessary_cost"]),
+        latency=50.0,
+        uncertainty=uncertainty_by_evidence[evidence],
+        evidence_state=evidence,
+        violates_boundary=bool(candidate["boundary_violations"]),
+        consequence=float(candidate["risk_loss"]),
+    )
+
+
 def evaluate(request: dict[str, Any]) -> dict[str, Any]:
     contract = load_contract()
     validate_request(request, contract)
@@ -91,6 +136,7 @@ def evaluate(request: dict[str, Any]) -> dict[str, Any]:
         status = "ELIGIBLE"
         decision = "CONSIDER"
 
+        # Constitutional eligibility is intentionally evaluated before calculus.
         if candidate["boundary_violations"]:
             status = "INELIGIBLE"
             decision = "REFUSE"
@@ -120,15 +166,13 @@ def evaluate(request: dict[str, Any]) -> dict[str, Any]:
             decision = "REFUSE"
             reasons.append("fabricated verification")
 
-        value = None
+        calculus_candidate = _legacy_candidate_to_calculus(candidate)
+        calculus_score = None
         if status == "ELIGIBLE":
-            value = round(
-                float(candidate["expected_benefit"])
-                - float(candidate["necessary_cost"])
-                - float(candidate["risk_loss"]),
-                4,
-            )
-            eligible.append({"candidate": candidate, "value": value})
+            # The canonical Decision Calculus is the only ranking authority.
+            calculus_result = calculate_decision([calculus_candidate])
+            calculus_score = calculus_result["ranked"][0]["score"]
+            eligible.append({"candidate": candidate, "calculus_candidate": calculus_candidate, "calculus_score": calculus_score})
         else:
             if decision == "REFUSE":
                 refusal_reasons.extend(f"{cid}: {reason}" for reason in reasons)
@@ -140,29 +184,36 @@ def evaluate(request: dict[str, Any]) -> dict[str, Any]:
             "status": status,
             "decision": decision,
             "reasons": reasons,
-            "value": value,
+            "value": calculus_score,
+            "calculus_score": calculus_score,
+            "ranking_authority": "SUPERBRAIN.naya_power_decision_calculus",
             "authorization": candidate["authorization"],
             "boundary_violations": list(candidate["boundary_violations"]),
             "evidence_state": candidate["evidence_state"],
         })
 
     if eligible:
-        # Deterministic tie-break: highest value, then lower risk, then candidate id.
-        winner = sorted(
-            eligible,
-            key=lambda item: (-item["value"], item["candidate"]["risk_loss"], item["candidate"]["id"]),
-        )[0]
-        decision = "SELECT"
-        selected_id = winner["candidate"]["id"]
-        reason = f"highest responsible eligible value={winner['value']}"
+        # Rank the complete eligible set through the canonical calculus.
+        calculus_result = calculate_decision([item["calculus_candidate"] for item in eligible])
+        if calculus_result["disposition"] == "DEFER_FOR_VERIFICATION":
+            decision = "ESCALATE"
+            selected_id = None
+            reason = "canonical Decision Calculus deferred the highest-ranked action for verification"
+        else:
+            decision = "SELECT"
+            selected_id = calculus_result["chosen"]
+            winner = next(item for item in eligible if item["candidate"]["id"] == selected_id)
+            reason = f"canonical Decision Calculus selected highest responsible eligible value={winner['calculus_score']}"
     elif refusal_reasons and not escalation_reasons:
         decision = "REFUSE"
         selected_id = None
         reason = "no eligible action; protected or denied action(s) were rejected"
+        calculus_result = {"ranked": [], "disposition": "REJECT_ALL", "verified_claim_allowed": False}
     else:
         decision = "ESCALATE"
         selected_id = None
         reason = "no autonomous candidate is eligible under the supplied authority/evidence contract"
+        calculus_result = {"ranked": [], "disposition": "REJECT_ALL", "verified_claim_allowed": False}
 
     now = datetime.now(timezone.utc).isoformat()
     receipt = {
@@ -174,7 +225,9 @@ def evaluate(request: dict[str, Any]) -> dict[str, Any]:
         "decision": decision,
         "selected_candidate": selected_id,
         "reason": reason,
+        "ranking_authority": "SUPERBRAIN.naya_power_decision_calculus",
         "candidate_evaluations": evaluations,
+        "decision_calculus": calculus_result,
         "evidence": {
             "kernel_evaluation": "RUNTIME-PROVEN",
             "external_action": "NOT_EXECUTED_BY_KERNEL",
@@ -256,6 +309,7 @@ def self_test() -> dict[str, Any]:
     return {
         "runtime": "Naya Power Runtime Kernel",
         "version": load_contract()["version"],
+        "ranking_authority": "SUPERBRAIN.naya_power_decision_calculus",
         "tests": results,
         "passed": passed,
         "total": len(results),
