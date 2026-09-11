@@ -1,0 +1,62 @@
+{
+  "id": "SN-20260911-070000-decision-calculus-unified-runtime",
+  "type": "decision",
+  "title": "Decision Calculus is the single runtime action-ranking authority",
+  "status": "ACTIVE",
+  "created_at": "2026-09-11T07:00:00-07:00",
+  "effective_at": "2026-09-11T07:00:00-07:00",
+  "source": [
+    "NayaPOWER main",
+    ".naya/runtime/naya_power_kernel.py",
+    "SUPERBRAIN/naya_power_decision_calculus.py",
+    ".naya/runtime/test_decision_calculus_runtime_integration.py",
+    "tools/run_superbrain_local_suite.py",
+    "GitHub Actions behavioral-proof run 34611533743"
+  ],
+  "summary": "The constitutional runtime now preserves hard eligibility gates and routes every eligible-action ranking decision through the canonical deterministic Decision Calculus.",
+  "what_happened": "The runtime contained a legacy scalar action-value authority alongside the newer deterministic Decision Calculus. A surgical integration removed the parallel ranking authority without replacing constitutional gates.",
+  "what_we_learned": [
+    "Constitution determines what is permissible; Decision Calculus determines which permissible action has the highest responsible verified value.",
+    "A model or candidate cannot manufacture authority or evidence.",
+    "Protected human boundaries must be evaluated before value ranking and cannot be outweighed by benefit.",
+    "When legacy runtime fields do not contain a calculus dimension, use a neutral value rather than inventing evidence.",
+    "Runtime receipts should name the canonical ranking authority explicitly so authority drift is observable."
+  ],
+  "why_it_matters": "Two competing decision authorities create silent architectural drift. One constitutional gate layer plus one deterministic ranking authority makes runtime behavior auditable, testable, and harder to Goodhart.",
+  "what_changed": [
+    ".naya/runtime/naya_power_kernel.py now delegates eligible-action ranking to SUPERBRAIN.naya_power_decision_calculus.",
+    ".naya/runtime/test_decision_calculus_runtime_integration.py adds adversarial runtime proofs.",
+    "tools/run_superbrain_local_suite.py makes kernel self-test and calculus integration mandatory."
+  ],
+  "next_best_action": "Prove the real NOTE EVENT → PIS / PRIMARY INTELLIGENCE → RUNNING FEED / STATE PROJECTION → fresh Naya retrieval → behavior change path, then verify one safe authorized continuation and successor torch.",
+  "tags": [
+    "decision-calculus",
+    "constitution",
+    "runtime",
+    "superbrain",
+    "verification",
+    "action-selection",
+    "single-authority"
+  ],
+  "aliases": [
+    "unified decision authority",
+    "canonical action ranking",
+    "Decision Calculus runtime integration"
+  ],
+  "relationships": {
+    "related": [
+      "SN-20260824-023800-evidence-promotion-boundary",
+      "SN-20260824-025400-oscar-provenance-hardening"
+    ],
+    "depends_on": []
+  },
+  "evidence": {
+    "verification_class": "RUNTIME_TESTED_NOT_PRODUCTION_PROVEN",
+    "workflow_run": "34611533743",
+    "observed_head": "57850384297ce69c842d2bc65f4edb11fc476116",
+    "kernel_self_test": "5/5 PASS",
+    "runtime_calculus_integration": "3/3 PASS",
+    "a_to_b_to_c": "PASS",
+    "superbrain_behavioral_proof": "PASS"
+  }
+}
