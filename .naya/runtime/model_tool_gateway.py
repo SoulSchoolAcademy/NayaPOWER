@@ -41,15 +41,7 @@ def self_test() -> int:
         if STATE.exists(): STATE.unlink()
         transition("CLAIMED", claim_id="CL-TEST", block_id="B-TEST", owner="Naya-Test", scope=["test/block"], start_head="test-head")
         action = {"action_id": "ACT-TEST-001", "action_type": "repository_write", "target": "docs/Naya", "purpose": "prove gateway authorization", "risk": "L2", "protected_baseline": "test-head", "observation_target": "changed file state", "evidence_requirement": ["commit_sha"], "verification_requirement": ["runtime_or_ci"]}
-        result = authorize(action)
-        assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["risk"] == "L2"
-        invalid = dict(action, risk="L1")
-        try:
-            authorize(invalid)
-        except AssertionError as exc:
-            assert "does not match derived risk" in str(exc)
-        else:
-            raise AssertionError("gateway accepted caller-supplied risk below derived risk")
+
         stale = dict(action, protected_baseline="stale-head")
         try:
             authorize(stale)
@@ -57,6 +49,18 @@ def self_test() -> int:
             assert "protected baseline" in str(exc)
         else:
             raise AssertionError("gateway accepted a stale protected baseline")
+
+        result = authorize(action)
+        assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["risk"] == "L2"
+
+        invalid = dict(action, risk="L1")
+        try:
+            authorize(invalid)
+        except AssertionError as exc:
+            assert "does not match derived risk" in str(exc)
+        else:
+            raise AssertionError("gateway accepted caller-supplied risk below derived risk")
+
         print("PASS — model/tool gateway authorization self-test GREEN")
         return 0
     finally:
