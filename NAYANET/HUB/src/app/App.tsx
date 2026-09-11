@@ -1,47 +1,24 @@
 import {useEffect,useState} from 'react';
 import type {ReactNode} from 'react';
-import {IdentityProvider} from '../identity/session';
+import {IdentityProvider,useIdentity} from '../identity/session';
 import type {IntelligentEvent} from '../intelligence/types';
 import {SmartFeedBoard} from '../intelligence/SmartFeedBoard';
 import {initializeCognition} from '../intelligence/cognition';
-import {loadPrimaryIntelligence,sortPrimaryIntelligence} from '../data/pis';
+import {loadPrimaryIntelligence,sortPrimaryIntelligence,type PISFeed} from '../data/pis';
 import {AppShellV3} from './AppShellV3';
 import {routes} from './routes';
 
-function IntelligencePulse({event}:{event?:IntelligentEvent}){
+function IntelligencePulse({event,feed,authenticated}:{event?:IntelligentEvent;feed?:PISFeed;authenticated:boolean}){
   const [expanded,setExpanded]=useState(false);
-  return <section className="hub-intelligence-pulse" aria-label="Intelligence pulse">
-    <div className="pulse-grid">
-      <article className="pulse-card primary"><div><div className="pulse-kicker">WHAT CHANGED</div><h3>{event?.source.label||'Primary intelligence is flowing through PIS.'}</h3><p>{expanded?'The Hub is reading an authorized Primary Intelligence System projection rather than a hardcoded demonstration event. The event identity remains tied to its canonical Smart Note source.':'Primary intelligence now has a defined path from canonical Smart Notes through PIS into the Hub.'}</p></div><button className="pulse-action" onClick={()=>setExpanded(!expanded)}>{expanded?'SHOW LESS':'SEE WHY'}</button></article>
-      <article className="pulse-card"><div className="pulse-kicker">PIS</div><div className="pulse-value">{event?'LIVE':'WAITING'}</div><p>{event?'Primary Intelligence System projection loaded.':'Waiting for an authorized PIS projection.'}</p></article>
-      <article className="pulse-card"><div className="pulse-kicker">SOURCE</div><div className="pulse-value">{event?'SMART NOTE':'—'}</div><p>{event?.context.canonical_path||'No primary event loaded.'}</p></article>
-      <article className="pulse-card"><div className="pulse-kicker">EVENT ID</div><div className="pulse-value">{event?'STABLE':'—'}</div><p>{event?.event_id||'No event available.'}</p></article>
-    </div>
-  </section>;
+  const persistent=feed?.source==='supabase:nayanet_intelligence_index';
+  return <section className="hub-intelligence-pulse" aria-label="Intelligence pulse"><div className="pulse-grid">
+    <article className="pulse-card primary"><div><div className="pulse-kicker">WHAT CHANGED</div><h3>{event?.source.label||'Primary intelligence is flowing through PIS.'}</h3><p>{expanded?(persistent?'The Hub is reading the authorized persistent Primary Intelligence System index for the authenticated member. The event identity remains tied to its canonical Smart Note source.':'The Hub is reading the deterministic GitHub Smart Note projection because no authenticated Supabase session is active.'):'Primary intelligence has a defined path from canonical Smart Notes through PIS into the Hub.'}</p></div><button className="pulse-action" onClick={()=>setExpanded(!expanded)}>{expanded?'SHOW LESS':'SEE WHY'}</button></article>
+    <article className="pulse-card"><div className="pulse-kicker">PIS</div><div className="pulse-value">{persistent&&authenticated?'LIVE':'PREVIEW'}</div><p>{persistent&&authenticated?'Authenticated persistent PIS loaded.':'Build projection loaded; authenticated runtime is not active.'}</p></article>
+    <article className="pulse-card"><div className="pulse-kicker">SOURCE</div><div className="pulse-value">{event?'SMART NOTE':'—'}</div><p>{event?.context.canonical_path||'No primary event loaded.'}</p></article>
+    <article className="pulse-card"><div className="pulse-kicker">TRANSPORT</div><div className="pulse-value">{persistent?'SUPABASE':'GITHUB'}</div><p>{persistent?'nayanet_intelligence_index':'deterministic build projection'}</p></article>
+  </div></section>;
 }
-
-function ComprehensionMap(){
-  const steps=[['01','NUTSHELL','What is it?','The essence first.'],['02','PERSPECTIVES','How do we understand it?','Human · Child · Grandma · Naya · Machine'],['03','LEARNING','What should I learn?','The durable lesson.'],['04','MEANING','Why does it matter?','The significance.'],['05','ACTION','How do I use it?','The next useful move.'],['06','TRUST','Can I trust it?','Evidence · uncertainty · provenance'],['07','CONNECT','What does it belong to?','Relationships · memory · context']];
-  return <section className="comprehension-map" aria-label="Intelligence comprehension path"><div className="comprehension-intro"><span className="eyebrow">THE NAYANET METHOD</span><h2>Understand it before you explore it.</h2><p>Every Intelligence Block reveals the highest-value meaning first, then lets you choose how deep to go.</p></div><div className="comprehension-steps">{steps.map(([n,label,title,detail])=><article className="comprehension-step" key={label}><span className="step-number">{n}</span><div><b>{label}</b><strong>{title}</strong><small>{detail}</small></div></article>)}</div></section>;
-}
-
-function Feed(){
-  const [events,setEvents]=useState<IntelligentEvent[]>([]);
-  const [error,setError]=useState('');
-  useEffect(()=>{let alive=true;loadPrimaryIntelligence().then(feed=>{if(alive)setEvents(sortPrimaryIntelligence(feed.events));}).catch((reason)=>{if(alive)setError(reason instanceof Error?reason.message:'PIS_FEED_UNAVAILABLE')});return()=>{alive=false}},[]);
-  const focusNaya=()=>document.querySelector<HTMLInputElement>('.universal-search input')?.focus();
-  const newIntelligence=()=>dispatchEvent(new CustomEvent('nayanet:navigate',{detail:{path:routes.notes}}));
-  const event=events[0];
-  return <>
-    <div className="hub-hero"><div className="hero-copy"><div className="eyebrow">NAYANET INTELLIGENT HUB · PRIMARY INTELLIGENCE</div><h1>Intelligence<br/><em>that stays connected.</em></h1><p>Capture the event. Register it centrally. Preserve its identity. Let the Intelligent Hub present the same intelligence without creating a competing source.</p><div className="hero-actions"><button className="hero-primary" onClick={focusNaya}>✦ ASK NAYA</button><button className="hero-secondary" onClick={newIntelligence}>＋ NEW INTELLIGENCE</button></div></div><div className="hero-orbit" aria-label="Naya intelligence presence"><div className="orbit-core">✦<span>NAYA</span></div><i/><i/><i/></div></div>
-    <IntelligencePulse event={event}/><ComprehensionMap/>
-    <div className="feed-toolbar"><div><span className="eyebrow">PRIMARY INTELLIGENCE SYSTEM</span><h2>Smart Feed</h2></div><div className="feed-toolbar-actions">CAPTURE → PIS → CONNECT → COMPOUND</div></div>
-    {error&&<section className="empty-route" role="alert"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Primary intelligence is not available.</h2><p>{error}</p><p>The Hub will not fabricate a replacement event.</p></section>}
-    {!error&&!event&&<section className="empty-route"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Waiting for primary intelligence.</h2><p>No PIS-projected Smart Note is currently available to this Hub build.</p></section>}
-    {event&&<SmartFeedBoard event={event}/>} 
-  </>;
-}
-
+function ComprehensionMap(){const steps=[['01','NUTSHELL','What is it?','The essence first.'],['02','PERSPECTIVES','How do we understand it?','Human · Child · Grandma · Naya · Machine'],['03','LEARNING','What should I learn?','The durable lesson.'],['04','MEANING','Why does it matter?','The significance.'],['05','ACTION','How do I use it?','The next useful move.'],['06','TRUST','Can I trust it?','Evidence · uncertainty · provenance'],['07','CONNECT','What does it belong to?','Relationships · memory · context']];return <section className="comprehension-map" aria-label="Intelligence comprehension path"><div className="comprehension-intro"><span className="eyebrow">THE NAYANET METHOD</span><h2>Understand it before you explore it.</h2><p>Every Intelligence Block reveals the highest-value meaning first, then lets you choose how deep to go.</p></div><div className="comprehension-steps">{steps.map(([n,label,title,detail])=><article className="comprehension-step" key={label}><span className="step-number">{n}</span><div><b>{label}</b><strong>{title}</strong><small>{detail}</small></div></article>)}</div></section>}
+function Feed(){const identity=useIdentity();const [events,setEvents]=useState<IntelligentEvent[]>([]);const [feed,setFeed]=useState<PISFeed>();const [error,setError]=useState('');useEffect(()=>{let alive=true;loadPrimaryIntelligence().then(value=>{if(alive){setFeed(value);setEvents(sortPrimaryIntelligence(value.events));}}).catch(reason=>{if(alive)setError(reason instanceof Error?reason.message:'PIS_FEED_UNAVAILABLE')});return()=>{alive=false}},[identity.is_authenticated]);const focusNaya=()=>document.querySelector<HTMLInputElement>('.universal-search input')?.focus();const newIntelligence=()=>dispatchEvent(new CustomEvent('nayanet:navigate',{detail:{path:routes.notes}}));const event=events[0];return <><div className="hub-hero"><div className="hero-copy"><div className="eyebrow">NAYANET INTELLIGENT HUB · PRIMARY INTELLIGENCE</div><h1>Intelligence<br/><em>that stays connected.</em></h1><p>Capture the event. Register it centrally. Preserve its identity. Let the Intelligent Hub present the same intelligence without creating a competing source.</p><div className="hero-actions"><button className="hero-primary" onClick={focusNaya}>✦ ASK NAYA</button><button className="hero-secondary" onClick={newIntelligence}>＋ NEW INTELLIGENCE</button></div></div><div className="hero-orbit" aria-label="Naya intelligence presence"><div className="orbit-core">✦<span>NAYA</span></div><i/><i/><i/></div></div><IntelligencePulse event={event} feed={feed} authenticated={identity.is_authenticated}/><ComprehensionMap/><div className="feed-toolbar"><div><span className="eyebrow">PRIMARY INTELLIGENCE SYSTEM</span><h2>Smart Feed</h2></div><div className="feed-toolbar-actions">CAPTURE → PIS → CONNECT → COMPOUND</div></div>{error&&<section className="empty-route" role="alert"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Primary intelligence is not available.</h2><p>{error}</p><p>The Hub will not fabricate a replacement event.</p></section>}{!error&&!event&&<section className="empty-route"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Waiting for primary intelligence.</h2><p>No PIS-projected Smart Note is currently available to this Hub build.</p></section>}{event&&<SmartFeedBoard event={event}/>}</>}
 function Workspace({path}:{path:string}):ReactNode{if(path==='/'||path==='/feed')return <Feed/>;return <div className="empty-route"><span className="eyebrow">CANONICAL ROUTE</span><h2>{path}</h2><p>Registered in the Hub architecture. This surface is intentionally not faked until its real capability is implemented.</p></div>}
-
 export default function App(){useEffect(()=>{initializeCognition().catch(()=>{})},[]);return <IdentityProvider><AppShellV3>{path=><Workspace path={path}/>}</AppShellV3></IdentityProvider>}
