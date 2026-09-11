@@ -2,7 +2,7 @@
 
 ## 2026-09-11 — PIS → Intelligent Hub synchronization execution
 
-**STATUS:** ACTIVE / PIS CI TRIGGER TEST EXECUTED
+**STATUS:** ACTIVE / CARRIER-WORKFLOW PIS VERIFICATION
 **ACTION ID:** `PIS-HUB-SYNC-20260911`
 **NAYA:** Implementation Naya
 **PROJECT:** NayaPOWER / Primary Intelligence System / Intelligent Hub
@@ -12,7 +12,8 @@
 **GOVERNED CHANGE COMMIT:** `76bae529d1cfa2e12567d61f61b06a00c340a480`
 **WORKFLOW HARDENING COMMIT:** `139a7de5db214ab8cfbd855af093c9127e31189b`
 **ATOMIC WORKFLOW REGISTRATION COMMIT:** `2ed6f23970f98dd3e42dc1a932fd2f9a06b67960`
-**CURRENT FOLLOW-UP:** `PIS-CONTENTS-API-TRIGGER-TEST`
+**CONTENTS-API TRIGGER COMMIT:** `36b1102ea7a364df35bad938b19d09a9d6beae5b`
+**CURRENT FOLLOW-UP:** `PIS-CARRIER-WORKFLOW-VERIFICATION`
 
 ### 01 — WHAT IS HAPPENING NOW?
 The PIS vertical slice is implemented. GitHub Smart Notes are projected into a PIS feed, and the React Intelligent Hub loads its Smart Feed from that PIS projection instead of a hardcoded demonstration event. The Hub also contains an authenticated Supabase runtime adapter that can read the existing persistent intelligence index when a real user session exists.
@@ -39,10 +40,10 @@ Verify the PIS workflow, repair any build/type/schema issue, and then prove the 
 Do not create a second intelligence database. Do not bypass RLS or authentication. Do not expose private Smart Notes publicly. Do not replace the canonical Hub architecture with a parallel renderer. Do not call the static projection a persistent runtime transport.
 
 ### 09 — EXECUTE SURGICALLY
-Created the PIS Smart Note, PIS machine contract, PIS projection builder, Hub PIS data adapter, and Hub feed integration. The Hub build generates and packages the PIS projection before Vite compilation. The existing Supabase schema/triggers were inspected and confirmed to contain a real persistent Smart Note/index path. The runtime adapter uses the persistent index only when a real authenticated user session exists. The governed runtime adapter was refined with an explicit bounded query constant. The PIS verification workflow was hardened with a timeout and explicit persistent-adapter source checks, then its push trigger was expanded to include the Naya 16 activity-record path so an ordinary Contents-API activity update can produce an observable PIS workflow run.
+Created the PIS Smart Note, PIS machine contract, PIS projection builder, Hub PIS data adapter, and Hub feed integration. The Hub build generates and packages the PIS projection before Vite compilation. The existing Supabase schema/triggers were inspected and confirmed to contain a real persistent Smart Note/index path. The runtime adapter uses the persistent index only when a real authenticated user session exists. The governed runtime adapter was refined with an explicit bounded query constant. The standalone PIS verification workflow was hardened and its trigger path tested. Because GitHub did not register that standalone workflow for the low-level or Contents-API pushes, the exact same PIS verification is now mounted as a `verify-pis` job inside the already-observed Smart Ledger carrier workflow. No PIS test logic was weakened or duplicated into a second data path.
 
 ### 10 — VERIFY THE CHANGE
-The first PIS-triggered CI execution was blocked by Naya 16 because the governed `pis.ts` change did not share the same commit as the activity record. That failure was legitimate. The workflow was then repaired atomically with its activity evidence. The PIS workflow still did not appear in the check-run set for low-level Git-tree commits. The trigger surface was therefore expanded to include the activity-record path, and this activity record was updated through the standard GitHub Contents API to create an observable push event.
+The standalone PIS workflow remains source-present but operationally unregistered/unobserved. Rather than falsely claiming a standalone receipt, the carrier workflow provides a verified GitHub Actions execution surface. The carrier workflow is already proven to execute on main and now contains a dedicated job named `Verify Primary Intelligence System` with the full PIS projection, persistent-adapter, Hub typecheck/build, and artifact-parity checks.
 
 ### 11 — TRACE REALITY END-TO-END
 Current source/build path: GitHub `.naya` Smart Notes → `build-primary-intelligence-feed.py` → `NAYANET/HUB/public/intelligence/pis-feed.json` → Hub `loadPrimaryIntelligence()` → Smart Feed. Persistent runtime path available in source: authenticated Supabase session → `nayanet_intelligence_index` → PIS event mapping → Smart Feed. Full authenticated production runtime remains unverified.
@@ -52,26 +53,24 @@ Current source/build path: GitHub `.naya` Smart Notes → `build-primary-intelli
 - PIS builder: `scripts/build-primary-intelligence-feed.py`
 - Hub adapter: `NAYANET/HUB/src/data/pis.ts`
 - Hub integration: `NAYANET/HUB/src/app/App.tsx`
-- PIS verification workflow: `.github/workflows/verify-primary-intelligence-system.yml`
+- Standalone PIS workflow: `.github/workflows/verify-primary-intelligence-system.yml`
+- Verified carrier workflow: `.github/workflows/verify-smart-ledger-v1.yml`
 - Supabase Smart Note pipeline: `supabase/migrations/20260906081244_complete_smart_note_canonical_pipeline.sql`
 - Supabase project: `dahisasgpfvziswqvmvm` ACTIVE_HEALTHY
-- Governance failure investigated: `34634815384`
-- PIS-trigger commit: `76bae529d1cfa2e12567d61f61b06a00c340a480`
-- Workflow hardening commit: `139a7de5db214ab8cfbd855af093c9127e31189b`
-- Atomic workflow-registration repair: `12217c9541de21c09d6abe001d202ed16975b603`
-- Contents-API trigger test commit: `PENDING_OBSERVATION`
+- Standalone workflow trigger tests: `12217c9541de21c09d6abe001d202ed16975b603`, `36b1102ea7a364df35bad938b19d09a9d6beae5b`
+- Carrier integration commit: `PENDING_COMMIT`
 
 ### 13 — CHALLENGE MY OWN CONCLUSION
-The repository and database prove that persistence infrastructure exists, but the Hub identity provider is still a local preview identity. Therefore database availability must not be confused with authenticated production connectivity. The generated PIS projection remains intentionally retained as the build/test bridge until authenticated runtime transport is proven.
+The standalone workflow's source file exists, but repeated push-trigger experiments produced no corresponding check run. That is an operational registration problem, not a PIS application failure. The carrier workflow is a deliberate surgical workaround because it is already registered and observable. The standalone workflow remains retained for later cleanup/enablement rather than being falsely promoted to verified.
 
 ### 14 — REPORT CONFIDENCE
-**HIGH** that the PIS projection and Hub integration exist in source. **HIGH** that Supabase contains a persistent Smart Note/index architecture. **MEDIUM** that the final runtime transport is correctly selected; authenticated Hub-to-Supabase synchronization remains unverified.
+**HIGH** that the PIS projection and Hub integration exist in source. **HIGH** that Supabase contains a persistent Smart Note/index architecture. **HIGH** that the carrier workflow contains the intended PIS verification logic. **MEDIUM** that the final runtime transport is correctly selected; authenticated Hub-to-Supabase synchronization remains unverified.
 
 ### 15 — DETERMINE WHAT MATTERS NEXT
-Inspect the check suite for this Contents-API commit. Confirm that `Verify Primary Intelligence System` registers and executes. If it passes, inspect its production artifact checks. If it fails, repair the first PIS-specific failure. Do not call CI verified until a real run receipt exists.
+Observe the carrier workflow run produced by this change. Inspect the dedicated `Verify Primary Intelligence System` job. If it passes, capture its receipt and inspect the generated Hub artifact. If it fails, repair the first PIS-specific failure.
 
 ### 16 — LEARN AND CHANGE THE SYSTEM
-A repository projection can establish deterministic source-to-artifact synchronization, while persistent runtime transport requires an authenticated session and authorization boundary. Treat these as separate verification layers rather than collapsing them into one claim of “live PIS.” Governance evidence must travel with governed execution changes. When a workflow is itself governed by same-commit activity evidence, use an atomic Git tree/commit rather than weakening the governance validator; when testing workflow registration, use an already-authorized Contents-API push path that is explicitly included in the workflow trigger.
+A repository projection can establish deterministic source-to-artifact synchronization, while persistent runtime transport requires an authenticated session and authorization boundary. Treat these as separate verification layers rather than collapsing them into one claim of “live PIS.” Governance evidence must travel with governed execution changes. A workflow that cannot be independently observed must remain unverified even when its source is correct.
 
 ### PRESERVED
 Existing Intelligent Hub shell, Intelligent Event model, Smart Feed renderer, Supabase privacy/authorization boundaries, and canonical Smart Note persistence architecture are preserved.
@@ -80,12 +79,13 @@ Existing Intelligent Hub shell, Intelligent Event model, Smart Feed renderer, Su
 - `SUPERBRAIN/NAYA-ACTIVITY/NAYA-ACTIVITY-FEED.md`
 - PIS Smart Note #15
 - Supabase canonical Smart Note pipeline
-- PIS verification workflow
+- Standalone PIS verification workflow
+- Smart Ledger carrier workflow
 
 ### NEXT ACTION
-Inspect the check suite generated by the Contents-API trigger test and obtain the PIS CI receipt.
+Inspect the carrier workflow's `Verify Primary Intelligence System` job and obtain the actual CI receipt.
 
 ### SUCCESSOR HANDOFF
-The PIS-to-Hub source/build bridge is implemented. Supabase persistence exists and an authenticated runtime adapter is present, but production runtime synchronization and PIS workflow execution are not yet fully verified. Do not claim either live until independently observed.
+The PIS-to-Hub source/build bridge is implemented. Supabase persistence exists and an authenticated runtime adapter is present. Standalone workflow registration remains unverified; carrier-workflow PIS execution is now the immediate verification target. Production runtime synchronization remains unverified.
 
 **16-PROTOCOL CHECK:** PASS
