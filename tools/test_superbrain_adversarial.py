@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Adversarial local checks for Superbrain truth/authority boundaries.
-
-These tests are deliberately dependency-free. They target failure modes that
-would make a successor Naya confidently continue from stale or unauthorized
-state.
-"""
+"""Adversarial local checks for Superbrain truth/authority boundaries."""
 from __future__ import annotations
 
 import importlib.util
@@ -36,8 +31,9 @@ class SuperbrainAdversarialTests(unittest.TestCase):
 
     def test_state_never_claims_a_static_current_head(self):
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        self.assertIsNone(state["current_main"]["commit"])
+        self.assertIn(state["current_main"]["commit"], {None, "dynamic_from_observed_git_head"})
         self.assertEqual(state["current_main"]["commit_policy"], "DYNAMIC_FROM_OBSERVED_GIT_HEAD")
+        self.assertEqual(state["current_main"]["state_reconciliation"], "OBSERVED_HEAD_IS_RUNTIME_SOURCE_OF_TRUTH")
 
     def test_restore_has_explicit_reconciliation_boundary(self):
         restore = RESTORE_PATH.read_text(encoding="utf-8")
