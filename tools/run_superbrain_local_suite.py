@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Run the NayaPOWER Superbrain acceptance/regression suite locally.
 
-The runner discovers explicitly named Superbrain checks plus relevant regression
-families already present in the repository. Legacy product-specific renderer
-contracts are not Superbrain acceptance criteria unless explicitly promoted.
+The runner executes canonical Superbrain checks plus relevant regression
+families. Legacy product-specific renderer contracts are excluded unless
+explicitly promoted into the Superbrain acceptance boundary.
 """
 from __future__ import annotations
 
@@ -20,6 +20,8 @@ CORE = [
     ROOT / "tools/qa_naya_context_boot.py",
     ROOT / "tools/qa_superbrain_continuity.py",
     ROOT / ".naya/runtime/restore_context.py",
+    ROOT / "SUPERBRAIN/test_naya_power_excellence.py",
+    ROOT / "SUPERBRAIN/test_naya_power_decision_calculus.py",
     ROOT / "tools/test_superbrain_a_b_c_compounding.py",
     ROOT / "tools/test_superbrain_adversarial.py",
 ]
@@ -46,12 +48,11 @@ def selected_commands() -> list[list[str]]:
         else:
             commands.append([sys.executable, str(path.relative_to(ROOT))])
     seen = {tuple(command[1:]) for command in commands}
-    candidates = sorted(ROOT.glob("tools/test_*.py"))
-    candidates += sorted(ROOT.glob("tools/qa_*.py"))
+    candidates = sorted(ROOT.glob("tools/test_*.py")) + sorted(ROOT.glob("tools/qa_*.py"))
     for path in candidates:
-        lowered = path.name.lower()
         if path.name in EXCLUDED_LEGACY_CONTRACTS:
             continue
+        lowered = path.name.lower()
         if not any(keyword in lowered for keyword in REGRESSION_KEYWORDS):
             continue
         command = [sys.executable, str(path.relative_to(ROOT))]
@@ -79,13 +80,7 @@ def main() -> int:
         t0 = time.monotonic()
         proc = subprocess.run(command, cwd=ROOT, text=True, capture_output=True)
         elapsed_ms = round((time.monotonic() - t0) * 1000, 2)
-        result = {
-            "command": command,
-            "exit_code": proc.returncode,
-            "elapsed_ms": elapsed_ms,
-            "stdout": proc.stdout,
-            "stderr": proc.stderr,
-        }
+        result = {"command": command, "exit_code": proc.returncode, "elapsed_ms": elapsed_ms, "stdout": proc.stdout, "stderr": proc.stderr}
         results.append(result)
         print(f"[{proc.returncode}] {' '.join(command)} ({elapsed_ms} ms)")
         if proc.stdout:
@@ -97,7 +92,7 @@ def main() -> int:
             print("CONTINUING — failure recorded; remaining checks will still execute.")
 
     receipt = {
-        "schema": "naya-power-local-superbrain-suite/v3",
+        "schema": "naya-power-local-superbrain-suite/v4",
         "started_at": started.isoformat(),
         "finished_at": datetime.now(timezone.utc).isoformat(),
         "observed_head": head,
@@ -105,6 +100,7 @@ def main() -> int:
         "github_actions_used": False,
         "selected_check_count": len(commands),
         "excluded_checks": EXCLUDED_LEGACY_CONTRACTS,
+        "mandatory_layers": ["EXCELLENCE_BY_DEFAULT", "DECISION_CALCULUS", "VERIFICATION", "SMART_NOTE_PROMOTION", "A_TO_B_TO_C_COMPOUNDING"],
         "commands": results,
         "overall": "PASS" if overall == 0 else "FAIL",
     }
