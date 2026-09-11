@@ -1,0 +1,81 @@
+{
+  "contract": "PRIMARY_INTELLIGENCE_SYSTEM",
+  "schema_version": "1.0",
+  "status": "CANONICAL_CONTRACT",
+  "purpose": "Central intake, indexing, relationship, authorization, and projection layer for primary Smart Note intelligence events.",
+  "architecture": {
+    "canonical_source": "GitHub Smart Note",
+    "primary_event_layer": "PIS",
+    "hub_model": "NAYANET/HUB IntelligentEvent",
+    "presentation": "Existing Intelligent Block / Smart Feed renderer",
+    "evidence_layer": "Smart Ledger",
+    "rule": "ONE_CANONICAL_EVENT_MANY_AUTHORIZED_VIEWS"
+  },
+  "flow": [
+    "SMART_NOTE_CREATED",
+    "PRIMARY_EVENT_DETECTED",
+    "PIS_INGESTED",
+    "PIS_INDEXED",
+    "PIS_CONNECTED",
+    "PIS_VERIFIED",
+    "AUTHORIZED_PROJECTION_CREATED",
+    "HUB_INGESTED",
+    "HUB_RENDERED",
+    "RUNTIME_VERIFIED"
+  ],
+  "required_identity": [
+    "event_id",
+    "smart_note_id",
+    "canonical_source_ref",
+    "event_type",
+    "event_at"
+  ],
+  "required_state": [
+    "ingestion_state",
+    "authorization_state",
+    "projection_state",
+    "verification_state"
+  ],
+  "time_index": {
+    "hierarchy": ["year", "month", "day"],
+    "semantics": "navigation/index over the same event identity; never an instruction to duplicate the underlying Smart Note"
+  },
+  "privacy": {
+    "ingestion_is_not_publication": true,
+    "connection_is_not_permission": true,
+    "projection_must_respect_source_privacy": true
+  },
+  "failure_rules": {
+    "canonical_exists_pis_failed": "retain canonical source and retry PIS ingestion without creating a duplicate primary event",
+    "pis_succeeded_hub_failed": "retain PIS event and retry Hub projection without claiming Hub delivery",
+    "hub_received": "verify same event_id before treating projection as synchronized"
+  },
+  "anti_duplication": {
+    "primary_event_id_is_stable": true,
+    "same_event_may_have_multiple_views": true,
+    "same_smart_note_must_not_create_duplicate_primary_events": true
+  },
+  "verification_requirements": [
+    "Smart Note exists",
+    "primary event detected",
+    "PIS event registered",
+    "event identity preserved",
+    "projection authorized",
+    "Hub receives or retrieves event",
+    "Hub renders event",
+    "same event_id observed end-to-end"
+  ],
+  "non_goals": [
+    "second Smart Feed renderer",
+    "second Intelligent Hub",
+    "competing intelligence database without architectural justification",
+    "invented API or persistence transport",
+    "automatic public disclosure of private Smart Notes"
+  ],
+  "current_verification": {
+    "smart_note_canonical_git_object": "VERIFIED",
+    "hub_intelligent_event_contract": "VERIFIED",
+    "smart_ledger_evidence_runtime": "VERIFIED",
+    "end_to_end_smart_note_to_pis_to_hub_runtime": "NOT_VERIFIED"
+  }
+}
