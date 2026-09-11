@@ -11,15 +11,19 @@
 ### VERIFIED DEPLOYMENT
 - Vercel project: `naya-power`
 - Project ID: `prj_cHa9gwrtscCW8JuMDjcvw6DafaOK`
-- Production deployment: `dpl_twhFhc3NNWP2iRpsnNjuu16jnRMX`
+- Latest production deployment: `dpl_5G4r74MjsjPCxSAWudgQzoyY89G9`
 - Production URL: `https://naya-power.vercel.app`
-- Production deployment status: READY
-- Deployed source commit: `3cc9910b1dcaf6d0b6a8174e04ce8cbf0946b5d1`
-- Vercel build logs show the current `main` commit and build of `NAYANET/HUB` via root `vercel.json`.
-- Public artifact verification: HTTP 200; canonical marker `NAYANET-HUB-REACT-CANONICAL`; title `NayaNET — Intelligent Hub`; PIS artifact endpoint `/intelligence/pis-feed.json` returns `PIS-1.0`.
+- Deployment status: READY
+- Deployed source commit: `1467ebf3f338640c404efcf2b3be42c77cd50e4e`
+- Vercel build logs explicitly show `Branch: main` and the exact commit above.
+- Build completed successfully: PIS feed generated with 20 source events; Vite transformed 77 modules; production output deployed.
+- Public artifact verification: HTTP 200; canonical marker `NAYANET-HUB-REACT-CANONICAL`; title `NayaNET — Intelligent Hub`.
+- Direct `/settings` navigation returns the Hub shell through the new SPA rewrite.
+- `/intelligence/pis-feed.json` returns HTTP 200 and `PIS-1.0`.
+- Vercel runtime error check for the last 30 minutes: no runtime errors.
 
 ### V7 DISPOSITION
-`nayanet-intelligent-hub-v7.vercel.app` was independently observed as a minimal `NayaNET` HTML shell, not the current Intelligent Hub runtime. It is obsolete deployment state. The linked `naya-power` project was previously production-linked to `v7-intelligent-hub-live`; that branch was deliberately fast-forwarded/force-aligned to the current `main` commit because functioning current architecture supersedes the obsolete V7 implementation. The root `vercel.json` now builds `NAYANET/HUB` directly, so the production project serves the current Hub rather than the old root shell.
+`nayanet-intelligent-hub-v7.vercel.app` was independently observed as a minimal `NayaNET` HTML shell, not the current Intelligent Hub runtime. It is obsolete deployment state. The current `naya-power` production project now builds `NAYANET/HUB` from the canonical `main` branch through root `vercel.json`. The old V7 implementation is therefore replaceable history, not the runtime authority.
 
 ### DATABASE REPAIR — SMART NOTE → INDEX
 The database contained the canonical `nayanet_index_intelligence_row()` trigger function, but `smart_note_events` did not have the required trigger attached. This was a real runtime integrity defect.
@@ -40,49 +44,50 @@ Known Smart Note used for deterministic index verification:
 - index source ID: same Smart Note event ID
 - index title: same Smart Note subject
 
-A no-op status update on the known event was used to exercise the newly attached trigger and confirm the persistent index row was created with the same source identity. This proves the database trigger/index path mechanically; it does **not** substitute for an authenticated browser write.
+A no-op status update exercised the newly attached trigger and confirmed the persistent index row with identical event identity. This proves the database trigger/index path mechanically; it does **not** substitute for an authenticated browser write.
 
 ### CURRENT HUB AUTHENTICATION PATH
-The current Hub now uses a centralized public Supabase configuration and a real Auth boundary:
-- Supabase URL is client configuration.
-- Supabase publishable key is client-safe; no service-role key is used.
+- Supabase URL and publishable key are centralized client configuration; no service-role key is used.
 - `IdentityProvider` listens to real Supabase Auth state.
-- PIS uses `supabase.auth.getUser()` before persistent index retrieval.
+- PIS calls `supabase.auth.getUser()` before persistent retrieval.
 - Persistent PIS queries `nayanet_intelligence_index` for the authenticated owner only.
-- Preview/GitHub projection is not labeled as live persistence.
-- Authentication UI exists at the Hub Settings route and uses real `signInWithPassword` / `signOut`.
+- Preview/GitHub projection is explicitly distinguished from live persistent transport.
+- Settings contains real `signInWithPassword` / `signOut` UI.
 - Access/refresh tokens are not placed in the application Identity object.
+- RLS remains the database authority.
 
 ### WHAT IS VERIFIED
-- current Hub source is on `main`
-- current Hub production deployment is READY
-- exact production HTML is the current React Hub, not the old V7 shell
-- PIS build artifact is publicly served
-- Vercel production build logs show current `main` source and `NAYANET/HUB` build
-- real Supabase Auth code path exists in the deployed source
-- known Smart Note exists in `smart_note_events`
-- `smart_note_events → nayanet_intelligence_index` trigger path was repaired and exercised
-- persistent index preserves exact Smart Note event identity
-- PIS adapter source retrieves the persistent index through authenticated Supabase
-- RLS policies exist on both Smart Note events and persistent index
+- canonical Hub source on `main`
+- current Hub deployed to production from `main`
+- exact deployed artifact is the current React Hub, not V7 shell
+- production PIS artifact is served
+- direct client route navigation works
+- production build completes successfully
+- no recent Vercel runtime errors
+- real Supabase Auth code path is present
+- known Smart Note exists
+- Smart Note → persistent index trigger path repaired and exercised
+- exact event identity preserved across source and index
+- persistent PIS adapter is wired to authenticated Supabase
+- RLS policies exist on Smart Note events and persistent index
 
 ### NOT YET VERIFIED
 - a real browser session authenticated through the public Hub
 - authenticated creation of a new Smart Note through the canonical Smart Note API
-- RLS-authorized observation of that new event in the index from the browser session
-- the same event being retrieved by the live PIS adapter for that session
-- the same event identity being rendered by the live Hub during that authenticated session
+- RLS-authorized browser observation of that new event
+- live PIS retrieval of that authenticated event
+- live Hub rendering of that same authenticated event identity
 
 ### CURRENT BLOCKER
-The remaining gate is not an architecture defect and must not be faked: Naya's tool environment cannot borrow Shawn's browser session or credentials. The Hub now has the real authentication entry point, but a human must authenticate through the deployed Hub before an authenticated runtime receipt can legitimately be recorded. No credentials are requested from chat and no RLS bypass will be used.
+The remaining gate is genuine identity. Naya's tool environment cannot borrow Shawn's browser session or credentials. The Hub now has the real authentication entry point, but a human must authenticate through the deployed Hub before the final authenticated runtime receipt can legitimately be recorded. No credentials are requested from chat and no RLS bypass will be used.
 
 ### END-TO-END TARGET
 `REAL AUTHENTICATED HUB SESSION → SUPABASE AUTH USER → RLS-AUTHORIZED SMART NOTE → smart_note_events → nayanet_intelligence_index → PIS → HUB DISPLAY`
 
 ### NEXT HIGHEST-VALUE ACTION
-Open `https://naya-power.vercel.app`, use the real Hub authentication entry point, and sign in with the existing NayaNET/Supabase member account. Then execute the first authenticated runtime receipt against the known/new Smart Note and capture the exact event ID at every hop. If any hop diverges, repair it and repeat before declaring completion.
+Open `https://naya-power.vercel.app`, use the real Hub authentication entry point, and sign in with the existing NayaNET/Supabase member account. Then execute the first authenticated runtime receipt and capture the exact event ID at every hop. If any hop diverges, repair it and repeat before declaring completion.
 
 ### LEARNING
-Functionality outranks appearance. The current deployment was therefore rebuilt around the actual Hub engine, the obsolete V7 shell was demoted to replaceable history, and a real database defect was repaired before further visual iteration. The remaining proof gate is intentionally external because authenticated identity must be genuine.
+Functionality outranks appearance. The current deployment was rebuilt around the actual Hub engine, obsolete V7 state was replaced as runtime plumbing, and a real database defect was repaired before further visual iteration. The final proof gate is intentionally external because authenticated identity must be genuine.
 
 **16-PROTOCOL CHECK:** PASS
