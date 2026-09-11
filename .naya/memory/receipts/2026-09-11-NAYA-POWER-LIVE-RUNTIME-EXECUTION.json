@@ -1,50 +1,56 @@
 {
   "schema": "naya/memory/receipt/v1",
-  "receipt_id": "NPR-LIVE-RUNTIME-2026-09-11-0348",
+  "receipt_id": "NPR-LIVE-RUNTIME-2026-09-11-0351",
   "status": "VERIFIED",
-  "objective": "Make Naya Power executable and continuously self-tested at the live ChatGPT action boundary.",
+  "objective": "Make Naya Power executable, fail-closed at consequential execution boundaries, and continuously self-tested at the live ChatGPT action boundary.",
   "source_of_truth": "SoulSchoolAcademy/NayaPOWER main",
   "starting_main": "d8b366db3fcb909c330bebbc422c7fdd3d7ca00d",
-  "final_main_after_runtime_merge": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
-  "implementation_commit": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
-  "selected_action": "ADD_LIVE_HOST_BRIDGE_AND_HARDEN_RUNTIME_CONTINUITY",
-  "why": "The existing kernel, adapter, and orchestrator were executable but lacked a single live-host entrypoint and the continuous CI gate needed to prove the complete path.",
+  "runtime_merge": "ba67b1c52b9866a24c85d42bc3755b4c0912a631",
+  "execution_gateway_merge": "2237d6c2e2dedf60ddb51269cd7ef0763f1d896f",
+  "selected_action": "EXTEND_LIVE_RUNTIME_WITH_FAIL_CLOSED_EXECUTION_GATEWAY",
+  "why": "The live host bridge was proven, but consequential execution still needed an explicit claim/state boundary and caller-independent risk derivation before side effects.",
   "changes": [
-    "Added .naya/runtime/naya_power_live.py",
-    "Added .naya/runtime/test_naya_power_live.py",
-    "Extended runtime_activation_check.py to require and test the live host bridge",
-    "Hardened runtime continuity CI with Python 3.12, compileall, JSON validation, and live-host testing",
-    "Changed sparse checkout to non-cone runtime-only patterns so the repository's unrelated legacy long filename cannot block runtime verification",
-    "Fixed an actual orchestrator continuation bug where escalation candidates exposed 'reasons' but continuation_for attempted to read 'reason'",
-    "Added NAYA-POWER-LIVE-HOST-RUNBOOK-V1.0.md"
+    "Added execution_controller.py with READY → CLAIMED → EXECUTING → OBSERVED → VERIFIED → HANDED_OFF transitions.",
+    "Added risk_engine.py with conservative derived risk classification.",
+    "Added model_tool_gateway.py requiring claimed execution context and matching derived risk.",
+    "Added test_model_tool_gateway.py covering missing claim, valid authorization, and caller-supplied lower-risk rejection.",
+    "Extended runtime_activation_check.py to require and self-test the execution boundary.",
+    "Extended runtime continuity workflow to compile, validate, and runner-test the new execution boundary.",
+    "Updated the live-host runbook to document the claim/gateway boundary."
   ],
   "observations": [
     {
       "run": "34559765072",
       "status": "FAIL",
-      "failure": "Sparse checkout still attempted to materialize an unrelated repository filename that exceeds the runner filesystem limit."
+      "failure": "Sparse checkout attempted to materialize an unrelated legacy repository filename beyond the runner filesystem limit."
     },
     {
       "run": "34559794298",
       "status": "PASS",
-      "result": "Kernel 5/5; Orchestrator 3/3; ChatGPT host adapter 4/4; Live host bridge 3/3; Activation gate ACTIVATED_AND_SELF_TESTED."
+      "result": "Kernel 5/5; Orchestrator 3/3; ChatGPT host adapter 4/4; Live host bridge 3/3; Activation gate passed."
+    },
+    {
+      "run": "34559975679",
+      "status": "PASS",
+      "result": "Checkout, Python 3.12, compileall, JSON validation, kernel, orchestrator, host adapter, live host, execution controller, risk engine, model/tool gateway, activation gate, and cleanup all completed successfully."
     }
   ],
   "learning": [
-    "A sparse checkout using cone mode can still materialize root-level legacy files; use non-cone path patterns when repository-wide checkout contains unsafe filenames.",
-    "Executable integration tests found a real field-name mismatch that unit-level kernel tests did not cover.",
-    "A successful constitutional kernel is not enough; the live host seam and continuation path must be runner-tested together.",
-    "No external action or production outcome is called verified by the runtime merely because the runtime selected a candidate."
+    "Do not trust model-declared risk; derive risk from action metadata and fail closed on mismatch.",
+    "A consequential action needs an explicit execution claim before the tool side effect is authorized.",
+    "Execution must have an explicit observation and evidence path before VERIFIED or HANDED_OFF.",
+    "Sparse checkout must use a non-cone runtime-only pattern in this repository because of the unrelated legacy long filename.",
+    "Integration tests are valuable because they found a real continuation field mismatch that lower-level tests did not expose.",
+    "Naya Power does not claim magical interception of hidden model inference; ChatGPT remains the reasoning host and the runtime governs the executable action boundary."
   ],
   "verification": {
-    "github_actions_run": "34559794298",
-    "job_id": "103139988566",
-    "commit_tested": "ac5d975b8cdf293bf6bfca8e90885473e7aae4d8",
-    "main_source_re_read": true,
-    "runtime_cli_present_on_main": true,
-    "runtime_workflow_present_on_main": true,
+    "github_actions_run": "34559975679",
+    "job_id": "103140514433",
+    "commit_tested": "6ac16e2875015f85ee39a8eb9d565bb5d0b13fc2",
+    "all_runtime_steps_success": true,
+    "main_runtime_source_merged": true,
     "false_green_claim": false
   },
   "current_state": "READY_FOR_LIVE_CHATGPT_GOVERNED_WORK",
-  "next_action": "Run the first real acceptance workload against the actual NayaNET Intelligent Hub source; use source-of-truth inspection, candidate generation, constitutional selection, execution, independent verification, receipt, learning, and immediate continuation."
+  "next_action": "Use the actual NayaNET Intelligent Hub source as the first real acceptance workload; inspect source of truth, generate candidate actions, pass the selected consequential action through claim/gateway, execute with the authorized host tool, independently verify the exact outcome, record a receipt, promote the learning, and continue to the next highest-value action."
 }
