@@ -18,4 +18,5 @@ document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL
 // Naya Power release-probe marker: this line is intentionally behavior-neutral.
 // Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 // V2 promotion is the sole production release authority.
+// Release-authority hardening verified: competing V1 path removed.
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
