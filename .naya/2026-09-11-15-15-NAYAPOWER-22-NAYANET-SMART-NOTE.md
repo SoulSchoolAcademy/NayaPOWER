@@ -1,8 +1,8 @@
 # 🌐 NayaPOWER — #22 NayaNET — Canonical Smart Note
 
 DATE: 2026-09-11
-TIME: 15:15 PDT
-STATUS: CANONICAL SMART NOTE / PRODUCT + ARCHITECTURE DEFINITION V1
+TIME: 16:01 PDT
+STATUS: CANONICAL SMART NOTE / PRODUCT + ARCHITECTURE DEFINITION V1.1
 SEQUENCE: 22 OF 27
 SUBJECT: NayaNET
 
@@ -10,7 +10,7 @@ SUBJECT: NayaNET
 
 ## 1. IN A NUTSHELL
 
-NayaNET is the intelligent network layer of Naya Power: a new way for humans and AI to connect, communicate, share intelligence, collaborate, and create value together.
+NayaNET is the intelligent network layer and ecosystem around Naya Power: a new way for humans and AI to connect, communicate, share intelligence, collaborate, organize knowledge, and create value together.
 
 The name expresses the vision simply:
 
@@ -20,17 +20,17 @@ The name expresses the vision simply:
 
 **NayaNET = THE NEW INTELLIGENT NETWORK**
 
-The Internet connected computers and created the foundational network.
-Search engines made the information on that network easier to find.
-Social networks made it easier for people to connect and communicate.
-Mobile computing put the network in people's hands.
-AI added a new layer of machine intelligence.
+The Internet created the foundational network connecting computers and people.
+Search made information easier to find.
+Social networks made human connection scalable.
+Mobile put the network in people's hands.
+AI added a powerful intelligence layer.
 
-NayaNET is envisioned as the next connective layer: an intelligent network where people can use Naya as the interface to search, communicate, connect, share intelligence, collaborate, and act.
+NayaNET is the next layer we are building: an intelligent network organized around human intention, personal intelligence, communication, collaboration, and connection.
 
-The long-term user experience can become extremely simple:
+The long-term experience is simple:
 
-> **You don't need to know which system to use. You just Naya it.**
+> **You don't need to think about which system to use. You just Naya it.**
 
 "Naya, search this."
 "Naya, find this."
@@ -39,7 +39,9 @@ The long-term user experience can become extremely simple:
 "Naya, connect me with them."
 "Naya, send this message."
 
-Naya becomes the intelligent connection point between the human and the network of information, people, tools, services, and intelligence.
+Naya becomes the intelligent connection point between the human and the capabilities available through the underlying AI, NayaNET, connected tools, information, people, and services.
+
+NayaNET does not need to recreate every capability itself. The underlying AI may already provide capabilities such as web search, reasoning, creation, coding, and tool use. **Naya Power adds the Superbrain architecture that organizes, guides, and supercharges that intelligence.**
 
 ---
 
@@ -47,43 +49,29 @@ Naya becomes the intelligent connection point between the human and the network 
 
 The Internet gave humanity a network.
 
-NayaNET is intended to make that network more intelligent and human-centered.
+NayaNET is intended to make interacting with that network more intelligent, personal, and human-centered.
 
 Instead of requiring a person to know which website, application, search engine, social network, messaging system, or tool to open, the person can increasingly communicate their intention directly to Naya.
 
 The human says what they want.
 
-Naya helps determine how to accomplish it.
+Naya helps understand what they mean and determine how to accomplish it using the capabilities available to her.
 
-That can include:
+That can include finding information, communicating, connecting with people, sharing intelligence, collaborating, creating, organizing, participating in Smart Spaces, using Smart Mail, managing Smart Notes, and working with the intelligence systems inside NayaNET.
 
-- finding information;
-- searching knowledge;
-- finding people;
-- communicating;
-- sharing intelligence;
-- collaborating;
-- creating;
-- organizing;
-- connecting to tools;
-- participating in Smart Spaces;
-- sending Smart Mail;
-- sharing Smart Notes;
-- discovering collective intelligence.
-
-The network becomes less about navigating applications and more about accomplishing intentions.
+The goal is to move from **application-first navigation** toward **intention-first interaction**.
 
 ---
 
 ## 3. CHILD
 
-Imagine the whole Internet became a giant city.
+Imagine the Internet became a giant city.
 
 There are libraries, stores, schools, offices, parks, clubs, houses, mailboxes, and millions of people.
 
 Today, you often have to know which building to enter.
 
-NayaNET is like having one really smart helper who can help you get where you want to go.
+NayaNET is like having a really smart helper who can help you get where you want to go.
 
 You say:
 
@@ -97,7 +85,7 @@ Or:
 
 **"Naya, build this."**
 
-Naya helps connect you to the right place, information, people, or action.
+Naya helps connect your intention to the right information, people, place, tool, or action.
 
 That's the idea of a new intelligent network.
 
@@ -107,61 +95,65 @@ That's the idea of a new intelligent network.
 
 The Internet lets computers and people connect.
 
-NayaNET adds intelligence to that connection.
+AI lets you talk to a machine in a much more natural way.
 
-Instead of having to remember where everything lives, you can increasingly tell Naya what you need and let Naya help you find it, communicate it, organize it, or do something with it.
+NayaNET brings another layer around that intelligence: your information, your connections, your communication, your Smart Notes, your Spaces, your intelligence, and the systems that help you use them.
 
-It's a network designed around people and intelligence rather than just websites and applications.
+Instead of having to remember where everything lives, you can increasingly tell Naya what you need and let Naya help you find it, understand it, organize it, communicate it, or do something with it.
 
 ---
 
 ## 5. NAYA
 
-I am the connection point.
+I am the intelligent connection point.
 
-When you say:
+If the underlying AI can search the web, I can use that capability when it is available.
+
+If it can write, code, analyze, create, or use tools, Naya Power gives me a Superbrain architecture designed to help me use those capabilities more effectively and intelligently.
+
+NayaNET gives that intelligence an organized environment for people, intelligence, communication, collaboration, and connection.
+
+So when you say:
 
 **"Naya, find this."**
 
 I can help search.
 
-When you say:
-
 **"Naya, explain this."**
 
 I can help understand it.
-
-When you say:
 
 **"Naya, build this."**
 
 I can help create it.
 
-When you say:
-
 **"Naya, connect me."**
 
-I can help identify the appropriate people, spaces, or communication paths.
-
-When you say:
+I can help identify the appropriate people, Spaces, or communication paths.
 
 **"Naya, share this."**
 
-I can help prepare and route the intelligence according to the authority, privacy, and sharing rules that apply.
+I can help prepare and route it according to the authority, privacy, and sharing rules that apply.
 
-The goal is not for me to replace every existing network or service.
+The goal is not for NayaNET to replace every existing network or service.
 
-The goal is for me to become a simpler intelligent interface through which humans can access and coordinate many kinds of network capability.
+The goal is for Naya to become the intelligent interface through which humans can increasingly access and coordinate many kinds of capability.
 
 ---
 
 ## 6. MACHINE
 
-NayaNET is an ecosystem/network architecture connecting:
+The architecture can be understood as:
 
-**HUMANS ↔ NAYA ↔ INTELLIGENCE ↔ PEOPLE ↔ TOOLS ↔ INFORMATION ↔ SPACES ↔ SERVICES**
+**HUMAN ↔ NAYA POWER ↔ NAYA ↔ NAYANET ↔ INTELLIGENCE / PEOPLE / TOOLS / INFORMATION / SPACES / SERVICES**
 
-Core network capabilities include:
+Naya Power is the Superbrain/supercharger layer on top of the underlying AI.
+
+Naya is the intelligent operating partner/interface.
+
+NayaNET is the intelligent network and ecosystem surrounding that experience.
+
+Core NayaNET capabilities include:
 
 - Connections;
 - Smart Mail;
@@ -172,19 +164,20 @@ Core network capabilities include:
 - Smart Feed;
 - Intelligent Library;
 - Primary Intelligence System;
-- Collective Intelligence;
+- Compounding Intelligence System;
+- Adaptive Learning;
 - Naya Superbrain;
-- external tools and services where authorized.
+- Collective Intelligence;
+- Smart Ledger;
+- external tools and services where the underlying AI and authorized integrations provide access.
 
-NayaNET should be treated as a network architecture and product ecosystem, not merely as another social-media website.
-
-Its distinguishing layer is intelligent orchestration: Naya helps the human navigate, understand, connect, communicate, create, and act.
+NayaNET should therefore be understood as an **intelligent network/ecosystem**, not simply another social-media website.
 
 ---
 
 ## 7. LEARNING
 
-NayaNET becomes more valuable as useful intelligence compounds through authorized participation.
+NayaNET becomes more valuable as useful intelligence compounds.
 
 A person's experience can become a Smart Note.
 
@@ -192,23 +185,23 @@ The Smart Note can enter the PIS.
 
 CIS and Adaptive Learning can process and retain useful learning.
 
-Explicit Smart Share can allow selected wisdom to contribute to collective intelligence.
+Smart Share can intentionally allow selected wisdom to contribute to collective intelligence.
 
-Future users can retrieve and apply verified collective learning.
+Future users can retrieve and apply useful collective learning.
 
-The network therefore has a potential compounding loop:
+The intended compounding path is:
 
 **HUMAN EXPERIENCE → SMART NOTE → PERSONAL INTELLIGENCE → OPTIONAL SMART SHARE → COLLECTIVE INTELLIGENCE → FUTURE RETRIEVAL → BETTER ACTION**
 
-The network must preserve consent, privacy, provenance, and individual authority throughout that process.
+The system should preserve consent, privacy, provenance, human authority, and verification throughout that process.
 
 ---
 
 ## 8. ULTIMATE MEANING
 
-NayaNET represents a shift from a network people merely navigate to a network people can increasingly interact with through intelligence.
+NayaNET represents a shift toward a network people can increasingly **talk to and work with**, rather than merely navigate.
 
-The Internet made connection possible.
+The Internet connected computers.
 
 Search made information discoverable.
 
@@ -218,23 +211,24 @@ Mobile made network access ubiquitous.
 
 AI made natural-language interaction with information and tools possible.
 
-NayaNET aims to combine these capabilities into an intelligent human-centered network experience.
+NayaNET aims to build an intelligent layer around those capabilities so the human can focus more on **what they want to accomplish** and less on **which system they have to operate**.
 
 The larger vision is:
 
 > **The network should work for the human, rather than requiring the human to work the network.**
 
-Naya becomes the connective intelligence layer.
-
 ---
 
 ## 9. HOW IT CONNECTS
 
-### Naya
-The intelligent interface and operating partner through which humans can interact with the network.
+### Naya Power
+The Superbrain/supercharger architecture applied to an underlying AI.
 
-### Naya Superbrain
-The intelligence architecture that gives Naya context, protocols, knowledge, continuity, and operating discipline.
+### Naya
+The intelligent operating partner and human-facing interface.
+
+### NayaNET
+The intelligent network and ecosystem connecting intelligence, people, communication, collaboration, and capabilities.
 
 ### Connections
 Who the human chooses to stay connected with.
@@ -267,7 +261,7 @@ The continuous movement of intelligence, action, learning, and value through the
 
 ## 10. HOW TO APPLY IT
 
-The user experience should increasingly be intention-first.
+The intended user experience is increasingly intention-first.
 
 Instead of:
 
@@ -275,7 +269,7 @@ Instead of:
 
 The goal is closer to:
 
-**TELL NAYA WHAT YOU WANT → NAYA UNDERSTANDS → NAYA CONNECTS/ACTS → VERIFY → CONTINUE**
+**TELL NAYA WHAT YOU WANT → NAYA UNDERSTANDS → NAYA USES THE AVAILABLE CAPABILITIES → VERIFY → CONTINUE**
 
 Examples:
 
@@ -297,29 +291,31 @@ The complexity should increasingly disappear behind the intelligent interface.
 
 ## 11. WHAT'S IN IT FOR YOU?
 
-Less app-hopping.
+**You get a smarter way to use the intelligence you already have access to.**
 
-Less searching for where things live.
+Less app-hopping.
 
 Less remembering which tool does what.
 
-More direct access to information.
+Less hunting for where your own intelligence lives.
 
-More direct access to people.
+More direct access to information and knowledge.
 
-More intelligent communication.
+A more intelligent way to organize what you learn.
 
-More useful collaboration.
+A more connected way to communicate and collaborate.
 
-More continuity.
+A place for your intelligence to compound instead of disappearing into disconnected conversations and applications.
 
-More retained intelligence.
+A future where you can increasingly tell Naya what you want instead of learning how to operate every individual system.
 
-More opportunities to contribute and benefit from collective wisdom.
+And, through the current Ambassador program, an opportunity to **share NayaNET/Naya Power and earn 50% of the revenue generated by the people you refer.**
 
-The ultimate promise is simple:
+The current launch experience includes a **five-day free trial/academy challenge**, with launch pricing of **$14/month, $37/quarter, $75/year, or $150 lifetime**. Pricing is intended to increase as the product evolves.
 
-> **You don't have to learn how the network works. You can tell Naya what you want the network to help you accomplish.**
+The simple promise is:
+
+> **Don't learn how to work every system. Tell Naya what you want to accomplish.**
 
 ---
 
@@ -331,15 +327,13 @@ The conceptual progression is:
 
 **INTERNET → SEARCH → SOCIAL → MOBILE → AI → NAYANET**
 
-This is not a claim that these technologies literally occurred as a single linear sequence or that NayaNET replaces them.
+This is a product/vision metaphor, not a claim that technology literally developed as one linear sequence.
 
-It is a conceptual model showing the evolution from connection, to discovery, to social connection, to ubiquitous access, to intelligence, and toward intelligent orchestration.
+It represents an evolution from connection, to discovery, to social connection, to ubiquitous access, to machine intelligence, and toward intelligent orchestration.
 
 ---
 
 ## 13. THE CAKE / ICING / ICE CREAM / CARAMEL / WHIPPED CREAM / CHERRY MODEL
-
-A simple product metaphor:
 
 **INTERNET = CAKE**
 
@@ -347,7 +341,7 @@ The foundational network.
 
 **SEARCH = ICING**
 
-A layer that made the information on the network easier to find.
+A layer that made information on the network easier to find.
 
 **SOCIAL NETWORKS = ICE CREAM**
 
@@ -363,17 +357,19 @@ A new intelligence layer for understanding, generation, reasoning, and action.
 
 **NAYANET = THE CHERRY** 🍒
 
-The connective intelligent layer that aims to bring the pieces together into a simpler human experience.
+The connective intelligent layer we are building to bring these capabilities together into a simpler human experience.
 
 This is a metaphor, not a technical dependency graph.
 
 ---
 
-## 14. NAYA AS AN INTELLIGENT INTERFACE
+## 14. NAYA AS THE INTELLIGENT INTERFACE
 
-The long-term product hypothesis is that users increasingly interact with services through natural language and intelligent agents rather than navigating each underlying application directly.
+NayaNET's long-term product direction is **intention-first interaction**.
 
-Naya can become a universal-ish interface across authorized capabilities without requiring the underlying services to disappear.
+The user should increasingly be able to state the desired outcome rather than manually navigate the systems required to produce it.
+
+This does not require underlying services to disappear.
 
 Search engines can still exist.
 
@@ -385,19 +381,21 @@ Websites can still exist.
 
 Apps can still exist.
 
-Naya can provide a new layer through which humans access and coordinate them.
+Naya can become an intelligent layer through which humans access and coordinate available capabilities.
+
+The underlying AI remains important. Naya Power does not replace the AI engine; it **supercharges it with the Naya Superbrain architecture**.
 
 ---
 
 ## 15. NETWORK EFFECT
 
-NayaNET becomes more useful as more valuable people, intelligence, tools, and interactions become connected.
+NayaNET can become more useful as more valuable people, intelligence, tools, and interactions become connected.
 
 Potential loop:
 
 **MORE USERS → MORE CONNECTIONS → MORE INTERACTION → MORE INTELLIGENCE → MORE VALUE → MORE REASONS TO PARTICIPATE**
 
-This must not become a justification for collecting everything.
+This is a future network-effect model, not a claim that the full network effect already exists.
 
 Privacy by Choice and human authority remain foundational constraints.
 
@@ -405,15 +403,15 @@ Privacy by Choice and human authority remain foundational constraints.
 
 ## 16. INTELLIGENCE NETWORK VS SOCIAL NETWORK
 
-A traditional social network primarily optimizes connection and engagement.
+A traditional social network is heavily centered on connection and engagement.
 
-NayaNET should optimize for:
+NayaNET is intended to optimize for:
 
 **CONNECTION + INTELLIGENCE + COLLABORATION + USEFULNESS + VALUE**
 
 Engagement is not the ultimate objective.
 
-A five-minute interaction that solves a meaningful problem may be more valuable than five hours of passive scrolling.
+A five-minute interaction that solves a meaningful problem can be more valuable than hours of passive scrolling.
 
 This connects directly to MVPA.
 
@@ -449,19 +447,25 @@ These systems should complement one another rather than become redundant copies 
 
 ---
 
-## 19. SEARCH MODEL
+## 19. SEARCH AND CAPABILITY MODEL
 
-NayaNET should treat search as more than keyword retrieval.
+NayaNET's long-term search vision is broader than simply returning keyword results.
 
-The long-term goal is intent-aware discovery:
+The goal is intent-aware assistance:
 
-**WHAT DOES THE HUMAN ACTUALLY WANT TO KNOW, FIND, CONNECT WITH, OR ACCOMPLISH?**
+**WHAT DOES THE HUMAN ACTUALLY WANT TO KNOW, FIND, CONNECT WITH, CREATE, OR ACCOMPLISH?**
 
-Naya can then help determine the appropriate search, source, person, tool, or action.
+The important architectural distinction is that **Naya Power does not itself need to own every underlying capability**.
 
-This requires evidence discipline.
+If the underlying AI can search the external Internet, Naya can use that capability through the AI.
 
-Naya should distinguish between:
+If the underlying AI can use tools, Naya can potentially orchestrate those tools where access and authorization exist.
+
+NayaNET's own job is to organize the user's intelligence, content, people, communication, collaboration, and network experience.
+
+NayaNET therefore becomes the intelligent coordination layer rather than a claim that every external capability is already a native NayaNET feature.
+
+Naya should also distinguish:
 
 **KNOWN → OBSERVED → VERIFIED → INFERRED → UNKNOWN**
 
@@ -481,7 +485,7 @@ A network can inform.
 
 A network can facilitate.
 
-A network should not silently convert capability into authority.
+A network can act when the human has authorized the action and the relevant capability exists.
 
 The governing relationship remains:
 
@@ -500,9 +504,9 @@ The network should therefore optimize toward:
 Examples:
 
 - finding the right person rather than exposing hundreds of irrelevant profiles;
-- finding the answer rather than returning endless links;
+- finding the useful answer rather than returning endless noise;
 - creating the right Space rather than another unused channel;
-- sending the useful intelligence rather than generating notification noise;
+- sending useful intelligence rather than generating notification noise;
 - surfacing the right learning rather than maximizing engagement for its own sake.
 
 ---
@@ -513,7 +517,7 @@ NayaNET should feel like a continuous intelligent flow rather than disconnected 
 
 **QUESTION → ANSWER → ACTION → CONNECTION → LEARNING → NEXT ACTION**
 
-The network should preserve useful context so the human does not repeatedly restart from zero.
+The architecture should preserve useful context so the human does not repeatedly restart from zero.
 
 ---
 
@@ -541,57 +545,149 @@ while preserving individual authority and privacy.
 
 ---
 
-## 24. ECONOMIC POSSIBILITY
+## 24. CURRENT AMBASSADOR ECONOMY + FUTURE VERIFIED VALUE
 
-NayaNET may support new models for rewarding useful contribution, referrals, participation, curation, creation, and verified value.
+### Current Ambassador Program
 
-Any economic or revenue-sharing model must be treated as a product/business policy and implemented with clear rules, legal compliance, transparent accounting, fraud controls, and explicit user agreement.
+Everyone who joins NayaNET can become an Ambassador at no cost.
 
-The architectural principle is:
+The Ambassador receives a referral link and can share NayaNET/Naya Power with others.
 
-> **Create value → recognize value → reward verified value responsibly.**
+The current model is:
+
+**50% OF REVENUE GENERATED BY YOUR REFERRALS**
+
+This is **50% of revenue, not 50% of profit**.
+
+The current launch pricing supporting the model is:
+
+- $14/month;
+- $37/quarter;
+- $75/year;
+- $150 lifetime;
+- five-day free trial/academy challenge;
+- launch pricing is currently 50% off and is intended to increase over time.
+
+The planned evolution of Ambassador payout frequency is:
+
+**MONTHLY → BIWEEKLY → WEEKLY → DAILY → EVENTUALLY INSTANT**
+
+The payout frequency is a future evolution; it is not a claim that all future frequencies are already implemented.
+
+### Future Verified-Value Economy
+
+Separately, NayaNET is intended to eventually recognize and reward **verified value contributed to the network**.
+
+For example, a human or AI system could potentially create something that produces meaningful value for the network. A future system could evaluate that contribution, verify it, and reward it.
+
+That automatic contribution-reward system is **not the current Ambassador program and is not yet the current automatic runtime**.
+
+The intended future principle is:
+
+> **CREATE VALUE → RECOGNIZE VALUE → VERIFY VALUE → REWARD VALUE**
+
+This connects directly to Smart Ledger, Value and Math, Scorecarding/OSCAR, Collective Intelligence, and MVPA.
 
 ---
 
-## 25. CURRENT STATE
+## 25. NAYANET VS EXISTING SERVICES
 
-### Defined
+NayaNET is not being built on the requirement that Google, Facebook, email, websites, or other services disappear.
 
-- NayaNET is the intelligent network vision and ecosystem layer of Naya Power.
-- NayaNET means a new/intelligent network concept.
-- Naya is intended to act as the human-facing intelligent connection point.
-- Connections, Smart Mail, Smart Spaces, Smart Share, Smart Feed, intelligence systems, and collective intelligence form parts of the ecosystem.
-- Human authority and privacy remain foundational.
-- MVPA is the value optimization principle.
+They can continue to exist.
 
-### Not Yet Fully Verified
+The North Star is that a dramatically more intelligent and integrated experience may make many traditional ways of accomplishing the same task **less compelling to a user once they experience Naya**.
 
-- A universal Naya interface across the external Internet.
-- Universal search and action orchestration across third-party services.
-- Complete network-scale collective intelligence.
-- A production-wide economic reward system.
-- Any claim that users will literally stop using Google, Facebook, email, or other services.
+The useful analogy is:
 
-These are future product hypotheses, not current runtime guarantees.
+> **If you could use a dramatically better vehicle at no additional practical cost, you might naturally prefer it to the older vehicle.**
+
+The objective is not to force people away from existing services.
+
+The objective is to build something so useful that people choose it because it makes more sense for what they want to accomplish.
+
+The long-term competitive advantage is intended to come from the combination of:
+
+**AI + SUPERBRAIN + PERSONAL CONTEXT + INTELLIGENCE + CONNECTION + COMMUNICATION + COLLABORATION + CONTINUITY + VALUE**
 
 ---
 
-## 26. NORTH STAR
+## 26. CURRENT / FUTURE STATE
 
-> **NayaNET is the intelligent network where humans and AI connect, communicate, share intelligence, collaborate, and create value together.**
+### CURRENTLY DEFINED / BEING BUILT
+
+- NayaNET is the intelligent network/ecosystem layer around Naya Power.
+- Naya Power is the Superbrain/supercharger architecture applied to an underlying AI.
+- Naya is the intelligent operating partner/interface.
+- NayaNET organizes intelligence, content, people, communication, collaboration, and network capabilities.
+- Connections, Smart Mail, Smart Spaces, Smart Share, Smart Feed, Intelligent Library, PIS, CIS, Adaptive Learning, Smart Ledger, and Collective Intelligence are parts of the defined ecosystem.
+- The Ambassador program provides a current 50%-of-revenue referral model.
+- The five-day free trial/academy and current launch pricing are part of the current product/business model.
+
+### FUTURE NORTH STAR / NOT YET COMPLETE
+
+- Naya acting as an increasingly universal intention-first interface across available external capabilities.
+- Broader orchestration of third-party tools and services.
+- Network-scale Collective Intelligence.
+- Automatic verified-value contribution/reward systems.
+- Increasingly frequent Ambassador payouts, ultimately toward instant payout.
+- A mature network effect in which users increasingly prefer Naya as their primary way of interacting with the network.
+
+These future statements describe the direction being built, not a claim that every capability is already a complete NayaNET-native runtime feature.
+
+---
+
+## 27. NORTH STAR
+
+> **NayaNET is the intelligent network where humans and AI connect, communicate, share intelligence, collaborate, learn, and create value together.**
 
 And the simplest expression:
 
 > **The Internet connected computers. NayaNET connects intelligence.**
 
-Or, for the user experience:
+And the user experience:
 
 > **Don't navigate the network. Naya the network.**
 
-The vision is not to destroy what came before.
+NayaNET is not about destroying what came before.
 
-It is to build the next layer on top of what humanity has already created.
+It is about building a new intelligent layer on top of what humanity has already created—and making the experience dramatically more useful, personal, connected, and valuable.
 
-**Internet → Search → Social → Mobile → AI → NayaNET**
+**INTERNET → SEARCH → SOCIAL → MOBILE → AI → NAYANET**
 
-**Connection → Discovery → Community → Access → Intelligence → Intelligent Connection.**
+**NAYA POWER = THE SUPERCHARGER**
+
+**NAYA = THE INTELLIGENT PARTNER**
+
+**NAYANET = THE INTELLIGENT NETWORK**
+
+---
+
+## MACHINE IMPLEMENTATION NOTE
+
+This Smart Note defines product direction and architecture. It does not by itself prove that every NayaNET capability described above is implemented in production.
+
+Where a capability is already implemented, runtime verification belongs to the relevant system contract, code, deployment, and verification receipt.
+
+Where a capability is described as future, the implementation objective is to move it from **VISION → DEFINITION → BUILD → VERIFY → PRODUCTION**.
+
+The operating rule remains:
+
+**SOURCE → BUILD → DEPLOY → EXACT TARGET → INDEPENDENT OBSERVATION → VERIFY → LEARN → CONTINUE**
+
+---
+
+## SMART NOTE STATUS
+
+**CANONICAL V1.1 — UPDATED AFTER HUMAN CLARIFICATION**
+
+This revision specifically clarifies:
+
+1. Naya Power is the Superbrain/supercharger on top of an underlying AI such as ChatGPT; it does not need to recreate capabilities the underlying AI already provides.
+2. NayaNET organizes the intelligent network/ecosystem rather than claiming every external capability is already a native NayaNET feature.
+3. External Internet search can be available through the underlying AI; universal NayaNET-native search/orchestration remains a North Star.
+4. The current Ambassador program is real and provides 50% of referral-generated revenue.
+5. Future verified-value rewards are a separate future system and are not the current Ambassador mechanism.
+6. Future payout-frequency evolution is distinct from the current payout process.
+7. NayaNET is not defined by eliminating Google, Facebook, email, or other services; the North Star is making Naya the more compelling intelligent interface.
+8. Current product reality and future product vision are explicitly separated so the Smart Note remains ambitious without misrepresenting runtime state.
