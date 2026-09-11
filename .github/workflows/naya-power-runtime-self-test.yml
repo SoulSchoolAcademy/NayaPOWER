@@ -1,0 +1,39 @@
+name: Naya Power Runtime — Self Test
+
+on:
+  push:
+    branches:
+      - feat/naya-power-runtime-v1
+    paths:
+      - '.naya/runtime/NAYA-POWER-RUNTIME-CONTRACT.json'
+      - '.naya/runtime/naya_power_kernel.py'
+      - '.naya/runtime/test_naya_power_kernel.py'
+      - '.github/workflows/naya-power-runtime-self-test.yml'
+  pull_request:
+    paths:
+      - '.naya/runtime/NAYA-POWER-RUNTIME-CONTRACT.json'
+      - '.naya/runtime/naya_power_kernel.py'
+      - '.naya/runtime/test_naya_power_kernel.py'
+      - '.github/workflows/naya-power-runtime-self-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  self-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact runtime source only
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: |
+            .naya/runtime/NAYA-POWER-RUNTIME-CONTRACT.json
+            .naya/runtime/naya_power_kernel.py
+            .naya/runtime/test_naya_power_kernel.py
+          sparse-checkout-cone-mode: false
+      - name: Run kernel unit self-test
+        run: python3 .naya/runtime/test_naya_power_kernel.py
+      - name: Run runtime self-test
+        run: python3 .naya/runtime/naya_power_kernel.py --self-test
