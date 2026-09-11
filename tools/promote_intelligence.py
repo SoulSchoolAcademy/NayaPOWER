@@ -39,10 +39,7 @@ def normalize(text: str) -> str:
 
 
 def fingerprint(event: dict[str, Any]) -> str:
-    basis = "|".join(
-        normalize(str(event.get(k, "")))
-        for k in ("project", "lesson", "root_cause", "recommendation")
-    )
+    basis = "|".join(normalize(str(event.get(k, ""))) for k in ("project", "lesson", "root_cause", "recommendation"))
     return hashlib.sha256(basis.encode("utf-8")).hexdigest()[:16]
 
 
@@ -108,6 +105,14 @@ def classify(event: dict[str, Any]) -> tuple[list[str], str]:
     return homes, ("PROMOTION_PROPOSAL_REQUIRES_AUTHORITY" if restricted else "AUTO_PROMOTE_APPROVED_DESTINATIONS")
 
 
+def display_path(path: Path) -> str:
+    """Return a stable path for repository writes and isolated test fixtures."""
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
+
+
 def write_note(event: dict[str, Any], target: Path, heading: str) -> str:
     target.mkdir(parents=True, exist_ok=True)
     path = target / f"{event['event_id']}.md"
@@ -148,7 +153,7 @@ Source: {', '.join(event.get('source', []))}
 """
     if not path.exists() or path.read_text(encoding="utf-8") != content:
         path.write_text(content, encoding="utf-8")
-    return str(path.relative_to(ROOT))
+    return display_path(path)
 
 
 def load_prior_event_index(events: list[tuple[Path, dict[str, Any]]]) -> dict[str, Any]:
@@ -209,7 +214,7 @@ This entry is append-oriented intelligence. It does not override canonical gover
 """
     if not path.exists() or path.read_text(encoding="utf-8") != content:
         path.write_text(content, encoding="utf-8")
-    return str(path.relative_to(ROOT))
+    return display_path(path)
 
 
 def update_hub(summary: list[dict[str, Any]]) -> None:
@@ -270,7 +275,7 @@ def main() -> int:
         promoted.append(feed_path)
         receipts.append({
             "event_id": event["event_id"],
-            "source_event": str(path.relative_to(ROOT)),
+            "source_event": display_path(path),
             "fingerprint": fingerprint(event),
             "candidate_homes": homes,
             "auto_promotable_homes": auto_homes,
