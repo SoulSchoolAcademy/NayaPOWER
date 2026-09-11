@@ -70,9 +70,11 @@ Relationships may link the event to concepts, other collective events, contradic
 
 `CANDIDATE → REJECTED` is also valid.
 
-## Collective Chain
+## Collective Chain Technology
 
-Validated CIEs may enter the Collective Chain, where later events can reinforce, qualify, contradict, or supersede earlier intelligence. The chain preserves lineage and uncertainty instead of manufacturing consensus.
+Validated CIEs may enter **Collective Chain Technology (CCT)**, where later events can reinforce, qualify, contradict, or supersede earlier intelligence. CCT is NayaNET's purpose-built collective intelligence chain architecture; it is **not blockchain technology**. It may use useful properties such as durable identifiers, timestamps, cryptographic integrity mechanisms, chained references, append-only history, verification receipts, provenance, and tamper evidence without becoming or being defined as a blockchain.
+
+The chain preserves lineage and uncertainty instead of manufacturing consensus.
 
 ## Security and privacy boundary
 
@@ -81,3 +83,10 @@ This schema intentionally has no contributor name, email, GitHub username, repos
 ## Compatibility
 
 CIEs are downstream of canonical Note Events and Wisdom Contribution Protocol decisions. They do not replace `.naya/memory/events/...` or create a second personal-memory system.
+
+## Terminology lock
+
+- **Collective Chain Technology (CCT)** = official NayaNET technology/architecture name.
+- **Collective Chain** = the connected chain of validated collective intelligence and related evidence.
+- **Smart Chain** = descriptive shorthand for the connected intelligence-chain concept, not a separate technology.
+- **Smart Ledger** = the evidence and integrity layer that records system events and supports verification.
