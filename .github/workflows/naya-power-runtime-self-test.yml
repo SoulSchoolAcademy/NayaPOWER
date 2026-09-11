@@ -9,6 +9,12 @@ on:
       - '.naya/runtime/naya_power_kernel.py'
       - '.naya/runtime/test_naya_power_kernel.py'
       - '.github/workflows/naya-power-runtime-self-test.yml'
+  pull_request:
+    paths:
+      - '.naya/runtime/NAYA-POWER-RUNTIME-CONTRACT.json'
+      - '.naya/runtime/naya_power_kernel.py'
+      - '.naya/runtime/test_naya_power_kernel.py'
+      - '.github/workflows/naya-power-runtime-self-test.yml'
   workflow_dispatch:
 
 permissions:
