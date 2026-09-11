@@ -28,8 +28,10 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
     for key in ("claim_id", "block_id", "owner", "scope", "start_head"):
         if state.get(key) in (None, "", [], {}):
             raise AssertionError("execution context missing " + key)
+    if action["protected_baseline"] != state["start_head"]:
+        raise AssertionError("protected baseline does not match claimed execution baseline")
     updated = transition("EXECUTING", action=action, derived_risk=derived)
-    return {"status": "AUTHORIZED", "action_id": action["action_id"], "execution_status": updated["status"], "claim_id": updated["claim_id"], "block_id": updated["block_id"], "risk": derived, "side_effect_allowed": True, "proof_required_after_action": True}
+    return {"status": "AUTHORIZED", "action_id": action["action_id"], "execution_status": updated["status"], "claim_id": updated["claim_id"], "block_id": updated["block_id"], "risk": derived, "side_effect_authorized": True, "side_effect_executed": False, "proof_required_after_action": True}
 
 
 def self_test() -> int:
@@ -48,6 +50,13 @@ def self_test() -> int:
             assert "does not match derived risk" in str(exc)
         else:
             raise AssertionError("gateway accepted caller-supplied risk below derived risk")
+        stale = dict(action, protected_baseline="stale-head")
+        try:
+            authorize(stale)
+        except AssertionError as exc:
+            assert "protected baseline" in str(exc)
+        else:
+            raise AssertionError("gateway accepted a stale protected baseline")
         print("PASS — model/tool gateway authorization self-test GREEN")
         return 0
     finally:
