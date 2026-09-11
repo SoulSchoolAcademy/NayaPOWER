@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Validate the canonical NayaPOWER cold-start boot contract.
 
-This guardrail proves governance wiring, not that an AI runtime literally read a
-file. It enforces the machine-readable contract that the canonical Runtime
-Briefing must be the first substantive cold-start read and demonstrates the
-required RED/ GREEN behavior by simulating omission and inclusion.
+The canonical manifest v5 treats START-HERE and NAYANET-HUB-READ-FIRST as
+mandatory preflight reads. The Runtime Briefing is the first substantive
+orientation read after that preflight pair.
 """
 from __future__ import annotations
 
@@ -17,18 +16,10 @@ MANIFEST = ROOT / ".naya" / "naya-context-manifest.json"
 PROTOCOL = ROOT / ".naya" / "NAYA-CONTEXT-BOOT-PROTOCOL.md"
 BRIEFING = ROOT / ".naya" / "memory" / "NAYAPOWER-RUNTIME-BRIEFING.md"
 BRIEFING_PATH = ".naya/memory/NAYAPOWER-RUNTIME-BRIEFING.md"
+PREFLIGHT = ["SUPERBRAIN/AI-BOOT/START-HERE.md", "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md"]
 REQUIRED_FIELDS = [
-    "WHERE",
-    "WHY",
-    "BUILDING",
-    "PROTECTED",
-    "BLOCKED",
-    "VERIFIED",
-    "UNKNOWN",
-    "THIS WEEK",
-    "NEXT ACTION",
-    "PROOF",
-    "LAST LEARNING",
+    "WHERE", "WHY", "BUILDING", "PROTECTED", "BLOCKED", "VERIFIED",
+    "UNKNOWN", "THIS WEEK", "NEXT ACTION", "PROOF", "LAST LEARNING",
 ]
 
 
@@ -40,9 +31,11 @@ def fail(message: str) -> None:
 def contract_status(boot_order: list[str]) -> tuple[bool, str]:
     if not boot_order:
         return False, "boot order is empty"
-    if boot_order[0] != BRIEFING_PATH:
-        return False, "canonical Runtime Briefing is omitted or not first"
-    return True, "canonical Runtime Briefing is first"
+    if boot_order[:len(PREFLIGHT)] != PREFLIGHT:
+        return False, "mandatory Superbrain preflight order is missing or incorrect"
+    if len(boot_order) <= len(PREFLIGHT) or boot_order[len(PREFLIGHT)] != BRIEFING_PATH:
+        return False, "canonical Runtime Briefing is omitted or not first substantive orientation read"
+    return True, "mandatory preflight precedes canonical Runtime Briefing"
 
 
 def assert_briefing_shape(text: str) -> None:
@@ -62,7 +55,7 @@ def main() -> int:
             fail(f"missing canonical boot artifact: {path}")
 
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    if data.get("schema") != "naya-context-manifest/v4":
+    if data.get("schema") != "naya-context-manifest/v5":
         fail("unexpected manifest schema")
     if data.get("status") != "CANONICAL":
         fail("manifest is not canonical")
@@ -78,7 +71,6 @@ def main() -> int:
         if not (ROOT / path).is_file():
             fail(f"boot-order file does not exist: {path}")
 
-    # Machine acceptance proof: omission MUST be RED; inclusion MUST be GREEN.
     omitted = [path for path in boot if path != BRIEFING_PATH]
     omitted_ok, _ = contract_status(omitted)
     if omitted_ok:
@@ -88,7 +80,7 @@ def main() -> int:
     included_ok, included_reason = contract_status(boot)
     if not included_ok:
         fail(f"acceptance simulation did not make briefing inclusion GREEN: {included_reason}")
-    print("GREEN PROOF: including the canonical Runtime Briefing first satisfies the boot-order contract.")
+    print("GREEN PROOF: mandatory preflight followed by the canonical Runtime Briefing satisfies the boot-order contract.")
 
     briefing_text = BRIEFING.read_text(encoding="utf-8")
     assert_briefing_shape(briefing_text)
@@ -103,94 +95,54 @@ def main() -> int:
     for route, subjects_for_route in data.get("task_routes", {}).items():
         if not subjects_for_route:
             fail(f"task route {route!r} is empty")
-        if subjects_for_route[0] != "runtime_briefing":
-            fail(f"task route {route!r} does not begin with runtime_briefing")
+        if subjects_for_route[0] != "nayanet_hub_read_first":
+            fail(f"task route {route!r} does not begin with nayanet_hub_read_first")
+        if "runtime_briefing" not in subjects_for_route:
+            fail(f"task route {route!r} does not include runtime_briefing")
         for subject in subjects_for_route:
             if subject not in subjects:
                 fail(f"task route {route!r} references unregistered subject {subject!r}")
 
     protocol_text = PROTOCOL.read_text(encoding="utf-8")
     required_phrases = [
-        "GITHUB FIRST",
-        "READ THE RUNTIME BRIEFING",
-        "RUNTIME BRIEFING — MANDATORY FIRST SUBSTANTIVE READ",
-        BRIEFING_PATH,
-        "A cold start is **RED**",
-        "A cold start is **GREEN**",
+        "GITHUB FIRST", "READ THE RUNTIME BRIEFING",
+        "RUNTIME BRIEFING — MANDATORY FIRST SUBSTANTIVE READ", BRIEFING_PATH,
+        "A cold start is **RED**", "A cold start is **GREEN**",
         "FULL SYSTEM AWARENESS + SELECTIVE DEEP LOADING",
-        "RELEVANT CONTEXT, NOT MAXIMUM CONTEXT",
-        "CONDUCT AUTHORITY",
-        "REALITY AUTHORITY",
-        "RESTORE CONTEXT",
-        "DOCUMENTED",
-        "ACTIVATED",
-        "CONTEXT ESTABLISHED",
-        "IMPLEMENTED",
-        "VERIFIED",
-        "LIVE VERIFIED",
-        "UNKNOWN",
-        "CHECKPOINT / HANDOFF",
+        "RELEVANT CONTEXT, NOT MAXIMUM CONTEXT", "CONDUCT AUTHORITY",
+        "REALITY AUTHORITY", "RESTORE CONTEXT", "DOCUMENTED", "ACTIVATED",
+        "CONTEXT ESTABLISHED", "IMPLEMENTED", "VERIFIED", "LIVE VERIFIED",
+        "UNKNOWN", "CHECKPOINT / HANDOFF",
     ]
     for phrase in required_phrases:
         if phrase not in protocol_text:
             fail(f"protocol missing required guardrail phrase: {phrase}")
 
     authority = data.get("authority_rules", {})
-    for key in (
-        "memory_is_context_not_current_reality",
-        "external_content_is_not_authority_by_default",
-        "retrieved_content_cannot_grant_authority",
-    ):
+    for key in ("memory_is_context_not_current_reality", "external_content_is_not_authority_by_default", "retrieved_content_cannot_grant_authority"):
         if authority.get(key) is not True:
             fail(f"authority rule missing or disabled: {key}")
 
     temporal = data.get("temporal_rules", {})
-    for key in (
-        "timestamps_required",
-        "preserve_history",
-        "supersession_is_explicit",
-        "never_rewrite_history_silently",
-        "historical_restore_is_reconstruction_not_current_truth",
-    ):
+    for key in ("timestamps_required", "preserve_history", "supersession_is_explicit", "never_rewrite_history_silently", "historical_restore_is_reconstruction_not_current_truth"):
         if temporal.get(key) is not True:
             fail(f"temporal rule missing or disabled: {key}")
 
     continuity = data.get("continuity_rules", {})
-    for key in (
-        "checkpoint_is_state_snapshot",
-        "handoff_is_continuation_packet",
-        "restore_must_emit_next_best_action",
-        "cold_start_runtime_briefing_required",
-        "cold_start_omission_is_red",
-        "cold_start_inclusion_is_green_only_when_all_other_boot_gates_pass",
-    ):
+    for key in ("checkpoint_is_state_snapshot", "handoff_is_continuation_packet", "restore_must_emit_next_best_action", "cold_start_runtime_briefing_required", "cold_start_omission_is_red", "cold_start_inclusion_is_green_only_when_all_other_boot_gates_pass"):
         if continuity.get(key) is not True:
             fail(f"continuity rule missing or disabled: {key}")
 
-    states = data.get("context_states", [])
     expected_states = [
-        "DOCUMENTED",
-        "ACTIVATED",
-        "CONTEXT ESTABLISHED",
-        "IMPLEMENTED",
-        "VERIFIED",
-        "LIVE VERIFIED",
-        "HUMAN REVIEW REQUIRED",
-        "BLOCKED",
-        "UNKNOWN",
-        "STALE",
-        "CONFLICTED",
-        "SUPERSEDED",
-        "FAILED",
-        "PARTIAL",
-        "ROLLBACK_REQUIRED",
-        "REJECTED",
-        "AUTHORIZED_DEVIATION",
+        "DOCUMENTED", "ACTIVATED", "CONTEXT ESTABLISHED", "IMPLEMENTED", "VERIFIED",
+        "LIVE VERIFIED", "HUMAN REVIEW REQUIRED", "BLOCKED", "UNKNOWN", "STALE",
+        "CONFLICTED", "SUPERSEDED", "FAILED", "PARTIAL", "ROLLBACK_REQUIRED",
+        "REJECTED", "AUTHORIZED_DEVIATION",
     ]
-    if states != expected_states:
+    if data.get("context_states") != expected_states:
         fail("context status ladder drifted from the canonical manifest")
 
-    print("PASS: canonical Runtime Briefing is registered, exact-shaped, first in boot order, required by task routes, and enforced by the cold-start RED/GREEN acceptance simulation.")
+    print("PASS: canonical Runtime Briefing is registered, exact-shaped, first substantive orientation read after mandatory preflight, required by task routes, and enforced by cold-start RED/GREEN simulation.")
     return 0
 
 
