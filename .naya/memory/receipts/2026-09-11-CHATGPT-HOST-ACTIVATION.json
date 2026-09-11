@@ -1,0 +1,52 @@
+{
+  "schema": "naya/runtime-live-receipt/v1",
+  "receipt_type": "CHATGPT_HOST_ACTIVATION",
+  "status": "ACTION_EXECUTED",
+  "host": "ChatGPT",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "objective": "Make Naya Power operational at the live ChatGPT action boundary with no-dead-end continuation.",
+  "decision": "SELECT",
+  "selected_action": "ACTIVATE_CHATGPT_HOST_PROTOCOL_AND_EXECUTABLE_ADAPTER",
+  "selection_basis": {
+    "expected_benefit": 95,
+    "necessary_cost": 15,
+    "risk_loss": 5,
+    "responsible_value": 75,
+    "tie_break": "lower risk, then deterministic candidate ordering"
+  },
+  "actions_executed": [
+    {
+      "commit": "0d9b74cbe5b69c1efd484c0bb43a170996e7425d",
+      "path": ".naya/runtime/NAYA-POWER-CHATGPT-HOST-INTEGRATION-V1.0.md",
+      "result": "created"
+    },
+    {
+      "commit": "677e5de4df110c6a4806c55fbd394d41e8c66bbe",
+      "path": ".naya/runtime/chatgpt_host_adapter.py",
+      "result": "created"
+    },
+    {
+      "commit": "fc0fb6e81d48a03db6f2fac414ac9d420b5a34de",
+      "path": ".naya/runtime/test_chatgpt_host_adapter.py",
+      "result": "created"
+    },
+    {
+      "commit": "f1f029f5b1eb4e5e36c7b6a6b5a9c0eed34fcfe1",
+      "path": ".github/workflows/naya-power-runtime-continuity.yml",
+      "result": "updated"
+    },
+    {
+      "commit": "039f4b1d27fe76f79af1a549bbd0dceb2c3a982a",
+      "path": ".naya/runtime/runtime_activation_check.py",
+      "result": "updated"
+    }
+  ],
+  "verification": {
+    "repository_observation": "GitHub fetch confirmed the committed runtime workflow and source files after each write.",
+    "automated_ci": "PENDING_OBSERVATION",
+    "local_execution": "NOT_AVAILABLE_FROM_THIS_HOST",
+    "false_green_rule": "No PASS claim made for the new GitHub workflow until an actual workflow run is observed."
+  },
+  "current_state": "READY_FOR_LIVE_CHATGPT_GOVERNED_WORK",
+  "next_execution": "Use this ChatGPT session on a real NayaNET Intelligent Hub task; generate candidate actions, apply the constitutional gate, execute the selected repository/tool action, observe exact output, verify independently, record evidence, and continue without a dead end."
+}
