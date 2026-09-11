@@ -1,0 +1,77 @@
+{
+  "id": "SN-20260911-074500-note-event-to-pis-fresh-retrieval",
+  "event_id": "SE-20260911-074500-note-event-to-pis-fresh-retrieval",
+  "representation": "NAYA",
+  "type": "verification",
+  "title": "Note Event to PIS to fresh-Naya retrieval is runtime-proven",
+  "status": "ACTIVE",
+  "created_at": "2026-09-11T07:45:00-07:00",
+  "effective_at": "2026-09-11T07:45:00-07:00",
+  "superseded_at": null,
+  "source": {
+    "kind": "repository-and-runtime-proof",
+    "path": "tools/test_superbrain_note_event_to_pis.py",
+    "commit": "f570bb971145c34d9278e668e5742ef873b73997",
+    "conversation_ref": null
+  },
+  "summary": "A canonical Intelligence Event can be promoted, propagated into the PIS consumed by the memory runtime, retrieved by a fresh successor context, and propagated idempotently without creating duplicate notes.",
+  "what_happened": "The existing Promotion Engine produced the event representations and feed state. A deterministic PIS propagation boundary was added and an isolated acceptance test proved Note Event → PIS → fresh-Naya retrieval → idempotent re-propagation.",
+  "what_we_learned": [
+    "Promotion and PIS propagation are separate evidence transitions; promotion alone does not prove successor retrieval.",
+    "The canonical PIS must be the same memory authority consumed by fresh-Naya restore/retrieval, otherwise A→B→C can pass while real continuity remains disconnected.",
+    "Propagation must refuse conflicting canonical notes rather than overwrite them.",
+    "Propagation must be idempotent so repeated execution cannot duplicate memory or drift the index."
+  ],
+  "why_it_matters": "This closes the architectural gap between an intelligence event existing in the Promotion Engine path and that intelligence actually becoming retrievable by a successor Naya.",
+  "what_changed": [
+    "Added tools/propagate_intelligence_to_pis.py as a deterministic Note Event → PIS transition.",
+    "Added tools/test_superbrain_note_event_to_pis.py as an end-to-end acceptance proof.",
+    "Made the PIS acceptance test mandatory in tools/run_superbrain_local_suite.py."
+  ],
+  "next_best_action": "Perform the human fresh-Naya behavioral acceptance: new conversation, restore NayaPOWER without copied history, then authorize one safe continuation and observe whether the Naya selects the current frontier, verifies its work, captures learning, and leaves a successor-ready torch.",
+  "tags": [
+    "pis",
+    "note-event",
+    "fresh-naya",
+    "retrieval",
+    "continuity",
+    "promotion",
+    "idempotency",
+    "superbrain"
+  ],
+  "aliases": [
+    "Note Event PIS proof",
+    "fresh Naya retrieval proof",
+    "PIS propagation runtime proof"
+  ],
+  "relationships": {
+    "related": [
+      "SN-20260911-070000-decision-calculus-unified-runtime",
+      "SN-20260825-101500-smart-notes-cis-architecture-naya"
+    ],
+    "depends_on": [
+      "SN-20260911-070000-decision-calculus-unified-runtime"
+    ],
+    "same_event": "SE-20260911-074500-note-event-to-pis-fresh-retrieval",
+    "source_events": []
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "verified_at": "2026-09-11T07:44:09-07:00",
+    "evidence": [
+      "GitHub Actions behavioral-proof run 34611880745",
+      "13-check Superbrain local suite PASS",
+      "NOTE_EVENT_TO_PIS=PASS",
+      "A_TO_B_TO_C=PASS",
+      "SUPERBRAIN_BEHAVIORAL_PROOF=PASS"
+    ],
+    "canonical_url": null,
+    "receipt_url": null,
+    "feed_posted": false
+  },
+  "confidence": "HIGH",
+  "evidence": [
+    "RUNTIME_TESTED_NOT_PRODUCTION_PROVEN",
+    "Fresh-Naya live behavioral acceptance remains human-observation evidence and is not claimed here."
+  ]
+}
