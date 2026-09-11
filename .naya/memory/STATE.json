@@ -1,7 +1,7 @@
 {
   "schema": "naya-power-runtime-state/v2",
   "status": "SUPERBRAIN_CONTINUITY_10_10_EXECUTION_PHASE",
-  "updated_at": "2026-09-10T20:58:00-07:00",
+  "updated_at": "2026-09-10T21:10:00-07:00",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "branch": "main",
   "current_main": {
@@ -29,6 +29,11 @@
   "execution_evidence": {
     "latest_runtime_suite_run": 34560043195,
     "latest_runtime_suite_status": "GREEN",
+    "latest_production_release_run": 34561117755,
+    "latest_production_release_status": "GREEN",
+    "latest_production_source_sha": "4a03a8eec65e104fb2062e8ad0161b26b6b6782d",
+    "latest_production_worker_version": "18500a73-a2c6-4aae-813b-b86eee2164b6",
+    "latest_public_runtime": "https://aged-art-7c12.nayanet.workers.dev",
     "verified_steps": [
       "checkout runtime slice",
       "compile runtime sources",
@@ -40,11 +45,20 @@
       "execution state machine self-test",
       "conservative risk classifier self-test",
       "model/tool gateway self-test",
-      "executable activation gate"
+      "executable activation gate",
+      "NAYANET/HUB typecheck",
+      "NAYANET/HUB production build",
+      "exact artifact inspection",
+      "Cloudflare deployment",
+      "explicit Worker version promotion to 100%",
+      "independent public runtime route parity",
+      "independent public JS asset proof",
+      "independent public source-commit body proof"
     ],
     "repository_integrity_repair": "Removed invalid overlong filename that blocked GitHub runner checkout; preserved its core intelligence-distillation concept as canonical documentation.",
-    "deployment_governance_repair": "Retired self-mutating legacy Living Sun deployment workflow and legacy one-time live-branch mutator. No release workflow should mutate main as a deployment side effect.",
-    "production_authority_finding": "The E02 directory is the documented NayaNET 10 experience source, while the registered production release authority is NAYANET/HUB via deploy-nayanet-hub-canonical-v2.yml to aged-art-7c12. This mismatch is explicitly recorded and must be reconciled before promotion."
+    "deployment_governance_repair": "Retired self-mutating legacy Living Sun deployment workflow, legacy one-time live-branch mutator, and competing Hub V1 release authority. V2 is the sole registered production release implementation.",
+    "production_authority_finding": "The E02 directory is the documented NayaNET 10 experience source, while the proven production release authority is NAYANET/HUB via deploy-nayanet-hub-canonical-v2.yml to aged-art-7c12. This mismatch is explicitly recorded and must be reconciled before E02 promotion.",
+    "runtime_provenance_learning": "A custom X-NayaNET-Source-Commit response header was not observable at the public edge. The release gate now treats the exact source SHA embedded in the served public HTML/JS as the primary runtime provenance proof and records the header only as diagnostic evidence."
   },
   "protected": [
     "NayaPOWER is the shared Superbrain authority",
@@ -57,13 +71,14 @@
     "deliberate-negative fixtures must remain capable of failing",
     "source intent is not runtime truth",
     "release proof must establish source SHA → build artifact → deployed runtime → independent observation",
-    "do not create parallel deployment authorities to make a green dashboard"
+    "do not create parallel deployment authorities to make a green dashboard",
+    "release authority must be singular before production promotion"
   ],
   "current_project": {
     "project_id": "PRJ-NAYA-SUPERBRAIN-CONTINUITY",
     "project_name": "NayaPOWER Superbrain Continuity 10/10",
     "current_objective": "Make NayaPOWER a trusted, high-performance, continuously improving AI operating system whose intelligence, execution, verification, continuity, and learning compound across successor Nayas.",
-    "current_phase": "Executable runtime verified; production authority reconciliation and behavioral proof next",
+    "current_phase": "Executable runtime and current NAYANET/HUB production release verified; source authority reconciliation and behavioral Superbrain proof next",
     "current_intelligent_block": "READ → UNDERSTAND → LEAD → ACT → VERIFY → LEARN → IMPROVE → REPEAT",
     "success_criteria": [
       "Fresh Naya identity is correct",
@@ -98,13 +113,13 @@
     "Adversarial continuity suite remains to be executed",
     "Full governance benchmark remains runtime-unproven",
     "E02 documented canonical experience and NAYANET/HUB production release authority still require explicit reconciliation",
-    "Independent public runtime verification for the current production commit must be observed on a fresh canonical release run"
+    "The public runtime custom source header is not observed; public body source identity is the accepted provenance proof",
+    "Current Naya Power runtime suite has not yet been rerun against the latest production-proof commit"
   ],
   "weighted_priorities": {
     "P0": [
       "Reconcile E02 NayaNET 10 source with NAYANET/HUB production authority without creating a parallel deployment path",
-      "Run the existing canonical NAYANET/HUB V2 release workflow and independently verify the public runtime",
-      "Run python3 tools/run_superbrain_local_suite.py in a real NayaPOWER checkout",
+      "Run python3 tools/run_superbrain_local_suite.py in a real NayaPOWER checkout against current main",
       "Execute A→B→C compounding proof against the existing canonical intelligence path",
       "Perform fresh-Naya live behavioral acceptance"
     ],
@@ -119,10 +134,11 @@
       "Return to MAXIS/Naya Hub product work after Superbrain continuity and release authority are sufficiently proven"
     ]
   },
-  "next_best_action": "Reconcile the documented E02 NayaNET 10 source with the currently registered NAYANET/HUB production release authority, then execute the existing V2 canonical build/deploy/promote/public-runtime proof chain rather than creating another deployment path.",
+  "next_best_action": "Reconcile E02 with the proven NAYANET/HUB production authority, then execute the current-main Superbrain local suite and A→B→C behavioral compounding proof. Do not create another deployment authority.",
   "continuity": {
     "contract": ".naya/SUPERBRAIN-COLD-START-AND-CONTINUITY-CONTRACT.md",
     "current_state_document": ".naya/memory/STATE.json",
+    "execution_receipt": ".naya/memory/receipts/2026-09-10-naya-power-execution-receipt.md",
     "rule": "Every substantive execution must leave current state, evidence, learning, protected assets, unresolved work, and one concrete ready-to-run next action.",
     "live_behavior_rule": "Human fresh-Naya testing is valid behavioral evidence, but it must remain distinct from repository-executed runtime receipts."
   }
