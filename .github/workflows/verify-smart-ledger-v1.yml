@@ -1,0 +1,36 @@
+name: Verify Smart Ledger V1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/contracts/**'
+      - '.naya/runtime/smart_ledger_engine.py'
+      - '.naya/runtime/test_smart_ledger_engine.py'
+      - '.github/workflows/verify-smart-ledger-v1.yml'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile engine
+        run: python -m py_compile .naya/runtime/smart_ledger_engine.py
+      - name: Run Smart Ledger tests
+        working-directory: .naya/runtime
+        run: python -m unittest -v test_smart_ledger_engine.py
+      - name: Validate JSON contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          for path in Path('.naya/contracts').glob('*.json'):
+              json.loads(path.read_text(encoding='utf-8'))
+              print(f'VALID JSON: {path}')
+          PY
