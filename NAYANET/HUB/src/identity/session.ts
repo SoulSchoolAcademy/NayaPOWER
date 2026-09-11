@@ -5,7 +5,7 @@ import {createClient,type Session,type SupabaseClient} from '@supabase/supabase-
 export type Identity={user_id:string;session_id:string;display_name:string;smart_name:string;smart_alias:string;permissions:string[];privacy_state:string};
 
 const SUPABASE_URL=import.meta.env.VITE_SUPABASE_URL||'https://dahisasgpfvziswqvmvm.supabase.co';
-const SUPABASE_KEY=import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY||'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
+const SUPABASE_KEY=import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const supabase:SupabaseClient=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
 
 const fallback:Identity={user_id:'local-preview',session_id:'local-preview',display_name:'Preview',smart_name:'Preview User',smart_alias:'preview',permissions:['personal'],privacy_state:'PRIVATE BY DEFAULT'};
@@ -16,7 +16,7 @@ function identityFromSession(session:Session):Identity{
   const smartName=typeof metadata.smart_name==='string'?metadata.smart_name:displayName;
   const smartAlias=typeof metadata.smart_alias==='string'?metadata.smart_alias:'member';
   const permissions=Array.isArray(metadata.permissions)?metadata.permissions.filter((value):value is string=>typeof value==='string'):['personal'];
-  return {user_id:session.user.id,session_id:session.access_token,display_name:displayName,smart_name:smartName,smart_alias:smartAlias,permissions,privacy_state:'PRIVATE BY DEFAULT'};
+  return {user_id:session.user.id,session_id:session.user.id,display_name:displayName,smart_name:smartName,smart_alias:smartAlias,permissions,privacy_state:'PRIVATE BY DEFAULT'};
 }
 
 export const IdentityContext=createContext<Identity>(fallback);
