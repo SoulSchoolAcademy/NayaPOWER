@@ -1,0 +1,39 @@
+# NayaPOWER Superbrain behavioral proof — current main
+# Executes the existing acceptance suite and the A→B→C compounding proof on the
+# exact current main checkout. This is behavioral evidence, not production proof.
+name: NayaPOWER Superbrain Behavioral Proof
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: naya-power-superbrain-behavioral-proof
+  cancel-in-progress: true
+jobs:
+  behavioral-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact current main
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: main
+      - name: Capture exact observed HEAD
+        id: head
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Compile Python runtime and test sources
+        run: python3 -m compileall -q tools .naya/runtime
+      - name: Run current-main Superbrain behavioral suite
+        run: python3 tools/run_superbrain_local_suite.py
+      - name: Run A→B→C compounding proof independently
+        run: python3 tools/test_superbrain_a_b_c_compounding.py
+      - name: Emit exact proof boundary
+        env:
+          OBSERVED_HEAD: ${{ steps.head.outputs.sha }}
+        run: |
+          echo "SUPERBRAIN_BEHAVIORAL_PROOF=PASS"
+          echo "OBSERVED_HEAD=$OBSERVED_HEAD"
+          echo "A_TO_B_TO_C=PASS"
+          echo "EVIDENCE_CLASS=RUNTIME_TESTED_NOT_PRODUCTION_PROVEN"
