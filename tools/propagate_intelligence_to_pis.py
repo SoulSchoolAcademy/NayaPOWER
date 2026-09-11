@@ -19,11 +19,17 @@ PIS_DIR = ROOT / ".naya" / "memory" / "notes"
 INDEX_PATH = ROOT / ".naya" / "memory" / "INDEX.json"
 
 EVENT_ID_RE = re.compile(r"^SE-([0-9]{8})-([0-9]{6})-(.+)$")
-NOTE_ID_RE = re.compile(r"^SN-([0-9]{8})-([0-9]{6})-(.+)$")
 
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def display_path(path: Path) -> str:
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return str(path)
 
 
 def note_id(event: dict) -> str:
@@ -53,7 +59,7 @@ def build_note(event: dict, event_path: Path) -> dict:
         "superseded_at": None,
         "source": {
             "kind": "canonical-intelligence-event",
-            "path": str(event_path.relative_to(ROOT)),
+            "path": display_path(event_path),
             "commit": None,
             "conversation_ref": None,
         },
@@ -123,7 +129,7 @@ def main() -> int:
         if target.exists():
             current = load(target)
             if current != note:
-                raise SystemExit(f"PIS CONFLICT: {target.relative_to(ROOT)} already exists with different content")
+                raise SystemExit(f"PIS CONFLICT: {display_path(target)} already exists with different content")
             existing += 1
         else:
             target.write_text(json.dumps(note, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
