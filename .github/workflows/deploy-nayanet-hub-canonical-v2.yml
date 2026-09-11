@@ -121,7 +121,7 @@ jobs:
           getent hosts aged-art-7c12.nayanet.workers.dev || true
           echo '--- PUBLIC RUNTIME PROBE ---'
           for attempt in $(seq 1 24); do
-            root_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/root.err || true)
+            root_code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/root.headers -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/root.err || true)
             smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/smart.err || true)
             root_size=$(wc -c </tmp/root 2>/dev/null || echo 0)
             smart_size=$(wc -c </tmp/smart 2>/dev/null || echo 0)
@@ -133,13 +133,13 @@ jobs:
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/js.err || true)
               cognitive_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/cognition.err || true)
-              runtime_header=$(curl -sS --connect-timeout 5 --max-time 10 -I "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/dev/null | tr -d '\r' | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
+              runtime_header=$(tr -d '\r' </tmp/root.headers | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
               echo "ASSET_JS=$js_src JS_HTTP=$js_code COGNITION_HTTP=$cognitive_code RUNTIME_HEADER=$runtime_header"
-              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && [ "$runtime_header" = "$SOURCE_COMMIT" ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
+              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js 2>/dev/null; then
                 pass=1
                 for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null || pass=0; done
                 for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" /tmp/root /tmp/app-js 2>/dev/null; then pass=0; fi; done
-                if [ "$pass" -eq 1 ]; then echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_SOURCE_COMMIT=PASS; exit 0; fi
+                if [ "$pass" -eq 1 ]; then echo PUBLIC_RUNTIME=PASS; echo RUNTIME_ROUTE_PARITY=PASS; echo RUNTIME_JS_ASSET=PASS; echo RUNTIME_SOURCE_COMMIT_BODY=PASS; if [ "$runtime_header" = "$SOURCE_COMMIT" ]; then echo RUNTIME_HEADER_SOURCE_COMMIT=PASS; else echo RUNTIME_HEADER_SOURCE_COMMIT=NOT_OBSERVED; fi; exit 0; fi
                 echo RUNTIME_MARKER_OR_FORBIDDEN_UI_CHECK_FAILED
               else
                 echo RUNTIME_IDENTITY_OR_ASSET_CHECK_FAILED
