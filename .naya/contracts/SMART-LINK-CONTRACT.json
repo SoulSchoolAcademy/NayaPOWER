@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://contracts/smart-link-v1",
+  "title": "NayaNET Smart Link Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["smart_link_id", "schema_version", "target_type", "target_ref", "access_class"],
+  "properties": {
+    "smart_link_id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0"},
+    "target_type": {"type": "string", "enum": ["smart_note", "ledger_event", "value_event", "collective_intelligence"]},
+    "target_ref": {"type": "string", "minLength": 1},
+    "access_class": {"type": "string", "enum": ["public", "authorized"]},
+    "label": {"type": "string", "minLength": 1}
+  }
+}
