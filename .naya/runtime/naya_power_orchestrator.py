@@ -24,7 +24,9 @@ def continuation_for(receipt: dict[str, Any]) -> dict[str, str]:
         }
     if decision == "ESCALATE":
         reasons = " ".join(
-            item["reason"] for item in receipt["candidate_evaluations"] if item["decision"] == "ESCALATE"
+            " ".join(item.get("reasons", []))
+            for item in receipt["candidate_evaluations"]
+            if item["decision"] == "ESCALATE"
         )
         if "evidence" in reasons.lower():
             return {

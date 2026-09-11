@@ -18,8 +18,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           sparse-checkout: |
-            .naya/runtime
-          sparse-checkout-cone-mode: true
+            /.naya/runtime/
+          sparse-checkout-cone-mode: false
+
+      - name: Set up supported Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Compile runtime sources
+        run: python -m compileall -q .naya/runtime
+
+      - name: Validate runtime contract JSON
+        run: python -m json.tool .naya/runtime/NAYA-POWER-RUNTIME-CONTRACT.json >/dev/null
 
       - name: Run constitutional kernel self-test
         run: python .naya/runtime/naya_power_kernel.py --self-test
@@ -29,6 +40,9 @@ jobs:
 
       - name: Run ChatGPT host adapter self-test
         run: python .naya/runtime/test_chatgpt_host_adapter.py
+
+      - name: Run live host bridge self-test
+        run: python .naya/runtime/test_naya_power_live.py
 
       - name: Run executable activation gate
         run: python .naya/runtime/runtime_activation_check.py
