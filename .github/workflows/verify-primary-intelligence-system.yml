@@ -1,0 +1,68 @@
+name: Verify Primary Intelligence System
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/**'
+      - 'scripts/build-primary-intelligence-feed.py'
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/verify-primary-intelligence-system.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build PIS projection
+        run: python3 scripts/build-primary-intelligence-feed.py
+
+      - name: Validate PIS projection
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('NAYANET/HUB/public/intelligence/pis-feed.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          assert data['schema_version']=='PIS-1.0'
+          assert data['event_count']==len(data['events'])
+          ids=[e['event_id'] for e in data['events']]
+          assert len(ids)==len(set(ids)), 'duplicate PIS event_id'
+          for e in data['events']:
+              assert e['event_id']
+              assert e['context']['canonical_path'].startswith('.naya/')
+              assert e['source']['type']=='smart_note'
+          print(f"PIS_PROJECTION=PASS events={len(ids)}")
+          PY
+
+      - name: Install Hub dependencies
+        working-directory: NAYANET/HUB
+        run: npm install
+
+      - name: Typecheck Hub
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+
+      - name: Build Hub from PIS
+        working-directory: NAYANET/HUB
+        run: npm run build
+
+      - name: Verify PIS feed is in production artifact
+        working-directory: NAYANET/HUB
+        run: |
+          test -f dist/intelligence/pis-feed.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          source=json.loads(Path('public/intelligence/pis-feed.json').read_text())
+          artifact=json.loads(Path('dist/intelligence/pis-feed.json').read_text())
+          assert source['event_count']==artifact['event_count']
+          assert [e['event_id'] for e in source['events']]==[e['event_id'] for e in artifact['events']]
+          print('PIS_ARTIFACT_PARITY=PASS')
+          PY
