@@ -15,4 +15,6 @@ import './styles/feed-edge-to-edge.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
+// Naya Power release-probe marker: this line is intentionally behavior-neutral.
+// Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
