@@ -40,6 +40,7 @@ jobs:
           test -f NAYANET/HUB/src/app/App.tsx
           test -f NAYANET/HUB/src/identity/session.ts
           test -f NAYANET/HUB/src/data/pis.ts
+          test -f NAYANET/HUB/src/identity/AuthPanel.tsx
           grep -q 'NAYANET-HUB-REACT-CANONICAL' NAYANET/HUB/index.html
           grep -q 'Primary Intelligence System' NAYANET/HUB/src/app/App.tsx
           echo "CANONICAL HUB SOURCE VERIFIED: $(git rev-parse HEAD)"
