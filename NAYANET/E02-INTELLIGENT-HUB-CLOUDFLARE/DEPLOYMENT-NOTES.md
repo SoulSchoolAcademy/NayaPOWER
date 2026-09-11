@@ -52,3 +52,15 @@ Before Cloudflare publication, verify:
 15. Deployed URL is tested separately; do not infer live success from GitHub commits.
 
 **CONNECTED ≠ DEPLOYED. COMMITTED ≠ RELEASED. VERIFIED ≠ PRODUCTION-PROVEN.**
+
+## Canonical automation boundary — 2026-09-10
+
+The active release workflow is `.github/workflows/deploy-canonical-e02.yml`.
+
+Its contract is:
+
+**SOURCE → VERIFY → SYNTAX CHECK → DEPLOY → EVIDENCE**
+
+The release workflow is read-only against GitHub source. Deployment must never modify `main` as a side effect. This prevents release recursion and preserves source/deployment provenance.
+
+The legacy self-mutating Cloudflare workflow has been retired. The separate one-time live-branch mutator has also been retired because its canonical feed upgrade is already present on the live branch.
