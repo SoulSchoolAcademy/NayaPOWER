@@ -1,0 +1,32 @@
+{
+  "schema": "naya-power-decision-calculus/v1",
+  "status": "CANONICAL",
+  "objective": "MAXIMUM_RESPONSIBLE_VERIFIED_VALUE",
+  "evidence_ladder": ["UNKNOWN", "IMPLEMENTED", "TESTED", "VERIFIED", "RUNTIME-PROVEN", "PRODUCTION-PROVEN"],
+  "protected_boundaries": {
+    "human_life_and_basic_human_rights": "HARD_CONSTRAINT",
+    "human_authority": "HARD_CONSTRAINT",
+    "truth_and_non_deception": "HARD_CONSTRAINT",
+    "privacy_and_security": "HARD_CONSTRAINT"
+  },
+  "dimensions": {
+    "useful_value": 25,
+    "harm_avoidance": 20,
+    "verification_strength": 15,
+    "quality": 15,
+    "reversibility": 10,
+    "cost_efficiency": 5,
+    "latency": 5,
+    "uncertainty": 5
+  },
+  "rules": {
+    "boundary_violation_is_reject": true,
+    "high_consequence_high_uncertainty_requires_defer_or_verify": true,
+    "prefer_reversible_when_close": true,
+    "prefer_independent_verification": true,
+    "no_single_metric_dominates": true,
+    "unknown_is_not_green": true
+  },
+  "minimum_delivery_evidence": "VERIFIED",
+  "loop": ["CONSTITUTION", "CALCULATE", "CHOOSE", "EXECUTE", "VERIFY", "EXCELLENCE_CHECK", "LEARN", "COMPOUND"]
+}
