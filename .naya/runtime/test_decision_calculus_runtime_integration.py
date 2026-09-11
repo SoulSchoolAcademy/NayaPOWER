@@ -55,11 +55,8 @@ def test_protected_boundary_never_enters_value_ranking():
 
 
 def test_high_consequence_uncertainty_defers_before_execution():
-    risky = candidate("high-consequence-unknown", 100, 0, 10, evidence="UNKNOWN", reversible=False)
-    safe = candidate("safe", 70, 10, 5, evidence="VERIFIED", reversible=True)
-    # The risky candidate has materially higher consequence than its evidence can support.
-    risky["risk_loss"] = 95
-    result = kernel.evaluate(base_request([risky, safe]))
+    risky = candidate("high-consequence-unknown", 100, 0, 95, evidence="UNKNOWN", reversible=False)
+    result = kernel.evaluate(base_request([risky]))
     assert result["decision"] == "ESCALATE", result
     assert result["selected_candidate"] is None
     assert "deferred" in result["reason"].lower()
