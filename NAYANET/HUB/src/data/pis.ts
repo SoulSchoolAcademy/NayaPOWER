@@ -7,6 +7,7 @@ type IndexRow={id:string;owner_id:string;source_table:string;source_id:string;ob
 
 const PIS_URL='/intelligence/pis-feed.json';
 const PIS_QUERY_LIMIT=100;
+// Keep the authenticated runtime query bounded; the build projection remains deterministic and complete for source verification.
 const SUPABASE_URL=import.meta.env.VITE_SUPABASE_URL||'https://dahisasgpfvziswqvmvm.supabase.co';
 const SUPABASE_KEY=import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY||'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
 const supabase:SupabaseClient=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
