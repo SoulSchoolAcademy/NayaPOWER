@@ -53,14 +53,19 @@ Before Cloudflare publication, verify:
 
 **CONNECTED ≠ DEPLOYED. COMMITTED ≠ RELEASED. VERIFIED ≠ PRODUCTION-PROVEN.**
 
-## Canonical automation boundary — 2026-09-10
+## Release-authority reconciliation — 2026-09-10
 
-The active release workflow is `.github/workflows/deploy-canonical-e02.yml`.
+The repository currently contains more than one NayaNET product surface. The E02 directory is the canonical NayaNET 10 experience source, but the verified production deployment workflow presently registered in `.github/workflows/deploy-nayanet-hub-canonical.yml` builds and deploys `NAYANET/HUB` to the `aged-art-7c12` Cloudflare Worker.
 
-Its contract is:
+That is a **source/deployment authority mismatch** and must not be papered over.
 
-**SOURCE → VERIFY → SYNTAX CHECK → DEPLOY → EVIDENCE**
+Therefore:
 
-The release workflow is read-only against GitHub source. Deployment must never modify `main` as a side effect. This prevents release recursion and preserves source/deployment provenance.
+- E02 remains the documented NayaNET 10 experience source.
+- `NAYANET/HUB` remains the currently registered production release source until an explicit promotion is verified.
+- No second E02 deployment workflow is permitted merely to make the documentation appear green.
+- Production promotion must establish exact source SHA → build artifact → deployed Worker → independently observed public runtime parity.
 
-The legacy self-mutating Cloudflare workflow has been retired. The separate one-time live-branch mutator has also been retired because its canonical feed upgrade is already present on the live branch.
+The legacy self-mutating Living Sun deploy workflow has been retired. The one-time live-branch mutator has also been retired because its canonical feed upgrade is already present on the live branch.
+
+**NEXT RELEASE GATE: reconcile E02 with the actual production release authority, then run the existing production build/deploy/independent-runtime verification without creating a parallel deployment path.**
