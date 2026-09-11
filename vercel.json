@@ -3,5 +3,8 @@
   "version": 2,
   "framework": "vite",
   "buildCommand": "cd NAYANET/HUB && npm install && npm run build",
-  "outputDirectory": "NAYANET/HUB/dist"
+  "outputDirectory": "NAYANET/HUB/dist",
+  "rewrites": [
+    {"source":"/((?!assets/|intelligence/|nayanet-cognitive-engine\\.js$).*)","destination":"/index.html"}
+  ]
 }
