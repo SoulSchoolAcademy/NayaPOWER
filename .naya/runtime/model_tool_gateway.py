@@ -28,8 +28,10 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
     for key in ("claim_id", "block_id", "owner", "scope", "start_head"):
         if state.get(key) in (None, "", [], {}):
             raise AssertionError("execution context missing " + key)
+    if action["protected_baseline"] != state["start_head"]:
+        raise AssertionError("protected baseline does not match claimed execution baseline")
     updated = transition("EXECUTING", action=action, derived_risk=derived)
-    return {"status": "AUTHORIZED", "action_id": action["action_id"], "execution_status": updated["status"], "claim_id": updated["claim_id"], "block_id": updated["block_id"], "risk": derived, "side_effect_allowed": True, "proof_required_after_action": True}
+    return {"status": "AUTHORIZED", "action_id": action["action_id"], "execution_status": updated["status"], "claim_id": updated["claim_id"], "block_id": updated["block_id"], "risk": derived, "side_effect_authorized": True, "side_effect_executed": False, "proof_required_after_action": True}
 
 
 def self_test() -> int:
@@ -39,8 +41,18 @@ def self_test() -> int:
         if STATE.exists(): STATE.unlink()
         transition("CLAIMED", claim_id="CL-TEST", block_id="B-TEST", owner="Naya-Test", scope=["test/block"], start_head="test-head")
         action = {"action_id": "ACT-TEST-001", "action_type": "repository_write", "target": "docs/Naya", "purpose": "prove gateway authorization", "risk": "L2", "protected_baseline": "test-head", "observation_target": "changed file state", "evidence_requirement": ["commit_sha"], "verification_requirement": ["runtime_or_ci"]}
+
+        stale = dict(action, protected_baseline="stale-head")
+        try:
+            authorize(stale)
+        except AssertionError as exc:
+            assert "protected baseline" in str(exc)
+        else:
+            raise AssertionError("gateway accepted a stale protected baseline")
+
         result = authorize(action)
         assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["risk"] == "L2"
+
         invalid = dict(action, risk="L1")
         try:
             authorize(invalid)
@@ -48,6 +60,7 @@ def self_test() -> int:
             assert "does not match derived risk" in str(exc)
         else:
             raise AssertionError("gateway accepted caller-supplied risk below derived risk")
+
         print("PASS — model/tool gateway authorization self-test GREEN")
         return 0
     finally:
