@@ -6,6 +6,7 @@ export type PISFeed={schema_version:string;generated_at:string;source:string;eve
 type IndexRow={id:string;owner_id:string;source_table:string;source_id:string;object_type:string;title:string;event_time:string;created_at:string;updated_at:string;status:string|null;project_id:string|null;revision:number|null;metadata:Record<string,unknown>|null};
 
 const PIS_URL='/intelligence/pis-feed.json';
+const PIS_QUERY_LIMIT=100;
 const SUPABASE_URL=import.meta.env.VITE_SUPABASE_URL||'https://dahisasgpfvziswqvmvm.supabase.co';
 const SUPABASE_KEY=import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY||'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
 const supabase:SupabaseClient=createClient(SUPABASE_URL,SUPABASE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
@@ -42,7 +43,7 @@ function indexRowToEvent(row:IndexRow):IntelligentEvent{
 async function loadPersistentPIS():Promise<PISFeed|null>{
   const {data:{session}}=await supabase.auth.getSession();
   if(!session?.user?.id)return null;
-  const {data,error}=await supabase.from('nayanet_intelligence_index').select('id,owner_id,source_table,source_id,object_type,title,event_time,created_at,updated_at,status,project_id,revision,metadata').eq('owner_id',session.user.id).order('event_time',{ascending:false}).limit(100);
+  const {data,error}=await supabase.from('nayanet_intelligence_index').select('id,owner_id,source_table,source_id,object_type,title,event_time,created_at,updated_at,status,project_id,revision,metadata').eq('owner_id',session.user.id).order('event_time',{ascending:false}).limit(PIS_QUERY_LIMIT);
   if(error)throw new Error(`PIS_DB_${error.code||'QUERY_FAILED'}`);
   const rows=(data||[]) as IndexRow[];
   const events=rows.filter(row=>row.source_table==='smart_note_events').map(indexRowToEvent);
