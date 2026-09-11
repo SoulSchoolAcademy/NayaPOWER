@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/smart-link/v1",
+  "title": "NayaNET Smart Link",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["smart_link_id","schema_version","target_type","target_ref","integrity_status"],
+  "properties": {
+    "smart_link_id": {"type":"string","minLength":1},
+    "schema_version": {"const":"1.0"},
+    "target_type": {"enum":["ledger_event","smart_note","verification_receipt","value_event","collective_intelligence"]},
+    "target_ref": {"type":"string","minLength":1},
+    "integrity_status": {"enum":["unverified","verified","superseded","revoked"]},
+    "display_label": {"type":"string","minLength":1},
+    "created_at": {"type":"string","format":"date-time"}
+  }
+}

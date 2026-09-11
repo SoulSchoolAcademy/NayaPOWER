@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/value-event/v1",
+  "title": "NayaNET Value Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["value_event_id","schema_version","ledger_event_ref","value_class","verification_state"],
+  "properties": {
+    "value_event_id": {"type":"string","minLength":1},
+    "schema_version": {"const":"1.0"},
+    "ledger_event_ref": {"type":"string","minLength":1},
+    "value_class": {"type":"string","minLength":1},
+    "value_score": {"type":"integer","minimum":-9,"maximum":9},
+    "point_delta": {"type":"integer"},
+    "verification_state": {"enum":["pending","verified","rejected"]},
+    "calculation_version": {"type":"string","minLength":1},
+    "reason": {"type":"string","minLength":1}
+  }
+}
