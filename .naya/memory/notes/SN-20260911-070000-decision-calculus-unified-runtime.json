@@ -1,18 +1,19 @@
 {
   "id": "SN-20260911-070000-decision-calculus-unified-runtime",
+  "event_id": "SE-20260911-070000-decision-calculus-unified-runtime",
+  "representation": "UNIFIED",
   "type": "decision",
   "title": "Decision Calculus is the single runtime action-ranking authority",
   "status": "ACTIVE",
   "created_at": "2026-09-11T07:00:00-07:00",
   "effective_at": "2026-09-11T07:00:00-07:00",
-  "source": [
-    "NayaPOWER main",
-    ".naya/runtime/naya_power_kernel.py",
-    "SUPERBRAIN/naya_power_decision_calculus.py",
-    ".naya/runtime/test_decision_calculus_runtime_integration.py",
-    "tools/run_superbrain_local_suite.py",
-    "GitHub Actions behavioral-proof run 34611533743"
-  ],
+  "superseded_at": null,
+  "source": {
+    "kind": "repository-and-runtime-proof",
+    "path": "SoulSchoolAcademy/NayaPOWER@main",
+    "commit": "57850384297ce69c842d2bc65f4edb11fc476116",
+    "conversation_ref": null
+  },
   "summary": "The constitutional runtime now preserves hard eligibility gates and routes every eligible-action ranking decision through the canonical deterministic Decision Calculus.",
   "what_happened": "The runtime contained a legacy scalar action-value authority alongside the newer deterministic Decision Calculus. A surgical integration removed the parallel ranking authority without replacing constitutional gates.",
   "what_we_learned": [
@@ -48,15 +49,26 @@
       "SN-20260824-023800-evidence-promotion-boundary",
       "SN-20260824-025400-oscar-provenance-hardening"
     ],
-    "depends_on": []
+    "depends_on": [],
+    "same_event": "SE-20260911-070000-decision-calculus-unified-runtime"
   },
-  "evidence": {
-    "verification_class": "RUNTIME_TESTED_NOT_PRODUCTION_PROVEN",
-    "workflow_run": "34611533743",
-    "observed_head": "57850384297ce69c842d2bc65f4edb11fc476116",
-    "kernel_self_test": "5/5 PASS",
-    "runtime_calculus_integration": "3/3 PASS",
-    "a_to_b_to_c": "PASS",
-    "superbrain_behavioral_proof": "PASS"
-  }
+  "verification": {
+    "status": "VERIFIED",
+    "verified_at": "2026-09-11T07:00:00-07:00",
+    "evidence": [
+      "GitHub Actions behavioral-proof run 34611533743",
+      "kernel self-test 5/5 PASS",
+      "runtime Decision Calculus integration 3/3 PASS",
+      "A→B→C PASS",
+      "SUPERBRAIN_BEHAVIORAL_PROOF=PASS"
+    ],
+    "canonical_url": null,
+    "receipt_url": null,
+    "feed_posted": false
+  },
+  "confidence": "HIGH",
+  "evidence": [
+    "RUNTIME_TESTED_NOT_PRODUCTION_PROVEN",
+    "Observed exact main HEAD 57850384297ce69c842d2bc65f4edb11fc476116"
+  ]
 }
