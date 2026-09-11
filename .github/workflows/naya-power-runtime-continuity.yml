@@ -27,5 +27,8 @@ jobs:
       - name: Run no-dead-end orchestrator self-test
         run: python .naya/runtime/test_naya_power_orchestrator.py
 
+      - name: Run ChatGPT host adapter self-test
+        run: python .naya/runtime/test_chatgpt_host_adapter.py
+
       - name: Run executable activation gate
         run: python .naya/runtime/runtime_activation_check.py
