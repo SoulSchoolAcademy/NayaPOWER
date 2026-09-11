@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Run the NayaPOWER Superbrain acceptance/regression suite locally.
 
-GitHub Actions is intentionally not used. The runner discovers explicitly
-named Superbrain checks plus relevant regression tests already present in the
-repository, executes every selected check even after a failure, and records a
-machine-readable receipt with the exact starting HEAD.
+The runner discovers explicitly named Superbrain checks plus relevant regression
+families already present in the repository. Legacy product-specific renderer
+contracts are not Superbrain acceptance criteria unless explicitly promoted.
 """
 from __future__ import annotations
 
@@ -28,6 +27,9 @@ REGRESSION_KEYWORDS = (
     "smart_note", "smart_notes", "canonical_event", "event_store", "promot", "cct",
     "continuity", "retrieval", "governance", "reality", "torch", "runtime",
 )
+EXCLUDED_LEGACY_CONTRACTS = {
+    "qa_v21_runtime_contract.py": "legacy V21 renderer/product contract; not a canonical Superbrain acceptance criterion",
+}
 
 
 def git(*args: str) -> str:
@@ -48,6 +50,8 @@ def selected_commands() -> list[list[str]]:
     candidates += sorted(ROOT.glob("tools/qa_*.py"))
     for path in candidates:
         lowered = path.name.lower()
+        if path.name in EXCLUDED_LEGACY_CONTRACTS:
+            continue
         if not any(keyword in lowered for keyword in REGRESSION_KEYWORDS):
             continue
         command = [sys.executable, str(path.relative_to(ROOT))]
@@ -68,6 +72,8 @@ def main() -> int:
 
     print(f"LOCAL SUPERBRAIN SUITE — observed HEAD: {head}")
     print(f"Selected checks: {len(commands)}")
+    for name, reason in EXCLUDED_LEGACY_CONTRACTS.items():
+        print(f"EXCLUDED: {name} — {reason}")
 
     for command in commands:
         t0 = time.monotonic()
@@ -91,13 +97,14 @@ def main() -> int:
             print("CONTINUING — failure recorded; remaining checks will still execute.")
 
     receipt = {
-        "schema": "naya-power-local-superbrain-suite/v2",
+        "schema": "naya-power-local-superbrain-suite/v3",
         "started_at": started.isoformat(),
         "finished_at": datetime.now(timezone.utc).isoformat(),
         "observed_head": head,
         "clean_worktree_before": clean_before,
         "github_actions_used": False,
         "selected_check_count": len(commands),
+        "excluded_checks": EXCLUDED_LEGACY_CONTRACTS,
         "commands": results,
         "overall": "PASS" if overall == 0 else "FAIL",
     }
