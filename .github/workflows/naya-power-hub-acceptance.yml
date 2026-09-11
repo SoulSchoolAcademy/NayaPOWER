@@ -1,0 +1,49 @@
+name: Naya Power NayaNET Hub Acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
+      - '.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json'
+      - '.naya/runtime/test_nayanet_hub_acceptance.py'
+      - '.github/workflows/naya-power-hub-acceptance.yml'
+  push:
+    paths:
+      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
+      - '.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json'
+      - '.naya/runtime/test_nayanet_hub_acceptance.py'
+      - '.github/workflows/naya-power-hub-acceptance.yml'
+
+jobs:
+  canonical-hub-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout canonical Hub and acceptance runtime only
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            /.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json
+            /.naya/runtime/test_nayanet_hub_acceptance.py
+            /NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Compile acceptance test
+        run: python -m py_compile .naya/runtime/test_nayanet_hub_acceptance.py
+
+      - name: Check canonical JavaScript syntax
+        run: |
+          node --check NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/nayanet-10.js
+          node --check NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/naya-data.js
+
+      - name: Run canonical Hub source acceptance gate
+        run: python .naya/runtime/test_nayanet_hub_acceptance.py

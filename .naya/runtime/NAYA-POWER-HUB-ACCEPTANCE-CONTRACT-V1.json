@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "canonical_path": "NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE",
+  "canonical_files": [
+    "index.html",
+    "nayanet-10-experience.css",
+    "nayanet-10.js",
+    "naya-data.js",
+    "powercasts.json",
+    "DEPLOYMENT-NOTES.md"
+  ],
+  "required_css_modules": [
+    "nayanet-elite.css",
+    "nayanet-intelligence-feed.css",
+    "nayanet-living-entrance.css",
+    "nayanet-app-experience-polish.css"
+  ],
+  "required_js_markers": [
+    "const C=[",
+    "const W=[",
+    "const GROUPS=[",
+    "function renderWorlds()",
+    "function renderCasts()",
+    "function openWorld(i)",
+    "CREATE PRIVATE SPACE",
+    "SAVE SMART NOTE",
+    "OPEN MAXESS"
+  ],
+  "deployment_truth_markers": [
+    "The NayaNET 10 experience is now a single active front-end shell",
+    "Exact release artifact is inspected before publication.",
+    "Deployed URL is tested separately; do not infer live success from GitHub commits.",
+    "CONNECTED ≠ DEPLOYED. COMMITTED ≠ RELEASED. VERIFIED ≠ PRODUCTION-PROVEN."
+  ]
+}
