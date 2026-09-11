@@ -1,0 +1,32 @@
+name: Naya Power Excellence Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  excellence:
+    name: Deterministic Excellence by Default gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Validate machine-readable policy
+        run: python3 -m json.tool SUPERBRAIN/naya_power_excellence_policy.json >/dev/null
+
+      - name: Compile evaluator and tests
+        run: python3 -m py_compile SUPERBRAIN/naya_power_excellence.py SUPERBRAIN/test_naya_power_excellence.py
+
+      - name: Run deterministic excellence tests
+        working-directory: SUPERBRAIN
+        run: python3 -m unittest -v test_naya_power_excellence.py
+
+      - name: Emit policy provenance
+        run: |
+          echo "NAYA_POWER_EXCELLENCE_POLICY=SUPERBRAIN/naya_power_excellence_policy.json"
+          echo "NAYA_POWER_EXCELLENCE_EVALUATOR=SUPERBRAIN/naya_power_excellence.py"
+          echo "SOURCE_SHA=${GITHUB_SHA}"
