@@ -1,15 +1,30 @@
 name: Build verified AIScore app bridge
+
+# This workflow mutates repository source and pushes a commit. It is therefore
+# an explicitly invoked control-plane action, not an automatic push reaction.
 on:
-  push:
-    paths:
-      - '.github/workflows/build-aiscore-app-bridge.yml'
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to mutate and push the AIScore bridge
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
+
 permissions:
   contents: write
+
 jobs:
   build:
+    if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
       - name: Build from known-good AIScore baseline
         shell: bash
         run: |
@@ -118,6 +133,7 @@ function publishMAXESSResultToApp(){
           built = built.replace(marker, bridge + marker, 1)
           p.write_text(built, encoding='utf-8')
           PY
+
       - name: Verify
         shell: bash
         run: |
@@ -128,11 +144,17 @@ function publishMAXESSResultToApp(){
           if grep -q 'results.nayanet.xyz' 'AIScoreMAXESS code'; then exit 1; fi
           if grep -q 'oldResults.style.display' 'AIScoreMAXESS code'; then exit 1; fi
           node --check <(sed -n '/<script>/,/<\/script>/p' 'AIScoreMAXESS code' | sed '1d;$d')
+
       - name: Commit
         shell: bash
         run: |
           git config user.name 'SoulSchoolAcademy'
           git config user.email '221210320+SoulSchoolAcademy@users.noreply.github.com'
           git add 'AIScoreMAXESS code'
-          git commit -m 'Build verified AIScore to Results app bridge' || exit 0
+          git diff --cached --check
+          if git diff --cached --quiet; then
+            echo 'NO COMMIT REQUIRED — BRIDGE ALREADY APPLIED'
+            exit 0
+          fi
+          git commit -m 'Build verified AIScore to Results app bridge'
           git push
