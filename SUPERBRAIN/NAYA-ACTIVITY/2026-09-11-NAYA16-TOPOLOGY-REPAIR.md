@@ -10,69 +10,72 @@
 **RESULT HEAD:** `35b3c006c7a24d9132ff364693673ffab9cffb00`
 
 ### 01 — WHAT IS HAPPENING NOW?
-The Naya 16 enforcement workflow contained an unrelated Hub 509 materialization job. That cross-domain mutation was removed surgically. The repaired commit naturally reduced observed push-triggered workflow fan-out from 19 to 17. The post-repair Naya 16 gate then correctly detected that its own governed workflow-file change lacked an activity record.
+The Naya 16 enforcement workflow contained an unrelated Hub 509 materialization job. That cross-domain mutation was removed surgically. The repaired commit naturally reduced observed push-triggered workflow fan-out from 19 to 17. The post-repair Naya 16 gate then correctly detected that its own governed workflow-file change lacked an activity record. A second repository inspection identified two additional legacy SE event records whose calendar date existed only as `timestamp`/`date`, leaving the continuity validator without the canonical `effective_at`/`created_at` fields it reads.
 
 ### 02 — WHAT ARE WE ACTUALLY TRYING TO ACHIEVE?
-Keep Naya 16 enforcement itself compliant with its append-only activity-record contract while preserving the surgical topology repair. Success means the repair has a canonical activity record and the Naya 16 validator can distinguish recorded governed changes from unrecorded governed changes.
+Keep Naya 16 enforcement compliant with its append-only activity-record contract and restore continuity validation without weakening validator semantics. Success means the governed repairs have durable activity evidence and the malformed event timestamp boundary is repaired using the known calendar-day precision already present in the source data.
 
 ### 03 — WHAT DOES THE EXISTING SYSTEM ACTUALLY DO?
-`tests/verify_naya16_activity.py` treats changes under governed prefixes, including `.github/workflows/`, as requiring an activity record in `SUPERBRAIN/NAYA-ACTIVITY/` or `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`. The repaired workflow intentionally changed `.github/workflows/naya-16-activity-enforcement.yml`, so the validator correctly required a corresponding activity record.
+`tests/verify_naya16_activity.py` treats changes under governed prefixes, including `.github/workflows/`, as requiring an activity record in `SUPERBRAIN/NAYA-ACTIVITY/` or `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`. The continuity runtime scans `.naya/memory/events/**/SE-*.json` and reads `effective_at`, falling back to `created_at`. Two legacy SE files on 2026-08-31 contained only `timestamp` or `date`, so the runtime attempted to parse an empty string before it could decide whether the records were meaningful.
 
 ### 04 — WHAT COULD I BE MISUNDERSTANDING?
-The Naya 16 failure was not evidence that the topology repair was wrong. It was evidence that the repair itself was governed activity and therefore needed its own durable record. Disabling or weakening the Naya 16 rule would have hidden the real requirement.
+The missing timestamp fields are not permission to relax the validator. They are malformed canonical event records relative to the current continuity contract. The existing date-only values establish calendar-day precision, so adding date-only `created_at` and `effective_at` fields preserves known information without inventing a wall-clock time.
 
 ### 05 — WHAT ARE THE CONSEQUENCES OF EACH OPTION?
-Ignoring the failure would leave the governance system internally inconsistent. Weakening the validator would reduce enforcement quality. Adding one canonical activity record preserves the validator, records the actual repair, and is the smallest true-boundary correction.
+Weakening `parse_time()` or skipping malformed events would hide source corruption and could create false GREEN. Guessing a local wall-clock timestamp would manufacture precision. Adding canonical date-only fields preserves the existing date precision and lets the existing validator semantics remain unchanged.
 
 ### 06 — WHAT MATTERS MOST?
-Preserve truthful enforcement while documenting the exact governed change. The repair must remain surgical and independently auditable.
+Repair the data boundary, not the enforcement boundary. Preserve truthful continuity checks and make the smallest reversible source correction.
 
 ### 07 — WHAT SHOULD I DO?
-Create this activity record in the canonical Naya 16 activity projection. Do not modify validator semantics, do not restore the unrelated 509 job, and do not add unrelated workflow responsibilities.
+Update the two malformed 2026-08-31 SE event records with `created_at: "2026-08-31"` and `effective_at: "2026-08-31"`, preserve every existing field, and modify this activity record in the same commit so Naya 16 records the governed change.
 
 ### 08 — WHAT SHOULD I NOT DO?
-Do not weaken Naya 16 to exempt workflow files. Do not add unrelated materialization work. Do not claim the continuity gate is GREEN. Do not manually rerun failed workflows merely for evidence.
+Do not alter validator semantics. Do not invent wall-clock precision. Do not delete either event. Do not alter unrelated events, the event index, or deployment workflows. Do not claim continuity GREEN until natural CI proves it.
 
 ### 09 — EXECUTE SURGICALLY
-Created `SUPERBRAIN/NAYA-ACTIVITY/2026-09-11-NAYA16-TOPOLOGY-REPAIR.md` as the canonical activity record for commit `35b3c006c7a24d9132ff364693673ffab9cffb00`.
+Prepared a single atomic Git tree change containing only three modified files: the two malformed 2026-08-31 SE event records and this Naya 16 activity record. The event records gain only the missing canonical date-only `created_at` and `effective_at` fields.
 
 ### 10 — VERIFY THE CHANGE
-The preceding Naya 16 run on `35b3c006c7a24d9132ff364693673ffab9cffb00` independently observed exactly one governed change requiring an activity record: `.github/workflows/naya-16-activity-enforcement.yml`. The current record is placed under the exact directory recognized by `has_activity_record()`. Full validator verification will occur through the natural push-triggered execution of this new commit.
+Pre-change evidence is exact: the Torch-Pass run `34666819621` on `35b3c006c7a24d9132ff364693673ffab9cffb00` failed at `parse_time()` with `ValueError: Invalid isoformat string: ''`. Direct source inspection identified `SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK.json` and `SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json` as the two SE records lacking the fields consumed by the validator. Runtime acceptance of the repair remains pending the natural push-triggered workflows.
 
 ### 11 — TRACE REALITY END-TO-END
-SOURCE: GitHub main at `da59ee5f129230257ffa1971f269e19ae6a31fa2` → SURGICAL REPAIR: remove unrelated 509 materialization from Naya 16 workflow → RESULT: `35b3c006c7a24d9132ff364693673ffab9cffb00` → OBSERVATION: Naya 16 correctly rejected the governed workflow change without an activity record → CORRECTION: this canonical activity record → NEXT RUNTIME PROOF: natural push-triggered Naya 16 validation.
+SOURCE: exact malformed SE records in GitHub main → DIAGNOSIS: validator reads `effective_at`/`created_at`, both absent → SURGICAL DATA REPAIR: add date-only canonical fields using the already-recorded 2026-08-31 precision → ACTIVITY EVIDENCE: this record changes in the same commit → NEXT RUNTIME PROOF: natural Naya 16 and Torch-Pass executions on the resulting HEAD.
 
 ### 12 — PRODUCE RECEIPTS
-- Surgical repair commit: `35b3c006c7a24d9132ff364693673ffab9cffb00`
-- Affected workflow: `.github/workflows/naya-16-activity-enforcement.yml`
+- Prior repaired main: `35b3c006c7a24d9132ff364693673ffab9cffb00`
+- New event blob 1: `90b1423de4c9cf75e8ddf57e428925bcd885e7a2`
+- New event blob 2: `93646d5189516551e3901cf37f1a610a8236e2d0`
+- Prior Naya 16 run: `34666819546`
+- Prior Torch-Pass run: `34666819621`
 - Validator: `tests/verify_naya16_activity.py`
-- Activity record: `SUPERBRAIN/NAYA-ACTIVITY/2026-09-11-NAYA16-TOPOLOGY-REPAIR.md`
-- Prior observed Naya 16 run: `34666819546`
+- Continuity runtime: `.naya/runtime/continuity_enforcement.py`
 
 ### 13 — CHALLENGE MY OWN CONCLUSION
-A record existing in the repository does not by itself prove the validator accepts the commit. The natural push-triggered Naya 16 execution must independently prove that the activity-record condition is satisfied. The negative-path test must remain intact and continue rejecting a synthetic governed change without a record.
+Adding timestamps fixes the observed exception but does not prove the events satisfy the full continuity contract. One or both may become meaningful or may expose additional structural errors after timestamp parsing succeeds. The next natural gate must be treated as a new observation, not assumed GREEN.
 
 ### 14 — REPORT CONFIDENCE
-**HIGH** that the exact missing Naya 16 activity-record boundary has been identified and corrected at the smallest source boundary. **PENDING** runtime proof until the natural post-commit Naya 16 workflow completes.
+**HIGH** that the exact empty-timestamp source boundary has been identified. **HIGH** that date-only precision is the least-inventive repair. **PENDING** runtime proof for the resulting commit.
 
 ### 15 — DETERMINE WHAT MATTERS NEXT
-Observe the natural Naya 16 execution for this new commit and then continue the canonical continuity first-failure investigation without retrying the same action against the old SHA.
+Resolve the exact resulting main SHA and observe the natural Naya 16 and Torch-Pass executions. Classify the first true post-repair failure, if any.
 
 ### 16 — LEARN AND CHANGE THE SYSTEM
-Governed workflow definitions are themselves governed execution artifacts. Any surgical workflow repair must carry its Naya 16 activity record in the same resulting commit. This prevents governance repairs from becoming governance exceptions.
+Canonical event producers must emit the fields consumed by canonical validators. If calendar-day precision is all that is known, preserve that precision explicitly rather than manufacturing time. Validator failures should identify malformed source data without silently accepting it.
 
 ### PRESERVED
-Naya 16 validator semantics, negative-path self-test, push/pull-request enforcement, continuity validator semantics, and the removal of unrelated 509 materialization were preserved.
+All existing event content except the two missing canonical timestamp fields; Naya 16 validator semantics; negative-path self-test; continuity validator semantics; the prior Naya 16 topology repair; deployment and product architecture.
 
 ### RECEIPTS
 - `35b3c006c7a24d9132ff364693673ffab9cffb00`
+- `SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK.json`
+- `SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json`
 - `tests/verify_naya16_activity.py`
-- `SUPERBRAIN/NAYA-ACTIVITY/2026-09-11-NAYA16-TOPOLOGY-REPAIR.md`
 
 ### NEXT ACTION
-Verify the natural Naya 16 execution for this new commit, then identify and repair the exact malformed continuity event before touching validator semantics.
+Observe natural CI on the resulting commit and classify the first true failure without retrying the same action.
 
 ### SUCCESSOR HANDOFF
-The previous Naya 16 failure was a valid self-governance failure caused by the topology-repair commit lacking its own activity record. This record corrects that boundary. Do not weaken Naya 16. Do not rerun the old SHA. The next runtime evidence must come from the new commit. Continuity remains independently RED because an SE event still produces an empty timestamp during `parse_time()`.
+The prior continuity exception was caused by two legacy SE records that stored a date under `timestamp` or `date` but lacked `effective_at` and `created_at`. The repair preserves the known 2026-08-31 calendar-day precision. Do not weaken `parse_time()`. Naya 16 also previously failed because the topology repair itself lacked an activity record; this activity record must remain part of the same governed repair commit. Continuity remains unproven until the new natural Torch-Pass result is observed.
 
-**16-PROTOCOL CHECK:** PASS — activity record created for the governed topology repair; runtime acceptance pending natural CI.
+**16-PROTOCOL CHECK:** PASS — exact source boundary identified and atomic repair prepared; runtime acceptance pending.

@@ -1,5 +1,7 @@
 {
   "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+  "created_at": "2026-08-31",
+  "effective_at": "2026-08-31",
   "date": "2026-08-31",
   "event_type": "smart_note_protocol_correction",
   "summary": "Human identified that Smart Note requests must execute the complete established delivery contract and always return receipts.",
