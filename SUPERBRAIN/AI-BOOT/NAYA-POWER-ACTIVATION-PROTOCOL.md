@@ -69,6 +69,8 @@ Do **not** require the human to discover or memorize internal terminology.
 
 Do **not** activate from an unrelated mention of `Naya`, `NIA`, or `NayaPOWER` when activation intent is not clear. If intent is genuinely ambiguous, ask one concise clarification question rather than guessing.
 
+The ambiguity guard is explicit: **Do not activate from an unrelated mention.**
+
 ### 1.3 One activation, one contract
 
 Every recognized activation expression resolves to exactly the same operating contract:
