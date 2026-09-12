@@ -12,5 +12,5 @@ jobs:
     steps:
       - run: |
           echo 'LEGACY_RIGHT_RAIL_WORKFLOW=RETIRED'
-          echo 'CANONICAL_RELEASE=deploy-v7-now.yml'
+          echo 'CANONICAL_RELEASE=deploy-nayanet-hub-canonical-v2.yml'
           echo 'RULE=DO_NOT_REWRITE_THE_HUB_WITH_HISTORICAL_FEED_LAYERS'
