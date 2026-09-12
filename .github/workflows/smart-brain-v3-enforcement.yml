@@ -38,6 +38,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with: {fetch-depth: 0}
+      - name: Rebuild derived event index before permission scope execution gate
+        run: python .naya/memory/smart_notes_v3.py index
       - name: Step 2 permission scope execution gate
         run: |
           python -m py_compile .naya/memory/permission_scope.py .naya/memory/smart_notes_v3.py .naya/memory/tests/test_permission_scope.py .naya/memory/test_smart_brain_v3.py
@@ -64,8 +66,6 @@ jobs:
           assert Path(required).is_file(), f'canonical protocol missing: {required}'
           print('Naya context manifest: HUMAN CAPABILITY & MASTERY protocol registered and routable.')
           PY
-      - name: Rebuild derived event index
-        run: python .naya/memory/smart_notes_v3.py index
       - name: Audit duplicates and entity collisions
         run: python .naya/memory/duplicate_entity_audit.py
       - name: Run permission scope adversarial tests
