@@ -24,6 +24,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "integrated-results-repository-mutation" \
+            --permission "repo:write:integrated-results" \
+            --request "mutate:MAXESS-RESULTS-INTEGRATED-V1.html" \
+            --mission "Surgically repair the existing complete MAXESS Results artifact" \
+            --uncertainty 2 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","path":"MAXESS-RESULTS-INTEGRATED-V1.html","operation":"surgical-write-and-push"}' \
+            --evidence "workflow_dispatch approval granted" \
+            --evidence "existing complete Results artifact required"
+
       - name: Surgical bridge repair on the existing complete Results artifact
         run: |
           python3 - <<'PY'
