@@ -65,6 +65,12 @@ class GovernanceContractTests(unittest.TestCase):
         self.assertFalse(decision.eligible)
         self.assertIn("authority_id is not registered", decision.reasons)
 
+    def test_missing_registry_is_ineligible_even_with_high_value(self):
+        decision = evaluate_governance(self.valid_action(), None)
+        self.assertFalse(decision.eligible)
+        self.assertIn("Authority Registry is required for governed execution", decision.reasons)
+        self.assertFalse(decision.checks["authority_registry_present"])
+
     def test_consequence_risk_evidence_stop_value_and_human_escalation_are_hard_gates(self):
         cases = [
             ("consequence", self.valid_action(consequence="HIGH", reversible=False)),
