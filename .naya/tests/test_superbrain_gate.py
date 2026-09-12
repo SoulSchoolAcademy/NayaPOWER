@@ -52,8 +52,10 @@ for path, event in loaded:
         role = str(rep.get('representation', '')).lower()
         if role == 'machine':
             machine_operable = any(rep.get(k) for k in (
-                'schema_role', 'required_representation_roles', 'single_canonical_event',
-                'required_delivery', 'authority', 'consumers', 'verification_requirement'
+                'title', 'summary', 'content', 'schema_role', 'retrieval_keys',
+                'required_representation_roles', 'single_canonical_event',
+                'required_delivery', 'classification', 'supersession_policy',
+                'authority', 'consumers', 'verification_requirement'
             ))
             assert machine_operable, f'{event.get("event_id")}: machine representation is not machine-operable'
             continue
