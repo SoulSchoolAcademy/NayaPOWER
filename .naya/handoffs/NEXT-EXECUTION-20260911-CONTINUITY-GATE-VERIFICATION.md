@@ -1,6 +1,6 @@
 # NEXT EXECUTION — CONTINUITY GATE VERIFICATION
 
-schema_version: 3
+schema_version: 4
 status: BLOCKED
 
 ## Project
@@ -10,72 +10,86 @@ Naya Power Superbrain
 Turn Naya Power into a genuinely continuous execution system that restores canonical state, chooses the highest-value responsible action, executes through authorized tools, independently verifies reality, learns, and continues without requiring the human to invent the next task.
 
 ## Current State
-Canonical `main` was re-resolved from GitHub during this execution cycle. Exact current HEAD is `2dfd1de96a6fa1cbe0a00497e078f7f76538f347`. The repaired continuity validator and current Torch-Pass workflow were re-fetched from that tree. The validator contains the date-only timestamp repair, and the workflow still defines compilation, deliberate positive/negative tests, canonical validation, receipt emission, and receipt upload as the gate sequence.
+GitHub `main` was re-resolved at the start of this cycle. The resolved baseline was `66bdb929a1e518aa63c79716c8871fb4a4c96045`. This handoff update necessarily creates a new commit, so the next execution MUST resolve `main` again immediately before making any runtime claim; no hardcoded SHA in this artifact is authoritative as the current HEAD after this write.
 
-The historical failed run `34664351923` / job `103473142615` independently shows compilation and deliberate positive/negative tests passed and `Enforce current canonical continuity contract` failed before receipt emission. The first observed failure was `ValueError: timestamp must include timezone` in `parse_time` while validating canonical event data.
+The repaired continuity validator is present in the canonical tree. It contains deterministic handling for legacy date-only timestamps by treating calendar-day precision at UTC day precision rather than inventing a local timezone or wall-clock time. The Torch-Pass workflow remains the canonical gate sequence: compile the continuity runtime and regression test, run positive and deliberate-failure continuity tests, enforce the canonical continuity contract, emit a receipt, and upload the receipt artifact.
 
-The repaired source is persisted at `.naya/runtime/continuity_enforcement.py`. The current canonical continuity policy remains at `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json`. The current successor contract is persisted in this artifact.
+Historical runtime evidence remains: run `34664351923`, job `103473142615`, tested HEAD `7e68b50dbbe0ffdff3189dd0842576cab25120ed`. Compilation and deliberate positive/negative tests passed; the canonical continuity enforcement step failed first with `ValueError: timestamp must include timezone` in `parse_time`, before receipt emission.
+
+The canonical project state confirms GitHub Actions is intentionally paused by human direction and must not be manually retried during that pause. The available GitHub connector provides repository/source/control-plane access, but not an authorized arbitrary Python execution environment. The local container cannot resolve `github.com`, so it cannot independently create an exact repository checkout. No authorized alternate execution plane capable of executing the repository validator is exposed in this session.
 
 ## Completed Work
-- Re-resolved exact `main` HEAD from GitHub.
-- Re-fetched `.github/workflows/torch-pass-gate.yml` from the exact current tree.
-- Re-fetched `.naya/runtime/continuity_enforcement.py` from the exact current tree.
-- Re-fetched `.naya/runtime/project_execution_contract.py` from the exact current tree.
-- Re-fetched `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json` from the exact current tree.
-- Re-fetched `.naya/memory/projects/CURRENT-DAILY-PROJECT.json` from the exact current tree.
-- Re-fetched the canonical event index; it currently reports 39 persisted events.
-- Verified the historical failed workflow job step sequence and exact failing gate step.
-- Verified there are currently zero workflow runs associated with the exact current HEAD through the available GitHub workflow-run query.
-- Preserved the source repair and did not weaken the continuity validator.
+- Restored canonical state from GitHub rather than relying on conversation state.
+- Re-resolved `main` and detected that the previously recorded `2dfd1de...` value was stale because the handoff update itself advanced `main`.
+- Re-fetched the canonical Torch-Pass workflow from the resolved tree.
+- Re-fetched the repaired continuity validator from the resolved tree.
+- Re-fetched the canonical project state and confirmed the human-directed GitHub Actions pause.
+- Re-fetched the canonical NEXT-EXECUTION successor before updating it.
+- Inspected the repository for an existing alternate runtime execution path; no authorized alternate execution plane was exposed by the available repository evidence.
+- Preserved the date-only timestamp repair and all validator boundaries; no validator weakening was performed.
+- Updated this successor to eliminate the stale-current-HEAD failure mode by requiring dynamic HEAD resolution immediately before execution.
 
 ## Verified Evidence
-GitHub source inspection proves the exact current `main` HEAD is `2dfd1de96a6fa1cbe0a00497e078f7f76538f347`.
-
-The current workflow source requires:
-1. Python compilation;
-2. positive and deliberate-failure continuity tests;
-3. `python .naya/runtime/continuity_enforcement.py validate`;
-4. receipt emission;
-5. receipt artifact upload.
-
-The historical run independently proves steps 1 and 2 passed before step 3 failed.
-
-The current commit has no associated GitHub Actions workflow run in the available query. This is repository evidence of absence of a current run, not evidence that the repaired validator passes.
+- GitHub `refs/heads/main` resolved to `66bdb929a1e518aa63c79716c8871fb4a4c96045` before this handoff update.
+- The current workflow source contains the canonical five-stage gate sequence: compilation; positive/deliberate-failure tests; canonical validation; receipt emission; receipt upload.
+- The current validator source contains the date-only timestamp repair and still requires timezone-aware timestamps for non-date-only values.
+- The canonical project state explicitly says GitHub Actions is paused and an authorized alternate execution plane is required.
+- Historical run `34664351923` / job `103473142615` provides independent evidence of the original runtime failure and the successful earlier gate steps.
+- Repository/source inspection does NOT prove that the repaired validator passes at current HEAD.
 
 ## Unresolved Issues
-- The repaired validator has not been runtime-executed against exact current HEAD `2dfd1de96a6fa1cbe0a00497e078f7f76538f347`.
-- GitHub Actions is intentionally paused by the canonical project state and must not be manually retried during that pause.
-- The available GitHub connector is a source/control-plane interface and does not provide an authorized arbitrary Python execution environment.
-- The local container cannot resolve `github.com`, so it cannot create an exact repository checkout for independent execution.
-- No authorized alternate execution plane capable of executing the repository's Python validator is currently exposed in this session.
+- The repaired validator has not been runtime-executed against the exact post-update `main` HEAD.
+- No authorized runtime capable of executing the repository's Python validator is currently exposed.
+- GitHub Actions remains paused by human direction.
+- The local container cannot resolve `github.com` and therefore cannot produce an exact independent checkout.
+- A runtime receipt for the repaired current-head gate does not yet exist.
 
 ## Constraints
-- Do not manually retry GitHub Actions while the canonical human-directed pause remains active.
-- Do not claim current-head GREEN from source inspection.
-- Do not manufacture a runtime result from static reconstruction.
-- Do not weaken continuity validators to manufacture GREEN.
-- Preserve historical knowledge and existing green behavior.
 - Human authority remains supreme.
-- Capability does not grant authority.
+- Do not manually retry or dispatch GitHub Actions while the canonical pause remains active.
+- Do not manufacture runtime evidence from static source inspection or reconstructed files.
+- Do not claim GREEN or DONE until an authorized runtime independently observes the repaired validator passing against the exact tested SHA.
+- Do not weaken validators, remove canonical events, skip deliberate-failure tests, or relax receipt/continuity requirements to obtain GREEN.
 - Repository persistence is not runtime proof.
+- Preserve existing verified behavior and use surgical repair only for concrete evidence-backed failures.
 
 ## Current Objective
-Obtain authoritative runtime execution of the repaired continuity gate against exact current `main` HEAD `2dfd1de96a6fa1cbe0a00497e078f7f76538f347` using an authorized execution plane.
+Obtain authoritative runtime proof of the repaired continuity gate against the exact `main` HEAD resolved immediately before execution, without bypassing the human-directed GitHub Actions pause.
 
 ## Next Action
-When an authorized execution plane is available, restore exact HEAD `2dfd1de96a6fa1cbe0a00497e078f7f76538f347`, execute the canonical validator and deliberate positive/negative tests, capture stdout and exit status, and independently verify the exact tested SHA. If the gate fails, repair the first true contract failure and repeat. If it passes, capture the continuity receipt, run OSCAR, persist the verified result, and continue automatically to the next highest-value Superbrain objective.
+When an authorized execution plane becomes available, resolve `main` immediately, restore that exact tree, execute the real continuity regression tests and `python .naya/runtime/continuity_enforcement.py validate`, capture stdout/stderr/exit status and the exact tested SHA, then run receipt generation. If the gate fails, repair the FIRST true contract failure only, re-run targeted tests, and re-run the complete gate. If the gate passes, independently verify deliberate invalid/orphan cases remain RED, verify the successor is independently consumable, run OSCAR, persist the verified runtime receipt and state, and automatically continue to the next highest-value responsible Superbrain objective.
 
 ## Execution Instructions
-Do not rely on conversation state. Restore the exact GitHub tree first. Read the current policy, validator, project execution contract, canonical event index, affected events, and this successor. Execute the real repository tests in an authorized runtime. Do not substitute source inspection for execution. Preserve exact output, exit status, tested SHA, and receipt. Verify deliberate invalid/orphan cases remain RED and the canonical successor remains independently consumable. Run OSCAR against stale-state, validator-weakening, false-verification, skipped-gate, missing-receipt, missing-learning, missing-next-action, unauthorized-execution, and hidden-environment-assumption risks.
+1. Resolve the exact current `main` SHA from GitHub immediately before execution.
+2. Restore that exact tree in the authorized runtime; do not substitute conversation state or static reconstruction.
+3. Read the current workflow, continuity validator, project execution contract, continuity policy, canonical project state, event index, affected event records, and this successor.
+4. Execute the real repository compile/regression tests.
+5. Execute the canonical continuity validator.
+6. Execute the deliberate positive/negative continuity tests and require invalid/orphan cases to remain RED.
+7. Capture exact tested SHA, stdout, stderr where relevant, exit status, validation report, and continuity receipt.
+8. On failure, classify the first true failure as source defect, canonical data defect, validator defect, environment defect, authority/access blocker, or stale-state mismatch.
+9. Repair only the smallest true contract boundary; never weaken a validator merely to obtain GREEN.
+10. Re-run targeted tests and the complete gate after every repair.
+11. If GREEN, run OSCAR against stale-state contamination, validator weakening, false VERIFIED claims, false GREEN claims, skipped tests/events, missing receipts/delivery, missing AI-to-AI continuity, missing learning/next action, invalid successor paths, conversation-dependent continuation, unauthorized execution, and hidden environment assumptions.
+12. Persist the verified result, exact tested SHA, runtime receipt, learning, remaining objective, and next action.
+13. Create/update the next canonical NEXT-EXECUTION artifact and continue automatically.
 
 ## Success Criteria
-The repaired continuity validator executes successfully against exact current HEAD `2dfd1de96a6fa1cbe0a00497e078f7f76538f347`; canonical continuity checks return GREEN with actual runtime evidence; deliberate invalid/orphan cases remain RED; receipt emission succeeds; the canonical successor is independently consumable; no protected boundary is weakened; the exact tested SHA and runtime receipt are recorded.
+- Exact current `main` SHA is resolved immediately before runtime execution.
+- The repaired continuity validator passes in an authorized runtime with actual output and exit status.
+- Deliberate invalid/orphan cases remain RED.
+- Receipt generation succeeds and the receipt records the tested SHA/runtime evidence.
+- Canonical continuity is GREEN only when independently observed.
+- The canonical successor is independently consumable without conversational archaeology.
+- No protected boundary or validator requirement is weakened.
+- OSCAR finds no unresolved release-blocking integrity defect.
+- The next highest-value responsible action is persisted automatically.
 
 ## Verification Requirements
-A source diff is not sufficient. Require actual runtime execution against the exact current HEAD. Preserve stdout, stderr where relevant, exit status, exact SHA, and continuity receipt. Distinguish source persistence, workflow availability, and runtime proof. Do not claim DONE or GREEN until an authorized execution plane independently observes the result.
+Source inspection is insufficient. Require authoritative runtime execution against the exact SHA resolved immediately before testing. Preserve stdout, stderr where relevant, exit status, validation report, receipt, and tested SHA. Distinguish source persistence, workflow availability, and runtime proof. Do not infer application success from repository state. Do not claim DONE or GREEN without independent runtime evidence.
 
 ## Human Continuation
-The human does not need to invent the next task. The only current blocker is the missing authorized execution plane. Once one exists, execute the defined gate automatically.
+The human does not need to invent the next task. The current blocker is specifically the absence of an authorized execution plane while GitHub Actions is intentionally paused. No additional human task selection is required.
 
 ## Human Continuation Naya-authored
 true
