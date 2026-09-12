@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import sys
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,48 @@ from smart_note_enforcement import (  # noqa: E402
 EVENT_ID = "SE-20990101-120000-test-smart-note"
 EFFECTIVE_AT = "2099-01-01T12:00:00-08:00"
 COMMIT = "a" * 40
+
+
+def governance_fixture() -> dict:
+    return {
+        "decision": {
+            "decision_id": "DEC-20990101-SMART-NOTE",
+            "mission": "preserve durable Smart Note intelligence",
+            "actor": "naya",
+            "request": "capture Smart Note event",
+            "purpose": "smart-note-capture",
+            "authority": {"authority_id": "AUTH-SMART-NOTE-001"},
+            "scope": ["SoulSchoolAcademy/NayaPOWER/.naya/memory"],
+            "boundaries": ["privacy-by-choice", "constitutional"],
+            "evidence": ["event-payload", "receipt"],
+            "uncertainty": 1,
+            "consequence": 1,
+            "reversibility": 1,
+            "risk": {"prohibited": False},
+            "alternatives": ["do-not-capture"],
+            "value": {"responsible": True},
+            "required_permission": "memory.write",
+            "decision": "PROCEED",
+            "execution_plan": ["persist event", "register index", "link feed"],
+            "verification_plan": ["read back event", "verify receipt"],
+            "stop_conditions": ["authority invalid", "evidence incomplete"],
+            "receipt_requirements": ["canonical event", "index", "feed", "receipt"],
+            "learning_output": ["record durable intelligence"],
+        },
+        "authority": {
+            "authority_id": "AUTH-SMART-NOTE-001",
+            "issuer": "human",
+            "holder": "naya",
+            "actor": "naya",
+            "purpose": "smart-note-capture",
+            "permissions": ["memory.write"],
+            "scope": ["SoulSchoolAcademy/NayaPOWER/.naya/memory"],
+            "issued_at": datetime.now(timezone.utc).isoformat(),
+            "expires_at": (datetime.now(timezone.utc) + timedelta(hours=1)).isoformat(),
+            "revoked_at": None,
+            "status": "ACTIVE",
+        },
+    }
 
 
 def fixture(tmp_path: Path) -> dict:
@@ -42,6 +85,7 @@ def fixture(tmp_path: Path) -> dict:
         "request_detected": True,
         "event_id": EVENT_ID,
         "event": event,
+        "governance": governance_fixture(),
         "receipt": {
             "status": "VERIFIED",
             "repository": "SoulSchoolAcademy/NayaPOWER",
@@ -73,11 +117,31 @@ def test_request_detection_positive_and_negative():
     assert not detect_smart_note_request("remember the general concept")
 
 
-def test_complete_operation_is_admitted(tmp_path):
+def test_complete_operation_is_admitted():
+    from tempfile import TemporaryDirectory
+    with TemporaryDirectory() as d:
+        op = fixture(Path(d))
+        result = enforce_smart_note_claim(op, root=Path(d))
+        assert result["status"] == "VERIFIED"
+        assert result["pis_propagation"] == "SEPARATE_EVIDENCE_REQUIRED"
+
+
+def test_missing_governance_gate_is_rejected(tmp_path):
     op = fixture(tmp_path)
-    result = enforce_smart_note_claim(op, root=tmp_path)
-    assert result["status"] == "VERIFIED"
-    assert result["pis_propagation"] == "SEPARATE_EVIDENCE_REQUIRED"
+    del op["governance"]
+    assert_reject(op, tmp_path, "canonical governance decision/authority is missing")
+
+
+def test_expired_governance_authority_is_rejected(tmp_path):
+    op = fixture(tmp_path)
+    op["governance"]["authority"]["expires_at"] = (datetime.now(timezone.utc) - timedelta(seconds=1)).isoformat()
+    assert_reject(op, tmp_path, "expired")
+
+
+def test_wrong_governance_permission_is_rejected(tmp_path):
+    op = fixture(tmp_path)
+    op["governance"]["authority"]["permissions"] = ["memory.read"]
+    assert_reject(op, tmp_path, "required permission is not granted")
 
 
 def test_missing_shawn_representation_is_rejected(tmp_path):
