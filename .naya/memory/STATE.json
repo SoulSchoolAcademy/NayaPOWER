@@ -16,7 +16,7 @@
     "priority": "P0 — CONTINUOUS SMART FLOW / COLD-NAYA RESTORE",
     "active_block": "TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION",
     "active_block_status": "ACTIVE",
-    "next_action": "Resolve live main HEAD at execution time; run the canonical cold-start acceptance contract in a repository-capable runtime; if the first failure is deterministic, surgically repair only that boundary and rerun; once cold-start coherence is proven, inspect the newest authoritative Superbrain/related runs for that exact HEAD, retrieve evidence, and continue Torch 12; if no executable runtime evidence is available, preserve UNKNOWN and move to the strongest repository-capable execution plane rather than guessing.",
+    "next_action": "Restore/provide the authorized GitHub repository variable NAYA_POWER_TARGET_URL with the approved live Naya Power runtime URL; resolve main HEAD again; rerun Naya Power — P0 Adversarial Tests on that exact HEAD; if live-runtime fails, take the first failing boundary and repair only that boundary; if it passes, update the canonical state/proof/feed/handoff and continue Torch 12.",
     "next_action_count": 1
   },
   "continuity_priority_zero": {
