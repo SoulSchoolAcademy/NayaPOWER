@@ -29,9 +29,11 @@ jobs:
           echo 'CONTROL_PLANE_DEPLOYMENT_DISPATCH=DISABLED'
           echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
       - name: Governance adapter syntax check
-        run: python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py
+        run: python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py .naya/governance/test_naya_execution_boundaries.py
       - name: Governance kernel self-test
         run: python .naya/governance/test_governance_kernel.py
+      - name: Execution-boundary self-test
+        run: python .naya/governance/test_naya_execution_boundaries.py
       - name: Python control-plane syntax check
         run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
