@@ -14,6 +14,6 @@ jobs:
         run: |
           echo 'LEGACY_COGNITIVE_INTEGRATION=RETIRED'
           echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
-          echo 'CURRENT_HUB_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_HUB_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'CURRENT_COGNITIVE_ENGINE=scripts/nayanet-cognitive-engine.js'
           echo 'RULE=ONE_CURRENT_HUB_COGNITIVE_INTEGRATION_AUTHORITY'
