@@ -7,7 +7,7 @@
 ## CURRENT TRUTH
 Repository: `SoulSchoolAcademy/NayaPOWER`
 Branch: `main`
-**Latest live HEAD observed immediately before this board snapshot commit:** `7b3146e1abd43deb31f9adbe2519a1a3a0bca26a`
+**Latest live HEAD observed immediately before this board snapshot commit:** `bd234b3ddde5557d38c3175fe5dc339a652e2e05`
 **Important:** this board update itself creates a new `main` commit. Therefore the recorded SHA above is intentionally a pre-snapshot observation, not a competing current-head authority. Every Naya MUST resolve live `main` again before acting.
 Requested historical proof target: `b01b396fbac7c875f4da9923faa6f6db7cfb6580`
 Never force-reset main backward.
@@ -23,14 +23,15 @@ Make NayaPOWER a machine-like continuous intelligence flow in which a cold Naya 
 Acceptance requires fresh repository-runtime continuity evidence, authoritative gate evidence on the resulting exact HEAD, and evidence-linked successor continuity. UNKNOWN is never GREEN.
 
 ## WORK COMPLETED THIS EXECUTION
-1. Confirmed live `main` at sign-in and repeatedly re-resolved it throughout execution; never reset historical work backward.
-2. Inspected canonical STATE/BLOCKS/MAP/PROOF, Smart Flow Master Note, Operating Feed, P0 workflow, cold-start acceptance, manifest, and current activity board.
-3. Confirmed the requested exact `b01b...` P0 execution remains UNKNOWN because the available GitHub surface has no workflow-dispatch write capability.
-4. Made the Current Activity Board a canonical boot-context artifact in `.naya/naya-context-manifest.json`, including canonical subject ownership, boot-order entry, task-route inclusion, and continuity rule.
-5. Extended `.naya/runtime/cold_start_activation.py` to require the Current Activity Board in boot order and validate its live-head rule, one-best-next-action section, and complete successor section.
-6. Surgically strengthened `.github/workflows/naya-power-adversarial-p0.yml` to assert that `git rev-parse HEAD` exactly equals `$GITHUB_SHA` in both P0 jobs. This is a real proof improvement and legitimately triggers the push-based P0 workflow when that workflow file is changed.
-7. Created append-only receipt `SUPERBRAIN/NAYA-ACTIVITY/2026-09-12-NAYAPOWER-P0-SIGNOUT-TORCH12-ACTIVITY-BOARD-ENFORCEMENT.md` documenting execution, evidence, unknowns, capability boundary, and successor instructions.
-8. Finalized this board snapshot with an explicit anti-staleness rule: its recorded SHA is a pre-snapshot observation only; live Git remains authoritative.
+1. Resolved live `main` directly at sign-in as `79bdf2822ba3a4e82d7c3098f21cdc4805e98ec1`; the board's recorded SHA was not trusted.
+2. Inspected canonical STATE/BLOCKS/MAP/PROOF, Smart Flow Master Note, context manifest, cold-start acceptance, P0 workflow, and Current Activity Board.
+3. Confirmed the Current Activity Board remains canonical boot context and that cold-start acceptance enforces its boot-order presence, live-head rule, one-best-next-action section, and complete successor section.
+4. Confirmed STATE and BLOCKS agree on `TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION` and expose exactly one identical next action.
+5. Confirmed `.github/workflows/naya-power-adversarial-p0.yml` contains the exact checkout identity assertion `git rev-parse HEAD == $GITHUB_SHA` in both P0 jobs.
+6. Attempted to obtain fresh current-head P0 execution evidence through the available GitHub Actions surface. No current-head P0 run was exposed; combined commit status for `79bdf2822ba3a4e82d7c3098f21cdc4805e98ec1` returned no statuses.
+7. Confirmed the available GitHub surface can inspect known Actions runs/jobs/logs/artifacts and rerun known jobs, but does not expose a verified workflow-dispatch write operation or usable push-run listing capable of producing current-head evidence.
+8. Created append-only receipt `SUPERBRAIN/NAYA-ACTIVITY/2026-09-12-NAYAPOWER-P0-SIGNOUT-TORCH12-CURRENT-EXECUTION.md` at commit `bd234b3ddde5557d38c3175fe5dc339a652e2e05`.
+9. Re-resolved live `main` after the receipt commit; the receipt advanced HEAD, so this board snapshot intentionally records `bd234b3ddde5557d38c3175fe5dc339a652e2e05` as its pre-snapshot observation.
 
 ## PROVEN EVIDENCE
 Historical genuine P0 run `34702023228` checked out `cd472afce48ae502d7b08212b868d5980cd30854`.
@@ -39,18 +40,22 @@ Offline governance: PASS — cold-start, control-plane validator, governance ker
 
 Live-runtime: FAIL-CLOSED because `NAYA_POWER_TARGET_URL` was empty. Artifact `naya-power-p0-live-evidence`, ID `10300458520`. This proves the harness enforced its missing-target boundary; it does not prove production failure.
 
-The newly strengthened P0 workflow source contains an explicit exact-checkout assertion in both jobs. Source-level inspection confirms the assertion is present; runtime execution of the new commit remains pending/UNKNOWN until an actual Actions run is observed.
+Current source inspection: the P0 workflow contains an explicit exact-checkout assertion in both jobs. Current-head runtime execution of that source remains UNKNOWN because no current-head Actions run is observable through this connector.
 
 ## EXACT-SHA STATUS
 `b01b396fbac7c875f4da9923faa6f6db7cfb6580` is a real surgical repair, but **exact P0 execution against that SHA remains UNKNOWN / NOT EXECUTED**. Do not substitute another SHA.
 
 ## CURRENT-HEAD EXECUTION STATUS
-A current-head P0 run has not been truthfully observed through this connector. The latest directly observed status for source-validation HEAD `0642858442e45126bfa99c04cd4b114122afa84e` was `pending` with zero statuses. This is absence of fresh evidence, not evidence of failure. The available commit-run query does not expose push-triggered runs, so no new run ID is claimed.
+**Current live source observed:** `79bdf2822ba3a4e82d7c3098f21cdc4805e98ec1` before the receipt commit.
 
-The P0 workflow has a `push` trigger covering `.github/workflows/**`, and the exact-checkout assertion was added to that workflow at `a419fbc5...`; that source change legitimately requested a fresh push-triggered P0 execution for that exact workflow-change HEAD. Subsequent board/receipt commits do not change the P0 workflow and are not themselves claimed as having triggered P0.
+**Current post-receipt source observed:** `bd234b3ddde5557d38c3175fe5dc339a652e2e05` before this board snapshot commit.
+
+No P0 Actions run has been truthfully observed for either current source through this connector. Combined commit status for `79bdf2822ba3a4e82d7c3098f21cdc4805e98ec1` returned zero statuses. This is absence of fresh evidence, not evidence of failure.
+
+The P0 workflow has a `push` trigger covering `.github/workflows/**`, and the exact-checkout assertion was added at `a419fbc5cbe39ad421827ac2c37186b20306f844`; that workflow change legitimately requested a fresh push-triggered P0 execution for its own source-change HEAD. Subsequent receipt/board commits do not change the P0 workflow and are not claimed as having triggered P0.
 
 ## EXTERNAL EXECUTION BOUNDARY
-The connected GitHub surface exposes repository reads, Actions run/job/log/artifact inspection and reruns, but no verified workflow-dispatch write operation and no usable push-run listing for this connector. A genuine manual `workflow_dispatch` against `b01b...` or the current HEAD cannot be initiated here.
+The connected GitHub surface exposes repository reads, known Actions run/job/log/artifact inspection, commit status, and reruns of known jobs. It does not expose a verified workflow-dispatch write operation or a usable push-triggered workflow-run listing for this repository through the current connector. A fresh current-head `workflow_dispatch` cannot be initiated here, and no current-head run can be truthfully claimed.
 
 **Do not fabricate runs, IDs, checkout SHAs, logs, artifacts, or certification.**
 
@@ -60,25 +65,25 @@ Never weaken/bypass canonical control-plane authority, Naya 16 activity enforcem
 Surgical evolution: inspect → identify first deterministic divergence → repair only that boundary → verify → continue.
 
 ## WHY THIS IS NOT A 10
-The remaining decisive gap is **fresh observable runtime evidence for the current source**. We materially improved the system by making the current activity board machine-discoverable and cold-start-enforced, and by making P0 prove its actual checkout SHA. But source changes are not runtime proof.
+The decisive gap remains **fresh observable P0 runtime evidence against the current source**. The repository continuity machinery is materially stronger: the activity board is machine-discoverable and cold-start-enforced, and P0 proves its actual checkout SHA. But source-level proof is not runtime proof.
 
-A second live-runtime gap remains: the P0 harness requires `NAYA_POWER_TARGET_URL`; the last genuine run failed closed when that variable was absent. No claim of live production proof is made.
+A second runtime boundary remains: the P0 harness requires `NAYA_POWER_TARGET_URL`; the last genuine run failed closed when that variable was absent. No claim of live production proof is made.
 
 ## ONE BEST NEXT ACTION
-**Resolve live `main` at execution time, then obtain and inspect a genuine P0 Actions execution for that exact live source through a dispatch-capable or otherwise observable GitHub Actions execution plane; capture the exact checked-out SHA and full gate evidence, then repair the first deterministic failure and continue.**
+**Obtain a genuine P0 Actions execution for the exact live `main` HEAD through a dispatch-capable or otherwise observable GitHub Actions execution plane; capture the exact checkout SHA and full gate evidence, then repair the first deterministic failure and continue.**
 
 ## NEXT NAYA — READY TO RUN
 START NOW — NayaPOWER CONTINUOUS EXECUTION.
 
-1. Resolve live `main` again and record the exact SHA. Never trust this board's recorded SHA over live Git.
+1. Resolve live `main` again. Never trust this board's recorded SHA over live Git.
 2. Read this board, `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, `PROOF.json`, and the Priority Zero Smart Flow Master Note.
-3. Confirm the Current Activity Board remains registered in `.naya/naya-context-manifest.json` as a boot-order artifact and task-route subject, and that `.naya/runtime/cold_start_activation.py` enforces its presence and successor content.
-4. Inspect GitHub Actions for a fresh P0 execution whose triggering/checked-out SHA is exactly the relevant live source SHA. If a run is visible, capture run ID, event, checkout SHA, every job, every step, logs, artifacts, artifact IDs, and live-runtime result.
-5. The workflow now contains an explicit `git rev-parse HEAD == $GITHUB_SHA` assertion in both jobs. Treat failure of that assertion as the first failure and trace it before touching downstream steps.
+3. Confirm the Current Activity Board remains registered in `.naya/naya-context-manifest.json` as boot-order context and that `.naya/runtime/cold_start_activation.py` enforces its presence and successor content.
+4. Inspect GitHub Actions for a fresh P0 execution whose triggering/checked-out SHA exactly matches the relevant live source. If a run is visible, capture run ID, event, triggering SHA, checkout SHA, every job, every step, relevant logs, artifacts, artifact IDs, and live-runtime result.
+5. Treat any failure of `git rev-parse HEAD == $GITHUB_SHA` as the first failure and trace it before touching downstream steps.
 6. If no current-head run is observable through this connector, do not fabricate one. Use a genuinely dispatch-capable execution plane if available. If not, preserve UNKNOWN and perform the strongest remaining repository-capable inspection.
-7. If the fresh run fails, identify FIRST failing step → trace root cause → smallest safe surgical repair → verify → fresh execution. Never repair downstream symptoms first.
+7. If a fresh run fails, identify FIRST failing step → trace root cause → smallest safe surgical repair → verify → execute fresh again. Never repair downstream symptoms first.
 8. Keep KNOWN / OBSERVED / VERIFIED / INFERRED / ASSUMED / UNKNOWN distinct. Historical PASS is not current PASS.
-9. Before sign-out, update this board and create the required append-only activity/verification receipt with the exact current HEAD and evidence. Remember that updating the board itself creates a new HEAD; record the pre-snapshot observation and require the successor to resolve live again.
+9. Before sign-out, create the required append-only receipt and update this board. Remember: each board update creates a new HEAD. Record the pre-snapshot observation and require the successor to resolve live again.
 10. Ask WHY IS THIS NOT A 10? Close the highest-value executable gap; do not manufacture activity.
 11. Do not certify until claim-appropriate fresh exact-head evidence supports the claim.
 12. Sign out with exact state, evidence, UNKNOWNs, blocker, repair, certification state, exactly one next action, and this complete successor prompt.
