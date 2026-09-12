@@ -69,5 +69,20 @@ def test_current_canonical_corpus():
     print("CONTINUITY VALIDATOR → GREEN")
 
 
+def test_canonical_historical_event_ids_preserve_case():
+    policy = module.load_policy()
+    event = {
+        "event_id": "SE-20260830-SMART-NOTE-DELIVERY-TEACHING",
+        "effective_at": policy["effective_at"],
+        "continuity": {"execution_state": "IN_PROGRESS", "next_action_status": "RECORDED", "learning_status": "LEARNED"},
+        "representations": {"naya": {"lessons": ["learned"]}, "shawn": {"lessons": ["learned"]}},
+        "verification": {"status": "PENDING"},
+        "receipt": {"receipt_id": "r"},
+        "delivery": {"state": "PERSISTED"},
+    }
+    errors = module.check_event(event, Path("historical.json"), policy)
+    assert not any("invalid event_id" in error for error in errors), errors
+
+
 if __name__ == "__main__":
     raise SystemExit(0 if module.self_test() == 0 else 1)
