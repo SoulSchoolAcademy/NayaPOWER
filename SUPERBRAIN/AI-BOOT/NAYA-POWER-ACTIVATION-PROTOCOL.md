@@ -43,6 +43,8 @@ A human may say, for example:
 
 These are **activation-intent examples**, not a closed list. If a human uses different words that clearly mean *turn NayaPOWER on, enter NayaPOWER's governed operating mode, activate Naya under NayaPOWER, or restore NayaPOWER context*, the governed intelligence must recognize the intent and invoke the same canonical activation contract.
 
+The canonical semantic rule is explicit: **If a human uses different words that clearly carry the same activation intent, NayaPOWER must recognize that intent and invoke the same canonical activation contract.**
+
 The machine-readable intent cluster is:
 
 `.naya/runtime/activation-intent-clusters.json`
