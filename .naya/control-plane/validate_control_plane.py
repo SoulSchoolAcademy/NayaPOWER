@@ -6,30 +6,61 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+
 ROOT=Path(__file__).resolve().parents[2]
-REG=ROOT/'.naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json'; MAP=ROOT/'.naya/control-plane/MAP.json'; STATE=ROOT/'.naya/control-plane/STATE.json'; BLOCKS=ROOT/'.naya/control-plane/BLOCKS.json'; PROOF=ROOT/'.naya/control-plane/PROOF.json'; KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'; KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'; LEGACY_STATE=ROOT/'.naya/memory/STATE.json'; MANIFEST=ROOT/'.naya/naya-context-manifest.json'
+REG=ROOT/'.naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json'
+MAP=ROOT/'.naya/control-plane/MAP.json'
+STATE=ROOT/'.naya/control-plane/STATE.json'
+BLOCKS=ROOT/'.naya/control-plane/BLOCKS.json'
+PROOF=ROOT/'.naya/control-plane/PROOF.json'
+KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'
+KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'
+LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
+MANIFEST=ROOT/'.naya/naya-context-manifest.json'
 KNOWN_REPO_PATH_PREFIXES=('.naya/','.github/','SUPERBRAIN/','NAYANET/','scripts/','tests/','docs/')
+
+
 def load(path):
-    if not path.is_file(): raise AssertionError(f'MISSING: {path.relative_to(ROOT)}')
+    if not path.is_file():
+        raise AssertionError(f'MISSING: {path.relative_to(ROOT)}')
     return json.loads(path.read_text(encoding='utf-8'))
+
+
 def git(*args):
-    p=subprocess.run(['git',*args],cwd=ROOT,text=True,capture_output=True,check=True); return p.stdout.strip()
-def fail(msg): raise AssertionError(msg)
+    p=subprocess.run(['git',*args],cwd=ROOT,text=True,capture_output=True,check=True)
+    return p.stdout.strip()
+
+
+def fail(msg):
+    raise AssertionError(msg)
+
+
 def repo_path(value,label):
-    if not isinstance(value,str) or not value.strip(): fail(f'{label} is missing')
-    if value.startswith('/') or '..' in Path(value).parts: fail(f'{label} is not a safe repository-relative path: {value}')
+    if not isinstance(value,str) or not value.strip():
+        fail(f'{label} is missing')
+    if value.startswith('/') or '..' in Path(value).parts:
+        fail(f'{label} is not a safe repository-relative path: {value}')
     path=ROOT/value
-    if not path.exists(): fail(f'{label} points to missing artifact: {value}')
+    if not path.exists():
+        fail(f'{label} points to missing artifact: {value}')
     return path
-def looks_like_repo_path(value): return isinstance(value,str) and value.startswith(KNOWN_REPO_PATH_PREFIXES)
+
+
+def looks_like_repo_path(value):
+    return isinstance(value,str) and value.startswith(KNOWN_REPO_PATH_PREFIXES)
+
+
 def validate_identity(reg):
     if reg.get('status')!='CANONICAL': fail('identity registry is not canonical')
-    ids={x['canonical_id']:x for x in reg['identities']}; np=ids.get('NAYAPOWER'); mx=ids.get('MAXIS')
+    ids={x['canonical_id']:x for x in reg['identities']}
+    np=ids.get('NAYAPOWER'); mx=ids.get('MAXIS')
     if not np or np.get('canonical_repository')!='SoulSchoolAcademy/NayaPOWER' or np.get('status')!='CURRENT': fail('NayaPOWER canonical identity invalid')
     if not mx or mx.get('canonical_repository')!='SoulSchoolAcademy/Maxis' or mx.get('status')!='CURRENT': fail('MAXIS canonical identity invalid')
     if 'MaxRESULTS' not in np.get('supersedes',[]) or 'MaxRESULTS' not in mx.get('supersedes',[]): fail('MaxRESULTS supersession missing')
     for item in reg['identities']:
         if item.get('status')=='CURRENT' and item.get('canonical_repository','') in ('SoulSchoolAcademy/MaxRESULTS','SoulSchoolAcademy/Max Results'): fail('historical repository selected as current')
+
+
 def validate_map(m):
     if m.get('repository')!='SoulSchoolAcademy/NayaPOWER': fail('MAP repository is not canonical')
     if m.get('canonical_identity_registry')!='.naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json': fail('MAP does not point to identity registry')
@@ -37,24 +68,48 @@ def validate_map(m):
     for key in ('source','current_state','evidence','history'):
         if key not in m.get('truth_owners',{}): fail(f'MAP missing truth owner: {key}')
     if not m.get('execution_map',{}).get('active_block'): fail('MAP missing active block')
-    repo_path(m.get('authority',{}).get('governing_standard'),'MAP governing standard'); repo_path(m.get('authority',{}).get('boot_entry'),'MAP boot entry'); repo_path(m.get('continuous_smart_flow',{}).get('master_note'),'MAP Smart Flow master note')
+    repo_path(m.get('authority',{}).get('governing_standard'),'MAP governing standard')
+    repo_path(m.get('authority',{}).get('boot_entry'),'MAP boot entry')
+    repo_path(m.get('continuous_smart_flow',{}).get('master_note'),'MAP Smart Flow master note')
     for mechanism in m.get('verification_mechanisms',[]):
         if looks_like_repo_path(mechanism): repo_path(mechanism,'MAP verification mechanism')
     for item in m.get('operational_laws',{}).values():
         if isinstance(item,dict) and item.get('path'): repo_path(item['path'],'MAP operational law')
+
+
 def validate_manifest(manifest):
     if manifest.get('status')!='CANONICAL': fail('context manifest is not canonical')
     if manifest.get('repository')!='SoulSchoolAcademy/NayaPOWER': fail('context manifest repository is not canonical')
     if manifest.get('governance_branch')!='main': fail('context manifest governance branch is not main')
+    boot_order=manifest.get('boot_order',[])
+    if not isinstance(boot_order,list) or not boot_order: fail('context manifest boot_order is empty')
+    if boot_order[0] != 'SUPERBRAIN/AI-BOOT/START-HERE.md': fail('context manifest must boot from START-HERE.md')
     missing=[]
-    for path in manifest.get('boot_order',[]):
+    for path in boot_order:
+        if not isinstance(path,str) or not path.strip():
+            fail('context manifest contains an invalid boot_order path')
+        if path.startswith('/') or '..' in Path(path).parts:
+            fail(f'context manifest contains unsafe boot_order path: {path}')
         if not (ROOT/path).exists(): missing.append(path)
-    for subject,spec in manifest.get('subjects',{}).items():
-        if isinstance(spec,dict):
-            canonical=spec.get('canonical'); implementation=spec.get('implementation')
-            if canonical and not (ROOT/canonical).exists(): missing.append(f'{subject}: {canonical}')
-            if implementation and not (ROOT/implementation).exists(): missing.append(f'{subject}.implementation: {implementation}')
+    subjects=manifest.get('subjects',{})
+    if not isinstance(subjects,dict) or not subjects: fail('context manifest subjects are empty')
+    for subject,spec in subjects.items():
+        if not isinstance(spec,dict): fail(f'context manifest subject is not an object: {subject}')
+        for field in ('canonical','implementation'):
+            path=spec.get(field)
+            if path:
+                if path.startswith('/') or '..' in Path(path).parts: fail(f'{subject}.{field} contains unsafe path: {path}')
+                if not (ROOT/path).exists(): missing.append(f'{subject}.{field}: {path}')
+        for path in spec.get('extensions',[]):
+            if path.startswith('/') or '..' in Path(path).parts: fail(f'{subject}.extensions contains unsafe path: {path}')
+            if not (ROOT/path).exists(): missing.append(f'{subject}.extension: {path}')
+    for route_name,route in manifest.get('task_routes',{}).items():
+        if not isinstance(route,list) or not route: fail(f'context manifest task route is empty: {route_name}')
+        for subject in route:
+            if subject not in subjects: fail(f'context manifest task route {route_name} references unknown subject: {subject}')
     if missing: fail('context manifest references missing artifacts: '+'; '.join(missing[:20]))
+
+
 def validate_state(s):
     if s.get('status')!='LIVE_BOUND': fail('STATE is not live-bound')
     if s.get('current_head',{}).get('source')!='git:HEAD': fail('STATE current HEAD is not live-resolved')
@@ -64,16 +119,23 @@ def validate_state(s):
     if s.get('next_action_count')!=1 or not isinstance(s.get('next_actions'),list) or len(s['next_actions'])!=1: fail('STATE does not expose exactly one next action')
     if s['next_actions'][0]!=s['single_next_action']: fail('STATE next action representations disagree')
     return git('rev-parse','HEAD'),git('branch','--show-current')
+
+
 def validate_state_without_git(s):
     if s.get('status')!='LIVE_BOUND' or s.get('current_head',{}).get('source')!='git:HEAD': fail('recorded HEAD accepted as current')
+
+
 def legacy_drift(head):
     if not LEGACY_STATE.is_file(): return 'NOT_PRESENT'
     try: recorded=load(LEGACY_STATE).get('current_main',{}).get('commit')
     except Exception: return 'UNREADABLE'
     if not recorded: return 'NO_RECORDED_HEAD'
     return 'CURRENT' if recorded==head else 'STALE'
+
+
 def validate_block(b):
-    a=b.get('active_block',{}); required=('id','status','intent','scope','protected','acceptance','evidence','target_state','next_action','next_actions','next_action_count')
+    a=b.get('active_block',{})
+    required=('id','status','intent','scope','protected','acceptance','evidence','target_state','next_action','next_actions','next_action_count')
     for k in required:
         if not a.get(k): fail(f'BLOCK missing {k}')
     if a['status'] not in ('ACTIVE','INTENDED','IMPLEMENTED','COMPLETE','VERIFIED','RACE_READY','PRODUCTION_PROVEN','BLOCKED','FAILED','UNKNOWN','STALE'): fail('invalid block status')
@@ -84,6 +146,8 @@ def validate_block(b):
     if a['status'] in ('VERIFIED','RACE_READY','PRODUCTION_PROVEN') and not a.get('proof_receipt'): fail('material completion state lacks proof receipt')
     for item in a.get('evidence',[]):
         if looks_like_repo_path(item): repo_path(item,'BLOCK evidence')
+
+
 def validate_cross_surface_coherence(m,s,b):
     active=b.get('active_block',{})
     if m.get('execution_map',{}).get('active_block')!=active.get('id'): fail('MAP and BLOCK active block disagree')
@@ -91,6 +155,8 @@ def validate_cross_surface_coherence(m,s,b):
     if s.get('single_next_action')!=active.get('next_action'): fail('STATE and BLOCK next actions disagree')
     if s.get('next_actions')!=[active.get('next_action')]: fail('STATE and BLOCK next_actions disagree')
     if s.get('next_action_count')!=active.get('next_action_count') or active.get('next_action_count')!=1: fail('STATE and BLOCK next-action cardinality disagree')
+
+
 def validate_proof(p,live_head=None):
     for k in ('SOURCE','BUILD','AUTOMATED','RUNTIME','VISUAL','WHOLE_JOURNEY','PRODUCTION'):
         if k not in p.get('claim_evidence',{}): fail(f'PROOF missing claim type: {k}')
@@ -102,6 +168,8 @@ def validate_proof(p,live_head=None):
     if observed!=recording: fail('PROOF observed_head and recording_commit disagree')
     if live_head is not None and observed!=live_head: return 'STALE_RELATIVE_TO_LIVE_HEAD'
     return 'CURRENT'
+
+
 def validate_kernel(contract):
     if contract.get('status')!='CANONICAL': fail('governance kernel is not canonical')
     if contract.get('kernel_id')!='NAYAPOWER-GOVERNANCE-KERNEL-V1': fail('unexpected governance kernel identity')
@@ -115,13 +183,18 @@ def validate_kernel(contract):
     if 'VERIFIED' in transitions.get('EXECUTED',[]): fail('kernel permits EXECUTED → VERIFIED bypass')
     if 'EXECUTING' in transitions.get('STOPPED',[]): fail('kernel permits STOPPED → EXECUTING')
     if 'EXECUTING' in transitions.get('DEFERRED',[]): fail('kernel permits DEFERRED → EXECUTING')
+
+
 def validate_kernel_self_test():
     if not KERNEL_IMPL.is_file(): fail('MISSING: .naya/control-plane/governance_kernel.py')
     spec=importlib.util.spec_from_file_location('naya_governance_kernel',KERNEL_IMPL)
     if spec is None or spec.loader is None: fail('unable to load governance kernel implementation')
-    module=importlib.util.module_from_spec(spec); sys.modules[spec.name]=module; spec.loader.exec_module(module)
-    result=module.self_test()
-    if result.get('status')!='GREEN': fail('governance kernel self-test not GREEN')
+    module=importlib.util.module_from_spec(spec)
+    sys.modules[spec.name]=module
+    spec.loader.exec_module(module)
+    if module.self_test().get('status')!='GREEN': fail('governance kernel self-test not GREEN')
+
+
 def validate_scenarios():
     reg,state,blocks,proof,kernel=load(REG),load(STATE),load(BLOCKS),load(PROOF),load(KERNEL)
     bad=json.loads(json.dumps(reg)); bad['identities'][0]['canonical_repository']='SoulSchoolAcademy/MaxRESULTS'
@@ -139,15 +212,27 @@ def validate_scenarios():
     bad=json.loads(json.dumps(kernel)); bad['legal_transitions']['EXECUTED']=['VERIFIED']
     try: validate_kernel(bad); fail('self-test: EXECUTED -> VERIFIED bypass accepted')
     except AssertionError: pass
-def validate_kernel_self_test():
-    if not KERNEL_IMPL.is_file(): fail('MISSING: .naya/control-plane/governance_kernel.py')
-    spec=importlib.util.spec_from_file_location('naya_governance_kernel',KERNEL_IMPL)
-    if spec is None or spec.loader is None: fail('unable to load governance kernel implementation')
-    module=importlib.util.module_from_spec(spec); sys.modules[spec.name]=module; spec.loader.exec_module(module)
-    if module.self_test().get('status')!='GREEN': fail('governance kernel self-test not GREEN')
+
+
 def main():
-    reg,map_,state,blocks,proof,kernel,manifest=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST)); validate_identity(reg); validate_manifest(manifest); validate_map(map_); head,branch=validate_state(state); validate_block(blocks); validate_cross_surface_coherence(map_,state,blocks); freshness=validate_proof(proof,head); validate_kernel(kernel); validate_kernel_self_test(); validate_scenarios()
-    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2)); return 0
+    reg,map_,state,blocks,proof,kernel,manifest=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST))
+    validate_identity(reg)
+    validate_manifest(manifest)
+    validate_map(map_)
+    head,branch=validate_state(state)
+    validate_block(blocks)
+    validate_cross_surface_coherence(map_,state,blocks)
+    freshness=validate_proof(proof,head)
+    validate_kernel(kernel)
+    validate_kernel_self_test()
+    validate_scenarios()
+    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
+    return 0
+
+
 if __name__=='__main__':
-    try: raise SystemExit(main())
-    except AssertionError as e: print(f'CONTROL_PLANE=RED\nFIRST_DIVERGENCE={e}',file=sys.stderr); raise SystemExit(1)
+    try:
+        raise SystemExit(main())
+    except AssertionError as e:
+        print(f'CONTROL_PLANE=RED\\nFIRST_DIVERGENCE={e}',file=sys.stderr)
+        raise SystemExit(1)
