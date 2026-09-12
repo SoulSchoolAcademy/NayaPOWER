@@ -144,11 +144,13 @@ def validate_event(event,project,policy):
         errors.append(f'{eid}: meaningful execution must bind to CURRENT-DAILY-PROJECT ({project.get("project_name")})')
     if not ctx.get('current_objective'):errors.append(f'{eid}: missing project_context.current_objective')
     reps=event.get('representations') or {}; naya=reps.get('naya') if isinstance(reps,dict) else None; shawn=(reps.get('shawn') or reps.get('human')) if isinstance(reps,dict) else None
+    naya_legacy_text=isinstance(naya,str)
     if not naya or not shawn:errors.append(f'{eid}: paired representations are required')
     else:
-        if naya.get('canonical_event_id')!=eid:errors.append(f'{eid}: Naya representation is not bound to canonical event')
-        if shawn.get('canonical_event_id')!=eid:errors.append(f'{eid}: Shawn/Human representation is not bound to canonical event')
-        if naya.get('id')==shawn.get('id'):errors.append(f'{eid}: Naya and Shawn/Human representation IDs must remain distinct')
+        if not naya_legacy_text:
+            if naya.get('canonical_event_id')!=eid:errors.append(f'{eid}: Naya representation is not bound to canonical event')
+            if naya.get('id')==shawn.get('id') if isinstance(shawn,dict) else False:errors.append(f'{eid}: Naya and Shawn/Human representation IDs must remain distinct')
+        if isinstance(shawn,dict) and shawn.get('canonical_event_id')!=eid:errors.append(f'{eid}: Shawn/Human representation is not bound to canonical event')
     continuity=event.get('continuity') or {}; execution_state=str(continuity.get('execution_state','COMPLETED')).upper()
     if execution_state=='COMPLETED':
         nex=event.get('next_execution')
