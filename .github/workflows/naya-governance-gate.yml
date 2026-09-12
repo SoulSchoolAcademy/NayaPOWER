@@ -1,5 +1,8 @@
 name: Naya Governance Gate
 
+# This workflow validates governance. It is not a deployment authority.
+# Public Hub deployment is owned exclusively by deploy-nayanet-hub-canonical-v2.yml,
+# which is explicitly approved and kernel-gated.
 on:
   push:
     branches: [main]
@@ -61,57 +64,13 @@ jobs:
                   if marker in text: raise SystemExit(f'GOVERNANCE_CONTRADICTION {source}: {marker}')
           print('GOVERNANCE_CONSISTENCY=PASS')
           PY
-  canonical_release:
-    if: github.event_name == 'push' && (contains(github.event.head_commit.message, 'release') || contains(github.event.head_commit.message, 'Cloudflare'))
-    needs: governance
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout exact current main
-        uses: actions/checkout@v4
-        with: {fetch-depth: 0, ref: main}
-      - name: Build canonical NAYANET/HUB
-        working-directory: NAYANET/HUB
+      - name: Verify one current public Hub deployment authority
         shell: bash
         run: |
           set -euo pipefail
-          npm install --no-audit --no-fund
-          npm run build
-          test -s dist/index.html
-          echo 'CANONICAL_HUB_BUILD=PASS'
-      - name: Verify first-slice artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          H='NAYANET/HUB/dist/index.html'
-          for x in 'Intelligent Hub' 'Good morning' 'MORE INTELLIGENCE. LESS WASTE.' 'Ask Naya or search your intelligence' 'PERSONAL' 'COLLECTIVE' 'ACTIVITY' 'ONE CANONICAL INTELLIGENCE OBJECT' 'intelligenceObject'; do grep -Fqi "$x" "$H" || { echo "BUILT_ARTIFACT_MISSING=$x"; exit 1; }; done
-          echo 'FIRST_SLICE_ARTIFACT=PASS'
-      - name: Prepare canonical Cloudflare artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf CLOUDFLARE-NAYANET-HUB
-          mkdir -p CLOUDFLARE-NAYANET-HUB/public
-          cp -R NAYANET/HUB/dist/. CLOUDFLARE-NAYANET-HUB/public/
-          cat > CLOUDFLARE-NAYANET-HUB/worker.js <<'EOF'
-          export default { async fetch(request, env) { const url = new URL(request.url); if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/')) return env.ASSETS.fetch(new Request(new URL('/index.html', request.url), request)); return env.ASSETS.fetch(request); } };
-          EOF
-          cat > CLOUDFLARE-NAYANET-HUB/wrangler.jsonc <<'EOF'
-          {"name":"aged-art-7c12","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"./public","binding":"ASSETS"}}
-          EOF
-      - name: Deploy exact artifact to canonical Cloudflare Worker
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: 262c881746ea6e9978ca18b3eb831907
-          workingDirectory: CLOUDFLARE-NAYANET-HUB
-          command: deploy --config wrangler.jsonc
-      - name: Independently verify root and Smart Link runtime parity
-        shell: bash
-        run: |
-          set -euo pipefail
-          R='https://aged-art-7c12.nayanet.workers.dev'; S='https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'
-          curl -fsSL --retry 10 --retry-delay 3 "$R/?release=$GITHUB_SHA" -o /tmp/root
-          curl -fsSL --retry 10 --retry-delay 3 "$S?release=$GITHUB_SHA" -o /tmp/smart
-          cmp -s /tmp/root /tmp/smart || { echo 'RUNTIME_ROUTE_PARITY=FAIL'; exit 1; }
-          for x in 'Intelligent Hub' 'Good morning' 'MORE INTELLIGENCE. LESS WASTE.' 'Ask Naya or search your intelligence' 'PERSONAL' 'COLLECTIVE' 'ACTIVITY' 'ONE CANONICAL INTELLIGENCE OBJECT' 'intelligenceObject'; do grep -Fqi "$x" /tmp/root || { echo "RUNTIME_MISSING=$x"; exit 1; }; done
-          echo 'PUBLIC_RUNTIME=PASS'; echo 'RUNTIME_ROUTE_PARITY=PASS'; echo 'ACTUAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'; echo 'SMART_LINK=https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds'; echo "SOURCE_COMMIT=$GITHUB_SHA"
+          test -f .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          grep -q 'name: Deploy Canonical NayaNET Hub V2' .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          grep -q 'Enforce canonical NayaPOWER governance kernel' .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          grep -q 'workflow_dispatch:' .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          echo 'PUBLIC_HUB_DEPLOYMENT_AUTHORITY=CANONICAL_GOVERNED_V2'
+          echo 'NO_PARALLEL_DEPLOYMENT_AUTHORITY=PASS'
