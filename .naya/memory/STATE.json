@@ -32,10 +32,10 @@
     "This file is a derived compatibility/history projection only.",
     "The current active block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
     "The current canonical next action is to execute the first implementation blocker revealed by reconciled machine state, verify it, record it, and pass the next torch.",
+    "Naya Control Plane run 34725179860 passed all control-plane and CCT regression gates at HEAD 015cbad289fab4b551c0d38e079dd513d9c39f51.",
     "A complete cold-Naya behavioral proof beyond repository-level acceptance remains a separate external runtime boundary."
   ],
   "unknown": [
-    "Fresh successful Naya Control Plane result after the current compatibility projection repair.",
     "Fresh successful Superbrain Gate, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD.",
     "Exact current production runtime parity until a fresh canonical deployment completes and independently verifies it.",
     "External LLM cold-start behavioral proof beyond repository-level acceptance.",
