@@ -181,4 +181,49 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
         self.assertIn('"status": "AUTHORIZED"', result.stdout)
-        self.assertIn('"verification": "HIGH_RISK_VERIFIED"', result.stdout)
+        self.assertIn('"risk_tier": "HIGH"', result.stdout)
+
+    def test_unregistered_scope_is_denied(self):
+        result = self.run_adapter(
+            "--actor", "SoulSchoolAcademy",
+            "--purpose", "deploy the canonical NayaNET Intelligent Hub public runtime",
+            "--permission", "deploy_public_runtime",
+            "--request", "forged_request",
+            "--mission", "attempt an unregistered deployment",
+            "--uncertainty", "3",
+            "--consequence", "8",
+            "--irreversibility", "8",
+            "--scope", "public-runtime:UNREGISTERED:/",
+            "--evidence", "forged authority test",
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("explicit authority resolution failed", result.stdout)
+
+    def test_no_known_obsolete_mutating_workflow_remains(self):
+        self.assertFalse((WORKFLOWS / "nayanet-welcome-executor.yml").exists())
+        self.assertFalse((WORKFLOWS / "deploy-nayanet.yml").exists())
+
+    def test_no_workflow_points_at_nonexistent_canonical_deployment(self):
+        for path in WORKFLOWS.glob("*.yml"):
+            text = path.read_text(encoding="utf-8")
+            self.assertNotIn(
+                "deploy-nayanet-hub-canonical.yml",
+                text,
+                msg=f"stale canonical deployment reference in {path.name}",
+            )
+
+    def test_all_legacy_hub_workflows_are_non_mutating(self):
+        for name in LEGACY_HUB_WORKFLOWS:
+            path = WORKFLOWS / name
+            if not path.exists():
+                continue
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("RETIRED", text, msg=f"legacy workflow not marked retired: {name}")
+            self.assertNotIn("contents: write", text, msg=f"legacy workflow still has write power: {name}")
+            self.assertNotIn("git push", text, msg=f"legacy workflow can push: {name}")
+            self.assertNotIn("cloudflare/wrangler-action", text, msg=f"legacy workflow can deploy: {name}")
+            self.assertNotIn("workflow_call:", text, msg=f"legacy workflow can be invoked: {name}")
+
+
+if __name__ == "__main__":
+    unittest.main()
