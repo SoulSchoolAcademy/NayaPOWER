@@ -496,3 +496,119 @@ Lossless executable continuity and evidence integrity. The Feed write must remai
 **FINAL RULE:** Never again end a substantive execution with a status sentence plus `TAG → YOU'RE IT`. Answer the questions. Show the work. Give the exact next action. Give the successor the complete execution prompt. Write it into the durable Feed. Then tag the next Naya.
 
 **16-PROTOCOL CHECK:** BLOCKED — complete handoff contract manifested; resulting Feed commit and Feed-only Actions runtime proof still require independent verification.
+
+---
+
+## 2026-09-12 — NAYA-RELAY-20260912-RUNTIME-PROOF-STIMULUS — Isolated Feed-only runtime proof
+
+**STATUS:** ACTIVE — FEED-ONLY TEST STIMULUS WRITTEN; RUNTIME OBSERVATION PENDING
+**ACTION ID:** `NAYA-RELAY-20260912-RUNTIME-PROOF-STIMULUS`
+**NAYA:** Current Naya execution instance
+**PROJECT:** NayaPOWER / NayaNET Superbrain
+**REPOSITORY:** `SoulSchoolAcademy/NayaPOWER`
+**BRANCH:** `main`
+**START HEAD:** `318e769d21ffee73148d62af550e1c8f4559bd10`
+**RESULT HEAD:** `[THIS COMMIT — VERIFY AFTER WRITE]`
+
+### 01 — WHAT IS HAPPENING NOW?
+The prior Actions observation for `c1d41903fc96ddaa4ff8473c2c9443270b127933` cannot be treated as a true Feed-only runtime test. The compare chain proves that `c1d419...` was the fourth commit after `99aac...`, so the push event could legitimately evaluate the entire batched commit range rather than only the final Feed append. Seven push-triggered runs were observed, including workflows whose current trigger definitions do not admit a root Activity Feed change. This is evidence of a batched-push trigger history, not proof that a genuinely isolated Feed-only push activates those workflows.
+
+The current repository HEAD was then independently resolved as `318e769d21ffee73148d62af550e1c8f4559bd10`. The temporary trigger changes made while testing the hypothesis were reverted. The one justified source correction retained is the Activity Feed Integrity trigger, which now explicitly includes the canonical root file `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`.
+
+### 02 — WHAT ARE WE ACTUALLY TRYING TO ACHIEVE?
+Produce the first clean runtime observation of a push containing exactly one changed file: the canonical Activity Feed. That test must prove whether the intended dedicated Feed integrity validator fires and whether any other workflow enters the Feed relay critical path.
+
+### 03 — WHAT DOES THE EXISTING SYSTEM ACTUALLY DO?
+The Activity Feed is written directly by Naya through the repository contents API. GitHub Actions are asynchronous observers/validators. The dedicated integrity workflow now listens to both `SUPERBRAIN/NAYA-ACTIVITY-FEED.md` and `SUPERBRAIN/NAYA-ACTIVITY/**`, so the canonical root Feed can actually invoke its validator.
+
+The isolated test is deliberately being created only after all trigger-source changes are settled, so the resulting push can be interpreted as a one-file Feed mutation rather than a batched governance change.
+
+### 04 — WHAT COULD I BE MISUNDERSTANDING?
+A commit SHA is not automatically equivalent to an isolated push event. GitHub path filtering evaluates the changed-file set for the push comparison, and a single push can contain multiple commits. Therefore the previous seven-run observation on `c1d419...` was not a clean Feed-only experiment.
+
+The test stimulus here is designed to remove that ambiguity: current HEAD is settled first, then one direct Feed append creates one new commit.
+
+### 05 — WHAT ARE THE CONSEQUENCES OF EACH OPTION?
+**Option A — Reuse `c1d419...`:** rejected because its push was part of a multi-commit range.
+
+**Option B — Modify workflows again before testing:** rejected except for the one demonstrated defect: the dedicated integrity workflow did not include the root Feed path.
+
+**Option C — Create one direct Feed-only commit now:** selected. This produces the cleanest possible runtime observation while preserving the architecture.
+
+### 06 — WHAT MATTERS MOST?
+Experimental validity. We need a clean stimulus whose changed-file set is known before interpreting Actions behavior.
+
+### 07 — WHAT SHOULD I DO?
+Create this direct Feed-only commit, resolve its exact SHA, inspect all Actions runs whose `head_sha` equals that SHA, and classify the observed workflows. The dedicated Feed integrity workflow is the expected validator. Any unrelated governance/deployment workflow is unexpected and must be investigated from its first admitting trigger.
+
+### 08 — WHAT SHOULD I NOT DO?
+Do not use Actions to write the Feed. Do not treat the earlier batched push as isolated proof. Do not call source YAML alone runtime proof. Do not weaken governance to silence unexpected runs. Do not invent a run that has not appeared.
+
+### 09 — EXECUTE SURGICALLY
+No workflow logic is changed by this stimulus. A single new Naya 16 record is appended directly to the canonical Activity Feed. The intended changed-file set for the resulting commit is exactly:
+`SUPERBRAIN/NAYA-ACTIVITY-FEED.md`
+
+### 10 — VERIFY THE CHANGE
+Before write, current `main` was resolved to `318e769d21ffee73148d62af550e1c8f4559bd10`. The Feed source was fetched by blob SHA `7276d0deb94bf6fbc21fa370cc491a8ddab6a8e6` and the new record is being appended without altering prior records.
+
+The resulting commit SHA and resulting Feed blob SHA remain unknown until GitHub accepts this direct write.
+
+### 11 — TRACE REALITY END-TO-END
+SOURCE: canonical Activity Feed blob `7276d0...` → DIRECT NAYA WRITE → NEW ONE-FILE COMMIT → GITHUB PUSH EVENT → ACTIONS RUNS FOR EXACT HEAD → WORKFLOW CLASSIFICATION → runtime conclusion.
+
+The source mutation is the test stimulus. Runtime is intentionally not claimed until exact-head Actions observation is complete.
+
+### 12 — PRODUCE RECEIPTS
+- Repository: `SoulSchoolAcademy/NayaPOWER`
+- Branch: `main`
+- Start HEAD: `318e769d21ffee73148d62af550e1c8f4559bd10`
+- Pre-write Feed blob: `7276d0deb94bf6fbc21fa370cc491a8ddab6a8e6`
+- Dedicated validator source correction: commit `5d3dd034356986ae5299f9dda4ed12c311fedd2b`
+- Temporary hypothesis-trigger changes were reverted in `9d65229c6a4e1eda6ffac6d8f515a69e8dd96da1` and `318e769d21ffee73148d62af550e1c8f4559bd10`.
+- New stimulus commit: `[THIS COMMIT — VERIFY AFTER WRITE]`
+
+### 13 — CHALLENGE MY OWN CONCLUSION
+Falsifier #1: the write could contain unintended file changes. Test by fetching the exact commit and inspecting its changed files.
+
+Falsifier #2: the dedicated validator might still not fire. Test by inspecting Actions for the exact new head.
+
+Falsifier #3: unrelated workflows might still fire. Test by enumerating every exact-head run, not only the expected validator.
+
+Falsifier #4: the push could again be batched with another commit. Test by confirming the new commit's parent is the settled start HEAD and the commit changes only the Feed.
+
+### 14 — REPORT CONFIDENCE
+**HIGH** that the current start HEAD was independently resolved before this direct Feed write.
+
+**HIGH** that the dedicated Feed integrity workflow source now explicitly includes the canonical root Feed path.
+
+**BLOCKED** on runtime classification until the new commit and exact-head Actions runs are observed.
+
+### 15 — DETERMINE WHAT MATTERS NEXT
+The single highest-value next action is to resolve the new commit SHA, verify it is a one-file Feed-only commit whose parent is `318e769...`, then inspect every Actions run attached to that exact head.
+
+### 16 — LEARN AND CHANGE THE SYSTEM
+Permanent experimental-control lesson: **a commit is not an isolated runtime stimulus unless the push boundary is also isolated.** For CI/path-filter proofs, settle the repository first, then make exactly one direct Feed mutation, then classify Actions by exact `head_sha` and changed-file set.
+
+### PRESERVED
+All prior Feed records, Naya 16 schema, governance jobs, fail-closed behavior, and the direct Feed-write architecture are preserved.
+
+### RECEIPTS
+- `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`
+- `SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py`
+- `.github/workflows/nayapower-activity-feed-integrity.yml`
+- Start HEAD `318e769d21ffee73148d62af550e1c8f4559bd10`
+- Pre-write Feed blob `7276d0deb94bf6fbc21fa370cc491a8ddab6a8e6`
+
+### NEXT ACTION
+**Resolve the resulting Feed-only commit, prove its parent is `318e769d21ffee73148d62af550e1c8f4559bd10` and its changed-file set is exactly `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`, then enumerate every GitHub Actions run for that exact `head_sha`; classify the dedicated Activity Feed Integrity run as EXPECTED and every other run as UNEXPECTED until its trigger is proven to admit the exact changed-file set.**
+
+### SUCCESSOR HANDOFF
+**TAG → YOU'RE IT**
+
+Cold successor: do not trust the placeholder result SHA in this stimulus. Resolve `main` and the new commit first. Confirm parent and changed files. Then inspect Actions for that exact head. If only the dedicated Feed integrity validator fires, record runtime isolation as PASS. If any other workflow fires, inspect its current trigger and the exact push changed-file set before changing anything. If the workflow is not legitimately admitted by that one-file change, repair only its first admitting trigger and repeat with another isolated Feed-only commit. Finally append a complete Naya 16 runtime-proof record to the canonical Feed.
+
+**SUCCESS CONDITION:** One-file Feed-only push; direct Feed persistence; expected integrity validation; no unrelated governance/deployment execution; exact receipts recorded.
+
+**FAILURE RESPONSE:** Any ambiguity about parent, changed files, or event range means BLOCKED—not PASS. Any unexpected workflow requires first-boundary trigger analysis and surgical repair.
+
+**16-PROTOCOL CHECK:** BLOCKED — stimulus written; exact commit/runtime evidence still pending.
