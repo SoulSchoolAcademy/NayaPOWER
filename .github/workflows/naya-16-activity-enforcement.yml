@@ -1,11 +1,34 @@
 name: Naya 16 Activity Enforcement
+
 on:
   push:
     branches: [main]
+    paths:
+      - 'NAYANET/**'
+      - 'SUPERBRAIN/**'
+      - '.naya/**'
+      - 'scripts/**'
+      - 'supabase/**'
+      - 'tests/**'
+      - '.github/workflows/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   pull_request:
     branches: [main]
+    paths:
+      - 'NAYANET/**'
+      - 'SUPERBRAIN/**'
+      - '.naya/**'
+      - 'scripts/**'
+      - 'supabase/**'
+      - 'tests/**'
+      - '.github/workflows/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
+
 permissions:
   contents: read
+
 jobs:
   naya16:
     name: Enforce Naya 16 activity record
