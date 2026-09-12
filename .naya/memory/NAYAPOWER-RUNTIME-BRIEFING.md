@@ -5,6 +5,7 @@
 
 ## WHERE
 - **Canonical repository:** `SoulSchoolAcademy/NayaPOWER`
+- **Canonical SuperBrain:** NayaPOWER is the central SuperBrain / shared intelligence repository; all cold-start continuity and governed intelligence flow converge here.
 - **Canonical branch:** `main`
 - **Current live HEAD:** resolve from live Git at execution time; the recorded SHA in any briefing is non-authoritative.
 - **Canonical control plane:** `.naya/control-plane/MAP.json` → `.naya/control-plane/STATE.json` → `.naya/control-plane/BLOCKS.json` → `.naya/control-plane/PROOF.json`
