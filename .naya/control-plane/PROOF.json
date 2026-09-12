@@ -2,13 +2,20 @@
   "$schema":"naya/control-plane/proof/v1",
   "status":"CANONICAL",
   "truth_state_machine":["INTENDED","IMPLEMENTED","COMPLETE","VERIFIED","RACE_READY","PRODUCTION_PROVEN"],
-  "non_green_states":["UNKNOWN","FAILED","STALE"],
-  "separation_rules":["IMPLEMENTED != VERIFIED","VERIFIED != PRODUCTION_PROVEN","RECORDED != CURRENT","UNKNOWN != GREEN"],
-  "claim_evidence":{"SOURCE":["commit_sha","repository_path"],"BUILD":["build_or_typecheck_result","run_or_receipt"],"AUTOMATED":["test_run","observed_result"],"RUNTIME":["runtime_observation","environment","artifact_or_run"],"VISUAL":["rendered_artifact_or_inspection_receipt"],"WHOLE_JOURNEY":["journey_steps","observed_result","evidence"],"PRODUCTION":["deployment_identity","production_observation","timestamp"]},
-  "verification_rule":"A VERIFIED claim must name the claim type and include all evidence fields required for that type. Missing evidence produces UNKNOWN, not VERIFIED.",
-  "stale_rule":"A recorded claim tied to a repository HEAD, deployment, test run, or evidence artifact is STALE when the authoritative current source no longer matches its recorded identity.",
+  "non_green_states":["UNKNOWN","FAILED","STALE","BLOCKED"],
+  "separation_rules":["IMPLEMENTED != VERIFIED","VERIFIED != PRODUCTION_PROVEN","RECORDED != CURRENT","UNKNOWN != GREEN","BLOCKED != PASS"],
+  "verification_rule":"A VERIFIED claim must name the claim type and include claim-appropriate evidence. Missing evidence remains UNKNOWN.",
   "proof_authority":"Evidence outranks assertions; current authoritative sources outrank historical records.",
-  "current_evidence":{"observed_head":"0a2a20b4ff68261b509fbb75d2cee52543e16065","observed_branch":"main","bridge":{"run_id":34705002105,"claim_type":"AUTOMATED","conclusion":"success","event":"push","ref":"refs/heads/main","sha":"0a2a20b4ff68261b509fbb75d2cee52543e16065","artifact_id":10301323548,"artifact_digest":"sha256:3999c15a490ef480abd3d84cda80585e8ff728ba8041be890f356f9deb8d277c"},"p0_adversarial":{"run_id":34705006562,"claim_type":"RUNTIME","conclusion":"blocked","event":"workflow_dispatch","branch":"main","head_sha":"0a2a20b4ff68261b509fbb75d2cee52543e16065","offline_governance":"success","live_runtime":"fail-closed","blocked_count":26,"pass_count":0,"fail_count":0,"review_count":0,"exit_code":3,"artifact_id":10301503319,"artifact_digest":"sha256:3d6d5d485765672e122a5bbfad74b0ebeedf952feaea22c032ae7676ba57772","boundary":"NAYA_POWER_TARGET_URL is empty/unavailable to the execution plane"},"pis_verification":{"run_id":34705002116,"claim_type":"AUTOMATED","conclusion":"success","head_sha":"0a2a20b4ff68261b509fbb75d2cee52543e16065","projection":"PASS events=38","persistent_adapter":"PASS","hub_typecheck":"PASS","hub_build":"PASS","artifact_parity":"PASS"},"identity_chain":"LIVE MAIN HEAD 0a2a20b4ff68261b509fbb75d2cee52543e16065 = BRIDGE SHA = P0 workflow_dispatch head_sha = P0 checked-out git HEAD in both jobs.","interpretation":"Current-head repository and PIS evidence are verified. P0 offline governance is verified. P0 live-runtime remains BLOCKED by the authorized runtime-target boundary; BLOCKED is not PASS and is not converted to UNKNOWN or VERIFIED."},
-  "recording_commit":"0a2a20b4ff68261b509fbb75d2cee52543e16065",
-  "fresh_validation_required":true
+  "current_evidence":{
+    "observed_head":"efd2bba9ff2b307525e1862ab16b341e8652f76a",
+    "observed_branch":"main",
+    "bridge":{"run_id":34705244992,"claim_type":"AUTOMATED","conclusion":"success","event":"push","ref":"refs/heads/main","sha":"efd2bba9ff2b307525e1862ab16b341e8652f76a","artifact_id":10300633649,"artifact_digest":"sha256:1458948cdb9131614eb60f242f0b4c1f5a73a42d63ecc38ba4fc2c56de7ac48f"},
+    "p0_adversarial":{"run_id":34705249050,"claim_type":"RUNTIME","conclusion":"blocked","raw_actions_conclusion":"failure","event":"workflow_dispatch","branch":"main","head_sha":"efd2bba9ff2b307525e1862ab16b341e8652f76a","github_sha":"efd2bba9ff2b307525e1862ab16b341e8652f76a","checked_out_sha":"efd2bba9ff2b307525e1862ab16b341e8652f76a","offline_governance":"success","live_runtime":"blocked_external_target","blocked_count":26,"pass_count":0,"fail_count":0,"review_count":0,"exit_code":3,"artifact_id":10301328902,"artifact_digest":"sha256:3c9162a47fa03febbd32f388157a1f430ca646df0b9a776f9d036f37d0e23e39","boundary":"NAYA_POWER_TARGET_URL is empty/unavailable to the execution plane"},
+    "pis_verification":{"status":"UNKNOWN_CURRENT_HEAD","historical_last_verified_run_id":34705002116,"historical_last_verified_head":"0a2a20b4ff68261b509fbb75d2cee52543e16065","current_exact_head_run_observation":"not exposed by the connected GitHub run-inspection surface","workflow_source_inspected":".github/workflows/verify-primary-intelligence-system.yml"},
+    "identity_chain":"LIVE MAIN HEAD efd2bba9ff2b307525e1862ab16b341e8652f76a = BRIDGE SHA = P0 head_sha = P0 GITHUB_SHA = P0 checked-out git HEAD in both jobs.",
+    "interpretation":"Current-head bridge and P0 exact-head execution are verified. Offline governance is verified. Live runtime is BLOCKED by the authorized missing-target boundary, not a deterministic live test failure. Current-head PIS verification is not claimed because the exact-head PIS run is not observable from this execution surface."
+  },
+  "recording_commit":"efd2bba9ff2b307525e1862ab16b341e8652f76a",
+  "fresh_validation_required":true,
+  "next_recording_requires_fresh_execution":true
 }
