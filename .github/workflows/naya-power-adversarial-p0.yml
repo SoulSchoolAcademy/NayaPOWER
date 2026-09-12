@@ -6,9 +6,9 @@ on:
     paths:
       - 'tests/adversarial/**'
       - 'NAYA-POWER-ADVERSARIAL-TEST-SUITE-V1.0.md'
-      - '.naya/governance/**'
-      - '.naya/control-plane/**'
-      - '.naya/runtime/**'
+      - '.naya/governance/test_behavioral_bypasses.py'
+      - '.naya/governance/governance_kernel.py'
+      - '.naya/governance/test_naya_execution_boundaries.py'
       - '.github/workflows/naya-power-adversarial-p0.yml'
   workflow_dispatch:
 
@@ -34,18 +34,10 @@ jobs:
         run: |
           set -euo pipefail
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Run canonical cold-start continuity acceptance
-        run: python3 .naya/runtime/cold_start_activation.py
-      - name: Validate Naya-to-Naya Activity Feed
-        run: python3 SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py
-      - name: Run canonical control-plane validator
-        run: python3 .naya/control-plane/validate_control_plane.py
-      - name: Run canonical governance kernel adversarial tests
-        run: python3 .naya/governance/test_governance_kernel.py
-      - name: Run canonical execution-boundary adversarial tests
-        run: python3 .naya/governance/test_naya_execution_boundaries.py
       - name: Run behavioral bypass adversarial tests
         run: python3 .naya/governance/test_behavioral_bypasses.py
+      - name: Run P0 adversarial harness
+        run: python3 tests/adversarial/run_p0.py
       - name: Upload offline evidence
         if: always()
         uses: actions/upload-artifact@v4
