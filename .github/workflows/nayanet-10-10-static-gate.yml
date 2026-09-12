@@ -12,6 +12,8 @@ on:
       - 'tests/**'
       - '.github/workflows/nayanet-10-10-static-gate.yml'
       - '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
 
 permissions:
