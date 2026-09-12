@@ -6,6 +6,23 @@ ROOT = Path(__file__).resolve().parents[2]
 WORKFLOWS = ROOT / ".github" / "workflows"
 REGISTRY = ROOT / ".naya" / "governance" / "authority-registry.json"
 
+LEGACY_HUB_WORKFLOWS = (
+    "2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml",
+    "2026-09-08-canonical-hub-release-dispatch.yml",
+    "2026-09-08-nuclear-right-rail-fix.yml",
+    "2026-09-08-repair-main-feed-and-strip-garbage.yml",
+    "2026-09-08-surgical-right-rail-removal.yml",
+    "deploy-canonical-hub-vercel.yml",
+    "deploy-canonical-nayanet-live.yml",
+    "deploy-current-nayanet-hub.yml",
+    "deploy-nayanet-hub.yml",
+    "deploy-v7-intelligent-hub.yml",
+    "naya-feed-v5-apply.yml",
+    "nayanet-feed-v5-apply.yml",
+    "refine-nayahub-v7.yml",
+    "v7-intelligent-hub-build.yml",
+)
+
 
 class NayaExecutionBoundaryTests(unittest.TestCase):
     def read(self, name: str) -> str:
@@ -82,12 +99,17 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
                 msg=f"stale canonical deployment reference in {path.name}",
             )
 
-    def test_current_hub_aliases_are_non_mutating(self):
-        for name in ("deploy-nayanet-hub.yml", "deploy-current-nayanet-hub.yml"):
-            text = self.read(name)
-            self.assertNotIn("cloudflare/wrangler-action", text)
-            self.assertNotIn("git push", text)
-            self.assertIn("RETIRED", text)
+    def test_all_legacy_hub_workflows_are_non_mutating(self):
+        for name in LEGACY_HUB_WORKFLOWS:
+            path = WORKFLOWS / name
+            if not path.exists():
+                continue
+            text = path.read_text(encoding="utf-8")
+            self.assertIn("RETIRED", text, msg=f"legacy workflow not marked retired: {name}")
+            self.assertNotIn("contents: write", text, msg=f"legacy workflow still has write power: {name}")
+            self.assertNotIn("git push", text, msg=f"legacy workflow can push: {name}")
+            self.assertNotIn("cloudflare/wrangler-action", text, msg=f"legacy workflow can deploy: {name}")
+            self.assertNotIn("workflow_call:", text, msg=f"legacy workflow can be invoked: {name}")
 
 
 if __name__ == "__main__":
