@@ -1,8 +1,7 @@
 name: Retired — legacy NayaNET live branch mutator
 
-# The live branch already contains the canonical feed upgrade. This old one-time
-# mutator is retired so ordinary main commits cannot mutate another branch or main.
-# Use deploy-canonical-e02.yml for the canonical E02 runtime.
+# This historical mutator is retired. The current public Hub deployment is
+# human-dispatched, exact-SHA-bound, and kernel-gated by deploy-nayanet-hub-canonical-v2.yml.
 
 on:
   workflow_dispatch:
@@ -16,5 +15,6 @@ jobs:
     steps:
       - run: |
           echo 'LEGACY_LIVE_BRANCH_MUTATOR=RETIRED'
-          echo 'CANONICAL_FEED_UPGRADE=ALREADY_PRESENT_ON_V7-LIVE'
-          echo 'ACTIVE_DEPLOY_WORKFLOW=.github/workflows/deploy-canonical-e02.yml'
+          echo 'CANONICAL_HUB_SOURCE=NAYANET/HUB'
+          echo 'ACTIVE_DEPLOY_WORKFLOW=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
+          echo 'RULE=NO_LEGACY_BRANCH_MUTATION'
