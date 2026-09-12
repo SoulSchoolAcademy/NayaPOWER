@@ -11,9 +11,10 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
     def read(self, name: str) -> str:
         return (WORKFLOWS / name).read_text(encoding="utf-8")
 
-    def test_canonical_hub_deployment_is_kernel_gated_and_sha_bound(self):
+    def test_canonical_hub_deployment_is_human_dispatched_kernel_gated_and_sha_bound(self):
         text = self.read("deploy-nayanet-hub-canonical-v2.yml")
         self.assertIn("workflow_dispatch:", text)
+        self.assertNotIn("workflow_call:", text)
         self.assertIn("commit_sha:", text)
         self.assertIn("approval:", text)
         self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
