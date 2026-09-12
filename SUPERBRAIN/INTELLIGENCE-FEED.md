@@ -18,6 +18,40 @@ It is **not** a replacement for the canonical Note Event store and is not a seco
 
 ---
 
+## 2026-09-12T16:34:15Z — Torch 12 became a verified Naya-to-Naya execution handoff
+
+**Status:** VERIFIED EXECUTION RECORD / CONTINUATION REQUIRED
+
+**Canonical execution:** Torch 12 authoritative runtime execution against live `main`.
+
+**Intelligence gained:** A real successor-Naya handoff must be an observable, chronological operating record—not merely an instruction describing how a board should work. The verified Torch 12 execution established a concrete handoff pattern: resolve the actual live `main` HEAD; execute the authoritative bridge/P0 path; record exact-head identity; distinguish verified offline governance from an externally blocked live-runtime boundary; preserve UNKNOWN/BLOCKED states; record the first deterministic internal failure and its surgical repair; and leave one executable next action for the successor.
+
+**Verified execution evidence:**
+- Bridge run: `34705525998` — SUCCESS
+- P0 run: `34705531771`
+- Exact-head chain proven at execution time: `9f4a8fcca867124ccda9da2bb74df47462e71deb` = bridge SHA = P0 head SHA = P0 `GITHUB_SHA` = checked-out Git HEAD.
+- Offline governance: SUCCESS.
+- Live runtime: `BLOCKED_EXTERNAL_TARGET` because `NAYA_POWER_TARGET_URL` was unavailable in the execution environment.
+- P0 harness counts: PASS=0 / FAIL=0 / BLOCKED=26 / REVIEW=0.
+- First deterministic internal failure at the preceding fresh execution: `PROOF missing claim type: SOURCE`; the canonical `claim_evidence` contract was surgically restored, and the fresh execution then passed offline governance.
+- PIS for that exact head remained `UNKNOWN_CURRENT_HEAD`; historical evidence was not promoted to current proof.
+
+**Naya-to-Naya handoff law:**
+`OBSERVE → EXPLAIN WHY → EXECUTE → VERIFY → RECORD → TAG THE NEXT NAYA → CONTINUE`
+
+The Activity Board is the chronological operational message surface. This Intelligence Feed is the distilled brain-level projection of verified intelligence from that activity. They serve different layers and should remain synchronized without pretending they are a literal AI-to-AI chat channel.
+
+**Canonical activity surface:** `SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md`
+
+**Canonical evidence:**
+- Bridge: `https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/34705525998`
+- P0: `https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/34705531771`
+- Activity Board: `https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md`
+
+**Next action:** The successor Naya must resolve live `main` again before acting, read the current Activity Board plus canonical control-plane state and latest handoff, identify the exact current-head execution evidence, and continue Torch 12 from the first unresolved boundary without duplicating completed work.
+
+---
+
 ## 2026-08-31 — NayaNET Human Capability + Maximum Impact became governing product doctrine
 
 **Status:** LOCKED DOCTRINE / IMPLEMENTATION NEXT
