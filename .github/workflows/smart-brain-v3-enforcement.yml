@@ -10,6 +10,7 @@ on:
       - '.naya/NAYA-CONTEXT-BOOT-PROTOCOL.md'
       - '.naya/naya-context-manifest.json'
       - '.naya/memory/**'
+      - '.naya/governance/**'
       - '.naya/runtime/**'
       - 'SUPERBRAIN/AI-BOOT/**'
       - '.github/workflows/smart-brain-v3-enforcement.yml'
@@ -19,6 +20,7 @@ on:
       - '.naya/NAYA-CONTEXT-BOOT-PROTOCOL.md'
       - '.naya/naya-context-manifest.json'
       - '.naya/memory/**'
+      - '.naya/governance/**'
       - '.naya/runtime/**'
       - 'SUPERBRAIN/AI-BOOT/**'
       - '.github/workflows/smart-brain-v3-enforcement.yml'
@@ -40,6 +42,11 @@ jobs:
         with: {fetch-depth: 0}
       - name: Rebuild derived event index before permission scope execution gate
         run: python .naya/memory/smart_notes_v3.py index
+      - name: Canonical governance kernel gate
+        run: |
+          python -m py_compile .naya/governance/governance_kernel.py .naya/governance/test_governance_kernel.py
+          cd .naya/governance
+          python -m unittest test_governance_kernel.py -v
       - name: Step 2 permission scope execution gate
         run: |
           python -m py_compile .naya/memory/permission_scope.py .naya/memory/smart_notes_v3.py .naya/memory/tests/test_permission_scope.py .naya/memory/test_smart_brain_v3.py
