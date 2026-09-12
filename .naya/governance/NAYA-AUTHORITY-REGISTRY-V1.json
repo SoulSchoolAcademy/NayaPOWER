@@ -1,0 +1,170 @@
+{
+  "protocol": "naya-power-authority-registry/v1",
+  "status": "SOURCE_IMPLEMENTED_RUNTIME_UNVERIFIED",
+  "effective_date": "2026-09-11",
+  "constitution": "00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md",
+  "governance_act": ".naya/2026-09-11-18-05-NAYAPOWER-30-GOVERNANCE-ACT.md",
+  "ontology": {
+    "NayaPOWER": "model-agnostic constitutional governance layer around intelligence and action",
+    "Naya": "one possible governed intelligence/operator",
+    "intelligence": "reasoning, interpretation, planning, communication",
+    "agent_runtime": "authorized execution",
+    "tools": "capabilities",
+    "external_systems": "consequential effects",
+    "evidence_review": "observation, verification, challenge, acceptance or rejection"
+  },
+  "precedence": [
+    {"tier": 0, "name": "EXTERNAL_HARD_CONSTRAINTS", "authority": "external", "scope": "truth, law, safety, platform/tool limits, access boundaries"},
+    {"tier": 1, "name": "NAYA_POWER_CONSTITUTION", "authority": "constitution", "scope": "internal constitutional principles and non-negotiable boundaries"},
+    {"tier": 2, "name": "EXPLICIT_CURRENT_HUMAN_AUTHORITY", "authority": "human", "scope": "current mission, objective, approval, constraints, destination, stop/override"},
+    {"tier": 3, "name": "GOVERNANCE_ACT_AND_AUTHORITY_REGISTRY", "authority": "governance", "scope": "authority ownership and conflict resolution"},
+    {"tier": 4, "name": "MASTER_SYSTEM_ARCHITECTURE", "authority": "architecture", "scope": "system relationships and boundaries"},
+    {"tier": 5, "name": "MASTER_ACTIVATION_AND_LEAD_MODE", "authority": "activation", "scope": "restore, plan, act, verify, continue"},
+    {"tier": 6, "name": "CANONICAL_OPERATIONAL_LAWS", "authority": "operational", "scope": "execution and continuity laws"},
+    {"tier": 7, "name": "DOMAIN_STANDARDS", "authority": "domain", "scope": "product, engineering, design, QA"},
+    {"tier": 8, "name": "CURRENT_MISSION_STATE", "authority": "mission", "scope": "current project state and next action"},
+    {"tier": 9, "name": "SMART_NOTES_AND_HISTORICAL_INTELLIGENCE", "authority": "intelligence", "scope": "durable context unless promoted"},
+    {"tier": 10, "name": "ASSUMPTIONS_AND_CONVENIENCE", "authority": "assumption", "scope": "lowest authority; never silently promoted"}
+  ],
+  "decision_contract": {
+    "required_inputs": [
+      "human_authority",
+      "authority_scope",
+      "action_capability",
+      "constitutional_eligibility",
+      "objective",
+      "consequence",
+      "reversibility",
+      "risk",
+      "evidence_requirement",
+      "verification_requirement",
+      "stopping_condition",
+      "responsible_value",
+      "human_decision_requirement"
+    ],
+    "hard_rules": [
+      "CAPABILITY != AUTHORITY",
+      "INVALID != ZERO_VALUE",
+      "UNKNOWN != GREEN",
+      "IMPLEMENTED != VERIFIED",
+      "VERIFIED != PRODUCTION_PROVEN",
+      "SOURCE_INTENT != RUNTIME_TRUTH",
+      "HUMAN_AUTHORITY > RUNTIME_AUTONOMY_WITHIN_CONSTITUTIONAL_AND_EXTERNAL_CONSTRAINTS"
+    ],
+    "valid_next_states": [
+      "EXECUTE",
+      "INVESTIGATE",
+      "VERIFY",
+      "ASK",
+      "DEFER",
+      "REFUSE",
+      "STOP"
+    ]
+  },
+  "authorities": [
+    {
+      "authority_id": "AUTH-001",
+      "name": "Naya Power Constitution",
+      "path": "00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md",
+      "domain": "constitutional_boundaries",
+      "tier": 1,
+      "scope": "constitutional principles, boundaries, evidence, verification, continuity, responsible value, stopping",
+      "status": "CANONICAL",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-002",
+      "name": "Naya Power Governance Act",
+      "path": ".naya/2026-09-11-18-05-NAYAPOWER-30-GOVERNANCE-ACT.md",
+      "domain": "authority_and_conflict_resolution",
+      "tier": 3,
+      "scope": "authority hierarchy, domain ownership, conflict, change, verification, value, privacy, continuity",
+      "status": "GOVERNING",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-003",
+      "name": "Naya Power Runtime Kernel",
+      "path": "SUPERBRAIN/runtime/naya_power_runtime.py",
+      "domain": "runtime_decision_and_evidence",
+      "tier": 5,
+      "scope": "mission state, candidate eligibility, action planning, execution receipts, evidence state",
+      "status": "ACTIVE",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-004",
+      "name": "Host Executor Bridge",
+      "path": "SUPERBRAIN/runtime/host_executor.py",
+      "domain": "authorized_execution_boundary",
+      "tier": 5,
+      "scope": "host-provided execution, human handoff, observed receipt, verification, quality promotion",
+      "status": "ACTIVE",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-005",
+      "name": "Mission State Store / Lead Mode",
+      "path": "SUPERBRAIN/runtime/mission_state_store.py",
+      "domain": "mission_continuity",
+      "tier": 5,
+      "scope": "persistent mission state, restore, activation, action choice, receipt persistence",
+      "status": "ACTIVE",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-006",
+      "name": "Quality Gate / OSCAR",
+      "path": "SUPERBRAIN/runtime/quality_gate.py",
+      "domain": "quality_and_promotion",
+      "tier": 5,
+      "scope": "scorecard validity, responsible minimum score, blocking OSCAR defects, promotion decision",
+      "status": "ACTIVE",
+      "verification_state": "SOURCE_VERIFIED_RUNTIME_UNVERIFIED"
+    },
+    {
+      "authority_id": "AUTH-007",
+      "name": "Constitutional Torch-Pass Gate",
+      "path": ".github/workflows/torch-pass-gate.yml",
+      "domain": "continuity_and_runtime_verification",
+      "tier": 5,
+      "scope": "canonical continuity validation and durable receipt generation",
+      "status": "CANONICAL",
+      "verification_state": "WORKFLOW_SOURCE_VERIFIED_EXECUTION_UNVERIFIED"
+    }
+  ],
+  "implementation_gaps": [
+    "No runtime enforcement yet consumes this registry as the authority source.",
+    "ActionCandidate.consequence is metadata rather than a hard execution gate.",
+    "ActionCandidate.reversible is metadata/ranking input rather than an explicit irreversible-action stop/escalation gate.",
+    "ActionCandidate.evidence_ready is not a hard eligibility condition.",
+    "Risk is persisted and reviewed but is not yet a dedicated pre-execution hard gate.",
+    "Stopping conditions are defined in governance but not yet represented as a first-class runtime decision state.",
+    "Responsible value is defined constitutionally and in quality/value documents but is not yet a single machine-checkable pre-execution decision function."
+  ],
+  "verification_boundary": {
+    "runtime_status": "UNVERIFIED",
+    "canonical_torch_pass_required": true,
+    "required_evidence": [
+      "exact current HEAD checkout",
+      "canonical Torch-Pass execution",
+      "compile success",
+      "positive continuity tests",
+      "deliberate negative/orphan tests remain RED",
+      "canonical validator result",
+      "durable receipt",
+      "artifact upload"
+    ]
+  },
+  "protected_baseline": [
+    "NayaPOWER governance-layer ontology",
+    "Runtime Constitution",
+    "Intelligence Operating Model",
+    "activation semantics",
+    "Mission State persistence",
+    "Host Executor authority boundary",
+    "Quality Gate and OSCAR",
+    "Smart Note contracts",
+    "Continuous Torch-Pass workflow"
+  ]
+}
