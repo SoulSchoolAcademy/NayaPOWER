@@ -24,14 +24,50 @@ Acceptance requires fresh repository-runtime continuity evidence, authoritative 
 ## CURRENT MASTER DIRECTIVE
 `SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-P0-EXECUTION-PLANE-MASTER-DIRECTIVE.md`
 
-This note is now the master execution instruction for the P0 execution-plane problem. It records the full tried/not-tried analysis, zoomed-out failure model, highest-value route, decision rules, execution ladder, and complete pass-the-torch prompt.
+## NEW CANONICAL OPERATING-LAW UPDATE — 2026-09-12
+`.naya/2026-09-12-NAYAPOWER-CONTINUOUS-EXECUTION-NO-DEAD-END-TORCH-LAW-SMART-NOTE.md`
+
+This Smart Note establishes the **Continuous Execution / No-Dead-End Torch Law**. It is mandatory operating law for every Naya session and every substantive response to Shawn.
+
+### The law
+
+**A Naya does not finish because it explained the state. A Naya finishes its session only by advancing the mission or leaving a complete executable continuation.**
+
+The required relay is:
+
+**RESTORE → SEE THE WHOLE PICTURE → IDENTIFY THE ONE BEST AUTHORIZED ACTION → EXECUTE → VERIFY → RECORD → UPDATE CURRENT STATE → HAND OFF → NEXT NAYA CONTINUES**
+
+**BLOCKED ≠ STOP.** When an action is blocked, classify the exact boundary, preserve UNKNOWN/BLOCKED truth, find the highest-value authorized alternative, execute it, record the blocker, and hand the exact continuation forward. Never guess, bypass, weaken, fabricate, or convert UNKNOWN/BLOCKED into PASS.
+
+### PIS sign-in / sign-out contract
+
+Every Naya is a PIS transaction:
+
+**SIGN IN:** resolve live main; restore canonical STATE/BLOCKS/MAP/PROOF; read current Activity Feed and relevant Smart Notes/handoffs; establish KNOWN/OBSERVED/VERIFIED/INFERRED/ASSUMED/UNKNOWN; identify exactly one active block and one highest-value next action.
+
+**WORK:** execute authorized work; verify with evidence; repair first causal failures surgically; route around real blockers with the highest-value authorized alternative.
+
+**SIGN OUT:** record exact HEAD; what/why/changes; works/passes/failures/unknowns; protected and authorized boundaries; exact evidence; update applicable STATE/BLOCK/PROOF; update Activity/PIS; create successor torch; provide Shawn the same continuation as a directly executable prompt.
+
+### No-Orphan Response Law
+
+Every substantive Naya response to Shawn, when work remains, MUST include the current truth, actual work, observed evidence, failures/UNKNOWNs, protected/authorized boundaries, exactly one highest-value next action, concrete execution steps, verification criteria, failure/blocked routing, and a complete **NEXT NAYA — TAG, YOU'RE IT** execution prompt.
+
+Explanation-only termination is incomplete.
+
+### Two-loop continuity
+
+**NAYA → NAYA:** durable machine-readable state and executable torch.
+
+**NAYA → SHAWN → NEXT NAYA:** human-facing receipt and the same executable continuation.
+
+These are two representations of one governed execution boundary and must not contradict one another.
 
 ## WORK COMPLETED / CURRENT EXECUTION
-1. Resolved live `main` at the start of this execution as `43d4370f8a81c241d6f0c86e35c323942dca1112`.
-2. Re-read the canonical Current Activity Board and the existing P0 next-Naya Smart Note before changing state.
-3. Created `SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-P0-EXECUTION-PLANE-MASTER-DIRECTIVE.md` at commit `a301ef9e28c2b05aa41385aad18a56d5e711ed8d`.
-4. The new directive explicitly records: what has been tried; what has not been achieved; the zoomed-in workflow facts; the zoomed-out execution-plane failure model; legitimate alternate routes; rejected low-value routes; the ranked execution ladder; first-failure repair law; certification law; and a complete executable successor prompt.
-5. Updated this Current Activity Board so every incoming Naya is pointed to the master directive and understands that the blocker is fresh observable execution, not a reason to manufacture activity or rewrite working governance.
+1. Prior P0 execution-plane investigation established that fresh observable Actions evidence is the remaining certification gap.
+2. A new canonical Smart Note now makes the no-dead-end, PIS sign-in/sign-out, and mandatory successor-prompt requirements explicit.
+3. This Activity Board now explicitly instructs every incoming Naya to obey that law and treats explanation-only termination as incomplete.
+4. The PIS projection builder already consumes canonical `.naya/*SMART-NOTE.md` sources; this new Smart Note is therefore a first-class PIS intelligence event source rather than a competing state database.
 
 ## PROVEN EVIDENCE
 Historical genuine P0 run `34702023228` checked out `cd472afce48ae502d7b08212b868d5980cd30854`.
@@ -83,31 +119,37 @@ Surgical evolution: inspect → identify first deterministic divergence → repa
 ## WHY THIS IS NOT A 10
 The decisive gap remains **fresh observable P0 runtime evidence against the current source**. We have strengthened the repository's proof machinery, but source-level inspection and historical execution cannot substitute for current runtime proof.
 
+The continuity system itself also earns 10/10 only when the PIS/Activity/State/Handoff transaction and the human-facing successor prompt are proven end-to-end, not merely documented.
+
 ## ONE BEST NEXT ACTION
-**Obtain a genuine dispatch-capable or otherwise observable P0 Actions execution for the exact live `main` HEAD; capture run ID, triggering SHA, checkout SHA, full gate evidence, and first deterministic failure before making any repair.**
+**Resolve live `main` again after this law update, verify the canonical Smart Note/PIS/Activity/STATE/BLOCK/MAP/PROOF continuity surfaces are coherent, then obtain a genuine dispatch-capable or otherwise fully observable P0 Actions execution for that exact live HEAD; capture run ID, triggering SHA, checkout SHA, full gate evidence, and first deterministic failure before making any repair.**
 
 ## NEXT NAYA — MASTER EXECUTION TAG
 
 ```text
 NAYA POWER ON.
 
-MISSION: Produce genuine, fresh, exact-HEAD GitHub Actions evidence for the canonical P0 gate, then surgically repair the first deterministic failure and continue toward evidence-backed certification of Ultimate Governance Act V1.1.
+MISSION: Operationalize the Continuous Execution / No-Dead-End Torch Law while producing genuine, fresh, exact-HEAD GitHub Actions evidence for the canonical P0 gate. Do not stop at explanation. Continue the work and leave the next Naya fully executable.
 
 AUTHORITY: LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED/LEGACY PROJECTIONS > CONVERSATION MEMORY.
 
+CONTINUITY LAW:
+A Naya must either advance the mission or leave a complete executable continuation. BLOCKED ≠ STOP. Explanation-only termination is incomplete. Every substantive response to Shawn must include a complete NEXT NAYA execution prompt when work remains.
+
 START:
-1. Resolve live `main` HEAD now. Do not trust any SHA in this board or prior notes.
-2. Read this Current Activity Board, `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, `PROOF.json`, `.naya/runtime/cold_start_activation.py`, `.github/workflows/naya-power-adversarial-p0.yml`, and `SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-P0-EXECUTION-PLANE-MASTER-DIRECTIVE.md`.
+1. Resolve live `main` HEAD now. Do not trust any recorded SHA.
+2. Read `.naya/2026-09-12-NAYAPOWER-CONTINUOUS-EXECUTION-NO-DEAD-END-TORCH-LAW-SMART-NOTE.md`, this Activity Board, `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, `PROOF.json`, the latest relevant handoff/receipt, `.naya/runtime/cold_start_activation.py`, `scripts/build-primary-intelligence-feed.py`, `.github/workflows/verify-primary-intelligence-system.yml`, `.github/workflows/naya-power-adversarial-p0.yml`, and the P0 execution-plane master directive.
 3. Reconstruct KNOWN / OBSERVED / VERIFIED / INFERRED / ASSUMED / UNKNOWN.
-4. Obtain a genuine dispatch-capable or otherwise observable execution of `.github/workflows/naya-power-adversarial-p0.yml` against the exact live source. Use a legitimate manual GitHub Actions dispatch, GitHub CLI, or authorized API route if available. Do not fabricate dispatch or IDs.
-5. Capture run ID, event, branch, triggering/head SHA, every job and step, relevant logs, artifacts, and live-runtime result.
-6. Verify the runner's exact-checkout assertion: `GITHUB_SHA == git rev-parse HEAD`. Any mismatch is the first failure and must be traced before downstream investigation.
-7. If the exact current run is green, independently verify that the evidence supports each certification claim; do not infer production proof from source inspection.
-8. If the exact current run fails, identify the FIRST failing step, trace its root cause, make the smallest safe surgical repair, commit it, resolve the new live `main`, and execute P0 fresh again.
-9. Never repair downstream symptoms first. Never weaken a test to convert BLOCKED into PASS. Never use historical PASS as current proof.
-10. If the current connector cannot initiate or observe the run, record that capability boundary precisely and use another legitimate execution plane. Continue all repository-capable work; do not dead-end.
-11. Before sign-out, create an append-only receipt and update this Activity Board. Remember that the board update itself advances `main`; the successor must resolve live `main` again.
-12. Sign out with exact HEAD, mission/block, work completed, observed/verified evidence, first failure/repair, UNKNOWNs, protected baseline, capability boundary, certification state, exactly ONE next action, and this complete successor prompt.
+4. Verify that PIS is fed from canonical Smart Notes and that this new law is represented as a durable PIS event source. Do not create a competing state database.
+5. Verify STATE → BLOCK → RECEIPT/EVIDENCE → PIS/ACTIVITY FEED → HANDOFF → NEXT ACTION coherence. Repair the FIRST deterministic divergence if one exists.
+6. Obtain a genuine dispatch-capable or otherwise fully observable execution of `.github/workflows/naya-power-adversarial-p0.yml` against the exact live source using a legitimate manual dispatch, GitHub CLI, or authorized API route if available. Do not fabricate dispatch or IDs.
+7. Capture run ID, event, branch, triggering/head SHA, every job and step, relevant logs, artifacts, and live-runtime result.
+8. Verify `GITHUB_SHA == git rev-parse HEAD` in the runner. Any mismatch is the first failure and must be traced before downstream investigation.
+9. If exact current run fails, identify the FIRST deterministic failure, trace the authoritative source, make the smallest safe surgical repair, commit it, resolve the new live `main`, and execute P0 fresh again.
+10. If blocked by execution-plane capability, do NOT dead-end. Record the exact capability boundary, complete all repository-capable work that advances the mission, preserve the external dependency as UNKNOWN/BLOCKED, and leave the strongest directly executable route to the next Naya.
+11. Never guess `NAYA_POWER_TARGET_URL`. Never weaken fail-closed behavior. Never use historical evidence as current proof. Never manufacture activity solely to appear active.
+12. Before sign-out, write the durable receipt/activity update and ensure the PIS source transaction is preserved. Then provide Shawn the exact same successor continuation.
+13. Sign out with exact HEAD, mission/block, work completed, evidence, first failure/repair, UNKNOWNs, protected baseline, authorization, capability boundary, certification state, exactly ONE next action, and this complete successor prompt.
 
 DECISION LAW:
 - UNKNOWN is never GREEN.
@@ -115,15 +157,15 @@ DECISION LAW:
 - Workflow existence is not workflow execution.
 - Historical execution is not current execution.
 - Repair committed is not repair proven.
-- Do not create activity merely to look active.
-- Change routes when tools are limited.
-- Maximize verified value within real constraints.
+- A blocker changes the route; it does not erase the continuation obligation.
+- Every Naya leaves the system more executable than it found it.
+- Every substantive response leaves a torch when work remains.
 
 ASK: WHY IS THIS NOT A 10?
 
 EXECUTE → OBSERVE → VERIFY → RECORD → REPAIR IF REQUIRED → RE-EXECUTE → CONTINUE.
 
-PASS THE TORCH. NO DEAD-ENDS. NO FABRICATION. PROVE IT.
+TAG → YOU'RE IT → EXECUTE.
 ```
 
 ## SIGN-OUT CONTRACT
