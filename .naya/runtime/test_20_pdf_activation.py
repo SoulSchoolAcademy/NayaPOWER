@@ -54,11 +54,18 @@ def test_twenty_one_documents_are_rejected_by_20_pdf_boundary():
     assert contract.validate_20_pdf_manifest(manifest(21))
 
 
-def test_duplicate_content_identity_is_rejected():
+def test_duplicate_content_with_distinct_document_identity_is_allowed():
     data = manifest(20)
     data["documents"][1]["content"] = data["documents"][0]["content"]
     result = activation.inspect_package(data)
-    assert result["status"] == "CONFLICT"
+    assert result["status"] == "READY"
+    assert result["documents"][0]["identity"] != result["documents"][1]["identity"]
+
+
+def test_duplicate_document_id_is_rejected_by_manifest_boundary():
+    data = manifest(20)
+    data["documents"][1]["document_id"] = data["documents"][0]["document_id"]
+    assert contract.validate_20_pdf_manifest(data)
 
 
 def test_missing_document_order_is_rejected_by_20_pdf_boundary():
