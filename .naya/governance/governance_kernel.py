@@ -2,11 +2,11 @@
 
 This module is deliberately deterministic and dependency-free. It does not make
 intelligence decisions for a model; it evaluates whether a proposed consequential
-action has the minimum constitutional facts, valid authority, and least necessary
-power required to proceed.
+action has the minimum constitutional facts, valid authority, least necessary
+power, and valid state transition required to proceed.
 
-Policy is fail-closed: missing, expired, revoked, or contradictory governance facts
-cannot silently be promoted to AUTHORIZED or VERIFIED.
+Policy is fail-closed: missing, expired, revoked, contradictory, or invalid
+state-transition facts cannot silently be promoted to AUTHORIZED or VERIFIED.
 """
 
 from __future__ import annotations
@@ -201,6 +201,31 @@ class GovernanceResult:
     required_actions: Tuple[str, ...]
 
 
+_ALLOWED_TRANSITIONS = {
+    GovernanceState.PROPOSED: frozenset({GovernanceState.INVESTIGATING, GovernanceState.READY_FOR_DECISION, GovernanceState.ASK, GovernanceState.DEFERRED, GovernanceState.REFUSED, GovernanceState.STOPPED}),
+    GovernanceState.INVESTIGATING: frozenset({GovernanceState.READY_FOR_DECISION, GovernanceState.ASK, GovernanceState.DEFERRED, GovernanceState.REFUSED, GovernanceState.STOPPED, GovernanceState.REQUIRES_REPAIR}),
+    GovernanceState.READY_FOR_DECISION: frozenset({GovernanceState.AUTHORIZED, GovernanceState.ASK, GovernanceState.DEFERRED, GovernanceState.REFUSED, GovernanceState.STOPPED}),
+    GovernanceState.AUTHORIZED: frozenset({GovernanceState.EXECUTING, GovernanceState.STOPPED, GovernanceState.FAILED}),
+    GovernanceState.EXECUTING: frozenset({GovernanceState.EXECUTED, GovernanceState.FAILED, GovernanceState.STOPPED, GovernanceState.REQUIRES_REPAIR}),
+    GovernanceState.EXECUTED: frozenset({GovernanceState.OBSERVED, GovernanceState.FAILED, GovernanceState.REQUIRES_REPAIR}),
+    GovernanceState.OBSERVED: frozenset({GovernanceState.VERIFIED, GovernanceState.FAILED, GovernanceState.REQUIRES_REPAIR}),
+    GovernanceState.VERIFIED: frozenset(),
+    GovernanceState.ASK: frozenset({GovernanceState.INVESTIGATING, GovernanceState.READY_FOR_DECISION, GovernanceState.STOPPED}),
+    GovernanceState.DEFERRED: frozenset({GovernanceState.INVESTIGATING, GovernanceState.STOPPED}),
+    GovernanceState.REFUSED: frozenset(),
+    GovernanceState.STOPPED: frozenset(),
+    GovernanceState.FAILED: frozenset({GovernanceState.INVESTIGATING, GovernanceState.REQUIRES_REPAIR, GovernanceState.STOPPED}),
+    GovernanceState.REQUIRES_REPAIR: frozenset({GovernanceState.INVESTIGATING, GovernanceState.STOPPED}),
+}
+
+
+def transition(current: GovernanceState, target: GovernanceState) -> GovernanceState:
+    """Return target only when it is constitutionally reachable from current."""
+    if target not in _ALLOWED_TRANSITIONS[current]:
+        raise ValueError(f"invalid governance transition: {current.value} -> {target.value}")
+    return target
+
+
 def _has_material_unknowns(epistemic: FrozenSet[Epistemic]) -> bool:
     return Epistemic.UNKNOWN in epistemic or Epistemic.ASSUMED in epistemic
 
@@ -232,9 +257,7 @@ def evaluate(
         reasons.append("authority does not permit this actor/action/scope or is inactive")
         required.append("obtain or resolve valid active authority")
 
-    if not _has_material_unknowns(decision.epistemic):
-        pass
-    else:
+    if _has_material_unknowns(decision.epistemic):
         reasons.append("material epistemic uncertainty remains")
         required.append("resolve material uncertainty or escalate")
 
