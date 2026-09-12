@@ -1,5 +1,7 @@
-name: Deploy Current NayaNET Cognitive Hub
+name: Retired NayaNET Hub Deployment Alias
 
+# Retired compatibility alias. It is intentionally non-mutating.
+# The only current public Hub deployment authority is the governed V2 workflow.
 on:
   workflow_dispatch:
 
@@ -12,8 +14,11 @@ jobs:
     steps:
       - name: Assert canonical deployment ownership
         run: |
+          set -euo pipefail
+          test -f .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          grep -q 'name: Deploy Canonical NayaNET Hub V2' .github/workflows/deploy-nayanet-hub-canonical-v2.yml
           echo 'LEGACY_TIMESTAMPED_HTML_DEPLOYMENT=RETIRED'
           echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
-          echo 'CURRENT_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'CURRENT_RUNTIME=https://aged-art-7c12.nayanet.workers.dev'
           echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
