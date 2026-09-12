@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
       - 'SUPERBRAIN/NAYA-ACTIVITY/**'
       - '.github/workflows/nayapower-activity-feed-integrity.yml'
   workflow_dispatch:
