@@ -13,6 +13,6 @@ jobs:
       - name: Legacy repair retired
         run: |
           echo 'LEGACY_V3_V4_REPAIR=RETIRED'
-          echo 'CANONICAL_HUB_SOURCE=2026 09 08 452 NayaNET Hub.html'
-          echo 'CANONICAL_SMART_FEED=.naya/build/NAYANET-SMART-FEED-MASTER-V1.html'
+          echo 'CANONICAL_HUB_SOURCE=NAYANET/HUB'
+          echo 'CANONICAL_PUBLIC_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'RULE=DO_NOT_REWRITE_THE_HUB_WITH_HISTORICAL_FEED_LAYERS'
