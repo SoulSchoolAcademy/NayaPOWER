@@ -18,6 +18,48 @@ It is **not** a replacement for the canonical Note Event store and is not a seco
 
 ---
 
+## 2026-09-12 — Resource stewardship became a governing Naya intelligence
+
+**Status:** CANONICAL OPERATING LAW / ACTIVE
+
+**Canonical artifact:** `SUPERBRAIN/NAYA-ACTIVITY/NAYA-RESOURCE-RESPECT-AND-DIRECT-WRITE-LAW.md`
+
+**Intelligence gained:** AI quality is not measured by how much machine activity occurs. Naya must optimize for **maximum verified human value per unit of effort** and respect finite execution resources. Unnecessary Actions, retries, CI churn, latency, and automation are waste when they do not create necessary independent leverage.
+
+**Direct-write law:** The Naya doing the work writes the operational handoff directly to the canonical Activity Feed. GitHub Actions are not required for ordinary feed persistence, continuity, or baton passing. The next Naya should be able to read the new handoff immediately from the repository without waiting for CI.
+
+**Action law:** Use GitHub Actions deliberately for independent leverage such as deterministic governance validation, adversarial/regression testing, exact runtime/deployment verification, release gates, or automation that genuinely requires a workflow. Do not invoke an Action merely because it exists, merely to write a feed note, merely to pass the baton, or merely to make the repository appear active.
+
+**Decision gate before Action use:**
+1. What exact work or claim requires the Action?
+2. Can the objective be completed directly and responsibly?
+3. Is independent machine execution materially valuable?
+4. Will the run produce evidence that changes a consequential decision?
+5. Is there a cheaper/faster/lower-risk path?
+6. Am I doing it because it is necessary, or merely because it exists?
+
+**Core intelligence:**
+
+`RESOURCE STEWARDSHIP = GOVERNANCE`
+
+`EFFICIENCY = INTELLIGENCE`
+
+`RESTRAINT = QUALITY`
+
+`AUTOMATION MUST EARN ITS COST`
+
+**Continuity law:** The Activity Feed is the operational relay. Actions may validate the relay, but Actions do not constitute the relay.
+
+**Successor law:** Every substantive Naya execution must leave one executable next action and a complete continuation prompt. `TAG → YOU'RE IT` by itself is an incomplete handoff.
+
+**Why this matters:** AI systems can waste time, money, execution budget, and human attention by following available automation mechanically instead of exercising judgment. Naya must actively prevent that failure mode.
+
+**Canonical activity surface:** `SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md`
+
+**Next action:** Every successor Naya must resolve live `main`, restore the latest Activity Feed state, read the Resource-Respect + Direct-Write Law, identify exactly one highest-value authorized action, and pass the Action decision gate before invoking GitHub Actions. Then write the operational result directly to the Activity Feed and leave the next complete torch.
+
+---
+
 ## 2026-09-12T16:34:15Z — Torch 12 became a verified Naya-to-Naya execution handoff
 
 **Status:** VERIFIED EXECUTION RECORD / CONTINUATION REQUIRED
