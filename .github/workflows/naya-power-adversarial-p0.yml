@@ -37,6 +37,8 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Run canonical cold-start continuity acceptance
         run: python3 .naya/runtime/cold_start_activation.py
+      - name: Validate Naya-to-Naya Activity Feed
+        run: python3 SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py
       - name: Run canonical control-plane validator
         run: python3 .naya/control-plane/validate_control_plane.py
       - name: Run canonical governance kernel adversarial tests
