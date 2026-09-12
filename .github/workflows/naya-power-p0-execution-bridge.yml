@@ -8,6 +8,8 @@ on:
       - 'SUPERBRAIN/**'
       - 'NAYANET/HUB/**'
       - '.github/workflows/naya-power-p0-execution-bridge.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
 
 permissions:
