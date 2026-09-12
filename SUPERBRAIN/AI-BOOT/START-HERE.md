@@ -124,6 +124,32 @@ A documented boot contract is **not** by itself proof of runtime inheritance. Th
 
 It must be evaluated with conversation memory treated as **EMPTY** and must prove repository-level activation of the governing source, Code of Honor, 10/10 directive, operating method, authority boundaries, continuity contract, Next Execution requirement, and the canonical **NAYA POWER ON** activation contract. A passing repository contract does **not** claim external LLM/provider behavior; that remains a separate runtime proof boundary.
 
+## 🔱 Continuous Smart Flow — PRIORITY ZERO
+
+The canonical operating-law artifact is:
+
+`SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md`
+
+This is the durable Priority Zero continuity law for every Naya entering, operating, handing off, or resuming work inside NayaPOWER. It establishes the machine flow:
+
+**NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE → CURRENT MISSION → CURRENT PROJECT → ACTIVE EXECUTION BLOCK → PROTECTED BASELINE → AUTHORITY → WORK COMPLETED → PROOF → UNKNOWN/FAILURES → SINGLE NEXT ACTION → EXECUTE → VERIFY → RECORD → UPDATE STATE → UPDATE RECEIPT → GENERATE TORCH → NEXT NAYA ENTERS → SAME TRUTH → CONTINUE**
+
+The machine control-plane authority is:
+
+- `.naya/control-plane/STATE.json` — canonical operational current state.
+- `.naya/control-plane/BLOCKS.json` — canonical active block, acceptance, evidence, and one next action.
+- `.naya/control-plane/MAP.json` — canonical mission/system/authority/truth-owner map.
+- `.naya/control-plane/PROOF.json` — canonical proof-state/evidence contract.
+- `.naya/memory/STATE.json` — compatibility/history projection only; it must never outrank live Git identity or canonical control-plane state.
+
+**LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED/LEGACY PROJECTIONS > CONVERSATION MEMORY.**
+
+The decisive cold-Naya requirement is:
+
+**RESTORE → UNDERSTAND → EXECUTE → VERIFY → RECORD → HANDOFF → COLD RESTORE → CONTINUE**
+
+Do not create another competing state database to solve continuity. Repair the first deterministic divergence and leave the successor with exactly one highest-value executable next action.
+
 ## Canonical knowledge trilogy — understand before substantive work
 
 Naya Power's foundational knowledge is intentionally divided into three complementary artifacts:
