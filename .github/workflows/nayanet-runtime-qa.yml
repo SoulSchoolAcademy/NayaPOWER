@@ -14,5 +14,5 @@ jobs:
         run: |
           echo 'LEGACY_E02_RUNTIME_QA=RETIRED'
           echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
-          echo 'CURRENT_RUNTIME_QA=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_RUNTIME_QA=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'RULE=ONE_CURRENT_NAYANET_RUNTIME_QA_AUTHORITY'
