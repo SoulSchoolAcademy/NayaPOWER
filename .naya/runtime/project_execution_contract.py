@@ -86,6 +86,19 @@ def is_meaningful(event,policy):
     return bool(tags.intersection(meaningful_tags))
 
 
+def current_project_window(event,project)->bool:
+    """Apply the CURRENT-DAILY-PROJECT contract only to events in its active date window.
+
+    Historical events must remain readable without being retroactively rewritten to fit
+    a later daily-project snapshot. This preserves historical knowledge while keeping
+    the current project's events strictly governed by the current contract.
+    """
+    effective_at=str(event.get('effective_at','')).strip()
+    project_date=str(project.get('date','')).strip()
+    if not effective_at or not project_date: return False
+    return effective_at >= f'{project_date}T00:00:00'
+
+
 def validate_project(p):
     req=('project_id','project_name','date','goal','vision','mission','north_star','current_objective','success_criteria','constraints','current_state','next_execution_path')
     return [f'project state missing {k}' for k in req if not _nonempty(p.get(k))]
@@ -172,14 +185,17 @@ def validate_event(event,project,policy):
 
 
 def validate():
-    errors=validate_project(load(PROJECT)) if PROJECT.exists() else ['missing CURRENT-DAILY-PROJECT.json']; project=load(PROJECT) if PROJECT.exists() else {}; policy=load(POLICY); checked=0
+    errors=validate_project(load(PROJECT)) if PROJECT.exists() else ['missing CURRENT-DAILY-PROJECT.json']; project=load(PROJECT) if PROJECT.exists() else {}; policy=load(POLICY); checked=0; historical=0
     for path in event_files():
         try:event=load(path)
         except Exception as exc: errors.append(f'{path}: JSON parse error: {exc}'); continue
         if not is_meaningful(event,policy):continue
         if str(event.get('effective_at',''))<str(policy.get('effective_at','')):continue
+        if not current_project_window(event,project):
+            historical+=1
+            continue
         checked+=1; errors.extend([f'{path}: {x}' for x in validate_event(event,project,policy)])
-    report={'schema_version':2,'status':'GREEN' if not errors else 'RED','meaningful_events_checked':checked,'error_count':len(errors),'errors':errors,'checks':['current_daily_project','project_event_binding','paired_representation_identity','canonical_next_execution_exists','canonical_next_execution_parseable','canonical_next_execution_semantics','independent_consumability','actionable_execution_instructions','success_criteria','verification_requirements','learning_capture']}
+    report={'schema_version':2,'status':'GREEN' if not errors else 'RED','meaningful_events_checked':checked,'historical_events_exempted':historical,'error_count':len(errors),'errors':errors,'checks':['current_daily_project','project_event_binding','paired_representation_identity','canonical_next_execution_exists','canonical_next_execution_parseable','canonical_next_execution_semantics','independent_consumability','actionable_execution_instructions','success_criteria','verification_requirements','learning_capture'],'historical_compatibility_rule':'Events before CURRENT-DAILY-PROJECT.date remain historical and are not retroactively rewritten or validated against the later daily-project snapshot.'}
     REPORT.write_text(json.dumps(report,indent=2,ensure_ascii=False)+'\n',encoding='utf-8'); return (0 if not errors else 1),report
 
 
@@ -197,6 +213,8 @@ def self_test():
     assert any('canonical NEXT-EXECUTION' in x for x in orphan_errors)
     embedded={'event_id':'SE-20260825-999999-embedded','project_context':{'project_id':'x','current_daily_project':'x','current_objective':'test'},'representations':{'naya':{'id':'n','canonical_event_id':'SE-20260825-999999-embedded'},'shawn':{'id':'s','canonical_event_id':'SE-20260825-999999-embedded'}},'verification':{'status':'VERIFIED','receipt':'r'},'receipt':{'receipt_id':'r'},'delivery':{'state':'VERIFIED'},'continuity':{'execution_state':'COMPLETED','handoff':{'mission':'x'},'learning_status':'LEARNED'},'next_execution':valid}
     assert any('durable NEXT-EXECUTION artifact path' in x for x in validate_event(embedded,{'project_id':'x','project_name':'x'},{'structured_handoff_fields':[]}))
+    assert current_project_window({'effective_at':'2026-09-02T23:59:59-07:00'},{'date':'2026-09-03'}) is False
+    assert current_project_window({'effective_at':'2026-09-03T00:00:00-07:00'},{'date':'2026-09-03'}) is True
     existing=ROOT/'.naya'/'handoffs'/'NEXT-EXECUTION-20260825-SUPERBRAIN-CONTRACT-ENFORCEMENT.md'
     artifact,errors=resolve_next_execution(str(existing.relative_to(ROOT))); assert not errors and artifact
     consumed=consume_next_execution(str(existing.relative_to(ROOT))); assert tuple(consumed)==NEXT_FIELDS and all(_nonempty(consumed[k]) for k in NEXT_FIELDS)
@@ -208,6 +226,7 @@ def self_test():
     print('INVALID ORPHAN → RED')
     print('CANONICAL SUCCESSOR → GREEN')
     print('INDEPENDENT CONSUMPTION → GREEN (12/12 semantic fields)')
+    print('HISTORICAL PROJECT WINDOW → GREEN')
     print('PASS — canonical NEXT-EXECUTION RED/GREEN behavioral and independent-consumption tests GREEN'); return 0
 
 
