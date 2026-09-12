@@ -23,16 +23,16 @@ No UNVERIFIED or DEFERRED item is treated as SAFE or RELEASE_READY.
 | Canonical constitutional law | `NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md` | Governance reconciliation + regression work | Source exists on `main` | Constitutional effectiveness remains unverified until implementation is exercised end-to-end |
 | Constitutional precedence | Act §§2, 28 | Adversarial precedence test required in kernel suite | Act is canonical source | Lower-layer injection tests still need implementation |
 | Human authority | `Authority` in `.naya/governance/governance_kernel.py` | Missing, wrong actor, wrong scope, revoked/expired tests | Kernel implementation + tests committed | Full production authority registry integration remains |
-| Authority registry | `AuthorityRegistry` in governance kernel | Registry resolution test required | Registry primitive implemented | Canonical persistent registry and mutation governance remain |
-| Canonical Decision Object | `DecisionObject` in governance kernel | Complete/incomplete decision tests | Machine-readable contract implemented | Universal execution-path adoption remains |
+| Authority registry | `AuthorityRegistry` in governance kernel | Registry primitive exists; direct resolution test still required | Registry primitive implemented | Canonical persistent registry and mutation governance remain |
+| Canonical Decision Object | `DecisionObject` in governance kernel | Valid/incomplete decision behavior covered by gate tests | Machine-readable contract implemented | Universal execution-path adoption remains |
 | Epistemic integrity | `Epistemic` + uncertainty gate | UNKNOWN/ASSUMED blocking test; VERIFIED ordering test | Kernel tests implemented | Full evidence provenance typing remains |
-| Risk governance | `Risk` with `UNCERTAINTY × CONSEQUENCE × IRREVERSIBILITY` | Low/moderate/high/critical boundary tests | Kernel implementation exists | Threshold calibration against real actions remains |
+| Risk governance | `Risk` with `UNCERTAINTY × CONSEQUENCE × IRREVERSIBILITY` | High-risk verification test + risk validation | Kernel implementation exists | Full threshold calibration against real actions remains |
 | Least necessary power | `necessary_power` / `requested_power` + subset enforcement | Excess-power adversarial test | Kernel test implemented | Binding to every real tool permission remains |
-| Governance state | `GovernanceState` enum | State-promotion tests | State model implemented | Full state transition machine remains |
+| Governance state | `GovernanceState` + `_ALLOWED_TRANSITIONS` + `transition()` | Valid-path, invalid promotion, and terminal STOP tests | Kernel state machine implemented | Runtime executor integration remains |
 | Pre-action gate | `evaluate()` | Valid and fail-closed decision tests | Kernel gate wired into Smart Brain CI | Universal consequential execution interception remains |
 | Verification law | `VerificationPlan` + observation/verification assertion | VERIFIED-without-observation negative test | Kernel test implemented | Independent runtime observation remains |
 | Receipt requirements | `receipt_requirements()` | Success/block receipt requirement test | Kernel implementation + test | Canonical receipt persistence/integration remains |
-| STOP / REFUSE / ASK / DEFER / ESCALATE | Decision/state enums | Negative-path behavioral tests required | States/decisions represented | Full executor integration remains |
+| STOP / REFUSE / ASK / DEFER / ESCALATE | Decision/state enums + terminal STOP transition | STOP terminal-state test; negative paths | Kernel representation and STOP behavior implemented | Full executor integration remains |
 | Retry law | Act §20 | First-failure/new-information tests required | Constitutional rule exists | Automated retry-policy enforcement remains |
 | Obvious defect prevention | Act §21 | Defect fixtures required | Constitutional rule exists | Automated broad defect audit remains |
 | Quality as correctness | Act §22 | Quality/release gate tests required | Constitutional rule exists | Product-level quality gate remains |
@@ -65,7 +65,7 @@ The first canonical governance control-plane implementation was then added and w
 - `.naya/governance/test_governance_kernel.py`
 - `.github/workflows/smart-brain-v3-enforcement.yml`
 
-The kernel currently enforces explicit authority, actor/action/scope matching, revoked/expired authority fail-closed behavior, epistemic uncertainty blocking, risk-sensitive verification, least-power containment, governance states, and receipt requirements.
+The kernel currently enforces explicit authority, actor/action/scope matching, revoked/expired authority fail-closed behavior, epistemic uncertainty blocking, risk-sensitive verification, least-power containment, explicit governance state transitions, terminal STOP behavior, and receipt requirements.
 
 The latest source revisions are on `main`. **Automated execution evidence for the latest governance commits is still required before declaring these gates VERIFIED.**
 
@@ -74,11 +74,11 @@ The latest source revisions are on `main`. **Automated execution evidence for th
 1. Obtain and inspect the first Smart Brain v3 Enforcement run for the latest `main` revision.
 2. Apply FIRST NEW FAILURE ONLY repair discipline.
 3. Verify the canonical governance kernel gate in the actual run.
-4. Expand the kernel into an explicit state-transition/STOP/ESCALATE enforcement layer.
-5. Establish the persistent authority registry and mutation rules.
-6. Bind consequential tool/workflow execution paths to the kernel rather than merely testing the kernel in isolation.
-7. Add universal provenance/receipt emission and validation.
-8. Add adversarial suites for authority spoofing, memory/authority confusion, handoff leakage, prompt injection, tool bypass, and premature success claims.
+4. Establish the persistent authority registry and mutation rules.
+5. Bind consequential tool/workflow execution paths to the kernel rather than merely testing the kernel in isolation.
+6. Add universal provenance/receipt emission and validation.
+7. Add adversarial suites for authority spoofing, memory/authority confusion, handoff leakage, prompt injection, tool bypass, premature success claims, and constitutional precedence bypass.
+8. Add automated amendment governance so constitutional law cannot be silently self-modified.
 9. Prove exact source → artifact → deployment → runtime parity wherever runtime exists.
 10. Use the resulting governed system to build and verify the Intelligent Hub as the practical NayaPOWER proving ground.
 
