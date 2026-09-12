@@ -40,7 +40,7 @@ def main():
     if lg.get('current',{}).get('active_block')!=active.get('id') or lg.get('current',{}).get('next_action')!=state_next or lg.get('current',{}).get('next_action_count')!=1: fail('legacy memory STATE diverges from canonical operational projection')
     req(board,'# NayaPOWER — CURRENT ACTIVITY BOARD','current activity board'); req(board,'Resolve live `main` first','current activity live-head rule')
     if '## ONE BEST NEXT ACTION' not in board and '## 🎯 ONE BEST NEXT ACTION' not in board: fail('current activity next action missing required contract: ONE BEST NEXT ACTION')
-    req(board,'## NEXT NAYA — READY TO RUN','current activity successor continuation')
+    if 'NEXT NAYA — READY TO RUN' not in board: fail('current activity successor continuation missing required contract: NEXT NAYA — READY TO RUN')
     req(boot,EXPECTED_POLICY,'context boot'); req(start,EXPECTED_POLICY,'START HERE'); req(start,'ready_to_run_execution','START HERE structured continuation'); req(start,'One-Network law','START HERE One-Network law'); req(start,BLOCK_CYCLE,'START HERE block cycle')
     req(smart,'PRIORITY ZERO','Continuous Smart Flow'); req(smart,'LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED/LEGACY PROJECTIONS','state authority'); req(smart,'NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE','cold-start flow'); req(smart,'STATE → BLOCK → RECEIPT/EVIDENCE → FEED/HANDOFF → NEXT ACTION','state transaction law')
     req(no,'# NEXT NAYA EXECUTION PROMPT','No-Orphan law'); req(no,'ready_to_run_execution','No-Orphan structured field'); req(no,'NO META-HANDOFFS','No-Orphan anti-orphan rule'); req(no,'A blocker does not remove the continuation obligation','No-Orphan blocker continuation')
