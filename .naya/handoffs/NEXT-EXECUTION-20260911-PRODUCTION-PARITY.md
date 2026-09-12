@@ -9,83 +9,116 @@ Continue building and verifying NayaPOWER as the model-agnostic constitutional g
 ## Source of Truth
 GitHub: `SoulSchoolAcademy/NayaPOWER` / `main`
 
-## Baseline Resolved Before This Handoff
-`6a6c10e268cb6a4efb7c1d859f48f3869d709261`
+## Current Resolution
+Immediately before this state update, `refs/heads/main` resolved to:
+`d21332c135422057cc3014e784027a543d40e947`
 
-This artifact itself creates a new commit. Therefore the baseline above is evidence for the inspection that produced this handoff, not an authoritative current HEAD after this write. The next Naya MUST re-resolve `refs/heads/main` before making any current-state or runtime claim.
+This artifact update itself creates a successor commit. Therefore that SHA is evidence for the inspection cycle, not an authoritative current HEAD after this write. The next Naya MUST re-resolve `refs/heads/main` before making any current-state or runtime claim.
 
-## Verified State
-- Canonical deployment workflow is human-authorized and fail-closed.
-- Canonical Vercel project is `naya-power` with project ID `prj_cHa9gwrtscCW8JuMDjcvw6DafaOK`.
-- Canonical production surface is `NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE` in the authorized workflow.
-- Automatic Vercel Git deployment is disabled in `vercel.json`.
-- Existing production evidence records deployment `dpl_5G4r74MjsjPCxSAWudgQzoyY89G9` as READY at `https://naya-power.vercel.app`.
-- Existing production evidence records deployed source commit `1467ebf3f338640c404efcf2b3be42c77cd50e4e`.
-- Existing evidence records HTTP 200 public artifact verification, canonical Hub marker, `/settings` route verification, PIS artifact availability, successful build, and no recent Vercel runtime errors.
-- Current main `6a6c10e268cb6a4efb7c1d859f48f3869d709261` is 119 commits ahead of the recorded deployed source commit.
-- The GitHub compare shows no `NAYANET/HUB` file changes in that 119-commit delta; this is useful content-parity evidence but does NOT satisfy exact source-SHA deployment binding.
+## Verified Deployment State
+- Canonical Vercel project: `naya-power` / `prj_cHa9gwrtscCW8JuMDjcvw6DafaOK`.
+- Canonical public production alias resolves through Vercel to deployment `dpl_CxsL1Yh2FgbuEgaGLhgzC3xerpd6`.
+- That deployment is `READY`, target `production`, source `git`, and aliases include `naya-power.vercel.app`.
+- Its GitHub metadata binds it to commit `cec60e9301936e751125875a73d71fdf21060a19`, not the freshly resolved governed main SHA.
+- Vercel deployment history independently shows multiple recent READY production deployments, each Git-linked to earlier `main` commits. The latest observed deployment is `cec60e9301936e751125875a73d71fdf21060a19`.
+- No observed production deployment in the queried deployment history is bound to `d21332c135422057cc3014e784027a543d40e947`.
 
-## First True Parity Failure
-`DEPLOYED_SOURCE_SHA != CURRENT_GOVERNED_MAIN_SHA`
+## Independent Public Runtime Evidence
+- `https://naya-power.vercel.app/` independently returned HTTP 200 from Vercel.
+- The response contains the NayaNET Intelligent Hub canonical marker `NAYANET-HUB-REACT-CANONICAL`.
+- The response identifies `SoulSchoolAcademy/NayaPOWER:main` as its declared source and serves the NayaNET cognitive engine.
+- `/settings` also returned HTTP 200 with the same runtime identity.
+- This proves the public runtime is live and is recognizably the NayaNET Hub, but it does NOT prove that the runtime is built from the exact current governed SHA.
 
-Current governed baseline inspected: `6a6c10e268cb6a4efb7c1d859f48f3869d709261`.
-Recorded production deployment source: `1467ebf3f338640c404efcf2b3be42c77cd50e4e`.
+## Build / Artifact Evidence
+- The observed production deployment is `READY` and therefore has a successful Vercel deployment/build state at the platform level.
+- The public artifact returned by Vercel is the React/Vite Hub artifact and contains the canonical Hub marker.
+- Exact build-artifact-to-current-SHA binding is NOT independently proven because the observed deployment metadata is bound to `cec60e9301936e751125875a73d71fdf21060a19`.
+- The GitHub compare from `cec60e9301936e751125875a73d71fdf21060a19` to the inspected `d21332c135422057cc3014e784027a543d40e947` shows 12 commits and changes confined to governance/deployment-control files plus the production-parity handoff; no `NAYANET/HUB` source files are in that delta. This is useful content-parity evidence, not exact identity evidence.
 
-Therefore production parity is NOT proven under the constitutional verification requirement:
+## Deployment-Control-Plane Integrity Finding
+Current `vercel.json` declares:
+`"git": { "deploymentEnabled": false }`
+
+Despite that configuration, Vercel currently exposes repeated Git-linked production deployments with `source: git` and `githubDeployment: 1` metadata.
+
+This is an evidence-backed deployment-control-plane integrity question. It is NOT proof of wrongdoing and is NOT permission to bypass the canonical release control plane.
+
+The canonical authorized workflow currently targets `NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE`, while root `vercel.json` defines the current Vercel build as a Vite build of `NAYANET/HUB` with output `NAYANET/HUB/dist`. The public runtime independently observed is the `NAYANET/HUB` React/Vite artifact. This creates an additional deployment-surface consistency question that must be resolved before using the authorized workflow as a release mechanism for the current public Hub.
+
+Current E02 source is a distinct front-door surface; its `index.html` contains `NayaNET — Enter` and the 2026-09-02 front-door release marker. It is therefore not safe to assume that E02 and the current public React Hub are interchangeable deployment surfaces.
+
+## FIRST TRUE FAILURE
+`EXACT_GOVERNED_MAIN_SHA != OBSERVED_PRODUCTION_DEPLOYMENT_SHA`
+
+Freshly resolved governed main at inspection:
+`d21332c135422057cc3014e784027a543d40e947`
+
+Observed production deployment source:
+`cec60e9301936e751125875a73d71fdf21060a19`
+
+Therefore the required chain remains unproven:
 `SOURCE SHA -> BUILD ARTIFACT -> DEPLOYMENT RECORD -> EXACT PUBLIC RUNTIME`.
 
-This is a deployment/source binding mismatch, not evidence that the public Hub is necessarily functionally broken. Do not relabel it as GREEN or repair unrelated runtime/UI code.
+The public runtime is live, but its exact current-SHA identity is not established.
 
-## Deployment Control Contract
-The authorized Vercel workflow requires:
-- explicit `workflow_dispatch`
+## Authorized Deployment Contract
+`.github/workflows/authorized-vercel-release.yml` is explicitly `workflow_dispatch` only and requires:
 - exact 40-character commit SHA
-- explicit target environment
-- unique release ID
+- target environment
+- release ID
 - release reason
-- explicit approval `EXPLICIT_APPROVAL_GRANTED`
-- exact canonical Vercel project binding
-- repository verification before authorization
+- `EXPLICIT_APPROVAL_GRANTED`
 - exact checkout verification
+- canonical runtime-surface verification
+- deployment-governance verification
+- Vercel credential
+- canonical Vercel project binding
 - live deployment verification
 
-The workflow then deploys the exact verified checkout and live-verifies the resulting deployment surface. No connector in the current execution environment exposes authorized workflow dispatch.
+The available GitHub toolset does not expose authorized workflow dispatch. The available Vercel deployment tool would be a direct platform deployment path and therefore must NOT be used as a bypass of the canonical human-authorized workflow.
 
 ## Current Blocker
-To prove exact production parity for the current governed main, a human-authorized release of the exact current production-intended SHA is required through the canonical Vercel release control plane. Naya must not manufacture a trigger, create a meaningless commit, bypass the control plane, or infer deployment truth from source.
+There are now two connected but distinct blockers at the deployment boundary:
 
-## Independent Runtime Evidence
-Independent public-runtime access from the current tool environment was attempted against `https://naya-power.vercel.app`, but the available external fetch paths could not establish a fresh live response in this session. Existing repository activity contains prior independent production observations, but those observations are tied to the older deployed source SHA above. They cannot be upgraded into current-SHA production proof.
+1. No observed production deployment is bound to the freshly resolved governed main SHA.
+2. The canonical authorized workflow's declared E02 deployment surface is not yet reconciled with the current root Vercel configuration and independently observed public React/Vite Hub surface.
+
+Human authorization alone is therefore not yet sufficient to safely execute the release until the deployment-surface identity is resolved. Do not dispatch, bypass, or manufacture a deployment.
 
 ## What Not To Do
-- Do not call production GREEN.
-- Do not claim current main is deployed merely because the Hub files are unchanged since `1467ebf...`.
-- Do not dispatch or manufacture a workflow trigger.
-- Do not create activity-only commits.
-- Do not modify NAYANET/HUB merely to eliminate the SHA mismatch.
-- Do not bypass Vercel authorization.
+- Do not call production GREEN or parity complete.
+- Do not deploy through the direct Vercel connector as a workaround.
+- Do not re-enable automatic Vercel Git deployment.
+- Do not create meaningless commits merely to trigger Vercel or Actions.
+- Do not modify `NAYANET/HUB` merely to eliminate source/deployment identity mismatch.
+- Do not assume E02 and HUB are interchangeable.
+- Do not infer exact runtime SHA from unchanged application files.
+- Do not weaken exact-SHA binding or explicit approval requirements.
 - Do not request or use credentials from chat.
-- Do not weaken the exact-SHA binding requirement.
 
 ## Next Highest-Value Action
-1. Re-resolve `main` immediately.
-2. Preserve the newly resolved SHA as the exact governed release candidate.
-3. Inspect the current `NAYANET/HUB` tree and root `vercel.json` only for deployment-surface integrity; do not redesign.
-4. If an authorized deployment execution path becomes available, release that exact SHA through `NayaPOWER Authorized Vercel Release` with explicit human approval.
-5. Capture deployment ID, deployment source SHA, target environment, artifact/build evidence, and live verification evidence.
-6. Independently observe the public production runtime and compare it against the exact deployed SHA/artifact.
-7. If the deployed source SHA still differs, classify the FIRST TRUE FAILURE at the deployment boundary and repair only that boundary.
-8. If exact SHA parity is proven, advance to the next unknown: authenticated end-to-end Smart Note → index → PIS → Hub runtime identity verification.
-9. Persist the result and create the next executable successor without asking the human to invent the task.
+1. Re-resolve `refs/heads/main` immediately.
+2. Re-query the canonical Vercel project and current production alias.
+3. Inspect the canonical authorized release workflow, root `vercel.json`, E02 surface, and HUB surface together for the smallest deployment-surface reconciliation required.
+4. Determine which surface is constitutionally and operationally intended to be the canonical production NayaNET runtime, using repository evidence rather than inference.
+5. If the authorized workflow is confirmed to target the intended surface, identify the exact human dispatch dependency and preserve it; do not bypass it.
+6. If the workflow is found to target a stale or wrong surface, repair only that deployment-control boundary and verify the repair through source evidence and governance tests before any release.
+7. Once the authorized release path and target surface are consistent, release the freshly resolved exact SHA only through the canonical human-authorized workflow with explicit approval.
+8. Capture exact source SHA, build/deployment artifact evidence, deployment ID, target, and live public runtime evidence.
+9. Compare all four identities: source -> artifact -> deployment -> exact runtime.
+10. If exact parity is proven, immediately advance to the authenticated Smart Note -> index -> PIS -> Hub end-to-end identity gate.
+11. Persist the new state and create the next executable successor without asking the human to invent the task.
 
 ## Success Criteria
-- Current `main` SHA resolved immediately before release/verification.
-- Exact governed SHA bound to the production deployment record.
-- Build artifact traceable to that SHA.
-- Public production runtime independently observed.
-- No source/deployment/runtime identity mismatch.
-- Authenticated end-to-end identity remains separately classified as unverified until genuinely observed.
+- Fresh main SHA resolved immediately before the release/verification decision.
+- Intended canonical production surface is explicitly reconciled across source, workflow, Vercel configuration, and public runtime.
+- Exact governed SHA is bound to the production deployment record.
+- Build artifact is traceable to that SHA.
+- Public runtime is independently observed and matches the exact deployed artifact.
+- Deployment-control-plane behavior is consistent with governance expectations.
+- Authenticated Smart Note -> index -> PIS -> Hub identity remains separately classified as unverified until genuinely observed.
 - No false GREEN, no false DONE, no governance bypass.
 
 ## Continuation Instruction
-You are the next Naya. TAG — YOU'RE IT. Restore this handoff, re-resolve `main`, and continue from the FIRST TRUE PARITY FAILURE. Do not ask Shawn what to do next. Execute the highest-value responsible action available. If human authorization is genuinely required, state the exact dependency, preserve the blocker, and pass the torch with a complete successor instruction. NO NOW WHAT.
+TAG — YOU'RE IT. You are the next Naya. Restore this handoff, immediately re-resolve `refs/heads/main`, and continue from the FIRST TRUE FAILURE. Do not ask Shawn what to do next. Determine the highest responsible verified-value action and execute it. Treat the Vercel Git-linked deployment history versus `vercel.json` and the E02-versus-HUB surface discrepancy as evidence to reconcile, not as permission to bypass authorization. Do not use direct Vercel deployment as a workaround. If a genuine human authorization dependency remains, state exactly what is required and pass the torch. After every meaningful state change, verify it, update the state, and continue. NO NOW WHAT.
