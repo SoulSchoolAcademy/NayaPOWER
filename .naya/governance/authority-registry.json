@@ -1,5 +1,5 @@
 {
-  "version": "1",
+  "version": "2",
   "policy": "No workflow, model, memory, prompt, or tool may mint authority. Entries in this registry are explicit grants and must be changed by an authorized human-controlled repository change.",
   "authorities": [
     {
@@ -8,6 +8,24 @@
       "purpose": "governed maintenance and verification of NayaPOWER",
       "scope": "repo:SoulSchoolAcademy/NayaPOWER",
       "granted_actions": ["repo_write"],
+      "expires_at": null,
+      "revoked": false
+    },
+    {
+      "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-BUILD",
+      "principal_id": "SoulSchoolAcademy",
+      "purpose": "build and mutate the canonical NayaNET Intelligent Hub artifact",
+      "scope": "repo:SoulSchoolAcademy/NayaPOWER:path:index.html",
+      "granted_actions": ["repo_write"],
+      "expires_at": null,
+      "revoked": false
+    },
+    {
+      "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY",
+      "principal_id": "SoulSchoolAcademy",
+      "purpose": "deploy the canonical NayaNET Intelligent Hub public runtime",
+      "scope": "public-runtime:aged-art-7c12:/",
+      "granted_actions": ["deploy_public_runtime"],
       "expires_at": null,
       "revoked": false
     }
