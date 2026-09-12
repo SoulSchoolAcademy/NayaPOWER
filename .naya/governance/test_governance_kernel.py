@@ -77,7 +77,7 @@ class GovernanceKernelTests(unittest.TestCase):
         )
         result = evaluate(self.decision, wrong)
         self.assertFalse(result.allowed)
-        self.assertIn("authority does not permit this actor/action/scope", result.reasons)
+        self.assertIn("authority does not permit this actor/action/scope or is inactive", result.reasons)
 
     def test_expired_authority_fails_closed(self):
         expired = Authority(
