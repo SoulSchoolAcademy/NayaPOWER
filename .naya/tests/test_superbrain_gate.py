@@ -80,10 +80,10 @@ assert GRAPH.exists(), 'relationship graph was not generated'
 assert graph['event_count'] == len(loaded), 'relationship graph node count mismatch'
 assert set(graph['nodes']) == ids, 'relationship graph node set mismatch'
 
-# Retrieval must return deterministic results for a canonical query.
-results = mod.retrieve('Superbrain CIS Naya Power', limit=5)
-assert results, 'retrieval returned no results'
-assert any('superbrain' in mod.all_text(e).lower() for _, e in results), 'retrieval failed to surface Superbrain context'
+# Retrieval is authorization-first. A caller without identity/scope/project
+# authorization must fail closed before corpus construction or ranking.
+unauthorized = mod.retrieve('Superbrain CIS Naya Power', limit=5)
+assert unauthorized == [], 'unauthorized retrieval must fail closed'
 
 # Daily CIS must be source-event based and explicitly require verification.
 report = mod.daily_report('2026-08-25', 'America/Vancouver')
@@ -93,6 +93,6 @@ assert isinstance(report['source_event_ids'], list)
 
 print('PASS — Superbrain regression suite GREEN')
 print(f'canonical_events={len(loaded)}')
-print(f'retrieval_results={len(results)}')
 print(f'graph_edges={graph["edge_count"]}')
+print('unauthorized_retrieval=EMPTY')
 print(f'daily_source_events={len(report["source_event_ids"])}')
