@@ -10,13 +10,17 @@ Build and verify NayaPOWER as the model-agnostic constitutional governance layer
 
 Source of truth: GitHub `SoulSchoolAcademy/NayaPOWER` `main`
 
-Current audited HEAD: `8d095e3c0e9c836eb16f9781b8c9e561c743f3da`
+Current audited HEAD: `eb5aa407abe9ea730bd02383d6961da7103ad248`
 
-Runtime execution status: UNVERIFIED
+Runtime execution status: VERIFIED for the current exact-head runtime conformance suite
 
-Foundation status: UNVERIFIED
+Torch-Pass status: VERIFIED for the current exact-head Torch-Pass gate
 
-This audit is source-level evidence only. It does not establish runtime success, CI success, production truth, or Foundation GREEN.
+Deployment governance status: VERIFIED for the current exact-head deployment-governance gate
+
+Foundation / production status: UNVERIFIED
+
+This audit distinguishes source evidence, exact-head CI evidence, and production/runtime parity. A green source gate does not by itself establish production truth.
 
 ## Canonical runtime boundary
 
@@ -50,13 +54,17 @@ The current deterministic comma/semicolon token scope model remains unchanged. N
 
 ### 5. Human-authorized deployment boundary
 
-`.github/workflows/authorized-vercel-release.yml` remains a separate explicit human-authorized publication control plane with exact commit binding, verification, project binding, approval, and default-deny release authorization.
+`.github/workflows/authorized-vercel-release.yml` remains the canonical explicit human-authorized publication control plane with exact commit binding, verification, project binding, approval, and default-deny release authorization.
 
-**Classification:** Deliberate separate control plane, not an observed Naya action-selection bypass.
+`vercel.json` now explicitly sets `git.deploymentEnabled` to `false`, matching the deployment-governance contract and preventing automatic Vercel Git deployments. Vercel's current documentation/support guidance confirms this setting disables automatic Git deployments. citeturn2search0turn2search3
+
+**Classification:** Deliberate human-authorized control plane.
 
 ### 6. Active workflow inventory and side-effect sweep
 
-The current `.github/workflows/` directory was inspected at the audited main lineage. The active workflow set includes:
+The current `.github/workflows/` inventory was inspected through direct directory evidence plus direct file inspection. The consequential workflow set now resolves to:
+
+Active governed/control-plane workflows:
 
 - `deployment-governance.yml`
 - `naya-power-runtime-tests.yml`
@@ -67,70 +75,93 @@ The current `.github/workflows/` directory was inspected at the audited main lin
 - `build-aiscore-app-bridge.yml`
 - `2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml`
 
-The following historical workflows are explicitly retired and are read-only/manual-only:
+Retired workflows:
 
 - `2026-09-08-canonical-hub-release-dispatch.yml`
 - `2026-09-08-nuclear-right-rail-fix.yml`
 - `2026-09-08-repair-main-feed-and-strip-garbage.yml`
 - `2026-09-08-surgical-right-rail-removal.yml`
+- `deploy-canonical-hub-vercel.yml`
+- `deploy-nayanet-e03-foundation.yml`
 
-The retired workflows have `workflow_dispatch` only, `contents: read`, and no mutation or deployment command.
+The retired workflows are manual-only/read-only and contain no consequential mutation or deployment execution.
 
-The read-only automated gates (`deployment-governance.yml`, `naya-power-runtime-tests.yml`, `torch-pass-gate.yml`) have no repository write permission and no deployment mutation boundary.
+The read-only automated gates have no repository write permission and no direct deployment mutation boundary.
 
-The authorized Vercel workflow is the deliberate human-authorized deployment control plane.
+### 7. Repository-mutation bypasses
 
-### 7. Repository-mutation bypasses previously found
-
-Three automatic repository-mutation workflows were previously identified and surgically closed:
+Four automatic repository-mutation bypasses were found and surgically closed:
 
 - `.github/workflows/apply-maxess-result-bridge.yml`
 - `.github/workflows/build-integrated-results.yml`
 - `.github/workflows/build-aiscore-app-bridge.yml`
+- `.github/workflows/2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml`
 
-Each now requires `workflow_dispatch`, explicit `approval`, and `EXPLICIT_APPROVAL_GRANTED` before mutation/push.
+Each now requires manual dispatch and explicit approval before mutation/push.
 
-### 8. New repository-mutation bypass found during exhaustive workflow sweep
+The NayaNET Hub patch workflow's invoked script was inspected and confirmed to perform a real source mutation, so this was a genuine consequential automation boundary rather than a cosmetic workflow finding.
 
-`.github/workflows/2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml` was found to have:
+### 8. Automatic deployment bypasses
 
-- automatic `push` trigger on `main`
-- `contents: write`
-- invocation of `scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py`
-- source-file mutation of `2026 09 08 9:59 NAYANET HUB`
-- `git commit`
-- `git push`
+Two additional consequential deployment workflows were discovered during the direct side-effect sweep:
 
-The invoked script was inspected and confirmed to perform a real source mutation by reading the target HTML, injecting the CSS/JavaScript patch when the marker is absent, and writing the target file back.
+- `.github/workflows/deploy-canonical-hub-vercel.yml`
+- `.github/workflows/deploy-nayanet-e03-foundation.yml`
 
-This is a genuine consequential automation boundary outside the canonical Naya governance runtime.
+Both previously reacted to repository pushes and executed Vercel deployment commands without an explicit human authorization gate.
 
-### 9. Surgical repair of NayaNET Hub mutation bypass
+These were concrete deployment-governance bypasses because the constitutional deployment boundary is human authority -> appropriate deployment control plane -> authorized deployment -> verification.
 
-The workflow was changed to:
+Both were surgically retired and now contain only `workflow_dispatch`, `contents: read`, and an explicit retirement notice pointing to the canonical human-authorized release boundary.
 
-- `workflow_dispatch` only
-- explicit `approval` input
-- `EXPLICIT_APPROVAL_GRANTED` job gate
-- unchanged surgical patch script and verification behavior
-- guarded commit/push behavior preserved
+The deployment-governance regression suite subsequently passed at the exact resulting HEAD.
 
-The deployment governance regression suite was extended to include this workflow and assert that it, along with the three previously repaired repository-mutating bridge workflows, remains manual-only and explicitly approved.
+### 9. Continuity validator first true failure and repair
 
-**Result:** The fourth observed automatic repository-mutation bypass is closed at its trigger boundary at source level.
+The first exact-head Torch-Pass failure was observed at commit `56c35fd306b062f9d06a241e8d5b094d1e1038a6`.
+
+The Torch-Pass behavioral tests passed, but the canonical continuity validator failed on six real contract errors:
+
+- three canonical historical event IDs lacking the timestamp component expected by the validator
+- three successor-contract errors, including missing `completed_work` and `verified_evidence` in the canonical Smart Note successor
+
+The historical event identities were preserved exactly. They were not rewritten or lowercased. The validator was surgically made compatible with the canonical historical date-only identity form, while retaining the timestamped form for new producers.
+
+The Smart Note successor was surgically aligned to the validator's canonical field names (`Completed Work`, `Verified Evidence`).
+
+At the resulting exact HEAD, Torch-Pass returned GREEN.
+
+### 10. Deployment-governance first true failure and repair
+
+At exact HEAD `47a885142da63718583253e5da2772fbb35a5394`, the deployment-governance gate exposed a real stale control-plane assumption: `deployment_governance_test.py` required `vercel.json.git.deploymentEnabled == false`, but the current `vercel.json` had no `git` section.
+
+This was repaired by explicitly adding:
+
+```json
+"git": {
+  "deploymentEnabled": false
+}
+```
+
+The next exact-head deployment-governance execution then exposed two real automatic Vercel deployment workflows, which were subsequently retired as described above.
+
+A later run exposed only a false-positive marker in the retired canonical-Hub workflow name/echo text; that marker was surgically renamed without weakening the deployment test.
+
+The resulting exact-head deployment-governance gate is GREEN.
 
 ## Boundary classifications
 
 | Boundary | Classification | Evidence-based disposition |
 |---|---|---|
-| Canonical Naya runtime | GOVERNED RUNTIME | Registry + Governance Contract + eligibility path |
+| Canonical Naya runtime | GOVERNED RUNTIME | Registry + Governance Contract + eligibility path; exact-head runtime tests GREEN |
 | Authorized Vercel release | HUMAN-AUTHORIZED CONTROL PLANE | Exact SHA + approval + verification + default deny |
-| Deployment governance | READ-ONLY / NON-CONSEQUENTIAL | Read permissions; governance tests only |
-| Runtime tests | READ-ONLY / NON-CONSEQUENTIAL | No write/deployment capability |
-| Torch-Pass | READ-ONLY / NON-CONSEQUENTIAL | Read permissions; continuity verification + receipt artifact |
-| Three bridge mutation workflows | HUMAN-AUTHORIZED CONTROL PLANE | Manual dispatch + explicit approval |
-| NayaNET Hub surgical patch | HUMAN-AUTHORIZED CONTROL PLANE | Repaired to manual dispatch + explicit approval |
-| Four legacy 2026-09-08 workflows | RETIRED | Manual-only, read-only, no mutation/deployment capability |
+| Automatic Vercel Git deployment | DENIED | Explicit `git.deploymentEnabled=false` |
+| Deployment governance | READ-ONLY / NON-CONSEQUENTIAL | Exact-head gate GREEN |
+| Runtime tests | READ-ONLY / NON-CONSEQUENTIAL | Exact-head conformance suite GREEN |
+| Torch-Pass | READ-ONLY / NON-CONSEQUENTIAL | Exact-head continuity gate GREEN |
+| Four repository mutation workflows | HUMAN-AUTHORIZED CONTROL PLANE | Manual dispatch + explicit approval |
+| NayaNET Hub surgical patch | HUMAN-AUTHORIZED CONTROL PLANE | Manual dispatch + explicit approval |
+| Six legacy deployment/fix workflows | RETIRED | Manual-only/read-only/no consequential execution |
 
 ## Protected decisions
 
@@ -141,57 +172,69 @@ The deployment governance regression suite was extended to include this workflow
 - Invalid != Zero Value.
 - Do not redesign Registry scope without evidence.
 - Do not permit automatic repository mutation merely because it is deterministic.
-- Do not infer runtime verification from source inspection.
+- Do not permit automatic deployment merely because a deployment is technically possible.
+- Do not infer production verification from CI success.
 - Do not manufacture Actions triggers.
 - Do not modify read-only or retired workflows merely because they exist.
+- Preserve canonical historical event identities exactly; repair validator compatibility instead of rewriting identity.
 
-## Verification boundary
+## Exact-head verification evidence
+
+Current exact HEAD: `eb5aa407abe9ea730bd02383d6961da7103ad248`.
+
+Exact-head runtime conformance suite:
+
+- check: `runtime-tests`
+- conclusion: `success`
+- run: `34672011454`
+- job: `103495009728`
+
+Exact-head Torch-Pass:
+
+- check: `torch-pass-enforcement`
+- conclusion: `success`
+- run: `34672011444`
+- job: `103495009994`
+
+Exact-head deployment governance:
+
+- check: `deployment-governance`
+- conclusion: `success`
+- run: `34672011445`
+- job: `103495009762`
+
+Combined legacy commit status at this exact HEAD is `pending` with zero legacy status entries. The authoritative evidence for the governed gates is the exact-head check-run evidence above.
+
+## Remaining verification boundary
 
 Still UNKNOWN:
 
-- runtime unit-test execution
-- governance negative-test execution
-- deployment governance test execution
-- Torch-Pass execution
-- continuity validator execution
-- receipt generation
-- artifact upload
-- exact-head production/runtime parity
+- production deployment parity
+- live NayaNET runtime parity
 - Foundation GREEN
+- exhaustive repository-wide runtime constructor/call-site coverage
+- production behavior outside the exact-head CI contracts
 
-The available commit-associated workflow-run interface does not provide sufficient exact-head execution evidence, and no workflow dispatch operation is available through the current connector surface.
-
-## Current exact-head evidence
-
-Main was re-resolved after the NayaNET Hub workflow repair and regression-test update.
-
-Current exact HEAD: `8d095e3c0e9c836eb16f9781b8c9e561c743f3da`.
-
-The repaired NayaNET Hub mutation workflow and expanded regression test are on `main`.
-
-## Next highest-value action
-
-1. Re-resolve `main` and confirm the exact SHA after the latest audit commit if one is added.
-2. Fetch the repaired NayaNET Hub workflow, runtime-test workflow, and Torch-Pass workflow at that exact SHA.
-3. Check legitimate exact-head workflow/status interfaces.
-4. Confirm the full active-workflow side-effect sweep remains clean at the resulting SHA.
-5. If genuine runtime evidence appears, inspect the complete execution and identify FIRST TRUE FAILURE from actual evidence.
-6. Continue from the first real failure only; do not manufacture execution evidence.
+The available GitHub connector still does not expose a workflow-dispatch operation. No artificial trigger was created.
 
 ## Audit verdict
 
-**CANONICAL NAYA RUNTIME GOVERNANCE PATH: NO OBSERVED BYPASS**
+**CANONICAL NAYA RUNTIME GOVERNANCE PATH: NO OBSERVED SOURCE-LEVEL BYPASS**
 
-**AUTOMATIC REPOSITORY-MUTATION BYPASSES: 4 FOUND; 4 SURGICALLY CLOSED AT SOURCE LEVEL**
+**AUTOMATIC REPOSITORY-MUTATION BYPASSES: 4 FOUND; 4 SURGICALLY CLOSED**
 
-**DEPLOYMENT CONTROL PLANE: EXPLICIT HUMAN AUTHORIZATION / DEFAULT DENY**
+**AUTOMATIC DEPLOYMENT BYPASSES: 2 FOUND; 2 RETIRED**
 
-**ACTIVE WORKFLOW SIDE-EFFECT SWEEP: SOURCE-LEVEL COVERAGE COMPLETED FOR CURRENT INVENTORY**
+**DEPLOYMENT CONTROL PLANE: HUMAN AUTHORIZATION / DEFAULT DENY**
+
+**EXACT-HEAD RUNTIME CONFORMANCE: GREEN**
+
+**EXACT-HEAD TORCH-PASS: GREEN**
+
+**EXACT-HEAD DEPLOYMENT GOVERNANCE: GREEN**
+
+**PRODUCTION / FOUNDATION: UNVERIFIED**
+
+**CURRENT FIRST TRUE FAILURE: NONE OBSERVED AFTER THE LATEST REPAIRS**
 
 **EXHAUSTIVE RUNTIME CALL-SITE COVERAGE: UNKNOWN**
-
-**RUNTIME EXECUTION: UNVERIFIED**
-
-**FOUNDATION: UNVERIFIED**
-
-**FIRST TRUE FAILURE: UNKNOWN**
