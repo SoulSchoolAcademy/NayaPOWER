@@ -5,7 +5,7 @@ import json,subprocess,sys,time
 from datetime import datetime,timezone
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; RECEIPT_DIR=ROOT/".naya/receipts/local-superbrain"
-CORE=[ROOT/"tools/qa_naya_context_boot.py",ROOT/"tools/qa_superbrain_continuity.py",ROOT/".naya/runtime/restore_context.py",ROOT/".naya/runtime/naya_power_kernel.py",ROOT/".naya/runtime/test_decision_calculus_runtime_integration.py",ROOT/"SUPERBRAIN/test_naya_power_excellence.py",ROOT/"SUPERBRAIN/test_naya_power_decision_calculus.py",ROOT/"tools/test_superbrain_a_b_c_compounding.py",ROOT/"tools/test_superbrain_note_event_to_pis.py",ROOT/"tools/test_superbrain_adversarial.py"]
+CORE=[ROOT/"tools/qa_naya_context_boot.py",ROOT/"tools/qa_superbrain_continuity.py",ROOT/".naya/runtime/restore_context.py",ROOT/".naya/runtime/naya_power_kernel.py",ROOT/".naya/runtime/test_decision_calculus_runtime_integration.py",ROOT/".naya/runtime/test_naya_power_orchestrator.py",ROOT/".naya/runtime/test_chatgpt_host_adapter.py",ROOT/".naya/runtime/test_naya_power_live.py",ROOT/".naya/runtime/execution_controller.py",ROOT/".naya/runtime/risk_engine.py",ROOT/".naya/runtime/test_model_tool_gateway.py",ROOT/".naya/runtime/runtime_activation_check.py",ROOT/"SUPERBRAIN/test_naya_power_excellence.py",ROOT/"SUPERBRAIN/test_naya_power_decision_calculus.py",ROOT/"tools/test_superbrain_a_b_c_compounding.py",ROOT/"tools/test_superbrain_note_event_to_pis.py",ROOT/"tools/test_superbrain_adversarial.py"]
 REGRESSION_KEYWORDS=("smart_note","smart_notes","canonical_event","event_store","promot","cct","continuity","retrieval","governance","reality","torch","runtime")
 EXCLUDED_LEGACY_CONTRACTS={"qa_v21_runtime_contract.py":"legacy V21 renderer/product contract; not a canonical Superbrain acceptance criterion"}
 def git(*args:str)->str:return subprocess.check_output(["git",*args],cwd=ROOT,text=True).strip()
@@ -15,7 +15,7 @@ def selected_commands():
   if not path.is_file():raise FileNotFoundError(path)
   rel=str(path.relative_to(ROOT))
   if path.name=="restore_context.py":commands.append([sys.executable,rel,"restore","--pretty"])
-  elif path.name=="naya_power_kernel.py":commands.append([sys.executable,rel,"--self-test"])
+  elif path.name in {"naya_power_kernel.py","execution_controller.py","risk_engine.py","runtime_activation_check.py"}:commands.append([sys.executable,rel,"--self-test"] if path.name=="naya_power_kernel.py" else [sys.executable,rel,"self-test"])
   else:commands.append([sys.executable,rel])
  seen={tuple(x[1:]) for x in commands}
  for path in sorted(ROOT.glob("tools/test_*.py"))+sorted(ROOT.glob("tools/qa_*.py")):
@@ -43,6 +43,6 @@ def main()->int:
   if proc.stderr:print(proc.stderr.rstrip(),file=sys.stderr)
   if effective_failure:overall=1;print("CONTINUING — failure recorded; remaining checks will still execute.")
   elif accepted_reconciliation:print("RECONCILIATION STATE ACCEPTED — explicit governed mismatch is not treated as a false-green verification claim.")
- receipt={"schema":"naya-power-local-superbrain-suite/v6","started_at":started.isoformat(),"finished_at":datetime.now(timezone.utc).isoformat(),"observed_head":head,"clean_worktree_before":clean_before,"github_actions_used":False,"selected_check_count":len(commands),"excluded_checks":EXCLUDED_LEGACY_CONTRACTS,"mandatory_layers":["EXCELLENCE_BY_DEFAULT","DECISION_CALCULUS","VERIFICATION","SMART_NOTE_PROMOTION","NOTE_EVENT_TO_PIS","FRESH_NAYA_RETRIEVAL","A_TO_B_TO_C_COMPOUNDING"],"commands":results,"overall":"PASS" if overall==0 else "FAIL"}
+ receipt={"schema":"naya-power-local-superbrain-suite/v7","started_at":started.isoformat(),"finished_at":datetime.now(timezone.utc).isoformat(),"observed_head":head,"clean_worktree_before":clean_before,"github_actions_used":False,"selected_check_count":len(commands),"excluded_checks":EXCLUDED_LEGACY_CONTRACTS,"mandatory_layers":["EXCELLENCE_BY_DEFAULT","DECISION_CALCULUS","VERIFICATION","RUNTIME_CONTINUITY","SMART_NOTE_PROMOTION","NOTE_EVENT_TO_PIS","FRESH_NAYA_RETRIEVAL","A_TO_B_TO_C_COMPOUNDING"],"commands":results,"overall":"PASS" if overall==0 else "FAIL"}
  path=RECEIPT_DIR/f"suite-{started.strftime('%Y%m%dT%H%M%SZ')}.json";path.write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+"\n",encoding="utf-8");print(f"RECEIPT: {path.relative_to(ROOT)}\nSUPERBRAIN LOCAL SUITE: {receipt['overall']}");return overall
 if __name__=="__main__":raise SystemExit(main())
