@@ -33,6 +33,7 @@ CURRENT_WORKFLOW_SURFACE = {
     "nayapower-activity-feed-integrity.yml",
     "superbrain-current-main-behavioral-proof.yml",
     "verify-primary-intelligence-system.yml",
+    "verify-nayanet-hub-build-only.yml",
 }
 
 
@@ -62,9 +63,25 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertIn("EXACT_SOURCE_SHA=PASS", text)
         self.assertNotIn("on:\n  push:", text)
 
-    def test_current_workflow_surface_is_exactly_the_authoritative_seven(self):
+    def test_current_workflow_surface_is_exactly_the_authoritative_eight(self):
         actual = {p.name for p in WORKFLOWS.glob("*.yml")}
         self.assertEqual(actual, CURRENT_WORKFLOW_SURFACE)
+
+    def test_build_only_hub_verification_is_non_production_and_sha_bound(self):
+        text = self.read("verify-nayanet-hub-build-only.yml")
+        self.assertIn("workflow_dispatch:", text)
+        self.assertIn("commit_sha:", text)
+        self.assertIn("ref: ${{ steps.source.outputs.sha }}", text)
+        self.assertIn('ACTUAL_SHA="$(git rev-parse HEAD)"', text)
+        self.assertIn("npm install --no-audit --no-fund", text)
+        self.assertIn("npm run typecheck", text)
+        self.assertIn("npm run build", text)
+        self.assertIn("VITE_RELEASE_COMMIT", text)
+        self.assertIn("release-proof.txt", text)
+        self.assertIn("actions/upload-artifact@v4", text)
+        self.assertNotIn("cloudflare/wrangler-action", text)
+        self.assertNotIn("EXPLICIT_APPROVAL_GRANTED", text)
+        self.assertNotIn("deploy-nayanet-hub-canonical-v2.yml", text)
 
     def test_control_plane_contains_governance_and_cct_authority(self):
         text = self.read("naya-control-plane.yml")
