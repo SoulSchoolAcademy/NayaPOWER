@@ -88,7 +88,7 @@ jobs:
       - name: Build and verify derived index
         run: python .naya/memory/smart_notes_v3.py index > /tmp/superbrain-index.json && python .naya/memory/smart_notes_v3.py validate
       - name: Retrieval baseline and smoke test
-        run: python .naya/memory/smart_notes_v3.py retrieve "Superbrain CIS Naya Power" --limit 5 && python .naya/memory/retrieval_benchmark.py
+        run: python .naya/memory/smart_notes_v3.py retrieve "Superbrain CIS Naya Power" --limit 5 --principal-id shawn --scope personal --access-project "Naya Power Superbrain" && python .naya/memory/retrieval_benchmark.py
       - name: Superbrain health metrics
         run: python .naya/memory/superbrain_health.py
       - name: Daily CIS smoke test
@@ -119,6 +119,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Set up Python
       - name: Set up Python
         uses: actions/setup-python@v6
         with: { python-version: '3.12' }
