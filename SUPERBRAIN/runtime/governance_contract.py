@@ -9,7 +9,7 @@ conditions required before an action can become eligible.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -24,7 +24,7 @@ ACTIVE_AUTHORITY_STATUSES = {"CANONICAL", "GOVERNING", "LOCKED", "ACTIVE", "CURR
 class GovernanceDecision:
     eligible: bool
     reasons: tuple[str, ...] = ()
-    checks: Mapping[str, bool] = None  # type: ignore[assignment]
+    checks: Mapping[str, bool] = field(default_factory=dict)
     authority_id: str | None = None
     authority_scope: str | None = None
 
@@ -139,6 +139,7 @@ def evaluate_governance(
     checks["stopping_condition_satisfied"] = action.stopping_condition_satisfied
     checks["responsible_value_eligible"] = action.responsible_value_eligible
     checks["human_decision_not_required"] = not action.requires_human_decision
+    checks["decision_state_valid"] = action.decision_state in ALLOWED_DECISION_STATES
     checks["decision_state_allows_execute"] = action.decision_state == "EXECUTE"
 
     if not checks["capability_available"]:
@@ -165,6 +166,8 @@ def evaluate_governance(
         reasons.append("responsible-value eligibility failed")
     if not checks["human_decision_not_required"]:
         reasons.append("human decision is required")
+    if not checks["decision_state_valid"]:
+        reasons.append(f"invalid decision state {action.decision_state!r}")
     if not checks["decision_state_allows_execute"]:
         reasons.append(f"decision state {action.decision_state!r} does not permit execution")
 
