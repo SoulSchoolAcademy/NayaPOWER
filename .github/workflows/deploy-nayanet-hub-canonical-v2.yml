@@ -1,10 +1,36 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-V2-2026-09-09
-# Surgical runtime-integrity repair. Build from NAYANET/HUB, deploy to aged-art-7c12,
-# explicitly promote the created Worker version to 100%, then prove the public runtime.
+# Canonical runtime deployment. Public mutation is explicitly dispatched/called,
+# bound to an exact source SHA, and routed through the NayaPOWER governance kernel.
 name: Deploy Canonical NayaNET Hub V2
 on:
   workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Exact 40-character NayaPOWER commit to deploy
+        required: true
+        type: string
+      approval:
+        description: Explicit approval for public runtime mutation
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
+      reason:
+        description: Why this exact commit is being deployed
+        required: true
+        type: string
   workflow_call:
+    inputs:
+      commit_sha:
+        required: true
+        type: string
+      approval:
+        required: true
+        type: string
+      reason:
+        required: true
+        type: string
     secrets:
       CLOUDFLARE_API_TOKEN:
         required: true
@@ -12,7 +38,7 @@ permissions:
   contents: read
 concurrency:
   group: nayanet-canonical-live-hub
-  cancel-in-progress: true
+  cancel-in-progress: false
 env:
   HUB: NAYANET/HUB
   WORKER_NAME: aged-art-7c12
@@ -21,16 +47,51 @@ env:
   ACCOUNT_ID: 262c881746ea6e9978ca18b3eb831907
 jobs:
   build-deploy-verify:
+    if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact current main
+      - name: Checkout exact requested source SHA
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-          ref: main
-      - name: Capture checked-out source SHA
-        id: source
-        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+          ref: ${{ inputs.commit_sha }}
+
+      - name: Verify exact source binding
+        shell: bash
+        env:
+          REQUESTED_SHA: ${{ inputs.commit_sha }}
+        run: |
+          set -euo pipefail
+          test "${#REQUESTED_SHA}" -eq 40
+          test "$REQUESTED_SHA" != "REQUIRED_EXACT_COMMIT_SHA"
+          ACTUAL_SHA="$(git rev-parse HEAD)"
+          test "$ACTUAL_SHA" = "$REQUESTED_SHA"
+          echo "SOURCE_COMMIT=$ACTUAL_SHA" >> "$GITHUB_ENV"
+          echo "EXACT_SOURCE_SHA=PASS: $ACTUAL_SHA"
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        env:
+          ACTOR: ${{ github.actor }}
+          APPROVAL: ${{ inputs.approval }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          test "$APPROVAL" = "EXPLICIT_APPROVAL_GRANTED"
+          python3 .naya/control-plane/workflow_gate.py \
+            --actor "$ACTOR" \
+            --purpose "deploy the canonical NayaNET Intelligent Hub public runtime" \
+            --permission "deploy_public_runtime" \
+            --request "deploy_nayanet_hub_canonical" \
+            --mission "make NayaPOWER operationally capable of safely governing Intelligent Hub production deployment" \
+            --uncertainty 1 \
+            --consequence 8 \
+            --irreversibility 8 \
+            --scope "public-runtime:aged-art-7c12:/" \
+            --evidence "explicit deployment approval" \
+            --evidence "exact source SHA verified: $SOURCE_COMMIT" \
+            --evidence "deployment reason: $REASON"
+
       - name: Install
         working-directory: NAYANET/HUB
         run: npm install --no-audit --no-fund
@@ -40,11 +101,11 @@ jobs:
       - name: Build
         working-directory: NAYANET/HUB
         env:
-          VITE_RELEASE_COMMIT: ${{ steps.source.outputs.sha }}
+          VITE_RELEASE_COMMIT: ${{ env.SOURCE_COMMIT }}
         run: npm run build
       - name: Inspect actual generated artifact
         env:
-          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
         run: |
           set -euo pipefail
           D="$HUB/dist"
@@ -68,7 +129,7 @@ jobs:
           echo FORBIDDEN_PRODUCT_UI=ABSENT
       - name: Prepare exact Cloudflare artifact
         env:
-          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
         run: |
           set -euo pipefail
           rm -rf release
@@ -111,7 +172,7 @@ jobs:
           npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
       - name: Independently verify exact public runtime and built assets
         env:
-          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          SOURCE_COMMIT: ${{ env.SOURCE_COMMIT }}
         run: |
           set -u
           echo "VERIFY_RUNTIME=$RUNTIME"
@@ -128,7 +189,7 @@ jobs:
             echo "ATTEMPT=$attempt ROOT_HTTP=$root_code ROOT_BYTES=$root_size SMART_HTTP=$smart_code SMART_BYTES=$smart_size"
             if [ -s /tmp/root.err ]; then echo 'ROOT_ERROR:'; cat /tmp/root.err; fi
             if [ -s /tmp/smart.err ]; then echo 'SMART_ERROR:'; cat /tmp/smart.err; fi
-            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && cmp -s /tmp/root /tmp/smart; then
+            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && cmp -s /tmp/root /tmp/smart ]; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/js.err || true)
