@@ -67,7 +67,7 @@ class MissionStateRuntimeTests(unittest.TestCase):
         state.verified = ["claimed result"]
         self.assertTrue(state.validate())
 
-    def test_verified_receipt_promotes_state(self):
+    def test_verified_receipt_persists_evidence_and_round_trips(self):
         state = self.make_state()
         plan = choose_next_action(
             state,
@@ -81,11 +81,20 @@ class MissionStateRuntimeTests(unittest.TestCase):
             evidence_source="GitHub main branch",
             verified=True,
             next_action="add-live-host-adapter-test",
+            commit="runtime-commit",
         )
         record_result(state, plan, receipt)
         self.assertEqual(state.block_status, BlockStatus.VERIFIED)
         self.assertEqual(state.next_action, "add-live-host-adapter-test")
         self.assertIn("Runtime kernel implemented", state.verified)
+        self.assertEqual(len(state.evidence), 1)
+        self.assertTrue(state.evidence[0].can_support_verified())
+        state.assert_valid()
+
+        restored = MissionState.from_mapping(state.to_dict())
+        restored.assert_valid()
+        self.assertEqual(restored.verified, state.verified)
+        self.assertEqual(restored.evidence[0].commit, "runtime-commit")
 
     def test_activation_status_is_machine_checkable(self):
         status = activation_status(self.make_state())
