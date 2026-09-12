@@ -52,6 +52,13 @@ def validate_block(b):
     if a['next_actions'][0]!=a['next_action']: fail('BLOCK next action representations disagree')
     if not a['evidence']: fail('BLOCK has no evidence requirements')
     if a['status'] in ('VERIFIED','RACE_READY','PRODUCTION_PROVEN') and not a.get('proof_receipt'): fail('material completion state lacks proof receipt')
+def validate_cross_surface_coherence(m, s, b):
+    active=b.get('active_block',{})
+    if m.get('execution_map',{}).get('active_block')!=active.get('id'): fail('MAP and BLOCK active block disagree')
+    if s.get('current_block')!=active.get('id'): fail('STATE and BLOCK active block disagree')
+    if s.get('single_next_action')!=active.get('next_action'): fail('STATE and BLOCK next actions disagree')
+    if s.get('next_actions')!=[active.get('next_action')]: fail('STATE and BLOCK next_actions disagree')
+    if s.get('next_action_count')!=active.get('next_action_count') or active.get('next_action_count')!=1: fail('STATE and BLOCK next-action cardinality disagree')
 def validate_proof(p):
     for k in ('SOURCE','BUILD','AUTOMATED','RUNTIME','VISUAL','WHOLE_JOURNEY','PRODUCTION'):
         if k not in p.get('claim_evidence',{}): fail(f'PROOF missing claim type: {k}')
@@ -98,9 +105,8 @@ def validate_scenarios():
 def validate_state_without_git(s):
     if s.get('status')!='LIVE_BOUND' or s.get('current_head',{}).get('source')!='git:HEAD': fail('recorded HEAD accepted as current')
 def main():
-    if '--self-test' in sys.argv: validate_scenarios(); validate_kernel_self_test(); print('SELF_TEST=GREEN'); return 0
-    reg,map_,state,blocks,proof,kernel=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL)); validate_identity(reg); validate_map(map_); head,branch=validate_state(state); validate_block(blocks); validate_proof(proof); validate_kernel(kernel); validate_kernel_self_test()
-    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','state_binding':'GREEN','proof_contract':'GREEN','note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries.'},indent=2)); return 0
+    reg,map_,state,blocks,proof,kernel=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL)); validate_identity(reg); validate_map(map_); head,branch=validate_state(state); validate_block(blocks); validate_cross_surface_coherence(map_,state,blocks); validate_proof(proof); validate_kernel(kernel); validate_kernel_self_test()
+    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','proof_contract':'GREEN','note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries.'},indent=2)); return 0
 if __name__=='__main__':
     try: raise SystemExit(main())
     except AssertionError as e: print(f'CONTROL_PLANE=RED\nFIRST_DIVERGENCE={e}',file=sys.stderr); raise SystemExit(1)
