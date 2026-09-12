@@ -52,6 +52,7 @@ def resolve_authority(
     registry: AuthorityRegistry,
     *,
     actor: str,
+    purpose: str,
     permission: str,
     scope: str,
 ) -> Authority:
@@ -60,6 +61,7 @@ def resolve_authority(
         authority
         for authority in registry.authorities.values()
         if authority.principal_id == actor
+        and authority.purpose == purpose
         and permission in authority.granted_actions
         and authority.scope == scope
     ]
@@ -102,6 +104,7 @@ def authorize_workflow(
     authority = resolve_authority(
         registry,
         actor=actor,
+        purpose=purpose,
         permission=permission,
         scope=scope,
     )
