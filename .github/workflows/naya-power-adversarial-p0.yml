@@ -5,11 +5,17 @@ on:
     paths:
       - 'tests/adversarial/**'
       - 'NAYA-POWER-ADVERSARIAL-TEST-SUITE-V1.0.md'
+      - '.naya/governance/**'
+      - '.naya/control-plane/**'
+      - '.github/workflows/**'
       - '.github/workflows/naya-power-adversarial-p0.yml'
   workflow_dispatch:
 
 env:
   PYTHONUNBUFFERED: '1'
+
+permissions:
+  contents: read
 
 jobs:
   harness:
@@ -19,6 +25,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Run P0 harness
         run: python3 tests/adversarial/run_p0.py
+      - name: Run canonical governance kernel adversarial tests
+        run: python3 .naya/governance/test_governance_kernel.py
+      - name: Run canonical execution-boundary adversarial tests
+        run: python3 .naya/governance/test_naya_execution_boundaries.py
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
