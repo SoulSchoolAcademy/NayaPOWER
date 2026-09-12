@@ -36,7 +36,7 @@ jobs:
         run: python3 .naya/governance/test_governance_kernel.py
 
       - name: Run execution-boundary tests
-        run: python3 -m unittest -v .naya/governance/test_naya_execution_boundaries.py
+        run: python3 .naya/governance/test_naya_execution_boundaries.py
 
       - name: Run deterministic excellence tests
         working-directory: SUPERBRAIN
