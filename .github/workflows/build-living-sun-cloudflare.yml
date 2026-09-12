@@ -1,9 +1,7 @@
 name: Retired — legacy Living Sun deploy
 
-# This workflow is intentionally non-deploying. The previous version mutated main
-# during deployment and created an unsafe self-triggering release loop. The active
-# canonical deployment is now .github/workflows/deploy-canonical-e02.yml.
-
+# Historical workflow retained as a non-mutating record. The active public Hub
+# deployment authority is the exact-SHA, human-dispatched, kernel-gated V2 workflow.
 on:
   workflow_dispatch:
 
@@ -16,6 +14,8 @@ jobs:
     steps:
       - name: Confirm retirement
         run: |
+          set -euo pipefail
+          test -f .github/workflows/deploy-nayanet-hub-canonical-v2.yml
           echo 'LEGACY_LIVING_SUN_DEPLOY=RETIRED'
-          echo 'ACTIVE_DEPLOY_WORKFLOW=.github/workflows/deploy-canonical-e02.yml'
+          echo 'ACTIVE_DEPLOY_WORKFLOW=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'REASON=deployment must never mutate main as part of release execution'
