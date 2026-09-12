@@ -1,19 +1,24 @@
 name: Build Integrated MAXESS Results
 
+# This workflow mutates repository source and pushes a commit. It is therefore
+# an explicitly invoked control-plane action, not an automatic push reaction.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'MAXESS-RESULTS-INTEGRATED-V1.html'
-      - 'MAXESS-RESULT-CONSUMER-V2.html'
-      - '.github/workflows/build-integrated-results.yml'
   workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to mutate and push the Results artifact
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
 
 permissions:
   contents: write
 
 jobs:
   build:
+    if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
