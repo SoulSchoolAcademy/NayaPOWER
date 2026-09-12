@@ -4,8 +4,7 @@ from __future__ import annotations
 import hashlib,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
-P={k:ROOT/v for k,v in {
-'manifest':'.naya/naya-context-manifest.json','boot':'.naya/NAYA-CONTEXT-BOOT-PROTOCOL.md','start':'SUPERBRAIN/AI-BOOT/START-HERE.md','protocol':'SUPERBRAIN/AI-BOOT/NAYA-POWER-ACTIVATION-PROTOCOL.md','clusters':'.naya/runtime/activation-intent-clusters.json','policy':'.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md','constitution':'.naya/codex/11-RUNTIME-CONSTITUTION.md','honor':'SUPERBRAIN/MASTER-NOTES/SN-20260827-NAYA-CODE-OF-HONOR.md','directive':'SUPERBRAIN/MASTER-NOTES/SN-20260827-10-OF-10-SYSTEM-OPERATING-DIRECTIVE.md','torch':'.naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md','no_orphan':'.naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md','action_delivery':'.naya/NAYA-ACTION-DELIVERY-LAW.md','map':'.naya/control-plane/MAP.json','state':'.naya/control-plane/STATE.json','blocks':'.naya/control-plane/BLOCKS.json','proof':'.naya/control-plane/PROOF.json','legacy':'.naya/memory/STATE.json','smart_flow':'SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md','activity_board':'SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md'}.items()}
+P={k:ROOT/v for k,v in {'manifest':'.naya/naya-context-manifest.json','boot':'.naya/NAYA-CONTEXT-BOOT-PROTOCOL.md','start':'SUPERBRAIN/AI-BOOT/START-HERE.md','protocol':'SUPERBRAIN/AI-BOOT/NAYA-POWER-ACTIVATION-PROTOCOL.md','clusters':'.naya/runtime/activation-intent-clusters.json','policy':'.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md','constitution':'.naya/codex/11-RUNTIME-CONSTITUTION.md','honor':'SUPERBRAIN/MASTER-NOTES/SN-20260827-NAYA-CODE-OF-HONOR.md','directive':'SUPERBRAIN/MASTER-NOTES/SN-20260827-10-OF-10-SYSTEM-OPERATING-DIRECTIVE.md','torch':'.naya/codex/CONSTITUTIONAL-AMENDMENT-CONTINUOUS-TORCH-PASS.md','no_orphan':'.naya/codex/CONSTITUTIONAL-AMENDMENT-NO-ORPHAN-EXECUTION.md','action_delivery':'.naya/NAYA-ACTION-DELIVERY-LAW.md','map':'.naya/control-plane/MAP.json','state':'.naya/control-plane/STATE.json','blocks':'.naya/control-plane/BLOCKS.json','proof':'.naya/control-plane/PROOF.json','legacy':'.naya/memory/STATE.json','smart_flow':'SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md','activity_board':'SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md'}.items()}
 EXPECTED_POLICY='.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md'
 VALUE_LOOP='ZOOM OUT → ZOOM IN → CONNECT → PRIORITIZE → OPTIMIZE → EXECUTE → VERIFY → LEARN → COMPOUND'
 BLOCK_CYCLE='EXECUTE → VERIFY → OSCAR → SCORE → INTEGRATE → CAPTURE → CHECK NETWORK → IDENTIFY NEXT BLOCK'
@@ -22,11 +21,9 @@ def req(t,n,l):
     normalized_need=re.sub(r'\s+',' ',n).strip()
     if normalized_need not in normalized_text:fail(f'{l} missing required contract: {n}')
 def req_sequence(t,segments,l):
-    normalized_text=re.sub(r'\s+',' ',t).strip()
-    pos=-1
+    normalized_text=re.sub(r'\s+',' ',t).strip(); pos=-1
     for segment in segments:
-        normalized_segment=re.sub(r'\s+',' ',segment).strip()
-        next_pos=normalized_text.find(normalized_segment,pos+1)
+        normalized_segment=re.sub(r'\s+',' ',segment).strip(); next_pos=normalized_text.find(normalized_segment,pos+1)
         if next_pos<0: fail(f'{l} missing required sequence segment: {segment}')
         pos=next_pos
 def main():
@@ -53,7 +50,7 @@ def main():
     if '## ONE BEST NEXT ACTION' not in board and '## 🎯 ONE BEST NEXT ACTION' not in board: fail('current activity next action missing required contract: ONE BEST NEXT ACTION')
     if 'NEXT NAYA — READY TO RUN' not in board: fail('current activity successor continuation missing required contract: NEXT NAYA — READY TO RUN')
     req(boot,EXPECTED_POLICY,'context boot'); req(start,EXPECTED_POLICY,'START HERE'); req(start,'ready_to_run_execution','START HERE structured continuation'); req(start,'One-Network law','START HERE One-Network law'); req(start,BLOCK_CYCLE,'START HERE block cycle')
-    req(action_delivery,'## ACTION-FIRST RESTORE GATE — READ MUST BECOME DO','Action-First Restore Gate'); req_sequence(action_delivery,ACTION_FLOW_SEGMENTS,'Action-First execution flow'); req(action_delivery,'If YES, **perform it now**','Action-First perform-now rule'); req(action_delivery,'RESTORE-INCOMPLETE / ACTION-UNFULFILLED','Action-First failure state'); req(action_delivery,'DOING THE GOVERNED BEHAVIOR OUTRANKS DESCRIBING THE GOVERNED BEHAVIOR.','Action-First behavior-over-description rule'); req(action_delivery,'RESTORED NEXT ACTION → ACTION DECISION → EXECUTION → VERIFICATION','Action-binding rule')
+    req(action_delivery,'## ACTION-FIRST RESTORE GATE — READ MUST BECOME DO','Action-First Restore Gate'); req_sequence(action_delivery,ACTION_FLOW_SEGMENTS,'Action-First execution flow'); req(action_delivery,'If **YES**, **perform it now**','Action-First perform-now rule'); req(action_delivery,'RESTORE-INCOMPLETE / ACTION-UNFULFILLED','Action-First failure state'); req(action_delivery,'DOING THE GOVERNED BEHAVIOR OUTRANKS DESCRIBING THE GOVERNED BEHAVIOR.','Action-First behavior-over-description rule'); req(action_delivery,'RESTORED NEXT ACTION → ACTION DECISION → EXECUTION → VERIFICATION','Action-binding rule')
     req(smart,'PRIORITY ZERO','Continuous Smart Flow'); req(smart,'LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED/LEGACY PROJECTIONS','state authority'); req(smart,'NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE','cold-start flow'); req(smart,'STATE → BLOCK → RECEIPT/EVIDENCE → FEED/HANDOFF → NEXT ACTION','state transaction law')
     req(no,'# NEXT NAYA EXECUTION PROMPT','No-Orphan law'); req(no,'ready_to_run_execution','No-Orphan structured field'); req(no,'NO META-HANDOFFS','No-Orphan anti-orphan rule'); req(no,'A blocker does not remove the continuation obligation','No-Orphan blocker continuation')
     req(protocol,'NAYA POWER ON','activation protocol'); req(protocol,'ACTIVATION INTENT','activation-intent contract'); req(protocol,'RESTORE CONTEXT','restore-context activation'); req(protocol,'One activation, one contract','single-contract rule'); req(protocol,'THE HUMAN SHOULD SPEAK NATURALLY','natural-language principle')
