@@ -25,6 +25,16 @@ LEGACY_HUB_WORKFLOWS = (
     "v7-intelligent-hub-build.yml",
 )
 
+CURRENT_WORKFLOW_SURFACE = {
+    "deploy-nayanet-hub-canonical-v2.yml",
+    "naya-control-plane.yml",
+    "naya-memory-runtime.yml",
+    "naya-power-adversarial-p0.yml",
+    "nayapower-activity-feed-integrity.yml",
+    "superbrain-current-main-behavioral-proof.yml",
+    "verify-primary-intelligence-system.yml",
+}
+
 
 class NayaExecutionBoundaryTests(unittest.TestCase):
     def read(self, name: str) -> str:
@@ -52,30 +62,63 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertIn("EXACT_SOURCE_SHA=PASS", text)
         self.assertNotIn("on:\n  push:", text)
 
-    def test_intelligent_hub_builder_is_kernel_gated_and_human_dispatched(self):
-        text = self.read("build-nayahub-intelligent.yml")
-        self.assertIn("workflow_dispatch:", text)
-        self.assertNotIn("workflow_call:", text)
-        self.assertNotIn("schedule:", text)
-        self.assertIn("approval:", text)
-        self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
-        self.assertIn("--permission \"repo_write\"", text)
-        self.assertIn("--scope \"repo:SoulSchoolAcademy/NayaPOWER:path:index.html\"", text)
-        self.assertNotIn("on:\n  push:", text)
+    def test_current_workflow_surface_is_exactly_the_authoritative_seven(self):
+        actual = {p.name for p in WORKFLOWS.glob("*.yml")}
+        self.assertEqual(actual, CURRENT_WORKFLOW_SURFACE)
 
-    def test_governance_validator_is_not_a_deployment_authority(self):
-        text = self.read("naya-governance-gate.yml")
+    def test_control_plane_contains_governance_and_cct_authority(self):
+        text = self.read("naya-control-plane.yml")
+        self.assertIn("Governance kernel self-test", text)
+        self.assertIn("Execution-boundary self-test", text)
+        self.assertIn("Cold Naya control-plane acceptance", text)
+        self.assertIn("CCT-003 two-Naya exchange", text)
+        self.assertIn("CCT-004 adversarial semantics", text)
+        self.assertIn("CCT-005 value feedback", text)
+        self.assertIn("paths:", text)
+
+    def test_memory_runtime_is_scoped_to_memory_and_restore(self):
+        text = self.read("naya-memory-runtime.yml")
+        self.assertIn("Naya Power Memory + Restore Runtime", text)
+        self.assertIn("Run Smart Note validator", text)
+        self.assertIn("Run Restore Context tests", text)
+        self.assertIn("Execute current Restore Context", text)
+        self.assertNotIn("CCT-003 two-Naya exchange", text)
+        self.assertNotIn("CCT-004 adversarial semantics", text)
+        self.assertNotIn("CCT-005 value feedback", text)
+
+    def test_activity_feed_integrity_is_exact_head_and_read_only(self):
+        text = self.read("nayapower-activity-feed-integrity.yml")
+        self.assertIn("SUPERBRAIN/NAYA-ACTIVITY-FEED.md", text)
+        self.assertIn("SUPERBRAIN/NAYA-ACTIVITY/**", text)
+        self.assertIn('ref: ${{ github.sha }}', text)
+        self.assertIn("EXACT_HEAD=PASS", text)
+        self.assertIn("contents: read", text)
+        self.assertNotIn("contents: write", text)
+
+    def test_adversarial_workflow_is_not_a_general_runtime_regression_runner(self):
+        text = self.read("naya-power-adversarial-p0.yml")
+        self.assertIn("tests/adversarial/**", text)
+        self.assertIn("test_behavioral_bypasses.py", text)
+        self.assertIn("Run P0 adversarial harness", text)
+        self.assertIn("if: github.event_name == 'workflow_dispatch'", text)
+        self.assertNotIn(".naya/runtime/**", text)
+        self.assertNotIn("Run canonical control-plane validator", text)
+        self.assertNotIn("Validate Naya-to-Naya Activity Feed", text)
+
+    def test_behavioral_proof_is_distinct_from_production_deployment(self):
+        text = self.read("superbrain-current-main-behavioral-proof.yml")
+        self.assertIn("Run current-main Superbrain behavioral suite", text)
+        self.assertIn("Run A→B→C compounding proof independently", text)
+        self.assertIn("EVIDENCE_CLASS=RUNTIME_TESTED_NOT_PRODUCTION_PROVEN", text)
         self.assertNotIn("cloudflare/wrangler-action", text)
-        self.assertNotIn("canonical_release:", text)
-        self.assertIn("NO_PARALLEL_DEPLOYMENT_AUTHORITY=PASS", text)
 
-    def test_claim_evidence_workflow_is_not_a_deployment_authority(self):
-        text = self.read("naya-claim-evidence-enforcement.yml")
-        self.assertIn("permissions:\n  contents: read", text)
-        self.assertNotIn("actions: write", text)
-        self.assertNotIn("Dispatch canonical NayaNET Hub deployment", text)
-        self.assertNotIn("/dispatches", text)
-        self.assertNotIn("deploy-nayanet-hub-canonical-v2.yml/dispatches", text)
+    def test_pis_verification_is_projection_and_artifact_parity_only(self):
+        text = self.read("verify-primary-intelligence-system.yml")
+        self.assertIn("Build PIS projection", text)
+        self.assertIn("PIS_PROJECTION=PASS", text)
+        self.assertIn("PIS_PERSISTENT_ADAPTER_SOURCE=PASS", text)
+        self.assertIn("PIS_ARTIFACT_PARITY=PASS", text)
+        self.assertNotIn("cloudflare/wrangler-action", text)
 
     def test_registry_contains_exact_scoped_hub_grants(self):
         payload = json.loads(REGISTRY.read_text(encoding="utf-8"))
