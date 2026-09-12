@@ -69,6 +69,14 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertNotIn("canonical_release:", text)
         self.assertIn("NO_PARALLEL_DEPLOYMENT_AUTHORITY=PASS", text)
 
+    def test_claim_evidence_workflow_is_not_a_deployment_authority(self):
+        text = self.read("naya-claim-evidence-enforcement.yml")
+        self.assertIn("permissions:\n  contents: read", text)
+        self.assertNotIn("actions: write", text)
+        self.assertNotIn("Dispatch canonical NayaNET Hub deployment", text)
+        self.assertNotIn("/dispatches", text)
+        self.assertNotIn("deploy-nayanet-hub-canonical-v2.yml/dispatches", text)
+
     def test_registry_contains_exact_scoped_hub_grants(self):
         payload = json.loads(REGISTRY.read_text(encoding="utf-8"))
         authorities = {item["authority_id"]: item for item in payload["authorities"]}
