@@ -35,20 +35,88 @@ Every substantive session must leave an executable continuation.
 ## WHAT HAS BEEN IMPLEMENTED
 1. Canonical Continuous Execution / No-Dead-End Torch Law exists as a Priority-Zero Smart Note.
 2. PIS architecture consumes canonical `.naya/*SMART-NOTE.md` sources.
-3. A repository-side P0 execution bridge now exists at `.github/workflows/naya-power-p0-execution-bridge.yml`.
+3. A repository-side P0 execution bridge exists at `.github/workflows/naya-power-p0-execution-bridge.yml`.
 4. The bridge uses GitHub `workflow_dispatch` to dispatch the canonical P0 workflow, locates the real dispatched run by exact head SHA, waits for completion, captures jobs, asserts exact-head parity, and uploads a machine-readable receipt.
 5. The bridge does not guess or override `NAYA_POWER_TARGET_URL`.
 
-## HISTORICAL VERIFIED EVIDENCE
-- PIS run `34703254331` — SUCCESS on exact HEAD `dd2a10a37636cdd25ff8822ed988d284b220d18a`.
-- P0 run `34702538714` — offline governance SUCCESS; live runtime fail-closed because `NAYA_POWER_TARGET_URL` was empty; PASS=0 FAIL=0 BLOCKED=26 REVIEW=0.
-- Historical P0 evidence is stale for any newer HEAD and cannot be promoted to current proof.
+## FRESH VERIFIED EXECUTION — PARENT HEAD
+The latest fully observed source before this handoff update was:
 
-## CURRENT UNKNOWN
-- Fresh bridge-triggered run identity.
-- Fresh dispatched P0 run identity.
-- Fresh P0 conclusion for the current HEAD.
-- Fresh target-variable availability.
+`0a2a20b4ff68261b509fbb75d2cee52543e16065`
+
+Bridge:
+- run `34705002105`
+- SUCCESS
+- event `push`
+- ref `refs/heads/main`
+- bridge SHA exactly `0a2a20b4ff68261b509fbb75d2cee52543e16065`
+- artifact `10301323548`
+
+Dispatched P0:
+- run `34705006562`
+- event `workflow_dispatch`
+- branch `main`
+- head SHA exactly `0a2a20b4ff68261b509fbb75d2cee52543e16065`
+- offline-governance SUCCESS
+- live-runtime fail-closed
+- PASS=0 FAIL=0 BLOCKED=26 REVIEW=0
+
+PIS:
+- run `34705002116` SUCCESS
+- exact head `0a2a20b4ff68261b509fbb75d2cee52543e16065`
+- projection PASS events=38
+- persistent adapter PASS
+- Hub typecheck PASS
+- Hub build PASS
+- production artifact parity PASS
+
+## FRESH VERIFIED EXECUTION — CURRENT HEAD BEFORE THIS HANDOFF UPDATE
+A proof-record repair was committed to align PROOF.json with the `0a2a20...` evidence. That created current HEAD:
+
+`9b53b2698f677570bc8af79da8a38c5b98daf61b`
+
+Fresh bridge:
+- run `34705189118`
+- SUCCESS
+- event `push`
+- ref `refs/heads/main`
+- bridge SHA exactly `9b53b2698f677570bc8af79da8a38c5b98daf61b`
+- artifact `10300943047`
+- receipt digest `sha256:3eb298babfdbe9a85eb0cc47b1737746a51336c6d9a6663d9dd56cb405f8e0b4`
+
+Fresh dispatched P0:
+- run `34705193981`
+- event `workflow_dispatch`
+- branch `main`
+- head SHA exactly `9b53b2698f677570bc8af79da8a38c5b98daf61b`
+- offline-governance SUCCESS
+- live-runtime fail-closed
+- PASS=0 FAIL=0 BLOCKED=26 REVIEW=0
+- live artifact `10300884643`
+- live artifact digest `sha256:eb9c001dca852be62527c787e548826aa9ed9f264409144fb5177b84e35056e3`
+
+The live-runtime log independently proves:
+- `GITHUB_EVENT_NAME=workflow_dispatch`
+- `GITHUB_REF=refs/heads/main`
+- `GITHUB_SHA=9b53b2698f677570bc8af79da8a38c5b98daf61b`
+- `CHECKED_OUT_SHA=9b53b2698f677570bc8af79da8a38c5b98daf61b`
+- `NAYA_POWER_TARGET_URL` is empty
+- harness result is PASS=0 FAIL=0 BLOCKED=26 REVIEW=0
+- exit code 3
+
+PIS verification:
+- run `34705189134` SUCCESS
+- exact head `9b53b2698f677570bc8af79da8a38c5b98daf61b`
+- projection, adapter, Hub typecheck, Hub build, and artifact parity all passed.
+
+## CURRENT UNKNOWN / BLOCKER
+`NAYA_POWER_TARGET_URL` remains unavailable/empty to the execution plane.
+
+This is an authorized external configuration boundary.
+
+It is BLOCKED, not FAILED.
+
+Do not guess, infer, hardcode, replace, or weaken the target boundary.
 
 ## PROTECTED
 - Never guess `NAYA_POWER_TARGET_URL`.
@@ -57,27 +125,25 @@ Every substantive session must leave an executable continuation.
 - Never convert UNKNOWN/BLOCKED to PASS.
 - Preserve canonical control-plane authority.
 - Preserve existing architecture/functionality.
+- Preserve Adaptive Reconstruction + Surgical Evolution.
 
 ## SINGLE NEXT ACTION
-**Resolve live `main` again, then inspect the fresh P0 execution-plane bridge run and the P0 run it dispatched for that exact HEAD.**
+**Resolve live `main` after this handoff update, inspect the fresh bridge/P0 execution produced for that exact new HEAD, verify the exact SHA chain and PIS result, then either repair the FIRST internal deterministic failure or preserve the external target boundary as BLOCKED and continue the highest-value authorized repository work.**
 
 ### EXECUTION
 1. Resolve live `main`; record exact HEAD.
 2. Read the canonical control plane and this handoff.
-3. Find the newest bridge execution attributable to the current HEAD.
-4. Capture its real run ID and conclusion.
-5. From the bridge receipt, capture the dispatched P0 run ID.
-6. Verify:
-   - bridge event/ref/SHA;
-   - P0 event = `workflow_dispatch`;
-   - P0 branch = `main`;
-   - P0 `head_sha` = bridge triggering SHA;
-   - P0 jobs are the expected `offline-governance` and `live-runtime` jobs.
-7. Inspect every relevant step and artifact.
-8. Take the FIRST deterministic failure, not a downstream symptom.
-9. If an internal failure exists: inspect authority → surgically repair → commit → resolve main → allow bridge to produce fresh P0 evidence → verify.
-10. If the run reaches the external target boundary: preserve the fail-closed result as BLOCKED and do the highest-value authorized repository-side continuation; never guess the target.
-11. If P0 passes: independently verify exact-head evidence, update STATE/BLOCK/PROOF/ACTIVITY/PIS/HANDOFF, then continue Torch 12.
+3. Find the newest bridge execution attributable to the exact current HEAD.
+4. Capture its real run ID, event, ref, SHA, conclusion, jobs, and artifact.
+5. Capture the dispatched P0 run ID from the bridge evidence.
+6. Verify bridge SHA = P0 head SHA = P0 GITHUB_SHA = checked-out Git HEAD.
+7. Verify P0 event is `workflow_dispatch` and branch is `main`.
+8. Inspect offline-governance first.
+9. Inspect live-runtime and its exact first failure/boundary.
+10. Inspect PIS verification for the exact current HEAD.
+11. If internal deterministic failure exists: inspect authority → surgically repair → commit → resolve main → fresh bridge → fresh P0 → verify.
+12. If live-runtime reaches the target boundary: preserve BLOCKED and continue repository-side work. Never guess the target.
+13. Before sign-out, keep STATE/BLOCK/PROOF/ACTIVITY/HANDOFF logically coherent. Remember that recording a new source commit creates a new HEAD and therefore requires fresh validation for any exact-current-head certification claim.
 
 ## VERIFICATION
 Do not declare success until current-head evidence proves the required SHA chain and P0 acceptance contract.
@@ -94,6 +160,8 @@ Before leaving:
 - give Shawn the same continuation as an executable prompt.
 
 ## WHY IS THIS NOT A 10?
+The execution plane is proven. Internal P0 governance and PIS are proven. The remaining decisive gap is authorized runtime-target availability and therefore live behavioral certification.
+
 Attack the highest-value verified gap. Do not stop at diagnosis.
 
 **TAG → YOU’RE IT → EXECUTE.**
