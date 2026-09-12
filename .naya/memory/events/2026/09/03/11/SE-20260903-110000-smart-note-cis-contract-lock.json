@@ -12,96 +12,11 @@
   "source": {"type": "live-human-interaction", "event_id": "INT-2026-09-03-SMART-NOTE-CIS-UNDERSTANDING-001"},
   "tags": ["Smart-Notes", "smart-note", "CIS", "PIS", "continuity", "memory", "learning", "receipt", "verification", "next-action", "architecture"],
   "concepts": ["Smart Note", "Human Note", "Naya Note", "Machine Note", "Compounding Intelligence System", "Primary Intelligence System", "Intelligent Feed", "durable receipt"],
-  "project_context": {
-    "project_id": "PRJ-NAYAPOWER-SUPERBRAIN",
-    "current_daily_project": "Naya Power Superbrain",
-    "current_objective": "During the deliberate GitHub Actions pause, build the six-core customer-facing activation package and then the sales experience. Activation is guided and incremental by default: discover the customer's identity, vision, goals, mission, and desired outcomes; activate one capability; explain what changed and the user benefit; distinguish verified from unverified behavior; provide evidence where legitimately available; and always provide the exact continuation prompt for the next step. Smart Note delivery is evidence-first: a Smart Note consists of Shawn, Naya, and Machine representations, each with a Smart Link, with PIS propagation separately evidenced. Naya should proactively capture clearly durable value when legitimately authorized. Preserve the P1 alternate-runtime proof track for the authorized execution window."
-  },
-  "representations": {
-    "shawn": {
-      "id": "SN-20260903-110000-shawn-smart-note-cis-contract",
-      "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock",
-      "title": "Human Note — Smart Notes are how the day's intelligence is preserved",
-      "summary": "Shawn clarified that a Smart Note means capturing the actual conversation/event we are discussing, extracting all the gold from it, and preserving that intelligence in human, Naya, and machine forms. The purpose is compounding: without notes there is no durable record for the Daily Intelligence Report, future retrieval, or successor Naya. A claim that a note was made without evidence is not acceptable.",
-      "content": "Smart Notes are not paperwork. They are the memory-embedding mechanism of Naya Power. When Shawn says note this, smart note it, or Naya note this, Naya must capture the actual consequential event, extract the gold, preserve it in human language, Naya understanding, and machine-operational form, and then show proof that the record exists. The receipt is part of the operation, not a courtesy."
-    },
-    "naya": {
-      "id": "SN-20260903-110000-naya-smart-note-cis-contract",
-      "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock",
-      "title": "Naya Note — Smart Note capture is a continuity execution, not a prose task",
-      "summary": "A Smart Note request must trigger an execution path: restore canonical state, capture the actual event, generate the three representations, persist the canonical event, update the feed, verify persistence, deliver direct evidence, and distinguish PIS propagation from note creation. Missing receipts or continuation are system defects.",
-      "lessons": [
-        "Durable memory is only useful when the event is retrievable and operationally consumable by a successor Naya.",
-        "A Smart Note without a receipt creates an unverifiable claim of memory.",
-        "PIS propagation is a separate lifecycle transition and must have separate evidence.",
-        "Proactive note capture should target consequential value, not create noise.",
-        "The Daily Intelligence Report can only compound what the canonical event system actually captured."
-      ],
-      "next_best_actions": ["Enforce Smart Note receipt completeness and canonical Note Event creation in the runtime validator, then test the behavior against positive and negative cases."]
-    },
-    "machine": {
-      "id": "SN-20260903-110000-machine-smart-note-cis-contract",
-      "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock",
-      "title": "Machine Note — Smart Note/CIS evidence contract",
-      "summary": "Machine contract for Smart Note capture, persistence, verification, feed visibility, PIS separation, and continuation.",
-      "implementation_facts": {
-        "canonical_repository": "SoulSchoolAcademy/NayaPOWER",
-        "branch": "main",
-        "canonical_event_store": ".naya/memory/events/YYYY/MM/DD/HH/<event_id>.json",
-        "canonical_index": ".naya/memory/events/INDEX.json",
-        "smart_note_contract": ".naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md",
-        "smart_note_three_layer_lock": ".naya/SMART-NOTE-THREE-LAYER-LOCK.md",
-        "intelligent_feed": ".naya/INTELLIGENT-FEED.md",
-        "continuity_policy": ".naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json",
-        "smart_note_runtime": ".naya/memory/smart_notes_v3.py",
-        "project_contract": ".naya/runtime/project_execution_contract.py"
-      },
-      "required_behavior": [
-        "detect explicit Smart Note request phrases",
-        "evaluate substantive conversation for proactive durable value",
-        "create one canonical Note Event",
-        "produce distinct Shawn, Naya, and Machine representations",
-        "persist to the canonical event store",
-        "update the Intelligent Feed/current-state record when materially changed",
-        "verify persistence and index registration",
-        "deliver direct artifact links and commit receipt(s)",
-        "treat PIS propagation as separate and separately evidenced",
-        "provide the next action for substantive CREATE work",
-        "never claim completion without evidence"
-      ]
-    }
-  },
-  "continuity": {
-    "execution_state": "COMPLETED",
-    "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260830-SMART-LINK-LAW.md",
-    "handoff": {
-      "mission": "Make Naya Power reliably preserve consequential intelligence so every successor Naya can restore and continue the work without conversational archaeology.",
-      "current_state": "The Smart Note + CIS operating contract is explicitly documented, the continuity policy recognizes Smart Note/learning/decision event classes, and this decision is represented as a canonical Note Event.",
-      "next_action": "Implement machine-testable Smart Note receipt completeness and canonical event enforcement, then run the tests against positive and negative cases."
-    }
-  },
-  "learning": {
-    "status": "LEARNED",
-    "lessons": [
-      "The core failure is not lack of a Smart Note definition; it is a gap between documented law and guaranteed execution behavior.",
-      "The canonical Note Event store must remain the memory authority; derived prose notes must not become a competing primary store.",
-      "Receipt delivery must be enforced as part of the Smart Note operation, not left to model memory or presentation habit."
-    ]
-  },
-  "verification": {
-    "status": "VERIFIED",
-    "verified_by": "GitHub fetch_file",
-    "verified_at": "2026-09-03T11:00:00-07:00",
-    "canonical_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json",
-    "initial_persistence_commit": "7fc1b6bde4fe3124c21aa36aee572f158e691b2a"
-  },
-  "receipt": {
-    "status": "VERIFIED",
-    "initial_persistence_commit": "7fc1b6bde4fe3124c21aa36aee572f158e691b2a",
-    "verification_update_commit": "PENDING_RESPONSE"
-  },
-  "relationships": {
-    "related": ["SE-20260830-080000-smart-note-smart-link-law", "SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP"],
-    "supersedes": []
-  }
+  "project_context": {"project_id": "PRJ-NAYAPOWER-SUPERBRAIN", "current_daily_project": "Naya Power Superbrain", "current_objective": "During the deliberate GitHub Actions pause, build the six-core customer-facing activation package and then the sales experience. Activation is guided and incremental by default: discover the customer's identity, vision, goals, mission, and desired outcomes; activate one capability; explain what changed and the user benefit; distinguish verified from unverified behavior; provide evidence where legitimately available; and always provide the exact continuation prompt for the next step. Smart Note delivery is evidence-first: a Smart Note consists of Shawn, Naya, and Machine representations, each with a Smart Link, with PIS propagation separately evidenced. Naya should proactively capture clearly durable value when legitimately authorized. Preserve the P1 alternate-runtime proof track for the authorized execution window."},
+  "representations": {"shawn": {"id": "SN-20260903-110000-shawn-smart-note-cis-contract", "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock", "title": "Human Note — Smart Notes are how the day's intelligence is preserved", "summary": "Shawn clarified that a Smart Note means capturing the actual conversation/event we are discussing, extracting all the gold from it, and preserving that intelligence in human, Naya, and machine forms. The purpose is compounding: without notes there is no durable record for the Daily Intelligence Report, future retrieval, or successor Naya. A claim that a note was made without evidence is not acceptable.", "content": "Smart Notes are not paperwork. They are the memory-embedding mechanism of Naya Power. When Shawn says note this, smart note it, or Naya note this, Naya must capture the actual consequential event, extract the gold, preserve it in human language, Naya understanding, and machine-operational form, and then show proof that the record exists. The receipt is part of the operation, not a courtesy."}, "naya": {"id": "SN-20260903-110000-naya-smart-note-cis-contract", "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock", "title": "Naya Note — Smart Note capture is a continuity execution, not a prose task", "summary": "A Smart Note request must trigger an execution path: restore canonical state, capture the actual event, generate the three representations, persist the canonical event, update the feed, verify persistence, deliver direct evidence, and distinguish PIS propagation from note creation. Missing receipts or continuation are system defects.", "lessons": ["Durable memory is only useful when the event is retrievable and operationally consumable by a successor Naya.", "A Smart Note without a receipt creates an unverifiable claim of memory.", "PIS propagation is a separate lifecycle transition and must have separate evidence.", "Proactive note capture should target consequential value, not create noise.", "The Daily Intelligence Report can only compound what the canonical event system actually captured."], "next_best_actions": ["Enforce Smart Note receipt completeness and canonical Note Event creation in the runtime validator, then test the behavior against positive and negative cases."]}, "machine": {"id": "SN-20260903-110000-machine-smart-note-cis-contract", "canonical_event_id": "SE-20260903-110000-smart-note-cis-contract-lock", "title": "Machine Note — Smart Note/CIS evidence contract", "summary": "Machine contract for Smart Note capture, persistence, verification, feed visibility, PIS separation, and continuation.", "implementation_facts": {"canonical_repository": "SoulSchoolAcademy/NayaPOWER", "branch": "main", "canonical_event_store": ".naya/memory/events/YYYY/MM/DD/HH/<event_id>.json", "canonical_index": ".naya/memory/events/INDEX.json", "smart_note_contract": ".naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md", "smart_note_three_layer_lock": ".naya/SMART-NOTE-THREE-LAYER-LOCK.md", "intelligent_feed": ".naya/INTELLIGENT-FEED.md", "continuity_policy": ".naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json", "smart_note_runtime": ".naya/memory/smart_notes_v3.py", "project_contract": ".naya/runtime/project_execution_contract.py"}, "required_behavior": ["detect explicit Smart Note request phrases", "evaluate substantive conversation for proactive durable value", "create one canonical Note Event", "produce distinct Shawn, Naya, and Machine representations", "persist to the canonical event store", "update the Intelligent Feed/current-state record when materially changed", "verify persistence and index registration", "deliver direct artifact links and commit receipt(s)", "treat PIS propagation as separate and separately evidenced", "provide the next action for substantive CREATE work", "never claim completion without evidence"]}},
+  "continuity": {"execution_state": "COMPLETED", "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260830-SMART-LINK-LAW.md", "handoff": {"mission": "Make Naya Power reliably preserve consequential intelligence so every successor Naya can restore and continue the work without conversational archaeology.", "source_of_truth": ".naya/memory/events/", "current_state": "The Smart Note + CIS operating contract is documented and represented as a canonical Note Event; runtime enforcement and propagation remain the active implementation target.", "protected_baseline": "Canonical Note Event remains memory authority; PIS propagation is separate and separately evidenced; human authority remains supreme.", "work_completed": "Locked the Smart Note/CIS operating contract and three machine-consumable representations.", "evidence": "Canonical event, three representations, verified status, receipt, and successor path are persisted.", "decisions": "Smart Note capture is a continuity execution, not a prose task.", "lessons": "Durable memory is useful only when retrievable, evidenced, and operationally consumable by a successor.", "unknowns": "Runtime receipt completeness and PIS propagation remain to be proven end-to-end.", "risks": "A note can be claimed without evidence unless runtime acceptance enforces the contract.", "recommendation": "Enforce Smart Note receipt completeness and canonical Note Event creation in the runtime validator and acceptance tests.", "next_action": "Implement and test receipt completeness and canonical event enforcement, then prove propagation.", "ready_to_run_execution": "Inspect the canonical Smart Note runtime and acceptance tests; implement the smallest evidence-backed enforcement; add positive and negative cases; run the authoritative gate.", "human_continuation": "Continue from the canonical successor; do not invent a new task.", "human_continuation_naya_authored": "true"}, "ai_to_ai_handoff": true, "learning_status": "LEARNED", "next_action_status": "READY", "next_action": "Implement and test receipt completeness and canonical event enforcement, then prove propagation."},
+  "verification": {"status": "VERIFIED", "verified_by": "GitHub fetch_file", "verified_at": "2026-09-03T11:00:00-07:00", "canonical_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json", "initial_persistence_commit": "7fc1b6bde4fe3124c21aa36aee572f158e691b2a"},
+  "receipt": {"status": "VERIFIED", "receipt_id": "RCPT-20260903-SMART-NOTE-CIS-CONTRACT", "initial_persistence_commit": "7fc1b6bde4fe3124c21aa36aee572f158e691b2a", "verification_update_commit": "CURRENT_CONTINUITY_REPAIR_COMMIT"},
+  "delivery": {"state": "REPOSITORY_ARTIFACTS_PERSISTED", "feed_status": "PERSISTED", "smart_links": {"shawn": ".naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json", "naya": ".naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json", "machine": ".naya/memory/events/2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json"}},
+  "time_bucket": {"year": "2026", "month": "09", "day": "03", "hour": "11"}
 }
