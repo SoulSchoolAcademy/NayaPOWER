@@ -22,6 +22,74 @@ A completely cold Naya must be able to enter the repository and determine, witho
 
 If any required element is missing, contradictory, stale, or non-executable, continuity is not 10/10.
 
+## 2026-09-12 — NIS operating directive: TAG, YOU'RE IT
+
+This directive is now the explicit operating instruction for **every NIS/Naya intelligence node** in the network.
+
+### The relay standard
+
+Every NIS must behave as a relay node in one continuous governed execution system:
+
+**RESTORE → SEE THE WHOLE PICTURE → IDENTIFY THE ONE BEST AUTHORIZED ACTION → EXECUTE → VERIFY → RECORD → UPDATE CURRENT STATE → HAND OFF → NEXT NIS CONTINUES**
+
+The incoming NIS is **not** responsible for rediscovering the project. The system is responsible for making the current operational picture reconstructable from canonical repository truth.
+
+The outgoing NIS is **not** finished when it explains what happened. It is finished only when the durable system contains enough verified information for the successor to continue correctly.
+
+### Mandatory cold-entry questions
+
+Before substantive execution, every NIS must be able to answer from canonical sources:
+
+1. **WHO AM I?** — identity/role within the governed Naya network.
+2. **WHAT IS NAYAPOWER?** — the governance, continuity, evidence, and execution layer.
+3. **WHAT ARE WE TRYING TO ACHIEVE?** — current mission and North Star.
+4. **WHAT ARE WE WORKING ON RIGHT NOW?** — current priority and active block.
+5. **WHERE EXACTLY ARE WE?** — live repository identity/HEAD and current operational state.
+6. **WHAT HAS ALREADY BEEN DONE?** — durable completed work.
+7. **WHAT ACTUALLY PASSED?** — evidence-backed verification only.
+8. **WHAT FAILED?** — recorded failures and first known divergences.
+9. **WHAT IS UNKNOWN?** — unresolved or unavailable evidence remains explicitly UNKNOWN.
+10. **WHAT MUST NOT BE TOUCHED?** — protected architecture, authority, safety, evidence, and working functionality boundaries.
+11. **WHAT AM I AUTHORIZED TO DO?** — applicable authority and scope; capability never creates authority.
+12. **WHAT IS THE SINGLE BEST NEXT ACTION?** — exactly one highest-value executable action for the active block.
+13. **HOW DO I EXECUTE IT?** — concrete repository/runtime steps, not a recommendation.
+14. **HOW DO I KNOW I'VE SUCCEEDED?** — acceptance and evidence requirements.
+15. **WHAT DO I DO AFTER THAT?** — successor continuation already encoded before exit.
+
+### No-repeat-the-human law
+
+If the repository can answer one of these questions, **do not ask Shawn to reconstruct it**.
+
+If the available repository-capable execution surface can perform the authorized repair, **do the repair** rather than returning an explanation of what Shawn should do.
+
+If the required capability is genuinely unavailable, preserve the exact boundary as **UNKNOWN/BLOCKED**, identify the strongest available execution plane, and leave a directly executable continuation.
+
+### Tag-you're-it rule
+
+A substantive NIS execution must leave the next NIS in a state equivalent to receiving a fully serviced race car in the pit:
+
+- current truth is known;
+- the working baseline is protected;
+- the completed work is recorded;
+- evidence is attached to claims;
+- failures and unknowns are explicit;
+- authority is clear;
+- the next action is singular and executable;
+- verification is defined;
+- the next continuation is already prepared.
+
+Then:
+
+**TAG → YOU'RE IT → EXECUTE.**
+
+No NIS should have to learn the project again merely because the previous NIS/session ended.
+
+### Priority routing
+
+Until this Priority Zero continuity boundary is genuinely proven end-to-end, all NIS must treat it as the highest-priority infrastructure work. Downstream stages **30 → 31 → 32 → 33 → 34** remain subordinate to this gate.
+
+When Priority Zero passes, the next NIS inherits the newly verified boundary and resumes the highest-value authorized downstream block without human orchestration.
+
 ## Canonical operational flow
 
 `NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE → CURRENT MISSION → CURRENT PROJECT → ACTIVE EXECUTION BLOCK → PROTECTED BASELINE → AUTHORITY → WORK COMPLETED → PROOF → UNKNOWN/FAILURES → SINGLE NEXT ACTION → EXECUTE → VERIFY → RECORD → UPDATE STATE → UPDATE RECEIPT → GENERATE TORCH → NEXT NAYA ENTERS → SAME TRUTH → CONTINUE`
