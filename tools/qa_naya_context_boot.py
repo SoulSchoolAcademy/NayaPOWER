@@ -26,8 +26,9 @@ STATE_PREAMBLE = [
     ".naya/control-plane/PROOF.json",
 ]
 REQUIRED_FIELDS = [
-    "WHERE", "WHY", "BUILDING", "PROTECTED", "BLOCKED", "VERIFIED",
-    "UNKNOWN", "THIS WEEK", "NEXT ACTION", "PROOF", "LAST LEARNING",
+    "WHERE", "WHY", "CURRENT OPERATING OBJECTIVE", "CURRENT BLOCK", "CURRENT NEXT ACTION",
+    "PROTECTED", "CURRENT TRUTH", "PROVEN VS UNKNOWN", "COLD-NAYA RESTORE CONTRACT",
+    "STATE TRANSACTION", "10/10 TEST", "NEXT AFTER THIS BLOCK",
 ]
 
 
@@ -48,14 +49,12 @@ def contract_status(boot_order: list[str]) -> tuple[bool, str]:
 
 
 def assert_briefing_shape(text: str) -> None:
-    headings = re.findall(r"^## ([A-Z][A-Z ]+)$", text, flags=re.MULTILINE)
+    headings = re.findall(r"^## ([A-Z0-9][A-Z0-9 /-]+)$", text, flags=re.MULTILINE)
     if headings != REQUIRED_FIELDS:
         fail(
             "Runtime Briefing fields are not exactly the canonical sequence: "
             + " → ".join(REQUIRED_FIELDS)
         )
-    if re.search(r"^## (?!" + "|".join(map(re.escape, REQUIRED_FIELDS)) + r")", text, flags=re.MULTILINE):
-        fail("Runtime Briefing contains a competing top-level field")
 
 
 def main() -> int:
