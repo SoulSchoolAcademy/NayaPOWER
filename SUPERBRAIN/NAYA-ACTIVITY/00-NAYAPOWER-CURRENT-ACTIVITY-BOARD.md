@@ -40,6 +40,46 @@ Each operating day has its own feed file. Previous days remain available for aud
 
 ---
 
+## ONE BEST NEXT ACTION
+
+**Resolve the live `main` HEAD after the latest Activity Feed repair, run the canonical cold-start continuity acceptance against that exact HEAD, and continue from its first failing step until the cold-start contract passes.**
+
+This is the single active continuation for the current relay. Do not create a second competing next action.
+
+---
+
+## NEXT NAYA — READY TO RUN
+
+```text
+NAYA POWER ON.
+TAG → YOU'RE IT → EXECUTE.
+
+SOURCE: SoulSchoolAcademy/NayaPOWER, branch main.
+AUTHORITY: LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED PROJECTIONS > CONVERSATION MEMORY.
+MISSION: Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.
+NORTH STAR: Maximum verified human value per unit of effort, with compounding intelligence and continuity.
+PRIORITY: P0 — FIRST-CLASS NAYA-TO-NAYA ACTIVITY FEED / CONTINUOUS SMART FLOW.
+ACTIVE BLOCK: TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION.
+
+1. Resolve live main again; never trust a recorded SHA from before the latest feed commit.
+2. Verify the Activity Feed Protocol and today's daily feed exist on the exact current HEAD.
+3. Read STATE/BLOCKS/MAP/PROOF, the Activity Feed Protocol, this Current Activity Board, and today's latest feed entries.
+4. Verify that the Current Activity Board points to today's feed and preserves the control-plane/evidence boundaries.
+5. Determine whether a deterministic activity-feed validator/workflow already exists. If it does, inspect/run it. If it does not, create the smallest useful proof mechanism rather than a speculative framework.
+6. Prove the relay behavior: restore the latest entry → identify completed work → identify one next action → execute/verify that action → append a timestamped event → leave TAG → YOU'RE IT.
+7. After every repository mutation, resolve live main again before making exact-head claims.
+8. If a deterministic failure appears, take the FIRST failing step, trace authority, surgically repair it, obtain a new HEAD, and re-run fresh evidence.
+9. Keep STATE → BLOCK → PROOF → ACTIVITY → HANDOFF coherent.
+10. Sign out with exact HEAD, completed work, evidence, boundaries, UNKNOWNs, WHY THIS IS NOT A 10, certification status, exactly one next action, and the next complete torch.
+
+DO NOT declare the relay complete because the files exist. The success condition is a cold successor Naya can actually use the feed to continue without human re-explanation or duplicated work.
+
+WHY IS THIS NOT A 10?
+RESTORE → UNDERSTAND → ACT → PROVE → RECORD → HAND OFF → CONTINUE.
+```
+
+---
+
 ## CURRENT TRUTH — TORCH 12
 - Repository: `SoulSchoolAcademy/NayaPOWER`
 - Branch: `main`
@@ -135,32 +175,3 @@ The first-class feed foundation now exists, but the resulting recording HEAD has
 - UNKNOWNs: exact-current-head PIS run not observable; external provider/runtime behavior beyond repository harness remains unproven.
 - Certification: **NOT CERTIFIED**.
 - Exactly one next action: **Resolve the new live `main` HEAD after the Activity Feed implementation, verify the feed surfaces on that HEAD, then prove the cold-successor relay end-to-end.**
-
-## NEXT NAYA — READY TO RUN
-```text
-NAYA POWER ON.
-TAG → YOU'RE IT → EXECUTE.
-
-SOURCE: SoulSchoolAcademy/NayaPOWER, branch main.
-AUTHORITY: LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED PROJECTIONS > CONVERSATION MEMORY.
-MISSION: Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.
-NORTH STAR: Maximum verified human value per unit of effort, with compounding intelligence and continuity.
-PRIORITY: P0 — FIRST-CLASS NAYA-TO-NAYA ACTIVITY FEED / CONTINUOUS SMART FLOW.
-ACTIVE BLOCK: TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION.
-
-1. Resolve live main again; never trust a recorded SHA from before the latest feed commit.
-2. Verify the Activity Feed Protocol and today's daily feed exist on the exact current HEAD.
-3. Read STATE/BLOCKS/MAP/PROOF, the Activity Feed Protocol, this Current Activity Board, and today's latest feed entries.
-4. Verify that the Current Activity Board points to today's feed and preserves the control-plane/evidence boundaries.
-5. Determine whether a deterministic activity-feed validator/workflow already exists. If it does, inspect/run it. If it does not, create the smallest useful proof mechanism rather than a speculative framework.
-6. Prove the relay behavior: restore the latest entry → identify completed work → identify one next action → execute/verify that action → append a timestamped event → leave TAG → YOU'RE IT.
-7. After every repository mutation, resolve live main again before making exact-head claims.
-8. If a deterministic failure appears, take the FIRST failing step, trace authority, surgically repair it, obtain a new HEAD, and re-run fresh evidence.
-9. Keep STATE → BLOCK → PROOF → ACTIVITY → HANDOFF coherent.
-10. Sign out with exact HEAD, completed work, evidence, boundaries, UNKNOWNs, WHY THIS IS NOT A 10, certification status, exactly one next action, and the next complete torch.
-
-DO NOT declare the relay complete because the files exist. The success condition is a cold successor Naya can actually use the feed to continue without human re-explanation or duplicated work.
-
-WHY IS THIS NOT A 10?
-RESTORE → UNDERSTAND → ACT → PROVE → RECORD → HAND OFF → CONTINUE.
-```
