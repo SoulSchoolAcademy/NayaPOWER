@@ -21,9 +21,9 @@ def report()->dict:
     parse_errors=sum(1 for _,e in raw if e.get("__parse_error__"))
     relationships=orphan=0
     for _,e in loaded:
-        rel=e.get("relationships",{}) or {}
+        rel=brain.relationship_map(e)
         for key in ("related","depends_on","supersedes","superseded_by","source_events"):
-            vals=rel.get(key,[]); vals=[vals] if isinstance(vals,str) else (vals or [])
+            vals=brain.normalize_targets(rel.get(key,[]))
             relationships+=len(vals); orphan+=sum(1 for target in vals if target not in ids and not str(target).startswith("EXT:"))
     policy=load_policy()
     meaningful=[e for _,e in loaded if is_meaningful_execution(e,policy)]
