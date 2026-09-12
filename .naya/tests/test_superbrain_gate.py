@@ -49,6 +49,14 @@ for path, event in loaded:
         assert 'naya' in keys, f'{event.get("event_id")}: missing Naya representation'
         assert 'human' in keys or 'shawn' in keys, f'{event.get("event_id")}: missing human representation'
     for rep in reps:
+        role = str(rep.get('representation', '')).lower()
+        if role == 'machine':
+            machine_operable = any(rep.get(k) for k in (
+                'schema_role', 'required_representation_roles', 'single_canonical_event',
+                'required_delivery', 'authority', 'consumers', 'verification_requirement'
+            ))
+            assert machine_operable, f'{event.get("event_id")}: machine representation is not machine-operable'
+            continue
         readable = any(rep.get(k) for k in ('title', 'summary', 'content', 'lessons', 'what_we_learned', 'learning'))
         assert readable, f'{event.get("event_id")}: unreadable note representation'
 
