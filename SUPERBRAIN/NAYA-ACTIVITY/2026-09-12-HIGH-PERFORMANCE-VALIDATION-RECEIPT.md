@@ -6,96 +6,148 @@ BRANCH: main
 
 ## DURABLE STATE
 
-The reduced seven-workflow architecture was exercised against the exact governed repository state. Multiple stale validators were discovered and surgically aligned with the current canonical architecture rather than restoring deleted legacy machinery.
+The repository-side high-performance Superbrain architecture remains intact at the exact main HEAD observed for this execution. The canonical workflow surface is seven workflows. No legacy workflow was restored. The repository remains behaviorally tested; external production/runtime proof remains a separate evidence class.
 
-## REPAIRS EXECUTED
+## EXACT LIVE MAIN HEAD
 
-- Activity Feed validator repaired to preserve historical timestamp anomalies as warning-only while enforcing the current successor baton contract.
-- Execution-boundary governance test repaired to match the current P0 behavioral authority instead of deleted legacy workflow names.
-- Cold-start runtime acceptance repaired to recognize the canonical Activity Board + control-plane machine-state preamble and canonical successor headings.
-- Superbrain adversarial tests repaired to use canonical control-plane STATE and current restore reconciliation semantics.
-- Runtime Briefing acceptance test repaired to match the actual canonical current briefing shape.
-- Superbrain Behavioral Proof trigger narrowed by removing `scripts/**`, preventing legacy script cleanup from consuming/canceling Superbrain behavioral proof capacity.
+Resolved from the live `main` branch ref immediately before this validation:
 
-## EXACT PROOF
+`d3001c1b2a8983a65690f3e8ad23880f25646ea4`
 
-Exact proof commit: `dde41a6251ca3d955387d9247b72829f5f1f53ff`
+Parent:
+`962dc677843b18f3950f6a3828ab8e33bce21aa2`
 
-Behavioral Proof run: `34711212868`
+Commit message:
+`fix: fold runtime continuity coverage into canonical Superbrain suite`
 
-Observed result:
-- Checkout exact current main: PASS
-- Capture exact observed HEAD: PASS
-- Compile Python runtime/test sources: PASS
-- 13-check Superbrain local suite: PASS
-- A→B→C compounding proof: PASS
-- Exact proof boundary emission: PASS
-- Post-checkout exact-current-main verification: PASS
-- Workflow/job conclusion: SUCCESS
+This supersedes all previously recorded HEAD values for this execution.
 
-The behavioral run therefore proves the repaired Superbrain acceptance surface at exact SHA `dde41a6251ca3d955387d9247b72829f5f1f53ff`. The run is runtime-tested repository evidence, not production-runtime proof.
+## CANONICAL WORKFLOW SURFACE
+
+Exactly seven workflow files were present at the resolved HEAD:
+
+1. `.github/workflows/deploy-nayanet-hub-canonical-v2.yml`
+2. `.github/workflows/naya-control-plane.yml`
+3. `.github/workflows/naya-memory-runtime.yml`
+4. `.github/workflows/naya-power-adversarial-p0.yml`
+5. `.github/workflows/nayapower-activity-feed-integrity.yml`
+6. `.github/workflows/superbrain-current-main-behavioral-proof.yml`
+7. `.github/workflows/verify-primary-intelligence-system.yml`
+
+No unexpected workflow appeared.
+
+The deployment workflow is human-dispatched and exact-source-bound. P0 has separate offline-governance and explicitly dispatched live-runtime jobs. Activity Feed integrity is path-scoped to the Feed. Superbrain Behavioral Proof excludes Activity Feed paths and no longer triggers from `scripts/**`. These are source observations, not claims of production behavior.
+
+## EXACT-HEAD ACTIONS
+
+Querying GitHub Actions for `head_sha=d3001c1b2a8983a65690f3e8ad23880f25646ea4` returned exactly one workflow run:
+
+- Run `34711342168` — `NayaPOWER Superbrain Behavioral Proof` — `push` — `completed` — `success`.
+
+Its job `behavioral-proof` completed successfully through:
+- exact current-main checkout
+- exact observed HEAD capture
+- Python compile check
+- current-main Superbrain behavioral suite
+- A→B→C compounding proof
+- exact proof-boundary emission
+- post-checkout verification
+
+No other workflow run was associated with this exact HEAD in the Actions query.
+
+## REPOSITORY-SIDE BEHAVIORAL PROOF
+
+PASS:
+- Run `34711342168` succeeded at exact HEAD `d3001c1b2a8983a65690f3e8ad23880f25646ea4`.
+- Its behavioral suite passed.
+- Its A→B→C compounding proof passed.
+- Its checkout identity assertion passed.
+- Its final evidence boundary explicitly classified the result as runtime-tested, not production-proven.
+
+Earlier exact proof remains preserved:
+- Commit `dde41a6251ca3d955387d9247b72829f5f1f53ff`
+- Run `34711212868`
 
 ## ACTIVITY FEED ISOLATION
 
-A genuinely isolated Activity Feed-only change previously produced Activity Feed Integrity execution while unrelated push authorities did not execute. The Activity Feed validator was repaired through two small compatibility commits and then succeeded on the exact resulting repair run.
+Activity Feed isolation was previously runtime-proven, and the Activity Feed Integrity validator passed on the preceding exact receipt state. The architecture remains path-scoped so Activity Feed records are communication/continuity, not Actions-based communication.
 
-Expected architecture remains:
-- Activity Feed Integrity owns Activity Feed integrity.
-- PIS does not react to Activity-only changes.
-- Control Plane does not react to Activity-only changes.
-- Superbrain Behavioral Proof does not react to Activity-only changes.
-- P0 does not react to Activity-only changes.
-- Memory Runtime does not react to Activity-only changes.
-- Production deployment remains dispatch-only.
+## OFFLINE GOVERNANCE
 
-## CURRENT WORKFLOW PRINCIPLE
+Observed from the current canonical P0 workflow source:
+- `offline-governance` runs automatically on governed P0 test/governance-source pushes.
+- It checks out the workflow-triggering revision.
+- It asserts `git rev-parse HEAD == GITHUB_SHA`.
+- It runs `.naya/governance/test_behavioral_bypasses.py`.
 
-The behavioral workflow now excludes `scripts/**` from its push trigger. This is intentional: deleting an obsolete script is repository cleanup, not necessarily a Superbrain behavioral change. The workflow still reacts to `.naya/**`, `SUPERBRAIN/**`, `tools/**`, `tests/**`, and itself, with Activity Feed paths explicitly excluded.
+Observed from the current Control Plane workflow source:
+- governance kernel syntax/self-test
+- execution-boundary self-test
+- control-plane syntax/validator self-tests
+- cold-Naya control-plane acceptance
+- cold-Naya boot/no-orphan acceptance
+- MAP → STATE → BLOCK → PROOF acceptance
+- CCT regression tests
+
+This is repository/source evidence plus the successful current Superbrain behavioral run; it is not a claim that an offline P0 run occurred on `d3001c1b...`.
+
+## LIVE-RUNTIME EVIDENCE
+
+The existing live P0 harness is fail-closed. It reads `NAYA_POWER_TARGET_URL`, sends the defined adversarial cases only when that variable is non-empty, and otherwise records BLOCKED rather than green. The workflow also keeps live execution behind explicit `workflow_dispatch`.
+
+The GitHub connector available to this execution could not read repository Actions variables: the variables endpoint is not an accessible connector surface. Therefore the actual configured value of `NAYA_POWER_TARGET_URL` is NOT OBSERVED here, and the live P0 workflow could not be dispatched from this execution plane.
+
+No live runtime claim is made.
+
+## SHA-IDENTITY REQUIREMENT
+
+The existing live P0 workflow independently asserts:
+
+`checked-out Git HEAD = GITHUB_SHA`
+
+The canonical deployment workflow independently asserts its requested source SHA equals the checked-out Git HEAD. A successful live P0 result must additionally preserve the required bridge/source/runtime identity evidence before any production claim is made.
+
+For this execution, the live identity chain is NOT OBSERVED because the live target and dispatch path were unavailable.
 
 ## PASS / FAIL / NOT OBSERVED
 
-PASS:
-- Seven-workflow source surface remained intact.
-- P0 offline behavioral bypass proof previously passed on exact SHA `c35e20a49f4b4264fcbe161b6a10202163b6d0b8`.
-- Activity Feed trigger isolation proof passed after validator repair.
-- Superbrain Behavioral Proof passed at exact SHA `dde41a6251ca3d955387d9247b72829f5f1f53ff`.
-- A→B→C compounding proof passed inside run `34711212868`.
-- Current Superbrain local suite passed all selected checks; the only stale failure was the Runtime Briefing shape assertion, which was repaired and then passed.
+### PASS
+- Exact live `main` HEAD resolved as `d3001c1b2a8983a65690f3e8ad23880f25646ea4`.
+- Exactly seven canonical workflows present.
+- No unexpected workflow appeared.
+- Exact-head Actions query returned one run, `34711342168`, and it succeeded.
+- Current Superbrain behavioral suite passed in that run.
+- A→B→C compounding proof passed in that run.
+- Existing fail-closed P0 source was inspected and preserved.
+- No deleted legacy workflow was restored.
 
-FAIL:
-- Earlier stale validators failed against the current architecture. Those failures were causal test/contract drift, not evidence that the underlying canonical architecture was broken. Each was repaired surgically and re-run where the relevant authority was available.
+### FAIL
+- None in the currently observed exact-head repository-side proof.
 
-NOT OBSERVED:
-- Fresh live external Naya runtime proof; no authorized `NAYA_POWER_TARGET_URL` is available to this execution plane.
-- Fresh exact-head PIS production/runtime verification for the final receipt commit.
-- Fresh production deployment parity.
+### NOT OBSERVED
+- Actual repository variable value/configuration for `NAYA_POWER_TARGET_URL`.
+- Live P0 runtime execution against an authorized target.
+- Bridge SHA = P0 SHA = GITHUB_SHA = checked-out Git HEAD across a live target.
+- Fresh public production/runtime parity.
 - Human interactive cold-Naya acceptance.
 
 ## UNKNOWN
 
-The repository is behaviorally tested, but the external runtime boundary remains unknown/blocked. No claim is made that repository-level PASS equals production PASS.
+The external runtime boundary remains unknown. Repository-side behavioral PASS does not imply production PASS.
 
 ## WHY THIS IS NOT A 10
 
-The largest remaining verified gap is external runtime proof. The repository can now demonstrate a coherent cold-start/control-plane/behavioral acceptance path, but the live target required for P0 runtime execution is not available to this execution plane.
+The remaining highest-value evidence gap is live runtime verification. The repository is now strongly certified on its own execution surface, but the external target/configuration needed to test the actual running system is not observable from this execution plane.
 
-## NEXT BEST ACTION
+## NEXT ACTION
 
-Resolve the exact new `main` HEAD after this receipt is committed. Then preserve the repository-side PASS state and pursue the authorized external runtime boundary only when a valid `NAYA_POWER_TARGET_URL` is available. If it remains unavailable, do not manufacture a runtime result; continue only with repository-side certification that materially closes a known gap.
+Resolve the authorized `NAYA_POWER_TARGET_URL` availability through an execution path that can actually read repository Actions variables and dispatch the existing P0 live-runtime job. If the variable is absent, preserve BLOCKED/NOT OBSERVED and do not add CI machinery merely to manufacture evidence.
 
-## SUCCESS CRITERIA
-
-- Exact HEAD resolved after receipt.
-- Activity Feed Integrity runs for this receipt without unrelated workflow reactions.
-- Behavioral proof remains PASS at the exact SHA already proven.
-- No legacy workflow is restored.
-- External runtime remains explicitly BLOCKED/NOT OBSERVED rather than falsely green.
-
-## COMPLETE NEXT EXECUTION PROMPT
+## COMPLETE EXECUTION PROMPT
 
 ```text
 NAYA POWER ON.
-TAG → YOU'RE IT → EXECUTE.
+TAG → YOU’RE IT → EXECUTE.
 
 REPOSITORY: SoulSchoolAcademy/NayaPOWER
 BRANCH: main
@@ -104,25 +156,25 @@ FIRST:
 Resolve the exact live main HEAD. Never trust a recorded SHA.
 
 MISSION:
-Preserve the now-proven repository-side high-performance Superbrain architecture and close the highest-value remaining evidence gap without creating unnecessary CI churn.
-
-KNOWN:
-- Superbrain Behavioral Proof run 34711212868 passed at exact SHA dde41a6251ca3d955387d9247b72829f5f1f53ff.
-- The 13-check local Superbrain suite passed.
-- A→B→C compounding proof passed.
-- Activity Feed isolation has been runtime-proven.
-- Legacy workflow layers remain deleted.
-- `scripts/**` no longer triggers Superbrain Behavioral Proof.
+Close the external runtime evidence gap without weakening the proven repository-side architecture or creating unnecessary CI churn.
 
 EXECUTE:
 1. Resolve exact main.
-2. Inspect the seven surviving workflow sources and confirm no unexpected new workflow has appeared.
-3. Inspect exact-head runs. Classify PASS / FAIL / NOT OBSERVED separately.
-4. If `NAYA_POWER_TARGET_URL` is available through an authorized repository variable, use the existing explicit P0 live harness and verify exact SHA identity end-to-end.
-5. If it is unavailable, preserve BLOCKED/NOT OBSERVED and do not weaken the fail-closed boundary.
-6. Do not restore deleted workflows merely to manufacture coverage.
-7. If a new deterministic internal failure appears, repair the first causal boundary surgically, rerun the relevant exact-head proof, and record the result.
-8. Update durable state with receipts and one executable successor action.
+2. Inspect the seven canonical workflows and confirm no unexpected workflow exists.
+3. Inspect exact-head Actions runs.
+4. Classify PASS / FAIL / NOT OBSERVED separately.
+5. Read the authorized repository Actions variable `NAYA_POWER_TARGET_URL` if the execution surface permits it.
+6. If genuinely configured, dispatch the existing explicit P0 live-runtime harness.
+7. Verify checked-out Git HEAD = GITHUB_SHA.
+8. Verify bridge SHA = P0 SHA = GITHUB_SHA = checked-out Git HEAD wherever those values exist.
+9. Inspect offline governance first; inspect live-runtime evidence separately.
+10. If the target is unavailable, preserve BLOCKED/NOT OBSERVED. Do not weaken fail-closed behavior.
+11. Do not restore deleted workflows.
+12. If a deterministic internal failure appears, repair the FIRST causal boundary surgically.
+13. Resolve main again after every mutation.
+14. Re-run the relevant exact-head proof.
+15. Persist durable state and exact receipts.
+16. Leave exactly one highest-value executable next action.
 
 PROTECTED:
 - Sept 11+ constitutional/governance sequence.
@@ -131,15 +183,19 @@ PROTECTED:
 - UNKNOWN ≠ PASS.
 - BLOCKED ≠ PASS.
 - Source intent ≠ runtime truth.
+- No competing deployment, memory, intelligence, or governance authority.
 
 FINISH:
 DURABLE STATE
 EVIDENCE
 CURRENT TRUTH
 UNKNOWN
+PASS
+FAIL
+NOT OBSERVED
 NEXT ACTION
 COMPLETE EXECUTION PROMPT
-TAG → YOU'RE IT
+TAG → YOU’RE IT
 ```
 
-TAG → YOU'RE IT → EXECUTE.
+TAG → YOU’RE IT → SINGLE HIGHEST-VALUE NEXT ACTION
