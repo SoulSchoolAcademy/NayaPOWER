@@ -45,7 +45,6 @@
       "canonical_event_id": "SE-20260830-080000-smart-note-smart-link-law",
       "event_id": "SE-20260830-080000-smart-note-smart-link-law",
       "representation": "MACHINE",
-      "summary": "Machine contract for Smart Note completeness, evidence, and proactive value capture.",
       "schema_role": "machine-operable intelligence contract",
       "required_representation_roles": ["shawn", "naya", "machine"],
       "single_canonical_event": true,
@@ -65,7 +64,8 @@
     "status": "VERIFIED",
     "evidence": ["Three representation artifacts were successfully created through the canonical GitHub repository Contents API.", "A successor handoff defining the exact runtime-proof target was successfully created.", "This canonical event is the authoritative Note Event; representation files are derived views and do not create competing memory authority."],
     "runtime_status": "NOT_RUNTIME_PROVEN",
-    "canonical_source": "SoulSchoolAcademy/NayaPOWER main"
+    "canonical_source": "SoulSchoolAcademy/NayaPOWER main",
+    "canonical_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/events/2026/08/30/08/SE-20260830-080000-smart-note-smart-link-law.json"
   },
   "receipt": {"receipt_id": "RCPT-20260830-SMART-LINK-LAW", "status": "REPOSITORY_WRITE_VERIFIED", "evidence": "GitHub returned successful commit SHAs for the three representation artifacts and the successor handoff."},
   "delivery": {
