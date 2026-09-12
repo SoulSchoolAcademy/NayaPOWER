@@ -3,6 +3,14 @@ name: Naya Power Runtime Tests
 on:
   push:
     branches: [main]
+    paths:
+      - 'SUPERBRAIN/runtime/**'
+      - '.naya/runtime/**'
+      - '.naya/tests/**'
+      - 'tests/**'
+      - '.github/workflows/naya-power-runtime-tests.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
 
 jobs:
