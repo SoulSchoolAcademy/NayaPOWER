@@ -14,7 +14,7 @@
   "lesson": "A useful project note is not equivalent to a completed Smart Note operation.",
   "representations": {
     "naya": {
-      "id": "SN-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-NAYA",
+      "id": "SN-20260831-000000-smart-note-protocol-receipts-naya",
       "canonical_event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
       "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
       "representation": "NAYA",
@@ -23,7 +23,7 @@
       "lessons": ["One intelligence event has three representations.", "Created, persisted, propagated, feed-updated, and successor-consumed are distinct evidence states.", "Receipts are part of the delivery contract."]
     },
     "shawn": {
-      "id": "SN-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-SHAWN",
+      "id": "SN-20260831-000000-smart-note-protocol-receipts-shawn",
       "canonical_event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
       "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
       "representation": "SHAWN",
@@ -43,7 +43,8 @@
     "status": "VERIFIED",
     "evidence": ["Canonical Smart Note delivery teaching artifact records the complete delivery contract and evidence boundary.", "Three representation roles are now explicitly represented in this canonical event."],
     "runtime_status": "NOT_RUNTIME_PROVEN_IN_THIS_EVENT",
-    "canonical_source": "SoulSchoolAcademy/NayaPOWER main"
+    "canonical_source": "SoulSchoolAcademy/NayaPOWER main",
+    "canonical_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/events/2026/08/31/SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json"
   },
   "receipt": {
     "receipt_id": "RCPT-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
