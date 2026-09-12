@@ -35,6 +35,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  index-sync:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with: {fetch-depth: 0}
+      - name: Rebuild canonical derived event index
+        run: python .naya/memory/smart_notes_v3.py index
+      - name: Persist derived index when canonical source changed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- .naya/memory/events/INDEX.json; then
+            echo 'Derived event index already matches canonical source.'
+            exit 0
+          fi
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add .naya/memory/events/INDEX.json
+          git diff --cached --check
+          git commit -m 'NayaPOWER: synchronize canonical derived event index'
+          git push
+
   brain-gate:
     permissions:
       contents: read
