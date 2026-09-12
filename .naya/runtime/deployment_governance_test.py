@@ -14,6 +14,7 @@ AUTHORIZED_WORKFLOW = WORKFLOWS / "authorized-vercel-release.yml"
 GOVERNANCE_WORKFLOW = WORKFLOWS / "deployment-governance.yml"
 MAXESS_BRIDGE_WORKFLOW = WORKFLOWS / "apply-maxess-result-bridge.yml"
 INTEGRATED_RESULTS_WORKFLOW = WORKFLOWS / "build-integrated-results.yml"
+AISCORE_BRIDGE_WORKFLOW = WORKFLOWS / "build-aiscore-app-bridge.yml"
 CANONICAL_PROJECT_ID = "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK"
 
 
@@ -64,12 +65,9 @@ def test_normal_commit_does_not_authorize_deployment():
 
 def test_wrong_commit_is_denied_even_when_other_fields_are_valid():
     auth = {
-        "status": "AUTHORIZED",
-        "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123",
-        "target_environment": "production",
-        "deployment_surface": "vercel",
-        "vercel_project_id": CANONICAL_PROJECT_ID,
+        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
+        "commit_sha": "abc123", "target_environment": "production",
+        "deployment_surface": "vercel", "vercel_project_id": CANONICAL_PROJECT_ID,
         "approval": "EXPLICIT_APPROVAL_GRANTED",
         "verification": {"status": "PASS", "evidence": ["tests passed"]},
     }
@@ -78,12 +76,9 @@ def test_wrong_commit_is_denied_even_when_other_fields_are_valid():
 
 def test_wrong_vercel_project_is_denied():
     auth = {
-        "status": "AUTHORIZED",
-        "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123",
-        "target_environment": "production",
-        "deployment_surface": "vercel",
-        "vercel_project_id": "wrong-project",
+        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
+        "commit_sha": "abc123", "target_environment": "production",
+        "deployment_surface": "vercel", "vercel_project_id": "wrong-project",
         "approval": "EXPLICIT_APPROVAL_GRANTED",
         "verification": {"status": "PASS", "evidence": ["tests passed"]},
     }
@@ -92,12 +87,9 @@ def test_wrong_vercel_project_is_denied():
 
 def test_authorized_release_is_permitted():
     auth = {
-        "status": "AUTHORIZED",
-        "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123",
-        "target_environment": "production",
-        "deployment_surface": "vercel",
-        "vercel_project_id": CANONICAL_PROJECT_ID,
+        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
+        "commit_sha": "abc123", "target_environment": "production",
+        "deployment_surface": "vercel", "vercel_project_id": CANONICAL_PROJECT_ID,
         "approval": "EXPLICIT_APPROVAL_GRANTED",
         "verification": {"status": "PASS", "evidence": ["tests passed"]},
     }
@@ -108,7 +100,6 @@ def test_only_the_canonical_release_workflow_may_contain_vercel_deploy_command()
     forbidden_markers = ("vercel deploy", "vercel@latest deploy", "deploy --prod")
     offenders = []
     for path in WORKFLOWS.glob("*.yml"):
-        # The governance workflow contains scanner literals but has no deployment capability.
         if path.resolve() in {AUTHORIZED_WORKFLOW.resolve(), GOVERNANCE_WORKFLOW.resolve()}:
             continue
         text = path.read_text(encoding="utf-8").lower()
@@ -119,16 +110,9 @@ def test_only_the_canonical_release_workflow_may_contain_vercel_deploy_command()
 
 def test_governance_workflow_does_not_execute_vercel():
     text = GOVERNANCE_WORKFLOW.read_text(encoding="utf-8").lower()
-    # It may contain literal scanner patterns, but must not contain an executable
-    # Vercel deployment invocation or a Vercel deployment action.
     executable_markers = (
-        "npx vercel deploy",
-        "npm exec vercel deploy",
-        "yarn vercel deploy",
-        "pnpm vercel deploy",
-        "vercel@latest deploy",
-        "amondnet/vercel-action",
-        "vercel/action",
+        "npx vercel deploy", "npm exec vercel deploy", "yarn vercel deploy",
+        "pnpm vercel deploy", "vercel@latest deploy", "amondnet/vercel-action", "vercel/action",
     )
     assert not any(marker in text for marker in executable_markers)
 
@@ -146,7 +130,7 @@ def test_canonical_release_workflow_contains_the_only_deployment_boundary():
 
 def test_mutating_repository_workflows_require_explicit_dispatch():
     """Repository-mutating bridge workflows must never react automatically to pushes/PRs."""
-    for path in (MAXESS_BRIDGE_WORKFLOW, INTEGRATED_RESULTS_WORKFLOW):
+    for path in (MAXESS_BRIDGE_WORKFLOW, INTEGRATED_RESULTS_WORKFLOW, AISCORE_BRIDGE_WORKFLOW):
         text = path.read_text(encoding="utf-8")
         normalized = text.lower()
         assert "workflow_dispatch:" in normalized, f"manual dispatch missing: {path}"
@@ -154,7 +138,6 @@ def test_mutating_repository_workflows_require_explicit_dispatch():
         assert "explicit_approval_granted" in normalized, f"approval gate missing: {path}"
         assert "if: inputs.approval == 'explicit_approval_granted'" in normalized, f"job gate missing: {path}"
         assert "git push" in normalized, f"mutation boundary unexpectedly absent: {path}"
-        # The YAML must not contain an automatic push or pull-request event trigger.
         lines = [line.strip().lower() for line in text.splitlines()]
         assert not any(line in {"push:", "pull_request:"} for line in lines), f"automatic trigger remains: {path}"
 
