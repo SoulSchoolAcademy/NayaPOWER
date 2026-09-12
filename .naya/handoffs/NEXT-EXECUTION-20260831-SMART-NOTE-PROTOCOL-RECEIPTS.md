@@ -12,13 +12,13 @@ The canonical Smart Note protocol correction is persisted as a continuity event.
 ## Protected Baseline
 The canonical Note Event remains the memory authority. Derived Shawn/Naya/Machine views do not create competing memory systems. PIS propagation and Running Feed updates remain distinct evidence boundaries.
 
-## Work Completed
+## Completed Work
 - Captured the Smart Note delivery correction.
 - Added explicit Naya and Shawn representations to the canonical event.
 - Defined the machine delivery contract.
 - Added verification, receipt, delivery, and continuity state.
 
-## Evidence
+## Verified Evidence
 The source teaching artifact `MASTER-NOTES/INTELLIGENCE-FEED/2026-08-30-SMART-NOTE-DELIVERY-TEACHING.md` defines the required delivery sequence and explicitly distinguishes note creation, PIS propagation, Running Feed update, and successor consumption.
 
 ## Decisions
