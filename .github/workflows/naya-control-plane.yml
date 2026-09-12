@@ -42,9 +42,11 @@ jobs:
       - name: Execution-boundary self-test
         run: python .naya/governance/test_naya_execution_boundaries.py
       - name: Python control-plane syntax check
-        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
+        run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/control-plane/test_p0_workflow_contract.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
         run: python .naya/control-plane/validate_control_plane.py --self-test
+      - name: P0 workflow contract
+        run: python .naya/control-plane/test_p0_workflow_contract.py
       - name: Cold Naya control-plane acceptance
         run: python .naya/runtime/cold_start_control_plane_acceptance.py
       - name: Cold Naya boot and no-orphan acceptance
