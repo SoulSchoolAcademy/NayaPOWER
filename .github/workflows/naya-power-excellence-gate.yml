@@ -3,6 +3,15 @@ name: Naya Power Excellence Gate
 on:
   push:
     branches: [main]
+    paths:
+      - '.naya/**'
+      - 'SUPERBRAIN/**'
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/naya-power-excellence-gate.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   pull_request:
     branches: [main]
   workflow_dispatch:
