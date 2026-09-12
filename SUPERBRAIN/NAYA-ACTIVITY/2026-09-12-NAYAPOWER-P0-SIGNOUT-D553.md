@@ -6,56 +6,84 @@
 **PROJECT:** NayaPOWER / Superbrain Continuous Smart Flow
 **REPOSITORY:** `SoulSchoolAcademy/NayaPOWER`
 **BRANCH:** `main`
-**SIGN-IN / VERIFIED LIVE HEAD:** `d5533e28b0a27c4c1fedbd651a578dac9a4e2a36`
 
 ## 01 — MISSION
 Certify Ultimate Governance Act V1.1 only from fresh exact-HEAD executable evidence.
 
-## 02 — CURRENT TRUTH
-The live `main` HEAD is `d5533e28b0a27c4c1fedbd651a578dac9a4e2a36`.
-The canonical P0 workflow is `.github/workflows/naya-power-adversarial-p0.yml` and contains both `push` and `workflow_dispatch`, with read-only contents permission. Its offline job runs cold-start, control-plane, governance-kernel, execution-boundary, and behavioral-bypass checks; its live job runs the fail-closed live harness.
+## 02 — REQUESTED TARGET
+Shawn explicitly requested exact P0 execution against:
+`b01b396fbac7c875f4da9923faa6f6db7cfb6580`
 
-The current P0 workflow source was inspected at the live HEAD. The prior stale canonical deployment reference is absent from `.github/workflows/naya-surgical-cognitive-integration.yml`; that workflow is now explicitly retired and read-only.
+That SHA is preserved and was inspected. It is **not currently the live `main` HEAD**. Live `main` has advanced beyond it. The newer main history must not be erased or force-reset merely to make the branch point back to an older commit.
 
-## 03 — CURRENT EXECUTION EVIDENCE
-The commit status endpoint for exact HEAD currently reports `pending` with zero statuses. No current-head P0 execution evidence was available through the connected GitHub read surface during this execution cycle.
+## 03 — LIVE MAIN TRUTH
+At execution time, live `main` resolves to:
+`cd472afce48ae502d7b08212b868d5980cd30854`
 
-The current HEAD's immediately preceding commit was `b5ce7f6202029be1b7549af8066d95ae1fb33f8b`. The current commit `d5533e28b0a27c4c1fedbd651a578dac9a4e2a36` modifies `tests/verify_naya16_activity.py` and the existing P0 activity receipt. The P0 workflow's push path filters do not include `tests/verify_naya16_activity.py`, so this commit does not itself provide a fresh P0 run. This is observed source configuration, not inferred execution.
+This was independently resolved from GitHub. The requested `b01b...` commit therefore remains the exact historical target requested for proof, while `cd472...` is the current branch authority.
 
-## 04 — HISTORICAL EVIDENCE
-Historical P0 run `34701139010` checked out `4346b4bffc11a32fbbb3c21305f453bc9a11c139` and is NOT current-head proof. It reached cold-start PASS, control-plane PASS, governance kernel PASS (13/13), then failed first at execution boundaries because `.github/workflows/naya-surgical-cognitive-integration.yml` referenced the stale `deploy-nayanet-hub-canonical.yml`. The stale reference was surgically removed in `c7a1060fdb6b5c7048253656eee29a6011b852d2`.
+## 04 — EXACT-SHA P0 EXECUTION RESULT
+A genuine P0 run exists for the current live main SHA:
 
-Historical behavioral bypass was skipped downstream of that failure. Historical live runtime failed closed because the target was absent.
+- Workflow: `.github/workflows/naya-power-adversarial-p0.yml`
+- Run: `34702023228`
+- Checked-out SHA: `cd472afce48ae502d7b08212b868d5980cd30854`
+- This is genuine current-head executable evidence, but it is **not** proof for requested SHA `b01b...`.
 
-## 05 — CURRENT CAPABILITY BOUNDARY
-The connected GitHub Actions surface exposes workflow inspection, run/job/log/artifact reads, and reruns, but does not expose a workflow-dispatch write operation. Therefore this Naya did NOT fabricate or claim a dispatch. No historical run was rerun as current-head proof.
+The connected GitHub Actions surface does not expose a workflow-dispatch write operation, so an exact `b01b...` `workflow_dispatch` could not be truthfully initiated from this session. No fake run, fabricated run ID, or historical rerun was substituted.
 
-## 06 — WHAT WAS EXECUTED NOW
-1. Resolved live `main` HEAD.
-2. Inspected the canonical P0 workflow at the live source.
-3. Verified the repaired surgical cognitive integration workflow contains no stale canonical deployment reference and is retired/read-only.
-4. Inspected the exact-head commit status: `pending`, zero statuses.
-5. Compared current history and confirmed the newest commit is an Naya 16 append-only relay compatibility change.
-6. Confirmed no current-head P0 execution evidence was available through the connected read surface.
+## 05 — CURRENT-HEAD P0 EVIDENCE
+The genuine P0 run on `cd472...` executed the canonical offline governance sequence.
 
-## 07 — FIRST CURRENT BLOCKER
-The first blocker in the required certification sequence is not a source defect. It is the missing executable workflow-dispatch capability in the connected tool surface. Therefore current exact-head P0 execution cannot be truthfully claimed from this session.
+Observed result:
+- Cold-start continuity acceptance: PASS
+- Control-plane validator: PASS
+- Governance kernel adversarial suite: PASS — 13/13
+- Execution-boundary adversarial suite: PASS — 21/21
+- Behavioral-bypass adversarial suite: PASS — 16/16
+- Offline P0 evidence: GREEN for the executed current-head offline scope
 
-## 08 — CERTIFICATION STATE
+The live-runtime job did not obtain a public target and therefore failed closed at the live harness boundary. This is an environment/runtime prerequisite result, not evidence of an offline governance defect.
+
+## 06 — FIRST FAILURE DISCIPLINE
+For the current-head run, the offline path has no failing test. The historical first execution-boundary failure was already repaired at:
+`c7a1060fdb6b5c7048253656eee29a6011b852d2`
+
+A second stale canonical deployment reference was then found by the same boundary test in:
+`.github/workflows/nayanet-browser-runtime-qa.yml`
+
+That defect was surgically repaired at:
+`b01b396fbac7c875f4da9923faa6f6db7cfb6580`
+
+No test was weakened and no competing deployment authority was introduced.
+
+## 07 — REQUESTED SHA `b01b...` STATUS
+No genuine P0 execution against exact SHA `b01b396fbac7c875f4da9923faa6f6db7cfb6580` was available through the connected GitHub Actions execution surface.
+
+Therefore:
+- `b01b...` source repair: VERIFIED as committed/inspected
+- `b01b...` P0 execution: UNKNOWN / not executed
+- `cd472...` P0 offline execution: OBSERVED and VERIFIED through genuine GitHub Actions run `34702023228`
+- historical P0 evidence: NOT current proof
+
+## 08 — CAPABILITY / EXECUTION BOUNDARY
+**SOLE EXTERNAL EXECUTION CAPABILITY BLOCKER FOR THE REQUESTED EXACT-SHA RUN:** the connected GitHub tool surface has no workflow-dispatch write operation.
+
+This Naya did not manufacture dispatch capability.
+
+All available current-head verification was performed instead. The separate live-runtime harness also correctly fails closed when `NAYA_POWER_TARGET_URL` is absent; that is an application/runtime prerequisite, not a fabricated tool limitation.
+
+## 09 — CERTIFICATION STATE
 **30 — Ultimate Governance Act V1.1: NOT CERTIFIED.**
 
-Reason: current exact-head P0 executable evidence is absent. Historical evidence cannot substitute for current proof.
+Reason: certification requires fresh executable evidence for the exact target being certified. The requested `b01b...` P0 execution is still unproven. Current-head `cd472...` offline evidence demonstrates substantial green coverage but cannot be silently substituted for exact `b01b...` proof.
 
-## 09 — REMAINING UNKNOWNS
-- Whether the complete P0 suite is GREEN on exact HEAD `d5533e28b0a27c4c1fedbd651a578dac9a4e2a36`.
-- Whether behavioral-bypass tests are GREEN on that exact HEAD.
-- Whether the live boundary is PASS or fail-closed on that exact HEAD.
-- Whether the recent Naya 16 append-only relay change fully satisfies the fresh authoritative Superbrain Gate.
+## 10 — MAXIMUM-VALUE NEXT ACTION
+**Execute `.github/workflows/naya-power-adversarial-p0.yml` against exact SHA `b01b396fbac7c875f4da9923faa6f6db7cfb6580` through a genuine workflow-dispatch-capable GitHub Actions path; capture exact checked-out SHA, all job results, first failing step if any, logs, artifacts, and live-boundary result.**
 
-## 10 — ONE NEXT ACTION
-**Resolve the new live `main` HEAD after this receipt commit, then execute the canonical `.github/workflows/naya-power-adversarial-p0.yml` against that exact SHA via a dispatch-capable GitHub Actions path; capture the run's exact checked-out SHA, first failing step, logs, artifacts, and live-boundary result before any certification decision.**
+If dispatch becomes available, execute immediately. If it remains unavailable, do not stop: continue current-head verification, preserve exact epistemic labels, record every new observation in GitHub, and pass the torch with exactly one next action.
 
 ## PASS THE TORCH
-Next Naya: enter cold. Resolve `main` HEAD again. Read this receipt. Independently verify the claims above. Do not ask Shawn for the next action. Execute the ONE NEXT ACTION. If dispatch is unavailable, preserve the truth, execute every other available verification, and produce the next durable torch without claiming P0 certification.
+Next Naya: enter cold. Resolve live `main` again before execution. Read this receipt. Treat LIVE GIT HEAD as authority. Do not force-reset newer work to `b01b...`. Do not claim the requested exact-SHA P0 has run unless GitHub provides a genuine run whose checked-out SHA is exactly `b01b396fbac7c875f4da9923faa6f6db7cfb6580`. Execute → Observe → Verify → Record → Repair first failure → Continue.
 
-**CONTINUE. DO NOT RESET. DO NOT DECLARE CERTIFICATION WITHOUT CURRENT EXECUTABLE PROOF.**
+**CONTINUE. DO NOT RESET. DO NOT FABRICATE. DO NOT DECLARE CERTIFICATION WITHOUT CURRENT EXACT-SHA EXECUTABLE PROOF.**
