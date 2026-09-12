@@ -10,7 +10,7 @@ Build and verify NayaPOWER as the model-agnostic constitutional governance layer
 
 Source of truth: GitHub `SoulSchoolAcademy/NayaPOWER` `main`
 
-Current audited HEAD: `eb5aa407abe9ea730bd02383d6961da7103ad248`
+Current audited HEAD: `6e68c7f16685e9f8493427a07f913c59b9be7807`
 
 Runtime execution status: VERIFIED for the current exact-head runtime conformance suite
 
@@ -56,7 +56,7 @@ The current deterministic comma/semicolon token scope model remains unchanged. N
 
 `.github/workflows/authorized-vercel-release.yml` remains the canonical explicit human-authorized publication control plane with exact commit binding, verification, project binding, approval, and default-deny release authorization.
 
-`vercel.json` now explicitly sets `git.deploymentEnabled` to `false`, matching the deployment-governance contract and preventing automatic Vercel Git deployments. Vercel's current documentation/support guidance confirms this setting disables automatic Git deployments. citeturn2search0turn2search3
+`vercel.json` now explicitly sets `git.deploymentEnabled` to `false`, matching the deployment-governance contract and preventing automatic Vercel Git deployments. Vercel guidance confirms this setting disables automatic Git deployments. citeturn2search0turn2search3
 
 **Classification:** Deliberate human-authorized control plane.
 
@@ -110,8 +110,6 @@ Two additional consequential deployment workflows were discovered during the dir
 
 Both previously reacted to repository pushes and executed Vercel deployment commands without an explicit human authorization gate.
 
-These were concrete deployment-governance bypasses because the constitutional deployment boundary is human authority -> appropriate deployment control plane -> authorized deployment -> verification.
-
 Both were surgically retired and now contain only `workflow_dispatch`, `contents: read`, and an explicit retirement notice pointing to the canonical human-authorized release boundary.
 
 The deployment-governance regression suite subsequently passed at the exact resulting HEAD.
@@ -123,7 +121,7 @@ The first exact-head Torch-Pass failure was observed at commit `56c35fd306b062f9
 The Torch-Pass behavioral tests passed, but the canonical continuity validator failed on six real contract errors:
 
 - three canonical historical event IDs lacking the timestamp component expected by the validator
-- three successor-contract errors, including missing `completed_work` and `verified_evidence` in the canonical Smart Note successor
+- successor-contract errors including missing `completed_work` and `verified_evidence` in the canonical Smart Note successor
 
 The historical event identities were preserved exactly. They were not rewritten or lowercased. The validator was surgically made compatible with the canonical historical date-only identity form, while retaining the timestamped form for new producers.
 
@@ -145,7 +143,7 @@ This was repaired by explicitly adding:
 
 The next exact-head deployment-governance execution then exposed two real automatic Vercel deployment workflows, which were subsequently retired as described above.
 
-A later run exposed only a false-positive marker in the retired canonical-Hub workflow name/echo text; that marker was surgically renamed without weakening the deployment test.
+A later run exposed only a false-positive marker in the retired canonical-Hub workflow text; that marker was surgically renamed without weakening the deployment test.
 
 The resulting exact-head deployment-governance gate is GREEN.
 
@@ -180,30 +178,30 @@ The resulting exact-head deployment-governance gate is GREEN.
 
 ## Exact-head verification evidence
 
-Current exact HEAD: `eb5aa407abe9ea730bd02383d6961da7103ad248`.
+Current audited HEAD: `6e68c7f16685e9f8493427a07f913c59b9be7807`.
 
-Exact-head runtime conformance suite:
+Exact-head runtime conformance suite observed at the immediately preceding exact HEAD:
 
 - check: `runtime-tests`
 - conclusion: `success`
-- run: `34672011454`
-- job: `103495009728`
+- run: `34672049503`
+- job: `103495115775`
 
-Exact-head Torch-Pass:
+Exact-head Torch-Pass observed at the immediately preceding exact HEAD:
 
 - check: `torch-pass-enforcement`
 - conclusion: `success`
-- run: `34672011444`
-- job: `103495009994`
+- run: `34672049483`
+- job: `103495115871`
 
-Exact-head deployment governance:
+Exact-head deployment governance observed at the immediately preceding exact HEAD:
 
 - check: `deployment-governance`
 - conclusion: `success`
-- run: `34672011445`
-- job: `103495009762`
+- run: `34672049506`
+- job: `103495115683`
 
-Combined legacy commit status at this exact HEAD is `pending` with zero legacy status entries. The authoritative evidence for the governed gates is the exact-head check-run evidence above.
+The audit itself is documentation-only after these verified gates. The new audit commit triggers another normal verification cycle; it must not be treated as already verified merely from the preceding SHA.
 
 ## Remaining verification boundary
 
@@ -213,7 +211,6 @@ Still UNKNOWN:
 - live NayaNET runtime parity
 - Foundation GREEN
 - exhaustive repository-wide runtime constructor/call-site coverage
-- production behavior outside the exact-head CI contracts
 
 The available GitHub connector still does not expose a workflow-dispatch operation. No artificial trigger was created.
 
@@ -227,11 +224,13 @@ The available GitHub connector still does not expose a workflow-dispatch operati
 
 **DEPLOYMENT CONTROL PLANE: HUMAN AUTHORIZATION / DEFAULT DENY**
 
-**EXACT-HEAD RUNTIME CONFORMANCE: GREEN**
+**LAST VERIFIED EXACT-HEAD RUNTIME CONFORMANCE: GREEN**
 
-**EXACT-HEAD TORCH-PASS: GREEN**
+**LAST VERIFIED EXACT-HEAD TORCH-PASS: GREEN**
 
-**EXACT-HEAD DEPLOYMENT GOVERNANCE: GREEN**
+**LAST VERIFIED EXACT-HEAD DEPLOYMENT GOVERNANCE: GREEN**
+
+**CURRENT FINAL AUDIT-COMMIT VERIFICATION: IN PROGRESS**
 
 **PRODUCTION / FOUNDATION: UNVERIFIED**
 
