@@ -15,14 +15,6 @@ BOARD = ROOT / "00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md"
 
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
 TIMESTAMP_RE = re.compile(r"^## (\d{4}-\d{2}-\d{2}T[^ ]+) — NAYA — (.+)$", re.MULTILINE)
-REQUIRED_TERMS = [
-    "WHAT I OBSERVED",
-    "WHY I DID IT",
-    "EVIDENCE",
-    "WHY THIS IS NOT A 10",
-    "NEXT BEST ACTION",
-    "TAG → YOU'RE IT",
-]
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -34,35 +26,56 @@ def validate_day(path: Path, errors: list[str]) -> None:
     if not text.startswith("# NayaPOWER — Naya-to-Naya Activity Feed"):
         fail(errors, f"{path}: missing canonical feed title")
 
-    headings = TIMESTAMP_RE.findall(text)
-    if not headings:
+    matches = list(TIMESTAMP_RE.finditer(text))
+    if not matches:
         fail(errors, f"{path}: no timestamped Naya events found")
         return
 
     timestamps: list[datetime] = []
-    for raw, event in headings:
+    for match in matches:
+        raw = match.group(1)
         try:
-            timestamps.append(datetime.fromisoformat(raw))
+            parsed = datetime.fromisoformat(raw)
+            if parsed.tzinfo is None:
+                fail(errors, f"{path}: timestamp is missing timezone: {raw}")
+            timestamps.append(parsed)
         except ValueError:
-            fail(errors, f"{path}: invalid timezone-aware timestamp: {raw}")
-        if event.strip() in {"ACTION COMPLETE / DAILY STREAM INITIALIZED", "AAA RELAY CONTRACT"}:
-            pass
+            fail(errors, f"{path}: invalid timestamp: {raw}")
 
-    if timestamps != sorted(timestamps):
+    if len(timestamps) == len(matches) and timestamps != sorted(timestamps):
         fail(errors, f"{path}: event timestamps are not chronological")
 
-    # Every completed-action or handoff block must carry the operational fields.
-    starts = [m.start() for m in TIMESTAMP_RE.finditer(text)]
-    for index, start in enumerate(starts):
-        end = starts[index + 1] if index + 1 < len(starts) else len(text)
-        block = text[start:end]
-        title = TIMESTAMP_RE.search(block).group(2)
-        if "ACTION COMPLETE" in title or "HANDOFF" in title:
-            for term in REQUIRED_TERMS:
-                if term not in block:
-                    fail(errors, f"{path}: {title}: missing required field/marker: {term}")
+    # Validate the fields required for substantive completed work and handoffs.
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        block = text[match.start():end]
+        title = match.group(2)
 
-    # Evidence SHA claims must look like SHAs; do not require every entry to have one.
+        if "ACTION COMPLETE" in title:
+            required = [
+                "What I did",
+                "Why",
+                "Current state",
+                "Verification status",
+                "WHY THIS IS NOT A 10",
+                "TAG → YOU'RE IT",
+            ]
+            for term in required:
+                if term not in block:
+                    fail(errors, f"{path}: {title}: missing required field: {term}")
+
+        if "HANDOFF" in title:
+            required = [
+                "Next best action",
+                "Protected boundaries",
+                "WHY THIS IS NOT A 10",
+                "TAG → YOU'RE IT",
+                "NEXT NAYA TORCH",
+            ]
+            for term in required:
+                if term not in block:
+                    fail(errors, f"{path}: {title}: missing required field: {term}")
+
     for sha in SHA_RE.findall(text):
         if sha == "0" * 40:
             fail(errors, f"{path}: zero SHA is not valid evidence")
@@ -89,7 +102,6 @@ def main() -> int:
                 fail(errors, f"invalid daily feed filename: {day.name}")
             validate_day(day, errors)
 
-    # The current board must point to the daily relay, not only describe a board.
     if BOARD.exists():
         board = BOARD.read_text(encoding="utf-8")
         for marker in ["FIRST-CLASS ACTIVITY FEED", "DAILY/", "TAG → YOU'RE IT"]:
@@ -105,7 +117,7 @@ def main() -> int:
     print("ACTIVITY_FEED=GREEN")
     print("Daily feeds: valid")
     print("Chronology: valid")
-    print("Required handoff fields: present")
+    print("Required action/handoff fields: present")
     print("Current board relay pointers: present")
     print("Baton marker: present")
     return 0
