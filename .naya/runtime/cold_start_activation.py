@@ -9,7 +9,7 @@ P={k:ROOT/v for k,v in {
 EXPECTED_POLICY='.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md'
 VALUE_LOOP='ZOOM OUT → ZOOM IN → CONNECT → PRIORITIZE → OPTIMIZE → EXECUTE → VERIFY → LEARN → COMPOUND'
 BLOCK_CYCLE='EXECUTE → VERIFY → OSCAR → SCORE → INTEGRATE → CAPTURE → CHECK NETWORK → IDENTIFY NEXT BLOCK'
-ACTION_FLOW='READ / REMEMBER → UNDERSTAND → IDENTIFY THE ONE HIGHEST-VALUE EXECUTABLE NEXT ACTION → BIND THE RESTORED CONTEXT TO THAT ACTION → ACT — if authorized and technically possible → VERIFY → RECORD THE NEW STATE → PASS THE NEXT EXECUTABLE ACTION'
+ACTION_FLOW_SEGMENTS=['READ / REMEMBER','UNDERSTAND','IDENTIFY THE ONE HIGHEST-VALUE EXECUTABLE NEXT ACTION','BIND THE RESTORED CONTEXT TO THAT ACTION','ACT — if authorized and technically possible','VERIFY','RECORD THE NEW STATE','PASS THE NEXT EXECUTABLE ACTION']
 def fail(m): raise AssertionError(m)
 def text(p):
     if not p.is_file(): fail(f'missing canonical artifact: {p.relative_to(ROOT)}')
@@ -21,6 +21,14 @@ def req(t,n,l):
     normalized_text=re.sub(r'\s+',' ',t).strip()
     normalized_need=re.sub(r'\s+',' ',n).strip()
     if normalized_need not in normalized_text:fail(f'{l} missing required contract: {n}')
+def req_sequence(t,segments,l):
+    normalized_text=re.sub(r'\s+',' ',t).strip()
+    pos=-1
+    for segment in segments:
+        normalized_segment=re.sub(r'\s+',' ',segment).strip()
+        next_pos=normalized_text.find(normalized_segment,pos+1)
+        if next_pos<0: fail(f'{l} missing required sequence segment: {segment}')
+        pos=next_pos
 def main():
     m=js(P['manifest']); cm=js(P['clusters']); mp=js(P['map']); st=js(P['state']); bl=js(P['blocks']); pf=js(P['proof']); lg=js(P['legacy'])
     boot=text(P['boot']); start=text(P['start']); protocol=text(P['protocol']); policy=text(P['policy']); constitution=text(P['constitution']); honor=text(P['honor']); directive=text(P['directive']); torch=text(P['torch']); no=text(P['no_orphan']); action_delivery=text(P['action_delivery']); smart=text(P['smart_flow']); board=text(P['activity_board'])
@@ -45,7 +53,7 @@ def main():
     if '## ONE BEST NEXT ACTION' not in board and '## 🎯 ONE BEST NEXT ACTION' not in board: fail('current activity next action missing required contract: ONE BEST NEXT ACTION')
     if 'NEXT NAYA — READY TO RUN' not in board: fail('current activity successor continuation missing required contract: NEXT NAYA — READY TO RUN')
     req(boot,EXPECTED_POLICY,'context boot'); req(start,EXPECTED_POLICY,'START HERE'); req(start,'ready_to_run_execution','START HERE structured continuation'); req(start,'One-Network law','START HERE One-Network law'); req(start,BLOCK_CYCLE,'START HERE block cycle')
-    req(action_delivery,'## ACTION-FIRST RESTORE GATE — READ MUST BECOME DO','Action-First Restore Gate'); req(action_delivery,ACTION_FLOW,'Action-First execution flow'); req(action_delivery,'If YES, **perform it now**','Action-First perform-now rule'); req(action_delivery,'RESTORE-INCOMPLETE / ACTION-UNFULFILLED','Action-First failure state'); req(action_delivery,'DOING THE GOVERNED BEHAVIOR OUTRANKS DESCRIBING THE GOVERNED BEHAVIOR.','Action-First behavior-over-description rule'); req(action_delivery,'RESTORED NEXT ACTION → ACTION DECISION → EXECUTION → VERIFICATION','Action-binding rule')
+    req(action_delivery,'## ACTION-FIRST RESTORE GATE — READ MUST BECOME DO','Action-First Restore Gate'); req_sequence(action_delivery,ACTION_FLOW_SEGMENTS,'Action-First execution flow'); req(action_delivery,'If YES, **perform it now**','Action-First perform-now rule'); req(action_delivery,'RESTORE-INCOMPLETE / ACTION-UNFULFILLED','Action-First failure state'); req(action_delivery,'DOING THE GOVERNED BEHAVIOR OUTRANKS DESCRIBING THE GOVERNED BEHAVIOR.','Action-First behavior-over-description rule'); req(action_delivery,'RESTORED NEXT ACTION → ACTION DECISION → EXECUTION → VERIFICATION','Action-binding rule')
     req(smart,'PRIORITY ZERO','Continuous Smart Flow'); req(smart,'LIVE GIT HEAD > CANONICAL CONTROL-PLANE STATE > DERIVED/LEGACY PROJECTIONS','state authority'); req(smart,'NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE','cold-start flow'); req(smart,'STATE → BLOCK → RECEIPT/EVIDENCE → FEED/HANDOFF → NEXT ACTION','state transaction law')
     req(no,'# NEXT NAYA EXECUTION PROMPT','No-Orphan law'); req(no,'ready_to_run_execution','No-Orphan structured field'); req(no,'NO META-HANDOFFS','No-Orphan anti-orphan rule'); req(no,'A blocker does not remove the continuation obligation','No-Orphan blocker continuation')
     req(protocol,'NAYA POWER ON','activation protocol'); req(protocol,'ACTIVATION INTENT','activation-intent contract'); req(protocol,'RESTORE CONTEXT','restore-context activation'); req(protocol,'One activation, one contract','single-contract rule'); req(protocol,'THE HUMAN SHOULD SPEAK NATURALLY','natural-language principle')
