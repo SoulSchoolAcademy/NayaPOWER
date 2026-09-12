@@ -1,6 +1,8 @@
 {
   "event_id": "SE-20260831-NAYANET-INTELLIGENT-HUB-FREEZE",
   "timestamp": "2026-08-31T12:17:00-07:00",
+  "created_at": "2026-08-31T12:17:00-07:00",
+  "effective_at": "2026-08-31T12:17:00-07:00",
   "type": "architecture_freeze",
   "project": "NayaNET",
   "status": "DESIGN_FROZEN_BUILD_NEXT",
