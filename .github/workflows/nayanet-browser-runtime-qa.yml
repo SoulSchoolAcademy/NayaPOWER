@@ -14,5 +14,5 @@ jobs:
         run: |
           echo 'LEGACY_E02_BROWSER_QA=RETIRED'
           echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
-          echo 'CURRENT_RUNTIME_QA=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_RUNTIME_QA=GOVERNED_CANONICAL_RUNTIME'
           echo 'RULE=ONE_CURRENT_NAYANET_BROWSER_QA_AUTHORITY'
