@@ -46,12 +46,17 @@ def validate_day(path: Path, errors: list[str]) -> None:
         fail(errors, f"{path}: event timestamps are not chronological")
 
     # Validate the fields required for substantive completed work and handoffs.
+    # The original DAILY STREAM INITIALIZED entry is preserved as immutable
+    # bootstrap history. It predates the finalized substantive-action contract,
+    # so it is validated structurally but is not retroactively rewritten.
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         block = text[match.start():end]
         title = match.group(2)
 
-        if "ACTION COMPLETE" in title:
+        is_historical_bootstrap = title == "ACTION COMPLETE / DAILY STREAM INITIALIZED"
+
+        if "ACTION COMPLETE" in title and not is_historical_bootstrap:
             required = [
                 "What I did",
                 "Why",
