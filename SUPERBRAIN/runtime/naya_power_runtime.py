@@ -73,6 +73,7 @@ class ActionCandidate:
     verification_required: bool = True
     stopping_condition_satisfied: bool = True
     responsible_value_eligible: bool = True
+    decision_state: str = "EXECUTE"
     reason: str = ""
 
     def governance_decision(self, registry: AuthorityRegistry | None = None):
@@ -93,6 +94,7 @@ class ActionCandidate:
                 stopping_condition_satisfied=self.stopping_condition_satisfied,
                 responsible_value_eligible=self.responsible_value_eligible,
                 requires_human_decision=self.requires_human_decision,
+                decision_state=self.decision_state,
             ),
             registry,
         )
@@ -173,9 +175,7 @@ class MissionState:
             errors.append("ACTIVE mission requires exactly one next_action")
         if self.block_status == BlockStatus.VERIFIED and not self.verified:
             errors.append("VERIFIED block requires verified state evidence")
-        if self.block_status == BlockStatus.VERIFIED and not any(
-            e.can_support_verified() for e in self.evidence
-        ):
+        if self.block_status == BlockStatus.VERIFIED and not any(e.can_support_verified() for e in self.evidence):
             errors.append("VERIFIED block requires verification evidence")
         if self.next_action and self.next_action_reason is None:
             errors.append("next_action requires a reason")
@@ -189,26 +189,12 @@ class MissionState:
     def to_dict(self) -> dict[str, Any]:
         payload = asdict(self)
         payload["block_status"] = self.block_status.value
-        payload["evidence"] = [
-            {**asdict(item), "state": item.state.value} for item in self.evidence
-        ]
+        payload["evidence"] = [{**asdict(item), "state": item.state.value} for item in self.evidence]
         return payload
 
     @classmethod
     def from_mapping(cls, data: Mapping[str, Any]) -> "MissionState":
-        evidence = [
-            Evidence(
-                evidence_id=item["evidence_id"],
-                claim=item["claim"],
-                state=EvidenceState(item["state"]),
-                observation=item["observation"],
-                source=item["source"],
-                timestamp=item.get("timestamp", utc_now()),
-                commit=item.get("commit"),
-                deployment=item.get("deployment"),
-            )
-            for item in data.get("evidence", [])
-        ]
+        evidence = [Evidence(evidence_id=item["evidence_id"], claim=item["claim"], state=EvidenceState(item["state"]), observation=item["observation"], source=item["source"], timestamp=item.get("timestamp", utc_now()), commit=item.get("commit"), deployment=item.get("deployment")) for item in data.get("evidence", [])]
         payload = dict(data)
         payload["block_status"] = BlockStatus(payload.get("block_status", "ACTIVE"))
         payload["evidence"] = evidence
@@ -242,88 +228,32 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def rank_candidates(
-    candidates: Iterable[ActionCandidate],
-    registry: AuthorityRegistry | None = None,
-) -> list[ActionCandidate]:
+def rank_candidates(candidates: Iterable[ActionCandidate], registry: AuthorityRegistry | None = None) -> list[ActionCandidate]:
     """Rank only candidates that pass the canonical governance contract."""
     eligible = [candidate for candidate in candidates if candidate.eligible(registry)]
-    return sorted(
-        eligible,
-        key=lambda c: (
-            c.value,
-            c.evidence_ready,
-            c.reversible,
-            c.protected_scope_preserved,
-        ),
-        reverse=True,
-    )
+    return sorted(eligible, key=lambda c: (c.value, c.evidence_ready, c.reversible, c.protected_scope_preserved), reverse=True)
 
 
-def choose_next_action(
-    state: MissionState,
-    candidates: Sequence[ActionCandidate],
-    registry: AuthorityRegistry | None = None,
-) -> ActionPlan:
+def choose_next_action(state: MissionState, candidates: Sequence[ActionCandidate], registry: AuthorityRegistry | None = None) -> ActionPlan:
     """Select one highest-value executable action for the current verified state."""
     state.assert_valid()
     ranked = rank_candidates(candidates, registry)
     if not ranked:
-        raise RuntimeError(
-            "No eligible next action. Mission requires new evidence, authority, dependency resolution, or human decision."
-        )
-
+        raise RuntimeError("No eligible next action. Mission requires new evidence, authority, dependency resolution, or human decision.")
     winner = ranked[0]
-    return ActionPlan(
-        action=winner,
-        expected_result=winner.description,
-        verification_method=(
-            "Refetch/observe the affected state, compare against the target, "
-            "and record exact evidence before promoting status."
-        ),
-    )
+    return ActionPlan(action=winner, expected_result=winner.description, verification_method=("Refetch/observe the affected state, compare against the target, " "and record exact evidence before promoting status."))
 
 
-def record_result(
-    state: MissionState,
-    plan: ActionPlan,
-    receipt: ExecutionReceipt,
-) -> MissionState:
+def record_result(state: MissionState, plan: ActionPlan, receipt: ExecutionReceipt) -> MissionState:
     """Persist the observed result and derive the next state without false completion."""
     if receipt.action_id != plan.action.action_id:
         raise ValueError("Receipt action_id does not match planned action")
-
     state.current_action = plan.action.action_id
-    state.activity.append(
-        {
-            "timestamp": receipt.timestamp,
-            "action_id": receipt.action_id,
-            "result": receipt.result,
-            "evidence_state": receipt.evidence_state.value,
-            "observed": receipt.observed,
-            "evidence_source": receipt.evidence_source,
-            "verified": receipt.verified,
-        }
-    )
+    state.activity.append({"timestamp": receipt.timestamp, "action_id": receipt.action_id, "result": receipt.result, "evidence_state": receipt.evidence_state.value, "observed": receipt.observed, "evidence_source": receipt.evidence_source, "verified": receipt.verified})
     state.observed.append(receipt.observed)
-    state.evidence.append(
-        Evidence(
-            evidence_id=f"receipt:{receipt.action_id}:{receipt.timestamp}",
-            claim=receipt.result,
-            state=receipt.evidence_state,
-            observation=receipt.observed,
-            source=receipt.evidence_source,
-            timestamp=receipt.timestamp,
-            commit=receipt.commit,
-            deployment=receipt.deployment,
-        )
-    )
-
+    state.evidence.append(Evidence(evidence_id=f"receipt:{receipt.action_id}:{receipt.timestamp}", claim=receipt.result, state=receipt.evidence_state, observation=receipt.observed, source=receipt.evidence_source, timestamp=receipt.timestamp, commit=receipt.commit, deployment=receipt.deployment))
     if receipt.verified:
-        if receipt.evidence_state not in {
-            EvidenceState.VERIFIED,
-            EvidenceState.LIVE_VERIFIED,
-        }:
+        if receipt.evidence_state not in {EvidenceState.VERIFIED, EvidenceState.LIVE_VERIFIED}:
             raise ValueError("verified=True requires VERIFIED or LIVE_VERIFIED evidence state")
         state.verified.append(receipt.result)
         state.last_verified_state = receipt.observed
@@ -334,13 +264,8 @@ def record_result(
         state.block_status = BlockStatus.BLOCKED
     else:
         state.block_status = BlockStatus.ACTIVE
-
     state.next_action = receipt.next_action
-    state.next_action_reason = (
-        "Derived from the verified/observed result and remaining mission gap."
-        if receipt.next_action
-        else None
-    )
+    state.next_action_reason = "Derived from the verified/observed result and remaining mission gap." if receipt.next_action else None
     state.updated_at = receipt.timestamp
     return state
 
@@ -348,39 +273,10 @@ def record_result(
 def cold_start(mission: MissionState) -> dict[str, Any]:
     """Produce the minimum operational restoration surface for a fresh Naya."""
     mission.assert_valid()
-    return {
-        "protocol": RUNTIME_PROTOCOL,
-        "project": mission.project,
-        "mission": mission.mission,
-        "desired_outcome": mission.desired_outcome,
-        "current_state": mission.last_verified_state or "NO VERIFIED STATE RECORDED",
-        "protected_scope": list(mission.protected_scope),
-        "rejected_scope": list(mission.rejected_scope),
-        "known": list(mission.known),
-        "unknowns": list(mission.unknowns),
-        "blockers": list(mission.blockers),
-        "risks": list(mission.risks),
-        "current_action": mission.current_action,
-        "next_action": mission.next_action,
-        "next_action_reason": mission.next_action_reason,
-        "authority": "HUMAN > CONSTITUTION > SOURCE_OF_TRUTH > PROJECT > MODE > EXECUTION > OUTPUT",
-    }
+    return {"protocol": RUNTIME_PROTOCOL, "project": mission.project, "mission": mission.mission, "desired_outcome": mission.desired_outcome, "current_state": mission.last_verified_state or "NO VERIFIED STATE RECORDED", "protected_scope": list(mission.protected_scope), "rejected_scope": list(mission.rejected_scope), "known": list(mission.known), "unknowns": list(mission.unknowns), "blockers": list(mission.blockers), "risks": list(mission.risks), "current_action": mission.current_action, "next_action": mission.next_action, "next_action_reason": mission.next_action_reason, "authority": "HUMAN > CONSTITUTION > SOURCE_OF_TRUTH > PROJECT > MODE > EXECUTION > OUTPUT"}
 
 
 def activation_status(mission: MissionState) -> dict[str, Any]:
     """Evaluate whether the runtime can honestly call itself activated."""
-    checks = {
-        "knowledge_state_present": bool(mission.project and mission.mission),
-        "mission_understood": bool(mission.desired_outcome),
-        "current_state_restored": bool(mission.last_verified_state or mission.known),
-        "next_action_determined": bool(mission.next_action),
-        "protected_scope_present": bool(mission.protected_scope),
-        "unknowns_explicit": mission.unknowns is not None,
-        "validation_passes": not mission.validate(),
-    }
-    return {
-        "protocol": RUNTIME_PROTOCOL,
-        "active": all(checks.values()),
-        "checks": checks,
-        "principle": "KNOWLEDGE + ACTIVATION + EXECUTION = ACTIVE SUPERBRAIN",
-    }
+    checks = {"knowledge_state_present": bool(mission.project and mission.mission), "mission_understood": bool(mission.desired_outcome), "current_state_restored": bool(mission.last_verified_state or mission.known), "next_action_determined": bool(mission.next_action), "protected_scope_present": bool(mission.protected_scope), "unknowns_explicit": mission.unknowns is not None, "validation_passes": not mission.validate()}
+    return {"protocol": RUNTIME_PROTOCOL, "active": all(checks.values()), "checks": checks, "principle": "KNOWLEDGE + ACTIVATION + EXECUTION = ACTIVE SUPERBRAIN"}
