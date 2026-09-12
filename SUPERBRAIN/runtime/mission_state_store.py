@@ -3,8 +3,8 @@
 Keeps persistence and orchestration separate from the constitutional decision kernel.
 The host supplies candidate actions and performs the selected action through its
 existing authorized tools; this layer records the observed result and continues.
-The optional Authority Registry is consumed as governance metadata, never as a
-replacement authority hierarchy.
+The Authority Registry is required for governed action selection and is consumed
+as the canonical authority source, never as a replacement authority hierarchy.
 """
 
 from __future__ import annotations
