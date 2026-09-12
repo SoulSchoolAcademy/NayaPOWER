@@ -4,6 +4,17 @@ on:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
+    paths:
+      - '.naya/runtime/**'
+      - '.naya/evidence/**'
+      - '.naya/governance/**'
+      - 'SUPERBRAIN/**'
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/naya-claim-evidence-enforcement.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
 permissions:
   contents: read
 jobs:
