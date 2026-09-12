@@ -10,6 +10,26 @@
   "aliases": ["Superbrain Connection Contract", "Wisdom Contribution Protocol", "Collective Intelligence Event", "Intelligence Feed"],
   "naya": {"understanding": "The Intelligent Hub must be designed around stable contracts before UI construction. A connected Superbrain remains sovereign/private. GitHub forking is optional for obtaining a Superbrain, not the synchronization mechanism. GitHub-backed Superbrains should connect through a least-privilege GitHub App. Collective synchronization occurs through derived intelligence events created by an explicit Wisdom Contribution Protocol.", "lesson": "Repository synchronization is the wrong abstraction for collective intelligence. Synchronize validated intelligence events while preserving source sovereignty and human agency.", "implications": ["Naya Power Player, MAXIS, future Superbrains, and the Collective can share stable interfaces.", "Privacy can be enforced structurally by separating private connection records from collective intelligence objects.", "The Hub can become the orchestration layer without becoming the owner of a person's Superbrain."], "next_action": "Implement the Intelligent Hub against the three canonical contracts before building the Hub UI."},
   "human_shawn": {"meaning": "Shawn wants the Intelligent Hub connection architecture to be a first-class NayaPOWER design before the Hub UI is built. The experience should let people connect their own Superbrain, choose to contribute wisdom, remain private, and benefit from collective knowledge. He wants the running system update stream called the Intelligence Feed and wants this architecture preserved in the official Naya Power Masterplan Notes.", "decision": "Make the Superbrain Connection Contract, Wisdom Contribution Protocol, and Collective Intelligence Event schema stable first-class interfaces. Treat collective participation as voluntary wisdom sharing, not GitHub/repository synchronization.", "values": ["privacy", "human agency", "collective wisdom", "interoperability", "simplicity", "beautiful UX", "compounding intelligence"]},
+  "representations": {
+    "naya": {
+      "id": "SN-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE-NAYA",
+      "canonical_event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
+      "event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
+      "representation": "NAYA",
+      "summary": "The Intelligent Hub is built on stable Superbrain connection, wisdom contribution, and collective intelligence contracts while preserving sovereignty and human agency.",
+      "content": "The Intelligent Hub must use stable contracts before UI construction. Superbrains remain sovereign/private, collective participation is explicit opt-in, and validated intelligence events are synchronized instead of repositories.",
+      "lessons": ["Repository synchronization is the wrong abstraction for collective intelligence.", "Privacy and human agency must be structural contracts before Hub UI expansion."]
+    },
+    "shawn": {
+      "id": "SN-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE-SHAWN",
+      "canonical_event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
+      "event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
+      "representation": "SHAWN",
+      "summary": "Build the Intelligent Hub around sovereign Superbrains, voluntary wisdom sharing, and stable interoperability contracts before UI construction.",
+      "content": "The Intelligent Hub connection architecture is a first-class NayaPOWER design. People connect their own Superbrain, choose whether to contribute wisdom, remain private, and benefit from collective knowledge.",
+      "lessons": ["Stable contracts precede Hub UI construction.", "Collective participation is voluntary wisdom sharing, not repository synchronization."]
+    }
+  },
   "machine": {"classification": "strategic_architecture", "status": "implemented_contracts", "confidence": 0.98, "canonical_paths": ["SUPERBRAIN/INTELLIGENT-HUB-SUPERBRAIN-CONNECTION-CONTRACT.md", "SUPERBRAIN/WISDOM-CONTRIBUTION-PROTOCOL.md", "SUPERBRAIN/COLLECTIVE-INTELLIGENCE-EVENT-SCHEMA.md", "SUPERBRAIN/INTELLIGENT-HUB-MASTER-PLAN.md", "SUPERBRAIN/INTELLIGENCE-FEED.md"], "principles": ["sovereign_superbrain", "explicit_opt_in", "least_privilege_connection", "github_app_over_pasted_tokens", "fork_is_installation_not_sync", "intelligence_events_over_repository_sync", "identity_excluded_from_collective_object", "human_review_before_publication", "explicit_provenance_and_verification", "two_way_collective_learning"]},
   "provenance": {"source_kind": "human_decision_plus_architectural_analysis", "source_reference": "2026-08-30 Intelligent Hub architecture discussion", "evidence": ["Existing Smart Notes + CIS Constitution v3 establishes Note Event as canonical memory object.", "Existing Naya Power Masterplan Notes establishes sovereign Superbrains, GitHub App connection, Wisdom Contribution Protocol, and intelligence-event synchronization as the intended direction."]},
   "relationships": [{"type": "governs", "target": "NayaPOWER Intelligent Hub"}, {"type": "extends", "target": "SMART-NOTES-AND-CIS-CONSTITUTION"}, {"type": "supports", "target": "Collective Chain"}, {"type": "supports", "target": "Naya Power Player"}, {"type": "supports", "target": "MAXIS"}],
