@@ -3,6 +3,8 @@
 Keeps persistence and orchestration separate from the constitutional decision kernel.
 The host supplies candidate actions and performs the selected action through its
 existing authorized tools; this layer records the observed result and continues.
+The optional Authority Registry is consumed as governance metadata, never as a
+replacement authority hierarchy.
 """
 
 from __future__ import annotations
@@ -13,6 +15,7 @@ import tempfile
 from pathlib import Path
 from typing import Any, Sequence
 
+from governance_contract import AuthorityRegistry
 from naya_power_runtime import (
     ActionCandidate,
     ActionPlan,
@@ -28,8 +31,9 @@ from naya_power_runtime import (
 class MissionStateStore:
     """Atomic JSON persistence for one active mission."""
 
-    def __init__(self, path: str | Path):
+    def __init__(self, path: str | Path, authority_registry: AuthorityRegistry | None = None):
         self.path = Path(path)
+        self.authority_registry = authority_registry
 
     def load(self) -> MissionState:
         if not self.path.exists():
@@ -73,7 +77,9 @@ class LeadModeEngine:
 
     def choose(self, candidates: Sequence[ActionCandidate]) -> ActionPlan:
         """Choose the highest-value eligible action without executing it silently."""
-        return choose_next_action(self.store.load(), candidates)
+        return choose_next_action(
+            self.store.load(), candidates, registry=self.store.authority_registry
+        )
 
     def accept_execution(self, plan: ActionPlan, receipt: ExecutionReceipt) -> MissionState:
         """Record observed execution evidence and persist the next mission state."""
