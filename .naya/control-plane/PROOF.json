@@ -4,7 +4,9 @@
   "truth_state_machine":["INTENDED","IMPLEMENTED","COMPLETE","VERIFIED","RACE_READY","PRODUCTION_PROVEN"],
   "non_green_states":["UNKNOWN","FAILED","STALE","BLOCKED"],
   "separation_rules":["IMPLEMENTED != VERIFIED","VERIFIED != PRODUCTION_PROVEN","RECORDED != CURRENT","UNKNOWN != GREEN","BLOCKED != PASS"],
+  "claim_evidence":{"SOURCE":["commit_sha","repository_path"],"BUILD":["build_or_typecheck_result","run_or_receipt"],"AUTOMATED":["test_run","observed_result"],"RUNTIME":["runtime_observation","environment","artifact_or_run"],"VISUAL":["rendered_artifact_or_inspection_receipt"],"WHOLE_JOURNEY":["journey_steps","observed_result","evidence"],"PRODUCTION":["deployment_identity","production_observation","timestamp"]},
   "verification_rule":"A VERIFIED claim must name the claim type and include claim-appropriate evidence. Missing evidence remains UNKNOWN.",
+  "stale_rule":"A recorded claim tied to a repository HEAD, deployment, test run, or evidence artifact is STALE when the authoritative current source no longer matches its recorded identity.",
   "proof_authority":"Evidence outranks assertions; current authoritative sources outrank historical records.",
   "current_evidence":{
     "observed_head":"efd2bba9ff2b307525e1862ab16b341e8652f76a",
