@@ -14,6 +14,15 @@ on:
       - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   pull_request:
     branches: [main]
+    paths:
+      - '.naya/**'
+      - 'SUPERBRAIN/**'
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - '.github/workflows/naya-control-plane.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
 
 permissions:
   contents: read
