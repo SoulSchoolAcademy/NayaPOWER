@@ -4,11 +4,13 @@
 
 **CANONICAL RELAY CONTRACT — ACTIVE**
 
-This contract defines the minimum continuity payload every substantive Naya execution must leave in the canonical Activity Feed. A baton is not complete merely because it contains `TAG → YOU'RE IT`. The next Naya must be able to execute from the repository without reconstructing the prior conversation.
+This contract defines the minimum continuity payload every substantive Naya execution must leave in the canonical Activity Feed AND the minimum structure of the successor execution prompt delivered to the next Naya. A baton is not complete merely because it contains `TAG → YOU'RE IT`. The next Naya must be able to execute from the repository without reconstructing the prior conversation.
 
 ## Constitutional rule
 
-**Every substantive Naya execution MUST terminate in a complete Activity Feed handoff containing:**
+**Every substantive Naya execution MUST terminate in a complete Activity Feed handoff AND a complete successor execution prompt using the same truth payload.**
+
+The handoff/prompt must contain, in this order:
 
 1. **CURRENT STATE** — exact repository, branch, live HEAD, active mission, starting condition, and current known truth.
 2. **WHY THIS MATTERS** — the problem being solved, why the chosen action is highest-value, and what must not be broken.
@@ -17,9 +19,15 @@ This contract defines the minimum continuity payload every substantive Naya exec
 5. **WHAT REMAINS UNKNOWN** — every unresolved consequential question; inference is never promoted to proof.
 6. **CURRENT SCORE / QUALITY GATE** — what passes, what fails, what remains below 10, and why it is not a 10.
 7. **NEXT BEST ACTION** — exactly one highest-value executable action with an exact target, method, and success condition.
-8. **EXECUTION INSTRUCTION FOR NEXT NAYA** — ordered steps, required evidence, failure handling, and exact feed-recording requirements.
+8. **EXECUTION INSTRUCTION FOR NEXT NAYA** — ordered steps, required evidence, failure handling, resource decision, and exact feed-recording requirements.
 9. **HANDOFF / CONTINUATION** — the state the successor must leave behind and what follows after the next action.
 10. **TAG → YOU'RE IT** — only after the complete actionable handoff exists.
+
+### Critical rule for execution prompts
+
+The **EXECUTION INSTRUCTION FOR NEXT NAYA is not a shortcut around the handoff**. It must carry the complete ten-part continuation contract above. A prompt containing only `resolve main`, `continue`, `run the test`, or `TAG → YOU'RE IT` is incomplete.
+
+The execution prompt delivered in ChatGPT and the durable prompt written to the repository/feed must agree on the same current truth, unknowns, quality gate, one next action, evidence requirements, and boundaries. No material instruction may exist only in conversation.
 
 ## Executable-next-action law
 
@@ -95,9 +103,7 @@ Each substantive successor event should use this structure:
 <exactly one executable action with target, method, evidence, success and failure condition>
 
 ## EXECUTION INSTRUCTION FOR NEXT NAYA
-```text
-<ordered executable continuation>
-```
+<the complete ten-part continuation payload must be restated here; this is not merely a pointer>
 
 ## HANDOFF / CONTINUATION
 <what successor leaves behind and what follows>
