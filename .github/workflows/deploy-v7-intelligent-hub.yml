@@ -1,4 +1,4 @@
-name: Deploy V7 Intelligent Hub
+name: Deploy V7 Intelligent Hub — Retired
 
 on:
   workflow_dispatch:
@@ -14,6 +14,6 @@ jobs:
         run: |
           echo 'LEGACY_V7_HTML_DEPLOYMENT=RETIRED'
           echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
-          echo 'CURRENT_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          echo 'CURRENT_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'CURRENT_RUNTIME=https://aged-art-7c12.nayanet.workers.dev'
           echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
