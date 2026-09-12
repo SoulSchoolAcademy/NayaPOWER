@@ -25,6 +25,30 @@ def test_current_project_state():
     assert successor_errors==[],successor_errors
     print('CURRENT DAILY PROJECT → canonical successor GREEN')
 
+def test_legacy_event_project_and_representation_compatibility():
+    event={
+        'event_id':'SE-20260826-101700-maxess-master-directive-v2-lock',
+        'project':'MAXESS / Naya Power',
+        'project_context':{
+            'project_id':'PRJ-NAYAPOWER-SUPERBRAIN',
+            'current_daily_project':'Naya Power Superbrain',
+            'current_objective':'Execute the MAXESS source-and-architecture inventory.'
+        },
+        'representations':{
+            'naya':{'canonical_event_id':'SE-20260826-101700-maxess-master-directive-v2-lock','summary':'Execute the canonical MAXESS architecture/design standard.'},
+            'human':{'canonical_event_id':'SE-20260826-101700-maxess-master-directive-v2-lock','summary':'MAXESS V2 preserves one authoritative assessment architecture.'}
+        },
+        'continuity':{
+            'execution_state':'COMPLETED',
+            'next_execution_path':ARTIFACT,
+            'learning_status':'LEARNED'
+        }
+    }
+    state=project.load(project.PROJECT)
+    errors=project.validate_event(event,state,project.load(project.POLICY))
+    assert errors==[],errors
+    print('LEGACY PROJECT/REPRESENTATION COMPATIBILITY → GREEN')
+
 def test_behavioral_matrix():
     valid=valid_successor();assert project.validate_next_execution(valid)==[]
     cases=[
@@ -61,5 +85,5 @@ def test_independent_consumption():
     print('INDEPENDENT CONSUMPTION → GREEN (12/12 semantic fields)')
 
 def main():
-    test_project_contract();test_prompt_contract();test_current_project_state();test_behavioral_matrix();test_independent_consumption();print('PASS — project, continuation, Prompt Architect, behavioral matrix, and independent consumption GREEN')
+    test_project_contract();test_prompt_contract();test_current_project_state();test_legacy_event_project_and_representation_compatibility();test_behavioral_matrix();test_independent_consumption();print('PASS — project, continuation, Prompt Architect, behavioral matrix, and independent consumption GREEN')
 if __name__=='__main__':main()
