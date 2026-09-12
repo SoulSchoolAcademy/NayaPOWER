@@ -12,7 +12,7 @@
   "human_shawn": {"meaning": "Shawn wants the Intelligent Hub connection architecture to be a first-class NayaPOWER design before the Hub UI is built. The experience should let people connect their own Superbrain, choose to contribute wisdom, remain private, and benefit from collective knowledge. He wants the running system update stream called the Intelligence Feed and wants this architecture preserved in the official Naya Power Masterplan Notes.", "decision": "Make the Superbrain Connection Contract, Wisdom Contribution Protocol, and Collective Intelligence Event schema stable first-class interfaces. Treat collective participation as voluntary wisdom sharing, not GitHub/repository synchronization.", "values": ["privacy", "human agency", "collective wisdom", "interoperability", "simplicity", "beautiful UX", "compounding intelligence"]},
   "representations": {
     "naya": {
-      "id": "SN-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE-NAYA",
+      "id": "SN-20260830-190000-intelligent-hub-connection-architecture-naya",
       "canonical_event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
       "event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
       "representation": "NAYA",
@@ -21,7 +21,7 @@
       "lessons": ["Repository synchronization is the wrong abstraction for collective intelligence.", "Privacy and human agency must be structural contracts before Hub UI expansion."]
     },
     "shawn": {
-      "id": "SN-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE-SHAWN",
+      "id": "SN-20260830-190000-intelligent-hub-connection-architecture-shawn",
       "canonical_event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
       "event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
       "representation": "SHAWN",
@@ -36,7 +36,7 @@
   "status": "verified_repository_artifact",
   "verification_receipt": {"verified": true, "verified_at": "2026-08-30T19:00:00-07:00", "checks": ["three first-class contract documents created", "canonical Note Event created using tri-representation", "no separate competing personal-memory silo created", "Intelligence Feed entry created"], "feed_status": "published", "feed_reference": "SUPERBRAIN/INTELLIGENCE-FEED.md"},
   "continuity_required": true,
-  "verification": {"status": "VERIFIED", "feed_status": "published", "receipt": "RCPT-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE", "evidence": ["Three first-class contract documents are represented in the canonical repository event.", "The repository artifact records the architectural verification checks and feed publication state." ]},
+  "verification": {"status": "VERIFIED", "feed_status": "published", "receipt": "RCPT-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE", "evidence": ["Three first-class contract documents are represented in the canonical repository event.", "The repository artifact records the architectural verification checks and feed publication state." ], "canonical_url": "https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/events/2026/08/30/19/SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE.json"},
   "receipt": {"receipt_id": "RCPT-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE", "status": "REPOSITORY_WRITE_VERIFIED", "evidence": "Canonical architecture event and contract references are persisted in GitHub."},
   "delivery": {"state": "REPOSITORY_ARTIFACTS_PERSISTED", "feed_status": "published"},
   "continuity": {
