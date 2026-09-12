@@ -29,6 +29,8 @@ jobs:
         run: python3 .naya/governance/test_governance_kernel.py
       - name: Run canonical execution-boundary adversarial tests
         run: python3 .naya/governance/test_naya_execution_boundaries.py
+      - name: Run behavioral bypass adversarial tests
+        run: python3 .naya/governance/test_behavioral_bypasses.py
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@v4
