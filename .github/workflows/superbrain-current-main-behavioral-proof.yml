@@ -10,7 +10,6 @@ on:
       - 'SUPERBRAIN/**'
       - 'tools/**'
       - 'tests/**'
-      - 'scripts/**'
       - '.github/workflows/superbrain-current-main-behavioral-proof.yml'
       - '!SUPERBRAIN/NAYA-ACTIVITY/**'
       - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
