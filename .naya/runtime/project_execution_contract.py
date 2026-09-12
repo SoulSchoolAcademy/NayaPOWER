@@ -150,7 +150,8 @@ def validate_event(event,project,policy):
     else:
         if naya_structured and naya.get('canonical_event_id')!=eid:errors.append(f'{eid}: Naya representation is not bound to canonical event')
         if shawn_structured and shawn.get('canonical_event_id')!=eid:errors.append(f'{eid}: Shawn/Human representation is not bound to canonical event')
-        if naya_structured and shawn_structured and naya.get('id')==shawn.get('id'):errors.append(f'{eid}: Naya and Shawn/Human representation IDs must remain distinct')
+        naya_id=naya.get('id') if naya_structured else None; shawn_id=shawn.get('id') if shawn_structured else None
+        if naya_id and shawn_id and naya_id==shawn_id:errors.append(f'{eid}: Naya and Shawn/Human representation IDs must remain distinct')
     continuity=event.get('continuity') or {}; execution_state=str(continuity.get('execution_state','COMPLETED')).upper()
     if execution_state=='COMPLETED':
         nex=event.get('next_execution')
