@@ -3,6 +3,13 @@ name: Deploy Supreme Intelligent Block V12.1
 on:
   push:
     branches: [main]
+    paths:
+      - '2026 09 08 452 NayaNET Hub.html'
+      - 'nayanet-intelligent-feed-v6.js'
+      - '.github/workflows/deploy-supreme-intelligent-block-v11.yml'
+      - 'scripts/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
   pull_request:
     branches: [main]
   workflow_dispatch:
