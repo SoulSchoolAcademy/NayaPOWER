@@ -15,6 +15,7 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         text = self.read("deploy-nayanet-hub-canonical-v2.yml")
         self.assertIn("workflow_dispatch:", text)
         self.assertNotIn("workflow_call:", text)
+        self.assertNotIn("schedule:", text)
         self.assertIn("commit_sha:", text)
         self.assertIn("approval:", text)
         self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
@@ -23,12 +24,15 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertIn("EXACT_SOURCE_SHA=PASS", text)
         self.assertNotIn("on:\n  push:", text)
 
-    def test_intelligent_hub_builder_is_kernel_gated(self):
+    def test_intelligent_hub_builder_is_kernel_gated_and_human_dispatched(self):
         text = self.read("build-nayahub-intelligent.yml")
         self.assertIn("workflow_dispatch:", text)
+        self.assertNotIn("workflow_call:", text)
+        self.assertNotIn("schedule:", text)
         self.assertIn("approval:", text)
         self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
         self.assertIn("--permission \"repo_write\"", text)
+        self.assertIn("--scope \"repo:SoulSchoolAcademy/NayaPOWER:path:index.html\"", text)
         self.assertNotIn("on:\n  push:", text)
 
     def test_governance_validator_is_not_a_deployment_authority(self):
