@@ -1,10 +1,13 @@
 from pathlib import Path
 import json
+import subprocess
+import sys
 import unittest
 
 ROOT = Path(__file__).resolve().parents[2]
 WORKFLOWS = ROOT / ".github" / "workflows"
 REGISTRY = ROOT / ".naya" / "governance" / "authority-registry.json"
+ADAPTER = ROOT / ".naya" / "control-plane" / "workflow_gate.py"
 
 LEGACY_HUB_WORKFLOWS = (
     "2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml",
@@ -17,7 +20,6 @@ LEGACY_HUB_WORKFLOWS = (
     "deploy-current-nayanet-hub.yml",
     "deploy-nayanet-hub.yml",
     "deploy-v7-intelligent-hub.yml",
-    "naya-feed-v5-apply.yml",
     "nayanet-feed-v5-apply.yml",
     "refine-nayahub-v7.yml",
     "v7-intelligent-hub-build.yml",
@@ -27,6 +29,15 @@ LEGACY_HUB_WORKFLOWS = (
 class NayaExecutionBoundaryTests(unittest.TestCase):
     def read(self, name: str) -> str:
         return (WORKFLOWS / name).read_text(encoding="utf-8")
+
+    def run_adapter(self, *args: str) -> subprocess.CompletedProcess[str]:
+        return subprocess.run(
+            [sys.executable, str(ADAPTER), *args],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
 
     def test_canonical_hub_deployment_is_human_dispatched_kernel_gated_and_sha_bound(self):
         text = self.read("deploy-nayanet-hub-canonical-v2.yml")
@@ -80,11 +91,61 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertFalse((ROOT / ".naya" / "governance" / "workflow-authorities.json").exists())
 
     def test_adapter_resolves_preexisting_authority_and_never_mints_one(self):
-        text = (ROOT / ".naya" / "control-plane" / "workflow_gate.py").read_text(encoding="utf-8")
+        text = ADAPTER.read_text(encoding="utf-8")
         self.assertIn("load_authority_registry", text)
         self.assertIn("resolve_authority", text)
         self.assertIn("authority.purpose == purpose", text)
         self.assertNotIn("authority_id=f\"workflow:", text)
+
+    def test_build_authority_is_executable(self):
+        result = self.run_adapter(
+            "--actor", "SoulSchoolAcademy",
+            "--purpose", "build and mutate the canonical NayaNET Intelligent Hub artifact",
+            "--permission", "repo_write",
+            "--request", "build_nayanet_intelligent_hub",
+            "--mission", "make NayaPOWER governance operationally capable of safely building the Intelligent Hub",
+            "--uncertainty", "1",
+            "--consequence", "5",
+            "--irreversibility", "2",
+            "--scope", "repo:SoulSchoolAcademy/NayaPOWER:path:index.html",
+            "--evidence", "explicit workflow_dispatch approval",
+        )
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertIn('"status": "AUTHORIZED"', result.stdout)
+
+    def test_deploy_authority_is_executable_and_high_risk_verified(self):
+        result = self.run_adapter(
+            "--actor", "SoulSchoolAcademy",
+            "--purpose", "deploy the canonical NayaNET Intelligent Hub public runtime",
+            "--permission", "deploy_public_runtime",
+            "--request", "deploy_nayanet_hub_canonical",
+            "--mission", "make NayaPOWER operationally capable of safely governing Intelligent Hub production deployment",
+            "--uncertainty", "3",
+            "--consequence", "8",
+            "--irreversibility", "8",
+            "--scope", "public-runtime:aged-art-7c12:/",
+            "--evidence", "explicit deployment approval",
+            "--evidence", "exact source SHA verified",
+        )
+        self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
+        self.assertIn('"status": "AUTHORIZED"', result.stdout)
+        self.assertIn('"risk_tier": "HIGH"', result.stdout)
+
+    def test_unregistered_scope_is_denied(self):
+        result = self.run_adapter(
+            "--actor", "SoulSchoolAcademy",
+            "--purpose", "deploy the canonical NayaNET Intelligent Hub public runtime",
+            "--permission", "deploy_public_runtime",
+            "--request", "forged_request",
+            "--mission", "attempt an unregistered deployment",
+            "--uncertainty", "3",
+            "--consequence", "8",
+            "--irreversibility", "8",
+            "--scope", "public-runtime:UNREGISTERED:/",
+            "--evidence", "forged authority test",
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("explicit authority resolution failed", result.stdout)
 
     def test_no_known_obsolete_mutating_workflow_remains(self):
         self.assertFalse((WORKFLOWS / "nayanet-welcome-executor.yml").exists())
