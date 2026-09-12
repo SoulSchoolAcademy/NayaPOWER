@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Iterable, Mapping, Sequence
 
+from governance_contract import AuthorityRegistry, GovernedAction, evaluate_governance
 
 RUNTIME_PROTOCOL = "naya-power-runtime/v1"
 
@@ -65,19 +66,45 @@ class ActionCandidate:
     dependencies_clear: bool = True
     protected_scope_preserved: bool = True
     requires_human_decision: bool = False
+    authority_id: str | None = None
+    authority_scope: str | None = None
+    risk: str = "LOW"
+    risk_acceptable: bool = True
+    verification_required: bool = True
+    stopping_condition_satisfied: bool = True
+    responsible_value_eligible: bool = True
     reason: str = ""
 
-    def eligible(self) -> bool:
-        """Hard constraints remove an option; invalid is not a zero-value option."""
-        return all(
-            (
-                self.constitutional,
-                self.authorized,
-                self.executable,
-                self.dependencies_clear,
-                self.protected_scope_preserved,
-                not self.requires_human_decision,
-            )
+    def governance_decision(self, registry: AuthorityRegistry | None = None):
+        """Evaluate the candidate against the canonical pre-execution contract."""
+        return evaluate_governance(
+            GovernedAction(
+                authority_id=self.authority_id,
+                authority_scope=self.authority_scope,
+                capability_available=self.executable,
+                constitutional_eligible=self.constitutional,
+                objective_present=bool(self.description.strip()),
+                consequence=self.consequence,
+                reversible=self.reversible,
+                risk=self.risk,
+                risk_acceptable=self.risk_acceptable,
+                evidence_ready=self.evidence_ready,
+                verification_required=self.verification_required,
+                stopping_condition_satisfied=self.stopping_condition_satisfied,
+                responsible_value_eligible=self.responsible_value_eligible,
+                requires_human_decision=self.requires_human_decision,
+            ),
+            registry,
+        )
+
+    def eligible(self, registry: AuthorityRegistry | None = None) -> bool:
+        """Hard governance constraints remove an option; invalid is not zero value."""
+        decision = self.governance_decision(registry)
+        return (
+            decision.eligible
+            and self.dependencies_clear
+            and self.protected_scope_preserved
+            and self.authorized
         )
 
 
@@ -215,9 +242,12 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def rank_candidates(candidates: Iterable[ActionCandidate]) -> list[ActionCandidate]:
-    """Rank eligible actions without allowing invalid actions to compete."""
-    eligible = [candidate for candidate in candidates if candidate.eligible()]
+def rank_candidates(
+    candidates: Iterable[ActionCandidate],
+    registry: AuthorityRegistry | None = None,
+) -> list[ActionCandidate]:
+    """Rank only candidates that pass the canonical governance contract."""
+    eligible = [candidate for candidate in candidates if candidate.eligible(registry)]
     return sorted(
         eligible,
         key=lambda c: (
@@ -231,14 +261,16 @@ def rank_candidates(candidates: Iterable[ActionCandidate]) -> list[ActionCandida
 
 
 def choose_next_action(
-    state: MissionState, candidates: Sequence[ActionCandidate]
+    state: MissionState,
+    candidates: Sequence[ActionCandidate],
+    registry: AuthorityRegistry | None = None,
 ) -> ActionPlan:
     """Select one highest-value executable action for the current verified state."""
     state.assert_valid()
-    ranked = rank_candidates(candidates)
+    ranked = rank_candidates(candidates, registry)
     if not ranked:
         raise RuntimeError(
-            "No eligible next action. Mission requires new evidence, authority, or human decision."
+            "No eligible next action. Mission requires new evidence, authority, dependency resolution, or human decision."
         )
 
     winner = ranked[0]
