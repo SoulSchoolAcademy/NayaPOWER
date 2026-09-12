@@ -2,19 +2,17 @@
 
 This module is deliberately deterministic and dependency-free. It does not make
 intelligence decisions for a model; it evaluates whether a proposed consequential
-action has the minimum constitutional facts and authority required to proceed.
+action has the minimum constitutional facts, valid authority, and least necessary
+power required to proceed.
 
-The kernel is the enforcement boundary for:
-  Decision -> Authority -> Epistemic state -> Risk -> Least power -> Governance state
-  -> Verification -> Receipt requirements.
-
-Policy is fail-closed: missing or contradictory governance facts cannot silently
-be promoted to AUTHORIZED or VERIFIED.
+Policy is fail-closed: missing, expired, revoked, or contradictory governance facts
+cannot silently be promoted to AUTHORIZED or VERIFIED.
 """
 
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from enum import Enum
 from typing import FrozenSet, Mapping, Optional, Tuple
 
@@ -58,7 +56,7 @@ class Decision(str, Enum):
 
 @dataclass(frozen=True)
 class Authority:
-    """Explicit authority bound to one principal and one bounded scope."""
+    """Explicit authority bound to one principal, purpose, scope, and action set."""
 
     authority_id: str
     principal_id: str
@@ -68,16 +66,47 @@ class Authority:
     expires_at: Optional[str] = None
     revoked: bool = False
 
-    def permits(self, *, actor_id: str, action: str, scope: str) -> bool:
+    def permits(
+        self,
+        *,
+        actor_id: str,
+        action: str,
+        scope: str,
+        now: Optional[str] = None,
+    ) -> bool:
         if self.revoked:
             return False
         if not self.authority_id or not self.principal_id or not self.purpose:
             return False
-        if actor_id != self.principal_id:
+        if actor_id != self.principal_id or scope != self.scope:
             return False
-        if scope != self.scope:
+        if action not in self.granted_actions:
             return False
-        return action in self.granted_actions
+        if self.expires_at:
+            if not now:
+                return False
+            try:
+                expiry = datetime.fromisoformat(self.expires_at.replace("Z", "+00:00"))
+                current = datetime.fromisoformat(now.replace("Z", "+00:00"))
+            except ValueError:
+                return False
+            if expiry.tzinfo is None:
+                expiry = expiry.replace(tzinfo=timezone.utc)
+            if current.tzinfo is None:
+                current = current.replace(tzinfo=timezone.utc)
+            if current >= expiry:
+                return False
+        return True
+
+
+@dataclass(frozen=True)
+class AuthorityRegistry:
+    """Immutable authority registry; callers cannot invent authority by lookup."""
+
+    authorities: Mapping[str, Authority] = field(default_factory=dict)
+
+    def resolve(self, authority_id: str) -> Optional[Authority]:
+        return self.authorities.get(authority_id)
 
 
 @dataclass(frozen=True)
@@ -140,6 +169,8 @@ class DecisionObject:
     expected_value: str
     required_permission: str
     verification: VerificationPlan
+    necessary_power: FrozenSet[str] = field(default_factory=frozenset)
+    requested_power: FrozenSet[str] = field(default_factory=frozenset)
 
     def complete_for_governance(self) -> bool:
         required = (
@@ -156,6 +187,9 @@ class DecisionObject:
             self.required_permission,
         )
         return all(isinstance(v, str) and v.strip() for v in required) and self.verification.complete
+
+    def least_power_satisfied(self) -> bool:
+        return self.requested_power.issubset(self.necessary_power)
 
 
 @dataclass(frozen=True)
@@ -176,6 +210,7 @@ def evaluate(
     authority: Optional[Authority],
     *,
     consequential: bool = True,
+    now: Optional[str] = None,
 ) -> GovernanceResult:
     """Evaluate one proposed action at the canonical governance boundary."""
     reasons: list[str] = []
@@ -192,11 +227,14 @@ def evaluate(
         actor_id=decision.actor_id,
         action=decision.action,
         scope=decision.scope,
+        now=now,
     ):
-        reasons.append("authority does not permit this actor/action/scope")
-        required.append("obtain or resolve valid authority")
+        reasons.append("authority does not permit this actor/action/scope or is inactive")
+        required.append("obtain or resolve valid active authority")
 
-    if _has_material_unknowns(decision.epistemic):
+    if not _has_material_unknowns(decision.epistemic):
+        pass
+    else:
         reasons.append("material epistemic uncertainty remains")
         required.append("resolve material uncertainty or escalate")
 
@@ -208,18 +246,20 @@ def evaluate(
         reasons.append("no alternative path considered")
         required.append("consider a simpler/safer/cheaper alternative")
 
+    if not decision.least_power_satisfied():
+        reasons.append("requested power exceeds necessary power")
+        required.append("reduce requested power to the minimum necessary")
+
     if consequential and not decision.verification.complete:
         reasons.append("verification plan is incomplete")
         required.append("define observation and success criteria")
 
     if consequential and decision.risk.tier in {"HIGH", "CRITICAL"}:
-        # High consequence requires explicit verified evidence, or escalation.
         if Epistemic.VERIFIED not in decision.epistemic:
             reasons.append("high-risk action lacks verified epistemic state")
             required.append("obtain stronger verification or escalate")
 
     if reasons:
-        # The kernel never promotes a blocked proposal to AUTHORIZED.
         decision_state = GovernanceState.INVESTIGATING if not authority else GovernanceState.READY_FOR_DECISION
         return GovernanceResult(
             allowed=False,
