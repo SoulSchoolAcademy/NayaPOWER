@@ -47,7 +47,7 @@ jobs:
         run: |
           grep -q "@supabase/supabase-js" NAYANET/HUB/src/data/pis.ts
           grep -q "nayanet_intelligence_index" NAYANET/HUB/src/data/pis.ts
-          grep -q "getSession" NAYANET/HUB/src/data/pis.ts
+          grep -q "getUser" NAYANET/HUB/src/data/pis.ts
           grep -q "PIS_QUERY_LIMIT" NAYANET/HUB/src/data/pis.ts
           echo 'PIS_PERSISTENT_ADAPTER_SOURCE=PASS'
 
