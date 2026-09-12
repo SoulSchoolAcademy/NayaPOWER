@@ -188,9 +188,13 @@ def main() -> int:
     # 6 execution cannot occur merely because a Torch exists: the Torch boundary
     # has no execution method and its constructor only packages a decision.
     torch_source = inspect.getsource(create_torch)
-    assert "subprocess" not in torch_source
-    assert "execute(" not in torch_source
-    assert "verify" not in torch_source.split("def create_torch", 1)[1].split("def ", 1)[0]
+    body = torch_source.split("def create_torch", 1)[1].split("def ", 1)[0]
+    assert "subprocess" not in body
+    assert "execute(" not in body
+    assert "verify(" not in body
+    assert "verify_claim(" not in body
+    assert "build_evidence(" not in body
+    assert "bind_torch_to_canonical_execution(" not in body
 
     # 7 evidence remains tied to actual completed execution
     assert validate_execution_result({"execution_state": "STARTED"})
