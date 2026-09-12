@@ -24,6 +24,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Assert exact workflow checkout SHA
+        run: |
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "CHECKED_OUT_SHA=$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Run canonical cold-start continuity acceptance
         run: python3 .naya/runtime/cold_start_activation.py
       - name: Run canonical control-plane validator
@@ -47,6 +52,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Assert exact workflow checkout SHA
+        run: |
+          echo "GITHUB_SHA=$GITHUB_SHA"
+          echo "CHECKED_OUT_SHA=$(git rev-parse HEAD)"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Run live P0 harness (fail closed when target is absent)
         env:
           NAYA_POWER_TARGET_URL: ${{ vars.NAYA_POWER_TARGET_URL }}
