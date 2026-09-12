@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Validate the canonical NayaPOWER cold-start boot contract.
 
-The canonical manifest v6 treats START-HERE and NAYANET-HUB-READ-FIRST as
-mandatory preflight reads. The Runtime Briefing is the first substantive
-orientation read after that preflight pair.
+The canonical manifest v6 now uses a machine-state preamble after the two
+mandatory preflight reads: current Activity Board + canonical control-plane
+MAP/STATE/BLOCKS/PROOF. The Runtime Briefing remains the first substantive
+orientation document after that machine-state preamble.
 """
 from __future__ import annotations
 
@@ -17,6 +18,13 @@ PROTOCOL = ROOT / ".naya" / "NAYA-CONTEXT-BOOT-PROTOCOL.md"
 BRIEFING = ROOT / ".naya" / "memory" / "NAYAPOWER-RUNTIME-BRIEFING.md"
 BRIEFING_PATH = ".naya/memory/NAYAPOWER-RUNTIME-BRIEFING.md"
 PREFLIGHT = ["SUPERBRAIN/AI-BOOT/START-HERE.md", "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md"]
+STATE_PREAMBLE = [
+    "SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md",
+    ".naya/control-plane/MAP.json",
+    ".naya/control-plane/STATE.json",
+    ".naya/control-plane/BLOCKS.json",
+    ".naya/control-plane/PROOF.json",
+]
 REQUIRED_FIELDS = [
     "WHERE", "WHY", "BUILDING", "PROTECTED", "BLOCKED", "VERIFIED",
     "UNKNOWN", "THIS WEEK", "NEXT ACTION", "PROOF", "LAST LEARNING",
@@ -31,11 +39,12 @@ def fail(message: str) -> None:
 def contract_status(boot_order: list[str]) -> tuple[bool, str]:
     if not boot_order:
         return False, "boot order is empty"
-    if boot_order[:len(PREFLIGHT)] != PREFLIGHT:
-        return False, "mandatory Superbrain preflight order is missing or incorrect"
-    if len(boot_order) <= len(PREFLIGHT) or boot_order[len(PREFLIGHT)] != BRIEFING_PATH:
-        return False, "canonical Runtime Briefing is omitted or not first substantive orientation read"
-    return True, "mandatory preflight precedes canonical Runtime Briefing"
+    required_prefix = PREFLIGHT + STATE_PREAMBLE
+    if boot_order[:len(required_prefix)] != required_prefix:
+        return False, "mandatory Superbrain preflight/state preamble order is missing or incorrect"
+    if len(boot_order) <= len(required_prefix) or boot_order[len(required_prefix)] != BRIEFING_PATH:
+        return False, "canonical Runtime Briefing is omitted or not first substantive orientation read after the machine-state preamble"
+    return True, "mandatory preflight and live control-plane preamble precede canonical Runtime Briefing"
 
 
 def assert_briefing_shape(text: str) -> None:
@@ -80,7 +89,7 @@ def main() -> int:
     included_ok, included_reason = contract_status(boot)
     if not included_ok:
         fail(f"acceptance simulation did not make briefing inclusion GREEN: {included_reason}")
-    print("GREEN PROOF: mandatory preflight followed by the canonical Runtime Briefing satisfies the boot-order contract.")
+    print("GREEN PROOF: mandatory preflight + live control-plane preamble followed by the canonical Runtime Briefing satisfies the boot-order contract.")
 
     briefing_text = BRIEFING.read_text(encoding="utf-8")
     assert_briefing_shape(briefing_text)
@@ -142,7 +151,7 @@ def main() -> int:
     if data.get("context_states") != expected_states:
         fail("context status ladder drifted from the canonical manifest")
 
-    print("PASS: canonical Runtime Briefing is registered, exact-shaped, first substantive orientation read after mandatory preflight, required by task routes, and enforced by cold-start RED/GREEN simulation.")
+    print("PASS: canonical Runtime Briefing is registered, exact-shaped, first substantive orientation document after mandatory preflight + live control-plane state preamble, required by task routes, and enforced by cold-start RED/GREEN simulation.")
     return 0
 
 
