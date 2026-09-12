@@ -1,5 +1,5 @@
 # RETIRED HUB DEPLOYMENT PATH — 2026-09-09
-# Historical execution path preserved for audit. Production authority is now deploy-nayanet-hub-canonical.yml only.
+# Historical execution path preserved for audit only. Production deployment ownership belongs to the current canonical deployment workflow registered by governance.
 name: Retired NayaNET Live Hub Deployment
 
 on:
