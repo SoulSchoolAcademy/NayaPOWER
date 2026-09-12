@@ -5,6 +5,12 @@ on:
     branches: [main]
   push:
     branches: [main]
+    paths:
+      - 'GOVERNANCE/**'
+      - 'NAYA-V3-ARCHITECTURE-SPECIFICATION.md'
+      - '.github/workflows/naya-v3-architecture-lock.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
 
 jobs:
   architecture-lock:
