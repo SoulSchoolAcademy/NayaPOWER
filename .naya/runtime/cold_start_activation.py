@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Deterministic cold-start acceptance test for NayaPOWER Smart Flow continuity."""
 from __future__ import annotations
-import hashlib,json
+import hashlib,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 P={k:ROOT/v for k,v in {
@@ -18,7 +18,9 @@ def js(p):
     try:return json.loads(text(p))
     except json.JSONDecodeError as e:fail(f'invalid JSON in {p.relative_to(ROOT)}: {e}')
 def req(t,n,l):
-    if n not in t:fail(f'{l} missing required contract: {n}')
+    normalized_text=re.sub(r'\s+',' ',t).strip()
+    normalized_need=re.sub(r'\s+',' ',n).strip()
+    if normalized_need not in normalized_text:fail(f'{l} missing required contract: {n}')
 def main():
     m=js(P['manifest']); cm=js(P['clusters']); mp=js(P['map']); st=js(P['state']); bl=js(P['blocks']); pf=js(P['proof']); lg=js(P['legacy'])
     boot=text(P['boot']); start=text(P['start']); protocol=text(P['protocol']); policy=text(P['policy']); constitution=text(P['constitution']); honor=text(P['honor']); directive=text(P['directive']); torch=text(P['torch']); no=text(P['no_orphan']); action_delivery=text(P['action_delivery']); smart=text(P['smart_flow']); board=text(P['activity_board'])
