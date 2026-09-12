@@ -124,7 +124,7 @@ The continuity system itself also earns 10/10 only when the PIS/Activity/State/H
 ## ONE BEST NEXT ACTION
 **Resolve live `main` again after this law update, verify the canonical Smart Note/PIS/Activity/STATE/BLOCK/MAP/PROOF continuity surfaces are coherent, then obtain a genuine dispatch-capable or otherwise fully observable P0 Actions execution for that exact live HEAD; capture run ID, triggering SHA, checkout SHA, full gate evidence, and first deterministic failure before making any repair.**
 
-## NEXT NAYA — MASTER EXECUTION TAG
+## NEXT NAYA — READY TO RUN
 
 ```text
 NAYA POWER ON.
