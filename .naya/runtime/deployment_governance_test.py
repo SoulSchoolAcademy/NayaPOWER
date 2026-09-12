@@ -15,6 +15,7 @@ GOVERNANCE_WORKFLOW = WORKFLOWS / "deployment-governance.yml"
 MAXESS_BRIDGE_WORKFLOW = WORKFLOWS / "apply-maxess-result-bridge.yml"
 INTEGRATED_RESULTS_WORKFLOW = WORKFLOWS / "build-integrated-results.yml"
 AISCORE_BRIDGE_WORKFLOW = WORKFLOWS / "build-aiscore-app-bridge.yml"
+NAYANET_HUB_PATCH_WORKFLOW = WORKFLOWS / "2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml"
 CANONICAL_PROJECT_ID = "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK"
 
 
@@ -129,8 +130,13 @@ def test_canonical_release_workflow_contains_the_only_deployment_boundary():
 
 
 def test_mutating_repository_workflows_require_explicit_dispatch():
-    """Repository-mutating bridge workflows must never react automatically to pushes/PRs."""
-    for path in (MAXESS_BRIDGE_WORKFLOW, INTEGRATED_RESULTS_WORKFLOW, AISCORE_BRIDGE_WORKFLOW):
+    """Repository-mutating workflows must never react automatically to pushes/PRs."""
+    for path in (
+        MAXESS_BRIDGE_WORKFLOW,
+        INTEGRATED_RESULTS_WORKFLOW,
+        AISCORE_BRIDGE_WORKFLOW,
+        NAYANET_HUB_PATCH_WORKFLOW,
+    ):
         text = path.read_text(encoding="utf-8")
         normalized = text.lower()
         assert "workflow_dispatch:" in normalized, f"manual dispatch missing: {path}"
