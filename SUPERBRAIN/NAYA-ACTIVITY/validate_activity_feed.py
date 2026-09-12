@@ -44,17 +44,10 @@ def validate_day(path: Path, errors: list[str]) -> None:
         except ValueError:
             fail(errors, f"{path}: invalid timestamp: {raw}")
 
-    # Historical feed records are append-only. A previously persisted timestamp
-    # anomaly must not be repaired by rewriting history. Chronology is therefore
-    # reported as a warning, while the textual append order remains authoritative
-    # for determining the latest baton.
     chronology_warning = False
     if len(timestamps) == len(matches) and timestamps != sorted(timestamps):
         chronology_warning = True
 
-    # Validate the fields required for substantive completed work and handoffs.
-    # Historical bootstrap entries are preserved as immutable history and are not
-    # retroactively rewritten merely to satisfy a later contract revision.
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         block = text[match.start():end]
@@ -78,18 +71,24 @@ def validate_day(path: Path, errors: list[str]) -> None:
 
         if "HANDOFF" in title:
             required = [
-                "Next best action",
+                "NEXT BEST ACTION",
                 "Protected boundaries",
                 "WHY THIS IS NOT A 10",
                 "TAG → YOU'RE IT",
-                "NEXT NAYA TORCH",
             ]
             for term in required:
                 if term not in block:
                     fail(errors, f"{path}: {title}: missing required field: {term}")
+            handoff_markers = [
+                "### NEXT NAYA EXECUTION PROMPT",
+                "### NEXT NAYA EXECUTION PROMPT — EXECUTE NOW",
+                "### NEXT NAYA TORCH",
+                "### NEXT NAYA — READY TO RUN",
+                "## EXECUTION INSTRUCTION FOR NEXT NAYA",
+            ]
+            if not any(marker in block for marker in handoff_markers):
+                fail(errors, f"{path}: {title}: missing complete successor prompt/torch")
 
-    # The latest textual current-day event owns the baton. It must satisfy the
-    # complete successor contract, not merely contain a baton marker or vague continuation.
     latest = matches[-1]
     latest_block = text[latest.start():]
     successor_markers = [
