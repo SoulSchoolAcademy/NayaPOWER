@@ -10,7 +10,7 @@ import json
 ROOT = Path(__file__).resolve().parents[2]
 POLICY_PATH = ROOT / ".naya" / "control-plane" / "DEPLOYMENT-GOVERNANCE.json"
 AUTH_PATH = ROOT / ".naya" / "control-plane" / "RELEASE-AUTHORIZATION.json"
-KERNEL_PATH = ROOT / ".naya" / "control-plane" / "governance_kernel.py"
+KERNEL_PATH = ROOT / ".naya" / "governance" / "governance_kernel.py"
 CANONICAL_PROJECT_ID = "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK"
 
 
@@ -32,6 +32,7 @@ def _load(path: Path) -> dict:
 
 
 def _kernel_module():
+    """Load the one canonical governance kernel; never a release-local copy."""
     if not KERNEL_PATH.is_file():
         raise RuntimeError("canonical governance kernel is missing")
     spec = importlib.util.spec_from_file_location("naya_governance_kernel", KERNEL_PATH)
@@ -46,54 +47,55 @@ def _kernel_gate(*, authorization: dict, commit_sha: str, target_environment: st
     """Route release authorization through the canonical constitutional kernel."""
     try:
         kernel = _kernel_module()
-        authorized_by = authorization.get("authorized_by")
-        authority = {
-            "authority_id": authorization.get("release_id"),
-            "issuer": f"human:{authorized_by}",
-            "holder": authorized_by,
-            "actor": authorized_by,
-            "purpose": "authorized-vercel-release",
-            "permissions": ["release:vercel"],
-            "scope": {
-                "repository": "SoulSchoolAcademy/NayaPOWER",
-                "environment": target_environment,
-                "vercel_project_id": CANONICAL_PROJECT_ID,
-            },
-            "conditions": ["exact_commit_binding", "canonical_project_binding", "explicit_approval"],
-            "issued_at": authorization.get("authorized_at"),
-            "expires_at": authorization.get("expires_at"),
-            "revoked_at": authorization.get("revoked_at"),
-            "delegable": False,
-            "delegation_scope": None,
-            "evidence": authorization.get("verification", {}).get("evidence", []),
-            "status": "ACTIVE",
-        }
-        decision = {
-            "decision_id": authorization.get("release_id"),
-            "mission": "Release exact NayaPOWER commit to canonical Vercel runtime",
-            "actor": authorized_by,
-            "request": f"deploy:{commit_sha}:{target_environment}",
-            "purpose": "authorized-vercel-release",
-            "authority": authority,
-            "scope": authority["scope"],
-            "boundaries": ["canonical_vercel_project_only", "exact_commit_only", "explicit_approval_only"],
-            "evidence": authorization.get("verification", {}).get("evidence", []),
-            "uncertainty": 2,
-            "consequence": 4,
-            "reversibility": 2,
-            "risk": {"irreversibility": 4, "prohibited": False},
-            "alternatives": ["do_not_release"],
-            "value": "publish_authorized_verified_artifact",
-            "required_permission": "release:vercel",
-            "decision": "EXECUTE",
-            "execution_plan": ["deploy exact verified commit to canonical Vercel project"],
-            "verification_plan": ["exact commit", "runtime surface", "live runtime observation"],
-            "stop_conditions": ["authorization mismatch", "kernel halt", "deployment failure", "runtime verification failure"],
-            "receipt_requirements": ["release authorization", "deployment evidence", "runtime verification"],
-            "learning_output": "release verification result",
-        }
-        risk = kernel.GovernanceKernel().gate(decision, authority)
-        return Decision(True, f"canonical governance kernel accepted release at {risk.tier}")
+        authorized_by = authorization.get("authorized_by", "")
+        evidence = tuple(authorization.get("verification", {}).get("evidence", []))
+        scope = (
+            "vercel-project:" + CANONICAL_PROJECT_ID
+            + ":environment:" + target_environment
+            + ":repository:SoulSchoolAcademy/NayaPOWER"
+        )
+        authority = kernel.Authority(
+            authority_id=authorization.get("release_id", ""),
+            principal_id=authorized_by,
+            purpose="authorized-vercel-release",
+            scope=scope,
+            granted_actions=frozenset({"release:vercel"}),
+            expires_at=authorization.get("expires_at"),
+        )
+        decision = kernel.DecisionObject(
+            decision_id=authorization.get("release_id", ""),
+            mission="Release exact NayaPOWER commit to canonical Vercel runtime",
+            actor_id=authorized_by,
+            action="release:vercel",
+            purpose="authorized-vercel-release",
+            scope=scope,
+            current_truth=f"release authorization binds commit {commit_sha}",
+            gap="the verified artifact is not yet published to the target runtime",
+            evidence=evidence,
+            epistemic=frozenset({kernel.Epistemic.OBSERVED, kernel.Epistemic.VERIFIED}),
+            consequence=f"public deployment to Vercel {target_environment}",
+            reversible=True,
+            risk=kernel.Risk(uncertainty=2, consequence=4, irreversibility=4),
+            alternatives=("do_not_release",),
+            expected_value="publish the explicitly authorized verified artifact",
+            required_permission="release:vercel",
+            verification=kernel.VerificationPlan(
+                observation="live Vercel runtime observation",
+                success_criteria="exact authorized commit is deployed and live runtime verification passes",
+                stop_conditions=("authorization mismatch", "kernel denial", "deployment failure", "runtime verification failure"),
+            ),
+            necessary_power=frozenset({"release:vercel"}),
+            requested_power=frozenset({"release:vercel"}),
+        )
+        result = kernel.evaluate(
+            decision,
+            authority,
+            consequential=True,
+            now=datetime.now(timezone.utc).isoformat(),
+        )
+        if not result.allowed:
+            return Decision(False, "canonical governance kernel denied release: " + "; ".join(result.reasons))
+        return Decision(True, f"canonical governance kernel accepted release at {decision.risk.tier}")
     except Exception as exc:
         return Decision(False, f"canonical governance kernel denied release: {exc}")
 
