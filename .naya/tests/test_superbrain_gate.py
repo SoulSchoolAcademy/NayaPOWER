@@ -55,11 +55,15 @@ for path, event in loaded:
                 'title', 'summary', 'content', 'schema_role', 'retrieval_keys',
                 'required_representation_roles', 'single_canonical_event',
                 'required_delivery', 'classification', 'supersession_policy',
-                'authority', 'consumers', 'verification_requirement'
+                'authority', 'consumers', 'verification_requirement', 'next_execution',
+                'canonical_repo', 'preservation_rule'
             ))
             assert machine_operable, f'{event.get("event_id")}: machine representation is not machine-operable'
             continue
-        readable = any(rep.get(k) for k in ('title', 'summary', 'content', 'lessons', 'what_we_learned', 'learning'))
+        readable = any(rep.get(k) for k in (
+            'title', 'summary', 'content', 'lessons', 'what_we_learned', 'learning',
+            'understanding', 'decision', 'intent'
+        ))
         assert readable, f'{event.get("event_id")}: unreadable note representation'
 
 # Exact duplicates are a hard failure; ambiguous candidates are surfaced, never merged.
