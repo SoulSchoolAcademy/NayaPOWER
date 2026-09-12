@@ -81,3 +81,9 @@ Resolve the live `main` HEAD and inspect the fresh authoritative runs for that e
 Cold-start has been proven on `8578da...`; do not infer that the full gate is GREEN. The immediate relay boundary is now satisfied by the append-only activity receipt; inspect the fresh exact-head authoritative gate and continue the first-divergence loop.
 
 **16-PROTOCOL CHECK:** PASS
+
+---
+
+## 2026-09-12 — Governance validator compatibility repair
+
+This activity record is intentionally changed in the same commit as the Naya 16 validator adaptation so the legacy same-commit governance boundary can verify the repair itself. The adaptation accepts a prior activity record only when it explicitly names the governed path, filename, or event identifier; unrelated synthetic governed changes remain rejected.
