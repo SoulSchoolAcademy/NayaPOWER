@@ -58,6 +58,7 @@ def validate_day(path: Path, errors: list[str]) -> None:
                 "Current state",
                 "Verification status",
                 "WHY THIS IS NOT A 10",
+                "NEXT BEST ACTION",
                 "TAG → YOU'RE IT",
             ]
             for term in required:
@@ -75,6 +76,28 @@ def validate_day(path: Path, errors: list[str]) -> None:
             for term in required:
                 if term not in block:
                     fail(errors, f"{path}: {title}: missing required field: {term}")
+
+    # The latest current-day event owns the baton. It must contain a complete,
+    # executable successor prompt rather than a bare TAG marker.
+    latest = matches[-1]
+    latest_block = text[latest.start():]
+    successor_markers = [
+        "### NEXT NAYA EXECUTION PROMPT",
+        "### NEXT NAYA EXECUTION PROMPT — EXECUTE NOW",
+        "### NEXT NAYA TORCH",
+        "### NEXT NAYA — READY TO RUN",
+    ]
+    if not any(marker in latest_block for marker in successor_markers):
+        fail(errors, f"{path}: latest event is missing a complete successor prompt/torch")
+
+    latest_required = [
+        "NEXT BEST ACTION",
+        "WHY THIS IS NOT A 10",
+        "TAG → YOU'RE IT",
+    ]
+    for term in latest_required:
+        if term not in latest_block:
+            fail(errors, f"{path}: latest event missing baton field: {term}")
 
     for sha in SHA_RE.findall(text):
         if sha == "0" * 40:
@@ -118,6 +141,7 @@ def main() -> int:
     print("Daily feeds: valid")
     print("Chronology: valid")
     print("Required action/handoff fields: present")
+    print("Latest event: complete successor torch present")
     print("Current board relay pointers: present")
     print("Baton marker: present")
     return 0
