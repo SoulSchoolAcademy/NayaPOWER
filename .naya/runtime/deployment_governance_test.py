@@ -12,6 +12,8 @@ VERCEL = ROOT / "vercel.json"
 WORKFLOWS = ROOT / ".github" / "workflows"
 AUTHORIZED_WORKFLOW = WORKFLOWS / "authorized-vercel-release.yml"
 GOVERNANCE_WORKFLOW = WORKFLOWS / "deployment-governance.yml"
+MAXESS_BRIDGE_WORKFLOW = WORKFLOWS / "apply-maxess-result-bridge.yml"
+INTEGRATED_RESULTS_WORKFLOW = WORKFLOWS / "build-integrated-results.yml"
 CANONICAL_PROJECT_ID = "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK"
 
 
@@ -140,6 +142,21 @@ def test_canonical_release_workflow_contains_the_only_deployment_boundary():
     assert "release_authorization.py" in text
     assert "vercel_project_id" in text
     assert "vercel@latest deploy" in text
+
+
+def test_mutating_repository_workflows_require_explicit_dispatch():
+    """Repository-mutating bridge workflows must never react automatically to pushes/PRs."""
+    for path in (MAXESS_BRIDGE_WORKFLOW, INTEGRATED_RESULTS_WORKFLOW):
+        text = path.read_text(encoding="utf-8")
+        normalized = text.lower()
+        assert "workflow_dispatch:" in normalized, f"manual dispatch missing: {path}"
+        assert "approval:" in normalized, f"explicit approval input missing: {path}"
+        assert "explicit_approval_granted" in normalized, f"approval gate missing: {path}"
+        assert "if: inputs.approval == 'explicit_approval_granted'" in normalized, f"job gate missing: {path}"
+        assert "git push" in normalized, f"mutation boundary unexpectedly absent: {path}"
+        # The YAML must not contain an automatic push or pull-request event trigger.
+        lines = [line.strip().lower() for line in text.splitlines()]
+        assert not any(line in {"push:", "pull_request:"} for line in lines), f"automatic trigger remains: {path}"
 
 
 def test_policy_preserves_connection_but_denies_default_deployment():
