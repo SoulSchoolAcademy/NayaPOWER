@@ -1,0 +1,111 @@
+name: Verify Canonical NayaNET Hub Build Only
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/build-primary-intelligence-feed.py'
+      - 'scripts/nayanet-cognitive-engine.js'
+      - '.github/workflows/verify-nayanet-hub-build-only.yml'
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        description: Exact 40-character source SHA to verify
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve exact source SHA
+        id: source
+        shell: bash
+        env:
+          REQUESTED_SHA: ${{ inputs.commit_sha }}
+        run: |
+          set -euo pipefail
+          if [ -n "$REQUESTED_SHA" ]; then
+            test "${#REQUESTED_SHA}" -eq 40
+            echo "sha=$REQUESTED_SHA" >> "$GITHUB_OUTPUT"
+          else
+            echo "sha=${GITHUB_SHA}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout exact source SHA
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ steps.source.outputs.sha }}
+
+      - name: Prove exact source binding
+        shell: bash
+        env:
+          REQUESTED_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          ACTUAL_SHA="$(git rev-parse HEAD)"
+          test "$ACTUAL_SHA" = "$REQUESTED_SHA"
+          echo "SOURCE_SHA=$ACTUAL_SHA"
+
+      - name: Install
+        working-directory: NAYANET/HUB
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+
+      - name: Build exact source
+        working-directory: NAYANET/HUB
+        env:
+          VITE_RELEASE_COMMIT: ${{ steps.source.outputs.sha }}
+        run: npm run build
+
+      - name: Inspect generated artifact and hashes
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          D="NAYANET/HUB/dist"
+          test -s "$D/index.html"
+          test -s "$D/nayanet-cognitive-engine.js"
+          APP_JS=$(find "$D/assets" -maxdepth 1 -type f -name '*.js' -print -quit | sed "s#^$D/##")
+          test -n "$APP_JS"
+          test -s "$D/$APP_JS"
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'NUTSHELL' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'Favorite intelligence' 'Save intelligence' 'RATE / RANK' 'COMMENT' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$D/$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNetCognition' 'recordPersistent' 'nayanet_record_cognition_event'; do grep -Fqi "$x" "$D/nayanet-cognitive-engine.js" || { echo "COGNITION_ARTIFACT_MISSING=$x"; exit 1; }; done
+          if git grep -nEi -- 'Where.?s Naya Now|SUPERBRAIN|PASS THE TORCH|VERIFY STATE' -- NAYANET/HUB/src scripts >/tmp/forbidden-source 2>/dev/null; then cat /tmp/forbidden-source; echo FORBIDDEN_SOURCE_UI_FOUND; exit 1; fi
+          for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" "$D/index.html" "$D/$APP_JS"; then echo "FORBIDDEN_ARTIFACT=$x"; exit 1; fi; done
+          test ! -e "$D/nayanet-intelligent-feed-v6.js"
+          grep -Fq "$SOURCE_SHA" "$D/index.html" "$D/$APP_JS"
+          INDEX_HASH="$(sha256sum "$D/index.html" | awk '{print $1}')"
+          COGNITION_HASH="$(sha256sum "$D/nayanet-cognitive-engine.js" | awk '{print $1}')"
+          APP_HASH="$(sha256sum "$D/$APP_JS" | awk '{print $1}')"
+          {
+            echo "SOURCE_SHA=$SOURCE_SHA"
+            echo "BUILD_SOURCE_SHA=$SOURCE_SHA"
+            echo "APPLICATION_JS=$APP_JS"
+            echo "ARTIFACT_INDEX_SHA256=$INDEX_HASH"
+            echo "COGNITIVE_ENGINE_SHA256=$COGNITION_HASH"
+            echo "APPLICATION_JS_SHA256=$APP_HASH"
+            echo "REQUIRED_MARKERS=PASS"
+            echo "FORBIDDEN_OPERATOR_UI=ABSENT"
+            echo "SOURCE_SHA_IN_ARTIFACT=PASS"
+          } | tee release-proof.txt
+
+      - name: Upload build proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-hub-build-proof-${{ steps.source.outputs.sha }}
+          path: |
+            NAYANET/HUB/dist/index.html
+            NAYANET/HUB/dist/nayanet-cognitive-engine.js
+            NAYANET/HUB/dist/assets/*.js
+            release-proof.txt
+          if-no-files-found: error
