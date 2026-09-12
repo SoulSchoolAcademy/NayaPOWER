@@ -7,8 +7,8 @@
 ## CURRENT TRUTH
 Repository: `SoulSchoolAcademy/NayaPOWER`
 Branch: `main`
-**Live HEAD observed at final sign-out:** `4e66eda4be9ed6159bdeb288699d26b0766b6823`
-Previous live HEAD before receipt: `fbe3205e0483c67d5b8f7f70a9f177105ba66410`
+**Live HEAD observed at final sign-out:** `8c55ae1f89598a3ee04ed87d49784280bf9eeb3d`
+Previous live HEAD before final board update: `4e66eda4be9ed6159bdeb288699d26b0766b6823`
 Requested historical proof target: `b01b396fbac7c875f4da9923faa6f6db7cfb6580`
 Current HEAD is newer. Never force-reset main backward.
 
@@ -30,6 +30,7 @@ Acceptance requires fresh repository-runtime continuity evidence, authoritative 
 5. Extended `.naya/runtime/cold_start_activation.py` to require the Current Activity Board in boot order and validate its live-head rule, one-best-next-action section, and complete successor section.
 6. Surgically strengthened `.github/workflows/naya-power-adversarial-p0.yml` to assert that `git rev-parse HEAD` exactly equals `$GITHUB_SHA` in both P0 jobs. This is a real proof improvement and legitimately triggers the push-based P0 workflow when that workflow file is changed.
 7. Created append-only receipt `SUPERBRAIN/NAYA-ACTIVITY/2026-09-12-NAYAPOWER-P0-SIGNOUT-TORCH12-ACTIVITY-BOARD-ENFORCEMENT.md` documenting execution, evidence, unknowns, capability boundary, and successor instructions.
+8. Finalized this board after re-resolving live `main`, so the durable current snapshot now records the actual final HEAD.
 
 ## PROVEN EVIDENCE
 Historical genuine P0 run `34702023228` checked out `cd472afce48ae502d7b08212b868d5980cd30854`.
@@ -44,7 +45,7 @@ The newly strengthened P0 workflow source contains an explicit exact-checkout as
 `b01b396fbac7c875f4da9923faa6f6db7cfb6580` is a real surgical repair, but **exact P0 execution against that SHA remains UNKNOWN / NOT EXECUTED**. Do not substitute another SHA.
 
 ## CURRENT-HEAD EXECUTION STATUS
-Current HEAD: `4e66eda4be9ed6159bdeb288699d26b0766b6823`.
+Current HEAD: `8c55ae1f89598a3ee04ed87d49784280bf9eeb3d`.
 
 The most recent directly observed status for the immediately preceding source-validation HEAD `0642858442e45126bfa99c04cd4b114122afa84e` was `pending` with zero statuses. This is absence of fresh evidence, not evidence of failure. The available commit-run query does not expose push-triggered runs, so no new run ID is claimed.
 
