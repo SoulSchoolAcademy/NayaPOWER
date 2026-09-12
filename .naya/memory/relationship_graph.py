@@ -24,12 +24,10 @@ def build() -> dict:
     adjacency = defaultdict(set)
     for event in events:
         source = event["event_id"]
-        relationships = event.get("relationships", {}) or {}
+        relationships = brain.relationship_map(event)
         for key in RELATIONSHIP_KEYS:
-            values = relationships.get(key, [])
-            if isinstance(values, str):
-                values = [values]
-            for target in values or []:
+            values = brain.normalize_targets(relationships.get(key, []))
+            for target in values:
                 if target in known and target != source:
                     a, b = sorted((source, target))
                     edges.add((a, b, key))
