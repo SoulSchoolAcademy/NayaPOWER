@@ -5,6 +5,15 @@ name: NayaPOWER Superbrain Behavioral Proof
 on:
   push:
     branches: [main]
+    paths:
+      - '.naya/**'
+      - 'SUPERBRAIN/**'
+      - 'tools/**'
+      - 'tests/**'
+      - 'scripts/**'
+      - '.github/workflows/superbrain-current-main-behavioral-proof.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
 permissions:
   contents: read
