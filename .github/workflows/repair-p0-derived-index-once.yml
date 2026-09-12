@@ -1,0 +1,41 @@
+name: P0 — Repair canonical derived event index once
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: p0-derived-index-repair
+  cancel-in-progress: false
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact triggering HEAD
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild canonical derived event index
+        run: python .naya/memory/smart_notes_v3.py index
+
+      - name: Verify generated index is structurally valid
+        run: |
+          python .naya/memory/smart_notes_v3.py validate
+
+      - name: Persist exact generated index and remove one-time repair workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Naya Power'
+          git config user.email 'naya-power@users.noreply.github.com'
+          git add .naya/memory/events/INDEX.json .github/workflows/repair-p0-derived-index-once.yml
+          git rm -f .github/workflows/repair-p0-derived-index-once.yml
+          git diff --cached --check
+          git commit -m 'NayaPOWER P0: persist canonical derived event index repair'
+          git push
