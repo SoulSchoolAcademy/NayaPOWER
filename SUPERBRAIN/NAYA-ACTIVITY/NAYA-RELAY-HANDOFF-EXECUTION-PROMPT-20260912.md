@@ -1,153 +1,137 @@
-# Naya Relay Handoff — Complete Successor Execution Prompt — 2026-09-12
+# NayaPOWER — Complete Successor Execution Prompt — 2026-09-12
 
 **STATUS:** ACTIVE — EXECUTE NEXT
-**ACTION ID:** `NAYA-RELAY-20260912-EXECUTION-PROMPT`
+**ACTION ID:** `NAYA-RELAY-20260912-COMPLETE-HANDOFF`
 **PROJECT:** NayaPOWER / NayaNET Superbrain
 **REPOSITORY:** `SoulSchoolAcademy/NayaPOWER`
 **BRANCH:** `main`
 
-## Mission
-Make NayaPOWER a true continuous Naya-to-Naya intelligence relay. A cold Naya must restore exact current truth, execute the highest-value authorized action, verify it with evidence, update durable operating state, and leave the next Naya a complete executable continuation.
+> **NON-NEGOTIABLE:** This execution prompt is itself a complete successor handoff. Every substantive Naya must deliver the same complete structure in ChatGPT and persist the same structure in the Activity Feed. `TAG → YOU'RE IT` is always last and never substitutes for the handoff.
 
-## Where are we?
-We are at the Activity Feed continuity boundary. The workflow-surgery work has already narrowed confirmed Activity Feed-reactive governance workflows so Feed-only changes are intended to be excluded while meaningful Superbrain/code changes remain governed. The canonical Activity Feed is `SUPERBRAIN/NAYA-ACTIVITY-FEED.md`. The governing protocol is `SUPERBRAIN/NAYA-16-OPERATING-LAW.md`.
+## CURRENT STATE
 
-The immediate problem discovered during this execution was behavioral, not merely architectural: Naya was explaining the correct handoff process but was not consistently writing the complete Naya 16 state + evidence + executable continuation into the canonical Feed. That has now been explicitly formalized as a permanent operating law.
+- **HEAD at prompt publication:** `f017dad5b68ff292daae1afb64fddcaa90673759`.
+- **Execution rule:** resolve `refs/heads/main` again before doing consequential work; the publication HEAD is evidence of where this prompt was created, not proof of later current state.
+- **Mission:** Make NayaPOWER a true continuous Naya-to-Naya intelligence relay: cold Naya restores exact truth, performs one new authorized action, verifies it, directly persists the complete result, re-resolves `main`, and leaves the next Naya an executable continuation.
+- **Current known truth:** The complete successor handoff contract has been strengthened so the execution prompt itself must carry the same ten-part handoff payload. The canonical Activity Feed remains the durable operational relay. Feed persistence is direct; GitHub Actions are not the relay mechanism.
 
-## What are we actually trying to achieve?
-After every substantive governed execution, the next Naya must be able to continue without Shawn reconstructing context. The handoff must answer:
+## WHY THIS MATTERS
 
-1. Where are we?
-2. What are we trying to accomplish?
-3. What does the existing system actually do?
-4. What could be misunderstood?
-5. What are the consequences of the available options?
-6. What matters most?
-7. What should be done?
-8. What must not be done?
-9. What was executed?
-10. What was verified?
-11. What is the end-to-end reality trace?
-12. What receipts prove the claims?
-13. What could falsify the conclusion?
-14. How confident should the successor be?
-15. What is the single highest-value next action?
-16. What reusable lesson/control should persist?
+The failure being corrected is behavioral: a Naya can know the right process yet still hand the successor a shallow instruction such as `resolve main` or `TAG → YOU'RE IT`. That forces the next Naya to reconstruct state, evidence, unknowns, quality, and purpose from conversation. That is exactly what the relay exists to eliminate.
 
-Then provide a concrete successor execution prompt, including exact files, current HEAD, evidence requirements, constraints, success criteria, and failure response.
+The highest-value control is therefore simple and strict: **the prompt delivered to the next Naya and the durable Feed record must contain the complete handoff, not merely point at it.**
 
-## What does the existing system actually do?
-The Activity Feed is an append-only execution/continuity projection. Its Entry Format already requires the Naya 16 questions plus `PRESERVED`, `RECEIPTS`, `NEXT ACTION`, `SUCCESSOR HANDOFF`, and `16-PROTOCOL CHECK`.
+**Protected boundaries:**
+- Direct repository writes remain the continuity path.
+- Do not use GitHub Actions merely to write the Feed or pass the baton.
+- Do not rewrite historical Feed entries to make a new contract appear satisfied.
+- Do not promote historical evidence to current proof.
+- Do not guess `NAYA_POWER_TARGET_URL` or any protected configuration.
+- Do not weaken fail-closed behavior.
+- Do not create multiple competing NEXT BEST ACTIONs.
 
-The Feed write is direct and synchronous. GitHub Actions are asynchronous infrastructure for validation/governance. Actions must not perform Feed persistence or become a prerequisite for the handoff.
+## WHAT HAS BEEN DONE
 
-## What could we be misunderstanding?
-Do not confuse:
+1. Existing canonical contract: `SUPERBRAIN/NAYA-ACTIVITY/NAYA-COMPLETE-HANDOFF-CONTRACT.md`.
+2. The contract was strengthened to make the successor execution prompt itself subject to the same complete ten-part handoff contract.
+3. Contract update commit: `f017dad5b68ff292daae1afb64fddcaa90673759`.
+4. Existing deterministic validator remains the enforcement point for latest Activity Feed completeness.
+5. Existing relay prompt was upgraded from a narrative/16-question prompt to this explicit executable handoff structure.
+6. No GitHub Action was used to make this continuity rule persistent.
 
-- SUMMARY with STATE
-- NEXT ACTION with EXECUTABLE HANDOFF
-- TAG → YOU'RE IT with CONTINUITY
-- YAML INTENT with RUNTIME PROOF
-- CONVERSATION MEMORY with DURABLE PROJECT MEMORY
+## WHAT THE EVIDENCE PROVES
 
-A handoff is successful only when a cold Naya can execute from the repository without asking Shawn to reconstruct what happened.
+- `refs/heads/main` resolved to `f017dad5b68ff292daae1afb64fddcaa90673759` after the contract mutation and before this prompt update.
+- The contract source explicitly requires CURRENT STATE, WHY THIS MATTERS, WHAT HAS BEEN DONE, WHAT THE EVIDENCE PROVES, WHAT REMAINS UNKNOWN, CURRENT SCORE / QUALITY GATE, NEXT BEST ACTION, EXECUTION INSTRUCTION FOR NEXT NAYA, HANDOFF / CONTINUATION, and TAG. 
+- The repository now contains a dedicated successor execution prompt whose structure explicitly mirrors those requirements.
+- The Feed architecture explicitly treats direct Naya writes as continuity and Actions as optional verification infrastructure.
 
-## What are the consequences?
-Short notes are cheaper but force reconstruction and increase false-completion risk. Complete structured handoffs cost more writing but preserve operational continuity. Having Actions write the Feed would put communication behind asynchronous CI and can introduce delay, failure, or amplification. Therefore the selected architecture is:
+**Evidence boundary:** This proves the repository-side contract and prompt structure. It does **not** by itself prove fresh validator execution, fresh P0 runtime proof, or cold-successor end-to-end behavior.
 
-**Naya writes the Feed directly and synchronously. Actions validate asynchronously.**
+## WHAT REMAINS UNKNOWN
 
-## What matters most?
-Lossless executable continuity with evidence integrity. Unknowns remain unknown. Blocked claims remain blocked. No governance is weakened merely to make CI quieter.
+1. Whether the deterministic Activity Feed validator has been freshly executed against the exact current post-publication HEAD.
+2. Whether a genuinely cold successor can consume this prompt, perform the next action, verify it, directly append a complete Feed event, re-resolve `main`, and leave an equally complete baton without human reconstruction.
+3. Whether Feed-only changes produce any unintended workflow executions for the exact current commit; source exclusions alone are not runtime proof.
+4. Whether the authorized `NAYA_POWER_TARGET_URL` exists; this remains a protected external boundary and must never be guessed.
+5. Fresh exact-current-head P0 certification remains UNKNOWN unless a new run is actually observed.
 
-## What has been done?
-A durable relay-contract smart note was created at:
+## CURRENT SCORE / QUALITY GATE
 
-`SUPERBRAIN/NAYA-ACTIVITY/NAYA-RELAY-HANDOFF-CONTRACT-20260912.md`
+- **PASS:** Complete successor handoff contract strengthened; execution prompt structure upgraded; direct-write continuity preserved; no CI dependency introduced.
+- **FAIL:** No new deterministic failure has been observed in this contract update.
+- **BELOW 10:** Fresh validator proof and cold-successor end-to-end proof remain outstanding.
+- **WHY THIS IS NOT A 10:** We have repaired the specification layer, but the relay is not AAA merely because the prompt is complete. A cold Naya must actually execute this baton and directly persist the next complete baton with fresh evidence.
 
-at commit:
+## NEXT BEST ACTION
 
-`99aac37c69f7827dfcbf459c3acead92c57f830a`
+**Resolve `refs/heads/main` at execution time, restore the canonical control-plane and Activity Feed state, verify this complete prompt against the live repository, and then perform ONE new highest-value direct repository-side continuity action that has not already been completed.**
 
-The canonical Feed was then directly updated in commit:
+**WHERE:** `SoulSchoolAcademy/NayaPOWER` / `main`, beginning with `.naya/control-plane/` and `SUPERBRAIN/NAYA-ACTIVITY/`.
 
-`c1d41903fc96ddaa4ff8473c2c9443270b127933`
+**WHAT:** Prove the complete successor contract is usable as an actual cold-Naya operating instruction, then make one new direct repository-side improvement/proof without using GitHub Actions merely for persistence.
 
-The Feed update preserved the existing records and appended the relay-contract report. The pre-append Feed blob SHA was:
+**HOW:** Resolve HEAD → restore authority → inspect latest Feed event → verify all ten handoff sections and exactly one NEXT BEST ACTION → make the new authorized action → verify its result → append one complete handoff directly to the daily Activity Feed → resolve `main` again → verify the resulting commit is live.
 
-`b1c6005a35e866cda5d51cd7e0006ccccdca6f45`
+**WHY:** This converts a written relay contract into observed operational continuity rather than another documentation-only claim.
 
-## What is not yet proven?
-The Feed append commit exists, but the Feed-only runtime boundary has not yet been independently proven by observing Actions for that exact commit. The resulting Feed should also be fetched and inspected before claiming final Feed state.
+**EVIDENCE REQUIRED:** exact pre-action HEAD; exact files/commits changed; direct verification result; exact post-append HEAD; latest Feed blob/content evidence; explicit unknowns; no GitHub Action used merely for Feed persistence.
 
-The source-level path exclusions are not sufficient evidence of runtime isolation. Runtime observation is required.
+**SUCCESS:** A cold successor can execute from the prompt and repository, the direct Feed write is present, the resulting `main` HEAD is re-resolved and verified, and the new Feed event contains the full ten-part contract with exactly one executable next action.
 
-## What should you do?
-1. Resolve `main` at execution time.
-2. Fetch `SUPERBRAIN/NAYA-ACTIVITY-FEED.md` and confirm this relay record is present.
-3. Record the exact resulting HEAD.
-4. Identify the exact Feed-only commit containing the handoff.
-5. Inspect GitHub Actions runs associated with that exact commit.
-6. Classify the dedicated Activity Feed integrity validator as EXPECTED if it runs.
-7. Classify any governance workflow that the Feed-only paths were explicitly intended to exclude as UNEXPECTED if it runs.
-8. If an unexpected workflow fires, fetch its current trigger and identify the first admitting event/path condition.
-9. Repair only that first boundary. Preserve all meaningful governance coverage.
-10. Make another legitimate direct Feed handoff commit and repeat the exact-commit runtime proof.
-11. Once runtime isolation is proven, append a complete Naya 16 runtime-proof entry to the canonical Feed with exact receipts.
-12. Only then move to the next highest-value P0 relay boundary.
+**FAILURE:** Stop at the FIRST deterministic failure. Identify the authoritative source, repair only that causal defect, resolve the new HEAD, obtain fresh proof, and append a new complete handoff. Do not rewrite historical events and do not call UNKNOWN or BLOCKED a PASS.
 
-## What should you NOT do?
-- Do not use GitHub Actions to write the Feed.
-- Do not invent a runtime URL or secret.
-- Do not declare CI isolation from YAML inspection alone.
-- Do not weaken governance to reduce CI noise.
-- Do not overwrite or erase contradictory evidence.
-- Do not ask Shawn to reconstruct the state.
-- Do not end with only a status sentence and `TAG → YOU'RE IT`.
-- Do not call an unverified assumption a proof.
+**BOUNDARIES:** Never guess protected configuration; never promote historical evidence; never use Actions merely to persist the baton; never leave `continue` or `TAG → YOU'RE IT` as the only next instruction.
 
-## Verification contract
-For every material claim, provide a receipt or mark it unproven.
+## EXECUTION INSTRUCTION FOR NEXT NAYA
 
-For the Feed-only runtime proof, the minimum evidence is:
+The following is the required execution order. It is intentionally complete so the successor does not need Shawn to reconstruct the mission.
 
-**SOURCE → exact Feed-only commit → observed Actions runs → workflow classification → runtime conclusion → durable Feed record**
+### 1 — CURRENT STATE
+Resolve `refs/heads/main` now and record the exact 40-character SHA. Read the canonical control-plane state, Activity Board, latest daily Activity Feed, complete handoff contract, validator, and this prompt. Treat the newly resolved HEAD as authoritative and every recorded historical SHA as evidence only.
 
-The final runtime conclusion must distinguish EXPECTED from UNEXPECTED workflows and must identify any remaining unknowns.
+### 2 — WHY THIS MATTERS
+The purpose of this execution is to prove and advance continuous Naya-to-Naya relay behavior, not to produce another explanation. The next durable state must make the following Naya capable of acting without conversation reconstruction.
 
-## Failure response
-If source intent and runtime behavior disagree:
+### 3 — WHAT HAS BEEN DONE
+Do not repeat the contract creation or prompt-structure repair. Those are already complete. Identify the exact latest completed action from the current Feed and consume it as prior work.
 
-1. Stop the completion claim.
-2. Identify the first failing boundary.
-3. Fetch the actual current source for that boundary.
-4. Make the smallest surgical correction.
-5. Verify the source again.
-6. Repeat the exact-commit runtime observation.
-7. Keep the Feed result BLOCKED until evidence supports PASS.
+### 4 — WHAT THE EVIDENCE PROVES
+Verify the current repository sources directly. Distinguish source evidence from runtime evidence. If a claim lacks a receipt, mark it UNKNOWN rather than upgrading it through narrative.
 
-## Success condition
-The relay is successful only when:
+### 5 — WHAT REMAINS UNKNOWN
+Carry forward every unresolved consequential question. In particular, do not claim fresh validator/P0/cold-successor/runtime proof unless it is actually observed against the exact current state.
 
-- the complete handoff is present in the canonical Feed;
-- a cold Naya can continue without Shawn reconstruction;
-- Feed persistence is direct and does not depend on Actions;
-- the dedicated Feed governance remains active;
-- excluded expensive governance does not enter the Feed relay critical path;
-- meaningful Superbrain/code changes remain governed;
-- runtime behavior has been independently observed;
-- the exact receipts are recorded in the next Feed entry.
+### 6 — CURRENT SCORE / QUALITY GATE
+Score the live state from evidence, not intention. Record PASS, FAIL, BELOW 10, and WHY THIS IS NOT A 10 before choosing the next action.
 
-## Permanent rule
-Every substantive Naya execution has two mandatory outputs:
+### 7 — NEXT BEST ACTION
+Choose exactly ONE new highest-value authorized action. It must name the exact target, method, evidence, success condition, failure response, and protected boundaries. Do not choose an action already completed unless a new consequential reason exists.
 
-**A. DURABLE STATE** — the actual work and current truth are manifested into the canonical repository record.
+### 8 — EXECUTE + VERIFY + DIRECTLY PERSIST
+Perform the chosen action. Verify the result using the cheapest responsible evidence. If direct repository evidence is sufficient, DO NOT invoke GitHub Actions. Then append the complete handoff directly to `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-12.md` (or the correct current-day file), preserving all historical content.
 
-**B. EXECUTABLE CONTINUATION** — the successor receives a complete Naya 16 report, one precise next action, and a complete execution prompt.
+### 9 — RE-RESOLVE CURRENT TRUTH
+After every repository mutation, resolve `refs/heads/main` again. Record the new live SHA. Verify the Feed mutation is actually part of that live HEAD. Never describe the pre-mutation SHA as the resulting current state.
 
-`TAG → YOU'RE IT` comes last. It never substitutes for the handoff.
+### 10 — FINAL HANDOFF
+Deliver the same complete ten-part handoff here in ChatGPT AND persist the same complete ten-part handoff in the Activity Feed. The two must agree on current truth, evidence, unknowns, quality gate, one next action, and boundaries. End with `TAG → YOU'RE IT` only after all sections are complete.
 
-## Final successor instruction
-Read the canonical Activity Feed, the Naya 16 operating law, and this prompt. Resolve current `main`. Verify what is actually present. Execute the single highest-value next action. Prove it. Write the complete result back into the canonical Feed. Then hand off again using this same structure.
+## HANDOFF / CONTINUATION
 
-**TAG → YOU'RE IT.**
+The successor must leave behind:
+
+- one authoritative current HEAD;
+- one verified description of what happened;
+- one evidence-backed quality gate;
+- explicit UNKNOWN/BLOCKED boundaries;
+- exactly one new highest-value next action;
+- a complete executable continuation;
+- one directly persisted Activity Feed event;
+- a re-resolved post-mutation `main` SHA.
+
+After that, the following Naya consumes the baton rather than asking Shawn to explain it again. If a deterministic failure occurs, the successor repairs the first causal failure and hands off again from the newly verified state.
+
+## TAG → YOU'RE IT
+
+**TAG → YOU'RE IT → EXECUTE.**
