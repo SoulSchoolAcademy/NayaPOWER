@@ -7,8 +7,9 @@ on:
       - '.naya/**'
       - 'scripts/build-primary-intelligence-feed.py'
       - 'NAYANET/HUB/**'
-      - 'SUPERBRAIN/NAYA-ACTIVITY/**'
       - '.github/workflows/verify-primary-intelligence-system.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
 
 permissions:
