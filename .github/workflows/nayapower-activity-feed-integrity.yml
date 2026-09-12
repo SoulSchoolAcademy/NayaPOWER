@@ -1,0 +1,40 @@
+name: NayaPOWER Activity Feed Integrity
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '.github/workflows/nayapower-activity-feed-integrity.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nayapower-activity-feed-integrity-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate Naya-to-Naya Activity Feed
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 1
+
+      - name: Prove checkout identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          ACTUAL="$(git rev-parse HEAD)"
+          test "$ACTUAL" = "${GITHUB_SHA}"
+          echo "TRIGGER_SHA=${GITHUB_SHA}"
+          echo "CHECKED_OUT_SHA=${ACTUAL}"
+          echo "EXACT_HEAD=PASS"
+
+      - name: Validate feed protocol and daily streams
+        run: python3 SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py
