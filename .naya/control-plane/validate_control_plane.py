@@ -82,7 +82,7 @@ def validate_kernel_self_test():
     if not KERNEL_IMPL.is_file(): fail('MISSING: .naya/control-plane/governance_kernel.py')
     spec=importlib.util.spec_from_file_location('naya_governance_kernel',KERNEL_IMPL)
     if spec is None or spec.loader is None: fail('unable to load governance kernel implementation')
-    module=importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+    module=importlib.util.module_from_spec(spec); sys.modules[spec.name]=module; spec.loader.exec_module(module)
     result=module.self_test()
     if result.get('status')!='GREEN': fail('governance kernel self-test not GREEN')
 def validate_scenarios():
