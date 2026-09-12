@@ -1,0 +1,53 @@
+name: Package NayaNET.APP Cloudflare ZIP (PR Verification)
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'NAYANET-APP-ENTRANCE/**'
+      - '.github/workflows/package-nayanet-app-cloudflare-pr.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PR source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify source and build clean ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f NAYANET-APP-ENTRANCE/index.html
+          test -f NAYANET-APP-ENTRANCE/README.md
+          test -f NAYANET-APP-ENTRANCE/manifest.webmanifest
+          test -f NAYANET-APP-ENTRANCE/icon.svg
+          test ! -e NAYANET-APP-ENTRANCE/package.json
+          test ! -e NAYANET-APP-ENTRANCE/wrangler.toml
+          grep -q 'Welcome to <em>NayaNET</em>' NAYANET-APP-ENTRANCE/index.html
+          grep -q 'Learn. Create. Connect. Grow.' NAYANET-APP-ENTRANCE/index.html
+          grep -q 'Humans and AI, becoming more intelligent together.' NAYANET-APP-ENTRANCE/index.html
+          grep -q 'Smart Identity' NAYANET-APP-ENTRANCE/index.html
+          grep -q 'nayanet.app' NAYANET-APP-ENTRANCE/index.html
+          mkdir -p dist
+          cd NAYANET-APP-ENTRANCE
+          zip -r ../dist/NAYANET-APP-CLOUDFLARE.zip index.html manifest.webmanifest icon.svg README.md
+          cd ../dist
+          sha256sum NAYANET-APP-CLOUDFLARE.zip | tee NAYANET-APP-CLOUDFLARE.sha256
+          unzip -l NAYANET-APP-CLOUDFLARE.zip
+
+      - name: Upload clean Cloudflare ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: NAYANET-APP-CLOUDFLARE
+          path: |
+            dist/NAYANET-APP-CLOUDFLARE.zip
+            dist/NAYANET-APP-CLOUDFLARE.sha256
+          if-no-files-found: error
+          retention-days: 30
