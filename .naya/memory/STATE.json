@@ -13,9 +13,10 @@
   "live_identity_rule": "Resolve repository and HEAD from executing Git at validation time. Stored commit values are never authoritative.",
   "current": {
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "priority": "P0 — CONTINUOUS SMART FLOW / COLD-NAYA RESTORE",
     "active_block": "TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION",
     "active_block_status": "ACTIVE",
-    "next_action": "Resolve live main HEAD at execution time; inspect the newest Superbrain Gate and related authoritative runs for that exact HEAD; retrieve any diagnostic artifacts; if a first runtime command is exposed, reproduce and repair only that evidence-backed boundary, then rerun Torch 9 and the full gate; if no steps/logs/artifacts are produced, preserve UNKNOWN and move execution to a repository-capable runtime rather than guessing.",
+    "next_action": "Resolve live main HEAD at execution time; run the canonical cold-start acceptance contract in a repository-capable runtime; if the first failure is deterministic, surgically repair only that boundary and rerun; once cold-start coherence is proven, inspect the newest authoritative Superbrain/related runs for that exact HEAD, retrieve evidence, and continue Torch 12; if no executable runtime evidence is available, preserve UNKNOWN and move to the strongest repository-capable execution plane rather than guessing.",
     "next_action_count": 1
   },
   "continuity_priority_zero": {
@@ -31,12 +32,13 @@
     "This file is a derived compatibility/history projection only.",
     "Torch 9 customer activation composition has an isolated deterministic suite and the canonical Superbrain gate invokes it.",
     "The current active block is TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION.",
+    "Priority Zero is now the cold-Naya continuity boundary; runtime proof resumes after that boundary is freshly verified.",
     "A complete cold-Naya behavioral proof beyond repository-level acceptance remains a separate external runtime boundary."
   ],
   "unknown": [
-    "Fresh successful Naya Control Plane result after the current continuity-authority repair.",
+    "Fresh successful Naya Control Plane result after the current Priority Zero continuity repair.",
     "Fresh successful Superbrain Gate, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD.",
-    "Exact current production runtime parity until fresh deployment and independent verification evidence exists.",
+    "Exact current production runtime parity until a fresh canonical deployment completes and independently verifies it.",
     "External LLM cold-start behavioral proof beyond repository-level acceptance.",
     "Local repository runtime execution from this connector session."
   ],
