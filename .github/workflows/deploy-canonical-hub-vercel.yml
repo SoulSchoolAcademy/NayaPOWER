@@ -1,4 +1,4 @@
-name: Retired Legacy Canonical Hub Vercel Deployment
+name: Retired Legacy Canonical Hub Vercel Workflow
 
 # Retired: deployment authority is centralized in
 # .github/workflows/authorized-vercel-release.yml.
@@ -12,8 +12,8 @@ jobs:
   retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Legacy deployment retired
+      - name: Legacy workflow retired
         run: |
-          echo 'LEGACY_CANONICAL_HUB_VERCEL_DEPLOYMENT=RETIRED'
-          echo 'CANONICAL_DEPLOYMENT=.github/workflows/authorized-vercel-release.yml'
+          echo 'LEGACY_CANONICAL_HUB_RELEASE=RETIRED'
+          echo 'CANONICAL_RELEASE_CONTROL=.github/workflows/authorized-vercel-release.yml'
           echo 'RULE=ONE_HUMAN_AUTHORIZED_VERCEL_DEPLOYMENT_CONTROL_PLANE'
