@@ -2,6 +2,7 @@ import unittest
 
 from governance_kernel import (
     Authority,
+    AuthorityRegistry,
     DecisionObject,
     Epistemic,
     GovernanceState,
@@ -48,6 +49,11 @@ class GovernanceKernelTests(unittest.TestCase):
             necessary_power=frozenset({"repo_read", "repo_write"}),
             requested_power=frozenset({"repo_read", "repo_write"}),
         )
+
+    def test_registry_requires_explicit_known_id(self):
+        registry = AuthorityRegistry({self.authority.authority_id: self.authority})
+        self.assertIs(registry.resolve("AUTH-001"), self.authority)
+        self.assertIsNone(registry.resolve("AUTH-FABRICATED"))
 
     def test_valid_decision_is_authorized(self):
         result = evaluate(self.decision, self.authority)
