@@ -13,10 +13,10 @@
   "live_identity_rule": "Resolve repository and HEAD from executing Git at validation time. Stored commit values are never authoritative.",
   "current": {
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-    "priority": "P0 — CONTINUOUS SMART FLOW / COLD-NAYA RESTORE",
-    "active_block": "TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION",
+    "priority": "P0 — MACHINE TRUTH RESTORATION",
+    "active_block": "TORCH-59-MACHINE-TRUTH-RESTORATION",
     "active_block_status": "ACTIVE",
-    "next_action": "Resolve live main, run the canonical control-plane and system-integrity checks on that exact HEAD, repair the FIRST deterministic repository defect found, then re-resolve main and repeat until the repository-side integrity surface is clean. After that, obtain fresh P0 evidence only if still necessary; preserve BLOCKED_EXTERNAL_TARGET if NAYA_POWER_TARGET_URL remains unavailable.",
+    "next_action": "Execute the first implementation blocker revealed by the reconciled machine state, using the smallest coherent change that unlocks the most verified downstream value; verify it, record it, and pass the next torch.",
     "next_action_count": 1
   },
   "continuity_priority_zero": {
@@ -30,13 +30,12 @@
     "Live Git HEAD is the repository identity source of truth.",
     "The control-plane STATE/BLOCK/MAP/PROOF surfaces are the canonical operational control plane.",
     "This file is a derived compatibility/history projection only.",
-    "Torch 9 customer activation composition has an isolated deterministic suite and the canonical Superbrain gate invokes it.",
-    "The current active block is TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION.",
-    "Priority Zero is now the cold-Naya continuity boundary; runtime proof resumes after that boundary is freshly verified.",
+    "The current active block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
+    "The current canonical next action is to execute the first implementation blocker revealed by reconciled machine state, verify it, record it, and pass the next torch.",
     "A complete cold-Naya behavioral proof beyond repository-level acceptance remains a separate external runtime boundary."
   ],
   "unknown": [
-    "Fresh successful Naya Control Plane result after the current Priority Zero continuity repair.",
+    "Fresh successful Naya Control Plane result after the current compatibility projection repair.",
     "Fresh successful Superbrain Gate, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD.",
     "Exact current production runtime parity until a fresh canonical deployment completes and independently verifies it.",
     "External LLM cold-start behavioral proof beyond repository-level acceptance.",
