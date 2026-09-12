@@ -1,5 +1,7 @@
 name: P0 — Repair canonical derived event index once
 
+# Triggered by this update so the one-time repair executes against the exact resulting main HEAD.
+
 on:
   push:
     branches: [main]
