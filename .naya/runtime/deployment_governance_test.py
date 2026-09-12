@@ -2,6 +2,8 @@
 """Fail-closed regression tests for NayaPOWER deployment governance."""
 from __future__ import annotations
 
+from datetime import datetime, timedelta, timezone
+import importlib.util
 import json
 from pathlib import Path
 
@@ -37,6 +39,34 @@ def deployment_allowed(*, authorization: dict, commit_sha: str, target: str) -> 
     )
 
 
+def kernel_release_authorization(*, authorization: dict, commit_sha: str, target: str):
+    module_path = ROOT / ".naya" / "runtime" / "release_authorization.py"
+    spec = importlib.util.spec_from_file_location("naya_release_authorization", module_path)
+    assert spec is not None and spec.loader is not None
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.authorize(authorization=authorization, commit_sha=commit_sha, target_environment=target)
+
+
+def valid_kernel_authorization(commit_sha="a" * 40, target="preview"):
+    now = datetime.now(timezone.utc)
+    return {
+        "status": "AUTHORIZED",
+        "repository": "SoulSchoolAcademy/NayaPOWER",
+        "commit_sha": commit_sha,
+        "target_environment": target,
+        "deployment_surface": "vercel",
+        "vercel_project_id": CANONICAL_PROJECT_ID,
+        "release_id": "REL-KERNEL-TEST",
+        "release_reason": "kernel boundary regression test",
+        "verification": {"status": "PASS", "evidence": ["test evidence"]},
+        "authorized_by": "test-human",
+        "authorized_at": now.isoformat(),
+        "expires_at": (now + timedelta(hours=1)).isoformat(),
+        "approval": "EXPLICIT_APPROVAL_GRANTED",
+    }
+
+
 def test_vercel_git_deployments_disabled():
     assert load(VERCEL)["git"]["deploymentEnabled"] is False
 
@@ -65,36 +95,41 @@ def test_normal_commit_does_not_authorize_deployment():
 
 
 def test_wrong_commit_is_denied_even_when_other_fields_are_valid():
-    auth = {
-        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123", "target_environment": "production",
-        "deployment_surface": "vercel", "vercel_project_id": CANONICAL_PROJECT_ID,
-        "approval": "EXPLICIT_APPROVAL_GRANTED",
-        "verification": {"status": "PASS", "evidence": ["tests passed"]},
-    }
+    auth = valid_kernel_authorization(commit_sha="abc123")
     assert not deployment_allowed(authorization=auth, commit_sha="different", target="production")
 
 
 def test_wrong_vercel_project_is_denied():
-    auth = {
-        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123", "target_environment": "production",
-        "deployment_surface": "vercel", "vercel_project_id": "wrong-project",
-        "approval": "EXPLICIT_APPROVAL_GRANTED",
-        "verification": {"status": "PASS", "evidence": ["tests passed"]},
-    }
+    auth = valid_kernel_authorization(commit_sha="abc123", target="production")
+    auth["vercel_project_id"] = "wrong-project"
     assert not deployment_allowed(authorization=auth, commit_sha="abc123", target="production")
 
 
-def test_authorized_release_is_permitted():
-    auth = {
-        "status": "AUTHORIZED", "repository": "SoulSchoolAcademy/NayaPOWER",
-        "commit_sha": "abc123", "target_environment": "production",
-        "deployment_surface": "vercel", "vercel_project_id": CANONICAL_PROJECT_ID,
-        "approval": "EXPLICIT_APPROVAL_GRANTED",
-        "verification": {"status": "PASS", "evidence": ["tests passed"]},
-    }
+def test_authorized_release_is_permitted_by_legacy_boundary():
+    auth = valid_kernel_authorization(commit_sha="abc123", target="production")
     assert deployment_allowed(authorization=auth, commit_sha="abc123", target="production")
+
+
+def test_authorized_release_is_also_permitted_by_canonical_kernel():
+    auth = valid_kernel_authorization(commit_sha="a" * 40, target="production")
+    decision = kernel_release_authorization(authorization=auth, commit_sha="a" * 40, target="production")
+    assert decision.allowed, decision.reason
+    assert "canonical governance kernel" in decision.reason
+
+
+def test_kernel_denies_expired_release_authorization():
+    auth = valid_kernel_authorization()
+    auth["expires_at"] = (datetime.now(timezone.utc) - timedelta(seconds=1)).isoformat()
+    decision = kernel_release_authorization(authorization=auth, commit_sha=auth["commit_sha"], target=auth["target_environment"])
+    assert not decision.allowed
+    assert "expired" in decision.reason
+
+
+def test_kernel_denies_missing_release_authority():
+    auth = valid_kernel_authorization()
+    auth.pop("authorized_by")
+    decision = kernel_release_authorization(authorization=auth, commit_sha=auth["commit_sha"], target=auth["target_environment"])
+    assert not decision.allowed
 
 
 def test_only_the_canonical_release_workflow_may_contain_vercel_deploy_command():
@@ -125,6 +160,7 @@ def test_canonical_release_workflow_contains_the_only_deployment_boundary():
     assert "release_id" in text
     assert "explicit_approval_granted" in text
     assert "release_authorization.py" in text
+    assert "governance-kernel" in text
     assert "vercel_project_id" in text
     assert "vercel@latest deploy" in text
 
