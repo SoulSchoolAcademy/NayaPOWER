@@ -1,10 +1,12 @@
 {
   "$schema": "naya/governance-kernel/v1",
   "status": "CANONICAL",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "kernel_id": "NAYAPOWER-GOVERNANCE-KERNEL-V1",
   "purpose": "Provide one deterministic constitutional control plane for consequential decisions before execution.",
-  "constitutional_authority": "NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md",
+  "constitutional_authority": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+  "constitutional_authority_status": "CURRENT_REPOSITORY_CONSTITUTION",
+  "future_authority_note": "The planned NayaPOWER Ultimate Governance Act is not yet a current repository artifact and therefore cannot be named as present authority. When formally adopted, its promotion must be governed and recorded as a constitutional amendment.",
   "fail_closed": true,
   "mandatory_gates": [
     "identity",
@@ -43,6 +45,7 @@
   "risk_model": {
     "dimensions": ["uncertainty", "consequence", "irreversibility"],
     "formula": "uncertainty * consequence * irreversibility",
+    "implementation_mapping": "The decision field `reversibility` is currently interpreted as the numeric irreversibility factor for backward compatibility with the executable governance adapter. Future schema promotion must rename this field only through a governed migration.",
     "tiers": {
       "R0": {"max_score": 1, "governance": "autonomous"},
       "R1": {"max_score": 8, "governance": "lightweight_verification"},
