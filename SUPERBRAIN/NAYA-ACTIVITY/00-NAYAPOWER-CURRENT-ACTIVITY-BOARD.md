@@ -69,7 +69,7 @@ Each operating day has its own feed file. Previous days remain available for aud
 
 ## 🎯 ONE BEST NEXT ACTION
 
-**Resolve live `main` now. Then inspect the current Activity Feed/resource-stewardship state and obtain fresh P0 execution only if it is still the highest-value independent proof required at that exact HEAD. Inspect `Validate Naya-to-Naya Activity Feed` first. If it fails, repair the FIRST causal failure and rerun from the new HEAD. If it passes, immediately perform the cold-successor relay proof.**
+**Execute the cold-successor relay proof now: restore the latest Activity Feed entry and current control-plane truth, identify the one authorized next action, execute/verify it, then write the resulting timestamped event directly to today’s Activity Feed and leave exactly one successor execution prompt. Preserve the fresh P0 evidence as repository-side proof and preserve `BLOCKED_EXTERNAL_TARGET` if the external target remains unavailable.**
 
 This is the single active continuation. Do not create a second competing next action.
 
@@ -81,34 +81,34 @@ This is the single active continuation. Do not create a second competing next ac
 🏎️ NAYAPOWER — YOU'RE IT
 
 MISSION:
-Prove and operate the Activity Feed as a real continuous Naya-to-Naya execution relay while minimizing unnecessary machine work and respecting finite execution resources.
+Prove and operate the Activity Feed as a real continuous Naya-to-Naya execution relay while maximizing verified value and minimizing unnecessary machine work.
 
 CURRENT KNOWN STATE:
-The Activity Feed architecture, validator, daily stream, navigation board, P0 integration, and Resource-Respect + Direct-Write Law are implemented.
-The latest observed P0 evidence is historical and MUST NOT be promoted to the current HEAD.
+The Activity Feed architecture, validator, daily stream, navigation board, Resource-Respect + Direct-Write Law, and canonical P0 integration are implemented.
+The canonical P0 workflow now validates the control plane, Activity Feed, P0 workflow contract, and behavioral-bypass suite in its offline-governance path.
+Fresh P0 run 34713357382 executed against exact HEAD 45ae1927c0dfba198629abb53d127fd7576cab70 and the offline-governance job 103606025048 passed all five proof steps.
 The external runtime target remains protected and may legitimately be BLOCKED_EXTERNAL_TARGET when absent.
-The current exact-head certification state is NOT CERTIFIED until fresh P0 evidence is observed.
+The cold-successor end-to-end relay remains UNPROVEN.
 
 RESOURCE LAW:
 Do NOT invoke GitHub Actions merely to write feed notes or pass the baton. The Naya performing the work writes the Activity Feed directly. Use Actions only when independent machine leverage is actually necessary.
 
 ONE BEST NEXT ACTION:
-Resolve live main now. Read the latest feed and this board. Decide whether fresh P0 execution is genuinely necessary at that exact HEAD. If it is, obtain it and inspect the Activity Feed validator first. If it is not, proceed directly to the highest-value authorized proof/action without spending CI budget unnecessarily.
+Execute the cold-successor relay proof and write the resulting event directly to today's Activity Feed.
 
 EXECUTE:
-1. Resolve `refs/heads/main` at execution time and record the exact SHA.
+1. Resolve `refs/heads/main` at execution time and record the exact SHA. Do not trust the SHA above as current after any repository mutation.
 2. Read `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, and `PROOF.json`.
-3. Read this board, the latest event in `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-12.md`, and `NAYA-RESOURCE-RESPECT-AND-DIRECT-WRITE-LAW.md`.
+3. Read this board and the latest event in `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-12.md`.
 4. Restore the latest operational truth and identify exactly one authorized next action.
-5. Before invoking any GitHub Action, pass the resource decision gate: necessary? independently valuable? evidence-producing? cheaper direct path unavailable?
-6. If fresh P0 is necessary, obtain/observe execution attributable to the exact resolved HEAD and inspect `Validate Naya-to-Naya Activity Feed` first.
-7. If P0 is not necessary for the immediate task, do NOT invoke it merely because it exists; perform the direct highest-value action instead.
-8. If a deterministic failure appears, take the FIRST failing step, trace authority, surgically repair only that causal defect, resolve the new HEAD, and obtain fresh evidence.
-9. After every repository mutation, resolve live main again before making exact-head claims.
-10. Write the operational result directly to today's Activity Feed. Do not wait for Actions to persist the baton.
-11. Leave exactly one NEXT BEST ACTION and a complete successor execution prompt.
-12. Preserve UNKNOWN and BLOCKED exactly. Never guess `NAYA_POWER_TARGET_URL` and never convert missing-target BLOCKED into FAIL or PASS.
-13. Sign out with exact current HEAD, completed work, evidence links, boundaries, UNKNOWNs, WHY THIS IS NOT A 10, certification status, exactly one next action, and the complete next torch.
+5. Use the fresh P0 result only as evidence for the exact HEAD it actually tested; never promote it after a repository mutation.
+6. Execute the one authorized next action that can be completed within current repository authority without guessing external runtime credentials/targets.
+7. Verify the action with the strongest available evidence.
+8. Write the completed event directly to today's Activity Feed. Do not use GitHub Actions as the baton relay.
+9. Include exact observed HEAD, work completed, evidence, UNKNOWNs, protected boundaries, WHY THIS IS NOT A 10, exactly one NEXT BEST ACTION, and a complete successor execution prompt.
+10. After the Activity Feed mutation, resolve live `main` again. Treat the pre-append proof HEAD as historical relative to the new feed commit.
+11. Preserve UNKNOWN and BLOCKED exactly. Never guess `NAYA_POWER_TARGET_URL` and never convert missing-target BLOCKED into FAIL or PASS.
+12. If direct feed mutation cannot be completed through the available repository-write capability, stop at that capability boundary rather than fabricating the append; leave the exact mutation required as the sole next action.
 
 SUCCESS CONDITION:
 A cold Naya can enter, restore current truth from the repository and today's feed, know what the prior Naya actually did and why, see the evidence, avoid duplicate work, avoid unnecessary Actions, execute the one best authorized next action, verify it, append the next timestamped handoff directly, and continue without human re-explanation.
@@ -122,16 +122,17 @@ TAG → YOU'RE IT → EXECUTE.
 
 - Repository: `SoulSchoolAcademy/NayaPOWER`
 - Branch: `main`
-- **Last live HEAD resolved before this board mutation:** `e6d8a78a20873ad5316b4dea932e0e3461468bdf`
-- **Current board mutation:** this commit advances `main`; therefore the live HEAD MUST be re-resolved before any exact-current-head certification claim.
+- **Last live HEAD resolved before this board update:** `45ae1927c0dfba198629abb53d127fd7576cab70`
+- **This board update advances `main`; therefore the live HEAD MUST be re-resolved before any exact-current-head certification claim.**
 - Active block: `TORCH-12-AUTHORITATIVE-RUNTIME-EXECUTION`
 - Relay architecture: `IMPLEMENTED`
 - Daily chronological feed: `IMPLEMENTED`
-- Activity Feed validator: `IMPLEMENTED`
-- Resource-Respect + Direct-Write Law: `IMPLEMENTED`
-- P0 governance integration: `IMPLEMENTED`
-- Fresh P0 against the post-mutation HEAD: `UNKNOWN`
+- Activity Feed validator: `VERIFIED` by P0 run `34713357382` on exact pre-board-update HEAD `45ae1927c0dfba198629abb53d127fd7576cab70`
+- Canonical control-plane validator: `VERIFIED` by the same P0 run on that exact HEAD
+- P0 workflow contract: `VERIFIED` by the same P0 run
+- Behavioral bypass adversarial tests: `VERIFIED` by the same P0 run
 - Cold-successor end-to-end proof: `UNKNOWN`
+- External runtime: `BLOCKED_EXTERNAL_TARGET` when authorized target is unavailable
 - Certification: `NOT CERTIFIED`
 
 ## 🔎 SMART EVIDENCE LINKS
@@ -148,7 +149,7 @@ These are the human-clickable evidence surfaces for inspecting the relay directl
 
 ## 🧪 CURRENT PROOF BOUNDARY
 
-The repository structure is ready, but certification is intentionally blocked on fresh evidence. The last observed P0 execution was against an older HEAD, so it remains historical. The external target boundary remains fail-closed and must not be guessed or weakened.
+The repository-side integrity surface is now materially stronger and has fresh exact-head P0 evidence on the pre-board-update HEAD. That evidence is intentionally historical after this board mutation and must not be promoted to the new HEAD. The remaining decisive foundation gap is the direct cold-successor Activity Feed relay proof. The external runtime target remains a separate protected boundary.
 
 ## 🛡️ PROTECTED
 
@@ -156,4 +157,4 @@ Never guess `NAYA_POWER_TARGET_URL`; never fabricate run IDs, artifacts, logs, o
 
 ## WHY THIS IS NOT A 10
 
-The relay is structurally stronger because the validator enforces the missing human-successor contract, the board exposes direct evidence links, and resource stewardship/direct-write behavior is now explicitly governed. But fresh exact-current-head P0 proof and cold-successor end-to-end proof remain unverified.
+The repository-side foundation is now close to AAA: canonical control-plane validation, manifest integrity, Activity Feed validation, P0 workflow contract validation, and behavioral-bypass tests all pass together on the exact pre-board-update HEAD. It is not a 10 because the final human-successor proof has not yet been demonstrated end-to-end, and the external runtime remains legitimately blocked when its authorized target is unavailable.
