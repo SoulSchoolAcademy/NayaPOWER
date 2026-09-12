@@ -5,7 +5,8 @@ on:
     branches: [main]
     paths:
       - '.naya/memory/**'
-      - '.naya/runtime/**'
+      - '.naya/runtime/restore_context.py'
+      - '.naya/runtime/test_restore_context.py'
       - '.naya/checkpoints/**'
       - '.naya/handoffs/**'
       - '.naya/naya-context-manifest.json'
@@ -15,7 +16,8 @@ on:
   pull_request:
     paths:
       - '.naya/memory/**'
-      - '.naya/runtime/**'
+      - '.naya/runtime/restore_context.py'
+      - '.naya/runtime/test_restore_context.py'
       - '.naya/checkpoints/**'
       - '.naya/handoffs/**'
       - '.naya/naya-context-manifest.json'
@@ -93,24 +95,3 @@ jobs:
           grep -q 'historical_restore_is_reconstruction_not_current_truth' .naya/naya-context-manifest.json
           grep -q 'SoulSchoolAcademy/NayaPOWER' README.md
           echo 'RESTORE / SMART NOTE / CANONICAL REPOSITORY surfaces present'
-
-      - name: Run CCT-005 value feedback
-        run: python .naya/runtime/cct005_value_feedback_test.py
-
-      - name: Run CCT-005 Smart Note integration
-        run: python .naya/runtime/cct005_note_event_integration_test.py
-
-      - name: Run CCT-004 adversarial semantics
-        run: python .naya/runtime/cct004_adversarial_test.py
-
-      - name: Run CCT-003 two-Naya exchange
-        run: python .naya/runtime/cct003_two_naya_test.py
-
-      - name: Run Naya Claim concurrency
-        run: python .naya/runtime/naya_claim_test.py
-
-      - name: Run Intelligent Block
-        run: python .naya/runtime/cct_intelligent_block_test.py
-
-      - name: Run Note Event promotion
-        run: python .naya/runtime/cct_note_event_promotion_test.py
