@@ -67,12 +67,13 @@ class BehavioralBypassTests(unittest.TestCase):
         self.assertIn("actor/action/scope", " ".join(result.reasons))
 
     def test_stopped_state_cannot_resume_or_retry(self):
-        with self.assertRaises(ValueError):
-            transition(GovernanceState.STOPPED, GovernanceState.INVESTIGATING)
-        with self.assertRaises(ValueError):
-            transition(GovernanceState.STOPPED, GovernanceState.EXECUTING)
-        with self.assertRaises(ValueError):
-            transition(GovernanceState.STOPPED, GovernanceState.AUTHORIZED)
+        for target in (
+            GovernanceState.INVESTIGATING,
+            GovernanceState.EXECUTING,
+            GovernanceState.AUTHORIZED,
+        ):
+            with self.assertRaises(ValueError):
+                transition(GovernanceState.STOPPED, target)
 
     def test_stale_expired_authorization_is_denied(self):
         now = datetime.now(timezone.utc)
@@ -129,6 +130,15 @@ class BehavioralBypassTests(unittest.TestCase):
         )
         self.assertFalse(result.allowed)
         self.assertIn("exceeds necessary power", " ".join(result.reasons))
+
+    def test_expiry_is_checked_again_at_execution_boundary(self):
+        issued = datetime.now(timezone.utc)
+        expires = issued + timedelta(seconds=1)
+        grant = authority(expires_at=expires.isoformat())
+        before = evaluate(decision(), grant, now=(issued + timedelta(milliseconds=500)).isoformat())
+        after = evaluate(decision(), grant, now=(issued + timedelta(seconds=2)).isoformat())
+        self.assertTrue(before.allowed)
+        self.assertFalse(after.allowed)
 
     def test_verified_state_has_no_outgoing_transition(self):
         for target in GovernanceState:
