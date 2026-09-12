@@ -1,89 +1,19 @@
-name: Deploy Canonical Intelligent Hub to Vercel
+name: Retired Legacy Canonical Hub Vercel Deployment
 
+# Retired: deployment authority is centralized in
+# .github/workflows/authorized-vercel-release.yml.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'NAYANET/HUB/**'
-      - 'scripts/build-primary-intelligence-feed.py'
-      - 'scripts/nayanet-cognitive-engine.js'
-      - '.github/workflows/deploy-canonical-hub-vercel.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
-env:
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-  VERCEL_ORG_ID: team_RQnhoOb3bAXxMlcr67GFTu3Q
-  VERCEL_PROJECT_ID: prj_cHa9gwrtscCW8JuMDjcvw6DafaOK
-
-concurrency:
-  group: canonical-hub-vercel-production
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    name: Build, deploy, and live-verify canonical Hub
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact main commit
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
-
-      - name: Verify canonical Hub source
-        shell: bash
+      - name: Legacy deployment retired
         run: |
-          set -euo pipefail
-          test -f NAYANET/HUB/index.html
-          test -f NAYANET/HUB/src/app/App.tsx
-          test -f NAYANET/HUB/src/identity/session.ts
-          test -f NAYANET/HUB/src/data/pis.ts
-          test -f NAYANET/HUB/src/identity/AuthPanel.tsx
-          grep -q 'NAYANET-HUB-REACT-CANONICAL' NAYANET/HUB/index.html
-          grep -q 'Primary Intelligence System' NAYANET/HUB/src/app/App.tsx
-          echo "CANONICAL HUB SOURCE VERIFIED: $(git rev-parse HEAD)"
-
-      - name: Install Hub dependencies
-        working-directory: NAYANET/HUB
-        run: npm install
-
-      - name: Typecheck Hub
-        working-directory: NAYANET/HUB
-        run: npm run typecheck
-
-      - name: Production-build Hub
-        working-directory: NAYANET/HUB
-        env:
-          VITE_RELEASE_COMMIT: ${{ github.sha }}
-        run: npm run build
-
-      - name: Require Vercel credential
-        shell: bash
-        run: test -n "$VERCEL_TOKEN"
-
-      - name: Deploy current Hub to canonical Vercel project
-        id: deploy
-        working-directory: NAYANET/HUB
-        shell: bash
-        run: |
-          set -euo pipefail
-          npx --yes vercel@latest deploy --token "$VERCEL_TOKEN" --yes --prod | tee /tmp/vercel-deploy.log
-          URL="$(grep -Eo 'https://[^[:space:]]+\.vercel\.app' /tmp/vercel-deploy.log | tail -n 1)"
-          test -n "$URL"
-          echo "url=$URL" >> "$GITHUB_OUTPUT"
-          echo "CANONICAL HUB DEPLOYMENT: $URL"
-
-      - name: Live-verify exact deployed artifact
-        env:
-          DEPLOYMENT_URL: ${{ steps.deploy.outputs.url }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          test "$(curl -L -sS -o /tmp/hub.html -w '%{http_code}' "$DEPLOYMENT_URL/")" = "200"
-          grep -q 'NAYANET-HUB-REACT-CANONICAL' /tmp/hub.html
-          grep -q 'NayaNET — Intelligent Hub' /tmp/hub.html
-          test "$(curl -L -sS -o /tmp/hub-feed.json -w '%{http_code}' "$DEPLOYMENT_URL/intelligence/pis-feed.json")" = "200"
-          grep -q 'PIS-1.0' /tmp/hub-feed.json
-          echo "LIVE ARTIFACT VERIFIED: $DEPLOYMENT_URL"
+          echo 'LEGACY_CANONICAL_HUB_VERCEL_DEPLOYMENT=RETIRED'
+          echo 'CANONICAL_DEPLOYMENT=.github/workflows/authorized-vercel-release.yml'
+          echo 'RULE=ONE_HUMAN_AUTHORIZED_VERCEL_DEPLOYMENT_CONTROL_PLANE'
