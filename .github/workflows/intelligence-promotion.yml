@@ -1,7 +1,9 @@
 name: Naya Intelligence — Lesson Promotion
 
 # Canonical pipeline: activity → intelligence → learning → evidence → feed.
-# Generated projections are intentionally idempotent so the workflow cannot self-loop.
+# Generated projections remain idempotent, but persistent intelligence mutation
+# is consequential and therefore requires explicit workflow authorization and
+# the canonical NayaPOWER governance kernel.
 
 on:
   push:
@@ -17,18 +19,44 @@ on:
       - 'tools/test_compound_intelligence.py'
       - '.github/workflows/intelligence-promotion.yml'
   workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to persist promoted intelligence state
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
 
 permissions:
   contents: write
 
 jobs:
   promote:
+    if: github.event_name == 'workflow_dispatch' && inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout exact source
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "intelligence-promotion-repository-mutation" \
+            --permission "repo:write:intelligence-promotion" \
+            --request "promote:persistent-intelligence-state" \
+            --mission "Persist verified compounding intelligence projections without silently inheriting authority" \
+            --uncertainty 3 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","paths":["MASTER-NOTES/ADAPTIVE-LEARNING","MASTER-NOTES/INTELLIGENCE-PROMOTIONS","MASTER-NOTES/NAYA-NOTES","MASTER-NOTES/SHAWN-NOTES","MASTER-NOTES/INTELLIGENCE-FEED","MASTER-NOTES/PRIMARY-INTELLIGENCE-HUB.md"],"operation":"write-and-push"}' \
+            --evidence "explicit workflow_dispatch approval granted" \
+            --evidence "promotion acceptance tests required"
 
       - name: Run Promotion Engine acceptance tests
         run: python3 tools/test_promote_intelligence.py
@@ -82,5 +110,6 @@ jobs:
             MASTER-NOTES/SHAWN-NOTES \
             MASTER-NOTES/INTELLIGENCE-FEED \
             MASTER-NOTES/PRIMARY-INTELLIGENCE-HUB.md
+          git diff --cached --check
           git commit -m "chore(intelligence): persist compounding learning state"
           git push
