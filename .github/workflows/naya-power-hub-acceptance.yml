@@ -1,31 +1,32 @@
-name: Naya Power NayaNET Hub Acceptance
+name: Naya Power Intelligent Hub Acceptance
 
 on:
   pull_request:
     paths:
-      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
+      - 'NAYANET/HUB/**'
+      - '.naya/governance/**'
       - '.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json'
       - '.naya/runtime/test_nayanet_hub_acceptance.py'
       - '.github/workflows/naya-power-hub-acceptance.yml'
   push:
     paths:
-      - 'NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/**'
+      - 'NAYANET/HUB/**'
+      - '.naya/governance/**'
       - '.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json'
       - '.naya/runtime/test_nayanet_hub_acceptance.py'
       - '.github/workflows/naya-power-hub-acceptance.yml'
+
+permissions:
+  contents: read
 
 jobs:
   canonical-hub-acceptance:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout canonical Hub and acceptance runtime only
-        uses: actions/checkout@v4
+      - name: Checkout canonical Hub and governance source
+        uses: actions/checkout@v6
         with:
-          sparse-checkout: |
-            /.naya/runtime/NAYA-POWER-HUB-ACCEPTANCE-CONTRACT-V1.json
-            /.naya/runtime/test_nayanet_hub_acceptance.py
-            /NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/
-          sparse-checkout-cone-mode: false
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -36,14 +37,36 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22'
+          cache: npm
+          cache-dependency-path: NAYANET/HUB/package-lock.json
 
-      - name: Compile acceptance test
-        run: python -m py_compile .naya/runtime/test_nayanet_hub_acceptance.py
-
-      - name: Check canonical JavaScript syntax
+      - name: Verify governance kernel and adapter
         run: |
-          node --check NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/nayanet-10.js
-          node --check NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/naya-data.js
+          python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py
+          python .naya/governance/test_governance_kernel.py
 
-      - name: Run canonical Hub source acceptance gate
-        run: python .naya/runtime/test_nayanet_hub_acceptance.py
+      - name: Install canonical Hub
+        working-directory: NAYANET/HUB
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck canonical Hub
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+
+      - name: Build canonical Hub
+        working-directory: NAYANET/HUB
+        run: npm run build
+
+      - name: Inspect canonical Hub artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          D='NAYANET/HUB/dist'
+          test -s "$D/index.html"
+          test -s "$D/nayanet-cognitive-engine.js"
+          APP_JS=$(find "$D/assets" -maxdepth 1 -type f -name '*.js' -print -quit)
+          test -n "$APP_JS"
+          test -s "$APP_JS"
+          for x in 'NayaNET' 'Intelligent Hub' 'IDENTITY' 'ACTIVITY FEED' 'PERSONAL INTELLIGENCE' 'COLLECTIVE INTELLIGENCE' 'Ask Naya' 'Create Smart Space' 'HUMAN' 'CHILD' 'GRANDMA' 'NAYA' 'MACHINE' 'WEAVER' 'LESSON' 'MEANING' 'ACTION' 'TRUST' 'RELATED INTELLIGENCE' 'SHARE' 'CONNECT' 'NAYANET-HUB-REACT-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" "$D/index.html" "$APP_JS"; then echo "FORBIDDEN_ARTIFACT=$x"; exit 1; fi; done
+          echo 'CANONICAL_HUB_ACCEPTANCE=PASS'
