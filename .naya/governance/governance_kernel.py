@@ -254,7 +254,7 @@ def evaluate(
         scope=decision.scope,
         now=now,
     ):
-        reasons.append("authority does not permit this actor/action/scope or is inactive")
+        reasons.append("authority does not permit this actor/action/scope")
         required.append("obtain or resolve valid active authority")
 
     if _has_material_unknowns(decision.epistemic):
