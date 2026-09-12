@@ -9,76 +9,79 @@ Every consequential execution path currently in scope must cross the canonical G
 
 ## Confirmed surfaces inspected
 
-| Surface | Consequential action | Pre-existing control | Kernel status | Action taken |
+| Surface | Consequential action | Previous control | Kernel status | Action taken |
 |---|---|---|---|---|
-| `.github/workflows/authorized-vercel-release.yml` | Deploy exact NayaNET artifact to Vercel | Release authorization + exact SHA + project binding + live verification | **ROUTED** | Release authorization now delegates final admission to canonical kernel; authorization receives bounded expiry |
-| `.naya/runtime/release_authorization.py` | Permit/deny Vercel release | Fail-closed release gate | **ROUTED** | Canonical kernel gate added after existing release checks |
-| `.naya/memory/smart_note_enforcement.py` | Admit consequential Smart Note capture | Smart Note evidence/persistence/receipt enforcement | **ROUTED** | Existing enforcement preserved and placed behind kernel admission |
-| `.github/workflows/build-aiscore-app-bridge.yml` | Write/push AIScore bridge | Explicit manual approval | **ROUTED** | Added canonical workflow kernel gate |
-| `.github/workflows/apply-maxess-result-bridge.yml` | Write/push MAXESS bridge | Explicit manual approval | **ROUTED** | Added canonical workflow kernel gate |
-| `.github/workflows/build-integrated-results.yml` | Write/push integrated Results artifact | Explicit manual approval | **ROUTED** | Added canonical workflow kernel gate |
-| `.github/workflows/2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml` | Write/push NayaNET Hub artifact | Explicit manual approval | **ROUTED** | Added canonical workflow kernel gate |
-| `.github/workflows/intelligence-promotion.yml` | Persist promoted intelligence projections | Previously automatic `push` trigger + write/push | **HARDENED** | Automatic mutation disabled; persistent promotion now requires explicit workflow dispatch approval + canonical kernel gate |
+| `.github/workflows/authorized-vercel-release.yml` | Deploy exact NayaNET artifact to Vercel | Release authorization + exact SHA + project binding + live verification | ROUTED | Release authorization now delegates final admission to canonical kernel; bounded expiry |
+| `.naya/runtime/release_authorization.py` | Permit/deny Vercel release | Fail-closed release gate | ROUTED | Canonical kernel gate added after existing release checks |
+| `.naya/memory/smart_note_enforcement.py` | Admit consequential Smart Note capture | Smart Note evidence/persistence/receipt enforcement | ROUTED | Existing enforcement preserved behind kernel admission |
+| `build-aiscore-app-bridge.yml` | Write/push AIScore bridge | Explicit manual approval | ROUTED | Added canonical workflow kernel gate |
+| `apply-maxess-result-bridge.yml` | Write/push MAXESS bridge | Explicit manual approval | ROUTED | Added canonical workflow kernel gate |
+| `build-integrated-results.yml` | Write/push integrated Results artifact | Explicit manual approval | ROUTED | Added canonical workflow kernel gate |
+| `2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml` | Write/push NayaNET Hub artifact | Explicit manual approval | ROUTED | Added canonical workflow kernel gate |
+| `intelligence-promotion.yml` | Persist promoted intelligence projections | Automatic push + write/push | HARDENED | Automatic mutation disabled; explicit dispatch + kernel gate required |
+| `execute-maxess-section01.yml` | Mutate MAXESS Section 01 checkpoint | Automatic branch push + write | HARDENED | Automatic mutation disabled; explicit dispatch + kernel gate required |
+| `maxess-result-hydration.yml` | Mutate E01–E04 result artifacts | Automatic main push + write | HARDENED | Automatic mutation disabled; explicit dispatch + kernel gate required |
 
-## First confirmed bypass
+## Confirmed bypasses and repairs
 
-`intelligence-promotion.yml` was the first newly confirmed consequential bypass after the kernel foundation work.
+### Bypass #1 — intelligence promotion
 
-It had `contents: write`, a `push` trigger on `main`, generated persistent intelligence state, and performed `git push` without crossing the canonical kernel. The existing workflow tests covered several manual mutation workflows but did not classify this automatic intelligence-promotion path as a kernel-governed mutation.
+`intelligence-promotion.yml` persisted intelligence state from an automatic `push` event with `contents: write` and `git push`, without the canonical kernel.
 
-### Surgical repair
+**Repair:** retained the trigger as an observation/activation event, but the mutating job now requires explicit `workflow_dispatch` approval and `.naya/control-plane/workflow_gate.py` admission.
 
-The workflow now:
+### Bypass #2 — MAXESS Section 01
 
-1. retains its existing intelligence promotion logic;
-2. retains the push trigger as an observation/activation event;
-3. refuses to execute the mutating job for automatic push events;
-4. requires explicit `workflow_dispatch` approval;
-5. crosses `.naya/control-plane/workflow_gate.py`;
-6. only then runs the existing promotion tests/build/persistence steps.
+`execute-maxess-section01.yml` had an automatic branch push trigger, write permission, and direct product mutation/push without the canonical kernel.
 
-This preserves the promotion implementation while removing silent consequential mutation.
+**Repair:** retained the trigger for detection/activation, but the mutating job now requires explicit dispatch approval and kernel admission.
+
+### Bypass #3 — MAXESS Result Hydration
+
+`maxess-result-hydration.yml` had an automatic main push trigger, write permission, and direct mutation of E01–E04 without the canonical kernel.
+
+**Repair:** retained the trigger for detection/activation, but the mutating job now requires explicit dispatch approval and kernel admission.
 
 ## Kernel adapter
 
-Created:
+Created `.naya/control-plane/workflow_gate.py`.
 
-`.naya/control-plane/workflow_gate.py`
+The adapter does not duplicate constitutional rules. It constructs canonical authority + decision objects and calls `GovernanceKernel().gate(...)` with explicit actor, purpose, permission, scope, evidence, bounded one-hour authority, non-delegability, and risk dimensions.
 
-This is a thin adapter. It does not duplicate constitutional rules. It constructs the canonical decision and authority objects and calls:
+## Targeted tests
 
-`GovernanceKernel().gate(...)`
+- `tests/test_governance_kernel.py`
+- `tests/test_smart_note_enforcement.py`
+- `tests/test_execution_edge_kernel_coverage.py`
+- `.naya/runtime/deployment_governance_test.py`
 
-The adapter uses bounded one-hour workflow authority, explicit actor/permission/purpose/scope, evidence, risk dimensions, and non-delegable authority.
+The execution-edge coverage suite now covers the known repository mutation workflows and verifies that the automatic mutation paths require explicit dispatch plus the canonical adapter.
 
-## Remaining inventory frontier
+## Remaining frontier
 
-The repository contains additional workflows with build/deploy/execute semantics that have not all been individually inspected yet. Their presence is not treated as proof of bypass, and their safety is not claimed.
+The repository contains additional build/deploy/execute/hydration workflows that have not all been individually inspected. Their presence is not treated as proof of bypass, and their safety is not claimed.
 
-The next inventory pass must inspect the remaining workflows named by the repository tree, especially:
+Continue inspecting workflows and code paths involving:
 
-- deployment/build workflows;
-- MAXESS execution/hydration workflows;
-- Hub build/deploy workflows;
-- score hydration workflows;
-- any workflow containing `git push`, external deployment commands, mutation APIs, or credential-backed side effects.
+- `git push`
+- external deployment commands
+- mutation APIs
+- credential-backed side effects
+- branch/ref mutation
+- artifact publication
+- scheduled/queued execution
+- agent/tool execution
 
 ## Evidence boundary
 
-Source-level routing is verified by GitHub read-back. Exact repository test execution remains **UNVERIFIED** while the GitHub Actions execution path is paused and the local environment lacks the repository/network execution context.
+Source-level routing is verified by GitHub read-back. Exact repository test execution remains **UNVERIFIED** while GitHub Actions is paused and the local environment lacks the repository/network execution context.
 
 No source inspection is promoted to runtime PASS.
 
 ## Current truth
 
-> **The canonical Governance Kernel now governs multiple real consequential paths, including deployment authorization, Smart Note admission, AIScore mutation, MAXESS mutation, integrated Results mutation, Hub mutation, and persistent intelligence promotion. Universal coverage across every consequential execution edge remains UNVERIFIED.**
+> **The canonical Governance Kernel now governs multiple real consequential paths, and three additional automatic mutation bypasses have been identified and surgically closed. Universal coverage across every consequential execution edge remains UNVERIFIED.**
 
 ## Next action
 
-Continue the repository-wide execution-edge inventory until every consequential mutation/deployment/tool boundary is either:
-
-`KERNEL-ROUTED` → targeted test → evidence
-
-or:
-
-`EXPLICITLY-DEFERRED / BLOCKED` with a recorded reason.
+Continue the repository-wide execution-edge inventory. Inspect the remaining build/deploy/execute/hydration workflows and credential-backed boundaries; route every confirmed consequential edge through the canonical kernel, add targeted fail-closed tests, obtain executable evidence when available, update the matrix/receipt, and continue until no in-scope consequential path remains outside the kernel.
