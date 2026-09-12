@@ -50,7 +50,11 @@ for path, event in loaded:
         assert 'human' in keys or 'shawn' in keys, f'{event.get("event_id")}: missing human representation'
     for rep in reps:
         role = str(rep.get('representation', '')).lower()
-        if role == 'machine':
+        is_machine = role == 'machine' or any(rep.get(k) for k in (
+            'canonical_repo', 'retrieval_keys', 'required_representation_roles',
+            'required_delivery', 'schema_role', 'preservation_rule'
+        ))
+        if is_machine:
             machine_operable = any(rep.get(k) for k in (
                 'title', 'summary', 'content', 'schema_role', 'retrieval_keys',
                 'required_representation_roles', 'single_canonical_event',
