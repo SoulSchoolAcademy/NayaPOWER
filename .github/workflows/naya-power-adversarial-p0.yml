@@ -7,6 +7,7 @@ on:
       - 'NAYA-POWER-ADVERSARIAL-TEST-SUITE-V1.0.md'
       - '.naya/governance/**'
       - '.naya/control-plane/**'
+      - '.naya/runtime/**'
       - '.github/workflows/**'
       - '.github/workflows/naya-power-adversarial-p0.yml'
   workflow_dispatch:
@@ -23,6 +24,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Run canonical cold-start continuity acceptance
+        run: python3 .naya/runtime/cold_start_activation.py
+      - name: Run canonical control-plane validator
+        run: python3 .naya/control-plane/validate_control_plane.py
       - name: Run P0 harness
         run: python3 tests/adversarial/run_p0.py
       - name: Run canonical governance kernel adversarial tests
