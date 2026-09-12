@@ -2,18 +2,28 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from governance_contract import AuthorityRegistry
 from host_executor import HostExecutorBridge
 from mission_state_store import LeadModeEngine, MissionStateStore
-from naya_power_runtime import (
-    ActionCandidate,
-    EvidenceState,
-    ExecutionReceipt,
-    MissionState,
-)
+from naya_power_runtime import ActionCandidate, EvidenceState, ExecutionReceipt, MissionState
 from quality_gate import OscarReview, Scorecard
 
 
 class HostExecutorBridgeTests(unittest.TestCase):
+    def make_registry(self):
+        return AuthorityRegistry.from_mapping(
+            {
+                "protocol": "naya-power-authority-registry/v1",
+                "authorities": [
+                    {
+                        "authority_id": "AUTH-TEST",
+                        "scope": "authorized execution",
+                        "status": "ACTIVE",
+                    }
+                ],
+            }
+        )
+
     def make_state(self):
         return MissionState(
             project="Naya Power",
@@ -27,16 +37,26 @@ class HostExecutorBridgeTests(unittest.TestCase):
             next_action_reason="Highest-value remaining gap.",
         )
 
+    def candidate(self, action_id, description, value, **kwargs):
+        return ActionCandidate(
+            action_id,
+            description,
+            value,
+            authority_id="AUTH-TEST",
+            authority_scope="authorized execution",
+            **kwargs,
+        )
+
     def test_cycle_executes_verifies_scores_and_persists_next_action(self):
         with tempfile.TemporaryDirectory() as directory:
-            store = MissionStateStore(Path(directory) / "mission-state.json")
+            store = MissionStateStore(Path(directory) / "mission-state.json", self.make_registry())
             store.save(self.make_state())
             engine = LeadModeEngine(store)
 
             executed = []
 
             def candidates(_restored):
-                return [ActionCandidate("bridge", "Execute bridge", 10)]
+                return [self.candidate("bridge", "Execute bridge", 10)]
 
             def executor(plan):
                 executed.append(plan.action.action_id)
@@ -66,13 +86,13 @@ class HostExecutorBridgeTests(unittest.TestCase):
 
     def test_no_eligible_action_produces_handoff_instead_of_fake_execution(self):
         with tempfile.TemporaryDirectory() as directory:
-            store = MissionStateStore(Path(directory) / "mission-state.json")
+            store = MissionStateStore(Path(directory) / "mission-state.json", self.make_registry())
             store.save(self.make_state())
             engine = LeadModeEngine(store)
             bridge = HostExecutorBridge(
                 engine,
                 lambda _restored: [
-                    ActionCandidate(
+                    self.candidate(
                         "human",
                         "Make irreversible decision",
                         10,

@@ -2,16 +2,26 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from governance_contract import AuthorityRegistry
 from mission_state_store import LeadModeEngine, MissionStateStore
-from naya_power_runtime import (
-    ActionCandidate,
-    EvidenceState,
-    ExecutionReceipt,
-    MissionState,
-)
+from naya_power_runtime import ActionCandidate, EvidenceState, ExecutionReceipt, MissionState
 
 
 class MissionStateStoreTests(unittest.TestCase):
+    def make_registry(self):
+        return AuthorityRegistry.from_mapping(
+            {
+                "protocol": "naya-power-authority-registry/v1",
+                "authorities": [
+                    {
+                        "authority_id": "AUTH-TEST",
+                        "scope": "runtime decision",
+                        "status": "ACTIVE",
+                    }
+                ],
+            }
+        )
+
     def make_state(self) -> MissionState:
         return MissionState(
             project="Naya Power",
@@ -23,6 +33,15 @@ class MissionStateStoreTests(unittest.TestCase):
             last_verified_state="Runtime persistence not yet verified.",
             next_action="persist-runtime-state",
             next_action_reason="Highest-value remaining runtime gap.",
+        )
+
+    def candidate(self, action_id, description, value):
+        return ActionCandidate(
+            action_id,
+            description,
+            value,
+            authority_id="AUTH-TEST",
+            authority_scope="runtime decision",
         )
 
     def test_atomic_save_and_restore(self):
@@ -38,15 +57,10 @@ class MissionStateStoreTests(unittest.TestCase):
 
     def test_lead_mode_persists_verified_result_and_next_move(self):
         with tempfile.TemporaryDirectory() as directory:
-            store = MissionStateStore(Path(directory) / "mission-state.json")
+            store = MissionStateStore(Path(directory) / "mission-state.json", self.make_registry())
             store.save(self.make_state())
             engine = LeadModeEngine(store)
-            plan = engine.choose(
-                [
-                    ActionCandidate("low", "Low-value work", 3),
-                    ActionCandidate("runtime", "Implement runtime persistence", 10),
-                ]
-            )
+            plan = engine.choose([self.candidate("low", "Low-value work", 3), self.candidate("runtime", "Implement runtime persistence", 10)])
             self.assertEqual(plan.action.action_id, "runtime")
             updated = engine.accept_execution(
                 plan,

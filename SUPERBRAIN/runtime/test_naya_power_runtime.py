@@ -1,5 +1,6 @@
 import unittest
 
+from governance_contract import AuthorityRegistry
 from naya_power_runtime import (
     ActionCandidate,
     BlockStatus,
@@ -14,6 +15,20 @@ from naya_power_runtime import (
 
 
 class MissionStateRuntimeTests(unittest.TestCase):
+    def make_registry(self):
+        return AuthorityRegistry.from_mapping(
+            {
+                "protocol": "naya-power-authority-registry/v1",
+                "authorities": [
+                    {
+                        "authority_id": "AUTH-TEST",
+                        "scope": "runtime decision",
+                        "status": "ACTIVE",
+                    }
+                ],
+            }
+        )
+
     def make_state(self) -> MissionState:
         return MissionState(
             project="Naya Power",
@@ -29,30 +44,31 @@ class MissionStateRuntimeTests(unittest.TestCase):
             next_action_reason="Highest-value executable delta.",
         )
 
+    def candidate(self, action_id, description, value, **kwargs):
+        return ActionCandidate(
+            action_id,
+            description,
+            value,
+            authority_id="AUTH-TEST",
+            authority_scope="runtime decision",
+            **kwargs,
+        )
+
     def test_invalid_is_not_zero_value(self):
         state = self.make_state()
-        invalid = ActionCandidate(
-            action_id="unsafe",
-            description="Destroy protected state",
-            value=9,
-            constitutional=False,
-        )
-        valid = ActionCandidate(
-            action_id="safe",
-            description="Implement surgical runtime kernel",
-            value=8,
-        )
-        plan = choose_next_action(state, [invalid, valid])
+        invalid = self.candidate("unsafe", "Destroy protected state", 9, constitutional=False)
+        valid = self.candidate("safe", "Implement surgical runtime kernel", 8)
+        plan = choose_next_action(state, [invalid, valid], registry=self.make_registry())
         self.assertEqual(plan.action.action_id, "safe")
 
     def test_exactly_one_next_action_is_selected(self):
         state = self.make_state()
         candidates = [
-            ActionCandidate("a", "Lower-value action", 4),
-            ActionCandidate("b", "Highest-value action", 8),
-            ActionCandidate("c", "Medium-value action", 6),
+            self.candidate("a", "Lower-value action", 4),
+            self.candidate("b", "Highest-value action", 8),
+            self.candidate("c", "Medium-value action", 6),
         ]
-        plan = choose_next_action(state, candidates)
+        plan = choose_next_action(state, candidates, registry=self.make_registry())
         self.assertEqual(plan.action.action_id, "b")
 
     def test_cold_start_restores_operational_state(self):
@@ -71,7 +87,8 @@ class MissionStateRuntimeTests(unittest.TestCase):
         state = self.make_state()
         plan = choose_next_action(
             state,
-            [ActionCandidate("build", "Build runtime", 9)],
+            [self.candidate("build", "Build runtime", 9)],
+            registry=self.make_registry(),
         )
         receipt = ExecutionReceipt(
             action_id="build",

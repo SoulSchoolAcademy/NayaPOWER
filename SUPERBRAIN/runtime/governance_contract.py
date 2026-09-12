@@ -94,7 +94,18 @@ def evaluate_governance(
     resolved_scope = action.authority_scope
 
     checks["authority_registry_present"] = registry is not None
-    if registry is not None:
+    if registry is None:
+        reasons.append("Authority Registry is required for governed execution")
+        checks.update(
+            {
+                "authority_id_present": False,
+                "authority_registered": False,
+                "authority_active": False,
+                "authority_scope_registered": False,
+                "authority_scope_matches": False,
+            }
+        )
+    else:
         authority = registry.resolve(action.authority_id or "") if action.authority_id else None
         checks["authority_id_present"] = bool(action.authority_id)
         checks["authority_registered"] = authority is not None
@@ -116,12 +127,6 @@ def evaluate_governance(
             reasons.append("registered authority has no scope")
         if not checks["authority_scope_matches"]:
             reasons.append("requested authority scope is outside registered authority scope")
-    else:
-        checks["authority_id_present"] = bool(action.authority_id)
-        checks["authority_registered"] = True
-        checks["authority_active"] = True
-        checks["authority_scope_registered"] = bool(action.authority_scope and action.authority_scope.strip())
-        checks["authority_scope_matches"] = True
 
     checks["capability_available"] = action.capability_available
     checks["constitutional_eligible"] = action.constitutional_eligible
