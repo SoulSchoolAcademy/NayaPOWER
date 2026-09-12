@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 import importlib.util
 import json
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 POLICY_PATH = ROOT / ".naya" / "control-plane" / "DEPLOYMENT-GOVERNANCE.json"
@@ -35,11 +36,19 @@ def _kernel_module():
     """Load the one canonical governance kernel; never a release-local copy."""
     if not KERNEL_PATH.is_file():
         raise RuntimeError("canonical governance kernel is missing")
-    spec = importlib.util.spec_from_file_location("naya_governance_kernel", KERNEL_PATH)
+    module_name = "naya_governance_kernel_canonical"
+    spec = importlib.util.spec_from_file_location(module_name, KERNEL_PATH)
     if spec is None or spec.loader is None:
         raise RuntimeError("canonical governance kernel cannot be loaded")
     module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    # dataclasses resolve the defining module through sys.modules during decoration.
+    # Register first so dynamic loading behaves exactly like a normal import.
+    sys.modules[module_name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(module_name, None)
+        raise
     return module
 
 
