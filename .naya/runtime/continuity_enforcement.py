@@ -12,6 +12,10 @@ MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';POLICY=MEMORY/'CONTINUITY-EN
 EVENT_RE=re.compile(r'^SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+$')
 def parse_time(v):
     if v.endswith('Z'):v=v[:-1]+'+00:00'
+    # Preserve deterministic comparison for canonical legacy events that record
+    # calendar-day precision without inventing a local timezone or wall-clock time.
+    if re.fullmatch(r'\d{4}-\d{2}-\d{2}',v):
+        return datetime.fromisoformat(v).replace(tzinfo=timezone.utc)
     d=datetime.fromisoformat(v)
     if d.tzinfo is None:raise ValueError('timestamp must include timezone')
     return d.astimezone(timezone.utc)
