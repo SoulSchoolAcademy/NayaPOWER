@@ -4,7 +4,8 @@
 **Date:** 2026-09-12
 **Repository:** SoulSchoolAcademy/NayaPOWER
 **Branch:** main
-**Latest source commit:** `ea06d56d375e8ac03a22a28d5ae2fd7ed418b98e`
+**Current HEAD:** `24135bab6df1c33639dff2746369cdb25c9bb3e2`
+**Bridge source commit:** `7353e818fac1e5778a348af2986f25c920ea9073`
 
 ## Mission
 
@@ -17,11 +18,12 @@ Remove the external execution bottleneck between Naya and the canonical NayaNET 
 ## What was actually done
 
 1. Inspected current Supabase Edge Functions rather than assuming the previously observed historical function list was still current.
-2. Confirmed the current project exposes four functions; no existing GitHub-dispatch bridge was present in the current active list.
+2. Confirmed the current project exposes four functions before this work; no existing GitHub-dispatch bridge was present in that active list.
 3. Created server-side Edge Function `nayanet-github-dispatch` with JWT verification enabled.
 4. Implemented exact SHA validation, explicit approval validation, deployment reason validation, authenticated-user binding, idempotency lookup, GitHub ref/commit preflight, canonical `workflow_dispatch`, and durable execution receipt writing.
-5. Added the bridge source to the repository under `NAYANET/EXECUTION-BRIDGE/nayanet-github-dispatch/`.
+5. Added the bridge source and Deno configuration to the repository under `NAYANET/EXECUTION-BRIDGE/nayanet-github-dispatch/`.
 6. Deployed bridge version 2 to Supabase after correcting the import-map deployment configuration.
+7. Created this successor handoff so the next Naya has a single executable state rather than an explanation-only stop.
 
 ## Protected boundaries
 
@@ -44,9 +46,10 @@ This is an intentional fail-closed state, not a deployment failure.
 
 ## Current evidence
 
-- Supabase function `nayanet-github-dispatch` exists and is ACTIVE at version 2.
-- Repository source exists at the canonical bridge path.
-- Current repository source commit is `ea06d56d375e8ac03a22a28d5ae2fd7ed418b98e`.
+- Supabase function `nayanet-github-dispatch` is ACTIVE at version 2.
+- Repository bridge source is committed.
+- Current repository HEAD is `24135bab6df1c33639dff2746369cdb25c9bb3e2`.
+- Bridge source was committed at `7353e818fac1e5778a348af2986f25c920ea9073`.
 - The canonical workflow requires exact 40-character SHA, explicit approval, governance-kernel authorization, build checks, Cloudflare deployment, explicit 100% promotion, and independent public-runtime verification.
 - No real canonical Hub deployment was dispatched by this torch.
 - No false deployment receipt was created.
