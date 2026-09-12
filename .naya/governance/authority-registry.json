@@ -1,0 +1,15 @@
+{
+  "version": "1",
+  "policy": "No workflow, model, memory, prompt, or tool may mint authority. Entries in this registry are explicit grants and must be changed by an authorized human-controlled repository change.",
+  "authorities": [
+    {
+      "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+      "principal_id": "SoulSchoolAcademy",
+      "purpose": "governed maintenance and verification of NayaPOWER",
+      "scope": "repo:SoulSchoolAcademy/NayaPOWER",
+      "granted_actions": ["repo_write"],
+      "expires_at": null,
+      "revoked": false
+    }
+  ]
+}
