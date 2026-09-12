@@ -3,15 +3,21 @@
 
 This is deliberately a thin enforcement layer beside Smart Notes v3. It does
 not replace the Note Event architecture or rewrite historical events. New
-Smart Note claims can be admitted only when the complete evidence chain is
-present.
+Smart Note claims can be admitted only when the complete evidence chain and
+the canonical NayaPOWER governance gate are present.
 """
 from __future__ import annotations
 
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
+
+CONTROL_PLANE = Path(__file__).resolve().parents[1] / "control-plane"
+if str(CONTROL_PLANE) not in sys.path:
+    sys.path.insert(0, str(CONTROL_PLANE))
+from governance_kernel import GovernanceKernel, GovernanceViolation  # noqa: E402
 
 SMART_NOTE_REQUEST_RE = re.compile(
     r"\b(?:smart\s+note|smart-note|naya\s+note|note\s+this|make\s+(?:a\s+)?note|note\s+it|lock\s+(?:this|it)\s+in)\b",
@@ -65,6 +71,21 @@ def _event_path(root: Path, event_id: str, effective_at: str) -> Path:
     return root / ".naya" / "memory" / "events" / y / m / d / h / f"{event_id}.json"
 
 
+def _validate_governance_gate(operation: dict[str, Any]) -> list[str]:
+    governance = operation.get("governance")
+    if not isinstance(governance, dict):
+        return ["canonical governance decision/authority is missing"]
+    decision = governance.get("decision")
+    authority = governance.get("authority")
+    if not isinstance(decision, dict) or not isinstance(authority, dict):
+        return ["canonical governance decision/authority is incomplete"]
+    try:
+        GovernanceKernel().gate(decision, authority)
+    except GovernanceViolation as exc:
+        return [f"canonical governance gate rejected Smart Note mutation: {exc}"]
+    return []
+
+
 def validate_smart_note_operation(
     operation: dict[str, Any],
     *,
@@ -74,6 +95,8 @@ def validate_smart_note_operation(
     """Return all enforcement failures; an empty list means GREEN."""
     root = Path(root)
     errors: list[str] = []
+
+    errors.extend(_validate_governance_gate(operation))
 
     if not operation.get("request_detected"):
         errors.append("Smart Note request was not detected")
