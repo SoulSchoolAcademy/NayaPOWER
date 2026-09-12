@@ -207,6 +207,8 @@ class ExecutionReceipt:
     verified: bool
     next_action: str | None
     timestamp: str = field(default_factory=lambda: utc_now())
+    commit: str | None = None
+    deployment: str | None = None
 
 
 def utc_now() -> str:
@@ -272,6 +274,18 @@ def record_result(
         }
     )
     state.observed.append(receipt.observed)
+    state.evidence.append(
+        Evidence(
+            evidence_id=f"receipt:{receipt.action_id}:{receipt.timestamp}",
+            claim=receipt.result,
+            state=receipt.evidence_state,
+            observation=receipt.observed,
+            source=receipt.evidence_source,
+            timestamp=receipt.timestamp,
+            commit=receipt.commit,
+            deployment=receipt.deployment,
+        )
+    )
 
     if receipt.verified:
         if receipt.evidence_state not in {
