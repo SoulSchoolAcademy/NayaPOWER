@@ -4,19 +4,85 @@
   "effective_at": "2026-08-31",
   "date": "2026-08-31",
   "event_type": "smart_note_protocol_correction",
+  "type": "correction",
+  "subject": "Smart Note requests execute the complete established delivery contract and always return receipts",
+  "project": "Naya Power Superbrain",
   "summary": "Human identified that Smart Note requests must execute the complete established delivery contract and always return receipts.",
-  "required_outputs": [
-    "Shawn Note",
-    "Naya Note",
-    "Machine Note",
-    "Intelligent Feed update",
-    "PIS update",
-    "Direct Smart Links",
-    "Exact receipts",
-    "Verification boundary"
-  ],
+  "required_outputs": ["Shawn Note", "Naya Note", "Machine Note", "Intelligent Feed update", "PIS update", "Direct Smart Links", "Exact receipts", "Verification boundary"],
   "source_of_truth": "MASTER-NOTES/INTELLIGENCE-FEED/2026-08-30-SMART-NOTE-DELIVERY-TEACHING.md",
   "source_commit": "3af7f8da537a447221b086e32422c0f72a2db91d",
   "lesson": "A useful project note is not equivalent to a completed Smart Note operation.",
-  "next_action": "Use the canonical Smart Note protocol for every future substantive Smart Note/Naya Note request and provide receipts in the response."
+  "representations": {
+    "naya": {
+      "id": "SN-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-NAYA",
+      "canonical_event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+      "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+      "representation": "NAYA",
+      "summary": "An explicit Smart Note request is an execution trigger requiring the complete evidence-first delivery contract.",
+      "content": "Naya must execute one underlying intelligence event into Shawn, Naya, and Machine representations, persist them, return direct Smart Links, provide exact receipts, separately record PIS and Running Feed state, and verify each boundary rather than treating a written note as completed execution.",
+      "lessons": ["One intelligence event has three representations.", "Created, persisted, propagated, feed-updated, and successor-consumed are distinct evidence states.", "Receipts are part of the delivery contract."]
+    },
+    "shawn": {
+      "id": "SN-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-SHAWN",
+      "canonical_event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+      "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+      "representation": "SHAWN",
+      "summary": "A Smart Note request is not complete unless the complete Shawn/Naya/Machine bundle, Smart Links, receipts, and verification boundaries are delivered.",
+      "content": "The human-facing contract requires the actual Shawn Note, Naya Note, Machine Note, Intelligent Feed and PIS state where applicable, direct Smart Links, exact receipts, and explicit verification boundaries.",
+      "lessons": ["A useful project note is not equivalent to a completed Smart Note operation.", "The human should be able to inspect the evidence instead of relying on a claim of capture."]
+    }
+  },
+  "machine": {
+    "classification": "smart_note_delivery_contract",
+    "required_representation_roles": ["shawn", "naya", "machine"],
+    "required_delivery": ["persist_shawn", "persist_naya", "persist_machine", "return_shawn_smart_link", "return_naya_smart_link", "return_machine_smart_link", "exact_receipt", "verification_boundary"],
+    "evidence_boundary": "NOTE_CREATED != PIS_PROPAGATED != RUNNING_FEED_UPDATED != SUCCESSOR_CONSUMED",
+    "completion_invariant": "SMART_NOTE_REQUEST_REQUIRES_COMPLETE_EVIDENCE_FIRST_DELIVERY"
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "evidence": ["Canonical Smart Note delivery teaching artifact records the complete delivery contract and evidence boundary.", "Three representation roles are now explicitly represented in this canonical event."],
+    "runtime_status": "NOT_RUNTIME_PROVEN_IN_THIS_EVENT",
+    "canonical_source": "SoulSchoolAcademy/NayaPOWER main"
+  },
+  "receipt": {
+    "receipt_id": "RCPT-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+    "status": "REPOSITORY_WRITE_VERIFIED",
+    "evidence": "Canonical event, three representations, verification state, and successor contract are persisted in GitHub."
+  },
+  "delivery": {
+    "state": "REPOSITORY_ARTIFACTS_PERSISTED",
+    "smart_links": {
+      "shawn": ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-SHAWN.md",
+      "naya": ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-NAYA.md",
+      "machine": ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-MACHINE.json"
+    },
+    "pis_propagation": "NOT_RUNTIME_VERIFIED_IN_THIS_EVENT",
+    "feed_state": "REPOSITORY_ARTIFACT_PERSISTED"
+  },
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "ai_to_ai_handoff": true,
+    "learning_status": "LEARNED",
+    "next_action_status": "READY",
+    "next_action": "Use the canonical Smart Note protocol for every future substantive Smart Note/Naya Note request and provide receipts in the response; then runtime-prove the complete delivery chain.",
+    "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.md",
+    "handoff": {
+      "mission": "Make every substantive Smart Note request execute the complete evidence-first delivery contract and remain independently verifiable by successor Naya instances.",
+      "source_of_truth": ".naya/memory/events/",
+      "current_state": "The canonical Smart Note protocol correction, three representations, verification state, delivery contract, and receipt are persisted.",
+      "protected_baseline": "One canonical event remains the authority; Shawn, Naya, and Machine artifacts are representations; PIS and Running Feed remain separate evidence boundaries.",
+      "work_completed": "Captured the complete Smart Note delivery requirement and represented it in canonical event form.",
+      "evidence": "Canonical event, source teaching artifact, three representation contracts, verification state, delivery state, and receipt are persisted.",
+      "decisions": "Smart Note completion requires the complete evidence-first delivery contract rather than a note-writing claim.",
+      "lessons": "A useful project note is not equivalent to a completed Smart Note operation.",
+      "unknowns": "End-to-end runtime creation, Smart Link return, PIS propagation, Running Feed update, and successor consumption remain runtime-unproven.",
+      "risks": "Without executable enforcement, Naya can understand the contract yet still omit required evidence or downstream state.",
+      "recommendation": "Runtime-test the complete Smart Note request path against the canonical contract and preserve separate evidence for each downstream boundary.",
+      "next_action": "Inspect the canonical Smart Note runtime and acceptance tests and runtime-prove the complete delivery chain.",
+      "ready_to_run_execution": "Inspect the Smart Note producer, representation persistence, Smart Link generation, PIS propagation, Running Feed update, and successor-consumption paths; implement the smallest evidence-backed enforcement; add deliberate failures; execute the authoritative gate.",
+      "human_continuation": "Continue from the canonical NEXT-EXECUTION artifact without inventing a new task. Human intervention is required only for a genuine authority or external dependency boundary.",
+      "human_continuation_naya_authored": "true"
+    }
+  }
 }
