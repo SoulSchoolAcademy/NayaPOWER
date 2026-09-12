@@ -31,6 +31,23 @@ jobs:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
 
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "maxess-result-repository-mutation" \
+            --permission "repo:write:maxess-result" \
+            --request "mutate:AIScoreMAXESS code:MAXESS_RESULT_BRIDGE_V1" \
+            --mission "Apply the MAXESS assessment Results bridge without destroying the existing artifact" \
+            --uncertainty 2 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","path":"AIScoreMAXESS code","operation":"surgical-write-and-push"}' \
+            --evidence "workflow_dispatch approval granted" \
+            --evidence "known-good bridge workflow"
+
       - name: Establish baseline
         run: |
           test -f 'AIScoreMAXESS code'
