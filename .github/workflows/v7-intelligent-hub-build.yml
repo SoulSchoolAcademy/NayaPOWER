@@ -1,101 +1,23 @@
-name: NayaNET V7 Intelligent Hub Build
+name: NayaNET V7 Intelligent Hub Build — Retired
 
+# Historical V7 build path retained as a record only. It is intentionally
+# non-mutating. Current Hub source is NAYANET/HUB and current public deployment
+# is deploy-nayanet-hub-canonical-v2.yml.
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/v7-intelligent-upgrade.js'
-      - 'scripts/v7-intelligent-hub-refinement.js'
-      - 'scripts/v7-intelligent-feed-excellence.js'
-      - 'scripts/nayanet-hub-authority-correction.js'
-      - '.github/workflows/v7-intelligent-hub-build.yml'
-      - 'NAYAHUB.html'
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  build:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact canonical source
-        uses: actions/checkout@v4
-
-      - name: Validate upgrade JavaScript
+      - name: Assert current execution authority
         run: |
-          node --check scripts/v7-intelligent-upgrade.js
-          node --check scripts/v7-intelligent-hub-refinement.js
-          node --check scripts/v7-intelligent-feed-excellence.js
-          node --check scripts/nayanet-hub-authority-correction.js
-
-      - name: Apply surgical upgrade layers to canonical NAYAHUB.html
-        shell: python
-        run: |
-          from pathlib import Path
-          p = Path('NAYAHUB.html')
-          html = p.read_text(encoding='utf-8')
-          layers = [
-              ('NAYANET-V7-INTELLIGENT-UPGRADE-V2', 'nayanet-v7-intelligent-upgrade', Path('scripts/v7-intelligent-upgrade.js')),
-              ('NAYANET-V7-INTELLIGENT-HUB-REFINEMENT-V1', 'nayanet-v7-intelligent-hub-refinement', Path('scripts/v7-intelligent-hub-refinement.js')),
-              ('NAYANET-V7-INTELLIGENT-FEED-EXCELLENCE-V1', 'nayanet-v7-intelligent-feed-excellence', Path('scripts/v7-intelligent-feed-excellence.js')),
-              ('NAYANET-CANONICAL-HUB-AUTHORITY-V1', 'nayanet-canonical-hub-authority', Path('scripts/nayanet-hub-authority-correction.js')),
-          ]
-          for marker, script_id, patch_path in layers:
-              patch = patch_path.read_text(encoding='utf-8')
-              comment = '<!-- '+marker+' -->'
-              tag = '<script id="'+script_id+'">'
-              replacement = comment + tag + patch + '\n</script>'
-              if marker not in html:
-                  html = html.replace('</body>', replacement + '</body>', 1)
-              else:
-                  start = html.find(comment)
-                  script_start = html.find(tag, start)
-                  script_end = html.find('</script>', script_start)
-                  html = html[:start] + replacement + html[script_end+9:]
-          p.write_text(html, encoding='utf-8')
-          Path('index.html').write_text(html, encoding='utf-8')
-
-      - name: Validate canonical Hub artifact
-        run: |
-          test -f NAYAHUB.html
-          test -f index.html
-          grep -q 'NAYANET-CANONICAL-HUB-AUTHORITY-V1' index.html
-          grep -q 'TYPE OR TALK TO NAYA' index.html
-          grep -q 'SMART NOTES' index.html
-          grep -q '＋ SHARE' index.html
-          grep -q '★ RANK' index.html
-          grep -q '💬 COMMENT' index.html
-          grep -q '🔖 SAVE' index.html
-          grep -q 'Your Intelligence Today' index.html
-          grep -q 'Intelligence Report' index.html
-
-      - name: Package Cloudflare-ready ZIP
-        run: |
-          rm -rf release
-          mkdir -p release
-          cp index.html release/index.html
-          cd release
-          zip -9 ../NayaNET-Intelligent-Hub.zip index.html
-          cd ..
-          test -f NayaNET-Intelligent-Hub.zip
-          unzip -l NayaNET-Intelligent-Hub.zip
-
-      - name: Upload ZIP artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: NayaNET-Intelligent-Hub
-          path: NayaNET-Intelligent-Hub.zip
-          if-no-files-found: error
-          retention-days: 14
-
-      - name: Commit surgical upgrade and release artifact
-        run: |
-          git config user.name 'NayaNET Build'
-          git config user.email 'actions@nayanet.xyz'
-          git add NAYAHUB.html index.html
-          if git diff --cached --quiet; then
-            echo 'No source changes to commit.'
-          else
-            git commit -m 'Correct canonical Hub architecture and package Cloudflare release'
-            git push
-          fi
+          set -euo pipefail
+          test -f .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          echo 'LEGACY_V7_HUB_BUILD=RETIRED'
+          echo 'CURRENT_HUB_SOURCE=NAYANET/HUB'
+          echo 'CURRENT_PUBLIC_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
+          echo 'RULE=ONE_CURRENT_HUB_BUILD_AND_DEPLOYMENT_AUTHORITY'
