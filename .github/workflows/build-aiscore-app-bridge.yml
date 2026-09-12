@@ -25,6 +25,23 @@ jobs:
         with:
           ref: ${{ github.ref_name }}
 
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "aiscore-repository-mutation" \
+            --permission "repo:write:aiscore" \
+            --request "mutate:AIScoreMAXESS code" \
+            --mission "Build and commit the verified AIScore Results bridge" \
+            --uncertainty 2 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","path":"AIScoreMAXESS code","operation":"write-and-push"}' \
+            --evidence "workflow_dispatch approval granted" \
+            --evidence "canonical AIScore mutation workflow"
+
       - name: Build from known-good AIScore baseline
         shell: bash
         run: |
