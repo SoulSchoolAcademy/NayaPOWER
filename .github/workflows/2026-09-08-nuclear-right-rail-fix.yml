@@ -13,6 +13,6 @@ jobs:
       - name: Legacy nuclear right rail workflow retired
         run: |
           echo 'LEGACY_NUCLEAR_RIGHT_RAIL=RETIRED'
-          echo 'CANONICAL_DEPLOYMENT=.github/workflows/deploy-v7-now.yml'
+          echo 'CANONICAL_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'CANONICAL_RUNTIME=https://aged-art-7c12.nayanet.workers.dev/'
-          echo 'RULE=DO_NOT_MUTATE_OR_DEPLOY_THE_452_HUB_FROM_HISTORICAL_FIX_WORKFLOWS'
+          echo 'RULE=DO_NOT_MUTATE_OR_DEPLOY_THE_HUB_FROM_HISTORICAL_FIX_WORKFLOWS'
