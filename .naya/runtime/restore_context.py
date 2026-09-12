@@ -40,6 +40,7 @@ SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
 CURRENT_HEAD_RE = re.compile(
     r"(?im)^\s*(?:live|current|observed)\s+`?(?:main|head|git head)`?.{0,120}?\b([0-9a-f]{40})\b"
 )
+DYNAMIC_HEAD_SENTINEL = "dynamic_from_observed_git_head"
 
 
 def parse_time(value: str | None) -> datetime | None:
@@ -171,7 +172,7 @@ def orientation_snapshot(repo: dict[str, Any], state: dict[str, Any]) -> dict[st
     projections = [orientation_projection(p, actual) for p in (BRIEFING_PATH, FEED_PATH, PROJECT_PATH, START_PATH)]
     state_head = (((state.get("current_main") or {}).get("commit")) if isinstance(state, dict) else None)
     mismatches = [p["path"] for p in projections if p["head_mismatch"]]
-    if state_head and actual and state_head != actual:
+    if state_head and actual and state_head != DYNAMIC_HEAD_SENTINEL and state_head != actual:
         mismatches.append(str(STATE_PATH.relative_to(ROOT)))
     contradictions: list[str] = []
     if not briefing:
