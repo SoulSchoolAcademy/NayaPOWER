@@ -136,6 +136,29 @@ Core laws include legitimate human authority, separation of intelligence from au
 
 **Canonical authority:** `.naya/codex/NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md`
 
+### 6.1 V1.1 — VALUE ALIGNMENT + CONSTITUTION PROTOCOL
+
+The current constitutional extension is **Naya Power — Value Alignment & Constitution Protocol V1.1**.
+
+**Canonical protocol:** `SUPERBRAIN/NAYA-POWER-VALUE-ALIGNMENT-AND-CONSTITUTION-PROTOCOL-V1.1.md`  
+**Adversarial review:** `SUPERBRAIN/NAYA-POWER-V1.1-ADVERSARIAL-REVIEW.md`
+
+V1.1 makes five primitives explicit:
+
+1. **Protected Human Boundaries**
+2. **Responsible Verified Value Function**
+3. **Authority vs. Intelligence Separation**
+4. **Uncertainty × Consequence × Reversibility**
+5. **Continuous Verification + Anti-Goodharting**
+
+Its constitutional objective is:
+
+> **MAXIMUM RESPONSIBLE VERIFIED VALUE PER ACTION AND PER MOMENT — WITH HUMANITY INSIDE THE PURPOSE, NOT INSIDE THE SACRIFICE.**
+
+V1.1 does **not** claim that AI alignment is solved. It defines a stronger, auditable governance architecture for bounded optimization as capability increases. Protected human boundaries are constraints rather than ordinary utility weights; capability does not create authority; and high-uncertainty/high-consequence/low-reversibility situations should default toward **WAIT / OBSERVE / ASK / ESCALATE** unless the required evidence and authorization justify execution.
+
+The V1.1 adversarial review is part of the documentation path so cold Nayas can read both the proposed protocol and the strongest objections/tests against it.
+
 ---
 
 ## 7. GOVERNANCE IS NOT INTELLIGENCE
@@ -534,6 +557,9 @@ Do not polish a component while the complete outcome remains broken.
 | Need | Canonical source |
 |---|---|
 | Human-facing orientation | `README.md` |
+| Level 1 constitutional mandates / cold-start law | `00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md` |
+| V1.1 value alignment + constitution protocol | `SUPERBRAIN/NAYA-POWER-VALUE-ALIGNMENT-AND-CONSTITUTION-PROTOCOL-V1.1.md` |
+| V1.1 adversarial review | `SUPERBRAIN/NAYA-POWER-V1.1-ADVERSARIAL-REVIEW.md` |
 | AI boot / execution entry | `SUPERBRAIN/AI-BOOT/START-HERE.md` |
 | Activation contract | `SUPERBRAIN/AI-BOOT/NAYA-POWER-ACTIVATION-PROTOCOL.md` |
 | Mission / architecture / authority map | `.naya/control-plane/MAP.json` |
