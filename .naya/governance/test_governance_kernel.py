@@ -7,9 +7,10 @@ from governance_kernel import (
     GovernanceState,
     Risk,
     VerificationPlan,
-    evaluate,
     assert_not_verified_without_observation,
+    evaluate,
     receipt_requirements,
+    transition,
 )
 
 
@@ -115,6 +116,27 @@ class GovernanceKernelTests(unittest.TestCase):
         result = evaluate(decision, self.authority)
         self.assertFalse(result.allowed)
         self.assertIn("requested power exceeds necessary power", result.reasons)
+
+    def test_invalid_verified_promotion_is_rejected(self):
+        with self.assertRaises(ValueError):
+            transition(GovernanceState.EXECUTED, GovernanceState.VERIFIED)
+
+    def test_valid_execution_path_transitions(self):
+        state = transition(GovernanceState.PROPOSED, GovernanceState.READY_FOR_DECISION)
+        state = transition(state, GovernanceState.AUTHORIZED)
+        state = transition(state, GovernanceState.EXECUTING)
+        state = transition(state, GovernanceState.EXECUTED)
+        state = transition(state, GovernanceState.OBSERVED)
+        state = transition(state, GovernanceState.VERIFIED)
+        self.assertEqual(state, GovernanceState.VERIFIED)
+
+    def test_stop_is_terminal(self):
+        self.assertEqual(
+            transition(GovernanceState.AUTHORIZED, GovernanceState.STOPPED),
+            GovernanceState.STOPPED,
+        )
+        with self.assertRaises(ValueError):
+            transition(GovernanceState.STOPPED, GovernanceState.EXECUTING)
 
     def test_verified_requires_observation(self):
         with self.assertRaises(AssertionError):
