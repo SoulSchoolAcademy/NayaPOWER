@@ -11,7 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PROMOTE_PATH = ROOT / "tools" / "promote_intelligence.py"
 RESTORE_PATH = ROOT / ".naya" / "runtime" / "restore_context.py"
-STATE_PATH = ROOT / ".naya" / "memory" / "STATE.json"
+STATE_PATH = ROOT / ".naya" / "control-plane" / "STATE.json"
 START_PATH = ROOT / "START-HERE.md"
 CONTRACT_PATH = ROOT / ".naya" / "SUPERBRAIN-COLD-START-AND-CONTINUITY-CONTRACT.md"
 
@@ -31,16 +31,18 @@ class SuperbrainAdversarialTests(unittest.TestCase):
 
     def test_state_never_claims_a_static_current_head(self):
         state = json.loads(STATE_PATH.read_text(encoding="utf-8"))
-        self.assertIn(state["current_main"]["commit"], {None, "dynamic_from_observed_git_head"})
-        self.assertEqual(state["current_main"]["commit_policy"], "DYNAMIC_FROM_OBSERVED_GIT_HEAD")
-        self.assertEqual(state["current_main"]["state_reconciliation"], "OBSERVED_HEAD_IS_RUNTIME_SOURCE_OF_TRUTH")
+        current_head = state["current_head"]
+        self.assertEqual(current_head["source"], "git:HEAD")
+        self.assertEqual(current_head["mode"], "LIVE_RESOLUTION")
+        self.assertTrue(current_head["recorded_head_is_not_authoritative"])
 
     def test_restore_has_explicit_reconciliation_boundary(self):
         restore = RESTORE_PATH.read_text(encoding="utf-8")
-        self.assertIn('"RECONCILIATION_REQUIRED"', restore)
-        self.assertIn('run_git("rev-parse", "HEAD")', restore)
-        self.assertIn('"observed_head"', restore)
-        self.assertIn('"latest_handoff"', restore)
+        self.assertIn("reconciliation_required", restore)
+        self.assertIn('run_git(\'rev-parse\',\'HEAD\')', restore)
+        self.assertIn("'observed_head'", restore)
+        self.assertIn("'latest_handoff'", restore)
+        self.assertIn("'reconciliation'", restore)
 
     def test_contract_requires_behavioral_acceptance(self):
         contract = CONTRACT_PATH.read_text(encoding="utf-8")
