@@ -1,18 +1,17 @@
 name: Apply MAXESS Assessment Results Bridge
 
+# This workflow mutates repository source and pushes a commit. It is therefore
+# an explicitly invoked control-plane action, not an automatic push reaction.
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'tools/execute_maxess_result_bridge.py'
-      - '.github/workflows/apply-maxess-result-bridge.yml'
-  pull_request:
-    paths:
-      - 'tools/execute_maxess_result_bridge.py'
-      - '.github/workflows/apply-maxess-result-bridge.yml'
-      - 'AIScoreMAXESS code'
   workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to mutate and push the bridge
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
 
 permissions:
   contents: write
@@ -23,12 +22,13 @@ concurrency:
 
 jobs:
   patch:
+    if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout execution branch
         uses: actions/checkout@v5
         with:
-          ref: ${{ github.head_ref || github.ref_name }}
+          ref: ${{ github.ref_name }}
           fetch-depth: 0
 
       - name: Establish baseline
@@ -113,5 +113,5 @@ jobs:
             echo 'NO COMMIT REQUIRED — BRIDGE ALREADY APPLIED'
           else
             git commit -m 'MAXESS assessment → Results bridge [MAXESS_RESULT_V1]'
-            git push origin "${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
+            git push origin "${GITHUB_REF_NAME}"
           fi
