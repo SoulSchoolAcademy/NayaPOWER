@@ -22,13 +22,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "nayanet-hub-repository-mutation" \
+            --permission "repo:write:nayanet-hub" \
+            --request "mutate:2026 09 08 9:59 NAYANET HUB" \
+            --mission "Apply the authorized surgical NayaNET Hub patch while preserving existing behavior" \
+            --uncertainty 3 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","path":"2026 09 08 9:59 NAYANET HUB","operation":"surgical-write-and-push"}' \
+            --evidence "workflow_dispatch approval granted" \
+            --evidence "surgical patch scope explicitly identified"
+
       - name: Apply surgical patch
         run: python scripts/2026-09-08-10-05-NAYANET-HUB-RIGHT-SIDEBAR-AND-FEED-SURGICAL-PATCH.py
+
       - name: Verify mission markers
         run: |
           grep -q 'NAYANET-HUB-RIGHT-SIDEBAR-FEED-MIRROR-V1' '2026 09 08 9:59 NAYANET HUB'
           grep -q '.activationRail{display:none!important}' '2026 09 08 9:59 NAYANET HUB'
           grep -q '.sidebar' '2026 09 08 9:59 NAYANET HUB'
+
       - name: Commit patched current Hub
         run: |
           if git diff --quiet -- '2026 09 08 9:59 NAYANET HUB'; then
