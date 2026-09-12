@@ -2,45 +2,577 @@
   "version": "3.0.0",
   "status": "CANONICAL",
   "organization": "YEAR/MONTH/DAY/HOUR/EVENT",
-  "event_count": 39,
+  "event_count": 35,
   "events": [
-    {"event_id":"SE-20260824-000001-maxess-execution-discipline","path":"2026/08/24/00/SE-20260824-000001-maxess-execution-discipline.json","subject":"MAXESS execution discipline","type":"execution-law","tags":["MAXESS","execution","batching","anti-loop","verification","cause-and-effect"]},
-    {"event_id":"SE-20260824-000002-dynamic-any-subject-assessment","path":"2026/08/24/00/SE-20260824-000002-dynamic-any-subject-assessment.json","subject":"Dynamic Any-Subject Assessment","type":"architecture-principle","tags":["MAXESS","dynamic-assessment","universal","generation","scoring","schema","provider"]},
-    {"event_id":"SE-20260824-000003-universal-maxis-human-vision","path":"2026/08/24/00/SE-20260824-000003-universal-maxis-human-vision.json","subject":"Universal MAXIS Human Vision","type":"vision","tags":["MAXIS","quality","human-experience","design-standard","verification"]},
-    {"event_id":"SE-20260824-065600-naya-operational-intelligence","path":"2026/08/24/06/SE-20260824-065600-naya-operational-intelligence.json","subject":"Naya Operational Intelligence","type":"operating-law","tags":["Naya-Power","lead","verification","source-of-truth","execution","continuity"]},
-    {"event_id":"SE-20260824-071200-maxess-continue-scoring-terminal","path":"2026/08/24/07/SE-20260824-071200-maxess-continue-scoring-terminal.json","subject":"MAXESS Continue scoring terminal","type":"technical-discovery","tags":["MAXESS","Continue","Q15","scoring","terminal","results","event-boundary","iframe"]},
-    {"event_id":"SE-20260825-000002-maxess-execution-readiness","path":"2026/08/25/00/SE-20260825-000002-maxess-execution-readiness.json","subject":"MAXESS","type":"architecture-plan","tags":["MAXESS","execution","architecture","scoring","result-contract","dynamic-assessment","provider","testing"]},
-    {"event_id":"SE-20260825-000003-maxess-engine-execution-lock","path":"2026/08/25/00/SE-20260825-000003-maxess-engine-execution-lock.json","subject":"MAXESS","type":"execution-law","tags":["MAXESS","execution-law","verification","regression","terminal-chain","green-state"]},
-    {"event_id":"SE-20260825-000004-naya-power-operating-law-maxess-terminal","path":"2026/08/25/00/SE-20260825-000004-naya-power-operating-law-maxess-terminal.json","subject":"Naya Power operating method + MAXESS terminal flow","type":"operating-law","tags":["Naya-Power","take-the-lead","MAXESS","terminal-boundary","same-page-results","DOM","iframe","Groove","verification"]},
-    {"event_id":"SE-20260825-000005-cis-universal-learning-vision","path":"2026/08/25/00/SE-20260825-000005-cis-universal-learning-vision.json","subject":"CIS Universal Learning Vision","type":"vision","tags":["CIS","learning","assessment","daily-intelligence","growth","universal-learning"]},
-    {"event_id":"SE-20260825-122600-superbrain-seed-optimization","path":"2026/08/25/12/SE-20260825-122600-superbrain-seed-optimization.json","subject":"Personal Superbrain seed optimization","type":"master-system-update","tags":["Superbrain","seed","optimization","CIS","Naya Power","NayaNET","AI continuity","10-star","execution"]},
-    {"event_id":"SE-20260825-000001-maxess-canonical-source-map","path":"2026/08/25/18/SE-20260825-000001-maxess-canonical-source-map.json","subject":"MAXESS","type":"source-map","tags":["MAXESS","source-of-truth","canonical-map","assessment","E00","E01","E02","E03","E04"]},
-    {"event_id":"SE-20260825-180000-daily-intelligence-smart-notes-migration","path":"2026/08/25/18/SE-20260825-180000-daily-intelligence-smart-notes-migration.json","subject":"Smart Notes architecture migration","type":"daily-intelligence-report","tags":["CIS","daily-intelligence","Smart Notes","migration","architecture","Naya Power"]},
-    {"event_id":"SE-20260825-180100-oscar-smart-notes-v3-review","path":"2026/08/25/18/SE-20260825-180100-oscar-smart-notes-v3-review.json","subject":"Smart Notes v3 architecture","type":"architecture-review","tags":["Oscar","architecture-review","Smart Notes","CIS","10-star","verification","retrieval","idempotency","automation","observability"]},
-    {"event_id":"SE-20260825-200000-smart-brain-hardening-execution","path":"2026/08/25/20/SE-20260825-200000-smart-brain-hardening-execution.json","subject":"Smart Brain v3 hardening","type":"execution-milestone","tags":["Smart Brain","Smart Notes","CI","verification","retrieval","CIS","hardening","Naya Power"]},
-    {"event_id":"SE-20260825-201500-nayanet-personal-superbrain-federation","path":"2026/08/25/20/SE-20260825-201500-nayanet-personal-superbrain-federation.json","subject":"NayaNET personal Superbrain federation","type":"master-system-update","tags":["NayaNET","federation","Superbrain","CIS","privacy","permission","collective-intelligence"]},
-    {"event_id":"SE-20260825-203000-superbrain-10-of-10-execution-protocol","path":"2026/08/25/20/SE-20260825-203000-superbrain-10-of-10-execution-protocol.json","subject":"Personal Superbrain optimization","type":"master-system-update","tags":["Superbrain","10/10","optimization","CIS","AI continuity","verification","Naya Power"]},
-    {"event_id":"SE-20260825-204500-superbrain-execution-cycle","path":"2026/08/25/20/SE-20260825-204500-superbrain-execution-cycle.json","subject":"Superbrain 10/10 execution cycle","type":"execution-milestone","tags":["Superbrain","CI","brain-gate","execution","duplicate-resolution","relationship-graph","retrieval","CIS","10/10","continuity"]},
-    {"event_id":"SE-20260825-214500-superbrain-contract-enforcement","path":"2026/08/25/21/SE-20260825-214500-superbrain-contract-enforcement.json","subject":"Superbrain constitutional contract enforcement","type":"implementation","tags":["Superbrain","execution","implementation","10-star","project","next-execution","Prompt Architect","continuity"]},
-    {"event_id":"SE-20260825-220300-superbrain-p0-verification","path":"2026/08/25/22/SE-20260825-220300-superbrain-p0-verification.json","subject":"Superbrain P0 authoritative verification and cold-start repair","type":"verification_and_repair","tags":["Superbrain","P0","verification","cold-start","continuity","project","next-execution","learning","receipt","authoritative-green","schema-fidelity"]},
-    {"event_id":"SE-20260826-101700-maxess-master-directive-v2-lock","path":"2026/08/26/10/SE-20260826-101700-maxess-master-directive-v2-lock.json","subject":"MAXESS Master Engineering + Design Directive V2","type":"master-directive-lock","tags":["MAXESS","master-directive","V2","architecture","E00","E01-E09","result-contract","dynamic-assessment","provider","testing"]},
-    {"event_id":"SE-20260826-200000-maxess-master-engineering-design-north-star","path":"2026/08/26/20/SE-20260826-200000-maxess-master-engineering-design-north-star.json","subject":"MAXESS Master Engineering + Design North Star","type":"master-engineering-design-directive","tags":["MAXESS","master-directive","engineering","design","10/10","dynamic-assessment","AI-score","knowledge-bank","scoring","UX","performance","Naya","Smart-Notes","CIS","Oscar","human-readable","verification-receipt"]},
-    {"event_id":"2026-08-26-202500-naya-power-white-paper-trifecta-and-maxess-next-gate","path":"2026/08/26/20/2026-08-26-202500-naya-power-white-paper-trifecta-and-maxess-next-gate.json","subject":"Naya Power White Paper Trifecta + MAXESS Human-Test Readiness","type":"strategic-knowledge-and-project-continuity","tags":["NayaPower","white-papers","canonical","WHY-WHAT-HOW","distribution","sales-page","podcast","five-day-challenge","MAXESS","browser-gate","human-test","scorecard","Oscar","continuity"]},
-    {"event_id":"SE-20260827-080000-naya-power-human-ai-collaboration-architecture","path":"2026/08/27/08/SE-20260827-080000-naya-power-human-ai-collaboration-architecture.json","subject":"Naya Power as a human-AI collaboration operating architecture","type":"strategic-architecture-and-product-narrative","tags":["NayaPower","human-AI-collaboration","operating-system","architecture","nine-systems","Superbrain","Naya-Notes","Naya-Law","Naya-Scorecarding","Lead-Mode","Naya-Design","Naya-Coder","MAXIS","Powercast"]},
-    {"event_id":"SE-20260827-180000-tri-representation-smart-note-law","path":"2026/08/27/18/SE-20260827-180000-tri-representation-smart-note-law.json","subject":"Tri-representation Smart Note intelligence contract","type":"knowledge-and-governance","tags":["Smart-Notes","CIS","human-representation","naya-representation","machine-representation","algorithm","intelligence","learning","compounding","verification","future-naya"]},
-    {"event_id":"SE-20260828-022200-maxis-qmax-elite-frontdoor","path":"2026/08/27/19/SE-20260828-022200-maxis-qmax-elite-frontdoor.json","subject":"MAXIS QMAX Elite Craft Pass","type":"execution-milestone","tags":["MAXIS","QMAX","front-door","elite-craft","execution","verification","torch-pass"]},
-    {"event_id":"SN-20260829-DEPLOYMENT-GOVERNANCE","path":"2026/08/29/12/SN-20260829-DEPLOYMENT-GOVERNANCE.json","subject":"Repository activity must not imply deployment","type":"master_lesson","tags":["deployment","vercel","governance","mpa","release-gate","cct","smart-notes"]},
-    {"event_id":"SN-20260829-HUMAN-AGENCY-REALITY-JUDGMENT","path":"2026/08/29/19/SN-20260829-HUMAN-AGENCY-REALITY-JUDGMENT.json","subject":"Naya must protect human agency without sacrificing truth","type":"master_lesson","tags":["human-agency","reality","judgment","authority","outcome","excellence","CIS","PIS","universal-agent-interface"]},
-    {"event_id":"SN-20260830-ACTIVATION-PROGRAM-DESIGN","path":"2026/08/30/07/SN-20260830-ACTIVATION-PROGRAM-DESIGN.json","subject":"Activation must be a guided, incremental customer experience","type":"master_lesson","tags":["activation","customer-experience","continuation-prompt","Smart-Notes","PIS","Running-Feed","sales","onboarding","Naya"]},
-    {"event_id":"SE-20260830-080000-smart-note-smart-link-law","path":"2026/08/30/08/SE-20260830-080000-smart-note-smart-link-law.json","subject":"Smart Note delivery requires Smart Links and proactive value capture","type":"master-system-update","tags":["Smart-Notes","Smart-Links","evidence","receipt","PIS","proactive-service","learning","compounding","continuity","verification"]},
-    {"event_id":"SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP","path":"2026/08/30/19/SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP.json","subject":"Smart Notes exist to compound intelligence across time and Naya instances","type":"master-system-update","tags":["Smart-Notes","PIS","CIS","compounding","learning","continuity","restore","Running-Feed","Daily-Intelligence","Superbrain"]},
-    {"event_id":"SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE","path":"2026/08/30/19/SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE.json","subject":"Intelligent Hub first-class Superbrain connection and collective wisdom architecture","type":"architecture_decision","tags":["intelligent-hub","superbrain","wisdom-contribution","collective-intelligence","github-app","privacy","intelligence-feed"]},
-    {"event_id":"SN-20260831-NAYANET-HUMAN-CAPABILITY-IMPACT","path":"2026/08/31/16/SN-20260831-NAYANET-HUMAN-CAPABILITY-IMPACT.json","subject":"NayaNET Human Capability + Maximum Impact","type":"master_lesson","tags":["NayaNET","human-capability","human-impact","intelligent-hub","living-sun","simplicity","10-10","truth","continuity","cloudflare"]},
-    {"event_id":"SE-20260903-023000-stewardship-of-intelligence-runtime-governance","path":"2026/09/03/02/SE-20260903-023000-stewardship-of-intelligence-runtime-governance.json","subject":"Stewardship of Intelligence runtime governance","type":"master-system-update","tags":["Stewardship-of-Intelligence","AI-waste","resource-stewardship","failure-governance","retry-control","stop-law","evidence","human-attention","GitHub-Actions","CIS","PIS","Intelligent-Feed"]},
-    {"event_id":"SE-20260903-110000-smart-note-cis-contract-lock","path":"2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json","subject":"Smart Notes are the durable intelligence mechanism for CIS/PIS continuity","type":"smart-note","tags":["Smart-Notes","smart-note","CIS","PIS","continuity","memory","learning","receipt","verification","next-action","architecture"]},
-    {"event_id":"SN-20260905-110000-smart-note-execution-test","path":"2026/09/05/11/SN-20260905-110000-smart-note-execution-test.json","subject":"A Smart Note request must be executed against Naya Power, not explained back to the human","type":"smart-note","tags":["Smart-Notes","smart-note","Human-Note","Naya-Note","Machine-Note","Intelligent-Feed","GitHub","receipts","verification","continuity","NayaNET","Intelligent-Hub"]},
-    {"event_id":"SN-20260907-EXECUTION-OBSTACLE-SOLUTION-LOOP","path":"2026/09/07/SN-20260907-EXECUTION-OBSTACLE-SOLUTION-LOOP.json","subject":"Naya must solve execution obstacles, apply known solutions, verify, and compound the learning","type":"smart-note","tags":["Smart-Notes","smart-note","AI-Naya","Human","Machine","Child","Grandma","execution","obstacle","known-solutions","adaptive-learning","verification","continuity","GitHub","NayaNET","Intelligent-Hub"]},
-    {"event_id":"SN-20260907-INTELLIGENT-HUB-PIPELINE-READINESS-ROADMAP","path":"2026/09/07/22/SN-20260907-INTELLIGENT-HUB-PIPELINE-READINESS-ROADMAP.json","subject":"Intelligent Hub pipeline readiness and execution roadmap","type":"smart-note","tags":["Smart-Notes","smart-note","Intelligent-Hub","pipeline","receiver","sender","GitHub","trigger","transport","Daily-Intelligence","verification","roadmap","NayaNET"]},
-    {"event_id":"SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED","path":"2026/09/07/22/SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json","subject":"Current State Feed = Intelligent Feed = Smart Note Feed","type":"smart-note","tags":["Smart-Notes","smart-note","current-state","intelligent-feed","continuity","cold-start","verification","NayaNET","Intelligent-Hub","execution"]}
+    {
+      "event_id": "SE-20260824-000001-maxess-execution-discipline",
+      "path": "2026/08/24/00/SE-20260824-000001-maxess-execution-discipline.json",
+      "subject": "MAXESS execution discipline",
+      "type": "execution-law",
+      "tags": [
+        "MAXESS",
+        "execution",
+        "batching",
+        "anti-loop",
+        "verification",
+        "cause-and-effect"
+      ]
+    },
+    {
+      "event_id": "SE-20260824-000002-dynamic-any-subject-assessment",
+      "path": "2026/08/24/00/SE-20260824-000002-dynamic-any-subject-assessment.json",
+      "subject": "Dynamic Any-Subject Assessment",
+      "type": "architecture-principle",
+      "tags": [
+        "MAXESS",
+        "dynamic-assessment",
+        "universal",
+        "generation",
+        "scoring",
+        "schema",
+        "provider"
+      ]
+    },
+    {
+      "event_id": "SE-20260824-000003-universal-maxis-human-vision",
+      "path": "2026/08/24/00/SE-20260824-000003-universal-maxis-human-vision.json",
+      "subject": "Universal MAXIS Human Vision",
+      "type": "vision",
+      "tags": [
+        "MAXIS",
+        "quality",
+        "human-experience",
+        "design-standard",
+        "verification"
+      ]
+    },
+    {
+      "event_id": "SE-20260824-065600-naya-operational-intelligence",
+      "path": "2026/08/24/06/SE-20260824-065600-naya-operational-intelligence.json",
+      "subject": "Naya Operational Intelligence",
+      "type": "operating-law",
+      "tags": [
+        "Naya-Power",
+        "lead",
+        "verification",
+        "source-of-truth",
+        "execution",
+        "continuity"
+      ]
+    },
+    {
+      "event_id": "SE-20260824-071200-maxess-continue-scoring-terminal",
+      "path": "2026/08/24/07/SE-20260824-071200-maxess-continue-scoring-terminal.json",
+      "subject": "MAXESS Continue scoring terminal",
+      "type": "technical-discovery",
+      "tags": [
+        "MAXESS",
+        "Continue",
+        "Q15",
+        "scoring",
+        "terminal",
+        "results",
+        "event-boundary",
+        "iframe"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-000002-maxess-execution-readiness",
+      "path": "2026/08/25/00/SE-20260825-000002-maxess-execution-readiness.json",
+      "subject": "MAXESS",
+      "type": "architecture-plan",
+      "tags": [
+        "MAXESS",
+        "execution",
+        "architecture",
+        "scoring",
+        "result-contract",
+        "dynamic-assessment",
+        "provider",
+        "testing"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-000003-maxess-engine-execution-lock",
+      "path": "2026/08/25/00/SE-20260825-000003-maxess-engine-execution-lock.json",
+      "subject": "MAXESS",
+      "type": "execution-law",
+      "tags": [
+        "MAXESS",
+        "execution-law",
+        "verification",
+        "regression",
+        "terminal-chain",
+        "green-state"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-000004-naya-power-operating-law-maxess-terminal",
+      "path": "2026/08/25/00/SE-20260825-000004-naya-power-operating-law-maxess-terminal.json",
+      "subject": "Naya Power operating method + MAXESS terminal flow",
+      "type": "operating-law",
+      "tags": [
+        "Naya-Power",
+        "take-the-lead",
+        "MAXESS",
+        "terminal-boundary",
+        "same-page-results",
+        "DOM",
+        "iframe",
+        "Groove",
+        "verification"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-000005-cis-universal-learning-vision",
+      "path": "2026/08/25/00/SE-20260825-000005-cis-universal-learning-vision.json",
+      "subject": "CIS Universal Learning Vision",
+      "type": "vision",
+      "tags": [
+        "CIS",
+        "learning",
+        "assessment",
+        "daily-intelligence",
+        "growth",
+        "universal-learning"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-122600-superbrain-seed-optimization",
+      "path": "2026/08/25/12/SE-20260825-122600-superbrain-seed-optimization.json",
+      "subject": "Personal Superbrain seed optimization",
+      "type": "master-system-update",
+      "tags": [
+        "Superbrain",
+        "seed",
+        "optimization",
+        "CIS",
+        "Naya Power",
+        "NayaNET",
+        "AI continuity",
+        "10-star",
+        "execution"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-000001-maxess-canonical-source-map",
+      "path": "2026/08/25/18/SE-20260825-000001-maxess-canonical-source-map.json",
+      "subject": "MAXESS",
+      "type": "source-map",
+      "tags": [
+        "MAXESS",
+        "source-of-truth",
+        "canonical-map",
+        "assessment",
+        "E00",
+        "E01",
+        "E02",
+        "E03",
+        "E04"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-180000-daily-intelligence-smart-notes-migration",
+      "path": "2026/08/25/18/SE-20260825-180000-daily-intelligence-smart-notes-migration.json",
+      "subject": "Smart Notes architecture migration",
+      "type": "daily-intelligence-report",
+      "tags": [
+        "CIS",
+        "daily-intelligence",
+        "Smart Notes",
+        "migration",
+        "architecture",
+        "Naya Power"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-180100-oscar-smart-notes-v3-review",
+      "path": "2026/08/25/18/SE-20260825-180100-oscar-smart-notes-v3-review.json",
+      "subject": "Smart Notes v3 architecture",
+      "type": "architecture-review",
+      "tags": [
+        "Oscar",
+        "architecture-review",
+        "Smart Notes",
+        "CIS",
+        "10-star",
+        "verification",
+        "retrieval",
+        "idempotency",
+        "automation",
+        "observability"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-200000-smart-brain-hardening-execution",
+      "path": "2026/08/25/20/SE-20260825-200000-smart-brain-hardening-execution.json",
+      "subject": "Smart Brain v3 hardening",
+      "type": "execution-milestone",
+      "tags": [
+        "Smart Brain",
+        "Smart Notes",
+        "CI",
+        "verification",
+        "retrieval",
+        "CIS",
+        "hardening",
+        "Naya Power"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-201500-nayanet-personal-superbrain-federation",
+      "path": "2026/08/25/20/SE-20260825-201500-nayanet-personal-superbrain-federation.json",
+      "subject": "NayaNET personal Superbrain federation",
+      "type": "master-system-update",
+      "tags": [
+        "NayaNET",
+        "federation",
+        "Superbrain",
+        "CIS",
+        "privacy",
+        "permission",
+        "collective-intelligence"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-203000-superbrain-10-of-10-execution-protocol",
+      "path": "2026/08/25/20/SE-20260825-203000-superbrain-10-of-10-execution-protocol.json",
+      "subject": "Personal Superbrain optimization",
+      "type": "master-system-update",
+      "tags": [
+        "Superbrain",
+        "10/10",
+        "optimization",
+        "CIS",
+        "AI continuity",
+        "verification",
+        "Naya Power"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-204500-superbrain-execution-cycle",
+      "path": "2026/08/25/20/SE-20260825-204500-superbrain-execution-cycle.json",
+      "subject": "Superbrain 10/10 execution cycle",
+      "type": "execution-milestone",
+      "tags": [
+        "Superbrain",
+        "CI",
+        "brain-gate",
+        "execution",
+        "duplicate-resolution",
+        "relationship-graph",
+        "retrieval",
+        "CIS",
+        "10/10",
+        "continuity"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-214500-superbrain-contract-enforcement",
+      "path": "2026/08/25/21/SE-20260825-214500-superbrain-contract-enforcement.json",
+      "subject": "Superbrain constitutional contract enforcement",
+      "type": "implementation",
+      "tags": [
+        "Superbrain",
+        "execution",
+        "implementation",
+        "10-star",
+        "project",
+        "next-execution",
+        "Prompt Architect",
+        "continuity"
+      ]
+    },
+    {
+      "event_id": "SE-20260825-220300-superbrain-p0-verification",
+      "path": "2026/08/25/22/SE-20260825-220300-superbrain-p0-verification.json",
+      "subject": "Superbrain P0 authoritative verification and cold-start repair",
+      "type": "verification_and_repair",
+      "tags": [
+        "Superbrain",
+        "P0",
+        "verification",
+        "cold-start",
+        "continuity",
+        "project",
+        "next-execution",
+        "learning",
+        "receipt",
+        "authoritative-green",
+        "schema-fidelity"
+      ]
+    },
+    {
+      "event_id": "SE-20260826-101700-maxess-master-directive-v2-lock",
+      "path": "2026/08/26/10/SE-20260826-101700-maxess-master-directive-v2-lock.json",
+      "subject": "MAXESS Master Engineering + Design Directive V2",
+      "type": "master-directive-lock",
+      "tags": [
+        "MAXESS",
+        "master-directive",
+        "V2",
+        "architecture",
+        "E00",
+        "E01-E09",
+        "result-contract",
+        "dynamic-assessment",
+        "AI-score",
+        "design",
+        "performance",
+        "verification",
+        "smart-notes",
+        "continuity"
+      ]
+    },
+    {
+      "event_id": "SE-20260826-200000-maxess-master-engineering-design-north-star",
+      "path": "2026/08/26/20/SE-20260826-200000-maxess-master-engineering-design-north-star.json",
+      "subject": "MAXESS Master Engineering + Design North Star",
+      "type": "master-engineering-design-directive",
+      "tags": [
+        "MAXESS",
+        "master-directive",
+        "engineering",
+        "design",
+        "10/10",
+        "dynamic-assessment",
+        "AI-score",
+        "knowledge-bank",
+        "scoring",
+        "UX",
+        "performance",
+        "Naya",
+        "Smart-Notes",
+        "CIS",
+        "Oscar",
+        "human-readable",
+        "verification-receipt"
+      ]
+    },
+    {
+      "event_id": "SE-20260826-202500-naya-power-white-paper-trifecta-and-maxess-next-gate",
+      "path": "2026/08/26/20/SE-20260826-202500-naya-power-white-paper-trifecta-and-maxess-next-gate.json",
+      "subject": "Naya Power White Paper Trifecta + MAXESS Human-Test Readiness",
+      "type": "strategic-knowledge-and-project-continuity",
+      "tags": [
+        "NayaPower",
+        "white-papers",
+        "canonical",
+        "WHY-WHAT-HOW",
+        "distribution",
+        "sales-page",
+        "podcast",
+        "five-day-challenge",
+        "MAXESS",
+        "browser-gate",
+        "human-test",
+        "scorecard",
+        "Oscar",
+        "continuity"
+      ]
+    },
+    {
+      "event_id": "SE-20260827-080000-naya-power-human-ai-collaboration-architecture",
+      "path": "2026/08/27/08/SE-20260827-080000-naya-power-human-ai-collaboration-architecture.json",
+      "subject": "Naya Power as a human-AI collaboration operating architecture",
+      "type": "strategic-architecture-and-product-narrative",
+      "tags": [
+        "NayaPower",
+        "human-AI-collaboration",
+        "operating-system",
+        "architecture",
+        "nine-systems",
+        "Superbrain",
+        "Naya-Notes",
+        "Naya-Law",
+        "Naya-Scorecarding",
+        "Lead-Mode",
+        "Naya-Design",
+        "Naya-Coder",
+        "MAXIS",
+        "Powercast"
+      ]
+    },
+    {
+      "event_id": "SE-20260827-160000-continuous-torch-pass-enforcement",
+      "path": "2026/08/27/16/SE-20260827-160000-continuous-torch-pass-enforcement.json",
+      "subject": "Continuous Torch-Pass enforcement",
+      "type": "system-change",
+      "tags": [
+        "execution",
+        "hardening",
+        "verification",
+        "continuity",
+        "torch-pass",
+        "future-naya",
+        "Superbrain"
+      ]
+    },
+    {
+      "event_id": "SE-20260827-180000-tri-representation-smart-note-law",
+      "path": "2026/08/27/18/SE-20260827-180000-tri-representation-smart-note-law.json",
+      "subject": "Tri-representation Smart Note intelligence contract",
+      "type": "knowledge-and-governance",
+      "tags": [
+        "Smart-Notes",
+        "CIS",
+        "human-representation",
+        "naya-representation",
+        "machine-representation",
+        "algorithm",
+        "intelligence",
+        "learning",
+        "compounding",
+        "verification",
+        "future-naya"
+      ]
+    },
+    {
+      "event_id": "SE-20260828-022200-maxis-qmax-elite-frontdoor",
+      "path": "2026/08/27/19/SE-20260828-022200-maxis-qmax-elite-frontdoor.json",
+      "subject": "MAXIS QMAX Elite Craft Pass",
+      "type": "execution-milestone",
+      "tags": [
+        "MAXIS",
+        "QMAX",
+        "front-door",
+        "elite-craft",
+        "execution",
+        "verification",
+        "torch-pass"
+      ]
+    },
+    {
+      "event_id": "SE-20260830-080000-smart-note-smart-link-law",
+      "path": "2026/08/30/08/SE-20260830-080000-smart-note-smart-link-law.json",
+      "subject": "Smart Note delivery requires Smart Links and proactive value capture",
+      "type": "master-system-update",
+      "tags": [
+        "Smart-Notes",
+        "Smart-Links",
+        "evidence",
+        "receipt",
+        "PIS",
+        "proactive-service",
+        "learning",
+        "compounding",
+        "continuity",
+        "verification"
+      ]
+    },
+    {
+      "event_id": "SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE",
+      "path": "2026/08/30/19/SE-20260830-INTELLIGENT-HUB-CONNECTION-ARCHITECTURE.json",
+      "subject": "Intelligent Hub first-class Superbrain connection and collective wisdom architecture",
+      "type": "architecture_decision",
+      "tags": [
+        "intelligent-hub",
+        "superbrain",
+        "wisdom-contribution",
+        "collective-intelligence",
+        "github-app",
+        "privacy",
+        "intelligence-feed"
+      ]
+    },
+    {
+      "event_id": "SE-20260830-SMART-NOTE-DELIVERY-TEACHING",
+      "path": "2026/08/30/19/SE-20260830-SMART-NOTE-DELIVERY-TEACHING.json",
+      "subject": "Explicit Smart Note requests require complete evidence-bearing delivery, and NayaPOWER teaching must optimize for comprehension and application",
+      "type": "master-system-update",
+      "tags": [
+        "Smart-Notes",
+        "Naya-Note",
+        "Shawn-Note",
+        "Machine-Note",
+        "Smart-Links",
+        "receipts",
+        "PIS",
+        "Running-Feed",
+        "proactive-capture",
+        "teaching",
+        "activation",
+        "cold-start",
+        "scorecard"
+      ]
+    },
+    {
+      "event_id": "SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP",
+      "path": "2026/08/30/19/SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP.json",
+      "subject": "Smart Notes exist to compound intelligence across time and Naya instances",
+      "type": "master-system-update",
+      "tags": [
+        "Smart-Notes",
+        "PIS",
+        "CIS",
+        "compounding",
+        "learning",
+        "continuity",
+        "restore",
+        "Running-Feed",
+        "Daily-Intelligence",
+        "Superbrain"
+      ]
+    },
+    {
+      "event_id": "SE-20260831-NAYANET-INTELLIGENT-HUB-FREEZE",
+      "path": "2026/08/31/12/SE-20260831-NAYANET-INTELLIGENT-HUB-FREEZE.json",
+      "subject": "",
+      "type": "architecture_freeze",
+      "tags": []
+    },
+    {
+      "event_id": "SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK",
+      "path": "2026/08/31/SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK.json",
+      "subject": "",
+      "type": "product_vision_architecture",
+      "tags": []
+    },
+    {
+      "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+      "path": "2026/08/31/SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json",
+      "subject": "Smart Note requests execute the complete established delivery contract and always return receipts",
+      "type": "correction",
+      "tags": []
+    },
+    {
+      "event_id": "SE-20260903-023000-stewardship-of-intelligence-runtime-governance",
+      "path": "2026/09/03/02/SE-20260903-023000-stewardship-of-intelligence-runtime-governance.json",
+      "subject": "Stewardship of Intelligence runtime governance",
+      "type": "master-system-update",
+      "tags": [
+        "Stewardship-of-Intelligence",
+        "AI-waste",
+        "resource-stewardship",
+        "failure-governance",
+        "retry-control",
+        "stop-law",
+        "evidence",
+        "human-attention",
+        "GitHub-Actions",
+        "CIS",
+        "PIS",
+        "Intelligent-Feed"
+      ]
+    },
+    {
+      "event_id": "SE-20260903-110000-smart-note-cis-contract-lock",
+      "path": "2026/09/03/11/SE-20260903-110000-smart-note-cis-contract-lock.json",
+      "subject": "Smart Notes are the durable intelligence mechanism for CIS/PIS continuity",
+      "type": "smart-note",
+      "tags": [
+        "Smart-Notes",
+        "smart-note",
+        "CIS",
+        "PIS",
+        "continuity",
+        "memory",
+        "learning",
+        "receipt",
+        "verification",
+        "next-action",
+        "architecture"
+      ]
+    }
   ]
 }
