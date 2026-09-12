@@ -64,6 +64,8 @@ def validate_state(s):
     if s.get('next_action_count')!=1 or not isinstance(s.get('next_actions'),list) or len(s['next_actions'])!=1: fail('STATE does not expose exactly one next action')
     if s['next_actions'][0]!=s['single_next_action']: fail('STATE next action representations disagree')
     return git('rev-parse','HEAD'),git('branch','--show-current')
+def validate_state_without_git(s):
+    if s.get('status')!='LIVE_BOUND' or s.get('current_head',{}).get('source')!='git:HEAD': fail('recorded HEAD accepted as current')
 def legacy_drift(head):
     if not LEGACY_STATE.is_file(): return 'NOT_PRESENT'
     try: recorded=load(LEGACY_STATE).get('current_main',{}).get('commit')
@@ -89,7 +91,7 @@ def validate_cross_surface_coherence(m,s,b):
     if s.get('single_next_action')!=active.get('next_action'): fail('STATE and BLOCK next actions disagree')
     if s.get('next_actions')!=[active.get('next_action')]: fail('STATE and BLOCK next_actions disagree')
     if s.get('next_action_count')!=active.get('next_action_count') or active.get('next_action_count')!=1: fail('STATE and BLOCK next-action cardinality disagree')
-def validate_proof(p,live_head):
+def validate_proof(p,live_head=None):
     for k in ('SOURCE','BUILD','AUTOMATED','RUNTIME','VISUAL','WHOLE_JOURNEY','PRODUCTION'):
         if k not in p.get('claim_evidence',{}): fail(f'PROOF missing claim type: {k}')
     if not all(x in p.get('non_green_states',[]) for x in ('UNKNOWN','FAILED','STALE')): fail('PROOF must fail closed on UNKNOWN/FAILED/STALE')
@@ -98,6 +100,8 @@ def validate_proof(p,live_head):
     observed=p.get('current_evidence',{}).get('observed_head'); recording=p.get('recording_commit')
     if not observed or not recording: fail('PROOF current evidence lacks observed_head or recording_commit')
     if observed!=recording: fail('PROOF observed_head and recording_commit disagree')
+    if live_head is not None and observed!=live_head: return 'STALE_RELATIVE_TO_LIVE_HEAD'
+    return 'CURRENT'
 def validate_kernel(contract):
     if contract.get('status')!='CANONICAL': fail('governance kernel is not canonical')
     if contract.get('kernel_id')!='NAYAPOWER-GOVERNANCE-KERNEL-V1': fail('unexpected governance kernel identity')
@@ -127,7 +131,7 @@ def validate_scenarios():
     try: validate_state_without_git(bad); fail('self-test: recorded HEAD accepted')
     except AssertionError: pass
     bad=json.loads(json.dumps(proof)); bad['non_green_states']=[x for x in bad['non_green_states'] if x!='UNKNOWN']
-    try: validate_proof(bad,git('rev-parse','HEAD')); fail('self-test: UNKNOWN promoted to green')
+    try: validate_proof(bad); fail('self-test: UNKNOWN promoted to green')
     except AssertionError: pass
     bad=json.loads(json.dumps(blocks)); bad['active_block']['next_actions']=['A','B']; bad['active_block']['next_action_count']=2
     try: validate_block(bad); fail('self-test: multiple next actions accepted')
@@ -135,11 +139,14 @@ def validate_scenarios():
     bad=json.loads(json.dumps(kernel)); bad['legal_transitions']['EXECUTED']=['VERIFIED']
     try: validate_kernel(bad); fail('self-test: EXECUTED -> VERIFIED bypass accepted')
     except AssertionError: pass
-def validate_state_without_git(s):
-    if s.get('status')!='LIVE_BOUND' or s.get('current_head',{}).get('source')!='git:HEAD': fail('recorded HEAD accepted as current')
+def validate_kernel_self_test():
+    if not KERNEL_IMPL.is_file(): fail('MISSING: .naya/control-plane/governance_kernel.py')
+    spec=importlib.util.spec_from_file_location('naya_governance_kernel',KERNEL_IMPL)
+    if spec is None or spec.loader is None: fail('unable to load governance kernel implementation')
+    module=importlib.util.module_from_spec(spec); sys.modules[spec.name]=module; spec.loader.exec_module(module)
+    if module.self_test().get('status')!='GREEN': fail('governance kernel self-test not GREEN')
 def main():
-    reg,map_,state,blocks,proof,kernel,manifest=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST)); validate_identity(reg); validate_manifest(manifest); validate_map(map_); head,branch=validate_state(state); validate_block(blocks); validate_cross_surface_coherence(map_,state,blocks); validate_proof(proof,head); validate_kernel(kernel); validate_kernel_self_test(); validate_scenarios()
-    freshness='CURRENT' if proof['current_evidence']['observed_head']==head else 'STALE_RELATIVE_TO_LIVE_HEAD'
+    reg,map_,state,blocks,proof,kernel,manifest=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST)); validate_identity(reg); validate_manifest(manifest); validate_map(map_); head,branch=validate_state(state); validate_block(blocks); validate_cross_surface_coherence(map_,state,blocks); freshness=validate_proof(proof,head); validate_kernel(kernel); validate_kernel_self_test(); validate_scenarios()
     print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2)); return 0
 if __name__=='__main__':
     try: raise SystemExit(main())
