@@ -1,7 +1,8 @@
 name: Execute MAXESS Section 01
 
 # Governed one-shot Section 01 checkpoint trigger.
-# The workflow is intentionally path-scoped to prevent repeated execution.
+# The trigger may observe relevant branch changes, but consequential mutation
+# requires explicit workflow dispatch approval and the canonical governance kernel.
 
 on:
   push:
@@ -10,12 +11,22 @@ on:
     paths:
       - .github/workflows/execute-maxess-section01.yml
       - tools/execute_maxess_section01.py
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to mutate the MAXESS Section 01 checkpoint
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
 
 permissions:
   contents: write
 
 jobs:
   section01:
+    if: github.event_name == 'workflow_dispatch' && inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout authoritative branch
@@ -23,6 +34,23 @@ jobs:
         with:
           ref: maxess-results-v21-working
           fetch-depth: 0
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "maxess-section01-repository-mutation" \
+            --permission "repo:write:maxess-section01" \
+            --request "mutate:MAXESS Section 01 canonical checkpoint" \
+            --mission "Execute the authorized MAXESS Section 01 surgical product checkpoint" \
+            --uncertainty 3 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","branch":"maxess-results-v21-working","paths":["tools/execute_maxess_section01.py","tools/build_v21_canonical.py","20260817 912am RESULTS PAGE CODE","V21-CANONICAL-BUILD-RESULT.md"],"operation":"surgical-write-and-push"}' \
+            --evidence "explicit workflow_dispatch approval granted" \
+            --evidence "one-shot Section 01 checkpoint scope"
 
       - name: Configure identity
         run: |
