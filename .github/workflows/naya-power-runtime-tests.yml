@@ -21,4 +21,4 @@ jobs:
           python-version: "3.12"
 
       - name: Run runtime conformance suite
-        run: python -m unittest -v test_naya_power_runtime.py test_mission_state_store.py test_quality_gate.py test_host_executor.py
+        run: python -m unittest -v test_naya_power_runtime.py test_mission_state_store.py test_quality_gate.py test_host_executor.py test_governance_contract.py

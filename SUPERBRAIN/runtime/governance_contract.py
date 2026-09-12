@@ -9,19 +9,22 @@ conditions required before an action can become eligible.
 from __future__ import annotations
 
 import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
 
 
 ALLOWED_RISK = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
 ALLOWED_CONSEQUENCE = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
+ALLOWED_DECISION_STATES = {"EXECUTE", "INVESTIGATE", "VERIFY", "ASK", "DEFER", "REFUSE", "STOP"}
+ACTIVE_AUTHORITY_STATUSES = {"CANONICAL", "GOVERNING", "LOCKED", "ACTIVE", "CURRENT"}
 
 
 @dataclass(frozen=True)
 class GovernanceDecision:
     eligible: bool
     reasons: tuple[str, ...] = ()
+    checks: Mapping[str, bool] = None  # type: ignore[assignment]
     authority_id: str | None = None
     authority_scope: str | None = None
 
@@ -51,6 +54,10 @@ class AuthorityRegistry:
         return self.authorities.get(authority_id)
 
 
+def _scope_tokens(scope: str) -> set[str]:
+    return {part.strip().casefold() for part in scope.replace(";", ",").split(",") if part.strip()}
+
+
 @dataclass(frozen=True)
 class GovernedAction:
     """Pre-execution governance facts supplied by the host/runtime."""
@@ -69,6 +76,7 @@ class GovernedAction:
     stopping_condition_satisfied: bool = True
     responsible_value_eligible: bool = True
     requires_human_decision: bool = False
+    decision_state: str = "EXECUTE"
 
 
 def evaluate_governance(
@@ -78,53 +86,92 @@ def evaluate_governance(
     """Apply hard pre-execution governance gates.
 
     Invalid, unauthorized, unsafe, unverifiable, or unjustified actions are
-    ineligible; they never compete as zero-value alternatives.
+    ineligible; they never compete as zero-value alternatives. The returned
+    checks make the decision auditable without creating another authority layer.
     """
     reasons: list[str] = []
-    authority_scope = action.authority_scope
+    checks: dict[str, bool] = {}
+    resolved_scope = action.authority_scope
 
+    checks["authority_registry_present"] = registry is not None
     if registry is not None:
-        if not action.authority_id:
+        authority = registry.resolve(action.authority_id or "") if action.authority_id else None
+        checks["authority_id_present"] = bool(action.authority_id)
+        checks["authority_registered"] = authority is not None
+        checks["authority_active"] = bool(authority and authority.get("status") in ACTIVE_AUTHORITY_STATUSES)
+        resolved_scope = str(authority.get("scope", "")) if authority else None
+        checks["authority_scope_registered"] = bool(resolved_scope and resolved_scope.strip())
+        checks["authority_scope_matches"] = bool(
+            action.authority_scope
+            and resolved_scope
+            and action.authority_scope.strip().casefold() in _scope_tokens(resolved_scope)
+        )
+        if not checks["authority_id_present"]:
             reasons.append("authority_id is required when Authority Registry is active")
-        else:
-            authority = registry.resolve(action.authority_id)
-            if authority is None:
-                reasons.append("authority_id is not registered")
-            else:
-                authority_scope = str(authority.get("scope", ""))
-                if authority.get("status") in {"REVOKED", "SUPERSEDED", "INACTIVE"}:
-                    reasons.append("authority is not active")
-                if not authority_scope.strip():
-                    reasons.append("registered authority has no scope")
+        if not checks["authority_registered"]:
+            reasons.append("authority_id is not registered")
+        if not checks["authority_active"]:
+            reasons.append("authority is not active")
+        if not checks["authority_scope_registered"]:
+            reasons.append("registered authority has no scope")
+        if not checks["authority_scope_matches"]:
+            reasons.append("requested authority scope is outside registered authority scope")
+    else:
+        checks["authority_id_present"] = bool(action.authority_id)
+        checks["authority_registered"] = True
+        checks["authority_active"] = True
+        checks["authority_scope_registered"] = bool(action.authority_scope and action.authority_scope.strip())
+        checks["authority_scope_matches"] = True
 
-    if not action.capability_available:
+    checks["capability_available"] = action.capability_available
+    checks["constitutional_eligible"] = action.constitutional_eligible
+    checks["objective_present"] = action.objective_present
+    checks["consequence_valid"] = action.consequence in ALLOWED_CONSEQUENCE
+    checks["consequence_reversible"] = not (
+        action.consequence in {"HIGH", "CRITICAL"} and not action.reversible
+    )
+    checks["risk_valid"] = action.risk in ALLOWED_RISK
+    checks["risk_acceptable"] = not (
+        action.risk in {"HIGH", "CRITICAL"} and not action.risk_acceptable
+    )
+    checks["evidence_ready"] = action.evidence_ready
+    checks["verification_required"] = action.verification_required
+    checks["stopping_condition_satisfied"] = action.stopping_condition_satisfied
+    checks["responsible_value_eligible"] = action.responsible_value_eligible
+    checks["human_decision_not_required"] = not action.requires_human_decision
+    checks["decision_state_allows_execute"] = action.decision_state == "EXECUTE"
+
+    if not checks["capability_available"]:
         reasons.append("required capability unavailable")
-    if not action.constitutional_eligible:
+    if not checks["constitutional_eligible"]:
         reasons.append("constitutional eligibility failed")
-    if not action.objective_present:
+    if not checks["objective_present"]:
         reasons.append("objective is missing")
-    if action.consequence not in ALLOWED_CONSEQUENCE:
+    if not checks["consequence_valid"]:
         reasons.append("invalid consequence level")
-    if action.consequence in {"HIGH", "CRITICAL"} and not action.reversible:
+    if not checks["consequence_reversible"]:
         reasons.append("high-consequence irreversible action requires escalation")
-    if action.risk not in ALLOWED_RISK:
+    if not checks["risk_valid"]:
         reasons.append("invalid risk level")
-    if action.risk in {"HIGH", "CRITICAL"} and not action.risk_acceptable:
+    if not checks["risk_acceptable"]:
         reasons.append("risk is not acceptable for execution")
-    if not action.evidence_ready:
+    if not checks["evidence_ready"]:
         reasons.append("required evidence is not ready")
-    if not action.verification_required:
+    if not checks["verification_required"]:
         reasons.append("verification requirement is missing")
-    if not action.stopping_condition_satisfied:
+    if not checks["stopping_condition_satisfied"]:
         reasons.append("stopping condition requires execution to stop")
-    if not action.responsible_value_eligible:
+    if not checks["responsible_value_eligible"]:
         reasons.append("responsible-value eligibility failed")
-    if action.requires_human_decision:
+    if not checks["human_decision_not_required"]:
         reasons.append("human decision is required")
+    if not checks["decision_state_allows_execute"]:
+        reasons.append(f"decision state {action.decision_state!r} does not permit execution")
 
     return GovernanceDecision(
         eligible=not reasons,
         reasons=tuple(reasons),
+        checks=checks,
         authority_id=action.authority_id,
-        authority_scope=authority_scope,
+        authority_scope=resolved_scope,
     )
