@@ -44,6 +44,8 @@ class GovernanceKernelTests(unittest.TestCase):
                 success_criteria="Smart Brain v3 enforcement passes",
                 stop_conditions=("new failure requires first-failure diagnosis",),
             ),
+            necessary_power=frozenset({"repo_read", "repo_write"}),
+            requested_power=frozenset({"repo_read", "repo_write"}),
         )
 
     def test_valid_decision_is_authorized(self):
@@ -70,6 +72,23 @@ class GovernanceKernelTests(unittest.TestCase):
         self.assertFalse(result.allowed)
         self.assertIn("authority does not permit this actor/action/scope", result.reasons)
 
+    def test_expired_authority_fails_closed(self):
+        expired = Authority(
+            authority_id="AUTH-003",
+            principal_id="human-001",
+            purpose="repair governed system",
+            scope="repo:NayaPOWER",
+            granted_actions=frozenset({"modify_source"}),
+            expires_at="2026-09-12T13:00:00Z",
+        )
+        result = evaluate(
+            self.decision,
+            expired,
+            now="2026-09-12T14:00:00Z",
+        )
+        self.assertFalse(result.allowed)
+        self.assertIn("authority does not permit this actor/action/scope or is inactive", result.reasons)
+
     def test_unknown_or_assumed_state_blocks_execution(self):
         decision = self.decision.__class__(**{
             **self.decision.__dict__,
@@ -87,6 +106,15 @@ class GovernanceKernelTests(unittest.TestCase):
         result = evaluate(decision, self.authority)
         self.assertFalse(result.allowed)
         self.assertIn("high-risk action lacks verified epistemic state", result.reasons)
+
+    def test_least_power_blocks_excess_scope(self):
+        decision = self.decision.__class__(**{
+            **self.decision.__dict__,
+            "requested_power": frozenset({"repo_read", "repo_write", "production_admin"}),
+        })
+        result = evaluate(decision, self.authority)
+        self.assertFalse(result.allowed)
+        self.assertIn("requested power exceeds necessary power", result.reasons)
 
     def test_verified_requires_observation(self):
         with self.assertRaises(AssertionError):
