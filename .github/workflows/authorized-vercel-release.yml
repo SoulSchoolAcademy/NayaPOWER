@@ -95,7 +95,10 @@ jobs:
         run: |
           python - <<'PY'
           import json, os
+          from datetime import datetime, timedelta, timezone
           from pathlib import Path
+          authorized_at = datetime.fromisoformat(os.environ["AUTHORIZED_AT"].replace("Z", "+00:00"))
+          expires_at = authorized_at + timedelta(hours=1)
           auth = {
               "$schema": "naya/release-authorization/v1",
               "status": "AUTHORIZED",
@@ -116,13 +119,14 @@ jobs:
                   ]
               },
               "authorized_by": os.environ["AUTHORIZED_BY"],
-              "authorized_at": os.environ["AUTHORIZED_AT"],
+              "authorized_at": authorized_at.isoformat(),
+              "expires_at": expires_at.isoformat(),
               "approval": os.environ["APPROVAL"],
           }
           Path("/tmp/RELEASE-AUTHORIZATION.json").write_text(json.dumps(auth, indent=2) + "\n", encoding="utf-8")
           PY
 
-      - name: Enforce fail-closed release authorization
+      - name: Enforce canonical governance-kernel release gate
         shell: bash
         env:
           TARGET_ENVIRONMENT: ${{ inputs.target_environment }}
