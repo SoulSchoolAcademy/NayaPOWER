@@ -77,7 +77,7 @@ class GovernanceKernelTests(unittest.TestCase):
         )
         result = evaluate(self.decision, wrong)
         self.assertFalse(result.allowed)
-        self.assertIn("authority does not permit this actor/action/scope or is inactive", result.reasons)
+        self.assertIn("authority does not permit this actor/action/scope", result.reasons)
 
     def test_expired_authority_fails_closed(self):
         expired = Authority(
@@ -94,7 +94,7 @@ class GovernanceKernelTests(unittest.TestCase):
             now="2026-09-12T14:00:00Z",
         )
         self.assertFalse(result.allowed)
-        self.assertIn("authority does not permit this actor/action/scope or is inactive", result.reasons)
+        self.assertIn("authority does not permit this actor/action/scope", result.reasons)
 
     def test_unknown_or_assumed_state_blocks_execution(self):
         decision = self.decision.__class__(**{
