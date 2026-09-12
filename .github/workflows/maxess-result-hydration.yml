@@ -1,5 +1,8 @@
 name: MAXESS Result Hydration
 
+# Hydration mutates four canonical result artifacts. Relevant pushes remain an
+# observation trigger, but persistent mutation requires explicit authorization
+# and the canonical NayaPOWER governance kernel.
 on:
   push:
     branches: [main]
@@ -9,19 +12,45 @@ on:
       - 'E03'
       - 'E04'
       - '.github/workflows/maxess-result-hydration.yml'
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to persist MAXESS hydration changes
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
 
 permissions:
   contents: write
 
 jobs:
   hydrate-results:
-    if: github.actor != 'github-actions[bot]'
+    if: github.event_name == 'workflow_dispatch' && inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current main
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        run: |
+          set -euo pipefail
+          python .naya/control-plane/workflow_gate.py \
+            --actor "${{ github.actor }}" \
+            --purpose "maxess-result-hydration-repository-mutation" \
+            --permission "repo:write:maxess-hydration" \
+            --request "hydrate:E01-SECTION-01-WORKING.html:E02:E03:E04" \
+            --mission "Install the authoritative MAXESS result consumer without redesigning canonical sections" \
+            --uncertainty 2 \
+            --consequence 4 \
+            --irreversibility 3 \
+            --scope '{"repository":"SoulSchoolAcademy/NayaPOWER","paths":["E01-SECTION-01-WORKING.html","E02","E03","E04"],"operation":"surgical-write-and-push"}' \
+            --evidence "explicit workflow_dispatch approval granted" \
+            --evidence "authoritative MAXESS_RESULT_V1 consumer"
 
       - name: Install authoritative MAXESS result consumer into E01-E04
         shell: python
@@ -155,5 +184,5 @@ jobs:
           git commit -m 'MAXESS: install authoritative result hydration in E01-E04'
           git push
 
-# NORTH STAR TRIGGER V2: force this governed hydration path to run again so E01-E04
-# receive the single authoritative MAXESS_RESULT_V1 consumer without redesigning sections.
+# NORTH STAR TRIGGER V2: relevant pushes can identify when hydration may be needed,
+# but cannot execute the consequential mutation without explicit dispatch approval.
