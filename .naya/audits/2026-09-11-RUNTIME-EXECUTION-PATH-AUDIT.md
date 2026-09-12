@@ -24,7 +24,7 @@ The canonical runtime boundary identified in the current source state is:
 
 `AUTHORITY REGISTRY -> GOVERNANCE CONTRACT -> ACTION ELIGIBILITY -> VALUE RANKING -> ACTION PLAN -> AUTHORIZED HOST EXECUTION -> OBSERVATION -> VERIFICATION -> SCORECARD / OSCAR -> CONTINUATION`
 
-Relevant runtime components inspected/known from the current source state:
+Relevant runtime and control-plane components inspected:
 
 - `SUPERBRAIN/runtime/naya_power_runtime.py`
 - `SUPERBRAIN/runtime/mission_state_store.py`
@@ -32,10 +32,12 @@ Relevant runtime components inspected/known from the current source state:
 - `SUPERBRAIN/runtime/host_executor.py`
 - `SUPERBRAIN/runtime/quality_gate.py`
 - `SUPERBRAIN/runtime/continuation_prompt.py`
-- their runtime unit-test modules
+- runtime unit-test modules
 - `.github/workflows/naya-power-runtime-tests.yml`
 - `.github/workflows/torch-pass-gate.yml`
 - `.github/workflows/authorized-vercel-release.yml`
+- `.github/workflows/apply-maxess-result-bridge.yml`
+- `.github/workflows/build-integrated-results.yml`
 - `.naya/runtime/release_authorization.py`
 - `.naya/runtime/deployment_governance_test.py`
 - `.naya/control-plane/DEPLOYMENT-GOVERNANCE.json`
@@ -43,7 +45,7 @@ Relevant runtime components inspected/known from the current source state:
 
 ## Findings
 
-### 1. Action selection reaches the governance contract
+### 1. Canonical runtime action selection reaches the governance contract
 
 `ActionCandidate.eligible()` delegates governed eligibility to `evaluate_governance(...)` and then preserves the existing dependency/protected-scope/authorization gates.
 
@@ -51,7 +53,7 @@ Relevant runtime components inspected/known from the current source state:
 
 `choose_next_action(...)` uses the same governed candidate-selection path.
 
-**Result:** No source-level bypass was observed in the canonical selection path.
+**Result:** No source-level bypass was observed in the canonical Naya runtime selection path.
 
 ### 2. Canonical Authority Registry is required for governed selection
 
@@ -74,7 +76,7 @@ Capability is evaluated independently from authority registration and constituti
 
 A capable action with no registered authority remains ineligible.
 
-**Result:** No capability-to-authority escalation was observed in the canonical governance path.
+**Result:** No capability-to-authority escalation was observed in the canonical runtime governance path.
 
 ### 4. Host Executor is not an alternate authority source
 
@@ -82,9 +84,9 @@ A capable action with no registered authority remains ineligible.
 
 The selection decision remains upstream in the governed Lead Mode path.
 
-**Result:** No second authority source was observed in Host Executor.
+**Result:** No second authority source was observed inside Host Executor.
 
-### 5. Direct production constructors / alternate selection paths
+### 5. Direct production constructors / alternate runtime selection paths
 
 Repository search for direct constructor/call-site patterns for `MissionStateStore`, `LeadModeEngine`, `choose_next_action`, and `HostExecutorBridge` returned no indexed results outside the already-known runtime/test surfaces.
 
@@ -92,7 +94,7 @@ This is useful negative evidence, but it is **not exhaustive repository proof** 
 
 Therefore:
 
-**Exhaustive repository-wide call-site coverage remains UNKNOWN.**
+**Exhaustive repository-wide runtime call-site coverage remains UNKNOWN.**
 
 No architecture change is justified solely from the absence of search results.
 
@@ -100,40 +102,19 @@ No architecture change is justified solely from the absence of search results.
 
 The governed runtime consumes the Authority Registry as a supplied canonical registry object and does not define a competing authority hierarchy in the Governance Contract.
 
-The Registry documentation now distinguishes source enforcement from runtime execution verification.
-
-**Result:** No second authority hierarchy was observed in the inspected runtime boundary.
+**Result:** No second authority hierarchy was observed in the inspected Naya runtime boundary.
 
 ### 7. Scope model
 
 The current scope model uses deterministic matching against registered scope strings, including comma/semicolon-delimited scope tokens.
 
-No evidence was found in this source audit proving that this representation is currently unsafe or ambiguous enough to justify a Registry redesign.
-
-A structured authority-domain model may ultimately be stronger, but introducing one without a demonstrated defect would violate Adaptive Reconstruction + Surgical Evolution.
+No evidence was found proving that this representation is currently unsafe or ambiguous enough to justify a Registry redesign.
 
 **Decision:** Preserve the current scope model pending concrete evidence of a false authorization, collision, ambiguity, or bypass.
 
 ### 8. Governance gates
 
-The current machine-checkable decision contract explicitly gates:
-
-- Registry presence
-- registered authority
-- active authority
-- scope match
-- capability
-- constitutional eligibility
-- objective
-- consequence
-- reversibility
-- risk
-- evidence readiness
-- verification requirement
-- stopping condition
-- responsible-value eligibility
-- human-decision requirement
-- explicit decision state
+The machine-checkable decision contract explicitly gates Registry presence, authority registration/status, scope, capability, constitutional eligibility, objective, consequence, reversibility, risk, evidence, verification, stopping, responsible-value eligibility, human-decision requirement, and explicit decision state.
 
 The decision result includes deterministic per-gate checks.
 
@@ -141,39 +122,57 @@ Invalid, unauthorized, unsafe, unverifiable, or unjustified candidates are exclu
 
 ### 9. Deployment is a separate, explicitly human-authorized control-plane side effect
 
-The repository also contains a consequential deployment path through `.github/workflows/authorized-vercel-release.yml`.
+`.github/workflows/authorized-vercel-release.yml` is a consequential deployment boundary, but it is not an AI action-selection path. It is explicitly invoked and requires exact commit binding, target environment, canonical project binding, verification evidence, release reason, authorized actor, timestamp, and explicit approval. The deployment policy is default-deny.
 
-That workflow does not use `HostExecutorBridge` or the runtime `Authority Registry`. It instead uses a distinct release-authorization control plane with:
+`.naya/runtime/release_authorization.py` fails closed when those release conditions are not satisfied.
 
-- workflow dispatch rather than automatic deployment
-- explicit approval state
-- exact commit SHA binding
-- target-environment binding
-- canonical Vercel project binding
-- verification evidence
-- release reason
-- authorized actor and timestamp
-- default-deny deployment policy
+**Classification:** This is a distinct human-authorized publication boundary, not an observed bypass by Naya intelligence. It should remain separate from Host Executor unless constitutional evidence later requires unification.
 
-`.naya/runtime/release_authorization.py` is fail-closed and `.naya/runtime/deployment_governance_test.py` verifies that only the canonical release workflow contains the deployment boundary and that ordinary repository changes do not authorize deployment.
+### 10. Real repository-mutation bypasses were found outside the canonical runtime
 
-**Classification:** This is a distinct human-authorized deployment control plane, not an observed bypass of the Naya runtime action-selection path. It should not be retrofitted into the runtime Host Executor merely to make the architecture look uniform. The constitutional relationship between the runtime governance contract and this explicitly human-authorized release boundary remains an architectural boundary to document and review in a later governance pass if evidence shows it must be unified.
+Two active GitHub workflows were found to mutate repository source and push commits automatically from repository events:
 
-### 10. Governance workflow does not deploy
+1. `.github/workflows/apply-maxess-result-bridge.yml`
+   - previously triggered from `push` to `main` and pull requests
+   - had `contents: write`
+   - executed a source mutation script
+   - committed and pushed the resulting mutation
 
-The deployment-governance regression suite explicitly treats the canonical release workflow as the only deployment boundary and checks that the governance workflow contains no executable Vercel deployment invocation.
+2. `.github/workflows/build-integrated-results.yml`
+   - previously triggered from `push` to `main`
+   - had `contents: write`
+   - mutated the complete Results artifact
+   - committed and pushed the resulting mutation
 
-**Result:** No alternate Vercel deployment workflow was observed in the inspected control-plane evidence.
+These were **real consequential automation paths outside the Naya governance contract**. They did not reach `ActionCandidate.eligible()`, the canonical Authority Registry, or Host Executor.
+
+### 11. Surgical repair applied to the mutation bypasses
+
+Both workflows were changed to:
+
+- `workflow_dispatch` only
+- explicit `approval` input
+- `EXPLICIT_APPROVAL_GRANTED` required
+- job-level approval gate
+- retain their intended deterministic mutation behavior when explicitly invoked
+
+The automatic `push` / pull-request mutation triggers were removed. No runtime governance was weakened.
+
+A deterministic regression test was added to `.naya/runtime/deployment_governance_test.py` to enforce that these repository-mutating workflows remain manual-only and explicitly approved.
+
+**Result:** The observed automatic repository-mutation bypasses are surgically closed at their trigger boundary.
 
 ## Architectural conclusion
 
-No concrete consequential-action bypass was identified in the inspected canonical Naya runtime path.
+The canonical Naya runtime action-selection path remains governed and fail-closed at the source level.
 
-A separate deployment control plane exists by design and is fail-closed with explicit human release authorization. It is not evidence that the runtime governance contract is bypassed by Naya intelligence; it is a separate publication side-effect boundary.
+A separate human-authorized deployment control plane remains intentionally distinct.
 
-The principal remaining source-level uncertainty is not a demonstrated bypass; it is **exhaustive repository call-site coverage** because the available GitHub code-search interface cannot reliably enumerate all symbol references.
+Two additional repository-mutating automation paths were identified as consequential side-effect boundaries that bypassed the canonical governance runtime. They were repaired by removing automatic event triggers and requiring explicit workflow dispatch plus explicit approval.
 
-Accordingly, no runtime architecture was weakened or redesigned.
+This is a concrete source-level governance repair, not activity for activity's sake.
+
+The principal remaining source-level uncertainty is **exhaustive repository call-site coverage** because the available GitHub code-search interface cannot reliably enumerate all symbol references.
 
 ## Protected decisions
 
@@ -183,8 +182,9 @@ Accordingly, no runtime architecture was weakened or redesigned.
 - Do not treat capability as authority.
 - Do not treat invalid as zero-value.
 - Do not redesign the Registry scope model without evidence.
-- Do not force the separate human release control plane through Host Executor without a demonstrated architectural requirement.
+- Do not permit automatic repository mutation merely because a workflow is deterministic.
 - Do not infer runtime verification from source inspection.
+- Do not manufacture Actions triggers.
 
 ## Verification boundary
 
@@ -199,15 +199,33 @@ The following remain UNKNOWN until genuine exact-head execution evidence exists:
 - exact-head production/runtime parity
 - Foundation GREEN
 
-Current known status evidence before this audit did not expose a canonical exact-head Torch-Pass result; combined status exposed Vercel success only.
+## Current exact-head evidence
+
+After the repairs, `main` resolved to `efb29876e1819d0002bb09ec87a85a45a00f8792` at the latest audit checkpoint.
+
+The runtime and Torch-Pass workflow definitions were present at that exact commit.
+
+The available commit-associated workflow-run interface returned no runs for that exact SHA because that interface currently filters to pull-request-triggered runs. This absence is not evidence that no push-triggered run exists.
+
+Combined commit status exposed only a Vercel status, currently `pending`, and no canonical Torch-Pass status.
+
+Therefore no runtime success or failure is claimed.
 
 ## Next highest-value action
 
-Re-resolve `main` after this audit update, capture the exact new HEAD, and inspect every legitimate available exact-head workflow/status interface. If a genuine runtime execution appears, inspect the complete run and identify the first actual failure. If no execution evidence appears, do not manufacture a trigger; preserve UNKNOWN and continue the source-level audit by inspecting any newly discoverable runtime entry points/adapters/factories.
+1. Re-resolve `main` after the latest regression-test/audit changes.
+2. Capture the exact current SHA.
+3. Fetch the runtime-test and Torch-Pass workflow definitions at that exact SHA.
+4. Check every legitimate exact-head workflow/status interface available.
+5. If a genuine execution appears, inspect the complete run and identify the FIRST TRUE FAILURE from actual logs.
+6. If no execution evidence appears, do not manufacture a trigger. Continue source-level inspection of remaining active workflows and runtime entry points for consequential mutation or execution boundaries.
+7. Repair only concrete bypasses and add deterministic regression coverage.
 
 ## Audit verdict
 
-**SOURCE-LEVEL GOVERNANCE PATH: NO OBSERVED BYPASS**
+**CANONICAL NAYA RUNTIME GOVERNANCE PATH: NO OBSERVED BYPASS**
+
+**AUTOMATIC REPOSITORY-MUTATION BYPASSES: 2 FOUND AND SURGICALLY CLOSED**
 
 **DEPLOYMENT CONTROL PLANE: EXPLICIT HUMAN AUTHORIZATION / DEFAULT DENY**
 
