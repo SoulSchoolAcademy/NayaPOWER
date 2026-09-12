@@ -20,74 +20,96 @@
 
 | ID | Constitutional requirement | Implementation target | Test required now | Current evidence | Status | Deferred / gap |
 |---|---|---|---|---|---|---|
-| GOV-001 | NayaPOWER is the governance layer, not the intelligence | Canonical constitution + startup precedence + kernel identity | Cold-start identity/precedence test | `00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md`, Runtime Constitution, and kernel contract bind governance identity | VERIFIED/DOCUMENTED | Runtime attestation across public systems |
-| GOV-002 | Human authority is separate from capability | Canonical authority object + registry + kernel gate | Attempt unauthorized consequential action | Kernel validates actor, holder, purpose, permission, status, revocation and expiry; broader cross-system authority registry remains | IMPLEMENTED/PARTIAL | Universal authority lifecycle and every consequential path |
-| GOV-003 | Protected human boundaries | Boundary policy + enforcement gates | Boundary violation suite | Constitutional requirement established; kernel has protected-boundary gate slot, but boundary classes are not yet universal | PARTIAL | Machine-checkable protected-boundary registry |
+| GOV-001 | NayaPOWER is the governance layer, not the intelligence | Canonical constitution + startup precedence + kernel identity | Cold-start identity/precedence test | Mandates, Runtime Constitution, and kernel contract bind governance identity | VERIFIED/DOCUMENTED | Runtime attestation across public systems |
+| GOV-002 | Human authority is separate from capability | Canonical authority object + registry + kernel gate | Attempt unauthorized consequential action | Kernel validates actor, holder, purpose, permission, status, revocation and expiry; broader authority registry remains | IMPLEMENTED/PARTIAL | Universal authority lifecycle and every consequential path |
+| GOV-003 | Protected human boundaries | Boundary policy + enforcement gates | Boundary violation suite | Constitutional requirement established; kernel has protected-boundary gate slot | PARTIAL | Machine-checkable protected-boundary registry |
 | GOV-004 | Truth states: known/observed/verified/inferred/assumed/unknown | Epistemic state schema + promotion rules | Inject inference as verified fact | Runtime Constitution defines evidence tiers; kernel prevents key verification-state bypasses | IMPLEMENTED/PARTIAL | Full canonical epistemic state machine |
-| GOV-005 | Responsible Verified Value | Value/decision contract | Goodhart/metric substitution tests | Act defines Responsible Verified Value; kernel carries value/evidence fields but does not yet implement full decision calculus | PARTIAL | Full value evaluation harness |
-| GOV-006 | Least necessary power | Permission/scope registry + evaluator | Request action with excessive scope | Kernel validates required permission, but does not yet calculate required vs granted power universally | PARTIAL | Formal least-privilege evaluator |
-| GOV-007 | Risk = uncertainty × consequence × reversibility | Canonical risk engine | Same action under different risk conditions | `GOVERNANCE-KERNEL.json` and `governance_kernel.py` implement deterministic risk scoring and R0–R5 routing | IMPLEMENTED/PARTIAL | Universal path integration and human-approval enforcement for R4 |
-| GOV-008 | Consequential pre-action decision contract | Canonical decision object + kernel gate | Missing-field fail-closed tests | Kernel requires all constitutional decision fields and validates stop/verification requirements; Smart Note now crosses gate | IMPLEMENTED/PARTIAL | Route every consequential executor through gate |
-| GOV-009 | Fail closed when required governance evidence is missing | Hard execution gate | Remove registry/evidence/authority and execute | Existing validator fail-closed behavior plus kernel authority/decision validation | VERIFIED for tested control paths | Full ecosystem coverage |
-| GOV-010 | Explicit governance states | Canonical state machine + legal transitions | Attempt invalid state transition | Kernel defines legal transitions and rejects `EXECUTED → VERIFIED`, `DEFERRED → EXECUTING`, `STOPPED → EXECUTING`, and other invalid transitions | IMPLEMENTED/PARTIAL | Universal state ownership across executors |
-| GOV-011 | Intended ≠ executed ≠ observed ≠ verified | Verification contract + independent observer | Claim success before observation | Kernel defines verification chain and receipt fields; independent observation remains a separate proof layer | IMPLEMENTED/PARTIAL | Independent verification provider |
-| GOV-012 | Source → build → deployment → runtime parity | Release audit contract | Deploy known marker and verify exact runtime | Deployment governance already requires exact SHA, target, project binding and verification evidence | VERIFIED for audited path / not universal | Broader runtime matrix |
-| GOV-013 | Provenance and receipts | Smart Note/receipt + kernel receipt | Fabricated receipt / wrong URL / missing ID | Kernel creates integrity-bearing receipt fields; Smart Note mutation now requires kernel admission before its existing receipt/evidence checks | IMPLEMENTED/PARTIAL | Connect every consequential mutation to canonical receipt |
-| GOV-014 | STOP/REFUSE/ESCALATE are valid states | Kernel halt + decision outcomes | Force uncertainty/high-risk/unauthorized action | Kernel implements governance halt and blocks continuation; STOP clearing requires authorization | IMPLEMENTED/PARTIAL | Propagate halt across queues, tools, delegates and async work |
-| GOV-015 | No retry without new information | Retry policy | Repeat identical failed action | Constitutional requirement remains documented; kernel receipt can preserve failure/repair but retry guard is not yet enforced | DOCUMENTED/PARTIAL | Runtime retry guard |
-| GOV-016 | Obvious defect prevention | Pre-delivery quality gate | Seed obvious defect and test delivery block | Quality principle established in V1 Act | DOCUMENTED | Implement quality gate |
-| GOV-017 | Quality is part of correctness | Quality/release state | Artifact exists but fails requirements/UX | Existing project quality standards; no single universal gate yet | PARTIAL | Canonical quality evaluator |
-| GOV-018 | Resource stewardship | Action cost model | Compare unnecessary vs necessary action paths | Existing stewardship doctrine in repo | DOCUMENTED/PARTIAL | Executable cost-aware policy |
-| GOV-019 | Cheapest reliable validation first | Validation planner | Offer expensive path vs cheaper sufficient test | Constitutional requirement | DOCUMENTED | Planner/decision rule |
-| GOV-020 | Minimum sufficient action | Surgical-change gate | Request narrow change and detect unrelated mutation | Adaptive Reconstruction + Surgical Evolution principle | DOCUMENTED/PARTIAL | Automated change-scope audit |
-| GOV-021 | No dead end / next action | Continuation contract | Block task and require useful next state | `00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md` contains Continuous Action + No Dead End Law | VERIFIED/DOCUMENTED | Runtime behavioral score |
-| GOV-022 | Continuity without authority leakage | Handoff schema + Superbrain state | Handoff intelligence then attempt unauthorized action | Existing handoff law + Superbrain work; kernel authority is explicit rather than memory-derived | PARTIAL | Formal permission inheritance test |
-| GOV-023 | Multi-Naya governance | Shared intelligence + separate authority model | Naya A authorizes; Naya B attempts action | Architecture defined in V1 Act; kernel authority is actor-bound | DOCUMENTED/PARTIAL | Multi-runtime test harness |
-| GOV-024 | Adversarial resistance | Constitutional adversarial suite | Injection, spoofing, escalation, concealment, goal substitution | Existing P0 harness plus kernel invalid-transition/authority/STOP cases in source | PARTIAL | Execute expanded corpus and compound attacks |
-| GOV-025 | Constitutional amendment governance | Versioned amendment protocol | Lower-level actor attempts constitution rewrite | V1 Act establishes amendment law; kernel binds to Act as constitutional authority | DOCUMENTED/PARTIAL | Enforce protected constitutional paths |
-| GOV-026 | Failure produces learning | Failure receipt + Smart Note | Fail action and verify durable lesson | Smart Note/CIS architecture exists; kernel receipt carries failure/repair/next action | PARTIAL | Universal failure-learning contract |
-| GOV-027 | Current NayaPOWER is first proving ground | Dogfood governance during repo work | Audit real Naya changes against Act | Kernel, validator integration, and Smart Note routing are direct self-governance work | IMPLEMENTED/PARTIAL | Full end-to-end behavioral proof |
-| GOV-028 | Superbrain compounds intelligence, not authority | Intelligence/event schema + authority separation | Persist event then attempt authority inheritance | Superbrain/CIS work exists; kernel authority is explicit and actor-bound | PARTIAL | Machine-enforced authority boundary across handoffs |
-| GOV-029 | Smart Notes produce four linked representations + receipt | Smart Note runtime protocol | Missing representation must fail receipt | Existing Smart Note enforcement remains intact and now additionally requires canonical kernel admission | IMPLEMENTED/PARTIAL | Full runtime proof across Hub integration |
-| GOV-030 | Privacy by choice | Privacy/sharing state in receipt/event | Attempt share of private intelligence without permission | Top-level constitutional mandate explicitly defines privacy law; kernel has boundary gate but no universal sharing state yet | DOCUMENTED/PARTIAL | Runtime enforcement across all feeds |
-| GOV-031 | Governance must be proportional | Risk-tiered control depth | Compare low-risk and consequential action burden | Kernel now routes R0–R5, but universal evidence/approval/verification routing remains | IMPLEMENTED/PARTIAL | Full proportional control enforcement |
-| GOV-032 | Public/extreme adversarial tests are deferred until environment exists | Deferred-test registry | Ensure deferred categories remain UNVERIFIED | Act and receipt explicitly preserve deferred/unverified distinction | VERIFIED/DOCUMENTED | Public/runtime availability |
+| GOV-005 | Responsible Verified Value | Value/decision contract | Goodhart/metric substitution tests | Act defines Responsible Verified Value; kernel carries value/evidence fields but not full calculus | PARTIAL | Full value evaluation harness |
+| GOV-006 | Least necessary power | Permission/scope registry + evaluator | Request excessive scope | Kernel validates required permission but does not calculate required vs granted power universally | PARTIAL | Formal least-privilege evaluator |
+| GOV-007 | Risk = uncertainty × consequence × irreversibility | Canonical risk engine | Same action under different risk conditions | Kernel implements deterministic R0–R5 routing | IMPLEMENTED/PARTIAL | Universal path integration and R4 enforcement |
+| GOV-008 | Consequential pre-action decision contract | Canonical decision object + kernel gate | Missing-field fail-closed tests | Kernel requires all constitutional decision fields; multiple real mutation paths now cross it | IMPLEMENTED/PARTIAL | Route every consequential executor through gate |
+| GOV-009 | Fail closed when governance evidence is missing | Hard execution gate | Remove authority/evidence and execute | Existing validator plus kernel authority/decision validation | VERIFIED for tested paths | Full ecosystem coverage |
+| GOV-010 | Explicit governance states | Canonical state machine + legal transitions | Attempt invalid state transition | Kernel rejects tested bypasses including EXECUTED→VERIFIED, DEFERRED→EXECUTING, STOPPED→EXECUTING | IMPLEMENTED/PARTIAL | Universal state ownership |
+| GOV-011 | Intended ≠ executed ≠ observed ≠ verified | Verification contract + independent observer | Claim success before observation | Kernel defines verification chain; independent observation remains separate | IMPLEMENTED/PARTIAL | Independent verification provider |
+| GOV-012 | Source → build → deployment → runtime parity | Release audit contract | Exact runtime verification | Deployment governance requires exact SHA/project/evidence; release path now crosses kernel | IMPLEMENTED/PARTIAL | Broader runtime matrix |
+| GOV-013 | Provenance and receipts | Smart Note/receipt + kernel receipt | Fabricated receipt / missing evidence | Kernel receipt + Smart Note enforcement + deployment receipt paths | IMPLEMENTED/PARTIAL | Every consequential mutation emits canonical receipt |
+| GOV-014 | STOP/REFUSE/ESCALATE are valid states | Kernel halt + decision outcomes | Force high-risk/unauthorized action | Kernel halt blocks continuation; halt clearing requires authorization | IMPLEMENTED/PARTIAL | Propagate halt across async/queued/delegated work |
+| GOV-015 | No retry without new information | Retry policy | Repeat identical failed action | Constitutional requirement documented; runtime retry guard absent | DOCUMENTED/PARTIAL | Runtime retry guard |
+| GOV-016 | Obvious defect prevention | Pre-delivery quality gate | Seed defect and test block | Quality principle established | DOCUMENTED | Implement quality gate |
+| GOV-017 | Quality is part of correctness | Quality/release state | Artifact exists but fails requirements | Existing standards; no universal evaluator | PARTIAL | Canonical quality evaluator |
+| GOV-018 | Resource stewardship | Action cost model | Compare unnecessary vs necessary action | Stewardship doctrine exists | DOCUMENTED/PARTIAL | Executable cost-aware policy |
+| GOV-019 | Cheapest reliable validation first | Validation planner | Expensive vs cheaper sufficient test | Constitutional requirement | DOCUMENTED | Planner/decision rule |
+| GOV-020 | Minimum sufficient action | Surgical-change gate | Detect unrelated mutation | Adaptive Reconstruction + Surgical Evolution | DOCUMENTED/PARTIAL | Automated change-scope audit |
+| GOV-021 | No dead end / next action | Continuation contract | Block task and require useful next state | Continuous Action + No Dead End Law | VERIFIED/DOCUMENTED | Runtime behavioral score |
+| GOV-022 | Continuity without authority leakage | Handoff schema + Superbrain state | Handoff intelligence then attempt unauthorized action | Kernel authority is explicit rather than memory-derived | PARTIAL | Formal permission inheritance test |
+| GOV-023 | Multi-Naya governance | Shared intelligence + separate authority | Naya A authorizes; Naya B attempts action | Architecture defined; kernel authority is actor-bound | DOCUMENTED/PARTIAL | Multi-runtime harness |
+| GOV-024 | Adversarial resistance | Constitutional adversarial suite | Injection, spoofing, escalation, concealment, goal substitution | Existing P0 harness + kernel tests + execution-edge guards | PARTIAL | Compound attack corpus |
+| GOV-025 | Constitutional amendment governance | Versioned amendment protocol | Unauthorized constitution rewrite | Act establishes amendment law; kernel binds to Act | DOCUMENTED/PARTIAL | Protected constitutional paths |
+| GOV-026 | Failure produces learning | Failure receipt + Smart Note | Failure → lesson → regression → retest | Kernel receipts carry failure/repair/next action; CIS architecture exists | PARTIAL | Universal failure-learning contract |
+| GOV-027 | NayaPOWER is first proving ground | Dogfood governance during repo work | Audit real Naya changes | Kernel is now governing real repository mutation paths | IMPLEMENTED/PARTIAL | Full end-to-end behavioral proof |
+| GOV-028 | Superbrain compounds intelligence, not authority | Intelligence/event schema + authority separation | Persist event then attempt authority inheritance | Explicit kernel authority; intelligence-promotion mutation now requires manual authority | IMPLEMENTED/PARTIAL | Machine-enforced authority boundary across handoffs |
+| GOV-029 | Smart Notes produce linked representations + receipt | Smart Note runtime protocol | Missing representation must fail receipt | Existing Smart Note enforcement now requires kernel admission | IMPLEMENTED/PARTIAL | Full Hub runtime proof |
+| GOV-030 | Privacy by choice | Privacy/sharing state in receipt/event | Share private intelligence without permission | Constitutional privacy law; no universal sharing state | DOCUMENTED/PARTIAL | Runtime enforcement across boundaries |
+| GOV-031 | Governance must be proportional | Risk-tiered control depth | Compare low-risk and consequential burden | Kernel routes R0–R5; universal control-depth enforcement absent | IMPLEMENTED/PARTIAL | Full proportional control enforcement |
+| GOV-032 | Public/extreme tests deferred until environment exists | Deferred-test registry | Ensure deferred categories remain UNVERIFIED | Act/receipts preserve deferred/unverified distinction | VERIFIED/DOCUMENTED | Public/runtime availability |
+
+---
+
+# CURRENT KERNEL COVERAGE — 2026-09-12
+
+## Confirmed consequential execution edges inspected
+
+| Execution edge | Previous control | Kernel routing | Evidence status |
+|---|---|---|---|
+| Vercel release authorization | Release authorization gate | `.naya/runtime/release_authorization.py` → canonical kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| Smart Note admission | Smart Note enforcement | Smart Note gate → canonical kernel → existing evidence checks | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| AIScore bridge mutation | Manual approval | workflow → `workflow_gate.py` → kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| MAXESS bridge mutation | Manual approval | workflow → `workflow_gate.py` → kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| Integrated Results mutation | Manual approval | workflow → `workflow_gate.py` → kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| NayaNET Hub mutation | Manual approval | workflow → `workflow_gate.py` → kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+| Intelligence promotion | Automatic push + write/push | automatic mutation disabled; manual dispatch → `workflow_gate.py` → kernel | SOURCE-VERIFIED / RUNTIME-UNVERIFIED |
+
+### First confirmed bypass after kernel creation
+
+`intelligence-promotion.yml` was found to mutate persistent intelligence state on an automatic `push` event with `contents: write` and `git push`, without the canonical kernel. The workflow was surgically changed so the mutating job executes only from explicit `workflow_dispatch` approval and after the canonical kernel gate.
+
+This preserves the promotion engine and learning logic while removing silent consequential mutation.
+
+## Canonical workflow adapter
+
+Created:
+
+`.naya/control-plane/workflow_gate.py`
+
+The adapter constructs the constitutional decision and authority objects and calls `GovernanceKernel().gate(...)`. Workflow authority is bounded to one hour, explicit actor/purpose/permission/scope, and non-delegable.
+
+## Inventory receipt
+
+`intelligence-receipts/2026-09-12-NAYAPOWER-CONSEQUENTIAL-EXECUTION-EDGE-INVENTORY.md`
+
+This receipt records the inspected execution edges, confirmed bypass, repairs, and remaining uninspected workflow frontier.
 
 ---
 
 # P0 — IMPLEMENT NOW
 
-The first surgical batches established the kernel foundation and routed the first real consequential mutation path through it without replacing the existing control-plane architecture.
+The kernel foundation is implemented and multiple real consequential paths now cross it. The remaining P0 problem is universal coverage and executable proof.
 
 ## P0.1 Canonical constitutional authority
 
-- Keep `NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md` as the target constitutional authority.
-- Reconcile conflicting/duplicated laws without destroying valid existing behavior.
-- Bind the executable kernel contract directly to the Act.
+Keep `NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md` as the constitutional target and bind executable enforcement to it.
 
 ## P0.2 Canonical decision contract
 
-**IMPLEMENTED/PARTIAL:** `.naya/control-plane/GOVERNANCE-KERNEL.json` + `.naya/control-plane/governance_kernel.py` define and validate:
-
-`MISSION, ACTOR, REQUEST, PURPOSE, AUTHORITY, SCOPE, BOUNDARIES, EVIDENCE, UNCERTAINTY, CONSEQUENCE, REVERSIBILITY, RISK, ALTERNATIVES, VALUE, REQUIRED_PERMISSION, DECISION, EXECUTION_PLAN, VERIFICATION_PLAN, STOP_CONDITIONS, RECEIPT_REQUIREMENTS, LEARNING_OUTPUT`
-
-Remaining requirement: every consequential executor must cross this gate.
+**IMPLEMENTED/PARTIAL:** `.naya/control-plane/GOVERNANCE-KERNEL.json` + `.naya/control-plane/governance_kernel.py` define and validate the constitutional decision fields. Multiple mutation paths now call the kernel.
 
 ## P0.3 Authority registry
 
-**IMPLEMENTED/PARTIAL:** Kernel authority validation requires actor, holder, issuer, purpose, permissions, scope, issuance, expiry, revocation and status.
-
-Remaining requirement: canonical lifecycle/delegation/scope registry across all execution surfaces.
+**IMPLEMENTED/PARTIAL:** Kernel authority validation requires actor, holder, issuer, purpose, permissions, scope, issuance, expiry, revocation and status. A universal lifecycle/delegation registry remains.
 
 ## P0.4 Evidence and verification contract
 
-**IMPLEMENTED/PARTIAL:** Kernel defines:
-
-`INTENDED → AUTHORIZED → EXECUTED → OBSERVED → VERIFIED`
-
-and rejects direct `EXECUTED → VERIFIED` promotion.
-
-Remaining requirement: claim-specific evidence classes and independent observation provider.
+**IMPLEMENTED/PARTIAL:** Kernel defines `INTENDED → AUTHORIZED → EXECUTED → OBSERVED → VERIFIED` and rejects direct bypasses. Independent observation remains.
 
 ## P0.5 Explicit governance state machine
 
@@ -95,27 +117,21 @@ Remaining requirement: claim-specific evidence classes and independent observati
 
 ## P0.6 STOP/ASK/DEFER/REFUSE/ESCALATE
 
-**IMPLEMENTED/PARTIAL:** Kernel implements halt dominance and non-success states in the canonical contract.
-
-Remaining requirement: propagate a valid STOP across asynchronous/queued/delegated execution.
+**IMPLEMENTED/PARTIAL:** Kernel implements halt dominance and non-success states. Cross-system halt propagation remains.
 
 ## P0.7 Provenance / receipt completeness
 
-**IMPLEMENTED/PARTIAL:** Kernel receipt contains actor, authority, request, decision, state, result, observation, verification, uncertainty, failure, repair, next action, timestamp and integrity hash. Smart Note admission now requires a valid kernel decision/authority before existing persistence/receipt checks.
-
-Remaining requirement: every consequential mutation must emit the canonical receipt.
+**IMPLEMENTED/PARTIAL:** Kernel receipt contains actor, authority, request, decision, state, result, observation, verification, uncertainty, failure, repair, next action, timestamp and integrity hash.
 
 ## P0.8 Constitutional test harness
 
-**IMPLEMENTED/PARTIAL:** `tests/test_governance_kernel.py` adds eight targeted kernel tests; `tests/test_smart_note_enforcement.py` adds governance-gate regression tests; the existing control-plane validator now loads the kernel self-test.
-
-Execution result remains **UNVERIFIED** because GitHub Actions is paused and the local execution environment cannot reach GitHub; no false PASS is claimed.
+**IMPLEMENTED/PARTIAL:** Targeted kernel tests, Smart Note regression tests, deployment governance tests, and repository validator integration exist. Exact repository execution remains **UNVERIFIED** while GitHub Actions is paused and the local environment lacks the repository execution context.
 
 ---
 
 # P1 — HARDEN AFTER KERNEL FOUNDATION
 
-- Inventory and route every consequential execution path through the kernel.
+- Complete repository-wide execution-edge inventory.
 - Risk-tier approval/verification enforcement.
 - Least-privilege evaluator.
 - Protected-boundary registry.
@@ -131,7 +147,7 @@ Execution result remains **UNVERIFIED** because GitHub Actions is paused and the
 
 # P2 — PUBLIC / RUNTIME VALIDATION
 
-When the required public/runtime environments are available:
+When required public/runtime environments are available:
 
 - long-running autonomous operation;
 - public Internet adversarial conditions;
@@ -142,7 +158,7 @@ When the required public/runtime environments are available:
 - production-scale authorization escalation attempts;
 - independent external validation.
 
-These are not currently claims of safety. They are future evidence requirements.
+These are future evidence requirements, not current safety claims.
 
 ---
 
@@ -157,27 +173,22 @@ NayaPOWER Ultimate Governance Act V1 should not be described as fully proven unt
 5. Critical consequential paths fail closed when required governance evidence is missing.
 6. NayaPOWER successfully governs itself through representative real project work.
 7. Public/runtime tests are added when the environment exists.
-8. The resulting evidence is independently reviewed where practical.
+8. Resulting evidence is independently reviewed where practical.
 
 ## CURRENT RELEASE LANGUAGE
 
-Until those gates are satisfied, the accurate claim is:
-
 > **NayaPOWER Ultimate Governance Act V1 is a constitutional governance design and implementation target under active testing and hardening.**
 
-Not:
-
-> “NayaPOWER is proven safe.”
+Not: “NayaPOWER is proven safe.”
 
 ---
 
-# CURRENT EXECUTION RECEIPT
+# CURRENT EXECUTION RECEIPTS
 
-Canonical receipt:
+- `intelligence-receipts/2026-09-12-NAYAPOWER-GOVERNANCE-KERNEL-V1-RECEIPT.md`
+- `intelligence-receipts/2026-09-12-NAYAPOWER-CONSEQUENTIAL-EXECUTION-EDGE-INVENTORY.md`
 
-`intelligence-receipts/2026-09-12-NAYAPOWER-GOVERNANCE-KERNEL-V1-RECEIPT.md`
-
-Implementation commits include:
+## Key implementation commits
 
 - `670f3f971bb76e329c2aa7c7e45c7f80e2d6bb2c` — kernel contract
 - `f899ca5afe000982d6c14dcbf22765b2803a2bac` — executable kernel
@@ -185,12 +196,19 @@ Implementation commits include:
 - `457e14fe25abcb31c10691131cb1886066c1fd09` — validator integration
 - `8873bde2695881e6b9cb2bfac90b957f4674fd14` — Smart Note kernel routing
 - `cacc2ede882e0a4aea79e42fdeb21c78a72abec7` — Smart Note regression tests
-- `bc40994e74014811854ec6b31b189379623314ac` — durable implementation receipt update
+- `ac22582822568774ab31a5bdcd2021c1c61a8183` — release gate kernel routing
+- `b09b5d4d51b7eecace905aff9bb7d782e87ce585` — bounded release authorization
+- `44c8efb6cc59d354c6ae96241cdfc68ac39a45ee` — workflow kernel adapter
+- `c250126cd8333059d1b05946a2cd9202aa89137b` — AIScore kernel routing
+- `975c4f7757e97c9505a14cf9215d3c528a27e797` — MAXESS kernel routing
+- `d88030b1868bac02c2ed7614be2205aece03d627` — integrated Results kernel routing
+- `a6258bacfe82fc404ee3f280f724bad6a0063998` — Hub kernel routing
+- `f87c7a611999fc2e5bdcdaa146aa7de233563c6f` — intelligence-promotion bypass repair
+- `691a96bc6f76ee4a3b6de8fb41b3a933886c4bee` — execution-edge coverage tests
+- `6c35cecd1a6b14f42f75c5f380464b73330cb94e` — execution-edge inventory receipt
 
 ## NEXT EXECUTION
 
-**NEXT ACTION:** Inventory every currently governed consequential execution path and map each one to the canonical governance kernel. Start with the existing approval/mutation boundaries around Hub, AIScore, deployment/release, Smart Notes, and any other externally consequential action. Identify the first confirmed bypass outside the kernel, then surgically route that path through the kernel and add its targeted fail-closed test.
+**NEXT ACTION:** Continue repository-wide execution-edge inventory. Inspect the remaining build/deploy/execute/hydration workflows and every credential-backed or mutation-capable boundary. For each confirmed consequential edge, route it through `.naya/control-plane/workflow_gate.py` or the appropriate canonical kernel adapter, add a targeted fail-closed test, record durable evidence, and continue until no in-scope consequential path remains outside the kernel.
 
-**SUCCESS CRITERIA:** No currently in-scope consequential execution path can bypass the canonical kernel without producing a detectable governance finding or fail-closed block.
-
-**VERIFICATION:** Read actual source, identify execution edges, implement the smallest coherent routing change, run the targeted test in an executable environment, inspect evidence, update this matrix, and continue to the next highest-value bypass.
+**SUCCESS CRITERIA:** Every currently in-scope consequential execution edge is either kernel-routed with targeted evidence or explicitly marked DEFERRED/BLOCKED with a reason. Universal runtime proof remains a separate gate.
