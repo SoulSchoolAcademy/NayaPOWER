@@ -11,7 +11,7 @@ on:
       - 'SUPERBRAIN/**'
       - 'tests/**'
       - '.github/workflows/nayanet-10-10-static-gate.yml'
-      - '.github/workflows/deploy-nayanet-hub-canonical.yml'
+      - '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
   workflow_dispatch:
 
 permissions:
@@ -36,7 +36,8 @@ jobs:
           grep -q 'nayanet-cognitive-engine.js' 'NAYANET/HUB/index.html'
           grep -q 'NAYANET-HUB-REACT-CANONICAL' 'NAYANET/HUB/src/app/App.tsx'
           grep -q 'recordPersistent' 'NAYANET/HUB/src/intelligence/cognition.ts'
-          grep -q 'name: Deploy Canonical NayaNET Hub' '.github/workflows/deploy-nayanet-hub-canonical.yml'
+          grep -q 'name: Deploy Canonical NayaNET Hub V2' '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
+          grep -q 'Enforce canonical NayaPOWER governance kernel' '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'STATIC_CANONICAL_SOURCE=PASS'
       - name: Publish gate boundary
         run: |
