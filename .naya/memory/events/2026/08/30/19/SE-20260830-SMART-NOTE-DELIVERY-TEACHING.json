@@ -1,8 +1,8 @@
 {
   "$schema": "naya/note-event/v3",
   "event_id": "SE-20260830-SMART-NOTE-DELIVERY-TEACHING",
-  "created_at": "2026-08-30",
-  "effective_at": "2026-08-30",
+  "created_at": "2026-08-30T19:00:00-07:00",
+  "effective_at": "2026-08-30T19:00:00-07:00",
   "event_type": "master-system-update",
   "type": "master-system-update",
   "subject": "Explicit Smart Note requests require complete evidence-bearing delivery, and NayaPOWER teaching must optimize for comprehension and application",
@@ -13,52 +13,39 @@
   "continuity_required": true,
   "tags": ["Smart-Notes", "Naya-Note", "Shawn-Note", "Machine-Note", "Smart-Links", "receipts", "PIS", "Running-Feed", "proactive-capture", "teaching", "activation", "cold-start", "scorecard"],
   "summary": "The 2026-08-30 cold-start test scored the fresh Naya 9.1/10 and demonstrated strong operational understanding. The review exposed a delivery failure: understanding a Smart Note is not enough; an explicit Smart Note request must execute the complete three-representation, evidence-bearing delivery. Shawn also established that NayaPOWER should teach people for comprehension and application, not merely provide a curriculum or document dump.",
-  "learning": {
-    "cold_start_test_score": "9.1/10",
-    "cold_start_result": "SUCCESSFUL_ORIENTATION_WITH_MATERIAL_DELIVERY_GAP",
-    "problem": "The assistant recognized durable learning but did not return the complete Shawn/Naya/Machine representation set, direct Smart Links, exact persistence receipts, or separate PIS/Running Feed state.",
-    "principle": "A Smart Note is a verified intelligence-delivery event with inspectable representations, provenance, links, and explicit propagation state.",
-    "proactive_capture": "When substantive work creates durable value, Naya should recognize it and capture it when legitimate storage is available without waiting for an explicit request.",
-    "teaching": "When a person asks to learn NayaPOWER, Naya should enter a teaching experience optimized for rapid comprehension, concrete understanding, practical application, and immediate use."
-  },
-  "representations": {
-    "shawn": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-SHAWN.md",
-    "naya": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-NAYA.md",
-    "machine": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-MACHINE.json"
-  },
-  "intelligence_lifecycle": {
-    "note_event": "Canonical underlying intelligence event.",
-    "naya_note_to_pis": "The Naya Note is the AI-facing learning representation and should enter the canonical PIS lifecycle when applicable and authorized.",
-    "pis": "Primary Intelligence System / internal intelligence synthesis layer.",
-    "running_feed": "Chronological operational orientation projection; it is not a competing memory authority.",
-    "teaching": "NayaPOWER teaching should explain what the system is, why it matters, how it works, how Smart Notes create continuity, how evidence constrains claims, and how the learner can use Naya day to day."
-  },
-  "state_boundaries": {
-    "created": "The canonical Note Event exists.",
-    "persisted": "The required representations exist in the authoritative repository.",
-    "linked": "Direct Smart Links resolve to the persisted representations.",
-    "propagated": "The Naya Note has entered the PIS lifecycle.",
-    "verified": "Evidence proves the claimed transition.",
-    "consumed": "A later Naya has actually loaded the updated intelligence during restore."
-  },
-  "evidence": {
-    "cold_start_score": "9.1/10 as reported by the fresh-Naya test response supplied by Shawn.",
-    "smart_note_artifacts": "PERSISTED_REPOSITORY_ARTIFACTS",
-    "pis_propagation": "PERSISTENCE_AND_PIS_UPDATE_ARTIFACT_CREATED; DOWNSTREAM_RUNTIME_PROPAGATION_NOT_PROVEN_IN_THIS_TURN",
-    "running_feed": "A canonical Running Feed update is a separate transition and must not be inferred solely from note creation.",
-    "runtime_claim_policy": "Do not claim runtime propagation or successor consumption merely because repository artifacts exist."
-  },
-  "delivery": {
-    "smart_links": {
-      "shawn": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-SHAWN.md",
-      "naya": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-NAYA.md",
-      "machine": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-MACHINE.json",
-      "event": ".naya/memory/events/2026/08/30/19/SE-20260830-SMART-NOTE-DELIVERY-TEACHING.json"
-    },
-    "receipt_policy": "Return exact commit SHA(s) for persisted artifacts and explicitly report PIS and Running Feed states."
-  },
+  "learning": {"cold_start_test_score": "9.1/10", "cold_start_result": "SUCCESSFUL_ORIENTATION_WITH_MATERIAL_DELIVERY_GAP", "problem": "The assistant recognized durable learning but did not return the complete Shawn/Naya/Machine representation set, direct Smart Links, exact persistence receipts, or separate PIS/Running Feed state.", "principle": "A Smart Note is a verified intelligence-delivery event with inspectable representations, provenance, links, and explicit propagation state.", "proactive_capture": "When substantive work creates durable value, Naya should recognize it and capture it when legitimate storage is available without waiting for an explicit request.", "teaching": "When a person asks to learn NayaPOWER, Naya should enter a teaching experience optimized for rapid comprehension, concrete understanding, practical application, and immediate use."},
+  "representations": {"shawn": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-SHAWN.md", "naya": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-NAYA.md", "machine": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-MACHINE.json"},
+  "intelligence_lifecycle": {"note_event": "Canonical underlying intelligence event.", "naya_note_to_pis": "The Naya Note is the AI-facing learning representation and should enter the canonical PIS lifecycle when applicable and authorized.", "pis": "Primary Intelligence System / internal intelligence synthesis layer.", "running_feed": "Chronological operational orientation projection; it is not a competing memory authority.", "teaching": "NayaPOWER teaching should explain what the system is, why it matters, how it works, how Smart Notes create continuity, how evidence constrains claims, and how the learner can use Naya day to day."},
+  "state_boundaries": {"created": "The canonical Note Event exists.", "persisted": "The required representations exist in the authoritative repository.", "linked": "Direct Smart Links resolve to the persisted representations.", "propagated": "The Naya Note has entered the PIS lifecycle.", "verified": "Evidence proves the claimed transition.", "consumed": "A later Naya has actually loaded the updated intelligence during restore."},
+  "evidence": {"cold_start_score": "9.1/10 as reported by the fresh-Naya test response supplied by Shawn.", "smart_note_artifacts": "PERSISTED_REPOSITORY_ARTIFACTS", "pis_propagation": "PERSISTENCE_AND_PIS_UPDATE_ARTIFACT_CREATED; DOWNSTREAM_RUNTIME_PROPAGATION_NOT_PROVEN_IN_THIS_TURN", "running_feed": "A canonical Running Feed update is a separate transition and must not be inferred solely from note creation.", "runtime_claim_policy": "Do not claim runtime propagation or successor consumption merely because repository artifacts exist."},
+  "delivery": {"state": "REPOSITORY_ARTIFACTS_PERSISTED", "smart_links": {"shawn": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-SHAWN.md", "naya": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-NAYA.md", "machine": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-MACHINE.json", "event": ".naya/memory/events/2026/08/30/19/SE-20260830-SMART-NOTE-DELIVERY-TEACHING.json"}, "receipt_policy": "Return exact commit SHA(s) for persisted artifacts and explicitly report PIS and Running Feed states."},
   "next_action": "Runtime-test the explicit Smart Note request path so the canonical event, three representations, Smart Links, PIS propagation, and Running Feed update are produced and evidenced automatically rather than manually.",
-  "provenance": {
-    "source": "Shawn's 2026-08-30 review of the fresh-Naya cold-start test and explicit requirements for Smart Note delivery, proactive capture, PIS/Running Feed continuity, and NayaPOWER teaching."
+  "provenance": {"source": "Shawn's 2026-08-30 review of the fresh-Naya cold-start test and explicit requirements for Smart Note delivery, proactive capture, PIS/Running Feed continuity, and NayaPOWER teaching."},
+  "verification": {"status": "VERIFIED", "evidence": ["The canonical event and three representation paths are persisted in the repository.", "The delivery contract explicitly distinguishes repository persistence from runtime propagation and consumption."], "runtime_status": "NOT_RUNTIME_PROVEN"},
+  "receipt": {"receipt_id": "RCPT-20260830-SMART-NOTE-DELIVERY-TEACHING", "status": "REPOSITORY_WRITE_VERIFIED", "evidence": "Canonical event and representation artifacts are persisted in GitHub."},
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "ai_to_ai_handoff": true,
+    "learning_status": "LEARNED",
+    "next_action_status": "READY",
+    "next_action": "Runtime-test the explicit Smart Note request path so the canonical event, three representations, Smart Links, PIS propagation, and Running Feed update are produced and evidenced automatically rather than manually.",
+    "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260830-SMART-LINK-LAW.md",
+    "handoff": {
+      "mission": "Make Smart Note delivery and NayaPOWER teaching executable, evidence-first, and continuously recoverable.",
+      "source_of_truth": ".naya/memory/events/",
+      "current_state": "The Smart Note delivery contract and three representation paths are persisted; downstream runtime propagation remains unproven.",
+      "protected_baseline": "Canonical Note Event remains authoritative; PIS and Running Feed state cannot be inferred from note creation.",
+      "work_completed": "Captured the complete delivery and teaching contract with explicit evidence boundaries.",
+      "evidence": "Canonical event, representation artifacts, delivery paths, receipt, and successor handoff exist.",
+      "decisions": "Explicit Smart Note requests must execute complete evidence-bearing delivery; teaching optimizes for comprehension and application.",
+      "lessons": "Understanding a Smart Note is not equivalent to delivering one with inspectable evidence.",
+      "unknowns": "Runtime PIS propagation and automatic Running Feed update remain unproven.",
+      "risks": "Manual delivery habits can drift from the canonical contract without runtime enforcement.",
+      "recommendation": "Acceptance-test the explicit Smart Note path at the canonical runtime boundary.",
+      "next_action": "Runtime-test the Smart Note request path and prove propagation/update evidence.",
+      "ready_to_run_execution": "Inspect the Smart Note runtime and acceptance tests; implement the smallest evidence-backed enforcement; add deliberate failures; run the authoritative gate.",
+      "human_continuation": "Continue from the canonical successor; do not invent a separate task.",
+      "human_continuation_naya_authored": "true"
+    }
   }
 }
