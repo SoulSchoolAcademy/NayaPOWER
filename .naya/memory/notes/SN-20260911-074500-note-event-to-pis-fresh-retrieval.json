@@ -2,7 +2,7 @@
   "id": "SN-20260911-074500-note-event-to-pis-fresh-retrieval",
   "event_id": "SE-20260911-074500-note-event-to-pis-fresh-retrieval",
   "representation": "NAYA",
-  "type": "verification",
+  "type": "lesson",
   "title": "Note Event to PIS to fresh-Naya retrieval is runtime-proven",
   "status": "ACTIVE",
   "created_at": "2026-09-11T07:45:00-07:00",
@@ -26,7 +26,7 @@
   "what_changed": [
     "Added tools/propagate_intelligence_to_pis.py as a deterministic Note Event → PIS transition.",
     "Added tools/test_superbrain_note_event_to_pis.py as an end-to-end acceptance proof.",
-    "Made the PIS acceptance test mandatory in tools/run_superbrain_local_suite.py."
+    "Made the PIS acceptance test mandatory in tools/run_superbrain_local_suite.py"
   ],
   "next_best_action": "Perform the human fresh-Naya behavioral acceptance: new conversation, restore NayaPOWER without copied history, then authorize one safe continuation and observe whether the Naya selects the current frontier, verifies its work, captures learning, and leaves a successor-ready torch.",
   "tags": [
