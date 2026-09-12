@@ -1,30 +1,63 @@
 name: Build NayaNET Intelligent Hub from canonical 5:09 source
 
-# Release execution: the current approved 5:09 Hub is the canonical source for this build.
+# Consequential Hub mutation is explicitly dispatched and kernel-gated.
+# A source push may identify work, but it may not authorize mutation.
 
 on:
-  push:
-    paths:
-      - '2026 09 09 5:09 pm NayaNET HUB.html'
-      - 'scripts/nayanet-509-intelligent-feed-v2.js'
-      - '.github/workflows/build-nayahub-intelligent.yml'
-  pull_request:
-    types: [closed]
   workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit approval to mutate the canonical Hub artifact
+        required: true
+        type: choice
+        options:
+          - EXPLICIT_APPROVAL_GRANTED
+          - DENY
+      reason:
+        description: Why this Hub build is being executed now
+        required: true
+        type: string
 
 permissions:
   contents: write
   actions: read
 
+concurrency:
+  group: naya-power-intelligent-hub-build
+  cancel-in-progress: false
+
 jobs:
   build:
-    if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
+    if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact canonical 5:09 Hub source
+      - name: Checkout canonical NayaPOWER state
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Enforce canonical NayaPOWER governance kernel
+        shell: bash
+        env:
+          ACTOR: ${{ github.actor }}
+          APPROVAL: ${{ inputs.approval }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          test "$APPROVAL" = "EXPLICIT_APPROVAL_GRANTED"
+          python3 .naya/control-plane/workflow_gate.py \
+            --actor "$ACTOR" \
+            --purpose "build and mutate the canonical NayaNET Intelligent Hub artifact" \
+            --permission "repo_write" \
+            --request "build_nayanet_intelligent_hub" \
+            --mission "make NayaPOWER governance operationally capable of safely building the Intelligent Hub" \
+            --uncertainty 1 \
+            --consequence 5 \
+            --irreversibility 2 \
+            --scope "repo:SoulSchoolAcademy/NayaPOWER:path:index.html" \
+            --evidence "explicit workflow_dispatch approval" \
+            --evidence "operator reason: $REASON"
+
       - name: Surgical integration — remove stray code and install one widescreen feed
         shell: bash
         run: |
@@ -51,6 +84,7 @@ jobs:
           print('CANONICAL_SOURCE_BYTES',src.stat().st_size)
           print('INDEX_BYTES',Path('index.html').stat().st_size)
           PY
+
       - name: Validate exact requested changes
         shell: bash
         run: |
@@ -72,13 +106,21 @@ jobs:
           assert 'grid-template-columns:repeat(3' not in s[s.find('id="NAYANET_509_INTELLIGENT_FEED_DIRECT_V2"'):]
           print('PASS: single canonical widescreen feed renderer; stray pre/code removed')
           PY
+
       - name: Commit completed canonical Hub and index
         shell: bash
         run: |
+          set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add index.html _redirects
-          if git diff --cached --quiet; then echo 'No generated changes'; else git commit -m 'Build canonical NayaNET Hub widescreen feed [skip ci]'; git push; fi
+          if git diff --cached --quiet; then
+            echo 'No generated changes'
+          else
+            git commit -m 'Build canonical NayaNET Hub widescreen feed [skip ci]'
+            git push
+          fi
+
       - name: Upload Cloudflare package
         uses: actions/upload-artifact@v4
         with:
