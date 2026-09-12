@@ -3,10 +3,13 @@
 from __future__ import annotations
 
 import importlib.util
+import sys
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location("activation_engine", Path(__file__).with_name("activation_engine.py"))
 activation = importlib.util.module_from_spec(spec)
+sys.modules[spec.name] = activation
+assert spec.loader is not None
 spec.loader.exec_module(activation)
 contract = __import__("activation_contract")
 
