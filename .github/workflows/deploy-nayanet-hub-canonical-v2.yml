@@ -1,5 +1,5 @@
 # CANONICAL-LIVE-HUB-WORKFLOW-V2-2026-09-09
-# Canonical runtime deployment. Public mutation is explicitly dispatched/called,
+# Canonical runtime deployment. Public mutation is human-dispatched only,
 # bound to an exact source SHA, and routed through the NayaPOWER governance kernel.
 name: Deploy Canonical NayaNET Hub V2
 on:
@@ -20,20 +20,6 @@ on:
         description: Why this exact commit is being deployed
         required: true
         type: string
-  workflow_call:
-    inputs:
-      commit_sha:
-        required: true
-        type: string
-      approval:
-        required: true
-        type: string
-      reason:
-        required: true
-        type: string
-    secrets:
-      CLOUDFLARE_API_TOKEN:
-        required: true
 permissions:
   contents: read
 concurrency:
