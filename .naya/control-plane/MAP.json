@@ -8,17 +8,29 @@
   "authority": {
     "governing_standard": "SUPERBRAIN/NAYA-REPOSITORY-OPERATING-STANDARD.md",
     "boot_entry": "SUPERBRAIN/AI-BOOT/START-HERE.md",
-    "current_state": ".naya/memory/STATE.json",
+    "current_state": ".naya/control-plane/STATE.json",
+    "legacy_state_projection": ".naya/memory/STATE.json",
     "execution_issue": 66,
     "assessment_issue": 67,
     "maxis_design_decision": 69
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
-    "current_state": ".naya/memory/STATE.json",
+    "current_state": ".naya/control-plane/STATE.json",
+    "active_block": ".naya/control-plane/BLOCKS.json",
+    "mission_map": ".naya/control-plane/MAP.json",
+    "proof_contract": ".naya/control-plane/PROOF.json",
+    "legacy_state_projection": ".naya/memory/STATE.json",
     "runtime_transactional_state": "Application runtime/database authority where applicable",
     "evidence": "Execution receipts, CI artifacts, runtime/render/whole-journey evidence",
     "history": ".naya/memory/events/ and execution receipts"
+  },
+  "operational_state_rule": "The control-plane STATE/BLOCK/MAP/PROOF surfaces form the canonical operational control plane. .naya/memory/STATE.json is a compatibility/history projection and cannot override or compete with live Git identity or control-plane state.",
+  "continuous_smart_flow": {
+    "master_note": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
+    "priority": "P0",
+    "flow": "NAYA ENTERS → IDENTITY → LIVE REPOSITORY HEAD → CANONICAL STATE RESTORE → CURRENT MISSION → CURRENT PROJECT → ACTIVE EXECUTION BLOCK → PROTECTED BASELINE → AUTHORITY → WORK COMPLETED → PROOF → UNKNOWN/FAILURES → SINGLE NEXT ACTION → EXECUTE → VERIFY → RECORD → UPDATE STATE → UPDATE RECEIPT → GENERATE TORCH → NEXT NAYA ENTERS → SAME TRUTH → CONTINUE",
+    "acceptance": "A completely cold Naya can restore the current operational truth and execute the single next action without conversational archaeology or human reconstruction of repository state."
   },
   "protected": ["NayaPOWER constitutional and governing laws","canonical source hierarchy","Mission State/current truth contract","MAXESS canonical scoring/result authority","MAXESS_RESULT_V1","independent Oscar challenge boundary","UNKNOWN-as-not-verified law","one-authority/anti-duplication law","continuous torch-pass and successor continuity","MAXIS Living Sun presentation direction as recorded in Issue #69, without coupling presentation to scoring truth"],
   "major_systems": ["Naya activation","Superbrain memory/CIS","Prompt Architect","Execution continuity","Verification/evidence","Oscar quality review","MAXIS/MAXESS integration","MAXIS Living Sun assessment presentation"],
