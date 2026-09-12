@@ -17,6 +17,8 @@ KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'
 KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'
 LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
 MANIFEST=ROOT/'.naya/naya-context-manifest.json'
+SOURCE_MAP=ROOT/'SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md'
+CANONICAL_CONSTITUTION='.naya/codex/11-RUNTIME-CONSTITUTION.md'
 KNOWN_REPO_PATH_PREFIXES=('.naya/','.github/','SUPERBRAIN/','NAYANET/','scripts/','tests/','docs/')
 
 
@@ -48,6 +50,43 @@ def repo_path(value,label):
 
 def looks_like_repo_path(value):
     return isinstance(value,str) and value.startswith(KNOWN_REPO_PATH_PREFIXES)
+
+
+def validate_authority_map(kernel):
+    """Enforce one current constitution and an explicit source hierarchy."""
+    repo_path(CANONICAL_CONSTITUTION,'canonical constitution')
+    repo_path('SUPERBRAIN/AI-BOOT/START-HERE.md','canonical bootloader')
+    repo_path('SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md','canonical source map')
+    text=SOURCE_MAP.read_text(encoding='utf-8')
+    required=(
+        'ONE CONSTITUTION. ONE CURRENT CONTROL PLANE. MANY SPECIALIZED RECORDS. ZERO AMBIGUOUS AUTHORITIES.',
+        '**`.naya/codex/11-RUNTIME-CONSTITUTION.md`**',
+        'CONSTITUTIONAL-AMENDMENT-*.md',
+        'AMENDMENT RECORD',
+        'HISTORY ≠ CURRENT TRUTH',
+        'RECORDED ≠ CURRENT',
+    )
+    for marker in required:
+        if marker not in text:
+            fail(f'canonical source map missing required rule: {marker}')
+    if kernel.get('constitutional_authority')!=CANONICAL_CONSTITUTION:
+        fail('governance kernel constitutional authority disagrees with canonical source map')
+    # No second file may claim the repository-wide constitutional status.
+    # Amendment records are intentionally allowed as historical records.
+    offenders=[]
+    for base in (ROOT/'.naya/codex',ROOT/'SUPERBRAIN'):
+        if not base.is_dir():
+            continue
+        for path in base.rglob('*.md'):
+            if path == ROOT/CANONICAL_CONSTITUTION or path == SOURCE_MAP:
+                continue
+            raw=path.read_text(encoding='utf-8',errors='replace')
+            canonical_const=('CANONICAL / CONSTITUTIONAL' in raw or '**CANONICAL / CONSTITUTIONAL**' in raw)
+            constitutional_authority=('Authority: Constitutional' in raw or '**Authority:** Constitutional' in raw)
+            if canonical_const and constitutional_authority:
+                offenders.append(path.relative_to(ROOT).as_posix())
+    if offenders:
+        fail('multiple current constitutional authorities detected: '+'; '.join(offenders[:20]))
 
 
 def validate_identity(reg):
@@ -219,6 +258,7 @@ def main():
     validate_identity(reg)
     validate_manifest(manifest)
     validate_map(map_)
+    validate_authority_map(kernel)
     head,branch=validate_state(state)
     validate_block(blocks)
     validate_cross_surface_coherence(map_,state,blocks)
@@ -226,7 +266,7 @@ def main():
     validate_kernel(kernel)
     validate_kernel_self_test()
     validate_scenarios()
-    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
+    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','authority_map':'GREEN','single_constitution':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
     return 0
 
 
