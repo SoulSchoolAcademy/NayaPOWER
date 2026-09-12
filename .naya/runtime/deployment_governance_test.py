@@ -18,7 +18,9 @@ MAXESS_BRIDGE_WORKFLOW = WORKFLOWS / "apply-maxess-result-bridge.yml"
 INTEGRATED_RESULTS_WORKFLOW = WORKFLOWS / "build-integrated-results.yml"
 AISCORE_BRIDGE_WORKFLOW = WORKFLOWS / "build-aiscore-app-bridge.yml"
 NAYANET_HUB_PATCH_WORKFLOW = WORKFLOWS / "2026-09-08-10-05-apply-nayanet-hub-surgical-patch.yml"
+INTELLIGENCE_PROMOTION_WORKFLOW = WORKFLOWS / "intelligence-promotion.yml"
 CANONICAL_PROJECT_ID = "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK"
+KERNEL_MARKER = ".naya/control-plane/workflow_gate.py"
 
 
 def load(path: Path):
@@ -130,6 +132,27 @@ def test_kernel_denies_missing_release_authority():
     auth.pop("authorized_by")
     decision = kernel_release_authorization(authorization=auth, commit_sha=auth["commit_sha"], target=auth["target_environment"])
     assert not decision.allowed
+
+
+def test_known_repository_mutation_workflows_cross_the_canonical_kernel():
+    for path in (
+        MAXESS_BRIDGE_WORKFLOW,
+        INTEGRATED_RESULTS_WORKFLOW,
+        AISCORE_BRIDGE_WORKFLOW,
+        NAYANET_HUB_PATCH_WORKFLOW,
+        INTELLIGENCE_PROMOTION_WORKFLOW,
+    ):
+        text = path.read_text(encoding="utf-8")
+        assert KERNEL_MARKER in text, f"canonical kernel gate missing: {path}"
+        assert "EXPLICIT_APPROVAL_GRANTED" in text, f"explicit approval missing: {path}"
+
+
+def test_intelligence_promotion_cannot_mutate_on_automatic_push():
+    text = INTELLIGENCE_PROMOTION_WORKFLOW.read_text(encoding="utf-8").lower()
+    assert "push:" in text
+    assert "github.event_name == 'workflow_dispatch'" in text
+    assert "inputs.approval == 'explicit_approval_granted'" in text
+    assert "git push" in text
 
 
 def test_only_the_canonical_release_workflow_may_contain_vercel_deploy_command():
