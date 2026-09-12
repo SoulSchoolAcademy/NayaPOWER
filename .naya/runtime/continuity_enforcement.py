@@ -9,7 +9,9 @@ if str(RUNTIME) not in sys.path: sys.path.insert(0,str(RUNTIME))
 from project_execution_contract import validate_next_execution_reference
 ROOT=Path(__file__).resolve().parents[2]
 MEMORY=ROOT/'.naya'/'memory';EVENTS=MEMORY/'events';POLICY=MEMORY/'CONTINUITY-ENFORCEMENT-POLICY.json';REPORT=MEMORY/'CONTINUITY-VALIDATION-REPORT.json';RECEIPT=MEMORY/'CONTINUITY-GATE-RECEIPT.json'
-EVENT_RE=re.compile(r'^SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+$')
+# Canonical historical event identities may contain uppercase letters; identity is
+# preserved rather than rewritten merely to satisfy the validator.
+EVENT_RE=re.compile(r'^SE-[0-9]{8}-[0-9]{6}-[A-Za-z0-9-]+$')
 def parse_time(v):
     if v.endswith('Z'):v=v[:-1]+'+00:00'
     # Preserve deterministic comparison for canonical legacy events that record
