@@ -12,9 +12,11 @@ ROOT = Path(__file__).resolve().parent
 DAILY = ROOT / "DAILY"
 PROTOCOL = ROOT / "NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md"
 BOARD = ROOT / "00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md"
+HANDOFF_CONTRACT = ROOT / "NAYA-COMPLETE-HANDOFF-CONTRACT.md"
 
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
 TIMESTAMP_RE = re.compile(r"^## (\d{4}-\d{2}-\d{2}T[^ ]+) — NAYA — (.+)$", re.MULTILINE)
+NEXT_ACTION_RE = re.compile(r"^\*\*NEXT BEST ACTION:\*\*", re.MULTILINE)
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -46,9 +48,8 @@ def validate_day(path: Path, errors: list[str]) -> None:
         fail(errors, f"{path}: event timestamps are not chronological")
 
     # Validate the fields required for substantive completed work and handoffs.
-    # The original DAILY STREAM INITIALIZED entry is preserved as immutable
-    # bootstrap history. It predates the finalized substantive-action contract,
-    # so it is validated structurally but is not retroactively rewritten.
+    # Historical bootstrap entries are preserved as immutable history and are not
+    # retroactively rewritten merely to satisfy a later contract revision.
     for index, match in enumerate(matches):
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         block = text[match.start():end]
@@ -82,8 +83,8 @@ def validate_day(path: Path, errors: list[str]) -> None:
                 if term not in block:
                     fail(errors, f"{path}: {title}: missing required field: {term}")
 
-    # The latest current-day event owns the baton. It must contain a complete,
-    # executable successor prompt rather than a bare TAG marker.
+    # The latest current-day event owns the baton. It must satisfy the complete
+    # successor contract, not merely contain a baton marker or vague continuation.
     latest = matches[-1]
     latest_block = text[latest.start():]
     successor_markers = [
@@ -91,18 +92,34 @@ def validate_day(path: Path, errors: list[str]) -> None:
         "### NEXT NAYA EXECUTION PROMPT — EXECUTE NOW",
         "### NEXT NAYA TORCH",
         "### NEXT NAYA — READY TO RUN",
+        "## EXECUTION INSTRUCTION FOR NEXT NAYA",
     ]
     if not any(marker in latest_block for marker in successor_markers):
         fail(errors, f"{path}: latest event is missing a complete successor prompt/torch")
 
     latest_required = [
+        "CURRENT STATE",
+        "WHY THIS MATTERS",
+        "WHAT HAS BEEN DONE",
+        "WHAT THE EVIDENCE PROVES",
+        "WHAT REMAINS UNKNOWN",
+        "CURRENT SCORE / QUALITY GATE",
         "NEXT BEST ACTION",
+        "EXECUTION INSTRUCTION FOR NEXT NAYA",
+        "HANDOFF / CONTINUATION",
         "WHY THIS IS NOT A 10",
         "TAG → YOU'RE IT",
     ]
     for term in latest_required:
         if term not in latest_block:
-            fail(errors, f"{path}: latest event missing baton field: {term}")
+            fail(errors, f"{path}: latest event missing complete-handoff field: {term}")
+
+    next_action_count = len(NEXT_ACTION_RE.findall(latest_block))
+    if next_action_count != 1:
+        fail(
+            errors,
+            f"{path}: latest event must contain exactly one '**NEXT BEST ACTION:**' field; found {next_action_count}",
+        )
 
     for sha in SHA_RE.findall(text):
         if sha == "0" * 40:
@@ -117,6 +134,8 @@ def main() -> int:
 
     if not PROTOCOL.exists():
         fail(errors, "missing NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md")
+    if not HANDOFF_CONTRACT.exists():
+        fail(errors, "missing NAYA-COMPLETE-HANDOFF-CONTRACT.md")
     if not BOARD.exists():
         fail(errors, "missing 00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md")
     if not DAILY.exists():
@@ -146,7 +165,8 @@ def main() -> int:
     print("Daily feeds: valid")
     print("Chronology: valid")
     print("Required action/handoff fields: present")
-    print("Latest event: complete successor torch present")
+    print("Latest event: complete successor contract present")
+    print("Latest event: exactly one NEXT BEST ACTION field present")
     print("Current board relay pointers: present")
     print("Baton marker: present")
     return 0
