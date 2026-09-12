@@ -59,8 +59,13 @@ jobs:
         run: |
           set -euo pipefail
           if [ -z "${NAYA_POWER_TARGET_URL:-}" ]; then
-            echo 'LIVE_RUNTIME=NOT_OBSERVED — NAYA_POWER_TARGET_URL is not configured.'
-            exit 0
+            echo 'LIVE_RUNTIME=BLOCKED_EXTERNAL_TARGET — NAYA_POWER_TARGET_URL is not configured.'
+            echo 'BLOCKED_COUNT=0'
+            echo 'PASS_COUNT=0'
+            echo 'FAIL_COUNT=0'
+            echo 'REVIEW_COUNT=0'
+            echo 'EXIT_CODE=3'
+            exit 3
           fi
           python3 tests/adversarial/run_p0.py
       - name: Upload live evidence
