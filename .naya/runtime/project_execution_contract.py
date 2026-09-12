@@ -140,7 +140,8 @@ def validate_event(event,project,policy):
     errors=[]; eid=str(event.get('event_id','<missing>'))
     if not EVENT_RE.match(eid):errors.append(f'{eid}: invalid event_id')
     ctx=event.get('project_context') or {}
-    if ctx.get('project_id')!=project.get('project_id') or (ctx.get('current_daily_project') or ctx.get('project_name'))!=project.get('project_name'):
+    event_project_name=ctx.get('current_daily_project') or ctx.get('project_name') or event.get('project')
+    if ctx.get('project_id')!=project.get('project_id') or event_project_name!=project.get('project_name'):
         errors.append(f'{eid}: meaningful execution must bind to CURRENT-DAILY-PROJECT ({project.get("project_name")})')
     if not ctx.get('current_objective'):errors.append(f'{eid}: missing project_context.current_objective')
     reps=event.get('representations') or {}; naya=reps.get('naya') if isinstance(reps,dict) else None; shawn=(reps.get('shawn') or reps.get('human')) if isinstance(reps,dict) else None
