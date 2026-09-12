@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the canonical NayaPOWER cold-start boot contract.
 
-The canonical manifest v5 treats START-HERE and NAYANET-HUB-READ-FIRST as
+The canonical manifest v6 treats START-HERE and NAYANET-HUB-READ-FIRST as
 mandatory preflight reads. The Runtime Briefing is the first substantive
 orientation read after that preflight pair.
 """
@@ -55,7 +55,7 @@ def main() -> int:
             fail(f"missing canonical boot artifact: {path}")
 
     data = json.loads(MANIFEST.read_text(encoding="utf-8"))
-    if data.get("schema") != "naya-context-manifest/v5":
+    if data.get("schema") != "naya-context-manifest/v6":
         fail("unexpected manifest schema")
     if data.get("status") != "CANONICAL":
         fail("manifest is not canonical")
