@@ -2,7 +2,7 @@
 """Canonical adapter for routing repository workflow mutations through NayaPOWER."""
 from __future__ import annotations
 
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, timezone
 import argparse
 import json
 from pathlib import Path
@@ -13,12 +13,62 @@ sys.path.insert(0, str(GOVERNANCE_DIR))
 
 from governance_kernel import (  # noqa: E402
     Authority,
+    AuthorityRegistry,
     DecisionObject,
     Epistemic,
     Risk,
     VerificationPlan,
     evaluate,
 )
+
+REGISTRY_PATH = GOVERNANCE_DIR / "authority-registry.json"
+
+
+def load_authority_registry() -> AuthorityRegistry:
+    """Load explicit authority grants; never mint authority from a request."""
+    try:
+        payload = json.loads(REGISTRY_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"cannot load authority registry: {exc}") from exc
+
+    authorities = {}
+    for raw in payload.get("authorities", []):
+        authority = Authority(
+            authority_id=str(raw["authority_id"]),
+            principal_id=str(raw["principal_id"]),
+            purpose=str(raw["purpose"]),
+            scope=str(raw["scope"]),
+            granted_actions=frozenset(str(item) for item in raw.get("granted_actions", [])),
+            expires_at=raw.get("expires_at"),
+            revoked=bool(raw.get("revoked", False)),
+        )
+        if authority.authority_id in authorities:
+            raise RuntimeError(f"duplicate authority_id in registry: {authority.authority_id}")
+        authorities[authority.authority_id] = authority
+    return AuthorityRegistry(authorities=authorities)
+
+
+def resolve_authority(
+    registry: AuthorityRegistry,
+    *,
+    actor: str,
+    permission: str,
+    scope: str,
+) -> Authority:
+    """Resolve a pre-existing grant; actor/request cannot create authority."""
+    candidates = [
+        authority
+        for authority in registry.authorities.values()
+        if authority.principal_id == actor
+        and permission in authority.granted_actions
+        and authority.scope == scope
+    ]
+    if len(candidates) != 1:
+        raise RuntimeError(
+            "explicit authority resolution failed: expected exactly one matching active grant, "
+            f"found {len(candidates)}"
+        )
+    return candidates[0]
 
 
 def authorize_workflow(
@@ -34,7 +84,7 @@ def authorize_workflow(
     scope: str,
     evidence: list[str],
 ) -> dict:
-    """Construct canonical governance objects and pass the canonical kernel gate."""
+    """Construct the decision and pass it through the canonical kernel."""
     required = {
         "actor": actor,
         "purpose": purpose,
@@ -48,15 +98,15 @@ def authorize_workflow(
     if not evidence:
         raise ValueError("workflow gate requires evidence")
 
-    now = datetime.now(timezone.utc)
-    authority = Authority(
-        authority_id=f"workflow:{actor}:{request}",
-        principal_id=actor,
-        purpose=purpose,
+    registry = load_authority_registry()
+    authority = resolve_authority(
+        registry,
+        actor=actor,
+        permission=permission,
         scope=scope,
-        granted_actions=frozenset({permission}),
-        expires_at=(now + timedelta(hours=1)).isoformat(),
     )
+    now = datetime.now(timezone.utc).isoformat()
+
     decision = DecisionObject(
         decision_id=f"workflow-decision:{actor}:{request}",
         mission=mission,
@@ -86,7 +136,7 @@ def authorize_workflow(
         necessary_power=frozenset({permission}),
         requested_power=frozenset({permission}),
     )
-    result = evaluate(decision, authority, now=now.isoformat())
+    result = evaluate(decision, authority, now=now)
     if not result.allowed:
         raise RuntimeError("; ".join(result.reasons))
 
