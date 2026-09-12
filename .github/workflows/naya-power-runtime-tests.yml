@@ -1,0 +1,24 @@
+name: Naya Power Runtime Tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  runtime-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: SUPERBRAIN/runtime
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run runtime conformance tests
+        run: python -m unittest -v test_naya_power_runtime.py
