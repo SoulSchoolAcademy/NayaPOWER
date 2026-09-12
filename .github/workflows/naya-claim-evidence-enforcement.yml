@@ -24,6 +24,12 @@ jobs:
           actual=$(git rev-parse HEAD)
           test "$actual" = "$TARGET_SHA"
           echo "Exact target commit verified: $actual"
+      - name: Run Value and Math engine tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd .naya/runtime
+          python -m unittest -v test_value_math_engine.py
       - name: Run adversarial Claim/Evidence tests
         shell: bash
         run: |
