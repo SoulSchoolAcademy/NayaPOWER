@@ -21,14 +21,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -f .github/workflows/deploy-nayanet-hub-canonical.yml
+          test -f .github/workflows/deploy-nayanet-hub-canonical-v2.yml
           test -f .github/workflows/deploy-v7-now.yml
           grep -q 'RETIRED HUB DEPLOYMENT PATH' .github/workflows/deploy-v7-now.yml
-          grep -q 'name: Deploy Canonical NayaNET Hub' .github/workflows/deploy-nayanet-hub-canonical.yml
-          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical.yml'
+          grep -q 'name: Deploy Canonical NayaNET Hub V2' .github/workflows/deploy-nayanet-hub-canonical-v2.yml
+          echo 'CANONICAL_LIVE_HUB_DEPLOYMENT=.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
           echo 'CONTROL_PLANE_DEPLOYMENT_DISPATCH=DISABLED'
           echo 'RULE=ONE_CURRENT_HUB_DEPLOYMENT_AUTHORITY'
-      - name: Python syntax check
+      - name: Governance adapter syntax check
+        run: python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py
+      - name: Governance kernel self-test
+        run: python .naya/governance/test_governance_kernel.py
+      - name: Python control-plane syntax check
         run: python -m py_compile .naya/control-plane/validate_control_plane.py .naya/runtime/cold_start_control_plane_acceptance.py .naya/runtime/cold_start_activation.py
       - name: Validator self-test
         run: python .naya/control-plane/validate_control_plane.py --self-test
