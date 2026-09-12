@@ -9,8 +9,42 @@
   "mission": "PROVE → INTEGRATE → LEARN → ACTIVATE: obtain authoritative runtime proof, close Torch 9, pass the full Superbrain Gate, repair only evidence-backed failures, demonstrate governance and compounding, verify activation, and put the first humans through the system.",
   "north_star": "Leave the Superbrain materially more capable, reliable, recoverable, intelligent, accountable, and useful while preserving everything already proven GREEN, then deliver an activation experience that lets a new customer understand and use that capability without conversational archaeology.",
   "current_objective": "During the deliberate GitHub Actions pause, build the six-core customer-facing activation package and then the sales experience. Activation is guided and incremental by default: discover the customer's identity, vision, goals, mission, and desired outcomes; activate one capability; explain what changed and the user benefit; distinguish verified from unverified behavior; provide evidence where legitimately available; and always provide the exact continuation prompt for the next step. Smart Note delivery is evidence-first: a Smart Note is one canonical Note Event with Shawn, Naya, and Machine representations, durable persistence, verification, Smart Links/receipts, Intelligent Feed visibility, and separately evidenced PIS propagation. Naya should proactively capture clearly durable value when legitimately authorized. Preserve the P1 alternate-runtime proof track for the authorized execution window.",
-  "success_criteria": ["Exact HEAD is identified before runtime claims are interpreted", "Authoritative runtime exposes real command, output, exit status, and exact HEAD or produces a precisely classified environment blocker", "Torch 9 has actual repository-runtime evidence", "Full Superbrain Gate runs against the exact tested HEAD when its execution plane is reactivated", "Only concrete evidence-backed failures are repaired", "Actual Naya demonstrates obey, warn, challenge, recommend, confirm, and refuse behaviors", "A measurable learning loop changes subsequent behavior", "Customer activation is verified", "A fresh Naya can restore and execute from canonical state without conversational archaeology", "Every meaningful execution leaves a canonical Next-Naya execution directive", "Current operational constraints are immediately visible to every successor Naya", "Customer activation documents are concise, airtight, scoped, and guided", "The sales experience explains the customer outcome and demonstrates Naya rather than merely listing features", "Every Smart Note is stored as a canonical Note Event and delivered with direct Smart Links/receipts for the available representations", "PIS propagation is separately verified when a Naya Note is promoted", "Smart Note request phrases trigger the canonical capture contract rather than a prose-only response", "The canonical event index contains every persisted Note Event"],
-  "constraints": ["Preserve protected GREEN boundaries", "Never weaken validators", "Never delete historical knowledge", "Vectors are derived, never authoritative", "Do not claim current-head GREEN until authoritative runtime observes it", "The human owns the destination; Naya must not silently redefine it", "A blocked execution must carry a canonical continuation path", "Never leave the human or next Naya at 'now what?'", "GitHub Actions is intentionally paused by current human direction; do not retry it during the pause", "GitHub remains canonical source repository; use an authorized alternate execution plane during the pause", "Activation documents must not promise unsupported capabilities", "Do not create a competing intelligence or memory authority", "A Smart Note without Smart Links is an incomplete delivery", "Do not claim PIS propagation without separate evidence", "Do not treat .naya/notes prose files as the canonical primary memory store when the Note Event runtime is available"],
+  "success_criteria": [
+    "Exact HEAD is identified before runtime claims are interpreted",
+    "Authoritative runtime exposes real command, output, exit status, and exact HEAD or produces a precisely classified environment blocker",
+    "Torch 9 has actual repository-runtime evidence",
+    "Full Superbrain Gate runs against the exact tested HEAD when its execution plane is reactivated",
+    "Only concrete evidence-backed failures are repaired",
+    "Actual Naya demonstrates obey, warn, challenge, recommend, confirm, and refuse behaviors",
+    "A measurable learning loop changes subsequent behavior",
+    "Customer activation is verified",
+    "A fresh Naya can restore and execute from canonical state without conversational archaeology",
+    "Every meaningful execution leaves a canonical Next-Naya execution directive",
+    "Current operational constraints are immediately visible to every successor Naya",
+    "Customer activation documents are concise, airtight, scoped, and guided",
+    "The sales experience explains the customer outcome and demonstrates Naya rather than merely listing features",
+    "Every Smart Note is stored as a canonical Note Event and delivered with direct Smart Links/receipts for the available representations",
+    "PIS propagation is separately verified when a Naya Note is promoted",
+    "Smart Note request phrases trigger the canonical capture contract rather than a prose-only response",
+    "The canonical event index contains every persisted Note Event"
+  ],
+  "constraints": [
+    "Preserve protected GREEN boundaries",
+    "Never weaken validators",
+    "Never delete historical knowledge",
+    "Vectors are derived, never authoritative",
+    "Do not claim current-head GREEN until authoritative runtime observes it",
+    "The human owns the destination; Naya must not silently redefine it",
+    "A blocked execution must carry a canonical continuation path",
+    "Never leave the human or next Naya at 'now what?'",
+    "GitHub Actions is intentionally paused by current human direction; do not retry it during the pause",
+    "GitHub remains canonical source repository; use an authorized alternate execution plane during the pause",
+    "Activation documents must not promise unsupported capabilities",
+    "Do not create a competing intelligence or memory authority",
+    "A Smart Note without Smart Links is an incomplete delivery",
+    "Do not claim PIS propagation without separate evidence",
+    "Do not treat .naya/notes prose files as the canonical primary memory store when the Note Event runtime is available"
+  ],
   "current_state": "The canonical repository is `SoulSchoolAcademy/NayaPOWER`. The repository already had strong Smart Note/continuity laws, a canonical Note Event runtime, and an evidence-enforcement workflow. The concrete failure identified by Shawn is a law-to-behavior gap plus storage drift: recent Smart Note prose was written under `.naya/notes/`, while the canonical Note Event index did not contain those recent events. This turn corrected the foundation by adding `.naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md`, expanding `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json` with Smart Note/CIS event classes and request semantics, creating canonical event `SE-20260903-110000-smart-note-cis-contract-lock`, indexing it as event 35, updating `.naya/INTELLIGENT-FEED.md` with the required current-state fields and receipts, and updating this project state. Repository persistence has been verified by re-fetching the new artifacts. PIS propagation is not separately verified.",
   "latest_receipts": {
     "contract_commit": "c23736caaeb51508455e6784d2d3f26d44170e70",
@@ -21,12 +55,38 @@
     "feed_commit": "b852611c19e86a93afc0256bd7f2e680b4cc8081",
     "current_state_commit": "9508e90c72728591f3b3fdff7a099bef4a143ab5"
   },
-  "last_verified_runtime": {"status": "REPOSITORY_PERSISTENCE_VERIFIED; APPLICATION_RUNTIME_NOT_OBSERVED", "tested_head": "NOT_RUNTIME_TESTED_IN_THIS_TURN", "repository_evidence": ["canonical contract fetched after persistence", "canonical event fetched after persistence", "canonical index fetched with event_count 35", "Intelligent Feed fetched after update and contains the new current-state event", "current project state fetched after update"], "classification": "Repository state is directly verified through GitHub; live application/runtime behavior and PIS propagation are not claimed."},
+  "last_verified_runtime": {
+    "status": "REPOSITORY_PERSISTENCE_VERIFIED; APPLICATION_RUNTIME_NOT_OBSERVED",
+    "tested_head": "NOT_RUNTIME_TESTED_IN_THIS_TURN",
+    "repository_evidence": [
+      "canonical contract fetched after persistence",
+      "canonical event fetched after persistence",
+      "canonical index fetched with event_count 35",
+      "Intelligent Feed fetched after update and contains the new current-state event",
+      "current project state fetched after update"
+    ],
+    "classification": "Repository state is directly verified through GitHub; live application/runtime behavior and PIS propagation are not claimed."
+  },
   "running_feed": ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
   "cold_start_gate": ".naya/COLD-START-RUNTIME-BRIEFING-GATE.md",
   "cross_workflow_confirmation": [
-    {"run_id": 33289967067, "workflow": "Naya Power Memory + Restore Runtime", "head_sha": "33f78f81a27ede5c16e4db7eece4079b388b9fa4", "job_id": 99199766570, "conclusion": "failure", "steps": 0},
-    {"run_id": 33289967106, "workflow": "Naya Control Plane", "head_sha": "33f78f81a27ede5c16e4db7eece4079b388b9fa4", "jobs": [{"job_id": 99199766741, "name": "cct-regression", "conclusion": "failure", "steps": 0}, {"job_id": 99199766789, "name": "control-plane", "conclusion": "failure", "steps": 0}]
+    {
+      "run_id": 33289967067,
+      "workflow": "Naya Power Memory + Restore Runtime",
+      "head_sha": "33f78f81a27ede5c16e4db7eece4079b388b9fa4",
+      "job_id": 99199766570,
+      "conclusion": "failure",
+      "steps": 0
+    },
+    {
+      "run_id": 33289967106,
+      "workflow": "Naya Control Plane",
+      "head_sha": "33f78f81a27ede5c16e4db7eece4079b388b9fa4",
+      "jobs": [
+        {"job_id": 99199766741, "name": "cct-regression", "conclusion": "failure", "steps": 0},
+        {"job_id": 99199766789, "name": "control-plane", "conclusion": "failure", "steps": 0}
+      ]
+    }
   ],
   "runtime_diagnosis": {
     "repository_controlled_cause_proven": false,
