@@ -35,6 +35,10 @@ Relevant runtime components inspected/known from the current source state:
 - their runtime unit-test modules
 - `.github/workflows/naya-power-runtime-tests.yml`
 - `.github/workflows/torch-pass-gate.yml`
+- `.github/workflows/authorized-vercel-release.yml`
+- `.naya/runtime/release_authorization.py`
+- `.naya/runtime/deployment_governance_test.py`
+- `.naya/control-plane/DEPLOYMENT-GOVERNANCE.json`
 - `.naya/governance/NAYA-AUTHORITY-REGISTRY-V1.json`
 
 ## Findings
@@ -135,9 +139,37 @@ The decision result includes deterministic per-gate checks.
 
 Invalid, unauthorized, unsafe, unverifiable, or unjustified candidates are excluded rather than assigned a zero value and allowed to compete.
 
+### 9. Deployment is a separate, explicitly human-authorized control-plane side effect
+
+The repository also contains a consequential deployment path through `.github/workflows/authorized-vercel-release.yml`.
+
+That workflow does not use `HostExecutorBridge` or the runtime `Authority Registry`. It instead uses a distinct release-authorization control plane with:
+
+- workflow dispatch rather than automatic deployment
+- explicit approval state
+- exact commit SHA binding
+- target-environment binding
+- canonical Vercel project binding
+- verification evidence
+- release reason
+- authorized actor and timestamp
+- default-deny deployment policy
+
+`.naya/runtime/release_authorization.py` is fail-closed and `.naya/runtime/deployment_governance_test.py` verifies that only the canonical release workflow contains the deployment boundary and that ordinary repository changes do not authorize deployment.
+
+**Classification:** This is a distinct human-authorized deployment control plane, not an observed bypass of the Naya runtime action-selection path. It should not be retrofitted into the runtime Host Executor merely to make the architecture look uniform. The constitutional relationship between the runtime governance contract and this explicitly human-authorized release boundary remains an architectural boundary to document and review in a later governance pass if evidence shows it must be unified.
+
+### 10. Governance workflow does not deploy
+
+The deployment-governance regression suite explicitly treats the canonical release workflow as the only deployment boundary and checks that the governance workflow contains no executable Vercel deployment invocation.
+
+**Result:** No alternate Vercel deployment workflow was observed in the inspected control-plane evidence.
+
 ## Architectural conclusion
 
-No concrete consequential-action bypass was identified in the inspected canonical runtime path.
+No concrete consequential-action bypass was identified in the inspected canonical Naya runtime path.
+
+A separate deployment control plane exists by design and is fail-closed with explicit human release authorization. It is not evidence that the runtime governance contract is bypassed by Naya intelligence; it is a separate publication side-effect boundary.
 
 The principal remaining source-level uncertainty is not a demonstrated bypass; it is **exhaustive repository call-site coverage** because the available GitHub code-search interface cannot reliably enumerate all symbol references.
 
@@ -147,10 +179,11 @@ Accordingly, no runtime architecture was weakened or redesigned.
 
 - Preserve fail-closed Registry behavior.
 - Do not restore `registry=None` as a permissive path.
-- Do not create a second authority hierarchy.
+- Do not create a second authority hierarchy inside the Naya runtime.
 - Do not treat capability as authority.
 - Do not treat invalid as zero-value.
 - Do not redesign the Registry scope model without evidence.
+- Do not force the separate human release control plane through Host Executor without a demonstrated architectural requirement.
 - Do not infer runtime verification from source inspection.
 
 ## Verification boundary
@@ -170,11 +203,13 @@ Current known status evidence before this audit did not expose a canonical exact
 
 ## Next highest-value action
 
-Re-resolve `main` after this audit commit, capture the exact new HEAD, and inspect every legitimate available exact-head workflow/status interface. If a genuine runtime execution appears, inspect the complete run and identify the first actual failure. If no execution evidence appears, do not manufacture a trigger; preserve UNKNOWN and continue the source-level audit by inspecting any newly discoverable runtime entry points/adapters/factories.
+Re-resolve `main` after this audit update, capture the exact new HEAD, and inspect every legitimate available exact-head workflow/status interface. If a genuine runtime execution appears, inspect the complete run and identify the first actual failure. If no execution evidence appears, do not manufacture a trigger; preserve UNKNOWN and continue the source-level audit by inspecting any newly discoverable runtime entry points/adapters/factories.
 
 ## Audit verdict
 
 **SOURCE-LEVEL GOVERNANCE PATH: NO OBSERVED BYPASS**
+
+**DEPLOYMENT CONTROL PLANE: EXPLICIT HUMAN AUTHORIZATION / DEFAULT DENY**
 
 **EXHAUSTIVE CALL-SITE COVERAGE: UNKNOWN**
 
