@@ -71,6 +71,28 @@ class GovernanceContractTests(unittest.TestCase):
         self.assertIn("Authority Registry is required for governed execution", decision.reasons)
         self.assertFalse(decision.checks["authority_registry_present"])
 
+    def test_missing_registry_prevents_action_selection(self):
+        state = MissionState(
+            project="Naya Power",
+            mission="Test governance",
+            vision="Governable execution",
+            desired_outcome="Only governed actions execute",
+            protected_scope=["constitution"],
+            known=["registry"],
+            last_verified_state="Source verified",
+            next_action="governed-action",
+            next_action_reason="Test fail-closed registry requirement",
+        )
+        candidate = ActionCandidate(
+            "governed-action",
+            "High-value action without supplied registry",
+            10,
+            authority_id="AUTH-TEST",
+            authority_scope="action planning",
+        )
+        with self.assertRaisesRegex(RuntimeError, "No eligible next action"):
+            choose_next_action(state, [candidate])
+
     def test_consequence_risk_evidence_stop_value_and_human_escalation_are_hard_gates(self):
         cases = [
             ("consequence", self.valid_action(consequence="HIGH", reversible=False)),
@@ -85,6 +107,19 @@ class GovernanceContractTests(unittest.TestCase):
         for name, action in cases:
             with self.subTest(name=name):
                 self.assertFalse(evaluate_governance(action, self.registry()).eligible)
+
+    def test_action_candidate_carries_decision_state_into_governance(self):
+        candidate = ActionCandidate(
+            "verify-first",
+            "Verify evidence before execution",
+            10,
+            authority_id="AUTH-TEST",
+            authority_scope="action planning",
+            decision_state="VERIFY",
+        )
+        decision = candidate.governance_decision(self.registry())
+        self.assertFalse(decision.eligible)
+        self.assertIn("decision state 'VERIFY' does not permit execution", decision.reasons)
 
     def test_invalid_is_not_zero_value_in_ranked_selection(self):
         state = MissionState(
