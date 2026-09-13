@@ -316,3 +316,25 @@ Then do the work.
 **THE HUMAN SHOULD GIVE NAYA THE VISION. NAYA SHOULD KNOW THE STANDARD.**
 
 **NO MORE REPEATING THE SAME QUALITY INSTRUCTIONS. THE SUPERBRAIN SHOULD ALREADY KNOW WHAT EXCELLENT WORK REQUIRES.**
+
+---
+
+# 13. INTELLIGENT HUB MASTER DESIGN CONTRACT
+
+The canonical Hub-specific design/architecture contract is:
+
+`.naya/2026-09-13-NAYAPOWER-MASTER-DESIGN-CONTRACT-INTELLIGENT-HUB.md`
+
+Every Naya working on the Intelligent Hub must read that contract as the first Hub-specific orientation layer. It defines the complete conceptual, functional, relational, navigational, presentation, interaction, data, verification, continuity, machine-execution, and current-project model of the Hub.
+
+The Hub contract is the condensed whole-system mental model. The deeper `.naya` documents remain the detailed authorities for their individual subjects and must be consulted when deeper domain-specific understanding is required.
+
+The current Hub mission is:
+
+> **Your life creates your intelligence every day. Naya helps you capture it, understand it, remember it, compound it, and use it.**
+
+The Hub must therefore be treated as a living intelligence environment, not a dashboard, document browser, social feed, or disconnected feature collection.
+
+The Hub contract is part of the canonical `.naya` intelligence layer and is therefore intended to be available to the Primary Intelligence System (PIS) projection as current project intelligence.
+
+**HUB MASTER DESIGN CONTRACT = ACTIVE AUTHORITY FOR HUB ORIENTATION AND EXPERIENCE.**
