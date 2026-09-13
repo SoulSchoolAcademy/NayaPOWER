@@ -18,6 +18,7 @@ import './styles/hub-509-reconstruction-v1.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
+// 509 reconstruction is the current visual reference layer; canonical intelligence remains event-derived.
 // Naya Power release-probe marker: this line is intentionally behavior-neutral.
 // Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 // V2 promotion is the sole production release authority.
