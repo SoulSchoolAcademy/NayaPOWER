@@ -5,6 +5,7 @@ on:
     paths:
       - '2026 09 13 NayaNET HUB 509 AAA.html'
       - 'NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER.js'
+      - 'NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER-V2.js'
       - '.github/workflows/deploy-nayanet-hub-509-aaa.yml'
   issues:
     types: [opened, reopened]
@@ -15,7 +16,7 @@ permissions:
 
 env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
-  LINK_LAYER: NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER.js
+  LINK_LAYER: NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER-V2.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -80,10 +81,11 @@ jobs:
           import os
           p=Path('release/public/index.html')
           s=p.read_text()
-          marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}"><meta name="nayanet-link-layer-sha256" content="{os.environ["LAYER_HASH"]}"><script src="/naya-509-ecosystem.js"></script>'
+          marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}"><meta name="nayanet-link-layer-sha256" content="{os.environ["LAYER_HASH"]}"><script src="/naya-509-ecosystem.js" defer></script>'
           p.write_text(s.replace('</head>',marker+'</head>',1))
           PY
           grep -Fq '/naya-509-ecosystem.js' release/public/index.html
+          grep -Fq ' defer></script>' release/public/index.html
           echo RENDERED_RELEASE=PASS
           cat > release/worker.js <<'EOF'
           export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); headers.set('X-NayaNET-Link-Layer-SHA256',env.LAYER_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
