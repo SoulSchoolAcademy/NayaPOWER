@@ -1,47 +1,86 @@
 (()=>{'use strict';
+/* 509 C4 INTERACTION CONTINUITY — surgical repair only.
+   Law: preserve the existing C3/C4 DOM, listeners, local state and visual architecture.
+   This layer never removes, recreates, or reparents interactive controls.
+*/
 const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
 const tx=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();
+const kind=e=>{if(!e)return'';const k=e.dataset?.c4Kind||e.dataset?.c3Kind||'';if(k)return k;const t=tx(e).toLowerCase();if(/create\s+space/.test(t))return'create-space';if(/favorite/.test(t))return'favorite';if(/^save$|\bsave\b/.test(t))return'save';if(/love/.test(t))return'love';if(/like/.test(t))return'like';if(/share/.test(t))return'share-intel';if(/rate|rating|stars/.test(t))return'rate';return''};
 const mode=()=>{const b=q('.feedNav button.active');const t=tx(b).toLowerCase();return t.includes('personal')?'personal':t.includes('activity')?'activity':'collective'};
-function cleanBlock(block){
-  if(!block||!block.matches('.block'))return;
-  block.classList.add('naya509-board');
-  const a=q('.actions',block);if(!a)return;
-  const all=qq('button,.naya509-rating',a),keep={love:null,like:null,rate:null,share:null};
-  all.forEach(el=>{
-    const t=tx(el).toLowerCase();
-    if(el.classList.contains('naya509-rating')){if(keep.rate)el.remove();else keep.rate=el;return}
-    if(/\bfavorite\b|\bsave\b|\brank\b/.test(t)){el.remove();return}
-    if(/\blove\b/.test(t)){if(keep.love)el.remove();else{keep.love=el;el.dataset.c4Kind='love';el.classList.add('love');el.textContent='❤️ LOVE'}return}
-    if(/\blike\b/.test(t)){if(keep.like)el.remove();else{keep.like=el;el.dataset.c4Kind='like';el.classList.add('like');el.textContent='LIKE'}return}
-    if(/\bshare(?:\s+intel(?:ligence)?)?\b/.test(t)){if(keep.share)el.remove();else{keep.share=el;el.dataset.c4Kind='share-intel';el.textContent='＋ SHARE INTEL'}return}
-    if(/\brate\b|rating|stars/.test(t))el.remove();
+function markLabels(){qq('.layerHead b').forEach(e=>{const t=tx(e);if(/child view/i.test(t))e.textContent=t.replace(/child view/ig,'CHILD NOTE');if(/grabber view|grandma view/i.test(t))e.textContent=t.replace(/grabber view|grandma view/ig,'GRANDMA NOTE')})}
+function hideDuplicates(){qq('.block').forEach(block=>{
+  const seen={};
+  qq('.actions [data-c4-kind],.actions .action,.actions .naya509-rating',block).forEach(el=>{
+    const k=kind(el);if(!k)return;
+    if(!seen[k]){seen[k]=el;el.hidden=false;return}
+    /* Preserve the original node and its listeners; only hide the duplicate. */
+    el.hidden=true;
   });
+})}
+function applyMode(){
   const m=mode();
-  if(m!=='collective'){keep.love?.remove();keep.like?.remove();keep.rate?.remove();keep.love=null;keep.like=null;keep.rate=null}
-  qq('.naya509-action-left,.naya509-action-center,.naya509-action-right',a).forEach(x=>x.remove());
-  const left=document.createElement('div'),center=document.createElement('div'),right=document.createElement('div');
-  left.className='naya509-action-left';center.className='naya509-action-center';right.className='naya509-action-right';
-  if(m==='collective'){if(keep.love)left.append(keep.love);if(keep.like)left.append(keep.like);if(keep.rate)center.append(keep.rate)}
-  if(keep.share)right.append(keep.share);
-  a.append(left,center,right);a.classList.add('naya509-actions-structured');
+  document.documentElement.dataset.naya509FeedMode=m;
+  qq('.block').forEach((block,i)=>{
+    block.classList.add('naya509-board');
+    if(!block.style.getPropertyValue('--tone'))block.style.setProperty('--tone',['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#ff9a5a','#ff5e6c','#f8f7fb','#f29ad8','#f15bd6','#d86cff'][i%13]);
+    const actions=q('.actions',block);if(!actions)return;
+    const love=q('[data-c4-kind="love"]',actions),like=q('[data-c4-kind="like"]',actions),rating=q('.naya509-rating',actions),share=q('[data-c4-kind="share-intel"]',actions);
+    if(love)love.hidden=m!=='collective';
+    if(like)like.hidden=m!=='collective';
+    if(rating)rating.hidden=m!=='collective';
+    if(share)share.hidden=false;
+  });
+  hideDuplicates();
+  const h=q('.feedHead h2');const active=q('.feedNav button.active');if(h&&active)h.textContent=tx(active)||h.textContent;
+  const count=q('.feedCount');if(count)count.setAttribute('data-mode',m);
 }
-function apply(){
-  qq('.block').forEach(cleanBlock);
-  qq('.layerHead b').forEach(e=>{const t=tx(e);if(/child view/i.test(t))e.textContent=t.replace(/child view/ig,'CHILD NOTE');if(/grabber view|grandma view/i.test(t))e.textContent=t.replace(/grabber view|grandma view/ig,'GRANDMA NOTE')});
+function switchMode(button){
+  const nav=q('.feedNav');if(!nav||!button)return;
+  const buttons=qq('button',nav);
+  const already=button.classList.contains('active');
+  /* The original tab pathway can invoke the old loading/wait route. The same-board contract
+     requires a local mode presentation instead; no navigation and no page reload. */
+  if(already){
+    applyMode();
+    return;
+  }
+  buttons.forEach(b=>{const on=b===button;b.classList.toggle('active',on);b.setAttribute('aria-selected',on?'true':'false');b.setAttribute('tabindex',on?'0':'-1')});
+  applyMode();
 }
-function css(){if(q('#naya509-single-board-runtime-css'))return;const s=document.createElement('style');s.id='naya509-single-board-runtime-css';s.textContent=`
-.naya509-unified-board{position:relative!important;margin:0 22px 28px!important;border:2px solid #8b63ff66!important;border-radius:30px!important;background:radial-gradient(900px 260px at 50% -8%,#9d75ff16,transparent 70%),linear-gradient(145deg,#0b0a10,#050507)!important;box-shadow:inset 0 1px #fff8,0 28px 70px #000c,0 0 45px #8b63ff14!important;overflow:hidden!important}
-.naya509-unified-board>.blocks{display:grid!important;gap:14px!important;padding:0 14px 18px!important}
-.naya509-unified-board>.blocks>.block.naya509-board{margin:0!important;padding:30px 30px 28px!important;border:2px solid color-mix(in srgb,var(--tone) 58%,#fff 18%)!important;border-radius:24px!important;background:linear-gradient(145deg,#0b0a10,#050507)!important;box-shadow:inset 0 1px #fff8,0 18px 40px #000a,0 0 26px color-mix(in srgb,var(--tone) 18%,transparent)!important}
-.naya509-unified-board .layer{border-color:color-mix(in srgb,var(--tone) 48%,#fff 12%)!important;box-shadow:inset 0 1px #fff5,0 12px 28px #0008,0 0 20px color-mix(in srgb,var(--tone) 15%,transparent)!important}
-.naya509-unified-board .layerBody{font-size:14px!important;line-height:1.72!important;color:#f0edf4!important}.naya509-unified-board .layerBody *{font-size:14px!important;line-height:1.72!important}
-.naya509-unified-board .nutshell p{font-size:18px!important;line-height:1.65!important;color:#f7f4f9!important;font-weight:500!important}.naya509-unified-board .nutshell p *{font-size:18px!important}
-.naya509-unified-board .layerHead b{font-size:18px!important}.naya509-unified-board .meta,.naya509-unified-board .state,.naya509-unified-board .truth{font-size:14px!important}
-.naya509-unified-board .actions.naya509-actions-structured{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;align-items:center!important;gap:12px!important;width:100%!important}.naya509-action-left{display:flex;gap:10px;justify-content:flex-start;align-items:center;min-width:0}.naya509-action-center{display:flex;justify-content:center;align-items:center;min-width:0}.naya509-action-right{display:flex;justify-content:flex-end;align-items:center;min-width:0}
-.naya509-actions-structured .action{min-height:56px!important;font-size:14px!important;padding:0 18px!important}.naya509-actions-structured [data-c4-kind="love"]{color:#fff!important;border-color:#ff3f52!important;background:linear-gradient(145deg,#391019,#09090d)!important;box-shadow:inset 0 1px #fff6,0 10px 22px #0009,0 0 22px #ff3f5233!important}.naya509-actions-structured [data-c4-kind="share-intel"]{margin-left:0!important}.naya509-actions-structured .naya509-rating button{min-width:50px!important;min-height:46px!important;font-size:20px!important}
-@media(max-width:800px){.naya509-unified-board{margin:0 10px 20px!important;border-radius:23px!important}.naya509-unified-board>.blocks{padding:0 9px 12px!important}.naya509-unified-board>.blocks>.block.naya509-board{padding:25px 18px 24px!important;border-radius:21px!important}.naya509-unified-board .actions.naya509-actions-structured{grid-template-columns:1fr!important;gap:10px!important}.naya509-action-left{justify-content:flex-start}.naya509-action-center{justify-content:center}.naya509-action-right{justify-content:flex-end}.naya509-actions-structured .action{min-height:58px!important}}
-`;document.head.appendChild(s)}
-function boot(){css();apply();const root=q('.blocks');if(root){new MutationObserver(()=>{if(!window.__naya509Repairing){window.__naya509Repairing=true;queueMicrotask(()=>{apply();window.__naya509Repairing=false})}}).observe(root,{childList:true,subtree:true})}}
+function bindTabs(){
+  const nav=q('.feedNav');if(!nav||nav.dataset.naya509InteractionContinuity)return;
+  nav.dataset.naya509InteractionContinuity='1';
+  nav.addEventListener('click',e=>{
+    const b=e.target.closest('button');if(!b||!nav.contains(b))return;
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    switchMode(b);
+  },true);
+  nav.addEventListener('keydown',e=>{
+    if(!['ArrowRight','ArrowLeft','Home','End'].includes(e.key))return;
+    const bs=qq('button',nav),current=Math.max(0,bs.indexOf(document.activeElement));let n=current;
+    if(e.key==='ArrowRight')n=(current+1)%bs.length;if(e.key==='ArrowLeft')n=(current-1+bs.length)%bs.length;if(e.key==='Home')n=0;if(e.key==='End')n=bs.length-1;
+    e.preventDefault();bs[n]?.focus();
+  },true);
+}
+function css(){if(q('#naya509-c4-interaction-continuity-css'))return;const s=document.createElement('style');s.id='naya509-c4-interaction-continuity-css';s.textContent=`
+/* Existing C4 nodes stay in place; CSS supplies presentation only. */
+.naya509-unified-board .actions.naya509-actions-structured,.naya509-unified-board .actions{display:grid!important;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)!important;align-items:center!important;gap:12px!important;width:100%!important}
+.naya509-unified-board .actions [data-c4-kind="love"],.naya509-unified-board .actions [data-c4-kind="like"]{grid-column:1;justify-self:start}
+.naya509-unified-board .actions [data-c4-kind="love"]{order:1}.naya509-unified-board .actions [data-c4-kind="like"]{order:2}
+.naya509-unified-board .actions .naya509-rating{grid-column:2;grid-row:1;justify-self:center;order:3}
+.naya509-unified-board .actions [data-c4-kind="share-intel"]{grid-column:3;grid-row:1;justify-self:end;order:4}
+.naya509-unified-board .actions .action[hidden],.naya509-unified-board .actions .naya509-rating[hidden]{display:none!important}
+.naya509-unified-board .actions [data-c4-kind="love"]{color:#fff!important;border-color:#ff3f52!important;background:linear-gradient(145deg,#391019,#09090d)!important;box-shadow:inset 0 1px #fff6,0 10px 22px #0009,0 0 22px #ff3f5233!important}
+.naya509-unified-board .actions [data-c4-kind="love"].on{background:linear-gradient(145deg,#651522,#16070b)!important;border-color:#ff7b89!important;color:#fff!important}
+.naya509-unified-board .actions [data-c4-kind="like"].on{border-color:#7ed0ff!important;color:#d9f2ff!important;background:#0b1822!important}
+.naya509-unified-board .naya509-rating button:hover,.naya509-unified-board .naya509-rating button.on{color:#fff3a6!important;border-color:#f8e7a0!important;background:#2a230f!important;text-shadow:0 0 14px #f4d97899!important}
+@media(max-width:800px){.naya509-unified-board .actions{grid-template-columns:1fr!important}.naya509-unified-board .actions [data-c4-kind="love"],.naya509-unified-board .actions [data-c4-kind="like"]{grid-column:1;justify-self:start}.naya509-unified-board .actions .naya509-rating{grid-column:1;grid-row:auto;justify-self:center}.naya509-unified-board .actions [data-c4-kind="share-intel"]{grid-column:1;grid-row:auto;justify-self:end}}
+@media(prefers-reduced-motion:reduce){.naya509-unified-board .actions *{transition:none!important}}
+`;
+document.head.appendChild(s)}
+function boot(){css();markLabels();bindTabs();applyMode();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();
-// 509 C4 single-board runtime continuity: preserve one shared board after every render.
+// 509 C4 interaction continuity: no interactive-node reconstruction; same Intelligence Board, local mode switching, original C4 behavior preserved.
