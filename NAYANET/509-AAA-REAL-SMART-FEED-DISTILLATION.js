@@ -2,6 +2,7 @@
  * Surgical presentation layer only. It distills the already-rendered canonical
  * Smart Note perspectives into a fast-skim "WHAT MATTERS" block without replacing
  * C4 architecture, source content, or interaction nodes.
+ * Canonical deploy authority: deploy-509-c4-real-smart-feed-finalize.yml
  */
 (()=>{'use strict';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
