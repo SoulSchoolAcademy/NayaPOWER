@@ -136,9 +136,10 @@ jobs:
             generated=$(grep -o 'nayanet-real-content-generated-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
             distill=$(grep -o 'nayanet-real-content-distillation-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
             count=$(grep -o 'nayanet-smart-note-count" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
-            notes=$(grep -o 'SMART NOTE [0-9][0-9]' /tmp/real.js 2>/dev/null|sort -u|wc -l|tr -d ' ' || true)
-            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_SMART=$r2 HTTP_REAL_JS=$r3 HTTP_DISTILL_JS=$r4 COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated DISTILL=$distill COUNT=$count NOTES=$notes"
-            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$r3" = "200" ] && [ "$r4" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$count" = "9" ] && [ "${notes:-0}" -ge 9 ] && grep -Fq 'naya509-distill' /tmp/distill.js; then
+            runtime_generated=$(sha256sum /tmp/real.js 2>/dev/null|cut -d' ' -f1 || true)
+            runtime_distill=$(sha256sum /tmp/distill.js 2>/dev/null|cut -d' ' -f1 || true)
+            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_SMART=$r2 HTTP_REAL_JS=$r3 HTTP_DISTILL_JS=$r4 COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated RUNTIME_GENERATED=$runtime_generated DISTILL=$distill RUNTIME_DISTILL=$runtime_distill COUNT=$count"
+            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$r3" = "200" ] && [ "$r4" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$runtime_generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$runtime_distill" = "$DISTILL_HASH" ] && [ "$count" = "9" ]; then
               echo RUNTIME_PARITY=PASS SMART_NOTE_COUNT=9 DISTILLATION=PASS
               ok=1
               break
