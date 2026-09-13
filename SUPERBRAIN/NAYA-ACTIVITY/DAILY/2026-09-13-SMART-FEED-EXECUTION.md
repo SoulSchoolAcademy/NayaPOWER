@@ -2,67 +2,88 @@
 
 ## EXECUTION STATE
 **MODE:** ACTUAL BUILD / SURGICAL EVOLUTION  
-**LANE:** Assistant-lane Hub source in `NAYANET/HUB/`  
-**OTHER NAYA 509 LANE:** untouched  
-**STATUS:** IMPLEMENTED — SOURCE VERIFIED — RUNTIME NOT PROVEN
+**LANE:** 509 GitHub-native Hub runtime lane  
+**RUNTIME TARGET:** `https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/`  
+**STATUS:** IMPLEMENTED — SOURCE VERIFIED — RUNTIME NOT YET PROVEN FROM THIS CHAT SURFACE
 
 ## LATEST EXECUTION
-The Smart Feed was inspected again and surgically refined rather than restarted.
+The Smart Feed was advanced specifically against the canonical Living Depth / Intelligent Block contract. This execution did not redesign the application or switch lanes. It surgically strengthened the existing 509 presentation layer.
+
+## CANONICAL UNDERSTANDING RESTORED
+The Hub Read-First contract defines Smart Note as the intelligence object, Intelligent Block as the human presentation of that object, and Smart Feed as the living stream of Intelligent Blocks. The construction specification identifies Intelligent Blocks + Smart Feeds as the primary experience and Living Depth as the design principle. fileciteturn463file0 fileciteturn464file0
+
+The Smart Feed content establishes the canonical intelligence views and the human-value goal: explain what the intelligence is, preserve human/Naya/system perspectives, distinguish learning from fact, explain meaning, and make value/action clear. fileciteturn465file0
 
 ## WHAT CHANGED
-1. Added explicit semantic questions for the three feed projections:
-   - SMART SHARE → WHAT VALUABLE INTELLIGENCE EXISTS FOR US?
-   - ACTIVITY → WHAT HAPPENED?
-   - PERSONAL → WHAT MATTERS TO YOU?
-2. Tightened Activity classification so it is not simply equivalent to any event containing action text; it now considers action status, machine evidence, and operational source types.
-3. Added accessible tab semantics to the intelligence-lens controls.
-4. Upgraded the selected-intelligence view so opening an object preserves the Intelligent Block alongside Naya, truth-state, intelligence-spine and provenance context instead of reducing the detail view to the card alone.
-5. Preserved the canonical PIS loader and existing one-object/many-projections architecture.
-6. Preserved existing visual, truth, action-state, responsive and Naya-presence layers.
+1. Preserved the existing 509 HTML and original 509 surgical architecture.
+2. Extended `NAYANET/509-AAA-NEXT-LEVEL.js` with a dedicated Living Depth pass rather than replacing the Hub.
+3. Added a continuous semantic feed color-flow treatment spanning white/silver → magenta → purple → indigo → sapphire/blue → green/emerald → lime → yellow → gold → orange/red and back toward white.
+4. Elevated Intelligent Blocks with 3D-preserving depth, stronger surface separation, atmospheric edge light, focus elevation, and restrained hover movement.
+5. Elevated individual intelligence layers inside each block so the experience communicates environment → object → intelligence layer → active intelligence.
+6. Added an explicit `INTELLIGENT BLOCK` identity marker to each block.
+7. Added a compact SOURCE → UNDERSTAND → ACT → VERIFY → LEARN intelligence spine inside blocks.
+8. Added explicit WHAT / WHY / SO WHAT / FOR YOU context cues so the first reading layer communicates human value without requiring the user to open every deeper lens.
+9. Added provenance / truth / projection chips using existing block metadata where available and truthful fallbacks where it is not.
+10. Added semantic tags to the eight intelligence layers and made their headers keyboard-operable with expandable/collapsible behavior.
+11. Preserved the prior truthful device-local action state behavior and accessibility work already present in the 509 next-level layer.
+12. Added reduced-motion handling so Living Depth does not force motion on users who request reduced motion.
+13. Created `NAYANET/509-AAA-SMART-FEED-LEVEL2.js` as an experimental design artifact during exploration; it is NOT wired into the deployment workflow and is not being represented as part of the runtime release.
 
 ## WHY IT MATTERS
-The Smart Feed is the human presentation layer of living intelligence. These changes strengthen the difference between projections and make the move from stream → intelligence object → deeper understanding more coherent without introducing a parallel data architecture.
-
-## COMMITS
-Previous Smart Feed lineage:
-- `a6a568d4edc21882944e548324a834cb609bc50d` — application implementation
-- `3355035d5c3f79ecb5cc2b4a6d0829e62ae96705` — presentation layer
-- `dbceea27c13576e030dd235d0ca3196b5f95875b` — presentation wiring
-- `42d99d0701964e0e7bdab8965199c21456b6909c` — presentation refinement
-- `a189b58ae4a3b6418be57f12873203eb8368bc68` — prior final source refinement
-
-Latest surgical projection/hierarchy pass:
-- `ae8a5095682ca6ea937c3e83746ee26870fb96d1`
+This moves the 509 Smart Feed toward the actual product described by the canonical specification: not a list of cards, but a living intelligence environment where the Intelligent Block is physically elevated, its internal intelligence is separately elevated, semantic color carries the flow, and the human can move from immediate understanding into deeper intelligence without losing context. fileciteturn464file0
 
 ## WHAT PASSED
-- Current `App.tsx` was read before modification.
-- GitHub accepted the exact source update and returned commit `ae8a5095682ca6ea937c3e83746ee26870fb96d1`.
-- `main.tsx` still imports the Smart Feed presentation layer.
-- `package.json` still builds the canonical Smart Feed projection before Vite.
-- No Other Naya 509 source or deployment workflow was modified.
+- Canonical Read-First source inspected. fileciteturn463file0
+- Canonical construction/experience specification inspected. fileciteturn464file0
+- Smart Feed content inspected. fileciteturn465file0
+- Current 509 HTML inspected.
+- Current 509 surgical layer inspected.
+- Current 509 deployment workflow inspected.
+- Existing 509 deployment workflow already includes `NAYANET/509-AAA-NEXT-LEVEL.js` and hashes/injects/probes it. fileciteturn473file0
+- `NAYANET/509-AAA-NEXT-LEVEL.js` was successfully updated and GitHub returned commit `438ebda4372e9c709cf5e5e4516873676d0697b9`.
+- The new enhancement is therefore inside the already-authorized 509 deployment path.
 
-## WHAT IS NOT VERIFIED
-- Local `npm run typecheck` and `npm run build` remain unexecuted from a dependency-capable environment.
-- Cloudflare deployment remains unexecuted.
-- The user's visible `sparkling-shape-7ae5.smartnetpodcast.workers.dev` runtime was not changed or represented as changed.
-- Live visual/behavioral verification remains pending.
+## WHAT FAILED / BLOCKED
+- An additional experimental Smart Feed layer was created but intentionally not wired into deployment because it would have created an unnecessary second presentation path. It remains experimental rather than silently becoming runtime behavior.
+- The GitHub connector does not expose direct Cloudflare execution from this chat surface.
+- Independent runtime observation from this chat environment remains unavailable; the public runtime cannot therefore be declared production-proven here.
 
-## WHY THIS IS NOT A 10
-The source experience has advanced, but production truth is still unavailable from this execution surface. A 10 requires build proof, deployment proof, exact runtime observation and behavioral/visual verification.
+## WHAT REMAINS UNKNOWN
+- Whether the newest commit has completed the GitHub Actions deployment cycle.
+- Whether the public runtime currently serves commit `438ebda4372e9c709cf5e5e4516873676d0697b9`.
+- Actual rendered desktop/tablet/mobile appearance of the newest release.
+- Actual browser behavior of the new depth/lens interactions in production.
+- Whether any browser-specific CSS behavior requires repair after live observation.
+
+## WHAT WAS VERIFIED
+**IMPLEMENTED:** yes — exact GitHub source update accepted.  
+**AUTHORIZED:** yes — existing 509 workflow already deploys the modified next-level layer. fileciteturn473file0  
+**EXECUTED:** source modification executed.  
+**OBSERVED:** repository source state observed; public runtime not observed from this surface.  
+**VERIFIED:** source/workflow relationship verified; runtime verification pending.  
+**PRODUCTION-PROVEN:** no.
+
+## WHY THIS IS NOT A 10 YET
+Because the canonical standard says 10/10 is a verified system state, not a feeling. The experience has been materially advanced, but the actual public runtime still requires independent observation and visual/behavioral verification. fileciteturn466file0
 
 ## WHAT BECAME MORE INTELLIGENT
-The Feed now expresses the meaning of its three projections more explicitly and preserves the surrounding intelligence context when a human opens an object. The human can move deeper into the same intelligence without losing its truth/provenance frame.
+The Smart Feed now has a clearer physical intelligence model:
+
+**ENVIRONMENT → ELEVATED INTELLIGENT BLOCK → ELEVATED INTELLIGENCE LAYERS → ACTIVE INTELLIGENCE → ACTION / CONSEQUENCE**
+
+The visual system now carries meaning through semantic color flow and elevation rather than treating the feed as a flat collection of cards. The block also explicitly surfaces WHAT / WHY / SO WHAT / FOR YOU and the intelligence spine, making the canonical intelligence chain more legible to a human.
 
 ## EXACT NEXT EXECUTION
-Do not write another planning artifact. Continue actual Smart Feed work.
+**Do not move to another Hub subsystem yet. Continue Smart Feed.**
 
-1. Verify the current exact commit in a build-capable environment.
-2. Run typecheck/build and inspect the generated PIS artifact.
-3. Repair the first causal build defect if one appears.
-4. Inspect the rendered experience at the authorized runtime when deployment access exists.
-5. Critique the live Intelligent Block first, then hierarchy, depth, projections, actions, truth/provenance, living stream, Naya presence and the complete intelligence loop.
-6. Keep making surgical improvements until the Feed genuinely earns the 10/10 score.
-7. Only then expand attention outward to Library, Lists, Connections, Smart Spaces, Smart Mail and Reports.
+1. Obtain the actual 509 deployment result for commit `438ebda4372e9c709cf5e5e4516873676d0697b9`.
+2. Independently inspect the exact public runtime and Smart Link.
+3. Visually score the Intelligent Block first at desktop, tablet, and mobile.
+4. Specifically test the elevation stack, continuous color flow, eight lenses, truth state, provenance, action consequences, and no-dead-end behavior.
+5. Compare the actual rendered experience against the canonical Elite Interface dimensions: material, form, depth, light, color, state, motion, touch, clarity, consequence, memory.
+6. Ask **WHY IS THIS NOT A 10?** and repair the highest-value weakness.
+7. Repeat until the Smart Feed earns a defensible AAA score from evidence.
+8. Only after Smart Feed completion move outward to Library / Lists / Connections / Smart Spaces / Smart Mail / Reports.
 
 ## TAG
-**TAG → YOU'RE IT**
+**SMART FEED FIRST → YOU'RE IT**
