@@ -22,7 +22,8 @@ Added:
 
 Updated:
 - `.github/workflows/deploy-nayanet-hub-509-aaa.yml`
-- C3 layer is now syntax-checked, hashed, injected into the exact release artifact, served by the 509 Worker, and independently probed by the existing deployment proof path.
+- C3 layer is syntax-checked, hashed, injected into the exact release artifact, served by the 509 Worker, and independently probed by the existing deployment proof path.
+- Deployment now binds to the exact triggering `GITHUB_SHA` rather than resolving the mutable `main` branch at execution time. This removes a source/runtime race where a later documentation commit could accidentally become the deployed artifact.
 
 ## WHAT PASSED
 
@@ -30,10 +31,11 @@ Updated:
 - Current 509 Next-Level layer was inspected before modification.
 - Existing 509 deployment architecture was preserved.
 - C3 source was created on `main`.
-- Deployment workflow now requires and syntax-checks the C3 layer.
-- Release artifact now includes the C3 layer.
-- Release metadata now records the C3 SHA-256 hash.
-- Public-runtime verification now checks the C3 asset and hash in addition to the existing source/next-level/feed/navigation checks.
+- Deployment workflow requires and syntax-checks the C3 layer.
+- Release artifact includes the C3 layer.
+- Release metadata records the C3 SHA-256 hash.
+- Public-runtime verification checks the C3 asset and hash in addition to the existing source/next-level/feed/navigation checks.
+- Deployment source binding now uses the triggering commit rather than mutable branch state.
 
 ## WHAT FAILED
 
@@ -42,7 +44,7 @@ No source-level failure occurred during this pass.
 ## WHAT REMAINS UNKNOWN
 
 - The public runtime has not yet been independently observed from this execution surface; direct runtime retrieval returned a cache-miss rather than a usable rendered page.
-- Actual Cloudflare workflow completion for commit `7427fa001297985fa9331a88ccb4c888f9e149ce` is pending.
+- Cloudflare workflow completion for the latest source-triggering commit `b8d8929f518b43dce7ebb7575804e7674f143722` remains pending.
 - Live visual inspection of elevation, color flow, eight lenses, Smart Share, Personal, Activity, and responsive behavior remains pending.
 
 ## WHAT WAS VERIFIED
@@ -50,7 +52,8 @@ No source-level failure occurred during this pass.
 - Repository source exists.
 - 509 deployment workflow contains the exact Worker target and Smart Link.
 - C3 is bound into the release path.
-- Source-to-artifact hash verification is now part of the deployment workflow.
+- Source-to-artifact hash verification is part of the deployment workflow.
+- Deployment source selection is now deterministic for push-triggered releases.
 
 ## WHAT WAS NOT VERIFIED
 
@@ -64,13 +67,15 @@ No source-level failure occurred during this pass.
 
 A Smart Feed action is not complete merely because its button exists. The projection needs a semantic state contract and an honest consequence. Where backend capability is absent, the UI must record only what it can actually prove and explicitly expose the boundary instead of pretending the operation succeeded.
 
+A second release-integrity lesson emerged: a deployment workflow must bind to the exact triggering source commit. Resolving `main` during the job can silently change the artifact if another commit lands before checkout.
+
 ## WHAT BECAME MORE INTELLIGENT
 
-The 509 release path now treats Smart Feed interaction semantics as part of the deployable intelligence contract: feed projection state, keyboard state, action state, sharing state, and Smart Space intent are represented explicitly rather than left as ambiguous visual behavior.
+The 509 release path now treats Smart Feed interaction semantics and source/runtime identity as part of the deployable intelligence contract: feed projection state, keyboard state, action state, sharing state, Smart Space intent, exact source commit, and artifact hashes are represented explicitly rather than left ambiguous.
 
 ## EXACT NEXT EXECUTION
 
-1. Inspect the GitHub Actions deployment run for commit `7427fa001297985fa9331a88ccb4c888f9e149ce`.
+1. Inspect the GitHub Actions deployment run triggered by commit `b8d8929f518b43dce7ebb7575804e7674f143722`.
 2. If the deployment fails, repair the first causal failure only.
 3. If deployment passes, independently observe the exact public runtime and Smart Link.
 4. Inspect one representative Intelligent Block against Material/Form/Depth/Light/Color/State/Motion/Touch/Clarity/Consequence/Memory.
