@@ -30,15 +30,14 @@ jobs:
     if: github.event_name == 'push' || github.event.issue.title == 'CANONICAL HUB 509 AAA DEPLOY'
     runs-on: ubuntu-latest
     steps:
-      - name: Resolve exact main SHA
+      - name: Resolve exact triggering SHA
         id: source
         run: |
           set -euo pipefail
-          SHA="$(gh api repos/${GITHUB_REPOSITORY}/git/ref/heads/main --jq '.object.sha')"
+          SHA="${GITHUB_SHA}"
           test "${#SHA}" -eq 40
           echo "sha=$SHA" >> "$GITHUB_OUTPUT"
-        env:
-          GH_TOKEN: ${{ github.token }}
+          echo "TRIGGERING_SHA=$SHA"
 
       - name: Checkout exact source
         uses: actions/checkout@v6
