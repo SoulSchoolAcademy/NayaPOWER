@@ -1,0 +1,137 @@
+name: Deploy NayaNET Hub — 509 AAA Static
+
+on:
+  issues:
+    types: [opened, reopened]
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+
+jobs:
+  deploy:
+    if: github.event.issue.title == 'CANONICAL HUB 509 AAA DEPLOY' && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve exact main SHA
+        id: source
+        run: |
+          set -euo pipefail
+          SHA="$(gh api repos/${GITHUB_REPOSITORY}/git/ref/heads/main --jq '.object.sha')"
+          test "${#SHA}" -eq 40
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Checkout exact source
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          fetch-depth: 0
+
+      - name: Verify canonical 509 AAA source
+        run: |
+          set -euo pipefail
+          test -s "$SOURCE_FILE"
+          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'MAKE INTELLIGENCE FEEL ALIVE'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
+          for x in 'SUPERBRAIN' 'Where’s Naya Now' 'PASS THE TORCH'; do if grep -Fq "$x" "$SOURCE_FILE"; then echo "FORBIDDEN=$x"; exit 1; fi; done
+          echo 509_AAA_SOURCE=PASS
+
+      - name: Calculate source hash
+        id: hash
+        run: |
+          set -euo pipefail
+          HASH=$(sha256sum "$SOURCE_FILE" | awk '{print $1}')
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "509_SOURCE_SHA256=$HASH"
+
+      - name: Prepare static Worker release
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          SOURCE_HASH: ${{ steps.hash.outputs.hash }}
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp "$SOURCE_FILE" release/public/index.html
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          p=Path('release/public/index.html')
+          s=p.read_text()
+          marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
+          p.write_text(s.replace('</head>',marker+'</head>',1))
+          PY
+          cat > release/worker.js <<'EOF'
+          export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
+          EOF
+          cat > release/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
+          EOF
+
+      - name: Deploy GitHub-native 509 AAA Worker
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Promote newest Worker version
+        working-directory: release
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
+          VERSION_ID=$(python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/deployments.json'))
+          ds=d.get('deployments',d if isinstance(d,list) else [])
+          vs=ds[-1].get('versions',[]) if ds else []
+          print((vs[-1].get('version_id') or vs[-1].get('versionId')) if vs else '')
+          PY
+          )
+          test -n "$VERSION_ID"
+          npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
+
+      - name: Independently verify exact public runtime
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          SOURCE_HASH: ${{ steps.hash.outputs.hash }}
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set -euo pipefail
+          ok=0
+          for attempt in $(seq 1 12); do
+            code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/h -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            smart=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-sha256:' | awk '{print $2}' || true)
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart HEADER_HASH=$hdr"
+            if [ "$code" = 200 ] && [ "$smart" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/r && grep -Fq "$SOURCE_HASH" /tmp/r && [ "$hdr" = "$SOURCE_HASH" ]; then ok=1; break; fi
+            sleep 5
+          done
+          if [ "$ok" -ne 1 ]; then
+            {
+              echo '## 509 AAA runtime verification failed'
+              echo
+              echo "Expected commit: $SOURCE_COMMIT"
+              echo "Expected SHA256: $SOURCE_HASH"
+            } | gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
+            exit 1
+          fi
+          echo PUBLIC_RUNTIME_509_AAA=PASS
+
+      - name: Close deployment request
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --reason completed
