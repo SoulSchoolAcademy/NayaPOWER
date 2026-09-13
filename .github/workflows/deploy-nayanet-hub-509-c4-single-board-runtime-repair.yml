@@ -110,7 +110,7 @@ jobs:
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
 
-      - name: Deploy 509 C4 single board runtime repair
+      - name: Deploy 509 C4 surgical interaction continuity repair
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -150,4 +150,4 @@ jobs:
             sleep 5
           done
           test "$ok" -eq 1
-          echo PUBLIC_RUNTIME_509_C4_SINGLE_BOARD_REPAIR=PASS
+          echo PUBLIC_RUNTIME_509_C4_INTERACTION_CONTINUITY=PASS
