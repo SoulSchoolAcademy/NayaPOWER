@@ -88,6 +88,31 @@ jobs:
           workingDirectory: release
           command: deploy --config wrangler.jsonc
 
+      - name: Promote exact deployed Worker version
+        working-directory: release
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          set -euo pipefail
+          npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
+          VERSION_ID=$(python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/deployments.json'))
+          ds=d if isinstance(d,list) else d.get('deployments',[])
+          ids=[]
+          for dep in ds:
+              if not isinstance(dep,dict): continue
+              if dep.get('version_id'): ids.append(dep['version_id'])
+              for v in dep.get('versions',[]) or []:
+                  if isinstance(v,dict) and (v.get('version_id') or v.get('versionId')): ids.append(v.get('version_id') or v.get('versionId'))
+          if not ids: raise SystemExit('No Worker version id found')
+          print(ids[0])
+          PY
+          )
+          test -n "$VERSION_ID"
+          echo "PROMOTING_VERSION=$VERSION_ID"
+          npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
+
       - name: Independently verify exact public runtime
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
