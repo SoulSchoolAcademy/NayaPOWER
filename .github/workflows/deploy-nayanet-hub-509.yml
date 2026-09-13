@@ -73,39 +73,17 @@ jobs:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
         run: |
           set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import hashlib
-          baseline = Path("2026 09 09 5:09 pm NayaNET HUB.html")
-          layer = Path("NAYANET/509-AAA-SURGICAL-LAYER.js")
-          checks = [
-              (baseline, "file exists", baseline.is_file() and baseline.stat().st_size > 0),
-              (layer, "AAA layer exists", layer.is_file() and layer.stat().st_size > 0),
-          ]
-          if not all(ok for _, _, ok in checks):
-              for path, label, ok in checks: print(f"CHECK={label} RESULT={'PASS' if ok else 'FAIL'} PATH={path}")
-              raise SystemExit(1)
-          b = baseline.read_text(encoding="utf-8")
-          a = layer.read_text(encoding="utf-8")
-          required = [
-              ("baseline title", "<title>NayaNET — Intelligent Hub V7</title>", b),
-              ("baseline SMART FEED", "SMART FEED", b),
-              ("baseline NayaNET", "NayaNET", b),
-              ("AAA style marker", "naya509-aaa-style", a),
-          ]
-          failed = False
-          for label, needle, haystack in required:
-              ok = needle in haystack
-              print(f"CHECK={label} RESULT={'PASS' if ok else 'FAIL'}")
-              if not ok: failed = True
-          if failed: raise SystemExit(1)
-          digest = hashlib.sha256(baseline.read_bytes()).hexdigest()
-          print("CANONICAL_509_BASELINE=PASS")
-          print(f"SOURCE_COMMIT=${{SOURCE_COMMIT}}")
-          print(f"BASELINE_509_SHA256={digest}")
-          PY
+          test -s "$LEGACY_509" || { echo "SOURCE_CHECK=FAIL missing baseline: $LEGACY_509"; exit 1; }
+          test -s "$AAA_LAYER" || { echo "SOURCE_CHECK=FAIL missing AAA layer: $AAA_LAYER"; exit 1; }
+          grep -Fq '<title>NayaNET — Intelligent Hub V7</title>' "$LEGACY_509" || { echo 'SOURCE_CHECK=FAIL title'; exit 1; }
+          grep -Fq 'SMART FEED' "$LEGACY_509" || { echo 'SOURCE_CHECK=FAIL SMART FEED'; exit 1; }
+          grep -Fq 'NayaNET' "$LEGACY_509" || { echo 'SOURCE_CHECK=FAIL NayaNET'; exit 1; }
+          grep -Fq 'naya509-aaa-style' "$AAA_LAYER" || { echo 'SOURCE_CHECK=FAIL AAA marker'; exit 1; }
           BASELINE_SHA256=$(sha256sum "$LEGACY_509" | awk '{print $1}')
           echo "BASELINE_509_SHA256=$BASELINE_SHA256" >> "$GITHUB_ENV"
+          echo "SOURCE_CHECK=PASS"
+          echo "SOURCE_COMMIT=$SOURCE_COMMIT"
+          echo "BASELINE_509_SHA256=$BASELINE_SHA256"
 
       - name: Prepare Cloudflare 509 + AAA release
         run: |
@@ -185,7 +163,6 @@ jobs:
             smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?probe=$attempt" || true)
             root_hash=$(sha256sum /tmp/root 2>/dev/null | awk '{print $1}' || true)
             smart_hash=$(sha256sum /tmp/smart 2>/dev/null | awk '{print $1}' || true)
-            root_source=$(grep -o 'X-NayaNET-Source-Commit[^<]*' /tmp/root 2>/dev/null | head -1 || true)
             overlay_ok=$(grep -F 'naya-509-aaa.js' /tmp/root >/dev/null 2>&1 && echo PASS || echo FAIL)
             echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code ROOT_HASH=$root_hash SMART_HASH=$smart_hash EXPECTED_RENDERED=$RENDERED_SHA256 OVERLAY=$overlay_ok SOURCE=${{ steps.source.outputs.sha }}"
             if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && [ "$root_hash" = "$RENDERED_SHA256" ] && [ "$smart_hash" = "$RENDERED_SHA256" ] && [ "$overlay_ok" = PASS ]; then
