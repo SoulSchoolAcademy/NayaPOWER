@@ -1,12 +1,15 @@
 name: Deploy NayaNET Hub — 509 C4 Single Board Runtime Repair
+
 on:
   push:
     branches: [main]
     paths:
       - 'NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js'
       - '.github/workflows/deploy-nayanet-hub-509-c4-single-board-runtime-repair.yml'
+
 permissions:
   contents: read
+
 env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
   LAYER_FILE: NAYANET/509-AAA-SURGICAL-LAYER.js
@@ -19,6 +22,7 @@ env:
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
   ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -27,16 +31,25 @@ jobs:
         id: source
         run: |
           set -euo pipefail
-          SHA="${GITHUB_SHA}"; test "${#SHA}" -eq 40; echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+          SHA="${GITHUB_SHA}"
+          test "${#SHA}" -eq 40
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+
       - name: Checkout exact source
         uses: actions/checkout@v6
-        with: {ref: ${{ steps.source.outputs.sha }}, fetch-depth: 0}
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          fetch-depth: 0
+
       - name: Verify source and syntax
         run: |
           set -euo pipefail
           for f in "$SOURCE_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE"; do test -s "$f"; done
           for f in "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE"; do node --check "$f"; done
-          grep -Fq 'Intelligent Hub' "$SOURCE_FILE"; grep -Fq 'IN A NUTSHELL' "$SOURCE_FILE"; echo SOURCE_AND_SYNTAX=PASS
+          grep -Fq 'Intelligent Hub' "$SOURCE_FILE"
+          grep -Fq 'IN A NUTSHELL' "$SOURCE_FILE"
+          echo SOURCE_AND_SYNTAX=PASS
+
       - name: Calculate exact hashes
         id: hash
         run: |
@@ -48,6 +61,7 @@ jobs:
           echo "c4=$(sha256sum "$C4_LAYER_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
           echo "unified=$(sha256sum "$UNIFIED_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
           echo "runtime=$(sha256sum "$RUNTIME_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
+
       - name: Build exact release
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
@@ -60,7 +74,7 @@ jobs:
           RUNTIME_HASH: ${{ steps.hash.outputs.runtime }}
         run: |
           set -euo pipefail
-          rm -rf release; mkdir -p release/public
+          rm -rf release && mkdir -p release/public
           cp "$SOURCE_FILE" release/public/index.html
           cp "$LAYER_FILE" release/public/naya-509-aaa.js
           cp "$NEXT_LAYER_FILE" release/public/naya-509-next-level.js
@@ -71,7 +85,8 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import os
-          p=Path('release/public/index.html'); s=p.read_text(encoding='utf-8')
+          p=Path('release/public/index.html')
+          s=p.read_text(encoding='utf-8')
           marker=(f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT">'
                   f'<meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}">'
                   f'<meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
@@ -84,17 +99,25 @@ jobs:
           inject=('<script src="/naya-509-aaa.js"></script><script src="/naya-509-next-level.js"></script>'
                   '<script src="/naya-509-smart-feed-c3.js"></script><script src="/naya-509-intelligent-board-c4.js"></script>'
                   '<script src="/naya-509-c4-unified-board-repair.js"></script><script src="/naya-509-c4-single-board-runtime-repair.js"></script>')
-          p.write_text(s.replace('</head>',marker+inject+'</head>',1),encoding='utf-8')
+          s=s.replace('</head>',marker+inject+'</head>',1)
+          p.write_text(s,encoding='utf-8')
           PY
+          grep -Fq '/naya-509-c4-single-board-runtime-repair.js' release/public/index.html
           cat > release/worker.js <<'EOF'
-          export default { async fetch(request, env) { const url=new URL(request.url); const spa=url.pathname==='/'||url.pathname==='/index.html'||url.pathname.startsWith('/intelligence/'); const req=spa?new Request(new URL('/index.html',request.url),request):request; const response=await env.ASSETS.fetch(req); const headers=new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
+          export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
+
       - name: Deploy 509 C4 single board runtime repair
         uses: cloudflare/wrangler-action@v4
-        with: {apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}, accountId: ${{ env.ACCOUNT_ID }}, workingDirectory: release, command: deploy --config wrangler.jsonc}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
       - name: Independently verify runtime parity
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
@@ -105,11 +128,12 @@ jobs:
           UNIFIED_HASH: ${{ steps.hash.outputs.unified }}
           RUNTIME_HASH: ${{ steps.hash.outputs.runtime }}
         run: |
-          set -euo pipefail; ok=0
+          set -euo pipefail
+          ok=0
           for attempt in $(seq 1 12); do
             code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
-            fix=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/f -w '%{http_code}' "$RUNTIME/naya-509-c4-single-board-runtime-repair.js?probe=$attempt" || true)
+            fix_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/fix -w '%{http_code}' "$RUNTIME/naya-509-c4-single-board-runtime-repair.js?probe=$attempt" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             next_hash=$(grep -o 'nayanet-aaa-next-level-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
@@ -117,7 +141,13 @@ jobs:
             c4_hash=$(grep -o 'nayanet-aaa-intelligent-board-c4-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             unified_hash=$(grep -o 'nayanet-aaa-c4-unified-board-repair-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             runtime_hash=$(grep -o 'nayanet-aaa-c4-single-board-runtime-repair-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
-            if [ "$code" = 200 ] && [ "$smart" = 200 ] && [ "$fix" = 200 ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$next_hash" = "$NEXT_HASH" ] && [ "$c3_hash" = "$C3_HASH" ] && [ "$c4_hash" = "$C4_HASH" ] && [ "$unified_hash" = "$UNIFIED_HASH" ] && [ "$runtime_hash" = "$RUNTIME_HASH" ]; then ok=1; echo RUNTIME_PARITY=PASS ATTEMPT=$attempt; break; fi
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart FIX=$fix BODY_COMMIT=$body_commit RUNTIME_HASH=$runtime_hash"; sleep 5
+            if [ "$code" = 200 ] && [ "$smart" = 200 ] && [ "$fix_code" = 200 ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$next_hash" = "$NEXT_HASH" ] && [ "$c3_hash" = "$C3_HASH" ] && [ "$c4_hash" = "$C4_HASH" ] && [ "$unified_hash" = "$UNIFIED_HASH" ] && [ "$runtime_hash" = "$RUNTIME_HASH" ]; then
+              ok=1
+              echo "RUNTIME_PARITY=PASS ATTEMPT=$attempt"
+              break
+            fi
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart FIX=$fix_code BODY_COMMIT=$body_commit RUNTIME_HASH=$runtime_hash"
+            sleep 5
           done
-          test "$ok" -eq 1; echo PUBLIC_RUNTIME_509_C4_SINGLE_BOARD_REPAIR=PASS
+          test "$ok" -eq 1
+          echo PUBLIC_RUNTIME_509_C4_SINGLE_BOARD_REPAIR=PASS
