@@ -141,25 +141,36 @@ jobs:
       - name: Independently verify public 509 runtime
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
         run: |
           set -euo pipefail
-          for attempt in $(seq 1 24); do
+          : > /tmp/nayanet-runtime-verification.log
+          for attempt in $(seq 1 12); do
             root_code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/root.headers -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" || true)
             smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" || true)
             header=$(tr -d '\r' </tmp/root.headers | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
-            echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code HEADER=$header"
+            echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code HEADER=$header" | tee -a /tmp/nayanet-runtime-verification.log
             if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && [ "$header" = "$SOURCE_COMMIT" ]; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" || true)
               cognitive_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" || true)
+              echo "ATTEMPT=$attempt JS_SRC=$js_src JS=$js_code COGNITIVE=$cognitive_code COMMIT_IN_JS=$(grep -Fc "$SOURCE_COMMIT" /tmp/app-js || true)" | tee -a /tmp/nayanet-runtime-verification.log
               if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/app-js; then
-                echo PUBLIC_RUNTIME_509=PASS
+                echo PUBLIC_RUNTIME_509=PASS | tee -a /tmp/nayanet-runtime-verification.log
                 exit 0
               fi
             fi
             sleep 5
           done
+          {
+            echo '## 509 public runtime verification — exact diagnostics'
+            echo
+            echo '```text'
+            cat /tmp/nayanet-runtime-verification.log
+            echo '```'
+          } | gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
           echo PUBLIC_RUNTIME_509=FAIL
           exit 1
 
