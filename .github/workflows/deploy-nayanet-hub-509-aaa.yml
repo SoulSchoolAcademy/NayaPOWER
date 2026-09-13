@@ -117,15 +117,16 @@ jobs:
           for attempt in $(seq 1 12); do
             code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            layer_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/l -w '%{http_code}' "$RUNTIME/naya-509-aaa.js?probe=$attempt" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
-            layer_ok=$(grep -F '/naya-509-aaa.js' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
-            feed_ok=$(grep -F 'COLLECTIVE INTELLIGENCE' /tmp/r >/dev/null 2>&1 && grep -F 'PERSONAL INTELLIGENCE' /tmp/r >/dev/null 2>&1 && grep -F 'ACTIVITY' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
+            layer_ok=$(grep -F '/naya-509-aaa.js' /tmp/r >/dev/null 2>&1 && [ "$layer_code" = "200" ] && echo PASS || echo FAIL)
+            feed_ok=$(grep -F 'COLLECTIVE INTELLIGENCE' /tmp/l >/dev/null 2>&1 && grep -F 'PERSONAL INTELLIGENCE' /tmp/l >/dev/null 2>&1 && grep -F 'ACTIVITY' /tmp/l >/dev/null 2>&1 && echo PASS || echo FAIL)
             nav_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/r >/dev/null 2>&1 && grep -F '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' /tmp/r >/dev/null 2>&1 && grep -F 'Your life creates your intelligence every day.' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok LAYER=$layer_ok FEEDS=$feed_ok NAV=$nav_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$layer_ok" = PASS ] && [ "$feed_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER_HTTP=$layer_code BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok LAYER=$layer_ok FEEDS=$feed_ok NAV=$nav_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_code" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$layer_ok" = PASS ] && [ "$feed_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           test "$ok" -eq 1
