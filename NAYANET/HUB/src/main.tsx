@@ -12,6 +12,7 @@ import './styles/hub-intelligence-v10.css';
 import './styles/hub-intelligence-v11.css';
 import './styles/hub-intelligence-v12.css';
 import './styles/feed-edge-to-edge.css';
+import './styles/hub-intelligent-block-v1.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
