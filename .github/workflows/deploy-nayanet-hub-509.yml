@@ -5,6 +5,8 @@ name: Deploy NayaNET Hub — 509 AAA Canonical
 on:
   push:
     branches: [main]
+  issues:
+    types: [opened, reopened]
   workflow_dispatch:
     inputs:
       commit_sha:
@@ -18,6 +20,7 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 env:
   LEGACY_509: "2026 09 09 5:09 pm NayaNET HUB.html"
@@ -33,6 +36,7 @@ concurrency:
 
 jobs:
   deploy:
+    if: github.event_name != 'issues' || github.event.issue.title == 'CANONICAL HUB 509 AAA DEPLOY'
     runs-on: ubuntu-latest
     steps:
       - name: Resolve exact source
@@ -167,6 +171,7 @@ jobs:
             echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code ROOT_HASH=$root_hash SMART_HASH=$smart_hash EXPECTED_RENDERED=$RENDERED_SHA256 OVERLAY=$overlay_ok SOURCE=${{ steps.source.outputs.sha }}"
             if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && [ "$root_hash" = "$RENDERED_SHA256" ] && [ "$smart_hash" = "$RENDERED_SHA256" ] && [ "$overlay_ok" = PASS ]; then
               echo PUBLIC_RUNTIME_509_AAA=PASS
+              if [ "${{ github.event_name }}" = "issues" ]; then gh issue close "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --reason completed; fi
               exit 0
             fi
             sleep 5
