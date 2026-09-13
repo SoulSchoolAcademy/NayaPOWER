@@ -55,9 +55,27 @@ jobs:
         working-directory: NAYANET/HUB
         run: npm install --no-audit --no-fund
 
-      - name: Typecheck
+      - name: Typecheck with diagnostic capture
+        id: typecheck
         working-directory: NAYANET/HUB
-        run: npm run typecheck
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          set +e
+          npm run typecheck > /tmp/nayanet-typecheck.log 2>&1
+          code=$?
+          cat /tmp/nayanet-typecheck.log
+          if [ "$code" -ne 0 ]; then
+            {
+              echo '## 509 Hub typecheck failure — exact compiler output'
+              echo
+              echo '```text'
+              cat /tmp/nayanet-typecheck.log
+              echo '```'
+            } | gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
+            exit "$code"
+          fi
 
       - name: Build exact 509 release
         working-directory: NAYANET/HUB
