@@ -30,7 +30,6 @@ env:
   POLISH_FILE: NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
   ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
 jobs:
   deploy:
@@ -52,10 +51,9 @@ jobs:
           s=Path('SMART FEED CONTENT').read_text(encoding='utf-8')
           patterns=[r'🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s*0?([1-3])',r'🧠\s*#\s*([4-9])\s*[—-]',r'Naya Power\s*#\s*(6)\s*[—-]',r'^0?([4-9])\s*[—-]']
           nums=set()
-          for p in patterns:
-            nums.update(int(x) for x in re.findall(p,s,re.M|re.I))
+          for p in patterns: nums.update(int(x) for x in re.findall(p,s,re.M|re.I))
           print('CANONICAL_NOTE_NUMBERS=',sorted(nums))
-          test nums==set(range(1,10))
+          assert nums==set(range(1,10)), sorted(nums)
           print('SMART_NOTE_COUNT=9')
           PY
       - name: Generate exact real-content asset
