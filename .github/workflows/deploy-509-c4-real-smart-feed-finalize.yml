@@ -105,10 +105,6 @@ jobs:
                 f'<meta name="nayanet-real-content-generated-sha256" content="{os.environ["GENERATED_HASH"]}">'
                 f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">'
                 f'<meta name="nayanet-smart-note-count" content="9">')
-          # CRITICAL SURGICAL FIX:
-          # Run real source-derived boards AFTER the canonical page has initialized,
-          # then attach the existing C4 interaction layers to those real boards.
-          # Distillation runs last. No C4 architecture is replaced.
           scripts=''.join(f'<script src="{x}"></script>' for x in [
             '/naya-509-real-smart-feed-content.js',
             '/naya-509-aaa.js',
@@ -119,14 +115,18 @@ jobs:
             '/naya-509-c4-single-board-runtime-repair.js',
             '/naya-509-c4-love-like-personal-polish.js',
             '/naya-509-real-smart-feed-distillation.js'])
+          # Final deterministic boot call is deliberately inline and last.
+          # It does not replace architecture; it guarantees the source-derived
+          # renderer gets one final execution after every C4 layer has loaded.
+          final_boot='<script>window.Naya509RealSmartFeed&&window.Naya509RealSmartFeed.boot&&window.Naya509RealSmartFeed.boot();</script>'
           if '</head>' in s:
             s=s.replace('</head>',meta+'</head>',1)
           else:
             s=meta+s
           if '</body>' in s:
-            s=s.replace('</body>',scripts+'</body>',1)
+            s=s.replace('</body>',scripts+final_boot+'</body>',1)
           else:
-            s += scripts
+            s += scripts+final_boot
           p.write_text(s,encoding='utf-8')
           PY
 
@@ -148,8 +148,9 @@ jobs:
           assert s.index('/naya-509-aaa.js') < s.index('/naya-509-intelligent-board-c4.js')
           assert s.index('/naya-509-intelligent-board-c4.js') < s.index('/naya-509-real-smart-feed-distillation.js')
           assert s.rfind('/naya-509-real-smart-feed-content.js') > s.index('<body')
+          assert 'Naya509RealSmartFeed.boot()' in s
           assert 'nayanet-smart-note-count" content="9"' in s
-          print('SCRIPT_ORDER=PASS REAL_CONTENT_FIRST C4_AFTER REAL DISTILL_LAST')
+          print('SCRIPT_ORDER=PASS REAL_CONTENT_FIRST C4_AFTER_REAL DISTILL_LAST FINAL_BOOT_LAST')
           PY
 
       - name: Deploy exact 509 C4 release
