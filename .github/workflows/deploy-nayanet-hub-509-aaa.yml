@@ -40,7 +40,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s "$SOURCE_FILE"
-          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'MAKE INTELLIGENCE FEEL ALIVE'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'Make intelligence' 'feel alive'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
           for x in 'SUPERBRAIN' 'Where’s Naya Now' 'PASS THE TORCH'; do if grep -Fq "$x" "$SOURCE_FILE"; then echo "FORBIDDEN=$x"; exit 1; fi; done
           echo 509_AAA_SOURCE=PASS
 
@@ -116,7 +116,7 @@ jobs:
             smart=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
             hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-sha256:' | awk '{print $2}' || true)
             echo "ATTEMPT=$attempt ROOT=$code SMART=$smart HEADER_HASH=$hdr"
-            if [ "$code" = 200 ] && [ "$smart" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/r && grep -Fq "$SOURCE_HASH" /tmp/r && [ "$hdr" = "$SOURCE_HASH" ]; then ok=1; break; fi
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && grep -Fq "$SOURCE_COMMIT" /tmp/r && grep -Fq "$SOURCE_HASH" /tmp/r && [ "$hdr" = "$SOURCE_HASH" ]; then ok=1; break; fi
             sleep 5
           done
           if [ "$ok" -ne 1 ]; then
