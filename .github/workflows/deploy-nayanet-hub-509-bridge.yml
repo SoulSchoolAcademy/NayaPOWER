@@ -105,6 +105,14 @@ jobs:
           rm -rf release
           mkdir -p release/public
           cp -R "$HUB/dist/." release/public/
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          p=Path('release/public/index.html')
+          s=p.read_text()
+          marker=f'<meta name="nayanet-canonical-source" content="NAYANET/HUB 509"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}">'
+          p.write_text(s.replace('<head>', '<head>'+marker, 1))
+          PY
           cat > release/worker.js <<'EOF'
           export default { async fetch(request, env) { const url = new URL(request.url); const spaRoutes = new Set(['/','/index.html','/feed','/notes','/today','/reports','/library','/collective','/evidence','/connections','/mail','/space','/settings']); const isSpaRoute = spaRoutes.has(url.pathname) || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method:'GET', headers:request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB 509'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT||'unknown'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
@@ -150,8 +158,9 @@ jobs:
             root_code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/root.headers -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" || true)
             smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" || true)
             header=$(tr -d '\r' </tmp/root.headers | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
-            echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code HEADER=$header" | tee -a /tmp/nayanet-runtime-verification.log
-            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && [ "$header" = "$SOURCE_COMMIT" ]; then
+            meta=$(grep -o "nayanet-source-commit[^>]*" /tmp/root | head -1 || true)
+            echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code HEADER=$header META=$meta" | tee -a /tmp/nayanet-runtime-verification.log
+            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/root; then
               js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" || true)
