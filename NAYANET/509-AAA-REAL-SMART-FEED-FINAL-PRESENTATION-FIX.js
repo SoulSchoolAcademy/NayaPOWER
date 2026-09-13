@@ -60,6 +60,15 @@ function fixPerspectives(){
    [...grid.children].sort((a,b)=>(+a.dataset.perspectiveNumber||99)-(+b.dataset.perspectiveNumber||99)).forEach(x=>grid.appendChild(x));
  });
 }
+function removeBottomInterveningNodes(){
+ const main=document.querySelector('.main');if(!main)return;
+ const blocks=main.querySelector('.blocks');const mission=main.querySelector('.mission');if(!blocks||!mission)return;
+ // The user-facing contract is intentionally strict here: once the real feed ends,
+ // the only content allowed before the mission statement is nothing. This removes
+ // obsolete status/banner blocks AND anonymous spacer nodes that create the black void.
+ let n=blocks.nextElementSibling;
+ while(n&&n!==mission){const next=n.nextElementSibling;n.remove();n=next}
+}
 function fixBottom(){
  const main=document.querySelector('.main');if(!main)return;
  main.style.paddingBottom='0px';
@@ -69,8 +78,6 @@ function fixBottom(){
    const b=mission.querySelector('b');const s=mission.querySelector('span');if(b){b.style.fontSize='40px';b.style.lineHeight='1.12'}if(s){s.style.fontSize='18px';s.style.lineHeight='1.45';s.style.fontWeight='650';s.style.marginTop='8px'}
  }
  const features=main.querySelector('.features');if(features){features.style.position='static';features.style.bottom='auto';features.style.left='auto';features.style.right='auto';features.style.justifyContent='center';features.style.margin='4px 22px 10px';features.style.padding='0';features.style.boxShadow='none';features.style.borderTop='0';features.style.background='transparent';features.style.overflow='visible'}
- // Remove only empty direct children between the feed and mission/footer.
- if(blocks&&mission){let n=blocks.nextElementSibling;while(n&&n!==mission){const next=n.nextElementSibling;if(!norm(n.textContent)&&!n.querySelector('button,input,textarea,a'))n.remove();n=next}}
 }
 function style(){if(document.getElementById('naya509-final-presentation-css'))return;const s=document.createElement('style');s.id='naya509-final-presentation-css';s.textContent=`
 .naya509-board .naya509-perspectives{order:initial!important}
@@ -87,7 +94,7 @@ function style(){if(document.getElementById('naya509-final-presentation-css'))re
 @media(max-width:760px){.mission{margin:0 10px 4px!important}.mission b{font-size:29px!important}.mission span{font-size:18px!important}.features{margin:4px 10px 12px!important}.naya509-board .naya509-perspective .layerBody{font-size:19px!important}.naya509-board .naya509-for-you .layerBody{font-size:20px!important}}
 `;
 document.head.appendChild(s)}
-function run(){style();removeObsolete();fixPerspectives();fixBottom();document.documentElement.dataset.naya509FinalPresentationFix='true'}
+function run(){style();removeObsolete();fixPerspectives();removeBottomInterveningNodes();fixBottom();document.documentElement.dataset.naya509FinalPresentationFix='true'}
 let timer=0;function schedule(){clearTimeout(timer);timer=setTimeout(run,30)}
 function boot(){run();if(!window.__naya509FinalPresentationObserver){const mo=new MutationObserver(schedule);mo.observe(document.body,{childList:true,subtree:true});window.__naya509FinalPresentationObserver=mo}}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
