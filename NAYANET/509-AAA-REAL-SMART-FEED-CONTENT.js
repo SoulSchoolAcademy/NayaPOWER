@@ -37,11 +37,48 @@
     const layers = nums.filter(n=>n!==1).map(n=>{const s=note.sections[n];return `<article class="layer" style="--layer:${tone}"><div class="layerHead"><span class="dot"></span><b>${esc(s.name)}</b><span class="state">SMART NOTE · ${String(note.number).padStart(2,'0')}</span></div><div class="layerBody">${sectionBody(s.text)}</div></article>`;}).join('');
     return `<article class="block naya509-board" data-real-smart-note="${idx+1}" style="--tone:${tone}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">${glyphs[idx%glyphs.length]}</div><div><h3>${esc(note.title)}</h3><div class="meta"><span>SMART NOTE ${String(note.number).padStart(2,'0')}</span><span>CANONICAL INTELLIGENCE</span></div></div></div><div class="truth">SOURCE CONTENT</div></div>${nutshell?`<div class="nutshell"><b>IN A NUTSHELL</b><p>${sectionBody(nutshell.text)}</p></div>`:''}<div class="layers">${layers}</div>${actions()}<div class="blockFoot"><span>REAL SMART NOTE CONTENT · SOURCE: SMART FEED CONTENT</span><span>INTELLIGENCE EVENT ${String(note.number).padStart(2,'0')}</span></div></div></article>`;
   }
-  function run() { const blocks=document.querySelector('.blocks'); if(!blocks)return false; const notes=parseNotes(source); if(!notes.length)return false; const signature=notes.map(n=>n.title).join('|'); if(blocks.dataset.nayaRealSignature===signature&&blocks.querySelectorAll('[data-real-smart-note]').length===notes.length)return true; blocks.innerHTML=notes.map(board).join(''); blocks.dataset.nayaRealSignature=signature; document.documentElement.dataset.nayaRealSmartFeed='true'; return true; }
-  function style() { if(document.getElementById('naya509-real-content-style'))return; const s=document.createElement('style'); s.id='naya509-real-content-style'; s.textContent=`
-    .naya509-board{min-height:0!important;padding:34px 38px 42px 42px!important}.naya509-board .blockInner{max-width:1500px!important;margin:0 auto!important}.naya509-board .meta,.naya509-board .truth,.naya509-board .state{font-size:12px!important;line-height:1.35!important}.naya509-board .layerHead b{font-size:15px!important}.naya509-board .layerBody{font-size:18px!important;line-height:1.62!important;color:#e1dce5!important}.naya509-board .nutshell b{font-size:13px!important}.naya509-board .nutshell p{font-size:21px!important;line-height:1.58!important}.naya509-board .actions{align-items:center!important}.naya509-board .action{font-size:14px!important;min-height:50px!important;padding:0 16px!important}.naya509-board .ratingLabel{font-size:12px!important}.naya509-board .ratingStar{font-size:27px!important;width:42px!important;height:42px!important}@media(max-width:760px){.naya509-board{padding:26px 18px 34px 28px!important}.naya509-board .layerBody{font-size:17px!important}.naya509-board .nutshell p{font-size:19px!important}.naya509-board .action{font-size:13px!important}.naya509-board .ratingStar{width:38px!important;height:40px!important}}`;
-    document.head.appendChild(s); }
-  let scheduled=false; function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;run();});}
+  function stripLegacyBars() {
+    const textMatches = /INTELLIGENCE\s+(CONTEXT|COLLECTIVE)/i;
+    document.querySelectorAll('.mission,.features').forEach(el => {
+      const text = (el.textContent || '').trim();
+      if (el.classList.contains('features') || textMatches.test(text)) el.remove();
+    });
+    document.querySelectorAll('body *').forEach(el => {
+      if (el.children.length === 0 && textMatches.test((el.textContent || '').trim())) {
+        const bar = el.closest('.railCard,.featureBtn,.features,.mission');
+        if (bar) bar.remove();
+      }
+    });
+    if (!document.querySelector('.naya509-mission')) {
+      const m = document.createElement('div');
+      m.className = 'naya509-mission';
+      m.innerHTML = '<b>Your life creates your intelligence every day.</b><span>Naya helps you capture it, understand it, remember it, compound it, and use it.</span>';
+      document.body.appendChild(m);
+    }
+  }
+  function run() {
+    const blocks=document.querySelector('.blocks'); if(!blocks)return false;
+    const notes=parseNotes(source); if(!notes.length)return false;
+    const signature=notes.map(n=>n.title).join('|');
+    if(blocks.dataset.nayaRealSignature!==signature || blocks.querySelectorAll('[data-real-smart-note]').length!==notes.length){
+      blocks.innerHTML=notes.map(board).join('');
+      blocks.dataset.nayaRealSignature=signature;
+    }
+    stripLegacyBars();
+    document.documentElement.dataset.nayaRealSmartFeed='true';
+    return true;
+  }
+  function style() {
+    if(document.getElementById('naya509-real-content-style'))return;
+    const s=document.createElement('style'); s.id='naya509-real-content-style'; s.textContent=`
+      .naya509-board{min-height:0!important;padding:34px 38px 42px 42px!important}.naya509-board .blockInner{max-width:1500px!important;margin:0 auto!important}.naya509-board .meta,.naya509-board .truth,.naya509-board .state{font-size:14px!important;line-height:1.4!important}.naya509-board .layerHead b{font-size:18px!important}.naya509-board .layerBody{font-size:20px!important;line-height:1.62!important;color:#e7e2eb!important}.naya509-board .nutshell b{font-size:15px!important}.naya509-board .nutshell p{font-size:24px!important;line-height:1.58!important}.naya509-board .actions{align-items:center!important}.naya509-board .action{font-size:15px!important;min-height:52px!important;padding:0 17px!important}.naya509-board .ratingLabel{font-size:14px!important}.naya509-board .ratingStar{font-size:30px!important;width:46px!important;height:46px!important}
+      .naya509-mission{position:fixed;left:0;right:0;bottom:0;z-index:140;text-align:center;padding:18px 24px 20px;border-top:2px solid #ffffff18;background:linear-gradient(180deg,#09080df5,#050507fc);backdrop-filter:blur(24px);box-shadow:0 -18px 45px #000b;color:#eeeaf2}.naya509-mission b{display:block;font-size:28px!important;line-height:1.25!important;font-weight:800;letter-spacing:-.025em}.naya509-mission span{display:block;margin-top:6px;font-size:24px!important;line-height:1.4!important;color:#e2dce7;font-weight:650}
+      .mission,.features{display:none!important}
+      @media(max-width:760px){.naya509-board{padding:26px 18px 34px 28px!important}.naya509-board .layerBody{font-size:19px!important}.naya509-board .layerHead b{font-size:17px!important}.naya509-board .nutshell p{font-size:21px!important}.naya509-board .action{font-size:14px!important}.naya509-board .ratingStar{width:42px!important;height:44px!important;font-size:28px!important}.naya509-mission{padding:14px 16px 17px}.naya509-mission b{font-size:23px!important}.naya509-mission span{font-size:19px!important}}
+    `; document.head.appendChild(s);
+  }
+  let scheduled=false;
+  function schedule(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;run();});}
   function boot(){style();run();const blocks=document.querySelector('.blocks');if(blocks&&!blocks.dataset.nayaRealObserver){const mo=new MutationObserver(()=>{if(blocks.dataset.nayaRealRendering==='1')return;schedule();});mo.observe(blocks,{childList:true});blocks.dataset.nayaRealObserver='1';}}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
