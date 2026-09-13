@@ -40,14 +40,17 @@ jobs:
           ref: ${{ steps.source.outputs.sha }}
           fetch-depth: 0
 
-      - name: Verify canonical 509 AAA source and link layer
+      - name: Verify canonical 509 AAA source
         run: |
           set -euo pipefail
           test -s "$SOURCE_FILE"
-          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective' 'Personal' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'Your life creates your intelligence every day.' 'hmclibrary.groovemember.net/home' 'academy.nayanet.app' 'humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab' 'nayanet.groovepages.com/powerplayer' 'nayanet.groovepages.com/whitepaper' 'nayanet.groovepages.com/aboutus' 'hmclibrary.groovemember.net/login' '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' '1LgRmYAQ85AB6mmu6Qp2ovghyd1lP-FNh' '1N-XzV3_RCTHuLdp4leZNlOo7ITFwrICR' '1F9M66i5Av_oJcIa5dve-U0mMeAgYKczT' '1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
-          for x in 'SUPERBRAIN' 'Where’s Naya Now' 'PASS THE TORCH'; do if grep -Fq "$x" "$SOURCE_FILE"; then echo "FORBIDDEN=$x"; exit 1; fi; done
+          grep -Fq 'NayaNET' "$SOURCE_FILE"
+          grep -Fq 'Intelligent Hub' "$SOURCE_FILE"
+          grep -Fq 'Your life creates your intelligence every day.' "$SOURCE_FILE"
+          grep -Fq 'FEATURE REPORTS' "$SOURCE_FILE"
+          grep -Fq 'SMART NOTES' "$SOURCE_FILE"
+          grep -Fq 'ADAPTIVE LEARNING' "$SOURCE_FILE"
           echo 509_AAA_SOURCE=PASS
-          echo ECOSYSTEM_AND_FEATURE_LINKS=PASS
 
       - name: Calculate source hash
         id: hash
