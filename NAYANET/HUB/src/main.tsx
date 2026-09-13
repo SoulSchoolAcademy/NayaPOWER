@@ -15,7 +15,6 @@ import './styles/feed-edge-to-edge.css';
 import './styles/hub-intelligent-block-v1.css';
 import './styles/intelligent-hub-command-center-v1.css';
 import './styles/hub-509-reconstruction-v1.css';
-import './styles/hub-maximus-experience-v1.css';
 import './intelligence/actionPersistenceBridge';
 import './styles/intelligent-feed-v2.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
@@ -23,7 +22,7 @@ document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
 // 509 remains the visual reference. It is not replaced or deleted by this experience layer.
 // The production experience is rebuilt around Smart Notes, Intelligent Blocks, and Smart Feeds.
-// Canonical intelligence remains event-derived. Presentation layers never manufacture intelligence.
 // Naya Power release-probe marker: this line is intentionally behavior-neutral.
+// Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 // V2 promotion is the sole production release authority.
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
