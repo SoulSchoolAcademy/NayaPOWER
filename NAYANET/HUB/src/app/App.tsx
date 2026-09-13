@@ -4,29 +4,91 @@ import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 
 type LayerKey = 'nutshell'|'human'|'child'|'grandma'|'naya'|'machine'|'learning'|'meaning'|'value';
 const tones = ['silver','magenta','purple','indigo','sapphire','blue','emerald','lime','yellow','gold','orange','red'];
-const nav = ['Home','Smart Feed','Smart Notes','Today','Reports','Library','Collective','Evidence','Connections','Smart Mail','Smart Space'];
-const lensLabels: Record<Lens,string> = { collective:'COLLECTIVE', activity:'ACTIVITY', personal:'PERSONAL' };
+const ecosystem = ['HOME','NAYA POWER','5 DAY CHALLENGE','ENTER FREE','POWERCASTS','WHITE PAPER','ABOUT US','HMC LOGIN'];
+const nav = ['YOUR INTELLIGENCE TODAY','YOUR REPORT','INTELLIGENCE LIBRARY','SMART LISTS','SMART SHARE','SMART SPACES','CONNECTIONS','SMART MAIL','SETTINGS'];
+const lensLabels: Record<Lens,string> = { collective:'SMART SHARE', activity:'ACTIVITY', personal:'PERSONAL' };
 const clean = (v?: string, fallback = '') => v?.replace(/\s+/g,' ').trim() || fallback;
 const first = (e: IntelligentEvent, tone: Perspective['tone']) => e.perspectives.find(p => p.tone === tone)?.body || '';
 
 function layers(e: IntelligentEvent): Record<LayerKey,{label:string;body:string;tone:string}> {
-  return { nutshell:{label:'IN A NUTSHELL',body:clean(e.naya_interpretation.observation,e.weaver_synthesis.summary || e.source.label),tone:'silver'}, human:{label:'HUMAN NOTE',body:clean(e.human_input.raw,'No human note recorded.'),tone:'magenta'}, child:{label:'CHILD VIEW',body:clean(first(e,'child'),'A simpler view is not yet available.'),tone:'indigo'}, grandma:{label:'GRANDMA VIEW',body:clean(first(e,'grandma'),'A plain-language view is not yet available.'),tone:'sapphire'}, naya:{label:'NAYA NOTE',body:clean(e.naya_interpretation.interpretation || first(e,'naya'),'Naya interpretation is still being resolved.'),tone:'emerald'}, machine:{label:'MACHINE NOTE',body:clean(first(e,'machine'),'Structured machine context is preserved upstream.'),tone:'blue'}, learning:{label:'ADAPTER LEARNING',body:clean(e.lesson.text,'Learning has not yet been recorded.'),tone:'lime'}, meaning:{label:'WHAT IT MEANS',body:clean(e.meaning.text || e.meaning.significance,'Meaning is still being resolved.'),tone:'yellow'}, value:{label:"WHAT'S IN IT FOR YOU",body:clean(e.whats_in_it_for_you,'Translate this intelligence into useful human value.'),tone:'gold'} };
+  return {
+    nutshell:{label:'IN A NUTSHELL',body:clean(e.naya_interpretation.observation,e.weaver_synthesis.summary || e.source.label),tone:'silver'},
+    human:{label:'HUMAN NOTE',body:clean(e.human_input.raw,'No human note recorded.'),tone:'magenta'},
+    child:{label:'CHILD VIEW',body:clean(first(e,'child'),'A simpler view is not yet available.'),tone:'indigo'},
+    grandma:{label:'GRABBER VIEW',body:clean(first(e,'grandma'),'A plain-language view is not yet available.'),tone:'sapphire'},
+    naya:{label:'NAYA NOTE',body:clean(e.naya_interpretation.interpretation || first(e,'naya'),'Naya interpretation is still being resolved.'),tone:'emerald'},
+    machine:{label:'MACHINE NOTE',body:clean(first(e,'machine'),'Structured machine context is preserved upstream.'),tone:'blue'},
+    learning:{label:'ADAPTER LEARNING',body:clean(e.lesson.text,'Learning has not yet been recorded.'),tone:'lime'},
+    meaning:{label:'WHAT IT MEANS',body:clean(e.meaning.text || e.meaning.significance,'Meaning is still being resolved.'),tone:'yellow'},
+    value:{label:"WHAT'S IN IT FOR YOU",body:clean(e.whats_in_it_for_you,'Translate this intelligence into useful human value.'),tone:'gold'}
+  };
+}
+
+function truthLabel(e: IntelligentEvent) {
+  return clean(e.machine_evidence.verification_state,e.status).toUpperCase();
+}
+
+function persistSave(eventId:string) {
+  const key='nayanet:saved-intelligence';
+  const current=JSON.parse(localStorage.getItem(key)||'[]') as string[];
+  const next=current.includes(eventId)?current.filter(id=>id!==eventId):[...current,eventId];
+  localStorage.setItem(key,JSON.stringify(next));
+  return next.includes(eventId);
 }
 
 function FeedCard({event,index,onOpen}:{event:IntelligentEvent;index:number;onOpen:()=>void}) {
-  const data = layers(event); const [open,setOpen] = useState<LayerKey>('nutshell'); const tone = tones[index % tones.length];
-  return <article className={`feed-card tone-${tone}`}><div className="feed-card-top"><div className="feed-source"><span>✦</span><b>{clean(event.source.type,'NAYA').toUpperCase()}</b><i>·</i><span>{clean(event.context.topic,'INTELLIGENCE')}</span></div><div className="feed-truth"><span />{clean(event.machine_evidence.verification_state,event.status).toUpperCase()}</div></div><button className="feed-main" onClick={onOpen}><span className="feed-label">{data.nutshell.label}</span><h2>{clean(event.weaver_synthesis.summary,event.source.label)}</h2><p>{data.nutshell.body}</p></button><div className="feed-tabs">{(Object.keys(data) as LayerKey[]).map(k=><button key={k} className={open===k?'active':''} onClick={()=>setOpen(k)}>{data[k].label}</button>)}</div><div className={`feed-layer layer-${data[open].tone}`}><div className="layer-title">{data[open].label}</div><p>{data[open].body}</p></div><footer className="feed-meta"><div><span>{(event.context.tags||[]).slice(0,3).join(' · ')}</span><small>{event.event_id}</small></div><div className="feed-actions"><button onClick={onOpen}>EXPLORE</button><button onClick={()=>navigator.clipboard?.writeText(data.nutshell.body)}>SAVE</button><button onClick={()=>navigator.clipboard?.writeText(`${event.source.label}\n\n${data.nutshell.body}`)}>SHARE</button></div></footer></article>;
+  const data = layers(event);
+  const [open,setOpen] = useState<LayerKey>('nutshell');
+  const [saved,setSaved] = useState(false);
+  const tone = tones[index % tones.length];
+  const shareText = `${event.source.label}\n\n${data.nutshell.body}`;
+  const share = async () => {
+    if (navigator.share) await navigator.share({title:event.source.label,text:shareText}).catch(()=>{});
+    else await navigator.clipboard?.writeText(shareText);
+  };
+  return <article className={`feed-card tone-${tone}`}>
+    <div className="feed-card-top"><div className="feed-source"><span>✦</span><b>{clean(event.source.type,'NAYA').toUpperCase()}</b><i>·</i><span>{clean(event.context.topic,'INTELLIGENCE')}</span></div><div className="feed-truth"><span />{truthLabel(event)}</div></div>
+    <button className="feed-main" onClick={onOpen}><span className="feed-label">{data.nutshell.label}</span><h2>{clean(event.weaver_synthesis.summary,event.source.label)}</h2><p>{data.nutshell.body}</p></button>
+    <div className="feed-tabs">{(Object.keys(data) as LayerKey[]).map(k=><button key={k} className={open===k?'active':''} onClick={()=>setOpen(k)}>{data[k].label}</button>)}</div>
+    <div className={`feed-layer layer-${data[open].tone}`}><div className="layer-title">{data[open].label}</div><p>{data[open].body}</p></div>
+    <footer className="feed-meta"><div><span>{(event.context.tags||[]).slice(0,3).join(' · ')}</span><small>{event.event_id}</small></div><div className="feed-actions"><button onClick={onOpen}>EXPLORE</button><button onClick={()=>setSaved(persistSave(event.event_id))}>{saved?'SAVED':'SAVE'}</button><button onClick={share}>SHARE</button></div></footer>
+  </article>;
 }
 
-function LeftRail({lens,setLens,counts}:{lens:Lens;setLens:(l:Lens)=>void;counts:Record<Lens,number>}) { return <aside className="feed-left-rail"><div className="rail-title">SMART FEED <span>LIVE</span></div><div className="rail-orb"><b>9</b><i/><i/><i/></div>{(['activity','personal','collective'] as Lens[]).map(k=><button key={k} className={`rail-lens ${lens===k?'active':''}`} onClick={()=>setLens(k)}><span>{k==='activity'?'◷':k==='personal'?'◇':'◈'}</span><div><b>{lensLabels[k]}</b><small>{k==='activity'?'What is happening':k==='personal'?'Your intelligence':'Shared intelligence'}</small></div><em>{counts[k]}</em></button>)}<div className="rail-rule"/><button className="rail-link">⌕ <b>SEARCH INTELLIGENCE</b></button><button className="rail-link">◌ <b>SMART SPACES</b></button><button className="rail-link">▦ <b>INTELLIGENT LIBRARY</b></button><div className="rail-presence"><span/><div><b>NAYA IS PRESENT</b><small>Following the intelligence loop.</small></div></div></aside>; }
+function LeftRail({lens,setLens,counts}:{lens:Lens;setLens:(l:Lens)=>void;counts:Record<Lens,number>}) {
+  return <aside className="feed-left-rail"><div className="rail-title">YOUR INTELLIGENCE <span>LIVE</span></div><div className="rail-orb"><b>{counts.activity}</b><i/><i/><i/></div>
+    {(['activity','personal','collective'] as Lens[]).map(k=><button key={k} className={`rail-lens ${lens===k?'active':''}`} onClick={()=>setLens(k)}><span>{k==='activity'?'◷':k==='personal'?'◇':'◈'}</span><div><b>{lensLabels[k]}</b><small>{k==='activity'?'What is happening':k==='personal'?'Your private intelligence':'Shared intelligence'}</small></div><em>{counts[k]}</em></button>)}
+    <div className="rail-rule"/><button className="rail-link">⌕ <b>SEARCH INTELLIGENCE</b></button><button className="rail-link">◌ <b>SMART SPACES</b></button><button className="rail-link">▦ <b>INTELLIGENT LIBRARY</b></button>
+    <div className="rail-presence"><span/><div><b>NAYA IS PRESENT</b><small>Following, connecting and surfacing what matters.</small></div></div>
+  </aside>;
+}
+
+function RightRail({event}:{event?:IntelligentEvent}) {
+  const truth=event?truthLabel(event):'WAITING';
+  return <aside className="feed-right-rail"><div className="naya-card"><div className="naya-card-top"><span className="naya-mark">N</span><div><span>NAYA</span><b>TRUSTED THINKING PARTNER</b></div><i>● PRESENT</i></div><p>{event?'I found something worth understanding. Open the intelligence to go deeper through the lenses.':'I am following the intelligence loop and looking for what matters next.'}</p><button>ASK NAYA</button></div>
+    <div className="right-card"><span>TRUTH STATE</span><b>{truth}</b><p>{event?'Verified facts and Naya interpretation are kept visibly distinct.':'Truth state will appear when intelligence is selected.'}</p></div>
+    <div className="right-card"><span>INTELLIGENCE SPINE</span><b>SOURCE → UNDERSTAND → ACT</b><p>Then RESULT → VERIFY → LEARN → NEW INTELLIGENCE.</p></div>
+  </aside>;
+}
 
 function SmartFeed() {
-  const [events,setEvents] = useState<IntelligentEvent[]>([]); const [lens,setLens] = useState<Lens>('collective'); const [query,setQuery] = useState(''); const [loading,setLoading] = useState(true); const [selected,setSelected] = useState<IntelligentEvent>();
+  const [events,setEvents] = useState<IntelligentEvent[]>([]);
+  const [lens,setLens] = useState<Lens>('collective');
+  const [query,setQuery] = useState('');
+  const [loading,setLoading] = useState(true);
+  const [selected,setSelected] = useState<IntelligentEvent>();
   useEffect(()=>{let live=true;loadPrimaryIntelligence().then(p=>{if(live)setEvents(sortPrimaryIntelligence(p.events));}).catch(()=>{}).finally(()=>{if(live)setLoading(false)});return()=>{live=false}},[]);
   const counts = {collective:events.filter(e=>e.privacy.visibility!=='PRIVATE').length,personal:events.filter(e=>e.privacy.visibility==='PRIVATE').length,activity:events.length};
   const visible = useMemo(()=>{let list=events;if(lens==='personal')list=list.filter(e=>e.privacy.visibility==='PRIVATE');if(lens==='collective')list=list.filter(e=>e.privacy.visibility!=='PRIVATE');const q=query.trim().toLowerCase();if(!q)return list;return list.filter(e=>[e.source.label,e.human_input.raw,e.naya_interpretation.observation||'',e.naya_interpretation.interpretation||'',e.meaning.text||'',e.whats_in_it_for_you||'',...(e.context.tags||[])].join(' ').toLowerCase().includes(q));},[events,lens,query]);
   if(selected)return <div className="feed-detail"><button className="back-button" onClick={()=>setSelected(undefined)}>← BACK TO INTELLIGENCE</button><FeedCard event={selected} index={0} onOpen={()=>{}}/></div>;
-  return <div className="hub509-live"><section className="feed-hero"><div><span>509 BASELINE → CANONICAL EXPERIENCE</span><h1>Intelligence,<br/><em>beautifully presented.</em></h1><p>One intelligence object. Multiple useful views. Start with what matters, then go deeper. No wall of identical boxes.</p></div><div className="feed-hero-mark"><b>9</b><span>NAYA</span></div></section><div className="feed-search"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search the intelligence…"/><kbd>⌘ K</kbd><small>{loading?'RESTORING…':'SOURCE CONNECTED'}</small></div><div className="feed-layout"><LeftRail lens={lens} setLens={setLens} counts={counts}/><main className="smart-feed-stage"><div className="stage-line"><div><span>SMART FEED</span><b>{query?`${visible.length} MATCHES`:`${visible.length} INTELLIGENT OBJECTS`}</b></div><p>{lensLabels[lens]} · WHAT MATTERS NOW</p></div>{loading?<div className="feed-loading"><span className="loading-orbit"/><b>Restoring canonical intelligence…</b><p>Naya is loading the Smart Feed.</p></div>:visible.map((event,i)=><FeedCard key={event.event_id} event={event} index={i} onOpen={()=>setSelected(event)}/>)}</main></div></div>;
+  return <div className="hub509-live"><section className="feed-hero"><div><span>LIVING INTELLIGENCE · ONE OBJECT, MANY PROJECTIONS</span><h1>Intelligence,<br/><em>made useful.</em></h1><p>Your Smart Feed is not a stream of posts. It is a living presentation of intelligence: understand it, see different perspectives, act on it, verify it, and let the system learn.</p></div><div className="feed-hero-mark"><b>∞</b><span>NAYA LOOP</span></div></section>
+    <div className="feed-search"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search the intelligence…"/><kbd>⌘ K</kbd><small>{loading?'RESTORING…':'SOURCE CONNECTED'}</small></div>
+    <div className="feed-layout"><LeftRail lens={lens} setLens={setLens} counts={counts}/><main className="smart-feed-stage"><div className="stage-line"><div><span>SMART FEED</span><b>{query?`${visible.length} MATCHES`:`${visible.length} INTELLIGENT OBJECTS`}</b></div><p>{lensLabels[lens]} · WHAT MATTERS NOW</p></div>{loading?<div className="feed-loading"><span className="loading-orbit"/><b>Restoring canonical intelligence…</b><p>Naya is loading the Smart Feed.</p></div>:visible.length?visible.map((event,i)=><FeedCard key={event.event_id} event={event} index={i} onOpen={()=>setSelected(event)}/>):<div className="feed-loading"><b>NO INTELLIGENCE MATCHES</b><p>Try another lens or search term. No dead ends.</p></div>}</main><RightRail event={selected}/></div>
+  </div>;
 }
 
-export default function App(){const [active,setActive]=useState('Smart Feed');return <div className="hub509"><aside className="side509"><button className="brand509" onClick={()=>setActive('Home')}><span className="n-mark">N</span><span><b>NayaNET</b><small>INTELLIGENT HUB</small></span></button><div className="nav-caption">YOUR INTELLIGENCE</div><nav>{nav.map((item,i)=><button key={item} className={active===item?'active':''} onClick={()=>setActive(item)}><span>{['⌂','✦','◈','◷','▤','▦','◎','◉','↔','✉','◌'][i]}</span>{item}{item==='Smart Feed'&&<em>LIVE</em>}</button>)}</nav><div className="side-bottom"><b>PRIVATE BY DEFAULT</b><span>Shared by choice · Collective by consent</span></div></aside><main className="stage509"><header className="top509"><div><span>NAYANET</span><i/><strong>{active}</strong></div><div className="top-search"><span>⌕</span><span>Search or talk to Naya…</span><kbd>⌘ K</kbd><button>ASK NAYA</button></div><div className="top-state"><span className="live-dot"/>NAYA ONLINE</div></header><SmartFeed/></main></div>; }
+export default function App(){
+  const [active,setActive]=useState('YOUR INTELLIGENCE TODAY');
+  const [ecosystemActive,setEcosystemActive]=useState('HOME');
+  return <div className="hub509"><aside className="side509"><button className="brand509" onClick={()=>setActive('YOUR INTELLIGENCE TODAY')}><span className="n-mark">N</span><span><b>NayaNET</b><small>INTELLIGENT HUB</small></span></button><div className="nav-caption">YOUR INTELLIGENCE</div><nav>{nav.map((item,i)=><button key={item} className={active===item?'active':''} onClick={()=>setActive(item)}><span>{['◷','▤','▦','◎','◈','◌','↔','✉','⚙'][i]}</span>{item}{item==='YOUR INTELLIGENCE TODAY'&&<em>LIVE</em>}</button>)}</nav><div className="side-bottom"><b>PRIVATE BY DEFAULT</b><span>Shared by choice · Collective by consent</span></div></aside><main className="stage509"><header className="top509"><div className="ecosystem-nav">{ecosystem.map(item=><button key={item} className={ecosystemActive===item?'active':''} onClick={()=>setEcosystemActive(item)}>{item}</button>)}</div><div className="top-search"><span>⌕</span><span>Search or talk to Naya…</span><kbd>⌘ K</kbd><button>ASK NAYA</button></div><div className="top-state"><span className="live-dot"/>NAYA ONLINE</div></header>{active==='YOUR INTELLIGENCE TODAY'?<SmartFeed/>:<SmartFeed/>}</main></div>;
+}
