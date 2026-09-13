@@ -6,6 +6,7 @@ on:
       - '2026 09 13 NayaNET HUB 509 AAA.html'
       - 'NAYANET/509-AAA-SURGICAL-LAYER.js'
       - 'NAYANET/509-AAA-NEXT-LEVEL.js'
+      - 'NAYANET/509-AAA-SMART-FEED-C3.js'
       - '.github/workflows/deploy-nayanet-hub-509-aaa.yml'
   issues:
     types: [opened, reopened]
@@ -18,6 +19,7 @@ env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
   LAYER_FILE: NAYANET/509-AAA-SURGICAL-LAYER.js
   NEXT_LAYER_FILE: NAYANET/509-AAA-NEXT-LEVEL.js
+  C3_LAYER_FILE: NAYANET/509-AAA-SMART-FEED-C3.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -50,6 +52,7 @@ jobs:
           test -s "$SOURCE_FILE"
           test -s "$LAYER_FILE"
           test -s "$NEXT_LAYER_FILE"
+          test -s "$C3_LAYER_FILE"
           grep -Fq 'NayaNET' "$SOURCE_FILE"
           grep -Fq 'Intelligent Hub' "$SOURCE_FILE"
           grep -Fq 'Your life creates your intelligence every day.' "$SOURCE_FILE"
@@ -61,6 +64,7 @@ jobs:
           echo 509_AAA_SOURCE=PASS
           node --check "$LAYER_FILE"
           node --check "$NEXT_LAYER_FILE"
+          node --check "$C3_LAYER_FILE"
           echo AAA_LAYER_SYNTAX=PASS
 
       - name: Calculate source hashes
@@ -70,12 +74,15 @@ jobs:
           HASH=$(sha256sum "$SOURCE_FILE" | awk '{print $1}')
           LAYER_HASH=$(sha256sum "$LAYER_FILE" | awk '{print $1}')
           NEXT_LAYER_HASH=$(sha256sum "$NEXT_LAYER_FILE" | awk '{print $1}')
+          C3_LAYER_HASH=$(sha256sum "$C3_LAYER_FILE" | awk '{print $1}')
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
           echo "layer_hash=$LAYER_HASH" >> "$GITHUB_OUTPUT"
           echo "next_layer_hash=$NEXT_LAYER_HASH" >> "$GITHUB_OUTPUT"
+          echo "c3_layer_hash=$C3_LAYER_HASH" >> "$GITHUB_OUTPUT"
           echo "509_SOURCE_SHA256=$HASH"
           echo "AAA_LAYER_SHA256=$LAYER_HASH"
           echo "AAA_NEXT_LEVEL_SHA256=$NEXT_LAYER_HASH"
+          echo "AAA_SMART_FEED_C3_SHA256=$C3_LAYER_HASH"
 
       - name: Prepare exact static Worker release
         env:
@@ -83,6 +90,7 @@ jobs:
           SOURCE_HASH: ${{ steps.hash.outputs.hash }}
           LAYER_HASH: ${{ steps.hash.outputs.layer_hash }}
           NEXT_LAYER_HASH: ${{ steps.hash.outputs.next_layer_hash }}
+          C3_LAYER_HASH: ${{ steps.hash.outputs.c3_layer_hash }}
         run: |
           set -euo pipefail
           rm -rf release
@@ -90,6 +98,7 @@ jobs:
           cp "$SOURCE_FILE" release/public/index.html
           cp "$LAYER_FILE" release/public/naya-509-aaa.js
           cp "$NEXT_LAYER_FILE" release/public/naya-509-next-level.js
+          cp "$C3_LAYER_FILE" release/public/naya-509-smart-feed-c3.js
           python3 - <<'PY'
           from pathlib import Path
           import os
@@ -99,13 +108,15 @@ jobs:
                   f'<meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}">'
                   f'<meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
                   f'<meta name="nayanet-aaa-layer-sha256" content="{os.environ["LAYER_HASH"]}">'
-                  f'<meta name="nayanet-aaa-next-level-sha256" content="{os.environ["NEXT_LAYER_HASH"]}">')
-          inject='<script src="/naya-509-aaa.js"></script><script src="/naya-509-next-level.js"></script>'
+                  f'<meta name="nayanet-aaa-next-level-sha256" content="{os.environ["NEXT_LAYER_HASH"]}">'
+                  f'<meta name="nayanet-aaa-smart-feed-c3-sha256" content="{os.environ["C3_LAYER_HASH"]}">')
+          inject='<script src="/naya-509-aaa.js"></script><script src="/naya-509-next-level.js"></script><script src="/naya-509-smart-feed-c3.js"></script>'
           s=s.replace('</head>',marker+inject+'</head>',1)
           p.write_text(s,encoding='utf-8')
           PY
           grep -Fq '/naya-509-aaa.js' release/public/index.html
           grep -Fq '/naya-509-next-level.js' release/public/index.html
+          grep -Fq '/naya-509-smart-feed-c3.js' release/public/index.html
           echo RENDERED_RELEASE=PASS
           cat > release/worker.js <<'EOF'
           export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
@@ -127,6 +138,7 @@ jobs:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
           SOURCE_HASH: ${{ steps.hash.outputs.hash }}
           NEXT_LAYER_HASH: ${{ steps.hash.outputs.next_layer_hash }}
+          C3_LAYER_HASH: ${{ steps.hash.outputs.c3_layer_hash }}
         run: |
           set -euo pipefail
           ok=0
@@ -135,17 +147,20 @@ jobs:
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
             layer_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/l -w '%{http_code}' "$RUNTIME/naya-509-aaa.js?probe=$attempt" || true)
             next_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/n -w '%{http_code}' "$RUNTIME/naya-509-next-level.js?probe=$attempt" || true)
+            c3_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/c -w '%{http_code}' "$RUNTIME/naya-509-smart-feed-c3.js?probe=$attempt" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             next_hash=$(grep -o 'nayanet-aaa-next-level-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
+            c3_hash=$(grep -o 'nayanet-aaa-smart-feed-c3-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
             layer_ok=$(grep -F '/naya-509-aaa.js' /tmp/r >/dev/null 2>&1 && [ "$layer_code" = "200" ] && echo PASS || echo FAIL)
             next_ok=$(grep -F '/naya-509-next-level.js' /tmp/r >/dev/null 2>&1 && [ "$next_code" = "200" ] && echo PASS || echo FAIL)
+            c3_ok=$(grep -F '/naya-509-smart-feed-c3.js' /tmp/r >/dev/null 2>&1 && [ "$c3_code" = "200" ] && echo PASS || echo FAIL)
             feed_ok=$(grep -F 'COLLECTIVE INTELLIGENCE' /tmp/l >/dev/null 2>&1 && grep -F 'PERSONAL INTELLIGENCE' /tmp/l >/dev/null 2>&1 && grep -F 'ACTIVITY' /tmp/l >/dev/null 2>&1 && echo PASS || echo FAIL)
             nav_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/r >/dev/null 2>&1 && grep -F '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' /tmp/r >/dev/null 2>&1 && grep -F 'Your life creates your intelligence every day.' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER_HTTP=$layer_code NEXT_HTTP=$next_code BODY_COMMIT=$body_commit BODY_HASH=$body_hash NEXT_HASH=$next_hash TITLE=$title_ok SMART_BODY=$smart_ok LAYER=$layer_ok NEXT_LEVEL=$next_ok FEEDS=$feed_ok NAV=$nav_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_code" = "200" ] && [ "$next_code" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$next_hash" = "$NEXT_LAYER_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$layer_ok" = PASS ] && [ "$next_ok" = PASS ] && [ "$feed_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER_HTTP=$layer_code NEXT_HTTP=$next_code C3_HTTP=$c3_code BODY_COMMIT=$body_commit BODY_HASH=$body_hash NEXT_HASH=$next_hash C3_HASH=$c3_hash TITLE=$title_ok SMART_BODY=$smart_ok LAYER=$layer_ok NEXT_LEVEL=$next_ok C3=$c3_ok FEEDS=$feed_ok NAV=$nav_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_code" = "200" ] && [ "$next_code" = "200" ] && [ "$c3_code" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$next_hash" = "$NEXT_LAYER_HASH" ] && [ "$c3_hash" = "$C3_LAYER_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$layer_ok" = PASS ] && [ "$next_ok" = PASS ] && [ "$c3_ok" = PASS ] && [ "$feed_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           test "$ok" -eq 1
