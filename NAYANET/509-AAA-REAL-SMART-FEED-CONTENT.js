@@ -4,19 +4,19 @@
  * preserving the approved board architecture and existing interaction layers.
  */
 (()=>{'use strict';
-const PAYLOAD='__SMART_FEED_B64__';
-if(!PAYLOAD||PAYLOAD==='__SMART_FEED_B64__')return;
+const PAYLOAD='__SMART_FEED_B64__';if(!PAYLOAD||PAYLOAD==='__SMART_FEED_B64__')return;
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const dec=()=>{try{return decodeURIComponent(escape(atob(PAYLOAD)))}catch(_){try{return atob(PAYLOAD)}catch(e){return''}}};
 const source=dec();if(!source)return;
 const tones=['#ffffff','#d86cff','#9d75ff','#55b9ee','#55e39a','#e8c766','#ff5e6c','#ff4fd8','#6675ff'];
 const glyphs=['◈','✦','◇','◉','✧','◆','⬢','✺','✦'];
 function parseNotes(text){
- const starts=[];const lines=text.split(/\r?\n/);
+ const lines=text.split(/\r?\n/),starts=[];
  const re=/^(?:🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s*(\d+)\s*$|🧠\s*#\s*(\d+)\s*[—-]\s*(.+?)\s*$|Naya Power\s*#\s*(\d+)\s*[—-]\s*(.+?)\s*$|(\d{2})\s*[—-]\s*(.+?)\s*$)/i;
  lines.forEach((line,i)=>{const m=line.trim().match(re);if(m){const number=Number(m[1]||m[2]||m[4]||m[6]);const headingTitle=m[3]||m[5]||m[7]||'';starts.push({i,number,headingTitle})}});
- const seen=new Set(),notes=[];
- starts.sort((a,b)=>a.i-b.i).forEach((h,idx)=>{if(seen.has(h.number)||h.number<1||h.number>9)return;seen.add(h.number);const end=starts[idx+1]?.i??lines.length;let chunk=lines.slice(h.i+1,end).join('\n').trim();let title=h.headingTitle.trim();if(!title){const ls=chunk.split(/\r?\n/);title=(ls.shift()||'').trim();chunk=ls.join('\n').trim()}const sections={};const sr=/(?:^|\n)(\d+)\.\s*([^\n]+)\n([\s\S]*?)(?=\n\d+\.\s|$)/g;let m;while((m=sr.exec(chunk)))sections[Number(m[1])]={name:m[2].trim(),text:m[3].trim()};if(Object.keys(sections).length)notes.push({number:h.number,title,sections})});
+ const h6=starts.find(x=>x.number===6);if(h6){for(let i=h6.i-1;i>=0;i--){if(/^1\.\s*IN A NUTSHELL\s*$/i.test(lines[i].trim())&&/^Intelligence Reports turn /i.test((lines[i+1]||'').trim())){starts.push({i,number:5,headingTitle:'Intelligence Reports'});break}}}
+ starts.sort((a,b)=>a.i-b.i);const seen=new Set(),notes=[];
+ starts.forEach((h,idx)=>{if(seen.has(h.number)||h.number<1||h.number>9)return;seen.add(h.number);const end=starts[idx+1]?.i??lines.length;let chunk=lines.slice(h.i+1,end).join('\n').trim();let title=h.headingTitle.trim();if(!title){const ls=chunk.split(/\r?\n/);title=(ls.shift()||'').trim();chunk=ls.join('\n').trim()}const sections={};const sr=/(?:^|\n)(\d+)\.\s*([^\n]+)\n([\s\S]*?)(?=\n\d+\.\s|$)/g;let m;while((m=sr.exec(chunk)))sections[Number(m[1])]={name:m[2].trim(),text:m[3].trim()};if(Object.keys(sections).length)notes.push({number:h.number,title,sections})});
  return notes.sort((a,b)=>a.number-b.number);
 }
 const body=t=>esc(t).replace(/\n/g,'<br>');
