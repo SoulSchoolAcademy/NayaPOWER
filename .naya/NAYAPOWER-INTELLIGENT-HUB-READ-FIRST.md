@@ -86,6 +86,14 @@ The Master Contract is the compressed architectural map. It does **not** replace
 
 When a Hub task requires deeper understanding, inspect the applicable canonical documents in `.naya` rather than guessing from the Master Contract alone.
 
+### DEEP DOCUMENT DIRECTORY — ONE-CLICK ACCESS TO THE 1–58+ SET
+
+**[Naya Power Intelligent Hub — Deep Document Directory](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/NAYAPOWER-INTELLIGENT-HUB-DEEP-DOCUMENT-DIRECTORY.md)**
+
+This is the stable deep-reference entry point for the numbered `.naya` intelligence set. Use it when the primary Read-First sources are not sufficient and deeper domain context is required. It intentionally points to the live `.naya` directory as the authoritative document index so the system does not depend on a duplicated filename list becoming stale.
+
+**[OPEN THE COMPLETE LIVE `.naya` DIRECTORY](https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main/.naya)**
+
 The relationship is:
 
 ```text
@@ -94,6 +102,8 @@ MASTER HUB CONTRACT
 COMPLETE ARCHITECTURAL MAP
         ↓
 PIS SMART NOTE
+        ↓
+DEEP DOCUMENT DIRECTORY
         ↓
 DEEPER CANONICAL .NAYA DOCUMENTS
         ↓
