@@ -98,13 +98,14 @@ jobs:
           set -euo pipefail
           ok=0
           for attempt in $(seq 1 12); do
-            code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/h -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
-            smart=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
-            commit_hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
-            hash_hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-sha256:' | awk '{print $2}' || true)
+            code=$(curl -LsS --connect-timeout 5 --max-time 10 -D /tmp/h -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
+            body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart COMMIT_HEADER=$commit_hdr HASH_HEADER=$hash_hdr TITLE=$title_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$commit_hdr" = "$SOURCE_COMMIT" ] && [ "$hash_hdr" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ]; then ok=1; break; fi
+            smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           if [ "$ok" -ne 1 ]; then
