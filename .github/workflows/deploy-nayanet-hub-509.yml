@@ -77,7 +77,7 @@ jobs:
           grep -Fq '<title>NayaNET — Intelligent Hub V7</title>' "$LEGACY_509"
           grep -Fq 'SMART FEED' "$LEGACY_509"
           grep -Fq 'NayaNET' "$LEGACY_509"
-          grep -Fq 'NAYA CORE' "$AAA_LAYER"
+          grep -Fq 'naya509-aaa-style' "$AAA_LAYER"
           BASELINE_SHA256=$(sha256sum "$LEGACY_509" | awk '{print $1}')
           echo "BASELINE_509_SHA256=$BASELINE_SHA256" >> "$GITHUB_ENV"
           echo "CANONICAL_509_BASELINE=PASS"
