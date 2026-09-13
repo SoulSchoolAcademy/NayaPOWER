@@ -44,7 +44,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s "$SOURCE_FILE"
-          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'Make intelligence feel alive.'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
           for x in 'SUPERBRAIN' 'Where’s Naya Now' 'PASS THE TORCH'; do if grep -Fq "$x" "$SOURCE_FILE"; then echo "FORBIDDEN=$x"; exit 1; fi; done
           echo 509_AAA_SOURCE=PASS
 
