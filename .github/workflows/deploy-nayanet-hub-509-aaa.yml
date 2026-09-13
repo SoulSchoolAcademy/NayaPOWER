@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - '2026 09 13 NayaNET HUB 509 AAA.html'
+      - 'NAYANET/509-AAA-SURGICAL-LAYER.js'
       - '.github/workflows/deploy-nayanet-hub-509-aaa.yml'
   issues:
     types: [opened, reopened]
@@ -14,6 +15,7 @@ permissions:
 
 env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
+  LAYER_FILE: NAYANET/509-AAA-SURGICAL-LAYER.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -44,21 +46,29 @@ jobs:
         run: |
           set -euo pipefail
           test -s "$SOURCE_FILE"
+          test -s "$LAYER_FILE"
           grep -Fq 'NayaNET' "$SOURCE_FILE"
           grep -Fq 'Intelligent Hub' "$SOURCE_FILE"
           grep -Fq 'Your life creates your intelligence every day.' "$SOURCE_FILE"
           grep -Fq 'FEATURE REPORTS' "$SOURCE_FILE"
           grep -Fq 'SMART NOTES' "$SOURCE_FILE"
           grep -Fq 'ADAPTIVE LEARNING' "$SOURCE_FILE"
+          grep -Fq 'IN A NUTSHELL' "$SOURCE_FILE"
+          grep -Fq 'WHAT’S IN IT FOR YOU' "$SOURCE_FILE"
           echo 509_AAA_SOURCE=PASS
+          node --check "$LAYER_FILE"
+          echo AAA_LAYER_SYNTAX=PASS
 
-      - name: Calculate source hash
+      - name: Calculate source hashes
         id: hash
         run: |
           set -euo pipefail
           HASH=$(sha256sum "$SOURCE_FILE" | awk '{print $1}')
+          LAYER_HASH=$(sha256sum "$LAYER_FILE" | awk '{print $1}')
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "layer_hash=$LAYER_HASH" >> "$GITHUB_OUTPUT"
           echo "509_SOURCE_SHA256=$HASH"
+          echo "AAA_LAYER_SHA256=$LAYER_HASH"
 
       - name: Prepare exact static Worker release
         env:
@@ -69,14 +79,18 @@ jobs:
           rm -rf release
           mkdir -p release/public
           cp "$SOURCE_FILE" release/public/index.html
+          cp "$LAYER_FILE" release/public/naya-509-aaa.js
           python3 - <<'PY'
           from pathlib import Path
           import os
           p=Path('release/public/index.html')
           s=p.read_text(encoding='utf-8')
           marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
-          p.write_text(s.replace('</head>',marker+'</head>',1),encoding='utf-8')
+          inject='<script src="/naya-509-aaa.js"></script>'
+          s=s.replace('</head>',marker+inject+'</head>',1)
+          p.write_text(s,encoding='utf-8')
           PY
+          grep -Fq '/naya-509-aaa.js' release/public/index.html
           echo RENDERED_RELEASE=PASS
           cat > release/worker.js <<'EOF'
           export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
@@ -107,9 +121,11 @@ jobs:
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
+            layer_ok=$(grep -F '/naya-509-aaa.js' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
+            feed_ok=$(grep -F 'COLLECTIVE INTELLIGENCE' /tmp/r >/dev/null 2>&1 && grep -F 'PERSONAL INTELLIGENCE' /tmp/r >/dev/null 2>&1 && grep -F 'ACTIVITY' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             nav_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/r >/dev/null 2>&1 && grep -F '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' /tmp/r >/dev/null 2>&1 && grep -F 'Your life creates your intelligence every day.' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok NAV=$nav_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok LAYER=$layer_ok FEEDS=$feed_ok NAV=$nav_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$layer_ok" = PASS ] && [ "$feed_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           test "$ok" -eq 1
