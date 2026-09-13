@@ -142,13 +142,13 @@ jobs:
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
-            body_layer=$(grep -o 'nayanet-link-layer-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             layer_asset=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/l -w '%{http_code}' "$RUNTIME/naya-509-ecosystem.js?probe=$attempt" || true)
+            runtime_layer_hash=$(sha256sum /tmp/l 2>/dev/null | awk '{print $1}' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
             links_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/l >/dev/null 2>&1 && grep -F '1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC' /tmp/l >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER=$layer_asset BODY_COMMIT=$body_commit BODY_HASH=$body_hash BODY_LAYER=$body_layer TITLE=$title_ok SMART_BODY=$smart_ok LINKS=$links_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_asset" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$body_layer" = "$LAYER_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$links_ok" = PASS ]; then ok=1; break; fi
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER=$layer_asset BODY_COMMIT=$body_commit BODY_HASH=$body_hash RUNTIME_LAYER_HASH=$runtime_layer_hash TITLE=$title_ok SMART_BODY=$smart_ok LINKS=$links_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_asset" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$runtime_layer_hash" = "$LAYER_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$links_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           if [ "$ok" -ne 1 ]; then
