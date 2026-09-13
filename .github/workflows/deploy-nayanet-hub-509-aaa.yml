@@ -100,9 +100,11 @@ jobs:
           for attempt in $(seq 1 12); do
             code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/h -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
             smart=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
-            hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-sha256:' | awk '{print $2}' || true)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart HEADER_HASH=$hdr"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && grep -Fq "$SOURCE_COMMIT" /tmp/r && grep -Fq "$SOURCE_HASH" /tmp/r && [ "$hdr" = "$SOURCE_HASH" ]; then ok=1; break; fi
+            commit_hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
+            hash_hdr=$(tr -d '\r' </tmp/h | grep -i '^x-nayanet-source-sha256:' | awk '{print $2}' || true)
+            title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart COMMIT_HEADER=$commit_hdr HASH_HEADER=$hash_hdr TITLE=$title_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$commit_hdr" = "$SOURCE_COMMIT" ] && [ "$hash_hdr" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
           if [ "$ok" -ne 1 ]; then
