@@ -1,0 +1,153 @@
+name: Deploy NayaNET Hub — 509 Authorized Bridge
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  HUB: NAYANET/HUB
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+
+jobs:
+  deploy:
+    if: github.event.issue.title == 'CANONICAL HUB 509 DEPLOY' && github.event.issue.user.login == github.repository_owner
+    runs-on: ubuntu-latest
+    steps:
+      - name: Resolve exact main SHA
+        id: source
+        shell: bash
+        run: |
+          set -euo pipefail
+          SHA="$(gh api repos/${GITHUB_REPOSITORY}/git/ref/heads/main --jq '.object.sha')"
+          test "${#SHA}" -eq 40
+          echo "sha=$SHA" >> "$GITHUB_OUTPUT"
+        env:
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Checkout exact source
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ steps.source.outputs.sha }}
+          fetch-depth: 0
+
+      - name: Governance gate
+        run: |
+          set -euo pipefail
+          python3 .naya/control-plane/workflow_gate.py \
+            --actor "$GITHUB_REPOSITORY_OWNER" \
+            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
+            --permission "deploy_public_runtime" \
+            --request "deploy_nayanet_hub_509" \
+            --mission "make the NayaNET Intelligent Hub beautiful, useful, truthful, and operationally deployable" \
+            --uncertainty 1 --consequence 8 --irreversibility 8 \
+            --scope "public-runtime:sparkling-shape-7ae5:/" \
+            --evidence "authorized repository deployment request issue" \
+            --evidence "exact main source SHA verified: ${{ steps.source.outputs.sha }}"
+
+      - name: Install
+        working-directory: NAYANET/HUB
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+
+      - name: Build exact 509 release
+        working-directory: NAYANET/HUB
+        env:
+          VITE_RELEASE_COMMIT: ${{ steps.source.outputs.sha }}
+        run: npm run build
+
+      - name: Verify 509 artifact
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          D="$HUB/dist"
+          test -s "$D/index.html"
+          test -s "$D/nayanet-cognitive-engine.js"
+          APP_JS=$(find "$D/assets" -maxdepth 1 -type f -name '*.js' -print -quit)
+          test -s "$APP_JS"
+          for x in 'NayaNET' 'SMART FEED' 'COLLECTIVE' 'PERSONAL' 'ACTIVITY' 'NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRANDMA VIEW' 'NAYA NOTE' 'MACHINE NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' "WHAT'S IN IT FOR YOU" 'SEARCH INTELLIGENCE' 'SMART SPACES' 'INTELLIGENT LIBRARY' 'NAYANET-HUB-509-CANONICAL'; do grep -RFiq "$x" "$D/index.html" "$APP_JS" || { echo "ARTIFACT_MISSING=$x"; exit 1; }; done
+          for x in "Where's Naya Now" 'Where’s Naya Now' 'SUPERBRAIN' 'PASS THE TORCH' 'VERIFY STATE'; do if grep -RFiq "$x" "$D/index.html" "$APP_JS"; then echo "FORBIDDEN_ARTIFACT=$x"; exit 1; fi; done
+          grep -Fq "$SOURCE_COMMIT" "$D/index.html" "$APP_JS"
+          echo CANONICAL_509_BUILD=PASS
+
+      - name: Prepare Cloudflare release
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp -R "$HUB/dist/." release/public/
+          cat > release/worker.js <<'EOF'
+          export default { async fetch(request, env) { const url = new URL(request.url); const spaRoutes = new Set(['/','/index.html','/feed','/notes','/today','/reports','/library','/collective','/evidence','/connections','/mail','/space','/settings']); const isSpaRoute = spaRoutes.has(url.pathname) || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method:'GET', headers:request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB 509'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT||'unknown'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
+          EOF
+          cat > release/wrangler.jsonc <<EOF
+          {"name":"sparkling-shape-7ae5","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT"}}
+          EOF
+
+      - name: Deploy 509 canonical Worker
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Promote newest Worker version to 100 percent
+        working-directory: release
+        run: |
+          set -euo pipefail
+          npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
+          VERSION_ID=$(python3 - <<'PY'
+          import json
+          data=json.load(open('/tmp/deployments.json'))
+          deployments=data.get('deployments') if isinstance(data,dict) else data
+          versions=deployments[-1].get('versions') or []
+          print(versions[-1].get('version_id') or versions[-1].get('versionId') or '')
+          PY
+          )
+          test -n "$VERSION_ID"
+          npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+      - name: Independently verify public 509 runtime
+        env:
+          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 24); do
+            root_code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/root.headers -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" || true)
+            smart_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/smart -w '%{http_code}' "$SMART_LINK?release=$SOURCE_COMMIT&probe=$attempt" || true)
+            header=$(tr -d '\r' </tmp/root.headers | grep -i '^x-nayanet-source-commit:' | awk '{print $2}' || true)
+            echo "ATTEMPT=$attempt ROOT=$root_code SMART=$smart_code HEADER=$header"
+            if [ "$root_code" = 200 ] && [ "$smart_code" = 200 ] && [ "$header" = "$SOURCE_COMMIT" ]; then
+              js_src=$(grep -oE 'src="[^"]+\.js"' /tmp/root | head -1 | cut -d'"' -f2 || true)
+              case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
+              js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" || true)
+              cognitive_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" || true)
+              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js; then
+                echo PUBLIC_RUNTIME_509=PASS
+                exit 0
+              fi
+            fi
+            sleep 5
+          done
+          echo PUBLIC_RUNTIME_509=FAIL
+          exit 1
+
+      - name: Close deployment request
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh issue close "${{ github.event.issue.number }}" --repo "$GITHUB_REPOSITORY" --reason completed
