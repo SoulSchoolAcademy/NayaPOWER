@@ -1,25 +1,32 @@
 # NayaNET 509 C4 — Final Presentation Fix
 
 **Date:** 2026-09-13
-**Status:** IMPLEMENTED IN GITHUB — DEPLOYMENT VERIFICATION PENDING
+**Status:** SURGICAL CORRECTION COMMITTED — PUBLIC RUNTIME VERIFICATION PENDING
 **Lane:** Assistant / Cloudflare 509 runtime only
 
-## User-confirmed defects addressed
+## User-confirmed defects
 
-1. Remove the obsolete bottom chrome bars, specifically the blocks containing:
+The remaining defects are specifically the bottom-of-feed presentation, not the C4 board architecture:
+
+1. Delete the obsolete bottom chrome blocks containing:
    - Actions are remembered on this device
-   - Runtime state visible
+   - Runtime state visible / invisible
    - Intelligence Context
-   - Intelligence Collective
+   - Intelligence Collective when it is the obsolete banner block
    - Shared Intelligence Worth Discovering, Understanding, and Using It
-   - Free Block when part of that obsolete chrome
-2. Preserve the actual Personal Intelligence / Collective Intelligence / Activity Feed navigation controls.
-3. Remove unexplained black space immediately above the mission statement by collapsing empty/non-functional bottom flow and removing the old fixed footer geometry.
-4. Mission statement remains in normal document flow:
-   - headline 40px desktop / 29px mobile
-   - supporting line 18px minimum
-5. Feature Reports remains in normal document flow and is centered.
-6. Canonical perspective numbering is explicitly enforced:
+   - Free Block when it belongs to that obsolete chrome
+2. Preserve the real functional Personal Intelligence / Collective Intelligence / Activity Feed navigation controls.
+3. Remove the unexplained black void immediately above the mission statement.
+4. Mission remains normal document flow:
+   - headline approximately 40px desktop / 29px mobile
+   - supporting sentence minimum 18px
+5. Feature Reports remains present and centered:
+   - SMART NOTES
+   - NO DEAD ENDS
+   - CONTEXT
+   - 10x SERVICE
+   - CAP DELIVERY
+6. Canonical perspective numbering/order:
    - 2 Human
    - 3 Child
    - 4 Grandma
@@ -28,41 +35,38 @@
    - 7 Adaptive Learning
    - 8 What It Means
    - 9 What's In It For You?
-7. Existing C4 architecture and interaction nodes are preserved; no C5 and no sidebar redesign.
-8. Deployment validation now checks Smart Note markers 01 through 09, rather than only 01 through 03.
+7. Nine actual Smart Notes must remain source-derived from `SMART FEED CONTENT`; no mock/demo replacement.
 
-## Source truth
+## Source truth verified
 
-Canonical Smart Feed source: `SMART FEED CONTENT`
-Existing source content already contains the canonical Smart Note material beginning with Smart Note 01 and the repository's real-note renderer requires exactly nine notes before rendering. The deployment workflow now independently validates markers 01–09.
+`SMART FEED CONTENT` is present on `main` and contains the canonical Smart Note material. The source-driven renderer embeds the complete canonical source at build time, parses Smart Notes 01–09, and refuses to render unless exactly nine numbered notes are present. fileciteturn1025file0
 
-## New surgical layer
+The renderer currently uses the canonical source payload rather than invented demo content and exposes `nayanet-smart-note-count=9` through the deployment contract. fileciteturn1030file0
+
+## Surgical correction committed
 
 `NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js`
 
-Commit: `861b1189a6cd77dfb12ba8a4717b4401780e0e9e`
+Previous commit: `861b1189a6cd77dfb12ba8a4717b4401780e0e9e`
 
-The layer is deliberately presentation-only. It does not replace Smart Note content, feed controls, or C4 board architecture.
+New commit: `853fbe8d1a87c5d13c3605ae67108cd97322f85c`
+
+The correction keeps C4 intact and adds one precise bottom-flow rule: after the real `.blocks` feed and before `.mission`, remove every intervening non-functional DOM node. This deliberately eliminates both the obsolete bars and anonymous spacer nodes that can produce the unexplained black void. It does not touch `.feedNav`, `.features`, `.mission`, or the real Smart Note boards. Mission typography is explicitly enforced at 40px / 29px headline and 18px supporting text. Feature Reports remains centered and in normal flow.
 
 ## Deployment workflow
 
 `.github/workflows/deploy-509-c4-final-presentation-fix.yml`
 
-Commit: `18ee3fabc1d452cfc2effaa717d33c4e9796a8c0`
+Workflow commit: `18ee3fabc1d452cfc2effaa717d33c4e9796a8c0`
 
-The workflow:
-- checks out exact `github.sha`
-- validates all 509 sources
-- validates Smart Note markers 01–09
-- generates the real Smart Feed asset from the canonical source
-- builds the complete 509 C4 release plus final surgical layer
-- deploys Worker `sparkling-shape-7ae5`
-- probes the exact public runtime
-- verifies source commit, source hash, Smart Feed hash, generated asset hash, final-fix hash, and Smart Note count 9
+The workflow contract checks out the exact triggering `github.sha`, validates all canonical 509 sources, checks JavaScript syntax, validates Smart Note markers 01–09, generates the Smart Feed asset directly from `SMART FEED CONTENT`, deploys Worker `sparkling-shape-7ae5`, and performs public-runtime parity checks. fileciteturn1027file0
 
-## Verification boundary
+## Verification boundary — CURRENT
 
-GitHub source commits are verified.
-Current Cloudflare deployment and public runtime are **NOT YET independently verified** in this record.
-HTTP/hash parity, once available, still does not constitute human visual acceptance.
-No score and no freeze until runtime is independently observed and Shawn accepts the result.
+The GitHub connector's commit-specific Actions lookup currently exposes **no push-triggered run** for `18ee3fabc1d452cfc2effaa717d33c4e9796a8c0`; its available action wrapper is limited to pull-request-triggered commit runs. Therefore an Actions job ID/log cannot honestly be claimed from that lookup.
+
+The new surgical correction commit `853fbe8d1a87c5d13c3605ae67108cd97322f85c` should trigger the canonical workflow because the changed file is explicitly included in the workflow's `push` path list. That deployment must still be verified from the actual Actions job logs before claiming deployment success.
+
+Direct public-runtime observation through the current web fetch path returns **Cache miss**, so rendered visual acceptance is also still UNKNOWN.
+
+**No score. No freeze. No C5. No sidebar work.**
