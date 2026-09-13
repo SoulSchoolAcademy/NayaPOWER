@@ -27,10 +27,10 @@ concurrency:
   cancel-in-progress: false
 env:
   HUB: NAYANET/HUB
-  WORKER_NAME: aged-art-7c12
-  RUNTIME: https://aged-art-7c12.nayanet.workers.dev
-  SMART_LINK: https://aged-art-7c12.nayanet.workers.dev/intelligence/nayanet-intelligent-feeds
-  ACCOUNT_ID: 262c881746ea6e9978ca18b3eb831907
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
 jobs:
   build-deploy-verify:
     if: inputs.approval == 'EXPLICIT_APPROVAL_GRANTED'
@@ -73,7 +73,7 @@ jobs:
             --uncertainty 1 \
             --consequence 8 \
             --irreversibility 8 \
-            --scope "public-runtime:aged-art-7c12:/" \
+            --scope "public-runtime:sparkling-shape-7ae5:/" \
             --evidence "explicit deployment approval" \
             --evidence "exact source SHA verified: $SOURCE_COMMIT" \
             --evidence "deployment reason: $REASON"
@@ -125,10 +125,10 @@ jobs:
           export default { async fetch(request, env) { const url = new URL(request.url); const spaRoutes = new Set(['/','/index.html','/feed','/notes','/today','/reports','/library','/collective','/evidence','/connections','/mail','/space','/settings']); const isSpaRoute = spaRoutes.has(url.pathname) || url.pathname.startsWith('/intelligence/'); const assetRequest = isSpaRoute ? new Request(new URL('/index.html', request.url).toString(), { method: 'GET', headers: request.headers }) : request; const response = await env.ASSETS.fetch(assetRequest); if (!isSpaRoute) return response; const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','NAYANET/HUB React'); headers.set('X-NayaNET-Source-Commit', env.SOURCE_COMMIT || 'unknown'); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
           cat > release/wrangler.jsonc <<'EOF'
-          {"name":"aged-art-7c12","main":"worker.js","compatibility_date":"2026-09-08","account_id":"262c881746ea6e9978ca18b3eb831907","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"SOURCE_COMMIT_PLACEHOLDER"}}
+          {"name":"sparkling-shape-7ae5","main":"worker.js","compatibility_date":"2026-09-08","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"SOURCE_COMMIT_PLACEHOLDER"}}
           EOF
           sed -i "s/SOURCE_COMMIT_PLACEHOLDER/$SOURCE_COMMIT/" release/wrangler.jsonc
-          printf 'RELEASE_SOURCE_COMMIT=%s\nRELEASE_SOURCE=NAYANET/HUB\nRELEASE_TARGET=aged-art-7c12\n' "$SOURCE_COMMIT" > release/RELEASE-MANIFEST.txt
+          printf 'RELEASE_SOURCE_COMMIT=%s\nRELEASE_SOURCE=NAYANET/HUB\nRELEASE_TARGET=sparkling-shape-7ae5\n' "$SOURCE_COMMIT" > release/RELEASE-MANIFEST.txt
           cat /tmp/index.sha256 /tmp/cognition.sha256 >> release/RELEASE-MANIFEST.txt
       - name: Deploy exact Cloudflare Worker
         uses: cloudflare/wrangler-action@v4
@@ -165,7 +165,7 @@ jobs:
           echo "VERIFY_SMART_LINK=$SMART_LINK"
           echo "VERIFY_SOURCE_COMMIT=$SOURCE_COMMIT"
           echo '--- DNS ---'
-          getent hosts aged-art-7c12.nayanet.workers.dev || true
+          getent hosts sparkling-shape-7ae5.smartnetpodcast.workers.dev || true
           echo '--- PUBLIC RUNTIME PROBE ---'
           for attempt in $(seq 1 24); do
             root_code=$(curl -sS --connect-timeout 5 --max-time 10 -D /tmp/root.headers -o /tmp/root -w '%{http_code}' "$RUNTIME/?release=$SOURCE_COMMIT&probe=$attempt" 2>/tmp/root.err || true)
