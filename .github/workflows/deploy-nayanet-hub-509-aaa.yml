@@ -88,24 +88,6 @@ jobs:
           workingDirectory: release
           command: deploy --config wrangler.jsonc
 
-      - name: Promote newest Worker version
-        working-directory: release
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-        run: |
-          set -euo pipefail
-          npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
-          VERSION_ID=$(python3 - <<'PY'
-          import json
-          d=json.load(open('/tmp/deployments.json'))
-          ds=d.get('deployments',d if isinstance(d,list) else [])
-          vs=ds[-1].get('versions',[]) if ds else []
-          print((vs[-1].get('version_id') or vs[-1].get('versionId')) if vs else '')
-          PY
-          )
-          test -n "$VERSION_ID"
-          npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
-
       - name: Independently verify exact public runtime
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
