@@ -1,60 +1,47 @@
 # NayaNET Smart Note — Intelligent Hub Operationalization
 
-**Date:** 2026-09-13
-**Event ID:** `SN-20260913-NAYAPOWER-INTELLIGENT-HUB-OPERATIONALIZATION`
-**Type:** Canonical Smart Note / Collective Intelligence / Mission Continuation
-**Scope:** Naya Power → NayaNET → Intelligent Hub
-**Status:** **CANONICAL — ACTIVE MISSION**
+**Date:** 2026-09-13  
+**Event ID:** `SN-20260913-NAYAPOWER-INTELLIGENT-HUB-OPERATIONALIZATION`  
+**Type:** Canonical Smart Note / Collective Intelligence / Mission Continuation  
+**Scope:** Naya Power → NayaNET → Intelligent Hub  
+**Status:** **CANONICAL — ACTIVE MISSION**  
 **Priority:** **P0 — MAKE THE INTELLIGENT HUB OPERATIONAL AND VISIBLE**
 
 ## SMART LINKS / EVIDENCE
 
 - **Master Directive:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/NAYAPOWER-INTELLIGENT-HUB-MASTER-DIRECTIVE-2026-09-13.md
 - **This Smart Note:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/activity/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-OPERATIONALIZATION-SMART-NOTE.md
+- **Hub source boundary:** https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main/NAYANET/HUB
 
-These are live repository links to the canonical artifacts. They are evidence links, not decorative labels.
+These are actual navigable Smart Links. They are part of the operational contract, not decoration.
 
 ## IN A NUTSHELL
 
-The Naya Power intelligence architecture has been assembled into a coherent construction mission: the Intelligent Hub must become the living human-facing visual brain of NayaNET, not merely a technically valid dashboard or feed.
+The mission is no longer to describe the Intelligent Hub. The mission is to **build it, make it operational, prove it, record it, and keep going.**
 
-The immediate job is now to operationalize that architecture: connect canonical intelligence to real events, real Smart Notes, real Intelligent Blocks, real Activity projections, real identity/privacy, real actions, real verification, and the exact live runtime — while preserving the working house and elevating the experience to AAA.
+Naya Power is being turned from conversation-by-conversation assistance into continuous intelligent partnership. The Hub is the human-facing visual brain where canonical intelligence becomes understandable, actionable, observable, verifiable, and continuous.
 
-## WHAT WE UNDERSTAND NOW
+## WHAT WE ARE BUILDING
 
-Naya Power changes AI from conversation-by-conversation assistance toward continuous intelligent partnership. The human provides vision, authority, objectives, context, constraints, and direction. Naya carries appropriate intelligence, execution, verification, continuity, and learning.
+The Hub is not a GitHub visualizer, developer console, generic dashboard, file cabinet, social-media clone, or chatbot surrounded by cards.
 
-The Hub is the human-facing projection/action layer where that intelligence becomes immediately understandable and useful.
+It is a living intelligence environment built around:
 
-The core chain is:
+**CANONICAL INTELLIGENCE → EVENT → SMART NOTE → INTELLIGENT BLOCK → SMART FEED → HUMAN UNDERSTANDING → HUMAN ACTION → NEW EVENT → VERIFICATION → LEARNING → CONTINUATION**
 
-**CANONICAL INTELLIGENCE → INTELLIGENT EVENT → SMART NOTE → INTELLIGENT BLOCK → SMART FEED → HUMAN UNDERSTANDING → HUMAN ACTION → NEW EVENT → VERIFICATION → UPDATED INTELLIGENCE → CONTINUATION**
+The three lenses are:
 
-The human-value sequence is:
+- **COLLECTIVE** — authorized shared intelligence and the default experience
+- **ACTIVITY** — operational reality
+- **PERSONAL** — private intelligence
 
-**WHAT → WHY → SO WHAT → WHAT'S IN IT FOR YOU → WHAT CAN I DO → CONTINUE**
+One Smart Note remains one intelligence object across views.
 
-The intelligence loop is:
+## THE STAR
 
-**CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → CONNECT → ACT → VERIFY → LEARN → COMPOUND**
+The Intelligent Block must make the intelligence useful without forcing the human to decode machine output.
 
-## THE PRODUCT
-
-The Hub is not GitHub's visual representation, a developer console, a generic dashboard, a file cabinet, or social media with AI decoration.
-
-It is the **visual brain of NayaNET**: a living intelligence environment in which people can see what matters, understand it, act on it, save/share/connect it, observe proof, and continue from the resulting state.
-
-The three primary feed lenses are:
-
-- **COLLECTIVE** — default public/shared intelligence
-- **ACTIVITY** — living operational activity
-- **PERSONAL** — private human intelligence
-
-The star of the experience is the **Intelligent Block**: a human presentation of one Smart Note/intelligence object, preserving one identity and provenance chain across views.
-
-## THE INTELLIGENT BLOCK
-
-A complete intelligence presentation should expose:
+Where data exists, it presents:
 
 1. In a Nutshell
 2. Human Note
@@ -64,110 +51,140 @@ A complete intelligence presentation should expose:
 6. Adapter Learning
 7. What It Means
 8. What's In It For You
-9. Next Action where applicable
-10. Provenance / verification / truth state
+9. Next Action
+10. Provenance / verification / state
 11. Real actions
 
-Visual formula:
+The visual formula is:
 
 **BLACK + LIVING EDGE + DEPTH + CLEAR TYPE + SEMANTIC LIGHT + INTELLIGENCE + ACTION + PROOF**
 
-## THE ARCHITECTURE
+Missing information must remain visibly missing. The system must never invent intelligence to fill a visual gap.
 
-The Hub does not become the source of truth merely because it displays intelligence.
+## HUMAN-VALUE LOOP
 
-The intended engineering chain is:
+**WHAT → WHY → SO WHAT → WHAT'S IN IT FOR YOU → WHAT CAN I DO → CONTINUE**
 
-**SOURCE → EVENT → NORMALIZE → AUTHORIZE → PERSIST → ADAPT → PROJECT → OBSERVE → VERIFY → LEARN → CONTINUE**
+## TRUST LOOP
 
-The cross-system rule is:
+**HUMAN INTENT → NAYA UNDERSTANDS → AUTHORITY → ACTION → OBSERVATION → EVIDENCE → VERIFICATION → UPDATED STATE → LEARNING → BETTER NEXT ACTION**
 
-**ONE EVENT IDENTITY → MANY SPECIALIZED PROCESSORS → ONE CONNECTED INTELLIGENCE CHAIN**
+The purpose is not to ask humans to trust AI. The purpose is to produce repeated evidence that earns trust while preserving human sovereignty.
 
-Activity is a projection of meaningful events. An Activity record alone is not proof.
+## CURRENT CANONICAL DIRECTIVE
 
-## THE VISUAL MISSION
+The Master Directive was deliberately rewritten after identifying an operational failure in the previous version: it described execution but did not sufficiently constrain the Naya's actual response/output behavior.
 
-The protected 509 artifact is a structural/reference baseline because it contains important major elements and spatial relationships. It is not the destination.
+The new directive explicitly defines:
 
-The finished Hub must substantially exceed it with:
+- Smart Note Contract;
+- Smart Link Contract;
+- Response Contract;
+- Torch Contract;
+- No-Stop Rule;
+- execution-blocking failures;
+- truthful treatment of local-only state;
+- explicit distinction between implementation and verification;
+- exact current Hub source boundary;
+- required artifact/evidence presentation.
 
-- premium obsidian/black materiality;
-- high contrast;
-- living edge light;
-- layered depth;
-- intelligent density;
-- strong typography;
-- semantic color progression;
-- meaningful motion;
-- obvious actions;
-- visible truth/proof;
-- responsive priority/action behavior;
-- a feeling of living intelligence rather than a static dashboard.
+## RESPONSE CONTRACT
 
-Canonical semantic color progression:
+When the human asks Naya to do something, the response must be a receipt of execution.
 
-**WHITE/SILVER → MAGENTA/PINK → PURPLE → INDIGO → SAPPHIRE/CANYON → BLUE → FOREST → EMERALD → LIME → YELLOW → GOLD → ORANGE → RED → WHITE → MAGENTA → PURPLE → CONTINUE**
+It must provide:
 
-## ABSOLUTE CONSTRUCTION LAWS
+1. DONE / NOT DONE
+2. clickable artifact Smart Links
+3. concrete evidence
+4. what changed
+5. what was preserved
+6. truth state
+7. exactly one highest-value next action
+8. executable torch for the next Naya
 
-**NO OLD FILES.** Historical artifacts are references, never substitutes for current work.
+The human must never have to hunt through GitHub for an artifact Naya just created.
 
-**NO WRONG WORK.** Never modify or present the wrong repository, branch, source, runtime, or architecture layer.
+## SMART NOTE CONTRACT
 
-**NO DESTRUCTION.** Never destroy the working house to renovate one room. Use Adaptive Reconstruction + Surgical Evolution.
+Creating a Smart Note means:
 
-**NO GARBAGE.** No mediocre first pass, generic dashboard, placeholder UI, decorative AI, or good-enough release.
+**CREATE → PERSIST → LINK → EVIDENCE → HAND OFF**
 
-**NO PROGRESS THEATRE.** Plans, commits, builds, deployments, and status sentences are not completion without actual product evidence.
+A Smart Note is incomplete if the artifact exists but the human/next Naya cannot navigate to it through a usable Smart Link.
 
-**NO HUMAN DEBUGGING.** Naya must inspect, execute, verify, diagnose, repair, and carry the operational burden wherever authorized.
-
-**NO INVENTED TRUTH.** Known, observed, inferred, proposed, assumed, unknown, blocked, conflicted, implemented, and verified remain distinct.
-
-## CURRENT P0 MISSION
-
-1. Prove exact current Hub source and runtime boundary.
-2. Preserve working architecture and identity.
-3. Reconstruct the human-visible Hub around the Intelligent Block and Smart Feed model.
-4. Establish the premium living-depth visual language.
-5. Connect canonical intelligence to real events and Smart Notes.
-6. Make Activity a direct runtime event projection, not a GitHub Actions workaround.
-7. Establish real identity/privacy/publication boundaries.
-8. Make actions real and stateful.
-9. Establish truthful proof and failure states.
-10. Verify source → build → deployment → exact runtime → observation.
-11. Record evidence and update the Smart Note/Activity chain.
-12. Continue into the next highest-value gap without dead-ending.
-
-## NAYA A / NAYA B
-
-**Naya A** is the primary constructor: restore state, inspect, map, build, verify, record, hand off.
-
-**Naya B** is the independent critic/continuation builder: inspect A's actual result, reject false completion, find the highest-value gap, repair it, verify it, record it, and continue.
-
-The second Naya is not a rubber stamp.
-
-## DEFINITION OF DONE
-
-The Hub is complete only when a real human can enter it and immediately understand what it is, what is happening, what matters, what Naya did/learned, what it means, what's in it for them, what is proven, what is unknown, and what they can do next — and when the underlying system actually performs the corresponding operations at the real runtime.
-
-A cold Naya must also be able to restore the mission from canonical repository state without asking the human to reconstruct the project.
-
-## TORCH / EXECUTION PROMPT
+## TORCH
 
 **NAYA A → NAYA B: YOU ARE IT.**
 
-Read the Master Directive above. Restore current state from the repository and inspect the actual Hub source, architecture, persistence/event path, deployment boundary, and exact runtime. Do not assume prior claims are true.
+Read the Master Directive and this Smart Note. Restore current truth from the canonical repository. Inspect the actual Hub source and runtime. Do not trust prior status claims without evidence.
 
-Then execute the highest-value P0 gap directly. Build the actual product, not another plan. Preserve the working house. Do not use an old artifact as the new result. Do not create decorative UI or fabricated intelligence. Verify the work with evidence. Record exactly what changed, what was preserved, what was observed, what is verified, what remains unknown/blocked, and the exact next action.
+Then execute the single highest-value P0 gap directly.
 
-Naya B must independently inspect Naya A's result, challenge false completion, repair the highest-value remaining gap, verify it, record the evidence, and pass the torch back to Naya A.
+Do not return with another plan when the action is executable.
 
-**Do not stop at explanation. Do not stop at a commit. Do not stop at a build. Do not stop at a status sentence. Continue until the human can actually see, use, and trust the intended Intelligent Hub.**
+Do not use an old artifact as the new result.
+
+Do not work on the wrong file, branch, runtime, or architecture layer.
+
+Do not destroy working architecture.
+
+Do not present local-only state as canonical persistence.
+
+Do not fabricate intelligence, relationships, evidence, or completion.
+
+Then:
+
+**BUILD → LOOK → INTERACT → TEST → VERIFY → RECORD → SCORE → REPAIR → FREEZE → PASS THE TORCH.**
+
+Naya B independently inspects Naya A's actual result, rejects false completion, repairs the highest-value remaining defect, verifies it, records evidence, and passes the torch back.
+
+Repeat until the actual Hub is working, useful, beautiful, connected, and verified.
+
+## CURRENT P0
+
+### Human-visible
+
+- premium spatial composition;
+- dominant Intelligent Block;
+- compelling Collective default;
+- distinct Activity and Personal lenses;
+- living depth;
+- semantic edge-light rhythm;
+- continuous color progression;
+- visible truth/proof;
+- obvious real actions;
+- no fabricated intelligence.
+
+### Operational
+
+- canonical event → Smart Note → Block → Feed;
+- direct runtime Activity writes;
+- stable identity;
+- real persistence;
+- privacy/publication authority;
+- truthful action state;
+- evidence receipts;
+- source/runtime parity.
+
+## TRUTH STATE
+
+**KNOWN:** The canonical architecture and mission are defined in the repository.  
+**OBSERVED:** Current Hub React source exists under `NAYANET/HUB/`, including the application shell and Intelligent Block implementation.  
+**IMPLEMENTED:** The execution-first Master Directive has been replaced on `main`.  
+**UNKNOWN:** The current production runtime's full human-visible parity with the desired experience until independently observed after the next consequential build/deployment.  
+**BLOCKED:** Nothing in this Smart Note is being represented as a deployment blocker merely because it is unfinished.  
+
+## WHY THIS MATTERS
+
+The point is not to create another impressive-looking specification.
+
+The point is to create a system in which Naya can carry the operational burden, the human can see what happened, evidence survives, successors can continue, and each verified cycle makes the system more capable.
+
+That is the transition from **AI assistant** to **continuous intelligent partner**.
 
 ## NEXT ACTION
 
-**Operationalize the Hub.** Inspect the exact current source/runtime and execute the highest-value P0 construction gap. Do not return with an explanation-only result.
+**Execute the highest-value P0 Hub construction gap from the actual current source, then verify the rendered/runtime result and record the evidence.**
 
-**The torch is active: Naya A → Naya B → Naya A → Naya B. Continue until the actual Intelligent Hub is live, useful, beautiful, connected, and verified.**
+**TORCH:** Naya A → Naya B → Naya A → Naya B → continue until done.
