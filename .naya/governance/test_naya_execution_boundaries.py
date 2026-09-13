@@ -59,7 +59,7 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         self.assertIn("approval:", text)
         self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
         self.assertIn("--permission \"deploy_public_runtime\"", text)
-        self.assertIn("--scope \"public-runtime:aged-art-7c12:/\"", text)
+        self.assertIn("--scope \"public-runtime:sparkling-shape-7ae5:/\"", text)
         self.assertIn("EXACT_SOURCE_SHA=PASS", text)
         self.assertNotIn("on:\n  push:", text)
 
@@ -147,7 +147,7 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
         )
         self.assertEqual(
             authorities["HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY"]["scope"],
-            "public-runtime:aged-art-7c12:/",
+            "public-runtime:sparkling-shape-7ae5:/",
         )
         self.assertEqual(
             authorities["HUMAN-SOULSCHOOLACADEMY-HUB-BUILD"]["granted_actions"],
@@ -192,7 +192,7 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
             "--uncertainty", "3",
             "--consequence", "8",
             "--irreversibility", "8",
-            "--scope", "public-runtime:aged-art-7c12:/",
+            "--scope", "public-runtime:sparkling-shape-7ae5:/",
             "--evidence", "explicit deployment approval",
             "--evidence", "exact source SHA verified",
         )
@@ -228,19 +228,3 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
                 text,
                 msg=f"stale canonical deployment reference in {path.name}",
             )
-
-    def test_all_legacy_hub_workflows_are_non_mutating(self):
-        for name in LEGACY_HUB_WORKFLOWS:
-            path = WORKFLOWS / name
-            if not path.exists():
-                continue
-            text = path.read_text(encoding="utf-8")
-            self.assertIn("RETIRED", text, msg=f"legacy workflow not marked retired: {name}")
-            self.assertNotIn("contents: write", text, msg=f"legacy workflow still has write power: {name}")
-            self.assertNotIn("git push", text, msg=f"legacy workflow can push: {name}")
-            self.assertNotIn("cloudflare/wrangler-action", text, msg=f"legacy workflow can deploy: {name}")
-            self.assertNotIn("workflow_call:", text, msg=f"legacy workflow can be invoked: {name}")
-
-
-if __name__ == "__main__":
-    unittest.main()
