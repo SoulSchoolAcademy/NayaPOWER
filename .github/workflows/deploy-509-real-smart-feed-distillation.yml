@@ -122,20 +122,27 @@ jobs:
           GENERATED_HASH: ${{ steps.build.outputs.GENERATED_HASH }}
           DISTILL_HASH: ${{ steps.build.outputs.DISTILL_HASH }}
         run: |
-          set -euo pipefail
+          set -u
+          ok=0
           for attempt in $(seq 1 12); do
-            curl -fsSL "$RUNTIME/?probe=$attempt&source=$GITHUB_SHA" -o /tmp/runtime.html || true
-            curl -fsSL "$SMART_LINK?probe=$attempt&source=$GITHUB_SHA" -o /tmp/smart.html || true
-            curl -fsSL "$RUNTIME/naya-509-real-smart-feed-content.js?probe=$attempt" -o /tmp/real.js || true
-            curl -fsSL "$RUNTIME/naya-509-real-smart-feed-distillation.js?probe=$attempt" -o /tmp/distill.js || true
-            commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            source=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            content=$(grep -o 'nayanet-smart-feed-content-sha256" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            generated=$(grep -o 'nayanet-real-content-generated-sha256" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            distill=$(grep -o 'nayanet-real-content-distillation-sha256" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            count=$(grep -o 'nayanet-smart-note-count" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
-            notes=$(grep -o 'SMART NOTE [0-9][0-9]' /tmp/real.js|sort -u|wc -l|tr -d ' ')
-            if [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$count" = "9" ] && [ "$notes" -ge 9 ] && grep -Fq 'naya509-distill' /tmp/distill.js; then echo RUNTIME_PARITY=PASS SMART_NOTE_COUNT=9 DISTILLATION=PASS; exit 0; fi
-            echo "ATTEMPT=$attempt COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated DISTILL=$distill COUNT=$count NOTES=$notes"; sleep 5
+            rm -f /tmp/runtime.html /tmp/smart.html /tmp/real.js /tmp/distill.js
+            r1=$(curl -sS -L -o /tmp/runtime.html -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$GITHUB_SHA" || true)
+            r2=$(curl -sS -L -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$GITHUB_SHA" || true)
+            r3=$(curl -sS -L -o /tmp/real.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-content.js?probe=$attempt" || true)
+            r4=$(curl -sS -L -o /tmp/distill.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-distillation.js?probe=$attempt" || true)
+            commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            source=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            content=$(grep -o 'nayanet-smart-feed-content-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            generated=$(grep -o 'nayanet-real-content-generated-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            distill=$(grep -o 'nayanet-real-content-distillation-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            count=$(grep -o 'nayanet-smart-note-count" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
+            notes=$(grep -o 'SMART NOTE [0-9][0-9]' /tmp/real.js 2>/dev/null|sort -u|wc -l|tr -d ' ' || true)
+            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_SMART=$r2 HTTP_REAL_JS=$r3 HTTP_DISTILL_JS=$r4 COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated DISTILL=$distill COUNT=$count NOTES=$notes"
+            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$r3" = "200" ] && [ "$r4" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$count" = "9" ] && [ "${notes:-0}" -ge 9 ] && grep -Fq 'naya509-distill' /tmp/distill.js; then
+              echo RUNTIME_PARITY=PASS SMART_NOTE_COUNT=9 DISTILLATION=PASS
+              ok=1
+              break
+            fi
+            sleep 5
           done
-          echo RUNTIME_PARITY=FAIL; exit 1
+          test "$ok" = "1"
