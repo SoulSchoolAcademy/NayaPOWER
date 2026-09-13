@@ -1,17 +1,12 @@
-# CANONICAL-LIVE-HUB-WORKFLOW-V3-2026-09-13
+# CANONICAL-LIVE-HUB-WORKFLOW-V4-2026-09-13
 # Canonical runtime deployment. An authorized push to main is the deployment approval.
-# The exact pushed SHA remains bound to the build, Cloudflare artifact, and runtime verification.
-name: Deploy Canonical NayaNET Hub V3
+# Every authorized main push is a release attempt. The exact pushed SHA remains bound to the build, Cloudflare artifact, and runtime verification.
+# This intentionally has NO path filter: the canonical production path must never be silently skipped because a governing/control-plane file changed alongside the product.
+name: Deploy Canonical NayaNET Hub V4
 
 on:
   push:
     branches: [main]
-    paths:
-      - 'NAYANET/HUB/**'
-      - 'scripts/build-primary-intelligence-feed.py'
-      - 'scripts/nayanet-cognitive-engine.js'
-      - '.github/workflows/deploy-nayanet-hub-canonical-v2.yml'
-      - '.naya/control-plane/**'
   workflow_dispatch:
     inputs:
       commit_sha:
