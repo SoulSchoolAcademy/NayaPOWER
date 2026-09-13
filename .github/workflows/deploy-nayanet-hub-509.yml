@@ -1,3 +1,4 @@
+# 509 CANONICAL BASELINE — deploy the exact 2026-09-09 5:09 PM NayaNET HUB HTML artifact.
 name: Deploy NayaNET Hub — 509 Canonical Baseline
 
 on:
@@ -133,8 +134,6 @@ jobs:
           npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
 
       - name: Independently verify public 509 baseline
-        env:
-          SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
         run: |
           set -euo pipefail
           for attempt in $(seq 1 24); do
