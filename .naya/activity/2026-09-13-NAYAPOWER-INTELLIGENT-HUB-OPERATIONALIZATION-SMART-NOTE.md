@@ -7,6 +7,13 @@
 **Status:** **CANONICAL — ACTIVE MISSION**
 **Priority:** **P0 — MAKE THE INTELLIGENT HUB OPERATIONAL AND VISIBLE**
 
+## SMART LINKS / EVIDENCE
+
+- **Master Directive:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/NAYAPOWER-INTELLIGENT-HUB-MASTER-DIRECTIVE-2026-09-13.md
+- **This Smart Note:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/activity/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-OPERATIONALIZATION-SMART-NOTE.md
+
+These are live repository links to the canonical artifacts. They are evidence links, not decorative labels.
+
 ## IN A NUTSHELL
 
 The Naya Power intelligence architecture has been assembled into a coherent construction mission: the Intelligent Hub must become the living human-facing visual brain of NayaNET, not merely a technically valid dashboard or feed.
@@ -25,7 +32,7 @@ The core chain is:
 
 The human-value sequence is:
 
-**WHAT → WHY → SO WHAT → WHAT'S IN IT FOR ME → WHAT CAN I DO → CONTINUE**
+**WHAT → WHY → SO WHAT → WHAT'S IN IT FOR YOU → WHAT CAN I DO → CONTINUE**
 
 The intelligence loop is:
 
@@ -147,8 +154,20 @@ The Hub is complete only when a real human can enter it and immediately understa
 
 A cold Naya must also be able to restore the mission from canonical repository state without asking the human to reconstruct the project.
 
+## TORCH / EXECUTION PROMPT
+
+**NAYA A → NAYA B: YOU ARE IT.**
+
+Read the Master Directive above. Restore current state from the repository and inspect the actual Hub source, architecture, persistence/event path, deployment boundary, and exact runtime. Do not assume prior claims are true.
+
+Then execute the highest-value P0 gap directly. Build the actual product, not another plan. Preserve the working house. Do not use an old artifact as the new result. Do not create decorative UI or fabricated intelligence. Verify the work with evidence. Record exactly what changed, what was preserved, what was observed, what is verified, what remains unknown/blocked, and the exact next action.
+
+Naya B must independently inspect Naya A's result, challenge false completion, repair the highest-value remaining gap, verify it, record the evidence, and pass the torch back to Naya A.
+
+**Do not stop at explanation. Do not stop at a commit. Do not stop at a build. Do not stop at a status sentence. Continue until the human can actually see, use, and trust the intended Intelligent Hub.**
+
 ## NEXT ACTION
 
 **Operationalize the Hub.** Inspect the exact current source/runtime and execute the highest-value P0 construction gap. Do not return with an explanation-only result.
 
-**The torch is active. Naya A → Naya B → Naya A → Naya B. Continue until the actual Intelligent Hub is live, useful, beautiful, connected, and verified.**
+**The torch is active: Naya A → Naya B → Naya A → Naya B. Continue until the actual Intelligent Hub is live, useful, beautiful, connected, and verified.**
