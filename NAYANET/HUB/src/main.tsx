@@ -17,6 +17,7 @@ import './styles/intelligent-hub-command-center-v1.css';
 import './styles/hub-509-reconstruction-v1.css';
 import './intelligence/actionPersistenceBridge';
 import './styles/intelligent-feed-v2.css';
+import './styles/hub-elite-intelligence-v1.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
