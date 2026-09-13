@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "policy": "No workflow, model, memory, prompt, or tool may mint authority. Entries in this registry are explicit grants and must be changed by an authorized human-controlled repository change.",
   "authorities": [
     {
@@ -24,6 +24,15 @@
       "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY",
       "principal_id": "SoulSchoolAcademy",
       "purpose": "deploy the canonical NayaNET Intelligent Hub public runtime",
+      "scope": "public-runtime:sparkling-shape-7ae5:/",
+      "granted_actions": ["deploy_public_runtime"],
+      "expires_at": null,
+      "revoked": false
+    },
+    {
+      "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509",
+      "principal_id": "SoulSchoolAcademy",
+      "purpose": "deploy the canonical 509 NayaNET Intelligent Hub public runtime",
       "scope": "public-runtime:sparkling-shape-7ae5:/",
       "granted_actions": ["deploy_public_runtime"],
       "expires_at": null,
