@@ -24,7 +24,7 @@
       "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY",
       "principal_id": "SoulSchoolAcademy",
       "purpose": "deploy the canonical NayaNET Intelligent Hub public runtime",
-      "scope": "public-runtime:aged-art-7c12:/",
+      "scope": "public-runtime:sparkling-shape-7ae5:/",
       "granted_actions": ["deploy_public_runtime"],
       "expires_at": null,
       "revoked": false
