@@ -4,6 +4,7 @@ import App from './app/App';
 import './styles/hub-509-baseline.css';
 import './styles/hub-509-fullscreen.css';
 import './styles/hub-live-surgical.css';
+import './styles/hub-feed-extraordinary.css';
 
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
