@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - '2026 09 13 NayaNET HUB 509 AAA.html'
-      - 'NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER.js'
-      - 'NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER-V2.js'
       - '.github/workflows/deploy-nayanet-hub-509-aaa.yml'
   issues:
     types: [opened, reopened]
@@ -16,7 +14,6 @@ permissions:
 
 env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
-  LINK_LAYER: NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER-V2.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -43,55 +40,46 @@ jobs:
           ref: ${{ steps.source.outputs.sha }}
           fetch-depth: 0
 
-      - name: Verify canonical 509 AAA source and link layer
+      - name: Verify canonical 509 AAA source
         run: |
           set -euo pipefail
           test -s "$SOURCE_FILE"
-          test -s "$LINK_LAYER"
-          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
-          for x in 'hmclibrary.groovemember.net/home' 'academy.nayanet.app' 'humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab' 'nayanet.groovepages.com/powerplayer' 'nayanet.groovepages.com/whitepaper' 'nayanet.groovepages.com/aboutus' 'hmclibrary.groovemember.net/login' '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' '1LgRmYAQ85AB6mmu6Qp2ovghyd1lP-FNh' '1N-XzV3_RCTHuLdp4leZNlOo7ITFwrICR' '1F9M66i5Av_oJcIa5dve-U0mMeAgYKczT' '1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC'; do grep -Fq "$x" "$LINK_LAYER" || { echo "LINK_LAYER_MISSING=$x"; exit 1; }; done
+          for x in 'NayaNET' 'Intelligent Hub' 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD VIEW' 'GRABBER VIEW' 'NAYA NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'WHAT’S IN IT FOR YOU' 'Collective Intelligence' 'Personal Intelligence' 'Activity' 'PRIVATE BY DEFAULT' 'TRUST STATE' 'Your life creates your intelligence every day.' 'https://hmclibrary.groovemember.net/home' 'https://academy.nayanet.app/' 'https://humanmaximuscodex.groovesell.com/checkout/08fba2cbd6488ef4d2cc82b52d361dab' 'https://nayanet.groovepages.com/powerplayer' 'https://nayanet.groovepages.com/whitepaper' 'https://nayanet.groovepages.com/aboutus' 'https://hmclibrary.groovemember.net/login' '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' '1LgRmYAQ85AB6mmu6Qp2ovghyd1lP-FNh' '1N-XzV3_RCTHuLdp4leZNlOo7ITFwrICR' '1F9M66i5Av_oJcIa5dve-U0mMeAgYKczT' '1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC'; do grep -Fq "$x" "$SOURCE_FILE" || { echo "MISSING=$x"; exit 1; }; done
           for x in 'SUPERBRAIN' 'Where’s Naya Now' 'PASS THE TORCH'; do if grep -Fq "$x" "$SOURCE_FILE"; then echo "FORBIDDEN=$x"; exit 1; fi; done
           echo 509_AAA_SOURCE=PASS
-          echo ECOSYSTEM_LINK_LAYER=PASS
+          echo ECOSYSTEM_AND_FEATURE_LINKS=PASS
 
-      - name: Calculate source hashes
+      - name: Calculate source hash
         id: hash
         run: |
           set -euo pipefail
           HASH=$(sha256sum "$SOURCE_FILE" | awk '{print $1}')
-          LAYER_HASH=$(sha256sum "$LINK_LAYER" | awk '{print $1}')
           echo "hash=$HASH" >> "$GITHUB_OUTPUT"
-          echo "layer_hash=$LAYER_HASH" >> "$GITHUB_OUTPUT"
           echo "509_SOURCE_SHA256=$HASH"
-          echo "LINK_LAYER_SHA256=$LAYER_HASH"
 
-      - name: Prepare static Worker release
+      - name: Prepare exact static Worker release
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
           SOURCE_HASH: ${{ steps.hash.outputs.hash }}
-          LAYER_HASH: ${{ steps.hash.outputs.layer_hash }}
         run: |
           set -euo pipefail
           rm -rf release
           mkdir -p release/public
           cp "$SOURCE_FILE" release/public/index.html
-          cp "$LINK_LAYER" release/public/naya-509-ecosystem.js
           python3 - <<'PY'
           from pathlib import Path
           import os
           p=Path('release/public/index.html')
           s=p.read_text()
-          marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}"><meta name="nayanet-link-layer-sha256" content="{os.environ["LAYER_HASH"]}"><script src="/naya-509-ecosystem.js" defer></script>'
+          marker=f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT"><meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
           p.write_text(s.replace('</head>',marker+'</head>',1))
           PY
-          grep -Fq '/naya-509-ecosystem.js' release/public/index.html
-          grep -Fq ' defer></script>' release/public/index.html
           echo RENDERED_RELEASE=PASS
           cat > release/worker.js <<'EOF'
-          export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); headers.set('X-NayaNET-Link-Layer-SHA256',env.LAYER_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
+          export default { async fetch(request, env) { const url = new URL(request.url); const spa = url.pathname === '/' || url.pathname === '/index.html' || url.pathname.startsWith('/intelligence/'); const req = spa ? new Request(new URL('/index.html', request.url), request) : request; const response = await env.ASSETS.fetch(req); const headers = new Headers(response.headers); headers.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); headers.set('Pragma','no-cache'); headers.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT'); headers.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT); headers.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH); return new Response(response.body,{status:response.status,statusText:response.statusText,headers}); } };
           EOF
           cat > release/wrangler.jsonc <<EOF
-          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH","LAYER_HASH":"$LAYER_HASH"}}
+          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
 
       - name: Deploy GitHub-native 509 AAA Worker
@@ -104,8 +92,6 @@ jobs:
 
       - name: Promote exact deployed Worker version
         working-directory: release
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           set -euo pipefail
           npx wrangler deployments list --name "$WORKER_NAME" --json > /tmp/deployments.json
@@ -115,56 +101,38 @@ jobs:
           ds=d if isinstance(d,list) else d.get('deployments',[])
           ids=[]
           for dep in ds:
-              if not isinstance(dep,dict): continue
-              if dep.get('version_id'): ids.append(dep['version_id'])
-              for v in dep.get('versions',[]) or []:
+              if isinstance(dep,dict) and dep.get('version_id'): ids.append(dep['version_id'])
+              for v in (dep.get('versions',[]) if isinstance(dep,dict) else []) or []:
                   if isinstance(v,dict) and (v.get('version_id') or v.get('versionId')): ids.append(v.get('version_id') or v.get('versionId'))
           if not ids: raise SystemExit('No Worker version id found')
           print(ids[0])
           PY
           )
           test -n "$VERSION_ID"
-          echo "PROMOTING_VERSION=$VERSION_ID"
           npx wrangler versions deploy "$VERSION_ID@100%" -y --name "$WORKER_NAME"
 
       - name: Independently verify exact public runtime
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
           SOURCE_HASH: ${{ steps.hash.outputs.hash }}
-          LAYER_HASH: ${{ steps.hash.outputs.layer_hash }}
           GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
         run: |
           set -euo pipefail
           ok=0
           for attempt in $(seq 1 12); do
-            code=$(curl -LsS --connect-timeout 5 --max-time 10 -D /tmp/h -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
+            code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r | head -1 | sed 's/.*content="//;s/"$//' || true)
-            layer_asset=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/l -w '%{http_code}' "$RUNTIME/naya-509-ecosystem.js?probe=$attempt" || true)
-            runtime_layer_hash=$(sha256sum /tmp/l 2>/dev/null | awk '{print $1}' || true)
             title_ok=$(grep -F 'NayaNET' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
             smart_ok=$(grep -F 'NayaNET' /tmp/s >/dev/null 2>&1 && echo PASS || echo FAIL)
-            links_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/l >/dev/null 2>&1 && grep -F '1dcViGUqV7GKnNBCYybbAEEKuOoZw3-XC' /tmp/l >/dev/null 2>&1 && echo PASS || echo FAIL)
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart LAYER=$layer_asset BODY_COMMIT=$body_commit BODY_HASH=$body_hash RUNTIME_LAYER_HASH=$runtime_layer_hash TITLE=$title_ok SMART_BODY=$smart_ok LINKS=$links_ok"
-            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$layer_asset" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$runtime_layer_hash" = "$LAYER_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$links_ok" = PASS ]; then ok=1; break; fi
+            nav_ok=$(grep -F 'hmclibrary.groovemember.net/home' /tmp/r >/dev/null 2>&1 && grep -F '19sRtp22aAn35wNoqqpNiZHkaFGmUOxoP' /tmp/r >/dev/null 2>&1 && grep -F 'Your life creates your intelligence every day.' /tmp/r >/dev/null 2>&1 && echo PASS || echo FAIL)
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart BODY_COMMIT=$body_commit BODY_HASH=$body_hash TITLE=$title_ok SMART_BODY=$smart_ok NAV=$nav_ok"
+            if [ "$code" = "200" ] && [ "$smart" = "200" ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$title_ok" = PASS ] && [ "$smart_ok" = PASS ] && [ "$nav_ok" = PASS ]; then ok=1; break; fi
             sleep 5
           done
-          if [ "$ok" -ne 1 ]; then
-            if [ -n "${ISSUE_NUMBER:-}" ]; then
-              {
-                echo '## 509 AAA runtime verification failed'
-                echo
-                echo "Expected commit: $SOURCE_COMMIT"
-                echo "Expected SHA256: $SOURCE_HASH"
-                echo "Expected link-layer SHA256: $LAYER_HASH"
-              } | gh issue comment "$ISSUE_NUMBER" --repo "$GITHUB_REPOSITORY" --body-file -
-            fi
-            exit 1
-          fi
+          if [ "$ok" -ne 1 ]; then exit 1; fi
           echo PUBLIC_RUNTIME_509_AAA=PASS
-          echo ECOSYSTEM_LINKS_RUNTIME=PASS
 
       - name: Close deployment request
         if: success() && github.event_name == 'issues'
