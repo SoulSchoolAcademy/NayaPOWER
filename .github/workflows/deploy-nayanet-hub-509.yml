@@ -57,7 +57,7 @@ jobs:
           set -euo pipefail
           python3 .naya/control-plane/workflow_gate.py \
             --actor "$GITHUB_ACTOR" \
-            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime with the approved AAA surgical presentation layer" \
+            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
             --permission "deploy_public_runtime" \
             --request "deploy_nayanet_hub_509" \
             --mission "make the NayaNET Intelligent Hub beautiful, useful, truthful, and operationally deployable" \
