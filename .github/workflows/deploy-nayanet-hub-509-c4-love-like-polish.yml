@@ -1,9 +1,17 @@
-name: Deploy NayaNET Hub — 509 C4 Love Like Polish
+name: Deploy NayaNET Hub — 509 C4 Real Smart Feed Content
 
 on:
   push:
     branches: [main]
     paths:
+      - 'SMART FEED CONTENT'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js'
+      - 'NAYANET/509-AAA-SURGICAL-LAYER.js'
+      - 'NAYANET/509-AAA-NEXT-LEVEL.js'
+      - 'NAYANET/509-AAA-SMART-FEED-C3.js'
+      - 'NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js'
+      - 'NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js'
+      - 'NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js'
       - 'NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js'
       - '.github/workflows/deploy-nayanet-hub-509-c4-love-like-polish.yml'
 
@@ -12,6 +20,8 @@ permissions:
 
 env:
   SOURCE_FILE: 2026 09 13 NayaNET HUB 509 AAA.html
+  SMART_CONTENT_FILE: SMART FEED CONTENT
+  REAL_CONTENT_FILE: NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js
   LAYER_FILE: NAYANET/509-AAA-SURGICAL-LAYER.js
   NEXT_LAYER_FILE: NAYANET/509-AAA-NEXT-LEVEL.js
   C3_LAYER_FILE: NAYANET/509-AAA-SMART-FEED-C3.js
@@ -40,19 +50,34 @@ jobs:
         with:
           ref: ${{ steps.source.outputs.sha }}
           fetch-depth: 0
-      - name: Verify source and syntax
+      - name: Verify source, content, and syntax
         run: |
           set -euo pipefail
-          for f in "$SOURCE_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE"; do test -s "$f"; done
-          for f in "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE"; do node --check "$f"; done
+          for f in "$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE"; do test -s "$f"; done
+          for f in "$REAL_CONTENT_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE"; do node --check "$f"; done
           grep -Fq 'Intelligent Hub' "$SOURCE_FILE"
           grep -Fq 'IN A NUTSHELL' "$SOURCE_FILE"
-          echo SOURCE_AND_SYNTAX=PASS
-      - name: Calculate exact hashes
+          grep -Fq 'SMART NOTE 01' "$SMART_CONTENT_FILE"
+          grep -Fq 'SMART NOTE 09' "$SMART_CONTENT_FILE"
+          echo SOURCE_CONTENT_AND_SYNTAX=PASS
+      - name: Build generated real-content layer and calculate exact hashes
         id: hash
         run: |
           set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          template = Path('NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js').read_text(encoding='utf-8')
+          source = Path('SMART FEED CONTENT').read_bytes()
+          payload = base64.b64encode(source).decode('ascii')
+          generated = template.replace('__SMART_FEED_B64__', payload)
+          Path('/tmp/naya-509-real-smart-feed-content.js').write_text(generated, encoding='utf-8')
+          PY
+          node --check /tmp/naya-509-real-smart-feed-content.js
           echo "source=$(sha256sum "$SOURCE_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
+          echo "smart_content=$(sha256sum "$SMART_CONTENT_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
+          echo "real_template=$(sha256sum "$REAL_CONTENT_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
+          echo "real_generated=$(sha256sum /tmp/naya-509-real-smart-feed-content.js|awk '{print $1}')" >> "$GITHUB_OUTPUT"
           echo "layer=$(sha256sum "$LAYER_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
           echo "next=$(sha256sum "$NEXT_LAYER_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
           echo "c3=$(sha256sum "$C3_LAYER_FILE"|awk '{print $1}')" >> "$GITHUB_OUTPUT"
@@ -64,6 +89,9 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
           SOURCE_HASH: ${{ steps.hash.outputs.source }}
+          SMART_CONTENT_HASH: ${{ steps.hash.outputs.smart_content }}
+          REAL_TEMPLATE_HASH: ${{ steps.hash.outputs.real_template }}
+          REAL_GENERATED_HASH: ${{ steps.hash.outputs.real_generated }}
           LAYER_HASH: ${{ steps.hash.outputs.layer }}
           NEXT_HASH: ${{ steps.hash.outputs.next }}
           C3_HASH: ${{ steps.hash.outputs.c3 }}
@@ -82,6 +110,7 @@ jobs:
           cp "$UNIFIED_FILE" release/public/naya-509-c4-unified-board-repair.js
           cp "$RUNTIME_FILE" release/public/naya-509-c4-single-board-runtime-repair.js
           cp "$POLISH_FILE" release/public/naya-509-c4-love-like-personal-polish.js
+          cp /tmp/naya-509-real-smart-feed-content.js release/public/naya-509-real-smart-feed-content.js
           python3 - <<'PY'
           from pathlib import Path
           import os
@@ -89,6 +118,9 @@ jobs:
           marker=(f'<meta name="nayanet-canonical-source" content="509-AAA-GITHUB-DRAFT">'
                   f'<meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}">'
                   f'<meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
+                  f'<meta name="nayanet-smart-feed-content-sha256" content="{os.environ["SMART_CONTENT_HASH"]}">'
+                  f'<meta name="nayanet-real-content-template-sha256" content="{os.environ["REAL_TEMPLATE_HASH"]}">'
+                  f'<meta name="nayanet-real-content-generated-sha256" content="{os.environ["REAL_GENERATED_HASH"]}">'
                   f'<meta name="nayanet-aaa-layer-sha256" content="{os.environ["LAYER_HASH"]}">'
                   f'<meta name="nayanet-aaa-next-level-sha256" content="{os.environ["NEXT_HASH"]}">'
                   f'<meta name="nayanet-aaa-smart-feed-c3-sha256" content="{os.environ["C3_HASH"]}">'
@@ -99,7 +131,7 @@ jobs:
           inject=('<script src="/naya-509-aaa.js"></script><script src="/naya-509-next-level.js"></script>'
                   '<script src="/naya-509-smart-feed-c3.js"></script><script src="/naya-509-intelligent-board-c4.js"></script>'
                   '<script src="/naya-509-c4-unified-board-repair.js"></script><script src="/naya-509-c4-single-board-runtime-repair.js"></script>'
-                  '<script src="/naya-509-c4-love-like-personal-polish.js"></script>')
+                  '<script src="/naya-509-c4-love-like-personal-polish.js"></script><script src="/naya-509-real-smart-feed-content.js"></script>')
           s=s.replace('</head>',marker+inject+'</head>',1); p.write_text(s,encoding='utf-8')
           PY
           cat > release/worker.js <<'EOF'
@@ -108,7 +140,7 @@ jobs:
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
-      - name: Deploy 509 C4 micro polish
+      - name: Deploy 509 C4 real Smart Feed content
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -119,6 +151,8 @@ jobs:
         env:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
           SOURCE_HASH: ${{ steps.hash.outputs.source }}
+          SMART_CONTENT_HASH: ${{ steps.hash.outputs.smart_content }}
+          REAL_GENERATED_HASH: ${{ steps.hash.outputs.real_generated }}
           NEXT_HASH: ${{ steps.hash.outputs.next }}
           C3_HASH: ${{ steps.hash.outputs.c3 }}
           C4_HASH: ${{ steps.hash.outputs.c4 }}
@@ -131,19 +165,22 @@ jobs:
           for attempt in $(seq 1 12); do
             code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/r -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$SOURCE_COMMIT" || true)
             smart=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/s -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$SOURCE_COMMIT" || true)
-            fix_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/fix -w '%{http_code}' "$RUNTIME/naya-509-c4-love-like-personal-polish.js?probe=$attempt" || true)
+            real_code=$(curl -LsS --connect-timeout 5 --max-time 10 -o /tmp/real -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-content.js?probe=$attempt" || true)
             body_commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             body_hash=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
+            content_hash=$(grep -o 'nayanet-smart-feed-content-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
+            generated_hash=$(grep -o 'nayanet-real-content-generated-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             next_hash=$(grep -o 'nayanet-aaa-next-level-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             c3_hash=$(grep -o 'nayanet-aaa-smart-feed-c3-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             c4_hash=$(grep -o 'nayanet-aaa-intelligent-board-c4-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             unified_hash=$(grep -o 'nayanet-aaa-c4-unified-board-repair-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             runtime_hash=$(grep -o 'nayanet-aaa-c4-single-board-runtime-repair-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
             polish_hash=$(grep -o 'nayanet-aaa-c4-love-like-personal-polish-sha256" content="[^"]*"' /tmp/r|head -1|sed 's/.*content="//;s/"$//' || true)
-            if [ "$code" = 200 ] && [ "$smart" = 200 ] && [ "$fix_code" = 200 ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$next_hash" = "$NEXT_HASH" ] && [ "$c3_hash" = "$C3_HASH" ] && [ "$c4_hash" = "$C4_HASH" ] && [ "$unified_hash" = "$UNIFIED_HASH" ] && [ "$runtime_hash" = "$RUNTIME_HASH" ] && [ "$polish_hash" = "$POLISH_HASH" ]; then
-              ok=1; echo "RUNTIME_PARITY=PASS ATTEMPT=$attempt"; break
+            note09=$(grep -c 'SMART NOTE 09' /tmp/real || true)
+            if [ "$code" = 200 ] && [ "$smart" = 200 ] && [ "$real_code" = 200 ] && [ "$body_commit" = "$SOURCE_COMMIT" ] && [ "$body_hash" = "$SOURCE_HASH" ] && [ "$content_hash" = "$SMART_CONTENT_HASH" ] && [ "$generated_hash" = "$REAL_GENERATED_HASH" ] && [ "$next_hash" = "$NEXT_HASH" ] && [ "$c3_hash" = "$C3_HASH" ] && [ "$c4_hash" = "$C4_HASH" ] && [ "$unified_hash" = "$UNIFIED_HASH" ] && [ "$runtime_hash" = "$RUNTIME_HASH" ] && [ "$polish_hash" = "$POLISH_HASH" ] && [ "$note09" -ge 1 ]; then
+              ok=1; echo "RUNTIME_PARITY=PASS ATTEMPT=$attempt REAL_CONTENT=PASS"; break
             fi
-            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart FIX=$fix_code BODY_COMMIT=$body_commit POLISH_HASH=$polish_hash"; sleep 5
+            echo "ATTEMPT=$attempt ROOT=$code SMART=$smart REAL=$real_code BODY_COMMIT=$body_commit CONTENT_HASH=$content_hash GENERATED_HASH=$generated_hash NOTE09=$note09"; sleep 5
           done
           test "$ok" -eq 1
-          echo PUBLIC_RUNTIME_509_C4_MICRO_POLISH=PASS
+          echo PUBLIC_RUNTIME_509_C4_REAL_SMART_FEED=PASS
