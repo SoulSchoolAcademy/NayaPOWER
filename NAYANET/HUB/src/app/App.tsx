@@ -1,25 +1,60 @@
-import {useEffect,useState} from 'react';
+import {useEffect,useMemo,useState} from 'react';
 import type {ReactNode} from 'react';
 import {IdentityProvider,useIdentity} from '../identity/session';
 import {AuthPanel} from '../identity/AuthPanel';
-import type {IntelligentEvent} from '../intelligence/types';
+import type {IntelligentEvent,Lens} from '../intelligence/types';
 import {SmartFeedBoard} from '../intelligence/SmartFeedBoard';
 import {initializeCognition} from '../intelligence/cognition';
 import {loadPrimaryIntelligence,sortPrimaryIntelligence,type PISFeed} from '../data/pis';
 import {AppShellV3} from './AppShellV3';
 import {routes} from './routes';
 
-function IntelligencePulse({event,feed,authenticated}:{event?:IntelligentEvent;feed?:PISFeed;authenticated:boolean}){
-  const [expanded,setExpanded]=useState(false);
-  const persistent=feed?.source==='supabase:nayanet_intelligence_index';
-  return <section className="hub-intelligence-pulse" aria-label="Intelligence pulse"><div className="pulse-grid">
-    <article className="pulse-card primary"><div><div className="pulse-kicker">WHAT CHANGED</div><h3>{event?.source.label||'Primary intelligence is flowing through PIS.'}</h3><p>{expanded?(persistent?'The Hub is reading the authorized persistent Primary Intelligence System index for the authenticated member. The event identity remains tied to its canonical Smart Note source.':'The Hub is reading the deterministic GitHub Smart Note projection because no authenticated Supabase session is active.'):'Primary intelligence has a defined path from canonical Smart Notes through PIS into the Hub.'}</p></div><button className="pulse-action" onClick={()=>setExpanded(!expanded)}>{expanded?'SHOW LESS':'SEE WHY'}</button></article>
-    <article className="pulse-card"><div className="pulse-kicker">PIS</div><div className="pulse-value">{persistent&&authenticated?'LIVE':'PREVIEW'}</div><p>{persistent&&authenticated?'Authenticated persistent PIS loaded.':'Build projection loaded; authenticated runtime is not active.'}</p></article>
-    <article className="pulse-card"><div className="pulse-kicker">SOURCE</div><div className="pulse-value">{event?'SMART NOTE':'—'}</div><p>{event?.context.canonical_path||'No primary event loaded.'}</p></article>
-    <article className="pulse-card"><div className="pulse-kicker">TRANSPORT</div><div className="pulse-value">{persistent?'SUPABASE':'GITHUB'}</div><p>{persistent?'nayanet_intelligence_index':'deterministic build projection'}</p></article>
-  </div></section>;
+type LensTab={key:Lens;label:string;detail:string;icon:string};
+const lensTabs:LensTab[]=[
+ {key:'collective',label:'COLLECTIVE',detail:'Shared intelligence worth discovering',icon:'◎'},
+ {key:'activity',label:'ACTIVITY',detail:'What Naya and the system are doing',icon:'◷'},
+ {key:'personal',label:'PERSONAL',detail:'Your private intelligence and saves',icon:'◉'}
+];
+const routeLens=(path:string):Lens=>path===routes.today?'activity':path===routes.collective?'collective':path===routes.notes?'personal':'collective';
+const compact=(value:string|undefined,fallback:string)=>value?.trim()||fallback;
+
+function IntelligenceCard({event,onOpen}:{event:IntelligentEvent;onOpen:()=>void}){
+ const summary=compact(event.weaver_synthesis.summary,event.source.label);
+ const nutshell=compact(event.naya_interpretation.observation,event.human_input.raw);
+ const meaning=compact(event.meaning.text||event.meaning.significance,'Meaning is not yet recorded.');
+ const value=compact(event.whats_in_it_for_you,'Human value is not yet recorded.');
+ const evidence=event.machine_evidence.verification_state||event.status;
+ return <button className="intel-card" onClick={onOpen} aria-label={`Open ${event.source.label}`}>
+  <div className="intel-card-top"><span className="intel-source">{event.source.type.replaceAll('_',' ').toUpperCase()} · INTELLIGENCE</span><span className="intel-state">{evidence.toUpperCase()}</span></div>
+  <h3>{summary}</h3><p className="intel-nutshell">{nutshell}</p>
+  <div className="intel-meta"><span className="intel-chip">{event.context.topic||'NayaNET'}</span>{(event.context.tags||[]).slice(0,3).map(tag=><span className="intel-chip" key={tag}>{tag}</span>)}<span className="intel-chip">{new Date(event.created_at).toLocaleDateString()}</span></div>
+  <div className="intel-footer"><div className="intel-mini"><span>WHY IT MATTERS</span><p>{meaning}</p></div><div className="intel-mini"><span>WHAT'S IN IT FOR YOU</span><p>{value}</p></div><div className="intel-mini"><span>NAYA / NEXT</span><p>{compact(event.action.text,'Open the intelligence to inspect the next action.')}</p></div></div>
+ </button>
 }
-function ComprehensionMap(){const steps=[['01','NUTSHELL','What is it?','The essence first.'],['02','PERSPECTIVES','How do we understand it?','Human · Child · Grandma · Naya · Machine'],['03','LEARNING','What should I learn?','The durable lesson.'],['04','MEANING','Why does it matter?','The significance.'],['05','ACTION','How do I use it?','The next useful move.'],['06','TRUST','Can I trust it?','Evidence · uncertainty · provenance'],['07','CONNECT','What does it belong to?','Relationships · memory · context']];return <section className="comprehension-map" aria-label="Intelligence comprehension path"><div className="comprehension-intro"><span className="eyebrow">THE NAYANET METHOD</span><h2>Understand it before you explore it.</h2><p>Every Intelligence Block reveals the highest-value meaning first, then lets you choose how deep to go.</p></div><div className="comprehension-steps">{steps.map(([n,label,title,detail])=><article className="comprehension-step" key={label}><span className="step-number">{n}</span><div><b>{label}</b><strong>{title}</strong><small>{detail}</small></div></article>)}</div></section>}
-function Feed(){const identity=useIdentity();const [events,setEvents]=useState<IntelligentEvent[]>([]);const [feed,setFeed]=useState<PISFeed>();const [error,setError]=useState('');useEffect(()=>{let alive=true;loadPrimaryIntelligence().then(value=>{if(alive){setFeed(value);setEvents(sortPrimaryIntelligence(value.events));}}).catch(reason=>{if(alive)setError(reason instanceof Error?reason.message:'PIS_FEED_UNAVAILABLE')});return()=>{alive=false}},[identity.is_authenticated]);const focusNaya=()=>document.querySelector<HTMLInputElement>('.universal-search input')?.focus();const newIntelligence=()=>dispatchEvent(new CustomEvent('nayanet:navigate',{detail:{path:routes.notes}}));const event=events[0];return <><div className="hub-hero"><div className="hero-copy"><div className="eyebrow">NAYANET INTELLIGENT HUB · PRIMARY INTELLIGENCE</div><h1>Intelligence<br/><em>that stays connected.</em></h1><p>Capture the event. Register it centrally. Preserve its identity. Let the Intelligent Hub present the same intelligence without creating a competing source.</p><div className="hero-actions"><button className="hero-primary" onClick={focusNaya}>✦ ASK NAYA</button><button className="hero-secondary" onClick={newIntelligence}>＋ NEW INTELLIGENCE</button></div></div><div className="hero-orbit" aria-label="Naya intelligence presence"><div className="orbit-core">✦<span>NAYA</span></div><i/><i/><i/></div></div><IntelligencePulse event={event} feed={feed} authenticated={identity.is_authenticated}/><ComprehensionMap/><div className="feed-toolbar"><div><span className="eyebrow">PRIMARY INTELLIGENCE SYSTEM</span><h2>Smart Feed</h2></div><div className="feed-toolbar-actions">CAPTURE → PIS → CONNECT → COMPOUND</div></div>{error&&<section className="empty-route" role="alert"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Primary intelligence is not available.</h2><p>{error}</p><p>The Hub will not fabricate a replacement event.</p></section>}{!error&&!event&&<section className="empty-route"><span className="eyebrow">PIS VERIFICATION STATE</span><h2>Waiting for primary intelligence.</h2><p>No PIS-projected Smart Note is currently available to this Hub build.</p></section>}{event&&<SmartFeedBoard event={event}/>}</>}
-function Workspace({path}:{path:string}):ReactNode{if(path==='/'||path==='/feed')return <Feed/>;if(path===routes.settings)return <AuthPanel/>;return <div className="empty-route"><span className="eyebrow">CANONICAL ROUTE</span><h2>{path}</h2><p>Registered in the Hub architecture. This surface is intentionally not faked until its real capability is implemented.</p></div>}
+
+function CommandCenter({initialLens='collective'}:{initialLens?:Lens}){
+ const identity=useIdentity();
+ const [events,setEvents]=useState<IntelligentEvent[]>([]);
+ const [feed,setFeed]=useState<PISFeed>();
+ const [error,setError]=useState('');
+ const [lens,setLens]=useState<Lens>(initialLens);
+ const [query,setQuery]=useState('');
+ const [selected,setSelected]=useState<IntelligentEvent>();
+ useEffect(()=>setLens(initialLens),[initialLens]);
+ useEffect(()=>{let alive=true;setError('');loadPrimaryIntelligence().then(value=>{if(!alive)return;setFeed(value);setEvents(sortPrimaryIntelligence(value.events));}).catch(reason=>{if(alive)setError(reason instanceof Error?reason.message:'PIS_FEED_UNAVAILABLE')});return()=>{alive=false}},[identity.is_authenticated]);
+ useEffect(()=>{const handler=(event:Event)=>{const q=(event as CustomEvent<{query?:string}>).detail?.query||'';setQuery(q);setSelected(undefined)};addEventListener('nayanet:search',handler);return()=>removeEventListener('nayanet:search',handler)},[]);
+ const filtered=useMemo(()=>{const q=query.trim().toLowerCase();if(!q)return events;return events.filter(event=>[event.source.label,event.human_input.raw,event.context.topic,...(event.context.tags||[]),event.naya_interpretation.observation||'',event.naya_interpretation.interpretation||'',event.meaning.text||'',event.action.text||'',event.whats_in_it_for_you||''].join(' ').toLowerCase().includes(q))},[events,query]);
+ const counts={collective:events.length,activity:events.length,personal:events.length};
+ const activeTab=lensTabs.find(tab=>tab.key===lens)!;
+ if(selected)return <div className="hub-command"><button className="hub-back" onClick={()=>setSelected(undefined)}>← BACK TO {activeTab.label}</button><div className="hub-detail"><SmartFeedBoard event={selected}/></div></div>;
+ return <div className="hub-command">
+  <header className="hub-command-head"><div className="hub-command-title"><div className="eyebrow">NAYANET · LIVING INTELLIGENCE NETWORK</div><h1>{activeTab.label.charAt(0)+activeTab.label.slice(1).toLowerCase()} Intelligence</h1><p>{activeTab.detail}. One intelligence object, many views — discover the signal first, then open the depth.</p></div><div className="hub-live"><i/>LIVE PIS · {feed?.source==='supabase:nayanet_intelligence_index'?'PERSISTENT':'BUILD'} · {events.length} OBJECTS</div></header>
+  <div className="hub-lensbar" role="tablist" aria-label="Smart feeds">{lensTabs.map(tab=><button key={tab.key} role="tab" aria-selected={lens===tab.key} className={`hub-lens ${lens===tab.key?'active':''}`} onClick={()=>setLens(tab.key)}><b>{tab.icon} {tab.label} FEED</b><span>{tab.detail} · {counts[tab.key]}</span></button>)}</div>
+  <div className="hub-search"><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search intelligence, people, topics, meaning, evidence…" aria-label="Search NayaNET intelligence"/><kbd>⌘ K</kbd></div>
+  <div className="hub-workspace"><section className="hub-stream"><div className="hub-stream-head"><h2>{query?`Search results for “${query}”`:'Living intelligence'}</h2><span>{filtered.length} {filtered.length===1?'object':'objects'} · click any block to open full intelligence</span></div>{error?<div className="hub-empty"><b>INTELLIGENCE FEED UNAVAILABLE</b>{error}</div>:filtered.length?<div className="hub-results">{filtered.map(event=><IntelligenceCard key={event.event_id} event={event} onOpen={()=>setSelected(event)}/>)}</div>:<div className="hub-empty"><b>{query?'NO INTELLIGENCE MATCHES':'NO INTELLIGENCE YET'}</b><span>{query?'Try a different word or topic.':'The Hub is waiting for a canonical intelligence event.'}</span></div>}</section>
+  <aside className="hub-rail"><section className="hub-rail-card"><div className="hub-rail-label">NAYA · NOW</div><h3>{events[0]?compact(events[0].source.label,'Intelligence is flowing.'):'Waiting for intelligence.'}</h3><p>{events[0]?compact(events[0].naya_interpretation.observation,'A canonical event is available to explore.'):'The Hub will not fabricate a feed when the upstream intelligence source is empty.'}</p><div className="hub-next"><i>✦</i><span>{events[0]?compact(events[0].action.text,'Open the newest block and inspect what happens next.'):'Next: capture a canonical intelligence event.'}</span></div></section><section className="hub-rail-card"><div className="hub-rail-label">INTELLIGENCE LOOP</div><div className="hub-rail-value">CAPTURE → COMPOUND</div><p>Discover → understand → connect → act → verify → learn. The feed is the living projection of that loop.</p></section><section className="hub-rail-card"><div className="hub-rail-label">TRUST SURFACE</div><h3>{events.filter(e=>e.machine_evidence.verification_state==='VERIFIED').length} verified</h3><p>Verification is a truth state, not a colour. Open any block for source, evidence, uncertainty and provenance.</p></section></aside></div>
+ </div>
+}
+
+function Workspace({path}:{path:string}):ReactNode{if(path===routes.settings)return <AuthPanel/>;return <CommandCenter initialLens={routeLens(path)}/>}
 export default function App(){useEffect(()=>{initializeCognition().catch(()=>{})},[]);return <IdentityProvider><AppShellV3>{path=><Workspace path={path}/>}</AppShellV3></IdentityProvider>}
