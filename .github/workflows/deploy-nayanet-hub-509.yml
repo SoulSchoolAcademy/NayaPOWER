@@ -73,17 +73,39 @@ jobs:
           SOURCE_COMMIT: ${{ steps.source.outputs.sha }}
         run: |
           set -euo pipefail
-          test -s "$LEGACY_509"
-          test -s "$AAA_LAYER"
-          grep -Fq '<title>NayaNET — Intelligent Hub V7</title>' "$LEGACY_509"
-          grep -Fq 'SMART FEED' "$LEGACY_509"
-          grep -Fq 'NayaNET' "$LEGACY_509"
-          grep -Fq 'naya509-aaa-style' "$AAA_LAYER"
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          baseline = Path("2026 09 09 5:09 pm NayaNET HUB.html")
+          layer = Path("NAYANET/509-AAA-SURGICAL-LAYER.js")
+          checks = [
+              (baseline, "file exists", baseline.is_file() and baseline.stat().st_size > 0),
+              (layer, "AAA layer exists", layer.is_file() and layer.stat().st_size > 0),
+          ]
+          if not all(ok for _, _, ok in checks):
+              for path, label, ok in checks: print(f"CHECK={label} RESULT={'PASS' if ok else 'FAIL'} PATH={path}")
+              raise SystemExit(1)
+          b = baseline.read_text(encoding="utf-8")
+          a = layer.read_text(encoding="utf-8")
+          required = [
+              ("baseline title", "<title>NayaNET — Intelligent Hub V7</title>", b),
+              ("baseline SMART FEED", "SMART FEED", b),
+              ("baseline NayaNET", "NayaNET", b),
+              ("AAA style marker", "naya509-aaa-style", a),
+          ]
+          failed = False
+          for label, needle, haystack in required:
+              ok = needle in haystack
+              print(f"CHECK={label} RESULT={'PASS' if ok else 'FAIL'}")
+              if not ok: failed = True
+          if failed: raise SystemExit(1)
+          digest = hashlib.sha256(baseline.read_bytes()).hexdigest()
+          print("CANONICAL_509_BASELINE=PASS")
+          print(f"SOURCE_COMMIT=${{SOURCE_COMMIT}}")
+          print(f"BASELINE_509_SHA256={digest}")
+          PY
           BASELINE_SHA256=$(sha256sum "$LEGACY_509" | awk '{print $1}')
           echo "BASELINE_509_SHA256=$BASELINE_SHA256" >> "$GITHUB_ENV"
-          echo "CANONICAL_509_BASELINE=PASS"
-          echo "SOURCE_COMMIT=$SOURCE_COMMIT"
-          echo "BASELINE_509_SHA256=$BASELINE_SHA256"
 
       - name: Prepare Cloudflare 509 + AAA release
         run: |
