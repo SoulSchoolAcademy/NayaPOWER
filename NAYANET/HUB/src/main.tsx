@@ -1,29 +1,10 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
-import './styles/tokens.css';
-import './styles/globals.css';
-import './styles/responsive.css';
-import './styles/smart-feed-board.css';
-import './styles/nayanet-v3.css';
-import './styles/nayanet-elite-feed.css';
-import './styles/hub-reconstruction-v1.css';
-import './styles/hub-intelligence-v10.css';
-import './styles/hub-intelligence-v11.css';
-import './styles/hub-intelligence-v12.css';
-import './styles/feed-edge-to-edge.css';
-import './styles/hub-intelligent-block-v1.css';
-import './styles/intelligent-hub-command-center-v1.css';
-import './styles/hub-509-reconstruction-v1.css';
-import './intelligence/actionPersistenceBridge';
-import './styles/intelligent-feed-v2.css';
-import './styles/hub-elite-intelligence-v1.css';
+import './styles/hub-509-baseline.css';
+
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
-// 509 remains the visual reference. It is not replaced or deleted by this experience layer.
-// The production experience is rebuilt around Smart Notes, Intelligent Blocks, and Smart Feeds.
-// Naya Power release-probe marker: this line is intentionally behavior-neutral.
-// Its purpose is to force the canonical source → build → deploy → runtime proof chain.
-// V2 promotion is the sole production release authority.
+
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
