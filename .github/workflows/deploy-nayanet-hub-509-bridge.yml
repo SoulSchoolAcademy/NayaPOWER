@@ -56,7 +56,6 @@ jobs:
         run: npm install --no-audit --no-fund
 
       - name: Typecheck with diagnostic capture
-        id: typecheck
         working-directory: NAYANET/HUB
         env:
           GH_TOKEN: ${{ github.token }}
@@ -154,7 +153,7 @@ jobs:
               case "$js_src" in /*) ;; '') ;; *) js_src="/$js_src";; esac
               js_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/app-js -w '%{http_code}' "$RUNTIME$js_src?release=$SOURCE_COMMIT&probe=$attempt" || true)
               cognitive_code=$(curl -sS --connect-timeout 5 --max-time 10 -o /tmp/cognition -w '%{http_code}' "$RUNTIME/nayanet-cognitive-engine.js?release=$SOURCE_COMMIT&probe=$attempt" || true)
-              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/root /tmp/app-js; then
+              if [ "$js_code" = 200 ] && [ "$cognitive_code" = 200 ] && grep -Fq "$SOURCE_COMMIT" /tmp/app-js; then
                 echo PUBLIC_RUNTIME_509=PASS
                 exit 0
               fi
