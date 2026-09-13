@@ -151,3 +151,5 @@ jobs:
           done
           test "$ok" -eq 1
           echo PUBLIC_RUNTIME_509_C4_INTERACTION_CONTINUITY=PASS
+
+# Surgical trigger comment: deploy the corrected existing repair layer without changing C4 architecture.
