@@ -12,6 +12,7 @@ const clean=(v?:string,fallback='')=>v?.replace(/\s+/g,' ').trim()||fallback;
 const first=(e:IntelligentEvent,t:Perspective['tone'])=>e.perspectives.find(p=>p.tone===t)?.body||'';
 const storage=(k:string)=>{try{return JSON.parse(localStorage.getItem(k)||'[]') as string[]}catch{return[]}};
 const toggle=(key:string,id:string)=>{const current=storage(key);const next=current.includes(id)?current.filter(x=>x!==id):[...current,id];localStorage.setItem(key,JSON.stringify(next));return next.includes(id)};
+const meaningLine=(e:IntelligentEvent)=>clean(e.meaning.significance||e.meaning.text,'This intelligence is connected to a larger decision, action or learning path.');
 
 function layers(e:IntelligentEvent):Record<LayerKey,{label:string;body:string;tone:string}>{return{
  nutshell:{label:'IN A NUTSHELL',body:clean(e.naya_interpretation.observation,e.weaver_synthesis.summary||e.source.label),tone:'silver'},
@@ -47,7 +48,7 @@ function FeedCard({event,index,onOpen,lens}:{event:IntelligentEvent;index:number
  return <article className={`feed-card tone-${tone} ${consequence?'has-consequence':''}`}>
   <div className="feed-card-top"><div className="feed-source"><span>✦</span><b>{clean(event.source.type,'NAYA').toUpperCase()}</b><i>·</i><span>{clean(event.context.topic,'INTELLIGENCE')}</span></div><div className={`feed-truth truth-${truthClass(event)}`}><span/>{truth(event)}</div></div>
   <button className="feed-main" onClick={onOpen} aria-label={`Explore ${event.source.label}`}><span className="feed-label">{data.nutshell.label}</span><h2>{clean(event.weaver_synthesis.summary,event.source.label)}</h2><p>{data.nutshell.body}</p></button>
-  <div className="feed-answer-rail"><span>WHY IT MATTERS</span><p>{clean(event.meaning.significance,event.meaning.text,'This intelligence is connected to a larger decision, action or learning path.')}</p></div>
+  <div className="feed-answer-rail"><span>WHY IT MATTERS</span><p>{meaningLine(event)}</p></div>
   <div className="feed-tabs">{(Object.keys(data) as LayerKey[]).map(k=><button key={k} className={open===k?'active':''} onClick={()=>setOpen(k)}>{data[k].label}</button>)}</div>
   <div className={`feed-layer layer-${data[open].tone}`}><div className="layer-title">{data[open].label}</div><p>{data[open].body}</p></div>
   <div className="feed-next"><div><span>NEXT ACTION</span><b>{clean(event.action.text,'Understand this intelligence and decide what to do next.')}</b></div><div><span>PROVENANCE</span><b>{clean(event.source.type,'NAYA')} · {new Date(event.created_at).toLocaleDateString()}</b></div></div>
