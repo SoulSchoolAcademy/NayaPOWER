@@ -1,5 +1,8 @@
 name: Deploy 509 C4 — Real Smart Feed Finalize
 
+# 2026-09-13 canonical redeploy trigger: force the exact current main source state through the verified 509 C4 pipeline.
+# No product/UI source change is made by this line; the workflow still checks out github.sha and verifies runtime parity.
+
 on:
   push:
     branches: [main]
@@ -95,7 +98,6 @@ jobs:
           cp "$LIFECYCLE_FILE" release/public/naya-509-real-smart-feed-lifecycle-repair.js
           cp /tmp/naya-509-real-smart-feed-content.js release/public/naya-509-real-smart-feed-content.js
           cp "$DISTILL_FILE" release/public/naya-509-real-smart-feed-distillation.js
-
           python3 - <<'PY'
           from pathlib import Path
           import os
@@ -108,29 +110,14 @@ jobs:
                 f'<meta name="nayanet-real-content-generated-sha256" content="{os.environ["GENERATED_HASH"]}">'
                 f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">'
                 f'<meta name="nayanet-smart-note-count" content="9">')
-          scripts=''.join(f'<script src="{x}"></script>' for x in [
-            '/naya-509-real-smart-feed-content.js',
-            '/naya-509-aaa.js',
-            '/naya-509-next-level.js',
-            '/naya-509-smart-feed-c3.js',
-            '/naya-509-intelligent-board-c4.js',
-            '/naya-509-c4-unified-board-repair.js',
-            '/naya-509-c4-single-board-runtime-repair.js',
-            '/naya-509-c4-love-like-personal-polish.js',
-            '/naya-509-real-smart-feed-distillation.js',
-            '/naya-509-real-smart-feed-lifecycle-repair.js'])
+          scripts=''.join(f'<script src="{x}"></script>' for x in ['/naya-509-real-smart-feed-content.js','/naya-509-aaa.js','/naya-509-next-level.js','/naya-509-smart-feed-c3.js','/naya-509-intelligent-board-c4.js','/naya-509-c4-unified-board-repair.js','/naya-509-c4-single-board-runtime-repair.js','/naya-509-c4-love-like-personal-polish.js','/naya-509-real-smart-feed-distillation.js','/naya-509-real-smart-feed-lifecycle-repair.js'])
           final_boot='<script>window.Naya509RealSmartFeed&&window.Naya509RealSmartFeed.boot&&window.Naya509RealSmartFeed.boot();</script>'
-          if '</head>' in s:
-            s=s.replace('</head>',meta+'</head>',1)
-          else:
-            s=meta+s
-          if '</body>' in s:
-            s=s.replace('</body>',scripts+final_boot+'</body>',1)
-          else:
-            s += scripts+final_boot
+          if '</head>' in s:s=s.replace('</head>',meta+'</head>',1)
+          else:s=meta+s
+          if '</body>' in s:s=s.replace('</body>',scripts+final_boot+'</body>',1)
+          else:s += scripts+final_boot
           p.write_text(s,encoding='utf-8')
           PY
-
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
