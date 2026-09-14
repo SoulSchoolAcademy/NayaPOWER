@@ -30,21 +30,22 @@ jobs:
 
       - name: Capture exact live DOM
         run: |
-          cat > /tmp/capture.mjs <<'EOF'
+          cat > capture-live.mjs <<'EOF'
           import { chromium } from 'playwright';
-          import { writeFile } from 'node:fs/promises';
+          import { writeFile, mkdir } from 'node:fs/promises';
           const browser = await chromium.launch({headless:true});
           const page = await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:1});
           const url = `${process.env.RUNTIME}/?exact-live-capture=${Date.now()}`;
           await page.goto(url,{waitUntil:'networkidle',timeout:120000});
           await page.waitForTimeout(5000);
-          const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML);
+          const html = await page.evaluate(() => '<!doctype html>\\n' + document.documentElement.outerHTML);
           if (!html.includes('Personal Intelligence') || !html.includes('Collective Intelligence') || !html.includes('Activity Feed')) throw new Error('LIVE_DOM_MISSING_APPROVED_THREE_FEED_NAV');
+          await mkdir('snapshots',{recursive:true});
           await writeFile('snapshots/NayaNET-509-AAA-CURRENT.html',html,'utf8');
           await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html',html,'utf8');
           await browser.close();
           EOF
-          node /tmp/capture.mjs
+          node capture-live.mjs
           test -s snapshots/NayaNET-509-AAA-CURRENT.html
           test -s snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
 
