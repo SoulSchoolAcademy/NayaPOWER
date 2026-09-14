@@ -19,12 +19,6 @@ env:
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
   ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
 
-env:
-  WORKER_NAME: sparkling-shape-7ae5
-  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
-  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -173,8 +167,6 @@ jobs:
           echo SMART_FEED_ROUTE=PASS
 
       - name: Auto-save verified 509 AAA to GitHub
-        env:
-          SNAPSHOT_COMMIT: ${{ github.sha }}
         run: |
           set -euo pipefail
           git config user.name 'NayaNET Verified Snapshot'
