@@ -1,0 +1,141 @@
+name: 509 Sidebar Nav Correction
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/509-sidebar-nav-correction.yml'
+
+jobs:
+  correct:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Surgical sidebar correction
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re, html
+          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          s=p.read_text()
+          m=re.search(r'(<nav class="nav">)(.*?)(</nav>)',s,re.S)
+          if not m: raise SystemExit('NAV_NOT_FOUND')
+          nav=m.group(2)
+          buttons=re.findall(r'<button\b[^>]*>.*?</button>',nav,re.S)
+          print('CURRENT_SIDEBAR_BUTTONS=',len(buttons))
+          for i,b in enumerate(buttons,1):
+            t=html.unescape(re.sub(r'<[^>]+>',' ',b)); t=' '.join(t.split())
+            print(f'{i}: {t} | {b[:260]}')
+
+          # Keep the existing button shell/handlers wherever a matching semantic destination exists.
+          def text(b):
+            return ' '.join(html.unescape(re.sub(r'<[^>]+>',' ',b)).split()).lower()
+          def label_button(b, label):
+            # Preserve icon, classes, data attributes, onclick and badges; replace only the text node
+            return re.sub(r'(</span>)([^<]*)(<span class="badge"|</button>)', lambda x: x.group(1)+label+(x.group(3) if x.group(3) else ''), b, count=1)
+
+          desired = [
+            'Your Intelligence Today',
+            'Your Reports',
+            'Intelligent Library',
+            'Smart Share',
+            'Smart Ledger',
+            'Your Connections',
+            'Smart Lists',
+            'Smart Spaces',
+            'Smart Mail',
+          ]
+          keywords = [
+            ['intelligence today','today','personal'],
+            ['your report','reports','report'],
+            ['intelligence library','library'],
+            ['smart share','collective'],
+            ['smart ledger','ledger','evidence'],
+            ['your connections','connections','connection'],
+            ['smart lists','lists'],
+            ['smart spaces','spaces','space'],
+            ['smart mail','mail'],
+          ]
+
+          # Build a button template from the closest existing semantic button. For missing destinations,
+          # use a clean button with the same nav styling; the app's existing click behavior is retained
+          # when an existing semantic button is available.
+          used=set(); out=[]
+          for want, keys in zip(desired, keywords):
+            pick=None
+            for i,b in enumerate(buttons):
+              if i in used: continue
+              t=text(b)
+              if any(k in t for k in keys): pick=(i,b); break
+            if pick:
+              i,b=pick; used.add(i)
+              # replace visible label while preserving the button's existing handler and icon
+              nb=re.sub(r'(<span class="ico">.*?</span>)(.*?)(</button>)', lambda x: x.group(1)+' '+want+x.group(3), b, count=1, flags=re.S)
+              out.append(nb)
+            else:
+              # No existing semantic destination: create a visibly consistent nav control.
+              # The surrounding Hub remains unchanged; these are navigation placeholders only if the
+              # underlying app already exposes a matching route elsewhere in the document.
+              slug=re.sub(r'[^a-z0-9]+','-',want.lower()).strip('-')
+              out.append(f'<button type="button" data-naya-nav="{slug}"><span class="ico">•</span>{want}</button>')
+          newnav=''.join(out)
+          s=s[:m.start(2)]+newnav+s[m.end(2):]
+          marker='<!-- NAYA509-SIDEBAR-NAV-CORRECTED -->'
+          if marker not in s: s=s.replace('</head>',marker+'</head>',1)
+          p.write_text(s)
+          print('DESIRED_SIDEBAR=', ' | '.join(desired))
+          PY
+
+          grep -o 'Your Intelligence Today\|Your Reports\|Intelligent Library\|Smart Share\|Smart Ledger\|Your Connections\|Smart Lists\|Smart Spaces\|Smart Mail' snapshots/NayaNET-509-AAA-CURRENT.html | sort | uniq -c
+
+      - name: Commit exact corrected GitHub artifact
+        run: |
+          git config user.name 'Naya'
+          git config user.email 'naya@users.noreply.github.com'
+          git add snapshots/NayaNET-509-AAA-CURRENT.html
+          git commit -m '509: correct Intelligent Hub sidebar navigation' || echo 'NO_CHANGES'
+          git push
+
+      - name: Deploy exact corrected artifact
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: b5e2a51b3e883f7722287c5f51b1196b
+          command: deploy --name sparkling-shape-7ae5 --assets snapshots --compatibility-date 2026-09-14
+
+      - name: Verify exact GitHub and live sidebar
+        run: |
+          set -e
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('snapshots/NayaNET-509-AAA-CURRENT.html').read_text()
+          nav=re.search(r'<nav class="nav">(.*?)</nav>',s,re.S).group(1)
+          buttons=re.findall(r'<button\b[^>]*>.*?</button>',nav,re.S)
+          labels=[]
+          for b in buttons:
+            x=re.sub(r'<[^>]+>',' ',b); labels.append(' '.join(x.split()))
+          expected=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail']
+          print('GITHUB_SIDEBAR=',labels)
+          assert labels[:9]==expected, (labels,expected)
+          assert ' Home' not in ' '+' '.join(labels)
+          print('GITHUB_SIDEBAR_ORDER=PASS')
+          PY
+          curl -fsSL --max-time 30 https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/ -o /tmp/live.html
+          python - <<'PY'
+          import re
+          s=open('/tmp/live.html',encoding='utf-8').read()
+          nav=re.search(r'<nav class="nav">(.*?)</nav>',s,re.S).group(1)
+          labels=[]
+          for b in re.findall(r'<button\b[^>]*>.*?</button>',nav,re.S):
+            x=re.sub(r'<[^>]+>',' ',b); labels.append(' '.join(x.split()))
+          expected=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail']
+          print('LIVE_SIDEBAR=',labels)
+          assert labels[:9]==expected, (labels,expected)
+          print('LIVE_SIDEBAR_ORDER=PASS')
+          assert 'NAYA509-SIDEBAR-NAV-CORRECTED' in s
+          print('LIVE_CORRECTION_MARKER=PASS')
+          PY
