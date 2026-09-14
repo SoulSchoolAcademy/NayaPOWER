@@ -1,0 +1,127 @@
+name: 509 Smart Notes Board Presentation Fix
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/509-smart-notes-board-presentation-fix.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  fix-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact current artifact
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Restore original board presentation only
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          p = Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          s = p.read_text(encoding='utf-8')
+
+          # The current artifact already contains the correct nine cloned boards.
+          # Remove only the later CSS overrides that changed the original board/card
+          # presentation. Do not touch board HTML, text, renderer, or feed logic.
+          start = '.blocks{display:grid!important;gap:18px!important;padding:0 22px!important}'
+          end = '.aaa-empty{margin:0!important'
+          a = s.find(start)
+          b = s.find(end, a)
+          if a < 0 or b < 0:
+              raise SystemExit('BOARD_OVERRIDE_RANGE_NOT_FOUND')
+
+          replacement = '.blocks{display:grid!important}'
+          s = s[:a] + replacement + s[b:]
+
+          # The replacement above restores the original one-column block flow.
+          # Remove any remaining board-specific overrides from the same custom style
+          # block if present, without changing unrelated Hub styling.
+          s = re.sub(r'\\.block\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.block:before\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.block:hover\\{[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.block h3\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.nutshell\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.nutshell p\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.layer\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.layerHead\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.layerBody\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.actions\\{[^}]*!important[^}]*\\}', '', s, count=1)
+          s = re.sub(r'\\.action\\{[^}]*!important[^}]*\\}', '', s, count=1)
+
+          # Proof gates: nine notes remain, in exact vertical DOM order, and the
+          # original board class structure remains present.
+          titles = [
+            'WHAT IS NAYA POWER?', 'WHAT IS NAYA?', 'WHAT ARE SMART NOTES?',
+            'YOUR INTELLIGENCE TODAY', 'INTELLIGENCE REPORTS',
+            'WHAT IS THE INTELLIGENT LIBRARY?', 'SMART LISTS',
+            'INTELLIGENT FEED / SMART FEED', 'SMART TABS'
+          ]
+          pos = [s.find(f'<article class="block" data-naya-direct-note="{i}"') for i in range(1,10)]
+          if any(x < 0 for x in pos) or pos != sorted(pos):
+              raise SystemExit('NINE_NOTES_ORDER_INVALID')
+          for t in titles:
+              if t not in s:
+                  raise SystemExit(f'MISSING_TITLE:{t}')
+          if '<div class="layers">' not in s or '<div class="actions">' not in s or '<div class="blockFoot">' not in s:
+              raise SystemExit('ORIGINAL_BOARD_STRUCTURE_MISSING')
+          if 'grid-template-columns:repeat(2' in s[s.find('.blocks'):s.find('.blocks')+1200]:
+              raise SystemExit('TWO_COLUMN_BLOCK_LAYOUT_PRESENT')
+
+          p.write_text(s, encoding='utf-8')
+          print('BOARD_PRESENTATION_RESTORED=PASS')
+          print('NINE_NOTES_VERTICAL_DOM_ORDER=PASS')
+          print('ORIGINAL_BOARD_STRUCTURE=PASS')
+
+      - name: Commit exact corrected GitHub artifact
+        run: |
+          git config user.name 'Naya'
+          git config user.email 'naya@nayanet.xyz'
+          git add snapshots/NayaNET-509-AAA-CURRENT.html
+          git diff --cached --exit-code && { echo 'NO_CHANGE'; exit 1; } || true
+          git commit -m '509: restore exact cloned Smart Note board presentation'
+          git push origin main
+
+      - name: Prepare exact GitHub artifact
+        run: |
+          rm -rf release
+          mkdir -p release/public
+          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
+          printf '%s\n' '{"name":"nayanet-509","main":"worker.js","compatibility_date":"2025-01-01"}' > release/wrangler.jsonc
+          cat > release/worker.js <<'EOF'
+          export default { fetch(request, env) { return env.ASSETS.fetch(request); } };
+          EOF
+          grep -q 'WHAT IS NAYA POWER?' release/public/index.html
+          grep -q 'SMART TABS' release/public/index.html
+          test "$(grep -o 'data-naya-direct-note="[1-9]"' release/public/index.html | wc -l)" -eq 9
+          echo EXACT_GITHUB_ARTIFACT_PREPARED=PASS
+
+      - name: Deploy exact GitHub artifact to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --assets=public --name=nayanet-509 --compatibility-date=2025-01-01
+
+      - name: Verify live presentation
+        run: |
+          python - <<'PY'
+          import urllib.request
+          url='https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/'
+          html=urllib.request.urlopen(url, timeout=30).read().decode('utf-8','replace')
+          titles=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
+          for t in titles:
+              assert t in html, t
+          assert html.count('data-naya-direct-note="') == 9
+          assert 'grid-template-columns:repeat(2' not in html[html.find('.blocks'):html.find('.blocks')+1500]
+          print('LIVE_9_NOTES=PASS')
+          print('LIVE_VERTICAL_BLOCK_FLOW=PASS')
+          print('LIVE_EXACT_GITHUB_ARTIFACT=PASS')
+          PY
