@@ -16,6 +16,8 @@ on:
       - 'NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js'
       - 'NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js'
       - 'NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-NAV-RESTORE.js'
       - '.github/workflows/deploy-509-c4-real-smart-feed-finalize.yml'
 
 permissions:
@@ -34,6 +36,8 @@ env:
   RUNTIME_FILE: NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js
   POLISH_FILE: NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js
   LIFECYCLE_FILE: NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js
+  FINAL_PRESENTATION_FILE: NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js
+  NAV_RESTORE_FILE: NAYANET/509-AAA-REAL-SMART-FEED-NAV-RESTORE.js
   WORKER_NAME: sparkling-shape-7ae5
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
   SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
@@ -52,8 +56,8 @@ jobs:
       - name: Validate canonical source and surgical layers
         run: |
           set -euo pipefail
-          for f in "$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE"; do test -s "$f"; done
-          for f in "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE"; do node --check "$f"; done
+          for f in "$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_PRESENTATION_FILE" "$NAV_RESTORE_FILE"; do test -s "$f"; done
+          for f in "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_PRESENTATION_FILE" "$NAV_RESTORE_FILE"; do node --check "$f"; done
           for marker in 'SMART NOTE 01' 'SMART NOTE 02' 'SMART NOTE 03' 'YOUR INTELLIGENCE TODAY' 'Intelligence Reports' 'Naya Power #06' '07 — SMART LISTS' '08 — INTELLIGENT FEED / SMART FEED' '09 — SMART TABS'; do grep -Fq "$marker" "$SMART_CONTENT_FILE"; done
           echo SMART_NOTE_COUNT=9
 
@@ -74,6 +78,8 @@ jobs:
           echo SMART_CONTENT_HASH=$(sha256sum "$SMART_CONTENT_FILE"|cut -d' ' -f1) >> "$GITHUB_OUTPUT"
           echo GENERATED_HASH=$(sha256sum /tmp/naya-509-real-smart-feed-content.js|cut -d' ' -f1) >> "$GITHUB_OUTPUT"
           echo DISTILL_HASH=$(sha256sum "$DISTILL_FILE"|cut -d' ' -f1) >> "$GITHUB_OUTPUT"
+          echo FINAL_PRESENTATION_HASH=$(sha256sum "$FINAL_PRESENTATION_FILE"|cut -d' ' -f1) >> "$GITHUB_OUTPUT"
+          echo NAV_RESTORE_HASH=$(sha256sum "$NAV_RESTORE_FILE"|cut -d' ' -f1) >> "$GITHUB_OUTPUT"
 
       - name: Build exact 509 C4 release
         env:
@@ -93,6 +99,8 @@ jobs:
           cp "$RUNTIME_FILE" release/public/naya-509-c4-single-board-runtime-repair.js
           cp "$POLISH_FILE" release/public/naya-509-c4-love-like-personal-polish.js
           cp "$LIFECYCLE_FILE" release/public/naya-509-real-smart-feed-lifecycle-repair.js
+          cp "$FINAL_PRESENTATION_FILE" release/public/naya-509-real-smart-feed-final-presentation-fix.js
+          cp "$NAV_RESTORE_FILE" release/public/naya-509-real-smart-feed-nav-restore.js
           cp /tmp/naya-509-real-smart-feed-content.js release/public/naya-509-real-smart-feed-content.js
           cp "$DISTILL_FILE" release/public/naya-509-real-smart-feed-distillation.js
           python3 - <<'PY'
@@ -105,9 +113,9 @@ jobs:
                 f'<meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
                 f'<meta name="nayanet-smart-feed-content-sha256" content="{os.environ["SMART_CONTENT_HASH"]}">'
                 f'<meta name="nayanet-real-content-generated-sha256" content="{os.environ["GENERATED_HASH"]}">'
-                f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">'
+                f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">
                 f'<meta name="nayanet-smart-note-count" content="9">')
-          scripts=''.join(f'<script src="{x}"></script>' for x in ['/naya-509-real-smart-feed-content.js','/naya-509-aaa.js','/naya-509-next-level.js','/naya-509-smart-feed-c3.js','/naya-509-intelligent-board-c4.js','/naya-509-c4-unified-board-repair.js','/naya-509-c4-single-board-runtime-repair.js','/naya-509-c4-love-like-personal-polish.js','/naya-509-real-smart-feed-distillation.js','/naya-509-real-smart-feed-lifecycle-repair.js'])
+          scripts=''.join(f'<script src="{x}"></script>' for x in ['/naya-509-real-smart-feed-content.js','/naya-509-aaa.js','/naya-509-next-level.js','/naya-509-smart-feed-c3.js','/naya-509-intelligent-board-c4.js','/naya-509-c4-unified-board-repair.js','/naya-509-c4-single-board-runtime-repair.js','/naya-509-c4-love-like-personal-polish.js','/naya-509-real-smart-feed-distillation.js','/naya-509-real-smart-feed-lifecycle-repair.js','/naya-509-real-smart-feed-final-presentation-fix.js','/naya-509-real-smart-feed-nav-restore.js'])
           final_boot='<script>window.Naya509RealSmartFeed&&window.Naya509RealSmartFeed.boot&&window.Naya509RealSmartFeed.boot();</script>'
           if '</head>' in s:s=s.replace('</head>',meta+'</head>',1)
           else:s=meta+s
@@ -132,10 +140,17 @@ jobs:
           assert s.index('/naya-509-aaa.js') < s.index('/naya-509-intelligent-board-c4.js')
           assert s.index('/naya-509-intelligent-board-c4.js') < s.index('/naya-509-real-smart-feed-distillation.js')
           assert s.index('/naya-509-real-smart-feed-distillation.js') < s.index('/naya-509-real-smart-feed-lifecycle-repair.js')
+          assert s.index('/naya-509-real-smart-feed-lifecycle-repair.js') < s.index('/naya-509-real-smart-feed-final-presentation-fix.js')
+          assert s.index('/naya-509-real-smart-feed-final-presentation-fix.js') < s.index('/naya-509-real-smart-feed-nav-restore.js')
           assert s.rfind('/naya-509-real-smart-feed-content.js') > s.index('<body')
+          assert s.rfind('/naya-509-real-smart-feed-nav-restore.js') > s.index('<body')
           assert 'Naya509RealSmartFeed.boot()' in s
           assert 'nayanet-smart-note-count" content="9"' in s
-          print('SCRIPT_ORDER=PASS REAL_CONTENT C4 DISTILL LIFECYCLE FINAL_BOOT_LAST')
+          for asset in ['naya-509-real-smart-feed-final-presentation-fix.js','naya-509-real-smart-feed-nav-restore.js']:
+            assert Path('release/public',asset).is_file() and Path('release/public',asset).stat().st_size > 0
+          print('SCRIPT_ORDER=PASS REAL_CONTENT C4 DISTILL LIFECYCLE FINAL_PRESENTATION NAV_RESTORE FINAL_BOOT_LAST')
+          print('APPROVED_PRESENTATION_ASSET=PASS')
+          print('NAV_RESTORE_ASSET=PASS')
           PY
 
       - name: Deploy exact 509 C4 release
@@ -152,16 +167,20 @@ jobs:
           SMART_CONTENT_HASH: ${{ steps.build.outputs.SMART_CONTENT_HASH }}
           GENERATED_HASH: ${{ steps.build.outputs.GENERATED_HASH }}
           DISTILL_HASH: ${{ steps.build.outputs.DISTILL_HASH }}
+          FINAL_PRESENTATION_HASH: ${{ steps.build.outputs.FINAL_PRESENTATION_HASH }}
+          NAV_RESTORE_HASH: ${{ steps.build.outputs.NAV_RESTORE_HASH }}
         run: |
           set -u
           ok=0
           for attempt in $(seq 1 12); do
-            rm -f /tmp/runtime.html /tmp/smart.html /tmp/real.js /tmp/distill.js /tmp/lifecycle.js
+            rm -f /tmp/runtime.html /tmp/smart.html /tmp/real.js /tmp/distill.js /tmp/lifecycle.js /tmp/final.js /tmp/nav.js
             r1=$(curl -sS -L -o /tmp/runtime.html -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$GITHUB_SHA" || true)
             r2=$(curl -sS -L -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?probe=$attempt&source=$GITHUB_SHA" || true)
             r3=$(curl -sS -L -o /tmp/real.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-content.js?probe=$attempt" || true)
             r4=$(curl -sS -L -o /tmp/distill.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-distillation.js?probe=$attempt" || true)
             r5=$(curl -sS -L -o /tmp/lifecycle.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-lifecycle-repair.js?probe=$attempt" || true)
+            r6=$(curl -sS -L -o /tmp/final.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-final-presentation-fix.js?probe=$attempt" || true)
+            r7=$(curl -sS -L -o /tmp/nav.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-restore.js?probe=$attempt" || true)
             commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
             source=$(grep -o 'nayanet-source-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
             content=$(grep -o 'nayanet-smart-feed-content-sha256" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
@@ -170,10 +189,11 @@ jobs:
             count=$(grep -o 'nayanet-smart-note-count" content="[^"]*"' /tmp/runtime.html 2>/dev/null|head -1|sed 's/.*content="//;s/"$//' || true)
             runtime_generated=$(sha256sum /tmp/real.js 2>/dev/null|cut -d' ' -f1 || true)
             runtime_distill=$(sha256sum /tmp/distill.js 2>/dev/null|cut -d' ' -f1 || true)
-            lifecycle_hash=$(sha256sum /tmp/lifecycle.js 2>/dev/null|cut -d' ' -f1 || true)
-            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_SMART=$r2 HTTP_REAL_JS=$r3 HTTP_DISTILL_JS=$r4 HTTP_LIFECYCLE_JS=$r5 COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated RUNTIME_GENERATED=$runtime_generated DISTILL=$distill RUNTIME_DISTILL=$runtime_distill COUNT=$count LIFECYCLE_SHA=$lifecycle_hash"
-            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$r3" = "200" ] && [ "$r4" = "200" ] && [ "$r5" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$runtime_generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$runtime_distill" = "$DISTILL_HASH" ] && [ "$count" = "9" ]; then
-              echo RUNTIME_PARITY=PASS SMART_NOTE_COUNT=9 DISTILLATION=PASS LIFECYCLE_ASSET=PASS
+            runtime_final=$(sha256sum /tmp/final.js 2>/dev/null|cut -d' ' -f1 || true)
+            runtime_nav=$(sha256sum /tmp/nav.js 2>/dev/null|cut -d' ' -f1 || true)
+            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_SMART=$r2 HTTP_REAL_JS=$r3 HTTP_DISTILL_JS=$r4 HTTP_LIFECYCLE_JS=$r5 HTTP_FINAL_PRESENTATION_JS=$r6 HTTP_NAV_RESTORE_JS=$r7 COMMIT=$commit SOURCE=$source CONTENT=$content GENERATED=$generated RUNTIME_GENERATED=$runtime_generated DISTILL=$distill RUNTIME_DISTILL=$runtime_distill FINAL_PRESENTATION=$runtime_final NAV_RESTORE=$runtime_nav COUNT=$count"
+            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$r3" = "200" ] && [ "$r4" = "200" ] && [ "$r5" = "200" ] && [ "$r6" = "200" ] && [ "$r7" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$source" = "$SOURCE_HASH" ] && [ "$content" = "$SMART_CONTENT_HASH" ] && [ "$generated" = "$GENERATED_HASH" ] && [ "$runtime_generated" = "$GENERATED_HASH" ] && [ "$distill" = "$DISTILL_HASH" ] && [ "$runtime_distill" = "$DISTILL_HASH" ] && [ "$runtime_final" = "$FINAL_PRESENTATION_HASH" ] && [ "$runtime_nav" = "$NAV_RESTORE_HASH" ] && [ "$count" = "9" ]; then
+              echo RUNTIME_PARITY=PASS SMART_NOTE_COUNT=9 DISTILLATION=PASS LIFECYCLE_ASSET=PASS FINAL_PRESENTATION_ASSET=PASS NAV_RESTORE_ASSET=PASS
               ok=1
               break
             fi
