@@ -166,14 +166,39 @@ jobs:
           echo CURRENT_509_PUBLIC_RUNTIME=PASS
           echo SMART_FEED_ROUTE=PASS
 
+      - name: Capture exact live DOM
+        run: |
+          set -euo pipefail
+          npm init -y >/dev/null 2>&1
+          npm install playwright >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+          cat > capture-live.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFile, mkdir } from 'node:fs/promises';
+          import crypto from 'node:crypto';
+          const browser = await chromium.launch({headless:true});
+          const page = await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:1});
+          const url = `${process.env.RUNTIME}/?exact-live-capture=${Date.now()}`;
+          await page.goto(url,{waitUntil:'networkidle',timeout:120000});
+          await page.waitForTimeout(5000);
+          const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML);
+          if (!html.includes('Personal Intelligence') || !html.includes('Collective Intelligence') || !html.includes('Activity Feed')) throw new Error('LIVE_DOM_MISSING_APPROVED_THREE_FEED_NAV');
+          await mkdir('snapshots',{recursive:true});
+          await writeFile('snapshots/NayaNET-509-AAA-CURRENT.html',html,'utf8');
+          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html',html,'utf8');
+          const sha256 = crypto.createHash('sha256').update(html,'utf8').digest('hex');
+          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256',sha256+'  NayaNET-509-AAA-LIVE-VERIFIED.html\n','utf8');
+          await browser.close();
+          console.log('LIVE_DOM_SHA256='+sha256);
+          EOF
+          node ./capture-live.mjs
+
       - name: Auto-save verified 509 AAA to GitHub
         run: |
           set -euo pipefail
           git config user.name 'NayaNET Verified Snapshot'
           git config user.email 'noreply@nayanet.xyz'
           mkdir -p snapshots
-          cp release/public/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-CURRENT.html
-          cp release/public/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
-          git add snapshots/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
-          git commit -m "chore: autosave verified 509 AAA ${GITHUB_SHA:0:12}" || exit 0
+          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
+          git commit -m "chore: autosave exact live DOM 509 AAA ${GITHUB_SHA:0:12}" || exit 0
           git push origin HEAD:main
