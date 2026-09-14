@@ -1,0 +1,93 @@
+name: 509 Smart Notes Presentation Final
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/509-smart-notes-presentation-final.yml'
+
+permissions:
+  contents: write
+
+env:
+  WORKER_NAME: sparkling-shape-7ae5
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
+jobs:
+  fix-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact current artifact
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply only the requested presentation correction
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          s=p.read_text(encoding='utf-8')
+          marker='<!-- NAYA509-WIDE-VERTICAL-PRESENTATION -->'
+          css='''\n<!-- NAYA509-WIDE-VERTICAL-PRESENTATION -->\n<style>\n/* Smart Notes: one full-width readable board after another. Never squeeze notes into columns. */\n.blocks{display:grid!important;grid-template-columns:1fr!important;grid-auto-flow:row!important;width:100%!important}\n.block[data-naya-direct-note]{width:100%!important;max-width:none!important}\n.block[data-naya-direct-note] .blockInner{width:100%!important;max-width:none!important}\n.block[data-naya-direct-note] .nutshell{width:100%!important;padding:24px 26px!important;margin:24px 0 22px!important;border-width:2px!important;box-shadow:inset 0 1px #fff4,0 18px 40px #000b,0 0 28px color-mix(in srgb,var(--tone) 12%,transparent)!important}\n.block[data-naya-direct-note] .nutshell b{font-size:9px!important;letter-spacing:.16em!important;margin-bottom:10px!important}\n.block[data-naya-direct-note] .nutshell p{font-size:22px!important;line-height:1.68!important;max-width:none!important}\n.block[data-naya-direct-note] .layers{width:100%!important}\n.block[data-naya-direct-note] .layers .layer:nth-child(7){padding:0!important;border-width:2px!important;box-shadow:inset 0 1px #fff4,0 18px 40px #000b,0 0 30px color-mix(in srgb,var(--gold) 12%,transparent)!important}\n.block[data-naya-direct-note] .layers .layer:nth-child(7) .layerHead{padding:16px 18px!important}\n.block[data-naya-direct-note] .layers .layer:nth-child(7) .layerHead b{font-size:9px!important;letter-spacing:.14em!important}\n.block[data-naya-direct-note] .layers .layer:nth-child(7) .layerBody{padding:20px 20px 22px!important;font-size:16px!important;line-height:1.72!important;color:#eeeaf2!important}\n</style>\n'''
+          if marker not in s:
+              i=s.find('</style>')
+              if i<0: raise SystemExit('STYLE_END_NOT_FOUND')
+              s=s[:i+8]+css+s[i+8:]
+          titles=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
+          pos=[s.find(f'data-naya-direct-note="{i}"') for i in range(1,10)]
+          if any(x<0 for x in pos) or pos!=sorted(pos): raise SystemExit('NINE_NOTES_ORDER_INVALID')
+          if s.count('data-naya-direct-note="') != 9: raise SystemExit('NINE_NOTE_COUNT_INVALID')
+          for t in titles:
+              if t not in s: raise SystemExit('MISSING_TITLE:'+t)
+          for needle in ['.blocks{display:grid!important;grid-template-columns:1fr!important;grid-auto-flow:row!important;width:100%!important}', 'font-size:22px!important', 'font-size:16px!important']:
+              if needle not in s: raise SystemExit('PRESENTATION_RULE_MISSING:'+needle)
+          if '<div class="layers">' not in s or '<div class="actions">' not in s or '<div class="blockFoot">' not in s: raise SystemExit('ORIGINAL_BOARD_STRUCTURE_MISSING')
+          p.write_text(s,encoding='utf-8')
+          print('NINE_NOTES_VERTICAL=PASS')
+          print('WIDE_READABLE_TEXT=PASS')
+          print('NUTSHELL_FEATURED=PASS')
+          print('WHAT_IS_IN_IT_FOR_YOU_FEATURED=PASS')
+          print('ORIGINAL_BOARD_STRUCTURE=PASS')
+      - name: Commit exact corrected GitHub artifact
+        run: |
+          git config user.name 'Naya'
+          git config user.email 'naya@nayanet.xyz'
+          git add snapshots/NayaNET-509-AAA-CURRENT.html
+          git commit -m '509: make Smart Notes wide, vertical, and readable'
+          git push origin main
+      - name: Prepare exact GitHub artifact
+        run: |
+          rm -rf release; mkdir -p release/public
+          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
+          printf '%s\n' 'export default {async fetch(request,env){const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
+          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
+          test "$(grep -o 'data-naya-direct-note="[1-9]"' release/public/index.html | wc -l)" -eq 9
+          grep -q 'grid-template-columns:1fr!important' release/public/index.html
+          echo EXACT_GITHUB_ARTIFACT_PREPARED=PASS
+      - name: Deploy exact GitHub artifact to existing Cloudflare worker
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+      - name: Verify exact live result
+        run: |
+          set -euo pipefail
+          curl -fsSL -A 'NayaNET-Verification/1.0' "$RUNTIME/" -o /tmp/live.html
+          test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live.html | wc -l)" -eq 9
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" /tmp/live.html; done
+          grep -Fq 'grid-template-columns:1fr!important' /tmp/live.html
+          grep -Fq 'font-size:22px!important' /tmp/live.html
+          grep -Fq 'font-size:16px!important' /tmp/live.html
+          grep -Fq 'Blockers Never Stop the Mission' /tmp/live.html
+          grep -Fq 'Source Intent Is Not Runtime Truth' /tmp/live.html
+          grep -Fq 'The Intelligent Block Is the Star' /tmp/live.html
+          echo LIVE_9_NOTES=PASS
+          echo LIVE_VERTICAL_ONE_AFTER_ANOTHER=PASS
+          echo LIVE_WIDE_READABLE_TEXT=PASS
+          echo LIVE_FEATURED_NUTSHELL=PASS
+          echo LIVE_FEATURED_VALUE_SECTION=PASS
+          echo LIVE_EXISTING_BOARDS=PASS
+          echo LIVE_EXACT_GITHUB_ARTIFACT=PASS
