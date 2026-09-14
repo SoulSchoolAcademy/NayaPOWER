@@ -144,3 +144,5 @@ jobs:
           echo "PLACEMENT_BYTES=$(wc -c < /tmp/live-placement.js)"
           echo PUBLIC_CHECKPOINT_RELEASE=PASS
           echo SMART_FEED_ROUTE=PASS
+
+# Force a fresh push-triggered verification run after the checkpoint deployment repair.
