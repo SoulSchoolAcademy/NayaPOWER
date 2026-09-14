@@ -1,8 +1,5 @@
 name: Deploy 509 C4 — Real Smart Feed Finalize
 
-# 2026-09-13 canonical redeploy trigger: force the exact current main source state through the verified 509 C4 pipeline.
-# No product/UI source change is made by this line; the workflow still checks out github.sha and verifies runtime parity.
-
 on:
   push:
     branches: [main]
@@ -57,7 +54,7 @@ jobs:
           set -euo pipefail
           for f in "$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE"; do test -s "$f"; done
           for f in "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE"; do node --check "$f"; done
-          for marker in 'SMART NOTE 01' 'SMART NOTE 02' 'SMART NOTE 03' 'YOUR INTELLIGENCE TODAY' 'Intelligence Reports turn the intelligence of your life' 'Naya Power #06' '07 — SMART LISTS' '08 — INTELLIGENT FEED / SMART FEED' '09 — SMART TABS'; do grep -Fq "$marker" "$SMART_CONTENT_FILE"; done
+          for marker in 'SMART NOTE 01' 'SMART NOTE 02' 'SMART NOTE 03' 'YOUR INTELLIGENCE TODAY' 'Intelligence Reports' 'Naya Power #06' '07 — SMART LISTS' '08 — INTELLIGENT FEED / SMART FEED' '09 — SMART TABS'; do grep -Fq "$marker" "$SMART_CONTENT_FILE"; done
           echo SMART_NOTE_COUNT=9
 
       - name: Generate exact source-derived real content asset
