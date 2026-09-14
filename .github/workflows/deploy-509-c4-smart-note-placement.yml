@@ -1,0 +1,111 @@
+name: Deploy 509 C4 — Smart Note Placement
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js'
+      - '.github/workflows/deploy-509-c4-smart-note-placement.yml'
+  workflow_run:
+    workflows: ["Deploy 509 C4 — Real Smart Feed Finalize"]
+    types: [completed]
+
+permissions:
+  contents: read
+
+env:
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  PLACEMENT_FILE: NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js
+
+jobs:
+  deploy:
+    if: >-
+      github.event_name == 'push' ||
+      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact placement source
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Validate surgical placement layer
+        run: |
+          set -euo pipefail
+          test -s "$PLACEMENT_FILE"
+          node --check "$PLACEMENT_FILE"
+
+      - name: Capture current production release exactly
+        run: |
+          set -euo pipefail
+          rm -rf release && mkdir -p release/public
+          curl -fsSL "$RUNTIME/?placement-probe=${GITHUB_SHA}" -o release/public/index.html
+          for asset in \
+            naya-509-aaa.js \
+            naya-509-next-level.js \
+            naya-509-smart-feed-c3.js \
+            naya-509-intelligent-board-c4.js \
+            naya-509-c4-unified-board-repair.js \
+            naya-509-c4-single-board-runtime-repair.js \
+            naya-509-c4-love-like-personal-polish.js \
+            naya-509-real-smart-feed-content.js \
+            naya-509-real-smart-feed-distillation.js \
+            naya-509-real-smart-feed-lifecycle-repair.js \
+            naya-509-real-smart-feed-final-presentation-fix.js \
+            naya-509-real-smart-feed-nav-restore.js; do
+            curl -fsSL "$RUNTIME/$asset?placement-probe=${GITHUB_SHA}" -o "release/public/$asset"
+          done
+          cp "$PLACEMENT_FILE" release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          test "$(grep -o 'nayanet-smart-note-count[^>]*' release/public/index.html | head -1)" != ""
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('release/public/index.html')
+          s=p.read_text(encoding='utf-8')
+          script='<script src="/naya-509-real-smart-feed-nav-adjacent-placement.js"></script>'
+          if script not in s:
+              if '</body>' in s:s=s.replace('</body>',script+'</body>',1)
+              else:s += script
+          p.write_text(s,encoding='utf-8')
+          PY
+          cat > release/worker.js <<'EOF'
+          export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          EOF
+          SOURCE_COMMIT=$(grep -o 'nayanet-source-commit" content="[^"]*"' release/public/index.html | head -1 | sed 's/.*content="//;s/"$//')
+          SOURCE_HASH=$(grep -o 'nayanet-source-sha256" content="[^"]*"' release/public/index.html | head -1 | sed 's/.*content="//;s/"$//')
+          test -n "$SOURCE_COMMIT"
+          test -n "$SOURCE_HASH"
+          cat > release/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
+          EOF
+
+      - name: Verify surgical release before deployment
+        run: |
+          set -euo pipefail
+          test -s release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' release/public/index.html
+          grep -Fq 'nayanet-smart-note-count" content="9"' release/public/index.html
+          grep -Fq 'feedNav' release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          grep -Fq 'data-real-smart-note' release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          echo SURGICAL_SMART_NOTE_PLACEMENT=PASS
+          echo EXISTING_RELEASE_ASSETS_PRESERVED=PASS
+
+      - name: Deploy exact preserved release plus surgical placement
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify public surgical placement asset
+        run: |
+          set -euo pipefail
+          curl -fsSL "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?verify=${GITHUB_SHA}" | grep -Fq 'Naya509NavAdjacentPlacement'
+          curl -fsSL "$RUNTIME/?verify=${GITHUB_SHA}" | grep -Fq 'naya-509-real-smart-feed-nav-adjacent-placement.js'
+          curl -fsSL "$SMART_LINK?verify=${GITHUB_SHA}" >/dev/null
+          echo PUBLIC_PLACEMENT_ASSET=PASS
+          echo SMART_FEED_ROUTE=PASS
