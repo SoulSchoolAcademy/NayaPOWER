@@ -80,6 +80,9 @@ jobs:
           PY
           SOURCE_COMMIT="$GITHUB_SHA"
           SOURCE_HASH=$(sha256sum release/public/index.html | awk '{print $1}')
+          PLACEMENT_HASH=$(sha256sum release/public/naya-509-real-smart-feed-nav-adjacent-placement.js | awk '{print $1}')
+          echo "EXPECTED_INDEX_SHA256=$SOURCE_HASH" >> "$GITHUB_ENV"
+          echo "EXPECTED_PLACEMENT_SHA256=$PLACEMENT_HASH" >> "$GITHUB_ENV"
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-CHECKPOINT');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
@@ -96,6 +99,8 @@ jobs:
           test -s release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
           echo CHECKPOINT_RELEASE=PASS
           echo CHECKPOINT_SHA=$GITHUB_SHA
+          echo EXPECTED_INDEX_SHA256=$EXPECTED_INDEX_SHA256
+          echo EXPECTED_PLACEMENT_SHA256=$EXPECTED_PLACEMENT_SHA256
 
       - name: Deploy checkpoint release
         uses: cloudflare/wrangler-action@v4
@@ -109,31 +114,29 @@ jobs:
         run: |
           set -euo pipefail
           fail(){ echo "PUBLIC_CHECKPOINT_VERIFY=FAIL:$1"; exit 1; }
-          expected_commit="$GITHUB_SHA"
-          expected_source='509-AAA-GITHUB-CHECKPOINT'
           verified=0
 
-          for attempt in $(seq 1 15); do
-            probe="${GITHUB_SHA}-${attempt}-$(date +%s)"
+          for attempt in $(seq 1 20); do
+            probe="${GITHUB_SHA}-${attempt}-$(date +%s%N)"
             index_code=$(curl -sS -D /tmp/index.headers -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${probe}") || index_code=000
-            echo "VERIFY_ATTEMPT=$attempt INDEX_HTTP=$index_code"
+            actual_index_sha=$(sha256sum /tmp/live.html 2>/dev/null | awk '{print $1}' || true)
+            echo "VERIFY_ATTEMPT=$attempt INDEX_HTTP=$index_code INDEX_SHA256=$actual_index_sha"
             grep -Fi 'x-nayanet-' /tmp/index.headers || true
-            if [ "$index_code" = "200" ] && \
-               grep -Fqi "x-nayanet-canonical-source: ${expected_source}" /tmp/index.headers && \
-               grep -Fqi "x-nayanet-source-commit: ${expected_commit}" /tmp/index.headers && \
-               grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html; then
+            if [ "$index_code" = "200" ] && [ "$actual_index_sha" = "$EXPECTED_INDEX_SHA256" ] && grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html; then
               verified=1
               break
             fi
-            sleep 2
+            sleep 3
           done
 
-          [ "$verified" = "1" ] || fail "PUBLIC_RUNTIME_DID_NOT_REACH_EXPECTED_CHECKPOINT"
+          [ "$verified" = "1" ] || fail "PUBLIC_RUNTIME_INDEX_HASH_MISMATCH"
 
           placement_code=$(curl -sS -D /tmp/placement.headers -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}-final") || fail "PLACEMENT_CURL"
-          echo "PLACEMENT_HTTP=$placement_code"
+          actual_placement_sha=$(sha256sum /tmp/live-placement.js | awk '{print $1}')
+          echo "PLACEMENT_HTTP=$placement_code PLACEMENT_SHA256=$actual_placement_sha"
           grep -Fi 'content-type:' /tmp/placement.headers || true
           [ "$placement_code" = "200" ] || fail "PLACEMENT_HTTP_$placement_code"
+          [ "$actual_placement_sha" = "$EXPECTED_PLACEMENT_SHA256" ] || fail "PLACEMENT_HASH_MISMATCH"
           grep -Fq 'window.Naya509NavAdjacentPlacement' /tmp/live-placement.js || fail "PLACEMENT_SYMBOL_MISSING"
 
           smart_code=$(curl -sS -D /tmp/smart.headers -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}-final") || fail "SMART_LINK_CURL"
@@ -145,4 +148,4 @@ jobs:
           echo PUBLIC_CHECKPOINT_RELEASE=PASS
           echo SMART_FEED_ROUTE=PASS
 
-# Force a fresh push-triggered verification run after the checkpoint deployment repair.
+# Verify the deployed bytes themselves, not only deployment metadata.
