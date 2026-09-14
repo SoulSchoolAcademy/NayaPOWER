@@ -53,6 +53,8 @@ jobs:
           set -euo pipefail
           sleep 3
           curl -fsSL "$RUNTIME" -o /tmp/live.html
-          grep -Fq '509 SMART FEED FINISH' /tmp/live.html
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish" -o /tmp/live-feed.js
+          grep -Fq '509 SMART FEED FINISH' /tmp/live-feed.js
+          grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish' /tmp/live.html
           echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
           echo 'RUNTIME='"$RUNTIME"
