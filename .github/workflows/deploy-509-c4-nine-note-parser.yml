@@ -1,0 +1,155 @@
+name: Deploy 509 C4 — Canonical Nine Note Parser
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js'
+      - 'SMART FEED CONTENT'
+      - '2026 09 13 NayaNET HUB 509 AAA.html'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js'
+      - 'NAYANET/509-AAA-SURGICAL-LAYER.js'
+      - 'NAYANET/509-AAA-NEXT-LEVEL.js'
+      - 'NAYANET/509-AAA-SMART-FEED-C3.js'
+      - 'NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js'
+      - 'NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js'
+      - 'NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js'
+      - 'NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js'
+      - 'NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js'
+      - '.github/workflows/deploy-509-c4-nine-note-parser.yml'
+
+permissions:
+  contents: read
+
+env:
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact triggering commit
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Validate canonical source, parser, and nine identities
+        run: |
+          set -euo pipefail
+          files=(
+            '2026 09 13 NayaNET HUB 509 AAA.html'
+            'SMART FEED CONTENT'
+            'NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js'
+            'NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js'
+            'NAYANET/509-AAA-SURGICAL-LAYER.js'
+            'NAYANET/509-AAA-NEXT-LEVEL.js'
+            'NAYANET/509-AAA-SMART-FEED-C3.js'
+            'NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js'
+            'NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js'
+            'NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js'
+            'NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js'
+            'NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js'
+            'NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js'
+          )
+          for f in "${files[@]}"; do test -s "$f"; done
+          for f in "${files[@]:2}"; do node --check "$f"; done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('SMART FEED CONTENT').read_text(encoding='utf-8')
+          patterns=[
+            r'^\s*🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*0?([1-3])\b',
+            r'^\s*🧠\s*#4\s*[—-]\s*YOUR\s+INTELLIGENCE\s+TODAY\b',
+            r'^\s*Naya\s+Power\s*#06\s*[—-]\s*What\s+Is\s+the\s+Intelligent\s+Library\?',
+            r'^\s*07\s*[—-]\s*SMART\s+LISTS\b',
+            r'^\s*08\s*[—-]\s*INTELLIGENT\s+FEED\s*/\s*SMART\s+FEED\b',
+            r'^\s*09\s*[—-]\s*SMART\s+TABS\b'
+          ]
+          hits=[]
+          for i,p in enumerate(patterns,1):
+            if re.search(p,s,re.M|re.I): hits.append(i)
+          print('CANONICAL_NINE_IDENTITY_MARKERS=',hits)
+          if hits != list(range(1,7)): raise SystemExit('Canonical nine identity markers are incomplete')
+          print('CANONICAL_NINE_IDENTITY_MARKERS=PASS')
+          PY
+
+      - name: Build exact source-derived release
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          src=Path('SMART FEED CONTENT').read_bytes()
+          for name in ['NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js','NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js']:
+              p=Path(name)
+              out=p.read_text(encoding='utf-8').replace('__SMART_FEED_B64__',base64.b64encode(src).decode('ascii'))
+              Path('/tmp/'+p.name).write_text(out,encoding='utf-8')
+          PY
+          node --check /tmp/509-AAA-REAL-SMART-FEED-CONTENT.js
+          node --check /tmp/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js
+          rm -rf release && mkdir -p release/public
+          cp '2026 09 13 NayaNET HUB 509 AAA.html' release/public/index.html
+          cp NAYANET/509-AAA-SURGICAL-LAYER.js release/public/naya-509-aaa.js
+          cp NAYANET/509-AAA-NEXT-LEVEL.js release/public/naya-509-next-level.js
+          cp NAYANET/509-AAA-SMART-FEED-C3.js release/public/naya-509-smart-feed-c3.js
+          cp NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js release/public/naya-509-intelligent-board-c4.js
+          cp NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js release/public/naya-509-c4-unified-board-repair.js
+          cp NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js release/public/naya-509-c4-single-board-runtime-repair.js
+          cp NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js release/public/naya-509-c4-love-like-personal-polish.js
+          cp NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js release/public/naya-509-real-smart-feed-lifecycle-repair.js
+          cp NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js release/public/naya-509-real-smart-feed-final-presentation-fix.js
+          cp /tmp/509-AAA-REAL-SMART-FEED-CONTENT.js release/public/naya-509-real-smart-feed-content.js
+          cp /tmp/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js release/public/naya-509-real-smart-feed-nine-note-parser.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import os,hashlib
+          p=Path('release/public/index.html');s=p.read_text(encoding='utf-8')
+          files=['naya-509-real-smart-feed-content.js','naya-509-aaa.js','naya-509-next-level.js','naya-509-smart-feed-c3.js','naya-509-intelligent-board-c4.js','naya-509-c4-unified-board-repair.js','naya-509-c4-single-board-runtime-repair.js','naya-509-c4-love-like-personal-polish.js','naya-509-real-smart-feed-lifecycle-repair.js','naya-509-real-smart-feed-nine-note-parser.js','naya-509-real-smart-feed-final-presentation-fix.js']
+          meta=f'<meta name="nayanet-source-commit" content="{os.environ["GITHUB_SHA"]}"><meta name="nayanet-smart-note-count" content="9">'
+          scripts=''.join(f'<script src="/{x}"></script>' for x in files)
+          s=s.replace('</head>',meta+scripts+'</head>',1)
+          p.write_text(s,encoding='utf-8')
+          print('SMART_CONTENT_SHA256=',hashlib.sha256(Path('SMART FEED CONTENT').read_bytes()).hexdigest())
+          PY
+          cat > release/worker.js <<'EOF'
+          export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          EOF
+          cat > release/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$GITHUB_SHA"}}
+          EOF
+
+      - name: Deploy exact release
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify runtime source, parser, controls, and nine-note metadata
+        run: |
+          set -euo pipefail
+          ok=0
+          for attempt in $(seq 1 12); do
+            curl -sS -L -o /tmp/runtime.html -w '%{http_code}' "$RUNTIME/?probe=$attempt&source=$GITHUB_SHA" > /tmp/r1 || true
+            curl -sS -L -o /tmp/parser.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nine-note-parser.js?probe=$attempt" > /tmp/r2 || true
+            r1=$(cat /tmp/r1);r2=$(cat /tmp/r2)
+            commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
+            count=$(grep -o 'nayanet-smart-note-count" content="[^"]*"' /tmp/runtime.html|head -1|sed 's/.*content="//;s/"$//' || true)
+            hasnav=$(grep -o 'feedNav' /tmp/runtime.html|head -1 || true)
+            hasmission=$(grep -o 'Your life creates your intelligence every day' /tmp/runtime.html|head -1 || true)
+            echo "ATTEMPT=$attempt HTTP_ROOT=$r1 HTTP_PARSER=$r2 COMMIT=$commit COUNT=$count FEEDNAV_SOURCE=$hasnav MISSION_SOURCE=$hasmission"
+            if [ "$r1" = "200" ] && [ "$r2" = "200" ] && [ "$commit" = "$GITHUB_SHA" ] && [ "$count" = "9" ]; then
+              echo PUBLIC_RUNTIME_509_C4_NINE_NOTE_PARSER=PASS
+              ok=1;break
+            fi
+            sleep 5
+          done
+          test "$ok" = "1"
