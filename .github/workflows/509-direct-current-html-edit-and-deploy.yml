@@ -29,8 +29,7 @@ jobs:
             for j,m in enumerate(ms): d[m.group(1)]=re.sub(r'\s+',' ',body[m.end():ms[j+1].start() if j+1<len(ms) else len(body)]).strip()
             notes[n]=d
           assert sorted(notes)==list(range(1,10))
-          tones=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c']; keys=['HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]
-          E=lambda x:html.escape(x,quote=False)
+          tones=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c']; keys=['HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]; E=lambda x:html.escape(x,quote=False)
           def board(n):
             d=notes[n]; t=tones[n-1]; layers=''.join(f'<div class="layer"><div class="layerHead"><span class="dot" style="--layer:{t}"></span><b>{E(k)}</b><span class="state">SMART NOTE</span></div><div class="layerBody">{E(d[k])}</div></div>' for k in keys)
             return f'<article class="block" data-naya-direct-note="{n}" data-real-smart-note="true" style="--tone:{t}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">🧠</div><div><h3>{E(d["title"])}</h3><div class="meta"><span>SMART NOTE {n:02d}</span><span>CANONICAL</span><span>VERIFIED SOURCE</span></div></div></div><span class="truth">INTELLIGENCE</span></div><div class="nutshell"><b>IN A NUTSHELL</b><p>{E(d["IN A NUTSHELL"])}</p></div><div class="layers">{layers}</div><div class="actions"><button class="action on">SAVE</button><button class="action love">LOVE</button><button class="action like">LIKE</button><button class="action">SHARE</button></div><div class="blockFoot"><span>NAYANET • SMART NOTE {n:02d}</span><span>CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND</span></div></div></article>'
@@ -41,10 +40,19 @@ jobs:
           PY
       - name: Verify and save exact HTML
         run: |
-          set -e; test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE"|wc -l)" -eq 9; for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done; git config user.name Naya; git config user.email naya@nayanet.xyz; git add "$FILE"; git commit -m '509 AAA: add nine canonical Smart Note boards directly to current HTML'; git push origin HEAD:main
+          set -e; test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE"|wc -l)" -eq 9; for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done; git config user.name Naya; git config user.email naya@nayanet.xyz; git add "$FILE"; if ! git diff --cached --quiet; then git commit -m '509 AAA: add nine canonical Smart Note boards directly to current HTML'; git push origin HEAD:main; else echo HTML_ALREADY_SAVED=PASS; fi
       - name: Deploy exact GitHub HTML
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+      - name: Prepare exact release for Cloudflare
         run: |
-          set -e; rm -rf release; mkdir -p release/public; cp "$FILE" release/public/index.html; printf '%s\n' 'export default {async fetch(request,env){const u=new URL(request.url);const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store");return new Response(x.body,{status:x.status,headers:h})}}' > release/worker.js; printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc; npx --yes wrangler@latest deploy --config release/wrangler.jsonc
+          set -e; rm -rf release; mkdir -p release/public; cp "$FILE" release/public/index.html
+          printf '%s\n' 'export default {async fetch(request,env){const u=new URL(request.url);const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
+          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
       - name: Verify live
         run: |
           set -e; curl -fsSL "$RUNTIME/?v=${GITHUB_SHA}" -o /tmp/live; test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live|wc -l)" -eq 9; grep -Fq 'SMART TABS' /tmp/live; echo VERIFIED_LIVE_NINE=PASS
