@@ -1,0 +1,47 @@
+name: ADD 509 — Smart Notes 01-09
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FILE: snapshots/NayaNET-509-AAA-CURRENT.html
+  CANONICAL: NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md
+
+jobs:
+  add-and-prove:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout current source
+        uses: actions/checkout@v6
+
+      - name: Verify canonical Smart Notes source
+        run: |
+          set -euo pipefail
+          test -s "$CANONICAL"
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do
+            grep -Fq "$t" "$CANONICAL"
+          done
+          echo CANONICAL_SMART_NOTES_01_09=PASS
+
+      - name: Verify the nine notes are actually in the current GitHub HTML
+        run: |
+          set -euo pipefail
+          test -s "$FILE"
+          test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE" | wc -l)" -eq 9
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do
+            grep -Fq "$t" "$FILE"
+          done
+          echo CURRENT_GITHUB_HTML_CONTAINS_ALL_9=PASS
+
+      - name: Record execution receipt
+        run: |
+          set -euo pipefail
+          printf '%s\n' '# 509 Smart Notes 01-09 — Execution Receipt' > .naya/509-SMART-NOTES-01-09-EXECUTION-RECEIPT.md
+          printf '%s\n' '' '- Canonical source: `NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md`' '- Current artifact: `snapshots/NayaNET-509-AAA-CURRENT.html`' '- Nine canonical Smart Note titles verified in both source and current HTML.' '- This action is idempotent: it proves the requested nine notes are present without rebuilding or redesigning the Hub.' '- Next deployment action must publish the exact current HTML artifact.' >> .naya/509-SMART-NOTES-01-09-EXECUTION-RECEIPT.md
+          cat .naya/509-SMART-NOTES-01-09-EXECUTION-RECEIPT.md
+          echo SMART_NOTES_01_09_EXECUTION=PASS
