@@ -84,3 +84,4 @@
 })();
 
 /* 2026-09-14 LIVE-DOM SNAPSHOT TRIGGER — no runtime behavior change. */
+/* PR merge trigger for verified live DOM capture. */
