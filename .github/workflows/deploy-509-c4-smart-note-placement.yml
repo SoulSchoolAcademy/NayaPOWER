@@ -11,7 +11,13 @@ on:
       - '.github/workflows/deploy-509-c4-smart-note-placement.yml'
 
 permissions:
-  contents: read
+  contents: write
+
+env:
+  WORKER_NAME: sparkling-shape-7ae5
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
 
 env:
   WORKER_NAME: sparkling-shape-7ae5
@@ -97,6 +103,22 @@ jobs:
           p.write_text(s,encoding='utf-8')
           print('INDEX_SHA256=',hashlib.sha256(p.read_bytes()).hexdigest())
           PY
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          src=Path('release/public/index.html').read_text(encoding='utf-8')
+          base=re.sub(r'<script src="/naya-509-[^"]+\.js"></script>','',src)
+          names=['naya-509-aaa.js','naya-509-next-level.js','naya-509-smart-feed-c3.js','naya-509-intelligent-board-c4.js','naya-509-c4-unified-board-repair.js','naya-509-c4-single-board-runtime-repair.js','naya-509-c4-love-like-personal-polish.js','naya-509-real-smart-feed-content.js','naya-509-real-smart-feed-nine-note-parser.js','naya-509-real-smart-feed-lifecycle-repair.js','naya-509-real-smart-feed-final-presentation-fix.js','naya-509-real-smart-feed-nav-restore.js','naya-509-real-smart-feed-nav-adjacent-placement.js']
+          inline=''
+          for name in names:
+              js=Path('release/public',name).read_text(encoding='utf-8').replace('</script>','<\\/script>')
+              inline += '<script>\\n/* '+name+' */\\n'+js+'\\n</script>\\n'
+          standalone=base.replace('</head>',inline+'</head>',1)
+          out=Path('release/public/NayaNET-509-AAA-CURRENT.html')
+          out.write_text(standalone,encoding='utf-8')
+          print('STANDALONE_BYTES=',out.stat().st_size)
+          print('STANDALONE_SCRIPTS=',standalone.count('<script>'))
+          PY
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
@@ -110,6 +132,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s release/public/index.html
+          test -s release/public/NayaNET-509-AAA-CURRENT.html
           grep -Fq 'nayanet-source-commit' release/public/index.html
           grep -Fq 'nayanet-smart-note-count' release/public/index.html
           grep -Fq 'naya-509-real-smart-feed-final-presentation-fix.js' release/public/index.html
@@ -117,7 +140,10 @@ jobs:
           grep -Fq 'naya-509-real-smart-feed-nav-adjacent-placement.js' release/public/index.html
           scripts=$(grep -o '<script src="/naya-509-[^"]*\.js"></script>' release/public/index.html | wc -l)
           test "$scripts" -ge 13
+          standalone=$(grep -o '<script>' release/public/NayaNET-509-AAA-CURRENT.html | wc -l)
+          test "$standalone" -ge 13
           echo CURRENT_509_RELEASE=PASS
+          echo CURRENT_509_STANDALONE_SNAPSHOT=PASS
 
       - name: Deploy current approved Hub
         uses: cloudflare/wrangler-action@v4
@@ -145,3 +171,17 @@ jobs:
           test "$smart" = "200"
           echo CURRENT_509_PUBLIC_RUNTIME=PASS
           echo SMART_FEED_ROUTE=PASS
+
+      - name: Auto-save verified 509 AAA to GitHub
+        env:
+          SNAPSHOT_COMMIT: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          git config user.name 'NayaNET Verified Snapshot'
+          git config user.email 'noreply@nayanet.xyz'
+          mkdir -p snapshots
+          cp release/public/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-CURRENT.html
+          cp release/public/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
+          git add snapshots/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
+          git commit -m "chore: autosave verified 509 AAA ${GITHUB_SHA:0:12}" || exit 0
+          git push origin HEAD:main
