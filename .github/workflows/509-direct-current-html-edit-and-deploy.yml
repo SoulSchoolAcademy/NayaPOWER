@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/509-direct-current-html-edit-and-deploy.yml'
+      - '.naya/DIRECT-509-EXECUTE'
   workflow_dispatch:
 
 permissions:
