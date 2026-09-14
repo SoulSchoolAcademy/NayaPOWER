@@ -1,0 +1,58 @@
+name: 509 — Direct Smart Feed Deployment
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'snapshots/NayaNET-509-AAA-CURRENT.html'
+      - 'NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js'
+      - '.github/workflows/deploy-smart-feed-direct.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      WORKER_NAME: sparkling-shape-7ae5
+      ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+      RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - uses: actions/checkout@v6
+      - name: Build direct Smart Feed release
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
+          cp -R NAYANET release/public/NAYANET
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('release/public/index.html')
+          h=p.read_text(encoding='utf-8')
+          src='<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish"></script>'
+          if src not in h:
+              h=h.replace('</body>',src+'</body>',1)
+          p.write_text(h,encoding='utf-8')
+          PY
+          cat > release/worker.js <<'EOF'
+          export default {async fetch(request,env){const u=new URL(request.url);const r=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          EOF
+          printf '%s\n' '{"name":"'"$WORKER_NAME"'","main":"worker.js","compatibility_date":"2026-09-08","account_id":"'"$ACCOUNT_ID"'","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"'"$GITHUB_SHA"'"}}' > release/wrangler.jsonc
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+      - name: Prove public runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          sleep 3
+          curl -fsSL "$RUNTIME" -o /tmp/live.html
+          grep -Fq '509 SMART FEED FINISH' /tmp/live.html
+          echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
+          echo 'RUNTIME='"$RUNTIME"
