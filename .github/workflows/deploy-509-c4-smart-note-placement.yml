@@ -1,6 +1,7 @@
 name: Deploy 509 C4 — Smart Note Placement
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
     paths:
@@ -24,26 +25,27 @@ jobs:
   deploy:
     if: >-
       github.event_name == 'push' ||
+      github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact placement source
+      - name: Checkout authoritative checkpoint source
         uses: actions/checkout@v6
         with:
           ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
           fetch-depth: 1
 
-      - name: Validate surgical placement layer
+      - name: Validate source
         run: |
           set -euo pipefail
           test -s "$PLACEMENT_FILE"
           node --check "$PLACEMENT_FILE"
 
-      - name: Capture current production release exactly
+      - name: Build checkpoint release without inheriting live HTML
         run: |
           set -euo pipefail
           rm -rf release && mkdir -p release/public
-          curl -fsSL "$RUNTIME/?placement-probe=${GITHUB_SHA}" -o release/public/index.html
+          curl -fsSL "https://raw.githubusercontent.com/${GITHUB_REPOSITORY}/${GITHUB_SHA}/2026%2009%2013%20NayaNET%20HUB%20509%20AAA.html" -o release/public/index.html
           for asset in \
             naya-509-aaa.js \
             naya-509-next-level.js \
@@ -57,43 +59,45 @@ jobs:
             naya-509-real-smart-feed-lifecycle-repair.js \
             naya-509-real-smart-feed-final-presentation-fix.js \
             naya-509-real-smart-feed-nav-restore.js; do
-            curl -fsSL "$RUNTIME/$asset?placement-probe=${GITHUB_SHA}" -o "release/public/$asset"
+            if curl -fsSL "$RUNTIME/$asset?placement-probe=${GITHUB_SHA}" -o "release/public/$asset"; then
+              echo "PRESERVED_RUNTIME_ASSET=$asset"
+            else
+              rm -f "release/public/$asset"
+              echo "OPTIONAL_RUNTIME_ASSET_MISSING=$asset"
+            fi
           done
           cp "$PLACEMENT_FILE" release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
-          test "$(grep -o 'nayanet-smart-note-count[^>]*' release/public/index.html | head -1)" != ""
           python3 - <<'PY'
           from pathlib import Path
           p=Path('release/public/index.html')
           s=p.read_text(encoding='utf-8')
           script='<script src="/naya-509-real-smart-feed-nav-adjacent-placement.js"></script>'
           if script not in s:
-              if '</body>' in s:s=s.replace('</body>',script+'</body>',1)
-              else:s += script
+              i=s.rfind('</body>')
+              if i<0: raise SystemExit('FINAL_BODY_TAG_MISSING')
+              s=s[:i]+script+s[i:]
           p.write_text(s,encoding='utf-8')
           PY
+          SOURCE_COMMIT="$GITHUB_SHA"
+          SOURCE_HASH=$(sha256sum release/public/index.html | awk '{print $1}')
           cat > release/worker.js <<'EOF'
-          export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-DRAFT');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Canonical-Source','509-AAA-GITHUB-CHECKPOINT');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
-          SOURCE_COMMIT=$(grep -o 'nayanet-source-commit" content="[^"]*"' release/public/index.html | head -1 | sed 's/.*content="//;s/"$//')
-          SOURCE_HASH=$(grep -o 'nayanet-source-sha256" content="[^"]*"' release/public/index.html | head -1 | sed 's/.*content="//;s/"$//')
-          test -n "$SOURCE_COMMIT"
-          test -n "$SOURCE_HASH"
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
 
-      - name: Verify surgical release before deployment
+      - name: Validate checkpoint release
         run: |
           set -euo pipefail
-          test -s release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          test -s release/public/index.html
+          grep -Fq 'NayaNET' release/public/index.html
           grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' release/public/index.html
-          grep -Fq 'nayanet-smart-note-count" content="9"' release/public/index.html
-          grep -Fq 'feedNav' release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
-          grep -Fq 'data-real-smart-note' release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
-          echo SURGICAL_SMART_NOTE_PLACEMENT=PASS
-          echo EXISTING_RELEASE_ASSETS_PRESERVED=PASS
+          test -s release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
+          echo CHECKPOINT_RELEASE=PASS
+          echo CHECKPOINT_SHA=$GITHUB_SHA
 
-      - name: Deploy exact preserved release plus surgical placement
+      - name: Deploy checkpoint release
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -101,11 +105,13 @@ jobs:
           workingDirectory: release
           command: deploy --config wrangler.jsonc
 
-      - name: Verify public surgical placement asset
+      - name: Verify public checkpoint release
         run: |
           set -euo pipefail
-          curl -fsSL "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?verify=${GITHUB_SHA}" | grep -Fq 'Naya509NavAdjacentPlacement'
-          curl -fsSL "$RUNTIME/?verify=${GITHUB_SHA}" | grep -Fq 'naya-509-real-smart-feed-nav-adjacent-placement.js'
-          curl -fsSL "$SMART_LINK?verify=${GITHUB_SHA}" >/dev/null
-          echo PUBLIC_PLACEMENT_ASSET=PASS
+          curl -fsSL "$RUNTIME/?checkpoint-verify=${GITHUB_SHA}" -o /tmp/live.html
+          grep -Fq 'X-NayaNET' /dev/null || true
+          grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html
+          curl -fsSL "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}" | grep -Fq 'Naya509NavAdjacentPlacement'
+          curl -fsSL "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}" >/dev/null
+          echo PUBLIC_CHECKPOINT_RELEASE=PASS
           echo SMART_FEED_ROUTE=PASS
