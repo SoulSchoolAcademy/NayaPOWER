@@ -82,3 +82,5 @@
  window.Naya509NavAdjacentPlacement={boot,place,version:'c4-canonical-smart-feed-content-nine-card'};
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
+
+/* deployment trigger: verify exact checkpoint bytes */
