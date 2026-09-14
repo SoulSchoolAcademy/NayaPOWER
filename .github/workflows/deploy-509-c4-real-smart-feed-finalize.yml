@@ -113,7 +113,7 @@ jobs:
                 f'<meta name="nayanet-source-sha256" content="{os.environ["SOURCE_HASH"]}">'
                 f'<meta name="nayanet-smart-feed-content-sha256" content="{os.environ["SMART_CONTENT_HASH"]}">'
                 f'<meta name="nayanet-real-content-generated-sha256" content="{os.environ["GENERATED_HASH"]}">'
-                f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">
+                f'<meta name="nayanet-real-content-distillation-sha256" content="{os.environ["DISTILL_HASH"]}">'
                 f'<meta name="nayanet-smart-note-count" content="9">')
           scripts=''.join(f'<script src="{x}"></script>' for x in ['/naya-509-real-smart-feed-content.js','/naya-509-aaa.js','/naya-509-next-level.js','/naya-509-smart-feed-c3.js','/naya-509-intelligent-board-c4.js','/naya-509-c4-unified-board-repair.js','/naya-509-c4-single-board-runtime-repair.js','/naya-509-c4-love-like-personal-polish.js','/naya-509-real-smart-feed-distillation.js','/naya-509-real-smart-feed-lifecycle-repair.js','/naya-509-real-smart-feed-final-presentation-fix.js','/naya-509-real-smart-feed-nav-restore.js'])
           final_boot='<script>window.Naya509RealSmartFeed&&window.Naya509RealSmartFeed.boot&&window.Naya509RealSmartFeed.boot();</script>'
