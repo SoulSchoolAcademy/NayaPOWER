@@ -1,0 +1,149 @@
+name: 509 — Smart Notes Surgical Final
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'snapshots/NayaNET-509-AAA-CURRENT.html'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  FILE: snapshots/NayaNET-509-AAA-CURRENT.html
+  CANONICAL: NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md
+  WORKER_NAME: sparkling-shape-7ae5
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
+jobs:
+  surgical:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact current HTML
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+
+      - name: Inspect current artifact and preserve existing board renderer
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          s=p.read_text(encoding='utf-8')
+          assert '<div class="blocks" id="blocks">' in s, 'exact current blocks container missing'
+          assert 'function block(b,i)' in s, 'existing Smart Note board renderer missing'
+          for title in ['Blockers Never Stop the Mission','Source Intent Is Not Runtime Truth','The Intelligent Block Is the Star']:
+              assert title in s, f'existing board source missing: {title}'
+          assert len(re.findall(r'data-naya-direct-note="[1-9]"',s))==9, 'nine direct boards are not present before surgical rebuild'
+          print('CURRENT_ARTIFACT=PASS')
+          print('EXISTING_BOARD_RENDERER=PASS')
+          print('EXISTING_DEMO_BOARDS=3')
+          PY
+
+      - name: Clone exact existing board structure and write nine canonical boards into HTML
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import html,re
+          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          s=p.read_text(encoding='utf-8')
+          c=Path('NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md').read_text(encoding='utf-8')
+          colors=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#ff5e6c']
+          expected=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
+          heads=['IN A NUTSHELL','HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]
+          parts=re.split(r'(?m)^## SMART NOTE (\d+) — (.+?)\s*$',c)
+          notes={}
+          for i in range(1,len(parts),3):
+              n=int(parts[i]); title=parts[i+1].strip(); body=parts[i+2]
+              ms=list(re.finditer(r'(?m)^### (.+?)\s*$',body)); f={}
+              for j,m in enumerate(ms): f[m.group(1).strip()]=body[m.end():(ms[j+1].start() if j+1<len(ms) else len(body))].strip()
+              notes[n]=(title,f)
+          assert [notes[i][0] for i in range(1,10)]==expected
+          for i in range(1,10):
+              assert set(heads).issubset(notes[i][1])
+          def esc(x): return html.escape(x,quote=False).replace('\n','<br>')
+          def board(n,title,f):
+              tone=colors[n-1]
+              layer_map=[('HUMAN NOTE','HUMAN','HUMAN INPUT'),('CHILD','SIMPLE','SIMPLIFIED'),('GRANDMA NOTE','GRANDMA','WHY NOTICE?'),('NAYA NOTE','NAYA','INTERPRETATION'),('MACHINE NOTE','MACHINE','EVIDENCE BOUNDARY'),('ADAPTIVE LEARNING','LEARNING','LEARNING'),('WHAT IT MEANS','SO WHAT','SIGNIFICANCE'),("WHAT'S IN IT FOR YOU?",'FOR YOU','HUMAN VALUE')]
+              layers=''.join(f'<section class="layer" style="--layer:{tone}"><div class="layerHead"><i class="dot"></i><b>{label}</b><span class="state">{state}</span></div><div class="layerBody">{esc(f[h])}</div></section>' for h,_,state in layer_map for label in [h])
+              return f'<article class="block" id="naya509-{n:02d}" data-naya-direct-note="{n}" data-real-smart-note="true" data-naya-feed="collective" data-provenance="Canonical Smart Note 01-09" style="--tone:{tone}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">🧠</div><div><h3>{esc(title)}</h3><div class="meta"><span>SMART NOTE {n:02d}</span><span>·</span><span>CANONICAL INTELLIGENCE</span></div></div></div><span class="truth">SOURCE SEPARATED</span></div><div class="nutshell"><b>01 · IN A NUTSHELL</b><p>{esc(f["IN A NUTSHELL"])}</p></div><div class="layers">{layers}</div><div class="actions"><button class="action" data-act="favorite" data-id="naya509-{n:02d}">★ FAVORITE</button><button class="action" data-act="save" data-id="naya509-{n:02d}">🔖 SAVE</button><button class="action like" data-act="like" data-id="naya509-{n:02d}">👍 LIKE</button><button class="action love" data-act="love" data-id="naya509-{n:02d}">♥ LOVE</button><button class="action" data-act="rate" data-id="naya509-{n:02d}">★ RANK</button><button class="action" data-act="share" data-id="naya509-{n:02d}">＋ SHARE</button></div><div class="blockFoot"><span>ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY</span><span>TRUST: SOURCE / INTERPRETATION SEPARATED</span></div></div></article>'
+          # Remove only the nine direct boards; leave the original renderer/data untouched.
+          s,removed=re.subn(r'<article\b[^>]*data-naya-direct-note="[1-9]"[^>]*>.*?</article>\s*','',s,flags=re.S)
+          assert removed==9, f'expected exactly 9 prior direct boards, found {removed}'
+          marker='<div class="blocks" id="blocks">'
+          insertion=''.join(board(i,notes[i][0],notes[i][1]) for i in range(1,10))
+          s=s.replace(marker,marker+insertion,1)
+          # Preserve the static boards across the existing render() overwrite by capturing their HTML once.
+          old='function render(){const data=dataFor(current);document.getElementById(\'blocks\').innerHTML=data.map(block).join();'
+          new="function render(){const data=dataFor(current);const blocksEl=document.getElementById('blocks');if(!window.__naya509DirectNineHTML){window.__naya509DirectNineHTML=[...blocksEl.querySelectorAll('[data-naya-direct-note]')].map(x=>x.outerHTML).join('')}const direct=current==='collective'?window.__naya509DirectNineHTML:'';blocksEl.innerHTML=direct+data.map(block).join();"
+          assert old in s, 'exact existing render() target not found'
+          s=s.replace(old,new,1)
+          s=s.replace("document.getElementById('feedCount').textContent=data.length+' INTELLIGENT '+(data.length===1?'BLOCK':'BLOCKS');","document.getElementById('feedCount').textContent=(data.length+(current==='collective'?9:0))+' INTELLIGENT '+((data.length+(current==='collective'?9:0))===1?'BLOCK':'BLOCKS');",1)
+          p.write_text(s,encoding='utf-8')
+          v=p.read_text(encoding='utf-8')
+          assert len(re.findall(r'data-naya-direct-note="[1-9]"',v))==9
+          assert v.index('data-naya-direct-note="1"') < v.index('data-naya-direct-note="2"') < v.index('data-naya-direct-note="9"')
+          for t in expected: assert t in v,t
+          for i in range(1,10):
+              assert notes[i][1]['IN A NUTSHELL'] in v
+              assert notes[i][1]["WHAT'S IN IT FOR YOU?"] in v
+          for title in ['Blockers Never Stop the Mission','Source Intent Is Not Runtime Truth','The Intelligent Block Is the Star']:
+              assert title in v, f'preserved existing board source missing: {title}'
+          assert 'function block(b,i)' in v
+          print('NINE_STATIC_BOARDS=PASS')
+          print('ORDER_01_TO_09=PASS')
+          print('CANONICAL_TEXT=PASS')
+          print('EXISTING_BOARDS_PRESERVED=PASS')
+          print('EXISTING_RENDERER_PRESERVED=PASS')
+          PY
+
+      - name: Commit exact resulting HTML to GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "NayaNET Smart Notes Surgical Action"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git commit -m "509: surgical Smart Notes 01-09 into current HTML" || true
+          git push origin HEAD:main
+
+      - name: Inspect exact committed GitHub artifact
+        run: |
+          set -euo pipefail
+          test "$(grep -o 'data-naya-direct-note=\"[1-9]\"' "$FILE" | wc -l)" -eq 9
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done
+          for t in 'Blockers Never Stop the Mission' 'Source Intent Is Not Runtime Truth' 'The Intelligent Block Is the Star'; do grep -Fq "$t" "$FILE"; done
+          echo GITHUB_ARTIFACT_9_NEW_BOARDS=PASS
+          echo GITHUB_ARTIFACT_EXISTING_BOARDS=PASS
+
+      - name: Deploy that exact GitHub artifact to the existing Cloudflare worker
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp "$FILE" release/public/index.html
+          printf '%s\n' 'export default {async fetch(request,env){const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
+          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
+          npx --yes wrangler@4.38.0 deploy --config release/wrangler.jsonc --keep-vars
+
+      - name: Verify exact public runtime matches the nine new boards and preserves existing boards
+        run: |
+          set -euo pipefail
+          curl -fsSL "$RUNTIME/?smart-notes-final=${GITHUB_SHA}" -o /tmp/live.html
+          test "$(grep -o 'data-naya-direct-note=\"[1-9]\"' /tmp/live.html | wc -l)" -eq 9
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" /tmp/live.html; done
+          grep -Fq 'Naya Power turns AI from a tool you repeatedly manage into an intelligent operating partner' /tmp/live.html
+          grep -Fq 'Less repetition. Less lost knowledge. Less AI babysitting.' /tmp/live.html
+          grep -Fq 'function block(b,i)' /tmp/live.html
+          grep -Fq 'Blockers Never Stop the Mission' /tmp/live.html
+          grep -Fq 'Source Intent Is Not Runtime Truth' /tmp/live.html
+          grep -Fq 'The Intelligent Block Is the Star' /tmp/live.html
+          echo LIVE_9_NEW_BOARDS=PASS
+          echo LIVE_CANONICAL_TEXT=PASS
+          echo LIVE_EXISTING_BOARDS=PASS
+          echo LIVE_EXISTING_RENDERER=PASS
+          echo LIVE_EXACT_GITHUB_ARTIFACT=PASS
