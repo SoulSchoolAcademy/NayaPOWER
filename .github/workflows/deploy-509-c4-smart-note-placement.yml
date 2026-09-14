@@ -2,15 +2,11 @@ name: Deploy 509 C4 — Smart Note Placement
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches: [main]
     paths:
       - 'NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js'
       - '.github/workflows/deploy-509-c4-smart-note-placement.yml'
-  workflow_run:
-    workflows: ["Deploy 509 C4 — Real Smart Feed Finalize"]
-    types: [completed]
 
 permissions:
   contents: read
@@ -24,17 +20,12 @@ env:
 
 jobs:
   deploy:
-    if: >-
-      github.event_name == 'push' ||
-      github.event_name == 'pull_request' ||
-      github.event_name == 'workflow_dispatch' ||
-      (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout authoritative checkpoint source
         uses: actions/checkout@v6
         with:
-          ref: ${{ github.event_name == 'workflow_run' && github.event.workflow_run.head_sha || github.sha }}
+          ref: ${{ github.sha }}
           fetch-depth: 1
 
       - name: Validate source
@@ -112,42 +103,33 @@ jobs:
           workingDirectory: release
           command: deploy --config wrangler.jsonc
 
-      - name: Verify public checkpoint release
+      - name: Verify exact public runtime bytes
         run: |
-          set -euo pipefail
+          set -u
           fail(){ echo "PUBLIC_CHECKPOINT_VERIFY=FAIL:$1"; exit 1; }
           verified=0
-
           for attempt in $(seq 1 20); do
             probe="${GITHUB_SHA}-${attempt}-$(date +%s%N)"
-            index_code=$(curl -sS -D /tmp/index.headers -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${probe}") || index_code=000
+            index_code=$(curl -sS -L -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${probe}" || true)
             actual_index_sha=$(sha256sum /tmp/live.html 2>/dev/null | awk '{print $1}' || true)
-            echo "VERIFY_ATTEMPT=$attempt INDEX_HTTP=$index_code INDEX_SHA256=$actual_index_sha"
-            grep -Fi 'x-nayanet-' /tmp/index.headers || true
+            echo "VERIFY_ATTEMPT=$attempt INDEX_HTTP=$index_code INDEX_SHA256=$actual_index_sha EXPECTED=$EXPECTED_INDEX_SHA256"
             if [ "$index_code" = "200" ] && [ "$actual_index_sha" = "$EXPECTED_INDEX_SHA256" ] && grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html; then
               verified=1
               break
             fi
             sleep 3
           done
-
           [ "$verified" = "1" ] || fail "PUBLIC_RUNTIME_INDEX_HASH_MISMATCH"
-
-          placement_code=$(curl -sS -D /tmp/placement.headers -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}-final") || fail "PLACEMENT_CURL"
+          placement_code=$(curl -sS -L -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}-final") || fail "PLACEMENT_CURL"
           actual_placement_sha=$(sha256sum /tmp/live-placement.js | awk '{print $1}')
-          echo "PLACEMENT_HTTP=$placement_code PLACEMENT_SHA256=$actual_placement_sha"
-          grep -Fi 'content-type:' /tmp/placement.headers || true
+          echo "PLACEMENT_HTTP=$placement_code PLACEMENT_SHA256=$actual_placement_sha EXPECTED=$EXPECTED_PLACEMENT_SHA256"
           [ "$placement_code" = "200" ] || fail "PLACEMENT_HTTP_$placement_code"
           [ "$actual_placement_sha" = "$EXPECTED_PLACEMENT_SHA256" ] || fail "PLACEMENT_HASH_MISMATCH"
           grep -Fq 'window.Naya509NavAdjacentPlacement' /tmp/live-placement.js || fail "PLACEMENT_SYMBOL_MISSING"
-
-          smart_code=$(curl -sS -D /tmp/smart.headers -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}-final") || fail "SMART_LINK_CURL"
+          smart_code=$(curl -sS -L -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}-final") || fail "SMART_LINK_CURL"
           echo "SMART_LINK_HTTP=$smart_code"
           [ "$smart_code" = "200" ] || fail "SMART_LINK_HTTP_$smart_code"
-
           echo "INDEX_BYTES=$(wc -c < /tmp/live.html)"
           echo "PLACEMENT_BYTES=$(wc -c < /tmp/live-placement.js)"
           echo PUBLIC_CHECKPOINT_RELEASE=PASS
           echo SMART_FEED_ROUTE=PASS
-
-# Run the exact-byte verifier from a PR event so GitHub executes the current workflow definition.
