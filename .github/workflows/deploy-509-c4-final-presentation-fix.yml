@@ -51,13 +51,26 @@ jobs:
           ref: ${{ github.sha }}
           fetch-depth: 0
 
-      - name: Validate all canonical 509 sources
+      - name: Validate all canonical 509 sources and exact nine notes
         run: |
           set -euo pipefail
-          for f in "$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_FILE"; do test -s "$f"; done
-          for f in "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_FILE"; do node --check "$f"; done
-          for n in 01 02 03 04 05 06 07 08 09; do grep -Fq "SMART NOTE $n" "$SMART_CONTENT_FILE"; done
-          echo SMART_NOTE_COUNT=9
+          files=("$SOURCE_FILE" "$SMART_CONTENT_FILE" "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_FILE")
+          for f in "${files[@]}"; do test -s "$f" || { echo "MISSING_OR_EMPTY=$f"; exit 1; }; done
+          for f in "$REAL_CONTENT_FILE" "$DISTILL_FILE" "$LAYER_FILE" "$NEXT_LAYER_FILE" "$C3_LAYER_FILE" "$C4_LAYER_FILE" "$UNIFIED_FILE" "$RUNTIME_FILE" "$POLISH_FILE" "$LIFECYCLE_FILE" "$FINAL_FILE"; do
+            echo "NODE_CHECK=$f"
+            node --check "$f"
+          done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('SMART FEED CONTENT')
+          s=p.read_text(encoding='utf-8')
+          nums=[int(x) for x in re.findall(r'^\s*🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*(\d+)\b',s,re.I|re.M)]
+          print('SMART_NOTE_HEADINGS=',nums)
+          if nums != list(range(1,10)):
+              raise SystemExit(f'EXACT_NINE_SMART_NOTES_REQUIRED got={nums}')
+          print('SMART_NOTE_COUNT=9 EXACT_HEADINGS=PASS')
+          PY
 
       - name: Generate exact source-derived Smart Feed asset
         id: build
@@ -125,14 +138,19 @@ jobs:
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$GITHUB_SHA","SOURCE_HASH":"$SOURCE_HASH"}}
           EOF
 
-      - name: Verify release contains final surgical layer and all nine notes
+      - name: Verify release contains final surgical layer and exact nine notes
         run: |
           set -euo pipefail
           grep -Fq '/naya-509-real-smart-feed-final-presentation-fix.js' release/public/index.html
           grep -Fq 'nayanet-smart-note-count" content="9"' release/public/index.html
-          for n in 01 02 03 04 05 06 07 08 09; do grep -Fq "SMART NOTE $n" 'SMART FEED CONTENT'; done
-          node --check release/public/naya-509-real-smart-feed-final-presentation-fix.js
-          echo RELEASE_FINAL_FIX=PASS SMART_NOTE_SOURCE_MARKERS_01_TO_09=PASS
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('SMART FEED CONTENT').read_text(encoding='utf-8')
+          nums=[int(x) for x in re.findall(r'^\s*🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*(\d+)\b',s,re.I|re.M)]
+          if nums != list(range(1,10)): raise SystemExit(f'RELEASE_SOURCE_NOT_EXACTLY_NINE got={nums}')
+          print('RELEASE_FINAL_FIX=PASS SMART_NOTE_COUNT=9 EXACT_HEADINGS=PASS')
+          PY
 
       - name: Deploy exact release
         uses: cloudflare/wrangler-action@v4
