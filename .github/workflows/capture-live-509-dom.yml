@@ -1,0 +1,58 @@
+name: Capture Exact Live 509 HTML
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/capture-live-509-dom.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Install Playwright
+        run: |
+          npm init -y >/dev/null 2>&1
+          npm install playwright
+          npx playwright install --with-deps chromium
+
+      - name: Capture exact live DOM
+        run: |
+          cat > /tmp/capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import { writeFile } from 'node:fs/promises';
+          const browser = await chromium.launch({headless:true});
+          const page = await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:1});
+          const url = `${process.env.RUNTIME}/?exact-live-capture=${Date.now()}`;
+          await page.goto(url,{waitUntil:'networkidle',timeout:120000});
+          await page.waitForTimeout(5000);
+          const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML);
+          if (!html.includes('Personal Intelligence') || !html.includes('Collective Intelligence') || !html.includes('Activity Feed')) throw new Error('LIVE_DOM_MISSING_APPROVED_THREE_FEED_NAV');
+          await writeFile('snapshots/NayaNET-509-AAA-CURRENT.html',html,'utf8');
+          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html',html,'utf8');
+          await browser.close();
+          EOF
+          node /tmp/capture.mjs
+          test -s snapshots/NayaNET-509-AAA-CURRENT.html
+          test -s snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
+
+      - name: Save exact live HTML to GitHub
+        run: |
+          set -euo pipefail
+          git config user.name 'NayaNET Live Snapshot'
+          git config user.email 'noreply@nayanet.xyz'
+          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
+          git commit -m "chore: save exact live 509 AAA DOM" || exit 0
+          git push origin HEAD:main
