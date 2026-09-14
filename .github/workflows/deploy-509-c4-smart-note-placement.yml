@@ -108,10 +108,27 @@ jobs:
       - name: Verify public checkpoint release
         run: |
           set -euo pipefail
-          curl -fsSL "$RUNTIME/?checkpoint-verify=${GITHUB_SHA}" -o /tmp/live.html
-          grep -Fq 'X-NayaNET' /dev/null || true
-          grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html
-          curl -fsSL "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}" | grep -Fq 'Naya509NavAdjacentPlacement'
-          curl -fsSL "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}" >/dev/null
+          fail(){ echo "PUBLIC_CHECKPOINT_VERIFY=FAIL:$1"; exit 1; }
+
+          index_code=$(curl -sS -D /tmp/index.headers -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${GITHUB_SHA}") || fail "INDEX_CURL"
+          echo "INDEX_HTTP=$index_code"
+          grep -Fi 'x-nayanet-' /tmp/index.headers || true
+          [ "$index_code" = "200" ] || fail "INDEX_HTTP_$index_code"
+          grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html || fail "INDEX_MISSING_PLACEMENT_SCRIPT"
+          grep -Fqi 'x-nayanet-canonical-source: 509-AAA-GITHUB-CHECKPOINT' /tmp/index.headers || fail "HEADER_CANONICAL_SOURCE"
+          grep -Fqi "x-nayanet-source-commit: ${GITHUB_SHA}" /tmp/index.headers || fail "HEADER_SOURCE_COMMIT"
+
+          placement_code=$(curl -sS -D /tmp/placement.headers -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}") || fail "PLACEMENT_CURL"
+          echo "PLACEMENT_HTTP=$placement_code"
+          grep -Fi 'content-type:' /tmp/placement.headers || true
+          [ "$placement_code" = "200" ] || fail "PLACEMENT_HTTP_$placement_code"
+          grep -Fq 'window.Naya509NavAdjacentPlacement' /tmp/live-placement.js || fail "PLACEMENT_SYMBOL_MISSING"
+
+          smart_code=$(curl -sS -D /tmp/smart.headers -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}") || fail "SMART_LINK_CURL"
+          echo "SMART_LINK_HTTP=$smart_code"
+          [ "$smart_code" = "200" ] || fail "SMART_LINK_HTTP_$smart_code"
+
+          echo "INDEX_BYTES=$(wc -c < /tmp/live.html)"
+          echo "PLACEMENT_BYTES=$(wc -c < /tmp/live-placement.js)"
           echo PUBLIC_CHECKPOINT_RELEASE=PASS
           echo SMART_FEED_ROUTE=PASS
