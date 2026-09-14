@@ -9,6 +9,11 @@ on:
 permissions:
   contents: write
 
+env:
+  WORKER_NAME: sparkling-shape-7ae5
+  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
 jobs:
   fix-and-deploy:
     runs-on: ubuntu-latest
@@ -45,26 +50,28 @@ jobs:
         run: |
           rm -rf release; mkdir -p release/public
           cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          printf '%s\n' '{"name":"nayanet-509","main":"worker.js","compatibility_date":"2025-01-01"}' > release/wrangler.jsonc
-          printf '%s\n' 'export default { fetch(request, env) { return env.ASSETS.fetch(request); } };' > release/worker.js
-          grep -q 'WHAT IS NAYA POWER?' release/public/index.html
-          grep -q 'SMART TABS' release/public/index.html
+          printf '%s\n' 'export default {async fetch(request,env){const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
+          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
           test "$(grep -o 'data-naya-direct-note="[1-9]"' release/public/index.html | wc -l)" -eq 9
           echo EXACT_GITHUB_ARTIFACT_PREPARED=PASS
-      - name: Deploy exact GitHub artifact to Cloudflare
+      - name: Deploy exact GitHub artifact to existing Cloudflare worker
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
-          command: deploy --assets=public --name=nayanet-509 --compatibility-date=2025-01-01
+          command: deploy --config wrangler.jsonc
       - name: Verify live presentation
         run: |
           python - <<'PY'
           import urllib.request
-          html=urllib.request.urlopen('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/',timeout=30).read().decode('utf-8','replace')
+          html=urllib.request.urlopen('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/?board-fix=final',timeout=30).read().decode('utf-8','replace')
           titles=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
           for t in titles: assert t in html,t
           assert html.count('data-naya-direct-note="')==9
-          print('LIVE_9_NOTES=PASS'); print('LIVE_VERTICAL_BLOCK_FLOW=PASS'); print('LIVE_EXACT_GITHUB_ARTIFACT=PASS')
+          assert 'Blockers Never Stop the Mission' in html
+          assert 'Source Intent Is Not Runtime Truth' in html
+          assert 'The Intelligent Block Is the Star' in html
+          assert 'function block(b,i)' in html
+          print('LIVE_9_NOTES=PASS'); print('LIVE_VERTICAL_BLOCK_FLOW=PASS'); print('LIVE_EXISTING_BOARDS=PASS'); print('LIVE_EXACT_GITHUB_ARTIFACT=PASS')
           PY
