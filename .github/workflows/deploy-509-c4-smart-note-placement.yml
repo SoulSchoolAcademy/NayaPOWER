@@ -4,9 +4,10 @@ on:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 env:
   FILE: snapshots/NayaNET-509-AAA-CURRENT.html
+  CANONICAL: NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md
   WORKER_NAME: sparkling-shape-7ae5
   ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
@@ -17,34 +18,82 @@ jobs:
       - name: Checkout exact current GitHub HTML
         uses: actions/checkout@v6
         with: {fetch-depth: 1}
-      - name: Verify the nine static boards in GitHub
+      - name: Rebuild the nine canonical Smart Note boards in the exact current HTML
         run: |
           set -euo pipefail
-          test -s "$FILE"
-          test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE" | wc -l)" -eq 9
-          grep -Fq 'name="nayanet-direct-nine"' "$FILE"
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, re
+          canonical = Path('NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md').read_text(encoding='utf-8')
+          path = Path('snapshots/NayaNET-509-AAA-CURRENT.html')
+          source = path.read_text(encoding='utf-8')
+          colors=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#ff9a5a','#ff5e6c']
+          expected=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
+          headings=['IN A NUTSHELL','HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]
+          parts=re.split(r'(?m)^## SMART NOTE (\d+) — (.+?)\s*$',canonical)
+          notes={}
+          for i in range(1,len(parts),3):
+            num=int(parts[i]); title=parts[i+1].strip(); body=parts[i+2]; ms=list(re.finditer(r'(?m)^### (.+?)\s*$',body)); fields={}
+            for j,m in enumerate(ms): fields[m.group(1).strip()]=body[m.end():(ms[j+1].start() if j+1<len(ms) else len(body))].strip()
+            notes[num]=(title,fields)
+          assert [notes[i][0] for i in range(1,10)]==expected
+          for i in range(1,10):
+            for h in headings: assert notes[i][1].get(h), f'missing {h} in {i}'
+          def esc(s): return html.escape(s,quote=False).replace('\n','<br>')
+          def board(n,title,f):
+            tone=colors[n-1]; ls=[]
+            labels={'CHILD':'CHILD NOTE','GRANDMA NOTE':'GRANDMA NOTE'}
+            for h in headings[1:]:
+              semantic={'HUMAN NOTE':'HUMAN','CHILD':'SIMPLE','GRANDMA NOTE':'GRANDMA','NAYA NOTE':'NAYA','MACHINE NOTE':'MACHINE','ADAPTIVE LEARNING':'LEARNING','WHAT IT MEANS':'SO WHAT',"WHAT'S IN IT FOR YOU?":'FOR YOU'}[h]
+              ls.append(f'<div class="layer" data-semantic="{semantic}" style="--layer:{tone}"><div class="layerHead"><span class="dot"></span><b>{html.escape(labels.get(h,h))}</b><span class="state">CANONICAL</span></div><div class="layerBody">{esc(f[h])}</div></div>')
+            return f'<article class="block naya509-board" data-real-smart-note="true" data-naya-direct-note="{n}" data-naya-feed="collective" data-provenance="Canonical Smart Note 01-09" style="--tone:{tone}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">🧠</div><div><h3>{html.escape(title)}</h3><div class="meta"><span>SMART NOTE {n:02d}</span><span>·</span><span>CANONICAL INTELLIGENCE</span></div></div></div></div><div class="truth">TRUTH STATE · CANONICAL SOURCE</div><div class="nutshell"><b>IN A NUTSHELL</b><p>{esc(f["IN A NUTSHELL"])}</p></div><div class="layers">{"".join(ls)}</div><div class="actions"><button type="button" class="action" data-c4-kind="love" aria-pressed="false">❤️ LOVE</button><button type="button" class="action" data-c4-kind="like" aria-pressed="false">LIKE</button><button type="button" class="action" data-c4-kind="share-intel">＋ SHARE INTEL</button></div></div></article>'
+          cleaned,removed=re.subn(r'<article\b[^>]*data-naya-direct-note="[1-9]"[^>]*>.*?</article>\s*','',source,flags=re.S)
+          assert removed in (0,9), removed
+          marker='<div class="blocks">'; assert marker in cleaned
+          updated=cleaned.replace(marker,marker+''.join(board(i,notes[i][0],notes[i][1]) for i in range(1,10)),1)
+          updated=re.sub(r'<meta name="nayanet-direct-nine"[^>]*>','<meta name="nayanet-direct-nine" content="canonical-smart-notes-01-09">',updated,count=1)
+          updated=re.sub(r'<meta name="nayanet-smart-note-count"[^>]*>','<meta name="nayanet-smart-note-count" content="9">',updated,count=1)
+          path.write_text(updated,encoding='utf-8')
+          verify=path.read_text(encoding='utf-8')
+          assert len(re.findall(r'data-naya-direct-note="[1-9]"',verify))==9
+          for t in expected: assert t in verify,t
+          for i in range(1,10): assert notes[i][1]['IN A NUTSHELL'] in verify
+          print('SMART_NOTES_01_09_CANONICAL_BUILD=PASS')
+          PY
+      - name: Commit the actual Smart Notes HTML to GitHub
+        run: |
+          set -euo pipefail
+          git config user.name "NayaNET Smart Notes Action"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          if git diff --cached --quiet; then echo SMART_NOTES_GITHUB_CHANGE=ALREADY_CURRENT; else git commit -m "509: write canonical Smart Notes 01-09 to current HTML [smart-notes-autogen]"; git push origin HEAD:main; echo SMART_NOTES_GITHUB_CHANGE=COMMITTED; fi
+      - name: Verify the exact nine Smart Notes in GitHub artifact
+        run: |
+          set -euo pipefail
+          test "$(grep -o 'data-naya-direct-note=\"[1-9]\"' "$FILE" | wc -l)" -eq 9
           for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done
-          echo GITHUB_EXACT_CURRENT_HTML=PASS
+          grep -Fq 'Naya Power turns AI from a tool you repeatedly manage into an intelligent operating partner' "$FILE"
+          echo GITHUB_SMART_NOTES_01_09=PASS
       - name: Prepare exact GitHub artifact for Cloudflare
         run: |
           set -euo pipefail
           rm -rf release; mkdir -p release/public
           cp "$FILE" release/public/index.html
-          printf '%s\n' 'export default {async fetch(request,env){const u=new URL(request.url);const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
+          printf '%s\n' 'export default {async fetch(request,env){const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
           printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
-      - name: Deploy exact GitHub artifact
+      - name: Deploy exact updated artifact to Cloudflare
         uses: cloudflare/wrangler-action@v4
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-      - name: Verify exact live artifact
+      - name: Verify exact Cloudflare live result, including canonical note text
         run: |
           set -euo pipefail
-          curl -fsSL "$RUNTIME/?verify=${GITHUB_SHA}" -o /tmp/live.html
-          test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live.html | wc -l)" -eq 9
-          grep -Fq 'name="nayanet-direct-nine"' /tmp/live.html
-          grep -Fq 'WHAT IS NAYA POWER?' /tmp/live.html
-          grep -Fq 'SMART TABS' /tmp/live.html
-          echo LIVE_EXACT_GITHUB_HTML=PASS
+          curl -fsSL "$RUNTIME/?smart-notes=${GITHUB_SHA}" -o /tmp/live.html
+          test "$(grep -o 'data-naya-direct-note=\"[1-9]\"' /tmp/live.html | wc -l)" -eq 9
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" /tmp/live.html; done
+          grep -Fq 'Naya Power turns AI from a tool you repeatedly manage into an intelligent operating partner' /tmp/live.html
+          grep -Fq 'Less repetition. Less lost knowledge. Less AI babysitting.' /tmp/live.html
+          echo CLOUDFLARE_SMART_NOTES_01_09=PASS
