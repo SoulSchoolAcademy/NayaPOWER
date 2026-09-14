@@ -3,8 +3,6 @@ name: Capture Exact Live 509 HTML
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/capture-live-509-dom.yml'
   workflow_dispatch:
 
 permissions:
@@ -33,27 +31,32 @@ jobs:
           cat > capture-live.mjs <<'EOF'
           import { chromium } from 'playwright';
           import { writeFile, mkdir } from 'node:fs/promises';
+          import crypto from 'node:crypto';
           const browser = await chromium.launch({headless:true});
           const page = await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:1});
           const url = `${process.env.RUNTIME}/?exact-live-capture=${Date.now()}`;
           await page.goto(url,{waitUntil:'networkidle',timeout:120000});
           await page.waitForTimeout(5000);
-          const html = await page.evaluate(() => '<!doctype html>\\n' + document.documentElement.outerHTML);
+          const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML);
           if (!html.includes('Personal Intelligence') || !html.includes('Collective Intelligence') || !html.includes('Activity Feed')) throw new Error('LIVE_DOM_MISSING_APPROVED_THREE_FEED_NAV');
           await mkdir('snapshots',{recursive:true});
           await writeFile('snapshots/NayaNET-509-AAA-CURRENT.html',html,'utf8');
           await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html',html,'utf8');
+          const sha256 = crypto.createHash('sha256').update(html,'utf8').digest('hex');
+          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256',sha256+'  NayaNET-509-AAA-LIVE-VERIFIED.html\n','utf8');
           await browser.close();
+          console.log('LIVE_HTML_SHA256='+sha256);
           EOF
-          node capture-live.mjs
+          node ./capture-live.mjs
           test -s snapshots/NayaNET-509-AAA-CURRENT.html
           test -s snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
+          test -s snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
 
       - name: Save exact live HTML to GitHub
         run: |
           set -euo pipefail
           git config user.name 'NayaNET Live Snapshot'
           git config user.email 'noreply@nayanet.xyz'
-          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
+          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
           git commit -m "chore: save exact live 509 AAA DOM" || exit 0
           git push origin HEAD:main
