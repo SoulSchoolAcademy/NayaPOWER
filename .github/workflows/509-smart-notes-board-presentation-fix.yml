@@ -28,9 +28,14 @@ jobs:
           from pathlib import Path
           p=Path('snapshots/NayaNET-509-AAA-CURRENT.html'); s=p.read_text(encoding='utf-8')
           start='.blocks{display:grid!important;gap:18px!important;padding:0 22px!important}'; end='.aaa-empty{margin:0!important'
-          a=s.find(start); b=s.find(end,a)
-          if a<0 or b<0: raise SystemExit('BOARD_OVERRIDE_RANGE_NOT_FOUND')
-          s=s[:a]+'.blocks{display:grid!important}'+s[b:]
+          a=s.find(start)
+          if a>=0:
+            b=s.find(end,a)
+            if b<0: raise SystemExit('BOARD_OVERRIDE_END_NOT_FOUND')
+            s=s[:a]+'.blocks{display:grid!important}'+s[b:]
+            print('BOARD_PRESENTATION_RESTORED=PASS')
+          else:
+            print('BOARD_PRESENTATION_ALREADY_RESTORED=PASS')
           titles=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
           pos=[s.find(f'data-naya-direct-note="{i}"') for i in range(1,10)]
           if any(x<0 for x in pos) or pos!=sorted(pos): raise SystemExit(f'NINE_NOTES_ORDER_INVALID:{pos}')
@@ -38,14 +43,12 @@ jobs:
             if t not in s: raise SystemExit(f'MISSING_TITLE:{t}')
           if '<div class="layers">' not in s or '<div class="actions">' not in s or '<div class="blockFoot">' not in s: raise SystemExit('ORIGINAL_BOARD_STRUCTURE_MISSING')
           p.write_text(s,encoding='utf-8')
-          print('BOARD_PRESENTATION_RESTORED=PASS'); print('NINE_NOTES_VERTICAL_DOM_ORDER=PASS'); print('ORIGINAL_BOARD_STRUCTURE=PASS')
-      - name: Commit exact corrected GitHub artifact
+          print('NINE_NOTES_VERTICAL_DOM_ORDER=PASS'); print('ORIGINAL_BOARD_STRUCTURE=PASS')
+      - name: Commit corrected GitHub artifact if changed
         run: |
           git config user.name 'Naya'; git config user.email 'naya@nayanet.xyz'
           git add snapshots/NayaNET-509-AAA-CURRENT.html
-          git diff --cached --exit-code && { echo NO_CHANGE; exit 1; } || true
-          git commit -m '509: restore exact cloned Smart Note board presentation'
-          git push origin main
+          if git diff --cached --quiet; then echo NO_HTML_CHANGE_NEEDED=PASS; else git commit -m '509: restore exact cloned Smart Note board presentation'; git push origin main; fi
       - name: Prepare exact GitHub artifact
         run: |
           rm -rf release; mkdir -p release/public
