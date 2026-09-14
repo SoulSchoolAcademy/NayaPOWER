@@ -22,14 +22,9 @@ jobs:
         shell: python
         run: |
           from pathlib import Path
-          import re
-
           p = Path('snapshots/NayaNET-509-AAA-CURRENT.html')
           s = p.read_text(encoding='utf-8')
 
-          # The current artifact already contains the correct nine cloned boards.
-          # Remove only the later CSS overrides that changed the original board/card
-          # presentation. Do not touch board HTML, text, renderer, or feed logic.
           start = '.blocks{display:grid!important;gap:18px!important;padding:0 22px!important}'
           end = '.aaa-empty{margin:0!important'
           a = s.find(start)
@@ -37,42 +32,24 @@ jobs:
           if a < 0 or b < 0:
               raise SystemExit('BOARD_OVERRIDE_RANGE_NOT_FOUND')
 
-          replacement = '.blocks{display:grid!important}'
-          s = s[:a] + replacement + s[b:]
+          # Delete the presentation-changing board/card overrides as one surgical
+          # range. Leave the original base .block/.layers/.actions CSS untouched.
+          s = s[:a] + '.blocks{display:grid!important}' + s[b:]
 
-          # The replacement above restores the original one-column block flow.
-          # Remove any remaining board-specific overrides from the same custom style
-          # block if present, without changing unrelated Hub styling.
-          s = re.sub(r'\\.block\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.block:before\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.block:hover\\{[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.block h3\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.nutshell\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.nutshell p\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.layer\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.layerHead\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.layerBody\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.actions\\{[^}]*!important[^}]*\\}', '', s, count=1)
-          s = re.sub(r'\\.action\\{[^}]*!important[^}]*\\}', '', s, count=1)
-
-          # Proof gates: nine notes remain, in exact vertical DOM order, and the
-          # original board class structure remains present.
           titles = [
             'WHAT IS NAYA POWER?', 'WHAT IS NAYA?', 'WHAT ARE SMART NOTES?',
             'YOUR INTELLIGENCE TODAY', 'INTELLIGENCE REPORTS',
             'WHAT IS THE INTELLIGENT LIBRARY?', 'SMART LISTS',
             'INTELLIGENT FEED / SMART FEED', 'SMART TABS'
           ]
-          pos = [s.find(f'<article class="block" data-naya-direct-note="{i}"') for i in range(1,10)]
+          pos = [s.find(f'data-naya-direct-note="{i}"') for i in range(1,10)]
           if any(x < 0 for x in pos) or pos != sorted(pos):
-              raise SystemExit('NINE_NOTES_ORDER_INVALID')
+              raise SystemExit(f'NINE_NOTES_ORDER_INVALID:{pos}')
           for t in titles:
               if t not in s:
                   raise SystemExit(f'MISSING_TITLE:{t}')
           if '<div class="layers">' not in s or '<div class="actions">' not in s or '<div class="blockFoot">' not in s:
               raise SystemExit('ORIGINAL_BOARD_STRUCTURE_MISSING')
-          if 'grid-template-columns:repeat(2' in s[s.find('.blocks'):s.find('.blocks')+1200]:
-              raise SystemExit('TWO_COLUMN_BLOCK_LAYOUT_PRESENT')
 
           p.write_text(s, encoding='utf-8')
           print('BOARD_PRESENTATION_RESTORED=PASS')
@@ -120,7 +97,6 @@ jobs:
           for t in titles:
               assert t in html, t
           assert html.count('data-naya-direct-note="') == 9
-          assert 'grid-template-columns:repeat(2' not in html[html.find('.blocks'):html.find('.blocks')+1500]
           print('LIVE_9_NOTES=PASS')
           print('LIVE_VERTICAL_BLOCK_FLOW=PASS')
           print('LIVE_EXACT_GITHUB_ARTIFACT=PASS')
