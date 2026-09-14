@@ -117,6 +117,8 @@ jobs:
           export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
           HASH=$(sha256sum release/public/index.html | awk '{print $1}')
+          STANDALONE_HASH=$(sha256sum release/public/NayaNET-509-AAA-CURRENT.html | awk '{print $1}')
+          echo "EXPECTED_STANDALONE_SHA256=$STANDALONE_HASH" >> "$GITHUB_ENV"
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$HASH"}}
           EOF
@@ -166,39 +168,29 @@ jobs:
           echo CURRENT_509_PUBLIC_RUNTIME=PASS
           echo SMART_FEED_ROUTE=PASS
 
-      - name: Capture exact live DOM
+      - name: Capture exact deployed standalone HTML
         run: |
           set -euo pipefail
-          npm init -y >/dev/null 2>&1
-          npm install playwright >/dev/null 2>&1
-          npx playwright install --with-deps chromium >/dev/null 2>&1
-          cat > capture-live.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          import { writeFile, mkdir } from 'node:fs/promises';
-          import crypto from 'node:crypto';
-          const browser = await chromium.launch({headless:true});
-          const page = await browser.newPage({viewport:{width:1440,height:1200},deviceScaleFactor:1});
-          const url = `${process.env.RUNTIME}/?exact-live-capture=${Date.now()}`;
-          await page.goto(url,{waitUntil:'networkidle',timeout:120000});
-          await page.waitForTimeout(5000);
-          const html = await page.evaluate(() => '<!doctype html>\n' + document.documentElement.outerHTML);
-          if (!html.includes('Personal Intelligence') || !html.includes('Collective Intelligence') || !html.includes('Activity Feed')) throw new Error('LIVE_DOM_MISSING_APPROVED_THREE_FEED_NAV');
-          await mkdir('snapshots',{recursive:true});
-          await writeFile('snapshots/NayaNET-509-AAA-CURRENT.html',html,'utf8');
-          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html',html,'utf8');
-          const sha256 = crypto.createHash('sha256').update(html,'utf8').digest('hex');
-          await writeFile('snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256',sha256+'  NayaNET-509-AAA-LIVE-VERIFIED.html\n','utf8');
-          await browser.close();
-          console.log('LIVE_DOM_SHA256='+sha256);
-          EOF
-          node ./capture-live.mjs
+          code=$(curl -sS -L -o /tmp/live-standalone.html -w '%{http_code}' "$RUNTIME/NayaNET-509-AAA-CURRENT.html?exact-save=${GITHUB_SHA}-$(date +%s%N)")
+          test "$code" = "200"
+          LIVE_STANDALONE_HASH=$(sha256sum /tmp/live-standalone.html | awk '{print $1}')
+          echo "LIVE_STANDALONE_SHA256=$LIVE_STANDALONE_HASH"
+          echo "EXPECTED_STANDALONE_SHA256=$EXPECTED_STANDALONE_SHA256"
+          test "$LIVE_STANDALONE_HASH" = "$EXPECTED_STANDALONE_SHA256"
+          grep -Fq 'nayanet-source-commit' /tmp/live-standalone.html
+          grep -Fq 'nayanet-smart-note-count' /tmp/live-standalone.html
+          mkdir -p snapshots
+          cp /tmp/live-standalone.html snapshots/NayaNET-509-AAA-CURRENT.html
+          cp /tmp/live-standalone.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html
+          printf '%s  NayaNET-509-AAA-CURRENT.html\n' "$LIVE_STANDALONE_HASH" > snapshots/NayaNET-509-AAA-CURRENT.sha256
+          printf '%s  NayaNET-509-AAA-LIVE-VERIFIED.html\n' "$LIVE_STANDALONE_HASH" > snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
+          echo EXACT_DEPLOYED_STANDALONE_MATCH=PASS
 
       - name: Auto-save verified 509 AAA to GitHub
         run: |
           set -euo pipefail
           git config user.name 'NayaNET Verified Snapshot'
           git config user.email 'noreply@nayanet.xyz'
-          mkdir -p snapshots
-          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
-          git commit -m "chore: autosave exact live DOM 509 AAA ${GITHUB_SHA:0:12}" || exit 0
+          git add snapshots/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-LIVE-VERIFIED.html snapshots/NayaNET-509-AAA-CURRENT.sha256 snapshots/NayaNET-509-AAA-LIVE-VERIFIED.sha256
+          git commit -m "chore: autosave exact deployed 509 AAA ${GITHUB_SHA:0:12}" || exit 0
           git push origin HEAD:main
