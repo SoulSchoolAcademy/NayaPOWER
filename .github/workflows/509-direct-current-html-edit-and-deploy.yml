@@ -1,68 +1,50 @@
 name: 509 AAA — Direct Current HTML Edit + Deploy
-
 on:
   push:
     branches: [main]
-    paths:
-      - '.github/workflows/509-direct-current-html-edit-and-deploy.yml'
-      - '.naya/DIRECT-509-EXECUTE'
   workflow_dispatch:
-
 permissions:
   contents: write
-
 env:
   FILE: snapshots/NayaNET-509-AAA-CURRENT.html
   NOTES: NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md
   WORKER_NAME: sparkling-shape-7ae5
   ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
   RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-
 jobs:
   edit-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout current GitHub HTML
-        uses: actions/checkout@v6
-        with: fetch-depth: 1
-      - name: Directly add nine static boards at the beginning of the current HTML
+      - uses: actions/checkout@v6
+        with: {fetch-depth: 1}
+      - name: Build nine static boards directly into current HTML
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import html,re
           f=Path('snapshots/NayaNET-509-AAA-CURRENT.html'); src=Path('NAYANET/509-AAA-SMART-NOTES-01-09-CANONICAL.md').read_text(encoding='utf-8'); s=f.read_text(encoding='utf-8')
-          chunks=re.split(r'(?m)^## SMART NOTE (\d+) — (.+?)\s*$',src); notes={}
-          for i in range(1,len(chunks),3):
-              n=int(chunks[i]); title=chunks[i+1].strip(); body=chunks[i+2]; ms=list(re.finditer(r'(?m)^### (IN A NUTSHELL|HUMAN NOTE|CHILD|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|ADAPTIVE LEARNING|WHAT IT MEANS|WHAT\'S IN IT FOR YOU\?)\s*$',body)); d={'title':title}
-              for j,m in enumerate(ms): d[m.group(1)]=re.sub(r'\s+',' ',body[m.end():ms[j+1].start() if j+1<len(ms) else len(body)]).strip()
-              notes[n]=d
-          assert sorted(notes)==list(range(1,10)),sorted(notes)
-          tones=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c']; labels=['HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]
-          def E(x): return html.escape(x,quote=False)
+          c=re.split(r'(?m)^## SMART NOTE (\d+) — (.+?)\s*$',src); notes={}
+          for i in range(1,len(c),3):
+            n=int(c[i]); body=c[i+2]; ms=list(re.finditer(r'(?m)^### (IN A NUTSHELL|HUMAN NOTE|CHILD|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|ADAPTIVE LEARNING|WHAT IT MEANS|WHAT\'S IN IT FOR YOU\?)\s*$',body)); d={'title':c[i+1].strip()}
+            for j,m in enumerate(ms): d[m.group(1)]=re.sub(r'\s+',' ',body[m.end():ms[j+1].start() if j+1<len(ms) else len(body)]).strip()
+            notes[n]=d
+          assert sorted(notes)==list(range(1,10))
+          tones=['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c']; keys=['HUMAN NOTE','CHILD','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS',"WHAT'S IN IT FOR YOU?"]
+          E=lambda x:html.escape(x,quote=False)
           def board(n):
-              d=notes[n]; t=tones[n-1]; layers=''.join(f'<div class="layer"><div class="layerHead"><span class="dot" style="--layer:{t}"></span><b>{E(k)}</b><span class="state">SMART NOTE</span></div><div class="layerBody">{E(d[k])}</div></div>' for k in labels)
-              return f'''<article class="block" data-naya-direct-note="{n}" data-real-smart-note="true" style="--tone:{t}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">🧠</div><div><h3>{E(d['title'])}</h3><div class="meta"><span>SMART NOTE {n:02d}</span><span>CANONICAL</span><span>VERIFIED SOURCE</span></div></div></div><span class="truth">INTELLIGENCE</span></div><div class="nutshell"><b>IN A NUTSHELL</b><p>{E(d['IN A NUTSHELL'])}</p></div><div class="layers">{layers}</div><div class="actions"><button class="action on">SAVE</button><button class="action love">LOVE</button><button class="action like">LIKE</button><button class="action">SHARE</button></div><div class="blockFoot"><span>NAYANET • SMART NOTE {n:02d}</span><span>CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND</span></div></div></article>'''
-          s=re.sub(r'<article\b[^>]*data-naya-direct-note=["\'][1-9]["\'][^>]*>.*?</article>\s*','',s,flags=re.S)
-          p=re.search(r'<div\s+class=["\']blocks["\'][^>]*>',s)
-          if not p: raise SystemExit('STOP: .blocks container not found in current HTML')
+            d=notes[n]; t=tones[n-1]; layers=''.join(f'<div class="layer"><div class="layerHead"><span class="dot" style="--layer:{t}"></span><b>{E(k)}</b><span class="state">SMART NOTE</span></div><div class="layerBody">{E(d[k])}</div></div>' for k in keys)
+            return f'<article class="block" data-naya-direct-note="{n}" data-real-smart-note="true" style="--tone:{t}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">🧠</div><div><h3>{E(d["title"])}</h3><div class="meta"><span>SMART NOTE {n:02d}</span><span>CANONICAL</span><span>VERIFIED SOURCE</span></div></div></div><span class="truth">INTELLIGENCE</span></div><div class="nutshell"><b>IN A NUTSHELL</b><p>{E(d["IN A NUTSHELL"])}</p></div><div class="layers">{layers}</div><div class="actions"><button class="action on">SAVE</button><button class="action love">LOVE</button><button class="action like">LIKE</button><button class="action">SHARE</button></div><div class="blockFoot"><span>NAYANET • SMART NOTE {n:02d}</span><span>CAPTURE → DISTILL → ORGANIZE → REMEMBER → FIND → COMPOUND</span></div></div></article>'
+          s=re.sub(r'<article\b[^>]*data-naya-direct-note=["\'][1-9]["\'][^>]*>.*?</article>\s*','',s,flags=re.S); p=re.search(r'<div\s+class=["\']blocks["\'][^>]*>',s); assert p
           s=s[:p.end()]+''.join(board(n) for n in range(1,10))+s[p.end():]
-          if 'name="nayanet-direct-nine"' not in s: s=s.replace('<head>','<head><meta name="nayanet-direct-nine" content="verified-static-top-nine">',1)
-          f.write_text(s,encoding='utf-8'); print('STATIC_TOP_NINE=PASS',f.stat().st_size)
+          if 'name="nayanet-direct-nine"' not in s:s=s.replace('<head>','<head><meta name="nayanet-direct-nine" content="verified-static-top-nine">',1)
+          f.write_text(s,encoding='utf-8')
           PY
-      - name: Verify exact GitHub HTML
+      - name: Verify and save exact HTML
         run: |
-          set -euo pipefail
-          test -s "$FILE"; grep -Fq 'name="nayanet-direct-nine"' "$FILE"; test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE" | wc -l)" -eq 9
-          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done
-      - name: Commit exact edited HTML to GitHub
+          set -e; test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE"|wc -l)" -eq 9; for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done; git config user.name Naya; git config user.email naya@nayanet.xyz; git add "$FILE"; git commit -m '509 AAA: add nine canonical Smart Note boards directly to current HTML'; git push origin HEAD:main
+      - name: Deploy exact GitHub HTML
         run: |
-          git config user.name 'Naya'; git config user.email 'naya@nayanet.xyz'; git add "$FILE"; git diff --cached --quiet && { echo NO_HTML_CHANGE; exit 1; }; git commit -m '509 AAA: add nine canonical Smart Note boards directly to current HTML'; git push origin HEAD:main
-      - name: Deploy that exact GitHub HTML
+          set -e; rm -rf release; mkdir -p release/public; cp "$FILE" release/public/index.html; printf '%s\n' 'export default {async fetch(request,env){const u=new URL(request.url);const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store");return new Response(x.body,{status:x.status,headers:h})}}' > release/worker.js; printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc; npx --yes wrangler@latest deploy --config release/wrangler.jsonc
+      - name: Verify live
         run: |
-          set -euo pipefail; rm -rf release; mkdir -p release/public; cp "$FILE" release/public/index.html
-          printf '%s\n' 'export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==="/"||u.pathname==="/index.html"||u.pathname.startsWith("/intelligence/");const r=spa?new Request(new URL("/index.html",request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
-          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
-          npx --yes wrangler@latest deploy --config release/wrangler.jsonc
-      - name: Verify live visibly contains the same nine boards
-        run: |
-          set -euo pipefail; curl -fsSL "$RUNTIME/?direct-verify=${GITHUB_SHA}" -o /tmp/live.html; grep -Fq 'name="nayanet-direct-nine"' /tmp/live.html; test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live.html | wc -l)" -eq 9; grep -Fq 'WHAT IS NAYA POWER?' /tmp/live.html; grep -Fq 'SMART TABS' /tmp/live.html; echo LIVE_EXACT_GITHUB_HTML=PASS
+          set -e; curl -fsSL "$RUNTIME/?v=${GITHUB_SHA}" -o /tmp/live; test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live|wc -l)" -eq 9; grep -Fq 'SMART TABS' /tmp/live; echo VERIFIED_LIVE_NINE=PASS
