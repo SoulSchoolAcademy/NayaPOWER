@@ -109,22 +109,34 @@ jobs:
         run: |
           set -euo pipefail
           fail(){ echo "PUBLIC_CHECKPOINT_VERIFY=FAIL:$1"; exit 1; }
+          expected_commit="$GITHUB_SHA"
+          expected_source='509-AAA-GITHUB-CHECKPOINT'
+          verified=0
 
-          index_code=$(curl -sS -D /tmp/index.headers -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${GITHUB_SHA}") || fail "INDEX_CURL"
-          echo "INDEX_HTTP=$index_code"
-          grep -Fi 'x-nayanet-' /tmp/index.headers || true
-          [ "$index_code" = "200" ] || fail "INDEX_HTTP_$index_code"
-          grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html || fail "INDEX_MISSING_PLACEMENT_SCRIPT"
-          grep -Fqi 'x-nayanet-canonical-source: 509-AAA-GITHUB-CHECKPOINT' /tmp/index.headers || fail "HEADER_CANONICAL_SOURCE"
-          grep -Fqi "x-nayanet-source-commit: ${GITHUB_SHA}" /tmp/index.headers || fail "HEADER_SOURCE_COMMIT"
+          for attempt in $(seq 1 15); do
+            probe="${GITHUB_SHA}-${attempt}-$(date +%s)"
+            index_code=$(curl -sS -D /tmp/index.headers -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?checkpoint-verify=${probe}") || index_code=000
+            echo "VERIFY_ATTEMPT=$attempt INDEX_HTTP=$index_code"
+            grep -Fi 'x-nayanet-' /tmp/index.headers || true
+            if [ "$index_code" = "200" ] && \
+               grep -Fqi "x-nayanet-canonical-source: ${expected_source}" /tmp/index.headers && \
+               grep -Fqi "x-nayanet-source-commit: ${expected_commit}" /tmp/index.headers && \
+               grep -Fq '/naya-509-real-smart-feed-nav-adjacent-placement.js' /tmp/live.html; then
+              verified=1
+              break
+            fi
+            sleep 2
+          done
 
-          placement_code=$(curl -sS -D /tmp/placement.headers -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}") || fail "PLACEMENT_CURL"
+          [ "$verified" = "1" ] || fail "PUBLIC_RUNTIME_DID_NOT_REACH_EXPECTED_CHECKPOINT"
+
+          placement_code=$(curl -sS -D /tmp/placement.headers -o /tmp/live-placement.js -w '%{http_code}' "$RUNTIME/naya-509-real-smart-feed-nav-adjacent-placement.js?checkpoint-verify=${GITHUB_SHA}-final") || fail "PLACEMENT_CURL"
           echo "PLACEMENT_HTTP=$placement_code"
           grep -Fi 'content-type:' /tmp/placement.headers || true
           [ "$placement_code" = "200" ] || fail "PLACEMENT_HTTP_$placement_code"
           grep -Fq 'window.Naya509NavAdjacentPlacement' /tmp/live-placement.js || fail "PLACEMENT_SYMBOL_MISSING"
 
-          smart_code=$(curl -sS -D /tmp/smart.headers -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}") || fail "SMART_LINK_CURL"
+          smart_code=$(curl -sS -D /tmp/smart.headers -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?checkpoint-verify=${GITHUB_SHA}-final") || fail "SMART_LINK_CURL"
           echo "SMART_LINK_HTTP=$smart_code"
           [ "$smart_code" = "200" ] || fail "SMART_LINK_HTTP_$smart_code"
 
