@@ -37,100 +37,78 @@ jobs:
           s = file.read_text(encoding='utf-8')
           src = notes.read_text(encoding='utf-8')
 
-          # Parse the canonical nine notes exactly as supplied in the repository.
-          chunks = re.split(r'(?m)^# 🧠 SMART NOTE (\d+) — (.+?)\s*$', src)
+          # Canonical source uses ## SMART NOTE and ### section headings.
+          chunks = re.split(r'(?m)^## SMART NOTE (\d+) — (.+?)\s*$', src)
           parsed = {}
           for i in range(1, len(chunks), 3):
               n = int(chunks[i]); title = chunks[i+1].strip(); body = chunks[i+2]
               fields = {}
-              matches = list(re.finditer(r'(?m)^## (IN A NUTSHELL|HUMAN NOTE|CHILD|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|ADAPTIVE LEARNING|WHAT IT MEANS|WHAT\'S IN IT FOR YOU\?)\s*$', body))
-              for j,m in enumerate(matches):
+              matches = list(re.finditer(r'(?m)^### (IN A NUTSHELL|HUMAN NOTE|CHILD|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|ADAPTIVE LEARNING|WHAT IT MEANS|WHAT\'S IN IT FOR YOU\?)\s*$', body))
+              for j, m in enumerate(matches):
                   end = matches[j+1].start() if j+1 < len(matches) else len(body)
                   fields[m.group(1)] = re.sub(r'\s+', ' ', body[m.end():end]).strip()
-              parsed[n] = {'title':title, **fields}
-          assert len(parsed) == 9, f'Expected 9 notes, got {len(parsed)}'
+              parsed[n] = {'title': title, **fields}
+          assert sorted(parsed) == list(range(1,10)), f'Expected notes 1-9, got {sorted(parsed)}'
 
-          # Find the first real Smart Note board in the current HTML. Do not redesign it.
+          # Clone the existing board. No redesign: preserve its markup, controls and layout.
           m = re.search(r'<article\b[^>]*class=["\'][^"\']*\bblock\b[^"\']*["\'][^>]*>.*?</article>', s, re.S)
           if not m:
-              raise SystemExit('STOP: no existing .block Smart Note board found in current HTML')
+              raise SystemExit('STOP: existing Smart Note .block board not found')
           template = m.group(0)
 
           tones = ['#ff4fd8','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#ff9b4a','#ff5e6c']
           def esc(x): return html.escape(x, quote=False)
 
-          def replace_one(text, pattern, value):
-              out,n = re.subn(pattern, value, text, count=1, flags=re.S)
-              if n != 1: raise SystemExit(f'STOP: expected one match for {pattern!r}, got {n}')
-              return out
-
           def make_board(note, tone, num):
               b = template
-              b = re.sub(r'\bstyle=["\']([^"\']*)["\']', lambda x: x.group(0), b, count=1)
-              # Make the cloned board carry its own border/color identity while preserving layout.
-              if re.search(r'--tone\s*:', b):
-                  b = re.sub(r'--tone\s*:\s*[^;"\']+', f'--tone:{tone}', b, count=1)
-              else:
-                  b = re.sub(r'<article\b', f'<article style="--tone:{tone}"', b, count=1)
-              b = re.sub(r'<article\b([^>]*)>', lambda x: '<article'+x.group(1)+f' data-naya-direct-note="{num}" data-real-smart-note="true">', b, count=1)
-              b = replace_one(b, r'<h3>.*?</h3>', f'<h3>{esc(note["title"])}</h3>')
-              b = replace_one(b, r'(<div\s+class=["\']nutshell["\'][\s\S]*?<p>).*?(</p>)', lambda x: x.group(1)+esc(note['IN A NUTSHELL'])+x.group(2))
+              b = re.sub(r'(<article\b[^>]*)(>)', lambda x: x.group(1) + f' data-naya-direct-note="{num}" data-real-smart-note="true" style="--tone:{tone}"' + x.group(2), b, count=1)
+              b = re.sub(r'<h3>.*?</h3>', f'<h3>{esc(note["title"])}</h3>', b, count=1, flags=re.S)
+              b = re.sub(r'(<div\s+class=["\']nutshell["\'][\s\S]*?<p>).*?(</p>)', lambda x: x.group(1)+esc(note['IN A NUTSHELL'])+x.group(2), b, count=1, flags=re.S)
               vals = [note['HUMAN NOTE'],note['CHILD'],note['GRANDMA NOTE'],note['NAYA NOTE'],note['MACHINE NOTE'],note['ADAPTIVE LEARNING'],note['WHAT IT MEANS'],note["WHAT'S IN IT FOR YOU?"]]
               bodies = list(re.finditer(r'(<div\s+class=["\']layerBody["\']>).*?(</div>)', b, re.S))
-              if len(bodies) < 8: raise SystemExit(f'STOP: cloned board has only {len(bodies)} layer bodies')
-              # Replace first eight layer bodies; the board's existing structure/labels remain untouched.
-              for idx in range(7,-1,-1):
+              if len(bodies) < 8:
+                  raise SystemExit(f'STOP: board template has {len(bodies)} layer bodies, expected at least 8')
+              for idx in range(7, -1, -1):
                   x = bodies[idx]
-                  b = b[:x.start(0)] + x.group(1)+esc(vals[idx])+x.group(2) + b[x.end(0):]
+                  b = b[:x.start()] + x.group(1) + esc(vals[idx]) + x.group(2) + b[x.end():]
               return b
 
-          new_boards = [make_board(parsed[i], tones[i-1], i) for i in range(1,10)]
-          # Remove any prior direct-note insertion so this operation is idempotent.
+          # Idempotent: remove only boards created by this direct pass.
           s = re.sub(r'<article\b[^>]*data-naya-direct-note=["\'][1-9]["\'][^>]*>.*?</article>\s*', '', s, flags=re.S)
-          # Re-find the first remaining real board after cleanup and insert the nine clones before it.
-          m2 = re.search(r'<article\b[^>]*class=["\'][^"\']*\bblock\b[^"\']*["\'][^>]*>', s)
-          if not m2: raise SystemExit('STOP: no insertion point after cleanup')
-          s = s[:m2.start()] + '\n'.join(new_boards) + s[m2.start():]
-          # Visible source receipt inside the HTML itself.
+          m = re.search(r'<article\b[^>]*class=["\'][^"\']*\bblock\b[^"\']*["\'][^>]*>', s)
+          if not m:
+              raise SystemExit('STOP: no insertion point')
+          new = ''.join(make_board(parsed[i], tones[i-1], i) for i in range(1,10))
+          s = s[:m.start()] + new + s[m.start():]
           marker = '<meta name="nayanet-direct-nine" content="verified-static-top-nine">'
           if 'name="nayanet-direct-nine"' not in s:
               s = s.replace('<head>', '<head>'+marker, 1)
           file.write_text(s, encoding='utf-8')
-          print('DIRECT_STATIC_TOP_NINE=PASS')
-          print('BYTES=', file.stat().st_size)
+          print('DIRECT_STATIC_TOP_NINE=PASS', file.stat().st_size)
           PY
 
-      - name: Verify GitHub artifact before deployment
+      - name: Verify exact GitHub HTML
         run: |
           set -euo pipefail
           test -s "$FILE"
           grep -Fq 'name="nayanet-direct-nine"' "$FILE"
           test "$(grep -o 'data-naya-direct-note="[1-9]"' "$FILE" | wc -l)" -eq 9
-          grep -Fq 'WHAT IS NAYA POWER?' "$FILE"
-          grep -Fq 'WHAT IS NAYA?' "$FILE"
-          grep -Fq 'WHAT ARE SMART NOTES?' "$FILE"
-          grep -Fq 'YOUR INTELLIGENCE TODAY' "$FILE"
-          grep -Fq 'INTELLIGENCE REPORTS' "$FILE"
-          grep -Fq 'WHAT IS THE INTELLIGENT LIBRARY?' "$FILE"
-          grep -Fq 'SMART LISTS' "$FILE"
-          grep -Fq 'INTELLIGENT FEED / SMART FEED' "$FILE"
-          grep -Fq 'SMART TABS' "$FILE"
+          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" "$FILE"; done
           echo GITHUB_CURRENT_HTML=PASS
 
-      - name: Commit the exact edited HTML to GitHub
+      - name: Commit exact edited HTML to GitHub
         run: |
           git config user.name 'Naya'
           git config user.email 'naya@nayanet.xyz'
           git add "$FILE"
-          git diff --cached --quiet && { echo 'NO_HTML_CHANGE'; exit 1; } || true
+          git diff --cached --quiet && { echo 'NO_HTML_CHANGE'; exit 1; }
           git commit -m '509 AAA: add nine canonical Smart Note boards directly to current HTML'
           git push origin HEAD:main
 
-      - name: Prepare exact GitHub HTML for Cloudflare
+      - name: Deploy that exact GitHub HTML
         run: |
           set -euo pipefail
-          rm -rf release
-          mkdir -p release/public
+          rm -rf release && mkdir -p release/public
           cp "$FILE" release/public/index.html
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const r=spa?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Direct-HTML','true');h.set('X-NayaNET-GitHub-Artifact','snapshots/NayaNET-509-AAA-CURRENT.html');return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
@@ -138,16 +116,9 @@ jobs:
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"}}
           EOF
+          npx --yes wrangler@latest deploy --config release/wrangler.jsonc
 
-      - name: Deploy the exact GitHub HTML
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.ACCOUNT_ID }}
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-
-      - name: Verify exact live result
+      - name: Verify live is the exact edited artifact
         run: |
           set -euo pipefail
           curl -fsSL "$RUNTIME/?direct-verify=${GITHUB_SHA}" -o /tmp/live.html
