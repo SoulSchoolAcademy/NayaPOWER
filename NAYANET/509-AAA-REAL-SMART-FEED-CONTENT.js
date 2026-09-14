@@ -10,21 +10,41 @@ const dec=()=>{try{return decodeURIComponent(escape(atob(PAYLOAD)))}catch(_){try
 const source=dec();if(!source)return;
 const tones=['#ffffff','#ff4fd8','#d86cff','#9d75ff','#55b9ee','#55e39a','#b8ee57','#e8c766','#ff5e6c'];
 const glyphs=['◈','✦','◇','◉','✧','◆','⬢','✺','✦'];
+function parseSections(text){const sections={};const re=/(?:^|\n)\s*(\d+)\.\s*([^\n]+)\n([\s\S]*?)(?=\n\s*\d+\.\s|$)/g;let m;while((m=re.exec(text)))sections[Number(m[1])]={name:m[2].trim(),text:m[3].trim()};return sections}
 function parseNotes(text){
- const chunks=text.split(/(?=^\s*🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*\d+\b)/im).map(x=>x.trim()).filter(Boolean);
- const notes=[];
- for(const chunk of chunks){
-   const head=chunk.match(/^🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*(\d+)\s*\n([\s\S]*)$/i);if(!head)continue;
-   const number=Number(head[1]);if(number<1||number>9)continue;
-   let rest=head[2].trim();
-   const lines=rest.split(/\r?\n/);let title='';
-   while(lines.length){const x=(lines[0]||'').trim();if(!x){lines.shift();continue} if(/^Subject\s+ID\s*:/i.test(x)||/^Status\s*:/i.test(x)||/^SAY\s+EVERYTHING/i.test(x)){lines.shift();continue} title=x;lines.shift();break}
-   const chunkBody=lines.join('\n').trim(),sections={};
-   const re=/(?:^|\n)\s*(\d+)\.\s*([^\n]+)\n([\s\S]*?)(?=\n\s*\d+\.\s|$)/g;let m;
-   while((m=re.exec(chunkBody)))sections[Number(m[1])]={name:m[2].trim(),text:m[3].trim()};
-   if(Object.keys(sections).length)notes.push({number,title,sections});
+ const markers=[
+  {number:1,re:/^🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*01\b/im,title:'Naya Power'},
+  {number:2,re:/^🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*02\b/im,title:'Naya'},
+  {number:3,re:/^🧠\s*NAYA\s+POWER\s*[—-]\s*SMART\s+NOTE\s*03\b/im,title:'Smart Notes'},
+  {number:4,re:/^🧠\s*#4\s*[—-]\s*YOUR\s+INTELLIGENCE\s+TODAY\s*$/im,title:'Your Intelligence Today'},
+  {number:6,re:/Naya\s+Power\s*#06\s*[—-]\s*What\s+Is\s+the\s+Intelligent\s+Library\?/im,title:'Intelligent Library'},
+  {number:7,re:/^07\s*[—-]\s*SMART\s+LISTS\s*$/im,title:'Smart Lists'},
+  {number:8,re:/^08\s*[—-]\s*INTELLIGENT\s+FEED\s*\/\s*SMART\s+FEED\s*$/im,title:'Intelligent Feed / Smart Feed'},
+  {number:9,re:/^09\s*[—-]\s*SMART\s+TABS\s*$/im,title:'Smart Tabs'}
+ ];
+ const found=markers.map(x=>{const m=text.match(x.re);return m?{...x,pos:m.index}:null}).filter(Boolean).sort((a,b)=>a.pos-b.pos);
+ const p6=found.find(x=>x.number===6)?.pos??-1;
+ const ranges=[];
+ for(let i=0;i<found.length;i++){
+  const a=found[i],b=found[i+1];
+  if(a.number===4&&p6>=0){
+   const chunk=text.slice(a.pos,p6);
+   const split=chunk.search(/\n[-_]{20,}\s*\n\s*1\.\s*IN A NUTSHELL\s*\n\s*Intelligence Reports\b/i);
+   if(split>0){ranges.push({number:4,start:a.pos,end:a.pos+split,title:a.title});ranges.push({number:5,start:a.pos+split,end:p6,title:'Intelligence Reports'})}
+   else ranges.push({number:4,start:a.pos,end:p6,title:a.title});
+  }else if(a.number!==4){ranges.push({number:a.number,start:a.pos,end:b?b.pos:text.length,title:a.title})}
  }
- return notes.sort((a,b)=>a.number-b.number).filter((n,i,a)=>i===0||n.number!==a[i-1].number);
+ const notes=ranges.map(r=>{
+  let rest=text.slice(r.start,r.end).trim();
+  if(r.number<=3){
+   const lines=rest.split(/\r?\n/);
+   while(lines.length){const x=(lines[0]||'').trim();if(!x){lines.shift();continue}if(/^🧠\s*NAYA\s+POWER/i.test(x)){lines.shift();continue}if(r.number===1&&/^What\s+Is\s+Naya\s+Power\?/i.test(x)){lines.shift();continue}if(r.number===2&&/^What\s+Is\s+Naya\?/i.test(x)){lines.shift();continue}if(r.number===3&&/^What\s+Are\s+Smart\s+Notes\?/i.test(x)){lines.shift();continue}break}
+   rest=lines.join('\n');
+  }
+  if(r.number===6)rest=rest.replace(/^Status:[^\n]*\n?/im,'').replace(/^Date:[^\n]*\n?/im,'').replace(/^Subject:[^\n]*\n?/im,'').replace(/^Smart Note Type:[^\n]*\n?/im,'').replace(/^Naya\s+Power\s*#06[^\n]*\n?/im,'');
+  return {number:r.number,title:r.title,sections:parseSections(rest)};
+ }).filter(n=>Object.keys(n.sections).length).sort((a,b)=>a.number-b.number);
+ return notes.length===9&&notes.every((n,i)=>n.number===i+1)?notes:[];
 }
 const body=t=>esc(t).replace(/\n/g,'<br>');
 function actions(){return `<div class="actions" role="group" aria-label="Intelligence actions"><button class="action create" type="button" data-c4-kind="create-space">＋ CREATE SPACE</button><button class="action favorite" type="button" data-c4-kind="favorite">★ FAVORITE</button><button class="action save" type="button" data-c4-kind="save">SAVE</button><button class="action love" type="button" data-c4-kind="love" aria-pressed="false">❤️ LOVE</button><button class="action like" type="button" data-c4-kind="like" aria-pressed="false">LIKE</button><span class="naya509-rating" data-c4-kind="rating" role="group" aria-label="Rate this intelligence"><span class="ratingLabel">RATE THIS INTELLIGENCE</span><span class="ratingStars">${[1,2,3,4,5].map(n=>`<button type="button" class="ratingStar" data-rating="${n}" aria-label="Rate ${n} out of 5">★</button>`).join('')}</span></span><button class="action share" type="button" data-c4-kind="share-intel">＋ SHARE INTEL</button></div>`}
@@ -34,12 +54,12 @@ function stripLegacyBars(){
  document.querySelectorAll('body *').forEach(e=>{if(e.closest('.feedNav')||e.children.length)return;const t=(e.textContent||'').trim();if(/^INTELLIGENCE\s+(CONTEXT|COLLECTIVE)$/i.test(t)||/^ACTIONS\s+ARE\s+REMEMBERED\s+ON\s+THIS\s+DEVICE$/i.test(t)||/^RUNTIME\s+STATE\s+VISIBLE$/i.test(t)){const p=e.closest('.railCard,.contextBar,.collectiveBar,.statusBar,.feedStatus,.feedBanner,.runtimeBar');if(p&&!p.closest('.feedNav'))p.remove()}});
  document.querySelectorAll('.naya509-mission').forEach(e=>e.remove());
 }
-function run(){const blocks=document.querySelector('.blocks');if(!blocks)return false;const notes=parseNotes(source);if(notes.length!==9||notes.some((n,i)=>n.number!==i+1))return false;const sig=notes.map(n=>`${n.number}:${n.title}`).join('|');if(blocks.dataset.nayaRealSignature!==sig||blocks.querySelectorAll('[data-real-smart-note]').length!==9){blocks.dataset.nayaRealRendering='1';blocks.innerHTML=notes.map(board).join('');blocks.dataset.nayaRealSignature=sig;blocks.dataset.nayaRealRendering='0'}stripLegacyBars();document.documentElement.dataset.nayaRealSmartFeed='true';document.documentElement.dataset.nayaRealSmartNoteCount='9';return true}
+function run(){const blocks=document.querySelector('.blocks');if(!blocks)return false;const notes=parseNotes(source);if(notes.length!==9)return false;const sig=notes.map(n=>`${n.number}:${n.title}`).join('|');if(blocks.dataset.nayaRealSignature!==sig||blocks.querySelectorAll('[data-real-smart-note]').length!==9){blocks.dataset.nayaRealRendering='1';blocks.innerHTML=notes.map(board).join('');blocks.dataset.nayaRealSignature=sig;blocks.dataset.nayaRealRendering='0'}stripLegacyBars();document.documentElement.dataset.nayaRealSmartFeed='true';document.documentElement.dataset.nayaRealSmartNoteCount='9';return true}
 function style(){if(document.getElementById('naya509-real-content-style'))return;const s=document.createElement('style');s.id='naya509-real-content-style';s.textContent=`
 .naya509-board{min-height:0!important;padding:34px 38px 42px 42px!important}.naya509-board .blockInner{max-width:1500px!important;margin:0 auto!important}.naya509-board .meta,.naya509-board .truth,.naya509-board .state{font-size:14px!important;line-height:1.4!important}.naya509-board .layerHead b{font-size:18px!important}.naya509-board .layerBody{font-size:20px!important;line-height:1.62!important;color:#e7e2eb!important}.naya509-board .nutshell b{font-size:15px!important}.naya509-board .nutshell p{font-size:24px!important;line-height:1.58!important}.naya509-board .action{font-size:15px!important;min-height:52px!important;padding:0 17px!important}.naya509-board .ratingLabel{font-size:14px!important}.naya509-board .ratingStar{font-size:30px!important;width:46px!important;height:46px!important}
 @media(max-width:760px){.naya509-board{padding:26px 18px 34px 28px!important}.naya509-board .layerBody{font-size:19px!important}.naya509-board .layerHead b{font-size:17px!important}.naya509-board .nutshell p{font-size:21px!important}.naya509-board .action{font-size:14px!important}.naya509-board .ratingStar{width:42px!important;height:44px!important;font-size:28px!important}}
 `;document.head.appendChild(s)}
 function boot(){style();run();const b=document.querySelector('.blocks');if(b&&!b.dataset.nayaRealObserver){const mo=new MutationObserver(()=>{if(b.dataset.nayaRealRendering!=='1')run()});mo.observe(b,{childList:true});b.dataset.nayaRealObserver='1'}return !!b}
-window.Naya509RealSmartFeed={boot,run,version:'final-boot-3'};
+window.Naya509RealSmartFeed={boot,run,version:'final-boot-4'};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 })();
