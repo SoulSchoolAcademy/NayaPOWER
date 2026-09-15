@@ -70,9 +70,42 @@ If the live control plane still identifies the Assistant-lane restoration as the
 
 If the live control plane has subsequently been explicitly reconciled so that 509 is the active authorized block, continue with the nine-board release sequence below.
 
+## NEW HARDENING — ACTIVE 509 PUBLIC DEPLOYMENT LANE IS NOW FAIL-CLOSED
+
+At the latest verified repository HEAD, `.github/workflows/509-smart-board-world-class.yml` has been replaced with an explicit blocked workflow. This is intentional and must be preserved while the Assistant Cloudflare/live authority remains unresolved.
+
+The current protective commit is:
+
+`bb77055d8c7435a26272899d0ff542d798617e92`
+
+The current live `main` HEAD after the subsequent activity-receipt update and this prompt update must still be resolved from GitHub before any claim is made.
+
+The blocked workflow exists to prevent accidental or unauthorized GitHub 509 public deployment. **Do not restore an executable 509 deployment workflow unless the higher-priority control plane explicitly reconciles the Assistant-lane authority boundary and authorizes the 509 lane.**
+
+This is a protection, not a product implementation. Do not weaken or remove it merely to make a workflow run.
+
+## ASSISTANT-LANE AUTHORITY RESTORATION — SINGLE HIGHEST-VALUE ACTION
+
+The active P0 next action remains:
+
+**Reconcile the missing Assistant-lane Cloudflare release mechanism and authorized runtime target against authoritative external deployment configuration or an authorized execution surface.**
+
+Determine:
+
+- where the real Assistant-lane Hub source lives;
+- what the authorized release mechanism is;
+- what the authorized runtime target is;
+- what evidence establishes that authority;
+- whether that execution surface is actually available;
+- whether the current runtime can be independently observed and verified.
+
+The repository currently does not establish that external authority. The connected execution surface must not invent it.
+
+If the required external capability is unavailable, record it explicitly as **UNKNOWN/BLOCKED** and maximize repository-side value without violating the boundary.
+
 ## SMART BOARD TARGET
 
-The authorized 509 target currently requires:
+Once authority is explicitly reconciled, the authorized 509 target currently requires:
 
 - exactly 9 canonical boards in order:
   1. What Is Naya Power?
