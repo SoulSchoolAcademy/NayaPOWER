@@ -1,8 +1,8 @@
 # NAYA ACTION V1 — SMART BOARD PROOF
 
-**Date:** 2026-09-15
-**Action:** `NAYA-ACTION-2026-09-15-SMART-BOARD-001`
-**Status:** INVESTIGATING
+**Date:** 2026-09-15  
+**Action:** `NAYA-ACTION-2026-09-15-SMART-BOARD-001`  
+**Status:** READY_FOR_DECISION
 
 ## Mission
 
@@ -12,26 +12,62 @@ Bring the Smart Board experience to the canonical NayaNET Hub standard: premium,
 
 `RESTORE → UNDERSTAND → DECIDE → EXECUTE → VERIFY → RECORD → LEARN → UPDATE → HANDOFF → CONTINUE`
 
-## What happened
+## Current source truth
 
-The repository already contained the canonical continuous project execution loop, committed immediately before this action. Rather than creating a competing operating system, this execution added the missing atomic `NAYA_ACTION_V1` record layer and documented its authority relationship to the existing control plane.
+The latest observed `main` HEAD during this execution is `b40b585d0db575937963305fadf2793048c21388`. The repository requires live HEAD resolution at execution time; recorded HEADs are evidence, not permanent current truth.
 
-The first Smart Board action record was created with state `INVESTIGATING`, not success. The record captures the prior AppDeploy prototype as historical evidence of a technically healthy but mission-invalid route.
+## Restore / inspection result
+
+The mandatory NayaNET Hub READ-FIRST gate and Foundation Contract were read. They establish `NAYANET/HUB/` as the canonical source boundary, Cloudflare as the production boundary, one shell/navigation/event/block/feed rendering authority, and a source-to-runtime proof chain.
+
+The actual Smart Board implementation target is now established:
+
+- Renderer: `NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx`
+- Composition: `NAYANET/HUB/src/app/App.tsx`
+- Event/data model: `NAYANET/HUB/src/intelligence/types.ts`
+- Existing visual system: `NAYANET/HUB/src/styles/globals.css` + `responsive.css`
+
+`App.tsx` selects an `IntelligentEvent` and renders `SmartFeedBoard`; this is the real canonical implementation path, not the earlier standalone AppDeploy prototype.
+
+## What the current renderer already does
+
+Create Space; Favorite/Save; Activity/Collective/Personal lenses; search; In a Nutshell; perspective notes; Naya interpretation; Machine evidence; Adapter Learning; What It Means; action/next-action content; What's In It For You; trust/provenance/privacy; related intelligence; reactions/rating; sharing; comments; Ask Naya; and Smart Space creation.
+
+## Concrete implementation gaps
+
+1. Apply/Use is not a distinct semantic data/rendering layer. `event.action` is the nearest existing field, but the renderer currently labels it `WHAT CAN I DO?`.
+2. The current PIS-facing contract describes eight lenses, while the active Smart Board mission requires a deliberate Apply/Use layer and richer layer identity. This must be reconciled before changing the data model.
+3. Board identity is currently represented with simple text glyphs rather than dedicated dimensional/sculptural visual identities.
+4. Existing CSS already provides useful material/depth/illumination/responsive design DNA and should be elevated rather than replaced.
+5. Production/runtime proof remains separate from source proof and is not available from this execution surface.
+
+## Architecture reconciliation finding
+
+The Foundation Contract says there is no permanent right sidebar, while current `AppShellV3.tsx` contains a `hub-right-rail`. This is a separate canonical-source reconciliation issue and is not silently changed as part of the Smart Board slice.
 
 ## Verified in this execution
 
-- Current GitHub source was inspected before action.
-- Existing NayaPOWER governance and continuity laws were inspected.
-- The canonical continuous project execution loop was found at `SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md`.
-- `NAYA_ACTION_V1` schema was created at `.naya/actions/NAYA_ACTION_V1.schema.json`.
-- First Smart Board action record was created at `.naya/actions/NAYA-ACTION-2026-09-15-SMART-BOARD-001.json`.
-- No standalone Smart Board redesign was performed.
+- Current repository source inspected directly.
+- Canonical Hub READ-FIRST gate inspected.
+- Foundation Contract inspected.
+- Actual Smart Board renderer identified.
+- Actual composition path identified.
+- Actual IntelligentEvent model identified.
+- Current Smart Board capabilities and missing Apply/Use representation identified.
+- Existing visual/depth/responsive implementation identified for preservation.
+- No standalone prototype created.
+- No unverified production claim made.
 
 ## Not verified
 
-- The actual canonical Smart Board renderer has not yet been established in this execution.
-- The canonical production/live runtime has not been proven.
-- The final Smart Board visual/interaction requirements have not been verified.
+- Smart Board mission success.
+- Dedicated Apply/Use implementation.
+- Final dimensional/sculptural visual treatment.
+- Full interaction acceptance after changes.
+- Build/static/contract results for a future change.
+- Canonical Cloudflare runtime.
+- Exact public runtime identity.
+- Human visual acceptance.
 
 ## Failure / lesson
 
@@ -41,12 +77,18 @@ A deployment can be technically healthy while still being wrong because it targe
 
 ## Protected
 
-Preserve canonical Hub architecture, existing working functionality, Smart Board content architecture, protected progress, Assistant Cloudflare/live lane separation, GitHub 509 lane separation, UNKNOWN/BLOCKED semantics, and Adaptive Reconstruction + Surgical Evolution.
+Preserve canonical Hub architecture, existing working functionality, Smart Board content architecture, protected progress, Assistant Cloudflare/live lane separation, GitHub 509 lane separation, UNKNOWN/BLOCKED semantics, one-renderer architecture, and Adaptive Reconstruction + Surgical Evolution.
 
-## Next action
+## Decision
 
-Inspect the actual canonical Smart Board implementation and its renderer/data path before any Hub modification. If the runtime boundary remains unavailable, continue repository-side inspection/preparation without bypassing the authorized lane.
+Repository-side Smart Board work is now actionable because the canonical renderer/data path is known. The next implementation must reconcile whether the existing `action` field can safely serve as Apply/Use without semantic loss. If not, introduce the smallest canonical data-model addition and update its source/fixtures/renderer together. Do not create a parallel renderer or standalone prototype.
+
+Production/runtime release remains separately gated.
+
+## Next action — exactly one
+
+**Surgically implement the canonical Smart Board Apply/Use layer and elevate its visual identity without creating a second renderer.**
 
 ## Handoff
 
-The canonical machine-readable continuation is the `ready_to_run_execution` field in `.naya/actions/NAYA-ACTION-2026-09-15-SMART-BOARD-001.json`.
+The machine-readable `ready_to_run_execution` in `.naya/actions/NAYA-ACTION-2026-09-15-SMART-BOARD-001.json` is the canonical successor baton.
