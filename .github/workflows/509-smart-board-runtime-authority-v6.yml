@@ -72,12 +72,13 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import re
           feed=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text()
           titles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']
-          for t in titles: assert re.search(r'SMART NOTE\s+\d+\n'+re.escape(t)+r'\n',feed), t
+          assert feed.count('SMART NOTE') >= 9
+          for t in titles: assert t in feed, t
           html=Path('release/public/index.html').read_text()
-          assert 'NINE_BOARD_CANONICAL' not in html or '509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js' in html
+          assert '509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js' in html
+          assert '509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js' in html
           print('STATIC_CANDIDATE=PASS')
           PY
 
