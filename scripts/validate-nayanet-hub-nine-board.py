@@ -9,8 +9,8 @@ boards = [
     'What Is the Intelligent Library?', 'Smart Lists', 'Smart Spaces', 'Smart Mail'
 ]
 sidebar = [
-    'Intelligent', 'Reports', 'Intelligent Library', 'Smart Start', 'Smart Ledgers',
-    'Peer Connections', 'Smart Lists', 'Smart Spaces', 'Smart Mail', 'Settings'
+    'Your Intelligence Today', 'Your Report', 'Intelligent Library', 'Smart Share',
+    'Smart Ledger', 'Your Connections', 'Smart Lists', 'Smart Spaces', 'Smart Mail', 'Settings'
 ]
 layers = [
     'In a Nutshell', 'Human Note', 'Child Note', 'Grandma Note', 'Naya Note',
@@ -20,13 +20,19 @@ layers = [
 for title in boards:
     assert APP.count("title:'" + title + "'") == 1, f'missing/duplicate board: {title}'
 for label in sidebar:
-    assert "'" + label + "'" in APP, f'missing sidebar item: {label}'
+    assert "'" + label + "'" in APP, f'missing canonical sidebar item: {label}'
 for label in layers:
     assert label in APP, f'missing layer: {label}'
 assert len(boards) == 9
 assert APP.count("title:'") == 9
 assert APP.count('layerNames=[') == 1
-for forbidden in ['SMART SHARE', 'YOUR REPORT', 'YOUR CONNECTIONS', 'Smart Mail — New']:
+for forbidden in [
+    'Collective', 'Evidence', 'Smart Mail — New', 'Source / Understand / Act / Verify / Learn',
+    'SMART SHARE', 'YOUR REPORT', 'YOUR CONNECTIONS', 'Smart Start', 'Smart Ledgers', 'Peer Connections'
+]:
+    if forbidden == 'Collective':
+        # The privacy contract may legitimately contain "Collective by consent".
+        continue
     assert forbidden not in APP, f'forbidden legacy UI: {forbidden}'
 assert 'hub-509-nine-board.css' in MAIN
 print('NAYA 509 nine-board source gate: PASS')
