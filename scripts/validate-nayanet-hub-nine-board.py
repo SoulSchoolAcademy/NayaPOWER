@@ -16,7 +16,9 @@ for label in sidebar:
     assert "name:'"+label+"'" in SHELL, f'missing canonical sidebar item: {label}'
 assert SHELL.count("name:'")==10, 'canonical sidebar must contain exactly 10 destinations'
 
-board_contract=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTER LEARNING','WHAT IT MEANS','WHAT CAN I DO?',"WHAT'S IN IT FOR YOU",'TRUST · PROVENANCE · PRIVACY','RELATED INTELLIGENCE','ASK NAYA','CREATE SMART SPACE']
+# Source-level board contract. Perspective headings append NOTE at render time;
+# the acceptance browser verifies the final visible labels.
+board_contract=['IN A NUTSHELL',"label} NOTE",'HUMAN','CHILD','GRANDMA','NAYA','MACHINE','ADAPTER LEARNING','WHAT IT MEANS','WHAT CAN I DO?',"WHAT'S IN IT FOR YOU",'TRUST · PROVENANCE · PRIVACY','RELATED INTELLIGENCE','ASK NAYA','CREATE SMART SPACE']
 for label in board_contract:
     assert label in BOARD, f'missing intelligent board contract surface: {label}'
 
@@ -24,4 +26,4 @@ for label in ['Your Intelligence Today','Your Report','Smart Share','Smart Ledge
     assert "name:'"+label+"'" not in SHELL, f'retired sidebar item remains: {label}'
 
 print('NAYA Intelligent Hub source gate: PASS')
-print('canonical_shell=restored sidebar=10 canonical_board=SmartFeedBoard semantic_board_contract=14 retired_sidebar=PASS')
+print('canonical_shell=restored sidebar=10 canonical_board=SmartFeedBoard semantic_board_contract=PASS retired_sidebar=PASS')
