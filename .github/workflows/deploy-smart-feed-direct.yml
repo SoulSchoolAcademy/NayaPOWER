@@ -35,7 +35,7 @@ jobs:
           h=p.read_text(encoding='utf-8')
           h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\.js[^>]*></script>','',h)
           h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\.js[^>]*></script>','',h)
-          h=h.replace('</body>','<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v4"></script></body>',1)
+          h=h.replace('</body>','<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script></body>',1)
           p.write_text(h,encoding='utf-8')
           PY
           cat > release/worker.js <<'EOF'
@@ -86,8 +86,8 @@ jobs:
           const browser=await chromium.launch({headless:true});
           const page=await browser.newPage({viewport:{width:1440,height:1400}});
           await page.goto(process.env.RUNTIME+'/?browser_verify='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
-          await page.waitForTimeout(5000);
-          const read=()=>page.evaluate(()=>{const t=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>e.getAttribute('aria-label')||t(e)),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:t(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,key:x.dataset.semanticLayer,color:x.dataset.layerColor,icon:x.querySelector('.layerIcon')?.innerHTML||'',prominence:x.dataset.prominence,head:t(x.querySelector('.layerHead'))}))})),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD,lock:window.NAYA509_TITLE_LOCK,how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length}});
+          await page.waitForTimeout(7000);
+          const read=()=>page.evaluate(()=>{const t=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();const raw=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>e.getAttribute('aria-label')||t(e)),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:raw(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,key:x.dataset.semanticLayer,color:x.dataset.layerColor,icon:x.querySelector('.layerIcon')?.innerHTML||'',prominence:x.dataset.prominence,head:t(x.querySelector('.layerHead'))}))})),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD,lock:window.NAYA509_TITLE_LOCK,how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length}});
           const r=await read();
           console.log('RUNTIME_NOTES='+JSON.stringify(r.notes.map(n=>({title:n.title,identity:n.identity,layers:n.layers.length,keys:n.layers.map(x=>x.key)}))));
           const nav=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
@@ -106,8 +106,8 @@ jobs:
           if(r.notes.some(n=>n.layers[0].prominence!=='top'||n.layers[10].prominence!=='bottom')) throw Error('PROMINENCE');
           if(r.how!==9) throw Error('HOW_TO_APPLY');
           if(r.marker!=='2026-09-14-vertical-11-layer-semantic-v2') throw Error('MARKER');
-          if(r.lock!=='canonical-9-note-title-order-v4+layer-canonicalization') throw Error('TITLE_LOCK');
-          await page.reload({waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(5000); const a=await read();
+          if(r.lock!=='canonical-9-note-title-order-v5+final-layer-canonicalization') throw Error('TITLE_LOCK');
+          await page.reload({waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(7000); const a=await read();
           if(a.notes.length!==9||a.notes.some(n=>n.layers.length!==11)||JSON.stringify(a.notes.map(n=>n.title))!==JSON.stringify(noteTitles)) throw Error('REFRESH_REGRESSION');
           await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
           EOF
