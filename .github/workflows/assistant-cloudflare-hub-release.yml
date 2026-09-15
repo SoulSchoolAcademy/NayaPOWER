@@ -12,6 +12,10 @@ on:
 permissions:
   contents: read
 
+env:
+  CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
+
 concurrency:
   group: assistant-cloudflare-hub-production
   cancel-in-progress: false
@@ -40,17 +44,28 @@ jobs:
       - name: Production build
         working-directory: NAYANET/HUB
         run: npm run build
-      - name: Validate Cloudflare release credentials are present
+      - name: Validate Cloudflare release credentials and target
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        working-directory: NAYANET/HUB
         run: |
           test -n "$CLOUDFLARE_API_TOKEN" || { echo 'CLOUDFLARE_API_TOKEN is missing from environment assistant-cloudflare-production'; exit 1; }
-          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo 'CLOUDFLARE_ACCOUNT_ID is missing from environment assistant-cloudflare-production'; exit 1; }
-          echo 'Cloudflare release credentials: PRESENT (values intentionally not printed)'
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          config = json.loads(Path('wrangler.jsonc').read_text())
+          expected_account = 'b5e2a51b3e883f7722287c5f51b1196b'
+          expected_worker = 'sparkling-shape-7ae5'
+          if config.get('account_id') != expected_account:
+              raise SystemExit('Canonical Cloudflare account binding mismatch')
+          if config.get('name') != expected_worker:
+              raise SystemExit('Canonical Cloudflare Worker binding mismatch')
+          print(f'Cloudflare target: {expected_worker}')
+          print('Cloudflare account binding: VERIFIED')
+          print('Cloudflare API token: PRESENT (value intentionally not printed)')
+          PY
       - name: Deploy Assistant-authoritative Worker
         working-directory: NAYANET/HUB
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx --yes wrangler@4 deploy --config wrangler.jsonc
