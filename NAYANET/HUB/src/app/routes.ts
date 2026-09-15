@@ -1,1 +1,1 @@
-export const routes={home:'/',feed:'/feed',notes:'/notes',today:'/today',reports:'/reports',library:'/library',collective:'/collective',evidence:'/evidence',connections:'/connections',mail:'/mail',space:'/space',settings:'/settings'} as const;
+export const routes={home:'/',feed:'/feed',notes:'/notes',today:'/today',reports:'/reports',library:'/library',collective:'/collective',evidence:'/evidence',share:'/share',ledger:'/ledger',connections:'/connections',lists:'/lists',mail:'/mail',space:'/spaces',spaces:'/spaces',settings:'/settings'} as const;
