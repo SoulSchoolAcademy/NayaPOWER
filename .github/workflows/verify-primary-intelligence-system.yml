@@ -111,12 +111,14 @@ jobs:
           print('CHECKOUT_HEAD='+subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
           print('COMPATIBILITY_FILE_BLOB='+compatibility_blob)
           print('COMPATIBILITY_KEYS='+json.dumps(sorted(compatibility.keys())))
-          print('COMPATIBILITY_CANONICAL_SCHEMA_PRESENT='+str('canonical_schema' in compatibility))
+          print('COMPATIBILITY_SCHEMA_PROPERTIES='+json.dumps(sorted(compatibility.get('properties',{}).keys())))
+          print('COMPATIBILITY_CANONICAL_SCHEMA_PRESENT='+str('canonical_schema' in compatibility.get('properties',{})))
           assert schema['$id']=='naya/action/v1'
           assert schema['title']=='NAYA_ACTION_V1'
           assert compatibility['$id']=='naya/action/v1'
-          assert 'canonical_schema' in compatibility, 'compatibility file missing required canonical_schema property'
-          assert compatibility['canonical_schema']=='.naya/actions/NAYA_ACTION_V1.schema.json'
+          assert 'canonical_schema' in compatibility.get('properties',{}), 'compatibility schema missing canonical_schema property definition'
+          assert compatibility['properties']['canonical_schema']['const']=='.naya/actions/NAYA_ACTION_V1.schema.json'
+          assert 'canonical_schema' in compatibility.get('required',[]), 'compatibility schema must require canonical_schema'
           assert compatibility['title']=='NAYA_ACTION_V1 Compatibility Reference'
           required=schema['required']
           missing=[key for key in required if key not in action]
