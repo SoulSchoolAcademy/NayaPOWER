@@ -14,22 +14,11 @@ jobs:
       RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
     steps:
       - uses: actions/checkout@v6
-
       - name: Governance authorization
         run: |
           set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py \
-            --actor SoulSchoolAcademy \
-            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
-            --permission deploy_public_runtime \
-            --request deploy_nayanet_hub_canonical \
-            --mission "restore the approved Smart Board structure and verify the actual public runtime" \
-            --uncertainty 3 --consequence 8 --irreversibility 8 \
-            --scope "public-runtime:sparkling-shape-7ae5:/" \
-            --evidence "workflow push at exact source SHA $GITHUB_SHA" \
-            --evidence "canonical restoration renderer and browser acceptance" > /tmp/auth.json
+          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "restore the approved Smart Board structure and verify the actual public runtime" --uncertainty 3 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "workflow push at exact source SHA $GITHUB_SHA" --evidence "canonical restoration renderer and browser acceptance" > /tmp/auth.json
           test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
-
       - name: Build release
         run: |
           set -euo pipefail
@@ -43,22 +32,11 @@ jobs:
           import re
           p = Path('release/public/index.html')
           h = p.read_text()
-          for name in [
-              '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js',
-              '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js'
-          ]:
+          for name in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js']:
               h = re.sub(r'<script[^>]+%s[^>]*></script>' % re.escape(name), '', h, flags=re.I)
           shim = '<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          externals = [
-              '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js',
-              '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js',
-              '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js'
-          ]
-          inline_files = [
-              'NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js',
-              'NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js',
-              'NAYANET/509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js'
-          ]
+          externals = ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js']
+          inline_files = ['NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','NAYANET/509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js']
           external = ''.join(f'<script src="/NAYANET/{name}?v=509"></script>' for name in externals)
           inline = ''.join('<script>' + Path(f).read_text().replace('</script>', '<\\/script>') + '</script>' for f in inline_files)
           h = h.replace('<body>', '<body>' + shim, 1)
@@ -66,27 +44,11 @@ jobs:
           p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
-          export default {
-            async fetch(request, env) {
-              const u = new URL(request.url);
-              if (u.pathname === '/NAYANET/SMART-FEED-CONTENT.txt') {
-                const a = await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt', request.url), request));
-                if (a.ok) return new Response(a.body, {headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}});
-              }
-              const target = (u.pathname === '/' || u.pathname === '/index.html' || u.pathname.startsWith('/intelligence/'))
-                ? new Request(new URL('/index.html', request.url), request) : request;
-              const x = await env.ASSETS.fetch(target);
-              const h = new Headers(x.headers);
-              h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');
-              h.set('X-NayaNET-Source-Commit', env.SOURCE_COMMIT);
-              return new Response(x.body, {status:x.status,statusText:x.statusText,headers:h});
-            }
-          };
+          export default { async fetch(request, env) { const u = new URL(request.url); if (u.pathname === '/NAYANET/SMART-FEED-CONTENT.txt') { const a = await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt', request.url), request)); if (a.ok) return new Response(a.body, {headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}}); } const target = (u.pathname === '/' || u.pathname === '/index.html' || u.pathname.startsWith('/intelligence/')) ? new Request(new URL('/index.html', request.url), request) : request; const x = await env.ASSETS.fetch(target); const h = new Headers(x.headers); h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0'); h.set('X-NayaNET-Source-Commit', env.SOURCE_COMMIT); return new Response(x.body, {status:x.status,statusText:x.statusText,headers:h}); } };
           EOF
           cat > release/wrangler.jsonc <<EOF
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$GITHUB_SHA"}}
           EOF
-
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:
@@ -94,102 +56,50 @@ jobs:
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-
       - name: Browser runtime acceptance — exact ten-board restoration contract
         run: |
           set -euo pipefail
           sleep 8
-          mkdir -p /tmp/naya-browser
-          cd /tmp/naya-browser
+          mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
           npm init -y >/dev/null 2>&1
           npm install playwright@1.55.0 >/dev/null 2>&1
           npx playwright install --with-deps chromium >/dev/null 2>&1
           cat > verify.mjs <<'EOF'
           import { chromium } from 'playwright';
-
-          const OUTER = [
-            'What Is Naya Power?','What Is Naya?','What Are Smart Notes?',
-            'Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?',
-            'Smart Lists','Smart Spaces','Smart Mail'
-          ];
-          const LABELS = [
-            'HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE',
-            'ADAPTIVE LEARNING','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"
-          ];
-          const KEYS = ['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
-          const COLORS = ['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
-          const BAD = ['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','NINE NOTE','HOW TO APPLY IT'];
-
-          function fail(msg) { throw new Error(msg); }
-          function norm(s) { return (s || '').replace(/\\s+/g,' ').trim(); }
-
-          const browser = await chromium.launch();
-          const sizes = [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]];
-
-          for (const [name,width,height] of sizes) {
-            const page = await browser.newPage({viewport:{width,height}});
-            const errors = [];
-            page.on('pageerror', e => errors.push(e.message));
-            await page.goto(process.env.RUNTIME + '/?restore=' + name + '_' + Date.now(), {waitUntil:'domcontentloaded'});
-            await page.waitForTimeout(30000);
-
-            if (errors.length) fail(name + ': PAGEERROR ' + errors.join(' | '));
-
-            const data = await page.evaluate(({OUTER,LABELS,KEYS}) => {
-              const text = el => norm(el?.textContent);
-              const boards = [...document.querySelectorAll('.block[data-real-smart-note]')];
-              return {
-                outer: boards.map(b => {
-                  const r = b.getBoundingClientRect();
-                  const nutshell = b.querySelector('.nutshell');
-                  const layers = [...b.querySelectorAll('.layer')].filter(x => getComputedStyle(x).display !== 'none').map(x => {
-                    const r = x.getBoundingClientRect();
-                    const icon = x.querySelector('.layerIcon')?.getBoundingClientRect();
-                    const title = x.querySelector('.layerHead b')?.getBoundingClientRect();
-                    const state = x.querySelector('.layerHead .state')?.getBoundingClientRect();
-                    return {k:x.dataset.semanticLayer,c:x.dataset.layerColor,label:text(x.querySelector('.layerHead b')),x:r.x,w:r.width,ix:icon?.x,tx:title?.x,sx:state?.x,svg:!!x.querySelector('.layerIcon svg'),body:text(x.querySelector('.layerBody'))};
-                  });
-                  return {title:text(b.querySelector('h3')),x:r.x,w:r.width,y:r.y,nutshell:nutshell ? {x:nutshell.getBoundingClientRect().x,w:nutshell.getBoundingClientRect().width,text:text(nutshell.querySelector('p'))}:null,layers,actions:[...b.querySelectorAll('.naya509-board-actions .action')].map(a=>a.dataset.c4Kind)};
-                }),
-                body:text(document.body)
-              };
-            }, {OUTER,LABELS,KEYS});
-
-            if (JSON.stringify(data.outer.map(x=>x.title)) !== JSON.stringify(OUTER)) fail(name + ': OUTER_TITLES');
-            if (data.outer.some(x => !x.nutshell || !x.nutshell.text || x.nutshell.text.length > 900)) fail(name + ': NUTSHELL_NOT_CONCISE');
-            if (data.outer.some(x => x.layers.length !== 9)) fail(name + ': EXPECTED_NINE_SEMANTIC_LAYERS_PLUS_NUTSHELL');
-            if (data.outer.some(x => JSON.stringify(x.layers.map(y=>y.k)) !== JSON.stringify(KEYS))) fail(name + ': SEMANTIC_ORDER');
-            if (data.outer.some(x => JSON.stringify(x.layers.map(y=>y.c)) !== JSON.stringify(COLORS))) fail(name + ': SEMANTIC_COLORS');
-            if (data.outer.some(x => JSON.stringify(x.layers.map(y=>y.label)) !== JSON.stringify(LABELS))) fail(name + ': SEMANTIC_LABELS');
-            if (data.outer.some(x => x.layers.some(y => !y.svg))) fail(name + ': PREMIUM_ICON_MISSING');
-            if (data.outer.some(x => x.layers.some(y => !(y.ix < y.tx)))) fail(name + ': ICON_NOT_LEFT');
-            if (data.outer.some(x => x.layers.some(y => y.sx == null || y.sx <= y.tx))) fail(name + ': CONTEXT_NOT_RIGHT');
-            if (data.outer.some(x => x.actions.join(',') !== 'create-space,favorite,save')) fail(name + ': GLOBAL_CONTROLS');
-
-            const widths = data.outer.map(x => Math.round(x.w));
-            const xs = data.outer.map(x => Math.round(x.x));
-            if (new Set(widths).size !== 1 || new Set(xs).size !== 1) fail(name + ': OUTER_BOARD_CONGRUENCE');
-            if (data.outer.some(x => Math.round(x.nutshell.x) !== Math.round(x.x) || Math.round(x.nutshell.w) !== Math.round(x.w))) fail(name + ': NUTSHELL_WIDTH');
-            if (data.outer.some(x => x.layers.some(y => Math.round(y.x) !== Math.round(x.x) || Math.round(y.w) !== Math.round(x.w)))) fail(name + ': SEMANTIC_WIDTH');
-            if (data.outer.some((x,i) => i > 0 && x.y <= data.outer[i-1].y)) fail(name + ': NOT_VERTICAL');
-
-            for (const bad of BAD) if (data.body.toUpperCase().includes(bad)) fail(name + ': FORBIDDEN_UI ' + bad);
-            for (const n of ['01','02','03','04','05','06','07','08','09','10']) {
-              if (new RegExp('(^|\\s)' + n + '($|\\s)').test(data.body)) fail(name + ': DISPLAYED_NUMBER ' + n);
-            }
-
-            const bottom = data.outer[0].layers.slice(-3).map(x => x.label);
-            if (JSON.stringify(bottom) !== JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"])) fail(name + ': BOTTOM_ORDER');
-
-            await page.reload({waitUntil:'domcontentloaded'});
-            await page.waitForTimeout(30000);
-            const refreshed = await page.evaluate(() => [...document.querySelectorAll('.block[data-real-smart-note]')].map(b => [...b.querySelectorAll('.layer')].filter(x => getComputedStyle(x).display !== 'none').map(x => x.dataset.semanticLayer)));
-            if (refreshed.some(x => JSON.stringify(x) !== JSON.stringify(KEYS))) fail(name + ': REFRESH_STRUCTURE');
-            console.log(name + ': PASS');
-            await page.close();
+          const OUTER=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
+          const LABELS=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
+          const KEYS=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
+          const COLORS=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
+          const BAD=['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','NINE NOTE','HOW TO APPLY IT'];
+          function fail(msg){throw new Error(msg)} function norm(s){return(s||'').replace(/\s+/g,' ').trim()}
+          const browser=await chromium.launch();
+          const sizes=[['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]];
+          for(const[name,width,height]of sizes){
+            const page=await browser.newPage({viewport:{width,height}}); const errors=[]; page.on('pageerror',e=>errors.push(e.message));
+            await page.goto(process.env.RUNTIME+'/?restore='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'}); await page.waitForTimeout(30000);
+            if(errors.length)fail(name+': PAGEERROR '+errors.join(' | '));
+            const data=await page.evaluate(({OUTER,LABELS,KEYS})=>{const normLocal=s=>(s||'').replace(/\s+/g,' ').trim();const text=el=>normLocal(el?.textContent);const boards=[...document.querySelectorAll('.block[data-real-smart-note]')];return{outer:boards.map(b=>{const r=b.getBoundingClientRect(),nutshell=b.querySelector('.nutshell');const layers=[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const r=x.getBoundingClientRect(),icon=x.querySelector('.layerIcon')?.getBoundingClientRect(),title=x.querySelector('.layerHead b')?.getBoundingClientRect(),state=x.querySelector('.layerHead .state')?.getBoundingClientRect();return{k:x.dataset.semanticLayer,c:x.dataset.layerColor,label:text(x.querySelector('.layerHead b')),x:r.x,w:r.width,ix:icon?.x,tx:title?.x,sx:state?.x,svg:!!x.querySelector('.layerIcon svg'),body:text(x.querySelector('.layerBody'))}});return{title:text(b.querySelector('h3')),x:r.x,w:r.width,y:r.y,nutshell:nutshell?{x:nutshell.getBoundingClientRect().x,w:nutshell.getBoundingClientRect().width,text:text(nutshell.querySelector('p'))}:null,layers,actions:[...b.querySelectorAll('.naya509-board-actions .action')].map(a=>a.dataset.c4Kind)}}),body:text(document.body)}} ,{OUTER,LABELS,KEYS});
+            if(JSON.stringify(data.outer.map(x=>x.title))!==JSON.stringify(OUTER))fail(name+': OUTER_TITLES');
+            if(data.outer.some(x=>!x.nutshell||!x.nutshell.text||x.nutshell.text.length>900))fail(name+': NUTSHELL_NOT_CONCISE');
+            if(data.outer.some(x=>x.layers.length!==9))fail(name+': EXPECTED_NINE_SEMANTIC_LAYERS_PLUS_NUTSHELL');
+            if(data.outer.some(x=>JSON.stringify(x.layers.map(y=>y.k))!==JSON.stringify(KEYS)))fail(name+': SEMANTIC_ORDER');
+            if(data.outer.some(x=>JSON.stringify(x.layers.map(y=>y.c))!==JSON.stringify(COLORS)))fail(name+': SEMANTIC_COLORS');
+            if(data.outer.some(x=>JSON.stringify(x.layers.map(y=>y.label))!==JSON.stringify(LABELS)))fail(name+': SEMANTIC_LABELS');
+            if(data.outer.some(x=>x.layers.some(y=>!y.svg)))fail(name+': PREMIUM_ICON_MISSING');
+            if(data.outer.some(x=>x.layers.some(y=>!(y.ix<y.tx))))fail(name+': ICON_NOT_LEFT');
+            if(data.outer.some(x=>x.layers.some(y=>y.sx==null||y.sx<=y.tx)))fail(name+': CONTEXT_NOT_RIGHT');
+            if(data.outer.some(x=>x.actions.join(',')!=='create-space,favorite,save'))fail(name+': GLOBAL_CONTROLS');
+            const widths=data.outer.map(x=>Math.round(x.w)),xs=data.outer.map(x=>Math.round(x.x)); if(new Set(widths).size!==1||new Set(xs).size!==1)fail(name+': OUTER_BOARD_CONGRUENCE');
+            if(data.outer.some(x=>Math.round(x.nutshell.x)!==Math.round(x.x)||Math.round(x.nutshell.w)!==Math.round(x.w)))fail(name+': NUTSHELL_WIDTH');
+            if(data.outer.some(x=>x.layers.some(y=>Math.round(y.x)!==Math.round(x.x)||Math.round(y.w)!==Math.round(x.w))))fail(name+': SEMANTIC_WIDTH');
+            if(data.outer.some((x,i)=>i>0&&x.y<=data.outer[i-1].y))fail(name+': NOT_VERTICAL');
+            for(const bad of BAD)if(data.body.toUpperCase().includes(bad))fail(name+': FORBIDDEN_UI '+bad);
+            for(const n of ['01','02','03','04','05','06','07','08','09','10'])if(new RegExp('(^|\\s)'+n+'($|\\s)').test(data.body))fail(name+': DISPLAYED_NUMBER '+n);
+            const bottom=data.outer[0].layers.slice(-3).map(x=>x.label);if(JSON.stringify(bottom)!==JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]))fail(name+': BOTTOM_ORDER');
+            await page.reload({waitUntil:'domcontentloaded'});await page.waitForTimeout(30000);
+            const refreshed=await page.evaluate(KEYS=>[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>x.dataset.semanticLayer)),KEYS);
+            if(refreshed.some(x=>JSON.stringify(x)!==JSON.stringify(KEYS)))fail(name+': REFRESH_STRUCTURE'); console.log(name+': PASS'); await page.close();
           }
-
-          await browser.close();
-          console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
+          await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
