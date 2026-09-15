@@ -15,6 +15,7 @@ import './styles/feed-edge-to-edge.css';
 import './styles/hub-intelligent-block-v1.css';
 import './styles/intelligent-hub-command-center-v1.css';
 import './styles/hub-restored-primo-v1.css';
+import './styles/hub-right-rail.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
