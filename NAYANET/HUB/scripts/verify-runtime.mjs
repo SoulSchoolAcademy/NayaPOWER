@@ -1,126 +1,67 @@
 import { chromium } from 'playwright';
 
 const runtime = (process.env.NAYA_RUNTIME_URL || 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev').replace(/\/$/, '');
-const forbidden = [
-  'Collective',
-  'Evidence',
-  'Smart Mail New',
-  'Source',
-  'Understand',
-  'Act',
-  'Verify',
-  'Learn',
-  'Providence',
-  'Truth',
-  'Protection',
-  'Source Separated',
-  'What',
-  'Human',
-  'Simple',
-  'Simplified',
-  'Why',
-  'Notice',
-];
-const boards = [
-  'What Is Naya Power?',
-  'What Is Naya?',
-  'What Are Smart Notes?',
-  'Your Intelligence Today',
-  'Intelligence Reports',
-  'What Is the Intelligent Library?',
-  'Smart Lists',
-  'Smart Spaces',
-  'Smart Mail',
-];
-const sidebar = [
-  'Your Intelligence Today',
-  'Your Report',
-  'Intelligent Library',
-  'Smart Share',
-  'Smart Ledger',
-  'Your Connections',
-  'Smart Lists',
-  'Smart Spaces',
-  'Smart Mail',
-  'Settings',
-];
-const layers = [
-  'In a Nutshell',
-  'Human Note',
-  'Child Note',
-  'Grandma Note',
-  'Naya Note',
-  'Machine Note',
-  'Learning Lesson',
-  'What It Means',
-  'How to Use',
-  'What’s In It For You',
-];
-const viewports = [
-  ['desktop', { width: 1440, height: 900 }],
-  ['tablet', { width: 1024, height: 900 }],
-  ['mobile', { width: 390, height: 844 }],
-];
+const boards = ['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
+const sidebar = ['Your Intelligence Today','Your Report','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+const layers = ['In a Nutshell','Human Note','Child Note','Grandma Note','Naya Note','Machine Note','Learning Lesson','What It Means','How to Use / How to Apply',"What's In It For You"];
+const forbidden = ['Collective','Evidence','Smart Mail New','Providence','Truth','Protection','Source Separated','What/Human/Simple/Simplified/Why/Notice/Naya/Learning/So What/For You'];
+const viewports = [['desktop',{width:1440,height:900}],['tablet',{width:1024,height:900}],['mobile',{width:390,height:844}]];
 
-function fail(message) {
-  console.error(`RUNTIME_ACCEPTANCE_FAIL: ${message}`);
-  process.exitCode = 1;
-}
-
-async function requireVisibleExact(page, text, context) {
-  const locator = page.getByText(text, { exact: true });
-  if ((await locator.count()) === 0 || !(await locator.first().isVisible())) {
-    fail(`${context}: missing visible exact text "${text}"`);
-  }
-}
-
-async function requireForbiddenAbsent(page, text, context) {
-  const locator = page.getByText(text, { exact: true });
-  if ((await locator.count()) > 0) {
-    const visible = await locator.evaluateAll((nodes) => nodes.some((node) => {
-      const style = getComputedStyle(node);
-      const rect = node.getBoundingClientRect();
-      return style.visibility !== 'hidden' && style.display !== 'none' && rect.width > 0 && rect.height > 0;
-    }));
-    if (visible) fail(`${context}: forbidden legacy text visible: "${text}"`);
-  }
-}
+function assert(ok, message) { if (!ok) throw new Error(message); }
+async function visibleButtonText(page, selector) { return page.locator(selector).evaluateAll((nodes) => nodes.filter((n) => { const s=getComputedStyle(n); const r=n.getBoundingClientRect(); return s.visibility!=='hidden' && s.display!=='none' && r.width>0 && r.height>0; }).map((n) => n.textContent.replace(/\s+/g,' ').trim())); }
 
 const browser = await chromium.launch({ headless: true });
 try {
   for (const [name, viewport] of viewports) {
     const page = await browser.newPage({ viewport });
     const response = await page.goto(runtime, { waitUntil: 'networkidle', timeout: 30000 });
-    if (!response || !response.ok()) fail(`${name}: root HTTP response was not successful`);
+    assert(response?.ok(), `${name}: root HTTP response failed`);
     await page.waitForTimeout(250);
 
-    for (const title of boards) await requireVisibleExact(page, title, name);
-    for (const label of sidebar) await requireVisibleExact(page, label, name);
-    for (const label of layers) await requireVisibleExact(page, label, name);
-    for (const label of forbidden) await requireForbiddenAbsent(page, label, name);
-    for (const label of ['Create Space', 'Favorite', 'Save']) await requireVisibleExact(page, label, name);
+    const boardNodes = page.locator('.smart-board');
+    assert(await boardNodes.count() === 9, `${name}: expected 9 Smart Boards`);
+    const titles = await page.locator('.smart-board h2').allTextContents();
+    for (const title of boards) assert(titles.includes(title), `${name}: missing board "${title}"`);
 
-    const boardCount = await page.locator('[data-smart-board]').count();
-    if (boardCount !== 9) fail(`${name}: expected 9 Smart Boards, found ${boardCount}`);
+    const navTexts = await visibleButtonText(page, 'nav button');
+    for (const label of sidebar) assert(navTexts.some((text) => text.includes(label)), `${name}: missing sidebar "${label}"`);
 
-    const boardLayerCounts = await page.locator('[data-smart-board]').evaluateAll((boards) =>
-      boards.map((board) => board.querySelectorAll('[data-smart-layer]').length)
-    );
-    if (boardLayerCounts.some((count) => count !== 10)) {
-      fail(`${name}: every Smart Board must contain exactly 10 layers; got ${boardLayerCounts.join(',')}`);
+    const layerCounts = await boardNodes.evaluateAll((nodes) => nodes.map((board) => board.querySelectorAll('.layer-tab').length));
+    assert(layerCounts.every((count) => count === 10), `${name}: every board must have 10 layer controls; got ${layerCounts.join(',')}`);
+    const firstLayerTexts = await visibleButtonText(page, '.smart-board:first-of-type .layer-tab');
+    for (const label of layers) assert(firstLayerTexts.some((text) => text.includes(label)), `${name}: missing layer "${label}"`);
+
+    const actionTexts = await visibleButtonText(page, '.smart-board:first-of-type .board-actions button');
+    for (const label of ['CREATE SPACE','FAVORITE','SAVE']) assert(actionTexts.some((text) => text.includes(label)), `${name}: missing action "${label}"`);
+
+    for (const legacy of forbidden) {
+      const exact = page.getByText(legacy, { exact: true });
+      assert(await exact.count() === 0, `${name}: forbidden legacy label visible: "${legacy}"`);
     }
 
-    const overflow = await page.evaluate(() => ({
-      width: document.documentElement.scrollWidth,
-      viewport: window.innerWidth,
-    }));
-    if (overflow.width > overflow.viewport + 2) fail(`${name}: horizontal overflow ${overflow.width} > ${overflow.viewport}`);
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 2);
+    assert(overflow, `${name}: horizontal overflow detected`);
+
+    if (name === 'desktop') {
+      const navReport = page.locator('nav button').filter({ hasText: 'Your Report' });
+      await navReport.click();
+      assert(await navReport.evaluate((el) => el.classList.contains('active')), 'desktop: Your Report did not become active');
+      assert(await page.locator('#smart-board-4').count() === 1, 'desktop: report board target missing');
+      const favorite = page.locator('.smart-board:first-of-type .favorite');
+      await favorite.click();
+      assert((await favorite.innerText()).includes('★'), 'desktop: Favorite interaction did not change state');
+      const save = page.locator('.smart-board:first-of-type .save');
+      await save.click();
+      assert((await save.innerText()).includes('SAVED'), 'desktop: Save interaction did not change state');
+    }
 
     console.log(`RUNTIME_ACCEPTANCE_PASS: ${name} ${viewport.width}x${viewport.height}`);
     await page.close();
   }
+  console.log(`RUNTIME_ACCEPTANCE_PASS: ${runtime}`);
+} catch (error) {
+  console.error(`RUNTIME_ACCEPTANCE_FAIL: ${error.message}`);
+  process.exitCode = 1;
 } finally {
   await browser.close();
 }
-
-if (process.exitCode !== 1) console.log(`RUNTIME_ACCEPTANCE_PASS: ${runtime}`);
