@@ -71,15 +71,18 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          sleep 8
-          curl -fsSL "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
+          for i in $(seq 1 12); do
+            curl -fsSL -D /tmp/live.headers "$RUNTIME/?verify=$GITHUB_SHA&attempt=$i" -o /tmp/live.html || true
+            if grep -q "X-NayaNET-Source-Commit: $GITHUB_SHA" /tmp/live.headers 2>/dev/null; then break; fi
+            sleep 5
+          done
           curl -fsSL "$RUNTIME/NAYANET/SMART-FEED-CONTENT.txt?v=$GITHUB_SHA" -o /tmp/live-content.txt
           python3 - <<'PY'
           from pathlib import Path
-          h=Path('/tmp/live.html').read_text(errors='replace'); c=Path('/tmp/live-content.txt').read_text(errors='replace')
+          h=Path('/tmp/live.html').read_text(errors='replace'); c=Path('/tmp/live-content.txt').read_text(errors='replace'); headers=Path('/tmp/live.headers').read_text(errors='replace')
           titles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']
           missing=[x for x in titles if x not in c and x not in h]
-          assert not missing, missing; assert len(c)>50000; assert 'NAYA509_SMART_BOARD_V16' in h
+          assert 'X-NayaNET-Source-Commit:' in headers and '$GITHUB_SHA' in headers; assert not missing, missing; assert len(c)>50000; assert 'NAYA509_SMART_BOARD_V16' in h
           print('STATIC_PUBLIC_RUNTIME=PASS content_bytes='+str(len(c)))
           PY
       - name: Browser runtime verification — desktop tablet mobile
