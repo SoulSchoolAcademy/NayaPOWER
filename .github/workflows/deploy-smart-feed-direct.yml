@@ -91,12 +91,13 @@ jobs:
           const r=await read();
           console.log('RUNTIME_NOTES='+JSON.stringify(r.notes.map(n=>({title:n.title,identity:n.identity}))));
           const nav=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+          const noteTitles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
           const keys=['nutshell','human','child','grandma','naya','machine','learning','meaning','connect','apply','benefit'];
           const colors=['#ffffff','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#e8c766','#f09a4a','#ff5e6c'];
           const outer=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c'];
           if(JSON.stringify(r.buttons)!==JSON.stringify(nav)) throw Error('SIDEBAR_MISMATCH');
           if(r.notes.length!==9) throw Error('NOTE_COUNT');
-          if(JSON.stringify(r.notes.map(n=>n.title))!==JSON.stringify(nav.slice(0,9))) throw Error('NOTE_TITLES');
+          if(JSON.stringify(r.notes.map(n=>n.title))!==JSON.stringify(noteTitles)) throw Error('NOTE_TITLES');
           if(r.notes.some((n,i)=>n.identity!==outer[i])) throw Error('OUTER_IDENTITY');
           if(r.notes.some(n=>n.layers.length!==11)) throw Error('LAYER_COUNT');
           if(r.notes.some(n=>JSON.stringify(n.layers.map(x=>x.key))!==JSON.stringify(keys))) throw Error('LAYER_KEYS');
@@ -107,7 +108,7 @@ jobs:
           if(r.marker!=='2026-09-14-vertical-11-layer-semantic-v2') throw Error('MARKER');
           if(r.lock!=='canonical-9-note-title-order-v2') throw Error('TITLE_LOCK');
           await page.reload({waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(5000); const a=await read();
-          if(a.notes.length!==9||a.notes.some(n=>n.layers.length!==11)||JSON.stringify(a.notes.map(n=>n.title))!==JSON.stringify(nav.slice(0,9))) throw Error('REFRESH_REGRESSION');
+          if(a.notes.length!==9||a.notes.some(n=>n.layers.length!==11)||JSON.stringify(a.notes.map(n=>n.title))!==JSON.stringify(noteTitles)) throw Error('REFRESH_REGRESSION');
           await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
