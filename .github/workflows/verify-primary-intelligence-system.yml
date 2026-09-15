@@ -52,6 +52,61 @@ jobs:
           grep -q "PIS_QUERY_LIMIT" NAYANET/HUB/src/data/pis.ts
           echo 'PIS_PERSISTENT_ADAPTER_SOURCE=PASS'
 
+      - name: Validate Naya continuous project execution loop
+        run: |
+          test -f SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path('.naya/naya-context-manifest.json').read_text(encoding='utf-8'))
+          loop='SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md'
+          assert manifest['subjects']['continuous_project_execution_loop']['canonical']==loop
+          assert loop in manifest['boot_order']
+          for route in ('strategy','memory','restore','execution','engineering','evaluation'):
+              assert 'continuous_project_execution_loop' in manifest['task_routes'][route], route
+          rules=manifest['continuity_rules']
+          assert rules['continuous_project_execution_loop_required'] is True
+          assert rules['substantive_execution_must_restore_understand_decide_execute_verify_record_learn_update_handoff_continue'] is True
+          assert rules['execution_baton_is_required_for_substantive_handoff'] is True
+          assert rules['next_execution_prompt_is_required_for_substantive_handoff'] is True
+          text=Path(loop).read_text(encoding='utf-8')
+          required=(
+              'RESTORE → UNDERSTAND → DECIDE → EXECUTE → VERIFY → RECORD → LEARN → UPDATE → HANDOFF → CONTINUE',
+              'GITHUB = DURABLE PROJECT BRAIN',
+              'MAP = WHERE WE ARE GOING',
+              'STATE = WHAT IS TRUE NOW',
+              'FEED = WHAT HAPPENED',
+              'The current Naya owns the handoff. The next Naya owns the continuation.',
+              '## 12. THE EXECUTION BATON',
+              '## 13. THE NEXT NAYA EXECUTION PROMPT',
+              '## 15. NO-ORPHAN TEST',
+              '## 17. SUCCESS CONDITION FOR NAYAPOWER ITSELF',
+          )
+          for marker in required:
+              assert marker in text, marker
+          print('CONTINUOUS_PROJECT_EXECUTION_LOOP=PASS')
+          PY
+
+      - name: Validate canonical control plane
+        run: |
+          python3 .naya/control-plane/validate_control_plane.py --self-test
+          python3 .naya/control-plane/validate_control_plane.py
+
+      - name: Cold-Naya activation acceptance
+        run: |
+          python3 .naya/runtime/cold_start_activation.py > /tmp/naya-cold-start-receipt.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          receipt=json.loads(Path('/tmp/naya-cold-start-receipt.json').read_text())
+          assert receipt['status']=='VERIFIED'
+          assert receipt['conversation_memory']=='EMPTY'
+          assert receipt['next_action']
+          assert receipt['action_first_gate']
+          print('COLD_NAYA_ACTIVATION=PASS')
+          print('NEXT_ACTION='+receipt['next_action'])
+          PY
+
       - name: Install Hub dependencies
         working-directory: NAYANET/HUB
         run: npm install
