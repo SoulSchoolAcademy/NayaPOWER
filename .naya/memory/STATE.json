@@ -1,7 +1,7 @@
 {
   "schema": "naya-power-runtime-state/v3",
   "status": "CONTROL_PLANE_PROJECTION",
-  "updated_at": "2026-09-12",
+  "updated_at": "2026-09-15",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "branch": "main",
   "state_role": "COMPATIBILITY_AND_HISTORY_PROJECTION",
@@ -16,7 +16,7 @@
     "priority": "P0 — MACHINE TRUTH RESTORATION",
     "active_block": "TORCH-59-MACHINE-TRUTH-RESTORATION",
     "active_block_status": "ACTIVE",
-    "next_action": "Execute the first implementation blocker revealed by the reconciled machine state, using the smallest coherent change that unlocks the most verified downstream value; verify it, record it, and pass the next torch.",
+    "next_action": "Reconcile the missing Assistant-lane Cloudflare release mechanism/target against authoritative external deployment configuration or an authorized execution surface, without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline before advancing Hub implementation phases.",
     "next_action_count": 1
   },
   "continuity_priority_zero": {
@@ -31,15 +31,16 @@
     "The control-plane STATE/BLOCK/MAP/PROOF surfaces are the canonical operational control plane.",
     "This file is a derived compatibility/history projection only.",
     "The current active block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
-    "The current canonical next action is to execute the first implementation blocker revealed by reconciled machine state, verify it, record it, and pass the next torch.",
-    "Naya Control Plane run 34725179860 passed all control-plane and CCT regression gates at HEAD 015cbad289fab4b551c0d38e079dd513d9c39f51.",
+    "The canonical next action is the Assistant-lane Cloudflare release-mechanism/target reconciliation described in .naya/control-plane/BLOCKS.json and .naya/control-plane/STATE.json.",
     "A complete cold-Naya behavioral proof beyond repository-level acceptance remains a separate external runtime boundary."
   ],
   "unknown": [
-    "Fresh successful Superbrain Gate, Continuous Torch-Pass, Claim Evidence, and Smart Brain results after the current HEAD.",
-    "Exact current production runtime parity until a fresh canonical deployment completes and independently verifies it.",
+    "Authorized Cloudflare/live Hub source location outside the accessible GitHub repository surface.",
+    "Approved live value for NAYA_POWER_TARGET_URL is unavailable to this execution plane.",
+    "Fresh live behavioral proof against an authorized runtime target.",
+    "Exact current production runtime parity for the repaired Smart Feed loader commit.",
     "External LLM cold-start behavioral proof beyond repository-level acceptance.",
-    "Local repository runtime execution from this connector session."
+    "Whether an external/current canonical Cloudflare release mechanism exists outside the current GitHub workflow set."
   ],
   "protected": [
     "NayaPOWER constitutional and governing laws",
