@@ -1,0 +1,115 @@
+name: NayaNET — Canonical Hub Production Release
+
+# SOURCE-BOUND PRODUCTION LANE
+# The only deployable Hub artifact is the exact repository file:
+#   2026 09 15 NayaNETHUB.html
+# This lane is intentionally manual and fail-closed until the authorized
+# production destination is explicitly configured in repository secrets.
+# Never substitute NAYANET/HUB, sparkling-shape-7ae5, or an unverified URL.
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Exact 40-character Git commit SHA to release
+        required: true
+        type: string
+      confirm:
+        description: Type RELEASE_CANONICAL_HUB to authorize this run
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+env:
+  CANONICAL_FILE: 2026 09 15 NayaNETHUB.html
+  PRODUCTION_URL: ${{ secrets.NAYANET_HUB_PRODUCTION_URL }}
+  WORKER_NAME: ${{ secrets.NAYANET_HUB_WORKER_NAME }}
+  ACCOUNT_ID: ${{ secrets.NAYANET_HUB_ACCOUNT_ID }}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate release authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.confirm }}" = "RELEASE_CANONICAL_HUB"
+          test "${{ inputs.source_sha }}" =~ ^[0-9a-fA-F]{40}$
+          test -n "$PRODUCTION_URL"
+          test -n "$WORKER_NAME"
+          test -n "$ACCOUNT_ID"
+          echo "AUTHORIZED_DESTINATION_CONFIGURED=PASS"
+
+      - name: Checkout exact source commit
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+          ref: ${{ inputs.source_sha }}
+
+      - name: Prove exact canonical artifact identity
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$SOURCE_SHA"
+          test -s "$CANONICAL_FILE"
+          grep -Fq 'nayanet-direct-nine' "$CANONICAL_FILE"
+          grep -Fq 'verified-static-top-nine' "$CANONICAL_FILE"
+          grep -Fq 'NayaNET — Intelligent Hub V7 · 509 AAA' "$CANONICAL_FILE"
+          SHA256="$(sha256sum "$CANONICAL_FILE" | awk '{print $1}')"
+          echo "SOURCE_SHA=$SOURCE_SHA" | tee release-proof.txt
+          echo "CANONICAL_FILE=$CANONICAL_FILE" | tee -a release-proof.txt
+          echo "CANONICAL_FILE_SHA256=$SHA256" | tee -a release-proof.txt
+          echo "CANONICAL_ARTIFACT_IDENTITY=PASS" | tee -a release-proof.txt
+
+      - name: Build immutable release package
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          rm -rf release
+          mkdir -p release/public
+          cp "$CANONICAL_FILE" release/public/index.html
+          cat > release/worker.js <<'EOF'
+          export default {async fetch(request,env){const u=new URL(request.url);const r=(u.pathname==='/'||u.pathname==='/index.html')?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Canonical-Artifact','2026 09 15 NayaNETHUB.html');return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          EOF
+          cat > release/wrangler.jsonc <<EOF
+          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-15","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_SHA"}}
+          EOF
+          echo "RELEASE_PACKAGE=PASS" | tee -a release-proof.txt
+
+      - name: Deploy canonical artifact
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.ACCOUNT_ID }}
+          workingDirectory: release
+          command: deploy --config wrangler.jsonc
+
+      - name: Verify live source identity
+        shell: bash
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --max-time 30 "$PRODUCTION_URL/?naya_source_verify=$SOURCE_SHA" -o /tmp/live.html
+          curl --fail --silent --show-error --location --max-time 30 -D /tmp/live.headers -o /dev/null "$PRODUCTION_URL/?naya_header_verify=$SOURCE_SHA"
+          grep -Fq "X-NayaNET-Source-Commit: $SOURCE_SHA" /tmp/live.headers
+          grep -Fq 'X-NayaNET-Canonical-Artifact: 2026 09 15 NayaNETHUB.html' /tmp/live.headers
+          grep -Fq 'nayanet-direct-nine' /tmp/live.html
+          grep -Fq 'verified-static-top-nine' /tmp/live.html
+          grep -Fq 'NayaNET — Intelligent Hub V7 · 509 AAA' /tmp/live.html
+          echo 'LIVE_SOURCE_IDENTITY=PASS'
+          echo "VERIFIED_SOURCE_SHA=$SOURCE_SHA" | tee -a release-proof.txt
+
+      - name: Upload release proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-canonical-hub-release-proof-${{ inputs.source_sha }}
+          path: release-proof.txt
+          if-no-files-found: error
