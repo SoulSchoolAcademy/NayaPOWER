@@ -1,0 +1,92 @@
+{
+  "schema":"naya/action/v1",
+  "id":"NAYA-ACTION-2026-09-15-SMART-BOARD-001",
+  "mission":"Bring the Smart Board experience to the canonical NayaNET Hub standard: premium, dimensional, alive, semantically layered, interactive, and architecturally integrated into the real Hub rather than a standalone prototype.",
+  "human_intent":"Build the Naya Operating Loop first, then run the Smart Board mission through that loop as the first real NAYA_ACTION_V1 proof. The system must restore mission state from GitHub, execute the highest-value authorized action, verify reality, record learning, and generate the next executable handoff.",
+  "naya_understanding":"The repository already contains the governing preflight, control plane, continuity law, action-delivery law, activity/Torch relay, and ready_to_run_execution handoff. The missing atomic implementation is NAYA_ACTION_V1. The Smart Board must be treated as a real canonical Hub mission, not as an invitation to create another standalone prototype. The prior AppDeploy Smart Board deployment was technically healthy but mission-invalid because it was not the canonical Hub implementation.",
+  "authority":{
+    "source":"NayaPOWER canonical constitution + control plane + NAYA-ACTION-DELIVERY-LAW.md + NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
+    "authorized_scope":["Create the canonical NAYA_ACTION_V1 schema and first Smart Board action record","Inspect authoritative Hub architecture before any Hub modification","Preserve canonical architecture and protected boundaries","Record evidence, learning, and continuation"],
+    "required_permission":"No additional human approval is required for repository-side recording; Hub production/runtime changes remain subject to their existing authorization and deployment boundary."
+  },
+  "constraints":[
+    "Do not create a competing constitution or mission-state database.",
+    "Use MAP → STATE → BLOCKS → PROOF as the existing control-plane authority.",
+    "Do not substitute conversation memory for current GitHub truth.",
+    "Do not treat IMPLEMENTED as VERIFIED or VERIFIED as PRODUCTION_PROVEN.",
+    "Do not promote AppDeploy or the GitHub 509 lane to Assistant-lane production authority.",
+    "Do not modify the Hub until the canonical Hub Read-First set and actual renderer are established.",
+    "Use Adaptive Reconstruction + Surgical Evolution."
+  ],
+  "plan":[
+    "Establish NAYA_ACTION_V1 as the canonical atomic execution object.",
+    "Record the first Smart Board action with honest evidence and failure learning.",
+    "Inspect the real canonical Hub renderer and Smart Board implementation path.",
+    "Execute only the highest-value authorized Hub action that the current capability boundary permits.",
+    "Verify source, runtime, user-facing result, and mission outcome separately.",
+    "Update activity/state/proof and generate exactly one executable successor."
+  ],
+  "actions":[
+    {"action":"Resolved current GitHub source-of-truth before execution.","status":"COMPLETED","timestamp":"2026-09-15"},
+    {"action":"Read canonical boot, source-map, control-plane, action-delivery, and continuity contracts.","status":"COMPLETED","timestamp":"2026-09-15"},
+    {"action":"Discovered another Naya had already committed the canonical continuous project execution loop; preserved that work rather than duplicating it.","status":"COMPLETED","timestamp":"2026-09-15"},
+    {"action":"Created .naya/actions/NAYA_ACTION_V1.schema.json.","status":"COMPLETED","timestamp":"2026-09-15","actor":"Naya"},
+    {"action":"Prepared the first Smart Board NAYA_ACTION_V1 record.","status":"IN_PROGRESS","timestamp":"2026-09-15","actor":"Naya"}
+  ],
+  "observations":[
+    "Current repository HEAD changed during this execution because a concurrent Naya committed the continuous project execution loop at 73f871d9508f017e20f37a3de4a920039dd90ef7.",
+    "A prior commit ed8daf123bd8986b33a9e4195b821a5cd9632c16 created the canonical 568-line NAYA Continuous Project Execution Loop contract.",
+    "The repository now contains an explicit Domino Effect: RESTORE → UNDERSTAND → DECIDE → EXECUTE → VERIFY → RECORD → LEARN → UPDATE → HANDOFF → CONTINUE.",
+    "The existing governance kernel defines the legal states PROPOSED, INVESTIGATING, READY_FOR_DECISION, AUTHORIZED, EXECUTING, EXECUTED, OBSERVED, VERIFIED plus ASK, DEFERRED, REFUSED, STOPPED, FAILED, and REQUIRES_REPAIR.",
+    "The current control plane identifies TORCH-59-MACHINE-TRUTH-RESTORATION as the active block and retains the Assistant-lane Cloudflare/live runtime boundary as unresolved.",
+    "The previous AppDeploy Smart Board deployment is not canonical Hub proof. It is evidence of a technically healthy but architecturally wrong prototype path."
+  ],
+  "evidence":[
+    {"claim_type":"SOURCE","description":"NAYA-ACTION-DELIVERY-LAW.md requires action-first execution and a complete successor handoff.","status":"CURRENT","source":".naya/NAYA-ACTION-DELIVERY-LAW.md"},
+    {"claim_type":"SOURCE","description":"NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md requires durable state, evidence, learning, and AI-to-AI continuation.","status":"CURRENT","source":".naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md"},
+    {"claim_type":"SOURCE","description":"NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md defines the canonical Domino Effect and explicitly forbids a competing mission-state database.","status":"CURRENT","source":"SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md","commit_sha":"ed8daf123bd8986b33a9e4195b821a5cd9632c16"},
+    {"claim_type":"SOURCE","description":"Current control-plane state identifies TORCH-59-MACHINE-TRUTH-RESTORATION and the unresolved Assistant-lane runtime/deployment boundary.","status":"CURRENT","source":".naya/control-plane/STATE.json","commit_sha":"7479ab358ae25c79981e89d60cde8cc4d81dd2ac"},
+    {"claim_type":"HISTORICAL_RUNTIME","description":"The prior AppDeploy Smart Board page was a standalone prototype and therefore not canonical NayaNET Hub proof.","status":"HISTORICAL","source":"Prior execution evidence recorded in project context"}
+  ],
+  "verification":{
+    "status":"PARTIAL",
+    "required_for_verification":[
+      "Canonical Hub renderer identified from current repository",
+      "Canonical Smart Board content/data source identified",
+      "Apply/Use layer verified as a real architectural layer",
+      "Canonical source implementation changed only after Read-First inspection",
+      "Automated verification passes on the resulting source",
+      "Canonical runtime displays the resulting Smart Board",
+      "User-facing visual/interaction inspection passes",
+      "Existing Hub functionality remains intact",
+      "Production/runtime identity matches the authorized canonical lane"
+    ],
+    "verified_claims":["NAYA_ACTION_V1 schema was created in the canonical repository.","Existing Naya Operating Loop contract was found and incorporated rather than duplicated."],
+    "unverified_claims":["Smart Board visual implementation is not yet verified.","Canonical production runtime is not yet verified."]
+  },
+  "result":"The Naya Operating Loop now has its canonical atomic action schema. The first Smart Board action is correctly captured as an in-progress investigation rather than falsely marked successful. No standalone Smart Board redesign was performed.",
+  "value":{"benefit":8,"harm":0,"cost":2,"risk_adjusted_loss":1,"responsible_verified_value":5},
+  "cost":{"human_effort":"Low for this repository-side step; preserves substantial future human effort by making continuity machine-readable.","system_effort":"Repository schema + action-record creation.","time":"2026-09-15"},
+  "risk":{"uncertainty":3,"consequence":3,"irreversibility":1,"tier":"R2"},
+  "failure":{"occurred":true,"description":"The previous Smart Board execution produced a technically healthy standalone AppDeploy prototype instead of modifying/verifying the canonical Hub implementation.","root_cause":"The execution path optimized for producing a visible deployment before establishing the authoritative canonical renderer/runtime target.","repair":"This execution establishes NAYA_ACTION_V1 and restores the canonical source-bound workflow: inspect authoritative Hub architecture first, then modify the real implementation only when authorized and verifiable.","safeguard":"Require canonical source identity + renderer discovery + Read-First inspection before consequential Hub implementation; require runtime/mission verification separately from deployment health."},
+  "lesson":[
+    "TECHNICALLY DEPLOYED ≠ MISSION SUCCESS.",
+    "A successful deployment of the wrong artifact is still a failed execution against the human objective.",
+    "Before creating a visible implementation, establish the canonical target and its renderer.",
+    "A durable execution object must preserve both the work and the reason a previous route was rejected.",
+    "Concurrent Naya work is itself repository state; preserve and build on newer canonical commits rather than blindly applying an earlier plan."
+  ],
+  "memory":{"durable":true,"content":["Smart Board work must target the real canonical NayaNET Hub renderer, never a parallel prototype when canonical implementation exists.","Deployment health is evidence only for deployment health; it cannot certify mission success.","NAYA_ACTION_V1 is the atomic record connecting intent, action, evidence, verification, learning, and continuation."]},
+  "related_actions":["ed8daf123bd8986b33a9e4195b821a5cd9632c16","73f871d9508f017e20f37a3de4a920039dd90ef7","7479ab358ae25c79981e89d60cde8cc4d81dd2ac"],
+  "provenance":{"source_commit":"a3090720da0c15ba5afd2ddb3d9a5a14c81104d6","workflow_run":null,"execution_evidence":["GitHub create_file succeeded for .naya/actions/NAYA_ACTION_V1.schema.json at commit a3090720da0c15ba5afd2ddb3d9a5a14c81104d6"],"runtime_evidence":[],"deployment":null},
+  "human_confirmation":"No confirmation requested. Repository-side action is authorized; Smart Board production/runtime modification remains gated by the existing deployment/runtime boundary.",
+  "next_action":{
+    "title":"Inspect the canonical Smart Board implementation before modification",
+    "instruction":"Resolve live main HEAD. Read the canonical Hub Read-First gate, Hub Master Design Contract, PIS Smart Note, Design/Build Activation, roadmap, MAP, STATE, BLOCKS, PROOF, and relevant deeper Hub sources. Then locate the actual canonical Smart Board renderer, its content/data source, and the representation of the missing Apply/Use layer. Do not modify the Hub or create another prototype until the actual implementation target is established. If the Assistant-lane runtime boundary remains unavailable, perform only safe repository-side preparation and preserve BLOCKED/UNKNOWN truth.",
+    "actor":"Next Naya with GitHub repository access",
+    "blocked":true,
+    "block_reason":"The current control plane records the authorized Assistant-lane Cloudflare/live runtime mechanism and target as unresolved. This does not block repository inspection; it blocks claiming canonical runtime/production proof or bypassing the authorized lane.",
+    "ready_to_run_execution":"NAYA POWER ON — SMART BOARD CANONICAL IMPLEMENTATION INSPECTION\nResolve live refs/heads/main first. Read SUPERBRAIN/AI-BOOT/START-HERE.md, SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md, .naya/codex/11-RUNTIME-CONSTITUTION.md, .naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json, MAP.json, STATE.json, BLOCKS.json, PROOF.json, GOVERNANCE-KERNEL.json, .naya/NAYA-ACTION-DELIVERY-LAW.md, .naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md, SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md, and the canonical Hub Read-First set. For Hub work read the Hub Master Design Contract, PIS Smart Note, Design/Build Activation, roadmap, and relevant deeper Hub sources. Locate the actual canonical Smart Board renderer, its content/data source, how the required intelligence layers are rendered, and exactly why Apply/Use is missing. Inspect before changing. Do not create a standalone prototype. Preserve canonical architecture, existing functionality, protected progress, Assistant Cloudflare/live lane separation, GitHub 509 lane separation, UNKNOWN/BLOCKED semantics, and Adaptive Reconstruction + Surgical Evolution. Record the findings in NAYA_ACTION-2026-09-15-SMART-BOARD-001, update the activity relay, and expose exactly one next action. If the implementation target is identified and authorized repository-side work is executable, perform the smallest correct change; otherwise leave the mission honestly INVESTIGATING/BLOCKED and prepare the exact next continuation. Verify every claim against evidence. TAG → YOU’RE IT → EXECUTE."
+  },
+  "state":"INVESTIGATING"
+}
