@@ -21,6 +21,26 @@ jobs:
       RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
     steps:
       - uses: actions/checkout@v6
+      - name: Canonical governance authorization gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/naya-governance
+          python3 .naya/control-plane/workflow_gate.py \
+            --actor SoulSchoolAcademy \
+            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
+            --permission deploy_public_runtime \
+            --request deploy_nayanet_hub_canonical \
+            --mission "make NayaPOWER operationally capable of safely governing Intelligent Hub production deployment" \
+            --uncertainty 3 \
+            --consequence 8 \
+            --irreversibility 8 \
+            --scope "public-runtime:sparkling-shape-7ae5:/" \
+            --evidence "workflow push at exact source SHA $GITHUB_SHA" \
+            --evidence "canonical deployment workflow path is the authorized 509 runtime lane" \
+            | tee /tmp/naya-governance/authorization.json
+          test "$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["status"])' /tmp/naya-governance/authorization.json)" = "AUTHORIZED"
+          echo GOVERNANCE_AUTHORIZATION=PASS
       - name: Build canonical release
         shell: bash
         run: |
@@ -33,8 +53,8 @@ jobs:
           import re
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
-          h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\.js[^>]*></script>','',h)
-          h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\.js[^>]*></script>','',h)
+          h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\\.js[^>]*></script>','',h)
+          h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\\.js[^>]*></script>','',h)
           h=h.replace('</body>','<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script></body>',1)
           p.write_text(h,encoding='utf-8')
           PY
@@ -87,7 +107,7 @@ jobs:
           const page=await browser.newPage({viewport:{width:1440,height:1400}});
           await page.goto(process.env.RUNTIME+'/?browser_verify='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000});
           await page.waitForTimeout(7000);
-          const read=()=>page.evaluate(()=>{const t=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();const raw=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>e.getAttribute('aria-label')||t(e)),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:raw(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,key:x.dataset.semanticLayer,color:x.dataset.layerColor,icon:x.querySelector('.layerIcon')?.innerHTML||'',prominence:x.dataset.prominence,head:t(x.querySelector('.layerHead'))}))})),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD,lock:window.NAYA509_TITLE_LOCK,how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length}});
+          const read=()=>page.evaluate(()=>{const t=e=>(e?.innerText||e?.textContent||'').replace(/\\s+/g,' ').trim();const raw=e=>(e?.textContent||'').replace(/\\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>e.getAttribute('aria-label')||t(e)),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:raw(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,key:x.dataset.semanticLayer,color:x.dataset.layerColor,icon:x.querySelector('.layerIcon')?.innerHTML||'',prominence:x.dataset.prominence,head:t(x.querySelector('.layerHead'))}))})),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD,lock:window.NAYA509_TITLE_LOCK,how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length}});
           const r=await read();
           console.log('RUNTIME_NOTES='+JSON.stringify(r.notes.map(n=>({title:n.title,identity:n.identity,layers:n.layers.length,keys:n.layers.map(x=>x.key)}))));
           const nav=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
@@ -112,3 +132,9 @@ jobs:
           await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
+      - name: Preserve governance authorization receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-governance-authorization-${{ github.sha }}
+          path: /tmp/naya-governance/authorization.json
+          if-no-files-found: error
