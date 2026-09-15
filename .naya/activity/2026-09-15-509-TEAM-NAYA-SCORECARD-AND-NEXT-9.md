@@ -59,7 +59,7 @@ If public differs from candidate, identify the first divergence, repair source, 
 
 ### 8. Create the verified receipt and freeze
 
-Record source SHA, workflow run, candidate PASS, public PASS for all three viewports, runtime source SHA, board/section/sidebar state, defects/repa​​irs, and next authorization. Freeze the reference.
+Record source SHA, workflow run, candidate PASS, public PASS for all three viewports, runtime source SHA, board/section/sidebar state, defects/repaired defects, and next authorization. Freeze the reference.
 
 ### 9. Begin replication audit — not replication
 
