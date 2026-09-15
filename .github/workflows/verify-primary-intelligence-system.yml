@@ -89,6 +89,28 @@ jobs:
           print('CONTINUOUS_PROJECT_EXECUTION_LOOP=PASS')
           PY
 
+      - name: Validate NAYA_ACTION_V1 contract and first proof
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          schema=json.loads(Path('.naya/contracts/NAYA-ACTION-V1.schema.json').read_text(encoding='utf-8'))
+          action=json.loads(Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json').read_text(encoding='utf-8'))
+          assert schema['$id']=='naya/action/v1'
+          required=schema['required']
+          missing=[key for key in required if key not in action]
+          assert not missing, f'missing NAYA_ACTION_V1 fields: {missing}'
+          assert action['schema']=='naya/action/v1'
+          assert action['state']=='VERIFIED'
+          assert action['actions']
+          assert action['evidence']
+          assert action['verification']['external_runtime']=='UNKNOWN_NOT_PROVEN'
+          assert action['next_action']['instruction']
+          assert len(action['next_action']['required_evidence']) >= 1
+          print('NAYA_ACTION_V1=PASS')
+          print('FIRST_PROOF='+action['id'])
+          PY
+
       - name: Validate canonical control plane
         run: |
           python3 .naya/control-plane/validate_control_plane.py --self-test
