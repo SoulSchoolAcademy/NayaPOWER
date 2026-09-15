@@ -1,123 +1,14 @@
-name: Restore and autosave exact 509 AAA
+name: Restore and autosave exact 509 AAA (DISABLED)
+
+# Disabled: this workflow rebuilt and autosaved a separate legacy 509 stack,
+# which could overwrite the canonical snapshot after renderer changes.
+# The canonical direct Smart Feed deployment is now authoritative.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '2026 09 13 NayaNET HUB 509 AAA.html'
-      - 'SMART FEED CONTENT'
-      - 'NAYANET/509-AAA-*.js'
-      - '.github/workflows/restore-509-exact.yml'
-
-permissions:
-  contents: write
-
-env:
-  WORKER_NAME: sparkling-shape-7ae5
-  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-  SMART_LINK: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/intelligence/nayanet-intelligent-feeds
-  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  workflow_dispatch:
 
 jobs:
-  restore:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact checkpoint source
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.sha }}
-          fetch-depth: 1
-      - name: Validate 509 source stack
-        run: |
-          set -euo pipefail
-          test -s '2026 09 13 NayaNET HUB 509 AAA.html'
-          test -s 'SMART FEED CONTENT'
-          files=(NAYANET/509-AAA-SURGICAL-LAYER.js NAYANET/509-AAA-NEXT-LEVEL.js NAYANET/509-AAA-SMART-FEED-C3.js NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js NAYANET/509-AAA-REAL-SMART-FEED-NAV-RESTORE.js NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js)
-          for f in "${files[@]}"; do test -s "$f"; node --check "$f"; done
-      - name: Build exact standalone HTML
-        env:
-          SOURCE_COMMIT: ${{ github.sha }}
-        run: |
-          set -euo pipefail
-          rm -rf release && mkdir -p release/public
-          cp '2026 09 13 NayaNET HUB 509 AAA.html' release/public/index.html
-          python3 - <<'PY'
-          from pathlib import Path
-          import base64
-          src=Path('SMART FEED CONTENT').read_bytes()
-          for src_name,out_name in [('NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js','/tmp/smart-feed-content.js'),('NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js','/tmp/nine-note-parser.js')]:
-              Path(out_name).write_text(Path(src_name).read_text(encoding='utf-8').replace('__SMART_FEED_B64__',base64.b64encode(src).decode('ascii')),encoding='utf-8')
-          PY
-          cp NAYANET/509-AAA-SURGICAL-LAYER.js release/public/naya-509-aaa.js
-          cp NAYANET/509-AAA-NEXT-LEVEL.js release/public/naya-509-next-level.js
-          cp NAYANET/509-AAA-SMART-FEED-C3.js release/public/naya-509-smart-feed-c3.js
-          cp NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js release/public/naya-509-intelligent-board-c4.js
-          cp NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js release/public/naya-509-c4-unified-board-repair.js
-          cp NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js release/public/naya-509-c4-single-board-runtime-repair.js
-          cp NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js release/public/naya-509-c4-love-like-personal-polish.js
-          cp /tmp/smart-feed-content.js release/public/naya-509-real-smart-feed-content.js
-          cp /tmp/nine-note-parser.js release/public/naya-509-real-smart-feed-nine-note-parser.js
-          cp NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js release/public/naya-509-real-smart-feed-lifecycle-repair.js
-          cp NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js release/public/naya-509-real-smart-feed-final-presentation-fix.js
-          cp NAYANET/509-AAA-REAL-SMART-FEED-NAV-RESTORE.js release/public/naya-509-real-smart-feed-nav-restore.js
-          cp NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js release/public/naya-509-real-smart-feed-nav-adjacent-placement.js
-          python3 - <<'PY'
-          from pathlib import Path
-          import os,re,hashlib
-          p=Path('release/public/index.html'); s=p.read_text(encoding='utf-8')
-          names=['naya-509-aaa.js','naya-509-next-level.js','naya-509-smart-feed-c3.js','naya-509-intelligent-board-c4.js','naya-509-c4-unified-board-repair.js','naya-509-c4-single-board-runtime-repair.js','naya-509-c4-love-like-personal-polish.js','naya-509-real-smart-feed-content.js','naya-509-real-smart-feed-nine-note-parser.js','naya-509-real-smart-feed-lifecycle-repair.js','naya-509-real-smart-feed-final-presentation-fix.js','naya-509-real-smart-feed-nav-restore.js','naya-509-real-smart-feed-nav-adjacent-placement.js']
-          meta=f'<meta name="nayanet-source-commit" content="{os.environ["SOURCE_COMMIT"]}"><meta name="nayanet-smart-note-count" content="9">'
-          s=s.replace('</head>',meta+''.join(f'<script src="/{x}"></script>' for x in names)+'</head>',1); p.write_text(s,encoding='utf-8')
-          base=re.sub(r'<script src="/naya-509-[^\"]+\.js"></script>','',s); inline=''
-          for name in names:
-              js=Path('release/public',name).read_text(encoding='utf-8').replace('</script>','<\\/script>'); inline += '<script>\n/* '+name+' */\n'+js+'\n</script>\n'
-          out=Path('release/public/NayaNET-509-AAA-CURRENT.html'); out.write_text(base.replace('</head>',inline+'</head>',1),encoding='utf-8')
-          print('INDEX_SHA256=',hashlib.sha256(p.read_bytes()).hexdigest()); print('STANDALONE_SHA256=',hashlib.sha256(out.read_bytes()).hexdigest()); print('STANDALONE_BYTES=',out.stat().st_size)
-          PY
-          cat > release/worker.js <<'EOF'
-          export default {async fetch(request,env){const u=new URL(request.url);const standalone=u.pathname==='/NayaNET-509-AAA-CURRENT.html';const spa=u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/');const path=standalone?'/NayaNET-509-AAA-CURRENT.html':spa?'/index.html':u.pathname;const r=new Request(new URL(path,request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);h.set('X-NayaNET-Source-SHA256',env.SOURCE_HASH);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
-          EOF
-          HASH=$(sha256sum release/public/index.html | awk '{print $1}')
-          cat > release/wrangler.jsonc <<EOF
-          {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$SOURCE_COMMIT","SOURCE_HASH":"$HASH"}}
-          EOF
-          echo "EXPECTED_INDEX_SHA256=$HASH" >> "$GITHUB_ENV"
-      - name: Validate exact artifacts
-        run: |
-          set -euo pipefail
-          test -s release/public/index.html
-          test -s release/public/NayaNET-509-AAA-CURRENT.html
-          grep -Fq 'nayanet-smart-note-count" content="9"' release/public/index.html
-          test "$(grep -o '<script>' release/public/NayaNET-509-AAA-CURRENT.html | wc -l)" -ge 13
-      - name: Deploy exact release
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.ACCOUNT_ID }}
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-      - name: Verify public release before autosave
-        run: |
-          set -euo pipefail
-          ok=0
-          for attempt in $(seq 1 20); do
-            code=$(curl -sS -L -o /tmp/live.html -w '%{http_code}' "$RUNTIME/?verify=${GITHUB_SHA}-${attempt}-$(date +%s%N)" || true)
-            sha=$(sha256sum /tmp/live.html 2>/dev/null | awk '{print $1}' || true)
-            commit=$(grep -o 'nayanet-source-commit" content="[^"]*"' /tmp/live.html | head -1 | sed 's/.*content="//;s/"$//' || true)
-            if [ "$code" = "200" ] && [ "$sha" = "$EXPECTED_INDEX_SHA256" ] && [ "$commit" = "$GITHUB_SHA" ]; then ok=1; break; fi
-            sleep 3
-          done
-          test "$ok" = "1"
-          test "$(curl -sS -L -o /tmp/current.html -w '%{http_code}' "$RUNTIME/NayaNET-509-AAA-CURRENT.html?verify=${GITHUB_SHA}")" = "200"
-          test "$(curl -sS -L -o /tmp/smart.html -w '%{http_code}' "$SMART_LINK?verify=${GITHUB_SHA}")" = "200"
-      - name: Autosave exact verified HTML to GitHub
-        run: |
-          set -euo pipefail
-          mkdir -p snapshots
-          cp release/public/NayaNET-509-AAA-CURRENT.html snapshots/NayaNET-509-AAA-CURRENT.html
-          cp release/public/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
-          git config user.name 'NayaNET Verified Snapshot'
-          git config user.email 'noreply@nayanet.xyz'
-          git add snapshots/NayaNET-509-AAA-CURRENT.html "snapshots/NayaNET-509-AAA-${GITHUB_SHA:0:12}.html"
-          git commit -m "chore: autosave verified 509 AAA ${GITHUB_SHA:0:12}"
-          git push origin HEAD:main
+      - run: echo 'Disabled. Canonical 509 direct deployment is authoritative.'
