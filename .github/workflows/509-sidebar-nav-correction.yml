@@ -1,130 +1,13 @@
-name: 509 Sidebar Nav Correction
+name: 509 Sidebar Nav Correction (DISABLED)
+
+# Disabled by the Smart Feed Alignment Mission.
+# Sidebar authority now lives in the canonical Smart Note renderer + direct production path.
+
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - '.github/workflows/509-sidebar-nav-correction.yml'
 
 jobs:
-  correct:
+  disabled:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Surgical sidebar correction from Master Design Contract
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html')
-          s=p.read_text()
-          expected=[
-            ('PERSONAL','Your Intelligence Today','today','◉'),
-            ('PERSONAL','Your Reports','reports','◫'),
-            ('PERSONAL','Intelligent Library','intelligence','✦'),
-            ('PERSONAL','Smart Lists','lists','▤'),
-            ('COLLECTIVE','Smart Share','collective','◎'),
-            ('COLLECTIVE','Smart Ledger','evidence','◇'),
-            ('COLLECTIVE','Your Connections','connections','↗'),
-            ('COLLECTIVE','Smart Spaces','spaces','◈'),
-            ('COMMUNICATION','Smart Mail','mail','✉'),
-          ]
-          # Replace only the sidebar navigation area. Keep the existing shell/CSS and all main-feed content intact.
-          sidebar=re.search(r'(<aside class="rail left">)(.*?)(</aside>)',s,re.S)
-          if not sidebar: raise SystemExit('SIDEBAR_NOT_FOUND')
-          body=sidebar.group(2)
-          # Preserve brand and private footer; replace the navigation groups between them.
-          brand=re.search(r'(.*?<div class="brand">.*?</div>\s*)',body,re.S)
-          private=re.search(r'(\s*<div class="private">.*?</div>\s*)',body,re.S)
-          if not brand or not private: raise SystemExit('SIDEBAR_SHELL_NOT_FOUND')
-          new_groups=[]; current=None; buttons=[]
-          for group,label,page,icon in expected:
-            if group!=current:
-              if current is not None: new_groups.append(f'<nav class="nav">{"".join(buttons)}</nav>')
-              new_groups.append(f'<div class="label">{group}</div>'); current=group; buttons=[]
-            buttons.append(f'<button data-page="{page}"><span class="ico">{icon}</span>{label}</button>')
-          new_groups.append(f'<nav class="nav">{"".join(buttons)}</nav>')
-          newbody=brand.group(1)+''.join(new_groups)+private.group(1)
-          s=s[:sidebar.start(2)]+newbody+s[sidebar.end(2):]
-          marker='<!-- NAYA509-SIDEBAR-NAV-CORRECTED -->'
-          if marker not in s: s=s.replace('</head>',marker+'</head>',1)
-          p.write_text(s)
-          PY
-
-      - name: Verify exact GitHub sidebar
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          s=Path('snapshots/NayaNET-509-AAA-CURRENT.html').read_text()
-          aside=re.search(r'<aside class="rail left">(.*?)</aside>',s,re.S).group(1)
-          labels=[]
-          for b in re.findall(r'<button\b[^>]*>.*?</button>',aside,re.S):
-            x=re.sub(r'<[^>]+>',' ',b); labels.append(' '.join(x.split()))
-          expected=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Lists','Smart Share','Smart Ledger','Your Connections','Smart Spaces','Smart Mail']
-          assert labels==expected,(labels,expected)
-          assert 'Home' not in labels and 'Smart Notes' not in labels
-          assert s.count('<!-- NAYA509-SIDEBAR-NAV-CORRECTED -->')==1
-          print('GITHUB_SIDEBAR_EXACT=PASS')
-          print('GITHUB_NO_HOME=PASS')
-          print('GITHUB_NO_SMART_NOTES=PASS')
-          print('GITHUB_9_NAV_ITEMS=PASS')
-          PY
-
-      - name: Commit exact corrected GitHub artifact
-        run: |
-          git config user.name 'Naya'
-          git config user.email 'naya@users.noreply.github.com'
-          git add snapshots/NayaNET-509-AAA-CURRENT.html
-          git commit -m '509: align sidebar with Intelligent Hub master design contract' || echo 'NO_ARTIFACT_CHANGES'
-          git push
-
-      - name: Prepare exact artifact for production
-        run: |
-          rm -rf release
-          mkdir -p release/public
-          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          cat > release/worker.js <<'EOF'
-          export default { async fetch(request, env) { return env.ASSETS.fetch(request); } };
-          EOF
-          cat > release/wrangler.jsonc <<'EOF'
-          {
-            "name": "sparkling-shape-7ae5",
-            "main": "worker.js",
-            "compatibility_date": "2026-09-14",
-            "assets": { "directory": "./public", "binding": "ASSETS" }
-          }
-          EOF
-
-      - name: Deploy exact GitHub artifact to existing production worker
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: b5e2a51b3e883f7722287c5f51b1196b
-          workingDirectory: release
-          command: deploy
-
-      - name: Verify exact live sidebar
-        run: |
-          set -e
-          curl -fsSL --max-time 30 https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/ -o /tmp/live.html
-          python - <<'PY'
-          import re
-          s=open('/tmp/live.html',encoding='utf-8').read()
-          aside=re.search(r'<aside class="rail left">(.*?)</aside>',s,re.S).group(1)
-          labels=[]
-          for b in re.findall(r'<button\b[^>]*>.*?</button>',aside,re.S):
-            x=re.sub(r'<[^>]+>',' ',b); labels.append(' '.join(x.split()))
-          expected=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Lists','Smart Share','Smart Ledger','Your Connections','Smart Spaces','Smart Mail']
-          print('LIVE_SIDEBAR=',labels)
-          assert labels==expected,(labels,expected)
-          assert 'Home' not in labels and 'Smart Notes' not in labels
-          assert 'NAYA509-SIDEBAR-NAV-CORRECTED' in s
-          print('LIVE_SIDEBAR_EXACT=PASS')
-          print('LIVE_NO_HOME=PASS')
-          print('LIVE_NO_SMART_NOTES=PASS')
-          print('LIVE_CORRECTION_MARKER=PASS')
-          PY
+      - run: echo 'Disabled. Canonical renderer owns sidebar state and direct deployment is authoritative.'
