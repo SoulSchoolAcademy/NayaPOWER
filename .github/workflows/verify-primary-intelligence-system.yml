@@ -124,20 +124,24 @@ jobs:
           missing=[key for key in required if key not in action]
           assert not missing, f'missing NAYA_ACTION_V1 fields: {missing}'
           assert action['schema']=='naya/action/v1'
+          assert action['id'].startswith('NAYA-ACTION-')
           assert action['state'] in {'EXECUTING','EXECUTED','OBSERVED','VERIFIED'}
           assert action['actions']
           assert action['evidence']
-          assert action['verification']['external_runtime']=='UNKNOWN_NOT_PROVEN'
+          assert action['verification']['status'] in {'PARTIAL','VERIFIED'}
+          assert action['verification']['required_for_verification']
           assert action['next_action']['instruction']
-          assert len(action['next_action']['required_evidence']) >= 1
+          assert action['next_action']['actor']
+          assert action['next_action']['blocked'] is False
+          assert action['next_action']['ready_to_run_execution']
           parent=subprocess.check_output(['git','rev-parse','HEAD^'], text=True).strip()
-          assert action['source']['proof_scope_head']==parent, f"proof scope {action['source']['proof_scope_head']} != record parent HEAD {parent}"
+          assert action['provenance']['source_commit']==parent, f"proof scope {action['provenance']['source_commit']} != record parent HEAD {parent}"
           print('NAYA_ACTION_V1_SCHEMA_SOURCE=.naya/actions/NAYA_ACTION_V1.schema.json')
           print('NAYA_ACTION_V1_SCHEMA_ID='+schema['$id'])
           print('NAYA_ACTION_V1_SCHEMA_BLOB='+subprocess.check_output(['git','rev-parse','HEAD:.naya/actions/NAYA_ACTION_V1.schema.json'], text=True).strip())
           print('NAYA_ACTION_V1=PASS')
           print('FIRST_PROOF='+action['id'])
-          print('PROOF_SCOPE_HEAD='+action['source']['proof_scope_head'])
+          print('PROOF_SCOPE_HEAD='+action['provenance']['source_commit'])
           print('RECORD_HEAD='+subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
           PY
 
