@@ -1,0 +1,1 @@
+.smart-feed-board:after{content:"";position:absolute;right:0;top:70px;bottom:70px;width:2px;background:linear-gradient(180deg,transparent,var(--naya) 22%,#fff 50%,var(--machine) 76%,var(--human) 91%,transparent);box-shadow:0 0 24px #55b9ee38;pointer-events:none}
