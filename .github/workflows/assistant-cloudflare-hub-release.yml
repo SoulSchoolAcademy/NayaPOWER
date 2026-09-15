@@ -7,7 +7,6 @@ on:
     paths:
       - 'NAYANET/HUB/**'
       - 'scripts/validate-nayanet-hub-nine-board.py'
-      - 'scripts/verify-nayanet-hub-runtime.mjs'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
 
 permissions:
@@ -75,4 +74,5 @@ jobs:
         working-directory: NAYANET/HUB
         run: npm install --no-save --no-audit --no-fund playwright@1.55.0 && npx playwright install --with-deps chromium
       - name: Live desktop tablet mobile acceptance
-        run: node scripts/verify-nayanet-hub-runtime.mjs
+        working-directory: NAYANET/HUB
+        run: node scripts/verify-runtime.mjs
