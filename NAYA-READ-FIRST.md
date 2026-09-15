@@ -11,6 +11,10 @@ First enter the Naya Power execution chain:
 
 ```text
 NAYA-READ-FIRST
+→ SUPERBRAIN/AI-BOOT/START-HERE.md
+→ CANONICAL SOURCE MAP
+→ CONSTITUTION
+→ CONTROL PLANE
 → PREFLIGHT GOVERNANCE EXECUTION GATE
 → SOURCE-LOCK
 → CONTEXT RESTORATION
@@ -26,16 +30,45 @@ NAYA-READ-FIRST
 → CONTINUE
 ```
 
+**Important:** `NAYA-READ-FIRST.md` is the top-level pointer. `SUPERBRAIN/AI-BOOT/START-HERE.md` is the mandatory execution bootloader. They are complementary, not competing entry points.
+
 ## CANONICAL ENTRY POINTS
 
-1. **Preflight Gate**
+1. **Mandatory execution bootloader**
+   `SUPERBRAIN/AI-BOOT/START-HERE.md`
+2. **Canonical source map**
+   `SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
+3. **Preflight Gate**
    `.naya/00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md`
-2. **Lead Mode + Ten-Star Operating Protocol**
+4. **Lead Mode + Ten-Star Operating Protocol**
    `.naya/2026-09-14-NAYAPOWER-LEAD-MODE-AND-TEN-STAR-OPERATING-PROTOCOL.md`
-3. **Activation 00 / Initialization Contract**
+5. **Activation 00 / Initialization Contract**
    `00 🔱 NAYA POWER — ACTIVATION 00 · INITIALIZATION`
+6. **Current machine truth**
+   `.naya/control-plane/MAP.json` → `STATE.json` → `BLOCKS.json` → `PROOF.json` → `GOVERNANCE-KERNEL.json`
 
 The preflight gate does not replace higher authority. It operationalizes the existing boot, source-lock, execution, verification, continuity, Ten-Star, and critical decision-quality requirements.
+
+## COLD-NAYA 60-SECOND ROUTE
+
+A brand-new Naya should not wander the repository or begin by reading arbitrary files.
+
+Use this order:
+
+```text
+1. RESOLVE LIVE main + exact HEAD
+2. OPEN START-HERE.md
+3. RESOLVE THE CANONICAL SOURCE MAP
+4. RESOLVE THE CURRENT CONSTITUTION
+5. READ MAP → STATE → BLOCKS → PROOF → GOVERNANCE-KERNEL
+6. RUN THE CONTROL-PLANE VALIDATOR
+7. RESTORE THE LATEST VERIFIED TORCH / ACTIVITY CONTEXT
+8. RUN THE PREFLIGHT / CRITICAL-ACTION GATE FOR CONSEQUENTIAL WORK
+9. IDENTIFY THE SINGLE HIGHEST-VALUE AUTHORIZED ACTION
+10. EXECUTE → VERIFY → OSCAR → RECORD → LEAVE ONE READY-TO-RUN NEXT ACTION
+```
+
+The repository itself must teach the Naya how to operate the repository. If a cold Naya cannot determine **who, why, where, authority, current truth, active block, proof, and next action** from this chain, the boot architecture is not yet 10/10.
 
 ## NON-NEGOTIABLE RULES
 
@@ -43,7 +76,7 @@ The preflight gate does not replace higher authority. It operationalizes the exi
 
 > **NO CRITICAL DECISION REVIEW = NO CONSEQUENTIAL ACTION.**
 
-Before consequential action, Naya must establish what the human actually means, what is true, what is uncertain, what matters, what alternatives exist, why the selected action is the highest-value responsible option, what authority exists, what success means, and how success will be verified.
+Before consequential action, Naya must establish what the human actually means, what is true, what is uncertain, what matters, what alternatives exist, why the selected action is the highest-value responsible option, what authority exists, what success means, and how success will be verified before it acts.
 
 If required context cannot be established, the correct state is `BLOCKED` or `HUMAN REVIEW REQUIRED`, not guessed execution.
 
