@@ -3,7 +3,7 @@
   "id": "NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF",
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "human_intent": "Continue the first NAYA_ACTION_V1 proof at the actual latest main HEAD, run the machine acceptance against that exact tree, then record the verified result, lesson, and successor baton.",
-  "naya_understanding": "The proof was historically valid but stale relative to main. The protected acceptance workflow change was first preflight-verified and checkpointed. The action record is now bound to that checkpointed HEAD so the primary acceptance can prove the exact current tree without conflating historical evidence with current proof.",
+  "naya_understanding": "The acceptance gate correctly exposed that every proof-record update creates a new HEAD. Therefore the proof must be rebound to the exact tree that will be tested, and only the resulting run can promote it to current VERIFIED evidence.",
   "authority": {
     "repository": "SoulSchoolAcademy/NayaPOWER",
     "branch": "main",
@@ -20,17 +20,17 @@
     "Leave exactly one executable next action."
   ],
   "plan": [
-    "Restore the checkpointed current main HEAD.",
+    "Restore the current main HEAD.",
     "Execute the Primary Intelligence System acceptance against that exact tree.",
-    "If the gate identifies a real divergence, repair only that divergence and rerun acceptance.",
-    "After fresh success, promote this action record to current VERIFIED evidence.",
-    "Record the durable lesson and create the successor execution baton."
+    "Treat any first divergence as repair information and repair only the divergence.",
+    "After fresh success, promote this action record to current VERIFIED evidence using the returned run.",
+    "Record the lesson and create exactly one successor baton."
   ],
   "actions": [
     {
       "type": "restore",
       "target": "main",
-      "result": "Current checkpointed repository HEAD resolved as f2a34ef95548e34eef25424660f8a61890dd1144."
+      "result": "Current repository HEAD before this record refresh was aa24faa8671275b1ce28ce84a99f30c3418e9fbc."
     },
     {
       "type": "inspect",
@@ -40,34 +40,34 @@
     {
       "type": "inspect",
       "target": ".naya/control-plane/PROGRESS-CHECKPOINT.json",
-      "result": "Checkpoint NAYA-PROGRESS-2026-09-15-07 binds the protected acceptance implementation to its preflight-verified HEAD."
+      "result": "NAYA-PROGRESS-2026-09-15-07 remains the protected baseline."
     },
     {
       "type": "execute",
       "target": ".github/workflows/verify-primary-intelligence-system.yml",
-      "result": "Fresh NAYA_ACTION_V1 acceptance is executing against the exact current HEAD."
+      "result": "Fresh NAYA_ACTION_V1 acceptance will execute against the exact HEAD produced by this record refresh."
     },
     {
       "type": "record",
       "target": ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
-      "result": "Proof record refreshed to the exact current HEAD pending fresh acceptance evidence."
+      "result": "Proof record rebound to the exact acceptance HEAD aa24faa8671275b1ce28ce84a99f30c3418e9fbc before the new run."
     }
   ],
   "observations": [
-    "The protected acceptance workflow implementation was preflight-verified at 773ccf5310f53cdab8124f21340168373c0a7675.",
-    "Protected-progress checkpoint NAYA-PROGRESS-2026-09-15-07 was then established at that exact verified HEAD.",
-    "The current main HEAD is now f2a34ef95548e34eef25424660f8a61890dd1144 because the checkpoint update itself is intentionally excluded from protected drift enforcement.",
-    "The NAYA_ACTION_V1 record is outside the current protected-scope path list, allowing the proof record to bind to the current checkpointed HEAD without creating another protected-change deadlock.",
-    "The current acceptance must prove that the exact action record and workflow state agree with GITHUB_SHA."
+    "The prior acceptance run 35027624792 passed PIS projection and continuous-loop validation but failed NAYA_ACTION_V1 freshness because the proof record pointed at f2a34ef95548e34eef25424660f8a61890dd1144 while workflow HEAD was aa24faa8671275b1ce28ce84a99f30c3418e9fbc.",
+    "That failure is a real proof-freshness divergence, not a test defect.",
+    "The action record must be rebound again because updating the record itself produces a new HEAD; the next acceptance must therefore test this exact resulting commit."
   ],
   "evidence": [
     {
       "type": "github_actions",
-      "workflow": "Naya Power — Preflight Governance",
-      "run_id": 35027538970,
-      "run_number": 439,
-      "head_sha": "773ccf5310f53cdab8124f21340168373c0a7675",
-      "conclusion": "success"
+      "workflow": "Verify Primary Intelligence System",
+      "run_id": 35027624792,
+      "run_number": 636,
+      "head_sha": "aa24faa8671275b1ce28ce84a99f30c3418e9fbc",
+      "conclusion": "failure",
+      "failed_step": "Validate NAYA_ACTION_V1 contract and current proof",
+      "failure": "proof head f2a34ef95548e34eef25424660f8a61890dd1144 != workflow HEAD aa24faa8671275b1ce28ce84a99f30c3418e9fbc"
     }
   ],
   "verification": {
@@ -76,24 +76,24 @@
     "fresh_naya_action_acceptance": "PENDING",
     "external_runtime": "UNKNOWN_NOT_PROVEN"
   },
-  "result": "NAYA_ACTION_V1 is correctly rebound to the exact current checkpointed main HEAD. Fresh acceptance is the remaining promotion gate.",
+  "result": "The proof-freshness divergence was captured and the action record was rebound for the next exact-head acceptance run. No current VERIFIED promotion is claimed until that run succeeds.",
   "value_cost_risk": {
-    "value": "Makes proof freshness explicit and machine-enforceable while preserving the protected-progress gate.",
-    "cost": "Repository record update plus the existing acceptance workflow.",
-    "risk": "Until fresh acceptance succeeds, the action remains EXECUTING and is not presented as current VERIFIED proof."
+    "value": "Makes proof freshness a first-class correctness property rather than allowing a historical record to masquerade as current proof.",
+    "cost": "One additional action-record refresh and one acceptance run.",
+    "risk": "The record remains EXECUTING until fresh acceptance succeeds."
   },
   "failure_repair": [
     {
-      "type": "governance_deadlock_repair",
-      "finding": "The protected-progress gate correctly rejected the changed verification workflow until a new checkpoint was established.",
-      "repair": "Used the already-passing Preflight Governance Gate as the verification boundary for the protected workflow change, then established NAYA-PROGRESS-2026-09-15-07 before running the downstream acceptance."
+      "type": "proof_freshness",
+      "finding": "The acceptance gate rejected a stale proof-head binding.",
+      "repair": "Rebind the action record to the exact HEAD that the next acceptance run will inspect; never weaken the equality check."
     }
   ],
-  "lesson": "Proof freshness is part of correctness, and protected-progress checkpoints must precede downstream verification of protected acceptance changes rather than bypassing the gate.",
+  "lesson": "A proof record is itself part of the state being proven, so freshness must be established after the final record write and before promotion to VERIFIED.",
   "memory": [
-    "NAYA_ACTION_V1 evidence must bind to the exact repository HEAD it claims to verify.",
-    "Historical proof is useful context but cannot be silently promoted to current proof.",
-    "Protected acceptance changes require a verified checkpoint before downstream acceptance can proceed."
+    "NAYA_ACTION_V1 proof head must equal GITHUB_SHA for acceptance.",
+    "Do not weaken exact-head verification to accommodate record-update commits.",
+    "Promote an action to VERIFIED only after a fresh acceptance run succeeds on the final proof-bearing tree."
   ],
   "related_actions": [
     "NAYA-ACTION-DELIVERY-LAW",
@@ -102,17 +102,18 @@
   ],
   "source": {
     "repository": "SoulSchoolAcademy/NayaPOWER",
-    "head": "f2a34ef95548e34eef25424660f8a61890dd1144"
+    "head": "aa24faa8671275b1ce28ce84a99f30c3418e9fbc"
   },
   "workflow": {
-    "current_head_preflight_run": 35027538970,
+    "previous_acceptance_run": 35027624792,
+    "previous_acceptance_head": "aa24faa8671275b1ce28ce84a99f30c3418e9fbc",
     "fresh_acceptance_run": null
   },
   "runtime_evidence": [],
   "human_confirmation": true,
   "next_action": {
     "priority": "P0",
-    "instruction": "Run the Verify Primary Intelligence System workflow against exact main HEAD f2a34ef95548e34eef25424660f8a61890dd1144, require NAYA_ACTION_V1=PASS, then promote this action record to current VERIFIED evidence and create exactly one successor baton.",
+    "instruction": "Run the Verify Primary Intelligence System workflow against exact main HEAD produced by this proof record refresh, require NAYA_ACTION_V1=PASS and all downstream gates, then promote this record with the returned run evidence and generate exactly one successor baton.",
     "required_evidence": [
       "fresh NAYA_ACTION_V1 acceptance result",
       "exact verified HEAD",
