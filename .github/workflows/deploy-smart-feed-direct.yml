@@ -10,6 +10,7 @@ on:
       - 'NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js'
       - 'NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js'
       - 'NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js'
+      - 'NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js'
       - '.github/workflows/deploy-smart-feed-direct.yml'
 
 jobs:
@@ -45,7 +46,8 @@ jobs:
           h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\\.js[^>]*></script>','',h)
           h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\\.js[^>]*></script>','',h)
           v3=Path('NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js').read_text(encoding='utf-8').replace('</script>','<\\/script>')
-          scripts='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script><script src="/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2"></script><script>'+v3+'</script>'
+          v5=Path('NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js').read_text(encoding='utf-8').replace('</script>','<\\/script>')
+          scripts='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script><script src="/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2"></script><script>'+v3+'</script><script>'+v5+'</script>'
           if '</body>' in h: h=h.replace('</body>',scripts+'</body>',1)
           elif '</html>' in h: h=h.replace('</html>',scripts+'</html>',1)
           else: h+=scripts
@@ -61,6 +63,7 @@ jobs:
           grep -q '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js' release/public/index.html
           grep -q '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' release/public/index.html
           grep -q '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' release/public/index.html
+          grep -q '509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js' release/public/index.html
           grep -q 'canonical-sections-9-11' release/public/index.html
           ! grep -q '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' release/public/index.html
           echo CANONICAL_RELEASE_BUILD=PASS
@@ -78,29 +81,31 @@ jobs:
           sleep 3
           curl -fsSL -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3" -o /tmp/live-renderer.js
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2" -o /tmp/live-feature-board-v2.js
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js?v=20260915-board-v5" -o /tmp/live-board-v5.js
           python3 - <<'PY'
           from pathlib import Path
-          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace'); fb=Path('/tmp/live-feature-board-v2.js').read_text(errors='replace')
+          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace'); v5=Path('/tmp/live-board-v5.js').read_text(errors='replace')
           required=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail','IN A NUTSHELL','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU?",'const NOTE_COLORS','layerIcon','noteIdentityColor']
           assert not [x for x in required if x not in js and x not in html]
-          assert '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js' in html and '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' in html and '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' in html
+          assert '509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js' in html
+          assert 'SMART_BOARD_V5' in v5 and '#ff3bbf' in v5 and '#35d39a' in v5 and '#e9edf5' in v5
           assert 'canonical-sections-9-11' in html and '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
-          assert '2026-09-14-vertical-11-layer-semantic-v2' in js and 'existing-nutshell' in fb
           print('STATIC_PUBLIC_RUNTIME=PASS')
           PY
-      - name: Browser runtime verification
+      - name: Browser runtime verification — desktop tablet mobile
         shell: bash
         run: |
           set -euo pipefail
           mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
           npm init -y >/dev/null 2>&1; npm install playwright@1.55.0 >/dev/null 2>&1; npx playwright install --with-deps chromium >/dev/null 2>&1
           cat > verify.mjs <<'EOF'
-          import {chromium} from 'playwright'; const browser=await chromium.launch({headless:true}); const page=await browser.newPage({viewport:{width:1440,height:1400}}); await page.goto(process.env.RUNTIME+'/?browser_verify='+Date.now(),{waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(11000);
-          const read=()=>page.evaluate(()=>{const t=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();const raw=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>e.getAttribute('aria-label')||t(e)),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:raw(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,board:b.classList.contains('naya-feature-board-v2'),nutshell:!!b.querySelector('.nutshell'),layers:[...b.querySelectorAll('.layer')].map(x=>({key:x.dataset.semanticLayer,color:x.dataset.layerColor,featureKey:x.dataset.featureKey,icon:x.querySelector('.layerIcon')?.innerHTML||'',prominence:x.dataset.prominence}))})),marker:window.NAYA509_CANONICAL_NOTES,feature:window.NAYA509_FEATURE_PRESENTATION,completion:window.NAYA509_FEATURE_RUNTIME_COMPLETION,lock:window.NAYA509_TITLE_LOCK,how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length}});
-          const r=await read(); console.log('FEATURE_RUNTIME='+JSON.stringify(r.notes.map(n=>({title:n.title,board:n.board,nutshell:n.nutshell,identity:n.identity,layers:n.layers.length,keys:n.layers.map(x=>x.key)}))));
-          const nav=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings']; const noteTitles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']; const keys=['nutshell','human','child','grandma','naya','machine','learning','meaning','connect','apply','benefit']; const colors=['#ffffff','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#e8c766','#f09a4a','#ff5e6c']; const outer=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c'];
-          if(JSON.stringify(r.buttons)!==JSON.stringify(nav))throw Error('SIDEBAR_MISMATCH'); if(r.notes.length!==9)throw Error('NOTE_COUNT'); if(JSON.stringify(r.notes.map(n=>n.title))!==JSON.stringify(noteTitles))throw Error('NOTE_TITLES'); if(r.notes.some((n,i)=>n.identity!==outer[i]))throw Error('OUTER_IDENTITY'); if(r.notes.some(n=>!n.board))throw Error('FEATURE_BOARD_CLASS'); if(r.notes.some(n=>!n.nutshell))throw Error('IN_A_NUTSHELL_MISSING'); if(r.notes.some(n=>n.layers.length!==11))throw Error('LAYER_COUNT'); if(r.notes.some(n=>JSON.stringify(n.layers.map(x=>x.key))!==JSON.stringify(keys)))throw Error('LAYER_KEYS'); if(r.notes.some(n=>JSON.stringify(n.layers.map(x=>x.color))!==JSON.stringify(colors)))throw Error('LAYER_COLORS'); if(r.notes.some(n=>new Set(n.layers.map(x=>x.icon)).size!==11))throw Error('ICONS'); if(r.notes.some(n=>n.layers[0].prominence!=='top'||n.layers[10].prominence!=='bottom'))throw Error('PROMINENCE'); if(r.notes.some(n=>n.layers.slice(1).some(x=>!x.featureKey)))throw Error('FEATURE_THEMES'); if(r.how!==9)throw Error('HOW_TO_APPLY'); if(r.marker!=='2026-09-14-vertical-11-layer-semantic-v2')throw Error('MARKER'); if(r.feature!=='feature-board-v2+cohesive-object+existing-nutshell+individual-nine-layer-rhythm')throw Error('FEATURE_MARKER'); if(r.completion!=='v3+canonical-sections-9-11-from-smart-feed-content')throw Error('RUNTIME_COMPLETION'); if(r.lock!=='canonical-9-note-title-order-v5+final-layer-canonicalization')throw Error('TITLE_LOCK');
-          await page.reload({waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(11000); const a=await read(); if(a.notes.length!==9||a.notes.some(n=>!n.board||!n.nutshell||n.layers.length!==11)||JSON.stringify(a.notes.map(n=>n.title))!==JSON.stringify(noteTitles))throw Error('REFRESH_REGRESSION'); await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
+          import {chromium} from 'playwright';
+          const expectedTitles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
+          const expectedVisible=['nutshell','human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
+          const expectedColors=['#ffffff','#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
+          const sizes=[['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]];
+          const browser=await chromium.launch({headless:true});
+          for(const [name,w,h] of sizes){const page=await browser.newPage({viewport:{width:w,height:h}});page.on('pageerror',e=>console.log(`${name}_PAGEERROR=${e.message}`));await page.goto(process.env.RUNTIME+`/?board_v5=${name}_${Date.now()}`,{waitUntil:'domcontentloaded',timeout:30000});await page.waitForTimeout(11000);const r=await page.evaluate(()=>{const raw=e=>(e?.textContent||'').replace(/\\s+/g,' ').trim();return {notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:raw(b.querySelector('h3')),board:b.classList.contains('naya-feature-board-v2'),nutshell:!!b.querySelector('.nutshell'),actions:[...b.querySelectorAll('.naya-feature-actions [data-c4-kind]')].map(x=>({k:x.dataset.c4Kind,parent:x.parentElement?.className})),layers:[...b.querySelectorAll('.layer')].map(x=>({key:x.dataset.semanticLayer,color:x.dataset.layerColor,display:getComputedStyle(x).display,icon:!!x.querySelector('.layerIcon svg'),label:raw(x.querySelector('.layerHead b'))}))})),v5:window.NAYA509_SMART_BOARD_V5}});console.log(`${name.toUpperCase()}_FEATURE_RUNTIME=`+JSON.stringify(r));if(r.notes.length!==9)throw Error(name+':NOTE_COUNT');if(JSON.stringify(r.notes.map(n=>n.title))!==JSON.stringify(expectedTitles))throw Error(name+':NOTE_TITLES');if(r.notes.some(n=>!n.board||!n.nutshell))throw Error(name+':BOARD_OR_NUTSHELL');if(r.notes.some(n=>JSON.stringify(n.layers.filter(x=>x.display!=='none').map(x=>x.key))!==JSON.stringify(expectedVisible)))throw Error(name+':VISIBLE_LAYER_SEQUENCE');if(r.notes.some(n=>JSON.stringify(n.layers.filter(x=>x.display!=='none').map(x=>x.color))!==JSON.stringify(expectedColors)))throw Error(name+':SEMANTIC_COLORS');if(r.notes.some(n=>n.layers.filter(x=>x.display!=='none').some(x=>!x.icon)))throw Error(name+':ICON');if(r.notes.some(n=>JSON.stringify(n.actions.map(x=>x.k))!==JSON.stringify(['create-space','favorite','save'])))throw Error(name+':TOP_ACTIONS');if(r.v5!=='living-intelligence-object+semantic-lighting+sculptural-icons+existing-nutshell+gold-application+silver-benefit')throw Error(name+':V5_MARKER');await page.reload({waitUntil:'domcontentloaded',timeout:30000});await page.waitForTimeout(11000);const rr=await page.evaluate(()=>({count:document.querySelectorAll('.block[data-real-smart-note]').length,layers:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').length)}));if(rr.count!==9||rr.layers.some(x=>x!==10))throw Error(name+':REFRESH_REGRESSION');await page.close()}
+          await browser.close();console.log('BROWSER_RUNTIME_VERIFICATION=PASS');console.log('REFRESH_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
