@@ -10,10 +10,10 @@
 ## Current truth
 
 - Canonical repository: `SoulSchoolAcademy/NayaPOWER`
-- Current live HEAD at last verified read: `9bd0626c7273fc92ea33474d3abf9cbc30abeb68`
+- Current live `main` HEAD after this execution: `bb77055d8c7435a26272899d0ff542d798617e92`.
 - Canonical control-plane active block: `TORCH-59-MACHINE-TRUTH-RESTORATION` (P0).
-- `STATE.json` and `BLOCKS.json` explicitly require reconciliation of the missing Assistant Cloudflare/live release mechanism/target and explicitly prohibit substituting the GitHub 509 lane for that Assistant lane. fileciteturn636file0 fileciteturn644file0
-- Therefore the GitHub 509 public-runtime lane is currently **not authorized to deploy**, regardless of whether its scoped 509 renderer can pass local candidate tests.
+- `STATE.json` and `BLOCKS.json` explicitly require reconciliation of the missing Assistant Cloudflare/live release mechanism/target and explicitly prohibit substituting the GitHub 509 lane for that Assistant lane.
+- The GitHub 509 public-runtime lane is therefore **not authorized to deploy**.
 
 ## Material execution discovery
 
@@ -21,7 +21,7 @@ The earlier 509 browser failure was real: the candidate rendered exactly one boa
 
 Team Naya then repaired the renderer and structural lock toward the authorized nine-board target, but the repository's higher-priority control plane exposed a more important authority conflict: the 509 GitHub lane is a separate implementation lane and may not replace the missing Assistant Cloudflare/live lane.
 
-A later repository writer also modified the 509 workflow back toward a one-board reference. This confirms the competing-authority/change-control problem is still active. Do not fight that writer by repeatedly rewriting the same lower-level file. The correct response is fail-closed authority reconciliation.
+A later repository writer also modified the 509 workflow back toward a one-board reference. This confirmed the competing-authority/change-control problem. The correct response is fail-closed authority reconciliation rather than repeated lower-level rewrites.
 
 ## Repairs / protections completed
 
@@ -30,10 +30,33 @@ A later repository writer also modified the 509 workflow back toward a one-board
 3. 509 workflow trigger was narrowed so activity receipts do not themselves cancel/restart the runtime lane.
 4. Current execution transaction was changed to `BLOCKED_PENDING_AUTHORITY_RECONCILIATION` in commit `9bd0626c7273fc92ea33474d3abf9cbc30abeb68` so the lower-priority lane cannot truthfully present itself as authorized.
 5. The successor execution prompt was hardened with an explicit control-plane authority check in commit `6c15fe5b71adb73bdeb35f68f660beb6e94921d5`.
+6. **New fail-closed protection:** `.github/workflows/509-smart-board-world-class.yml` was replaced with an explicit blocked workflow in commit `bb77055d8c7435a26272899d0ff542d798617e92`. It cannot deploy the 509 runtime while the Assistant-lane authority remains unresolved.
+7. The repository has **no configured GitHub rulesets** at the time of inspection (`GET /repos/SoulSchoolAcademy/NayaPOWER/rulesets` returned an empty set), so repository-level branch/ruleset enforcement is not currently an additional protection layer.
+
+## Assistant-lane authority investigation
+
+Repository search and direct inspection did **not** establish an authoritative Assistant Cloudflare/live source location, release mechanism, or approved `NAYA_POWER_TARGET_URL`.
+
+The current control plane therefore remains correct: the Assistant lane is **UNKNOWN / UNAVAILABLE TO THIS EXECUTION PLANE**. No runtime target was guessed and no public deployment was claimed.
+
+The current repository does expose GitHub workflow files and repository write capability, but the available execution surface does not expose the external Cloudflare configuration/deployment mechanism required to establish the Assistant lane.
+
+## Verification
+
+- Hub Read-First gate inspected.
+- Canonical source map inspected.
+- Current `STATE.json`, `BLOCKS.json`, `MAP.json`, and `PROOF.json` inspected.
+- Current execution transaction inspected after the protective commit and remains `BLOCKED_PENDING_AUTHORITY_RECONCILIATION`.
+- Live `main` ref resolved after the protective commit: `bb77055d8c7435a26272899d0ff542d798617e92`.
+- 509 world-class workflow inspected before replacement; it was an active GitHub 509 deployment lane using the `sparkling-shape-7ae5.smartnetpodcast.workers.dev` target.
+- That workflow is now explicitly blocked from deployment pending Assistant authority reconciliation.
+- GitHub ruleset inspection returned no configured rulesets.
+- Assistant Cloudflare/live mechanism search performed; no authoritative mechanism/target established.
+- No public PASS claimed.
 
 ## Proof status
 
-- PIS/real Hub build verification previously passed its repository-level checks, but this is not public-runtime proof.
+- PIS/real Hub build verification previously passed repository-level checks, but this is not public-runtime proof.
 - 509 candidate browser proof: **NOT PASS / NOT CURRENTLY AUTHORIZED**.
 - 509 production proof: **NOT PROVEN**.
 - Assistant Cloudflare/live runtime target: **UNKNOWN / UNAVAILABLE TO THIS EXECUTION PLANE**.
