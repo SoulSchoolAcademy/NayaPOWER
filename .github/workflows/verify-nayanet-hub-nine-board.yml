@@ -19,9 +19,6 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: NAYANET/HUB
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,10 +33,13 @@ jobs:
           cache: npm
           cache-dependency-path: NAYANET/HUB/package.json
       - name: Install dependencies
+        working-directory: NAYANET/HUB
         run: npm install --no-audit --no-fund
       - name: Nine-board source contract
-        run: python3 ../../scripts/validate-nayanet-hub-nine-board.py
+        run: python3 scripts/validate-nayanet-hub-nine-board.py
       - name: Typecheck
+        working-directory: NAYANET/HUB
         run: npm run typecheck
       - name: Production build
+        working-directory: NAYANET/HUB
         run: npm run build
