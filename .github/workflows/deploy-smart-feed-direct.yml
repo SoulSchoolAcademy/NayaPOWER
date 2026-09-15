@@ -66,26 +66,41 @@ jobs:
         run: |
           set -euo pipefail
           sleep 3
-          curl -fsSL -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4" -o /tmp/live-renderer.js
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
-          grep -qi '^x-nayanet-source-commit:' /tmp/live-headers.txt
-          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4' /tmp/live.html
-          grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' /tmp/live.html
-          grep -Fq '2026-09-15-canonical-renderer-v4' /tmp/live-renderer.js
-          grep -Fq 'What Is Naya Power?' /tmp/live-renderer.js
-          grep -Fq 'What Is Naya?' /tmp/live-renderer.js
-          grep -Fq 'What Are Smart Notes?' /tmp/live-renderer.js
-          grep -Fq 'Your Intelligence Today' /tmp/live-renderer.js
-          grep -Fq 'Intelligence Reports' /tmp/live-renderer.js
-          grep -Fq 'What Is the Intelligent Library?' /tmp/live-renderer.js
-          grep -Fq 'Smart Lists' /tmp/live-renderer.js
-          grep -Fq 'Smart Spaces' /tmp/live-renderer.js
-          grep -Fq 'Smart Mail' /tmp/live-renderer.js
-          grep -Fq '10 · HOW TO USE IT' /tmp/live-renderer.js
-          grep -Fq "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes']" /tmp/live-renderer.js
-          grep -Fq "'Settings'" /tmp/live-renderer.js
-          echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
-          echo 'LIVE_CANONICAL_RENDERER_V4=verified'
-          echo 'LIVE_RUNTIME_HEADERS=verified'
-          echo 'RUNTIME='"$RUNTIME"
+          curl -sS -L -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
+          curl -sS -L "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4" -o /tmp/live-renderer.js
+          curl -sS -L "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
+          python3 - <<'PY'
+          from pathlib import Path
+          import re,sys
+          h=Path('/tmp/live.html').read_text(errors='replace')
+          r=Path('/tmp/live-renderer.js').read_text(errors='replace')
+          f=Path('/tmp/live-feed.js').read_text(errors='replace')
+          headers=Path('/tmp/live-headers.txt').read_text(errors='replace')
+          print('LIVE_HTML_BYTES=',len(h))
+          print('LIVE_RENDERER_BYTES=',len(r))
+          print('LIVE_FEED_BYTES=',len(f))
+          print('LIVE_SOURCE_HEADER=',bool(re.search(r'^x-nayanet-source-commit:',headers,re.I|re.M)))
+          checks={
+            'html_renderer_v4': '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4' in h,
+            'html_feed_repair': '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' in h,
+            'renderer_marker': '2026-09-15-canonical-renderer-v4' in r,
+            'how_to_use': '10 · HOW TO USE IT' in r,
+            'remove_duplicates': "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes']" in r,
+            'settings_preserved': "'Settings'" in r,
+            'naya_power': 'What Is Naya Power?' in r,
+            'naya': 'What Is Naya?' in r,
+            'smart_notes': 'What Are Smart Notes?' in r,
+            'intelligence_today': 'Your Intelligence Today' in r,
+            'reports': 'Intelligence Reports' in r,
+            'library': 'What Is the Intelligent Library?' in r,
+            'lists': 'Smart Lists' in r,
+            'spaces': 'Smart Spaces' in r,
+            'mail': 'Smart Mail' in r,
+          }
+          for k,v in checks.items(): print('CHECK_'+k.upper()+'=',v)
+          missing=[k for k,v in checks.items() if not v]
+          if missing: raise SystemExit('RUNTIME_PROOF_MISSING='+','.join(missing))
+          print('LIVE_SMART_FEED_DEPLOYMENT=verified')
+          print('LIVE_CANONICAL_RENDERER_V4=verified')
+          print('LIVE_RUNTIME_HEADERS=verified')
+          PY
