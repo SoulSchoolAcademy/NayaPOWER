@@ -1,0 +1,28 @@
+name: NayaPOWER — Protected Progress Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: nayapower-progress-protection-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  protected-progress:
+    name: Protected progress / anti-rewind
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout complete history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify protected progress checkpoint
+        run: python3 .naya/control-plane/verify_progress_checkpoint.py
+      - name: Verify control plane
+        run: python3 .naya/control-plane/validate_control_plane.py --self-test
