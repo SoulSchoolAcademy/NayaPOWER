@@ -31,9 +31,9 @@ jobs:
           for name in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js']:
               h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(name),'',h)
           shim='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          files=['NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','NAYANET/509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','NAYANET/509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','NAYANET/509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js','NAYANET/509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js']
+          files=['NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','NAYANET/509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js']
           inline=''.join('<script>'+Path(f).read_text().replace('</script>','<\\/script>')+'</script>' for f in files)
-          external=''.join('<script src="/NAYANET/%s?v=%s"></script>'%(Path(f).name,GITHUB_SHA if 'GITHUB_SHA' in globals() else '509') for f in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js'])
+          external=''.join('<script src="/NAYANET/%s?v=%s"></script>'%(Path(f).name,'509') for f in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js'])
           h=h.replace('<body>','<body>'+shim,1); h=h.replace('</body>',external+inline+'</body>',1); p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
@@ -49,7 +49,7 @@ jobs:
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-      - name: Browser runtime acceptance — exact ten-block Smart Board contract
+      - name: Browser runtime acceptance — exact ten-board restoration contract
         run: |
           set -euo pipefail
           sleep 8
@@ -67,26 +67,28 @@ jobs:
           for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
             const p=await browser.newPage({viewport:{width:w,height:h}}); const errs=[]; p.on('pageerror',e=>errs.push(e.message));
             await p.goto(process.env.RUNTIME+'/?contract='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'}); await p.waitForTimeout(30000);
-            const r=await p.evaluate(()=>{const t=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();return [...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>{const br=b.getBoundingClientRect();return {title:t(b.querySelector('h3')),br:{x:br.x,w:br.width,y:br.y},nuts:[...b.querySelectorAll('.nutshell')].map(x=>x.getBoundingClientRect()),layers:[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const hr=x.getBoundingClientRect(),ic=x.querySelector('.layerIcon')?.getBoundingClientRect(),hd=x.querySelector('.layerHead')?.getBoundingClientRect(),tb=x.querySelector('.layerHead b')?.getBoundingClientRect(),ctx=x.querySelector('.layerHead .state, .layerHead [class*="context"], .layerHead [class*="notice"], .layerHead [class*="evidence"]')?.getBoundingClientRect();return {k:x.dataset.semanticLayer,c:x.dataset.layerColor,l:t(x.querySelector('.layerHead b')),icon:!!x.querySelector('.layerIcon svg'),x:hr.x,w:hr.width,iy:ic?.x,ty:tb?.x,cx:ctx?.x,cw:ctx?.width}})},actions:[...b.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind),actionRect:b.querySelector('.naya509-board-actions')?.getBoundingClientRect()}})}); console.log(name+':'+JSON.stringify(r));
+            const r=await p.evaluate(()=>{const t=e=>(e?.textContent||'').replace(/\s+/g,' ').trim();return [...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>{const br=b.getBoundingClientRect(),n=b.querySelector('.nutshell');return {title:t(b.querySelector('h3')),br:{x:br.x,w:br.width,y:br.y},nuts:n?{x:n.getBoundingClientRect().x,w:n.getBoundingClientRect().width,text:t(n.querySelector('p'))}:null,layers:[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const hr=x.getBoundingClientRect(),ic=x.querySelector('.layerIcon')?.getBoundingClientRect(),tb=x.querySelector('.layerHead b')?.getBoundingClientRect(),ctx=x.querySelector('.layerHead .state')?.getBoundingClientRect();return {k:x.dataset.semanticLayer,c:x.dataset.layerColor,l:t(x.querySelector('.layerHead b')),icon:!!x.querySelector('.layerIcon svg'),x:hr.x,w:hr.width,iy:ic?.x,ty:tb?.x,cx:ctx?.x,cw:ctx?.width,text:t(x.querySelector('.layerBody'))}})},actions:[...b.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind),actionRect:b.querySelector('.naya509-board-actions')?.getBoundingClientRect()}})}); console.log(name+':'+JSON.stringify(r));
             if(errs.length)throw Error(name+':PAGEERROR:'+errs.join('|'));
             if(r.length!==9)throw Error(name+':OUTER_BOARD_COUNT');
             if(JSON.stringify(r.map(x=>x.title))!==JSON.stringify(outerTitles))throw Error(name+':OUTER_TITLES');
-            if(r.some(x=>x.nuts.length!==1))throw Error(name+':NUTSHELL_COUNT');
-            if(r.some(x=>x.layers.length!==9))throw Error(name+':TEN_BLOCKS_REQUIRED_NUTSHELL_PLUS_9_SEMANTIC');
+            if(r.some(x=>!x.nuts||x.nuts.w<1||!x.nuts.text||x.nuts.text.length>900))throw Error(name+':NUTSHELL_CONTENT');
+            if(r.some(x=>x.layers.length!==9))throw Error(name+':TEN_BOARDS_REQUIRED_NUTSHELL_PLUS_9');
             if(r.some(x=>JSON.stringify(x.layers.map(y=>y.k))!==JSON.stringify(keys)))throw Error(name+':SEMANTIC_ORDER');
             if(r.some(x=>JSON.stringify(x.layers.map(y=>y.c))!==JSON.stringify(colors)))throw Error(name+':SEMANTIC_COLORS');
             if(r.some(x=>JSON.stringify(x.layers.map(y=>y.l))!==JSON.stringify(labels)))throw Error(name+':SEMANTIC_LABELS');
-            if(r.some(x=>x.layers.some(y=>!y.icon)))throw Error(name+':ICON_MISSING_OR_NOT_PREMIUM_SVG');
-            if(r.some(x=>x.layers.some(y=>!(y.iy<y.ty))))throw Error(name+':ICON_NOT_LEFT_OF_TITLE');
+            if(r.some(x=>x.layers.some(y=>!y.icon)))throw Error(name+':PREMIUM_ICON_MISSING');
+            if(r.some(x=>x.layers.some(y=>!(y.iy<y.ty))))throw Error(name+':ICON_NOT_LEFT');
             if(r.some(x=>x.layers.some(y=>y.cx==null||y.cx<=y.ty)))throw Error(name+':CONTEXT_NOT_RIGHT');
             if(r.some(x=>x.actions.join(',')!=='create-space,favorite,save'))throw Error(name+':GLOBAL_ACTIONS');
             const widths=r.map(x=>Math.round(x.br.w)),xs=r.map(x=>Math.round(x.br.x)); if(new Set(widths).size!==1||new Set(xs).size!==1)throw Error(name+':BOARD_CONGRUENCE');
-            if(r.some(x=>x.layers.some(y=>Math.round(y.x)!==Math.round(x.br.x)||Math.round(y.w)!==Math.round(x.br.w))))throw Error(name+':SEMANTIC_BOARD_WIDTH_MISMATCH');
+            if(r.some(x=>x.nuts.x!==x.br.x||Math.round(x.nuts.w)!==Math.round(x.br.w)))throw Error(name+':NUTSHELL_WIDTH');
+            if(r.some(x=>x.layers.some(y=>Math.round(y.x)!==Math.round(x.br.x)||Math.round(y.w)!==Math.round(x.br.w))))throw Error(name+':SEMANTIC_WIDTH');
             if(r.some((x,i)=>i&&x.br.y<=r[i-1].br.y))throw Error(name+':VERTICAL_STACK');
             const allText=(await p.locator('body').innerText()).toUpperCase();
             for(const bad of ['SOURCE SEPARATED','SOURCE / SEPARATED','PROVIDENCE','TRUTH','PROTECTION','NINE NOTE','HOW TO APPLY IT'])if(allText.includes(bad))throw Error(name+':BAD_TEXT:'+bad);
             for(const n of ['01','02','03','04','05','06','07','08','09','10'])if(new RegExp('(^|\\s)'+n+'($|\\s)').test(await p.locator('body').innerText()))throw Error(name+':DISPLAYED_NUMBER:'+n);
             const acts=r[0].actionRect; const power=[...document.querySelectorAll('body *')].find(x=>/^POWER$/i.test((x.textContent||'').trim())&&x.children.length===0)?.getBoundingClientRect(); if(acts&&power&&acts.left<power.right)throw Error(name+':ACTIONS_OVERLAP_POWER');
+            const bottom=r[0].layers.map(x=>x.l).slice(-3); if(JSON.stringify(bottom)!==JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]))throw Error(name+':BOTTOM_ORDER');
             await p.reload({waitUntil:'domcontentloaded'}); await p.waitForTimeout(30000); const rr=await p.evaluate(()=>[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>[...b.querySelectorAll('.layer')].map(x=>x.dataset.semanticLayer)); if(rr.some(x=>JSON.stringify(x)!==JSON.stringify(keys)))throw Error(name+':REFRESH');
             console.log(name+':PASS'); await p.close();
           }
