@@ -1,78 +1,65 @@
 # NAYA EXECUTION TORCH — 2026-09-14 — HUB REPAIR 02
 
 ## CURRENT STATE
-The previous Hub deployment was rejected by human runtime observation: the sidebar regressed to the old Collective/Evidence/Connections + Smart Mail NEW structure, and `10 · HOW TO USE IT` did not appear. The root cause has now been identified at source level.
+The previous Hub state was rejected by human runtime observation: the sidebar regressed to the old Collective/Evidence/Connections + Smart Mail NEW structure, and `10 · HOW TO USE IT` did not appear. The root causes are now identified and repaired in source.
 
 ## WHY THIS MATTERS
-The Hub had two competing truths: the static snapshot contained the old secondary sidebar groups, while the repair layer only renamed selected primary items and did not remove those old groups. Separately, `SMART FEED CONTENT` is a JSON document whose canonical intelligence is inside its `content` field. The renderer was parsing the raw JSON wrapper as though it were the note text, so canonical section extraction could fail. This created the observed yo-yo behavior instead of a single canonical rendering path.
+The yo-yo was caused by two competing truths. The static snapshot physically contains the old secondary sidebar groups, while the previous repair layer only renamed selected primary items and did not remove those groups. Separately, `SMART FEED CONTENT` is a JSON document and the canonical intelligence lives inside its `content` field. The first canonical renderer was parsing the JSON wrapper instead of the actual content, so section extraction could fail. This explains both the sidebar regression and the missing How To Use behavior without blaming the human or guessing about cache.
 
 ## WHAT WAS DONE
-1. Inspected `SMART FEED CONTENT`, the snapshot, Smart Feed scripts, and deployment workflow.
-2. Confirmed the snapshot contains the desired nine primary destinations AND obsolete secondary groups: Collective, Evidence, Connections, Smart Mail NEW, and Settings.
-3. Confirmed `SMART FEED CONTENT` is JSON with the actual canonical note corpus inside `content`.
-4. Repaired `NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js` in commit `6aea14cfcee7d0db2cb552fddde928ceaf061527` to parse the JSON `content` field and remove obsolete sidebar groups/items.
-5. Canonical renderer now renames `Your Intelligence Today` → `Your Intelligence`, removes Evidence/Collective/Connections/Smart Mail NEW/Smart Notes/Settings, keeps one canonical Smart Mail, and removes obsolete demo blocks.
-6. Canonical renderer reconstructs real Smart Note layers from the canonical source and explicitly creates `10 · HOW TO USE IT` from source section 10.
-7. Hardened deployment workflow in commit `3ca42ff6814efeb80ea1576f0632ab32c6a7563f` to inject renderer v2 and verify the deployed source marker and runtime source-commit header.
-8. The earlier deployment run `34913959463` deployed successfully but its public-runtime proof failed; it is therefore NOT accepted as final.
+1. Inspected the canonical Smart Feed source, snapshot, renderer scripts, repair script, and deployment workflow.
+2. Confirmed the snapshot contains the desired nine primary destinations plus obsolete secondary groups: Collective, Evidence, Connections, Smart Mail NEW, and Settings.
+3. Confirmed `SMART FEED CONTENT` is JSON and its canonical note corpus is in `content`.
+4. Repaired `NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js` in commit `6aea14cfcee7d0db2cb552fddde928ceaf061527`.
+5. Renderer v2 now parses `content`, reconstructs the real nine Smart Note layers from canonical source, and explicitly renders `10 · HOW TO USE IT` from canonical section 10.
+6. Renderer v2 renames `Your Intelligence Today` → `Your Intelligence`, removes Evidence/Collective/Connections/Smart Mail NEW/Smart Notes/Settings, retains exactly one Smart Mail, and removes obsolete demo blocks.
+7. Deployment workflow commit `3ca42ff6814efeb80ea1576f0632ab32c6a7563f` was hardened for renderer v2 and exact deployed-source proof.
+8. Execution torch was persisted directly in Activity Feed.
 
 ## EVIDENCE
-- Current `main` HEAD: `3ca42ff6814efeb80ea1576f0632ab32c6a7563f`.
-- Canonical renderer repair commit: `6aea14cfcee7d0db2cb552fddde928ceaf061527`.
-- `SMART FEED CONTENT` canonical file SHA observed: `e6c47f5d171196def1f474b82b8051922e3926ce`.
-- Snapshot inspection showed the old sidebar groups are physically present in the static source; therefore runtime cleanup must remove those groups or the snapshot must be rewritten as a later canonicalization step.
-- Prior deployment `34913959463`: Build = success, Deploy = success, Prove public runtime = failure.
+- Current `main` HEAD: `77a75eaca2af587f5b2153ff9a8c323fa47ae835`.
+- Prior deployment run `34913959463`: Build = success; Deploy = success; Public Runtime Proof = failure. Therefore it was correctly rejected.
+- The current workflow injects renderer v2 and checks the public `X-NayaNET-Source-Commit` header before accepting runtime proof.
 
 ## WHAT REMAINS UNKNOWN
-- The new `main` HEAD deployment has not yet produced accessible workflow-run evidence through the current GitHub connector surface.
-- Human-visible runtime after the v2 repair is therefore not yet proven.
-- The exact public proof output from the next deployment remains pending.
+The current HEAD's new workflow run has not yet surfaced through the available GitHub workflow-run query. Therefore current public runtime is NOT yet proven. No green claim is being made.
 
 ## CURRENT SCORE
-8.8/10 — source diagnosis and repair are substantially improved, but runtime verification is still pending. Do not call this shipped.
+8.8/10 — root cause found and source repair complete; deployment/runtime proof remains the gate.
 
 ## QUALITY GATE
-Required before 9.5+:
-- current HEAD deployed;
-- public runtime proves current source commit;
-- renderer v2 is live;
-- all 9 notes render from canonical source;
-- `10 · HOW TO USE IT` is visible on all 9;
-- sidebar matches exactly the approved nine destinations;
-- three intelligence feeds remain intact;
-- obsolete/demo blocks are absent;
-- no duplicate renderer is responsible for conflicting state.
+Do not ship below 9.5. Required: exact current HEAD deployed; public runtime source commit matches it; renderer v2 is live; all 9 notes use canonical content; `10 · HOW TO USE IT` is visible on all 9; sidebar exactly matches the approved nine destinations; Personal Intelligence, Collective Intelligence, and Activity Feed remain intact; obsolete/demo blocks are absent; no competing renderer produces conflicting state.
 
 ## EXACTLY ONE NEXT BEST ACTION
 ### WHERE
-GitHub Actions → `deploy-smart-feed-direct.yml` → public runtime proof for current `main` HEAD `3ca42ff6814efeb80ea1576f0632ab32c6a7563f`.
+GitHub Actions → `deploy-smart-feed-direct.yml` for current `main` HEAD `77a75eaca2af587f5b2153ff9a8c323fa47ae835`.
 
 ### WHAT
-Complete and verify deployment of the canonical renderer v2.
+Verify the deployment generated by the current source state. If it fails, repair the exact failure and redeploy. If it succeeds, verify public runtime source identity and renderer v2, then perform the complete Hub acceptance audit.
 
 ### HOW
-Inspect the newest deployment run generated by the current `main` push. If it fails, diagnose the exact failed step and repair the source/workflow. If it succeeds, verify the public runtime source-commit header and renderer v2 marker, then perform the strongest available runtime verification.
+Use workflow/job evidence first. Do not infer success from commits. Verify build → deploy → public runtime proof. Then verify the nine Smart Notes, section 10, sidebar, feed controls, obsolete blocks, and visual Human Input treatment.
 
 ### WHY
-This is the only remaining gate between source repair and human acceptance.
+This is the remaining gate between source repair and human acceptance.
 
 ### EVIDENCE
-Build/deploy from the prior run proved the deployment mechanism works, while runtime proof failed. The current source has now been corrected for the identified root causes.
+The source diagnosis is direct: the snapshot contains the old sidebar groups, and the Smart Feed source is JSON-wrapped. The canonical renderer now explicitly handles both conditions.
 
 ### SUCCESS CONDITION
-Current `main` HEAD is the deployed public source, renderer v2 is live, and human-visible Hub behavior matches the approved state.
+The public runtime is demonstrably running the current source and matches the approved Hub behavior.
 
 ### FAILURE CONDITION
-Any stale source, old sidebar group, missing `10 · HOW TO USE IT`, mismatched note content, or deployment/runtime mismatch.
+Any stale deployment, old sidebar group, missing How To Use, mismatched note content, duplicate Smart Mail, missing feed controls, or runtime/source mismatch.
 
 ### BOUNDARIES
-Do not add another overlay. Do not revert to the old sidebar. Do not treat deployment success as runtime success. Do not ask Shawn to debug.
+Do not add another overlay. Do not revert the sidebar. Do not ask Shawn to debug. Do not call deployment success runtime success.
 
 ## EXECUTION INSTRUCTION FOR NEXT NAYA
-Continue from current `main` HEAD. Inspect deployment truth first. If runtime is not green, repair the failure and redeploy. Once green, perform the full 9-note/sidebar/how-to-use audit and then identify the next highest-value Hub/NayaNET architectural action without waiting for Shawn to specify it.
+Continue from exact current `main`. Obtain deployment truth first. If not green, repair and redeploy. Once green, perform the full human-acceptance audit and immediately determine the next highest-value NayaNET action without waiting for Shawn.
 
 ## HANDOFF / CONTINUATION
-The previous loop was caused by multiple layers having different responsibilities without a single canonical rendering truth. The repair objective is now explicit: canonical source → canonical renderer → deployment → runtime proof. Preserve that chain.
+Permanent lesson: activity is not outcome. The canonical chain is SOURCE → RENDERER → BUILD → DEPLOYMENT → RUNTIME → HUMAN ACCEPTANCE. Preserve that chain and stop the loop at its root rather than adding another patch.
 
 ## TAG
 YOU'RE IT
