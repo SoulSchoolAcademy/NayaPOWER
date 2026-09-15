@@ -1,79 +1,13 @@
-name: 509 Smart Notes Board Presentation Fix
+name: 509 Smart Notes Board Presentation Fix (DISABLED)
+
+# Disabled by the Smart Feed Alignment Mission.
+# Board presentation authority now lives in the canonical renderer/interface system.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/509-smart-notes-board-presentation-fix.yml'
-
-permissions:
-  contents: write
-
-env:
-  WORKER_NAME: sparkling-shape-7ae5
-  ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
-  RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  workflow_dispatch:
 
 jobs:
-  fix-and-deploy:
+  disabled:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact current artifact
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Restore original board presentation only
-        shell: python
-        run: |
-          from pathlib import Path
-          p=Path('snapshots/NayaNET-509-AAA-CURRENT.html'); s=p.read_text(encoding='utf-8')
-          start='.blocks{display:grid!important;gap:18px!important;padding:0 22px!important}'; end='.aaa-empty{margin:0!important'
-          a=s.find(start)
-          if a>=0:
-            b=s.find(end,a)
-            if b<0: raise SystemExit('BOARD_OVERRIDE_END_NOT_FOUND')
-            s=s[:a]+'.blocks{display:grid!important}'+s[b:]
-            print('BOARD_PRESENTATION_RESTORED=PASS')
-          else: print('BOARD_PRESENTATION_ALREADY_RESTORED=PASS')
-          titles=['WHAT IS NAYA POWER?','WHAT IS NAYA?','WHAT ARE SMART NOTES?','YOUR INTELLIGENCE TODAY','INTELLIGENCE REPORTS','WHAT IS THE INTELLIGENT LIBRARY?','SMART LISTS','INTELLIGENT FEED / SMART FEED','SMART TABS']
-          pos=[s.find(f'data-naya-direct-note="{i}"') for i in range(1,10)]
-          if any(x<0 for x in pos) or pos!=sorted(pos): raise SystemExit(f'NINE_NOTES_ORDER_INVALID:{pos}')
-          for t in titles:
-            if t not in s: raise SystemExit(f'MISSING_TITLE:{t}')
-          if '<div class="layers">' not in s or '<div class="actions">' not in s or '<div class="blockFoot">' not in s: raise SystemExit('ORIGINAL_BOARD_STRUCTURE_MISSING')
-          p.write_text(s,encoding='utf-8')
-          print('NINE_NOTES_VERTICAL_DOM_ORDER=PASS'); print('ORIGINAL_BOARD_STRUCTURE=PASS')
-      - name: Commit corrected GitHub artifact if changed
-        run: |
-          git config user.name 'Naya'; git config user.email 'naya@nayanet.xyz'
-          git add snapshots/NayaNET-509-AAA-CURRENT.html
-          if git diff --cached --quiet; then echo NO_HTML_CHANGE_NEEDED=PASS; else git commit -m '509: restore exact cloned Smart Note board presentation'; git push origin main; fi
-      - name: Prepare exact GitHub artifact
-        run: |
-          rm -rf release; mkdir -p release/public
-          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          printf '%s\n' 'export default {async fetch(request,env){const r=new Request(new URL("/index.html",request.url),request);const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set("Cache-Control","no-store, no-cache, must-revalidate, max-age=0");h.set("X-NayaNET-Direct-HTML","true");h.set("X-NayaNET-GitHub-Artifact","snapshots/NayaNET-509-AAA-CURRENT.html");return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}' > release/worker.js
-          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" > release/wrangler.jsonc
-          test "$(grep -o 'data-naya-direct-note="[1-9]"' release/public/index.html | wc -l)" -eq 9
-          echo EXACT_GITHUB_ARTIFACT_PREPARED=PASS
-      - name: Deploy exact GitHub artifact to existing Cloudflare worker
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.ACCOUNT_ID }}
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-      - name: Verify live presentation
-        run: |
-          set -euo pipefail
-          curl -fsSL -A 'NayaNET-Verification/1.0' "$RUNTIME/" -o /tmp/live.html
-          test "$(grep -o 'data-naya-direct-note="[1-9]"' /tmp/live.html | wc -l)" -eq 9
-          for t in 'WHAT IS NAYA POWER?' 'WHAT IS NAYA?' 'WHAT ARE SMART NOTES?' 'YOUR INTELLIGENCE TODAY' 'INTELLIGENCE REPORTS' 'WHAT IS THE INTELLIGENT LIBRARY?' 'SMART LISTS' 'INTELLIGENT FEED / SMART FEED' 'SMART TABS'; do grep -Fq "$t" /tmp/live.html; done
-          grep -Fq 'Blockers Never Stop the Mission' /tmp/live.html
-          grep -Fq 'Source Intent Is Not Runtime Truth' /tmp/live.html
-          grep -Fq 'The Intelligent Block Is the Star' /tmp/live.html
-          grep -Fq 'function block(b,i)' /tmp/live.html
-          echo LIVE_9_NOTES=PASS
-          echo LIVE_VERTICAL_BLOCK_FLOW=PASS
-          echo LIVE_EXISTING_BOARDS=PASS
-          echo LIVE_EXACT_GITHUB_ARTIFACT=PASS
+      - run: echo 'Disabled. Canonical Smart Feed renderer and direct deployment are authoritative.'
