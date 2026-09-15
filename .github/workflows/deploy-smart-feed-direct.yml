@@ -44,7 +44,8 @@ jobs:
           p=Path('release/public/index.html'); h=p.read_text(encoding='utf-8')
           h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\\.js[^>]*></script>','',h)
           h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\\.js[^>]*></script>','',h)
-          scripts='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script><script src="/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2"></script><script src="/NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js?v=20260915-runtime-completion-v3"></script>'
+          v3=Path('NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js').read_text(encoding='utf-8').replace('</script>','<\\/script>')
+          scripts='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v5"></script><script src="/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2"></script><script>'+v3+'</script>'
           if '</body>' in h: h=h.replace('</body>',scripts+'</body>',1)
           elif '</html>' in h: h=h.replace('</html>',scripts+'</html>',1)
           else: h+=scripts
@@ -60,7 +61,7 @@ jobs:
           grep -q '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js' release/public/index.html
           grep -q '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' release/public/index.html
           grep -q '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' release/public/index.html
-          grep -q '509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js' release/public/index.html
+          grep -q 'canonical-sections-9-11' release/public/index.html
           ! grep -q '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' release/public/index.html
           echo CANONICAL_RELEASE_BUILD=PASS
       - name: Deploy
@@ -78,15 +79,14 @@ jobs:
           curl -fsSL -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3" -o /tmp/live-renderer.js
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js?v=20260915-feature-board-v2" -o /tmp/live-feature-board-v2.js
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js?v=20260915-runtime-completion-v3" -o /tmp/live-feature-board-v3.js
           python3 - <<'PY'
           from pathlib import Path
-          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace'); fb=Path('/tmp/live-feature-board-v2.js').read_text(errors='replace'); v3=Path('/tmp/live-feature-board-v3.js').read_text(errors='replace')
+          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace'); fb=Path('/tmp/live-feature-board-v2.js').read_text(errors='replace')
           required=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail','IN A NUTSHELL','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU?",'const NOTE_COLORS','layerIcon','noteIdentityColor']
           assert not [x for x in required if x not in js and x not in html]
-          assert '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js' in html and '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' in html and '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' in html and '509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js' in html
-          assert '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
-          assert '2026-09-14-vertical-11-layer-semantic-v2' in js and 'existing-nutshell' in fb and 'canonical-sections-9-11' in v3
+          assert '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js' in html and '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' in html and '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' in html
+          assert 'canonical-sections-9-11' in html and '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
+          assert '2026-09-14-vertical-11-layer-semantic-v2' in js and 'existing-nutshell' in fb
           print('STATIC_PUBLIC_RUNTIME=PASS')
           PY
       - name: Browser runtime verification
