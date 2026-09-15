@@ -4,25 +4,25 @@
   "version": "1.1.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "773ccf5310f53cdab8124f21340168373c0a7675",
+    "commit": "a31137c19229842577df3cdb5cefbd30890b3073",
     "branch": "main",
-    "meaning": "Protected-progress checkpoint bound to the current NAYA_ACTION_V1 acceptance implementation after the exact HEAD passed the Naya Power Preflight Governance Gate. The Primary Intelligence System acceptance is the remaining fresh proof for this action record."
+    "meaning": "Protected-progress checkpoint bound to the revised NAYA_ACTION_V1 acceptance rule after the exact workflow revision passed Preflight Governance. The action record is the remaining non-protected proof-bearing surface and will be refreshed to this checkpointed tree before fresh acceptance."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-07",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-08",
   "verification_receipt": {
-    "verification_commit": "773ccf5310f53cdab8124f21340168373c0a7675",
-    "verification_type": "PRECHECK_GOVERNANCE_FOR_NAYA_ACTION_ACCEPTANCE",
-    "workflow_run": "35027538970",
+    "verification_commit": "a31137c19229842577df3cdb5cefbd30890b3073",
+    "verification_type": "PRECHECK_GOVERNANCE_FOR_EXACT_PARENT_HEAD_PROOF",
+    "workflow_run": "35027711914",
     "evidence": [
       ".github/workflows/verify-primary-intelligence-system.yml",
       ".naya/contracts/NAYA-ACTION-V1.schema.json",
       ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
       ".naya/control-plane/verify_progress_checkpoint.py"
     ],
-    "result": "The exact current HEAD passed the Preflight Governance Gate. The checkpoint is intentionally bound to this verified tree so the Primary Intelligence System acceptance can execute without a checkpoint deadlock. The NAYA_ACTION_V1 proof remains pending until that fresh acceptance returns success.",
-    "first_divergence_repaired": "The protected-progress gate correctly detected that the acceptance workflow itself had changed since the previous checkpoint. The repair was to establish a new checkpoint at the exact current preflight-verified HEAD before executing the new acceptance, preserving the fail-closed rule rather than bypassing it.",
+    "result": "The revised acceptance implementation passed the Preflight Governance Gate at the exact workflow revision HEAD. The checkpoint is advanced to that verified protected-change commit before the proof record is refreshed and downstream acceptance is executed.",
+    "first_divergence_repaired": "The acceptance's exact-GITHUB_SHA proof check was self-referential because the proof record itself creates the commit being tested. The gate was repaired to bind the proof scope to the record's parent HEAD, which is the final repository state immediately before the proof-bearing record write.",
     "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T21:47:14Z"
+    "timestamp": "2026-09-15T21:49:03Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -72,12 +72,12 @@
     "The Assistant Cloudflare/live production lane remains a separate runtime proof boundary and must not be substituted with the GitHub 509 lane."
   ],
   "unknowns": [
-    "Fresh NAYA_ACTION_V1 acceptance against this exact HEAD is pending.",
+    "Fresh NAYA_ACTION_V1 acceptance after the final proof-record refresh is pending.",
     "Fresh external LLM behavioral proof beyond repository-level cold-Naya acceptance remains unknown.",
     "Authorized production destination value is not exposed by repository source and must not be inferred.",
     "Canonical Cloudflare production runtime proof remains unknown until an authorized Assistant-lane execution surface produces exact source/runtime evidence."
   ],
-  "next_action": "Run the Verify Primary Intelligence System workflow against exact main HEAD 773ccf5310f53cdab8124f21340168373c0a7675. Require NAYA_ACTION_V1=PASS and all existing control-plane/cold-Naya/PIS/Hub gates. Then promote the action record to current VERIFIED evidence, record the lesson, and generate exactly one successor baton.",
+  "next_action": "Refresh the NAYA_ACTION_V1 proof record so its source.head equals the parent of the resulting proof-bearing commit, then require Verify Primary Intelligence System to pass NAYA_ACTION_V1 and all downstream control-plane, cold-Naya, PIS, and Hub gates.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
