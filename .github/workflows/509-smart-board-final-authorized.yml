@@ -32,16 +32,17 @@ jobs:
           p=Path('release/public/index.html'); h=p.read_text()
           legacy=['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js','509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js','509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js','509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js','509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js','509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js']
           for n in legacy:h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
-          shim='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
           code=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
-          p.write_text(h.replace('<body>','<body>'+shim,1).replace('</body>','<script>'+code+'</script></body>',1))
+          injection='<script>'+code+'</script>'
+          h=re.sub(r'</body>','%s</body>'%injection,h,count=1,flags=re.I)
+          p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));if(a.ok)return new Response(a.body,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
           printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"%s"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" "$GITHUB_SHA" > release/wrangler.jsonc
-      - name: Wait for competing deployments to settle
-        run: sleep 60
+      - name: Wait for competing deployments to settle completely
+        run: sleep 180
       - name: Deploy canonical runtime
         uses: cloudflare/wrangler-action@v4
         with:
