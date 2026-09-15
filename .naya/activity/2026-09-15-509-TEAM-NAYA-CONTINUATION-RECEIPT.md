@@ -1,7 +1,7 @@
 # TEAM NAYA — 509 INTELLIGENT HUB CONTINUATION RECEIPT
 
 **Date:** 2026-09-15
-**Status:** ACTIVE — NOT COMPLETE
+**Status:** BLOCKED PENDING AUTHORITY RECONCILIATION — NOT COMPLETE
 
 ## North Star
 
@@ -10,61 +10,56 @@
 ## Current truth
 
 - Canonical repository: `SoulSchoolAcademy/NayaPOWER`
-- Canonical branch: `main`
-- Current HEAD after latest repair: `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`
-- Active execution transaction still authorizes the nine-board Smart Board target.
-- Active 509 contract explicitly requires nine boards and the exact ten-destination sidebar.
-- The Intelligent Hub Master Design Contract defines the Hub as a living intelligence environment and its core chain as SOURCE → CANONICAL INTELLIGENCE → INTELLIGENT EVENT → SMART NOTE → INTELLIGENT BLOCK → SMART BOARD → SMART FEED → HUMAN UNDERSTANDING → HUMAN ACTION → RESULT → VERIFICATION → UPDATED INTELLIGENCE → LEARNING → CONTINUATION.
+- Current live HEAD at last verified read: `9bd0626c7273fc92ea33474d3abf9cbc30abeb68`
+- Canonical control-plane active block: `TORCH-59-MACHINE-TRUTH-RESTORATION` (P0).
+- `STATE.json` and `BLOCKS.json` explicitly require reconciliation of the missing Assistant Cloudflare/live release mechanism/target and explicitly prohibit substituting the GitHub 509 lane for that Assistant lane. fileciteturn636file0 fileciteturn644file0
+- Therefore the GitHub 509 public-runtime lane is currently **not authorized to deploy**, regardless of whether its scoped 509 renderer can pass local candidate tests.
 
-## Latest observed failure
+## Material execution discovery
 
-Run `35003356350` / job `104496925527` reached governance, contract, lane audit, candidate build, and static acceptance, then failed candidate browser acceptance.
+The earlier 509 browser failure was real: the candidate rendered exactly one board because both the renderer and structural lock were enforcing a one-board reference. That gate correctly blocked deployment.
 
-**First material divergence:** browser rendered exactly one board: `What Is Naya Power?`.
+Team Naya then repaired the renderer and structural lock toward the authorized nine-board target, but the repository's higher-priority control plane exposed a more important authority conflict: the 509 GitHub lane is a separate implementation lane and may not replace the missing Assistant Cloudflare/live lane.
 
-**Root cause:** the renderer was explicitly a one-board reference renderer, and the structural lock was also enforcing one board. The browser gate correctly blocked deployment.
+A later repository writer also modified the 509 workflow back toward a one-board reference. This confirms the competing-authority/change-control problem is still active. Do not fight that writer by repeatedly rewriting the same lower-level file. The correct response is fail-closed authority reconciliation.
 
-## Repairs completed
+## Repairs / protections completed
 
-1. Structural lock changed from one-board enforcement to preserving all Smart Board blocks while enforcing full-width stacked geometry.
-2. Structural lock sidebar changed to the active 509 contract: Intelligent, Reports, Intelligent Library, Smart Start, Smart Ledgers, Peer Connections, Smart Lists, Smart Spaces, Smart Mail, Settings.
-3. Renderer replaced with a canonical nine-board renderer that parses all nine canonical Smart Notes from `NAYANET/SMART-FEED-CONTENT.txt`, clones the seed board as required, preserves source text, and renders the approved semantic layers/actions.
-4. Candidate compatibility shim for legacy `$` / `$$` references remains in the world-class workflow.
+1. Structural-lock one-board deletion was removed in commit `4161163677071e413854b2208ce46915898a8bc1`.
+2. Nine-board renderer was implemented in commit `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`.
+3. 509 workflow trigger was narrowed so activity receipts do not themselves cancel/restart the runtime lane.
+4. Current execution transaction was changed to `BLOCKED_PENDING_AUTHORITY_RECONCILIATION` in commit `9bd0626c7273fc92ea33474d3abf9cbc30abeb68` so the lower-priority lane cannot truthfully present itself as authorized.
+5. The successor execution prompt was hardened with an explicit control-plane authority check in commit `6c15fe5b71adb73bdeb35f68f660beb6e94921d5`.
 
-## Evidence
+## Proof status
 
-- Structural-lock repair commit: `4161163677071e413854b2208ce46915898a8bc1`
-- Nine-board renderer repair commit: `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`
-- Latest 509 world-class workflow for HEAD `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`: run `35003692080`.
-- Previous browser failure evidence: `desktop:BOARD_TITLES ["What Is Naya Power?"]`.
-- PIS verification run `35003356326` passed its available PIS/Hub verification jobs, but that does not prove the 509 public runtime.
+- PIS/real Hub build verification previously passed its repository-level checks, but this is not public-runtime proof.
+- 509 candidate browser proof: **NOT PASS / NOT CURRENTLY AUTHORIZED**.
+- 509 production proof: **NOT PROVEN**.
+- Assistant Cloudflare/live runtime target: **UNKNOWN / UNAVAILABLE TO THIS EXECUTION PLANE**.
+- 10/10: **NO**.
 
 ## Protected baseline
 
+- canonical control-plane authority;
+- Assistant Cloudflare/live lane separation;
 - canonical Smart Note source content;
 - application data;
 - authentication/authorization;
 - unrelated routes/pages/features;
-- NayaNET branding and core architecture;
-- canonical control-plane authority;
-- Assistant Cloudflare/live lane separation;
+- NayaNET core architecture;
 - human authority;
-- all working behavior outside the authorized 509 delta.
-
-## Architectural warning
-
-The repository contains a second real Hub implementation under `NAYANET/HUB/src`, while the 509 public runtime workflow currently builds from `snapshots/NayaNET-509-AAA-CURRENT.html` plus the 509 renderer. The Master Hub contract describes a broader intelligence architecture than the legacy 509 snapshot. Do not replace the runtime blindly. Reconcile these implementations after the immediate nine-board candidate/production gate is proven.
-
-## 10/10 definition
-
-10/10 requires: authoritative architecture and implementation contract reconciled; nine boards correct; semantic layers/icons/colors/actions/geometry correct; source preserved; forbidden UI absent; exact authoritative navigation; candidate browser PASS desktop/tablet/mobile; one executable 509 deployment authority; production browser PASS desktop/tablet/mobile; public runtime audit PASS; actual intelligence flow proven; cold-Naya continuation PASS; and successor-ready activity/state/proof/torch records.
+- authorized nine-board target as intended downstream state;
+- fail-closed semantics.
 
 ## Exact next action
 
-**Inspect run `35003692080` now. If candidate browser acceptance fails, fetch its job log and repair only the first material divergence. If it passes, verify production post-deploy acceptance. Do not declare success from source inspection.**
+**Reconcile the missing Assistant-lane Cloudflare release mechanism and authorized runtime target against authoritative external deployment configuration or an authorized execution surface. Do NOT substitute GitHub 509, do NOT guess `NAYA_POWER_TARGET_URL`, and do NOT deploy the lower-priority 509 runtime. Once the real Assistant release path is established, execute the exact current Assistant-lane runtime baseline, then resume the governed Hub implementation/proof sequence.**
 
-After the immediate release gate passes, reconcile the legacy 509 runtime with the real `NAYANET/HUB` implementation and Master Hub architecture, then harden authority/cold-start continuity. Continue until 10/10.
+## Success condition
 
-## Team Naya handoff law
+The system is ready to proceed only when the live control plane explicitly permits the Hub implementation phase and the authorized Assistant Cloudflare/live release mechanism and runtime target are actually established and observable.
 
-Every Naya must leave: current HEAD, evidence, failure/root cause, repair, protected state, score, unknowns, exact next action, and a successor-ready execution prompt. Never ask Shawn to reconstruct the project state.
+## Successor law
+
+Every next Naya must read this receipt, the control plane, the Hub Read-First, Master Hub Contract, current transaction, 509 contract, and execution prompt; inspect live HEAD; preserve the authority boundary; execute only the highest-value authorized action; record evidence; and leave one exact next action. No Naya should ask Shawn to reconstruct context.
