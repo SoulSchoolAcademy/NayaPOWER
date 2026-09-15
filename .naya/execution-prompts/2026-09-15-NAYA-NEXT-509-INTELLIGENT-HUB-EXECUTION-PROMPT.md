@@ -35,9 +35,40 @@ Then inspect the actual current HEAD, current 509 renderer, structural lock, wor
 
 ## CRITICAL PROBLEM TO SOLVE
 
-The repository currently contains evidence of contradictory 509 execution intent. The canonical active transaction says the target is nine Smart Boards, while later 509 commits have referenced a one-board reference phase. Treat this as an execution-authority conflict until proven otherwise.
+The repository currently contains evidence of contradictory 509 execution intent. The scoped 509 transaction says the target is nine Smart Boards, while later 509 commits have referenced a one-board reference phase. Treat this as an execution-authority conflict until proven otherwise.
 
 **Do not blindly restore either version. Determine authority from the canonical governance/source hierarchy, then create or use an explicit machine-readable change contract for the authorized state.**
+
+## CONTROL-PLANE AUTHORITY CHECK — MANDATORY
+
+The 509 transaction is a **scoped execution contract**, not a constitutional or control-plane authority. Before executing it, compare it with the live control plane.
+
+The canonical source map establishes that:
+
+`LIVE AUTHORITATIVE SOURCE → CURRENT CONSTITUTION → CURRENT CONTROL PLANE → VERIFIED SPECIALIZED SPEC → OPERATIONAL RECORD → HISTORY → CONVERSATION MEMORY`
+
+Therefore:
+
+- `.naya/control-plane/STATE.json` is the current operational state authority.
+- `.naya/control-plane/BLOCKS.json` is the active execution-block authority.
+- `.naya/control-plane/MAP.json` defines mission/architecture/truth ownership.
+- `.naya/control-plane/PROOF.json` defines the proof boundary.
+- `CURRENT-EXECUTION-TRANSACTION.json` and `509-SMART-BOARD-CURRENT.json` govern the 509 delta only within those higher boundaries.
+
+**Current observed control-plane evidence at the time this prompt was last audited:** `STATE.json` identifies `TORCH-59-MACHINE-TRUTH-RESTORATION` as the active block and states that the immediate next action is reconciliation of the missing Assistant Cloudflare/live release mechanism/target. The same state explicitly says the GitHub 509 lane must not substitute for the Assistant Cloudflare/live lane.
+
+This creates a material scope/authority conflict with the 509 transaction's release objective. A cold Naya **MUST NOT resolve that conflict by assumption**.
+
+If the live control plane still identifies the Assistant-lane restoration as the active higher-priority block, the 509 execution is **BLOCKED_PENDING_AUTHORITY_RECONCILIATION**. In that state:
+
+1. Do not deploy the 509 public runtime.
+2. Do not rewrite the control plane merely to make 509 executable.
+3. Do not treat the scoped 509 transaction as permission to bypass the active P0 block.
+4. Record the exact conflict and evidence.
+5. Identify the smallest governed change required to make the intended 509 block active, or continue the higher-priority control-plane action if that remains authoritative.
+6. Leave one executable next action for the successor.
+
+If the live control plane has subsequently been explicitly reconciled so that 509 is the active authorized block, continue with the nine-board release sequence below.
 
 ## SMART BOARD TARGET
 
