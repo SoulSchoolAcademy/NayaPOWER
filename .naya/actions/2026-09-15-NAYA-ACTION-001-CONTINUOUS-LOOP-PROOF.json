@@ -2,112 +2,91 @@
   "schema": "naya/action/v1",
   "id": "NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF",
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "human_intent": "Execute the READY-TO-RUN continuous project execution baton through the real Naya Power repository and prove the Domino Effect without requiring conversational archaeology.",
-  "naya_understanding": "The repository already contained the governing laws, control plane, cold-start activation, PIS, and successor baton. The highest-value execution was to make the continuous loop machine-checkable and then prove it through the existing control-plane and PIS acceptance path rather than create another state system.",
+  "human_intent": "Continue the first NAYA_ACTION_V1 proof at the actual latest main HEAD, run the machine acceptance against that exact tree, then record the verified result, lesson, and successor baton.",
+  "naya_understanding": "The first action record was valid but its evidence pointed at an earlier verified HEAD. The next correct move is to refresh the proof against the current main tree, prove the contract and acceptance path against that exact HEAD, then promote the same action record only after fresh evidence exists.",
   "authority": {
     "repository": "SoulSchoolAcademy/NayaPOWER",
     "branch": "main",
     "source_of_truth": "GitHub repository state",
-    "human_authorization": "Explicit READY-TO-RUN baton in current execution context",
-    "execution_scope": "Repository-side Naya Power continuity and verification machinery"
+    "human_authorization": "Explicit continuation baton in current execution context",
+    "execution_scope": "Repository-side Naya Power NAYA_ACTION_V1 contract, acceptance, learning, and continuity machinery"
   },
   "constraints": [
     "Preserve canonical control-plane authority.",
     "Do not create a competing state database, renderer, shell, feed, constitution, or continuation system.",
     "Do not claim runtime or production proof without evidence.",
     "Use failure as repair information and preserve fail-closed behavior.",
+    "The action evidence must match the exact main HEAD being claimed as current.",
     "Leave exactly one executable next action."
   ],
   "plan": [
-    "Restore live main and canonical operating documents.",
-    "Inspect current state, active block, control plane, action-delivery law, and verification workflow.",
-    "Bind the continuous project execution loop into machine-checkable CI and cold-Naya activation.",
-    "Run the strongest available repository acceptance path.",
-    "Record the result and durable lesson as a machine-readable NAYA_ACTION_V1 object.",
-    "Preserve the external runtime boundary as unknown rather than fabricating proof."
+    "Restore the latest main HEAD and inspect the current NAYA_ACTION_V1 contract, proof, checkpoint, and verification workflow.",
+    "Execute the NAYA_ACTION_V1 acceptance against the exact current tree.",
+    "If the gate identifies a real divergence, repair only that divergence and rerun acceptance.",
+    "After fresh success, update this action record with exact current evidence and a durable lesson.",
+    "Create the successor execution baton from the verified state."
   ],
   "actions": [
     {
-      "type": "inspect",
-      "target": "SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
-      "result": "Canonical loop and handoff contract restored."
+      "type": "restore",
+      "target": "main",
+      "result": "Current repository HEAD resolved before refreshing the proof."
     },
     {
       "type": "inspect",
-      "target": ".naya/control-plane/STATE.json",
-      "result": "Current control-plane authority and single next-action rule restored."
+      "target": ".naya/contracts/NAYA-ACTION-V1.schema.json",
+      "result": "Canonical naya/action/v1 contract confirmed."
     },
     {
       "type": "inspect",
-      "target": ".naya/NAYA-ACTION-DELIVERY-LAW.md",
-      "result": "Action-first restore and zero-dropoff handoff laws confirmed."
+      "target": ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
+      "result": "Existing proof found with historical evidence; freshness gap identified."
     },
     {
       "type": "execute",
       "target": ".github/workflows/verify-primary-intelligence-system.yml",
-      "result": "Continuous-loop validator and cold-Naya acceptance executed successfully."
-    },
-    {
-      "type": "create",
-      "target": ".naya/contracts/NAYA-ACTION-V1.schema.json",
-      "result": "Canonical machine-readable action contract created."
+      "result": "Fresh NAYA_ACTION_V1 acceptance is the required verification path for the refreshed record."
     },
     {
       "type": "record",
       "target": ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
-      "result": "First durable NAYA_ACTION_V1 execution record created."
+      "result": "Proof record refreshed to current HEAD pending fresh acceptance evidence."
     }
   ],
   "observations": [
-    "The live repository HEAD during the verification run was f70bf5f2bd7a7fe14013fa0581508b8cacc28880.",
-    "Cold-Naya activation returned VERIFIED and conversation_memory EMPTY.",
-    "The acceptance path rejected stale identity, stale recorded head, unknown proof, and multiple-next-action scenarios.",
-    "Control-plane validation reported GREEN for identity, manifest integrity, state binding, cross-surface coherence, authority map, single constitution, and proof contract.",
-    "Proof freshness correctly remained STALE_RELATIVE_TO_LIVE_HEAD, preventing historical proof from being promoted to current proof.",
-    "External Assistant Cloudflare/live runtime remains a separate evidence boundary."
+    "Latest main HEAD before this refresh was d07d676fe9a0a2bf7c2382929157f675324b1bd5.",
+    "The previous action evidence referenced f70bf5f2bd7a7fe14013fa0581508b8cacc28880, so that evidence could not truthfully represent the newer main tree.",
+    "The repository already contains machine-enforced NAYA_ACTION_V1 acceptance in the Primary Intelligence System verification workflow.",
+    "The preflight governance gate for the current main HEAD completed successfully before this refresh."
   ],
   "evidence": [
     {
       "type": "github_actions",
-      "workflow": "Verify Primary Intelligence System",
-      "run_id": 35026876963,
-      "run_number": 627,
-      "head_sha": "f70bf5f2bd7a7fe14013fa0581508b8cacc28880",
+      "workflow": "Naya Power — Preflight Governance",
+      "run_id": 35027156011,
+      "run_number": 437,
+      "head_sha": "d07d676fe9a0a2bf7c2382929157f675324b1bd5",
       "conclusion": "success"
-    },
-    {
-      "type": "github_actions",
-      "workflow": "Naya Control Plane",
-      "run_id": 35026876965,
-      "run_number": 3426,
-      "head_sha": "f70bf5f2bd7a7fe14013fa0581508b8cacc28880",
-      "observed_jobs": "control-plane and cct-regression completed successfully"
     }
   ],
   "verification": {
-    "source_contract": "VERIFIED",
-    "continuous_loop_contract": "VERIFIED",
-    "cold_naya_activation": "VERIFIED",
-    "control_plane": "VERIFIED",
-    "pis_projection": "VERIFIED",
-    "hub_typecheck": "VERIFIED",
-    "hub_build": "VERIFIED",
-    "pis_artifact_parity": "VERIFIED",
-    "external_runtime": "UNKNOWN_NOT_PROVEN",
-    "mission_level_domino_effect": "REPOSITORY_LEVEL_PROOF_ESTABLISHED"
+    "contract": "VERIFIED",
+    "current_head_preflight": "VERIFIED",
+    "fresh_naya_action_acceptance": "PENDING",
+    "external_runtime": "UNKNOWN_NOT_PROVEN"
   },
-  "result": "The first repository-level NAYA_ACTION_V1 execution proof completed: the continuous project execution loop is machine-checkable, cold-Naya activation is accepted, the PIS/Hub verification path passes, and the execution itself is now represented as a durable machine-readable action object.",
+  "result": "NAYA_ACTION_V1 proof has been refreshed to the actual current main HEAD and is awaiting the fresh acceptance run required to promote the record to current VERIFIED evidence.",
   "value_cost_risk": {
-    "value": "Turns the previously descriptive Domino Effect into an inspectable, machine-readable execution primitive.",
-    "cost": "Repository changes and CI execution only.",
-    "risk": "External runtime remains unproven and is deliberately not represented as verified."
+    "value": "Prevents historical verification from being mistaken for proof of a newer repository state.",
+    "cost": "One repository record refresh plus the existing CI acceptance path.",
+    "risk": "Until the fresh acceptance run succeeds, this action remains pending rather than verified."
   },
   "failure_repair": [],
-  "lesson": "A continuation law becomes materially stronger when the execution itself is a canonical structured object and CI proves the cold-start path. Repository proof must still remain distinct from external runtime proof.",
+  "lesson": "Proof freshness is part of correctness: a valid historical action record must be re-verified when main advances before it can represent the current machine state.",
   "memory": [
-    "NAYA_ACTION_V1 is now the canonical atomic record for substantive governed execution.",
-    "Cold-Naya acceptance must remain machine-enforced, not merely documented.",
-    "Historical proof must never override live HEAD or external runtime uncertainty."
+    "NAYA_ACTION_V1 evidence must bind to the exact repository HEAD it claims to verify.",
+    "Historical proof is useful context but cannot be silently promoted to current proof.",
+    "Fresh acceptance must precede promotion from pending execution evidence to VERIFIED current evidence."
   ],
   "related_actions": [
     "NAYA-ACTION-DELIVERY-LAW",
@@ -116,24 +95,23 @@
   ],
   "source": {
     "repository": "SoulSchoolAcademy/NayaPOWER",
-    "head": "f70bf5f2bd7a7fe14013fa0581508b8cacc28880"
+    "head": "d07d676fe9a0a2bf7c2382929157f675324b1bd5"
   },
   "workflow": {
-    "primary_verification_run": 35026876963,
-    "control_plane_run": 35026876965
+    "current_head_preflight_run": 35027156011,
+    "fresh_acceptance_run": null
   },
   "runtime_evidence": [],
   "human_confirmation": true,
   "next_action": {
     "priority": "P0",
-    "instruction": "Reconcile the authoritative Assistant-lane Cloudflare release mechanism and target from an authorized external execution surface, then execute the exact current runtime baseline; do not substitute the GitHub 509 lane.",
+    "instruction": "Run the Primary Intelligence System verification workflow against current main HEAD d07d676fe9a0a2bf7c2382929157f675324b1bd5, require NAYA_ACTION_V1=PASS, then update this same action record with the returned run evidence and generate the successor baton.",
     "required_evidence": [
-      "authorized release mechanism",
-      "exact runtime target",
-      "deployment evidence",
-      "runtime behavior evidence",
-      "source-to-runtime parity"
+      "fresh NAYA_ACTION_V1 acceptance result",
+      "exact verified HEAD",
+      "workflow run identifier",
+      "continuity/control-plane acceptance result"
     ]
   },
-  "state": "VERIFIED"
+  "state": "EXECUTING"
 }
