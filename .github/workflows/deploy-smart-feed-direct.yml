@@ -5,8 +5,9 @@ on:
     branches: [main]
     paths:
       - 'snapshots/NayaNET-509-AAA-CURRENT.html'
+      - 'SMART FEED CONTENT'
+      - 'NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js'
       - 'NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js'
-      - 'NAYANET/509-AAA-HUB-FINAL-POLISH.js'
       - '.github/workflows/deploy-smart-feed-direct.yml'
 
 jobs:
@@ -32,9 +33,11 @@ jobs:
           from pathlib import Path
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
-          src1='<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish"></script>'
-          src2='<script src="/NAYANET/509-AAA-HUB-FINAL-POLISH.js?v=20260914-hub-final"></script>'
-          for src in (src1,src2):
+          scripts=[
+            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical"></script>',
+            '<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish"></script>'
+          ]
+          for src in scripts:
               if src not in h:
                   h=h.replace('</body>',src+'</body>',1)
           p.write_text(h,encoding='utf-8')
@@ -56,22 +59,23 @@ jobs:
           set -euo pipefail
           sleep 3
           curl -fsSL "$RUNTIME" -o /tmp/live.html
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish" -o /tmp/live-feed.js
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-HUB-FINAL-POLISH.js?v=20260914-hub-final" -o /tmp/live-polish.js
-          grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260914-feed-finish' /tmp/live.html
-          grep -Fq '509-AAA-HUB-FINAL-POLISH.js?v=20260914-hub-final' /tmp/live.html
-          grep -Fq '2026-09-14-integrated-hub-projections' /tmp/live-feed.js
-          grep -Fq '2026-09-14-hub-final-polish' /tmp/live-polish.js
-          grep -Fq 'Your Intelligence' /tmp/live-feed.js
-          grep -Fq 'Your Reports' /tmp/live-feed.js
-          grep -Fq 'Intelligent Library' /tmp/live-feed.js
-          grep -Fq 'Smart Share' /tmp/live-feed.js
-          grep -Fq 'Smart Ledger' /tmp/live-feed.js
-          grep -Fq 'Your Connections' /tmp/live-feed.js
-          grep -Fq 'Smart Lists' /tmp/live-feed.js
-          grep -Fq 'Smart Spaces' /tmp/live-feed.js
-          grep -Fq 'Smart Mail' /tmp/live-feed.js
-          grep -Fq '10 · HOW TO USE IT' /tmp/live-feed.js
-          grep -Fq 'naya509-human-input' /tmp/live-polish.js
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical" -o /tmp/live-renderer.js
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical' /tmp/live.html
+          grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' /tmp/live.html
+          grep -Fq '2026-09-15-canonical-renderer' /tmp/live-renderer.js
+          grep -Fq 'Your Intelligence' /tmp/live-renderer.js
+          grep -Fq 'Your Reports' /tmp/live-renderer.js
+          grep -Fq 'Intelligent Library' /tmp/live-renderer.js
+          grep -Fq 'Smart Share' /tmp/live-renderer.js
+          grep -Fq 'Smart Ledger' /tmp/live-renderer.js
+          grep -Fq 'Your Connections' /tmp/live-renderer.js
+          grep -Fq 'Smart Lists' /tmp/live-renderer.js
+          grep -Fq 'Smart Spaces' /tmp/live-renderer.js
+          grep -Fq 'Smart Mail' /tmp/live-renderer.js
+          grep -Fq '10 · HOW TO USE IT' /tmp/live-renderer.js
+          grep -Fq 'Blockers Never Stop the Mission' /tmp/live-renderer.js
+          grep -Fq 'Source Intent Is Not Runtime Truth' /tmp/live-renderer.js
+          grep -Fq 'The Intelligent Block Is the Star' /tmp/live-renderer.js
           echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
           echo 'RUNTIME='"$RUNTIME"
