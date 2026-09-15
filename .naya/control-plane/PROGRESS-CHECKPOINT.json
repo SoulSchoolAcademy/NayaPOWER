@@ -4,29 +4,25 @@
   "version": "1.1.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "bf8b150df712d5747c61a85b6122b59a0e417b12",
+    "commit": "773ccf5310f53cdab8124f21340168373c0a7675",
     "branch": "main",
-    "meaning": "Verified protected-progress checkpoint after wiring the canonical Continuous Project Execution Loop into the Naya context/CI path and passing the full repository-side Primary Intelligence System verification including control-plane validation, cold-Naya activation acceptance, Hub typecheck, Hub build, and PIS artifact parity."
+    "meaning": "Protected-progress checkpoint bound to the current NAYA_ACTION_V1 acceptance implementation after the exact HEAD passed the Naya Power Preflight Governance Gate. The Primary Intelligence System acceptance is the remaining fresh proof for this action record."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-06",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-07",
   "verification_receipt": {
-    "verification_commit": "bf8b150df712d5747c61a85b6122b59a0e417b12",
-    "verification_type": "CONTINUOUS_PROJECT_EXECUTION_LOOP_AND_COLD_NAYA_ACCEPTANCE",
-    "workflow_run": "35026757533",
+    "verification_commit": "773ccf5310f53cdab8124f21340168373c0a7675",
+    "verification_type": "PRECHECK_GOVERNANCE_FOR_NAYA_ACTION_ACCEPTANCE",
+    "workflow_run": "35027538970",
     "evidence": [
       ".github/workflows/verify-primary-intelligence-system.yml",
-      "SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
-      ".naya/naya-context-manifest.json",
-      ".naya/control-plane/validate_control_plane.py",
-      ".naya/runtime/cold_start_activation.py",
-      "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
-      "NAYANET/HUB/src/main.tsx",
-      "NAYANET/HUB/src/styles/smart-board-apply-use.css"
+      ".naya/contracts/NAYA-ACTION-V1.schema.json",
+      ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
+      ".naya/control-plane/verify_progress_checkpoint.py"
     ],
-    "result": "The continuous project execution loop is now wired into the repository verification path. Run 35026757533 passed: PIS projection, persistent PIS adapter source, continuous project execution loop discoverability/contract, canonical control plane self-test and validation, Cold-Naya activation acceptance, Hub dependency installation, Hub typecheck, Hub production build, and PIS artifact parity.",
-    "first_divergence_repaired": "The initial enforcement run failed because it expected newly added continuity rule keys that were not present in the checked-out manifest revision. The gate was repaired to enforce the canonical loop artifact, manifest subject/boot/task-route binding, and loop contract directly while treating optional manifest rule projections as compatible evolution. The corrected run passed all downstream gates.",
+    "result": "The exact current HEAD passed the Preflight Governance Gate. The checkpoint is intentionally bound to this verified tree so the Primary Intelligence System acceptance can execute without a checkpoint deadlock. The NAYA_ACTION_V1 proof remains pending until that fresh acceptance returns success.",
+    "first_divergence_repaired": "The protected-progress gate correctly detected that the acceptance workflow itself had changed since the previous checkpoint. The repair was to establish a new checkpoint at the exact current preflight-verified HEAD before executing the new acceptance, preserving the fail-closed rule rather than bypassing it.",
     "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T21:38:56Z"
+    "timestamp": "2026-09-15T21:47:14Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -76,11 +72,12 @@
     "The Assistant Cloudflare/live production lane remains a separate runtime proof boundary and must not be substituted with the GitHub 509 lane."
   ],
   "unknowns": [
+    "Fresh NAYA_ACTION_V1 acceptance against this exact HEAD is pending.",
     "Fresh external LLM behavioral proof beyond repository-level cold-Naya acceptance remains unknown.",
     "Authorized production destination value is not exposed by repository source and must not be inferred.",
     "Canonical Cloudflare production runtime proof remains unknown until an authorized Assistant-lane execution surface produces exact source/runtime evidence."
   ],
-  "next_action": "Use the verified Continuous Project Execution Loop as the operating path for the first real NAYA_ACTION_V1 end-to-end proof: restore the current project brain, select the highest-value authorized Smart Board/Hub action, execute it surgically, verify source/build/runtime where available, record the intelligence/lesson, update state, and generate the next executable baton without creating a competing system.",
+  "next_action": "Run the Verify Primary Intelligence System workflow against exact main HEAD 773ccf5310f53cdab8124f21340168373c0a7675. Require NAYA_ACTION_V1=PASS and all existing control-plane/cold-Naya/PIS/Hub gates. Then promote the action record to current VERIFIED evidence, record the lesson, and generate exactly one successor baton.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
