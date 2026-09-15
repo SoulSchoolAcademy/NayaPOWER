@@ -93,7 +93,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import json
-          import os
+          import subprocess
           from pathlib import Path
           schema=json.loads(Path('.naya/contracts/NAYA-ACTION-V1.schema.json').read_text(encoding='utf-8'))
           action=json.loads(Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json').read_text(encoding='utf-8'))
@@ -108,10 +108,12 @@ jobs:
           assert action['verification']['external_runtime']=='UNKNOWN_NOT_PROVEN'
           assert action['next_action']['instruction']
           assert len(action['next_action']['required_evidence']) >= 1
-          assert action['source']['head']==os.environ.get('GITHUB_SHA'), f"proof head {action['source']['head']} != workflow HEAD {os.environ.get('GITHUB_SHA')}"
+          parent=subprocess.check_output(['git','rev-parse','HEAD^'], text=True).strip()
+          assert action['source']['head']==parent, f"proof head {action['source']['head']} != record parent HEAD {parent}"
           print('NAYA_ACTION_V1=PASS')
           print('FIRST_PROOF='+action['id'])
-          print('PROOF_HEAD='+action['source']['head'])
+          print('PROOF_SCOPE_HEAD='+action['source']['head'])
+          print('RECORD_HEAD='+subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
           PY
 
       - name: Validate canonical control plane
