@@ -1,0 +1,64 @@
+{
+  "$schema": "naya/control-plane/progress-checkpoint/v1",
+  "status": "CANONICAL",
+  "version": "1.0.0",
+  "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
+  "baseline": {
+    "commit": "50bb4b8fc8ef0f1e5babb3050eefbae014dc8a1b",
+    "tree": "e1c645d9dd817f86ca69eda1e7f99fa03f5fb44d",
+    "branch": "main",
+    "meaning": "Last known repository baseline established before activating the progress-protection gate. The baseline is an ancestor requirement, not a claim that later work is verified."
+  },
+  "protected_scope": {
+    "rule": "Changes to critical execution architecture require a fresh checkpoint before the next protected change is accepted.",
+    "paths": [
+      ".naya/control-plane/",
+      ".naya/codex/",
+      ".naya/runtime/",
+      "SUPERBRAIN/AI-BOOT/",
+      "SUPERBRAIN/NIA-COMMUNICATION/",
+      "NAYANET/HUB/src/",
+      "NAYANET/HUB/scripts/",
+      ".github/workflows/"
+    ],
+    "exceptions": [
+      ".naya/control-plane/PROGRESS-CHECKPOINT.json"
+    ]
+  },
+  "anti_rewind": {
+    "enabled": true,
+    "rule": "Current main HEAD must be a descendant of the checkpoint baseline. A rewind, force-push behind the baseline, or replacement history that loses the protected baseline fails closed.",
+    "unknown_is_failure": true
+  },
+  "checkpoint_protocol": {
+    "step_1": "Make the smallest necessary protected change.",
+    "step_2": "Run the relevant tests and verification evidence.",
+    "step_3": "If protected paths changed, create a new checkpoint whose baseline commit is the verified protected-change commit before making another protected change.",
+    "step_4": "The checkpoint must never be advanced merely because code exists; verification evidence is required.",
+    "step_5": "If evidence is unavailable, leave the system BLOCKED/UNKNOWN rather than advancing the checkpoint.",
+    "step_6": "A cold Naya must restore the checkpoint before modifying protected scope."
+  },
+  "required_receipt": [
+    "checkpoint_id",
+    "baseline_commit",
+    "verification_commit",
+    "verification_type",
+    "evidence",
+    "protected_scope",
+    "known_risks",
+    "unknowns",
+    "authorized_by",
+    "timestamp",
+    "next_action"
+  ],
+  "truth_rules": [
+    "CHECKPOINTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN",
+    "RECORDED != CURRENT",
+    "UNKNOWN != GREEN",
+    "BLOCKED != PASS",
+    "A newer commit is not automatically a better state",
+    "No checkpoint may erase or rewrite historical evidence"
+  ],
+  "failure_behavior": "FAIL CLOSED. Do not redesign, reset, restore from memory, or silently overwrite protected work. Identify the first divergence, preserve the evidence, and leave one executable repair action."
+}
