@@ -17,8 +17,11 @@ env:
   CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
   NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
 
+# Each canonical commit gets its own release lane. This prevents a queued
+# production verification from being silently replaced by a later push while
+# preserving the fail-closed deployment sequence.
 concurrency:
-  group: assistant-cloudflare-hub-production
+  group: assistant-cloudflare-hub-production-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
