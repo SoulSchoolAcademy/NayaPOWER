@@ -39,7 +39,7 @@ jobs:
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
           scripts=[
-            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3"></script>',
+            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4"></script>',
             '<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish"></script>'
           ]
           for src in scripts:
@@ -65,12 +65,12 @@ jobs:
           sleep 3
           curl -fsSIL "$RUNTIME" > /tmp/live-headers.txt
           curl -fsSL "$RUNTIME" -o /tmp/live.html
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3" -o /tmp/live-renderer.js
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4" -o /tmp/live-renderer.js
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
           grep -Fq 'X-NayaNET-Source-Commit: ' /tmp/live-headers.txt
-          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3' /tmp/live.html
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4' /tmp/live.html
           grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' /tmp/live.html
-          grep -Fq '2026-09-15-canonical-renderer-v3' /tmp/live-renderer.js
+          grep -Fq '2026-09-15-canonical-renderer-v4' /tmp/live-renderer.js
           grep -Fq 'What Is Naya Power?' /tmp/live-renderer.js
           grep -Fq 'What Is Naya?' /tmp/live-renderer.js
           grep -Fq 'What Are Smart Notes?' /tmp/live-renderer.js
