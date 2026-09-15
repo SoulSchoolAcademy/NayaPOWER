@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
 
       - name: Build PIS projection
         run: python3 scripts/build-primary-intelligence-feed.py
@@ -109,10 +111,10 @@ jobs:
           assert action['next_action']['instruction']
           assert len(action['next_action']['required_evidence']) >= 1
           parent=subprocess.check_output(['git','rev-parse','HEAD^'], text=True).strip()
-          assert action['source']['head']==parent, f"proof head {action['source']['head']} != record parent HEAD {parent}"
+          assert action['source']['proof_scope_head']==parent, f"proof scope {action['source']['proof_scope_head']} != record parent HEAD {parent}"
           print('NAYA_ACTION_V1=PASS')
           print('FIRST_PROOF='+action['id'])
-          print('PROOF_SCOPE_HEAD='+action['source']['head'])
+          print('PROOF_SCOPE_HEAD='+action['source']['proof_scope_head'])
           print('RECORD_HEAD='+subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
           PY
 
