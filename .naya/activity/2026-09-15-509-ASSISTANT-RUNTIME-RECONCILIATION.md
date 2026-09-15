@@ -80,7 +80,7 @@ The canonical operating law is clear: restore source truth, distinguish authorit
 
 **KNOWN:** Shawn supplied the corrected Assistant runtime hostname above.
 
-**REPOSITORY SEARCH:** No current code-search occurrence for the exact hostname was found in `SoulSchoolAcademy/NayaPOWER`.
+**REPOSITORY SEARCH:** No current code-search occurrence for the exact hostname was found in `SoulSchoolAcademy/NayaPOWER` before this reconciliation record was created.
 
 **WEB OBSERVATION:** Direct web retrieval of the hostname was attempted but the web fetch surface returned a cache-miss/internal fetch failure; this is not runtime PASS evidence.
 
@@ -92,7 +92,7 @@ The canonical operating law is clear: restore source truth, distinguish authorit
 - Current deployment/release mechanism.
 - Current public runtime behavior.
 - Desktop/tablet/mobile runtime parity.
-- Authorized `NAYA_POWER_TARGET_URL` configuration value in an external deployment system.
+- Authorized external `NAYA_POWER_TARGET_URL` configuration.
 
 No runtime PASS is claimed.
 
@@ -118,7 +118,7 @@ A supplied runtime target is not the same thing as verified runtime behavior.
 
 # 7. WHAT MATTERS NOW
 
-The 509 execution lane should remain paused until the Assistant/live lane is reconciled against this corrected target and its authorized release mechanism.
+The 509 public deployment lane remains paused until the Assistant/live lane is reconciled against the corrected target and its authorized release mechanism.
 
 Do not:
 
@@ -132,26 +132,50 @@ Do not:
 
 ---
 
-# 8. NEXT BEST ACTION
+# 8. WORK PERFORMED IN THIS CONTINUATION
+
+The current Naya did not merely return a status report. The following repository changes were actually completed:
+
+1. Re-inspected the current `main` branch and discovered a new human-authored correction commit `a90975773c0f285a3f55c3f0f30570dd55f6d448` establishing `sparkling-shape-7ae5.smartnetpodcast.workers.dev` as the current human-authoritative Assistant runtime target.
+2. Updated `.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json` so the active transaction carries the corrected target, the corrected authority distinction, the protected baseline, and the exact next action.
+3. Commit created: `36aa766897ae1710caf7f3c4a581452218217c90`.
+4. Created a successor-ready execution prompt that explicitly prevents the next Naya from falling back to status-only behavior and requires useful repository-side work while genuinely blocked.
+5. Successor prompt commit created: `9deaeb7203d911b841d9e5968be9dea31918000c`.
+6. Preserved `.github/workflows/509-smart-board-world-class.yml` as the explicit fail-closed deployment boundary; it was inspected and not weakened.
+7. Inspected the real `NAYANET/HUB` source and confirmed the repository contains a real React Hub implementation under `NAYANET/HUB/src`; current `App.tsx` still contains legacy navigation/layer naming that does not yet equal the locked nine-board target. No unauthorized product mutation was made while the higher-priority authority block remains active.
+
+**Current repository HEAD after these actions:** `9deaeb7203d911b841d9e5968be9dea31918000c`.
+
+---
+
+# 9. NEXT BEST ACTION
 
 **Establish the authorized Assistant Cloudflare release surface for `sparkling-shape-7ae5.smartnetpodcast.workers.dev`, then capture the real Assistant runtime baseline.**
 
 **WHERE:** Authorized external Cloudflare/deployment execution surface, with GitHub `main` used for repository authority and the Hub Read-First/control-plane sources used for governance.
 
-**WHAT:** Identify the actual Worker/project ownership, release mechanism, current deployed version, and authorized runtime configuration for the corrected hostname.
+**WHAT:** Identify the actual Worker/project ownership, release mechanism, current deployed version, source binding, and authorized runtime configuration for the corrected hostname.
 
 **HOW:** Use an authorized deployment/execution surface rather than inferring from GitHub historical references. Capture exact evidence before making any release claim. Once the runtime is reachable from an authorized observation surface, record desktop/tablet/mobile baseline evidence as required by the Hub verification chain.
 
-**WHY:** The Assistant lane is the production/live Hub boundary. The 509 GitHub lane cannot be treated as its substitute.
+**WHY:** The Assistant lane is the production/live Hub boundary. The GitHub 509 lane cannot be treated as its substitute.
 
-**PASS CONDITION:** The Assistant runtime target, ownership/release mechanism, deployed version, and current public runtime behavior are evidenced sufficiently to establish a trustworthy baseline; only then may the 509 execution chain resume.
+**PASS CONDITION:** The Assistant runtime target, ownership/release mechanism, deployed version, source binding, and current public runtime behavior are evidenced sufficiently to establish a trustworthy baseline; only then may the 509 execution chain resume.
 
 **FAILURE CONDITION:** If the authorized Assistant execution surface remains unavailable, record that exact capability/authority boundary and keep the work BLOCKED rather than substituting another runtime.
 
 ---
 
-# 9. SUCCESSOR EXECUTION INSTRUCTION
+# 10. SUCCESSOR EXECUTION INSTRUCTION
 
-Resolve live `main` first. Read the current control-plane MAP/STATE/BLOCK/PROOF plus the Hub Read-First and Master Design Contract. Treat `sparkling-shape-7ae5.smartnetpodcast.workers.dev` as the current human-authoritative Assistant runtime target supplied on 2026-09-15. Do not use `aged-art-7c12` as the Assistant target. Establish the authorized Cloudflare release/execution surface, capture the real runtime baseline, verify evidence, and update the Activity Feed. Then leave exactly one next action and `TAG → YOU’RE IT`.
+Resolve live `main` first. Read the current control-plane MAP/STATE/BLOCK/PROOF plus the Hub Read-First and Master Design Contract. Treat `sparkling-shape-7ae5.smartnetpodcast.workers.dev` as the current human-authoritative Assistant runtime target supplied on 2026-09-15. Do not use `aged-art-7c12` as the Assistant target.
+
+Do not ask Shawn what to do next.
+
+If authorized Cloudflare execution is available: establish the release path, baseline the actual runtime, then resume the governed Hub implementation and verification sequence.
+
+If authorized Cloudflare execution is unavailable: do not stop. Perform only explicitly allowed repository-side work: strengthen continuity, audit competing deployment authorities, inspect the real Hub implementation, prepare deterministic acceptance criteria, and leave the system with one exact next action. Do not mutate the product renderer or deploy the 509 lane while the control-plane block remains active.
+
+Every meaningful action must update Activity/continuity with exact HEAD, evidence, commit SHA, score, unresolved unknowns, and the next action.
 
 **TAG → YOU’RE IT**
