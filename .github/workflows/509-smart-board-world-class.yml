@@ -1,188 +1,20 @@
-name: 509 — Smart Board World-Class Runtime Authority
+name: 509 — Smart Board World-Class Runtime Authority (BLOCKED)
+
+# BLOCKED BY CANONICAL CONTROL PLANE.
+# This GitHub 509 lane is not the authorized Assistant Cloudflare/live lane.
+# Do not deploy, substitute, or promote this workflow while
+# TORCH-59-MACHINE-TRUTH-RESTORATION is active.
+# Preserve the file as an explicit machine-visible fail-closed boundary.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'snapshots/NayaNET-509-AAA-CURRENT.html'
-      - 'SMART FEED CONTENT'
-      - 'NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js'
-      - 'NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js'
-      - '.naya/execution-contracts/509-SMART-BOARD-CURRENT.json'
-      - '.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json'
-      - '.github/workflows/509-smart-board-world-class.yml'
   workflow_dispatch:
 
-concurrency:
-  group: naya-509-world-class-public-runtime
-  cancel-in-progress: true
-
 jobs:
-  release:
+  blocked:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    env:
-      ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
-      WORKER_NAME: sparkling-shape-7ae5
-      RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-
     steps:
-      - uses: actions/checkout@v6
-
-      - name: Governance authorization
+      - name: Fail closed — Assistant lane authority required
         run: |
-          set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py \
-            --actor SoulSchoolAcademy \
-            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
-            --permission deploy_public_runtime \
-            --request deploy_nayanet_hub_canonical \
-            --mission "establish and prove the canonical one-board Smart Board reference and exact ten-destination sidebar" \
-            --uncertainty 2 --consequence 8 --irreversibility 8 \
-            --scope "public-runtime:sparkling-shape-7ae5:/" \
-            --evidence "exact source SHA $GITHUB_SHA" \
-            --evidence "CURRENT-EXECUTION-TRANSACTION" \
-            --evidence "509-SMART-BOARD-CURRENT" \
-            --evidence "candidate browser acceptance" > /tmp/auth.json
-          test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
-
-      - name: Validate active one-board contract
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          c=json.loads(Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json').read_text())
-          tx=json.loads(Path('.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json').read_text())
-          title='What Is Naya Power?'
-          labels=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]
-          layers=['human','child','grandma','naya','machine','learning','meaning','apply','benefit']
-          colors=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5']
-          nav=[['Your Intelligence Today','intelligence','#9d75ff'],['Your Reports','reports','#6675ff'],['Intelligent Library','library','#55b9ee'],['Smart Share','share','#55e39a'],['Smart Ledger','ledger','#b8ee57'],['Your Connections','connections','#f1d75a'],['Smart Lists','lists','#e8c766'],['Smart Spaces','spaces','#f09a4a'],['Smart Mail','mail','#ff5e6c'],['Settings','settings','#d86cff']]
-          assert c['status']=='ACTIVE'
-          assert c['boards']['count']==1 and c['boards']['titles']==[title]
-          assert c['boards']['semantic_layers']==layers and c['boards']['labels']==labels and [x.lower() for x in c['boards']['colors']]==colors
-          assert c['boards']['actions']==['create-space','favorite','save']
-          assert c['sidebar']['exact_items']==nav
-          assert 'one-board reference' in c['replication_policy']
-          assert tx['status']=='ACTIVE' and 'one canonical Smart Board reference' in tx['current_mission']
-          assert 'ONE BOARD' in tx['active_task'] and 'FREEZE' in tx['active_task'] and 'REPLICATION AUDIT' in tx['active_task']
-          assert tx['required_state'][0]=='exactly one real canonical Smart Board note'
-          print('ONE_BOARD_CONTRACT=PASS')
-          PY
-
-      - name: Fail if another 509 deploy lane is executable
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          for p in Path('.github/workflows').glob('*.yml'):
-            if p.name=='509-smart-board-world-class.yml': continue
-            s=p.read_text(errors='ignore')
-            if '509' in p.name and ('cloudflare/wrangler-action' in s or re.search(r'\bwrangler\s+deploy\b',s)) and not re.search(r'(?i)disabled|retired',s):
-              raise SystemExit(f'COMPETING_509_DEPLOY_AUTHORITY={p}')
-          print('DEPLOY_LANE_AUDIT=PASS')
-          PY
-
-      - name: Build isolated candidate from canonical snapshot
-        run: |
-          set -euo pipefail
-          rm -rf release && mkdir -p release/public/NAYANET
-          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          cp 'SMART FEED CONTENT' release/public/NAYANET/SMART-FEED-CONTENT.txt
-          cp NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js release/public/NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js
-          cp NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js release/public/NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js
-          python3 - <<'PY'
-          from pathlib import Path
-          import re
-          p=Path('release/public/index.html'); h=p.read_text()
-          h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*>\s*</script>','',h,flags=re.I)
-          h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*/>','',h,flags=re.I)
-          compat='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          v=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
-          l=Path('NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js').read_text().replace('</script>','<\\/script>')
-          h=h.replace('</body>',compat+'<script>'+v+'</script><script>'+l+'</script></body>',1)
-          p.write_text(h)
-          PY
-          cat > release/worker.js <<'EOF'
-          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));return new Response(a.body,{status:a.status,headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
-          EOF
-          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"%s"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" "$GITHUB_SHA" > release/wrangler.jsonc
-
-      - name: Static candidate acceptance
-        run: |
-          set -euo pipefail
-          python3 - <<'PY'
-          from pathlib import Path
-          import json
-          c=json.loads(Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json').read_text())
-          h=Path('release/public/index.html').read_text()
-          f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text()
-          assert c['boards']['count']==1 and c['boards']['titles']==['What Is Naya Power?']
-          assert 'What Is Naya Power?' in h and 'What Is Naya Power?' in f
-          assert len(f.strip())>0
-          print('STATIC_CANDIDATE=PASS')
-          PY
-
-      - name: Candidate browser acceptance before release
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
-          npm init -y >/dev/null 2>&1
-          npm install playwright@1.55.0 >/dev/null 2>&1
-          npx playwright install --with-deps chromium >/dev/null 2>&1
-          cat > verify.mjs <<'EOF'
-          import {chromium} from 'playwright';
-          const TITLE='What Is Naya Power?';
-          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
-          const K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
-          const C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
-          const S=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
-          const SK=['intelligence','reports','library','share','ledger','connections','lists','spaces','mail','settings'];
-          const SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];
-          const forbidden=['Collective','Evidence','Connection','Smart Mail — New','Smart Mail - New','Source Separated'];
-          const b=await chromium.launch();
-          for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
-            const p=await b.newPage({viewport:{width:w,height:h}}); const e=[];
-            p.on('pageerror',x=>e.push(x.message));
-            await p.goto(process.env.TARGET+'/?'+name+'='+Date.now(),{waitUntil:'domcontentloaded'});
-            await p.waitForTimeout(12000);
-            if(e.length) throw Error(name+':PAGEERROR '+e.join('|'));
-            const d=await p.evaluate(()=>{const t=v=>(v?.textContent||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.blocks>.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.nav button,.nav a')];const controls=[...document.querySelectorAll('button,a,[role="button"]')].map(x=>t(x)).filter(Boolean);return{bs:bs.map(x=>{const r=x.getBoundingClientRect();return{title:t(x.querySelector('h3')),x:r.x,w:r.width,y:r.y,n:x.querySelectorAll('.naya509-nutshell').length,l:[...x.querySelectorAll('.naya509-section')].map(s=>({k:s.dataset.semanticLayer,l:t(s.querySelector('.naya509-section-title')),c:s.dataset.layerColor,body:t(s.querySelector('.naya509-section-body')),svg:!!s.querySelector('svg')})),a:[...x.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind),text:t(x)}}),nav:nav.map(x=>({t:t(x),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor||''})),controls,body:t(document.body)}}});
-            if(d.bs.length!==1) throw Error(name+':BOARD_COUNT '+d.bs.length);
-            const x=d.bs[0];
-            if(x.title!==TITLE) throw Error(name+':TITLE '+x.title);
-            if(x.n!==1) throw Error(name+':NUTSHELL_COUNT '+x.n);
-            if(x.l.length!==9) throw Error(name+':SECTION_COUNT '+x.l.length);
-            if(JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)||JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)||JSON.stringify(x.l.map(y=>y.c.toLowerCase()))!==JSON.stringify(C)) throw Error(name+':SECTIONS');
-            if(x.l.some(y=>!y.body||!y.svg)) throw Error(name+':EMPTY_OR_ICON');
-            if(x.a.join(',')!=='create-space,favorite,save') throw Error(name+':ACTIONS '+x.a.join(','));
-            if(!x.text.includes(TITLE)||!x.text.includes('IN A NUTSHELL')) throw Error(name+':CANONICAL_CONTENT');
-            if(Math.round(x.w)<Math.round(w*0.8)) throw Error(name+':NOT_FULL_WIDTH '+x.w);
-            if(x.x<0 || x.x+x.w>w) throw Error(name+':OUTSIDE_VIEWPORT');
-            if(d.nav.length!==10||JSON.stringify(d.nav.map(z=>z.t))!==JSON.stringify(S)||JSON.stringify(d.nav.map(z=>z.k))!==JSON.stringify(SK)||JSON.stringify(d.nav.map(z=>z.c.toLowerCase()))!==JSON.stringify(SC)) throw Error(name+':SIDEBAR');
-            const forbiddenHit=d.controls.filter(v=>forbidden.includes(v)); if(forbiddenHit.length) throw Error(name+':FORBIDDEN '+forbiddenHit.join('|'));
-            console.log(name+':PASS'); await p.close();
-          }
-          await b.close(); console.log('CANDIDATE_BROWSER_ACCEPTANCE=PASS');
-          EOF
-          cd "$GITHUB_WORKSPACE/release/public" && python3 -m http.server 8787 >/tmp/naya-http.log 2>&1 & echo $! >/tmp/naya-http.pid
-          sleep 2
-          TARGET=http://127.0.0.1:8787 node /tmp/naya-browser/verify.mjs
-          kill "$(cat /tmp/naya-http.pid)"
-
-      - name: Deploy canonical runtime
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.ACCOUNT_ID }}
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-
-      - name: Post-deploy browser acceptance
-        run: |
-          set -euo pipefail
-          cd /tmp/naya-browser
-          TARGET="$RUNTIME" node verify.mjs
+          echo 'BLOCKED: GitHub 509 lane cannot substitute for the Assistant Cloudflare/live lane.'
+          echo 'BLOCKED: Resolve authorized Assistant release mechanism and runtime target before any public Hub deployment.'
+          exit 1
