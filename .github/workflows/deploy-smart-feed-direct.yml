@@ -68,7 +68,7 @@ jobs:
           assert '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3' in html
           assert '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
           assert not missing, missing
-          assert 'x-nayanet-source-commit' in Path('/tmp/live-headers.txt').read_text().lower()
+          assert '2026-09-14-vertical-11-layer-semantic-v2' in js
           print('STATIC_PUBLIC_RUNTIME=PASS')
           PY
       - name: Browser runtime verification
