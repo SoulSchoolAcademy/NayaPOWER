@@ -163,3 +163,20 @@ jobs:
           assert [e['event_id'] for e in source['events']]==[e['event_id'] for e in artifact['events']]
           print('PIS_ARTIFACT_PARITY=PASS')
           PY
+
+      - name: Upload immutable React Hub artifact
+        id: react_artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-hub-react-${{ github.sha }}
+          path: NAYANET/HUB/dist
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 14
+
+      - name: Emit immutable artifact evidence
+        run: |
+          echo "REACT_ARTIFACT_ID=${{ steps.react_artifact.outputs.artifact-id }}"
+          echo "REACT_ARTIFACT_DIGEST=${{ steps.react_artifact.outputs.artifact-digest }}"
+          echo "REACT_ARTIFACT_URL=${{ steps.react_artifact.outputs.artifact-url }}"
+          echo "REACT_ARTIFACT_SOURCE_COMMIT=${GITHUB_SHA}"
