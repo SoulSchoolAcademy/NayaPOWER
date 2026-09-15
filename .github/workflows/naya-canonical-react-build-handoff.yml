@@ -1,0 +1,63 @@
+name: Naya Canonical React Build Handoff
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+      - '.github/workflows/naya-canonical-react-build-handoff.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-canonical-react-hub:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: NAYANET/HUB
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: NAYANET/HUB/package.json
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build canonical React Hub
+        env:
+          VITE_RELEASE_COMMIT: ${{ github.sha }}
+        run: npm run build
+
+      - name: Validate build artifact
+        run: |
+          test -f dist/index.html
+          test -d dist/assets
+          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
+          printf '%s\n' '${{ github.sha }}' > dist/NAYANET-RELEASE-COMMIT.txt
+          printf '%s\n' 'NAYANET-HUB-REACT-CANONICAL' > dist/NAYANET-ARTIFACT-IDENTITY.txt
+
+      - name: Package immutable artifact
+        run: |
+          cd dist
+          zip -qr ../nayanet-canonical-react-hub-${{ github.sha }}.zip .
+
+      - name: Upload immutable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-canonical-react-hub-${{ github.sha }}
+          path: NAYANET/HUB/nayanet-canonical-react-hub-${{ github.sha }}.zip
+          if-no-files-found: error
+          retention-days: 30
