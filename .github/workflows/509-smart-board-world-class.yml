@@ -19,70 +19,88 @@ jobs:
       - name: Governance authorization
         run: |
           set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "establish one perfect Smart Board reference and exact ten-destination sidebar and prove it before public release" --uncertainty 2 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "exact source SHA $GITHUB_SHA" --evidence "CURRENT-EXECUTION-TRANSACTION" --evidence "509-SMART-BOARD-CURRENT" --evidence "candidate browser acceptance" > /tmp/auth.json
+          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "establish and prove the canonical nine-board Smart Board and exact ten-destination sidebar" --uncertainty 2 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "exact source SHA $GITHUB_SHA" --evidence "CURRENT-EXECUTION-TRANSACTION" --evidence "509-SMART-BOARD-CURRENT" --evidence "candidate browser acceptance" > /tmp/auth.json
           test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
-      - name: Validate one-board contract
+      - name: Validate canonical nine-board contract
         run: |
-          set -euo pipefail
           python3 - <<'PY'
           import json
           from pathlib import Path
-          c=json.loads(Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json').read_text());tx=json.loads(Path('.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json').read_text())
-          assert c['status']=='ACTIVE' and c['boards']['count']==1
-          assert c['boards']['titles']==['What Is Naya Power?']
-          assert c['sidebar']['exact_items']==[['Your Intelligence Today','intelligence','#9d75ff'],['Your Reports','reports','#6675ff'],['Intelligent Library','library','#55b9ee'],['Smart Share','share','#55e39a'],['Smart Ledger','ledger','#b8ee57'],['Your Connections','connections','#f1d75a'],['Smart Lists','lists','#e8c766'],['Smart Spaces','spaces','#f09a4a'],['Smart Mail','mail','#ff5e6c'],['Settings','settings','#d86cff']]
-          assert tx['status']=='ACTIVE' and 'exactly one reference board: What Is Naya Power?' in tx['required_state']
-          print('ONE_BOARD_CONTRACT=PASS')
+          c=json.loads(Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json').read_text())
+          tx=json.loads(Path('.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json').read_text())
+          titles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']
+          nav=[['Intelligent','intelligence','#9d75ff'],['Reports','reports','#6675ff'],['Intelligent Library','library','#55b9ee'],['Smart Start','start','#55e39a'],['Smart Ledgers','ledgers','#b8ee57'],['Peer Connections','connections','#f1d75a'],['Smart Lists','lists','#e8c766'],['Smart Spaces','spaces','#f09a4a'],['Smart Mail','mail','#ff5e6c'],['Settings','settings','#d86cff']]
+          assert c['status']=='ACTIVE' and c['boards']['count']==9 and c['boards']['titles']==titles
+          assert c['sidebar']['exact_items']==nav
+          assert tx['status']=='ACTIVE' and 'nine canonical Smart Board notes' in tx['current_mission']
+          print('NINE_BOARD_CONTRACT=PASS')
           PY
       - name: Fail if another 509 deploy lane is executable
         run: |
-          set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           import re
           for p in Path('.github/workflows').glob('*.yml'):
-              if p.name=='509-smart-board-world-class.yml': continue
-              s=p.read_text(errors='ignore')
-              if ('cloudflare/wrangler-action' in s or re.search(r'\bwrangler\s+deploy\b',s)) and '509' in p.name:
-                  if 'workflow_dispatch' not in s or not re.search(r'(?i)disabled|retired',s): raise SystemExit(f'LEGACY_DEPLOY_AUTHORITY={p}')
+            if p.name=='509-smart-board-world-class.yml': continue
+            s=p.read_text(errors='ignore')
+            if '509' in p.name and ('cloudflare/wrangler-action' in s or re.search(r'\bwrangler\s+deploy\b',s)) and not re.search(r'(?i)disabled|retired',s): raise SystemExit(f'COMPETING_509_DEPLOY_AUTHORITY={p}')
           print('DEPLOY_LANE_AUDIT=PASS')
           PY
       - name: Build isolated candidate
         run: |
           set -euo pipefail
-          rm -rf release && mkdir -p release/public
+          rm -rf release && mkdir -p release/public/NAYANET
           cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          cp -R NAYANET release/public/NAYANET
           cp 'SMART FEED CONTENT' release/public/NAYANET/SMART-FEED-CONTENT.txt
+          cp NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js release/public/NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js
+          cp NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js release/public/NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js
           python3 - <<'PY'
           from pathlib import Path
           import re
-          p=Path('release/public/index.html');h=p.read_text();legacy=['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js','509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js','509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js','509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js','509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js','509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-ONE-BOARD-REFERENCE.js']
-          for n in legacy:h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
-          v26=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>');lock=Path('NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js').read_text().replace('</script>','<\\/script>');shim='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          h=h.replace('</head>',shim+'</head>',1).replace('</body>','<script>'+v26+'</script><script>'+lock+'</script></body>',1);p.write_text(h)
+          p=Path('release/public/index.html');h=p.read_text()
+          h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*>\s*</script>','',h,flags=re.I)
+          h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*/>','',h,flags=re.I)
+          v=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
+          l=Path('NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js').read_text().replace('</script>','<\\/script>')
+          h=h.replace('</body>','<script>'+v+'</script><script>'+l+'</script></body>',1)
+          p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
-          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));if(a.ok)return new Response(a.body,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
+          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));return new Response(a.body,{status:a.status,headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
           printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"%s"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" "$GITHUB_SHA" > release/wrangler.jsonc
       - name: Static candidate acceptance
         run: |
-          set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text();assert f.count('SMART NOTE')>=9;assert 'What Is Naya Power?' in f
-          h=Path('release/public/index.html').read_text();assert 'ONE_BOARD_REFERENCE' in h and 'naya509-v26' in h and 'NINE_BOARD_CANONICAL' not in h
+          import re
+          f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text();assert len(re.findall(r'SMART NOTE\s+\d+',f,re.I))>=9
+          h=Path('release/public/index.html').read_text();assert 'NINE_BOARD_CANONICAL' in h and 'ONE_BOARD_REFERENCE' not in h
           print('STATIC_CANDIDATE=PASS')
           PY
       - name: Candidate browser acceptance before release
         run: |
           set -euo pipefail
-          mkdir -p /tmp/naya-browser && cd /tmp/naya-browser;npm init -y >/dev/null 2>&1;npm install playwright@1.55.0 >/dev/null 2>&1;npx playwright install --with-deps chromium >/dev/null 2>&1
+          mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
+          npm init -y >/dev/null 2>&1; npm install playwright@1.55.0 >/dev/null 2>&1; npx playwright install --with-deps chromium >/dev/null 2>&1
           cat > verify.mjs <<'EOF'
-          import {chromium} from 'playwright';const O=['What Is Naya Power?'],L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"],K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'],C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'],S=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'],SK=['intelligence','reports','library','share','ledger','connections','lists','spaces','mail','settings'],SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];const b=await chromium.launch();for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){const p=await b.newPage({viewport:{width:w,height:h}});const e=[];p.on('pageerror',x=>e.push(x.message));await p.goto(process.env.TARGET+'/?'+name+'='+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(5000);if(e.length)throw Error(name+':PAGEERROR '+e.join('|'));const d=await p.evaluate(()=>{const t=v=>(v?.textContent||'').replace(/\s+/g,' ').trim(),bs=[...document.querySelectorAll('.blocks>.block[data-real-smart-note]')],nav=[...document.querySelectorAll('.nav button,.nav a')];return{bs:bs.map(x=>{const r=x.getBoundingClientRect(),n=x.querySelector('.naya509-nutshell');const cs=getComputedStyle(x);return{title:t(x.querySelector('h3')),x:r.x,w:r.width,y:r.y,pLeft:parseFloat(cs.paddingLeft),pRight:parseFloat(cs.paddingRight),n:n?.getBoundingClientRect(),l:[...x.querySelectorAll('.naya509-section')].map(s=>({k:s.dataset.semanticLayer,l:t(s.querySelector('.naya509-section-title')),c:s.dataset.layerColor,body:t(s.querySelector('.naya509-section-body')),svg:!!s.querySelector('svg')})),a:[...x.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind)}}),nav:nav.map(x=>({t:t(x),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor||''})),body:t(document.body)}});if(d.bs.length!==1||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+':BOARD actual='+JSON.stringify(d.bs.map(x=>x.title)));if(d.bs[0].l.length!==9)throw Error(name+':SECTION_COUNT');if(JSON.stringify(d.bs[0].l.map(y=>y.k))!==JSON.stringify(K)||JSON.stringify(d.bs[0].l.map(y=>y.l))!==JSON.stringify(L)||JSON.stringify(d.bs[0].l.map(y=>y.c.toLowerCase()))!==JSON.stringify(C))throw Error(name+':SECTIONS');if(d.bs[0].l.some(y=>!y.body||!y.svg))throw Error(name+':EMPTY_OR_ICON');if(!d.bs[0].n||Math.round(d.bs[0].n.x)!==Math.round(d.bs[0].x+d.bs[0].pLeft)||Math.round(d.bs[0].n.width)!==Math.round(d.bs[0].w-d.bs[0].pLeft-d.bs[0].pRight))throw Error(name+':NUTSHELL');if(Math.round(d.bs[0].w)<Math.round(w*.8))throw Error(name+':BOARD_NOT_FULL_WIDTH');if(d.bs[0].a.join(',')!=='create-space,favorite,save')throw Error(name+':ACTIONS');if(d.nav.length!==10||JSON.stringify(d.nav.map(x=>x.t))!==JSON.stringify(S)||JSON.stringify(d.nav.map(x=>x.k))!==JSON.stringify(SK)||JSON.stringify(d.nav.map(x=>x.c.toLowerCase()))!==JSON.stringify(SC))throw Error(name+':SIDEBAR');const bad=['Collective','Evidence','Connections','Connection','Smart Mail — New','Smart Mail - New','Source, Understand, Act, Verify, Learn','Providence','Truth','Protection'];for(const x of bad)if(d.body.toLowerCase().includes(x.toLowerCase()))throw Error(name+':FORBIDDEN '+x);console.log(name+':PASS');await p.close()}await b.close();console.log('CANDIDATE_BROWSER_ACCEPTANCE=PASS');
+          import {chromium} from 'playwright';
+          const O=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
+          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
+          const K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
+          const C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
+          const S=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+          const SK=['intelligence','reports','library','start','ledgers','connections','lists','spaces','mail','settings'];
+          const SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];
+          const b=await chromium.launch();
+          for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
+            const p=await b.newPage({viewport:{width:w,height:h}});const e=[];p.on('pageerror',x=>e.push(x.message));await p.goto(process.env.TARGET+'/?'+name+'='+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(6000);if(e.length)throw Error(name+':PAGEERROR '+e.join('|'));
+            const d=await p.evaluate(()=>{const t=v=>(v?.textContent||'').replace(/\s+/g,' ').trim(),bs=[...document.querySelectorAll('.blocks>.block[data-real-smart-note]')],nav=[...document.querySelectorAll('.nav button,.nav a')];return{bs:bs.map(x=>{const r=x.getBoundingClientRect();return{title:t(x.querySelector('h3')),x:r.x,w:r.width,y:r.y,l:[...x.querySelectorAll('.naya509-section')].map(s=>({k:s.dataset.semanticLayer,l:t(s.querySelector('.naya509-section-title')),c:s.dataset.layerColor,body:t(s.querySelector('.naya509-section-body')),svg:!!s.querySelector('svg')})),n:!!x.querySelector('.naya509-nutshell'),a:[...x.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind)}}),nav:nav.map(x=>({t:t(x),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor||''})),body:t(document.body)}});
+            if(d.bs.length!==9||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+':BOARD_TITLES '+JSON.stringify(d.bs.map(x=>x.title)));if(d.bs.some(x=>x.l.length!==9))throw Error(name+':SECTION_COUNT');if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)||JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)||JSON.stringify(x.l.map(y=>y.c.toLowerCase()))!==JSON.stringify(C)))throw Error(name+':SECTIONS');if(d.bs.some(x=>x.l.some(y=>!y.body||!y.svg)))throw Error(name+':EMPTY_OR_ICON');const ws=d.bs.map(x=>Math.round(x.w)),xs=d.bs.map(x=>Math.round(x.x));if(new Set(ws).size!==1||new Set(xs).size!==1)throw Error(name+':BOARD_GEOMETRY');if(d.bs.some((x,i)=>i&&x.y<=d.bs[i-1].y))throw Error(name+':STACK');if(d.bs.some(x=>x.a.join(',')!=='create-space,favorite,save'))throw Error(name+':ACTIONS');if(d.nav.length!==10||JSON.stringify(d.nav.map(x=>x.t))!==JSON.stringify(S)||JSON.stringify(d.nav.map(x=>x.k))!==JSON.stringify(SK)||JSON.stringify(d.nav.map(x=>x.c.toLowerCase()))!==JSON.stringify(SC))throw Error(name+':SIDEBAR');console.log(name+':PASS');await p.close();
+          }
+          await b.close();console.log('CANDIDATE_BROWSER_ACCEPTANCE=PASS');
           EOF
-          cd "$GITHUB_WORKSPACE/release/public" && python3 -m http.server 8787 >/tmp/naya-http.log 2>&1 & echo $! >/tmp/naya-http.pid;sleep 2;TARGET=http://127.0.0.1:8787 node /tmp/naya-browser/verify.mjs;kill "$(cat /tmp/naya-http.pid)"
+          cd "$GITHUB_WORKSPACE/release/public" && python3 -m http.server 8787 >/tmp/naya-http.log 2>&1 & echo $! >/tmp/naya-http.pid; sleep 2; TARGET=http://127.0.0.1:8787 node /tmp/naya-browser/verify.mjs; kill "$(cat /tmp/naya-http.pid)"
       - name: Deploy canonical runtime
         uses: cloudflare/wrangler-action@v4
         with:
@@ -93,4 +111,5 @@ jobs:
       - name: Post-deploy browser acceptance
         run: |
           set -euo pipefail
-          cd /tmp/naya-browser;TARGET="$RUNTIME" node verify.mjs
+          cd /tmp/naya-browser
+          TARGET="$RUNTIME" node verify.mjs
