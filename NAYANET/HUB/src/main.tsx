@@ -5,6 +5,7 @@ import './styles/tokens.css';
 import './styles/globals.css';
 import './styles/responsive.css';
 import './styles/smart-feed-board.css';
+import './styles/smart-board-apply-use.css';
 import './styles/nayanet-v3.css';
 import './styles/nayanet-elite-feed.css';
 import './styles/hub-reconstruction-v1.css';
