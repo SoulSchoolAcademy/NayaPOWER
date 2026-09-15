@@ -2,8 +2,9 @@
 """Naya Power repository preflight guard.
 
 This validates structural prerequisites for substantive Naya work. It cannot prove
-that a model actually understood a document; it only prevents missing/invalid
-repository governance evidence from being treated as ready.
+that a model actually understood a document or performed private reasoning; it
+checks that the canonical decision-quality protocol and its required public
+execution record are present before repository governance is treated as ready.
 """
 from __future__ import annotations
 import argparse
@@ -17,6 +18,17 @@ REQUIRED = {
     "preflight": ROOT / ".naya" / "00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md",
     "lead_mode": ROOT / ".naya" / "2026-09-14-NAYAPOWER-LEAD-MODE-AND-TEN-STAR-OPERATING-PROTOCOL.md",
 }
+
+CRITICAL_PROTOCOL_MARKERS = (
+    "CRITICAL ACTION THINKING PROTOCOL",
+    "100 CRITICAL ACTION QUESTIONS",
+    "QUESTION THE REQUEST",
+    "GENERATE OPTIONS",
+    "MAXIMIZE VALUE",
+    "WHY IS THIS NOT A 10?",
+    "COMPACT DECISION RECORD",
+    "NO CRITICAL DECISION REVIEW = NO CONSEQUENTIAL ACTION",
+)
 
 
 def fail(message: str) -> int:
@@ -42,9 +54,21 @@ def main() -> int:
         return fail("Activation 00 initialization contract was not found")
 
     preflight_text = REQUIRED["preflight"].read_text(encoding="utf-8")
-    for marker in ("NO PREFLIGHT = NO SUBSTANTIVE EXECUTION", "SOURCE-LOCK", "POST-ACTION VERIFICATION GATE"):
+    for marker in (
+        "NO PREFLIGHT = NO SUBSTANTIVE EXECUTION",
+        "SOURCE-LOCK",
+        "POST-ACTION VERIFICATION GATE",
+    ):
         if marker not in preflight_text:
             return fail(f"preflight gate is missing mandatory marker: {marker}")
+
+    missing_protocol = [m for m in CRITICAL_PROTOCOL_MARKERS if m not in preflight_text]
+    if missing_protocol:
+        return fail("critical action thinking protocol is missing markers: " + ", ".join(missing_protocol))
+
+    read_first_text = REQUIRED["read_first"].read_text(encoding="utf-8")
+    if "NO CRITICAL DECISION REVIEW = NO CONSEQUENTIAL ACTION" not in read_first_text:
+        return fail("Read First is missing the critical decision review gate")
 
     if args.require_receipt:
         receipt = ROOT / args.receipt
@@ -66,7 +90,7 @@ def main() -> int:
             return fail("preflight receipt status is invalid")
 
     print("PREFLIGHT: READY")
-    print("Required governance surfaces are present and structurally valid.")
+    print("Required governance surfaces and critical decision protocol are present and structurally valid.")
     print("Reminder: structural readiness is not proof of model comprehension or runtime success.")
     return 0
 
