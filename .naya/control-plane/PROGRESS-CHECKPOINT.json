@@ -4,26 +4,27 @@
   "version": "1.0.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "57c33aaefccf1ee38f78fdbc502ed0685fad00ad",
+    "commit": "65e5578d24369da8975bfaf2741ad433295dad84",
     "branch": "main",
-    "meaning": "Current protected repository baseline after review of the incorrect Hub deployment lane, exact canonical Hub artifact preservation, runtime acceptance changes, and progress-gate alignment. The baseline is an ancestor requirement and continuity checkpoint; it does not claim downstream product/runtime production proof."
+    "meaning": "Current protected repository baseline after auditing the remaining 509/Hub workflows, fail-closing the obsolete sparkling-shape-7ae5 deployment lane, and adding a source-bound production release lane for the exact canonical static Hub artifact."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-04",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-05",
   "verification_receipt": {
-    "verification_commit": "57c33aaefccf1ee38f78fdbc502ed0685fad00ad",
-    "verification_type": "REPOSITORY_CONTROL_PLANE_AND_CANONICAL_HUB_SOURCE_REVIEW",
+    "verification_commit": "65e5578d24369da8975bfaf2741ad433295dad84",
+    "verification_type": "509_HUB_WORKFLOW_AUDIT_AND_SOURCE_BOUND_RELEASE_GATE_REVIEW",
     "evidence": [
       ".naya/control-plane/PROGRESS-CHECKPOINT.json",
       ".naya/control-plane/verify_progress_checkpoint.py",
       ".github/workflows/nayapower-progress-protection.yml",
       ".github/workflows/assistant-cloudflare-hub-release.yml",
+      ".github/workflows/deploy-feature-board-v4.yml",
+      ".github/workflows/nayanet-canonical-hub-production-release.yml",
       "2026 09 15 NayaNETHUB.html",
-      "NAYANET/10-PROOF-CARRYING-INTELLIGENCE-BLUEPRINT.md",
-      "GitHub live main ancestry and protected-path comparison"
+      "All identified 509/Hub deployment and presentation lanes reviewed"
     ],
-    "result": "Protected progress is checkpointed at the reviewed repository state. The incorrect Hub deployment lane is fail-closed, the exact static Hub artifact is preserved, and the new proof-carrying intelligence architecture is additive rather than a redesign. External production runtime proof remains explicitly unknown until an authorized destination is established and observed.",
+    "result": "Repository-side workflow audit is verified: obsolete competing deployment lanes are fail-closed or retained as validation-only historical gates; the retired sparkling-shape-7ae5 public runtime lane is fail-closed; the exact canonical static Hub remains the only named release artifact; and a manual source-bound production lane now requires explicit destination configuration and exact source SHA binding. Live production deployment remains BLOCKED/UNKNOWN until the authorized destination secrets exist and the release run plus live source-identity verification succeeds.",
     "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T21:05:00Z"
+    "timestamp": "2026-09-15T21:20:00Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -70,13 +71,14 @@
   "known_risks": [
     "GitHub rulesets/branch protection are not currently configured in the repository; this gate is a CI enforcement layer, not yet a server-side immutable branch rule.",
     "A repository administrator can technically disable workflows or alter the checkpoint; repository authority remains an external boundary.",
-    "The external production runtime destination for the exact static Hub artifact is not established by repository evidence in this review and must not be invented."
+    "The source-bound production lane cannot deploy until its explicit destination and Cloudflare credentials are configured as repository secrets."
   ],
   "unknowns": [
-    "Fresh GitHub Actions result for the latest checkpoint commit is not exposed by the current connector surface.",
-    "Cloudflare production runtime proof for the exact 2026 09 15 NayaNETHUB.html artifact remains unknown until the authorized destination and release path are verified."
+    "Fresh GitHub Actions execution result for commit 65e5578d24369da8975bfaf2741ad433295dad84 is not yet observed through the current connector surface.",
+    "Authorized production destination value is not exposed by repository source and must not be inferred.",
+    "Cloudflare production runtime proof for the exact 2026 09 15 NayaNETHUB.html artifact remains unknown until the authorized release lane executes successfully and verifies the live response headers/content."
   ],
-  "next_action": "Establish the authorized production destination for the exact canonical static Hub artifact, then build the smallest deployment lane that binds source identity to that destination and verifies the live result. After that, implement Proof Capsules additively inside the preserved Hub. Never substitute NAYANET/HUB or an unverified Worker.",
+  "next_action": "Configure the authorized production destination secrets for the source-bound canonical Hub lane, run it against the exact verified source commit, observe the release and live source-identity proof, then checkpoint that production-proven state. After that, implement the first Proof Capsule additively inside the preserved Hub.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
