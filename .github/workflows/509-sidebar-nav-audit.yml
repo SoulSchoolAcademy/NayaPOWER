@@ -1,25 +1,14 @@
-name: 509 Sidebar Nav Audit
+name: 509 Sidebar Nav Audit (RETIRED)
+
+# RETIRED: sidebar acceptance is now part of the canonical V6 candidate and
+# post-deploy runtime gate. A second push-triggered audit creates noise without
+# changing the authoritative result.
+
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
+
 jobs:
-  audit:
+  retired:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Inspect current sidebar
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          import re
-          s=Path('snapshots/NayaNET-509-AAA-CURRENT.html').read_text()
-          m=re.search(r'<nav class="nav">(.*?)</nav>',s,re.S)
-          print('NAV_FOUND=', bool(m))
-          if m:
-            nav=m.group(1)
-            for i,b in enumerate(re.findall(r'<button\b[^>]*>.*?</button>',nav,re.S),1):
-              text=re.sub(r'<[^>]+>',' ',b)
-              text=' '.join(text.split())
-              print(f'NAV_{i}: {text}')
-              print('HTML:', b[:1000])
-          PY
+      - run: echo 'Retired. Use 509-smart-board-runtime-authority-v6.yml candidate/runtime acceptance.'
