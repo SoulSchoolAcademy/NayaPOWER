@@ -18,6 +18,7 @@ import './styles/intelligent-hub-command-center-v1.css';
 import './styles/hub-restored-primo-v1.css';
 import './styles/hub-right-rail.css';
 import './styles/smart-feed-surgical-elevation.css';
+import './styles/smart-board-complete-edge.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
 document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
