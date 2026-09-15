@@ -17,6 +17,7 @@ HANDOFF_CONTRACT = ROOT / "NAYA-COMPLETE-HANDOFF-CONTRACT.md"
 SHA_RE = re.compile(r"\b[0-9a-f]{40}\b")
 TIMESTAMP_RE = re.compile(r"^## (\d{4}-\d{2}-\d{2}T[^ ]+) — NAYA — (.+)$", re.MULTILINE)
 NEXT_ACTION_RE = re.compile(r"^(?:\*\*NEXT BEST ACTION:\*\*|## NEXT BEST ACTION\s*$)", re.MULTILINE)
+FEED_TITLE_RE = re.compile(r"^# NayaPOWER — (?:Naya-to-Naya )?Activity Feed(?: — \d{4}-\d{2}-\d{2})?$")
 
 
 def fail(errors: list[str], message: str) -> None:
@@ -25,8 +26,9 @@ def fail(errors: list[str], message: str) -> None:
 
 def validate_day(path: Path, errors: list[str]) -> None:
     text = path.read_text(encoding="utf-8")
-    if not text.startswith("# NayaPOWER — Naya-to-Naya Activity Feed"):
-        fail(errors, f"{path}: missing canonical feed title")
+    first_line = text.splitlines()[0] if text.splitlines() else ""
+    if not FEED_TITLE_RE.fullmatch(first_line):
+        fail(errors, f"{path}: missing canonical-compatible feed title")
 
     matches = list(TIMESTAMP_RE.finditer(text))
     if not matches:
