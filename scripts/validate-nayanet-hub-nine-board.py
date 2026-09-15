@@ -18,7 +18,7 @@ assert SHELL.count("name:'")==10, 'canonical sidebar must contain exactly 10 des
 
 # Source-level board contract. Perspective headings append NOTE at render time;
 # the acceptance browser verifies the final visible labels.
-board_contract=['IN A NUTSHELL',"label} NOTE",'HUMAN','CHILD','GRANDMA','NAYA','MACHINE','ADAPTER LEARNING','WHAT IT MEANS','WHAT CAN I DO?',"WHAT'S IN IT FOR YOU",'TRUST · PROVENANCE · PRIVACY','RELATED INTELLIGENCE','ASK NAYA','CREATE SMART SPACE']
+board_contract=['IN A NUTSHELL','{label} NOTE','HUMAN','CHILD','GRANDMA','NAYA','MACHINE','ADAPTER LEARNING','WHAT IT MEANS','WHAT CAN I DO?',"WHAT'S IN IT FOR YOU",'TRUST · PROVENANCE · PRIVACY','RELATED INTELLIGENCE','ASK NAYA','CREATE SMART SPACE']
 for label in board_contract:
     assert label in BOARD, f'missing intelligent board contract surface: {label}'
 
