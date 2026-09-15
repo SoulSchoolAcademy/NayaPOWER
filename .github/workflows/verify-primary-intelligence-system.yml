@@ -94,18 +94,28 @@ jobs:
       - name: Validate canonical NAYA_ACTION_V1 schema and current proof
         run: |
           python3 - <<'PY'
+          import hashlib
           import json
           import subprocess
           from pathlib import Path
           canonical_path=Path('.naya/actions/NAYA_ACTION_V1.schema.json')
           compatibility_path=Path('.naya/contracts/NAYA-ACTION-V1.schema.json')
           action_path=Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json')
-          schema=json.loads(canonical_path.read_text(encoding='utf-8'))
-          compatibility=json.loads(compatibility_path.read_text(encoding='utf-8'))
-          action=json.loads(action_path.read_text(encoding='utf-8'))
+          canonical_bytes=canonical_path.read_bytes()
+          compatibility_bytes=compatibility_path.read_bytes()
+          action_bytes=action_path.read_bytes()
+          schema=json.loads(canonical_bytes.decode('utf-8'))
+          compatibility=json.loads(compatibility_bytes.decode('utf-8'))
+          action=json.loads(action_bytes.decode('utf-8'))
+          compatibility_blob=hashlib.sha1(f"blob {len(compatibility_bytes)}\0".encode()+compatibility_bytes).hexdigest()
+          print('CHECKOUT_HEAD='+subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
+          print('COMPATIBILITY_FILE_BLOB='+compatibility_blob)
+          print('COMPATIBILITY_KEYS='+json.dumps(sorted(compatibility.keys())))
+          print('COMPATIBILITY_CANONICAL_SCHEMA_PRESENT='+str('canonical_schema' in compatibility))
           assert schema['$id']=='naya/action/v1'
           assert schema['title']=='NAYA_ACTION_V1'
           assert compatibility['$id']=='naya/action/v1'
+          assert 'canonical_schema' in compatibility, 'compatibility file missing required canonical_schema property'
           assert compatibility['canonical_schema']=='.naya/actions/NAYA_ACTION_V1.schema.json'
           assert compatibility['title']=='NAYA_ACTION_V1 Compatibility Reference'
           required=schema['required']
