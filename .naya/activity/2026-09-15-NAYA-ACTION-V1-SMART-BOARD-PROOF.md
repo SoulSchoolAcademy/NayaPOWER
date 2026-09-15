@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-15  
 **Action:** `NAYA-ACTION-2026-09-15-SMART-BOARD-001`  
-**Status:** EXECUTED · VERIFICATION PARTIAL · RUNTIME BLOCKED
+**Status:** EXECUTED · VERIFICATION PARTIAL · CLOUDFLARE BLOCKED
 
 ## Operating Loop
 
@@ -10,9 +10,13 @@
 
 ## Current source truth
 
-Live `main` was resolved during this verification as `f70bf5f2bd7a7fe14013fa0581508b8cacc28880` before the durable receipt update. That commit is a handoff commit and does not replace the canonical Smart Board renderer.
+Live `refs/heads/main` was resolved as `7df7775f5f80c1ce9d0ee1774f33a7b3d09517c7` before this durable receipt update.
 
-Canonical Smart Board paths:
+The exact source snapshot used by the verified Hub build is intentionally preserved separately:
+
+`SOURCE_SNAPSHOT_SHA=bf8b150df712d5747c61a85b6122b59a0e417b12`
+
+Canonical Smart Board paths remain:
 
 - Renderer: `NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx`
 - Composition: `NAYANET/HUB/src/app/App.tsx`
@@ -20,15 +24,47 @@ Canonical Smart Board paths:
 - Entry point: `NAYANET/HUB/src/main.tsx`
 - Apply/Use styles: `NAYANET/HUB/src/styles/smart-board-apply-use.css`
 
-## Verification result
+## Build proof recovered and revalidated
 
-The canonical source was re-inspected at the current source snapshot. The Smart Board still contains the distinct **HOW TO APPLY / HOW TO USE** layer, reusing existing `event.action.text`. `App.tsx` still renders `SmartFeedBoard`, and the Hub package still exposes `typecheck` and `build` commands.
+The previously discovered GitHub Actions receipt is real and remains valid for its exact source snapshot:
 
-The current workflow surface was also reconciled. The visible 509 Smart Board deployment lanes are explicitly disabled, retired, or blocked. The world-class 509 lane explicitly states that GitHub 509 cannot substitute for the Assistant Cloudflare/live lane.
+- Workflow: `35026757533`
+- Job: `104575512908`
+- Source snapshot: `bf8b150df712d5747c61a85b6122b59a0e417b12`
+- `npm run typecheck`: PASS
+- `npm run build`: PASS
+- 83 modules transformed
+- `dist/index.html` generated
+- production CSS generated
+- production JS generated
+- PIS artifact parity: PASS
 
-The timestamped canonical release evidence identifies `aged-art-7c12.nayanet.workers.dev` as a historical canonical runtime target, but it also records a prior source/artifact/public-runtime mismatch and requires exact source-SHA parity. Its referenced `.github/workflows/deploy-nayanet-hub-canonical-v2.yml` is absent at the current source snapshot. Therefore that historical target cannot certify the current Smart Board runtime.
+The Actions artifact listing for that run currently exposes **no retained downloadable artifact**. Therefore:
 
-No executable build receipt, current deployment receipt, exact current runtime identity, browser interaction evidence, responsive runtime evidence, or visual acceptance evidence was obtained in this execution.
+`BUILD = VERIFIED`  
+`ARTIFACT EXISTENCE = VERIFIED`  
+`RETAINED ARTIFACT IDENTITY = INCOMPLETE`
+
+## Assistant Cloudflare authority reconciliation
+
+The accessible current GitHub workflow surface was inspected directly.
+
+`.github/workflows/assistant-cloudflare-hub-release.yml` is explicitly disabled and identifies itself as a historical wrong-Hub deployment lane. It performs no deployment.
+
+`.github/workflows/509-smart-board-world-class.yml` is explicitly BLOCKED and states that GitHub 509 cannot substitute for the Assistant Cloudflare/live lane.
+
+The canonical release evidence names `aged-art-7c12.nayanet.workers.dev` only as historical evidence and records a prior source/artifact/public-runtime mismatch. It therefore cannot establish current production authority or runtime parity.
+
+No authoritative current production URL, Worker identity, Cloudflare account/project identity, credential source, executable release mechanism, deployment receipt, or independent browser/runtime observation is exposed in the accessible execution surface.
+
+Therefore:
+
+`CLOUDFLARE_AUTHORITY = BLOCKED`  
+`DEPLOYMENT = UNKNOWN`  
+`RUNTIME = UNKNOWN`  
+`USER EXPERIENCE = UNKNOWN`
+
+No deployment was attempted and no substitute platform was used.
 
 ## Proof law applied
 
@@ -38,21 +74,25 @@ No production or mission-level success claim was made.
 
 ## Failure / lesson
 
-> **A historical runtime target is not current runtime proof.**
+> **A successful build must not be erased merely because it was discovered after an earlier UNKNOWN state.**
 
-> **A new repository HEAD invalidates proof tied only to an older HEAD.**
+> **Artifact existence is not the same as retained artifact identity.**
 
-The system must preserve exact source identity separately from later receipt commits. Recording evidence itself changes repository HEAD; therefore source/artifact/runtime identity must always name the exact artifact source commit rather than merely saying “current main.”
+> **A workflow named Assistant Cloudflare is not Assistant Cloudflare authority when the workflow itself is disabled.**
+
+> **A historical Worker URL cannot certify current runtime parity.**
+
+The proof chain now distinguishes the verified build receipt from the still-blocked deployment/runtime boundary.
 
 ## Protected
 
-Preserve canonical Hub architecture, SmartFeedBoard ownership, IntelligentEvent, existing working interactions, Adaptive Reconstruction + Surgical Evolution, protected progress, Assistant Cloudflare/509 lane separation, and UNKNOWN/BLOCKED semantics.
+Preserve canonical Hub architecture, SmartFeedBoard ownership, IntelligentEvent, existing working interactions, Adaptive Reconstruction + Surgical Evolution, protected progress, exact source-snapshot identity, Assistant Cloudflare/509 lane separation, and UNKNOWN/BLOCKED semantics.
 
 ## Next action — exactly one
 
-**Expose an executable canonical Hub build and Assistant Cloudflare runtime path.**
+**Expose the authorized Assistant Cloudflare release control surface.**
 
-The next Naya must obtain/expose repository build execution and the authorized Assistant Cloudflare production/runtime capability, then verify the exact source artifact in the exact canonical runtime. If the capability remains unavailable, preserve UNKNOWN/BLOCKED and record the exact boundary rather than substituting another deployment surface.
+The next Naya must obtain the actual authorized Assistant Cloudflare production/runtime execution surface and exact target from authoritative configuration outside the current GitHub-only capability boundary. It must not guess a URL, Worker, account, credential, or release mechanism; must not use AppDeploy, Vercel, or GitHub 509 as substitutes; and must bind any eventual release to the exact verified source snapshot and traceable artifact. If the authorized surface remains unavailable, preserve `CLOUDFLARE_AUTHORITY=BLOCKED`, `DEPLOYMENT=UNKNOWN`, and `RUNTIME=UNKNOWN`.
 
 ## Handoff
 
@@ -60,6 +100,6 @@ The machine-readable action record contains the complete `ready_to_run_execution
 
 `.naya/actions/NAYA-ACTION-2026-09-15-SMART-BOARD-001.json`
 
-The action record was updated during this verification to preserve the current source snapshot and exact blocked proof boundary.
+Recording commit for this relay update: `470f3fc7e2f8c6b59b28b46e50c0755c0077f158`.
 
 No conversational archaeology is required.
