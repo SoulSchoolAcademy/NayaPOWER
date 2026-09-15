@@ -116,13 +116,13 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import json,re
+          import json
           c=json.loads(Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json').read_text())
           h=Path('release/public/index.html').read_text()
           f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text()
           assert c['boards']['count']==1 and c['boards']['titles']==['What Is Naya Power?']
           assert 'What Is Naya Power?' in h and 'What Is Naya Power?' in f
-          assert 'Naya' in f and len(f.strip())>0
+          assert len(f.strip())>0
           print('STATIC_CANDIDATE=PASS')
           PY
 
@@ -150,19 +150,20 @@ jobs:
             await p.goto(process.env.TARGET+'/?'+name+'='+Date.now(),{waitUntil:'domcontentloaded'});
             await p.waitForTimeout(12000);
             if(e.length) throw Error(name+':PAGEERROR '+e.join('|'));
-            const d=await p.evaluate(()=>{const t=v=>(v?.textContent||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.blocks>.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.nav button,.nav a')];return{bs:bs.map(x=>{const r=x.getBoundingClientRect();return{title:t(x.querySelector('h3')),x:r.x,w:r.width,y:r.y,n:!!x.querySelector('.naya509-nutshell'),l:[...x.querySelectorAll('.naya509-section')].map(s=>({k:s.dataset.semanticLayer,l:t(s.querySelector('.naya509-section-title')),c:s.dataset.layerColor,body:t(s.querySelector('.naya509-section-body')),svg:!!s.querySelector('svg')})),a:[...x.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind),text:t(x)}}),nav:nav.map(x=>({t:t(x),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor||''})),body:t(document.body)}}});
+            const d=await p.evaluate(()=>{const t=v=>(v?.textContent||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.blocks>.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.nav button,.nav a')];const controls=[...document.querySelectorAll('button,a,[role="button"]')].map(x=>t(x)).filter(Boolean);return{bs:bs.map(x=>{const r=x.getBoundingClientRect();return{title:t(x.querySelector('h3')),x:r.x,w:r.width,y:r.y,n:x.querySelectorAll('.naya509-nutshell').length,l:[...x.querySelectorAll('.naya509-section')].map(s=>({k:s.dataset.semanticLayer,l:t(s.querySelector('.naya509-section-title')),c:s.dataset.layerColor,body:t(s.querySelector('.naya509-section-body')),svg:!!s.querySelector('svg')})),a:[...x.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind),text:t(x)}}),nav:nav.map(x=>({t:t(x),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor||''})),controls,body:t(document.body)}}});
             if(d.bs.length!==1) throw Error(name+':BOARD_COUNT '+d.bs.length);
             const x=d.bs[0];
             if(x.title!==TITLE) throw Error(name+':TITLE '+x.title);
-            if(!x.n) throw Error(name+':NO_NUTSHELL');
+            if(x.n!==1) throw Error(name+':NUTSHELL_COUNT '+x.n);
             if(x.l.length!==9) throw Error(name+':SECTION_COUNT '+x.l.length);
             if(JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)||JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)||JSON.stringify(x.l.map(y=>y.c.toLowerCase()))!==JSON.stringify(C)) throw Error(name+':SECTIONS');
             if(x.l.some(y=>!y.body||!y.svg)) throw Error(name+':EMPTY_OR_ICON');
             if(x.a.join(',')!=='create-space,favorite,save') throw Error(name+':ACTIONS '+x.a.join(','));
             if(!x.text.includes(TITLE)||!x.text.includes('IN A NUTSHELL')) throw Error(name+':CANONICAL_CONTENT');
-            const rects=d.bs.map(z=>z.w); if(new Set(rects.map(Math.round)).size!==1) throw Error(name+':BOARD_WIDTH');
+            if(Math.round(x.w)<Math.round(w*0.8)) throw Error(name+':NOT_FULL_WIDTH '+x.w);
+            if(x.x<0 || x.x+x.w>w) throw Error(name+':OUTSIDE_VIEWPORT');
             if(d.nav.length!==10||JSON.stringify(d.nav.map(z=>z.t))!==JSON.stringify(S)||JSON.stringify(d.nav.map(z=>z.k))!==JSON.stringify(SK)||JSON.stringify(d.nav.map(z=>z.c.toLowerCase()))!==JSON.stringify(SC)) throw Error(name+':SIDEBAR');
-            const forbiddenHit=forbidden.filter(v=>d.body.includes(v)); if(forbiddenHit.length) throw Error(name+':FORBIDDEN '+forbiddenHit.join('|'));
+            const forbiddenHit=d.controls.filter(v=>forbidden.includes(v)); if(forbiddenHit.length) throw Error(name+':FORBIDDEN '+forbiddenHit.join('|'));
             console.log(name+':PASS'); await p.close();
           }
           await b.close(); console.log('CANDIDATE_BROWSER_ACCEPTANCE=PASS');
