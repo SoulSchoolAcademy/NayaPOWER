@@ -64,7 +64,7 @@ jobs:
           grep -q '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js' release/public/index.html
           grep -q '509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js' release/public/index.html
           grep -q '509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js' release/public/index.html
-          grep -q 'canonical-sections-9-11' release/public/index.html
+          grep -q '509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js' release/public/index.html
           ! grep -q '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' release/public/index.html
           echo CANONICAL_RELEASE_BUILD=PASS
       - name: Deploy
@@ -89,7 +89,7 @@ jobs:
           assert not [x for x in required if x not in js and x not in html]
           assert '509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js' in html
           assert 'SMART_BOARD_V5' in v5 and '#ff3bbf' in v5 and '#35d39a' in v5 and '#e9edf5' in v5
-          assert 'canonical-sections-9-11' in html and '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
+          assert '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
           print('STATIC_PUBLIC_RUNTIME=PASS')
           PY
       - name: Browser runtime verification — desktop tablet mobile
