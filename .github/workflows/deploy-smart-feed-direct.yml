@@ -1,5 +1,8 @@
 name: 509 — Direct Smart Feed Deployment
 
+# Canonical deployment path: snapshot + canonical renderer + feed-flow runtime.
+# The legacy self-mutating finisher is disabled; this workflow is authoritative.
+
 on:
   push:
     branches: [main]
