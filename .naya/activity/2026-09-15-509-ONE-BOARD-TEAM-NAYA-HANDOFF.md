@@ -15,7 +15,7 @@ ONE_BOARD_REFERENCE.
 The reference board is exactly:
 - What Is Naya Power?
 
-It must contain exactly these nine semantic layers, vertically stacked, full width, with no two-column/tiled layout:
+It must contain exactly ten approved sections: one In a Nutshell section plus nine semantic layers, vertically stacked, full width, with no two-column/tiled layout:
 1. In a Nutshell
 2. Human Note
 3. Child Note
