@@ -695,5 +695,34 @@ document.addEventListener('click',e=>{const feed=e.target.closest('[data-feed]')
 const input=document.getElementById('search'),results=document.getElementById('results');input.addEventListener('input',()=>{const q=input.value.trim().toLowerCase();if(!q){results.className='results';return}const hits=dataFor('activity').filter(b=>(b.title+' '+b.summary+' '+b.type+' '+b.tags.join(' ')+' '+b.meaning+' '+b.value).toLowerCase().includes(q)).slice(0,8);results.innerHTML=hits.length?hits.map(b=>`<button class="result" onclick="document.getElementById('${'b'+dataFor('activity').indexOf(b)+'-'+b.title.replace(/\W+/g,'-').slice(0,30)}').scrollIntoView({behavior:'smooth',block:'center'});document.getElementById('results').className='results'" ><b>${esc(b.title)}</b><span>${esc(b.summary.slice(0,170))}</span></button>`).join(''):'<div class="result"><b>No matching intelligence yet.</b><span>Nothing is fabricated to fill the space.</span></div>';results.className='results open'});document.addEventListener('click',e=>{if(!e.target.closest('.searchRow'))results.className='results'});
 render();
 </script>
+<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->
+<style>
+.layers{display:flex!important;flex-direction:column!important;gap:10px!important}
+.layer{width:100%!important}
+</style>
+<script>
+(()=>{
+ const wanted=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTER LEARNING','WHAT IT MEANS','HOW TO USE',"WHAT'S IN IT FOR YOU"];
+ const aliases={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE'};
+ const side={'Home':'Your Intelligence Today','Reports':'Your Report','Intelligence Library':'Intelligence','Collective':'Smart Share','Connections':'Your Connections'};
+ const text=x=>(x||'').replace(/\s+/g,' ').trim().toUpperCase();
+ function fix(){
+   document.querySelectorAll('.nav button').forEach(b=>{const raw=b.textContent.replace(/\s+/g,' ').trim();for(const [a,v] of Object.entries(side)){if(text(raw).startsWith(a.toUpperCase())){for(const n of b.childNodes)if(n.nodeType===3&&n.textContent.trim())n.textContent=n.textContent.replace(a,v);}}});
+   document.querySelectorAll('.label').forEach(l=>{const t=text(l.textContent);if(t.includes('SHARE')||t.includes('EVIDENCE'))l.textContent='SHARE & CONNECT';if(t.includes('COMMUNICATION'))l.textContent='PROOF & COMMUNICATION';if(t.includes('SYSTEM'))l.textContent='SYSTEM';if(t.includes('YOUR INTELLIGENCE'))l.textContent='YOUR INTELLIGENCE';});
+   document.querySelectorAll('.layers').forEach(layers=>{
+     [...layers.querySelectorAll(':scope > .layer')].forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h){const t=text(h.textContent);if(aliases[t])h.textContent=aliases[t];}});
+     const by={};[...layers.querySelectorAll(':scope > .layer')].forEach(x=>{const h=x.querySelector('.layerHead b');if(h)by[text(h.textContent)]=x;});
+     const meaning=by['WHAT IT MEANS'];
+     if(meaning&&!by['HOW TO USE']){const x=document.createElement('div');x.className='layer';x.style.setProperty('--layer','#55b9ee');x.innerHTML='<div class="layerHead"><span class="dot"></span><b>HOW TO USE</b><span class="state">ACTION GUIDANCE</span></div><div class="layerBody"><strong>Use the intelligence without inventing certainty.</strong> Check the source and evidence, understand the meaning, then apply a concrete action when one is verified. If no verified action exists, keep this as intelligence to review rather than fabricate a use case.</div>';meaning.after(x);}
+     const use=[...layers.querySelectorAll(':scope > .layer')].find(x=>text(x.textContent).includes("WHAT'S IN IT FOR YOU"));
+     if(use){const h=use.querySelector('.layerHead b');if(h)h.textContent="WHAT'S IN IT FOR YOU";}
+     const ordered={};[...layers.querySelectorAll(':scope > .layer')].forEach(x=>{const h=x.querySelector('.layerHead b');if(h)ordered[text(h.textContent)]=x;});
+     wanted.forEach(k=>{if(ordered[k])layers.appendChild(ordered[k]);});
+   });
+ }
+ fix();
+ new MutationObserver(fix).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
 </body>
 </html>
