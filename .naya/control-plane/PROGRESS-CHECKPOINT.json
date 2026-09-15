@@ -4,24 +4,25 @@
   "version": "1.0.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "7b492f50867f7628139e67ec20e69a78dca17a6e",
+    "commit": "a9841937eff3e251c9c0356dda6189fba3a5dc49",
     "branch": "main",
-    "meaning": "Current protected repository baseline after activation of the progress-protection gate. The baseline is an ancestor requirement and continuity checkpoint; it does not claim downstream product/runtime production proof."
+    "meaning": "Current protected repository baseline after review and fail-closed repair of the incorrect Assistant Cloudflare Hub deployment lane. The baseline is an ancestor requirement and continuity checkpoint; it does not claim downstream product/runtime production proof."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-02",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-03",
   "verification_receipt": {
-    "verification_commit": "7b492f50867f7628139e67ec20e69a78dca17a6e",
-    "verification_type": "REPOSITORY_CONTROL_PLANE_REVIEW",
+    "verification_commit": "a9841937eff3e251c9c0356dda6189fba3a5dc49",
+    "verification_type": "REPOSITORY_CONTROL_PLANE_AND_HUB_RELEASE_LANE_REVIEW",
     "evidence": [
       ".naya/control-plane/PROGRESS-CHECKPOINT.json",
       ".naya/control-plane/verify_progress_checkpoint.py",
       ".github/workflows/nayapower-progress-protection.yml",
-      ".naya/control-plane/validate_control_plane.py",
-      "GitHub live main commit history and exact checkpoint ancestry"
+      ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "2026 09 15 NayaNETHUB.html",
+      "GitHub live main commit ancestry and protected-path comparison"
     ],
-    "result": "Protected progress contract and anti-rewind CI gate are installed. The checkpoint intentionally preserves runtime/product proof as a separate evidence boundary.",
+    "result": "Protected progress gate is aligned to the reviewed protected state. The incorrect Assistant Cloudflare lane is fail-closed and explicitly prohibited from deploying the wrong NAYANET/HUB runtime or sparkling-shape-7ae5. The exact canonical static Hub artifact remains preserved. External production runtime proof remains a separate evidence boundary.",
     "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T20:43:54Z"
+    "timestamp": "2026-09-15T21:00:00Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -68,13 +69,13 @@
   "known_risks": [
     "GitHub rulesets/branch protection are not currently configured in the repository; this gate is a CI enforcement layer, not yet a server-side immutable branch rule.",
     "A repository administrator can technically disable workflows or alter the checkpoint; repository authority remains an external boundary.",
-    "Commit e0b4bfbf7e03c943fa14937900c9e8dc238fe940 changed protected Hub runtime-acceptance code before this checkpoint and is preserved as part of the baseline history; its external runtime proof remains separately unknown until the authorized release workflow is observed."
+    "The external production runtime destination for the exact static Hub artifact is not established by repository evidence in this review and must not be invented."
   ],
   "unknowns": [
-    "Fresh GitHub Actions result for the checkpoint commit is not exposed by the current connector surface.",
-    "Cloudflare production runtime proof remains separate from this repository checkpoint."
+    "Fresh GitHub Actions result for the new checkpoint commit is not exposed by the current connector surface.",
+    "Cloudflare production runtime proof for the exact 2026 09 15 NayaNETHUB.html artifact remains unknown until the authorized destination and release path are verified."
   ],
-  "next_action": "For the next protected change: execute the smallest surgical change, run the relevant verification, then advance this checkpoint to the verified change before another protected change. Never silently reset or redesign the protected baseline.",
+  "next_action": "Before the next protected Hub implementation change, establish the authorized production destination for the exact canonical static artifact, then build the smallest deployment lane that binds source identity to that destination and verifies the live result. Never substitute NAYANET/HUB or an unverified Worker.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
