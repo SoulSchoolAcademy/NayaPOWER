@@ -4,28 +4,27 @@
   "version": "1.0.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "5cf6c5affd7ba15198e772c603623f4563d6b56e",
-    "tree": "a82dfc4d3b7116b8478b2b674e31a3537142486a",
+    "commit": "7b492f50867f7628139e67ec20e69a78dca17a6e",
     "branch": "main",
-    "meaning": "Verified repository checkpoint for activation of the protected-progress gate. The baseline is an ancestor requirement, not a claim that downstream product/runtime work is production-proven."
+    "meaning": "Current protected repository baseline after activation of the progress-protection gate. The baseline is an ancestor requirement and continuity checkpoint; it does not claim downstream product/runtime production proof."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-01",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-02",
   "verification_receipt": {
-    "verification_commit": "5cf6c5affd7ba15198e772c603623f4563d6b56e",
-    "verification_type": "REPOSITORY_CONTRACT_REVIEW",
+    "verification_commit": "7b492f50867f7628139e67ec20e69a78dca17a6e",
+    "verification_type": "REPOSITORY_CONTROL_PLANE_REVIEW",
     "evidence": [
       ".naya/control-plane/PROGRESS-CHECKPOINT.json",
       ".naya/control-plane/verify_progress_checkpoint.py",
       ".github/workflows/nayapower-progress-protection.yml",
       ".naya/control-plane/validate_control_plane.py",
-      "GitHub live main commit/tree identity"
+      "GitHub live main commit history and exact checkpoint ancestry"
     ],
-    "result": "Checkpoint contract, fail-closed anti-rewind rule, protected scope, and GitHub Actions enforcement are present on main. Runtime execution evidence remains a separate proof boundary.",
+    "result": "Protected progress contract and anti-rewind CI gate are installed. The checkpoint intentionally preserves runtime/product proof as a separate evidence boundary.",
     "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T20:42:47Z"
+    "timestamp": "2026-09-15T20:43:54Z"
   },
   "protected_scope": {
-    "rule": "Changes to critical execution architecture require a fresh checkpoint before the next protected change is accepted.",
+    "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
     "paths": [
       ".naya/control-plane/",
       ".naya/codex/",
@@ -48,10 +47,10 @@
   "checkpoint_protocol": {
     "step_1": "Make the smallest necessary protected change.",
     "step_2": "Run the relevant tests and verification evidence.",
-    "step_3": "If protected paths changed, create a new checkpoint whose baseline commit is the verified protected-change commit before making another protected change.",
-    "step_4": "The checkpoint must never be advanced merely because code exists; verification evidence is required.",
-    "step_5": "If evidence is unavailable, leave the system BLOCKED/UNKNOWN rather than advancing the checkpoint.",
-    "step_6": "A cold Naya must restore the checkpoint before modifying protected scope."
+    "step_3": "If protected paths changed, create a new checkpoint whose baseline commit is the verified protected-change commit before another protected change is accepted.",
+    "step_4": "Never advance a checkpoint merely because code exists. Verification evidence is required.",
+    "step_5": "If evidence is unavailable, preserve UNKNOWN/BLOCKED and do not promote the checkpoint.",
+    "step_6": "A cold Naya restores the checkpoint before modifying protected scope."
   },
   "required_receipt": [
     "checkpoint_id",
@@ -67,14 +66,15 @@
     "next_action"
   ],
   "known_risks": [
-    "GitHub rulesets/branch protection are not currently configured in the repository; this gate is therefore a CI enforcement layer, not yet a server-side immutable branch rule.",
-    "A malicious actor with repository-admin authority could disable workflows or alter the checkpoint; repository permissions remain an external governance boundary."
+    "GitHub rulesets/branch protection are not currently configured in the repository; this gate is a CI enforcement layer, not yet a server-side immutable branch rule.",
+    "A repository administrator can technically disable workflows or alter the checkpoint; repository authority remains an external boundary.",
+    "Commit e0b4bfbf7e03c943fa14937900c9e8dc238fe940 changed protected Hub runtime-acceptance code before this checkpoint and is preserved as part of the baseline history; its external runtime proof remains separately unknown until the authorized release workflow is observed."
   ],
   "unknowns": [
-    "Fresh GitHub Actions run result for the checkpoint commit has not been independently observed through the available connector surface.",
-    "This checkpoint does not prove Cloudflare production runtime behavior."
+    "Fresh GitHub Actions result for the checkpoint commit is not exposed by the current connector surface.",
+    "Cloudflare production runtime proof remains separate from this repository checkpoint."
   ],
-  "next_action": "Keep the protected-progress gate enabled. For the next protected change: execute the smallest surgical change, verify it, then advance this checkpoint to that verified commit before another protected change.",
+  "next_action": "For the next protected change: execute the smallest surgical change, run the relevant verification, then advance this checkpoint to the verified change before another protected change. Never silently reset or redesign the protected baseline.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
