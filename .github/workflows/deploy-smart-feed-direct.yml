@@ -35,7 +35,7 @@ jobs:
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
           scripts=[
-            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v2"></script>',
+            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3"></script>',
             '<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish"></script>'
           ]
           for src in scripts:
@@ -46,7 +46,7 @@ jobs:
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const r=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
-          printf '%s\n' '{"name":"'"$WORKER_NAME"'","main":"worker.js","compatibility_date":"2026-09-08","account_id":"'"$ACCOUNT_ID"'","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"'"$GITHUB_SHA"'"}}' > release/wrangler.jsonc
+          printf '%s\n' '{"name":"'"$WORKER_NAME'"'","main":"worker.js","compatibility_date":"2026-09-08","account_id":"'"$ACCOUNT_ID'"'","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"'"$GITHUB_SHA'"'}}' > release/wrangler.jsonc
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:
@@ -61,12 +61,12 @@ jobs:
           sleep 3
           curl -fsSIL "$RUNTIME" > /tmp/live-headers.txt
           curl -fsSL "$RUNTIME" -o /tmp/live.html
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v2" -o /tmp/live-renderer.js
+          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3" -o /tmp/live-renderer.js
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
           grep -Fq 'X-NayaNET-Source-Commit: ' /tmp/live-headers.txt
-          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v2' /tmp/live.html
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v3' /tmp/live.html
           grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' /tmp/live.html
-          grep -Fq '2026-09-15-canonical-renderer-v2' /tmp/live-renderer.js
+          grep -Fq '2026-09-15-canonical-renderer-v3' /tmp/live-renderer.js
           grep -Fq 'What Is Naya Power?' /tmp/live-renderer.js
           grep -Fq 'What Is Naya?' /tmp/live-renderer.js
           grep -Fq 'What Are Smart Notes?' /tmp/live-renderer.js
@@ -77,6 +77,7 @@ jobs:
           grep -Fq 'Smart Spaces' /tmp/live-renderer.js
           grep -Fq 'Smart Mail' /tmp/live-renderer.js
           grep -Fq '10 · HOW TO USE IT' /tmp/live-renderer.js
-          grep -Fq "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes','Settings']" /tmp/live-renderer.js
+          grep -Fq "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes']" /tmp/live-renderer.js
+          grep -Fq "'Settings'" /tmp/live-renderer.js
           echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
           echo 'RUNTIME='"$RUNTIME"
