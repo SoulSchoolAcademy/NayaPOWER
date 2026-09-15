@@ -8,6 +8,7 @@ on:
       - 'SMART FEED CONTENT'
       - 'NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js'
       - 'NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js'
+      - 'SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-14-HUB-EXECUTION-TORCH-02.md'
       - '.github/workflows/deploy-smart-feed-direct.yml'
 
 jobs:
