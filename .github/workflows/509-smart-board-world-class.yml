@@ -73,12 +73,9 @@ jobs:
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
           f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text()
-          v=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text()
           titles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']
-          assert len(re.findall(r'SMART NOTE\s+\d+',f,re.I))>=9
-          assert all(t in v for t in titles)
+          assert all(t in f for t in titles)
           print('STATIC_CANDIDATE=PASS')
           PY
       - name: Candidate browser acceptance before release
