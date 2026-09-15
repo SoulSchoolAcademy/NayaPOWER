@@ -52,8 +52,9 @@ jobs:
           elif '</html>' in h: h=h.replace('</html>',scripts+'</html>',1)
           else: h+=scripts
           p.write_text(h,encoding='utf-8')
-          print('CANONICAL_SCRIPT_INJECTED=',all(x in h for x in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION']))
+          print('CANONICAL_SCRIPT_INJECTED=',all(x in h for x in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js']))
           print('LEGACY_VISIBLE_REPAIR_PRESENT=', '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' in h)
+          print('FEATURE_V5_INLINE=', 'NAYA509_SMART_BOARD_V5' in h)
           PY
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);const r=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(r);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
@@ -79,13 +80,12 @@ jobs:
           sleep 3
           curl -fsSL -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3" -o /tmp/live-renderer.js
-          curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js?v=20260915-board-v5" -o /tmp/live-board-v5.js
           python3 - <<'PY'
           from pathlib import Path
-          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace'); v5=Path('/tmp/live-board-v5.js').read_text(errors='replace')
+          html=Path('/tmp/live.html').read_text(errors='replace'); js=Path('/tmp/live-renderer.js').read_text(errors='replace')
           required=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail','IN A NUTSHELL','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU?",'const NOTE_COLORS','layerIcon','noteIdentityColor']
           assert not [x for x in required if x not in js and x not in html]
-          assert 'SMART_BOARD_V5' in v5 and '#ff3bbf' in v5 and '#35d39a' in v5 and '#e9edf5' in v5
+          assert 'NAYA509_SMART_BOARD_V5' in html and '#ff3bbf' in html and '#35d39a' in html and '#e9edf5' in html
           print('STATIC_PUBLIC_RUNTIME=PASS')
           PY
       - name: Browser runtime verification — desktop tablet mobile
