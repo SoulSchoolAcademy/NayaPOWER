@@ -91,15 +91,23 @@ jobs:
           print('CONTINUOUS_PROJECT_EXECUTION_LOOP=PASS')
           PY
 
-      - name: Validate NAYA_ACTION_V1 contract and current proof
+      - name: Validate canonical NAYA_ACTION_V1 schema and current proof
         run: |
           python3 - <<'PY'
           import json
           import subprocess
           from pathlib import Path
-          schema=json.loads(Path('.naya/contracts/NAYA-ACTION-V1.schema.json').read_text(encoding='utf-8'))
-          action=json.loads(Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json').read_text(encoding='utf-8'))
+          canonical_path=Path('.naya/actions/NAYA_ACTION_V1.schema.json')
+          compatibility_path=Path('.naya/contracts/NAYA-ACTION-V1.schema.json')
+          action_path=Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json')
+          schema=json.loads(canonical_path.read_text(encoding='utf-8'))
+          compatibility=json.loads(compatibility_path.read_text(encoding='utf-8'))
+          action=json.loads(action_path.read_text(encoding='utf-8'))
           assert schema['$id']=='naya/action/v1'
+          assert schema['title']=='NAYA_ACTION_V1'
+          assert compatibility['$id']=='naya/action/v1'
+          assert compatibility['canonical_schema']=='.naya/actions/NAYA_ACTION_V1.schema.json'
+          assert compatibility['title']=='NAYA_ACTION_V1 Compatibility Reference'
           required=schema['required']
           missing=[key for key in required if key not in action]
           assert not missing, f'missing NAYA_ACTION_V1 fields: {missing}'
@@ -112,6 +120,9 @@ jobs:
           assert len(action['next_action']['required_evidence']) >= 1
           parent=subprocess.check_output(['git','rev-parse','HEAD^'], text=True).strip()
           assert action['source']['proof_scope_head']==parent, f"proof scope {action['source']['proof_scope_head']} != record parent HEAD {parent}"
+          print('NAYA_ACTION_V1_SCHEMA_SOURCE=.naya/actions/NAYA_ACTION_V1.schema.json')
+          print('NAYA_ACTION_V1_SCHEMA_ID='+schema['$id'])
+          print('NAYA_ACTION_V1_SCHEMA_BLOB='+subprocess.check_output(['git','rev-parse','HEAD:.naya/actions/NAYA_ACTION_V1.schema.json'], text=True).strip())
           print('NAYA_ACTION_V1=PASS')
           print('FIRST_PROOF='+action['id'])
           print('PROOF_SCOPE_HEAD='+action['source']['proof_scope_head'])
