@@ -8,12 +8,13 @@ type NavItem={name:string;route:string;icon:string};
 const items:NavItem[]=[
  {name:'Your Intelligence Today',route:routes.home,icon:'◉'},
  {name:'Your Report',route:routes.reports,icon:'▤'},
- {name:'Intelligent Library',route:routes.library,icon:'▦'},
- {name:'Smart Share',route:routes.share,icon:'↗'},
- {name:'Smart Ledger',route:routes.ledger,icon:'◈'},
- {name:'Your Connections',route:routes.connections,icon:'↔'},
+ {name:'Intelligence',route:routes.feed,icon:'✦'},
+ {name:'Smart Notes',route:routes.notes,icon:'◇'},
  {name:'Smart Lists',route:routes.lists,icon:'☷'},
- {name:'Smart Spaces',route:routes.spaces,icon:'◇'},
+ {name:'Smart Share',route:routes.share,icon:'↗'},
+ {name:'Evidence',route:routes.evidence,icon:'◈'},
+ {name:'Your Connections',route:routes.connections,icon:'↔'},
+ {name:'Smart Spaces',route:routes.spaces,icon:'▱'},
  {name:'Smart Mail',route:routes.mail,icon:'✉'},
  {name:'Settings',route:routes.settings,icon:'⚙'}
 ];
