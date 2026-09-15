@@ -20,6 +20,8 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
       - name: Checkout exact main source
         uses: actions/checkout@v4
@@ -55,8 +57,6 @@ jobs:
       - name: Deploy canonical Hub to Cloudflare
         shell: bash
         run: npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/wrangler.jsonc"
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
       - name: Independently verify live runtime
         shell: bash
