@@ -35,7 +35,7 @@ jobs:
           h=p.read_text(encoding='utf-8')
           h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\.js[^>]*></script>','',h)
           h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\.js[^>]*></script>','',h)
-          h=h.replace('</body>','<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v1"></script></body>',1)
+          h=h.replace('</body>','<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3"></script><script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v2"></script></body>',1)
           p.write_text(h,encoding='utf-8')
           PY
           cat > release/worker.js <<'EOF'
@@ -67,7 +67,7 @@ jobs:
           required=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail','IN A NUTSHELL','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU?",'const NOTE_COLORS','layerIcon','noteIdentityColor']
           missing=[x for x in required if x not in js and x not in html]
           assert '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v3' in html
-          assert '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v1' in html
+          assert '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js?v=20260915-title-lock-v2' in html
           assert '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' not in html
           assert not missing, missing
           assert '2026-09-14-vertical-11-layer-semantic-v2' in js
@@ -105,7 +105,7 @@ jobs:
           if(r.notes.some(n=>n.layers[0].prominence!=='top'||n.layers[10].prominence!=='bottom')) throw Error('PROMINENCE');
           if(r.how!==9) throw Error('HOW_TO_APPLY');
           if(r.marker!=='2026-09-14-vertical-11-layer-semantic-v2') throw Error('MARKER');
-          if(r.lock!=='canonical-9-note-title-order-v1') throw Error('TITLE_LOCK');
+          if(r.lock!=='canonical-9-note-title-order-v2') throw Error('TITLE_LOCK');
           await page.reload({waitUntil:'domcontentloaded',timeout:30000}); await page.waitForTimeout(5000); const a=await read();
           if(a.notes.length!==9||a.notes.some(n=>n.layers.length!==11)||JSON.stringify(a.notes.map(n=>n.title))!==JSON.stringify(nav.slice(0,9))) throw Error('REFRESH_REGRESSION');
           await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
