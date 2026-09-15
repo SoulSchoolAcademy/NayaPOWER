@@ -1,6 +1,7 @@
 {
   "$schema":"naya/execution-transaction/v1",
   "status":"ACTIVE",
+  "precedence":"This transaction is the current task-level execution authority for its declared scope. It does not replace the Constitution, governance kernel, safety rules, or canonical control-plane authority. If a standing block conflicts with this active human-authorized task, the transaction governs the task execution scope unless the conflict is constitutional, safety-critical, authorization-critical, or otherwise higher authority.",
   "north_star":"Maximum responsible verified human value per action, per unit of effort, per moment.",
   "human_service_law":"Do not make the human operate the AI. Inspect, repair, verify, continue, and interrupt only for genuine authority, consent, physical-action, or material-risk decisions.",
   "transaction_law":"Requested change = authorized change. Everything else = protected.",
