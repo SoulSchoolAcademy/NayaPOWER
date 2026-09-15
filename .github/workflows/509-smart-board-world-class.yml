@@ -2,6 +2,15 @@ name: 509 — Smart Board World-Class Runtime Authority
 on:
   push:
     branches: [main]
+    paths:
+      - 'snapshots/NayaNET-509-AAA-CURRENT.html'
+      - 'SMART FEED CONTENT'
+      - 'NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js'
+      - 'NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js'
+      - '.naya/execution-contracts/509-SMART-BOARD-CURRENT.json'
+      - '.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json'
+      - '.github/workflows/509-smart-board-world-class.yml'
+  workflow_dispatch:
 concurrency:
   group: naya-509-world-class-public-runtime
   cancel-in-progress: true
