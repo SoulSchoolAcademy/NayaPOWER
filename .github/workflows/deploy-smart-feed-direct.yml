@@ -66,11 +66,10 @@ jobs:
         run: |
           set -euo pipefail
           sleep 3
-          curl -fsSIL "$RUNTIME" > /tmp/live-headers.txt
-          curl -fsSL "$RUNTIME" -o /tmp/live.html
+          curl -fsSL -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4" -o /tmp/live-renderer.js
           curl -fsSL "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
-          grep -Fq 'X-NayaNET-Source-Commit: ' /tmp/live-headers.txt
+          grep -qi '^x-nayanet-source-commit:' /tmp/live-headers.txt
           grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4' /tmp/live.html
           grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' /tmp/live.html
           grep -Fq '2026-09-15-canonical-renderer-v4' /tmp/live-renderer.js
@@ -87,4 +86,6 @@ jobs:
           grep -Fq "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes']" /tmp/live-renderer.js
           grep -Fq "'Settings'" /tmp/live-renderer.js
           echo 'LIVE_SMART_FEED_DEPLOYMENT=verified'
+          echo 'LIVE_CANONICAL_RENDERER_V4=verified'
+          echo 'LIVE_RUNTIME_HEADERS=verified'
           echo 'RUNTIME='"$RUNTIME"
