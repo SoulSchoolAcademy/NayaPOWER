@@ -1,7 +1,7 @@
 # TEAM NAYA — 509 INTELLIGENT HUB CONTINUATION RECEIPT
 
-**Date:** 2026-09-15  
-**Mission:** Make the NayaNET Intelligent Hub trustworthy, intelligent, verifiable, and continuously executable by Team Naya without human context reconstruction.
+**Date:** 2026-09-15
+**Status:** ACTIVE — NOT COMPLETE
 
 ## North Star
 
@@ -11,42 +11,33 @@
 
 - Canonical repository: `SoulSchoolAcademy/NayaPOWER`
 - Canonical branch: `main`
-- Current observed HEAD: `0471c46106bb366f1240bc074d017e26cb960d09`
-- The intended nine-board world-class workflow exists at `.github/workflows/509-smart-board-world-class.yml` and currently contains candidate + post-deploy browser acceptance gates.
-- A direct workflow lookup for commit `86574476e7289d45d8a5bdd76dc137f3b4554956` returned no PR-triggered runs; repository-wide run inspection shows newer pushes on `main` after that commit.
-- The recent commit sequence contains additional 509 commits after the corrected world-class workflow, including commits that explicitly say they align the renderer/structural lock with a **one-board reference phase**. This is evidence of competing or contradictory execution intent and MUST NOT be treated as success.
-- Current execution transaction remains ACTIVE and still states the nine-board Smart Board + exact ten-destination sidebar as the mission.
+- Current HEAD after latest repair: `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`
+- Active execution transaction still authorizes the nine-board Smart Board target.
+- Active 509 contract explicitly requires nine boards and the exact ten-destination sidebar.
+- The Intelligent Hub Master Design Contract defines the Hub as a living intelligence environment and its core chain as SOURCE → CANONICAL INTELLIGENCE → INTELLIGENT EVENT → SMART NOTE → INTELLIGENT BLOCK → SMART BOARD → SMART FEED → HUMAN UNDERSTANDING → HUMAN ACTION → RESULT → VERIFICATION → UPDATED INTELLIGENCE → LEARNING → CONTINUATION.
 
-## What Team Naya has done
+## Latest observed failure
 
-1. Diagnosed the central failure as a change-control / competing-authority problem, not merely a prompt problem.
-2. Repaired the candidate structural-lock selector that caused browser acceptance failure.
-3. Added a candidate compatibility shim for legacy `$` / `$$` references.
-4. Built a canonical 509 world-class workflow with:
-   - governance authorization;
-   - nine-board contract validation;
-   - competing deploy-lane audit;
-   - isolated candidate construction;
-   - static acceptance;
-   - desktop/tablet/mobile candidate browser acceptance;
-   - deployment only after candidate acceptance;
-   - desktop/tablet/mobile post-deploy browser acceptance.
-5. Repeatedly recorded the requirement that a failed gate blocks release.
-6. Identified the larger Intelligent Hub architecture mismatch: the canonical Hub design and the current 509 implementation contract do not yet unambiguously describe the same navigation/system architecture.
+Run `35003356350` / job `104496925527` reached governance, contract, lane audit, candidate build, and static acceptance, then failed candidate browser acceptance.
 
-## Current failures / risks
+**First material divergence:** browser rendered exactly one board: `What Is Naya Power?`.
 
-### 1. Nine-board production proof is NOT established
-Candidate browser acceptance and public runtime proof have not been observed as PASS for the current HEAD. **Unknown is not success.**
+**Root cause:** the renderer was explicitly a one-board reference renderer, and the structural lock was also enforcing one board. The browser gate correctly blocked deployment.
 
-### 2. Competing 509 intent remains a material risk
-The current commit history contains later 509 commits referring to a one-board reference phase after the world-class nine-board workflow was introduced. A future Naya MUST inspect the actual current files and history before changing anything.
+## Repairs completed
 
-### 3. Canonical Hub architecture is not yet reconciled
-The master Intelligent Hub design and the active 509 execution contract contain different sidebar/navigation concepts. Do not silently choose one. Establish a machine-readable reconciliation/change contract after inspecting the authoritative sources and their precedence.
+1. Structural lock changed from one-board enforcement to preserving all Smart Board blocks while enforcing full-width stacked geometry.
+2. Structural lock sidebar changed to the active 509 contract: Intelligent, Reports, Intelligent Library, Smart Start, Smart Ledgers, Peer Connections, Smart Lists, Smart Spaces, Smart Mail, Settings.
+3. Renderer replaced with a canonical nine-board renderer that parses all nine canonical Smart Notes from `NAYANET/SMART-FEED-CONTENT.txt`, clones the seed board as required, preserves source text, and renders the approved semantic layers/actions.
+4. Candidate compatibility shim for legacy `$` / `$$` references remains in the world-class workflow.
 
-### 4. Cold-Naya continuity is not proven
-The repository has continuity artifacts, but the complete cold-start path has not yet been demonstrated end-to-end against the actual current runtime state.
+## Evidence
+
+- Structural-lock repair commit: `4161163677071e413854b2208ce46915898a8bc1`
+- Nine-board renderer repair commit: `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`
+- Latest 509 world-class workflow for HEAD `92dfd7d4a60465a933294d68cd86b0f8c61b70e0`: run `35003692080`.
+- Previous browser failure evidence: `desktop:BOARD_TITLES ["What Is Naya Power?"]`.
+- PIS verification run `35003356326` passed its available PIS/Hub verification jobs, but that does not prove the 509 public runtime.
 
 ## Protected baseline
 
@@ -58,60 +49,22 @@ The repository has continuity artifacts, but the complete cold-start path has no
 - canonical control-plane authority;
 - Assistant Cloudflare/live lane separation;
 - human authority;
-- all already-working behavior outside the explicitly authorized 509 delta.
+- all working behavior outside the authorized 509 delta.
 
-## Mandatory Team Naya laws
+## Architectural warning
 
-1. **STOP → UNDERSTAND → QUESTION → INSPECT → UNDERSTAND SYSTEM → GENERATE OPTIONS → MAXIMIZE VALUE → DEFINE 10/10 → CHECK AUTHORITY → PLAN → EXECUTE → VERIFY → CRITIQUE → REPAIR → RETEST → SCORE → INTEGRATE → CAPTURE → CONTINUE.**
-2. **Requested change = authorized change. Everything else = protected.**
-3. **No preflight = no substantive execution.**
-4. **No critical decision review = no consequential action.**
-5. Recommendation is not authorization. Capability is not permission. Confidence is not truth.
-6. Implementation is not verification. Verification is not production proof.
-7. After failure, repair the first material divergence before adding unrelated improvements.
-8. Never make Shawn reconstruct context that Team Naya can record.
-9. Never end a handoff with “what should we do next?” The handoff must contain the exact executable next action.
-10. If a Naya discovers a competing authority, it must trace the authority, determine precedence, and repair or quarantine the conflict before declaring success.
+The repository contains a second real Hub implementation under `NAYANET/HUB/src`, while the 509 public runtime workflow currently builds from `snapshots/NayaNET-509-AAA-CURRENT.html` plus the 509 renderer. The Master Hub contract describes a broader intelligence architecture than the legacy 509 snapshot. Do not replace the runtime blindly. Reconcile these implementations after the immediate nine-board candidate/production gate is proven.
 
 ## 10/10 definition
 
-The Intelligent Hub is 10/10 only when:
+10/10 requires: authoritative architecture and implementation contract reconciled; nine boards correct; semantic layers/icons/colors/actions/geometry correct; source preserved; forbidden UI absent; exact authoritative navigation; candidate browser PASS desktop/tablet/mobile; one executable 509 deployment authority; production browser PASS desktop/tablet/mobile; public runtime audit PASS; actual intelligence flow proven; cold-Naya continuation PASS; and successor-ready activity/state/proof/torch records.
 
-- canonical architecture and implementation contract agree;
-- source content is preserved;
-- nine canonical boards are present in the intended order;
-- semantic layers, icons, colors, actions, geometry, and forbidden-item rules pass;
-- the sidebar/navigation is exactly the authoritative intended state;
-- candidate build passes;
-- candidate browser acceptance passes on desktop/tablet/mobile;
-- only the authorized public deployment lane can deploy the 509 runtime;
-- public runtime passes the same browser acceptance;
-- runtime actually behaves as an Intelligent Hub, not merely a collection of styled cards;
-- cold Naya can locate mission, authority, current state, protected baseline, proof, next action, and continuation protocol without human reconstruction;
-- every completed action leaves an auditable activity receipt and successor-ready execution prompt.
+## Exact next action
 
-## Required next action
+**Inspect run `35003692080` now. If candidate browser acceptance fails, fetch its job log and repair only the first material divergence. If it passes, verify production post-deploy acceptance. Do not declare success from source inspection.**
 
-**Inspect the current `main` state and reconcile the competing 509 one-board vs nine-board authorities before attempting another release.**
+After the immediate release gate passes, reconcile the legacy 509 runtime with the real `NAYANET/HUB` implementation and Master Hub architecture, then harden authority/cold-start continuity. Continue until 10/10.
 
-Then:
+## Team Naya handoff law
 
-1. Fetch current HEAD and the latest 509 commits.
-2. Read `NAYA-READ-FIRST.md`, `SUPERBRAIN/AI-BOOT/START-HERE.md`, the canonical source map, the Intelligent Hub Read-First, the Intelligent Hub Master Design Contract, the active execution transaction, and the 509 execution contract.
-3. Inspect the current renderer and structural lock actually present at HEAD.
-4. Trace every `.github/workflows` path capable of mutating or deploying the 509 runtime.
-5. Determine which document/contract is authoritative where conflicts exist. If precedence is genuinely unresolved, create a change contract rather than guessing.
-6. Restore or preserve the authorized nine-board target only through an explicit, machine-readable delta.
-7. Run candidate acceptance. Repair the first material failure only.
-8. Repeat until candidate browser acceptance passes at desktop/tablet/mobile.
-9. Only then allow public deployment.
-10. Run post-deploy browser acceptance at desktop/tablet/mobile.
-11. Audit the resulting public runtime and execution authorities.
-12. Update state/proof/activity with actual evidence, score, failures, root cause, and exact successor action.
-13. Pass the torch to the next Naya with a ready-to-run prompt and continue.
-
-## Team Naya status
-
-**Status: ACTIVE — NOT COMPLETE — DO NOT DECLARE SUCCESS.**
-
-The job is to continue until the system is genuinely proven, not until a plausible-looking source file exists.
+Every Naya must leave: current HEAD, evidence, failure/root cause, repair, protected state, score, unknowns, exact next action, and a successor-ready execution prompt. Never ask Shawn to reconstruct the project state.
