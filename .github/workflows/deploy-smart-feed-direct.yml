@@ -1,8 +1,8 @@
 name: 509 — Direct Smart Feed Deployment
 
 # CANONICAL 509 PRODUCTION PATH
-# Snapshot + canonical renderer + feed-flow runtime only.
-# Legacy self-mutating and competing C4 deployment workflows are disabled.
+# Snapshot + canonical Smart Note renderer only.
+# No competing Smart Feed renderer is deployed here.
 
 on:
   push:
@@ -11,8 +11,6 @@ on:
       - 'snapshots/NayaNET-509-AAA-CURRENT.html'
       - 'SMART FEED CONTENT'
       - 'NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js'
-      - 'NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js'
-      - 'SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-14-HUB-EXECUTION-TORCH-02.md'
       - '.github/workflows/deploy-smart-feed-direct.yml'
 
 jobs:
@@ -26,7 +24,8 @@ jobs:
       RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
     steps:
       - uses: actions/checkout@v6
-      - name: Build direct Smart Feed release
+
+      - name: Build canonical Smart Feed release
         shell: bash
         run: |
           set -euo pipefail
@@ -38,13 +37,10 @@ jobs:
           from pathlib import Path
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
-          scripts=[
-            '<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4"></script>',
-            '<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish"></script>'
-          ]
-          for src in scripts:
-              if src not in h:
-                  h=h.replace('</body>',src+'</body>',1)
+          src='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v5"></script>'
+          if src not in h:
+              h=h.replace('</body>',src+'</body>',1)
+          h=h.replace('<script src="/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish"></script>','')
           p.write_text(h,encoding='utf-8')
           PY
           cat > release/worker.js <<'EOF'
@@ -54,6 +50,10 @@ jobs:
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$GITHUB_SHA"}}
           EOF
           python3 -m json.tool release/wrangler.jsonc >/dev/null
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v5' release/public/index.html
+          ! grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' release/public/index.html
+          echo CANONICAL_RELEASE_BUILD=PASS
+
       - name: Deploy
         uses: cloudflare/wrangler-action@v4
         with:
@@ -61,46 +61,76 @@ jobs:
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
-      - name: Prove public runtime
+
+      - name: Static runtime proof
         shell: bash
         run: |
           set -euo pipefail
           sleep 3
           curl -sS -L -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
-          curl -sS -L "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4" -o /tmp/live-renderer.js
-          curl -sS -L "$RUNTIME/NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish" -o /tmp/live-feed.js
-          python3 - <<'PY'
-          from pathlib import Path
-          import re,sys
-          h=Path('/tmp/live.html').read_text(errors='replace')
-          r=Path('/tmp/live-renderer.js').read_text(errors='replace')
-          f=Path('/tmp/live-feed.js').read_text(errors='replace')
-          headers=Path('/tmp/live-headers.txt').read_text(errors='replace')
-          print('LIVE_HTML_BYTES=',len(h))
-          print('LIVE_RENDERER_BYTES=',len(r))
-          print('LIVE_FEED_BYTES=',len(f))
-          print('LIVE_SOURCE_HEADER=',bool(re.search(r'^x-nayanet-source-commit:',headers,re.I|re.M)))
-          checks={
-            'html_renderer_v4': '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v4' in h,
-            'html_feed_repair': '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js?v=20260915-feed-finish' in h,
-            'renderer_marker': '2026-09-15-canonical-renderer-v4' in r,
-            'how_to_use': '10 · HOW TO USE IT' in r,
-            'remove_duplicates': "const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes']" in r,
-            'settings_preserved': "'Settings'" in r,
-            'naya_power': 'What Is Naya Power?' in r,
-            'naya': 'What Is Naya?' in r,
-            'smart_notes': 'What Are Smart Notes?' in r,
-            'intelligence_today': 'Your Intelligence Today' in r,
-            'reports': 'Intelligence Reports' in r,
-            'library': 'What Is the Intelligent Library?' in r,
-            'lists': 'Smart Lists' in r,
-            'spaces': 'Smart Spaces' in r,
-            'mail': 'Smart Mail' in r,
-          }
-          for k,v in checks.items(): print('CHECK_'+k.upper()+'=',v)
-          missing=[k for k,v in checks.items() if not v]
-          if missing: raise SystemExit('RUNTIME_PROOF_MISSING='+','.join(missing))
-          print('LIVE_SMART_FEED_DEPLOYMENT=verified')
-          print('LIVE_CANONICAL_RENDERER_V4=verified')
-          print('LIVE_RUNTIME_HEADERS=verified')
-          PY
+          curl -sS -L "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v5" -o /tmp/live-renderer.js
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260915-canonical-v5' /tmp/live.html
+          ! grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' /tmp/live.html
+          grep -Fq '2026-09-15-canonical-renderer-v5' /tmp/live-renderer.js
+          grep -Fq '10 · HOW TO USE IT' /tmp/live-renderer.js
+          grep -Fq "['Settings','settings','white','⚙']" /tmp/live-renderer.js
+          grep -Fq 'data-semantic' /tmp/live-renderer.js
+          grep -Fq 'physical' /tmp/live-renderer.js
+          grep -Fq 'What Is Naya Power?' /tmp/live-renderer.js
+          grep -Fq 'What Is Naya?' /tmp/live-renderer.js
+          grep -Fq 'What Are Smart Notes?' /tmp/live-renderer.js
+          grep -Fq 'Your Intelligence Today' /tmp/live-renderer.js
+          grep -Fq 'Intelligence Reports' /tmp/live-renderer.js
+          grep -Fq 'What Is the Intelligent Library?' /tmp/live-renderer.js
+          grep -Fq 'Smart Lists' /tmp/live-renderer.js
+          grep -Fq 'Smart Spaces' /tmp/live-renderer.js
+          grep -Fq 'Smart Mail' /tmp/live-renderer.js
+          grep -qi '^x-nayanet-source-commit:' /tmp/live-headers.txt
+          echo STATIC_PUBLIC_RUNTIME=PASS
+          echo CANONICAL_RENDERER_V5=PASS
+          echo NO_PARALLEL_FEED_RENDERER=PASS
+
+      - name: Browser runtime verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/naya-browser
+          cd /tmp/naya-browser
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
+          cat > verify.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.RUNTIME;
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1440,height:1200}});
+          await page.goto(runtime+'/?browser_verify='+Date.now(),{waitUntil:'networkidle',timeout:60000});
+          await page.waitForTimeout(3500);
+          const result=await page.evaluate(()=>{
+            const text=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();
+            const buttons=[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(text);
+            const required=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+            const notes=[...document.querySelectorAll('.block[data-real-smart-note]')].map(x=>text(x.querySelector('h3')));
+            const how=[...document.querySelectorAll('.naya509-how-to-use')].length;
+            const feed=[...document.querySelectorAll('.feedNav button')].map(text);
+            const semantic=[...document.querySelectorAll('.rail [data-semantic]')].map(x=>x.dataset.semantic);
+            return {buttons,notes,how,feed,semantic,marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD};
+          });
+          console.log(JSON.stringify(result,null,2));
+          const required=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+          if(JSON.stringify(result.buttons)!==JSON.stringify(required)) throw new Error('SIDEBAR_MISMATCH');
+          if(result.notes.length!==9) throw new Error('SMART_NOTE_COUNT_MISMATCH');
+          if(result.how!==9) throw new Error('HOW_TO_USE_MISSING');
+          if(!result.feed.includes('Personal Intelligence')||!result.feed.includes('Collective Intelligence')||!result.feed.includes('Activity Feed')) throw new Error('FEED_PROJECTIONS_MISSING');
+          if(result.semantic.length!==10) throw new Error('SEMANTIC_SIDEBAR_MISSING');
+          if(result.marker!=='2026-09-15-canonical-renderer-v5') throw new Error('CANONICAL_MARKER_MISSING');
+          if(result.interface!=='semantic-sidebar-v1+physical-boards-v1') throw new Error('INTERFACE_MARKER_MISSING');
+          await page.reload({waitUntil:'networkidle'}); await page.waitForTimeout(3000);
+          const after=await page.evaluate(()=>({buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(e=>(e.innerText||'').replace(/\s+/g,' ').trim()),notes:document.querySelectorAll('.block[data-real-smart-note]').length,how:document.querySelectorAll('.naya509-how-to-use').length}));
+          console.log('AFTER_REFRESH='+JSON.stringify(after));
+          if(JSON.stringify(after.buttons)!==JSON.stringify(required)||after.notes!==9||after.how!==9) throw new Error('REFRESH_REGRESSION');
+          await browser.close();
+          console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
+          console.log('REFRESH_VERIFICATION=PASS');
+          EOF
+          RUNTIME="$RUNTIME" node verify.mjs
