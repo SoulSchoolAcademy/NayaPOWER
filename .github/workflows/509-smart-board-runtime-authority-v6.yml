@@ -18,7 +18,7 @@ jobs:
       - name: Governance authorization
         run: |
           set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "restore the approved Smart Board and sidebar without changing protected content or architecture" --uncertainty 3 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "workflow push at exact source SHA $GITHUB_SHA" --evidence "singular Smart Board renderer and browser acceptance" > /tmp/auth.json
+          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "restore the approved Smart Board and sidebar without changing protected content or architecture" --uncertainty 3 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "workflow push at exact source SHA $GITHUB_SHA" --evidence "machine-readable 509 execution contract" --evidence "deterministic nine-board renderer and browser acceptance" > /tmp/auth.json
           test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
 
       - name: Validate execution contract
@@ -31,9 +31,13 @@ jobs:
           assert c['status']=='ACTIVE'
           assert c['contract']=='509-SMART-BOARD-CURRENT'
           assert c['principle'].startswith('Requested change = authorized change')
-          assert c['boards']['count']==1
-          assert c['boards']['titles']==['What Is Naya Power?']
+          assert c['boards']['count']==9
+          assert len(c['boards']['titles'])==9
+          assert c['boards']['titles']==['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail']
           assert len(c['boards']['semantic_layers'])==9
+          assert c['boards']['labels']==['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]
+          assert c['boards']['colors']==['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5']
+          assert c['sidebar']['exact_items'][5][0]=='Peer Connections'
           assert len(c['sidebar']['exact_items'])==10
           assert c['sidebar']['forbidden']==['Collective','Evidence','Connection','Smart Mail — New']
           print('EXECUTION_CONTRACT=PASS')
@@ -83,31 +87,44 @@ jobs:
           npx playwright install --with-deps chromium >/dev/null 2>&1
           cat > verify.mjs <<'EOF'
           import {chromium} from 'playwright';
-          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU"];
+          const O=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
+          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
           const K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
           const C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
           const S=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
           const SK=['intelligence','reports','library','start','ledgers','connections','lists','spaces','mail','settings'];
           const SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];
           const FORB=['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','COLLECTIVE','EVIDENCE','SMART MAIL — NEW'];
+          const MINI=['WHAT','HUMAN','SIMPLE','SIMPLIFIED','WHY','NOTICE','NAYA','LEARNING','SO WHAT','FOR YOU'];
           const browser=await chromium.launch();
           for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
             const p=await browser.newPage({viewport:{width:w,height:h}});const errors=[];p.on('pageerror',x=>errors.push(x.message));
             await p.goto(process.env.RUNTIME+'/?accept='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(30000);
             if(errors.length)throw Error(name+': PAGEERROR '+errors.join('|'));
-            const d=await p.evaluate(({L,K,C,S,SK,SC,FORB})=>{const text=e=>typeof e==='string'?e.replace(/\s+/g,' ').trim():(e?.textContent||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.rail .nav button')];return{bs:bs.map(b=>{const r=b.getBoundingClientRect(),ls=[...b.querySelectorAll('.naya509-section')].map(x=>{const z=x.getBoundingClientRect();return{k:x.dataset.semanticLayer||x.querySelector('.naya509-section-title')?.textContent?.toLowerCase(),l:text(x.querySelector('.naya509-section-title')),x:z.x,w:z.width,y:z.y,body:text(x.querySelector('.naya509-section-body'))}});const a=[...b.querySelectorAll('.naya509-board-actions .action')];return{title:text(b.querySelector('h3')),x:r.x,w:r.width,y:r.y,l:ls,a:a.map(x=>x.dataset.c4Kind),actionsRect:a[0]?.getBoundingClientRect().toJSON(),titleRect:b.querySelector('h3')?.getBoundingClientRect().toJSON()}}),nav:nav.map(x=>({t:text(x).replace(/\s*[—-]\s*New$/i,''),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor})),controls:[...document.querySelectorAll('button,a,[role="button"]')].map(text),body:text(document.body)};},{L,K,C,S,SK,SC,FORB});
-            if(d.bs.length!==1||d.bs[0].title!=='What Is Naya Power?')throw Error(name+': ONE_BOARD');
-            const b=d.bs[0];if(b.l.length!==9)throw Error(name+': NINE_SECTIONS');
-            if(JSON.stringify(b.l.map(x=>x.l))!==JSON.stringify(L))throw Error(name+': SECTION_ORDER');
-            if(JSON.stringify(b.l.map(x=>x.k))!==JSON.stringify(K))throw Error(name+': SECTION_KEYS');
-            if(b.l.some((x,i)=>!x.body||x.x!==b.x||x.w!==b.w||(i&&x.y<=b.l[i-1].y)))throw Error(name+': SECTION_GEOMETRY_OR_CONTENT');
-            if(b.a.join(',')!=='create-space,favorite,save')throw Error(name+': ACTIONS');
-            if(b.actionsRect&&b.titleRect&&b.actionsRect.bottom>b.titleRect.bottom+2)throw Error(name+': TOP_ACTION_PLACEMENT');
+            const d=await p.evaluate(({O,L,K,C,S,SK,SC,FORB,MINI})=>{const text=v=>typeof v==='string'?v.replace(/\s+/g,' ').trim():(v?.textContent||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.rail .nav button')];const controls=[...document.querySelectorAll('button,a,[role="button"]')].map(text);return{bs:bs.map(b=>{const r=b.getBoundingClientRect(),n=b.querySelector('.naya509-nutshell'),ls=[...b.querySelectorAll('.naya509-section')].map(x=>{const z=x.getBoundingClientRect(),i=x.querySelector('.naya509-section-icon')?.getBoundingClientRect(),t=x.querySelector('.naya509-section-title')?.getBoundingClientRect();return{k:x.dataset.semanticLayer,l:text(x.querySelector('.naya509-section-title')),c:x.dataset.layerColor,x:z.x,w:z.width,y:z.y,ix:i?.x,tx:t?.x,svg:!!x.querySelector('.naya509-section-icon svg'),body:text(x.querySelector('.naya509-section-body'))}});const a=[...b.querySelectorAll('.naya509-board-actions .action')];return{title:text(b.querySelector('h3')),x:r.x,w:r.width,y:r.y,n:n?{x:n.getBoundingClientRect().x,w:n.getBoundingClientRect().width,body:text(n.querySelector('.naya509-section-body'))}:null,l:ls,a:a.map(x=>x.dataset.c4Kind),actionsRect:a[0]?.getBoundingClientRect().toJSON(),titleRect:b.querySelector('h3')?.getBoundingClientRect().toJSON()}}),nav:nav.map(x=>({t:text(x).replace(/\s*[—-]\s*New$/i,''),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor})),controls,body:text(document.body)};},{O,L,K,C,S,SK,SC,FORB,MINI});
+            if(d.bs.length!==9||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+': BOARD_TITLES');
+            if(d.bs.some(x=>!x.n||!x.n.body))throw Error(name+': NUTSHELL');
+            if(d.bs.some(x=>x.l.length!==9))throw Error(name+': SECTION_COUNT');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)))throw Error(name+': SECTION_KEYS');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)))throw Error(name+': SECTION_LABELS');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.c.toLowerCase()))!==JSON.stringify(C.map(z=>z.toLowerCase()))))throw Error(name+': SECTION_COLORS');
+            if(d.bs.some(x=>x.l.some(y=>!y.svg||y.ix==null||y.tx==null||y.ix>=y.tx)))throw Error(name+': ICON_PLACEMENT');
+            if(d.bs.some(x=>x.l.some(y=>!y.body)))throw Error(name+': EMPTY_SECTION');
+            const ws=d.bs.map(x=>Math.round(x.w)),xs=d.bs.map(x=>Math.round(x.x));if(new Set(ws).size!==1||new Set(xs).size!==1)throw Error(name+': BOARD_WIDTHS');
+            if(d.bs.some(x=>Math.round(x.n.x)!==Math.round(x.x)||Math.round(x.n.w)!==Math.round(x.w)))throw Error(name+': NUTSHELL_WIDTH');
+            if(d.bs.some(x=>x.l.some(y=>Math.round(y.x)!==Math.round(x.x)||Math.round(y.w)!==Math.round(x.w))))throw Error(name+': SECTION_WIDTH');
+            if(d.bs.some((x,i)=>i&&x.y<=d.bs[i-1].y))throw Error(name+': VERTICAL_STACK');
+            if(d.bs.some(x=>x.a.join(',')!=='create-space,favorite,save'))throw Error(name+': ACTIONS');
+            if(d.bs.some(x=>x.actionsRect&&x.titleRect&&x.actionsRect.bottom>x.titleRect.bottom+2))throw Error(name+': ACTION_TITLE_OVERLAP');
+            const bottom=d.bs[0].l.slice(-3).map(x=>x.l);if(JSON.stringify(bottom)!==JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]))throw Error(name+': BOTTOM_ORDER');
             if(d.nav.length!==10||JSON.stringify(d.nav.map(x=>x.t))!==JSON.stringify(S))throw Error(name+': SIDEBAR_NAMES');
             if(JSON.stringify(d.nav.map(x=>x.k))!==JSON.stringify(SK))throw Error(name+': SIDEBAR_KEYS');
             if(JSON.stringify(d.nav.map(x=>x.c.toLowerCase()))!==JSON.stringify(SC.map(x=>x.toLowerCase())))throw Error(name+': SIDEBAR_COLORS');
-            for(const q of FORB)if(d.controls.some(t=>t.toUpperCase()===q))throw Error(name+': FORBIDDEN '+q);
+            for(const q of FORB)if(d.controls.some(t=>t.toUpperCase()===q))throw Error(name+': FORBIDDEN_CONTROL '+q);
             if(/SOURCE\s*,?\s*UNDERSTAND\s*,?\s*ACT\s*,?\s*VERIFY\s*,?\s*LEARN/i.test(d.body))throw Error(name+': SOURCE_BAR');
+            if(/WHAT\s*,?\s*WHY\s*,?\s*SO WHAT\s*,?\s*FOR YOU/i.test(d.body))throw Error(name+': WHAT_BAR');
+            for(const q of MINI)if(d.controls.some(t=>t.toUpperCase()===q))throw Error(name+': MINI_CONTROL '+q);
+            if(/(^|\s)0[1-9](?=\s|$)|(^|\s)10(?=\s|$)/.test(d.body))throw Error(name+': DISPLAYED_NUMBER');
             console.log(name+': PASS');await p.close();
           }
           await browser.close();console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
