@@ -34,7 +34,8 @@ Read in this order:
 12. `.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json`
 13. `.naya/execution-contracts/509-SMART-BOARD-CURRENT.json`
 14. `.naya/activity/2026-09-15-509-ASSISTANT-RUNTIME-RECONCILIATION.md`
-15. the latest relevant Activity/torch receipt
+15. `.naya/activity/2026-09-15-509-WORKFLOW-AND-REAL-HUB-AUTHORITY-AUDIT.md`
+16. the latest relevant Activity/torch receipt
 
 Then resolve the exact live `main` HEAD again before acting.
 
@@ -48,7 +49,15 @@ The earlier `aged-art-7c12` identification was explicitly corrected and must not
 
 The current transaction remains `BLOCKED_PENDING_AUTHORITY_RECONCILIATION` until an authorized Assistant Cloudflare execution/release surface is established and the actual Worker/source/version binding can be independently verified.
 
-The GitHub 509 workflow is intentionally fail-closed. Do not restore it merely to make work appear to happen.
+The GitHub 509 workflow family is intentionally fail-closed. Do not restore it merely to make work appear to happen.
+
+## LATEST REPOSITORY-SIDE AUDIT — READ THIS BEFORE DOING ANY MORE 509 WORK
+
+` .naya/activity/2026-09-15-509-WORKFLOW-AND-REAL-HUB-AUTHORITY-AUDIT.md` is the latest repository-side execution evidence.
+
+It records that the real Hub exists at `NAYANET/HUB/src/app/App.tsx`, but the current source is not the requested nine-board/ten-layer presentation. It also inventories the visible 509 workflow family and confirms the inspected 509 deployment/mutation workflows are disabled, retired, or explicitly blocked. The historical `deploy-nayanet-hub-509-aaa.yml`, `deploy-nayanet-hub-509-bridge.yml`, and `deploy-nayanet-hub-canonical-v2.yml` paths are not present on current `main`.
+
+Do not treat the audit as runtime proof. It is repository/source evidence only.
 
 ## FIRST PRIORITY — MACHINE TRUTH
 
@@ -134,6 +143,8 @@ Semantic keys:
 `intelligence,reports,library,start,ledgers,connections,lists,spaces,mail,settings`
 
 No Collective, Evidence, or standalone Connection destination. No Smart Mail New badge/item.
+
+**Authority warning:** the canonical Hub Read-First currently documents an older 9-item human-facing navigation contract. This is a material contract mismatch and must be reconciled before the 10-item 509 sidebar is silently promoted into the canonical Hub source.
 
 ## INTELLIGENT HUB STANDARD
 
