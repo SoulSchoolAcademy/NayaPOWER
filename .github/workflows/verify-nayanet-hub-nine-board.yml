@@ -1,0 +1,45 @@
+name: NAYA 509 — Nine Board Build Gate
+
+on:
+  push:
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/build-smart-feed-projection.py'
+      - 'scripts/nayanet-cognitive-engine.js'
+      - 'scripts/validate-nayanet-hub-nine-board.py'
+      - '.github/workflows/verify-nayanet-hub-nine-board.yml'
+  pull_request:
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/build-smart-feed-projection.py'
+      - 'scripts/nayanet-cognitive-engine.js'
+      - 'scripts/validate-nayanet-hub-nine-board.py'
+      - '.github/workflows/verify-nayanet-hub-nine-board.yml'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: NAYANET/HUB
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: NAYANET/HUB/package.json
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+      - name: Nine-board source contract
+        run: python3 ../../scripts/validate-nayanet-hub-nine-board.py
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Production build
+        run: npm run build
