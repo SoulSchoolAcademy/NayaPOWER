@@ -6,32 +6,8 @@ const NOTE_COLORS=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','
 const OBSOLETE=['Blockers Never Stop the Mission','Source Intent Is Not Runtime Truth','The Intelligent Block Is the Star'];
 const REMOVE=['Evidence','Collective','Connections','Smart Mail — New','Smart Notes'];
 const SIDEBAR=[['Your Intelligence','intelligence','purple','◉'],['Your Reports','reports','indigo','◫'],['Intelligent Library','library','sapphire','✦'],['Smart Share','share','forest','◎'],['Smart Ledger','ledger','lime','◇'],['Your Connections','connections','yellow','↗'],['Smart Lists','lists','gold','▤'],['Smart Spaces','spaces','orange','◈'],['Smart Mail','mail','red','✉'],['Settings','settings','white','⚙']];
-const LAYERS={
-1:{key:'nutshell',label:'IN A NUTSHELL',color:'#ffffff',icon:'◇',state:'CANONICAL'},
-2:{key:'human',label:'HUMAN',color:'#9d75ff',icon:'♙',state:'HUMAN MEANING'},
-3:{key:'child',label:'CHILD',color:'#6675ff',icon:'✦',state:'SIMPLE VIEW'},
-4:{key:'grandma',label:'GRANDMA',color:'#55b9ee',icon:'⌂',state:'EVERYDAY VIEW'},
-5:{key:'naya',label:'NAYA',color:'#55e39a',icon:'◉',state:'NAYA UNDERSTANDING'},
-6:{key:'machine',label:'MACHINE',color:'#b8ee57',icon:'⌘',state:'SYSTEM VIEW'},
-7:{key:'learning',label:'LEARNING',color:'#f1d75a',icon:'↻',state:'ADAPTIVE LEARNING'},
-8:{key:'meaning',label:'ULTIMATE MEANING',color:'#e8c766',icon:'✧',state:'MEANING'},
-9:{key:'connect',label:'HOW IT CONNECTS',color:'#e8c766',icon:'∞',state:'CONNECTION'},
-10:{key:'apply',label:'HOW TO APPLY IT',color:'#f09a4a',icon:'➜',state:'APPLICATION'},
-11:{key:'benefit',label:"WHAT'S IN IT FOR YOU?",color:'#ff5e6c',icon:'♥',state:'VALUE'}
-};
-const ICONS={
-nutshell:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 7-7 11L5 10l7-7Z"/><path d="M5 10h14M8.5 6.5h7"/></svg>',
-human:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 21c.5-4 2.5-6 6-6s5.5 2 6 6"/><path d="M8 12h8"/></svg>',
-child:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 10h.01M16 10h.01M9 15c2 1.5 4 1.5 6 0"/></svg>',
-grandma:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4v-9Z"/><path d="M9 20v-5h6v5M8 10h8"/></svg>',
-naya:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2Z"/><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"/></svg>',
-machine:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg>',
-learning:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17c4-7 8-9 16-10"/><path d="m15 5 5 2-3 4"/><circle cx="6" cy="17" r="2"/></svg>',
-meaning:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z"/></svg>',
-connect:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 7 6a4 4 0 0 0-6 6l2 2a4 4 0 0 0 6 0l2-2"/><path d="m15 16 2 2a4 4 0 0 0 6-6l-2-2a4 4 0 0 0-6 0l-2 2"/><path d="m8 16 8-8"/></svg>',
-apply:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14"/><path d="m13 6 6 6-6 6"/><path d="M4 5v14"/></svg>',
-benefit:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-4.7-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 6.3-8 11-8 11Z"/><path d="M12 8v7M9.5 12.5h5"/></svg>'
-};
+const LAYERS={1:{key:'nutshell',label:'IN A NUTSHELL',color:'#ffffff',icon:'◇',state:'CANONICAL'},2:{key:'human',label:'HUMAN',color:'#9d75ff',icon:'♙',state:'HUMAN MEANING'},3:{key:'child',label:'CHILD',color:'#6675ff',icon:'✦',state:'SIMPLE VIEW'},4:{key:'grandma',label:'GRANDMA',color:'#55b9ee',icon:'⌂',state:'EVERYDAY VIEW'},5:{key:'naya',label:'NAYA',color:'#55e39a',icon:'◉',state:'NAYA UNDERSTANDING'},6:{key:'machine',label:'MACHINE',color:'#b8ee57',icon:'⌘',state:'SYSTEM VIEW'},7:{key:'learning',label:'LEARNING',color:'#f1d75a',icon:'↻',state:'ADAPTIVE LEARNING'},8:{key:'meaning',label:'ULTIMATE MEANING',color:'#e8c766',icon:'✧',state:'MEANING'},9:{key:'connect',label:'HOW IT CONNECTS',color:'#e8c766',icon:'∞',state:'CONNECTION'},10:{key:'apply',label:'HOW TO APPLY IT',color:'#f09a4a',icon:'➜',state:'APPLICATION'},11:{key:'benefit',label:"WHAT'S IN IT FOR YOU?",color:'#ff5e6c',icon:'♥',state:'VALUE'}};
+const ICONS={nutshell:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 7-7 11L5 10l7-7Z"/><path d="M5 10h14M8.5 6.5h7"/></svg>',human:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3"/><path d="M6 21c.5-4 2.5-6 6-6s5.5 2 6 6"/><path d="M8 12h8"/></svg>',child:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M8 10h.01M16 10h.01M9 15c2 1.5 4 1.5 6 0"/></svg>',grandma:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v9H4v-9Z"/><path d="M9 20v-5h6v5M8 10h8"/></svg>',naya:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 1.8 6.2L20 10l-6.2 1.8L12 18l-1.8-6.2L4 10l6.2-1.8L12 2Z"/><path d="m19 15 .7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15Z"/></svg>',machine:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM12 2v3M12 19v3M2 12h3M19 12h3M4.5 4.5l2 2M17.5 17.5l2 2M19.5 4.5l-2 2M6.5 17.5l-2 2"/></svg>',learning:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17c4-7 8-9 16-10"/><path d="m15 5 5 2-3 4"/><circle cx="6" cy="17" r="2"/></svg>',meaning:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 3 6 6 3-6 3-3 6-3-6-6-3 6-3 3-6Z"/></svg>',connect:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8 7 6a4 4 0 0 0-6 6l2 2a4 4 0 0 0 6 0l2-2"/><path d="m15 16 2 2a4 4 0 0 0 6-6l-2-2a4 4 0 0 0-6 0l-2 2"/><path d="m8 16 8-8"/></svg>',apply:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14"/><path d="m13 6 6 6-6 6"/><path d="M4 5v14"/></svg>',benefit:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-4.7-8-11a4.5 4.5 0 0 1 8-2.7A4.5 4.5 0 0 1 20 10c0 6.3-8 11-8 11Z"/><path d="M12 8v7M9.5 12.5h5"/></svg>'};
 const text=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();
 function canonicalText(raw){try{const j=JSON.parse(raw);return typeof j.content==='string'?j.content:raw}catch{return raw}}
 function sectionMap(src,title){const chunks=src.split(/🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s*\d+/i);const c=chunks.find(x=>x.trim().split(/\n/).map(y=>y.trim()).filter(Boolean).includes(title));if(!c)return null;const out={},r=/(?:^|\n)\s*(\d+)\s*[.:)\-]?\s*([^\n]+)\n([\s\S]*?)(?=\n\s*\d+\s*[.:)\-]?\s*[^\n]+\n|$)/g;let m;while((m=r.exec(c)))out[m[1]]={heading:m[2].trim(),body:m[3].trim()};return out}
@@ -45,3 +21,4 @@ function renderBlock(b,s,i){if(!s)return;b.dataset.realSmartNote='1';b.dataset.n
 function bindSidebar(){const rail=q('.rail');if(!rail)return;qq('.nav button[data-semantic]',rail).forEach(el=>{if(el.dataset.naya509Bound==='1')return;el.dataset.naya509Bound='1';el.addEventListener('click',()=>{qq('.nav button[data-semantic]',rail).forEach(x=>x.classList.toggle('active',x===el));document.body.dataset.naya509Destination=el.dataset.page||text(el)})})}
 async function run(){injectInterface();sidebar();let src='';try{const r=await fetch(FEED_SOURCE,{cache:'no-store'});if(!r.ok)return;src=canonicalText(await r.text())}catch{return}const bs=getBlocks();if(bs.length!==9)return;bs.forEach((b,i)=>renderBlock(b,sectionMap(src,TITLES[i]),i));sidebar();bindSidebar();window.NAYA509_CANONICAL_NOTES='2026-09-14-vertical-11-layer-semantic-v2';window.NAYA509_INTERFACE_STANDARD='semantic-sidebar-v1+physical-boards-v3+outer-identity-plus-repeated-semantic-spectrum-v2'}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();[700,1800,3000].forEach(ms=>setTimeout(run,ms));})();
+// runtime-proof-trigger: 2026-09-15
