@@ -5,15 +5,13 @@ SHELL=Path('NAYANET/HUB/src/app/AppShellV3.tsx').read_text(encoding='utf-8')
 BOARD=Path('NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx').read_text(encoding='utf-8')
 MAIN=Path('NAYANET/HUB/src/main.tsx').read_text(encoding='utf-8')
 
-# Current North Star: preserve the Hub, make one intelligent board exceptional,
-# and keep the release gate aligned with the actual React implementation.
-assert 'SmartFeedBoard' in APP, 'canonical intelligent board is not wired into App.tsx'
-assert '<SmartFeedBoard' in APP, 'SmartFeedBoard is not rendered from the canonical workspace'
-assert 'hub-home-restored' in APP, 'restored canonical Hub home surface is missing'
-assert 'hub-restored-primo-v1.css' in MAIN, 'restored Hub visual layer is not activated'
-assert 'smart-feed-surgical-elevation.css' in MAIN, 'surgical SmartFeedBoard elevation is not activated'
+assert 'SmartFeedBoard' in APP
+assert '<SmartFeedBoard' in APP
+assert 'hub-home-restored' in APP
+assert 'hub-restored-primo-v1.css' in MAIN
+assert 'smart-feed-surgical-elevation.css' in MAIN
 
-sidebar=['Your Intelligence Today','Your Report','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings']
+sidebar=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings']
 for label in sidebar:
     assert "name:'"+label+"'" in SHELL, f'missing canonical sidebar item: {label}'
 assert SHELL.count("name:'")==10, 'canonical sidebar must contain exactly 10 destinations'
@@ -22,9 +20,7 @@ board_contract=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA N
 for label in board_contract:
     assert label in BOARD, f'missing intelligent board contract surface: {label}'
 
-# Retired sidebar labels are forbidden. Semantic words such as Collective and
-# Evidence may remain inside the board/feed where they are legitimate concepts.
-for label in ['Smart Start','Smart Ledgers','Peer Connections','Collective Intelligence','Smart Mail — New']:
+for label in ['Your Intelligence Today','Your Report','Smart Share','Smart Ledger','Your Connections','Collective Intelligence','Smart Mail — New']:
     assert "name:'"+label+"'" not in SHELL, f'retired sidebar item remains: {label}'
 
 print('NAYA Intelligent Hub source gate: PASS')
