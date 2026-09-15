@@ -34,7 +34,7 @@ jobs:
           for n in legacy:h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
           code=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
           injection='<script>'+code+'</script>'
-          h=re.sub(r'</body>','%s</body>'%injection,h,count=1,flags=re.I)
+          h=h.replace('</body>',injection+'</body>',1)
           p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
