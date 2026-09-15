@@ -2,13 +2,41 @@
   "contract": "509-SMART-BOARD-CURRENT",
   "status": "ACTIVE",
   "principle": "Requested change = authorized change. Everything else = protected.",
-  "allowed_scope": ["Smart Board renderer structure","Smart Board semantic labels, icons, geometry and border treatment","Smart Board action controls","removal of explicitly forbidden Smart Board UI","sidebar destination set, order, semantic keys and hover colors","removal of Smart Mail New badge/item while preserving Smart Mail","runtime acceptance tests required to prove the above"],
-  "protected_scope": ["Smart Note source content","application data","authentication and authorization","routing behavior except the existing canonical /intelligence/ runtime mapping","unrelated pages and features","NayaNET branding and core architecture","external deployment architecture except the canonical 509 runtime lane"],
+  "allowed_scope": [
+    "Smart Board renderer structure",
+    "Smart Board semantic labels, icons, geometry and border treatment",
+    "Smart Board action controls",
+    "removal of explicitly forbidden Smart Board UI",
+    "sidebar destination set, order, semantic keys and hover colors",
+    "removal of Smart Mail New badge/item while preserving Smart Mail",
+    "runtime acceptance tests required to prove the above"
+  ],
+  "protected_scope": [
+    "Smart Note source content",
+    "application data",
+    "authentication and authorization",
+    "routing behavior except the existing canonical /intelligence/ runtime mapping",
+    "unrelated pages and features",
+    "NayaNET branding and core architecture",
+    "external deployment architecture except the canonical 509 runtime lane"
+  ],
   "boards": {
-    "count": 1,
-    "titles": ["What Is Naya Power?"],
+    "count": 9,
+    "titles": [
+      "What Is Naya Power?",
+      "What Is Naya?",
+      "What Are Smart Notes?",
+      "Your Intelligence Today",
+      "Intelligence Reports",
+      "What Is the Intelligent Library?",
+      "Smart Lists",
+      "Smart Spaces",
+      "Smart Mail"
+    ],
     "semantic_layers": ["human","child","grandma","naya","machine","learning","meaning","apply","benefit"],
-    "layout": "one full-width Smart Board, with exactly one full-width semantic section per row, vertically stacked, equal width",
+    "labels": ["HUMAN NOTE","CHILD NOTE","GRANDMA NOTE","NAYA NOTE","MACHINE NOTE","LEARNING LESSON","WHAT IT MEANS","HOW TO USE / HOW TO APPLY","WHAT'S IN IT FOR YOU"],
+    "colors": ["#ff3bbf","#9d75ff","#6675ff","#c97a4a","#35d39a","#b8ee57","#f1d75a","#e8c766","#e9edf5"],
+    "layout": "one full-width board per row, vertically stacked, equal width; never two boards beside each other",
     "numbers_visible": false,
     "how_to_apply_position": "immediately above benefit layer",
     "actions": ["create-space","favorite","save"]
