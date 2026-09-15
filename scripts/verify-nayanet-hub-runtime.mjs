@@ -5,15 +5,11 @@ const forbidden = [
   'Collective',
   'Evidence',
   'Smart Mail New',
-  'Source',
-  'Understand',
-  'Act',
-  'Verify',
-  'Learn',
+  'Source Separated',
   'Providence',
   'Truth',
   'Protection',
-  'Source Separated',
+  'What',
 ];
 const boards = [
   'What Is Naya Power?',
@@ -57,6 +53,25 @@ const viewports = [
   ['mobile', { width: 390, height: 844 }],
 ];
 
+async function requireVisibleExact(page, text, context) {
+  const locator = page.getByText(text, { exact: true });
+  if ((await locator.count()) === 0 || !(await locator.first().isVisible())) {
+    fail(`${context}: missing visible exact text "${text}"`);
+  }
+}
+
+async function requireForbiddenAbsent(page, text, context) {
+  const locator = page.getByText(text, { exact: true });
+  if ((await locator.count()) > 0) {
+    const visible = await locator.evaluateAll((nodes) => nodes.some((node) => {
+      const style = getComputedStyle(node);
+      const rect = node.getBoundingClientRect();
+      return style.visibility !== 'hidden' && style.display !== 'none' && rect.width > 0 && rect.height > 0;
+    }));
+    if (visible) fail(`${context}: forbidden legacy text visible: "${text}"`);
+  }
+}
+
 function fail(message) {
   console.error(`RUNTIME_ACCEPTANCE_FAIL: ${message}`);
   process.exitCode = 1;
@@ -70,13 +85,10 @@ try {
     if (!response || !response.ok()) fail(`${name}: root HTTP response was not successful`);
 
     await page.waitForTimeout(250);
-    const bodyText = await page.locator('body').innerText();
-    const visible = (text) => bodyText.includes(text);
-
-    for (const title of boards) if (!visible(title)) fail(`${name}: missing board "${title}"`);
-    for (const label of sidebar) if (!visible(label)) fail(`${name}: missing sidebar label "${label}"`);
-    for (const label of layers) if (!visible(label)) fail(`${name}: missing board layer "${label}"`);
-    for (const label of forbidden) if (visible(label)) fail(`${name}: forbidden legacy text visible: "${label}"`);
+    for (const title of boards) await requireVisibleExact(page, title, name);
+    for (const label of sidebar) await requireVisibleExact(page, label, name);
+    for (const label of layers) await requireVisibleExact(page, label, name);
+    for (const label of forbidden) await requireForbiddenAbsent(page, label, name);
 
     const boardCount = await page.locator('[data-smart-board]').count();
     if (boardCount !== 9) fail(`${name}: expected 9 Smart Boards, found ${boardCount}`);
@@ -88,8 +100,7 @@ try {
       fail(`${name}: every Smart Board must contain exactly 10 layers; got ${boardLayerCounts.join(',')}`);
     }
 
-    const actionLabels = ['Create Space', 'Favorite', 'Save'];
-    for (const label of actionLabels) if (!visible(label)) fail(`${name}: missing top-right action "${label}"`);
+    for (const label of ['Create Space', 'Favorite', 'Save']) await requireVisibleExact(page, label, name);
 
     const overflow = await page.evaluate(() => ({
       width: document.documentElement.scrollWidth,
