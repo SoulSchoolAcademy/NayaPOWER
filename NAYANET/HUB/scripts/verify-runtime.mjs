@@ -31,7 +31,7 @@ try{
  try{
   for(const[name,viewport]of viewports){
    const page=await browser.newPage({viewport});
-   const response=await page.goto(runtime,{waitUntil:'networkidle',timeout:30000});
+   const response=await page.goto(`${runtime}/?runtime-accept=${Date.now()}`,{waitUntil:'networkidle',timeout:30000});
    assert(response?.ok(),`${name}: root HTTP response failed`);
    await page.waitForTimeout(500);
    const navTexts=await visibleText(page,'.nav-item');
