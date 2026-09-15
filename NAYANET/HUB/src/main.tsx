@@ -25,4 +25,5 @@ document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL
 // Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 // V2 promotion is the sole production release authority.
 // Release-authority hardening verified: competing V1 path removed.
+// Canonical React Build Handoff: immutable artifact identity is required before runtime promotion.
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App /></React.StrictMode>);
