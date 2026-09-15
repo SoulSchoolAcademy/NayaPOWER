@@ -31,11 +31,11 @@ jobs:
           cp -R NAYANET release/public/NAYANET
           python3 - <<'PY'
           from pathlib import Path
+          import re
           p=Path('release/public/index.html')
           h=p.read_text(encoding='utf-8')
-          import re
           h=re.sub(r'<script[^>]+509-AAA-SMART-NOTE-CANONICAL-RENDERER\.js[^>]*></script>','',h)
-          src='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-layer-v1"></script>'
+          src='<script src="/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v2"></script>'
           h=h.replace('</body>',src+'</body>',1)
           h=re.sub(r'<script[^>]+509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR\.js[^>]*></script>','',h)
           p.write_text(h,encoding='utf-8')
@@ -47,7 +47,7 @@ jobs:
           {"name":"$WORKER_NAME","main":"worker.js","compatibility_date":"2026-09-08","account_id":"$ACCOUNT_ID","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"$GITHUB_SHA"}}
           EOF
           python3 -m json.tool release/wrangler.jsonc >/dev/null
-          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-layer-v1' release/public/index.html
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v2' release/public/index.html
           ! grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' release/public/index.html
           echo CANONICAL_RELEASE_BUILD=PASS
       - name: Deploy
@@ -63,23 +63,17 @@ jobs:
           set -euo pipefail
           sleep 3
           curl -sS -L -D /tmp/live-headers.txt "$RUNTIME/?verify=$GITHUB_SHA" -o /tmp/live.html
-          curl -sS -L "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-layer-v1" -o /tmp/live-renderer.js
-          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-layer-v1' /tmp/live.html
+          curl -sS -L "$RUNTIME/NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v2" -o /tmp/live-renderer.js
+          grep -Fq '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js?v=20260914-semantic-v2' /tmp/live.html
           ! grep -Fq '509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js' /tmp/live.html
-          grep -Fq '2026-09-14-intelligence-layer-model-v1' /tmp/live-renderer.js
+          grep -Fq '2026-09-14-vertical-11-layer-semantic-v2' /tmp/live-renderer.js
           grep -Fq '1 · IN A NUTSHELL' /tmp/live-renderer.js
           grep -Fq '10 · HOW TO APPLY IT' /tmp/live-renderer.js
-          grep -Fq "11:{label:\"WHAT'S IN IT FOR YOU?\"" /tmp/live-renderer.js
+          grep -Fq "11:{key:'benefit',label:\"WHAT'S IN IT FOR YOU?\"" /tmp/live-renderer.js
           grep -Fq 'layerIcon' /tmp/live-renderer.js
-          grep -Fq "color:'#ffffff'" /tmp/live-renderer.js
-          grep -Fq "color:'#9d75ff'" /tmp/live-renderer.js
-          grep -Fq "color:'#6675ff'" /tmp/live-renderer.js
-          grep -Fq "color:'#55b9ee'" /tmp/live-renderer.js
-          grep -Fq "color:'#b8ee57'" /tmp/live-renderer.js
-          grep -Fq "color:'#f1d75a'" /tmp/live-renderer.js
-          grep -Fq "color:'#e8c766'" /tmp/live-renderer.js
-          grep -Fq "color:'#f09a4a'" /tmp/live-renderer.js
-          grep -Fq "color:'#ff5e6c'" /tmp/live-renderer.js
+          grep -Fq 'const NOTE_COLORS' /tmp/live-renderer.js
+          grep -Fq 'data-note-identity-color' /tmp/live-renderer.js
+          for color in '#ffffff' '#9d75ff' '#6675ff' '#55b9ee' '#55e39a' '#b8ee57' '#f1d75a' '#e8c766' '#f09a4a' '#ff5e6c'; do grep -Fq "color:'$color'" /tmp/live-renderer.js || grep -Fq "color:\"$color\"" /tmp/live-renderer.js; done
           grep -Fq "['Settings','settings','white','⚙']" /tmp/live-renderer.js
           for title in 'What Is Naya Power?' 'What Is Naya?' 'What Are Smart Notes?' 'Your Intelligence Today' 'Intelligence Reports' 'What Is the Intelligent Library?' 'Smart Lists' 'Smart Spaces' 'Smart Mail'; do grep -Fq "$title" /tmp/live-renderer.js; done
           grep -qi '^x-nayanet-source-commit:' /tmp/live-headers.txt
@@ -99,21 +93,30 @@ jobs:
           const page=await browser.newPage({viewport:{width:1440,height:1400}});
           await page.goto(runtime+'/?browser_verify='+Date.now(),{waitUntil:'networkidle',timeout:60000});
           await page.waitForTimeout(3500);
-          const read=()=>page.evaluate(()=>{const text=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(text),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:text(b.querySelector('h3')),layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,icon:text(x.querySelector('.layerIcon')),head:text(x.querySelector('.layerHead')),body:text(x.querySelector('.layerBody')),color:getComputedStyle(x).getPropertyValue('--layer').trim()})),shell:getComputedStyle(b,'::before').borderTopColor})),how:document.querySelectorAll('.naya509-how-to-use').length,feed:[...document.querySelectorAll('.feedNav button')].map(text),semantic:[...document.querySelectorAll('.rail [data-semantic]')].map(x=>x.dataset.semantic),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD}});
-          const result=await read(); console.log(JSON.stringify(result,null,2));
+          const read=()=>page.evaluate(()=>{const text=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();return {buttons:[...document.querySelectorAll('.rail .nav button,.rail .nav a')].map(text),notes:[...document.querySelectorAll('.block[data-real-smart-note]')].map(b=>({title:text(b.querySelector('h3')),identity:b.dataset.noteIdentityColor,prominence:[b.querySelector('.layer')?.dataset.prominence,b.querySelector('.layer:last-child')?.dataset.prominence],layers:[...b.querySelectorAll('.layer')].map(x=>({n:x.dataset.intelligenceLayer,key:x.dataset.semanticLayer,icon:x.querySelector('.layerIcon')?.innerHTML||'',color:x.dataset.layerColor,head:text(x.querySelector('.layerHead')),body:text(x.querySelector('.layerBody'))}))})),how:document.querySelectorAll('.layer[data-semantic-layer="apply"]').length,feed:[...document.querySelectorAll('.feedNav button')].map(text),semantic:[...document.querySelectorAll('.rail [data-semantic]')].map(x=>x.dataset.semantic),marker:window.NAYA509_CANONICAL_NOTES,interface:window.NAYA509_INTERFACE_STANDARD}});
+          const result=await read();
+          console.log(JSON.stringify(result,null,2));
           const required=['Your Intelligence','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+          const layerKeys=['nutshell','human','child','grandma','naya','machine','learning','meaning','connect','apply','benefit'];
+          const layerColors=['#ffffff','#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#e8c766','#f09a4a','#ff5e6c'];
+          const noteColors=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c'];
           if(JSON.stringify(result.buttons)!==JSON.stringify(required)) throw new Error('SIDEBAR_MISMATCH');
           if(result.notes.length!==9) throw new Error('SMART_NOTE_COUNT_MISMATCH');
+          if(result.notes.some((n,i)=>n.identity!==noteColors[i])) throw new Error('OUTER_IDENTITY_COLOR_MISMATCH');
+          if(result.notes.some(n=>JSON.stringify(n.layers.map(x=>x.key))!==JSON.stringify(layerKeys))) throw new Error('SEMANTIC_LAYER_ORDER_MISMATCH');
+          if(result.notes.some(n=>JSON.stringify(n.layers.map(x=>x.color))!==JSON.stringify(layerColors))) throw new Error('SEMANTIC_COLOR_SEQUENCE_MISMATCH');
           if(result.notes.some(n=>n.layers.length!==11)) throw new Error('ELEVEN_LAYERS_MISSING');
-          if(result.notes.some(n=>n.layers.some(l=>!l.icon))) throw new Error('UNIQUE_LAYER_ICONS_MISSING');
-          if(result.how!==9) throw new Error('HOW_TO_USE_MISSING');
+          if(result.notes.some(n=>new Set(n.layers.map(x=>x.icon)).size!==11)) throw new Error('UNIQUE_LAYER_ICONS_MISSING');
+          if(result.notes.some(n=>n.prominence[0]!=='top'||n.prominence[1]!=='bottom')) throw new Error('PROMINENT_TOP_BOTTOM_MISSING');
+          if(result.notes.some(n=>!n.layers[0].head.includes('IN A NUTSHELL')||!n.layers[9].head.includes('HOW TO APPLY IT')||!n.layers[10].head.includes("WHAT'S IN IT FOR YOU?"))) throw new Error('CANONICAL_HEADINGS_MISSING');
+          if(result.how!==9) throw new Error('HOW_TO_APPLY_MISSING');
           if(!result.feed.includes('Personal Intelligence')||!result.feed.includes('Collective Intelligence')||!result.feed.includes('Activity Feed')) throw new Error('FEED_PROJECTIONS_MISSING');
           if(result.semantic.length!==10) throw new Error('SEMANTIC_SIDEBAR_MISSING');
-          if(result.marker!=='2026-09-14-intelligence-layer-model-v1') throw new Error('LAYER_MARKER_MISSING');
-          if(result.interface!=='semantic-sidebar-v1+physical-boards-v2+canonical-11-layer-v1') throw new Error('INTERFACE_MARKER_MISSING');
+          if(result.marker!=='2026-09-14-vertical-11-layer-semantic-v2') throw new Error('LAYER_MARKER_MISSING');
+          if(result.interface!=='semantic-sidebar-v1+physical-boards-v3+outer-identity-plus-repeated-semantic-spectrum-v2') throw new Error('INTERFACE_MARKER_MISSING');
           await page.reload({waitUntil:'networkidle'}); await page.waitForTimeout(3000);
-          const after=await read(); console.log('AFTER_REFRESH='+JSON.stringify({buttons:after.buttons,notes:after.notes.length,how:after.how,layers:after.notes.map(n=>n.layers.length)}));
-          if(JSON.stringify(after.buttons)!==JSON.stringify(required)||after.notes.length!==9||after.how!==9||after.notes.some(n=>n.layers.length!==11)) throw new Error('REFRESH_REGRESSION');
+          const after=await read();
+          if(JSON.stringify(after.buttons)!==JSON.stringify(required)||after.notes.length!==9||after.notes.some(n=>n.layers.length!==11)||after.notes.some((n,i)=>n.identity!==noteColors[i])) throw new Error('REFRESH_REGRESSION');
           await browser.close(); console.log('BROWSER_RUNTIME_VERIFICATION=PASS'); console.log('REFRESH_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
