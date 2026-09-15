@@ -1,0 +1,46 @@
+name: NAYA 509 — Assistant Cloudflare Hub Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/assistant-cloudflare-hub-release.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: assistant-cloudflare-hub-production
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    steps:
+      - name: Checkout canonical Hub source
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: NAYANET/HUB/package.json
+      - name: Install dependencies
+        working-directory: NAYANET/HUB
+        run: npm install --no-audit --no-fund
+      - name: Source contract
+        run: python3 scripts/validate-nayanet-hub-nine-board.py
+      - name: Typecheck
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+      - name: Production build
+        working-directory: NAYANET/HUB
+        run: npm run build
+      - name: Deploy Assistant-authoritative Worker
+        working-directory: NAYANET/HUB
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4 deploy --config wrangler.jsonc
