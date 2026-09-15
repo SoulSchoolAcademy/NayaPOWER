@@ -33,31 +33,45 @@ jobs:
       - name: Install dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Typecheck
+      - name: Typecheck canonical React Hub
         run: npm run typecheck
 
-      - name: Build canonical React Hub
+      - name: Build canonical React Hub with repository build adapter
         env:
           VITE_RELEASE_COMMIT: ${{ github.sha }}
-        run: npm run build
+        run: bash ../../scripts/build-canonical-react-hub.sh
 
-      - name: Validate build artifact
+      - name: Validate and fingerprint immutable build artifact
         run: |
+          set -euo pipefail
           test -f dist/index.html
           test -d dist/assets
           grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
           printf '%s\n' '${{ github.sha }}' > dist/NAYANET-RELEASE-COMMIT.txt
           printf '%s\n' 'NAYANET-HUB-REACT-CANONICAL' > dist/NAYANET-ARTIFACT-IDENTITY.txt
+          find dist -type f -print0 | sort -z | xargs -0 sha256sum > dist/NAYANET-FILE-SHA256SUMS.txt
+          sha256sum dist/NAYANET-FILE-SHA256SUMS.txt | awk '{print $1}' > dist/NAYANET-MANIFEST-SHA256.txt
+          printf '%s\n' "source_sha=${{ github.sha }}" > dist/NAYANET-ARTIFACT-MANIFEST.txt
+          printf '%s\n' "manifest_sha256=$(cat dist/NAYANET-MANIFEST-SHA256.txt)" >> dist/NAYANET-ARTIFACT-MANIFEST.txt
+          printf '%s\n' "node=$(node --version)" >> dist/NAYANET-ARTIFACT-MANIFEST.txt
+          printf '%s\n' "npm=$(npm --version)" >> dist/NAYANET-ARTIFACT-MANIFEST.txt
+          printf '%s\n' "build_command=bash ../../scripts/build-canonical-react-hub.sh" >> dist/NAYANET-ARTIFACT-MANIFEST.txt
 
       - name: Package immutable artifact
         run: |
           cd dist
-          zip -qr ../nayanet-canonical-react-hub-${{ github.sha }}.zip .
+          zip -qr -X ../nayanet-canonical-react-hub-${{ github.sha }}.zip .
+          cd ..
+          sha256sum nayanet-canonical-react-hub-${{ github.sha }}.zip > nayanet-canonical-react-hub-${{ github.sha }}.zip.sha256
 
       - name: Upload immutable artifact
         uses: actions/upload-artifact@v4
         with:
           name: nayanet-canonical-react-hub-${{ github.sha }}
-          path: NAYANET/HUB/nayanet-canonical-react-hub-${{ github.sha }}.zip
+          path: |
+            NAYANET/HUB/nayanet-canonical-react-hub-${{ github.sha }}.zip
+            NAYANET/HUB/nayanet-canonical-react-hub-${{ github.sha }}.zip.sha256
+            NAYANET/HUB/dist/NAYANET-ARTIFACT-MANIFEST.txt
+            NAYANET/HUB/dist/NAYANET-FILE-SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
