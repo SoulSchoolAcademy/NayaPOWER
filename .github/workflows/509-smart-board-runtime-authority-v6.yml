@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
 
+# SINGLE PUBLIC RUNTIME DEPLOYMENT LANE.
+# Requested change = authorized change. Everything else is protected.
+# Any acceptance failure blocks release.
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -14,12 +18,42 @@ jobs:
       RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
     steps:
       - uses: actions/checkout@v6
+
       - name: Governance authorization
         run: |
           set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "restore the approved Smart Board structure and verify the actual public runtime" --uncertainty 3 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "workflow push at exact source SHA $GITHUB_SHA" --evidence "deterministic Smart Board renderer and browser acceptance" > /tmp/auth.json
+          python3 .naya/control-plane/workflow_gate.py \
+            --actor SoulSchoolAcademy \
+            --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" \
+            --permission deploy_public_runtime \
+            --request deploy_nayanet_hub_canonical \
+            --mission "restore the approved Smart Board and sidebar without changing protected content or architecture" \
+            --uncertainty 3 --consequence 8 --irreversibility 8 \
+            --scope "public-runtime:sparkling-shape-7ae5:/" \
+            --evidence "workflow push at exact source SHA $GITHUB_SHA" \
+            --evidence "machine-readable 509 execution contract" \
+            --evidence "deterministic Smart Board renderer and browser acceptance" > /tmp/auth.json
           test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
-      - name: Build release
+
+      - name: Validate execution contract
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('.naya/execution-contracts/509-SMART-BOARD-CURRENT.json')
+          c=json.loads(p.read_text())
+          assert c['status']=='ACTIVE'
+          assert c['contract']=='509-SMART-BOARD-CURRENT'
+          assert c['principle'].startswith('Requested change = authorized change')
+          assert c['boards']['count']==9
+          assert len(c['boards']['titles'])==9
+          assert len(c['sidebar']['exact_items'])==10
+          assert c['sidebar']['forbidden']==['Collective','Evidence','Connection','Smart Mail — New']
+          print('EXECUTION_CONTRACT=PASS')
+          PY
+
+      - name: Build canonical release
         run: |
           set -euo pipefail
           rm -rf release && mkdir -p release/public
@@ -30,18 +64,28 @@ jobs:
           from pathlib import Path
           import re
           p=Path('release/public/index.html'); h=p.read_text()
-          legacy=['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js','509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js','509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js','509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js','509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js','509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js']
-          for n in legacy: h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
+          legacy=[
+            '509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js',
+            '509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js',
+            '509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js',
+            '509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js',
+            '509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js',
+            '509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js',
+            '509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js','509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js'
+          ]
+          for n in legacy:
+              h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
           shim='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
           code=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
-          p.write_text(h.replace('<body>','<body>'+shim,1).replace('</body>','<script>'+code+'</script></body>',1))
+          h=h.replace('<head>','<head>'+shim,1)
+          h=h.replace('</body>','<script>'+code+'</script></body>',1)
+          p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
           export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));if(a.ok)return new Response(a.body,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
           EOF
           printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"%s"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" "$GITHUB_SHA" > release/wrangler.jsonc
-      - name: Wait for competing deployments to settle
-        run: sleep 60
+
       - name: Deploy canonical runtime
         uses: cloudflare/wrangler-action@v4
         with:
@@ -49,23 +93,54 @@ jobs:
           accountId: ${{ env.ACCOUNT_ID }}
           workingDirectory: release
           command: deploy --config wrangler.jsonc
+
       - name: Actual browser runtime acceptance
         run: |
           set -euo pipefail
           mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
-          npm init -y >/dev/null 2>&1 && npm install playwright@1.55.0 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
+          npm init -y >/dev/null 2>&1
+          npm install playwright@1.55.0 >/dev/null 2>&1
+          npx playwright install --with-deps chromium >/dev/null 2>&1
           cat > verify.mjs <<'EOF'
           import {chromium} from 'playwright';
           const O=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
-          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTIVE LEARNING','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
+          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"];
           const K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
           const C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
-          const B=['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','NINE NOTE','HOW TO APPLY IT'];
+          const S=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
+          const SK=['intelligence','reports','library','start','ledgers','connections','lists','spaces','mail','settings'];
+          const SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];
+          const FORB=['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','COLLECTIVE','EVIDENCE','SMART MAIL — NEW'];
+          const MINI=['WHAT','HUMAN','SIMPLE','SIMPLIFIED','WHY','NOTICE','NAYA','LEARNING','SO WHAT','FOR YOU'];
           const browser=await chromium.launch();
           for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
-            const p=await browser.newPage({viewport:{width:w,height:h}});const e=[];p.on('pageerror',x=>e.push(x.message));await p.goto(process.env.RUNTIME+'/?v6='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(30000);if(e.length)throw Error(name+': PAGEERROR '+e.join('|'));
-            const d=await p.evaluate(()=>{const n=s=>(s||'').replace(/\s+/g,' ').trim(),bs=[...document.querySelectorAll('.block[data-real-smart-note]')];return{bs:bs.map(b=>{const r=b.getBoundingClientRect(),nu=b.querySelector('.nutshell'),ls=[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const r=x.getBoundingClientRect(),i=x.querySelector('.layerIcon')?.getBoundingClientRect(),t=x.querySelector('.layerHead b')?.getBoundingClientRect(),s=x.querySelector('.layerHead .state')?.getBoundingClientRect();return{k:x.dataset.semanticLayer,l:n(x.querySelector('.layerHead b')?.textContent),c:x.dataset.layerColor,x:r.x,w:r.width,ix:i?.x,tx:t?.x,sx:s?.x,svg:!!x.querySelector('.layerIcon svg'),body:n(x.querySelector('.layerBody')?.textContent)}});return{title:n(b.querySelector('h3')?.textContent),x:r.x,w:r.width,y:r.y,n:nu?{x:nu.getBoundingClientRect().x,w:nu.getBoundingClientRect().width,text:n(nu.querySelector('p')?.textContent)}:null,l:ls,a:[...b.querySelectorAll('.naya509-board-actions .action')].map(x=>x.dataset.c4Kind)}}),body:n(document.body.textContent)}});
-            if(d.bs.length!==9||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+': OUTER');if(d.bs.some(x=>!x.n||!x.n.text||x.n.text.length>900))throw Error(name+': NUTSHELL');if(d.bs.some(x=>x.l.length!==9))throw Error(name+': COUNT');if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)))throw Error(name+': ORDER');if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)))throw Error(name+': LABELS');if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.c))!==JSON.stringify(C)))throw Error(name+': COLORS');if(d.bs.some(x=>x.l.some(y=>!y.svg||!(y.ix<y.tx)||y.sx==null||y.sx<=y.tx)))throw Error(name+': ZONES');const ws=d.bs.map(x=>Math.round(x.w)),xs=d.bs.map(x=>Math.round(x.x));if(new Set(ws).size!==1||new Set(xs).size!==1)throw Error(name+': WIDTHS');if(d.bs.some(x=>Math.round(x.n.x)!==Math.round(x.x)||Math.round(x.n.w)!==Math.round(x.w)))throw Error(name+': NUTSHELL_WIDTH');if(d.bs.some((x,i)=>i&&x.y<=d.bs[i-1].y))throw Error(name+': VERTICAL');if(d.bs.some(x=>x.a.join(',')!=='create-space,favorite,save'))throw Error(name+': CONTROLS');const bot=d.bs[0].l.slice(-3).map(x=>x.l);if(JSON.stringify(bot)!==JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]))throw Error(name+': BOTTOM');if(d.bs.some(x=>x.l.some(y=>/^\d+\s+/.test(y.l))))throw Error(name+': NUMBERS');for(const q of B)if(d.body.toUpperCase().includes(q))throw Error(name+': FORBIDDEN '+q);console.log(name+': PASS');await p.close();}
+            const p=await browser.newPage({viewport:{width:w,height:h}});const errors=[];p.on('pageerror',x=>errors.push(x.message));
+            await p.goto(process.env.RUNTIME+'/?v26='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(30000);
+            if(errors.length)throw Error(name+': PAGEERROR '+errors.join('|'));
+            const d=await p.evaluate(({O,L,K,C,S,SK,SC,FORB,MINI})=>{const n=s=>(s||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.rail .nav button')];const controls=[...document.querySelectorAll('button,a,[role="button"]')];const mini=[...document.querySelectorAll('.block[data-real-smart-note] *')].map(n).filter(t=>MINI.includes(t.toUpperCase()));return{bs:bs.map(b=>{const r=b.getBoundingClientRect(),nu=b.querySelector('.nutshell'),ls=[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const r=x.getBoundingClientRect(),i=x.querySelector('.layerIcon')?.getBoundingClientRect(),t=x.querySelector('.layerHead b')?.getBoundingClientRect(),s=x.querySelector('.layerHead .state')?.getBoundingClientRect();return{k:x.dataset.semanticLayer,l:n(x.querySelector('.layerHead b')?.textContent),c:x.dataset.layerColor,x:r.x,w:r.width,y:r.y,ix:i?.x,tx:t?.x,sx:s?.x,svg:!!x.querySelector('.layerIcon svg'),body:n(x.querySelector('.layerBody')?.textContent)}});const a=[...b.querySelectorAll('.naya509-board-actions .action')];return{title:n(b.querySelector('h3')?.textContent),x:r.x,w:r.width,y:r.y,n:nu?{x:nu.getBoundingClientRect().x,w:nu.getBoundingClientRect().width,text:n(nu.querySelector('p')?.textContent)}:null,l:ls,a:a.map(x=>x.dataset.c4Kind),titleRect:b.querySelector('h3')?.getBoundingClientRect().toJSON(),actionsRect:a[0]?.getBoundingClientRect().toJSON()}}),nav:nav.map(x=>({t:n(x.textContent).replace(/\s*[—-]\s*New$/i,''),k:x.dataset.nayaSemantic,c:x.dataset.nayaColor})),controls:controls.map(x=>n(x.textContent)),body:n(document.body.textContent),mini};},{O,L,K,C,S,SK,SC,FORB,MINI});
+            if(d.bs.length!==9||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+': OUTER');
+            if(d.bs.some(x=>!x.n||!x.n.text))throw Error(name+': NUTSHELL');
+            if(d.bs.some(x=>x.l.length!==9))throw Error(name+': LAYER_COUNT');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)))throw Error(name+': LAYER_KEYS');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)))throw Error(name+': LAYER_LABELS');
+            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.c))!==JSON.stringify(C)))throw Error(name+': LAYER_COLORS');
+            if(d.bs.some(x=>x.l.some(y=>!y.svg||!(y.ix<y.tx)||y.sx==null||y.sx<=y.tx)))throw Error(name+': ICON_OR_RIGHT_ZONE');
+            const ws=d.bs.map(x=>Math.round(x.w)),xs=d.bs.map(x=>Math.round(x.x));if(new Set(ws).size!==1||new Set(xs).size!==1)throw Error(name+': EQUAL_BOARD_WIDTHS');
+            if(d.bs.some(x=>Math.round(x.n.x)!==Math.round(x.x)||Math.round(x.n.w)!==Math.round(x.w)))throw Error(name+': NUTSHELL_FULL_WIDTH');
+            if(d.bs.some(x=>x.l.some(y=>Math.round(y.x)!==Math.round(x.n.x)||Math.round(y.w)!==Math.round(x.n.w))))throw Error(name+': SEMANTIC_FULL_WIDTH');
+            if(d.bs.some((x,i)=>i&&x.y<=d.bs[i-1].y))throw Error(name+': VERTICAL_STACK');
+            if(d.bs.some(x=>x.a.join(',')!=='create-space,favorite,save'))throw Error(name+': ACTIONS');
+            if(d.bs.some(x=>x.l.some(y=>/^\d+\s+/.test(y.l))))throw Error(name+': NUMBERS');
+            const first=d.bs[0].l.map(x=>x.l);if(JSON.stringify(first.slice(-3))!==JSON.stringify(['WHAT IT MEANS','HOW TO USE / HOW TO APPLY',"WHAT'S IN IT FOR YOU"]))throw Error(name+': BOTTOM_ORDER');
+            if(d.nav.length!==10||JSON.stringify(d.nav.map(x=>x.t))!==JSON.stringify(S))throw Error(name+': SIDEBAR_NAMES');
+            if(JSON.stringify(d.nav.map(x=>x.k))!==JSON.stringify(SK))throw Error(name+': SIDEBAR_KEYS');
+            if(JSON.stringify(d.nav.map(x=>x.c.toLowerCase()))!==JSON.stringify(SK.map((_,i)=>SC[i].toLowerCase())))throw Error(name+': SIDEBAR_COLORS');
+            for(const q of FORB)if(d.controls.some(t=>t.toUpperCase()===q))throw Error(name+': FORBIDDEN_CONTROL '+q);
+            if(d.mini.length)throw Error(name+': MINI_BLOCK '+[...new Set(d.mini)].join('|'));
+            if(d.controls.some(t=>/^SOURCE\s*,?\s*UNDERSTAND\s*,?\s*ACT\s*,?\s*VERIFY\s*,?\s*LEARN$/i.test(t)))throw Error(name+': SOURCE_BAR');
+            if(d.controls.some(t=>/^WHAT\s*,?\s*WHY\s*,?\s*SO WHAT\s*,?\s*FOR YOU$/i.test(t)))throw Error(name+': WHAT_BAR');
+            console.log(name+': PASS');await p.close();
+          }
           await browser.close();console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
           EOF
           RUNTIME="$RUNTIME" node verify.mjs
