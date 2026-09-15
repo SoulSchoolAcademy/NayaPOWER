@@ -1,3 +1,4 @@
+# Canonical release gate: source contract → typecheck → build → Assistant Cloudflare deployment.
 name: NAYA 509 — Assistant Cloudflare Hub Release
 
 on:
@@ -5,6 +6,7 @@ on:
     branches: [main]
     paths:
       - 'NAYANET/HUB/**'
+      - 'scripts/validate-nayanet-hub-nine-board.py'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
 
 permissions:
