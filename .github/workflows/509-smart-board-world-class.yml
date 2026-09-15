@@ -60,9 +60,10 @@ jobs:
           p=Path('release/public/index.html');h=p.read_text()
           h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*>\s*</script>','',h,flags=re.I)
           h=re.sub(r'<script[^>]+src=["\'][^"\']*509-[^"\']*["\'][^>]*/>','',h,flags=re.I)
+          compat='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
           v=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
           l=Path('NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js').read_text().replace('</script>','<\\/script>')
-          h=h.replace('</body>','<script>'+v+'</script><script>'+l+'</script></body>',1)
+          h=h.replace('</body>',compat+'<script>'+v+'</script><script>'+l+'</script></body>',1)
           p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
