@@ -1,103 +1,16 @@
-name: 509 — Smart Board Final Authorized Runtime
+name: 509 — Smart Board Final Authorized Runtime (DISABLED)
+
+# DISABLED: this workflow was a second public-runtime deployment lane.
+# Multiple push-triggered deployers allowed later runs to overwrite a verified
+# runtime and made the public UI appear to yo-yo between incompatible states.
+# The single authoritative lane is 509-smart-board-runtime-authority-v6.yml.
+# Keep this file as historical evidence; do not deploy from it.
+
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  disabled:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-    env:
-      WORKER_NAME: sparkling-shape-7ae5
-      ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
-      RUNTIME: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
     steps:
-      - uses: actions/checkout@v6
-      - name: Governance authorization
-        run: |
-          set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "restore the approved Smart Board structure and verify the actual public runtime" --uncertainty 3 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "workflow push at exact source SHA $GITHUB_SHA" --evidence "V26 deterministic Smart Board renderer, structural lock, and browser acceptance" > /tmp/auth.json
-          test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
-      - name: Build release
-        run: |
-          set -euo pipefail
-          rm -rf release && mkdir -p release/public
-          cp snapshots/NayaNET-509-AAA-CURRENT.html release/public/index.html
-          cp -R NAYANET release/public/NAYANET
-          cp 'SMART FEED CONTENT' release/public/NAYANET/SMART-FEED-CONTENT.txt
-          python3 - <<'PY'
-          from pathlib import Path
-          import re, subprocess, json
-          p=Path('release/public/index.html'); h=p.read_text()
-          legacy=['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js','509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js','509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js','509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js','509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js','509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js','509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js','509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js','509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js','509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js','509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js']
-          for n in legacy:h=re.sub(r'<script[^>]+%s[^>]*></script>'%re.escape(n),'',h,flags=re.I)
-          shim='<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          code=Path('NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js').read_text().replace('</script>','<\\/script>')
-          lock=Path('NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js').read_text().replace('</script>','<\\/script>')
-          try: source_ts=subprocess.check_output(['git','log','-1','--format=%cI','--','SMART FEED CONTENT'],text=True).strip()
-          except Exception: source_ts=''
-          if not source_ts: source_ts=subprocess.check_output(['git','log','-1','--format=%cI','--','snapshots/NayaNET-509-AAA-CURRENT.html'],text=True).strip()
-          injection=shim+'<script>'+code+'</script>'
-          h=h.replace('</head>',shim+'</head>',1)
-          h=h.replace('</body>',injection+'<script>window.NAYA509_SOURCE_TIMESTAMP='+json.dumps(source_ts)+'</script><script>'+lock+'</script></body>',1)
-          p.write_text(h)
-          PY
-          cat > release/worker.js <<'EOF'
-          export default {async fetch(request,env){const u=new URL(request.url);if(u.pathname==='/NAYANET/SMART-FEED-CONTENT.txt'){const a=await env.ASSETS.fetch(new Request(new URL('/NAYANET/SMART-FEED-CONTENT.txt',request.url),request));if(a.ok)return new Response(a.body,{headers:{'Content-Type':'text/plain; charset=utf-8','Cache-Control':'no-store'}})}const t=(u.pathname==='/'||u.pathname==='/index.html'||u.pathname.startsWith('/intelligence/'))?new Request(new URL('/index.html',request.url),request):request;const x=await env.ASSETS.fetch(t);const h=new Headers(x.headers);h.set('Cache-Control','no-store, no-cache, must-revalidate, max-age=0');h.set('X-NayaNET-Source-Commit',env.SOURCE_COMMIT);return new Response(x.body,{status:x.status,statusText:x.statusText,headers:h})}}
-          EOF
-          printf '{"name":"%s","main":"worker.js","compatibility_date":"2026-09-08","account_id":"%s","assets":{"directory":"./public","binding":"ASSETS"},"vars":{"SOURCE_COMMIT":"%s"}}\n' "$WORKER_NAME" "$ACCOUNT_ID" "$GITHUB_SHA" > release/wrangler.jsonc
-      - name: Wait for competing deployments to settle completely
-        run: sleep 180
-      - name: Deploy canonical runtime
-        uses: cloudflare/wrangler-action@v4
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ env.ACCOUNT_ID }}
-          workingDirectory: release
-          command: deploy --config wrangler.jsonc
-      - name: Browser runtime verification
-        run: |
-          set -euo pipefail
-          mkdir -p /tmp/naya-browser && cd /tmp/naya-browser
-          npm init -y >/dev/null 2>&1 && npm install playwright@1.55.0 >/dev/null 2>&1 && npx playwright install --with-deps chromium >/dev/null 2>&1
-          cat > verify.mjs <<'EOF'
-          import {chromium} from 'playwright';
-          const O=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];
-          const L=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY IT',"WHAT'S IN IT FOR YOU"];
-          const K=['human','child','grandma','naya','machine','learning','meaning','apply','benefit'];
-          const C=['#ff3bbf','#9d75ff','#6675ff','#c97a4a','#35d39a','#b8ee57','#f1d75a','#e8c766','#e9edf5'];
-          const S=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings'];
-          const SC=['#9d75ff','#6675ff','#55b9ee','#55e39a','#b8ee57','#f1d75a','#e8c766','#f09a4a','#ff5e6c','#d86cff'];
-          const F=['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','SOURCE','UNDERSTAND','ACT','VERIFY','LEARN','SO WHAT','FOR YOU','COLLECTIVE','EVIDENCE','CONNECTION','SMART MAIL — NEW'];
-          const browser=await chromium.launch();
-          for(const [name,w,h] of [['desktop',1440,1400],['tablet',900,1200],['mobile',390,1100]]){
-            const p=await browser.newPage({viewport:{width:w,height:h}});const e=[];p.on('pageerror',x=>e.push(x.message));
-            await p.goto(process.env.RUNTIME+'/?auth='+name+'_'+Date.now(),{waitUntil:'domcontentloaded'});await p.waitForTimeout(30000);
-            if(e.length)throw Error(name+': PAGEERROR '+e.join('|'));
-            const d=await p.evaluate(({O,L,K,C,S,SC,F})=>{const n=s=>(s||'').replace(/\s+/g,' ').trim();const bs=[...document.querySelectorAll('.block[data-real-smart-note]')];const nav=[...document.querySelectorAll('.rail .nav button[data-semantic],.rail .nav a[data-semantic]')];return{bs:bs.map(b=>{const r=b.getBoundingClientRect(),nu=b.querySelector('.nutshell'),layers=[...b.querySelectorAll('.layer')].filter(x=>getComputedStyle(x).display!=='none').map(x=>{const r=x.getBoundingClientRect(),i=x.querySelector('.layerIcon')?.getBoundingClientRect(),t=x.querySelector('.layerHead b')?.getBoundingClientRect(),s=x.querySelector('.layerHead .state')?.getBoundingClientRect();return{k:x.dataset.semanticLayer,l:n(x.querySelector('.layerHead b')?.textContent),c:x.dataset.layerColor,x:r.x,w:r.width,ix:i?.x,tx:t?.x,sx:s?.x,svg:!!x.querySelector('.layerIcon svg')}});const a=[...b.querySelectorAll('.naya509-board-actions .action')];return{title:n(b.querySelector('h3')?.textContent),x:r.x,w:r.width,y:r.y,n:nu?{x:nu.getBoundingClientRect().x,w:nu.getBoundingClientRect().width,text:n(nu.querySelector('p')?.textContent)}:null,l:layers,a:a.map(x=>x.dataset.c4Kind),ts:n(b.querySelector('.naya509-structural-timestamp')?.textContent),titleRect:b.querySelector('h3')?.getBoundingClientRect().toJSON(),actionsRect:a[0]?.getBoundingClientRect().toJSON()}}),nav:nav.map((x,i)=>({t:n(x.textContent),k:x.dataset.semantic,sem:getComputedStyle(x).getPropertyValue('--sem').trim(),i})),body:n(document.body.textContent),forbiddenControls:[...document.querySelectorAll('button,a,[role="button"]')].map(n).filter(t=>F.includes(t))}} ,{O,L,K,C,S,SC,F});
-            if(d.bs.length!==9||JSON.stringify(d.bs.map(x=>x.title))!==JSON.stringify(O))throw Error(name+': OUTER');
-            if(d.bs.some(x=>!x.n||!x.n.text||x.n.text.length>900))throw Error(name+': NUTSHELL');
-            if(d.bs.some(x=>x.l.length!==9))throw Error(name+': COUNT');
-            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.k))!==JSON.stringify(K)))throw Error(name+': ORDER');
-            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.l))!==JSON.stringify(L)))throw Error(name+': LABELS');
-            if(d.bs.some(x=>JSON.stringify(x.l.map(y=>y.c))!==JSON.stringify(C)))throw Error(name+': COLORS');
-            if(d.bs.some(x=>x.l.some(y=>!y.svg||!(y.ix<y.tx)||y.sx==null||y.sx<=y.tx)))throw Error(name+': ZONES');
-            const ws=d.bs.map(x=>Math.round(x.w)),xs=d.bs.map(x=>Math.round(x.x));if(new Set(ws).size!==1||new Set(xs).size!==1)throw Error(name+': WIDTHS');
-            if(d.bs.some(x=>Math.round(x.n.x)!==Math.round(x.x)||Math.round(x.n.w)!==Math.round(x.w)))throw Error(name+': NUTSHELL_WIDTH');
-            if(d.bs.some(x=>x.l.some(y=>Math.round(y.x)!==Math.round(x.n.x)||Math.round(y.w)!==Math.round(x.n.w))))throw Error(name+': SEMANTIC_WIDTH');
-            if(d.bs.some((x,i)=>i&&x.y<=d.bs[i-1].y))throw Error(name+': VERTICAL');
-            if(d.bs.some(x=>x.a.join(',')!=='create-space,favorite,save'))throw Error(name+': CONTROLS');
-            if(d.bs.some(x=>x.l.some(y=>/^\d+\s+/.test(y.l))))throw Error(name+': NUMBERS');
-            if(d.bs.some(x=>!x.ts.startsWith('POSTED / CREATED • ')))throw Error(name+': TIMESTAMP');
-            if(d.bs.some(x=>x.actionsRect&&x.titleRect&&!(x.actionsRect.bottom<=x.titleRect.bottom+2)))throw Error(name+': TITLE_CONTROLS');
-            if(JSON.stringify(d.nav.map(x=>x.t))!==JSON.stringify(S))throw Error(name+': SIDEBAR_NAMES');
-            if(JSON.stringify(d.nav.map(x=>x.k))!==JSON.stringify(['intelligence','reports','library','start','ledgers','connections','lists','spaces','mail','settings']))throw Error(name+': SIDEBAR_KEYS');
-            if(JSON.stringify(d.nav.map(x=>x.sem.toLowerCase()))!==JSON.stringify(SC.map(x=>x.toLowerCase())))throw Error(name+': SIDEBAR_COLORS');
-            if(d.forbiddenControls.length)throw Error(name+': FORBIDDEN_CONTROLS '+d.forbiddenControls.join('|'));
-            for(const q of ['SOURCE SEPARATED','PROVIDENCE','TRUTH','PROTECTION','COLLECTIVE','EVIDENCE','CONNECTION','SMART MAIL — NEW'])if(d.body.toUpperCase().includes(q))throw Error(name+': FORBIDDEN '+q);
-            console.log(name+': PASS');await p.close();
-          }
-          await browser.close();console.log('BROWSER_RUNTIME_VERIFICATION=PASS');
-          EOF
-          RUNTIME="$RUNTIME" node verify.mjs
+      - run: echo 'Disabled. Use 509-smart-board-runtime-authority-v6.yml only.'
