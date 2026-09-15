@@ -47,7 +47,7 @@ jobs:
             "compatibility_date": "2026-09-15",
             "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
             "assets": {
-              "directory": "./dist",
+              "directory": "/home/runner/work/NayaPOWER/NayaPOWER/dist",
               "not_found_handling": "single-page-application"
             }
           }
