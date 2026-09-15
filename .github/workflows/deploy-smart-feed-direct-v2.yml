@@ -35,12 +35,10 @@ jobs:
           for name in ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js']:
               h = re.sub(r'<script[^>]+%s[^>]*></script>' % re.escape(name), '', h, flags=re.I)
           shim = '<script>window.$=window.$||((s,r=document)=>r.querySelector(s));window.$$=window.$$||((s,r=document)=>[...r.querySelectorAll(s)]);</script>'
-          externals = ['509-AAA-SMART-NOTE-CANONICAL-RENDERER.js','509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js','509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js']
           inline_files = ['NAYANET/509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js']
-          external = ''.join(f'<script src="/NAYANET/{name}?v=509"></script>' for name in externals)
           inline = ''.join('<script>' + Path(f).read_text().replace('</script>', '<\\/script>') + '</script>' for f in inline_files)
           h = h.replace('<body>', '<body>' + shim, 1)
-          h = h.replace('</body>', external + inline + '</body>', 1)
+          h = h.replace('</body>', inline + '</body>', 1)
           p.write_text(h)
           PY
           cat > release/worker.js <<'EOF'
