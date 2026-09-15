@@ -19,7 +19,7 @@ jobs:
       - name: Governance authorization
         run: |
           set -euo pipefail
-          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "release the canonical one-board Smart Board reference" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "establish one perfect Smart Board reference and prove it before public release" --uncertainty 2 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "exact source SHA $GITHUB_SHA" --evidence "CURRENT-EXECUTION-TRANSACTION" --evidence "509-SMART-BOARD-CURRENT" --evidence "candidate browser acceptance" > /tmp/auth.json
+          python3 .naya/control-plane/workflow_gate.py --actor SoulSchoolAcademy --purpose "deploy the canonical 509 NayaNET Intelligent Hub public runtime" --permission deploy_public_runtime --request deploy_nayanet_hub_canonical --mission "Make Naya Power operationally trustworthy by establishing one perfect Smart Board reference state, verifying it end-to-end, and only then replicating it without architectural drift or context loss." --uncertainty 2 --consequence 8 --irreversibility 8 --scope "public-runtime:sparkling-shape-7ae5:/" --evidence "exact source SHA $GITHUB_SHA" --evidence "CURRENT-EXECUTION-TRANSACTION" --evidence "509-SMART-BOARD-CURRENT" --evidence "candidate browser acceptance" > /tmp/auth.json
           test "$(python3 -c 'import json; print(json.load(open("/tmp/auth.json"))["status"])')" = AUTHORIZED
       - name: Validate one-board contracts
         run: |
@@ -31,7 +31,7 @@ jobs:
           tx=json.loads(Path('.naya/execution-contracts/CURRENT-EXECUTION-TRANSACTION.json').read_text())
           assert c['status']=='ACTIVE' and c['boards']['count']==1
           assert c['boards']['titles']==['What Is Naya Power?']
-          assert tx['status']=='ACTIVE' and 'one canonical Smart Board' in tx['active_task']
+          assert tx['status']=='ACTIVE' and 'one perfect Smart Board reference state' in tx['current_mission']
           assert tx['required_state'][0]=='exactly one canonical board titled What Is Naya Power?'
           print('ONE_BOARD_CONTRACTS=PASS')
           PY
