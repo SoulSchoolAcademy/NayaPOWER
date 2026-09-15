@@ -58,7 +58,7 @@
     "The resulting checkpoint update produced 7209601f963ce0f86386e3f14894199eab062df1.",
     "The first parent-binding acceptance attempt failed because GitHub checkout depth was 1 and HEAD^ was unavailable; that was a real implementation divergence.",
     "The checkout was repaired to fetch-depth 2, the repair passed Preflight Governance at 9ca2dbc90f4e26138c3523c307b8f20581383900 in run 35027864043, and checkpoint NAYA-PROGRESS-2026-09-15-08 records that protected revision.",
-    "The final proof record is now written so its proof_scope_head equals the parent state immediately before this record write."
+    "A later repository change advanced main beyond the recorded proof scope, so the fresh acceptance correctly failed closed: the action record still named 9ca2dbc90f4e26138c3523c307b8f20581383900 while its commit parent was 1dba47b11b4ddc4199030150a8a5e804fe600c2b. The record is being rebound to that actual immediate parent before the next fresh acceptance run."
   ],
   "evidence": [
     {
@@ -79,6 +79,17 @@
       "failed_step": "Validate NAYA_ACTION_V1 contract and current proof",
       "failure": "checkout depth 1 made HEAD^ unavailable",
       "repair": "Changed canonical verification checkout to fetch-depth 2."
+    },
+    {
+      "type": "github_actions",
+      "workflow": "Verify Primary Intelligence System",
+      "run_id": 35031129186,
+      "run_number": 671,
+      "head_sha": "d9260af52f1e469d24b86f4014212561fc8eca51",
+      "conclusion": "failure",
+      "failed_step": "Validate NAYA_ACTION_V1 contract and current proof",
+      "failure": "proof scope 9ca2dbc90f4e26138c3523c307b8f20581383900 did not equal record parent HEAD 1dba47b11b4ddc4199030150a8a5e804fe600c2b",
+      "repair": "Rebind proof_scope_head to the actual immediate parent of the proof-bearing record before the next acceptance run."
     }
   ],
   "verification": {
@@ -87,24 +98,30 @@
     "proof_parent_binding": "PENDING_FRESH_ACCEPTANCE",
     "external_runtime": "UNKNOWN_NOT_PROVEN"
   },
-  "result": "The final NAYA_ACTION_V1 proof record is now bound to the exact pre-record repository state and ready for one fresh acceptance run that can truthfully promote it to current VERIFIED evidence.",
+  "result": "The final NAYA_ACTION_V1 proof record is being rebound to the exact current pre-record repository state so the next acceptance run can truthfully verify its parent binding and proceed to the required Hub artifact proof.",
   "value_cost_risk": {
     "value": "Turns proof freshness and provenance into a mechanically testable property without self-reference.",
-    "cost": "One final acceptance run after the proof-bearing record write.",
-    "risk": "No current VERIFIED promotion is claimed until that run succeeds."
+    "cost": "One final acceptance run after the proof-bearing record write, followed by the React artifact/hash transport check.",
+    "risk": "No current VERIFIED promotion is claimed until fresh acceptance and artifact evidence succeed."
   },
   "failure_repair": [
     {
       "type": "checkout_depth",
       "finding": "The first parent-binding acceptance run could not resolve HEAD^ because checkout depth was one.",
       "repair": "Canonical verification now checks out depth two so the proof parent is available to CI."
+    },
+    {
+      "type": "stale_proof_scope",
+      "finding": "Run 671 correctly detected that the action record's proof_scope_head was stale relative to its immediate parent.",
+      "repair": "Rebind proof_scope_head to 1dba47b11b4ddc4199030150a8a5e804fe600c2b, the exact pre-record state observed by the failed acceptance."
     }
   ],
-  "lesson": "Proof freshness is not the same as self-referential commit identity. The durable pattern is to attest to an exact pre-record state and verify that state from the proof-bearing record's parent with sufficient history available to the verifier.",
+  "lesson": "Proof freshness is not the same as self-referential commit identity. The durable pattern is to attest to an exact pre-record state and verify that state from the proof-bearing record's parent with sufficient history available to the verifier. If later repository work advances main before the final proof record is written, the proof scope must be rebound to the actual immediate parent rather than relying on an older checkpoint SHA.",
   "memory": [
     "NAYA_ACTION_V1 proof_scope_head equals the proof-bearing record's parent HEAD.",
     "Verification workflows that inspect parent provenance must fetch enough Git history to resolve it.",
-    "Promotion to VERIFIED requires a fresh acceptance run on the final proof-bearing tree."
+    "Promotion to VERIFIED requires a fresh acceptance run on the final proof-bearing tree.",
+    "A stale proof scope must fail closed and be repaired before artifact/build evidence is trusted."
   ],
   "related_actions": [
     "NAYA-ACTION-DELIVERY-LAW",
@@ -113,7 +130,7 @@
   ],
   "source": {
     "repository": "SoulSchoolAcademy/NayaPOWER",
-    "proof_scope_head": "9ca2dbc90f4e26138c3523c307b8f20581383900",
+    "proof_scope_head": "1dba47b11b4ddc4199030150a8a5e804fe600c2b",
     "proof_scope_rule": "HEAD^ of the proof-bearing record commit"
   },
   "workflow": {
@@ -124,7 +141,7 @@
   "human_confirmation": true,
   "next_action": {
     "priority": "P0",
-    "instruction": "Run Verify Primary Intelligence System against this final proof-bearing commit. Require NAYA_ACTION_V1=PASS, then update this record to current VERIFIED with the fresh run evidence and create exactly one successor baton.",
+    "instruction": "Run Verify Primary Intelligence System against this rebound proof-bearing commit. Require NAYA_ACTION_V1=PASS, then obtain the successful React/Hub production artifact and immutable artifact/hash evidence. Transport that exact artifact into the existing AppDeploy target only if the authorized transport surface explicitly supports artifact import; otherwise record the transport boundary as UNKNOWN/BLOCKED without substituting a rebuild.",
     "required_evidence": [
       "NAYA_ACTION_V1=PASS",
       "proof_scope_head equals record parent",
@@ -132,7 +149,9 @@
       "control-plane acceptance",
       "cold-Naya activation acceptance",
       "PIS projection and artifact parity",
-      "Hub typecheck and production build"
+      "Hub typecheck and production build",
+      "immutable artifact identifier and hash",
+      "authorized AppDeploy artifact transport result or explicit transport boundary"
     ]
   },
   "state": "EXECUTING"
