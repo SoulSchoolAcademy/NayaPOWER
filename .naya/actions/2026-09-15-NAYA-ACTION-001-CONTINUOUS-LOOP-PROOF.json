@@ -3,156 +3,36 @@
   "id": "NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF",
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "human_intent": "Continue the first NAYA_ACTION_V1 proof at the actual latest main HEAD, run the machine acceptance against that exact tree, then record the verified result, lesson, and successor baton.",
-  "naya_understanding": "The machine proof now has a correct provenance boundary. The protected acceptance implementation is checkpointed and the proof record is the final non-protected write. CI proves the exact pre-record repository state by resolving the proof-bearing record's parent commit, avoiding impossible self-reference while preserving freshness.",
-  "authority": {
-    "repository": "SoulSchoolAcademy/NayaPOWER",
-    "branch": "main",
-    "source_of_truth": "GitHub repository state",
-    "human_authorization": "Explicit continuation baton in current execution context",
-    "execution_scope": "Repository-side Naya Power NAYA_ACTION_V1 contract, acceptance, learning, and continuity machinery"
-  },
-  "constraints": [
-    "Preserve canonical control-plane authority.",
-    "Do not create a competing state database, renderer, shell, feed, constitution, or continuation system.",
-    "Do not claim runtime or production proof without evidence.",
-    "Use failure as repair information and preserve fail-closed behavior.",
-    "The proof scope must be mechanically identifiable without self-referential SHA claims.",
-    "Leave exactly one executable next action."
+  "naya_understanding": "The machine proof uses a non-self-referential provenance boundary: the proof-bearing action record attests to its immediate parent commit, and CI verifies that parent from the record commit.",
+  "authority": {"repository":"SoulSchoolAcademy/NayaPOWER","branch":"main","source_of_truth":"GitHub repository state","human_authorization":"Explicit continuation baton in current execution context","execution_scope":"Repository-side Naya Power NAYA_ACTION_V1 contract, acceptance, learning, continuity, and required Hub artifact proof"},
+  "constraints":["Preserve canonical control-plane authority.","Do not create a competing state database, renderer, shell, feed, constitution, or continuation system.","Do not claim runtime or production proof without evidence.","Use failure as repair information and preserve fail-closed behavior.","The proof scope must be mechanically identifiable without self-referential SHA claims.","Leave exactly one executable next action."],
+  "plan":["Restore the current repository state.","Execute Primary Intelligence System acceptance against the final proof-bearing tree.","Verify NAYA_ACTION_V1 parent binding, control plane, cold-Naya activation, PIS, and Hub build/parity.","Obtain immutable React/Hub artifact and hash evidence from the successful build.","Transport only that exact artifact if the authorized AppDeploy surface explicitly supports artifact import.","Record the verified result, lesson, and successor baton."],
+  "actions":[
+    {"type":"restore","target":"main","result":"Latest main before this proof-record rewrite was 001e70d31f2ea055b597f96d73755c3b6857f4d3."},
+    {"type":"inspect","target":".naya/contracts/NAYA-ACTION-V1.schema.json","result":"Canonical naya/action/v1 contract confirmed."},
+    {"type":"inspect","target":".github/workflows/verify-primary-intelligence-system.yml","result":"Acceptance uses fetch-depth 2 and validates proof_scope_head against HEAD^ of the proof-bearing record."},
+    {"type":"repair","target":".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json","result":"Corrected stale proof scope after run 672; this record now binds proof_scope_head to the immediate parent 001e70d31f2ea055b597f96d73755c3b6857f4d3 of this rewrite commit."}
   ],
-  "plan": [
-    "Restore the checkpointed repository state.",
-    "Execute the Primary Intelligence System acceptance against the final proof-bearing tree.",
-    "Verify NAYA_ACTION_V1 parent binding, control plane, cold-Naya activation, PIS, and Hub build/parity.",
-    "Promote this action to current VERIFIED only after the fresh acceptance succeeds.",
-    "Record the durable lesson and create exactly one successor execution baton."
+  "observations":[
+    "Run 671 failed closed because the prior action record named 9ca2dbc90f4e26138c3523c307b8f20581383900 while its parent was 1dba47b11b4ddc4199030150a8a5e804fe600c2b.",
+    "Repair commit 001e70d31f2ea055b597f96d73755c3b6857f4d3 then triggered run 672, which correctly failed closed again because the repair record named 1dba47b11b4ddc4199030150a8a5e804fe600c2b while its immediate parent was d9260af52f1e469d24b86f4014212561fc8eca51.",
+    "The failure demonstrates the exact rule: proof_scope_head must equal the immediate parent of the current proof-bearing record commit, not an older historical checkpoint. This rewrite therefore targets parent 001e70d31f2ea055b597f96d73755c3b6857f4d3."
   ],
-  "actions": [
-    {
-      "type": "restore",
-      "target": "main",
-      "result": "Final pre-record state resolved as 9ca2dbc90f4e26138c3523c307b8f20581383900."
-    },
-    {
-      "type": "inspect",
-      "target": ".naya/contracts/NAYA-ACTION-V1.schema.json",
-      "result": "Canonical naya/action/v1 contract confirmed."
-    },
-    {
-      "type": "inspect",
-      "target": ".naya/control-plane/PROGRESS-CHECKPOINT.json",
-      "result": "NAYA-PROGRESS-2026-09-15-08 binds the revised protected acceptance implementation."
-    },
-    {
-      "type": "execute",
-      "target": ".github/workflows/verify-primary-intelligence-system.yml",
-      "result": "Fresh acceptance is now bound to the record parent rather than an impossible self-containing SHA."
-    },
-    {
-      "type": "record",
-      "target": ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
-      "result": "Final proof record write; its parent commit is the exact proof scope."
-    }
+  "evidence":[
+    {"type":"github_actions","workflow":"Verify Primary Intelligence System","run_id":35031129186,"run_number":671,"head_sha":"d9260af52f1e469d24b86f4014212561fc8eca51","conclusion":"failure","failure":"stale proof_scope_head versus record parent"},
+    {"type":"github_actions","workflow":"Verify Primary Intelligence System","run_id":35031297139,"run_number":672,"head_sha":"001e70d31f2ea055b597f96d73755c3b6857f4d3","conclusion":"failure","failure":"proof_scope_head 1dba47b11b4ddc4199030150a8a5e804fe600c2b did not equal record parent d9260af52f1e469d24b86f4014212561fc8eca51"}
   ],
-  "observations": [
-    "The exact protected acceptance revision passed Preflight Governance at a31137c19229842577df3cdb5cefbd30890b3073 in run 35027711914.",
-    "The resulting checkpoint update produced 7209601f963ce0f86386e3f14894199eab062df1.",
-    "The first parent-binding acceptance attempt failed because GitHub checkout depth was 1 and HEAD^ was unavailable; that was a real implementation divergence.",
-    "The checkout was repaired to fetch-depth 2, the repair passed Preflight Governance at 9ca2dbc90f4e26138c3523c307b8f20581383900 in run 35027864043, and checkpoint NAYA-PROGRESS-2026-09-15-08 records that protected revision.",
-    "A later repository change advanced main beyond the recorded proof scope, so the fresh acceptance correctly failed closed: the action record still named 9ca2dbc90f4e26138c3523c307b8f20581383900 while its commit parent was 1dba47b11b4ddc4199030150a8a5e804fe600c2b. The record is being rebound to that actual immediate parent before the next fresh acceptance run."
-  ],
-  "evidence": [
-    {
-      "type": "github_actions",
-      "workflow": "Naya Power — Preflight Governance",
-      "run_id": 35027864043,
-      "run_number": 446,
-      "head_sha": "9ca2dbc90f4e26138c3523c307b8f20581383900",
-      "conclusion": "success"
-    },
-    {
-      "type": "github_actions",
-      "workflow": "Verify Primary Intelligence System",
-      "run_id": 35027792398,
-      "run_number": 640,
-      "head_sha": "fb9e83b2f901531a0c6ff7f7c2fd8de96f8ccbbc",
-      "conclusion": "failure",
-      "failed_step": "Validate NAYA_ACTION_V1 contract and current proof",
-      "failure": "checkout depth 1 made HEAD^ unavailable",
-      "repair": "Changed canonical verification checkout to fetch-depth 2."
-    },
-    {
-      "type": "github_actions",
-      "workflow": "Verify Primary Intelligence System",
-      "run_id": 35031129186,
-      "run_number": 671,
-      "head_sha": "d9260af52f1e469d24b86f4014212561fc8eca51",
-      "conclusion": "failure",
-      "failed_step": "Validate NAYA_ACTION_V1 contract and current proof",
-      "failure": "proof scope 9ca2dbc90f4e26138c3523c307b8f20581383900 did not equal record parent HEAD 1dba47b11b4ddc4199030150a8a5e804fe600c2b",
-      "repair": "Rebind proof_scope_head to the actual immediate parent of the proof-bearing record before the next acceptance run."
-    }
-  ],
-  "verification": {
-    "contract": "VERIFIED",
-    "protected_acceptance_revision_preflight": "VERIFIED",
-    "proof_parent_binding": "PENDING_FRESH_ACCEPTANCE",
-    "external_runtime": "UNKNOWN_NOT_PROVEN"
-  },
-  "result": "The final NAYA_ACTION_V1 proof record is being rebound to the exact current pre-record repository state so the next acceptance run can truthfully verify its parent binding and proceed to the required Hub artifact proof.",
-  "value_cost_risk": {
-    "value": "Turns proof freshness and provenance into a mechanically testable property without self-reference.",
-    "cost": "One final acceptance run after the proof-bearing record write, followed by the React artifact/hash transport check.",
-    "risk": "No current VERIFIED promotion is claimed until fresh acceptance and artifact evidence succeed."
-  },
-  "failure_repair": [
-    {
-      "type": "checkout_depth",
-      "finding": "The first parent-binding acceptance run could not resolve HEAD^ because checkout depth was one.",
-      "repair": "Canonical verification now checks out depth two so the proof parent is available to CI."
-    },
-    {
-      "type": "stale_proof_scope",
-      "finding": "Run 671 correctly detected that the action record's proof_scope_head was stale relative to its immediate parent.",
-      "repair": "Rebind proof_scope_head to 1dba47b11b4ddc4199030150a8a5e804fe600c2b, the exact pre-record state observed by the failed acceptance."
-    }
-  ],
-  "lesson": "Proof freshness is not the same as self-referential commit identity. The durable pattern is to attest to an exact pre-record state and verify that state from the proof-bearing record's parent with sufficient history available to the verifier. If later repository work advances main before the final proof record is written, the proof scope must be rebound to the actual immediate parent rather than relying on an older checkpoint SHA.",
-  "memory": [
-    "NAYA_ACTION_V1 proof_scope_head equals the proof-bearing record's parent HEAD.",
-    "Verification workflows that inspect parent provenance must fetch enough Git history to resolve it.",
-    "Promotion to VERIFIED requires a fresh acceptance run on the final proof-bearing tree.",
-    "A stale proof scope must fail closed and be repaired before artifact/build evidence is trusted."
-  ],
-  "related_actions": [
-    "NAYA-ACTION-DELIVERY-LAW",
-    "FIRST-NAYA-ACTION-V1-PROOF",
-    "CONTINUOUS-PROJECT-EXECUTION-LOOP"
-  ],
-  "source": {
-    "repository": "SoulSchoolAcademy/NayaPOWER",
-    "proof_scope_head": "1dba47b11b4ddc4199030150a8a5e804fe600c2b",
-    "proof_scope_rule": "HEAD^ of the proof-bearing record commit"
-  },
-  "workflow": {
-    "protected_acceptance_revision_preflight_run": 35027864043,
-    "fresh_acceptance_run": null
-  },
-  "runtime_evidence": [],
-  "human_confirmation": true,
-  "next_action": {
-    "priority": "P0",
-    "instruction": "Run Verify Primary Intelligence System against this rebound proof-bearing commit. Require NAYA_ACTION_V1=PASS, then obtain the successful React/Hub production artifact and immutable artifact/hash evidence. Transport that exact artifact into the existing AppDeploy target only if the authorized transport surface explicitly supports artifact import; otherwise record the transport boundary as UNKNOWN/BLOCKED without substituting a rebuild.",
-    "required_evidence": [
-      "NAYA_ACTION_V1=PASS",
-      "proof_scope_head equals record parent",
-      "fresh workflow run identifier",
-      "control-plane acceptance",
-      "cold-Naya activation acceptance",
-      "PIS projection and artifact parity",
-      "Hub typecheck and production build",
-      "immutable artifact identifier and hash",
-      "authorized AppDeploy artifact transport result or explicit transport boundary"
-    ]
-  },
-  "state": "EXECUTING"
+  "verification":{"contract":"VERIFIED","protected_acceptance_revision_preflight":"VERIFIED","proof_parent_binding":"PENDING_FRESH_ACCEPTANCE","external_runtime":"UNKNOWN_NOT_PROVEN","react_artifact":"PENDING"},
+  "result":"The proof record has been surgically rebound to the actual immediate parent of this new proof-bearing commit. A fresh acceptance run must now verify the binding and, if successful, proceed through the Hub build/artifact evidence path.",
+  "value_cost_risk":{"value":"Makes proof freshness mechanically verifiable and preserves fail-closed provenance.","cost":"One fresh acceptance/build run and artifact inspection.","risk":"No artifact or transport success is claimed until immutable evidence exists."},
+  "failure_repair":[{"type":"proof_scope_binding","finding":"Previous repairs referenced an older checkpoint rather than the current proof-record parent.","repair":"Set proof_scope_head to 001e70d31f2ea055b597f96d73755c3b6857f4d3, the immediate parent of this rewrite."}],
+  "lesson":"The proof-bearing record is itself a commit. Therefore its proof scope must always be the exact commit immediately before that record write. Any subsequent rewrite creates a new parent boundary and requires a new fresh acceptance run.",
+  "memory":["NAYA_ACTION_V1 proof_scope_head equals HEAD^ of the current proof-bearing record commit.","A fresh acceptance must be run after every proof-record rewrite.","Artifact/hash evidence must come from the successful exact-tree build, not from source assumptions."],
+  "related_actions":["NAYA-ACTION-DELIVERY-LAW","FIRST-NAYA-ACTION-V1-PROOF","CONTINUOUS-PROJECT-EXECUTION-LOOP"],
+  "source":{"repository":"SoulSchoolAcademy/NayaPOWER","proof_scope_head":"001e70d31f2ea055b597f96d73755c3b6857f4d3","proof_scope_rule":"HEAD^ of the proof-bearing record commit"},
+  "workflow":{"protected_acceptance_revision_preflight_run":35027864043,"fresh_acceptance_run":null},
+  "runtime_evidence":[],
+  "human_confirmation":true,
+  "next_action":{"priority":"P0","instruction":"Run Verify Primary Intelligence System against this proof-bearing commit. Require NAYA_ACTION_V1=PASS and all Hub checks to reach artifact production; then inspect the run's artifact and immutable hash evidence. Transport that exact artifact into the existing AppDeploy target only if the authorized AppDeploy transport surface explicitly supports artifact import. Never substitute an AppDeploy rebuild for artifact transport.","required_evidence":["NAYA_ACTION_V1=PASS","proof_scope_head equals record parent","fresh workflow run identifier","canonical control-plane acceptance","cold-Naya activation acceptance","PIS projection and artifact parity","Hub typecheck","Hub production build","immutable artifact identifier and hash","authorized AppDeploy artifact transport result or explicit transport boundary"]},
+  "state":"EXECUTING"
 }
