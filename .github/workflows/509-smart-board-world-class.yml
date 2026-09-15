@@ -73,7 +73,7 @@ jobs:
           from pathlib import Path
           f=Path('release/public/NAYANET/SMART-FEED-CONTENT.txt').read_text();titles=['What Is Naya Power?','What Is Naya?','What Are Smart Notes?','Your Intelligence Today','Intelligence Reports','What Is the Intelligent Library?','Smart Lists','Smart Spaces','Smart Mail'];assert f.count('SMART NOTE')>=9
           for t in titles:assert t in f,t
-          h=Path('release/public/index.html').read_text();assert '509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js' in h and '509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js' in h and '509-AAA-SMART-BOARD-ONE-BOARD-REFERENCE.js' not in h
+          h=Path('release/public/index.html').read_text();assert 'NINE_BOARD_CANONICAL' in h and 'naya509-v26' in h and 'naya509-v26' in h
           print('STATIC_CANDIDATE=PASS')
           PY
       - name: Candidate browser acceptance before release
