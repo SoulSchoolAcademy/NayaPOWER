@@ -14,7 +14,7 @@ assert 'hub-home-restored' in APP, 'restored canonical Hub home surface is missi
 assert 'hub-restored-primo-v1.css' in MAIN, 'restored Hub visual layer is not activated'
 assert 'smart-feed-surgical-elevation.css' in MAIN, 'surgical SmartFeedBoard elevation is not activated'
 
-sidebar=['Intelligent','Reports','Intelligent Library','Smart Start','Smart Ledgers','Peer Connections','Smart Lists','Smart Spaces','Smart Mail','Settings']
+sidebar=['Your Intelligence Today','Your Report','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Spaces','Smart Mail','Settings']
 for label in sidebar:
     assert "name:'"+label+"'" in SHELL, f'missing canonical sidebar item: {label}'
 assert SHELL.count("name:'")==10, 'canonical sidebar must contain exactly 10 destinations'
@@ -23,9 +23,9 @@ board_contract=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA N
 for label in board_contract:
     assert label in BOARD, f'missing intelligent board contract surface: {label}'
 
-# These are retired user-facing shell elements. Collective remains valid inside
-# the Smart Feed lens; standalone Collective/Evidence/Connection destinations do not.
-for forbidden in ['Collective','Evidence','Your Report','Your Connections','Smart Mail — New']:
+# Retired user-facing shell elements. Collective remains valid inside the
+# Smart Feed lens; the canonical sidebar names above are the source of truth.
+for forbidden in ['Collective','Evidence','Smart Start','Smart Ledgers','Peer Connections','Smart Mail — New']:
     assert not any(forbidden in line for line in SHELL.splitlines()), f'forbidden legacy sidebar/shell UI: {forbidden}'
 
 print('NAYA Intelligent Hub source gate: PASS')
