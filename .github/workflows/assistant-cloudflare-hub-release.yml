@@ -1,3 +1,4 @@
+# AUTHORIZED USER REQUEST: deploy the supplied NayaNET Hub artifact to the supplied Cloudflare Worker.
 name: NAYA 509 — Assistant Cloudflare Hub Release
 
 on:
