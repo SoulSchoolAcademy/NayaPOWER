@@ -1,0 +1,19 @@
+/* Surgical Smart Feed elevation — presentation only. Existing SmartFeedBoard remains the renderer. */
+.smart-feed-board{position:relative!important;isolation:isolate!important}
+.smart-feed-board:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:22px;background:radial-gradient(900px 360px at 50% -8%,#9d75ff12,transparent 66%);z-index:-1}
+.sfb-header{box-shadow:inset 0 1px #fff5,0 18px 45px #0008!important}
+.sfb-header-actions .sfb-icon-button:first-of-type{border-color:#f1d75a88!important;box-shadow:inset 0 1px #fff4,0 0 20px #f1d75a12,0 8px 18px #0008!important}
+.sfb-header-actions .sfb-icon-button:last-of-type{border-color:#55b9ee88!important;box-shadow:inset 0 1px #fff4,0 0 20px #55b9ee12,0 8px 18px #0008!important}
+.sfb-perspective{position:relative!important;transition:transform .22s cubic-bezier(.16,.84,.22,1),background .22s ease!important}
+.sfb-perspective:hover{transform:translateX(3px)!important;background:linear-gradient(90deg,color-mix(in srgb,var(--tone) 4%,transparent),transparent)!important}
+.sfb-perspective-head{align-items:center!important}
+.sfb-icon-orb{width:48px!important;height:48px!important;display:grid!important;place-items:center!important;border-radius:15px!important;font-size:18px!important;box-shadow:inset 0 1px #fff5,0 12px 28px #000a,0 0 24px color-mix(in srgb,var(--tone) 10%,transparent)!important}
+.sfb-meaning>div:first-child span{font-size:0!important}
+.sfb-meaning>div:first-child span:after{content:"LEARNING LESSON";font-size:7px!important}
+.sfb-action span{font-size:0!important}
+.sfb-action span:after{content:"HOW TO USE / HOW TO APPLY";font-size:7px!important}
+.sfb-value{border-left-width:3px!important}
+.sfb-value span{font-size:7px!important}
+.sfb-trust{border-color:#55e39a22!important}
+.sfb-related{border-color:#6675ff22!important}
+@media(max-width:760px){.smart-feed-board{border-radius:16px!important}.sfb-header-actions{gap:6px!important}.sfb-header-actions .sfb-btn{flex:1 1 100%!important}.sfb-icon-orb{width:44px!important;height:44px!important}}
