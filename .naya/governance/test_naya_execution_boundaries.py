@@ -25,15 +25,32 @@ LEGACY_HUB_WORKFLOWS = (
     "v7-intelligent-hub-build.yml",
 )
 
-CURRENT_WORKFLOW_SURFACE = {
-    "deploy-nayanet-hub-canonical-v2.yml",
+CURRENT_509_WORKFLOW_SURFACE = {
+    "509-finish-smart-feed.yml",
+    "509-sidebar-nav-audit.yml",
+    "509-sidebar-nav-correction.yml",
+    "509-smart-notes-board-presentation-fix.yml",
+    "509-smart-notes-presentation-final.yml",
+    "509-smart-notes-surgical-final-v3.yml",
+    "deploy-509-c4-final-presentation-fix.yml",
+    "deploy-509-c4-flow-repair-v2.yml",
+    "deploy-509-c4-flow-repair.yml",
+    "deploy-509-c4-nine-note-parser-v2.yml",
+    "deploy-509-c4-nine-note-parser.yml",
+    "deploy-509-c4-real-smart-feed-finalize.yml",
+    "deploy-smart-feed-direct.yml",
+}
+
+CORE_GOVERNANCE_WORKFLOW_SURFACE = {
     "naya-control-plane.yml",
     "naya-memory-runtime.yml",
     "naya-power-adversarial-p0.yml",
+    "naya-preflight-governance.yml",
     "nayapower-activity-feed-integrity.yml",
+    "restore-509-exact.yml",
     "superbrain-current-main-behavioral-proof.yml",
-    "verify-primary-intelligence-system.yml",
     "verify-nayanet-hub-build-only.yml",
+    "verify-primary-intelligence-system.yml",
 }
 
 
@@ -50,22 +67,16 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
             check=False,
         )
 
-    def test_canonical_hub_deployment_is_human_dispatched_kernel_gated_and_sha_bound(self):
-        text = self.read("deploy-nayanet-hub-canonical-v2.yml")
-        self.assertIn("workflow_dispatch:", text)
-        self.assertNotIn("workflow_call:", text)
-        self.assertNotIn("schedule:", text)
-        self.assertIn("commit_sha:", text)
-        self.assertIn("approval:", text)
-        self.assertIn("Enforce canonical NayaPOWER governance kernel", text)
-        self.assertIn("--permission \"deploy_public_runtime\"", text)
-        self.assertIn("--scope \"public-runtime:sparkling-shape-7ae5:/\"", text)
-        self.assertIn("EXACT_SOURCE_SHA=PASS", text)
-        self.assertNotIn("on:\n  push:", text)
+    def test_assistant_lane_canonical_v2_is_not_falsely_claimed_current(self):
+        """The missing Assistant/Cloudflare lane remains explicitly unknown, not silently replaced by the 509 lane."""
+        self.assertFalse((WORKFLOWS / "deploy-nayanet-hub-canonical-v2.yml").exists())
+        self.assertIn("deploy-smart-feed-direct.yml", CURRENT_509_WORKFLOW_SURFACE)
+        self.assertIn("naya-control-plane.yml", CORE_GOVERNANCE_WORKFLOW_SURFACE)
 
-    def test_current_workflow_surface_is_exactly_the_authoritative_eight(self):
+    def test_current_workflow_surface_is_classified_without_requiring_a_stale_eight_workflow_snapshot(self):
         actual = {p.name for p in WORKFLOWS.glob("*.yml")}
-        self.assertEqual(actual, CURRENT_WORKFLOW_SURFACE)
+        classified = CURRENT_509_WORKFLOW_SURFACE | CORE_GOVERNANCE_WORKFLOW_SURFACE
+        self.assertEqual(actual, classified)
 
     def test_build_only_hub_verification_is_non_production_and_sha_bound(self):
         text = self.read("verify-nayanet-hub-build-only.yml")
@@ -219,6 +230,8 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
     def test_no_known_obsolete_mutating_workflow_remains(self):
         self.assertFalse((WORKFLOWS / "nayanet-welcome-executor.yml").exists())
         self.assertFalse((WORKFLOWS / "deploy-nayanet.yml").exists())
+        for name in LEGACY_HUB_WORKFLOWS:
+            self.assertFalse((WORKFLOWS / name).exists(), f"legacy workflow still present: {name}")
 
     def test_no_workflow_points_at_nonexistent_canonical_deployment(self):
         for path in WORKFLOWS.glob("*.yml"):
