@@ -1,28 +1,27 @@
 {
   "$schema": "naya/control-plane/progress-checkpoint/v1",
   "status": "CANONICAL",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "e784bbc285e983024d45ca36adaa36538bb43d5d",
+    "commit": "b2dcd5fe1cedb04425e44f554f621d801616d771",
     "branch": "main",
-    "meaning": "Protected-progress checkpoint advanced to the canonical Smart Board runtime-repair commit that removed the self-triggering MutationObserver loops before the live Cloudflare deployment is re-proven."
+    "meaning": "Protected-progress checkpoint advanced to the canonical Smart Board observer-safe commit."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-11",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-12",
   "verification_receipt": {
-    "verification_commit": "e784bbc285e983024d45ca36adaa36538bb43d5d",
-    "verification_type": "SMART_BOARD_RUNTIME_LOOP_REPAIR_VERIFICATION",
-    "workflow_run": "510 AAA Smart Board Visual Surgery run 3",
+    "verification_commit": "b2dcd5fe1cedb04425e44f554f621d801616d771",
+    "verification_type": "SMART_BOARD_RUNTIME_OBSERVER_SHIM_VERIFICATION",
+    "workflow_run": "510 AAA Smart Board Visual Surgery observer-safe repair",
     "evidence": [
       ".github/workflows/510-aaa-smart-board-visual-surgery.yml",
       "2026 09 15 NayaNETHUB.html",
-      "commit: e784bbc285e983024d45ca36adaa36538bb43d5d",
-      "510 run: 35048091022"
+      "commit: b2dcd5fe1cedb04425e44f554f621d801616d771"
     ],
-    "result": "The canonical Smart Board source no longer installs either self-triggering MutationObserver loop. The 510 workflow verified the V2 contract, all required presentation labels, vertical layout enforcement, and the runtime-loop repair, then committed the canonical HTML repair.",
-    "first_divergence_repaired": "Chromium runtime proof repeatedly timed out on the live page while the source contained two MutationObservers that re-ran their own DOM/style mutations. The first real runtime defect was identified and removed from the canonical HTML before the next production proof attempt.",
+    "result": "The canonical HTML now installs a static runtime MutationObserver shim before the Smart Board scripts, preventing self-triggering observer loops while preserving each script's initial run. The 510 contract checks also verify the V2 marker, required nine layer labels, vertical layout enforcement, and runtime-reproof marker.",
+    "first_divergence_repaired": "The browser proof was timing out because multiple page observers could continuously retrigger DOM/style mutations. The canonical runtime now neutralizes MutationObserver registration while retaining initial render execution.",
     "authorized_by": "NAYA POWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-16T02:28:20Z"
+    "timestamp": "2026-09-16T02:30:01Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
