@@ -1,3 +1,4 @@
+# EXECUTION TRIGGER: canonical Smart Board mirror after merge
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -34,13 +35,9 @@ function render()'''
           if count != 1:
               raise SystemExit('CANONICAL_BLOCK_RENDERER_NOT_FOUND')
           s = s2
-
-          # Remove older structural scripts that can re-number or inject legacy layers.
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>\s*", "", s, flags=re.S)
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->.*?</script>\s*", "", s, flags=re.S)
           s = re.sub(r"<!-- NAYA-AAA-SMART-BOARD-VISUAL-V1 -->.*?</script>\s*", "", s, flags=re.S)
-
-          # Final runtime guard: labels only, no visible numeric prefixes, same order on every board.
           guard = r'''<script id="naya-canonical-board-template-guard">(()=>{
           const order=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"];
           const clean=s=>String(s||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/\s+/g,' ').trim().toUpperCase();
