@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Repair V10 without replacing the V10 icon system
+      - name: Surgically restore V10 visual system
         shell: bash
         run: |
           set -euo pipefail
@@ -20,92 +20,56 @@ jobs:
           import re
           p=Path('2026 09 15 NayaNETHUB.html')
           s=p.read_text(encoding='utf-8')
+          sr=re.compile(r'<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</style>',re.S)
+          jr=re.compile(r'<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</script>',re.S)
+          sm=sr.search(s); jm=jr.search(s)
+          if not sm or not jm: raise SystemExit('V10 authority block missing; refusing to guess.')
+          style=sm.group(0); script=jm.group(0)
 
-          style_re=re.compile(r'<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</style>',re.S)
-          script_re=re.compile(r'<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</script>',re.S)
-          sm=style_re.search(s); jm=script_re.search(s)
-          if not sm or not jm:
-              raise SystemExit('V10 authority block missing; refusing to mutate the canonical artifact.')
+          # Nutshell: one real header, one V10 star, no hidden/legacy child can sit behind the label.
+          style=re.sub(r'\.elite-board:first-child \.nutshell b\{.*?\}',
+              '.elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:26px!important;min-height:116px!important;margin:0!important;padding:14px 30px!important;color:#fff!important;font-size:clamp(19px,2vw,30px)!important;font-weight:1000!important;letter-spacing:.17em!important;text-align:left!important;border-bottom:1px solid #ffffff1c!important;background:linear-gradient(145deg,#1d2127,#0b0d11)!important;position:relative!important;overflow:visible!important}', style, count=1)
+          style=re.sub(r'\.elite-board:first-child \.nutshell b \.v10-nutshell-star\{.*?\}',
+              '.elite-board:first-child .nutshell b .v10-nutshell-star{width:82px!important;height:82px!important;flex:0 0 82px!important;display:grid!important;place-items:center!important;position:relative!important;order:0!important;margin:0!important}', style, count=1)
+          style += '''\n<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">\n.elite-board:first-child .nutshell b:before,.elite-board:first-child .nutshell b:after{content:none!important;display:none!important}\n.elite-board:first-child .nutshell b>*:not(.v10-nutshell-star){position:static!important}\n.elite-board:first-child .nutshell .v10-nutshell-star+*{margin-left:0!important}\n.elite-board .layerHead{gap:30px!important}\n.elite-board .layerHead .dot{margin-right:2px!important}\n.elite-board .layerHead b{font-size:clamp(15px,1.45vw,22px)!important;line-height:1.2!important}\n.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 32px 33px!important}\n.elite-board .dot{width:92px!important;height:92px!important;flex:0 0 92px!important}\n.elite-board .dot .v10-icon{width:68px!important;height:68px!important}\n.elite-board .dot:before{inset:-11px!important;border-width:2px!important}\n.elite-board .dot:after{inset:10px!important;border-width:1px!important}\n.elite-board .dot{box-shadow:inset 0 5px #fff9,inset 0 -22px 29px #000f,0 8px 5px #000e,0 23px 38px #000f,0 0 34px color-mix(in srgb,var(--layer) 86%,transparent),0 0 100px color-mix(in srgb,var(--layer) 34%,transparent)!important}\n@media(max-width:820px){.elite-board:first-child .nutshell b{gap:18px!important;padding:11px 18px!important;min-height:92px!important;font-size:clamp(17px,4.8vw,23px)!important}.elite-board:first-child .nutshell b .v10-nutshell-star{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .layerHead{gap:20px!important}.elite-board .dot{width:68px!important;height:68px!important;flex-basis:68px!important}.elite-board .dot .v10-icon{width:50px!important;height:50px!important}.elite-board .layerBody{font-size:21px!important;padding:20px 21px 25px!important}}\n</style>'''
 
-          style=sm.group(0)
-          script=jm.group(0)
-
-          # V10 stays the authority. These are surgical corrections inside that authority only.
-          style=style.replace(
-              'justify-content:center!important;gap:18px!important;min-height:116px!important;',
-              'justify-content:flex-start!important;gap:24px!important;min-height:116px!important;'
-          )
-          style=style.replace(
-              'text-align:center!important;border-bottom:1px solid #ffffff1c!important;',
-              'text-align:left!important;border-bottom:1px solid #ffffff1c!important;'
-          )
-          style=style.replace(
-              '.elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;display:grid!important;place-items:center!important;position:relative!important}',
-              '.elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;display:grid!important;place-items:center!important;position:relative!important;order:0!important;margin:0!important}'
-          )
-          style=style.replace(
-              '.elite-board .layerHead{display:flex!important;align-items:center!important;gap:22px!important;',
-              '.elite-board .layerHead{display:flex!important;align-items:center!important;gap:28px!important;'
-          )
-          style=style.replace(
-              '.elite-board .layerHead b{font-size:14px!important;',
-              '.elite-board .layerHead b{font-size:15px!important;'
-          )
-          style=style.replace(
-              '.top .title{font-size:12px!important;',
-              '.top .status{display:none!important}.top .title{font-size:12px!important;'
-          )
-          style=style.replace(
-              'padding:11px 18px!important;gap:14px!important}',
-              'padding:11px 18px!important;gap:18px!important}'
-          )
-          # Keep the same readable body scale as the Nutshell on desktop and mobile.
-          style=style.replace(
-              '.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;',
-              '.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:clamp(21px,4.6vw,24px)!important;'
-          )
-
-          # Replace only the Nutshell label construction: one star, then one clean label.\n          old="if(label){label.textContent='';const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.appendChild(star);label.appendChild(document.createTextNode('IN A NUTSHELL'))}"
-          new="if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'))}"
-          if old not in script:
-              raise SystemExit('Expected V10 Nutshell construction not found; refusing to guess.')
+          # Preserve the V10 icon definitions and jewel() pipeline; only make the DOM cleanup stricter.
+          old="if(label){label.textContent='';const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.appendChild(star);label.appendChild(document.createTextNode('IN A NUTSHELL'))}"
+          if old not in script: raise SystemExit('V10 Nutshell constructor not found.')
+          new="if(label){[...n.children].forEach(x=>{if(x!==label&&!x.matches('p'))x.remove()});label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'))}"
           script=script.replace(old,new)
 
-          # Replace the final layer placement with the exact requested semantic order.
           old2="const value=[...layers.children].find(x=>x.dataset.nayaLayer==='value');\n              if(value)layers.appendChild(value);\n              const apply=[...layers.children].find(x=>x.dataset.nayaLayer==='apply');\n              if(apply)layers.appendChild(apply); if(value)layers.appendChild(value);"
           new2="const requestedOrder=['human','child','grandma','naya','machine','learning','meaning','apply','value'];\n              requestedOrder.forEach(id=>{const item=[...layers.children].find(x=>x.dataset.nayaLayer===id);if(item)layers.appendChild(item)});"
-          if old2 not in script:
-              raise SystemExit('Expected V10 final layer ordering block not found; refusing to guess.')
+          if old2 not in script: raise SystemExit('V10 order block not found.')
           script=script.replace(old2,new2)
 
-          # Remove any non-authoritative decorative Nutshell children left by older markup, while preserving V10 star + text.
-          needle="n.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*=\\\"nutshellIcon\\\"]').forEach(x=>x.remove());"
-          replacement="n.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*=\\\"nutshellIcon\\\"]').forEach(x=>x.remove());"
-          if needle in script:
-              script=script.replace(needle,replacement)
+          # Re-assert every semantic layer receives its original V10 faceted jewel icon.
+          old3="function jewel(el,kind){el.querySelectorAll('.v10-icon').forEach(x=>x.remove());el.appendChild(svg(kind))}"
+          new3="function jewel(el,kind){if(!el)return;el.querySelectorAll('.v10-icon,svg,img,.ico').forEach(x=>x.remove());const icon=svg(kind);icon.setAttribute('focusable','false');el.appendChild(icon)}"
+          if old3 not in script: raise SystemExit('V10 jewel() pipeline not found.')
+          script=script.replace(old3,new3)
+
+          # Keep the actual headline and eliminate the status pill/dot from the sticky header.
+          style=style.replace('.top .title{font-size:12px!important;', '.top .status{display:none!important}.top .title{font-size:12px!important;')
 
           s=s[:sm.start()]+style+s[sm.end():]
-          # Re-find script after style replacement because offsets changed.
-          jm=script_re.search(s)
-          if not jm: raise SystemExit('V10 script disappeared during surgical replacement.')
+          jm=jr.search(s)
           s=s[:jm.start()]+script+s[jm.end():]
-
           p.write_text(s,encoding='utf-8')
 
-          # Static proof: V10 remains sole Smart Board visual authority and required corrections exist.
           out=p.read_text(encoding='utf-8')
-          assert out.count('id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10"')==2
-          assert 'justify-content:flex-start!important;gap:24px!important' in out
-          assert 'text-align:left!important;border-bottom:1px solid #ffffff1c!important' in out
+          assert 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' in out
+          assert 'NAYA-SMART-BOARD-V10-SURGICAL-FINAL' in out
+          assert 'label.replaceChildren()' in out
           assert "requestedOrder=['human','child','grandma','naya','machine','learning','meaning','apply','value']" in out
-          assert "label.replaceChildren()" in out
-          assert '.top .status{display:none!important}' in out
-          assert 'd4af37' in out
+          assert "function jewel(el,kind)" in out and "const icon=svg(kind)" in out
+          assert 'd4af37' in out and 'dfe6ee' in out
           print('V10 SURGICAL REPAIR: PASS')
           PY
           git config user.name 'NayaPOWER Automation'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
           git diff --cached --quiet && exit 0
-          git commit -m 'Surgically repair Smart Board V10 hierarchy and spacing'
+          git commit -m 'Restore V10 jewel icons and repair Smart Board hierarchy'
           git push
