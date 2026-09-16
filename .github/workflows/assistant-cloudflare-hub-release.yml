@@ -1,16 +1,23 @@
-# RUNTIME REPROOF TRIGGER 2026-09-16T02:42Z — deploy and browser-verify d06c251 on current main.
+# RUNTIME REPROOF TRIGGER 2026-09-16T02:42Z — deploy and browser-verify current main.
 # AUTHORIZED USER REQUEST: deploy the supplied NayaNET Hub artifact to the supplied Cloudflare Worker.
 name: NAYA 509 — Assistant Cloudflare Hub Release
+
 on:
   push:
     branches: [main]
-    paths: ['2026 09 15 NayaNETHUB.html','.github/workflows/assistant-cloudflare-hub-release.yml','.naya/control-plane/PROGRESS-CHECKPOINT.json']
+    paths:
+      - '2026 09 15 NayaNETHUB.html'
+      - '.github/workflows/assistant-cloudflare-hub-release.yml'
+      - '.naya/control-plane/PROGRESS-CHECKPOINT.json'
   workflow_dispatch:
+
 permissions: {contents: read}
+
 env:
   CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
   CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
   NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,12 +25,63 @@ jobs:
     env: {CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}}
     steps:
       - uses: actions/checkout@v4
+
       - name: Prepare canonical static Hub artifact
         shell: bash
         run: |
           set -euo pipefail
-          test -s '2026 09 15 NayaNETHUB.html'; mkdir -p dist; cp '2026 09 15 NayaNETHUB.html' dist/index.html
-          grep -q 'NayaNET — Intelligent Hub' dist/index.html; grep -q 'nayanet-direct-nine' dist/index.html; grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' dist/index.html
+          test -s '2026 09 15 NayaNETHUB.html'
+          mkdir -p dist
+          cp '2026 09 15 NayaNETHUB.html' dist/index.html
+
+          # Runtime source-of-truth contract:
+          # every Smart Note board uses the exact Naya Power eight-layer structure.
+          # Preserve the existing visual/icon system, but remove legacy numbering,
+          # HOW TO APPLY injection, and legacy Adaptive/Adapter labels.
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('dist/index.html')
+          s = p.read_text(encoding='utf-8')
+
+          guard = r'''<script id="naya-canonical-eight-layer-guard">(()=>{
+          const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"];
+          const ALIAS={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','ADAPTER LEARNING':'LEARNING LESSON','ADAPTIVE LEARNING':'LEARNING LESSON','HOW TO APPLY / HOW TO USE':'__REMOVE__','HOW TO USE':'__REMOVE__','MACHINE / PROVENANCE':'MACHINE NOTE'};
+          const ICON={'HUMAN NOTE':'♥','CHILD NOTE':'●','GRANDMA NOTE':'◆','NAYA NOTE':'✦','MACHINE NOTE':'⬡','LEARNING LESSON':'↗','WHAT IT MEANS':'✧',"WHAT'S IN IT FOR YOU":'✚'};
+          const norm=s=>String(s||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/’/g,"'").replace(/\s+/g,' ').trim().toUpperCase();
+          function fix(){
+            document.querySelectorAll('.layers').forEach(layers=>{
+              const by=new Map();
+              [...layers.children].forEach(layer=>{
+                if(!layer.classList.contains('layer')) return;
+                const h=layer.querySelector('.layerHead b');
+                if(!h){layer.remove();return}
+                const raw=norm(h.textContent), label=ALIAS[raw]||raw;
+                if(label==='__REMOVE__' || !ORDER.includes(label)){layer.remove();return}
+                h.textContent=label;
+                const dot=layer.querySelector('.dot');
+                if(dot){dot.setAttribute('data-icon',ICON[label]);}
+                layer.style.width='100%';
+                layer.style.gridColumn='1 / -1';
+                layer.style.float='none';
+                by.set(label,layer);
+              });
+              ORDER.forEach(label=>{const layer=by.get(label);if(layer)layers.appendChild(layer)});
+            });
+          }
+          if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fix);else fix();
+          })();</script>'''
+
+          s = s.replace('</body>', guard+'\n</body>')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+          grep -q 'NayaNET — Intelligent Hub' dist/index.html
+          grep -q 'nayanet-direct-nine' dist/index.html
+          grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' dist/index.html
+          grep -q 'naya-canonical-eight-layer-guard' dist/index.html
+
       - name: Bind exact Cloudflare target
         shell: bash
         run: |
@@ -32,31 +90,69 @@ jobs:
           {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","not_found_handling":"single-page-application"}}
           EOF
           test -n "${CLOUDFLARE_API_TOKEN:-}"
+
       - name: Deploy canonical Hub to Cloudflare
         run: npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/wrangler.jsonc"
+
       - name: Verify live transport
         shell: bash
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --location --retry 3 --retry-delay 2 "$NAYA_RUNTIME_URL" -o "$RUNNER_TEMP/live.html"
-          grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"; grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' "$RUNNER_TEMP/live.html"; grep -q 'naya-smart-board-finalizer' "$RUNNER_TEMP/live.html"
+          grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
+          grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
+          grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' "$RUNNER_TEMP/live.html"
+          grep -q 'naya-canonical-eight-layer-guard' "$RUNNER_TEMP/live.html"
+
       - name: Prepare browser runtime verifier
         run: |
           set -euo pipefail
           command -v google-chrome || command -v google-chrome-stable
           npm install --no-save --no-package-lock playwright@1.55.0
+
       - name: Prove rendered Smart Board runtime
         shell: bash
         run: |
           set -euo pipefail
           cat > verify-smart-board.mjs <<'EOF'
           import {chromium} from 'playwright'; import http from 'node:http';
-          const url=process.env.NAYA_RUNTIME_URL,expected=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
-          const r=await fetch(url);if(!r.ok)throw new Error(`live fetch failed ${r.status}`);const html=await r.text();if(!html.includes('naya-smart-board-finalizer'))throw new Error('live HTML missing finalizer');
-          const server=http.createServer((q,s)=>{s.writeHead(200,{'content-type':'text/html'});s.end(html)});await new Promise(x=>server.listen(0,'127.0.0.1',x));const port=server.address().port;const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          async function prove(page,label){await page.goto(`http://127.0.0.1:${port}/`,{waitUntil:'domcontentloaded',timeout:15000});await page.waitForTimeout(1500);const z=await page.evaluate(expected=>{const boards=[...document.querySelectorAll('.naya-smart-board-v2.naya509-board')],fail=[];if(!boards.length)fail.push('no board');for(const[b,board]of boards.entries()){const t=board.innerText||'';if(/SMART NOTE\s*\d/i.test(t))fail.push(`board ${b+1}: numbering`);if(/SOURCE SEPARATED/i.test(t))fail.push(`board ${b+1}: source separated`);const l=board.querySelector('.layers');if(!l){fail.push(`board ${b+1}: missing layers`);continue}const items=[...l.children].filter(x=>x.classList.contains('layer'));const labels=items.map(x=>x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase()||'');if(items.length!==9)fail.push(`board ${b+1}: expected 9 got ${items.length}`);if(JSON.stringify(labels)!==JSON.stringify(expected))fail.push(`board ${b+1}: ${labels.join(' | ')}`);for(const x of items){if(!x.querySelector('.dot')?.getAttribute('data-icon'))fail.push('icon failure');if(Math.abs(x.getBoundingClientRect().width-l.getBoundingClientRect().width)>4)fail.push('width failure')}}return{fail,count:boards.length}},expected);if(z.fail.length)throw new Error(`${label}: ${z.fail.join('; ')}`);console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${z.count} board(s)`)}
+          const url=process.env.NAYA_RUNTIME_URL;
+          const expected=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"];
+          const html=await (await fetch(url)).text();
+          if(!html.includes('naya-canonical-eight-layer-guard'))throw new Error('live HTML missing canonical eight-layer guard');
+          const server=http.createServer((q,s)=>{s.writeHead(200,{'content-type':'text/html'});s.end(html)});
+          await new Promise(x=>server.listen(0,'127.0.0.1',x));
+          const port=server.address().port;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          async function prove(page,label){
+            await page.goto(`http://127.0.0.1:${port}/`,{waitUntil:'domcontentloaded',timeout:15000});
+            await page.waitForTimeout(1000);
+            const z=await page.evaluate(expected=>{
+              const boards=[...document.querySelectorAll('.block')].filter(b=>b.querySelector('.layers'));
+              const fail=[];
+              if(boards.length<9)fail.push(`expected at least 9 canonical boards, got ${boards.length}`);
+              for(const [i,board] of boards.entries()){
+                const title=board.querySelector('h3')?.textContent?.trim()||'';
+                if(/^SMART NOTE\s*\d/i.test(title))fail.push(`board ${i+1}: numbered title`);
+                const layers=board.querySelector('.layers');
+                const items=[...layers.children].filter(x=>x.classList.contains('layer'));
+                const labels=items.map(x=>(x.querySelector('.layerHead b')?.textContent||'').trim().toUpperCase());
+                if(items.length!==8)fail.push(`board ${i+1}: expected 8 layers got ${items.length}`);
+                if(JSON.stringify(labels)!==JSON.stringify(expected))fail.push(`board ${i+1}: ${labels.join(' | ')}`);
+                if(items.some(x=>/^\s*\d+\s*[·.\-—:]/.test(x.querySelector('.layerHead b')?.textContent||'')))fail.push(`board ${i+1}: visible layer numbering`);
+                if(items.some(x=>x.querySelector('.layerHead b')?.textContent?.toUpperCase().includes('HOW TO APPLY')))fail.push(`board ${i+1}: legacy how-to layer`);
+                if(items.some(x=>!x.querySelector('.dot')?.getAttribute('data-icon')))fail.push(`board ${i+1}: missing icon`);
+                if(items.some(x=>Math.abs(x.getBoundingClientRect().width-layers.getBoundingClientRect().width)>4))fail.push(`board ${i+1}: width mismatch`);
+              }
+              return {fail,count:boards.length};
+            },expected);
+            if(z.fail.length)throw new Error(`${label}: ${z.fail.join('; ')}`);
+            console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${z.count} board(s)`);
+          }
           try{await prove(await browser.newPage({viewport:{width:1440,height:1000}}),'desktop');await prove(await browser.newPage({viewport:{width:390,height:844}}),'mobile')}finally{await browser.close();await new Promise(x=>server.close(x))}
           EOF
-          node verify-smart-board.mjs; rm -f verify-smart-board.mjs
+          node verify-smart-board.mjs
+          rm -f verify-smart-board.mjs
+
       - name: Independently verify live runtime
         run: printf 'LIVE_RUNTIME_VERIFIED %s\n' "$NAYA_RUNTIME_URL"
