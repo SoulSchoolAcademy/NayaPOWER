@@ -1,4 +1,4 @@
-# V10 CANONICAL VISUAL AUTHORITY — single exact copy
+# V10 CANONICAL VISUAL AUTHORITY — deterministic source surgery
 name: 510 Smart Board V10 Canonical Visual Authority
 on:
   push:
@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Restore exact V10 jewel system and remove every competing override
+      - name: Restore one exact V10 authority and surgically repair Smart Board
         shell: bash
         run: |
           set -euo pipefail
@@ -25,22 +25,30 @@ jobs:
           import re, subprocess
           p=Path('2026 09 15 NayaNETHUB.html'); s=p.read_text(encoding='utf-8')
           base=subprocess.check_output(['git','show','60c70db83c8ffdf954b73c45821fd53a3eeebbf7:2026 09 15 NayaNETHUB.html'],text=True)
-          def grab(src,tag,id):
-              m=re.search(r'<'+tag+r'\b[^>]*'+re.escape(id)+r'[^>]*>.*?</'+tag+r'>',src,re.S|re.I)
-              if not m: raise SystemExit('Protected V10 '+tag+' missing')
-              return m.group(0)
+          def grab(src,tag,marker):
+              start=src.find('<'+tag,0); pos=src.find(marker,start)
+              if pos<0: raise SystemExit('protected marker missing: '+marker)
+              start=src.rfind('<'+tag,0,pos); end=src.find('</'+tag+'>',pos)
+              if start<0 or end<0: raise SystemExit('protected block boundary missing')
+              return src[start:end+len(tag)+3]
           v10style=grab(base,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
           v10script=grab(base,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
-          if not all(x in v10script for x in ['class="core"','class="facet"','class="shade"','class="edge"']): raise SystemExit('Protected V10 faceted jewel definitions missing')
-          # Remove all copies by tag + ID substring, independent of quote escaping or attribute order.
-          s=re.sub(r'<style\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>.*?</style>','',s,flags=re.S|re.I)
-          s=re.sub(r'<script\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>.*?</script>','',s,flags=re.S|re.I)
-          s=re.sub(r'<style\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>.*?</style>','',s,flags=re.S|re.I)
-          s=re.sub(r'<script\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>.*?</script>','',s,flags=re.S|re.I)
+          if not all(x in v10script for x in ['class="core"','class="facet"','class="shade"','class="edge"']): raise SystemExit('protected V10 jewel definitions missing')
+          def remove_marker_blocks(src,tag,marker):
+              while True:
+                  pos=src.find(marker)
+                  if pos<0:return src
+                  start=src.rfind('<'+tag,0,pos); end=src.find('</'+tag+'>',pos)
+                  if start<0 or end<0: raise SystemExit('cannot remove marker block '+marker)
+                  src=src[:start]+src[end+len(tag)+3:]
+          s=remove_marker_blocks(s,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
+          s=remove_marker_blocks(s,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
+          s=remove_marker_blocks(s,'style','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
+          s=remove_marker_blocks(s,'script','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
           for id in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-aaa-smart-board-visual-v1-script','naya-smart-board-living-intelligence-v2-script','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
-              for tag in ['style','script']:
-                  s=re.sub(r'<'+tag+r'\b[^>]*'+re.escape(id)+r'[^>]*>.*?</'+tag+r'>','',s,flags=re.S|re.I)
-          s=re.sub(r'\.naya509-unified-board \.nutshell:before\s*\{[^}]*\}','',s,flags=re.S|re.I)
+              s=remove_marker_blocks(s,'style',id); s=remove_marker_blocks(s,'script',id)
+          # Remove the legacy Nutshell pseudo-element rule wherever it exists.
+          s=re.sub(r'\.naya509-unified-board\s+\.nutshell:before\s*\{[^}]*\}','',s,flags=re.S|re.I)
           s=s.replace('</head>',v10style+'\n</head>',1)
           surgical='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
           .elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
@@ -60,7 +68,7 @@ jobs:
           function run(){const board=q('.elite-board');if(!board)return;const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));const layers=q('.layers',board);if(layers){const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=ALIAS[norm(h.textContent)]||norm(h.textContent);if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(k=>{if(map.has(k))layers.appendChild(map.get(k))});}qq('.status').forEach(x=>x.remove());const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
           if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>'''
           s=s.replace('</body>',v10script+'\n'+fix+'\n</body>',1)
-          # Final source assertions: exactly one style + one script authority, no old visual override IDs.
+          # Exactly one V10 style + script, and exactly one surgical style + script.
           assert len(re.findall(r'<style\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
           assert len(re.findall(r'<script\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
           assert len(re.findall(r'<style\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
@@ -68,7 +76,7 @@ jobs:
           for x in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
               assert x not in s, x
           p.write_text(s,encoding='utf-8')
-          print('V10_SINGLE_AUTHORITY_READY')
+          print('V10_EXACT_SINGLE_AUTHORITY_READY')
           PY
       - name: Verify canonical source
         shell: bash
@@ -78,18 +86,14 @@ jobs:
           test "$(grep -o 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' "$f" | wc -l)" -eq 2
           test "$(grep -o 'NAYA-SMART-BOARD-V10-SURGICAL-FINAL' "$f" | wc -l)" -eq 2
           grep -q 'class="core"' "$f"; grep -q 'class="facet"' "$f"; grep -q 'class="shade"' "$f"; grep -q 'class="edge"' "$f"
-          ! grep -q 'naya-aaa-smart-board-visual-v1' "$f"
-          ! grep -q 'naya-smart-board-living-intelligence-v2' "$f"
-          ! grep -q 'naya-smart-board-finalizer' "$f"
-          ! grep -q 'naya-elite-interface-refinement-runtime' "$f"
+          ! grep -q 'naya-aaa-smart-board-visual-v1' "$f"; ! grep -q 'naya-smart-board-living-intelligence-v2' "$f"; ! grep -q 'naya-smart-board-finalizer' "$f"; ! grep -q 'naya-elite-interface-refinement-runtime' "$f"
           grep -q 'What is Naya Power' "$f"
           echo 'V10_SINGLE_AUTHORITY_VERIFIED'
       - name: Commit canonical artifact
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name 'NayaPOWER Automation'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git config user.name 'NayaPOWER Automation'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
           if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 1; fi
           git commit -m 'Normalize Smart Board to one exact V10 jewel authority'
