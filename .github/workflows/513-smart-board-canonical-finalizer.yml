@@ -58,7 +58,7 @@ jobs:
           mkdir -p dist
           cp '2026 09 15 NayaNETHUB.html' dist/index.html
           test -s dist/index.html
-          grep -q 'nayanet-direct-nine' dist/index.html
+          grep -q 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' dist/index.html
           grep -q 'What is Naya Power' dist/index.html
           echo 'CANONICAL_ARTIFACT_READY'
       - name: Bind exact Cloudflare target
@@ -79,7 +79,7 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL" -o "$RUNNER_TEMP/live.html"
-          grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
+          grep -q 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' "$RUNNER_TEMP/live.html"
           grep -q 'What is Naya Power' "$RUNNER_TEMP/live.html"
           if grep -q 'naya-canonical-eight-layer-guard' "$RUNNER_TEMP/live.html"; then echo 'FAIL: obsolete eight-layer deployment guard is still live'; exit 1; fi
           if grep -q 'SMART NOTE 01·CANONICAL INTELLIGENCE' "$RUNNER_TEMP/live.html"; then echo 'FAIL: stale 509 Hub artifact is still live'; exit 1; fi
