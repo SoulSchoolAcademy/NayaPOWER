@@ -1,0 +1,111 @@
+name: 513 Smart Board V10 Surgical Repair
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/control-plane/SMART-BOARD-V10-SURGICAL-REPAIR.md'
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repair V10 without replacing the V10 icon system
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 15 NayaNETHUB.html')
+          s=p.read_text(encoding='utf-8')
+
+          style_re=re.compile(r'<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</style>',re.S)
+          script_re=re.compile(r'<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</script>',re.S)
+          sm=style_re.search(s); jm=script_re.search(s)
+          if not sm or not jm:
+              raise SystemExit('V10 authority block missing; refusing to mutate the canonical artifact.')
+
+          style=sm.group(0)
+          script=jm.group(0)
+
+          # V10 stays the authority. These are surgical corrections inside that authority only.
+          style=style.replace(
+              'justify-content:center!important;gap:18px!important;min-height:116px!important;',
+              'justify-content:flex-start!important;gap:24px!important;min-height:116px!important;'
+          )
+          style=style.replace(
+              'text-align:center!important;border-bottom:1px solid #ffffff1c!important;',
+              'text-align:left!important;border-bottom:1px solid #ffffff1c!important;'
+          )
+          style=style.replace(
+              '.elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;display:grid!important;place-items:center!important;position:relative!important}',
+              '.elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;display:grid!important;place-items:center!important;position:relative!important;order:0!important;margin:0!important}'
+          )
+          style=style.replace(
+              '.elite-board .layerHead{display:flex!important;align-items:center!important;gap:22px!important;',
+              '.elite-board .layerHead{display:flex!important;align-items:center!important;gap:28px!important;'
+          )
+          style=style.replace(
+              '.elite-board .layerHead b{font-size:14px!important;',
+              '.elite-board .layerHead b{font-size:15px!important;'
+          )
+          style=style.replace(
+              '.top .title{font-size:12px!important;',
+              '.top .status{display:none!important}.top .title{font-size:12px!important;'
+          )
+          style=style.replace(
+              'padding:11px 18px!important;gap:14px!important}',
+              'padding:11px 18px!important;gap:18px!important}'
+          )
+          # Keep the same readable body scale as the Nutshell on desktop and mobile.
+          style=style.replace(
+              '.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;',
+              '.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:clamp(21px,4.6vw,24px)!important;'
+          )
+
+          # Replace only the Nutshell label construction: one star, then one clean label.\n          old="if(label){label.textContent='';const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.appendChild(star);label.appendChild(document.createTextNode('IN A NUTSHELL'))}"
+          new="if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'))}"
+          if old not in script:
+              raise SystemExit('Expected V10 Nutshell construction not found; refusing to guess.')
+          script=script.replace(old,new)
+
+          # Replace the final layer placement with the exact requested semantic order.
+          old2="const value=[...layers.children].find(x=>x.dataset.nayaLayer==='value');\n              if(value)layers.appendChild(value);\n              const apply=[...layers.children].find(x=>x.dataset.nayaLayer==='apply');\n              if(apply)layers.appendChild(apply); if(value)layers.appendChild(value);"
+          new2="const requestedOrder=['human','child','grandma','naya','machine','learning','meaning','apply','value'];\n              requestedOrder.forEach(id=>{const item=[...layers.children].find(x=>x.dataset.nayaLayer===id);if(item)layers.appendChild(item)});"
+          if old2 not in script:
+              raise SystemExit('Expected V10 final layer ordering block not found; refusing to guess.')
+          script=script.replace(old2,new2)
+
+          # Remove any non-authoritative decorative Nutshell children left by older markup, while preserving V10 star + text.
+          needle="n.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*=\\\"nutshellIcon\\\"]').forEach(x=>x.remove());"
+          replacement="n.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*=\\\"nutshellIcon\\\"]').forEach(x=>x.remove());"
+          if needle in script:
+              script=script.replace(needle,replacement)
+
+          s=s[:sm.start()]+style+s[sm.end():]
+          # Re-find script after style replacement because offsets changed.
+          jm=script_re.search(s)
+          if not jm: raise SystemExit('V10 script disappeared during surgical replacement.')
+          s=s[:jm.start()]+script+s[jm.end():]
+
+          p.write_text(s,encoding='utf-8')
+
+          # Static proof: V10 remains sole Smart Board visual authority and required corrections exist.
+          out=p.read_text(encoding='utf-8')
+          assert out.count('id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10"')==2
+          assert 'justify-content:flex-start!important;gap:24px!important' in out
+          assert 'text-align:left!important;border-bottom:1px solid #ffffff1c!important' in out
+          assert "requestedOrder=['human','child','grandma','naya','machine','learning','meaning','apply','value']" in out
+          assert "label.replaceChildren()" in out
+          assert '.top .status{display:none!important}' in out
+          assert 'd4af37' in out
+          print('V10 SURGICAL REPAIR: PASS')
+          PY
+          git config user.name 'NayaPOWER Automation'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          git diff --cached --quiet && exit 0
+          git commit -m 'Surgically repair Smart Board V10 hierarchy and spacing'
+          git push
