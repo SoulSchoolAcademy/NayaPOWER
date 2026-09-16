@@ -1,5 +1,5 @@
 # Smart Board refinement trigger
 
-Canonical visual refinement execution: V9 removes the unnecessary top Nutshell icon/text treatment and keeps one centered silver star treatment in the Nutshell banner; upgrades every semantic layer to a layered, faceted, dimensional jewel icon; preserves the full “What is Naya Power” headline and dimensional power icon; keeps all explanatory text at the same comfortable scale; preserves Apply-before-Value order, true gold Apply, silver Value, and live date/time. V9 is the sole refinement layer and removes prior refinement layers before applying itself.
+Canonical visual refinement execution: V10 removes the competing legacy visual finalizers that were reintroducing the duplicate Nutshell treatment, binds the canonical boards to one renderer/style authority, keeps exactly one Nutshell banner with one centered silver star, preserves the “What is Naya Power” headline with a large dimensional power icon, upgrades every semantic layer with a distinct filled/faceted jewel icon, keeps body text large and consistent, keeps How to Apply / How to Use immediately above What’s In It For You, uses true gold Apply and silver Value, and preserves functionality/responsiveness/accessibility.
 
-Execution: 2026-09-16T16:35Z
+Execution: 2026-09-16T17:00Z
