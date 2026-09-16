@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v13
+# execution-proof-v14
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -33,11 +33,9 @@ jobs:
           s=path.read_text(encoding='utf-8')
           s=s.replace("LEARNING:'ADAPTIVE LEARNING'", "LEARNING:'LEARNING LESSON'")
           s=s.replace('"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"', '"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU"')
-          # Remove the constructor for visible numeric perspective circles regardless of harmless formatting differences.
-          before=s
-          s=re.sub(r"if\(!old\)\{[^{}]*perspectiveNo[^{}]*\}", "", s, count=1)
-          if s==before and re.search(r"no\.className=['\"]perspectiveNo['\"]", s):
-              raise SystemExit('FAIL: perspectiveNo constructor remains')
+          # Kill the number value at its only construction point. Keep the existing icon/dot and card structure intact.
+          s=re.sub(r"no\\.textContent\\s*=\\s*String\\(perspectiveOrder\\[key\\]\\|\\|['\"]['\"]\\s*\\);", "no.textContent='';", s, count=1)
+          # Defensive runtime cleanup removes any legacy markers already present in the DOM.
           inject="document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());"
           if inject not in s and 'function elevate(){' in s:
               s=s.replace('function elevate(){','function elevate(){'+inject,1)
@@ -60,7 +58,7 @@ jobs:
           if board_start<0: raise SystemExit('FAIL: canonical board() missing')
           board_end=s.find('function ',board_start+1); board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
-          if re.search(r"no\.className=['\"]perspectiveNo['\"]",s): raise SystemExit('FAIL: visible numeric marker constructor remains')
+          if re.search(r"no\.textContent\s*=\s*String\(perspectiveOrder\[key\]",s): raise SystemExit('FAIL: visible numeric text constructor remains')
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
           if 'WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"' in s: raise SystemExit('FAIL: legacy question-mark label remains')
           if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract missing')
