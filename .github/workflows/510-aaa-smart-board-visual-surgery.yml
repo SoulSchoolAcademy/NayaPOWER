@@ -1,50 +1,92 @@
-name: 510 AAA Smart Board Visual Surgery
+name: 510 Smart Board V10 Canonical Visual Authority
 on:
   push:
     branches: [main]
-    paths: ['2026 09 15 NayaNETHUB.html','.github/workflows/510-aaa-smart-board-visual-surgery.yml']
+    paths:
+      - '2026 09 15 NayaNETHUB.html'
+      - '.github/workflows/510-aaa-smart-board-visual-surgery.yml'
+      - '.naya/control-plane/SMART-BOARD-REFINEMENT-TRIGGER.md'
   workflow_dispatch:
-permissions: {contents: write}
+permissions:
+  contents: write
 jobs:
-  enforce-canonical-smart-board:
+  canonical-v10:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply final Smart Board runtime repair to every intelligent block
+        with:
+          fetch-depth: 0
+      - name: Restore protected V10 visual source and surgically repair DOM
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          p=Path('2026 09 15 NayaNETHUB.html')
-          s=p.read_text(encoding='utf-8')
-          s=s.replace("new MutationObserver(run).observe(document.body,{childList:true,subtree:true})","/* observer disabled */")
-          s=s.replace("let timer;const obs=new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body,{childList:true,subtree:true});","/* observer disabled */")
-          shim='''<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(){}observe(){}disconnect(){}takeRecords(){return[]}}window.MutationObserver=NayaStaticMutationObserver})();</script>'''
-          start=s.find('<script id="naya-static-runtime-observer-shim">')
-          if start>=0:
-              end=s.find('</script>',start)+9; s=s[:start]+s[end:]
-          s=s.replace('<head>','<head>\n'+shim,1)
-          start=s.find('<script id="naya-smart-board-finalizer">')
-          if start>=0:
-              end=s.find('</script>',start)+9; s=s[:start]+s[end:]
-          finalizer='''<script id="naya-smart-board-finalizer">(()=>{const A={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','ADAPTIVE LEARNING':'LEARNING LESSON'};const C={'HUMAN NOTE':['semantic-human','#ff2fa4','♥'],'CHILD NOTE':['semantic-child','#8b42ff','●'],'GRANDMA NOTE':['semantic-grandma','#4b5dff','◆'],'NAYA NOTE':['semantic-naya','#ff9a5a','✦'],'MACHINE NOTE':['semantic-machine','#26c875','⬡'],'LEARNING LESSON':['semantic-learning','#b8ee57','↗'],'WHAT IT MEANS':['semantic-meaning','#f1d75a','✧'],'HOW TO APPLY / HOW TO USE':['semantic-apply','#e8c766','→'],"WHAT'S IN IT FOR YOU":['semantic-value','#dfe6ee','✚']};const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];function iconize(x,t,c){let d=x.querySelector('.dot');if(!d){d=document.createElement('span');d.className='dot';const h=x.querySelector('.layerHead');if(h)h.prepend(d)}d.setAttribute('data-icon',c[2]);x.className='layer '+c[0];x.style.setProperty('--layer',c[1]);const h=x.querySelector('.layerHead b');if(h)h.textContent=t}function repairLayerList(l){l.style.display='flex';l.style.flexDirection='column';l.style.width='100%';const seen=new Set();[...l.children].forEach(x=>{const h=x.querySelector('.layerHead b');if(!h)return;let t=h.textContent.replace(/^\\s*\\d+\\s*[·.-]\\s*/,'').replace(/’/g,"'").trim().toUpperCase();t=A[t]||t;if(C[t]){iconize(x,t,C[t]);seen.add(t)}else x.remove()});if(!seen.has('HOW TO APPLY / HOW TO USE')){const x=document.createElement('div');x.className='layer semantic-apply';x.style.setProperty('--layer','#e8c766');x.innerHTML="<div class='layerHead'><span class='dot' data-icon='→'></span><b>HOW TO APPLY / HOW TO USE</b><span class='state'>ACTION</span></div><div class='layerBody'><strong>Turn understanding into responsible action.</strong> Check the evidence and take one concrete next step supported by what is known.</div>";l.append(x)}if(!seen.has("WHAT'S IN IT FOR YOU")){const x=document.createElement('div');x.className='layer semantic-value';x.style.setProperty('--layer','#dfe6ee');x.innerHTML="<div class='layerHead'><span class='dot' data-icon='✚'></span><b>WHAT'S IN IT FOR YOU</b><span class='state'>VALUE</span></div><div class='layerBody'><strong>Know what this changes for you.</strong> Use the insight to make a clearer decision, save effort, or take a useful next step.</div>";l.append(x)}const map=new Map([...l.children].map(x=>[x.querySelector('.layerHead b')?.textContent,x]));ORDER.forEach(k=>{const x=map.get(k);if(x)l.append(x)});l.querySelectorAll(':scope>.layer').forEach(x=>{x.style.width='100%';x.style.gridColumn='1 / -1';x.style.float='none'})}function repairBlock(b){b.querySelectorAll('h1,h2,h3,h4,h5,.layerHead b').forEach(h=>h.textContent=h.textContent.replace(/^\\s*SMART\\s*NOTE\\s*\\d+\\s*[:·—-]?\\s*/i,'').replace(/^\\s*\\d+\\s*[·.-]\\s*/,'').trim());b.querySelectorAll('.truth,.naya509-block-kicker,.naya509-flow-marker,.naya509-living-spine,.naya509-block-context,.naya509-source-row,.naya509-next-status,.naya509-layer-tag').forEach(x=>x.remove());const n=b.querySelector('.nutshell');if(n){n.classList.add('semantic-nutshell');n.style.setProperty('--layer','#f7f7fa');let i=n.querySelector('.nutshellIcon');if(!i){i=document.createElement('span');i.className='nutshellIcon';i.setAttribute('data-icon','◉');n.prepend(i)}}const l=b.querySelector('.layers');if(l)repairLayerList(l)}function f(){let b=document.querySelector('.naya509-unified-board');const nav=document.querySelector('.feedNav'),head=document.querySelector('.feedHead'),blocks=document.querySelector('.blocks');if(!b&&nav&&blocks){b=document.createElement('section');b.className='naya509-unified-board naya-smart-board-v2 naya509-board';nav.parentNode.insertBefore(b,nav);b.append(nav);if(head)b.append(head);b.append(blocks)}if(!b)return;b.classList.add('naya-smart-board-v2','naya509-board');b.querySelectorAll('.block').forEach(repairBlock);const styleId='naya-smart-board-contract-css';if(!document.getElementById(styleId)){const st=document.createElement('style');st.id=styleId;st.textContent='.naya-smart-board-v2 .blocks{display:block!important}.naya-smart-board-v2 .block{width:100%!important;display:block!important}.naya-smart-board-v2 .layers{display:flex!important;flex-direction:column!important;width:100%!important}.naya-smart-board-v2 .layer{width:100%!important;display:block!important;float:none!important;grid-column:1 / -1!important}.naya-smart-board-v2 .layerHead{min-height:58px}.naya-smart-board-v2 .dot{width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:12px!important;display:grid!important;place-items:center!important;border:2px solid color-mix(in srgb,var(--layer) 62%,#fff 12%)!important;background:radial-gradient(circle at 32% 25%,#fff7,color-mix(in srgb,var(--layer) 30%,#09090e) 38%,#07070b 78%)!important;color:#fff!important;box-shadow:inset 0 1px #fff9,0 7px 18px #000b,0 0 18px color-mix(in srgb,var(--layer) 28%,transparent)!important;font-size:15px!important}.naya-smart-board-v2 .dot:before{content:attr(data-icon)}.naya-smart-board-v2 .semantic-nutshell{position:relative;border:2px solid #fff8!important;box-shadow:inset 0 1px #fff8,0 18px 38px #000b,0 0 22px #fff2!important;padding-left:70px!important}.naya-smart-board-v2 .nutshellIcon{position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:radial-gradient(circle at 30% 25%,#fff,#cfd2dc 38%,#5d606c 100%);border:2px solid #fff;box-shadow:inset 0 1px #fff,0 7px 18px #000b,0 0 20px #fff6;font-size:14px}.naya-smart-board-v2 .semantic-human{--layer:#ff2fa4}.naya-smart-board-v2 .semantic-child{--layer:#8b42ff}.naya-smart-board-v2 .semantic-grandma{--layer:#4b5dff}.naya-smart-board-v2 .semantic-naya{--layer:#ff9a5a}.naya-smart-board-v2 .semantic-machine{--layer:#26c875}.naya-smart-board-v2 .semantic-learning{--layer:#b8ee57}.naya-smart-board-v2 .semantic-meaning{--layer:#f1d75a}.naya-smart-board-v2 .semantic-apply{--layer:#e8c766}.naya-smart-board-v2 .semantic-value{--layer:#dfe6ee}@media(max-width:820px){.naya-smart-board-v2 .layerHead{min-height:54px}.naya-smart-board-v2 .dot{width:34px!important;height:34px!important;flex-basis:34px!important;font-size:13px!important}.naya-smart-board-v2 .semantic-nutshell{padding-left:62px!important}.naya-smart-board-v2 .nutshellIcon{left:16px;top:16px;width:34px;height:34px}}';document.head.append(st)}b.querySelectorAll('.layer').forEach(x=>{x.style.width='100%';x.style.gridColumn='1 / -1';x.style.float='none'})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',f);else f();setTimeout(f,500);setTimeout(f,1500)})();</script>'''
-          s=s.replace('</body>',finalizer+'\n</body>',1)
+          import re, subprocess
+          p=Path('2026 09 15 NayaNETHUB.html'); s=p.read_text(encoding='utf-8')
+          base=subprocess.check_output(['git','show','60c70db83c8ffdf954b73c45821fd53a3eeebbf7:2026 09 15 NayaNETHUB.html'],text=True)
+          def grab(src,tag,id):
+              m=re.search(r'<'+tag+r'\s+id=["\']'+re.escape(id)+r'["\'][^>]*>.*?</'+tag+r'>',src,re.S|re.I)
+              if not m: raise SystemExit('Protected V10 '+tag+' block missing')
+              return m.group(0)
+          v10style=grab(base,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
+          v10script=grab(base,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
+          if not all(x in v10script for x in ['class="core"','class="facet"','class="shade"','class="edge"']): raise SystemExit('Protected V10 faceted jewel definitions missing')
+          # Remove all previous V10/finalizer variants and the legacy visual overrides that caused the stray Nutshell icon.
+          s=re.sub(r'<style\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</style>','',s,flags=re.S|re.I)
+          s=re.sub(r'<script\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
+          for id in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-aaa-smart-board-visual-v1-script','naya-smart-board-living-intelligence-v2-script','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
+              for tag in ['style','script']:
+                  s=re.sub(r'<'+tag+r'\s+id=["\']'+re.escape(id)+r'["\'][^>]*>.*?</'+tag+r'>','',s,flags=re.S|re.I)
+          s=s.replace('</head>',v10style+'\n</head>',1)
+          surgical='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+          .elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
+          .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important;min-height:116px!important;padding:14px 30px!important}
+          .elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}
+          .elite-board:first-child .nutshell p{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 32px 33px!important}
+          .elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board:first-child .glyph{flex:0 0 116px!important}
+          .elite-board .layerHead{gap:24px!important}.elite-board .layerHead b{font-size:14px!important}.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 31px 33px!important}.elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}.elite-board .dot .v10-icon{width:64px!important;height:64px!important}
+          </style>'''
+          s=s.replace('</head>',surgical+'\n</head>',1)
+          fix='''<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">(()=>{
+          const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
+          const norm=s=>String(s||'').replace(/\\s+/g,' ').trim().toUpperCase().replace(/^\\d+\\s*[·.)-]\\s*/,'');
+          const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
+          const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
+          function cleanNutshell(n){if(!n)return;const p=q('p',n),b=q('b',n);[...n.children].forEach(x=>{if(x!==b&&x!==p)x.remove()});if(b){b.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');b.append(star,document.createTextNode('IN A NUTSHELL'));}}
+          function run(){const boards=qq('.elite-board');boards.forEach((board,bi)=>{if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}const layers=q('.layers',board);if(!layers)return;const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=ALIAS[norm(h.textContent)]||norm(h.textContent);if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(k=>{if(map.has(k))layers.appendChild(map.get(k))});});qq('.status').forEach(x=>x.remove());const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
+          if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>'''
+          s=s.replace('</body>',v10script+'\n'+fix+'\n</body>',1)
+          for x in ['NAYA-SMART-BOARD-ELITE-REFINEMENT-V10','NAYA-SMART-BOARD-V10-SURGICAL-FINAL','class="core"','class="facet"','class="shade"','class="edge"','human:','child:','grandma:','naya:','machine:','learning:','meaning:','apply:','value:','What is Naya Power']:
+              if x not in s: raise SystemExit('Missing required V10 source: '+x)
+          for x in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
+              if x in s: raise SystemExit('Legacy visual override survived: '+x)
           p.write_text(s,encoding='utf-8')
+          print('V10_CANONICAL_RESTORED')
           PY
-      - name: Prove canonical Smart Board contract
+      - name: Verify V10 canonical source
         shell: bash
         run: |
           set -euo pipefail
-          grep -q 'naya-smart-board-finalizer' '2026 09 15 NayaNETHUB.html'
-          grep -q 'HOW TO APPLY / HOW TO USE' '2026 09 15 NayaNETHUB.html'
-          grep -q "WHAT'S IN IT FOR YOU" '2026 09 15 NayaNETHUB.html'
-          grep -q 'semantic-nutshell' '2026 09 15 NayaNETHUB.html'
-          grep -q 'querySelectorAll(.block)' '2026 09 15 NayaNETHUB.html' || grep -q 'querySelectorAll(\x27.block\x27)' '2026 09 15 NayaNETHUB.html' || true
-      - name: Commit canonical runtime repair
+          f='2026 09 15 NayaNETHUB.html'
+          grep -q 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' "$f"
+          grep -q 'NAYA-SMART-BOARD-V10-SURGICAL-FINAL' "$f"
+          grep -q 'class="core"' "$f"; grep -q 'class="facet"' "$f"; grep -q 'class="shade"' "$f"; grep -q 'class="edge"' "$f"
+          ! grep -q 'naya-aaa-smart-board-visual-v1' "$f"
+          ! grep -q 'naya-smart-board-living-intelligence-v2' "$f"
+          ! grep -q 'naya-smart-board-finalizer' "$f"
+          ! grep -q 'naya-elite-interface-refinement-runtime' "$f"
+          grep -q 'What is Naya Power' "$f"
+          grep -q 'HOW TO APPLY / HOW TO USE' "$f"
+          grep -q "WHAT'S IN IT FOR YOU" "$f"
+          echo 'V10_CANONICAL_VERIFICATION=PASS'
+      - name: Commit canonical artifact
         shell: bash
         run: |
           set -euo pipefail
-          if git diff --quiet -- '2026 09 15 NayaNETHUB.html'; then exit 0; fi
-          git config user.name 'github-actions[bot]'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add '2026 09 15 NayaNETHUB.html'; git commit -m 'Fix Smart Board renderer across every intelligence block'; git push origin HEAD:main
+          git config user.name 'NayaPOWER Automation'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 1; fi
+          git commit -m 'Restore exact V10 jewel icons and remove legacy visual overrides'
+          git push origin HEAD:main
