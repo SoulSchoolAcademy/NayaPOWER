@@ -14,6 +14,6 @@ Final visual contract:
 - Preserve content, functionality, navigation, responsiveness, accessibility.
 - Remove all legacy Smart Board style/render/presentation scripts and temporary V11/surgical artifacts.
 
-Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 style + one V10 script, exact `core/facet/shade/edge` definitions, static canonical labels, Apply layer, headline, and no legacy Smart Board renderer markers.
+Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 style + one V10 script, exact `core/facet/shade/edge` definitions, static canonical labels, Apply layer, headline, actual date/time render assignment, and no legacy Smart Board renderer markers.
 
-Execution nonce: 2026-09-16T19:13:00Z
+Execution nonce: 2026-09-16T19:14:00Z
