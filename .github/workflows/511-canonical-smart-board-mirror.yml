@@ -1,0 +1,79 @@
+name: 511 Canonical Smart Board Mirror
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2026 09 15 NayaNETHUB.html'
+      - '.github/workflows/511-canonical-smart-board-mirror.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  mirror:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mirror every board to the canonical Naya Power structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('2026 09 15 NayaNETHUB.html')
+          s = p.read_text(encoding='utf-8')
+          pattern = re.compile(r"function block\(b,i\)\{.*?\nfunction render\(\)", re.S)
+          replacement = r'''function block(b,i){const id='b'+i+'-'+b.title.replace(/\W+/g,'-').slice(0,30);const fav=!!state.favorites[id],saved=!!state.saved[id],like=!!state.likes[id],love=!!state.loves[id],rating=state.ratings[id]||0;const child=b.summary;const grandma=(b.tags||[]).join(' · ')+' — this deserves attention because it changes what can be understood or done next.';return `<article class="block" id="${id}" style="--tone:${b.tone}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">${b.glyph}</div><div><h3>${esc(b.title)}</h3><div class="meta"><span>${esc(b.time)}</span><span>·</span><span>${esc(b.type)}</span><span>·</span><span>${current==='personal'?'PRIVATE INTELLIGENCE':'COLLECTIVE VIEW'}</span></div></div></div><span class="truth">SOURCE SEPARATED</span></div><div class="nutshell"><b>IN A NUTSHELL</b><p>${esc(b.summary)}</p></div><div class="layers">${layer('HUMAN NOTE','var(--purple)','HUMAN INPUT',b.human)}${layer('CHILD NOTE','var(--indigo)','SIMPLIFIED',child)}${layer('GRANDMA NOTE','var(--blue)','WHY NOTICE?',grandma)}${layer('NAYA NOTE','var(--green)','INTERPRETATION',b.naya)}${layer('MACHINE NOTE','var(--ink)','EVIDENCE BOUNDARY',b.machine)}${layer('LEARNING LESSON','var(--lime)','LEARNING',b.learning)}${layer('WHAT IT MEANS','var(--yellow)','SIGNIFICANCE',b.meaning)}${layer("WHAT'S IN IT FOR YOU",'var(--gold)','HUMAN VALUE',b.value)}</div><div class="actions"><button class="action ${fav?'on':''}" data-act="favorite" data-id="${id}">★ ${fav?'FAVORITED':'FAVORITE'}</button><button class="action ${saved?'on':''}" data-act="save" data-id="${id}">🔖 ${saved?'SAVED':'SAVE'}</button><button class="action like ${like?'on':''}" data-act="like" data-id="${id}">👍 LIKE</button><button class="action love ${love?'on':''}" data-act="love" data-id="${id}">♥ LOVE</button><button class="action" data-act="rate" data-id="${id}">★ RANK ${rating?rating+'/5':''}</button><button class="action" data-act="share" data-id="${id}">＋ SHARE</button></div><div class="blockFoot"><span>ONE INTELLIGENCE · MANY VIEWS · ONE IDENTITY</span><span>TRUST: ${current==='personal'?'PRIVATE':'SOURCE / INTERPRETATION SEPARATED'}</span></div></div></article>`}
+function render()'''
+          s2, count = pattern.subn(replacement, s, count=1)
+          if count != 1:
+              raise SystemExit('CANONICAL_BLOCK_RENDERER_NOT_FOUND')
+          s = s2
+
+          # Remove older structural scripts that can re-number or inject legacy layers.
+          s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>\s*", "", s, flags=re.S)
+          s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->.*?</script>\s*", "", s, flags=re.S)
+          s = re.sub(r"<!-- NAYA-AAA-SMART-BOARD-VISUAL-V1 -->.*?</script>\s*", "", s, flags=re.S)
+
+          # Final runtime guard: labels only, no visible numeric prefixes, same order on every board.
+          guard = r'''<script id="naya-canonical-board-template-guard">(()=>{
+          const order=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"];
+          const clean=s=>String(s||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/\s+/g,' ').trim().toUpperCase();
+          const aliases={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','ADAPTER LEARNING':'LEARNING LESSON','ADAPTIVE LEARNING':'LEARNING LESSON','MACHINE / PROVENANCE':'MACHINE NOTE','WHAT’S IN IT FOR YOU':"WHAT'S IN IT FOR YOU"};
+          function fix(){document.querySelectorAll('.layers').forEach(layers=>{const items=[...layers.querySelectorAll(':scope > .layer')];items.forEach(x=>{const h=x.querySelector('.layerHead b');if(h){const k=clean(h.textContent);h.textContent=aliases[k]||k;}});const map={};[...layers.querySelectorAll(':scope > .layer')].forEach(x=>{const h=x.querySelector('.layerHead b');if(h)map[clean(h.textContent)]=x});order.forEach(k=>{if(map[k])layers.appendChild(map[k])});});}
+          fix();
+          })();</script>'''
+          s = s.replace('</body>', guard+'\n</body>')
+          p.write_text(s, encoding='utf-8')
+          PY
+      - name: Verify canonical structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          f='2026 09 15 NayaNETHUB.html'
+          for x in 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' 'WHAT IT MEANS' "WHAT'S IN IT FOR YOU"; do grep -q "$x" "$f"; done
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          m=re.search(r'function block\(b,i\)\{.*?\nfunction render\(\)',s,re.S)
+          if not m: raise SystemExit('CANONICAL_BLOCK_RENDERER_MISSING')
+          r=m.group(0)
+          for x in ['02 ·','03 ·','04 ·','05 ·','06 ·','07 ·','08 ·','09 ·','CHILD VIEW','GRABBER VIEW','ADAPTER LEARNING']:
+              if x in r: raise SystemExit('LEGACY_PREFIX_OR_LABEL_IN_RENDERER:'+x)
+          PY
+      - name: Commit canonical source
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          if git diff --cached --quiet; then echo 'NO_CHANGE'; exit 0; fi
+          git commit -m 'Mirror all Smart Note boards to canonical Naya Power structure'
+          git push
