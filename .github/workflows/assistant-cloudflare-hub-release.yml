@@ -103,38 +103,38 @@ jobs:
             await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 15000 });
             await page.waitForTimeout(1500);
             const result = await page.evaluate(({ expected, colors }) => {
-              const blocks = [...document.querySelectorAll('.naya-smart-board-v2')];
+              const boards = [...document.querySelectorAll('.naya-smart-board-v2.naya509-board')];
               const failures = [];
-              if (!blocks.length) failures.push('no naya-smart-board-v2 blocks rendered');
-              for (const [i, block] of blocks.entries()) {
-                const text = block.innerText || '';
-                if (/SMART NOTE\s*\d/i.test(text)) failures.push(`block ${i+1}: visible Smart Note numbering`);
-                if (/SOURCE SEPARATED/i.test(text)) failures.push(`block ${i+1}: visible SOURCE SEPARATED`);
-                if (/\b01\s*[·.-]\s*IN A NUTSHELL/i.test(text)) failures.push(`block ${i+1}: visible nutshell numbering`);
-                const layers = block.querySelector('.layers');
-                if (!layers) { failures.push(`block ${i+1}: missing layers container`); continue; }
+              if (!boards.length) failures.push('no canonical Smart Board rendered');
+              for (const [i, board] of boards.entries()) {
+                const text = board.innerText || '';
+                if (/SMART NOTE\s*\d/i.test(text)) failures.push(`board ${i+1}: visible Smart Note numbering`);
+                if (/SOURCE SEPARATED/i.test(text)) failures.push(`board ${i+1}: visible SOURCE SEPARATED`);
+                if (/\b01\s*[·.-]\s*IN A NUTSHELL/i.test(text)) failures.push(`board ${i+1}: visible nutshell numbering`);
+                const layers = board.querySelector('.layers');
+                if (!layers) { failures.push(`board ${i+1}: missing layers container`); continue; }
                 const computed = getComputedStyle(layers);
-                if (computed.display !== 'flex' || computed.flexDirection !== 'column') failures.push(`block ${i+1}: layers are not a vertical flex column`);
+                if (computed.display !== 'flex' || computed.flexDirection !== 'column') failures.push(`board ${i+1}: layers are not a vertical flex column`);
                 const items = [...layers.children].filter(x => x.classList.contains('layer'));
-                if (items.length !== expected.length) failures.push(`block ${i+1}: expected ${expected.length} layers, got ${items.length}`);
+                if (items.length !== expected.length) failures.push(`board ${i+1}: expected ${expected.length} layers, got ${items.length}`);
                 const labels = items.map(x => x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() || '');
-                if (JSON.stringify(labels) !== JSON.stringify(expected)) failures.push(`block ${i+1}: wrong layer order: ${labels.join(' | ')}`);
+                if (JSON.stringify(labels) !== JSON.stringify(expected)) failures.push(`board ${i+1}: wrong layer order: ${labels.join(' | ')}`);
                 const layerWidth = layers.getBoundingClientRect().width;
                 for (const item of items) {
                   const name = item.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() || '';
-                  if (Math.abs(item.getBoundingClientRect().width - layerWidth) > 4) failures.push(`block ${i+1}: ${name} is not full width`);
-                  if (!item.querySelector('.dot')?.getAttribute('data-icon')) failures.push(`block ${i+1}: ${name} missing semantic icon`);
+                  if (Math.abs(item.getBoundingClientRect().width - layerWidth) > 4) failures.push(`board ${i+1}: ${name} is not full width`);
+                  if (!item.querySelector('.dot')?.getAttribute('data-icon')) failures.push(`board ${i+1}: ${name} missing semantic icon`);
                   const tone = getComputedStyle(item).getPropertyValue('--layer').trim().toLowerCase();
-                  if (colors[name] && tone !== colors[name]) failures.push(`block ${i+1}: ${name} wrong semantic color ${tone}`);
+                  if (colors[name] && tone !== colors[name]) failures.push(`board ${i+1}: ${name} wrong semantic color ${tone}`);
                 }
-                if (!block.querySelector('.nutshell')) failures.push(`block ${i+1}: missing In a Nutshell surface`);
+                if (!board.querySelector('.nutshell')) failures.push(`board ${i+1}: missing In a Nutshell surface`);
                 const apply = items.find(x => x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() === 'HOW TO APPLY / HOW TO USE');
-                if (!apply || !/concrete next step|responsible action/i.test(apply.innerText)) failures.push(`block ${i+1}: How to Apply layer missing actionable content`);
+                if (!apply || !/concrete next step|responsible action/i.test(apply.innerText)) failures.push(`board ${i+1}: How to Apply layer missing actionable content`);
               }
-              return { failures, blockCount: blocks.length };
+              return { failures, boardCount: boards.length };
             }, { expected, colors });
             if (result.failures.length) throw new Error(`${label}: ${result.failures.join('; ')}`);
-            console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${result.blockCount} Smart Board blocks`);
+            console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${result.boardCount} Smart Board(s)`);
           }
 
           const browser = await chromium.launch({
