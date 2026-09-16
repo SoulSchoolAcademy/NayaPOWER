@@ -1,4 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
+# execution-proof-v2
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -28,10 +29,6 @@ jobs:
 
           path = Path('2026 09 15 NayaNETHUB.html')
           s = path.read_text(encoding='utf-8')
-
-          # The canonical renderer already exists and consumes parseNotes(source)
-          # objects with note.sections. The live render() path was incorrectly
-          # using the legacy block(b,i) renderer. Replace only that dispatch.
           render_re = re.compile(r'function render\(\)\{.*?\}(?=function modal\()', re.S)
           m = render_re.search(s)
           if not m:
@@ -40,16 +37,11 @@ jobs:
           canonical_render = '''function render(){const notes=parseNotes(source);const blocksEl=document.getElementById('blocks');if(!blocksEl)return;blocksEl.innerHTML=notes.map((n,i)=>board(n,i)).join('');const visibleCount=notes.length;const feedCount=document.getElementById('feedCount');if(feedCount)feedCount.textContent=visibleCount+' INTELLIGENT '+(visibleCount===1?'BLOCK':'BLOCKS');const feedTitle=document.getElementById('feedTitle');if(feedTitle)feedTitle.textContent='Smart Notes';const feedDesc=document.getElementById('feedDesc');if(feedDesc)feedDesc.textContent='Canonical Smart Note content rendered from the source of truth.';const nayaDoing=document.getElementById('nayaDoing');if(nayaDoing)nayaDoing.textContent='Making the important intelligence easier to see, understand, and use.';const topTitle=document.getElementById('topTitle');if(topTitle)topTitle.textContent='Smart Notes'}'''
           s = s[:m.start()] + canonical_render + s[m.end():]
 
-          # Remove the legacy renderer entirely. No competing render path remains.
           block_re = re.compile(r'function block\(b,i\)\{.*?\}(?=function render\(\))', re.S)
           s2, removed = block_re.subn('', s, count=1)
-          if removed != 1:
-              # It may already be gone on a rerun; that is acceptable.
-              if 'function block(b,i)' in s:
-                  raise SystemExit('FATAL: legacy block() was found but could not be removed')
-              s2 = s
+          if removed != 1 and 'function block(b,i)' in s:
+              raise SystemExit('FATAL: legacy block() was found but could not be removed')
           s = s2
-
           path.write_text(s, encoding='utf-8')
           print('CANONICAL_RENDER_WIRED=PASS')
           print('LEGACY_BLOCK_REMOVED=' + ('PASS' if 'function block(b,i)' not in s else 'FAIL'))
@@ -62,38 +54,15 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
           import re
-
           s = Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
-
-          required = [
-              'IN A NUTSHELL',
-              'HUMAN NOTE',
-              'CHILD NOTE',
-              'GRANDMA NOTE',
-              'NAYA NOTE',
-              'MACHINE NOTE',
-              'LEARNING LESSON',
-              'WHAT IT MEANS',
-              'HOW TO APPLY',
-              "WHAT'S IN IT FOR YOU",
-          ]
-
-          if 'function block(b,i)' in s or re.search(r'\.map\(block\)', s):
-              raise SystemExit('FAIL: legacy block renderer remains live')
-          if not re.search(r'function render\(\)\{.*?notes\.map\(\(n,i\)=>board\(n,i\)\)', s, re.S):
-              raise SystemExit('FAIL: render() is not wired to canonical board(notes)')
-          if '01 · IN A NUTSHELL' in s or '02 · HUMAN NOTE' in s or '03 · CHILD VIEW' in s or '04 · GRABBER VIEW' in s or '06 · ADAPTER LEARNING' in s:
-              raise SystemExit('FAIL: visible legacy numbered/legacy labels remain')
-          missing = [x for x in required if x not in s]
-          if missing:
-              raise SystemExit('FAIL: missing canonical semantic labels: ' + ', '.join(missing))
-
-          # The source parser is required to produce the nine canonical Smart Notes.
-          if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)', s):
-              raise SystemExit('FAIL: nine-note source contract not present')
-          if not re.search(r'function board\(note,idx\).*?Object\.keys\(note\.sections\)', s, re.S):
-              raise SystemExit('FAIL: canonical board() section contract missing')
-
+          required = ['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY',"WHAT'S IN IT FOR YOU"]
+          if 'function block(b,i)' in s or re.search(r'\.map\(block\)', s): raise SystemExit('FAIL: legacy block renderer remains live')
+          if not re.search(r'function render\(\)\{.*?notes\.map\(\(n,i\)=>board\(n,i\)\)', s, re.S): raise SystemExit('FAIL: render() is not wired to canonical board(notes)')
+          if any(x in s for x in ['01 · IN A NUTSHELL','02 · HUMAN NOTE','03 · CHILD VIEW','04 · GRABBER VIEW','06 · ADAPTER LEARNING']): raise SystemExit('FAIL: visible legacy numbered/legacy labels remain')
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('FAIL: missing canonical semantic labels: '+', '.join(missing))
+          if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)', s): raise SystemExit('FAIL: nine-note source contract not present')
+          if not re.search(r'function board\(note,idx\).*?Object\.keys\(note\.sections\)', s, re.S): raise SystemExit('FAIL: canonical board() section contract missing')
           print('CANONICAL_BOARD_RENDER=PASS')
           print('CANONICAL_LABEL_SET=PASS')
           print('CANONICAL_NINE_NOTE_CONTRACT=PASS')
@@ -102,8 +71,6 @@ jobs:
 
       - name: Commit canonical source repair
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           if git diff --quiet -- '2026 09 15 NayaNETHUB.html'; then
