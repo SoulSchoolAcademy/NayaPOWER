@@ -17,4 +17,4 @@ Final visual contract:
 
 Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 style + one V10 script, exact `core/facet/shade/edge` definitions, exactly one surgical style + one surgical script, and no legacy override IDs.
 
-Execution nonce: 2026-09-16T18:49:30Z
+Execution nonce: 2026-09-16T18:51:30Z
