@@ -57,30 +57,34 @@ def test_runtime_kernel_rejects_missing_authority_id():
     assert receipt["decision"] == "ESCALATE", receipt
 
 
-def _claimed(path: Path):
+def _claimed(path: Path, *, reset: bool = False):
     ec.STATE = path
+    if reset and path.exists():
+        path.unlink()
     ec.transition("CLAIMED", claim_id="CL-BOUNDARY", block_id="B-BOUNDARY", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="head-1")
 
 
 def test_tool_gateway_requires_registry_authority_and_claim_binding():
     original_state = ec.STATE
-    with tempfile.TemporaryDirectory() as tmp:
-        state_path = Path(tmp) / "EXECUTION-STATE.json"
-        _claimed(state_path)
-        action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
-        result = gateway.authorize(action)
-        assert result["status"] == "AUTHORIZED", result
-        assert result["authority_id"] == action["authority_id"]
-        assert result["execution_status"] == "EXECUTING"
-        _claimed(state_path)
-        forged = dict(action, authority_id="FABRICATED-AUTHORITY")
-        try:
-            gateway.authorize(forged)
-        except AssertionError as exc:
-            assert "unknown authority_id" in str(exc)
-        else:
-            raise AssertionError("tool gateway accepted fabricated authority")
-    ec.STATE = original_state
+    try:
+        with tempfile.TemporaryDirectory() as tmp:
+            state_path = Path(tmp) / "EXECUTION-STATE.json"
+            _claimed(state_path)
+            action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
+            result = gateway.authorize(action)
+            assert result["status"] == "AUTHORIZED", result
+            assert result["authority_id"] == action["authority_id"]
+            assert result["execution_status"] == "EXECUTING"
+            _claimed(state_path, reset=True)
+            forged = dict(action, authority_id="FABRICATED-AUTHORITY")
+            try:
+                gateway.authorize(forged)
+            except AssertionError as exc:
+                assert "unknown authority_id" in str(exc)
+            else:
+                raise AssertionError("tool gateway accepted fabricated authority")
+    finally:
+        ec.STATE = original_state
 
 
 if __name__ == "__main__":
