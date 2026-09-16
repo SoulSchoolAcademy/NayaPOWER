@@ -11,14 +11,23 @@ from __future__ import annotations
 import argparse
 from datetime import datetime, timezone
 from pathlib import Path
+import sys
+import tempfile
 from typing import Any
 
+ROOT = Path(__file__).resolve().parents[2]
+RUNTIME_DIR = ROOT / ".naya" / "runtime"
+GOVERNANCE_DIR = ROOT / ".naya" / "governance"
+for path in (RUNTIME_DIR, GOVERNANCE_DIR, ROOT):
+    if str(path) not in sys.path:
+        sys.path.insert(0, str(path))
+
+import execution_controller as ec
 from execution_controller import load, transition
 from risk_engine import classify
 from governance_kernel import DecisionObject, Epistemic, Risk, VerificationPlan, evaluate, load_authority_registry, resolve_authority
 
-ROOT = Path(__file__).resolve().parents[2]
-REGISTRY_PATH = ROOT / ".naya" / "governance" / "authority-registry.json"
+REGISTRY_PATH = GOVERNANCE_DIR / "authority-registry.json"
 REQUIRED_ACTION = ("action_id", "action_type", "target", "purpose", "risk", "protected_baseline", "observation_target", "evidence_requirement", "verification_requirement", "authority_id", "actor_id", "scope")
 ALLOWED_RISK = {"L1", "L2", "L3"}
 
@@ -55,14 +64,12 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
     except RuntimeError as exc:
         raise AssertionError(str(exc)) from exc
     decision = DecisionObject(
-        decision_id=f"tool:{action['action_id']}", mission=f"execute governed tool action {action['action_id']}", actor_id=authority.principal_id,
+        decision_id=f"tool:{action['action_id']}", mission=f"execute governed tool action {action['action_id']", actor_id=authority.principal_id,
         action=action["action_type"], purpose=authority.purpose, scope=authority.scope,
         current_truth=f"CLAIMED execution block {state['block_id']}", gap=str(action["purpose"]),
-        evidence=tuple(str(x) for x in action["evidence_requirement"]) or ("claimed execution context",),
-        epistemic=frozenset({Epistemic.OBSERVED}), consequence=f"tool action target={action['target']}", reversible=True,
-        risk=_risk_object(declared), alternatives=("do_not_execute",), expected_value="bounded tool execution",
-        required_permission=action["action_type"],
-        verification=VerificationPlan(observation=str(action["observation_target"]), success_criteria="tool result satisfies verification requirement", stop_conditions=("authority revoked or expired", "scope mismatch", "verification failure")),
+        evidence=tuple(str(x) for x in action["evidence_requirement"]) or ("claimed execution context",), epistemic=frozenset({Epistemic.OBSERVED}),
+        consequence=f"tool action target={action['target']}", reversible=True, risk=_risk_object(declared), alternatives=("do_not_execute",), expected_value="bounded tool execution",
+        required_permission=action["action_type"], verification=VerificationPlan(observation=str(action["observation_target"]), success_criteria="tool result satisfies verification requirement", stop_conditions=("authority revoked or expired", "scope mismatch", "verification failure")),
         necessary_power=frozenset({action["action_type"]}), requested_power=frozenset({action["action_type"]}),
     )
     result = evaluate(decision, authority, now=datetime.now(timezone.utc).isoformat())
@@ -73,30 +80,28 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
 
 
 def self_test() -> int:
-    from execution_controller import STATE
-    original = STATE.read_text(encoding="utf-8") if STATE.exists() else None
+    original_state = ec.STATE
     try:
-        if STATE.exists(): STATE.unlink()
-        transition("CLAIMED", claim_id="CL-TEST", block_id="B-TEST", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="test-head")
-        action = {"action_id": "ACT-TEST-001", "action_type": "repo_write", "target": "docs/Naya", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "test-head", "observation_target": "changed file state", "evidence_requirement": ["commit_sha"], "verification_requirement": ["runtime_or_ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
-        stale = dict(action, protected_baseline="stale-head")
-        try: authorize(stale)
-        except AssertionError as exc: assert "protected baseline" in str(exc)
-        else: raise AssertionError("gateway accepted a stale protected baseline")
-        result = authorize(action)
-        assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["authority_id"] == action["authority_id"]
-        transition("CLAIMED", claim_id="CL-TEST-2", block_id="B-TEST-2", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="test-head")
-        forged = dict(action, authority_id="FABRICATED-AUTHORITY")
-        try: authorize(forged)
-        except AssertionError as exc: assert "unknown authority_id" in str(exc)
-        else: raise AssertionError("gateway accepted fabricated authority")
+        with tempfile.TemporaryDirectory() as tmp:
+            ec.STATE = Path(tmp) / "EXECUTION-STATE.json"
+            transition("CLAIMED", claim_id="CL-TEST", block_id="B-TEST", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="test-head")
+            action = {"action_id": "ACT-TEST-001", "action_type": "repo_write", "target": "docs/Naya", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "test-head", "observation_target": "changed file state", "evidence_requirement": ["commit_sha"], "verification_requirement": ["runtime_or_ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
+            stale = dict(action, protected_baseline="stale-head")
+            try: authorize(stale)
+            except AssertionError as exc: assert "protected baseline" in str(exc)
+            else: raise AssertionError("gateway accepted a stale protected baseline")
+            result = authorize(action)
+            assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["authority_id"] == action["authority_id"]
+            ec.STATE = Path(tmp) / "EXECUTION-STATE-2.json"
+            transition("CLAIMED", claim_id="CL-TEST-2", block_id="B-TEST-2", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="test-head")
+            forged = dict(action, authority_id="FABRICATED-AUTHORITY")
+            try: authorize(forged)
+            except AssertionError as exc: assert "unknown authority_id" in str(exc)
+            else: raise AssertionError("gateway accepted fabricated authority")
         print("PASS — model/tool gateway canonical authority self-test GREEN")
         return 0
     finally:
-        if original is None:
-            if STATE.exists(): STATE.unlink()
-        else:
-            STATE.write_text(original, encoding="utf-8")
+        ec.STATE = original_state
 
 
 if __name__ == "__main__":
