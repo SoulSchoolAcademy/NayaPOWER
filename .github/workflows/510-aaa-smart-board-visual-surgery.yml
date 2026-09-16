@@ -24,14 +24,12 @@ jobs:
           from pathlib import Path
           import re
           p=Path('2026 09 15 NayaNETHUB.html'); s=p.read_text(encoding='utf-8')
-          # Preserve the existing V10 jewel definitions exactly. Only replace our prior surgical correction.
           def remove(src,tag,marker):
-              pat=r'<'+tag+r'\\b[^>]*'+re.escape(marker)+r'[^>]*>.*?</'+tag+r'>'
+              pat=r'<'+tag+r'\b[^>]*'+re.escape(marker)+r'[^>]*>.*?</'+tag+r'>'
               return re.sub(pat,'',src,flags=re.S|re.I)
           s=remove(s,'style','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
           s=remove(s,'script','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
           css='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
-          /* FINAL CONGRUENT GEOMETRY — Nutshell is the master measurement. */
           .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;min-height:116px!important;padding:14px 30px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important}
           .elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;margin:0!important}
           .elite-board:first-child .nutshell p,.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important}
@@ -52,11 +50,10 @@ jobs:
           function run(){const boards=qq('#blocks > .block');boards.forEach((b,i)=>{b.classList.add('elite-board','naya-smart-board-v10');const h=q('h3',b);if(h&&i===0)h.textContent='What is Naya Power';const g=q('.glyph',b);if(g){const svg=q('.v10-icon',g);if(svg)g.replaceChildren(svg)}const n=q('.nutshell',b);if(n){const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}const layers=q('.layers',b);if(layers){const m=new Map();qq(':scope > .layer',layers).forEach(x=>{const h=q('.layerHead b',x);if(!h){x.remove();return}let t=A[N(h.textContent)]||N(h.textContent);if(!O.includes(t)){x.remove();return}h.textContent=t;m.set(t,x)});O.forEach(k=>{if(m.has(k))layers.appendChild(m.get(k))});}qq('.status',b).forEach(x=>x.remove());});const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
           if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>'''
           s=s.replace('</body>',js+'\n</body>',1)
-          # Source proof: exact V10 authority remains; correction is singular.
-          assert len(re.findall(r'<style\\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
-          assert len(re.findall(r'<script\\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
-          assert len(re.findall(r'<style\\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
-          assert len(re.findall(r'<script\\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
+          assert len(re.findall(r'<style\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
+          assert len(re.findall(r'<script\b[^>]*NAYA-SMART-BOARD-ELITE-REFINEMENT-V10[^>]*>',s,re.I))==1
+          assert len(re.findall(r'<style\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
+          assert len(re.findall(r'<script\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
           assert 'What is Naya Power' in s and 'HOW TO APPLY / HOW TO USE' in s and "WHAT'S IN IT FOR YOU" in s
           p.write_text(s,encoding='utf-8')
           print('V10_FINAL_GEOMETRY_READY')
@@ -71,7 +68,7 @@ jobs:
           grep -q 'What is Naya Power' "$f"
           grep -q 'HOW TO APPLY / HOW TO USE' "$f"
           grep -q "WHAT'S IN IT FOR YOU" "$f"
-          grep -q 'v10-nutshell-star' "$f'
+          grep -q 'v10-nutshell-star' "$f"
           grep -q 'width:78px!important' "$f"
           grep -q 'font-size:clamp(20px,2.1vw,29px)!important' "$f"
           echo 'V10_FINAL_GEOMETRY_VERIFIED'
