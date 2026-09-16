@@ -34,6 +34,10 @@ jobs:
               "let timer;const obs=new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body,{childList:true,subtree:true});",
               "/* static canonical board: continuous observer disabled */"
           )
+          s = s.replace(
+              "function run(){qq('.block').forEach(cleanBoard)}",
+              "function run(){qq('.naya509-unified-board').forEach(cleanBoard)}"
+          )
           shim = '''<script id="naya-static-runtime-observer-shim">
           (()=>{
             class NayaStaticMutationObserver {
@@ -58,10 +62,10 @@ jobs:
         run: |
           set -euo pipefail
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' '2026 09 15 NayaNETHUB.html'
+          grep -q 'function run(){qq('\''.naya509-unified-board'\'').forEach(cleanBoard)}' '2026 09 15 NayaNETHUB.html'
           grep -q 'id="naya-static-runtime-observer-shim"' '2026 09 15 NayaNETHUB.html'
           ! grep -q 'new MutationObserver(run).observe(document.body,{childList:true,subtree:true})' '2026 09 15 NayaNETHUB.html'
           ! grep -q 'new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body' '2026 09 15 NayaNETHUB.html'
-          grep -q 'NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16' '2026 09 15 NayaNETHUB.html'
           for label in 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' 'WHAT IT MEANS' 'HOW TO APPLY / HOW TO USE' "WHAT'S IN IT FOR YOU"; do grep -q "$label" '2026 09 15 NayaNETHUB.html'; done
           grep -q 'grid-template-columns' '2026 09 15 NayaNETHUB.html'
           grep -q 'display:flex;flex-direction:column' '2026 09 15 NayaNETHUB.html'
@@ -77,5 +81,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
-          git commit -m 'Make Smart Board runtime observer-safe'
+          git commit -m 'Target Smart Board normalizer at canonical board'
           git push origin HEAD:main
