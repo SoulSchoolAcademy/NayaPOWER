@@ -34,7 +34,8 @@ jobs:
               if m:
                   print('FUNCTION_'+name.upper()+'_OFFSET=',m.start())
                   print(s[m.start():m.start()+1800])
-          for label in ('IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"]:
+          labels=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"]
+          for label in labels:
               print('LABEL',label,'COUNT=',len(re.findall(re.escape(label),s,re.I)))
           PY
       - name: Verify source is intact
