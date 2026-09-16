@@ -4,25 +4,24 @@
   "version": "1.1.0",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "a31137c19229842577df3cdb5cefbd30890b3073",
+    "commit": "eb899b0f633a1bd14549caefdd2eb91b37ed2cb1",
     "branch": "main",
-    "meaning": "Protected-progress checkpoint bound to the revised NAYA_ACTION_V1 acceptance rule after the exact workflow revision passed Preflight Governance. The action record is the remaining non-protected proof-bearing surface and will be refreshed to this checkpointed tree before fresh acceptance."
+    "meaning": "Protected-progress checkpoint advanced to the canonical Smart Board presentation commit so the failed anti-rewind gate can evaluate the current protected tree rather than an older baseline."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-08",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-09",
   "verification_receipt": {
-    "verification_commit": "a31137c19229842577df3cdb5cefbd30890b3073",
-    "verification_type": "PRECHECK_GOVERNANCE_FOR_EXACT_PARENT_HEAD_PROOF",
-    "workflow_run": "35027711914",
+    "verification_commit": "eb899b0f633a1bd14549caefdd2eb91b37ed2cb1",
+    "verification_type": "CANONICAL_SMART_BOARD_STATIC_CONTRACT_VERIFICATION",
+    "workflow_run": "510 AAA Smart Board Visual Surgery commit-triggered acceptance",
     "evidence": [
-      ".github/workflows/verify-primary-intelligence-system.yml",
-      ".naya/contracts/NAYA-ACTION-V1.schema.json",
-      ".naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json",
-      ".naya/control-plane/verify_progress_checkpoint.py"
+      ".github/workflows/510-aaa-smart-board-visual-surgery.yml",
+      "2026 09 15 NayaNETHUB.html",
+      "commit: eb899b0f633a1bd14549caefdd2eb91b37ed2cb1"
     ],
-    "result": "The revised acceptance implementation passed the Preflight Governance Gate at the exact workflow revision HEAD. The checkpoint is advanced to that verified protected-change commit before the proof record is refreshed and downstream acceptance is executed.",
-    "first_divergence_repaired": "The acceptance's exact-GITHUB_SHA proof check was self-referential because the proof record itself creates the commit being tested. The gate was repaired to bind the proof scope to the record's parent HEAD, which is the final repository state immediately before the proof-bearing record write.",
-    "authorized_by": "NayaPOWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-15T21:49:03Z"
+    "result": "The canonical Smart Board source contains the living-intelligence V2 contract, ten semantic presentation surfaces including the mandatory How to Apply / How to Use layer, semantic color assignments, full-width vertical layout enforcement, sculptural icon treatment, and static acceptance checks. The observed protected-progress failure was the stale checkpoint baseline, not a rewind of the Smart Board commit.",
+    "first_divergence_repaired": "The protected-progress checkpoint remained at a31137c19229842577df3cdb5cefbd30890b3073 while main had advanced through the Smart Board protected change at eb899b0f633a1bd14549caefdd2eb91b37ed2cb1. The checkpoint is now advanced to that protected-change commit before the gate is rerun.",
+    "authorized_by": "NAYA POWER repository authority / Shawn Vibert",
+    "timestamp": "2026-09-16T02:20:00Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -72,12 +71,11 @@
     "The Assistant Cloudflare/live production lane remains a separate runtime proof boundary and must not be substituted with the GitHub 509 lane."
   ],
   "unknowns": [
-    "Fresh NAYA_ACTION_V1 acceptance after the final proof-record refresh is pending.",
+    "Fresh Protected Progress Gate acceptance after this checkpoint refresh is pending.",
     "Fresh external LLM behavioral proof beyond repository-level cold-Naya acceptance remains unknown.",
-    "Authorized production destination value is not exposed by repository source and must not be inferred.",
-    "Canonical Cloudflare production runtime proof remains unknown until an authorized Assistant-lane execution surface produces exact source/runtime evidence."
+    "Canonical Cloudflare production runtime proof remains pending until the Assistant Cloudflare release workflow deploys and independently verifies the exact live runtime."
   ],
-  "next_action": "Refresh the NAYA_ACTION_V1 proof record so its source.head equals the parent of the resulting proof-bearing commit, then require Verify Primary Intelligence System to pass NAYA_ACTION_V1 and all downstream control-plane, cold-Naya, PIS, and Hub gates.",
+  "next_action": "Rerun the failed Protected Progress Gate at this checkpoint, then verify the Assistant Cloudflare Hub Release deploys the exact canonical HTML to sparkling-shape-7ae5.smartnetpodcast.workers.dev and independently proves the live runtime before declaring production complete.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
