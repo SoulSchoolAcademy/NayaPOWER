@@ -7,8 +7,9 @@ s=FILE.read_text(encoding='utf-8')
 # Remove only temporary/competing layers.
 s=re.sub(r'<style id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</style>','',s,flags=re.S|re.I)
 s=re.sub(r'<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.*?</style>','',s,flags=re.S|re.I)
+s=re.sub(r'<script id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</script>','',s,flags=re.S|re.I)
+s=re.sub(r'<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.*?</script>','',s,flags=re.S|re.I)
 s=re.sub(r'<style id="naya-elite-interface-refinement">.*?</style>','',s,flags=re.S|re.I)
-s=re.sub(r'<script[^>]*>.*?NAYA-SMART-BOARD-V11-GITHUB-FINAL.*?</script>','',s,flags=re.S|re.I)
 # Remove legacy 509 real-feed/presentation renderers.
 s=re.sub(r'<script[^>]*>.*?Naya509NineNoteParser.*?</script>','',s,flags=re.S)
 s=re.sub(r'<script[^>]*>.*?naya-509-real-smart-feed.*?</script>','',s,flags=re.S|re.I)
@@ -25,7 +26,7 @@ if 'HOW TO APPLY / HOW TO USE' not in s:
     s,n=value_pat.subn(apply_html+r'\1',s,count=1)
     if n!=1: raise SystemExit('Could not locate Value layer')
 
-# Surgical corrections are folded into the existing V10 style block; no second style authority.
+# Fold final geometry/typography into the existing V10 style block; no second style authority.
 style_pat=re.compile(r'(<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">)(.*?)(</style>)',re.S|re.I)
 m=style_pat.search(s)
 if not m: raise SystemExit('Canonical V10 style not found')
@@ -35,8 +36,7 @@ repls={
     'gap:20px!important;min-width:0!important':'gap:24px!important;min-width:0!important',
     'gap:18px!important;min-height:116px!important':'gap:24px!important;min-height:116px!important',
     'font-size:13px!important;font-weight:1000':'font-size:18px!important;font-weight:1000',
-    'padding:14px 26px!important;color:#fff!important;font-size:18px!important':'padding:14px 30px!important;color:#fff!important;font-size:18px!important',
-    'justify-content:center!important;gap:24px!important':'justify-content:flex-start!important;gap:24px!important',
+    'justify-content:center!important;gap:18px!important':'justify-content:flex-start!important;gap:24px!important',
     'font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;color:#f5f7f9':'font-size:14px!important;line-height:1.6!important;color:#f5f7f9',
     'gap:22px!important;min-height:116px!important':'gap:28px!important;min-height:116px!important',
     '.elite-board .layerHead b{font-size:14px!important;':'.elite-board .layerHead b{font-size:18px!important;',
@@ -46,11 +46,9 @@ repls={
     '.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;line-height:1.58!important}':'.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:14px!important;line-height:1.58!important}',
 }
 for a,b in repls.items(): css=css.replace(a,b)
-# Ensure Apply/Value semantic colors and title geometry are explicit in the one V10 style.
 css += '\n.elite-board .layer[data-naya-layer="apply"]{--layer:#d4af37!important;border-color:#d4af376f!important;box-shadow:inset 0 1px #fff3,0 18px 38px #000c,0 0 36px #d4af3740!important}.elite-board .layer[data-naya-layer="value"]{--layer:#dfe6ee!important}\n.top .status{display:none!important}\n'
 s=style_pat.sub(m.group(1)+css+m.group(3),s,count=1)
 
-# Hard proof of single Smart Board visual authority.
 if len(re.findall(r'id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10"',s))!=2: raise SystemExit('Expected exactly one V10 style + one V10 script')
 for bad in ('NAYA-SMART-BOARD-V11-GITHUB-FINAL','NAYA-SMART-BOARD-V10-SURGICAL-FINAL','naya-elite-interface-refinement','Naya509NineNoteParser','naya-509-real-smart-feed-'):
     if bad in s: raise SystemExit('Legacy Smart Board artifact remains: '+bad)
