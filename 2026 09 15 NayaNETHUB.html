@@ -670,6 +670,17 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .naya-smart-board-v2 .block.naya509-board{border-color:color-mix(in srgb,var(--tone) 48%,#fff 8%);box-shadow:inset 0 1px #fff9,0 26px 58px #000b,0 0 38px color-mix(in srgb,var(--tone) 14%,transparent)}
 @media(max-width:800px){.naya-smart-board-v2 .layers{gap:12px!important}.naya-smart-board-v2 .layerHead{min-height:66px!important;padding:11px 13px!important}.naya-smart-board-v2 .dot{flex-basis:42px!important;width:42px!important;height:42px!important}.naya-smart-board-v2 .dot:after{font-size:17px!important}.naya-smart-board-v2 .layerBody{padding:15px 16px 18px!important;font-size:13px!important}.naya-smart-board-v2 .nutshell{padding:20px 18px 20px 70px!important}.naya-smart-board-v2 .nutshell:before{left:17px;width:40px;height:40px}}
 </style>
+<script id="naya-static-runtime-observer-shim">
+(()=>{
+  class NayaStaticMutationObserver {
+    constructor(){this._active=false}
+    observe(){this._active=true}
+    disconnect(){this._active=false}
+    takeRecords(){return []}
+  }
+  window.MutationObserver = NayaStaticMutationObserver;
+})();
+</script>
 <!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->
 </head>
 <body>
