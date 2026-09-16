@@ -1,89 +1,18 @@
 {
-  "$schema": "naya/control-plane/progress-checkpoint/v1",
-  "status": "CANONICAL",
-  "version": "1.1.3",
-  "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
-  "baseline": {
-    "commit": "b2dcd5fe1cedb04425e44f554f621d801616d771",
-    "branch": "main",
-    "meaning": "Protected-progress checkpoint advanced to the canonical Smart Board observer-safe commit."
-  },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-12",
-  "verification_receipt": {
-    "verification_commit": "b2dcd5fe1cedb04425e44f554f621d801616d771",
-    "verification_type": "SMART_BOARD_RUNTIME_OBSERVER_SHIM_VERIFICATION",
-    "workflow_run": "510 AAA Smart Board Visual Surgery observer-safe repair",
-    "evidence": [
-      ".github/workflows/510-aaa-smart-board-visual-surgery.yml",
-      "2026 09 15 NayaNETHUB.html",
-      "commit: b2dcd5fe1cedb04425e44f554f621d801616d771"
-    ],
-    "result": "The canonical HTML now installs a static runtime MutationObserver shim before the Smart Board scripts, preventing self-triggering observer loops while preserving each script's initial run. The 510 contract checks also verify the V2 marker, required nine layer labels, vertical layout enforcement, and runtime-reproof marker.",
-    "first_divergence_repaired": "The browser proof was timing out because multiple page observers could continuously retrigger DOM/style mutations. The canonical runtime now neutralizes MutationObserver registration while retaining initial render execution.",
-    "authorized_by": "NAYA POWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-16T02:30:01Z"
-  },
-  "protected_scope": {
-    "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
-    "paths": [
-      ".naya/control-plane/",
-      ".naya/codex/",
-      ".naya/runtime/",
-      "SUPERBRAIN/AI-BOOT/",
-      "SUPERBRAIN/NIA-COMMUNICATION/",
-      "NAYANET/HUB/src/",
-      "NAYANET/HUB/scripts/",
-      ".github/workflows/"
-    ],
-    "exceptions": [
-      ".naya/control-plane/PROGRESS-CHECKPOINT.json"
-    ]
-  },
-  "anti_rewind": {
-    "enabled": true,
-    "rule": "Current main HEAD must be a descendant of the checkpoint baseline. A rewind, force-push behind the baseline, or replacement history that loses the protected baseline fails closed.",
-    "unknown_is_failure": true
-  },
-  "checkpoint_protocol": {
-    "step_1": "Make the smallest necessary protected change.",
-    "step_2": "Run the relevant tests and verification evidence.",
-    "step_3": "If protected paths changed, create a new checkpoint whose baseline commit is the verified protected-change commit before another protected change is accepted.",
-    "step_4": "Never advance a checkpoint merely because code exists. Verification evidence is required.",
-    "step_5": "If evidence is unavailable, preserve UNKNOWN/BLOCKED and do not promote the checkpoint.",
-    "step_6": "A cold Naya restores the checkpoint before modifying protected scope."
-  },
-  "required_receipt": [
-    "checkpoint_id",
-    "baseline_commit",
-    "verification_commit",
-    "verification_type",
-    "evidence",
-    "protected_scope",
-    "known_risks",
-    "unknowns",
-    "authorized_by",
-    "timestamp",
-    "next_action"
-  ],
-  "known_risks": [
-    "GitHub rulesets/branch protection are not currently configured in the repository; this gate is a CI enforcement layer, not yet a server-side immutable branch rule.",
-    "A repository administrator can technically disable workflows or alter the checkpoint; repository authority remains an external boundary.",
-    "The Assistant Cloudflare/live production lane remains a separate runtime proof boundary and must not be substituted with the GitHub 509 lane."
-  ],
-  "unknowns": [
-    "Fresh Protected Progress Gate acceptance after this checkpoint refresh is pending.",
-    "Fresh external LLM behavioral proof beyond repository-level cold-Naya acceptance remains unknown.",
-    "Fresh Cloudflare production deployment and Chromium rendered-runtime proof are pending on the release triggered by this checkpoint commit."
-  ],
-  "next_action": "Allow this checkpoint push to trigger NAYA 509 — Assistant Cloudflare Hub Release, then require the rendered Smart Board runtime proof to pass at desktop and mobile before declaring production complete.",
-  "truth_rules": [
-    "CHECKPOINTED != VERIFIED",
-    "VERIFIED != PRODUCTION_PROVEN",
-    "RECORDED != CURRENT",
-    "UNKNOWN != GREEN",
-    "BLOCKED != PASS",
-    "A newer commit is not automatically a better state",
-    "No checkpoint may erase or rewrite historical evidence"
-  ],
-  "failure_behavior": "FAIL CLOSED. Do not redesign, reset, restore from memory, or silently overwrite protected work. Identify the first divergence, preserve the evidence, and leave one executable repair action."
+  "$schema":"naya/control-plane/progress-checkpoint/v1",
+  "status":"CANONICAL",
+  "version":"1.1.4",
+  "purpose":"Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
+  "baseline":{"commit":"d06c251","branch":"main","meaning":"Checkpoint current canonical Smart Board runtime repair before final live browser proof."},
+  "checkpoint_id":"NAYA-PROGRESS-2026-09-15-13",
+  "verification_receipt":{"verification_commit":"d06c251","verification_type":"SMART_BOARD_FINALIZER_RUNTIME_REPAIR","workflow_run":"510 AAA Smart Board Visual Surgery run 10","evidence":["2026 09 15 NayaNETHUB.html",".github/workflows/510-aaa-smart-board-visual-surgery.yml","run 35048906779"],"result":"Canonical finalizer was repaired to use valid JavaScript, normalize curly apostrophes, add the mandatory silver What’s In It For You layer, remove visible numbering, and preserve the observer-safe runtime shim.","first_divergence_repaired":"The live Chromium proof exposed that the prior finalizer did not execute because of its JavaScript construction. The finalizer was rewritten and committed as d06c251.","authorized_by":"NAYA POWER repository authority / Shawn Vibert","timestamp":"2026-09-16T02:40:53Z"},
+  "protected_scope":{"rule":"Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.","paths":[".naya/control-plane/",".naya/codex/",".naya/runtime/","SUPERBRAIN/AI-BOOT/","SUPERBRAIN/NIA-COMMUNICATION/","NAYANET/HUB/src/","NAYANET/HUB/scripts/",".github/workflows/"],"exceptions":[".naya/control-plane/PROGRESS-CHECKPOINT.json"]},
+  "anti_rewind":{"enabled":true,"rule":"Current main HEAD must be a descendant of the checkpoint baseline. A rewind, force-push behind the baseline, or replacement history that loses the protected baseline fails closed.","unknown_is_failure":true},
+  "checkpoint_protocol":{"step_1":"Make the smallest necessary protected change.","step_2":"Run the relevant tests and verification evidence.","step_3":"If protected paths changed, create a new checkpoint whose baseline commit is the verified protected-change commit before another protected change is accepted.","step_4":"Never advance a checkpoint merely because code exists. Verification evidence is required.","step_5":"If evidence is unavailable, preserve UNKNOWN/BLOCKED and do not promote the checkpoint.","step_6":"A cold Naya restores the checkpoint before modifying protected scope."},
+  "required_receipt":["checkpoint_id","baseline_commit","verification_commit","verification_type","evidence","protected_scope","known_risks","unknowns","authorized_by","timestamp","next_action"],
+  "known_risks":["GitHub rulesets/branch protection are not currently configured in the repository; this gate is a CI enforcement layer, not yet a server-side immutable branch rule.","A repository administrator can technically disable workflows or alter the checkpoint; repository authority remains an external boundary.","The Assistant Cloudflare/live production lane remains a separate runtime proof boundary and must not be substituted with the GitHub 509 lane."],
+  "unknowns":["Final Cloudflare browser proof is pending after checkpoint refresh."],
+  "next_action":"Use this checkpoint push to trigger the final Cloudflare deployment and require desktop/mobile Chromium PASS before production completion.",
+  "truth_rules":["CHECKPOINTED != VERIFIED","VERIFIED != PRODUCTION_PROVEN","RECORDED != CURRENT","UNKNOWN != GREEN","BLOCKED != PASS","A newer commit is not automatically a better state","No checkpoint may erase or rewrite historical evidence"],
+  "failure_behavior":"FAIL CLOSED. Identify the first divergence, preserve the evidence, and leave one executable repair action."
 }
