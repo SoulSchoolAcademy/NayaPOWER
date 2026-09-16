@@ -70,11 +70,17 @@ jobs:
           grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' "$RUNNER_TEMP/live.html"
 
-      - name: Prove rendered Smart Board runtime
+      - name: Prepare browser runtime verifier
         shell: bash
         run: |
           set -euo pipefail
           command -v google-chrome || command -v google-chrome-stable
+          npm install --no-save --no-package-lock playwright@1.55.0
+
+      - name: Prove rendered Smart Board runtime
+        shell: bash
+        run: |
+          set -euo pipefail
           cat > "$RUNNER_TEMP/verify-smart-board.mjs" <<'EOF'
           import { chromium } from 'playwright';
 
@@ -139,7 +145,7 @@ jobs:
             await browser.close();
           }
           EOF
-          npx --yes -p playwright@1.55.0 -c 'node "$RUNNER_TEMP/verify-smart-board.mjs"'
+          node "$RUNNER_TEMP/verify-smart-board.mjs"
 
       - name: Independently verify live runtime
         shell: bash
