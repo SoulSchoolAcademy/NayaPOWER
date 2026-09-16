@@ -1,5 +1,5 @@
 # Smart Board refinement trigger
 
-Canonical visual refinement execution: remove duplicate overlay iconography, restore large dimensional board icons, enforce semantic layer colors/glows, and add the missing How to Apply / How to Use layer without redesigning the architecture.
+Canonical visual refinement execution: feature-first In a Nutshell board, one clean hero icon, large dimensional semantic jewelry icons, correct Apply-before-Value order, gold Apply identity, and time/date-only header.
 
-Execution retry: 2026-09-16T15:04Z
+Execution retry: 2026-09-16T15:20Z
