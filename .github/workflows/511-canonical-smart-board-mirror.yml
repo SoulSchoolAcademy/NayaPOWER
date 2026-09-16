@@ -1,5 +1,6 @@
 # CANONICAL SMART BOARD EXECUTION LANE
 # execution-proof-v11
+# trigger: canonical-mirror-execution
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -31,36 +32,17 @@ jobs:
           import re
           path=Path('2026 09 15 NayaNETHUB.html')
           s=path.read_text(encoding='utf-8')
-
-          # 1) Normalize the shared lifecycle label contract.
           s2=s.replace("LEARNING:'ADAPTIVE LEARNING'", "LEARNING:'LEARNING LESSON'")
           s2=s2.replace('"WHAT\'S IN IT FOR YOU?":"WHAT\'S IN IT FOR YOU?"', '"WHAT\'S IN IT FOR YOU?":"WHAT\'S IN IT FOR YOU"')
-          if s2==s:
-              print('LABEL_NORMALIZATION=ALREADY_APPLIED_OR_NOT_FOUND')
-          else:
-              print('LABEL_NORMALIZATION=APPLIED')
           s=s2
-
-          # 2) Remove the visible numeric perspective markers (2–9).
-          #    The dot/icon in .layerHead remains the visual identifier.
           old="""const old=layer.querySelector('.perspectiveNo');if(!old){const no=document.createElement('span');no.className='perspectiveNo';no.textContent=String(perspectiveOrder[key]||'');const head=layer.querySelector('.layerHead');if(head)head.prepend(no)}if(key===\"WHAT'S IN IT FOR YOU?\")layer.classList.add('naya509-for-you');"""
           new="""layer.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());if(key===\"WHAT'S IN IT FOR YOU?\")layer.classList.add('naya509-for-you');"""
-          if old in s:
-              s=s.replace(old,new,1)
-              print('VISIBLE_LAYER_NUMBERS=REMOVED')
+          if old in s: s=s.replace(old,new,1)
           else:
-              # Fail closed if the known renderer shape changes unexpectedly.
-              if 'className=\'perspectiveNo\'' in s or 'className=\"perspectiveNo\"' in s:
-                  raise SystemExit('FAIL: perspectiveNo creation remains but expected renderer fragment was not found')
-              print('VISIBLE_LAYER_NUMBERS=ALREADY_REMOVED')
-
-          # 3) Remove any runtime-created numeric marker defensively.
+              if 'className=\'perspectiveNo\'' in s or 'className=\"perspectiveNo\"' in s: raise SystemExit('FAIL: perspectiveNo creation remains')
           inject="document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());"
-          if inject not in s:
-              anchor="function elevate(){"
-              if anchor in s:
-                  s=s.replace(anchor,anchor+'document.querySelectorAll(\'.perspectiveNo\').forEach(e=>e.remove());',1)
-
+          if inject not in s and 'function elevate(){' in s:
+              s=s.replace('function elevate(){','function elevate(){'+inject.replace("document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());", "document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());"),1)
           path.write_text(s,encoding='utf-8')
           PY
 
@@ -75,24 +57,18 @@ jobs:
           required=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
           if 'function block(b,i){' in s or re.search(r'\.map\(block\)',s): raise SystemExit('FAIL: legacy block renderer remains live')
           render_start=s.find('function render(){'); modal_start=s.find('function modal(',render_start+1)
-          if render_start<0 or modal_start<0 or 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() is not wired to canonical board(notes)')
+          if render_start<0 or modal_start<0 or 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() not canonical')
           board_start=s.find('function board(note,idx){')
           if board_start<0: raise SystemExit('FAIL: canonical board() missing')
-          board_end=s.find('function ',board_start+1)
-          board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
+          board_end=s.find('function ',board_start+1); board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
-          if 'className=\'perspectiveNo\'' in s or 'className=\"perspectiveNo\"' in s: raise SystemExit('FAIL: visible numeric perspective markers remain constructible')
-          if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING label remains')
+          if 'className=\'perspectiveNo\'' in s or 'className=\"perspectiveNo\"' in s: raise SystemExit('FAIL: visible numeric markers remain constructible')
+          if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
           if 'WHAT\'S IN IT FOR YOU?":"WHAT\'S IN IT FOR YOU?"' in s: raise SystemExit('FAIL: legacy question-mark label remains')
-          if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract not present')
+          if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract missing')
           missing=[x for x in required if x not in s]
-          if missing: raise SystemExit('FAIL: missing canonical semantic labels: '+', '.join(missing))
-          print('CANONICAL_NINE_LAYER_LABELS=PASS')
-          print('VISIBLE_NUMERIC_PREFIXES=PASS')
-          print('LEGACY_LABELS=PASS')
-          print('CANONICAL_RENDER_PATH=PASS')
-          print('NINE_SMART_NOTES=PASS')
-          print('STRUCTURAL_VERIFIER=PASS')
+          if missing: raise SystemExit('FAIL: missing labels: '+', '.join(missing))
+          print('CANONICAL_NINE_LAYER_LABELS=PASS'); print('VISIBLE_NUMERIC_PREFIXES=PASS'); print('LEGACY_LABELS=PASS'); print('CANONICAL_RENDER_PATH=PASS'); print('NINE_SMART_NOTES=PASS'); print('STRUCTURAL_VERIFIER=PASS')
           PY
 
       - name: Commit canonical source repair
