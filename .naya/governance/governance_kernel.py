@@ -14,6 +14,8 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
+import json
+from pathlib import Path
 from typing import FrozenSet, Mapping, Optional, Tuple
 
 
@@ -107,6 +109,62 @@ class AuthorityRegistry:
 
     def resolve(self, authority_id: str) -> Optional[Authority]:
         return self.authorities.get(authority_id)
+
+
+REGISTRY_PATH = Path(__file__).with_name("authority-registry.json")
+
+
+def load_authority_registry(path: Path = REGISTRY_PATH) -> AuthorityRegistry:
+    """Load the canonical explicit-grant registry; never mint authority from input."""
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise RuntimeError(f"cannot load authority registry: {exc}") from exc
+
+    authorities: dict[str, Authority] = {}
+    for raw in payload.get("authorities", []):
+        try:
+            authority = Authority(
+                authority_id=str(raw["authority_id"]),
+                principal_id=str(raw["principal_id"]),
+                purpose=str(raw["purpose"]),
+                scope=str(raw["scope"]),
+                granted_actions=frozenset(str(item) for item in raw.get("granted_actions", [])),
+                expires_at=raw.get("expires_at"),
+                revoked=bool(raw.get("revoked", False)),
+            )
+        except (KeyError, TypeError, ValueError) as exc:
+            raise RuntimeError(f"invalid authority registry entry: {exc}") from exc
+        if authority.authority_id in authorities:
+            raise RuntimeError(f"duplicate authority_id in registry: {authority.authority_id}")
+        authorities[authority.authority_id] = authority
+    return AuthorityRegistry(authorities=authorities)
+
+
+def resolve_authority(
+    registry: AuthorityRegistry,
+    *,
+    authority_id: str,
+    actor_id: str,
+    purpose: str,
+    action: str,
+    scope: str,
+) -> Authority:
+    """Resolve exactly one registry grant and verify every binding fact."""
+    if not authority_id:
+        raise RuntimeError("explicit authority resolution failed: authority_id is required")
+    authority = registry.resolve(authority_id)
+    if authority is None:
+        raise RuntimeError(f"explicit authority resolution failed: unknown authority_id {authority_id}")
+    if authority.principal_id != actor_id:
+        raise RuntimeError("explicit authority resolution failed: actor does not match authority principal")
+    if authority.purpose != purpose:
+        raise RuntimeError("explicit authority resolution failed: purpose does not match authority")
+    if authority.scope != scope:
+        raise RuntimeError("explicit authority resolution failed: scope does not match authority")
+    if action not in authority.granted_actions:
+        raise RuntimeError("explicit authority resolution failed: action is not granted")
+    return authority
 
 
 @dataclass(frozen=True)
