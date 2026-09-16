@@ -2,19 +2,18 @@
 
 EXECUTE NOW — deterministic single-authority cleanup.
 
-Restore the exact V10 faceted jewel SVG definitions from `60c70db83c8ffdf954b73c45821fd53a3eeebbf7`, preserving their original Human / Child / Grandma / Naya / Machine / Learning / Meaning / Apply / Value definitions. Do not recreate them.
-
 Final visual contract:
 - Large separate dimensional purple power icon beside `What is Naya Power`.
-- Exactly one Nutshell banner; physically remove every stray/duplicate Nutshell child; large dimensional silver star on the LEFT; large `IN A NUTSHELL` label.
+- Exactly one Nutshell banner; large dimensional silver star on the LEFT; large `IN A NUTSHELL` label; no competing Nutshell children.
 - Remove extra top status/LED dot; retain actual date/time in header.
-- Exact semantic order: HUMAN NOTE → CHILD NOTE → GRANDMA NOTE → NAYA NOTE → MACHINE NOTE → LEARNING LESSON → WHAT IT MEANS → HOW TO APPLY / HOW TO USE → WHAT’S IN IT FOR YOU.
-- No visible numbers; no duplicate semantic layers; large consistent body text.
+- Exact committed semantic order: HUMAN NOTE → CHILD NOTE → GRANDMA NOTE → NAYA NOTE → MACHINE NOTE → LEARNING LESSON → WHAT IT MEANS → HOW TO APPLY / HOW TO USE → WHAT’S IN IT FOR YOU.
+- No visible numbers; no duplicate semantic layers.
 - Human magenta; Child purple; Grandma indigo; Naya canyon/orange; Machine emerald; Learning lime; Meaning yellow; Apply true gold; Value silver.
+- Titles 18px; descriptions/body 14px.
 - Preserve content, functionality, navigation, responsiveness, accessibility.
-- Remove all legacy Smart Board visual override/finalizer/runtime blocks, including the old V1/V2 visual styles.
-- One visual authority only.
+- V10 faceted jewel SVG definitions are the single visual renderer authority.
+- Remove all legacy Smart Board renderer scripts and V11 temporary artifacts.
 
-Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 style + one V10 script, exact `core/facet/shade/edge` definitions, exactly one surgical style + one surgical script, and no legacy override IDs.
+Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 surgical style + one V10 surgical script, exact `core/facet/shade/edge` definitions, static canonical labels, Apply layer, headline, and no legacy Smart Board renderer markers.
 
-Execution nonce: 2026-09-16T19:02:30Z
+Execution nonce: 2026-09-16T19:05:00Z
