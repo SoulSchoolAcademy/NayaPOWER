@@ -3,10 +3,9 @@ import re
 
 FILE=Path('2026 09 15 NayaNETHUB.html')
 s=FILE.read_text(encoding='utf-8')
+# V10 remains the single canonical visual authority. Only remove temporary V11 artifacts.
 s=re.sub(r'<style id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</style>','',s,flags=re.S|re.I)
-s=re.sub(r'<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.*?</style>','',s,flags=re.S|re.I)
 s=re.sub(r'<script id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</script>','',s,flags=re.S|re.I)
-s=re.sub(r'<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.*?</script>','',s,flags=re.S|re.I)
 s=re.sub(r'<style id="naya-elite-interface-refinement">.*?</style>','',s,flags=re.S|re.I)
 s=re.sub(r'<script[^>]*>.*?Naya509NineNoteParser.*?</script>','',s,flags=re.S)
 s=re.sub(r'<script[^>]*>.*?naya-509-real-smart-feed.*?</script>','',s,flags=re.S|re.I)
