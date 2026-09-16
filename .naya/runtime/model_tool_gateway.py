@@ -6,6 +6,7 @@ sufficient. The action must also resolve an explicit, current authority from the
 canonical registry and pass the canonical governance kernel immediately before
 transitioning to EXECUTING.
 """
+# AUTHORITY-CLOSURE-V1: model claims are never permission; registry resolution is mandatory.
 from __future__ import annotations
 
 import argparse
