@@ -1,0 +1,55 @@
+name: NayaNET Canonical Smart Board Repair
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize canonical Smart Boards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 15 NayaNETHUB.html')
+          s=p.read_text(encoding='utf-8')
+          # Remove visible numeric prefixes only when directly attached to layer labels.
+          labels=r'(?:IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS|WHAT[’\']S IN IT FOR YOU)'
+          s=re.sub(r'(?i)(>\s*)(?:0?\d\s*[·•\-:]\s*)('+labels+r')(?=\s*<)', r'\1\2', s)
+          s=re.sub(r'(?i)(>\s*)(?:0?\d\s+)((?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS))(?=\s*<)', r'\1\2', s)
+          # Normalize legacy visible learning/value labels.
+          s=re.sub(r'(?i)(>\s*)ADAPTIVE LEARNING(?:\s+LEARNING)?(\s*<)', r'\1LEARNING LESSON\2', s)
+          s=re.sub(r'(?i)(>\s*)WHAT(?:\s+IS|\s+\'S|\s+’S)\s+IN\s+IT\s+FOR\s+YOU\??(\s*<)', r'\1WHAT\'S IN IT FOR YOU\2', s)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Structural verification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          required=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
+          for x in required:
+            n=len(re.findall(re.escape(x),s,re.I))
+            print(x,n)
+            if n < 1: raise SystemExit('Missing canonical layer: '+x)
+          if re.search(r'>\s*(?:[1-9]\s*[·•\-:]\s*)?(?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE)\s*<',s,re.I):
+            raise SystemExit('Visible numeric layer prefix remains')
+          print('Canonical label verification passed.')
+          PY
+
+      - name: Commit verified source
+        run: |
+          git config user.name 'NayaNET Canonical Repair'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          git diff --cached --check
+          if git diff --cached --quiet; then echo 'No changes'; else git commit -m 'Normalize Smart Boards to canonical nine-layer structure'; fi
+          git push origin HEAD
