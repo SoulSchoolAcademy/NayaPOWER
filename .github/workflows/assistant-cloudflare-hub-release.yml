@@ -1,5 +1,5 @@
 # MERGE-TRIGGER: execute canonical eight-layer Cloudflare release
-# RUNTIME REPROOF TRIGGER 2026-09-16T02:42Z — deploy and browser-verify current main.
+# RUNTIME REPROOF TRIGGER 2026-09-15T21:10-07:00 — execute current main now.
 # AUTHORIZED USER REQUEST: deploy the supplied NayaNET Hub artifact to the supplied Cloudflare Worker.
 name: NAYA 509 — Assistant Cloudflare Hub Release
 
