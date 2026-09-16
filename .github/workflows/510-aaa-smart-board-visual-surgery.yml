@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Apply final geometry to the existing V10 authority
+      - name: Apply final congruent geometry and typography
         shell: bash
         run: |
           set -euo pipefail
@@ -30,16 +30,17 @@ jobs:
           s=remove(s,'style','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
           s=remove(s,'script','NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
           css='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
-          .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;min-height:116px!important;padding:14px 30px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important}
+          /* One shared measurement system: Nutshell and every semantic board align to the same left edge and title/body rhythm. */
+          .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;min-height:116px!important;padding:14px 30px!important;text-align:left!important;font-size:18px!important;line-height:1.15!important;letter-spacing:.02em!important}
           .elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;margin:0!important}
-          .elite-board:first-child .nutshell p,.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important}
+          .elite-board:first-child .nutshell p,.elite-board .layerBody{font-size:24px!important;line-height:1.6!important}
           .elite-board:first-child .nutshell p{padding:27px 32px 33px!important}.elite-board .layerBody{padding:27px 32px 33px!important}
           .elite-board .layerHead{display:flex!important;align-items:center!important;gap:24px!important;min-height:116px!important;padding:14px 30px!important}
           .elite-board .layerHead .dot{width:78px!important;height:78px!important;flex:0 0 78px!important;margin:0!important}
           .elite-board .dot .v10-icon{width:58px!important;height:58px!important}
-          .elite-board .layerHead b{font-size:clamp(20px,2.1vw,29px)!important;line-height:1.15!important;letter-spacing:.02em!important}
+          .elite-board .layerHead b{font-size:18px!important;line-height:1.15!important;letter-spacing:.02em!important}
           .elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board:first-child .glyph{width:116px!important;height:116px!important;flex:0 0 116px!important}.elite-board:first-child .glyph .v10-icon{width:78px!important;height:78px!important}
-          @media(max-width:820px){.elite-board:first-child .nutshell b,.elite-board .layerHead{min-height:92px!important;padding:11px 18px!important;gap:14px!important}.elite-board:first-child .nutshell b .v10-nutshell-star{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .layerHead .dot{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .dot .v10-icon{width:46px!important;height:46px!important}.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;line-height:1.58!important}}
+          @media(max-width:820px){.elite-board:first-child .nutshell b,.elite-board .layerHead{min-height:92px!important;padding:11px 18px!important;gap:24px!important}.elite-board:first-child .nutshell b .v10-nutshell-star{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .layerHead .dot{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .dot .v10-icon{width:46px!important;height:46px!important}.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:24px!important;line-height:1.58!important}}
           </style>'''
           s=s.replace('</head>',css+'\n</head>',1)
           js='''<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">(()=>{
@@ -55,8 +56,9 @@ jobs:
           assert len(re.findall(r'<style\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
           assert len(re.findall(r'<script\b[^>]*NAYA-SMART-BOARD-V10-SURGICAL-FINAL[^>]*>',s,re.I))==1
           assert 'What is Naya Power' in s and 'HOW TO APPLY / HOW TO USE' in s and "WHAT'S IN IT FOR YOU" in s
+          assert 'font-size:24px!important' in s and 'font-size:18px!important' in s
           p.write_text(s,encoding='utf-8')
-          print('V10_FINAL_GEOMETRY_READY')
+          print('CONGRUENT_SMART_BOARD_GEOMETRY_READY')
           PY
       - name: Verify canonical artifact
         shell: bash
@@ -69,9 +71,10 @@ jobs:
           grep -q 'HOW TO APPLY / HOW TO USE' "$f"
           grep -q "WHAT'S IN IT FOR YOU" "$f"
           grep -q 'v10-nutshell-star' "$f"
-          grep -q 'width:78px!important' "$f"
-          grep -q 'font-size:clamp(20px,2.1vw,29px)!important' "$f"
-          echo 'V10_FINAL_GEOMETRY_VERIFIED'
+          grep -q 'font-size:24px!important' "$f"
+          grep -q 'font-size:18px!important' "$f"
+          grep -q 'gap:24px!important' "$f"
+          echo 'CONGRUENT_SMART_BOARD_VERIFIED'
       - name: Commit canonical artifact
         shell: bash
         run: |
@@ -79,6 +82,6 @@ jobs:
           git config user.name 'NayaPOWER Automation'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
           if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 1; fi
-          git commit -m 'Finalize congruent V10 Smart Board icon geometry'
+          git commit -m 'Tighten Smart Board layer alignment and typography'
           git pull --rebase origin main
           git push origin HEAD:main
