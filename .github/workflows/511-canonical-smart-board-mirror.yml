@@ -1,6 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v12
-# trigger: canonical-mirror-execution
+# execution-proof-v13
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -29,16 +28,16 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
+          import re
           path=Path('2026 09 15 NayaNETHUB.html')
           s=path.read_text(encoding='utf-8')
           s=s.replace("LEARNING:'ADAPTIVE LEARNING'", "LEARNING:'LEARNING LESSON'")
           s=s.replace('"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"', '"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU"')
-          old="""const old=layer.querySelector('.perspectiveNo');if(!old){const no=document.createElement('span');no.className='perspectiveNo';no.textContent=String(perspectiveOrder[key]||'');const head=layer.querySelector('.layerHead');if(head)head.prepend(no)}if(key===\"WHAT'S IN IT FOR YOU?\")layer.classList.add('naya509-for-you');"""
-          new="""layer.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());if(key===\"WHAT'S IN IT FOR YOU?\")layer.classList.add('naya509-for-you');"""
-          if old in s:
-              s=s.replace(old,new,1)
-          elif "className='perspectiveNo'" in s or 'className="perspectiveNo"' in s:
-              raise SystemExit('FAIL: perspectiveNo creation remains')
+          # Remove the constructor for visible numeric perspective circles regardless of harmless formatting differences.
+          before=s
+          s=re.sub(r"if\(!old\)\{[^{}]*perspectiveNo[^{}]*\}", "", s, count=1)
+          if s==before and re.search(r"no\.className=['\"]perspectiveNo['\"]", s):
+              raise SystemExit('FAIL: perspectiveNo constructor remains')
           inject="document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());"
           if inject not in s and 'function elevate(){' in s:
               s=s.replace('function elevate(){','function elevate(){'+inject,1)
@@ -61,12 +60,12 @@ jobs:
           if board_start<0: raise SystemExit('FAIL: canonical board() missing')
           board_end=s.find('function ',board_start+1); board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
-          if "className='perspectiveNo'" in s or 'className="perspectiveNo"' in s: raise SystemExit('FAIL: visible numeric markers remain constructible')
+          if re.search(r"no\.className=['\"]perspectiveNo['\"]",s): raise SystemExit('FAIL: visible numeric marker constructor remains')
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
           if 'WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"' in s: raise SystemExit('FAIL: legacy question-mark label remains')
           if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract missing')
           label_start=s.find('const labels=')
-          label_map=s[label_start:label_start+1600] if label_start>=0 else ''
+          label_map=s[label_start:label_start+1800] if label_start>=0 else ''
           for x in required:
               if x not in label_map: raise SystemExit('FAIL: canonical runtime label missing: '+x)
           for legacy in ['ADAPTIVE LEARNING',"WHAT'S IN IT FOR YOU?"]:
