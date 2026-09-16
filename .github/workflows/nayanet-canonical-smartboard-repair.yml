@@ -1,6 +1,9 @@
 name: NayaNET Canonical Smart Board Repair
 
 on:
+  push:
+    branches:
+      - naya-smartboard-canonical-repair
   workflow_dispatch:
 
 permissions:
@@ -19,11 +22,9 @@ jobs:
           import re
           p=Path('2026 09 15 NayaNETHUB.html')
           s=p.read_text(encoding='utf-8')
-          # Remove visible numeric prefixes only when directly attached to layer labels.
           labels=r'(?:IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS|WHAT[’\']S IN IT FOR YOU)'
           s=re.sub(r'(?i)(>\s*)(?:0?\d\s*[·•\-:]\s*)('+labels+r')(?=\s*<)', r'\1\2', s)
           s=re.sub(r'(?i)(>\s*)(?:0?\d\s+)((?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS))(?=\s*<)', r'\1\2', s)
-          # Normalize legacy visible learning/value labels.
           s=re.sub(r'(?i)(>\s*)ADAPTIVE LEARNING(?:\s+LEARNING)?(\s*<)', r'\1LEARNING LESSON\2', s)
           s=re.sub(r'(?i)(>\s*)WHAT(?:\s+IS|\s+\'S|\s+’S)\s+IN\s+IT\s+FOR\s+YOU\??(\s*<)', r'\1WHAT\'S IN IT FOR YOU\2', s)
           p.write_text(s,encoding='utf-8')
