@@ -81,7 +81,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          cat > "$RUNNER_TEMP/verify-smart-board.mjs" <<'EOF'
+          cat > verify-smart-board.mjs <<'EOF'
           import { chromium } from 'playwright';
 
           const url = process.env.NAYA_RUNTIME_URL;
@@ -145,7 +145,8 @@ jobs:
             await browser.close();
           }
           EOF
-          node "$RUNNER_TEMP/verify-smart-board.mjs"
+          node verify-smart-board.mjs
+          rm -f verify-smart-board.mjs
 
       - name: Independently verify live runtime
         shell: bash
