@@ -23,12 +23,16 @@ jobs:
         run: |
           set -euo pipefail
           f='2026 09 15 NayaNETHUB.html'
-          grep -q 'NAYA-SMART-BOARD-V11-GITHUB-FINAL' "$f"
+          test "$(grep -o 'NAYA-SMART-BOARD-V10-SURGICAL-FINAL' "$f" | wc -l)" -eq 2
+          ! grep -q 'NAYA-SMART-BOARD-V11-GITHUB-FINAL' "$f"
           grep -q 'font-size:18px!important' "$f"
           grep -q 'font-size:14px!important' "$f"
           grep -q 'HOW TO APPLY / HOW TO USE' "$f"
-          grep -q 'data-naya-layer="apply"' "$f"
           grep -q 'What is Naya Power' "$f"
+          grep -q 'core' "$f"
+          grep -q 'facet' "$f"
+          grep -q 'shade' "$f"
+          grep -q 'edge' "$f"
       - name: Commit canonical HTML
         run: |
           set -euo pipefail
