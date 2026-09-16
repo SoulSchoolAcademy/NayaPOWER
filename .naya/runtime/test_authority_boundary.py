@@ -16,42 +16,17 @@ import execution_controller as ec
 import model_tool_gateway as gateway
 import naya_power_kernel as runtime_kernel
 
-
-BASE_AUTHORITY = {
-    "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
-    "actor_id": "SoulSchoolAcademy",
-    "purpose": "governed maintenance and verification of NayaPOWER",
-    "scope": "repo:SoulSchoolAcademy/NayaPOWER",
-}
+BASE_AUTHORITY = {"authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "purpose": "governed maintenance and verification of NayaPOWER", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
 
 
 def candidate(**overrides):
-    value = {
-        "id": "safe-action",
-        "description": "perform a governed repository maintenance action",
-        "expected_benefit": 90,
-        "necessary_cost": 20,
-        "risk_loss": 5,
-        "authorization": "approved",
-        "required_permission": "repo_write",
-        "boundary_violations": [],
-        "evidence_state": "VERIFIED",
-        "reversible": True,
-        "governance_sensitive": False,
-    }
+    value = {"id": "safe-action", "description": "perform a governed repository maintenance action", "expected_benefit": 90, "necessary_cost": 20, "risk_loss": 5, "authorization": "approved", "required_permission": "repo_write", "boundary_violations": [], "evidence_state": "VERIFIED", "reversible": True, "governance_sensitive": False}
     value.update(overrides)
     return value
 
 
 def request(**overrides):
-    value = {
-        "request_id": "BOUNDARY-TEST",
-        "mission": "prove runtime authority closure",
-        "context": {"test": True},
-        "authority": dict(BASE_AUTHORITY),
-        "constitution_version": "1.0.0",
-        "candidates": [candidate()],
-    }
+    value = {"request_id": "BOUNDARY-TEST", "mission": "prove runtime authority closure", "context": {"test": True}, "authority": dict(BASE_AUTHORITY), "constitution_version": "1.0.0", "candidates": [candidate()]}
     value.update(overrides)
     return value
 
@@ -64,8 +39,7 @@ def test_runtime_kernel_accepts_real_registry_authority():
 
 
 def test_runtime_kernel_rejects_fabricated_authority_even_when_model_says_approved():
-    forged = dict(BASE_AUTHORITY, authority_id="FABRICATED-AUTHORITY")
-    receipt = runtime_kernel.evaluate(request(authority=forged))
+    receipt = runtime_kernel.evaluate(request(authority={**BASE_AUTHORITY, "authority_id": "FABRICATED-AUTHORITY"}))
     assert receipt["decision"] == "ESCALATE", receipt
     assert receipt["selected_candidate"] is None, receipt
 
@@ -83,38 +57,22 @@ def test_runtime_kernel_rejects_missing_authority_id():
     assert receipt["decision"] == "ESCALATE", receipt
 
 
+def _claimed(path: Path):
+    ec.STATE = path
+    ec.transition("CLAIMED", claim_id="CL-BOUNDARY", block_id="B-BOUNDARY", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="head-1")
+
+
 def test_tool_gateway_requires_registry_authority_and_claim_binding():
     original_state = ec.STATE
     with tempfile.TemporaryDirectory() as tmp:
-        ec.STATE = Path(tmp) / "EXECUTION-STATE.json"
-        gateway.STATE = ec.STATE
-        ec.transition(
-            "CLAIMED",
-            claim_id="CL-BOUNDARY",
-            block_id="B-BOUNDARY",
-            owner="SoulSchoolAcademy",
-            scope=["repo:SoulSchoolAcademy/NayaPOWER"],
-            start_head="head-1",
-        )
-        action = {
-            "action_id": "ACT-BOUNDARY",
-            "action_type": "repo_write",
-            "target": "docs",
-            "purpose": "governed maintenance and verification of NayaPOWER",
-            "risk": "L2",
-            "protected_baseline": "head-1",
-            "observation_target": "files",
-            "evidence_requirement": ["commit"],
-            "verification_requirement": ["ci"],
-            "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
-            "actor_id": "SoulSchoolAcademy",
-            "scope": "repo:SoulSchoolAcademy/NayaPOWER",
-        }
+        state_path = Path(tmp) / "EXECUTION-STATE.json"
+        _claimed(state_path)
+        action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L2", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
         result = gateway.authorize(action)
         assert result["status"] == "AUTHORIZED", result
         assert result["authority_id"] == action["authority_id"]
         assert result["execution_status"] == "EXECUTING"
-
+        _claimed(state_path)
         forged = dict(action, authority_id="FABRICATED-AUTHORITY")
         try:
             gateway.authorize(forged)
@@ -126,13 +84,7 @@ def test_tool_gateway_requires_registry_authority_and_claim_binding():
 
 
 if __name__ == "__main__":
-    tests = [
-        test_runtime_kernel_accepts_real_registry_authority,
-        test_runtime_kernel_rejects_fabricated_authority_even_when_model_says_approved,
-        test_runtime_kernel_rejects_permission_not_granted_by_authority,
-        test_runtime_kernel_rejects_missing_authority_id,
-        test_tool_gateway_requires_registry_authority_and_claim_binding,
-    ]
+    tests = [test_runtime_kernel_accepts_real_registry_authority, test_runtime_kernel_rejects_fabricated_authority_even_when_model_says_approved, test_runtime_kernel_rejects_permission_not_granted_by_authority, test_runtime_kernel_rejects_missing_authority_id, test_tool_gateway_requires_registry_authority_and_claim_binding]
     for test in tests:
         test()
         print(f"PASS — {test.__name__}")
