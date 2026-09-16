@@ -1,28 +1,28 @@
 {
   "$schema": "naya/control-plane/progress-checkpoint/v1",
   "status": "CANONICAL",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "purpose": "Protect verified progress from silent rewind, destructive redesign, or uncheckpointed changes to critical NayaPOWER execution surfaces.",
   "baseline": {
-    "commit": "5989bc72e0a515a774ed0dafb61d2073bf1785ce",
+    "commit": "e784bbc285e983024d45ca36adaa36538bb43d5d",
     "branch": "main",
-    "meaning": "Protected-progress checkpoint advanced to the commit that binds the Assistant Cloudflare Hub Release workflow to the protected checkpoint path, enabling the canonical release lane to execute from the current protected tree."
+    "meaning": "Protected-progress checkpoint advanced to the canonical Smart Board runtime-repair commit that removed the self-triggering MutationObserver loops before the live Cloudflare deployment is re-proven."
   },
-  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-10",
+  "checkpoint_id": "NAYA-PROGRESS-2026-09-15-11",
   "verification_receipt": {
-    "verification_commit": "5989bc72e0a515a774ed0dafb61d2073bf1785ce",
-    "verification_type": "CLOUDFLARE_RELEASE_TRIGGER_WIRING_VERIFICATION",
-    "workflow_run": "NAYA 509 — Assistant Cloudflare Hub Release push trigger",
+    "verification_commit": "e784bbc285e983024d45ca36adaa36538bb43d5d",
+    "verification_type": "SMART_BOARD_RUNTIME_LOOP_REPAIR_VERIFICATION",
+    "workflow_run": "510 AAA Smart Board Visual Surgery run 3",
     "evidence": [
-      ".github/workflows/assistant-cloudflare-hub-release.yml",
-      ".naya/control-plane/PROGRESS-CHECKPOINT.json",
+      ".github/workflows/510-aaa-smart-board-visual-surgery.yml",
       "2026 09 15 NayaNETHUB.html",
-      "commit: 5989bc72e0a515a774ed0dafb61d2073bf1785ce"
+      "commit: e784bbc285e983024d45ca36adaa36538bb43d5d",
+      "510 run: 35048091022"
     ],
-    "result": "The Cloudflare release workflow now executes on changes to the canonical Hub, its workflow, or the protected progress checkpoint. It still deploys the exact canonical HTML artifact to worker sparkling-shape-7ae5 and independently curls the live runtime after deployment.",
-    "first_divergence_repaired": "The live Cloudflare worker remained on the old Hub while the canonical GitHub source had advanced. The release lane was only watching the canonical HTML and its own workflow, so the protected checkpoint repair could not itself trigger a release. The workflow path set is now bound to the checkpoint so the current protected tree can force a fresh canonical deployment without creating another Hub artifact.",
+    "result": "The canonical Smart Board source no longer installs either self-triggering MutationObserver loop. The 510 workflow verified the V2 contract, all required presentation labels, vertical layout enforcement, and the runtime-loop repair, then committed the canonical HTML repair.",
+    "first_divergence_repaired": "Chromium runtime proof repeatedly timed out on the live page while the source contained two MutationObservers that re-ran their own DOM/style mutations. The first real runtime defect was identified and removed from the canonical HTML before the next production proof attempt.",
     "authorized_by": "NAYA POWER repository authority / Shawn Vibert",
-    "timestamp": "2026-09-16T02:30:00Z"
+    "timestamp": "2026-09-16T02:28:20Z"
   },
   "protected_scope": {
     "rule": "Changes to critical execution architecture require verification and a fresh checkpoint before the next protected change is accepted.",
@@ -74,9 +74,9 @@
   "unknowns": [
     "Fresh Protected Progress Gate acceptance after this checkpoint refresh is pending.",
     "Fresh external LLM behavioral proof beyond repository-level cold-Naya acceptance remains unknown.",
-    "Fresh Cloudflare production deployment and live runtime proof are pending on the release triggered by this checkpoint commit."
+    "Fresh Cloudflare production deployment and Chromium rendered-runtime proof are pending on the release triggered by this checkpoint commit."
   ],
-  "next_action": "Allow the checkpoint push to trigger NAYA 509 — Assistant Cloudflare Hub Release, then inspect the live worker and require exact canonical Smart Board runtime proof before declaring completion.",
+  "next_action": "Allow this checkpoint push to trigger NAYA 509 — Assistant Cloudflare Hub Release, then require the rendered Smart Board runtime proof to pass at desktop and mobile before declaring production complete.",
   "truth_rules": [
     "CHECKPOINTED != VERIFIED",
     "VERIFIED != PRODUCTION_PROVEN",
