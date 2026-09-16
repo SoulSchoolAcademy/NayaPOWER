@@ -70,14 +70,11 @@ jobs:
           grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' "$RUNNER_TEMP/live.html"
 
-      - name: Install browser runtime
-        shell: bash
-        run: npx --yes playwright@1.55.0 install --with-deps chromium
-
       - name: Prove rendered Smart Board runtime
         shell: bash
         run: |
           set -euo pipefail
+          command -v google-chrome || command -v google-chrome-stable
           cat > "$RUNNER_TEMP/verify-smart-board.mjs" <<'EOF'
           import { chromium } from 'playwright';
 
@@ -130,7 +127,11 @@ jobs:
             console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${result.blockCount} Smart Board blocks`);
           }
 
-          const browser = await chromium.launch({ headless: true });
+          const browser = await chromium.launch({
+            headless: true,
+            executablePath: '/usr/bin/google-chrome',
+            args: ['--no-sandbox','--disable-dev-shm-usage']
+          });
           try {
             await prove(await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 }), 'desktop');
             await prove(await browser.newPage({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 1 }), 'mobile');
