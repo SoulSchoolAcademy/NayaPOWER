@@ -23,10 +23,26 @@ jobs:
           p=Path('2026 09 15 NayaNETHUB.html')
           s=p.read_text(encoding='utf-8')
           labels=r'(?:IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS|WHAT[’\']S IN IT FOR YOU)'
-          s=re.sub(r'(?i)(>\s*)(?:0?\d\s*[·•\-:]\s*)('+labels+r')(?=\s*<)', r'\1\2', s)
-          s=re.sub(r'(?i)(>\s*)(?:0?\d\s+)((?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS))(?=\s*<)', r'\1\2', s)
+
+          # Normalize legacy visible labels first.
           s=re.sub(r'(?i)(>\s*)ADAPTIVE LEARNING(?:\s+LEARNING)?(\s*<)', r'\1LEARNING LESSON\2', s)
           s=re.sub(r'(?i)(>\s*)WHAT(?:\s+IS|\s+\'S|\s+’S)\s+IN\s+IT\s+FOR\s+YOU\??(\s*<)', r'\1WHAT\'S IN IT FOR YOU\2', s)
+
+          # Layer headings are the only place where a numeric prefix is a label prefix.
+          # Strip standalone 1–9 text whether it is plain text or isolated in a span,
+          # while leaving legitimate numbers in the board content untouched.
+          head=re.compile(r'(<[^>]*class=["\'][^"\']*layerHead[^"\']*["\'][^>]*>.*?</[^>]+>)', re.I|re.S)
+          def clean_head(m):
+              h=m.group(1)
+              h=re.sub(r'(?is)(<span\b[^>]*>\s*)[1-9]\s*(?:[·•.\-:]\s*)?(\s*</span>)', r'\1\2', h)
+              h=re.sub(r'(?is)(>\s*)[1-9]\s*(?:[·•.\-:]\s*)?(?=(?:<[^>]+>\s*)*(?:'+labels+r')\b)', r'\1', h)
+              h=re.sub(r'(?is)(>\s*)[1-9]\s+(?=(?:'+labels+r')\b)', r'\1', h)
+              return h
+          s=head.sub(clean_head,s)
+
+          # Final direct-text cleanup for any remaining label prefixes.
+          s=re.sub(r'(?i)(>\s*)[1-9]\s*[·•.\-:]\s*('+labels+r')(?=\s*<)', r'\1\2', s)
+          s=re.sub(r'(?i)(>\s*)[1-9]\s+((?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS))(?=\s*<)', r'\1\2', s)
           p.write_text(s,encoding='utf-8')
           PY
 
@@ -41,8 +57,10 @@ jobs:
             n=len(re.findall(re.escape(x),s,re.I))
             print(x,n)
             if n < 1: raise SystemExit('Missing canonical layer: '+x)
-          if re.search(r'>\s*(?:[1-9]\s*[·•\-:]\s*)?(?:HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE)\s*<',s,re.I):
-            raise SystemExit('Visible numeric layer prefix remains')
+          heads=re.findall(r'<[^>]*class=["\'][^"\']*layerHead[^"\']*["\'][^>]*>.*?</[^>]+>',s,re.I|re.S)
+          for h in heads:
+            if re.search(r'(?is)>\s*[1-9]\s*(?:[·•.\-:]\s*)?(?:<[^>]+>\s*)*(?:IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS|WHAT[’\']S IN IT FOR YOU)\b',h):
+              raise SystemExit('Visible numeric layer prefix remains')
           print('Canonical label verification passed.')
           PY
 
