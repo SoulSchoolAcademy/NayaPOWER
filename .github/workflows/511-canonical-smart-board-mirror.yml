@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v19
+# execution-proof-v20 — elite visual refinement
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -41,6 +41,92 @@ jobs:
           print('CANONICAL_PRESENTATION_NORMALIZATION=APPLIED')
           PY
 
+      - name: Elite visual refinement — canonical source layer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('2026 09 15 NayaNETHUB.html')
+          s=p.read_text(encoding='utf-8')
+          css=r'''<style id="naya-elite-interface-refinement">
+          .naya-elite-icon{width:28px;height:28px;flex:0 0 28px;display:inline-grid;place-items:center;color:var(--tone,#9d75ff);filter:drop-shadow(0 4px 10px #0009)}
+          .naya-elite-icon svg{width:100%;height:100%;display:block;overflow:visible}
+          .layerHead .naya-elite-icon{width:24px;height:24px;flex-basis:24px}
+          .glyph .naya-elite-icon{width:31px;height:31px}
+          .glyph:has(.naya-elite-icon){font-size:0}
+          .naya-live-datetime{display:inline-flex;align-items:center;gap:8px;color:#f8f7fb;font-size:10px;font-weight:850;letter-spacing:.045em;white-space:nowrap}
+          .naya-live-datetime .date{color:#aaa4b1;font-weight:700}
+          .top .title:has(.naya-live-datetime){font-size:10px}
+          .nutshell{position:relative}
+          .nutshell .naya-o1-artifact,.nutshell .o1,.nutshell .o1-badge,.nutshell .o1-icon,.nutshell [data-o1],.nutshell [class*="o1"]{display:none!important}
+          .nutshell b{font-size:9px;font-weight:950;letter-spacing:.14em}
+          .nutshell p{font-size:18px;line-height:1.68}
+          .naya-elite-layer-label{font-size:8px!important;font-weight:900!important;letter-spacing:.12em!important;line-height:1.2!important}
+          .naya-elite-for-you{font-size:11px!important;font-weight:700!important;line-height:1.55!important;color:#c9c3ce!important}
+          @media(max-width:700px){.naya-live-datetime{font-size:8px;gap:6px}.naya-live-datetime .date{font-size:8px}.glyph .naya-elite-icon{width:29px;height:29px}.layerHead .naya-elite-icon{width:22px;height:22px}.nutshell p{font-size:16px}}
+          </style>'''
+          if 'id="naya-elite-interface-refinement"' not in s:
+              s=s.replace('</head>',css+'</head>',1)
+          js=r'''<script id="naya-elite-interface-refinement-runtime">
+          (()=>{
+            const NS='http://www.w3.org/2000/svg';
+            const paths={
+              nutshell:'<path d="M12 2.8 14.7 9l6.5.6-4.9 4.2 1.5 6.3-5.8-3.4-5.8 3.4 1.5-6.3-4.9-4.2L9.3 9 12 2.8Z"/>',
+              human:'<path d="M12 20.5c-4.5 0-7.8-2.2-7.8-5.1 0-2.1 1.7-3.8 4.2-4.6-.5-.7-.8-1.5-.8-2.4A4.4 4.4 0 0 1 12 4a4.4 4.4 0 0 1 4.4 4.4c0 .9-.3 1.7-.8 2.4 2.5.8 4.2 2.5 4.2 4.6 0 2.9-3.3 5.1-7.8 5.1Z"/>',
+              child:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.4-3.4 2.5-5.4 6.5-5.4s6.1 2 6.5 5.4"/>',
+              grandma:'<path d="M5 20v-6.5A7 7 0 0 1 19 13.5V20"/><circle cx="12" cy="9" r="4.5"/><path d="M7.3 7.2c1.4-3.2 8-3.2 9.4 0"/>',
+              naya:'<path d="m12 2.5 1.9 6.1 6.1 1.9-6.1 1.9-1.9 6.1-1.9-6.1L4 10.5l6.1-1.9L12 2.5Z"/>',
+              machine:'<rect x="5" y="5" width="14" height="14" rx="3"/><path d="M8 9h8M8 12h8M8 15h5M9 2.5v2.5M15 2.5v2.5M9 19v2.5M15 19v2.5M2.5 9H5M2.5 15H5M19 9h2.5M19 15h2.5"/>',
+              learning:'<path d="M5 19 19 5M9 5h10v10"/><path d="M5 9V5h4"/>',
+              meaning:'<circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.3a2.8 2.8 0 1 1 4.5 2.2c-1.3.9-2 1.4-2 3M12 17.7h.01"/>',
+              value:'<path d="M12 21s-7.5-4.4-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.6-7.5 10-7.5 10Z"/><path d="M12 11v5M9.8 13h4.4"/>'
+            };
+            const boardIcons={
+              'WHAT IS NAYA POWER?':'machine','WHAT IS NAYA?':'naya','WHAT ARE SMART NOTES?':'nutshell','YOUR INTELLIGENCE TODAY':'meaning','INTELLIGENCE REPORTS':'learning','WHAT IS THE INTELLIGENT LIBRARY?':'machine','SMART LISTS':'value','INTELLIGENT FEED / SMART FEED':'learning','SMART TABS':'nutshell'
+            };
+            const layerIcons={'IN A NUTSHELL':'nutshell','HUMAN NOTE':'human','CHILD NOTE':'child','GRANDMA NOTE':'grandma','NAYA NOTE':'naya','MACHINE NOTE':'machine','LEARNING LESSON':'learning','WHAT IT MEANS':'meaning',"WHAT'S IN IT FOR YOU":'value'};
+            const norm=x=>String(x||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/’/g,"'").replace(/\s+/g,' ').trim().toUpperCase();
+            function icon(kind,cls='naya-elite-icon'){
+              const span=document.createElement('span');span.className=cls;span.setAttribute('aria-hidden','true');
+              const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.7');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.innerHTML=paths[kind]||paths.meaning;span.appendChild(svg);return span;
+            }
+            function now(){
+              const title=document.querySelector('.top .title'); if(!title)return;
+              if(title.querySelector('.naya-live-datetime'))return;
+              title.textContent=''; const t=document.createElement('time');t.className='naya-live-datetime';
+              const time=document.createElement('span'),date=document.createElement('span');date.className='date';
+              const d=new Date(); time.textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); date.textContent=d.toLocaleDateString([], {weekday:'short',month:'short',day:'numeric',year:'numeric'}); t.append(time,date);title.appendChild(t);
+            }
+            function cleanO1(root){
+              if(!root)return;
+              [...root.querySelectorAll('*')].reverse().forEach(el=>{
+                const tx=norm(el.textContent); const cls=String(el.className||'').toLowerCase();
+                if(tx==='O1'||tx==='01'||tx==='01·IN A NUTSHELL'||tx==='01 IN A NUTSHELL'||/\bo1\b/.test(cls)||/o1-(badge|icon|artifact)/.test(cls)) el.remove();
+              });
+            }
+            function icons(){
+              document.querySelectorAll('.block').forEach(board=>{
+                const title=norm(board.querySelector('h3')?.textContent);
+                const g=board.querySelector('.glyph'); if(g){g.replaceChildren(icon(boardIcons[title]||'meaning'));g.setAttribute('aria-label',title||'Smart Board');}
+                board.querySelectorAll('.layer').forEach(layer=>{
+                  const h=layer.querySelector('.layerHead b'); if(!h)return; const label=norm(h.textContent); h.textContent=label.replace(/^\s*\d+\s*[·.\-—:]?\s*/, ''); h.classList.add('naya-elite-layer-label');
+                  const dot=layer.querySelector('.dot'); if(dot){dot.replaceWith(icon(layerIcons[label]||'meaning','naya-elite-icon'));}
+                  if(label==="WHAT'S IN IT FOR YOU") layer.querySelector('.layerBody')?.classList.add('naya-elite-for-you');
+                });
+                const nutshell=board.querySelector('.nutshell'); if(nutshell) cleanO1(nutshell);
+              });
+            }
+            function refine(){now();icons();const first=document.querySelector('.block');if(first)cleanO1(first);}
+            const run=()=>{refine();setTimeout(refine,80);setTimeout(refine,300);setInterval(now,30000)};
+            if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+          })();</script>'''
+          if 'id="naya-elite-interface-refinement-runtime"' not in s:
+              s=s.replace('</body>',js+'</body>',1)
+          p.write_text(s,encoding='utf-8')
+          print('ELITE_VISUAL_REFINEMENT=APPLIED')
+          PY
+
       - name: Structural verifier — canonical Smart Board path
         shell: bash
         run: |
@@ -56,13 +142,16 @@ jobs:
           if board_start<0: raise SystemExit('FAIL: canonical board() missing')
           board_end=s.find('function ',board_start+1); board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: canonical board() section contract missing')
-          if '.perspectiveNo{display:none!important}' not in s: raise SystemExit('FAIL: numeric marker suppression missing')
+          for marker in ['.perspectiveNo{display:none!important}','naya-elite-interface-refinement','naya-elite-interface-refinement-runtime','naya-live-datetime']:
+              if marker not in s: raise SystemExit('FAIL: elite refinement marker missing: '+marker)
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
           if "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"" in s: raise SystemExit('FAIL: legacy question-mark value label remains')
           for marker in ['LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]:
               if marker not in s: raise SystemExit('FAIL: canonical layer marker missing: '+marker)
           print('CANONICAL_RENDER_PATH=PASS')
           print('VISIBLE_NUMERIC_PREFIXES=PASS')
+          print('ELITE_ICON_SYSTEM=PASS')
+          print('ELITE_DATETIME_HEADER=PASS')
           print('CANONICAL_LEARNING_LAYER=PASS')
           print('CANONICAL_MEANING_LAYER=PASS')
           print('CANONICAL_FOR_YOU_LAYER=PASS')
@@ -77,6 +166,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- '2026 09 15 NayaNETHUB.html'
-          git commit -m 'Normalize Smart Board layers and remove visible numbering'
+          git commit -m 'Refine Smart Board interface to elite visual standard'
           git push origin HEAD:main
           echo 'CANONICAL_SOURCE_COMMIT=PUSHED'
