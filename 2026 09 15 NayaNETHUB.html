@@ -667,6 +667,15 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}
 .elite-board .dot .v10-icon{width:64px!important;height:64px!important}
 </style>
+
+<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+.elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
+.elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important;min-height:116px!important;padding:14px 30px!important}
+.elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}
+.elite-board:first-child .nutshell p{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 32px 33px!important}
+.elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board:first-child .glyph{flex:0 0 116px!important}
+.elite-board .layerHead{gap:24px!important}.elite-board .layerHead b{font-size:14px!important}.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 31px 33px!important}.elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}.elite-board .dot .v10-icon{width:64px!important;height:64px!important}
+</style>
 <style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 .elite-board{width:100%!important;display:block!important;position:relative!important}
 .elite-board .blockInner{width:100%!important;max-width:none!important}
@@ -857,6 +866,23 @@ render();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
 })();
 </script>
+
+<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+(()=>{
+  const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
+  const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
+  const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
+  const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
+  function cleanNutshell(n){if(!n)return;const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}
+  function normalize(){
+    const boards=qq('.elite-board');
+    boards.forEach((board,bi)=>{if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}const layers=q('.layers',board);if(!layers)return;const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=norm(h.textContent);t=ALIAS[t]||t;if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});});
+    qq('.status').forEach(x=>x.remove());
+    const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
+})();
+</script>
 <script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 (()=>{
   const NS='http://www.w3.org/2000/svg';
@@ -916,21 +942,13 @@ render();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
 })();
 </script>
-<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
-(()=>{
-  const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
-  const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
-  const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
-  const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
-  function cleanNutshell(n){if(!n)return;const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}
-  function normalize(){
-    const boards=qq('.elite-board');
-    boards.forEach((board,bi)=>{if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}const layers=q('.layers',board);if(!layers)return;const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=norm(h.textContent);t=ALIAS[t]||t;if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});});
-    qq('.status').forEach(x=>x.remove());
-    const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
-  }
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
-})();
-</script>
+<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">(()=>{
+const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
+const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
+const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
+const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
+function cleanNutshell(n){if(!n)return;const p=q('p',n),b=q('b',n);[...n.children].forEach(x=>{if(x!==b&&x!==p)x.remove()});if(b){b.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');b.append(star,document.createTextNode('IN A NUTSHELL'));}}
+function run(){const boards=qq('.elite-board');boards.forEach((board,bi)=>{if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}const layers=q('.layers',board);if(!layers)return;const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=ALIAS[norm(h.textContent)]||norm(h.textContent);if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(k=>{if(map.has(k))layers.appendChild(map.get(k))});});qq('.status').forEach(x=>x.remove());const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>
 </body>
 </html>
