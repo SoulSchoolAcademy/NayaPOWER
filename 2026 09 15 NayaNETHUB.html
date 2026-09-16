@@ -677,7 +677,23 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 
 <!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->
-</head>
+<style id="naya-elite-interface-refinement">
+.naya-elite-icon{width:28px;height:28px;flex:0 0 28px;display:inline-grid;place-items:center;color:var(--tone,#9d75ff);filter:drop-shadow(0 4px 10px #0009)}
+.naya-elite-icon svg{width:100%;height:100%;display:block;overflow:visible}
+.layerHead .naya-elite-icon{width:24px;height:24px;flex-basis:24px}
+.glyph .naya-elite-icon{width:31px;height:31px}
+.glyph:has(.naya-elite-icon){font-size:0}
+.naya-live-datetime{display:inline-flex;align-items:center;gap:8px;color:#f8f7fb;font-size:10px;font-weight:850;letter-spacing:.045em;white-space:nowrap}
+.naya-live-datetime .date{color:#aaa4b1;font-weight:700}
+.top .title:has(.naya-live-datetime){font-size:10px}
+.nutshell{position:relative}
+.nutshell .naya-o1-artifact,.nutshell .o1,.nutshell .o1-badge,.nutshell .o1-icon,.nutshell [data-o1],.nutshell [class*="o1"]{display:none!important}
+.nutshell b{font-size:9px;font-weight:950;letter-spacing:.14em}
+.nutshell p{font-size:18px;line-height:1.68}
+.naya-elite-layer-label{font-size:8px!important;font-weight:900!important;letter-spacing:.12em!important;line-height:1.2!important}
+.naya-elite-for-you{font-size:11px!important;font-weight:700!important;line-height:1.55!important;color:#c9c3ce!important}
+@media(max-width:700px){.naya-live-datetime{font-size:8px;gap:6px}.naya-live-datetime .date{font-size:8px}.glyph .naya-elite-icon{width:29px;height:29px}.layerHead .naya-elite-icon{width:22px;height:22px}.nutshell p{font-size:16px}}
+</style></head>
 <body>
 <div class="shell">
 <aside class="rail left">
@@ -784,5 +800,57 @@ function run(){qq('.naya509-unified-board').forEach(cleanBoard)}if(document.read
 
 
 <script id="naya-smart-board-finalizer">(()=>{const A={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','ADAPTIVE LEARNING':'LEARNING LESSON'};const C={'HUMAN NOTE':['semantic-human','#ff2fa4','♥'],'CHILD NOTE':['semantic-child','#8b42ff','●'],'GRANDMA NOTE':['semantic-grandma','#4b5dff','◆'],'NAYA NOTE':['semantic-naya','#ff9a5a','✦'],'MACHINE NOTE':['semantic-machine','#26c875','⬡'],'LEARNING LESSON':['semantic-learning','#b8ee57','↗'],'WHAT IT MEANS':['semantic-meaning','#f1d75a','✧'],'HOW TO APPLY / HOW TO USE':['semantic-apply','#e8c766','→'],"WHAT'S IN IT FOR YOU":['semantic-value','#dfe6ee','✚']};const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];function iconize(x,t,c){let d=x.querySelector('.dot');if(!d){d=document.createElement('span');d.className='dot';const h=x.querySelector('.layerHead');if(h)h.prepend(d)}d.setAttribute('data-icon',c[2]);x.className='layer '+c[0];x.style.setProperty('--layer',c[1]);const h=x.querySelector('.layerHead b');if(h)h.textContent=t}function repairLayerList(l){l.style.display='flex';l.style.flexDirection='column';l.style.width='100%';const seen=new Set();[...l.children].forEach(x=>{const h=x.querySelector('.layerHead b');if(!h)return;let t=h.textContent.replace(/^\s*\d+\s*[·.-]\s*/,'').replace(/’/g,"'").trim().toUpperCase();t=A[t]||t;if(C[t]){iconize(x,t,C[t]);seen.add(t)}else x.remove()});if(!seen.has('HOW TO APPLY / HOW TO USE')){const x=document.createElement('div');x.className='layer semantic-apply';x.style.setProperty('--layer','#e8c766');x.innerHTML="<div class='layerHead'><span class='dot' data-icon='→'></span><b>HOW TO APPLY / HOW TO USE</b><span class='state'>ACTION</span></div><div class='layerBody'><strong>Turn understanding into responsible action.</strong> Check the evidence and take one concrete next step supported by what is known.</div>";l.append(x)}if(!seen.has("WHAT'S IN IT FOR YOU")){const x=document.createElement('div');x.className='layer semantic-value';x.style.setProperty('--layer','#dfe6ee');x.innerHTML="<div class='layerHead'><span class='dot' data-icon='✚'></span><b>WHAT'S IN IT FOR YOU</b><span class='state'>VALUE</span></div><div class='layerBody'><strong>Know what this changes for you.</strong> Use the insight to make a clearer decision, save effort, or take a useful next step.</div>";l.append(x)}const map=new Map([...l.children].map(x=>[x.querySelector('.layerHead b')?.textContent,x]));ORDER.forEach(k=>{const x=map.get(k);if(x)l.append(x)});l.querySelectorAll(':scope>.layer').forEach(x=>{x.style.width='100%';x.style.gridColumn='1 / -1';x.style.float='none'})}function repairBlock(b){b.querySelectorAll('h1,h2,h3,h4,h5,.layerHead b').forEach(h=>h.textContent=h.textContent.replace(/^\s*SMART\s*NOTE\s*\d+\s*[:·—-]?\s*/i,'').replace(/^\s*\d+\s*[·.-]\s*/,'').trim());b.querySelectorAll('.truth,.naya509-block-kicker,.naya509-flow-marker,.naya509-living-spine,.naya509-block-context,.naya509-source-row,.naya509-next-status,.naya509-layer-tag').forEach(x=>x.remove());const n=b.querySelector('.nutshell');if(n){n.classList.add('semantic-nutshell');n.style.setProperty('--layer','#f7f7fa');let i=n.querySelector('.nutshellIcon');if(!i){i=document.createElement('span');i.className='nutshellIcon';i.setAttribute('data-icon','◉');n.prepend(i)}}const l=b.querySelector('.layers');if(l)repairLayerList(l)}function f(){let b=document.querySelector('.naya509-unified-board');const nav=document.querySelector('.feedNav'),head=document.querySelector('.feedHead'),blocks=document.querySelector('.blocks');if(!b&&nav&&blocks){b=document.createElement('section');b.className='naya509-unified-board naya-smart-board-v2 naya509-board';nav.parentNode.insertBefore(b,nav);b.append(nav);if(head)b.append(head);b.append(blocks)}if(!b)return;b.classList.add('naya-smart-board-v2','naya509-board');b.querySelectorAll('.block').forEach(repairBlock);const styleId='naya-smart-board-contract-css';if(!document.getElementById(styleId)){const st=document.createElement('style');st.id=styleId;st.textContent='.naya-smart-board-v2 .blocks{display:block!important}.naya-smart-board-v2 .block{width:100%!important;display:block!important}.naya-smart-board-v2 .layers{display:flex!important;flex-direction:column!important;width:100%!important}.naya-smart-board-v2 .layer{width:100%!important;display:block!important;float:none!important;grid-column:1 / -1!important}.naya-smart-board-v2 .layerHead{min-height:58px}.naya-smart-board-v2 .dot{width:38px!important;height:38px!important;flex:0 0 38px!important;border-radius:12px!important;display:grid!important;place-items:center!important;border:2px solid color-mix(in srgb,var(--layer) 62%,#fff 12%)!important;background:radial-gradient(circle at 32% 25%,#fff7,color-mix(in srgb,var(--layer) 30%,#09090e) 38%,#07070b 78%)!important;color:#fff!important;box-shadow:inset 0 1px #fff9,0 7px 18px #000b,0 0 18px color-mix(in srgb,var(--layer) 28%,transparent)!important;font-size:15px!important}.naya-smart-board-v2 .dot:before{content:attr(data-icon)}.naya-smart-board-v2 .semantic-nutshell{position:relative;border:2px solid #fff8!important;box-shadow:inset 0 1px #fff8,0 18px 38px #000b,0 0 22px #fff2!important;padding-left:70px!important}.naya-smart-board-v2 .nutshellIcon{position:absolute;left:20px;top:20px;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff;background:radial-gradient(circle at 30% 25%,#fff,#cfd2dc 38%,#5d606c 100%);border:2px solid #fff;box-shadow:inset 0 1px #fff,0 7px 18px #000b,0 0 20px #fff6;font-size:14px}.naya-smart-board-v2 .semantic-human{--layer:#ff2fa4}.naya-smart-board-v2 .semantic-child{--layer:#8b42ff}.naya-smart-board-v2 .semantic-grandma{--layer:#4b5dff}.naya-smart-board-v2 .semantic-naya{--layer:#ff9a5a}.naya-smart-board-v2 .semantic-machine{--layer:#26c875}.naya-smart-board-v2 .semantic-learning{--layer:#b8ee57}.naya-smart-board-v2 .semantic-meaning{--layer:#f1d75a}.naya-smart-board-v2 .semantic-apply{--layer:#e8c766}.naya-smart-board-v2 .semantic-value{--layer:#dfe6ee}@media(max-width:820px){.naya-smart-board-v2 .layerHead{min-height:54px}.naya-smart-board-v2 .dot{width:34px!important;height:34px!important;flex-basis:34px!important;font-size:13px!important}.naya-smart-board-v2 .semantic-nutshell{padding-left:62px!important}.naya-smart-board-v2 .nutshellIcon{left:16px;top:16px;width:34px;height:34px}}';document.head.append(st)}b.querySelectorAll('.layer').forEach(x=>{x.style.width='100%';x.style.gridColumn='1 / -1';x.style.float='none'})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',f);else f();setTimeout(f,500);setTimeout(f,1500)})();</script>
-</body>
+<script id="naya-elite-interface-refinement-runtime">
+(()=>{
+  const NS='http://www.w3.org/2000/svg';
+  const paths={
+    nutshell:'<path d="M12 2.8 14.7 9l6.5.6-4.9 4.2 1.5 6.3-5.8-3.4-5.8 3.4 1.5-6.3-4.9-4.2L9.3 9 12 2.8Z"/>',
+    human:'<path d="M12 20.5c-4.5 0-7.8-2.2-7.8-5.1 0-2.1 1.7-3.8 4.2-4.6-.5-.7-.8-1.5-.8-2.4A4.4 4.4 0 0 1 12 4a4.4 4.4 0 0 1 4.4 4.4c0 .9-.3 1.7-.8 2.4 2.5.8 4.2 2.5 4.2 4.6 0 2.9-3.3 5.1-7.8 5.1Z"/>',
+    child:'<circle cx="12" cy="8" r="3.2"/><path d="M5.5 20c.4-3.4 2.5-5.4 6.5-5.4s6.1 2 6.5 5.4"/>',
+    grandma:'<path d="M5 20v-6.5A7 7 0 0 1 19 13.5V20"/><circle cx="12" cy="9" r="4.5"/><path d="M7.3 7.2c1.4-3.2 8-3.2 9.4 0"/>',
+    naya:'<path d="m12 2.5 1.9 6.1 6.1 1.9-6.1 1.9-1.9 6.1-1.9-6.1L4 10.5l6.1-1.9L12 2.5Z"/>',
+    machine:'<rect x="5" y="5" width="14" height="14" rx="3"/><path d="M8 9h8M8 12h8M8 15h5M9 2.5v2.5M15 2.5v2.5M9 19v2.5M15 19v2.5M2.5 9H5M2.5 15H5M19 9h2.5M19 15h2.5"/>',
+    learning:'<path d="M5 19 19 5M9 5h10v10"/><path d="M5 9V5h4"/>',
+    meaning:'<circle cx="12" cy="12" r="8.5"/><path d="M9.5 9.3a2.8 2.8 0 1 1 4.5 2.2c-1.3.9-2 1.4-2 3M12 17.7h.01"/>',
+    value:'<path d="M12 21s-7.5-4.4-7.5-10A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7.5 3c0 5.6-7.5 10-7.5 10Z"/><path d="M12 11v5M9.8 13h4.4"/>'
+  };
+  const boardIcons={
+    'WHAT IS NAYA POWER?':'machine','WHAT IS NAYA?':'naya','WHAT ARE SMART NOTES?':'nutshell','YOUR INTELLIGENCE TODAY':'meaning','INTELLIGENCE REPORTS':'learning','WHAT IS THE INTELLIGENT LIBRARY?':'machine','SMART LISTS':'value','INTELLIGENT FEED / SMART FEED':'learning','SMART TABS':'nutshell'
+  };
+  const layerIcons={'IN A NUTSHELL':'nutshell','HUMAN NOTE':'human','CHILD NOTE':'child','GRANDMA NOTE':'grandma','NAYA NOTE':'naya','MACHINE NOTE':'machine','LEARNING LESSON':'learning','WHAT IT MEANS':'meaning',"WHAT'S IN IT FOR YOU":'value'};
+  const norm=x=>String(x||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/’/g,"'").replace(/\s+/g,' ').trim().toUpperCase();
+  function icon(kind,cls='naya-elite-icon'){
+    const span=document.createElement('span');span.className=cls;span.setAttribute('aria-hidden','true');
+    const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('fill','none');svg.setAttribute('stroke','currentColor');svg.setAttribute('stroke-width','1.7');svg.setAttribute('stroke-linecap','round');svg.setAttribute('stroke-linejoin','round');svg.innerHTML=paths[kind]||paths.meaning;span.appendChild(svg);return span;
+  }
+  function now(){
+    const title=document.querySelector('.top .title'); if(!title)return;
+    if(title.querySelector('.naya-live-datetime'))return;
+    title.textContent=''; const t=document.createElement('time');t.className='naya-live-datetime';
+    const time=document.createElement('span'),date=document.createElement('span');date.className='date';
+    const d=new Date(); time.textContent=d.toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}); date.textContent=d.toLocaleDateString([], {weekday:'short',month:'short',day:'numeric',year:'numeric'}); t.append(time,date);title.appendChild(t);
+  }
+  function cleanO1(root){
+    if(!root)return;
+    [...root.querySelectorAll('*')].reverse().forEach(el=>{
+      const tx=norm(el.textContent); const cls=String(el.className||'').toLowerCase();
+      if(tx==='O1'||tx==='01'||tx==='01·IN A NUTSHELL'||tx==='01 IN A NUTSHELL'||/\bo1\b/.test(cls)||/o1-(badge|icon|artifact)/.test(cls)) el.remove();
+    });
+  }
+  function icons(){
+    document.querySelectorAll('.block').forEach(board=>{
+      const title=norm(board.querySelector('h3')?.textContent);
+      const g=board.querySelector('.glyph'); if(g){g.replaceChildren(icon(boardIcons[title]||'meaning'));g.setAttribute('aria-label',title||'Smart Board');}
+      board.querySelectorAll('.layer').forEach(layer=>{
+        const h=layer.querySelector('.layerHead b'); if(!h)return; const label=norm(h.textContent); h.textContent=label.replace(/^\s*\d+\s*[·.\-—:]?\s*/, ''); h.classList.add('naya-elite-layer-label');
+        const dot=layer.querySelector('.dot'); if(dot){dot.replaceWith(icon(layerIcons[label]||'meaning','naya-elite-icon'));}
+        if(label==="WHAT'S IN IT FOR YOU") layer.querySelector('.layerBody')?.classList.add('naya-elite-for-you');
+      });
+      const nutshell=board.querySelector('.nutshell'); if(nutshell) cleanO1(nutshell);
+    });
+  }
+  function refine(){now();icons();const first=document.querySelector('.block');if(first)cleanO1(first);}
+  const run=()=>{refine();setTimeout(refine,80);setTimeout(refine,300);setInterval(now,30000)};
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+})();</script></body>
 </html>
