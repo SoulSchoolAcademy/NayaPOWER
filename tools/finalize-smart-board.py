@@ -3,12 +3,14 @@ import re
 
 FILE=Path('2026 09 15 NayaNETHUB.html')
 s=FILE.read_text(encoding='utf-8')
-s=re.sub(r'<style id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</style>','',s,flags=re.S)
-s=re.sub(r'<script id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</script>','',s,flags=re.S)
-# Remove every legacy 509 real-feed renderer/presentation script. Static HTML + V10 is the only board renderer.
+# Single visual authority: keep only the surgical V10 style/script pair.
+for sid in ('NAYA-SMART-BOARD-V11-GITHUB-FINAL','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10','naya-elite-interface-refinement'):
+    s=re.sub(r'<style id="'+re.escape(sid)+r'">.*?</style>','',s,flags=re.S|re.I)
+s=re.sub(r'<script[^>]*>.*?NAYA-SMART-BOARD-V11-GITHUB-FINAL.*?</script>','',s,flags=re.S|re.I)
+# Remove every legacy 509 real-feed renderer/presentation script.
 s=re.sub(r'<script[^>]*>.*?Naya509NineNoteParser.*?</script>','',s,flags=re.S)
-s=re.sub(r'<script[^>]*>.*?naya-509-real-smart-feed-[^<]*.*?</script>','',s,flags=re.S|re.I)
 s=re.sub(r'<script[^>]*>.*?naya-509-real-smart-feed.*?</script>','',s,flags=re.S|re.I)
+# Resolve legacy labels in the committed HTML itself, not only at runtime.
 s=s.replace('ADAPTIVE LEARNING','LEARNING LESSON')
 s=s.replace("WHAT'S IN IT FOR YOU?","WHAT'S IN IT FOR YOU")
 s=re.sub(r'(<div class="layerHead">\s*<i class="dot"></i>\s*<b>)CHILD(</b>)',r'\1CHILD NOTE\2',s,flags=re.I)
@@ -27,8 +29,8 @@ css=r'''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
 s,n=re.subn(r'<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.*?</style>',css,s,count=1,flags=re.S)
 if n!=1: raise SystemExit('Expected exactly one V10 surgical style')
 if len(re.findall(r'id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL"',s))!=2: raise SystemExit('V10 surgical style/script authority is not singular')
-if 'NAYA-SMART-BOARD-V11-GITHUB-FINAL' in s: raise SystemExit('V11 artifact remains')
-if 'Naya509NineNoteParser' in s or 'naya-509-real-smart-feed-' in s: raise SystemExit('Legacy Smart Board renderer remains')
+for bad in ('NAYA-SMART-BOARD-V11-GITHUB-FINAL','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10','naya-elite-interface-refinement','Naya509NineNoteParser','naya-509-real-smart-feed-'):
+    if bad in s: raise SystemExit('Legacy Smart Board artifact remains: '+bad)
 for marker in ('What is Naya Power','LEARNING LESSON',"WHAT'S IN IT FOR YOU",'HOW TO APPLY / HOW TO USE','font-size:18px!important','font-size:14px!important'):
     if marker not in s: raise SystemExit(f'missing {marker}')
 FILE.write_text(s,encoding='utf-8')
