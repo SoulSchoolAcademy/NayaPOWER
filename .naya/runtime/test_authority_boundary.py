@@ -67,7 +67,7 @@ def test_tool_gateway_requires_registry_authority_and_claim_binding():
     with tempfile.TemporaryDirectory() as tmp:
         state_path = Path(tmp) / "EXECUTION-STATE.json"
         _claimed(state_path)
-        action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L2", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
+        action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
         result = gateway.authorize(action)
         assert result["status"] == "AUTHORIZED", result
         assert result["authority_id"] == action["authority_id"]
