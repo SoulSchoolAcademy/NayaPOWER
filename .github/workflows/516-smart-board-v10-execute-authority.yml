@@ -1,0 +1,65 @@
+name: 516 Smart Board V10 Execute Authority
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/516-smart-board-v10-execute-authority.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Restore exact V10 blocks and repair requested DOM
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import re, subprocess
+          p=Path('2026 09 15 NayaNETHUB.html'); s=p.read_text(encoding='utf-8')
+          base=subprocess.check_output(['git','show','60c70db83c8ffdf954b73c45821fd53a3eeebbf7:2026 09 15 NayaNETHUB.html'],text=True)
+          def grab(src,tag,marker):
+              pos=src.find(marker); a=src.rfind('<'+tag,0,pos); b=src.find('</'+tag+'>',pos)
+              if pos<0 or a<0 or b<0: raise SystemExit('protected block missing '+marker)
+              return src[a:b+len(tag)+3]
+          v10style=grab(base,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10'); v10script=grab(base,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
+          def remove(src,tag,marker):
+              while marker in src:
+                  pos=src.find(marker); a=src.rfind('<'+tag,0,pos); b=src.find('</'+tag+'>',pos)
+                  if a<0 or b<0: raise SystemExit('cannot remove '+marker)
+                  src=src[:a]+src[b+len(tag)+3:]
+              return src
+          for tag in ['style','script']:
+              s=remove(s,tag,'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10'); s=remove(s,tag,'NAYA-SMART-BOARD-V10-SURGICAL-FINAL')
+          for marker in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
+              for tag in ['style','script']: s=remove(s,tag,marker)
+          s=s.replace('</head>',v10style+'\n</head>',1)
+          surgical='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">.elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}.elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important;min-height:116px!important;padding:14px 30px!important}.elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}.elite-board:first-child .nutshell p{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important}.elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board .layerHead{gap:24px!important}.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important}.elite-board .dot{width:88px!important;height:88px!important;flex:0 0 88px!important}.elite-board .dot .v10-icon{width:64px!important;height:64px!important}</style>'''
+          s=s.replace('</head>',surgical+'\n</head>',1)
+          fix='''<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">(()=>{const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];const O=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];const A={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};const N=s=>String(s||'').replace(/\\s+/g,' ').trim().toUpperCase().replace(/^\\d+\\s*[·.)-]\\s*/,'');function nut(n){if(!n)return;const p=q('p',n),b=q('b',n);[...n.children].forEach(x=>{if(x!==b&&x!==p)x.remove()});if(b){b.replaceChildren();const z=document.createElement('span');z.className='v10-nutshell-star';z.setAttribute('aria-hidden','true');b.append(z,document.createTextNode('IN A NUTSHELL'));}}function run(){const bs=qq('#blocks > .block');bs.forEach((b,i)=>{b.classList.add('elite-board','naya-smart-board-v10');const h=q('h3',b);if(h&&i===0)h.textContent='What is Naya Power';const g=q('.glyph',b);if(g)g.querySelectorAll('svg,img,.ico,.naya-elite-icon').forEach(x=>x.remove());nut(q('.nutshell',b));const ls=q('.layers',b);if(ls){const m=new Map();qq(':scope > .layer',ls).forEach(x=>{const h=q('.layerHead b',x);if(!h){x.remove();return}let t=A[N(h.textContent)]||N(h.textContent);if(!O.includes(t)){x.remove();return}h.textContent=t;m.set(t,x)});O.forEach(k=>{if(m.has(k))ls.append(m.get(k))});}});qq('.status').forEach(x=>x.remove());const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date())}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run()})();</script>'''
+          s=s.replace('</body>',v10script+'\n'+fix+'\n</body>',1)
+          # Structural checks, deliberately independent of quoting/escaping representation.
+          assert s.count('NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')==2
+          assert s.count('NAYA-SMART-BOARD-V10-SURGICAL-FINAL')==2
+          assert 'What is Naya Power' in s and 'HOW TO APPLY / HOW TO USE' in s and "WHAT'S IN IT FOR YOU" in s
+          for x in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']: assert x not in s
+          p.write_text(s,encoding='utf-8')
+          PY
+      - name: Verify and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          f='2026 09 15 NayaNETHUB.html'
+          test "$(grep -o 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V10' "$f" | wc -l)" -eq 2
+          test "$(grep -o 'NAYA-SMART-BOARD-V10-SURGICAL-FINAL' "$f" | wc -l)" -eq 2
+          grep -q 'What is Naya Power' "$f"; grep -q 'HOW TO APPLY / HOW TO USE' "$f"; grep -q "WHAT'S IN IT FOR YOU" "$f"
+          ! grep -q 'naya-aaa-smart-board-visual-v1' "$f"; ! grep -q 'naya-smart-board-living-intelligence-v2' "$f"; ! grep -q 'naya-smart-board-finalizer' "$f"; ! grep -q 'naya-elite-interface-refinement-runtime' "$f"
+          git config user.name 'NayaPOWER Automation'; git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add "$f"; git diff --cached --quiet && exit 1
+          git commit -m 'Execute exact V10 jewel authority and final Smart Board repair'
+          git push origin HEAD:main
