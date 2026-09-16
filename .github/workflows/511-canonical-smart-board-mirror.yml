@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v15
+# execution-proof-v16
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -31,8 +31,7 @@ jobs:
           path=Path('2026 09 15 NayaNETHUB.html')
           s=path.read_text(encoding='utf-8')
           s=s.replace("LEARNING:'ADAPTIVE LEARNING'", "LEARNING:'LEARNING LESSON'")
-          s=s.replace('"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"', '"WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU"')
-          # The existing lifecycle creates .perspectiveNo. Hide/remove that legacy visual marker without touching the canonical icon/dot.
+          s=s.replace("\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"", "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU\"")
           if '.perspectiveNo{display:none!important}' not in s:
               s=s.replace('</style>', '.perspectiveNo{display:none!important}</style>', 1)
           inject="document.querySelectorAll('.perspectiveNo').forEach(e=>e.remove());"
@@ -60,14 +59,14 @@ jobs:
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
           if '.perspectiveNo{display:none!important}' not in s: raise SystemExit('FAIL: numeric marker suppression missing')
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
-          if 'WHAT\\'S IN IT FOR YOU?":"WHAT\\'S IN IT FOR YOU?"' in s: raise SystemExit('FAIL: legacy question-mark label remains')
+          if "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"" in s: raise SystemExit('FAIL: legacy question-mark label remains')
           if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract missing')
           label_start=s.find('const labels=')
           label_map=s[label_start:label_start+1800] if label_start>=0 else ''
           for x in required:
               if x not in label_map: raise SystemExit('FAIL: canonical runtime label missing: '+x)
-          for legacy in ['ADAPTIVE LEARNING',"WHAT'S IN IT FOR YOU?"]:
-              if legacy in label_map: raise SystemExit('FAIL: legacy runtime label remains: '+legacy)
+          if 'ADAPTIVE LEARNING' in label_map: raise SystemExit('FAIL: legacy runtime learning label remains')
+          if "WHAT'S IN IT FOR YOU?" in label_map: raise SystemExit('FAIL: legacy runtime question-mark label remains')
           if 'perspectiveOrder={HUMAN:2, CHILD:3, GRANDMA:4, NAYA:5, MACHINE:6, LEARNING:7' not in s:
               raise SystemExit('FAIL: canonical perspective order missing')
           print('CANONICAL_NINE_LAYER_LABELS=PASS')
