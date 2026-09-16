@@ -630,51 +630,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 
 </script>
-<style id="naya-aaa-smart-board-visual-v1">
-:root{--sb-white:#f8fbff;--sb-human:#ff2fa4;--sb-child:#8b42ff;--sb-grandma:#4b5dff;--sb-naya:#ff9a5a;--sb-machine:#26c875;--sb-learning:#b8ee57;--sb-meaning:#f1d75a;--sb-gold:#e8c766;--sb-silver:#dfe6ee}
-.naya509-unified-board .block.naya509-board{border-color:color-mix(in srgb,var(--tone) 42%,#fff 8%);box-shadow:inset 0 1px #fff9,0 24px 55px #000b,0 0 34px color-mix(in srgb,var(--tone) 16%,transparent)}
-.naya509-unified-board .nutshell{position:relative;margin:22px 0 12px;padding:24px 24px 24px 82px;border:2px solid var(--sb-white);border-radius:22px;background:radial-gradient(360px 180px at 0 50%,#ffffff14,transparent 72%),linear-gradient(145deg,#111218,#07080b);box-shadow:inset 0 1px #fff9,0 18px 38px #000a,0 0 32px #f8fbff1c}
-.naya509-unified-board .nutshell:before{content:'◉';position:absolute;left:22px;top:50%;transform:translateY(-50%);width:43px;height:43px;border-radius:14px;display:grid;place-items:center;color:var(--sb-white);font-size:17px;background:radial-gradient(circle at 35% 25%,#fff8,#ffffff18 28%,#07080b 72%);border:2px solid #f8fbffcc;box-shadow:inset 0 2px #fff,0 8px 24px #000b,0 0 22px #f8fbff2a}
-.naya509-unified-board .nutshell b{color:var(--sb-white)}
-.naya509-unified-board .layers{display:flex!important;flex-direction:column!important;gap:12px!important}
-.naya509-unified-board .layer{position:relative;width:100%!important;border:2px solid color-mix(in srgb,var(--layer) 58%,#fff 10%)!important;border-radius:20px!important;background:linear-gradient(145deg,#101015,#07080b)!important;box-shadow:inset 0 1px #fff7,0 18px 38px #000a,0 0 30px color-mix(in srgb,var(--layer) 18%,transparent)!important;overflow:hidden}
-.naya509-unified-board .layer:before{content:'';position:absolute;inset:5px;border-radius:15px;border:1px solid color-mix(in srgb,var(--layer) 22%,transparent);box-shadow:inset 0 0 20px color-mix(in srgb,var(--layer) 6%,transparent);pointer-events:none}
-.naya509-unified-board .layer:after{content:'';position:absolute;inset:0;background:radial-gradient(420px 140px at 0 0,color-mix(in srgb,var(--layer) 12%,transparent),transparent 72%);pointer-events:none}
-.naya509-unified-board .layerHead{position:relative;z-index:1;min-height:72px;padding:12px 16px;border-bottom:1px solid color-mix(in srgb,var(--layer) 28%,#fff 6%)!important;gap:13px}
-.naya509-unified-board .layerHead b{font-size:15px!important;letter-spacing:.12em!important;color:#f7f4fa}
-.naya509-unified-board .layerBody{position:relative;z-index:1;padding:17px 18px 20px!important;color:#e9e5ed!important;font-size:14px!important;line-height:1.78!important}
-.naya509-unified-board .layerBody strong{color:#fff}
-.naya509-unified-board .dot{position:relative;flex:0 0 45px;width:45px!important;height:45px!important;border-radius:14px!important;background:radial-gradient(circle at 32% 25%,#fff9,transparent 16%),radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--layer) 42%,#fff 6%),#0a0b0f 68%)!important;border:2px solid color-mix(in srgb,var(--layer) 82%,#fff 18%)!important;box-shadow:inset 0 2px #fff7,inset 0 -4px 9px #0009,0 9px 22px #000b,0 0 20px color-mix(in srgb,var(--layer) 42%,transparent)!important;display:grid!important;place-items:center;font-size:0}
-.naya509-unified-board .dot:after{content:attr(data-icon);font-size:19px;font-weight:900;line-height:1;color:var(--layer);text-shadow:0 1px #fff5,0 0 13px color-mix(in srgb,var(--layer) 60%,transparent)}
-.naya509-unified-board .state{color:color-mix(in srgb,var(--layer) 70%,#aaa 30%)!important}
-.naya509-unified-board .layer.semantic-nutshell{--layer:var(--sb-white)!important}.naya509-unified-board .layer.semantic-human{--layer:var(--sb-human)!important}.naya509-unified-board .layer.semantic-child{--layer:var(--sb-child)!important}.naya509-unified-board .layer.semantic-grandma{--layer:var(--sb-grandma)!important}.naya509-unified-board .layer.semantic-naya{--layer:var(--sb-naya)!important}.naya509-unified-board .layer.semantic-machine{--layer:var(--sb-machine)!important}.naya509-unified-board .layer.semantic-learning{--layer:var(--sb-learning)!important}.naya509-unified-board .layer.semantic-meaning{--layer:var(--sb-meaning)!important}.naya509-unified-board .layer.semantic-apply{--layer:var(--sb-gold)!important}.naya509-unified-board .layer.semantic-value{--layer:var(--sb-silver)!important}
-.naya509-unified-board .semantic-human .layerHead b{color:#ffd1e9}.naya509-unified-board .semantic-child .layerHead b{color:#dfc8ff}.naya509-unified-board .semantic-grandma .layerHead b{color:#cbd2ff}.naya509-unified-board .semantic-naya .layerHead b{color:#ffd5bd}.naya509-unified-board .semantic-machine .layerHead b{color:#c8ffe0}.naya509-unified-board .semantic-learning .layerHead b{color:#e9ffc5}.naya509-unified-board .semantic-meaning .layerHead b{color:#fff4a8}.naya509-unified-board .semantic-apply .layerHead b{color:#ffefb0}.naya509-unified-board .semantic-value .layerHead b{color:#f4f7fb}
-.naya509-unified-board .naya509-board-top-actions{position:relative;z-index:3;display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.naya509-unified-board .naya509-board-top-actions .action{min-height:42px!important;border-color:#8b63ff66!important;background:linear-gradient(145deg,#16131d,#08090d)!important;box-shadow:inset 0 1px #fff7,0 10px 24px #0009!important}
-.naya509-unified-board .naya509-board-top-actions .action:hover{transform:translateY(-2px) scale(1.015)}
-.naya509-unified-board .actions.naya509-actions-structured{padding-top:4px;border-top:1px solid #ffffff12}
-@media(max-width:800px){.naya509-unified-board .nutshell{padding:20px 18px 20px 70px}.naya509-unified-board .layerHead{min-height:64px}.naya509-unified-board .dot{flex-basis:40px;width:40px!important;height:40px!important}.naya509-unified-board .dot:after{font-size:17px}.naya509-unified-board .layerBody{font-size:13px!important}}
-</style>
-<style id="naya-smart-board-living-intelligence-v2">
-:root{--sb-white:#f8fbff;--sb-human:#ff2fa4;--sb-child:#8b42ff;--sb-grandma:#4b5dff;--sb-naya:#ff9a5a;--sb-machine:#26c875;--sb-learning:#b8ee57;--sb-meaning:#f1d75a;--sb-gold:#e8c766;--sb-silver:#dfe6ee}
-.naya-smart-board-v2 .layers{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:16px!important;width:100%!important}
-.naya-smart-board-v2 .layer{display:block!important;position:relative!important;width:100%!important;max-width:none!important;min-width:0!important;grid-column:1 / -1!important;float:none!important;clear:both!important;margin:0!important;border:2px solid color-mix(in srgb,var(--layer) 62%,#fff 10%)!important;border-radius:22px!important;background:linear-gradient(145deg,#111217,#07080b)!important;box-shadow:inset 0 1px #fff8,0 20px 42px #000b,0 0 34px color-mix(in srgb,var(--layer) 17%,transparent)!important;overflow:hidden!important;transform:translateZ(0)!important}
-.naya-smart-board-v2 .layer:before{content:'';position:absolute;inset:5px;border-radius:17px;border:1px solid color-mix(in srgb,var(--layer) 26%,transparent);box-shadow:inset 0 0 22px color-mix(in srgb,var(--layer) 7%,transparent);pointer-events:none;z-index:0}
-.naya-smart-board-v2 .layer:after{content:'';position:absolute;inset:0;background:radial-gradient(500px 160px at 0 0,color-mix(in srgb,var(--layer) 12%,transparent),transparent 72%);pointer-events:none;z-index:0}
-.naya-smart-board-v2 .layerHead{position:relative!important;z-index:1!important;display:flex!important;align-items:center!important;gap:14px!important;min-height:76px!important;padding:13px 18px!important;border-bottom:1px solid color-mix(in srgb,var(--layer) 30%,#fff 5%)!important}
-.naya-smart-board-v2 .layerHead b{font-size:15px!important;line-height:1.1!important;letter-spacing:.1em!important;color:#f8f5fa!important}
-.naya-smart-board-v2 .layerBody{position:relative!important;z-index:1!important;padding:18px 20px 22px!important;color:#e9e5ed!important;font-size:14px!important;line-height:1.78!important}
-.naya-smart-board-v2 .dot{position:relative!important;flex:0 0 48px!important;width:48px!important;height:48px!important;border-radius:15px!important;display:grid!important;place-items:center!important;background:radial-gradient(circle at 30% 24%,#fff9,transparent 17%),radial-gradient(circle at 36% 30%,color-mix(in srgb,var(--layer) 48%,#fff 8%),#080a0d 68%)!important;border:2px solid color-mix(in srgb,var(--layer) 88%,#fff 12%)!important;box-shadow:inset 0 2px #fff8,inset 0 -5px 10px #000a,0 10px 25px #000c,0 0 22px color-mix(in srgb,var(--layer) 42%,transparent)!important;font-size:0!important}
-.naya-smart-board-v2 .dot:after{content:attr(data-icon)!important;font-size:20px!important;font-weight:900!important;line-height:1!important;color:var(--layer)!important;text-shadow:0 1px #fff5,0 0 14px color-mix(in srgb,var(--layer) 60%,transparent)!important}
-.naya-smart-board-v2 .layer.semantic-nutshell{--layer:var(--sb-white)!important}.naya-smart-board-v2 .layer.semantic-human{--layer:var(--sb-human)!important}.naya-smart-board-v2 .layer.semantic-child{--layer:var(--sb-child)!important}.naya-smart-board-v2 .layer.semantic-grandma{--layer:var(--sb-grandma)!important}.naya-smart-board-v2 .layer.semantic-naya{--layer:var(--sb-naya)!important}.naya-smart-board-v2 .layer.semantic-machine{--layer:var(--sb-machine)!important}.naya-smart-board-v2 .layer.semantic-learning{--layer:var(--sb-learning)!important}.naya-smart-board-v2 .layer.semantic-meaning{--layer:var(--sb-meaning)!important}.naya-smart-board-v2 .layer.semantic-apply{--layer:var(--sb-gold)!important}.naya-smart-board-v2 .layer.semantic-value{--layer:var(--sb-silver)!important}
-.naya-smart-board-v2 .nutshell{position:relative!important;width:100%!important;margin:22px 0 16px!important;padding:24px 24px 24px 82px!important;border:2px solid var(--sb-white)!important;border-radius:22px!important;background:radial-gradient(360px 180px at 0 50%,#fff14,transparent 72%),linear-gradient(145deg,#111218,#07080b)!important;box-shadow:inset 0 1px #fff9,0 20px 42px #000a,0 0 34px #f8fbff1d!important}
-.naya-smart-board-v2 .nutshell:before{content:'◉';position:absolute;left:22px;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:15px;display:grid;place-items:center;color:var(--sb-white);font-size:18px;background:radial-gradient(circle at 35% 25%,#fff9,#ffffff18 28%,#07080b 72%);border:2px solid #f8fbffcc;box-shadow:inset 0 2px #fff,0 9px 25px #000c,0 0 24px #f8fbff2b}
-.naya-smart-board-v2 .nutshell b{color:var(--sb-white)!important}
-.naya-smart-board-v2 .blockTop{align-items:flex-start!important}
-.naya-smart-board-v2 .truth,.naya-smart-board-v2 .naya509-block-kicker,.naya-smart-board-v2 .naya509-flow-marker,.naya-smart-board-v2 .naya509-living-spine,.naya-smart-board-v2 .naya509-block-context,.naya-smart-board-v2 .naya509-source-row,.naya-smart-board-v2 .naya509-next-status,.naya-smart-board-v2 .naya509-layer-tag{display:none!important}
-.naya-smart-board-v2 .block.naya509-board{border-color:color-mix(in srgb,var(--tone) 48%,#fff 8%);box-shadow:inset 0 1px #fff9,0 26px 58px #000b,0 0 38px color-mix(in srgb,var(--tone) 14%,transparent)}
-@media(max-width:800px){.naya-smart-board-v2 .layers{gap:12px!important}.naya-smart-board-v2 .layerHead{min-height:66px!important;padding:11px 13px!important}.naya-smart-board-v2 .dot{flex-basis:42px!important;width:42px!important;height:42px!important}.naya-smart-board-v2 .dot:after{font-size:17px!important}.naya-smart-board-v2 .layerBody{padding:15px 16px 18px!important;font-size:13px!important}.naya-smart-board-v2 .nutshell{padding:20px 18px 20px 70px!important}.naya-smart-board-v2 .nutshell:before{left:17px;width:40px;height:40px}}
-</style>
+
+
 
 <!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->
 <style id="naya-elite-interface-refinement">
@@ -695,6 +652,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 @media(max-width:700px){.naya-live-datetime{font-size:8px;gap:6px}.naya-live-datetime .date{font-size:8px}.glyph .naya-elite-icon{width:29px;height:29px}.layerHead .naya-elite-icon{width:22px;height:22px}.nutshell p{font-size:16px}}
 </style>
 
+
+<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+.elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
+.elite-board:first-child .nutshell b{justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(18px,2vw,27px)!important;min-height:116px!important;padding:14px 30px!important}
+.elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}
+.elite-board:first-child .nutshell p{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 32px 33px!important}
+.elite-board:first-child .blockTop{gap:28px!important}
+.elite-board:first-child .identity{gap:22px!important}
+.elite-board:first-child .glyph{flex:0 0 116px!important}
+.elite-board .layerHead{gap:24px!important}
+.elite-board .layerHead b{font-size:14px!important}
+.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 31px 33px!important}
+.elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}
+.elite-board .dot .v10-icon{width:64px!important;height:64px!important}
+</style>
 <style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 .elite-board{width:100%!important;display:block!important;position:relative!important}
 .elite-board .blockInner{width:100%!important;max-width:none!important}
@@ -738,17 +710,11 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 <style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
 .elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
-.elite-board:first-child .nutshell b{justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(18px,2vw,27px)!important;min-height:116px!important;padding:14px 30px!important}
+.elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(20px,2.1vw,29px)!important;min-height:116px!important;padding:14px 30px!important}
 .elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}
 .elite-board:first-child .nutshell p{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 32px 33px!important}
-.elite-board:first-child .blockTop{gap:28px!important}
-.elite-board:first-child .identity{gap:22px!important}
-.elite-board:first-child .glyph{flex:0 0 116px!important}
-.elite-board .layerHead{gap:24px!important}
-.elite-board .layerHead b{font-size:14px!important}
-.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 31px 33px!important}
-.elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}
-.elite-board .dot .v10-icon{width:64px!important;height:64px!important}
+.elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board:first-child .glyph{flex:0 0 116px!important}
+.elite-board .layerHead{gap:24px!important}.elite-board .layerHead b{font-size:14px!important}.elite-board .layerBody{font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;padding:27px 31px 33px!important}.elite-board .dot{flex:0 0 88px!important;width:88px!important;height:88px!important}.elite-board .dot .v10-icon{width:64px!important;height:64px!important}
 </style>
 </head>
 <body>
@@ -858,6 +824,39 @@ render();
 
 
 
+
+<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+(()=>{
+  const q=(s,r=document)=>r.querySelector(s), qq=(s,r=document)=>[...r.querySelectorAll(s)];
+  const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
+  const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
+  const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
+  function cleanNutshell(n){
+    if(!n)return;
+    const p=q('p',n), label=q('b',n);
+    [...n.children].forEach(x=>{if(x!==label && x!==p)x.remove()});
+    if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}
+  }
+  function normalize(){
+    const boards=qq('.elite-board');
+    boards.forEach((board,bi)=>{
+      if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}
+      const layers=q('.layers',board);if(!layers)return;
+      const map=new Map();
+      qq(':scope > .layer',layers).forEach(layer=>{
+        const h=q('.layerHead b',layer);if(!h){layer.remove();return;}
+        let t=norm(h.textContent);t=ALIAS[t]||t;
+        if(!ORDER.includes(t)){layer.remove();return;}
+        h.textContent=t;map.set(t,layer);
+      });
+      ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});
+    });
+    qq('.status').forEach(x=>x.remove());
+    const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
+})();
+</script>
 <script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 (()=>{
   const NS='http://www.w3.org/2000/svg';
@@ -919,30 +918,14 @@ render();
 </script>
 <script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
 (()=>{
-  const q=(s,r=document)=>r.querySelector(s), qq=(s,r=document)=>[...r.querySelectorAll(s)];
+  const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
   const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
   const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
-  const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
-  function cleanNutshell(n){
-    if(!n)return;
-    const p=q('p',n), label=q('b',n);
-    [...n.children].forEach(x=>{if(x!==label && x!==p)x.remove()});
-    if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}
-  }
+  const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
+  function cleanNutshell(n){if(!n)return;const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}
   function normalize(){
     const boards=qq('.elite-board');
-    boards.forEach((board,bi)=>{
-      if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}
-      const layers=q('.layers',board);if(!layers)return;
-      const map=new Map();
-      qq(':scope > .layer',layers).forEach(layer=>{
-        const h=q('.layerHead b',layer);if(!h){layer.remove();return;}
-        let t=norm(h.textContent);t=ALIAS[t]||t;
-        if(!ORDER.includes(t)){layer.remove();return;}
-        h.textContent=t;map.set(t,layer);
-      });
-      ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});
-    });
+    boards.forEach((board,bi)=>{if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}const layers=q('.layers',board);if(!layers)return;const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=norm(h.textContent);t=ALIAS[t]||t;if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});});
     qq('.status').forEach(x=>x.remove());
     const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
   }
