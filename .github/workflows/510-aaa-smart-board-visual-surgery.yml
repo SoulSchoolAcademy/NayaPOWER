@@ -26,18 +26,9 @@ jobs:
           from pathlib import Path
           p = Path('2026 09 15 NayaNETHUB.html')
           s = p.read_text(encoding='utf-8')
-          s = s.replace(
-              "new MutationObserver(run).observe(document.body,{childList:true,subtree:true})",
-              "/* static canonical board: mutation observer disabled to prevent self-triggering runtime loop */"
-          )
-          s = s.replace(
-              "let timer;const obs=new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body,{childList:true,subtree:true});",
-              "/* static canonical board: continuous observer disabled */"
-          )
-          s = s.replace(
-              "function run(){qq('.block').forEach(cleanBoard)}",
-              "function run(){qq('.naya509-unified-board').forEach(cleanBoard)}"
-          )
+          s = s.replace("new MutationObserver(run).observe(document.body,{childList:true,subtree:true})", "/* static canonical board: mutation observer disabled to prevent self-triggering runtime loop */")
+          s = s.replace("let timer;const obs=new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body,{childList:true,subtree:true});", "/* static canonical board: continuous observer disabled */")
+          s = s.replace("function run(){qq('.block').forEach(cleanBoard)}", "function run(){qq('.naya509-unified-board').forEach(cleanBoard)}")
           shim = '''<script id="naya-static-runtime-observer-shim">
           (()=>{
             class NayaStaticMutationObserver {
@@ -49,12 +40,15 @@ jobs:
             window.MutationObserver = NayaStaticMutationObserver;
           })();
           </script>'''
-          marker = '<!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->'
-          if 'id="naya-static-runtime-observer-shim"' not in s:
-              s = s.replace(marker, shim + '\n' + marker, 1)
+          start=s.find('<script id="naya-static-runtime-observer-shim">')
+          if start>=0:
+              end=s.find('</script>',start)+len('</script>')
+              s=s[:start]+s[end:]
+          s=s.replace('<head>', '<head>\n'+shim, 1)
+          marker='<!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->'
           if marker not in s:
-              s = s.replace('</head>', shim + '\n' + marker + '\n</head>', 1)
-          p.write_text(s, encoding='utf-8')
+              s=s.replace('</head>', marker+'\n</head>',1)
+          p.write_text(s,encoding='utf-8')
           PY
 
       - name: Prove canonical Smart Board contract
@@ -64,6 +58,7 @@ jobs:
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' '2026 09 15 NayaNETHUB.html'
           grep -q 'function run(){qq('\''.naya509-unified-board'\'').forEach(cleanBoard)}' '2026 09 15 NayaNETHUB.html'
           grep -q 'id="naya-static-runtime-observer-shim"' '2026 09 15 NayaNETHUB.html'
+          test "$(grep -n 'id=\"naya-static-runtime-observer-shim\"' '2026 09 15 NayaNETHUB.html' | head -1 | cut -d: -f1)" -lt 100
           ! grep -q 'new MutationObserver(run).observe(document.body,{childList:true,subtree:true})' '2026 09 15 NayaNETHUB.html'
           ! grep -q 'new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body' '2026 09 15 NayaNETHUB.html'
           for label in 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' 'WHAT IT MEANS' 'HOW TO APPLY / HOW TO USE' "WHAT'S IN IT FOR YOU"; do grep -q "$label" '2026 09 15 NayaNETHUB.html'; done
@@ -81,5 +76,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
-          git commit -m 'Target Smart Board normalizer at canonical board'
+          git commit -m 'Move Smart Board observer guard before runtime scripts'
           git push origin HEAD:main
