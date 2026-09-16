@@ -12,8 +12,8 @@ Final visual contract:
 - Titles 18px; descriptions/body 14px.
 - Preserve content, functionality, navigation, responsiveness, accessibility.
 - V10 faceted jewel SVG definitions are the single visual renderer authority.
-- Remove all legacy Smart Board renderer scripts and V11 temporary artifacts.
+- Remove all legacy Smart Board renderer and presentation scripts and V11 temporary artifacts.
 
 Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 surgical style + one V10 surgical script, exact `core/facet/shade/edge` definitions, static canonical labels, Apply layer, headline, and no legacy Smart Board renderer markers.
 
-Execution nonce: 2026-09-16T19:05:00Z
+Execution nonce: 2026-09-16T19:06:30Z
