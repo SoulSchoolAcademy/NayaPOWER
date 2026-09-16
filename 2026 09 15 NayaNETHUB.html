@@ -658,6 +658,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 
+
+
 <style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 .elite-board{width:100%!important;display:block!important;position:relative!important}
 .elite-board .blockInner{width:100%!important;max-width:none!important}
@@ -821,6 +823,8 @@ render();
 
 
 
+
+
 <script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
 (()=>{
   const NS='http://www.w3.org/2000/svg';
@@ -886,7 +890,7 @@ const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\
 const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
 const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','HOW TO APPLY':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
 function cleanNutshell(n){if(!n)return;const p=q('p',n),b=q('b',n);[...n.children].forEach(x=>{if(x!==b&&x!==p)x.remove()});if(b){b.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');b.append(star,document.createTextNode('IN A NUTSHELL'));}}
-function run(){const board=q('.elite-board');if(!board)return;const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));const layers=q('.layers',board);if(layers){const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=ALIAS[norm(h.textContent)]||norm(h.textContent);if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(k=>{if(map.has(k))layers.appendChild(map.get(k))});}qq('.status').forEach(x=>x.remove());const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
+function run(){const board=q('.elite-board');if(!board)return;const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));const layers=q('.layers',board);if(layers){const map=new Map();qq(':scope > .layer',layers).forEach(layer=>{const h=q('.layerHead b',layer);if(!h){layer.remove();return}let t=ALIAS[norm(h.textContent)]||norm(h.textContent);if(!ORDER.includes(t)){layer.remove();return}h.textContent=t;map.set(t,layer)});ORDER.forEach(k=>{if(map.has(k))layers.appendChild(map.get(k))});}qq('.status').forEach(x=>x.remove());const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>
 </body>
 </html>
