@@ -1,3 +1,4 @@
+# V10 CANONICAL VISUAL AUTHORITY — current-main execution trigger
 name: 510 Smart Board V10 Canonical Visual Authority
 on:
   push:
@@ -32,7 +33,6 @@ jobs:
           v10style=grab(base,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
           v10script=grab(base,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
           if not all(x in v10script for x in ['class="core"','class="facet"','class="shade"','class="edge"']): raise SystemExit('Protected V10 faceted jewel definitions missing')
-          # Remove all previous V10/finalizer variants and the legacy visual overrides that caused the stray Nutshell icon.
           s=re.sub(r'<style\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</style>','',s,flags=re.S|re.I)
           s=re.sub(r'<script\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</script>','',s,flags=re.S|re.I)
           for id in ['naya-aaa-smart-board-visual-v1','naya-smart-board-living-intelligence-v2','naya-aaa-smart-board-visual-v1-script','naya-smart-board-living-intelligence-v2-script','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
@@ -89,4 +89,5 @@ jobs:
           git add '2026 09 15 NayaNETHUB.html'
           if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 1; fi
           git commit -m 'Restore exact V10 jewel icons and remove legacy visual overrides'
+          git pull --rebase origin main
           git push origin HEAD:main
