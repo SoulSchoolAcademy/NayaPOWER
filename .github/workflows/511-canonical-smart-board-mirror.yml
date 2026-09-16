@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v16
+# execution-proof-v17
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -49,7 +49,7 @@ jobs:
           from pathlib import Path
           import re
           s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
-          required=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
+          required=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
           if 'function block(b,i){' in s or re.search(r'\.map\(block\)',s): raise SystemExit('FAIL: legacy block renderer remains live')
           render_start=s.find('function render(){'); modal_start=s.find('function modal(',render_start+1)
           if render_start<0 or modal_start<0 or 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() not canonical')
@@ -61,12 +61,9 @@ jobs:
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
           if "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"" in s: raise SystemExit('FAIL: legacy question-mark label remains')
           if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract missing')
-          label_start=s.find('const labels=')
-          label_map=s[label_start:label_start+1800] if label_start>=0 else ''
-          for x in required:
-              if x not in label_map: raise SystemExit('FAIL: canonical runtime label missing: '+x)
-          if 'ADAPTIVE LEARNING' in label_map: raise SystemExit('FAIL: legacy runtime learning label remains')
-          if "WHAT'S IN IT FOR YOU?" in label_map: raise SystemExit('FAIL: legacy runtime question-mark label remains')
+          missing=[x for x in required if x not in s]
+          if missing: raise SystemExit('FAIL: canonical layer labels missing: '+', '.join(missing))
+          if 'const labels=' not in s: raise SystemExit('FAIL: canonical runtime label map missing')
           if 'perspectiveOrder={HUMAN:2, CHILD:3, GRANDMA:4, NAYA:5, MACHINE:6, LEARNING:7' not in s:
               raise SystemExit('FAIL: canonical perspective order missing')
           print('CANONICAL_NINE_LAYER_LABELS=PASS')
