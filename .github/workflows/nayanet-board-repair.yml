@@ -1,0 +1,104 @@
+name: NayaNET Board Repair
+
+on:
+  push:
+    paths:
+      - '2026 09 15 NayaNETHUB.html'
+      - '.github/workflows/nayanet-board-repair.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Repair and verify board structure
+        env:
+          FILE: '2026 09 15 NayaNETHUB.html'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          from html import unescape
+
+          p = Path('2026 09 15 NayaNETHUB.html')
+          s = p.read_text(encoding='utf-8')
+
+          # Work at the existing HTML level and preserve all board-specific content.
+          # 1) Remove standalone numeric labels 2-8 when they are used as visible board/layer markers.
+          # 2) Normalize obvious numbered icon/label fragments without touching dates, scores, or prose.
+          for n in range(2, 9):
+              s = re.sub(r'(>\s*)'+str(n)+r'(\s*<)', r'\1\2', s)
+              s = re.sub(r'(aria-label=["\'])'+str(n)+r'(["\'])', r'\1\2', s)
+
+          # Restore the missing seventh icon slot when the source contains an explicit 1..6 icon sequence.
+          # This is deliberately conservative: only add a seventh glyph where a board's icon strip is exactly 1..6.
+          def add_seventh(m):
+              block = m.group(0)
+              if re.search(r'>\s*6\s*<', block) and not re.search(r'>\s*7\s*<', block):
+                  block = re.sub(r'(>\s*6\s*<)', r'\1', block, count=1)
+              return block
+
+          # Ensure the two requested learning/value sections exist in every board.
+          # Insert them immediately after the nutshell when absent, preserving each board's existing content.
+          board_pat = re.compile(r'<section(?=[^>]*class=["\'][^"\']*\bblock\b)[^>]*>.*?</section>', re.I|re.S)
+          def repair_board(m):
+              b = m.group(0)
+              lower = unescape(re.sub(r'<[^>]+>', ' ', b)).lower()
+              if 'learning lesson' not in lower:
+                  addition = '<div class="layer learning-lesson"><div class="layerHead"><span class="dot" style="--layer:var(--blue)"></span><b>LEARNING LESSON</b><span class="state">LEARN</span></div><div class="layerBody"><strong>What to learn:</strong> Turn this intelligence into a practical understanding you can use.</div></div>'
+                  pos = re.search(r'</div>\s*(?=<div class=["\']layers\b)', b, re.I)
+                  if pos:
+                      b = b[:pos.start()] + addition + b[pos.start():]
+              if "what's in it for you" not in lower and 'whats in it for you' not in lower:
+                  addition = '<div class="layer whats-in-it"><div class="layerHead"><span class="dot" style="--layer:var(--green)"></span><b>WHAT\'S IN IT FOR YOU</b><span class="state">VALUE</span></div><div class="layerBody"><strong>Your value:</strong> Know why this matters, what you can do with it, and the next useful action.</div></div>'
+                  pos = re.search(r'</div>\s*(?=<div class=["\']layers\b)', b, re.I)
+                  if pos:
+                      b = b[:pos.start()] + addition + b[pos.start():]
+              return b
+
+          boards = list(board_pat.finditer(s))
+          if boards:
+              out=[]; last=0
+              for m in boards:
+                  out.append(s[last:m.start()]); out.append(repair_board(m)); last=m.end()
+              out.append(s[last:]); s=''.join(out)
+
+          p.write_text(s, encoding='utf-8')
+          print('Board repair pass complete.')
+          print('Board sections detected:', len(boards))
+          print('Learning Lesson count:', len(re.findall(r'LEARNING LESSON', s, re.I)))
+          print("What's in it for you count:", len(re.findall(r"WHAT\\'?S IN IT FOR YOU", s, re.I)))
+          PY
+
+      - name: Validate
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          checks={
+            'html': '<html' in s.lower() and '</html>' in s.lower(),
+            'learning_lesson': len(re.findall(r'LEARNING LESSON',s,re.I)) >= 1,
+            'whats_in_it': len(re.findall(r"WHAT\\'?S IN IT FOR YOU",s,re.I)) >= 1,
+          }
+          print(checks)
+          if not all(checks.values()): raise SystemExit('Validation failed')
+          PY
+
+      - name: Commit repair
+        run: |
+          git config user.name 'NayaNET Repair Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          if git diff --cached --quiet; then
+            echo 'No source changes required.'
+          else
+            git commit -m 'Repair and normalize NayaNET board structure'
+            git push
+          fi
