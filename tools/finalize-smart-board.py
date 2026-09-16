@@ -3,14 +3,18 @@ import re
 
 FILE=Path('2026 09 15 NayaNETHUB.html')
 s=FILE.read_text(encoding='utf-8')
-# V10 remains the single canonical visual authority. Only remove temporary V11 artifacts.
+# V10 remains the single canonical visual authority. Only remove temporary/legacy mutation lanes.
 s=re.sub(r'<style id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</style>','',s,flags=re.S|re.I)
 s=re.sub(r'<script id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">.*?</script>','',s,flags=re.S|re.I)
 s=re.sub(r'<style id="naya-elite-interface-refinement">.*?</style>','',s,flags=re.S|re.I)
 s=re.sub(r'<script[^>]*>.*?Naya509NineNoteParser.*?</script>','',s,flags=re.S)
 s=re.sub(r'<script[^>]*>.*?naya-509-real-smart-feed.*?</script>','',s,flags=re.S|re.I)
+# Remove the older competing Smart Board mutation spine; V10 is the only Smart Board visual normalizer.
+s=re.sub(r'<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>','',s,flags=re.S|re.I)
 s=s.replace('ADAPTIVE LEARNING','LEARNING LESSON').replace("WHAT'S IN IT FOR YOU?","WHAT'S IN IT FOR YOU")
 s=re.sub(r'(<div class="layerHead">\s*<i class="dot"></i>\s*<b>)CHILD(</b>)',r'\1CHILD NOTE\2',s,flags=re.I)
+# Make the canonical subject headline correct in source, not only at runtime.
+s=re.sub(r'(<h3>)\s*WHAT IS NAYA POWER\?\s*(</h3>)',r'\1What is Naya Power\2',s,count=1,flags=re.I)
 apply_html='<section class="layer" data-naya-layer="apply" style="--layer:#d4af37"><div class="layerHead"><i class="dot"></i><b>HOW TO APPLY / HOW TO USE</b><span class="state">APPLICATION</span></div><div class="layerBody">Turn the insight into one concrete next action: decide what matters, choose the smallest useful move, act within your authority and boundaries, then observe what happened and use the verified result to improve what comes next.</div></section>'
 value_pat=re.compile(r'(<section class="layer"[^>]*>\s*<div class="layerHead">\s*<i class="dot"></i>\s*<b>WHAT\'S IN IT FOR YOU</b>)',re.I)
 if 'HOW TO APPLY / HOW TO USE' not in s:
@@ -29,7 +33,7 @@ s=style_pat.sub(m.group(1)+css+m.group(3),s,count=1)
 date_expr="new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date())"
 s=re.sub(r"(const topTitle=document\.getElementById\('topTitle'\);if\(topTitle\))topTitle\.textContent='Smart Notes'",r"\1topTitle.textContent="+date_expr,s)
 if len(re.findall(r'id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10"',s))!=2: raise SystemExit('Expected exactly one V10 style + one V10 script')
-for bad in ('NAYA-SMART-BOARD-V11-GITHUB-FINAL','NAYA-SMART-BOARD-V10-SURGICAL-FINAL','naya-elite-interface-refinement','Naya509NineNoteParser','naya-509-real-smart-feed-'):
+for bad in ('NAYA-SMART-BOARD-V11-GITHUB-FINAL','NAYA-SMART-BOARD-V10-SURGICAL-FINAL','naya-elite-interface-refinement','Naya509NineNoteParser','naya-509-real-smart-feed-','NAYA-CANONICAL-HUB-SPINE-V1'):
     if bad in s: raise SystemExit('Legacy Smart Board artifact remains: '+bad)
 for marker in ('What is Naya Power','LEARNING LESSON',"WHAT'S IN IT FOR YOU",'HOW TO APPLY / HOW TO USE','font-size:18px!important','font-size:14px!important','core','facet','shade','edge','Intl.DateTimeFormat'):
     if marker not in s: raise SystemExit(f'missing {marker}')
