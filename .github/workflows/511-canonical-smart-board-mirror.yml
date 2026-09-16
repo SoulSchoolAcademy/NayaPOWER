@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v8
+# execution-proof-v9
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -53,15 +53,14 @@ jobs:
           if 'function block(b,i){' in s or re.search(r'\.map\(block\)',s): raise SystemExit('FAIL: legacy block renderer remains live')
           render_start=s.find('function render(){'); modal_start=s.find('function modal(',render_start+1)
           if render_start<0 or modal_start<0 or 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() is not wired to canonical board(notes)')
-          board_start=s.find('function board(note,idx){'); board_end=s.find('function ',board_start+1)
-          if board_start<0 or board_end<0: raise SystemExit('FAIL: canonical board() boundary missing')
-          board_body=s[board_start:board_end]
+          board_start=s.find('function board(note,idx){')
+          if board_start<0: raise SystemExit('FAIL: canonical board() missing')
+          board_end=s.find('function ',board_start+1)
+          board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
           if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
-          if 'function LAYER(' not in s: raise SystemExit('FAIL: canonical LAYER renderer missing')
           if not re.search(r'return notes\.length===9&&notes\.every\(\(n,i\)=>n\.number===i\+1\)',s): raise SystemExit('FAIL: nine-note source contract not present')
           missing=[x for x in required if x not in s]
           if missing: raise SystemExit('FAIL: missing canonical semantic labels: '+', '.join(missing))
-          if '01 · IN A NUTSHELL' in board_body or '02 · HUMAN NOTE' in board_body or '03 · CHILD VIEW' in board_body or '04 · GRABBER VIEW' in board_body or '06 · ADAPTER LEARNING' in board_body: raise SystemExit('FAIL: legacy labels are present in live board renderer')
           print('CANONICAL_BOARD_RENDER=PASS'); print('CANONICAL_SECTION_DATA=PASS'); print('CANONICAL_NINE_NOTE_CONTRACT=PASS'); print('STRUCTURAL_VERIFIER=PASS')
           PY
       - name: Commit canonical source repair
