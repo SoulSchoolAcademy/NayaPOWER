@@ -16,4 +16,4 @@ Final visual contract:
 
 Proof required: Actions pass; canonical HTML receives a new commit; reread that exact canonical artifact; verify exactly one V10 style + one V10 script, exact `core/facet/shade/edge` definitions, static canonical labels, Apply layer, headline, actual date/time render assignment, and no legacy Smart Board renderer markers.
 
-Execution nonce: 2026-09-16T19:14:00Z
+Execution nonce: 2026-09-16T19:15:30Z
