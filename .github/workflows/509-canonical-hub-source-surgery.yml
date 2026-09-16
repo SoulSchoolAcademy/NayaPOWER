@@ -18,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # PROTECTED-PROGRESS CHECKPOINT ADVANCED — execute the canonical surgery lane.
       - name: Make Naya Power the canonical board template
         shell: bash
         run: |
@@ -29,9 +30,6 @@ jobs:
           p = Path('2026 09 15 NayaNETHUB.html')
           s = p.read_text(encoding='utf-8')
 
-          # Replace the board renderer itself so every Smart Note receives the
-          # same canonical structural spine. Board-specific title, glyph, tone,
-          # and intelligence remain unique to each note.
           pattern = re.compile(r"function board\(note,idx\)\{.*?\nfunction stripLegacyBars\(\)", re.S)
           replacement = r'''function board(note,idx){
           const tone=tones[idx%tones.length];
@@ -47,9 +45,6 @@ function stripLegacyBars()'''
               raise SystemExit('BOARD_RENDERER_PATTERN_NOT_FOUND')
           s = s2
 
-          # Remove any prior canonical spine injections so they cannot fight the
-          # new renderer. Then add a small compatibility guard for any legacy DOM
-          # that may survive in a cached/runtime path.
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>\s*", "", s, flags=re.S)
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->.*?</script>\s*", "", s, flags=re.S)
 
