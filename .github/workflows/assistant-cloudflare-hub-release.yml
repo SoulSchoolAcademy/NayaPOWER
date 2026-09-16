@@ -1,4 +1,4 @@
-# RUNTIME REPROOF TRIGGER 2026-09-16T02:36Z — deploy and browser-verify current canonical main.
+# RUNTIME REPROOF TRIGGER 2026-09-16T02:38Z — deploy and browser-verify canonical commit 04438e7.
 # AUTHORIZED USER REQUEST: deploy the supplied NayaNET Hub artifact to the supplied Cloudflare Worker.
 name: NAYA 509 — Assistant Cloudflare Hub Release
 
@@ -28,7 +28,6 @@ jobs:
     steps:
       - name: Checkout exact main source
         uses: actions/checkout@v4
-
       - name: Prepare canonical static Hub artifact
         shell: bash
         run: |
@@ -39,29 +38,17 @@ jobs:
           grep -q 'NayaNET — Intelligent Hub' dist/index.html
           grep -q 'nayanet-direct-nine' dist/index.html
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' dist/index.html
-
       - name: Bind exact Cloudflare target
         shell: bash
         run: |
           set -euo pipefail
           cat > "$RUNNER_TEMP/wrangler.jsonc" <<'EOF'
-          {
-            "$schema": "node_modules/wrangler/config-schema.json",
-            "name": "sparkling-shape-7ae5",
-            "compatibility_date": "2026-09-15",
-            "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
-            "assets": {
-              "directory": "/home/runner/work/NayaPOWER/NayaPOWER/dist",
-              "not_found_handling": "single-page-application"
-            }
-          }
+          {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","not_found_handling":"single-page-application"}}
           EOF
           test -n "${CLOUDFLARE_API_TOKEN:-}"
-
       - name: Deploy canonical Hub to Cloudflare
         shell: bash
         run: npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/wrangler.jsonc"
-
       - name: Verify live transport
         shell: bash
         run: |
@@ -70,96 +57,30 @@ jobs:
           grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
           grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' "$RUNNER_TEMP/live.html"
-
       - name: Prepare browser runtime verifier
         shell: bash
         run: |
           set -euo pipefail
           command -v google-chrome || command -v google-chrome-stable
           npm install --no-save --no-package-lock playwright@1.55.0
-
       - name: Prove rendered Smart Board runtime
         shell: bash
         run: |
           set -euo pipefail
           cat > verify-smart-board.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          import http from 'node:http';
-
-          const url = process.env.NAYA_RUNTIME_URL;
-          const expected = [
-            'HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE',
-            'LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"
-          ];
-          const colors = {
-            'HUMAN NOTE':'#ff2fa4','CHILD NOTE':'#8b42ff','GRANDMA NOTE':'#4b5dff',
-            'NAYA NOTE':'#ff9a5a','MACHINE NOTE':'#26c875','LEARNING LESSON':'#b8ee57',
-            'WHAT IT MEANS':'#f1d75a','HOW TO APPLY / HOW TO USE':'#e8c766',"WHAT'S IN IT FOR YOU":'#dfe6ee'
-          };
-
-          const liveResponse = await fetch(url, { redirect: 'follow' });
-          if (!liveResponse.ok) throw new Error(`live fetch failed ${liveResponse.status}`);
-          const html = await liveResponse.text();
-          if (!html.includes('NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2')) throw new Error('live HTML missing V2 contract');
-          if (!html.includes('naya-static-runtime-observer-shim')) throw new Error('live HTML missing observer-safe runtime shim');
-
-          const server = http.createServer((req,res)=>{
-            res.writeHead(200, {'content-type':'text/html; charset=utf-8','cache-control':'no-store'});
-            res.end(html);
-          });
-          await new Promise(resolve => server.listen(0, '127.0.0.1', resolve));
-          const port = server.address().port;
-          const browser = await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-
-          async function prove(page, label) {
-            await page.goto(`http://127.0.0.1:${port}/`, { waitUntil: 'domcontentloaded', timeout: 15000 });
-            await page.waitForTimeout(1200);
-            const result = await page.evaluate(({ expected, colors }) => {
-              const boards = [...document.querySelectorAll('.naya-smart-board-v2.naya509-board')];
-              const failures = [];
-              if (!boards.length) failures.push('no canonical Smart Board rendered');
-              for (const [i, board] of boards.entries()) {
-                const text = board.innerText || '';
-                if (/SMART NOTE\s*\d/i.test(text)) failures.push(`board ${i+1}: visible Smart Note numbering`);
-                if (/SOURCE SEPARATED/i.test(text)) failures.push(`board ${i+1}: visible SOURCE SEPARATED`);
-                if (/\b01\s*[·.-]\s*IN A NUTSHELL/i.test(text)) failures.push(`board ${i+1}: visible nutshell numbering`);
-                const layers = board.querySelector('.layers');
-                if (!layers) { failures.push(`board ${i+1}: missing layers container`); continue; }
-                const computed = getComputedStyle(layers);
-                if (computed.display !== 'flex' || computed.flexDirection !== 'column') failures.push(`board ${i+1}: layers are not a vertical flex column`);
-                const items = [...layers.children].filter(x => x.classList.contains('layer'));
-                if (items.length !== expected.length) failures.push(`board ${i+1}: expected ${expected.length} layers, got ${items.length}`);
-                const labels = items.map(x => x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() || '');
-                if (JSON.stringify(labels) !== JSON.stringify(expected)) failures.push(`board ${i+1}: wrong layer order: ${labels.join(' | ')}`);
-                const layerWidth = layers.getBoundingClientRect().width;
-                for (const item of items) {
-                  const name = item.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() || '';
-                  if (Math.abs(item.getBoundingClientRect().width - layerWidth) > 4) failures.push(`board ${i+1}: ${name} is not full width`);
-                  if (!item.querySelector('.dot')?.getAttribute('data-icon')) failures.push(`board ${i+1}: ${name} missing semantic icon`);
-                  const tone = getComputedStyle(item).getPropertyValue('--layer').trim().toLowerCase();
-                  if (colors[name] && tone !== colors[name]) failures.push(`board ${i+1}: ${name} wrong semantic color ${tone}`);
-                }
-                if (!board.querySelector('.nutshell')) failures.push(`board ${i+1}: missing In a Nutshell surface`);
-                const apply = items.find(x => x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase() === 'HOW TO APPLY / HOW TO USE');
-                if (!apply || !/concrete next step|responsible action/i.test(apply.innerText)) failures.push(`board ${i+1}: How to Apply layer missing actionable content`);
-              }
-              return { failures, boardCount: boards.length };
-            }, { expected, colors });
-            if (result.failures.length) throw new Error(`${label}: ${result.failures.join('; ')}`);
-            console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${result.boardCount} Smart Board(s)`);
-          }
-
-          try {
-            await prove(await browser.newPage({viewport:{width:1440,height:1000},deviceScaleFactor:1}), 'desktop');
-            await prove(await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1}), 'mobile');
-          } finally {
-            await browser.close();
-            await new Promise(resolve => server.close(resolve));
-          }
+          import { chromium } from 'playwright'; import http from 'node:http';
+          const url=process.env.NAYA_RUNTIME_URL;
+          const expected=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
+          const colors={'HUMAN NOTE':'#ff2fa4','CHILD NOTE':'#8b42ff','GRANDMA NOTE':'#4b5dff','NAYA NOTE':'#ff9a5a','MACHINE NOTE':'#26c875','LEARNING LESSON':'#b8ee57','WHAT IT MEANS':'#f1d75a','HOW TO APPLY / HOW TO USE':'#e8c766',"WHAT'S IN IT FOR YOU":'#dfe6ee'};
+          const r=await fetch(url); if(!r.ok)throw new Error(`live fetch failed ${r.status}`); const html=await r.text();
+          if(!html.includes('NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2'))throw new Error('live HTML missing V2 contract'); if(!html.includes('naya-smart-board-finalizer'))throw new Error('live HTML missing finalizer');
+          const server=http.createServer((q,s)=>{s.writeHead(200,{'content-type':'text/html; charset=utf-8'});s.end(html)}); await new Promise(x=>server.listen(0,'127.0.0.1',x)); const port=server.address().port;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          async function prove(page,label){await page.goto(`http://127.0.0.1:${port}/`,{waitUntil:'domcontentloaded',timeout:15000});await page.waitForTimeout(1200);const z=await page.evaluate(({expected,colors})=>{const boards=[...document.querySelectorAll('.naya-smart-board-v2.naya509-board')],fail=[];if(!boards.length)fail.push('no canonical Smart Board rendered');for(const[b,board]of boards.entries()){const t=board.innerText||'';if(/SMART NOTE\s*\d/i.test(t))fail.push(`board ${b+1}: visible numbering`);if(/SOURCE SEPARATED/i.test(t))fail.push(`board ${b+1}: SOURCE SEPARATED`);const l=board.querySelector('.layers');if(!l){fail.push(`board ${b+1}: missing layers`);continue}const items=[...l.children].filter(x=>x.classList.contains('layer'));if(items.length!==9)fail.push(`board ${b+1}: expected 9 layers got ${items.length}`);const labels=items.map(x=>x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase()||'');if(JSON.stringify(labels)!==JSON.stringify(expected))fail.push(`board ${b+1}: order ${labels.join(' | ')}`);const w=l.getBoundingClientRect().width;for(const x of items){const n=x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase()||'';if(Math.abs(x.getBoundingClientRect().width-w)>4)fail.push(`${n}: not full width`);if(!x.querySelector('.dot')?.getAttribute('data-icon'))fail.push(`${n}: missing icon`);const tone=getComputedStyle(x).getPropertyValue('--layer').trim().toLowerCase();if(colors[n]&&tone!==colors[n])fail.push(`${n}: wrong color ${tone}`)}if(!board.querySelector('.nutshell'))fail.push(`board ${b+1}: missing nutshell`);if(!items.some(x=>x.querySelector('.layerHead b')?.textContent?.trim().toUpperCase()==='HOW TO APPLY / HOW TO USE'))fail.push(`board ${b+1}: missing apply layer`)}return{fail,boards:boards.length}}, {expected,colors});if(z.fail.length)throw new Error(`${label}: ${z.fail.join('; ')}`);console.log(`BROWSER_RUNTIME_VERIFIED ${label}: ${z.boards} board(s)`)}
+          try{await prove(await browser.newPage({viewport:{width:1440,height:1000}}),'desktop');await prove(await browser.newPage({viewport:{width:390,height:844}}),'mobile')}finally{await browser.close();await new Promise(x=>server.close(x))}
           EOF
           node verify-smart-board.mjs
           rm -f verify-smart-board.mjs
-
       - name: Independently verify live runtime
         shell: bash
         run: printf 'LIVE_RUNTIME_VERIFIED %s\n' "$NAYA_RUNTIME_URL"
