@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply canonical Smart Board jewelry refinement V9
+      - name: Apply canonical Smart Board visual authority V10
         shell: bash
         run: |
           set -euo pipefail
@@ -20,86 +20,143 @@ jobs:
           import re
           p=Path('2026 09 15 NayaNETHUB.html')
           s=p.read_text(encoding='utf-8')
-          # Remove prior refinement layers so V9 is the sole visual refinement layer.
+
+          # Remove every prior refinement layer and the older competing visual finalizers.
           s=re.sub(r'<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"]+">.*?</style>','',s,flags=re.S)
           s=re.sub(r'<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"]+">.*?</script>','',s,flags=re.S)
-          css=r'''<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V9">
-          .elite-board:first-child .blockTop{display:flex!important;align-items:center!important;gap:24px!important;margin:0 0 24px!important}
-          .elite-board:first-child .glyph{display:grid!important;place-items:center!important;width:104px!important;height:104px!important;flex:0 0 104px!important;border-radius:30px!important;position:relative!important;overflow:visible!important;color:#fff!important;background:radial-gradient(circle at 28% 15%,#fff 0 4%,#e6d9ff 12%,#a778ff 29%,#54259e 53%,#170b2b 78%,#050507 100%)!important;border:2px solid #eee5ff!important;box-shadow:inset 0 4px 0 #fff9,inset 0 -22px 30px #000e,0 8px 5px #000d,0 25px 42px #000f,0 0 34px #a778ffdd,0 0 100px #8d5cff44!important;transform:perspective(700px) rotateX(5deg)!important}
-          .elite-board:first-child .glyph:before{content:"";position:absolute;inset:-9px;border-radius:33px;border:1px solid #c8a7ffbb;box-shadow:0 0 20px #9d75ff88,inset 0 0 12px #fff4!important;pointer-events:none}
-          .elite-board:first-child .glyph:after{content:"";position:absolute;inset:10px;border-radius:22px;border:1px solid #fff6;box-shadow:inset 0 3px #fff9,inset 0 -12px 18px #000b!important;pointer-events:none}
-          .elite-board:first-child .glyph svg{width:70px!important;height:70px!important;position:relative!important;z-index:2!important;filter:drop-shadow(0 7px 3px #000e) drop-shadow(0 0 18px #d1b7ff)!important}
-          .elite-board:first-child .blockTop h3{font-size:clamp(40px,5.2vw,70px)!important;line-height:.96!important;letter-spacing:-.06em!important;margin:0!important;color:#fff!important}
-          .elite-board:first-child .nutshell{margin:0 0 26px!important;padding:0!important;border:2px solid #dfe6ee70!important;border-radius:20px!important;background:linear-gradient(145deg,#13161b,#07080b)!important;box-shadow:inset 0 1px #fff5,0 18px 42px #000b,0 0 36px #dfe6ee18!important;overflow:hidden!important;position:relative!important}
-          /* One Nutshell header only: the existing star is the sole icon. */
-          .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:flex-start!important;gap:22px!important;min-height:112px!important;margin:0!important;padding:16px 30px!important;color:#fff!important;font-size:13px!important;font-weight:1000!important;letter-spacing:.16em!important;border-bottom:1px solid #ffffff1c!important;background:linear-gradient(145deg,#1c2026,#0b0d11)!important;position:relative!important}
-          .elite-board:first-child .nutshell b:before{display:none!important;content:none!important}
-          .elite-board:first-child .nutshell b .v9-nutshell-star{width:76px!important;height:76px!important;flex:0 0 76px!important;display:grid!important;place-items:center!important;position:relative!important;z-index:2!important}
-          .elite-board:first-child .nutshell b .v9-nutshell-star:before{content:"✦";display:grid;place-items:center;width:76px;height:76px;border-radius:50%;font-size:36px;color:#fff;background:radial-gradient(circle at 28% 15%,#fff 0 5%,#f8fbff 14%,#dfe6ee 32%,#929ca8 54%,#363e47 76%,#08090b 100%);border:2px solid #f6f9fc;box-shadow:inset 0 4px #fff9,inset 0 -18px 25px #000d,0 7px 4px #000d,0 19px 31px #000f,0 0 30px #dfe6eeaa,0 0 76px #dfe6ee38;transform:perspective(700px) rotateX(5deg)}
-          .elite-board:first-child .nutshell b .v9-nutshell-star:after{content:"";position:absolute;inset:-7px;border-radius:50%;border:1px solid #ffffff66;box-shadow:inset 0 0 9px #fff3,0 0 14px #dfe6ee44;pointer-events:none}
-          .elite-board:first-child .nutshell p{display:block!important;margin:0!important;padding:26px 30px 31px!important;font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;color:#f5f7f9!important;max-width:none!important;position:relative!important}
-          .elite-board .layers{display:flex!important;flex-direction:column!important;gap:16px!important}
-          .elite-board .layer{overflow:hidden!important;position:relative!important;border-width:2px!important;border-radius:20px!important;background:linear-gradient(145deg,#121217,#06070a)!important;box-shadow:inset 0 1px #fff3,0 16px 34px #000a!important}
-          .elite-board .layerHead{display:flex!important;align-items:center!important;gap:22px!important;min-height:112px!important;padding:16px 30px!important;border-bottom:1px solid #ffffff16!important;background:linear-gradient(145deg,#19171e,#0b0a0f)!important}
-          .elite-board .dot{width:82px!important;height:82px!important;flex:0 0 82px!important;border-radius:50%!important;position:relative!important;display:grid!important;place-items:center!important;overflow:visible!important;color:#fff!important;background:radial-gradient(circle at 28% 14%,#fff 0 4%,color-mix(in srgb,var(--layer) 90%,#fff 10%) 13%,color-mix(in srgb,var(--layer) 68%,#111 32%) 36%,color-mix(in srgb,var(--layer) 43%,#050508 57%) 62%,#020204 100%)!important;border:2px solid color-mix(in srgb,var(--layer) 84%,#fff 16%)!important;box-shadow:inset 0 4px #fff9,inset 0 -18px 25px #000e,0 7px 4px #000d,0 20px 33px #000f,0 0 27px color-mix(in srgb,var(--layer) 78%,transparent),0 0 82px color-mix(in srgb,var(--layer) 30%,transparent)!important;transform:perspective(700px) rotateX(5deg)!important}
-          .elite-board .dot:before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid color-mix(in srgb,var(--layer) 82%,#fff 12%);box-shadow:0 0 14px color-mix(in srgb,var(--layer) 44%,transparent),inset 0 0 10px #fff4!important;pointer-events:none}
-          .elite-board .dot:after{content:"";position:absolute;inset:10px;border-radius:50%;border:1px solid #fff7;box-shadow:inset 0 3px #fff8,inset 0 -10px 15px #000a!important;pointer-events:none}
-          .elite-board .dot svg{width:58px!important;height:58px!important;position:relative!important;z-index:2!important;overflow:visible!important;filter:drop-shadow(0 6px 3px #000f) drop-shadow(0 0 14px color-mix(in srgb,var(--layer) 80%,transparent))!important}
-          /* Layered filled/faceted SVG treatment: not flat line icons. */
-          .elite-board .dot svg .v9-core{fill:currentColor;stroke:none!important;opacity:.96}
-          .elite-board .dot svg .v9-highlight{fill:#fff;stroke:none!important;opacity:.55}
-          .elite-board .dot svg .v9-shadow{fill:#000;stroke:none!important;opacity:.30}
-          .elite-board .dot svg .v9-line{fill:none;stroke:#fff;stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
-          .elite-board .layerHead b{font-size:13px!important;color:#fff!important;letter-spacing:.13em!important;line-height:1.25!important}
-          .elite-board .layerBody{padding:26px 30px 32px!important;font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;color:#e9e6ec!important}
+          for sid in [
+              'naya-aaa-smart-board-visual-v1-script',
+              'naya-smart-board-living-intelligence-v2-script',
+              'naya-smart-board-finalizer'
+          ]:
+              s=re.sub(r'<script id="'+re.escape(sid)+r'">.*?</script>','',s,flags=re.S)
+
+          css=r'''<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
+          .elite-board{width:100%!important;display:block!important;position:relative!important}
+          .elite-board .blockInner{width:100%!important;max-width:none!important}
+          .elite-board:first-child .blockTop{display:flex!important;align-items:center!important;gap:26px!important;margin:0 0 26px!important}
+          .elite-board:first-child .identity{display:flex!important;align-items:center!important;gap:20px!important;min-width:0!important}
+          .elite-board:first-child .glyph{display:grid!important;place-items:center!important;width:116px!important;height:116px!important;flex:0 0 116px!important;border-radius:32px!important;position:relative!important;overflow:visible!important;color:#fff!important;background:radial-gradient(circle at 27% 12%,#fff 0 4%,#eee3ff 11%,#bd96ff 24%,#7842d5 43%,#3a176f 66%,#0a0612 100%)!important;border:2px solid #f4edff!important;box-shadow:inset 0 5px 5px #fff9,inset 0 -28px 36px #000e,0 8px 5px #000d,0 27px 45px #000f,0 0 38px #a875ffdd,0 0 110px #8b42ff45!important;transform:perspective(900px) rotateX(5deg)!important}
+          .elite-board:first-child .glyph:before{content:"";position:absolute;inset:-10px;border-radius:35px;border:1px solid #c9aaffcc;box-shadow:0 0 22px #a875ff88,inset 0 0 14px #fff5!important;pointer-events:none}
+          .elite-board:first-child .glyph:after{content:"";position:absolute;inset:11px;border-radius:23px;border:1px solid #fff7;box-shadow:inset 0 3px #fff9,inset 0 -14px 20px #000c!important;pointer-events:none}
+          .elite-board:first-child .glyph .v10-icon{width:78px!important;height:78px!important;position:relative!important;z-index:3!important;filter:drop-shadow(0 8px 4px #000e) drop-shadow(0 0 22px #d8c1ff)!important}
+          .elite-board:first-child .blockTop h3{font-size:clamp(42px,5.4vw,74px)!important;line-height:.96!important;letter-spacing:-.065em!important;margin:0!important;color:#fff!important;text-shadow:0 0 30px #fff1!important}
+
+          /* Exactly one Nutshell banner: no competing top treatment. */
+          .elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;border:2px solid #e3e8efaa!important;border-radius:22px!important;background:linear-gradient(145deg,#171a20,#08090c)!important;box-shadow:inset 0 1px #fff7,0 20px 46px #000c,0 0 42px #dfe6ee1c!important;overflow:hidden!important;position:relative!important}
+          .elite-board:first-child .nutshell b{display:flex!important;align-items:center!important;justify-content:center!important;gap:18px!important;min-height:116px!important;margin:0!important;padding:14px 26px!important;color:#fff!important;font-size:13px!important;font-weight:1000!important;letter-spacing:.17em!important;text-align:center!important;border-bottom:1px solid #ffffff1c!important;background:linear-gradient(145deg,#1d2127,#0b0d11)!important;position:relative!important}
+          .elite-board:first-child .nutshell b:before,.elite-board:first-child .nutshell b:after{content:none!important;display:none!important}
+          .elite-board:first-child .nutshell b .v10-nutshell-star{width:78px!important;height:78px!important;flex:0 0 78px!important;display:grid!important;place-items:center!important;position:relative!important}
+          .elite-board:first-child .nutshell b .v10-nutshell-star:before{content:"✦";display:grid;place-items:center;width:78px;height:78px;border-radius:50%;font-size:37px;color:#fff;background:radial-gradient(circle at 28% 13%,#fff 0 5%,#fafcff 14%,#e5eaf0 31%,#969faa 53%,#39414a 75%,#08090b 100%);border:2px solid #f8fbff;box-shadow:inset 0 4px #fff9,inset 0 -19px 26px #000d,0 7px 4px #000d,0 20px 33px #000f,0 0 32px #dfe6eeaa,0 0 82px #dfe6ee38;transform:perspective(800px) rotateX(5deg)}
+          .elite-board:first-child .nutshell b .v10-nutshell-star:after{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid #ffffff72;box-shadow:inset 0 0 10px #fff4,0 0 16px #dfe6ee55;pointer-events:none}
+          .elite-board:first-child .nutshell p{display:block!important;margin:0!important;padding:27px 32px 33px!important;font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;color:#f5f7f9!important;max-width:none!important;position:relative!important}
+          .elite-board .nutshell svg,.elite-board .nutshell img,.elite-board .nutshell .nutshellIcon,.elite-board .nutshell .naya-elite-icon,.elite-board .nutshell .ico{display:none!important}
+
+          .elite-board .layers{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:16px!important;width:100%!important}
+          .elite-board .layer{width:100%!important;display:block!important;float:none!important;grid-column:1 / -1!important;overflow:hidden!important;position:relative!important;border:2px solid color-mix(in srgb,var(--layer) 58%,#ffffff 10%)!important;border-radius:21px!important;background:linear-gradient(145deg,#141319,#07080b)!important;box-shadow:inset 0 1px #fff3,0 17px 36px #000b,0 0 26px color-mix(in srgb,var(--layer) 13%,transparent)!important}
+          .elite-board .layerHead{display:flex!important;align-items:center!important;gap:22px!important;min-height:116px!important;padding:16px 30px!important;border-bottom:1px solid #ffffff17!important;background:linear-gradient(145deg,#1a181f,#0b0a0f)!important}
+          .elite-board .dot{width:88px!important;height:88px!important;flex:0 0 88px!important;border-radius:50%!important;position:relative!important;display:grid!important;place-items:center!important;overflow:visible!important;color:var(--layer)!important;background:radial-gradient(circle at 27% 12%,#fff 0 4%,color-mix(in srgb,var(--layer) 88%,#fff 12%) 12%,color-mix(in srgb,var(--layer) 70%,#121018 30%) 34%,color-mix(in srgb,var(--layer) 42%,#020205 58%) 61%,#010103 100%)!important;border:2px solid color-mix(in srgb,var(--layer) 88%,#fff 12%)!important;box-shadow:inset 0 4px #fff9,inset 0 -20px 27px #000e,0 7px 4px #000d,0 21px 35px #000f,0 0 30px color-mix(in srgb,var(--layer) 82%,transparent),0 0 90px color-mix(in srgb,var(--layer) 32%,transparent)!important;transform:perspective(850px) rotateX(6deg)!important}
+          .elite-board .dot:before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid color-mix(in srgb,var(--layer) 82%,#fff 13%);box-shadow:0 0 16px color-mix(in srgb,var(--layer) 48%,transparent),inset 0 0 10px #fff4!important;pointer-events:none}
+          .elite-board .dot:after{content:"";position:absolute;inset:11px;border-radius:50%;border:1px solid #fff8;box-shadow:inset 0 3px #fff8,inset 0 -11px 16px #000b!important;pointer-events:none}
+          .elite-board .dot .v10-icon{width:64px!important;height:64px!important;position:relative!important;z-index:3!important;filter:drop-shadow(0 7px 3px #000f) drop-shadow(0 0 17px color-mix(in srgb,var(--layer) 82%,transparent))!important}
+          .elite-board .v10-icon .core{fill:currentColor;stroke:none!important;opacity:.98}
+          .elite-board .v10-icon .facet{fill:#fff;stroke:none!important;opacity:.48}
+          .elite-board .v10-icon .shade{fill:#000;stroke:none!important;opacity:.28}
+          .elite-board .v10-icon .edge{fill:none;stroke:#fff;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;opacity:.92}
+          .elite-board .layerHead b{font-size:14px!important;color:#fff!important;letter-spacing:.13em!important;line-height:1.25!important}
+          .elite-board .layerBody{padding:27px 31px 33px!important;font-size:clamp(22px,1.9vw,30px)!important;line-height:1.6!important;color:#ece9ef!important}
           .elite-board .layerBody strong{color:#fff!important}
-          .elite-board .layer[data-naya-layer="human"]{--layer:#ff2fa4!important;border-color:#ff2fa455!important}.elite-board .layer[data-naya-layer="child"]{--layer:#8b42ff!important;border-color:#8b42ff55!important}.elite-board .layer[data-naya-layer="grandma"]{--layer:#4b5dff!important;border-color:#4b5dff55!important}.elite-board .layer[data-naya-layer="naya"]{--layer:#ff9a5a!important;border-color:#ff9a5a55!important}.elite-board .layer[data-naya-layer="machine"]{--layer:#26c875!important;border-color:#26c87555!important}.elite-board .layer[data-naya-layer="learning"]{--layer:#b8ee57!important;border-color:#b8ee5755!important}.elite-board .layer[data-naya-layer="meaning"]{--layer:#f1d75a!important;border-color:#f1d75a55!important}.elite-board .layer[data-naya-layer="apply"]{--layer:#d4af37!important;border-color:#d4af3766!important}.elite-board .layer[data-naya-layer="value"]{--layer:#dfe6ee!important;border-color:#dfe6ee55!important}
-          .elite-board .layer[data-naya-layer="apply"]{box-shadow:inset 0 1px #fff3,0 17px 36px #000c,0 0 34px #d4af3738!important}.elite-board .layer[data-naya-layer="value"]{box-shadow:inset 0 1px #fff3,0 16px 34px #000a,0 0 30px #dfe6ee20!important}
-          .top .title{font-size:10px!important;min-width:175px!important;color:#f7f5fa!important;letter-spacing:.08em!important;font-weight:900!important}.top .title:after{content:none!important}
-          @media(max-width:820px){.elite-board:first-child .blockTop{gap:14px!important}.elite-board:first-child .glyph{width:72px!important;height:72px!important;flex-basis:72px!important;border-radius:21px!important}.elite-board:first-child .glyph svg{width:50px!important;height:50px!important}.elite-board:first-child .blockTop h3{font-size:clamp(32px,9vw,50px)!important}.elite-board:first-child .nutshell b,.elite-board .layerHead{min-height:90px!important;padding:11px 18px!important;gap:15px!important}.elite-board:first-child .nutshell b .v9-nutshell-star,.elite-board:first-child .nutshell b .v9-nutshell-star:before{width:62px!important;height:62px!important;flex-basis:62px!important;font-size:29px!important}.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 24px!important;font-size:21px!important;line-height:1.58!important}.elite-board .dot{width:64px!important;height:64px!important;flex-basis:64px!important}.elite-board .dot svg{width:46px!important;height:46px!important}}
+          .elite-board .layer[data-naya-layer="human"]{--layer:#ff2fa4!important;border-color:#ff2fa466!important}.elite-board .layer[data-naya-layer="child"]{--layer:#8b42ff!important;border-color:#8b42ff66!important}.elite-board .layer[data-naya-layer="grandma"]{--layer:#4b5dff!important;border-color:#4b5dff66!important}.elite-board .layer[data-naya-layer="naya"]{--layer:#ff9a5a!important;border-color:#ff9a5a66!important}.elite-board .layer[data-naya-layer="machine"]{--layer:#26c875!important;border-color:#26c87566!important}.elite-board .layer[data-naya-layer="learning"]{--layer:#b8ee57!important;border-color:#b8ee5766!important}.elite-board .layer[data-naya-layer="meaning"]{--layer:#f1d75a!important;border-color:#f1d75a66!important}.elite-board .layer[data-naya-layer="apply"]{--layer:#d4af37!important;border-color:#d4af376f!important}.elite-board .layer[data-naya-layer="value"]{--layer:#dfe6ee!important;border-color:#dfe6ee66!important}
+          .elite-board .layer[data-naya-layer="apply"]{box-shadow:inset 0 1px #fff3,0 18px 38px #000c,0 0 36px #d4af3740!important}.elite-board .layer[data-naya-layer="value"]{box-shadow:inset 0 1px #fff3,0 17px 36px #000a,0 0 32px #dfe6ee24!important}
+          .elite-board .actions{margin-top:20px!important}
+          .top .title{font-size:12px!important;min-width:220px!important;color:#f7f5fa!important;letter-spacing:.06em!important;font-weight:900!important}.top .title:after{content:none!important}
+          @media(max-width:820px){.elite-board:first-child .blockTop{gap:14px!important}.elite-board:first-child .identity{gap:14px!important}.elite-board:first-child .glyph{width:78px!important;height:78px!important;flex-basis:78px!important;border-radius:23px!important}.elite-board:first-child .glyph .v10-icon{width:54px!important;height:54px!important}.elite-board:first-child .blockTop h3{font-size:clamp(32px,9vw,50px)!important}.elite-board:first-child .nutshell b,.elite-board .layerHead{min-height:92px!important;padding:11px 18px!important;gap:14px!important}.elite-board:first-child .nutshell b .v10-nutshell-star,.elite-board:first-child .nutshell b .v10-nutshell-star:before{width:62px!important;height:62px!important;flex-basis:62px!important;font-size:29px!important}.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;line-height:1.58!important}.elite-board .dot{width:64px!important;height:64px!important;flex-basis:64px!important}.elite-board .dot .v10-icon{width:46px!important;height:46px!important}}
           </style>'''
-          js=r'''<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V9">
+
+          js=r'''<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">
           (()=>{
-            const clean=x=>(x||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
+            const NS='http://www.w3.org/2000/svg';
+            const clean=x=>String(x||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
             const icons={
-              power:'<path class="v9-core" d="M12 2.2 14.9 9l6.8 2-6.8 2.2L12 20l-2.9-6.8L2.3 11l6.8-2 2.9-6.8Z"/><path class="v9-highlight" d="m12 4 1.8 6 5 1.1-5 1.8-1.8 5.2-1.7-5.2-5-1.8 5-1.1L12 4Z"/><path class="v9-line" d="m18.5 16 .6 1.7 1.7.6-1.7.6-.6 1.7-.6-1.7-1.7-.6 1.7-.6.6-1.7Z"/>',
-              human:'<circle class="v9-core" cx="12" cy="6.2" r="3.2"/><path class="v9-core" d="M6 20v-3.8c0-3 2.6-5 6-5s6 2 6 5V20Z"/><path class="v9-highlight" d="M10 4.2c.6-.8 2.1-1.1 3.2-.5l-1.2 3.1c-1.2.2-2.1-.7-2-2.6Z"/><path class="v9-line" d="M4 14c1.2-1.1 2.6-1.6 4.2-1.6M20 14c-1.2-1.1-2.6-1.6-4.2-1.6"/>',
-              child:'<circle class="v9-core" cx="12" cy="6.5" r="3.1"/><path class="v9-core" d="M6.3 20v-3.7c0-2.8 2.5-4.7 5.7-4.7s5.7 1.9 5.7 4.7V20Z"/><path class="v9-highlight" d="M10.1 5.1c.8-.8 2.3-.9 3.2-.2-.4 1.4-1.2 2.1-2.4 2.1-.6-.4-.9-1-.8-1.9Z"/><path class="v9-line" d="m4.5 10.5 2.2-1.1M19.5 10.5l-2.2-1.1"/>',
-              grandma:'<circle class="v9-core" cx="12" cy="6.8" r="3.1"/><path class="v9-core" d="M6.2 20v-3.7c0-2.8 2.5-4.7 5.8-4.7s5.8 1.9 5.8 4.7V20Z"/><path class="v9-shadow" d="M8.1 5.2c1.2-2.8 6.6-2.8 7.8 0-.8-.6-1.8-.8-3.1-.7l-.8 1.6-1.1-1.5c-1.1 0-2 .2-2.8.6Z"/><path class="v9-line" d="M8.4 4.3c1-2.3 6.2-2.3 7.2 0M8.2 8.5 6.5 11M15.8 8.5l1.7 2.5"/>',
-              naya:'<path class="v9-core" d="m12 2 2.5 6.1 6.3 2.1-6.3 2.2L12 19l-2.5-6.6L3.2 10.2l6.3-2.1L12 2Z"/><path class="v9-highlight" d="m12 4.4 1.4 4.8 4.6 1.2-4.6 1.5-1.4 4.2-1.5-4.2-4.5-1.5 4.5-1.2L12 4.4Z"/><path class="v9-line" d="m19.2 15 .7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z"/>',
-              machine:'<rect class="v9-core" x="4" y="5" width="16" height="14" rx="3"/><path class="v9-highlight" d="M7 7h10c1.1 0 2 .9 2 2H7c-1.1 0-2-.9-2-2h2Z"/><path class="v9-line" d="M8 11h8M8 14.5h5M12 2v3M12 19v3M2.5 12h2M19.5 12h2"/>',
-              learning:'<path class="v9-core" d="M3.5 5.2C6.4 3.9 9.3 4.3 12 6v14c-2.7-1.7-5.6-2.1-8.5-.8v-14ZM20.5 5.2C17.6 3.9 14.7 4.3 12 6v14c2.7-1.7 5.6-2.1 8.5-.8v-14Z"/><path class="v9-highlight" d="M5.3 6.3c2-.7 4.1-.3 5.5.6v10.4c-1.8-.8-3.6-.9-5.5-.4V6.3Z"/><path class="v9-line" d="m7.8 12 2.1 2.1 5-5.2"/>',
-              meaning:'<circle class="v9-core" cx="12" cy="12" r="8.5"/><path class="v9-shadow" d="M5.8 15.2c1.6 2.6 4.1 4 6.8 4 2.7 0 5.1-1.4 6.7-3.9-2.1 1.1-4.3 1.7-6.7 1.7-2.4 0-4.7-.6-6.8-1.8Z"/><path class="v9-line" d="M9.5 9.4a2.7 2.7 0 1 1 4.8 1.8c-1.1 1-2.3 1.2-2.3 3M12 17h.01"/>',
-              apply:'<path class="v9-core" d="m4.5 13.1 4.8 4.8L19.7 7.5l1.8 1.8L9.3 21.5 2.7 14.9l1.8-1.8Z"/><path class="v9-highlight" d="m5.1 13.6 4.2 4.2 9.4-9.4.6.6-10 10-4.8-4.8.6-.6Z"/><path class="v9-line" d="M12 3v8M8.5 6.5 12 3l3.5 3.5"/>',
-              value:'<path class="v9-core" d="m12 2 8 4.5v11L12 22l-8-4.5v-11L12 2Z"/><path class="v9-highlight" d="m12 4.3 5.9 3.3v8.3L12 19.3l-5.9-3.4V7.6L12 4.3Z"/><path class="v9-line" d="m8.4 12 2.3 2.3 4.9-5.1"/>'
+              power:'<path class="core" d="M12 2 15 9l7 2-7 3-3 8-3-8-7-3 7-2 3-7Z"/><path class="facet" d="M12 4.2 13.8 10l5.1 1.2-5.1 1.8-1.8 5.1-1.7-5.1-5.1-1.8L10.3 10 12 4.2Z"/><path class="edge" d="m18.5 16 .7 1.9 1.9.7-1.9.7-.7 1.9-.7-1.9-1.9-.7 1.9-.7.7-1.9Z"/>',
+              human:'<circle class="core" cx="12" cy="6" r="3.3"/><path class="core" d="M5.8 20v-3.7c0-3.1 2.7-5.2 6.2-5.2s6.2 2.1 6.2 5.2V20Z"/><path class="facet" d="M10 4.1c.8-.8 2.2-1 3.3-.4l-1.2 3.2c-1.3.1-2.2-.8-2.1-2.8Z"/><path class="edge" d="M4 14c1.2-1.1 2.6-1.6 4.2-1.6M20 14c-1.2-1.1-2.6-1.6-4.2-1.6"/>',
+              child:'<circle class="core" cx="12" cy="6.4" r="3.1"/><path class="core" d="M6.2 20v-3.6c0-2.9 2.5-4.8 5.8-4.8s5.8 1.9 5.8 4.8V20Z"/><path class="facet" d="M10.1 5c.8-.8 2.2-.9 3.2-.2-.4 1.4-1.2 2.1-2.4 2.1-.6-.4-.9-1-.8-1.9Z"/><path class="edge" d="m4.5 10.5 2.2-1.1M19.5 10.5l-2.2-1.1"/>',
+              grandma:'<circle class="core" cx="12" cy="6.8" r="3.1"/><path class="core" d="M6.1 20v-3.7c0-2.9 2.5-4.8 5.9-4.8s5.9 1.9 5.9 4.8V20Z"/><path class="shade" d="M8 5.2c1.2-2.8 6.8-2.8 8 0-.8-.6-1.9-.8-3.1-.7l-.9 1.6-1.1-1.5c-1.1 0-2 .2-2.9.6Z"/><path class="edge" d="M8.3 4.3c1-2.3 6.4-2.3 7.4 0M8.1 8.5 6.4 11M15.9 8.5l1.7 2.5"/>',
+              naya:'<path class="core" d="m12 2 2.5 6.2 6.5 2-6.5 2.3L12 19l-2.5-6.5L3.1 10.2l6.4-2L12 2Z"/><path class="facet" d="m12 4.4 1.5 4.8 4.7 1.2-4.7 1.5-1.5 4.2-1.5-4.2-4.6-1.5 4.6-1.2L12 4.4Z"/><path class="edge" d="m19.2 15 .7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z"/>',
+              machine:'<rect class="core" x="4" y="5" width="16" height="14" rx="3"/><path class="facet" d="M7 7h10c1.1 0 2 .9 2 2H7c-1.1 0-2-.9-2-2h2Z"/><path class="edge" d="M8 11h8M8 14.5h5M12 2v3M12 19v3M2.5 12h2M19.5 12h2"/>',
+              learning:'<path class="core" d="M3.5 5.2C6.4 3.9 9.3 4.3 12 6v14c-2.7-1.7-5.6-2.1-8.5-.8v-14ZM20.5 5.2C17.6 3.9 14.7 4.3 12 6v14c2.7-1.7 5.6-2.1 8.5-.8v-14Z"/><path class="facet" d="M5.3 6.3c2-.7 4.1-.3 5.5.6v10.4c-1.8-.8-3.6-.9-5.5-.4V6.3Z"/><path class="edge" d="m7.8 12 2.1 2.1 5-5.2"/>',
+              meaning:'<circle class="core" cx="12" cy="12" r="8.5"/><path class="shade" d="M5.8 15.2c1.6 2.6 4.1 4 6.8 4 2.7 0 5.1-1.4 6.7-3.9-2.1 1.1-4.3 1.7-6.7 1.7-2.4 0-4.7-.6-6.8-1.8Z"/><path class="edge" d="M9.5 9.4a2.7 2.7 0 1 1 4.8 1.8c-1.1 1-2.3 1.2-2.3 3M12 17h.01"/>',
+              apply:'<path class="core" d="m4.5 13.1 4.8 4.8L19.7 7.5l1.8 1.8L9.3 21.5 2.7 14.9l1.8-1.8Z"/><path class="facet" d="m5.1 13.6 4.2 4.2 9.4-9.4.6.6-10 10-4.8-4.8.6-.6Z"/><path class="edge" d="M12 3v8M8.5 6.5 12 3l3.5 3.5"/>',
+              value:'<path class="core" d="m12 2 8 4.5v11L12 22l-8-4.5v-11L12 2Z"/><path class="facet" d="m12 4.3 5.9 3.3v8.3L12 19.3l-5.9-3.4V7.6L12 4.3Z"/><path class="edge" d="m8.4 12 2.3 2.3 4.9-5.1"/>'
             };
             const map=[['HUMAN NOTE','human'],['CHILD NOTE','child'],['GRANDMA NOTE','grandma'],['NAYA NOTE','naya'],['MACHINE NOTE','machine'],['LEARNING LESSON','learning'],['ADAPTIVE LEARNING','learning'],['WHAT IT MEANS','meaning'],['SIGNIFICANCE','meaning'],['HOW TO APPLY / HOW TO USE','apply'],['HOW TO APPLY','apply'],['HOW TO USE','apply'],["WHAT'S IN IT FOR YOU",'value'],['HUMAN VALUE','value']];
-            function classify(k){for(const [n,id] of map)if(k.includes(n))return id;return null;}
-            function icon(id,cls='v9-icon'){return `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true">${icons[id]||icons.value}</svg>`}
-            function run(){
-              document.querySelectorAll('.elite-board').forEach((b,bi)=>{
-                const top=b.querySelector('.blockTop'),h3=b.querySelector('.blockTop h3');
-                if(bi===0&&top&&h3){let g=b.querySelector('.glyph');if(!g){g=document.createElement('div');g.className='glyph';g.setAttribute('aria-hidden','true');top.querySelector('.identity')?.insertBefore(g,top.querySelector('.identity').firstChild)}g.innerHTML=icon('power');h3.textContent='What is Naya Power';}
-                const nutshell=b.querySelector('.nutshell');
-                if(nutshell){
-                  nutshell.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*="nutshellIcon"]').forEach(e=>e.remove());
-                  const label=nutshell.querySelector('b');
-                  if(label){label.textContent='';const star=document.createElement('span');star.className='v9-nutshell-star';label.appendChild(star);label.appendChild(document.createTextNode('IN A NUTSHELL'));}
-                }
-                const ls=b.querySelector('.layers');if(!ls)return;
-                [...ls.children].forEach(l=>{const h=l.querySelector('.layerHead b');const id=classify(clean(h?.textContent));if(id){l.dataset.nayaLayer=id;const dot=l.querySelector('.dot');if(dot)dot.innerHTML=icon(id);}});
-                const apply=ls.querySelector('[data-naya-layer="apply"]'),value=ls.querySelector('[data-naya-layer="value"]');if(apply)ls.appendChild(apply);if(value)ls.appendChild(value);
+            const layerSpec={human:['HUMAN NOTE','#ff2fa4'],child:['CHILD NOTE','#8b42ff'],grandma:['GRANDMA NOTE','#4b5dff'],naya:['NAYA NOTE','#ff9a5a'],machine:['MACHINE NOTE','#26c875'],learning:['LEARNING LESSON','#b8ee57'],meaning:['WHAT IT MEANS','#f1d75a'],apply:['HOW TO APPLY / HOW TO USE','#d4af37'],value:["WHAT'S IN IT FOR YOU",'#dfe6ee']};
+            const classify=t=>{t=clean(t).replace(/\?$/,'');for(const [n,id] of map)if(t.includes(n))return id;return null};
+            function svg(kind,cls='v10-icon'){const e=document.createElementNS(NS,'svg');e.setAttribute('class',cls);e.setAttribute('viewBox','0 0 24 24');e.setAttribute('aria-hidden','true');e.setAttribute('fill','none');e.innerHTML=icons[kind]||icons.value;return e}
+            function jewel(el,kind){el.querySelectorAll('.v10-icon').forEach(x=>x.remove());el.appendChild(svg(kind))}
+            function normalizeBoard(b,index){
+              b.classList.add('elite-board','naya-smart-board-v10');
+              b.querySelectorAll('.truth,.naya509-block-kicker,.naya509-flow-marker,.naya509-living-spine,.naya509-block-context,.naya509-source-row,.naya509-next-status,.naya509-layer-tag').forEach(x=>x.remove());
+              const h=b.querySelector('h3');
+              if(h && index===0) h.textContent='What is Naya Power';
+              const g=b.querySelector('.glyph');
+              if(g){g.querySelectorAll('svg,img,.ico,.naya-elite-icon').forEach(x=>x.remove());jewel(g,'power')}
+              const n=b.querySelector('.nutshell');
+              if(n){
+                n.querySelectorAll('svg,img,.nutshellIcon,.naya-elite-icon,.ico,[class*="nutshellIcon"]').forEach(x=>x.remove());
+                const label=n.querySelector('b');
+                if(label){label.textContent='';const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.appendChild(star);label.appendChild(document.createTextNode('IN A NUTSHELL'))}
+              }
+              const layers=b.querySelector('.layers'); if(!layers)return;
+              const seen=new Set();
+              [...layers.children].forEach(l=>{
+                const head=l.querySelector('.layerHead'); const btag=l.querySelector('.layerHead b'); if(!head||!btag){l.remove();return}
+                const id=classify(btag.textContent);
+                if(!id||seen.has(id)){l.remove();return}
+                seen.add(id); const spec=layerSpec[id]; btag.textContent=spec[0]; l.dataset.nayaLayer=id; l.style.setProperty('--layer',spec[1]);
+                const dot=l.querySelector('.dot'); if(dot){dot.innerHTML='';jewel(dot,id)}
               });
-              const title=document.querySelector('.top .title');if(title){const render=()=>{const d=new Date();title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',year:'numeric',month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}).format(d)};render();if(!window.__nayaTimeTimer)window.__nayaTimeTimer=setInterval(render,30000)}
+              const meaning=[...layers.children].find(x=>x.dataset.nayaLayer==='meaning');
+              if(![...layers.children].some(x=>x.dataset.nayaLayer==='apply')&&meaning){const x=document.createElement('article');x.className='layer';x.dataset.nayaLayer='apply';x.style.setProperty('--layer','#d4af37');x.innerHTML='<div class="layerHead"><span class="dot"></span><b>HOW TO APPLY / HOW TO USE</b><span class="state">ACTION</span></div><div class="layerBody"><strong>Turn understanding into responsible action.</strong> Check the evidence and take one concrete next step supported by what is known. If no verified action exists, keep the intelligence in review rather than inventing certainty.</div>';meaning.after(x);const dot=x.querySelector('.dot');jewel(dot,'apply')}
+              const value=[...layers.children].find(x=>x.dataset.nayaLayer==='value');
+              if(value)layers.appendChild(value);
+              const apply=[...layers.children].find(x=>x.dataset.nayaLayer==='apply');
+              if(apply)layers.appendChild(apply); if(value)layers.appendChild(value);
+            }
+            function run(){
+              const boards=[...document.querySelectorAll('#blocks > .block')];
+              boards.forEach(normalizeBoard);
+              const title=document.querySelector('.top .title');
+              if(title){title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date())}
             }
             if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
           })();
           </script>'''
-          s=s.replace('</head>',css+'</head>',1).replace('</body>',js+'</body>',1)
+          s=re.sub(r'\s*<style id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</style>\s*','',s,flags=re.S)
+          s=re.sub(r'\s*<script id="NAYA-SMART-BOARD-ELITE-REFINEMENT-V10">.*?</script>\s*','',s,flags=re.S)
+          s=s.replace('</head>',css+'\n</head>')
+          s=s.replace('</body>',js+'\n</body>')
           p.write_text(s,encoding='utf-8')
+          PY
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          assert s.count('NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')==2
+          assert 'naya-smart-board-finalizer' not in s
+          assert 'naya-aaa-smart-board-visual-v1-script' not in s
+          assert 'naya-smart-board-living-intelligence-v2-script' not in s
+          assert 'NAYA-SMART-BOARD-ELITE-REFINEMENT-V9' not in s
+          assert "h.textContent='What is Naya Power'" in s
+          assert 'v10-nutshell-star' in s
+          assert "justify-content:center!important" in s
+          assert 'naya-smart-board-v10' in s
+          assert 'd4af37' in s
+          print('V10 STATIC VERIFIER: PASS')
           PY
           git config user.name 'NayaPOWER Automation'
           git config user.email 'actions@github.com'
           git add '2026 09 15 NayaNETHUB.html'
-          git commit -m 'Apply Smart Board jewelry icons and centered Nutshell V9'
+          git diff --cached --check
+          git commit -m 'Repair Smart Board visual authority and jewelry system V10'
           git push origin HEAD:main
