@@ -1,0 +1,41 @@
+name: 513 Smart Board Canonical Finalizer
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/finalize-smart-board.py'
+      - '.naya/control-plane/SMART-BOARD-REFINEMENT-TRIGGER.md'
+      - '.github/workflows/513-smart-board-canonical-finalizer.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Run deterministic source finalizer
+        run: python3 tools/finalize-smart-board.py
+      - name: Verify canonical source
+        run: |
+          set -euo pipefail
+          f='2026 09 15 NayaNETHUB.html'
+          grep -q 'NAYA-SMART-BOARD-V11-GITHUB-FINAL' "$f"
+          grep -q 'font-size:18px!important' "$f"
+          grep -q 'font-size:14px!important' "$f"
+          grep -q 'HOW TO APPLY / HOW TO USE' "$f"
+          grep -q 'data-naya-layer="apply"' "$f"
+          grep -q 'What is Naya Power' "$f"
+      - name: Commit canonical HTML
+        run: |
+          set -euo pipefail
+          git config user.name 'NayaPOWER Automation'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 0; fi
+          git commit -m 'Finalize Smart Board canonical source'
+          git pull --rebase origin main
+          git push origin HEAD:main
