@@ -48,7 +48,6 @@ function stripLegacyBars()'''
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>\s*", "", s, flags=re.S)
           s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->.*?</script>\s*", "", s, flags=re.S)
 
-          marker = '<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->'
           guard = r'''<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->
           <script>
           (()=>{
@@ -58,17 +57,9 @@ function stripLegacyBars()'''
             function fix(){
               document.querySelectorAll('.layers').forEach(layers=>{
                 const items=[...layers.querySelectorAll(':scope > .layer')];
-                const by={};
-                items.forEach(layer=>{
-                  const h=layer.querySelector('.layerHead b');
-                  if(!h)return;
-                  const normalized=aliases[clean(h.textContent)]||clean(h.textContent);
-                  h.textContent=normalized;
-                  by[normalized]=layer;
-                });
+                items.forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h)h.textContent=aliases[clean(h.textContent)]||clean(h.textContent)});
                 items.forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h&&['WHAT IT MEANS','HOW TO USE','SIGNIFICANCE'].includes(clean(h.textContent)))layer.remove()});
-                const current=[...layers.querySelectorAll(':scope > .layer')];
-                const map={};current.forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h)map[clean(h.textContent)]=layer});
+                const map={};[...layers.querySelectorAll(':scope > .layer')].forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h)map[clean(h.textContent)]=layer});
                 required.forEach(label=>{const layer=map[label];if(layer)layers.appendChild(layer)});
               });
             }
@@ -84,13 +75,29 @@ function stripLegacyBars()'''
         shell: bash
         run: |
           set -euo pipefail
-          test -s '2026 09 15 NayaNETHUB.html'
-          grep -q 'function board(note,idx)' '2026 09 15 NayaNETHUB.html'
+          f='2026 09 15 NayaNETHUB.html'
+          test -s "$f"
+          grep -q 'function board(note,idx)' "$f"
           for x in 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' "WHAT'S IN IT FOR YOU"; do
-            grep -q "$x" '2026 09 15 NayaNETHUB.html'
+            grep -q "$x" "$f"
           done
-          if grep -q 'ADAPTIVE LEARNING' '2026 09 15 NayaNETHUB.html'; then
-            echo 'LEGACY_ADAPTIVE_LABEL_REMAINS_IN_SOURCE'
+          board_block=$(python3 - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          m=re.search(r'function board\(note,idx\)\{.*?\nfunction stripLegacyBars\(\)',s,re.S)
+          if not m: raise SystemExit('BOARD_RENDERER_NOT_FOUND_AFTER_SURGERY')
+          print(m.group(0))
+          PY
+          )
+          for legacy in 'ADAPTIVE LEARNING' 'CHILD SIMPLIFIED' 'WHAT IT MEANS'; do
+            if printf '%s\n' "$board_block" | grep -q "$legacy"; then
+              echo "LEGACY_LABEL_REMAINS_IN_BOARD_RENDERER: $legacy"
+              exit 1
+            fi
+          done
+          if printf '%s\n' "$board_block" | grep -qE '(^|[^[:alnum:]])[2-8][[:space:]]*[·.-][[:space:]]*(IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT)'; then
+            echo 'VISIBLE_NUMERIC_LAYER_PREFIX_REMAINS_IN_BOARD_RENDERER'
             exit 1
           fi
 
