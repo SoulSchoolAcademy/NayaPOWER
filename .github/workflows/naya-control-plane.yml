@@ -33,8 +33,16 @@ jobs:
       - uses: actions/checkout@v6
       - name: Governance adapter syntax check
         run: python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py .naya/governance/test_naya_execution_boundaries.py
+      - name: Runtime authority boundary syntax check
+        run: python -m py_compile .naya/runtime/model_tool_gateway.py .naya/runtime/naya_power_kernel.py .naya/runtime/execution_controller.py .naya/runtime/test_authority_boundary.py
       - name: Governance kernel self-test
         run: python .naya/governance/test_governance_kernel.py
+      - name: Canonical runtime authority boundary self-test
+        run: python .naya/runtime/test_authority_boundary.py
+      - name: Runtime kernel self-test
+        run: python .naya/runtime/naya_power_kernel.py --self-test
+      - name: Model/tool gateway self-test
+        run: python .naya/runtime/model_tool_gateway.py self-test
       - name: Execution-boundary self-test
         run: python .naya/governance/test_naya_execution_boundaries.py
       - name: Python control-plane syntax check
