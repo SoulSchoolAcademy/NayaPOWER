@@ -17,26 +17,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Diagnose canonical Smart Board source
+      - name: Diagnose canonical Smart Board data path
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
           import re
-          p=Path('2026 09 15 NayaNETHUB.html')
-          s=p.read_text(encoding='utf-8')
-          print('SOURCE_BYTES=',len(s.encode('utf-8')))
-          print('BOARD_IDS=',len(re.findall(r'id=[\"\']naya509-\d{2}[\"\']',s)))
-          for name in ('board','block','render'):
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          for name in ('dataFor','board','block','render'):
               m=re.search(r'function '+name+r'\s*\([^)]*\)\s*\{',s)
-              print('FUNCTION_'+name.upper()+'=', 'FOUND' if m else 'MISSING')
-              if m:
-                  print('FUNCTION_'+name.upper()+'_OFFSET=',m.start())
-                  print(s[m.start():m.start()+1800])
-          labels=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"]
-          for label in labels:
-              print('LABEL',label,'COUNT=',len(re.findall(re.escape(label),s,re.I)))
+              print('\n===',name,'===')
+              if not m:
+                  print('MISSING')
+                  continue
+              print('OFFSET=',m.start())
+              print(s[m.start():m.start()+2600])
+          print('\n=== board call sites ===')
+          for m in re.finditer(r'\bboard\s*\(',s): print(m.start(),s[m.start()-80:m.start()+180].replace('\n',' '))
+          print('\n=== sections references ===')
+          for m in re.finditer(r'\.sections\b',s): print(m.start(),s[m.start()-100:m.start()+180].replace('\n',' '))
           PY
       - name: Verify source is intact
         shell: bash
