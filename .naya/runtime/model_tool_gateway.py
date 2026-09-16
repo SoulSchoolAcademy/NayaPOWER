@@ -55,7 +55,7 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
     except RuntimeError as exc:
         raise AssertionError(str(exc)) from exc
     decision = DecisionObject(
-        decision_id=f"tool:{action['action_id']", mission=f"execute governed tool action {action['action_id']}", actor_id=authority.principal_id,
+        decision_id=f"tool:{action['action_id']}", mission=f"execute governed tool action {action['action_id']}", actor_id=authority.principal_id,
         action=action["action_type"], purpose=authority.purpose, scope=authority.scope,
         current_truth=f"CLAIMED execution block {state['block_id']}", gap=str(action["purpose"]),
         evidence=tuple(str(x) for x in action["evidence_requirement"]) or ("claimed execution context",),
@@ -85,6 +85,11 @@ def self_test() -> int:
         else: raise AssertionError("gateway accepted a stale protected baseline")
         result = authorize(action)
         assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING" and result["authority_id"] == action["authority_id"]
+        transition("CLAIMED", claim_id="CL-TEST-2", block_id="B-TEST-2", owner="SoulSchoolAcademy", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="test-head")
+        forged = dict(action, authority_id="FABRICATED-AUTHORITY")
+        try: authorize(forged)
+        except AssertionError as exc: assert "unknown authority_id" in str(exc)
+        else: raise AssertionError("gateway accepted fabricated authority")
         print("PASS — model/tool gateway canonical authority self-test GREEN")
         return 0
     finally:
