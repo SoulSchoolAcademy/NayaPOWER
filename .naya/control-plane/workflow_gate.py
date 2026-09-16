@@ -20,10 +20,43 @@ from governance_kernel import (  # noqa: E402
     VerificationPlan,
     evaluate,
     load_authority_registry,
-    resolve_authority,
+    resolve_authority as resolve_registered_authority,
 )
 
 REGISTRY_PATH = GOVERNANCE_DIR / "authority-registry.json"
+
+
+def resolve_authority(
+    registry: AuthorityRegistry,
+    *,
+    actor: str,
+    purpose: str,
+    permission: str,
+    scope: str,
+) -> Authority:
+    """Resolve one existing grant, then bind it through the canonical resolver."""
+    candidates = [
+        authority
+        for authority in registry.authorities.values()
+        if authority.principal_id == actor
+        and authority.purpose == purpose
+        and permission in authority.granted_actions
+        and authority.scope == scope
+    ]
+    if len(candidates) != 1:
+        raise RuntimeError(
+            "explicit authority resolution failed: expected exactly one matching active grant, "
+            f"found {len(candidates)}"
+        )
+    authority = candidates[0]
+    return resolve_registered_authority(
+        registry,
+        authority_id=authority.authority_id,
+        actor_id=actor,
+        purpose=purpose,
+        action=permission,
+        scope=scope,
+    )
 
 
 def authorize_workflow(
@@ -56,20 +89,9 @@ def authorize_workflow(
     registry = load_authority_registry(REGISTRY_PATH)
     authority = resolve_authority(
         registry,
-        authority_id=next(
-            (
-                item["authority_id"]
-                for item in json.loads(REGISTRY_PATH.read_text(encoding="utf-8")).get("authorities", [])
-                if item.get("principal_id") == actor
-                and item.get("purpose") == purpose
-                and permission in item.get("granted_actions", [])
-                and item.get("scope") == scope
-            ),
-            "",
-        ),
-        actor_id=actor,
+        actor=actor,
         purpose=purpose,
-        action=permission,
+        permission=permission,
         scope=scope,
     )
     now = datetime.now(timezone.utc).isoformat()
