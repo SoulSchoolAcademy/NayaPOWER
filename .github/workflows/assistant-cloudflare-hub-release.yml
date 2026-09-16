@@ -96,8 +96,8 @@ jobs:
           };
 
           async function prove(page, label) {
-            await page.goto(url, { waitUntil: 'networkidle' });
-            await page.waitForTimeout(700);
+            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
+            await page.waitForTimeout(1500);
             const result = await page.evaluate(({ expected, colors }) => {
               const blocks = [...document.querySelectorAll('.naya-smart-board-v2')];
               const failures = [];
