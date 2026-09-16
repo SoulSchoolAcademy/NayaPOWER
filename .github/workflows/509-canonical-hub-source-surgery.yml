@@ -18,58 +18,86 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Apply canonical visible intelligence spine
+      - name: Make Naya Power the canonical board template
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
+          import re
+
           p = Path('2026 09 15 NayaNETHUB.html')
           s = p.read_text(encoding='utf-8')
-          marker = '<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->'
-          if marker not in s:
-              script = r'''<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->
-          <style>
-          .layers{display:flex!important;flex-direction:column!important;gap:10px!important}
-          .layer{width:100%!important}
-          </style>
+
+          # Replace the board renderer itself so every Smart Note receives the
+          # same canonical structural spine. Board-specific title, glyph, tone,
+          # and intelligence remain unique to each note.
+          pattern = re.compile(r"function board\(note,idx\)\{.*?\nfunction stripLegacyBars\(\)", re.S)
+          replacement = r'''function board(note,idx){
+          const tone=tones[idx%tones.length];
+          const specs=[[1,'IN A NUTSHELL'],[2,'HUMAN NOTE'],[3,'CHILD NOTE'],[4,'GRANDMA NOTE'],[5,'NAYA NOTE'],[6,'MACHINE NOTE'],[7,'LEARNING LESSON'],[8,"WHAT'S IN IT FOR YOU"]];
+          const cleanLayerText=s=>s?.text||'';
+          const layers=specs.map(([n,label])=>{const s=note.sections[n];if(!s)return '';return `<article class="layer" style="--layer:${tone}"><div class="layerHead"><span class="dot"></span><b>${label}</b><span class="state">SMART NOTE · ${String(note.number).padStart(2,'0')}</span></div><div class="layerBody">${body(cleanLayerText(s))}</div></article>`}).join('');
+          const nuts=note.sections[1];
+          return `<article class="block naya509-board" data-real-smart-note="${note.number}" data-intelligence-id="smart-note-${String(note.number).padStart(2,'0')}" style="--tone:${tone}"><div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph">${glyphs[idx%glyphs.length]}</div><div><h3>${esc(note.title)}</h3><div class="meta"><span>SMART NOTE ${String(note.number).padStart(2,'0')}</span><span>CANONICAL INTELLIGENCE</span></div></div></div><div class="truth">SOURCE CONTENT</div></div>${nuts?`<div class="nutshell"><b>IN A NUTSHELL</b><p>${body(cleanLayerText(nuts))}</p></div>`:''}<div class="layers">${layers}</div>${actions()}<div class="blockFoot"><span>REAL SMART NOTE CONTENT · SOURCE: SMART FEED CONTENT</span><span>INTELLIGENCE EVENT ${String(note.number).padStart(2,'0')}</span></div></div></article>`}
+function stripLegacyBars()'''
+
+          s2, count = pattern.subn(replacement, s, count=1)
+          if count != 1:
+              raise SystemExit('BOARD_RENDERER_PATTERN_NOT_FOUND')
+          s = s2
+
+          # Remove any prior canonical spine injections so they cannot fight the
+          # new renderer. Then add a small compatibility guard for any legacy DOM
+          # that may survive in a cached/runtime path.
+          s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V1 -->.*?</script>\s*", "", s, flags=re.S)
+          s = re.sub(r"<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->.*?</script>\s*", "", s, flags=re.S)
+
+          marker = '<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->'
+          guard = r'''<!-- NAYA-CANONICAL-HUB-SPINE-V2 -->
           <script>
           (()=>{
-           const wanted=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','ADAPTER LEARNING','WHAT IT MEANS','HOW TO USE',"WHAT'S IN IT FOR YOU"];
-           const aliases={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE'};
-           const side={'Home':'Your Intelligence Today','Reports':'Your Report','Intelligence Library':'Intelligence','Collective':'Smart Share','Connections':'Your Connections'};
-           const text=x=>(x||'').replace(/\s+/g,' ').trim().toUpperCase();
-           function fix(){
-             document.querySelectorAll('.nav button').forEach(b=>{const raw=b.textContent.replace(/\s+/g,' ').trim();for(const [a,v] of Object.entries(side)){if(text(raw).startsWith(a.toUpperCase())){for(const n of b.childNodes)if(n.nodeType===3&&n.textContent.trim())n.textContent=n.textContent.replace(a,v);}}});
-             document.querySelectorAll('.label').forEach(l=>{const t=text(l.textContent);if(t.includes('SHARE')||t.includes('EVIDENCE'))l.textContent='SHARE & CONNECT';if(t.includes('COMMUNICATION'))l.textContent='PROOF & COMMUNICATION';if(t.includes('SYSTEM'))l.textContent='SYSTEM';if(t.includes('YOUR INTELLIGENCE'))l.textContent='YOUR INTELLIGENCE';});
-             document.querySelectorAll('.layers').forEach(layers=>{
-               [...layers.querySelectorAll(':scope > .layer')].forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h){const t=text(h.textContent);if(aliases[t])h.textContent=aliases[t];}});
-               const by={};[...layers.querySelectorAll(':scope > .layer')].forEach(x=>{const h=x.querySelector('.layerHead b');if(h)by[text(h.textContent)]=x;});
-               const meaning=by['WHAT IT MEANS'];
-               if(meaning&&!by['HOW TO USE']){const x=document.createElement('div');x.className='layer';x.style.setProperty('--layer','#55b9ee');x.innerHTML='<div class="layerHead"><span class="dot"></span><b>HOW TO USE</b><span class="state">ACTION GUIDANCE</span></div><div class="layerBody"><strong>Use the intelligence without inventing certainty.</strong> Check the source and evidence, understand the meaning, then apply a concrete action when one is verified. If no verified action exists, keep this as intelligence to review rather than fabricate a use case.</div>';meaning.after(x);}
-               const use=[...layers.querySelectorAll(':scope > .layer')].find(x=>text(x.textContent).includes("WHAT'S IN IT FOR YOU"));
-               if(use){const h=use.querySelector('.layerHead b');if(h)h.textContent="WHAT'S IN IT FOR YOU";}
-               const ordered={};[...layers.querySelectorAll(':scope > .layer')].forEach(x=>{const h=x.querySelector('.layerHead b');if(h)ordered[text(h.textContent)]=x;});
-               wanted.forEach(k=>{if(ordered[k])layers.appendChild(ordered[k]);});
-             });
-           }
-           fix();
-           new MutationObserver(fix).observe(document.body,{childList:true,subtree:true});
+            const required=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON',"WHAT'S IN IT FOR YOU"];
+            const clean=s=>String(s||'').replace(/^\s*\d+\s*[·.\-—:]?\s*/,'').replace(/\s+/g,' ').trim().toUpperCase();
+            const aliases={'CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','GRANDMA VIEW':'GRANDMA NOTE','ADAPTIVE LEARNING':'LEARNING LESSON','LEARNING':'LEARNING LESSON','MACHINE / PROVENANCE':'MACHINE NOTE'};
+            function fix(){
+              document.querySelectorAll('.layers').forEach(layers=>{
+                const items=[...layers.querySelectorAll(':scope > .layer')];
+                const by={};
+                items.forEach(layer=>{
+                  const h=layer.querySelector('.layerHead b');
+                  if(!h)return;
+                  const normalized=aliases[clean(h.textContent)]||clean(h.textContent);
+                  h.textContent=normalized;
+                  by[normalized]=layer;
+                });
+                items.forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h&&['WHAT IT MEANS','HOW TO USE','SIGNIFICANCE'].includes(clean(h.textContent)))layer.remove()});
+                const current=[...layers.querySelectorAll(':scope > .layer')];
+                const map={};current.forEach(layer=>{const h=layer.querySelector('.layerHead b');if(h)map[clean(h.textContent)]=layer});
+                required.forEach(label=>{const layer=map[label];if(layer)layers.appendChild(layer)});
+              });
+            }
+            fix();
+            new MutationObserver(fix).observe(document.body,{childList:true,subtree:true});
           })();
           </script>'''
-              s = s.replace('</body>', script + '\n</body>')
-              p.write_text(s, encoding='utf-8')
+          s = s.replace('</body>', guard + '\n</body>')
+          p.write_text(s, encoding='utf-8')
           PY
 
-      - name: Verify canonical source contains the required spine
+      - name: Verify canonical board structure in source
         shell: bash
         run: |
           set -euo pipefail
           test -s '2026 09 15 NayaNETHUB.html'
-          grep -q 'NAYA-CANONICAL-HUB-SPINE-V1' '2026 09 15 NayaNETHUB.html'
-          for x in 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'ADAPTER LEARNING' 'WHAT IT MEANS' 'HOW TO USE' "WHAT'S IN IT FOR YOU"; do
+          grep -q 'function board(note,idx)' '2026 09 15 NayaNETHUB.html'
+          for x in 'IN A NUTSHELL' 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' "WHAT'S IN IT FOR YOU"; do
             grep -q "$x" '2026 09 15 NayaNETHUB.html'
           done
+          if grep -q 'ADAPTIVE LEARNING' '2026 09 15 NayaNETHUB.html'; then
+            echo 'LEGACY_ADAPTIVE_LABEL_REMAINS_IN_SOURCE'
+            exit 1
+          fi
 
       - name: Commit canonical source mutation
         shell: bash
@@ -82,5 +110,5 @@ jobs:
             echo 'CANONICAL_SURGERY_NO_CHANGE'
             exit 0
           fi
-          git commit -m 'Make canonical Hub source carry ten-layer intelligence spine'
+          git commit -m 'Mirror all Smart Note boards to canonical Naya Power structure'
           git push
