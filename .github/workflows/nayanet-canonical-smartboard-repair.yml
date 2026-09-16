@@ -1,0 +1,87 @@
+name: NayaNET Canonical Smart Board Repair
+
+on:
+  push:
+    branches:
+      - naya-smartboard-canonical-repair
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Normalize canonical Smart Boards
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 15 NayaNETHUB.html')
+          s=p.read_text(encoding='utf-8')
+
+          # Normalize the canonical visible layer names in the existing boards.
+          s=re.sub(r'(?is)(<b[^>]*>)\s*CHILD\s*(</b>)', r'\1CHILD NOTE\2', s)
+          s=re.sub(r'(?is)(<b[^>]*>)\s*ADAPTIVE LEARNING(?:\s+LEARNING)?\s*(</b>)', r'\1LEARNING LESSON\2', s)
+          s=re.sub(r'(?is)(<b[^>]*>)\s*WHAT(?:\s+IS|\s+\'S|\s+’S)\s+IN\s+IT\s+FOR\s+YOU\??\s*(</b>)', r'\1WHAT\'S IN IT FOR YOU\2', s)
+
+          # Remove the old visible 01 prefix from the Nutshell heading.
+          s=re.sub(r'(?is)(<b[^>]*>)\s*0?1\s*[·•.\-:]\s*(IN A NUTSHELL)\s*(</b>)', r'\1\2\3', s)
+
+          # Remove numeric prefixes when they are part of a layer heading, even if
+          # the number/separator is wrapped in markup rather than plain text.
+          labels=r'(?:IN A NUTSHELL|HUMAN NOTE|CHILD NOTE|GRANDMA NOTE|NAYA NOTE|MACHINE NOTE|LEARNING LESSON|WHAT IT MEANS|WHAT[’\']S IN IT FOR YOU)'
+          head=re.compile(r'(<div[^>]*class=["\'][^"\']*layerHead[^"\']*["\'][^>]*>.*?</div>)',re.I|re.S)
+          def clean_head(m):
+              h=m.group(1)
+              h=re.sub(r'(?is)(<span\b[^>]*>\s*)[1-9]\s*(?:[·•.\-:]\s*)?(\s*</span>)', r'\1\2', h)
+              h=re.sub(r'(?is)(>\s*)[1-9]\s*(?:[·•.\-:]\s*)?(?=(?:<[^>]+>\s*)*(?:'+labels+r')\b)', r'\1', h)
+              h=re.sub(r'(?is)(>\s*)[1-9]\s+(?=(?:'+labels+r')\b)', r'\1', h)
+              return h
+          s=head.sub(clean_head,s)
+          p.write_text(s,encoding='utf-8')
+          PY
+
+      - name: Structural verification
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          expected=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
+          board_ids=[f'naya509-{i:02d}' for i in range(1,10)]
+          positions=[]
+          for bid in board_ids:
+            m=re.search(r'id=["\']'+re.escape(bid)+r'["\']',s)
+            if not m: raise SystemExit('Missing canonical board: '+bid)
+            positions.append((m.start(),bid))
+          positions.sort()
+          if [b for _,b in positions] != board_ids: raise SystemExit('Board order is not 01-09')
+          for idx,(start,bid) in enumerate(positions):
+            end=positions[idx+1][0] if idx+1<len(positions) else len(s)
+            seg=s[start:end]
+            nutshell=re.findall(r'(?is)<div[^>]*class=["\'][^"\']*nutshell[^"\']*["\'][^>]*>.*?<b[^>]*>\s*(.*?)\s*</b>',seg)
+            layers=re.findall(r'(?is)<div[^>]*class=["\'][^"\']*layerHead[^"\']*["\'][^>]*>.*?<b[^>]*>\s*(.*?)\s*</b>',seg)
+            got=[re.sub(r'\s+',' ',re.sub('<[^>]+>','',x)).strip().upper().rstrip('?') for x in nutshell[:1]+layers[:8]]
+            if got != expected:
+              raise SystemExit(f'{bid}: canonical order mismatch: {got}')
+          if re.search(r'(?is)<b[^>]*>\s*CHILD\s*</b>',s): raise SystemExit('Legacy CHILD label remains')
+          if re.search(r'(?is)<b[^>]*>\s*ADAPTIVE LEARNING(?:\s+LEARNING)?\s*</b>',s): raise SystemExit('Legacy learning label remains')
+          if re.search(r'(?is)<b[^>]*>\s*0?1\s*[·•.\-:]\s*IN A NUTSHELL\s*</b>',s): raise SystemExit('Visible Nutshell numeric prefix remains')
+          print('CANONICAL_BOARD_COUNT=9')
+          print('CANONICAL_ORDER=PASS for boards 01-09')
+          print('LEGACY_LABELS=NONE')
+          print('CANONICAL_NINE_LAYER_STRUCTURE=PASS')
+          PY
+
+      - name: Commit verified source
+        run: |
+          git config user.name 'NayaNET Canonical Repair'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add '2026 09 15 NayaNETHUB.html'
+          git diff --cached --check
+          if git diff --cached --quiet; then echo 'No changes'; else git commit -m 'Normalize all Smart Boards to canonical nine-layer structure'; fi
+          git push origin HEAD
