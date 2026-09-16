@@ -96,7 +96,11 @@ jobs:
           };
 
           async function prove(page, label) {
-            await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 15000 });
+            const response = await fetch(url, { redirect: 'follow' });
+            if (!response.ok) throw new Error(`${label}: live fetch failed ${response.status}`);
+            const html = await response.text();
+            if (!html.includes('NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2')) throw new Error(`${label}: live HTML missing V2 contract`);
+            await page.setContent(html, { waitUntil: 'domcontentloaded', timeout: 15000 });
             await page.waitForTimeout(1500);
             const result = await page.evaluate(({ expected, colors }) => {
               const blocks = [...document.querySelectorAll('.naya-smart-board-v2')];
