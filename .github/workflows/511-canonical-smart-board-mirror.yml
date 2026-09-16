@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v9
+# execution-proof-v10
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -40,6 +40,23 @@ jobs:
           s=s[:render_start]+canonical_render+s[modal_start:]
           path.write_text(s,encoding='utf-8')
           print('CANONICAL_RENDER_WIRED=PASS'); print('LEGACY_BLOCK_REMOVED='+('PASS' if 'function block(b,i){' not in s else 'FAIL'))
+          PY
+      - name: Inspect canonical board renderer
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
+          start=s.find('function board(note,idx){')
+          end=s.find('function ',start+1)
+          if start<0 or end<0: raise SystemExit('FATAL: board() not found')
+          body=s[start:end]
+          print('--- BOARD_RENDERER_BEGIN ---')
+          print(body)
+          print('--- BOARD_RENDERER_END ---')
+          for marker in ['function parseNotes','const LAYER','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU",'HOW TO APPLY','01 ·','2 ·','3 ·']:
+              print(f'MARKER {marker!r}:', s.find(marker))
           PY
       - name: Structural verifier — all canonical boards
         shell: bash
