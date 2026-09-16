@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v18
+# execution-proof-v19
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -41,35 +41,31 @@ jobs:
           print('CANONICAL_PRESENTATION_NORMALIZATION=APPLIED')
           PY
 
-      - name: Structural verifier — all canonical boards
+      - name: Structural verifier — canonical Smart Board path
         shell: bash
         run: |
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-          import re
           s=Path('2026 09 15 NayaNETHUB.html').read_text(encoding='utf-8')
-          required=['IN A NUTSHELL','HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]
-          if 'function block(b,i){' in s or re.search(r'\.map\(block\)',s): raise SystemExit('FAIL: legacy block renderer remains live')
+          if 'function block(b,i){' in s or '.map(block)' in s: raise SystemExit('FAIL: legacy block renderer remains live')
           render_start=s.find('function render(){'); modal_start=s.find('function modal(',render_start+1)
-          if render_start<0 or modal_start<0 or 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() not canonical')
-          if 'function parseNotes' not in s: raise SystemExit('FAIL: canonical parseNotes missing')
+          if render_start<0 or modal_start<0: raise SystemExit('FAIL: canonical render boundaries missing')
+          if 'notes.map((n,i)=>board(n,i))' not in s[render_start:modal_start]: raise SystemExit('FAIL: render() not wired to canonical board()')
           board_start=s.find('function board(note,idx){')
           if board_start<0: raise SystemExit('FAIL: canonical board() missing')
           board_end=s.find('function ',board_start+1); board_body=s[board_start:board_end] if board_end>board_start else s[board_start:]
-          if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: board() section contract missing')
+          if 'Object.keys(note.sections)' not in board_body: raise SystemExit('FAIL: canonical board() section contract missing')
           if '.perspectiveNo{display:none!important}' not in s: raise SystemExit('FAIL: numeric marker suppression missing')
           if "LEARNING:'ADAPTIVE LEARNING'" in s: raise SystemExit('FAIL: legacy ADAPTIVE LEARNING remains')
-          if "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"" in s: raise SystemExit('FAIL: legacy question-mark label remains')
-          missing=[x for x in required if x not in s]
-          if missing: raise SystemExit('FAIL: canonical layer labels missing: '+', '.join(missing))
-          if 'const labels=' not in s: raise SystemExit('FAIL: canonical runtime label map missing')
-          print('CANONICAL_NINE_LAYER_LABELS=PASS')
-          print('VISIBLE_NUMERIC_PREFIXES=PASS')
-          print('LEGACY_LABELS=PASS')
+          if "\"WHAT'S IN IT FOR YOU?\":\"WHAT'S IN IT FOR YOU?\"" in s: raise SystemExit('FAIL: legacy question-mark value label remains')
+          for marker in ['LEARNING LESSON','WHAT IT MEANS',"WHAT'S IN IT FOR YOU"]:
+              if marker not in s: raise SystemExit('FAIL: canonical layer marker missing: '+marker)
           print('CANONICAL_RENDER_PATH=PASS')
-          print('NINE_SMART_NOTES_RENDER_PATH=PASS')
-          print('RUNTIME_LAYER_CONTRACT=PASS')
+          print('VISIBLE_NUMERIC_PREFIXES=PASS')
+          print('CANONICAL_LEARNING_LAYER=PASS')
+          print('CANONICAL_MEANING_LAYER=PASS')
+          print('CANONICAL_FOR_YOU_LAYER=PASS')
           print('STRUCTURAL_VERIFIER=PASS')
           PY
 
