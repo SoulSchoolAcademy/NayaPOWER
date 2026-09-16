@@ -26,39 +26,29 @@ jobs:
           from pathlib import Path
           p = Path('2026 09 15 NayaNETHUB.html')
           s = p.read_text(encoding='utf-8')
-
-          replacements = {
-            "new MutationObserver(run).observe(document.body,{childList:true,subtree:true})": "/* static canonical board: mutation observer disabled to prevent self-triggering runtime loop */",
-          }
-          for old, new in replacements.items():
-              s = s.replace(old, new)
-
-          # The canonical board is static HTML. Run the Smart Board normalizer once at load;
-          # do not continuously observe its own class/style mutations.
+          s = s.replace(
+              "new MutationObserver(run).observe(document.body,{childList:true,subtree:true})",
+              "/* static canonical board: mutation observer disabled to prevent self-triggering runtime loop */"
+          )
           s = s.replace(
               "let timer;const obs=new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body,{childList:true,subtree:true});",
               "/* static canonical board: continuous observer disabled */"
           )
-
+          marker = '<!-- NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16 -->'
+          if marker not in s:
+              s = s.replace('</head>', marker + '\n</head>', 1)
           p.write_text(s, encoding='utf-8')
           PY
 
-      - name: Prove runtime-loop repair is present
+      - name: Prove canonical Smart Board contract
         shell: bash
         run: |
           set -euo pipefail
           grep -q 'NAYA-SMART-BOARD-LIVING-INTELLIGENCE-V2' '2026 09 15 NayaNETHUB.html'
           ! grep -q 'new MutationObserver(run).observe(document.body,{childList:true,subtree:true})' '2026 09 15 NayaNETHUB.html'
           ! grep -q 'new MutationObserver(()=>{clearTimeout(timer);timer=setTimeout(run,30)});obs.observe(document.body' '2026 09 15 NayaNETHUB.html'
-          grep -q 'HUMAN NOTE' '2026 09 15 NayaNETHUB.html'
-          grep -q 'CHILD NOTE' '2026 09 15 NayaNETHUB.html'
-          grep -q 'GRANDMA NOTE' '2026 09 15 NayaNETHUB.html'
-          grep -q 'NAYA NOTE' '2026 09 15 NayaNETHUB.html'
-          grep -q 'MACHINE NOTE' '2026 09 15 NayaNETHUB.html'
-          grep -q 'LEARNING LESSON' '2026 09 15 NayaNETHUB.html'
-          grep -q 'WHAT IT MEANS' '2026 09 15 NayaNETHUB.html'
-          grep -q 'HOW TO APPLY / HOW TO USE' '2026 09 15 NayaNETHUB.html'
-          grep -q "WHAT'S IN IT FOR YOU" '2026 09 15 NayaNETHUB.html'
+          grep -q 'NAYA-CLOUDFLARE-RUNTIME-REPROOF-2026-09-16' '2026 09 15 NayaNETHUB.html'
+          for label in 'HUMAN NOTE' 'CHILD NOTE' 'GRANDMA NOTE' 'NAYA NOTE' 'MACHINE NOTE' 'LEARNING LESSON' 'WHAT IT MEANS' 'HOW TO APPLY / HOW TO USE' "WHAT'S IN IT FOR YOU"; do grep -q "$label" '2026 09 15 NayaNETHUB.html'; done
           grep -q 'grid-template-columns' '2026 09 15 NayaNETHUB.html'
           grep -q 'display:flex;flex-direction:column' '2026 09 15 NayaNETHUB.html'
 
@@ -73,5 +63,5 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
-          git commit -m 'Stop Smart Board self-observer runtime loop'
+          git commit -m 'Prepare canonical Hub for Cloudflare runtime reproof'
           git push origin HEAD:main
