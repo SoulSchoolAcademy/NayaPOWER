@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Restore exact V10 authority and apply surgical fixes
         shell: bash
         run: |
@@ -30,27 +32,17 @@ jobs:
 
           v10_style=block(baseline,'style','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
           v10_script=block(baseline,'script','NAYA-SMART-BOARD-ELITE-REFINEMENT-V10')
-          if 'class="core"' not in v10_script or 'class="facet"' not in v10_script or 'class="shade"' not in v10_script or 'class="edge"' not in v10_script:
-              raise SystemExit('V10 jewel icon definitions are not present in the protected baseline')
+          if not all(x in v10_script for x in ['class="core"','class="facet"','class="shade"','class="edge"']):
+              raise SystemExit('protected V10 jewel definitions missing')
 
-          # Remove every later/competing Smart Board visual authority, then restore the exact protected V10 pair.
           current=re.sub(r'<style\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</style>','',current,flags=re.S|re.I)
           current=re.sub(r'<script\s+id=["\']NAYA-SMART-BOARD-ELITE-REFINEMENT-[^"\']+["\'][^>]*>.*?</script>','',current,flags=re.S|re.I)
-          for sid in [
-              'naya-aaa-smart-board-visual-v1-script',
-              'naya-smart-board-living-intelligence-v2-script',
-              'naya-smart-board-finalizer',
-              'naya-elite-interface-refinement-runtime'
-          ]:
+          for sid in ['naya-aaa-smart-board-visual-v1-script','naya-smart-board-living-intelligence-v2-script','naya-smart-board-finalizer','naya-elite-interface-refinement-runtime']:
               current=re.sub(r'<script\s+id=["\']'+re.escape(sid)+r'["\'][^>]*>.*?</script>','',current,flags=re.S|re.I)
 
-          if v10_style not in current:
-              current=current.replace('</head>',v10_style+'\n</head>',1)
-          if v10_script not in current:
-              current=current.replace('</body>',v10_script+'\n</body>',1)
+          current=current.replace('</head>',v10_style+'\n</head>',1)
 
-          surgical_style=r'''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
-          /* Surgical layer only: preserve the protected V10 jewel definitions above. */
+          surgical_style='''<style id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
           .elite-board:first-child .nutshell{margin:0 0 28px!important;padding:0!important;overflow:hidden!important}
           .elite-board:first-child .nutshell b{justify-content:flex-start!important;gap:24px!important;text-align:left!important;font-size:clamp(18px,2vw,27px)!important;min-height:116px!important;padding:14px 30px!important}
           .elite-board:first-child .nutshell b .v10-nutshell-star{order:0!important;margin:0!important;flex:0 0 78px!important}
@@ -67,49 +59,41 @@ jobs:
           current=re.sub(r'<style\s+id=["\']NAYA-SMART-BOARD-V10-SURGICAL-FINAL["\'][^>]*>.*?</style>','',current,flags=re.S|re.I)
           current=current.replace('</head>',surgical_style+'\n</head>',1)
 
-          surgical_script=r'''<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
+          surgical_script='''<script id="NAYA-SMART-BOARD-V10-SURGICAL-FINAL">
           (()=>{
             const q=(s,r=document)=>r.querySelector(s), qq=(s,r=document)=>[...r.querySelectorAll(s)];
-            const norm=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
+            const norm=s=>String(s||'').replace(/\\s+/g,' ').trim().toUpperCase().replace(/^\\d+\\s*[·.)-]\\s*/,'');
             const ORDER=['HUMAN NOTE','CHILD NOTE','GRANDMA NOTE','NAYA NOTE','MACHINE NOTE','LEARNING LESSON','WHAT IT MEANS','HOW TO APPLY / HOW TO USE',"WHAT'S IN IT FOR YOU"];
             const ALIAS={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESSON','HOW TO USE':'HOW TO APPLY / HOW TO USE','CHILD VIEW':'CHILD NOTE','GRABBER VIEW':'GRANDMA NOTE','MACHINE / PROVENANCE':'MACHINE NOTE','SIGNIFICANCE':'WHAT IT MEANS','HUMAN VALUE':"WHAT'S IN IT FOR YOU"};
             function cleanNutshell(n){
               if(!n)return;
-              const p=q('p',n); const label=q('b',n);
+              const p=q('p',n), label=q('b',n);
               [...n.children].forEach(x=>{if(x!==label && x!==p)x.remove()});
-              if(label){
-                label.replaceChildren();
-                const star=document.createElement('span'); star.className='v10-nutshell-star'; star.setAttribute('aria-hidden','true');
-                label.append(star,document.createTextNode('IN A NUTSHELL'));
-              }
+              if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}
             }
             function normalize(){
-              qq('.elite-board').forEach((board,bi)=>{
-                if(bi===0){
-                  const h=q('.blockTop h3',board); if(h)h.textContent='What is Naya Power';
-                  cleanNutshell(q('.nutshell',board));
-                }
-                const layers=q('.layers',board); if(!layers)return;
+              const boards=qq('.elite-board');
+              boards.forEach((board,bi)=>{
+                if(bi===0){const h=q('.blockTop h3',board);if(h)h.textContent='What is Naya Power';cleanNutshell(q('.nutshell',board));}
+                const layers=q('.layers',board);if(!layers)return;
                 const map=new Map();
                 qq(':scope > .layer',layers).forEach(layer=>{
-                  const h=q('.layerHead b',layer); if(!h){layer.remove();return}
-                  let t=norm(h.textContent); t=ALIAS[t]||t;
-                  if(!ORDER.includes(t)){layer.remove();return}
-                  h.textContent=t; map.set(t,layer);
-                  layer.dataset.nayaLayer=t==='HUMAN NOTE'?'human':t==='CHILD NOTE'?'child':t==='GRANDMA NOTE'?'grandma':t==='NAYA NOTE'?'naya':t==='MACHINE NOTE'?'machine':t==='LEARNING LESSON'?'learning':t==='WHAT IT MEANS'?'meaning':t==='HOW TO APPLY / HOW TO USE'?'apply':'value';
+                  const h=q('.layerHead b',layer);if(!h){layer.remove();return;}
+                  let t=norm(h.textContent);t=ALIAS[t]||t;
+                  if(!ORDER.includes(t)){layer.remove();return;}
+                  h.textContent=t;map.set(t,layer);
                 });
                 ORDER.forEach(name=>{const layer=map.get(name);if(layer)layers.appendChild(layer)});
-                const title=q('.top .title'); if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
               });
               qq('.status').forEach(x=>x.remove());
+              const title=q('.top .title');if(title)title.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());
             }
             if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',normalize,{once:true});else normalize();
           })();
           </script>'''
           current=re.sub(r'<script\s+id=["\']NAYA-SMART-BOARD-V10-SURGICAL-FINAL["\'][^>]*>.*?</script>','',current,flags=re.S|re.I)
-          current=current.replace('</body>',surgical_script+'\n</body>',1)
+          current=current.replace('</body>',v10_script+'\n'+surgical_script+'\n</body>',1)
 
-          # Hard source assertions: this file must contain the protected V10 icon system and the surgical authority.
           required=['NAYA-SMART-BOARD-ELITE-REFINEMENT-V10','NAYA-SMART-BOARD-V10-SURGICAL-FINAL','class="core"','class="facet"','class="shade"','class="edge"','v10-nutshell-star','What is Naya Power','HOW TO APPLY / HOW TO USE','d4af37','dfe6ee']
           for token in required:
               if token not in current: raise SystemExit('missing required source token: '+token)
@@ -139,9 +123,6 @@ jobs:
           git config user.name 'NayaPOWER Automation'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add '2026 09 15 NayaNETHUB.html'
-          if git diff --cached --quiet; then
-            echo 'NO_CANONICAL_CHANGE'
-            exit 1
-          fi
+          if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 1; fi
           git commit -m 'Restore exact V10 jewel icons and apply surgical Smart Board fixes'
           git push origin HEAD:main
