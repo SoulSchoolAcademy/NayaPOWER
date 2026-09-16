@@ -1,0 +1,28 @@
+name: Smart Board Diagnostic
+on:
+  push:
+    branches: [naya-smartboard-canonical-repair]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect canonical source
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          p=Path('2026 09 15 NayaNETHUB.html')
+          s=p.read_text(encoding='utf-8')
+          print('BYTES',len(s.encode()))
+          print('FUNCTION_BLOCK',s.count('function block'))
+          print('FUNCTION_RENDER',s.count('function render'))
+          for pat in [r'function block\(b,i\)\{',r'\.layers',r'IN A NUTSHELL',r'HUMAN NOTE',r'CHILD NOTE',r'GRANDMA NOTE',r'NAYA NOTE',r'MACHINE NOTE',r'LEARNING LESSON',r'WHAT IT MEANS',r"WHAT.?S IN IT FOR YOU"]:
+              print(pat, len(re.findall(pat,s,re.I)))
+          for m in re.finditer(r'function block\(b,i\)\{',s):
+              a=max(0,m.start()-300); b=min(len(s),m.start()+3500)
+              print('---BLOCK---')
+              print(s[a:b])
+          PY
