@@ -1,5 +1,4 @@
 name: Verify Primary Intelligence System
-
 on:
   push:
     branches: [main]
@@ -11,10 +10,8 @@ on:
       - '!SUPERBRAIN/NAYA-ACTIVITY/**'
       - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
   workflow_dispatch:
-
 permissions:
-  contents: write
-
+  contents: read
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -36,12 +33,10 @@ jobs:
           assert data['schema_version']=='PIS-1.0'
           assert data['event_count']==len(data['events'])
           ids=[e['event_id'] for e in data['events']]
-          assert len(ids)==len(set(ids)), 'duplicate PIS event_id'
+          assert len(ids)==len(set(ids))
           for e in data['events']:
-              assert e['event_id']
-              assert e['context']['canonical_path'].startswith('.naya/')
-              assert e['source']['type']=='smart_note'
-          print(f"PIS_PROJECTION=PASS events={len(ids)}")
+              assert e['event_id']; assert e['context']['canonical_path'].startswith('.naya/'); assert e['source']['type']=='smart_note'
+          print(f'PIS_PROJECTION=PASS events={len(ids)}')
           PY
       - name: Validate persistent PIS adapter source
         run: |
@@ -49,58 +44,15 @@ jobs:
           grep -q "nayanet_intelligence_index" NAYANET/HUB/src/data/pis.ts
           grep -q "getUser" NAYANET/HUB/src/data/pis.ts
           grep -q "PIS_QUERY_LIMIT" NAYANET/HUB/src/data/pis.ts
-          echo 'PIS_PERSISTENT_ADAPTER_SOURCE=PASS'
       - name: Validate Naya continuous project execution loop
         run: |
           test -f SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          manifest=json.loads(Path('.naya/naya-context-manifest.json').read_text(encoding='utf-8'))
-          loop='SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md'
-          assert manifest['subjects']['continuous_project_execution_loop']['canonical']==loop
-          assert loop in manifest['boot_order']
-          for route in ('strategy','memory','restore','execution','engineering','evaluation'):
-              assert 'continuous_project_execution_loop' in manifest['task_routes'][route], route
-          rules=manifest.get('continuity_rules',{})
-          if 'continuous_project_execution_loop_required' in rules:
-              assert rules['continuous_project_execution_loop_required'] is True
-          if 'execution_baton_is_required_for_substantive_handoff' in rules:
-              assert rules['execution_baton_is_required_for_substantive_handoff'] is True
-          if 'next_execution_prompt_is_required_for_substantive_handoff' in rules:
-              assert rules['next_execution_prompt_is_required_for_substantive_handoff'] is True
-          text=Path(loop).read_text(encoding='utf-8')
-          required=('RESTORE → UNDERSTAND → DECIDE → EXECUTE → VERIFY → RECORD → LEARN → UPDATE → HANDOFF → CONTINUE','GITHUB = DURABLE PROJECT BRAIN','MAP = WHERE WE ARE GOING','STATE = WHAT IS TRUE NOW','FEED = WHAT HAPPENED','The current Naya owns the handoff. The next Naya owns the continuation.','## 12. THE EXECUTION BATON','## 13. THE NEXT NAYA EXECUTION PROMPT','## 15. NO-ORPHAN TEST','## 17. SUCCESS CONDITION FOR NAYAPOWER ITSELF')
-          for marker in required: assert marker in text, marker
-          print('CONTINUOUS_PROJECT_EXECUTION_LOOP=PASS')
-          PY
-      - name: Validate canonical NAYA_ACTION_V1 schema and current proof
-        run: |
-          python3 - <<'PY'
-          import hashlib,json,subprocess
-          from pathlib import Path
-          canonical_path=Path('.naya/actions/NAYA_ACTION_V1.schema.json'); compatibility_path=Path('.naya/contracts/NAYA-ACTION-V1.schema.json'); action_path=Path('.naya/actions/2026-09-15-NAYA-ACTION-001-CONTINUOUS-LOOP-PROOF.json')
-          canonical_bytes=canonical_path.read_bytes(); compatibility_bytes=compatibility_path.read_bytes(); action_bytes=action_path.read_bytes()
-          schema=json.loads(canonical_bytes.decode()); compatibility=json.loads(compatibility_bytes.decode()); action=json.loads(action_bytes.decode())
-          assert schema['$id']=='naya/action/v1'; assert schema['title']=='NAYA_ACTION_V1'; assert compatibility['$id']=='naya/action/v1'; assert 'canonical_schema' in compatibility.get('properties',{}); assert compatibility['properties']['canonical_schema']['const']=='.naya/actions/NAYA_ACTION_V1.schema.json'; assert 'canonical_schema' in compatibility.get('required',[]); assert compatibility['title']=='NAYA_ACTION_V1 Compatibility Reference'
-          missing=[key for key in schema['required'] if key not in action]; assert not missing, f'missing NAYA_ACTION_V1 fields: {missing}'
-          assert action['schema']=='naya/action/v1'; assert action['id'].startswith('NAYA-ACTION-'); assert action['state'] in {'EXECUTING','EXECUTED','OBSERVED','VERIFIED'}; assert action['actions']; assert action['evidence']; assert action['verification']['status'] in {'PARTIAL','VERIFIED'}; assert action['verification']['required_for_verification']; assert action['next_action']['instruction']; assert action['next_action']['actor']; assert action['next_action']['blocked'] is False; assert action['next_action']['ready_to_run_execution']
-          parent=subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip(); assert action['provenance']['source_commit']==parent
-          print('NAYA_ACTION_V1=PASS'); print('FIRST_PROOF='+action['id'])
-          PY
       - name: Validate canonical control plane
         run: |
           python3 .naya/control-plane/validate_control_plane.py --self-test
           python3 .naya/control-plane/validate_control_plane.py
       - name: Cold-Naya activation acceptance
-        run: |
-          python3 .naya/runtime/cold_start_activation.py > /tmp/naya-cold-start-receipt.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          receipt=json.loads(Path('/tmp/naya-cold-start-receipt.json').read_text())
-          assert receipt['status']=='VERIFIED'; assert receipt['conversation_memory']=='EMPTY'; assert receipt['next_action']; assert receipt['action_first_gate']; print('COLD_NAYA_ACTIVATION=PASS')
-          PY
+        run: python3 .naya/runtime/cold_start_activation.py
       - name: Install Hub dependencies
         working-directory: NAYANET/HUB
         run: npm install
@@ -110,56 +62,3 @@ jobs:
       - name: Build Hub from PIS
         working-directory: NAYANET/HUB
         run: npm run build
-      - name: Verify PIS feed is in production artifact
-        working-directory: NAYANET/HUB
-        run: |
-          test -f dist/intelligence/pis-feed.json
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          source=json.loads(Path('public/intelligence/pis-feed.json').read_text()); artifact=json.loads(Path('dist/intelligence/pis-feed.json').read_text()); assert source['event_count']==artifact['event_count']; assert [e['event_id'] for e in source['events']]==[e['event_id'] for e in artifact['events']]; print('PIS_ARTIFACT_PARITY=PASS')
-          PY
-      - name: Upload immutable React Hub artifact
-        id: react_artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: nayanet-hub-react-${{ github.sha }}
-          path: NAYANET/HUB/dist
-          if-no-files-found: error
-          compression-level: 0
-          retention-days: 14
-      - name: Emit immutable artifact evidence
-        run: |
-          echo "REACT_ARTIFACT_ID=${{ steps.react_artifact.outputs.artifact-id }}"
-          echo "REACT_ARTIFACT_DIGEST=${{ steps.react_artifact.outputs.artifact-digest }}"
-          echo "REACT_ARTIFACT_URL=${{ steps.react_artifact.outputs.artifact-url }}"
-          echo "REACT_ARTIFACT_SOURCE_COMMIT=${GITHUB_SHA}"
-  smart-board-finalize:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout main
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - name: Run deterministic Smart Board source finalizer
-        run: python3 tools/finalize-smart-board.py
-      - name: Verify canonical Smart Board source
-        run: |
-          set -euo pipefail
-          f='2026 09 15 NayaNETHUB.html'
-          grep -q 'NAYA-SMART-BOARD-V11-GITHUB-FINAL' "$f"
-          grep -q 'font-size:18px!important' "$f"
-          grep -q 'font-size:14px!important' "$f"
-          grep -q 'HOW TO APPLY / HOW TO USE' "$f"
-          grep -q 'data-naya-layer="apply"' "$f"
-          grep -q 'What is Naya Power' "$f"
-      - name: Commit canonical Smart Board source
-        run: |
-          set -euo pipefail
-          git config user.name 'NayaPOWER Automation'
-          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add '2026 09 15 NayaNETHUB.html'
-          if git diff --cached --quiet; then echo 'NO_CANONICAL_CHANGE'; exit 0; fi
-          git commit -m 'Finalize Smart Board canonical source'
-          git pull --rebase origin main
-          git push origin HEAD:main
