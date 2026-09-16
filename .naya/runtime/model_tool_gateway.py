@@ -64,7 +64,7 @@ def authorize(action: dict[str, Any]) -> dict[str, Any]:
     except RuntimeError as exc:
         raise AssertionError(str(exc)) from exc
     decision = DecisionObject(
-        decision_id=f"tool:{action['action_id']}", mission=f"execute governed tool action {action['action_id']", actor_id=authority.principal_id,
+        decision_id=f"tool:{action['action_id']}", mission=f"execute governed tool action {action['action_id']}", actor_id=authority.principal_id,
         action=action["action_type"], purpose=authority.purpose, scope=authority.scope,
         current_truth=f"CLAIMED execution block {state['block_id']}", gap=str(action["purpose"]),
         evidence=tuple(str(x) for x in action["evidence_requirement"]) or ("claimed execution context",), epistemic=frozenset({Epistemic.OBSERVED}),
