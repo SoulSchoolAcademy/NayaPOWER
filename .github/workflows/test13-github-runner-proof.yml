@@ -1,0 +1,37 @@
+name: Test 13 — GitHub-hosted runner proof
+
+on:
+  push:
+    branches:
+      - test13-github-runner-proof-20260916
+
+permissions:
+  contents: read
+
+jobs:
+  test13:
+    name: Test 13 execution boundary
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout isolated test branch
+        uses: actions/checkout@v4
+
+      - name: Run Test 13 verifier
+        env:
+          TEST13_EXPECTED_BRANCH: test13-github-runner-proof-20260916
+          TEST13_EXPECTED_FIXTURE: tests/test13/public_fixture.json
+        run: python3 tests/test13/verify_runner.py
+
+      - name: Prove contents:read cannot push
+        shell: bash
+        run: |
+          set -u
+          git config user.name "test13-runner"
+          git config user.email "test13-runner@users.noreply.github.com"
+          if git push origin "HEAD:${GITHUB_REF_NAME}" >/tmp/test13-push.out 2>&1; then
+            echo "T13_PUSH_PROOF=FAIL_TOKEN_CAN_WRITE"
+            cat /tmp/test13-push.out
+            exit 1
+          fi
+          echo "T13_PUSH_PROOF=PASS_CONTENTS_READ_DENIED"
+          cat /tmp/test13-push.out

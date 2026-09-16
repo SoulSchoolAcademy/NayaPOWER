@@ -1,0 +1,13 @@
+{
+  "test": "13",
+  "fixture": "public",
+  "purpose": "GitHub-hosted runner execution boundary proof",
+  "expected_runner": "ubuntu-latest",
+  "expected_permissions": {
+    "contents": "read"
+  },
+  "expected_branch": "test13-github-runner-proof-20260916",
+  "main_mutation_allowed": false,
+  "deployment_allowed": false,
+  "secrets_required": false
+}
