@@ -721,6 +721,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 
+
 <style id="NAYA-SMART-BOARD-V11-GITHUB-FINAL">
 .elite-board{width:100%!important}.elite-board .blockInner{width:100%!important;max-width:none!important}
 .elite-board:first-child .blockTop{display:flex!important;align-items:center!important;gap:28px!important;margin:0 0 26px!important}.elite-board:first-child .identity{display:flex!important;align-items:center!important;gap:24px!important;min-width:0!important}.elite-board:first-child .glyph{width:116px!important;height:116px!important;flex:0 0 116px!important}.elite-board:first-child .glyph .v10-icon{width:78px!important;height:78px!important}.elite-board:first-child .blockTop h3{font-size:clamp(42px,5.4vw,74px)!important;line-height:.96!important;letter-spacing:-.065em!important;margin:0!important}
@@ -916,6 +917,7 @@ const A={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESS
 const N=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
 function run(){const boards=qq('#blocks > .block');boards.forEach((b,i)=>{b.classList.add('elite-board','naya-smart-board-v10');const h=q('h3',b);if(h&&i===0)h.textContent='What is Naya Power';const g=q('.glyph',b);if(g){const svg=q('.v10-icon',g);if(svg)g.replaceChildren(svg)}const n=q('.nutshell',b);if(n){const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}const layers=q('.layers',b);if(layers){const m=new Map();qq(':scope > .layer',layers).forEach(x=>{const h=q('.layerHead b',x);if(!h){x.remove();return}let t=A[N(h.textContent)]||N(h.textContent);if(!O.includes(t)){x.remove();return}h.textContent=t;m.set(t,x)});O.forEach(k=>{if(m.has(k))layers.appendChild(m.get(k))});}qq('.status',b).forEach(x=>x.remove());});const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>
+
 
 
 
