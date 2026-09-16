@@ -1,5 +1,5 @@
 # CANONICAL SMART BOARD EXECUTION LANE
-# execution-proof-v3
+# execution-proof-v4
 name: 511 Canonical Smart Board Mirror
 
 on:
@@ -8,6 +8,9 @@ on:
     paths:
       - '2026 09 15 NayaNETHUB.html'
       - '.github/workflows/511-canonical-smart-board-mirror.yml'
+  workflow_run:
+    workflows: ["NAYA 509 — Assistant Cloudflare Hub Release"]
+    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -25,18 +28,13 @@ jobs:
           set -euo pipefail
           python3 - <<'PY'
           from pathlib import Path
-
           path = Path('2026 09 15 NayaNETHUB.html')
           s = path.read_text(encoding='utf-8')
-
           render_start = s.find('function render(){')
           modal_start = s.find('function modal(', render_start + 1)
           if render_start < 0 or modal_start < 0 or modal_start <= render_start:
               raise SystemExit('FATAL: render/modal boundaries not found')
-
           canonical_render = """function render(){const notes=parseNotes(source);const blocksEl=document.getElementById('blocks');if(!blocksEl)return;blocksEl.innerHTML=notes.map((n,i)=>board(n,i)).join('');const visibleCount=notes.length;const feedCount=document.getElementById('feedCount');if(feedCount)feedCount.textContent=visibleCount+' INTELLIGENT '+(visibleCount===1?'BLOCK':'BLOCKS');const feedTitle=document.getElementById('feedTitle');if(feedTitle)feedTitle.textContent='Smart Notes';const feedDesc=document.getElementById('feedDesc');if(feedDesc)feedDesc.textContent='Canonical Smart Note content rendered from the source of truth.';const nayaDoing=document.getElementById('nayaDoing');if(nayaDoing)nayaDoing.textContent='Making the important intelligence easier to see, understand, and use.';const topTitle=document.getElementById('topTitle');if(topTitle)topTitle.textContent='Smart Notes'}"""
-
-          # Remove the legacy block() definition before render(), if present.
           block_start = s.find('function block(b,i){')
           if block_start >= 0:
               block_end = s.find('function render(){', block_start)
@@ -47,7 +45,6 @@ jobs:
               modal_start = s.find('function modal(', render_start + 1)
               if render_start < 0 or modal_start < 0 or modal_start <= render_start:
                   raise SystemExit('FATAL: render/modal boundaries invalid after block removal')
-
           s = s[:render_start] + canonical_render + s[modal_start:]
           path.write_text(s, encoding='utf-8')
           print('CANONICAL_RENDER_WIRED=PASS')
