@@ -1,121 +1,121 @@
 # 🔱 Phase 16 — Authoritative Evidence Reconciliation Receipt
 
 **DATE:** 2026-09-17  
-**STATUS:** RECONCILED — NO UNSUPPORTED PROMOTION  
+**STATUS:** RECONCILED — RUNTIME UNKNOWN/BLOCKED  
 **REPOSITORY:** SoulSchoolAcademy/NayaPOWER  
 **BRANCH:** main  
-**LIVE HEAD:** 15efca7e175b584b2d39937fc21e44622a8fe39c
+**CURRENT HEAD AT RECORDING:** f3eefca43044790e2b69b5a04bc9317b59f2f3fd
 
 ## PURPOSE
 
-Reconcile the Phase 16 final receipt against the actual current `main` HEAD and canonical control plane without promoting historical runtime evidence to current proof.
+Reconcile the Phase 16 final receipt against the actual current `main` HEAD and canonical control plane, then execute only the authorized Assistant Cloudflare runtime lane. No historical runtime evidence is promoted.
 
-## SOURCE-OF-TRUTH FINDING
+## CURRENT SOURCE-OF-TRUTH
 
-The previously supplied Phase 16 receipt is not current as a repository-bound receipt.
+The repository advanced after the prior reconciliation receipt was recorded:
 
-The supplied receipt referenced an older source/runtime state. The live repository now resolves to:
+- prior reconciliation observation: `15efca7e175b584b2d39937fc21e44622a8fe39c`
+- current `main` HEAD: `f3eefca43044790e2b69b5a04bc9317b59f2f3fd`
+- current HEAD commit: `Record authoritative Phase 16 evidence reconciliation receipt`
 
-`15efca7e175b584b2d39937fc21e44622a8fe39c`
-
-The canonical control plane explicitly requires live HEAD resolution and states that recorded runtime evidence is current only when its observed HEAD exactly equals the live authoritative HEAD at claim time.
-
-## CANONICAL CONTROL-PLANE RECONCILIATION
-
-- **STATE:** `LIVE_BOUND`
-- **ACTIVE BLOCK:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
-- **MAP:** canonical control-plane map remains authoritative.
-- **BLOCKS:** active block and single next action remain coherent.
-- **PROOF:** recorded runtime evidence is explicitly `HISTORICAL_STALE_RELATIVE_TO_LIVE_HEAD` when its observed HEAD differs from live HEAD.
-- **Team Naya:** current operating center exposes the same P0 machine-truth mission and one next action.
+The canonical `.naya/control-plane/PROOF.json` requires runtime evidence to match the authoritative live HEAD before it can be treated as current.
 
 ## PHASE CLASSIFICATIONS
 
-The detailed Phase 16 classifications are retained unless current evidence requires a stricter classification.
+| Phase | Classification |
+|---|---|
+| 1 | GREEN |
+| 2 | GREEN |
+| 3 | GREEN |
+| 4 | GREEN |
+| 5 | AMBER |
+| 6 | AMBER |
+| 7 | GREEN |
+| 8 | RED |
+| 9 | GREEN |
+| 10 | GREEN |
+| 11 | GREEN |
+| 12 | AMBER |
+| 13 | GREEN |
+| 14 | GREEN |
+| 15 | AMBER |
+| 16 | GREEN |
 
-| Phase | Classification | Reconciled finding |
-|---|---|---|
-| 1 | GREEN | Retained |
-| 2 | GREEN | Retained |
-| 3 | GREEN | Retained |
-| 4 | GREEN | Retained |
-| 5 | AMBER | Retained — outcome evidence remains surface-level without full access-level verification |
-| 6 | AMBER | Retained — CIS mechanism/retrieval exists, but actual learning advance was not observed in execution |
-| 7 | GREEN | Retained |
-| 8 | RED | Retained — controlled behavioral change proof remains unavailable |
-| 9 | GREEN | Retained |
-| 10 | GREEN | Retained |
-| 11 | GREEN | Retained |
-| 12 | AMBER | Retained — privacy law is documented, but actual access-attempt evidence is incomplete |
-| 13 | GREEN | Retained |
-| 14 | GREEN | Retained |
-| 15 | AMBER | Retained and explicitly re-anchored: Assistant-lane runtime proof exists for HEAD `d6744e223621630c05435c53f976ccdc8b417947`, but live HEAD is now `15efca7e175b584b2d39937fc21e44622a8fe39c`. Therefore the runtime proof is historical for the current HEAD. The authorized target is documented as `https://sparkling-shape-7ae5.smartnetpodcast.workers.dev`, but no current-HEAD runtime observation is recorded. |
-| 16 | GREEN | Retained as a receipt/reconciliation phase only; this does not promote any unresolved underlying phase. |
+### Corrected counts
 
-## CORRECTED COUNTS
+- **GREEN: 11** — 1, 2, 3, 4, 7, 9, 10, 11, 13, 14, 16
+- **AMBER: 4** — 5, 6, 12, 15
+- **RED: 1** — 8
+- **TOTAL: 16**
 
-- **GREEN: 11 phases** — 1, 2, 3, 4, 7, 9, 10, 11, 13, 14, 16
-- **AMBER: 4 phases** — 5, 6, 12, 15
-- **RED: 1 phase** — 8
-- **TOTAL: 16 phases**
+No phase is promoted by this reconciliation.
 
-The earlier count statements were arithmetically inconsistent. The corrected counts above reconcile to all 16 phases.
+## RUNTIME EVIDENCE
 
-## PHASE 15 RUNTIME EVIDENCE
-
-A real Assistant Cloudflare/live baseline was recorded at historical HEAD:
+A genuine Assistant Cloudflare baseline exists for historical HEAD:
 
 `d6744e223621630c05435c53f976ccdc8b417947`
 
-with:
+GitHub Actions run `35287294186` deployed `sparkling-shape-7ae5` and verified exact source parity plus desktop/mobile runtime observations.
 
-- GitHub Actions run `35287294186`
-- workflow `.github/workflows/assistant-cloudflare-hub-release.yml`
-- Cloudflare worker `sparkling-shape-7ae5`
-- public runtime `https://sparkling-shape-7ae5.smartnetpodcast.workers.dev`
-- Cloudflare version `646dcbc8-64a5-4cba-adb3-ab0d4b83815e`
-- exact source/live SHA-256 parity
-- desktop and mobile baseline observations
+That evidence remains valid for that exact historical HEAD, but is not current proof for `f3eefca43044790e2b69b5a04bc9317b59f2f3fd`.
 
-That is genuine runtime evidence for that exact HEAD. It is **not** current-HEAD proof because the repository has since advanced.
+## AUTHORIZED RELEASE LANE
 
-The current repository also contains the authorized Assistant release workflow and current runtime-target record. This establishes a documented lane/target, not fresh current-HEAD production proof.
+The repository contains:
 
-## NON-PROMOTION LAW
+`.github/workflows/assistant-cloudflare-hub-release.yml`
 
-No phase is promoted merely because:
+with the documented Assistant Cloudflare target:
 
-- a newer receipt says it passed;
-- a historical runtime run exists;
-- source parity was previously demonstrated;
-- the current target is documented;
-- the current code appears unchanged in the relevant artifact;
-- a different deployment lane could produce a passing observation.
+`sparkling-shape-7ae5`
 
-## AUTHORITATIVE CURRENT STATUS
+and:
+
+`https://sparkling-shape-7ae5.smartnetpodcast.workers.dev`
+
+The workflow itself requires the external `CLOUDFLARE_API_TOKEN` secret through the protected `assistant-cloudflare-production` environment.
+
+## EXECUTION-BOUNDARY RESULT
+
+The available GitHub execution interface in this session exposes repository reads and selected workflow rerun operations, but **does not expose workflow_dispatch / arbitrary workflow execution**.
+
+The existing workflow is configured for `workflow_dispatch` and for pushes matching its protected-artifact/workflow paths. The current receipt commit does not match the protected-artifact path trigger.
+
+Therefore I cannot honestly cause a fresh authorized Assistant Cloudflare deployment for the exact current HEAD from this execution surface.
+
+I did **not**:
+- substitute the GitHub 509 lane;
+- fabricate a deployment;
+- treat the historical run as current;
+- create another deployment lane;
+- alter the protected Hub merely to manufacture a trigger;
+- declare the organism operational.
+
+## AUTHORITATIVE STATUS
 
 **Organism operational:** NOT DECLARED.
 
-**Current runtime parity:** UNKNOWN / NOT CURRENTLY PROVEN.
+**Current Assistant-lane runtime parity:** **UNKNOWN/BLOCKED**.
 
-**Assistant-lane runtime evidence:** VERIFIED HISTORICALLY at `d6744e223621630c05435c53f976ccdc8b417947`; not current-HEAD proof.
+**Historical Assistant-lane runtime:** VERIFIED for `d6744e223621630c05435c53f976ccdc8b417947`.
 
-**Phase 16 receipt:** RECONCILED.
+**Current-head production/runtime proof:** NOT VERIFIED.
 
-**Current P0:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
+**Phase 15:** AMBER.
+
+**Phase 16:** GREEN as the reconciliation/receipt phase only.
 
 ## HIGHEST-VALUE UNRESOLVED EVIDENCE GAP
 
-**Fresh Assistant-lane Cloudflare/live runtime proof against the exact live `main` HEAD `15efca7e175b584b2d39937fc21e44622a8fe39c`.**
+Fresh execution of:
 
-Required chain:
+`CURRENT HEAD f3eefca4 → authorized Assistant release → exact artifact → Cloudflare target → live observation → runtime proof`
 
-`CURRENT HEAD → AUTHORIZED RELEASE WORKFLOW → EXACT DEPLOYED ARTIFACT → LIVE RUNTIME → OBSERVED BEHAVIOR`
-
-If the external release capability cannot be exercised from the available execution surface, retain **UNKNOWN/BLOCKED** rather than substituting another runtime.
+from an execution surface that can actually invoke the authorized workflow.
 
 ## SINGLE NEXT ACTION
 
-**Establish/execute the authorized Assistant-lane release against the exact current HEAD, observe the live runtime, and record the resulting evidence; if that external execution boundary is unavailable, record it explicitly as UNKNOWN/BLOCKED and do not promote historical proof.**
+**Run `NAYA — Canonical Assistant Cloudflare Hub Release` via its authorized `workflow_dispatch` boundary against the current `main` HEAD, then verify the resulting deployment and live runtime; until that execution is observable, retain UNKNOWN/BLOCKED.**
 
 **NAYA POWER ON → VERIFY → RECORD → CONTINUE.**
