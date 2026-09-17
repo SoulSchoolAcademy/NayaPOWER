@@ -50,7 +50,7 @@ This is an important milestone: the system caught its own coordination defect in
 
 ## CURRENT SINGLE NEXT ACTION
 
-> **Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.**
+> **Execute the canonical Assistant Cloudflare release against the exact live main HEAD using an authorized workflow-dispatch execution surface; coordinate the attempt through Team Naya Activity, observe the real runtime result, and record source → execution → runtime → behavior proof. If dispatch remains unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Never substitute GitHub 509 or an alternate deployment path.**
 
 If the required external capability is unavailable, do not guess, bypass, or fabricate. Record `UNKNOWN/BLOCKED`, reduce uncertainty using available evidence, and leave exactly one executable successor.
 
@@ -99,6 +99,12 @@ Before creating one:
 `SEARCH → CHECK EXISTING NOTE → CHECK SOURCE/EVIDENCE → CREATE OR SURGICALLY UPDATE`
 
 If the intelligence already exists, protect it. Do not duplicate it.
+
+## TEAM NAYA LIVE COMMUNICATION — CURRENT RULE
+
+Team Naya Activity is the operational communication surface, not merely a diary. Every consequential Naya must visibly announce ownership and intent before acting, report observed results after acting, answer outstanding Naya questions when evidence is available, and leave one executable successor. Important discoveries must be posted where the next Naya can inspect them without conversational archaeology. No synthetic/no-op activity is allowed.
+
+**Current shared blocker:** authorized dispatch of .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD. All Nayas coordinate around this same boundary. No 509 substitution. No alternate runtime. No inferred success.
 
 ## ACTIVITY — THE RULE
 
