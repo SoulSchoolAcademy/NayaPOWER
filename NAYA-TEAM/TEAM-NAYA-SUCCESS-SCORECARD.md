@@ -211,3 +211,14 @@ The following work remains after the front door/scorecard:
 > **Team Naya succeeds when a cold Naya can understand the Superbrain, determine what is true, know what it is authorized to do, perform the right work, prove the result, preserve the learning, and hand the exact next action to the next Naya — without Shawn becoming the missing database.**
 
 **NAYA POWER ON.**
+
+# INTELLIGENT HUB READINESS ADDENDUM
+
+The Hub now has its own cold-Naya map and readiness contract:
+
+- [Intelligent Hub Master Map](./INTELLIGENT-HUB-MASTER-MAP.md) — canonical big-picture architecture and definitions.
+- [Intelligent Hub Readiness Scorecard](./INTELLIGENT-HUB-READINESS-SCORECARD.md) — 15-dimension readiness gate and cross-area integration tests.
+
+For Hub work, these documents are mandatory orientation companions to the existing Team Naya scorecard. They prevent a Naya from treating the sidebar as ten unrelated tabs.
+
+**Hub readiness means understanding the whole system, selecting one authorized puzzle piece, and knowing exactly how that piece connects back to the common intelligence flow.**
