@@ -1,17 +1,17 @@
 # TEAM NAYA — 100-QUESTION PREFLIGHT ANSWER RECEIPT
 
 **DATE:** 2026-09-17
-**SESSION:** Lead Naya / GitHub execution plane — post-continuity-reconciliation revalidation
+**SESSION:** Lead Naya / GitHub execution plane — fresh current-HEAD revalidation
 **PURPOSE:** Complete and record the mandatory 100-question entry gate before consequential work, revalidated after Team Naya continuity projection repair.
 **QUESTION SET:** `.naya/TEAM-NAYA/13-100-QUESTION-NAYA-ENTRY-PREFLIGHT.md`
 
 ## STATUS
 
-**100/100 ANSWERED AND REVALIDATED AGAINST LIVE HEAD.**
+**100/100 ANSWERED AND REVALIDATED AGAINST CURRENT LIVE HEAD.**
 
-**LIVE HEAD:** `dc44462f4cba31fc2179157cef0f1b7fce63a9fe` on `main`.
+**LIVE HEAD:** `0539935263d3c9d0662ba6d514c3b55b42566724` on `main`, resolved directly from `refs/heads/main` at revalidation time.
 
-**REVALIDATION RESULT:** The current-state answers were re-read against canonical STATE/BLOCKS and the repaired 2026-09-17 Team Naya continuity surface. The former projection conflict is resolved: Team Naya successor records now expose the same P0 mission/state/block/next-action tuple as canonical STATE/BLOCKS. No Hub source or protected Hub artifact was changed.
+**REVALIDATION RESULT:** The current-state answers were re-read against canonical STATE/BLOCKS/MAP/PROOF, the current 2026-09-17 Team Naya continuity surface, the Runtime Constitution, and the canonical source map. The former projection conflict is resolved: Team Naya successor records now expose the same P0 mission/state/block/next-action tuple as canonical STATE/BLOCKS. No Hub source or protected Hub artifact was changed.
 
 Material claims are classified. Evidence is named where available. Unknowns remain UNKNOWN; they are not converted to PASS.
 
@@ -153,7 +153,7 @@ Material claims are classified. Evidence is named where available. Unknowns rema
 
 **ENTRY GATE: PASS FOR THIS SESSION.**
 
-**REVALIDATION:** PASS — live HEAD resolved after continuity repair; canonical STATE/BLOCKS remain coherent; Team Naya projection/successor records now agree with the authoritative single next action; no protected Hub implementation was touched.
+**REVALIDATION:** PASS — live `main` resolves to `0539935263d3c9d0662ba6d514c3b55b42566724`; canonical STATE/BLOCKS remain coherent; Team Naya's current projection exposes the same mission/state/block/next-action tuple; PROOF correctly remains historical/stale where its recorded evidence predates current HEAD; no protected Hub implementation was touched.
 
 **REMAINING P0 BLOCK:** The Assistant Cloudflare/live execution surface and authorized runtime target remain unavailable from this execution plane. This is correctly classified UNKNOWN/BLOCKED, not PASS.
 
@@ -168,6 +168,60 @@ The next action after this preflight remains the canonical STATE/BLOCKS action. 
 
 ## LIVE REVALIDATION RECEIPT
 
-The 100-question gate was rerun after the Team Naya continuity repair. The gate did not promote historical evidence to current truth. Current repository identity and HEAD were resolved from live `main`; canonical STATE/BLOCKS were re-read; the repaired daily index and current successor/handoff records were checked for the same mission/state/block/next-action tuple.
+The 100-question gate was freshly revalidated at the current live `main` HEAD. The gate did not promote historical evidence to current truth. Current repository identity and HEAD were resolved directly from `refs/heads/main`; canonical STATE/BLOCKS/MAP/PROOF were re-read; the current daily index and current successor/handoff records were checked for the same mission/state/block/next-action tuple. PROOF was checked specifically for freshness and remains correctly classified as historical/stale relative to the new HEAD.
 
 **Result:** 100/100 answers remain supported; entry gate PASS. The gate authorizes governed consequential work subject to the existing P0 boundary. It does not authorize guessing or bypassing the unavailable Assistant Cloudflare/live lane.
+
+
+## FRESH CURRENT-HEAD REVALIDATION — 2026-09-17
+
+**Authoritative repository:** `SoulSchoolAcademy/NayaPOWER`
+
+**Branch:** `main`
+
+**Fresh live HEAD:** `0539935263d3c9d0662ba6d514c3b55b42566724`
+
+**HEAD source:** GitHub `refs/heads/main` resolved at revalidation time.
+
+### Current-state answers rechecked
+
+- **Q1–10 — IDENTITY + MISSION:** PASS. Canonical identity, mission, North Star, human authority, and Naya role remain supported by current Team Naya onboarding/operating-contract sources.
+- **Q11–20 — SOURCE OF TRUTH + AUTHORITY:** PASS. Current Constitution, Source Map, STATE, BLOCKS, PROOF, Governance Kernel, legacy-state treatment, and source precedence remain current.
+- **Q21–30 — CONTROL PLANE:** PASS. `TORCH-59-MACHINE-TRUTH-RESTORATION` remains active; target state remains `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`; exactly one next action remains exposed.
+- **Q31–40 — PROTECTED BASELINE + SCOPE:** PASS. Protected state, first-divergence repair, smallest-coherent-change, capability/authority separation, no-duplication, and boundary handling remain supported.
+- **Q41–50 — EVIDENCE + VERIFICATION:** PASS. Evidence tiers and implementation/verification/production-proof distinctions remain supported. Current PROOF explicitly marks recorded runtime evidence as stale when its observed HEAD differs from live HEAD.
+- **Q51–60 — SMART NOTES + INTELLIGENCE:** PASS. Canonical Smart Note flow remains to search/check existing intelligence before creating or surgically updating; no competing Smart Note system is authorized.
+- **Q61–70 — ACTIVITY + EVENTS + RECEIPTS:** PASS. Canonical Activity remains under `.naya/activity/YYYY/MM/DD/`; projections do not become competing truth.
+- **Q71–80 — TEAM NAYA + CONTINUITY:** PASS. Current operating center, entry path, continuation prompt, 100-question gate, 30-question handoff, no-orphan rule, and human handoff remain supported.
+- **Q81–90 — SMART LINKS + HUMAN EVIDENCE:** PASS. Direct artifact links remain required for human inspection; SHAs remain secondary provenance.
+- **Q91–100 — CURRENT EXECUTION + EXIT:** PASS. P0, lane boundary, unavailable Assistant Cloudflare/live capability, forbidden guessed target `NAYA_POWER_TARGET_URL`, closed/deferred work, gate requirements, and canonical next action remain current.
+
+### Freshness finding
+
+The existing PROOF record is **correctly historical/stale relative to this HEAD**. Its recorded evidence is tied to older HEAD `efd2bba9ff2b307525e1862ab16b341e8652f76a`. That historical evidence is not being promoted to current proof.
+
+### Current control-plane tuple
+
+**MISSION:** P0 — MACHINE TRUTH RESTORATION
+
+**STATE:** `LIVE_BOUND`
+
+**ACTIVE BLOCK:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
+
+**TARGET:** `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`
+
+**SINGLE NEXT ACTION:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
+
+**BLOCKER:** Assistant-lane Cloudflare/live execution surface and authorized runtime target remain unavailable from the current GitHub execution surface.
+
+**PROTECTED:** Do not guess `NAYA_POWER_TARGET_URL`; do not substitute the GitHub 509 lane; do not touch the protected Hub freeze point merely because competing implementations exist.
+
+### Gate decision
+
+**100/100 — PASS**
+
+**CURRENT-HEAD REVALIDATION — PASS**
+
+This receipt is now explicitly bound to live `main` HEAD `0539935263d3c9d0662ba6d514c3b55b42566724`.
+
+The gate authorizes governed consequential work subject to the constitutional authority, risk, scope, verification, and current P0 execution boundary. It does **not** authorize bypassing the unavailable Assistant Cloudflare/live lane or treating historical runtime evidence as current proof.
