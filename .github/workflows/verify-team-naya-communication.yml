@@ -19,6 +19,8 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile Team Naya communication runtime
-        run: python -m py_compile .naya/runtime/team_activity_event.py .naya/runtime/team_activity.py scripts/verify-team-naya-communication-v2.py
+        run: python -m py_compile .naya/runtime/team_activity_event.py .naya/runtime/team_activity.py .naya/runtime/activity_event.py .naya/runtime/execution_controller.py scripts/verify-team-naya-communication-v2.py scripts/verify-team-naya-communication.py scripts/verify-execution-team-activity-bridge.py
       - name: Execute Team Naya communication proof
         run: python scripts/verify-team-naya-communication-v2.py
+      - name: Execute governed execution to Team Naya Activity proof
+        run: python scripts/verify-execution-team-activity-bridge.py
