@@ -24,17 +24,24 @@ REQUIRED = {
     "identity": CP / "CANONICAL-IDENTITY-REGISTRY.json",
 }
 UNKNOWN_MISSION_BOUNDARIES = (
-    "golden_journey",
-    "learning_adaptation",
-    "privacy_access",
-    "concurrency_idempotency",
-    "temporal_conflict",
-    "authenticated_lifecycle",
-    "runtime_parity",
-    "external_cold_naya",
-    "recovery_rollback",
+    "golden_journey", "learning_adaptation", "privacy_access",
+    "concurrency_idempotency", "temporal_conflict", "authenticated_lifecycle",
+    "runtime_parity", "external_cold_naya", "recovery_rollback",
     "security_adversarial",
 )
+
+EVIDENCE_CONTRACT = {
+    "golden_journey": {"claim_types": {"WHOLE_JOURNEY", "AUTOMATED"}, "minimum_tokens": 2},
+    "learning_adaptation": {"claim_types": {"WHOLE_JOURNEY", "AUTOMATED"}, "minimum_tokens": 2},
+    "privacy_access": {"claim_types": {"AUTOMATED", "RUNTIME"}, "minimum_tokens": 2},
+    "concurrency_idempotency": {"claim_types": {"AUTOMATED", "WHOLE_JOURNEY"}, "minimum_tokens": 2},
+    "temporal_conflict": {"claim_types": {"AUTOMATED", "WHOLE_JOURNEY"}, "minimum_tokens": 2},
+    "authenticated_lifecycle": {"claim_types": {"RUNTIME", "WHOLE_JOURNEY"}, "minimum_tokens": 2},
+    "runtime_parity": {"claim_types": {"RUNTIME", "PRODUCTION"}, "minimum_tokens": 3},
+    "external_cold_naya": {"claim_types": {"WHOLE_JOURNEY", "RUNTIME"}, "minimum_tokens": 3},
+    "recovery_rollback": {"claim_types": {"AUTOMATED", "RUNTIME"}, "minimum_tokens": 2},
+    "security_adversarial": {"claim_types": {"AUTOMATED", "RUNTIME"}, "minimum_tokens": 2},
+}
 
 
 def load(path: Path) -> dict[str, Any]:
@@ -62,13 +69,18 @@ def mission_claim(proof: dict[str, Any], name: str, current: str) -> dict[str, A
         return result(name, "FAILED", [str(REQUIRED["proof"].relative_to(ROOT))],
                       f"invalid readiness evidence status: {status}")
     if status in {"VERIFIED", "PRODUCTION_PROVEN"}:
+        contract = EVIDENCE_CONTRACT[name]
+        claim_type = str(claim.get("claim_type", "")).upper()
+        evidence = claim.get("evidence", [])
         if claim.get("observed_head") != current:
             return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                           "evidence is not bound to the live HEAD")
-        evidence = claim.get("evidence", [])
-        if not isinstance(evidence, list) or not evidence or not claim.get("claim_type"):
+        if claim_type not in contract["claim_types"]:
             return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
-                          "verified claim lacks claim type or concrete evidence")
+                          "claim type is not appropriate for this readiness boundary")
+        if not isinstance(evidence, list) or len(evidence) < contract["minimum_tokens"] or any(not str(x).strip() for x in evidence):
+            return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                          "verified claim lacks sufficient concrete evidence")
     return result(name, status, claim.get("evidence", []),
                   str(claim.get("reason", "claim recorded by canonical proof authority")))
 
