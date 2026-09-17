@@ -17,7 +17,7 @@ A cold Naya must not reconstruct this project from chat history or choose among 
 
 NayaPOWER is the governed intelligence/execution substrate for reliable, verifiable, recoverable Naya work. NayaNET Intelligent Hub is the current major product execution stream. The Hub is the human-facing intelligence/network experience; Superbrain/CIS/Smart Notes are intelligence infrastructure and are not interchangeable authorities.
 
-**Current product target:** complete the real `NAYANET/HUB` implementation toward the protected nine-board Smart Board contract, but do not cross an unresolved deployment/authority boundary.
+**Current product target:** complete the real `NAYANET/HUB` implementation toward the protected nine-board Smart Board contract.
 
 ## 2. WHY?
 
@@ -44,6 +44,8 @@ Operational objective: a cold Naya should be able to restore truth, select one a
 - `.naya/control-plane/GITHUB-ISSUE-AUDIT.json`
 - `.naya/control-plane/GITHUB-WORKFLOW-AUDIT.json`
 - `.naya/control-plane/GITHUB-AUTHORITY-AUDIT.json`
+- `.naya/control-plane/GITHUB-ISSUE-CLASSIFICATION-2026-09-17.md`
+- `.naya/control-plane/GITHUB-WORKFLOW-CLASSIFICATION-2026-09-17.md`
 
 ### Current execution / enforcement
 - `.naya/runtime/execution_controller.py`
@@ -53,8 +55,14 @@ Operational objective: a cold Naya should be able to restore truth, select one a
 - `.naya/runtime/release_authorization_test.py`
 - Issue #243 — execution observability/preflight/evidence/handoff
 
-### Current P0
-**Issue #245** is the sole canonical issue for this repository-organization/classification operation.
+### Current production release authority
+**`.github/workflows/assistant-cloudflare-hub-release.yml` is the sole production deployment authority for the current Hub.**
+
+The exact release chain is:
+
+`2026 09 15 NayaNETHUB.html → main → assistant-cloudflare-hub-release.yml → sparkling-shape-7ae5 → live identity verification → desktop/mobile browser verification`
+
+`513-smart-board-canonical-finalizer.yml` is now deliberate **source mutation only**. It may finalize canonical HTML on explicit dispatch, but it cannot deploy Cloudflare or claim live-runtime authority.
 
 ## 4. PROTECTED
 
@@ -81,14 +89,16 @@ Historical artifacts may be retired from the operating path only after their int
 - `509-smart-board-world-class.yml` remains as a fail-closed boundary;
 - canonical event storage and Activity projection exist;
 - Issue #243 is active for mechanical execution observability;
-- Issue #245 is the current classification/index P0.
+- Issue #245 is the current classification/index P0;
+- `assistant-cloudflare-hub-release.yml` is the sole current production deployment authority;
+- `513-smart-board-canonical-finalizer.yml` is source-mutation-only and cannot deploy.
 
 **Unknown / not yet GREEN:**
-- full remaining workflow authority reconciliation;
-- final Assistant Cloudflare/live release authority;
 - automatic execution-boundary Activity creation;
 - complete Project → Session → Activity → Smart Note → State → Next continuity;
-- cold-Naya behavioral execution proof.
+- behavioral cold-Naya execution proof;
+- complete retirement/consolidation of every historical workflow surface;
+- final live release proof for any future change must still come from the canonical release workflow.
 
 `UNKNOWN != GREEN`.
 
@@ -128,7 +138,7 @@ The repository currently has strong Project/State/Activity/Smart Note ingredient
 
 The current Hub execution contract is the protected nine-board target recorded in recent execution/control-plane material. Historical 452/509/V7 Hub issues are context and evidence, not independent current authority.
 
-Current product work must not bypass the unresolved Assistant Cloudflare/live authority boundary or substitute a historical worker/deployer merely because an old issue calls it canonical.
+Current product work uses the canonical release chain above. Historical deployment workers/workflows must not be substituted for the current Assistant Cloudflare lane.
 
 ## 10. CURRENT ISSUES — CLASSIFICATION
 
@@ -140,17 +150,21 @@ The matrix contains all 61 currently open issues identified by the September 17 
 
 ## 11. CURRENT WORKFLOW AUTHORITY
 
-The workflow audit remains deliberately RED until the remaining workflow files have explicit role, trigger, mutation target, deployment target, authority owner, and lifecycle status.
+The workflow authority is now resolved for the current Hub deployment boundary:
 
-The workflow classification is stored at:
+**Production deployment:** `assistant-cloudflare-hub-release.yml` only.  
+**Source finalization:** `513-smart-board-canonical-finalizer.yml`, explicit dispatch only, no deployment.  
+**Fail-closed historical boundary:** `509-smart-board-world-class.yml`.
+
+The complete workflow classification is stored at:
 
 `.naya/control-plane/GITHUB-WORKFLOW-CLASSIFICATION-2026-09-17.md`
 
-No workflow should be deleted solely because its filename is old. Retire only after equivalence/replacement evidence exists.
+Historical workflow cleanup may continue only after replacement/equivalence evidence exists.
 
 ## 12. THE ONE NEXT ACTION
 
-**Complete the remaining workflow-by-workflow authority reconciliation, then mechanically enforce this index as the cold-start acceptance surface.**
+**Run the repository-only Cold-Naya Operating Index acceptance test against `main`, preserve the actual CI result, then begin the automatic execution → Activity → state → successor implementation.**
 
 The next Naya must not choose a second P0 from historical issue titles.
 
@@ -171,7 +185,7 @@ A cold Naya passes only if it can, using this index and linked repository source
 11. locate the evidence required to prove that action;
 12. leave a successor continuation.
 
-This is the **navigation test**. It is not yet proof that a fresh external model can execute the entire loop autonomously. That behavioral execution test remains the next acceptance layer.
+The machine acceptance test is `scripts/cold_naya_operating_index_test.py`. It is intentionally navigation/integrity-only; it must not be represented as proof that an external fresh model can execute the entire loop.
 
 ## 14. DO NOT REDO
 
@@ -180,14 +194,14 @@ This is the **navigation test**. It is not yet proof that a fresh external model
 - Do not create another governance kernel.
 - Do not revive retired 509 workflow generations.
 - Do not revive `aged-art-7c12` merely because historical issues call it canonical.
-- Do not substitute the GitHub 509 lane for unresolved Assistant Cloudflare/live authority.
+- Do not substitute the GitHub 509 lane for the canonical Assistant Cloudflare lane.
 - Do not close current P0s merely because they are old-looking.
 - Do not declare 10/10 from documentation alone.
 
 ## 15. SUCCESSOR
 
-After the workflow authority pass, the successor should:
+After the Cold-Naya acceptance test, the successor should:
 
-`READ THIS INDEX → READ CURRENT CONTROL PLANE → READ CLASSIFICATION MATRIX → RESOLVE AUTHORITY → EXECUTE ONE P0 ACTION → VERIFY → RECORD → UPDATE INDEX/STATE → HAND OFF`
+`READ THIS INDEX → READ CURRENT CONTROL PLANE → READ CLASSIFICATION MATRIX → EXECUTE ACCEPTANCE TEST → EXECUTE ONE P0 ACTION → VERIFY → RECORD → UPDATE STATE → HAND OFF`
 
-**One repository. One current identity. One current operating index. One current P0. One next action. Evidence over assertion.**
+**One repository. One current identity. One current operating index. One current P0. One production release authority. One next action. Evidence over assertion.**
