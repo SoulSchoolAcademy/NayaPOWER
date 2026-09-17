@@ -93,7 +93,7 @@ The earlier local successor action is reconciled to the canonical control plane.
 
 **Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
 
-**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+**Exactly ONE Next Action:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 
 Team Naya behavioral findings remain preserved as evidence. No Hub implementation is changed by this reconciliation.
 
