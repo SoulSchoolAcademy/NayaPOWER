@@ -89,8 +89,12 @@ Do not declare Team Naya 10/10 merely because the documents look complete.
 
 ## NEXT NAYA ACTION
 
-Run the independent cold-Naya traversal against the visible Team Naya front door and record every question the Naya still cannot answer or every step it skips. Convert each failure into a concrete Team Naya hardening change, then rerun the test.
+The earlier local successor action is reconciled to the canonical control plane.
 
-**Canonical continuity repair supersedes the earlier local successor wording. The active canonical P0 remains `TORCH-59-MACHINE-TRUTH-RESTORATION`. **Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+**Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
+
+**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+
+Team Naya behavioral findings remain preserved as evidence. No Hub implementation is changed by this reconciliation.
 
 **NAYA POWER ON. TEAM NAYA ON. PASS THE TORCH.**
