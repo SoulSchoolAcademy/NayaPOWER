@@ -69,7 +69,7 @@
     "target_state": "MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE",
     "next_action": "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD.",
     "next_actions": [
-      "Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline."
+      "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD."
     ],
     "next_action_count": 1
   },
