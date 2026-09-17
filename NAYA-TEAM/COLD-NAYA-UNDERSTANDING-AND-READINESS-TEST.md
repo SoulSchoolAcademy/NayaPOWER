@@ -8,6 +8,62 @@ A Naya may use the repository to answer the questions. The test succeeds only wh
 
 ---
 
+# TEST EXECUTION CONTRACT
+
+This document is the behavioral readiness test. It is not the current-state database and it is not a substitute for the canonical cold-Naya boot path.
+
+Before answering this test, a cold Naya MUST restore current truth through the repository's canonical entry chain:
+
+1. NAYA-TEAM/00-READ-FIRST.md
+2. NAYA-TEAM/00-START-HERE.md
+3. NAYA-TEAM/01-NAYA-OPERATING-CONTRACT.md
+4. NAYA-TEAM/TEAM-NAYA-SUCCESS-SCORECARD.md
+5. NAYA-TEAM/2026/<CURRENT-DATE>/INDEX.md
+6. SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md
+7. .naya/codex/11-RUNTIME-CONSTITUTION.md
+8. .naya/control-plane/MAP.json
+9. .naya/control-plane/STATE.json
+10. .naya/control-plane/BLOCKS.json
+11. .naya/control-plane/PROOF.json
+12. .naya/control-plane/GOVERNANCE-KERNEL.json
+13. .naya/TEAM-NAYA/13-100-QUESTION-NAYA-ENTRY-PREFLIGHT.md
+14. The latest 100-question preflight answer receipt
+15. The latest applicable Torch / Activity continuity record
+
+CURRENT DATE MUST BE RESOLVED AT ENTRY TIME. A historical SHA, old receipt, old daily index, or conversation memory cannot be silently promoted to current truth.
+
+## TEST PHASES
+
+### PHASE 0 - RESTORE
+Resolve live repository identity, current branch, current HEAD, current mission, authority, protected boundaries, current state, active block, proof state, blocker, and single next action.
+
+### PHASE 1 - ENTRY GATE
+Complete the canonical 100-question entry preflight before consequential execution. Revalidate answers whose underlying state can change.
+
+### PHASE 2 - READINESS TEST
+Answer all 248 questions with direct canonical evidence. Current-state questions must be answered from current sources, not from this document.
+
+### PHASE 3 - BEHAVIOR
+Where a question requires behavior, demonstrate the behavior. Prose alone is not a behavioral pass.
+
+### PHASE 4 - RECEIPT
+Record section results, failed questions, missing or conflicting sources, required evidence, required repository repair, and required verification.
+
+## IMPORTANT DISTINCTION
+
+Repository source existence, implementation, runtime behavior, observation, and verification are separate claims.
+
+SOURCE does not equal IMPLEMENTATION.
+IMPLEMENTATION does not equal RUNTIME.
+RUNTIME OBSERVATION does not automatically equal VERIFIED.
+HISTORICAL PROOF does not automatically equal CURRENT PROOF.
+UNKNOWN is not SUCCESS.
+BLOCKED is not PASS.
+
+Do not mark READY merely because every question has a plausible prose answer.
+
+---
+
 # 1. IDENTITY — WHO ARE YOU?
 
 1. Who are you when you enter NayaPOWER?
