@@ -28,12 +28,12 @@ At entry time, read the current [STATE](../../../.naya/control-plane/STATE.json)
 ## Current successor state
 
 - **Current NAYA-TEAM objective:** make the visible Team Naya layer a reliable cold-Naya operating surface and prove that Team Naya actually communicates, executes, verifies, learns, and hands off.
-- **Latest Team Naya change:** visible README/front door, Read-First gate, operating contract, scorecard path, daily continuity record, and a canonical executable successor prompt were established so the next Naya has an explicit job rather than only documentation.
-- **Verification state:** repository-facing organization is CREATED / CHANGED / TESTED / VERIFIED; behavioral 10/10 remains unproven.
+- **Latest Team Naya change:** the real execution controller is now bridged at its VERIFIED persistence boundary into the retry-safe Team Naya Activity facade, with evidence binding, explicit successor handoff, and idempotent replay proof.
+- **Verification state:** the repository-facing communication layer and the execution-to-Team-Activity bridge are both runtime-proven by GitHub Actions; behavioral 10/10 remains unproven.
 - **Protected principle:** Team Naya is not 10/10 because documents exist. It is 10/10 only when a cold Naya can actually enter, understand, act, verify, record, learn, communicate, and hand off without Shawn reconstructing the missing state.
-- **Communication state:** the repository contains documented communication laws and historical Activity records, but active Naya-to-Naya communication behavior and execution-to-Activity automation are not yet sufficiently proven by the evidence inspected in this mission.
-- **Correction:** There is no separate “Tina” role in Team Naya. Any previous reference to Tina was an error. The operating unit is Naya / Team Naya.
-- **Exactly ONE Next Action:** execute `NAYA-TEAM/NEXT-NAYA-EXECUTION-PROMPT.md`, beginning with a factual audit of recent GitHub Activity/commit evidence for actual Naya-to-Naya communication and execution records; repair the first highest-value continuity failure found.
+- **Communication state:** shared Team Naya communication is PROVEN; governed execution automatically producing a Team Naya `NAYA_VERIFIED` event is PROVEN; the latest E2E proof produced a bound execution event, Team Naya event, explicit successor, and idempotent replay.
+- **Evidence:** GitHub Actions run `35276914132`, execution event `SE-20260917-212909-activity-cl-team-bridge-001-act-team-bridge-001-c8b276`, Team Naya event `SE-20260917-212909-team-naya-verified-388b2aea`.
+- **Exactly ONE Next Action:** have the next Naya retrieve the `NAYA_VERIFIED` event from the shared Team Naya Activity surface and continue from its evidence and successor without asking Shawn to reconstruct the execution state.
 
 ## Team communication law
 
