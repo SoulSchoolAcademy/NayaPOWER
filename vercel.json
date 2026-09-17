@@ -1,6 +1,11 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": "vite",
   "installCommand": "cd NAYANET/HUB && npm install",
   "buildCommand": "cd NAYANET/HUB && npm run build",
   "outputDirectory": "NAYANET/HUB/dist",
-  "framework": null
+  "rewrites": [
+    {"source":"/((?!assets/|intelligence/|nayanet-cognitive-engine\\.js$).*)","destination":"/index.html"}
+  ]
 }
