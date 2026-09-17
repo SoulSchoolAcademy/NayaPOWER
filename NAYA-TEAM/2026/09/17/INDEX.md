@@ -42,3 +42,12 @@ Important discoveries must not remain only in a Naya's private conversation. If 
 Nayas may ask one another questions through the Team Naya communication surface. Every question should state what is known, what was checked, what remains unknown, and what evidence is needed.
 
 **Team Naya law:** visible continuity must agree with canonical current state. If they diverge, reconcile the projection rather than creating a second truth.
+
+
+## Intelligent Hub readiness
+
+- **Canonical map:** [Intelligent Hub Master Map](../INTELLIGENT-HUB-MASTER-MAP.md)
+- **Readiness gate:** [Intelligent Hub Readiness Scorecard](../INTELLIGENT-HUB-READINESS-SCORECARD.md)
+- **Current principle:** understand the whole puzzle before building one piece.
+- **Current state:** architecture is now explicitly mapped; implementation/verification state for each Hub area must still be established with evidence rather than inferred from tab existence.
+- **Exactly ONE Next Action:** run a cold-Naya traversal of the new Hub Master Map + Readiness Scorecard, then identify the first Hub area whose implementation state is genuinely unproven and create the smallest evidence-backed build/verification mission for it.
