@@ -22,8 +22,11 @@ Team ID:
 Previous recorded GitHub main freeze point:
 `8337328d634132cbac58ace5c90a37f4dd87436b`
 
-Current GitHub main after deployment-lane repair commit:
+Deployment-lane repair commit:
 `197edd044d0a77923a983049a1bacf90f5369a28`
+
+Current evidence-recording commit:
+`f852eb2c3752e519c05edcb7437d42e668beb59d`
 
 Existing Hub production deployment:
 `dpl_EE2uMkEnhrCCEeStiRi5oWuvzPKv`
@@ -36,70 +39,108 @@ Production alias:
 
 ## EXACT GIT INTEGRATION DIAGNOSIS
 
-The current GitHub commit `197edd044d0a77923a983049a1bacf90f5369a28` received a Vercel commit status whose target is the **different Vercel project**:
+GitHub main is actively triggering Vercel, but the automatic Git deployment target is the different project `naya-power`, not `nayanet-intelligent-hub`.
 
-`naya-power`
-
-Deployment:
+For repair commit `197edd044d0a77923a983049a1bacf90f5369a28`, Vercel created:
 `dpl_HirVP2j3zAyiu7B3CvNs3e4fjSSf`
 
-Project ID:
+Target project:
+`naya-power`
+
+Target project ID:
 `prj_cHa9gwrtscCW8JuMDjcvw6DafaOK`
 
-Its Vercel metadata identifies the Git source as:
-- Git provider: GitHub
-- organization: `SoulSchoolAcademy`
-- repository: `NayaPOWER`
-- branch: `main`
-- commit SHA: `197edd044d0a77923a983049a1bacf90f5369a28`
+The Vercel metadata identifies GitHub org `SoulSchoolAcademy`, repository `NayaPOWER`, branch `main`, and the exact commit SHA. Therefore GitHub-to-Vercel integration is proven active, but it is connected to the wrong Vercel project for the Hub.
 
-Therefore the evidence establishes that GitHub `main` **is connected to / triggering Vercel**, but the Git-triggered deployment is landing in the `naya-power` project rather than the existing `nayanet-intelligent-hub` project.
-
-This explains why `nayanet-intelligent-hub` has not received a new Git-triggered deployment from the current GitHub main source.
-
-The existing Hub project metadata itself does not expose a connected Git repository in the project response, while its current deployments have empty `meta` rather than Git commit metadata. This is consistent with the Hub project not being the active Git-connected target.
+The intended Hub project metadata does not expose a connected Git repository in the project response, and its current deployments do not carry Git commit metadata. This is consistent with it not being the active Git-connected target.
 
 ## DEPLOYMENT-LANE REPAIR
 
 Added canonical GitHub workflow:
 `.github/workflows/deploy-nayanet-intelligent-hub.yml`
 
-Commit:
-`197edd044d0a77923a983049a1bacf90f5369a28`
-
-The workflow is explicitly bound to the existing Hub project IDs and does the following:
-1. checks out GitHub `main`;
+The workflow is explicitly bound to the existing Hub project IDs and:
+1. checks out canonical GitHub `main`;
 2. installs `NAYANET/HUB` dependencies;
 3. builds the Hub and generated PIS;
-4. rejects deployment if generated PIS is missing or `event_count <= 0`;
-5. deploys `NAYANET/HUB` to production using Vercel CLI and the existing project ID/team ID;
-6. requires the `VERCEL_TOKEN` GitHub secret rather than embedding credentials.
+4. requires a valid generated PIS with `event_count > 0`;
+5. deploys `NAYANET/HUB` to production using Vercel CLI;
+6. uses the GitHub Actions secret `VERCEL_TOKEN` rather than embedding credentials.
 
 No second Vercel project was created.
 
-The exposed Vercel direct-deployment connector was also tested again, but it rejected the required deployment inputs before creation (`target`, `name`, and `files`). Therefore the GitHub Actions deployment lane is the active repair path.
+The exposed direct Vercel deployment connector was also tested, but its deployment interface rejected required inputs before creation (`target`, `name`, `files`). It therefore cannot be used as the deployment path in its current exposed form.
+
+## GITHUB ACTIONS EXECUTION PROOF
+
+For commit `f852eb2c3752e519c05edcb7437d42e668beb59d`, the new workflow DID START:
+
+Workflow:
+`Deploy NayaNET Intelligent Hub`
+
+Run:
+`35259011991`
+
+Run number:
+`2`
+
+Event:
+`push`
+
+Head SHA:
+`f852eb2c3752e519c05edcb7437d42e668beb59d`
+
+Result:
+**completed / failure**
+
+The job completed successfully through:
+- checkout;
+- `npm ci`;
+- Hub build;
+- generated PIS validation.
+
+The build produced:
+`PIS_FEED_BUILT events=3 source=canonical-smart-notes+smart-feed`
+
+The predeployment gate produced:
+`PIS_PREDEPLOY_OK event_count=3`
+
+The deployment step then failed with the exact message:
+`VERCEL_TOKEN_MISSING`
+
+The runner environment explicitly showed:
+`VERCEL_PROJECT_ID=prj_ZpMGeKq4LcMBYslrO9D70jINpEVA`
+
+and the secret expansion was empty:
+`VERCEL_TOKEN:`
+
+Therefore the exact remaining blocker is **not the Hub build, not the PIS build, and not the target project ID. The GitHub Actions environment does not currently have a `VERCEL_TOKEN` secret available to this workflow.**
+
+No credential value was exposed or written into the repository.
 
 ## CURRENT DEPLOYMENT RESULT
 
-The `nayanet-intelligent-hub` project still lists only its two previous deployments at the time of this verification. No new Hub deployment ID has yet been observed.
+The intended `nayanet-intelligent-hub` project still has no new deployment corresponding to `f852eb2c3752e519c05edcb7437d42e668beb59d`.
 
-The separate `naya-power` project did receive a Git-triggered production deployment for the repair commit, proving that GitHub-to-Vercel integration is active but pointed at the wrong project for this Hub.
+No new Hub deployment ID is claimed.
 
-Therefore the Hub production boundary remains **NOT REPAIRED** at this checkpoint.
+The separate `naya-power` project continues to receive Git-triggered deployments, proving the repository integration is alive but directed at the wrong project.
+
+Therefore the Hub production boundary remains **NOT REPAIRED**.
 
 ## LIVE RUNTIME TEST
 
 Live Hub:
 `https://nayanet-intelligent-hub.vercel.app/`
 
-Result: **HTTP 200**, but the response is stale static HTML rather than proof of the current GitHub React/PIS build. Response headers still show an old `last-modified` timestamp and a large cache age.
+Result: **HTTP 200**, but the response remains stale static HTML rather than proof of the current React/PIS build.
 
 Live PIS:
 `https://nayanet-intelligent-hub.vercel.app/intelligence/pis-feed.json`
 
 Result: **HTTP 404 NOT_FOUND**.
 
-Therefore the production PIS boundary is **NOT REPAIRED**.
+Therefore the live PIS boundary remains **NOT REPAIRED**.
 
 ## SOURCE CHECK
 
@@ -113,61 +154,68 @@ The canonical Hub PIS consumer reads `/intelligence/pis-feed.json` first, then p
 
 ## VERIFIED
 
-- GitHub main is now frozen at `197edd044d0a77923a983049a1bacf90f5369a28` after adding the deployment lane.
-- Existing `nayanet-intelligent-hub` Vercel project exists and is accessible.
-- Existing Hub production deployment is READY.
-- GitHub main is actively triggering Vercel, but the observed Git-connected target is `naya-power`, not `nayanet-intelligent-hub`.
-- The new deployment workflow is committed to the canonical repository and explicitly targets the existing Hub project.
-- Live Hub root returns HTTP 200 but is stale.
-- Live PIS endpoint returns HTTP 404.
-- No false Hub production success is recorded.
+- Existing Vercel Hub project exists and is accessible.
+- GitHub `main` triggers Vercel automatically.
+- Automatic Git deployment is landing in `naya-power`, not the intended Hub project.
+- The new dedicated Hub deployment workflow starts on GitHub push.
+- The workflow checked out the exact requested commit `f852eb2c3752e519c05edcb7437d42e668beb59d`.
+- Hub dependencies installed successfully.
+- Hub production build succeeded.
+- Generated PIS is valid and has `event_count=3` before deployment.
+- The workflow is targeting the correct Hub project ID.
+- The workflow fails at the deployment boundary because `VERCEL_TOKEN` is empty/missing.
+- Live Hub returns HTTP 200 but is stale.
+- Live PIS returns HTTP 404.
+- No false production success is recorded.
 
 ## NOT VERIFIED
 
-- New Vercel deployment for `nayanet-intelligent-hub` from current GitHub main.
-- GitHub Actions deployment workflow success.
+- New Vercel deployment for `nayanet-intelligent-hub` from current GitHub source.
+- Deployment identity matching the intended Hub project.
+- READY state for a new Hub deployment.
 - Live `/intelligence/pis-feed.json` HTTP 200.
-- Valid live PIS JSON with `event_count > 0`.
+- Valid live PIS JSON in production.
+- `event_count > 0` in production.
 - Live Hub consumption of generated PIS.
 - Production Smart Note → CIS → PIS → Hub chain.
 - L3-L6 behavioral learning.
 
 ## BLOCKER
 
-**EXISTING HUB PROJECT IS NOT THE ACTIVE GITHUB VERCEL TARGET**
+**GITHUB ACTIONS SECRET: VERCEL_TOKEN IS MISSING**
 
-The repository is demonstrably connected to Vercel, but the Git-triggered deployment is going to `naya-power`. The existing `nayanet-intelligent-hub` project is not receiving those Git deployments.
+The deployment lane itself is now proven to execute correctly through build and PIS validation. It cannot authenticate to Vercel because the `VERCEL_TOKEN` GitHub Actions secret is not available.
 
-The committed GitHub Actions lane is the direct repair mechanism for the existing Hub project. Its remaining runtime proof is the next boundary: workflow execution must create a new deployment for `prj_ZpMGeKq4LcMBYslrO9D70jINpEVA`, then the live PIS and Hub must be tested.
+This is now the single concrete deployment blocker exposed by the evidence available to Naya Power.
+
+The token must be added as a GitHub Actions repository secret by an authorized human/account administrator. It must never be placed in source code, Smart Notes, Activity records, chat, or committed files.
 
 ## DECISION
 
 Do not create another Hub or another Vercel project.
 
-Do not redesign the Hub to compensate for a deployment failure.
+Do not redesign the Hub to compensate for the deployment credential boundary.
 
-Preserve GitHub as the canonical source and the current commit as the freeze point. Repair the existing project delivery lane.
+Preserve GitHub as canonical source and use the existing `nayanet-intelligent-hub` project.
+
+Do not begin the real Adaptive Learning experiment until production PIS and Hub consumption are verified.
 
 ## LEARNING
 
-A repository can be Git-connected to Vercel while the wrong Vercel project receives the Git deployment.
+A deployment workflow can be fully correct through build and predeployment validation while still being blocked at the credential boundary.
 
-A Vercel READY deployment in the intended project is not evidence that the intended project is connected to the current Git source.
+The evidence chain now distinguishes:
+**source identity → workflow execution → build proof → PIS proof → authentication boundary → deployment identity → runtime response → consumer behavior.**
 
-A successful Git-triggered Vercel deployment in another project is not evidence that the Hub is deployed.
-
-Production completion still requires:
-
-**source identity → target project identity → deployment identity → runtime response → consumer behavior.**
+A missing deployment credential is now a concrete infrastructure blocker, not an architectural unknown.
 
 The larger learning target remains:
-
 **SMART NOTE → CIS → RETRIEVE → APPLY → OBSERVE → VERIFY → ADAPT → BETTER FUTURE ACTION.**
 
 ## NEXT ACTION
 
-Verify the new GitHub Actions deployment lane actually creates a deployment in `nayanet-intelligent-hub`. If it does, verify the deployment commit identity and READY state, fetch `/intelligence/pis-feed.json`, require HTTP 200 valid JSON with `event_count > 0`, and prove the live Hub consumes the generated PIS. Only after that boundary is verified should the real retrieval/application/outcome learning experiment begin.
+Add the authorized `VERCEL_TOKEN` to the GitHub repository Actions secrets, then rerun the existing `Deploy NayaNET Intelligent Hub` workflow for the current canonical source. After authentication succeeds, verify the resulting deployment belongs to project `prj_ZpMGeKq4LcMBYslrO9D70jINpEVA`, require READY state, fetch `/intelligence/pis-feed.json` and require HTTP 200 valid JSON with `event_count > 0`, then prove the live Hub consumes that generated PIS. Only after those runtime boundaries pass should the real retrieval/application/outcome learning experiment begin.
 
-**SIGN-OUT STATE: CONTINUING — HUB DEPLOYMENT TARGET REPAIRED IN SOURCE, RUNTIME PROOF PENDING**
+**SIGN-OUT STATE: BLOCKED ONLY ON VERCEL_TOKEN CREDENTIAL AVAILABILITY; SOURCE, BUILD, AND PIS PREDEPLOY GATES PROVEN**
 
 **NAYA POWER ON → RESTORE → INSPECT → REPAIR → DEPLOY → TEST → VERIFY → RECORD → LEARN → CONTINUE**
