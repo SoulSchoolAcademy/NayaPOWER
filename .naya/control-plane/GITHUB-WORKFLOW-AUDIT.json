@@ -1,0 +1,25 @@
+{
+  "$schema": "naya/github-workflow-audit/v1",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "observed_at": "2026-09-17T02:40:00Z",
+  "source": "GitHub .github/workflows directory on main",
+  "inventory_status": "INCOMPLETE_BY_DESIGN",
+  "rule": "Every workflow must have an explicit role, trigger, mutation target, deployment target, authority owner, and lifecycle status before the optimization gate may become GREEN.",
+  "observed_patterns": {
+    "509_workflows_present": true,
+    "multiple_smart_board_workflows_present": true,
+    "multiple_smart_note_workflows_present": true,
+    "multiple_runtime_authority_workflows_present": true,
+    "assistant_lane_canonical_v2_expected_by_historical_state": false
+  },
+  "unclassified_workflow_count": null,
+  "unresolved_authority_conflicts": 1,
+  "known_workflow_families": [
+    {"family":"509","status":"UNRESOLVED","role":"Separate GitHub 509 lane; must not be silently treated as Assistant Cloudflare/live authority."},
+    {"family":"smart-board","status":"UNRESOLVED","role":"Multiple generations exist; classify mutation/deploy/test responsibility."},
+    {"family":"smart-note","status":"UNRESOLVED","role":"Multiple generations exist; classify canonical builder vs historical repair workflows."},
+    {"family":"runtime-authority","status":"UNRESOLVED","role":"Multiple similarly named authority workflows require explicit ownership and retirement decisions."},
+    {"family":"assistant-cloudflare","status":"MISSING_CURRENT_PATH","role":"STATE records the historical expected canonical-v2 path as absent on current main; external/current authorized mechanism remains unknown."}
+  ],
+  "required_completion": "Enumerate every workflow file, classify KEEP/CONSOLIDATE/MANUAL/RETIRE/HISTORICAL, identify every file mutation and deployment target, then reduce to one explicit authority per mutation/deployment boundary without deleting required history."
+}
