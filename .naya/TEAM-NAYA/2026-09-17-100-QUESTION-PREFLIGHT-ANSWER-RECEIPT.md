@@ -1,13 +1,17 @@
 # TEAM NAYA — 100-QUESTION PREFLIGHT ANSWER RECEIPT
 
 **DATE:** 2026-09-17
-**SESSION:** Lead Naya / GitHub execution plane
-**PURPOSE:** Complete and record the mandatory 100-question entry gate before consequential work.
+**SESSION:** Lead Naya / GitHub execution plane — post-continuity-reconciliation revalidation
+**PURPOSE:** Complete and record the mandatory 100-question entry gate before consequential work, revalidated after Team Naya continuity projection repair.
 **QUESTION SET:** `.naya/TEAM-NAYA/13-100-QUESTION-NAYA-ENTRY-PREFLIGHT.md`
 
 ## STATUS
 
-**100/100 ANSWERED.**
+**100/100 ANSWERED AND REVALIDATED AGAINST LIVE HEAD.**
+
+**LIVE HEAD:** `dc44462f4cba31fc2179157cef0f1b7fce63a9fe` on `main`.
+
+**REVALIDATION RESULT:** The current-state answers were re-read against canonical STATE/BLOCKS and the repaired 2026-09-17 Team Naya continuity surface. The former projection conflict is resolved: Team Naya successor records now expose the same P0 mission/state/block/next-action tuple as canonical STATE/BLOCKS. No Hub source or protected Hub artifact was changed.
 
 Material claims are classified. Evidence is named where available. Unknowns remain UNKNOWN; they are not converted to PASS.
 
@@ -149,6 +153,10 @@ Material claims are classified. Evidence is named where available. Unknowns rema
 
 **ENTRY GATE: PASS FOR THIS SESSION.**
 
+**REVALIDATION:** PASS — live HEAD resolved after continuity repair; canonical STATE/BLOCKS remain coherent; Team Naya projection/successor records now agree with the authoritative single next action; no protected Hub implementation was touched.
+
+**REMAINING P0 BLOCK:** The Assistant Cloudflare/live execution surface and authorized runtime target remain unavailable from this execution plane. This is correctly classified UNKNOWN/BLOCKED, not PASS.
+
 The 100 questions are answered and recorded. This authorizes moving from orientation into the next governed phase, subject to the normal constitutional authority, scope, risk, and verification gates.
 
 **Important:** The preflight itself does not prove the Assistant Cloudflare/live lane. That remains an unresolved execution boundary.
@@ -156,3 +164,10 @@ The 100 questions are answered and recorded. This authorizes moving from orienta
 ## NEXT
 
 The next action after this preflight remains the canonical STATE/BLOCKS action. No substitute lane is authorized by this receipt.
+
+
+## LIVE REVALIDATION RECEIPT
+
+The 100-question gate was rerun after the Team Naya continuity repair. The gate did not promote historical evidence to current truth. Current repository identity and HEAD were resolved from live `main`; canonical STATE/BLOCKS were re-read; the repaired daily index and current successor/handoff records were checked for the same mission/state/block/next-action tuple.
+
+**Result:** 100/100 answers remain supported; entry gate PASS. The gate authorizes governed consequential work subject to the existing P0 boundary. It does not authorize guessing or bypassing the unavailable Assistant Cloudflare/live lane.
