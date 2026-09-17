@@ -1,25 +1,42 @@
 {
   "$schema": "naya/github-workflow-audit/v1",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "observed_at": "2026-09-17T02:40:00Z",
+  "observed_at": "2026-09-17T03:00:00Z",
   "source": "GitHub .github/workflows directory on main",
   "inventory_status": "INCOMPLETE_BY_DESIGN",
+  "cleanup_status": "SURGICAL_CLEANUP_EXECUTED",
   "rule": "Every workflow must have an explicit role, trigger, mutation target, deployment target, authority owner, and lifecycle status before the optimization gate may become GREEN.",
-  "observed_patterns": {
-    "509_workflows_present": true,
-    "multiple_smart_board_workflows_present": true,
-    "multiple_smart_note_workflows_present": true,
-    "multiple_runtime_authority_workflows_present": true,
-    "assistant_lane_canonical_v2_expected_by_historical_state": false
-  },
-  "unclassified_workflow_count": null,
-  "unresolved_authority_conflicts": 1,
-  "known_workflow_families": [
-    {"family":"509","status":"UNRESOLVED","role":"Separate GitHub 509 lane; must not be silently treated as Assistant Cloudflare/live authority."},
-    {"family":"smart-board","status":"UNRESOLVED","role":"Multiple generations exist; classify mutation/deploy/test responsibility."},
-    {"family":"smart-note","status":"UNRESOLVED","role":"Multiple generations exist; classify canonical builder vs historical repair workflows."},
-    {"family":"runtime-authority","status":"UNRESOLVED","role":"Multiple similarly named authority workflows require explicit ownership and retirement decisions."},
-    {"family":"assistant-cloudflare","status":"MISSING_CURRENT_PATH","role":"STATE records the historical expected canonical-v2 path as absent on current main; external/current authorized mechanism remains unknown."}
+  "confirmed_removed": [
+    ".github/workflows/509-finish-smart-feed.yml",
+    ".github/workflows/509-sidebar-nav-audit.yml",
+    ".github/workflows/509-sidebar-nav-correction.yml",
+    ".github/workflows/509-smart-notes-board-presentation-fix.yml",
+    ".github/workflows/509-smart-notes-presentation-final.yml",
+    ".github/workflows/509-smart-notes-surgical-final-v3.yml",
+    ".github/workflows/509-smart-board-runtime-authority.yml",
+    ".github/workflows/509-smart-board-runtime-authority-v2.yml",
+    ".github/workflows/509-smart-board-runtime-authority-v6.yml",
+    ".github/workflows/509-smart-board-final-deploy.yml"
   ],
-  "required_completion": "Enumerate every workflow file, classify KEEP/CONSOLIDATE/MANUAL/RETIRE/HISTORICAL, identify every file mutation and deployment target, then reduce to one explicit authority per mutation/deployment boundary without deleting required history."
+  "removal_basis": "Each removed workflow was independently inspected and explicitly marked DISABLED or RETIRED in its own source, and each pointed to a newer/canonical renderer or lane. None was a live execution authority. Git history preserves the deleted artifacts.",
+  "preserved": [
+    ".github/workflows/509-smart-board-world-class.yml"
+  ],
+  "preservation_basis": "This workflow is an explicit fail-closed boundary, not an obsolete deployer: it blocks the GitHub 509 lane from substituting for the unresolved Assistant Cloudflare/live lane. It must remain until runtime authority is reconciled.",
+  "remaining_required_work": [
+    "Enumerate every remaining workflow file.",
+    "Classify KEEP/CONSOLIDATE/MANUAL/RETIRE/HISTORICAL.",
+    "Identify mutation and deployment targets for every remaining workflow.",
+    "Resolve Assistant Cloudflare/live authority against authoritative external configuration or an authorized execution surface.",
+    "Do not substitute the GitHub 509 lane for the Assistant lane."
+  ],
+  "known_workflow_families": [
+    {"family":"509","status":"PARTIALLY_CLEANED","role":"Separate GitHub 509 lane; preserved fail-closed world-class boundary must not be silently treated as Assistant Cloudflare/live authority."},
+    {"family":"smart-board","status":"REQUIRES_FULL_INVENTORY","role":"Remaining generations must be classified by mutation/deploy/test responsibility."},
+    {"family":"smart-note","status":"REQUIRES_FULL_INVENTORY","role":"Remaining builders/validators must be classified against the canonical renderer."},
+    {"family":"runtime-authority","status":"PARTIALLY_CLEANED","role":"Retired duplicate 509 authorities removed; remaining authorities require explicit ownership."},
+    {"family":"assistant-cloudflare","status":"MISSING_CURRENT_PATH","role":"Current authorized release mechanism/target remains unresolved. Historical expected canonical-v2 path is not sufficient proof."}
+  ],
+  "gate_state": "RED_UNTIL_FULL_INVENTORY",
+  "required_completion": "Enumerate every remaining workflow file, classify KEEP/CONSOLIDATE/MANUAL/RETIRE/HISTORICAL, identify every file mutation and deployment target, then reduce to one explicit authority per mutation/deployment boundary without deleting required current functionality."
 }
