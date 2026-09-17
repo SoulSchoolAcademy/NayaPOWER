@@ -5,7 +5,7 @@
     "id": "TORCH-59-MACHINE-TRUTH-RESTORATION",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Establish and maintain one mechanically trustworthy current machine-state picture before downstream feature construction; the Assistant-lane runtime boundary is now proven.",
+    "intent": "Establish and maintain one mechanically trustworthy current machine-state picture before downstream feature construction; the Assistant-lane release mechanism and authorized target are established, while fresh exact-current-HEAD runtime proof remains pending.",
     "scope": [
       "live main identity",
       "control-plane coherence",
@@ -66,11 +66,9 @@
       "current main .github/workflows directory inspection",
       ".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md"
     ],
-    "target_state": "MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE",
-    "next_action": "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD.",
-    "next_actions": [
-      "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD."
-    ],
+    "target_state": "MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_FRESH_RUNTIME_PROVEN",
+    "next_action": "Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD; execute it, observe the actual runtime, verify source → execution → runtime → behavior, record the result in Team Naya Activity, and then rerun the Cold-Naya readiness gate. Do not substitute GitHub 509 or another runtime.",
+    "next_actions": ["Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD; execute it, observe the actual runtime, verify source → execution → runtime → behavior, record the result in Team Naya Activity, and then rerun the Cold-Naya readiness gate. Do not substitute GitHub 509 or another runtime."],
     "next_action_count": 1
   },
   "status_vocabulary": [
