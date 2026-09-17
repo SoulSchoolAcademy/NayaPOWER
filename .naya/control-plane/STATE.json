@@ -119,8 +119,7 @@
     }
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE EXECUTION
-Resolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, and current Team Naya Activity. Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact current HEAD. Execute only that canonical lane. Observe and verify the runtime. Record the result in Activity. If dispatch is unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Do not substitute GitHub 509 or another runtime. TAG → YOU’RE IT.",
+  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE EXECUTION\\nResolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, and current Team Naya Activity. Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact current HEAD. Execute only that canonical lane. Observe and verify the runtime. Record the result in Activity. If dispatch is unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Do not substitute GitHub 509 or another runtime. TAG → YOU’RE IT.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
