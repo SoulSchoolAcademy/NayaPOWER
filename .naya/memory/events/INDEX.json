@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "CANONICAL",
   "organization": "YEAR/MONTH/DAY/HOUR/EVENT",
-  "event_count": 43,
+  "event_count": 44,
   "events": [
     {
       "event_id": "SE-20260824-000001-maxess-execution-discipline",
@@ -647,6 +647,15 @@
       "event_id": "SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86",
       "path": "2026\\09\\17\\04\\SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86.json",
       "subject": "Full integrate onto main + governed-proof CI + classification/authority reconciliation + gate GREEN",
+      "type": "activity",
+      "tags": [
+        "activity"
+      ]
+    },
+    {
+      "event_id": "SE-20260917-043141-activity-cl-p005-matrix-foundation-act-p005-matri-b1b393",
+      "path": "2026\\09\\17\\04\\SE-20260917-043141-activity-cl-p005-matrix-foundation-act-p005-matri-b1b393.json",
+      "subject": "P005 Phase-0 evidence-matrix foundation (58/58 path-verified)",
       "type": "activity",
       "tags": [
         "activity"

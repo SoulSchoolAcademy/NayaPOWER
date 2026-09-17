@@ -108,9 +108,28 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Phase 0 restored the Hub architectural model and exposed a concrete control-plane drift: the recorded canonical Cloudflare release workflow path is absent from current main. The remaining product/runtime blocker is the unavailable Assistant-lane Cloudflare execution surface and lack of an authorized current runtime target.",
-  "single_next_action": "Independently adjudicate the first-pass classification (Oscar, Builder != Judge); apply status labels to the 61 live GitHub issues via an authenticated surface; then bind Smart Notes to Sessions/Activities and build the temporal day/project retrieval index, proving cold-Naya acceptance behaviorally on CI.",
+  "single_next_action": "Execute the 01-58 per-area read pass and complete the evidence matrix (SUPERBRAIN/NIA-COMMUNICATION/58-AREAS-EVIDENCE-MATRIX-V1.md + .naya/control-plane/58-V1-EVIDENCE-MATRIX.json); then send the grouping/dependency model to Oscar (#257). Phase 0 of LEAD-NAYA-MASTER-INVESTIGATION-NAYAPOWER-01-58-V1.",
   "next_actions": [
-    "Independently adjudicate the first-pass classification (Oscar, Builder != Judge); apply status labels to the 61 live GitHub issues via an authenticated surface; then bind Smart Notes to Sessions/Activities and build the temporal day/project retrieval index, proving cold-Naya acceptance behaviorally on CI."
+    {
+      "priority": "P0",
+      "action": "Read every canonical 01-58 doc and complete per-area truth/contradiction/duplicate/gap columns",
+      "status": "OPEN"
+    },
+    {
+      "priority": "P0",
+      "action": "Oscar challenge of 01-58 grouping + dependency model (#257)",
+      "status": "PENDING"
+    },
+    {
+      "priority": "P1",
+      "action": "Apply status labels to 61 live GitHub issues via authenticated surface",
+      "status": "PENDING"
+    },
+    {
+      "priority": "P1",
+      "action": "Bind machine Smart Notes to Sessions/Activities + temporal retrieval index",
+      "status": "PENDING"
+    }
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE HUB BASELINE RESTORATION\nResolve live refs/heads/main first. Read the Hub Read-First gate, Master Design Contract, PIS Smart Note, Design/Build Activation, roadmap, MAP, STATE, BLOCKS, PROOF, and relevant deeper Hub sources. Current Phase 0 inspection found that .github/workflows/deploy-nayanet-hub-canonical-v2.yml is absent from current main, while deploy-nayanet-hub-509-aaa.yml and deploy-nayanet-hub-509-bridge.yml are present and belong to the separate GitHub 509 lane. Do not substitute those workflows for the Assistant Cloudflare/live lane. Establish the actual authorized Cloudflare source/deployment/runtime mechanism from an available authoritative execution surface. Do not guess NAYA_POWER_TARGET_URL. Once authorized access exists, resolve exact runtime, capture baseline, then continue with the 6-to-10 roadmap. Preserve UNKNOWN/BLOCKED semantics and expose one executable next action.\nTAG → YOU’RE IT → EXECUTE.",

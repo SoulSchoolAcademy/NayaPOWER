@@ -7,6 +7,8 @@ supersedes: NEXT-EXECUTION-20260917-P004-CLASSIFICATION-GATE-GREEN.md
 ## Directing authority
 Shawn's standing instruction: **"Read all 58. Understand all 58. Don't build all 58 separately. Group them intelligently. Define the shared architecture. Assign the right Nayas. Build the foundational primitives first. Connect everything. Verify everything. Then make the Hub the living human projection of the Superbrain."**
 
+Canonical governing plan (recorded on `main` by Lead Naya): `SUPERBRAIN/NIA-COMMUNICATION/LEAD-NAYA-MASTER-INVESTIGATION-NAYAPOWER-01-58-V1.md`. It defines Phase 0 = evidence matrix, domains A–H, 15 shared primitives, engineering order, and forbids a second event store/Activity database/memory/governance kernel. Related issues: #256 (investigation), #257 (Oscar challenge), #258 (execution program), #259 (evidence matrix production).
+
 ## Project
 Naya Power Superbrain — ONE governed human–AI intelligence system (the 58 documented areas are one machine, not 58 products).
 
@@ -22,12 +24,10 @@ Turn "58", which people might read as 58 things to build, into **one coherent, g
 - Shawn's canonical master prompt + Oscar audit live in `SUPERBRAIN/NIA-COMMUNICATION/`.
 
 ## Current Objective (this torch)
-Build PHASE 1 + PHASE 2 of the 58-areas strategy:
-1. Locate/identify the canonical source for each of the 58 areas (they exist as concepts + scattered docs; map each to its repository source, type, domain, and shared primitive).
-2. Produce `NIS/58-AREAS-EVIDENCE-MATRIX.md`: one row per area — WHAT / JOB / TYPE (principle|contract|capability|runtime|UX|governance) / EXISTS WHERE / STATUS (implemented|partial|missing|needs-proof|superseded|contradiction) / DOMAIN (1–7) / SHARED PRIMITIVE / PROOF-METHOD.
-3. Produce the DOMAIN ARCHITECTURE: the 7 engineering domains (Governance & Authority, Intelligence & Memory, Superbrain & Execution, Event/Activity/Evidence, Intelligent Hub, Identity/Privacy/Network, Trust/Verification) → shared primitives (identity, state, canonical events, execution identity, governance gate, evidence, verification, Smart Note object, Activity projection, handoff, retrieval) → Team Naya assignment → dependency-driven build order.
-4. Reconcile with the existing repo: same prerequisite shared primitives **already exist** on main (event store, execution gate, session/activity, gateway boundary). Mark them VERIFIED-so-far and list which primitives are still missing (Smart Note object ↔ session binding, temporal retrieval index, live Hub projection).
-5. Leave the evidence matrix as machine-readable canonical intelligence, record the Session/Activity event, and hand the next Naya the single highest-value next action (per matrix gap analysis).
+1. **DONE — V1 first pass:** `SUPERBRAIN/NIA-COMMUNICATION/58-AREAS-EVIDENCE-MATRIX-V1.md` + `.naya/control-plane/58-V1-EVIDENCE-MATRIX.json` — 58/58 areas path/title-verified from `git ls-files` on `main`; stratum/domain/owner/shared-primitive seeded from the Lead report; contradiction/duplicate/gap columns honestly marked PENDING_PER_AREA_READ; verification boundary explicit.
+2. **NEXT — per-area read pass:** read every canonical `.naya/2026-09-11/12-NAYAPOWER-NN-*.md` document and fill `meaning verified`, `function`, `boundary`, `upstream`, `downstream`, `contradiction`, `duplicate`, `gap`, `truth_state`, `next_action` per area. Unknown is a valid result.
+3. Enrich the matrix record to second pass; then hand the grouping/dependency model to **Oscar (#257)** — Builder ≠ Judge.
+4. Record the Session/Activity event; leave exactly one successor torch (per completed per-area read, the highest-value primitive gap to close).
 
 ## Success Condition
 A cold Naya opens the canonical index, reads `NIS/58-AREAS-EVIDENCE-MATRIX.md`, and sees: all 58 areas mapped to source/status/domain/primitive; contradictions surfaced (not hidden); the shared-primitive build order; and exactly ONE next action derived from the gaps — not 58 parallel threads.
