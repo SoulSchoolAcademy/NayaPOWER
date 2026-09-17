@@ -1,20 +1,97 @@
 {
-  "$schema":"naya/control-plane/block/v1",
-  "status":"CANONICAL",
-  "active_block":{
-    "id":"TORCH-59-MACHINE-TRUTH-RESTORATION",
-    "status":"ACTIVE",
-    "priority":"P0",
-    "intent":"Establish one mechanically trustworthy current machine-state picture before downstream feature construction.",
-    "scope":["live main identity","control-plane coherence","canonical authority classification","Hub source/runtime classification","historical versus current evidence","first implementation blocker","canonical Smart Feed release proof","Assistant-lane Cloudflare/live release-path reconciliation","Team Naya operating coherence","Smart Note and Activity accountability"],
-    "protected":["canonical control-plane authority","current repository truth","valuable historical intelligence","2026-09-09 5:09 PM Hub reference baseline","fail-closed evidence and authority boundaries","Adaptive Reconstruction + Surgical Evolution","separation of Assistant Cloudflare/live and Other Naya GitHub 509 Hub lanes","Team Naya no-duplication and evidence discipline"],
-    "acceptance":["exact live main HEAD is resolved","current mission and North Star are known","current constitutional authority is established from repository evidence","MAP/STATE/BLOCK/PROOF/GOVERNANCE-KERNEL coherence is evaluated","no false current authority claim remains unresolved","Hub source artifacts and deployment claims are classified","runtime target claims are explicitly classified as observed, configured, historical, unknown, or blocked","historical evidence is preserved and not promoted","the first highest-value implementation blocker is identified","the first implementation blocker is surgically repaired without bypassing architecture","the actual Assistant-lane Cloudflare release mechanism/target is established or explicitly blocked by unavailable external capability","the repaired exact commit is independently proven through the authorized public-runtime release path once that path is available","one executable next action remains exposed","STATE and BLOCKS expose the same single next action","Team Naya has a visible operating center defining mission, current truth, ownership, evidence, and continuation"],
-    "evidence":["SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",".naya/codex/11-RUNTIME-CONSTITUTION.md",".naya/control-plane/GOVERNANCE-KERNEL.json",".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",".naya/control-plane/MAP.json",".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".naya/control-plane/PROOF.json",".naya/control-plane/validate_control_plane.py","SUPERBRAIN/AI-BOOT/START-HERE.md",".naya/2026-09-12-NAYAPOWER-40-INTELLIGENT-HUB-CONSTRUCTION-AND-EXPERIENCE-SPECIFICATION.md","SMART FEED CONTENT","NAYANET/HUB/src/data/pis.ts","scripts/build-smart-feed-projection.py",".github/workflows/verify-primary-intelligence-system.yml","SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-13.md","2026 09 09 5:09 pm NayaNET HUB reference baseline","current main .github/workflows directory inspection",".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md"],
-    "target_state":"MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE",
-    "next_action":"Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.",
-    "next_actions":["Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline."],
-    "next_action_count":1
+  "$schema": "naya/control-plane/block/v1",
+  "status": "CANONICAL",
+  "active_block": {
+    "id": "TORCH-59-MACHINE-TRUTH-RESTORATION",
+    "status": "ACTIVE",
+    "priority": "P0",
+    "intent": "Establish and maintain one mechanically trustworthy current machine-state picture before downstream feature construction; the Assistant-lane runtime boundary is now proven.",
+    "scope": [
+      "live main identity",
+      "control-plane coherence",
+      "canonical authority classification",
+      "Hub source/runtime classification",
+      "historical versus current evidence",
+      "first implementation blocker",
+      "canonical Smart Feed release proof",
+      "Team Naya operating coherence",
+      "Smart Note and Activity accountability",
+      "Assistant-lane Cloudflare/live release-path reconciliation — VERIFIED"
+    ],
+    "protected": [
+      "canonical control-plane authority",
+      "current repository truth",
+      "valuable historical intelligence",
+      "2026-09-09 5:09 PM Hub reference baseline",
+      "fail-closed evidence and authority boundaries",
+      "Adaptive Reconstruction + Surgical Evolution",
+      "separation of Assistant Cloudflare/live and Other Naya GitHub 509 Hub lanes",
+      "Team Naya no-duplication and evidence discipline"
+    ],
+    "acceptance": [
+      "exact live main HEAD is resolved",
+      "current mission and North Star are known",
+      "current constitutional authority is established from repository evidence",
+      "MAP/STATE/BLOCK/PROOF/GOVERNANCE-KERNEL coherence is evaluated",
+      "no false current authority claim remains unresolved",
+      "Hub source artifacts and deployment claims are classified",
+      "runtime target claims are explicitly classified as observed, configured, historical, unknown, or blocked",
+      "historical evidence is preserved and not promoted",
+      "the first highest-value implementation blocker is identified",
+      "the first implementation blocker is surgically repaired without bypassing architecture",
+      "the actual Assistant-lane Cloudflare release mechanism and authorized runtime target are established",
+      "the repaired/current protected artifact is independently proven through the authorized public-runtime release path",
+      "one executable next action remains exposed",
+      "STATE and BLOCKS expose the same single next action",
+      "Team Naya has a visible operating center defining mission, current truth, ownership, evidence, and continuation"
+    ],
+    "evidence": [
+      "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+      ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+      ".naya/control-plane/GOVERNANCE-KERNEL.json",
+      ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/PROOF.json",
+      ".naya/control-plane/validate_control_plane.py",
+      "SUPERBRAIN/AI-BOOT/START-HERE.md",
+      ".naya/2026-09-12-NAYAPOWER-40-INTELLIGENT-HUB-CONSTRUCTION-AND-EXPERIENCE-SPECIFICATION.md",
+      "SMART FEED CONTENT",
+      "NAYANET/HUB/src/data/pis.ts",
+      "scripts/build-smart-feed-projection.py",
+      ".github/workflows/verify-primary-intelligence-system.yml",
+      "SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-13.md",
+      "2026 09 09 5:09 pm NayaNET HUB reference baseline",
+      "current main .github/workflows directory inspection",
+      ".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md"
+    ],
+    "target_state": "MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE",
+    "next_action": "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD.",
+    "next_actions": [
+      "Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline."
+    ],
+    "next_action_count": 1
   },
-  "status_vocabulary":["INTENDED","IMPLEMENTED","COMPLETE","VERIFIED","RACE_READY","PRODUCTION_PROVEN","UNKNOWN","FAILED","STALE"],
-  "rules":{"verified_requires_proof":true,"unknown_is_not_green":true,"recorded_is_not_current":true,"one_next_action":true,"one_shot_ten_first":true,"no_dead_end_handoff":true,"no_orphan_execution":true,"cold_naya_state_reconstruction_by_human":false}
+  "status_vocabulary": [
+    "INTENDED",
+    "IMPLEMENTED",
+    "COMPLETE",
+    "VERIFIED",
+    "RACE_READY",
+    "PRODUCTION_PROVEN",
+    "UNKNOWN",
+    "FAILED",
+    "STALE"
+  ],
+  "rules": {
+    "verified_requires_proof": true,
+    "unknown_is_not_green": true,
+    "recorded_is_not_current": true,
+    "one_next_action": true,
+    "one_shot_ten_first": true,
+    "no_dead_end_handoff": true,
+    "no_orphan_execution": true,
+    "cold_naya_state_reconstruction_by_human": false
+  }
 }
