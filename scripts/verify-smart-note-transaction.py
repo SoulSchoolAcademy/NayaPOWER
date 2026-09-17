@@ -58,7 +58,12 @@ def main() -> None:
         receipt = json.loads(result["receipt"].read_text(encoding="utf-8"))
         assert receipt["status"].endswith("TRANSACTION")
         assert receipt["cis"]["status"] in {"CREATED", "REPLAY"}
+        assert receipt["authoritative_persistence"]["sha256"]
+        assert receipt["authoritative_persistence"]["path"] == receipt["smart_note_path"]
         smart_note_id = receipt["smart_note_id"]
+
+        persisted = result["smart_note"].read_text(encoding="utf-8")
+        assert smart_note_id in persisted
 
         cis = json.loads(tx.CIS_PATH.read_text(encoding="utf-8"))
         assert any(row["smart_note_id"] == smart_note_id for row in cis["learning"])
@@ -66,6 +71,11 @@ def main() -> None:
         pis = json.loads(tx.PIS_PATH.read_text(encoding="utf-8"))
         event = next(row for row in pis["events"] if row["event_id"] == smart_note_id)
         assert event["source"]["type"] == "smart_note"
+        assert event["source"]["id"] == smart_note_id
+        assert event["created_at"] == note.get("timestamp", event["created_at"])
+        assert event["updated_at"] == event["created_at"]
+        assert event["context"]["canonical_path"] == receipt["smart_note_path"]
+        assert event["privacy"] == {"visibility": "private", "consent_state": "not_granted"}
         assert event["lesson"]["retained"] is True
         assert event["action"]["text"] == note["next_action"]
 
@@ -82,6 +92,10 @@ def main() -> None:
 
         print("SMART_NOTE_E2E=PASS")
         print(f"SMART_NOTE_ID={smart_note_id}")
+        print("AUTHORITATIVE_PERSISTENCE=PASS")
+        print("PRIVACY_DEFAULT=PASS")
+        print("TIMESTAMP_PROVENANCE=PASS")
+        print("SOURCE_PROVENANCE=PASS")
         print("CIS_LEARNING=PASS")
         print("PIS_PROJECTION=PASS")
         print(f"HUB_SOURCE={tx.PIS_PATH}")
