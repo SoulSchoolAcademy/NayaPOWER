@@ -90,7 +90,7 @@ jobs:
               { width: 390, height: 844, label: 'mobile' }
             ]) {
               const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
-              await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
               await page.waitForTimeout(1000);
 
               const result = await page.evaluate(() => ({
