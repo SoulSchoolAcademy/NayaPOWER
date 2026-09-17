@@ -183,6 +183,38 @@ def build_pis_projection(note: dict[str, Any]) -> dict[str, Any]:
     return module.build_projection()
 
 
+def build_personal_feed_block(event: dict[str, Any], *, consumer: str = "nayanet-hub.personal-feed") -> dict[str, Any]:
+    """Create the human-facing block from one authoritative PIS event."""
+    if event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
+        raise RuntimeError(f"Personal Feed boundary requires private-by-default event: {event.get('event_id')}")
+    from cct_intelligent_block import make_block, verify_block
+
+    block = make_block(
+        block_id=f"IB-{event['event_id']}",
+        producer="naya.superbrain.pis",
+        content={
+            "event_id": event["event_id"],
+            "title": event["source"]["label"],
+            "summary": event.get("weaver_synthesis", {}).get("summary"),
+            "lesson": event.get("lesson", {}).get("text"),
+            "meaning": event.get("meaning", {}).get("text"),
+            "action": event.get("action", {}).get("text"),
+        },
+        evidence=[
+            {"kind": "source_event", "event_id": event["event_id"]},
+            *[{"kind": "event_evidence", "value": item} for item in event.get("machine_evidence", {}).get("items", [])],
+        ],
+        permissions={"consumers": [consumer], "purposes": ["consume"]},
+        verification="SUPPORTED",
+        parent=event["event_id"],
+        derivation="pis-to-personal-feed",
+    )
+    decision = verify_block(block, consumer=consumer, purpose="consume")
+    if not decision.allowed:
+        raise RuntimeError(f"Personal Feed Intelligent Block rejected: {decision.reason}")
+    return block
+
+
 def _persist_and_verify(path: Path, rendered: str, note_id_value: str) -> dict[str, str]:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(rendered, encoding="utf-8")
@@ -240,6 +272,14 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
     if projected_event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
         raise RuntimeError(f"Smart Note privacy boundary mismatch: {note['id']}")
 
+    personal_feed_block = build_personal_feed_block(projected_event)
+    projected_event["intelligent_block"] = personal_feed_block
+    for index, event in enumerate(pis.get("events", [])):
+        if event.get("event_id") == note["id"]:
+            pis["events"][index] = projected_event
+            break
+    _write_json(PIS_PATH, pis)
+
     receipt = {
         "schema_version": "SMART-NOTE-TRANSACTION-1.1",
         "receipt_id": note["receipt_id"],
@@ -249,8 +289,9 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         "authoritative_persistence": persistence,
         "cis": cis,
         "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"], "created_at": projected_event["created_at"], "updated_at": projected_event["updated_at"]},
-        "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/")},
+        "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "intelligent_block_id": personal_feed_block["block_id"], "personal_feed": "PRIVATE"},
         "privacy": projected_event["privacy"],
+        "intelligent_block": {"status": "VERIFIED", "block_id": personal_feed_block["block_id"], "consumer": "nayanet-hub.personal-feed", "parent_event_id": note["id"]},
         "provenance": {"source_id": projected_event["source"]["id"], "canonical_path": projected_event["context"]["canonical_path"]},
         "evidence": note["evidence"],
         "current_state": note["current_state"],
