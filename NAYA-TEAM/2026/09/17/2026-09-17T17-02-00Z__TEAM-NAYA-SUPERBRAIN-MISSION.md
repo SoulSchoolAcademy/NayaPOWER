@@ -105,7 +105,9 @@ The parent NayaPOWER Superbrain becomes the reference implementation for future 
 
 ## Current state
 
-**SUPERBRAIN OPERATIONALIZATION IS THE CURRENT MISSION.**
+**CURRENT CANONICAL STATE:** This earlier Superbrain mission record is historical continuity evidence. It must not override the live canonical control plane. Current mission/priority is P0 — MACHINE TRUTH RESTORATION; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
+
+**CURRENT EXACT NEXT ACTION:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 
 Calendar organization exists. NAYA-TEAM exists. Runtime Activity and Smart Note components exist. The complete automatic projection into Intelligent Hub and fresh-Naya end-to-end proof remain to be completed.
 
