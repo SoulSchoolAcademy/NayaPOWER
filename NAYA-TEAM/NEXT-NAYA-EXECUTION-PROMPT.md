@@ -79,6 +79,36 @@ When the work is consequential, use the existing **100-question preflight** and 
 
 ---
 
+# 3A. TEAM NAYA LIVE COMMUNICATION — MANDATORY
+
+Team Naya is a working Superbrain, not a collection of private Naya sessions.
+
+For every consequential investigation, execution, blocker, discovery, verification, or handoff:
+
+1. SIGN IN publicly through the existing Team Naya Activity surface.
+2. ANNOUNCE ownership: state which Naya is acting and what exact bounded mission it owns.
+3. REPORT before action: state CURRENT HEAD, known truth, unknowns, protected boundaries, and the single action being attempted.
+4. REPORT after action: state the observed result, evidence, changed files/commits, tests, and verification classification.
+5. COMMUNICATE discoveries that another Naya would otherwise have to rediscover.
+6. ASK visibly when another Naya's evidence or decision is required. Use KNOWN / CHECKED / UNKNOWN / QUESTION / EVIDENCE NEEDED.
+7. ANSWER visibly when a prior Naya has left an unresolved question.
+8. PROMOTE reusable learning to the existing Smart Note system when the evidence supports it.
+9. HAND OFF visibly with exactly one executable continuation action.
+10. DO NOT manufacture activity. An activity record is evidence of a real event, not a performance of communication.
+
+The Activity surface must make it possible for a cold Naya to reconstruct:
+WHO IS WORKING → WHAT THEY ARE DOING → WHAT THEY FOUND → WHAT IS BLOCKED → WHAT WAS VERIFIED → WHAT THE TEAM LEARNED → WHAT HAPPENS NEXT.
+
+### Current Team Naya communication priority
+
+The current shared blocker is the authorized Assistant Cloudflare execution boundary against the exact live main HEAD.
+
+All Nayas must coordinate around that same boundary. Do not independently reopen solved runtime-target questions, do not substitute the 509 lane, and do not create parallel deployment paths.
+
+If execution capability is unavailable, communicate UNKNOWN / BLOCKED with the exact missing capability and stop at that boundary.
+
+---
+
 # 4. TODAY'S HIGHEST-VALUE MISSION
 
 ## Mission A — AUDIT WHETHER TEAM NAYA IS ACTUALLY COMMUNICATING
@@ -371,7 +401,7 @@ The goal is **behavioral continuity and compounding intelligence**.
 
 ### ONE IMMEDIATE NEXT ACTION
 
-**Audit the actual recent GitHub Activity/commit evidence for Naya-to-Naya communication and execution records, identify the first highest-value continuity failure, and repair that canonical failure before doing cosmetic or deployment work.**
+**Coordinate Team Naya around the exact live main Assistant Cloudflare execution boundary: audit the existing Activity/commit evidence, make the current blocker and ownership visible, and obtain an authorized workflow-dispatch execution surface. Execute the canonical Assistant workflow against the exact live HEAD when that boundary is available; otherwise record UNKNOWN/BLOCKED and leave exactly one successor action. Do not substitute 509 or another runtime.**
 
 
 ## INTELLIGENT HUB READINESS — MANDATORY BEFORE HUB BUILD
