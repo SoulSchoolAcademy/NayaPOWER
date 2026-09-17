@@ -49,7 +49,7 @@ Material claims are classified. Evidence is named where available. Unknowns rema
 22. **Block status?** — VERIFIED — ACTIVE / P0.
 23. **Block intent?** — VERIFIED — establish one mechanically trustworthy current machine-state picture before downstream feature construction.
 24. **Target state?** — VERIFIED — `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
-25. **Current single next action?** — VERIFIED — reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; then execute the exact Assistant-lane runtime baseline once the path is established.
+25. **Current single next action?** — VERIFIED — Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 26. **How many current next actions?** — VERIFIED — exactly one highest-value current action.
 27. **Must STATE/BLOCKS agree?** — VERIFIED — yes; conflicting next actions are a control-plane defect requiring reconciliation.
 28. **Meaning of UNKNOWN?** — VERIFIED — not established; cannot satisfy VERIFIED, GREEN, or production proof.
@@ -145,7 +145,7 @@ Material claims are classified. Evidence is named where available. Unknowns rema
 97. **Before consequential execution?** — VERIFIED — complete the 100-question preflight and establish current mission, authority, protected state, ownership/concurrency, evidence, unknowns, and one next action.
 98. **Before sign-out?** — VERIFIED — complete the 30-question handoff and durable GitHub records: Activity, evidence, state, learning, and exact continuation.
 99. **Artifacts required in GitHub?** — VERIFIED — 100-question answer receipt, work/evidence records, Activity, Smart Note/receipt when applicable, current state updates, and ready-to-run successor continuation.
-100. **Single highest-value responsible next action?** — VERIFIED — the canonical STATE/BLOCKS action is to reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+100. **Single highest-value responsible next action?** — VERIFIED — the canonical STATE/BLOCKS action is to Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 
 ---
 
