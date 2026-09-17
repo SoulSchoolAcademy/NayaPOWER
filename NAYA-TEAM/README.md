@@ -1,5 +1,11 @@
 # NAYA-TEAM — Cross-Naya Continuity Superbrain
 
+## START HERE
+
+- **[🔱 Team Naya — Start Here](./00-START-HERE.md)** — canonical visible cold-Naya entry point.
+- **[🎯 Team Naya Success Scorecard](./TEAM-NAYA-SUCCESS-SCORECARD.md)** — defines the success standard and cold-Naya acceptance test.
+- **[📅 Today's Team Naya index](./2026/09/17/INDEX.md)** — current dated continuity and successor state.
+
 ## Purpose
 
 `NAYA-TEAM/` is the dedicated continuity and collaboration layer for all NIS/Naya instances working on NayaPOWER.
@@ -60,4 +66,4 @@ Smart Notes may be referenced from NAYA-TEAM. Activity may be referenced from NA
 
 ## Cold-Naya rule
 
-A fresh Naya must be able to enter the repository, find `NAYA-TEAM/YYYY/MM/DD/INDEX.md`, and recover enough context to continue safely from durable repository evidence alone.
+A fresh Naya must be able to enter the repository through `NAYA-TEAM/00-START-HERE.md`, understand the system architecture, restore canonical state, locate today's index, identify the evidence, and execute the single next action without needing the predecessor's private chat transcript.
