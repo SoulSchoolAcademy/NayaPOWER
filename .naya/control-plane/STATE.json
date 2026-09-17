@@ -25,7 +25,7 @@
     "pis_smart_note": ".naya/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-MASTER-DESIGN-CONTRACT-SMART-NOTE.md",
     "design_build_binding": ".naya/2026-09-11-19-35-NAYAPOWER-36-MASTER-DESIGN-BUILD-ACTIVATION.md",
     "pis_builder": "scripts/build-primary-intelligence-feed.py",
-    "pis_verification": ".github/workflows/verify-primary-intelligence-system.yml",
+    "pis_verification": ".github/workflows/verify-smart-note-transaction.yml",
     "deeper_source_set": ".naya/",
     "law": "No Naya may build, modify, redesign, restructure, deploy, or declare completion of Intelligent Hub work until the Hub Read-First set has been reviewed and the relevant deeper canonical sources have been inspected.",
     "purpose": "Prevent context loss and architectural forgetting by making the Hub mental model operationally discoverable and mandatory before Hub execution.",
