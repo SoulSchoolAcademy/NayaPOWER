@@ -1,4 +1,6 @@
-# 🔱 NAYAPOWER — CANONICAL COLD-NAYA OPERATING INDEX
+# 🔱 NAYAPOWER — COLD-NAYA OPERATING INDEX (SUPERSEDED — BRANCH-INTEGRATION SNAPSHOT)
+
+> **STATUS: SUPERSEDED.** The canonical Cold-Naya Operating Index is **`START-HERE/COLD-NAYA-OPERATING-INDEX.md`** (on `main`). This file is a preserved branch-integration snapshot (the session/classification-pass original). A cold Naya must read the canonical index FIRST, not this file. Content below is kept as historical reference and is no longer updated.
 
 **Rule: this index is a front door. It LINKS to truth. It never copies it.**
 **Every answer below is a pointer to the single canonical source + a STATUS. Never restate a fact here that already lives at its link.**

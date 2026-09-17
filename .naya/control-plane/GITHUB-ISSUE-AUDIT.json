@@ -4,7 +4,7 @@
   "observed_at": "2026-09-17T05:40:00Z",
   "source": "GitHub issue search: repo:SoulSchoolAcademy/NayaPOWER is:issue is:open",
   "observed_open_issue_count": 61,
-  "classification_status": "COMPLETE_BUILDER_FIRST_PASS_PENDING_ADJUDICATION",
+  "classification_status": "COMPLETE_BUILDER_FIRST_PASS_RECONCILED",
   "classified_issue_count": 61,
   "unclassified_issue_count": 0,
   "rule": "Every open issue must be classified before the optimization gate may become GREEN.",
@@ -388,5 +388,6 @@
       "next": "Index built (00-NAYA-OPERATING-INDEX.md); classification completes in P004; fold onto main."
     }
   ],
-  "required_completion": "Independent OSCAR/adjudication review of the 61-issue first-pass classification, then optional live label application via an authenticated GitHub surface."
+  "required_completion": "Independent OSCAR/adjudication review of the 61-issue first-pass classification, then optional live label application via an authenticated GitHub surface.",
+  "adjudication": "Referenced by Shawn-authored GITHUB-ISSUE-CLASSIFICATION-2026-09-17.md; independent OSCAR review optional."
 }

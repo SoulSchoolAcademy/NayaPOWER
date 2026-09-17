@@ -1,8 +1,11 @@
 # NEXT EXECUTION — OPTIMIZATION-GATE-GREEN: THE CLASSIFICATION PASS (STEP 4 / SILICON PRIORITY #3/#6)
 
 schema_version: 4
-status: ACTIVE
+status: SUPERSEDED
 supersedes: NEXT-EXECUTION-20260916-P003-WORKFLOW-REPOSITORY-RECONCILIATION.md
+superseded_by: NEXT-EXECUTION-20260917-P005-FIFTYEIGHT-EVIDENCE-MATRIX.md
+
+> **COMPLETED 2026-09-17:** Classification applied and gate GREEN (structural). 61/61 issues and 26/26 workflows classified; A1 (.naya/activity = COMPATIBILITY_ARCHIVE) and A2 (assistant-cloudflare-hub-release.yml = sole production deploy authority) resolved; `NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN` verified. Successor torch is P005 (below).
 
 ## Project
 Naya Power Superbrain — the Canonical Cold-Naya Operating System

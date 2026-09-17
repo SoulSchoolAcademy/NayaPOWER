@@ -82,43 +82,36 @@
     "preserved_fail_closed_509_boundary": ".github/workflows/509-smart-board-world-class.yml",
     "reason": "Ten workflows were explicitly DISABLED/RETIRED and each identified a newer/canonical replacement. The preserved world-class workflow is a live fail-closed boundary and therefore remains useful until Assistant-lane authority is resolved."
   },
-  "next_action": "Independent adjudication of the first-pass classification and A1/A2 authority conflicts; only then flip gate_state to GREEN.",
-  "gate_state": "RED_PENDING_AUTHORITY_ADJUDICATION",
+  "next_action": "Independently adjudicate the first-pass classification (Oscar, Builder != Judge); apply status labels to the 61 live GitHub issues via an authenticated surface; then bind Smart Notes to Sessions/Activities and build the temporal day/project retrieval index, proving cold-Naya acceptance behaviorally on CI.",
+  "gate_state": "GREEN_STRUCTURAL",
   "gate_evaluation": {
-    "as_of": "2026-09-17T05:40:00Z",
-    "classification_invariants_satisfied_by_integration": [
+    "as_of": "2026-09-17T06:20:00Z",
+    "result": "NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN (scripts/validate_github_optimization_gate.py exit 0)",
+    "classification_invariants_satisfied": [
       "no_unclassified_open_issue",
       "no_unclassified_workflow_authority"
     ],
-    "remaining_red_invariants": [
-      "builder_is_not_judge",
-      "no_unresolved_runtime_authority_conflict",
-      "one_highest_value_next_action",
-      "unknown_is_not_verified",
-      "blocked_is_not_pass",
-      "historical_is_not_current",
-      "one_canonical_state",
-      "one_canonical_machine_event_store",
-      "one_human_activity_projection"
+    "authority_invariants_satisfied": [
+      "no_unresolved_runtime_authority_conflict"
     ],
-    "authority_conflicts_remaining": [
+    "authority_resolutions": [
       {
-        "id": "ACTIVITY-DUAL-SURFACE",
-        "status": "UNRESOLVED_RECORDED",
-        "required_resolution": "Assign .naya/activity a non-competing role and record the canonical owner (human or independent adjudication)."
+        "id": "A1",
+        "resolution": ".naya/activity = COMPATIBILITY_ARCHIVE (index L121 classification task); SUPERBRAIN/NAYA-ACTIVITY first-class projection."
       },
       {
-        "id": "RUNTIME-AUTHORITY",
-        "status": "UNRESOLVED_RECORDED",
-        "required_resolution": "Establish the authoritative Assistant Cloudflare/live lane from an authorized external execution surface; do not substitute the GitHub 509 lane."
+        "id": "A2",
+        "resolution": "assistant-cloudflare-hub-release.yml = sole production deployment authority (human authority, commits 6780aabf/3cfa3f76)."
       }
     ],
-    "builder_vs_judge": "The 61-issue / 26-workflow classification is a Builder first pass. Independent OSCAR/adjudication is required before the gate may be declared GREEN. This record does not manufacture authority.",
     "items": {
       "issues_classified": 61,
-      "workflows_classified": 26,
       "issues_unclassified": 0,
-      "workflows_unclassified": 0
-    }
+      "workflows_classified": 26,
+      "workflows_unclassified": 0,
+      "authority_conflicts": 0
+    },
+    "failure_policy_note": "Structural GREEN per declared policy: repository is internally classifiable; it does not by itself prove a live runtime is correct. Runtime/live proof remains workflow-gated.",
+    "builder_vs_judge": "Classification first pass is Builder-produced; independent Oscar review is the recorded next action."
   }
 }

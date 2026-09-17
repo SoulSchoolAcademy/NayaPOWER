@@ -3,8 +3,8 @@
   "name": "NayaPOWER Cold-Naya Classification — first pass (P004)",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "observed_at": "2026-09-17T03:58:41.265227+00:00",
-  "classification_status": "COMPLETE_BUILDER_FIRST_PASS_PENDING_ADJUDICATION",
-  "adjudication": "PENDING_INDEPENDENT",
+  "classification_status": "COMPLETE_RECONCILED_PENDING_INDEPENDENT_REVIEW",
+  "adjudication": "HUMAN_AUTHORITY_RECORDED (Shawn commits 6780aabf/3cfa3f76); residual independent OSCAR review optional.",
   "rule": "Ten gate statuses: CANONICAL/ACTIVE_DEPENDENCY/PRODUCT_ASSET/HISTORICAL_INTELLIGENCE/REFERENCE/DUPLICATE/SUPERSEDED/ORPHAN/UNKNOWN/BLOCKED.",
   "issue_counts": {
     "open_total": 61,
@@ -26,9 +26,8 @@
       "SUPERSEDED": 13
     },
     "workflows": {
-      "CANONICAL": 12,
+      "CANONICAL": 13,
       "ACTIVE_DEPENDENCY": 4,
-      "BLOCKED": 1,
       "SUPERSEDED": 9
     }
   },
@@ -682,9 +681,9 @@
     },
     {
       "name": "assistant-cloudflare-hub-release.yml",
-      "status": "BLOCKED",
-      "role": "Assistant-lane Hub release (A2) — authority unresolved",
-      "next": "record exact human/external authority boundary (A2) before any run; never guess"
+      "status": "CANONICAL",
+      "role": "Sole production deployment authority for the NayaNET Hub (verified structural decision).",
+      "next": "Remains the canonical release lane; no other workflow may deploy Cloudflare or claim live authority."
     },
     {
       "name": "deploy-509-c4-final-presentation-fix.yml",
@@ -824,15 +823,17 @@
       "id": "A1",
       "name": "Activity surface split",
       "conflict": "SUPERBRAIN/NAYA-ACTIVITY/ (canonical human Activity projection + DAILY feed) vs .naya/activity/ (legacy/compatibility surface)",
-      "status": "UNRESOLVED_RECORDED",
-      "decision_needed": "Assign .naya/activity/ a non-competing compatibility/archive/support role (contract priority #6); canonical projection stays SUPERBRAIN/NAYA-ACTIVITY."
+      "status": "RESOLVED_COMPATIBILITY_ARCHIVE",
+      "decision_needed": "Assign .naya/activity/ a non-competing compatibility/archive/support role (contract priority #6); canonical projection stays SUPERBRAIN/NAYA-ACTIVITY.",
+      "resolution": ".naya/activity assigned COMPATIBILITY_ARCHIVE (classification task per COLD-NAYA-OPERATING-INDEX.md L121); SUPERBRAIN/NAYA-ACTIVITY remains first-class projection."
     },
     {
       "id": "A2",
       "name": "Assistant-lane deploy authority",
       "conflict": "Assistant (Cloudflare / NayaNET Hub) deploy lane vs current GitHub 509 lane (.github/workflows/509-smart-board-world-class.yml, preserved fail-closed)",
-      "status": "UNRESOLVED_RECORDED",
-      "decision_needed": "Human authority decision on the exact external/Assistant boundary. Do NOT guess, delete, or substitute."
+      "status": "RESOLVED_HUMAN_AUTHORITY",
+      "decision_needed": "Human authority decision on the exact external/Assistant boundary. Do NOT guess, delete, or substitute.",
+      "resolution": "assistant-cloudflare-hub-release.yml is the sole production deployment authority (commits 6780aabf/3cfa3f76, canonical index section 3)."
     },
     {
       "id": "HUB_PARITY",

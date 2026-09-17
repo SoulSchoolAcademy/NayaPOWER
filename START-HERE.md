@@ -44,7 +44,9 @@ The objective is not document accumulation. It is **compounding validated useful
 
 ### Prime cold-start read order
 
-> **FIRST: `00-NAYA-OPERATING-INDEX.md` — Canonical Cold-Naya Operating Index (one front door; links to canonical state, authorities, protected set, proof, and one next action — never duplicates truth). Read it before anything below, then verify it (see its §12 PROOF).**
+> **FIRST: `START-HERE/COLD-NAYA-OPERATING-INDEX.md` — Canonical Cold-Naya Operating Index (one front door; links to canonical state, authorities, protected set, proof, and one next action — never duplicates truth). Read it before anything below, then follow its verified structural links.**
+
+The branch-local `00-NAYA-OPERATING-INDEX.md` is SUPERSEDED by the canonical index above (see its header banner).
 
 1. `START-HERE.md` — canonical Superbrain identity, activation, mandatory entry rules, and complete read order.
 2. `.naya/NAYA-LAW-SYSTEM-PROTOCOL.md` — mandatory execution-integrity protocol and Pre-Action Gate.

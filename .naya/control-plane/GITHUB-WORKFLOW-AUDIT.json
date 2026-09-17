@@ -57,15 +57,13 @@
       "role": "Current authorized release mechanism/target remains unresolved. Historical expected canonical-v2 path is not sufficient proof."
     }
   ],
-  "gate_state": "RED_PENDING_AUTHORITY_ADJUDICATION",
+  "gate_state": "See GITHUB-OPTIMIZATION-GATE.json gate_evaluation.",
   "required_completion": "Resolve the RUNTIME-AUTHORITY conflict (Assistant Cloudflare/live lane) from an authorized execution surface; then the workflow inventory is fully GREEN.",
   "workflow_count": 26,
   "classified_workflow_count": 26,
   "unclassified_workflow_count": 0,
-  "unresolved_authority_conflicts": 1,
-  "authority_conflict_ids": [
-    "RUNTIME-AUTHORITY"
-  ],
+  "unresolved_authority_conflicts": 0,
+  "authority_conflict_ids": [],
   "classified_workflows": [
     {
       "name": "509-smart-board-world-class.yml",
@@ -250,5 +248,9 @@
       "next": "keep; classify as ONE canonical authority on merge"
     }
   ],
-  "removed_superseded_count": 10
+  "removed_superseded_count": 10,
+  "authority_resolutions": {
+    "RUNTIME-AUTHORITY": "RESOLVED: assistant-cloudflare-hub-release.yml is sole production deploy authority (human authority).",
+    "github_509_lane": "Remains fail-closed; cannot substitute for the Cloudflare lane."
+  }
 }

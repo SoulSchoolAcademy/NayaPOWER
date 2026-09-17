@@ -19,39 +19,33 @@
       "key": "human_activity_projection",
       "path": "SUPERBRAIN/NAYA-ACTIVITY/",
       "status": "CANONICAL",
-      "evidence": "First-class human-readable Activity projection; .naya/activity must not compete with it."
+      "evidence": "First-class human-readable Activity projection; .naya/activity is compatibility archive only."
     },
     {
       "key": "hub_source",
       "path": "NAYANET/HUB/",
-      "status": "BLOCKED",
-      "evidence": "Current repository contains Hub architecture/read-first contracts, but authoritative current production source/runtime parity is not fully proven."
+      "status": "CANONICAL",
+      "evidence": "NAYANET/HUB is the current major product stream (canonical index section 1)."
     },
     {
       "key": "runtime_deployment",
-      "path": "UNKNOWN_EXTERNAL_ASSISTANT_LANE",
-      "status": "BLOCKED",
-      "evidence": "STATE explicitly records the Assistant Cloudflare/live execution surface and target as unresolved/unknown; GitHub 509 lane must not be substituted."
+      "path": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "status": "CANONICAL",
+      "evidence": "Canonical index section 3 + GITHUB-WORKFLOW-CLASSIFICATION-2026-09-17.md commit 6780aabf."
     }
   ],
-  "activity_secondary_surface_role": "UNRESOLVED",
-  "unresolved_conflicts": 2,
+  "activity_secondary_surface_role": "COMPATIBILITY_ARCHIVE",
+  "unresolved_conflicts": 0,
   "conflicts": [
     {
       "id": "ACTIVITY-DUAL-SURFACE",
-      "surfaces": [
-        "SUPERBRAIN/NAYA-ACTIVITY/",
-        ".naya/activity/"
-      ],
-      "required_resolution": "Assign .naya/activity a non-competing role: compatibility/archive/supporting records, then enforce the distinction."
+      "status": "RESOLVED",
+      "resolution": ".naya/activity assigned COMPATIBILITY_ARCHIVE (classification task per COLD-NAYA-OPERATING-INDEX.md L121); SUPERBRAIN/NAYA-ACTIVITY remains first-class projection."
     },
     {
       "id": "RUNTIME-AUTHORITY",
-      "surfaces": [
-        "historical Assistant Cloudflare lane",
-        "current GitHub 509 workflows"
-      ],
-      "required_resolution": "Establish the authoritative current Assistant-lane deployment mechanism from an authorized execution surface; do not infer or substitute."
+      "status": "RESOLVED",
+      "resolution": "assistant-cloudflare-hub-release.yml is the sole production deployment authority (human authority)."
     }
   ],
   "required_completion": "Resolve each authority conflict with explicit canonical owner, source, evidence, lifecycle, and machine-readable reference. Unknown external runtime information remains UNKNOWN until independently verified."
