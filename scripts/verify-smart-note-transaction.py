@@ -79,6 +79,25 @@ def main() -> None:
         assert event["lesson"]["retained"] is True
         assert event["action"]["text"] == note["next_action"]
 
+        # Golden Hub boundary: the PIS event must carry one verified,
+        # private Intelligent Block derived from the canonical event.
+        block = event.get("intelligent_block")
+        assert block is not None
+        assert block["block_id"] == f"IB-{smart_note_id}"
+        assert block["provenance"]["parent"] == smart_note_id
+        assert block["provenance"]["derivation"] == "pis-to-personal-feed"
+        assert block["permissions"] == {"consumers": ["nayanet-hub.personal-feed"], "purposes": ["consume"]}
+        assert block["verification"] == "SUPPORTED"
+        assert block["lifecycle"] == "ACTIVE"
+        assert block["content"]["event_id"] == smart_note_id
+        assert receipt["intelligent_block"]["status"] == "VERIFIED"
+        assert receipt["intelligent_block"]["block_id"] == block["block_id"]
+
+        # The block is a projection, not a second source of truth.
+        assert block["content"]["title"] == event["source"]["label"]
+        assert block["content"]["lesson"] == event["lesson"]["text"]
+        assert block["content"]["action"] == event["action"]["text"]
+
         # Cold-Naya proof: read only the durable PIS projection and recover the
         # newly learned lesson + action without the originating note or chat.
         cold_view = {
@@ -98,6 +117,8 @@ def main() -> None:
         print("SOURCE_PROVENANCE=PASS")
         print("CIS_LEARNING=PASS")
         print("PIS_PROJECTION=PASS")
+        print("INTELLIGENT_BLOCK=PASS")
+        print("PERSONAL_FEED_PRIVACY=PASS")
         print(f"HUB_SOURCE={tx.PIS_PATH}")
         print("COLD_NAYA_RECOVERY=PASS")
 
