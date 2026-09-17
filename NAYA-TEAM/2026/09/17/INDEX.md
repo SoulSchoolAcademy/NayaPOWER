@@ -64,3 +64,20 @@ The earlier Team Naya projection exposed a successor action based on the `NAYA_V
 The `NAYA_VERIFIED` Activity event remains valid evidence of the completed Team Naya bridge behavior, but it is not the current successor action. Hub work remains protected and subordinate to the active P0.
 
 **Continuity rule:** NAYA-TEAM projections and successor records must expose this same mission/state/block/next-action tuple; canonical STATE/BLOCKS remain authoritative.
+
+
+## OFFICIAL INTELLIGENT HUB PROJECT — 2026-09-17
+
+The official project is [Intelligent Hub — Official Project](./2026-09-17-INTELLIGENT-HUB-OFFICIAL-PROJECT.md), governed by the [Official Team Naya Directive](../INTELLIGENT-HUB-OFFICIAL-TEAM-NAYA-DIRECTIVE.md).
+
+**MAIN SHOW:** Smart Feed.
+
+**THREE FEED PROJECTIONS:** Personal Intelligence (private Smart Notes/intelligent blocks); Collective Intelligence (voluntarily shared wisdom, contributor identity hidden by default); Activity (private meaningful operational activity).
+
+**SIDEBAR MINI-PROJECTS:** Your Intelligence Today, Your Reports, Intelligence Library, Smart Share, Smart List, Smart Mail, Smart Spaces, Your Connections, Settings.
+
+**OFFICIAL MENTAL MODEL:** Personal = the wisdom. Collective = wisdom chosen for the collective. Activity = what the Superbrain did. Sidebar = focused interfaces over the same governed intelligence system.
+
+**CURRENT TRUTH:** the protected `2026 09 17 NAYANET HUB.html` is the visual starting point. The underlying three-feed production data/runtime is not yet complete. UI presence is not runtime proof.
+
+**NAYA RULE:** understand the whole, select one bounded slice, build it against the common flow, verify it, record Activity, preserve reusable learning, and leave one exact continuation action.
