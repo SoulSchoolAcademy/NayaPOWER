@@ -14,14 +14,7 @@ sys.path.insert(0, str(RUNTIME))
 
 import execution_controller as ec  # noqa: E402
 from execution_preflight_gate import approved_preflight  # noqa: E402
-from universal_execution_gate import (  # noqa: E402
-    DecisionObject,
-    Epistemic,
-    Risk,
-    UniversalExecutionGate,
-    VerificationPlan,
-    load_registry,
-)
+from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalExecutionGate, VerificationPlan, load_registry  # noqa: E402
 
 
 def main() -> int:
@@ -39,70 +32,21 @@ def main() -> int:
 
         claim_id = "CL-TEAM-BRIDGE-001"
         run_id = "RUN-TEAM-BRIDGE-001"
-        ec.transition(
-            "CLAIMED",
-            claim_id=claim_id,
-            run_id=run_id,
-            block_id="B-TEAM-BRIDGE",
-            owner="Naya-Team-Bridge-Test",
-            scope=["team/activity/bridge"],
-            start_head="test-head",
-            restored_context="Team Naya communication proof is already GREEN.",
-        )
+        ec.transition("CLAIMED", claim_id=claim_id, run_id=run_id, block_id="B-TEAM-BRIDGE", owner="Naya-Team-Bridge-Test", scope=["team/activity/bridge"], start_head="test-head", restored_context="Team Naya communication proof is already GREEN.")
 
         registry = load_registry()
         authority = registry.resolve("HUMAN-SOULSCHOOLACADEMY-REPO-WRITE")
         gate = UniversalExecutionGate(registry)
-        decision = DecisionObject(
-            decision_id="DEC-TEAM-BRIDGE-001",
-            mission="Prove governed execution automatically reaches Team Naya Activity.",
-            actor_id=authority.principal_id,
-            action="repo_write",
-            purpose=authority.purpose,
-            scope=authority.scope,
-            current_truth="execution lifecycle is governed and canonical Activity already exists",
-            gap="Team communication must receive the real execution completion automatically",
-            evidence=("evidence:execution-controller", "evidence:team-activity-facade"),
-            epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}),
-            consequence="bounded repository test execution",
-            reversible=True,
-            risk=Risk(uncertainty=1, consequence=1, irreversibility=1),
-            alternatives=("do_not_execute",),
-            expected_value="verified execution-to-team communication",
-            required_permission="repo_write",
-            verification=VerificationPlan("Team Naya Activity event", "NAYA_VERIFIED event exists and binds to execution", ("stop",)),
-            necessary_power=frozenset({"repo_write"}),
-            requested_power=frozenset({"repo_write"}),
-        )
-        action = {
-            "action_id": "ACT-TEAM-BRIDGE-001",
-            "action_type": "repository_write",
-            "target": "team/activity/bridge-test",
-            "purpose": authority.purpose,
-            "authority_id": authority.authority_id,
-            "decision_id": decision.decision_id,
-            "actor_id": decision.actor_id,
-            "scope": decision.scope,
-            "permission": decision.action,
-        }
+        decision = DecisionObject(decision_id="DEC-TEAM-BRIDGE-001", mission="Prove governed execution automatically reaches Team Naya Activity.", actor_id=authority.principal_id, action="repo_write", purpose=authority.purpose, scope=authority.scope, current_truth="execution lifecycle is governed and canonical Activity already exists", gap="Team communication must receive the real execution completion automatically", evidence=("evidence:execution-controller", "evidence:team-activity-facade"), epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}), consequence="bounded repository test execution", reversible=True, risk=Risk(uncertainty=1, consequence=1, irreversibility=1), alternatives=("do_not_execute",), expected_value="verified execution-to-team communication", required_permission="repo_write", verification=VerificationPlan("Team Naya Activity event", "NAYA_VERIFIED event exists and binds to execution", ("stop",)), necessary_power=frozenset({"repo_write"}), requested_power=frozenset({"repo_write"}))
+        action = {"action_id": "ACT-TEAM-BRIDGE-001", "action_type": "repository_write", "target": "team/activity/bridge-test", "purpose": authority.purpose, "authority_id": authority.authority_id, "decision_id": decision.decision_id, "actor_id": decision.actor_id, "scope": decision.scope, "permission": decision.action}
         issued = gate.authorize(authority=authority, decision=decision, action=action)
         assert issued.allowed
 
-        ec.transition(
-            "EXECUTING",
-            action=action,
-            execution_authorization=issued.authorization,
-            gate=gate,
-            preflight=approved_preflight(),
-        )
+        ec.transition("EXECUTING", action=action, execution_authorization=issued.authorization, gate=gate, preflight=approved_preflight())
         ec.transition("OBSERVED", observation="real execution-controller transition reached OBSERVED")
-        ec.transition(
-            "VERIFIED",
-            evidence=["receipt:team-bridge-e2e", "test:execution-controller"],
-            verification={"status": "VERIFIED", "method": "execution-to-team-activity-e2e"},
-            next_action="Next Naya retrieves the verified execution from Team Naya Activity and continues.",
-            successor="NEXT-NAYA-EXECUTION-FROM-TEAM-ACTIVITY",
-        )
+        next_action = "Next Naya retrieves the verified execution from Team Naya Activity and continues."
+        successor = "NEXT-NAYA-EXECUTION-FROM-TEAM-ACTIVITY"
+        ec.transition("VERIFIED", evidence=["receipt:team-bridge-e2e", "test:execution-controller"], verification={"status": "VERIFIED", "method": "execution-to-team-activity-e2e"}, next_action=next_action, successor=successor)
 
         state = ec.load()
         assert state["status"] == "VERIFIED"
@@ -114,41 +58,19 @@ def main() -> int:
             if body.get("event_type") == "team-communication":
                 team_events.append(body)
 
-        verified = [event for event in team_events if event.get("intent") == "NAYA_VERIFIED"]
+        verified = [event for event in team_events if (event.get("team") or {}).get("intent") == "NAYA_VERIFIED"]
         assert verified, "NO TEAM ACTIVITY EVENT: execution did not reach the Team Naya facade"
         bridge = verified[-1]
-        assert state["activity_event_id"] in bridge.get("team", {}).get("evidence", [])
+        assert state["activity_event_id"] in bridge.get("evidence_ids", [])
         assert bridge["team"]["recipients"] == ["TEAM-NAYA"]
-        assert bridge["team"]["next_action"] == "Next Naya retrieves the verified execution from Team Naya Activity and continues."
+        assert bridge["continuity"]["next_action"] == next_action
+        assert bridge["continuity"]["successor"] == successor
 
-        # Prove idempotent replay of the same governed execution does not create
-        # a second Team Naya communication event.
         before = len(team_events)
         from activity_event import ensure_activity_event
-
-        replay = ensure_activity_event(
-            claim_id=claim_id,
-            action_id=action["action_id"],
-            decision_id=action["decision_id"],
-            authority_id=action["authority_id"],
-            actor_id=action["actor_id"],
-            subject="VERIFIED completion — replay",
-            summary="replay must reuse the canonical execution Activity event",
-            receipt_id=f"RCP-{claim_id}",
-            next_action=bridge["team"]["next_action"],
-            successor=bridge["team"]["successor"],
-            evidence=["receipt:team-bridge-e2e"],
-            run_id=run_id,
-            session_id=state.get("session_id"),
-            events_root=events_root,
-            index_path=ec.INDEX_PATH,
-        )
+        replay = ensure_activity_event(claim_id=claim_id, action_id=action["action_id"], decision_id=action["decision_id"], authority_id=action["authority_id"], actor_id=action["actor_id"], subject="VERIFIED completion — replay", summary="replay must reuse the canonical execution Activity event", receipt_id=f"RCP-{claim_id}", next_action=next_action, successor=successor, evidence=["receipt:team-bridge-e2e"], run_id=run_id, session_id=state.get("session_id"), events_root=events_root, index_path=ec.INDEX_PATH)
         assert replay["status"] == "REPLAY_EVENT"
-        after = [
-            json.loads(candidate.read_text(encoding="utf-8"))
-            for candidate in events_root.rglob("SE-*.json")
-            if json.loads(candidate.read_text(encoding="utf-8")).get("event_type") == "team-communication"
-        ]
+        after = [json.loads(candidate.read_text(encoding="utf-8")) for candidate in events_root.rglob("SE-*.json") if json.loads(candidate.read_text(encoding="utf-8")).get("event_type") == "team-communication"]
         assert len(after) == before, "REPLAY created duplicate Team Naya Activity communication"
 
         print("EXECUTION_CONTROLLER=PASS")
@@ -158,7 +80,7 @@ def main() -> int:
         print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")
         print(f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}")
         print(f"TEAM_NAYA_EVENT_ID={bridge['event_id']}")
-        print(f"TEAM_NAYA_SUCCESSOR={bridge['team']['successor']}")
+        print(f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}")
         return 0
     finally:
         ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH = saved
