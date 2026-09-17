@@ -1,0 +1,22 @@
+name: Verify Execution to Team Naya Activity Bridge
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  execution-team-activity-bridge:
+    name: governed-execution-to-team-activity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile execution bridge
+        run: python -m py_compile .naya/runtime/activity_event.py .naya/runtime/team_activity.py .naya/runtime/execution_controller.py scripts/verify-execution-team-activity-bridge.py
+      - name: Run governed execution to Team Naya Activity proof
+        run: python scripts/verify-execution-team-activity-bridge.py
