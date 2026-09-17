@@ -14,6 +14,8 @@
 
 ## Records
 
+- [2026-09-17T23-55-00Z — Team Naya live execution-boundary communication](../../../.naya/activity/2026/09/17/2026-09-17T23-55-00Z__TEAM-NAYA-LIVE-EXECUTION-BOUNDARY.md)
+
 - [2026-09-17T19-55-00Z — Team Naya operating-system hardening](./2026-09-17T19-55-00Z__TEAM-NAYA-OPERATING-SYSTEM-HARDENING.md)
 - [2026-09-17T16-10-00Z — Repository organization + NAYA-TEAM architecture](./2026-09-17T16-10-00Z__REPOSITORY-ORGANIZATION-NAYA-TEAM.md)
 - [2026-09-17T16-20-00Z — Cold-Naya proof brief](./2026-09-17T16-20-00Z__COLD-NAYA-PROOF-BRIEF.md)
@@ -59,7 +61,7 @@ The earlier Team Naya projection exposed a successor action based on the `NAYA_V
 **Authoritative mission:** P0 — MACHINE TRUTH RESTORATION.  
 **Authoritative state:** `LIVE_BOUND`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.  
 **Authoritative block:** `TORCH-59-MACHINE-TRUTH-RESTORATION` — ACTIVE.  
-**Authoritative single next action:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
+**Authoritative single next action:** Execute the canonical Assistant Cloudflare release against the exact live main HEAD using an authorized workflow-dispatch execution surface; coordinate the attempt through Team Naya Activity, observe the real runtime result, and record source → execution → runtime → behavior proof. If dispatch remains unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Never substitute GitHub 509 or an alternate deployment path.
 
 The `NAYA_VERIFIED` Activity event remains valid evidence of the completed Team Naya bridge behavior, but it is not the current successor action. Hub work remains protected and subordinate to the active P0.
 
