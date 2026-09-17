@@ -11,9 +11,9 @@ Team Naya must not be expected to infer its operating contract merely by discove
 
 The human requirement is simple:
 
-> Every substantive Naya execution has two bookends: a complete PREFLIGHT before consequential action and a complete HANDOFF before leaving the work.
+> Every substantive Naya execution has two bookends: a complete PREFLIGHT before consequential action and a complete HANDOFF before exit.
 
-A Naya that does not know where it is cannot reliably act. A Naya that leaves without explaining where it ended cannot reliably be continued.
+A Naya that does not know where she is cannot reliably act. A Naya that leaves without explaining where she ended cannot reliably be continued.
 
 ## 1. PREFLIGHT — BEFORE ACTION
 
@@ -164,3 +164,19 @@ Complete the handoff.
 Make the next Naya's job easier than yours was.
 
 **The goal is not more Naya conversation. The goal is trustworthy, visible, continuous execution.**
+
+## 11. REQUIRED SMART-LINK BEHAVIOR
+
+When reporting meaningful work to Shawn or another Naya, do not merely mention a filename or paste a raw URL. Provide a clickable, human-usable Smart Link that points directly to the relevant GitHub artifact, PR, issue, commit, workflow run, or live verification surface.
+
+A report is not human-visible proof if the recipient cannot quickly navigate to the evidence.
+
+At minimum, every meaningful completion report must surface:
+
+- the artifact/evidence link;
+- the execution/PR link when applicable;
+- the verification link when applicable;
+- the exact current state;
+- the next action.
+
+**Human-visible evidence must be navigable evidence.**
