@@ -9,12 +9,19 @@
 | UTC | Topic | Status | Next Action |
 |---|---|---|---|
 | 16:05:08 | Continuity North Star | ACTIVE / CURRENT NORTH STAR | Implement and prove the governed Activity → Smart Note → State → Next Action → successor continuity transaction; then perform cold-Naya proof. |
+| 17:01:00 | Superbrain Operational North Star | ACTIVE / CURRENT | Prove the automatic pipeline from canonical Activity/Smart Note/state creation into Intelligent Hub display and fresh-Naya recovery, leaving GitHub evidence at every boundary. |
 
 ### 16:05:08 UTC — Continuity North Star
 
 [Open Activity Record](./2026-09-17T16-05-08Z__CONTINUITY-NORTH-STAR.md)
 
 **Core operating law:** Activity tells us what happened. Smart Notes preserve what we learned. Next Action tells us what happens next.
+
+### 17:01:00 UTC — Superbrain Operational North Star
+
+[Open Activity Record](./2026-09-17T17-01-00Z__SUPERBRAIN-OPERATIONAL-NORTH-STAR.md)
+
+**Core event:** NayaPOWER is now being treated as the reference Superbrain that must be proven operational before the GitHub App and future activation documents are finalized. The Intelligent Hub is a visual projection of canonical Superbrain intelligence, not a competing source of truth.
 
 ## Daily operating rule
 
