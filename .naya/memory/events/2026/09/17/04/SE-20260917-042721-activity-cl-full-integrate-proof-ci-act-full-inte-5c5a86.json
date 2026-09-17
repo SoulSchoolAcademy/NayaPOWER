@@ -1,0 +1,66 @@
+{
+  "activity_feed_projection": {
+    "event_id": "SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86",
+    "feed": "NAYA-ACTIVITY",
+    "summary": "Replayed the governed execution engine (UniversalExecutionGate, portable authorization, release boundary, auto-emission, Session runtime, Cold-Naya operating index, P004 classification) onto GitHub main's tree. Reconciled with main's own canonical COLD-NAYA-OPERATING-INDEX.md and authority resolutions: 61/61 issues and 26/26 workflows classified; A1 .naya/activity = COMPATIBILITY_ARCHIVE; A2 assistant-cloudflare-hub-release.yml = sole production deploy authority. NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN (structural). Added nayapower-governed-proof CI (9 pure-python suites GREEN). Canonical front door now START-HERE/COLD-NAYA-OPERATING-INDEX.md (00-NAYA-OPERATING-INDEX.md preserved as SUPERSEDED snapshot).",
+    "title": "Full integrate onto main + governed-proof CI + classification/authority reconciliation + gate GREEN"
+  },
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "handoff": {
+      "next_action": "Independently adjudicate the first-pass classification (Oscar); apply status labels to the 61 live GitHub issues via an authenticated surface; then execute P005: the 58-areas evidence matrix + domain architecture.",
+      "successor": "NEXT-EXECUTION-20260917-P005-FIFTYEIGHT-EVIDENCE-MATRIX.md"
+    },
+    "learning_status": "RECORDED"
+  },
+  "created_at": "2026-09-17T04:27:21.209301+00:00",
+  "effective_at": "2026-09-17T04:27:21.209301+00:00",
+  "event_id": "SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86",
+  "event_type": "activity",
+  "evidence_ids": [
+    "Replayed commits 70a56517 + 86fbb8a1 onto origin/main tip b20dfd48 (rebase, exit 0)",
+    "9 proof suites GREEN: session 10, preflight 14, universal gate 31, gateway 22, activity 11/10, controller 20, 2 self-tests",
+    "NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN (validator exit 0): 61/61 issues, 26/26 workflows, authority conflicts 0",
+    "A1 COMPATIBILITY_ARCHIVE (COLD-NAYA-OPERATING-INDEX.md L121); A2 assistant-cloudflare-hub-release.yml (6780aabf/3cfa3f76)",
+    "CI workflow nayapower-governed-proof.yml added"
+  ],
+  "execution": {
+    "action_id": "ACT-FULL-INTEGRATE-PROOF-CI",
+    "actor_id": "SoulSchoolAcademy",
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+    "claim_id": "CL-FULL-INTEGRATE-PROOF-CI",
+    "decision_id": "DEC-FULL-INTEGRATE",
+    "event_id": "SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86",
+    "run_id": "RUN-20260917042721",
+    "session_id": "NAYA-20260917-042721-C482"
+  },
+  "receipt": {
+    "event_id": "SE-20260917-042721-activity-cl-full-integrate-proof-ci-act-full-inte-5c5a86",
+    "receipt_id": "RCP-FULL-INTEGRATE",
+    "schema": "naya-power-evidence/v1",
+    "status": "MATCHED"
+  },
+  "source": {
+    "event_id": "EXECUTION-CL-FULL-INTEGRATE-PROOF-CI",
+    "generator": "activity_event.build_activity_event",
+    "kind": "execution"
+  },
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "Full integrate onto main + governed-proof CI + classification/authority reconciliation + gate GREEN",
+  "tags": [
+    "activity"
+  ],
+  "title": "Full integrate onto main + governed-proof CI + classification/authority reconciliation + gate GREEN",
+  "verification": {
+    "evidence": [
+      "Replayed commits 70a56517 + 86fbb8a1 onto origin/main tip b20dfd48 (rebase, exit 0)",
+      "9 proof suites GREEN: session 10, preflight 14, universal gate 31, gateway 22, activity 11/10, controller 20, 2 self-tests",
+      "NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN (validator exit 0): 61/61 issues, 26/26 workflows, authority conflicts 0",
+      "A1 COMPATIBILITY_ARCHIVE (COLD-NAYA-OPERATING-INDEX.md L121); A2 assistant-cloudflare-hub-release.yml (6780aabf/3cfa3f76)",
+      "CI workflow nayapower-governed-proof.yml added"
+    ],
+    "method": "human-naya-verification",
+    "schema": "naya-power-evidence/v1",
+    "status": "VERIFIED"
+  }
+}

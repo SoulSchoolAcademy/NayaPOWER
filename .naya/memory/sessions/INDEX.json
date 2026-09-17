@@ -2,7 +2,7 @@
   "version": "1.0.0",
   "status": "CANONICAL",
   "organization": "SESSIONS",
-  "session_count": 3,
+  "session_count": 4,
   "sessions": [
     {
       "session_id": "NAYA-20260917-035241-C251",
@@ -30,6 +30,15 @@
       "entered_at": "2026-09-17T03:59:50.336968+00:00",
       "status": "COMPLETED",
       "path": "NAYA-20260917-035950-4BBC.json"
+    },
+    {
+      "session_id": "NAYA-20260917-042721-C482",
+      "claim_id": "CL-FULL-INTEGRATE-PROOF-CI",
+      "action_id": "ACT-FULL-INTEGRATE-PROOF-CI",
+      "run_id": "RUN-20260917042721",
+      "entered_at": "2026-09-17T04:27:21.032406+00:00",
+      "status": "COMPLETED",
+      "path": "NAYA-20260917-042721-C482.json"
     }
   ]
 }
