@@ -2,8 +2,27 @@
 
 DATE: 2026-09-11
 TIME: 18:50 PDT
-STATUS: CANONICAL ACTIVATION PROTOCOL V1.0
+STATUS: CANONICAL ACTIVATION PROTOCOL V1.1
 PURPOSE: Ensure a new Naya can activate the Superbrain, restore the current mission, understand the governing system, and begin intelligent execution without requiring the human to reconstruct context.
+
+---
+
+# 0. TEAM NAYA ENTRY POINT — REQUIRED ORIENTATION
+
+Before loading detailed architecture indiscriminately, a new or returning Naya should first read:
+
+```text
+.naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md
+.naya/TEAM-NAYA/01-DISTILLED-SYSTEM-MAP.md
+.naya/TEAM-NAYA/02-NAYA-OPERATING-LAWS.md
+.naya/TEAM-NAYA/03-CURRENT-STATE-AND-NEXT-PROOF.md
+```
+
+These files are the **orientation layer**, not a replacement for canonical source documents.
+
+They exist because the `.naya` library is large. The correct behavior is **distilled orientation first, targeted canonical retrieval second**, not blind ingestion of every document.
+
+When exact detail matters, retrieve the canonical document that owns the subject.
 
 ---
 
@@ -35,6 +54,7 @@ The Superbrain is active when Naya can answer:
 Use this order:
 
 ```text
+0. TEAM NAYA ORIENTATION
 1. CONSTITUTION
 2. GOVERNANCE ACT
 3. AUTHORITY REGISTRY
