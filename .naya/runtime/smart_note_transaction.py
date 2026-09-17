@@ -187,7 +187,15 @@ def build_personal_feed_block(event: dict[str, Any], *, consumer: str = "nayanet
     """Create the human-facing block from one authoritative PIS event."""
     if event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
         raise RuntimeError(f"Personal Feed boundary requires private-by-default event: {event.get('event_id')}")
-    from cct_intelligent_block import make_block, verify_block
+    import importlib.util
+    cct_path = Path(__file__).with_name("cct_intelligent_block.py")
+    spec = importlib.util.spec_from_file_location("naya_cct_intelligent_block", cct_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot load canonical Intelligent Block verifier")
+    cct = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cct)
+    make_block = cct.make_block
+    verify_block = cct.verify_block
 
     block = make_block(
         block_id=f"IB-{event['event_id']}",
