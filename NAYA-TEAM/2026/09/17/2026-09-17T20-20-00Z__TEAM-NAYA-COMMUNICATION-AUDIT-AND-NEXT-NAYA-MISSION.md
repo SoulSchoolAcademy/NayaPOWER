@@ -65,4 +65,10 @@ The Superbrain becomes intelligent when intelligence changes future behavior —
 
 ## One immediate next action
 
-**Execute the Next Naya Execution Prompt: audit real communication/execution evidence first, then repair the first highest-value failure and leave a verified Activity + Smart Note + continuation handoff.**
+This communication audit remains preserved as evidence. Its earlier local successor action is reconciled to the canonical control plane.
+
+**Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
+
+**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+
+The existing Team Naya communication findings and `NAYA_VERIFIED` evidence remain preserved. No duplicate communication, state, or handoff system is created.
