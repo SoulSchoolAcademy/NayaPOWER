@@ -15,6 +15,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -238,77 +239,111 @@ def _persist_and_verify(path: Path, rendered: str, note_id_value: str) -> dict[s
     }
 
 
+class _TransactionLock:
+    """Cross-process atomic lock for the shared CIS/PIS transaction boundary."""
+    def __init__(self, root: Path, timeout: float = 30.0, stale_after: float = 300.0):
+        self.path = root / ".naya" / "locks" / "smart-note-transaction.lock"
+        self.timeout = timeout
+        self.stale_after = stale_after
+
+    def __enter__(self):
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        deadline = time.monotonic() + self.timeout
+        while True:
+            try:
+                self.path.mkdir()
+                (self.path / "owner").write_text(f"{time.time()}\n", encoding="utf-8")
+                return self
+            except FileExistsError:
+                try:
+                    age = time.time() - self.path.stat().st_mtime
+                    if age > self.stale_after:
+                        import shutil
+                        shutil.rmtree(self.path, ignore_errors=True)
+                        continue
+                except FileNotFoundError:
+                    continue
+                if time.monotonic() >= deadline:
+                    raise RuntimeError("Smart Note transaction lock contention: another transaction is active")
+                time.sleep(0.05)
+
+    def __exit__(self, exc_type, exc, tb):
+        import shutil
+        shutil.rmtree(self.path, ignore_errors=True)
+
+
 def execute(note: dict[str, Any]) -> dict[str, Any]:
     validate_note(note)
-    stamp = str(note.get("timestamp") or utc_now())
-    note = dict(note)
-    note["timestamp"] = stamp
-    note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
+    with _TransactionLock(ROOT):
+        stamp = str(note.get("timestamp") or utc_now())
+        note = dict(note)
+        note["timestamp"] = stamp
+        note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
 
-    dt = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc)
-    path = SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / (
-        f"{dt:%Y-%m-%dT%H-%M-%SZ}__{slug(note['topic'])}.md"
-    )
-    if path.exists():
-        existing = path.read_text(encoding="utf-8")
-        if note["id"] not in existing:
-            raise RuntimeError(f"Smart Note path conflict: {path}")
+        dt = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc)
+        path = SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / (
+            f"{dt:%Y-%m-%dT%H-%M-%SZ}__{slug(note['topic'])}.md"
+        )
+        if path.exists():
+            existing = path.read_text(encoding="utf-8")
+            if note["id"] not in existing:
+                raise RuntimeError(f"Smart Note path conflict: {path}")
 
-    note["cis_status"] = "PENDING"
-    note["pis_status"] = "PENDING"
-    note["hub_status"] = "PENDING"
-    note["receipt_id"] = f"SN-RCP-{note['id']}"
-    rendered = render_note(note)
-    persistence = _persist_and_verify(path, rendered, note["id"])
+        note["cis_status"] = "PENDING"
+        note["pis_status"] = "PENDING"
+        note["hub_status"] = "PENDING"
+        note["receipt_id"] = f"SN-RCP-{note['id']}"
+        rendered = render_note(note)
+        persistence = _persist_and_verify(path, rendered, note["id"])
 
-    cis = apply_cis_learning(note)
-    note["cis_status"] = cis["status"]
-    pis = build_pis_projection(note)
-    note["pis_status"] = pis["status"]
-    note["hub_status"] = "PROJECTED"
-    _persist_and_verify(path, render_note(note), note["id"])
+        cis = apply_cis_learning(note)
+        note["cis_status"] = cis["status"]
+        pis = build_pis_projection(note)
+        note["pis_status"] = pis["status"]
+        note["hub_status"] = "PROJECTED"
+        _persist_and_verify(path, render_note(note), note["id"])
 
-    projected_event = next((e for e in pis.get("events", []) if e.get("event_id") == note["id"]), None)
-    if projected_event is None:
-        raise RuntimeError(f"PIS projection missing authoritative Smart Note event: {note['id']}")
-    if projected_event.get("created_at") != stamp or projected_event.get("updated_at") != stamp:
-        raise RuntimeError(f"Smart Note timestamp provenance mismatch: {note['id']}")
-    if projected_event.get("source", {}).get("id") != note["id"]:
-        raise RuntimeError(f"Smart Note source provenance mismatch: {note['id']}")
-    if projected_event.get("context", {}).get("canonical_path") != persistence["path"]:
-        raise RuntimeError(f"Smart Note canonical-path provenance mismatch: {note['id']}")
-    if projected_event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
-        raise RuntimeError(f"Smart Note privacy boundary mismatch: {note['id']}")
+        projected_event = next((e for e in pis.get("events", []) if e.get("event_id") == note["id"]), None)
+        if projected_event is None:
+            raise RuntimeError(f"PIS projection missing authoritative Smart Note event: {note['id']}")
+        if projected_event.get("created_at") != stamp or projected_event.get("updated_at") != stamp:
+            raise RuntimeError(f"Smart Note timestamp provenance mismatch: {note['id']}")
+        if projected_event.get("source", {}).get("id") != note["id"]:
+            raise RuntimeError(f"Smart Note source provenance mismatch: {note['id']}")
+        if projected_event.get("context", {}).get("canonical_path") != persistence["path"]:
+            raise RuntimeError(f"Smart Note canonical-path provenance mismatch: {note['id']}")
+        if projected_event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
+            raise RuntimeError(f"Smart Note privacy boundary mismatch: {note['id']}")
 
-    personal_feed_block = build_personal_feed_block(projected_event)
-    projected_event["intelligent_block"] = personal_feed_block
-    for index, event in enumerate(pis.get("events", [])):
-        if event.get("event_id") == note["id"]:
-            pis["events"][index] = projected_event
-            break
-    _write_json(PIS_PATH, pis)
+        personal_feed_block = build_personal_feed_block(projected_event)
+        projected_event["intelligent_block"] = personal_feed_block
+        for index, event in enumerate(pis.get("events", [])):
+            if event.get("event_id") == note["id"]:
+                pis["events"][index] = projected_event
+                break
+        _write_json(PIS_PATH, pis)
 
-    receipt = {
-        "schema_version": "SMART-NOTE-TRANSACTION-1.1",
-        "receipt_id": note["receipt_id"],
-        "status": "VERIFIED_TRANSACTION" if pis.get("status") in {"CREATED", "REBUILT"} else "REPLAY_TRANSACTION",
-        "smart_note_id": note["id"],
-        "smart_note_path": persistence["path"],
-        "authoritative_persistence": persistence,
-        "cis": cis,
-        "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"], "created_at": projected_event["created_at"], "updated_at": projected_event["updated_at"]},
-        "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "intelligent_block_id": personal_feed_block["block_id"], "personal_feed": "PRIVATE"},
-        "privacy": projected_event["privacy"],
-        "intelligent_block": {"status": "VERIFIED", "block_id": personal_feed_block["block_id"], "consumer": "nayanet-hub.personal-feed", "parent_event_id": note["id"]},
-        "provenance": {"source_id": projected_event["source"]["id"], "canonical_path": projected_event["context"]["canonical_path"]},
-        "evidence": note["evidence"],
-        "current_state": note["current_state"],
-        "next_action": note["next_action"],
-        "completed_at": utc_now(),
-    }
-    receipt_path = RECEIPTS_ROOT / f"{note['id']}.json"
-    _write_json(receipt_path, receipt)
-    return {"status": receipt["status"], "smart_note": path, "cis": cis, "pis": pis, "receipt": receipt_path}
+        receipt = {
+            "schema_version": "SMART-NOTE-TRANSACTION-1.1",
+            "receipt_id": note["receipt_id"],
+            "status": "VERIFIED_TRANSACTION" if pis.get("status") in {"CREATED", "REBUILT"} else "REPLAY_TRANSACTION",
+            "smart_note_id": note["id"],
+            "smart_note_path": persistence["path"],
+            "authoritative_persistence": persistence,
+            "cis": cis,
+            "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"], "created_at": projected_event["created_at"], "updated_at": projected_event["updated_at"]},
+            "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "intelligent_block_id": personal_feed_block["block_id"], "personal_feed": "PRIVATE"},
+            "privacy": projected_event["privacy"],
+            "intelligent_block": {"status": "VERIFIED", "block_id": personal_feed_block["block_id"], "consumer": "nayanet-hub.personal-feed", "parent_event_id": note["id"]},
+            "provenance": {"source_id": projected_event["source"]["id"], "canonical_path": projected_event["context"]["canonical_path"]},
+            "evidence": note["evidence"],
+            "current_state": note["current_state"],
+            "next_action": note["next_action"],
+            "completed_at": utc_now(),
+        }
+        receipt_path = RECEIPTS_ROOT / f"{note['id']}.json"
+        _write_json(receipt_path, receipt)
+        return {"status": receipt["status"], "smart_note": path, "cis": cis, "pis": pis, "receipt": receipt_path}
 
 
-__all__ = ["execute", "validate_note", "REQUIRED"]
+    __all__ = ["execute", "validate_note", "REQUIRED"]
