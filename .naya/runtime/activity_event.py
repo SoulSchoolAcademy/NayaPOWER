@@ -1,11 +1,5 @@
 #!/usr/bin/env python3
-"""Canonical Activity Feed event record for Universal Team-Naya Activity Reporting (P0-01).
-
-A governed execution is completely recorded only through one canonical Activity
-event: persisted here through the canonical event store, verified by the
-execution controller at VERIFIED, and re-verified by the controller's validate()
-so a later suppression or tamper is an integrity failure.
-"""
+"""Canonical Activity Feed event record for Universal Team-Naya Activity Reporting (P0-01)."""
 from __future__ import annotations
 
 import hashlib
@@ -18,7 +12,6 @@ from typing import Any, Optional
 ROOT = Path(__file__).resolve().parents[2]
 EVENTS_ROOT = ROOT / ".naya" / "memory" / "events"
 INDEX_PATH = EVENTS_ROOT / "INDEX.json"
-
 EVENT_TYPE = "activity"
 
 
@@ -32,49 +25,18 @@ def build_activity_event(*, event_id: str, claim_id: str, action_id: str, decisi
     execution: dict[str, Any] = {"event_id": event_id, "claim_id": claim_id, "action_id": action_id, "decision_id": decision_id, "authority_id": authority_id, "actor_id": actor_id, "run_id": run_id}
     if session_id:
         execution["session_id"] = session_id
-    return {
-        "event_id": event_id,
-        "created_at": stamp,
-        "effective_at": effective,
-        "event_type": EVENT_TYPE,
-        "status": "VERIFIED_REPOSITORY_RECORD",
-        "subject": subject,
-        "title": subject,
-        "tags": [EVENT_TYPE],
-        "source": {"kind": "execution", "event_id": f"EXECUTION-{claim_id}", "generator": "activity_event.build_activity_event"},
-        "execution": execution,
-        "receipt": {"receipt_id": receipt_id, "schema": verification_schema, "status": "MATCHED", "event_id": event_id},
-        "continuity": {"execution_state": "COMPLETED", "handoff": {"next_action": next_action, "successor": successor}, "learning_status": "RECORDED"},
-        "activity_feed_projection": {"feed": "NAYA-ACTIVITY", "event_id": event_id, "title": subject, "summary": summary},
-        "verification": {"status": "VERIFIED", "method": verification_method, "schema": verification_schema, "evidence": evidence},
-        "evidence_ids": evidence,
-    }
+    return {"event_id": event_id, "created_at": stamp, "effective_at": effective, "event_type": EVENT_TYPE, "status": "VERIFIED_REPOSITORY_RECORD", "subject": subject, "title": subject, "tags": [EVENT_TYPE], "source": {"kind": "execution", "event_id": f"EXECUTION-{claim_id}", "generator": "activity_event.build_activity_event"}, "execution": execution, "receipt": {"receipt_id": receipt_id, "schema": verification_schema, "status": "MATCHED", "event_id": event_id}, "continuity": {"execution_state": "COMPLETED", "handoff": {"next_action": next_action, "successor": successor}, "learning_status": "RECORDED"}, "activity_feed_projection": {"feed": "NAYA-ACTIVITY", "event_id": event_id, "title": subject, "summary": summary}, "verification": {"status": "VERIFIED", "method": verification_method, "schema": verification_schema, "evidence": evidence}, "evidence_ids": evidence}
 
 
-def _project_team_activity(event: dict[str, Any]) -> None:
-    """Bridge a completed governed execution into the Team Naya communication surface."""
-    try:
-        from team_activity import emit_team_activity
-        execution = event.get("execution") or {}
-        continuity = event.get("continuity") or {}
-        handoff = continuity.get("handoff") or {}
-        verification = event.get("verification") or {}
-        evidence = list(event.get("evidence_ids") or verification.get("evidence") or [])
-        emit_team_activity(
-            intent="NAYA_VERIFIED",
-            actor_id=execution.get("actor_id") or "NAYA-EXECUTION-CONTROLLER",
-            session_id=execution.get("session_id") or execution.get("run_id") or event["event_id"],
-            mission=event.get("subject") or f"Governed execution {execution.get('claim_id')}",
-            message=event.get("subject") or "Governed execution reached VERIFIED and was projected to Team Naya Activity.",
-            next_action=handoff.get("next_action") or "Continue from the verified execution handoff.",
-            recipients=["TEAM-NAYA"],
-            evidence=evidence + [event["event_id"]],
-            events_root=EVENTS_ROOT,
-            index_path=INDEX_PATH,
-            effective_at=event.get("effective_at"),
-        )
-    except Exception as exc:
-        raise ValueError(f"verified execution could not bridge into Team Naya Activity: {exc}") from exc
+def _project_team_activity(event: dict[str, Any], events_root: Path, index_path: Path) -> None:
+    """Bridge a completed governed execution into Team Naya communication."""
+    from team_activity import emit_team_activity
+    execution = event.get("execution") or {}
+    continuity = event.get("continuity") or {}
+    handoff = continuity.get("handoff") or {}
+    verification = event.get("verification") or {}
+    evidence = list(event.get("evidence_ids") or verification.get("evidence") or []) + [event["event_id"]]
+    emit_team_activity(intent="NAYA_VERIFIED", actor_id=execution.get("actor_id") or "NAYA-EXECUTION-CONTROLLER", session_id=execution.get("session_id") or execution.get("run_id") or event["event_id"], mission=event.get("subject") or f"Governed execution {execution.get('claim_id')}", message=event.get("subject") or "Governed execution reached VERIFIED and was projected to Team Naya Activity.", next_action=handoff.get("next_action") or "Continue from the verified execution handoff.", successor=handoff.get("successor"), recipients=["TEAM-NAYA"], evidence=evidence, events_root=events_root, index_path=index_path, effective_at=event.get("effective_at"))
 
 
 def persist_activity_event(event: dict[str, Any], *, events_root: Optional[Path] = None, index_path: Optional[Path] = None) -> dict[str, Any]:
@@ -82,35 +44,11 @@ def persist_activity_event(event: dict[str, Any], *, events_root: Optional[Path]
     effective_events_root = Path(events_root) if events_root else EVENTS_ROOT
     effective_index_path = Path(index_path) if index_path else INDEX_PATH
     result = create_or_replay(event, effective_events_root, effective_index_path)
-    if effective_events_root.resolve() == EVENTS_ROOT.resolve() and result.get("status") in {"CREATED", "REPLAY"}:
-        from calendar_projection import project_event
-        project_event(event)
-        _project_team_activity(event)
-    elif effective_events_root.resolve() != EVENTS_ROOT.resolve() and result.get("status") in {"CREATED", "REPLAY"}:
-        # Self-tests and isolated verification use a temporary event root. The
-        # bridge deliberately follows that root so the test proves the same
-        # production path without polluting repository state.
-        try:
-            from team_activity import emit_team_activity
-            execution = event.get("execution") or {}
-            continuity = event.get("continuity") or {}
-            handoff = continuity.get("handoff") or {}
-            verification = event.get("verification") or {}
-            emit_team_activity(
-                intent="NAYA_VERIFIED",
-                actor_id=execution.get("actor_id") or "NAYA-EXECUTION-CONTROLLER",
-                session_id=execution.get("session_id") or execution.get("run_id") or event["event_id"],
-                mission=event.get("subject") or f"Governed execution {execution.get('claim_id')}",
-                message=event.get("subject") or "Governed execution reached VERIFIED and was projected to Team Naya Activity.",
-                next_action=handoff.get("next_action") or "Continue from the verified execution handoff.",
-                recipients=["TEAM-NAYA"],
-                evidence=list(event.get("evidence_ids") or verification.get("evidence") or []) + [event["event_id"]],
-                events_root=effective_events_root,
-                index_path=effective_index_path,
-                effective_at=event.get("effective_at"),
-            )
-        except Exception as exc:
-            raise ValueError(f"isolated verified execution could not bridge into Team Naya Activity: {exc}") from exc
+    if result.get("status") in {"CREATED", "REPLAY"}:
+        _project_team_activity(event, effective_events_root, effective_index_path)
+        if effective_events_root.resolve() == EVENTS_ROOT.resolve():
+            from calendar_projection import project_event
+            project_event(event)
     return result
 
 
