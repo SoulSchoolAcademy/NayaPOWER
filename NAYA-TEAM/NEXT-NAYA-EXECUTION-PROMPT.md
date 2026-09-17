@@ -372,3 +372,12 @@ The goal is **behavioral continuity and compounding intelligence**.
 ### ONE IMMEDIATE NEXT ACTION
 
 **Audit the actual recent GitHub Activity/commit evidence for Naya-to-Naya communication and execution records, identify the first highest-value continuity failure, and repair that canonical failure before doing cosmetic or deployment work.**
+
+
+## INTELLIGENT HUB READINESS — MANDATORY BEFORE HUB BUILD
+Before selecting or changing any Intelligent Hub area, execute:
+[NAYA-TEAM/INTELLIGENT-HUB-MASTER-MAP.md](./INTELLIGENT-HUB-MASTER-MAP.md)
+[NAYA-TEAM/INTELLIGENT-HUB-READINESS-SCORECARD.md](./INTELLIGENT-HUB-READINESS-SCORECARD.md)
+[NAYA-TEAM/INTELLIGENT-HUB-COLD-NAYA-READINESS-PROOF.md](./INTELLIGENT-HUB-COLD-NAYA-READINESS-PROOF.md)
+
+Do not choose a Hub build area until the cold-Naya gate passes. If it fails, repair the readiness surface first. The goal is not documentation volume; the goal is independent reconstruction of the whole puzzle from repository evidence.
