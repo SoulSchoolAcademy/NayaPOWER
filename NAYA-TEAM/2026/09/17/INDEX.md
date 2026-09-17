@@ -10,6 +10,7 @@
 - [🔱 Team Naya — Start Here](../../00-START-HERE.md)
 - [📜 Naya Operating Contract](../../01-NAYA-OPERATING-CONTRACT.md)
 - [🎯 Team Naya Success Scorecard](../../TEAM-NAYA-SUCCESS-SCORECARD.md)
+- [⚡ NEXT NAYA EXECUTION PROMPT — ACTIVE](../../NEXT-NAYA-EXECUTION-PROMPT.md)
 
 ## Records
 
@@ -26,11 +27,13 @@ At entry time, read the current [STATE](../../../.naya/control-plane/STATE.json)
 
 ## Current successor state
 
-- **Current NAYA-TEAM objective:** make the visible Team Naya layer a reliable cold-Naya operating surface without creating competing truth.
-- **Latest Team Naya change:** visible README/front door, Read-First gate, operating contract, scorecard path, and daily continuity record were hardened so a cold Naya sees the operating model before repository archaeology.
-- **Verification state:** CREATED / CHANGED / TESTED / VERIFIED for the repository-facing organization; behavioral 10/10 remains unproven until the independent cold-Naya test succeeds.
-- **Protected principle:** Team Naya is not 10/10 because documents exist. It is 10/10 only when a cold Naya can actually enter, understand, act, verify, record, learn, and hand off without Shawn reconstructing the missing state.
-- **Exactly ONE Next Action:** analyze Tina's cold-Naya traversal and repair the first remaining Team Naya entry/behavior failure.
+- **Current NAYA-TEAM objective:** make the visible Team Naya layer a reliable cold-Naya operating surface and prove that Team Naya actually communicates, executes, verifies, learns, and hands off.
+- **Latest Team Naya change:** visible README/front door, Read-First gate, operating contract, scorecard path, daily continuity record, and a canonical executable successor prompt were established so the next Naya has an explicit job rather than only documentation.
+- **Verification state:** repository-facing organization is CREATED / CHANGED / TESTED / VERIFIED; behavioral 10/10 remains unproven.
+- **Protected principle:** Team Naya is not 10/10 because documents exist. It is 10/10 only when a cold Naya can actually enter, understand, act, verify, record, learn, communicate, and hand off without Shawn reconstructing the missing state.
+- **Communication state:** the repository contains documented communication laws and historical Activity records, but active Naya-to-Naya communication behavior and execution-to-Activity automation are not yet sufficiently proven by the evidence inspected in this mission.
+- **Correction:** There is no separate “Tina” role in Team Naya. Any previous reference to Tina was an error. The operating unit is Naya / Team Naya.
+- **Exactly ONE Next Action:** execute `NAYA-TEAM/NEXT-NAYA-EXECUTION-PROMPT.md`, beginning with a factual audit of recent GitHub Activity/commit evidence for actual Naya-to-Naya communication and execution records; repair the first highest-value continuity failure found.
 
 ## Team communication law
 
