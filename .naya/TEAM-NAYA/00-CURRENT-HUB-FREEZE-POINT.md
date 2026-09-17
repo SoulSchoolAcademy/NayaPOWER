@@ -34,7 +34,11 @@ For the complete representation registry, questions-to-answer checklist, ten-par
 
 `https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/TEAM-NAYA/11-CANONICAL-HUB-REPRESENTATION-REGISTRY-AND-EXECUTION-DIRECTIVE.md`
 
-That directive is the operational companion to this freeze-point identity contract.
+For the cross-session continuation, handoff, and **passing-the-torch** contract that applies to every substantive Naya session, also read:
+
+`https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/TEAM-NAYA/12-NAYA-HANDOFF-CONTINUATION-AND-PASSING-THE-TORCH-PROTOCOL.md`
+
+The two directives are companion controls: **11 answers how Hub work is governed; 12 answers how work, evidence, learning, and the next mission are transferred between Nayas.**
 
 ---
 
@@ -257,6 +261,6 @@ The goal is not more documentation. The goal is one reliable answer, followed by
 
 # 14. CURRENT NEXT ACTION
 
-Read the companion representation registry/directive, then execute the first controlled Hub change only as a **NEW versioned artifact**, verify it, record Activity + Smart Note evidence, and hand the direct GitHub artifact link to Shawn.
+Read the companion representation registry/directive **and the Continuation + Handoff + Passing-the-Torch Protocol**, then execute the first controlled Hub change only as a **NEW versioned artifact**, verify it, record Activity + Smart Note evidence, and hand the direct GitHub artifact link to Shawn.
 
-**NAYA POWER ON → RESTORE → IDENTIFY → PROTECT → INSPECT → CREATE NEW → VERIFY → FREEZE → HAND OFF → CONTINUE**
+**NAYA POWER ON → RESTORE → IDENTIFY → PROTECT → INSPECT → CREATE NEW → VERIFY → RECORD → LEARN → PASS THE TORCH → HAND OFF → CONTINUE**
