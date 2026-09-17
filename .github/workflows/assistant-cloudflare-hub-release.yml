@@ -1,0 +1,131 @@
+# CANONICAL RUNTIME RELEASE — deploy the exact current protected Hub freeze point.
+# Assistant lane only. GitHub 509 is a separate fail-closed lane.
+name: NAYA — Canonical Assistant Cloudflare Hub Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '2026 09 17 NAYANET HUB.html'
+      - '.github/workflows/assistant-cloudflare-hub-release.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
+  NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    steps:
+      - name: Checkout exact main source
+        uses: actions/checkout@v4
+
+      - name: Prepare exact protected Hub artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s '2026 09 17 NAYANET HUB.html'
+          mkdir -p dist
+          cp '2026 09 17 NAYANET HUB.html' dist/index.html
+          grep -q 'nayanet-direct-nine' dist/index.html
+          grep -q 'NayaNET — Intelligent Hub' dist/index.html
+          sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
+          echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
+
+      - name: Bind exact authorized Cloudflare target
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${CLOUDFLARE_API_TOKEN:-}"
+          cat > "$RUNNER_TEMP/wrangler.jsonc" <<'EOF'
+          {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","not_found_handling":"single-page-application"}}
+          EOF
+
+      - name: Deploy exact Assistant-lane artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/wrangler.jsonc"
+
+      - name: Verify live artifact identity and exact source parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL" -o "$RUNNER_TEMP/live.html"
+          grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
+          grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
+          sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
+          source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
+          live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
+          test "$source_hash" = "$live_hash"
+          echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
+
+      - name: Verify Assistant runtime baseline — desktop and mobile
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          cat > "$RUNNER_TEMP/verify-assistant-runtime.mjs" <<'EOF'
+          import { chromium } from 'playwright';
+
+          const url = process.env.NAYA_RUNTIME_URL;
+          const browser = await chromium.launch({
+            headless: true,
+            executablePath: '/usr/bin/google-chrome',
+            args: ['--no-sandbox','--disable-dev-shm-usage']
+          });
+
+          try {
+            for (const viewport of [
+              { width: 1440, height: 1000, label: 'desktop' },
+              { width: 390, height: 844, label: 'mobile' }
+            ]) {
+              const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
+              await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.waitForTimeout(1000);
+
+              const result = await page.evaluate(() => ({
+                title: document.title,
+                directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
+                navCount: document.querySelectorAll('.naya509-primary-nav a').length,
+                blockCount: document.querySelectorAll('.block').length,
+                layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
+                bodyOverflowX: getComputedStyle(document.body).overflowX,
+                hasNaya: document.body.innerText.includes('Naya'),
+                hasIntelligence: document.body.innerText.includes('INTELLIGENCE')
+              }));
+
+              if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
+              if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
+              if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
+              if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
+              if (result.bodyOverflowX === 'scroll') throw new Error(`${viewport.label}: horizontal scroll baseline failed`);
+              if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
+
+              console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+              await page.close();
+            }
+          } finally {
+            await browser.close();
+          }
+          EOF
+
+          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" node "$RUNNER_TEMP/verify-assistant-runtime.mjs"
+
+      - name: Final Assistant-lane runtime proof
+        shell: bash
+        run: |
+          echo "ASSISTANT_LANE_RUNTIME_VERIFIED=$NAYA_RUNTIME_URL"
+          echo "ASSISTANT_LANE_WORKER=$CLOUDFLARE_CANONICAL_WORKER"
+          echo "ASSISTANT_LANE_ACCOUNT=$CLOUDFLARE_CANONICAL_ACCOUNT_ID"
+          echo "SOURCE=2026 09 17 NAYANET HUB.html"
+          echo "LANE=ASSISTANT_CLOUDFLARE"
