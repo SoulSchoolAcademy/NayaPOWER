@@ -55,5 +55,33 @@
     "BLOCKED"
   ],
   "failure_policy": "The gate fails closed. A passing gate means the repository structure is internally classifiable; it does not by itself prove a live runtime is correct.",
-  "next_action": "Classify every open GitHub issue and every workflow/deployment authority, resolve duplicate or superseded authority, then rerun this gate until GREEN."
+  "cleanup_policy": {
+    "delete_only_when": [
+      "artifact is demonstrably obsolete, retired, disabled, duplicate, superseded, or orphaned",
+      "current authority and dependency checks show no unique active role",
+      "replacement or surviving canonical source is identified when applicable",
+      "deletion preserves current functionality and Git history remains available"
+    ],
+    "preserve_when": [
+      "artifact is current canonical source",
+      "artifact is required machine-readable law/state/proof",
+      "artifact is current product functionality",
+      "artifact is a fail-closed boundary that prevents an unsafe authority substitution",
+      "artifact contains unique historical intelligence not safely represented elsewhere"
+    ],
+    "never": [
+      "delete merely because a filename is old",
+      "delete current NIS/canonical intelligence without direct evidence",
+      "delete the current 509 boundary merely to reduce file count",
+      "erase historical truth to make the repository look cleaner"
+    ]
+  },
+  "current_cleanup_result": {
+    "status": "SURGICAL_CLEANUP_EXECUTED",
+    "removed_confirmed_retired_509_workflows": 10,
+    "preserved_fail_closed_509_boundary": ".github/workflows/509-smart-board-world-class.yml",
+    "reason": "Ten workflows were explicitly DISABLED/RETIRED and each identified a newer/canonical replacement. The preserved world-class workflow is a live fail-closed boundary and therefore remains useful until Assistant-lane authority is resolved."
+  },
+  "next_action": "Finish the complete issue/workflow/authority inventory, classify every remaining item, consolidate proven duplicates/superseded instructions, and only then resolve the remaining Assistant-lane runtime authority conflict.",
+  "gate_state": "RED_UNTIL_CLASSIFICATION_COMPLETE"
 }
