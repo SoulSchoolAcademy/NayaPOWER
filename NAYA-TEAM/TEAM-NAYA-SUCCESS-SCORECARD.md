@@ -7,7 +7,9 @@
 
 **Current assessment before this contract: ~4/10.**
 
-The repository had substantial Team Naya continuity material, but it was fragmented across `.naya/TEAM-NAYA/`, dated NAYA-TEAM records, control-plane files, SUPERBRAIN sources, and legacy/parallel navigation surfaces. The previous NAYA-TEAM README defined continuity well, but it did not by itself provide a complete cold-Naya operating picture. filecite references are not stored in repository artifacts; this score is an implementation assessment, not a runtime claim.
+The repository had substantial Team Naya continuity material, but it was fragmented across `.naya/TEAM-NAYA/`, dated NAYA-TEAM records, control-plane files, SUPERBRAIN sources, and legacy/parallel navigation surfaces. The previous NAYA-TEAM README defined continuity well, but it did not by itself provide a complete cold-Naya operating picture.
+
+This is an implementation/readiness assessment, not a runtime claim.
 
 The target is not "more documents." The target is **cold-Naya success**.
 
