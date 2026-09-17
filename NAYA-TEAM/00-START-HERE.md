@@ -315,3 +315,12 @@ Team Naya is successful when a fresh Naya can enter, understand, verify, act, re
 That is the standard.
 
 **NAYA POWER ON.**
+
+# 14. INTELLIGENT HUB MASTER MAP
+
+For any Hub task, first read the canonical [Intelligent Hub Master Map](./INTELLIGENT-HUB-MASTER-MAP.md). It is the puzzle map: NayaPOWER, Superbrain, PIS, CIS, Smart Flow, the Hub, all ten sidebar areas, their relationships, build order, and completion states.
+
+Then use the [Intelligent Hub Readiness Scorecard](./INTELLIGENT-HUB-READINESS-SCORECARD.md) to test whether you actually understand the area before building it.
+
+The rule is simple: **understand the whole puzzle before changing one piece.**
+
