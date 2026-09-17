@@ -1,5 +1,7 @@
 name: Verify Smart Note Transaction
 
+# Golden-path runtime verification trigger.
+
 on:
   push:
     branches: [main]
