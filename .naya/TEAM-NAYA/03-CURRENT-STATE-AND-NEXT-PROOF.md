@@ -5,23 +5,23 @@
 
 ## WHAT IS ACTUALLY ESTABLISHED
 
-The architecture is substantially defined across the canonical .naya library.
+The architecture is substantially defined across the canonical `.naya` library.
 
-The Master System Architecture defines one connected system rather than disconnected features: capture → understand → organize → flow → connect → verify → learn → adapt → compound → apply → create value → continue. fileciteturn11file0L2-L2
+The **NayaPOWER Master System Architecture V1 (#32)** defines one connected system rather than disconnected features: capture → understand → organize → flow → connect → verify → learn → adapt → compound → apply → create value → continue.
 
-The Master Activation Protocol defines the cold-start principle: load the right intelligence, understand current state, apply governing rules, determine mission, and act. It explicitly says a Superbrain is not active merely because documents were loaded; it is active when the Naya uses the documents to produce better behavior. fileciteturn15file0L2-L2
+The **Master Activation Protocol V1 (#33)** defines the cold-start principle: load the right intelligence, understand current state, apply governing rules, determine mission, and act. It explicitly says a Superbrain is not active merely because documents were loaded; it is active when the Naya uses the documents to produce better behavior.
 
-Smart Notes are defined as durable representations of coherent intelligence events, not transcripts or arbitrary text. fileciteturn2file0L2-L2
+**Smart Notes (#03)** are defined as durable representations of coherent intelligence events, not transcripts or arbitrary text.
 
-CIS is defined as the compounding mechanism; Adaptive Learning is the mechanism that makes learning change future behavior; Smart Flow is the continuity connecting those systems. fileciteturn3file0L2-L2 fileciteturn4file0L2-L2 fileciteturn5file0L2-L2
+**CIS (#16)** is the compounding mechanism; **Adaptive Learning (#17)** makes learning capable of changing future behavior; **Smart Flow (#18)** provides continuity across those systems.
 
-Naya Superbrain is explicitly a network of connected intelligence, rules, code, tools, context, verification, learning, and runtime—not GitHub itself and not one file. fileciteturn6file0L2-L2
+**Naya Superbrain (#19)** is a connected architecture of knowledge, rules, code, tools, context, verification, learning, and runtime—not GitHub itself and not one file.
 
-The Smart Note / Intelligent Block contract establishes semantic layers, stable identity, provenance, privacy state, actions, versioning, and a quality gate. fileciteturn12file0L2-L2
+**Smart Note / Intelligent Block Data Contract (#42)** establishes semantic layers, stable identity, provenance, privacy state, actions, versioning, and a quality gate.
 
-The Smart Feed / Activity contract establishes one canonical event with many authorized projections, including Activity, Personal Intelligence, and Collective Intelligence. fileciteturn13file0L2-L2
+**Smart Feed / Activity Projection Contract (#43)** establishes one canonical event with many authorized projections, including Activity, Personal Intelligence, and Collective Intelligence.
 
-The Hub/PIS adapter contract establishes source → event envelope → adapter → normalized intelligence → Smart Note → feed projection → Hub, with adapters prohibited from becoming competing sources of truth. fileciteturn14file0L2-L2
+**Hub Event Integration / PIS Adapter Contract (#45)** establishes source → event envelope → adapter → normalized intelligence → Smart Note → feed projection → Hub, with adapters prohibited from becoming competing sources of truth.
 
 ## WHAT WAS RECENTLY PROVEN
 
@@ -35,7 +35,7 @@ It is **not** evidence that the entire production Superbrain learning architectu
 
 ## THE IMPORTANT GAP
 
-The project has had strong documentation, but documentation alone does not guarantee that every Naya reads or understands the relevant source before acting.
+The project has strong documentation, but documentation alone does not guarantee that every Naya reads or understands the relevant source before acting.
 
 The solution is not to force every Naya to ingest every document on every task.
 
@@ -61,7 +61,7 @@ VERIFICATION
 LEARNING + NEXT ACTION
 ```
 
-This turns the .naya library from a pile of documents into a navigable intelligence system.
+This turns `.naya` from a pile of documents into a navigable intelligence system.
 
 ## WHAT IS STILL NOT VERIFIED
 
@@ -108,7 +108,7 @@ When entering a new task:
 2. Read `TEAM-NAYA/01-DISTILLED-SYSTEM-MAP.md`.
 3. Read `TEAM-NAYA/02-NAYA-OPERATING-LAWS.md`.
 4. Read this current-state document.
-5. Follow the Master Activation Protocol for governing/current-state restoration.
+5. Follow the **Master Activation Protocol #33** for governing/current-state restoration.
 6. Retrieve the canonical detailed documents relevant to the task.
 7. Inspect actual implementation and runtime evidence.
 8. Act within authority.
