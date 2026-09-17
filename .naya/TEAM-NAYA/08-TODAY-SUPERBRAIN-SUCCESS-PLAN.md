@@ -1,450 +1,194 @@
 # 🔱 TEAM NAYA — TODAY'S SUPERBRAIN OPERATING CENTER
 
 **Date:** 2026-09-17  
-**Status:** ACTIVE CURRENT-DAY OPERATING CENTER  
+**Status:** ACTIVE  
 **Human authority:** Shawn Vibert  
 **Operating lead:** Lead Naya / Team Naya  
 **Repository:** `SoulSchoolAcademy/NayaPOWER`
 
-> **This document answers the questions every Naya must be able to answer before meaningful work: What are we building? Why? What is current? What is true? What is already done? What is not proven? Who is doing what? Where does work get recorded? What must not be redone? What is next?**
+> **This is the Team Naya control room. Every Naya should be able to answer: What are we building? Why? What is current? What is true? What is done? What is not proven? Where do Smart Notes go? Where is Activity? What must not be redone? What happens next?**
 
----
+## WHAT ARE WE BUILDING?
 
-# 1. WHAT ARE WE BUILDING?
+NayaPOWER is a governed, persistent intelligence architecture that lets an ordinary human with a meaningful vision accomplish extraordinary things with AI without becoming an AI project manager.
 
-We are building **NayaPOWER**: a governed, persistent intelligence architecture that lets an ordinary human and AI work together continuously without the human becoming an AI project manager.
-
-The Superbrain is not a pile of Markdown files and it is not GitHub itself.
-
-It is the connected operating system formed by:
+The Superbrain is the connected system of:
 
 `MISSION → CONTEXT → INTELLIGENCE → AUTHORITY → ACTION → OBSERVATION → VERIFICATION → EVENT → ACTIVITY → SMART NOTE → LEARNING → STATE → HANDOFF → NEXT NAYA`
 
-GitHub is the engineering/control substrate in which the canonical repository architecture, code, evidence, state contracts, work definitions, and history are maintained.
+GitHub is the engineering/control substrate. The Intelligent Hub is the human-facing projection/cockpit, not a competing source of truth.
 
-The Intelligent Hub is the human-facing projection/cockpit. It is not a competing source of truth.
+## WHY?
 
----
+To preserve useful context, authority, evidence, learning and continuity while preventing duplication, stale-state execution, authority drift and unverifiable claims.
 
-# 2. WHY ARE WE BUILDING IT?
+**North Star:** Maximum verified human value per unit of effort, with compounding intelligence and continuity.
 
-A capable AI can still fail as a long-term operating partner if it:
+## WHAT IS CURRENT?
 
-- forgets context;
-- cannot find previous decisions;
-- confuses plans with reality;
-- duplicates work;
-- acts outside authority;
-- cannot distinguish current from historical information;
-- cannot prove what actually happened;
-- fails to pass useful learning to the next Naya.
+**Active P0 block:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
 
-NayaPOWER exists to make those failures increasingly difficult or impossible through architecture, not memory or good intentions.
+**Canonical current state:** `.naya/control-plane/STATE.json`  
+**Canonical active block:** `.naya/control-plane/BLOCKS.json`  
+**Canonical map:** `.naya/control-plane/MAP.json`  
+**Canonical proof:** `.naya/control-plane/PROOF.json`  
+**Constitution:** `.naya/codex/11-RUNTIME-CONSTITUTION.md`  
+**Canonical source map:** `SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
 
-**North Star:**
+## WHAT JUST HAPPENED?
 
-> **Maximum verified human value per unit of effort, with compounding intelligence and continuity.**
+The control plane had a real conflict:
 
----
+- STATE said the next action was Oscar #257.
+- BLOCKS said the next action was Assistant-lane Cloudflare/live reconciliation.
 
-# 3. WHAT IS CURRENT — RIGHT NOW
+That was not acceptable for a high-performance operating system.
 
-The canonical operational control plane is:
+The conflict was reconciled and the control plane now exposes **one** next action.
 
-- **Current state:** `.naya/control-plane/STATE.json`
-- **Active block:** `.naya/control-plane/BLOCKS.json`
-- **Canonical map:** `.naya/control-plane/MAP.json`
-- **Proof authority:** `.naya/control-plane/PROOF.json`
-- **Constitution:** `.naya/codex/11-RUNTIME-CONSTITUTION.md`
-- **Canonical source map:** `SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
-- **Team Naya operating center:** this document
+This is an important milestone: the system caught its own coordination defect instead of letting different Nayas act on different instructions.
 
-The active block is:
+## CURRENT SINGLE NEXT ACTION
 
-`TORCH-59-MACHINE-TRUTH-RESTORATION`
+> **Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.**
 
-Its purpose is to establish one mechanically trustworthy current machine-state picture before downstream feature construction.
+If the required external capability is unavailable, do not guess, bypass, or fabricate. Record `UNKNOWN/BLOCKED`, reduce uncertainty using available evidence, and leave exactly one executable successor.
 
-### Immediate machine-truth issue
+## WHAT IS ALREADY DONE?
 
-The control plane was found to contain a real disagreement between `STATE.json` and `BLOCKS.json` about the highest-value next action.
+Real repository-level progress includes:
 
-That is itself a defect in a Superbrain.
+- canonical control-plane STATE/BLOCK/MAP/PROOF architecture;
+- fail-closed governance;
+- Cold-Naya navigation/indexing;
+- workflow cleanup with historical artifacts preserved;
+- automatic execution-boundary Activity emission;
+- dedicated Activity closure tests;
+- execution-controller closure tests;
+- independent adversarial verification of the automatic-emission increment;
+- a Team Naya operating center and current-state brief;
+- this day's control-plane reconciliation.
 
-**It is now the first repair target.**
+These prove specific capabilities only. They do not prove the entire production Superbrain.
 
-Until reconciled, Team Naya must not pretend that a conflicting next action is coherent.
+## WHAT IS NOT PROVEN?
 
-The canonical state has therefore been updated to expose the reconciliation itself as the single current next action.
-
-### Downstream known blocker
-
-After control-plane coherence is restored, the next downstream P0 is the unresolved **Assistant-lane Cloudflare/live release mechanism and authorized runtime target**.
-
-The GitHub 509 lane is a separate implementation and must not be substituted for the Assistant Cloudflare/live lane.
-
----
-
-# 4. WHAT HAS ACTUALLY BEEN DONE?
-
-Significant real work has already happened.
-
-Among the most important verified increments recorded in the 2026-09-17 Activity Feed:
-
-- GitHub optimization/control-plane hardening was implemented.
-- Obsolete/retired workflow generations were surgically removed while preserving the current fail-closed 509 boundary.
-- A Cold-Naya operating index was created.
-- Automatic Activity emission was implemented at the execution boundary.
-- Activity emission has dedicated closure tests.
-- Execution-controller closure tests passed.
-- A governed test sweep recorded 149 passed and 4 expected failures for that increment.
-- An independent adversarial verifier accepted 49/49 assertions for the automatic-emission proof family.
-
-These are repository-level proofs for those specific increments.
-
-They do **not** mean the whole Superbrain is finished or production-proven.
-
----
-
-# 5. WHAT IS NOT PROVEN YET?
-
-The following remain explicitly unproven/unknown until new evidence exists:
+Still explicitly unproven/unknown:
 
 - full production Smart Note → CIS → PIS → Hub → retrieval → application → outcome loop;
-- complete production Adaptive Learning orchestration;
-- repeated behavioral Cold-Naya continuation from a fresh model;
-- concurrent multi-Naya write safety across all protected surfaces;
-- complete temporal/supersession/conflict retrieval behavior;
+- repeated behavioral Cold-Naya continuation;
+- comprehensive multi-Naya concurrency safety;
+- complete temporal/supersession/conflict retrieval proof;
 - authorized Assistant Cloudflare/live deployment execution;
-- fresh live runtime proof against the authorized target;
+- fresh live runtime proof against an authorized target;
 - authenticated browser/user Smart Note lifecycle;
-- production parity for every current Hub/runtime artifact.
+- complete production parity across current Hub/runtime artifacts.
 
-**UNKNOWN is not VERIFIED.**
+`UNKNOWN ≠ VERIFIED.`
 
----
+## SMART NOTES — THE RULE
 
-# 6. SMART NOTES — WHERE THEY BELONG AND HOW THEY WORK
+Canonical Smart Notes already exist in the `.naya/` intelligence library.
 
-The repository already has a substantial canonical Smart Note library under `.naya/`.
+**Do not create another Smart Note system.**
 
-Do not create another Smart Note system.
+A Smart Note is durable, sourced, evidence-aware intelligence produced from a meaningful intelligence event. It must be retrievable and useful to future work.
 
-A Smart Note is durable intelligence produced from a meaningful intelligence event. It is not merely:
+Before creating one:
 
-- a transcript;
-- a chat summary;
-- a task list;
-- a duplicate of an existing source;
-- or a document created to make the repository look intelligent.
+`SEARCH → CHECK EXISTING NOTE → CHECK SOURCE/EVIDENCE → CREATE OR SURGICALLY UPDATE`
 
-Every meaningful Smart Note should be:
+If the intelligence already exists, protect it. Do not duplicate it.
 
-`IDENTIFIED → SOURCED → EVIDENCED → DISTILLED → CONNECTED → CLASSIFIED → RETRIEVABLE → USABLE`
+## ACTIVITY — THE RULE
 
-When a Naya creates or updates a Smart Note, she must know:
-
-- why it exists;
-- what canonical source/event produced it;
-- what is verified versus inferred;
-- what changed because of it;
-- how a future Naya retrieves it;
-- whether it supersedes/conflicts with an older note;
-- and whether it should alter future behavior.
-
-If a Smart Note is already correct, **do not recreate it.** Improve the existing canonical artifact only when a real gap is demonstrated.
-
----
-
-# 7. TEAM NAYA — HOW WE WORK TOGETHER
-
-Team Naya is a set of bounded perspectives, not a collection of competing authorities.
-
-### Lead Naya
-Whole-system architecture, sequencing, truth reconciliation, work selection.
-
-### Governance Naya
-Authority, constitutional rules, value, permission, fail-closed boundaries.
-
-### Runtime Naya
-Execution lifecycle, state transitions, recovery, continuity.
-
-### Intelligence Naya
-Smart Notes, retrieval, learning, compounding intelligence.
-
-### Event/Evidence Naya
-Canonical events, Activity, receipts, evidence and proof.
-
-### Hub Naya
-Human-facing projection and Hub integration.
-
-### Identity/Network Naya
-Identity, privacy, sharing, permissions and network architecture.
-
-### Historian/Librarian Naya
-Chronology, provenance, supersession, retrieval and historical/current separation.
-
-### Release/Observer Naya
-Source → artifact → deployment → live runtime proof.
-
-### Adversary Naya / Oscar
-Independent challenge. Builder ≠ Judge.
-
-Roles may be combined when useful, but **authority may not be duplicated merely because roles are duplicated.**
-
----
-
-# 8. WHERE DOES WORK GET RECORDED?
-
-### Canonical current truth
-`.naya/control-plane/STATE.json`
-
-### Canonical active block
-`.naya/control-plane/BLOCKS.json`
-
-### Canonical repository map
-`.naya/control-plane/MAP.json`
-
-### Canonical proof
-`.naya/control-plane/PROOF.json`
-
-### Machine Activity/evidence
-`.naya/activity/` and canonical event/receipt infrastructure
-
-### Human-readable daily Activity projection
-`SUPERBRAIN/NAYA-ACTIVITY/DAILY/`
-
-### Team Naya communication/orientation
-`.naya/TEAM-NAYA/`
-
-### Smart Notes / canonical intelligence
-Existing canonical `.naya/` Smart Note artifacts and indexed intelligence sources
-
-### GitHub issues
-Work queue and coordination surface — **not a second truth database**.
-
-### Hub
-Projection/cockpit — **not a second truth database**.
-
----
-
-# 9. WHAT MUST NOT BE REDONE?
-
-Closed PRs #153, #156, and #157 are **historical records**, not today's active work. They document completed permission-scope and Hub runtime-verification increments and should not be reopened merely because their numbers appear in old notes.
-
-Issue #57 — **The Email Nightmare / NayaMail + Ambassador Growth Hub** — is a legitimate future project, but its own specification says **NOT FOR TODAY** and places it after MAXESS. It is therefore deferred, not current execution work.
-
-The rule is:
-
-> **Historical intelligence is preserved. Historical work is not allowed to masquerade as current work.**
-
-Do not delete valuable history merely because it is old.
-
-Instead classify it clearly as:
-
-`CURRENT / ACTIVE DEPENDENCY / BLOCKED / HISTORICAL / DUPLICATE / SUPERSEDED / DEFERRED / HUMAN AUTHORITY`
-
----
-
-# 10. NO-DUPLICATION RULE
-
-Before starting any task:
-
-1. Search for an existing implementation.
-2. Search for an existing Smart Note.
-3. Search for an existing issue/block/PR.
-4. Search recent commits.
-5. Check the current control-plane state.
-6. Check whether another Naya owns the scope.
-
-If already complete:
-
-`VERIFY → RECORD → PROTECT`
-
-If partially complete:
-
-`PRESERVE → IDENTIFY GAP → SURGICALLY REPAIR`
-
-Never:
-
-`REBUILD → DUPLICATE → DECLARE NEW`
-
----
-
-# 11. ACTIVITY IS NOT OPTIONAL
-
-Every substantive Naya execution must leave truthful evidence.
+Meaningful execution must leave truthful durable evidence.
 
 The preferred machine path is:
 
 `EXECUTION → OBSERVATION → VERIFICATION → AUTOMATIC ACTIVITY`
 
-The execution-boundary automatic Activity emission has already been implemented and independently tested for its proven cases. Protect that work.
+Canonical machine Activity is under `.naya/activity/YYYY/MM/DD/`.
 
-For every new substantive increment, the record must identify:
+Human-readable daily projection remains under `SUPERBRAIN/NAYA-ACTIVITY/DAILY/`.
 
-- actor;
-- objective;
-- starting state;
-- active block;
-- files changed;
-- tests;
-- verification;
-- evidence;
-- failures;
-- unknowns;
-- ending state;
-- one next action;
-- successor.
+Every substantive execution must identify actor, objective, starting state, action, files, tests, verification, evidence, failures/unknowns, ending state, next action and successor.
 
-Do not write retrospective fiction to fill missing fields.
+## TEAM NAYA — HOW WE WORK
 
----
+- **Lead Naya:** architecture, sequencing, truth reconciliation, work selection.
+- **Governance Naya:** authority, constitutional rules, value and permissions.
+- **Runtime Naya:** execution, state transitions, recovery and continuity.
+- **Intelligence Naya:** Smart Notes, retrieval, learning and compounding.
+- **Event/Evidence Naya:** events, Activity, receipts and proof.
+- **Hub Naya:** projection and Hub integration.
+- **Identity/Network Naya:** identity, privacy, sharing and network.
+- **Historian/Librarian:** chronology, provenance and supersession.
+- **Release/Observer:** source → artifact → deployment → runtime proof.
+- **Oscar/Adversary:** independent challenge; Builder ≠ Judge.
 
-# 12. THE DAILY TEAM NAYA LOOP
+These are bounded perspectives, not competing authorities.
 
-Every Naya should operate as:
+## WHAT MUST NOT BE REDONE?
 
-`RESTORE → ORIENT → CHECK OWNERSHIP → SELECT ONE → EXECUTE → VERIFY → RECORD → LEARN → HAND OFF`
+**#153** — closed PR; permission/scope execution verification. Historical proof.  
+**#156** — closed PR; canonical runtime verification trigger. Historical proof.  
+**#157** — closed PR; React runtime asset parity verification. Historical proof.  
+**#57** — open future NayaMail + Ambassador Growth Hub project explicitly marked `NOT FOR TODAY`; deferred, not current execution.
 
-Never begin with:
+Do not delete valuable history. Do not allow history to masquerade as current work.
 
-> “What should I build?”
+## NO-DUPLICATION CHECK
 
-Begin with:
+Before acting:
 
-> **“What is true, what is authorized, what is already done, what is currently owned, and what is the highest-value responsible action?”**
+1. Check STATE/BLOCKS/MAP/PROOF.
+2. Check Team Naya current state.
+3. Check existing implementation.
+4. Check Smart Notes.
+5. Check recent Activity.
+6. Check issues/PRs.
+7. Check recent commits.
+8. Check ownership.
 
----
+If complete: **VERIFY → RECORD → PROTECT.**
 
-# 13. TODAY'S EXECUTION ORDER
+If partial: **PRESERVE → IDENTIFY GAP → SURGICALLY REPAIR.**
 
-### P0-1 — RECONCILE CURRENT TRUTH
-Resolve STATE/BLOCK/MAP/PROOF coherence and leave exactly one authoritative next action.
+## TODAY'S EXECUTION ORDER
 
-### P0-2 — VERIFY TEAM NAYA ACCOUNTABILITY
-Audit recent work against Activity, commits, Smart Notes, evidence and handoffs.
+1. **Current truth:** keep control-plane surfaces coherent.
+2. **Assistant lane:** reconcile authorized Cloudflare/live release mechanism and runtime target.
+3. **Team accountability:** audit actual recent work against Activity, commits, Smart Notes, tests and handoffs.
+4. **Smart Notes:** verify canonical placement, provenance, retrieval and use.
+5. **Work queue:** classify stale/duplicate/deferred issues without destroying useful history.
+6. **Cold Naya:** prove behavioral continuation.
+7. **Concurrency:** strengthen existing claim/block controls only where evidence requires it.
+8. **Compounding:** close the first missing machine-enforced learning link.
+9. **Retrieval:** benchmark provenance, temporal state and supersession.
+10. **Hub:** project canonical upstream intelligence only; never become a second truth database.
 
-### P0-3 — SMART NOTE ACCOUNTABILITY
-Verify that Smart Notes are being created in the canonical architecture and are evidence-backed/retrievable.
+## 10/10 MEANS EVIDENCE
 
-### P0-4 — WORK QUEUE HYGIENE
-Classify active issues and prevent historical/deferred work from becoming today's execution queue.
+10/10 is earned only when:
 
-### P0-5 — WORKFLOW AUTHORITY
-Finish workflow-by-workflow authority classification without creating a competing deployment lane.
-
-### P0-6 — COLD NAYA
-Run behavioral continuation proof, not merely document/navigation proof.
-
-### P0-7 — CONCURRENCY
-Strengthen existing claim/block infrastructure if actual evidence shows collision risk.
-
-### P1 — COMPOUNDING
-Close the first missing machine-enforced link in the intelligence-learning loop.
-
-### P1 — RETRIEVAL
-Benchmark provenance, temporal state, supersession and retrieval quality.
-
-### P2 — HUB / RELEASE
-Advance the Hub only from canonical upstream intelligence and only through authorized runtime/release proof.
-
----
-
-# 14. 10/10 DEFINITION
-
-NayaPOWER earns 10/10 only when evidence shows:
-
-- one discoverable current truth;
-- one authority hierarchy;
-- one active work selection;
-- no silent duplicate work;
+- current truth is singular and discoverable;
+- authority is unambiguous;
+- work is owned and non-duplicated;
 - Smart Notes are canonical, evidence-backed and retrievable;
-- meaningful work is automatically recorded;
-- consequential execution is governed;
-- verification is independent where required;
-- a cold Naya can continue without conversational archaeology;
+- meaningful execution leaves durable Activity;
+- governed execution cannot silently bypass its boundaries;
+- independent verification exists where required;
+- a cold Naya can continue;
 - learning changes future behavior;
 - runtime/release claims have matching runtime evidence;
 - the Hub projects the engine rather than becoming another engine.
 
-A document saying “10/10” is not proof of 10/10.
+## FINAL TEAM NAYA LOOP
 
----
+`RESTORE → ORIENT → CHECK OWNERSHIP → SELECT ONE → EXECUTE → VERIFY → RECORD → LEARN → HAND OFF`
 
-# 15. CURRENT SCORE
-
-**Working assessment: approximately 8/10 for the repository as a Superbrain operating substrate.**
-
-This is an audit judgment, not a canonical repository score.
-
-The system is below 10 primarily because:
-
-1. control-plane next-action coherence has just been found to be inconsistent;
-2. workflow/release authority still has an unresolved external Assistant-lane boundary;
-3. Cold-Naya behavioral continuation is not repeatedly proven;
-4. Smart Note → future use/learning is only partially proven;
-5. concurrency is not comprehensively exercised;
-6. retrieval/supersession quality is not fully benchmarked;
-7. historical/current work classification still requires active maintenance;
-8. not every execution path is yet mechanically guaranteed to leave a complete receipt/handoff;
-9. live Hub/runtime parity is not fully proven.
-
-The score can only rise through evidence.
-
----
-
-# 16. TODAY'S ONE NEXT ACTION
-
-> **Reconcile the control-plane next-action conflict between STATE and BLOCKS so exactly one authoritative next action is exposed; then execute that action with evidence, Activity, verification, and successor handoff.**
-
-This is intentionally the first action.
-
-A Superbrain cannot safely coordinate a team while its own canonical control surfaces disagree about what comes next.
-
----
-
-# 17. SUCCESS CRITERIA FOR THIS RESET
-
-At the end of this reset, a cold Naya must be able to answer from this folder plus canonical sources:
-
-### What are we building?
-NayaPOWER — a governed persistent intelligence operating architecture for continuous human + AI work.
-
-### Why?
-To let an ordinary human pursue meaningful goals with AI without becoming an AI project manager, while preserving intelligence, authority, evidence and continuity.
-
-### What is current?
-`TORCH-59-MACHINE-TRUTH-RESTORATION` is the active P0 block.
-
-### What is true?
-Only repository/runtime evidence at the appropriate verification tier is authoritative.
-
-### What is done?
-Real control-plane, execution-boundary, Activity, workflow-cleanup and Cold-Naya navigation work has been implemented and partially independently verified.
-
-### What is not done?
-Full behavioral continuity, complete compounding, complete retrieval quality, concurrency proof and authorized live Assistant-lane runtime proof remain incomplete.
-
-### Where do I work?
-Start in `.naya/TEAM-NAYA/`, then move through canonical control-plane and source-map references into implementation/evidence.
-
-### Where do I record?
-Canonical events/Activity plus the appropriate Team Naya communication and Smart Note surfaces.
-
-### What must I not do?
-Do not duplicate systems, revive historical work, bypass authority, guess external runtime values, or claim proof without evidence.
-
-### What do I do next?
-Resolve the current control-plane next-action conflict, then execute exactly one authorized next action.
-
----
-
-# FINAL TEAM NAYA LAW
-
-**One brain. One truth model. One authority model. One current work selection. One event model. One Activity stream. One Smart Note model. One evidence model. One successor path. Many bounded Naya perspectives.**
-
-**READ → UNDERSTAND → LEAD → EXECUTE → VERIFY → RECORD → COMPOUND → HAND OFF → CONTINUE.**
+**Do not optimize the appearance of intelligence. Optimize the intelligence of the operating system.**
 
 **Do the work. Prove the work. Record the work. Make the next Naya better.**
 
