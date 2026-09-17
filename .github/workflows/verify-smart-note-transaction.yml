@@ -30,6 +30,10 @@ jobs:
         run: python scripts/verify-team-naya-communication.py
       - name: End-to-end Smart Note transaction proof
         run: python scripts/verify-smart-note-transaction.py
+      - name: Privacy boundary proof
+        run: python -m pytest -q tests/test_personal_feed_privacy_boundary.py
+      - name: Cross-process transaction lock proof
+        run: python -m pytest -q tests/test_smart_note_transaction_concurrency.py
       - name: Install Intelligent Hub
         working-directory: NAYANET/HUB
         run: npm install
