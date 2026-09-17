@@ -1,0 +1,26 @@
+{
+  "$schema": "naya/github-issue-audit/v1",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "observed_at": "2026-09-17T02:40:00Z",
+  "source": "GitHub issue search: repo:SoulSchoolAcademy/NayaPOWER is:issue is:open",
+  "observed_open_issue_count": 61,
+  "classification_status": "INCOMPLETE_BY_DESIGN",
+  "classified_issue_count": 11,
+  "unclassified_issue_count": 50,
+  "rule": "Every open issue must be classified before the optimization gate may become GREEN.",
+  "classification_values": ["CANONICAL","ACTIVE_DEPENDENCY","PRODUCT_ASSET","HISTORICAL_INTELLIGENCE","REFERENCE","DUPLICATE","SUPERSEDED","ORPHAN","UNKNOWN","BLOCKED"],
+  "classified": [
+    {"number":243,"status":"CANONICAL","role":"P0 execution observability/preflight/evidence/handoff program","next":"Machine-enforce the execution contract and connect evidence to the real boundary."},
+    {"number":237,"status":"CANONICAL","role":"Lead Mode / Activity corrective execution doctrine","next":"Preserve as current operating context; avoid duplicating its instructions elsewhere."},
+    {"number":236,"status":"CANONICAL","role":"Intelligent Hub execution sequence","next":"Depends on runtime/deployment authority reconciliation before live advancement."},
+    {"number":235,"status":"CANONICAL","role":"Anti-stop execution invariant","next":"Enforce through runtime/session/handoff mechanisms rather than prose alone."},
+    {"number":234,"status":"ACTIVE_DEPENDENCY","role":"Workflow race audit","next":"Inventory and classify every workflow before retiring or consolidating any."},
+    {"number":233,"status":"ACTIVE_DEPENDENCY","role":"Hub execution resume directive","next":"Reconcile with current control-plane state and eliminate stale deployment assumptions."},
+    {"number":151,"status":"HISTORICAL_INTELLIGENCE","role":"Activity Feed continuity history","next":"Preserve evidence but do not treat old runtime references as current authority."},
+    {"number":195,"status":"HISTORICAL_INTELLIGENCE","role":"Historical canonical Hub release proof attempt","next":"Use as evidence of unresolved release history; current release authority must be separately verified."},
+    {"number":81,"status":"ACTIVE_DEPENDENCY","role":"CI/workflow optimization history","next":"Merge findings into the workflow authority audit; avoid parallel duplicate cleanup programs."},
+    {"number":66,"status":"ACTIVE_DEPENDENCY","role":"Mechanically enforce operating standard","next":"Use the optimization gate and execution gates as implementation surfaces."},
+    {"number":62,"status":"ACTIVE_DEPENDENCY","role":"Persistent session/continuity model","next":"Implement real Session records and bind Activity to sessions."}
+  ],
+  "required_completion": "Fetch the complete 61-issue population, classify every remaining issue, identify duplicates/superseded issues, and close/archive only after evidence preserves required history."
+}
