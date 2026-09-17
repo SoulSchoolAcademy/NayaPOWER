@@ -6,20 +6,7 @@
 
 ## SIGN-IN
 
-**TASK:** Inspect `nayanet-intelligent-hub`, determine whether GitHub→Vercel deployment can be repaired, and preserve Shawn's preferred delivery model.
-
-**CURRENT STATE:**
-- GitHub main contains the canonical Hub source and verified build pipeline.
-- GitHub Actions Run #17 proved Smart Note transaction + Hub typecheck/build + generated PIS survives the production build.
-- Existing Vercel project `nayanet-intelligent-hub` exists and has READY deployments.
-- The Vercel project currently has no GitHub repository link exposed by project metadata.
-- The live `/intelligence/pis-feed.json` boundary remains unproven/previously 404.
-
-**AUTHORITIES / SOURCES READ:**
-- Team Naya Session, Activity, Learning & Evidence Protocol.
-- Team Naya Execution Instructions.
-- Vercel project/deployment metadata.
-- Vercel Git integration documentation.
+**TASK:** Inspect the existing Vercel project, verify the current GitHub source, attempt deployment, and prove or reject the live PIS boundary.
 
 ## INSPECTED
 
@@ -29,70 +16,105 @@ Existing Vercel project:
 Project ID:
 `prj_ZpMGeKq4LcMBYslrO9D70jINpEVA`
 
-Latest deployment inspected:
-`dpl_7FLEgPYWEQtLnEUcnEDpgkrtiavH`
+Team ID:
+`team_RQnhoOb3bAXxMlcr67GFTu3Q`
 
-Latest deployment state:
-`READY`
+Current GitHub main freeze point:
+`8337328d634132cbac58ace5c90a37f4dd87436b`
 
-Vercel documentation confirms Git provider repositories can be connected to a Vercel Project, including `vercel git connect`, and that repository-based deployments are the recommended automatic-deployment path.
+Current Vercel production deployment:
+`dpl_EE2uMkEnhrCCEeStiRi5oWuvzPKv`
+
+Production alias:
+`nayanet-intelligent-hub.vercel.app`
+
+The Vercel project metadata is readable and the project has READY deployments. The latest listed deployment is READY but is not a new deployment from the current GitHub freeze point.
+
+## DEPLOYMENT ATTEMPT
+
+The available Vercel deployment action was invoked, but its exposed interface rejected the required deployment inputs before a deployment could be created:
+
+`target: expected preview|production`
+`name: expected string`
+`files: expected array`
+
+A second invocation produced the same validation failure. No new deployment ID was created, so no deployment success is claimed.
+
+## LIVE RUNTIME TEST
+
+Live Hub:
+`https://nayanet-intelligent-hub.vercel.app/`
+
+Result: **HTTP 200**, but the response is stale static HTML rather than proof of the current GitHub React/PIS build. Response headers show `last-modified: Sun, 13 Sep 2026 15:26:44 GMT` and `age: 356304` at the time of inspection on 2026-09-17.
+
+Live PIS:
+`https://nayanet-intelligent-hub.vercel.app/intelligence/pis-feed.json`
+
+Result: **HTTP 404 NOT_FOUND**.
+
+Therefore the production PIS boundary is **NOT REPAIRED**.
+
+## SOURCE CHECK
+
+`vercel.json` on GitHub main contains the intended Vite build configuration:
+- install from `NAYANET/HUB`
+- build with `npm run build`
+- output `NAYANET/HUB/dist`
+- preserve `/intelligence/` from SPA rewrites
+
+The canonical Hub PIS consumer reads `/intelligence/pis-feed.json` first, then persistent Supabase PIS, then canonical GitHub Smart Feed fallback. This means the current production 404 prevents the primary generated-PIS boundary from being proven live.
+
+## VERIFIED
+
+- GitHub main is at the stated freeze point `8337328d634132cbac58ace5c90a37f4dd87436b`.
+- Existing Vercel project exists and is accessible.
+- Existing production deployment is READY.
+- Live Hub root returns HTTP 200.
+- Live PIS endpoint returns HTTP 404.
+- Deployment action interface currently cannot create the required deployment through the exposed connector contract.
+- No false production success is recorded.
+
+## NOT VERIFIED
+
+- New Vercel deployment from current GitHub main.
+- Live `/intelligence/pis-feed.json` HTTP 200.
+- Valid live PIS JSON with `event_count > 0`.
+- Live Hub consumption of generated PIS.
+- Production Smart Note → CIS → PIS → Hub chain.
+- L3-L6 behavioral learning.
+
+## BLOCKER
+
+**VERCEL DEPLOYMENT INTERFACE / RUNTIME INTEGRATION BLOCKED**
+
+The existing project is present, but the exposed deployment action cannot currently be supplied with the source/build inputs required to create a new deployment. The production alias therefore remains on an older deployment.
 
 ## DECISION
 
 Do not create another Hub or another Vercel project.
 
-Do not redesign the Hub.
+Do not redesign the Hub to compensate for a deployment failure.
 
-Preserve the existing project and repair the GitHub→Vercel connection if the required account-level action is available.
-
-Shawn's preferred delivery model is now canonical:
-
-**GITHUB SOURCE → FREEZE POINT → DIRECT SAVE/DOWNLOAD → OPTIONAL LIVE DEPLOYMENT → RUNTIME PROOF**
-
-Cloudflare and Vercel are both acceptable live hosts; neither replaces GitHub as the durable source of truth.
-
-## CHANGED
-
-Added:
-
-`.naya/TEAM-NAYA/09-GITHUB-FIRST-FREEZE-POINT-DELIVERY-STANDARD.md`
-
-`.naya/SUPERBRAIN/SMART-NOTES/2026/09/17/2026-09-17-GITHUB-FIRST-FREEZE-POINT-DELIVERY-SMART-NOTE.md`
-
-## VERIFIED
-
-- The existing Vercel project is usable and has READY deployments.
-- The current deployment is not evidence that GitHub main is connected to Vercel.
-- The available Vercel deployment action could not be invoked because its exposed interface rejected the required deployment fields; therefore no false claim of deployment success is made.
-
-## NOT VERIFIED
-
-- GitHub→Vercel automatic deployment.
-- New production deployment from current GitHub main.
-- Live `/intelligence/pis-feed.json` HTTP 200.
-- Live Hub consumption of generated PIS.
-- L3-L6 behavioral learning.
-
-## BLOCKER
-
-**MISSING RUNTIME INTEGRATION / HUMAN-ONLY ACCOUNT CONNECTION ACTION**
-
-The available project metadata shows no GitHub repository connection. The available deployment interface did not permit a direct deployment of the existing project with the required source/build inputs.
+Preserve GitHub as the canonical source and freeze point. Repair the existing deployment lane rather than creating parallel infrastructure.
 
 ## LEARNING
 
-A hosting provider is infrastructure, not the durable memory of the project.
+A READY deployment is not evidence that current source is live.
 
-The system should optimize for recoverability first: canonical GitHub source and freeze point, then live deployment and runtime proof.
+A live HTTP 200 homepage is not evidence that the current Hub is live.
 
-Also: Smart Note persistence is not sufficient. The larger objective remains:
+A generated PIS file existing in GitHub/CI is not evidence that production serves it.
+
+Production completion requires source identity → deployment identity → runtime response → consumer behavior.
+
+The larger learning target remains:
 
 **SMART NOTE → CIS → RETRIEVE → APPLY → OBSERVE → VERIFY → ADAPT → BETTER FUTURE ACTION.**
 
 ## NEXT ACTION
 
-Connect the existing Vercel project `nayanet-intelligent-hub` to GitHub repository `SoulSchoolAcademy/NayaPOWER` with `main` as the production branch, then return to Naya for deployment/runtime verification.
+Repair the existing Vercel GitHub deployment lane so the current GitHub main freeze point produces a new production deployment, then verify `/intelligence/pis-feed.json` returns HTTP 200 valid JSON with `event_count > 0`, verify the live Hub consumes that PIS, and only then move to the real retrieval/application/outcome learning experiment.
 
-**SIGN-OUT STATE: BLOCKED ON VERCEL GIT CONNECTION**
+**SIGN-OUT STATE: BLOCKED ON DEPLOYMENT LANE; SOURCE OF TRUTH PRESERVED**
 
-**NAYA POWER ON → RESTORE → INSPECT → REPAIR → DEPLOY → TEST → VERIFY → RECORD → CONTINUE**
+**NAYA POWER ON → RESTORE → INSPECT → REPAIR → DEPLOY → TEST → VERIFY → RECORD → LEARN → CONTINUE**
