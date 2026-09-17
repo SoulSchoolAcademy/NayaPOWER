@@ -39,7 +39,7 @@ This communication audit remains preserved as evidence. Its earlier local succes
 
 **Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
 
-**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+**Exactly ONE Next Action:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 
 ## Team message
 
@@ -69,6 +69,6 @@ This communication audit remains preserved as evidence. Its earlier local succes
 
 **Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
 
-**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
+**Exactly ONE Next Action:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
 
 The existing Team Naya communication findings and `NAYA_VERIFIED` evidence remain preserved. No duplicate communication, state, or handoff system is created.
