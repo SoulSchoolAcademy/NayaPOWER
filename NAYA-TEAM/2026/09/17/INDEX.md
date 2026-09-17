@@ -33,7 +33,7 @@ At entry time, read the current [STATE](../../../.naya/control-plane/STATE.json)
 - **Protected principle:** Team Naya is not 10/10 because documents exist. It is 10/10 only when a cold Naya can actually enter, understand, act, verify, record, learn, communicate, and hand off without Shawn reconstructing the missing state.
 - **Communication state:** shared Team Naya communication is PROVEN; governed execution automatically producing a Team Naya `NAYA_VERIFIED` event is PROVEN; the latest E2E proof produced a bound execution event, Team Naya event, explicit successor, and idempotent replay.
 - **Evidence:** GitHub Actions run `35276914132`, execution event `SE-20260917-212909-activity-cl-team-bridge-001-act-team-bridge-001-c8b276`, Team Naya event `SE-20260917-212909-team-naya-verified-388b2aea`.
-- **Exactly ONE Next Action:** have the next Naya retrieve the `NAYA_VERIFIED` event from the shared Team Naya Activity surface and continue from its evidence and successor without asking Shawn to reconstruct the execution state.
+- **Exactly ONE Team Naya Next Action:** align Team Naya continuity with the canonical P0 control-plane action below. The shared Activity `NAYA_VERIFIED` event remains evidence, not a competing successor action.
 
 ## Team communication law
 
@@ -50,4 +50,17 @@ Nayas may ask one another questions through the Team Naya communication surface.
 - **Readiness gate:** [Intelligent Hub Readiness Scorecard](../INTELLIGENT-HUB-READINESS-SCORECARD.md)
 - **Current principle:** understand the whole puzzle before building one piece.
 - **Current state:** architecture is now explicitly mapped; implementation/verification state for each Hub area must still be established with evidence rather than inferred from tab existence.
-- **Exactly ONE Next Action:** run a cold-Naya traversal of the new Hub Master Map + Readiness Scorecard, then identify the first Hub area whose implementation state is genuinely unproven and create the smallest evidence-backed build/verification mission for it.
+- **Hub work is subordinate to the canonical P0:** the Hub Master Map + Readiness Scorecard remain protected/read-first references. No Hub build or redesign is authorized while the active P0 is unresolved.
+
+## Canonical continuity reconciliation — 2026-09-17
+
+The earlier Team Naya projection exposed a successor action based on the `NAYA_VERIFIED` Activity event while canonical STATE/BLOCKS exposed the active P0 Assistant-lane runtime reconciliation action. This was a projection conflict.
+
+**Authoritative mission:** P0 — MACHINE TRUTH RESTORATION.  
+**Authoritative state:** `LIVE_BOUND`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.  
+**Authoritative block:** `TORCH-59-MACHINE-TRUTH-RESTORATION` — ACTIVE.  
+**Authoritative single next action:** Reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once the real release path is established, execute the exact current Assistant-lane runtime baseline.
+
+The `NAYA_VERIFIED` Activity event remains valid evidence of the completed Team Naya bridge behavior, but it is not the current successor action. Hub work remains protected and subordinate to the active P0.
+
+**Continuity rule:** NAYA-TEAM projections and successor records must expose this same mission/state/block/next-action tuple; canonical STATE/BLOCKS remain authoritative.
