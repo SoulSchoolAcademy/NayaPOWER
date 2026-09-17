@@ -20,20 +20,10 @@ EVENTS_ROOT = ROOT / ".naya" / "memory" / "events"
 INDEX_PATH = EVENTS_ROOT / "INDEX.json"
 EVENT_TYPE = "team-communication"
 ALLOWED_INTENTS = {
-    "NAYA_SIGNED_IN",
-    "NAYA_INSPECTED",
-    "NAYA_QUESTION",
-    "NAYA_DISCOVERY",
-    "NAYA_DECISION",
-    "NAYA_CHANGED",
-    "NAYA_TESTED",
-    "NAYA_VERIFIED",
-    "NAYA_BLOCKED",
-    "NAYA_RECOVERED",
-    "NAYA_LEARNED",
-    "NAYA_HANDOFF",
-    "NAYA_COMPLETED",
-    "NAYA_CONTINUING",
+    "NAYA_SIGNED_IN", "NAYA_INSPECTED", "NAYA_QUESTION", "NAYA_DISCOVERY",
+    "NAYA_DECISION", "NAYA_CHANGED", "NAYA_TESTED", "NAYA_VERIFIED",
+    "NAYA_BLOCKED", "NAYA_RECOVERED", "NAYA_LEARNED", "NAYA_HANDOFF",
+    "NAYA_COMPLETED", "NAYA_CONTINUING",
 }
 
 
@@ -48,24 +38,16 @@ def _event_id(intent: str, actor_id: str, session_id: str, effective_at: str) ->
     return f"SE-{stamp:%Y%m%d-%H%M%S}-team-{token}-{digest}"
 
 
-def build_team_activity_event(
-    *,
-    intent: str,
-    actor_id: str,
-    session_id: str,
-    mission: str,
-    message: str,
-    next_action: str,
-    effective_at: Optional[str] = None,
-    recipients: Optional[list[str]] = None,
-    evidence: Optional[list[str]] = None,
-) -> dict[str, Any]:
+def build_team_activity_event(*, intent: str, actor_id: str, session_id: str, mission: str, message: str, next_action: str, successor: Optional[str] = None, effective_at: Optional[str] = None, recipients: Optional[list[str]] = None, evidence: Optional[list[str]] = None) -> dict[str, Any]:
     if intent not in ALLOWED_INTENTS:
         raise ValueError(f"unsupported Team Naya communication intent: {intent}")
     if not actor_id or not session_id or not mission or not message or not next_action:
         raise ValueError("actor_id, session_id, mission, message, and next_action are required")
     effective = effective_at or _stamp()
     event_id = _event_id(intent, actor_id, session_id, effective)
+    continuity = {"next_action": next_action, "handoff_ready": intent in {"NAYA_HANDOFF", "NAYA_COMPLETED", "NAYA_CONTINUING"}}
+    if successor:
+        continuity["successor"] = successor
     return {
         "event_id": event_id,
         "created_at": _stamp(),
@@ -76,62 +58,19 @@ def build_team_activity_event(
         "subject": f"{intent}: {actor_id}",
         "title": f"{intent}: {actor_id}",
         "tags": ["team-communication", intent.lower()],
-        "source": {
-            "kind": "naya-session",
-            "event_id": f"TEAM-{actor_id}-{session_id}-{intent}",
-            "generator": "team_activity_event.build_team_activity_event",
-        },
-        "team": {
-            "intent": intent,
-            "actor_id": actor_id,
-            "session_id": session_id,
-            "recipients": recipients or ["TEAM-NAYA"],
-            "mission": mission,
-            "message": message,
-        },
-        "continuity": {
-            "next_action": next_action,
-            "handoff_ready": intent in {"NAYA_HANDOFF", "NAYA_COMPLETED", "NAYA_CONTINUING"},
-        },
+        "source": {"kind": "naya-session", "event_id": f"TEAM-{actor_id}-{session_id}-{intent}", "generator": "team_activity_event.build_team_activity_event"},
+        "team": {"intent": intent, "actor_id": actor_id, "session_id": session_id, "recipients": recipients or ["TEAM-NAYA"], "mission": mission, "message": message},
+        "continuity": continuity,
         "evidence_ids": evidence or [],
-        "activity_feed_projection": {
-            "feed": "NAYA-ACTIVITY",
-            "event_id": event_id,
-            "title": f"{intent}: {actor_id}",
-            "summary": message,
-        },
+        "activity_feed_projection": {"feed": "NAYA-ACTIVITY", "event_id": event_id, "title": f"{intent}: {actor_id}", "summary": message},
     }
 
 
-def emit_team_activity(
-    *,
-    intent: str,
-    actor_id: str,
-    session_id: str,
-    mission: str,
-    message: str,
-    next_action: str,
-    effective_at: Optional[str] = None,
-    recipients: Optional[list[str]] = None,
-    evidence: Optional[list[str]] = None,
-    events_root: Optional[Path] = None,
-    index_path: Optional[Path] = None,
-) -> dict[str, Any]:
+def emit_team_activity(*, intent: str, actor_id: str, session_id: str, mission: str, message: str, next_action: str, successor: Optional[str] = None, effective_at: Optional[str] = None, recipients: Optional[list[str]] = None, evidence: Optional[list[str]] = None, events_root: Optional[Path] = None, index_path: Optional[Path] = None) -> dict[str, Any]:
     from canonical_event_store import create_or_replay
-
     root = Path(events_root) if events_root else EVENTS_ROOT
-    index = Path(index_path) if index_path else INDEX_PATH
-    event = build_team_activity_event(
-        intent=intent,
-        actor_id=actor_id,
-        session_id=session_id,
-        mission=mission,
-        message=message,
-        next_action=next_action,
-        effective_at=effective_at,
-        recipients=recipients,
-        evidence=evidence,
-    )
+    index = Path(index_path) if index_path else root / "INDEX.json"
+    event = build_team_activity_event(intent=intent, actor_id=actor_id, session_id=session_id, mission=mission, message=message, next_action=next_action, successor=successor, effective_at=effective_at, recipients=recipients, evidence=evidence)
     result = create_or_replay(event, root, index)
     if result.get("status") not in {"CREATED", "REPLAY"}:
         raise ValueError(f"Team Naya communication event was not persisted: {result}")
