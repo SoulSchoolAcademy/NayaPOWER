@@ -108,17 +108,17 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Phase 0 restored the Hub architectural model and exposed a concrete control-plane drift: the recorded canonical Cloudflare release workflow path is absent from current main. The remaining product/runtime blocker is the unavailable Assistant-lane Cloudflare execution surface and lack of an authorized current runtime target.",
-  "single_next_action": "Execute the 01-58 per-area read pass and complete the evidence matrix (SUPERBRAIN/NIA-COMMUNICATION/58-AREAS-EVIDENCE-MATRIX-V1.md + .naya/control-plane/58-V1-EVIDENCE-MATRIX.json); then send the grouping/dependency model to Oscar (#257). Phase 0 of LEAD-NAYA-MASTER-INVESTIGATION-NAYAPOWER-01-58-V1.",
+  "single_next_action": "Send the completed 01-58 read-pass evidence matrix to Oscar for challenge (#257); on concession, execute #55 Hub source/deployment reconciliation (four Hub-candidate artifacts tracked on main).",
   "next_actions": [
     {
       "priority": "P0",
-      "action": "Read every canonical 01-58 doc and complete per-area truth/contradiction/duplicate/gap columns",
+      "action": "Oscar challenge of 01-58 grouping + read-pass evidence matrix (#257)",
       "status": "OPEN"
     },
     {
       "priority": "P0",
-      "action": "Oscar challenge of 01-58 grouping + dependency model (#257)",
-      "status": "PENDING"
+      "action": "Execute #55 reconciliation: classify the four tracked Hub artifacts on main (5:09 baseline, 2026 09 15 NayaNETHUB.html, NAYANET-LIVE-HUB.html, NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE/hub.html) and correct the stale STATE 'deleted' record",
+      "status": "OPEN"
     },
     {
       "priority": "P1",

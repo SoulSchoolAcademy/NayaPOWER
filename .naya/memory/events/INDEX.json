@@ -2,7 +2,7 @@
   "version": "3.0.0",
   "status": "CANONICAL",
   "organization": "YEAR/MONTH/DAY/HOUR/EVENT",
-  "event_count": 44,
+  "event_count": 45,
   "events": [
     {
       "event_id": "SE-20260824-000001-maxess-execution-discipline",
@@ -656,6 +656,15 @@
       "event_id": "SE-20260917-043141-activity-cl-p005-matrix-foundation-act-p005-matri-b1b393",
       "path": "2026\\09\\17\\04\\SE-20260917-043141-activity-cl-p005-matrix-foundation-act-p005-matri-b1b393.json",
       "subject": "P005 Phase-0 evidence-matrix foundation (58/58 path-verified)",
+      "type": "activity",
+      "tags": [
+        "activity"
+      ]
+    },
+    {
+      "event_id": "SE-20260917-043918-activity-cl-p005-read-pass-act-p005-read-p-0371ac",
+      "path": "2026\\09\\17\\04\\SE-20260917-043918-activity-cl-p005-read-pass-act-p005-read-p-0371ac.json",
+      "subject": "P005 01-58 READ PASS COMPLETE (58/58 read; matrix upgraded; #55 reconciliation validated)",
       "type": "activity",
       "tags": [
         "activity"
