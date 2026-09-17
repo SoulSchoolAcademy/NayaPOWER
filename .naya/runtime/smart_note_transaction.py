@@ -1,0 +1,235 @@
+#!/usr/bin/env python3
+"""Canonical Smart Note -> governed learning -> PIS -> Hub transaction.
+
+The Smart Note is the durable human-readable learning record. This module is
+the single transaction boundary that turns one canonical Smart Note into:
+1) a retained CIS learning record,
+2) a projected PIS event for the Intelligent Hub, and
+3) a durable transaction receipt.
+
+No caller may claim completion without all three boundaries succeeding.
+"""
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[2]
+SMART_NOTES_ROOT = ROOT / "SUPERBRAIN" / "SMART-NOTES"
+CIS_ROOT = ROOT / ".naya" / "memory" / "intelligence"
+CIS_PATH = CIS_ROOT / "CIS.json"
+RECEIPTS_ROOT = CIS_ROOT / "transactions"
+PIS_PATH = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
+
+REQUIRED = (
+    "in_a_nutshell", "child", "grammar", "human", "naya", "machine",
+    "learning", "why_it_matters", "how_to_use", "value", "evidence",
+    "current_state", "next_action",
+)
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def slug(value: str) -> str:
+    token = re.sub(r"[^A-Za-z0-9]+", "-", value.strip()).strip("-").upper()
+    return token[:100] or "SMART-NOTE"
+
+
+def note_id(timestamp: str, topic: str) -> str:
+    stamp = timestamp.replace(":", "").replace("+00:00", "Z").replace("-", "")
+    return f"SN-{stamp}-{slug(topic)}"
+
+
+def validate_note(note: dict[str, Any]) -> None:
+    missing = [k for k in REQUIRED if not str(note.get(k, "")).strip()]
+    if missing:
+        raise ValueError("Smart Note missing required perspectives: " + ", ".join(missing))
+    if not isinstance(note["evidence"], list) or not note["evidence"]:
+        raise ValueError("Smart Note requires at least one evidence item")
+    if isinstance(note["next_action"], list):
+        raise ValueError("Smart Note Next Action must be one executable action, not a list")
+
+
+def render_note(note: dict[str, Any]) -> str:
+    evidence = "\n".join(f"- {item}" for item in note["evidence"])
+    return f"""# SMART NOTE — {note["topic"]}
+
+**Timestamp:** {note["timestamp"]}
+**Smart Note ID:** `{note["id"]}`
+**Status:** CANONICAL / TRANSACTIONALLY PROJECTED
+**Type:** Durable intelligence
+**Parent:** NayaPOWER Superbrain
+
+## In a Nutshell
+
+{note["in_a_nutshell"]}
+
+## Child / Derived Note
+
+{note["child"]}
+
+## Grammar Note
+
+{note["grammar"]}
+
+## Human Note
+
+{note["human"]}
+
+## Naya Note
+
+{note["naya"]}
+
+## Machine Note
+
+{note["machine"]}
+
+## Learning Lesson / Adaptive Learning
+
+{note["learning"]}
+
+## Why It Matters
+
+{note["why_it_matters"]}
+
+## How to Use It
+
+{note["how_to_use"]}
+
+## What's In It For Me / You / Us
+
+{note["value"]}
+
+## Evidence / Smart Links
+
+{evidence}
+
+## Current State
+
+{note["current_state"]}
+
+## ONE Next Action
+
+**{note["next_action"]}**
+
+## Transaction State
+
+- Smart Note: **PERSISTED**
+- CIS learning: **{note["cis_status"]}**
+- PIS projection: **{note["pis_status"]}**
+- Hub projection: **{note["hub_status"]}**
+- Receipt: `{note["receipt_id"]}`
+"""
+
+
+def _load_cis() -> dict[str, Any]:
+    if not CIS_PATH.exists():
+        return {"schema_version": "CIS-1.0", "updated_at": utc_now(), "learning": []}
+    return json.loads(CIS_PATH.read_text(encoding="utf-8"))
+
+
+def _write_json(path: Path, body: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(body, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def apply_cis_learning(note: dict[str, Any]) -> dict[str, Any]:
+    cis = _load_cis()
+    rows = cis.setdefault("learning", [])
+    fingerprint = hashlib.sha256(
+        f'{note["topic"]}|{note["learning"]}|{"|".join(note["evidence"])}'.encode("utf-8")
+    ).hexdigest()
+    existing = next((row for row in rows if row.get("fingerprint") == fingerprint), None)
+    if existing:
+        return {"status": "REPLAY", "fingerprint": fingerprint, "learning": existing}
+
+    row = {
+        "learning_id": f"CL-{fingerprint[:16]}",
+        "smart_note_id": note["id"],
+        "topic": note["topic"],
+        "lesson": note["learning"],
+        "machine_consequence": note["machine"],
+        "current_state": note["current_state"],
+        "next_action": note["next_action"],
+        "evidence": note["evidence"],
+        "status": "RETAINED_GOVERNED_CANDIDATE",
+        "fingerprint": fingerprint,
+        "created_at": utc_now(),
+    }
+    rows.append(row)
+    cis["updated_at"] = utc_now()
+    _write_json(CIS_PATH, cis)
+    return {"status": "CREATED", "fingerprint": fingerprint, "learning": row}
+
+
+def build_pis_projection(note: dict[str, Any]) -> dict[str, Any]:
+    import importlib.util
+
+    script = ROOT / "scripts" / "build-smart-feed-projection.py"
+    spec = importlib.util.spec_from_file_location("naya_pis_projection", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("could not load canonical PIS projection builder")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    if not hasattr(module, "build_projection"):
+        raise RuntimeError("canonical PIS projection builder lacks build_projection()")
+    return module.build_projection()
+
+
+def execute(note: dict[str, Any]) -> dict[str, Any]:
+    validate_note(note)
+    stamp = str(note.get("timestamp") or utc_now())
+    note = dict(note)
+    note["timestamp"] = stamp
+    note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
+
+    dt = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc)
+    path = SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / (
+        f"{dt:%Y-%m-%dT%H-%M-%SZ}__{slug(note['topic'])}.md"
+    )
+    if path.exists():
+        existing = path.read_text(encoding="utf-8")
+        if note["id"] not in existing:
+            raise RuntimeError(f"Smart Note path conflict: {path}")
+    else:
+        note["cis_status"] = "PENDING"
+        note["pis_status"] = "PENDING"
+        note["hub_status"] = "PENDING"
+        note["receipt_id"] = f"SN-RCP-{note['id']}"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(render_note(note), encoding="utf-8")
+
+    cis = apply_cis_learning(note)
+    note["cis_status"] = cis["status"]
+    pis = build_pis_projection(note)
+    note["pis_status"] = pis["status"]
+    note["hub_status"] = "PROJECTED"
+    note["receipt_id"] = f"SN-RCP-{note['id']}"
+    path.write_text(render_note(note), encoding="utf-8")
+
+    receipt = {
+        "schema_version": "SMART-NOTE-TRANSACTION-1.0",
+        "receipt_id": note["receipt_id"],
+        "status": "VERIFIED_TRANSACTION" if pis.get("status") in {"CREATED", "REBUILT"} else "REPLAY_TRANSACTION",
+        "smart_note_id": note["id"],
+        "smart_note_path": str(path.relative_to(ROOT)).replace("\\", "/"),
+        "cis": cis,
+        "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"]},
+        "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/")},
+        "evidence": note["evidence"],
+        "current_state": note["current_state"],
+        "next_action": note["next_action"],
+        "completed_at": utc_now(),
+    }
+    receipt_path = RECEIPTS_ROOT / f"{note['id']}.json"
+    _write_json(receipt_path, receipt)
+    return {"status": receipt["status"], "smart_note": path, "cis": cis, "pis": pis, "receipt": receipt_path}
+
+
+__all__ = ["execute", "validate_note", "REQUIRED"]
