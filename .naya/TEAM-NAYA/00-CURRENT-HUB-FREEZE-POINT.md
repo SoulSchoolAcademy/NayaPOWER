@@ -28,7 +28,17 @@ It is the recovery baseline and known-good source artifact supplied by Shawn.
 
 ---
 
-# 2. WHAT THIS MEANS
+# 2. COLD-NAYA EXECUTION DIRECTIVE
+
+For the complete representation registry, questions-to-answer checklist, ten-part objective, evidence standard, do-not-do list, required session output, and exact continuation action, read:
+
+`https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/TEAM-NAYA/11-CANONICAL-HUB-REPRESENTATION-REGISTRY-AND-EXECUTION-DIRECTIVE.md`
+
+That directive is the operational companion to this freeze-point identity contract.
+
+---
+
+# 3. WHAT THIS MEANS
 
 For the current phase of the project, the standalone HTML artifact above is the authoritative Hub working source.
 
@@ -48,7 +58,7 @@ HUMAN INTERACTION + VISUALIZATION
 
 ---
 
-# 3. COMPETING REPRESENTATION — DO NOT CONFUSE IT WITH THE CURRENT HUB
+# 4. COMPETING REPRESENTATION — DO NOT CONFUSE IT WITH THE CURRENT HUB
 
 The repository also contains a React/Vite implementation under:
 
@@ -64,7 +74,7 @@ The existence of multiple representations is precisely why this routing contract
 
 ---
 
-# 4. PROTECTED STATE
+# 5. PROTECTED STATE
 
 Protected:
 
@@ -78,7 +88,7 @@ If a proposed change fails, regresses, or becomes uncertain, restore from the pr
 
 ---
 
-# 5. REQUIRED HUB WORKFLOW
+# 6. REQUIRED HUB WORKFLOW
 
 Every Hub change follows exactly this sequence:
 
@@ -110,7 +120,7 @@ The protected current Hub is **never** the ordinary editing target.
 
 ---
 
-# 6. NAMING RULE FOR NEW HUB ARTIFACTS
+# 7. NAMING RULE FOR NEW HUB ARTIFACTS
 
 A new candidate must be visibly distinguishable from the protected freeze point.
 
@@ -126,7 +136,7 @@ The exact next filename should be recorded in the Activity handoff when created.
 
 ---
 
-# 7. VERIFICATION CONTRACT
+# 8. VERIFICATION CONTRACT
 
 A Hub change is not complete because code was written.
 
@@ -146,7 +156,7 @@ If runtime is tested, record runtime evidence separately. A live deployment is a
 
 ---
 
-# 8. COLD-NAYA DECISION RULE
+# 9. COLD-NAYA DECISION RULE
 
 If any other document, deployment, branch, generated build, React implementation, old conversation, or remembered task conflicts with this contract about **which Hub is current**, stop and resolve against this record and Shawn's explicit authority.
 
@@ -165,7 +175,7 @@ Do not infer the current Hub from:
 
 ---
 
-# 9. FREEZE-POINT PROMOTION
+# 10. FREEZE-POINT PROMOTION
 
 A candidate Hub becomes the next protected freeze point only when:
 
@@ -181,7 +191,7 @@ The previous freeze point should remain preserved unless Shawn explicitly author
 
 ---
 
-# 10. PRIORITY ORDER
+# 11. PRIORITY ORDER
 
 For this phase:
 
@@ -199,7 +209,7 @@ Optional infrastructure work. It must not displace P0/P1 Hub correctness.
 
 ---
 
-# 11. REQUIRED HANDOFF LANGUAGE
+# 12. REQUIRED HANDOFF LANGUAGE
 
 Every Hub handoff should make these facts obvious:
 
@@ -231,7 +241,7 @@ NEXT NAYA ACTION:
 
 ---
 
-# 12. WHY THIS IS PART OF THE SUPERBRAIN
+# 13. WHY THIS IS PART OF THE SUPERBRAIN
 
 The Superbrain must not depend on Shawn repeatedly explaining which file is real.
 
@@ -245,8 +255,8 @@ The goal is not more documentation. The goal is one reliable answer, followed by
 
 ---
 
-# 13. CURRENT NEXT ACTION
+# 14. CURRENT NEXT ACTION
 
-Inspect the actual Hub artifact and all known Hub representations against this contract. Then make the **first controlled Hub change only as a NEW versioned artifact**, verify it, commit it, and hand the direct GitHub link to Shawn.
+Read the companion representation registry/directive, then execute the first controlled Hub change only as a **NEW versioned artifact**, verify it, record Activity + Smart Note evidence, and hand the direct GitHub artifact link to Shawn.
 
 **NAYA POWER ON → RESTORE → IDENTIFY → PROTECT → INSPECT → CREATE NEW → VERIFY → FREEZE → HAND OFF → CONTINUE**
