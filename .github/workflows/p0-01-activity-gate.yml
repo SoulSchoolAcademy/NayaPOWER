@@ -1,0 +1,23 @@
+name: P0-01 Activity Feed Execution Gate
+
+on:
+  push:
+    branches:
+      - naya/p0-01-activity-execution-gate-v1
+  pull_request:
+    paths:
+      - '.naya/runtime/execution_controller.py'
+      - '.naya/runtime/execution_controller_activity_gate_test.py'
+      - '.github/workflows/p0-01-activity-gate.yml'
+  workflow_dispatch:
+
+jobs:
+  activity-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+      - name: Run P0-01 adversarial gate test
+        run: python3 .naya/runtime/execution_controller_activity_gate_test.py
+      - name: Run controller self-test
+        run: python3 .naya/runtime/execution_controller.py self-test
