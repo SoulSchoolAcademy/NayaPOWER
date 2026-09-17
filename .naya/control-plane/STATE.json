@@ -104,12 +104,12 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "The Assistant-lane Cloudflare/live release mechanism, authorized runtime target, exact source parity, and desktop/mobile baseline are now freshly proven. The remaining P0 work is to reconcile canonical current-state records against that proof and rerun the Cold-Naya readiness gate from the resulting current HEAD.",
-  "single_next_action": "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD.",
+  "bottleneck": "The canonical Assistant Cloudflare release mechanism and authorized target are established, but fresh execution against the exact live main HEAD is not currently dispatchable from the connected GitHub execution surface. The next P0 boundary is authorized workflow dispatch, followed by observed runtime and exact source/runtime/behavior verification.",
+  "single_next_action": "Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD; execute it, observe the actual runtime, verify source → execution → runtime → behavior, record the result in Team Naya Activity, and then rerun the Cold-Naya readiness gate. Do not substitute GitHub 509 or another runtime.",
   "next_actions": [
     {
       "priority": "P0",
-      "action": "Reconcile the canonical STATE/BLOCKS/Team Naya continuity records against the fresh Assistant-lane runtime proof, then rerun the Cold-Naya readiness gate from the resulting current HEAD.",
+      "action": "Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD; execute it, observe the actual runtime, verify source → execution → runtime → behavior, record the result in Team Naya Activity, and then rerun the Cold-Naya readiness gate. Do not substitute GitHub 509 or another runtime.",
       "status": "ACTIVE"
     },
     {
@@ -119,7 +119,8 @@
     }
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE PROOF RECONCILIATION\\nResolve live refs/heads/main first. Read the fresh Assistant-lane runtime Activity receipt, STATE, BLOCKS, MAP, PROOF, and current Team Naya continuity. Reconcile the canonical current-state tuple to the verified Assistant release/runtime evidence. Then rerun the Cold-Naya readiness gate from the resulting live HEAD. Do not substitute GitHub 509. Do not touch the protected Hub artifact.\\nTAG → YOU’RE IT → EXECUTE.",
+  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE EXECUTION
+Resolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, and current Team Naya Activity. Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact current HEAD. Execute only that canonical lane. Observe and verify the runtime. Record the result in Activity. If dispatch is unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Do not substitute GitHub 509 or another runtime. TAG → YOU’RE IT.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
