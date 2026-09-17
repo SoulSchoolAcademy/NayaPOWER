@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "status": "CANONICAL",
+  "organization": "SESSIONS",
+  "session_count": 3,
+  "sessions": [
+    {
+      "session_id": "NAYA-20260917-035241-C251",
+      "claim_id": "CL-P003-P004-SESSION-INDEX",
+      "action_id": "ACT-SESSION-RUNTIME-AND-OPERATING-INDEX",
+      "run_id": "RUN-20260917035241",
+      "entered_at": "2026-09-17T03:52:41.834929+00:00",
+      "status": "COMPLETED",
+      "path": "NAYA-20260917-035241-C251.json"
+    },
+    {
+      "session_id": "NAYA-20260917-035249-0FE4",
+      "claim_id": "CL-P003-P004-SESSION-INDEX",
+      "action_id": "ACT-SESSION-RUNTIME-AND-OPERATING-INDEX",
+      "run_id": "RUN-20260917035249",
+      "entered_at": "2026-09-17T03:52:49.516316+00:00",
+      "status": "COMPLETED",
+      "path": "NAYA-20260917-035249-0FE4.json"
+    },
+    {
+      "session_id": "NAYA-20260917-035950-4BBC",
+      "claim_id": "CL-P004-CLASSIFICATION-PASS",
+      "action_id": "ACT-CLASSIFICATION-PASS-GATE-GREEN",
+      "run_id": "RUN-20260917035950",
+      "entered_at": "2026-09-17T03:59:50.336968+00:00",
+      "status": "COMPLETED",
+      "path": "NAYA-20260917-035950-4BBC.json"
+    }
+  ]
+}

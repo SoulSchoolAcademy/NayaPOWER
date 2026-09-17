@@ -2,6 +2,9 @@
 
 ## SMART NOTE 01 — WHAT IS NAYA POWER?
 
+Subject ID: NAYA-POWER-01
+Status: CANONICAL INTELLIGENCE - V1
+
 ### IN A NUTSHELL
 Naya Power turns AI from a tool you repeatedly manage into an intelligent operating partner that preserves what matters, carries appropriate operational work, verifies results, learns from experience, and becomes more useful over time — while you remain the human director.
 
@@ -30,6 +33,9 @@ Naya Power is not primarily about getting better answers from AI. It is about cr
 Less repetition. Less lost knowledge. Less AI babysitting. More continuity, leverage, better decisions, better execution, and an AI partner that becomes increasingly useful because it can build on what matters.
 
 ## SMART NOTE 02 — WHAT IS NAYA?
+
+Subject ID: NAYA-POWER-02
+Status: CANONICAL INTELLIGENCE - V1
 
 ### IN A NUTSHELL
 Naya is the intelligent operating partner within Naya Power. She helps you think, create, decide, act, verify, learn, and continue — while you remain the director and authority.
@@ -60,6 +66,9 @@ Less explaining, repetition, babysitting, and lost knowledge. More clarity, leve
 
 ## SMART NOTE 03 — WHAT ARE SMART NOTES?
 
+Subject ID: NAYA-POWER-03
+Status: CANONICAL INTELLIGENCE - V1
+
 ### IN A NUTSHELL
 A Smart Note turns one meaningful intelligence event into something understandable, reusable, searchable, and capable of improving what happens next. It preserves the meaning — not merely the words.
 
@@ -88,6 +97,9 @@ Smart Notes are the memory cells of a compounding intelligence system. They tran
 You stop losing the good stuff. Ideas don't disappear, decisions don't have to be rediscovered, solutions don't have to be reinvented, and lessons don't have to be learned twice. Your system remembers what matters.
 
 ## SMART NOTE 04 — YOUR INTELLIGENCE TODAY
+
+Subject ID: NAYA-POWER-04
+Status: CANONICAL INTELLIGENCE - V1
 
 ### IN A NUTSHELL
 Your Intelligence Today is the daily briefing of your living intelligence. It looks across the day's meaningful intelligence and tells you what happened, what mattered, what you learned, what changed, and what deserves to be carried forward.
@@ -118,6 +130,9 @@ You don't have to spend your life reviewing your own life. You get the highlight
 
 ## SMART NOTE 05 — INTELLIGENCE REPORTS
 
+Subject ID: NAYA-POWER-05
+Status: CANONICAL INTELLIGENCE - V1
+
 ### IN A NUTSHELL
 Intelligence Reports turn the intelligence of your life and work into an understandable record that becomes more valuable over time. They reveal what happened, what mattered, what was learned, what changed, and what should happen next.
 
@@ -146,6 +161,9 @@ Intelligence Reports create a bridge between past experience, present understand
 You can ask what happened last Tuesday, what you learned last month, when a problem was solved, why a decision was made, what mistakes have already been learned from, and how you have changed — without relying on memory alone.
 
 ## SMART NOTE 06 — WHAT IS THE INTELLIGENT LIBRARY?
+
+Subject ID: NAYA-POWER-06
+Status: CANONICAL INTELLIGENCE - V1
 
 ### IN A NUTSHELL
 The Intelligent Library is the organized, searchable knowledge library of Naya Power and NayaNET. It helps you understand what something is, why it matters, how it works, how to use it, and where to go deeper.
@@ -176,6 +194,9 @@ You don't have to remember where something was. You don't have to understand the
 
 ## SMART NOTE 07 — SMART LISTS
 
+Subject ID: NAYA-POWER-07
+Status: CANONICAL INTELLIGENCE - V1
+
 ### IN A NUTSHELL
 Smart Lists are your intentional organization layer for grouping Smart Notes that belong together. They let you keep related intelligence together without duplicating the underlying Smart Notes.
 
@@ -205,6 +226,9 @@ You stop losing valuable intelligence inside your own intelligence. You can orga
 
 ## SMART NOTE 08 — INTELLIGENT FEED / SMART FEED
 
+Subject ID: NAYA-POWER-08
+Status: CANONICAL INTELLIGENCE - V1
+
 ### IN A NUTSHELL
 The Intelligent Feed is the living visual layer of the Intelligent Hub. It brings intelligence to the surface as a stream while keeping Activity, Personal Intelligence, and Collective Intelligence clearly distinct.
 
@@ -233,6 +257,9 @@ The Feed makes the intelligence system feel alive. The Library explains what int
 You don't always have to go looking for intelligence. Your intelligence comes alive around you. You can see what is happening, access your private intelligence, discover collective intelligence, and move naturally from Feed → source → deeper intelligence.
 
 ## SMART NOTE 09 — SMART TABS
+
+Subject ID: NAYA-POWER-09
+Status: CANONICAL INTELLIGENCE - V1
 
 ### IN A NUTSHELL
 Smart Tabs are your persistent one-tap navigation layer. They get you quickly to the places, projects, topics, searches, and intelligence you care about without creating another database or duplicating your Smart Notes.

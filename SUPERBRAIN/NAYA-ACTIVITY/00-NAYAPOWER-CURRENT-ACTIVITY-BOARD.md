@@ -9,7 +9,7 @@
 The Activity Feed is a dedicated, day-organized operational relay. It is not merely documentation about a relay.
 
 **Protocol:** [NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md](./NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md)  
-**Today:** [2026-09-14.md](./DAILY/2026-09-14.md)  
+**Today:** [2026-09-17.md](./DAILY/2026-09-17.md)  
 **Daily directory:** [DAILY/](./DAILY/)  
 **Validator:** [validate_activity_feed.py](./validate_activity_feed.py)  
 **P0 workflow:** [naya-power-adversarial-p0.yml](../../.github/workflows/naya-power-adversarial-p0.yml)  
@@ -69,9 +69,11 @@ Each operating day has its own feed file. Previous days remain available for aud
 
 ## 🎯 ONE BEST NEXT ACTION
 
-**Reconcile the current Activity Feed validator and current board so today's 2026-09-14 relay is the canonical human navigation surface without rewriting historical activity.**
+**STEP 4/P004 — CLASSIFICATION PASS: classify all 61 open issues (50 unclassified), every remaining workflow (35), and the two unresolved authority boundaries (A1 `.naya/activity/` role; A2 Assistant-lane) into CANONICAL / ACTIVE_DEPENDENCY / HISTORICAL_INTELLIGENCE / SUPERSEDED, turning the GitHub optimization gate GREEN; then bind Smart Notes to Sessions/Activities (contract priority #3).**
 
-This is the single active continuation. Do not create a second competing next action.
+This is the single active continuation — it directly attacks Readiness + Organization + Recall + Activity + Project dimensions. Do not create a second competing next action.
+
+Front door: [00-NAYA-OPERATING-INDEX.md](../../00-NAYA-OPERATING-INDEX.md) (canonical Cold-Naya Operating Index — links to truth, never copies).
 
 ## 🧭 NEXT NAYA — READY TO RUN
 
@@ -79,35 +81,26 @@ This is the single active continuation. Do not create a second competing next ac
 🏎️ NAYAPOWER — YOU'RE IT
 
 MISSION:
-Make the Activity Feed a real persistent Naya-to-Naya execution relay while maximizing verified value and minimizing unnecessary machine work.
+STEP 4 / P004 — the CLASSIFICATION PASS: turn the GitHub optimization gate GREEN and bind Smart Notes to Sessions/Activities (contract priority #3).
 
 CURRENT KNOWN STATE:
-The Activity Feed architecture, validator, daily stream, navigation board, Resource-Respect + Direct-Write Law, and canonical P0 integration are implemented.
-A real 2026-09-14 daily feed now exists in the repository.
-A cold-successor proof has been executed: the successor resolved live main at e7a6798861e5c8a8a487c2c7b2280215928588c1, retrieved the prior event, restored its baton, inspected current MAP/BLOCKS/PROOF, verified the active P0 block and one-next-action control-plane model, and wrote the successor event back to the same daily feed.
-The repository relay is therefore PROVEN at the cold-successor level.
-The validator was then surgically made compatible with preserved legacy feed titles without rewriting historical events.
+Real Session runtime VERIFIED (OPEN→preflight→bound Activity→COMPLETED; integrity PASS; first real Sessions recorded on disk). STEP 1 auto-emission VERIFIED (49/49 adversarial). STEP 2 preflight gate TESTED (adjudication pending). 10 governed suites GREEN (159 passed, 4 xfailed); contract validator GREEN; canonical index event_count 41. Cold-Naya Operating Index (00-NAYA-OPERATING-INDEX.md) is the front door; START-HERE points to it. GitHub optimization gate RED_UNTIL_CLASSIFICATION_COMPLETE (61 issues, 11 classified, 50 unclassified; 35 workflows here; authority conflicts A1 `.naya/activity/` role and A2 Assistant-lane).
 
 RESOURCE LAW:
-Do NOT invoke GitHub Actions merely to write feed notes or pass the baton. The Naya performing the work writes the Activity Feed directly. Use Actions only when independent machine leverage is actually necessary.
+Do NOT invoke GitHub Actions merely to record progress or pass the baton. Direct-write the repo; use Actions only for independent leverage that actually changes a decision.
 
 ONE BEST NEXT ACTION:
-Verify the validator and board changes directly from the new main HEAD, then determine whether the Activity Feed integrity validator can pass across all preserved daily streams. If a deterministic validator failure remains, repair only the first causal incompatibility and record the result.
+Classify every open issue, workflow, and authority entry into the ten gate statuses (CANONICAL/ACTIVE_DEPENDENCY/PRODUCT_ASSET/HISTORICAL_INTELLIGENCE/REFERENCE/DUPLICATE/SUPERSEDED/ORPHAN/UNKNOWN/BLOCKED); resolve or explicitly record A1 and A2; then bind the machine Smart-Note store to origin Session/Activity.
 
 EXECUTE:
-1. Resolve `refs/heads/main` at execution time and record the exact SHA.
-2. Read `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, and `PROOF.json`.
-3. Read this board and the latest event in `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-14.md`.
-4. Re-read `SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py` and confirm the compatibility change is present.
-5. Confirm the board's Today pointer is `DAILY/2026-09-14.md`.
-6. Use the strongest available direct verification of validator behavior; do not fabricate a pass if execution is unavailable.
-7. If a validator failure is observed, repair only the first causal issue and preserve historical activity.
-8. Append the verification/repair result directly to today's Activity Feed.
-9. Leave exactly one next action and a complete successor torch.
-10. Preserve UNKNOWN/BLOCKED exactly and never promote historical evidence to current proof.
+1. Fetch the complete open-issue population; classify each (number→status→role→next) into a machine-readable classification record.
+2. Inventory + classify every .github/workflows entry (35) against ONE canonical authority.
+3. Resolve/record A1 (.naya/activity/ role) and A2 (Assistant-lane vs preserved 509 fail-closed boundary — never guess).
+4. Bind machine Smart Notes to Sessions/Activities; add the temporal day/project retrieval index.
+5. Prove gate-GREEN inputs; run governed suites; record the next canonical event; leave one torch.
 
 SUCCESS CONDITION:
-A cold Naya can find today's feed from this board, restore the latest baton, verify it against current control-plane truth, and continue without human re-explanation; the validator either passes the preserved streams or exposes one explicit deterministic blocker with no fabricated success.
+Gate inputs fully classified → optimization gate GREEN; machine Smart-Note store non-empty with provenance; a cold Naya answers all 14 Operating-Index questions from one front door.
 
 TAG → YOU'RE IT → EXECUTE.
 ```
@@ -115,15 +108,18 @@ TAG → YOU'RE IT → EXECUTE.
 ## 📌 CURRENT TRUTH
 
 - Repository: `SoulSchoolAcademy/NayaPOWER`
-- Branch: `main`
-- **Last live HEAD resolved before this board update:** `996fcf140a54fb9496f13d44b2778f324db00071`
-- **This board update advances `main`; therefore live HEAD MUST be re-resolved before any exact-current-head certification claim.**
-- Active control-plane block: `TORCH-59-MACHINE-TRUTH-RESTORATION`
-- Relay architecture: `IMPLEMENTED`
-- Cold-successor repository relay: `VERIFIED` at the sequence level on 2026-09-14.
-- Current daily feed: `IMPLEMENTED` at `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-14.md`.
-- Validator compatibility repair: `IMPLEMENTED`; execution result across all preserved streams remains to be independently observed.
-- External runtime: separate boundary; not implied by repository persistence.
+- Branch: `naya/universal-execution-gate-v1` (in-flight governed work; not merged)
+- **Operating System front door: `00-NAYA-OPERATING-INDEX.md`** — canonical Cold-Naya Operating Index (14-question front door that LINKS to truth, never copies); START-HERE read order points to it first.
+- **Real Session runtime: `VERIFIED`** — sessions open at CLAIMED, record the approved preflight at EXECUTING, bind every auto-emitted Activity at VERIFIED, close at HANDED_OFF; `session_integrity` enforced. First real Sessions on disk: `NAYA-20260917-035249-0FE4` (primary) + `NAYA-20260917-035241-C251` (crash-recovery run superseded by the primary).
+- **P0-01 automatic emission: `VERIFIED`** — `transition("VERIFIED")` auto-emits and persists exactly one canonical Activity event bound to the execution `run_id` AND `session_id` via `canonical_event_store.create_or_replay`; `validate()` detects suppression, tamper, stale-run reuse, and run re-binding as integrity failures.
+- Independent adversarial verifier (STEP 1): **ACCEPT** (49/49 probe assertions; no repo files modified; real event store untouched).
+- **STEP 2 machine-enforced preflight gate: `IMPLEMENTED + TESTED`** — `transition("EXECUTING")` requires an approved classified 10-question preflight (`execution_preflight_gate.py`); missing/empty/partial, unknown authority, CONFLICTED, REQUIRES_HUMAN_AUTHORITY, UNKNOWN baseline, and invalid classification all refused fail-closed; `validate()` re-checks (tamper → "preflight gate integrity failure"); `model_tool_gateway.authorize` passes the preflight through. Independent adjudication pending.
+- Canonical evidence: `SE-20260916-193500-p001-universal-activity-gate`, `SE-20260916-200000-p001-preflight-handoff-contract`, `SE-20260917-030839-p001a-auto-emission-verified`, `SE-20260917-032003-p002-preflight-gate`, `SE-20260917-035249-activity-cl-p003-p004-session-index-*`, `SE-20260917-035241-activity-cl-p003-p004-session-index-*` (index event_count 41).
+- Governed test evidence: pytest on 10 governed files → **159 passed, 4 xfailed**; session closure 10/10; controller self-test PASS (Session lifecycle); contract validator GREEN (error_count 0).
+- Current daily feed: `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-17.md`.
+- Next increment: STEP 4/P004 — **classification pass** (issues/workflows/authority A1+A2) to turn the GitHub optimization gate GREEN, then Smart Note→Session/Activity binding (torch `P004`; `P003` superseded).
+- Preflight/handoff contract: [V1](../AI-BOOT/NAYA-PREFLIGHT-AND-HANDOFF-CONTRACT-V1.md) — mandatory 100-question preflight + 30-question handoff for every substantive execution; machine enforcement landed at EXECUTING.
+- Pre-existing RED (out of scope): VALIDATION-REPORT timezone errors; legacy DAILY filenames; pre-broken full pytest collection.
 - Certification: `NOT CERTIFIED` for human-facing live Hub Activity Feed runtime.
 
 ## 🔎 SMART EVIDENCE LINKS
@@ -131,9 +127,12 @@ TAG → YOU'RE IT → EXECUTE.
 These are the human-clickable evidence surfaces for inspecting the relay directly:
 
 - [Current Activity Board](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md)
-- [Today’s live Activity Feed](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-14.md)
+- [Today’s live Activity Feed](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-17.md)
+- [P0-01 auto-emission closure tests](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/tests/test_activity_event_auto_emission.py)
+- [STEP 2 preflight gate closure tests](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/tests/test_preflight_gate_closure.py)
 - [Activity Feed Protocol](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md)
 - [Resource-Respect + Direct-Write Law](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/NAYA-RESOURCE-RESPECT-AND-DIRECT-WRITE-LAW.md)
+- [Preflight + Handoff Contract V1](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/AI-BOOT/NAYA-PREFLIGHT-AND-HANDOFF-CONTRACT-V1.md)
 - [Activity Feed Validator](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/SUPERBRAIN/NAYA-ACTIVITY/validate_activity_feed.py)
 - [Canonical P0 Workflow](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.github/workflows/naya-power-adversarial-p0.yml)
 - [Activity Feed Integrity Workflow](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.github/workflows/nayapower-activity-feed-integrity.yml)
