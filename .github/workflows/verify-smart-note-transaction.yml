@@ -1,0 +1,24 @@
+name: Verify Smart Note Transaction
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-note-transaction:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Syntax check
+        run: python -m py_compile .naya/runtime/smart_note_transaction.py scripts/build-smart-feed-projection.py scripts/verify-smart-note-transaction.py
+      - name: End-to-end proof
+        run: python scripts/verify-smart-note-transaction.py
