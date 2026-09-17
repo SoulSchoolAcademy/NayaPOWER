@@ -35,11 +35,11 @@ This is an evidence gap, not a claim that no such activity exists anywhere in th
 
 ## Highest-value next action
 
-Run the canonical successor mission in:
+This communication audit remains preserved as evidence. Its earlier local successor is reconciled to the canonical control plane.
 
-`NAYA-TEAM/NEXT-NAYA-EXECUTION-PROMPT.md`
+**Current state:** `LIVE_BOUND`; active block `TORCH-59-MACHINE-TRUTH-RESTORATION`; target `MACHINE_TRUTH_ESTABLISHED_AND_ASSISTANT_LANE_BASELINE_PROVABLE`.
 
-The first task is a factual audit of recent GitHub Activity/commit evidence, followed by repair of the first highest-value continuity failure.
+**Exactly ONE Next Action:** reconcile the actual Assistant-lane Cloudflare/live release mechanism and authorized runtime target without substituting the GitHub 509 lane; once established, execute the exact current Assistant-lane runtime baseline.
 
 ## Team message
 
