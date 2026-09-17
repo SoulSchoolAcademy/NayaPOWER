@@ -2,8 +2,8 @@
 
 **Feature ID:** `01-SMART-NOTES`
 **Parent:** Intelligent Hub / Superbrain
-**Status:** CONTRACTED — implementation not started
-**Version:** 1.0
+**Status:** IMPLEMENTATION SLICE — FOUR HARD GATES RECONCILED
+**Version:** 1.1
 **Date:** 2026-09-17
 
 ## 1. What is it?
@@ -17,6 +17,8 @@ To prevent valuable intelligence from disappearing in chat, memory, or disconnec
 ## 3. How does it work?
 
 A note begins with a meaningful source/input, is interpreted and structured, receives the appropriate evidence/context, is stored as a canonical intelligence record/event where applicable, and becomes available to authorized downstream surfaces such as Personal Feed, Reports, Library, Connections, and Collective Feed after consent.
+
+The canonical Smart Note is the durable source record. CIS and PIS are downstream projections and must not become competing stores of truth.
 
 ## 4. Inputs and outputs
 
@@ -34,6 +36,8 @@ Personal Intelligence Feed displays permitted notes. Collective Intelligence Fee
 
 Default ownership is private. Sharing is explicit. Collective publication requires consent and must obey identity/source treatment. Any external action derived from a note remains subject to Naya Power authority and execution governance.
 
+Canonical Smart Note projections now encode `visibility=private` and `consent_state=not_granted` until an explicit consent transition exists.
+
 ## 7. What must be built?
 
 - Canonical Smart Note data contract and validation.
@@ -48,9 +52,11 @@ Default ownership is private. Sharing is explicit. Collective publication requir
 
 No feature is live until source, contract, persistence, privacy, runtime, interaction, responsive, accessibility, and release evidence exists. No fake notes or fabricated intelligence may be used as completion proof.
 
+The current implementation slice has source-level reconciliation and an isolated end-to-end verifier for the four hard gates, but production/live verification remains open.
+
 ## 9. Current state
 
-The architectural definition is now established. The implementation is not yet authorized by this structure-building action. Existing Hub source must be inspected before implementation changes are selected.
+The existing Smart Note transaction path has been reconciled rather than rebuilt. Authoritative persistence is read back before downstream projection; canonical PIS events preserve the Smart Note timestamp and source provenance; canonical Smart Note privacy defaults to private/not-granted.
 
 ## 10. Evidence
 
@@ -58,17 +64,23 @@ Parent architecture: `../INTELLIGENT-HUB-SUPERBRAIN-PROJECT.md`
 
 Foundation architecture: `../../FOUNDATION-CONTRACT.md`
 
+Runtime transaction: `.naya/runtime/smart_note_transaction.py`
+
+PIS projection: `scripts/build-smart-feed-projection.py`
+
+Verification: `scripts/verify-smart-note-transaction.py`
+
 ## 11. Activity
 
-See `ACTIVITY.md`.
+See `ACTIVITY.md` and `STATE.md`.
 
 ## 12. Remaining work
 
-Define the exact runtime/storage contract from existing source, reconcile it with the canonical event model, then implement and verify the smallest vertical slice.
+Run the updated verifier, independently verify the live Hub consumption path, then complete the remaining lifecycle and downstream adapters without creating a second source of truth.
 
 ## 13. Next authorized action
 
-Inspect the existing Smart Note/intelligence source and produce an evidence-backed implementation gap map before changing code.
+Run the updated Smart Note transaction verifier and inspect the proof before making another code change.
 
 ## 14. Whole-system reconciliation
 
