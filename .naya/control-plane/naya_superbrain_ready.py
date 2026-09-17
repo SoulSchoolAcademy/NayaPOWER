@@ -51,6 +51,28 @@ def result(name: str, status: str, evidence: list[str], reason: str) -> dict[str
     return {"name": name, "status": status, "evidence": evidence, "reason": reason}
 
 
+def mission_claim(proof: dict[str, Any], name: str, current: str) -> dict[str, Any]:
+    """Accept a mission-boundary claim only when PROOF binds it to this HEAD."""
+    claim = proof.get("readiness_evidence", {}).get(name)
+    if not isinstance(claim, dict):
+        return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                      "no current claim-appropriate evidence is recorded")
+    status = str(claim.get("status", "UNKNOWN")).upper()
+    if status not in {"VERIFIED", "PRODUCTION_PROVEN", "UNKNOWN", "FAILED"}:
+        return result(name, "FAILED", [str(REQUIRED["proof"].relative_to(ROOT))],
+                      f"invalid readiness evidence status: {status}")
+    if status in {"VERIFIED", "PRODUCTION_PROVEN"}:
+        if claim.get("observed_head") != current:
+            return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                          "evidence is not bound to the live HEAD")
+        evidence = claim.get("evidence", [])
+        if not isinstance(evidence, list) or not evidence or not claim.get("claim_type"):
+            return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                          "verified claim lacks claim type or concrete evidence")
+    return result(name, status, claim.get("evidence", []),
+                  str(claim.get("reason", "claim recorded by canonical proof authority")))
+
+
 def evaluate() -> dict[str, Any]:
     checks: list[dict[str, Any]] = []
     missing = [name for name, path in REQUIRED.items() if not path.is_file()]
@@ -117,27 +139,10 @@ def evaluate() -> dict[str, Any]:
         "STATE and active BLOCK expose exactly one identical next action",
     ))
 
-    recorded = p.get("current_evidence", {})
-    evidence_head = recorded.get("observed_head")
-    runtime_current = (
-        bool(evidence_head)
-        and evidence_head == current
-        and recorded.get("classification") not in ("HISTORICAL_STALE_RELATIVE_TO_LIVE_HEAD", "STALE")
-    )
-    checks.append(result(
-        "runtime_parity", "VERIFIED" if runtime_current else "UNKNOWN",
-        [str(REQUIRED["proof"].relative_to(ROOT))],
-        "current-head runtime evidence must bind exactly to live HEAD; historical evidence cannot certify it",
-    ))
-
-    # These are deliberately explicit UNKNOWN gates until claim-appropriate
-    # evidence is attached to the canonical proof authority. The gate does not
-    # infer success from architecture, documentation, or code presence.
+    # Every mission boundary is independently evidence-backed. Missing claims
+    # are UNKNOWN; historical claims cannot certify the current HEAD.
     for name in UNKNOWN_MISSION_BOUNDARIES:
-        checks.append(result(
-            name.upper(), "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
-            "no current claim-appropriate evidence is promoted by this gate",
-        ))
+        checks.append(mission_claim(p, name, current))
 
     return _finalize(checks, current)
 
