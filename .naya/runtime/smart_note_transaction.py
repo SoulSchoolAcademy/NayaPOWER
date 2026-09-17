@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Canonical Smart Note -> governed learning -> PIS -> Hub transaction.
 
-The Smart Note is the durable human-readable learning record. This module is
-the single transaction boundary that turns one canonical Smart Note into:
+The Smart Note is the authoritative durable human-readable intelligence record.
+This module is the single transaction boundary that turns one canonical Smart
+Note into:
 1) a retained CIS learning record,
 2) a projected PIS event for the Intelligent Hub, and
 3) a durable transaction receipt.
@@ -182,6 +183,21 @@ def build_pis_projection(note: dict[str, Any]) -> dict[str, Any]:
     return module.build_projection()
 
 
+def _persist_and_verify(path: Path, rendered: str, note_id_value: str) -> dict[str, str]:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(rendered, encoding="utf-8")
+    if not path.exists():
+        raise RuntimeError(f"authoritative Smart Note persistence failed: {path}")
+    persisted = path.read_text(encoding="utf-8")
+    if persisted != rendered or note_id_value not in persisted:
+        raise RuntimeError(f"authoritative Smart Note persistence verification failed: {path}")
+    return {
+        "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+        "sha256": hashlib.sha256(persisted.encode("utf-8")).hexdigest(),
+        "verified_at": utc_now(),
+    }
+
+
 def execute(note: dict[str, Any]) -> dict[str, Any]:
     validate_note(note)
     stamp = str(note.get("timestamp") or utc_now())
@@ -197,31 +213,45 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         existing = path.read_text(encoding="utf-8")
         if note["id"] not in existing:
             raise RuntimeError(f"Smart Note path conflict: {path}")
-    else:
-        note["cis_status"] = "PENDING"
-        note["pis_status"] = "PENDING"
-        note["hub_status"] = "PENDING"
-        note["receipt_id"] = f"SN-RCP-{note['id']}"
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(render_note(note), encoding="utf-8")
+
+    note["cis_status"] = "PENDING"
+    note["pis_status"] = "PENDING"
+    note["hub_status"] = "PENDING"
+    note["receipt_id"] = f"SN-RCP-{note['id']}"
+    rendered = render_note(note)
+    persistence = _persist_and_verify(path, rendered, note["id"])
 
     cis = apply_cis_learning(note)
     note["cis_status"] = cis["status"]
     pis = build_pis_projection(note)
     note["pis_status"] = pis["status"]
     note["hub_status"] = "PROJECTED"
-    note["receipt_id"] = f"SN-RCP-{note['id']}"
-    path.write_text(render_note(note), encoding="utf-8")
+    _persist_and_verify(path, render_note(note), note["id"])
+
+    projected_event = next((e for e in pis.get("events", []) if e.get("event_id") == note["id"]), None)
+    if projected_event is None:
+        raise RuntimeError(f"PIS projection missing authoritative Smart Note event: {note['id']}")
+    if projected_event.get("created_at") != stamp or projected_event.get("updated_at") != stamp:
+        raise RuntimeError(f"Smart Note timestamp provenance mismatch: {note['id']}")
+    if projected_event.get("source", {}).get("id") != note["id"]:
+        raise RuntimeError(f"Smart Note source provenance mismatch: {note['id']}")
+    if projected_event.get("context", {}).get("canonical_path") != persistence["path"]:
+        raise RuntimeError(f"Smart Note canonical-path provenance mismatch: {note['id']}")
+    if projected_event.get("privacy") != {"visibility": "private", "consent_state": "not_granted"}:
+        raise RuntimeError(f"Smart Note privacy boundary mismatch: {note['id']}")
 
     receipt = {
-        "schema_version": "SMART-NOTE-TRANSACTION-1.0",
+        "schema_version": "SMART-NOTE-TRANSACTION-1.1",
         "receipt_id": note["receipt_id"],
         "status": "VERIFIED_TRANSACTION" if pis.get("status") in {"CREATED", "REBUILT"} else "REPLAY_TRANSACTION",
         "smart_note_id": note["id"],
-        "smart_note_path": str(path.relative_to(ROOT)).replace("\\", "/"),
+        "smart_note_path": persistence["path"],
+        "authoritative_persistence": persistence,
         "cis": cis,
-        "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"]},
+        "pis": {"status": pis.get("status"), "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/"), "event_id": note["id"], "created_at": projected_event["created_at"], "updated_at": projected_event["updated_at"]},
         "hub": {"status": "PROJECTED", "path": str(PIS_PATH.relative_to(ROOT)).replace("\\", "/")},
+        "privacy": projected_event["privacy"],
+        "provenance": {"source_id": projected_event["source"]["id"], "canonical_path": projected_event["context"]["canonical_path"]},
         "evidence": note["evidence"],
         "current_state": note["current_state"],
         "next_action": note["next_action"],
