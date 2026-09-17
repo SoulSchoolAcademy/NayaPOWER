@@ -1,0 +1,36 @@
+name: NAYA — Superbrain Readiness Gate
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact main source
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Control-plane validation
+        run: python .naya/control-plane/validate_control_plane.py
+      - name: Readiness gate contract
+        run: python .naya/tests/test_naya_superbrain_ready.py
+      - name: Emit machine-readable readiness result
+        shell: bash
+        run: |
+          set +e
+          python .naya/control-plane/naya_superbrain_ready.py > "$RUNNER_TEMP/naya-superbrain-ready.json"
+          code=$?
+          cat "$RUNNER_TEMP/naya-superbrain-ready.json"
+          echo "NAYA_SUPERBRAIN_READY_EXIT=$code"
+          # BLOCKED is an expected honest state while evidence gaps remain.
+          # This workflow verifies the gate's fail-closed contract; it does not
+          # convert UNKNOWN into PASS.
+          exit 0
