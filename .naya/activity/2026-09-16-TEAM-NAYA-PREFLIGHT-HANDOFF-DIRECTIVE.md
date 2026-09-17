@@ -41,6 +41,10 @@ A direct Team Naya directive was also added under:
 
 Every substantive Naya must leave a durable Activity receipt and a usable successor handoff. A cold Naya must be able to reconstruct state and continue from repository evidence without access to the prior conversation.
 
+## Reporting requirement
+
+Meaningful reports to Shawn or another Naya must include navigable Smart Links to the actual evidence, not merely filenames or raw URLs. At minimum: artifact/evidence link, PR/execution link when applicable, verification link when applicable, exact state, and next action.
+
 ## Continuation action
 
 Implement the machine-checkable Preflight + Handoff gates at the existing execution boundary and canonical event substrate. Add adversarial tests proving that silent execution, unsupported completion, missing/stale evidence, unauthorized consequential action, and incomplete handoff cannot be treated as successful completion.
