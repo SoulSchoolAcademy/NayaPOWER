@@ -1,26 +1,392 @@
 {
   "$schema": "naya/github-issue-audit/v1",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "observed_at": "2026-09-17T02:40:00Z",
+  "observed_at": "2026-09-17T05:40:00Z",
   "source": "GitHub issue search: repo:SoulSchoolAcademy/NayaPOWER is:issue is:open",
   "observed_open_issue_count": 61,
-  "classification_status": "INCOMPLETE_BY_DESIGN",
-  "classified_issue_count": 11,
-  "unclassified_issue_count": 50,
+  "classification_status": "COMPLETE_BUILDER_FIRST_PASS_PENDING_ADJUDICATION",
+  "classified_issue_count": 61,
+  "unclassified_issue_count": 0,
   "rule": "Every open issue must be classified before the optimization gate may become GREEN.",
-  "classification_values": ["CANONICAL","ACTIVE_DEPENDENCY","PRODUCT_ASSET","HISTORICAL_INTELLIGENCE","REFERENCE","DUPLICATE","SUPERSEDED","ORPHAN","UNKNOWN","BLOCKED"],
-  "classified": [
-    {"number":243,"status":"CANONICAL","role":"P0 execution observability/preflight/evidence/handoff program","next":"Machine-enforce the execution contract and connect evidence to the real boundary."},
-    {"number":237,"status":"CANONICAL","role":"Lead Mode / Activity corrective execution doctrine","next":"Preserve as current operating context; avoid duplicating its instructions elsewhere."},
-    {"number":236,"status":"CANONICAL","role":"Intelligent Hub execution sequence","next":"Depends on runtime/deployment authority reconciliation before live advancement."},
-    {"number":235,"status":"CANONICAL","role":"Anti-stop execution invariant","next":"Enforce through runtime/session/handoff mechanisms rather than prose alone."},
-    {"number":234,"status":"ACTIVE_DEPENDENCY","role":"Workflow race audit","next":"Inventory and classify every workflow before retiring or consolidating any."},
-    {"number":233,"status":"ACTIVE_DEPENDENCY","role":"Hub execution resume directive","next":"Reconcile with current control-plane state and eliminate stale deployment assumptions."},
-    {"number":151,"status":"HISTORICAL_INTELLIGENCE","role":"Activity Feed continuity history","next":"Preserve evidence but do not treat old runtime references as current authority."},
-    {"number":195,"status":"HISTORICAL_INTELLIGENCE","role":"Historical canonical Hub release proof attempt","next":"Use as evidence of unresolved release history; current release authority must be separately verified."},
-    {"number":81,"status":"ACTIVE_DEPENDENCY","role":"CI/workflow optimization history","next":"Merge findings into the workflow authority audit; avoid parallel duplicate cleanup programs."},
-    {"number":66,"status":"ACTIVE_DEPENDENCY","role":"Mechanically enforce operating standard","next":"Use the optimization gate and execution gates as implementation surfaces."},
-    {"number":62,"status":"ACTIVE_DEPENDENCY","role":"Persistent session/continuity model","next":"Implement real Session records and bind Activity to sessions."}
+  "classification_values": [
+    "CANONICAL",
+    "ACTIVE_DEPENDENCY",
+    "PRODUCT_ASSET",
+    "HISTORICAL_INTELLIGENCE",
+    "REFERENCE",
+    "DUPLICATE",
+    "SUPERSEDED",
+    "ORPHAN",
+    "UNKNOWN",
+    "BLOCKED"
   ],
-  "required_completion": "Fetch the complete 61-issue population, classify every remaining issue, identify duplicates/superseded issues, and close/archive only after evidence preserves required history."
+  "classified": [
+    {
+      "number": 30,
+      "status": "PRODUCT_ASSET",
+      "role": "NORTH STAR — MAXESS data pipeline must function end-to-end before polish",
+      "next": "Bug/program in MaxRESULTS workspace."
+    },
+    {
+      "number": 55,
+      "status": "REFERENCE",
+      "role": "SUPERBRAIN MASTER SYSTEMS ARCHITECTURE & ACTIVATION PROTOCOL (SMSA)",
+      "next": "Architecture reference."
+    },
+    {
+      "number": 56,
+      "status": "PRODUCT_ASSET",
+      "role": "SUPERBRAIN — 12-Layer Naya Activation System to 10/10",
+      "next": "Long-running; partially implemented (activation layers exist)."
+    },
+    {
+      "number": 57,
+      "status": "DUPLICATE",
+      "role": "The Email Nightmare — NayaMail + Ambassador Growth Hub",
+      "next": "Merge into #59 initiative."
+    },
+    {
+      "number": 58,
+      "status": "DUPLICATE",
+      "role": "NayaMail — Personal Naya Identity, SmartMail & Ambassador Growth Hub",
+      "next": "Merge into #59 initiative."
+    },
+    {
+      "number": 59,
+      "status": "PRODUCT_ASSET",
+      "role": "PROJECT: NayaMail + Ambassador Integration (after MAXESS)",
+      "next": "Sequenced after MAXESS release; not yet started."
+    },
+    {
+      "number": 60,
+      "status": "PRODUCT_ASSET",
+      "role": "EXECUTION PROMPT — Restore → MAXIS/MAXESS → Operational Release",
+      "next": "Execute in MaxRESULTS/Maxis workspaces per repo-selection law."
+    },
+    {
+      "number": 61,
+      "status": "PRODUCT_ASSET",
+      "role": "NAYA HUB / NAYA NETWORK — FRONT-END CORE INTEGRATION",
+      "next": "Pending spine + A2 reconciliation."
+    },
+    {
+      "number": 62,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "Persistent session/continuity model",
+      "next": "Running mate of the real Session runtime; reconcile to it."
+    },
+    {
+      "number": 63,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "NAYA EXECUTION PROMPT — CONTINUE FROM CURRENT HUB STATE",
+      "next": "Hub continuation protocol; reconcile with A2."
+    },
+    {
+      "number": 64,
+      "status": "REFERENCE",
+      "role": "Core Product Promise: Compounding Personal Intelligence",
+      "next": "Durable promise to cite in product/interface work."
+    },
+    {
+      "number": 66,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "Mechanically enforce operating standard",
+      "next": "Ongoing: session/preflight/auto-emission runtime IS this program's machine outcome."
+    },
+    {
+      "number": 67,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "Top 10 Loves + Top 10 Value Gaps + Canonical Rename Guard",
+      "next": "Historical note; rename guard remains law."
+    },
+    {
+      "number": 69,
+      "status": "PRODUCT_ASSET",
+      "role": "MAXIS Living Sun (24-Orb) design decision",
+      "next": "Execute in Maxis workspace."
+    },
+    {
+      "number": 70,
+      "status": "PRODUCT_ASSET",
+      "role": "MAXIS First-Surgery Execution Protocol",
+      "next": "Execute in Maxis workspace; sequenced after prior release work."
+    },
+    {
+      "number": 71,
+      "status": "PRODUCT_ASSET",
+      "role": "NITEUS/OSCAR — MAXIS pre-deployment gate + one-shot plan",
+      "next": "Execute in SoulSchoolAcademy/Maxis workspace per repo-selection law."
+    },
+    {
+      "number": 72,
+      "status": "CANONICAL",
+      "role": "NAYA COLLECTIVE AGREEMENT v1.1 — active constitutional governance",
+      "next": "Constitutional governance; keep canonical."
+    },
+    {
+      "number": 73,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "external stress-test evaluation QMI v2.0 (8.6/10)",
+      "next": "Record of external evaluation; historical intelligence."
+    },
+    {
+      "number": 78,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "OPS: execution efficiency law + GitHub Actions budget audit",
+      "next": "Carries the resource/budget audit program."
+    },
+    {
+      "number": 79,
+      "status": "CANONICAL",
+      "role": "LAW: MAXIMUM VERIFIED VALUE PER RESOURCE UNIT",
+      "next": "Operating law; drives workflow/CI consolidation."
+    },
+    {
+      "number": 80,
+      "status": "CANONICAL",
+      "role": "NAYA-WIDE DIRECTIVE: Resource Respect, Value Density, Limits, Memory & Execution Efficiency",
+      "next": "Operating law; enforce via runtime + resource stewardship."
+    },
+    {
+      "number": 81,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "CI/workflow optimization history",
+      "next": "Feeds the current optimization gate and resource stewardship law."
+    },
+    {
+      "number": 82,
+      "status": "REFERENCE",
+      "role": "CCT (Collective Chain Technology) architecture v1.0",
+      "next": "Documentation reference for collective protocol."
+    },
+    {
+      "number": 83,
+      "status": "REFERENCE",
+      "role": "CCTB v0.1: verified intelligence block protocol + two-Naya lineage proof",
+      "next": "Documentation reference for CCT lineage."
+    },
+    {
+      "number": 91,
+      "status": "PRODUCT_ASSET",
+      "role": "finish & package Living Intelligence Hub as Cloudflare front door",
+      "next": "Blocked by A2 (Assistant-lane authority) until reconciled."
+    },
+    {
+      "number": 107,
+      "status": "REFERENCE",
+      "role": "OFFICIAL ARCHITECTURE LOCK: Intelligent Hub + Superbrain + Collective Network",
+      "next": "Canonical architecture reference."
+    },
+    {
+      "number": 109,
+      "status": "REFERENCE",
+      "role": "V7 SHIP GATE principle: Intelligent Application, not a Webpage",
+      "next": "Durable principle for Hub/interface work."
+    },
+    {
+      "number": 127,
+      "status": "SUPERSEDED",
+      "role": "NAYANET-CANONICAL-HUB-RELEASE",
+      "next": "Superseded by the canonical Hub release lane."
+    },
+    {
+      "number": 136,
+      "status": "SUPERSEDED",
+      "role": "Nuclear Hub deployment trigger 2026-09-08",
+      "next": "Superseded; git history preserves."
+    },
+    {
+      "number": 137,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "one-shot 'EXECUTE 452 Hub nuclear repair' trigger",
+      "next": "Git history preserves; do not re-run."
+    },
+    {
+      "number": 138,
+      "status": "SUPERSEDED",
+      "role": "Hub release trigger V2",
+      "next": "Superseded by single release pipeline (source-sha proof)."
+    },
+    {
+      "number": 151,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "Activity Feed continuity history",
+      "next": "Preserve evidence but do not treat old runtime references as current authority."
+    },
+    {
+      "number": 164,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "locked smart note: Intelligent Feed Principle",
+      "next": "Machine-bind to smart-note store (priority #3)."
+    },
+    {
+      "number": 165,
+      "status": "PRODUCT_ASSET",
+      "role": "distillation method -> flagship Intelligent Block artifact",
+      "next": "Build once spine + smart-note binding land."
+    },
+    {
+      "number": 166,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "locked smart note: Intelligence Distillation & Comprehension Method",
+      "next": "Machine-bind to smart-note store (priority #3)."
+    },
+    {
+      "number": 167,
+      "status": "REFERENCE",
+      "role": "NayaNET Intelligent Block Visual Contract (BLACK + LUMINOUS SPECTRUM)",
+      "next": "Canonical visual spec to use when Hub work resumes."
+    },
+    {
+      "number": 168,
+      "status": "PRODUCT_ASSET",
+      "role": "BUG/RELEASE BLOCKER: Hub visual source/runtime parity (v10 stylesheet missing)",
+      "next": "Fix inside Hub parity program; blocked by A2."
+    },
+    {
+      "number": 169,
+      "status": "PRODUCT_ASSET",
+      "role": "canonical v11 intelligence visual layer",
+      "next": "Build within Hub parity work; blocked by A2 until then."
+    },
+    {
+      "number": 170,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "v11 visual layer verification checklist",
+      "next": "Runs after #169 artifact exists."
+    },
+    {
+      "number": 171,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "code-mutation execution instruction (Hub v11 visual work)",
+      "next": "Executes with #169/#170 once Hub spine unblocks."
+    },
+    {
+      "number": 185,
+      "status": "PRODUCT_ASSET",
+      "role": "Live ChatGPT host integration + continuous Naya Power execution",
+      "next": "P0-eligible; requires host-adapter authority + execution-kernel integration."
+    },
+    {
+      "number": 187,
+      "status": "DUPLICATE",
+      "role": "ChatGPT host adapter implementation duplicate",
+      "next": "Consolidate into #185."
+    },
+    {
+      "number": 189,
+      "status": "DUPLICATE",
+      "role": "ChatGPT host adapter implementation duplicate",
+      "next": "Consolidate into #185."
+    },
+    {
+      "number": 195,
+      "status": "HISTORICAL_INTELLIGENCE",
+      "role": "Historical canonical Hub release proof attempt",
+      "next": "Evidence of unresolved release history; current release authority must be separately verified."
+    },
+    {
+      "number": 198,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 205,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 206,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 207,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 208,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 212,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 AAA deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 214,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 AAA deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 215,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 AAA deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 216,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 AAA deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 218,
+      "status": "SUPERSEDED",
+      "role": "legacy CANONICAL HUB 509 AAA deploy instruction",
+      "next": "Retire: single canonical deploy authority replaces; git history preserves."
+    },
+    {
+      "number": 233,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "Hub execution resume directive",
+      "next": "Reconcile with current control-plane state and eliminate stale deployment assumptions."
+    },
+    {
+      "number": 234,
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "Workflow race audit",
+      "next": "Inventory and classify every workflow before retiring or consolidating any."
+    },
+    {
+      "number": 235,
+      "status": "CANONICAL",
+      "role": "Anti-stop execution invariant",
+      "next": "Enforce through runtime/session/handoff mechanisms rather than prose alone."
+    },
+    {
+      "number": 236,
+      "status": "CANONICAL",
+      "role": "Intelligent Hub execution sequence",
+      "next": "Depends on runtime/deployment authority reconciliation before live advancement."
+    },
+    {
+      "number": 237,
+      "status": "CANONICAL",
+      "role": "Lead Mode / Activity corrective execution doctrine",
+      "next": "Preserve as current operating context; avoid duplicating its instructions elsewhere."
+    },
+    {
+      "number": 243,
+      "status": "CANONICAL",
+      "role": "P0 execution observability/preflight/evidence/handoff program",
+      "next": "Machine-enforce the execution contract and connect evidence to the real boundary."
+    },
+    {
+      "number": 245,
+      "status": "CANONICAL",
+      "role": "Cold-Naya Operating Index + repository classification (active)",
+      "next": "Index built (00-NAYA-OPERATING-INDEX.md); classification completes in P004; fold onto main."
+    }
+  ],
+  "required_completion": "Independent OSCAR/adjudication review of the 61-issue first-pass classification, then optional live label application via an authenticated GitHub surface."
 }

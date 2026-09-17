@@ -3,7 +3,7 @@
   "name": "NayaPOWER Cold-Naya Classification — first pass (P004)",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "observed_at": "2026-09-17T03:58:41.265227+00:00",
-  "classification_status": "FIRST_PASS_BUILDER_CLASSIFIED",
+  "classification_status": "COMPLETE_BUILDER_FIRST_PASS_PENDING_ADJUDICATION",
   "adjudication": "PENDING_INDEPENDENT",
   "rule": "Ten gate statuses: CANONICAL/ACTIVE_DEPENDENCY/PRODUCT_ASSET/HISTORICAL_INTELLIGENCE/REFERENCE/DUPLICATE/SUPERSEDED/ORPHAN/UNKNOWN/BLOCKED.",
   "issue_counts": {
@@ -12,8 +12,8 @@
     "preserved_from_audit": 11
   },
   "workflow_counts": {
-    "inventory_total": 35,
-    "classified": 35
+    "inventory_total": 26,
+    "classified": 26
   },
   "status_distribution": {
     "issues": {
@@ -26,10 +26,10 @@
       "SUPERSEDED": 13
     },
     "workflows": {
-      "CANONICAL": 11,
+      "CANONICAL": 12,
       "ACTIVE_DEPENDENCY": 4,
       "BLOCKED": 1,
-      "SUPERSEDED": 19
+      "SUPERSEDED": 9
     }
   },
   "issues": [
@@ -669,88 +669,16 @@
       "next": "keep; classify as ONE canonical authority on merge"
     },
     {
-      "name": "nayanet-canonical-hub-production-release.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "verify-primary-intelligence-system.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "naya-control-plane.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "naya-memory-runtime.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "naya-preflight-governance.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "nayapower-activity-feed-integrity.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "naya-power-adversarial-p0.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "nayapower-progress-protection.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "superbrain-current-main-behavioral-proof.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "test-13-cross-process-authorization.yml",
-      "status": "CANONICAL",
-      "role": "current canonical gate/lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
       "name": "510-aaa-smart-board-visual-surgery.yml",
       "status": "ACTIVE_DEPENDENCY",
       "role": "active dependent verification/build lane",
       "next": "keep; classify as ONE canonical authority on merge"
     },
     {
-      "name": "verify-nayanet-hub-build-only.yml",
-      "status": "ACTIVE_DEPENDENCY",
-      "role": "active dependent verification/build lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "verify-nayanet-hub-nine-board.yml",
-      "status": "ACTIVE_DEPENDENCY",
-      "role": "active dependent verification/build lane",
-      "next": "keep; classify as ONE canonical authority on merge"
-    },
-    {
-      "name": "naya-canonical-react-build-handoff.yml",
-      "status": "ACTIVE_DEPENDENCY",
-      "role": "active dependent verification/build lane",
-      "next": "keep; classify as ONE canonical authority on merge"
+      "name": "513-smart-board-canonical-finalizer.yml",
+      "status": "CANONICAL",
+      "role": "Canonical Smart Board finalizer/renderer",
+      "next": "Owns finalized canonical Smart Board source."
     },
     {
       "name": "assistant-cloudflare-hub-release.yml",
@@ -759,73 +687,7 @@
       "next": "record exact human/external authority boundary (A2) before any run; never guess"
     },
     {
-      "name": "509-finish-smart-feed.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-sidebar-nav-audit.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-sidebar-nav-correction.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-board-final-deploy.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-board-runtime-authority.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-board-runtime-authority-v2.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-board-runtime-authority-v6.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-notes-board-presentation-fix.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-notes-presentation-final.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "509-smart-notes-surgical-final-v3.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
       "name": "deploy-509-c4-final-presentation-fix.yml",
-      "status": "SUPERSEDED",
-      "role": "retired/legacy lane; superseded on main; git history preserves",
-      "next": "drop on merge to main; history preserves"
-    },
-    {
-      "name": "deploy-509-c4-flow-repair.yml",
       "status": "SUPERSEDED",
       "role": "retired/legacy lane; superseded on main; git history preserves",
       "next": "drop on merge to main; history preserves"
@@ -837,13 +699,19 @@
       "next": "drop on merge to main; history preserves"
     },
     {
-      "name": "deploy-509-c4-nine-note-parser.yml",
+      "name": "deploy-509-c4-flow-repair.yml",
       "status": "SUPERSEDED",
       "role": "retired/legacy lane; superseded on main; git history preserves",
       "next": "drop on merge to main; history preserves"
     },
     {
       "name": "deploy-509-c4-nine-note-parser-v2.yml",
+      "status": "SUPERSEDED",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-nine-note-parser.yml",
       "status": "SUPERSEDED",
       "role": "retired/legacy lane; superseded on main; git history preserves",
       "next": "drop on merge to main; history preserves"
@@ -867,10 +735,88 @@
       "next": "drop on merge to main; history preserves"
     },
     {
+      "name": "github-optimization-gate.yml",
+      "status": "CANONICAL",
+      "role": "Machine gate enforcing issue/workflow/authority classification on main",
+      "next": "Keeps repository structure machine-visible and fail-closed."
+    },
+    {
+      "name": "naya-canonical-react-build-handoff.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-control-plane.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-memory-runtime.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-power-adversarial-p0.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-preflight-governance.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayanet-canonical-hub-production-release.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayapower-activity-feed-integrity.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayapower-progress-protection.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
       "name": "restore-509-exact.yml",
       "status": "SUPERSEDED",
       "role": "retired/legacy lane; superseded on main; git history preserves",
       "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "superbrain-current-main-behavioral-proof.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-nayanet-hub-build-only.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-nayanet-hub-nine-board.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-primary-intelligence-system.yml",
+      "status": "CANONICAL",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
     }
   ],
   "authority": [
@@ -896,5 +842,14 @@
       "decision_needed": "Source-sha -> build -> deploy -> live-probe -> verify chain (single release pipeline)."
     }
   ],
-  "required_completion": "Independent adjudication of this first-pass classification, then apply to the live GitHub issue/workflow inventory so GITHUB-OPTIMIZATION-GATE.json inputs are fully classified -> gate GREEN. Record A1 + A2 exact boundaries; never guess A2. Bind Smart Notes to Sessions/Activities (priority #3)."
+  "required_completion": "Independent adjudication of A1/A2 authority conflicts and STATE live-resolution modes before gate GREEN.",
+  "cleanup_reconciliation": {
+    "basis": "Classification reconciled against the live integrated main .github/workflows inventory at commit time.",
+    "workflows_present_on_main": 26,
+    "workflows_removed_as_superseded": 10,
+    "removed_preserved_in_git_history": true,
+    "local_only_workflow_not_present_on_main": [
+      "test-13-cross-process-authorization.yml"
+    ]
+  }
 }

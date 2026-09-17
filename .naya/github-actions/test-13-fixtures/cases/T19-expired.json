@@ -1,0 +1,41 @@
+{
+  "id": "T19",
+  "mode": "release",
+  "expected": "REFUSED",
+  "artifact": {
+    "schema": "naya/portable_authorization/v1",
+    "authorization": {
+      "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509",
+      "decision_id": "T13-DEPLOY-DEC",
+      "action_id": "T13-DEPLOY-ACT",
+      "action_type": "deploy_public_runtime",
+      "target": "cloudflare-runtime:test-13-runner-verify-a7b9:environment:preview:repository:SoulSchoolAcademy/NayaPOWER:commit:896594e9453312d85b00a5d4c6e5d41d29f72d76",
+      "actor_id": "SoulSchoolAcademy",
+      "scope": "public-runtime:sparkling-shape-7ae5:/",
+      "permission": "deploy_public_runtime",
+      "governance_state": "AUTHORIZED",
+      "risk_tier": "LOW",
+      "validated_at": "2026-09-16T22:58:43.827521+00:00",
+      "binding_hash": "f413810929b99b26b95741b785e2587207b488b7e839121bd00c17146ae709f9",
+      "repository": "SoulSchoolAcademy/NayaPOWER",
+      "commit_sha": "896594e9453312d85b00a5d4c6e5d41d29f72d76",
+      "change_set": [],
+      "environment": "preview",
+      "deployment_surface": "cloudflare",
+      "worker_name": "test-13-runner-verify-a7b9",
+      "project_id": "",
+      "issued_at": "2026-09-16T22:58:43.827521+00:00",
+      "expires_at": "2026-09-16T22:57:43.838602+00:00",
+      "authority_fingerprint": "d224efb618eae7c98d3049da26cc2658d0bccfd5511996bddc174c2b8282ea39",
+      "registry_revision": "d8b185ef458df53faad5390a33a9a566be8badbadd1b91324d337d235c403bcc"
+    },
+    "signature": "06439a4b1983a28ab73c0215d28c3ee4e016c58e25d5bd27919d707a3b9b469e5d88ae6221613c9a614a2336db2384c0773bc4e75fb2bc645e0480d551a0350d"
+  },
+  "context": {
+    "commit_sha": "896594e9453312d85b00a5d4c6e5d41d29f72d76",
+    "target_environment": "preview",
+    "deployment_surface": "cloudflare",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "worker_name": "test-13-runner-verify-a7b9"
+  }
+}

@@ -1,19 +1,58 @@
 {
   "$schema": "naya/github-authority-audit/v1",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "observed_at": "2026-09-17T02:40:00Z",
+  "observed_at": "2026-09-17T05:40:00Z",
   "authorities": [
-    {"key":"state","path":".naya/control-plane/STATE.json","status":"CANONICAL","evidence":"STATE declares itself canonical and resolves live branch/HEAD at execution time."},
-    {"key":"machine_event_store","path":".naya/memory/events/","status":"CANONICAL","evidence":"Existing canonical event substrate referenced by runtime and activity architecture."},
-    {"key":"human_activity_projection","path":"SUPERBRAIN/NAYA-ACTIVITY/","status":"CANONICAL","evidence":"First-class human-readable Activity projection; .naya/activity must not compete with it."},
-    {"key":"hub_source","path":"NAYANET/HUB/","status":"BLOCKED","evidence":"Current repository contains Hub architecture/read-first contracts, but authoritative current production source/runtime parity is not fully proven."},
-    {"key":"runtime_deployment","path":"UNKNOWN_EXTERNAL_ASSISTANT_LANE","status":"BLOCKED","evidence":"STATE explicitly records the Assistant Cloudflare/live execution surface and target as unresolved/unknown; GitHub 509 lane must not be substituted."}
+    {
+      "key": "state",
+      "path": ".naya/control-plane/STATE.json",
+      "status": "CANONICAL",
+      "evidence": "STATE declares itself canonical and resolves live branch/HEAD at execution time."
+    },
+    {
+      "key": "machine_event_store",
+      "path": ".naya/memory/events/",
+      "status": "CANONICAL",
+      "evidence": "Existing canonical event substrate referenced by runtime and activity architecture."
+    },
+    {
+      "key": "human_activity_projection",
+      "path": "SUPERBRAIN/NAYA-ACTIVITY/",
+      "status": "CANONICAL",
+      "evidence": "First-class human-readable Activity projection; .naya/activity must not compete with it."
+    },
+    {
+      "key": "hub_source",
+      "path": "NAYANET/HUB/",
+      "status": "BLOCKED",
+      "evidence": "Current repository contains Hub architecture/read-first contracts, but authoritative current production source/runtime parity is not fully proven."
+    },
+    {
+      "key": "runtime_deployment",
+      "path": "UNKNOWN_EXTERNAL_ASSISTANT_LANE",
+      "status": "BLOCKED",
+      "evidence": "STATE explicitly records the Assistant Cloudflare/live execution surface and target as unresolved/unknown; GitHub 509 lane must not be substituted."
+    }
   ],
-  "activity_secondary_surface_role":"UNRESOLVED",
+  "activity_secondary_surface_role": "UNRESOLVED",
   "unresolved_conflicts": 2,
   "conflicts": [
-    {"id":"ACTIVITY-DUAL-SURFACE","surfaces":["SUPERBRAIN/NAYA-ACTIVITY/",".naya/activity/"],"required_resolution":"Assign .naya/activity a non-competing role: compatibility/archive/supporting records, then enforce the distinction."},
-    {"id":"RUNTIME-AUTHORITY","surfaces":["historical Assistant Cloudflare lane","current GitHub 509 workflows"],"required_resolution":"Establish the authoritative current Assistant-lane deployment mechanism from an authorized execution surface; do not infer or substitute."}
+    {
+      "id": "ACTIVITY-DUAL-SURFACE",
+      "surfaces": [
+        "SUPERBRAIN/NAYA-ACTIVITY/",
+        ".naya/activity/"
+      ],
+      "required_resolution": "Assign .naya/activity a non-competing role: compatibility/archive/supporting records, then enforce the distinction."
+    },
+    {
+      "id": "RUNTIME-AUTHORITY",
+      "surfaces": [
+        "historical Assistant Cloudflare lane",
+        "current GitHub 509 workflows"
+      ],
+      "required_resolution": "Establish the authoritative current Assistant-lane deployment mechanism from an authorized execution surface; do not infer or substitute."
+    }
   ],
-  "required_completion":"Resolve each authority conflict with explicit canonical owner, source, evidence, lifecycle, and machine-readable reference. Unknown external runtime information remains UNKNOWN until independently verified."
+  "required_completion": "Resolve each authority conflict with explicit canonical owner, source, evidence, lifecycle, and machine-readable reference. Unknown external runtime information remains UNKNOWN until independently verified."
 }

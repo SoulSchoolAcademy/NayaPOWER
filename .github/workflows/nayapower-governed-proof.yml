@@ -1,0 +1,40 @@
+name: nayapower-governed-proof
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  governed-proof:
+    name: enforced governed proof suites
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: model tool gateway self-test
+        run: python .naya/runtime/model_tool_gateway.py self-test
+      - name: execution controller self-test
+        run: python .naya/runtime/execution_controller.py self-test
+      - name: session closure
+        run: python tests/test_session_closure.py
+      - name: preflight gate closure
+        run: python tests/test_preflight_gate_closure.py
+      - name: universal execution gate
+        run: python tests/test_universal_execution_gate.py
+      - name: gateway boundary closure
+        run: python tests/test_gateway_boundary_closure.py
+      - name: activity event closure
+        run: python tests/test_activity_event_closure.py
+      - name: activity event auto emission
+        run: python tests/test_activity_event_auto_emission.py
+      - name: execution controller closure
+        run: python tests/test_execution_controller_closure.py

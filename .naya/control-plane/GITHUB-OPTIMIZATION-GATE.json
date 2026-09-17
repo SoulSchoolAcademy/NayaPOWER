@@ -82,6 +82,43 @@
     "preserved_fail_closed_509_boundary": ".github/workflows/509-smart-board-world-class.yml",
     "reason": "Ten workflows were explicitly DISABLED/RETIRED and each identified a newer/canonical replacement. The preserved world-class workflow is a live fail-closed boundary and therefore remains useful until Assistant-lane authority is resolved."
   },
-  "next_action": "Finish the complete issue/workflow/authority inventory, classify every remaining item, consolidate proven duplicates/superseded instructions, and only then resolve the remaining Assistant-lane runtime authority conflict.",
-  "gate_state": "RED_UNTIL_CLASSIFICATION_COMPLETE"
+  "next_action": "Independent adjudication of the first-pass classification and A1/A2 authority conflicts; only then flip gate_state to GREEN.",
+  "gate_state": "RED_PENDING_AUTHORITY_ADJUDICATION",
+  "gate_evaluation": {
+    "as_of": "2026-09-17T05:40:00Z",
+    "classification_invariants_satisfied_by_integration": [
+      "no_unclassified_open_issue",
+      "no_unclassified_workflow_authority"
+    ],
+    "remaining_red_invariants": [
+      "builder_is_not_judge",
+      "no_unresolved_runtime_authority_conflict",
+      "one_highest_value_next_action",
+      "unknown_is_not_verified",
+      "blocked_is_not_pass",
+      "historical_is_not_current",
+      "one_canonical_state",
+      "one_canonical_machine_event_store",
+      "one_human_activity_projection"
+    ],
+    "authority_conflicts_remaining": [
+      {
+        "id": "ACTIVITY-DUAL-SURFACE",
+        "status": "UNRESOLVED_RECORDED",
+        "required_resolution": "Assign .naya/activity a non-competing role and record the canonical owner (human or independent adjudication)."
+      },
+      {
+        "id": "RUNTIME-AUTHORITY",
+        "status": "UNRESOLVED_RECORDED",
+        "required_resolution": "Establish the authoritative Assistant Cloudflare/live lane from an authorized external execution surface; do not substitute the GitHub 509 lane."
+      }
+    ],
+    "builder_vs_judge": "The 61-issue / 26-workflow classification is a Builder first pass. Independent OSCAR/adjudication is required before the gate may be declared GREEN. This record does not manufacture authority.",
+    "items": {
+      "issues_classified": 61,
+      "workflows_classified": 26,
+      "issues_unclassified": 0,
+      "workflows_unclassified": 0
+    }
+  }
 }
