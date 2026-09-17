@@ -112,11 +112,18 @@ def persist_activity_event(
 ) -> dict[str, Any]:
     from canonical_event_store import create_or_replay
 
-    return create_or_replay(
-        event,
-        Path(events_root) if events_root else EVENTS_ROOT,
-        Path(index_path) if index_path else INDEX_PATH,
-    )
+    effective_events_root = Path(events_root) if events_root else EVENTS_ROOT
+    effective_index_path = Path(index_path) if index_path else INDEX_PATH
+    result = create_or_replay(event, effective_events_root, effective_index_path)
+
+    # Human-readable continuity projection is automatic at the same verified
+    # persistence boundary. The machine event remains authoritative; the
+    # projection is deliberately separate and calendar-organized.
+    if effective_events_root.resolve() == EVENTS_ROOT.resolve() and result.get("status") in {"CREATED", "REPLAY"}:
+        from calendar_projection import project_event
+
+        project_event(event)
+    return result
 
 
 def find_event(
