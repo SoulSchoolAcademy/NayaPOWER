@@ -29,6 +29,7 @@ jobs:
           python -m pip install --disable-pip-version-check pytest==8.4.2
           python -m pytest -q tests/test_personal_feed_privacy_boundary.py
           python -m pytest -q tests/test_smart_note_transaction_concurrency.py
+          python -m pytest -q tests/test_smart_note_transaction_rollback.py
       - name: Temporal and supersession evidence
         run: python scripts/verify-temporal-conflict.py
       - name: Build exact-HEAD automated evidence bundle
