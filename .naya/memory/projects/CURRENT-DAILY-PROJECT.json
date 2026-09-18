@@ -3,12 +3,12 @@
   "status": "ACTIVE",
   "project_id": "PRJ-NAYAPOWER-SUPERBRAIN",
   "project_name": "Naya Power Superbrain",
-  "date": "2026-09-03",
+  "date": "2026-09-18",
   "goal": "Prove and activate the existing Naya Power Superbrain before adding foundational architecture, while converting the proven architecture into a customer-ready activation and commercial experience.",
   "vision": "A trustworthy Intelligence Operating System gives humans and AI agents continuity, governed memory, execution, verification, learning, and compounding intelligence while preserving human authority.",
   "mission": "PROVE → INTEGRATE → LEARN → ACTIVATE: obtain authoritative runtime proof, close Torch 9, pass the full Superbrain Gate, repair only evidence-backed failures, demonstrate governance and compounding, verify activation, and put the first humans through the system.",
-  "north_star": "Leave the Superbrain materially more capable, reliable, recoverable, intelligent, accountable, and useful while preserving everything already proven GREEN, then deliver an activation experience that lets a new customer understand and use that capability without conversational archaeology.",
-  "current_objective": "During the deliberate GitHub Actions pause, build the six-core customer-facing activation package and then the sales experience. Activation is guided and incremental by default: discover the customer's identity, vision, goals, mission, and desired outcomes; activate one capability; explain what changed and the user benefit; distinguish verified from unverified behavior; provide evidence where legitimately available; and always provide the exact continuation prompt for the next step. Smart Note delivery is evidence-first: a Smart Note is one canonical Note Event with Shawn, Naya, and Machine representations, durable persistence, verification, Smart Links/receipts, Intelligent Feed visibility, and separately evidenced PIS propagation. Naya should proactively capture clearly durable value when legitimately authorized. Preserve the P1 alternate-runtime proof track for the authorized execution window.",
+  "north_star": "Create a working Hub in which intelligence compounds every day: every meaningful conversation can become durable, connected, verified system intelligence, and every fresh Naya can understand the mission state, current reality, and exact next action.",
+  "current_objective": "Get the NayaNET Intelligent Hub operational as the human-facing surface of a real compounding intelligence system: conversation creates canonical intelligence, Activity projects what happened, Smart Notes preserve what matters, fresh Nayas retrieve it, and verified continuation keeps the whole system moving without conversational archaeology.",
   "success_criteria": [
     "Exact HEAD is identified before runtime claims are interpreted",
     "Authoritative runtime exposes real command, output, exit status, and exact HEAD or produces a precisely classified environment blocker",
@@ -45,7 +45,7 @@
     "Do not claim PIS propagation without separate evidence",
     "Do not treat .naya/notes prose files as the canonical primary memory store when the Note Event runtime is available"
   ],
-  "current_state": "The canonical repository is `SoulSchoolAcademy/NayaPOWER`. The repository already had strong Smart Note/continuity laws, a canonical Note Event runtime, and an evidence-enforcement workflow. The concrete failure identified by Shawn is a law-to-behavior gap plus storage drift: recent Smart Note prose was written under `.naya/notes/`, while the canonical Note Event index did not contain those recent events. This turn corrected the foundation by adding `.naya/SMART-NOTE-CIS-OPERATING-CONTRACT.md`, expanding `.naya/memory/CONTINUITY-ENFORCEMENT-POLICY.json` with Smart Note/CIS event classes and request semantics, creating canonical event `SE-20260903-110000-smart-note-cis-contract-lock`, indexing it as event 35, updating `.naya/INTELLIGENT-FEED.md` with the required current-state fields and receipts, and updating this project state. Repository persistence has been verified by re-fetching the new artifacts. PIS propagation is not separately verified.",
+  "current_state": "The physical NayaNET company operating structure is reconciled across 19 areas. Canonical Note Event persistence, Smart Note retrieval, restore-context, Activity projection, and CIS primitives exist. A provider-neutral conversation-continuity adapter has now been added as the missing vertical slice. Runtime execution and fresh-Naya proof remain the final observation gate.",
   "latest_receipts": {
     "contract_commit": "c23736caaeb51508455e6784d2d3f26d44170e70",
     "policy_commit": "2a8483dcd43ad158784350152c23f0fa01467195",
@@ -83,18 +83,28 @@
       "workflow": "Naya Control Plane",
       "head_sha": "33f78f81a27ede5c16e4db7eece4079b388b9fa4",
       "jobs": [
-        {"job_id": 99199766741, "name": "cct-regression", "conclusion": "failure", "steps": 0},
-        {"job_id": 99199766789, "name": "control-plane", "conclusion": "failure", "steps": 0}
+        {
+          "job_id": 99199766741,
+          "name": "cct-regression",
+          "conclusion": "failure",
+          "steps": 0
+        },
+        {
+          "job_id": 99199766789,
+          "name": "control-plane",
+          "conclusion": "failure",
+          "steps": 0
+        }
       ]
     }
   ],
   "runtime_diagnosis": {
     "repository_controlled_cause_proven": false,
-    "current_execution_plane": "GitHub Actions intentionally paused; alternate execution required",
+    "current_execution_plane": "Authorized alternate execution plane required while GitHub Actions remains paused",
     "historical_diagnosis": "Evidence points to runner/provisioning/log-storage or account/repository execution boundary rather than application code. Repository workflow configuration was inspected; no concrete defect explaining zero-step jobs was proven.",
     "alternate_runtime_probe": "Local environment cannot resolve github.com, so it cannot create a real repository checkout. This is an environment boundary and not application evidence.",
-    "next_high_value_action": "Implement machine-testable Smart Note receipt completeness and canonical event enforcement, including explicit request detection, required Shawn/Naya/Machine representations, Smart Link completeness, Intelligent Feed linkage, and separate PIS propagation evidence; then run positive and negative tests in an authorized execution plane."
+    "next_high_value_action": "Run the conversation continuity vertical slice end-to-end: capture a meaningful conversation, observe canonical event persistence, verify NAYAPOWER Activity projection, retrieve the Smart Note from a fresh principal, and verify exact successor continuation."
   },
-  "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260830-SMART-LINK-LAW.md",
-  "durable_learning": "Persistence of information is not the same thing as persistence of operational understanding. Smart Notes are the compounding substrate: consequential experience becomes a canonical Note Event, human meaning, Naya understanding, and machine-operational memory; the event becomes visible to the Intelligent Feed and Daily Intelligence; and authorized downstream promotion can compound it further. A receipt is not decorative proof—it is part of the user-facing contract. The system must enforce the difference between documented law and guaranteed behavior, and it must never use conversational claims as a substitute for repository evidence."
+  "next_execution_path": ".naya/handoffs/NEXT-EXECUTION-20260918-HUB-COMPOUNDING-INTELLIGENCE-VERTICAL-SLICE.md",
+  "durable_learning": "The whole system exists to make intelligence compound. A conversation that matters must become canonical, retrievable, connected intelligence; Activity is the operational projection, Smart Notes are durable learning, and a fresh Naya must be able to continue from the recorded mission state without reconstructing the originating conversation."
 }
