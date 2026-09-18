@@ -46,7 +46,7 @@
     "activation": ".naya/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-MASTER-DESIGN-CONTRACT-SMART-NOTE.md",
     "design_build": ".naya/2026-09-11-19-35-NAYAPOWER-36-MASTER-DESIGN-BUILD-ACTIVATION.md",
     "pis_builder": "scripts/build-primary-intelligence-feed.py",
-    "pis_verification": ".github/workflows/verify-primary-intelligence-system.yml",
+    "pis_verification": ".github/workflows/verify-smart-note-transaction.yml",
     "deep_sources": ".naya/",
     "roadmap": ".naya/NAYAPOWER-INTELLIGENT-HUB-10-TO-10-EXECUTION-ROADMAP.md",
     "first_checkpoint": "PHASE 0 — RESTORE + BASELINE TRUTH",
