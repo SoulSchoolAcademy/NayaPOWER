@@ -89,17 +89,25 @@ Each record states timestamp, project, sub-project, actor/session, what happened
 
 ## 6. CALENDAR ORGANIZATION
 
-Team Naya continuity uses:
+NayaPOWER's durable human-facing records use calendar-first organization:
+
+`NAYAPOWER/ACTIVITY/YYYY/MM/DD/`
+
+`NAYAPOWER/SMART-NOTES/YYYY/MM/DD/`
+
+Team Naya communication remains separately organized under:
 
 `NAYA-TEAM/YYYY/MM/DD/`
 
 Navigation is therefore:
 
-**YEAR → MONTH → DAY → PROJECT → ACTIVITY**
+**YEAR → MONTH → DAY → RECORD**
 
-and:
+and, where project context is needed:
 
 **PROJECT → SUB-PROJECT → ACTIVITY**
+
+Activity and Smart Notes are distinct record types. Activity records what happened and provides continuity; Smart Notes capture what the Superbrain should remember, connect, learn from, and reuse.
 
 ## 7. SMART LINK RULE
 
