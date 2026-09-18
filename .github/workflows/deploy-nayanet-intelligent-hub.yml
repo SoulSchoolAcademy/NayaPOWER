@@ -8,6 +8,8 @@ on:
       - 'NAYANET/HUB/**'
       - '2026 09 17 NAYANET HUB.html'
       - 'assistant-runtime.js'
+      - 'NAYANET/name-first-auth-adapter.js'
+      - 'identity.html'
       - 'scripts/build-smart-feed-projection.py'
       - '.github/workflows/deploy-nayanet-intelligent-hub.yml'
   workflow_dispatch:
