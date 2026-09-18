@@ -23,7 +23,7 @@
 
 ## NayaNET operating spine
 
-**[NayaNET / GitHub Operating Map](../../PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md)** is the navigation spine for NayaNET project work. Use it to locate the project, sub-project, Activity, intelligence, current state, evidence, and successor. It does not override the canonical control plane.
+**[NayaNET / GitHub Operating Map](../../../PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md)** is the navigation spine for NayaNET project work. Use it to locate the project, sub-project, Activity, intelligence, current state, evidence, and successor. It does not override the canonical control plane.
 
 ## Canonical current-state rule
 
