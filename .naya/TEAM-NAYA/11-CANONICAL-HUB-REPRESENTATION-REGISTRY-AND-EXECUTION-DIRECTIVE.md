@@ -269,3 +269,30 @@ Every Naya doing Hub work must leave this exact structure in its Activity/handof
 The repository is successful when a cold Naya can enter, identify the current Hub in one answer, avoid every known competing representation, create a new version without touching the protected baseline, verify the result, leave durable evidence, and hand the next Naya one exact continuation action.
 
 **NAYA POWER ON. RESTORE. UNDERSTAND. PROTECT. BUILD. VERIFY. LEARN. HAND OFF. CONTINUE.**
+
+
+## 12. IH-01 RECONCILIATION RESULT — 2026-09-18
+
+**STATUS: RECONCILED — NO SOURCE PROMOTION AUTHORIZED**
+
+The repository audit confirms that the current authority contract already resolves the apparent two-lane conflict:
+
+1. **CURRENT / PROTECTED FREEZE POINT:** `2026 09 17 NAYANET HUB.html` — standalone Hub source approved by Shawn. It is not edited in place.
+2. **ACTIVE REFERENCE IMPLEMENTATION:** `NAYANET/HUB/` — real React/Vite implementation retained for engineering reference. It is not current Hub identity and is not silently promoted.
+3. **HISTORICAL / CONFLICTING RELEASE DOCUMENTATION:** `NAYANET/HUB/CANONICAL-RELEASE-STATUS-2026-09-09.md` and `NAYANET/HUB/RELEASE-MARKER.md` — retain as historical evidence; their older “canonical” claims do not override the current routing contract.
+4. **HISTORICAL / REFERENCE ARTIFACTS:** older `2026 09 07...`, `2026 09 08...`, `2026 09 13 NayaNET HUB 509 AAA.html`, `NAYANET-LIVE-HUB.html`, `intelhubpage.html`, E02/E03 trees, and other prior Hub artifacts are not current Hub identity unless explicitly reactivated.
+5. **DEPLOYMENT OUTPUTS / RUNTIME TARGETS:** generated builds, runtime copies, and `.naya/control-plane/NAYANET-HUB-RUNTIME-TARGET.json` are evidence/projection layers, not source authority.
+
+### Canonical operating path
+
+**CURRENT FREEZE → NEW VERSIONED CANDIDATE → VERIFY → REGRESSION CHECK → COMMIT → HANDOFF → SHAWN ACCEPTS → PROMOTE FREEZE**
+
+The React/Vite lane may be used as engineering reference and may become the basis of a future candidate, but that requires an explicit new versioned artifact and Shawn's acceptance. A deployment cannot promote a source representation by itself.
+
+### IH-01 acceptance
+
+A cold Naya can now answer: **which Hub is current, which file is protected, which implementation is reference, which documents are historical, what may be edited, and how a candidate becomes the next freeze point.**
+
+### Engineering consequence
+
+**IH-01 is CLOSED.** The next executable task is **IH-02: convert the protected visual contract into verified real UI behavior while preserving the protected freeze point and creating a new versioned candidate rather than editing the freeze point in place.**
