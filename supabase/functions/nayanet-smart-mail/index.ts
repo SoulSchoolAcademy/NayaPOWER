@@ -24,7 +24,13 @@ Deno.serve(async(req)=>{
    const evidence=[...(receipt.evidence||[])];
    const already=evidence.some((x:any)=>x?.receiver_retrieved_by===actorId&&x?.message_id===message.id);
    if(!already)evidence.push({receiver_retrieved_by:actorId,message_id:message.id,receiver_retrieved_at:new Date().toISOString()});
-   const {error:updateError}=await admin.from("nayanet_execution_receipts").update({evidence}).eq("id",receiptId);
+   const priorValue=receipt.value&&typeof receipt.value==="object"?receipt.value:{};
+   const benefit=typeof priorValue.benefit==="number"?priorValue.benefit:0;
+   const harm=typeof priorValue.harm==="number"?priorValue.harm:0;
+   const cost=typeof priorValue.cost==="number"?priorValue.cost:0;
+   const risk=typeof priorValue.risk_adjusted_loss==="number"?priorValue.risk_adjusted_loss:0;
+   const verifiedValue=benefit-harm-cost-risk;
+   const {error:updateError}=await admin.from("nayanet_execution_receipts").update({evidence,value:{...priorValue,verified:true,verification_method:"authenticated receiver retrieval",verified_value:verifiedValue}}).eq("id",receiptId);
    if(updateError)return json({ok:false,error:"RECEIPT_UPDATE_FAILED",detail:updateError.message},500);
    await admin.from("v7_mail_messages").update({metadata:{...message.metadata,receiver_verified_at:new Date().toISOString(),receiver_verified_by:actorId}}).eq("id",message.id);
    return json({ok:true,status:"VERIFIED",message_id:message.id,thread_id:message.thread_id,execution_receipt_id:receiptId,receiver_id:actorId,authority_changed:false});

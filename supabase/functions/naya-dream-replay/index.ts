@@ -20,7 +20,7 @@ Deno.serve(async(req)=>{
   if(typeof body?.event_id==="string"&&body.event_id.trim())eventQuery=eventQuery.eq("event_id",body.event_id.trim());
   const {data:events,error:eventError}=await eventQuery; if(eventError)throw eventError;
   const event=events?.[0]; if(!event)return json({ok:false,error:"DREAM_SOURCE_EVENT_NOT_FOUND"},404);
-  const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts").select("id,user_id,project_id,revision,action,expected_result,observed_result,status,evidence,learning,created_at").eq("user_id",userId).eq("project_id",projectId).order("created_at",{ascending:false}).limit(20);
+  const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts").select("id,user_id,project_id,revision,action,expected_result,observed_result,status,evidence,learning,value,created_at").eq("user_id",userId).eq("project_id",projectId).order("created_at",{ascending:false}).limit(20);
   if(receiptError)throw receiptError;
   const sourceReceipt=(receipts||[]).find(r=>r.evidence?.event_id===event.event_id)||(event.receipt_id?(receipts||[]).find(r=>r.id===event.receipt_id):null)||null;
   const valueInputs=sourceReceipt?.value&&typeof sourceReceipt.value==='object'?sourceReceipt.value:null;
