@@ -5,6 +5,8 @@
   "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
-  }
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS"
+  },
+  "main": "worker.js"
 }
