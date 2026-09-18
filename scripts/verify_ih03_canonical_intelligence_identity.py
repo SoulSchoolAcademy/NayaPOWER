@@ -23,7 +23,7 @@ def main() -> int:
     assert projected, "IH03_CANONICAL_EVENT_MISSING_FROM_PIS"
     assert projected["event_id"] == raw["event_id"], "IH03_EVENT_ID_CHANGED"
     assert projected["created_at"] == raw["created_at"], "IH03_CREATED_AT_CHANGED"
-    assert projected["updated_at"] == raw["updated_at"], "IH03_UPDATED_AT_CHANGED"
+    assert projected["updated_at"] == raw.get("updated_at", raw["created_at"]), "IH03_UPDATED_AT_CHANGED"
     assert projected["source"]["id"] == raw["source"]["event_id"], "IH03_SOURCE_ID_CHANGED"
     assert raw["evidence_ids"][0] in projected["machine_evidence"]["items"], "IH03_EVIDENCE_LOST"
     assert projected["machine_evidence"]["verification_state"] == raw["verification"]["status"], "IH03_VERIFICATION_LOST"
