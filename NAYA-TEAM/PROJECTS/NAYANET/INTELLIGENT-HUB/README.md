@@ -115,3 +115,33 @@ A cold Naya must be able to identify one canonical Hub source, its build path, d
 
 ## Single next action
 **Execute IH-01: reconcile the protected root HTML lane and React `NAYANET/HUB` lane into one explicit canonical Hub source → build → deployment → runtime → verification path, without deleting either lane until its role is proven.**
+
+
+## IH-02 IMPLEMENTATION RECONCILIATION — 2026-09-18
+
+**STATUS:** CLOSED — VERSIONED CANDIDATE CREATED
+
+The protected `2026 09 17 NAYANET HUB.html` visual baseline was reconciled against the active React reference implementation. The protected file was not edited.
+
+### Candidate
+
+`2026 09 17 NAYANET HUB V2.html`
+
+This is a versioned visual/experience candidate, not the current freeze and not production-proven.
+
+### Truth classification
+
+- **REAL:** navigation, search over available intelligence, feed-lens state switching, Intelligent Block opening, trust/provenance/privacy display, responsive behavior.
+- **PARTIAL:** Favorite, Save, Like/Love, Rate/Rank, Comment, Share, Apply/Use, accessibility, authoritative persistence, authenticated identity lifecycle.
+- **DEMO:** Ask Naya, Related Intelligence, Create Smart Space.
+- **MISSING:** automatic canonical Activity receipt from substantive Hub actions; production runtime equivalence.
+
+The classification is intentionally conservative: **REAL means implemented behavior, not production proof.**
+
+### Engineering meaning
+
+The visual contract is now represented by a safe versioned candidate while the React lane remains the engineering reference. The next work is not another visual redesign. It is proving the canonical intelligence path and replacing local/demo behavior with governed connections where the repository already provides the necessary primitives.
+
+### IH-02 → IH-03
+
+**Next:** prove one canonical intelligence identity from **canonical event → PIS → IntelligentEvent → Intelligent Block → feed**, preserving stable identity, timestamp, provenance, privacy and verification state.
