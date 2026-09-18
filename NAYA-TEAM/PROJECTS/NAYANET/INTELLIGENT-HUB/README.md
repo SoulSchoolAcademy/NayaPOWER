@@ -71,3 +71,47 @@ This area is therefore a **capability/view within that system**, not an independ
 **IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → CONNECTED → RECORDED → STATE UPDATED → SUCCESSOR READY.**
 
 Where the area is human-facing, add **LIVE VERIFIED** before calling the runtime complete.
+
+
+# Engineering Reconciliation — Intelligent Hub V1
+**DATE:** 2026-09-18  
+**STATUS:** OPEN — implementation does not yet fully match the blueprint
+
+## Repository truth
+There are two materially different Hub implementation lanes: the protected root `2026 09 17 NAYANET HUB.html`, released by `.github/workflows/assistant-cloudflare-hub-release.yml`, and the React application under `NAYANET/HUB/`, released by `.github/workflows/deploy-nayanet-intelligent-hub.yml` to Vercel. This is the primary #41/#51/#55 mismatch. No deletion is implied; classify first.
+
+## Contract reconciliation
+| Contract | Current evidence | State | Executable task |
+|---|---|---|---|
+| #40 | Protected root HTML has substantial living-depth UI, Intelligent Blocks, feeds, Naya, search and responsive behavior | PRESENT / PARTIAL | IH-02: map every required interaction to a real governed behavior |
+| #41 | Root HTML and React Hub are both credible implementation lanes | MISMATCH | IH-01: establish one canonical source/runtime lane and classify the other |
+| #42 | React has typed `IntelligentEvent`/SmartFeedBoard; root HTML renders nine-layer intelligence presentation | PARTIAL | IH-03: prove one stable intelligence identity from canonical event through PIS/block/feed |
+| #43 | React exposes personal/activity/collective lenses; root HTML exposes feed controls | PARTIAL | IH-04: prove authorized projections from canonical events, not UI-only switching |
+| #44 | Canonical event primitives exist, but React SmartFeedBoard persists actions to localStorage | MISMATCH | IH-05: make consequential Hub action completion depend on canonical event persistence |
+| #45 | PIS loader/generated feed and event/runtime primitives exist | PARTIAL | IH-06: prove fresh event → PIS → Hub with provenance/truth state |
+| #48 | Identity/link concepts exist; end-to-end authorized resolution is not proven | UNPROVEN | IH-07: prove create → clean-session resolve → privacy enforcement |
+| #49 | No single observed realtime transaction is established | UNKNOWN | IH-08: prove event → live UI update or truthful DEGRADED/REFRESH state |
+| #50 | React query dispatch/local matching exists | PARTIAL | IH-09: connect retrieval to authorized canonical intelligence and distinguish empty/failure |
+| #51/#55 | Cloudflare deploys root HTML while Vercel deploys React; historical artifacts remain | MISMATCH | IH-10: reconcile source → build → deployment → runtime → verification |
+| #52 | Runtime scripts cover substantial UI but not the complete 21-step journey | PARTIAL | IH-11: execute current-head end-to-end acceptance |
+| #53 | GitHub bridge infrastructure exists, but Hub consumption is not proven as one production transaction | UNKNOWN | IH-12: prove GitHub event → canonical event → Activity → Hub |
+| #54/#57 | State/handoff and Team Naya continuity exist; Hub-facing continuation is not proven | PARTIAL | IH-13: expose current state, evidence and one next action from canonical records |
+| #56 | React identity exists; contract identifies localStorage/query-name prototype and Academy redirect | MISMATCH | IH-14: replace prototype identity establishment with authoritative identity/session → Hub |
+| #58 | Evidence/runtime pieces exist, but full trust loop is not observed as one transaction | PARTIAL | IH-15: independently verify one complete governed Hub trust loop |
+
+## Engineering order
+**IH-01 → IH-02 → IH-03 → IH-05 → IH-06 → IH-04 → IH-10 → IH-07 → IH-09 → IH-08 → IH-11 → IH-12 → IH-13 → IH-14 → IH-15**
+
+Do not parallelize source/runtime authority work. Do not create another Hub, event store, memory system, queue, or authority system.
+
+## IH-01 acceptance
+A cold Naya must be able to identify one canonical Hub source, its build path, deployment workflow, runtime URL, authoritative verification script, and the explicit status of the other implementation lane. Classification precedes retirement.
+
+## Current engineering score
+**Blueprint readiness:** 9.5/10  
+**Implementation alignment:** 6.5/10  
+**Complete runtime proof:** UNKNOWN  
+**Primary blocker:** competing credible source/deployment lanes.
+
+## Single next action
+**Execute IH-01: reconcile the protected root HTML lane and React `NAYANET/HUB` lane into one explicit canonical Hub source → build → deployment → runtime → verification path, without deleting either lane until its role is proven.**
