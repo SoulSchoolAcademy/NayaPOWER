@@ -53,6 +53,19 @@ if(document.readyState!=='loading'){ui();sync()}
     </article>`;
   }
 
+  function ensureCaptureControl(){
+    if(!window.NayaAssistantRuntime?.snapshot?.().authenticated)return;
+    const nav=document.querySelector('.feedNav'); if(!nav||document.getElementById('naya-runtime-capture'))return;
+    if(!document.getElementById('naya-runtime-capture-style')){const s=document.createElement('style');s.id='naya-runtime-capture-style';s.textContent='.naya-runtime-capture{margin:0 22px 15px;min-height:42px;padding:0 15px;border:2px solid #9d75ff88;border-radius:12px;background:linear-gradient(145deg,#181021,#09080d);color:#fff;font-size:8px;font-weight:1000;letter-spacing:.08em;box-shadow:inset 0 1px #fff4,0 12px 25px #0008,0 0 24px #9d75ff18}.naya-runtime-capture:hover{border-color:#d86cff;transform:translateY(-1px)}#naya-runtime-capture-modal{position:fixed;inset:0;z-index:1100;display:none;place-items:center;background:#000d;backdrop-filter:blur(18px);padding:18px}#naya-runtime-capture-modal.open{display:grid}#naya-runtime-capture-modal .box{width:min(680px,100%);padding:24px;border:2px solid #9d75ff88;border-radius:22px;background:linear-gradient(145deg,#17111f,#08080d);box-shadow:0 35px 90px #000f}#naya-runtime-capture-modal input,#naya-runtime-capture-modal textarea{width:100%;margin:7px 0;padding:13px;border:2px solid #ffffff22;border-radius:11px;background:#07070a;color:#fff}#naya-runtime-capture-modal textarea{min-height:180px;resize:vertical}#naya-runtime-capture-modal .actions{display:flex;gap:8px;margin-top:8px}#naya-runtime-capture-modal button{min-height:42px;padding:0 15px;border:2px solid #8b63ff66;border-radius:11px;background:#0b0a10;color:#fff;font-weight:900}#naya-runtime-capture-modal .state{margin-top:10px;color:#9ff2bb;font-size:9px;min-height:14px}';document.head.append(s)}
+    const b=document.createElement('button');b.id='naya-runtime-capture';b.className='naya-runtime-capture';b.type='button';b.textContent='＋ CAPTURE SMART NOTE';b.onclick=openCaptureModal;nav.after(b);
+  }
+  function openCaptureModal(){
+    if(!window.NayaAssistantRuntime?.snapshot?.().authenticated){window.NayaAssistantRuntime?.openAuth?.();return}
+    let m=document.getElementById('naya-runtime-capture-modal');
+    if(!m){m=document.createElement('div');m.id='naya-runtime-capture-modal';m.innerHTML='<div class="box"><h2 style="margin:0 0 5px">CAPTURE SMART NOTE</h2><p style="color:#aaa4b1;font-size:10px;line-height:1.6">Turn this meaningful intelligence into durable Personal Intelligence. The capture is authenticated, persisted, receipt-backed, and idempotent by content.</p><input id="naya-runtime-note-title" placeholder="Title"><textarea id="naya-runtime-note-content" placeholder="What should Naya remember, connect, learn, and reuse?"></textarea><div class="actions"><button id="naya-runtime-note-save">CAPTURE & PERSIST</button><button id="naya-runtime-note-close">CLOSE</button></div><div class="state" id="naya-runtime-note-state"></div></div>';document.body.append(m);m.querySelector('#naya-runtime-note-close').onclick=()=>m.classList.remove('open');m.querySelector('#naya-runtime-note-save').onclick=async()=>{const st=m.querySelector('#naya-runtime-note-state'),title=m.querySelector('#naya-runtime-note-title').value.trim(),content=m.querySelector('#naya-runtime-note-content').value.trim();if(!title||!content){st.textContent='TITLE AND CONTENT REQUIRED';return}st.textContent='Persisting…';try{const r=await window.NayaAssistantRuntime.captureSmartNote({title,content,metadata:{capture_surface:'NayaNET Intelligent Hub',continuity:'conversation-to-compounding-intelligence'}});st.textContent='✓ CAPTURED · PERSISTED · RECEIPT '+String(r?.receipt?.id||r?.receipt_id||'RECORDED');m.querySelector('#naya-runtime-note-title').value='';m.querySelector('#naya-runtime-note-content').value='';await loadPersonal();}catch(e){st.textContent='CAPTURE FAILED · '+(e?.message||'RUNTIME_ERROR')}}}
+    m.classList.add('open');m.querySelector('#naya-runtime-note-title').focus();
+  }
+
   async function loadPersonal(){
     try{
       if(!window.NayaAssistantRuntime?.snapshot || !window.NayaAssistantRuntime?.retrieve) return;
@@ -78,11 +91,11 @@ if(document.readyState!=='loading'){ui();sync()}
   function wire(){
     document.addEventListener('click',(event)=>{
       const feed=event.target.closest('[data-feed="personal"]');
-      if(feed) setTimeout(loadPersonal,0);
+      if(feed){setTimeout(()=>{ensureCaptureControl();loadPersonal()},0);}
     },true);
     window.NayaAssistantRuntime && (window.NayaAssistantRuntime.loadPersonalIntelligence=loadPersonal);
     window.addEventListener('naya-auth-state',(event)=>{if(event.detail?.authenticated)setTimeout(loadPersonal,50)});
-    window.addEventListener('naya-auth-ready',()=>setTimeout(loadPersonal,50));
+    window.addEventListener('naya-auth-ready',()=>setTimeout(()=>{ensureCaptureControl();loadPersonal()},50));
     if(document.documentElement.dataset.nayaAuth==='authenticated') setTimeout(loadPersonal,50);
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',wire,{once:true});
