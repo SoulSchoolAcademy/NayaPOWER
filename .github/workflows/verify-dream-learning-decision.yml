@@ -57,17 +57,25 @@ jobs:
           if(!evidence?.id) throw Error('LEARNING_EVIDENCE_NOT_PERSISTED');
           const applied=await page.evaluate(async({evidenceId,replayId})=>window.NayaAssistantRuntime.applyLearning({evidence_id:evidenceId,replay_id:replayId}),{evidenceId:evidence.id,replayId:replay.id});
           if(!applied?.ok||!applied?.learning?.learner_state_version) throw Error('LEARNER_STATE_NOT_UPDATED');
-          const decision=await page.evaluate(async({targetId})=>window.NayaAssistantRuntime.decisionContext({target_id:targetId}),{targetId});
+          const storageState=await context.storageState();
+          const contextB=await browser.newContext({storageState});
+          const pageB=await contextB.newPage();
+          await pageB.goto(hub,{waitUntil:'domcontentloaded',timeout:60000});
+          await pageB.waitForFunction(()=>!!window.NayaAssistantRuntime,null,{timeout:30000});
+          const coldIdentity=await pageB.evaluate(async()=>window.NayaAssistantRuntime.init());
+          if(!coldIdentity?.authenticated||coldIdentity.user_id!==snap.user_id) throw Error('COLD_NAYA_IDENTITY_MISMATCH');
+          const decision=await pageB.evaluate(async({targetId})=>window.NayaAssistantRuntime.decisionContext({target_id:targetId}),{targetId});
           if(!decision?.ok||decision.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT'||decision.decision?.influenced!==true) throw Error('LATER_DECISION_NOT_INFLUENCED:'+JSON.stringify(decision));
           const authority=decision.decision.authority;
           if(authority?.changed!==false||authority?.granted!==false) throw Error('AUTHORITY_CHANGED:'+JSON.stringify(authority));
           const proofEventId='decision-proof-'+token;
-          const later=await page.evaluate(async({proofEventId,targetId,decision})=>window.NayaAssistantRuntime.record({event_id:proofEventId,title:'Later Naya decision context proof',content:'Later decision consumed canonical learning context for target '+targetId+'. Decision: '+decision.decision.decision+'.',source:'dream-learning-decision-proof',actor:'naya',tags:['dream','learning','decision','verified'],metadata:{target_id:targetId,decision:decision.decision.decision,influenced:decision.decision.influenced,evidence_id:decision.decision.context.evidence_id,replay_id:decision.decision.context.replay_id,policy_version:decision.decision.context.policy_version,authority:decision.decision.authority,verification:decision.decision.verification}}),{proofEventId,targetId,decision});
-          const fresh=await page.evaluate(async({proofEventId})=>window.NayaAssistantRuntime.retrieve(proofEventId).then(x=>x[0]||null),{proofEventId});
+          await pageB.evaluate(async({proofEventId,targetId,decision})=>window.NayaAssistantRuntime.recordNayaDecision({event_id:proofEventId,title:'Later Naya decision context proof',content:'Later decision consumed canonical learning context for target '+targetId+'. Decision: '+decision.decision.decision+'.',source:'dream-learning-decision-proof',tags:['dream','learning','decision','verified'],metadata:{target_id:targetId,decision:decision.decision.decision,influenced:decision.decision.influenced,evidence_id:decision.decision.context.evidence_id,replay_id:decision.decision.context.replay_id,policy_version:decision.decision.context.policy_version,authority:decision.decision.authority,verification:decision.decision.verification}}),{proofEventId,targetId,decision});
+          const fresh=await pageB.evaluate(async({proofEventId})=>window.NayaAssistantRuntime.retrieve(proofEventId).then(x=>x[0]||null),{proofEventId});
           if(!fresh||fresh.event_id!==proofEventId) throw Error('LATER_DECISION_RECEIPT_NOT_RETRIEVABLE');
           const meta=fresh.metadata||{};
           if(meta.evidence_id!==evidence.id||meta.replay_id!==replay.id||meta.authority?.changed!==false||meta.influenced!==true) throw Error('TRACEABILITY_PROOF_FAILED:'+JSON.stringify(meta));
           console.log('DREAM_LEARNING_DECISION_PROOF='+JSON.stringify({user_id:snap.user_id,event_id:eventId,receipt_id:receiptId,replay_id:replay.id,evidence_id:evidence.id,learner_state_version:applied.learning.learner_state_version,target_id:targetId,later_decision_event_id:proofEventId,decision:decision.decision.decision,influenced:decision.decision.influenced,authority:decision.decision.authority}));
+          await contextB.close();
           await browser.close();
           EOF
           node dream-proof.mjs
