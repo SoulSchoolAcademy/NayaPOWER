@@ -7,6 +7,7 @@ from __future__ import annotations
 from dataclasses import asdict, dataclass
 from datetime import datetime, timezone
 from hashlib import sha256
+import json
 from typing import Optional
 from uuid import uuid4
 
@@ -50,6 +51,10 @@ class LedgerEvent:
     previous_integrity_hash: Optional[str]
     privacy_class: str
     status: str
+    observation_ref: Optional[str] = None
+    execution_verification_ref: Optional[str] = None
+    governance_receipt_id: Optional[str] = None
+    governance_receipt: Optional[dict] = None
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -61,6 +66,15 @@ def _ledger_payload(event: LedgerEvent) -> dict:
         "actor_ref": event.actor_ref, "object_ref": event.object_ref,
         "parent_event_id": event.parent_event_id, "evidence_ref": event.evidence_ref,
         "privacy_class": event.privacy_class, "status": "evidence_available",
+        "observation_ref": event.observation_ref,
+        "execution_verification_ref": event.execution_verification_ref,
+        "governance_receipt_id": event.governance_receipt_id,
+        "governance_receipt": json.dumps(
+            event.governance_receipt,
+            sort_keys=True,
+            ensure_ascii=False,
+            separators=(",", ":"),
+        ) if event.governance_receipt is not None else None,
     }
 
 def _hash_event(payload: dict, previous_hash: Optional[str]) -> str:
@@ -82,10 +96,83 @@ def create_ledger_event(note: SmartNote, *, actor_ref: Optional[str] = None,
         "object_ref": note.note_id, "parent_event_id": previous.ledger_event_id if previous else None,
         "evidence_ref": f"note:{note.note_id}", "privacy_class": "protected" if actor_ref else "private",
         "status": "evidence_available",
+        "observation_ref": None,
+        "execution_verification_ref": None,
+        "governance_receipt_id": None,
+        "governance_receipt": None,
     }
     return LedgerEvent(**payload, verification_receipt_ref=None,
                        integrity_hash=_hash_event(payload, previous.integrity_hash if previous else None),
                        previous_integrity_hash=previous.integrity_hash if previous else None)
+
+def create_governed_execution_event(
+    governance_receipt: dict,
+    *,
+    evidence_ref: str,
+    observation_ref: str,
+    execution_verification_ref: str,
+    previous: Optional[LedgerEvent] = None,
+) -> LedgerEvent:
+    """Create a Smart Ledger event that durably carries verified governance context."""
+    required = (
+        "receipt_id",
+        "schema_version",
+        "actor_id",
+        "authority_id",
+        "decision_id",
+        "action_id",
+        "capability_envelope",
+        "responsibility_controls",
+        "binding_hash",
+    )
+    missing = [key for key in required if governance_receipt.get(key) in (None, "", [], {})]
+    if governance_receipt.get("schema_version") != "1.0":
+        missing.append("schema_version=1.0")
+    if missing:
+        raise ValueError(
+            "Governance receipt is incomplete: " + ", ".join(str(item) for item in missing)
+        )
+    if not evidence_ref.strip() or not observation_ref.strip() or not execution_verification_ref.strip():
+        raise ValueError("Governed execution ledger event requires evidence, observation, and verification references.")
+
+    event_id = f"ledger_exec_{uuid4().hex}"
+    payload = {
+        "ledger_event_id": event_id,
+        "schema_version": "1.0",
+        "event_type": "GOVERNED_EXECUTION_COMPLETED",
+        "event_at": governance_receipt.get("validated_at") or utc_now(),
+        "created_at": utc_now(),
+        "actor_ref": governance_receipt["actor_id"],
+        "object_ref": governance_receipt["action_id"],
+        "parent_event_id": previous.ledger_event_id if previous else None,
+        "evidence_ref": evidence_ref,
+        "privacy_class": "protected",
+        "status": "evidence_available",
+    }
+    return LedgerEvent(
+        **payload,
+        verification_receipt_ref=None,
+        integrity_hash=_hash_event(
+            {
+                **payload,
+                "observation_ref": observation_ref,
+                "execution_verification_ref": execution_verification_ref,
+                "governance_receipt_id": governance_receipt["receipt_id"],
+                "governance_receipt": json.dumps(
+                    governance_receipt,
+                    sort_keys=True,
+                    ensure_ascii=False,
+                    separators=(",", ":"),
+                ),
+            },
+            previous.integrity_hash if previous else None,
+        ),
+        previous_integrity_hash=previous.integrity_hash if previous else None,
+        observation_ref=observation_ref,
+        execution_verification_ref=execution_verification_ref,
+        governance_receipt_id=governance_receipt["receipt_id"],
+        governance_receipt=dict(governance_receipt),
+    )
 
 def verify_event(event: LedgerEvent) -> tuple[LedgerEvent, dict]:
     if not event.evidence_ref or not event.integrity_hash:

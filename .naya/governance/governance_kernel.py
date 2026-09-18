@@ -259,6 +259,128 @@ class GovernanceResult:
     required_actions: Tuple[str, ...]
 
 
+class ResponsibilityControl(str, Enum):
+    """Minimum governance controls that must accompany observable capability."""
+    IDENTITY_VERIFIED = "identity_verified"
+    AUTHORITY_BOUND = "authority_bound"
+    TOOL_PERMISSIONS_BOUND = "tool_permissions_bound"
+    PRE_ACTION_EVIDENCE = "pre_action_evidence"
+    INDEPENDENT_OBSERVATION = "independent_observation"
+    DURABLE_RECEIPT = "durable_receipt"
+    REVOCATION_PATH = "revocation_path"
+    PROVENANCE_BOUND = "provenance_bound"
+    DELEGATION_CHAIN_VERIFIED = "delegation_chain_verified"
+    HUMAN_VISIBILITY = "human_visibility"
+    ROLLBACK_OR_RECOVERY = "rollback_or_recovery"
+
+
+@dataclass(frozen=True)
+class CapabilityEnvelope:
+    """Observable capabilities; intelligence level is intentionally not scored."""
+    autonomous_action: bool = False
+    external_tools: bool = False
+    external_state_write: bool = False
+    persistence: bool = False
+    inter_agent_coordination: bool = False
+    delegation: bool = False
+    third_party_impact: bool = False
+
+
+@dataclass(frozen=True)
+class ResponsibilityEnvelope:
+    """Controls actually demonstrated for the current capability envelope."""
+    controls: FrozenSet[ResponsibilityControl] = field(default_factory=frozenset)
+
+    def satisfies(self, required: FrozenSet[ResponsibilityControl]) -> bool:
+        return required.issubset(self.controls)
+
+
+@dataclass(frozen=True)
+class ResponsibilityGateResult:
+    allowed: bool
+    required_controls: FrozenSet[ResponsibilityControl]
+    missing_controls: FrozenSet[ResponsibilityControl]
+    reasons: Tuple[str, ...]
+
+
+_CAPABILITY_RESPONSIBILITY_RULES = {
+    "autonomous_action": frozenset({
+        ResponsibilityControl.IDENTITY_VERIFIED,
+        ResponsibilityControl.AUTHORITY_BOUND,
+        ResponsibilityControl.PRE_ACTION_EVIDENCE,
+        ResponsibilityControl.DURABLE_RECEIPT,
+    }),
+    "external_tools": frozenset({
+        ResponsibilityControl.TOOL_PERMISSIONS_BOUND,
+        ResponsibilityControl.AUTHORITY_BOUND,
+        ResponsibilityControl.DURABLE_RECEIPT,
+    }),
+    "external_state_write": frozenset({
+        ResponsibilityControl.PRE_ACTION_EVIDENCE,
+        ResponsibilityControl.INDEPENDENT_OBSERVATION,
+        ResponsibilityControl.ROLLBACK_OR_RECOVERY,
+        ResponsibilityControl.DURABLE_RECEIPT,
+    }),
+    "persistence": frozenset({
+        ResponsibilityControl.IDENTITY_VERIFIED,
+        ResponsibilityControl.DURABLE_RECEIPT,
+        ResponsibilityControl.REVOCATION_PATH,
+    }),
+    "inter_agent_coordination": frozenset({
+        ResponsibilityControl.IDENTITY_VERIFIED,
+        ResponsibilityControl.PROVENANCE_BOUND,
+    }),
+    "delegation": frozenset({
+        ResponsibilityControl.AUTHORITY_BOUND,
+        ResponsibilityControl.PROVENANCE_BOUND,
+        ResponsibilityControl.DELEGATION_CHAIN_VERIFIED,
+    }),
+    "third_party_impact": frozenset({
+        ResponsibilityControl.HUMAN_VISIBILITY,
+        ResponsibilityControl.PRE_ACTION_EVIDENCE,
+        ResponsibilityControl.INDEPENDENT_OBSERVATION,
+    }),
+}
+
+
+def required_responsibility_controls(
+    capability: CapabilityEnvelope,
+) -> FrozenSet[ResponsibilityControl]:
+    """Return deterministic minimum controls implied by observable capability."""
+    required: set[ResponsibilityControl] = set()
+    for field_name, controls in _CAPABILITY_RESPONSIBILITY_RULES.items():
+        if getattr(capability, field_name):
+            required.update(controls)
+    return frozenset(required)
+
+
+def evaluate_capability_responsibility(
+    capability: CapabilityEnvelope,
+    responsibility: Optional[ResponsibilityEnvelope],
+) -> ResponsibilityGateResult:
+    """Fail closed when a capable actor lacks its minimum responsibility controls."""
+    required = required_responsibility_controls(capability)
+    supplied = responsibility.controls if responsibility is not None else frozenset()
+    missing = required.difference(supplied)
+    if missing:
+        names = tuple(sorted(control.value for control in missing))
+        return ResponsibilityGateResult(
+            allowed=False,
+            required_controls=required,
+            missing_controls=frozenset(missing),
+            reasons=(
+                "responsibility envelope is insufficient for the declared capability envelope",
+                "missing controls: " + ", ".join(names),
+                "capability does not create authority",
+            ),
+        )
+    return ResponsibilityGateResult(
+        allowed=True,
+        required_controls=required,
+        missing_controls=frozenset(),
+        reasons=("capability envelope is covered by the supplied responsibility envelope",),
+    )
+
 _ALLOWED_TRANSITIONS = {
     GovernanceState.PROPOSED: frozenset({GovernanceState.INVESTIGATING, GovernanceState.READY_FOR_DECISION, GovernanceState.ASK, GovernanceState.DEFERRED, GovernanceState.REFUSED, GovernanceState.STOPPED}),
     GovernanceState.INVESTIGATING: frozenset({GovernanceState.READY_FOR_DECISION, GovernanceState.ASK, GovernanceState.DEFERRED, GovernanceState.REFUSED, GovernanceState.STOPPED, GovernanceState.REQUIRES_REPAIR}),
@@ -294,10 +416,24 @@ def evaluate(
     *,
     consequential: bool = True,
     now: Optional[str] = None,
+    capability: Optional[CapabilityEnvelope] = None,
+    responsibility: Optional[ResponsibilityEnvelope] = None,
 ) -> GovernanceResult:
     """Evaluate one proposed action at the canonical governance boundary."""
     reasons: list[str] = []
     required: list[str] = []
+
+    if capability is not None:
+        responsibility_result = evaluate_capability_responsibility(capability, responsibility)
+        if not responsibility_result.allowed:
+            reasons.extend(responsibility_result.reasons)
+            required.extend(
+                f"provide responsibility control: {control.value}"
+                for control in sorted(
+                    responsibility_result.missing_controls,
+                    key=lambda item: item.value,
+                )
+            )
 
     if not decision.complete_for_governance():
         reasons.append("decision object is incomplete")

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/nayapower-capability-responsibility-gate-v1",
+  "title": "NayaPOWER Capability Responsibility Gate V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_id",
+    "version",
+    "principle",
+    "status",
+    "capabilities",
+    "controls",
+    "enforcement",
+    "runtime_binding"
+  ],
+  "properties": {
+    "contract_id": {
+      "const": "NAYAPOWER-CAPABILITY-RESPONSIBILITY-GATE-V1"
+    },
+    "version": {
+      "const": "1.0"
+    },
+    "principle": {
+      "const": "Increasing capability requires nondecreasing responsibility; capability never creates authority."
+    },
+    "status": {
+      "const": "IMPLEMENTED_AND_SOURCE_RUNTIME_TESTED"
+    },
+    "capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "enforcement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "missing_control",
+        "authority_separation",
+        "monotonicity",
+        "understatement_prohibited"
+      ],
+      "properties": {
+        "missing_control": {
+          "const": "BLOCK"
+        },
+        "authority_separation": {
+          "const": true
+        },
+        "monotonicity": {
+          "const": true
+        },
+        "understatement_prohibited": {
+          "const": true
+        }
+      }
+    },
+    "runtime_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universal_execution_gate",
+        "model_tool_gateway",
+        "production_proof"
+      ],
+      "properties": {
+        "universal_execution_gate": {
+          "const": "BOUND_IN_SOURCE"
+        },
+        "model_tool_gateway": {
+          "const": "BOUND_IN_SOURCE"
+        },
+        "production_proof": {
+          "const": "NOT_CLAIMED"
+        }
+      }
+    }
+  }
+}

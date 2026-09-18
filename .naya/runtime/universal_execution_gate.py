@@ -22,8 +22,10 @@ It consumes the canonical objects directly. It introduces only a small
 subordinate boundary object (ExecutionAction / ExecutionAuthorization); it does
 NOT introduce another Authority model.
 
-Isolation: this module is not wired into any production path yet. Nothing
-imports it except its own test suite.
+Integration status: this module is now bound to the canonical consequential
+authorization path through the execution controller and model-tool gateway in
+the source tree. Production deployment behavior is not claimed until observed
+in the target runtime.
 """
 from __future__ import annotations
 
@@ -77,7 +79,20 @@ GovernanceState = KERNEL.GovernanceState
 Decision = KERNEL.Decision
 Risk = KERNEL.Risk
 VerificationPlan = KERNEL.VerificationPlan
+CapabilityEnvelope = KERNEL.CapabilityEnvelope
+ResponsibilityControl = KERNEL.ResponsibilityControl
+ResponsibilityEnvelope = KERNEL.ResponsibilityEnvelope
 evaluate = KERNEL.evaluate
+
+CAPABILITY_FIELDS = (
+    "autonomous_action",
+    "external_tools",
+    "external_state_write",
+    "persistence",
+    "inter_agent_coordination",
+    "delegation",
+    "third_party_impact",
+)
 
 
 def load_registry(path: str | Path | None = None) -> AuthorityRegistry:
@@ -105,6 +120,84 @@ def load_registry(path: str | Path | None = None) -> AuthorityRegistry:
     return AuthorityRegistry(authorities=authorities)
 
 
+def capability_for_execution(action: "ExecutionAction") -> CapabilityEnvelope:
+    """Derive the minimum observable capability envelope for this execution boundary."""
+    action_type = action.action_type.lower()
+    permission = action.permission.lower()
+    external_write = (
+        "write" in action_type
+        or "deploy" in action_type
+        or "mutation" in action_type
+        or permission in {"repo_write", "deploy_public_runtime"}
+    )
+    return CapabilityEnvelope(
+        autonomous_action=True,
+        external_tools=True,
+        external_state_write=external_write,
+        persistence=action.persistence,
+        inter_agent_coordination=action.inter_agent_coordination,
+        delegation=action.delegated,
+        third_party_impact=action.third_party_impact,
+    )
+
+
+def combine_capability_envelopes(
+    actual: CapabilityEnvelope,
+    declared: Optional[CapabilityEnvelope],
+) -> CapabilityEnvelope:
+    """Never allow a caller to under-declare executable capability."""
+    if declared is None:
+        return actual
+    fields = (
+        "autonomous_action",
+        "external_tools",
+        "external_state_write",
+        "persistence",
+        "inter_agent_coordination",
+        "delegation",
+        "third_party_impact",
+    )
+    return CapabilityEnvelope(**{
+        name: bool(getattr(actual, name) or getattr(declared, name))
+        for name in fields
+    })
+
+
+def responsibility_from_verified_facts(
+    *,
+    action: "ExecutionAction",
+    decision: DecisionObject,
+    authority_validated: bool,
+    authority_bound: bool,
+    tool_permissions_bound: bool,
+    provenance_bound: bool,
+) -> ResponsibilityEnvelope:
+    """Build controls from facts already established by the gate's own checks."""
+    controls: set[ResponsibilityControl] = set()
+    if authority_validated:
+        controls.add(ResponsibilityControl.IDENTITY_VERIFIED)
+        controls.add(ResponsibilityControl.REVOCATION_PATH)
+    if authority_bound:
+        controls.add(ResponsibilityControl.AUTHORITY_BOUND)
+    if tool_permissions_bound:
+        controls.add(ResponsibilityControl.TOOL_PERMISSIONS_BOUND)
+    if decision.evidence:
+        controls.add(ResponsibilityControl.PRE_ACTION_EVIDENCE)
+    if decision.verification.complete:
+        controls.add(ResponsibilityControl.DURABLE_RECEIPT)
+    if action.observation_target.strip() or decision.verification.observation.strip():
+        controls.add(ResponsibilityControl.INDEPENDENT_OBSERVATION)
+    if decision.reversible or action.recovery_plan.strip():
+        controls.add(ResponsibilityControl.ROLLBACK_OR_RECOVERY)
+    if provenance_bound:
+        controls.add(ResponsibilityControl.PROVENANCE_BOUND)
+    if action.delegated and action.delegation_chain:
+        controls.add(ResponsibilityControl.DELEGATION_CHAIN_VERIFIED)
+    if action.human_visible:
+        controls.add(ResponsibilityControl.HUMAN_VISIBILITY)
+    return ResponsibilityEnvelope(controls=frozenset(controls))
+
+
 @dataclass(frozen=True)
 class ExecutionAction:
     """The exact action about to execute, bound to authority/decision identity."""
@@ -118,6 +211,14 @@ class ExecutionAction:
     permission: str
     decision_id: str
     authority_id: str
+    observation_target: str = ""
+    persistence: bool = False
+    inter_agent_coordination: bool = False
+    delegated: bool = False
+    third_party_impact: bool = False
+    human_visible: bool = False
+    recovery_plan: str = ""
+    delegation_chain: Tuple[str, ...] = ()
 
     REQUIRED = (
         "action_id",
@@ -136,7 +237,17 @@ class ExecutionAction:
         missing = [key for key in cls.REQUIRED if data.get(key) in (None, "", [], {})]
         if missing:
             raise ValueError("execution action missing required fields: " + ", ".join(missing))
-        return cls(**{key: str(data[key]) for key in cls.REQUIRED})
+        return cls(
+            **{key: str(data[key]) for key in cls.REQUIRED},
+            observation_target=str(data.get("observation_target") or ""),
+            persistence=data.get("persistence") is True or data.get("persistent") is True,
+            inter_agent_coordination=data.get("inter_agent_coordination") is True,
+            delegated=data.get("delegated") is True or bool(data.get("delegation_chain")),
+            third_party_impact=data.get("third_party_impact") is True,
+            human_visible=data.get("human_visible") is True,
+            recovery_plan=str(data.get("recovery_plan") or ""),
+            delegation_chain=tuple(str(item) for item in (data.get("delegation_chain") or ())),
+        )
 
 
 @dataclass(frozen=True)
@@ -155,6 +266,31 @@ class ExecutionAuthorization:
     risk_tier: str
     validated_at: str
     binding_hash: str
+    capability_flags: Tuple[str, ...] = ()
+    responsibility_controls: Tuple[str, ...] = ()
+    governance_receipt_id: str = ""
+
+    def to_governance_receipt(self) -> dict[str, Any]:
+        return {
+            "receipt_id": self.governance_receipt_id,
+            "schema_version": "1.0",
+            "actor_id": self.actor_id,
+            "authority_id": self.authority_id,
+            "decision_id": self.decision_id,
+            "action_id": self.action_id,
+            "action_type": self.action_type,
+            "target": self.target,
+            "scope": self.scope,
+            "permission": self.permission,
+            "governance_state": self.governance_state,
+            "risk_tier": self.risk_tier,
+            "capability_envelope": {
+                field: field in self.capability_flags for field in CAPABILITY_FIELDS
+            },
+            "responsibility_controls": list(self.responsibility_controls),
+            "binding_hash": self.binding_hash,
+            "validated_at": self.validated_at,
+        }
 
 
 @dataclass(frozen=True)
@@ -177,10 +313,23 @@ def _execution_binding_hash(
     actor_id: str,
     scope: str,
     permission: str,
+    capability_flags: Tuple[str, ...] = (),
+    responsibility_controls: Tuple[str, ...] = (),
+    governance_receipt_id: str = "",
 ) -> str:
     """Hash of every security-relevant identity field, including the exact
     action_type and target so one consequential action can never authorize a
     different one (the documented Test #8 residual is closed here)."""
+    governance_material = json.dumps(
+        {
+            "capability_flags": list(capability_flags),
+            "responsibility_controls": list(responsibility_controls),
+            "governance_receipt_id": governance_receipt_id,
+        },
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
     return _binding_hash(
         authority_id,
         decision_id,
@@ -190,6 +339,7 @@ def _execution_binding_hash(
         actor_id,
         scope,
         permission,
+        governance_material,
     )
 
 
@@ -203,6 +353,9 @@ def _authorization_hash(authorization: "ExecutionAuthorization") -> str:
         authorization.actor_id,
         authorization.scope,
         authorization.permission,
+        authorization.capability_flags,
+        authorization.responsibility_controls,
+        authorization.governance_receipt_id,
     )
 
 
@@ -263,6 +416,8 @@ class UniversalExecutionGate:
         decision: Optional[DecisionObject],
         action: Any,
         now: Optional[str] = None,
+        capability: Optional[CapabilityEnvelope] = None,
+        responsibility: Optional[ResponsibilityEnvelope] = None,
     ) -> GateDecision:
         """ALLOW only when provenance, validity, and all bindings hold."""
         reasons: list[str] = []
@@ -329,10 +484,74 @@ class UniversalExecutionGate:
             if normalized.permission != decision.action or normalized.permission != decision.required_permission:
                 reasons.append("action permission does not match decision permission")
 
-        # 10. canonical kernel is the only authority-of-record
+        # 10. capability -> responsibility is enforced before canonical execution authorization.
+        actual_capability = capability_for_execution(normalized) if normalized is not None else None
+        effective_capability = (
+            combine_capability_envelopes(actual_capability, capability)
+            if actual_capability is not None
+            else capability
+        )
+        if capability is not None and not isinstance(capability, CapabilityEnvelope):
+            reasons.append("invalid capability envelope")
+            effective_capability = None
+        if responsibility is not None and not isinstance(responsibility, ResponsibilityEnvelope):
+            reasons.append("invalid responsibility envelope")
+            responsibility = None
+
+        identity_verified = False
+        if authority is not None:
+            resolved = self._current_registry().resolve(getattr(authority, "authority_id", ""))
+            identity_verified = (
+                resolved is not None
+                and grant_fingerprint(resolved) == grant_fingerprint(authority)
+                and not getattr(resolved, "revoked", False)
+            )
+
+        authority_bound = (
+            authority is not None
+            and decision is not None
+            and decision.actor_id == authority.principal_id
+            and decision.purpose == authority.purpose
+            and decision.scope == authority.scope
+            and decision.action in authority.granted_actions
+        )
+        tool_permissions_bound = (
+            normalized is not None
+            and authority_bound
+            and normalized.permission == decision.action
+            and normalized.permission == decision.required_permission
+        )
+        provenance_bound = (
+            normalized is not None
+            and authority is not None
+            and decision is not None
+            and normalized.authority_id == authority.authority_id
+            and normalized.decision_id == decision.decision_id
+            and normalized.actor_id == decision.actor_id
+            and normalized.scope == decision.scope
+            and normalized.permission == decision.action
+        )
+        inferred_responsibility = responsibility_from_verified_facts(
+            action=normalized,
+            decision=decision,
+            authority_validated=identity_verified,
+            authority_bound=authority_bound,
+            tool_permissions_bound=tool_permissions_bound,
+            provenance_bound=provenance_bound,
+        ) if normalized is not None and decision is not None else responsibility
+        effective_responsibility = responsibility if responsibility is not None else inferred_responsibility
+
+        # 11. canonical kernel is the only authority-of-record
         kernel_result = None
         if authority is not None and decision is not None:
-            kernel_result = evaluate(decision, authority, consequential=True, now=validated_at)
+            kernel_result = evaluate(
+                decision,
+                authority,
+                consequential=True,
+                now=validated_at,
+                capability=effective_capability,
+                responsibility=effective_responsibility,
+            )
             if not kernel_result.allowed:
                 reasons.extend(kernel_result.reasons)
             elif kernel_result.state != GovernanceState.AUTHORIZED or kernel_result.decision != Decision.EXECUTE:
@@ -347,6 +566,35 @@ class UniversalExecutionGate:
 
         assert authority is not None and decision is not None and normalized is not None
         assert kernel_result is not None
+        capability_flags = tuple(
+            field_name
+            for field_name in CAPABILITY_FIELDS
+            if getattr(effective_capability, field_name)
+        )
+        responsibility_controls = tuple(
+            sorted(control.value for control in effective_responsibility.controls)
+        )
+        governance_receipt_id = (
+            "govrcpt_"
+            + _binding_hash(
+                authority.authority_id,
+                decision.decision_id,
+                normalized.action_id,
+            )[:20]
+        )
+        binding_hash = _execution_binding_hash(
+            authority.authority_id,
+            decision.decision_id,
+            normalized.action_id,
+            normalized.action_type,
+            normalized.target,
+            decision.actor_id,
+            decision.scope,
+            decision.action,
+            capability_flags,
+            responsibility_controls,
+            governance_receipt_id,
+        )
         authorization = ExecutionAuthorization(
             authority_id=authority.authority_id,
             decision_id=decision.decision_id,
@@ -359,16 +607,10 @@ class UniversalExecutionGate:
             governance_state=kernel_result.state.value,
             risk_tier=decision.risk.tier,
             validated_at=validated_at,
-            binding_hash=_execution_binding_hash(
-                authority.authority_id,
-                decision.decision_id,
-                normalized.action_id,
-                normalized.action_type,
-                normalized.target,
-                decision.actor_id,
-                decision.scope,
-                decision.action,
-            ),
+            binding_hash=binding_hash,
+            capability_flags=capability_flags,
+            responsibility_controls=responsibility_controls,
+            governance_receipt_id=governance_receipt_id,
         )
         self._issued.add(authorization.binding_hash)
         return GateDecision(allowed=True, reasons=(), authorization=authorization)
@@ -431,4 +673,8 @@ __all__ = [
     "ExecutionAuthorization",
     "GateDecision",
     "UniversalExecutionGate",
+    "CapabilityEnvelope",
+    "ResponsibilityEnvelope",
+    "capability_for_execution",
+    "combine_capability_envelopes",
 ]

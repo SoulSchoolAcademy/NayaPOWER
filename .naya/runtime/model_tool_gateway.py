@@ -107,6 +107,7 @@ def authorize(
         execution_authorization=execution_authorization,
         gate=issuer,
         preflight=preflight,
+        governance_receipt=execution_authorization.to_governance_receipt(),
     )
     return {
         "status": "AUTHORIZED",
@@ -119,6 +120,8 @@ def authorize(
         "decision_id": execution_authorization.decision_id,
         "validated_at": execution_authorization.validated_at,
         "binding_hash": execution_authorization.binding_hash,
+        "governance_receipt_id": execution_authorization.governance_receipt_id,
+        "responsibility_controls": list(execution_authorization.responsibility_controls),
         "side_effect_authorized": True,
         "side_effect_executed": False,
         "proof_required_after_action": True,

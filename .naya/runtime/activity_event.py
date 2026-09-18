@@ -19,13 +19,18 @@ def _stamp() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
-def build_activity_event(*, event_id: str, claim_id: str, action_id: str, decision_id: str, authority_id: str, actor_id: str, subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], verification_method: str = "human-naya-verification", verification_schema: str = "naya-power-evidence/v1", run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None) -> dict[str, Any]:
+def build_activity_event(*, event_id: str, claim_id: str, action_id: str, decision_id: str, authority_id: str, actor_id: str, subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], verification_method: str = "human-naya-verification", verification_schema: str = "naya-power-evidence/v1", run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None, governance_receipt_id: Optional[str] = None, smart_ledger: Optional[dict[str, Any]] = None) -> dict[str, Any]:
     stamp = _stamp()
     effective = effective_at or stamp
     execution: dict[str, Any] = {"event_id": event_id, "claim_id": claim_id, "action_id": action_id, "decision_id": decision_id, "authority_id": authority_id, "actor_id": actor_id, "run_id": run_id}
     if session_id:
         execution["session_id"] = session_id
-    return {"event_id": event_id, "created_at": stamp, "effective_at": effective, "event_type": EVENT_TYPE, "status": "VERIFIED_REPOSITORY_RECORD", "subject": subject, "title": subject, "tags": [EVENT_TYPE], "source": {"kind": "execution", "event_id": f"EXECUTION-{claim_id}", "generator": "activity_event.build_activity_event"}, "execution": execution, "receipt": {"receipt_id": receipt_id, "schema": verification_schema, "status": "MATCHED", "event_id": event_id}, "continuity": {"execution_state": "COMPLETED", "handoff": {"next_action": next_action, "successor": successor}, "learning_status": "RECORDED"}, "activity_feed_projection": {"feed": "NAYA-ACTIVITY", "event_id": event_id, "title": subject, "summary": summary}, "verification": {"status": "VERIFIED", "method": verification_method, "schema": verification_schema, "evidence": evidence}, "evidence_ids": evidence}
+    if governance_receipt_id:
+        execution["governance_receipt_id"] = governance_receipt_id
+    event = {"event_id": event_id, "created_at": stamp, "effective_at": effective, "event_type": EVENT_TYPE, "status": "VERIFIED_REPOSITORY_RECORD", "subject": subject, "title": subject, "tags": [EVENT_TYPE], "source": {"kind": "execution", "event_id": f"EXECUTION-{claim_id}", "generator": "activity_event.build_activity_event"}, "execution": execution, "receipt": {"receipt_id": receipt_id, "schema": verification_schema, "status": "MATCHED", "event_id": event_id}, "continuity": {"execution_state": "COMPLETED", "handoff": {"next_action": next_action, "successor": successor}, "learning_status": "RECORDED"}, "activity_feed_projection": {"feed": "NAYA-ACTIVITY", "event_id": event_id, "title": subject, "summary": summary}, "verification": {"status": "VERIFIED", "method": verification_method, "schema": verification_schema, "evidence": evidence}, "evidence_ids": evidence}
+    if smart_ledger is not None:
+        event["smart_ledger"] = smart_ledger
+    return event
 
 
 def _project_team_activity(event: dict[str, Any], events_root: Path, index_path: Path) -> None:
@@ -120,14 +125,14 @@ def _event_id_for(claim_id: str, action_id: str, run_id: Optional[str]) -> str:
     return f"SE-{stamp:%Y%m%d-%H%M%S}-activity-{token[:40] if token else 'execution'}-{digest}"
 
 
-def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optional[str], authority_id: Optional[str], actor_id: Optional[str], subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None, events_root: Optional[Path] = None, index_path: Optional[Path] = None) -> dict[str, Any]:
+def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optional[str], authority_id: Optional[str], actor_id: Optional[str], subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None, governance_receipt_id: Optional[str] = None, smart_ledger: Optional[dict[str, Any]] = None, events_root: Optional[Path] = None, index_path: Optional[Path] = None) -> dict[str, Any]:
     root = Path(events_root) if events_root else EVENTS_ROOT
     index = Path(index_path) if index_path else INDEX_PATH
     existing = find_activity_event_by_execution(claim_id=claim_id, action_id=action_id, run_id=run_id, events_root=root, index_path=index)
     if existing is not None:
         return {"status": "REPLAY_EVENT", "event_id": existing.get("event_id"), "event": existing, "persist": None}
     event_id = _event_id_for(claim_id, action_id, run_id)
-    event = build_activity_event(event_id=event_id, claim_id=claim_id, action_id=action_id, decision_id=decision_id, authority_id=authority_id, actor_id=actor_id, subject=subject, summary=summary, receipt_id=receipt_id, next_action=next_action, successor=successor, evidence=evidence, run_id=run_id, session_id=session_id, effective_at=effective_at)
+    event = build_activity_event(event_id=event_id, claim_id=claim_id, action_id=action_id, decision_id=decision_id, authority_id=authority_id, actor_id=actor_id, subject=subject, summary=summary, receipt_id=receipt_id, next_action=next_action, successor=successor, evidence=evidence, run_id=run_id, session_id=session_id, effective_at=effective_at, governance_receipt_id=governance_receipt_id, smart_ledger=smart_ledger)
     persisted = persist_activity_event(event, events_root=root, index_path=index)
     if persisted.get("status") == "CONFLICT":
         raise ValueError(f"conflicting existing canonical Activity event: {event_id}")
