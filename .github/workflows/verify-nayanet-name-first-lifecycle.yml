@@ -75,13 +75,12 @@ jobs:
           await pageA.locator('#enter').click();
           await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
           await pageA.waitForLoadState('networkidle', {timeout:60000});
-          const handoffDebug=await pageA.evaluate(async () => ({
-            url:location.href,
-            origin:location.origin,
-            keys:Object.keys(localStorage),
-            sessionKeys:Object.keys(localStorage).filter(k=>k.includes('nayanet')||k.includes('supabase')||k.includes('auth')),
-            auth:await window.NayaNETNameFirstAuth.current()
-          }));
+          const handoffDebug=await pageA.evaluate(async ({url,key}) => {
+            const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+            const session=(await client.auth.getSession()).data.session;
+            return {url:location.href,origin:location.origin,keys:Object.keys(localStorage),sessionKeys:Object.keys(localStorage).filter(k=>k.includes('nayanet')||k.includes('supabase')||k.includes('auth')),auth:session?.user?.id?{authenticated:true,userId:session.user.id,is_anonymous:session.user.is_anonymous===true}:null};
+          }, {url:supabaseUrl,key:supabaseKey});
           console.log('HANDOFF_DEBUG='+JSON.stringify(handoffDebug));
           if(!handoffDebug.auth?.authenticated) throw new Error('IDENTITY_AUTH_NOT_PERSISTED');
           await pageA.evaluate(() => location.replace('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/')); 
