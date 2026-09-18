@@ -46,18 +46,17 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "ASSISTANT_LANE_RUNTIME_BASELINE_VERIFIED",
-    "observed_head": "d6744e223621630c05435c53f976ccdc8b417947",
+    "status": "ASSISTANT_LANE_RUNTIME_PARITY_CURRENT",
+    "observed_head": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
     "observation_is_historical_relative_to_live_HEAD": true,
-    "run_id": 35287294186,
-    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "run_id": 35379376095,
+    "workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
     "lane": "ASSISTANT_CLOUDFLARE",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
     "worker": "sparkling-shape-7ae5",
-    "cloudflare_version_id": "646dcbc8-64a5-4cba-adb3-ab0d4b83815e",
-    "exact_source_parity": true,
-    "source_sha256": "f18916f76f1b0c87ac5f977069f6e6ff2f4fbdb4f07a518f9621a7d20872429a",
-    "live_sha256": "f18916f76f1b0c87ac5f977069f6e6ff2f4fbdb4f07a518f9621a7d20872429a",
+    "cloudflare_version_id": "62d84659-25cc-4c04-991c-2806b7f99246",
+    "canonical_release_header": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
+    "normalized_source_live_parity": true,
     "desktop_baseline": true,
     "mobile_baseline": true,
     "conclusion": "success"
@@ -73,19 +72,22 @@
     "P0 run 34724442337 passed its offline adversarial workflow contract and behavioral bypass suite on e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
     "The Smart Feed runtime loader repair was implemented in 0d56f6e47288e69eeda2adddf1aa18bb4235b062.",
     "The Intelligent Hub Master Design Contract and PIS Smart Note exist and are indexed by the Hub Read-First gate.",
-    "The current GitHub execution surface exposes repository file operations but no workflow-dispatch mutation or Cloudflare editing/deployment capability.",
     "Closed PRs #153, #156, and #157 are historical proof records, not current execution work.",
     "Issue #57 is a future/deferred NayaMail + Ambassador Growth Hub project explicitly marked not for today; it is not current execution work.",
-    "The 2026-09-17 Team Naya reset created a visible operating center and reconciled the STATE/BLOCK next-action conflict."
+    "The 2026-09-17 Team Naya reset created a visible operating center and reconciled the STATE/BLOCK next-action conflict.",
+    "The authorized GitHub execution surface on the connected desktop can dispatch workflows through an authenticated gh session without exposing credential values.",
+    "The canonical production deployment workflow is .github/workflows/deploy-nayanet-intelligent-hub.yml and it successfully deployed current release 25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e.",
+    "Direct runtime inspection confirms X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e and normalized Hub/assistant-runtime source parity."
   ],
   "unknown": [
-    "Authorized positive authenticated test identity/credential surface for lifecycle execution.",
-    "Genuine external cold-Naya behavioral proof beyond the deployed runtime persistence boundary."
+    "Genuine external cold-Naya behavioral proof beyond the deployed runtime persistence boundary.",
+    "Authorized positive authenticated test identity values are not configured as GitHub Environment secrets in assistant-cloudflare-production."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
     "Fresh control-plane validation previously found MAP/BLOCK and then STATE/BLOCK divergence; those coherence defects were the reason for the 2026-09-17 reconciliation reset.",
-    "Phase 0 inspection found the recorded canonical release workflow path .github/workflows/deploy-nayanet-hub-canonical-v2.yml is absent from current main, so that recorded next action was not executable as written."
+    "Phase 0 inspection found the recorded canonical release workflow path .github/workflows/deploy-nayanet-hub-canonical-v2.yml is absent from current main, so that recorded next action was not executable as written.",
+    "The production deploy workflow initially failed its live verification because it searched for the release SHA in the HTML body; this was corrected to verify the canonical release header, then corrected for HTTP header case. The subsequent deployment passed."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -102,13 +104,13 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "The authorized Assistant Cloudflare runtime now exposes the governed Supabase authentication/session and cognition persistence bridge and has fresh production source/runtime parity. The remaining P0 boundary is a positive authenticated lifecycle receipt and genuinely independent fresh-context cold-Naya retrieval; no credentials are handled in chat and no alternate runtime is substituted.",
-  "single_next_action": "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime.",
+  "bottleneck": "The current production Cloudflare runtime is source-bound and runtime-parity proven. The remaining critical boundary is a positive authenticated lifecycle receipt and genuinely independent fresh-context cold-Naya retrieval. The protected assistant-cloudflare-production environment currently exposes neither ASSISTANT_TEST_EMAIL nor ASSISTANT_TEST_PASSWORD as environment secrets.",
+  "single_next_action": "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue all non-authenticated proof work.",
   "next_actions": [
-    "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime."
+    "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue all non-authenticated proof work."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE EXECUTION\\nResolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, and current Team Naya Activity. Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact current HEAD. Execute only that canonical lane. Observe and verify the runtime. Record the result in Activity. If dispatch is unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Do not substitute GitHub 509 or another runtime. TAG → YOU’RE IT.",
+  "ready_to_run_execution": "NAYA POWER ON — AUTHENTICATED LIFECYCLE EXECUTION\nResolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, Team Naya operating center, and the authenticated lifecycle workflow. Confirm the environment secret names by metadata only. Dispatch .github/workflows/assistant-cloudflare-authenticated-proof.yml against current main. Inspect the run and advance through record → retrieve → action → observation → verification → independent fresh-context retrieval. Preserve secret-free receipts. If the secret gate blocks, do not fabricate credentials or create a substitute identity; classify BLOCKED and continue every executable non-authenticated proof gate.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
