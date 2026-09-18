@@ -68,8 +68,20 @@ jobs:
           cp '2026 09 17 NAYANET HUB.html' 'NAYANET/HUB/dist/index.html'
           test -f 'assistant-runtime.js'
           cp 'assistant-runtime.js' 'NAYANET/HUB/dist/assistant-runtime.js'
+          mkdir -p "NAYANET/HUB/dist/releases/${GITHUB_SHA}"
+          cp 'NAYANET/HUB/dist/index.html' "NAYANET/HUB/dist/releases/${GITHUB_SHA}/index.html"
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          p = Path('NAYANET/HUB/wrangler.jsonc')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          data['vars'] = {'NAYA_RELEASE': os.environ['GITHUB_SHA']}
+          p.write_text(json.dumps(data, indent=2) + '\n', encoding='utf-8')
+          print(f"NAYA_RELEASE_BOUND={os.environ['GITHUB_SHA']}")
+          PY
           echo "CANONICAL_PRESENTATION_BASELINE_INSTALLED source='2026 09 17 NAYANET HUB.html'"
           echo "RUNTIME_BRIDGE_INSTALLED source='assistant-runtime.js'"
+          echo "VERSIONED_CANONICAL_ASSET_INSTALLED release='${GITHUB_SHA}'"
 
       - name: Verify Cloudflare authorization inputs
         shell: bash
