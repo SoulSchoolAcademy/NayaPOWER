@@ -129,7 +129,11 @@ jobs:
           // page, or runtime state is shared; only the canonical Supabase session is.
           const storageState = await contextA.storageState();
           const contextB = await browser.newContext({storageState});
-          const pageB = await boot(contextB);
+          const pageB = await contextB.newPage();
+          await pageB.goto(runtimeUrl, {waitUntil:'domcontentloaded', timeout:60000});
+          await pageB.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+          const coldAuth = await pageB.evaluate(async () => window.NayaAssistantRuntime.init());
+          if (!coldAuth?.authenticated) throw new Error('COLD_CONTEXT_SESSION_NOT_PERSISTED');
 
           const cold = await pageB.evaluate(async (eventId) => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
