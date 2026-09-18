@@ -381,6 +381,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nayanet-name-first-lifecycle-receipt
-          path: "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
+          path: "${{ runner.temp }}/nayanet-name-first-lifecycle-receipt.json"
           if-no-files-found: error
           retention-days: 30
