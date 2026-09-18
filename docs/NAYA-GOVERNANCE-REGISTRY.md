@@ -34,6 +34,14 @@
 | Durable learning log | `docs/NAYA-NITRO-LEARNING-LOG.md` | Smart Notes | LEARNING RECORD |
 | Smart Note retrieval | `docs/smart-notes/INDEX.md` | individual notes | RETRIEVAL INDEX |
 
+## Authority Grant Primitive
+
+`docs/NAYA-AUTHORITY-GRANT-PRIMITIVE-SPECIFICATION-V1.md` is the **canonical governance contract for the Authority Grant Primitive**: the minimum semantics for explicit, valid, scoped, traceable authorization before consequential execution. It defines grant identity, issuer, subject, scope, actions, constraints, lifecycle, delegation boundaries, revocation, validation, authority provenance, and constitutional negative/positive test requirements.
+
+**Runtime status:** SPECIFICATION ONLY / NOT YET IMPLEMENTED. This contract does not itself create a grant, table, function, policy, identity system, consent interpretation, or execution capability.
+
+**Critical boundary:** consent, authentication, ownership, connection, capability, Dream output, learning evidence, and decision claims do not automatically constitute consequential execution authority.
+
 ## Naya Law authority law
 
 `docs/NAYA-LAW-MASTER-ACTIVATION-SPECIFICATION.md` is the **canonical portable activation specification for Naya Law**. It defines the Naya operating constitution, truth/no-guessing standard, best-interest law, preservation and scope law, execution and verification law, Oscar quality law, failure-to-learning loop, human authority, mode/master/Nitro relationship, capability honesty, and the mandatory GitHub-first / Naya Power AI Supercharger read-first principle.
