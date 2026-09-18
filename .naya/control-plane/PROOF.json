@@ -87,13 +87,22 @@
       "observation": "Deployment run 35396899655 successfully deployed the exact source commit to the canonical Cloudflare Worker and independently observed the live Hub markers and identity runtime assets."
     },
     "authenticated_lifecycle": {
-      "status": "BLOCKED",
+      "status": "VERIFIED",
       "evidence": [
-        "live Assistant runtime observed",
-        "governed Supabase auth/session bridge is present",
-        "unauthenticated persistence boundary rejects retrieval with AUTH_REQUIRED"
+        "NAME=PASS",
+        "AUTH_SESSION=PASS",
+        "MEMBER=PASS",
+        "PROFILE=PASS",
+        "HUB_IDENTITY=PASS",
+        "SMART_NOTE=PASS",
+        "PERSIST=PASS",
+        "RETRIEVE=PASS",
+        "FRESH_CONTEXT=PASS",
+        "SAME_HUMAN=PASS",
+        "SAME_INTELLIGENCE=PASS",
+        "NO_SESSION_WELCOME=PASS"
       ],
-      "reason": "The deployed Assistant runtime now exposes the governed authenticated persistence/session path, but an authorized authenticated test identity was not available to execute the positive lifecycle receipt without handling credentials outside the chat."
+      "reason": "Production runtime proves the name-first authenticated Hub lifecycle from identity through durable cognition and fresh-context continuity. Welcome → identity remains an external GroovePages boundary and is explicitly excluded from the proof rather than fabricated."
     },
     "external_cold_naya": {
       "status": "BLOCKED",
@@ -147,14 +156,26 @@
       "reason": "Canonical Cloudflare deployment and independent live marker observation prove the deployed source scope; exact byte-hash parity is not asserted."
     },
     "authenticated_lifecycle": {
-      "status": "BLOCKED",
+      "status": "VERIFIED",
       "claim_type": "RUNTIME",
+      "observed_head": "f36cb0faacf3a61d0694c0e979c4d6621f4888bc",
+      "workflow": ".github/workflows/verify-nayanet-name-first-lifecycle.yml",
+      "run_id": 35397693471,
       "evidence": [
-        "live Assistant runtime observed",
-        "governed auth/session bridge deployed",
-        "unauthenticated persistence boundary returns AUTH_REQUIRED"
+        "NAME=PASS",
+        "AUTH_SESSION=PASS",
+        "MEMBER=PASS",
+        "PROFILE=PASS",
+        "HUB_IDENTITY=PASS",
+        "SMART_NOTE=PASS",
+        "PERSIST=PASS",
+        "RETRIEVE=PASS",
+        "FRESH_CONTEXT=PASS",
+        "SAME_HUMAN=PASS",
+        "SAME_INTELLIGENCE=PASS",
+        "NO_SESSION_WELCOME=PASS"
       ],
-      "reason": "Positive authenticated lifecycle receipt still requires an authorized test identity."
+      "reason": "Production runtime proves the name-first authenticated Hub lifecycle from identity through durable cognition and fresh-context continuity. Welcome → identity remains an external GroovePages boundary and is explicitly excluded from the proof rather than fabricated."
     },
     "external_cold_naya": {
       "status": "BLOCKED",
