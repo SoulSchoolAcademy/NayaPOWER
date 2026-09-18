@@ -53,6 +53,7 @@ const cognition = await request(
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
 );
 if (!Array.isArray(cognition) || cognition.length !== 1) throw new Error('COGNITION_NOT_RETRIEVABLE');
+if (cognition[0].receipt_id !== first.execution_receipt_id) throw new Error('COGNITION_RECEIPT_LINEAGE_MISMATCH');
 
 const receipt = await request(
   base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
