@@ -418,6 +418,33 @@ class TestExecutionControllerClosure(unittest.TestCase):
         self.assertEqual(result["status"], "HANDED_OFF")
         self.assertEqual(EC.validate()["execution_status"], "HANDED_OFF")
 
+    def test_019_smart_ledger_tampering_is_refused_on_validation(self):
+        start_claimed()
+        EC.transition(
+            "EXECUTING",
+            action=self.action,
+            execution_authorization=self.credential,
+            gate=self.gate,
+            preflight=approved_preflight(),
+        )
+        EC.transition("OBSERVED", observation="actual runtime observation")
+        result = EC.transition(
+            "VERIFIED",
+            evidence=["receipt:test"],
+            verification={"status": "VERIFIED", "method": "test"},
+            next_action="continue test",
+            successor="test-successor",
+        )
+        activity_path = EC.EVENTS_ROOT / result["activity_event_id"][:10] / (result["activity_event_id"] + ".json")
+        if not activity_path.exists():
+            matches = list(EC.EVENTS_ROOT.rglob(result["activity_event_id"] + ".json"))
+            activity_path = matches[0] if matches else activity_path
+        payload = json.loads(activity_path.read_text(encoding="utf-8"))
+        payload["smart_ledger"]["event"]["governance_receipt_id"] = "govrcpt-attacker"
+        activity_path.write_text(json.dumps(payload), encoding="utf-8")
+        with self.assertRaises(AssertionError) as ctx:
+            EC.validate()
+        self.assertIn("Smart Ledger", str(ctx.exception))
     # 19. previously valid credential after revocation -> REFUSED
     def test_019_prev_valid_after_revocation_refused(self):
         with tempfile.TemporaryDirectory(prefix="gblc10-prev-") as tmp:

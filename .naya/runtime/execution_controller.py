@@ -128,6 +128,12 @@ def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_i
             ledger_receipt = ledger.get("verification_receipt")
             if not isinstance(ledger_event, dict) or ledger_event.get("governance_receipt_id") != governance_receipt_id:
                 problems.append("Smart Ledger event is not bound to the gate-issued governance receipt")
+            else:
+                try:
+                    from smart_ledger_engine import LedgerEvent, verify_event as verify_smart_ledger_event
+                    verify_smart_ledger_event(LedgerEvent(**ledger_event))
+                except Exception as exc:
+                    problems.append("Smart Ledger integrity verification failed: " + str(exc))
             if not isinstance(ledger_receipt, dict) or ledger_receipt.get("verification_state") != "verified":
                 problems.append("Smart Ledger governance receipt is not independently verified")
     return (not problems), problems
