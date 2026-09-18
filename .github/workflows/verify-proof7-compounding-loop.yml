@@ -1,0 +1,38 @@
+name: Verify NayaNET Proof 7 Compounding Superbrain Loop
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-proof7-compounding-loop.mjs'
+      - '.github/workflows/verify-proof7-compounding-loop.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof7:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      PROOF_PATH: ${{ runner.temp }}/nayanet-proof7-compounding-loop.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute production Proof 7
+        run: node scripts/verify-proof7-compounding-loop.mjs
+      - name: Validate proof
+        run: |
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof'); if(Object.values(r.proofs).some(v=>v!==true)) throw new Error('proof point failed'); if(r.governance.authority_changed!==false||r.governance.authority_granted!==false) throw new Error('authority changed'); if(r.policy.improvement!=='NOT_PROVEN') throw new Error('policy improvement fabricated');" "$PROOF_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-proof7-compounding-loop
+          path: ${{ runner.temp }}/nayanet-proof7-compounding-loop.json
+          if-no-files-found: error
+          retention-days: 30
