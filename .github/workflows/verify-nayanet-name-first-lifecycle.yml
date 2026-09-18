@@ -147,6 +147,124 @@ jobs:
           }, eventId);
           if (!feedA.rendered) throw new Error('PERSONAL_INTELLIGENCE_RENDER_FAILED:' + JSON.stringify(feedA));
 
+          // CURRENT-SESSION DREAM BOUNDARY PROOF:
+          // Reuse the exact authenticated name-first browser session already established above.
+          // No second identity, auth flow, persistence path, or Dream implementation is introduced.
+          const dreamToken = crypto.randomBytes(8).toString('hex');
+          const dreamKey = 'current-session-dream-' + process.env.GITHUB_RUN_ID + '-' + dreamToken;
+
+          const dreamState = await pageA.evaluate(async ({url,key,eventId,dreamKey}) => {
+            const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+            const session = (await client.auth.getSession()).data.session;
+            if (!session?.user?.id) throw new Error('DREAM_SESSION_NOT_AUTHENTICATED');
+
+            const stable = value => {
+              if (value === null || typeof value !== 'object') return JSON.stringify(value);
+              if (Array.isArray(value)) return '[' + value.map(stable).join(',') + ']';
+              return '{' + Object.keys(value).sort().map(k => JSON.stringify(k)+':'+stable(value[k])).join(',') + '}';
+            };
+            const digest = async value => {
+              const bytes = new TextEncoder().encode(stable(value));
+              const hash = await crypto.subtle.digest('SHA-256', bytes);
+              return [...new Uint8Array(hash)].map(b=>b.toString(16).padStart(2,'0')).join('');
+            };
+
+            const sourceBeforeQ = await client.from('nayanet_cognition_events').select('*')
+              .eq('user_id',session.user.id).eq('project_id','NayaNET').eq('event_id',eventId).maybeSingle();
+            if (sourceBeforeQ.error) throw sourceBeforeQ.error;
+            if (!sourceBeforeQ.data) throw new Error('DREAM_SOURCE_EVENT_NOT_FOUND');
+            const sourceBefore = sourceBeforeQ.data;
+            const sourceHashBefore = await digest(sourceBefore);
+
+            const receiptsBeforeQ = await client.from('nayanet_execution_receipts').select('id').eq('user_id',session.user.id).eq('project_id','NayaNET');
+            if (receiptsBeforeQ.error) throw receiptsBeforeQ.error;
+            const receiptIdsBefore = (receiptsBeforeQ.data||[]).map(x=>String(x.id)).sort();
+
+            const calls = [];
+            const originalFetch = window.fetch.bind(window);
+            window.fetch = async (...args) => {
+              const input=args[0], init=args[1]||{};
+              const requestUrl = typeof input === 'string' ? input : input?.url;
+              const headers = new Headers(init.headers || (typeof input !== 'string' ? input.headers : undefined));
+              if (String(requestUrl).includes('/functions/v1/naya-dream-replay')) {
+                calls.push({
+                  url:String(requestUrl),
+                  method:String(init.method || (typeof input !== 'string' ? input.method : 'GET')),
+                  hasBearer:headers.get('Authorization')?.startsWith('Bearer ')===true,
+                  idempotencyKey:headers.get('x-idempotency-key'),
+                  body:init.body || null
+                });
+              }
+              return originalFetch(...args);
+            };
+
+            const first = await window.NayaAssistantRuntime.dreamReplay({event_id:eventId,idempotency_key:dreamKey});
+            const second = await window.NayaAssistantRuntime.dreamReplay({event_id:eventId,idempotency_key:dreamKey});
+            window.fetch = originalFetch;
+
+            const replayQ = await client.from('nayanet_dream_replays').select('*')
+              .eq('user_id',session.user.id).eq('project_id','NayaNET').eq('idempotency_key',dreamKey).maybeSingle();
+            if (replayQ.error) throw replayQ.error;
+            if (!replayQ.data) throw new Error('DREAM_REPLAY_NOT_PERSISTED');
+
+            const sourceAfterQ = await client.from('nayanet_cognition_events').select('*')
+              .eq('user_id',session.user.id).eq('project_id','NayaNET').eq('event_id',eventId).maybeSingle();
+            if (sourceAfterQ.error) throw sourceAfterQ.error;
+            if (!sourceAfterQ.data) throw new Error('DREAM_SOURCE_EVENT_DISAPPEARED');
+            const sourceHashAfter = await digest(sourceAfterQ.data);
+
+            const receiptsAfterQ = await client.from('nayanet_execution_receipts').select('id').eq('user_id',session.user.id).eq('project_id','NayaNET');
+            if (receiptsAfterQ.error) throw receiptsAfterQ.error;
+            const receiptIdsAfter = (receiptsAfterQ.data||[]).map(x=>String(x.id)).sort();
+
+            const proof = {
+              schema:'naya.nayanet.current_session_dream_boundary.proof.v1',
+              status:'VERIFIED',
+              user_id:session.user.id,
+              source_event_id:eventId,
+              idempotency_key:dreamKey,
+              replay_id:replayQ.data.id,
+              replay_status:replayQ.data.status,
+              points:{
+                session_authenticated:!!session.user.id,
+                auth_uid_present:typeof session.user.id==='string' && session.user.id.length>0,
+                runtime_snapshot_matches_auth_uid:window.NayaAssistantRuntime.snapshot()?.user_id===session.user.id,
+                source_event_exists:true,
+                source_event_owner_matches_auth_uid:sourceBefore.user_id===session.user.id,
+                source_event_hash_captured:typeof sourceHashBefore==='string' && sourceHashBefore.length===64,
+                canonical_dream_endpoint_used:calls.length===2 && calls.every(x=>x.url==='https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/naya-dream-replay'),
+                bearer_session_forwarded:calls.length===2 && calls.every(x=>x.hasBearer),
+                first_replay_simulated:first?.status==='SIMULATED',
+                persisted_replay_owner_matches_auth_uid:replayQ.data.user_id===session.user.id,
+                idempotent_repeat_returns_same_replay:first?.id===second?.id && first?.id===replayQ.data.id,
+                source_event_unchanged:sourceHashBefore===sourceHashAfter,
+                no_execution_receipt_side_effect:JSON.stringify(receiptIdsBefore)===JSON.stringify(receiptIdsAfter),
+                no_authority_or_action_side_effect:
+                  replayQ.data.status==='SIMULATED' &&
+                  replayQ.data.replay_output?.authority?.changed===false &&
+                  replayQ.data.replay_output?.authority?.granted===false &&
+                  replayQ.data.replay_output?.execution_performed===false
+              },
+              invocation:calls.map(x=>({url:x.url,method:x.method,hasBearer:x.hasBearer,idempotencyKey:x.idempotencyKey})),
+              source_hash_before:sourceHashBefore,
+              source_hash_after:sourceHashAfter,
+              receipt_ids_before:receiptIdsBefore,
+              receipt_ids_after:receiptIdsAfter,
+              replay_verification:replayQ.data.verification,
+              replay_output:replayQ.data.replay_output
+            };
+            if (Object.values(proof.points).some(v=>v!==true)) throw new Error('CURRENT_SESSION_DREAM_PROOF_FAILED '+JSON.stringify(proof.points));
+            return proof;
+          }, {url:supabaseUrl,key:supabaseKey,eventId,dreamKey});
+
+          fs.writeFileSync(process.env.DREAM_RECEIPT_PATH,JSON.stringify(dreamState,null,2));
+          Object.entries(dreamState.points).forEach(([k,v],i)=>console.log('DREAM_PROOF_'+String(i+1).padStart(2,'0')+'_'+k.toUpperCase()+'='+(v?'PASS':'FAIL')));
+          console.log('DREAM_REPLAY_ID='+dreamState.replay_id);
+          console.log('DREAM_USER_ID='+dreamState.user_id);
+          console.log('DREAM_IDEMPOTENCY_KEY='+dreamState.idempotency_key);
+          console.log('DREAM_RECEIPT_WRITTEN='+process.env.DREAM_RECEIPT_PATH);
+
           const storage = await contextA.storageState();
           const contextB = await browser.newContext({storageState:storage});
           const pageB = await contextB.newPage();
