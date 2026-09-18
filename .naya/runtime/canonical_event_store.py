@@ -59,6 +59,9 @@ def create_or_replay(event:dict[str,Any],events_root:Path,index_path:Path)->dict
     if path.exists():
         existing=json.loads(path.read_text(encoding='utf-8'))
         if content_fingerprint(existing)==fingerprint:
+            if event.get("verification") and existing.get("verification") != event.get("verification"):
+                existing["verification"] = event["verification"]
+                path.write_text(json.dumps(existing,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
             _rebuild_canonical_index(events_root,index_path)
             return {"status":"REPLAY","event_id":existing["event_id"],"path":str(path),"idempotency_key":key,"fingerprint":fingerprint}
         return {"status":"CONFLICT","event_id":existing.get("event_id"),"path":str(path),"idempotency_key":key,"fingerprint":fingerprint}
