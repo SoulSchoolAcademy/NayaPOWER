@@ -58,6 +58,14 @@ jobs:
           print(f'PIS_PREDEPLOY_OK event_count={count}')
           PY
 
+      - name: Install canonical Hub presentation baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f '2026 09 17 NAYANET HUB.html'
+          cp '2026 09 17 NAYANET HUB.html' 'NAYANET/HUB/dist/index.html'
+          echo "CANONICAL_PRESENTATION_BASELINE_INSTALLED source='2026 09 17 NAYANET HUB.html'"
+
       - name: Verify Cloudflare authorization inputs
         shell: bash
         run: |
@@ -66,7 +74,7 @@ jobs:
           test -f NAYANET/HUB/wrangler.jsonc
           echo "CLOUDFLARE_TARGET_READY worker=$CLOUDFLARE_WORKER account=$CLOUDFLARE_ACCOUNT_ID"
 
-      - name: Deploy canonical React Hub to Cloudflare
+      - name: Deploy canonical NayaNET Hub to Cloudflare
         working-directory: NAYANET/HUB
         run: |
           set -euo pipefail
@@ -77,9 +85,12 @@ jobs:
         run: |
           set -euo pipefail
           curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "${NAYA_HUB_RUNTIME_URL}/?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live-hub.html"
-          grep -q '<div id="root"></div>' "$RUNNER_TEMP/live-hub.html"
           grep -q 'NayaNET' "$RUNNER_TEMP/live-hub.html"
-          echo "LIVE_HUB_REACHABLE_AND_REACT_SHELL_VERIFIED url=$NAYA_HUB_RUNTIME_URL"
+          grep -q 'naya509-final' "$RUNNER_TEMP/live-hub.html"
+          grep -q 'COLLECTIVE INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
+          grep -q 'PERSONAL INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
+          grep -q 'ACTIVITY FEED' "$RUNNER_TEMP/live-hub.html"
+          echo "LIVE_HUB_REACHABLE_AND_CANONICAL_PRESENTATION_VERIFIED url=$NAYA_HUB_RUNTIME_URL"
 
       - name: Record deployment commit identity
         run: |
