@@ -2,11 +2,13 @@
 """Temporal/supersession/conflict retrieval acceptance contract."""
 from pathlib import Path
 import importlib.util
+import sys
 
 ROOT=Path(__file__).resolve().parents[1]
 MOD=ROOT/".naya/memory/smart_notes_v3.py"
 
 def load():
+    sys.path.insert(0, str(ROOT / ".naya/memory"))
     spec=importlib.util.spec_from_file_location("temporal_retrieval",MOD)
     mod=importlib.util.module_from_spec(spec); assert spec.loader is not None
     spec.loader.exec_module(mod); return mod
