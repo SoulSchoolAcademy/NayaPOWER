@@ -168,13 +168,17 @@ The complete workflow classification is stored at:
 
 Historical workflow cleanup may continue only after replacement/equivalence evidence exists.
 
-## 12. THE ONE NEXT ACTION
+## 12. REPOSITORY RELATIONSHIP INDEX
 
-**Use the [NayaNET / GitHub Operating Map](../NAYA-TEAM/PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md) as the navigation spine, run the repository-wide operating-map audit it specifies, reconcile remaining duplicate/current-vs-historical navigation surfaces, and then update this index and the Team Naya daily index to point to the same spine.**
+The repository-wide derived relationship layer is `.naya/control-plane/RELATIONSHIP-INDEX.json`, with a human-readable projection at `SUPERBRAIN/NAYA-ACTIVITY/RELATIONSHIP-INDEX.md` and rebuild contract at `.naya/control-plane/RELATIONSHIP-INDEX-CONTRACT.md`. Rebuild it with `scripts/build_repository_relationship_index.py`. It is navigation only and does not replace canonical events, memory, governance, or state.
+
+## 13. THE ONE NEXT ACTION
+
+**Use the NayaNET / GitHub Operating Map and repository relationship index as the navigation spine; audit remaining current-vs-historical and project/activity relationships, then strengthen only missing explicit source links.**
 
 The next Naya must not choose a second P0 from historical issue titles.
 
-## 13. COLD-NAYA ACCEPTANCE
+## 14. COLD-NAYA ACCEPTANCE
 
 A cold Naya passes only if it can, using this index and linked repository sources:
 
@@ -193,7 +197,7 @@ A cold Naya passes only if it can, using this index and linked repository source
 
 The machine acceptance test is `scripts/cold_naya_operating_index_test.py`. It is intentionally navigation/integrity-only; it must not be represented as proof that an external fresh model can execute the entire loop.
 
-## 14. DO NOT REDO
+## 15. DO NOT REDO
 
 - Do not recreate the event store.
 - Do not create another Smart Note database.
@@ -204,7 +208,7 @@ The machine acceptance test is `scripts/cold_naya_operating_index_test.py`. It i
 - Do not close current P0s merely because they are old-looking.
 - Do not declare 10/10 from documentation alone.
 
-## 15. SUCCESSOR
+## 16. SUCCESSOR
 
 After the Cold-Naya acceptance test, the successor should:
 
