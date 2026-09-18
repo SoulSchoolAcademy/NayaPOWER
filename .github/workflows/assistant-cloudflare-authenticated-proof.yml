@@ -51,7 +51,7 @@ jobs:
       - name: Execute real authenticated lifecycle
         shell: bash
         run: |
-          cat > /tmp/assistant-lifecycle.mjs <<'EOF'
+          cat > "$GITHUB_WORKSPACE/assistant-lifecycle.mjs" <<'EOF'
           import { chromium } from 'playwright';
           import crypto from 'node:crypto';
           import fs from 'node:fs';
