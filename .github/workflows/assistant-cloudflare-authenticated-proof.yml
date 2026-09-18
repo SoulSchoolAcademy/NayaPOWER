@@ -23,6 +23,8 @@ jobs:
     timeout-minutes: 15
     env:
       RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
       ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
       ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
     steps:
@@ -71,7 +73,16 @@ jobs:
 
           async function boot(context) {
             const page = await context.newPage();
-            await page.goto(runtimeUrl, {waitUntil:'networkidle', timeout:60000});
+            await page.goto(runtimeUrl + '/identity.html?naya_hold=1', {waitUntil:'networkidle', timeout:60000});
+            await page.evaluate(async ({url,key,email,password}) => {
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              const result = await client.auth.signInWithPassword({email,password});
+              if (result.error) throw result.error;
+              if (!result.data?.session?.user?.id) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+            }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY,email:process.env.ASSISTANT_TEST_EMAIL,password:process.env.ASSISTANT_TEST_PASSWORD});
+            await page.evaluate(() => location.replace('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/'));
+            await page.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'networkidle', timeout:60000});
             await page.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
             return page;
           }
@@ -81,9 +92,7 @@ jobs:
           // Context A: authenticated source transaction.
           const contextA = await browser.newContext();
           const pageA = await boot(contextA);
-          const authA = await pageA.evaluate(async ({email,password}) => {
-            return await window.NayaAssistantRuntime.signIn(email,password);
-          }, {email,password});
+          const authA = await pageA.evaluate(() => window.NayaAssistantRuntime.snapshot());
           if (!authA?.authenticated) throw new Error('AUTHENTICATION_FAILED');
 
           const recorded = await pageA.evaluate(async ({eventId,title,lesson,actionText,target,intent}) => {
@@ -131,9 +140,7 @@ jobs:
           // only to access the same governed private cognition boundary.
           const contextB = await browser.newContext();
           const pageB = await boot(contextB);
-          const authB = await pageB.evaluate(async ({email,password}) => {
-            return await window.NayaAssistantRuntime.signIn(email,password);
-          }, {email,password});
+          const authB = await pageB.evaluate(() => window.NayaAssistantRuntime.snapshot());
           if (!authB?.authenticated) throw new Error('COLD_CONTEXT_AUTHENTICATION_FAILED');
 
           const cold = await pageB.evaluate(async (eventId) => {
