@@ -118,6 +118,18 @@ def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_i
     projection = event.get("activity_feed_projection")
     if not isinstance(projection, dict) or not projection.get("feed") or not projection.get("event_id"):
         problems.append("canonical event is not projected to the Activity Feed")
+    governance_receipt_id = execution.get("governance_receipt_id") if isinstance(execution, dict) else None
+    if governance_receipt_id:
+        ledger = event.get("smart_ledger")
+        if not isinstance(ledger, dict):
+            problems.append("canonical event is missing the Smart Ledger governance receipt")
+        else:
+            ledger_event = ledger.get("event")
+            ledger_receipt = ledger.get("verification_receipt")
+            if not isinstance(ledger_event, dict) or ledger_event.get("governance_receipt_id") != governance_receipt_id:
+                problems.append("Smart Ledger event is not bound to the gate-issued governance receipt")
+            if not isinstance(ledger_receipt, dict) or ledger_receipt.get("verification_state") != "verified":
+                problems.append("Smart Ledger governance receipt is not independently verified")
     return (not problems), problems
 
 
@@ -126,6 +138,14 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     # outside the credential check below.
     gate = fields.pop("gate", None)
     credential = fields.pop("execution_authorization", None)
+    supplied_governance_receipt = fields.pop("governance_receipt", None)
+    if credential is not None and hasattr(credential, "to_governance_receipt"):
+        derived_governance_receipt = credential.to_governance_receipt()
+        if supplied_governance_receipt is not None and supplied_governance_receipt != derived_governance_receipt:
+            fail("execution boundary refused: caller governance receipt does not match gate-issued receipt")
+        fields["governance_receipt"] = derived_governance_receipt
+    elif supplied_governance_receipt is not None:
+        fields["governance_receipt"] = supplied_governance_receipt
 
     if target == "EXECUTING":
         # The Universal Execution Gate is the ONLY authorization source. The
@@ -206,7 +226,10 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     elif target == "OBSERVED":
         require_fields(fields, ("observation",))
     elif target == "VERIFIED":
-        require_fields(fields, ("evidence", "verification"))
+        require_fields(fields, ("evidence", "verification", "governance_receipt"))
+        governance_receipt = data.get("governance_receipt") or fields.get("governance_receipt")
+        if not isinstance(governance_receipt, dict) or not governance_receipt.get("receipt_id"):
+            fail("execution boundary refused: VERIFIED requires the gate-issued governance receipt")
         action_ctx = data.get("action") or {}
         claim_id = data.get("claim_id")
         action_id = action_ctx.get("action_id")
@@ -223,6 +246,19 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
             if not isinstance(emitted_evidence, list):
                 emitted_evidence = [str(emitted_evidence)]
             try:
+                from dataclasses import asdict
+                from smart_ledger_engine import create_governed_execution_event, verify_event as verify_smart_ledger_event
+                smart_ledger_event = create_governed_execution_event(
+                    governance_receipt,
+                    evidence_ref=f"execution:{claim_id}:evidence",
+                    observation_ref=str(fields.get("observation") or ""),
+                    execution_verification_ref=f"execution:{claim_id}:verification",
+                )
+                verified_smart_ledger, smart_ledger_receipt = verify_smart_ledger_event(smart_ledger_event)
+                fields["smart_ledger"] = {
+                    "event": asdict(verified_smart_ledger),
+                    "verification_receipt": smart_ledger_receipt,
+                }
                 emitted = ensure_activity_event(
                     claim_id=claim_id,
                     action_id=action_id,
@@ -237,6 +273,8 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     evidence=emitted_evidence,
                     run_id=run_id,
                     session_id=data.get("session_id"),
+                    governance_receipt_id=governance_receipt.get("receipt_id"),
+                    smart_ledger=fields.get("smart_ledger"),
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
                 )
@@ -322,7 +360,7 @@ def validate(data: dict[str, Any] | None = None) -> dict[str, Any]:
     if status in {"OBSERVED", "VERIFIED", "HANDED_OFF"}:
         require_fields(data, ("observation",))
     if status in {"VERIFIED", "HANDED_OFF"}:
-        require_fields(data, ("evidence", "verification", "activity_event_id"))
+        require_fields(data, ("evidence", "verification", "activity_event_id", "governance_receipt"))
         action_ctx = data.get("action") or {}
         ok, activity_problems = _verify_activity_event(
             data.get("activity_event_id"), data.get("claim_id"), action_ctx.get("action_id"), data.get("run_id"), data.get("session_id")
