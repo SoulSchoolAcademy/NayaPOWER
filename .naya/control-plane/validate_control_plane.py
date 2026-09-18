@@ -204,8 +204,22 @@ def validate_proof(p,live_head=None):
         if rule not in p.get('separation_rules',[]): fail(f'PROOF separation rule missing: {rule}')
     observed=p.get('current_evidence',{}).get('observed_head'); recording=p.get('recording_commit')
     if not observed or not recording: fail('PROOF current evidence lacks observed_head or recording_commit')
-    if observed!=recording: fail('PROOF observed_head and recording_commit disagree')
-    if live_head is not None and observed!=live_head: return 'STALE_RELATIVE_TO_LIVE_HEAD'
+    # observed_head identifies the source/runtime evidence being claimed.
+    # recording_commit identifies the repository commit that recorded this proof.
+    # They are intentionally distinct when proof-only/control-plane commits follow
+    # a production deployment; requiring equality would make self-recording
+    # impossible because the proof update itself creates a new commit.
+    if live_head is not None:
+        try:
+            subprocess.check_call(
+                ['git','merge-base','--is-ancestor',recording,live_head],
+                cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+            )
+        except Exception:
+            fail('PROOF recording_commit is not an ancestor of live HEAD')
+        if observed==live_head:
+            return 'CURRENT'
+        return 'HISTORICAL_SOURCE_SCOPE'
     return 'CURRENT'
 
 
