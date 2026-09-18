@@ -35,22 +35,22 @@
   const enter=document.getElementById('enter');
   const status=document.getElementById('status');
   const params=new URLSearchParams(location.search);
-  const name=(params.get('name')||sessionStorage.getItem('nayanet_user_name')||localStorage.getItem('nayanet_smart_name')||'').trim();
-  nameEl.value=name;
   const suggest=v=>v.toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
-  aliasEl.value=suggest(localStorage.getItem('nayanet_smart_alias')||name);
+  nameEl.value=(params.get('name')||sessionStorage.getItem('nayanet_user_name')||localStorage.getItem('nayanet_smart_name')||'').trim();
+  aliasEl.value=suggest(localStorage.getItem('nayanet_smart_alias')||nameEl.value);
   nameEl.addEventListener('input',()=>{if(!aliasEl.dataset.edited)aliasEl.value=suggest(nameEl.value)});
   aliasEl.addEventListener('input',()=>aliasEl.dataset.edited='true');
-  const goHub=()=>{location.replace('NAYAHUB.html');};
+  const goHub=()=>{location.replace('/')};
   const restore=async()=>{
-    try{if(window.NayaNETNameFirstAuth && await window.NayaNETNameFirstAuth.current())goHub();}catch(e){}
+    try{const identity=window.NayaNETNameFirstAuth&&await window.NayaNETNameFirstAuth.current();if(identity?.authenticated&&identity.userId)goHub();}catch(e){}
   };
   window.addEventListener('load',restore);
   enter.addEventListener('click',async()=>{
     enter.disabled=true;status.textContent='Establishing your NayaNET identity…';
     try{
       if(!window.NayaNETNameFirstAuth)throw new Error('IDENTITY_ADAPTER_NOT_LOADED');
-      const identity=await window.NayaNETNameFirstAuth.establish({name:nameEl.value,alias:aliasEl.value});
+      const identity=await window.NayaNETNameFirstAuth.establish({name:nameEl.value.trim(),alias:aliasEl.value.trim()});
+      if(!identity?.authenticated||!identity.userId)throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
       status.textContent=`Welcome, ${identity.smartName}. Entering Intelligent Hub…`;
       goHub();
     }catch(error){
