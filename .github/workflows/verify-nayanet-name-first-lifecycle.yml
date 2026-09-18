@@ -348,6 +348,7 @@ jobs:
           await browser.close();
           EOF
           export RECEIPT_PATH="$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
+          export DREAM_RECEIPT_PATH="$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
           node lifecycle.mjs
 
       - name: Validate receipt
@@ -355,6 +356,20 @@ jobs:
         run: |
           test -s "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
           node -e "const r=require(process.argv[1]); if(r.status!=='PRODUCTION_PROVEN_PARTIAL_EXTERNAL_WELCOME') throw new Error('bad status'); for(const [k,v] of Object.entries(r.journey)) if(v!==true && k!=='name' && k!=='alias' && k!=='welcome_to_identity') throw new Error('failed '+k)" "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
+
+      - name: Validate current-session Dream boundary receipt
+        shell: bash
+        run: |
+          test -s "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad Dream proof status'); const p=r.points; if(Object.values(p).some(v=>v!==true)) throw new Error('Dream proof point failed'); if(!r.user_id||!r.replay_id||!r.idempotency_key) throw new Error('Dream proof identifiers missing');" "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+
+      - name: Upload current-session Dream boundary proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-current-session-dream-boundary-proof
+          path: "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Upload lifecycle receipt
         continue-on-error: true
