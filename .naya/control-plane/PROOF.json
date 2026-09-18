@@ -111,18 +111,18 @@
         "mobile runtime verification",
         "direct live runtime observation"
       ],
-      "reason": "Current main HEAD exactly matches the deployed Assistant Cloudflare source artifact and the live target was directly observed."
+      "reason": "The deployed Assistant Cloudflare source artifact was directly observed at its exact deployed source head; subsequent repository commits are control-plane/proof records outside the deployed source scope."
     },
     "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 65c2d0a5c1a5b394340622d486e4a02cd525ed58. The readiness contract permits subsequent control-plane/proof-only commits when the deployed source scope is unchanged. Authenticated lifecycle and external cold-Naya remain BLOCKED because the deployed Assistant artifact currently exposes only an external LOGIN route and lacks the governed authenticated persistence/session implementation needed to perform those proofs."
   },
-  "recording_commit": "177a6508f0feba9f0483c85cd73c6251a253c9c6",
+  "recording_commit": "aae60f2f1afcf9a4e53714f1045eea58be3c285e",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "observed_head": "c2d2b95166eaf74df3e2a691542758dc41c35e92",
+      "observed_head": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
       "deployed_source_head": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
       "source_paths": [
         "2026 09 17 NAYANET HUB.html",
