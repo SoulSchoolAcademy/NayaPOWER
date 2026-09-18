@@ -60,31 +60,31 @@
   "freshness_rule": "Recorded runtime evidence is CURRENT only when its observed HEAD exactly equals the live authoritative HEAD at claim time. Otherwise it remains HISTORICAL/STALE and cannot certify the current repository.",
   "current_evidence": {
     "classification": "CURRENT_PRODUCTION_PROVEN_ASSISTANT_CLOUDFLARE_SOURCE_SCOPE",
-    "observed_head": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
+    "observed_head": "16dd06f75c364eebb9395852963bfcac38386c72",
     "observed_branch": "main",
     "bridge": {
-      "run_id": 35396899655,
+      "run_id": 35397960197,
       "claim_type": "PRODUCTION",
       "conclusion": "success",
       "event": "push",
       "ref": "refs/heads/main",
-      "sha": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
+      "sha": "16dd06f75c364eebb9395852963bfcac38386c72",
       "deployment_lane": "ASSISTANT_CLOUDFLARE",
       "workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
       "worker": "sparkling-shape-7ae5",
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "cloudflare_version_id": "a11b5453-14f5-4efb-baf6-ffc3423509c2"
+      "cloudflare_version_id": "d03a8429-7a2e-4560-9067-f5a4e5b79a81"
     },
     "production": {
-      "deployment_identity": "a11b5453-14f5-4efb-baf6-ffc3423509c2",
+      "deployment_identity": "d03a8429-7a2e-4560-9067-f5a4e5b79a81",
       "normalized_line_endings": true,
       "desktop_baseline": true,
       "mobile_baseline": true,
       "live_runtime_observed": true,
       "live_title": "NayaNET — Intelligent Hub V7 · 509 AAA",
       "live_identity": "NayaNET / INTELLIGENT HUB · V7",
-      "canonical_release_header": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
-      "observation": "Deployment run 35396899655 successfully deployed the exact source commit to the canonical Cloudflare Worker and independently observed the live Hub markers and identity runtime assets."
+      "canonical_release_header": "16dd06f75c364eebb9395852963bfcac38386c72",
+      "observation": "Cloudflare deployment run 35397960197 successfully deployed the exact source commit and independently observed the live canonical Hub markers."
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
@@ -115,14 +115,14 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "evidence": [
-        "Cloudflare deployment run 35396899655=success",
-        "Current Version ID a11b5453-14f5-4efb-baf6-ffc3423509c2",
+        "Cloudflare deployment run 35397960197=success",
+        "Current Version ID d03a8429-7a2e-4560-9067-f5a4e5b79a81",
         "live Hub reachable and canonical presentation markers verified",
         "versioned release bound to exact deployment source commit"
       ],
       "reason": "The canonical Cloudflare deployment successfully served the exact deployed source commit and passed independent live runtime marker checks. Exact byte-hash parity is not asserted here.",
-      "observed_head": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
-      "deployed_source_head": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
+      "observed_head": "16dd06f75c364eebb9395852963bfcac38386c72",
+      "deployed_source_head": "16dd06f75c364eebb9395852963bfcac38386c72",
       "source_paths": [
         "2026 09 17 NAYANET HUB.html",
         "assistant-runtime.js",
@@ -139,8 +139,8 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "observed_head": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
-      "deployed_source_head": "9ed13b6f3f3a9a8ea02dd5cfc30bae997415ca3c",
+      "observed_head": "16dd06f75c364eebb9395852963bfcac38386c72",
+      "deployed_source_head": "16dd06f75c364eebb9395852963bfcac38386c72",
       "source_paths": [
         "2026 09 17 NAYANET HUB.html",
         "assistant-runtime.js",
@@ -148,8 +148,8 @@
         "NAYANET/HUB/wrangler.jsonc"
       ],
       "evidence": [
-        "Cloudflare deployment run 35396899655=success",
-        "Current Version ID a11b5453-14f5-4efb-baf6-ffc3423509c2",
+        "Cloudflare deployment run 35397960197=success",
+        "Current Version ID d03a8429-7a2e-4560-9067-f5a4e5b79a81",
         "live Hub reachable and canonical presentation markers verified",
         "versioned release bound to exact deployment source commit"
       ],
@@ -158,9 +158,9 @@
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
-      "observed_head": "f36cb0faacf3a61d0694c0e979c4d6621f4888bc",
+      "observed_head": "16dd06f75c364eebb9395852963bfcac38386c72",
       "workflow": ".github/workflows/verify-nayanet-name-first-lifecycle.yml",
-      "run_id": 35397693471,
+      "run_id": 35397960350,
       "evidence": [
         "NAME=PASS",
         "AUTH_SESSION=PASS",
