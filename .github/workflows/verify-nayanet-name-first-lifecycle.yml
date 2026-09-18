@@ -74,12 +74,12 @@ jobs:
           // Do not evaluate the old document while that navigation is in flight.
           await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
           await pageA.waitForLoadState('networkidle', {timeout:60000});
-          const identity = await pageA.evaluate(async ({url,key}) => {
+          const identity = await pageA.waitForFunction(async ({url,key}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            const client = sdk.createClient(url,key);
+            const client = window.__lifecycleSupabaseClient || (window.__lifecycleSupabaseClient = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}));
             const session = (await client.auth.getSession()).data.session;
-            return {authenticated:!!session,userId:session?.user?.id||null,isAnonymous:session?.user?.is_anonymous===true};
-          }, {url:supabaseUrl,key:supabaseKey});
+            return session?.user?.id ? {authenticated:true,userId:session.user.id,isAnonymous:session.user.is_anonymous===true} : null;
+          }, {url:supabaseUrl,key:supabaseKey}, {timeout:30000}).then(h => h.jsonValue());
           if (!identity?.authenticated || !identity?.userId || identity.isAnonymous !== true) throw new Error('NAME_FIRST_AUTH_FAILED');
           await pageA.evaluate(async () => { if (window.NayaAssistantRuntime?.init) await window.NayaAssistantRuntime.init(); });
           const snapAfterInit = await pageA.evaluate(() => window.NayaAssistantRuntime?.snapshot?.());
