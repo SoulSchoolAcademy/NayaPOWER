@@ -8,6 +8,7 @@ on:
     branches: [main]
     paths:
       - '2026 09 17 NAYANET HUB.html'
+      - 'assistant-runtime.js'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
   workflow_dispatch:
 
