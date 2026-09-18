@@ -76,6 +76,8 @@ jobs:
             body:JSON.stringify({data:{display_name:probeName,nayanet_identity_version:'name-first-v1-probe'}})
           });
           const body = await res.text();
+          console.log(`SUPABASE_ANONYMOUS_AUTH_HTTP_STATUS=${res.status}`);
+          console.log(`SUPABASE_ANONYMOUS_AUTH_RESPONSE=${body}`);
           let parsed; try { parsed=JSON.parse(body); } catch { parsed={raw:body}; }
           if(!res.ok || !parsed.user?.id || !parsed.access_token || parsed.user.is_anonymous !== true){
             console.error(JSON.stringify({status:res.status,body:parsed},null,2)); process.exit(1);
