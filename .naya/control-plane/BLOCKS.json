@@ -5,7 +5,7 @@
     "id": "TORCH-59-MACHINE-TRUTH-RESTORATION",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Establish and maintain one mechanically trustworthy current machine-state picture; Assistant-lane production parity is proven, while positive authenticated lifecycle and independent cold-Naya persistence proof remain pending.",
+    "intent": "Establish and maintain one mechanically trustworthy current machine-state picture; current Assistant-lane Cloudflare production parity is proven, the deployment verification boundary is green, and positive authenticated lifecycle plus independent cold-Naya proof remain pending.",
     "scope": [
       "live main identity",
       "control-plane coherence",
@@ -16,7 +16,7 @@
       "canonical Smart Feed release proof",
       "Team Naya operating coherence",
       "Smart Note and Activity accountability",
-      "Assistant-lane Cloudflare/live release-path reconciliation — VERIFIED"
+      "Assistant-lane Cloudflare/live source-bound production parity — VERIFIED"
     ],
     "protected": [
       "canonical control-plane authority",
@@ -43,7 +43,8 @@
       "the repaired/current protected artifact is independently proven through the authorized public-runtime release path",
       "one executable next action remains exposed",
       "STATE and BLOCKS expose the same single next action",
-      "Team Naya has a visible operating center defining mission, current truth, ownership, evidence, and continuation"
+      "Team Naya has a visible operating center defining mission, current truth, ownership, evidence, and continuation",
+      "current production release verification uses the canonical X-Naya-Canonical-Asset runtime header and passes against the deployed commit"
     ],
     "evidence": [
       "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -67,9 +68,9 @@
       ".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md"
     ],
     "target_state": "MACHINE_TRUTH_ESTABLISHED_ASSISTANT_RUNTIME_PARITY_PROVEN_AUTHENTICATED_LIFECYCLE_AND_COLD_NAYA_PENDING",
-    "next_action": "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime.",
+    "next_action": "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue every executable non-authenticated proof gate.",
     "next_actions": [
-      "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime."
+      "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue every executable non-authenticated proof gate."
     ],
     "next_action_count": 1
   },
