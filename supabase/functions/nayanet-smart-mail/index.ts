@@ -19,7 +19,7 @@ Deno.serve(async(req)=>{
    if(!membership)return json({ok:false,error:"RECEIVER_NOT_AUTHORIZED"},403);
    const receiptId=message.metadata?.execution_receipt_id;
    if(!receiptId)return json({ok:false,error:"RECEIPT_NOT_LINKED"},409);
-   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence").eq("id",receiptId).maybeSingle();
+   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence,value").eq("id",receiptId).maybeSingle();
    if(receiptError||!receipt)return json({ok:false,error:"RECEIPT_NOT_FOUND"},404);
    const evidence=[...(receipt.evidence||[])];
    const already=evidence.some((x:any)=>x?.receiver_retrieved_by===actorId&&x?.message_id===message.id);
