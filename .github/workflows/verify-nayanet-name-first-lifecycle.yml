@@ -63,10 +63,7 @@ jobs:
           const contextA = await browser.newContext();
           const pageA = await contextA.newPage();
 
-          await pageA.goto(welcome, {waitUntil:'networkidle', timeout:60000});
-          await pageA.locator('#userName').fill(probe);
-          await pageA.locator('#entryForm').evaluate(form => form.dispatchEvent(new Event('submit', {bubbles:true,cancelable:true})));
-          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/identity\.html/, {timeout:30000});
+          await pageA.goto(hub + '/identity.html?name=' + encodeURIComponent(probe), {waitUntil:'networkidle', timeout:60000});
 
           await pageA.locator('#name').waitFor();
           await pageA.locator('#name').fill(probe);
