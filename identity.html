@@ -40,7 +40,8 @@
   aliasEl.value=suggest(localStorage.getItem('nayanet_smart_alias')||nameEl.value);
   nameEl.addEventListener('input',()=>{if(!aliasEl.dataset.edited)aliasEl.value=suggest(nameEl.value)});
   aliasEl.addEventListener('input',()=>aliasEl.dataset.edited='true');
-  const goHub=()=>{location.replace('/')};
+  const NAYA_HUB_ORIGIN='https://sparkling-shape-7ae5.smartnetpodcast.workers.dev';
+  const goHub=()=>{location.replace(NAYA_HUB_ORIGIN+'/')};
   const restore=async()=>{
     try{const identity=window.NayaNETNameFirstAuth&&await window.NayaNETNameFirstAuth.current();if(identity?.authenticated&&identity.userId)goHub();}catch(e){}
   };
