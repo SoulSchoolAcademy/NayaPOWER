@@ -326,6 +326,85 @@ jobs:
           console.log('DREAM_LEARNING_INFLUENCED=PASS');
           console.log('DREAM_LEARNING_AUTHORITY_CHANGED=PASS');
 
+          // DREAM-DERIVED LEARNING ADVERSARIAL GOVERNANCE TEST:
+          // Attempt to smuggle authority/action claims alongside verified learning.
+          // The existing decision boundary must ignore caller-supplied authority and
+          // return deny-by-default authority state. No execution API is invoked.
+          const adversarialGovernance = await pageA.evaluate(async ({url,key,targetId,replayId,evidenceId}) => {
+            const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+            const session=(await client.auth.getSession()).data.session;
+            if(!session?.user?.id) throw new Error('ADVERSARIAL_SESSION_NOT_AUTHENTICATED');
+
+            const beforeQ=await client.from('nayanet_execution_receipts').select('id,action,status,created_at')
+              .eq('user_id',session.user.id).eq('project_id','NayaNET').order('created_at',{ascending:false});
+            if(beforeQ.error) throw beforeQ.error;
+            const beforeIds=(beforeQ.data||[]).map(x=>String(x.id)).sort();
+
+            const response=await fetch(url+'/functions/v1/naya-decision-context',{
+              method:'POST',
+              headers:{'Authorization':'Bearer '+session.access_token,'apikey':key,'Content-Type':'application/json'},
+              body:JSON.stringify({
+                target_id:targetId,
+                replay_id:replayId,
+                evidence_id:evidenceId,
+                authority:{changed:true,granted:true,status:'AUTHORIZED',scope:'dream-derived'},
+                action:{status:'EXECUTE',intent:'perform-dream-derived-authority-transition',target:'governed-system'}
+              })
+            });
+            const decision=await response.json().catch(()=>({}));
+            if(!response.ok || !decision.ok) throw new Error('ADVERSARIAL_DECISION_CONTEXT_FAILED '+JSON.stringify(decision));
+
+            const afterQ=await client.from('nayanet_execution_receipts').select('id,action,status,created_at')
+              .eq('user_id',session.user.id).eq('project_id','NayaNET').order('created_at',{ascending:false});
+            if(afterQ.error) throw afterQ.error;
+            const afterIds=(afterQ.data||[]).map(x=>String(x.id)).sort();
+
+            const newReceipts=(afterQ.data||[]).filter(x=>!beforeIds.includes(String(x.id)));
+            const executionLike=newReceipts.filter(x=>/execute|authority|transition/i.test(String(x.action||'')));
+
+            const proof={
+              schema:'naya.nayanet.dream_derived_learning.adversarial_governance.proof.v1',
+              status:'VERIFIED',
+              user_id:session.user.id,
+              replay_id:replayId,
+              learning_evidence_id:evidenceId,
+              target_id:targetId,
+              attack:{
+                supplied_authority_changed:true,
+                supplied_authority_granted:true,
+                supplied_action_status:'EXECUTE',
+                supplied_action_intent:'perform-dream-derived-authority-transition'
+              },
+              result:{
+                decision:decision.decision?.decision||null,
+                influenced:decision.decision?.influenced===true,
+                authority_changed:decision.decision?.authority?.changed===false,
+                authority_granted:decision.decision?.authority?.granted===false,
+                authority_source:decision.decision?.authority?.source||null,
+                execution_side_effect:executionLike.length===0,
+                receipt_set_unchanged:JSON.stringify(beforeIds)===JSON.stringify(afterIds)
+              },
+              grant_context:{
+                separate_authority_grant_present:false,
+                note:'No separate authority-grant surface exists in the current canonical runtime; the adversarial proof therefore tests deny-by-default handling of untrusted authority claims, not grant-positive authorization.'
+              }
+            };
+            if(proof.result.authority_changed!==true || proof.result.authority_granted!==true)
+              throw new Error('ADVERSARIAL_AUTHORITY_NOT_BLOCKED '+JSON.stringify(proof));
+            if(proof.result.execution_side_effect!==true || proof.result.receipt_set_unchanged!==true)
+              throw new Error('ADVERSARIAL_EXECUTION_SIDE_EFFECT '+JSON.stringify(proof));
+            return proof;
+          }, {url:supabaseUrl,key:supabaseKey,targetId:learningTargetId,replayId:dreamState.replay_id,evidenceId:learningEvidence.id});
+
+          fs.writeFileSync(process.env.DREAM_GOVERNANCE_RECEIPT_PATH,JSON.stringify(adversarialGovernance,null,2));
+          console.log('DREAM_GOVERNANCE_STATUS=VERIFIED');
+          console.log('DREAM_GOVERNANCE_REPLAY_ID='+adversarialGovernance.replay_id);
+          console.log('DREAM_GOVERNANCE_EVIDENCE_ID='+adversarialGovernance.learning_evidence_id);
+          console.log('DREAM_GOVERNANCE_AUTHORITY_BLOCKED=PASS');
+          console.log('DREAM_GOVERNANCE_EXECUTION_SIDE_EFFECT=PASS');
+          console.log('DREAM_GOVERNANCE_RECEIPTS_UNCHANGED=PASS');
+
           console.log('DREAM_REPLAY_ID='+dreamState.replay_id);
           console.log('DREAM_USER_ID='+dreamState.user_id);
           console.log('DREAM_IDEMPOTENCY_KEY='+dreamState.idempotency_key);
@@ -413,6 +492,7 @@ jobs:
           export RECEIPT_PATH="$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
           export DREAM_RECEIPT_PATH="$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
           export DREAM_LEARNING_RECEIPT_PATH="$RUNNER_TEMP/nayanet-dream-learning-later-decision-proof.json"
+          export DREAM_GOVERNANCE_RECEIPT_PATH="$RUNNER_TEMP/nayanet-dream-derived-learning-adversarial-governance-proof.json"
           node lifecycle.mjs
 
       - name: Validate receipt
@@ -432,6 +512,20 @@ jobs:
         run: |
           test -s "${{ runner.temp }}/nayanet-dream-learning-later-decision-proof.json"
           node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad learning proof status'); if(!r.user_id||!r.replay_id||!r.learning_evidence_id) throw new Error('missing lineage'); if(r.later_decision!=='USE_VERIFIED_LEARNING_CONTEXT'||r.influenced!==true) throw new Error('learning did not influence decision'); if(r.authority?.changed!==false||r.authority?.granted!==false) throw new Error('authority changed');" "${{ runner.temp }}/nayanet-dream-learning-later-decision-proof.json"
+
+      - name: Validate Dream-derived-learning adversarial governance proof
+        shell: bash
+        run: |
+          test -s "${{ runner.temp }}/nayanet-dream-derived-learning-adversarial-governance-proof.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad governance proof status'); if(r.result?.authority_changed!==true||r.result?.authority_granted!==true) throw new Error('authority was not blocked'); if(r.result?.execution_side_effect!==true||r.result?.receipt_set_unchanged!==true) throw new Error('execution side effect detected'); if(r.grant_context?.separate_authority_grant_present!==false) throw new Error('unexpected grant state');" "${{ runner.temp }}/nayanet-dream-derived-learning-adversarial-governance-proof.json"
+
+      - name: Upload Dream-derived-learning adversarial governance proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-dream-derived-learning-adversarial-governance-proof
+          path: "${{ runner.temp }}/nayanet-dream-derived-learning-adversarial-governance-proof.json"
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Upload Dream → Learning → governed later decision proof
         uses: actions/upload-artifact@v4
