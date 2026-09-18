@@ -71,3 +71,30 @@ Every task must reach:
 **IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → RECORDED → STATE UPDATED → SUCCESSOR READY.**
 
 No task may create a competing event store, memory system, queue, authority system, or second Hub source of truth.
+
+
+## IH-01 EXECUTION RECEIPT — 2026-09-18
+
+**RESULT: CLOSED / RECONCILED**
+
+Repository evidence resolved the apparent source conflict under the existing higher-authority Hub routing contract. No Hub source was promoted and no protected artifact was modified.
+
+### Classification
+- **CURRENT / PROTECTED:** `2026 09 17 NAYANET HUB.html`
+- **ACTIVE REFERENCE:** `NAYANET/HUB/` React/Vite implementation
+- **HISTORICAL / CONFLICTING RELEASE DOCS:** `NAYANET/HUB/CANONICAL-RELEASE-STATUS-2026-09-09.md`, `NAYANET/HUB/RELEASE-MARKER.md`
+- **HISTORICAL / REFERENCE:** older standalone Hub versions, E02/E03 artifacts and legacy live Hub copies identified by repository inventory
+- **PROJECTION / EVIDENCE:** generated build output, runtime copies and runtime-target metadata
+
+### Binding
+The canonical operating path is now explicitly:
+
+**CURRENT PROTECTED FREEZE → NEW VERSIONED CANDIDATE → VERIFY → REGRESSION CHECK → COMMIT → HANDOFF → SHAWN ACCEPTS → PROMOTE FREEZE**
+
+The React implementation remains available as engineering reference. It cannot redefine the current Hub merely by being more structured, deployable, or technically sophisticated.
+
+### Acceptance
+A cold Naya can now determine the current Hub, protected artifact, reference implementation, historical material, editing rule, and promotion path without conversational archaeology.
+
+### Next
+**IH-02 — convert the protected visual contract into verified real UI behavior, using a new versioned candidate and leaving the protected freeze point untouched.**
