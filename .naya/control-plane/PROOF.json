@@ -59,7 +59,7 @@
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
   "freshness_rule": "Recorded runtime evidence is CURRENT only when its observed HEAD exactly equals the live authoritative HEAD at claim time. Otherwise it remains HISTORICAL/STALE and cannot certify the current repository.",
   "current_evidence": {
-    "classification": "CURRENT_PRODUCTION_PROVEN_ASSISTANT_CLOUDFLARE",
+    "classification": "CURRENT_PRODUCTION_PROVEN_ASSISTANT_CLOUDFLARE_SOURCE_SCOPE",
     "observed_head": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
     "observed_branch": "main",
     "bridge": {
@@ -113,9 +113,45 @@
       ],
       "reason": "Current main HEAD exactly matches the deployed Assistant Cloudflare source artifact and the live target was directly observed."
     },
-    "interpretation": "Fresh Assistant-lane production evidence is current for main HEAD 65c2d0a5c1a5b394340622d486e4a02cd525ed58. Runtime parity is PRODUCTION_PROVEN. Authenticated lifecycle and external cold-Naya remain explicitly BLOCKED because the deployed Assistant artifact currently has only an external LOGIN route and lacks the governed authenticated persistence/session implementation needed to perform those proofs."
+    "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 65c2d0a5c1a5b394340622d486e4a02cd525ed58. The readiness contract permits subsequent control-plane/proof-only commits when the deployed source scope is unchanged. Authenticated lifecycle and external cold-Naya remain BLOCKED because the deployed Assistant artifact currently exposes only an external LOGIN route and lacks the governed authenticated persistence/session implementation needed to perform those proofs."
   },
-  "recording_commit": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
+  "recording_commit": "c2d2b95166eaf74df3e2a691542758dc41c35e92",
   "fresh_validation_required": true,
-  "next_recording_requires_fresh_execution": true
+  "next_recording_requires_fresh_execution": true,
+  "readiness_evidence": {
+    "runtime_parity": {
+      "status": "PRODUCTION_PROVEN",
+      "claim_type": "PRODUCTION",
+      "observed_head": "c2c2b95166eaf74df3e2a691542758dc41c35e92",
+      "deployed_source_head": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
+      "source_paths": [
+        "2026 09 17 NAYANET HUB.html",
+        ".github/workflows/assistant-cloudflare-hub-release.yml"
+      ],
+      "evidence": [
+        "Assistant Cloudflare release run 35291447174=success",
+        "exact source/live SHA-256 parity",
+        "desktop and mobile runtime verification",
+        "direct live runtime observation"
+      ],
+      "reason": "Production runtime is proven for the deployed Assistant source scope; subsequent proof/control-plane commits do not change that scope."
+    },
+    "authenticated_lifecycle": {
+      "status": "BLOCKED",
+      "claim_type": "RUNTIME",
+      "evidence": [
+        "live Assistant runtime observed",
+        "LOGIN routes to external GrooveMember login"
+      ],
+      "reason": "Deployed Assistant artifact does not expose the governed authenticated persistence/session path."
+    },
+    "external_cold_naya": {
+      "status": "BLOCKED",
+      "claim_type": "RUNTIME",
+      "evidence": [
+        "authenticated lifecycle unavailable in deployed Assistant runtime"
+      ],
+      "reason": "Genuine external cold-Naya continuation cannot be proved without the deployed governed persistence/authentication path."
+    }
+  }
 }
