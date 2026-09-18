@@ -1,0 +1,41 @@
+name: Verify NayaNET P0 Dream Scoring and Responsible Value
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/naya-dream-replay/index.ts'
+      - 'supabase/functions/nayanet-smart-mail/index.ts'
+      - 'supabase/migrations/20260918230000_p0_responsible_value_contract.sql'
+      - 'scripts/verify-p0-dream-scoring.mjs'
+      - '.github/workflows/verify-p0-dream-scoring.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dream-scoring:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      PROOF_PATH: ${{ runner.temp }}/nayanet-p0-dream-scoring-proof.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute production Dream scoring proof
+        run: node scripts/verify-p0-dream-scoring.mjs
+      - name: Validate proof
+        run: |
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof'); if(r.policy_improvement!=='NOT_PROVEN') throw new Error('policy improvement was fabricated'); if(r.score_contract.responsible_value.verification!=='VERIFIED') throw new Error('value not verified');" "$PROOF_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-p0-dream-scoring-proof
+          path: ${{ runner.temp }}/nayanet-p0-dream-scoring-proof.json
+          if-no-files-found: error
+          retention-days: 30
