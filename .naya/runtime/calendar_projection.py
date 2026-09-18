@@ -82,7 +82,7 @@ def project_event(event: dict[str, Any], *, activity_root: Path | None = None, t
         if path.exists():
             existing = path.read_text(encoding="utf-8")
             if existing != body:
-                existing_event_id = re.search(r"\\*\\*Event ID:\\*\\* `([^`]+)`", existing)
+                existing_event_id = re.search(r"\*\*Event ID:\*\* `([^`]+)`", existing)
                 if not existing_event_id or existing_event_id.group(1) != str(event.get("event_id", "")):
                     raise ValueError(f"projection conflict: {path}")
                 path.write_text(body, encoding="utf-8")
