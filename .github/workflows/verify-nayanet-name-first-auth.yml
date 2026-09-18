@@ -5,6 +5,8 @@ on:
     branches: [main]
     paths:
       - 'NAYANET/name-first-auth-adapter.js'
+      - 'NAYANET/HUB/src/identity/AuthPanel.tsx'
+      - 'identity.html'
       - '.github/workflows/verify-nayanet-name-first-auth.yml'
   workflow_dispatch:
 
