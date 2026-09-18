@@ -236,6 +236,7 @@ jobs:
           node -e "const r=require(process.argv[1]); if(r.status!=='PRODUCTION_PROVEN_PARTIAL_EXTERNAL_WELCOME') throw new Error('bad status'); for(const [k,v] of Object.entries(r.journey)) if(v!==true && k!=='name' && k!=='alias' && k!=='welcome_to_identity') throw new Error('failed '+k)" "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
 
       - name: Upload lifecycle receipt
+        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: nayanet-name-first-lifecycle-receipt
