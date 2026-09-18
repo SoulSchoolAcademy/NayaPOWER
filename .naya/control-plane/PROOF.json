@@ -115,14 +115,14 @@
     },
     "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 65c2d0a5c1a5b394340622d486e4a02cd525ed58. The readiness contract permits subsequent control-plane/proof-only commits when the deployed source scope is unchanged. Authenticated lifecycle and external cold-Naya remain BLOCKED because the deployed Assistant artifact currently exposes only an external LOGIN route and lacks the governed authenticated persistence/session implementation needed to perform those proofs."
   },
-  "recording_commit": "c2d2b95166eaf74df3e2a691542758dc41c35e92",
+  "recording_commit": "177a6508f0feba9f0483c85cd73c6251a253c9c6",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "observed_head": "c2c2b95166eaf74df3e2a691542758dc41c35e92",
+      "observed_head": "c2d2b95166eaf74df3e2a691542758dc41c35e92",
       "deployed_source_head": "65c2d0a5c1a5b394340622d486e4a02cd525ed58",
       "source_paths": [
         "2026 09 17 NAYANET HUB.html",
