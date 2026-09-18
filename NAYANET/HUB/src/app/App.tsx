@@ -4,7 +4,7 @@ import { IdentityProvider, useIdentity } from '../identity/session';
 import { AuthPanel } from '../identity/AuthPanel';
 import type { IntelligentEvent, Lens } from '../intelligence/types';
 import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
-import { initializeCognition } from '../intelligence/cognition';
+import { initializeCognition, rememberIntelligence } from '../intelligence/cognition';
 import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import type { PISFeed } from '../data/pis';
 import { AppShellV3 } from './AppShellV3';
@@ -33,6 +33,38 @@ function IntelligenceCard({ event, onOpen }: { event: IntelligentEvent; onOpen: 
   </button>;
 }
 
+function SmartNoteCapture({ onCaptured }: { onCaptured: () => void }) {
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [status, setStatus] = useState('');
+  const [busy, setBusy] = useState(false);
+  const capture = async () => {
+    if (!content.trim() || busy) return;
+    setBusy(true); setStatus('PERSISTING INTELLIGENCE…');
+    try {
+      const result = await rememberIntelligence({
+        event_id: 'hub-smart-note-' + Date.now(),
+        title: title.trim() || content.trim().slice(0, 100),
+        content: content.trim(),
+        source: 'nayanet-hub.smart-note-capture',
+        project: 'NayaNET',
+        status: 'active', actor: 'human',
+        tags: ['smart-note', 'intelligent-hub', 'captured'],
+        metadata: { capture_surface: 'NayaNET Intelligent Hub', continuity: 'conversation-to-compounding-intelligence' },
+      });
+      setStatus(result.persisted ? '✓ CAPTURED • PERSISTED • READY TO COMPOUND' : 'CAPTURED • ' + result.persistence.status.toUpperCase());
+      setTitle(''); setContent(''); onCaptured();
+    } catch (error) { setStatus(error instanceof Error ? error.message : 'CAPTURE_FAILED'); }
+    finally { setBusy(false); }
+  };
+  return <section className="smart-note-capture">
+    <div><div className="hub-rail-label">CAPTURE WHAT MATTERS</div><h2>Turn an aha into durable intelligence.</h2><p>Capture a decision, lesson, mistake, discovery, or mission update. NayaNET records it so it can be retrieved and compounded later.</p></div>
+    <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title (optional)" aria-label="Smart Note title" />
+    <textarea value={content} onChange={e => setContent(e.target.value)} placeholder="What should Naya remember?" aria-label="Smart Note content" rows={4} />
+    <div className="capture-actions"><button className="powerBtn" disabled={!content.trim() || busy} onClick={() => void capture()}>{busy ? 'PERSISTING…' : '✦ CAPTURE SMART NOTE'}</button>{status && <span>{status}</span>}</div>
+  </section>;
+}
+
 function HubHome({ onExplore }: { onExplore: (event?: IntelligentEvent) => void }) {
   const identity = useIdentity();
   const [events, setEvents] = useState<IntelligentEvent[]>([]);
@@ -45,6 +77,7 @@ function HubHome({ onExplore }: { onExplore: (event?: IntelligentEvent) => void 
   return <div className="hub-home-restored">
     <div className="ecosystem"><button className="powerBtn" onClick={() => open()}>✦ NAYA POWER</button><button className="powerBtn" onClick={() => open()}>AI INTELLIGENCE</button><button className="powerBtn" onClick={() => open()}>SMART NOTES</button><button className="powerBtn" onClick={() => open()}>SMART SHARE</button><button className="powerBtn" onClick={() => open()}>SMART LEDGER</button><button className="powerBtn" onClick={() => open()}>SMART SPACES</button></div>
     <section className="hero"><div className="eyebrow">NAYANET · LIVING INTELLIGENCE NETWORK</div><h1>Your Intelligence Today</h1><p>NayaNET is where intelligence becomes visible, understandable, useful, and reusable — so what you learn today can compound into what Naya and you can do tomorrow.</p></section>
+    <SmartNoteCapture onCaptured={() => { loadPrimaryIntelligence().then(value => { setFeed(value); setEvents(sortPrimaryIntelligence(value.events)); }).catch(() => undefined); }} />
     <div className="feedNav">{lensTabs.map(tab => <button key={tab.key} onClick={() => open()}>{tab.icon} {tab.label} FEED</button>)}</div>
     <div className="feedHead"><div><h2>Living Intelligence</h2><p>{feed?.source === 'supabase:nayanet_intelligence_index' ? 'Persistent intelligence is connected.' : 'The Hub is ready for canonical intelligence.'}</p></div><span className="feedCount">{events.length} OBJECTS</span></div>
     {error ? <div className="hub-empty"><b>INTELLIGENCE FEED UNAVAILABLE</b><span>{error}</span></div> : events.length ? <div className="blocks">{events.slice(0, 3).map(event => <IntelligenceCard key={event.event_id} event={event} onOpen={() => open(event)} />)}</div> : <div className="hub-empty"><b>NO INTELLIGENCE YET</b><span>Capture a canonical intelligence event and it will appear here.</span></div>}
