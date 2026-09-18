@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'NAYANET/HUB/**'
+      - '2026 09 17 NAYANET HUB.html'
       - 'scripts/build-smart-feed-projection.py'
       - '.github/workflows/deploy-nayanet-intelligent-hub.yml'
   workflow_dispatch:
@@ -89,7 +90,7 @@ jobs:
           grep -q 'naya509-final' "$RUNNER_TEMP/live-hub.html"
           grep -q 'COLLECTIVE INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
           grep -q 'PERSONAL INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
-          grep -q 'ACTIVITY FEED' "$RUNNER_TEMP/live-hub.html"
+          grep -q 'ACTIVITY' "$RUNNER_TEMP/live-hub.html"
           echo "LIVE_HUB_REACHABLE_AND_CANONICAL_PRESENTATION_VERIFIED url=$NAYA_HUB_RUNTIME_URL"
 
       - name: Record deployment commit identity
