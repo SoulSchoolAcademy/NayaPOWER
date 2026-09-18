@@ -2,11 +2,9 @@
 
 ## Next Action
 
-Deploy and independently observe the canonical Hub application bridge on the exact Cloudflare production target, using an authenticated session, and verify this smallest real chain:
+Using an authenticated member session on the exact deployed Cloudflare Hub, observe the existing **Personal Intelligence** feed retrieving real NayaNET cognition events through the newly deployed runtime bridge.
 
-`Welcome/Login → Intelligent Hub → Personal Intelligence → authenticated cognition retrieval → visible existing-feed projection`
-
-Capture the actual runtime receipt. If that passes, extend the same module boundary to Smart Note capture/persistence and then to Activity/Collective Intelligence.
+Record the actual authenticated retrieval/visibility receipt. If that passes, wire the same application boundary to **Smart Note capture → persistence → feed projection**, then continue outward to Activity and Collective Intelligence.
 
 ## Success Gate
 
@@ -20,7 +18,3 @@ IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → CONNECTED →
 - No invented runtime receipts.
 - One canonical Cloudflare writer.
 - Stop on unexpected destructive diffs or authorization mismatches.
-
-## Canonical Successor
-
-Continue from the current Team Naya directive and the latest NayaPOWER Activity record for Hub applicationization.
