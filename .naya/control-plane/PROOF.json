@@ -117,7 +117,7 @@
     },
     "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 147cf23102b91cb4b223a9d87346190e7d2e9297. The deployed artifact now contains the governed Supabase authentication/session and cognition persistence bridge. Positive authenticated lifecycle and independent external cold-Naya remain BLOCKED only because no authorized test identity/positive receipt was available for execution; no false PASS is recorded."
   },
-  "recording_commit": "eb7c13c21584bcb42c17709cbccc53e3abd6c091",
+  "recording_commit": "214b151c24e6c69f63c9aad01c637e2e7612b892",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -157,6 +157,78 @@
         "authenticated lifecycle not yet proven"
       ],
       "reason": "Genuine external cold-Naya continuation remains blocked until the authenticated lifecycle produces a durable object and an independent fresh-context retrieval receipt."
+    },
+    "ih03_canonical_intelligence_identity": {
+      "status": "VERIFIED",
+      "claim_type": "AUTOMATED",
+      "observed_head": "214b151c24e6c69f63c9aad01c637e2e7612b892",
+      "branch": "main",
+      "workflow": ".github/workflows/verify-smart-note-transaction.yml",
+      "run_id": 35306009491,
+      "job_id": 105478227638,
+      "step": "IH-03 canonical intelligence identity proof",
+      "conclusion": "success",
+      "evidence": [
+        "workflow checkout recorded exact HEAD 214b151c24e6c69f63c9aad01c637e2e7612b892",
+        "IH03_CANONICAL_EVENT=PASS",
+        "IH03_PIS_IDENTITY=PASS",
+        "IH03_INTELLIGENT_EVENT_ID=PASS",
+        "IH03_INTELLIGENT_BLOCK=PASS",
+        "IH03_FEED_PROJECTION=PASS",
+        "IH03_TIMESTAMP_INVARIANT=PASS",
+        "IH03_PROVENANCE_INVARIANT=PASS",
+        "IH03_PRIVACY_INVARIANT=PASS",
+        "IH03_VERIFICATION_STATE=PASS",
+        "IH03_REPLAY_IDENTITY_STABLE=PASS",
+        "IH03=PASS"
+      ],
+      "event_id": "SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY",
+      "block_id": "IB-SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY",
+      "invariants": [
+        "stable event identity across canonical event, PIS, IntelligentEvent, Intelligent Block, and feed",
+        "canonical timestamp preserved",
+        "source and canonical-path provenance preserved",
+        "privacy remains visibility=private and consent_state=not_granted",
+        "verification state remains SUPPORTED with ACTIVE lifecycle",
+        "replay preserves event and block identity"
+      ],
+      "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
     }
+  },
+  "ih03_canonical_intelligence_identity": {
+    "status": "VERIFIED",
+    "claim_type": "AUTOMATED",
+    "observed_head": "214b151c24e6c69f63c9aad01c637e2e7612b892",
+    "branch": "main",
+    "workflow": ".github/workflows/verify-smart-note-transaction.yml",
+    "run_id": 35306009491,
+    "job_id": 105478227638,
+    "step": "IH-03 canonical intelligence identity proof",
+    "conclusion": "success",
+    "evidence": [
+      "workflow checkout recorded exact HEAD 214b151c24e6c69f63c9aad01c637e2e7612b892",
+      "IH03_CANONICAL_EVENT=PASS",
+      "IH03_PIS_IDENTITY=PASS",
+      "IH03_INTELLIGENT_EVENT_ID=PASS",
+      "IH03_INTELLIGENT_BLOCK=PASS",
+      "IH03_FEED_PROJECTION=PASS",
+      "IH03_TIMESTAMP_INVARIANT=PASS",
+      "IH03_PROVENANCE_INVARIANT=PASS",
+      "IH03_PRIVACY_INVARIANT=PASS",
+      "IH03_VERIFICATION_STATE=PASS",
+      "IH03_REPLAY_IDENTITY_STABLE=PASS",
+      "IH03=PASS"
+    ],
+    "event_id": "SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY",
+    "block_id": "IB-SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY",
+    "invariants": [
+      "stable event identity across canonical event, PIS, IntelligentEvent, Intelligent Block, and feed",
+      "canonical timestamp preserved",
+      "source and canonical-path provenance preserved",
+      "privacy remains visibility=private and consent_state=not_granted",
+      "verification state remains SUPPORTED with ACTIVE lifecycle",
+      "replay preserves event and block identity"
+    ],
+    "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   }
 }
