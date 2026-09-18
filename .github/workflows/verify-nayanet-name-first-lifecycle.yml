@@ -117,8 +117,8 @@ jobs:
             return {member:member.data,profile:profile.data};
           }, {url:supabaseUrl,key:supabaseKey,userId:identity.userId});
 
-          if (!db.member || db.member.id !== identity.userId) throw new Error('MEMBER_UUID_MISMATCH');
-          if (!db.profile || db.profile.member_id !== identity.userId) throw new Error('PROFILE_UUID_MISMATCH');
+          if (!db.member || db.member.id !== identity.userId) throw new Error('MEMBER_UUID_MISMATCH:'+JSON.stringify(db));
+          if (!db.profile || db.profile.member_id !== identity.userId) throw new Error('PROFILE_UUID_MISMATCH:'+JSON.stringify(db));
           if (db.profile.public_alias !== alias) throw new Error('ALIAS_PERSISTENCE_MISMATCH');
 
           await pageA.evaluate(async ({title,content,eventId}) => {
