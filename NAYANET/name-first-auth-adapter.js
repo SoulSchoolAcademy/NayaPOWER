@@ -2,6 +2,7 @@
  * One adapter only: Welcome/Identity -> existing Supabase Auth -> members -> nayanet_profiles.
  * The NayaNET alias is an application namespace, not an email address.
  * Canonical browser session: Supabase Auth persistence is the session authority.
+ * Runtime verification is intentionally performed against the live Supabase Auth boundary.
  */
 (function (global) {
   const SUPABASE_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
