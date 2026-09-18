@@ -101,7 +101,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "${NAYA_HUB_RUNTIME_URL}/?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live-hub.html"
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 -D "$RUNNER_TEMP/live-hub.headers" "${NAYA_HUB_RUNTIME_URL}/?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live-hub.html"
+          grep -qi 'x-naya-canonical-asset:' "$RUNNER_TEMP/live-hub.headers"
+          grep -q "${GITHUB_SHA}" "$RUNNER_TEMP/live-hub.html"
           grep -q 'NayaNET' "$RUNNER_TEMP/live-hub.html"
           grep -q 'naya509-final' "$RUNNER_TEMP/live-hub.html"
           grep -q 'COLLECTIVE INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
