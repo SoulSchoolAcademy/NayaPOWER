@@ -152,6 +152,16 @@ def evaluate() -> dict[str, Any]:
         "STATE and active BLOCK expose exactly one identical next action",
     ))
 
+    runtime_claims: dict[str, Any] = {}
+    evidence_file = os.environ.get("NAYA_READINESS_EVIDENCE_FILE")
+    if evidence_file:
+        try:
+            bundle = json.loads(Path(evidence_file).read_text(encoding="utf-8"))
+            if bundle.get("observed_head") == current:
+                runtime_claims = bundle.get("claims", {})
+        except Exception:
+            runtime_claims = {}
+
     # Every mission boundary is independently evidence-backed. Missing claims
     # are UNKNOWN; historical claims cannot certify the current HEAD.
     for name in UNKNOWN_MISSION_BOUNDARIES:
