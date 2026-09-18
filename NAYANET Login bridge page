@@ -16,7 +16,7 @@
 <body>
   <header class="top-system-bar">
     <div class="brand-logo-group" onclick="window.location.href='index.html'"><img src="icon-192.png" alt="NayaNET Crystal Logo"><span class="brand-logo-title">NayaNET</span></div>
-    <button type="button" class="primo-btn" onclick="window.location.href='NAYAHUB.html'">🎧 Naya Player</button>
+    <button type="button" class="primo-btn" onclick="window.location.href='/'">🎧 Naya Player</button>
   </header>
   <main class="activation-stage">
     <div class="identity-pro-card">
@@ -68,7 +68,7 @@
         if(existing?.authenticated){
           localStorage.setItem('nayanet_smart_name',existing.smartName||name);
           localStorage.setItem('nayanet_smart_alias',existing.smartAlias||cleanAlias(aliasInput.value));
-          window.location.replace('NAYAHUB.html');
+          window.location.replace('/');
         }
       }catch(e){ console.debug('NayaNET session restore unavailable',e); }
     }
@@ -85,7 +85,7 @@
         const identity=await window.NayaNETNameFirstAuth.establish({name:smartName,alias:smartAlias});
         if(!identity?.authenticated||!identity?.userId) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
         displayIdentity.textContent='AUTHENTICATED';status.textContent=`Welcome, ${identity.smartName}. Entering Intelligent Hub…`;
-        window.location.replace('NAYAHUB.html');
+        window.location.replace('/');
       }catch(e){console.error(e);displayIdentity.textContent='NOT ESTABLISHED';status.textContent='Identity setup needs attention';error.textContent=e?.message||'Unable to establish your NayaNET session.';btn.disabled=false;}
     });
   </script>
