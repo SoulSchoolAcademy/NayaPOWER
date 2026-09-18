@@ -50,7 +50,7 @@ This is an important milestone: the system caught its own coordination defect in
 
 ## CURRENT SINGLE NEXT ACTION
 
-> **Execute the canonical Assistant Cloudflare release against the exact live main HEAD using an authorized workflow-dispatch execution surface; coordinate the attempt through Team Naya Activity, observe the real runtime result, and record source → execution → runtime → behavior proof. If dispatch remains unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Never substitute GitHub 509 or an alternate deployment path.**
+> **Configure/verify the authorized Assistant-lane test identity as protected GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow against current main and advance through record → retrieve → action → observation → verification → independent fresh-context retrieval. Preserve secret-free receipts. If the environment secrets are absent, record BLOCKED and continue all executable non-authenticated proof gates.**
 
 If the required external capability is unavailable, do not guess, bypass, or fabricate. Record `UNKNOWN/BLOCKED`, reduce uncertainty using available evidence, and leave exactly one executable successor.
 
@@ -104,7 +104,7 @@ If the intelligence already exists, protect it. Do not duplicate it.
 
 Team Naya Activity is the operational communication surface, not merely a diary. Every consequential Naya must visibly announce ownership and intent before acting, report observed results after acting, answer outstanding Naya questions when evidence is available, and leave one executable successor. Important discoveries must be posted where the next Naya can inspect them without conversational archaeology. No synthetic/no-op activity is allowed.
 
-**Current shared blocker:** authorized dispatch of .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD. All Nayas coordinate around this same boundary. No 509 substitution. No alternate runtime. No inferred success.
+**Current shared blocker:** positive authenticated lifecycle execution. The authorized production Cloudflare runtime is now source-bound and runtime-parity proven through .github/workflows/deploy-nayanet-intelligent-hub.yml; the remaining external dependency is the protected assistant-cloudflare-production test identity. No 509 substitution. No alternate runtime. No inferred success.
 
 ## ACTIVITY — THE RULE
 
@@ -164,7 +164,7 @@ If partial: **PRESERVE → IDENTIFY GAP → SURGICALLY REPAIR.**
 ## TODAY'S EXECUTION ORDER
 
 1. **Current truth:** keep control-plane surfaces coherent.
-2. **Assistant lane:** reconcile authorized Cloudflare/live release mechanism and runtime target.
+2. **Assistant lane:** execute the authenticated lifecycle proof against the already verified Cloudflare/live runtime.
 3. **Team accountability:** audit actual recent work against Activity, commits, Smart Notes, tests and handoffs.
 4. **Smart Notes:** verify canonical placement, provenance, retrieval and use.
 5. **Work queue:** classify stale/duplicate/deferred issues without destroying useful history.
@@ -199,3 +199,10 @@ If partial: **PRESERVE → IDENTIFY GAP → SURGICALLY REPAIR.**
 **Do the work. Prove the work. Record the work. Make the next Naya better.**
 
 **TAG → YOU'RE IT.**
+
+
+## 2026-09-18 RUNTIME PARITY UPDATE
+
+The canonical Cloudflare production lane is now mechanically verified at release commit `25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e` with Cloudflare Version ID `62d84659-25cc-4c04-991c-2806b7f99246`. The live Worker reports `X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e`. Normalized source/live content matches for both the canonical Hub and `assistant-runtime.js`. The deploy verification failure caused by a case-sensitive HTTP-header check was repaired; the subsequent production deployment passed.
+
+The next critical boundary is now **positive authenticated lifecycle proof**, not deployment reconciliation. The GitHub Environment currently has no `ASSISTANT_TEST_EMAIL` or `ASSISTANT_TEST_PASSWORD` secrets. No credential values are recorded or handled in chat.
