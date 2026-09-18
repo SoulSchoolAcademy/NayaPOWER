@@ -12,8 +12,11 @@ const received=await req(base+'/rest/v1/v7_mail_messages?select=id&thread_id=eq.
 if(received.length!==1)throw new Error('RECEIVER_RETRIEVAL_FAILED');
 const verified=await req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(receiver.access_token),body:JSON.stringify({operation:'verify',message_id:send.message_id})});
 if(verified.status!=='VERIFIED')throw new Error('RECEIVER_VERIFY_FAILED');
+const cognitionRows=await req(base+'/rest/v1/nayanet_cognition_events?select=id,event_id,receipt_id&id=eq.'+send.cognition_event_id,{headers:h(sender.access_token)});
+if(cognitionRows.length!==1||cognitionRows[0].receipt_id!==send.execution_receipt_id)throw new Error('COGNITION_LINEAGE_FAILED');
+const cognitionEventId=cognitionRows[0].event_id;
 const dreamKey='p0-dream-score-'+crypto.randomBytes(10).toString('hex');
-const replay=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',headers:{...h(sender.access_token),'x-idempotency-key':dreamKey},body:JSON.stringify({event_id:send.cognition_event_id,idempotency_key:dreamKey,project_id:'NayaNET'})});
+const replay=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',headers:{...h(sender.access_token),'x-idempotency-key':dreamKey},body:JSON.stringify({event_id:cognitionEventId,idempotency_key:dreamKey,project_id:'NayaNET'})});
 if(!replay.ok||replay.replay?.status!=='SIMULATED')throw new Error('DREAM_REPLAY_FAILED');
 const out=replay.replay.replay_output,score=out.score_contract;
 if(!score||score.schema!=='NAYANET_DREAM_SCORE_V1')throw new Error('SCORE_CONTRACT_MISSING');
@@ -23,6 +26,6 @@ if(score.responsible_value.verification!=='VERIFIED')throw new Error('VALUE_NOT_
 if(score.policy_improvement!=='NOT_PROVEN')throw new Error('POLICY_IMPROVEMENT_FABRICATED');
 const replay2=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',headers:{...h(sender.access_token),'x-idempotency-key':dreamKey},body:JSON.stringify({event_id:send.cognition_event_id,idempotency_key:dreamKey,project_id:'NayaNET'})});
 if(!replay2.idempotent||replay2.replay?.id!==replay.replay.id)throw new Error('DREAM_IDEMPOTENCY_FAILED');
-const proof={schema:'naya.nayanet.dream.score.p0.production.proof.v1',status:'VERIFIED',transaction:{mail_message_id:send.message_id,cognition_event_id:send.cognition_event_id,execution_receipt_id:send.execution_receipt_id,dream_replay_id:replay.replay.id},score_contract:score,policy_improvement:'NOT_PROVEN',idempotent_replay:true,observed_at:new Date().toISOString()};
+const proof={schema:'naya.nayanet.dream.score.p0.production.proof.v1',status:'VERIFIED',transaction:{mail_message_id:send.message_id,cognition_event_id:cognitionEventId,execution_receipt_id:send.execution_receipt_id,dream_replay_id:replay.replay.id},score_contract:score,policy_improvement:'NOT_PROVEN',idempotent_replay:true,observed_at:new Date().toISOString()};
 fs.writeFileSync(process.env.PROOF_PATH,JSON.stringify(proof,null,2));
 console.log('DREAM_SCORE_CONTRACT=PASS');console.log('DREAM_TASK_SCORE=PASS');console.log('DREAM_RESPONSIBLE_VALUE=PASS');console.log('DREAM_VALUE_VERIFICATION=PASS');console.log('DREAM_POLICY_IMPROVEMENT_HONEST=PASS');console.log('DREAM_IDEMPOTENCY=PASS');console.log('DREAM_SCORE_PROOF=VERIFIED');console.log('DREAM_REPLAY_ID='+replay.replay.id);
