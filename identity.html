@@ -56,6 +56,10 @@
       // storage boundary before crossing into the release route.
       const confirmed=await window.NayaNETNameFirstAuth.current();
       if(!confirmed?.authenticated||confirmed.userId!==identity.userId)throw new Error('AUTH_SESSION_PERSISTENCE_NOT_CONFIRMED');
+      // Let the browser commit the canonical Supabase storage boundary before navigation.
+      await new Promise(resolve=>setTimeout(resolve,500));
+      const persisted=await window.NayaNETNameFirstAuth.current();
+      if(!persisted?.authenticated||persisted.userId!==identity.userId)throw new Error('AUTH_SESSION_PERSISTENCE_LOST_BEFORE_HANDOFF');
       status.textContent=`Welcome, ${identity.smartName}. Entering Intelligent Hub…`;
       goHub();
     }catch(error){
