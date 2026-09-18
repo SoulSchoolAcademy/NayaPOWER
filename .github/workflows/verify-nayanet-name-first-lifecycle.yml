@@ -109,7 +109,7 @@ jobs:
 
           const db = await pageA.evaluate(async ({url,key,userId}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            const client = sdk.createClient(url,key);
+            const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
             const member = await client.from('members').select('id,display_name').eq('id',userId).maybeSingle();
             const profile = await client.from('nayanet_profiles').select('member_id,smart_id,public_alias').eq('member_id',userId).maybeSingle();
             if (member.error) throw member.error;
