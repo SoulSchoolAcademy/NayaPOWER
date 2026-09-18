@@ -438,6 +438,33 @@ class TestUniversalExecutionGate(unittest.TestCase):
         self.assertIn("responsibility envelope is insufficient", reasons)
         self.assertIn("identity_verified", reasons)
 
+    def test_604_authorization_carries_governance_receipt(self):
+        result = self._allowed()
+        self.assertTrue(result.allowed)
+        authorization = result.authorization
+        self.assertIsNotNone(authorization)
+        self.assertTrue(authorization.governance_receipt_id)
+        self.assertIn("autonomous_action", authorization.capability_flags)
+        self.assertIn("authority_bound", authorization.responsibility_controls)
+        receipt = authorization.to_governance_receipt()
+        self.assertEqual(receipt["receipt_id"], authorization.governance_receipt_id)
+        self.assertEqual(receipt["authority_id"], authorization.authority_id)
+        self.assertEqual(receipt["decision_id"], authorization.decision_id)
+        self.assertEqual(receipt["action_id"], authorization.action_id)
+
+    def test_605_governance_receipt_tampering_invalidates_authorization_hash(self):
+        authorization = self._allowed().authorization
+        tampered = dataclasses.replace(authorization, responsibility_controls=())
+        valid, reasons = self.gate.verify(tampered)
+        self.assertFalse(valid)
+        self.assertIn("binding_hash does not match", " ".join(reasons))
+
+    def test_606_governance_receipt_identity_tampering_invalidates_authorization_hash(self):
+        authorization = self._allowed().authorization
+        tampered = dataclasses.replace(authorization, governance_receipt_id="govrcpt-attacker")
+        valid, reasons = self.gate.verify(tampered)
+        self.assertFalse(valid)
+        self.assertIn("binding_hash does not match", " ".join(reasons))
     def test_603_target_and_action_type_are_bound_fields(self):
         result_a = self._allowed()
         auth = result_a.authorization

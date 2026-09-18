@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/governance-execution-receipt-v1",
+  "title": "NayaPOWER Governance Execution Receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "schema_version",
+    "actor_id",
+    "authority_id",
+    "decision_id",
+    "action_id",
+    "capability_envelope",
+    "responsibility_controls",
+    "binding_hash"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "const": "1.0"
+    },
+    "actor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "decision_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "action_type": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    },
+    "permission": {
+      "type": "string"
+    },
+    "governance_state": {
+      "type": "string",
+      "const": "AUTHORIZED"
+    },
+    "risk_tier": {
+      "type": "string"
+    },
+    "capability_envelope": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      }
+    },
+    "responsibility_controls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "binding_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "validated_at": {
+      "type": "string"
+    }
+  }
+}
