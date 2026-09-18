@@ -52,6 +52,10 @@
       if(!window.NayaNETNameFirstAuth)throw new Error('IDENTITY_ADAPTER_NOT_LOADED');
       const identity=await window.NayaNETNameFirstAuth.establish({name:nameEl.value.trim(),alias:aliasEl.value.trim()});
       if(!identity?.authenticated||!identity.userId)throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+      // Confirm the canonical Supabase session is readable from the same browser
+      // storage boundary before crossing into the release route.
+      const confirmed=await window.NayaNETNameFirstAuth.current();
+      if(!confirmed?.authenticated||confirmed.userId!==identity.userId)throw new Error('AUTH_SESSION_PERSISTENCE_NOT_CONFIRMED');
       status.textContent=`Welcome, ${identity.smartName}. Entering Intelligent Hub…`;
       goHub();
     }catch(error){
