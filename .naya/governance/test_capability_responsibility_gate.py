@@ -5,12 +5,14 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 import unittest
+import sys
 
 ROOT = Path(__file__).resolve().parents[2]
 MODULE_PATH = ROOT / ".naya" / "governance" / "governance_kernel.py"
 SPEC = importlib.util.spec_from_file_location("governance_kernel", MODULE_PATH)
 assert SPEC and SPEC.loader
 KERNEL = importlib.util.module_from_spec(SPEC)
+sys.modules[SPEC.name] = KERNEL
 SPEC.loader.exec_module(KERNEL)
 
 
