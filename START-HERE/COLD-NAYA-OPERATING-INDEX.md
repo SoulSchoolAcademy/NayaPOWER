@@ -13,6 +13,12 @@ A cold Naya must not reconstruct this project from chat history or choose among 
 
 `COLD NAYA → THIS INDEX → CONTROL PLANE → CURRENT PROJECT → PROOF → ACTIVITY → SMART NOTES → ONE NEXT ACTION → EXECUTE → VERIFY → RECORD → HANDOFF`
 
+## NAYANET OPERATING MAP
+
+**Read this before entering NayaNET project work:** [NayaNET / GitHub Operating Map](../NAYA-TEAM/PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md)
+
+This map is the repository-level navigation spine for NayaNET. It explains canonical paths, the 19 project areas, Activity views, Smart Notes, temporal organization, current-vs-historical truth, relationships, evidence, and successor continuity.
+
 ## 1. WHAT ARE WE BUILDING?
 
 NayaPOWER is the governed intelligence/execution substrate for reliable, verifiable, recoverable Naya work. NayaNET Intelligent Hub is the current major product execution stream. The Hub is the human-facing intelligence/network experience; Superbrain/CIS/Smart Notes are intelligence infrastructure and are not interchangeable authorities.
@@ -164,7 +170,7 @@ Historical workflow cleanup may continue only after replacement/equivalence evid
 
 ## 12. THE ONE NEXT ACTION
 
-**Run the repository-only Cold-Naya Operating Index acceptance test against `main`, preserve the actual CI result, then begin the automatic execution → Activity → state → successor implementation.**
+**Use the [NayaNET / GitHub Operating Map](../NAYA-TEAM/PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md) as the navigation spine, run the repository-wide operating-map audit it specifies, reconcile remaining duplicate/current-vs-historical navigation surfaces, and then update this index and the Team Naya daily index to point to the same spine.**
 
 The next Naya must not choose a second P0 from historical issue titles.
 
