@@ -1,0 +1,64 @@
+name: Verify Primary Intelligence System
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/**'
+      - 'scripts/build-primary-intelligence-feed.py'
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/verify-primary-intelligence-system.yml'
+      - '!SUPERBRAIN/NAYA-ACTIVITY/**'
+      - '!SUPERBRAIN/NAYA-ACTIVITY-FEED.md'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 11
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Build PIS projection
+        run: python3 scripts/build-primary-intelligence-feed.py
+      - name: Validate PIS projection
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('NAYANET/HUB/public/intelligence/pis-feed.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          assert data['schema_version']=='PIS-1.0'
+          assert data['event_count']==len(data['events'])
+          ids=[e['event_id'] for e in data['events']]
+          assert len(ids)==len(set(ids))
+          for e in data['events']:
+              assert e['event_id']; assert e['context']['canonical_path'].startswith('.naya/'); assert e['source']['type']=='smart_note'
+          print(f'PIS_PROJECTION=PASS events={len(ids)}')
+          PY
+      - name: Validate persistent PIS adapter source
+        run: |
+          grep -q "@supabase/supabase-js" NAYANET/HUB/src/data/pis.ts
+          grep -q "nayanet_intelligence_index" NAYANET/HUB/src/data/pis.ts
+          grep -q "getUser" NAYANET/HUB/src/data/pis.ts
+          grep -q "PIS_QUERY_LIMIT" NAYANET/HUB/src/data/pis.ts
+      - name: Validate Naya continuous project execution loop
+        run: |
+          test -f SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md
+      - name: Validate canonical control plane
+        run: |
+          python3 .naya/control-plane/validate_control_plane.py --self-test
+          python3 .naya/control-plane/validate_control_plane.py
+      - name: Cold-Naya activation acceptance
+        run: python3 .naya/runtime/cold_start_activation.py
+      - name: Install Hub dependencies
+        working-directory: NAYANET/HUB
+        run: npm install
+      - name: Typecheck Hub
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+      - name: Build Hub from PIS
+        working-directory: NAYANET/HUB
+        run: npm run build

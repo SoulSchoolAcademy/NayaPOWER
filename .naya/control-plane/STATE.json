@@ -1,0 +1,126 @@
+{
+  "$schema": "naya/control-plane/state/v1",
+  "status": "LIVE_BOUND",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "state_authority": "Canonical operational current-state contract. Live repository identity/HEAD must be resolved at execution time.",
+  "current_head": {
+    "source": "git:HEAD",
+    "mode": "LIVE_RESOLUTION",
+    "recorded_head_is_not_authoritative": true
+  },
+  "current_branch": {
+    "source": "git:branch --show-current",
+    "mode": "LIVE_RESOLUTION"
+  },
+  "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+  "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
+  "priority": "P0 — MACHINE TRUTH RESTORATION",
+  "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+  "current_block": "TORCH-59-MACHINE-TRUTH-RESTORATION",
+  "current_block_status": "ACTIVE",
+  "hub_pre_execution_gate": {
+    "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
+    "index": ".naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md",
+    "master_contract": ".naya/2026-09-13-NAYAPOWER-MASTER-DESIGN-CONTRACT-INTELLIGENT-HUB.md",
+    "pis_smart_note": ".naya/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-MASTER-DESIGN-CONTRACT-SMART-NOTE.md",
+    "design_build_binding": ".naya/2026-09-11-19-35-NAYAPOWER-36-MASTER-DESIGN-BUILD-ACTIVATION.md",
+    "pis_builder": "scripts/build-primary-intelligence-feed.py",
+    "pis_verification": ".github/workflows/verify-smart-note-transaction.yml",
+    "deeper_source_set": ".naya/",
+    "law": "No Naya may build, modify, redesign, restructure, deploy, or declare completion of Intelligent Hub work until the Hub Read-First set has been reviewed and the relevant deeper canonical sources have been inspected.",
+    "purpose": "Prevent context loss and architectural forgetting by making the Hub mental model operationally discoverable and mandatory before Hub execution.",
+    "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya."
+  },
+  "operational_truth_model": {
+    "canonical_state": ".naya/control-plane/STATE.json",
+    "canonical_block": ".naya/control-plane/BLOCKS.json",
+    "canonical_map": ".naya/control-plane/MAP.json",
+    "canonical_proof": ".naya/control-plane/PROOF.json",
+    "legacy_projection": ".naya/memory/STATE.json",
+    "legacy_projection_authority": "NONE — compatibility/history projection only"
+  },
+  "current_operating_reset": {
+    "date": "2026-09-17",
+    "team_naya_operating_center": ".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md",
+    "purpose": "Make Team Naya operate from one current mission, one truth model, one active block, one next action, one evidence path, and no duplicate work.",
+    "status": "ACTIVE"
+  },
+  "latest_automation_observation": {
+    "status": "ASSISTANT_LANE_RUNTIME_BASELINE_VERIFIED",
+    "observed_head": "d6744e223621630c05435c53f976ccdc8b417947",
+    "observation_is_historical_relative_to_live_HEAD": true,
+    "run_id": 35287294186,
+    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "lane": "ASSISTANT_CLOUDFLARE",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+    "worker": "sparkling-shape-7ae5",
+    "cloudflare_version_id": "646dcbc8-64a5-4cba-adb3-ab0d4b83815e",
+    "exact_source_parity": true,
+    "source_sha256": "f18916f76f1b0c87ac5f977069f6e6ff2f4fbdb4f07a518f9621a7d20872429a",
+    "live_sha256": "f18916f76f1b0c87ac5f977069f6e6ff2f4fbdb4f07a518f9621a7d20872429a",
+    "desktop_baseline": true,
+    "mobile_baseline": true,
+    "conclusion": "success"
+  },
+  "known": [
+    "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
+    "The canonical current constitution is .naya/codex/11-RUNTIME-CONSTITUTION.md.",
+    "The canonical navigation/authority map is SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md.",
+    "The governance kernel points to the current constitution and is fail-closed.",
+    "The active repository block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
+    "The 2026-09-09 5:09 PM NayaNET Hub reference is historical evidence only; the timestamped standalone HTML artifact is deleted from current main and MUST NOT be treated as present/current canonical Hub source.",
+    "Naya Control Plane run 34725200501 passed governance kernel, execution boundary, validator self-test, P0 workflow contract, Cold Naya control-plane acceptance, Cold Naya boot/no-orphan acceptance, MAP → STATE → BLOCK → PROOF acceptance, and CCT regression at HEAD 28b935cc1d759bae89c92b508c9d47d871c9a1c9.",
+    "P0 run 34724442337 passed its offline adversarial workflow contract and behavioral bypass suite on e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
+    "The Smart Feed runtime loader repair was implemented in 0d56f6e47288e69eeda2adddf1aa18bb4235b062.",
+    "The Intelligent Hub Master Design Contract and PIS Smart Note exist and are indexed by the Hub Read-First gate.",
+    "The current GitHub execution surface exposes repository file operations but no workflow-dispatch mutation or Cloudflare editing/deployment capability.",
+    "Closed PRs #153, #156, and #157 are historical proof records, not current execution work.",
+    "Issue #57 is a future/deferred NayaMail + Ambassador Growth Hub project explicitly marked not for today; it is not current execution work.",
+    "The 2026-09-17 Team Naya reset created a visible operating center and reconciled the STATE/BLOCK next-action conflict."
+  ],
+  "unknown": [
+    "Authorized positive authenticated test identity/credential surface for lifecycle execution.",
+    "Genuine external cold-Naya behavioral proof beyond the deployed runtime persistence boundary."
+  ],
+  "failures": [
+    "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
+    "Fresh control-plane validation previously found MAP/BLOCK and then STATE/BLOCK divergence; those coherence defects were the reason for the 2026-09-17 reconciliation reset.",
+    "Phase 0 inspection found the recorded canonical release workflow path .github/workflows/deploy-nayanet-hub-canonical-v2.yml is absent from current main, so that recorded next action was not executable as written."
+  ],
+  "protected_boundaries": [
+    "Never guess NAYA_POWER_TARGET_URL.",
+    "Never fabricate runs, artifacts, logs, or success.",
+    "Never weaken fail-closed behavior.",
+    "Never promote historical evidence to current proof.",
+    "Never treat BLOCKED as PASS.",
+    "Never create a second constitutional authority.",
+    "Preserve canonical control-plane authority and existing architecture/functionality.",
+    "Use Adaptive Reconstruction + Surgical Evolution.",
+    "Preserve historical Hub evidence without restoring deleted artifacts merely to satisfy stale references.",
+    "Do not bypass the canonical Cloudflare release workflow with an alternate public deployment path merely to claim production proof.",
+    "Do not bypass the Intelligent Hub Read-First gate for Hub work.",
+    "Do not substitute conversation memory for canonical Hub sources.",
+    "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
+  ],
+  "bottleneck": "The authorized Assistant Cloudflare runtime now exposes the governed Supabase authentication/session and cognition persistence bridge and has fresh production source/runtime parity. The remaining P0 boundary is a positive authenticated lifecycle receipt and genuinely independent fresh-context cold-Naya retrieval; no credentials are handled in chat and no alternate runtime is substituted.",
+  "single_next_action": "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime.",
+  "next_actions": [
+    "Configure an authorized Assistant-lane test identity as a protected GitHub Environment secret, then execute the authenticated lifecycle against the deployed Assistant Cloudflare runtime and use its receipt to run the independent fresh-context cold-Naya retrieval; consume those receipts into PROOF.json without changing the protected Hub or substituting another runtime."
+  ],
+  "next_action_count": 1,
+  "ready_to_run_execution": "NAYA POWER ON — ASSISTANT-LANE EXECUTION\\nResolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, and current Team Naya Activity. Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact current HEAD. Execute only that canonical lane. Observe and verify the runtime. Record the result in Activity. If dispatch is unavailable, record UNKNOWN/BLOCKED and leave exactly one executable successor. Do not substitute GitHub 509 or another runtime. TAG → YOU’RE IT.",
+  "truth_rules": [
+    "LIVE authoritative source outranks recorded state.",
+    "RECORDED_BUT_STALE is not CURRENT.",
+    "UNKNOWN is not VERIFIED.",
+    "BLOCKED is not PASS.",
+    "Historical evidence cannot certify a newer HEAD.",
+    "Exactly one highest-value next action is exposed.",
+    "STATE and BLOCKS must never expose conflicting next actions; reconciliation is required before consequential execution.",
+    "A successor handoff must be directly executable without conversational archaeology.",
+    "CONSTITUTION = one current constitutional authority; amendments are records of constitutional change, not parallel constitutions.",
+    "STATE → BLOCK → RECEIPT/EVIDENCE → PIS/ACTIVITY → HANDOFF → NEXT ACTION must remain coherent.",
+    "For Hub work, the Read-First gate is part of the pre-execution contract; skipping it is a continuity/architecture failure.",
+    "The Assistant Cloudflare/live lane and Other Naya GitHub 509 lane are separate implementations and must never be treated as one runtime."
+  ]
+}

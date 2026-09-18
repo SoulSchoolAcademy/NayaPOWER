@@ -1,0 +1,37 @@
+{
+  "event_id": "NAYANET-E01-INTELLIGENT-HUB-NETWORK",
+  "date": "2026-08-31",
+  "perspective": "machine",
+  "status": "persisted",
+  "architecture": {
+    "layers": ["identity", "network", "communication", "intelligence", "ecosystem", "growth"],
+    "experiences": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08"],
+    "e01_role": "door",
+    "recommended_navigation": "independent URLs with shared identity/session contract unless direct same-page communication is required"
+  },
+  "identity": {
+    "entry_fields": ["name"],
+    "public_identity": "mutable Smart Name / alias",
+    "system_identity": "immutable internal account ID",
+    "smart_mail": "internal NayaNET messaging identity; not SMTP/IMAP mailbox in V1",
+    "smart_link": "member referral/profile link"
+  },
+  "hub": ["Naya Power", "5-Day Challenge", "AI Masterclass", "HMC Library", "Power Seven Days a Week", "MAXESS", "Share / Invite"],
+  "network": ["human-human", "human-Naya", "human-AI", "AI-AI", "intent discovery", "interest discovery", "geographic discovery", "presence", "text", "audio", "intelligent spaces"],
+  "privacy": {
+    "superbrain_interoperability": "explicit permission and governed scope",
+    "private_memory": "private by default",
+    "shared_wisdom": "only when deliberately authorized"
+  },
+  "growth": {
+    "referral_identity": "Smart Link / attribution layer",
+    "future_csv": "external invitation capability; separate from Smart Mail"
+  },
+  "execution": {
+    "current_priority": "E01",
+    "non_regression": true,
+    "approval_rule": "approved experience becomes protected baseline",
+    "acceptance": ["technical", "visual", "interaction", "emotional", "brand", "coherence", "human review"]
+  },
+  "evidence_boundary": "Persistence of this note does not prove production deployment, runtime interoperability, or successor consumption. Those require separate evidence."
+}

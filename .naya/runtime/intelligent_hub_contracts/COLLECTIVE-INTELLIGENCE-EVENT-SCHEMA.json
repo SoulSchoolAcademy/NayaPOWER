@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya://intelligent-hub/collective-intelligence-event/1.0",
+  "title": "Collective Intelligence Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["event_id", "schema_version", "event_type", "created_at", "effective_at", "subject", "wisdom", "why_it_matters", "applicability", "evidence", "confidence", "provenance", "privacy", "relationships", "supersedes", "status", "verification_receipt"],
+  "properties": {
+    "event_id": {"type": "string", "pattern": "^cie_[A-Za-z0-9_-]+$"},
+    "schema_version": {"const": "1.0"},
+    "event_type": {"type": "string", "minLength": 1},
+    "created_at": {"type": "string", "format": "date-time"},
+    "effective_at": {"type": "string", "format": "date-time"},
+    "subject": {"type": "string", "minLength": 1, "description": "Generalized topic, never participant identity."},
+    "wisdom": {"type": "string", "minLength": 1},
+    "why_it_matters": {"type": "string", "minLength": 1},
+    "applicability": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "object"}},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+    "provenance": {"type": "object", "additionalProperties": true, "required": ["source_kind", "validation_state"]},
+    "privacy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity_included", "raw_source_included", "privacy_review"],
+      "properties": {
+        "identity_included": {"const": false},
+        "raw_source_included": {"const": false},
+        "privacy_review": {"enum": ["passed", "quarantined", "rejected"]}
+      }
+    },
+    "relationships": {"type": "array", "items": {"type": "object"}},
+    "supersedes": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["validated", "published"]},
+    "verification_receipt": {"type": "object", "required": ["verified", "verified_at", "checks"], "properties": {"verified": {"const": true}, "verified_at": {"type": "string", "format": "date-time"}, "checks": {"type": "array", "items": {"type": "string"}}}}
+  }
+}

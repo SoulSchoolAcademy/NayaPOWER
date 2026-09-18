@@ -1,0 +1,21 @@
+{
+  "schema": "naya/hub-runtime-target/v1",
+  "name": "NayaNET Canonical Hub Runtime Target",
+  "status": "CURRENT_TARGET_UNVERIFIED_PRODUCTION",
+  "canonical_runtime_url": "https://nayanet-canonical-hub-source-mirror-tqp22y.v2.appdeploy.ai/",
+  "previous_runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+  "platform": "AppDeploy",
+  "app_id": "nayanet-canonical-hub-source-mirror-tqp22y",
+  "source_role": "canonical source mirror",
+  "source_of_truth": "GitHub repository",
+  "runtime_claim": "The AppDeploy application is reported READY by the connected AppDeploy control plane. This file does not claim production equivalence, deployment provenance, or browser acceptance for a specific Git commit until independently verified.",
+  "runtime_verification_required": [
+    "Resolve current main HEAD.",
+    "Verify the AppDeploy applied version corresponds to the intended canonical Hub source.",
+    "Verify desktop and mobile rendering against the canonical artifact.",
+    "Verify interaction and consequence behavior.",
+    "Record exact evidence before promoting status to VERIFIED_RUNTIME."
+  ],
+  "updated_for": "NAYA_ACTION_V1 Smart Board continuation",
+  "updated_at": "2026-09-15"
+}

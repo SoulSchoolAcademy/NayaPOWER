@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/intelligence-event/v1",
+  "title": "NayaNET Canonical Intelligence Event",
+  "type": "object",
+  "required": ["id", "createdAt", "source", "scope", "subject", "nutshell", "perspectives", "lesson", "howToUse"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "required": ["type"],
+      "properties": {
+        "type": { "type": "string", "minLength": 1 },
+        "repository": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "scope": { "enum": ["personal", "collective"] },
+    "subject": { "type": "string" },
+    "nutshell": { "type": "string" },
+    "perspectives": {
+      "type": "object",
+      "properties": {
+        "human": { "$ref": "#/$defs/perspective" },
+        "child": { "$ref": "#/$defs/perspective" },
+        "grandma": { "$ref": "#/$defs/perspective" },
+        "naya": { "$ref": "#/$defs/perspective" },
+        "machine": { "$ref": "#/$defs/perspective" }
+      },
+      "additionalProperties": true
+    },
+    "lesson": { "type": "string" },
+    "howToUse": { "type": "string" },
+    "interactions": {
+      "type": "object",
+      "properties": {
+        "love": { "type": "integer", "minimum": 0 },
+        "rating": { "type": "number", "minimum": 0, "maximum": 5 },
+        "comments": { "type": "integer", "minimum": 0 },
+        "saved": { "type": "boolean" },
+        "shared": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
+    }
+  },
+  "$defs": {
+    "perspective": {
+      "type": "object",
+      "properties": {
+        "author": { "type": "string" },
+        "text": { "type": "string" }
+      },
+      "required": ["text"],
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,22 @@
+{
+  "name": "nayanet-intelligent-hub",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "python3 ../../scripts/build-smart-feed-projection.py && node -e \"require('fs').mkdirSync('public',{recursive:true});require('fs').copyFileSync('../../scripts/nayanet-cognitive-engine.js','public/nayanet-cognitive-engine.js')\" && vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "latest",
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "typescript": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest"
+  }
+}

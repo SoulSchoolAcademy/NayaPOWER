@@ -1,0 +1,74 @@
+/* NayaNET FRONT DOOR — ULTIMATE LIVING ORB
+   The pearl is contrast only. All meaning lives inside the obsidian console.
+   One console. One identity. One living perimeter.
+*/
+#frontDoor.north-star-front-door{
+  position:relative!important;isolation:isolate!important;overflow:hidden!important;
+  background:radial-gradient(circle at 50% 46%,#8f43ff 0%,#6419c8 35%,#3a087c 63%,#120225 100%)!important;
+}
+#frontDoor.north-star-front-door:before{content:""!important;position:absolute!important;inset:-20%!important;z-index:-2!important;pointer-events:none!important;background:radial-gradient(circle at 50% 48%,rgba(255,255,255,.18),transparent 35%),radial-gradient(circle at 50% 70%,rgba(79,12,190,.5),transparent 62%)!important;filter:blur(35px)!important}
+#frontDoor.north-star-front-door:after{content:""!important;position:absolute!important;inset:0!important;z-index:-1!important;pointer-events:none!important;background:radial-gradient(circle,transparent 38%,rgba(0,0,0,.62) 100%)!important}
+#frontDoor.north-star-front-door .threshold-stage{position:relative!important;width:100%!important;min-height:100svh!important;display:grid!important;place-items:center!important;perspective:2400px!important}
+
+/* THE PEARL — deliberately empty: pure contrast and dimensional light. */
+#frontDoor.north-star-front-door .threshold-chamber{
+  position:relative!important;width:min(820px,82svh,86vw)!important;aspect-ratio:1!important;margin:0!important;border-radius:50%!important;overflow:visible!important;transform:translateZ(80px)!important;transform-style:preserve-3d!important;isolation:isolate!important;
+  background:radial-gradient(circle at 34% 20%,#fff 0%,#fff 28%,#f5f2f8 55%,#e2dce7 78%,#c8c0d0 100%)!important;
+  border:1px solid rgba(255,255,255,.98)!important;
+  box-shadow:0 0 0 2px rgba(255,255,255,.9),0 0 0 6px rgba(160,103,255,.38),0 0 35px rgba(255,255,255,.75),0 0 100px rgba(139,76,255,.78),0 55px 100px rgba(0,0,0,.55),0 125px 170px rgba(0,0,0,.7),inset 0 10px 22px rgba(255,255,255,.98),inset 0 -90px 120px rgba(65,42,82,.18)!important;
+}
+/* Living edge light: the actual pearl perimeter is illuminated. */
+#frontDoor.north-star-front-door .threshold-chamber > :not(.identity-portal){position:relative}
+#frontDoor.north-star-front-door .threshold-chamber:before{
+  content:""!important;position:absolute!important;inset:-8px!important;border-radius:50%!important;z-index:-1!important;pointer-events:none!important;
+  background:conic-gradient(from -90deg,rgba(255,255,255,.95),rgba(139,76,255,.95) 18%,rgba(255,255,255,.8) 34%,rgba(99,217,157,.72) 51%,rgba(139,76,255,.95) 69%,rgba(255,255,255,.95) 86%,rgba(139,76,255,.95))!important;filter:blur(6px)!important;animation:nnOrbEdge 5s linear infinite!important;opacity:.96!important;
+}
+/* Orbiting living point: 12 → 11 → 10 ... → 1 → 12 forever. */
+#frontDoor.north-star-front-door .threshold-chamber:after{
+  content:""!important;position:absolute!important;left:50%!important;top:50%!important;width:18px!important;height:18px!important;margin:-9px!important;border-radius:50%!important;z-index:300!important;pointer-events:none!important;
+  background:#fff!important;border:2px solid rgba(255,255,255,.98)!important;box-shadow:0 0 10px #fff,0 0 22px rgba(167,122,255,.98),0 0 44px rgba(99,217,157,.68)!important;
+  transform-origin:9px 9px!important;animation:nnOrbitalBall 12s linear infinite!important;
+}
+@keyframes nnOrbitalBall{from{transform:rotate(0deg) translateX(min(410px,41svh,43vw)) rotate(0deg)}to{transform:rotate(360deg) translateX(min(410px,41svh,43vw)) rotate(-360deg)}}
+@keyframes nnOrbEdge{to{transform:rotate(360deg)}}
+
+/* Everything in the pearl is empty except the single black console. */
+#frontDoor.north-star-front-door .threshold-naya-aura,#frontDoor.north-star-front-door .threshold-naya-ring,#frontDoor.north-star-front-door .threshold-naya-core,#frontDoor.north-star-front-door .threshold-copy,#frontDoor.north-star-front-door .threshold-subline{display:none!important}
+
+/* THE BLACK CONSOLE — deliberately fills the pearl vertically. */
+#frontDoor.north-star-front-door .identity-portal{
+  position:absolute!important;left:50%!important;top:50%!important;width:min(560px,68%)!important;height:88%!important;min-height:560px!important;max-height:720px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;transform:translate(-50%,-50%) translateZ(220px)!important;transform-style:preserve-3d!important;z-index:200!important;pointer-events:auto!important;display:block!important;overflow:hidden!important;
+  border:2px solid rgba(167,122,255,.9)!important;border-radius:28px!important;background:linear-gradient(160deg,#17171d 0%,#050507 28%,#000 100%)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -45px 70px rgba(0,0,0,.95),0 0 0 1px rgba(255,255,255,.08),0 12px 0 rgba(0,0,0,.98),0 30px 0 rgba(0,0,0,.76),0 80px 100px rgba(0,0,0,.78),0 0 55px rgba(139,76,255,.35)!important;
+}
+#frontDoor.north-star-front-door .identity-portal:before{content:""!important;position:absolute!important;inset:0!important;border-radius:26px!important;pointer-events:none!important;background:linear-gradient(180deg,rgba(255,255,255,.07),transparent 18%,transparent 80%,rgba(139,76,255,.05))!important}
+
+/* Console contains every word, logo, identity control, welcome, and Naya. */
+#frontDoor.north-star-front-door .console-content{position:absolute!important;inset:0!important;display:flex!important;flex-direction:column!important;align-items:center!important;text-align:center!important;padding:38px 42px 34px!important;box-sizing:border-box!important;transform:none!important;overflow:hidden!important}
+#frontDoor.north-star-front-door .console-kicker{display:block!important;width:100%!important;margin:0 0 18px!important;color:rgba(255,255,255,.7)!important;font-size:10px!important;line-height:1.4!important;font-weight:600!important;letter-spacing:.12em!important;text-transform:none!important}
+#frontDoor.north-star-front-door .console-logo{position:relative!important;width:220px!important;height:78px!important;flex:0 0 78px!important;margin:0 0 26px!important;display:grid!important;place-items:center!important;transform:none!important;z-index:5!important}
+#frontDoor.north-star-front-door .console-logo img{width:100%!important;height:100%!important;object-fit:contain!important;display:block!important;border:0!important;border-radius:0!important;background:transparent!important;filter:drop-shadow(0 9px 22px rgba(0,0,0,.8))!important}
+
+#frontDoor.north-star-front-door .portal-input{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:74px!important;flex:0 0 74px!important;margin:0!important;padding:0!important;box-sizing:border-box!important;border-radius:17px!important;background:#030305!important;border:2px solid #63d99d!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.1),inset 0 -25px 35px rgba(0,0,0,.92),0 5px 0 #000,0 14px 28px rgba(0,0,0,.65),0 0 24px rgba(99,217,157,.12)!important;transform:none!important;transition:border-color .2s ease,box-shadow .2s ease!important}
+#frontDoor.north-star-front-door .portal-input:focus-within{border-color:#a77aff!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -25px 35px rgba(0,0,0,.92),0 5px 0 #000,0 14px 28px rgba(0,0,0,.65),0 0 0 1px rgba(167,122,255,.5),0 0 32px rgba(139,76,255,.3)!important}
+#frontDoor.north-star-front-door .portal-prefix{display:none!important}
+#frontDoor.north-star-front-door .portal-input input{display:block!important;width:100%!important;height:100%!important;margin:0!important;padding:0 24px!important;box-sizing:border-box!important;border:0!important;outline:0!important;border-radius:15px!important;background:transparent!important;color:#fff!important;caret-color:#a77aff!important;font-size:19px!important;font-weight:550!important;line-height:74px!important;letter-spacing:.01em!important;text-align:left!important;transform:none!important}
+#frontDoor.north-star-front-door .portal-input input::placeholder{color:#fff!important;opacity:.92!important}
+#frontDoor.north-star-front-door .portal-input input:focus{transform:none!important}
+
+#frontDoor.north-star-front-door .console-enter{position:relative!important;left:auto!important;top:auto!important;width:100%!important;height:68px!important;flex:0 0 68px!important;margin:22px 0 0!important;padding:0 25px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:16px!important;box-sizing:border-box!important;transform:none!important;z-index:20!important;border:2px solid #63d99d!important;border-radius:17px!important;background:#030305!important;color:#fff!important;font-size:11px!important;font-weight:850!important;letter-spacing:.21em!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.1),inset 0 -18px 25px rgba(0,0,0,.9),0 5px 0 #000,0 14px 28px rgba(0,0,0,.62),0 0 24px rgba(99,217,157,.12)!important;cursor:pointer!important;opacity:1!important;visibility:visible!important;transition:transform .14s ease,background .14s ease,border-color .14s ease,box-shadow .14s ease!important}
+#frontDoor.north-star-front-door .console-enter:disabled{background:#030305!important;color:#fff!important;border-color:rgba(99,217,157,.8)!important;opacity:1!important;filter:none!important;cursor:not-allowed!important}
+#frontDoor.north-star-front-door .console-enter:not(:disabled):hover,#frontDoor.north-star-front-door .console-enter:not(:disabled):focus-visible{transform:translateY(-3px)!important;background:#07070b!important;border-color:#a77aff!important;outline:none!important;box-shadow:inset 0 2px 0 rgba(255,255,255,.12),inset 0 -18px 25px rgba(0,0,0,.9),0 8px 0 #000,0 19px 32px rgba(0,0,0,.68),0 0 34px rgba(139,76,255,.32)!important}
+#frontDoor.north-star-front-door .console-enter:not(:disabled):active,#frontDoor.north-star-front-door .console-enter[data-state="active"]{transform:translateY(4px)!important;background:#63d99d!important;color:#04140c!important;border-color:#eafff3!important;box-shadow:inset 0 4px 14px rgba(0,0,0,.25),0 2px 0 #eafff3,0 8px 0 rgba(38,96,68,.6),0 20px 28px rgba(0,0,0,.55),0 0 55px rgba(99,217,157,.45)!important}
+#frontDoor.north-star-front-door .console-enter span:last-child{font-size:17px!important;letter-spacing:0!important}
+
+#frontDoor.north-star-front-door .console-welcome{display:flex!important;flex-direction:column!important;align-items:center!important;gap:7px!important;width:100%!important;margin:25px 0 0!important;padding:0!important;color:rgba(255,255,255,.72)!important;font-size:11px!important;line-height:1.35!important;letter-spacing:.07em!important}
+#frontDoor.north-star-front-door .console-welcome strong{color:#fff!important;font-size:19px!important;font-weight:650!important;letter-spacing:-.015em!important}
+#frontDoor.north-star-front-door .console-welcome span{color:rgba(255,255,255,.7)!important;font-weight:500!important}
+
+/* Naya introduction lives in the same black console. */
+#frontDoor.north-star-front-door .console-content:after{content:""!important;display:block!important;flex:1 1 auto!important;min-height:0!important;margin-top:20px!important;width:100%!important;border-top:1px solid rgba(167,122,255,.24)!important;background:radial-gradient(circle at 50% 100%,rgba(139,76,255,.16),transparent 60%)!important}
+#frontDoor.north-star-front-door .console-welcome:after{content:"Meet Naya  •  NAYA"!important;display:block!important;margin-top:15px!important;color:#fff!important;font-size:12px!important;font-weight:700!important;letter-spacing:.16em!important}
+
+@media(max-width:720px){#frontDoor.north-star-front-door .threshold-chamber{width:min(94vw,94svh)!important}#frontDoor.north-star-front-door .identity-portal{width:78%!important;height:88%!important;min-height:0!important;max-height:none!important;border-radius:22px!important}#frontDoor.north-star-front-door .console-content{padding:26px 22px!important}#frontDoor.north-star-front-door .console-logo{width:175px!important;height:62px!important;flex-basis:62px!important;margin-bottom:18px!important}#frontDoor.north-star-front-door .console-kicker{font-size:8px!important;margin-bottom:12px!important}#frontDoor.north-star-front-door .portal-input{height:62px!important;flex-basis:62px!important}#frontDoor.north-star-front-door .portal-input input{line-height:62px!important;font-size:16px!important}#frontDoor.north-star-front-door .console-enter{height:60px!important;flex-basis:60px!important;margin-top:15px!important}#frontDoor.north-star-front-door .console-welcome{margin-top:17px!important}#frontDoor.north-star-front-door .console-welcome strong{font-size:15px!important}}
+@media(prefers-reduced-motion:reduce){#frontDoor.north-star-front-door .threshold-chamber:before,#frontDoor.north-star-front-door .threshold-chamber:after{animation:none!important}}

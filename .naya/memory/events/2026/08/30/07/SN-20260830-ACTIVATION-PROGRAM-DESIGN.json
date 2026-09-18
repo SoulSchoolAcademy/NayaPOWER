@@ -1,0 +1,72 @@
+{
+  "$schema": "naya/note-event/v3",
+  "event_id": "SN-20260830-ACTIVATION-PROGRAM-DESIGN",
+  "created_at": "2026-08-30T07:00:00-07:00",
+  "effective_at": "2026-08-30T07:00:00-07:00",
+  "type": "master_lesson",
+  "subject": "Activation must be a guided, incremental customer experience",
+  "project": "NayaPOWER",
+  "tags": ["activation", "customer-experience", "continuation-prompt", "Smart-Notes", "PIS", "Running-Feed", "sales", "onboarding", "Naya"],
+  "naya": {
+    "understanding": "Customer activation should not be a document dump. Naya should lead the customer through the activation package one capability at a time, explain what each activation changed, explain the user benefit, verify what can actually be verified, and immediately provide the next continuation prompt.",
+    "lesson": "The activation system must teach while it activates. Every activation document should address the human, AI/Naya, and machine/runtime interpretation as appropriate, while preserving authority boundaries and avoiding unsupported capability claims.",
+    "next_action": "Design the final activation package and its guided continuation flow, then build the sales experience around the same customer journey.",
+    "continuation_rule": "Every substantive Naya output should provide the next action prompt by default. After each activation document, Naya should report what was activated, why it matters, what the customer can now do, what was actually verified, and the exact prompt for the next document."
+  },
+  "human": {
+    "meaning": "Shawn wants customers to upload activation documents incrementally, preferably one at a time, with Naya teaching the customer through each step. The customer may upload multiple documents where the platform permits it, but Naya should recommend one-by-one activation because the system is advanced and comprehension matters.",
+    "decision": "Build the activation program as an intentional guided journey rather than a bulk document dump. Activation and sales are now the primary commercial build during the deliberate GitHub Actions pause.",
+    "customer_experience": [
+      "Customer is first welcomed and interviewed about who they are, their interests, vision, goals, mission, and desired outcomes.",
+      "Naya explains her role as a truthful, proactive AI operating partner and sets expectations for human authority and evidence-aware guidance.",
+      "Customer uploads the next activation document.",
+      "Naya explains what that document activated, the benefit to the customer, what is available now, and what is verified versus not yet verified.",
+      "Naya provides the copy-paste continuation prompt and directs the customer to the next document.",
+      "Naya explains Smart Notes, including the human-facing, Naya-facing, and machine-facing representations derived from canonical intelligence.",
+      "Meaningful Smart Notes should provide evidence/receipts where the system can legitimately produce them, including direct repository references when applicable.",
+      "Daily intelligence should synthesize what happened, lessons, wins, problems, changes, what matters now, and what to do next.",
+      "The customer journey should culminate in a clear first win and an ongoing compounding relationship with Naya."
+    ]
+  },
+  "machine": {
+    "classification": "customer_activation_and_continuation",
+    "status": "DESIGN_LOCKED",
+    "confidence": "HIGH",
+    "rules": [
+      "activation is incremental and guided by default",
+      "activation documents are authoritative only within their defined scope",
+      "uploaded customer material does not become authoritative merely because it was uploaded",
+      "implemented, tested, verified, runtime-proven, and production-proven remain distinct",
+      "continuation prompts are part of the activation contract",
+      "Smart Notes and Naya Notes derive from canonical intelligence rather than competing memory stores",
+      "Running Feed is the chronological orientation projection, not a competing intelligence authority",
+      "PIS remains the primary internal intelligence/synthesis layer",
+      "evidence must be shown when legitimately available",
+      "human owns the destination; Naya helps navigate reality"
+    ],
+    "canonical_dependencies": [
+      ".naya/COLD-START-RUNTIME-BRIEFING-GATE.md",
+      ".naya/NAYA-ACTION-DELIVERY-LAW.md",
+      ".naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md",
+      ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
+      "MASTER-NOTES/PRIMARY-INTELLIGENCE-HUB.md"
+    ]
+  },
+  "provenance": {
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "source": "Shawn's 2026-08-30 activation-design directive followed by canonical repository restore",
+    "observed_head": "2120d6629f0cfffe1159951f7c9f5b28540b9fe5",
+    "triggering_observation": "The activation package must be both technically airtight and easy for a customer to absorb. Naya should walk the customer through each document, explain its value, and always provide the next action prompt so the customer never has to invent the continuation."
+  },
+  "relationships": {
+    "supports": ["NayaPOWER customer activation", "Naya Action Delivery Law", "Naya Execution Continuity & Learning Law", "Primary Intelligence Hub", "Collective Running Feed", "commercial activation path"],
+    "supersedes": [],
+    "related_paths": [".naya/handoffs/NEXT-EXECUTION-20260830-ACTIVATION-AND-SALES.md", "MASTER-NOTES/PRIMARY-INTELLIGENCE-HUB.md"]
+  },
+  "verification": {
+    "status": "CAPTURED_FROM_HUMAN_DIRECTIVE",
+    "receipt": "Durable canonical Note Event created from the current activation-design decision. Customer-facing activation runtime is not yet claimed or runtime-proven.",
+    "evidence": ["2120d6629f0cfffe1159951f7c9f5b28540b9fe5"]
+  },
+  "feed_status": "READY_FOR_CANONICAL_FEED_INTEGRATION"
+}

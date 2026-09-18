@@ -1,0 +1,88 @@
+{
+  "schema": "naya-session/v1",
+  "event_type": "session",
+  "session_id": "NAYA-20260917-035241-C251",
+  "status": "COMPLETED",
+  "entered_at": "2026-09-17T03:52:41.834929+00:00",
+  "exited_at": "2026-09-17T03:53:53.832241+00:00",
+  "actor": {
+    "actor_id": "Team Naya execution layer"
+  },
+  "execution": {
+    "claim_id": "CL-P003-P004-SESSION-INDEX",
+    "block_id": "B-P003-P004",
+    "action_id": "ACT-SESSION-RUNTIME-AND-OPERATING-INDEX",
+    "run_id": "RUN-20260917035241"
+  },
+  "project": {
+    "project_id": "NayaPOWER",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "branch": "naya/universal-execution-gate-v1",
+    "head_before": "bd56c084386d7b3056595d217094f237968d602b",
+    "head_after": "bd56c084386d7b3056595d217094f237968d602b"
+  },
+  "restored_context": "Cold-Naya scorecarding directive: build the single front-door operating index, not another authority/dashboard/doctrine; classify what is real vs expected; keep gate honest (RED until classified).",
+  "preflight": {
+    "what": {
+      "value": "governed repository execution",
+      "classification": "VERIFIED"
+    },
+    "why": {
+      "value": "authorized governed maintenance",
+      "classification": "VERIFIED"
+    },
+    "where": {
+      "value": "repository working tree",
+      "classification": "VERIFIED"
+    },
+    "authority": {
+      "value": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+      "classification": "VERIFIED"
+    },
+    "protected": {
+      "value": "fail-closed semantics and canonical stores",
+      "classification": "VERIFIED"
+    },
+    "current_state": {
+      "value": "current truth inspected",
+      "classification": "VERIFIED"
+    },
+    "current_gap": {
+      "value": "complete the governed work",
+      "classification": "VERIFIED"
+    },
+    "next_action": {
+      "value": "execute and record the governed work",
+      "classification": "VERIFIED"
+    },
+    "proof": {
+      "value": "governed test suite GREEN",
+      "classification": "VERIFIED"
+    },
+    "handoff": {
+      "value": "record canonical Activity event + successor torch",
+      "classification": "VERIFIED"
+    }
+  },
+  "preflight_verdict": "APPROVED",
+  "actions": [
+    {
+      "activity_event_id": "SE-20260917-035241-activity-cl-p003-p004-session-index-act-session-r-44006b",
+      "action_id": "ACT-SESSION-RUNTIME-AND-OPERATING-INDEX",
+      "recorded_at": "2026-09-17T03:52:41.958520+00:00"
+    }
+  ],
+  "evidence": [
+    "record attempt for CL-P003-P004 crashed before close (script KeyError reading bind result); opened + approved preflight + canonical Activity event + bind all recorded",
+    "superseded by COMPLETED run RUN-20260917035249 / session NAYA-20260917-035249-0FE4 (same claim; session_integrity PASS)"
+  ],
+  "results": [],
+  "handoff": {
+    "next_action": "CLASSIFICATION PASS: classify all 61 open issues, remaining workflows, and authority boundaries A1/A2 to turn the GitHub optimization gate GREEN, then bind Smart Notes to Sessions/Activities (contract priority #3).",
+    "successor": "NEXT-EXECUTION-20260917-P004-CLASSIFICATION-GATE-GREEN.md"
+  },
+  "next_action": "CLASSIFICATION PASS: classify all 61 open issues, remaining workflows, and authority boundaries A1/A2 to turn the GitHub optimization gate GREEN, then bind Smart Notes to Sessions/Activities (contract priority #3).",
+  "successor": "NEXT-EXECUTION-20260917-P004-CLASSIFICATION-GATE-GREEN.md",
+  "created_at": "2026-09-17T03:52:41.834929+00:00",
+  "updated_at": "2026-09-17T03:53:53.832402+00:00"
+}

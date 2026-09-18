@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/smart-ledger-event-v1",
+  "title": "NayaNET Smart Ledger Event V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ledger_event_id", "schema_version", "event_type", "event_at", "created_at", "status"],
+  "properties": {
+    "ledger_event_id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0"},
+    "event_type": {"type": "string", "minLength": 1},
+    "event_at": {"type": "string", "format": "date-time"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "actor_ref": {"type": ["string", "null"]},
+    "object_ref": {"type": ["string", "null"]},
+    "parent_event_id": {"type": ["string", "null"]},
+    "evidence_ref": {"type": ["string", "null"]},
+    "verification_receipt_ref": {"type": ["string", "null"]},
+    "integrity_hash": {"type": ["string", "null"]},
+    "previous_integrity_hash": {"type": ["string", "null"]},
+    "privacy_class": {"type": "string", "enum": ["private", "protected", "collective", "public"]},
+    "status": {"type": "string", "enum": ["recorded", "evidence_available", "verified", "valued", "applied", "outcome_verified", "rejected", "superseded"]},
+    "supersedes_event_id": {"type": ["string", "null"]}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/verification-receipt-v1",
+  "title": "NayaNET Verification Receipt V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["receipt_id", "schema_version", "event_id", "verification_state", "verified_at", "method"],
+  "properties": {
+    "receipt_id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "1.0"},
+    "event_id": {"type": "string", "minLength": 1},
+    "verification_state": {"type": "string", "enum": ["recorded", "evidence_available", "verified", "rejected"]},
+    "verified_at": {"type": "string", "format": "date-time"},
+    "method": {"type": "string", "minLength": 1},
+    "evidence_ref": {"type": ["string", "null"]},
+    "verifier_ref": {"type": ["string", "null"]},
+    "reason": {"type": ["string", "null"]}
+  }
+}

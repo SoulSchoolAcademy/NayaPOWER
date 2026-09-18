@@ -1,0 +1,38 @@
+{
+  "id": "TEST-INTELLIGENT-BLOCK-001",
+  "createdAt": "2026-09-07T00:00:00Z",
+  "source": {
+    "type": "github-test-fixture",
+    "repository": "SoulSchoolAcademy/NayaPOWER"
+  },
+  "scope": "personal",
+  "subject": "Sender → Receiver → Intelligent Block proof",
+  "nutshell": "A great AI engine becomes far more useful when its intelligence is captured, organized, understood, and presented as one coherent event.",
+  "perspectives": {
+    "human": {
+      "author": "Shawn",
+      "text": "The goal is not merely to generate intelligence. The goal is to turn intelligence into something a person can immediately understand, revisit, use, and compound."
+    },
+    "child": {
+      "text": "Take one smart thing, explain it clearly, and make it easy to remember and use."
+    },
+    "grandma": {
+      "text": "Good wisdom should not disappear after the conversation ends. Give it a home, make it understandable, and let it become more valuable with time."
+    },
+    "naya": {
+      "text": "The highest-value unit is not the chat turn; it is the durable intelligence event created from the turn. One event can preserve the human experience, simplify it, interpret it, structure it for machines, extract the lesson, and show how to apply it."
+    },
+    "machine": {
+      "text": "Canonical event; immutable id; normalized perspectives; explicit scope; idempotent ingestion; renderer consumes normalized state; interaction metadata remains separate from intelligence content."
+    }
+  },
+  "lesson": "AI becomes more valuable when useful intelligence survives the moment that generated it and can be found, understood, reused, and compounded later.",
+  "howToUse": "Capture important intelligence as one event, preserve its perspectives, present the conclusion first, and keep the underlying event structured so future systems can search, score, share, and build on it.",
+  "interactions": {
+    "love": 0,
+    "rating": 0,
+    "comments": 0,
+    "saved": false,
+    "shared": 0
+  }
+}
