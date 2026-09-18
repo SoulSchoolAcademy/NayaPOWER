@@ -1,6 +1,7 @@
 name: Verify NayaNET Name-First Lifecycle
 
 on:
+  # Live continuation after verified Cloudflare deployment.
   push:
     branches: [main]
     paths:
