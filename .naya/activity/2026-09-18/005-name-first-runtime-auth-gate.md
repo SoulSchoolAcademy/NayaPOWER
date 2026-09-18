@@ -3,7 +3,7 @@
 Date: 2026-09-18
 Active block: TORCH-59-MACHINE-TRUTH-RESTORATION
 Canonical branch: main
-Observed HEAD at record time: 6e91e27d22b55b593c05b5627b9d771cba0148eb
+Observed HEAD at record time: 315b8869aa98836580748cc4e8abe12916a890fc
 
 ## Mission
 Complete the real NayaNET human lifecycle without creating another identity, authentication, persistence, cognition, Activity, or routing system.
@@ -22,6 +22,11 @@ Complete the real NayaNET human lifecycle without creating another identity, aut
 11. Queried production schema constraints: `members.id` is the Auth UUID foreign key/primary key; `nayanet_profiles.member_id` is the Auth UUID foreign key/primary key; `nayanet_profiles.smart_id` is unique.
 12. Queried existing triggers and confirmed `nayanet_notes` already feeds the existing intelligence index through `nayanet_index_intelligence_row`; no parallel persistence path was created.
 13. Verified the current Supabase project is ACTIVE_HEALTHY.
+14. Verified the public `welcome.nayanet.app` surface resolves to `shiny-wave-dd48.nayanet.workers.dev` and is visually the repository's Welcome surface, while its deployment source is not exposed by the canonical NayaPOWER repository.
+15. Verified the canonical Hub runtime is `https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/` and that the latest Vercel project deployment is the React Hub build, not the public Welcome surface.
+16. Changed the repository Welcome source so its existing name entry and Auto-Login hand off to the canonical Cloudflare Hub identity route rather than creating a local identity boundary.
+17. Changed `identity.html` so successful establishment enters the canonical Cloudflare Intelligent Hub origin rather than looping back through the Welcome origin.
+18. Changed the single adapter to surface the exact production configuration blocker as `ANONYMOUS_AUTH_DISABLED`.
 
 ## Runtime evidence
 The real Auth endpoint invocation returned:
@@ -47,7 +52,7 @@ The name-first application boundary is now aligned to the existing Supabase Auth
 No email address was fabricated. No email/password fallback was used. No second identity or persistence system was introduced.
 
 ## Production routing truth still unresolved
-The public `welcome.nayanet.app` domain currently resolves to a Cloudflare Worker surface that is not demonstrably the same deployed artifact as the canonical repository Welcome source. The repository's `WelcometoNayaNET.html` routes to `identity.html`, while the exact live Worker source/deployment mapping remains unverified. The canonical Hub production runtime remains the authorized Cloudflare Intelligent Hub release path.
+The public `welcome.nayanet.app` domain currently resolves to a Cloudflare Worker surface that is not demonstrably the same deployed artifact as the canonical repository Welcome source. The live Welcome Worker is confirmed as the public front door, but its deployment source is not exposed by NayaPOWER. The repository source is now prepared to hand the human directly into the canonical Cloudflare Hub identity route; production deployment of that Welcome source remains outside the verified NayaPOWER deployment path. The canonical Hub production runtime remains the authorized Cloudflare Intelligent Hub release path.
 
 ## Protected state
 - Canonical Hub visual surface remains protected.
@@ -57,8 +62,10 @@ The public `welcome.nayanet.app` domain currently resolves to a Cloudflare Worke
 - No synthetic email identity.
 - No duplicate persistence, Activity, cognition, or baton system.
 
-## Current blocker
-`SUPABASE_ANONYMOUS_AUTH = BLOCKED: anonymous_provider_disabled`
+## Current blockers
+1. `SUPABASE_ANONYMOUS_AUTH = BLOCKED: anonymous_provider_disabled` — the actual production Auth endpoint returned HTTP 422.
+2. The public Welcome Worker deployment source/control plane is not connected to NayaPOWER's verified GitHub deployment path, so repository changes to `WelcometoNayaNET.html` are not yet proven live at `welcome.nayanet.app`.
+3. Because Anonymous Auth is disabled, no real Auth UUID/member/profile/session/cognition lifecycle can be honestly executed yet.
 
 ## Next executable action
 1. Enable Supabase Auth > Anonymous sign-ins for project `dahisasgpfvziswqvmvm` using the authorized project-admin surface.
