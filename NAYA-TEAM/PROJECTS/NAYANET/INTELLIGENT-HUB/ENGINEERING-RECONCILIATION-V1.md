@@ -98,3 +98,68 @@ A cold Naya can now determine the current Hub, protected artifact, reference imp
 
 ### Next
 **IH-02 — convert the protected visual contract into verified real UI behavior, using a new versioned candidate and leaving the protected freeze point untouched.**
+
+
+## IH-02 EXECUTION RECEIPT — 2026-09-18
+
+**RESULT: IMPLEMENTATION RECONCILED / VERSIONED CANDIDATE CREATED**
+
+### Visual / experience contract reconciliation
+
+The protected Hub already contains substantial proven visual DNA: obsidian foundation, atmospheric illumination, strong typography, dimensional controls, semantic color, Smart Note/intelligence layers, Naya presence, search, feed lenses, responsive behavior, and progressive intelligence presentation.
+
+The React lane contains the stronger typed/application structure: route ownership, identity context, PIS retrieval, typed `IntelligentEvent`, and the canonical `SmartFeedBoard`. It also exposes the critical truth boundary: several user actions currently persist only to browser `localStorage`, and Ask Naya / Related Intelligence / Smart Space are not yet verified as production-backed capabilities.
+
+Therefore IH-02 does **not** promote the React lane and does **not** edit the protected freeze. The first candidate preserves the protected visual/experience baseline and makes the interaction truth explicit.
+
+### Versioned candidate
+
+**Candidate:** `2026 09 17 NAYANET HUB V2.html`
+
+The candidate is derived from the protected freeze point and adds an explicit **IH-02 INTERACTION TRUTH** surface. It is a candidate only; it is not the current freeze and is not production-proven.
+
+### Interaction classification
+
+| Required interaction | Classification | Truth boundary |
+|---|---|---|
+| Navigation / route switching | REAL | Candidate navigation is operational, but destination completeness is not yet proven. |
+| Search intelligence | REAL | Searches currently loaded candidate intelligence only. |
+| Feed lens switching | REAL | Lens state changes; canonical backend projection is not yet proven. |
+| Open Intelligent Block | REAL | Opens the established intelligent-board presentation. |
+| Favorite | PARTIAL | Browser-local persistence; no canonical write proof. |
+| Save | PARTIAL | Browser-local persistence; no canonical write proof. |
+| Like / Love | PARTIAL | Browser-local state; no canonical event/write proof. |
+| Rate / Rank | PARTIAL | Browser-local state; no verified ledger/curation write. |
+| Comment | PARTIAL | Browser-local state; no verified canonical communication write. |
+| Share | PARTIAL | Native/clipboard share exists; governed Smart Share lifecycle is not proven. |
+| Ask Naya | DEMO | Deterministic contextual answers; not a verified production Naya service. |
+| Related Intelligence | DEMO | Static related references; canonical graph resolution not proven. |
+| Create Smart Space | DEMO | Local draft behavior; canonical Space lifecycle not proven. |
+| Apply / Use | PARTIAL | Data-driven guidance exists; governed action execution is not connected. |
+| Trust / provenance / privacy | REAL | Existing fields are surfaced without fabricating missing evidence. |
+| Responsive desktop/mobile | REAL | Responsive behavior is implemented and preserved. |
+| Keyboard/focus/accessibility | PARTIAL | Accessibility hooks exist; complete audit remains outstanding. |
+| Authoritative persistence | PARTIAL | Persistence boundary is explicit but not yet canonical for Hub actions. |
+| Activity receipt from Hub action | MISSING | No proven automatic canonical Activity event for every substantive UI action. |
+| Authenticated identity lifecycle | PARTIAL | Present in React reference; not established by this standalone candidate. |
+| Production runtime equivalence | MISSING | Candidate requires build/deploy/independent runtime verification. |
+
+### Engineering consequence
+
+The candidate is now the **visual/experience comparison surface** for IH-03+. It must not be treated as current Hub authority until independently verified and explicitly accepted.
+
+The highest-value remaining mismatch is no longer visual ambiguity. It is **canonical intelligence identity and persistence**: one real event must survive event → PIS → Hub → interaction without becoming a local-only copy.
+
+### IH-02 acceptance
+
+- Protected freeze untouched.
+- New versioned candidate created.
+- Visual DNA preserved rather than replaced.
+- React implementation inspected as the engineering reference.
+- Every required interaction has a truthful REAL / PARTIAL / DEMO / MISSING classification.
+- No second renderer, event store, memory system, queue, or authority system created.
+- Candidate explicitly remains non-canonical until acceptance.
+
+### NEXT ACTION
+
+**IH-03 — prove one canonical intelligence identity end-to-end: canonical event → PIS → IntelligentEvent → Intelligent Block → feed, preserving stable event ID, timestamp, provenance, privacy and verification state.**
