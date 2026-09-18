@@ -1,0 +1,275 @@
+name: Assistant Cloudflare Authenticated Lifecycle Proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/assistant-cloudflare-authenticated-proof.yml'
+      - 'assistant-runtime.js'
+      - '2026 09 17 NAYANET HUB.html'
+      - '.naya/control-plane/PROOF.json'
+      - '.naya/control-plane/STATE.json'
+      - '.naya/control-plane/BLOCKS.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authenticated-lifecycle:
+    name: Authenticated Assistant lifecycle + independent cold-Naya proof
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
+      ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Assert protected test identity is present
+        shell: bash
+        run: |
+          test -n "${ASSISTANT_TEST_EMAIL}" || { echo "ASSISTANT_TEST_EMAIL is not configured in assistant-cloudflare-production"; exit 1; }
+          test -n "${ASSISTANT_TEST_PASSWORD}" || { echo "ASSISTANT_TEST_PASSWORD is not configured in assistant-cloudflare-production"; exit 1; }
+          echo "PROTECTED_TEST_IDENTITY=AVAILABLE"
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute real authenticated lifecycle
+        shell: bash
+        run: |
+          cat > /tmp/assistant-lifecycle.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+
+          const runtimeUrl = process.env.RUNTIME_URL;
+          const email = process.env.ASSISTANT_TEST_EMAIL;
+          const password = process.env.ASSISTANT_TEST_PASSWORD;
+          if (!runtimeUrl || !email || !password) throw new Error('PROTECTED_IDENTITY_OR_RUNTIME_MISSING');
+
+          const runId = process.env.GITHUB_RUN_ID;
+          const eventId = 'assistant-proof-' + runId + '-' + crypto.randomBytes(6).toString('hex');
+          const title = 'Assistant authenticated lifecycle proof ' + runId;
+          const lesson = 'A verified persisted intelligence object must remain retrievable from a fresh context without the originating conversation.';
+          const actionText = 'Retrieve the persisted intelligence and render it through the authenticated Personal Intelligence runtime.';
+          const target = 'sparkling-shape-7ae5';
+          const intent = 'prove durable cognition continuity across independent authenticated contexts';
+
+          async function boot(context) {
+            const page = await context.newPage();
+            await page.goto(runtimeUrl, {waitUntil:'networkidle', timeout:60000});
+            await page.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+            return page;
+          }
+
+          const browser = await chromium.launch({headless:true});
+
+          // Context A: authenticated source transaction.
+          const contextA = await browser.newContext();
+          const pageA = await boot(contextA);
+          const authA = await pageA.evaluate(async ({email,password}) => {
+            return await window.NayaAssistantRuntime.signIn(email,password);
+          }, {email,password});
+          if (!authA?.authenticated) throw new Error('AUTHENTICATION_FAILED');
+
+          const recorded = await pageA.evaluate(async ({eventId,title,lesson,actionText,target,intent}) => {
+            return await window.NayaAssistantRuntime.record({
+              event_id: eventId,
+              title,
+              content: lesson,
+              source: 'nayanet-authenticated-assistant-proof',
+              status: 'active',
+              tags: ['assistant-proof','authenticated','continuity'],
+              authority: {status:'AUTHORIZED', actor:'human', scope:'assistant-cloudflare-production'},
+              decision: {status:'AUTHORIZED', claim:'durable cognition continuity proof'},
+              action: {status:'REQUESTED', text:actionText, target, intent},
+              expected_outcome: {status:'REQUESTED', criterion:'same intelligence is retrievable and renderable from a fresh context'},
+              provenance: {runtime:location.origin, deployment:'sparkling-shape-7ae5', source:'assistant-runtime.js'},
+              privacy: {visibility:'private', consent_state:'not_granted'},
+              verification: {state:'PENDING', method:'fresh-context retrieval + lineage comparison'}
+            });
+          }, {eventId,title,lesson,actionText,target,intent});
+
+          const retrievedA = await pageA.evaluate(async (eventId) => {
+            const rows = await window.NayaAssistantRuntime.retrieve(eventId);
+            return rows?.[0] || null;
+          }, eventId);
+          if (!retrievedA) throw new Error('RECORD_NOT_RETRIEVABLE');
+          if (String(retrievedA.event_id) !== eventId) throw new Error('EVENT_ID_MISMATCH');
+
+          // Action + observation at the real deployed runtime boundary:
+          // use the retrieved canonical object to render Personal Intelligence.
+          await pageA.evaluate(async () => {
+            await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
+          });
+          const observedA = await pageA.evaluate((eventId) => {
+            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            return {
+              rendered: !!node,
+              event_id: node?.getAttribute('data-naya-runtime-event') || null,
+              text: node?.innerText || ''
+            };
+          }, eventId);
+          if (!observedA.rendered || observedA.event_id !== eventId) throw new Error('ACTION_OBSERVATION_FAILED');
+
+          // Context B: genuinely independent browser context. No cookies, localStorage,
+          // DOM, page, or JS state is shared with Context A. Authentication is repeated
+          // only to access the same governed private cognition boundary.
+          const contextB = await browser.newContext();
+          const pageB = await boot(contextB);
+          const authB = await pageB.evaluate(async ({email,password}) => {
+            return await window.NayaAssistantRuntime.signIn(email,password);
+          }, {email,password});
+          if (!authB?.authenticated) throw new Error('COLD_CONTEXT_AUTHENTICATION_FAILED');
+
+          const cold = await pageB.evaluate(async (eventId) => {
+            const rows = await window.NayaAssistantRuntime.retrieve(eventId);
+            const event = rows?.find(x => String(x.event_id) === eventId);
+            if (!event) return null;
+            await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
+            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            return {
+              event_id: event.event_id,
+              title: event.title,
+              content: event.content,
+              action: event.action,
+              authority: event.authority,
+              decision: event.decision,
+              privacy: event.privacy,
+              provenance: event.provenance,
+              verification: event.verification,
+              rendered: !!node,
+              rendered_event_id: node?.getAttribute('data-naya-runtime-event') || null,
+              continuation: event.action?.text || null
+            };
+          }, eventId);
+          if (!cold) throw new Error('COLD_NAYA_RETRIEVAL_FAILED');
+          if (cold.event_id !== eventId) throw new Error('COLD_EVENT_ID_MISMATCH');
+          if (cold.content !== lesson) throw new Error('COLD_CONTENT_MISMATCH');
+          if (cold.action?.text !== actionText) throw new Error('COLD_ACTION_MISMATCH');
+          if (!cold.rendered || cold.rendered_event_id !== eventId) throw new Error('COLD_RENDER_PROJECTION_FAILED');
+
+          // Verification is based only on machine-observed equality between the
+          // persisted object and the independent fresh-context retrieval.
+          const verification = {
+            state: 'VERIFIED',
+            method: 'independent-fresh-context-retrieval-and-render-comparison',
+            criteria: {
+              persistent_record_retrieved: true,
+              action_observed: observedA.rendered,
+              independent_retrieval: true,
+              independent_render: cold.rendered,
+              event_identity_preserved: cold.event_id === eventId,
+              content_preserved: cold.content === lesson,
+              action_preserved: cold.action?.text === actionText,
+              privacy_preserved: JSON.stringify(cold.privacy) === JSON.stringify(retrievedA.privacy),
+              provenance_preserved: JSON.stringify(cold.provenance) === JSON.stringify(retrievedA.provenance)
+            }
+          };
+          if (Object.values(verification.criteria).some(v => v !== true)) throw new Error('VERIFICATION_CRITERIA_FAILED');
+
+          const receipt = {
+            schema: 'naya.assistant.authenticated.lifecycle.receipt.v1',
+            status: 'VERIFIED_RUNTIME_LIFECYCLE',
+            claim_type: 'RUNTIME',
+            runtime: {
+              url: runtimeUrl,
+              worker: target,
+              origin: new URL(runtimeUrl).origin
+            },
+            source: {
+              head: process.env.GITHUB_SHA,
+              branch: process.env.GITHUB_REF_NAME
+            },
+            test: {
+              run_id: runId,
+              event_id: eventId,
+              contexts: 2,
+              original_conversation_used: false
+            },
+            record: {
+              status: 'PERSISTED',
+              receipt: recorded?.receipt || recorded?.receipt_id || null,
+              event_id: eventId
+            },
+            retrieve: {
+              status: 'RETRIEVED',
+              event_id: retrievedA.event_id
+            },
+            action: {
+              status: 'EXECUTED',
+              text: actionText,
+              target,
+              intent
+            },
+            observation: {
+              status: 'OBSERVED',
+              rendered_in_authenticated_context: observedA.rendered,
+              rendered_event_id: observedA.event_id
+            },
+            verification,
+            cold_naya: {
+              status: 'VERIFIED',
+              context: 'fresh-browser-context',
+              event_id: cold.event_id,
+              continuation: cold.continuation,
+              rendered: cold.rendered
+            },
+            privacy: cold.privacy,
+            provenance: cold.provenance,
+            note: 'This receipt proves authenticated runtime persistence, retrieval, governed runtime action/render observation, verification, and independent fresh-context continuity. It does not by itself prove real-world external outcome or autonomous learning.'
+          };
+
+          fs.writeFileSync(process.env.RECEIPT_PATH, JSON.stringify(receipt,null,2));
+          console.log('ASSISTANT_AUTHENTICATED_LIFECYCLE=PASS');
+          console.log('RECORD=PASS');
+          console.log('RETRIEVE=PASS');
+          console.log('ACTION=PASS');
+          console.log('OBSERVE=PASS');
+          console.log('VERIFY=PASS');
+          console.log('COLD_NAYA=PASS');
+          console.log('RECEIPT_WRITTEN=' + process.env.RECEIPT_PATH);
+
+          await contextA.close();
+          await contextB.close();
+          await browser.close();
+          EOF
+
+          export RECEIPT_PATH="$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+          node /tmp/assistant-lifecycle.mjs
+
+      - name: Validate receipt is machine-generated and secret-free
+        shell: bash
+        run: |
+          test -s "$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+          ! grep -F -- "$ASSISTANT_TEST_PASSWORD" "$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+          ! grep -F -- "$ASSISTANT_TEST_EMAIL" "$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+          node -e "const r=require(process.argv[1]); for (const k of ['status','runtime','source','test','record','retrieve','action','observation','verification','cold_naya']) if (!(k in r)) throw new Error('receipt missing '+k); if(r.status!=='VERIFIED_RUNTIME_LIFECYCLE') throw new Error('bad receipt status');" "$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+
+      - name: Upload canonical machine receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: assistant-authenticated-lifecycle-receipt
+          path: "$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Print proof promotion boundary
+        run: |
+          echo "PROOF_PROMOTION=RECEIPT_ONLY"
+          echo "No source, UI, or synthetic fixture claim is promoted by this workflow."
+          echo "PROOF.json must consume only the uploaded machine receipt after successful execution."
