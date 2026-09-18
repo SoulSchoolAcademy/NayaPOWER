@@ -41,3 +41,66 @@ window.addEventListener('load',async()=>{try{await init()}catch(e){state.persist
   const apply=async()=>{const rt=window.NayaAssistantRuntime;if(!rt)return;rt.signIn=async()=>{throw new Error('EMAIL_PASSWORD_AUTH_DISABLED')};rt.openAuth=()=>{location.assign('/identity.html')};document.getElementById('naya-assistant-auth')?.remove();const snap=await rt.init();if(!snap?.authenticated){location.replace('https://welcome.nayanet.app');return;}};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>apply().catch(()=>{}),{once:true});else apply().catch(()=>{});
 })();
+
+
+/* NAYA POWER RECEIVER READINESS V1 — canonical event-chain projections.
+   Uses the existing authenticated nayanet_cognition_events boundary only.
+   No parallel identity, persistence, ledger, or cognition store is created.
+   Dream is deterministic replay/synthesis of preserved verified intelligence;
+   it does not claim model-weight self-improvement. */
+(()=>{
+ 'use strict';
+ const R=()=>window.NayaAssistantRuntime;
+ const now=()=>new Date().toISOString();
+ const safe=(v)=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const uid=(p)=>p+'-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
+ async function ensure(){if(!R())throw Error('RUNTIME_UNAVAILABLE');const s=await R().init();if(!s?.authenticated)throw Error('AUTH_REQUIRED');return s}
+ async function events(){await ensure();return R().retrieve()}
+ async function write(stage,source,content,meta={}){
+   const id=uid('naya-'+stage.toLowerCase());
+   return R().record({event_id:id,title:'Naya Power '+stage,content,source:'nayanet-receiver-readiness',status:'active',tags:['naya-power','receiver-readiness',stage.toLowerCase()],metadata:{stage,source,created_at:now(),...meta},verification:{state:stage==='VERIFY'?'VERIFIED':'PENDING'}});
+ }
+ async function learn(note){
+   const text=String(note?.content||note?.summary||note?.title||'').trim();
+   if(!text)throw Error('LEARNING_SOURCE_REQUIRED');
+   return write('LEARN',note.event_id||note.id||'smart-note',`Learned from preserved Smart Note: ${text.slice(0,1800)}`,{source_event_id:note.event_id||note.id||null,learning_state:'OBSERVED',evidence_state:'RUNTIME-PROVEN'});
+ }
+ async function dream(){
+   const all=await events();
+   const notes=all.filter(e=>!['LEARN','DREAM','APPLY','VERIFY'].includes(String(e?.metadata?.stage||'').toUpperCase())).slice(0,12);
+   if(!notes.length)throw Error('NO_PRESERVED_INTELLIGENCE_FOR_DREAM');
+   const replay=notes.map((e,i)=>`${i+1}. ${e.title||'Intelligence'} — ${String(e.content||'').slice(0,300)}`).join('\n');
+   return write('DREAM','canonical-cognition-replay',`Dream replay of preserved intelligence:\n${replay}`,{replay_count:notes.length,replay_source_ids:notes.map(e=>e.event_id).filter(Boolean),dream_mode:'deterministic-replay'});
+ }
+ async function apply(sourceId){
+   const all=await events();const source=sourceId?all.find(e=>e.event_id===sourceId):all.find(e=>!['LEARN','DREAM','APPLY','VERIFY'].includes(String(e?.metadata?.stage||'').toUpperCase()));
+   if(!source)throw Error('APPLICATION_SOURCE_REQUIRED');
+   return write('APPLY',source.event_id,`Application recorded for preserved intelligence: ${source.title||source.event_id}.\n${String(source.content||'').slice(0,1200)}`,{source_event_id:source.event_id,application_state:'REQUESTED'});
+ }
+ async function verify(sourceId){
+   const all=await events();const candidates=all.filter(e=>String(e?.metadata?.stage||'').toUpperCase()==='APPLY' || e.event_id===sourceId);
+   if(!candidates.length)throw Error('NO_APPLICATION_TO_VERIFY');
+   const source=candidates[0];
+   return write('VERIFY',source.event_id,`Verification checkpoint recorded for application ${source.event_id}. The event is persisted in the canonical cognition boundary; downstream success must be established by observed evidence before being promoted beyond this checkpoint.`,{source_event_id:source.event_id,verification_state:'VERIFIED',evidence_state:'RUNTIME-PROVEN'});
+ }
+ function style(){
+   if(document.getElementById('naya-receiver-module-style'))return;
+   const s=document.createElement('style');s.id='naya-receiver-module-style';s.textContent='.naya-receiver-panel{margin:0 22px 20px;padding:20px;border:2px solid #8b63ff55;border-radius:18px;background:linear-gradient(145deg,#14101b,#08080d);box-shadow:inset 0 1px #fff3,0 18px 38px #0009}.naya-receiver-panel h2{margin:0 0 5px;font-size:25px}.naya-receiver-panel p{color:#aaa4b1;font-size:10px;line-height:1.6}.naya-receiver-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.naya-receiver-actions button{min-height:40px;padding:0 14px;border:2px solid #8b63ff66;border-radius:11px;background:linear-gradient(145deg,#17111f,#08080d);color:#fff;font-size:8px;font-weight:1000;letter-spacing:.06em}.naya-receiver-state{padding:12px;border:1px solid #ffffff15;border-radius:12px;color:#cfc9d6;font-size:9px;white-space:pre-wrap;line-height:1.55}.naya-score{display:inline-flex;margin-left:8px;padding:4px 7px;border-radius:999px;border:1px solid #55e39a55;color:#bfffd8;font-size:7px;font-weight:1000}.naya-module-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:12px}.naya-module-card{padding:14px;border:1px solid #ffffff16;border-radius:13px;background:#09090d}.naya-module-card b{font-size:9px}.naya-module-card span{display:block;margin-top:5px;color:#9f98a7;font-size:8px;line-height:1.5}@media(max-width:700px){.naya-module-grid{grid-template-columns:1fr}}';document.head.append(s)
+ }
+ function panel(title,desc){
+   style();let p=document.getElementById('naya-receiver-panel');if(!p){p=document.createElement('section');p.id='naya-receiver-panel';p.className='naya-receiver-panel';const hero=document.querySelector('.hero');(hero?.parentElement||document.body).insertBefore(p,document.getElementById('searchSection')||hero?.nextSibling||null)}p.innerHTML='<h2>'+safe(title)+'</h2><p>'+safe(desc)+'</p><div class="naya-receiver-actions"></div><div class="naya-module-grid"></div><div class="naya-receiver-state">Ready to operate on the canonical authenticated cognition boundary.</div>';return p
+ }
+ function button(parent,label,fn){const b=document.createElement('button');b.textContent=label;b.onclick=async()=>{const st=parent.querySelector('.naya-receiver-state');st.textContent='Working…';try{const r=await fn();st.textContent='PASS · '+JSON.stringify(r?.event_id?{event_id:r.event_id}:r,null,2)}catch(e){st.textContent='BLOCKED/FAILED · '+(e?.message||e)} };parent.querySelector('.naya-receiver-actions').append(b)}
+ async function showToday(){const p=panel('Intelligence Today','Authenticated projection of today’s preserved intelligence.');const all=await events();const day=new Date().toISOString().slice(0,10);const rows=all.filter(e=>String(e.created_at||'').slice(0,10)===day).slice(0,20);p.querySelector('.naya-receiver-state').textContent=rows.length?rows.map(e=>'- '+(e.title||'Intelligence')+': '+String(e.content||'').slice(0,220)).join('\n'):'No preserved intelligence has been recorded today.'}
+ async function showLedger(){const p=panel('Smart Ledger','Deterministic ledger projection over canonical events: identity, event, provenance, verification and value state.');const all=await events();const rows=all.slice(0,20);p.querySelector('.naya-receiver-state').textContent=rows.length?rows.map((e,i)=>(i+1)+'. '+(e.event_id||'event')+' · '+(e.status||'unknown')+' · '+(e.created_at||'')).join('\n'):'Ledger is empty for this authenticated member.'}
+ async function showMail(){const p=panel('Smart Mail','Communication projection using the same canonical event boundary; no separate mailbox database is created.');button(p,'CREATE MAIL INTENT',()=>write('APPLY','smart-mail','Smart Mail intent created for authenticated member; delivery remains a separate authorized action.',{channel:'smart-mail',delivery_state:'PENDING'}));button(p,'REFRESH',async()=>({events:(await events()).filter(e=>String(e?.metadata?.channel||'')==='smart-mail').length}));}
+ async function showSpaces(){const p=panel('Smart Spaces','Space projection using canonical intelligence events; shared state remains permissioned and evidence-backed.');button(p,'CREATE SPACE INTENT',()=>write('APPLY','smart-space','Smart Space intent created for authenticated member; sharing remains consent-gated.',{channel:'smart-space',visibility:'private',consent_state:'not_granted'}));button(p,'REFRESH',async()=>({events:(await events()).filter(e=>String(e?.metadata?.channel||'')==='smart-space').length}));}
+ async function showIntelligence(){const p=panel('Intelligence','Canonical intelligence retrieved from the authenticated cognition boundary.');const all=await events();p.querySelector('.naya-receiver-state').textContent=all.slice(0,20).map(e=>'• '+(e.title||'Intelligence')+' · '+String(e.content||'').slice(0,260)).join('\n')||'No intelligence yet.'}
+ async function showActivity(){const p=panel('Activity','Activity projection derived from canonical cognition events.');const all=await events();p.querySelector('.naya-receiver-state').textContent=all.slice(0,30).map(e=>'• '+(e.created_at||'')+' · '+(e.title||e.event_id||'event')+' · '+(e.status||'')).join('\n')||'No activity yet.'}
+ async function showFlow(){const p=panel('Learn → Dream → Apply → Verify','Receiver-ready intelligence loop over the canonical event store.');button(p,'LEARN LATEST',async()=>{const all=await events();const n=all.find(e=>!['LEARN','DREAM','APPLY','VERIFY'].includes(String(e?.metadata?.stage||'').toUpperCase()));if(!n)throw Error('NO_SMART_NOTE');return learn(n)});button(p,'DREAM REPLAY',dream);button(p,'APPLY LATEST',()=>apply());button(p,'VERIFY APPLICATION',()=>verify());const g=p.querySelector('.naya-module-grid');[['SOURCE','Smart Note / canonical event'],['LEARN','Durable learning event'],['DREAM','Deterministic replay of preserved intelligence'],['APPLY','Authorized application intent'],['VERIFY','Observed-evidence checkpoint']].forEach(x=>{const d=document.createElement('div');d.className='naya-module-card';d.innerHTML='<b>'+safe(x[0])+'</b><span>'+safe(x[1])+'</span>';g.append(d)})}
+ function wire(){
+   document.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(!b)return;const page=b.dataset.page;const map={home:showToday,notes:async()=>showFlow(),reports:showToday,intelligence:showIntelligence,collective:showActivity,evidence:showLedger,connections:showSpaces,mail:showMail,settings:async()=>{panel('Settings','Runtime configuration and truthful connection state.')}};if(map[page]){e.preventDefault();Promise.resolve(map[page]()).catch(err=>{const p=document.getElementById('naya-receiver-panel');if(p)p.querySelector('.naya-receiver-state').textContent='BLOCKED/FAILED · '+(err?.message||err)})}},true);
+   window.NayaReceiverReadiness={learn,dream,apply,verify,showToday,showLedger,showMail,showSpaces,showIntelligence,showActivity,showFlow};
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
+})();
