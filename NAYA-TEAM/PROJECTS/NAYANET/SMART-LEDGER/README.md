@@ -1,28 +1,28 @@
 # NayaNET — SMART LEDGER
 
-**STATUS:** OFFICIAL NayaNET SUB-PROJECT
-**DATE:** 2026-09-17
+**STATUS:** PARTIAL  
+**RECONCILED:** 2026-09-17
 
-## Role
+## Definition
+Official NayaNET sub-project boundary for **SMART LEDGER**.
 
-This is a named NayaNET sub-project. Its implementation must remain connected to the canonical NayaPOWER intelligence, governance, execution, event, evidence, and continuity substrate.
+## Current repository truth
+Value/decision calculus exists, but a distinct complete NayaNET Smart Ledger workflow is not established.
 
-## Standard shape
+## Canonical implementation / evidence
+`SUPERBRAIN/naya_power_decision_calculus.py`; `SUPERBRAIN/naya_power_decision_calculus.json`; value-alignment protocols
 
-**DEFINITION → BLUEPRINT → CURRENT STATE → ACTIVITY → EVIDENCE → NEXT ACTION**
+## Dependencies
+Depends on canonical NayaPOWER identity/authorization, intelligence/events, governance, evidence/verification, continuity, and Hub projection as applicable. No competing source of truth may be created.
 
-## Activity rule
+## Activity
+Activity here is a scoped projection of canonical NayaPOWER Main Activity. It is not a second event store.
 
-This sub-project Activity is a scoped projection of canonical NayaPOWER Main Activity. It is not a competing event store and must not invent operational truth.
+## Evidence boundary
+Repository evidence establishes implementation state only where stated. Live production behavior must be independently observed and verified. **PARTIAL** is the current reconciliation classification, not a universal production claim.
 
-## Working rule
+## Exactly one next action
+> Map Ledger to existing value/evidence primitives and prove one end-to-end value record without duplicating events.
 
-Inspect the canonical source before changing implementation. Preserve existing authority, protected surfaces, and current architecture. Record substantive work through Team Naya and canonical operational Activity as applicable.
-
-## Current state
-
-**REGISTERED / IMPLEMENTATION MAPPING PENDING** — this directory establishes the official project boundary; it does not claim that every capability is already implemented.
-
-## Next action
-
-Map this sub-project to its existing canonical implementation, evidence, current state, dependencies, and highest-value real gap before building new infrastructure.
+## Operating rule
+**ONE EVENT → MANY USEFUL VIEWS → ONE TRUTH.**
