@@ -150,7 +150,7 @@ jobs:
             source:{head:process.env.GITHUB_SHA,branch:process.env.GITHUB_REF_NAME},
             runtime:{welcome,hub,worker:'sparkling-shape-7ae5'},
             journey:{
-              welcome_to_identity:true,
+              welcome_to_identity:false,
               name:probe,
               alias,
               authenticated:true,
