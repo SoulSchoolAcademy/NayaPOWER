@@ -479,18 +479,15 @@ class UniversalExecutionGate:
             and normalized.scope == decision.scope
             and normalized.permission == decision.action
         )
-        inferred_responsibility = (
-            responsibility_from_verified_facts(
-                action=normalized,
-                decision=decision,
-                authority_validated=identity_verified,
-                authority_bound=authority_bound,
-                tool_permissions_bound=tool_permissions_bound,
-                provenance_bound=provenance_bound,
-            )
-            if normalized is not None and decision is not None
-            else responsibility
-        )
+        inferred_responsibility = responsibility_from_verified_facts(
+            action=normalized,
+            decision=decision,
+            authority_validated=identity_verified,
+            authority_bound=authority_bound,
+            tool_permissions_bound=tool_permissions_bound,
+            provenance_bound=provenance_bound,
+        ) if normalized is not None and decision is not None else responsibility
+        effective_responsibility = responsibility if responsibility is not None else inferred_responsibility
 
         # 11. canonical kernel is the only authority-of-record
         kernel_result = None
@@ -501,7 +498,7 @@ class UniversalExecutionGate:
                 consequential=True,
                 now=validated_at,
                 capability=effective_capability,
-                responsibility=inferred_responsibility,
+                responsibility=effective_responsibility,
             )
             if not kernel_result.allowed:
                 reasons.extend(kernel_result.reasons)
