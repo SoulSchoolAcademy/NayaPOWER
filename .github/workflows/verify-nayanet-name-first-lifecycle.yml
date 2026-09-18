@@ -242,9 +242,12 @@ jobs:
                 no_execution_receipt_side_effect:JSON.stringify(receiptIdsBefore)===JSON.stringify(receiptIdsAfter),
                 no_authority_or_action_side_effect:
                   replayQ.data.status==='SIMULATED' &&
-                  replayQ.data.replay_output?.authority?.changed===false &&
-                  replayQ.data.replay_output?.authority?.granted===false &&
-                  replayQ.data.replay_output?.execution_performed===false
+                  replayQ.data.replay_output?.baseline?.authority_changed===false &&
+                  replayQ.data.replay_output?.counterfactual?.authority_changed===false &&
+                  replayQ.data.replay_output?.baseline?.execution_performed===false &&
+                  replayQ.data.replay_output?.counterfactual?.execution_performed===false &&
+                  replayQ.data.verification?.authority_granted===false &&
+                  replayQ.data.verification?.execution_performed===false
               },
               invocation:calls.map(x=>({url:x.url,method:x.method,hasBearer:x.hasBearer,idempotencyKey:x.idempotencyKey})),
               source_hash_before:sourceHashBefore,
