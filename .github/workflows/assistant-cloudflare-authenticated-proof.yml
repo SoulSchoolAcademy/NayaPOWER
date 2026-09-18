@@ -250,7 +250,7 @@ jobs:
           EOF
 
           export RECEIPT_PATH="$RUNNER_TEMP/assistant-authenticated-lifecycle-receipt.json"
-          node /tmp/assistant-lifecycle.mjs
+          node assistant-lifecycle.mjs
 
       - name: Validate receipt is machine-generated and secret-free
         shell: bash
