@@ -34,6 +34,16 @@
 | Durable learning log | `docs/NAYA-NITRO-LEARNING-LOG.md` | Smart Notes | LEARNING RECORD |
 | Smart Note retrieval | `docs/smart-notes/INDEX.md` | individual notes | RETRIEVAL INDEX |
 
+## Authority Grant Issuance Contract
+
+`docs/NAYA-AUTHORITY-GRANT-ISSUANCE-CONTRACT-V1.md` is the **canonical governance contract for how legitimate human authority becomes an Authority Grant**. It formalizes the existing human delegation model as an issuance source without creating a second authority hierarchy.
+
+**Runtime status:** SPECIFICATION ONLY / NOT YET IMPLEMENTED. It defines explicit human authorization/delegation, mission + authorized-actions as a possible structured source, issuer requirements, scope, constraints, expiry, revocation/stop, delegation limits, and fail-closed issuance.
+
+**Critical boundary:** the issuance mechanism is not itself an authority source. Authentication, ownership, consent, Dream output, learning evidence, decision context, capability, or caller assertions do not self-issue consequential authority.
+
+**Implementation gate:** no execution-boundary runtime change should occur until issuer → issuance event → grant → independent validation is fully implemented and verified.
+
 ## Authority Grant Primitive
 
 `docs/NAYA-AUTHORITY-GRANT-PRIMITIVE-SPECIFICATION-V1.md` is the **canonical governance contract for the Authority Grant Primitive**: the minimum semantics for explicit, valid, scoped, traceable authorization before consequential execution. It defines grant identity, issuer, subject, scope, actions, constraints, lifecycle, delegation boundaries, revocation, validation, authority provenance, and constitutional negative/positive test requirements.
