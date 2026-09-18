@@ -251,7 +251,7 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                 smart_ledger_event = create_governed_execution_event(
                     governance_receipt,
                     evidence_ref=f"execution:{claim_id}:evidence",
-                    observation_ref=str(fields.get("observation") or ""),
+                    observation_ref=str(data.get("observation") or fields.get("observation") or ""),
                     execution_verification_ref=f"execution:{claim_id}:verification",
                 )
                 verified_smart_ledger, smart_ledger_receipt = verify_smart_ledger_event(smart_ledger_event)
