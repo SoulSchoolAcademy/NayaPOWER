@@ -80,7 +80,15 @@ jobs:
             const session = (await client.auth.getSession()).data.session;
             return session?.user?.id ? {authenticated:true,userId:session.user.id,isAnonymous:session.user.is_anonymous===true} : null;
           }, {url:supabaseUrl,key:supabaseKey}, {timeout:30000}).then(h => h.jsonValue());
-          if (!identity?.authenticated || !identity?.userId || identity.isAnonymous !== true) throw new Error('NAME_FIRST_AUTH_FAILED');
+          if (!identity?.authenticated || !identity?.userId || identity.isAnonymous !== true) {
+            const debug=await pageA.evaluate(() => ({
+              url:location.href,
+              origin:location.origin,
+              localStorageKeys:Object.keys(localStorage),
+              supabaseKeys:Object.keys(localStorage).filter(k=>k.includes('supabase')||k.includes('auth-token')||k.startsWith('sb-'))
+            }));
+            throw new Error('NAME_FIRST_AUTH_FAILED '+JSON.stringify(debug));
+          }
           await pageA.evaluate(async () => { if (window.NayaAssistantRuntime?.init) await window.NayaAssistantRuntime.init(); });
           const snapAfterInit = await pageA.evaluate(() => window.NayaAssistantRuntime?.snapshot?.());
           if (!snapAfterInit?.authenticated || snapAfterInit.user_id !== identity.userId) throw new Error('HUB_IDENTITY_PROVIDER_MISMATCH');
