@@ -386,6 +386,58 @@ class TestUniversalExecutionGate(unittest.TestCase):
         self.assertNotEqual(result_a.authorization.binding_hash, result_b.authorization.binding_hash)
         self.assertFalse(any(hasattr(result_a.authorization, f) for f in ("revoked", "expires_at")))
 
+    def test_701_missing_recovery_control_blocks_state_write(self):
+        denied = self._decision(reversible=False)
+        result = self.gate.authorize(authority=self.authority, decision=denied, action=self.action)
+        self.assertFalse(result.allowed)
+        reasons = " ".join(result.reasons)
+        self.assertIn("responsibility envelope is insufficient", reasons)
+        self.assertIn("rollback_or_recovery", reasons)
+
+    def test_702_third_party_impact_requires_human_visibility(self):
+        action = self._action(third_party_impact=True)
+        result = self.gate.authorize(authority=self.authority, decision=self.decision, action=action)
+        self.assertFalse(result.allowed)
+        reasons = " ".join(result.reasons)
+        self.assertIn("human_visibility", reasons)
+
+    def test_703_delegation_requires_verified_delegation_chain(self):
+        action = self._action(delegated=True)
+        result = self.gate.authorize(authority=self.authority, decision=self.decision, action=action)
+        self.assertFalse(result.allowed)
+        reasons = " ".join(result.reasons)
+        self.assertIn("delegation_chain_verified", reasons)
+
+    def test_704_declared_capability_cannot_understate_actual_execution_power(self):
+        denied = self._decision(reversible=False)
+        understated = GATE.CapabilityEnvelope(
+            autonomous_action=False,
+            external_tools=False,
+            external_state_write=False,
+        )
+        result = self.gate.authorize(
+            authority=self.authority,
+            decision=denied,
+            action=self.action,
+            capability=understated,
+        )
+        self.assertFalse(result.allowed)
+        reasons = " ".join(result.reasons)
+        self.assertIn("rollback_or_recovery", reasons)
+
+    def test_705_explicit_empty_responsibility_blocks_capable_action(self):
+        responsibility = GATE.ResponsibilityEnvelope(controls=frozenset())
+        result = self.gate.authorize(
+            authority=self.authority,
+            decision=self.decision,
+            action=self.action,
+            responsibility=responsibility,
+        )
+        self.assertFalse(result.allowed)
+        reasons = " ".join(result.reasons)
+        self.assertIn("responsibility envelope is insufficient", reasons)
+        self.assertIn("identity_verified", reasons)
+
     def test_603_target_and_action_type_are_bound_fields(self):
         result_a = self._allowed()
         auth = result_a.authorization

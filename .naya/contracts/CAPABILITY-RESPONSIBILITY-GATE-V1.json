@@ -8,9 +8,11 @@
     "contract_id",
     "version",
     "principle",
+    "status",
     "capabilities",
     "controls",
-    "enforcement"
+    "enforcement",
+    "runtime_binding"
   ],
   "properties": {
     "contract_id": {
@@ -21,6 +23,9 @@
     },
     "principle": {
       "const": "Increasing capability requires nondecreasing responsibility; capability never creates authority."
+    },
+    "status": {
+      "const": "IMPLEMENTED_AND_SOURCE_RUNTIME_TESTED"
     },
     "capabilities": {
       "type": "array",
@@ -42,7 +47,8 @@
       "required": [
         "missing_control",
         "authority_separation",
-        "monotonicity"
+        "monotonicity",
+        "understatement_prohibited"
       ],
       "properties": {
         "missing_control": {
@@ -53,6 +59,29 @@
         },
         "monotonicity": {
           "const": true
+        },
+        "understatement_prohibited": {
+          "const": true
+        }
+      }
+    },
+    "runtime_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "universal_execution_gate",
+        "model_tool_gateway",
+        "production_proof"
+      ],
+      "properties": {
+        "universal_execution_gate": {
+          "const": "BOUND_IN_SOURCE"
+        },
+        "model_tool_gateway": {
+          "const": "BOUND_IN_SOURCE"
+        },
+        "production_proof": {
+          "const": "NOT_CLAIMED"
         }
       }
     }

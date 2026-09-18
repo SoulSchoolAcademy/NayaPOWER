@@ -22,8 +22,10 @@ It consumes the canonical objects directly. It introduces only a small
 subordinate boundary object (ExecutionAction / ExecutionAuthorization); it does
 NOT introduce another Authority model.
 
-Isolation: this module is not wired into any production path yet. Nothing
-imports it except its own test suite.
+Integration status: this module is now bound to the canonical consequential
+authorization path through the execution controller and model-tool gateway in
+the source tree. Production deployment behavior is not claimed until observed
+in the target runtime.
 """
 from __future__ import annotations
 

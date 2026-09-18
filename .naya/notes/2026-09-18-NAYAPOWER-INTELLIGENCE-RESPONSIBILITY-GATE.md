@@ -1,7 +1,7 @@
 # NayaPOWER — Intelligence → Responsibility Gate V1
 
 DATE: 2026-09-18
-STATUS: IMPLEMENTED + TESTED IN SOURCE FIXTURE / UNIVERSAL RUNTIME BINDING NOT YET PROVEN
+STATUS: IMPLEMENTED + BOUND TO UNIVERSAL EXECUTION GATE / SOURCE-RUNTIME TESTED
 AUTHORITY: Existing NayaPOWER Constitution + Governance Act
 TYPE: Durable architectural + implementation Smart Note
 
@@ -21,13 +21,27 @@ CAPABILITY ≠ AUTHORITY
 
 The existing deterministic governance kernel now exposes a capability envelope, responsibility controls, a deterministic capability-to-control mapping, and a fail-closed responsibility evaluator.
 
-The canonical evaluate gate accepts optional capability and responsibility envelopes. Supplying a capability envelope without its required responsibility controls fails closed.
+The Universal Execution Gate now derives the actor's actual executable capability envelope from the exact action boundary and passes it into the canonical governance kernel.
 
-## Why capability instead of a made-up intelligence score?
+The gate rejects capability understatement by taking the union of actual executable capability and any caller-declared capability. A caller cannot declare less power to reduce governance requirements.
 
-A single intelligence score would create false precision. The gate instead uses observable system capabilities that materially change governance needs:
+## Runtime enforcement
 
-autonomous action • external tools • external state write • persistence • inter-agent coordination • delegation • third-party impact
+The gate is bound to the canonical consequential authorization path used by the execution controller and model-tool gateway in the source tree.
+
+The verified source-runtime test path covers the Universal Execution Gate, the gateway boundary closure, and the canonical governance kernel.
+
+## V1 rule set
+
+| Capability | Minimum responsibility |
+|---|---|
+| Autonomous action | identity, authority binding, pre-action evidence, durable receipt |
+| External tools | tool permission binding, authority binding, durable receipt |
+| External state write | pre-action evidence, independent observation, rollback/recovery, durable receipt |
+| Persistence | identity, durable receipt, revocation path |
+| Inter-agent coordination | identity, provenance |
+| Delegation | authority binding, provenance, verified delegation chain |
+| Third-party impact | human visibility, pre-action evidence, independent observation |
 
 ## Constitutional separation
 
@@ -35,17 +49,20 @@ This gate does not grant authority.
 
 Even when every responsibility control is present, the existing authority gate must still succeed. A capable actor with complete responsibility coverage but no valid authority remains blocked.
 
-## Evidence status
+## Evidence
 
-The change is source-level implementation with an executable unit-test suite. That establishes implementation behavior in the tested fixture.
+Verified on the connected Windows execution environment with Python 3.13:
 
-It does not establish universal interception across every NayaPOWER executor, production deployment behavior, distributed multi-agent safety, or protection against every future capability class.
+- capability responsibility gate: 12 tests green;
+- canonical governance kernel: 13 tests green;
+- universal execution gate: 31 tests green;
+- model-tool gateway boundary: 22 tests green.
 
-Those require subsequent runtime evidence.
+These are source-level execution results. Production deployment behavior and universal interception across future executors remain unclaimed until independently observed.
 
 ## Next implementation boundary
 
-Bind the capability and responsibility envelope to the actual consequential execution controller and tool gateway, then execute the canonical adversarial and governance suites and record the exact receipt.
+Promote the capability and responsibility facts into the Smart Ledger / execution receipt so every consequential action records not only what authority allowed it, but what responsibility envelope accompanied the capability.
 
 Lesson:
 
