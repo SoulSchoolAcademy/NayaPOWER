@@ -66,7 +66,7 @@ def mission_claim(proof: dict[str, Any], name: str, current: str, runtime_claims
         return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                       "no current claim-appropriate evidence is recorded")
     status = str(claim.get("status", "UNKNOWN")).upper()
-    if status not in {"VERIFIED", "PRODUCTION_PROVEN", "UNKNOWN", "FAILED"}:
+    if status not in {"VERIFIED", "PRODUCTION_PROVEN", "UNKNOWN", "FAILED", "BLOCKED"}:
         return result(name, "FAILED", [str(REQUIRED["proof"].relative_to(ROOT))],
                       f"invalid readiness evidence status: {status}")
     if status in {"VERIFIED", "PRODUCTION_PROVEN"}:
