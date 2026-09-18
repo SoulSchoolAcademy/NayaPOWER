@@ -2,20 +2,25 @@
 
 ## Next Action
 
-Execute the conversation continuity vertical slice in an authorized execution plane and capture the real receipts for:
+Deploy and independently observe the canonical Hub application bridge on the exact Cloudflare production target, using an authenticated session, and verify this smallest real chain:
 
-1. canonical Note Event creation/replay;
-2. NAYAPOWER Activity projection;
-3. Smart Note retrieval by a fresh principal;
-4. independent successor consumption;
-5. verified continuation.
+`Welcome/Login → Intelligent Hub → Personal Intelligence → authenticated cognition retrieval → visible existing-feed projection`
 
-Then update Current State, Evidence, Activity, and Team Naya from the observed result.
+Capture the actual runtime receipt. If that passes, extend the same module boundary to Smart Note capture/persistence and then to Activity/Collective Intelligence.
 
 ## Success Gate
 
 IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → CONNECTED → RECORDED → STATE UPDATED → SUCCESSOR READY
 
+## Constraints
+
+- Preserve the canonical September 17 visual/product baseline.
+- No generic replacement dashboard.
+- No new competing memory authority.
+- No invented runtime receipts.
+- One canonical Cloudflare writer.
+- Stop on unexpected destructive diffs or authorization mismatches.
+
 ## Canonical Successor
 
-.naya/handoffs/NEXT-EXECUTION-20260918-HUB-COMPOUNDING-INTELLIGENCE-VERTICAL-SLICE.md
+Continue from the current Team Naya directive and the latest NayaPOWER Activity record for Hub applicationization.
