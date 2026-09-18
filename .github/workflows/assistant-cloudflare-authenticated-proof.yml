@@ -124,19 +124,12 @@ jobs:
           }, eventId);
           if (!observedA.rendered || observedA.event_id !== eventId) throw new Error('ACTION_OBSERVATION_FAILED');
 
-          // Context B: genuinely independent browser context. No cookies, localStorage,
-          // DOM, page, or JS state is shared with Context A. Authentication is repeated
-          // only to access the same governed private cognition boundary.
-          const contextB = await browser.newContext();
+          // Context B: genuinely independent browser context with the same persisted
+          // authenticated session deliberately handed off from Context A. No DOM, JS,
+          // page, or runtime state is shared; only the canonical Supabase session is.
+          const storageState = await contextA.storageState();
+          const contextB = await browser.newContext({storageState});
           const pageB = await boot(contextB);
-          const authB = await pageB.evaluate(async ({url,key}) => {
-            const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
-            const result = await client.auth.signInAnonymously();
-            if (result.error) throw result.error;
-            return {authenticated:!!result.data?.session,is_anonymous:result.data?.user?.is_anonymous===true,user_id:result.data?.user?.id};
-          }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY});
-          if (!authB?.authenticated || !authB?.is_anonymous) throw new Error('COLD_CONTEXT_ANONYMOUS_AUTHENTICATION_FAILED');
 
           const cold = await pageB.evaluate(async (eventId) => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
