@@ -226,7 +226,7 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     elif target == "OBSERVED":
         require_fields(fields, ("observation",))
     elif target == "VERIFIED":
-        require_fields(fields, ("evidence", "verification", "governance_receipt"))
+        require_fields(fields, ("evidence", "verification"))
         governance_receipt = data.get("governance_receipt") or fields.get("governance_receipt")
         if not isinstance(governance_receipt, dict) or not governance_receipt.get("receipt_id"):
             fail("execution boundary refused: VERIFIED requires the gate-issued governance receipt")
