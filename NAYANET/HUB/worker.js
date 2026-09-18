@@ -1,6 +1,10 @@
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
+    if (url.pathname === '/__naya_cache_purge') {
+      await ctx.cache.purge({ purgeEverything: true });
+      return new Response('NAYA_CACHE_PURGED', { headers: { 'Cache-Control': 'no-store' } });
+    }
     const response = await env.ASSETS.fetch(new Request(url.toString(), request));
     if (url.pathname === '/' || url.pathname === '/index.html' || url.pathname === '/assistant-runtime.js') {
       const headers = new Headers(response.headers);
