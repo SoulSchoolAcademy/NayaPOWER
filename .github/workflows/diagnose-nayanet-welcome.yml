@@ -1,0 +1,42 @@
+name: Diagnose NayaNET Welcome Runtime
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-nayanet-welcome.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Inspect production Welcome
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const b=await chromium.launch({headless:true});
+          const p=await b.newPage();
+          await p.goto('https://welcome.nayanet.app',{waitUntil:'networkidle',timeout:60000});
+          const data=await p.evaluate(()=>({
+            url:location.href,
+            title:document.title,
+            inputs:[...document.querySelectorAll('input')].map(x=>({id:x.id,name:x.name,type:x.type,placeholder:x.placeholder,autocomplete:x.autocomplete})),
+            buttons:[...document.querySelectorAll('button')].map(x=>({id:x.id,text:x.innerText.trim()})),
+            forms:[...document.querySelectorAll('form')].map(x=>({id:x.id,action:x.action,method:x.method})),
+            scripts:[...document.scripts].map(x=>x.src).filter(Boolean),
+            body:document.body.innerText.slice(0,4000)
+          }));
+          console.log(JSON.stringify(data,null,2));
+          await b.close();
+          NODE
