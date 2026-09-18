@@ -1,21 +1,29 @@
-# TEAM NAYA ACTIVITY — INTELLIGENT HUB OFFICIAL PROJECT
+# 🔱 NAYA-TEAM — INTELLIGENT HUB PROJECT ACTIVITY
 
-**DATE:** 2026-09-17
-**PROJECT:** Intelligent Hub
-**STATUS:** ACTIVE
-**ACTIVITY:** OFFICIAL PROJECT DEFINED
+**DATE:** 2026-09-17  
+**PROJECT:** NayaNET Intelligent Hub  
+**STATUS:** ACTIVE — SEE CURRENT DATED MISSION + ACTIVITY RECORDS
 
-## WHAT HAPPENED
-The Intelligent Hub is now explicitly established as today's official Team Naya project. The project separates the MAIN SHOW (Smart Feed) from the sidebar mini-projects.
+This earlier project-activity pointer is retained for continuity, but the canonical current mission/activity records now use the Team Naya dated calendar and timestamped record format.
 
-## MAIN SHOW
-Smart Feed has three projections:
-- Personal Intelligence Feed — private Smart Notes/intelligent blocks.
-- Collective Intelligence Feed — voluntarily shared wisdom, anonymous by default, with social evaluation/interactions.
-- Activity Feed — private meaningful operational events from the user's Superbrain.
+## CURRENT CANONICAL RECORDS
 
-## CURRENT STATE
-The existing 2026 09 17 NAYANET HUB.html is the visual starting point. The underlying feed/data/runtime systems are not yet complete. The screen is not treated as proof of implementation.
+- [Current Mission State](./2026-09-17T23-59-00Z__NAYANET-INTELLIGENT-HUB-CURRENT-MISSION-STATE.md)
+- [Project Activity Feed](./2026-09-17T23-59-30Z__NAYANET-INTELLIGENT-HUB-PROJECT-ACTIVITY-FEED.md)
+- [Today's Team Naya Index](./INDEX.md)
+
+## MISSION
+
+**Finish the NayaNET Intelligent Hub.**
+
+The Hub is one connected intelligence system. Smart Feed is the main show, with Personal Intelligence, Collective Intelligence, and Activity as its three primary projections. The sidebar provides focused views over the same governed intelligence system.
+
+## HUMAN RECEIPT RULE
+
+**Smart Links are the primary human evidence.**
+
+Commit SHAs are provenance. The user-facing proof is the direct link to the actual Team Naya record, source, test, workflow, or live runtime.
 
 ## NEXT ACTION
-Define and implement the governed Smart Feed foundation one bounded slice at a time, starting with the common intelligent-block/event and visibility contracts before building the three feed projections end-to-end.
+
+Perform the complete source-to-behavior audit of the current NayaNET Intelligent Hub, classify every major visible feature REAL / PARTIAL / DEMO / MISSING, map canonical source + event + state + proof + gap + dependency + next action, then execute the highest-value real Hub gap.
