@@ -240,6 +240,11 @@ jobs:
                 idempotent_repeat_returns_same_replay:first?.id===second?.id && first?.id===replayQ.data.id,
                 source_event_unchanged:sourceHashBefore===sourceHashAfter,
                 no_execution_receipt_side_effect:JSON.stringify(receiptIdsBefore)===JSON.stringify(receiptIdsAfter),
+                persisted_verification_flags_prove_read_only_simulation:
+                  replayQ.data.verification?.source_history_read===true &&
+                  replayQ.data.verification?.source_history_mutated===false &&
+                  replayQ.data.verification?.deterministic===true &&
+                  replayQ.data.verification?.production_policy_changed===false,
                 no_authority_or_action_side_effect:
                   replayQ.data.status==='SIMULATED' &&
                   replayQ.data.replay_output?.baseline?.authority_changed===false &&
@@ -367,7 +372,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nayanet-current-session-dream-boundary-proof
-          path: "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+          path: "${{ runner.temp }}/nayanet-current-session-dream-proof.json"
           if-no-files-found: error
           retention-days: 30
 
