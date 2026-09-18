@@ -1,28 +1,28 @@
 # NayaNET — SMART MAIL
 
-**STATUS:** OFFICIAL NayaNET SUB-PROJECT
-**DATE:** 2026-09-17
+**STATUS:** MISSING  
+**RECONCILED:** 2026-09-17
 
-## Role
+## Definition
+Official NayaNET sub-project boundary for **SMART MAIL**.
 
-This is a named NayaNET sub-project. Its implementation must remain connected to the canonical NayaPOWER intelligence, governance, execution, event, evidence, and continuity substrate.
+## Current repository truth
+The concept is registered, but navigation/prose must not be treated as implementation.
 
-## Standard shape
+## Canonical implementation / evidence
+No complete canonical Smart Mail implementation was established in this pass.
 
-**DEFINITION → BLUEPRINT → CURRENT STATE → ACTIVITY → EVIDENCE → NEXT ACTION**
+## Dependencies
+Depends on canonical NayaPOWER identity/authorization, intelligence/events, governance, evidence/verification, continuity, and Hub projection as applicable. No competing source of truth may be created.
 
-## Activity rule
+## Activity
+Activity here is a scoped projection of canonical NayaPOWER Main Activity. It is not a second event store.
 
-This sub-project Activity is a scoped projection of canonical NayaPOWER Main Activity. It is not a competing event store and must not invent operational truth.
+## Evidence boundary
+Repository evidence establishes implementation state only where stated. Live production behavior must be independently observed and verified. **MISSING** is the current reconciliation classification, not a universal production claim.
 
-## Working rule
+## Exactly one next action
+> Locate or establish the canonical Smart Mail boundary using existing identity/communication primitives, then prove one governed message lifecycle.
 
-Inspect the canonical source before changing implementation. Preserve existing authority, protected surfaces, and current architecture. Record substantive work through Team Naya and canonical operational Activity as applicable.
-
-## Current state
-
-**REGISTERED / IMPLEMENTATION MAPPING PENDING** — this directory establishes the official project boundary; it does not claim that every capability is already implemented.
-
-## Next action
-
-Map this sub-project to its existing canonical implementation, evidence, current state, dependencies, and highest-value real gap before building new infrastructure.
+## Operating rule
+**ONE EVENT → MANY USEFUL VIEWS → ONE TRUTH.**
