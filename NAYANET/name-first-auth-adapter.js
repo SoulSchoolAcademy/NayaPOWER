@@ -1,6 +1,7 @@
 /* NayaNET name-first identity adapter.
  * One adapter only: Welcome/Identity -> existing Supabase Auth -> members -> nayanet_profiles.
  * The NayaNET alias is an application namespace, not an email address.
+ * Canonical browser session: Supabase Auth persistence is the session authority.
  */
 (function (global) {
   const SUPABASE_URL = 'https://dahisasgpfvziswqvmvm.supabase.co';
@@ -114,7 +115,7 @@
 
     return {
       ...identity,
-      sessionId: session.access_token ? session.user.id : null,
+      sessionId: session.user.id,
       isAnonymous: !!session.user.is_anonymous,
       authenticated: true
     };
