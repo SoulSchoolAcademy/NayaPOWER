@@ -8,5 +8,8 @@
     "not_found_handling": "single-page-application",
     "binding": "ASSETS"
   },
-  "main": "worker.js"
+  "main": "worker.js",
+  "cache": {
+    "enabled": false
+  }
 }
