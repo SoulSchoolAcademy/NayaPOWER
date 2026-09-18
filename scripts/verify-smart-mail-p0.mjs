@@ -47,6 +47,14 @@ if (!Array.isArray(receiverRows) || receiverRows.length !== 1) throw new Error('
 const received = receiverRows[0];
 if (received.id !== first.message_id || received.sender_id !== senderId || received.body !== body) throw new Error('RECEIVER_MESSAGE_MISMATCH');
 if (received.metadata?.correlation_id !== first.correlation_id || received.metadata?.receiver_id !== receiverId) throw new Error('CORRELATION_OR_RECEIVER_MISMATCH');
+const receiverVerification = await request(functionUrl, {
+  method: 'POST',
+  headers: authHeaders(receiver.access_token),
+  body: JSON.stringify({ operation: 'verify', message_id: first.message_id })
+});
+if (receiverVerification.status !== 'VERIFIED' || receiverVerification.receiver_id !== receiverId || receiverVerification.authority_changed !== false) {
+  throw new Error('RECEIVER_VERIFICATION_FAILED');
+}
 
 const cognition = await request(
   base + '/rest/v1/nayanet_cognition_events?select=id,user_id,event_id,type,source,metadata&user_id=eq.' + senderId + '&event_id=eq.' + encodeURIComponent(first.cognition_event_id),
@@ -69,7 +77,7 @@ const proof = {
   status: 'VERIFIED',
   user: { sender_id: senderId, receiver_id: receiverId },
   transaction: { correlation_id: first.correlation_id, thread_id: first.thread_id, message_id: first.message_id, cognition_event_id: first.cognition_event_id, execution_receipt_id: first.execution_receipt_id, idempotency_key: idempotencyKey },
-  chain: { external_sender_authenticated: true, canonical_naya_identity: senderId, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, correlation_preserved: true, authority_changed: false, idempotent_replay: true },
+  chain: { external_sender_authenticated: true, canonical_naya_identity: senderId, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_changed: false, idempotent_replay: true },
   observed_at: new Date().toISOString()
 };
 fs.writeFileSync(process.env.PROOF_PATH, JSON.stringify(proof, null, 2));
