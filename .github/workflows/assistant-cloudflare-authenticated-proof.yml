@@ -25,20 +25,13 @@ jobs:
       RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-      ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
-      ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
     steps:
       - name: Checkout exact source
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Assert protected test identity is present
-        shell: bash
-        run: |
-          test -n "${ASSISTANT_TEST_EMAIL}" || { echo "ASSISTANT_TEST_EMAIL is not configured in assistant-cloudflare-production"; exit 1; }
-          test -n "${ASSISTANT_TEST_PASSWORD}" || { echo "ASSISTANT_TEST_PASSWORD is not configured in assistant-cloudflare-production"; exit 1; }
-          echo "PROTECTED_TEST_IDENTITY=AVAILABLE"
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -59,9 +52,7 @@ jobs:
           import fs from 'node:fs';
 
           const runtimeUrl = process.env.RUNTIME_URL;
-          const email = process.env.ASSISTANT_TEST_EMAIL;
-          const password = process.env.ASSISTANT_TEST_PASSWORD;
-          if (!runtimeUrl || !email || !password) throw new Error('PROTECTED_IDENTITY_OR_RUNTIME_MISSING');
+          if (!runtimeUrl) throw new Error('RUNTIME_MISSING');
 
           const runId = process.env.GITHUB_RUN_ID;
           const eventId = 'assistant-proof-' + runId + '-' + crypto.randomBytes(6).toString('hex');
@@ -93,7 +84,7 @@ jobs:
           const contextA = await browser.newContext();
           const pageA = await boot(contextA);
           const authA = await pageA.evaluate(() => window.NayaAssistantRuntime.snapshot());
-          if (!authA?.authenticated) throw new Error('AUTHENTICATION_FAILED');
+          if (!authA?.authenticated || !authA?.is_anonymous) throw new Error('ANONYMOUS_AUTHENTICATION_FAILED');
 
           const recorded = await pageA.evaluate(async ({eventId,title,lesson,actionText,target,intent}) => {
             return await window.NayaAssistantRuntime.record({
@@ -141,7 +132,7 @@ jobs:
           const contextB = await browser.newContext();
           const pageB = await boot(contextB);
           const authB = await pageB.evaluate(() => window.NayaAssistantRuntime.snapshot());
-          if (!authB?.authenticated) throw new Error('COLD_CONTEXT_AUTHENTICATION_FAILED');
+          if (!authB?.authenticated || !authB?.is_anonymous) throw new Error('COLD_CONTEXT_ANONYMOUS_AUTHENTICATION_FAILED');
 
           const cold = await pageB.evaluate(async (eventId) => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
