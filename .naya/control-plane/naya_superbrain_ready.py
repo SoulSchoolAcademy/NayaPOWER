@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import subprocess
 import sys
+import os
 from pathlib import Path
 from typing import Any
 
@@ -58,9 +59,9 @@ def result(name: str, status: str, evidence: list[str], reason: str) -> dict[str
     return {"name": name, "status": status, "evidence": evidence, "reason": reason}
 
 
-def mission_claim(proof: dict[str, Any], name: str, current: str) -> dict[str, Any]:
+def mission_claim(proof: dict[str, Any], name: str, current: str, runtime_claims: dict[str, Any] | None = None) -> dict[str, Any]:
     """Accept a mission-boundary claim only when PROOF binds it to this HEAD."""
-    claim = proof.get("readiness_evidence", {}).get(name)
+    claim = (runtime_claims or {}).get(name) or proof.get("readiness_evidence", {}).get(name)
     if not isinstance(claim, dict):
         return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                       "no current claim-appropriate evidence is recorded")
@@ -154,7 +155,7 @@ def evaluate() -> dict[str, Any]:
     # Every mission boundary is independently evidence-backed. Missing claims
     # are UNKNOWN; historical claims cannot certify the current HEAD.
     for name in UNKNOWN_MISSION_BOUNDARIES:
-        checks.append(mission_claim(p, name, current))
+        checks.append(mission_claim(p, name, current, runtime_claims))
 
     return _finalize(checks, current)
 
