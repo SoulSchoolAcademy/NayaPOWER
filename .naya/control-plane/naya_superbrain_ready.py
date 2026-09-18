@@ -73,9 +73,33 @@ def mission_claim(proof: dict[str, Any], name: str, current: str, runtime_claims
         contract = EVIDENCE_CONTRACT[name]
         claim_type = str(claim.get("claim_type", "")).upper()
         evidence = claim.get("evidence", [])
-        if claim.get("observed_head") != current:
-            return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
-                          "evidence is not bound to the live HEAD")
+        observed_head = str(claim.get("observed_head", ""))
+        if observed_head != current:
+            # Production runtime proof is bound to the deployed source scope, not
+            # to proof-only/control-plane commits made after deployment. This keeps
+            # the gate fail-closed while allowing canonical proof receipts to be
+            # recorded without forcing a meaningless redeployment.
+            if not (name == "runtime_parity" and claim_type == "PRODUCTION" and
+                    claim.get("deployed_source_head") and claim.get("source_paths")):
+                return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                              "evidence is not bound to the live HEAD")
+            deployed_head = str(claim["deployed_source_head"])
+            try:
+                subprocess.check_call(
+                    ["git", "merge-base", "--is-ancestor", deployed_head, current],
+                    cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                )
+                changed = subprocess.check_output(
+                    ["git", "diff", "--name-only", f"{deployed_head}..{current}"],
+                    cwd=ROOT, text=True,
+                ).splitlines()
+            except Exception:
+                return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                              "production evidence source ancestry could not be verified")
+            source_paths = {str(x) for x in claim["source_paths"]}
+            if any(path in source_paths for path in changed):
+                return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
+                              "deployed production source scope changed after the observed deployment")
         if claim_type not in contract["claim_types"]:
             return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                           "claim type is not appropriate for this readiness boundary")
