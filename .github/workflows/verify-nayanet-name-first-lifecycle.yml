@@ -113,9 +113,14 @@ jobs:
           const retrievedA = await pageA.evaluate(async eventId => (await window.NayaAssistantRuntime.retrieve(eventId))[0] || null,eventId);
           if (!retrievedA || retrievedA.event_id !== eventId) throw new Error('SMART_NOTE_PERSISTENCE_FAILED');
 
-          await pageA.evaluate(async () => await window.NayaAssistantRuntime.loadPersonalIntelligence?.());
-          const renderedA = await pageA.locator('[data-naya-runtime-event="'+eventId+'"]').count();
-          if (!renderedA) throw new Error('PERSONAL_INTELLIGENCE_RENDER_FAILED');
+          await pageA.waitForFunction(() => typeof window.NayaAssistantRuntime?.loadPersonalIntelligence === 'function', null, {timeout:30000});
+          const feedA = await pageA.evaluate(async (eventId) => {
+            await window.NayaAssistantRuntime.loadPersonalIntelligence();
+            await new Promise(r => setTimeout(r, 500));
+            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            return {rendered:!!node, renderedEventId:node?.getAttribute('data-naya-runtime-event')||null, feedError:document.documentElement.dataset.nayaRuntimeFeedError||null, projectIds:[...document.querySelectorAll('.naya-runtime-live')].slice(0,5).map(x=>x.getAttribute('data-naya-runtime-event'))};
+          }, eventId);
+          if (!feedA.rendered) throw new Error('PERSONAL_INTELLIGENCE_RENDER_FAILED:' + JSON.stringify(feedA));
 
           const storage = await contextA.storageState();
           const contextB = await browser.newContext({storageState:storage});
