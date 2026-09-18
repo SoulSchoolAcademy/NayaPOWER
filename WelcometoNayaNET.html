@@ -923,6 +923,8 @@ body.entering .presence{
 
 <script>
 
+const NAYA_HUB_IDENTITY_URL = 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html';
+
 function checkAutoLogin(){
 
   if(
@@ -931,7 +933,7 @@ function checkAutoLogin(){
     )
   ){
 
-    location.href='identity.html';
+    location.href=NAYA_HUB_IDENTITY_URL;
 
   }else{
 
@@ -982,7 +984,7 @@ document
         function(){
 
           location.href =
-            'identity.html?name=' +
+            NAYA_HUB_IDENTITY_URL + '?name=' +
             encodeURIComponent(name);
 
         },
