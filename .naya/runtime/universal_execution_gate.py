@@ -84,6 +84,16 @@ ResponsibilityControl = KERNEL.ResponsibilityControl
 ResponsibilityEnvelope = KERNEL.ResponsibilityEnvelope
 evaluate = KERNEL.evaluate
 
+CAPABILITY_FIELDS = (
+    "autonomous_action",
+    "external_tools",
+    "external_state_write",
+    "persistence",
+    "inter_agent_coordination",
+    "delegation",
+    "third_party_impact",
+)
+
 
 def load_registry(path: str | Path | None = None) -> AuthorityRegistry:
     """Load grants from the human-controlled registry; never mint authority."""
@@ -256,6 +266,31 @@ class ExecutionAuthorization:
     risk_tier: str
     validated_at: str
     binding_hash: str
+    capability_flags: Tuple[str, ...] = ()
+    responsibility_controls: Tuple[str, ...] = ()
+    governance_receipt_id: str = ""
+
+    def to_governance_receipt(self) -> dict[str, Any]:
+        return {
+            "receipt_id": self.governance_receipt_id,
+            "schema_version": "1.0",
+            "actor_id": self.actor_id,
+            "authority_id": self.authority_id,
+            "decision_id": self.decision_id,
+            "action_id": self.action_id,
+            "action_type": self.action_type,
+            "target": self.target,
+            "scope": self.scope,
+            "permission": self.permission,
+            "governance_state": self.governance_state,
+            "risk_tier": self.risk_tier,
+            "capability_envelope": {
+                field: field in self.capability_flags for field in CAPABILITY_FIELDS
+            },
+            "responsibility_controls": list(self.responsibility_controls),
+            "binding_hash": self.binding_hash,
+            "validated_at": self.validated_at,
+        }
 
 
 @dataclass(frozen=True)
@@ -282,6 +317,16 @@ def _execution_binding_hash(
     """Hash of every security-relevant identity field, including the exact
     action_type and target so one consequential action can never authorize a
     different one (the documented Test #8 residual is closed here)."""
+    governance_material = json.dumps(
+        {
+            "capability_flags": list(capability_flags),
+            "responsibility_controls": list(responsibility_controls),
+            "governance_receipt_id": governance_receipt_id,
+        },
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    )
     return _binding_hash(
         authority_id,
         decision_id,
@@ -291,6 +336,7 @@ def _execution_binding_hash(
         actor_id,
         scope,
         permission,
+        governance_material,
     )
 
 
@@ -304,6 +350,9 @@ def _authorization_hash(authorization: "ExecutionAuthorization") -> str:
         authorization.actor_id,
         authorization.scope,
         authorization.permission,
+        authorization.capability_flags,
+        authorization.responsibility_controls,
+        authorization.governance_receipt_id,
     )
 
 
@@ -514,6 +563,35 @@ class UniversalExecutionGate:
 
         assert authority is not None and decision is not None and normalized is not None
         assert kernel_result is not None
+        capability_flags = tuple(
+            field_name
+            for field_name in CAPABILITY_FIELDS
+            if getattr(effective_capability, field_name)
+        )
+        responsibility_controls = tuple(
+            sorted(control.value for control in effective_responsibility.controls)
+        )
+        governance_receipt_id = (
+            "govrcpt_"
+            + _binding_hash(
+                authority.authority_id,
+                decision.decision_id,
+                normalized.action_id,
+            )[:20]
+        )
+        binding_hash = _execution_binding_hash(
+            authority.authority_id,
+            decision.decision_id,
+            normalized.action_id,
+            normalized.action_type,
+            normalized.target,
+            decision.actor_id,
+            decision.scope,
+            decision.action,
+            capability_flags,
+            responsibility_controls,
+            governance_receipt_id,
+        )
         authorization = ExecutionAuthorization(
             authority_id=authority.authority_id,
             decision_id=decision.decision_id,
@@ -526,16 +604,10 @@ class UniversalExecutionGate:
             governance_state=kernel_result.state.value,
             risk_tier=decision.risk.tier,
             validated_at=validated_at,
-            binding_hash=_execution_binding_hash(
-                authority.authority_id,
-                decision.decision_id,
-                normalized.action_id,
-                normalized.action_type,
-                normalized.target,
-                decision.actor_id,
-                decision.scope,
-                decision.action,
-            ),
+            binding_hash=binding_hash,
+            capability_flags=capability_flags,
+            responsibility_controls=responsibility_controls,
+            governance_receipt_id=governance_receipt_id,
         )
         self._issued.add(authorization.binding_hash)
         return GateDecision(allowed=True, reasons=(), authorization=authorization)
