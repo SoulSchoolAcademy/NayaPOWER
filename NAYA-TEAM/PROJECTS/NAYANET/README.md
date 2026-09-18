@@ -66,3 +66,12 @@ Finish the NayaNET Intelligent Hub as a real connected product: not merely a vis
 `NAYA-TEAM/ACTIVITY-FEED.md` remains the Team Naya communication feed.
 NayaPOWER Main Activity remains the canonical operational event substrate.
 NayaNET project/sub-project Activity remains scoped projection only.
+
+
+## Engineering Blueprint
+
+The detailed 19-area engineering blueprint, including the 01–58 cross-reference, area readiness scorecard, engine/body split, universal acceptance contract, and dependency spine is here:
+
+**19-Area Engineering Blueprint Master:** `19-AREA-BLUEPRINT-MASTER-2026-09-18.md`
+
+Each of the 19 area READMEs has also been upgraded to **Blueprint V2** with explicit product role, system boundary, human presentation, connections, engineering rules, acceptance contract, current gap, and one next action.
