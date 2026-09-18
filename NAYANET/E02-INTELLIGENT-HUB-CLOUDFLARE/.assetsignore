@@ -1,8 +1,0 @@
-worker.js
-wrangler.jsonc
-.assetsignore
-release-package/
-*.zip
-*.sha256
-*.PROOF.txt
-DEPLOY.md
