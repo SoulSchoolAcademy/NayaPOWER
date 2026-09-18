@@ -178,6 +178,15 @@ def build_conversation_event(
             "success_criteria": next_exec["success_criteria"],
             "verification_requirements": next_exec["verification_requirements"],
         },
+        "execution": {
+            "actor_id": actor_id,
+            "claim_id": source_event_id,
+            "action_id": "conversation-continuity.capture",
+            "decision_id": "conversation-continuity.capture",
+            "authority_id": "AUTHORIZED-WINDOWS-EXECUTION-PLANE",
+            "run_id": source_event_id,
+            "session_id": "NAYA-CONVERSATION-CONTINUITY",
+        },
         "verification": {
             "status": "PERSISTENCE_PENDING_RUNTIME_OBSERVATION",
             "method": "conversation-continuity-adapter",
@@ -200,6 +209,19 @@ def capture_conversation(**kwargs: Any) -> dict[str, Any]:
     result = create_or_replay(event, EVENTS, INDEX)
     if result.get("status") not in {"CREATED", "REPLAY"}:
         raise RuntimeError(f"canonical conversation capture failed: {result}")
+
+    event["verification"] = {
+        "status": "OBSERVED",
+        "method": "conversation-continuity-adapter",
+        "evidence": [
+            f"Canonical event {result['status']} through create_or_replay.",
+            f"Canonical event persisted at {result['path']}.",
+        ],
+    }
+    observed = create_or_replay(event, EVENTS, INDEX)
+    if observed.get("status") not in {"CREATED", "REPLAY"}:
+        raise RuntimeError(f"canonical observation receipt update failed: {observed}")
+
     projection = project_event(event)
     return {
         "status": result["status"],
