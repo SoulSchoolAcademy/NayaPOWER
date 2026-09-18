@@ -202,7 +202,7 @@ Before modifying nayanet_commit_cognition():
 6. Define authority provenance in execution receipts.
 7. Add constitutional negative tests.
 8. Add a positive valid-grant test.
-9. Test the exact Dream → Learning lineage: replay afd1383-5e18-4732-8938-52e7aedc5a6f → evidence a9e40bbc-ce65-4d1b-b34d-4840e2e68dc8, proving learning influence remains distinct from authority.
+9. Test the exact Dream → Learning lineage: replay fafd1383-5e18-4732-8938-52e7aedc5a6f → evidence a9e40bbc-ce65-4d1b-b34d-4840e2e68dc8, proving learning influence remains distinct from authority.
 10. Only then wire the execution gate into the canonical execution boundary.
 
 ## 15. GOVERNANCE DECISION
