@@ -36,7 +36,13 @@
     if (!sdk?.createClient) throw new Error('Supabase client unavailable');
     if (!global.__NayaNETSupabaseClient) {
       global.__NayaNETSupabaseClient = sdk.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+        auth: {
+          persistSession: true,
+          autoRefreshToken: true,
+          detectSessionInUrl: true,
+          storage: global.localStorage,
+          storageKey: 'nayanet.supabase.auth'
+        }
       });
     }
     return global.__NayaNETSupabaseClient;
