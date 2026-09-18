@@ -1,28 +1,73 @@
 # NayaNET — SMART SPACES
 
-**STATUS:** MISSING  
-**RECONCILED:** 2026-09-17
+**BLUEPRINT STATUS:** MISSING
+**BLUEPRINT VERSION:** V2 — 2026-09-18
+**ROLE:** Intelligent shared environments organized around a topic, project, question or intelligence object.
 
-## Definition
-Official NayaNET sub-project boundary for **SMART SPACES**.
+## 1. WHAT IT IS
+Intelligent shared environments organized around a topic, project, question or intelligence object.
 
-## Current repository truth
-The concept is registered, but a complete Space implementation is not proven.
+## 2. PRIMARY JOB
+Create a governed context where people can converse, share intelligence, create events and generate new knowledge.
 
-## Canonical implementation / evidence
-No complete canonical Smart Spaces runtime/workflow was established in this pass.
+## 3. SYSTEM BOUNDARY
+Inputs: authorized participants, subject/intelligence context, permissions. Outputs: space identity, membership, conversation/activity and linked intelligence.
 
-## Dependencies
-Depends on canonical NayaPOWER identity/authorization, intelligence/events, governance, evidence/verification, continuity, and Hub projection as applicable. No competing source of truth may be created.
+## 4. HUMAN EXPERIENCE / PRESENTATION
+Visual: clear purpose/header, members, intelligence context, conversation, shared notes/events, privacy state and actions. More than a chat room.
 
-## Activity
-Activity here is a scoped projection of canonical NayaPOWER Main Activity. It is not a second event store.
+## 5. CONNECTIONS
+Connects Connections, Mail, Share, Feed, Notes, Collective Intelligence, Identity/Privacy and CCT/Ledger evidence.
 
-## Evidence boundary
-Repository evidence establishes implementation state only where stated. Live production behavior must be independently observed and verified. **MISSING** is the current reconciliation classification, not a universal production claim.
+## 6. 01–58 DEEP-DIVE SOURCES
+This blueprint is distilled from the corresponding NayaPOWER 01–58 intelligence/contracts and the current repository implementation. Relevant 01–58 areas: **Connects Connections, Mail, Share, Feed, Notes, Collective Intelligence, Identity/Privacy and CCT/Ledger evidence.**.
 
-## Exactly one next action
-> Map existing communication/identity primitives and prove one governed Space lifecycle without a parallel communication store.
+## 7. ENGINEERING RULES
+- Inspect current repository/runtime before changing implementation.
+- Reuse canonical NayaPOWER primitives; do not create a competing store, event system, memory system, queue, or authority system.
+- Preserve stable identity, timestamps, provenance, privacy and truth state.
+- Separate **canonical source → event → projection → presentation → interaction**.
+- Capability never creates authority.
+- Activity is a projection; Smart Notes are intelligence; the Hub is presentation; the Ledger is evidence/integrity.
+- Unknown remains UNKNOWN. Documentation is not runtime proof.
+- Builder ≠ Judge: the implementer does not certify its own work.
+- Preserve valuable existing Hub behavior and evolve surgically unless evidence requires reconstruction.
 
-## Operating rule
-**ONE EVENT → MANY USEFUL VIEWS → ONE TRUTH.**
+## 8. ACCEPTANCE CONTRACT
+A production-ready implementation must demonstrate:
+1. Real source/data ownership is identified.
+2. The feature has a single clear boundary and does not duplicate another system.
+3. Identity, permissions and visibility are enforced at the appropriate boundary.
+4. Timestamps and stable IDs survive every projection.
+5. The human can understand what the feature is, why it exists, and what action is available.
+6. Actions are real, not decorative.
+7. Failure is visible and recoverable.
+8. Source → execution → observed behavior → verification is proven.
+9. Evidence and the next action are recorded.
+10. A cold Naya can continue without conversational archaeology.
+
+## 9. CURRENT GAP
+**12,13,23,24,25,39,40,46,47,49,53,57,58**
+
+## 10. ONE NEXT ACTION
+**12,13,23,24,25,39,40,46,47,49,53,57,58**
+
+## 11. SYSTEM POSITION
+NayaNET is one connected product, not 19 independent applications:
+
+**NayaPOWER → canonical intelligence/events/state → NayaNET Intelligent Hub → human/Naya action → verified outcome → new intelligence → continuation.**
+
+This area is therefore a **capability/view within that system**, not an independent authority or database.
+
+## 12. DO NOT BUILD
+- A second source of truth.
+- A parallel event store.
+- A parallel Smart Note or memory system.
+- A new authority ladder.
+- A feature that only looks complete in the UI.
+- A duplicate copy of canonical intelligence merely for presentation.
+
+## 13. DEFINITION OF DONE
+**IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → CONNECTED → RECORDED → STATE UPDATED → SUCCESSOR READY.**
+
+Where the area is human-facing, add **LIVE VERIFIED** before calling the runtime complete.
