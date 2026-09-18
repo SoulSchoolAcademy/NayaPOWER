@@ -60,32 +60,35 @@
   "freshness_rule": "Recorded runtime evidence is CURRENT only when its observed HEAD exactly equals the live authoritative HEAD at claim time. Otherwise it remains HISTORICAL/STALE and cannot certify the current repository.",
   "current_evidence": {
     "classification": "CURRENT_PRODUCTION_PROVEN_ASSISTANT_CLOUDFLARE_SOURCE_SCOPE",
-    "observed_head": "147cf23102b91cb4b223a9d87346190e7d2e9297",
+    "observed_head": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
     "observed_branch": "main",
     "bridge": {
-      "run_id": 35304374346,
+      "run_id": 35379376095,
       "claim_type": "PRODUCTION",
       "conclusion": "success",
       "event": "push",
       "ref": "refs/heads/main",
-      "sha": "147cf23102b91cb4b223a9d87346190e7d2e9297",
+      "sha": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
       "deployment_lane": "ASSISTANT_CLOUDFLARE",
-      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
       "worker": "sparkling-shape-7ae5",
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "cloudflare_version_id": "74880b00-a699-4c60-926c-6a54b8db5e1d"
+      "cloudflare_version_id": "62d84659-25cc-4c04-991c-2806b7f99246"
     },
     "production": {
-      "deployment_identity": "74880b00-a699-4c60-926c-6a54b8db5e1d",
-      "source_sha256": "394731e1496328f1926b87419d2ab08a8d04774f902537cb11f5e79ac0ac3e03",
-      "live_sha256": "394731e1496328f1926b87419d2ab08a8d04774f902537cb11f5e79ac0ac3e03",
-      "exact_source_parity": true,
+      "deployment_identity": "62d84659-25cc-4c04-991c-2806b7f99246",
+      "source_sha256": "70fa83b0f65241c990a5b5766ba5cb1fde7b5a9ed2cebd995a8086c7c3c2e9f9",
+      "live_sha256": "70fa83b0f65241c990a5b5766ba5cb1fde7b5a9ed2cebd995a8086c7c3c2e9f9",
+      "runtime_bridge_source_sha256": "bd021094ebf6879ef00c7506912abc9c7c2532ce0a37c250c3575b6702938bd3",
+      "runtime_bridge_live_sha256": "bd021094ebf6879ef00c7506912abc9c7c2532ce0a37c250c3575b6702938bd3",
+      "normalized_line_endings": true,
       "desktop_baseline": true,
       "mobile_baseline": true,
       "live_runtime_observed": true,
       "live_title": "NayaNET — Intelligent Hub V7 · 509 AAA",
       "live_identity": "NayaNET / INTELLIGENT HUB · V7",
-      "observation": "Authorized Assistant Cloudflare runtime observed directly from the target worker; governed Assistant runtime bridge is present in the deployed artifact."
+      "canonical_release_header": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
+      "observation": "Current production Worker serves the canonical release addressed by the exact current source commit; normalized canonical Hub and assistant runtime assets match live runtime content."
     },
     "authenticated_lifecycle": {
       "status": "BLOCKED",
@@ -107,38 +110,41 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "evidence": [
-        "exact source/live SHA-256 parity",
-        "desktop runtime verification",
-        "mobile runtime verification",
-        "direct live runtime observation",
-        "deployed assistant-runtime.js present"
+        "Cloudflare deployment run 35379376095=success",
+        "Current Version ID 62d84659-25cc-4c04-991c-2806b7f99246",
+        "runtime header X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
+        "normalized canonical Hub source/live SHA-256 parity",
+        "normalized assistant-runtime.js source/live SHA-256 parity",
+        "direct live runtime observation"
       ],
-      "reason": "The deployed Assistant Cloudflare source scope at HEAD 147cf23102b91cb4b223a9d87346190e7d2e9297 is directly proven in production; subsequent proof-only commits may remain current under the source-scope freshness rule."
+      "reason": "The current production Worker is explicitly bound to the current deployed release commit and its served Hub/runtime assets match the canonical source after transport line-ending normalization."
     },
-    "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 147cf23102b91cb4b223a9d87346190e7d2e9297. The deployed artifact now contains the governed Supabase authentication/session and cognition persistence bridge. Positive authenticated lifecycle and independent external cold-Naya remain BLOCKED only because no authorized test identity/positive receipt was available for execution; no false PASS is recorded."
+    "interpretation": "Current Assistant Cloudflare production is proven for the deployed source scope at 25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e. The authenticated lifecycle remains BLOCKED because the protected GitHub Environment has no configured ASSISTANT_TEST_EMAIL/ASSISTANT_TEST_PASSWORD secrets."
   },
-  "recording_commit": "7704b48e7181f2a7216e7527b52944c5907478cf",
+  "recording_commit": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "observed_head": "147cf23102b91cb4b223a9d87346190e7d2e9297",
-      "deployed_source_head": "147cf23102b91cb4b223a9d87346190e7d2e9297",
+      "observed_head": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
+      "deployed_source_head": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
       "source_paths": [
         "2026 09 17 NAYANET HUB.html",
         "assistant-runtime.js",
-        ".github/workflows/assistant-cloudflare-hub-release.yml"
+        "NAYANET/HUB/worker.js",
+        "NAYANET/HUB/wrangler.jsonc",
+        ".github/workflows/deploy-nayanet-intelligent-hub.yml"
       ],
       "evidence": [
-        "Assistant Cloudflare release run 35304374346=success",
-        "exact source/live SHA-256 parity",
-        "desktop and mobile runtime verification",
-        "direct live runtime observation",
-        "assistant-runtime.js deployed and served"
+        "Cloudflare deployment run 35379376095=success",
+        "Current Version ID 62d84659-25cc-4c04-991c-2806b7f99246",
+        "X-Naya-Canonical-Asset header binds runtime to deployed source commit",
+        "normalized Hub source/live parity",
+        "normalized assistant-runtime source/live parity"
       ],
-      "reason": "Production runtime is proven for the deployed Assistant source scope."
+      "reason": "Current authorized Cloudflare production runtime is source-bound and directly observed."
     },
     "authenticated_lifecycle": {
       "status": "BLOCKED",
