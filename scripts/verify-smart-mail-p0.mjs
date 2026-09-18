@@ -57,7 +57,7 @@ if (receiverVerification.status !== 'VERIFIED' || receiverVerification.receiver_
 }
 
 const cognition = await request(
-  base + '/rest/v1/nayanet_cognition_events?select=id,user_id,event_id,type,source,metadata&user_id=eq.' + senderId + '&event_id=eq.' + encodeURIComponent(first.cognition_event_id),
+  base + '/rest/v1/nayanet_cognition_events?select=id,user_id,event_id,type,source,receipt_id,metadata&user_id=eq.' + senderId + '&id=eq.' + encodeURIComponent(first.cognition_event_id),
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
 );
 if (!Array.isArray(cognition) || cognition.length !== 1) throw new Error('COGNITION_NOT_RETRIEVABLE');
