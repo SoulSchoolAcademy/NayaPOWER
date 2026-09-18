@@ -3,7 +3,7 @@
 Date: 2026-09-18
 Active block: TORCH-59-MACHINE-TRUTH-RESTORATION
 Canonical branch: main
-Observed HEAD at record time: 315b8869aa98836580748cc4e8abe12916a890fc
+Observed HEAD at record time: 8e94c601fa3efabe6828857f34ef0117de3850d5
 
 ## Mission
 Complete the real NayaNET human lifecycle without creating another identity, authentication, persistence, cognition, Activity, or routing system.
@@ -27,6 +27,8 @@ Complete the real NayaNET human lifecycle without creating another identity, aut
 16. Changed the repository Welcome source so its existing name entry and Auto-Login hand off to the canonical Cloudflare Hub identity route rather than creating a local identity boundary.
 17. Changed `identity.html` so successful establishment enters the canonical Cloudflare Intelligent Hub origin rather than looping back through the Welcome origin.
 18. Changed the single adapter to surface the exact production configuration blocker as `ANONYMOUS_AUTH_DISABLED`.
+19. Extended the canonical Hub deployment trigger so changes to the single identity adapter and `identity.html` are deployed with the Hub rather than silently remaining source-only.
+20. Deployed the current Hub source to Cloudflare successfully: release `8e94c601fa3efabe6828857f34ef0117de3850d5`, Cloudflare Version ID `d739a21a-a5e4-4deb-bad0-3e7d2601cff5`; live artifact verification passed and confirmed the canonical presentation.
 
 ## Runtime evidence
 The real Auth endpoint invocation returned:
@@ -52,7 +54,7 @@ The name-first application boundary is now aligned to the existing Supabase Auth
 No email address was fabricated. No email/password fallback was used. No second identity or persistence system was introduced.
 
 ## Production routing truth still unresolved
-The public `welcome.nayanet.app` domain currently resolves to a Cloudflare Worker surface that is not demonstrably the same deployed artifact as the canonical repository Welcome source. The live Welcome Worker is confirmed as the public front door, but its deployment source is not exposed by NayaPOWER. The repository source is now prepared to hand the human directly into the canonical Cloudflare Hub identity route; production deployment of that Welcome source remains outside the verified NayaPOWER deployment path. The canonical Hub production runtime remains the authorized Cloudflare Intelligent Hub release path.
+The public `welcome.nayanet.app` domain currently resolves to a Cloudflare Worker surface that is not demonstrably the same deployed artifact as the canonical repository Welcome source. The live Welcome Worker is confirmed as the public front door, but its deployment source is not exposed by NayaPOWER. The repository source is now prepared to hand the human directly into the canonical Cloudflare Hub identity route; production deployment of that Welcome source remains outside the verified NayaPOWER deployment path. The canonical Hub production runtime remains the authorized Cloudflare Intelligent Hub release path. The latest deployment is verified production-proven for the deployed source commit; the name-first lifecycle itself remains blocked at Auth configuration.
 
 ## Protected state
 - Canonical Hub visual surface remains protected.
