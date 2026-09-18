@@ -176,8 +176,8 @@ jobs:
 
           const receipt = {
             schema:'naya.nayanet.name_first.lifecycle.receipt.v1',
-            status:'PRODUCTION_PROVEN',
-            claim_type:'WHOLE_JOURNEY',
+            status:'PRODUCTION_PROVEN_PARTIAL_EXTERNAL_WELCOME',
+            claim_type:'NAME_FIRST_TO_HUB',
             source:{head:process.env.GITHUB_SHA,branch:process.env.GITHUB_REF_NAME},
             runtime:{welcome,hub,worker:'sparkling-shape-7ae5'},
             journey:{
@@ -200,7 +200,7 @@ jobs:
             },
             privacy:{visibility:'private',consent_state:'not_granted'},
             event_id:eventId,
-            note:'Machine-generated runtime receipt. No email/password authentication and no parallel identity or persistence system used.'
+            note:'Machine-generated runtime receipt. Name-first → authenticated Hub → persistence → Personal Intelligence → fresh-context continuity is production-proven. Welcome → identity remains externally controlled and is explicitly excluded from this receipt rather than being fabricated.'
           };
 
           fs.writeFileSync(process.env.RECEIPT_PATH,JSON.stringify(receipt,null,2));
@@ -233,7 +233,7 @@ jobs:
         shell: bash
         run: |
           test -s "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
-          node -e "const r=require(process.argv[1]); if(r.status!=='PRODUCTION_PROVEN') throw new Error('bad status'); for(const [k,v] of Object.entries(r.journey)) if(v!==true && k!=='name') throw new Error('failed '+k)" "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='PRODUCTION_PROVEN_PARTIAL_EXTERNAL_WELCOME') throw new Error('bad status'); for(const [k,v] of Object.entries(r.journey)) if(v!==true && k!=='name' && k!=='welcome_to_identity') throw new Error('failed '+k)" "$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
 
       - name: Upload lifecycle receipt
         uses: actions/upload-artifact@v4
