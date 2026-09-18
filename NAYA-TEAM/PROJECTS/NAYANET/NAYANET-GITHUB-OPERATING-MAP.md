@@ -172,6 +172,10 @@ The canonical intelligence presentation is:
 
 A useful Smart Note should preserve provenance, freshness, relationship/supersession information, and the lesson or reusable intelligence produced.
 
+## Repository relationship index
+
+The derived repository-wide relationship projection is `.naya/control-plane/RELATIONSHIP-INDEX.json`, with a human-readable view at `SUPERBRAIN/NAYA-ACTIVITY/RELATIONSHIP-INDEX.md` and rebuild contract at `.naya/control-plane/RELATIONSHIP-INDEX-CONTRACT.md`. The builder is `scripts/build_repository_relationship_index.py`. These are navigation projections only; they never become a second database, event store, memory system, or authority source.
+
 ## Relationship model
 
 Important objects should be linkable through explicit relationships:
@@ -242,7 +246,7 @@ The GitHub execution surface may edit repository files, but the connected GitHub
 
 1. The Cold-Naya Index and dated Team Naya records can expose different immediate priorities unless the reader follows the canonical STATE/BLOCKS rule.
 2. Project directories are currently strong navigation boundaries, but their Activity is primarily a documented projection rather than a mechanically generated calendar/index for every sub-project.
-3. Dated Team Naya records are rich, but there is not yet one machine-generated relationship index connecting every record to project, event, Smart Note, state, evidence and successor.
+3. The repository-wide relationship index now connects repository records to conservative structural boundaries and explicit repository references. Rich semantic links still require explicit source evidence; the index must not guess them.
 4. Smart Note provenance/freshness exists in the underlying architecture, but repository navigation does not yet make those relationships effortless to retrieve.
 5. Historical and current Hub material is documented as separate authority classes, but some historical references remain distributed across the repository.
 6. Several NayaNET areas are intentionally PARTIAL/DEMO/MISSING; their project folders exist, but implementation absence must remain visibly distinct from project existence.
@@ -290,7 +294,7 @@ If any answer requires conversational archaeology, the operating map is not fini
 
 ## One next action
 
-**Run a repository-wide operating-map audit against this contract, reconcile any remaining duplicate/current-vs-historical navigation surfaces, and then update the Cold-Naya Index and Team Naya daily index so this map is the single obvious NayaNET navigation spine.**
+**Use the repository relationship index to audit and reconcile the remaining current-vs-historical and project/activity navigation surfaces, then strengthen only the missing explicit source relationships.**
 
 ---
 **Operating law:** one repository • one current truth • one event substrate • many useful views • one next action.
