@@ -24,7 +24,7 @@ if(score.task_score.baseline!==1||score.task_score.counterfactual!==1||score.tas
 if(score.responsible_value.baseline!==0||score.responsible_value.counterfactual!==0||score.responsible_value.delta!==0)throw new Error('VALUE_SCORE_FAILED');
 if(score.responsible_value.verification!=='VERIFIED')throw new Error('VALUE_NOT_VERIFIED');
 if(score.policy_improvement!=='NOT_PROVEN')throw new Error('POLICY_IMPROVEMENT_FABRICATED');
-const replay2=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',headers:{...h(sender.access_token),'x-idempotency-key':dreamKey},body:JSON.stringify({event_id:send.cognition_event_id,idempotency_key:dreamKey,project_id:'NayaNET'})});
+const replay2=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',headers:{...h(sender.access_token),'x-idempotency-key':dreamKey},body:JSON.stringify({event_id:cognitionEventId,idempotency_key:dreamKey,project_id:'NayaNET'})});
 if(!replay2.idempotent||replay2.replay?.id!==replay.replay.id)throw new Error('DREAM_IDEMPOTENCY_FAILED');
 const proof={schema:'naya.nayanet.dream.score.p0.production.proof.v1',status:'VERIFIED',transaction:{mail_message_id:send.message_id,cognition_event_id:cognitionEventId,execution_receipt_id:send.execution_receipt_id,dream_replay_id:replay.replay.id},score_contract:score,policy_improvement:'NOT_PROVEN',idempotent_replay:true,observed_at:new Date().toISOString()};
 fs.writeFileSync(process.env.PROOF_PATH,JSON.stringify(proof,null,2));
