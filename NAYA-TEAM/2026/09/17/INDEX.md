@@ -83,3 +83,13 @@ The official project is [Intelligent Hub — Official Project](./2026-09-17-INTE
 **CURRENT TRUTH:** the protected `2026 09 17 NAYANET HUB.html` is the visual starting point. The underlying three-feed production data/runtime is not yet complete. UI presence is not runtime proof.
 
 **NAYA RULE:** understand the whole, select one bounded slice, build it against the common flow, verify it, record Activity, preserve reusable learning, and leave one exact continuation action.
+
+
+## 🔱 CURRENT INTELLIGENT HUB MISSION — CORRECTED TEAM NAYA LOCATION
+
+- [Current Mission State — NayaNET Intelligent Hub](./2026-09-17T23-59-00Z__NAYANET-INTELLIGENT-HUB-CURRENT-MISSION-STATE.md)
+- [Project Activity Feed — NayaNET Intelligent Hub](./2026-09-17T23-59-30Z__NAYANET-INTELLIGENT-HUB-PROJECT-ACTIVITY-FEED.md)
+
+**Human evidence rule:** direct Smart Links are the primary receipt. Commit SHAs are provenance, not the human-facing evidence.
+
+**Mission:** Finish the NayaNET Intelligent Hub as the real operational product. Team Naya exists to help complete that product quickly, correctly, visibly, and continuously.
