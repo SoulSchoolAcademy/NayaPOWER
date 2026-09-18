@@ -69,7 +69,7 @@ jobs:
           await pageA.locator('#name').fill(probe);
           await pageA.locator('#alias').fill(alias);
           await pageA.locator('#enter').click();
-          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {timeout:60000});
+          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
           await pageA.waitForFunction(() => window.NayaAssistantRuntime?.snapshot?.().authenticated === true, null, {timeout:30000});
 
           const identity = await pageA.evaluate(() => window.NayaNETNameFirstAuth.current());
