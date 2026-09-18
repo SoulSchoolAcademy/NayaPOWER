@@ -117,7 +117,7 @@
     },
     "interpretation": "Fresh Assistant-lane production evidence is bound to deployed source head 147cf23102b91cb4b223a9d87346190e7d2e9297. The deployed artifact now contains the governed Supabase authentication/session and cognition persistence bridge. Positive authenticated lifecycle and independent external cold-Naya remain BLOCKED only because no authorized test identity/positive receipt was available for execution; no false PASS is recorded."
   },
-  "recording_commit": "147cf23102b91cb4b223a9d87346190e7d2e9297",
+  "recording_commit": "eb7c13c21584bcb42c17709cbccc53e3abd6c091",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
