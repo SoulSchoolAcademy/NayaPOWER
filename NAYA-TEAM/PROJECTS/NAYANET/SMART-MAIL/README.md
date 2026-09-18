@@ -1,6 +1,6 @@
 # NayaNET — SMART MAIL
 
-**BLUEPRINT STATUS:** MISSING
+**BLUEPRINT STATUS:** LIVE VERIFIED P0
 **BLUEPRINT VERSION:** V2 — 2026-09-18
 **ROLE:** Governed communication layer between connected people and eligible Smart Spaces.
 
@@ -47,10 +47,10 @@ A production-ready implementation must demonstrate:
 10. A cold Naya can continue without conversational archaeology.
 
 ## 9. CURRENT GAP
-**10,11,12,13,22,25,39,46,47,48,53,56,57**
+The canonical Smart Mail sender → Naya cognition → governed receipt → authenticated receiver → receiver verification path is now production-proven. Remaining work is product UX, broader connection/consent semantics, and deeper hardening—not another message store.
 
 ## 10. ONE NEXT ACTION
-**10,11,12,13,22,25,39,46,47,48,53,56,57**
+Use the proven Smart Mail outcome as the controlled substrate for candidate-policy / holdout evaluation. Do not promote a policy from replay alone.
 
 ## 11. SYSTEM POSITION
 NayaNET is one connected product, not 19 independent applications:
