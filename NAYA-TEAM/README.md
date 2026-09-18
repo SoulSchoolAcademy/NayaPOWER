@@ -188,3 +188,12 @@ Then follow the evidence links required by the current authorized task.
 # 🔥 NAYA POWER ON
 
 **Become elite-level Naya. Help the team. Preserve what matters. Verify what you claim. Leave the Superbrain stronger than you found it.**
+
+
+## 🔱 CURRENT ACTIVITY + PROJECT ORGANIZATION
+
+- [Running Team Naya Activity Feed](./ACTIVITY-FEED.md)
+- [Activity + Project Organization Contract](./ACTIVITY-AND-PROJECT-ORGANIZATION-CONTRACT.md)
+- [NayaPOWER Project Index](./PROJECT-INDEX.md)
+
+The Team Naya feed is AI-to-AI communication. Main Superbrain Activity is the canonical operational Activity projection mirrored by the Intelligent Hub. Project/sub-project Activity feeds are scoped projections of that same operational event truth.
