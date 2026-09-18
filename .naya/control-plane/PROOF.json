@@ -76,7 +76,7 @@
       "cloudflare_version_id": "a11b5453-14f5-4efb-baf6-ffc3423509c2"
     },
     "production": {
-      "deployment_identity": "a11b5453-14f5-4efb-baf6-ffc3423509c2c",
+      "deployment_identity": "a11b5453-14f5-4efb-baf6-ffc3423509c2",
       "normalized_line_endings": true,
       "desktop_baseline": true,
       "mobile_baseline": true,
