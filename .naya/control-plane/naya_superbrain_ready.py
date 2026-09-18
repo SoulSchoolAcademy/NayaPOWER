@@ -164,6 +164,17 @@ def evaluate() -> dict[str, Any]:
 
     # Every mission boundary is independently evidence-backed. Missing claims
     # are UNKNOWN; historical claims cannot certify the current HEAD.
+    runtime_claims = {}
+    evidence_file = os.environ.get("NAYA_READINESS_EVIDENCE_FILE")
+    if evidence_file:
+        path = Path(evidence_file)
+        if path.is_file():
+            try:
+                bundle = json.loads(path.read_text(encoding="utf-8"))
+                runtime_claims = bundle.get("claims", {}) if isinstance(bundle, dict) else {}
+            except Exception as exc:
+                checks.append(result("readiness_evidence_bundle", "FAILED", [str(path)], f"invalid readiness evidence bundle: {exc}"))
+                runtime_claims = {}
     for name in UNKNOWN_MISSION_BOUNDARIES:
         checks.append(mission_claim(p, name, current, runtime_claims))
 
