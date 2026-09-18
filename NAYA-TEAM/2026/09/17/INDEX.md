@@ -21,6 +21,10 @@
 - [2026-09-17T16-20-00Z — Cold-Naya proof brief](./2026-09-17T16-20-00Z__COLD-NAYA-PROOF-BRIEF.md)
 - [2026-09-17T17-02-00Z — Superbrain mission / handoff](./2026-09-17T17-02-00Z__TEAM-NAYA-SUPERBRAIN-MISSION.md)
 
+## NayaNET operating spine
+
+**[NayaNET / GitHub Operating Map](../../PROJECTS/NAYANET/NAYANET-GITHUB-OPERATING-MAP.md)** is the navigation spine for NayaNET project work. Use it to locate the project, sub-project, Activity, intelligence, current state, evidence, and successor. It does not override the canonical control plane.
+
 ## Canonical current-state rule
 
 This daily index is a continuity projection. It does **not** override the canonical control plane.
