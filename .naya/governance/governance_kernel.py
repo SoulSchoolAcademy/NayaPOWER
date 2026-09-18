@@ -370,8 +370,7 @@ def evaluate_capability_responsibility(
             missing_controls=frozenset(missing),
             reasons=(
                 "responsibility envelope is insufficient for the declared capability envelope",
-                f"missing controls: {
-.join(names)}",
+                "missing controls: " + ", ".join(names),
                 "capability does not create authority",
             ),
         )
