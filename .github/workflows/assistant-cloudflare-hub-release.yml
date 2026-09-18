@@ -37,7 +37,9 @@ jobs:
           test -s '2026 09 17 NAYANET HUB.html'
           mkdir -p dist
           cp '2026 09 17 NAYANET HUB.html' dist/index.html
+          cp 'assistant-runtime.js' dist/assistant-runtime.js
           grep -q 'nayanet-direct-nine' dist/index.html
+          grep -q 'assistant-runtime.js' dist/index.html
           grep -q 'NayaNET — Intelligent Hub' dist/index.html
           sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
           echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
