@@ -71,10 +71,16 @@ jobs:
           await pageA.locator('#alias').fill(alias);
           await pageA.locator('#enter').click();
           await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
-          await pageA.waitForFunction(() => window.NayaAssistantRuntime?.snapshot?.().authenticated === true, null, {timeout:30000});
-
-          const identity = await pageA.evaluate(() => window.NayaNETNameFirstAuth.current());
+          const identity = await pageA.evaluate(async ({url,key}) => {
+            const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+            const client = sdk.createClient(url,key);
+            const session = (await client.auth.getSession()).data.session;
+            return {authenticated:!!session,userId:session?.user?.id||null,isAnonymous:session?.user?.is_anonymous===true};
+          }, {url:supabaseUrl,key:supabaseKey});
           if (!identity?.authenticated || !identity?.userId || identity.isAnonymous !== true) throw new Error('NAME_FIRST_AUTH_FAILED');
+          await pageA.evaluate(async () => { if (window.NayaAssistantRuntime?.init) await window.NayaAssistantRuntime.init(); });
+          const snapAfterInit = await pageA.evaluate(() => window.NayaAssistantRuntime?.snapshot?.());
+          if (!snapAfterInit?.authenticated || snapAfterInit.user_id !== identity.userId) throw new Error('HUB_IDENTITY_PROVIDER_MISMATCH');
 
           const db = await pageA.evaluate(async ({url,key,userId}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
@@ -89,9 +95,6 @@ jobs:
           if (!db.member || db.member.id !== identity.userId) throw new Error('MEMBER_UUID_MISMATCH');
           if (!db.profile || db.profile.member_id !== identity.userId) throw new Error('PROFILE_UUID_MISMATCH');
           if (db.profile.public_alias !== alias) throw new Error('ALIAS_PERSISTENCE_MISMATCH');
-
-          const snapA = await pageA.evaluate(() => window.NayaAssistantRuntime.snapshot());
-          if (!snapA.authenticated || snapA.user_id !== identity.userId) throw new Error('HUB_IDENTITY_PROVIDER_MISMATCH');
 
           await pageA.evaluate(async ({title,content,eventId}) => {
             await window.NayaAssistantRuntime.record({
@@ -118,9 +121,9 @@ jobs:
           const contextB = await browser.newContext({storageState:storage});
           const pageB = await contextB.newPage();
           await pageB.goto(hub, {waitUntil:'networkidle', timeout:60000});
-          await pageB.waitForFunction(() => window.NayaAssistantRuntime?.snapshot?.().authenticated === true, null, {timeout:30000});
-          const identityB = await pageB.evaluate(() => window.NayaNETNameFirstAuth.current());
-          if (!identityB?.authenticated || identityB.userId !== identity.userId) throw new Error('FRESH_CONTEXT_IDENTITY_MISMATCH');
+          await pageB.evaluate(async () => { if (window.NayaAssistantRuntime?.init) await window.NayaAssistantRuntime.init(); });
+          const identityB = await pageB.evaluate(() => window.NayaAssistantRuntime?.snapshot?.());
+          if (!identityB?.authenticated || identityB.user_id !== identity.userId) throw new Error('FRESH_CONTEXT_IDENTITY_MISMATCH');
 
           const cold = await pageB.evaluate(async eventId => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
