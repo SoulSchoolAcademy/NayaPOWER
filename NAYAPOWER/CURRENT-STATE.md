@@ -1,6 +1,6 @@
 # NayaPOWER — Current State
 
-**Status:** CANONICAL HUB APPLICATIONIZATION IN PROGRESS
+**Status:** CANONICAL HUB APPLICATIONIZATION IN PROGRESS — DEPLOYED BRIDGE OBSERVED
 
 ## Mission
 
@@ -18,6 +18,8 @@ The existing navigation, feed, Personal Intelligence, Collective Intelligence, A
 - Canonical conversation continuity vertical-slice runtime.
 - Authenticated Supabase session boundary in `assistant-runtime.js`.
 - Existing Hub now contains a runtime bridge that retrieves authenticated NayaNET cognition events into the existing Personal Intelligence feed without replacing the Hub UI.
+- Cloudflare production deployment now ships the runtime bridge asset alongside the canonical Hub HTML; artifact-level live verification passed in deployment run `35375471437`.
+- Team Naya and NayaPOWER Activity now record the applicationization decision and deployment observation.
 - Team Naya directive and NayaPOWER Activity/Smart Note records documenting the canonical application architecture.
 
 ## Current Architecture
