@@ -281,7 +281,7 @@ If any answer requires conversational archaeology, the operating map is not fini
 
 ## Canonical references
 
-- [Cold-Naya Operating Index](../../../../START-HERE/COLD-NAYA-OPERATING-INDEX.md)
+- [Cold-Naya Operating Index](../../../START-HERE/COLD-NAYA-OPERATING-INDEX.md)
 - [NayaNET Project Root](./README.md)
 - [19-Subproject Reconciliation](./19-SUBPROJECT-RECONCILIATION-2026-09-17.md)
 - [Team Naya 2026-09-17 Index](../../2026/09/17/INDEX.md)
