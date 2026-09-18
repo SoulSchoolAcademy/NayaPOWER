@@ -145,3 +145,24 @@ The visual contract is now represented by a safe versioned candidate while the R
 ### IH-02 → IH-03
 
 **Next:** prove one canonical intelligence identity from **canonical event → PIS → IntelligentEvent → Intelligent Block → feed**, preserving stable identity, timestamp, provenance, privacy and verification state.
+
+
+## IH-03 IMPLEMENTATION RECONCILIATION — 2026-09-18
+
+**STATUS:** PROVEN — repository projection boundary
+
+A real canonical event from `.naya/memory/events/` now has an explicit adapter into the existing PIS projection. The adapter preserves canonical identity and truth-bearing fields rather than generating replacement identity.
+
+**Proof target:** `SE-20260917-030839-p001a-auto-emission-verified`
+
+**Preserved:** event ID, creation/effective timestamp, source execution identity, evidence reference, verification state, privacy visibility.
+
+**Intelligent Block binding:** the existing `SmartFeedBoard` renders `data-event-id={event.event_id}`, preserving the same identity into the presentation boundary.
+
+**Proof:** `scripts/verify_ih03_canonical_intelligence_identity.py` executed successfully in an isolated temporary checkout.
+
+This closes the repository-level source → PIS → IntelligentEvent → Intelligent Block identity gap. It does not claim authenticated/live production proof.
+
+### IH-03 → IH-04
+
+**Next:** prove Activity, Personal, and Collective as genuinely authorized projections of canonical intelligence rather than three UI labels over the same unfiltered event set.
