@@ -95,6 +95,85 @@ def parse_canonical_note(path: Path, root: Path = ROOT) -> dict[str, Any] | None
     return {"event_id": eid, "user_id": "canonical", "created_at": timestamp, "updated_at": timestamp, "source": {"type": "smart_note", "id": eid, "label": topic}, "human_input": {"raw": sec.get("HUMAN NOTE", sec.get("IN A NUTSHELL", "")), "captured_at": timestamp}, "context": {"topic": topic, "tags": ["canonical", "smart-note", "naya-language"], "canonical_path": rel}, "naya_interpretation": {"observation": sec.get("IN A NUTSHELL", ""), "interpretation": sec.get("NAYA NOTE", ""), "recommendation": sec.get("HOW TO USE IT", ""), "uncertainty": "Projection is derived from the canonical Smart Note; truth status remains governed by its evidence."}, "machine_evidence": {"items": evidence + [f"CANONICAL_SMART_NOTE:{rel}"], "verification_state": "RECORDED"}, "weaver_synthesis": {"summary": sec.get("WHY IT MATTERS", topic), "relationships": []}, "lesson": {"text": sec.get("LEARNING LESSON / ADAPTIVE LEARNING", ""), "retained": True}, "meaning": {"text": sec.get("WHY IT MATTERS", ""), "significance": sec.get("WHY IT MATTERS", "")}, "action": {"text": sec.get("ONE NEXT ACTION", ""), "status": "canonical"}, "whats_in_it_for_you": sec.get("WHAT'S IN IT FOR ME / YOU / US", ""), "relationships": {"event_ids": [], "connection_ids": [], "space_ids": []}, "privacy": {"visibility": "private", "consent_state": "not_granted"}, "trust": {"level": "recorded", "evidence_ids": evidence}, "status": meta.get("status", "CANONICAL"), "perspectives": [{"label": "HUMAN", "body": sec.get("HUMAN NOTE", ""), "tone": "human"}, {"label": "CHILD", "body": sec.get("CHILD / DERIVED NOTE", ""), "tone": "child"}, {"label": "GRAMMAR", "body": sec.get("GRAMMAR NOTE", ""), "tone": "machine"}, {"label": "NAYA", "body": sec.get("NAYA NOTE", ""), "tone": "naya"}, {"label": "MACHINE", "body": sec.get("MACHINE NOTE", ""), "tone": "machine"}, {"label": "LEARNING", "body": sec.get("LEARNING LESSON / ADAPTIVE LEARNING", ""), "tone": "learning"}], "pis": {"source_ref": rel, "projection_version": "3.0", "timestamp_precision": "canonical-smart-note"}}
 
 
+def canonical_event_projection(path: Path, root: Path = ROOT) -> dict[str, Any] | None:
+    """Project one canonical Note Event into the Hub's IntelligentEvent shape.
+
+    The event store remains authoritative. This function only adapts existing
+    canonical event fields for PIS presentation; it never creates a second event.
+    """
+    try:
+        event = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    event_id = str(event.get("event_id", "")).strip()
+    if not re.fullmatch(r"SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+", event_id):
+        return None
+    reps = event.get("representations") if isinstance(event.get("representations"), dict) else {}
+    human = reps.get("shawn") or reps.get("human") or {}
+    naya = reps.get("naya") or {}
+    machine = reps.get("machine") or {}
+    def text_of(value: Any) -> str:
+        if isinstance(value, str):
+            return value.strip()
+        if isinstance(value, dict):
+            for key in ("text", "summary", "content", "observation"):
+                if isinstance(value.get(key), str) and value[key].strip():
+                    return value[key].strip()
+        return ""
+    created_at = str(event.get("created_at") or event.get("effective_at") or "")
+    if not created_at:
+        return None
+    source = event.get("source") if isinstance(event.get("source"), dict) else {}
+    verification = event.get("verification") if isinstance(event.get("verification"), dict) else {}
+    privacy = event.get("privacy") if isinstance(event.get("privacy"), dict) else {}
+    subject = str(event.get("subject") or event.get("title") or event_id)
+    evidence_ids = [str(x) for x in (event.get("evidence_ids") or [])]
+    evidence_items = [f"EVIDENCE:{x}" for x in evidence_ids]
+    verification_state = str(verification.get("status") or event.get("status") or "RECORDED")
+    visibility = str(privacy.get("visibility") or "PRIVATE BY DEFAULT")
+    consent = str(privacy.get("consent_state") or "UNKNOWN")
+    canonical_path = str(path.relative_to(root)).replace("\\", "/")
+    perspectives = []
+    for label, value, tone in (("HUMAN", human, "human"), ("NAYA", naya, "naya"), ("MACHINE", machine, "machine")):
+        body = text_of(value)
+        if body:
+            perspectives.append({"label": label, "body": body, "tone": tone})
+    return {
+        "event_id": event_id,
+        "user_id": str(event.get("user_id") or "canonical"),
+        "created_at": created_at,
+        "updated_at": str(event.get("updated_at") or created_at),
+        "source": {"type": str(source.get("kind") or event.get("event_type") or "canonical_event"), "id": str(source.get("event_id") or event_id), "label": subject},
+        "human_input": {"raw": text_of(human) or subject, "captured_at": created_at},
+        "context": {"topic": subject, "tags": [str(x) for x in (event.get("tags") or [])], "canonical_path": canonical_path},
+        "naya_interpretation": {"observation": subject, "interpretation": text_of(naya), "recommendation": "", "uncertainty": "Projected directly from canonical event; verification state is preserved."},
+        "machine_evidence": {"items": evidence_items + [f"CANONICAL_EVENT:{event_id}", f"SOURCE:{canonical_path}"], "verification_state": verification_state},
+        "weaver_synthesis": {"summary": subject, "relationships": []},
+        "lesson": {"text": text_of(event.get("learning")), "retained": bool(event.get("learning"))},
+        "meaning": {"text": text_of(event.get("meaning")), "significance": text_of(event.get("meaning"))},
+        "action": {"text": str((event.get("continuity") or {}).get("handoff", {}).get("next_action") or ""), "status": "canonical-event"},
+        "whats_in_it_for_you": "",
+        "relationships": {"event_ids": [], "connection_ids": [], "space_ids": []},
+        "privacy": {"visibility": visibility, "consent_state": consent},
+        "trust": {"level": "verified" if verification_state.upper() == "VERIFIED" else "recorded", "evidence_ids": evidence_ids},
+        "status": str(event.get("status") or verification_state),
+        "perspectives": perspectives,
+        "pis": {"source_ref": canonical_path, "projection_version": "4.0", "timestamp_precision": "canonical-event"},
+    }
+
+
+def canonical_runtime_events(root: Path = ROOT) -> list[dict[str, Any]]:
+    events_root = root / ".naya" / "memory" / "events"
+    if not events_root.exists():
+        return []
+    events = []
+    for path in sorted(events_root.rglob("SE-*.json")):
+        event = canonical_event_projection(path, root)
+        if event:
+            events.append(event)
+    return events
+
+
 def canonical_note_events(root: Path = SMART_NOTES_ROOT) -> list[dict[str, Any]]:
     if not root.exists():
         return []
@@ -112,8 +191,9 @@ def build_projection(*, extra_notes: Iterable[dict[str, Any]] | None = None, sou
     source = source_root / "SMART FEED CONTENT"
     legacy = legacy_events(source.read_text(encoding="utf-8"), when()) if source.exists() else []
     notes = canonical_note_events(source_root / "SUPERBRAIN" / "SMART-NOTES")
+    runtime_events = canonical_runtime_events(source_root)
     merged: dict[str, dict[str, Any]] = {e["event_id"]: e for e in legacy}
-    for event in notes + list(extra_notes or []):
+    for event in notes + runtime_events + list(extra_notes or []):
         merged[event["event_id"]] = event
     events = sorted(merged.values(), key=lambda e: (e.get("created_at", ""), e["event_id"]), reverse=True)
     payload = {"schema_version": "PIS-3.0", "generated_at": datetime.now(timezone.utc).isoformat(), "source": "github:canonical-smart-notes+smart-feed", "event_count": len(events), "events": events}
