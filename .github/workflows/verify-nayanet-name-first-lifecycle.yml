@@ -1,6 +1,7 @@
 name: Verify NayaNET Name-First Lifecycle
 
 on:
+  # # post-deployment runtime acceptance
   # # continuation verification: canonical auth storage handoff
   # Live continuation after verified Cloudflare deployment.
   push:
