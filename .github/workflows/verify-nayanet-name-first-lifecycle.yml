@@ -268,6 +268,64 @@ jobs:
 
           fs.writeFileSync(process.env.DREAM_RECEIPT_PATH,JSON.stringify(dreamState,null,2));
           Object.entries(dreamState.points).forEach(([k,v],i)=>console.log('DREAM_PROOF_'+String(i+1).padStart(2,'0')+'_'+k.toUpperCase()+'='+(v?'PASS':'FAIL')));
+          // DREAM -> LEARNING -> GOVERNED LATER DECISION:
+          // Continue from the replay just proven above. Reuse the same authenticated
+          // browser session and the existing learning/decision surfaces.
+          const learningTargetId = 'current-session-dream-learning-' + process.env.GITHUB_RUN_ID;
+          const learningEvidence = await pageA.evaluate(async ({eventId,replayId,targetId}) =>
+            window.NayaAssistantRuntime.recordLearningEvidence({
+              target_id:targetId,
+              level:'E1_UNDERSTANDS',
+              provenance:'VERIFICATION',
+              claim:'Verified Dream replay context is reusable learning evidence for a later governed decision.',
+              observed_value:{source_event_id:eventId,replay_id:replayId},
+              verification_method:'authenticated current-session cognition event + canonical Dream replay',
+              source_event_id:eventId
+            }), {eventId,dreamState_replayId:dreamState.replay_id,targetId:learningTargetId,replayId:dreamState.replay_id});
+          if(!learningEvidence?.id) throw new Error('DREAM_LEARNING_EVIDENCE_NOT_PERSISTED');
+
+          const appliedLearning = await pageA.evaluate(async ({evidenceId,replayId}) =>
+            window.NayaAssistantRuntime.applyLearning({evidence_id:evidenceId,replay_id:replayId}),
+            {evidenceId:learningEvidence.id,replayId:dreamState.replay_id});
+          if(!appliedLearning?.ok || !appliedLearning?.learning?.learner_state_version)
+            throw new Error('DREAM_LEARNING_STATE_NOT_UPDATED');
+
+          const decision = await pageA.evaluate(async ({targetId}) =>
+            window.NayaAssistantRuntime.decisionContext({target_id:targetId}), {targetId:learningTargetId});
+          if(!decision?.ok || decision.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT' || decision.decision?.influenced!==true)
+            throw new Error('DREAM_LATER_DECISION_NOT_INFLUENCED '+JSON.stringify(decision));
+          if(decision.decision?.authority?.changed!==false || decision.decision?.authority?.granted!==false)
+            throw new Error('DREAM_LATER_DECISION_AUTHORITY_CHANGED '+JSON.stringify(decision.decision?.authority));
+
+          const learningProof = {
+            schema:'naya.nayanet.dream_learning_later_decision.current_session.proof.v1',
+            status:'VERIFIED',
+            user_id:dreamState.user_id,
+            source_event_id:eventId,
+            replay_id:dreamState.replay_id,
+            learning_evidence_id:learningEvidence.id,
+            learner_state_version:appliedLearning.learning.learner_state_version,
+            target_id:learningTargetId,
+            later_decision:decision.decision.decision,
+            influenced:decision.decision.influenced,
+            authority:decision.decision.authority,
+            verification:decision.decision.verification
+          };
+          if(learningProof.user_id!==dreamState.user_id) throw new Error('DREAM_LEARNING_OWNER_LINEAGE_MISMATCH');
+          if(learningProof.later_decision!=='USE_VERIFIED_LEARNING_CONTEXT' || learningProof.influenced!==true)
+            throw new Error('DREAM_LEARNING_DECISION_PROOF_FAILED');
+          if(learningProof.authority?.changed!==false || learningProof.authority?.granted!==false)
+            throw new Error('DREAM_LEARNING_AUTHORITY_PROOF_FAILED');
+
+          fs.writeFileSync(process.env.DREAM_LEARNING_RECEIPT_PATH,JSON.stringify(learningProof,null,2));
+          console.log('DREAM_LEARNING_USER_ID='+learningProof.user_id);
+          console.log('DREAM_LEARNING_REPLAY_ID='+learningProof.replay_id);
+          console.log('DREAM_LEARNING_EVIDENCE_ID='+learningProof.learning_evidence_id);
+          console.log('DREAM_LEARNING_STATE_VERSION='+learningProof.learner_state_version);
+          console.log('DREAM_LATER_DECISION='+learningProof.later_decision);
+          console.log('DREAM_LEARNING_INFLUENCED=PASS');
+          console.log('DREAM_LEARNING_AUTHORITY_CHANGED=PASS');
+
           console.log('DREAM_REPLAY_ID='+dreamState.replay_id);
           console.log('DREAM_USER_ID='+dreamState.user_id);
           console.log('DREAM_IDEMPOTENCY_KEY='+dreamState.idempotency_key);
@@ -354,6 +412,7 @@ jobs:
           EOF
           export RECEIPT_PATH="$RUNNER_TEMP/nayanet-name-first-lifecycle-receipt.json"
           export DREAM_RECEIPT_PATH="$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+          export DREAM_LEARNING_RECEIPT_PATH="$RUNNER_TEMP/nayanet-dream-learning-later-decision-proof.json"
           node lifecycle.mjs
 
       - name: Validate receipt
@@ -367,6 +426,20 @@ jobs:
         run: |
           test -s "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
           node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad Dream proof status'); const p=r.points; if(Object.values(p).some(v=>v!==true)) throw new Error('Dream proof point failed'); if(!r.user_id||!r.replay_id||!r.idempotency_key) throw new Error('Dream proof identifiers missing');" "$RUNNER_TEMP/nayanet-current-session-dream-proof.json"
+
+      - name: Validate Dream → Learning → governed later decision proof
+        shell: bash
+        run: |
+          test -s "${{ runner.temp }}/nayanet-dream-learning-later-decision-proof.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad learning proof status'); if(!r.user_id||!r.replay_id||!r.learning_evidence_id) throw new Error('missing lineage'); if(r.later_decision!=='USE_VERIFIED_LEARNING_CONTEXT'||r.influenced!==true) throw new Error('learning did not influence decision'); if(r.authority?.changed!==false||r.authority?.granted!==false) throw new Error('authority changed');" "${{ runner.temp }}/nayanet-dream-learning-later-decision-proof.json"
+
+      - name: Upload Dream → Learning → governed later decision proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-dream-learning-later-decision-proof
+          path: "${{ runner.temp }}/nayanet-dream-learning-later-decision-proof.json"
+          if-no-files-found: error
+          retention-days: 30
 
       - name: Upload current-session Dream boundary proof
         uses: actions/upload-artifact@v4
