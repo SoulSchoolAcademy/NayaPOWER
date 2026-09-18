@@ -78,7 +78,7 @@ jobs:
           await pageA.waitForLoadState('networkidle', {timeout:60000});
           const identity = await pageA.waitForFunction(async ({url,key}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-            const client = window.__lifecycleSupabaseClient || (window.__lifecycleSupabaseClient = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}}));
+            const client = window.__lifecycleSupabaseClient || (window.__lifecycleSupabaseClient = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}}));
             const session = (await client.auth.getSession()).data.session;
             return session?.user?.id ? {authenticated:true,userId:session.user.id,isAnonymous:session.user.is_anonymous===true} : null;
           }, {url:supabaseUrl,key:supabaseKey}, {timeout:30000}).then(h => h.jsonValue());
