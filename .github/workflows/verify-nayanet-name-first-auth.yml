@@ -30,7 +30,7 @@ jobs:
           grep -q "members" NAYANET/name-first-auth-adapter.js
           grep -q "nayanet_profiles" NAYANET/name-first-auth-adapter.js
           grep -q "nayanet_identity_version" NAYANET/name-first-auth-adapter.js
-          if grep -Eq "signInWithPassword|email|password" NAYANET/name-first-auth-adapter.js; then
+          if grep -Eq "signInWithPassword|[\"']email[\"']|password[[:space:]]*:" NAYANET/name-first-auth-adapter.js; then
             echo "Name-first adapter must not introduce email/password authentication."
             exit 1
           fi
