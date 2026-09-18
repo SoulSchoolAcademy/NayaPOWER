@@ -4,7 +4,7 @@
 Machine events remain authoritative in .naya/memory/events. This module only
 projects verified events into the human-readable calendar trees:
 
-  SUPERBRAIN/NAYA-ACTIVITY/YYYY/MM/DD/YYYY-MM-DDTHH-MM-SSZ__TOPIC.md
+  NAYAPOWER/ACTIVITY/YYYY/MM/DD/YYYY-MM-DDTHH-MM-SSZ__TOPIC.md
   NAYA-TEAM/YYYY/MM/DD/YYYY-MM-DDTHH-MM-SSZ__TOPIC.md
 
 It deliberately does not create Smart Notes: Smart Notes have their own
@@ -19,7 +19,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-ACTIVITY_ROOT = ROOT / "SUPERBRAIN" / "NAYA-ACTIVITY"
+ACTIVITY_ROOT = ROOT / "NAYAPOWER" / "ACTIVITY"
 TEAM_ROOT = ROOT / "NAYA-TEAM"
 
 
