@@ -1,28 +1,73 @@
 # NayaNET — CIS
 
-**STATUS:** PARTIAL  
-**RECONCILED:** 2026-09-17
+**BLUEPRINT STATUS:** PARTIAL
+**BLUEPRINT VERSION:** V2 — 2026-09-18
+**ROLE:** Compounding Intelligence System that turns verified experience into reusable future intelligence.
 
-## Definition
-Official NayaNET sub-project boundary for **CIS**.
+## 1. WHAT IT IS
+Compounding Intelligence System that turns verified experience into reusable future intelligence.
 
-## Current repository truth
-Compounding intelligence structures exist, but the full capture → learning → synthesis → reuse loop is not proven end-to-end.
+## 2. PRIMARY JOB
+Take validated intelligence/learning and make it available to later reasoning, retrieval and action without creating false certainty.
 
-## Canonical implementation / evidence
-`.naya/memory/smart_notes_v3.py`; `SUPERBRAIN/INTELLIGENCE-DISTILLATION-AND-COMPREHENSION-PRINCIPLE.md`
+## 3. SYSTEM BOUNDARY
+Inputs: verified Smart Notes, outcomes, lessons, relationships and feedback. Outputs: promoted/retrievable intelligence and improved future context.
 
-## Dependencies
-Depends on canonical NayaPOWER identity/authorization, intelligence/events, governance, evidence/verification, continuity, and Hub projection as applicable. No competing source of truth may be created.
+## 4. HUMAN EXPERIENCE / PRESENTATION
+Surface provenance, confidence/truth state and why an item was promoted. Do not treat volume, repetition or popularity as proof.
 
-## Activity
-Activity here is a scoped projection of canonical NayaPOWER Main Activity. It is not a second event store.
+## 5. CONNECTIONS
+Connects PIS, Smart Notes, Adaptive Learning, Library, Reports, Superbrain, Feed and Trust.
 
-## Evidence boundary
-Repository evidence establishes implementation state only where stated. Live production behavior must be independently observed and verified. **PARTIAL** is the current reconciliation classification, not a universal production claim.
+## 6. 01–58 DEEP-DIVE SOURCES
+This blueprint is distilled from the corresponding NayaPOWER 01–58 intelligence/contracts and the current repository implementation. Relevant 01–58 areas: **Connects PIS, Smart Notes, Adaptive Learning, Library, Reports, Superbrain, Feed and Trust.**.
 
-## Exactly one next action
-> Prove one intelligence item compounds into later verified retrieval/lesson with provenance.
+## 7. ENGINEERING RULES
+- Inspect current repository/runtime before changing implementation.
+- Reuse canonical NayaPOWER primitives; do not create a competing store, event system, memory system, queue, or authority system.
+- Preserve stable identity, timestamps, provenance, privacy and truth state.
+- Separate **canonical source → event → projection → presentation → interaction**.
+- Capability never creates authority.
+- Activity is a projection; Smart Notes are intelligence; the Hub is presentation; the Ledger is evidence/integrity.
+- Unknown remains UNKNOWN. Documentation is not runtime proof.
+- Builder ≠ Judge: the implementer does not certify its own work.
+- Preserve valuable existing Hub behavior and evolve surgically unless evidence requires reconstruction.
 
-## Operating rule
-**ONE EVENT → MANY USEFUL VIEWS → ONE TRUTH.**
+## 8. ACCEPTANCE CONTRACT
+A production-ready implementation must demonstrate:
+1. Real source/data ownership is identified.
+2. The feature has a single clear boundary and does not duplicate another system.
+3. Identity, permissions and visibility are enforced at the appropriate boundary.
+4. Timestamps and stable IDs survive every projection.
+5. The human can understand what the feature is, why it exists, and what action is available.
+6. Actions are real, not decorative.
+7. Failure is visible and recoverable.
+8. Source → execution → observed behavior → verification is proven.
+9. Evidence and the next action are recorded.
+10. A cold Naya can continue without conversational archaeology.
+
+## 9. CURRENT GAP
+**16,17,19,23,26,27,28,37,38,39,50,57,58**
+
+## 10. ONE NEXT ACTION
+**16,17,19,23,26,27,28,37,38,39,50,57,58**
+
+## 11. SYSTEM POSITION
+NayaNET is one connected product, not 19 independent applications:
+
+**NayaPOWER → canonical intelligence/events/state → NayaNET Intelligent Hub → human/Naya action → verified outcome → new intelligence → continuation.**
+
+This area is therefore a **capability/view within that system**, not an independent authority or database.
+
+## 12. DO NOT BUILD
+- A second source of truth.
+- A parallel event store.
+- A parallel Smart Note or memory system.
+- A new authority ladder.
+- A feature that only looks complete in the UI.
+- A duplicate copy of canonical intelligence merely for presentation.
+
+## 13. DEFINITION OF DONE
+**IMPLEMENTED → TESTED → OBSERVED → INDEPENDENTLY VERIFIED → CONNECTED → RECORDED → STATE UPDATED → SUCCESSOR READY.**
+
+Where the area is human-facing, add **LIVE VERIFIED** before calling the runtime complete.
