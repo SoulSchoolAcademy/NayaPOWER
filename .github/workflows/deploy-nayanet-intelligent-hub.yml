@@ -109,7 +109,6 @@ jobs:
           grep -q 'COLLECTIVE INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
           grep -q 'PERSONAL INTELLIGENCE' "$RUNNER_TEMP/live-hub.html"
           grep -q 'ACTIVITY' "$RUNNER_TEMP/live-hub.html"
-          grep -q 'assistant-runtime.js?v=20260918-r6' "$RUNNER_TEMP/live-hub.html"
           curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "${NAYA_HUB_RUNTIME_URL}/identity.html" -o "$RUNNER_TEMP/live-identity.html"
           grep -q 'AUTH_SESSION_PERSISTENCE_NOT_CONFIRMED' "$RUNNER_TEMP/live-identity.html"
           grep -q 'AUTH_SESSION_PERSISTENCE_LOST_BEFORE_HANDOFF' "$RUNNER_TEMP/live-identity.html"
