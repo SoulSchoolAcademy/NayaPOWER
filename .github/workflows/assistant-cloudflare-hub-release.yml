@@ -63,8 +63,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL" -o "$RUNNER_TEMP/live.html"
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live.html"
+          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live-runtime.js"
           grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
+          grep -q 'assistant-runtime.js' "$RUNNER_TEMP/live.html"
+          grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js"
           grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
           sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
