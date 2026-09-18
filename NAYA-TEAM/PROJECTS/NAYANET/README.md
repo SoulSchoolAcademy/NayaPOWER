@@ -5,6 +5,10 @@
 
 NayaNET is the primary human-facing product powered by NayaPOWER.
 
+## Canonical operating map
+
+**[NayaNET / GitHub Operating Map](./NAYANET-GITHUB-OPERATING-MAP.md)** is the single navigation spine for cold Nayas entering NayaNET. It explains the canonical paths, 19 project areas, Activity model, Smart Notes, time model, relationships, current/historical separation, evidence, and successor path.
+
 ## Canonical shape
 
 Every NayaNET project and sub-project uses:
