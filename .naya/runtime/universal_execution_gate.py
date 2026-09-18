@@ -313,6 +313,9 @@ def _execution_binding_hash(
     actor_id: str,
     scope: str,
     permission: str,
+    capability_flags: Tuple[str, ...] = (),
+    responsibility_controls: Tuple[str, ...] = (),
+    governance_receipt_id: str = "",
 ) -> str:
     """Hash of every security-relevant identity field, including the exact
     action_type and target so one consequential action can never authorize a
