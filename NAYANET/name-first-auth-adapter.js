@@ -103,7 +103,12 @@
           }
         }
       });
-      if (result.error) throw result.error;
+      if (result.error) {
+        if (result.error.message === 'Anonymous sign-ins are disabled' || result.error.code === 'anonymous_provider_disabled') {
+          throw new Error('ANONYMOUS_AUTH_DISABLED');
+        }
+        throw result.error;
+      }
       session = result.data?.session || null;
     }
 
