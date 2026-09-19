@@ -83,3 +83,11 @@ The Smart Tabs surface was upgraded to expose the contract already supported by 
 Backend remains `naya-smart-tabs` ACTIVE v1 with JWT verification and owner-scoped persistence. Authenticated CRUD/reload/isolation and Cloudflare deployed parity remain unproven.
 
 **Successor:** Prove deployed parity, then execute authenticated create → reload → edit → favorite → reorder → navigate → delete → reload, followed by second-user denial.
+
+## Session 003 checkpoint — 2026-09-19T16:55:00Z
+
+A source review caught and repaired a real syntax/assembly defect before deployment: `c5d21b6db36661546561aeb0ec479735ba555199` contained a malformed duplicate render append. Clean source is now committed as `3627a484533411921765dd53e793cf970564f818`.
+
+**Not proven:** Cloudflare deployment/parity. GitHub exposes zero workflow runs for the repair commit; an unrelated Vercel status failure must not be interpreted as Cloudflare failure or success.
+
+**Successor:** obtain a real Cloudflare release result for `3627a4...`, then execute authenticated CRUD/reload/isolation.
