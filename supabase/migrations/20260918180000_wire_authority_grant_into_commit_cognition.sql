@@ -15,6 +15,7 @@ create or replace function public.nayanet_validate_authority_grant(
 )
 returns jsonb
 language plpgsql
+security definer
 set search_path = ''
 as $$
 declare
