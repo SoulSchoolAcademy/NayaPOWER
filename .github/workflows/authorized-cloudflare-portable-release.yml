@@ -26,6 +26,7 @@ env:
   CLOUDFLARE_WORKER: sparkling-shape-7ae5
   SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
   SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+  NAYA_HUB_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
 
 jobs:
   first-use:
@@ -185,7 +186,7 @@ jobs:
         run: |
           set -euo pipefail
           npm install --no-save @supabase/supabase-js
-          cat > "$RUNNER_TEMP/pis-proof.mjs" <<'EOF'
+          cat > ./pis-proof.mjs <<'EOF'
           import fs from 'node:fs';
           import { createClient } from '@supabase/supabase-js';
           const c=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_PUBLISHABLE_KEY);
@@ -198,7 +199,45 @@ jobs:
           const q=await c.from('nayanet_cognition_events').select('*').eq('user_id',a.data.session.user.id).eq('event_id',eventId).maybeSingle();
           if(q.error) throw q.error; if(!q.data) throw new Error('PIS_EVENT_MISSING');
           if(q.data.metadata?.portable_receipt_sha256!==receipt.artifact_sha256) throw new Error('PIS_RECEIPT_BINDING_MISMATCH');
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/naya-live-session.json', JSON.stringify(a.data.session));
           console.log('ACTIVITY_PIS_PERSISTED=PASS');
           console.log('PIS_EVENT_ID='+eventId);
           EOF
           node ./pis-proof.mjs
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+          cat > ./live-pis-proof.mjs <<'EOF'
+          import fs from 'node:fs';
+          import { chromium } from 'playwright';
+          const session=JSON.parse(fs.readFileSync(process.env.RUNNER_TEMP+'/naya-live-session.json','utf8'));
+          const receipt=JSON.parse(fs.readFileSync('portable-receipt/cloudflare-receipt.json','utf8'));
+          const eventId='cloudflare-portable-'+receipt.action_id;
+          const browser=await chromium.launch({headless:true});
+          const context=await browser.newContext();
+          await context.addInitScript((s)=>{localStorage.setItem('nayanet.supabase.auth',JSON.stringify(s));},session);
+          const page=await context.newPage();
+          await page.goto(process.env.NAYA_HUB_RUNTIME_URL+'/?portable_pis_probe='+encodeURIComponent(eventId),{waitUntil:'networkidle',timeout:60000});
+          await page.waitForTimeout(1500);
+          const result=await page.evaluate(async (id)=>{
+            const rt=window.NayaAssistantRuntime;
+            if(!rt?.init||!rt?.retrieve) return {ok:false,reason:'LIVE_RUNTIME_ADAPTER_MISSING'};
+            await rt.init();
+            const events=await rt.retrieve(id);
+            const node=document.querySelector('[data-naya-runtime-event="'+CSS.escape(id)+'"]');
+            return {ok:true,authenticated:rt.snapshot()?.authenticated,count:events.length,found:events.some(e=>e.event_id===id),activity_rendered:!!node};
+          },eventId);
+          await browser.close();
+          if(!result.ok||!result.authenticated||!result.found||!result.activity_rendered) throw new Error('LIVE_HUB_ACTIVITY_PIS_FAILED:'+JSON.stringify(result));
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/live-pis-proof.json', JSON.stringify(result,null,2));
+          console.log('LIVE_HUB_PIS_RETRIEVAL=PASS');
+          console.log('ACTIVITY_RENDERED=PASS');
+          console.log('PIS_EVENT_ID='+eventId);
+          EOF
+          node ./live-pis-proof.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cloudflare-activity-pis-continuity
+          path: |
+            portable-receipt/cloudflare-receipt.json
+            ${{ runner.temp }}/live-pis-proof.json
+          if-no-files-found: error
