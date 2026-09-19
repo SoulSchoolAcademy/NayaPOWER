@@ -26,6 +26,14 @@ def test_missing_evidence_cannot_become_pass():
     assert proof["unverified_checks"] == ["authority"]
     assert proof["checks"][7]["status"] == NOT_VERIFIED
 
+def test_explicit_pass_without_evidence_cannot_self_verify():
+    evidence = complete_evidence()
+    evidence["authority"] = {"status": PASS, "evidence": []}
+    proof = evaluate_self_proof(evidence)
+    assert proof["overall"] == OVERALL_LIMITED
+    assert proof["unverified_checks"] == ["authority"]
+    assert proof["checks"][7]["status"] == NOT_VERIFIED
+
 def test_failure_blocks_self_verified():
     evidence = complete_evidence()
     evidence["integrity"] = {"status": FAIL, "evidence": ["integrity-regression"]}
