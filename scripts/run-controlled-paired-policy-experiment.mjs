@@ -70,13 +70,13 @@ const prepare=async(p)=>{
   if(!unauthorizedBlocked) throw new Error("CONTROLLED_TEST_SELF_AUTHORIZATION_NOT_BLOCKED");
   const authority = await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
-    p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+v1.id,
+    p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+p.id,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
     p_scope:{project_id:experimentProject,target:p.id},
     p_actions:["policy.controlled_test"],
     p_constraints:{mode:"controlled-test-only",no_external_side_effects:true},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
-    p_evidence:{authorization_type:"explicit_controlled_experiment_authorization",run_id:runId,policy_id:v1.id},
+    p_evidence:{authorization_type:"explicit_controlled_experiment_authorization",run_id:runId,policy_id:p.id},
     p_parent_authority:null
   });
   if(authority.error||!authority.data?.grant_id) throw authority.error||new Error("CONTROLLED_TEST_AUTHORITY_GRANT_ISSUANCE_FAILED");
@@ -95,13 +95,13 @@ const prepare=async(p)=>{
 
   const mailAuthority = await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
-    p_source_event_id:"controlled-paired-smart-mail-authorization-"+runId+"-"+v1.id,
+    p_source_event_id:"controlled-paired-smart-mail-authorization-"+runId+"-"+p.id,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
     p_scope:{project_id:experimentProject,target:receiver.id},
     p_actions:["smart_mail_send"],
-    p_constraints:{mode:"controlled-test-only",no_external_side_effects:false,policy_id:v1.id},
+    p_constraints:{mode:"controlled-test-only",no_external_side_effects:false,policy_id:p.id},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
-    p_evidence:{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:v1.id},
+    p_evidence:{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:p.id},
     p_parent_authority:authority.data.grant_id
   });
   if(mailAuthority.error||!mailAuthority.data?.grant_id) throw mailAuthority.error||new Error("SMART_MAIL_AUTHORITY_GRANT_ISSUANCE_FAILED");
