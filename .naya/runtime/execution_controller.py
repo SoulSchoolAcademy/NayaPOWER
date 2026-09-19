@@ -290,18 +290,9 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
 
         fields["execution_result"] = result
         fields["execution_evidence"] = evidence
+        from dataclasses import asdict
         fields["smart_ledger"] = {
-            "ledger_event": {
-                "ledger_event_id": ledger_event.ledger_event_id,
-                "event_type": ledger_event.event_type,
-                "status": ledger_event.status,
-                "verification_receipt_ref": ledger_event.verification_receipt_ref,
-                "integrity_hash": ledger_event.integrity_hash,
-                "execution_authorization_binding_hash": ledger_event.execution_authorization_binding_hash,
-                "identity_id": ledger_event.identity_id,
-                "identity_fingerprint": ledger_event.identity_fingerprint,
-                "identity_binding_hash": ledger_event.identity_binding_hash,
-            },
+            "ledger_event": asdict(ledger_event),
             "verification_receipt": ledger_receipt,
         }
         fields["identity_binding"] = {
@@ -457,27 +448,12 @@ def validate(data: dict[str, Any] | None = None) -> dict[str, Any]:
         if ledger_event.get("execution_authorization_binding_hash") != identity_binding.get("execution_authorization_binding_hash"):
             fail("execution state identity binding diverges from Smart Ledger authorization binding")
         try:
+            from dataclasses import fields as dataclass_fields
             from smart_ledger_engine import LedgerEvent, verify_event
-            verified_ledger, _ = verify_event(LedgerEvent(
-                ledger_event_id=str(ledger_event.get("ledger_event_id")),
-                schema_version="1.0",
-                event_type=str(ledger_event.get("event_type")),
-                event_at=str(data.get("observation_at") or data.get("at") or now()),
-                created_at=str(data.get("observation_at") or data.get("at") or now()),
-                actor_ref=ledger_event.get("identity_id"),
-                object_ref=str((data.get("action") or {}).get("target") or "execution"),
-                parent_event_id=None,
-                evidence_ref=str(((smart_ledger.get("verification_receipt") or {}).get("evidence_ref") or "execution")),
-                verification_receipt_ref=ledger_event.get("verification_receipt_ref"),
-                integrity_hash=str(ledger_event.get("integrity_hash")),
-                previous_integrity_hash=None,
-                privacy_class="protected",
-                status=str(ledger_event.get("status")),
-                execution_authorization_binding_hash=ledger_event.get("execution_authorization_binding_hash"),
-                identity_id=ledger_event.get("identity_id"),
-                identity_fingerprint=ledger_event.get("identity_fingerprint"),
-                identity_binding_hash=ledger_event.get("identity_binding_hash"),
-            ))
+            expected_keys = {item.name for item in dataclass_fields(LedgerEvent)}
+            if set(ledger_event) != expected_keys:
+                fail("Smart Ledger execution record is incomplete or has unexpected fields")
+            verified_ledger, _ = verify_event(LedgerEvent(**ledger_event))
             if verified_ledger.status != "verified":
                 fail("Smart Ledger receipt did not remain verified")
         except Exception as exc:
