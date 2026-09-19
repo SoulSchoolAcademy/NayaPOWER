@@ -633,3 +633,12 @@ New concrete runtime defect found and repaired.
 - Final A→T remains NOT VERIFIED because a distinct authenticated Human B session is not available. No credentials were extracted and no synthetic B was created.
 - Action 10 prompt updated: `dddc691829df56e2e163aa8bc477ecbe0f172ff2`.
 - Master directive updated: `810abf3f72804cbba35ed2bb3c2b012e0b9a5f9a`.
+
+
+## Wave A Session 009 — 2026-09-19T17:25Z
+
+Major closure: a real owner-scoped intelligence object was created through the canonical production Smart Note capture runtime; authenticated Activity/Personal Feed projected it; the correct Feed interaction contract (`action=interact`, `interaction=favorite`) generated a canonical cognition event, execution receipt, and two fresh Smart Ledger rows. Feed→cognition→receipt→Ledger is VERIFIED at the authenticated browser runtime layer.
+
+The first adapter attempt used the wrong action shape and was caught by source inspection before any PASS claim. No fake data, credentials, service-role impersonation, or security weakening was used.
+
+Remaining: human-click UI acceptance, target navigation, refresh durability, mobile/accessibility, final Wave A acceptance.
