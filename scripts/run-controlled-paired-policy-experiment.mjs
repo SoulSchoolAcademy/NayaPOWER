@@ -136,7 +136,7 @@ if(comparisonError) throw comparisonError;
 if(comparison?.result!=="POLICY_IMPROVEMENT_NOT_PROVEN") throw new Error("EXPECTED_POLICY_IMPROVEMENT_NOT_PROVEN_FOR_EQUAL_VALUE_CASE");
 
 const {data:independentOutcomes,error:outcomeError}=await supabase.from("nayanet_execution_outcomes")
-  .select("outcome_id,receipt_id,experiment_case_id,benefit,harm,cost,risk_adjusted_loss,verified_value,verified,verifier_id,evidence,verification_method")
+  .select("outcome_id,receipt_id,experiment_case_id,outcome_type,benefit,harm,cost,risk_adjusted_loss,verified_value,verified,verifier_id,evidence,verification_method")
   .in("receipt_id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
 if(outcomeError) throw outcomeError;
 if(independentOutcomes?.length!==2) throw new Error("INDEPENDENT_OUTCOME_COUNT_FAILED");
