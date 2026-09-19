@@ -404,8 +404,8 @@ def verify_portable_authorization(
         reasons.append("now is not a valid ISO timestamp")
     else:
         assert issued_at is not None and expires_at is not None and validated_at is not None and current is not None
-        if validated_at != issued_at:
-            reasons.append("validated_at does not match issued_at")
+        if validated_at > issued_at:
+            reasons.append("validated_at occurs after portable artifact issuance")
         if current < issued_at:
             reasons.append("artifact is not yet valid")
         if current >= expires_at:
