@@ -120,14 +120,30 @@ def _event_id_for(claim_id: str, action_id: str, run_id: Optional[str]) -> str:
     return f"SE-{stamp:%Y%m%d-%H%M%S}-activity-{token[:40] if token else 'execution'}-{digest}"
 
 
-def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optional[str], authority_id: Optional[str], actor_id: Optional[str], subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None, events_root: Optional[Path] = None, index_path: Optional[Path] = None, compounding_measurement: Optional[dict[str, Any]] = None) -> dict[str, Any]:
+def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optional[str], authority_id: Optional[str], actor_id: Optional[str], subject: str, summary: str, receipt_id: str, next_action: str, successor: str, evidence: list[str], run_id: Optional[str] = None, session_id: Optional[str] = None, effective_at: Optional[str] = None, events_root: Optional[Path] = None, index_path: Optional[Path] = None, measurement_context: Optional[dict[str, Any]] = None) -> dict[str, Any]:
     root = Path(events_root) if events_root else EVENTS_ROOT
     index = Path(index_path) if index_path else INDEX_PATH
     existing = find_activity_event_by_execution(claim_id=claim_id, action_id=action_id, run_id=run_id, events_root=root, index_path=index)
     if existing is not None:
         return {"status": "REPLAY_EVENT", "event_id": existing.get("event_id"), "event": existing, "persist": None}
     event_id = _event_id_for(claim_id, action_id, run_id)
-    event = build_activity_event(event_id=event_id, claim_id=claim_id, action_id=action_id, decision_id=decision_id, authority_id=authority_id, actor_id=actor_id, subject=subject, summary=summary, receipt_id=receipt_id, next_action=next_action, successor=successor, evidence=evidence, run_id=run_id, session_id=session_id, effective_at=effective_at, compounding_measurement=compounding_measurement)
+    event = build_activity_event(event_id=event_id, claim_id=claim_id, action_id=action_id, decision_id=decision_id, authority_id=authority_id, actor_id=actor_id, subject=subject, summary=summary, receipt_id=receipt_id, next_action=next_action, successor=successor, evidence=evidence, run_id=run_id, session_id=session_id, effective_at=effective_at)
+    if measurement_context is not None:
+        from compounding_measurement import build_compounding_measurement
+        measurement_execution = {
+            "claim_id": claim_id,
+            "action_id": action_id,
+            "run_id": run_id,
+        }
+        event["compounding_measurement"] = build_compounding_measurement(
+            event=event,
+            execution={**measurement_execution, **(measurement_context.get("execution") or {})},
+            evidence=evidence,
+            history=measurement_context.get("history") or [],
+            resource_usage=measurement_context.get("resource_usage"),
+            knowledge_reuse=measurement_context.get("knowledge_reuse"),
+            new_learning=measurement_context.get("new_learning"),
+        )
     persisted = persist_activity_event(event, events_root=root, index_path=index)
     if persisted.get("status") == "CONFLICT":
         raise ValueError(f"conflicting existing canonical Activity event: {event_id}")
