@@ -24,6 +24,13 @@ on:
       reason:
         required: false
         type: string
+      release_surface:
+        required: false
+        type: choice
+        options:
+          - legacy-v7
+          - sparkling-shape-react
+        default: legacy-v7
 
 permissions:
   contents: read
@@ -48,59 +55,89 @@ jobs:
           REQUESTED_COMMIT_SHA: ${{ inputs.commit_sha }}
           APPROVAL: ${{ inputs.approval }}
           REASON: ${{ inputs.reason }}
+          RELEASE_SURFACE: ${{ inputs.release_surface }}
         run: |
           set -euo pipefail
           test -n "${REQUESTED_COMMIT_SHA}"
           test "${REQUESTED_COMMIT_SHA}" = "${GITHUB_SHA}"
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
+          test "${RELEASE_SURFACE}" = "legacy-v7" || test "${RELEASE_SURFACE}" = "sparkling-shape-react"
           echo "AUTHORIZED_MANUAL_DISPATCH_BOUND=${GITHUB_SHA}"
+          echo "AUTHORIZED_RELEASE_SURFACE=${RELEASE_SURFACE}"
 
       - name: Checkout exact main source
         uses: actions/checkout@v4
 
-      - name: Prepare exact protected Hub artifact
+      - name: Prepare authorized Hub artifact
         shell: bash
+        env:
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
-          test -s '2026 09 17 NAYANET HUB.html'
-          test -s 'assistant-runtime.js'
-          test -s 'smart-feed.js'
-          test -s 'smart-tabs.js'
-          test -s 'identity.html'
-          test -s 'NAYANET/name-first-auth-adapter.js'
-          mkdir -p dist/NAYANET
-          cp '2026 09 17 NAYANET HUB.html' dist/index.html
-          cp 'assistant-runtime.js' dist/assistant-runtime.js
-          cp 'smart-feed.js' dist/smart-feed.js
-          cp 'smart-tabs.js' dist/smart-tabs.js
-          cp 'identity.html' dist/identity.html
-          cp 'NAYANET/name-first-auth-adapter.js' dist/NAYANET/name-first-auth-adapter.js
-          grep -q 'nayanet-direct-nine' dist/index.html
-          grep -q 'assistant-runtime.js' dist/index.html
-          grep -q 'NayaNET — Intelligent Hub' dist/index.html
-          grep -q 'id="name"' dist/identity.html
-          grep -q 'id="alias"' dist/identity.html
-          grep -q 'id="enter"' dist/identity.html
-          grep -q 'NayaNETNameFirstAuth' dist/identity.html
-          grep -q 'signInAnonymously' dist/NAYANET/name-first-auth-adapter.js
-          sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
-          sha256sum dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
-          sha256sum dist/smart-feed.js | tee "$RUNNER_TEMP/smart-feed-source.sha256"
-          sha256sum dist/smart-tabs.js | tee "$RUNNER_TEMP/smart-tabs-source.sha256"
-          sha256sum dist/identity.html | tee "$RUNNER_TEMP/identity-source.sha256"
-          sha256sum dist/NAYANET/name-first-auth-adapter.js | tee "$RUNNER_TEMP/adapter-source.sha256"
-          echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
-
+          rm -rf dist
+          if [ "$RELEASE_SURFACE" = "sparkling-shape-react" ]; then
+            test -s 'NAYANET/HUB/package.json'
+            test -s 'NAYANET/HUB/index.html'
+            test -s 'NAYANET/HUB/src/app/App.tsx'
+            test -s 'NAYANET/HUB/src/app/SparklingShapeShell.tsx'
+            test -s 'NAYANET/HUB/src/styles/sparkling-shape-reactive.css'
+            cd NAYANET/HUB
+            npm ci --no-audit --no-fund
+            npm run build
+            test -s dist/index.html
+            grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
+            grep -q 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE' dist/intelligence/pis-feed.json
+            grep -q 'What Is a Smart Note?' dist/intelligence/pis-feed.json
+            cd ../..
+            sha256sum NAYANET/HUB/dist/index.html | tee "$RUNNER_TEMP/source.sha256"
+            echo 'REACT_SOURCE_ARTIFACT_READY'
+          else
+            test -s '2026 09 17 NAYANET HUB.html'
+            test -s 'assistant-runtime.js'
+            test -s 'smart-feed.js'
+            test -s 'smart-tabs.js'
+            test -s 'identity.html'
+            test -s 'NAYANET/name-first-auth-adapter.js'
+            mkdir -p dist/NAYANET
+            cp '2026 09 17 NAYANET HUB.html' dist/index.html
+            cp 'assistant-runtime.js' dist/assistant-runtime.js
+            cp 'smart-feed.js' dist/smart-feed.js
+            cp 'smart-tabs.js' dist/smart-tabs.js
+            cp 'identity.html' dist/identity.html
+            cp 'NAYANET/name-first-auth-adapter.js' dist/NAYANET/name-first-auth-adapter.js
+            grep -q 'nayanet-direct-nine' dist/index.html
+            grep -q 'assistant-runtime.js' dist/index.html
+            grep -q 'NayaNET — Intelligent Hub' dist/index.html
+            grep -q 'id="name"' dist/identity.html
+            grep -q 'id="alias"' dist/identity.html
+            grep -q 'id="enter"' dist/identity.html
+            grep -q 'NayaNETNameFirstAuth' dist/identity.html
+            grep -q 'signInAnonymously' dist/NAYANET/name-first-auth-adapter.js
+            sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
+            sha256sum dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
+            sha256sum dist/smart-feed.js | tee "$RUNNER_TEMP/smart-feed-source.sha256"
+            sha256sum dist/smart-tabs.js | tee "$RUNNER_TEMP/smart-tabs-source.sha256"
+            sha256sum dist/identity.html | tee "$RUNNER_TEMP/identity-source.sha256"
+            sha256sum dist/NAYANET/name-first-auth-adapter.js | tee "$RUNNER_TEMP/adapter-source.sha256"
+            echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
+          fi
       - name: Bind exact authorized Cloudflare target
         shell: bash
+        env:
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           test -n "${CLOUDFLARE_API_TOKEN:-}"
-          cat > "$RUNNER_TEMP/wrangler.jsonc" <<'EOF'
-          {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","not_found_handling":"single-page-application"}}
-          EOF
-
+          if [ "$RELEASE_SURFACE" = "sparkling-shape-react" ]; then
+            cat > "$RUNNER_TEMP/wrangler.jsonc" <<'EOF'
+            {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/NAYANET/HUB/dist","not_found_handling":"single-page-application"}}
+            EOF
+          else
+            cat > "$RUNNER_TEMP/wrangler.jsonc" <<'EOF'
+            {"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","not_found_handling":"single-page-application"}}
+            EOF
+          fi
       - name: Deploy exact Assistant-lane artifact
         shell: bash
         run: |
@@ -109,46 +146,51 @@ jobs:
 
       - name: Verify live artifact identity and exact source parity
         shell: bash
+        env:
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
-          runtime_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/runtime-source.sha256")
-          smart_feed_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-feed-source.sha256")
-          smart_tabs_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-tabs-source.sha256")
-          identity_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/identity-source.sha256")
-          adapter_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/adapter-source.sha256")
           verified=0
           for attempt in $(seq 1 30); do
             curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live.html"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-feed.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-feed.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-tabs.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-tabs.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/identity.html?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-identity.html"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/NAYANET/name-first-auth-adapter.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-name-first-adapter.js"
             sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
             live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
-            runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
-            smart_feed_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-feed.js" | cut -d' ' -f1)
-            smart_tabs_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-tabs.js" | cut -d' ' -f1)
-            identity_live_hash=$(sha256sum "$RUNNER_TEMP/live-identity.html" | cut -d' ' -f1)
-            adapter_live_hash=$(sha256sum "$RUNNER_TEMP/live-name-first-adapter.js" | cut -d' ' -f1)
-            if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$smart_feed_source_hash" = "$smart_feed_live_hash" ] && [ "$smart_tabs_source_hash" = "$smart_tabs_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NAYANET · LIVING INTELLIGENCE PROJECTION' "$RUNNER_TEMP/live-smart-feed.js" && grep -q 'SMART TABS · YOUR NAVIGATION' "$RUNNER_TEMP/live-smart-tabs.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
-              verified=1
-              break
+            if [ "$RELEASE_SURFACE" = "sparkling-shape-react" ]; then
+              if [ "$source_hash" = "$live_hash" ] && grep -q 'NAYANET-HUB-REACT-CANONICAL' "$RUNNER_TEMP/live.html" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; then
+                verified=1
+                break
+              fi
+            else
+              runtime_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/runtime-source.sha256")
+              smart_feed_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-feed-source.sha256")
+              smart_tabs_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-tabs-source.sha256")
+              identity_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/identity-source.sha256")
+              adapter_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/adapter-source.sha256")
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-feed.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-feed.js"
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-tabs.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-tabs.js"
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/identity.html?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-identity.html"
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/NAYANET/name-first-auth-adapter.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-name-first-adapter.js"
+              runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
+              smart_feed_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-feed.js" | cut -d' ' -f1)
+              smart_tabs_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-tabs.js" | cut -d' ' -f1)
+              identity_live_hash=$(sha256sum "$RUNNER_TEMP/live-identity.html" | cut -d' ' -f1)
+              adapter_live_hash=$(sha256sum "$RUNNER_TEMP/live-name-first-adapter.js" | cut -d' ' -f1)
+              if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$smart_feed_source_hash" = "$smart_feed_live_hash" ] && [ "$smart_tabs_source_hash" = "$smart_tabs_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NAYANET · LIVING INTELLIGENCE PROJECTION' "$RUNNER_TEMP/live-smart-feed.js" && grep -q 'SMART TABS · YOUR NAVIGATION' "$RUNNER_TEMP/live-smart-tabs.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
+                verified=1
+                break
+              fi
             fi
-            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash runtime_source=$runtime_source_hash runtime_live=$runtime_live_hash identity_source=$identity_source_hash identity_live=$identity_live_hash adapter_source=$adapter_source_hash adapter_live=$adapter_live_hash"
+            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash"
             sleep 2
           done
           test "$verified" = "1"
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
-          echo "LIVE_EXACT_RUNTIME_PARITY_VERIFIED sha256=$runtime_live_hash"
-          echo "LIVE_EXACT_SMART_FEED_PARITY_VERIFIED sha256=$smart_feed_live_hash"
-          echo "LIVE_EXACT_SMART_TABS_PARITY_VERIFIED sha256=$smart_tabs_live_hash"
-          echo "LIVE_EXACT_IDENTITY_PARITY_VERIFIED sha256=$identity_live_hash"
-          echo "LIVE_EXACT_NAME_FIRST_ADAPTER_PARITY_VERIFIED sha256=$adapter_live_hash"
-
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
+        env:
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
@@ -162,57 +204,61 @@ jobs:
           });
 
           try {
-            for (const viewport of [
-              { width: 1440, height: 1000, label: 'desktop' },
-              { width: 390, height: 844, label: 'mobile' }
-            ]) {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+            if (process.env.RELEASE_SURFACE === 'sparkling-shape-react') {
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1000 } });
               const page = await context.newPage();
-              await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-              await page.waitForTimeout(1000);
-
-              const result = await page.evaluate(() => ({
-                title: document.title,
-                directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
-                navCount: document.querySelectorAll('.naya509-primary-nav a').length,
-                blockCount: document.querySelectorAll('.block').length,
-                layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
-                hasNaya: !!document.body && document.body.innerText.includes('Naya'),
-                hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
-              }));
-
-              if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
-              if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
-              if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
-              if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
-              if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
-
-              console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+              const target = 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE';
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.waitForSelector('[data-event-id="' + target + '"]', { timeout: 30000 });
+              const result = await page.evaluate((eventId) => {
+                const article = document.querySelector('[data-event-id="' + eventId + '"]');
+                const title = article?.querySelector('h2')?.textContent?.trim() || '';
+                return {
+                  title: document.title,
+                  marker: document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]')?.getAttribute('data-runtime-marker') || '',
+                  event_id: article?.getAttribute('data-event-id') || '',
+                  event_title: title,
+                  visible_title: title
+                };
+              }, target);
+              if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React runtime marker missing');
+              if (result.event_id !== target) throw new Error('Canonical event ID not rendered');
+              if (result.event_title !== 'What Is a Smart Note?') throw new Error('Canonical event title mismatch: ' + result.event_title);
+              console.log('SPARKLING_SHAPE_REACT_RUNTIME_VERIFIED', JSON.stringify(result));
               await context.close();
+            } else {
+              for (const viewport of [
+                { width: 1440, height: 1000, label: 'desktop' },
+                { width: 390, height: 844, label: 'mobile' }
+              ]) {
+                const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+                const page = await context.newPage();
+                await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await page.waitForTimeout(1000);
+                const result = await page.evaluate(() => ({
+                  title: document.title,
+                  directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
+                  navCount: document.querySelectorAll('.naya509-primary-nav a').length,
+                  blockCount: document.querySelectorAll('.block').length,
+                  layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
+                  hasNaya: !!document.body && document.body.innerText.includes('Naya'),
+                  hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
+                }));
+                if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
+                if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
+                if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
+                if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
+                if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
+                console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+                await context.close();
+              }
             }
-            const identityContext = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 900, height: 900 } });
-            const identityPage = await identityContext.newPage();
-            await identityPage.goto('file://' + process.env.RUNNER_TEMP + '/live-identity.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-            const identity = await identityPage.evaluate(() => ({
-              title: document.title,
-              name: !!document.querySelector('#name'),
-              alias: !!document.querySelector('#alias'),
-              enter: !!document.querySelector('#enter'),
-              adapterScript: !!document.querySelector('script[src="/NAYANET/name-first-auth-adapter.js"]')
-            }));
-            if (!identity.title.includes('NayaNET')) throw new Error('identity: unexpected title ' + identity.title);
-            if (!identity.name || !identity.alias || !identity.enter || !identity.adapterScript) throw new Error('identity: name-first controls or adapter missing');
-            console.log('ASSISTANT_IDENTITY_BASELINE_VERIFIED', JSON.stringify(identity));
-            await identityContext.close();
           } finally {
             await browser.close();
           }
-
           EOF
-
-          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" node verify-assistant-runtime.mjs
+          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
           rm -f verify-assistant-runtime.mjs
-
       - name: Final Assistant-lane runtime proof
         shell: bash
         run: |
