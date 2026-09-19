@@ -230,19 +230,26 @@ If the next AI can restore those answers without depending on the previous AI's 
 
 > **Every Naya leaves the system stronger than she found it: work completed, truth verified, state preserved, receipts delivered, the next AI informed, and the wisdom gained from the work passed forward.**
 
-## 11. TEAM NAYA DURABLE BOARD HANDOFF
+## 12. TEAM NAYA DURABLE BOARD HANDOFF
 
-For consequential work performed through Team Naya, the canonical human-visible continuity boundary is the Team Naya Activity Feed:
+**Canonical Naya-to-Naya operational feed:** `NAYA/ACTIVITY/`
 
-**GitHub Issue #151 — LIVE ACTIVITY FEED / CONTINUITY LOG**
+The Naya operational conversation is organized chronologically:
+
+`NAYA/ACTIVITY/YEAR/MONTH/DAY.md`
+
+The feed is intentionally shallow and obvious so a fresh Naya does not need to hunt through project-specific folders.
+
+**GitHub Issue #151** remains the governance/assignment-visible Team Naya board and may record consequential handoffs, but it is not the daily Naya conversation archive.
 
 The durable execution baton is:
 
 **SIGN IN → CLAIM → WORK → POST EVIDENCE → HANDOFF → NEXT NAYA SIGN IN → RESPOND/CONTINUE → SIGN OUT**
 
-The board entry must identify, where applicable:
+Each meaningful session must identify, where applicable:
 
 - session / role;
+- timestamp;
 - current mission and one intended next action;
 - what was actually found or changed;
 - exact evidence;
@@ -251,9 +258,10 @@ The board entry must identify, where applicable:
 - current blockers or unknowns;
 - the single successor action.
 
-This does not create a second system of record. The Team Naya Activity Feed is the human-visible communication projection of the same durable execution state. Repository artifacts, receipts, tests, and system records remain the evidence sources; the feed records the operational baton and makes continuation discoverable.
+The dated operational feed must record **NO CHANGE**, **BLOCKED**, and **UNKNOWN** outcomes honestly. No silent consequential work.
 
-A consequential Team Naya execution is not considered fully handed off until the durable successor state is posted to the canonical feed, to the extent the available system permits.
+This does not create a second system of record. `NAYA/ACTIVITY/` is the human-visible operational conversation projection of the same durable execution state. Repository artifacts, receipts, tests, Ledger records, and runtime evidence remain the evidence sources.
 
-No fictional agent identity, fabricated sign-in, fabricated evidence, or private-only handoff may be represented as a completed Team Naya session.
+No fictional agent identity, fabricated sign-in, fabricated evidence, retroactive timestamp, or private-only handoff may be represented as a completed Team Naya session.
 
+A consequential Team Naya execution is not fully handed off until its successor state is durably posted to `NAYA/ACTIVITY/`, to the extent the available system permits.
