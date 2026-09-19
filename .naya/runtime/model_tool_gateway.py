@@ -78,10 +78,10 @@ def authorize(
         raise AssertionError("protected baseline does not match claimed execution baseline")
 
     # The ONLY authorization credential is a gate-issued ExecutionAuthorization.
-    if identity_envelope is None:
-        raise AssertionError("gateway requires the governed intelligence identity envelope for consequential execution")
     if execution_authorization is None:
         raise AssertionError("gateway requires a gate-issued ExecutionAuthorization")
+    if identity_envelope is None:
+        raise AssertionError("gateway requires the governed intelligence identity envelope for consequential execution")
     issuer = gate if gate is not None else _default_gate()
     valid, reasons = issuer.verify(
         execution_authorization,
@@ -170,21 +170,6 @@ def self_test() -> int:
             start_head="test-head",
         )
 
-        identity = {
-            "schema_version": "1.0",
-            "identity_id": authority.principal_id,
-            "actor_class": "HUMAN",
-            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
-            "knowledge": [{"knowledge_id": "K-MTG-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
-            "capabilities": ["repo_write"],
-            "authority": {"authority_ids": [authority.authority_id]},
-            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
-            "received_artifacts": [{"artifact_id": "ART-MTG-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
-            "provenance": [{"subject_id": "ART-MTG-TEST", "source_ref": "test:request", "relation": "received_from"}],
-            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
-            "actual_actions": [], "outcomes": [], "learning": [],
-        }
-
         action = {
             "action_id": "ACT-TEST-001",
             "action_type": "repository_write",
@@ -200,6 +185,21 @@ def self_test() -> int:
         registry = load_registry()
         authority = registry.resolve("HUMAN-SOULSCHOOLACADEMY-REPO-WRITE")
         gate = UniversalExecutionGate(registry)
+        identity = {
+            "schema_version": "1.0",
+            "identity_id": authority.principal_id,
+            "actor_class": "HUMAN",
+            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+            "knowledge": [{"knowledge_id": "K-MTG-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
+            "capabilities": ["repo_write"],
+            "authority": {"authority_ids": [authority.authority_id]},
+            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+            "received_artifacts": [{"artifact_id": "ART-MTG-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
+            "provenance": [{"subject_id": "ART-MTG-TEST", "source_ref": "test:request", "relation": "received_from"}],
+            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+            "actual_actions": [], "outcomes": [], "learning": [],
+        }
+
         decision = DecisionObject(
             decision_id="UEG-SELFTEST-DEC",
             mission="NayaPOWER governed repository maintenance",
