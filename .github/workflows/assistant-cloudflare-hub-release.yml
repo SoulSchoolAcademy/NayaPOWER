@@ -64,17 +64,25 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live.html"
-          curl --fail --silent --show-error --location --retry 5 --retry-delay 2 "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}" -o "$RUNNER_TEMP/live-runtime.js"
-          grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
-          grep -q 'assistant-runtime.js' "$RUNNER_TEMP/live.html"
-          grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js"
-          grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
-          sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
-          live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
-          test "$source_hash" = "$live_hash"
+          verified=0
+          for attempt in $(seq 1 30); do
+            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live.html"
+            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
+            sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
+            live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
+            runtime_source_hash=$(sha256sum assistant-runtime.js | cut -d' ' -f1)
+            runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
+            if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'assistant-runtime.js' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; then
+              verified=1
+              break
+            fi
+            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash runtime_source=$runtime_source_hash runtime_live=$runtime_live_hash"
+            sleep 2
+          done
+          test "$verified" = "1"
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
+          echo "LIVE_EXACT_RUNTIME_PARITY_VERIFIED sha256=$runtime_live_hash"
 
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
