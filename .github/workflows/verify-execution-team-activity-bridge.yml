@@ -42,3 +42,11 @@ jobs:
           name: execution-team-activity-evidence
           path: ci-evidence/execution-activity-event.json
           if-no-files-found: error
+      - name: Upload completed execution capture
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: completed-execution-capture
+          path: execution-capture.json
+          if-no-files-found: error
+          retention-days: 7
