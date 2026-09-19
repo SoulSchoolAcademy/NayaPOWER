@@ -1,5 +1,5 @@
 # CANONICAL RUNTIME RELEASE — deploy the exact current protected Hub freeze point.
-# Canonical source: NAYANET/HUB React application; legacy static Hub remains preserved as historical surface.
+# Canonical source: NAYANET/HUB React host preserving the protected 509 baseline visual contract; legacy static Hub remains preserved as historical surface.
 # Assistant lane only. GitHub 509 is a separate fail-closed lane.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
 name: NAYA — Canonical Assistant Cloudflare Hub Release
@@ -12,6 +12,7 @@ on:
       - 'assistant-runtime.js'
       - 'smart-feed.js'
       - 'smart-tabs.js'
+      - 'NAYANET/HUB/**'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
   workflow_dispatch:
     inputs:
@@ -80,8 +81,9 @@ jobs:
             test -s 'NAYANET/HUB/package.json'
             test -s 'NAYANET/HUB/index.html'
             test -s 'NAYANET/HUB/src/app/App.tsx'
-            test -s 'NAYANET/HUB/src/app/SparklingShapeShell.tsx'
-            test -s 'NAYANET/HUB/src/styles/sparkling-shape-reactive.css'
+            test -s 'NAYANET/HUB/src/baseline/HubBaselineApp.tsx'
+            test -s 'NAYANET/HUB/src/baseline/hub-baseline.html'
+            test -s 'assistant-runtime.js'
             cd NAYANET/HUB
             npm ci --no-audit --no-fund
             npm run build
@@ -203,25 +205,24 @@ jobs:
             if (process.env.RELEASE_SURFACE === 'sparkling-shape-react') {
               const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1000 } });
               const page = await context.newPage();
-              const target = 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE';
-              await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
-              await page.getByRole('button', { name: 'Open What Is a Smart Note?' }).click();
-              await page.waitForSelector('[data-event-id="' + target + '"]', { timeout: 30000 });
-              const result = await page.evaluate((eventId) => {
-                const article = document.querySelector('[data-event-id="' + eventId + '"]');
-                const title = article?.querySelector('h2')?.textContent?.trim() || '';
-                return {
-                  title: document.title,
-                  marker: document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]')?.getAttribute('data-runtime-marker') || '',
-                  event_id: article?.getAttribute('data-event-id') || '',
-                  event_title: title,
-                  visible_title: title
-                };
-              }, target);
-              if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React runtime marker missing');
-              if (result.event_id !== target) throw new Error('Canonical event ID not rendered');
-              if (result.event_title !== 'What Is a Smart Note?') throw new Error('Canonical event title mismatch: ' + result.event_title);
-              console.log('SPARKLING_SHAPE_REACT_RUNTIME_VERIFIED', JSON.stringify(result));
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+              const result = await page.evaluate(() => ({
+                title: document.title,
+                marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
+                baseline: document.querySelector('[data-nayanet-baseline-app="true"]') ? 'PRESENT' : '',
+                directNine: document.querySelector('meta[name="nayanet-direct-nine"]') ? 'PRESENT' : '',
+                smartNotes: document.body.innerText.includes('Smart Notes'),
+                privacy: document.body.innerText.includes('PRIVATE BY DEFAULT'),
+                mailButton: !!document.querySelector('button[data-page="mail"]'),
+                assistantRuntime: !!window.NayaAssistantRuntime
+              }));
+              if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React canonical marker missing');
+              if (result.baseline !== 'PRESENT') throw new Error('509 baseline host missing');
+              if (result.smartNotes !== true) throw new Error('Smart Notes baseline surface missing');
+              if (result.privacy !== true) throw new Error('Privacy baseline surface missing');
+              if (result.mailButton !== true) throw new Error('Smart Mail navigation missing');
+              if (result.assistantRuntime !== true) throw new Error('Governed Assistant runtime not loaded');
+              console.log('BASELINE_REACT_RUNTIME_VERIFIED', JSON.stringify(result));
               await context.close();
             } else {
               for (const viewport of [
