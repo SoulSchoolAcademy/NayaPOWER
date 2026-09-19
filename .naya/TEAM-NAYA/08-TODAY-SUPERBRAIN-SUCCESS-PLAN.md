@@ -206,3 +206,29 @@ If partial: **PRESERVE → IDENTIFY GAP → SURGICALLY REPAIR.**
 The canonical Cloudflare production lane is now mechanically verified at release commit `25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e` with Cloudflare Version ID `62d84659-25cc-4c04-991c-2806b7f99246`. The live Worker reports `X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e`. Normalized source/live content matches for both the canonical Hub and `assistant-runtime.js`. The deploy verification failure caused by a case-sensitive HTTP-header check was repaired; the subsequent production deployment passed.
 
 The next critical boundary is now **positive authenticated lifecycle proof**, not deployment reconciliation. The GitHub Environment currently has no `ASSISTANT_TEST_EMAIL` or `ASSISTANT_TEST_PASSWORD` secrets. No credential values are recorded or handled in chat.
+
+
+## 2026-09-19 P1 CONTROLLED PAIRED OUTCOME UPDATE
+
+The previous machine-truth blocker is closed for the current Assistant lane. Current main HEAD `0a97c30b70e49a530094cc39869b05444ae2c858` is deployed through the canonical Cloudflare workflow; the live runtime reports the same canonical release header. The authenticated lifecycle proof `35409995111` is VERIFIED and proves persisted intelligence retrieval and fresh-context render continuity. A full fresh-Naya continuation action is not yet proven because the machine receipt continuation field is null.
+
+The Superbrain then crossed into the real controlled policy experiment. Run `35409875337` executed V1 and V2 Smart Mail actions against the same frozen case, captured exact policy/version/case/input/decision lineage in canonical execution receipts, independently verified both receiver outcomes, deterministically compared responsible value, and rejected a receipt-swap attack. Result: **V1 = 0, V2 = 0, POLICY_IMPROVEMENT_PROVEN = FALSE, RESULT = NOT_PROVEN.**
+
+This is the correct result. The mechanism is proven; superiority is not. The current Smart Mail value contract assigns benefit=1 and cost=1 on the controlled send path, so both verified values resolve to zero. Do not repeat the same experiment expecting a different result without new information.
+
+### CURRENT P0
+
+> Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment.
+
+### PROTECTED
+
+- Dream remains candidate-generator/reasoning layer, not authority or judge.
+- Existing Smart Mail action/receipt substrate remains canonical.
+- Policy identity is now first-class in execution receipt lineage.
+- Candidate promotion remains separately governed and explicitly authorized.
+- Equal verified value remains NOT_PROVEN.
+- No second memory, receipt, event, or policy system.
+
+### NEXT SUCCESSOR
+
+Implement the independent outcome/value contract, verify it adversarially, then run the smallest valid multi-case held-out paired experiment. If V2 still does not exceed V1, record NOT_PROVEN and continue only with new information.
