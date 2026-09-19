@@ -52,6 +52,15 @@ def identity_fingerprint(envelope: Mapping[str, Any]) -> str:
     return sha256(_canonical_json(payload).encode("utf-8")).hexdigest()
 
 
+def identity_binding_fingerprint(envelope: Mapping[str, Any], execution_binding: Mapping[str, Any]) -> str:
+    """Bind the complete identity/provenance envelope to one exact execution."""
+    payload = {
+        "identity_fingerprint": identity_fingerprint(envelope),
+        "execution_binding": dict(execution_binding),
+    }
+    return sha256(_canonical_json(payload).encode("utf-8")).hexdigest()
+
+
 def validate_identity_envelope(envelope: Mapping[str, Any], *, consequential: bool = False) -> IdentityValidation:
     errors: list[str] = []
     if not isinstance(envelope, Mapping):
