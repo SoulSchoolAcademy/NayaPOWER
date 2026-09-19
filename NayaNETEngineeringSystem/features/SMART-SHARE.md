@@ -44,3 +44,21 @@ Map the existing sharing/publication runtime to this contract and prove item-lev
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-13-SMART-SHARE-SMART-NOTE.md`; `.naya/2026-09-11-16-35-NAYAPOWER-25-PRIVACY-BY-CHOICE-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Privacy/publication authority identified
+- [ ] Existing runtime mapped
+- [ ] Canonical share record identified
+- [ ] Authorized share proven
+- [ ] Non-recipient denial proven
+- [ ] Protected-content leakage test proven
+- [ ] Revocation behavior proven where supported
+- [ ] Source → build → runtime parity proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-SHARE.md).
