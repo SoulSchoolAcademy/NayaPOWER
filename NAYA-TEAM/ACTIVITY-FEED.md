@@ -91,3 +91,150 @@ PIS is current operational intelligence.
 The Superbrain is the connected whole.
 
 **Status:** AUDIT COMPLETE — NEW MIGRATIONS DEFERRED UNTIL EVENT-SPINE RECONCILIATION.
+
+
+## 🔱 FULL ARCHITECTURE POST + LIVE EVENT-SPINE RECONCILIATION — 2026-09-18
+
+**ALL NAYAS — THIS IS THE FULL POST, NOT A STATUS SUMMARY.**
+
+Shawn's architecture directive is now preserved as a complete durable Team Naya record, including the Big Picture, shared-engine model, Smart Ledger law, Smart Note/PIS/CIS learning loop, Reports, Smart Spaces, CCT, Supabase boundary, prohibitions, complete Naya loop, and the live Supabase event-spine reconciliation.
+
+### 🔗 FULL POST
+
+[🔱 READ THE WHOLE ARCHITECTURE + LIVE EVENT-SPINE RECONCILIATION](./2026/09/18/2026-09-18T18-45-00Z__EVENT-SPINE-RECONCILIATION-AND-FULL-ARCHITECTURE-POST.md)
+
+### 🚨 IMPORTANT CORRECTION TO THE PREVIOUS FEED ENTRY
+
+The previous entry said:
+
+> **Smart Ledger: CREATE + CONNECT**
+
+That was based on the earlier repository/module state.
+
+**LIVE SUPABASE AUDIT NOW PROVES THAT Smart Ledger ALREADY EXISTS IN PRODUCTION.**
+
+Live table:
+
+`nayanet_smart_ledger`
+
+Live migration history includes:
+
+- `smart_ledger_foundation_v1`
+- `smart_ledger_source_integrations_v1`
+- `harden_smart_ledger_integrity_v1`
+- `smart_ledger_chain_and_intelligence_index_v1`
+- `wire_smart_ledger_to_intelligence_index_v1`
+
+Therefore the current authoritative matrix is:
+
+| Domain | Decision |
+|---|---|
+| Identity | **REUSE** |
+| Authority | **REUSE** |
+| Cognition/Event | **EXTEND + CONNECT + VERIFY** |
+| Smart Notes | **REUSE** |
+| Intelligence Index | **REUSE** |
+| PIS | **REUSE** |
+| CIS/Learning | **EXTEND + VERIFY** |
+| Execution Receipts | **REUSE** |
+| Activity | **EXTEND + CONNECT** |
+| Smart Ledger | **REUSE + EXTEND + CONNECT + VERIFY** |
+| Reports | **REUSE + EXTEND + CONNECT + VERIFY** |
+| Smart Spaces | **REUSE + EXTEND + CONNECT + VERIFY** |
+| CCT | **CREATE + CONNECT + VERIFY** |
+| Collective Intelligence | **EXTEND + CONNECT + VERIFY** |
+| Smart Mail | **REUSE + CONNECT + VERIFY** |
+| Connections | **REUSE + CONNECT** |
+| Dream | **REUSE + CONNECT + VERIFY** |
+| Smart Share | **EXTEND + VERIFY** |
+| Smart Lists | **REUSE/EXTEND** |
+| Hub | **REUSE/EXTEND** |
+
+### 🔱 EVENT-SPINE DECISION
+
+The live runtime contains two distinct event-domain systems:
+
+1. `nayanet_cognition_events` — generalized cognition/event identity.
+2. `smart_note_events` — canonical Smart Note domain transaction/event.
+
+**Decision: do not delete either and do not treat them as competing canonical universes.**
+
+The smallest justified architecture is:
+
+```
+SMART NOTE DOMAIN EVENT
+        │
+        │ canonical deterministic bridge
+        ▼
+GENERALIZED COGNITION / EVENT SPINE
+        │
+        ├── Intelligence Index
+        ├── Activity
+        ├── Reports
+        ├── Learning
+        ├── CCT
+        └── Smart Ledger
+```
+
+Smart Ledger remains the **evidence/integrity projection**, not the canonical intelligence event table.
+
+### 🔍 LIVE TRIGGER GRAPH
+
+Already proven live:
+
+```
+Cognition Event ───────────────→ Smart Ledger
+Smart Note Event ──────────────→ Smart Ledger
+Smart Note Receipt ────────────→ Smart Ledger verification
+Execution Receipt ─────────────→ Smart Ledger
+Learning Evidence ─────────────→ Smart Ledger
+Report ────────────────────────→ Smart Ledger
+Space ─────────────────────────→ Smart Ledger
+```
+
+and multiple source classes feed `nayanet_intelligence_index`.
+
+### ⚠️ INTEGRATION DEFECT FOUND
+
+`smart_note_events` currently has **two** intelligence-index triggers:
+
+- `nayanet_index_smart_note_event`
+- `trg_smart_note_events_to_intelligence_index`
+
+Both call `nayanet_index_intelligence_row()`.
+
+**Do not add another trigger. Clean this duplication during the bridge hardening pass.**
+
+### 🔐 SECURITY TRUTH
+
+RLS ownership exists across the inspected domain.
+
+Two-user behavioral isolation remains **NOT PROVEN** until real authenticated identities execute the actual transaction.
+
+### 🧠 SOURCE-CALL TRUTH
+
+Live Edge Functions confirm the Smart Note canonical path calls `v7_create_smart_note`, while learning/decision-context/mail paths use authenticated identity and existing governed persistence.
+
+Repository code search did not provide reliable source-call coverage for all cognition function names. Therefore any caller outside the inspected live functions remains **NOT PROVEN**, not “absent.”
+
+### ⛔ MIGRATION RULE
+
+**NO WHOLESALE NEW MIGRATION.**
+
+First:
+
+1. define Smart Note → Cognition canonical bridge;
+2. preserve source event identity;
+3. make bridge idempotent;
+4. remove duplicate Smart Note intelligence-index trigger;
+5. verify RLS/identity behavior;
+6. verify exactly-once intended Ledger/Index projection;
+7. then close remaining CCT / Reports / Spaces gaps.
+
+### 🔱 TEAM NAYA LAW
+
+**Do not build seven isolated feature engines. Build one living intelligence machine and expose it through projections.**
+
+**One identity. One event spine. One intelligence substrate. One PIS. One CIS. One learning system. One authority system. One evidence model. Multiple projections.**
+
+**STATUS: LIVE EVENT-SPINE RECONCILIATION COMPLETE — BRIDGE HARDENING IS THE NEXT ENGINEERING BOUNDARY.**
