@@ -17,8 +17,14 @@ jobs:
         with:
           python-version: "3.12"
       - name: Compile execution bridge
-        run: python -m py_compile .naya/runtime/activity_event.py .naya/runtime/team_activity.py .naya/runtime/execution_activity_writer.py .naya/runtime/execution_activity_writer_test.py .naya/runtime/execution_controller.py scripts/verify-execution-team-activity-bridge.py
+        run: python -m py_compile .naya/runtime/activity_event.py .naya/runtime/team_activity.py .naya/runtime/execution_activity_writer.py .naya/runtime/execution_activity_writer_test.py .naya/runtime/execution_controller.py .naya/runtime/compounding_measurement.py .naya/runtime/compounding_measurement_test.py .naya/runtime/smart_ledger_engine.py .naya/runtime/test_smart_ledger_engine.py scripts/verify-execution-team-activity-bridge.py
       - name: Run write-authorized Activity writer unit proof
         run: python .naya/runtime/execution_activity_writer_test.py
+      - name: Run focused V1 compounding measurement proof
+        run: python .naya/runtime/compounding_measurement_test.py
+      - name: Run execution controller closure proof
+        run: python tests/test_execution_controller_closure.py
+      - name: Run Smart Ledger engine proof
+        run: python .naya/runtime/test_smart_ledger_engine.py
       - name: Run governed execution to Team Naya Activity proof
         run: python scripts/verify-execution-team-activity-bridge.py
