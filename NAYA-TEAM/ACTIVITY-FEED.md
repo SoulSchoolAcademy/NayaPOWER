@@ -359,3 +359,28 @@ The following remain **NOT-PROVEN** because the actual authenticated A/B transac
 This boundary becomes **PROVEN** only when two legitimate authenticated test identities are provisioned through the authorized identity/test-secret boundary and the complete A/B create/read/mutate matrix runs through the deployed client/runtime, recording actual identity IDs, causal object IDs, allowed operations, denied operations, and server-observed results.
 
 **NEXT NAYA:** provision two legitimate authenticated test identities through the authorized secret/provisioning runner, then execute the complete A/B matrix through the deployed client/runtime and append the resulting proof here.
+
+## 🔱 NAYA SESSION — PROOF 7 WORKFLOW REPAIR + PRE-EXISTING INTELLIGENCE — 2026-09-18 19:xx PDT
+
+**SIGN IN:** Began by reading the exact prior Proof 7 accumulated-intelligence handoff record.
+
+**DIAGNOSIS:** Rechecked run 35415657231: failure, zero jobs, zero artifacts. Then created a brand-new workflow identity for the stricter proof. Its first push run is 35415844874; GitHub recognized the new workflow normally but again completed FAILURE with zero jobs. This is decisive new evidence that the defect is not specific to the original Proof 7 workflow file or path. The failure is occurring before any job exists. The exact internal startup cause remains NOT-PROVEN from the accessible API surface.
+
+**REPAIR:** Added isolated workflow verify-proof7-preexisting-accumulated-intelligence.yml and runner verify-proof7-preexisting-accumulated-intelligence.mjs. The new runner does not create its starting intelligence. It requires a legitimate authenticated owner access token, retrieves that owner's existing learner state, selects ACTIVE evidence created before proof start and outside proof7 fixtures, fresh-retrieves decision context, derives the real Smart Mail action from that evidence, receiver-verifies, proves cognition/receipt lineage, persists outcome learning, and fresh-retrieves the new learning.
+
+**CREDENTIAL LAW:** No service-role impersonation, synthetic identity, copied credential, or fabricated owner token is permitted. The workflow fail-closes unless the authorized NAYAPOWER_PROOF7_OWNER_ACCESS_TOKEN secret exists.
+
+**VERIFICATION STATE:**
+- Production closure: VERIFIED.
+- Original run 35415657231: FAILED / ZERO JOBS / ROOT CAUSE NOT-PROVEN.
+- New isolated Proof 7 run 35415844874: FAILED / ZERO JOBS / ROOT CAUSE NOT-PROVEN.
+- New pre-existing accumulated-intelligence implementation: BUILT.
+- Pre-existing accumulated-intelligence transaction: NOT-PROVEN until GitHub Actions permits a job and a legitimate owner credential is supplied.
+
+**DIRECT EVIDENCE:**
+- Pre-existing Proof 7 runner: scripts/verify-proof7-preexisting-accumulated-intelligence.mjs
+- Pre-existing Proof 7 workflow: .github/workflows/verify-proof7-preexisting-accumulated-intelligence.yml
+- Exact prior handoff: NAYA-TEAM/2026/09/18/2026-09-18T19-28-00-0700__PROOF7-ACCUMULATED-INTELLIGENCE-CONTINUATION.md
+- Current dated session: NAYA-TEAM/2026/09/18/2026-09-18T19-40-00-0700__PROOF7-WORKFLOW-REPAIR-AND-PREEXISTING-VARIANT.md
+
+**SIGN OUT / HANDOFF:** The source-code boundary is now built, but the execution boundary is blocked by the GitHub Actions zero-job failure plus the missing authorized owner credential. Next Naya must start from the dated session record, inspect the latest Actions run state, and resolve the execution boundary before any VERIFIED claim.
