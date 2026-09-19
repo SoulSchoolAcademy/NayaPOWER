@@ -112,6 +112,36 @@ const prepare=async(p)=>{
   });
   if(mailAuthorityCheck.error||mailAuthorityCheck.data?.status!=="AUTHORIZED") throw mailAuthorityCheck.error||new Error("SMART_MAIL_AUTHORITY_GRANT_VALIDATION_FAILED:"+JSON.stringify(mailAuthorityCheck.data));
   authorityGrants.set(p.id,mailAuthority.data.grant_id);
+
+  const conflicting=await supabase.rpc("nayanet_issue_authority_grant",{
+    p_subject_id:sender.id,
+    p_source_event_id:"controlled-constraint-negative-"+runId+"-"+p.id,
+    p_mission_id:"NayaNET authority constraint negative proof",
+    p_scope:{project_id:experimentProject,target:receiver.id},
+    p_actions:["smart_mail_send"],
+    p_constraints:{mode:"constraint-negative-proof",no_external_side_effects:true,policy_id:p.id},
+    p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+    p_evidence:{authorization_type:"explicit_negative_constraint_proof",run_id:runId,policy_id:p.id},
+    p_parent_authority:authority.data.grant_id
+  });
+  if(conflicting.error||!conflicting.data?.grant_id) throw conflicting.error||new Error("CONSTRAINT_NEGATIVE_GRANT_FAILED");
+
+  const blocked=await fetch(url+"/functions/v1/nayanet-smart-mail",{
+    method:"POST",
+    headers:{authorization:"Bearer "+senderToken,apikey:key,"content-type":"application/json"},
+    body:JSON.stringify({
+      recipient_user_id:receiver.id,
+      body:"This action must be blocked by the authority constraint.",
+      subject:"Authority constraint negative proof",
+      kind:"direct",
+      idempotency_key:"constraint-negative-"+runId+"-"+p.id,
+      project_id:experimentProject,
+      authority_grant_id:conflicting.data.grant_id
+    })
+  });
+  const blockedData=await blocked.json();
+  if(blocked.ok||!String(blockedData?.detail||blockedData?.error||"").includes("AUTHORITY_CONSTRAINT_CONFLICT")) throw new Error("AUTHORITY_CONSTRAINT_NOT_ENFORCED");
+  console.log("P1_AUTHORITY_CONSTRAINT_NEGATIVE=PASS");
 };
 await prepare(v1); await prepare(v2);
 
