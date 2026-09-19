@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTIONS 01–05 EXECUTED; ACTION 06 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTIONS 01–06 EXECUTED; ACTION 07 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1290,46 +1290,39 @@ No schema change was deployed in Action 02.
 
 Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-# 32. IMMEDIATE ACTION 06
+# 32. IMMEDIATE ACTION 07
 
-## ACTION 06 — SMART LIST + SMART MAIL RELATIONSHIP BINDING
+## ACTION 07 — ACTIVITY + LEDGER BINDING
 
 **Status: IMMEDIATE EXECUTION**
 
 ### Mission
 
-Reconcile the existing Smart List substrate, then bind it to canonical Connections without duplicating relationship state. At the same time, bind Smart Mail's send-time eligibility to the canonical relationship boundary while preserving the existing authority-grant requirement.
+Bind Space membership, Connections, Smart List and Smart Mail consequences into the existing canonical Activity/cognition and Smart Ledger substrates.
 
 ### Exact sequence
 
-1. Inventory all live tables/functions/indexes/RLS matching List, Favorite, Saved, Collection, Group and person organization.
-2. Determine whether an existing List primitive can be reused.
-3. If absent, create the smallest owner-scoped List + membership model.
-4. Make List membership reference canonical Connection/Member identity, never copied profile rows.
-5. Implement idempotent add/remove and reload persistence.
-6. Ensure removing a List entry does not revoke the Connection.
-7. Inspect current Smart Mail v12 and `nayanet_send_smart_mail_authorized`.
-8. Add relationship eligibility at use time without replacing authority validation.
-9. Require an active shared Space or canonical Connection state according to the reconciled communication contract.
-10. Preserve authority-grant validation, revocation-at-use and idempotency.
-11. Test unauthorized relationship denial in a transaction.
-12. Update Smart List, Smart Mail, Job 04, Team Naya and this master directive.
-13. Finish with DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
+1. Inspect cognition/Activity projection paths.
+2. Inspect Smart Ledger source integration paths.
+3. Verify JOIN/LEAVE event writes.
+4. Verify Connection SAVE/REVOKE event writes.
+5. Add missing List add/remove event writes if required.
+6. Verify Smart Mail send/receiver verification lineage after the relationship gate.
+7. Trace event → receipt → Ledger where the contract requires it.
+8. Test replay/idempotency does not duplicate consequential events.
+9. Record exact event IDs, receipt IDs, Ledger IDs and source commit.
+10. Update feature records, Job 04, Team Naya and this master directive.
+11. Finish with DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
 
 ### Hard rules
 
-- Do not redesign the Hub.
-- Do not replace `nayanet_authority_grants`.
-- Do not make Connection equal authority.
-- Do not copy identity/profile data into Lists.
-- Do not allow a UI-only recipient to bypass server relationship checks.
-- Do not call Smart Mail verified until the new relationship gate is proven.
+No second Activity store. No second Ledger. No UI-generated fake events. No closure claim without concrete lineage.
 
 ### Success condition
 
-A canonical Connection can be organized in Smart List, survives reload, and does not change relationship truth when removed from a List; Smart Mail rejects a recipient who lacks the required relationship boundary even if the client presents a callable recipient.
+A real membership/relationship/communication action can be reconstructed from canonical event/evidence records.
 
 ### Canonical execution prompt
 
 See:
-`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-06-EXECUTION-PROMPT.md`
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-07-EXECUTION-PROMPT.md`
