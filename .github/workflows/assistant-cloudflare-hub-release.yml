@@ -204,7 +204,7 @@ jobs:
               const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1000 } });
               const page = await context.newPage();
               const target = 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE';
-              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/intelligence?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
               await page.waitForSelector('[data-event-id="' + target + '"]', { timeout: 30000 });
               const result = await page.evaluate((eventId) => {
                 const article = document.querySelector('[data-event-id="' + eventId + '"]');
