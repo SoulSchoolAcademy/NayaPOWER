@@ -81,6 +81,7 @@ const proof = {
   chain: { external_sender_authenticated: true, canonical_naya_identity: true, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true },
   observed_at: new Date().toISOString()
 };
+const requiredProof=Object.values(proof.chain).every(v=>v===true); if(!requiredProof) throw new Error('SMART_MAIL_PROOF_POINT_FAILED '+JSON.stringify(proof.chain));
 fs.writeFileSync(process.env.PROOF_PATH, JSON.stringify(proof, null, 2));
 for (const [k,v] of Object.entries(proof.chain)) console.log('SMART_MAIL_' + k.toUpperCase() + '=' + (v ? 'PASS' : 'FAIL'));
 console.log('SMART_MAIL_PROOF_STATUS=VERIFIED');
