@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-18  
 **Audience:** ALL NAYAS  
-**Status:** ARCHITECTURE LOCK / LIVE AUDIT COMPLETED / MIGRATIONS DEFERRED UNTIL EVENT-SPINE RECONCILIATION
+**Status:** ARCHITECTURE LOCK / LIVE AUDIT + EVENT-SPINE RECONCILIATION COMPLETED / NO WHOLESALE MIGRATION
 
 ---
 
@@ -344,6 +344,14 @@ This confirms the server-side ownership pattern exists.
 
 It does NOT by itself prove two-user behavioral isolation. That remains a separate authenticated acceptance test requiring real identities.
 
+## UPDATED LIVE TRUTH — EVENT-SPINE RECONCILIATION
+
+The live audit proves that `nayanet_smart_ledger` already exists in production and is wired from cognition events, Smart Note events/receipts, execution receipts, learning evidence, reports, and Spaces. Therefore Smart Ledger is no longer CREATE-only. The authoritative decision is **REUSE + EXTEND + CONNECT + VERIFY**.
+
+The two event systems are retained as distinct domain layers: `nayanet_cognition_events` is the generalized cognition/event identity layer; `smart_note_events` is the canonical Smart Note domain transaction/event record. They require a deterministic, idempotent Smart Note → Cognition bridge. Do not create a third event table and do not delete either existing domain contract.
+
+`smart_note_events` currently has duplicate intelligence-index triggers (`nayanet_index_smart_note_event` and `trg_smart_note_events_to_intelligence_index`) that both invoke `nayanet_index_intelligence_row()`. This is an integration defect; do not add another trigger.
+
 ## EXACT BUILD MATRIX
 
 | Domain | Decision | Meaning |
@@ -357,7 +365,7 @@ It does NOT by itself prove two-user behavioral isolation. That remains a separa
 | CIS/Learning | EXTEND + VERIFY | Existing learner/evidence/application machinery; preserve proven learning lifecycle |
 | Execution Receipts | REUSE | Existing evidence-bearing receipt substrate |
 | Activity | EXTEND + CONNECT | Project canonical events; do not create a competing truth store |
-| Smart Ledger | CREATE + CONNECT | Missing dedicated evidence/value projection; consume canonical events/receipts |
+| Smart Ledger | REUSE + EXTEND + CONNECT + VERIFY | Live `nayanet_smart_ledger` + recorder + hash chain + source integrations already exist |
 | Reports | REUSE + EXTEND | Existing report/daily-intelligence tables exist; reconcile contract and provenance before new schema |
 | Smart Spaces | EXTEND + CONNECT | Existing nayanet_spaces exists; extend only for contract gaps/event emission |
 | CCT | CREATE + CONNECT | Relationship storage/graph projection is the meaningful missing primitive after event identity is settled |
@@ -434,7 +442,7 @@ This is the living system.
 
 ## CURRENT TRUTH
 
-Smart Ledger is canonically defined in the repository but its full runtime implementation is not yet complete.
+Smart Ledger is already live in the managed Supabase runtime. Its remaining work is integration hardening, event-spine bridging, verification semantics, value/outcome semantics, and authenticated end-to-end proof.
 
 CCT is canonically defined.
 
@@ -446,9 +454,7 @@ Learning/PIS/CIS infrastructure exists.
 
 Governance/authority and execution receipts exist.
 
-The key unresolved architectural question is the single canonical event spine: nayanet_cognition_events versus smart_note_events, or the smallest justified abstraction/bridge between them.
-
-Therefore no wholesale new migration should be written until that event-spine decision is reconciled at the contract/function/trigger/source-call level.
+The event-spine decision is now: retain both domain layers; treat `nayanet_cognition_events` as the generalized cognition/event identity layer and `smart_note_events` as the canonical Smart Note domain transaction/event, connected by a deterministic idempotent bridge. Smart Ledger remains evidence/integrity projection. No wholesale new migration should be written until the bridge is implemented and verified.
 
 ## TEAM NAYA DIRECTIVE
 
@@ -470,11 +476,7 @@ Do not claim behavioral proof until the real authenticated transaction has been 
 
 ## NEXT EXECUTION
 
-Reconcile nayanet_cognition_events versus smart_note_events at the contract, function, trigger, RLS, index, and source-call levels.
-
-Determine the single canonical event spine or the minimum bridge.
-
-Commit that decision to the main Activity feed.
+Implement and verify the minimum Smart Note → Cognition canonical bridge, clean the duplicate Smart Note intelligence-index trigger, prove authenticated ownership/isolation, and verify exactly-once intended Ledger/Index projection. The decision is committed to the main Activity feed.
 
 Only then design/write the minimum Smart Ledger/Reports/Spaces/CCT migrations.
 
