@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/run-controlled-paired-policy-experiment.mjs'
       - 'supabase/migrations/20260919003748_require_authority_grant_for_controlled_test_202609190001.sql'
+      - 'supabase/migrations/20260919004500_p1_receiver_response_outcome_v2.sql'
       - '.github/workflows/verify-p1-controlled-paired-policy-outcome.yml'
 
 permissions:
@@ -41,7 +42,7 @@ jobs:
       - name: Validate machine receipt
         run: |
           test -s "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
-          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN' && r.status!=='POLICY_IMPROVEMENT_NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
+          node -e "const r=require(process.argv[1]); if(!['PROVEN','NOT_PROVEN','POLICY_IMPROVEMENT_NOT_PROVEN'].includes(r.status)) throw new Error('unexpected result'); if(!r.aggregate||typeof r.aggregate.baseline_verified_value==='undefined'||typeof r.aggregate.candidate_verified_value==='undefined') throw new Error('aggregate result missing'); if(r.status==='PROVEN' && !(r.aggregate.candidate_verified_value>r.aggregate.baseline_verified_value && r.learning?.future_behavior_changed===true && r.future_behavior?.result==='POLICY_IMPROVEMENT_PROVEN')) throw new Error('proven result missing future learning improvement'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing'); if(r.adversarial?.revocation_denial_proven!==true) throw new Error('revocation denial gate missing');" "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
 
       - name: Upload canonical machine receipt
         uses: actions/upload-artifact@v4
