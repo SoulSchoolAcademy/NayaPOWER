@@ -40,5 +40,21 @@ Deno.serve(async(req)=>{
    : {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_authority_grant_id:input.authority_grant_id};
  const {data:result,error}=await userClient.rpc(rpcName,rpcArgs);
  if(error)return json({ok:false,error:"SMART_MAIL_TRANSACTION_FAILED",detail:error.message},500);
+ if(result?.status==="CREATED" && result?.execution_receipt_id){
+   const receiptId=String(result.execution_receipt_id);
+   const eventId="SE-"+new Date().toISOString().replace(/[-:TZ.]/g,"").slice(0,14)+"-"+crypto.randomUUID().slice(0,12);
+   const {error:activityError}=await admin.from("nayanet_team_activity").insert({
+     event_id:eventId,effective_at:new Date().toISOString(),session_id:"SMART-MAIL-"+receiptId,
+     claim_id:"SMART-MAIL-"+receiptId,action_id:"smart_mail_send",
+     decision_id:input.policy_decision_hash?"POLICY-"+input.policy_decision_hash:"AUTHORITY-"+input.authority_grant_id,
+     authority_id:input.authority_grant_id,actor_id:actorId,run_id:receiptId,
+     subject:"Consequential Smart Mail execution",
+     summary:"Smart Mail execution completed and produced a durable Team Naya Activity receipt.",
+     evidence:[receiptId,input.policy_input_hash??"policy-input-hash-not-supplied",input.policy_decision_hash??"policy-decision-hash-not-supplied"],
+     next_action:"Continue from the verified execution receipt.",successor:"NEXT-NAYA-FROM-"+receiptId,
+     execution_receipt_id:receiptId
+   });
+   if(activityError)return json({ok:false,error:"ACTIVITY_WRITE_FAILED",detail:activityError.message,execution_receipt_id:receiptId},500);
+ }
  return json({ok:true,...result,authority_grant_id:input.authority_grant_id});
 });
