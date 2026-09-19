@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 import os
 import shutil
-import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -98,9 +97,6 @@ def main() -> int:
         assert intelligence_event["evidence"] == activity_event["evidence_ids"]
         assert intelligence_event["evidence_state"] == "VERIFIED"
 
-        # Use the unchanged existing Promotion Engine against an isolated input
-        # containing only this Intelligence Event. This prevents unrelated
-        # legacy events with obsolete enum values from masking this causal proof.
         import promote_intelligence as promotion_engine
         promotion_root = tmp / "promotion"
         promotion_event_dir = promotion_root / "INTELLIGENCE-EVENTS"
@@ -117,10 +113,6 @@ def main() -> int:
         promotion_engine.SHAWN_DIR = promotion_shawn_dir
         promotion_engine.FEED_DIR = promotion_feed_dir
         promotion_engine.HUB_PATH = promotion_hub
-        promotion = subprocess.run([sys.executable, str(ROOT / "tools" / "promote_intelligence.py")], cwd=ROOT, text=True, capture_output=True)
-        # The subprocess uses the canonical engine paths, so invoke the same
-        # unchanged engine in-process for the isolated one-event proof.
-        assert promotion.returncode != 0 or True
         assert promotion_engine.main() == 0, "FIRST_DIVERGENCE=existing Promotion Engine rejected the isolated Intelligence Event"
 
         receipt_path = promotion_receipt_dir / "LATEST-PROMOTION-RECEIPT.json"
