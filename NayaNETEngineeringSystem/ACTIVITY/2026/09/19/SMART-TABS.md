@@ -70,3 +70,16 @@ Do not redesign the Hub. Do not create a Smart Tab intelligence index. Reuse exi
 **Timestamp:** 2026-09-19T16:27:35Z
 
 Smart Tabs production capability is now implemented: owner-scoped persistence, JWT-protected Edge Function CRUD, canonical runtime bridge, Hub surface, and release/parity workflow support. Runtime deployment parity and authenticated CRUD/reload/isolation remain unproven.
+
+
+## Session 002 — Full CRUD control closure
+
+**Timestamp:** 2026-09-19T16:45:00Z
+
+The Smart Tabs surface was upgraded to expose the contract already supported by the backend: create, edit label/target, favorite toggle, move up/down, target navigation, delete, reload after mutation, and explicit confirmation that deleting a tab does not delete underlying intelligence.
+
+**Commit:** `c5d21b6db36661546561aeb0ec479735ba555199`
+
+Backend remains `naya-smart-tabs` ACTIVE v1 with JWT verification and owner-scoped persistence. Authenticated CRUD/reload/isolation and Cloudflare deployed parity remain unproven.
+
+**Successor:** Prove deployed parity, then execute authenticated create → reload → edit → favorite → reorder → navigate → delete → reload, followed by second-user denial.
