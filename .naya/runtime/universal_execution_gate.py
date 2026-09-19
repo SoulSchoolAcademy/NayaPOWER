@@ -38,6 +38,34 @@ from typing import Any, Mapping, Optional, Tuple
 
 _GOVERNANCE_DIR = Path(__file__).resolve().parents[1] / "governance"
 _REGISTRY_PATH = _GOVERNANCE_DIR / "authority-registry.json"
+_IDENTITY_PATH = Path(__file__).with_name("intelligence_identity.py")
+
+
+def _load_canonical_identity():
+    """Load the identity/provenance validator from its canonical runtime path."""
+    private_name = "naya_canonical_intelligence_identity"
+    cached = sys.modules.get(private_name)
+    if cached is not None:
+        return cached
+    if not _IDENTITY_PATH.is_file():
+        raise RuntimeError("canonical intelligence identity module is missing")
+    spec = importlib.util.spec_from_file_location(private_name, _IDENTITY_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("canonical intelligence identity module cannot be loaded")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[private_name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(private_name, None)
+        raise
+    return module
+
+
+IDENTITY = _load_canonical_identity()
+identity_fingerprint = IDENTITY.identity_fingerprint
+identity_binding_fingerprint = IDENTITY.identity_binding_fingerprint
+validate_identity_envelope = IDENTITY.validate_identity_envelope
 _KERNEL_PATH = _GOVERNANCE_DIR / "governance_kernel.py"
 
 
@@ -155,6 +183,9 @@ class ExecutionAuthorization:
     risk_tier: str
     validated_at: str
     binding_hash: str
+    identity_id: str
+    identity_fingerprint: str
+    identity_binding_hash: str
 
 
 @dataclass(frozen=True)
@@ -194,7 +225,7 @@ def _execution_binding_hash(
 
 
 def _authorization_hash(authorization: "ExecutionAuthorization") -> str:
-    return _execution_binding_hash(
+    execution_binding = _execution_binding_hash(
         authorization.authority_id,
         authorization.decision_id,
         authorization.action_id,
@@ -203,6 +234,12 @@ def _authorization_hash(authorization: "ExecutionAuthorization") -> str:
         authorization.actor_id,
         authorization.scope,
         authorization.permission,
+    )
+    return _binding_hash(
+        execution_binding,
+        authorization.identity_id,
+        authorization.identity_fingerprint,
+        authorization.identity_binding_hash,
     )
 
 
@@ -243,7 +280,7 @@ class UniversalExecutionGate:
         # here so downstream boundaries can distinguish genuine issuance from a
         # caller-constructed dataclass with identical fields. This is an
         # in-process issuance registry, not a new authority model.
-        self._issued: set[str] = set()
+        self._issued: dict[str, int] = {}
 
     @classmethod
     def from_canonical(cls) -> "UniversalExecutionGate":
@@ -262,6 +299,8 @@ class UniversalExecutionGate:
         authority: Optional[Authority],
         decision: Optional[DecisionObject],
         action: Any,
+        identity_envelope: Optional[Mapping[str, Any]] = None,
+        consequential: bool = False,
         now: Optional[str] = None,
     ) -> GateDecision:
         """ALLOW only when provenance, validity, and all bindings hold."""
@@ -272,6 +311,15 @@ class UniversalExecutionGate:
             reasons.append("no authority supplied")
         if decision is None:
             reasons.append("no decision supplied")
+
+        identity_validation = None
+        if consequential:
+            if identity_envelope is None:
+                reasons.append("no governed intelligence identity envelope supplied")
+            else:
+                identity_validation = validate_identity_envelope(identity_envelope, consequential=True)
+                if not identity_validation.valid:
+                    reasons.extend(identity_validation.errors)
 
         normalized: Optional[ExecutionAction] = None
         if action is None:
@@ -329,6 +377,19 @@ class UniversalExecutionGate:
             if normalized.permission != decision.action or normalized.permission != decision.required_permission:
                 reasons.append("action permission does not match decision permission")
 
+        # 9b. identity <-> action/authority binding. Identity never creates authority.
+        if consequential and identity_envelope is not None and normalized is not None and authority is not None:
+            envelope_identity_id = identity_envelope.get("identity_id")
+            if envelope_identity_id != normalized.actor_id:
+                reasons.append("identity_id does not match action actor_id")
+            authority_block = identity_envelope.get("authority")
+            authority_ids = authority_block.get("authority_ids", []) if isinstance(authority_block, Mapping) else []
+            if authority.authority_id not in authority_ids:
+                reasons.append("identity envelope does not name the resolved authority_id")
+            authorized_by = identity_envelope.get("authorized_by", [])
+            if not any(isinstance(item, Mapping) and item.get("authority_id") == authority.authority_id for item in authorized_by):
+                reasons.append("identity envelope lacks authorized_by record for the resolved authority_id")
+
         # 10. canonical kernel is the only authority-of-record
         kernel_result = None
         if authority is not None and decision is not None:
@@ -347,6 +408,25 @@ class UniversalExecutionGate:
 
         assert authority is not None and decision is not None and normalized is not None
         assert kernel_result is not None
+        execution_binding = {
+            "authority_id": authority.authority_id,
+            "decision_id": decision.decision_id,
+            "action_id": normalized.action_id,
+            "action_type": normalized.action_type,
+            "target": normalized.target,
+            "actor_id": decision.actor_id,
+            "scope": decision.scope,
+            "permission": decision.action,
+        }
+        if consequential:
+            assert identity_envelope is not None and identity_validation is not None and identity_validation.valid
+            identity_id = str(identity_envelope["identity_id"])
+            identity_fp = identity_validation.identity_fingerprint
+            identity_bound_hash = identity_binding_fingerprint(identity_envelope, execution_binding)
+        else:
+            identity_id = ""
+            identity_fp = ""
+            identity_bound_hash = ""
         authorization = ExecutionAuthorization(
             authority_id=authority.authority_id,
             decision_id=decision.decision_id,
@@ -359,23 +439,22 @@ class UniversalExecutionGate:
             governance_state=kernel_result.state.value,
             risk_tier=decision.risk.tier,
             validated_at=validated_at,
-            binding_hash=_execution_binding_hash(
-                authority.authority_id,
-                decision.decision_id,
-                normalized.action_id,
-                normalized.action_type,
-                normalized.target,
-                decision.actor_id,
-                decision.scope,
-                decision.action,
-            ),
+            binding_hash="",
+            identity_id=identity_id,
+            identity_fingerprint=identity_fp,
+            identity_binding_hash=identity_bound_hash,
         )
-        self._issued.add(authorization.binding_hash)
+        authorization = ExecutionAuthorization(
+            **{**authorization.__dict__, "binding_hash": _authorization_hash(authorization)}
+        )
+        self._issued[authorization.binding_hash] = id(authorization)
         return GateDecision(allowed=True, reasons=(), authorization=authorization)
 
     def verify(
         self,
         authorization: Any,
+        identity_envelope: Optional[Mapping[str, Any]] = None,
+        consequential: bool = False,
         *,
         now: Optional[str] = None,
     ) -> Tuple[bool, Tuple[str, ...]]:
@@ -393,12 +472,47 @@ class UniversalExecutionGate:
         for field in ("authority_id", "decision_id", "action_id", "binding_hash"):
             if not getattr(authorization, field, ""):
                 reasons.append(f"execution authorization missing {field}")
+        identity_validation = None
+        if consequential:
+            if identity_envelope is None:
+                reasons.append("no governed intelligence identity envelope supplied")
+            else:
+                identity_validation = validate_identity_envelope(identity_envelope, consequential=True)
+                if not identity_validation.valid:
+                    reasons.extend(identity_validation.errors)
+
+        if consequential and identity_envelope is not None and identity_validation is not None and identity_validation.valid:
+            if authorization.identity_id != identity_envelope.get("identity_id"):
+                reasons.append("authorization identity_id does not match identity envelope")
+            if authorization.identity_fingerprint != identity_validation.identity_fingerprint:
+                reasons.append("authorization identity fingerprint does not match identity envelope")
+            execution_binding = {
+                "authority_id": authorization.authority_id,
+                "decision_id": authorization.decision_id,
+                "action_id": authorization.action_id,
+                "action_type": authorization.action_type,
+                "target": authorization.target,
+                "actor_id": authorization.actor_id,
+                "scope": authorization.scope,
+                "permission": authorization.permission,
+            }
+            expected_identity_binding = identity_binding_fingerprint(identity_envelope, execution_binding)
+            if authorization.identity_binding_hash != expected_identity_binding:
+                reasons.append("authorization identity binding does not match identity envelope and exact action")
+
+        if consequential and not authorization.identity_id:
+            reasons.append("consequential authorization has no bound identity_id")
+        if consequential and not authorization.identity_fingerprint:
+            reasons.append("consequential authorization has no identity fingerprint")
+        if consequential and not authorization.identity_binding_hash:
+            reasons.append("consequential authorization has no identity/action binding")
+
         if authorization.governance_state != GovernanceState.AUTHORIZED.value:
             reasons.append("governance_state is not AUTHORIZED")
         if _authorization_hash(authorization) != authorization.binding_hash:
             reasons.append("binding_hash does not match authorization fields")
-        if authorization.binding_hash not in self._issued:
-            reasons.append("execution authorization was not issued by this gate")
+        if self._issued.get(authorization.binding_hash) != id(authorization):
+            reasons.append("execution authorization was not issued by this gate instance")
 
         resolved = self._current_registry().resolve(authorization.authority_id)
         if resolved is None:
@@ -431,4 +545,5 @@ __all__ = [
     "ExecutionAuthorization",
     "GateDecision",
     "UniversalExecutionGate",
+    "grant_fingerprint",
 ]
