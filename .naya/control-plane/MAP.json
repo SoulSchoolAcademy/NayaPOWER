@@ -103,7 +103,7 @@
       "P3-MULTI-CASE-HOLDOUT",
       "P4-COLD-NAYA-CONTINUATION"
     ],
-    "active_block": "P1-CONTROLLED-PAIRED-POLICY-OUTCOME",
+    "active_block": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
     "definition_of_done": "The Superbrain can execute comparable V1/V2 cases with immutable policy lineage, independently verified real outcomes, deterministic responsible-value comparison, adversarial protection, and truthful PROVEN/NOT_PROVEN results, then a fresh Naya can retrieve the result and continue one safe action."
   },
   "design_direction": {
