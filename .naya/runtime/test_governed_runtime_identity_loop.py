@@ -16,6 +16,7 @@ from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalE
 from execution_preflight_gate import approved_preflight
 import execution_controller as EC
 import model_tool_gateway as MTG
+from pathlib import Path
 
 
 def identity_for(authority):
@@ -134,17 +135,10 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
         self.assertEqual(authorized["identity_binding_hash"], self.credential.identity_binding_hash)
 
         marker = self.tmp / "actual-action.txt"
-        marker.write_text("REAL_TEST_ACTION_EXECUTED\n", encoding="utf-8")
-        observed = EC.transition(
-            "OBSERVED",
-            observation="Observed the actual side effect in a temporary execution target.",
-            execution_authorization=self.credential,
-            gate=self.gate,
-            identity_envelope=self.identity,
-            execution_result={
-                "execution_state": "COMPLETED",
-                "execution_id": self.action["action_id"],
-                "action_id": self.action["action_id"],
+        def execute_real_action(action):
+            marker.write_text("REAL_TEST_ACTION_EXECUTED\n", encoding="utf-8")
+            return {
+                "action_id": action["action_id"],
                 "action": "write governed execution marker",
                 "action_ref": "tool:filesystem:test-marker",
                 "observed_output": marker.read_text(encoding="utf-8").strip(),
@@ -154,7 +148,14 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
                 "environment": "windows-test",
                 "source": "governed-runtime-loop-test",
                 "outcome_ref": "outcome:LOOP-ACT-001",
-            },
+            }
+        observed = MTG.execute_authorized(
+            self.action,
+            execution_authorization=self.credential,
+            gate=self.gate,
+            identity_envelope=self.identity,
+            executor=execute_real_action,
+            preflight=approved_preflight(),
         )
         self.assertEqual(observed["status"], "OBSERVED")
         self.assertEqual(observed["smart_ledger"]["verification_receipt"]["verification_state"], "verified")
