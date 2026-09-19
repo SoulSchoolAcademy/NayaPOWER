@@ -365,9 +365,53 @@
       "claim_type": "RUNTIME",
       "reason": "Current independent receiver-retrieval outcome contract produces verified value 1 and does not discriminate policy quality; no improvement claim is made.",
       "next_action": "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes."
+    },
+    "p1_discriminating_compounding": {
+      "status": "PRODUCTION_PROVEN",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
+      "run_id": 35472129371,
+      "observed_head": "1e379c1168957e88f05dee24523922210192b68f",
+      "evidence": {
+        "held_out_cases": 3,
+        "aggregate_baseline_value": 0,
+        "aggregate_candidate_value": 3,
+        "comparison_result": "PROVEN",
+        "future_case_id": "future-35472129371-F1",
+        "future_baseline_value": 0,
+        "future_candidate_value": 1,
+        "future_result": "POLICY_IMPROVEMENT_PROVEN",
+        "learning_reused": true,
+        "learning_influenced": true,
+        "future_behavior_changed": true,
+        "authority_changed": false,
+        "adversarial_receipt_swap_rejected": true,
+        "revocation_denial_proven": true,
+        "controlled_receiver_response_contract": "NAYANET_REAL_OUTCOME_VALUE_V2"
+      },
+      "caveat": "This is a controlled causal proof using deterministic held-out receiver-response fixtures; it proves the engine can measure and compound a verified behavioral difference, not universal real-world model quality."
+    },
+    "public_welcome": {
+      "status": "BLOCKED",
+      "claim_type": "RUNTIME",
+      "runtime_url": "https://welcome.nayanet.app/",
+      "embedded_runtime": "https://shiny-wave-dd48.nayanet.workers.dev/",
+      "identity_target": "https://academy.nayanet.app/",
+      "canonical_assistant_runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+      "reason": "Live public identity page currently routes activation to legacy Academy/Groove surface; no repository-controlled canonical deployment authority for welcome.nayanet.app was found.",
+      "next_action": "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub."
+    },
+    "authority_constraints": {
+      "status": "IMPLEMENTED",
+      "claim_type": "RUNTIME",
+      "migration": "20260919005000_harden_smart_mail_authority_constraints_v1.sql",
+      "smart_mail_policy_positive_regression_run": 35472382460,
+      "smart_mail_wavea_regression_run": 35472383857,
+      "negative_live_probe": "NOT_PROVEN_DUE_TOOL_SAFETY_BLOCK",
+      "next_action": "Add/execute a canonical repository-level negative test proving no_external_side_effects blocks before message/receipt side effects."
     }
   },
-  "recording_commit": "fb17b633934c0803833db76cb12f28171cbfbfb5",
+  "recording_commit": "6a1b4cdc03aab44fedb1528ee6a9640d17c6f4fe",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -607,6 +651,6 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "As of current main fb17b633934c0803833db76cb12f28171cbfbfb5, the NayaPOWER/Superbrain engine is machine-ready and its key execution/learning loop is freshly verified. The remaining project-completion gap is no longer basic engine construction; it is measurable improvement under a non-gamed outcome contract, plus the public Welcome→Identity and consolidated human-facing acceptance/product activation boundary.",
-  "current_repository_head": "16071081dd90dab568137b321dbc6fdbe776284c"
+  "interpretation": "The governed Superbrain engine and compounding loop are now operationally proven. The remaining project-completion blocker is the public human-facing entry boundary plus one consolidated acceptance; authority constraint semantics need a dedicated negative proof.",
+  "current_repository_head": "6a1b4cdc03aab44fedb1528ee6a9640d17c6f4fe"
 }
