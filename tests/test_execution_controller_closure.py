@@ -496,7 +496,12 @@ class TestExecutionControllerClosure(unittest.TestCase):
             payload["authorities"][0]["revoked"] = True
             path.write_text(json.dumps(payload), encoding="utf-8")
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertTrue("revoked" in msg or "no longer permits" in msg, msg)
 
     # 20. direct controller bypass (state written behind the gateway) -> REFUSED
