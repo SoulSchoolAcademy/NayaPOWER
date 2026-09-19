@@ -183,6 +183,13 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
         self.assertEqual(checked["execution_status"], "VERIFIED")
 
     def test_identity_tamper_at_observed_is_rejected(self):
+        MTG.authorize(
+            self.action,
+            execution_authorization=self.credential,
+            gate=self.gate,
+            identity_envelope=self.identity,
+            preflight=approved_preflight(),
+        )
         tampered = dict(self.identity)
         tampered["capabilities"] = ["repo_write", "deploy_public_runtime"]
         with self.assertRaises(AssertionError) as ctx:
