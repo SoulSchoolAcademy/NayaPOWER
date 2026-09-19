@@ -22,12 +22,28 @@ Deno.serve(async(req)=>{
    if(!membership)return json({ok:false,error:"RECEIVER_NOT_AUTHORIZED"},403);
    const receiptId=message.metadata?.execution_receipt_id;
    if(!receiptId)return json({ok:false,error:"RECEIPT_NOT_LINKED"},409);
-   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence,value,experiment_case_id").eq("id",receiptId).maybeSingle();
+   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence,value,learning,experiment_case_id").eq("id",receiptId).maybeSingle();
    if(receiptError||!receipt)return json({ok:false,error:"RECEIPT_NOT_FOUND"},404);
    const {data:outcome,error:outcomeError}=await userClient.rpc("nayanet_record_smart_mail_outcome",{p_receipt_id:receiptId,p_message_id:message.id,p_experiment_case_id:receipt.experiment_case_id??null});
    if(outcomeError)return json({ok:false,error:"OUTCOME_RECORD_FAILED",detail:outcomeError.message},409);
-   await admin.from("v7_mail_messages").update({metadata:{...message.metadata,receiver_verified_at:new Date().toISOString(),receiver_verified_by:actorId,outcome_id:outcome?.outcome_id??null}}).eq("id",message.id);
-   return json({ok:true,status:"VERIFIED",message_id:message.id,thread_id:message.thread_id,execution_receipt_id:receiptId,receiver_id:actorId,authority_changed:false,outcome});
+   const {data:sourceCognition}=await admin.from("nayanet_cognition_events").select("id,event_id").eq("receipt_id",receiptId).eq("user_id",message.sender_id).order("created_at",{ascending:false}).limit(1).maybeSingle();
+   const sourceEventId=sourceCognition?.event_id??receiptId;
+   const {data:existingLearning,error:existingLearningError}=await admin.from("learning_evidence").select("id").eq("member_id",message.sender_id).eq("source_event_id",sourceEventId).limit(1).maybeSingle();
+   if(existingLearningError)return json({ok:false,error:"LEARNING_EVIDENCE_LOOKUP_FAILED",detail:existingLearningError.message},500);
+   let learningEvidenceId=existingLearning?.id??null;
+   if(!learningEvidenceId){
+     const learningStatement=Array.isArray(receipt.learning)&&receipt.learning[0]?.statement?String(receipt.learning[0].statement):"Verified Smart Mail execution produced an independently receiver-verified outcome that is reusable intelligence.";
+     const {data:learningEvidence,error:learningError}=await admin.from("learning_evidence").insert({
+       member_id:message.sender_id,target_id:receipt.experiment_case_id??("smart-mail:"+receiptId),level:"E1_UNDERSTANDS",
+       provenance:"authenticated receiver verification + execution receipt + cognition/Ledger lineage",status:"ACTIVE",claim:learningStatement,
+       observed_value:{receipt_id:receiptId,outcome_id:outcome?.outcome_id??null,message_id:message.id,thread_id:message.thread_id,receiver_id:actorId,verified_value:outcome?.verified_value??null},
+       verification_method:"authenticated receiver verification",source_event_id:sourceEventId
+     }).select("id").single();
+     if(learningError)return json({ok:false,error:"LEARNING_EVIDENCE_CREATE_FAILED",detail:learningError.message},500);
+     learningEvidenceId=learningEvidence.id;
+   }
+   await admin.from("v7_mail_messages").update({metadata:{...message.metadata,receiver_verified_at:new Date().toISOString(),receiver_verified_by:actorId,outcome_id:outcome?.outcome_id??null,learning_evidence_id:learningEvidenceId}}).eq("id",message.id);
+   return json({ok:true,status:"VERIFIED",message_id:message.id,thread_id:message.thread_id,execution_receipt_id:receiptId,receiver_id:actorId,authority_changed:false,outcome,learning_evidence_id:learningEvidenceId});
  }
  if(!input?.recipient_user_id||!input?.body||!input?.idempotency_key)return json({ok:false,error:"RECIPIENT_BODY_IDEMPOTENCY_REQUIRED"},400);
  if(input.recipient_user_id===actorId)return json({ok:false,error:"SELF_RECIPIENT_NOT_ALLOWED"},400);
@@ -46,15 +62,11 @@ Deno.serve(async(req)=>{
    const receiptId=String(result.execution_receipt_id);
    const eventId="SE-"+new Date().toISOString().replace(/[-:TZ.]/g,"").slice(0,14)+"-"+crypto.randomUUID().slice(0,12);
    const {error:activityError}=await admin.from("nayanet_team_activity").insert({
-     event_id:eventId,effective_at:new Date().toISOString(),session_id:"SMART-MAIL-"+receiptId,
-     claim_id:"SMART-MAIL-"+receiptId,action_id:"smart_mail_send",
-     decision_id:input.policy_decision_hash?"POLICY-"+input.policy_decision_hash:"AUTHORITY-"+input.authority_grant_id,
-     authority_id:input.authority_grant_id,actor_id:actorId,run_id:receiptId,
-     subject:"Consequential Smart Mail execution",
-     summary:"Smart Mail execution completed and produced a durable Team Naya Activity receipt.",
+     event_id:eventId,effective_at:new Date().toISOString(),session_id:"SMART-MAIL-"+receiptId,claim_id:"SMART-MAIL-"+receiptId,action_id:"smart_mail_send",
+     decision_id:input.policy_decision_hash?"POLICY-"+input.policy_decision_hash:"AUTHORITY-"+input.authority_grant_id,authority_id:input.authority_grant_id,actor_id:actorId,run_id:receiptId,
+     subject:"Consequential Smart Mail execution",summary:"Smart Mail execution completed and produced a durable Team Naya Activity receipt.",
      evidence:[receiptId,input.policy_input_hash??"policy-input-hash-not-supplied",input.policy_decision_hash??"policy-decision-hash-not-supplied"],
-     next_action:"Continue from the verified execution receipt.",successor:"NEXT-NAYA-FROM-"+receiptId,
-     execution_receipt_id:receiptId
+     next_action:"Continue from the verified execution receipt.",successor:"NEXT-NAYA-FROM-"+receiptId,execution_receipt_id:receiptId
    });
    if(activityError)return json({ok:false,error:"ACTIVITY_WRITE_FAILED",detail:activityError.message,execution_receipt_id:receiptId},500);
  }
