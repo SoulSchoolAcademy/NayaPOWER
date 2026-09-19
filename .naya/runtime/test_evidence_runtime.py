@@ -41,11 +41,7 @@ class EvidenceTests(unittest.TestCase):
             store = Path(tmp)
             created = evidence.persist_evidence(self.good, evidence_store=store)
             self.assertEqual(created["status"], "CREATED")
-            _, recovered, errors = evidence.load_store()
-            # load_store reads the module's canonical store, so independently
-            # recover from the isolated store directly for this seam test.
-            recovered_item = json.loads((store / "EV-1.json").read_text(encoding="utf-8"))
-            self.assertEqual(errors, [])
+            recovered_item = evidence.load_evidence("EV-1", evidence_store=store)
             self.assertEqual(recovered_item, self.good)
             replay = evidence.persist_evidence(self.good, evidence_store=store)
             self.assertEqual(replay["status"], "REPLAY")
