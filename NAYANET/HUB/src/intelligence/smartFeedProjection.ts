@@ -46,3 +46,9 @@ export async function publishSmartFeed(sourceId:string){
  const r=await fetch(SUPABASE_URL+'/functions/v1/naya-smart-feed',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,apikey:SUPABASE_PUBLISHABLE_KEY,'Content-Type':'application/json'},body:JSON.stringify({action:'publish',source_id:sourceId})});
  const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok)throw new Error(data.error||'SMART_FEED_PUBLISH_FAILED');return data;
 }
+
+export async function revokeSmartFeed(publicationId:string){
+ const {data:{session}}=await supabase.auth.getSession();if(!session)throw new Error('AUTHENTICATION_REQUIRED');
+ const r=await fetch(SUPABASE_URL+'/functions/v1/naya-smart-feed',{method:'POST',headers:{Authorization:'Bearer '+session.access_token,apikey:SUPABASE_PUBLISHABLE_KEY,'Content-Type':'application/json'},body:JSON.stringify({action:'revoke',publication_id:publicationId})});
+ const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok)throw new Error(data.error||'SMART_FEED_REVOKE_FAILED');return data;
+}
