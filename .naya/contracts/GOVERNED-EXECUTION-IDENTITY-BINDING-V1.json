@@ -1,7 +1,7 @@
 {
   "contract": "GOVERNED_EXECUTION_IDENTITY_BINDING",
   "schema_version": "1.0",
-  "status": "CONTRACT_DEFINED",
+  "status": "LOCAL_RUNTIME_VERIFIED",
   "purpose": "Bind the complete 13-question governed intelligence identity/provenance envelope to one exact consequential execution and its Smart Ledger receipt.",
   "identity_binding": {
     "fields": [
@@ -58,5 +58,17 @@
     "authorization_binding_tamper",
     "authorization_not_issued_by_gate_instance",
     "ledger_identity_binding_tamper"
-  ]
+  ],
+  "verification": {
+    "verified_head": "709ced8188fdeed8aa79453b1f41318a2c51720c",
+    "runtime": "Windows / Python 3.13",
+    "tests": {
+      "governed_identity": 12,
+      "governed_execution_identity_binding": 10,
+      "universal_execution_gate_regression": 31,
+      "total": 53
+    },
+    "result": "53/53 PASS",
+    "caveat": "UEG remains an isolated v1 boundary; production wiring is not yet claimed."
+  }
 }
