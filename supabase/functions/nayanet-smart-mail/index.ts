@@ -4,6 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.0";
 type SendBody={operation?: "send"|"verify";recipient_user_id?:string;message_id?:string;body?:string;subject?:string;kind?:"direct"|"room"|"group"|"list";idempotency_key?:string;project_id?:string;policy_id?:string;experiment_case_id?:string;policy_input_hash?:string;policy_decision_hash?:string;authority_grant_id?:string};
 const cors={"access-control-allow-origin":"https://sparkling-shape-7ae5.smartnetpodcast.workers.dev","access-control-allow-methods":"POST, OPTIONS","access-control-allow-headers":"authorization, apikey, content-type, x-idempotency-key, x-request-id","vary":"Origin"};
 const json=(payload:unknown,status=200)=>new Response(JSON.stringify(payload),{status,headers:{"content-type":"application/json","cache-control":"no-store",...cors}});
+const inputRequestId=(req:Request)=>req.headers.get("x-request-id")||crypto.randomUUID();
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
  if(req.method!=="POST")return json({ok:false,error:"METHOD_NOT_ALLOWED"},405);
@@ -13,6 +14,7 @@ Deno.serve(async(req)=>{
  const {data:userData,error:userError}=await userClient.auth.getUser(); if(userError||!userData.user)return json({ok:false,error:"AUTH_INVALID"},401);
  const actorId=userData.user.id;
  let input:SendBody; try{input=await req.json()}catch{return json({ok:false,error:"INVALID_JSON"},400)}
+ const requestId=inputRequestId(req);
  if(input.operation==="verify"){
    if(!input.message_id)return json({ok:false,error:"MESSAGE_ID_REQUIRED"},400);
    const {data:message,error:messageError}=await admin.from("v7_mail_messages").select("id,thread_id,sender_id,metadata").eq("id",input.message_id).maybeSingle();
@@ -54,8 +56,8 @@ Deno.serve(async(req)=>{
  if(validationError||validated?.status!=="AUTHORIZED")return json({ok:false,error:"AUTHORITY_GRANT_VALIDATION_FAILED",detail:validationError?.message??validated},403);
  const rpcName=(input.policy_id||input.experiment_case_id||input.policy_input_hash||input.policy_decision_hash)?"nayanet_send_smart_mail_policy_authorized":"nayanet_send_smart_mail_authorized";
  const rpcArgs=(input.policy_id||input.experiment_case_id||input.policy_input_hash||input.policy_decision_hash)
-   ? {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_policy_id:input.policy_id,p_experiment_case_id:input.experiment_case_id,p_policy_input_hash:input.policy_input_hash,p_policy_decision_hash:input.policy_decision_hash,p_authority_grant_id:input.authority_grant_id}
-   : {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_authority_grant_id:input.authority_grant_id};
+   ? {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_request_id:requestId,p_policy_id:input.policy_id,p_experiment_case_id:input.experiment_case_id,p_policy_input_hash:input.policy_input_hash,p_policy_decision_hash:input.policy_decision_hash,p_authority_grant_id:input.authority_grant_id}
+   : {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_request_id:requestId,p_authority_grant_id:input.authority_grant_id};
  const {data:result,error}=await userClient.rpc(rpcName,rpcArgs);
  if(error)return json({ok:false,error:"SMART_MAIL_TRANSACTION_FAILED",detail:error.message},500);
  if(result?.status==="CREATED" && result?.execution_receipt_id){
