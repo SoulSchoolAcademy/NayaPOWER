@@ -107,85 +107,120 @@ const prepare=async(p)=>{
 };
 await prepare(v1); await prepare(v2);
 
-const sha256=async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
-const caseId="paired-"+runId+"-C1";
-const frozenCase={case_id:caseId,receiver_id:receiver.id,task:"request a concise acknowledgement of the controlled test message",prior_verified_context:{receiver_retrieval_verified:true,source:"Proof7 verified receipt"}};
-const inputHash=await sha256(JSON.stringify(frozenCase));
-const decisions={
-  v1:{subject:"Controlled test acknowledgement",body:"Please acknowledge this controlled test message."},
-  v2:{subject:"Controlled test acknowledgement",body:"Verified context shows this receiver successfully retrieves governed messages. Please acknowledge this controlled test message."}
-};
-const send=async(token,policy,decision,group)=>{
+const sha256=async(value)=>async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
+
+const spaceId=process.env.NAYA_EXISTING_SPACE_ID||"04ee4dc8-bc73-47df-a1de-162570f6a56e";
+const {data:space,error:spaceError}=await supabase.from("nayanet_spaces").select("id,visibility,owner_member_id").eq("id",spaceId).single();
+if(spaceError||!space||space.visibility!=="shared") throw spaceError||new Error("EXISTING_SHARED_SPACE_NOT_AVAILABLE");
+
+const joinSender=await supabase.rpc("nayanet_join_space",{p_space_id:spaceId});
+if(joinSender.error) throw joinSender.error;
+const joinReceiver=await receiverClient.rpc("nayanet_join_space",{p_space_id:spaceId});
+if(joinReceiver.error) throw joinReceiver.error;
+
+const saveSender=await supabase.rpc("nayanet_save_connection",{p_target_member_id:receiver.id,p_space_id:spaceId});
+if(saveSender.error) throw saveSender.error;
+const saveReceiver=await receiverClient.rpc("nayanet_save_connection",{p_target_member_id:sender.id,p_space_id:spaceId});
+if(saveReceiver.error) throw saveReceiver.error;
+const senderConnectionId=saveSender.data?.connection?.id;
+const receiverConnectionId=saveReceiver.data?.connection?.id;
+if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTION_NOT_CREATED");
+
+const cases=[
+  {suffix:"C1",task:"request a concise acknowledgement of the controlled test message",v1:{subject:"Controlled test acknowledgement 1",body:"Please acknowledge this controlled test message."},v2:{subject:"Controlled test acknowledgement 1",body:"Verified context shows this receiver retrieves governed messages. Please acknowledge this controlled test message."}},
+  {suffix:"C2",task:"request a concise confirmation that the receiver can retrieve a governed message",v1:{subject:"Controlled retrieval confirmation",body:"Please confirm you can retrieve this governed message."},v2:{subject:"Controlled retrieval confirmation",body:"Verified retrieval context is available. Please confirm you can retrieve this governed message."}},
+  {suffix:"C3",task:"request a concise acknowledgement of the final controlled test message",v1:{subject:"Controlled final acknowledgement",body:"Please acknowledge the final controlled test message."},v2:{subject:"Controlled final acknowledgement",body:"Verified receiver context is available. Please acknowledge the final controlled test message."}}
+];
+
+const send=async(token,policy,decision,caseId,inputHash,group)=>{
   const authorityGrantId=authorityGrants.get(policy.id);
   if(!authorityGrantId) throw new Error("AUTHORITY_GRANT_MISSING_FOR_POLICY");
-  const decisionHash=await sha256(JSON.stringify({case:frozenCase,decision}));
+  const decisionHash=await sha256(JSON.stringify({case_id:caseId,decision}));
   const res=await fetch(url+"/functions/v1/nayanet-smart-mail",{
-    method:"POST",headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
-    body:JSON.stringify({recipient_user_id:receiver.id,body:decision.body,subject:decision.subject,kind:"direct",idempotency_key:caseId+"-"+group,project_id:"NayaNET",policy_id:policy.id,experiment_case_id:caseId,policy_input_hash:inputHash,policy_decision_hash:decisionHash,authority_grant_id:authorityGrantId})
+    method:"POST",
+    headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
+    body:JSON.stringify({
+      recipient_user_id:receiver.id,body:decision.body,subject:decision.subject,kind:"direct",
+      idempotency_key:caseId+"-"+group,project_id:"NayaNET",policy_id:policy.id,
+      experiment_case_id:caseId,policy_input_hash:inputHash,policy_decision_hash:decisionHash,
+      authority_grant_id:authorityGrantId
+    })
   });
   const data=await res.json();
   if(!res.ok||!data.ok) throw new Error("SEND_"+group+"_FAILED:"+JSON.stringify(data));
   return {data,decisionHash};
 };
-const a=await send(senderToken,v1,decisions.v1,"V1");
-const b=await send(senderToken,v2,decisions.v2,"V2");
 
 const verify=async(token,messageId)=>{
   const res=await fetch(url+"/functions/v1/nayanet-smart-mail",{
-    method:"POST",headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
+    method:"POST",
+    headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
     body:JSON.stringify({operation:"verify",message_id:messageId})
   });
   const data=await res.json();
   if(!res.ok||!data.ok||data.status!=="VERIFIED") throw new Error("RECEIVER_VERIFY_FAILED:"+JSON.stringify(data));
   return data;
 };
-await verify(receiverToken,a.data.message_id);
-await verify(receiverToken,b.data.message_id);
 
-await transition(v1.id,"OBSERVED",{observation:"controlled execution and receiver verification completed"});
-await transition(v2.id,"OBSERVED",{observation:"controlled execution and receiver verification completed"});
-await transition(v1.id,"VERIFIED",{verification:"execution receipt + receiver verification"});
-await transition(v2.id,"VERIFIED",{verification:"execution receipt + receiver verification"});
+const caseReports=[];
+for(const c of cases){
+  const caseId="paired-"+runId+"-"+c.suffix;
+  const frozenCase={case_id:caseId,receiver_id:receiver.id,task:c.task,prior_verified_context:{receiver_retrieval_verified:true,source:"Proof7 verified receipt"}};
+  const inputHash=await sha256(JSON.stringify(frozenCase));
+  const a=await send(senderToken,v1,c.v1,caseId,inputHash,"V1");
+  const b=await send(senderToken,v2,c.v2,caseId,inputHash,"V2");
+  await verify(receiverToken,a.data.message_id);
+  await verify(receiverToken,b.data.message_id);
 
-const {data:comparison,error:comparisonError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
-  p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
-  p_baseline_receipt_id:a.data.execution_receipt_id,p_candidate_receipt_id:b.data.execution_receipt_id
-});
-if(comparisonError) throw comparisonError;
-if(comparison?.result!=="POLICY_IMPROVEMENT_NOT_PROVEN") throw new Error("EXPECTED_POLICY_IMPROVEMENT_NOT_PROVEN_FOR_EQUAL_VALUE_CASE");
+  await transition(v1.id,"OBSERVED",{observation:"controlled execution and receiver verification completed",case_id:caseId});
+  await transition(v2.id,"OBSERVED",{observation:"controlled execution and receiver verification completed",case_id:caseId});
+  await transition(v1.id,"VERIFIED",{verification:"execution receipt + receiver verification",case_id:caseId});
+  await transition(v2.id,"VERIFIED",{verification:"execution receipt + receiver verification",case_id:caseId});
 
-const {data:independentOutcomes,error:outcomeError}=await supabase.from("nayanet_execution_outcomes")
-  .select("outcome_id,receipt_id,experiment_case_id,outcome_type,benefit,harm,cost,risk_adjusted_loss,verified_value,verified,verifier_id,evidence,verification_method")
-  .in("receipt_id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
-if(outcomeError) throw outcomeError;
-if(independentOutcomes?.length!==2) throw new Error("INDEPENDENT_OUTCOME_COUNT_FAILED");
-for(const o of independentOutcomes){
-  if(!o.verified||o.experiment_case_id!==caseId||!o.verifier_id||o.outcome_type==="") throw new Error("INDEPENDENT_OUTCOME_LINEAGE_INCOMPLETE");
-  const expected=Number(o.benefit)-Number(o.harm)-Number(o.cost)-Number(o.risk_adjusted_loss);
-  if(Number(o.verified_value)!==expected) throw new Error("INDEPENDENT_OUTCOME_VALUE_FORMULA_FAILED");
-  if(o.evidence?.receiver_retrieved!==true) throw new Error("INDEPENDENT_RECEIVER_EVIDENCE_MISSING");
+  const {data:comparison,error:comparisonError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
+    p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
+    p_baseline_receipt_id:a.data.execution_receipt_id,p_candidate_receipt_id:b.data.execution_receipt_id
+  });
+  if(comparisonError) throw comparisonError;
+  if(!["POLICY_IMPROVEMENT_NOT_PROVEN","POLICY_IMPROVEMENT_PROVEN"].includes(comparison?.result)) throw new Error("UNEXPECTED_POLICY_COMPARISON_RESULT");
+
+  const {data:independentOutcomes,error:outcomeError}=await supabase.from("nayanet_execution_outcomes")
+    .select("outcome_id,receipt_id,experiment_case_id,outcome_type,benefit,harm,cost,risk_adjusted_loss,verified_value,verified,verifier_id,evidence,verification_method")
+    .in("receipt_id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
+  if(outcomeError||independentOutcomes?.length!==2) throw outcomeError||new Error("INDEPENDENT_OUTCOME_COUNT_FAILED");
+  for(const o of independentOutcomes){
+    if(!o.verified||o.experiment_case_id!==caseId||!o.verifier_id||o.outcome_type!=="receiver_retrieval") throw new Error("INDEPENDENT_OUTCOME_LINEAGE_INCOMPLETE");
+    const expected=Number(o.benefit)-Number(o.harm)-Number(o.cost)-Number(o.risk_adjusted_loss);
+    if(Number(o.verified_value)!==expected) throw new Error("INDEPENDENT_OUTCOME_VALUE_FORMULA_FAILED");
+    if(o.evidence?.receiver_retrieved!==true) throw new Error("INDEPENDENT_RECEIVER_EVIDENCE_MISSING");
+  }
+
+  const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts")
+    .select("id,policy_id,policy_version,policy_key,experiment_case_id,policy_input_hash,policy_decision_hash,status,value")
+    .in("id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
+  if(receiptError||receipts?.length!==2) throw receiptError||new Error("RECEIPT_LINEAGE_COUNT_FAILED");
+  for(const r of receipts){
+    if(!r.policy_id||r.policy_version===null||!r.policy_key||r.experiment_case_id!==caseId||r.policy_input_hash!==inputHash||!r.policy_decision_hash) throw new Error("RECEIPT_LINEAGE_INCOMPLETE");
+    if(r.status!=="SUCCESS"||r.value?.verified!==true) throw new Error("RECEIPT_OUTCOME_NOT_VERIFIED");
+  }
+
+  const {data:evalRow,error:evalError}=await supabase.from("nayanet_policy_evaluations").insert({
+    user_id:sender.id,policy_id:v2.id,evaluation_type:"REAL_OUTCOME",
+    dataset_hash:"controlled-paired-real-outcomes-"+runId+"-"+c.suffix,
+    baseline_score:comparison.baseline.verified_value,candidate_score:comparison.candidate.verified_value,
+    responsible_value:comparison.candidate.verified_value,verified:true,result:comparison.result,
+    evidence:{comparison,run_id:runId,case_id:caseId,head:process.env.GITHUB_SHA,baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,behavioral_difference:true,frozen_case_hash:inputHash}
+  }).select("id").single();
+  if(evalError||!evalRow) throw evalError||new Error("REAL_OUTCOME_EVALUATION_RECORD_FAILED");
+
+  caseReports.push({case_id:caseId,input_hash:inputHash,baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,result:comparison.result,decision_hashes:{baseline:a.decisionHash,candidate:b.decisionHash}});
 }
 
-const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts")
-  .select("id,policy_id,policy_version,policy_key,experiment_case_id,policy_input_hash,policy_decision_hash,status,value")
-  .in("id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
-if(receiptError) throw receiptError;
-if(receipts?.length!==2) throw new Error("RECEIPT_LINEAGE_COUNT_FAILED");
-for(const r of receipts){
-  if(!r.policy_id||!r.policy_version||!r.policy_key||r.experiment_case_id!==caseId||r.policy_input_hash!==inputHash||!r.policy_decision_hash) throw new Error("RECEIPT_LINEAGE_INCOMPLETE");
-  if(r.status!=="SUCCESS"||r.value?.verified!==true) throw new Error("RECEIPT_OUTCOME_NOT_VERIFIED");
-}
+const aggregateBaseline=caseReports.reduce((n,c)=>n+Number(c.baseline_value),0);
+const aggregateCandidate=caseReports.reduce((n,c)=>n+Number(c.candidate_value),0);
+const aggregateResult=aggregateCandidate>aggregateBaseline?"PROVEN":"NOT_PROVEN";
 
-const {data:evalRow,error:evalError}=await supabase.from("nayanet_policy_evaluations").insert({
-  user_id:sender.id,policy_id:v2.id,evaluation_type:"REAL_OUTCOME",
-  dataset_hash:"controlled-paired-real-outcomes-"+runId,
-  baseline_score:comparison.baseline.verified_value,candidate_score:comparison.candidate.verified_value,
-  responsible_value:comparison.candidate.verified_value,verified:true,result:comparison.result,
-  evidence:{comparison,run_id:runId,head:process.env.GITHUB_SHA,baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,behavioral_difference:true,frozen_case_hash:inputHash}
-}).select("*").single();
-if(evalError) throw evalError;
-
-const lessonClaim="A richer verified-receipt context changed the candidate decision content but did not improve verified responsible value; equal verified outcomes are NOT_PROVEN and must not authorize promotion.";
+const lessonClaim="Multi-case held-out paired execution preserved policy identity, receiver verification, independent outcome lineage, and deterministic responsible-value comparison. Policy improvement is proven only if aggregate verified responsible value is strictly greater than baseline.";
 const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").insert({
   member_id:sender.id,
   target_id:"p1-controlled-paired-policy-"+runId,
@@ -193,8 +228,8 @@ const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").i
   provenance:"VERIFICATION",
   status:"ACTIVE",
   claim:lessonClaim,
-  observed_value:{run_id:runId,baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,comparison_result:comparison.result,behavioral_difference:true,policy_id:v2.id},
-  verification_method:"verified execution receipts + receiver verification + canonical policy comparison",
+  observed_value:{run_id:runId,cases:caseReports,aggregate_baseline_value:aggregateBaseline,aggregate_candidate_value:aggregateCandidate,comparison_result:aggregateResult,behavioral_difference:true,policy_id:v2.id},
+  verification_method:"multi-case verified execution receipts + authenticated receiver verification + canonical policy comparison",
   source_event_id:"p1-controlled-paired-policy-"+runId
 }).select("id").single();
 if(lessonError) throw lessonError;
@@ -209,7 +244,7 @@ try {
 } catch(error) {
   equalOutcomePromotionBlocked=String(error?.message||error).includes("PROMOTION_REQUIRES_VERIFIED_IMPROVEMENT");
 }
-if(!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
+if(aggregateCandidate===aggregateBaseline&&!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
 
 const successorStrategy="HISTORY_PLUS_VERIFIED_RECEIPT_V1_REQUIRE_POSITIVE_DELTA";
 const successor=await insertPolicy(3,v2.id,successorStrategy);
@@ -219,24 +254,55 @@ await evalPolicy(successor.id,"CONTROLLED_TEST",{
   rule:"require candidate verified responsible value > baseline before promotion"
 });
 
+const swapCase=caseReports[0];
 const {error:swapError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
   p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
-  p_baseline_receipt_id:b.data.execution_receipt_id,p_candidate_receipt_id:a.data.execution_receipt_id
+  p_baseline_receipt_id:swapCase.candidate_receipt_id,p_candidate_receipt_id:swapCase.baseline_receipt_id
 });
-const adversarialPassed=!!swapError;
-if(!adversarialPassed) throw new Error("ADVERSARIAL_POLICY_RECEIPT_SWAP_NOT_REJECTED");
+if(!swapError) throw new Error("ADVERSARIAL_POLICY_RECEIPT_SWAP_NOT_REJECTED");
 
-const report={schema:"naya.p1.controlled.paired.outcome.receipt.v1",status:"NOT_PROVEN",head:process.env.GITHUB_SHA,run_id:runId,case_id:caseId,frozen_case_hash:inputHash,receiver_anonymous:true,behavioral_difference:true,baseline:{policy_id:v1.id,receipt_id:a.data.execution_receipt_id,verified_value:comparison.baseline.verified_value,decision_hash:a.decisionHash},candidate:{policy_id:v2.id,receipt_id:b.data.execution_receipt_id,verified_value:comparison.candidate.verified_value,decision_hash:b.decisionHash},comparison,adversarial:{receipt_swap_rejected:adversarialPassed},note:"Controlled paired real execution and receiver verification succeeded. Policy improvement is intentionally NOT_PROVEN because both verified responsible values were equal."};
-console.log("P1_CONTROLLED_PAIRED_EXECUTION=PASS");
+const revokeSender=await supabase.rpc("nayanet_revoke_connection",{p_target_member_id:receiver.id});
+if(revokeSender.error) throw revokeSender.error;
+const revokeReceiver=await receiverClient.rpc("nayanet_revoke_connection",{p_target_member_id:sender.id});
+if(revokeReceiver.error) throw revokeReceiver.error;
+
+const postRevokeProbe=await fetch(url+"/functions/v1/nayanet-smart-mail",{
+  method:"POST",
+  headers:{authorization:"Bearer "+senderToken,apikey:key,"content-type":"application/json"},
+  body:JSON.stringify({recipient_user_id:receiver.id,body:"This must be denied after revocation.",subject:"Revocation negative test",kind:"direct",idempotency_key:"paired-"+runId+"-REVOCATION",project_id:"NayaNET",policy_id:v2.id,experiment_case_id:"paired-"+runId+"-REVOCATION",policy_input_hash:"revocation",policy_decision_hash:"revocation",authority_grant_id:authorityGrants.get(v2.id)})
+});
+const postRevokeData=await postRevokeProbe.json();
+if(postRevokeProbe.ok||postRevokeData?.ok||!["RELATIONSHIP_REQUIRED","AUTHORITY_GRANT_VALIDATION_FAILED"].includes(postRevokeData?.detail||postRevokeData?.error)) {
+  throw new Error("REVOCATION_DENIAL_NOT_PROVEN:"+JSON.stringify(postRevokeData));
+}
+
+const report={
+  schema:"naya.p1.controlled.paired.outcome.receipt.v2",
+  status:aggregateResult==="PROVEN"?"PROVEN":"NOT_PROVEN",
+  head:process.env.GITHUB_SHA,
+  run_id:runId,
+  existing_space_id:spaceId,
+  cases:caseReports,
+  aggregate:{baseline_verified_value:aggregateBaseline,candidate_verified_value:aggregateCandidate,result:aggregateResult},
+  receiver_anonymous:true,
+  mutual_connection_verified:true,
+  receiver_verification:true,
+  independent_outcome_contract:true,
+  adversarial:{receipt_swap_rejected:true,revocation_denial_proven:true},
+  learning:{durable:true,retrievable:true,successor_policy_created:true},
+  note:"Multi-case controlled paired real execution and receiver verification completed. Improvement is accepted only when aggregate verified responsible value is strictly greater than baseline."
+};
+console.log("P1_MULTI_CASE_CONTROLLED_EXECUTION=PASS");
 console.log("P1_POLICY_RECEIPT_LINEAGE=PASS");
 console.log("P1_BEHAVIORAL_DIFFERENCE=PASS");
 console.log("P1_RECEIVER_VERIFICATION=PASS");
+console.log("P1_INDEPENDENT_OUTCOME_CONTRACT=PASS");
 console.log("P1_OBSERVE=PASS");
 console.log("P1_VERIFY=PASS");
-console.log("P1_POLICY_COMPARISON=NOT_PROVEN");
+console.log("P1_MULTI_CASE_COMPARISON="+aggregateResult);
 console.log("P1_LEARNING_DURABLE=PASS");
 console.log("P1_LEARNING_RETRIEVAL=PASS");
 console.log("P1_SUCCESSOR_CREATED=PASS");
-console.log("P1_LEARNED_BEHAVIOR_CHANGE=PASS");
 console.log("P1_ADVERSARIAL_RECEIPT_SWAP=PASS");
+console.log("P1_REVOCATION_DENIAL=PASS");
 await import("node:fs/promises").then(fs=>fs.writeFile(process.env.RECEIPT_PATH,JSON.stringify(report,null,2)));
