@@ -41,6 +41,29 @@ if (!receiver?.user?.id || !receiver?.access_token) throw new Error('RECEIVER_AN
 
 const senderId = sender.user.id;
 const receiverId = receiver.user.id;
+
+// Establish the existing governed Space -> mutual Connection prerequisite for these fresh proof identities.
+const spaceRows = await request(base + '/rest/v1/nayanet_spaces', {
+  method:'POST',
+  headers:authHeaders(sender.access_token),
+  body:JSON.stringify({
+    owner_member_id: senderId,
+    name: 'P0 Smart Mail Proof Space',
+    purpose: 'P0 Smart Mail relationship prerequisite',
+    visibility: 'shared'
+  })
+});
+if (!Array.isArray(spaceRows) || spaceRows.length !== 1 || !spaceRows[0]?.id) throw new Error('PROOF_SPACE_NOT_CREATED');
+const proofSpaceId = spaceRows[0].id;
+const senderJoin = await rpc(sender.access_token, 'nayanet_join_space', { p_space_id: proofSpaceId });
+if (!['JOINED','ALREADY_MEMBER'].includes(senderJoin?.status)) throw new Error('SENDER_SPACE_MEMBERSHIP_FAILED ' + JSON.stringify(senderJoin));
+const receiverJoin = await rpc(receiver.access_token, 'nayanet_join_space', { p_space_id: proofSpaceId });
+if (!['JOINED','ALREADY_MEMBER'].includes(receiverJoin?.status)) throw new Error('RECEIVER_SPACE_MEMBERSHIP_FAILED ' + JSON.stringify(receiverJoin));
+const senderConnection = await rpc(sender.access_token, 'nayanet_save_connection', { p_target_member_id: receiverId, p_space_id: proofSpaceId });
+if (!['CONNECTED','ALREADY_CONNECTED'].includes(senderConnection?.status)) throw new Error('SENDER_CONNECTION_FAILED ' + JSON.stringify(senderConnection));
+const receiverConnection = await rpc(receiver.access_token, 'nayanet_save_connection', { p_target_member_id: senderId, p_space_id: proofSpaceId });
+if (!['CONNECTED','ALREADY_CONNECTED'].includes(receiverConnection?.status)) throw new Error('RECEIVER_CONNECTION_FAILED ' + JSON.stringify(receiverConnection));
+
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
 const requestId = 'p0-request-' + crypto.randomUUID();
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
@@ -93,7 +116,7 @@ if (!Array.isArray(cognition) || cognition.length !== 1) throw new Error('COGNIT
 if (cognition[0].receipt_id !== first.execution_receipt_id) throw new Error('COGNITION_RECEIPT_LINEAGE_MISMATCH');
 
 const receipt = await request(
-  base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning,request_id,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
+  base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning,request_id,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at&user_id=' + senderId + '&id=' + first.execution_receipt_id,
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
 );
 if (!Array.isArray(receipt) || receipt.length !== 1 || receipt[0].status !== 'SUCCESS' || receipt[0].action !== 'smart_mail_send') throw new Error('EXECUTION_RECEIPT_INVALID');
@@ -114,7 +137,7 @@ if (blockedAttempt.status < 400 || (blockedAttempt.body?.detail?.reason ?? block
   throw new Error('REVOKED_EXECUTION_NOT_BLOCKED ' + JSON.stringify(blockedAttempt));
 }
 const receiptAfterRevoke = await request(
-  base + '/rest/v1/nayanet_execution_receipts?select=id&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
+  base + '/rest/v1/nayanet_execution_receipts?select=id&user_id=' + senderId + '&id=' + first.execution_receipt_id,
   { headers: { apikey:key, authorization:'Bearer '+sender.access_token } }
 );
 if (!Array.isArray(receiptAfterRevoke) || receiptAfterRevoke.length !== 1) throw new Error('ORIGINAL_RECEIPT_MISSING_AFTER_REVOKE');
