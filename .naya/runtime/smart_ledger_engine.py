@@ -167,7 +167,7 @@ def record_authorized_execution(
     if not action_ref.strip() or not evidence_ref.strip() or not outcome_ref.strip():
         raise ValueError("action_ref, evidence_ref, and outcome_ref are required")
 
-    ok, reasons = gate.verify(authorization, identity_envelope)
+    ok, reasons = gate.verify(authorization, identity_envelope, consequential=True)
     if not ok:
         raise ValueError("execution authorization verification failed: " + "; ".join(reasons))
 
