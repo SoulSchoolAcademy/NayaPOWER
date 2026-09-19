@@ -154,6 +154,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
         ok, reasons = self.gate.verify(
             authorization,
             self.identity,
+            consequential=True,
             now="2026-09-18T18:00:01Z",
         )
         self.assertTrue(ok, reasons)
@@ -170,7 +171,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
         self.assertTrue(result.allowed)
         tampered = dict(self.identity)
         tampered["capabilities"] = ["repo_write", "deploy_public_runtime"]
-        ok, reasons = self.gate.verify(result.authorization, tampered)
+        ok, reasons = self.gate.verify(result.authorization, tampered, consequential=True)
         self.assertFalse(ok)
         self.assertTrue(any("fingerprint" in reason or "binding" in reason for reason in reasons))
 
@@ -222,7 +223,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
         )
         self.assertTrue(result.allowed)
         tampered = replace(result.authorization, identity_id="forged")
-        ok, reasons = self.gate.verify(tampered, self.identity)
+        ok, reasons = self.gate.verify(tampered, self.identity, consequential=True)
         self.assertFalse(ok)
         self.assertIn("binding_hash does not match authorization fields", reasons)
 
