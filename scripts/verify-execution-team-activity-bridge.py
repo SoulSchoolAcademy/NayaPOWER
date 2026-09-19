@@ -37,8 +37,7 @@ def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha
         "source": "github-actions",
     }
     capture_path.parent.mkdir(parents=True, exist_ok=True)
-    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "
-", encoding="utf-8")
+    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main() -> int:
