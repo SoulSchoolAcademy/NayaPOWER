@@ -37,7 +37,16 @@
     "next_action": "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls.",
     "next_actions": [
       "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls."
-    ]
+    ],
+    "scope": [
+      "authenticated human-facing production acceptance",
+      "A↔B relationship",
+      "Smart Mail delivery and receiver verification",
+      "Smart List and Connections visibility",
+      "replay, revocation, and C isolation",
+      "fresh-Naya continuation"
+    ],
+    "next_action_count": 1
   },
   "status_vocabulary": [
     "INTENDED",
