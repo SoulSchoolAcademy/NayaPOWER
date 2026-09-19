@@ -27,7 +27,7 @@ Use dated records under `NAYA-TEAM/YYYY/MM/DD/` for durable entries and direct S
 
 [Project Activity](./2026/09/17/2026-09-17T23-59-30Z__NAYANET-INTELLIGENT-HUB-PROJECT-ACTIVITY-FEED.md)
 
-[Today's Index](./2026/09/17/INDEX.md)
+[Today's Index — 2026-09-19](./2026/09/19/INDEX.md)
 
 [Activity + Project Organization Contract](./ACTIVITY-AND-PROJECT-ORGANIZATION-CONTRACT.md)
 
