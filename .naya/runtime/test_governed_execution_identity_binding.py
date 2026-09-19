@@ -7,7 +7,9 @@ import sys
 import unittest
 
 RUNTIME = Path(__file__).resolve().parent
+GOVERNANCE = RUNTIME.parent / "governance"
 sys.path.insert(0, str(RUNTIME))
+sys.path.insert(0, str(GOVERNANCE))
 
 from governance_kernel import DecisionObject, Epistemic, Risk, VerificationPlan
 from intelligence_identity import identity_binding_fingerprint, identity_fingerprint, validate_identity_envelope
