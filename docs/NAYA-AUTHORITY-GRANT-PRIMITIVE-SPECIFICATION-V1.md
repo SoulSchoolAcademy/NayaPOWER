@@ -1,23 +1,17 @@
 # NAYA AUTHORITY GRANT PRIMITIVE — CANONICAL SPECIFICATION V1
 
-**Status:** CANONICAL GOVERNANCE CONTRACT / NOT YET IMPLEMENTED  
+**Status:** CANONICAL GOVERNANCE + RUNTIME CONTRACT  
 **Effective:** 2026-09-18  
 **Domain:** Human authority → consequential execution authorization  
-**Authority tier:** Governance / authority primitive  
-**Canonical owner:** Naya Power Governance  
-**Runtime status:** SPECIFICATION ONLY — NO RUNTIME IMPLEMENTATION
+**Runtime status:** V1 IMPLEMENTED — EXECUTION BOUNDARY NOT YET WIRED
 
-## 1. PURPOSE
+## 1. Purpose
 
-Naya Law and Naya Nitro require legitimate authority before consequential execution.
-
-Existing governance establishes that authority is required, but the current system does not define a concrete runtime primitive for representing, validating, granting, expiring, or revoking that authority.
-
-This specification closes that governance-definition gap without creating or changing runtime infrastructure.
+Naya Law and Naya Nitro require legitimate authority before consequential execution. This primitive defines the minimum machine-verifiable representation and validation boundary without creating a parallel identity or sovereign authority hierarchy.
 
 > **AUTHORITY MUST BE EXPLICIT, VALID, SCOPED, TRACEABLE, AND SEPARATE FROM INTELLIGENCE, LEARNING, CONSENT, OR CAPABILITY.**
 
-## 2. NON-NEGOTIABLE BOUNDARIES
+## 2. Non-negotiable boundaries
 
 1. Capability is not authority.
 2. Authentication is not authority.
@@ -26,198 +20,127 @@ This specification closes that governance-definition gap without creating or cha
 5. Connection, membership, discoverability, or access is not authority.
 6. Dream output never creates authority.
 7. Learning evidence never creates authority.
-8. A decision never creates authority merely by declaring that authority exists.
-9. A caller-supplied authority.granted=true claim is never sufficient evidence of a grant.
+8. A decision never creates authority by assertion.
+9. `authority.granted=true` in a caller request is never sufficient evidence.
 10. No component may grant itself authority.
-11. Authority cannot exceed the grant's scope, action, subject, resource, or constraints.
+11. Authority cannot exceed scope, action, subject, resource, or constraints.
 12. Missing, invalid, expired, revoked, ambiguous, or unverifiable authority fails closed.
 13. A grant cannot override constitutional, safety, legal, platform, or higher-priority constraints.
 14. Every consequential execution must be traceable to the authority that permitted it.
 
-## 3. AUTHORITY MODEL
+## 3. Canonical chain
 
-Minimum conceptual chain:
+**LEGITIMATE HUMAN AUTHORITY → AUTHORIZATION EVENT → AUTHORITY GRANT → INDEPENDENT VALIDATOR → ACTION ELIGIBILITY → EXECUTION → EXECUTION RECEIPT**
 
-LEGITIMATE AUTHORITY SOURCE → AUTHORITY GRANT → GRANT VALIDATION → ACTION ELIGIBILITY → EXECUTION → EXECUTION RECEIPT
+The execution boundary must not infer authority from authentication, Dream, learning, consent, connection, decision claims, or capability.
 
-The execution boundary MUST NOT infer authority from authentication, Dream, learning, consent, connection, a decision claim, or capability.
+## 4. Minimum grant object
 
-## 4. MINIMUM GRANT OBJECT
+The authoritative runtime record is `public.nayanet_authority_grants` and preserves:
 
-| Field | Meaning |
-|---|---|
-| grant_id | Unique immutable identifier for the authorization |
-| issuer | Legitimate authority source that issued the grant |
-| subject | Human/agent/system receiving the authority |
-| scope | Resources, projects, domains, or objects covered |
-| actions | Exact action(s) permitted |
-| constraints | Conditions/limits attached to the permission |
-| issued_at | Time authority became valid |
-| expires_at | Optional hard expiration |
-| status | ACTIVE / EXPIRED / REVOKED / INVALID |
-| revoked_at | Revocation time when applicable |
-| evidence | Evidence establishing issuance and applicable authority |
-| parent_authority | Higher-level authority from which delegation derives, when applicable |
+- `grant_id`
+- `issuer_id`
+- `subject_id`
+- `source_event_id`
+- `mission_id`
+- `scope`
+- `actions`
+- `constraints`
+- `issued_at`
+- `expires_at`
+- `status`
+- `revoked_at`
+- `evidence`
+- `parent_authority`
+- `schema_version`
+- `created_at`
 
-The implementation MAY use a different physical schema, but it MUST preserve these semantic properties.
+`issuer_id` and `subject_id` reference the existing Supabase Auth identity. No parallel identity system exists.
 
-## 5. VALID GRANT
+## 5. Issuance transaction
 
-A grant is valid only when all applicable conditions are true:
+`public.nayanet_issue_authority_grant(...)` is the V1 authoritative issuance transaction.
 
-1. The issuer possesses legitimate authority to grant the requested authority.
-2. The grant is attributable to that issuer.
-3. The subject is unambiguous.
-4. The action is explicitly covered.
-5. The target/resource is within scope.
-6. All constraints are satisfied.
-7. The grant is currently active.
-8. The grant has not expired.
-9. The grant has not been revoked.
-10. The grant does not violate a higher-priority constitutional, safety, legal, platform, or permission boundary.
-11. The grant can be independently verified by the execution boundary.
-12. The grant is traceable for the resulting execution receipt.
+The issuer is derived from `auth.uid()`; it cannot be supplied by the caller. The transaction requires subject, source event, mission, scope, actions, constraints, and valid time semantics, then atomically creates an `ACTIVE` grant.
 
-If any required condition cannot be established:
+The grant is not executable merely because issuance succeeded; the independent validator must still authorize the exact action and target.
 
-> **AUTHORITY = BLOCKED**
+## 6. Independent validator
 
-No inference may convert UNKNOWN into AUTHORIZED.
+`public.nayanet_validate_authority_grant(grant_id, action, target)` is read-only and independently evaluates authenticated subject, grant lifecycle, expiration, exact action, and target/project scope.
 
-## 6. DELEGATION
+It returns `AUTHORIZED` only when the stored grant independently proves the exact in-scope action for the authenticated subject; otherwise it returns `BLOCKED` with a deterministic reason.
 
-Delegation is permitted only when the governing authority explicitly allows it.
+## 7. Expiration and revocation
 
-A delegated grant MUST NOT exceed the authority of its parent grant/source.
+`expires_at` is evaluated against the database clock at validation time. Expired grants are blocked without requiring a background mutation.
 
-Delegated scope must be a subset of parent scope; delegated actions must be a subset of parent actions; delegated constraints must be at least as restrictive as parent constraints.
+`public.nayanet_revoke_authority_grant(...)` is the controlled revocation path. Authority-defining fields are immutable after issuance. Revocation preserves historical evidence and prevents subsequent authorization.
 
-A subject cannot delegate authority it does not possess.
+## 8. Mission / Authorized Actions
 
-## 7. CONSENT IS DISTINCT FROM AUTHORITY
+The runtime does not currently expose a separate durable Mission Contract table. V1 therefore materializes the existing Mission + Authorized-Actions semantics directly into `mission_id`, `scope`, `actions`, and `constraints` at human issuance time.
 
-The existing nayanet_consents concept represents consent/sharing relationships.
+This is an adapter to existing governance semantics, not a replacement Mission system or universal authority source.
 
-Consent MAY be relevant evidence for a policy decision, but:
+## 9. Consent separation
 
-> **CONSENT ≠ AUTOMATIC EXECUTION AUTHORITY**
+`nayanet_consents` remains a consent/sharing mechanism. Consent may be evidence but is not automatically execution authority.
 
-A future implementation must not silently reinterpret existing consent records as authority grants unless this contract is explicitly amended to make that relationship authoritative.
-
-## 8. LEARNING / DREAM SEPARATION
-
-Dream, learning evidence, learner state, cognition, and decision context may influence what Naya understands or decides.
-
-They MUST NOT issue, imply, inherit, or escalate authority.
-
-Required invariant:
+## 10. Dream / Learning separation
 
 **DREAM → LEARNING → DECISION; AUTHORITY: NO**
 
-Only an independently valid authority grant can cross the execution-authority boundary.
+The verified lineage:
 
-## 9. EXECUTION GATE
+- Dream replay: `fafd1383-5e18-4732-8938-52e7aedc5a6f`
+- Learning evidence: `a9e40bbc-ce65-4d1b-b34d-4840e2e68dc8`
 
-Before a consequential execution transition, the future execution boundary MUST evaluate:
+is intelligence provenance only. It cannot issue or inherit authority.
 
-1. authenticated subject;
-2. constitutional eligibility;
-3. valid authority grant;
-4. action within grant scope;
-5. target within grant scope;
-6. constraints satisfied;
-7. execution permitted.
+## 11. Execution receipt provenance
 
-The result MUST be one of:
+`public.nayanet_execution_receipts` now has nullable V1 authority provenance fields:
 
-### BLOCKED
-No valid grant exists or one of the required checks fails.
+- `authority_grant_id`
+- `authority_issuer_id`
+- `authority_scope`
+- `authority_actions`
+- `authority_constraints`
+- `authority_status_at_execution`
+- `authority_source_event_id`
+- `authority_validated_at`
 
-### AUTHORIZED
-A valid grant independently proves that this subject may perform this exact action on this exact target under the applicable constraints.
+They remain nullable only because `nayanet_commit_cognition()` has not yet been wired to require successful validation. The execution function itself was not changed in this cycle.
 
-Only AUTHORIZED may permit the consequential transition.
+## 12. Required proof contract
 
-## 10. RECEIPT REQUIREMENT
+Negative cases must return `BLOCKED`: no grant; authentication only; Dream-derived learning only; caller-supplied authority claim; expired grant; revoked grant; wrong subject; wrong action; wrong target/scope; invalid or unverifiable grant.
 
-When a consequential action is authorized and executed, the execution receipt MUST preserve authority provenance sufficient to answer:
+Positive case must return `AUTHORIZED` only from an independently established human-issued grant whose stored issuer is the authenticated `auth.uid()` and whose action/target are in scope.
 
-- Who/what authorized this action?
-- What grant authorized it?
-- What scope covered it?
-- What action was permitted?
-- What constraints applied?
-- Was the grant active at execution time?
-- Was the grant expired or revoked?
-- What evidence supported authorization?
+## 13. Runtime implementation boundary
 
-An execution receipt without sufficient authority provenance MUST NOT be treated as proof that the action was legitimately authorized.
+Implemented V1:
 
-## 11. NEGATIVE TEST CONTRACT
+- authoritative grant table;
+- existing-identity issuer/subject references;
+- authenticated issuance transaction;
+- independent validator;
+- expiration evaluation;
+- controlled revocation;
+- immutable authority-defining fields;
+- execution-receipt provenance columns;
+- runtime proof harness.
 
-| Scenario | Required result |
-|---|---|
-| No grant | BLOCKED |
-| Caller claims grant in request body | BLOCKED |
-| Dream-derived learning only | BLOCKED |
-| Valid authentication only | BLOCKED for actions requiring separate consequential authority |
-| Consent only | BLOCKED unless an explicitly defined policy later establishes authority equivalence |
-| Expired grant | BLOCKED |
-| Revoked grant | BLOCKED |
-| Wrong subject | BLOCKED |
-| Wrong action | BLOCKED |
-| Wrong scope/resource | BLOCKED |
-| Invalid/unverifiable grant | BLOCKED |
-| Valid grant within scope | AUTHORIZED |
-| Valid grant outside scope | BLOCKED |
-| Valid delegated grant exceeding parent scope | BLOCKED |
+Not yet implemented:
 
-## 12. POSITIVE TEST CONTRACT
+- automatic lookup/validation of a separate Mission Contract runtime object;
+- full delegation enforcement;
+- wiring the authority validator into `nayanet_commit_cognition()`;
+- populating receipt provenance from successful validation during consequential execution.
 
-A future positive authorization proof MUST use an independently established valid grant.
-
-It MUST NOT manufacture authorization by posting an authority.granted=true claim.
-
-The proof MUST demonstrate:
-
-LEGITIMATE ISSUER → VALID GRANT → SAME AUTHENTICATED SUBJECT → ACTION WITHIN SCOPE → EXECUTION ALLOWED → RECEIPT CONTAINS AUTHORITY PROVENANCE
-
-## 13. CURRENT IMPLEMENTATION BOUNDARY
-
-This specification intentionally creates no database table, Edge Function, RPC, RLS policy, authentication mechanism, identity system, consent-system reinterpretation, execution code, or authority-grant record.
-
-Those are implementation decisions for a later, separately authorized execution cycle.
-
-Until a grant issuance/representation mechanism is implemented and verified, the runtime must treat consequential authority as unavailable unless an existing platform/governance mechanism independently proves otherwise.
-
-## 14. REQUIRED FUTURE WORK
-
-Before modifying nayanet_commit_cognition():
-
-1. Define the legitimate grant issuer/issuance mechanism.
-2. Define the authoritative grant storage/representation.
-3. Define grant validation.
-4. Define expiration and revocation semantics.
-5. Define delegation semantics if delegation is required.
-6. Define authority provenance in execution receipts.
-7. Add constitutional negative tests.
-8. Add a positive valid-grant test.
-9. Test the exact Dream → Learning lineage: replay fafd1383-5e18-4732-8938-52e7aedc5a6f → evidence a9e40bbc-ce65-4d1b-b34d-4840e2e68dc8, proving learning influence remains distinct from authority.
-10. Only then wire the execution gate into the canonical execution boundary.
-
-## 15. GOVERNANCE DECISION
-
-The existing canonical governance establishes the requirement for legitimate authority but does not define a runtime Authority Grant Primitive.
-
-Therefore:
-
-> **THE AUTHORITY-GRANT PRIMITIVE IS NOW DEFINED AS A GOVERNANCE CONTRACT, NOT AS A RUNTIME IMPLEMENTATION.**
-
-This specification does not itself grant authority to any user, agent, system, decision, learning state, Dream replay, or execution path.
-
-> **NO GRANT → NO CONSEQUENTIAL AUTHORIZATION.**
-
-## 16. CANONICAL INVARIANT
+## 14. Constitutional invariant
 
 **INTELLIGENCE MAY INFORM ACTION. AUTHORITY MUST AUTHORIZE ACTION. EXECUTION MUST PROVE AUTHORIZATION.**
 
@@ -225,7 +148,4 @@ This specification does not itself grant authority to any user, agent, system, d
 
 **ONLY A VALID, TRACEABLE, IN-SCOPE AUTHORITY GRANT MAY CROSS THE CONSEQUENTIAL EXECUTION GATE.**
 
----
-
-**STATUS:** CANONICAL CONTRACT / NOT YET IMPLEMENTED  
-**RUNTIME CHANGE:** NONE
+**NO GRANT → NO CONSEQUENTIAL AUTHORIZATION.**
