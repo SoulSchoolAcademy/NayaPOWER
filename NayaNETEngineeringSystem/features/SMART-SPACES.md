@@ -85,3 +85,14 @@ Inspect the current Space/activity/messaging implementation and establish the sm
 **Hub result:** the canonical Hub HTML is a visual baseline; it contains Connections/Smart Mail UI but no direct Supabase/auth/Space/Mail runtime wiring. UI labels are not runtime proof.
 
 **Implementation rule:** do not introduce membership until Action 03 reconciles `v7_connection_requests` and defines the canonical relationship state/provenance. No production schema was changed in Action 02.
+
+## ACTION 02–04 EXECUTION STATE — 2026-09-19
+
+The live canonical Space boundary is now:
+`auth.users.id = members.id → nayanet_spaces.owner_member_id = members.id → nayanet_space_members`.
+
+`nayanet_space_members` is the canonical membership store. Shared Spaces are discoverable to authenticated users; membership rows are visible to the member and active participants in the same shared Space. JOIN and LEAVE are server-side RPCs and emit canonical cognition events.
+
+The existing private Space was backfilled with its owner membership. No unrelated member was granted access to it.
+
+**Not yet verified:** browser-authenticated JOIN through the current Hub, non-owner discovery in the current UI, real two-user lifecycle, Cloudflare parity.
