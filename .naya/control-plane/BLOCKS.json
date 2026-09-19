@@ -2,10 +2,10 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
+    "id": "FINAL-COMPOUNDING-AND-HUMAN-ACCEPTANCE",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Close the final causal loop: durable learning reuse/compounding plus consolidated human-facing production acceptance, while preserving all existing governance/security boundaries.",
+    "intent": "Prove discriminating real-world outcome improvement and close the public human-facing acceptance boundary without weakening governance, privacy, or fail-closed controls.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
@@ -15,15 +15,13 @@
       "browser acceptance may proceed because engine/security closure is proven"
     ],
     "acceptance": [
-      "current source-scoped control plane reconciled",
-      "Proof 7 and cognition concurrency remain verified",
-      "fresh canonical Hub A↔B Smart Mail transaction remains verified",
-      "replay/idempotency verified",
-      "revocation denial and C isolation verified",
-      "fresh-context retrieval and governed later-decision learning reuse verified",
-      "measurable reusable compounding proven or explicitly documented as not proven",
-      "public Welcome → Identity handoff proven",
-      "one consolidated current human-facing acceptance receipt"
+      "NAYA_SUPERBRAIN_READY=READY on current live HEAD",
+      "fresh Smart Mail → receiver → learning evidence → learner state → cold decision → governed continuation verified",
+      "independently evidenced held-out outcome comparison produces measurable responsible-value differentiation or explicitly remains NOT_PROVEN",
+      "learning-driven future behavior change is measured without authority mutation",
+      "public Welcome → Identity handoff is production-proven",
+      "single consolidated human-facing acceptance receipt covers A/B/C relationship, authority, Smart Mail, replay, revocation, isolation, Activity/Ledger, and fresh-Naya continuation",
+      "activation path breadth and Windows portability are dispositioned"
     ],
     "evidence": [
       ".github/workflows/verify-proof7-compounding-loop.yml",
@@ -32,9 +30,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone.",
+    "next_action": "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes.",
     "next_actions": [
-      "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone."
+      "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
