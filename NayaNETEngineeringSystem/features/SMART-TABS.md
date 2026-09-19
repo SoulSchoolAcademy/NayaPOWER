@@ -223,3 +223,24 @@ The canonical Smart Tabs source note is `.naya/2026-09-11-NAYAPOWER-09-SMART-TAB
 ## NEXT ACTION
 
 **Map Smart Tabs against the live Hub source and existing retrieval/navigation primitives, then implement the smallest production path for the persistent top-of-page tab bar without creating a duplicate intelligence store. Record the complete session in the dated Team Naya activity system and update this feature's completion checklist/evidence.**
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Repository specification created
+- [ ] Existing Hub implementation inspected
+- [ ] Existing runtime/navigation/storage inspected
+- [ ] Canonical Smart Tab data owner identified
+- [ ] Front-end bar implemented
+- [ ] Persistence verified
+- [ ] Authorization/owner isolation verified
+- [ ] Source → build parity verified
+- [ ] Build → deployed runtime parity verified
+- [ ] Authenticated runtime observed
+- [ ] Evidence captured
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-TABS.md).
