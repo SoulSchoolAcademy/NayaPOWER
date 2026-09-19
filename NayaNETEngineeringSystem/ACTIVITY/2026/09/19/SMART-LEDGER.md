@@ -77,3 +77,21 @@ Ledger was reconciled as the canonical evidence projection for the coordinated W
 Smart Ledger remains the canonical evidence projection. The coordinated proof sequence now explicitly ties one Smart Feed consequence to fresh Ledger retrieval and lineage reconstruction. Receipt existence must not be promoted to observed outcome; the independent `nayanet_execution_outcomes` boundary remains a separate proof requirement.
 
 **Successor:** Execute one authenticated Feed interaction, capture its canonical receipt/cognition consequence, retrieve the resulting Ledger row, and reconstruct source → authority → action → receipt → evidence/verification → Ledger without inferring observation.
+## Session 006 — Fresh Feed consequence → Ledger proof — 2026-09-19T16:59Z
+
+A fresh authenticated two-user transaction produced the required evidence lineage.
+
+User B performed a real Smart Feed like against an explicitly published User A source.
+
+- Feed interaction cognition event: **44cf8718-c268-4bec-b596-194e5c62af99**
+- Feed execution receipt: **6c7784e3-e9b1-4bd0-b45f-0d73dae5e793**
+- Ledger cognition row: **cb82a32e-8077-4390-9498-1c5ff95801b2**, chain sequence **123**
+- Ledger receipt row: **faa28b8e-0339-4ba3-82bc-3ce6f7338d1a**, chain sequence **124**
+- Receipt status: **SUCCESS**
+- Ledger receipt status: **VERIFIED**
+
+Fresh Ledger retrieval independently reconstructed cognition-event → execution-receipt lineage.
+
+**Important:** this proves the Ledger lineage for the Feed interaction. It does not prove the independent nayanet_execution_outcomes observation boundary, which remains a separate acceptance gap.
+
+**Successor:** close the independent outcome/observation boundary and authenticated Ledger product-surface verification.
