@@ -164,6 +164,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=self.identity,
+            consequential=True,
             now="2026-09-18T18:00:00Z",
         )
         self.assertTrue(result.allowed)
@@ -181,6 +182,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=tampered,
+            consequential=True,
         )
         self.assertFalse(result.allowed)
         self.assertIn("identity_id does not match action actor_id", result.reasons)
@@ -193,6 +195,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=tampered,
+            consequential=True,
         )
         self.assertFalse(result.allowed)
         self.assertIn("identity envelope does not name the resolved authority_id", result.reasons)
@@ -254,6 +257,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=self.identity,
+            consequential=True,
         ).authorization
         event, _ = record_authorized_execution(
             self.gate,
