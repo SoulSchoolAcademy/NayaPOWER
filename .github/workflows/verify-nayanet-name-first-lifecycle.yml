@@ -142,8 +142,8 @@ jobs:
           const feedA = await pageA.evaluate(async (eventId) => {
             await window.NayaAssistantRuntime.loadPersonalIntelligence();
             await new Promise(r => setTimeout(r, 500));
-            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
-            return {rendered:!!node, renderedEventId:node?.getAttribute('data-naya-runtime-event')||null, feedError:document.documentElement.dataset.nayaRuntimeFeedError||null, projectIds:[...document.querySelectorAll('.naya-runtime-live')].slice(0,5).map(x=>x.getAttribute('data-naya-runtime-event'))};
+            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]'); const doc = frame?.contentDocument || document; const node = doc.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            return {rendered:!!node, renderedEventId:node?.getAttribute('data-naya-runtime-event')||null, feedError:document.documentElement.dataset.nayaRuntimeFeedError||null, projectIds:[...doc.querySelectorAll('.naya-runtime-live')].slice(0,5).map(x=>x.getAttribute('data-naya-runtime-event'))};
           }, eventId);
           if (!feedA.rendered) throw new Error('PERSONAL_INTELLIGENCE_RENDER_FAILED:' + JSON.stringify(feedA));
 
@@ -422,7 +422,7 @@ jobs:
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
             const event = rows.find(x => String(x.event_id) === eventId);
             await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
-            const node = document.querySelector('[data-naya-runtime-event="'+eventId+'"]');
+            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]'); const doc = frame?.contentDocument || document; const node = doc.querySelector('[data-naya-runtime-event="'+eventId+'"]');
             return {event,rendered:!!node,renderedEventId:node?.getAttribute('data-naya-runtime-event')||null};
           }, eventId);
 
