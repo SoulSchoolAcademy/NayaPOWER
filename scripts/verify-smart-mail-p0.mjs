@@ -64,10 +64,11 @@ if (!Array.isArray(cognition) || cognition.length !== 1) throw new Error('COGNIT
 if (cognition[0].receipt_id !== first.execution_receipt_id) throw new Error('COGNITION_RECEIPT_LINEAGE_MISMATCH');
 
 const receipt = await request(
-  base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
+  base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
 );
 if (!Array.isArray(receipt) || receipt.length !== 1 || receipt[0].status !== 'SUCCESS' || receipt[0].action !== 'smart_mail_send') throw new Error('EXECUTION_RECEIPT_INVALID');
+if (!receipt[0].authority_grant_id || receipt[0].authority_issuer_id !== senderId || receipt[0].authority_status_at_execution !== 'ACTIVE' || receipt[0].authority_source_event_id !== 'human:smart-mail-send:' + idempotencyKey || !receipt[0].authority_validated_at) throw new Error('AUTHORITY_PROVENANCE_INVALID');
 
 const replay = await request(functionUrl, { method: 'POST', headers: authHeaders(sender.access_token), body: JSON.stringify(sendPayload) });
 if (replay.status !== 'REPLAY' || replay.message_id !== first.message_id || replay.thread_id !== first.thread_id) throw new Error('IDEMPOTENCY_REPLAY_FAILED');
