@@ -132,7 +132,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+    "current_repository_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -312,9 +312,62 @@
         "adversarial authority/action claims were denied without execution side effects"
       ],
       "result": "LEARNING_REUSE_VERIFIED"
+    },
+    "current_readiness": {
+      "status": "READY",
+      "run_id": 35471113077,
+      "observed_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
+      "unknown_count": 0,
+      "failed_count": 0
+    },
+    "fresh_smart_mail_learning_bridge": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "recorded_in": "NAYA/ACTIVITY/2026/09/19.md",
+      "observed_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
+      "message_id": "e5133412-79aa-4740-97e3-52e8c9f3ffeb",
+      "execution_receipt_id": "dfda38b8-ef21-4e9b-9386-358134093d85",
+      "cognition_event_id": "smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342",
+      "ledger_event_id": "30156e7c-36a3-457a-bc4e-7aab332ac0cf",
+      "learning_evidence_id": "a0509374-cff6-4b59-aeb5-f17b68dda033",
+      "learner_state_version": 1,
+      "decision": "USE_VERIFIED_LEARNING_CONTEXT",
+      "influenced": true,
+      "authority_changed": false,
+      "authority_granted": false,
+      "continuation_message_id": "da96d9db-3c8b-46c9-baf4-cba8df10a6e0"
+    },
+    "wave_a_browser_acceptance": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "run_id": 35471038295,
+      "observed_head": "5d8f54450d60f4e882b042e6d7185a1823890dc3",
+      "evidence": [
+        "authenticated browser handoff",
+        "production shared Space",
+        "A/B membership",
+        "mutual Connections",
+        "Smart List",
+        "A→B Smart Mail",
+        "B receiver retrieval",
+        "execution receipt",
+        "cognition lineage",
+        "learning evidence",
+        "learning apply",
+        "cold learning reuse",
+        "authority unchanged",
+        "C isolation"
+      ],
+      "note": "Receipt artifact reports activity_event_id=null; durable Activity lineage is separately proven by Smart Mail backend Activity receipts. Public Welcome → Identity is not included in this acceptance and remains unproven."
+    },
+    "outcome_discrimination": {
+      "status": "NOT_PROVEN",
+      "claim_type": "RUNTIME",
+      "reason": "Current independent receiver-retrieval outcome contract produces verified value 1 and does not discriminate policy quality; no improvement claim is made.",
+      "next_action": "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes."
     }
   },
-  "recording_commit": "16071081dd90dab568137b321dbc6fdbe776284c",
+  "recording_commit": "fb17b633934c0803833db76cb12f28171cbfbfb5",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -554,6 +607,6 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "The core Superbrain/NayaPOWER engine and canonical Hub execution spine are operationally assembled and substantially proven: authenticated persistence/retrieval, governed execution, receipt/cognition/Activity/Ledger lineage, replay/idempotency, revocation/isolation evidence, concurrency safety, fresh-context continuity, and Dream→learning→later-decision reuse all have concrete proof. Full project completion remains blocked by the final human-facing Welcome→Identity handoff, comprehensive receiver/UI acceptance, multi-Naya concurrency breadth, measurable policy/compounding improvement, activation breadth, Windows portability, and control-plane cleanup where historical records remain stale.",
+  "interpretation": "As of current main fb17b633934c0803833db76cb12f28171cbfbfb5, the NayaPOWER/Superbrain engine is machine-ready and its key execution/learning loop is freshly verified. The remaining project-completion gap is no longer basic engine construction; it is measurable improvement under a non-gamed outcome contract, plus the public Welcome→Identity and consolidated human-facing acceptance/product activation boundary.",
   "current_repository_head": "16071081dd90dab568137b321dbc6fdbe776284c"
 }
