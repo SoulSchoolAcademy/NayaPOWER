@@ -32,4 +32,13 @@ jobs:
         run: python .naya/runtime/test_smart_ledger_engine.py
       - name: Run governed execution to Team Naya Activity proof
         if: always()
+        env:
+          NAYA_CI_EVIDENCE_DIR: ${{ github.workspace }}/ci-evidence
         run: python scripts/verify-execution-team-activity-bridge.py
+      - name: Upload exact canonical Activity event evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: execution-team-activity-evidence
+          path: ci-evidence/execution-activity-event.json
+          if-no-files-found: error
