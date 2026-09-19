@@ -355,7 +355,13 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
             authority = gate._current_registry().resolve(self.authority.authority_id)
             decision = make_decision(authority, "GBLC-REV-DEC")
             action = make_action(authority, decision.decision_id, action_id="GBLC-REV-ACT")
-            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            issued = gate.authorize(
+                authority=authority,
+                decision=decision,
+                action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
+            )
             self.assertTrue(issued.allowed)
 
             start_claimed()
@@ -363,7 +369,6 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
                 action,
                 execution_authorization=issued.authorization,
                 gate=gate,
-                identity_envelope=identity_for(authority),
                 identity_envelope=identity_for(authority),
                 preflight=approved_preflight(),
             )
@@ -397,7 +402,6 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
             action,
             execution_authorization=issued.authorization,
             gate=gate,
-            identity_envelope=identity_for(grant),
             identity_envelope=identity_for(grant),
             now=now_iso(0),
             preflight=approved_preflight(),
