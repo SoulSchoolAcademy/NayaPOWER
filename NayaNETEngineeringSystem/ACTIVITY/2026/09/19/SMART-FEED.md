@@ -5,7 +5,7 @@
 
 ## Executive state
 
-**Current product readiness: 4.7 / 10 — real backend v1 now exists, but the product surface and proof chain are not closed.**
+**Current product readiness: 6.0 / 10 — backend v2, dedicated production surface, and Cloudflare source/runtime parity are now proven; authenticated transaction and privacy closure remain.**
 
 ### Fresh live runtime evidence
 
@@ -81,3 +81,12 @@ The Feed is a projection, never a new event store.
 A real authenticated human can switch ACTIVITY/PERSONAL/COLLECTIVE, retrieve only authorized canonical intelligence, paginate without duplicates, inspect provenance, perform authorized actions, refresh and observe consequences; another user is denied protected material; Cloudflare runtime matches the verified source.
 
 **NEXT:** Wire and execute the live `naya-smart-feed` v1 against the existing Hub surface, then close authorization, consequence, parity, and visual-state proof.
+
+
+## Session 003 — Production surface closure
+
+Priority 1 is now **VERIFIED**. The dedicated Smart Feed application surface is deployed through the canonical Cloudflare release. GitHub Actions run `35453966388` passed exact artifact deployment, exact source/runtime parity, desktop runtime baseline, mobile runtime baseline, and final Assistant-lane runtime proof. The Smart Feed Edge Function is now v2 with JWT verification enabled, and the production publication boundary has explicit-consent owner authorization.
+
+This does **not** close the feature at 10/10. The remaining work is authenticated Activity/Personal/Collective execution, real publication/retrieval, pagination/no-duplicate proof, canonical action consequences, two-user denial, and final visual state QA.
+
+**Next:** execute authenticated Activity retrieval and consequence proof against the deployed `/feed` surface.
