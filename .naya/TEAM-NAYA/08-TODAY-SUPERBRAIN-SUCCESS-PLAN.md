@@ -26,7 +26,7 @@ To preserve useful context, authority, evidence, learning and continuity while p
 
 ## WHAT IS CURRENT?
 
-**Active P0 block:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
+**Active P0 block:** `P1-CONTROLLED-PAIRED-POLICY-OUTCOME`
 
 **Canonical current state:** `.naya/control-plane/STATE.json`  
 **Canonical active block:** `.naya/control-plane/BLOCKS.json`  
@@ -104,7 +104,7 @@ If the intelligence already exists, protect it. Do not duplicate it.
 
 Team Naya Activity is the operational communication surface, not merely a diary. Every consequential Naya must visibly announce ownership and intent before acting, report observed results after acting, answer outstanding Naya questions when evidence is available, and leave one executable successor. Important discoveries must be posted where the next Naya can inspect them without conversational archaeology. No synthetic/no-op activity is allowed.
 
-**Current shared blocker:** positive authenticated lifecycle execution. The authorized production Cloudflare runtime is now source-bound and runtime-parity proven through .github/workflows/deploy-nayanet-intelligent-hub.yml; the remaining external dependency is the protected assistant-cloudflare-production test identity. No 509 substitution. No alternate runtime. No inferred success.
+**Current boundary:** the canonical production Cloudflare runtime is source-bound and parity-proven through `.github/workflows/assistant-cloudflare-hub-release.yml`. No 509 substitution. No alternate runtime. No inferred success.
 
 ## ACTIVITY — THE RULE
 
@@ -237,3 +237,10 @@ Implement the independent outcome/value contract, verify it adversarially, then 
 ## 2026-09-19 WINDOWS PORTABILITY FINDING
 
 A fresh Windows clone of current main failed checkout because Git cannot materialize a tracked filename containing a colon: `.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`. This does not invalidate the Linux/GitHub runtime proofs, but it is a real Cold-Naya portability defect for Windows-local recovery. It must be normalized after the current P0 outcome/value work, with all references preserved.
+
+
+## 2026-09-18 CONTROL-PLANE RECONCILIATION
+
+The current user-facing Hub boundary is explicit: `2026 09 17 NAYANET HUB.html` → `.github/workflows/assistant-cloudflare-hub-release.yml` → `sparkling-shape-7ae5`. The React/Vite `NAYANET/HUB/` implementation is reference/engineering material only. The legacy `deploy-nayanet-intelligent-hub.yml` is retired/disabled.
+
+The active P0 is the independent real-outcome/value contract followed by the held-out multi-case V1/V2 experiment and then cold-Naya continuation proof. Historical authentication/deployment blockers are not the current P0.
