@@ -1,0 +1,70 @@
+{
+  "contract": "GOVERNED_RUNTIME_IDENTITY_LOOP",
+  "schema_version": "1.0",
+  "status": "RUNTIME_VERIFIED",
+  "purpose": "Make the 13-question governed identity/provenance spine an actual consequential execution lifecycle without creating a second authority or event store.",
+  "flow": [
+    "real request",
+    "governed identity envelope",
+    "canonical authority resolution",
+    "consequential UniversalExecutionGate authorization",
+    "model_tool_gateway authorization",
+    "single supplied executor/action",
+    "execution_controller EXECUTING",
+    "observed execution result",
+    "execution evidence adapter",
+    "Smart Ledger verified receipt",
+    "canonical Activity Feed projection",
+    "VERIFIED state",
+    "HANDED_OFF continuation"
+  ],
+  "identity_spine": [
+    "IDENTITY",
+    "LINEAGE",
+    "KNOWLEDGE",
+    "CAPABILITY",
+    "AUTHORITY",
+    "AUTHORIZER",
+    "RECEIVED_INTELLIGENCE",
+    "PROVENANCE",
+    "DELEGATION",
+    "ACTUAL_ACTION",
+    "OUTCOME",
+    "LEARNING"
+  ],
+  "invariants": [
+    "Identity never creates or expands authority.",
+    "Canonical authority remains the existing authority registry and governance kernel.",
+    "Consequential execution requires the complete governed identity envelope.",
+    "The exact identity fingerprint and identity/action binding are carried into the execution credential.",
+    "The observed result is evidence, not authority.",
+    "Smart Ledger receipt creation occurs only after consequential authorization verification and an observed completed execution result.",
+    "Identity and Smart Ledger binding integrity are validated before canonical Activity publication.",
+    "Canonical Activity is the execution projection; no second canonical execution event store is introduced.",
+    "PIS remains the existing canonical Smart Note intelligence projection."
+  ],
+  "runtime_proof": {
+    "environment": "Windows / Python 3.13.15",
+    "verified_integration_branch": "feat/governed-runtime-identity-loop-v1",
+    "verified_runtime_head": "0c140996627382517e817a9f9c370982cb437445",
+    "test_counts": {
+      "governed_identity": 12,
+      "governed_runtime_identity_loop": 3,
+      "execution_controller_closure": 20,
+      "gateway_boundary_closure": 22,
+      "total": 57
+    },
+    "self_tests": [
+      "execution_controller.py self-test PASS",
+      "model_tool_gateway.py self-test PASS"
+    ],
+    "result": "57/57 tests PASS plus 2 runtime self-tests PASS",
+    "rebased_final_branch": "feat/governed-runtime-identity-loop-final",
+    "final_base_main": "7fb571775d9357355abcffc6a5953567166a40a3",
+    "note": "The final branch uses the exact runtime blobs proven on the verified integration branch; only current-main documentation/maintenance commits were added underneath them. A fresh Windows execution of the final tree was not possible through the user's local Git mirror because the newly-created branch ref was not fetch-visible there."
+  },
+  "production_boundary": {
+    "status": "NOT_CLAIMED",
+    "reason": "The model-tool gateway now provides a governed one-shot executor seam, but deployment-specific external tool adapters and cross-process portable authorization remain separate integration surfaces."
+  }
+}
