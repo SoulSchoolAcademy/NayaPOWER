@@ -131,8 +131,8 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Human-facing production acceptance is now the critical path: authenticate through the canonical live Hub, execute the user-visible relationship/intelligence journey, independently observe rendered state, and record PRODUCTION_PROVEN only if the whole journey passes.",
-  "single_next_action": "Perform authenticated human-facing production acceptance through the canonical live Hub now that the engine/security gates are green; do not modify backend security controls unless the live journey produces new evidence.",
+  "bottleneck": "Human-facing authenticated relationship journey: the canonical Hub can authenticate and render, but the current browser identity is not a member of the existing production Space and has zero Connections. Do not fabricate A↔B UI proof.",
+  "single_next_action": "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls.",
   "next_actions": [
     "Perform authenticated human-facing production acceptance through the canonical live Hub.",
     "Verify user-visible A/B relationship and Smart List state against the already-proven backend state.",
@@ -165,5 +165,27 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7"
+  "recorded_at_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+  "latest_human_facing_observation": {
+    "status": "NOT_PROVEN",
+    "authenticated_lifecycle_workflow_run": 35462700932,
+    "authenticated_lifecycle_result": "VERIFIED",
+    "browser_session_user_id": "9c0a96e7-2ab7-4455-8cc7-b39bd6782b04",
+    "browser_session_is_anonymous": true,
+    "hub_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "checks": {
+      "auth_identity": "PASS",
+      "hub_render": "PASS",
+      "production_space_visible": "PASS",
+      "production_space_membership": "NOT_PROVEN_FOR_THIS_BROWSER_IDENTITY",
+      "connections_render": "PASS_BUT_ZERO_CONNECTIONS",
+      "smart_list_render": "NOT_PROVEN",
+      "smart_mail_user_journey": "NOT_PROVEN",
+      "receiver_surface": "NOT_PROVEN",
+      "intelligence_retrieval": "PASS_FOR_EXISTING_HUB_INTELLIGENCE",
+      "C_isolation": "NOT_PROVEN_IN_UI",
+      "acceptance_receipt": "NOT_PROVEN"
+    },
+    "blocking_evidence": "The authenticated browser identity can see the shared production Space in the runtime's listSpaces response, but listSpaceMembers for that identity is empty and the Connections UI reports zero saved Connections. The current human-facing Hub does not expose a completed A↔B relationship for this authenticated identity. Therefore Wave A cannot be promoted to PRODUCTION_PROVEN."
+  }
 }
