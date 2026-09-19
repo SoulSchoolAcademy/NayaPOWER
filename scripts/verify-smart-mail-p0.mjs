@@ -78,7 +78,7 @@ const proof = {
   status: 'VERIFIED',
   user: { sender_id: senderId, receiver_id: receiverId },
   transaction: { correlation_id: first.correlation_id, thread_id: first.thread_id, message_id: first.message_id, cognition_event_id: first.cognition_event_id, execution_receipt_id: first.execution_receipt_id, idempotency_key: idempotencyKey },
-  chain: { external_sender_authenticated: true, canonical_naya_identity: senderId, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true },
+  chain: { external_sender_authenticated: true, canonical_naya_identity: true, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true },
   observed_at: new Date().toISOString()
 };
 fs.writeFileSync(process.env.PROOF_PATH, JSON.stringify(proof, null, 2));
