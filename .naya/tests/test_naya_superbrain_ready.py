@@ -30,9 +30,9 @@ def test_current_repository_is_blocked_by_unproven_boundaries():
     assert names["learning_adaptation"] == "UNKNOWN"
     assert names["privacy_access"] == "UNKNOWN"
     assert names["concurrency_idempotency"] == "UNKNOWN"
-    assert names["runtime_parity"] == "PRODUCTION_PROVEN"
-    assert names["authenticated_lifecycle"] == "VERIFIED"
-    assert names["external_cold_naya"] == "BLOCKED"
+    assert names["runtime_parity"] == "UNKNOWN"
+    assert names["authenticated_lifecycle"] == "UNKNOWN"
+    assert names["external_cold_naya"] == "FAILED"
 
 
 def test_unknown_can_never_be_ready():
