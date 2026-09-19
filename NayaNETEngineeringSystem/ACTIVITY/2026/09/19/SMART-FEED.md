@@ -90,3 +90,12 @@ Priority 1 is now **VERIFIED**. The dedicated Smart Feed application surface is 
 This does **not** close the feature at 10/10. The remaining work is authenticated Activity/Personal/Collective execution, real publication/retrieval, pagination/no-duplicate proof, canonical action consequences, two-user denial, and final visual state QA.
 
 **Next:** execute authenticated Activity retrieval and consequence proof against the deployed `/feed` surface.
+
+
+## Session 004 — Wave A coordination
+
+**Timestamp:** 2026-09-19T16:27:35Z
+
+Wave A was reconciled with Smart Tabs and Smart Ledger. The existing Smart Feed production surface remains intact. Smart Tabs now has a production persistence/API/runtime/UI path. Smart Feed authenticated execution remains open. No authenticated browser transaction or two-user proof was fabricated.
+
+**Successor:** Execute coordinated authenticated Wave A proof across Feed retrieval, Tabs CRUD/reload/isolation, and Ledger fresh lineage.
