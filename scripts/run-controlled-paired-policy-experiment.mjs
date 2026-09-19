@@ -168,6 +168,14 @@ const {data:retrievedLesson,error:retrieveLessonError}=await supabase.from("lear
   .select("id,claim,status,observed_value").eq("id",lesson.id).single();
 if(retrieveLessonError||!retrievedLesson||retrievedLesson.status!=="ACTIVE") throw retrieveLessonError||new Error("LEARNING_RETRIEVAL_FAILED");
 
+let equalOutcomePromotionBlocked=false;
+try {
+  await transition(v2.id,"PROMOTED",{authorized:true,learning_evidence_id:lesson.id});
+} catch(error) {
+  equalOutcomePromotionBlocked=String(error?.message||error).includes("PROMOTION_REQUIRES_VERIFIED_IMPROVEMENT");
+}
+if(!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
+
 const successorStrategy="HISTORY_PLUS_VERIFIED_RECEIPT_V1_REQUIRE_POSITIVE_DELTA";
 const successor=await insertPolicy(3,v2.id,successorStrategy);
 await evalPolicy(successor.id,"LEARNING_INHERITANCE",{
@@ -175,14 +183,6 @@ await evalPolicy(successor.id,"LEARNING_INHERITANCE",{
   learning_evidence_id:lesson.id,source_policy_id:v2.id,
   rule:"require candidate verified responsible value > baseline before promotion"
 });
-
-let equalOutcomePromotionBlocked=false;
-try {
-  await transition(successor.id,"PROMOTED",{authorized:true,learning_evidence_id:lesson.id});
-} catch(error) {
-  equalOutcomePromotionBlocked=String(error?.message||error).includes("PROMOTION_REQUIRES_VERIFIED");
-}
-if(!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
 
 const {error:swapError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
   p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
