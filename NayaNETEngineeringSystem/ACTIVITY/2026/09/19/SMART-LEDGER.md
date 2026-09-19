@@ -61,3 +61,10 @@ Historical production closure already proved real execution → receipt → cogn
 Every consequential Ledger entry is freshly retrievable by an authorized human, reconstructable to its source/authority/action/result/evidence, protected from unauthorized users, idempotent under retry, and visibly distinguished between recorded/observed/verified.
 
 **NEXT:** Execute the authenticated Ledger write → receipt → fresh retrieval → lineage → replay/denial proof and resolve the outcome-observation gap.
+
+
+## Session 001 — Wave A
+
+**Timestamp:** 2026-09-19T16:27:35Z
+
+Ledger was reconciled as the canonical evidence projection for the coordinated Wave A. Live counts remain 96 Ledger rows, 125 receipts, 124 cognition events, and 0 independent execution outcomes. No observation status is being inferred from receipt existence. Fresh authenticated retrieval, lineage UI, denial, replay/idempotency, and current Cloudflare parity remain open.
