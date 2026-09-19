@@ -14,7 +14,7 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — FRESH-NAYA CONTINUATION + PRODUCTION ENGINE CLOSURE",
+  "priority": "P0 — FRESH-NAYA REUSE + COMPOUNDING + FINAL HUMAN-FACING ACCEPTANCE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
   "current_block_status": "ACTIVE",
@@ -46,31 +46,30 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "CURRENT_WAVE_A_ENGINE_SECURITY_CLOSURE",
-    "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
-    "observation_is_historical_relative_to_live_HEAD": false,
-    "concurrency_run_id": 35461980944,
-    "concurrency_result": "VERIFIED",
-    "concurrency_writers": 8,
-    "concurrency_receipt_revisions": "1,2,3,4,5,6,7,8",
-    "proof7_run_id": 35461270128,
-    "proof7_result": "VERIFIED",
-    "relationship_journey_run_id": 35462235010,
-    "relationship_journey_result": "VERIFIED",
-    "relationship_project": "NayaNET-waveA-relationship-1789843560708-c7be120b",
-    "initial_message_id": "f7dcb2b5-30e4-4b64-a2ff-22ffbdbc8934",
-    "initial_receipt_id": "a1bc79cc-235c-4656-bd75-39ef762720dd",
-    "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
-    "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
-    "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
+    "status": "CURRENT_ENGINE_AND_HUB_PROOF_CLOSURE",
+    "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+    "observation_is_historical_relative_to_live_HEAD": true,
+    "canonical_hub_release_run_id": 35470356001,
+    "canonical_hub_release_result": "SUCCESS",
+    "canonical_hub_release_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+    "authenticated_lifecycle_run_id": 35470519946,
+    "authenticated_lifecycle_result": "SUCCESS",
+    "name_first_lifecycle_run_id": 35470526689,
+    "name_first_lifecycle_result": "SUCCESS",
+    "dream_learning_run_id": 35470535019,
+    "dream_learning_result": "SUCCESS",
+    "p05_replay_run_id": 35470371926,
+    "p05_replay_result": "SUCCESS",
+    "fresh_hub_transaction_run_id": 35470242000,
+    "fresh_hub_transaction_result": "VERIFIED"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
     "The canonical current constitution is .naya/codex/11-RUNTIME-CONSTITUTION.md.",
     "The canonical navigation/authority map is SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md.",
     "The governance kernel points to the current constitution and is fail-closed.",
-    "The active repository block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
-    "The protected current user-facing Hub is `2026 09 17 NAYANET HUB.html`; the React/Vite `NAYANET/HUB/` representation is engineering/reference material and is not current user-facing authority.",
+    "The active repository block is WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY, now transitioned from engine/security closure into final reuse/compounding and human-facing acceptance.",
+    "The canonical user-facing Hub is the React/Vite host released by .github/workflows/assistant-cloudflare-hub-release.yml; the protected `2026 09 17 NAYANET HUB.html` remains the preserved embedded baseline.",
     "Naya Control Plane run 34725200501 passed governance kernel, execution boundary, validator self-test, P0 workflow contract, Cold Naya control-plane acceptance, Cold Naya boot/no-orphan acceptance, MAP → STATE → BLOCK → PROOF acceptance, and CCT regression at HEAD 28b935cc1d759bae89c92b508c9d47d871c9a1c9.",
     "P0 run 34724442337 passed its offline adversarial workflow contract and behavioral bypass suite on e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
     "The Smart Feed runtime loader repair was implemented in 0d56f6e47288e69eeda2adddf1aa18bb4235b062.",
@@ -82,7 +81,7 @@
     "The canonical production deployment workflow is .github/workflows/assistant-cloudflare-hub-release.yml; the legacy React/Vite deployment workflow is retired/disabled.",
     "The protected standalone Hub and assistant-runtime source/live parity were verified by the canonical Assistant Cloudflare release lane.",
     "Current main HEAD is resolved live at execution time; deployment proof remains claim-scope based and is tied to the exact source artifacts used by the Assistant Cloudflare release.",
-    "Assistant authenticated lifecycle proof run 35409995111 is VERIFIED at current main and independently retrieved/rendered persisted intelligence in a fresh browser context.",
+    "Assistant authenticated lifecycle run 35470519946 is VERIFIED against the canonical live Assistant Cloudflare lane with independent fresh-context retrieval/render proof.",
     "The P1 controlled paired experiment run 35409875337 executed real V1/V2 Smart Mail actions against the same frozen case, verified both outcomes through an authenticated receiver, and persisted exact policy lineage on both execution receipts.",
     "The P1 comparison adversarially rejected a baseline/candidate receipt swap.",
     "The current Smart Mail responsible-value contract assigns benefit=1 and cost=1 for the controlled send path, yielding verified value 0 for both sides; this is sufficient to prove the comparison machinery but insufficient to establish meaningful policy improvement.",
@@ -93,18 +92,18 @@
     "Proof 7 compounding Superbrain loop run 35461270128 is VERIFIED: experience, memory, dream, learning, continuity, decision, outcome, authority unchanged, new learning, and next decision-context retrieval all passed; policy improvement remains NOT_PROVEN.",
     "Cognition receipt revision allocation was repaired in production by serializing per-user/project execution-receipt revision allocation and choosing the next revision from the canonical execution-receipt namespace.",
     "Proof 7 now uses the existing production shared Space, mutual Connections, and explicit least-privilege smart_mail_send authority.",
-    "Live main HEAD resolved at execution time is 59a9e1cd8d169c88263284a8dbec07dec6781ff7.",
+    "Live main HEAD is always resolved at execution time; the last reconciled observation for this record is 16071081dd90dab568137b321dbc6fdbe776284c.",
     "Cognition receipt revision concurrency run 35461980944 is VERIFIED: eight concurrent production writers for one authenticated user/project produced eight unique receipt IDs and contiguous revisions 1–8, with cognition-state revision 8.",
     "Wave A relationship/security journey run 35462235010 is VERIFIED against the existing production Space: mutual A↔B Connections, Smart List owner/privacy isolation, no-grant denial, explicit smart_mail_send authority, real A→B Smart Mail, receiver verification, receipt→cognition→Smart Ledger lineage, idempotent replay, authority revocation denial, C isolation, fresh-Naya retrieval, successor authorization, and fresh-Naya continuation all passed.",
     "The canonical Smart Mail replay contract returns status REPLAY with the original message/thread/receipt identity; it does not return cognition_event_id on replay. The proof was corrected to verify the canonical replay contract rather than inventing a field.",
-    "Browser acceptance was intentionally deferred until engine/security gates were green; those gates are now green. Initial human-facing inspection verified the live welcome.nayanet.app front door and its embedded runtime renders the NayaNET welcome experience, but authenticated human-facing acceptance is not yet proven."
+    "Engine/security gates are no longer the blocker; authenticated Name-First lifecycle and Dream→learning→later-decision proofs are now passing, while the public Welcome→Identity handoff and complete human-facing relationship acceptance remain incomplete."
   ],
   "unknown": [
-    "Whether the current Smart Mail receiver-verification path should accept independently evidenced outcome value components rather than using the fixed send-path value contract.",
-    "Comprehensive multi-Naya concurrency safety.",
-    "Complete temporal/supersession/conflict retrieval proof.",
-    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows.",
-    "Authenticated human-facing Hub acceptance after the now-green engine/security gates."
+    "Public Welcome → Identity handoff from welcome.nayanet.app is not yet production-proven; the current fresh Name-First proof explicitly records welcome_to_identity=false.",
+    "Full human-facing A/B receiver surface, replay/revocation/isolation acceptance in the canonical UI is not yet consolidated into one current production acceptance receipt.",
+    "Comprehensive multi-Naya concurrency beyond the existing per-user/project concurrent writer proof remains unknown.",
+    "Measured policy/compounding improvement beyond verified learning reuse remains unproven.",
+    "Windows-local repository checkout portability remains blocked by the tracked filename containing a colon."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -114,7 +113,11 @@
     "The first controlled paired experiment workflow attempt failed because the Node runner imported Supabase JS from an HTTPS ESM URL; corrected to use the installed npm package.",
     "The second controlled paired experiment attempt reached the real comparison but its adversarial assertion expected a specific error string; the comparison did reject the swapped receipts, and the assertion was corrected to require any rejection.",
     "The first artifact-upload correction used an unavailable runner context at workflow-dispatch parse time; corrected to use runner.temp only in the artifact path.",
-    "A Windows desktop clone of current main failed checkout because the repository contains a filename with a colon (`.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`); Linux/GitHub runtime proof is unaffected, but Windows-local Cold-Naya/tooling portability is not yet clean."
+    "A Windows desktop clone of current main failed checkout because the repository contains a filename with a colon (`.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`); Linux/GitHub runtime proof is unaffected, but Windows-local Cold-Naya/tooling portability is not yet clean.",
+    "P0.5 user-visible replay proof run 35470371926 passed after repairing the receipt artifact path; the proof remains on PR #328 until explicitly merged.",
+    "Name-First run 35470452943 failed on a stale /releases/ route expectation; the corrected run 35470526689 passed after accepting the canonical root handoff.",
+    "Authenticated lifecycle run 35470355975 failed because the observer searched the outer document; current run 35470519946 passed after observing the canonical iframe projection.",
+    "Dream learning run 35470355965 failed on the same stale /releases/ assumption; current run 35470535019 passed after aligning the root handoff."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -131,10 +134,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Human-facing authenticated relationship journey: the canonical Hub can authenticate and render, but the current browser identity is not a member of the existing production Space and has zero Connections. Do not fabricate A↔B UI proof.",
-  "single_next_action": "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls.",
+  "bottleneck": "Final causal proof of reusable compounding from the fresh canonical Hub transaction, followed by one consolidated current human-facing Welcome → Identity → A/B relationship → Smart Mail → receiver → replay/revocation/isolation acceptance.",
+  "single_next_action": "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone.",
   "next_actions": [
-    "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls."
+    "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — FRESH-NAYA CONTINUATION PROOF\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF and Team Naya. Retrieve current durable mission, evidence, failures, protected boundaries, authority and blockers in a genuinely fresh context. Select exactly one authorized continuation action from durable state. Execute it against the real system, independently observe and verify the result, record the resulting intelligence, then retrieve that new intelligence again from fresh context. Return PROVEN only when the complete RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → RETRIEVE AGAIN loop passes.",
@@ -156,27 +159,28 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+  "recorded_at_head": "16071081dd90dab568137b321dbc6fdbe776284c",
   "latest_human_facing_observation": {
-    "status": "NOT_PROVEN",
-    "authenticated_lifecycle_workflow_run": 35462700932,
-    "authenticated_lifecycle_result": "VERIFIED",
-    "browser_session_user_id": "9c0a96e7-2ab7-4455-8cc7-b39bd6782b04",
-    "browser_session_is_anonymous": true,
-    "hub_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "status": "PARTIAL_BUT_ENGINE_PROVEN",
+    "canonical_hub_release_run_id": 35470356001,
+    "authenticated_lifecycle_run_id": 35470519946,
+    "name_first_lifecycle_run_id": 35470526689,
     "checks": {
-      "auth_identity": "PASS",
-      "hub_render": "PASS",
-      "production_space_visible": "PASS",
-      "production_space_membership": "NOT_PROVEN_FOR_THIS_BROWSER_IDENTITY",
-      "connections_render": "PASS_BUT_ZERO_CONNECTIONS",
-      "smart_list_render": "NOT_PROVEN",
-      "smart_mail_user_journey": "NOT_PROVEN",
-      "receiver_surface": "NOT_PROVEN",
-      "intelligence_retrieval": "PASS_FOR_EXISTING_HUB_INTELLIGENCE",
-      "C_isolation": "NOT_PROVEN_IN_UI",
-      "acceptance_receipt": "NOT_PROVEN"
+      "runtime_parity": "PASS",
+      "name_first_auth": "PASS",
+      "member_profile_persistence": "PASS",
+      "smart_note_persistence": "PASS",
+      "personal_intelligence_render": "PASS",
+      "fresh_context_retrieval": "PASS",
+      "dream_replay": "PASS",
+      "learning_state_update": "PASS",
+      "later_decision_influenced": "PASS",
+      "authority_unchanged": "PASS",
+      "adversarial_authority_block": "PASS",
+      "welcome_to_identity": "NOT_PROVEN",
+      "full_human_facing_A_B_acceptance": "NOT_PROVEN",
+      "fresh_hub_smart_mail_backend_lineage": "PROVEN"
     },
-    "blocking_evidence": "The authenticated browser identity can see the shared production Space in the runtime's listSpaces response, but listSpaceMembers for that identity is empty and the Connections UI reports zero saved Connections. The current human-facing Hub does not expose a completed A↔B relationship for this authenticated identity. Therefore Wave A cannot be promoted to PRODUCTION_PROVEN."
+    "blocking_evidence": "Current Name-First receipt explicitly records welcome_to_identity=false. A fresh canonical Hub Smart Mail transaction is otherwise proven through receipt, cognition, durable Activity and Smart Ledger. The remaining human-facing acceptance is broader than the one transaction."
   }
 }
