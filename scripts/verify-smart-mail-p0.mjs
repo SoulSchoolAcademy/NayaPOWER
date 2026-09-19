@@ -41,6 +41,15 @@ if (!receiver?.user?.id || !receiver?.access_token) throw new Error('RECEIVER_AN
 
 const senderId = sender.user.id;
 const receiverId = receiver.user.id;
+const spaceId = process.env.NAYA_EXISTING_SPACE_ID;
+if (!spaceId) throw new Error('SHARED_SPACE_ID_REQUIRED');
+await rpc(sender.access_token, 'nayanet_join_space', { p_space_id: spaceId });
+await rpc(receiver.access_token, 'nayanet_join_space', { p_space_id: spaceId });
+await rpc(sender.access_token, 'nayanet_save_connection', { p_target_member_id: receiverId, p_space_id: spaceId });
+await rpc(receiver.access_token, 'nayanet_save_connection', { p_target_member_id: senderId, p_space_id: spaceId });
+const senderConnections = await rpc(sender.access_token, 'nayanet_list_connections', {});
+const mutual = senderConnections?.some?.(x => x.connected_member_id === receiverId && x.status === 'active');
+if (!mutual) throw new Error('MUTUAL_CONNECTION_SETUP_FAILED');
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
 const requestId = 'p0-request-' + crypto.randomUUID();
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
