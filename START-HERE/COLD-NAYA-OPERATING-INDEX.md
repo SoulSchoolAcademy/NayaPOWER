@@ -23,7 +23,7 @@ This map is the repository-level navigation spine for NayaNET. It explains canon
 
 NayaPOWER is the governed intelligence/execution substrate for reliable, verifiable, recoverable Naya work. NayaNET Intelligent Hub is the current major product execution stream. The Hub is the human-facing intelligence/network experience; Superbrain/CIS/Smart Notes are intelligence infrastructure and are not interchangeable authorities.
 
-**Current product target:** complete the real `NAYANET/HUB` implementation toward the protected nine-board Smart Board contract.
+**Current user-facing Hub:** the protected standalone artifact `2026 09 17 NAYANET HUB.html`, released only through `.github/workflows/assistant-cloudflare-hub-release.yml` to `sparkling-shape-7ae5`. `NAYANET/HUB/` React/Vite remains engineering/reference material and is not the current user-facing Hub.
 
 ## 2. WHY?
 
@@ -215,3 +215,12 @@ After the Cold-Naya acceptance test, the successor should:
 `READ THIS INDEX → READ CURRENT CONTROL PLANE → READ CLASSIFICATION MATRIX → EXECUTE ACCEPTANCE TEST → EXECUTE ONE P0 ACTION → VERIFY → RECORD → UPDATE STATE → HAND OFF`
 
 **One repository. One current identity. One current operating index. One current P0. One production release authority. One next action. Evidence over assertion.**
+
+
+## 2026-09-18 CONTROL-PLANE RECONCILIATION
+
+The prior index language that named `NAYANET/HUB` as the current product target conflicted with the protected standalone Hub freeze and the canonical Assistant Cloudflare release authority. That ambiguity is resolved for the current user-facing Hub: `2026 09 17 NAYANET HUB.html` is the protected standalone source; `assistant-cloudflare-hub-release.yml` is the sole production deployment authority; `deploy-nayanet-intelligent-hub.yml` is retired/disabled; and `NAYANET/HUB/` is engineering/reference material only.
+
+This does not erase historical NayaNET product-construction work. It separates current user-facing Hub authority from future North-Star product construction so a cold Naya cannot silently substitute one for the other.
+
+**Current P0:** independent real-outcome/value contract → held-out multi-case policy experiment → cold-Naya continuation.
