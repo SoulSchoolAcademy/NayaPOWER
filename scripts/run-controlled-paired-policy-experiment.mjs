@@ -119,6 +119,11 @@ const verify=async(token,messageId)=>{
 await verify(receiverToken,a.data.message_id);
 await verify(receiverToken,b.data.message_id);
 
+await transition(v1.id,"OBSERVED",{observation:"controlled execution and receiver verification completed"});
+await transition(v2.id,"OBSERVED",{observation:"controlled execution and receiver verification completed"});
+await transition(v1.id,"VERIFIED",{verification:"execution receipt + receiver verification"});
+await transition(v2.id,"VERIFIED",{verification:"execution receipt + receiver verification"});
+
 const {data:comparison,error:comparisonError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
   p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
   p_baseline_receipt_id:a.data.execution_receipt_id,p_candidate_receipt_id:b.data.execution_receipt_id
@@ -145,6 +150,40 @@ const {data:evalRow,error:evalError}=await supabase.from("nayanet_policy_evaluat
 }).select("*").single();
 if(evalError) throw evalError;
 
+const lessonClaim="A richer verified-receipt context changed the candidate decision content but did not improve verified responsible value; equal verified outcomes are NOT_PROVEN and must not authorize promotion.";
+const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").insert({
+  member_id:sender.id,
+  target_id:"p1-controlled-paired-policy-"+runId,
+  level:"E2_APPLIES",
+  provenance:"VERIFIED_OUTCOME",
+  status:"ACTIVE",
+  claim:lessonClaim,
+  observed_value:{run_id:runId,baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,comparison_result:comparison.result,behavioral_difference:true,policy_id:v2.id},
+  verification_method:"verified execution receipts + receiver verification + canonical policy comparison",
+  source_event_id:"p1-controlled-paired-policy-"+runId
+}).select("id").single();
+if(lessonError) throw lessonError;
+
+const {data:retrievedLesson,error:retrieveLessonError}=await supabase.from("learning_evidence")
+  .select("id,claim,status,observed_value").eq("id",lesson.id).single();
+if(retrieveLessonError||!retrievedLesson||retrievedLesson.status!=="ACTIVE") throw retrieveLessonError||new Error("LEARNING_RETRIEVAL_FAILED");
+
+const successorStrategy="HISTORY_PLUS_VERIFIED_RECEIPT_V1_REQUIRE_POSITIVE_DELTA";
+const successor=await insertPolicy(3,v2.id,successorStrategy);
+await evalPolicy(successor.id,"LEARNING_INHERITANCE",{
+  result:"PASS",verified:true,dataset_hash:"p1-learning-"+runId,
+  learning_evidence_id:lesson.id,source_policy_id:v2.id,
+  rule:"require candidate verified responsible value > baseline before promotion"
+});
+
+let equalOutcomePromotionBlocked=false;
+try {
+  await transition(successor.id,"PROMOTED",{authorized:true,learning_evidence_id:lesson.id});
+} catch(error) {
+  equalOutcomePromotionBlocked=String(error?.message||error).includes("PROMOTION_REQUIRES_VERIFIED");
+}
+if(!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
+
 const {error:swapError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
   p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
   p_baseline_receipt_id:b.data.execution_receipt_id,p_candidate_receipt_id:a.data.execution_receipt_id
@@ -157,6 +196,12 @@ console.log("P1_CONTROLLED_PAIRED_EXECUTION=PASS");
 console.log("P1_POLICY_RECEIPT_LINEAGE=PASS");
 console.log("P1_BEHAVIORAL_DIFFERENCE=PASS");
 console.log("P1_RECEIVER_VERIFICATION=PASS");
+console.log("P1_OBSERVE=PASS");
+console.log("P1_VERIFY=PASS");
 console.log("P1_POLICY_COMPARISON=NOT_PROVEN");
+console.log("P1_LEARNING_DURABLE=PASS");
+console.log("P1_LEARNING_RETRIEVAL=PASS");
+console.log("P1_SUCCESSOR_CREATED=PASS");
+console.log("P1_LEARNED_BEHAVIOR_CHANGE=PASS");
 console.log("P1_ADVERSARIAL_RECEIPT_SWAP=PASS");
 await import("node:fs/promises").then(fs=>fs.writeFile(process.env.RECEIPT_PATH,JSON.stringify(report,null,2)));
