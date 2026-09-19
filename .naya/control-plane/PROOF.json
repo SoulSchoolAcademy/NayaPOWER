@@ -59,131 +59,121 @@
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
   "freshness_rule": "Recorded runtime evidence is CURRENT only when its observed HEAD exactly equals the live authoritative HEAD at claim time. Otherwise it remains HISTORICAL/STALE and cannot certify the current repository.",
   "current_evidence": {
-    "classification": "CURRENT_PRODUCTION_PROVEN_ASSISTANT_CLOUDFLARE_SOURCE_SCOPE",
-    "observed_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
+    "classification": "CURRENT_ASSISTANT_RUNTIME_AND_P1_POLICY_EXPERIMENT",
+    "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
     "observed_branch": "main",
-    "bridge": {
-      "run_id": 35398120499,
+    "runtime_parity": {
+      "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "conclusion": "success",
-      "event": "push",
-      "ref": "refs/heads/main",
-      "sha": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "deployment_lane": "ASSISTANT_CLOUDFLARE",
-      "workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
-      "worker": "sparkling-shape-7ae5",
+      "deployment_run_id": 35409939641,
+      "deployment_version_id": "718acdb8-3796-4440-98d4-406ad1e6accc",
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "cloudflare_version_id": "7b2ec6dd-c078-461e-af93-7addcdee2072"
-    },
-    "production": {
-      "deployment_identity": "7b2ec6dd-c078-461e-af93-7addcdee2072",
-      "normalized_line_endings": true,
-      "desktop_baseline": true,
-      "mobile_baseline": true,
+      "canonical_release_header": "0a97c30b70e49a530094cc39869b05444ae2c858",
       "live_runtime_observed": true,
-      "live_title": "NayaNET — Intelligent Hub V7 · 509 AAA",
-      "live_identity": "NayaNET / INTELLIGENT HUB · V7",
-      "canonical_release_header": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "observation": "Cloudflare deployment run 35398120499 successfully deployed the exact source commit and independently observed the live canonical Hub markers."
+      "source_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "evidence": [
+        "canonical Cloudflare deployment succeeded",
+        "live X-Naya-Canonical-Asset equals current main HEAD",
+        "live Hub canonical markers verified"
+      ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
+      "run_id": 35409995111,
+      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
       "evidence": [
-        "NAME=PASS",
-        "AUTH_SESSION=PASS",
-        "MEMBER=PASS",
-        "PROFILE=PASS",
-        "HUB_IDENTITY=PASS",
-        "SMART_NOTE=PASS",
-        "PERSIST=PASS",
-        "RETRIEVE=PASS",
-        "FRESH_CONTEXT=PASS",
-        "SAME_HUMAN=PASS",
-        "SAME_INTELLIGENCE=PASS",
-        "NO_SESSION_WELCOME=PASS"
+        "PERSISTED",
+        "RETRIEVED",
+        "EXECUTED",
+        "OBSERVED",
+        "VERIFIED",
+        "independent-fresh-context-retrieval-and-render-comparison",
+        "event identity preserved",
+        "content preserved",
+        "privacy preserved",
+        "provenance preserved"
       ],
-      "reason": "Production runtime proves the name-first authenticated Hub lifecycle from identity through durable cognition and fresh-context continuity. Welcome → identity remains an external GroovePages boundary and is explicitly excluded from the proof rather than fabricated."
+      "fresh_context_retrieval": "VERIFIED",
+      "fresh_naya_continuation_action": "NOT_PROVEN",
+      "receipt_id": "ca60e930-eb7f-49cd-970b-1bc25a2ec37e"
     },
-    "external_cold_naya": {
-      "status": "BLOCKED",
-      "evidence": [
-        "authenticated lifecycle remains unexecuted",
-        "runtime bridge is deployed"
+    "controlled_paired_policy_experiment": {
+      "status": "VERIFIED_MECHANISM_NOT_PROVEN_IMPROVEMENT",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
+      "run_id": 35409875337,
+      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "result": "NOT_PROVEN",
+      "baseline_verified_value": 0,
+      "candidate_verified_value": 0,
+      "behavioral_difference": true,
+      "real_observed_outcomes": true,
+      "policy_identity_lineage": true,
+      "receipt_swap_rejected": true,
+      "baseline_receipt_id": "cd80ffef-5fb8-4411-8022-404cd8b3202c",
+      "candidate_receipt_id": "097a6728-5dfe-4e3c-9cbe-ff77df6cc500",
+      "experiment_case_id": "paired-35409875337-C1",
+      "input_hash": "749da4b8e6b96eebe639a030ea6384c8f94c9ebe802a75a29ee791805106af80",
+      "decision_hashes": [
+        "f88bfa574b0200adecfe5793aa023561ee531da4b6839941960c0e0557b478ad",
+        "3b5c847b1ae0e006c7d746b4ed8a206fcc2171a091b2727e58cbf13fb339ac1b"
       ],
-      "reason": "A genuine external cold-Naya continuation requires a completed authenticated lifecycle receipt and an independent fresh-context retrieval against that persisted object."
-    },
-    "runtime_parity": {
-      "status": "PRODUCTION_PROVEN",
-      "evidence": [
-        "Cloudflare deployment run 35398120499=success",
-        "Current Version ID 7b2ec6dd-c078-461e-af93-7addcdee2072",
-        "live Hub reachable and canonical presentation markers verified",
-        "versioned release bound to exact deployment source commit"
-      ],
-      "reason": "The canonical Cloudflare deployment successfully served the exact deployed source commit and passed independent live runtime marker checks. Exact byte-hash parity is not asserted here.",
-      "observed_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "deployed_source_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "source_paths": [
-        "2026 09 17 NAYANET HUB.html",
-        "assistant-runtime.js",
-        "NAYANET/HUB/worker.js",
-        "NAYANET/HUB/wrangler.jsonc"
-      ]
-    },
-    "interpretation": "Current Assistant Cloudflare production is proven for the deployed source scope at 25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e. The authenticated lifecycle remains BLOCKED because the protected GitHub Environment has no configured ASSISTANT_TEST_EMAIL/ASSISTANT_TEST_PASSWORD secrets."
+      "artifact": "p1-controlled-paired-policy-receipt",
+      "interpretation": "The controlled paired execution/receipt/comparison machinery is proven. Policy improvement is not proven because verified responsible values were equal."
+    }
   },
-  "recording_commit": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
+  "recording_commit": "0a97c30b70e49a530094cc39869b05444ae2c858",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "observed_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "deployed_source_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "source_paths": [
-        "2026 09 17 NAYANET HUB.html",
-        "assistant-runtime.js",
-        "NAYANET/HUB/worker.js",
-        "NAYANET/HUB/wrangler.jsonc"
-      ],
+      "deployment_run_id": 35409939641,
+      "deployment_version_id": "718acdb8-3796-4440-98d4-406ad1e6accc",
+      "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+      "canonical_release_header": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "live_runtime_observed": true,
+      "source_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
       "evidence": [
-        "Cloudflare deployment run 35398120499=success",
-        "Current Version ID 7b2ec6dd-c078-461e-af93-7addcdee2072",
-        "live Hub reachable and canonical presentation markers verified",
-        "versioned release bound to exact deployment source commit"
-      ],
-      "reason": "Canonical Cloudflare deployment and independent live marker observation prove the deployed source scope; exact byte-hash parity is not asserted."
+        "canonical Cloudflare deployment succeeded",
+        "live X-Naya-Canonical-Asset equals current main HEAD",
+        "live Hub canonical markers verified"
+      ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
-      "observed_head": "24a04c2edaee47468528e5fc3fe0408ecb3bf6e1",
-      "workflow": ".github/workflows/verify-nayanet-name-first-lifecycle.yml",
-      "run_id": 35398120463,
+      "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
+      "run_id": 35409995111,
+      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
       "evidence": [
-        "NAME=PASS",
-        "AUTH_SESSION=PASS",
-        "MEMBER=PASS",
-        "PROFILE=PASS",
-        "HUB_IDENTITY=PASS",
-        "SMART_NOTE=PASS",
-        "PERSIST=PASS",
-        "RETRIEVE=PASS",
-        "FRESH_CONTEXT=PASS",
-        "SAME_HUMAN=PASS",
-        "SAME_INTELLIGENCE=PASS",
-        "NO_SESSION_WELCOME=PASS"
+        "PERSISTED",
+        "RETRIEVED",
+        "EXECUTED",
+        "OBSERVED",
+        "VERIFIED",
+        "independent-fresh-context-retrieval-and-render-comparison",
+        "event identity preserved",
+        "content preserved",
+        "privacy preserved",
+        "provenance preserved"
       ],
-      "reason": "Production runtime proves the name-first authenticated Hub lifecycle from identity through durable cognition and fresh-context continuity. Welcome → identity remains an external GroovePages boundary and is explicitly excluded from the proof rather than fabricated."
+      "fresh_context_retrieval": "VERIFIED",
+      "fresh_naya_continuation_action": "NOT_PROVEN",
+      "receipt_id": "ca60e930-eb7f-49cd-970b-1bc25a2ec37e"
     },
     "external_cold_naya": {
-      "status": "BLOCKED",
+      "status": "PARTIAL",
       "claim_type": "RUNTIME",
       "evidence": [
-        "authenticated lifecycle not yet proven"
+        "fresh-context retrieval verified",
+        "fresh-context render verified",
+        "continuation action not executed"
       ],
-      "reason": "Genuine external cold-Naya continuation remains blocked until the authenticated lifecycle produces a durable object and an independent fresh-context retrieval receipt."
+      "reason": "The current authenticated proof demonstrates independent fresh-context retrieval and render preservation, but the receipt continuation field is null; a genuine fresh-Naya continuation action remains to be executed and verified."
     },
     "ih03_canonical_intelligence_identity": {
       "status": "VERIFIED",
@@ -220,6 +210,30 @@
         "replay preserves event and block identity"
       ],
       "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
+    },
+    "controlled_paired_policy_experiment": {
+      "status": "VERIFIED_MECHANISM_NOT_PROVEN_IMPROVEMENT",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
+      "run_id": 35409875337,
+      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "result": "NOT_PROVEN",
+      "baseline_verified_value": 0,
+      "candidate_verified_value": 0,
+      "behavioral_difference": true,
+      "real_observed_outcomes": true,
+      "policy_identity_lineage": true,
+      "receipt_swap_rejected": true,
+      "baseline_receipt_id": "cd80ffef-5fb8-4411-8022-404cd8b3202c",
+      "candidate_receipt_id": "097a6728-5dfe-4e3c-9cbe-ff77df6cc500",
+      "experiment_case_id": "paired-35409875337-C1",
+      "input_hash": "749da4b8e6b96eebe639a030ea6384c8f94c9ebe802a75a29ee791805106af80",
+      "decision_hashes": [
+        "f88bfa574b0200adecfe5793aa023561ee531da4b6839941960c0e0557b478ad",
+        "3b5c847b1ae0e006c7d746b4ed8a206fcc2171a091b2727e58cbf13fb339ac1b"
+      ],
+      "artifact": "p1-controlled-paired-policy-receipt",
+      "interpretation": "The controlled paired execution/receipt/comparison machinery is proven. Policy improvement is not proven because verified responsible values were equal."
     }
   },
   "ih03_canonical_intelligence_identity": {
@@ -257,5 +271,6 @@
       "replay preserves event and block identity"
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
-  }
+  },
+  "interpretation": "Current main, current Assistant Cloudflare runtime parity, authenticated lifecycle/fresh-context retrieval, and the controlled paired policy-comparison mechanism are now verified at the same HEAD. Policy improvement remains NOT_PROVEN because the first real paired case produced equal verified responsible value (0 vs 0)."
 }
