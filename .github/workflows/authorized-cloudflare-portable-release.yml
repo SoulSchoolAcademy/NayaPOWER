@@ -82,7 +82,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: naya-cloudflare-portable-receipt
-          path: ${{ runner.temp }}/portable/cloudflare-receipt.json
+          path: ${{ runner.temp }}/portable
           if-no-files-found: error
       - uses: actions/cache/save@v4
         with:
@@ -94,20 +94,46 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - id: restore
-        uses: actions/cache/restore@v4
         with:
+          fetch-depth: 0
+      - uses: actions/download-artifact@v4
+        with:
+          name: naya-cloudflare-portable-receipt
           path: ${{ runner.temp }}/portable
-          key: naya-portable-use-cloudflare-${{ hashFiles('.naya/portable-proof/cloudflare/authorization.json') }}
-      - name: Prove replay refusal before adapter
+      - name: Re-run the exact portable authorization in a fresh process
+        shell: bash
         run: |
           set -euo pipefail
-          test "${{ steps.restore.outputs.cache-hit }}" = "true"
           test -f "$RUNNER_TEMP/portable/cloudflare-use.lock"
-          echo 'REPLAY=REFUSED'
-          echo 'EXTERNAL_ADAPTER_INVOKED=FALSE'
-          echo 'REPLAY_PROOF=PASS'
-
+          COMMIT_SHA=$(python3 -c 'import json; print(json.load(open("${{ runner.temp }}/portable/cloudflare-receipt.json"))["authorization"]["commit_sha"])')
+          git fetch origin "$COMMIT_SHA" --depth=1
+          git worktree add --detach "$RUNNER_TEMP/replay-source" "$COMMIT_SHA"
+          set +e
+          python3 tools/cloudflare_portable_release_runner.py \
+            --artifact ".naya/portable-proof/cloudflare/authorization.json" \
+            --public-key ".naya/portable-proof/cloudflare/public-key.hex" \
+            --registry "$RUNNER_TEMP/replay-source/.naya/governance/authority-registry.json" \
+            --source-dir "$RUNNER_TEMP/replay-source" \
+            --receipt "$RUNNER_TEMP/portable/replay-receipt.json" \
+            --replay-lock "$RUNNER_TEMP/portable/cloudflare-use.lock"
+          status=$?
+          set -e
+          test "$status" = 3
+      - name: Assert replay refusal
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("${{ runner.temp }}/portable/replay-receipt.json").read_text())
+          assert r["status"]=="REFUSED"
+          assert r.get("adapter_invoked") is False
+          assert "already consumed" in str(r.get("reason","")).lower()
+          print("REPLAY=REFUSED")
+          print("EXTERNAL_ADAPTER_INVOKED=FALSE")
+          print("REPLAY_PROOF=PASS")
+          PY
   revocation:
     needs: first-use
     runs-on: ubuntu-latest
@@ -150,6 +176,7 @@ jobs:
     needs: first-use
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
         with:
           name: naya-cloudflare-portable-receipt
@@ -174,4 +201,4 @@ jobs:
           console.log('ACTIVITY_PIS_PERSISTED=PASS');
           console.log('PIS_EVENT_ID='+eventId);
           EOF
-          node "$RUNNER_TEMP/pis-proof.mjs"
+          node ./pis-proof.mjs
