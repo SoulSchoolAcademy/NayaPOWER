@@ -21,7 +21,7 @@ const evidence = await req("/rest/v1/learning_evidence?select=id,member_id,targe
   method:"POST", headers:{...h(sender.access_token),Prefer:"return=representation"},
   body:JSON.stringify({
     member_id:sender.user.id,target_id:"production-closure-superbrain-continuation",
-    level:"E1_UNDERSTANDS",provenance:"authenticated production closure proof",status:"ACTIVE",
+    level:"E1_UNDERSTANDS",provenance:"TEST",status:"ACTIVE",
     claim:"Authenticated verified learning is retrievable as Superbrain cognition and can generate a governed continuation.",
     observed_value:{run_id:runId,verified_by:"external workflow"},
     verification_method:"authenticated production workflow",
@@ -39,7 +39,7 @@ assert(cognitionId,"LEARNING_DID_NOT_RETURN_COGNITION");
 const state=await req("/rest/v1/learner_states?select=id,member_id,version&member_id=eq."+sender.user.id,{headers:h(sender.access_token)});
 assert(state.length===1 && Number(state[0].version)>=Number(learning.learning.learner_state_version),"LEARNER_STATE_NOT_PERSISTED");
 
-/* Fresh process boundary is represented by a clean authenticated retrieval after the learning call. */
+/* Fresh retrieval boundary: no prior cognition object is reused; this query rehydrates it from the canonical store. */
 const fresh=await req("/rest/v1/nayanet_cognition_events?select=id,event_id,type,classification,title,content,source,receipt_id,metadata&id=eq."+encodeURIComponent(cognitionId),{headers:h(sender.access_token)});
 assert(fresh.length===1,"FRESH_COGNITION_RETRIEVAL_FAILED");
 const cognition=fresh[0];
