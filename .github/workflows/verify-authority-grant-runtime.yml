@@ -54,11 +54,12 @@ jobs:
             const session=(await client.auth.getSession()).data.session; if(!session?.user?.id) throw new Error('AUTH_SESSION_MISSING'); const uid=session.user.id;
             const replayQ=await client.from('nayanet_dream_replays').select('id,user_id,status,source_event_id').eq('user_id',uid).order('created_at',{ascending:false}).limit(1).maybeSingle();
             const learningQ=await client.from('learning_evidence').select('id,user_id,status,source_event_id').eq('user_id',uid).order('created_at',{ascending:false}).limit(1).maybeSingle();
-            if(replayQ.error)throw replayQ.error;if(learningQ.error)throw learningQ.error;if(!replayQ.data||!learningQ.data)throw new Error('VERIFIED_LINEAGE_NOT_FOUND');
-            const replay=replayQ, learning=learningQ;
-            if(replay.data.user_id!==learning.data.user_id)throw new Error('LINEAGE_OWNER_MISMATCH');
-            const grantLineageQ=await client.from('nayanet_authority_grants').select('grant_id,source_event_id').eq('issuer_id',uid).or('source_event_id.eq.'+encodeURIComponent(replay.data.source_event_id)+',source_event_id.eq.'+encodeURIComponent(learning.data.source_event_id));
-            if(grantLineageQ.error)throw grantLineageQ.error;
+            if(replayQ.error)throw replayQ.error;if(learningQ.error)throw learningQ.error;
+            const replay=replayQ.data, learning=learningQ.data;
+            const sourceIds=[replay?.source_event_id,learning?.source_event_id].filter(Boolean);
+            let grantLineageQ={data:[],error:null};
+            if(sourceIds.length){ grantLineageQ=await client.from('nayanet_authority_grants').select('grant_id,source_event_id').eq('issuer_id',uid).in('source_event_id',sourceIds); if(grantLineageQ.error)throw grantLineageQ.error; }
+            if(replay && learning && replay.user_id!==learning.user_id)throw new Error('LINEAGE_OWNER_MISMATCH');
             if((grantLineageQ.data||[]).length!==0)throw new Error('DREAM_LEARNING_LINEAGE_AUTHORITY_CONTAMINATION');
             const noGrant=await client.rpc('nayanet_validate_authority_grant',{p_grant_id:crypto.randomUUID(),p_action:'proof.authorize',p_target:'NayaNET'}); if(noGrant.error)throw noGrant.error;
             if(noGrant.data?.status!=='BLOCKED')throw new Error('NO_GRANT_NOT_BLOCKED');
@@ -72,7 +73,7 @@ jobs:
             const expiring=await client.rpc('nayanet_issue_authority_grant',{p_subject_id:uid,p_source_event_id:'human-authorization-expiry-'+run+'-'+crypto.randomUUID(),p_mission_id:'NayaNET Authority Grant Expiration Proof',p_scope:{project_id:'NayaNET',target:'NayaNET'},p_actions:['proof.expire'],p_constraints:{mode:'verification-only'},p_expires_at:new Date(Date.now()+1200).toISOString(),p_evidence:{authorization_type:'explicit_human_name_first_session',run_id:run},p_parent_authority:null}); if(expiring.error)throw expiring.error;
             await new Promise(r=>setTimeout(r,1800)); const afterExpiry=await client.rpc('nayanet_validate_authority_grant',{p_grant_id:expiring.data.grant_id,p_action:'proof.expire',p_target:'NayaNET'}); if(afterExpiry.error)throw afterExpiry.error;
             const receiptCols=await client.from('nayanet_execution_receipts').select('authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at').limit(1); if(receiptCols.error)throw receiptCols.error;
-            return {status:'VERIFIED',user_id:uid,is_anonymous:session.user.is_anonymous===true,lineage:{dream_replay_id:replay.data.id,learning_evidence_id:learning.data.id,owner_match:replay.data.user_id===learning.data.user_id,lineage_grant_matches:(grantLineageQ.data||[]).length},no_grant:noGrant.data,human_issued_grant:{grant_id:grant.grant_id,issuer_id:grant.issuer_id,subject_id:grant.subject_id,source_event_id:grant.source_event_id,mission_id:grant.mission_id,scope:grant.scope,actions:grant.actions,constraints:grant.constraints,status:grant.status},valid_grant:authorized.data,wrong_action:wrongAction.data,wrong_target:wrongTarget.data,revoked:afterRevoke.data,expired:afterExpiry.data,receipt_provenance_columns_present:Array.isArray(receiptCols.data)};
+            return {status:'VERIFIED',user_id:uid,is_anonymous:session.user.is_anonymous===true,lineage:{dream_replay_id:replay?.id||null,learning_evidence_id:learning?.id||null,owner_match:!replay||!learning||replay.user_id===learning.user_id,lineage_grant_matches:(grantLineageQ.data||[]).length},no_grant:noGrant.data,human_issued_grant:{grant_id:grant.grant_id,issuer_id:grant.issuer_id,subject_id:grant.subject_id,source_event_id:grant.source_event_id,mission_id:grant.mission_id,scope:grant.scope,actions:grant.actions,constraints:grant.constraints,status:grant.status},valid_grant:authorized.data,wrong_action:wrongAction.data,wrong_target:wrongTarget.data,revoked:afterRevoke.data,expired:afterExpiry.data,receipt_provenance_columns_present:Array.isArray(receiptCols.data)};
           },{url,key,run,dreamReplayId,learningEvidenceId});
           console.log('AUTHORITY_GRANT_PROOF='+JSON.stringify(result));
           if(result.status!=='VERIFIED')throw new Error('AUTHORITY_GRANT_PROOF_FAILED');
