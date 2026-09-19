@@ -88,6 +88,11 @@ _GRANT_FINGERPRINT = GATE.grant_fingerprint
 DEPLOY_PERMISSION = BOUNDARY.DEPLOY_PERMISSION
 DEPLOYMENT_SURFACES = BOUNDARY.DEPLOYMENT_SURFACES
 DEFAULT_REPOSITORY = BOUNDARY.DEFAULT_REPOSITORY
+
+
+def _authorization_binding_hash(authority_id: str, decision_id: str, action_id: str, action_type: str, target: str, actor_id: str, scope: str, permission: str, identity_id: str, identity_fingerprint: str, identity_binding_hash: str) -> str:
+    execution_binding = _BINDING_HASH(authority_id, decision_id, action_id, action_type, target, actor_id, scope, permission)
+    return _BINDING_HASH(execution_binding, identity_id, identity_fingerprint, identity_binding_hash)
 RELEASE_ACTION_TYPES = BOUNDARY.RELEASE_ACTION_TYPES
 RELEASE_ENVIRONMENTS = BOUNDARY.RELEASE_ENVIRONMENTS
 REPO_MUTATION_ACTION_TYPES = BOUNDARY.REPO_MUTATION_ACTION_TYPES
@@ -211,7 +216,7 @@ def issue_portable_authorization(
     if int(expires_in_seconds) <= 0 or int(expires_in_seconds) > MAX_ARTIFACT_TTL_MINUTES * 60:
         raise ValueError("expires_in_seconds must be within the artifact TTL policy")
 
-    expected_hash = _BINDING_HASH(
+    expected_hash = _authorization_binding_hash(
         execution_authorization.authority_id,
         execution_authorization.decision_id,
         execution_authorization.action_id,
@@ -220,6 +225,9 @@ def issue_portable_authorization(
         execution_authorization.actor_id,
         execution_authorization.scope,
         execution_authorization.permission,
+        str(getattr(execution_authorization, "identity_id", "") or ""),
+        str(getattr(execution_authorization, "identity_fingerprint", "") or ""),
+        str(getattr(execution_authorization, "identity_binding_hash", "") or ""),
     )
     if expected_hash != execution_authorization.binding_hash:
         raise ValueError("execution authorization binding_hash is inconsistent with its fields")
@@ -367,7 +375,7 @@ def verify_portable_authorization(
     if any(not str(value) for value in sources.values()):
         reasons.append("portable authorization missing identity fields")
     else:
-        expected_hash = _BINDING_HASH(
+        expected_hash = _authorization_binding_hash(
             str(sources["authority_id"]),
             str(sources["decision_id"]),
             str(sources["action_id"]),
@@ -376,6 +384,9 @@ def verify_portable_authorization(
             str(sources["actor_id"]),
             str(sources["scope"]),
             str(sources["permission"]),
+            identity_id,
+            identity_fingerprint,
+            identity_binding_hash,
         )
         if expected_hash != authorization.get("binding_hash"):
             reasons.append("binding_hash does not match authorization fields")
