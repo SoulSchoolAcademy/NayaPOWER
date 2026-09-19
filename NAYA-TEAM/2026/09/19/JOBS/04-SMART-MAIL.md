@@ -1,27 +1,157 @@
-# JOB 04 — SMART MAIL
+# JOB 04 — COMMUNICATION + ORGANIZATION SUBSYSTEM
+
 ## Mission
-Turn the proven Smart Mail backend into a complete authenticated product surface inside the canonical Hub.
 
-## Current known state
-Live `nayanet-smart-mail` v12 is JWT-protected. Current evidence includes 64+ threads/messages in the recent audit and 130 members. Historical production closure proved authenticated send → receiver verification → receipt/cognition/Ledger.
+Own the connected relationship/communication subsystem across four human-facing surfaces:
 
-## Job
-Map the current Mail UI to v12 and close the remaining authenticated product boundary.
+- **Your Connections = WHO**
+- **Smart Spaces = WHERE**
+- **Smart List = HOW I ORGANIZE**
+- **Smart Mail = HOW I COMMUNICATE**
 
-## Build
-- Preserve existing visual Mail design.
-- Map threads, messages, members, compose/send, read/delivery states, recipient selection/preview, and attachments.
-- Validate authorization at read and at send.
-- Attachment access must be authorized at the moment of use.
-- Preserve message provenance and resulting execution/cognition/Ledger lineage.
-- Prove recipient/receiver verification.
-- Prove replay/idempotency for sends.
-- Prove owner/member isolation with a real second user where possible.
-- Handle loading, empty, error, unauthorized, and delivery states truthfully.
-- Prove Cloudflare source/build/runtime parity.
+Smart Share remains the cross-cutting controlled sharing boundary.
 
-## Acceptance
-An authenticated user can compose and send a real message, recipient can receive/verify it, consequences are observable, unauthorized attachment/access is denied, and reload preserves state.
+Do not build four disconnected systems.
 
-## Handoff
-Update Mail activity/checklist/report and coordinate any Share/Spaces integration through canonical authorization.
+## Canonical lifecycle
+
+`DISCOVERY → SPACE → JOIN → MEMBERSHIP → CONNECTION → COMMUNICATION / LIST → ACTIVITY → LEDGER`
+
+Reversal:
+
+`LEAVE / REVOKE → RELATIONSHIP RECALCULATION → COMMUNICATION / ACCESS DENIAL`
+
+## First law
+
+**Do not create a contact/relationship table until the existing identity, profile, Space membership, Mail, List and event primitives have been inspected.**
+
+The first job is reconciliation, not invention.
+
+## Required inspection
+
+Inspect:
+
+1. canonical authenticated identity/profile;
+2. existing Space object and membership primitives;
+3. existing connection/relationship primitives, if any;
+4. current Smart Mail recipient eligibility and messaging primitives;
+5. current Smart List person/membership primitives, if any;
+6. existing Activity/event writes;
+7. authority/privacy/revocation functions;
+8. current Hub source regions for Spaces, Mail, Lists and people;
+9. Supabase live objects/functions;
+10. Cloudflare source/build/runtime path.
+
+## Relationship semantics
+
+Lock these distinctions into implementation:
+
+- interest ≠ membership;
+- discovery ≠ membership;
+- membership ≠ connection;
+- connection ≠ unrestricted communication;
+- communication ≠ intelligence access;
+- membership ≠ private-data access;
+- connection ≠ sharing authority.
+
+A person may be surfaced as relevant from authorized signals, but relevance never silently creates membership or sends a message.
+
+## Smart Space boundary
+
+A Smart Space is the primary shared-context boundary where relationships can form.
+
+Primary action:
+
+**JOIN THE CONVERSATION**
+
+Secondary action:
+
+**INVITE PEOPLE**
+
+Joining establishes participation in the Space's defined relationship boundary. It does not grant unrelated private data or intelligence access.
+
+A Space creation should produce the expected Activity projection. Relevant people may be surfaced through authorized discovery signals, but Naya must not expose their private signals or contact them without authority.
+
+## Connection boundary
+
+When the governing Space contract permits, active shared membership can make a relationship eligible for Your Connections.
+
+The connection projection must retain provenance:
+
+who → whom → relationship source → Space/context → time → state → authority.
+
+It must resolve to canonical identity and never copy a second person/contact record.
+
+## Communication boundary
+
+At message/send time, verify:
+
+authenticated actor → recipient identity → relationship/Space eligibility → communication policy → current revocation → intelligence attachment authorization → idempotency/replay.
+
+Connection does not automatically equal unrestricted messaging.
+
+## Organization boundary
+
+Smart List may contain both canonical intelligence and people/connections.
+
+List membership references canonical identity/relationship state. It does not copy profiles or relationship records.
+
+Removing a person from a List does not remove the connection.
+
+## Activity / Ledger boundary
+
+Relationship and communication events use the existing canonical event substrate.
+
+Activity is a projection.
+
+Smart Ledger receives consequential evidence according to its existing contract.
+
+Do not create a second relationship event store merely to power UI.
+
+## Verification sequence
+
+1. Authenticated A creates a real Space.
+2. Verify Space creation Activity.
+3. Authorized B discovers the Space through the permitted path.
+4. B joins.
+5. Verify membership persistence after reload.
+6. Verify connection eligibility/creation exactly once.
+7. Verify permitted relationship information for A/B.
+8. Verify eligible Mail/message action.
+9. Verify List organization without identity duplication.
+10. Verify Activity and consequential Ledger evidence.
+11. B leaves/revocation occurs.
+12. Verify communication/access denial where required.
+13. Verify unauthorized/non-member isolation.
+14. Verify source → build → Cloudflare deployed runtime parity.
+
+## Failure law
+
+If any link is missing:
+
+**OBSERVED → DIAGNOSED → SMALLEST CHANGE → RERUN → VERIFIED / BLOCKED**
+
+Do not substitute demo state, browser-local state, fabricated users, or documentation claims for production proof.
+
+## Deliverables
+
+- canonical relationship mapping;
+- smallest implementation path;
+- Your Connections surface;
+- Space membership/Join connection;
+- Mail/message eligibility connection;
+- List/person connection;
+- Activity projection connection;
+- Ledger/evidence connection where applicable;
+- authenticated two-user proof;
+- revocation proof;
+- Cloudflare parity proof;
+- updated feature records and immutable Team Naya session.
+
+## Current state
+
+Architecture is defined. Runtime relationship lifecycle is not yet proven.
+
+## One next action
+
+**Inspect the live identity/profile, Space membership, Mail eligibility, List membership and canonical event primitives and document the smallest existing substrate that can carry JOIN → MEMBERSHIP → CONNECTION → COMMUNICATION → LIST → ACTIVITY → LEDGER without a duplicate contact store.**
