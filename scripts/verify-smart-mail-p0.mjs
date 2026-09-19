@@ -22,6 +22,18 @@ async function anonymous() {
   });
 }
 
+async function rawRequest(url, options = {}) {
+  const res = await fetch(url, options);
+  const text = await res.text();
+  let body = null;
+  try { body = JSON.parse(text); } catch { body = { raw: text }; }
+  return { status: res.status, body };
+}
+const authHeaders = token => ({ apikey: key, authorization: 'Bearer ' + token, 'content-type': 'application/json' });
+async function rpc(token, fn, payload) {
+  return request(base + '/rest/v1/rpc/' + fn, { method:'POST', headers:authHeaders(token), body:JSON.stringify(payload) });
+}
+
 const sender = await anonymous();
 const receiver = await anonymous();
 if (!sender?.user?.id || !sender?.access_token) throw new Error('SENDER_ANON_AUTH_FAILED');
@@ -50,18 +62,6 @@ const preValidation = await rpc(sender.access_token, 'nayanet_validate_authority
   p_grant_id: grant.grant_id, p_action: 'smart_mail_send', p_target: receiverId
 });
 if (preValidation.status !== 'AUTHORIZED') throw new Error('AUTHORITY_PREVALIDATION_FAILED ' + JSON.stringify(preValidation));
-async function rawRequest(url, options = {}) {
-  const res = await fetch(url, options);
-  const text = await res.text();
-  let body = null;
-  try { body = JSON.parse(text); } catch { body = { raw: text }; }
-  return { status: res.status, body };
-}
-const authHeaders = token => ({ apikey: key, authorization: 'Bearer ' + token, 'content-type': 'application/json' });
-async function rpc(token, fn, payload) {
-  return request(base + '/rest/v1/rpc/' + fn, { method:'POST', headers:authHeaders(token), body:JSON.stringify(payload) });
-}
-
 const first = await request(functionUrl, { method: 'POST', headers: authHeaders(sender.access_token), body: JSON.stringify(sendPayload) });
 if (first.status !== 'CREATED') throw new Error('SEND_NOT_CREATED ' + JSON.stringify(first));
 if (!first.correlation_id || !first.thread_id || !first.message_id || !first.cognition_event_id || !first.execution_receipt_id) throw new Error('SEND_LINEAGE_INCOMPLETE');
