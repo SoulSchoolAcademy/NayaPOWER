@@ -2,13 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 
 const url=process.env.SUPABASE_URL;
 const key=process.env.SUPABASE_PUBLISHABLE_KEY;
-const email=process.env.ASSISTANT_TEST_EMAIL;
-const password=process.env.ASSISTANT_TEST_PASSWORD;
-if(!url||!key||!email||!password) throw new Error("TEST_AUTH_CONFIGURATION_MISSING");
+if(!url||!key) throw new Error("TEST_CONFIGURATION_MISSING");
 
 const supabase=createClient(url,key,{auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}});
-const {data:signIn,error:signInError}=await supabase.auth.signInWithPassword({email,password});
-if(signInError||!signIn.session||!signIn.user) throw new Error("SENDER_AUTH_FAILED");
+const {data:signIn,error:signInError}=await supabase.auth.signInAnonymously();
+if(signInError||!signIn.session||!signIn.user) throw new Error("SENDER_ANONYMOUS_AUTH_FAILED");
 const sender=signIn.user;
 const senderToken=signIn.session.access_token;
 
