@@ -15,7 +15,7 @@ authorization. Their presence alone always terminates in REFUSED.
 from __future__ import annotations
 
 import argparse
-from typing import Any, Mapping
+from typing import Any, Callable, Mapping
 
 from execution_controller import load, transition
 from risk_engine import classify
@@ -134,6 +134,80 @@ def authorize(
         "side_effect_authorized": True,
         "side_effect_executed": False,
         "proof_required_after_action": True,
+    }
+
+
+def execute_authorized(
+    action: dict[str, Any],
+    *,
+    execution_authorization: Any,
+    identity_envelope: Mapping[str, Any],
+    executor: Callable[[dict[str, Any]], Mapping[str, Any]],
+    gate: Any = None,
+    preflight: Any = None,
+    now: str | None = None,
+) -> dict[str, Any]:
+    """Authorize one action, execute it once, then persist observed evidence.
+
+    The supplied executor is the actual side-effect boundary. It is not invoked
+    until the consequential identity-bound UEG credential has been verified and
+    EXECUTING has been durably entered. Its returned facts are immediately sent
+    through the existing execution_evidence_adapter + Smart Ledger path.
+    """
+    authorized = authorize(
+        action,
+        execution_authorization=execution_authorization,
+        gate=gate,
+        identity_envelope=identity_envelope,
+        now=now,
+        preflight=preflight,
+    )
+    if authorized["execution_status"] != "EXECUTING":
+        raise AssertionError("authorized execution did not enter EXECUTING state")
+
+    try:
+        result = executor(dict(action))
+    except Exception as exc:
+        result = {
+            "execution_state": "COMPLETED",
+            "execution_id": action["action_id"],
+            "action": action["action_type"],
+            "observed_output": f"executor raised {type(exc).__name__}: {exc}",
+            "result": "FAIL",
+            "commit_sha": action["protected_baseline"],
+            "action_ref": f"tool:{action['action_type']}:{action['action_id']}",
+            "outcome_ref": f"outcome:{action['action_id']}",
+            "environment": "governed-model-tool-gateway",
+            "source": "executor",
+        }
+    if not isinstance(result, Mapping):
+        raise AssertionError("executor must return an object/mapping of observed execution facts")
+
+    observed_result = dict(result)
+    observed_result.setdefault("execution_state", "COMPLETED")
+    observed_result.setdefault("execution_id", action["action_id"])
+    observed_result.setdefault("action", action["action_type"])
+    observed_result.setdefault("action_ref", f"tool:{action['action_type']}:{action['action_id']}")
+    observed_result.setdefault("outcome_ref", f"outcome:{action['action_id']}")
+    observed_result.setdefault("commit_sha", action["protected_baseline"])
+    observed_result.setdefault("environment", "governed-model-tool-gateway")
+    observed_result.setdefault("source", "executor")
+
+    observed = transition(
+        "OBSERVED",
+        observation=str(observed_result.get("observed_output") or "executor returned no observed output"),
+        execution_authorization=execution_authorization,
+        gate=gate or _default_gate(),
+        identity_envelope=identity_envelope,
+        execution_result=observed_result,
+    )
+    return {
+        **authorized,
+        "execution_status": observed["status"],
+        "execution_result": observed["execution_result"],
+        "execution_evidence": observed["execution_evidence"],
+        "smart_ledger": observed["smart_ledger"],
+        "identity_binding": observed["identity_binding"],
     }
 
 
