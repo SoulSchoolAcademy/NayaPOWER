@@ -183,9 +183,9 @@ class ExecutionAuthorization:
     risk_tier: str
     validated_at: str
     binding_hash: str
-    identity_id: str
-    identity_fingerprint: str
-    identity_binding_hash: str
+    identity_id: str = ""
+    identity_fingerprint: str = ""
+    identity_binding_hash: str = ""
 
 
 @dataclass(frozen=True)
