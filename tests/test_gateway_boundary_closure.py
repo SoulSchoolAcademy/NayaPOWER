@@ -323,7 +323,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         start_claimed()
         action = dict(self.action, scope="repo:attacker/other")
         with self.assertRaises(AssertionError) as ctx:
-            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate)
+            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate, identity_envelope=self.identity)
         self.assertIn("scope does not match", str(ctx.exception))
 
     def test_020_action_actor_outside_credential_refused(self):
