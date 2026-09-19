@@ -62,6 +62,7 @@ await rpc(sender.access_token, 'nayanet_save_connection', { p_target_member_id: 
 await rpc(receiver.access_token, 'nayanet_save_connection', { p_target_member_id: senderId, p_space_id: proofSpaceId });
 
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
+const requestId = 'p0-request-' + crypto.randomUUID();
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
 const sendPayload = { recipient_user_id: receiverId, body, subject: 'NayaNET P0 Sender Receiver Proof', kind: 'direct', idempotency_key: idempotencyKey, project_id: 'NayaNET' };
 const sourceEventId = 'human:smart-mail-send:' + idempotencyKey;
@@ -73,7 +74,7 @@ const grant = await rpc(sender.access_token, 'nayanet_issue_authority_grant', {
   p_actions: ['smart_mail_send'],
   p_constraints: { kind: 'direct', no_model_authority: true },
   p_expires_at: null,
-  p_evidence: { human_action: 'explicit authenticated proof authorization', idempotency_key: idempotencyKey },
+  p_evidence: { human_action: 'explicit authenticated proof authorization', idempotency_key: idempotencyKey, request_id: requestId },
   p_parent_authority: null
 });
 if (!grant?.grant_id) throw new Error('AUTHORITY_GRANT_NOT_ISSUED');
@@ -82,7 +83,7 @@ const preValidation = await rpc(sender.access_token, 'nayanet_validate_authority
   p_grant_id: grant.grant_id, p_action: 'smart_mail_send', p_target: receiverId
 });
 if (preValidation.status !== 'AUTHORIZED') throw new Error('AUTHORITY_PREVALIDATION_FAILED ' + JSON.stringify(preValidation));
-const first = await request(functionUrl, { method: 'POST', headers: authHeaders(sender.access_token), body: JSON.stringify(sendPayload) });
+const first = await request(functionUrl, { method: 'POST', headers: { ...authHeaders(sender.access_token), 'x-request-id': requestId }, body: JSON.stringify(sendPayload) });
 if (first.status !== 'CREATED') throw new Error('SEND_NOT_CREATED ' + JSON.stringify(first));
 if (!first.correlation_id || !first.thread_id || !first.message_id || !first.cognition_event_id || !first.execution_receipt_id) throw new Error('SEND_LINEAGE_INCOMPLETE');
 if (first.authority_changed !== false) throw new Error('AUTHORITY_CHANGED');
@@ -141,7 +142,7 @@ const proof = {
   schema: 'naya.nayanet.smart_mail.p0.production.proof.v1',
   status: 'VERIFIED',
   user: { sender_id: senderId, receiver_id: receiverId },
-  transaction: { correlation_id: first.correlation_id, thread_id: first.thread_id, message_id: first.message_id, cognition_event_id: first.cognition_event_id, execution_receipt_id: first.execution_receipt_id, idempotency_key: idempotencyKey },
+  transaction: { correlation_id: first.correlation_id, thread_id: first.thread_id, message_id: first.message_id, cognition_event_id: first.cognition_event_id, execution_receipt_id: first.execution_receipt_id, idempotency_key: idempotencyKey, request_id: requestId },
   chain: { external_sender_authenticated: true, canonical_naya_identity: true, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true, authority_issued: true, authority_prevalidated: true, authority_revoked: true, revoked_execution_blocked: true, receipt_lineage_preserved_after_revoke: true },
   observed_at: new Date().toISOString()
 };
