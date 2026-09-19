@@ -592,3 +592,20 @@ Wave A moved materially from proof-gap to production closure.
 **NOT VERIFIED:** final real-human two-user browser acceptance proof because connected desktop tooling has no safe browser-control surface.
 
 **NEXT:** ACTION 10 — production closure with authenticated browser proof only.
+
+
+## 🔱 Wave A Session 007 — Runtime cache-bust repair — 2026-09-19T17:10Z
+
+New concrete runtime defect found and repaired.
+
+**Finding:** live Hub HTML referenced stale Assistant Runtime cache key 20260918-r7. Browser CDP captured a real SyntaxError from that stale runtime, leaving NayaAssistantRuntime undefined and preventing Smart Tabs initialization.
+
+**Repair:** Hub runtime query changed to 20260919-wavea6 in commit **6018ed5002ee09505767852e4f39d1d81c9c96ab**.
+
+**Deployment:** Cloudflare run **35457054828** succeeded and passed exact live parity, desktop/mobile baseline, and final Assistant runtime proof.
+
+**Live browser evidence:** early Hub lifecycle now exposes NayaAssistantRuntime and listSmartTabs as functions. Full authenticated browser CRUD/navigation proof remains open and must use the canonical authentication UI/adapter rather than token injection.
+
+**Ledger reconciliation:** the independent nayanet_execution_outcomes table belongs to policy/Smart Mail outcome machinery; no Feed-specific outcome recorder exists. Session 006 Feed → cognition → receipt → Ledger lineage therefore remains the correct Wave A evidence chain.
+
+**Next:** establish the browser session through the real NayaNET authentication surface, then close authenticated Smart Tabs/Smart Feed UI proof and final acceptance.
