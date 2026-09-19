@@ -118,3 +118,21 @@ Wave A execution began. A real source defect was discovered in Smart Tabs before
 **Current truth:** Smart Tabs source repair is committed; Cloudflare parity is not proven because GitHub exposes zero workflow runs for the repair commit and the available local network cannot perform an independent live hash check. Authenticated Feed/Personal/Collective and two-user proofs remain blocked by the absence of a legitimate authenticated session.
 
 **Do not promote this checkpoint to PASS.**
+## Session 006 — Authenticated production closure — 2026-09-19T16:59Z
+
+**Wave A closure boundary materially advanced.**
+
+- Legitimate authenticated execution path found through the production NayaNET name-first Supabase Auth adapter on the authorized Windows execution plane.
+- Cloudflare release **35455850419** proved repaired Smart Tabs commit **3627a484533411921765dd53e793cf970564f818** deployed with exact live Smart Tabs SHA-256 **bb772e3888c7ebd65193c17c1fc6995460f28ee5f211c9c5a88d5b64c4cdb26b**.
+- Authenticated Activity and Personal retrieval passed.
+- Personal cursor pagination passed with 3 unique canonical IDs across two pages.
+- Explicit Collective publish → retrieval → revoke passed.
+- One consequential Feed interaction passed and generated a SUCCESS receipt plus canonical cognition event.
+- Fresh Smart Ledger retrieval proved the interaction cognition row and verified execution receipt lineage.
+- A/B private ownership denial passed for Feed and cognition; Smart Tabs cross-user list/update/delete passed after a real delete semantic defect was repaired.
+- Repaired naya-smart-tabs is now **v2**; unauthorized delete returns **404 TAB_NOT_FOUND_OR_NOT_AUTHORIZED**.
+- Publication owner-read RLS was repaired so an owner can inspect a revoked publication while Collective readers cannot.
+
+**Current product state:** backend/security/lineage closure is substantially proven. Remaining closure is authenticated browser-level visual interaction QA, direct human target-navigation proof, final accessibility/mobile acceptance, and the independent execution-outcome observation boundary.
+
+**Successor:** finish those remaining product-facing closure boundaries, then perform final Wave A acceptance.
