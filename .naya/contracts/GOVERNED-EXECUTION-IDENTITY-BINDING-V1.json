@@ -1,0 +1,74 @@
+{
+  "contract": "GOVERNED_EXECUTION_IDENTITY_BINDING",
+  "schema_version": "1.0",
+  "status": "LOCAL_RUNTIME_VERIFIED",
+  "purpose": "Bind the complete 13-question governed intelligence identity/provenance envelope to one exact consequential execution and its Smart Ledger receipt.",
+  "identity_binding": {
+    "fields": [
+      "identity_id",
+      "identity_fingerprint",
+      "identity_binding_hash"
+    ],
+    "identity_id_rule": "Must match the exact execution action actor_id.",
+    "fingerprint_rule": "Computed from the complete canonical identity envelope; caller-supplied fingerprint values are never trusted.",
+    "binding_rule": "identity_binding_hash is computed from the identity fingerprint plus every security-relevant execution binding field."
+  },
+  "execution_authorization": {
+    "fields": [
+      "authority_id",
+      "decision_id",
+      "action_id",
+      "action_type",
+      "target",
+      "actor_id",
+      "scope",
+      "permission",
+      "governance_state",
+      "risk_tier",
+      "validated_at",
+      "binding_hash",
+      "identity_id",
+      "identity_fingerprint",
+      "identity_binding_hash"
+    ],
+    "authority_rule": "Identity never mints, expands, delegates, or modifies authority.",
+    "canonical_authority_rule": "Only the existing human-controlled authority registry and canonical governance kernel establish authority.",
+    "verification_rule": "Verification requires the same governed identity envelope and matching identity/action binding.",
+    "issuance_rule": "The in-process verification boundary accepts only the authorization object issued by the same gate instance."
+  },
+  "smart_ledger": {
+    "required_execution_fields": [
+      "execution_authorization_binding_hash",
+      "identity_id",
+      "identity_fingerprint",
+      "identity_binding_hash"
+    ],
+    "integrity_rule": "All identity/action binding fields participate in the deterministic ledger integrity hash.",
+    "receipt_rule": "The verification receipt repeats the identity and execution binding fields carried by the ledger event.",
+    "tamper_rule": "Changing identity or action binding data without recomputing the ledger integrity hash must fail verification.",
+    "privacy_rule": "Identity/provenance fields remain protected internal receipt data and must not be exposed by public Smart Links without separate authorization."
+  },
+  "failure_rules": [
+    "missing_identity_envelope",
+    "unknown_identity_on_consequential_action",
+    "identity_actor_mismatch",
+    "identity_authority_mismatch",
+    "identity_fingerprint_mismatch",
+    "identity_action_binding_mismatch",
+    "authorization_binding_tamper",
+    "authorization_not_issued_by_gate_instance",
+    "ledger_identity_binding_tamper"
+  ],
+  "verification": {
+    "verified_head": "709ced8188fdeed8aa79453b1f41318a2c51720c",
+    "runtime": "Windows / Python 3.13",
+    "tests": {
+      "governed_identity": 12,
+      "governed_execution_identity_binding": 10,
+      "universal_execution_gate_regression": 31,
+      "total": 53
+    },
+    "result": "53/53 PASS",
+    "caveat": "UEG remains an isolated v1 boundary; production wiring is not yet claimed."
+  }
+}
