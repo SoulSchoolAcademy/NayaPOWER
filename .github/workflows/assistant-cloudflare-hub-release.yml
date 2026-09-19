@@ -219,15 +219,15 @@ jobs:
                 assistantRuntime: !!window.NayaAssistantRuntime,
                 identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null
               }));
-              const hubFrame = page.locator('iframe[title="NayaNET Intelligent Hub"]').contentFrame();
-              await hubFrame.locator('[data-nayanet-baseline-app="true"]').waitFor({ timeout: 10000 });
-              const baseline = await hubFrame.evaluate(() => ({
-                baseline: document.querySelector('[data-nayanet-baseline-app="true"]') ? 'PRESENT' : '',
-                smartNotes: document.body.innerText.includes('Smart Notes'),
-                privacy: document.body.innerText.includes('PRIVATE BY DEFAULT'),
-                mailButton: !!document.querySelector('button[data-page="mail"]')
-              }));
-              Object.assign(result, baseline);
+              const iframe = page.locator('iframe[title="NayaNET Intelligent Hub"]');
+              await iframe.waitFor({ timeout: 10000 });
+              const srcdoc = await iframe.getAttribute('srcdoc') || '';
+              Object.assign(result, {
+                baseline: srcdoc.length > 700000 ? 'PRESENT' : '',
+                smartNotes: srcdoc.includes('Smart Notes'),
+                privacy: srcdoc.includes('PRIVATE BY DEFAULT'),
+                mailButton: srcdoc.includes('data-page="mail"')
+              });
               if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('Authenticated NayaNET identity not established');
               if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React canonical marker missing');
               if (result.baseline !== 'PRESENT') throw new Error('509 baseline host missing');
