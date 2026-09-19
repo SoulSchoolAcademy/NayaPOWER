@@ -34,10 +34,12 @@ Conceptual message: `id, sender_id, recipient_type, recipient_ids/space_id, subj
 Conceptual APIs: compose/send, inbox retrieval, message detail, read/archive, recipient search and attachment lookup. Reuse current messaging/identity primitives.
 
 ## Connections
-`Connections → recipients`; `Spaces → audience`; `Lists/Notes/Favorites → intelligence references`; `Smart Share → explicit sharing`; `Feed → mail activity`; `Ledger → delivery/provenance`; `Today/Reports → meaningful communication outcomes`.
+`Your Connections → eligible recipients`; `Spaces → audience`; `Lists/Notes/Favorites → intelligence references`; `Smart Share → explicit sharing`; `Feed → mail activity`; `Ledger → delivery/provenance`; `Today/Reports → meaningful communication outcomes`.
 
 ## Security rule
-`MESSAGE DELIVERY ≠ INTELLIGENCE ACCESS`. Being connected, being a Space member, or being able to send a message does not grant access to protected intelligence.
+`CONNECTION ≠ MESSAGE DELIVERY` and `MESSAGE DELIVERY ≠ INTELLIGENCE ACCESS`.
+
+Connection eligibility is derived from canonical relationship context, especially Space membership. At send time, recheck authentication, relationship/Space eligibility, communication policy/preferences, revocation, recipient visibility and attachment authorization. Being connected, being a Space member, or being able to send a message does not grant access to protected intelligence.
 
 ## Verification
 Send to one real member; verify inbox receipt; attach authorized intelligence; test unauthorized attachment; test group/Space delivery; refresh; verify delivery/read state; test duplicate send; test revocation/eligibility at use time.
