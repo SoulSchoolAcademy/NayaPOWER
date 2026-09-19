@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -106,6 +107,17 @@ def main() -> int:
         print(f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}")
         print(f"TEAM_NAYA_EVENT_ID={bridge['event_id']}")
         print(f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}")
+
+        evidence_dir = os.environ.get("NAYA_CI_EVIDENCE_DIR")
+        if evidence_dir:
+            evidence_path = Path(evidence_dir)
+            evidence_path.mkdir(parents=True, exist_ok=True)
+            canonical = next(
+                candidate
+                for candidate in events_root.rglob("SE-*.json")
+                if candidate.read_text(encoding="utf-8") and json.loads(candidate.read_text(encoding="utf-8")).get("event_id") == state["activity_event_id"]
+            )
+            shutil.copy2(canonical, evidence_path / "execution-activity-event.json")
         return 0
     finally:
         ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH = saved
