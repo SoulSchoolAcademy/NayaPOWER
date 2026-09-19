@@ -32,7 +32,11 @@ A Space should show its topic, creator, membership/visibility, current participa
 Conceptual Space: `space_id, creator_id, topic/source_refs, name, description, visibility, membership_policy, created_at, status`. Membership and interaction records remain separate. Exact schemas/routes follow existing contracts.
 
 ## Connections
-`Note/topic → Space`; `Space → Feed activity`; `Space → Connections`; `Space → Mail`; `Space → Share`; `Space → collective intelligence candidates`; `Ledger → consequential events`.
+`Note/topic → Space`; `Space → Feed activity`; `Space → membership → Your Connections`; `Connections → Smart Mail / Smart List`; `Space → Mail`; `Space → Share`; `Space → collective intelligence candidates`; `Ledger → consequential events`.
+
+## Relationship boundary
+
+**JOIN is the primary social action.** INVITE is optional. A person may be surfaced as relevant without being contacted or joined automatically. Joining establishes participation in the Space's defined relationship boundary; it does not grant unrelated private-data or intelligence access. A connection projection must preserve the source Space/membership provenance.
 
 ## Important distinctions
 `comment ≠ truth`; `like ≠ verification`; `consensus ≠ verification`; `membership ≠ private-data access`; `interest ≠ consent`. Creating an invitation from interaction signals does not automatically join someone or authorize messaging.
