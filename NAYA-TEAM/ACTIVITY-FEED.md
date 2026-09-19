@@ -609,3 +609,13 @@ New concrete runtime defect found and repaired.
 **Ledger reconciliation:** the independent nayanet_execution_outcomes table belongs to policy/Smart Mail outcome machinery; no Feed-specific outcome recorder exists. Session 006 Feed → cognition → receipt → Ledger lineage therefore remains the correct Wave A evidence chain.
 
 **Next:** establish the browser session through the real NayaNET authentication surface, then close authenticated Smart Tabs/Smart Feed UI proof and final acceptance.
+
+## Wave A Session 008 — 2026-09-19T17:20Z
+
+**Runtime closure update:** the previous Smart Tabs browser LIST defect is no longer reproducible after the Hub Assistant Runtime cache-bust. Authenticated live browser runtime now returns persisted Smart Tabs. Full runtime mutation sequence passed: LIST → UPDATE → FAVORITE → REORDER → DELETE, with server-returned persisted objects and delete id.
+
+**Feed:** authenticated Activity and Personal retrieval execute cleanly but currently return zero items for the active identity. No fake Feed data was created and no consequential Feed action was falsely claimed.
+
+**Ledger:** no new browser Feed lineage was claimed because the browser Feed projection is empty for this identity. Existing backend Feed→cognition→receipt→Ledger proof remains intact.
+
+**Next:** obtain one legitimate owner-scoped intelligence item through the normal production experience and close browser Feed presentation/action → Ledger verification, then perform final visual/mobile/accessibility acceptance.
