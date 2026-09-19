@@ -35,6 +35,7 @@ def load(name: str, path: Path):
 
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
 PORTA = load("naya_portable_authorization_runner", ROOT / ".naya/runtime/portable_authorization.py")
 ADAPTER = load("naya_cloudflare_production_adapter_runner", ROOT / ".naya/runtime/cloudflare_production_adapter.py")
 
