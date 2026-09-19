@@ -561,3 +561,20 @@ Session 005 has begun actual execution rather than documentation-only handoff.
 **NOT PROVEN:** current Hub browser wiring, two-real-user browser lifecycle, downstream Activity/Ledger closure, Cloudflare parity.
 
 **NEXT:** ACTION 07 — Activity + Ledger binding.
+
+
+## 🔱 Wave A Session 006 — Authenticated production closure — 2026-09-19T16:59Z
+
+Wave A moved materially from proof-gap to production closure.
+
+**Proven:** repaired Smart Tabs Cloudflare parity; authenticated Smart Tabs CRUD/reload/reorder/favorite/delete; Smart Tabs server-side A/B isolation; Smart Feed Activity and Personal; Personal cursor pagination with no duplicates; explicit Collective publish/retrieve/revoke; one consequential Feed interaction; fresh Smart Ledger cognition→receipt lineage; private A/B denial.
+
+**Real defects found and repaired during execution:**
+1. Smart Tabs delete returned a false-success envelope when RLS deleted zero rows. naya-smart-tabs is now v2 and returns 404 TAB_NOT_FOUND_OR_NOT_AUTHORIZED.
+2. Collective publication owner could not read its own revoked row because the SELECT policy hid revoked records during UPDATE RETURNING. Migration smart_feed_publication_owner_read_revoked_v2 now permits owner reads while keeping Collective visibility restricted to published + explicit rows.
+
+**Protected:** no fake auth, no fabricated JWT, no service-role human impersonation, no client-only privacy, no duplicate event/ledger store, no promotion of receipt existence into independent observation.
+
+**Remaining closure:** authenticated browser-level visual/click/navigation QA, final mobile/accessibility acceptance, and the independent execution-outcome observation boundary.
+
+**Team successor:** finish those three closure boundaries, update the day/feature records with exact evidence, and generate the next ten highest-value actions from the final verified state.
