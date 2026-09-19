@@ -39,7 +39,7 @@ Deno.serve(async(req)=>{
  if(input.recipient_user_id===actorId)return json({ok:false,error:"SELF_RECIPIENT_NOT_ALLOWED"},400);
  if(input.body.length>10000)return json({ok:false,error:"BODY_TOO_LARGE"},400);
  const {data:recipient}=await admin.auth.admin.getUserById(input.recipient_user_id); if(!recipient?.user)return json({ok:false,error:"RECIPIENT_NOT_FOUND"},404);
- const {data:result,error}=await admin.rpc("nayanet_send_smart_mail",{p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET"});
+ const {data:result,error}=await userClient.rpc("nayanet_send_smart_mail",{p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET"});
  if(error)return json({ok:false,error:"SMART_MAIL_TRANSACTION_FAILED",detail:error.message},500);
  return json({ok:true,...result});
 });
