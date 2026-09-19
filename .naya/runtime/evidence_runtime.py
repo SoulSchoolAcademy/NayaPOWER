@@ -160,7 +160,7 @@ def persist_evidence(evidence: dict[str, Any], *, evidence_store: Path | None = 
     store.mkdir(parents=True, exist_ok=True)
     evidence_id = str(evidence["evidence_id"])
     path = store / f"{evidence_id}.json"
-    canonical = json.dumps(evidence, sort_keys=True, ensure_ascii=False, indent=2) + "\\n"
+    canonical = json.dumps(evidence, sort_keys=True, ensure_ascii=False, indent=2) + "\n"
     if path.exists():
         existing = json.loads(path.read_text(encoding="utf-8"))
         if existing == evidence:
