@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTION 01 COMPLETE; ACTION 02 COMPLETE; ACTION 03 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTIONS 01–05 EXECUTED; ACTION 06 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1290,48 +1290,46 @@ No schema change was deployed in Action 02.
 
 Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-# 32. IMMEDIATE ACTION 03
+# 32. IMMEDIATE ACTION 06
 
-## ACTION 03 — CANONICAL RELATIONSHIP SUBSTRATE RECONCILIATION
+## ACTION 06 — SMART LIST + SMART MAIL RELATIONSHIP BINDING
 
 **Status: IMMEDIATE EXECUTION**
 
-### Objective
+### Mission
 
-Determine whether `v7_connection_requests` is:
-1. request-only legacy state;
-2. canonical durable relationship state;
-3. a projection/input to another canonical relationship object.
+Reconcile the existing Smart List substrate, then bind it to canonical Connections without duplicating relationship state. At the same time, bind Smart Mail's send-time eligibility to the canonical relationship boundary while preserving the existing authority-grant requirement.
 
-### Exact execution
+### Exact sequence
 
-1. Inspect live `v7_connection_requests` schema.
-2. Inspect all indexes/constraints.
-3. Inspect all RLS policies.
-4. Inspect all live connection/request/relationship functions.
-5. Inspect migration history for creation/evolution.
-6. Inspect all available GitHub source references.
-7. Determine pending/accepted/rejected semantics.
-8. Determine whether accepted state creates durable relationship state elsewhere.
-9. Determine directional vs mutual semantics.
-10. Determine whether Space membership can be an origin.
-11. Determine provenance requirements.
-12. Determine duplicate prevention.
-13. Determine multi-origin merge.
-14. Determine revocation/leave.
-15. Determine communication eligibility.
-16. Record DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
-17. Update Your Connections, Smart Spaces, Job 04, Team Naya and this master directive.
+1. Inventory all live tables/functions/indexes/RLS matching List, Favorite, Saved, Collection, Group and person organization.
+2. Determine whether an existing List primitive can be reused.
+3. If absent, create the smallest owner-scoped List + membership model.
+4. Make List membership reference canonical Connection/Member identity, never copied profile rows.
+5. Implement idempotent add/remove and reload persistence.
+6. Ensure removing a List entry does not revoke the Connection.
+7. Inspect current Smart Mail v12 and `nayanet_send_smart_mail_authorized`.
+8. Add relationship eligibility at use time without replacing authority validation.
+9. Require an active shared Space or canonical Connection state according to the reconciled communication contract.
+10. Preserve authority-grant validation, revocation-at-use and idempotency.
+11. Test unauthorized relationship denial in a transaction.
+12. Update Smart List, Smart Mail, Job 04, Team Naya and this master directive.
+13. Finish with DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
 
-### Hard rule
+### Hard rules
 
-Do not create a new `connections` table during Action 03. Do not create Space membership during Action 03. Do not weaken RLS or bypass authority.
+- Do not redesign the Hub.
+- Do not replace `nayanet_authority_grants`.
+- Do not make Connection equal authority.
+- Do not copy identity/profile data into Lists.
+- Do not allow a UI-only recipient to bypass server relationship checks.
+- Do not call Smart Mail verified until the new relationship gate is proven.
 
 ### Success condition
 
-A cold-start successor can implement Action 04 JOIN→MEMBERSHIP without creating a second relationship graph.
+A canonical Connection can be organized in Smart List, survives reload, and does not change relationship truth when removed from a List; Smart Mail rejects a recipient who lacks the required relationship boundary even if the client presents a callable recipient.
 
 ### Canonical execution prompt
 
 See:
-`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-03-EXECUTION-PROMPT.md`
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-06-EXECUTION-PROMPT.md`
