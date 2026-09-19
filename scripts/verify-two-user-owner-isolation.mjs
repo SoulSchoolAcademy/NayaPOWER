@@ -30,8 +30,9 @@ async function adminCreate(label) {
   const r = await request("/auth/v1/admin/users", {service:true, method:"POST", body:{
     email, password, email_confirm:true, user_metadata:{naya_test:true, run_id:runId, role:label}
   }});
-  ok(r.ok && r.data?.user?.id, `AUTH_${label}_CREATE_FAILED:${r.status}`);
-  return {label,email,password,user_id:r.data.user.id};
+  const user = r.data?.user ?? (r.data?.id ? r.data : null);
+  ok(r.ok && user?.id, `AUTH_${label}_CREATE_FAILED:${r.status}`);
+  return {label,email,password,user_id:user.id};
 }
 async function signIn(u) {
   const r = await request("/auth/v1/token?grant_type=password", {method:"POST", body:{email:u.email,password:u.password}});
@@ -168,32 +169,22 @@ for (const [table,idField,id,label] of [
   ["learning_evidence","id",learningA.id,"Learning"],
   ["v7_intelligence_reports","id",reportA.id,"Reports"],
   ["nayanet_spaces","id",spaceA.id,"Spaces"]
-]) {
-  deniedReads.push(await assertDeniedRead(B.access_token,table,idField,id,label));
-}
+]) deniedReads.push(await assertDeniedRead(B.access_token,table,idField,id,label));
 for (const [table,idField,id,body,label] of [
   ["smart_note_events","id",smartA.id,{subject:"CROSS_OWNER_MUTATION"},"Smart Notes"],
   ["nayanet_cognition_events","id",cognitionA.id,{title:"CROSS_OWNER_MUTATION"},"Cognition"],
   ["learning_evidence","id",learningA.id,{claim:"CROSS_OWNER_MUTATION"},"Learning"],
   ["v7_intelligence_reports","id",reportA.id,{report:{tampered:true}},"Reports"],
   ["nayanet_spaces","id",spaceA.id,{name:"CROSS_OWNER_MUTATION"},"Spaces"]
-]) {
-  deniedMutations.push(await assertDeniedMutation(B.access_token,table,idField,id,body,label));
-}
+]) deniedMutations.push(await assertDeniedMutation(B.access_token,table,idField,id,body,label));
 for (const [table,label] of [["nayanet_intelligence_index","Index"],["nayanet_smart_ledger","Smart Ledger"]]) {
   const r=await request("/rest/v1/"+table,{token:B.access_token,method:"POST",headers:{Prefer:"return=representation"},body:{}});
   ok(!r.ok && (r.status===401 || r.status===403 || r.status===405 || r.status===406 || r.status===422),`PROJECTION_WRITE_NOT_REJECTED:${label}:${r.status}`);
 }
 
-const projectionIsolation = {
-  A_index_rows:indexA.length,A_ledger_rows:ledgerA.length,
-  B_index_rows:indexB.length,B_ledger_rows:ledgerB.length,
-  A_sources:[smartA.id,cognitionA.id,learningA.id,reportA.id,spaceA.id],
-  B_sources:[smartB.id,cognitionB.id,learningB.id,reportB.id,spaceB.id]
-};
-
-const proof={
-  schema:"naya.nayanet.owner-isolation.proof.v1",status:"VERIFIED",run_id:runId,
+const projectionIsolation={A_index_rows:indexA.length,A_ledger_rows:ledgerA.length,B_index_rows:indexB.length,B_ledger_rows:ledgerB.length,
+  A_sources:[smartA.id,cognitionA.id,learningA.id,reportA.id,spaceA.id],B_sources:[smartB.id,cognitionB.id,learningB.id,reportB.id,spaceB.id]};
+const proof={schema:"naya.nayanet.owner-isolation.proof.v1",status:"VERIFIED",run_id:runId,
   identities:{A:{user_id:A.user_id,email:A.email},B:{user_id:B.user_id,email:B.email}},
   surfaces:{
     "Smart Notes":{A:{event_id:smartA.id,receipt_id:receiptA.id},B:{event_id:smartB.id}},
@@ -204,13 +195,7 @@ const proof={
     Reports:{A:{report_id:reportA.id},B:{report_id:reportB.id}},
     Spaces:{A:{space_id:spaceA.id},B:{space_id:spaceB.id}}
   },
-  cross_owner:{reads:deniedReads,mutations:deniedMutations},
-  projection_isolation:projectionIsolation,
-  authenticated_runtime:true,
-  credentials_exposed_in_source:false,
-  observed_at:new Date().toISOString()
-};
+  cross_owner:{reads:deniedReads,mutations:deniedMutations},projection_isolation:projectionIsolation,
+  authenticated_runtime:true,credentials_exposed_in_source:false,observed_at:new Date().toISOString()};
 fs.writeFileSync(PROOF_PATH,JSON.stringify(proof,null,2));
-console.log(JSON.stringify({PROOF:"VERIFIED",run_id:runId,A_user_id:A.user_id,B_user_id:B.user_id,smart_note_A:smartA.id,smart_note_B:smartB.id,cognition_A:cognitionA.id,cognition_B:cognitionB.id,learning_A:learningA.id,learning_B:learningB.id,report_A:reportA.id,report_B:reportB.id,space_A:spaceA.id,space_B:spaceB.id,index_A:indexA.length,index_B:indexB.length,ledger_A:ledgerA.length,ledger_B:ledgerB.length},null,2));
-
-// The identities are deliberately left alive for the authenticated proof artifact; the generated passwords and access tokens never leave process memory.
+console.log(JSON.stringify({PROOF:"VERIFIED",run_id:runId,A_user_id:A.user_id,B_user_id:B.user_id,smart_note_A:smartA.id,smart_note_B:smartB.id,cognition_A:cognitionA.id,cognition_B:cognitionB.id,learning_A:learningA.id,learning_B:learningB.id,report_A:reportA.id,report_B:reportB.id,space_A:spaceA.id,index_A:indexA.length,index_B:indexB.length,ledger_A:ledgerA.length,ledger_B:ledgerB.length},null,2));
