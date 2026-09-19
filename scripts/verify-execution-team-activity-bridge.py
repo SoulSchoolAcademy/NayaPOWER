@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 import tempfile
@@ -15,6 +16,28 @@ sys.path.insert(0, str(RUNTIME))
 import execution_controller as ec  # noqa: E402
 from execution_preflight_gate import approved_preflight  # noqa: E402
 from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalExecutionGate, VerificationPlan, load_registry  # noqa: E402
+
+
+def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha: str, run_id: str, action: str) -> None:
+    """Durably capture the existing CI execution identity; never creates evidence."""
+    github_run_id = os.environ.get("GITHUB_RUN_ID")
+    if not github_run_id:
+        return
+    capture_path = Path(os.environ.get("NAYA_EXECUTION_CAPTURE_PATH", ROOT / "execution-capture.json"))
+    capture = {
+        "schema": "naya-power-execution-capture/v1",
+        "execution_state": "COMPLETED",
+        "execution_id": f"github-actions:{github_run_id}",
+        "github_run_id": github_run_id,
+        "github_job": os.environ.get("GITHUB_JOB", ""),
+        "action": action,
+        "observed_output": observed_output,
+        "result": result,
+        "commit_sha": commit_sha,
+        "source": "github-actions",
+    }
+    capture_path.parent.mkdir(parents=True, exist_ok=True)
+    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -69,8 +92,6 @@ def main() -> int:
         assert bridge["continuity"]["next_action"] == next_action
         assert bridge["continuity"]["successor"] == successor
 
-        # Hard-handoff proof: remove the human-readable durable day projection.
-        # The canonical event still exists, but HANDED_OFF must refuse to close.
         daily = activity_writer.find_daily_activity(state["activity_event_id"])
         assert daily is not None
         daily.unlink()
@@ -97,15 +118,26 @@ def main() -> int:
         after = [json.loads(candidate.read_text(encoding="utf-8")) for candidate in events_root.rglob("SE-*.json") if json.loads(candidate.read_text(encoding="utf-8")).get("event_type") == "team-communication"]
         assert len(after) == before, "REPLAY created duplicate Team Naya Activity communication"
 
-        print("EXECUTION_CONTROLLER=PASS")
-        print("EXECUTION_TO_TEAM_ACTIVITY=PASS")
-        print("TEAM_ACTIVITY_EVIDENCE_BINDING=PASS")
-        print("TEAM_ACTIVITY_HANDOFF=PASS")
-        print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")
-        print("HARD_HANDOFF_ACTIVITY_GATE=PASS")
-        print(f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}")
-        print(f"TEAM_NAYA_EVENT_ID={bridge['event_id']}")
-        print(f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}")
+        output_lines = [
+            "EXECUTION_CONTROLLER=PASS",
+            "EXECUTION_TO_TEAM_ACTIVITY=PASS",
+            "TEAM_ACTIVITY_EVIDENCE_BINDING=PASS",
+            "TEAM_ACTIVITY_HANDOFF=PASS",
+            "TEAM_ACTIVITY_IDEMPOTENCY=PASS",
+            "HARD_HANDOFF_ACTIVITY_GATE=PASS",
+            f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}",
+            f"TEAM_NAYA_EVENT_ID={bridge['event_id']}",
+            f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}",
+        ]
+        output = "\n".join(output_lines)
+        _write_ci_execution_capture(
+            observed_output=output,
+            result="PASS",
+            commit_sha=os.environ.get("GITHUB_SHA", ""),
+            run_id=run_id,
+            action="Run governed execution to Team Naya Activity proof",
+        )
+        print(output)
         return 0
     finally:
         ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH = saved
