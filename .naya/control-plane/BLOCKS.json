@@ -2,58 +2,51 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "P1-CONTROLLED-PAIRED-POLICY-OUTCOME",
+    "id": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Prove whether a learned V2 policy actually produces greater responsible verified value than V1 on comparable real held-out outcomes, while preserving policy identity, owner/project boundaries, authority, receipt lineage, and fail-closed comparison.",
-    "scope": [
-      "policy identity",
-      "controlled paired cases",
-      "Smart Mail execution receipts",
-      "authenticated receiver verification",
-      "responsible-value evidence",
-      "deterministic comparison",
-      "adversarial lineage rejection",
-      "multi-case held-out experiment",
-      "cold-Naya continuation"
-    ],
+    "intent": "Close the real authenticated relationship, authority, Smart Mail, replay, revocation, and isolation journey before human-facing acceptance.",
     "protected": [
-      "existing Smart Mail action/receipt substrate",
-      "existing policy governance state machine",
-      "explicit authorization boundary",
-      "Dream as candidate-generator only",
-      "Builder != Judge",
-      "no second persistence system",
-      "no synthetic superiority claim"
+      "existing production Space",
+      "existing Connections and Smart List substrate",
+      "explicit authority boundary",
+      "Smart Mail receipt/cognition/Ledger lineage",
+      "fail-closed security",
+      "browser deferred until engine closure"
     ],
     "acceptance": [
-      "exact live main HEAD is resolved",
-      "V1 and V2 policy identities are captured in canonical execution receipts",
-      "both executions use the same frozen experiment case",
-      "policy input and decision hashes are preserved",
-      "receiver outcomes are independently authenticated and verified",
-      "responsible-value inputs are inspectable and deterministically calculated",
-      "comparison returns PROVEN only when candidate verified value exceeds baseline under all validity gates",
-      "equal verified value returns NOT_PROVEN",
-      "receipt swap and lineage attacks are rejected",
-      "multi-case held-out experiment is repeatable",
-      "policy promotion remains separately governed and cannot be triggered by evaluation alone",
-      "fresh Naya can retrieve current state and continue one safe action"
+      "current main and control plane reconciled",
+      "Proof 7 VERIFIED recorded",
+      "cognition receipt revision concurrency safe",
+      "A↔B relationship proven",
+      "explicit authority proven",
+      "real Smart Mail receiver outcome proven",
+      "replay/idempotency proven",
+      "revocation denial proven",
+      "C isolation proven",
+      "fresh-Naya continuation proven",
+      "browser acceptance only after engine/security gates"
     ],
     "evidence": [
-      ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
-      "scripts/run-controlled-paired-policy-experiment.mjs",
-      "supabase/migrations/20260919004000_p1_policy_execution_receipt_lineage.sql",
-      "supabase/migrations/20260919004100_p1_policy_comparison_lineage_enforcement.sql",
-      "supabase/functions/nayanet-smart-mail/index.ts",
-      "SUPERBRAIN/SMART-NOTES/2026/09/2026-09-19-P1-CONTROLLED-PAIRED-POLICY-OUTCOME.md"
+      ".github/workflows/verify-proof7-compounding-loop.yml",
+      "scripts/verify-proof7-compounding-loop.mjs",
+      "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
+      "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
-    "target_state": "FRESH_NAYA_CONTINUATION_PROVEN",
-    "next_action": "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again.",
+    "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
+    "next_action": "Reconcile the control plane to current main, record Proof 7 VERIFIED, independently verify the cognition-receipt revision repair, then execute the real A/B/C relationship and Smart Mail security journey before browser acceptance.",
     "next_actions": [
-      "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again."
-    ],
-    "next_action_count": 1
+      "Reconcile STATE/BLOCK/PROOF to current main and Proof 7 evidence.",
+      "Record Proof 7 run 35461270128 and artifact 10589479660 as current evidence.",
+      "Run focused concurrency proof for cognition receipt revision allocation.",
+      "Prove real Smart List/Connections on the existing production Space.",
+      "Prove explicit smart_mail_send authority and fail-closed denial.",
+      "Run real A→B Smart Mail with receiver verification and lineage.",
+      "Prove idempotent replay without duplicate durable intelligence.",
+      "Prove revocation denial and C isolation.",
+      "Run fresh-Naya continuation from the real durable journey.",
+      "Only then perform browser/human-facing production acceptance."
+    ]
   },
   "status_vocabulary": [
     "INTENDED",
