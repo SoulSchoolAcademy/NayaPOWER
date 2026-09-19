@@ -1,264 +1,170 @@
-# LEAD NAYA MASTER HANDOFF — COMMUNICATION + ORGANIZATION
-
-DATE: 2026-09-19
-OWNER: Lead Naya
-SUBSYSTEM: Your Connections + Smart Spaces + Smart List + Smart Mail
-MISSION: Turn the relationship/communication architecture into one production-proven NayaNET subsystem.
-
-## COMMAND
-
-Inspect truth → map existing primitives → select canonical ownership → implement smallest correct path → authenticate → execute → observe → verify → record → update → hand off.
-
-Do not redesign the canonical Hub visual baseline.
-Do not create duplicate identity, contact, relationship, membership, messaging, event, intelligence or ledger stores.
-Do not mark a claim VERIFIED without runtime evidence.
-Do not convert UNKNOWN, DOCUMENTED, or CODE COMPLETE into PROVEN.
-
-## ALREADY DONE
-
-- Your Connections = WHO.
-- Smart Spaces = WHERE.
-- Smart List = HOW I ORGANIZE.
-- Smart Mail = HOW I COMMUNICATE.
-- Smart Share = cross-cutting controlled sharing boundary.
-- JOIN is the primary discovery-to-participation action; INVITE is secondary.
-- Interest ≠ membership.
-- Discovery ≠ membership.
-- Membership ≠ connection.
-- Connection ≠ unrestricted communication.
-- Communication ≠ intelligence access.
-- Membership ≠ private-data access.
-- Connection ≠ sharing authority.
-- No new relationship/contact store is authorized until existing production primitives are inspected.
-- Your Connections specification, readiness record, Team Naya activity record, architecture updates, feature cross-links, master directive, and subsystem Job 04 have been updated.
-
-## DEFINITION OF DONE
-
-AUTHENTICATED A
-→ CREATE SPACE
-→ ACTIVITY
-→ DISCOVERY BY AUTHORIZED B
-→ B JOINS
-→ MEMBERSHIP PERSISTS
-→ CONNECTION ELIGIBILITY/PROJECTION
-→ AUTHORIZED RELATIONSHIP VISIBILITY
-→ ELIGIBLE MAIL/MESSAGE
-→ SMART LIST ORGANIZATION
-→ ACTIVITY / LEDGER CONSEQUENCE
-→ B LEAVES / REVOCATION
-→ COMMUNICATION / PROTECTED ACCESS RE-EVALUATED
-→ UNAUTHORIZED C DENIED
-→ SOURCE/BUILD/CLOUDFLARE RUNTIME PARITY PROVEN.
-
-## TEN MAX-VALUE ACTIONS — EXECUTE IN THIS ORDER
-
-### 01 — Production truth map
-Inspect actual GitHub source, live Supabase schema/functions/RLS, current Hub source `2026 09 17 NAYANET HUB.html`, Cloudflare deployment path, and current feature/runtime records.
-
-Deliver a boundary matrix:
-IDENTITY | SPACE | MEMBERSHIP | CONNECTION | COMMUNICATION | LIST | ACTIVITY | LEDGER | REVOCATION | CLOUDFLARE.
-
-For each: exact source object, runtime object, authorization boundary, evidence, state = FOUND/PARTIAL/MISSING/UNKNOWN.
-
-Do not implement before this map exists.
-
-### 02 — Canonical identity + membership
-Identify exact production identity/profile and Smart Space/membership objects, functions, policies and ownership rules.
-
-Prove whether membership can already serve as the relationship source.
-
-### 03 — Canonical relationship substrate
-Search source and runtime for connection, relationship, participant, recipient, member, profile-link or social-graph primitives.
-
-Do not assume absence because nothing is named connections.
-
-Select the canonical source of truth. If genuinely missing, define the smallest relationship projection with RLS, provenance and idempotency before creating it.
-
-### 04 — Bind JOIN
-Implement or repair the real authenticated JOIN transaction.
-
-Require authenticated actor, authorized Space visibility, idempotent membership, correct state, canonical event consequence, no duplicate membership, no unauthorized private-data expansion.
-
-Prove persistence after reload.
-
-### 05 — Build Your Connections as a projection
-Expose WHO from canonical identity + relationship state.
-
-Required: connection list/detail, origin/context, shared Spaces, search/filter, eligible Mail/message action, Add to Smart List, truthful loading/empty/error/unauthorized states.
-
-Do not redesign the Hub.
-
-### 06 — Bind Mail + Smart List
-Trace:
-CONNECTION → MAIL ELIGIBILITY
-CONNECTION → SMART LIST MEMBERSHIP
-
-Revalidate relationship, scope, policy and revocation at use time.
-
-Prove List removal does not delete relationship and relationship revocation blocks communication where required.
-
-### 07 — Bind Activity + Ledger
-Use the existing canonical event substrate.
-
-Prove:
-source event → projection → Activity → Ledger consequence where applicable.
-
-Do not create another relationship event store.
-
-### 08 — Two-user adversarial proof
-Use real authenticated A and B, plus unauthorized C where available.
-
-A creates Space.
-B discovers.
-B joins.
-Relationship appears according to policy.
-B communicates.
-B organizes connection in List.
-B leaves/revocation.
-Communication/access restriction occurs.
-C is denied.
-Test replay/idempotency and reload.
-
-No synthetic credentials. No browser-local proof. No documentation-only proof.
-
-### 09 — Cloudflare + visual parity
-Prove:
-SOURCE → BUILD → CLOUDFLARE DEPLOYED RUNTIME.
-
-Inspect real Join, Activity, Connection, Mail, List, loading, empty, error and unauthorized states. No dead buttons, demo state or visual regression.
-
-### 10 — Close + hand off
-Update every affected feature record, completion checklist, evidence, current state, blockers and Team Naya activity.
-
-End every session:
-SIGN IN → READ → INSPECT → WORK → VERIFY → REPORT → SIGN OUT → HAND OFF.
-
-Leave exactly ONE successor action.
-
-## REQUIRED REPORT
-
-Every substantive session must state:
-
-DONE — exact files/runtime objects changed.
-PROOF — exact test and observed result.
-NOT PROVEN — every remaining uncertainty.
-DECISION — canonical primitive selected and why.
-NEXT — exactly one successor action.
-
-## FAILURE LAW
-
-OBSERVED FAILURE
-→ EXACT BOUNDARY
-→ SOURCE OF TRUTH
-→ ROOT CAUSE
-→ SMALLEST CORRECT CHANGE
-→ SAME PROOF RERUN
-→ RESULT RECORDED.
-
-Never paper over failure, weaken authorization, substitute local state, create duplicate storage, declare success because code exists, retry without new information, or hide a blocker.
-
-## LEAD-NAYA STANDARD
-
-Before accepting apprentice work, inspect:
-1. claimed change;
-2. actual change;
-3. canonical primitive reuse;
-4. authority at use time;
-5. evidence supporting the claim;
-6. complete activity record;
-7. whether a competing truth was created.
-
-Conflicts are reconciled at source-of-truth ownership before integration.
-
-## FINAL SUCCESS CONDITION
-
-The transaction must be reconstructable from evidence:
-
-SPACE CREATED → DISCOVERED → JOINED → MEMBERSHIP VERIFIED → CONNECTION VERIFIED → COMMUNICATION VERIFIED → LIST VERIFIED → ACTIVITY VERIFIED → LEDGER VERIFIED WHERE APPLICABLE → REVOKED → RESTRICTION VERIFIED → UNAUTHORIZED USER DENIED → CLOUDFLARE RUNTIME VERIFIED.
-
-Until then: IN PROGRESS / NOT VERIFIED.
-
-## LEAD NAYA CONTINUATION
-
-Execute **Action 01 — Production truth map** now. Do not create a relationship/contact table, messaging path, or new UI architecture until existing identity, Space membership, relationship, Mail, List, event, authority and Cloudflare primitives are mapped to exact production objects and current verification state.
-
+# LEAD NAYA — FULL MASTER EXECUTION DIRECTIVE
+## COMMUNICATION + ORGANIZATION SUBSYSTEM
+**Date:** 2026-09-19  
+**Owner:** Lead Naya  
+**Repository:** `SoulSchoolAcademy/NayaPOWER`  
+**Live Supabase project:** `dahisasgpfvziswqvmvm`  
+**Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
+**Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
+**Deployment target:** Cloudflare  
+**Status:** IN PROGRESS — ACTION 01 COMPLETE; ACTION 02 IS THE IMMEDIATE EXECUTION
 
 ---
 
-# ACTION 01 COMPLETION — LIVE PRODUCTION TRUTH MAP
-DATE: 2026-09-19
-STATUS: COMPLETE AS AN INSPECTION ACTION; IMPLEMENTATION NOT YET AUTHORIZED
+# 1. MISSION
 
-## COLD-START CONTEXT
+Turn Your Connections, Smart Spaces, Smart List, Smart Mail and Smart Share into one authenticated, permissioned, observable, evidence-producing NayaNET relationship system.
 
-This is the handoff a new Naya must read before touching Communication + Organization.
+The final causal chain is:
 
-The subsystem is not four independent products. It is one relationship system exposed through four interfaces:
+**IDENTITY → SPACE → DISCOVERY → JOIN → MEMBERSHIP → CONNECTION → SMART LIST → SMART MAIL → SMART SHARE → ACTIVITY → LEDGER → INTELLIGENCE → REVOCATION**
 
-- Your Connections = WHO
-- Smart Spaces = WHERE
-- Smart List = HOW I ORGANIZE
-- Smart Mail = HOW I COMMUNICATE
+The governing relationship law is:
 
-Smart Share is the controlled sharing boundary.
+> **Interest may create discovery. Membership may create relationship. Relationship may enable communication. Authority determines what communication is permitted.**
 
-Canonical causal chain:
+The human-facing interfaces are:
 
-DISCOVERY → SPACE → JOIN → MEMBERSHIP → CONNECTION → COMMUNICATION / LIST → ACTIVITY → LEDGER
+- **Your Connections = WHO**
+- **Smart Spaces = WHERE**
+- **Smart List = HOW I ORGANIZE**
+- **Smart Mail = HOW I COMMUNICATE**
+- **Smart Share = WHAT I AM AUTHORIZED TO SHARE**
 
-Reversal:
+Do not build five disconnected features. Build one underlying relationship system with five interfaces.
 
-LEAVE / REVOKE → RELATIONSHIP RECALCULATION → COMMUNICATION / ACCESS DENIAL
+---
 
-The human-facing Hub is a projection layer. Do not create competing stores inside the Hub.
+# 2. WHY THIS MATTERS
 
-## LIVE PROJECT
+The missing capability is not another screen.
 
-Supabase project: `dahisasgpfvziswqvmvm`
+It is the ability for NayaNET to represent a real human relationship with a defensible causal history:
 
-Functions dashboard:
-https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions
+**Person → shared context → participation → relationship → permission → communication/organization → observation → evidence → revocation.**
 
-GitHub repository:
-`SoulSchoolAcademy/NayaPOWER`
+If JOIN does not create real membership, then Connections is fake.
 
-Canonical Hub source:
-`2026 09 17 NAYANET HUB.html`
+If Connections is fake, Mail authorization is fake.
 
-Deployment target:
-Cloudflare. Cloudflare parity is not yet proven.
+If Mail is only client-visible state, communication is fake.
 
-## ACTION 01 — WHAT WAS ACTUALLY INSPECTED
+If Activity is manually generated, history is fake.
 
-Inspected against live/source evidence:
+If Ledger is disconnected, evidence is incomplete.
 
-1. public Supabase table inventory;
-2. relevant table columns;
-3. RLS policies;
-4. relevant database functions;
-5. active Edge Functions;
-6. deployed `nayanet-smart-mail` source;
-7. current canonical Hub HTML;
-8. GitHub source search for connection/Space/Mail/Cloudflare markers;
-9. existing Your Connections specification;
-10. existing Communication + Organization Job 04.
+If Cloudflare serves different code than the source, the product is not actually deployed.
 
-## BOUNDARY MATRIX
+Therefore every layer must agree.
 
-| Boundary | Production truth | Auth/RLS | State | Decision |
-|---|---|---|---|---|
-| IDENTITY | `auth.users` + `members` + `nayanet_profiles` + `v7_profiles` all exist | owner-scoped policies observed | PARTIAL | Reconcile canonical identity before new work |
-| SPACE | `nayanet_spaces` exists; 1 live row | owner-only RLS observed | PARTIAL | Existing Space primitive is canonical starting point |
-| MEMBERSHIP | No dedicated Space-membership table found in public live inventory | No membership policy identified | MISSING/UNKNOWN | Investigate migrations/functions before creating anything |
-| CONNECTION | `v7_connection_requests` exists; 0 rows | requester/target RLS observed | PARTIAL | Existing relationship primitive must be reconciled; do not create new table yet |
-| COMMUNICATION | `nayanet-smart-mail` v12 + mail tables/RLS | JWT + authority grant + thread membership | PARTIAL | Real Mail exists; Space-derived relationship gating is not proven |
-| LIST | No confirmed person/connection List primitive mapped yet | UNKNOWN | UNKNOWN | Inspect live/source before storage creation |
-| ACTIVITY | Canonical cognition/event substrate exists | Existing event ownership/authority model | FOUND | Reuse existing event spine |
-| LEDGER | `nayanet_smart_ledger` populated | RLS enabled | FOUND | Reuse canonical Ledger |
-| REVOCATION | Authority/revocation primitives exist; relationship revocation not proven | Authority validation exists | PARTIAL | Bind relationship state to use-time checks |
-| CLOUDFLARE | Intended target; repo search did not map deployment path | UNKNOWN | UNKNOWN | Map source → build → route → deployed marker before claiming parity |
+---
 
-## LIVE OBJECTS THAT MATTER
+# 3. SYSTEM CONTEXT
+
+NayaNET is a private intelligent network.
+
+NayaPOWER is the governance/control substrate around intelligence and action.
+
+The Hub is the human-facing projection/cockpit.
+
+The database/event substrate is the canonical state and history.
+
+Authority determines whether an action is permitted.
+
+RLS protects data boundaries.
+
+The event spine records consequential state changes.
+
+The Smart Ledger preserves evidence/integrity.
+
+Cloudflare is the intended deployed human-facing runtime.
+
+Core privacy principle:
+
+**Private by default • Shared by choice • Collective by consent • Public by decision.**
+
+Core governance principle:
+
+**Capability does not create authority.**
+
+Do not allow a technically reachable recipient, Space, record or attachment to become automatically authorized.
+
+---
+
+# 4. CURRENT PRODUCT STATE
+
+The architecture is defined but the subsystem is not yet production-verified.
+
+Current readiness by surface:
+
+| Surface | Current state |
+|---|---|
+| Your Connections | Architecture DEFINED; runtime NOT PROVEN |
+| Smart Spaces | Partial production primitive; JOIN/MEMBERSHIP NOT PROVEN |
+| Smart List | Architecture DEFINED; runtime substrate NOT MAPPED |
+| Smart Mail | Live production function; relationship gating NOT PROVEN |
+| Smart Share | Defined boundary; current publication rows = 0 |
+| Activity | Existing canonical event substrate FOUND |
+| Smart Ledger | Existing populated canonical substrate FOUND |
+| Intelligence | Existing populated canonical substrate FOUND |
+| Revocation | Authority revocation primitives exist; relationship revocation NOT PROVEN |
+| Cloudflare | Deployment parity UNKNOWN |
+
+The most important unresolved boundary is:
+
+**JOIN → MEMBERSHIP**
+
+---
+
+# 5. WHAT HAS ALREADY BEEN BUILT
+
+Already defined and committed:
+
+- Communication + Organization architecture.
+- Your Connections specification.
+- Smart Spaces specification.
+- Smart List specification.
+- Smart Mail specification.
+- Smart Share specification.
+- Team Naya Job 04 for Communication + Organization.
+- Relationship lifecycle.
+- Space discovery/JOIN concept.
+- Activity/Ledger integration model.
+- Privacy/authority distinctions.
+- Lead Naya master handoff.
+- Daily activity hierarchy.
+- Feature completion/activity requirements.
+- Canonical Hub visual baseline.
+
+Relationship lifecycle:
+
+**DISCOVER → VIEW → JOIN → MEMBERSHIP ACTIVE → CONNECTION ELIGIBLE → CONNECTION ESTABLISHED → COMMUNICATE / ORGANIZE → OBSERVE → REVOKE / LEAVE**
+
+JOIN is primary. INVITE is secondary.
+
+No new relationship/contact database is authorized before existing production primitives are reconciled.
+
+---
+
+# 6. WHAT HAS ACTUALLY BEEN PROVEN
+
+Action 01 inspected actual live/source evidence.
+
+### Live production facts observed
+
+- `nayanet_spaces`: 1 row.
+- `v7_connection_requests`: 0 rows.
+- `v7_mail_threads`: 64 rows.
+- `v7_mail_members`: 128 rows.
+- `v7_mail_messages`: 64 rows.
+- `nayanet_cognition_events`: 123 rows.
+- `nayanet_smart_ledger`: 94 rows.
+- `nayanet_intelligence_index`: 353 rows.
+- `nayanet_execution_receipts`: 125 rows.
+- `nayanet_execution_outcomes`: 0 rows.
+- `nayanet_intelligence_publications`: 0 rows.
+
+### Existing production primitives proven present
 
 Identity/profile:
 
@@ -275,24 +181,12 @@ Relationship:
 
 - `v7_connection_requests`
 
-Mail:
+Communication:
 
+- `nayanet-smart-mail` v12, ACTIVE, JWT-protected.
 - `v7_mail_threads`
 - `v7_mail_members`
 - `v7_mail_messages`
-- Edge Function `nayanet-smart-mail` v12
-
-Canonical intelligence/evidence:
-
-- `nayanet_cognition_events`
-- `nayanet_intelligence_index`
-- `nayanet_smart_ledger`
-- `nayanet_execution_receipts`
-- `nayanet_execution_outcomes`
-
-Sharing:
-
-- `nayanet_intelligence_publications`
 
 Authority:
 
@@ -300,210 +194,296 @@ Authority:
 - `nayanet_validate_authority_grant`
 - `nayanet_issue_authority_grant`
 
-## LIVE COUNTS OBSERVED
-
-Point-in-time production observations:
-
-- `nayanet_spaces`: 1
-- `v7_connection_requests`: 0
-- `v7_mail_threads`: 64
-- `v7_mail_members`: 128
-- `v7_mail_messages`: 64
-- `nayanet_cognition_events`: 123
-- `nayanet_smart_ledger`: 94
-- `nayanet_intelligence_index`: 353
-- `nayanet_execution_receipts`: 125
-- `nayanet_execution_outcomes`: 0
-- `nayanet_intelligence_publications`: 0
-
-Do not treat counts as permanent facts; re-query before implementation or proof.
-
-## CRITICAL FINDING 1 — CONNECTION REQUESTS ALREADY EXIST
-
-`v7_connection_requests` contains:
-
-- id
-- requester_id
-- target_id
-- topic
-- status
-- created_at
-- responded_at
-
-Policies observed:
-
-- INSERT: requester must equal `auth.uid()`
-- SELECT: requester or target
-- UPDATE: target only
-
-Current rows: 0.
-
-GitHub search did not locate active source references to this object.
-
-### Decision
-
-Do NOT create `connections` yet.
-
-Do NOT assume `v7_connection_requests` is the final relationship graph.
-
-First determine:
-
-- accepted-state semantics;
-- whether accepted requests create another row/object;
-- whether this primitive is legacy;
-- whether it can represent Space-derived relationships;
-- how multiple relationship origins combine;
-- how revocation works;
-- what state means CONNECTED;
-- what state means COMMUNICATION ELIGIBLE.
-
-## CRITICAL FINDING 2 — SPACE MEMBERSHIP IS NOT CURRENTLY PROVEN
-
-`nayanet_spaces` has:
-
-- id
-- owner_member_id
-- name
-- purpose
-- visibility
-- created_at
-- updated_at
-
-Observed RLS policy:
-
-`nayanet_spaces_owner` → owner-only access.
-
-No dedicated public table matching:
-
-- space_members
-- nayanet_space_members
-- memberships
-- nayanet_memberships
-
-was found.
-
-### Decision
-
-Do NOT immediately create a membership table.
-
-Action 02 must inspect:
-
-- migrations;
-- foreign keys;
-- triggers;
-- database functions;
-- historical source;
-- UI source;
-- any generic membership/participant structure.
-
-If a real membership substrate exists under another name, reuse it.
-
-If it genuinely does not exist, document the absence before designing the smallest canonical membership primitive.
-
-## CRITICAL FINDING 3 — MULTIPLE IDENTITY/PROFILE LAYERS EXIST
-
-`members`:
-- id
-- display_name
-- created_at
-- updated_at
-- owner-scoped RLS.
-
-`nayanet_profiles`:
-- member_id
-- smart_id
-- public_alias
-- recovery_ready
-- timestamps.
-
-`v7_profiles`:
-- user_id
-- alias
-- collective_enabled
-- settings
-- timestamp.
-
-### Decision
-
-Do not create another profile/contact record.
-
-Action 02 must determine:
-
-AUTH USER → MEMBER → PROFILE → PUBLIC IDENTITY
-
-and identify legacy versus canonical representations.
-
-## CRITICAL FINDING 4 — SMART MAIL IS REAL BUT RELATIONSHIP GATING IS NOT PROVEN
-
-Live Edge Function:
-
-`nayanet-smart-mail` v12, ACTIVE, JWT required.
-
-Observed send path:
-
-AUTH HEADER
-→ Supabase Auth getUser()
-→ actorId
-→ recipient validation
-→ authority_grant_id required
-→ nayanet_validate_authority_grant(action=`smart_mail_send`)
-→ nayanet_send_smart_mail_authorized()
-→ real Mail persistence.
-
-Observed verify path:
-
-authenticated receiver
-→ message membership check
-→ execution receipt lookup
-→ outcome recording
-→ receiver verification metadata.
-
-This is real production capability.
-
-However, the deployed function inspected does not itself establish:
-
-SPACE MEMBERSHIP → CONNECTION ELIGIBILITY → MAIL ELIGIBILITY
-
-as a required chain.
-
-### Decision
-
-Preserve the existing authority system.
-
-Do not bypass or weaken it.
-
-Bind the relationship boundary into the communication authorization path at use time.
-
-## CRITICAL FINDING 5 — MAIL RLS IS USEFUL EXISTING AUTHORIZATION
-
-Observed policies:
-
-`v7_mail_members`
-- INSERT only for own user_id
-- SELECT only own membership
-
-`v7_mail_messages`
-- SELECT when actor belongs to thread
-- INSERT when sender is actor and actor belongs to thread
-
-`v7_mail_threads`
-- INSERT when creator is actor
-- SELECT when actor belongs to thread
-
-This protects existing thread/message access.
-
-It does not by itself prove eligibility to initiate a new direct relationship/message.
-
-## CRITICAL FINDING 6 — CANONICAL EVENT/LEDGER SUBSTRATE ALREADY EXISTS
-
-Existing production objects include:
+Evidence/intelligence:
 
 - `nayanet_cognition_events`
 - `nayanet_smart_ledger`
 - `nayanet_intelligence_index`
 - `nayanet_execution_receipts`
 
-Relevant database functions include:
+### Critical proven findings
+
+1. A production connection-request primitive already exists.
+2. A production Space primitive exists.
+3. A dedicated Space-membership table was not found in the inspected public live inventory.
+4. Multiple identity/profile layers exist.
+5. Smart Mail is real and protected by JWT + authority.
+6. Smart Mail relationship gating is not yet proven.
+7. Canonical event/Ledger infrastructure exists.
+8. Cloudflare deployment parity is not yet mapped.
+
+---
+
+# 7. WHAT IS NOT PROVEN
+
+The following must remain explicitly NOT PROVEN until evidence exists:
+
+- canonical identity owner;
+- canonical public profile owner;
+- canonical Space membership;
+- authenticated Space JOIN;
+- membership persistence;
+- JOIN idempotency;
+- relationship establishment;
+- accepted connection-request semantics;
+- connection provenance;
+- Smart List person/connection membership;
+- relationship-gated Smart Mail;
+- revocation-at-use;
+- two-user isolation;
+- unauthorized-user denial;
+- protected attachment denial;
+- replay/idempotency across the complete relationship flow;
+- Activity causal projection;
+- Ledger consequence for relationship/communication events where required;
+- Cloudflare source/build/runtime parity.
+
+No engineer may turn any of these into VERIFIED by documentation, source code existence, screenshots of static UI, or local state.
+
+---
+
+# 8. CURRENT SOURCE OF TRUTH
+
+Priority order:
+
+1. **Live authorization/data behavior** for runtime truth.
+2. **Canonical GitHub source and migrations** for implementation truth.
+3. **Feature specifications and .naya authority documents** for intended contract.
+4. **Activity/handoff records** for engineering history.
+5. **Conversation memory** only as context, never as production proof.
+
+Canonical repository:
+
+`SoulSchoolAcademy/NayaPOWER`
+
+Canonical engineering directory:
+
+`NayaNETEngineeringSystem/`
+
+Canonical Hub:
+
+`2026 09 17 NAYANET HUB.html`
+
+Current Team Naya master directive:
+
+`NAYA-TEAM/2026/09/19/2026-09-19__LEAD-NAYA-MASTER-HANDOFF-COMMUNICATION-ORGANIZATION.md`
+
+Supabase project:
+
+`dahisasgpfvziswqvmvm`
+
+---
+
+# 9. CANONICAL ARCHITECTURE
+
+The underlying system is:
+
+**AUTH USER → CANONICAL MEMBER/PROFILE → SPACE → MEMBERSHIP → RELATIONSHIP → AUTHORITY → COMMUNICATION/ORGANIZATION/SHARING → EVENT → LEDGER/INTELLIGENCE**
+
+Four primary interfaces:
+
+### WHO
+Your Connections.
+
+### WHERE
+Smart Spaces.
+
+### HOW I ORGANIZE
+Smart List.
+
+### HOW I COMMUNICATE
+Smart Mail.
+
+### WHAT I MAY SHARE
+Smart Share.
+
+Required distinctions:
+
+- discovery ≠ membership;
+- membership ≠ connection;
+- connection ≠ authority;
+- authority ≠ sharing;
+- sharing ≠ public;
+- communication ≠ intelligence access.
+
+---
+
+# 10. EXISTING PRODUCTION PRIMITIVES
+
+## Identity
+- `members`
+- `nayanet_profiles`
+- `v7_profiles`
+
+## Spaces
+- `nayanet_spaces`
+- `nayanet_space_intelligence`
+
+## Relationship clue
+- `v7_connection_requests`
+
+Its observed fields include:
+
+`id, requester_id, target_id, topic, status, created_at, responded_at`
+
+Observed RLS:
+- requester can insert own request;
+- requester or target can read;
+- target can update.
+
+Current rows: 0.
+
+## Mail
+- `v7_mail_threads`
+- `v7_mail_members`
+- `v7_mail_messages`
+- Edge Function `nayanet-smart-mail` v12.
+
+## Authority
+- `nayanet_authority_grants`
+- `nayanet_validate_authority_grant`
+- `nayanet_issue_authority_grant`
+
+## Events / evidence
+- `nayanet_cognition_events`
+- `nayanet_smart_ledger`
+- `nayanet_intelligence_index`
+- `nayanet_execution_receipts`
+- `nayanet_execution_outcomes`
+
+## Sharing
+- `nayanet_intelligence_publications`
+
+Do not duplicate these stores.
+
+---
+
+# 11. FEATURE-BY-FEATURE STATUS
+
+## Your Connections
+Architecture defined.
+
+Must become a projection of canonical identity + relationship state.
+
+Needs:
+- index/detail;
+- origin;
+- shared Spaces;
+- current relationship state;
+- communication eligibility;
+- List action;
+- privacy-safe profile projection.
+
+## Smart Spaces
+Production Space object exists.
+
+Needs:
+- authenticated creation;
+- discovery;
+- JOIN;
+- membership persistence;
+- participant state;
+- activity;
+- interaction;
+- leave/revoke;
+- unauthorized denial.
+
+## Smart List
+No confirmed canonical person/connection List substrate has yet been mapped.
+
+Needs:
+- source reconciliation;
+- canonical list ownership;
+- connection membership;
+- add/remove;
+- reload;
+- owner isolation;
+- no relationship deletion from list removal.
+
+## Smart Mail
+Live v12 function.
+
+Needs:
+- relationship eligibility at use time;
+- authority at use time;
+- recipient preview;
+- real recipient authorization;
+- send;
+- receiver verification;
+- replay/idempotency;
+- revoked-state denial;
+- attachment authorization.
+
+## Smart Share
+Publication table currently has 0 rows.
+
+Needs:
+- authorized share;
+- exact scope;
+- provenance;
+- recipient denial;
+- revoke;
+- protected intelligence denial.
+
+## Activity / Ledger
+Existing infrastructure exists.
+
+Needs:
+- causal relationship/communication events;
+- projection;
+- evidence;
+- no duplicate event store.
+
+---
+
+# 12. SECURITY / AUTHORITY MODEL
+
+Every consequential action must evaluate at use time:
+
+**authenticated actor + target + relationship + Space membership + visibility + authority + revocation + scope + RLS + idempotency**
+
+Existing authority substrate must remain intact.
+
+Smart Mail currently validates an authority grant for `smart_mail_send`.
+
+Do not replace authority with a boolean such as `connected=true`.
+
+Connection eligibility is a prerequisite/context boundary; authority remains the permission boundary.
+
+A technically callable function is not proof of authorization.
+
+A UI button is never an authorization boundary.
+
+---
+
+# 13. PRIVACY MODEL
+
+**Private by default • Shared by choice • Collective by consent • Public by decision.**
+
+Rules:
+
+- Non-members must not see protected Space content.
+- Membership must not reveal private profile attributes.
+- Discovery must not reveal private inferred interests.
+- Connection must not imply unrestricted intelligence access.
+- Communication must not imply sharing authority.
+- A revoked relationship must be re-evaluated at use time.
+- Naya may surface authorized relevance without exposing private signals.
+- No automatic messaging based solely on inferred similarity.
+
+---
+
+# 14. DATA / EVENT / LEDGER MODEL
+
+Do not create a parallel relationship event store.
+
+Use existing event infrastructure.
+
+Expected causal pattern:
+
+**ACTION → CANONICAL EVENT → ACTIVITY PROJECTION → LEDGER/EVIDENCE WHERE CONSEQUENTIAL → INTELLIGENCE PROJECTION WHERE CONTRACTED**
+
+Relevant existing functions include:
 
 - `nayanet_record_cognition_event`
 - `nayanet_cognition_event_to_ledger`
@@ -513,210 +493,849 @@ Relevant database functions include:
 - `nayanet_send_smart_mail`
 - `nayanet_send_smart_mail_authorized`
 
-Decision:
-
-Do not create a second relationship event store.
-
-## CRITICAL FINDING 7 — CLOUDFLARE PARITY IS NOT YET MAPPED
-
-Repository searches for Cloudflare, Cloudflare Worker, wrangler, wrangler.jsonc and the live Smart Mail slug did not produce a deployment source map.
-
-This is not evidence that Cloudflare is absent.
-
-It is evidence that the deployment path remains UNKNOWN from the inspected repository surface.
-
-Action 09 must map:
-
-SOURCE → BUILD → DEPLOY → LIVE ROUTE → DEPLOYED MARKER/COMMIT → BROWSER BEHAVIOR
-
-and only then declare parity.
+Every new mutation must preserve actor, target/context, authorization, timestamp, idempotency where applicable, resulting state and provenance.
 
 ---
 
-# ACTION 02 — FULL MASTER EXECUTION DIRECTIVE
+# 15. FRONT-END REQUIREMENTS
 
-## Mission
+Preserve the existing canonical Hub design.
 
-Reconcile the canonical identity and Space membership substrate before any new relationship storage is created.
+Do not redesign the visual system.
 
-## Why this comes first
+## Your Connections
+- WHO;
+- relationship state;
+- why connected;
+- shared Space/context;
+- Mail action only when eligible;
+- Add to List;
+- search/filter;
+- truthful loading/empty/error/revoked states.
 
-The entire subsystem depends on a real causal relationship:
+## Smart Spaces
+- Space list/detail;
+- purpose/topic;
+- visibility;
+- JOIN THE CONVERSATION;
+- INVITE;
+- participant state;
+- authorized activity;
+- interaction;
+- LEAVE;
+- truthful state transitions.
 
-PERSON → SPACE → MEMBERSHIP → CONNECTION → COMMUNICATION
+## Smart List
+- list index;
+- create/edit/delete where contracted;
+- person/connection membership;
+- add/remove;
+- no duplicate members;
+- removal does not delete relationship.
 
-If membership is invented incorrectly, every downstream feature becomes a competing truth.
+## Smart Mail
+- recipient selection;
+- eligibility;
+- send;
+- verification;
+- idempotency;
+- unauthorized state;
+- revoked state;
+- attachment authorization;
+- truthful loading/error/empty states.
 
-## Required questions — ALL MUST BE ANSWERED
+No fake local success.
 
-### Identity
+---
 
-1. What is the canonical user key?
-2. Is auth.users.id identical to members.id?
-3. Is nayanet_profiles.member_id a canonical profile or projection?
-4. Is v7_profiles legacy?
-5. Which profile fields are safe cross-user?
-6. Which profile is used by the existing Hub?
-7. Which profile does Smart Mail address?
-8. Which profile should Your Connections resolve?
-9. Are there triggers syncing these layers?
-10. Is there one canonical identity owner?
+# 16. BACK-END REQUIREMENTS
 
-### Space
+Canonical ownership must be explicit for:
 
-11. What exactly is a Space?
-12. Who owns it?
-13. What does visibility mean?
-14. Who may discover it?
-15. Who may view it?
-16. Who may JOIN?
-17. Is JOIN immediate or approval-based?
-18. What does INVITE mean?
-19. Is invitation separate from membership?
-20. What event represents Space creation?
+- identity;
+- profile;
+- Space;
+- membership;
+- relationship;
+- List;
+- Mail;
+- sharing;
+- authority;
+- event;
+- Ledger.
 
-### Membership
+Every mutation must be server-authorized.
 
-21. Where does membership currently live?
-22. Does a generic membership table exist?
-23. Does a trigger create it?
-24. Does a function create it?
-25. Does any existing UI already assume it?
-26. What is the membership primary key?
-27. What prevents duplicate membership?
-28. What is the membership state machine?
-29. How is LEAVE represented?
-30. How is REVOKE represented?
-31. Who may remove a member?
-32. Who may see membership?
-33. Can a non-member see participant identity?
-34. What event records JOIN?
-35. What event records LEAVE?
-36. What event records REVOKE?
+Every relationship-sensitive action must re-check state at use time.
 
-### Relationship
+Every mutation must be idempotent where the contract requires it.
 
-37. Does Space membership itself establish relationship eligibility?
-38. Does v7_connection_requests remain a separate explicit relationship mechanism?
-39. Can both mechanisms establish the same connection?
-40. How are multiple origins merged?
-41. What is the canonical CONNECTED state?
-42. What is the canonical COMMUNICATION_ELIGIBLE state?
-43. What is the canonical REVOKED state?
-44. What provenance is retained?
-45. How is duplicate relationship creation prevented?
+Every protected read must respect RLS/visibility.
 
-### Communication
+---
 
-46. Does Smart Mail currently require relationship eligibility?
-47. Where should that check live?
-48. What happens if authority exists but relationship is revoked?
-49. What happens if relationship exists but authority is absent?
-50. What happens if Space membership ends?
-51. How is a stale UI prevented from sending?
-52. What exact server-side denial is expected?
+# 17. RUNTIME REQUIREMENTS
 
-### Privacy
+The runtime must prove:
 
-53. What does a non-member see?
-54. What does a member see?
-55. What does a connected person see?
-56. What does a revoked person see?
-57. Which profile fields remain private?
-58. Does discovery reveal the existence of a person or only a Space?
-59. Can Naya surface a candidate without revealing private signals?
+- real authentication;
+- real database reads/writes;
+- no browser-local production state;
+- no demo data;
+- no fake success;
+- no dead controls;
+- truthful loading;
+- truthful empty;
+- truthful errors;
+- truthful unauthorized state;
+- reload persistence;
+- stale-state rejection where necessary;
+- server-side authorization;
+- real activity/evidence consequence.
 
-## Exact inspection sequence
+---
 
-1. Search repository source for identity/profile/Space/member/join/leave/participant/membership.
-2. Inspect all relevant migrations.
-3. Inspect foreign keys and constraints.
-4. Inspect indexes.
-5. Inspect triggers.
-6. Inspect functions and RPCs.
-7. Inspect RLS policies.
-8. Inspect current Hub source for assumptions.
-9. Inspect existing feature specifications.
-10. Compare source architecture against live schema.
-11. Identify drift.
-12. Write the canonicality decision.
-13. Only then decide whether a migration is required.
+# 18. CLOUDFLARE DEPLOYMENT REQUIREMENTS
 
-## Stop condition
+Cloudflare is the deployment target.
 
-If membership remains genuinely absent after this investigation:
+Current state: **UNKNOWN / NOT PROVEN.**
 
-Write:
+Must map:
+
+**SOURCE FILE → BUILD INPUT → BUILD ARTIFACT → DEPLOYMENT → LIVE ROUTE → DEPLOYED COMMIT/MARKER → BROWSER**
+
+Verify that the deployed runtime contains the same identity/auth/navigation/relationship implementation as the canonical source.
+
+No Cloudflare parity claim without concrete evidence.
+
+---
+
+# 19. INTEGRATION REQUIREMENTS
+
+Required connected flow:
+
+**Human auth**
+→ Hub
+→ Space discovery
+→ JOIN
+→ membership
+→ relationship
+→ Connections
+→ Smart List
+→ Mail
+→ Smart Share where separately authorized
+→ Activity
+→ Ledger
+→ Intelligence
+→ Leave/Revoke
+→ denial/restriction
+→ evidence.
+
+Cross-feature rules:
+
+- Space membership is a relationship origin, not unlimited authority.
+- Connections projects relationship state.
+- List organizes relationships; it does not own them.
+- Mail communicates only when authorized.
+- Share controls intelligence distribution separately.
+- Activity observes canonical events.
+- Ledger records consequential evidence.
+
+---
+
+# 20. NON-GOALS / THINGS NOT TO BUILD
+
+Do not build:
+
+1. duplicate contact database;
+2. duplicate identity store;
+3. duplicate Space store;
+4. duplicate membership store before reconciliation;
+5. duplicate message store;
+6. duplicate event/activity database;
+7. duplicate Ledger;
+8. duplicate intelligence index;
+9. browser-local production relationship state;
+10. direct-message bypass around Space/relationship rules;
+11. authority bypass;
+12. redesigned Hub;
+13. fake demo data;
+14. synthetic-user proof;
+15. speculative AI discovery that exposes private information.
+
+---
+
+# 21. KNOWN RISKS
+
+### R1 — Missing membership substrate
+Highest architectural risk.
+
+### R2 — Multiple identity layers
+Risk of joining one identity model while Mail/Hub uses another.
+
+### R3 — Legacy connection-request primitive
+Risk of creating a second relationship graph.
+
+### R4 — Mail authorization gap
+Risk that authority exists without relationship eligibility.
+
+### R5 — List substrate unknown
+Risk of duplicate organization storage.
+
+### R6 — Event duplication
+Risk of creating UI-only activity.
+
+### R7 — Cloudflare drift
+Risk of source and deployed runtime diverging.
+
+### R8 — Two-user isolation
+Not yet proven for this subsystem.
+
+### R9 — Revocation
+Authority revocation exists, but relationship revocation is not yet proven.
+
+### R10 — False completion
+Existing documentation is ahead of runtime proof in several features.
+
+---
+
+# 22. KNOWN GAPS
+
+The current gap list is:
+
+1. canonical identity decision;
+2. canonical Space membership decision;
+3. real JOIN;
+4. relationship substrate decision;
+5. Connections runtime;
+6. Smart List runtime;
+7. relationship-gated Mail;
+8. Smart Share runtime proof;
+9. relationship revocation;
+10. two-user adversarial proof;
+11. Cloudflare deployment map;
+12. complete source/build/runtime parity;
+13. current authenticated Hub proof;
+14. full causal Activity/Ledger proof for the subsystem.
+
+---
+
+# 23. EXACT EXECUTION SEQUENCE
+
+Execute in this order. Do not reorder to skip a dependency.
+
+**01 Truth map**  
+→ **02 Identity + membership reconciliation**  
+→ **03 Relationship reconciliation**  
+→ **04 Real JOIN**  
+→ **05 Connections projection**  
+→ **06 List + Mail binding**  
+→ **07 Activity + Ledger binding**  
+→ **08 Two-user adversarial proof**  
+→ **09 Cloudflare parity**  
+→ **10 Closure + handoff**
+
+Each action must finish with:
+
+**DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT**
+
+The NEXT must itself be a full cold-start master directive.
+
+---
+
+# 24. 10 MAX-VALUE ACTIONS
+
+## ACTION 01 — PRODUCTION TRUTH MAP
+**STATUS: COMPLETE**
+
+Inspect:
+- live Supabase tables;
+- columns;
+- RLS;
+- functions;
+- Edge Functions;
+- Smart Mail;
+- canonical Hub;
+- feature records;
+- Cloudflare/source markers.
+
+Evidence already established:
+- Space exists;
+- connection-request primitive exists;
+- Mail exists;
+- identity layers exist;
+- no dedicated Space-membership table found in public inventory;
+- event/Ledger substrate exists;
+- Cloudflare parity remains unknown.
+
+Do not implement.
+
+## ACTION 02 — CANONICAL IDENTITY + SPACE MEMBERSHIP
+**STATUS: READY — IMMEDIATE**
+
+Inspect all source/migrations/functions/triggers/constraints/RLS for:
+- `members`;
+- `nayanet_profiles`;
+- `v7_profiles`;
+- `nayanet_spaces`;
+- `space`;
+- `member`;
+- `participant`;
+- `membership`;
+- `join`;
+- `leave`;
+- `invite`.
+
+Answer:
+1. canonical identity key;
+2. canonical profile;
+3. legacy profile;
+4. Space owner semantics;
+5. visibility;
+6. discovery;
+7. JOIN;
+8. INVITE;
+9. membership storage;
+10. duplicate prevention;
+11. membership states;
+12. LEAVE;
+13. REVOKE;
+14. membership visibility;
+15. event provenance.
+
+Inspect foreign keys, indexes, triggers and RPCs before designing anything.
+
+If a canonical membership primitive exists under another name, reuse it.
+
+If none exists, explicitly record:
 
 **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**
 
-Then design, but do not deploy, the smallest canonical membership model with:
+Then design the smallest possible canonical model; do not deploy until reviewed against the rest of the architecture.
 
-- Space id;
-- member id;
-- relationship state;
-- timestamps;
-- provenance;
-- unique Space/member constraint;
+Evidence required:
+AUTH USER → MEMBER → PROFILE → SPACE → MEMBERSHIP.
+
+Update:
+- Your Connections;
+- Smart Spaces;
+- Job 04;
+- Team Naya;
+- this directive.
+
+## ACTION 03 — CANONICAL RELATIONSHIP SUBSTRATE
+
+Reconcile `v7_connection_requests`.
+
+Inspect:
+- migrations;
+- source history;
+- accepted/rejected states;
+- functions;
+- triggers;
+- foreign keys;
 - RLS;
-- JOIN/LEAVE authorization;
-- idempotency;
-- event emission.
+- all references;
+- Space membership relationship semantics.
 
-Do not create it merely because the table name is convenient.
+Answer:
+- request vs established connection;
+- manual vs Space-derived origin;
+- canonical CONNECTED;
+- COMMUNICATION_ELIGIBLE;
+- REVOKED;
+- provenance;
+- duplicate prevention;
+- multi-origin merge;
+- origin revocation behavior.
 
-## Proof required before Action 02 closes
+Do not create `connections` unless absence is proven.
 
-The Naya must be able to point to exact source/runtime evidence answering:
+## ACTION 04 — REAL JOIN
 
-AUTH USER → CANONICAL MEMBER → CANONICAL PROFILE → SPACE → MEMBERSHIP
+Bind the authenticated transaction:
 
-with the exact object names and authorization rules.
+AUTHENTICATE
+→ CHECK SPACE VISIBILITY
+→ AUTHORIZE JOIN
+→ IDEMPOTENT MEMBERSHIP WRITE
+→ EVENT
+→ PROJECTION
+→ RESPONSE.
+
+Test:
+- first join;
+- duplicate join;
+- unauthorized join;
+- persistence after reload;
+- event once;
+- no private-data expansion.
+
+## ACTION 05 — YOUR CONNECTIONS
+
+Build only as a projection of canonical relationship state.
+
+Prove:
+- relationship appears;
+- origin is correct;
+- shared Space is correct;
+- profile exposure is privacy-safe;
+- current state is truthful;
+- revoked relationship changes state.
+
+No duplicate contact row.
+
+## ACTION 06 — SMART LIST + SMART MAIL
+
+Smart List:
+- connection → List membership;
+- persist;
+- reload;
+- remove;
+- relationship survives.
+
+Smart Mail:
+- relationship eligibility;
+- authority;
+- send;
+- receiver verification;
+- replay/idempotency;
+- attachment scope;
+- revocation-at-use.
+
+The server must reject an ineligible/revoked send.
+
+## ACTION 07 — ACTIVITY + LEDGER
+
+Use canonical event infrastructure.
+
+Prove:
+source action → event → Activity → Ledger/evidence where required.
+
+Do not create UI-only events.
+
+## ACTION 08 — TWO-USER ADVERSARIAL PROOF
+
+Use real authenticated identities.
+
+A:
+- creates Space.
+
+B:
+- discovers;
+- joins;
+- verifies membership;
+- verifies relationship;
+- uses List;
+- sends authorized Mail.
+
+Then:
+- revoke/leave;
+- retry Mail;
+- retry protected access;
+- verify denial.
+
+C:
+- attempts unauthorized access.
+
+Also test:
+- reload;
+- duplicate JOIN;
+- duplicate relationship;
+- message replay;
+- stale client state;
+- attachment authorization.
+
+Record exact denial/error evidence.
+
+## ACTION 09 — CLOUDFLARE SOURCE/BUILD/RUNTIME PARITY
+
+Map:
+source → build → artifact → deployment → route → deployed marker → browser.
+
+Verify:
+- authentication;
+- Space;
+- JOIN;
+- Connections;
+- List;
+- Mail;
+- Share;
+- Activity;
+- errors;
+- unauthorized;
+- revoked states.
+
+No parity claim from GitHub alone.
+
+## ACTION 10 — PRODUCTION CLOSURE
+
+Update every affected feature:
+- current state;
+- checklist;
+- evidence;
+- blockers;
+- next action;
+- dated activity.
+
+Update:
+- Team Naya root;
+- year/month/day indexes;
+- subsystem job;
+- master directive.
+
+Closure requires complete evidence package and one cold-start successor directive.
 
 ---
 
-# FINAL HANDOFF FORMAT FOR THIS MISSION
+# 25. DEFINITION OF DONE
 
-Every future session must end with:
+The subsystem is LIVE VERIFIED only when:
+
+### Identity
+Canonical identity is proven and reused.
+
+### Space
+Real authenticated Space creation/discovery works.
+
+### Membership
+JOIN persists, is idempotent, authorized and revocable.
+
+### Connection
+Relationship derives from canonical state with provenance.
+
+### List
+Connections can be organized without owning relationship truth.
+
+### Mail
+Eligible people can communicate; ineligible/revoked users are denied.
+
+### Share
+Sharing is separately authorized.
+
+### Activity
+Canonical events produce truthful activity.
+
+### Ledger
+Consequential evidence is recorded.
+
+### Privacy
+Unauthorized users cannot see protected information.
+
+### Two-user isolation
+A and B are isolated correctly from unrelated C.
+
+### Runtime
+Cloudflare serves the proven source/build.
+
+### Evidence
+The full transaction can be reconstructed.
+
+Anything less is IN PROGRESS / NOT VERIFIED.
+
+---
+
+# 26. PROOF REQUIREMENTS
+
+For every claim, provide:
+
+- exact actor;
+- exact timestamp;
+- exact environment;
+- exact source commit;
+- exact table/function/policy;
+- exact request/action;
+- expected result;
+- observed result;
+- evidence identifier;
+- resulting state;
+- failure/limitation.
+
+Proof hierarchy:
+
+**LIVE AUTHENTICATED RUNTIME > DATABASE/RLS OBSERVATION > SOURCE INSPECTION > DOCUMENTATION**
+
+Documentation can define intent but cannot prove runtime.
+
+---
+
+# 27. FAILURE / DEBUGGING LAW
+
+When something fails:
+
+**OBSERVED FAILURE**
+→ **EXACT BOUNDARY**
+→ **SOURCE OF TRUTH**
+→ **ROOT CAUSE**
+→ **SMALLEST CORRECT CHANGE**
+→ **RERUN SAME PROOF**
+→ **RECORD RESULT**
+
+Rules:
+
+- no blind retries;
+- no random edits;
+- no weakening security;
+- no bypassing RLS;
+- no replacing production state with local state;
+- no declaring success after a partial path;
+- no hiding blockers;
+- no creating a duplicate primitive to avoid understanding an existing one.
+
+---
+
+# 28. EVIDENCE REQUIREMENTS
+
+Each substantive session must record:
+
+1. actor;
+2. session timestamp;
+3. feature;
+4. mission;
+5. files inspected;
+6. files changed;
+7. commit SHA;
+8. database objects inspected;
+9. database objects changed;
+10. functions/versions;
+11. RLS policies;
+12. exact authenticated test;
+13. observed result;
+14. expected result;
+15. evidence/receipt/event IDs;
+16. blockers;
+17. unresolved questions;
+18. current state;
+19. next master directive.
+
+---
+
+# 29. TEAM NAYA UPDATE REQUIREMENTS
+
+Every substantive engineering session must update the activity system before sign-out.
+
+Required hierarchy:
+
+**YEAR → MONTH → DAY → SUBSYSTEM/FEATURE → SESSION**
+
+Required session report:
 
 ## DONE
-Exact files, commits, functions, tables, policies and runtime objects inspected or changed.
+What actually changed.
 
 ## PROOF
-Exact authenticated action/test, exact observed result, exact evidence.
+What actually passed and how.
 
 ## NOT PROVEN
-Every unresolved boundary.
+Every remaining uncertainty.
 
 ## DECISION
-What is canonical, what is legacy, what is projection, and why.
+Canonical ownership decisions.
 
 ## BLOCKERS
-Anything preventing the next proof.
+Exact blockers.
 
 ## NEXT
-One complete master directive, not a vague sentence.
+A complete master execution directive.
 
-The NEXT directive must be sufficiently complete for a cold-start Naya to execute without this conversation.
+Never write “continued progress.”
+
+Never close a session without updating the feature record when feature state changed.
 
 ---
 
-# CURRENT STATUS
+# 30. HANDOFF REQUIREMENTS
 
-**ACTION 01: COMPLETE — PRODUCTION TRUTH MAP ESTABLISHED.**
+A cold-start Naya must be able to execute without the previous conversation.
 
-**ACTION 02: READY — CANONICAL IDENTITY + SPACE MEMBERSHIP RECONCILIATION.**
+The handoff must contain:
 
-**SUBSYSTEM: IN PROGRESS / NOT VERIFIED.**
+- mission;
+- why;
+- system context;
+- current state;
+- completed work;
+- proven evidence;
+- unproven boundaries;
+- source of truth;
+- architecture;
+- production objects;
+- security;
+- privacy;
+- data/event/Ledger model;
+- UI requirements;
+- backend requirements;
+- runtime requirements;
+- deployment requirements;
+- integration dependencies;
+- non-goals;
+- risks;
+- gaps;
+- exact execution sequence;
+- ten actions;
+- Definition of Done;
+- proof requirements;
+- failure law;
+- evidence law;
+- Team Naya law;
+- final acceptance test;
+- immediate next action.
 
-The most important unresolved boundary is:
+No two-sentence continuation is acceptable.
 
-**JOIN → MEMBERSHIP**
+---
 
-Do not skip it.
+# 31. FINAL ACCEPTANCE TEST
 
-Do not paper over it.
+The final end-to-end proof is:
 
-Do not invent around it until the existing substrate has been exhausted.
+### A — HUMAN A
+Authenticate.
 
-Lead the way from there.
+### B — SPACE
+Create a real Space.
+
+### C — ACTIVITY
+Observe the Space creation consequence.
+
+### D — HUMAN B
+Authenticate as a distinct real user.
+
+### E — DISCOVERY
+B discovers the Space through an authorized path.
+
+### F — JOIN
+B performs JOIN.
+
+### G — MEMBERSHIP
+Server proves B is a member.
+
+### H — CONNECTION
+The canonical relationship state is derived/proven.
+
+### I — CONNECTIONS
+B/A relationship appears in Your Connections according to policy.
+
+### J — LIST
+Connection is added to Smart List and survives reload.
+
+### K — MAIL
+Authorized communication succeeds through the real Smart Mail path.
+
+### L — SHARE
+If intelligence is shared, Smart Share authorization is independently proven.
+
+### M — ACTIVITY
+The canonical event is observable.
+
+### N — LEDGER
+Consequential evidence is recorded where contracted.
+
+### O — REVOCATION
+B leaves or relationship authority is revoked.
+
+### P — RECHECK
+Mail/access is attempted again.
+
+### Q — DENIAL
+The server denies the now-ineligible action.
+
+### R — UNAUTHORIZED C
+A distinct unauthorized user attempts protected operations and is denied.
+
+### S — REPLAY
+Repeated requests do not duplicate state.
+
+### T — CLOUDFLARE
+The same proven behavior is observed in the deployed Cloudflare runtime.
+
+Only after A→T passes may the subsystem be called:
+
+**LIVE VERIFIED**
+
+---
+
+# 32. IMMEDIATE ACTION 01
+
+## ACTION 01 IS ALREADY COMPLETE.
+
+The next executor must therefore begin with **ACTION 02 — CANONICAL IDENTITY + SPACE MEMBERSHIP RECONCILIATION**.
+
+### Immediate objective
+
+Determine, from source + live runtime, the exact chain:
+
+**AUTH USER → CANONICAL MEMBER → CANONICAL PROFILE → SPACE → MEMBERSHIP**
+
+### Exact first operations
+
+1. Search the repository for `members`, `nayanet_profiles`, `v7_profiles`, `nayanet_spaces`, `space`, `membership`, `participant`, `join`, `leave`, `invite`.
+2. Inspect every relevant migration.
+3. Inspect foreign keys.
+4. Inspect indexes.
+5. Inspect triggers.
+6. Inspect database functions/RPCs.
+7. Inspect RLS.
+8. Inspect the canonical Hub for identity/Space assumptions.
+9. Compare source against live production.
+10. Identify drift.
+11. Decide canonical identity.
+12. Decide canonical membership.
+13. Update Your Connections + Smart Spaces + Job 04.
+14. Record the decision in Team Naya.
+15. Update this master directive.
+16. Do not implement a new membership table unless absence is proven.
+
+### Required questions
+
+Answer all of these before closing Action 02:
+
+- What is the canonical user key?
+- Is `auth.users.id` the same identity used by `members.id`?
+- Which profile is canonical?
+- Which profile is legacy/projection?
+- Which identity does Smart Mail address?
+- Which identity does the Hub use?
+- What exactly owns a Space?
+- Who can discover it?
+- Who can view it?
+- Who can JOIN?
+- Is JOIN immediate or approval-based?
+- What does INVITE mean?
+- Where does membership live?
+- What prevents duplicate membership?
+- What are membership states?
+- How is LEAVE represented?
+- How is REVOKE represented?
+- Who can remove members?
+- Who can see participant identity?
+- What event records JOIN?
+- What event records LEAVE?
+- Does membership establish relationship eligibility?
+- How does `v7_connection_requests` interact with Space-derived relationships?
+- What is communication eligibility?
+- What is the server-side denial condition?
+- Which profile attributes are private?
+- What does an unauthorized user see?
+
+### Action 02 success condition
+
+The executor must return with:
+
+**DONE** — exact source/runtime inspection completed.  
+**PROOF** — exact object/function/policy evidence.  
+**NOT PROVEN** — every unresolved point.  
+**DECISION** — canonical identity + membership ownership.  
+**BLOCKERS** — exact blockers.  
+**NEXT** — the next complete master execution directive.
+
+If no membership substrate exists after exhaustive reconciliation, record:
+
+> **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**
+
+Then design the smallest canonical membership model, but do not silently deploy it.
+
+**Current subsystem status: IN PROGRESS / NOT VERIFIED.**
+
+**Lead the way from JOIN → MEMBERSHIP.**
