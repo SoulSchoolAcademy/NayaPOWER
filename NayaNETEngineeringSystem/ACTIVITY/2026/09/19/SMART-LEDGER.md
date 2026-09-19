@@ -68,3 +68,12 @@ Every consequential Ledger entry is freshly retrievable by an authorized human, 
 **Timestamp:** 2026-09-19T16:27:35Z
 
 Ledger was reconciled as the canonical evidence projection for the coordinated Wave A. Live counts remain 96 Ledger rows, 125 receipts, 124 cognition events, and 0 independent execution outcomes. No observation status is being inferred from receipt existence. Fresh authenticated retrieval, lineage UI, denial, replay/idempotency, and current Cloudflare parity remain open.
+
+
+## Session 002 — Wave A lineage handoff
+
+**Timestamp:** 2026-09-19T16:45:00Z
+
+Smart Ledger remains the canonical evidence projection. The coordinated proof sequence now explicitly ties one Smart Feed consequence to fresh Ledger retrieval and lineage reconstruction. Receipt existence must not be promoted to observed outcome; the independent `nayanet_execution_outcomes` boundary remains a separate proof requirement.
+
+**Successor:** Execute one authenticated Feed interaction, capture its canonical receipt/cognition consequence, retrieve the resulting Ledger row, and reconstruct source → authority → action → receipt → evidence/verification → Ledger without inferring observation.
