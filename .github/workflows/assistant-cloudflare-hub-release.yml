@@ -208,8 +208,10 @@ jobs:
               const proofAlias = 'ci' + process.env.GITHUB_SHA.slice(0, 16);
               await page.goto(process.env.NAYA_RUNTIME_URL + '/identity.html?name=Naya%20CI%20Proof&alias=' + proofAlias, { waitUntil: 'networkidle', timeout: 30000 });
               await page.getByRole('button', { name: 'ENTER NAYANET' }).click();
-              await page.waitForURL(url => url.origin === process.env.NAYA_RUNTIME_URL && url.pathname === '/', { timeout: 30000 });
-              await page.waitForLoadState('networkidle');
+              await page.waitForTimeout(3000);
+              const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
+              if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('Authenticated NayaNET identity not established: ' + JSON.stringify(identityProof));
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
               const result = await page.evaluate(async () => ({
                 title: document.title,
                 marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
