@@ -4,90 +4,66 @@ import source from './hub-baseline.html?raw';
 import { SmartMailSurface } from '../app/SmartMailSurface';
 import '../styles/naya-mail-baseline.css';
 
-const EXTERNAL_BASELINE_SCRIPTS = new Set(['/assistant-runtime.js', '/smart-feed.js', '/smart-tabs.js']);
-
-function executeBaselineScripts(root: HTMLElement) {
-  const scripts = Array.from(root.querySelectorAll<HTMLScriptElement>('script'));
-  for (const original of scripts) {
-    if (original.id === 'naya-static-runtime-observer-shim') continue;
-    if (original.src && !EXTERNAL_BASELINE_SCRIPTS.has(new URL(original.src, location.href).pathname)) continue;
-    const script = document.createElement('script');
-    for (const attr of Array.from(original.attributes)) {
-      if (attr.name !== 'src') script.setAttribute(attr.name, attr.value);
+const bridge = `
+<script>
+(() => {
+  const signal = (name) => window.parent.postMessage({ type: 'NAYANET_HUB_ACTION', action: name }, '*');
+  document.addEventListener('click', (event) => {
+    const el = event.target.closest('[data-page="mail"]');
+    if (el) {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      signal('mail');
     }
-    if (original.src) script.src = new URL(original.src, location.href).pathname;
-    else script.textContent = original.textContent || '';
-    document.body.appendChild(script);
-    script.remove();
-  }
-}
+  }, true);
+})();
+</script>`;
 
 export function HubBaselineApp() {
-  const host = useRef<HTMLDivElement>(null);
+  const frame = useRef<HTMLIFrameElement>(null);
   const mailRoot = useRef<Root | null>(null);
   const [mailOpen, setMailOpen] = useState(() => new URLSearchParams(location.search).get('surface') === 'mail');
 
   useEffect(() => {
-    const root = host.current;
-    if (!root || root.dataset.mounted === '1') return;
-    root.dataset.mounted = '1';
-    const doc = new DOMParser().parseFromString(source, 'text/html');
-
-    doc.head.querySelectorAll('style').forEach(style => {
-      const node = document.createElement('style');
-      node.dataset.nayanetBaseline = 'true';
-      node.textContent = style.textContent || '';
-      document.head.appendChild(node);
-    });
-
-    root.innerHTML = doc.body.innerHTML;
-
-    const mail = root.querySelector<HTMLButtonElement>('.nav button[data-page="mail"]');
-    if (mail) {
-      const intercept = (event: Event) => {
-        event.preventDefault();
-        event.stopImmediatePropagation();
+    const onMessage = (event: MessageEvent) => {
+      if (event.source !== frame.current?.contentWindow) return;
+      if (event.data?.type === 'NAYANET_HUB_ACTION' && event.data.action === 'mail') {
         setMailOpen(true);
-        const title = root.querySelector('#topTitle');
-        if (title) title.textContent = 'Smart Mail';
-      };
-      mail.addEventListener('click', intercept, true);
-    }
-
-    executeBaselineScripts(root);
+        history.replaceState(null, '', '?surface=mail');
+      }
+    };
+    window.addEventListener('message', onMessage);
+    return () => window.removeEventListener('message', onMessage);
   }, []);
 
   useEffect(() => {
-    const root = host.current;
-    if (!root) return;
-    const main = root.querySelector('main');
-    if (!main) return;
-
-    if (mailOpen) {
-      ['#searchSection', '.hero', '.feedNav', '.feedHead', '#blocks'].forEach(selector => {
-        root.querySelectorAll<HTMLElement>(selector).forEach(node => {
-          node.dataset.baselineHiddenForMail = 'true';
-          node.style.display = 'none';
-        });
-      });
-      let mount = main.querySelector<HTMLDivElement>('#naya-mail-react-root');
-      if (!mount) {
-        mount = document.createElement('div');
-        mount.id = 'naya-mail-react-root';
-        main.appendChild(mount);
-      }
-      if (!mailRoot.current) mailRoot.current = createRoot(mount);
-      mailRoot.current.render(<SmartMailSurface />);
-    } else if (mailRoot.current) {
-      mailRoot.current.unmount();
-      mailRoot.current = null;
-      main.querySelector('#naya-mail-react-root')?.remove();
-      root.querySelectorAll<HTMLElement>('[data-baseline-hidden-for-mail]').forEach(node => {
-        node.style.display = '';
-        delete node.dataset.baselineHiddenForMail;
-      });
-    }
+    if (!mailOpen) return;
+    const mount = document.getElementById('naya-mail-react-root');
+    if (!mount) return;
+    if (!mailRoot.current) mailRoot.current = createRoot(mount);
+    mailRoot.current.render(<SmartMailSurface />);
   }, [mailOpen]);
 
-  return <div ref={host} data-nayanet-baseline-app="true" data-mail-open={mailOpen ? 'true' : 'false'} />;
+  useEffect(() => () => {
+    mailRoot.current?.unmount();
+    mailRoot.current = null;
+  }, []);
+
+  if (mailOpen) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#050507' }}>
+        <div id="naya-mail-react-root" />
+      </div>
+    );
+  }
+
+  return (
+    <iframe
+      ref={frame}
+      title="NayaNET Intelligent Hub"
+      srcDoc={source.replace('</body>', bridge + '</body>')}
+      style={{ width: '100%', minHeight: '100vh', height: '100vh', border: 0, display: 'block', background: '#050507' }}
+      allow="clipboard-read; clipboard-write"
+    />
+  );
 }
