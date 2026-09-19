@@ -41,6 +41,26 @@ if (!receiver?.user?.id || !receiver?.access_token) throw new Error('RECEIVER_AN
 
 const senderId = sender.user.id;
 const receiverId = receiver.user.id;
+
+// Smart Mail's canonical execution boundary requires a mutual active Connection.
+// Establish that prerequisite through the existing Space + Connection primitives;
+// do not bypass the relationship gate with direct table writes.
+const spaceRows = await request(base + '/rest/v1/nayanet_spaces', {
+  method: 'POST',
+  headers: authHeaders(sender.access_token) ,
+  body: JSON.stringify({
+    owner_member_id: senderId,
+    name: 'P0 Smart Mail Proof Space',
+    purpose: 'Temporary governed relationship prerequisite for the P0 proof.',
+    visibility: 'shared'
+  })
+});
+if (!Array.isArray(spaceRows) || spaceRows.length !== 1 || !spaceRows[0]?.id) throw new Error('PROOF_SPACE_NOT_CREATED');
+const proofSpaceId = spaceRows[0].id;
+await rpc(receiver.access_token, 'nayanet_join_space', { p_space_id: proofSpaceId });
+await rpc(sender.access_token, 'nayanet_save_connection', { p_target_member_id: receiverId, p_space_id: proofSpaceId });
+await rpc(receiver.access_token, 'nayanet_save_connection', { p_target_member_id: senderId, p_space_id: proofSpaceId });
+
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
 const sendPayload = { recipient_user_id: receiverId, body, subject: 'NayaNET P0 Sender Receiver Proof', kind: 'direct', idempotency_key: idempotencyKey, project_id: 'NayaNET' };
