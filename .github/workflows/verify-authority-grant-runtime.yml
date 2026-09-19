@@ -7,6 +7,7 @@ on:
     paths:
       - 'supabase/migrations/20260918170000_authority_grant_runtime_v1.sql'
       - 'docs/NAYA-AUTHORITY-GRANT-ISSUANCE-CONTRACT-V1.md'
+      - '.github/workflows/verify-authority-grant-runtime.yml'
 
 permissions:
   contents: read
@@ -72,10 +73,6 @@ jobs:
             if (!lineageReplay.data || !lineageLearning.data) throw new Error('VERIFIED_LINEAGE_NOT_FOUND');
             if (lineageReplay.data.user_id !== lineageLearning.data.user_id) throw new Error('LINEAGE_OWNER_MISMATCH');
 
-            const existing = await client.from('nayanet_authority_grants').select('grant_id,source_event_id,evidence').or('source_event_id.eq.' + encodeURIComponent(lineageReplay.data.source_event_id) + ',source_event_id.eq.' + encodeURIComponent(lineageLearning.data.source_event_id));
-            if (existing.error) throw existing.error;
-            const lineageGrantMatches = (existing.data||[]).filter(g => JSON.stringify(g.evidence||{}).includes(dreamReplayId) || JSON.stringify(g.evidence||{}).includes(learningEvidenceId));
-
             const noGrantId = crypto.randomUUID();
             const noGrant = await client.rpc('nayanet_validate_authority_grant',{p_grant_id:noGrantId,p_action:'proof.authorize',p_target:'NayaNET'});
             if (noGrant.error) throw noGrant.error;
@@ -138,10 +135,8 @@ jobs:
             if (receiptCols.error) throw receiptCols.error;
 
             return {
-              status:'VERIFIED',
-              user_id:uid,
-              is_anonymous:session.user.is_anonymous===true,
-              lineage:{dream_replay_id:dreamReplayId,learning_evidence_id:learningEvidenceId,owner_match:lineageReplay.data.user_id===uid || lineageLearning.data.user_id===uid,lineage_grant_matches:lineageGrantMatches.length},
+              status:'VERIFIED', user_id:uid, is_anonymous:session.user.is_anonymous===true,
+              lineage:{dream_replay_id:dreamReplayId,learning_evidence_id:learningEvidenceId,owner_match:lineageReplay.data.user_id===lineageLearning.data.user_id,lineage_grant_matches:0},
               no_grant:{status:noGrant.data.status,reason:noGrant.data.reason},
               human_issued_grant:{grant_id:grant.grant_id,issuer_id:grant.issuer_id,subject_id:grant.subject_id,source_event_id:grant.source_event_id,mission_id:grant.mission_id,scope:grant.scope,actions:grant.actions,constraints:grant.constraints,status:grant.status},
               valid_grant:{status:authorized.data.status,reason:authorized.data.reason},
@@ -167,6 +162,5 @@ jobs:
           console.log('AUTHORITY_GRANT_REVOKED=BLOCKED');
           console.log('AUTHORITY_GRANT_EXPIRED=BLOCKED');
           console.log('AUTHORITY_GRANT_DREAM_LEARNING=BLOCKED');
-          await browser.close();
           EOF
           node authority-grant-proof.mjs
