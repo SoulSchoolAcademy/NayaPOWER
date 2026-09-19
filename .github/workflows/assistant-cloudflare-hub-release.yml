@@ -148,6 +148,20 @@ jobs:
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
               await context.close();
             }
+            const identityContext = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 900, height: 900 } });
+            const identityPage = await identityContext.newPage();
+            await identityPage.goto('file://' + process.env.RUNNER_TEMP + '/live-identity.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
+            const identity = await identityPage.evaluate(() => ({
+              title: document.title,
+              name: !!document.querySelector('#name'),
+              alias: !!document.querySelector('#alias'),
+              enter: !!document.querySelector('#enter'),
+              adapterScript: !!document.querySelector('script[src="/NAYANET/name-first-auth-adapter.js"]')
+            }));
+            if (!identity.title.includes('NayaNET')) throw new Error('identity: unexpected title ' + identity.title);
+            if (!identity.name || !identity.alias || !identity.enter || !identity.adapterScript) throw new Error('identity: name-first controls or adapter missing');
+            console.log('ASSISTANT_IDENTITY_BASELINE_VERIFIED', JSON.stringify(identity));
+            await identityContext.close();
           } finally {
             await browser.close();
           }
