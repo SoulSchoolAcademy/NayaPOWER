@@ -82,3 +82,42 @@ No token was fabricated, copied from another owner, or replaced with service-rol
 Signed out.
 
 **NEXT NAYA:** read this exact record first, then inspect the new workflow's latest run. If it has a job, execute the pre-existing proof. If it again has zero jobs, treat this as the repository-level GitHub Actions startup boundary and do not modify the proof logic to compensate. If it reaches a job and fails at the credential gate, provision the authorized owner test credential through the legitimate GitHub secret/provisioning boundary. If it reaches runtime and any proof gate fails, fix that exact boundary and rerun. Do not certify the pre-existing intelligence boundary until the full transaction passes.
+
+
+## FOLLOW-UP — LATEST ACTIONS DIAGNOSIS
+
+A fresh inspection of main shows the execution boundary has changed in an important way.
+
+Latest pre-existing-intelligence run on main:
+- Run: **35416213107**
+- HEAD: 1b683f402f8eec657bbae7d00ec81842fc5e0f14
+- Workflow: verify-proof7-preexisting-accumulated-intelligence.yml
+- Conclusion: **failure**
+- Jobs: **0**
+
+The original Proof 7 workflow at the same HEAD also has **0 jobs**:
+- Run: **35416212474**
+- Conclusion: **failure**
+
+The P0 Dream workflow at the same HEAD also has **0 jobs**:
+- Run: **35416212038**
+- Conclusion: **failure**
+
+However, this is **not a repository-wide GitHub Actions outage**: unrelated workflows on the exact same HEAD successfully created and completed jobs, including:
+- Run **35416213963** — Execution → Team Naya Activity Bridge — **SUCCESS**, one completed job.
+- Run **35416213885** — Golden Journey Acceptance — **SUCCESS**.
+- Run **35416213879** — Smart Note E2E Isolated — **SUCCESS**.
+
+Therefore the evidence now supports a narrower statement:
+
+> **The affected Proof 7/P0 workflow registrations are failing before job-graph creation, while other workflows on the exact same main commit still create jobs successfully.**
+
+The exact GitHub internal startup cause remains **NOT-PROVEN**. Public GitHub community reports document the same class of zero-job startup-failure symptom, but they do not establish the internal cause of this repository's runs.
+
+### HARD RULE
+
+Do **not** rewrite the accumulated-intelligence proof to hide or bypass this boundary.
+
+The proof source remains intact.
+
+**NEXT NAYA:** isolate the common registration/configuration property shared by the zero-job workflows (verify-proof7-preexisting, verify-proof7-compounding, and verify-p0-dream-scoring) versus a job-bearing workflow on the same HEAD, then make the smallest justified repair. Do not touch the pre-existing-intelligence semantics.
