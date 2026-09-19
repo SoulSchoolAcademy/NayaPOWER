@@ -21,7 +21,7 @@ jobs:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
       PROOF7_OWNER_ACCESS_TOKEN: ${{ secrets.NAYAPOWER_PROOF7_OWNER_ACCESS_TOKEN }}
-      PROOF_PATH: ${{ runner.temp }}/nayanet-proof7-preexisting-accumulated-intelligence.json
+      PROOF_PATH: ${{ github.workspace }}/nayanet-proof7-preexisting-accumulated-intelligence.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -36,6 +36,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: nayanet-proof7-preexisting-accumulated-intelligence
-          path: ${{ runner.temp }}/nayanet-proof7-preexisting-accumulated-intelligence.json
+          path: ${{ github.workspace }}/nayanet-proof7-preexisting-accumulated-intelligence.json
           if-no-files-found: error
           retention-days: 30
