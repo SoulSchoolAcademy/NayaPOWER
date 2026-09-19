@@ -69,3 +69,20 @@ Inspect actual NayaNET messaging primitives and prove individual → group/Space
 - [x] One next action recorded
 
 **Current state:** IMPLEMENTED; complete current-surface closure remains. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-MAIL.md).
+
+
+## ACTION 06 RELATIONSHIP GATE — 2026-09-19
+
+Smart Mail v12 remains the authenticated transport and authority layer, but direct Smart Mail now has an additional server-side relationship prerequisite.
+
+The authorized send path requires:
+1. authenticated sender identity;
+2. **mutual active canonical Connections** between sender and receiver;
+3. valid current `nayanet_authority_grants` authorization;
+4. existing idempotency/replay protections.
+
+The relationship check runs before authority validation and cannot be bypassed by the Hub.
+
+Transactional database proof returned **`RELATIONSHIP_REQUIRED`** for a sender/receiver pair with no mutual active Connection.
+
+Current state: **RELATIONSHIP GATE IMPLEMENTED / BROWSER + TWO-REAL-USER PROOF UNPROVEN**.
