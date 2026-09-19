@@ -37,7 +37,7 @@ Deno.serve(async(req)=>{
      const learningStatement=Array.isArray(receipt.learning)&&receipt.learning[0]?.statement?String(receipt.learning[0].statement):"Verified Smart Mail execution produced an independently receiver-verified outcome that is reusable intelligence.";
      const {data:learningEvidence,error:learningError}=await admin.from("learning_evidence").insert({
        member_id:message.sender_id,target_id:receipt.experiment_case_id??("smart-mail:"+receiptId),level:"E1_UNDERSTANDS",
-       provenance:"authenticated receiver verification + execution receipt + cognition/Ledger lineage",status:"ACTIVE",claim:learningStatement,
+       provenance:"VERIFICATION",status:"ACTIVE",claim:learningStatement,
        observed_value:{receipt_id:receiptId,outcome_id:outcome?.outcome_id??null,message_id:message.id,thread_id:message.thread_id,receiver_id:actorId,verified_value:outcome?.verified_value??null},
        verification_method:"authenticated receiver verification",source_event_id:sourceEventId
      }).select("id").single();
