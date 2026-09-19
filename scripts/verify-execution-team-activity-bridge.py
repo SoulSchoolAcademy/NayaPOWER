@@ -91,8 +91,9 @@ def main() -> int:
         activity_id = state.get("activity_event_id")
         assert activity_id
 
-        activity_path = events_root / f"{activity_id}.json"
-        activity_event = json.loads(activity_path.read_text(encoding="utf-8"))
+        from activity_event import find_event
+        activity_event = find_event(activity_id, events_root=events_root, index_path=ec.INDEX_PATH)
+        assert activity_event is not None, "FIRST_DIVERGENCE=canonical Activity Event cannot be independently recovered"
         assert activity_event["event_type"] == "activity"
         assert activity_event["verification"]["status"] == "VERIFIED"
         assert activity_event["continuity"]["execution_state"] == "COMPLETED"
