@@ -203,6 +203,7 @@ def execute_authorized(
     )
     return {
         **authorized,
+        "status": observed["status"],
         "execution_status": observed["status"],
         "execution_result": observed["execution_result"],
         "execution_evidence": observed["execution_evidence"],
