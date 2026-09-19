@@ -33,9 +33,11 @@ create table if not exists public.nayanet_policy_evaluations (
 alter table public.nayanet_policy_versions enable row level security;
 alter table public.nayanet_policy_evaluations enable row level security;
 create policy policy_versions_owner on public.nayanet_policy_versions for select using(auth.uid()=user_id);
+create policy policy_versions_owner_insert on public.nayanet_policy_versions for insert with check(auth.uid()=user_id);
 create policy policy_evaluations_owner on public.nayanet_policy_evaluations for select using(auth.uid()=user_id);
-revoke all on public.nayanet_policy_versions,public.nayanet_policy_evaluations from anon,authenticated;
-grant select on public.nayanet_policy_versions,public.nayanet_policy_evaluations to authenticated;
+create policy policy_evaluations_owner_insert on public.nayanet_policy_evaluations for insert with check(auth.uid()=user_id);
+revoke all on public.nayanet_policy_versions,public.nayanet_policy_evaluations from anon;
+grant select,insert on public.nayanet_policy_versions,public.nayanet_policy_evaluations to authenticated;
 create or replace function public.nayanet_policy_transition(p_policy_id uuid,p_to_state text,p_evaluation jsonb default '{}')
 returns jsonb language plpgsql security definer set search_path=''
 as $$
@@ -43,11 +45,12 @@ declare p public.nayanet_policy_versions;
 begin
  select * into p from public.nayanet_policy_versions where id=p_policy_id for update;
  if p.id is null then raise exception 'POLICY_NOT_FOUND'; end if;
+ if p.user_id <> auth.uid() then raise exception 'POLICY_OWNER_REQUIRED'; end if;
  if p_to_state='PROMOTED' then
   if p.state <> 'VERIFIED' then raise exception 'PROMOTION_REQUIRES_VERIFIED'; end if;
   if coalesce((p.holdout->>'result'),'') <> 'PASS' then raise exception 'PROMOTION_REQUIRES_HOLDOUT_PASS'; end if;
   if coalesce((p.adversarial->>'result'),'') <> 'PASS' then raise exception 'PROMOTION_REQUIRES_ADVERSARIAL_PASS'; end if;
-  if coalesce((p.promotion->>'authorized'),'false') <> 'true' then raise exception 'PROMOTION_REQUIRES_AUTHORIZATION'; end if;
+  if coalesce((p_evaluation->>'authorized'),'false') <> 'true' then raise exception 'PROMOTION_REQUIRES_AUTHORIZATION'; end if;
  end if;
  if p_to_state='CONTROLLED_TEST' and p.state <> 'AUTHORIZATION_REQUIRED' then raise exception 'CONTROLLED_TEST_REQUIRES_AUTHORIZATION_STATE'; end if;
  if p_to_state='VERIFIED' and p.state <> 'OBSERVED' then raise exception 'VERIFICATION_REQUIRES_OBSERVED'; end if;
@@ -61,4 +64,4 @@ begin
  return jsonb_build_object('status','TRANSITIONED','policy_id',p_policy_id,'state',p_to_state);
 end; $$;
 revoke execute on function public.nayanet_policy_transition(uuid,text,jsonb) from public,anon,authenticated;
-grant execute on function public.nayanet_policy_transition(uuid,text,jsonb) to service_role;
+grant execute on function public.nayanet_policy_transition(uuid,text,jsonb) to authenticated,service_role;
