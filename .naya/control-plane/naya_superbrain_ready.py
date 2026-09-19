@@ -79,8 +79,16 @@ def mission_claim(proof: dict[str, Any], name: str, current: str, runtime_claims
             # to proof-only/control-plane commits made after deployment. This keeps
             # the gate fail-closed while allowing canonical proof receipts to be
             # recorded without forcing a meaningless redeployment.
-            if not (name == "runtime_parity" and claim_type == "PRODUCTION" and
-                    claim.get("deployed_source_head") and claim.get("source_paths")):
+            if not (
+                name in {"runtime_parity", "authenticated_lifecycle", "external_cold_naya"}
+                and claim.get("deployed_source_head")
+                and claim.get("source_paths")
+                and (
+                    (name == "runtime_parity" and claim_type == "PRODUCTION")
+                    or (name == "authenticated_lifecycle" and claim_type in {"RUNTIME", "WHOLE_JOURNEY"})
+                    or (name == "external_cold_naya" and claim_type in {"RUNTIME", "WHOLE_JOURNEY"})
+                )
+            ):
                 return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                               "evidence is not bound to the live HEAD")
             deployed_head = str(claim["deployed_source_head"])
