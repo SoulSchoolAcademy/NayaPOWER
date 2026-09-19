@@ -50,9 +50,13 @@ def build_compounding_measurement(
     event_id = event.get("event_id")
     action_id = execution.get("action_id")
     run_id = execution.get("run_id")
+    receipt_id = execution.get("execution_receipt_id") or execution.get("receipt_id")
+    request_id = execution.get("request_id")
     _require(event_id, "canonical Activity event_id")
     _require(action_id, "action_id")
     _require(run_id, "run_id")
+    _require(receipt_id, "execution_receipt_id")
+    _require(request_id, "request_id")
     _require(evidence, "verification evidence")
 
     usage = dict(resource_usage or {})
