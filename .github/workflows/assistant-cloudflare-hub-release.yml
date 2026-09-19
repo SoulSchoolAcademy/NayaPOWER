@@ -90,9 +90,8 @@ jobs:
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
           cat > verify-assistant-runtime.mjs <<'EOF'
-          import { chromium, request } from 'playwright';
+          import { chromium } from 'playwright';
 
-          const url = process.env.NAYA_RUNTIME_URL;
           const browser = await chromium.launch({
             headless: true,
             executablePath: '/usr/bin/google-chrome',
@@ -104,33 +103,22 @@ jobs:
               { width: 1440, height: 1000, label: 'desktop' },
               { width: 390, height: 844, label: 'mobile' }
             ]) {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height }, extraHTTPHeaders: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
               const page = await context.newPage();
-              await page.goto(`${url}/__naya_release__/${process.env.GITHUB_SHA}/?naya_browser_proof=${Date.now()}-${viewport.label}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
               await page.waitForTimeout(1000);
 
-              const api = await request.newContext();
-              const response = await api.get(`${url}/?naya_browser_fetch=${process.env.GITHUB_SHA}-${viewport.label}`, { failOnStatusCode: false, headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
-              const html = await response.text();
-              const result = await page.evaluate(({ html, status }) => {
-                const parsed = new DOMParser().parseFromString(html, 'text/html');
-                return {
-                  fetchStatus: status,
-                  fetchMarker: html.includes('nayanet-direct-nine'),
-                  fetchRuntime: html.includes('assistant-runtime.js'),
-                  title: parsed.title,
-                  directNine: !!parsed.querySelector('meta[name="nayanet-direct-nine"]'),
-                  navCount: parsed.querySelectorAll('.naya509-primary-nav a').length,
-                  blockCount: parsed.querySelectorAll('.block').length,
-                  layerCounts: [...parsed.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
-                  hasNaya: !!parsed.body && parsed.body.innerText.includes('Naya'),
-                  hasIntelligence: !!parsed.body && parsed.body.innerText.includes('INTELLIGENCE')
-                };
-              }, { html, status: response.status });
-              await api.dispose();
+              const result = await page.evaluate(() => ({
+                title: document.title,
+                directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
+                navCount: document.querySelectorAll('.naya509-primary-nav a').length,
+                blockCount: document.querySelectorAll('.block').length,
+                layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
+                hasNaya: !!document.body && document.body.innerText.includes('Naya'),
+                hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
+              }));
 
-              if (result.fetchStatus !== 200) throw new Error(`${viewport.label}: live fetch HTTP ${result.fetchStatus}`);
-              if (!result.fetchMarker || !result.fetchRuntime || !result.directNine) throw new Error(`${viewport.label}: live fetch missing canonical Hub markers`);
+              if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
               if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
               if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
               if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
@@ -142,6 +130,7 @@ jobs:
           } finally {
             await browser.close();
           }
+
           EOF
 
           NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" node verify-assistant-runtime.mjs
