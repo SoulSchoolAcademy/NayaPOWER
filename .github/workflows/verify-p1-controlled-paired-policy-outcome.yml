@@ -49,3 +49,5 @@ jobs:
           name: p1-controlled-paired-policy-receipt
           path: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
           retention-days: 30
+
+# learning-level retry: canonical E6_RETAINED
