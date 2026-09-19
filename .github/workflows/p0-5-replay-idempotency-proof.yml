@@ -90,6 +90,10 @@ jobs:
             }]};
             const c=await browser.newContext({storageState});
             const p=await c.newPage();
+            await p.goto(runtime+'/identity.html?naya_hold=1&name=P0.5%20Replay%20A&alias=p05replaya',{waitUntil:'domcontentloaded',timeout:60000});
+            await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+            const handoff=await p.evaluate(async()=>window.NayaNETNameFirstAuth.current());
+            if(!handoff?.authenticated||handoff.userId!==session.user.id) throw Error('CANONICAL_IDENTITY_HANDOFF_MISMATCH');
             await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});
             await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
             const auth=await p.evaluate(async({base,key})=>{
