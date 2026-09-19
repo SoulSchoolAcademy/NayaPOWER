@@ -85,7 +85,7 @@ jobs:
             test -s 'NAYANET/HUB/src/baseline/hub-baseline.html'
             test -s 'assistant-runtime.js'
             cd NAYANET/HUB
-            npm ci --no-audit --no-fund
+            npm install --no-audit --no-fund
             npm run build
             test -s dist/index.html
             grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
