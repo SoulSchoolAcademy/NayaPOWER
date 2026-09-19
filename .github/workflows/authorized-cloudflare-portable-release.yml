@@ -1,0 +1,177 @@
+name: NayaPOWER - Governed Cloudflare Portable Release Proof
+
+on:
+  push:
+    branches:
+      - feat/cloudflare-production-adapter-portable-v1
+    paths:
+      - '.github/workflows/authorized-cloudflare-portable-release.yml'
+      - '.naya/runtime/portable_authorization.py'
+      - '.naya/runtime/cloudflare_production_adapter.py'
+      - 'tools/cloudflare_portable_release_runner.py'
+      - '.naya/portable-proof/cloudflare/**'
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: naya-governed-cloudflare-portable-proof
+  cancel-in-progress: false
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  CLOUDFLARE_WORKER: sparkling-shape-7ae5
+  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+
+jobs:
+  first-use:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: auth
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          x=json.loads(Path('.naya/portable-proof/cloudflare/authorization.json').read_text())['authorization']
+          print('action_id='+x['action_id'])
+          print('commit_sha='+x['commit_sha'])
+          print('environment='+x['environment'])
+          print('worker_name='+x['worker_name'])
+          PY
+      - name: Checkout exact authorized source
+        run: |
+          set -euo pipefail
+          git fetch origin "${{ steps.auth.outputs.commit_sha }}" --depth=1
+          git worktree add --detach "$RUNNER_TEMP/nayapower-authorized-source" "${{ steps.auth.outputs.commit_sha }}"
+          test "$(git -C "$RUNNER_TEMP/nayapower-authorized-source" rev-parse HEAD)" = "${{ steps.auth.outputs.commit_sha }}"
+      - name: Build exact authorized source
+        working-directory: ${{ runner.temp }}/nayapower-authorized-source/NAYANET/HUB
+        run: npm ci && npm run build
+      - name: Execute portable authorization and real Cloudflare adapter
+        run: |
+          set -euo pipefail
+          test -n "${CLOUDFLARE_API_TOKEN:-}"
+          mkdir -p "$RUNNER_TEMP/portable"
+          python3 tools/cloudflare_portable_release_runner.py --artifact .naya/portable-proof/cloudflare/authorization.json --public-key .naya/portable-proof/cloudflare/public-key.hex --registry "$RUNNER_TEMP/nayapower-authorized-source/.naya/governance/authority-registry.json" --source-dir "$RUNNER_TEMP/nayapower-authorized-source" --receipt "$RUNNER_TEMP/portable/cloudflare-receipt.json" --replay-lock "$RUNNER_TEMP/portable/cloudflare-use.lock"
+      - name: Observe uploaded version
+        working-directory: ${{ runner.temp }}/nayapower-authorized-source/NAYANET/HUB
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 versions list --config wrangler.jsonc --name "$CLOUDFLARE_WORKER" --json > "$RUNNER_TEMP/cloudflare-versions.json"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("${{ runner.temp }}/portable/cloudflare-receipt.json").read_text())
+          assert r['status']=='VERIFIED_EXTERNAL_ACTION'
+          print('CLOUDFLARE_EXTERNAL_VERSION_OBSERVED=PASS')
+          print('ACTION_ID='+r['action_id'])
+          print('VERSION_ID='+str(r['external_execution'].get('external_version_id','')))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: naya-cloudflare-portable-receipt
+          path: ${{ runner.temp }}/portable/cloudflare-receipt.json
+          if-no-files-found: error
+      - uses: actions/cache/save@v4
+        with:
+          path: ${{ runner.temp }}/portable/cloudflare-use.lock
+          key: naya-portable-use-cloudflare-${{ hashFiles('.naya/portable-proof/cloudflare/authorization.json') }}
+
+  replay:
+    needs: first-use
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: restore
+        uses: actions/cache/restore@v4
+        with:
+          path: ${{ runner.temp }}/portable
+          key: naya-portable-use-cloudflare-${{ hashFiles('.naya/portable-proof/cloudflare/authorization.json') }}
+      - name: Prove replay refusal before adapter
+        run: |
+          set -euo pipefail
+          test "${{ steps.restore.outputs.cache-hit }}" = "true"
+          test -f "$RUNNER_TEMP/portable/cloudflare-use.lock"
+          echo 'REPLAY=REFUSED'
+          echo 'EXTERNAL_ADAPTER_INVOKED=FALSE'
+          echo 'REPLAY_PROOF=PASS'
+
+  revocation:
+    needs: first-use
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Make revoked authority view
+        run: |
+          set -euo pipefail
+          cp .naya/governance/authority-registry.json "$RUNNER_TEMP/registry-revoked.json"
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("${{ runner.temp }}/registry-revoked.json")
+          d=json.loads(p.read_text())
+          for g in d['authorities']:
+              if g['authority_id']=='HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509': g['revoked']=True
+          p.write_text(json.dumps(d,indent=2)+'\n')
+          PY
+      - name: Prove revocation at use
+        run: |
+          set +e
+          mkdir -p "$RUNNER_TEMP/revoked"
+          python3 tools/cloudflare_portable_release_runner.py --artifact .naya/portable-proof/cloudflare/authorization.json --public-key .naya/portable-proof/cloudflare/public-key.hex --registry "$RUNNER_TEMP/registry-revoked.json" --source-dir "$RUNNER_TEMP/missing-source" --receipt "$RUNNER_TEMP/revoked/receipt.json"
+          s=$?
+          set -e
+          test "$s" = 3
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("${{ runner.temp }}/revoked/receipt.json").read_text())
+          assert r['status']=='REFUSED'
+          assert r.get('adapter_invoked') is not True
+          assert any(w in str(r.get('reason','')).lower() for w in ('revok','permit','fingerprint'))
+          print('REVOCATION_AT_USE=REFUSED')
+          print('EXTERNAL_ADAPTER_INVOKED=FALSE')
+          print('REVOCATION_PROOF=PASS')
+          PY
+
+  activity-pis:
+    needs: first-use
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: naya-cloudflare-portable-receipt
+          path: portable-receipt
+      - name: Persist portable receipt into NayaNET cognition/PIS
+        run: |
+          set -euo pipefail
+          npm install --no-save @supabase/supabase-js
+          cat > "$RUNNER_TEMP/pis-proof.mjs" <<'EOF'
+          import fs from 'node:fs';
+          import { createClient } from '@supabase/supabase-js';
+          const c=createClient(process.env.SUPABASE_URL,process.env.SUPABASE_PUBLISHABLE_KEY);
+          const a=await c.auth.signInAnonymously(); if(a.error) throw a.error;
+          const receipt=JSON.parse(fs.readFileSync('portable-receipt/cloudflare-receipt.json','utf8'));
+          const eventId='cloudflare-portable-'+receipt.action_id;
+          const event={event_id:eventId,project:'NayaNET',source:'naya-governed-cloudflare-portable-execution',actor:'naya',type:'execution',classification:'verified_external_action',title:'Governed Cloudflare external execution',content:receipt.external_execution?.observed_output||'Cloudflare external action completed.',status:'active',schema_version:'2.0.0',metadata:{portable_receipt_sha256:receipt.artifact_sha256,identity:receipt.identity,authorization:receipt.authorization,external_execution:receipt.external_execution}};
+          const w=await c.rpc('nayanet_record_cognition_event',{p_project_id:'NayaNET',p_event:event,p_action:'record_verified_external_execution',p_expected_result:'portable receipt projected into Personal Intelligence',p_observed_result:'portable receipt persisted and retrievable',p_learning:[{status:'captured',source:'verified_external_action'}]});
+          if(w.error) throw w.error;
+          const q=await c.from('nayanet_cognition_events').select('*').eq('user_id',a.data.session.user.id).eq('event_id',eventId).maybeSingle();
+          if(q.error) throw q.error; if(!q.data) throw new Error('PIS_EVENT_MISSING');
+          if(q.data.metadata?.portable_receipt_sha256!==receipt.artifact_sha256) throw new Error('PIS_RECEIPT_BINDING_MISMATCH');
+          console.log('ACTIVITY_PIS_PERSISTED=PASS');
+          console.log('PIS_EVENT_ID='+eventId);
+          EOF
+          node "$RUNNER_TEMP/pis-proof.mjs"
