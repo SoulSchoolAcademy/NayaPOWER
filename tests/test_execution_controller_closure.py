@@ -382,6 +382,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 action=action,
                 execution_authorization=issued.authorization,
                 gate=gate,
+                identity_envelope=identity_for(authority),
                 preflight=approved_preflight(),
             )
             self.assertEqual(result["status"], "EXECUTING")
