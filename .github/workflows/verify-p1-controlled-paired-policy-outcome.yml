@@ -15,8 +15,6 @@ jobs:
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-      ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
-      ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
     steps:
       - name: Checkout exact source
         uses: actions/checkout@v4
