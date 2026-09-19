@@ -1,0 +1,32 @@
+name: Verify Authorized GitHub Dispatch External Boundary
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_sha:
+        required: true
+        type: string
+      approval:
+        required: true
+        type: string
+      reason:
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate dispatch inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ inputs.approval }}" = "EXPLICIT_APPROVAL_GRANTED"
+          test "${{ inputs.reason }}" != ""
+          test "${{ inputs.commit_sha }}" = "${GITHUB_SHA}"
+          echo "AUTHORIZED_GITHUB_DISPATCH_EXTERNAL_PROOF=PASS"
+          echo "DISPATCHED_COMMIT=${GITHUB_SHA}"
+          echo "DISPATCH_REASON=${{ inputs.reason }}"
