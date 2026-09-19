@@ -17,7 +17,6 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Mapping
 
-from universal_execution_gate import _execution_binding_hash
 from release_execution_boundary import deploy_target
 
 WORKER = "sparkling-shape-7ae5"
