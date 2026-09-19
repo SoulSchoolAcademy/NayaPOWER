@@ -74,7 +74,7 @@ const cognition=await req(base+'/rest/v1/nayanet_cognition_events?select=id,even
 if(receipt.length!==1||receipt[0].status!=='SUCCESS'||receipt[0].value?.verified!==true) throw new Error('RECEIPT_VERIFICATION_FAILED');
 if(cognition.length!==1||cognition[0].receipt_id!==first.execution_receipt_id) throw new Error('COGNITION_RECEIPT_LINEAGE_FAILED');
 
-const ledger=await req(base+'/rest/v1/nayanet_ledger_events?select=id,source_event_id&source_event_id=eq.'+encodeURIComponent(cognition[0].event_id),{headers:h(A.access_token)});
+const ledger=await req(base+'/rest/v1/nayanet_smart_ledger?select=ledger_event_id,source_table,source_id&source_table=eq.nayanet_cognition_events&source_id=eq.'+encodeURIComponent(cognition[0].event_id),{headers:h(A.access_token)});
 if(ledger.length<1) throw new Error('LEDGER_LINEAGE_MISSING');
 
 const evidence=await req(base+'/rest/v1/learning_evidence',{method:'POST',headers:{...h(A.access_token),'Prefer':'return=representation'},body:JSON.stringify({
