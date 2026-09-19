@@ -2,7 +2,7 @@
   "$schema": "naya/deployment-governance/v1",
   "status": "CANONICAL",
   "version": "1.1.0",
-  "purpose": "Separate repository activity from publication. Vercel remains connected infrastructure, but deployment is an explicitly authorized side effect.",
+  "purpose": "Separate repository activity from publication. Cloudflare is the canonical NayaNET Hub runtime; deployment remains an explicitly authorized side effect.",
   "default": {
     "deployment": "DENY",
     "preview_deployment": "DENY",
@@ -16,7 +16,7 @@
       "exact commit SHA",
       "target environment",
       "authorized deployment surface",
-      "canonical Vercel project binding",
+      "canonical Cloudflare account and Worker binding",
       "verification evidence",
       "release reason",
       "authorized_by",
@@ -24,11 +24,11 @@
       "approval state"
     ]
   },
-  "canonical_release_workflow": ".github/workflows/authorized-vercel-release.yml",
-  "canonical_vercel_project": {
-    "project_id": "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK",
-    "project_name": "naya-power",
-    "organization_id": "team_RQnhoOb3bAXxMlcr67GFTu3Q"
+  "canonical_release_workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+  "canonical_cloudflare_target": {
+    "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+    "worker_name": "sparkling-shape-7ae5",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev"
   },
   "non_deploying_changes": [
     "documentation",
@@ -53,6 +53,6 @@
       "requires": "release_authorization.target_environment=production"
     }
   },
-  "bypass_prohibition": "No GitHub workflow, repository event, commit, branch push, pull request, note, document, or automation may invoke Vercel deployment outside the canonical release workflow and release authorization contract.",
+  "bypass_prohibition": "No GitHub workflow, repository event, commit, branch push, pull request, note, document, or automation may invoke Cloudflare deployment outside the canonical release workflow and release authorization contract.",
   "truth_rule": "CONNECTED != DEPLOYABLE; COMMITTED != RELEASED; VERIFIED != PRODUCTION_PROVEN; AUTHORIZED != SUCCESSFUL UNTIL DEPLOYMENT EVIDENCE EXISTS."
 }
