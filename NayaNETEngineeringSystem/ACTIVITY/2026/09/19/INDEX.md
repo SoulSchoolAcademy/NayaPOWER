@@ -1,45 +1,89 @@
 # NayaNET Engineering Activity — 2026-09-19
 
-Day: Saturday, September 19, 2026
+**Navigation:** YEAR → MONTH → DAY → FEATURE → SESSION
 
-## DAY NAVIGATION
+## Master readiness snapshot — 2026-09-19
 
-**Calendar path:** [2026](../../../../) → [09 — September](../) → **19 — Today**
+This is the lead-Naya product-closure review. Each feature is a part of one NayaNET vehicle: one intelligence/event substrate, one authority model, one evidence model, multiple product projections.
 
-## FEATURE ACTIVITY
+| Feature | Product readiness | Engine | Interface | State | Today's closure boundary |
+|---|---:|---:|---:|---|---|
+| Smart Tabs | 2.8/10 | 1/10 | 8/10 design | DEFINED | persistent real navigation + isolation + Cloudflare proof |
+| Smart Feed | 4.7/10 | 6/10 | 8.5/10 design | BACKEND V1 LIVE | wire UI to v1 + three streams + proof |
+| Smart Ledger | 6.0/10 | 8/10 | 5/10 | IMPLEMENTED | fresh retrieval + lineage + denial + parity |
+| Smart List | 2.2/10 | 1/10 | 7/10 design | DEFINED | reconcile/create canonical list membership |
+| Smart Mail | 6.5/10 | 8.5/10 | 7/10 | IMPLEMENTED | current UI/v12 + two-user + replay |
+| Smart Share | 2.7/10 | 3/10 | 7/10 design | DEFINED | reconcile publication/share + authorized/denied proof |
+| Smart Spaces | 3.4/10 | 4/10 | 6/10 | FOUNDATION | full authenticated lifecycle |
+| Your Intelligence Today | 2.5/10 | 2/10 | 7/10 design | DEFINED | evidence-linked daily synthesis |
+| Intelligent Reports | 3.1/10 | 3/10 | 7/10 design | DEFINED | generation + evidence + privacy + regeneration |
 
-| Feature | Current state | Daily report | Detailed sessions |
-|---|---|---|---|
-| Smart Feed | AUDITED — 3.2/10 | [SMART-FEED.md](./SMART-FEED.md) | [SMART-FEED/](./SMART-FEED/) |
-| Smart Tabs | DEFINED — runtime mapping not proven | [SMART-TABS.md](./SMART-TABS.md) | — |
-| Smart Ledger | IMPLEMENTED — production runtime evidence exists; full closure mapping remains | [SMART-LEDGER.md](./SMART-LEDGER.md) | — |
-| Smart List | DEFINED — runtime implementation not reconciled | [SMART-LIST.md](./SMART-LIST.md) | — |
-| Smart Mail | IMPLEMENTED — live backend and production proof exist; product mapping remains | [SMART-MAIL.md](./SMART-MAIL.md) | — |
-| Smart Share | DEFINED — runtime product path not proven | [SMART-SHARE.md](./SMART-SHARE.md) | — |
-| Smart Spaces | FOUNDATION — live primitives exist; lifecycle not proven | [SMART-SPACES.md](./SMART-SPACES.md) | — |
-| Your Intelligence Today | DEFINED — synthesis product not proven | [YOUR-INTELLIGENCE-TODAY.md](./YOUR-INTELLIGENCE-TODAY.md) | — |
-| Intelligent Reports | DEFINED — report pipeline not proven | [INTELLIGENT-REPORTS.md](./INTELLIGENT-REPORTS.md) | — |
+**These are readiness-to-ship measurements, not rankings of product importance or design quality.** They show closure distance against each feature's own contract.
 
-## SMART FEED SESSION TIMELINE
+## System-level truth
 
-1. [Session 001 — Initial ownership and full implementation audit](./SMART-FEED/SESSION-001.md)
-2. [Session 002 — Daily activity record correction and full-report synchronization](./SMART-FEED/SESSION-002.md)
+### Already strong
 
-## OPERATING RULE
+- Product contracts and .naya authority are mature.
+- The shared completion/activity contract exists.
+- The Hub visual baseline is substantial.
+- Canonical cognition, intelligence, authority, receipt and Ledger infrastructure is live.
+- Smart Mail has real production transaction evidence.
+- Smart Feed now has a live JWT-protected v1 Edge Function.
+- RLS is enabled on the inspected public tables.
 
-A Naya opening work on a feature must open this day, open that feature's activity record, inspect source/runtime, do the work, update evidence/state/TODOs, append a new session record, and leave exactly one successor action before sign-out.
+### System-level blockers
 
-**NO SILENT ENGINEERING.** No claim of completion without repository/runtime evidence.
+1. Current Hub UI/source must be separated functionally without redesign.
+2. Cloudflare source → build → deployed runtime parity is not yet proven for the current product surface.
+3. Two-real-user behavioral isolation remains unproven.
+4. `nayanet_execution_outcomes` currently has 0 rows, so the independent outcome/observation boundary is incomplete.
+5. Activity is now correctly organized in GitHub as YEAR → MONTH → DAY → FEATURE → SESSION, but the deployed Hub still needs to render the same canonical projection.
+6. Features must reuse the one intelligence/event substrate rather than creating parallel stores.
 
-## CROSS-FEATURE TODO
+## Dependency order for today
 
-- [ ] Prove human-facing YEAR → MONTH → DAY → FEATURE → SESSION navigation in the deployed Intelligent Hub.
-- [ ] Map Smart Tabs to the real Hub insertion point and existing retrieval/navigation primitives.
-- [ ] Reconcile every feature's documented state against live GitHub + Supabase/runtime evidence.
-- [ ] Connect feature activity projections to canonical activity events without creating a duplicate event store.
-- [ ] Make the Hub Activity surface expose the same calendar navigation.
-- [ ] Keep Team Naya communication on the same calendar discipline.
+These features are separate assignments but not separate machines:
 
-## ONE CURRENT CONTINUATION ACTION
+**1. Smart Feed + Smart Tabs**  
+Feed establishes the real retrieval/presentation surface; Tabs establishes navigation into it.
 
-Implement and prove the real Hub calendar/activity navigation, starting with 2026-09-19 → Smart Feed → session, then verify the same path for a previous day.
+**2. Smart Ledger + Smart Mail**  
+Ledger proves evidence; Mail provides a real consequential action path and already has strong backend evidence.
+
+**3. Smart Share + Smart List**  
+Share controls explicit publication; Lists organize canonical references and must not leak protected items.
+
+**4. Smart Spaces**  
+Consumes sharing, activity, mail and intelligence primitives.
+
+**5. Your Intelligence Today + Intelligent Reports**  
+Both consume the canonical event/intelligence/evidence substrate and should not become new source stores.
+
+Parallel work is allowed, but shared primitives must be coordinated rather than independently reinvented.
+
+## Definition of system completion
+
+The vehicle is not complete because nine pages exist.
+
+It is complete when:
+
+**AUTHENTICATE → RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → PRESENT → CONTINUE**
+
+works across the connected features using one canonical intelligence/event substrate, with the actual Hub design preserved and the Cloudflare runtime proven.
+
+## Feature reports
+
+- [Smart Tabs](./SMART-TABS.md)
+- [Smart Feed](./SMART-FEED.md)
+- [Smart Ledger](./SMART-LEDGER.md)
+- [Smart List](./SMART-LIST.md)
+- [Smart Mail](./SMART-MAIL.md)
+- [Smart Share](./SMART-SHARE.md)
+- [Smart Spaces](./SMART-SPACES.md)
+- [Your Intelligence Today](./YOUR-INTELLIGENCE-TODAY.md)
+- [Intelligent Reports](./INTELLIGENT-REPORTS.md)
+
+## NEXT
+
+Assign one Naya to each feature report. Each Naya must start from the report, inspect the linked .naya authority and actual runtime/source, execute only the stated closure boundary, record evidence, update the feature report, and leave exactly one successor action. Cross-feature changes must be reflected in every affected feature.
