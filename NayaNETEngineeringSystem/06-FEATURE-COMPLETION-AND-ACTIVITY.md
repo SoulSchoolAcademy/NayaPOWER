@@ -231,4 +231,4 @@ The Smart Tabs bar itself must not become the activity database. It is the navig
 
 ## 13. NEXT ACTION
 
-**Implement the shared feature-activity model and human-facing YEAR → MONTH → DAY → SESSION navigation, then connect each Engineering System feature to its own activity projection and completion checklist. Prove one feature end-to-end first, use that implementation as the pattern, and propagate the same contract without creating duplicate event stores.**
+**Authenticate and verify the new canonical Engineering Activity projection against `public.nayanet_team_activity`, then use the proven projection as the pattern for feature-specific activity filtering and completion-state navigation without creating duplicate event stores.**
