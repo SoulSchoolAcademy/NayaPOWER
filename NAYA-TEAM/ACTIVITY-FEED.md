@@ -19,6 +19,43 @@ Those are different views with different purposes. They share one event truth; t
 
 Use dated records under `NAYA-TEAM/YYYY/MM/DD/` for durable entries and direct Smart Links for evidence.
 
+## 📅 CANONICAL ACTIVITY CALENDAR
+
+This feed is a **navigation surface**, not a single status post.
+
+**YEAR → MONTH → DAY → FEATURE → SESSION**
+
+- [2026](./2026/INDEX.md)
+  - [September 2026](./2026/09/INDEX.md)
+    - [September 19, 2026](./2026/09/19/INDEX.md)
+      - [Smart Tabs](./2026/09/19/SMART-TABS/INDEX.md)
+      - [Smart Feed](./2026/09/19/SMART-FEED/INDEX.md)
+      - [Smart Ledger](./2026/09/19/SMART-LEDGER/INDEX.md)
+      - [Smart List](./2026/09/19/SMART-LIST/INDEX.md)
+      - [Smart Mail](./2026/09/19/SMART-MAIL/INDEX.md)
+      - [Smart Share](./2026/09/19/SMART-SHARE/INDEX.md)
+      - [Smart Spaces](./2026/09/19/SMART-SPACES/INDEX.md)
+      - [Your Intelligence Today](./2026/09/19/YOUR-INTELLIGENCE-TODAY/INDEX.md)
+      - [Intelligent Reports](./2026/09/19/INTELLIGENT-REPORTS/INDEX.md)
+
+### Session law
+
+Every substantive session gets its **own immutable timestamped record** under the appropriate day/feature. A later session **appends**; it does not overwrite an earlier session. Daily feature INDEX files are rollups/navigation, not the session history itself.
+
+### Current day — September 19, 2026
+
+The current day is a live running feed. The day index is the human entry point:
+
+[Open 2026-09-19 → feature → session](./2026/09/19/INDEX.md)
+
+Current dated sessions already preserved include:
+
+- [Canonical Hub baseline correction](./2026/09/19/2026-09-19__CANONICAL-HUB-BASELINE-CORRECTION.md)
+- [Two-real-user owner-isolation proof attempt](./2026/09/19/2026-09-19T02-30-00Z__TWO-REAL-USER-OWNER-ISOLATION-PROOF.md)
+
+The feature indexes below are the next navigation layer. They point to the feature's current rollup and its timestamped session records; they do not create a second event store.
+
+
 ## CURRENT PROJECT
 
 **NayaNET Intelligent Hub — finish the real operational product.**
