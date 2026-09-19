@@ -7,7 +7,7 @@ import '../styles/naya-mail-baseline.css';
 export function HubBaselineApp() {
   const host = useRef<HTMLDivElement>(null);
   const mailRoot = useRef<Root | null>(null);
-  const [mailOpen, setMailOpen] = useState(false);
+  const [mailOpen, setMailOpen] = useState(() => new URLSearchParams(location.search).get('surface') === 'mail');
   useEffect(() => {
     const root = host.current;
     if (!root || root.dataset.mounted === '1') return;
@@ -35,5 +35,6 @@ export function HubBaselineApp() {
   },[mailOpen]);
   return <div ref={host} data-nayanet-baseline-app="true" data-mail-open={mailOpen?'true':'false'} />;
 }
+
 
 
