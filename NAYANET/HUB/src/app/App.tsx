@@ -6,6 +6,7 @@ import type { IntelligentEvent, Lens } from '../intelligence/types';
 import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
 import { initializeCognition, rememberIntelligence } from '../intelligence/cognition';
 import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
+import { loadSmartFeed } from '../intelligence/smartFeedProjection';
 import type { PISFeed } from '../data/pis';
 import { SparklingShapeShell } from './SparklingShapeShell';
 import { routes } from './routes';
@@ -93,7 +94,7 @@ function CommandCenter({ initialLens = 'personal' }: { initialLens?: Lens }) {
   const [query, setQuery] = useState('');
   const [selected, setSelected] = useState<IntelligentEvent | undefined>();
   useEffect(() => setLens(initialLens), [initialLens]);
-  useEffect(() => { let alive = true; setError(''); loadPrimaryIntelligence().then(value => { if (!alive) return; setFeed(value); setEvents(sortPrimaryIntelligence(value.events)); }).catch(reason => { if (alive) setError(reason instanceof Error ? reason.message : 'PIS_FEED_UNAVAILABLE'); }); return () => { alive = false; }; }, [identity.is_authenticated]);
+  useEffect(() => { let alive = true; setError(''); const load = identity.is_authenticated ? loadSmartFeed(lens, 30).then(value => ({ schema_version:'SMART-FEED-1', generated_at:new Date().toISOString(), source:'supabase:nayanet_intelligence_index' as const, event_count:value.events.length, events:value.events })) : loadPrimaryIntelligence(); load.then(value => { if (!alive) return; setFeed(value); setEvents(sortPrimaryIntelligence(value.events)); }).catch(reason => { if (alive) setError(reason instanceof Error ? reason.message : 'SMART_FEED_UNAVAILABLE'); }); return () => { alive = false; }; }, [identity.is_authenticated, lens]);
   useEffect(() => { const handler = (event: Event) => { const q = (event as CustomEvent<{ query?: string }>).detail?.query || ''; setQuery(q); setSelected(undefined); }; addEventListener('nayanet:search', handler); return () => removeEventListener('nayanet:search', handler); }, []);
   const filtered = useMemo(() => { const q = query.trim().toLowerCase(); if (!q) return events; return events.filter(event => [event.source.label, event.human_input.raw, event.context.topic, ...(event.context.tags || []), event.naya_interpretation.observation || '', event.naya_interpretation.interpretation || '', event.meaning.text || '', event.action.text || '', event.whats_in_it_for_you || ''].join(' ').toLowerCase().includes(q)); }, [events, query]);
   const counts = { collective: events.length, activity: events.length, personal: events.length };
