@@ -73,7 +73,7 @@ jobs:
           await pageA.locator('#name').fill(probe);
           await pageA.locator('#alias').fill(alias);
           await pageA.locator('#enter').click();
-          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
+          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/(?:releases\/.*)?$/, {waitUntil:'domcontentloaded',timeout:60000});
           await pageA.waitForLoadState('networkidle', {timeout:60000});
           const handoffDebug=await pageA.evaluate(async ({url,key}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
@@ -86,7 +86,7 @@ jobs:
           await pageA.evaluate(() => location.replace('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/')); 
           // The identity page intentionally navigates to the canonical Hub release.
           // Do not evaluate the old document while that navigation is in flight.
-          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//, {waitUntil:'domcontentloaded',timeout:60000});
+          await pageA.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/(?:releases\/.*)?$/, {waitUntil:'domcontentloaded',timeout:60000});
           await pageA.waitForLoadState('networkidle', {timeout:60000});
           const identity = await pageA.waitForFunction(async ({url,key}) => {
             const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
