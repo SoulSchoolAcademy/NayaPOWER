@@ -7,7 +7,7 @@ import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
 import { initializeCognition, rememberIntelligence } from '../intelligence/cognition';
 import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import type { PISFeed } from '../data/pis';
-import { AppShellV3 } from './AppShellV3';
+import { SparklingShapeShell } from './SparklingShapeShell';
 import { routes } from './routes';
 import { FeatureSurface } from './FeatureSurface';
 
@@ -76,8 +76,7 @@ function HubHome({ onExplore }: { onExplore: (event?: IntelligentEvent) => void 
   if (selected) return <div className="hub-home-restored"><button className="hub-back" onClick={() => setSelected(undefined)}>← BACK TO INTELLIGENCE</button><SmartFeedBoard event={selected} /></div>;
   const open = (event?: IntelligentEvent) => event ? setSelected(event) : onExplore();
   return <div className="hub-home-restored">
-    <div className="ecosystem"><button className="powerBtn" onClick={() => open()}>✦ NAYA POWER</button><button className="powerBtn" onClick={() => open()}>AI INTELLIGENCE</button><button className="powerBtn" onClick={() => open()}>SMART NOTES</button><button className="powerBtn" onClick={() => open()}>SMART SHARE</button><button className="powerBtn" onClick={() => open()}>SMART LEDGER</button><button className="powerBtn" onClick={() => open()}>SMART SPACES</button></div>
-    <section className="hero"><div className="eyebrow">NAYANET · LIVING INTELLIGENCE NETWORK</div><h1>Your Intelligence Today</h1><p>NayaNET is where intelligence becomes visible, understandable, useful, and reusable — so what you learn today can compound into what Naya and you can do tomorrow.</p></section>
+        <section className="hero"><div className="eyebrow">NAYANET · LIVING INTELLIGENCE NETWORK</div><h1>Your Intelligence Today</h1><p>NayaNET is where intelligence becomes visible, understandable, useful, and reusable — so what you learn today can compound into what Naya and you can do tomorrow.</p></section>
     <SmartNoteCapture onCaptured={() => { loadPrimaryIntelligence().then(value => { setFeed(value); setEvents(sortPrimaryIntelligence(value.events)); }).catch(() => undefined); }} />
     <div className="feedNav">{lensTabs.map(tab => <button key={tab.key} onClick={() => open()}>{tab.icon} {tab.label} FEED</button>)}</div>
     <div className="feedHead"><div><h2>Living Intelligence</h2><p>{feed?.source === 'supabase:nayanet_intelligence_index' ? 'Persistent intelligence is connected.' : 'The Hub is ready for canonical intelligence.'}</p></div><span className="feedCount">{events.length} OBJECTS</span></div>
@@ -121,5 +120,5 @@ function Workspace({ path }: { path: string }): ReactNode {
 
 export default function App() {
   useEffect(() => { initializeCognition().catch(() => {}); }, []);
-  return <IdentityProvider><AppShellV3>{path => <Workspace path={path} />}</AppShellV3></IdentityProvider>;
+  return <IdentityProvider><SparklingShapeShell>{path => <Workspace path={path} />}</SparklingShapeShell></IdentityProvider>;
 }
