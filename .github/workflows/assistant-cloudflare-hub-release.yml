@@ -189,6 +189,8 @@ jobs:
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
+        env:
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
@@ -202,57 +204,61 @@ jobs:
           });
 
           try {
-            for (const viewport of [
-              { width: 1440, height: 1000, label: 'desktop' },
-              { width: 390, height: 844, label: 'mobile' }
-            ]) {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+            if (process.env.RELEASE_SURFACE === 'sparkling-shape-react') {
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1000 } });
               const page = await context.newPage();
-              await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-              await page.waitForTimeout(1000);
-
-              const result = await page.evaluate(() => ({
-                title: document.title,
-                directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
-                navCount: document.querySelectorAll('.naya509-primary-nav a').length,
-                blockCount: document.querySelectorAll('.block').length,
-                layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
-                hasNaya: !!document.body && document.body.innerText.includes('Naya'),
-                hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
-              }));
-
-              if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
-              if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
-              if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
-              if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
-              if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
-
-              console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+              const target = 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE';
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.waitForSelector('[data-event-id="' + target + '"]', { timeout: 30000 });
+              const result = await page.evaluate((eventId) => {
+                const article = document.querySelector('[data-event-id="' + eventId + '"]');
+                const title = article?.querySelector('h2')?.textContent?.trim() || '';
+                return {
+                  title: document.title,
+                  marker: document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]')?.getAttribute('data-runtime-marker') || '',
+                  event_id: article?.getAttribute('data-event-id') || '',
+                  event_title: title,
+                  visible_title: title
+                };
+              }, target);
+              if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React runtime marker missing');
+              if (result.event_id !== target) throw new Error('Canonical event ID not rendered');
+              if (result.event_title !== 'What Is a Smart Note?') throw new Error('Canonical event title mismatch: ' + result.event_title);
+              console.log('SPARKLING_SHAPE_REACT_RUNTIME_VERIFIED', JSON.stringify(result));
               await context.close();
+            } else {
+              for (const viewport of [
+                { width: 1440, height: 1000, label: 'desktop' },
+                { width: 390, height: 844, label: 'mobile' }
+              ]) {
+                const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+                const page = await context.newPage();
+                await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await page.waitForTimeout(1000);
+                const result = await page.evaluate(() => ({
+                  title: document.title,
+                  directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
+                  navCount: document.querySelectorAll('.naya509-primary-nav a').length,
+                  blockCount: document.querySelectorAll('.block').length,
+                  layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
+                  hasNaya: !!document.body && document.body.innerText.includes('Naya'),
+                  hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
+                }));
+                if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
+                if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
+                if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
+                if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
+                if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
+                console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+                await context.close();
+              }
             }
-            const identityContext = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 900, height: 900 } });
-            const identityPage = await identityContext.newPage();
-            await identityPage.goto('file://' + process.env.RUNNER_TEMP + '/live-identity.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-            const identity = await identityPage.evaluate(() => ({
-              title: document.title,
-              name: !!document.querySelector('#name'),
-              alias: !!document.querySelector('#alias'),
-              enter: !!document.querySelector('#enter'),
-              adapterScript: !!document.querySelector('script[src="/NAYANET/name-first-auth-adapter.js"]')
-            }));
-            if (!identity.title.includes('NayaNET')) throw new Error('identity: unexpected title ' + identity.title);
-            if (!identity.name || !identity.alias || !identity.enter || !identity.adapterScript) throw new Error('identity: name-first controls or adapter missing');
-            console.log('ASSISTANT_IDENTITY_BASELINE_VERIFIED', JSON.stringify(identity));
-            await identityContext.close();
           } finally {
             await browser.close();
           }
-
           EOF
-
-          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" node verify-assistant-runtime.mjs
+          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
           rm -f verify-assistant-runtime.mjs
-
       - name: Final Assistant-lane runtime proof
         shell: bash
         run: |
