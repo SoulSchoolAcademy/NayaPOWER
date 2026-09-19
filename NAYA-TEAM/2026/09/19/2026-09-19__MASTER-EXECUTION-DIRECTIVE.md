@@ -4,7 +4,7 @@ Authority: NayaNET Engineering System / NayaPOWER governance
 Execution model: one connected system, parallel work only where dependencies permit
 
 ## Mission
-Turn the nine product areas below from documented designs plus partial production primitives into one authenticated, observable, verifiable NayaNET product.
+Turn the ten product surfaces below, organized into one connected product, from documented designs plus partial production primitives into one authenticated, observable, verifiable NayaNET product.
 
 The objective is not to build nine separate applications. The objective is to connect the existing intelligence, cognition, event, authorization, ledger, mail, space, retrieval, reporting, and Hub primitives into one coherent human experience.
 
@@ -87,19 +87,21 @@ Where applicable, prove:
 
 These three may work in a synchronized sequence. Smart Tabs depends on real retrieval/navigation primitives exposed by Smart Feed. Smart Ledger depends on canonical event/execution/cognition consequences and must remain connected to Feed and downstream intelligence.
 
-### WAVE B — ACTION / ORGANIZATION
-4. Smart Mail — authenticated communication/action surface.
-5. Smart Share — controlled publication/sharing boundary.
-6. Smart List — intentional user collections.
+### WAVE B — COMMUNICATION + ORGANIZATION
+4. **One Naya owns the subsystem:** Your Connections + Smart Spaces + Smart List + Smart Mail.
+5. Your Connections — canonical WHO/relationship projection.
+6. Smart Spaces — WHERE shared-context relationships form.
+7. Smart List — HOW people/intelligence are organized.
+8. Smart Mail — HOW authorized communication occurs.
 
-These may synchronize where contracts intersect, but no team may invent a parallel storage model.
+These four are separate human-facing surfaces over one relationship/communication subsystem. They must share canonical identity, membership, relationship, authority and event primitives. No parallel contact graph, member store or messaging identity may be invented.
 
-### WAVE C — COLLABORATION
-7. Smart Spaces — authorized collaborative container and intelligence surface.
+### WAVE B½ — CONTROLLED SHARING
+9. Smart Share — cross-cutting explicit sharing/publication boundary used by Spaces, Lists, Mail and Connections.
 
-### WAVE D — SYNTHESIS / HUMAN DAILY EXPERIENCE
-8. Your Intelligence Today — deterministic daily intelligence projection.
-9. Intelligent Reports — period/scope synthesis with evidence lineage.
+### WAVE C — SYNTHESIS / HUMAN DAILY EXPERIENCE
+10. Your Intelligence Today — deterministic daily intelligence projection.
+11. Intelligent Reports — period/scope synthesis with evidence lineage.
 
 Today and Reports depend on the retrieval/evidence spine being truthful.
 
@@ -108,8 +110,10 @@ Smart Tabs ↔ Smart Feed
 Smart Feed ↔ Smart Ledger
 Smart Feed ↔ Smart List
 Smart Feed ↔ Smart Share
+Your Connections ↔ Smart Spaces / Smart List / Smart Mail
 Smart Mail ↔ Smart Share
 Smart Spaces ↔ Smart Feed / Share / Mail / Ledger
+Smart List ↔ Connections / Feed / Share / Spaces
 Today ↔ Feed / Cognition / Ledger
 Reports ↔ Today / Feed / Ledger
 Ledger ↔ all durable consequences
@@ -149,9 +153,9 @@ Close the boundaries between the already-proven backend primitives and the human
 Each Naya owns the job described in its job file, but all Nayas share the same system contract. If a dependency is required, coordinate through the Team Naya activity feed and the affected feature records rather than creating a competing implementation.
 
 ## Completion gate
-The master mission is complete only when the nine feature areas can be exercised as one connected authenticated system and the Cloudflare runtime is proven to match the current source.
+The master mission is complete only when the ten product surfaces can be exercised as one connected authenticated system and the Cloudflare runtime is proven to match the current source.
 
 The final proof must demonstrate:
-Human authentication → navigation → retrieval → intentional organization/share/action → observed consequence → Ledger/evidence → intelligence projection → daily/report synthesis → continuation.
+Human authentication → navigation → retrieval → Space discovery → JOIN → membership → connection → communication/organization/share → observed consequence → Ledger/evidence → intelligence projection → daily/report synthesis → continuation.
 
 No feature may be marked LIVE VERIFIED on documentation alone.
