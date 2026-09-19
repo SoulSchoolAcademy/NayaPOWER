@@ -288,6 +288,12 @@ def issue_portable_authorization(
         "expires_at": expires_at,
         "authority_fingerprint": authority_fingerprint,
         "registry_revision": registry_revision(registry),
+        # Preserve the already-gate-verified 13-question identity binding across
+        # the process boundary. The runner does not mint or reinterpret it; it
+        # verifies the signed continuity fields and carries them into the receipt.
+        "identity_id": str(getattr(execution_authorization, "identity_id", "") or ""),
+        "identity_fingerprint": str(getattr(execution_authorization, "identity_fingerprint", "") or ""),
+        "identity_binding_hash": str(getattr(execution_authorization, "identity_binding_hash", "") or ""),
     }
     message = _canonical_json(authorization).encode("utf-8")
     return {
@@ -335,6 +341,18 @@ def verify_portable_authorization(
         _verify_signature(public_key_hex, _canonical_json(authorization).encode("utf-8"), signature)
     except (ValueError, InvalidSignature, TypeError):
         return False, ("signature verification failed",)
+
+    # Identity continuity is signed data, never authority. New consequential
+    # artifacts carry the identity id/fingerprint/action-binding hash. Legacy
+    # non-consequential artifacts may omit/leave them empty for compatibility.
+    identity_id = str(authorization.get("identity_id", "") or "")
+    identity_fingerprint = str(authorization.get("identity_fingerprint", "") or "")
+    identity_binding_hash = str(authorization.get("identity_binding_hash", "") or "")
+    if identity_id and identity_id != str(authorization.get("actor_id", "")):
+        reasons.append("portable identity_id does not match authorization actor_id")
+    for name, value in (("identity_fingerprint", identity_fingerprint), ("identity_binding_hash", identity_binding_hash)):
+        if value and (len(value) != 64 or any(ch not in "0123456789abcdef" for ch in value.lower())):
+            reasons.append(f"portable {name} must be a 64-character hex digest")
 
     sources = {
         "authority_id": authorization.get("authority_id"),
