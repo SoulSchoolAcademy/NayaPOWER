@@ -163,3 +163,64 @@ The highest-value remaining mismatch is no longer visual ambiguity. It is **cano
 ### NEXT ACTION
 
 **IH-03 — prove one canonical intelligence identity end-to-end: canonical event → PIS → IntelligentEvent → Intelligent Block → feed, preserving stable event ID, timestamp, provenance, privacy and verification state.**
+
+
+## IH-03 EXECUTION RECEIPT — 2026-09-18
+
+**RESULT: PROVEN AT REPOSITORY PROJECTION BOUNDARY**
+
+A real canonical event already present in `.naya/memory/events/` was traced through the PIS build projection and the existing Intelligent Block binding.
+
+### Canonical source selected
+
+`SE-20260917-030839-p001a-auto-emission-verified`
+
+The source event carries:
+- canonical `event_id`;
+- `created_at` / `effective_at`;
+- source execution identity;
+- evidence IDs;
+- verification status;
+- privacy state;
+- durable event-store location.
+
+### Reconciliation repair
+
+`scripts/build-smart-feed-projection.py` now scans the existing canonical event store and adapts canonical events into the existing `IntelligentEvent` shape. This is a projection only. The canonical event store remains authoritative.
+
+Canonical runtime events are merged after legacy Smart Feed content so the same event identity is not silently replaced by legacy presentation data.
+
+No second event store or PIS authority was created.
+
+### Proof
+
+The focused proof `scripts/verify_ih03_canonical_intelligence_identity.py` was executed in an isolated temporary checkout containing the repository evidence.
+
+Observed result:
+- canonical event found in PIS projection;
+- `event_id` preserved exactly;
+- `created_at` preserved exactly;
+- source execution identity preserved;
+- evidence reference preserved;
+- verification state preserved as `VERIFIED`;
+- privacy visibility preserved as `PRIVATE BY DEFAULT`;
+- Intelligent Block binds the rendered board to `event.event_id` through `data-event-id`.
+
+**Repository proof: PASS.**
+
+### Boundary
+
+This proves the **source → projection → IntelligentEvent → Intelligent Block identity contract**.
+
+It does **not** yet prove:
+- authenticated production retrieval;
+- live runtime deployment equivalence;
+- three independent authorized feed projections;
+- live Activity rendering;
+- consequential Hub action persistence.
+
+Those remain later IH tasks.
+
+### NEXT ACTION
+
+**IH-04 — prove Activity, Personal, and Collective as real authorized projections of canonical intelligence rather than UI-only lens switching.**
