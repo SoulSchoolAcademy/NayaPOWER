@@ -16,7 +16,7 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 — FRESH-NAYA CONTINUATION + PRODUCTION ENGINE CLOSURE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "P1-CONTROLLED-PAIRED-POLICY-OUTCOME",
+  "current_block": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -47,7 +47,7 @@
   },
   "latest_automation_observation": {
     "status": "CURRENT_WAVE_A_ENGINE_EXECUTION",
-    "observed_head": "1a6072b722913346c83de01aa0e5b7212ec9014f",
+    "observed_head": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
     "observation_is_historical_relative_to_live_HEAD": false,
     "policy_experiment_run_id": 35460365955,
     "policy_experiment_result": "NOT_PROVEN",
@@ -56,7 +56,11 @@
     "smart_feed_ledger_result": "VERIFIED",
     "smart_feed_ledger_receipt": "smart-feed-ledger-proof",
     "edge_runtime_naya_smart_feed_version": 4,
-    "edge_runtime_nayanet_smart_mail_version": 13
+    "edge_runtime_nayanet_smart_mail_version": 13,
+    "proof7_run_id": 35461270128,
+    "proof7_result": "VERIFIED",
+    "proof7_artifact": "nayanet-proof7-compounding-loop",
+    "cognition_receipt_revision_repair": "20260919183100_align_cognition_receipt_revision_with_receipt_namespace"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -83,15 +87,17 @@
     "P1 multi-case held-out controlled experiment run 35460365955 executed three real V1/V2 Smart Mail cases, authenticated receiver verification, exact policy lineage, independent outcome evidence, receipt-swap rejection, revocation denial, durable learning and successor-policy creation; aggregate verified responsible value was 3 vs 3, therefore result is NOT_PROVEN.",
     "Smart Feed Ledger integration run 35460477460 is VERIFIED at current main: fresh cognition event 7904056a-7299-4732-8c7a-4f50b1705daf projected to Ledger event 8797fc24-34c0-46c7-8c28-dda896f5abda, feed returned active verification confidence 1, Ledger hash/evidence lineage, replay identity stability and personal-feed privacy isolation.",
     "The 88 cognition events without Smart Ledger linkage are all legacy records created before the first ledgered cognition event on 2026-09-19 01:53:49 UTC; no current Wave A cognition event is missing Ledger coverage. They require disposition, not fabricated historical backfill.",
-    "The current Smart Feed runtime is deployed as Edge Function version 4; nayanet-smart-mail is deployed as version 13."
+    "The current Smart Feed runtime is deployed as Edge Function version 4; nayanet-smart-mail is deployed as version 13.",
+    "Proof 7 compounding Superbrain loop run 35461270128 is VERIFIED: experience, memory, dream, learning, continuity, decision, outcome, authority unchanged, new learning, and next decision-context retrieval all passed; policy improvement remains NOT_PROVEN.",
+    "Cognition receipt revision allocation was repaired in production by serializing per-user/project execution-receipt revision allocation and choosing the next revision from the canonical execution-receipt namespace.",
+    "Proof 7 now uses the existing production shared Space, mutual Connections, and explicit least-privilege smart_mail_send authority."
   ],
   "unknown": [
     "Whether the current Smart Mail receiver-verification path should accept independently evidenced outcome value components rather than using the fixed send-path value contract.",
     "Full cold-Naya continuation after fresh-context retrieval: current receipt proves fresh retrieval/render continuity but its continuation field is null.",
     "Comprehensive multi-Naya concurrency safety.",
     "Complete temporal/supersession/conflict retrieval proof.",
-    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows.",
-    "Fresh-Naya continuation action remains NOT_PROVEN: fresh retrieval/render is verified, but a successor Naya has not yet executed and verified a new authorized continuation action."
+    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -118,10 +124,19 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Policy improvement is not yet proven. The controlled paired engine is now executable and real, but the current Smart Mail value contract produces equal verified value (0 vs 0) and therefore cannot establish superiority. The next critical engineering boundary is an independent outcome/value contract plus a multi-case held-out paired experiment. A separate continuity gap remains: fresh-context retrieval is verified, but a fresh Naya has not yet performed and verified a continuation action.",
-  "single_next_action": "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again.",
+  "bottleneck": "Wave A production relationship/security journey remains the critical path: real authentication, existing Space membership, A↔B Connections, Smart List, explicit authority, Smart Mail receiver verification, replay/idempotency, revocation denial, C isolation, then browser acceptance.",
+  "single_next_action": "Reconcile the control plane to current main, record Proof 7 VERIFIED, independently verify the cognition-receipt revision repair, then execute the real A/B/C relationship and Smart Mail security journey before browser acceptance.",
   "next_actions": [
-    "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again."
+    "Reconcile STATE/BLOCK/PROOF to current main and Proof 7 evidence.",
+    "Record Proof 7 run 35461270128 and artifact 10589479660 as current evidence.",
+    "Run focused concurrency proof for cognition receipt revision allocation.",
+    "Prove real Smart List/Connections on the existing production Space.",
+    "Prove explicit smart_mail_send authority and fail-closed denial.",
+    "Run real A→B Smart Mail with receiver verification and lineage.",
+    "Prove idempotent replay without duplicate durable intelligence.",
+    "Prove revocation denial and C isolation.",
+    "Run fresh-Naya continuation from the real durable journey.",
+    "Only then perform browser/human-facing production acceptance."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — FRESH-NAYA CONTINUATION PROOF\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF and Team Naya. Retrieve current durable mission, evidence, failures, protected boundaries, authority and blockers in a genuinely fresh context. Select exactly one authorized continuation action from durable state. Execute it against the real system, independently observe and verify the result, record the resulting intelligence, then retrieve that new intelligence again from fresh context. Return PROVEN only when the complete RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → RETRIEVE AGAIN loop passes.",
