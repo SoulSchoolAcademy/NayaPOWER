@@ -11,7 +11,8 @@ Deno.serve(async(req)=>{
  const url=Deno.env.get("SUPABASE_URL")!,anon=Deno.env.get("SUPABASE_ANON_KEY")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
  const userClient=createClient(url,anon,{global:{headers:{Authorization:authHeader}}}),admin=createClient(url,service);
  const {data:userData,error:userError}=await userClient.auth.getUser(); if(userError||!userData.user)return json({ok:false,error:"AUTH_INVALID"},401);
- const actorId=userData.user.id;\n const requestId=req.headers.get("x-request-id")?.trim()??null;
+ const actorId=userData.user.id;
+ const requestId=req.headers.get("x-request-id")?.trim()??null;
  let input:SendBody; try{input=await req.json()}catch{return json({ok:false,error:"INVALID_JSON"},400)}
  if(input.operation==="verify"){
    if(!input.message_id)return json({ok:false,error:"MESSAGE_ID_REQUIRED"},400);
