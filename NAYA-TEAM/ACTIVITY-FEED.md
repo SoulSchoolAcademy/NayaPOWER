@@ -619,3 +619,17 @@ New concrete runtime defect found and repaired.
 **Ledger:** no new browser Feed lineage was claimed because the browser Feed projection is empty for this identity. Existing backend Feed→cognition→receipt→Ledger proof remains intact.
 
 **Next:** obtain one legitimate owner-scoped intelligence item through the normal production experience and close browser Feed presentation/action → Ledger verification, then perform final visual/mobile/accessibility acceptance.
+
+## 2026-09-19 — ACTION 10 LIVE BROWSER CLOSURE UPDATE
+
+- Browser control is now available through the authorized isolated Wave Chrome CDP session.
+- Authenticated Human A was observed on the deployed Cloudflare Hub.
+- Created real shared Space: `04ee4dc8-bc73-47df-a1de-162570f6a56e`.
+- Space creation Ledger event: `294b64e3-f77c-465a-855a-79ae613b5b7e` at `2026-09-19T17:24:06.677743Z`.
+- Owner membership: `b46d73d4-a678-4197-b4fa-8687359efc5a` active, source `space_owner`.
+- Live retrieval exposed recursive RLS in `nayanet_space_members_shared_read`; fixed with migration `20260919172900_fix_space_members_rls_recursion`.
+- Fix source commit: `a59cf18cf8c735307b6388c6f2dc9fa695b4dec8`.
+- Post-fix live Cloudflare Space context retrieval passes without recursion.
+- Final A→T remains NOT VERIFIED because a distinct authenticated Human B session is not available. No credentials were extracted and no synthetic B was created.
+- Action 10 prompt updated: `dddc691829df56e2e163aa8bc477ecbe0f172ff2`.
+- Master directive updated: `810abf3f72804cbba35ed2bb3c2b012e0b9a5f9a`.
