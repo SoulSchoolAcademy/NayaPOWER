@@ -63,6 +63,7 @@ NEW LEARNING
 ```text
 SMART NOTE → PIS → CIS → ADAPTIVE LEARNING → SUPERBRAIN
 SMART NOTE / EVENT → SMART FEED
+SEARCH / RETRIEVAL → SMART TABS → SMART FEED / DESTINATION
 SMART NOTE → SMART LIST
 SMART NOTE → SMART SHARE → COLLECTIVE INTELLIGENCE (when authorized)
 SMART NOTE / TOPIC → SMART SPACE → PEOPLE → CONNECTIONS
@@ -70,13 +71,42 @@ CONNECTIONS → SMART MAIL → RECIPIENTS / SPACES
 MEANINGFUL EVENTS → SMART LEDGER / PROVENANCE
 PIS/CIS/LEDGER/OTHER CANONICAL SOURCES → TODAY / REPORTS / LIBRARY
 ALL CANONICAL SYSTEMS → HUB PROJECTIONS
+ALL SUBSTANTIVE ENGINEERING WORK → FEATURE ACTIVITY / TEAM NAYA HANDOFF
 ```
 
-## 6. Engineering rule
+## 6. Smart Tabs
+
+Smart Tabs are the persistent top-of-Hub navigation layer. They may point to a URL, route, topic, query, category, project, or compatible retrieval intent.
+
+The invariant is:
+
+**SMART TAB LABEL ≠ SMART TAB TARGET**
+
+For intelligence views:
+
+`SMART TAB → TARGET → EXISTING RETRIEVAL → AUTHORITY / VISIBILITY FILTER → PRESENT`
+
+Smart Tabs do not create a new intelligence store, grant access, or replace Smart Feed/Search/Library. Their purpose is immediate human navigation into existing canonical systems.
+
+## 7. Activity + completion
+
+Every Engineering System feature has a living completion checklist and dated activity history. Every substantive Naya engineering session must:
+
+**SIGN IN → WORK → REPORT → VERIFY → SIGN OUT → HAND OFF**
+
+The human-facing activity hierarchy is:
+
+**YEAR → MONTH → DAY → SESSION**
+
+A feature activity entry records what was done, what changed, what was tested, evidence, current completion state, blockers/gaps, and exactly one continuation action. Main Activity, project activity, and Team Naya communication are projections/views over canonical event truth; they are not competing event stores.
+
+When a feature changes, its Engineering System record must be updated in the same session before sign-out. Cross-feature changes update every affected feature record.
+
+## 8. Engineering rule
 No feature is designed in isolation. Before implementation, NIS must identify the canonical owner of every object it reads/writes, the authority boundary, event emitted, downstream consumers, and verification path.
 
-## 7. Definition of done
-A cold NIS can explain what each surface does, what it owns, what it consumes, what it emits, how it connects, where its UI lives, where its backend lives, and what evidence proves it works.
+## 9. Definition of done
+A cold NIS can explain what each surface does, what it owns, what it consumes, what it emits, how it connects, where its UI lives, what evidence proves it works, how complete it is, and what happened on each relevant day.
 
 ## Source authority
-`.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`, `.naya/2026-09-11-18-35-NAYAPOWER-32-MASTER-SYSTEM-ARCHITECTURE.md`, and 01–58 source artifacts.
+`.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`, `.naya/2026-09-11-18-35-NAYAPOWER-32-MASTER-SYSTEM-ARCHITECTURE.md`, `.naya/2026-09-11-NAYAPOWER-09-SMART-TABS-SMART-NOTE.md`, and 01–58 source artifacts.
