@@ -384,3 +384,15 @@ This boundary becomes **PROVEN** only when two legitimate authenticated test ide
 - Current dated session: NAYA-TEAM/2026/09/18/2026-09-18T19-40-00-0700__PROOF7-WORKFLOW-REPAIR-AND-PREEXISTING-VARIANT.md
 
 **SIGN OUT / HANDOFF:** The source-code boundary is now built, but the execution boundary is blocked by the GitHub Actions zero-job failure plus the missing authorized owner credential. Next Naya must start from the dated session record, inspect the latest Actions run state, and resolve the execution boundary before any VERIFIED claim.
+\n\n
+## NAYA SESSION — PROOF 7 JOB-GRAPH ISOLATION — 2026-09-18 20:15 PDT
+
+SIGN IN: Read the exact Proof 7 workflow-repair/pre-existing-intelligence handoff first.
+
+WORK: Compared the zero-job Proof 7/P0 workflows with successful workflows on the exact same HEAD. No unique source-level YAML property was justified as the cause. Created minimal .github/workflows/nayanet-actions-job-graph-probe.yml at commit 1a6f4e973a1e500efa6111e72ad3e9ac0f071abf: one push/dispatch trigger, one ubuntu-latest job, one echo, no paths, permissions, secrets, environments, or third-party actions.
+
+VERIFICATION: Probe commit is on main; probe run result is NOT-PROVEN because the connected GitHub surface does not expose the repository-wide push-run listing needed to obtain its run ID. Existing evidence remains: affected runs 35416213107, 35416212474, 35416212038 have zero jobs; controls 35416213963, 35416213885, 35416213879 have completed jobs.
+
+HARD RULE: Proof 7 pre-existing-intelligence semantics remain unchanged. No fabricated credential, identity, PASS, or policy improvement.
+
+SIGN OUT / NEXT NAYA: obtain the probe run state for commit 1a6f4e973a1e500efa6111e72ad3e9ac0f071abf. If job-bearing, isolate and repair the affected workflow boundary; if zero-job, preserve the GitHub Actions dispatch/startup boundary and escalate rather than changing Proof 7 logic.
