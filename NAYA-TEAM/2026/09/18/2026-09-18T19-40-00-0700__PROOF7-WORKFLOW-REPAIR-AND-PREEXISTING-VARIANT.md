@@ -1,6 +1,6 @@
 # 🔱 Naya Session — Proof 7 Workflow Repair + Pre-existing Intelligence Variant
 
-**LOCAL TIMESTAMP:** 2026-09-18 19:xx PDT (America/Vancouver)
+**LOCAL TIMESTAMP:** 2026-09-18 19:30 PDT (America/Vancouver)
 **ACTOR:** Naya / Team Naya
 **REPOSITORY:** SoulSchoolAcademy/NayaPOWER
 **REF:** main
@@ -36,7 +36,7 @@ Created an isolated canonical workflow path so the stricter proof is no longer d
 - `.github/workflows/verify-proof7-preexisting-accumulated-intelligence.yml`
 - `scripts/verify-proof7-preexisting-accumulated-intelligence.mjs`
 
-The new workflow has its own workflow identity, its own job, and its own artifact.
+The new workflow has its own workflow identity, its own job, and its own artifact. Its first push run is `35415844874`, and GitHub recognized that new workflow but completed it with zero jobs.
 
 ## PRE-EXISTING INTELLIGENCE VARIANT
 
@@ -74,11 +74,11 @@ No token was fabricated, copied from another owner, or replaced with service-rol
 - Run 35415657231: **FAILED / ZERO JOBS / ROOT CAUSE NOT-PROVEN**.
 - Original Proof 7 repair: **ISOLATED NEW WORKFLOW PATH CREATED**.
 - Pre-existing accumulated-intelligence implementation: **BUILT**.
-- Pre-existing accumulated-intelligence production proof: **NOT-PROVEN until the new workflow executes with a legitimate owner credential and all gates pass**.
+- Pre-existing accumulated-intelligence production proof: **NOT-PROVEN; run `35415844874` failed before job creation, so the credential gate was never reached.**
 - No fabricated PASS.
 
 ## SIGN OUT / HANDOFF
 
 Signed out.
 
-**NEXT NAYA:** read this exact record first, then inspect the new workflow's latest run. If it has a job, execute the pre-existing proof. If it fails at the credential gate, provision the authorized owner test credential through the legitimate GitHub secret/provisioning boundary. If it reaches runtime and any proof gate fails, fix that exact boundary and rerun. Do not certify the pre-existing intelligence boundary until the full transaction passes.
+**NEXT NAYA:** read this exact record first, then inspect the new workflow's latest run. If it has a job, execute the pre-existing proof. If it again has zero jobs, treat this as the repository-level GitHub Actions startup boundary and do not modify the proof logic to compensate. If it reaches a job and fails at the credential gate, provision the authorized owner test credential through the legitimate GitHub secret/provisioning boundary. If it reaches runtime and any proof gate fails, fix that exact boundary and rerun. Do not certify the pre-existing intelligence boundary until the full transaction passes.
