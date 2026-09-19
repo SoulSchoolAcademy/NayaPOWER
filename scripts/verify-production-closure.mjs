@@ -34,13 +34,12 @@ const learning=await req("/functions/v1/naya-learning-apply",{
   method:"POST",headers:h(sender.access_token),body:JSON.stringify({evidence_id:evidenceId})
 });
 assert(learning.ok===true,"LEARNING_APPLY_FAILED");
-const cognitionId=learning.superbrain?.cognition_event_id;
-assert(cognitionId,"LEARNING_DID_NOT_RETURN_COGNITION");
+const expectedLearningEventId="learning-apply:"+evidenceId;
 const state=await req("/rest/v1/learner_states?select=id,member_id,version&member_id=eq."+sender.user.id,{headers:h(sender.access_token)});
 assert(state.length===1 && Number(state[0].version)>=Number(learning.learning.learner_state_version),"LEARNER_STATE_NOT_PERSISTED");
 
 /* Fresh retrieval boundary: no prior cognition object is reused; this query rehydrates it from the canonical store. */
-const fresh=await req("/rest/v1/nayanet_cognition_events?select=id,event_id,type,classification,title,content,source,receipt_id,metadata&id=eq."+encodeURIComponent(cognitionId),{headers:h(sender.access_token)});
+const fresh=await req("/rest/v1/nayanet_cognition_events?select=id,event_id,type,classification,title,content,source,receipt_id,metadata&event_id=eq."+encodeURIComponent(expectedLearningEventId),{headers:h(sender.access_token)});
 assert(fresh.length===1,"FRESH_COGNITION_RETRIEVAL_FAILED");
 const cognition=fresh[0];
 assert(cognition.event_id==="learning-apply:"+evidenceId,"COGNITION_EVENT_LINEAGE_FAILED");
