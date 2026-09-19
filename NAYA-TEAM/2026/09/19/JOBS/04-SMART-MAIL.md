@@ -196,3 +196,22 @@ Wire the current Hub to these primitives, implement Smart List, bind Mail relati
 Canonical production primitives now exist for Identity → Space → Membership → Connection → Smart List → Smart Mail relationship gating → Activity/Ledger lineage.
 
 The final blocker is strictly the real two-user authenticated browser acceptance proof. Do not mark Job 04 COMPLETE until that proof passes.
+
+
+## ACTION 10 LIVE CLOSURE UPDATE — 2026-09-19
+
+### DONE
+- Authenticated A session reached the deployed Cloudflare Hub.
+- Real shared Space created: `04ee4dc8-bc73-47df-a1de-162570f6a56e`.
+- Space creation Ledger evidence: `294b64e3-f77c-465a-855a-79ae613b5b7e`.
+- Production `nayanet_space_members` RLS recursion found during live context retrieval and fixed by migration `20260919172900_fix_space_members_rls_recursion`; source commit `a59cf18cf8c735307b6388c6f2dc9fa695b4dec8`.
+
+### PROOF
+- Post-fix Space context retrieval succeeds on the live Cloudflare Hub.
+- Owner membership exists and is active.
+
+### NOT PROVEN
+- Distinct B authentication, JOIN, mutual Connection, Smart List, authority, real receiver Mail verification, replay, revocation denial, unrelated C denial.
+
+### STATUS
+**IMPLEMENTED / SOURCE-PROVEN / CLOUDFLARE-PARITY-PROVEN / A LIVE-PROVEN / FINAL HUMAN A+B PROOF PENDING**
