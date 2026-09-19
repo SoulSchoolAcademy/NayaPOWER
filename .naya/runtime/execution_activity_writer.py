@@ -71,7 +71,7 @@ def _section(*, effective_at: str, event_id: str, execution: dict[str, Any],
         "**Run:** " + execution["run_id"] + "  \n"
         "**Authority:** " + execution["authority_id"] + "  \n"
         "**Actor:** " + execution["actor_id"] + "  \n"
-        "**Event:** `" + event_id + "`\n\n"
+        "**EVENT:** `" + event_id + "`\n\n"
         "## WHAT HAPPENED\n\n"
         "- " + subject + "\n"
         "- " + summary + "\n\n"
