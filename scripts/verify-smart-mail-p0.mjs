@@ -108,7 +108,7 @@ const revoked = await rpc(sender.access_token, 'nayanet_revoke_authority_grant',
 if (!revoked?.grant_id || revoked.status !== 'REVOKED') throw new Error('AUTHORITY_REVOKE_FAILED ' + JSON.stringify(revoked));
 
 const blockedAttempt = await rawRequest(functionUrl, { method:'POST', headers:authHeaders(sender.access_token), body:JSON.stringify({...sendPayload, idempotency_key:idempotencyKey + '-after-revoke'}) });
-if (blockedAttempt.status < 400 || !String(blockedAttempt.body?.detail ?? blockedAttempt.body?.error ?? '').includes('GRANT_REVOKED')) {
+if (blockedAttempt.status < 400 || (blockedAttempt.body?.detail?.reason ?? blockedAttempt.body?.error) !== 'GRANT_REVOKED') {
   throw new Error('REVOKED_EXECUTION_NOT_BLOCKED ' + JSON.stringify(blockedAttempt));
 }
 const receiptAfterRevoke = await request(
