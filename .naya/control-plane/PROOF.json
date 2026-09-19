@@ -59,45 +59,59 @@
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
-    "classification": "CURRENT_ASSISTANT_RUNTIME_AND_P1_POLICY_EXPERIMENT",
-    "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+    "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
+    "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35409939641,
-      "deployment_version_id": "718acdb8-3796-4440-98d4-406ad1e6accc",
+      "deployment_run_id": 35470356001,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "canonical_release_header": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "source_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "observed_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "source_paths": [
+        "assistant-runtime.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
+        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        ".github/workflows/assistant-cloudflare-hub-release.yml"
+      ],
       "evidence": [
-        "canonical Cloudflare deployment succeeded",
-        "live X-Naya-Canonical-Asset equals current main HEAD",
-        "live Hub canonical markers verified"
+        "canonical Assistant Cloudflare release run 35470356001 succeeded",
+        "live runtime source parity was verified by the release lane",
+        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified"
       ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
-      "run_id": 35409995111,
-      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "run_id": 35470519946,
+      "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
+      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "source_paths": [
+        "assistant-runtime.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
+        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        ".github/workflows/assistant-cloudflare-authenticated-proof.yml"
+      ],
       "evidence": [
-        "PERSISTED",
-        "RETRIEVED",
-        "EXECUTED",
-        "OBSERVED",
-        "VERIFIED",
-        "independent-fresh-context-retrieval-and-render-comparison",
-        "event identity preserved",
-        "content preserved",
-        "privacy preserved",
-        "provenance preserved"
+        "authenticated session established in the canonical Assistant runtime",
+        "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
+        "independent fresh-context cold-Naya retrieval and render passed"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "NOT_PROVEN",
-      "receipt_id": "ca60e930-eb7f-49cd-970b-1bc25a2ec37e"
+      "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
+      "receipt_id": null
     },
     "controlled_paired_policy_experiment": {
       "status": "VERIFIED_MECHANISM_NOT_PROVEN_IMPROVEMENT",
@@ -118,7 +132,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "1a6072b722913346c83de01aa0e5b7212ec9014f",
+    "current_repository_head": "16071081dd90dab568137b321dbc6fdbe776284c",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -215,58 +229,170 @@
       "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
       "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
       "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
+    },
+    "external_cold_naya": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
+      "run_id": 35470535019,
+      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "deployed_source_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "source_paths": [
+        ".github/workflows/verify-dream-learning-decision.yml",
+        "assistant-runtime.js",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
+      ],
+      "evidence": [
+        "fresh authenticated context recovered canonical persisted cognition",
+        "Dream replay persisted and replayed idempotently",
+        "learning evidence persisted and learner state version advanced",
+        "later fresh-context decision used verified learning context with influenced=true",
+        "authority remained unchanged and adversarial authority smuggling was blocked"
+      ],
+      "reason": "Fresh-context learning reuse and governed later decision are verified; measurable long-term compounding improvement remains unproven."
+    },
+    "fresh_canonical_hub_smart_mail_transaction": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "run_id": 35470242000,
+      "observed_head": "df8fd926b210d56b6b79dcd9736ce5d5b87ace7e",
+      "evidence": [
+        "fresh sender and fresh receiver authenticated in canonical Hub",
+        "explicit smart_mail_send authority grant existed before send",
+        "Smart Mail CREATED with persisted thread/message/execution receipt",
+        "cognition event, durable Activity, and Smart Ledger lineage were independently recovered",
+        "receiver verification passed"
+      ],
+      "transaction_ids": {
+        "sender_user_id": "ae11bbab-90ab-401d-97fa-252707a038f4",
+        "receiver_user_id": "c18e6ce3-0b7f-40bd-b531-88f28031d8c5",
+        "authority_grant_id": "9ec53507-9d3e-4ef2-83ba-b53109c2a392",
+        "correlation_id": "91aa25f1-35fc-4afd-b943-6548b5e77ba9",
+        "thread_id": "0c48e554-9a2d-48bb-a910-b1fe8da7b3d4",
+        "message_id": "4479a587-f9c1-473d-b1aa-db4bb8b15e14",
+        "execution_receipt_id": "3579d4e5-3495-4d41-a30c-66b8af491268",
+        "cognition_event_id": "6873f3ad-51a3-4ae9-8b78-b32dbb22a844",
+        "activity_event_id": "SE-20260919212408-f24827a8-602",
+        "ledger_event_id": "696649c0-0913-4369-94e1-aecd6f9a47fe"
+      },
+      "reason": "The fresh Hub transaction is proven through governed execution and durable lineage. Learning capture is present; reuse and compounding require separate proof."
+    },
+    "p05_replay_idempotency": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/p0-5-replay-idempotency-proof.yml",
+      "run_id": 35470371926,
+      "observed_head": "7ea24c6b40d89191f850cce32be23bb6ddda0ffe",
+      "branch": "p0-5-replay-idempotency-proof",
+      "evidence": [
+        "canonical authenticated runtime entry passed",
+        "first Smart Mail attempt returned CREATED",
+        "second identical idempotency key returned REPLAY",
+        "message, thread, request, correlation, authority-grant and receipt identity remained stable",
+        "machine-generated P0.5 receipt artifact upload step passed"
+      ],
+      "result": "REPLAY_PROOF_VERIFIED"
+    },
+    "dream_learning_later_decision": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
+      "run_id": 35470535019,
+      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "evidence": [
+        "Dream replay simulated without authority or execution side effects",
+        "learning evidence persisted and learner state updated",
+        "later decision was USE_VERIFIED_LEARNING_CONTEXT with influenced=true",
+        "authority remained changed=false and granted=false",
+        "adversarial authority/action claims were denied without execution side effects"
+      ],
+      "result": "LEARNING_REUSE_VERIFIED"
     }
   },
-  "recording_commit": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+  "recording_commit": "16071081dd90dab568137b321dbc6fdbe776284c",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35409939641,
-      "deployment_version_id": "718acdb8-3796-4440-98d4-406ad1e6accc",
+      "deployment_run_id": 35470356001,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "canonical_release_header": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "source_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "observed_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "source_paths": [
+        "assistant-runtime.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
+        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        ".github/workflows/assistant-cloudflare-hub-release.yml"
+      ],
       "evidence": [
-        "canonical Cloudflare deployment succeeded",
-        "live X-Naya-Canonical-Asset equals current main HEAD",
-        "live Hub canonical markers verified"
+        "canonical Assistant Cloudflare release run 35470356001 succeeded",
+        "live runtime source parity was verified by the release lane",
+        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified"
       ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
-      "run_id": 35409995111,
-      "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+      "run_id": 35470519946,
+      "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
+      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "source_paths": [
+        "assistant-runtime.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
+        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        ".github/workflows/assistant-cloudflare-authenticated-proof.yml"
+      ],
       "evidence": [
-        "PERSISTED",
-        "RETRIEVED",
-        "EXECUTED",
-        "OBSERVED",
-        "VERIFIED",
-        "independent-fresh-context-retrieval-and-render-comparison",
-        "event identity preserved",
-        "content preserved",
-        "privacy preserved",
-        "provenance preserved"
+        "authenticated session established in the canonical Assistant runtime",
+        "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
+        "independent fresh-context cold-Naya retrieval and render passed"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "NOT_PROVEN",
-      "receipt_id": "ca60e930-eb7f-49cd-970b-1bc25a2ec37e"
+      "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
+      "receipt_id": null
     },
     "external_cold_naya": {
-      "status": "PARTIAL",
-      "claim_type": "RUNTIME",
-      "evidence": [
-        "fresh-context retrieval verified",
-        "fresh-context render verified",
-        "continuation action not executed"
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
+      "run_id": 35470535019,
+      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "deployed_source_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "source_paths": [
+        ".github/workflows/verify-dream-learning-decision.yml",
+        "assistant-runtime.js",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
       ],
-      "reason": "The current authenticated proof demonstrates independent fresh-context retrieval and render preservation, but the receipt continuation field is null; a genuine fresh-Naya continuation action remains to be executed and verified."
+      "evidence": [
+        "fresh authenticated context recovered canonical persisted cognition",
+        "Dream replay persisted and replayed idempotently",
+        "learning evidence persisted and learner state version advanced",
+        "later fresh-context decision used verified learning context with influenced=true",
+        "authority remained unchanged and adversarial authority smuggling was blocked"
+      ],
+      "reason": "Fresh-context learning reuse and governed later decision are verified; measurable long-term compounding improvement remains unproven."
     },
     "ih03_canonical_intelligence_identity": {
       "status": "VERIFIED",
@@ -375,6 +501,21 @@
       "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
       "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
       "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
+    },
+    "dream_learning_later_decision": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
+      "run_id": 35470535019,
+      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "evidence": [
+        "Dream replay simulated without authority or execution side effects",
+        "learning evidence persisted and learner state updated",
+        "later decision was USE_VERIFIED_LEARNING_CONTEXT with influenced=true",
+        "authority remained changed=false and granted=false",
+        "adversarial authority/action claims were denied without execution side effects"
+      ],
+      "result": "LEARNING_REUSE_VERIFIED"
     }
   },
   "ih03_canonical_intelligence_identity": {
@@ -413,6 +554,6 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "The Wave A engine/security gates are now verified at live main: cognition receipt revision allocation survived eight concurrent production writers without duplicate receipt IDs or revisions; the real A/B/C relationship journey proved Smart List privacy, explicit authority, A→B Smart Mail, receiver verification, receipt→cognition→Smart Ledger lineage, idempotent replay, revocation denial, C isolation, fresh-Naya retrieval, and a newly authorized fresh-Naya continuation. Browser acceptance is now the sole remaining gate and has not yet been promoted to PRODUCTION_PROVEN.",
-  "current_repository_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7"
+  "interpretation": "The core Superbrain/NayaPOWER engine and canonical Hub execution spine are operationally assembled and substantially proven: authenticated persistence/retrieval, governed execution, receipt/cognition/Activity/Ledger lineage, replay/idempotency, revocation/isolation evidence, concurrency safety, fresh-context continuity, and Dream→learning→later-decision reuse all have concrete proof. Full project completion remains blocked by the final human-facing Welcome→Identity handoff, comprehensive receiver/UI acceptance, multi-Naya concurrency breadth, measurable policy/compounding improvement, activation breadth, Windows portability, and control-plane cleanup where historical records remain stale.",
+  "current_repository_head": "16071081dd90dab568137b321dbc6fdbe776284c"
 }
