@@ -38,7 +38,10 @@ def _check(name: str, value: Any, *, evidence: Sequence[str] = (), detail: str =
         status = value
     else:
         status = NOT_VERIFIED
-    return ProofCheck(name, status, tuple(str(x) for x in evidence), detail)
+    evidence_tuple = tuple(str(x) for x in evidence)
+    if status == PASS and not evidence_tuple:
+        status = NOT_VERIFIED
+    return ProofCheck(name, status, evidence_tuple, detail)
 
 def evaluate_self_proof(evidence: Mapping[str, Any], *, observed_at: str | None = None) -> dict[str, Any]:
     checks = []
