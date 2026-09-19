@@ -3,7 +3,8 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.0";
 type SendBody={operation?: "send"|"verify";recipient_user_id?:string;message_id?:string;body?:string;subject?:string;kind?:"direct"|"room"|"group"|"list";idempotency_key?:string;project_id?:string;policy_id?:string;experiment_case_id?:string;policy_input_hash?:string;policy_decision_hash?:string;authority_grant_id?:string;request_id?:string};
 const cors={"access-control-allow-origin":"https://sparkling-shape-7ae5.smartnetpodcast.workers.dev","access-control-allow-methods":"POST, OPTIONS","access-control-allow-headers":"authorization, apikey, content-type, x-idempotency-key","vary":"Origin"};
-const json=(payload:unknown,status=200)=>new Response(JSON.stringify(payload),{status,headers:{"content-type":"application/json","cache-control":"no-store",...cors}});\nconst inputRequestId=(req:Request)=>req.headers.get("x-request-id")||crypto.randomUUID();
+const json=(payload:unknown,status=200)=>new Response(JSON.stringify(payload),{status,headers:{"content-type":"application/json","cache-control":"no-store",...cors}});
+const inputRequestId=(req:Request)=>req.headers.get("x-request-id")||crypto.randomUUID();
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response(null,{status:204,headers:cors});
  if(req.method!=="POST")return json({ok:false,error:"METHOD_NOT_ALLOWED"},405);
@@ -11,8 +12,9 @@ Deno.serve(async(req)=>{
  const url=Deno.env.get("SUPABASE_URL")!,anon=Deno.env.get("SUPABASE_ANON_KEY")!,service=Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
  const userClient=createClient(url,anon,{global:{headers:{Authorization:authHeader}}}),admin=createClient(url,service);
  const {data:userData,error:userError}=await userClient.auth.getUser(); if(userError||!userData.user)return json({ok:false,error:"AUTH_INVALID"},401);
- const actorId=userData.user.id;\n const requestId=inputRequestId(req);
- let input:SendBody; try{input=await req.json()}catch{return json({ok:false,error:"INVALID_JSON"},400)}\n const requestId=inputRequestId(req);
+ const actorId=userData.user.id;
+ let input:SendBody; try{input=await req.json()}catch{return json({ok:false,error:"INVALID_JSON"},400)}
+ const requestId=inputRequestId(req);
  if(input.operation==="verify"){
    if(!input.message_id)return json({ok:false,error:"MESSAGE_ID_REQUIRED"},400);
    const {data:message,error:messageError}=await admin.from("v7_mail_messages").select("id,thread_id,sender_id,metadata").eq("id",input.message_id).maybeSingle();
