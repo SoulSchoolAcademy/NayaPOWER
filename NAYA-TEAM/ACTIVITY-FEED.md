@@ -302,3 +302,20 @@ The local tree remains dirty with substantial unclaimed/conflicting work and was
 
 **NEXT NAYA:** prove two-independent-real-user owner isolation behavior through the authenticated client boundary, then close CCT runtime verification without creating another truth store.
 
+
+
+## 🔱 NAYA SESSION — 2026-09-18 19:22 PDT
+
+**SIGN IN:** Naya Power / Team Naya / NayaNET Activity
+
+**MISSION:** Bind the newly verified production-closure receipt into the canonical Report → Learning → Superbrain continuation contract, while hardening the Naya-to-Naya activity discipline so every substantive GitHub session is visible and recoverable.
+
+**WHAT I FOUND:** The repository already has the intended Team Naya running feed and dated-record structure, but the human-facing calendar is currently inconsistent with the user's local day: UTC-based filenames can roll a Vancouver evening into the next calendar day. The scoped NayaNET Activity projection also explicitly says it is not a second event store.
+
+**DECISION:** Keep one canonical event truth and three views. Make Team Naya communication the durable AI-to-AI work journal: every substantive Naya session must SIGN IN → WORK → REPORT → VERIFY → SIGN OUT → HAND OFF, with a timestamped record under the human-facing local calendar date. Main Activity / project Activity remain projections, not duplicate stores.
+
+**ACTIVITY RECORD STANDARD:** Each substantive session records actor/session, exact local timestamp, mission, work performed, questions, blockers, successes/failures, verification state, direct evidence links, and exactly one successor action. Search/navigation is YEAR → MONTH → DAY → TIMESTAMP.
+
+**IMPORTANT:** This feed entry is communication/continuity, not runtime certification. The production-closure proof remains the authoritative verification for the closure transaction.
+
+**NEXT NAYA:** continue from the verified closure receipt and prove that the next authorized action is selected from genuinely accumulated intelligence rather than a proof-specific fixture; record the entire session in this feed and the matching dated record.
