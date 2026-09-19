@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { SUPABASE_URL } from '../config/supabase';
 import { supabase, useIdentity } from '../identity/session';
 
@@ -11,7 +11,8 @@ export function SmartMailSurface(){
  const load=async()=>{ if(!id.is_authenticated){setMessages([]);setThreads([]);setRecipients([]);setGrants([]);return;} setError('');
   const mem=await supabase.from('v7_mail_members').select('thread_id').eq('user_id',id.user_id); if(mem.error)throw new Error(mem.error.message); const tids=[...new Set((mem.data||[]).map((x:Row)=>String(x.thread_id)))];
   if(tids.length){const [m,t]=await Promise.all([supabase.from('v7_mail_messages').select('*').in('thread_id',tids).order('created_at',{ascending:false}).limit(100),supabase.from('v7_mail_threads').select('*').in('id',tids).order('created_at',{ascending:false})]); if(m.error)throw new Error(m.error.message);if(t.error)throw new Error(t.error.message);setMessages((m.data||[]) as Row[]);setThreads((t.data||[]) as Row[]);} else {setMessages([]);setThreads([]);}
-  const con=await supabase.from('nayanet_connections').select('connected_member_id').eq('owner_member_id',id.user_id).eq('status','active'); if(!con.error){const mids=[...new Set((con.data||[]).map((x:Row)=>String(x.connected_member_id)))];if(mids.length){const m=await supabase.from('members').select('id,display_name').in('id',mids);if(!m.error)setRecipients((m.data||[]) as Row[]);}}
+  const con=await supabase.from('nayanet_connections').select('id,connected_member_id,status,source_space_id').eq('owner_member_id',id.user_id).eq('status','active'); if(con.error)throw new Error(con.error.message);
+  setRecipients((con.data||[]).map((x:Row)=>({id:String(x.connected_member_id),display_name:`Connected member · ${short(x.connected_member_id)}`})));
   const ag=await supabase.from('nayanet_authority_grants').select('grant_id,actions,status,expires_at').eq('subject_id',id.user_id).eq('status','ACTIVE').order('created_at',{ascending:false}).limit(50); if(!ag.error)setGrants((ag.data||[]).filter((g:Row)=>JSON.stringify(g.actions||'').includes('smart_mail_send')) as Row[]);
  };
  useEffect(()=>{setBusy(true);load().catch(e=>setError(e instanceof Error?e.message:'SMART_MAIL_LOAD_FAILED')).finally(()=>setBusy(false));},[id.is_authenticated,id.user_id]);
