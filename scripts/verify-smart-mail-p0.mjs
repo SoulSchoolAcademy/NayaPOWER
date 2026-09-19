@@ -45,7 +45,7 @@ const receiverId = receiver.user.id;
 // Establish the existing governed Space -> mutual Connection prerequisite for these fresh proof identities.
 const spaceRows = await request(base + '/rest/v1/nayanet_spaces', {
   method:'POST',
-  headers:authHeaders(sender.access_token),
+  headers: { ...authHeaders(sender.access_token), prefer: 'return=representation' },
   body:JSON.stringify({
     owner_member_id: senderId,
     name: 'P0 Smart Mail Proof Space',
