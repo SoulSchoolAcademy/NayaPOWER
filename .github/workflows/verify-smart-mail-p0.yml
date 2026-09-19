@@ -42,7 +42,7 @@ jobs:
       - name: Validate production proof
         run: |
           test -s "$PROOF_PATH"
-          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof'); if(Object.values(r.chain).some(v=>v!==true)) throw new Error('failed proof point'); if(r.chain.authority_changed!==false) throw new Error('authority changed');" "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof'); if(Object.values(r.chain).some(v=>v!==true)) throw new Error('failed proof point'); if(r.chain.authority_unchanged!==true) throw new Error('authority changed');" "$PROOF_PATH"
       - uses: actions/upload-artifact@v4
         with:
           name: nayanet-smart-mail-p0-proof
