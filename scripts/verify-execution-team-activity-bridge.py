@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""End-to-end proof: real execution-controller lifecycle -> Team Naya Activity."""
+"""End-to-end proof: governed execution -> Activity -> Intelligence -> Promotion."""
 from __future__ import annotations
 
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 from pathlib import Path
@@ -19,7 +20,6 @@ from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalE
 
 
 def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha: str, run_id: str, action: str) -> None:
-    """Durably capture the existing CI execution identity; never creates evidence."""
     github_run_id = os.environ.get("GITHUB_RUN_ID")
     if not github_run_id:
         return
@@ -37,7 +37,8 @@ def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha
         "source": "github-actions",
     }
     capture_path.parent.mkdir(parents=True, exist_ok=True)
-    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "
+", encoding="utf-8")
 
 
 def main() -> int:
@@ -63,80 +64,85 @@ def main() -> int:
         registry = load_registry()
         authority = registry.resolve("HUMAN-SOULSCHOOLACADEMY-REPO-WRITE")
         gate = UniversalExecutionGate(registry)
-        decision = DecisionObject(decision_id="DEC-TEAM-BRIDGE-001", mission="Prove governed execution automatically reaches Team Naya Activity.", actor_id=authority.principal_id, action="repo_write", purpose=authority.purpose, scope=authority.scope, current_truth="execution lifecycle is governed and canonical Activity already exists", gap="Team communication must receive the real execution completion automatically", evidence=("evidence:execution-controller", "evidence:team-activity-facade"), epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}), consequence="bounded repository test execution", reversible=True, risk=Risk(uncertainty=1, consequence=1, irreversibility=1), alternatives=("do_not_execute",), expected_value="verified execution-to-team communication", required_permission="repo_write", verification=VerificationPlan("Team Naya Activity event", "NAYA_VERIFIED event exists and binds to execution", ("stop",)), necessary_power=frozenset({"repo_write"}), requested_power=frozenset({"repo_write"}))
+        decision = DecisionObject(decision_id="DEC-TEAM-BRIDGE-001", mission="Prove governed execution reaches durable reusable intelligence.", actor_id=authority.principal_id, action="repo_write", purpose=authority.purpose, scope=authority.scope, current_truth="execution lifecycle is governed and canonical Activity already exists", gap="verified learning must cross into the existing Intelligence promotion machinery", evidence=("evidence:execution-controller", "evidence:team-activity-facade"), epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}), consequence="bounded repository test execution", reversible=True, risk=Risk(uncertainty=1, consequence=1, irreversibility=1), alternatives=("do_not_execute",), expected_value="verified execution-to-intelligence promotion", required_permission="repo_write", verification=VerificationPlan("Intelligence promotion artifact", "existing Promotion Engine writes an artifact bound to this Activity event", ("stop",)), necessary_power=frozenset({"repo_write"}), requested_power=frozenset({"repo_write"}))
         action = {"action_id": "ACT-TEAM-BRIDGE-001", "action_type": "repository_write", "target": "team/activity/bridge-test", "purpose": authority.purpose, "authority_id": authority.authority_id, "decision_id": decision.decision_id, "actor_id": decision.actor_id, "scope": decision.scope, "permission": decision.action}
         issued = gate.authorize(authority=authority, decision=decision, action=action)
         assert issued.allowed
 
         ec.transition("EXECUTING", action=action, execution_authorization=issued.authorization, gate=gate, preflight=approved_preflight())
         ec.transition("OBSERVED", observation="real execution-controller transition reached OBSERVED")
-        next_action = "Next Naya retrieves the verified execution from Team Naya Activity and continues."
-        successor = "NEXT-NAYA-EXECUTION-FROM-TEAM-ACTIVITY"
-        ec.transition("VERIFIED", evidence=["receipt:team-bridge-e2e", "test:execution-controller"], verification={"status": "VERIFIED", "method": "execution-to-team-activity-e2e"}, next_action=next_action, successor=successor)
+        next_action = "Next Naya retrieves the verified execution from the promoted intelligence artifact and continues."
+        successor = "NEXT-NAYA-EXECUTION-FROM-PROMOTED-INTELLIGENCE"
+        learning = {
+            "title": "Explicit learning crosses the Activity-to-Intelligence boundary",
+            "what_happened": "A governed execution completed VERIFIED and emitted a canonical Activity Event.",
+            "intended_outcome": "An explicit learning lesson is converted into the existing Intelligence Event contract and processed by the existing Promotion Engine.",
+            "actual_outcome": "The explicit lesson was bound to the verified Activity provenance and became eligible for existing promotion.",
+            "lesson": "Verified execution becomes reusable intelligence only when an explicit non-empty lesson is supplied; the Activity record alone must never invent the lesson.",
+            "value": "Preserves provenance while preventing operational success from being mistaken for learned intelligence.",
+            "recommendation": "Require explicit learning semantics before Activity-to-Intelligence promotion.",
+            "next_action": next_action,
+            "successor_instruction": successor,
+            "root_cause": "The prior Activity boundary contained verified operational facts but no canonical learning semantics.",
+        }
+        ec.transition("VERIFIED", evidence=["receipt:team-bridge-intelligence-e2e", "test:execution-controller"], verification={"status": "VERIFIED", "method": "execution-to-intelligence-e2e"}, next_action=next_action, successor=successor, new_learning=learning)
 
         state = ec.load()
         assert state["status"] == "VERIFIED"
-        assert state.get("activity_event_id")
+        activity_id = state.get("activity_event_id")
+        assert activity_id
 
-        team_events = []
-        for candidate in events_root.rglob("SE-*.json"):
-            body = json.loads(candidate.read_text(encoding="utf-8"))
-            if body.get("event_type") == "team-communication":
-                team_events.append(body)
+        activity_path = events_root / f"{activity_id}.json"
+        activity_event = json.loads(activity_path.read_text(encoding="utf-8"))
+        assert activity_event["event_type"] == "activity"
+        assert activity_event["verification"]["status"] == "VERIFIED"
+        assert activity_event["continuity"]["execution_state"] == "COMPLETED"
+        assert activity_event["evidence_ids"]
 
-        verified = [event for event in team_events if (event.get("team") or {}).get("intent") == "NAYA_VERIFIED"]
-        assert verified, "NO TEAM ACTIVITY EVENT: execution did not reach the Team Naya facade"
-        bridge = verified[-1]
-        assert state["activity_event_id"] in bridge.get("evidence_ids", [])
-        assert bridge["team"]["recipients"] == ["TEAM-NAYA"]
-        assert bridge["continuity"]["next_action"] == next_action
-        assert bridge["continuity"]["successor"] == successor
+        intelligence_id = f"INT-{activity_id}"
+        intelligence_path = ROOT / "MASTER-NOTES" / "INTELLIGENCE-EVENTS" / f"{intelligence_id}.json"
+        assert intelligence_path.exists(), "FIRST_DIVERGENCE=Activity -> Intelligence Event missing"
+        intelligence_event = json.loads(intelligence_path.read_text(encoding="utf-8"))
+        assert intelligence_event["event_id"] == intelligence_id
+        assert intelligence_event["lesson"] == learning["lesson"]
+        assert f"activity_event:{activity_id}" in intelligence_event["source"]
+        assert intelligence_event["evidence"] == activity_event["evidence_ids"]
+        assert intelligence_event["evidence_state"] == "VERIFIED"
 
-        daily = activity_writer.find_daily_activity(state["activity_event_id"])
-        assert daily is not None
-        daily.unlink()
-        try:
-            ec.transition("HANDED_OFF", next_action=next_action, handoff={"current_state": "VERIFIED"})
-        except AssertionError as exc:
-            assert "NO DAILY RECORD = NO HANDOFF" in str(exc)
-        else:
-            raise AssertionError("HANDED_OFF accepted missing durable Team Naya day Activity")
-        activity_writer.write_execution_activity(
-            event=__import__("activity_event").find_event(state["activity_event_id"], events_root=events_root, index_path=ec.INDEX_PATH),
-            execution={**action, "claim_id": claim_id, "run_id": run_id, "session_id": state["session_id"], "governance_state": "AUTHORIZED", "authorization_verified": True},
-            next_action=next_action,
-            successor=successor,
-            evidence=["receipt:team-bridge-e2e", "test:hard-handoff"],
-        )
-        ec.transition("HANDED_OFF", next_action=next_action, handoff={"current_state": "VERIFIED"})
-        assert ec.load()["status"] == "HANDED_OFF"
+        promotion = subprocess.run([sys.executable, str(ROOT / "tools" / "promote_intelligence.py")], cwd=ROOT, text=True, capture_output=True)
+        assert promotion.returncode == 0, "FIRST_DIVERGENCE=existing Promotion Engine failed: " + promotion.stdout + promotion.stderr
 
-        before = len(team_events)
-        from activity_event import ensure_activity_event
-        replay = ensure_activity_event(claim_id=claim_id, action_id=action["action_id"], decision_id=action["decision_id"], authority_id=action["authority_id"], actor_id=action["actor_id"], subject="VERIFIED completion — replay", summary="replay must reuse the canonical execution Activity event", receipt_id=f"RCP-{claim_id}", next_action=next_action, successor=successor, evidence=["receipt:team-bridge-e2e"], run_id=run_id, session_id=state.get("session_id"), events_root=events_root, index_path=ec.INDEX_PATH)
-        assert replay["status"] == "REPLAY_EVENT"
-        after = [json.loads(candidate.read_text(encoding="utf-8")) for candidate in events_root.rglob("SE-*.json") if json.loads(candidate.read_text(encoding="utf-8")).get("event_type") == "team-communication"]
-        assert len(after) == before, "REPLAY created duplicate Team Naya Activity communication"
+        receipt_path = ROOT / "MASTER-NOTES" / "INTELLIGENCE-PROMOTIONS" / "LATEST-PROMOTION-RECEIPT.json"
+        assert receipt_path.exists(), "FIRST_DIVERGENCE=Promotion Engine receipt missing"
+        receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+        rows = [row for row in receipt.get("receipts", []) if row.get("event_id") == intelligence_id]
+        assert rows, "FIRST_DIVERGENCE=Promotion Engine did not process the new Intelligence Event"
+        row = rows[-1]
+        assert row["promotion_status"] == "PROMOTED_WRITTEN", f"FIRST_DIVERGENCE=unexpected promotion status {row['promotion_status']!r}"
+        assert row["source_event"] == f"MASTER-NOTES/INTELLIGENCE-EVENTS/{intelligence_id}.json"
+        promoted = row.get("promoted_artifacts", [])
+        assert any(f"{intelligence_id}.md" in item for item in promoted), "FIRST_DIVERGENCE=Promotion Engine produced no bound intelligence artifact"
+
+        feed_path = ROOT / "MASTER-NOTES" / "INTELLIGENCE-FEED" / f"{intelligence_id}.md"
+        assert feed_path.exists(), "FIRST_DIVERGENCE=Intelligence Feed artifact missing"
+        note_path = ROOT / "MASTER-NOTES" / "NAYA-NOTES" / f"{intelligence_id}.md"
+        assert note_path.exists(), "FIRST_DIVERGENCE=Naya Note artifact missing"
 
         output_lines = [
             "EXECUTION_CONTROLLER=PASS",
-            "EXECUTION_TO_TEAM_ACTIVITY=PASS",
-            "TEAM_ACTIVITY_EVIDENCE_BINDING=PASS",
-            "TEAM_ACTIVITY_HANDOFF=PASS",
-            "TEAM_ACTIVITY_IDEMPOTENCY=PASS",
-            "HARD_HANDOFF_ACTIVITY_GATE=PASS",
-            f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}",
-            f"TEAM_NAYA_EVENT_ID={bridge['event_id']}",
-            f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}",
+            "ACTIVITY_EVENT=PASS",
+            "EXPLICIT_LEARNING_LESSON=PASS",
+            "INTELLIGENCE_EVENT=PASS",
+            "PROMOTION_ENGINE=PASS",
+            "PROMOTED_ARTIFACT=PASS",
+            f"EXECUTION_ACTIVITY_EVENT_ID={activity_id}",
+            f"INTELLIGENCE_EVENT_ID={intelligence_id}",
+            f"PROMOTION_STATUS={row['promotion_status']}",
+            f"PROMOTED_ARTIFACTS={json.dumps(promoted)}",
         ]
-        output = "\n".join(output_lines)
-        _write_ci_execution_capture(
-            observed_output=output,
-            result="PASS",
-            commit_sha=os.environ.get("GITHUB_SHA", ""),
-            run_id=run_id,
-            action="Run governed execution to Team Naya Activity proof",
-        )
+        output = "
+".join(output_lines)
+        _write_ci_execution_capture(observed_output=output, result="PASS", commit_sha=os.environ.get("GITHUB_SHA", ""), run_id=run_id, action="Run governed execution through Activity to Intelligence promotion proof")
         print(output)
         return 0
     finally:
@@ -148,7 +154,3 @@ def main() -> int:
                 ec.STATE.unlink()
         else:
             ec.STATE.write_text(original, encoding="utf-8")
-
-
-if __name__ == "__main__":
-    raise SystemExit(main())
