@@ -50,7 +50,6 @@ const preValidation = await rpc(sender.access_token, 'nayanet_validate_authority
   p_grant_id: grant.grant_id, p_action: 'smart_mail_send', p_target: receiverId
 });
 if (preValidation.status !== 'AUTHORIZED') throw new Error('AUTHORITY_PREVALIDATION_FAILED ' + JSON.stringify(preValidation));
-const authHeaders = token => ({ apikey: key, authorization: 'Bearer ' + token, 'content-type': 'application/json' });
 async function rawRequest(url, options = {}) {
   const res = await fetch(url, options);
   const text = await res.text();
@@ -58,6 +57,7 @@ async function rawRequest(url, options = {}) {
   try { body = JSON.parse(text); } catch { body = { raw: text }; }
   return { status: res.status, body };
 }
+const authHeaders = token => ({ apikey: key, authorization: 'Bearer ' + token, 'content-type': 'application/json' });
 async function rpc(token, fn, payload) {
   return request(base + '/rest/v1/rpc/' + fn, { method:'POST', headers:authHeaders(token), body:JSON.stringify(payload) });
 }
