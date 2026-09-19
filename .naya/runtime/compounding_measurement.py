@@ -65,9 +65,9 @@ def build_compounding_measurement(
     return {
         "schema": SCHEMA,
         "status": STATUS,
-        "measurement_id": f"CM-{event_id}",
+        "measurement_id": f"CIMC-{receipt_id}",
         "recorded_at": event.get("effective_at"),
-        "request_id": execution.get("claim_id"),
+        "request_id": request_id,
         "action_id": action_id,
         "run_id": run_id,
         "activity_event_id": event_id,
