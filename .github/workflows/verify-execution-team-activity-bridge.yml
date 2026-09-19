@@ -22,9 +22,14 @@ jobs:
         run: python .naya/runtime/execution_activity_writer_test.py
       - name: Run focused V1 compounding measurement proof
         run: python .naya/runtime/compounding_measurement_test.py
+      - name: Run automatic Activity emission closure proof
+        run: python tests/test_activity_event_auto_emission.py
       - name: Run execution controller closure proof
+        if: always()
         run: python tests/test_execution_controller_closure.py
       - name: Run Smart Ledger engine proof
+        if: always()
         run: python .naya/runtime/test_smart_ledger_engine.py
       - name: Run governed execution to Team Naya Activity proof
+        if: always()
         run: python scripts/verify-execution-team-activity-bridge.py
