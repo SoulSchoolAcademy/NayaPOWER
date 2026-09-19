@@ -89,7 +89,8 @@
     "Whether the current Smart Mail receiver-verification path should accept independently evidenced outcome value components rather than using the fixed send-path value contract.",
     "Full cold-Naya continuation after fresh-context retrieval: current receipt proves fresh retrieval/render continuity but its continuation field is null.",
     "Comprehensive multi-Naya concurrency safety.",
-    "Complete temporal/supersession/conflict retrieval proof."
+    "Complete temporal/supersession/conflict retrieval proof.",
+    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -98,7 +99,8 @@
     "The production deploy workflow initially failed its live verification because it searched for the release SHA in the HTML body; this was corrected to verify the canonical release header, then corrected for HTTP header case. The subsequent deployment passed.",
     "The first controlled paired experiment workflow attempt failed because the Node runner imported Supabase JS from an HTTPS ESM URL; corrected to use the installed npm package.",
     "The second controlled paired experiment attempt reached the real comparison but its adversarial assertion expected a specific error string; the comparison did reject the swapped receipts, and the assertion was corrected to require any rejection.",
-    "The first artifact-upload correction used an unavailable runner context at workflow-dispatch parse time; corrected to use runner.temp only in the artifact path."
+    "The first artifact-upload correction used an unavailable runner context at workflow-dispatch parse time; corrected to use runner.temp only in the artifact path.",
+    "A Windows desktop clone of current main failed checkout because the repository contains a filename with a colon (`.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`); Linux/GitHub runtime proof is unaffected, but Windows-local Cold-Naya/tooling portability is not yet clean."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -118,7 +120,8 @@
   "bottleneck": "Policy improvement is not yet proven. The controlled paired engine is now executable and real, but the current Smart Mail value contract produces equal verified value (0 vs 0) and therefore cannot establish superiority. The next critical engineering boundary is an independent outcome/value contract plus a multi-case held-out paired experiment. A separate continuity gap remains: fresh-context retrieval is verified, but a fresh Naya has not yet performed and verified a continuation action.",
   "single_next_action": "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN.",
   "next_actions": [
-    "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN."
+    "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN.",
+    "After the independent outcome/value contract, normalize or safely relocate Windows-invalid tracked filenames and update references so a fresh Windows Naya can clone/restore the repository without checkout failure."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — P1 REAL OUTCOME VALUE CONTRACT\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF/Team Naya. Preserve the existing Smart Mail receipt and policy lineage substrate. Implement the smallest independent receiver-outcome value contract that records inspectable evidence for benefit, harm, cost, and risk_adjusted_loss without allowing the candidate policy to self-score. Then run a frozen multi-case paired V1/V2 experiment, verify every receiver outcome, deterministically compare responsible value, adversarially attack lineage/case contamination, record REAL_OUTCOME, and return PROVEN or NOT_PROVEN. If the values remain equal, do not force improvement. Then address the fresh-Naya continuation action.",
