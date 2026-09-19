@@ -50,3 +50,20 @@ Inspect actual NayaNET messaging primitives and prove individual → group/Space
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-11-SMART-MAIL-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-47-SMART-SPACE-CONTRACT.md`; `.naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Live Edge Function v12 identified
+- [x] Live mail tables identified
+- [x] Authenticated send/receiver verification proven historically
+- [ ] Current Hub UI mapped to live backend
+- [ ] Two-real-user denial proven at current product surface
+- [ ] Product-surface replay/idempotency proven
+- [ ] Current source → build → runtime parity captured
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** IMPLEMENTED; complete current-surface closure remains. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-MAIL.md).
