@@ -65,7 +65,7 @@ const prepare=async(p)=>{
     p_subject_id:sender.id,
     p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+p.id,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
-    p_scope:{project_id:"NayaNET",target:p.id},
+    p_scope:{project_id:experimentProject,target:p.id},
     p_actions:["policy.controlled_test"],
     p_constraints:{mode:"controlled-test-only",no_external_side_effects:true},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
@@ -142,7 +142,7 @@ const send=async(token,policy,decision,caseId,inputHash,group)=>{
     headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
     body:JSON.stringify({
       recipient_user_id:receiver.id,body:decision.body,subject:decision.subject,kind:"direct",
-      idempotency_key:caseId+"-"+group,project_id:"NayaNET",policy_id:policy.id,
+      idempotency_key:caseId+"-"+group,project_id:experimentProject,policy_id:policy.id,
       experiment_case_id:caseId,policy_input_hash:inputHash,policy_decision_hash:decisionHash,
       authority_grant_id:authorityGrantId
     })
