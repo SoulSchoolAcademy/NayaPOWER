@@ -154,7 +154,7 @@ The complete issue matrix is stored at:
 
 `.naya/control-plane/GITHUB-ISSUE-CLASSIFICATION-2026-09-17.md`
 
-The matrix contains the 61 issues captured by the September 17 inventory and assigns each a lifecycle class. It is a dated historical snapshot, not a claim that GitHub's live issue set remains 61.
+The matrix contains the 61 issues captured by the September 17 open-issue inventory and one preserved #2 governance-law row. It is a dated historical snapshot, not a claim that GitHub's live issue set remains 61.
 
 ## 11. CURRENT WORKFLOW AUTHORITY
 
