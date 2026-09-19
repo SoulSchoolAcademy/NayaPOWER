@@ -6,7 +6,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/run-controlled-paired-policy-experiment.mjs'
-      - 'supabase/migrations/202609190001_require_authority_grant_for_controlled_test_202609190001.sql'
+      - 'supabase/migrations/20260919003748_require_authority_grant_for_controlled_test_202609190001.sql'
       - '.github/workflows/verify-p1-controlled-paired-policy-outcome.yml'
 
 permissions:
