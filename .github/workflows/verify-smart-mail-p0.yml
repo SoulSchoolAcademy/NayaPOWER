@@ -20,7 +20,6 @@ jobs:
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-      PROOF_PATH: ${{ runner.temp }}/nayanet-smart-mail-p0-proof.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -28,6 +27,7 @@ jobs:
           node-version: 20
       - name: Execute real production sender -> Naya -> receiver transaction
         run: |
+          export PROOF_PATH="$RUNNER_TEMP/nayanet-smart-mail-p0-proof.json"
           set +e
           node scripts/verify-smart-mail-p0.mjs 2>&1 | tee "$RUNNER_TEMP/smart-mail-runtime.log"
           status=${PIPESTATUS[0]}
