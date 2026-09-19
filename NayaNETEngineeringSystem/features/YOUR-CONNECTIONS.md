@@ -144,3 +144,14 @@ Existing Smart Space, identity/privacy/publication, Smart Mail and Smart List co
 **Hub result:** the canonical Hub HTML is a visual baseline; it contains Connections/Smart Mail UI but no direct Supabase/auth/Space/Mail runtime wiring. UI labels are not runtime proof.
 
 **Implementation rule:** do not introduce membership until Action 03 reconciles `v7_connection_requests` and defines the canonical relationship state/provenance. No production schema was changed in Action 02.
+
+## ACTION 03–05 EXECUTION STATE — 2026-09-19
+
+**Identity:** `auth.users.id = members.id`.  
+**Profile:** `nayanet_profiles.member_id = members.id`.  
+**Membership:** canonical `nayanet_space_members` now exists with explicit active/left/revoked state and source provenance.  
+**Relationship request:** `v7_connection_requests` is request-only state; it does not establish the durable Connection object.  
+**Connection:** canonical `nayanet_connections` now exists as an explicit saved relationship. It requires an active shared Space and records source Space provenance.  
+**Events:** JOIN, LEAVE, SAVE CONNECTION and REVOKE CONNECTION use the existing cognition event substrate.
+
+**Not yet verified:** current Hub UI wiring, browser-authenticated lifecycle, Smart List, relationship-gated Smart Mail, two-user live browser proof, Cloudflare parity.
