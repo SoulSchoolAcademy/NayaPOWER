@@ -48,10 +48,10 @@
       "supabase/functions/nayanet-smart-mail/index.ts",
       "SUPERBRAIN/SMART-NOTES/2026/09/2026-09-19-P1-CONTROLLED-PAIRED-POLICY-OUTCOME.md"
     ],
-    "target_state": "POLICY_IMPROVEMENT_PROVEN_OR_TRUTHFULLY_NOT_PROVEN",
-    "next_action": "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN.",
+    "target_state": "FRESH_NAYA_CONTINUATION_PROVEN",
+    "next_action": "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again.",
     "next_actions": [
-      "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN."
+      "Execute the fresh-Naya continuation proof: retrieve the current durable project state in a fresh context, reconstruct mission/evidence/protected boundaries/blockers/authority, perform one genuinely authorized continuation action, verify the result, record new intelligence, and retrieve that new intelligence again."
     ],
     "next_action_count": 1
   },
