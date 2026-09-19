@@ -126,7 +126,7 @@
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
     "current_repository_head": "LIVE_RESOLUTION"
   },
-  "recording_commit": "SOURCE_SCOPE_CURRENT",
+  "recording_commit": "0a97c30b70e49a530094cc39869b05444ae2c858",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
