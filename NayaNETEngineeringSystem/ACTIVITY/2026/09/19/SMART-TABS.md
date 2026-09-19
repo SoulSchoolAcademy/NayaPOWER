@@ -91,3 +91,19 @@ A source review caught and repaired a real syntax/assembly defect before deploym
 **Not proven:** Cloudflare deployment/parity. GitHub exposes zero workflow runs for the repair commit; an unrelated Vercel status failure must not be interpreted as Cloudflare failure or success.
 
 **Successor:** obtain a real Cloudflare release result for `3627a4...`, then execute authenticated CRUD/reload/isolation.
+## Session 006 — Authenticated production closure — 2026-09-19T16:59Z
+
+**Status:** production capability and server-side security are now proven.
+
+- Cloudflare run **35455850419** succeeded from repaired commit **3627a484533411921765dd53e793cf970564f818**.
+- Live Smart Tabs SHA-256: **bb772e3888c7ebd65193c17c1fc6995460f28ee5f211c9c5a88d5b64c4cdb26b**.
+- Authenticated A created two tabs and completed create → edit → favorite → reorder → reload → delete.
+- B could not list A's tabs.
+- B update failed server-side.
+- B delete returned 404 after the delete handler was repaired to reject zero-row RLS deletes.
+- A's tabs remained intact during B's denial attempt.
+- Test owner cleanup completed with final list empty.
+
+**Important repair:** naya-smart-tabs advanced to **v2**. The prior delete handler could return a false-success envelope when RLS matched zero rows. The new handler requires a returned deleted row and emits TAB_NOT_FOUND_OR_NOT_AUTHORIZED otherwise.
+
+**Remaining:** authenticated browser click/navigation proof and final visual/mobile/accessibility acceptance. Backend CRUD, persistence, reload, reorder, favorite, delete, and server-side isolation are no longer unknown.
