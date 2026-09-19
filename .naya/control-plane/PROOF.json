@@ -93,7 +93,7 @@
       "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
       "run_id": 35470519946,
       "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
-      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "deployed_source_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -101,13 +101,13 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
         "NAYANET/HUB/src/app/SmartMailSurface.tsx",
         "identity.html",
-        "NayaNET/name-first-auth-adapter.js",
-        ".github/workflows/assistant-cloudflare-authenticated-proof.yml"
+        "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
         "authenticated session established in the canonical Assistant runtime",
         "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
-        "independent fresh-context cold-Naya retrieval and render passed"
+        "independent fresh-context cold-Naya retrieval and render passed",
+        "tested source scope remained unchanged after the successful 9479d0f proof correction"
       ],
       "fresh_context_retrieval": "VERIFIED",
       "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
@@ -349,7 +349,7 @@
       "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
       "run_id": 35470519946,
       "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
-      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "deployed_source_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -357,13 +357,13 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
         "NAYANET/HUB/src/app/SmartMailSurface.tsx",
         "identity.html",
-        "NayaNET/name-first-auth-adapter.js",
-        ".github/workflows/assistant-cloudflare-authenticated-proof.yml"
+        "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
         "authenticated session established in the canonical Assistant runtime",
         "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
-        "independent fresh-context cold-Naya retrieval and render passed"
+        "independent fresh-context cold-Naya retrieval and render passed",
+        "tested source scope remained unchanged after the successful 9479d0f proof correction"
       ],
       "fresh_context_retrieval": "VERIFIED",
       "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
