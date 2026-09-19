@@ -1,0 +1,55 @@
+{
+  "schema": "naya/cloudflare/portable-execution-receipt/v1",
+  "status": "VERIFIED_EXTERNAL_ACTION",
+  "artifact_schema": "naya/portable_authorization/v1",
+  "artifact_sha256": "c98b7ceb4a9520e2c23fc22e30fa568f39c18a73b8d4835a442687c7b3485562",
+  "runner": "independent-process",
+  "verified_at": "2026-09-19T01:58:16.476533+00:00",
+  "action_id": "CF-PORTABLE-PROOF-001",
+  "identity": {
+    "identity_id": "SoulSchoolAcademy",
+    "identity_fingerprint": "a98dbac29153e7432f5753f7724ec69e36a5612f5c07fc7a29113ceda21c83cb",
+    "identity_binding_hash": "a816dfd2c73f12b04b9fe0f6d7fa1f361f6b6fb98d95498300145aa4dd758e99"
+  },
+  "authorization": {
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509",
+    "decision_id": "CF-PORTABLE-PROOF-DEC-001",
+    "action_id": "CF-PORTABLE-PROOF-001",
+    "action_type": "deploy_public_runtime",
+    "target": "cloudflare-runtime:sparkling-shape-7ae5:environment:preview:repository:SoulSchoolAcademy/NayaPOWER:commit:44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "permission": "deploy_public_runtime",
+    "binding_hash": "c3d77abb58ac892b815f91cba5d659dd3718dc118621962e156b2aed29c0436a",
+    "environment": "preview",
+    "worker_name": "sparkling-shape-7ae5",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "commit_sha": "44b4829c8815ea4c62d15c0a74befb963054ccc0"
+  },
+  "registry_revision_at_use": "d8b185ef458df53faad5390a33a9a566be8badbadd1b91324d337d235c403bcc",
+  "source_checkout": "44b4829c8815ea4c62d15c0a74befb963054ccc0",
+  "external_execution": {
+    "execution_state": "COMPLETED",
+    "execution_id": "CF-PORTABLE-PROOF-001",
+    "action": "deploy_public_runtime",
+    "observed_output": "⛅️ wrangler 4.135.0\n────────────────────\n🌀 Building list of assets...\n✨ Read 10 files from the assets directory /home/runner/work/_temp/nayapower-authorized-source/NAYANET/HUB/dist\n🌀 Starting asset upload...\n🌀 Found 1 new or modified static asset to upload. Proceeding with upload...\n+ /intelligence/pis-feed.json\nUploaded 1 of 1 asset\n✨ Success! Uploaded 1 file (6 already uploaded) (0.78 sec)\n\nTotal Upload: 1.31 KiB / gzip: 0.50 KiB\nWorker Startup Time: 1 ms\nYour Worker has access to the following bindings:\nBinding            Resource      \nenv.ASSETS         Assets        \n\nUploaded sparkling-shape-7ae5 (2.40 sec)\nWorker Version ID: 4aeb34e3-16a2-406b-bf3d-b07e5f98cf26\nVersion Preview URL: https://4aeb34e3-sparkling-shape-7ae5.smartnetpodcast.workers.dev\n\nTo deploy this version to production traffic use the command wrangler versions deploy\n\nChanges to non-versioned settings (config properties 'logpush' or 'tail_consumers') take effect after your next deployment using the command wrangler versions deploy\n\nChanges to triggers (routes, custom domains, cron schedules, etc) must be applied with the command wrangler triggers deploy",
+    "result": "PASS",
+    "commit_sha": "44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "action_ref": "cloudflare:sparkling-shape-7ae5:preview:CF-PORTABLE-PROOF-001",
+    "outcome_ref": "cloudflare-outcome:CF-PORTABLE-PROOF-001",
+    "environment": "preview",
+    "source": "cloudflare_production_adapter",
+    "external_version_id": "4aeb34e3-16a2-406b-bf3d-b07e5f98cf26",
+    "external_worker": "sparkling-shape-7ae5",
+    "external_account_id": "b5e2a51b3e883f7722287c5f51b1196b"
+  },
+  "adapter_invoked": true,
+  "provenance": {
+    "source": "github-actions-independent-runner",
+    "portable_authorization_schema": "naya/portable_authorization/v1",
+    "artifact_sha256": "c98b7ceb4a9520e2c23fc22e30fa568f39c18a73b8d4835a442687c7b3485562",
+    "verified_before_adapter": true
+  },
+  "continuation": {
+    "next_action": "consume portable receipt into canonical Activity/PIS projection and verify fresh-context retrieval",
+    "successor": "NayaNET governed cognition continuity"
+  }
+}
