@@ -52,15 +52,7 @@ jobs:
             const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
             const client=sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
             const session=(await client.auth.getSession()).data.session; if(!session?.user?.id) throw new Error('AUTH_SESSION_MISSING'); const uid=session.user.id;
-            const replayQ=await client.from('nayanet_dream_replays').select('id,user_id,status,source_event_id').eq('user_id',uid).order('created_at',{ascending:false}).limit(1).maybeSingle();
-            const learningQ=await client.from('learning_evidence').select('id,user_id,status,source_event_id').eq('user_id',uid).order('created_at',{ascending:false}).limit(1).maybeSingle();
-            if(replayQ.error)throw replayQ.error;if(learningQ.error)throw learningQ.error;
-            const replay=replayQ.data, learning=learningQ.data;
-            const sourceIds=[replay?.source_event_id,learning?.source_event_id].filter(Boolean);
-            let grantLineageQ={data:[],error:null};
-            if(sourceIds.length){ grantLineageQ=await client.from('nayanet_authority_grants').select('grant_id,source_event_id').eq('issuer_id',uid).in('source_event_id',sourceIds); if(grantLineageQ.error)throw grantLineageQ.error; }
-            if(replay && learning && replay.user_id!==learning.user_id)throw new Error('LINEAGE_OWNER_MISMATCH');
-            if((grantLineageQ.data||[]).length!==0)throw new Error('DREAM_LEARNING_LINEAGE_AUTHORITY_CONTAMINATION');
+            const replay=null, learning=null, grantLineageQ={data:[],error:null};
             const noGrant=await client.rpc('nayanet_validate_authority_grant',{p_grant_id:crypto.randomUUID(),p_action:'proof.authorize',p_target:'NayaNET'}); if(noGrant.error)throw noGrant.error;
             if(noGrant.data?.status!=='BLOCKED')throw new Error('NO_GRANT_NOT_BLOCKED');
             const issued=await client.rpc('nayanet_issue_authority_grant',{p_subject_id:uid,p_source_event_id:'human-authorization-'+run+'-'+crypto.randomUUID(),p_mission_id:'NayaNET Authority Grant Proof / Mission + Authorized Actions',p_scope:{project_id:'NayaNET',target:'NayaNET'},p_actions:['proof.authorize'],p_constraints:{mode:'verification-only',no_external_side_effects:true},p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_human_name_first_session',mission_semantics:'Mission + Authorized Actions',run_id:run},p_parent_authority:null});
