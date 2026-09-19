@@ -128,6 +128,7 @@ def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optiona
         return {"status": "REPLAY_EVENT", "event_id": existing.get("event_id"), "event": existing, "persist": None}
     event_id = _event_id_for(claim_id, action_id, run_id)
     event = build_activity_event(event_id=event_id, claim_id=claim_id, action_id=action_id, decision_id=decision_id, authority_id=authority_id, actor_id=actor_id, subject=subject, summary=summary, receipt_id=receipt_id, next_action=next_action, successor=successor, evidence=evidence, run_id=run_id, session_id=session_id, effective_at=effective_at)
+    learning_payload = None
     if measurement_context is not None:
         from compounding_measurement import build_compounding_measurement
         measurement_execution = {
@@ -135,6 +136,7 @@ def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optiona
             "action_id": action_id,
             "run_id": run_id,
         }
+        learning_payload = measurement_context.get("new_learning")
         event["compounding_measurement"] = build_compounding_measurement(
             event=event,
             execution={**measurement_execution, **(measurement_context.get("execution") or {})},
@@ -142,13 +144,20 @@ def ensure_activity_event(*, claim_id: str, action_id: str, decision_id: Optiona
             history=measurement_context.get("history") or [],
             resource_usage=measurement_context.get("resource_usage"),
             knowledge_reuse=measurement_context.get("knowledge_reuse"),
-            new_learning=measurement_context.get("new_learning"),
+            new_learning=learning_payload,
         )
     persisted = persist_activity_event(event, events_root=root, index_path=index)
     if persisted.get("status") == "CONFLICT":
         raise ValueError(f"conflicting existing canonical Activity event: {event_id}")
     if persisted.get("status") not in {"CREATED", "REPLAY"}:
         raise ValueError(f"failed to persist canonical Activity event: {event_id}")
+
+    # Semantic promotion is a separate boundary: only an explicit learning
+    # payload can cross Activity -> Intelligence. No lesson means no promotion.
+    if learning_payload is not None:
+        from activity_intelligence_adapter import promote_activity_event
+        promote_activity_event(event, learning_payload)
+
     return {"status": persisted.get("status"), "event_id": event_id, "event": event, "persist": persisted}
 
 
