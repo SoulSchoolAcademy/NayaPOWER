@@ -19,7 +19,12 @@ export function HubBaselineApp() {
       if (!doc.getElementById('naya-react-mail-style')) {
         const style = doc.createElement('style');
         style.id = 'naya-react-mail-style';
-        style.textContent = mailCss;
+        style.textContent = mailCss + `
+          body.naya-react-mail-open .main > :not(.top):not(#naya-react-mail-root),
+          body.naya-react-mail-open .mission,
+          body.naya-react-mail-open .features { display: none !important; }
+          #naya-react-mail-root { min-height: calc(100vh - 82px); }
+        `;
         doc.head.appendChild(style);
       }
 
@@ -36,8 +41,7 @@ export function HubBaselineApp() {
 
       const setMailMode = (open: boolean) => {
         doc.body.classList.toggle('naya-react-mail-open', open);
-        if (open) setMailRoot(root);
-        else setMailRoot(null);
+        setMailRoot(open ? root : null);
       };
 
       const buttons = [...doc.querySelectorAll<HTMLElement>('[data-page]')];
@@ -73,23 +77,22 @@ export function HubBaselineApp() {
   }, []);
 
   return (
-    <iframe
-      ref={frameRef}
-      title="NayaNET Intelligent Hub"
-      srcDoc={source}
-      style={{
-        width: '100%',
-        minHeight: '100vh',
-        height: '100vh',
-        border: 0,
-        display: 'block',
-        background: '#050507',
-      }}
-      allow="clipboard-read; clipboard-write"
-    />
+    <>
+      <iframe
+        ref={frameRef}
+        title="NayaNET Intelligent Hub"
+        srcDoc={source}
+        style={{
+          width: '100%',
+          minHeight: '100vh',
+          height: '100vh',
+          border: 0,
+          display: 'block',
+          background: '#050507',
+        }}
+        allow="clipboard-read; clipboard-write"
+      />
+      {mailRoot ? createPortal(<SmartMailSurface />, mailRoot) : null}
+    </>
   );
-}
-
-export function HubMailPortal({ root }: { root: HTMLElement }) {
-  return createPortal(<SmartMailSurface />, root);
 }
