@@ -110,3 +110,11 @@ The execution discipline was tightened: Wave A now has a ten-action back-to-back
 Smart Tabs was also advanced from create/navigation-only UI to full CRUD/reorder/favorite/delete controls using the existing owner-scoped API. Commit: `c5d21b6db36661546561aeb0ec479735ba555199`.
 
 **Successor:** Execute the ten actions in Session 005 sequentially; start with deployed Smart Tabs source/runtime parity, then use the first legitimate authenticated session available to close behavior and privacy proofs.
+
+## Session 005 checkpoint — 2026-09-19T16:55:00Z
+
+Wave A execution began. A real source defect was discovered in Smart Tabs before deployment parity could be claimed: commit `c5d21b6db36661546561aeb0ec479735ba555199` appended a duplicate render function after the IIFE. It was repaired in `3627a484533411921765dd53e793cf970564f818`.
+
+**Current truth:** Smart Tabs source repair is committed; Cloudflare parity is not proven because GitHub exposes zero workflow runs for the repair commit and the available local network cannot perform an independent live hash check. Authenticated Feed/Personal/Collective and two-user proofs remain blocked by the absence of a legitimate authenticated session.
+
+**Do not promote this checkpoint to PASS.**
