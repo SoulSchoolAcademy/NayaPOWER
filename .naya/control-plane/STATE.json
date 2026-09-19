@@ -46,21 +46,23 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "CURRENT_WAVE_A_ENGINE_EXECUTION",
-    "observed_head": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
+    "status": "CURRENT_WAVE_A_ENGINE_SECURITY_CLOSURE",
+    "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
     "observation_is_historical_relative_to_live_HEAD": false,
-    "policy_experiment_run_id": 35460365955,
-    "policy_experiment_result": "NOT_PROVEN",
-    "policy_experiment_receipt": "p1-controlled-paired-policy-receipt",
-    "smart_feed_ledger_run_id": 35460477460,
-    "smart_feed_ledger_result": "VERIFIED",
-    "smart_feed_ledger_receipt": "smart-feed-ledger-proof",
-    "edge_runtime_naya_smart_feed_version": 4,
-    "edge_runtime_nayanet_smart_mail_version": 13,
+    "concurrency_run_id": 35461980944,
+    "concurrency_result": "VERIFIED",
+    "concurrency_writers": 8,
+    "concurrency_receipt_revisions": "1,2,3,4,5,6,7,8",
     "proof7_run_id": 35461270128,
     "proof7_result": "VERIFIED",
-    "proof7_artifact": "nayanet-proof7-compounding-loop",
-    "cognition_receipt_revision_repair": "20260919183100_align_cognition_receipt_revision_with_receipt_namespace"
+    "relationship_journey_run_id": 35462235010,
+    "relationship_journey_result": "VERIFIED",
+    "relationship_project": "NayaNET-waveA-relationship-1789843560708-c7be120b",
+    "initial_message_id": "f7dcb2b5-30e4-4b64-a2ff-22ffbdbc8934",
+    "initial_receipt_id": "a1bc79cc-235c-4656-bd75-39ef762720dd",
+    "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
+    "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
+    "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -90,14 +92,19 @@
     "The current Smart Feed runtime is deployed as Edge Function version 4; nayanet-smart-mail is deployed as version 13.",
     "Proof 7 compounding Superbrain loop run 35461270128 is VERIFIED: experience, memory, dream, learning, continuity, decision, outcome, authority unchanged, new learning, and next decision-context retrieval all passed; policy improvement remains NOT_PROVEN.",
     "Cognition receipt revision allocation was repaired in production by serializing per-user/project execution-receipt revision allocation and choosing the next revision from the canonical execution-receipt namespace.",
-    "Proof 7 now uses the existing production shared Space, mutual Connections, and explicit least-privilege smart_mail_send authority."
+    "Proof 7 now uses the existing production shared Space, mutual Connections, and explicit least-privilege smart_mail_send authority.",
+    "Live main HEAD resolved at execution time is 59a9e1cd8d169c88263284a8dbec07dec6781ff7.",
+    "Cognition receipt revision concurrency run 35461980944 is VERIFIED: eight concurrent production writers for one authenticated user/project produced eight unique receipt IDs and contiguous revisions 1–8, with cognition-state revision 8.",
+    "Wave A relationship/security journey run 35462235010 is VERIFIED against the existing production Space: mutual A↔B Connections, Smart List owner/privacy isolation, no-grant denial, explicit smart_mail_send authority, real A→B Smart Mail, receiver verification, receipt→cognition→Smart Ledger lineage, idempotent replay, authority revocation denial, C isolation, fresh-Naya retrieval, successor authorization, and fresh-Naya continuation all passed.",
+    "The canonical Smart Mail replay contract returns status REPLAY with the original message/thread/receipt identity; it does not return cognition_event_id on replay. The proof was corrected to verify the canonical replay contract rather than inventing a field.",
+    "Browser acceptance was intentionally deferred until engine/security gates were green; those gates are now green. Initial human-facing inspection verified the live welcome.nayanet.app front door and its embedded runtime renders the NayaNET welcome experience, but authenticated human-facing acceptance is not yet proven."
   ],
   "unknown": [
     "Whether the current Smart Mail receiver-verification path should accept independently evidenced outcome value components rather than using the fixed send-path value contract.",
-    "Full cold-Naya continuation after fresh-context retrieval: current receipt proves fresh retrieval/render continuity but its continuation field is null.",
     "Comprehensive multi-Naya concurrency safety.",
     "Complete temporal/supersession/conflict retrieval proof.",
-    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows."
+    "Windows-local repository checkout portability because at least one tracked path is invalid on Windows.",
+    "Authenticated human-facing Hub acceptance after the now-green engine/security gates."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -124,19 +131,19 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Wave A production relationship/security journey remains the critical path: real authentication, existing Space membership, A↔B Connections, Smart List, explicit authority, Smart Mail receiver verification, replay/idempotency, revocation denial, C isolation, then browser acceptance.",
-  "single_next_action": "Reconcile the control plane to current main, record Proof 7 VERIFIED, independently verify the cognition-receipt revision repair, then execute the real A/B/C relationship and Smart Mail security journey before browser acceptance.",
+  "bottleneck": "Human-facing production acceptance is now the critical path: authenticate through the canonical live Hub, execute the user-visible relationship/intelligence journey, independently observe rendered state, and record PRODUCTION_PROVEN only if the whole journey passes.",
+  "single_next_action": "Perform authenticated human-facing production acceptance through the canonical live Hub now that the engine/security gates are green; do not modify backend security controls unless the live journey produces new evidence.",
   "next_actions": [
-    "Reconcile STATE/BLOCK/PROOF to current main and Proof 7 evidence.",
-    "Record Proof 7 run 35461270128 and artifact 10589479660 as current evidence.",
-    "Run focused concurrency proof for cognition receipt revision allocation.",
-    "Prove real Smart List/Connections on the existing production Space.",
-    "Prove explicit smart_mail_send authority and fail-closed denial.",
-    "Run real A→B Smart Mail with receiver verification and lineage.",
-    "Prove idempotent replay without duplicate durable intelligence.",
-    "Prove revocation denial and C isolation.",
-    "Run fresh-Naya continuation from the real durable journey.",
-    "Only then perform browser/human-facing production acceptance."
+    "Perform authenticated human-facing production acceptance through the canonical live Hub.",
+    "Verify user-visible A/B relationship and Smart List state against the already-proven backend state.",
+    "Verify user-visible Smart Mail delivery and receiver retrieval.",
+    "Verify user-visible durable intelligence/retrieval after the action.",
+    "Verify no unauthorized C visibility in the user-facing surfaces.",
+    "Capture the human-facing acceptance evidence and exact runtime identity.",
+    "Reconcile final STATE/BLOCK/PROOF to the acceptance evidence.",
+    "Classify Wave A only as PRODUCTION_PROVEN if all required human-facing evidence passes.",
+    "If any human-facing step fails, isolate the smallest source-of-truth defect without weakening backend controls.",
+    "Create the next fresh-Naya handoff from the final acceptance evidence."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — FRESH-NAYA CONTINUATION PROOF\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF and Team Naya. Retrieve current durable mission, evidence, failures, protected boundaries, authority and blockers in a genuinely fresh context. Select exactly one authorized continuation action from durable state. Execute it against the real system, independently observe and verify the result, record the resulting intelligence, then retrieve that new intelligence again from fresh context. Return PROVEN only when the complete RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → RETRIEVE AGAIN loop passes.",
@@ -158,5 +165,5 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "1a6072b722913346c83de01aa0e5b7212ec9014f"
+  "recorded_at_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7"
 }
