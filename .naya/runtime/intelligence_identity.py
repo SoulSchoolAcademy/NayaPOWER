@@ -131,10 +131,14 @@ def validate_identity_envelope(envelope: Mapping[str, Any], *, consequential: bo
         errors.append("capabilities must be a list of non-empty strings")
 
     authority = envelope.get("authority")
+    authority_ids: list[Any] = []
     if not isinstance(authority, Mapping):
         errors.append("authority must be an object")
-    elif not isinstance(authority.get("authority_ids"), list):
-        errors.append("authority.authority_ids must be a list")
+    else:
+        if not isinstance(authority.get("authority_ids"), list):
+            errors.append("authority.authority_ids must be a list")
+        else:
+            authority_ids = authority["authority_ids"]
 
     authorized_by = envelope.get("authorized_by")
     if not isinstance(authorized_by, list):
@@ -175,7 +179,7 @@ def validate_identity_envelope(envelope: Mapping[str, Any], *, consequential: bo
         can_delegate = delegation.get("can_delegate")
         if not isinstance(can_delegate, bool):
             errors.append("delegation.can_delegate must be boolean")
-        if can_delegate and not envelope.get("authority", {}).get("authority_ids"):
+        if can_delegate and not authority_ids:
             errors.append("can_delegate=true requires an explicit authority reference")
         if can_delegate and not delegation.get("chain"):
             errors.append("can_delegate=true requires a delegation chain")
@@ -221,7 +225,7 @@ def validate_identity_envelope(envelope: Mapping[str, Any], *, consequential: bo
                 errors.append(f"learning[{index}] has invalid derivation_state")
 
     # Authority is never inferred from capability.
-    if envelope.get("capabilities") and not envelope.get("authority", {}).get("authority_ids"):
+    if envelope.get("capabilities") and not authority_ids:
         errors.append("capability presence does not establish authority")
 
     return IdentityValidation(not errors, tuple(dict.fromkeys(errors)), identity_fingerprint(envelope))
