@@ -3,7 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { createRemoteJWKSet, jwtVerify } from "npm:jose@6";
 
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"authorization, x-client-info, apikey, content-type, x-idempotency-key","Access-Control-Allow-Methods":"POST, OPTIONS"};
-const OWNER="SoulSchoolAcademy"; const REPO="NayaPOWER"; const WORKFLOW="deploy-nayanet-hub-canonical-v2.yml"; const BRANCH="main"; const PROJECT="NayaPOWER"; const ACTION="deploy_nayanet_hub_canonical";
+const OWNER="SoulSchoolAcademy"; const REPO="NayaPOWER"; const WORKFLOW="assistant-cloudflare-hub-release.yml"; const BRANCH="main"; const PROJECT="NayaPOWER"; const ACTION="deploy_nayanet_hub_canonical";
 const REPO_API=`https://api.github.com/repos/${OWNER}/${REPO}`;
 const CANONICAL_ISSUER="https://dahisasgpfvziswqvmvm.supabase.co/auth/v1";
 const OBSERVED_ISSUER="https://alt.supabase.io/auth/v1";
