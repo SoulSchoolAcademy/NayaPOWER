@@ -104,9 +104,9 @@ jobs:
               { width: 1440, height: 1000, label: 'desktop' },
               { width: 390, height: 844, label: 'mobile' }
             ]) {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height }, extraHTTPHeaders: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } });
               const page = await context.newPage();
-              await page.goto(`${url}/?naya_browser_proof=${Date.now()}-${viewport.label}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              await page.goto(`${url}/__naya_release__/${process.env.GITHUB_SHA}/?naya_browser_proof=${Date.now()}-${viewport.label}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
               await page.waitForTimeout(1000);
 
               const result = await page.evaluate(() => ({
