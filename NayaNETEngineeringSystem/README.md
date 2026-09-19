@@ -15,17 +15,19 @@ The 01–58 directive requires every area to define meaning, function, ownership
 - `02-IDENTITY-AUTHORIZATION-PRIVACY.md` — identity, authority, privacy, publication and access boundaries.
 - `03-INTELLIGENCE-EVENT-DATA-CONTRACTS.md` — canonical objects, events, provenance and cross-system contracts.
 - `04-VERIFICATION-GOVERNANCE-AND-DELIVERY.md` — verification, evidence, quality, deployment and definition-of-done rules.
+- `06-FEATURE-COMPLETION-AND-ACTIVITY.md` — shared feature checklist, dated activity, Naya-to-Naya handoff, and human review navigation.
 
 ## Feature specifications
 
-1. `features/SMART-FEED.md`
-2. `features/SMART-LEDGER.md`
-3. `features/SMART-LIST.md`
-4. `features/SMART-MAIL.md`
-5. `features/SMART-SHARE.md`
-6. `features/SMART-SPACES.md`
-7. `features/YOUR-INTELLIGENCE-TODAY.md`
-8. `features/INTELLIGENT-REPORTS.md`
+1. `features/SMART-TABS.md`
+2. `features/SMART-FEED.md`
+3. `features/SMART-LEDGER.md`
+4. `features/SMART-LIST.md`
+5. `features/SMART-MAIL.md`
+6. `features/SMART-SHARE.md`
+7. `features/SMART-SPACES.md`
+8. `features/YOUR-INTELLIGENCE-TODAY.md`
+9. `features/INTELLIGENT-REPORTS.md`
 
 ## Standard feature contract
 
@@ -33,11 +35,13 @@ Every feature specification answers:
 
 **WHAT → WHY → HUMAN EXPERIENCE → FRONT END → BACK END → DATA → API → EVENTS → INTELLIGENCE → CONNECTIONS → AUTHORITY/PRIVACY → FAILURE MODES → TESTS → OBSERVABILITY → DEPLOYMENT → VERIFICATION → CURRENT STATE → GAPS → NEXT ACTION.**
 
+Every feature also maintains its completion checklist and dated activity history under `06-FEATURE-COMPLETION-AND-ACTIVITY.md`.
+
 A feature is not considered complete merely because its UI exists. Source, build, deployed runtime, authenticated behavior, persistence, authorization, and evidence must agree at the level required by its verification contract.
 
 ## Source map
 
-The primary feature definitions are `.naya` 03–14, especially 04/05/07/08/11/12/13/14. System architecture and governance are informed by 15–39. Hub/runtime/event/identity/verification/continuity are defined by 40–58. The canonical 01–58 directive is `.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`.
+The primary feature definitions are `.naya` 03–14, especially 04/05/07/08/09/11/12/13/14. System architecture and governance are informed by 15–39. Hub/runtime/event/identity/verification/continuity are defined by 40–58. The canonical 01–58 directive is `.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`.
 
 ## NIS operating rule
 
@@ -51,5 +55,6 @@ When assigned a NayaNET feature:
 6. Do not create duplicate stores or parallel concepts without explicit architectural justification.
 7. Build the smallest correct change.
 8. Test the complete user/data/authority path.
-9. Record evidence and current state.
-10. Leave one explicit continuation action.
+9. Update the feature completion checklist and current state.
+10. Record the dated activity session with evidence, gaps, and exactly one continuation action.
+11. Update every affected feature's engineering record before sign-out.
