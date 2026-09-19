@@ -99,7 +99,7 @@ const prepare=async(p)=>{
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
     p_scope:{project_id:experimentProject,target:receiver.id},
     p_actions:["smart_mail_send"],
-    p_constraints:{mode:"controlled-test-only",no_external_side_effects:true,policy_id:p.id},
+    p_constraints:{mode:"controlled-test-only",no_external_side_effects:false,policy_id:p.id},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
     p_evidence:{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:p.id},
     p_parent_authority:authority.data.grant_id
