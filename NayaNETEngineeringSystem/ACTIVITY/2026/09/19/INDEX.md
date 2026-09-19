@@ -87,3 +87,11 @@ works across the connected features using one canonical intelligence/event subst
 ## NEXT
 
 Assign one Naya to each feature report. Each Naya must start from the report, inspect the linked .naya authority and actual runtime/source, execute only the stated closure boundary, record evidence, update the feature report, and leave exactly one successor action. Cross-feature changes must be reflected in every affected feature.
+
+
+## Smart Feed — Session 003
+
+- [Priority-10 execution plan](./SMART-FEED-PRIORITY-10.md)
+- [Session 003 — Production surface deployment and parity closure](./SMART-FEED/SESSION-003.md)
+- **Priority 1:** VERIFIED — dedicated production feed surface deployed with exact source/runtime parity and desktop/mobile baseline proof.
+- **Next:** execute authenticated Activity retrieval and consequence proof.
