@@ -318,6 +318,7 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
         claim_id = data.get("claim_id")
         action_id = action_ctx.get("action_id")
         run_id = data.get("run_id")
+
         supplied = fields.get("activity_event_id")
         if not supplied:
             # Automatic canonical Activity-event emission at the completion
