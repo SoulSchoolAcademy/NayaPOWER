@@ -59,7 +59,7 @@ begin
   select * into existing_message from public.v7_mail_messages
    where sender_id=p_sender_id and metadata->>'idempotency_key'=p_idempotency_key limit 1;
   if existing_message.id is not null then
-    return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id');
+    select request_id into v_existing_request_id\n  from public.nayanet_execution_receipts\n  where id=(existing_message.metadata->>'execution_receipt_id')::uuid;\n  return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id','request_id',v_existing_request_id);
   end if;
 
   if p_request_id is null or trim(p_request_id)='' or length(p_request_id)>128 then
