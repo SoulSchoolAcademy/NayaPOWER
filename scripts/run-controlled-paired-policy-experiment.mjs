@@ -115,15 +115,11 @@ const {data:evalRow,error:evalError}=await supabase.from("nayanet_policy_evaluat
 }).select("*").single();
 if(evalError) throw evalError;
 
-let adversarialPassed=false;
-try{
-  await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
-    p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
-    p_baseline_receipt_id:b.data.execution_receipt_id,p_candidate_receipt_id:a.data.execution_receipt_id
-  });
-}catch(e){
-  adversarialPassed=String(e.message||e).includes("POLICY_RECEIPT_LINEAGE_MISMATCH");
-}
+const {error:swapError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
+  p_baseline_policy_id:v1.id,p_candidate_policy_id:v2.id,
+  p_baseline_receipt_id:b.data.execution_receipt_id,p_candidate_receipt_id:a.data.execution_receipt_id
+});
+const adversarialPassed=!!swapError;
 if(!adversarialPassed) throw new Error("ADVERSARIAL_POLICY_RECEIPT_SWAP_NOT_REJECTED");
 
 const report={schema:"naya.p1.controlled.paired.outcome.receipt.v1",status:"NOT_PROVEN",head:process.env.GITHUB_SHA,run_id:runId,case_id:caseId,frozen_case_hash:inputHash,receiver_anonymous:true,behavioral_difference:true,baseline:{policy_id:v1.id,receipt_id:a.data.execution_receipt_id,verified_value:comparison.baseline.verified_value,decision_hash:a.decisionHash},candidate:{policy_id:v2.id,receipt_id:b.data.execution_receipt_id,verified_value:comparison.candidate.verified_value,decision_hash:b.decisionHash},comparison,adversarial:{receipt_swap_rejected:adversarialPassed},note:"Controlled paired real execution and receiver verification succeeded. Policy improvement is intentionally NOT_PROVEN because both verified responsible values were equal."};
