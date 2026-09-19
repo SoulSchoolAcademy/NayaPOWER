@@ -81,6 +81,23 @@ def persist_activity_event(
     return event_id
 
 
+
+def identity_for(authority):
+    return {
+        "schema_version": "1.0",
+        "identity_id": authority.principal_id,
+        "actor_class": "HUMAN",
+        "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+        "knowledge": [{"knowledge_id": "K-EC-CLOSURE", "claim": "Execution target is the canonical governed repository.", "source_refs": ["test:request"], "epistemic_state": "VERIFIED"}],
+        "capabilities": ["repo_write"],
+        "authority": {"authority_ids": [authority.authority_id]},
+        "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+        "received_artifacts": [{"artifact_id": "ART-EC-CLOSURE", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-09-19T00:00:00Z"}],
+        "provenance": [{"subject_id": "ART-EC-CLOSURE", "source_ref": "test:request", "relation": "received_from"}],
+        "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+        "actual_actions": [], "outcomes": [], "learning": [],
+    }
+
 def now_iso(offset_seconds: int = 0) -> str:
     return (datetime.now(timezone.utc) + timedelta(seconds=offset_seconds)).isoformat()
 
@@ -192,7 +209,8 @@ class TestExecutionControllerClosure(unittest.TestCase):
         self.registry, self.authority, self.gate = canonical_setup()
         self.decision = make_decision(self.authority, "GBLC10-DEC-001")
         self.action = make_action(self.authority, self.decision.decision_id)
-        self.issued = self.gate.authorize(authority=self.authority, decision=self.decision, action=self.action)
+        self.identity = identity_for(self.authority)
+        self.issued = self.gate.authorize(authority=self.authority, decision=self.decision, action=self.action, identity_envelope=self.identity, consequential=True)
         self.credential = self.issued.authorization
         self.assertIsNotNone(self.credential)
 
@@ -203,6 +221,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 action=action if action is not None else self.action,
                 execution_authorization=credential,
                 gate=gate if gate is not None else self.gate,
+                identity_envelope=extra.pop("identity_envelope", self.identity),
                 **extra,
             )
         return str(ctx.exception)
@@ -402,12 +421,27 @@ class TestExecutionControllerClosure(unittest.TestCase):
             action=self.action,
             execution_authorization=self.credential,
             gate=self.gate,
+            identity_envelope=self.identity,
             preflight=approved_preflight(),
         )
         self.assertEqual(result["status"], "EXECUTING")
-        result = EC.transition("OBSERVED", observation="actual runtime observation")
+        result = EC.transition(
+            "OBSERVED",
+            observation="actual runtime observation",
+            execution_authorization=self.credential,
+            gate=self.gate,
+            identity_envelope=self.identity,
+            execution_result={
+                "execution_state": "COMPLETED",
+                "execution_id": self.action["action_id"],
+                "action": "closure test action",
+                "observed_output": "actual runtime observation",
+                "result": "PASS",
+                "commit_sha": "test-head",
+            },
+        )
         self.assertEqual(result["status"], "OBSERVED")
-        result = EC.transition("VERIFIED", activity_event_id=persist_activity_event(), evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"})
+        result = EC.transition("VERIFIED", evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"}, next_action="continue test", successor="NEXT-EXECUTION-20260916-GBLC10-NEXT.md")
         self.assertEqual(result["status"], "VERIFIED")
         result = EC.transition("HANDED_OFF", next_action="continue test", handoff={"current_state": "VERIFIED"})
         self.assertEqual(result["status"], "HANDED_OFF")
