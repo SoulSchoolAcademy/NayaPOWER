@@ -109,6 +109,7 @@ def main() -> int:
         return 0
     finally:
         ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH = saved
+        activity_writer.ACTIVITY_ROOT = saved_activity_root
         shutil.rmtree(tmp, ignore_errors=True)
         if original is None:
             if ec.STATE.exists():
