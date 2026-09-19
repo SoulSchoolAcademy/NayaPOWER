@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTIONS 01–07 EXECUTED; ACTION 08 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTIONS 01–08 EXECUTED; ACTION 09 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1290,58 +1290,42 @@ No schema change was deployed in Action 02.
 
 Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-# 32. IMMEDIATE ACTION 08
+# 32. IMMEDIATE ACTION 09
 
-## ACTION 08 — TWO-USER ADVERSARIAL PRODUCTION PROOF
+## ACTION 09 — CLOUDFLARE SOURCE / BUILD / RUNTIME PARITY
 
 **Status: IMMEDIATE EXECUTION**
 
 ### Mission
 
-Prove the entire Communication + Organization chain with distinct real authenticated users at the current human-facing runtime.
+Prove that the source-wired Communication + Organization Hub runtime is the exact runtime served by the canonical Cloudflare deployment.
 
 ### Exact sequence
 
-1. Identify the first legitimate authenticated human session available.
-2. Identify a distinct second legitimate authenticated human session.
-3. A creates a real shared Space.
-4. Observe Space creation event and Ledger consequence.
-5. B discovers the Space through the authorized runtime.
-6. B JOINs.
-7. Verify persistent membership after reload.
-8. A and B explicitly save each other as Connections.
-9. Verify Connection persistence and provenance.
-10. Add the Connection to Smart List.
-11. Reload and verify List persistence.
-12. Remove from List and verify Connection remains.
-13. Establish valid authority for the Mail action.
-14. Send real Smart Mail through the deployed function.
-15. Verify receiver retrieval.
-16. Verify receipt/cognition/Ledger lineage.
-17. Replay the same idempotency key.
-18. Verify no duplicate message.
-19. Revoke/leave the relationship.
-20. Retry Mail.
-21. Verify relationship denial at use time.
-22. Attempt protected access as unrelated C and verify denial.
-23. Capture exact browser/runtime/error/evidence IDs.
-24. Update all affected feature records and Team Naya.
+1. Verify the canonical Cloudflare release workflow.
+2. Verify trigger paths include `assistant-runtime.js`.
+3. Verify source branch and exact source commit.
+4. Verify build copies the canonical Hub and runtime.
+5. Verify worker identity and live route.
+6. Verify live Hub HTML hash against source.
+7. Verify live runtime JS hash against source.
+8. Verify the new relationship adapters are present in the deployed runtime.
+9. Verify Connections now maps to Your Connections.
+10. Verify Smart Spaces, Smart List and Smart Mail runtime adapters are present.
+11. Verify cache/stale markers do not expose the prior runtime.
+12. Record exact workflow run/job/artifact/route evidence.
+13. Update feature records, Team Naya and this master directive.
+14. Return immediately to Action 08 two-user browser proof.
 
 ### Hard rules
 
-- Real authenticated identities only.
-- No synthetic-user final proof.
-- No database-only substitution for the browser proof.
-- No bypassing Cloudflare/current product surface.
-- No authority bypass.
-- No success claim from UI appearance.
-- If a boundary fails, trace source → runtime → exact root cause → smallest correction → rerun.
+No parity claim from source alone. No cache assumption. No browser success claim without actual runtime observation.
 
 ### Success condition
 
-A→C adversarial isolation, JOIN persistence, Connection, List, Mail, receipt, Ledger, replay, revocation and denial all pass in the actual product surface.
+**SOURCE = BUILD = DEPLOYED RUNTIME = LIVE ROUTE**
 
 ### Canonical execution prompt
 
-Create/use:
-`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-08-EXECUTION-PROMPT.md`
+See:
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-09-EXECUTION-PROMPT.md`
