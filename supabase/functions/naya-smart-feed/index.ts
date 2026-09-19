@@ -59,13 +59,40 @@ Deno.serve(async(req)=>{
   }
 
   const fields='id,user_id,event_id,project_id,type,classification,title,content,source,status,confidence,tags,parent_event_id,created_at,updated_at,metadata'
+  const attachLedger=async(items:any[],ownerId:string,collective=false)=>{
+    const ids=items.map((e:any)=>String(e.id)).filter(Boolean)
+    if(!ids.length) return items
+    const ledgerResult=await admin.from('nayanet_smart_ledger')
+      .select('ledger_event_id,source_id,event_hash,status,privacy_classification,verification,evidence_refs,value,outcome,learning_refs')
+      .eq('owner_id',ownerId).eq('source_table','nayanet_cognition_events').in('source_id',ids)
+    if(ledgerResult.error) throw new Error('LEDGER_LOOKUP_FAILED:'+ledgerResult.error.message)
+    const bySource=new Map((ledgerResult.data||[]).map((l:any)=>[String(l.source_id),l]))
+    return items.map((e:any)=>{
+      const l=bySource.get(String(e.id))
+      const verification=l?.verification||{}
+      const base={
+        ...e,
+        verification_state:verification.status||l?.status||'LEDGER_MISSING',
+        verification_confidence:verification.confidence??null,
+        ledger_event_id:l?.ledger_event_id??null,
+        ledger_status:l?.status??null,
+        ledger_event_hash:l?.event_hash??null,
+        ledger_evidence_available:Array.isArray(l?.evidence_refs)?l.evidence_refs.length>0:false
+      }
+      if(collective){
+        return base
+      }
+      return {...base,ledger_verification:verification,ledger_evidence_refs:l?.evidence_refs??[],ledger_value:l?.value??{},ledger_outcome:l?.outcome??{},ledger_learning_refs:l?.learning_refs??{}}
+    })
+  }
   if(stream==='personal'||stream==='activity'){
     let q=userSupabase.from('nayanet_cognition_events').select(fields).eq('project_id','NayaNET').eq('user_id',user.id).order('created_at',{ascending:false}).limit(limit+1)
     if(before) q=q.lt('created_at',before)
     const result=await q
     if(result.error) return json({ok:false,error:result.error.message},400)
     const rows=result.data||[]
-    const items=rows.slice(0,limit).map((e:any)=>({...e,stream,source_id:e.id,visibility:'private',verification_state:e.classification||'UNKNOWN',available_actions:stream==='personal'?['save','favorite','publish']:['save','favorite']}))
+    let items=rows.slice(0,limit).map((e:any)=>({...e,stream,source_id:e.id,visibility:'private',available_actions:stream==='personal'?['save','favorite','publish']:['save','favorite']}))
+    try{items=await attachLedger(items,user.id,false)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
     return json({ok:true,stream,items,next_before:rows.length>limit?rows[limit-1].created_at:null})
   }
 
@@ -83,7 +110,13 @@ Deno.serve(async(req)=>{
       events=eventResult.data||[]
     }
     const byId=new Map(events.map((e:any)=>[e.id,e]))
-    const items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',verification_state:e.classification||'UNKNOWN',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
+    let items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
+    try{items=await attachLedger(items,'00000000-0000-0000-0000-000000000000',true)}catch(_error){
+      const ledgerResult=await admin.from('nayanet_smart_ledger').select('ledger_event_id,source_id,event_hash,status,verification').eq('source_table','nayanet_cognition_events').in('source_id',items.map((e:any)=>String(e.id)))
+      if(ledgerResult.error) return json({ok:false,error:'LEDGER_LOOKUP_FAILED:'+ledgerResult.error.message},500)
+      const bySource=new Map((ledgerResult.data||[]).map((l:any)=>[String(l.source_id),l]))
+      items=items.map((e:any)=>{const l=bySource.get(String(e.id));return {...e,verification_state:l?.verification?.status||l?.status||'LEDGER_MISSING',verification_confidence:l?.verification?.confidence??null,ledger_event_id:l?.ledger_event_id??null,ledger_status:l?.status??null,ledger_event_hash:l?.event_hash??null,ledger_evidence_available:false}})
+    }
     return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null})
   }
   return json({ok:false,error:'INVALID_STREAM'},400)
