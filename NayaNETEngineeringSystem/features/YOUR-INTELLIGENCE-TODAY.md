@@ -45,3 +45,22 @@ Inspect current Today/Hub implementation and map the daily synthesis pipeline to
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-04-YOUR-INTELLIGENCE-TODAY-SMART-NOTE.md`; `.naya/2026-09-11-18-35-NAYAPOWER-32-MASTER-SYSTEM-ARCHITECTURE.md`; `.naya/2026-09-12-NAYAPOWER-49-REALTIME-LIVING-HUB-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Derived-view architecture identified
+- [ ] Deployed Today surface mapped
+- [ ] Canonical daily source query proven
+- [ ] Synthesis pipeline proven
+- [ ] Source traceability proven
+- [ ] Private-source isolation proven
+- [ ] Empty-day behavior proven
+- [ ] Carry-forward behavior proven
+- [ ] Refresh/rebuild behavior proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/YOUR-INTELLIGENCE-TODAY.md).
