@@ -54,7 +54,6 @@ Deno.serve(async(req)=>{
  if(!input.authority_grant_id)return json({ok:false,error:"AUTHORITY_GRANT_ID_REQUIRED"},403);
  const {data:validated,error:validationError}=await userClient.rpc("nayanet_validate_authority_grant",{p_grant_id:input.authority_grant_id,p_action:"smart_mail_send",p_target:input.recipient_user_id});
  if(validationError||validated?.status!=="AUTHORIZED")return json({ok:false,error:"AUTHORITY_GRANT_VALIDATION_FAILED",detail:validationError?.message??validated},403);
- const inputRequestId=(req:Request)=>req.headers.get("x-request-id")||crypto.randomUUID();
  const rpcName=(input.policy_id||input.experiment_case_id||input.policy_input_hash||input.policy_decision_hash)?"nayanet_send_smart_mail_policy_authorized":"nayanet_send_smart_mail_authorized";
  const rpcArgs=(input.policy_id||input.experiment_case_id||input.policy_input_hash||input.policy_decision_hash)
    ? {p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_request_id:requestId,p_policy_id:input.policy_id,p_experiment_case_id:input.experiment_case_id,p_policy_input_hash:input.policy_input_hash,p_policy_decision_hash:input.policy_decision_hash,p_authority_grant_id:input.authority_grant_id}
