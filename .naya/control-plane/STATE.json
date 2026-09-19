@@ -134,16 +134,7 @@
   "bottleneck": "Human-facing authenticated relationship journey: the canonical Hub can authenticate and render, but the current browser identity is not a member of the existing production Space and has zero Connections. Do not fabricate A↔B UI proof.",
   "single_next_action": "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls.",
   "next_actions": [
-    "Perform authenticated human-facing production acceptance through the canonical live Hub.",
-    "Verify user-visible A/B relationship and Smart List state against the already-proven backend state.",
-    "Verify user-visible Smart Mail delivery and receiver retrieval.",
-    "Verify user-visible durable intelligence/retrieval after the action.",
-    "Verify no unauthorized C visibility in the user-facing surfaces.",
-    "Capture the human-facing acceptance evidence and exact runtime identity.",
-    "Reconcile final STATE/BLOCK/PROOF to the acceptance evidence.",
-    "Classify Wave A only as PRODUCTION_PROVEN if all required human-facing evidence passes.",
-    "If any human-facing step fails, isolate the smallest source-of-truth defect without weakening backend controls.",
-    "Create the next fresh-Naya handoff from the final acceptance evidence."
+    "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — FRESH-NAYA CONTINUATION PROOF\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF and Team Naya. Retrieve current durable mission, evidence, failures, protected boundaries, authority and blockers in a genuinely fresh context. Select exactly one authorized continuation action from durable state. Execute it against the real system, independently observe and verify the result, record the resulting intelligence, then retrieve that new intelligence again from fresh context. Return PROVEN only when the complete RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → RETRIEVE AGAIN loop passes.",
