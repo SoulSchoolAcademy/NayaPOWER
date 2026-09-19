@@ -1,0 +1,155 @@
+name: P0.5 user-visible replay idempotency proof
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/p0-5-replay-idempotency-proof.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYA_EXISTING_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute identical authenticated Smart Mail transaction twice
+        shell: bash
+        run: |
+          cat > p0-5-replay.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL;
+          const spaceId=process.env.NAYA_EXISTING_SPACE_ID;
+          const project='NayaNET-P0-5-Replay-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
+          async function req(url,opt={}) {
+            const r=await fetch(url,opt);
+            const t=await r.text();
+            let b; try { b=JSON.parse(t) } catch { b={raw:t} }
+            if(!r.ok) throw Error(r.status+' '+JSON.stringify(b));
+            return b;
+          }
+          const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
+          const signup=()=>req(base+'/auth/v1/signup',{
+            method:'POST',
+            headers:{apikey:key,'content-type':'application/json'},
+            body:'{}'
+          });
+          const A=await signup();
+          const B=await signup();
+          if(!A.access_token||!B.access_token) throw Error('AUTH_BOOTSTRAP_FAILED');
+          const join=async u=>req(base+'/rest/v1/rpc/nayanet_join_space',{
+            method:'POST',headers:h(u.access_token),
+            body:JSON.stringify({p_space_id:spaceId})
+          });
+          await join(A); await join(B);
+          const save=async(u,target)=>req(base+'/rest/v1/rpc/nayanet_save_connection',{
+            method:'POST',headers:h(u.access_token),
+            body:JSON.stringify({p_target_member_id:target,p_space_id:spaceId})
+          });
+          await save(A,B.user.id); await save(B,A.user.id);
+          const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{
+            method:'POST',
+            headers:h(A.access_token),
+            body:JSON.stringify({
+              p_subject_id:A.user.id,
+              p_source_event_id:'p0-5-replay-'+project,
+              p_mission_id:'P0.5 user-visible replay/idempotency proof',
+              p_scope:{project_id:'NayaNET',target:B.user.id,space_id:spaceId},
+              p_actions:['smart_mail_send'],
+              p_constraints:{mode:'p0-5-replay-proof',no_external_side_effects:true},
+              p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
+              p_evidence:{authorization_type:'explicit_p0_5_replay_proof',space_id:spaceId},
+              p_parent_authority:null
+            })
+          });
+          if(!grant?.grant_id) throw Error('AUTHORITY_GRANT_FAILED');
+          const browser=await chromium.launch({headless:true});
+          async function contextFor(session) {
+            const origin=new URL(runtime).origin;
+            const storageState={cookies:[],origins:[{
+              origin,
+              localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(session)}]
+            }]};
+            const c=await browser.newContext({storageState});
+            const p=await c.newPage();
+            await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const auth=await p.evaluate(async({base,key})=>{
+              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const c=sdk.createClient(base,key,{auth:{
+                persistSession:true,autoRefreshToken:true,storage:localStorage,
+                storageKey:'nayanet.supabase.auth'
+              }});
+              const r=await c.auth.getUser();
+              if(r.error) throw r.error;
+              return r.data.user?.id;
+            },{base,key});
+            if(auth!==session.user.id) throw Error('BROWSER_SESSION_HANDOFF_MISMATCH');
+            return {c,p};
+          }
+          const {c,p}=await contextFor(A);
+          const init=await p.evaluate(()=>window.NayaAssistantRuntime.init());
+          if(init.user_id!==A.user.id||!init.authenticated) throw Error('A_AUTHENTICATED_HANDOFF_FAILED');
+          const connections=await p.evaluate(()=>window.NayaAssistantRuntime.listConnections());
+          if(!connections.some(x=>x.connected_member_id===B.user.id&&x.status==='active'))
+            throw Error('CONNECTION_PREREQUISITE_FAILED');
+          const idem='p0-5-replay-'+project;
+          const payload={
+            receiver_id:B.user.id,
+            body:'P0.5 replay/idempotency proof.',
+            subject:'P0.5 replay proof',
+            authority_grant_id:grant.grant_id,
+            idempotency_key:idem
+          };
+          const first=await p.evaluate(x=>window.NayaAssistantRuntime.sendSmartMail(x),payload);
+          if(!first?.message_id) throw Error('FIRST_SMART_MAIL_FAILED');
+          const second=await p.evaluate(x=>window.NayaAssistantRuntime.sendSmartMail(x),payload);
+          if(!second) throw Error('SECOND_SMART_MAIL_NO_RESPONSE');
+          const result={
+            schema:'nayanet.p0-5.replay-idempotency.v1',
+            status:'OBSERVED',
+            run_id:process.env.GITHUB_RUN_ID,
+            project,
+            space_id:spaceId,
+            identities:{A:A.user.id,B:B.user.id},
+            authority_grant_id:grant.grant_id,
+            idempotency_key:idem,
+            first,
+            second,
+            same_message_id:first.message_id===second.message_id,
+            same_thread_id:first.thread_id===second.thread_id
+          };
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/p0-5-replay.json',JSON.stringify(result,null,2));
+          console.log(JSON.stringify(result,null,2));
+          if(first.message_id!==second.message_id) throw Error('P0_5_DUPLICATE_OR_IDENTITY_MISMATCH');
+          if(first.thread_id!==second.thread_id) throw Error('P0_5_THREAD_ID_MISMATCH');
+          console.log('P0_5_USER_VISIBLE_REPLAY=PASS');
+          await c.close();
+          await browser.close();
+          EOF
+          node p0-5-replay.mjs
+      - name: Upload P0.5 receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-5-replay-idempotency
+          path: \${{ runner.temp }}/p0-5-replay.json
+          if-no-files-found: warn
