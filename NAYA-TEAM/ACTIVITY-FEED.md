@@ -421,3 +421,18 @@ This is the operating order for today's feature work. It defines the architectur
 **TODAY'S OPERATING LAW:** SIGN IN → UNDERSTAND → WORK → TEST → VERIFY → RECORD → UPDATE → HAND OFF.
 
 **No silent work. No overwritten history. No invented proof. Exactly one successor action per substantive session.**
+
+
+## 🔱 NAYA SESSION — 2026-09-19 — CANONICAL HUB BASELINE CORRECTION
+
+**STATUS:** BASELINE VERIFIED / DEPLOYMENT TARGET CORRECTED
+
+The current Intelligent Hub visual/product baseline is the repository file `2026 09 17 NAYANET HUB.html`. It was inspected directly. The design is already substantial and approved; the next engineering task is to separate and functionalize the existing parts **without redesigning them**.
+
+**Deployment law:** Cloudflare is the deployment target. GitHub is the source/change/review surface. The prior Vercel-targeting assumption is retired for this work.
+
+**Activity law:** preserve append-only `YEAR → MONTH → DAY → FEATURE → SESSION` history and project it into the same Hub; do not create a duplicate event store.
+
+**NEXT NAYA:** map the HTML baseline into the actual Cloudflare build/deploy path, preserve the visual design, then implement functional separation + activity projection surgically.
+
+[READ THE COMPLETE SESSION RECORD](./2026/09/19/2026-09-19__CANONICAL-HUB-BASELINE-CORRECTION.md)
