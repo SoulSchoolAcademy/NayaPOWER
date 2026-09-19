@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTIONS 01–06 EXECUTED; ACTION 07 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTIONS 01–07 EXECUTED; ACTION 08 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1290,39 +1290,58 @@ No schema change was deployed in Action 02.
 
 Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-# 32. IMMEDIATE ACTION 07
+# 32. IMMEDIATE ACTION 08
 
-## ACTION 07 — ACTIVITY + LEDGER BINDING
+## ACTION 08 — TWO-USER ADVERSARIAL PRODUCTION PROOF
 
 **Status: IMMEDIATE EXECUTION**
 
 ### Mission
 
-Bind Space membership, Connections, Smart List and Smart Mail consequences into the existing canonical Activity/cognition and Smart Ledger substrates.
+Prove the entire Communication + Organization chain with distinct real authenticated users at the current human-facing runtime.
 
 ### Exact sequence
 
-1. Inspect cognition/Activity projection paths.
-2. Inspect Smart Ledger source integration paths.
-3. Verify JOIN/LEAVE event writes.
-4. Verify Connection SAVE/REVOKE event writes.
-5. Add missing List add/remove event writes if required.
-6. Verify Smart Mail send/receiver verification lineage after the relationship gate.
-7. Trace event → receipt → Ledger where the contract requires it.
-8. Test replay/idempotency does not duplicate consequential events.
-9. Record exact event IDs, receipt IDs, Ledger IDs and source commit.
-10. Update feature records, Job 04, Team Naya and this master directive.
-11. Finish with DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
+1. Identify the first legitimate authenticated human session available.
+2. Identify a distinct second legitimate authenticated human session.
+3. A creates a real shared Space.
+4. Observe Space creation event and Ledger consequence.
+5. B discovers the Space through the authorized runtime.
+6. B JOINs.
+7. Verify persistent membership after reload.
+8. A and B explicitly save each other as Connections.
+9. Verify Connection persistence and provenance.
+10. Add the Connection to Smart List.
+11. Reload and verify List persistence.
+12. Remove from List and verify Connection remains.
+13. Establish valid authority for the Mail action.
+14. Send real Smart Mail through the deployed function.
+15. Verify receiver retrieval.
+16. Verify receipt/cognition/Ledger lineage.
+17. Replay the same idempotency key.
+18. Verify no duplicate message.
+19. Revoke/leave the relationship.
+20. Retry Mail.
+21. Verify relationship denial at use time.
+22. Attempt protected access as unrelated C and verify denial.
+23. Capture exact browser/runtime/error/evidence IDs.
+24. Update all affected feature records and Team Naya.
 
 ### Hard rules
 
-No second Activity store. No second Ledger. No UI-generated fake events. No closure claim without concrete lineage.
+- Real authenticated identities only.
+- No synthetic-user final proof.
+- No database-only substitution for the browser proof.
+- No bypassing Cloudflare/current product surface.
+- No authority bypass.
+- No success claim from UI appearance.
+- If a boundary fails, trace source → runtime → exact root cause → smallest correction → rerun.
 
 ### Success condition
 
-A real membership/relationship/communication action can be reconstructed from canonical event/evidence records.
+A→C adversarial isolation, JOIN persistence, Connection, List, Mail, receipt, Ledger, replay, revocation and denial all pass in the actual product surface.
 
 ### Canonical execution prompt
 
-See:
-`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-07-EXECUTION-PROMPT.md`
+Create/use:
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-08-EXECUTION-PROMPT.md`
