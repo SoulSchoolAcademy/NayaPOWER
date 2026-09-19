@@ -84,3 +84,12 @@ The next level is **FEATURE → SESSION**. The indexes below are navigation/roll
 - **Action 05:** canonical saved Connection implemented.
 - **Action 06:** canonical Smart List implemented; Smart Mail relationship gate added.
 - **Next:** [Action 07 execution prompt](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-07-EXECUTION-PROMPT.md)
+
+
+## ACTIONS 07–10 — FINAL STATE
+
+- **07:** Activity + Ledger lineage bound to canonical cognition substrate.
+- **08:** Hub runtime adapters wired for Connections / Spaces / List / Mail; syntax verified.
+- **09:** Cloudflare exact source/runtime hash parity proven.
+- **10:** final production closure remains **NOT VERIFIED** pending real authenticated browser A→T proof.
+- [Action 10 prompt](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-10-EXECUTION-PROMPT.md)
