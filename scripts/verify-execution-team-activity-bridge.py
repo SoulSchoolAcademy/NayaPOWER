@@ -11,7 +11,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".naya" / "runtime"
+TOOLS = ROOT / "tools"
 sys.path.insert(0, str(RUNTIME))
+sys.path.insert(0, str(TOOLS))
 
 import execution_controller as ec
 from execution_preflight_gate import approved_preflight
