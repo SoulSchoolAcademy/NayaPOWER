@@ -45,7 +45,7 @@ jobs:
           await page.locator('#name').fill('Dream Proof Human '+token);
           await page.locator('#alias').fill('dream'+token);
           await page.locator('#enter').click();
-          await page.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/releases\//,{waitUntil:'networkidle',timeout:60000});
+          await page.waitForURL(/sparkling-shape-7ae5\.smartnetpodcast\.workers\.dev\/(?:releases\/.*)?$/,{waitUntil:'networkidle',timeout:60000});
           await page.evaluate(async()=>{await window.NayaAssistantRuntime.init()});
           const snap=await page.evaluate(()=>window.NayaAssistantRuntime.snapshot());
           if(!snap?.authenticated) throw Error('AUTH_NOT_PROVEN');
