@@ -39,7 +39,7 @@ require(INDEX, ".naya/runtime/canonical_event_store.py")
 require(INDEX, "SUPERBRAIN/NAYA-ACTIVITY/")
 require(INDEX, "`.naya/activity/`")
 require(INDEX, "UNKNOWN != GREEN")
-require(INDEX, "One current P0")
+require(INDEX, "One current execution focus")
 
 if count_issue_rows() != 61:
     raise AssertionError(f"ISSUE_CLASSIFICATION_ROWS={count_issue_rows()} expected 61")
@@ -54,7 +54,7 @@ if issues.count("| #245 | CURRENT") != 1:
 print("COLD_NAYA_INDEX=PASS")
 print("ISSUE_CLASSIFICATION=61/61")
 print("WORKFLOW_CLASSIFICATION=42/42")
-print("CURRENT_P0=#245")
+print("HISTORICAL_CLASSIFICATION_OWNER=#245")
 print("CANONICAL_EVENT_STORE=FOUND")
 print("ACTIVITY_PROJECTION=FOUND")
 print("SECOND_EVENT_STORE=NOT_CREATED")
