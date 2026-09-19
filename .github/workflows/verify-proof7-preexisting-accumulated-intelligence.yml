@@ -16,6 +16,7 @@ jobs:
   proof7_preexisting:
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    # Startup-isolation repair probe: no path filter; push trigger is intentionally unconditional.
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
