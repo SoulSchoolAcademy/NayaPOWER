@@ -41,9 +41,14 @@ Existing unrelated security-advisor findings remain and are not silently classif
 - No replacement of the proven Smart Mail engine.
 - Today and Reports remain projections/derived views over canonical sources.
 
+## Shared activity-engine work
+A canonical activity projection was added to the Hub from the existing `public.nayanet_team_activity` table. It provides the required YEAR → MONTH → DAY → SESSION navigation without creating a second event store. The activity lens now reads canonical team activity rather than duplicating the intelligence feed.
+
+Local isolated Hub build was rerun after the activity implementation: `npm run build` succeeded with 91 modules transformed. The only remaining build output is the existing chunk-size warning; no compiler/build failure occurred.
+
 ## Verification boundary
 Source changes are on branch `nis-completion-20260919` and PR #329. Production Smart Tabs Edge Function was deployed as version 4 with JWT verification enabled.
 
 Unauthenticated Smart Tabs POST was observed returning HTTP 401.
 
-Full browser acceptance is still NOT VERIFIED. The next proof must be authenticated runtime verification of each changed surface, not more speculative architecture work.
+Full browser acceptance is still NOT VERIFIED. The next proof is authenticated runtime verification of the new Activity projection against the canonical `nayanet_team_activity` source, followed by the remaining ten-surface acceptance sequence. No onboarding or substitute deployment path is in scope.
