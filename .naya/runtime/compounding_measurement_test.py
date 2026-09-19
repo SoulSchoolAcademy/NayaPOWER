@@ -47,7 +47,8 @@ class CompoundingMeasurementV1Tests(unittest.TestCase):
         result = persist_activity_event(event, events_root=events, index_path=index)
         self.assertEqual(result["status"], "CREATED")
 
-        stored = json.loads((events / "2026/09/19/13/SE-20260919-130000-compounding-v1-test.json").read_text())
+        stored_path = next(events.rglob("SE-20260919-130000-compounding-v1-test.json"))
+        stored = json.loads(stored_path.read_text())
         self.assertEqual(stored["event_id"], event["event_id"])
         self.assertEqual(stored["compounding_measurement"]["schema"], SCHEMA)
         self.assertEqual(stored["compounding_measurement"]["status"], STATUS)
