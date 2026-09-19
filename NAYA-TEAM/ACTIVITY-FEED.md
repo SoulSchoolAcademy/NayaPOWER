@@ -396,3 +396,16 @@ VERIFICATION: Probe commit is on main; probe run result is NOT-PROVEN because th
 HARD RULE: Proof 7 pre-existing-intelligence semantics remain unchanged. No fabricated credential, identity, PASS, or policy improvement.
 
 SIGN OUT / NEXT NAYA: obtain the probe run state for commit 1a6f4e973a1e500efa6111e72ad3e9ac0f071abf. If job-bearing, isolate and repair the affected workflow boundary; if zero-job, preserve the GitHub Actions dispatch/startup boundary and escalate rather than changing Proof 7 logic.
+## HUMAN CALENDAR NAVIGATION — ACTIVE
+
+The Team Naya communication feed is now organized as an ongoing calendar, not a single status document.
+
+**YEAR → MONTH → DAY → SESSION**
+
+- Today: [2026-09-19](./2026/09/19/INDEX.md)
+- Each substantive Naya session gets its own timestamped record under the day.
+- Existing records are preserved; later sessions append rather than replace history.
+- Engineering feature status and TODOs: [NayaNET Engineering Activity — 2026-09-19](../NayaNETEngineeringSystem/ACTIVITY/2026/09/19/INDEX.md)
+
+A Naya must sign in, inspect the current feature record, work, verify, append the session record, update affected feature state, and leave exactly one successor action before sign-out.
+
