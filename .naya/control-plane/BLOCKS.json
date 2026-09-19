@@ -34,18 +34,18 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Reconcile the control plane to current main, record Proof 7 VERIFIED, independently verify the cognition-receipt revision repair, then execute the real A/B/C relationship and Smart Mail security journey before browser acceptance.",
+    "next_action": "Perform authenticated human-facing production acceptance through the canonical live Hub now that the engine/security gates are green.",
     "next_actions": [
-      "Reconcile STATE/BLOCK/PROOF to current main and Proof 7 evidence.",
-      "Record Proof 7 run 35461270128 and artifact 10589479660 as current evidence.",
-      "Run focused concurrency proof for cognition receipt revision allocation.",
-      "Prove real Smart List/Connections on the existing production Space.",
-      "Prove explicit smart_mail_send authority and fail-closed denial.",
-      "Run real A→B Smart Mail with receiver verification and lineage.",
-      "Prove idempotent replay without duplicate durable intelligence.",
-      "Prove revocation denial and C isolation.",
-      "Run fresh-Naya continuation from the real durable journey.",
-      "Only then perform browser/human-facing production acceptance."
+      "Perform authenticated human-facing production acceptance through the canonical live Hub.",
+      "Verify user-visible A/B relationship and Smart List state against the already-proven backend state.",
+      "Verify user-visible Smart Mail delivery and receiver retrieval.",
+      "Verify user-visible durable intelligence/retrieval after the action.",
+      "Verify no unauthorized C visibility in the user-facing surfaces.",
+      "Capture the human-facing acceptance evidence and exact runtime identity.",
+      "Reconcile final STATE/BLOCK/PROOF to the acceptance evidence.",
+      "Classify Wave A only as PRODUCTION_PROVEN if all required human-facing evidence passes.",
+      "If any human-facing step fails, isolate the smallest source-of-truth defect without weakening backend controls.",
+      "Create the next fresh-Naya handoff from the final acceptance evidence."
     ]
   },
   "status_vocabulary": [
