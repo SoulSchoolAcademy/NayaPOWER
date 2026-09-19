@@ -36,7 +36,7 @@ The master directive is the boss-level execution contract. The individual job fi
 3. [Smart Ledger — Job 03](./JOBS/03-SMART-LEDGER.md)
 
 ### Wave B — Communication + Organization
-4. [Communication + Organization subsystem — Job 04](./JOBS/04-COMMUNICATION-AND-ORGANIZATION.md)
+4. [Communication + Organization subsystem — Job 04](./JOBS/04-SMART-MAIL.md)
 
 This one Naya owns four surfaces: [Your Connections](./YOUR-CONNECTIONS/INDEX.md), Smart Spaces, Smart List and Smart Mail.
 
@@ -66,3 +66,12 @@ The next level is **FEATURE → SESSION**. The indexes below are navigation/roll
 - [Smart Spaces](./SMART-SPACES/INDEX.md)
 - [Your Intelligence Today](./YOUR-INTELLIGENCE-TODAY/INDEX.md)
 - [Intelligent Reports](./INTELLIGENT-REPORTS/INDEX.md)
+
+
+## ACTION 02 — COMMUNICATION + ORGANIZATION
+
+- **DONE:** identity/profile/Space/membership reconciliation completed.
+- **PROOF:** auth.users.id = members.id; nayanet_profiles is populated canonical profile; nayanet_spaces is canonical Space; no live Space membership/JOIN/LEAVE/INVITE substrate exists.
+- **DECISION:** **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**.
+- [Action 02 session](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-02-IDENTITY-MEMBERSHIP-RECONCILIATION.md)
+- [Action 03 execution prompt](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-03-EXECUTION-PROMPT.md)
