@@ -29,7 +29,8 @@ Deno.serve(async(req)=>{
   const valueComplete=[benefit,harm,cost,risk].every(x=>x!==null);
   const responsibleValue=valueComplete?benefit-harm-cost-risk:null;
   const verifiedValue=valueComplete&&valueInputs?.verified===true?responsibleValue:null;
-  const taskScore=sourceReceipt?.status==='SUCCESS'&&sourceReceipt?.evidence?.some(x=>x?.receiver_retrieved_by)?1:sourceReceipt?.status==='SUCCESS'?0.5:0;
+  const receiptEvidence=Array.isArray(sourceReceipt?.evidence)?sourceReceipt.evidence:[];
+  const taskScore=sourceReceipt?.status==='SUCCESS'&&receiptEvidence.some(x=>x?.receiver_retrieved_by)?1:sourceReceipt?.status==='SUCCESS'?0.5:0;
   const history=[{event_id:event.event_id,classification:event.classification,title:event.title,content:event.content,source:event.source,status:event.status,confidence:event.confidence,tags:event.tags,parent_event_id:event.parent_event_id,source_hash:event.source_hash,schema_version:event.schema_version,metadata:event.metadata,created_at:event.created_at},...(sourceReceipt?[{receipt_id:sourceReceipt.id,action:sourceReceipt.action,expected_result:sourceReceipt.expected_result,observed_result:sourceReceipt.observed_result,status:sourceReceipt.status,evidence:sourceReceipt.evidence,learning:sourceReceipt.learning,created_at:sourceReceipt.created_at}]:[])];
   const worldSnapshot={schema:"nayanet.dream.world.p0.v1",source:"nayanet_cognition_events + nayanet_execution_receipts",source_event_id:event.event_id,source_receipt_id:sourceReceipt?.id??null,captured_at:new Date().toISOString(),immutable_source_projection:history};
   const baseline={strategy:"HISTORY_ONLY_V1",source_event_count:1,source_receipt_count:sourceReceipt?1:0,context_items:history.length,authority_changed:false,execution_performed:false};
