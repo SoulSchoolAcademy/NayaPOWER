@@ -35,7 +35,7 @@ const learning=await req("/functions/v1/naya-learning-apply",{
 });
 assert(learning.ok===true,"LEARNING_APPLY_FAILED");
 const expectedLearningEventId="learning-apply:"+evidenceId;
-const state=await req("/rest/v1/learner_states?select=id,member_id,version&member_id=eq."+sender.user.id,{headers:h(sender.access_token)});
+const state=await req("/rest/v1/learner_states?select=member_id,version&member_id=eq."+sender.user.id,{headers:h(sender.access_token)});
 assert(state.length===1 && Number(state[0].version)>=Number(learning.learning.learner_state_version),"LEARNER_STATE_NOT_PERSISTED");
 
 /* Fresh retrieval boundary: no prior cognition object is reused; this query rehydrates it from the canonical store. */
