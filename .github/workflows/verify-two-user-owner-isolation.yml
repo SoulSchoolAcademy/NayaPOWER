@@ -2,6 +2,9 @@ name: Verify Two-User Owner Isolation
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - .naya/ci/owner-isolation-trigger
 
 permissions:
   contents: read
