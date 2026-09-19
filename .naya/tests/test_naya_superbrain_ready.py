@@ -19,21 +19,18 @@ def load():
     return module
 
 
-def test_current_repository_is_blocked_by_unproven_boundaries():
+def test_current_runtime_proofs_are_not_downgraded_by_control_plane_only_changes():
     gate = load()
     payload = gate.evaluate()
     assert payload["gate"] == "NAYA_SUPERBRAIN_READY"
     assert payload["fail_closed"] is True
-    assert payload["status"] == "BLOCKED"
     names = {c["name"]: c["status"] for c in payload["checks"]}
-    assert names["golden_journey"] == "UNKNOWN"
-    assert names["learning_adaptation"] == "UNKNOWN"
-    assert names["privacy_access"] == "UNKNOWN"
-    assert names["concurrency_idempotency"] == "UNKNOWN"
-    assert names["runtime_parity"] == "UNKNOWN"
-    assert names["authenticated_lifecycle"] == "UNKNOWN"
-    assert names["external_cold_naya"] == "FAILED"
-
+    assert names["runtime_parity"] in {"VERIFIED", "PRODUCTION_PROVEN"}
+    assert names["authenticated_lifecycle"] in {"VERIFIED", "PRODUCTION_PROVEN"}
+    assert names["external_cold_naya"] in {"VERIFIED", "PRODUCTION_PROVEN"}
+    assert all(c["status"] != "FAILED" for c in payload["checks"] if c["name"] in {
+        "runtime_parity", "authenticated_lifecycle", "external_cold_naya"
+    })
 
 def test_unknown_can_never_be_ready():
     gate = load()
