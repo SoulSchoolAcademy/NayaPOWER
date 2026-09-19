@@ -41,7 +41,7 @@ jobs:
       - name: Validate machine receipt
         run: |
           test -s "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
-          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN' && r.status!=='POLICY_IMPROVEMENT_NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
 
       - name: Upload canonical machine receipt
         uses: actions/upload-artifact@v4
