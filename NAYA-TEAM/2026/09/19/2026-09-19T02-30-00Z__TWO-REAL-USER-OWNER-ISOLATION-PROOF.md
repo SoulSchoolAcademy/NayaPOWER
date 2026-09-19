@@ -63,3 +63,42 @@ This item becomes **PROVEN** only after two legitimate authenticated test identi
 ## Continuation
 
 Provision two legitimate authenticated test identities through the authorized secret/provisioning runner, then execute the complete A/B matrix through the deployed client/runtime and append the resulting proof to the Team Naya Activity Feed.
+
+
+## 2026-09-19 — Authorized provisioning bridge implemented
+
+The missing execution bridge is now implemented on branch `proof/two-user-owner-isolation`.
+
+### Secure runtime design
+
+- `.github/workflows/verify-two-user-owner-isolation.yml` is manual-dispatch only.
+- `SUPABASE_SERVICE_ROLE_KEY` is consumed only from the GitHub Actions encrypted secret store.
+- No service-role key, test password, access token, or client credential is committed to Git.
+- The runner generates fresh A/B passwords in process memory.
+- The runner creates two confirmed Supabase Auth users through the Auth Admin API.
+- The runner signs both users in through the normal client token endpoint.
+- All seven-surface operations after sign-in use the individual user access tokens, so RLS evaluates the real `auth.uid()` for A and B.
+- The generated credentials are never written to the proof artifact.
+- The two test identities remain available after the run so the recorded authenticated IDs remain meaningful for audit/replay.
+
+### Matrix runner
+
+`scripts/verify-two-user-owner-isolation.mjs` creates independent A/B objects and verifies:
+
+- Smart Notes: authenticated create/read/mutate plus cross-owner denial.
+- Cognition: authenticated create/read/mutate plus cross-owner denial.
+- Learning: authenticated evidence and learner-state create/read/mutate plus cross-owner denial.
+- Reports: authenticated create/read/mutate plus cross-owner denial.
+- Spaces: authenticated create/read/mutate plus cross-owner denial.
+- Intelligence Index: authenticated owner projection retrieval and cross-owner isolation.
+- Smart Ledger: authenticated owner projection retrieval and cross-owner isolation.
+- Index/Ledger write attempts are treated as projection-boundary checks because the live policies expose them as read-only projections.
+
+### Current ruling
+
+- **IMPLEMENTED:** authorized provisioning/runtime bridge.
+- **IMPLEMENTED:** seven-surface authenticated A/B matrix runner.
+- **NOT-PROVEN:** GitHub Actions execution has not yet occurred because the encrypted `SUPABASE_SERVICE_ROLE_KEY` has not been supplied to the repository's secret store through an authorized channel.
+- **NOT-PROVEN:** final A/B PASS until the workflow produces the signed proof artifact.
+
+The final proof must come from the workflow artifact, not from this document.
