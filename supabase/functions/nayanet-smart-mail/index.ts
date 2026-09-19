@@ -1,7 +1,7 @@
 // verification redeploy: source synchronized with live Edge Function v8
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.0";
-type SendBody={operation?: "send"|"verify";recipient_user_id?:string;message_id?:string;body?:string;subject?:string;kind?:"direct"|"room"|"group"|"list";idempotency_key?:string;project_id?:string;policy_id?:string;experiment_case_id?:string;policy_input_hash?:string;policy_decision_hash?:string};
+type SendBody={operation?: "send"|"verify";recipient_user_id?:string;message_id?:string;body?:string;subject?:string;kind?:"direct"|"room"|"group"|"list";idempotency_key?:string;project_id?:string;policy_id?:string;experiment_case_id?:string;policy_input_hash?:string;policy_decision_hash?:string;authority_grant_id?:string};
 const json=(payload:unknown,status=200)=>new Response(JSON.stringify(payload),{status,headers:{"content-type":"application/json","cache-control":"no-store"}});
 Deno.serve(async(req)=>{
  if(req.method!=="POST")return json({ok:false,error:"METHOD_NOT_ALLOWED"},405);
@@ -40,12 +40,10 @@ Deno.serve(async(req)=>{
  if(input.recipient_user_id===actorId)return json({ok:false,error:"SELF_RECIPIENT_NOT_ALLOWED"},400);
  if(input.body.length>10000)return json({ok:false,error:"BODY_TOO_LARGE"},400);
  const {data:recipient}=await admin.auth.admin.getUserById(input.recipient_user_id); if(!recipient?.user)return json({ok:false,error:"RECIPIENT_NOT_FOUND"},404);
- const sourceEventId=`human:smart-mail-send:${input.idempotency_key}`;
- const {data:existingGrant,error:existingGrantError}=await userClient.from("nayanet_authority_grants").select("*").eq("issuer_id",actorId).eq("source_event_id",sourceEventId).maybeSingle(); if(existingGrantError)return json({ok:false,error:"AUTHORITY_GRANT_LOOKUP_FAILED",detail:existingGrantError.message},403); const {data:grant,error:grantError}=existingGrant?{data:existingGrant,error:null}:await userClient.rpc("nayanet_issue_authority_grant",{p_subject_id:actorId,p_source_event_id:sourceEventId,p_mission_id:"NayaNET-SMART-MAIL",p_scope:{target:input.recipient_user_id,project_id:input.project_id??"NayaNET"},p_actions:["smart_mail_send"],p_constraints:{kind:input.kind??"direct",no_model_authority:true},p_evidence:{human_action:"explicit authenticated Smart Mail send request",idempotency_key:input.idempotency_key,recipient_user_id:input.recipient_user_id},p_expires_at:null,p_parent_authority:null});
- if(grantError||!grant?.grant_id)return json({ok:false,error:"AUTHORITY_GRANT_ISSUANCE_FAILED",detail:grantError?.message??"GRANT_NOT_RETURNED"},403);
- const {data:validated, error:validationError}=await userClient.rpc("nayanet_validate_authority_grant",{p_grant_id:grant.grant_id,p_action:"smart_mail_send",p_target:input.recipient_user_id});
+ if(!input.authority_grant_id)return json({ok:false,error:"AUTHORITY_GRANT_ID_REQUIRED"},403);
+ const {data:validated,error:validationError}=await userClient.rpc("nayanet_validate_authority_grant",{p_grant_id:input.authority_grant_id,p_action:"smart_mail_send",p_target:input.recipient_user_id});
  if(validationError||validated?.status!=="AUTHORIZED")return json({ok:false,error:"AUTHORITY_GRANT_VALIDATION_FAILED",detail:validationError?.message??validated},403);
- const {data:result,error}=await userClient.rpc("nayanet_send_smart_mail_authorized",{p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_policy_id:input.policy_id??null,p_experiment_case_id:input.experiment_case_id??null,p_policy_input_hash:input.policy_input_hash??null,p_policy_decision_hash:input.policy_decision_hash??null,p_authority_grant_id:grant.grant_id});
+ const {data:result,error}=await userClient.rpc("nayanet_send_smart_mail_authorized",{p_sender_id:actorId,p_receiver_id:input.recipient_user_id,p_body:input.body,p_subject:input.subject??"NayaNET P0 communication proof",p_kind:input.kind??"direct",p_idempotency_key:input.idempotency_key,p_project_id:input.project_id??"NayaNET",p_policy_id:input.policy_id??null,p_experiment_case_id:input.experiment_case_id??null,p_policy_input_hash:input.policy_input_hash??null,p_policy_decision_hash:input.policy_decision_hash??null,p_authority_grant_id:input.authority_grant_id});
  if(error)return json({ok:false,error:"SMART_MAIL_TRANSACTION_FAILED",detail:error.message},500);
- return json({ok:true,...result});
+ return json({ok:true,...result,authority_grant_id:input.authority_grant_id});
 });
