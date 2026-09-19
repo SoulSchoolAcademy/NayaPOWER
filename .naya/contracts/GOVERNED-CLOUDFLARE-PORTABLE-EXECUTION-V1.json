@@ -1,0 +1,88 @@
+{
+  "schema": "NAYAPOWER-GOVERNED-CLOUDFLARE-PORTABLE-EXECUTION-V1",
+  "status": "RUNTIME_VERIFIED",
+  "objective": "Prove the governed execution boundary against a real external action surface.",
+  "canonical_flow": [
+    "real request",
+    "13-question governed identity envelope",
+    "canonical Authority Registry resolution",
+    "consequential UniversalExecutionGate authorization",
+    "model_tool_gateway.execute_authorized",
+    "deployment-specific Cloudflare adapter",
+    "independent-process portable authorization verification",
+    "real Cloudflare external action",
+    "portable execution receipt",
+    "fresh-process replay refusal",
+    "revocation-at-use refusal",
+    "existing authenticated NayaNET cognition/PIS persistence",
+    "live Hub retrieval and Activity rendering"
+  ],
+  "external_surface": {
+    "provider": "Cloudflare Workers",
+    "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+    "worker": "sparkling-shape-7ae5",
+    "adapter": ".naya/runtime/cloudflare_production_adapter.py",
+    "action_environment": "preview",
+    "production_traffic_changed": false
+  },
+  "authorization": {
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509",
+    "decision_id": "CF-PORTABLE-PROOF-DEC-001",
+    "action_id": "CF-PORTABLE-PROOF-001",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "authorized_commit": "44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "permission": "deploy_public_runtime",
+    "identity_id": "SoulSchoolAcademy",
+    "identity_fingerprint": "a98dbac29153e7432f5753f7724ec69e36a5612f5c07fc7a29113ceda21c83cb",
+    "identity_binding_hash": "a816dfd2c73f12b04b9fe0f6d7fa1f361f6b6fb98d95498300145aa4dd758e99",
+    "execution_binding_hash": "c3d77abb58ac892b815f91cba5d659dd3718dc118621962e156b2aed29c0436a",
+    "portable_artifact_sha256": "c98b7ceb4a9520e2c23fc22e30fa568f39c18a73b8d4835a442687c7b3485562"
+  },
+  "observed_external_execution": {
+    "cloudflare_version_id": "4aeb34e3-16a2-406b-bf3d-b07e5f98cf26",
+    "action_ref": "cloudflare:sparkling-shape-7ae5:preview:CF-PORTABLE-PROOF-001",
+    "outcome_ref": "cloudflare-outcome:CF-PORTABLE-PROOF-001",
+    "source_checkout": "44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "adapter_verified_before_external_call": true
+  },
+  "acceptance": {
+    "workflow_run_id": 35414256599,
+    "workflow_run_number": 10,
+    "workflow_head": "b1520c4690122026596ba891654d79536911ded9",
+    "first_use": "PASS",
+    "cross_process_authorization": "PASS",
+    "real_external_action": "PASS",
+    "portable_receipt": "PASS",
+    "replay": {
+      "result": "REFUSED",
+      "adapter_invoked": false
+    },
+    "revocation_at_use": {
+      "result": "REFUSED",
+      "adapter_invoked": false
+    },
+    "pis_persistence": "PASS",
+    "live_hub_pis_retrieval": "PASS",
+    "activity_rendered": "PASS"
+  },
+  "canonical_continuity": {
+    "execution_event_store": "existing Activity execution projection",
+    "pis_store": "existing authenticated nayanet_cognition_events boundary",
+    "activity_runtime": "NayaAssistantRuntime.retrieve -> live personal Activity projection",
+    "second_execution_store_created": false,
+    "second_authority_system_created": false
+  },
+  "proof_notes": [
+    "The portable verifier is independent of the issuer's in-process UEG memory.",
+    "Identity continuity is signed and bound to the exact action; identity does not create or expand authority.",
+    "Revocation is evaluated at time of use against an independently changed registry view.",
+    "The verified external action was a Cloudflare preview version upload, not a production-traffic deployment."
+  ],
+  "repository_boundary": {
+    "workflow_mode": "manual_only",
+    "private_signing_key_committed": false,
+    "production_traffic_deployment_claimed": false,
+    "future_production_deploy_requires_fresh_authorization": true
+  },
+  "continuation_action": "Issue a fresh short-lived authorization for the next concrete external action, then repeat the same governed receipt path; do not reuse this expired proof artifact."
+}
