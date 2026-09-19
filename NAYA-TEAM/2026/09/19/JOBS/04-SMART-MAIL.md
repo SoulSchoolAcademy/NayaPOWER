@@ -170,3 +170,20 @@ Architecture is defined. Runtime relationship lifecycle is not yet proven.
 **Hub result:** the canonical Hub HTML is a visual baseline; it contains Connections/Smart Mail UI but no direct Supabase/auth/Space/Mail runtime wiring. UI labels are not runtime proof.
 
 **Implementation rule:** do not introduce membership until Action 03 reconciles `v7_connection_requests` and defines the canonical relationship state/provenance. No production schema was changed in Action 02.
+
+## ACTION 03–05 EXECUTION STATE — 2026-09-19
+
+### Relationship reconciliation
+`v7_connection_requests` is confirmed request-only state. It does not become the durable Connection object.
+
+### Membership
+`nayanet_space_members` is now canonical for Space participation. JOIN/LEAVE are authenticated server RPCs with event lineage.
+
+### Connections
+`nayanet_connections` is now canonical for explicit saved relationships. It requires active shared Space participation and preserves source Space provenance.
+
+### Security boundary
+Membership and Connection are relationship state. They do not grant Smart Mail authority. Smart Mail must continue to validate authority at use time.
+
+### Remaining work
+Wire the current Hub to these primitives, implement Smart List, bind Mail relationship eligibility, prove two real users, and prove Cloudflare parity.
