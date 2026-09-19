@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/governed-execution-identity-binding-v1",
+  "title": "NayaPOWER Governed Execution Identity Binding V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "identity_id",
+    "identity_fingerprint",
+    "identity_binding_hash",
+    "execution_authorization_binding_hash"
+  ],
+  "properties": {
+    "identity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "identity_binding_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "execution_authorization_binding_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "execution_authorization": {
+    "binding_rule": "The authorization is valid only when canonical authority, decision, exact action, identity fingerprint, and identity/action binding all match.",
+    "authority_rule": "Identity never mints, expands, delegates, or modifies authority.",
+    "verification_rule": "Verification requires the same governed identity envelope that was present at authorization time.",
+    "issuance_rule": "The verification boundary accepts only the authorization object issued by the same in-process gate instance."
+  },
+  "smart_ledger": {
+    "required_execution_fields": [
+      "execution_authorization_binding_hash",
+      "identity_id",
+      "identity_fingerprint",
+      "identity_binding_hash"
+    ],
+    "integrity_rule": "All identity/action binding fields participate in the deterministic ledger integrity hash.",
+    "receipt_rule": "The verification receipt repeats the identity and execution binding fields carried by the ledger event.",
+    "tamper_rule": "Changing identity or action binding data without recomputing the ledger integrity hash must fail verification."
+  },
+  "failure_rules": [
+    "missing_identity_envelope",
+    "unknown_identity_on_consequential_action",
+    "identity_actor_mismatch",
+    "identity_authority_mismatch",
+    "identity_fingerprint_mismatch",
+    "identity_action_binding_mismatch",
+    "authorization_binding_tamper",
+    "authorization_not_issued_by_gate_instance",
+    "ledger_identity_binding_tamper"
+  ]
+}
