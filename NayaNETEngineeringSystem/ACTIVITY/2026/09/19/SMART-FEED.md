@@ -136,3 +136,8 @@ Wave A execution began. A real source defect was discovered in Smart Tabs before
 **Current product state:** backend/security/lineage closure is substantially proven. Remaining closure is authenticated browser-level visual interaction QA, direct human target-navigation proof, final accessibility/mobile acceptance, and the independent execution-outcome observation boundary.
 
 **Successor:** finish those remaining product-facing closure boundaries, then perform final Wave A acceptance.
+## Session 007 — Live runtime cache-bust repair — 2026-09-19T17:10Z
+
+Live browser observation exposed a stale Assistant Runtime cache key in the Hub HTML: assistant-runtime.js?v=20260918-r7. The stale cached runtime threw a browser SyntaxError and left NayaAssistantRuntime undefined. The Hub source was repaired to assistant-runtime.js?v=20260919-wavea6 in commit **6018ed5002ee09505767852e4f39d1d81c9c96ab**.
+
+Cloudflare run **35457054828** deployed the repair and passed exact live parity plus desktop/mobile/final runtime checks. Early live browser observation after deployment confirmed NayaAssistantRuntime and listSmartTabs are present. Authenticated browser CRUD remains the narrow remaining Feed/Tabs UI boundary.
