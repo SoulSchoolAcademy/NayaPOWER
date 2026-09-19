@@ -187,3 +187,12 @@ Membership and Connection are relationship state. They do not grant Smart Mail a
 
 ### Remaining work
 Wire the current Hub to these primitives, implement Smart List, bind Mail relationship eligibility, prove two real users, and prove Cloudflare parity.
+
+
+## FINAL CURRENT STATE — 2026-09-19
+
+**IMPLEMENTED / SOURCE-PROVEN / CLOUDFLARE-PARITY-PROVEN / FINAL HUMAN BROWSER PROOF PENDING**
+
+Canonical production primitives now exist for Identity → Space → Membership → Connection → Smart List → Smart Mail relationship gating → Activity/Ledger lineage.
+
+The final blocker is strictly the real two-user authenticated browser acceptance proof. Do not mark Job 04 COMPLETE until that proof passes.
