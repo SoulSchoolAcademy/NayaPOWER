@@ -359,3 +359,23 @@ The following remain **NOT-PROVEN** because the actual authenticated A/B transac
 This boundary becomes **PROVEN** only when two legitimate authenticated test identities are provisioned through the authorized identity/test-secret boundary and the complete A/B create/read/mutate matrix runs through the deployed client/runtime, recording actual identity IDs, causal object IDs, allowed operations, denied operations, and server-observed results.
 
 **NEXT NAYA:** provision two legitimate authenticated test identities through the authorized secret/provisioning runner, then execute the complete A/B matrix through the deployed client/runtime and append the resulting proof here.
+
+## 2026-09-19 — AUTHENTICATED OWNER-ISOLATION BRIDGE IMPLEMENTED
+
+**Status:** IMPLEMENTED / NOT-PROVEN UNTIL WORKFLOW EXECUTES
+
+The missing authenticated A/B execution bridge is now implemented on branch `proof/two-user-owner-isolation`.
+
+- Workflow: `.github/workflows/verify-two-user-owner-isolation.yml`
+- Runner: `scripts/verify-two-user-owner-isolation.mjs`
+- Provisioning: two fresh Supabase Auth users are created at runtime through the Auth Admin API using the encrypted `SUPABASE_SERVICE_ROLE_KEY` GitHub Actions secret.
+- Client boundary: each user is then signed in through the normal Supabase token endpoint; all matrix operations use the resulting user access tokens and therefore the real authenticated `auth.uid()` boundary.
+- Credentials: generated passwords/access tokens stay in process memory and are not written to Git or the proof artifact.
+- Surfaces: Smart Notes → Cognition → Smart Ledger → Intelligence Index → Learning → Reports → Spaces.
+- Projection rule: Smart Ledger and Intelligence Index are verified as owner-isolated read projections; their direct write boundary is tested as rejected rather than treated as mutable source truth.
+
+**Independent syntax check:** fetched branch and ran `node --check` against the new runner successfully.
+
+**Final state:** NOT-PROVEN. The encrypted GitHub Actions secret is not provisioned through the available connector, and the workflow has therefore not yet produced the final A/B proof artifact. No credentials were fabricated or exposed.
+
+**Smart Link:** https://github.com/SoulSchoolAcademy/NayaPOWER/blob/proof/two-user-owner-isolation/.github/workflows/verify-two-user-owner-isolation.yml
