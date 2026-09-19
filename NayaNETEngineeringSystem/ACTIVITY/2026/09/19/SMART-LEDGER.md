@@ -95,3 +95,10 @@ Fresh Ledger retrieval independently reconstructed cognition-event → execution
 **Important:** this proves the Ledger lineage for the Feed interaction. It does not prove the independent nayanet_execution_outcomes observation boundary, which remains a separate acceptance gap.
 
 **Successor:** close the independent outcome/observation boundary and authenticated Ledger product-surface verification.
+## Session 007 — Runtime cache-bust repair and observation-boundary reconciliation — 2026-09-19T17:10Z
+
+The coordinated Wave A runtime investigation found and repaired a stale Assistant Runtime cache key in the Hub. Cloudflare run **35457054828** passed exact parity and runtime baselines after commit **6018ed5002ee09505767852e4f39d1d81c9c96ab**.
+
+A separate audit of public functions shows the independent nayanet_execution_outcomes table is currently used by policy/Smart Mail outcome machinery; no Feed-specific outcome recorder exists. Therefore its current zero-row state must not be treated as a missing Feed Ledger capability. The Feed consequence proof is already independently represented by the fresh cognition event plus verified execution receipt Ledger lineage from Session 006.
+
+**Remaining:** authenticated browser-level Ledger/Feed UI verification, not backend Feed Ledger lineage.
