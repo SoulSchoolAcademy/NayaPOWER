@@ -13,3 +13,13 @@ A first wrong adapter shape was caught by source inspection and was not promoted
 State: Feed → cognition → receipt → Smart Ledger VERIFIED at authenticated runtime layer.
 
 Remaining: human-click presentation, refresh durability, navigation, mobile/accessibility, final acceptance.
+
+### Final QA checkpoint — 2026-09-19T17:27Z
+
+After hard reload with the legitimate authenticated session, Hub runtime remained authenticated and returned the persisted Smart Tab plus both the new Smart Feed interaction and source intelligence. The browser body visibly rendered Smart Feed blocks, provenance, timestamps, Naya Power Runtime state, and action controls.
+
+Mobile emulation at 390x844 reported overflow=false, 118 visible buttons, 10 form controls, 179 ARIA-labelled elements, and the real Feed item visible. This is a runtime baseline, not a substitute for human visual approval.
+
+The existing Smart Tab target /feed is persisted. A click on the target control caused browser navigation/context transition, but destination URL was not captured before the CDP evaluation context changed; target navigation therefore remains UNVERIFIED rather than being promoted to PASS.
+
+Wave A browser-runtime closure is now strong; remaining acceptance gaps are target-navigation evidence, true human visual/mobile/accessibility review, and any final UI defects discovered there.
