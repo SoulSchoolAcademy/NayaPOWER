@@ -130,7 +130,6 @@ jobs:
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
               await context.close();
             }
-          }
           } finally {
             await browser.close();
           }
