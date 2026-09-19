@@ -240,6 +240,25 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
                 )
+                # The canonical event is not enough by itself: the durable
+                # human-readable Team Naya day record is part of the boundary.
+                from execution_activity_writer import write_execution_activity
+
+                activity_execution = {
+                    **action_ctx,
+                    "claim_id": claim_id,
+                    "run_id": run_id,
+                    "session_id": data.get("session_id"),
+                    "governance_state": "AUTHORIZED",
+                    "authorization_verified": True,
+                }
+                write_execution_activity(
+                    event=emitted["event"],
+                    execution=activity_execution,
+                    next_action=fields["next_action"],
+                    successor=fields["successor"],
+                    evidence=emitted_evidence,
+                )
             except Exception as exc:
                 fail(
                     "execution boundary refused: VERIFIED could not auto-persist the canonical "
@@ -268,6 +287,29 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                 fail("execution boundary refused: VERIFIED could not bind the Activity to its Session: " + str(exc))
     elif target == "HANDED_OFF":
         require_fields(fields, ("next_action", "handoff"))
+        # Hard handoff gate: a consequential execution cannot close merely
+        # because the mutable Session can be closed. The canonical Activity
+        # event AND durable Team Naya day projection must still exist.
+        action_ctx = data.get("action") or {}
+        activity_id = data.get("activity_event_id")
+        ok, activity_problems = _verify_activity_event(
+            activity_id,
+            data.get("claim_id"),
+            action_ctx.get("action_id"),
+            data.get("run_id"),
+            data.get("session_id"),
+        )
+        if not ok:
+            fail(
+                "execution boundary refused: HANDED_OFF requires durable Activity "
+                "(NO ACTIVITY = NO HANDOFF): " + "; ".join(activity_problems)
+            )
+        from execution_activity_writer import find_daily_activity
+        if find_daily_activity(activity_id) is None:
+            fail(
+                "execution boundary refused: HANDED_OFF requires the durable "
+                "Team Naya daily Activity projection (NO DAILY RECORD = NO HANDOFF)"
+            )
     event = {"at": now(), "from": current, "to": target, **fields}
     data.update(fields)
     if target == "EXECUTING" and data.get("session_id"):
@@ -354,6 +396,12 @@ def validate(data: dict[str, Any] | None = None) -> dict[str, Any]:
                 )
     if status == "HANDED_OFF":
         require_fields(data, ("next_action", "handoff"))
+        from execution_activity_writer import find_daily_activity
+        if find_daily_activity(data.get("activity_event_id")) is None:
+            fail(
+                "activity handoff integrity failure — completed execution has no "
+                "durable Team Naya daily Activity record (NO DAILY RECORD = NO HANDOFF)"
+            )
     if not isinstance(data.get("history"), list):
         fail("execution history must be a list")
     if status in {"EXECUTING", "OBSERVED", "VERIFIED", "HANDED_OFF"}:
