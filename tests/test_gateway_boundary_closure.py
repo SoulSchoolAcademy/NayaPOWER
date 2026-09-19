@@ -263,7 +263,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
     # ---- I: valid gate-issued credential --------------------------------
     def test_009_valid_credential_allows(self):
         start_claimed()
-        result = MTG.authorize(self.action, execution_authorization=self.credential, gate=self.gate, identity_envelope=self.identity, identity_envelope=self.identity, preflight=approved_preflight())
+        result = MTG.authorize(self.action, execution_authorization=self.credential, gate=self.gate, identity_envelope=self.identity, preflight=approved_preflight())
         self.assertEqual(result["status"], "AUTHORIZED")
         self.assertEqual(result["execution_status"], "EXECUTING")
         self.assertTrue(result["side_effect_authorized"])
