@@ -7,7 +7,8 @@ on:
     paths:
       - 'supabase/migrations/20260918170000_authority_grant_runtime_v1.sql'
       - 'supabase/migrations/20260918172000_lock_authority_grant_mutation_to_transactions.sql'
-      - 'docs/NAYA-AUTHORITY-GRANT-ISSUANCE-CONTRACT-V1.md'\n      - 'supabase/migrations/20260918180000_wire_authority_grant_into_commit_cognition.sql'
+      - 'docs/NAYA-AUTHORITY-GRANT-ISSUANCE-CONTRACT-V1.md'
+      - 'supabase/migrations/20260918180000_wire_authority_grant_into_commit_cognition.sql'
       - '.github/workflows/verify-authority-grant-runtime.yml'
 
 permissions:
