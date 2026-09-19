@@ -113,6 +113,28 @@ const prepare=async(p)=>{
   if(mailAuthorityCheck.error||mailAuthorityCheck.data?.status!=="AUTHORIZED") throw mailAuthorityCheck.error||new Error("SMART_MAIL_AUTHORITY_GRANT_VALIDATION_FAILED:"+JSON.stringify(mailAuthorityCheck.data));
   authorityGrants.set(p.id,mailAuthority.data.grant_id);
 
+};
+await prepare(v1); await prepare(v2);
+
+const sha256=async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
+
+const spaceId=process.env.NAYA_EXISTING_SPACE_ID||"04ee4dc8-bc73-47df-a1de-162570f6a56e";
+const {data:space,error:spaceError}=await supabase.from("nayanet_spaces").select("id,visibility,owner_member_id").eq("id",spaceId).single();
+if(spaceError||!space||space.visibility!=="shared") throw spaceError||new Error("EXISTING_SHARED_SPACE_NOT_AVAILABLE");
+
+const joinSender=await supabase.rpc("nayanet_join_space",{p_space_id:spaceId});
+if(joinSender.error) throw joinSender.error;
+const joinReceiver=await receiverClient.rpc("nayanet_join_space",{p_space_id:spaceId});
+if(joinReceiver.error) throw joinReceiver.error;
+
+const saveSender=await supabase.rpc("nayanet_save_connection",{p_target_member_id:receiver.id,p_space_id:spaceId});
+if(saveSender.error) throw saveSender.error;
+const saveReceiver=await receiverClient.rpc("nayanet_save_connection",{p_target_member_id:sender.id,p_space_id:spaceId});
+if(saveReceiver.error) throw saveReceiver.error;
+const senderConnectionId=saveSender.data?.connection?.id;
+const receiverConnectionId=saveReceiver.data?.connection?.id;
+if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTION_NOT_CREATED");
+
   const conflicting=await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
     p_source_event_id:"controlled-constraint-negative-"+runId+"-"+p.id,
@@ -142,27 +164,7 @@ const prepare=async(p)=>{
   const blockedData=await blocked.json();
   if(blocked.ok||!String(blockedData?.detail||blockedData?.error||"").includes("AUTHORITY_CONSTRAINT_CONFLICT")) throw new Error("AUTHORITY_CONSTRAINT_NOT_ENFORCED");
   console.log("P1_AUTHORITY_CONSTRAINT_NEGATIVE=PASS");
-};
-await prepare(v1); await prepare(v2);
 
-const sha256=async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
-
-const spaceId=process.env.NAYA_EXISTING_SPACE_ID||"04ee4dc8-bc73-47df-a1de-162570f6a56e";
-const {data:space,error:spaceError}=await supabase.from("nayanet_spaces").select("id,visibility,owner_member_id").eq("id",spaceId).single();
-if(spaceError||!space||space.visibility!=="shared") throw spaceError||new Error("EXISTING_SHARED_SPACE_NOT_AVAILABLE");
-
-const joinSender=await supabase.rpc("nayanet_join_space",{p_space_id:spaceId});
-if(joinSender.error) throw joinSender.error;
-const joinReceiver=await receiverClient.rpc("nayanet_join_space",{p_space_id:spaceId});
-if(joinReceiver.error) throw joinReceiver.error;
-
-const saveSender=await supabase.rpc("nayanet_save_connection",{p_target_member_id:receiver.id,p_space_id:spaceId});
-if(saveSender.error) throw saveSender.error;
-const saveReceiver=await receiverClient.rpc("nayanet_save_connection",{p_target_member_id:sender.id,p_space_id:spaceId});
-if(saveReceiver.error) throw saveReceiver.error;
-const senderConnectionId=saveSender.data?.connection?.id;
-const receiverConnectionId=saveReceiver.data?.connection?.id;
-if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTION_NOT_CREATED");
 
 const cases=[
   {suffix:"C1",task:"return the held-out answer token from verified context",answer_token:"NAYA-HOLDOUT-ALPHA-7",v1:{subject:"Controlled held-out response 1",body:"Please return the held-out answer token from your context."},v2:{subject:"Controlled held-out response 1",body:"Verified context contains the answer token NAYA-HOLDOUT-ALPHA-7. Please return the held-out answer token."}},
