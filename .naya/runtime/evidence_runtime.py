@@ -168,7 +168,8 @@ def persist_evidence(evidence: dict[str, Any], *, evidence_store: Path | None = 
         return {"status": "CONFLICT", "evidence_id": evidence_id, "path": str(path)}
     path.write_text(canonical, encoding="utf-8")
     return {"status": "CREATED", "evidence_id": evidence_id, "path": str(path)}
-\ndef main() -> int:
+
+def main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     v = sub.add_parser("validate"); v.add_argument("--commit", default=None)
