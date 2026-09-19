@@ -137,6 +137,15 @@ def validate_store(expected_commit: str | None = None) -> list[str]:
 
 
 
+def load_evidence(evidence_id: str, *, evidence_store: Path | None = None) -> dict[str, Any] | None:
+    """Recover one evidence record from the existing canonical evidence store."""
+    store = Path(evidence_store) if evidence_store else EVIDENCE_STORE
+    path = store / f"{evidence_id}.json"
+    if not path.exists():
+        return None
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def persist_evidence(evidence: dict[str, Any], *, evidence_store: Path | None = None) -> dict[str, Any]:
     """Persist one validated evidence record in the existing canonical evidence store.
 
