@@ -209,6 +209,12 @@ class TestAutomaticActivityEmission(unittest.TestCase):
         self.assertTrue(event["continuity"]["handoff"]["next_action"])
         self.assertTrue(event["continuity"]["handoff"]["successor"])
         self.assertEqual(event["activity_feed_projection"]["feed"], "NAYA-ACTIVITY")
+        measurement = event.get("compounding_measurement") or {}
+        self.assertEqual(measurement.get("schema"), "naya-power-compounding-measurement/v1")
+        self.assertEqual(measurement.get("status"), "VERIFIED_CAPTURED")
+        self.assertEqual(measurement.get("activity_event_id"), event["event_id"])
+        self.assertEqual(measurement.get("verified_state_change", {}).get("verification_status"), "VERIFIED")
+        self.assertFalse(measurement.get("promotion", {}).get("compounded"))
         index = json.loads(EC.INDEX_PATH.read_text(encoding="utf-8"))
         self.assertIn(event["event_id"], [row.get("event_id") for row in index.get("events", [])])
         EC.transition("HANDED_OFF", next_action="continue test", handoff={"current_state": "VERIFIED"})
