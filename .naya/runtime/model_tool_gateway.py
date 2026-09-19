@@ -15,7 +15,7 @@ authorization. Their presence alone always terminates in REFUSED.
 from __future__ import annotations
 
 import argparse
-from typing import Any
+from typing import Any, Mapping
 
 from execution_controller import load, transition
 from risk_engine import classify
@@ -55,6 +55,7 @@ def authorize(
     *,
     execution_authorization: Any = None,
     gate: Any = None,
+    identity_envelope: Mapping[str, Any] | None = None,
     now: str | None = None,
     preflight: Any = None,
 ) -> dict[str, Any]:
@@ -77,10 +78,17 @@ def authorize(
         raise AssertionError("protected baseline does not match claimed execution baseline")
 
     # The ONLY authorization credential is a gate-issued ExecutionAuthorization.
+    if identity_envelope is None:
+        raise AssertionError("gateway requires the governed intelligence identity envelope for consequential execution")
     if execution_authorization is None:
         raise AssertionError("gateway requires a gate-issued ExecutionAuthorization")
     issuer = gate if gate is not None else _default_gate()
-    valid, reasons = issuer.verify(execution_authorization, now=now)
+    valid, reasons = issuer.verify(
+        execution_authorization,
+        identity_envelope,
+        consequential=True,
+        now=now,
+    )
     if not valid:
         raise AssertionError("execution authorization refused: " + "; ".join(reasons))
 
@@ -106,6 +114,7 @@ def authorize(
         derived_risk=derived,
         execution_authorization=execution_authorization,
         gate=issuer,
+        identity_envelope=identity_envelope,
         preflight=preflight,
     )
     return {
@@ -119,6 +128,9 @@ def authorize(
         "decision_id": execution_authorization.decision_id,
         "validated_at": execution_authorization.validated_at,
         "binding_hash": execution_authorization.binding_hash,
+        "identity_id": execution_authorization.identity_id,
+        "identity_fingerprint": execution_authorization.identity_fingerprint,
+        "identity_binding_hash": execution_authorization.identity_binding_hash,
         "side_effect_authorized": True,
         "side_effect_executed": False,
         "proof_required_after_action": True,
