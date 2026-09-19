@@ -96,3 +96,10 @@ The live canonical Space boundary is now:
 The existing private Space was backfilled with its owner membership. No unrelated member was granted access to it.
 
 **Not yet verified:** browser-authenticated JOIN through the current Hub, non-owner discovery in the current UI, real two-user lifecycle, Cloudflare parity.
+
+
+## ACTION 09 PARITY / ACTION 10 CLOSURE — 2026-09-19
+
+Cloudflare source/runtime parity is proven for the canonical Hub artifact. The deployed Hub HTML and `assistant-runtime.js` SHA-256 hashes exactly match the source artifact used for the parity check.
+
+The remaining status is **NOT VERIFIED** only because the final real-human two-user browser acceptance proof has not been executed. No database simulation is being promoted to replace that proof.
