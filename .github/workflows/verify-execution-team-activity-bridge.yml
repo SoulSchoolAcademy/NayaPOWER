@@ -2,7 +2,7 @@ name: Verify Execution to Team Naya Activity Bridge
 
 on:
   push:
-    branches: [main]
+    branches: [main, execution-capture-proof-run-20260919]
   workflow_dispatch:
 
 jobs:
