@@ -1,0 +1,46 @@
+name: Verify P1 Controlled Paired Policy Outcome
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  controlled-paired:
+    name: Real V1/V2 paired Smart Mail outcome experiment
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
+      ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
+      RECEIPT_PATH: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Supabase JS
+        run: npm install --no-save @supabase/supabase-js@2.57.0
+
+      - name: Execute controlled paired experiment
+        run: node scripts/run-controlled-paired-policy-experiment.mjs
+
+      - name: Validate machine receipt
+        run: |
+          test -s "$RECEIPT_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RECEIPT_PATH"
+
+      - name: Upload canonical machine receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-controlled-paired-policy-receipt
+          path: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
+          retention-days: 30
