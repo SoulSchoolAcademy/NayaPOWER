@@ -74,7 +74,7 @@ jobs:
               p_mission_id:'P0.5 user-visible replay/idempotency proof',
               p_scope:{project_id:'NayaNET',target:B.user.id,space_id:spaceId},
               p_actions:['smart_mail_send'],
-              p_constraints:{mode:'p0-5-replay-proof',no_external_side_effects:true},
+              p_constraints:{mode:'p0-5-replay-proof'},
               p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
               p_evidence:{authorization_type:'explicit_p0_5_replay_proof',space_id:spaceId},
               p_parent_authority:null
@@ -106,6 +106,10 @@ jobs:
             return {c,p};
           }
           const {c,p}=await contextFor(A);
+          await p.route('**/functions/v1/nayanet-smart-mail',async route=>{
+            const headers={...route.request().headers(),'x-request-id':crypto.randomUUID()};
+            await route.continue({headers});
+          });
           const init=await p.evaluate(()=>window.NayaAssistantRuntime.init());
           if(init.user_id!==A.user.id||!init.authenticated) throw Error('A_AUTHENTICATED_HANDOFF_FAILED');
           const connections=await p.evaluate(()=>window.NayaAssistantRuntime.listConnections());
