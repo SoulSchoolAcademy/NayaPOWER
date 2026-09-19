@@ -63,7 +63,7 @@ jobs:
           set -euo pipefail
           test -s '2026 09 17 NAYANET HUB.html'
           test -s 'assistant-runtime.js'
-          test -s 'smart-feed.js'
+          test -s 'smart-feed.js\n          smart-tabs.js'
           test -s 'identity.html'
           test -s 'NAYANET/name-first-auth-adapter.js'
           mkdir -p dist/NAYANET
