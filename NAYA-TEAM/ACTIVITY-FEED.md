@@ -520,3 +520,15 @@ The current Intelligent Hub visual/product baseline is the repository file `2026
 10. Reconcile source/build/runtime/auth/privacy/evidence and generate the next ten.
 
 **Rule:** execute back-to-back; document after meaningful execution, not instead of execution.
+
+## 2026-09-19T16:55:00Z — Wave A execution checkpoint
+
+Session 005 has begun actual execution rather than documentation-only handoff.
+
+**Finding:** the first Smart Tabs UI commit contained a malformed duplicate `render()` append. This was caught by inspecting the real GitHub diff before claiming deployment. The source was repaired in commit `3627a484533411921765dd53e793cf970564f818`.
+
+**Proof state:** Cloudflare parity remains UNKNOWN because GitHub reports zero workflow runs for the repair commit and the local execution environment cannot perform an external live SHA comparison. The prior Vercel build-rate-limit status is unrelated and is not being treated as Cloudflare evidence.
+
+**Protected:** authenticated Wave A transactions remain blocked without a legitimate human session. No fabricated authentication or admin-seeded human proof.
+
+**Next:** prove Cloudflare parity for the repaired source, then continue Actions 2–10 in order.
