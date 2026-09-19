@@ -1,5 +1,7 @@
 import importlib.util
 import unittest
+import tempfile
+import json
 from pathlib import Path
 
 spec = importlib.util.spec_from_file_location("evidence", Path(__file__).with_name("evidence_runtime.py"))
@@ -32,6 +34,28 @@ class EvidenceTests(unittest.TestCase):
             "evidence_ids": ["EV-1"],
             "source": "test",
         }
+
+
+    def test_persist_and_independently_recover_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            store = Path(tmp)
+            created = evidence.persist_evidence(self.good, evidence_store=store)
+            self.assertEqual(created["status"], "CREATED")
+            _, recovered, errors = evidence.load_store()
+            # load_store reads the module's canonical store, so independently
+            # recover from the isolated store directly for this seam test.
+            recovered_item = json.loads((store / "EV-1.json").read_text(encoding="utf-8"))
+            self.assertEqual(errors, [])
+            self.assertEqual(recovered_item, self.good)
+            replay = evidence.persist_evidence(self.good, evidence_store=store)
+            self.assertEqual(replay["status"], "REPLAY")
+
+    def test_persist_rejects_conflicting_evidence_id(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            store = Path(tmp)
+            evidence.persist_evidence(self.good, evidence_store=store)
+            conflict = dict(self.good, observed_output="different real output")
+            self.assertEqual(evidence.persist_evidence(conflict, evidence_store=store)["status"], "CONFLICT")
 
     def test_valid_verified_claim(self):
         self.assertEqual(evidence.verify_claim(self.claim, {"EV-1": self.good}, "abc123")["status"], "VERIFIED")
