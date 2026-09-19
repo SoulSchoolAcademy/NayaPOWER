@@ -157,13 +157,67 @@
       "policy_improvement": "NOT_PROVEN"
     },
     "cognition_receipt_revision_repair": {
-      "status": "IMPLEMENTED_AND_LIVE",
+      "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "migration": "20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
-      "reason": "Proof 7 exposed receipt revision collision during learning apply; live function now serializes revision allocation and selects max(receipt revision)+1."
+      "reason": "Proof 7 exposed receipt revision collision during learning apply; live function now serializes revision allocation and selects max(receipt revision)+1.",
+      "verification_run_id": 35461980944
+    },
+    "cognition_receipt_revision_concurrency": {
+      "status": "VERIFIED",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/verify-cognition-receipt-concurrency.yml",
+      "run_id": 35461980944,
+      "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+      "concurrent_writers": 8,
+      "unique_receipt_ids": 8,
+      "receipt_revisions": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "db_receipts": 8,
+      "cognition_state_revision": 8,
+      "evidence": [
+        "eight concurrent authenticated production writers",
+        "unique receipt IDs",
+        "contiguous canonical receipt revisions",
+        "cognition-state revision 8"
+      ]
+    },
+    "wave_a_relationship_security_journey": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-wave-a-relationship-security-journey.yml",
+      "run_id": 35462235010,
+      "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+      "project": "NayaNET-waveA-relationship-1789843560708-c7be120b",
+      "proofs": [
+        "SMART_LIST_PRIVACY",
+        "NO_GRANT_DENIAL",
+        "EXPLICIT_AUTHORITY",
+        "SMART_MAIL_A_TO_B",
+        "RECEIVER_VERIFICATION",
+        "COGNITION_RECEIPT_LEDGER_LINEAGE",
+        "IDEMPOTENT_REPLAY",
+        "REVOCATION_DENIAL",
+        "C_ISOLATION",
+        "FRESH_NAYA_RETRIEVAL",
+        "FRESH_NAYA_CONTINUATION"
+      ],
+      "initial_message_id": "f7dcb2b5-30e4-4b64-a2ff-22ffbdbc8934",
+      "initial_receipt_id": "a1bc79cc-235c-4656-bd75-39ef762720dd",
+      "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
+      "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
+      "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
     }
   },
-  "recording_commit": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
+  "recording_commit": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -295,6 +349,32 @@
         "next_dream_context"
       ],
       "policy_improvement": "NOT_PROVEN"
+    },
+    "wave_a_relationship_security_journey": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-wave-a-relationship-security-journey.yml",
+      "run_id": 35462235010,
+      "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
+      "project": "NayaNET-waveA-relationship-1789843560708-c7be120b",
+      "proofs": [
+        "SMART_LIST_PRIVACY",
+        "NO_GRANT_DENIAL",
+        "EXPLICIT_AUTHORITY",
+        "SMART_MAIL_A_TO_B",
+        "RECEIVER_VERIFICATION",
+        "COGNITION_RECEIPT_LEDGER_LINEAGE",
+        "IDEMPOTENT_REPLAY",
+        "REVOCATION_DENIAL",
+        "C_ISOLATION",
+        "FRESH_NAYA_RETRIEVAL",
+        "FRESH_NAYA_CONTINUATION"
+      ],
+      "initial_message_id": "f7dcb2b5-30e4-4b64-a2ff-22ffbdbc8934",
+      "initial_receipt_id": "a1bc79cc-235c-4656-bd75-39ef762720dd",
+      "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
+      "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
+      "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
     }
   },
   "ih03_canonical_intelligence_identity": {
@@ -333,5 +413,6 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Current main, current Assistant Cloudflare runtime parity, authenticated lifecycle/fresh-context retrieval, and the controlled paired policy-comparison mechanism are now verified at the same HEAD. Policy improvement remains NOT_PROVEN because the first real paired case produced equal verified responsible value (0 vs 0). The repository now distinguishes claim-scope freshness from whole-repository HEAD freshness so documentation/control-plane reconciliation does not falsely invalidate independently verified runtime or policy evidence."
+  "interpretation": "The Wave A engine/security gates are now verified at live main: cognition receipt revision allocation survived eight concurrent production writers without duplicate receipt IDs or revisions; the real A/B/C relationship journey proved Smart List privacy, explicit authority, A→B Smart Mail, receiver verification, receipt→cognition→Smart Ledger lineage, idempotent replay, revocation denial, C isolation, fresh-Naya retrieval, and a newly authorized fresh-Naya continuation. Browser acceptance is now the sole remaining gate and has not yet been promoted to PRODUCTION_PROVEN.",
+  "current_repository_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7"
 }
