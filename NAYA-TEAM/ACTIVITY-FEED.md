@@ -238,3 +238,67 @@ First:
 **One identity. One event spine. One intelligence substrate. One PIS. One CIS. One learning system. One authority system. One evidence model. Multiple projections.**
 
 **STATUS: LIVE EVENT-SPINE RECONCILIATION COMPLETE — BRIDGE HARDENING IS THE NEXT ENGINEERING BOUNDARY.**
+
+
+## 🔱 PRODUCTION CLOSURE EXECUTION — 2026-09-19
+
+**STATUS: VERIFIED at the external production-closure boundary.**
+
+The production closure was executed against live Supabase using the current publishable key and the deployed `verify-production-closure.mjs` contract.
+
+### PROVEN
+
+- Learning evidence was applied through `naya-learning-apply`.
+- Verified learning persisted into the Superbrain cognition substrate.
+- A genuinely fresh cognition retrieval reconstructed the learning without prior chat context.
+- Fresh retrieval generated the governed continuation action `smart_mail_send`.
+- Authority was issued and validated.
+- A real authenticated Smart Mail action executed.
+- Receiver verification succeeded.
+- Execution receipt and cognition lineage were present.
+- Smart Ledger contained the required learning/evidence/action consequences.
+- Final production closure result: **VERIFIED**.
+
+Run: `16a7bb58-4ba4-413b-95d4-be4ccd2e62a9`
+
+### EVENT-SPINE / LEDGER
+
+The live architecture remains:
+
+`smart_note_events` → deterministic `smart_note:<id>` cognition identity → Intelligence Index / Activity / Reports / Learning / CCT / Smart Ledger projections.
+
+The live database currently has no duplicate keys for the Ledger source identity, Intelligence Index source identity, or Cognition event identity.
+
+The duplicate Smart Note Intelligence Index path has been removed; the canonical Smart Note index trigger remains.
+
+### GOVERNANCE CORRECTION
+
+T28 was corrected on `origin/main` by retiring the sole legacy `deploy-nayanet-intelligent-hub.yml` workflow as an explicit **RETIRED / DISABLED** fail-closed stub with no `wrangler-action`.
+
+T29b is satisfied on remote state: deployment governance references `authorized-vercel-release.yml`, that executable workflow is absent, and the policy default remains DENY.
+
+Commit: `49479428542d7d4f830b65adf6a2ea4d2a8b3541`
+
+### SECURITY / OWNERSHIP TRUTH
+
+Owner-scoped RLS is OBSERVED across the inspected Smart Notes, Cognition, Index, Ledger, Learning, Learner State, Reports, Spaces, and Execution Receipt surfaces.
+
+Two-independent-real-user behavioral isolation remains **NOT_PROVEN**. No synthetic identity or fabricated credential was used to turn that into a pass.
+
+### REPOSITORY TRUTH
+
+At execution start:
+- local HEAD: `4dc7044955574f9dd9b968747d6a5d2a54be93e1`
+- remote: `529473a1de8790132904d6f9c05cb045d9896cf1`
+- merge-base: `9493c1bf29bfec6cd267c0dfaaad47b98425a506`
+
+Remote is now `49479428542d7d4f830b65adf6a2ea4d2a8b3541`.
+
+The local tree remains dirty with substantial unclaimed/conflicting work and was not reset, stashed, deleted, or overwritten.
+
+### 🔗 FULL EXECUTION RECEIPT
+
+[READ THE COMPLETE PRODUCTION CLOSURE EXECUTION RECEIPT](./2026/09/19/2026-09-19T02-20-00Z__NAYAPOWER-PRODUCTION-CLOSURE-EXECUTION-RECEIPT.md)
+
+**NEXT NAYA:** prove two-independent-real-user owner isolation behavior through the authenticated client boundary, then close CCT runtime verification without creating another truth store.
+
