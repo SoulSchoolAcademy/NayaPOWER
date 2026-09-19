@@ -74,3 +74,11 @@ Provide a second legitimate authenticated human session in a separate browser pr
 
 ### HARD RULE
 The subsystem remains **NOT VERIFIED** until A→T passes with a distinct authenticated B and the unauthorized C denial proof.
+
+## LATEST TOOLING STATE — 2026-09-19 10:26 PDT
+
+- A authenticated Wave browser remains live on CDP port 9223.
+- A separate clean B browser profile was launched on CDP port 9224 at `https://welcome.nayanet.app/`.
+- B has not been authenticated by a human yet.
+- Do not extract, copy, or reuse A credentials/session state.
+- Once B is legitimately authenticated, continue from Space `04ee4dc8-bc73-47df-a1de-162570f6a56e` and execute the remaining A→T chain without recreating the Space.
