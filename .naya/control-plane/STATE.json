@@ -14,9 +14,9 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — MACHINE TRUTH RESTORATION",
+  "priority": "P0 — PROVE POLICY IMPROVEMENT",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "TORCH-59-MACHINE-TRUTH-RESTORATION",
+  "current_block": "P1-CONTROLLED-PAIRED-POLICY-OUTCOME",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -46,20 +46,19 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "ASSISTANT_LANE_RUNTIME_PARITY_CURRENT",
-    "observed_head": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
-    "observation_is_historical_relative_to_live_HEAD": true,
-    "run_id": 35379376095,
-    "workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
-    "lane": "ASSISTANT_CLOUDFLARE",
+    "status": "ASSISTANT_RUNTIME_AND_POLICY_EXPERIMENT_CURRENT",
+    "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
+    "observation_is_historical_relative_to_live_HEAD": false,
+    "runtime_deploy_run_id": 35409939641,
+    "runtime_workflow": ".github/workflows/deploy-nayanet-intelligent-hub.yml",
+    "runtime_release_header": "0a97c30b70e49a530094cc39869b05444ae2c858",
+    "runtime_cloudflare_version_id": "718acdb8-3796-4440-98d4-406ad1e6accc",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-    "worker": "sparkling-shape-7ae5",
-    "cloudflare_version_id": "62d84659-25cc-4c04-991c-2806b7f99246",
-    "canonical_release_header": "25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e",
-    "normalized_source_live_parity": true,
-    "desktop_baseline": true,
-    "mobile_baseline": true,
-    "conclusion": "success"
+    "policy_experiment_run_id": 35409875337,
+    "policy_experiment_workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
+    "policy_experiment_result": "NOT_PROVEN",
+    "policy_experiment_receipt": "p1-controlled-paired-policy-receipt",
+    "policy_experiment_evidence": "V1/V2 real Smart Mail executions, authenticated receiver verification, exact policy lineage, shared frozen case hash, distinct decision hashes, deterministic comparison, receipt-swap adversarial rejection"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -77,17 +76,29 @@
     "The 2026-09-17 Team Naya reset created a visible operating center and reconciled the STATE/BLOCK next-action conflict.",
     "The authorized GitHub execution surface on the connected desktop can dispatch workflows through an authenticated gh session without exposing credential values.",
     "The canonical production deployment workflow is .github/workflows/deploy-nayanet-intelligent-hub.yml and it successfully deployed current release 25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e.",
-    "Direct runtime inspection confirms X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e and normalized Hub/assistant-runtime source parity."
+    "Direct runtime inspection confirms X-Naya-Canonical-Asset=25b6bcdc1cdddb4d65ad816e93c40c80680a3c5e and normalized Hub/assistant-runtime source parity.",
+    "Current main HEAD is 0a97c30b70e49a530094cc39869b05444ae2c858 and the canonical Cloudflare runtime now reports the same X-Naya-Canonical-Asset.",
+    "Assistant authenticated lifecycle proof run 35409995111 is VERIFIED at current main and independently retrieved/rendered persisted intelligence in a fresh browser context.",
+    "The P1 controlled paired experiment run 35409875337 executed real V1/V2 Smart Mail actions against the same frozen case, verified both outcomes through an authenticated receiver, and persisted exact policy lineage on both execution receipts.",
+    "The P1 controlled paired experiment produced V1 verified responsible value 0 and V2 verified responsible value 0, therefore POLICY_IMPROVEMENT_PROVEN=FALSE and RESULT=NOT_PROVEN.",
+    "The P1 comparison adversarially rejected a baseline/candidate receipt swap.",
+    "The current Smart Mail responsible-value contract assigns benefit=1 and cost=1 for the controlled send path, yielding verified value 0 for both sides; this is sufficient to prove the comparison machinery but insufficient to establish meaningful policy improvement."
   ],
   "unknown": [
-    "Genuine external cold-Naya behavioral proof beyond the deployed runtime persistence boundary.",
-    "Authorized positive authenticated test identity values are not configured as GitHub Environment secrets in assistant-cloudflare-production."
+    "Whether a repeated held-out multi-case experiment produces a positive verified-value delta under an independent real outcome/value contract.",
+    "Whether the current Smart Mail receiver-verification path should accept independently evidenced outcome value components rather than using the fixed send-path value contract.",
+    "Full cold-Naya continuation after fresh-context retrieval: current receipt proves fresh retrieval/render continuity but its continuation field is null.",
+    "Comprehensive multi-Naya concurrency safety.",
+    "Complete temporal/supersession/conflict retrieval proof."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
     "Fresh control-plane validation previously found MAP/BLOCK and then STATE/BLOCK divergence; those coherence defects were the reason for the 2026-09-17 reconciliation reset.",
     "Phase 0 inspection found the recorded canonical release workflow path .github/workflows/deploy-nayanet-hub-canonical-v2.yml is absent from current main, so that recorded next action was not executable as written.",
-    "The production deploy workflow initially failed its live verification because it searched for the release SHA in the HTML body; this was corrected to verify the canonical release header, then corrected for HTTP header case. The subsequent deployment passed."
+    "The production deploy workflow initially failed its live verification because it searched for the release SHA in the HTML body; this was corrected to verify the canonical release header, then corrected for HTTP header case. The subsequent deployment passed.",
+    "The first controlled paired experiment workflow attempt failed because the Node runner imported Supabase JS from an HTTPS ESM URL; corrected to use the installed npm package.",
+    "The second controlled paired experiment attempt reached the real comparison but its adversarial assertion expected a specific error string; the comparison did reject the swapped receipts, and the assertion was corrected to require any rejection.",
+    "The first artifact-upload correction used an unavailable runner context at workflow-dispatch parse time; corrected to use runner.temp only in the artifact path."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -104,13 +115,13 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "The current production Cloudflare runtime is source-bound and runtime-parity proven. The remaining critical boundary is a positive authenticated lifecycle receipt and genuinely independent fresh-context cold-Naya retrieval. The protected assistant-cloudflare-production environment currently exposes neither ASSISTANT_TEST_EMAIL nor ASSISTANT_TEST_PASSWORD as environment secrets.",
-  "single_next_action": "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue every executable non-authenticated proof gate.",
+  "bottleneck": "Policy improvement is not yet proven. The controlled paired engine is now executable and real, but the current Smart Mail value contract produces equal verified value (0 vs 0) and therefore cannot establish superiority. The next critical engineering boundary is an independent outcome/value contract plus a multi-case held-out paired experiment. A separate continuity gap remains: fresh-context retrieval is verified, but a fresh Naya has not yet performed and verified a continuation action.",
+  "single_next_action": "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN.",
   "next_actions": [
-    "Configure the authorized Assistant-lane test identity as GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow and consume its secret-free receipt; if the secrets cannot be configured, record the exact external authorization blocker and continue every executable non-authenticated proof gate."
+    "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — AUTHENTICATED LIFECYCLE EXECUTION\nResolve live refs/heads/main first. Read STATE, BLOCKS, MAP, PROOF, Team Naya operating center, and the authenticated lifecycle workflow. Confirm the environment secret names by metadata only. Dispatch .github/workflows/assistant-cloudflare-authenticated-proof.yml against current main. Inspect the run and advance through record → retrieve → action → observation → verification → independent fresh-context retrieval. Preserve secret-free receipts. If the secret gate blocks, do not fabricate credentials or create a substitute identity; classify BLOCKED and continue every executable non-authenticated proof gate.",
+  "ready_to_run_execution": "NAYA POWER ON — P1 REAL OUTCOME VALUE CONTRACT\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF/Team Naya. Preserve the existing Smart Mail receipt and policy lineage substrate. Implement the smallest independent receiver-outcome value contract that records inspectable evidence for benefit, harm, cost, and risk_adjusted_loss without allowing the candidate policy to self-score. Then run a frozen multi-case paired V1/V2 experiment, verify every receiver outcome, deterministically compare responsible value, adversarially attack lineage/case contamination, record REAL_OUTCOME, and return PROVEN or NOT_PROVEN. If the values remain equal, do not force improvement. Then address the fresh-Naya continuation action.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
@@ -123,6 +134,11 @@
     "CONSTITUTION = one current constitutional authority; amendments are records of constitutional change, not parallel constitutions.",
     "STATE → BLOCK → RECEIPT/EVIDENCE → PIS/ACTIVITY → HANDOFF → NEXT ACTION must remain coherent.",
     "For Hub work, the Read-First gate is part of the pre-execution contract; skipping it is a continuity/architecture failure.",
-    "The Assistant Cloudflare/live lane and Other Naya GitHub 509 lane are separate implementations and must never be treated as one runtime."
-  ]
+    "The Assistant Cloudflare/live lane and Other Naya GitHub 509 lane are separate implementations and must never be treated as one runtime.",
+    "Policy learning and policy improvement are separate claims. A changed policy is not improved until comparable verified outcomes prove it.",
+    "A policy execution receipt must name the exact policy, version, experiment case, input hash, and decision hash.",
+    "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
+    "The current controlled paired experiment proves the machinery, not superiority."
+  ],
+  "recorded_at_head": "0a97c30b70e49a530094cc39869b05444ae2c858"
 }
