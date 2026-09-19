@@ -5,27 +5,25 @@
     "id": "WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Close the real authenticated relationship, authority, Smart Mail, replay, revocation, and isolation journey before human-facing acceptance.",
+    "intent": "Close the final causal loop: durable learning reuse/compounding plus consolidated human-facing production acceptance, while preserving all existing governance/security boundaries.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
       "explicit authority boundary",
       "Smart Mail receipt/cognition/Ledger lineage",
       "fail-closed security",
-      "browser deferred until engine closure"
+      "browser acceptance may proceed because engine/security closure is proven"
     ],
     "acceptance": [
-      "current main and control plane reconciled",
-      "Proof 7 VERIFIED recorded",
-      "cognition receipt revision concurrency safe",
-      "A↔B relationship proven",
-      "explicit authority proven",
-      "real Smart Mail receiver outcome proven",
-      "replay/idempotency proven",
-      "revocation denial proven",
-      "C isolation proven",
-      "fresh-Naya continuation proven",
-      "browser acceptance only after engine/security gates"
+      "current source-scoped control plane reconciled",
+      "Proof 7 and cognition concurrency remain verified",
+      "fresh canonical Hub A↔B Smart Mail transaction remains verified",
+      "replay/idempotency verified",
+      "revocation denial and C isolation verified",
+      "fresh-context retrieval and governed later-decision learning reuse verified",
+      "measurable reusable compounding proven or explicitly documented as not proven",
+      "public Welcome → Identity handoff proven",
+      "one consolidated current human-facing acceptance receipt"
     ],
     "evidence": [
       ".github/workflows/verify-proof7-compounding-loop.yml",
@@ -34,9 +32,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls.",
+    "next_action": "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone.",
     "next_actions": [
-      "Establish a legitimate authenticated human-facing A↔B test identity handoff in the canonical Hub, with explicit authorized membership/relationship state, then rerun the UI acceptance checks without weakening backend controls."
+      "Trace the fresh canonical Hub Smart Mail receipt into the existing learning/apply/retrieval chain and prove actual reusable compounding or stop at the first missing causal link; do not infer improvement from learning capture alone."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
