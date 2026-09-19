@@ -104,3 +104,14 @@ Smart Feed, Smart Tabs, and Smart Ledger are now being executed as one connected
 - Smart Feed Session 004 recorded.
 - Smart Tabs Session 001 recorded.
 - Smart Ledger Session 001 recorded.
+
+
+## Wave A — Session 005 execution expansion
+
+**Timestamp:** 2026-09-19T16:45:00Z
+
+Session 005 defines the next ten highest-value closure actions across Smart Feed + Smart Tabs + Smart Ledger. The sequence begins with deployed Smart Tabs parity, then authenticated CRUD/isolation, Feed Activity/Personal/pagination, explicit Collective publication/revocation, consequential interaction, fresh Ledger lineage, two-user denial, and final source/build/runtime/evidence reconciliation.
+
+- [Session 005 — ten-action Wave A execution handoff](./SMART-FEED/SESSION-005.md)
+- Smart Tabs CRUD UI advanced in commit `c5d21b6db36661546561aeb0ec479735ba555199`.
+- No authenticated-user proof has been fabricated.
