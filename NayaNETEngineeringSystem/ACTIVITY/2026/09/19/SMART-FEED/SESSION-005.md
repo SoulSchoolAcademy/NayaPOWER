@@ -125,3 +125,21 @@ Run source → build → deploy → runtime → authenticated behavior → priva
 ## Current successor
 
 **Execute Action 1 immediately, then continue sequentially through Actions 2–10. Do not stop after documentation. The purpose of this session is to convert the remaining Wave A unknowns into independently evidenced production facts wherever legitimate authenticated control exists.**
+
+
+## Execution checkpoint — 2026-09-19T16:55:00Z
+
+### Action 1 result — BLOCKED / deployment run unavailable
+The first attempted Smart Tabs UI commit `c5d21b6db36661546561aeb0ec479735ba555199` was inspected and found to contain a malformed append: the existing IIFE was immediately followed by a second `render()` function. This was detected from the actual GitHub commit diff before treating it as deployable.
+
+**Repair:** canonical `smart-tabs.js` was rewritten cleanly and committed as `3627a484533411921765dd53e793cf970564f818`.
+
+**Deployment evidence:** GitHub reports **zero workflow runs** for the repair commit. The combined status for the earlier commit showed only an unrelated Vercel build-rate-limit failure. Therefore Cloudflare source/runtime parity is **NOT PROVEN**.
+
+A direct external SHA comparison could not be completed from the available execution environment because outbound DNS/network access is unavailable to the local container. No parity claim is made.
+
+### Actions 2–10 boundary
+The remaining actions require a legitimate authenticated human/session. No such browser session is available through the current control plane. They remain BLOCKED rather than PASS. No fake JWT, copied credential, service-role impersonation, or admin-seeded human transaction will be used.
+
+### Important lesson
+This checkpoint caught a real source defect before deployment. The next Naya must inspect the repaired source first, obtain an actual Cloudflare release result, and only then continue into authenticated behavior.
