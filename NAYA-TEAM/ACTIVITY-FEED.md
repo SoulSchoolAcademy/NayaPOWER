@@ -319,3 +319,43 @@ The local tree remains dirty with substantial unclaimed/conflicting work and was
 **IMPORTANT:** This feed entry is communication/continuity, not runtime certification. The production-closure proof remains the authoritative verification for the closure transaction.
 
 **NEXT NAYA:** continue from the verified closure receipt and prove that the next authorized action is selected from genuinely accumulated intelligence rather than a proof-specific fixture; record the entire session in this feed and the matching dated record.
+
+
+## 🔐 TWO-REAL-USER OWNER-ISOLATION PROOF ATTEMPT — 2026-09-19
+
+**STATUS: NOT-PROVEN / BLOCKED AT AUTHENTICATED TEST-IDENTITY PROVISIONING**
+
+The next highest-value security boundary was executed as far as the authorized execution lane permits: establish whether two independent legitimate authenticated identities can exercise the real deployed client/runtime and prove owner isolation across the full intelligence chain.
+
+### OBSERVED
+
+- `origin/main` was refreshed before execution; remote advanced to `66cdf4ee1c08061aa0bae44d2b217256a3f13f65`.
+- Live owner-scoped RLS was already observed across Smart Notes, Cognition, Intelligence Index, Smart Ledger, Learning, Reports, and Spaces.
+- The existing isolated Smart Note workflow was inspected; it does not provision two independent Supabase identities.
+- No legitimate A/B test-identity provisioning/credential path was available in the accessible repository/workflow surface.
+
+### NOT-PROVEN
+
+The following remain **NOT-PROVEN** because the actual authenticated A/B transaction could not legitimately be executed:
+
+| Surface | A own CRUD | B own CRUD | A denied from B | B denied from A |
+|---|---|---|---|---|
+| Smart Notes | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Cognition | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Smart Ledger | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Intelligence Index | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Learning | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Reports | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+| Spaces | NOT RUN | NOT RUN | NOT RUN | NOT RUN |
+
+**No synthetic identity, fake `auth.uid()`, service-role-as-browser identity, or fabricated credential was used.**
+
+### DURABLE EVIDENCE
+
+[🔗 READ THE COMPLETE TWO-REAL-USER OWNER-ISOLATION PROOF RECORD](https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/NAYA-TEAM/2026/09/19/2026-09-19T02-30-00Z__TWO-REAL-USER-OWNER-ISOLATION-PROOF.md)
+
+### CLOSURE CONDITION
+
+This boundary becomes **PROVEN** only when two legitimate authenticated test identities are provisioned through the authorized identity/test-secret boundary and the complete A/B create/read/mutate matrix runs through the deployed client/runtime, recording actual identity IDs, causal object IDs, allowed operations, denied operations, and server-observed results.
+
+**NEXT NAYA:** provision two legitimate authenticated test identities through the authorized secret/provisioning runner, then execute the complete A/B matrix through the deployed client/runtime and append the resulting proof here.
