@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTION 01 COMPLETE; ACTION 02 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTION 01 COMPLETE; ACTION 02 COMPLETE; ACTION 03 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1256,86 +1256,82 @@ Only after A→T passes may the subsystem be called:
 
 ---
 
-# 32. IMMEDIATE ACTION 01
+# ACTION 02 CLOSURE — 2026-09-19
 
-## ACTION 01 IS ALREADY COMPLETE.
+## DONE
 
-The next executor must therefore begin with **ACTION 02 — CANONICAL IDENTITY + SPACE MEMBERSHIP RECONCILIATION**.
+Identity and Space-membership reconciliation is complete against live production schema/RLS/functions/migrations, Smart Mail v12 and the canonical Hub source.
 
-### Immediate objective
+## PROOF
 
-Determine, from source + live runtime, the exact chain:
+- `auth.users.id = members.id`; 291/291 with zero unmatched.
+- `nayanet_profiles.member_id = members.id`; 83 populated profiles.
+- `v7_profiles` has 0 rows.
+- `nayanet_spaces.owner_member_id = members.id`; one live Space.
+- Space visibility is `private|shared`; owner-only RLS.
+- No dedicated Space membership/participant table exists in the live public schema.
+- No Space JOIN/LEAVE/INVITE function exists in the live Space function inventory.
+- `v7_mail_members` is thread membership only.
+- Hub source is visual baseline, not wired runtime proof.
 
-**AUTH USER → CANONICAL MEMBER → CANONICAL PROFILE → SPACE → MEMBERSHIP**
+## NOT PROVEN
 
-### Exact first operations
+JOIN, membership persistence, participant visibility, connection establishment, revocation, List membership, relationship-gated Mail, two-user lifecycle, Cloudflare parity.
 
-1. Search the repository for `members`, `nayanet_profiles`, `v7_profiles`, `nayanet_spaces`, `space`, `membership`, `participant`, `join`, `leave`, `invite`.
-2. Inspect every relevant migration.
-3. Inspect foreign keys.
-4. Inspect indexes.
-5. Inspect triggers.
-6. Inspect database functions/RPCs.
-7. Inspect RLS.
-8. Inspect the canonical Hub for identity/Space assumptions.
-9. Compare source against live production.
-10. Identify drift.
-11. Decide canonical identity.
-12. Decide canonical membership.
-13. Update Your Connections + Smart Spaces + Job 04.
-14. Record the decision in Team Naya.
-15. Update this master directive.
-16. Do not implement a new membership table unless absence is proven.
+## DECISION
 
-### Required questions
+Canonical identity is `auth.users.id = members.id`. Canonical member is `public.members`. Canonical current profile is `public.nayanet_profiles`. Canonical Space is `public.nayanet_spaces`. No membership substrate exists.
 
-Answer all of these before closing Action 02:
+**MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**
 
-- What is the canonical user key?
-- Is `auth.users.id` the same identity used by `members.id`?
-- Which profile is canonical?
-- Which profile is legacy/projection?
-- Which identity does Smart Mail address?
-- Which identity does the Hub use?
-- What exactly owns a Space?
-- Who can discover it?
-- Who can view it?
-- Who can JOIN?
-- Is JOIN immediate or approval-based?
-- What does INVITE mean?
-- Where does membership live?
-- What prevents duplicate membership?
-- What are membership states?
-- How is LEAVE represented?
-- How is REVOKE represented?
-- Who can remove members?
-- Who can see participant identity?
-- What event records JOIN?
-- What event records LEAVE?
-- Does membership establish relationship eligibility?
-- How does `v7_connection_requests` interact with Space-derived relationships?
-- What is communication eligibility?
-- What is the server-side denial condition?
-- Which profile attributes are private?
-- What does an unauthorized user see?
+No schema change was deployed in Action 02.
 
-### Action 02 success condition
+## NEXT
 
-The executor must return with:
+Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-**DONE** — exact source/runtime inspection completed.  
-**PROOF** — exact object/function/policy evidence.  
-**NOT PROVEN** — every unresolved point.  
-**DECISION** — canonical identity + membership ownership.  
-**BLOCKERS** — exact blockers.  
-**NEXT** — the next complete master execution directive.
+# 32. IMMEDIATE ACTION 03
 
-If no membership substrate exists after exhaustive reconciliation, record:
+## ACTION 03 — CANONICAL RELATIONSHIP SUBSTRATE RECONCILIATION
 
-> **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**
+**Status: IMMEDIATE EXECUTION**
 
-Then design the smallest canonical membership model, but do not silently deploy it.
+### Objective
 
-**Current subsystem status: IN PROGRESS / NOT VERIFIED.**
+Determine whether `v7_connection_requests` is:
+1. request-only legacy state;
+2. canonical durable relationship state;
+3. a projection/input to another canonical relationship object.
 
-**Lead the way from JOIN → MEMBERSHIP.**
+### Exact execution
+
+1. Inspect live `v7_connection_requests` schema.
+2. Inspect all indexes/constraints.
+3. Inspect all RLS policies.
+4. Inspect all live connection/request/relationship functions.
+5. Inspect migration history for creation/evolution.
+6. Inspect all available GitHub source references.
+7. Determine pending/accepted/rejected semantics.
+8. Determine whether accepted state creates durable relationship state elsewhere.
+9. Determine directional vs mutual semantics.
+10. Determine whether Space membership can be an origin.
+11. Determine provenance requirements.
+12. Determine duplicate prevention.
+13. Determine multi-origin merge.
+14. Determine revocation/leave.
+15. Determine communication eligibility.
+16. Record DONE / PROOF / NOT PROVEN / DECISION / BLOCKERS / NEXT.
+17. Update Your Connections, Smart Spaces, Job 04, Team Naya and this master directive.
+
+### Hard rule
+
+Do not create a new `connections` table during Action 03. Do not create Space membership during Action 03. Do not weaken RLS or bypass authority.
+
+### Success condition
+
+A cold-start successor can implement Action 04 JOIN→MEMBERSHIP without creating a second relationship graph.
+
+### Canonical execution prompt
+
+See:
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-03-EXECUTION-PROMPT.md`
