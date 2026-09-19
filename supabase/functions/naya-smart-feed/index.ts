@@ -62,9 +62,11 @@ Deno.serve(async(req)=>{
   const attachLedger=async(items:any[],ownerId:string,collective=false)=>{
     const ids=items.map((e:any)=>String(e.id)).filter(Boolean)
     if(!ids.length) return items
-    const ledgerResult=await admin.from('nayanet_smart_ledger')
+    let ledgerQuery=admin.from('nayanet_smart_ledger')
       .select('ledger_event_id,source_id,event_hash,status,privacy_classification,verification,evidence_refs,value,outcome,learning_refs')
-      .eq('owner_id',ownerId).eq('source_table','nayanet_cognition_events').in('source_id',ids)
+      .eq('source_table','nayanet_cognition_events').in('source_id',ids)
+    if(ownerId) ledgerQuery=ledgerQuery.eq('owner_id',ownerId)
+    const ledgerResult=await ledgerQuery
     if(ledgerResult.error) throw new Error('LEDGER_LOOKUP_FAILED:'+ledgerResult.error.message)
     const bySource=new Map((ledgerResult.data||[]).map((l:any)=>[String(l.source_id),l]))
     return items.map((e:any)=>{
@@ -111,12 +113,7 @@ Deno.serve(async(req)=>{
     }
     const byId=new Map(events.map((e:any)=>[e.id,e]))
     let items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
-    try{items=await attachLedger(items,'00000000-0000-0000-0000-000000000000',true)}catch(_error){
-      const ledgerResult=await admin.from('nayanet_smart_ledger').select('ledger_event_id,source_id,event_hash,status,verification').eq('source_table','nayanet_cognition_events').in('source_id',items.map((e:any)=>String(e.id)))
-      if(ledgerResult.error) return json({ok:false,error:'LEDGER_LOOKUP_FAILED:'+ledgerResult.error.message},500)
-      const bySource=new Map((ledgerResult.data||[]).map((l:any)=>[String(l.source_id),l]))
-      items=items.map((e:any)=>{const l=bySource.get(String(e.id));return {...e,verification_state:l?.verification?.status||l?.status||'LEDGER_MISSING',verification_confidence:l?.verification?.confidence??null,ledger_event_id:l?.ledger_event_id??null,ledger_status:l?.status??null,ledger_event_hash:l?.event_hash??null,ledger_evidence_available:false}})
-    }
+    try{items=await attachLedger(items,null,true)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
     return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null})
   }
   return json({ok:false,error:'INVALID_STREAM'},400)
