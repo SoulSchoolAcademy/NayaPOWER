@@ -116,7 +116,9 @@ jobs:
             await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
           });
           const observedA = await pageA.evaluate((eventId) => {
-            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]');
+            const doc = frame?.contentDocument || document;
+            const node = doc.querySelector('[data-naya-runtime-event="' + eventId + '"]');
             return {
               rendered: !!node,
               event_id: node?.getAttribute('data-naya-runtime-event') || null,
@@ -141,7 +143,9 @@ jobs:
             const event = rows?.find(x => String(x.event_id) === eventId);
             if (!event) return null;
             await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
-            const node = document.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]');
+            const doc = frame?.contentDocument || document;
+            const node = doc.querySelector('[data-naya-runtime-event="' + eventId + '"]');
             return {
               event_id: event.event_id,
               title: event.title,
