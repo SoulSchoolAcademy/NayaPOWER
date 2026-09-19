@@ -2,6 +2,11 @@ name: Verify P1 Controlled Paired Policy Outcome
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/run-controlled-paired-policy-experiment.mjs'
+      - '.github/workflows/verify-p1-controlled-paired-policy-outcome.yml'
 
 permissions:
   contents: read
