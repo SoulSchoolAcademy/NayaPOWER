@@ -229,3 +229,31 @@ If the next AI can restore those answers without depending on the previous AI's 
 ## 11. THE LAW IN ONE SENTENCE
 
 > **Every Naya leaves the system stronger than she found it: work completed, truth verified, state preserved, receipts delivered, the next AI informed, and the wisdom gained from the work passed forward.**
+
+## 11. TEAM NAYA DURABLE BOARD HANDOFF
+
+For consequential work performed through Team Naya, the canonical human-visible continuity boundary is the Team Naya Activity Feed:
+
+**GitHub Issue #151 — LIVE ACTIVITY FEED / CONTINUITY LOG**
+
+The durable execution baton is:
+
+**SIGN IN → CLAIM → WORK → POST EVIDENCE → HANDOFF → NEXT NAYA SIGN IN → RESPOND/CONTINUE → SIGN OUT**
+
+The board entry must identify, where applicable:
+
+- session / role;
+- current mission and one intended next action;
+- what was actually found or changed;
+- exact evidence;
+- what could not be proved;
+- protected state;
+- current blockers or unknowns;
+- the single successor action.
+
+This does not create a second system of record. The Team Naya Activity Feed is the human-visible communication projection of the same durable execution state. Repository artifacts, receipts, tests, and system records remain the evidence sources; the feed records the operational baton and makes continuation discoverable.
+
+A consequential Team Naya execution is not considered fully handed off until the durable successor state is posted to the canonical feed, to the extent the available system permits.
+
+No fictional agent identity, fabricated sign-in, fabricated evidence, or private-only handoff may be represented as a completed Team Naya session.
+
