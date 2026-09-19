@@ -6,7 +6,7 @@ Smart Share is the explicit consented sharing mechanism for eligible intelligenc
 ## Human interface
 A share action should answer: **WHAT am I sharing? WITH WHOM? AT WHAT SCOPE? WHAT WILL THEY SEE?** Provide recipient/scope preview, source/provenance visibility, confirmation for consequential sharing, success receipt and clear failure/denial.
 
-Possible targets: individual, selected people, connection group, Smart Space, collective/public scope where authorized. A single shared item never silently publishes its surrounding private context.
+Possible targets: individual, selected people, eligible connection group, Smart Space, collective/public scope where authorized. A single shared item never silently publishes its surrounding private context.
 
 ## Front end requirements
 - Share entry points from Smart Note, List, Feed, Space and other eligible surfaces.
@@ -31,7 +31,7 @@ Possible targets: individual, selected people, connection group, Smart Space, co
 Conceptual share record: `share_id, actor_id, source_type, source_id, target_type, target_ids, scope, publication_state, created_at, revoked_at, provenance, receipt_ref`. Exact schema must follow existing publication/share contracts.
 
 ## Connections
-`Notes/Lists → Share`; `Share → Collective Intelligence`; `Share → Spaces/Mail`; `Privacy → scope`; `Ledger → evidence`; `Feed → publication projection`; `Reports/Today → shared outcome signals`.
+`Your Connections / Lists → eligible people or groups`; `Notes/Lists → Share`; `Share → Collective Intelligence`; `Share → Spaces/Mail`; `Privacy → scope`; `Ledger → evidence`; `Feed → publication projection`; `Reports/Today → shared outcome signals`.
 
 ## Verification
 Share one private item to one authorized recipient; verify exact scope; prove non-recipient denial; share a list containing protected content and prove no leakage; revoke if supported and prove access behavior; verify provenance and receipt; test duplicate/replay.
