@@ -41,6 +41,7 @@ jobs:
           if-no-files-found: warn
       - name: Validate production proof
         run: |
+          export PROOF_PATH="$RUNNER_TEMP/nayanet-smart-mail-p0-proof.json"
           test -s "$PROOF_PATH"
           node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof');" "$PROOF_PATH"
       - uses: actions/upload-artifact@v4
