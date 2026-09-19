@@ -207,7 +207,7 @@ Status vocabulary:
 
 **DEFINED — implementation mapping required.**
 
-The canonical Smart Tabs source note is `.naya/2026-09-11-NAYAPOWER-09-SMART-TABS-SMART-NOTE.md`. It defines persistent top-of-Hub navigation, URL and intelligence targets, ordering/editing, reuse of existing retrieval, permission filtering, and the distinction from Smart Lists and Smart Feed. fileciteturn31file0
+The canonical Smart Tabs source note is `.naya/2026-09-11-NAYAPOWER-09-SMART-TABS-SMART-NOTE.md`. It defines persistent top-of-Hub navigation, URL and intelligence targets, ordering/editing, reuse of existing retrieval, permission filtering, and the distinction from Smart Lists and Smart Feed.
 
 ## GAPS
 
