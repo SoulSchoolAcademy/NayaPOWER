@@ -1,5 +1,5 @@
 # CANONICAL RUNTIME RELEASE — deploy the exact current protected Hub freeze point.
-# Protected source: 2026 09 17 NAYANET HUB.html
+# Canonical source: NAYANET/HUB React application; legacy static Hub remains preserved as historical surface.
 # Assistant lane only. GitHub 509 is a separate fail-closed lane.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
 name: NAYA — Canonical Assistant Cloudflare Hub Release
@@ -30,7 +30,7 @@ on:
         options:
           - legacy-v7
           - sparkling-shape-react
-        default: legacy-v7
+        default: sparkling-shape-react
 
 permissions:
   contents: read
@@ -72,7 +72,7 @@ jobs:
       - name: Prepare authorized Hub artifact
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
           rm -rf dist
