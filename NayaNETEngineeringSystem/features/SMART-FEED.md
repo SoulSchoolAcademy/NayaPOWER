@@ -47,3 +47,20 @@ Inspect current Hub feed implementation and map each required stream/action to a
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-08-INTELLIGENT-SMART-FEED-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-43-SMART-FEED-ACTIVITY-PROJECTION-CONTRACT.md`; `.naya/2026-09-12-NAYAPOWER-44-DIRECT-ACTIVITY-EVENT-WRITE-ARCHITECTURE.md`; `.naya/2026-09-12-NAYAPOWER-50-INTELLIGENT-SEARCH-RETRIEVAL-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Repository specification created
+- [ ] Hub implementation mapped
+- [ ] Canonical activity/personal/collective retrieval mapped
+- [ ] Authorization boundary proven
+- [ ] Integration path tested
+- [ ] Persistence/action behavior proven
+- [ ] Source → build → runtime parity proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-FEED.md).
