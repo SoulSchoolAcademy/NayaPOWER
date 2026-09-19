@@ -239,11 +239,21 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     session_id=data.get("session_id"),
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
+                    measurement_context={
+                        "execution": {
+                            "claim_id": claim_id,
+                            "action_id": action_id,
+                            "run_id": run_id,
+                        },
+                        "history": data.get("history") or [],
+                        "resource_usage": fields.get("resource_usage"),
+                        "knowledge_reuse": fields.get("knowledge_reuse"),
+                        "new_learning": fields.get("new_learning"),
+                    },
                 )
                 # The canonical event is not enough by itself: the durable
                 # human-readable Team Naya day record is part of the boundary.
                 from execution_activity_writer import write_execution_activity
-                from compounding_measurement import build_compounding_measurement
 
                 activity_execution = {
                     **action_ctx,
@@ -253,16 +263,6 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     "governance_state": "AUTHORIZED",
                     "authorization_verified": True,
                 }
-                measurement = build_compounding_measurement(
-                    event=emitted["event"],
-                    execution=activity_execution,
-                    evidence=emitted_evidence,
-                    history=data.get("history") or [],
-                    resource_usage=fields.get("resource_usage"),
-                    knowledge_reuse=fields.get("knowledge_reuse"),
-                    new_learning=fields.get("new_learning"),
-                )
-                emitted["event"]["compounding_measurement"] = measurement
                 write_execution_activity(
                     event=emitted["event"],
                     execution=activity_execution,
