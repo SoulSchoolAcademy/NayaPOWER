@@ -1324,6 +1324,14 @@ The only material closure boundary not executed is:
 ### Exact execution
 
 1. Use the first legitimate authenticated browser session.
+2. Browser control has now been proven available through the isolated Wave browser CDP session.
+3. A live shared Space has been created for this closure run: `04ee4dc8-bc73-47df-a1de-162570f6a56e`.
+4. A production RLS recursion defect was discovered during real runtime retrieval and fixed by migration `20260919172900_fix_space_members_rls_recursion`; source commit: `a59cf18cf8c735307b6388c6f2dc9fa695b4dec8`.
+5. Re-run Space context after the fix passed: no recursion error; owner membership is visible.
+6. Continue from the existing Space; do not recreate it.
+7. A distinct authenticated B session is still required before JOIN/Connection/Mail proof can proceed.
+
+8. Use the first legitimate authenticated browser session.
 2. Use a distinct second legitimate authenticated browser session.
 3. Execute the final A→T acceptance test.
 4. Capture exact IDs and timestamps.
@@ -1336,6 +1344,10 @@ The only material closure boundary not executed is:
 11. If any step cannot execute because browser control is unavailable, record the exact tooling boundary and do not downgrade it into a database-only claim.
 12. Update every affected feature and Team Naya index.
 13. Produce the final cold-start successor directive.
+
+### Current closure state
+
+A is authenticated and the live shared Space is real. B is not yet provisioned as a distinct authenticated human session. No credentials were extracted and no synthetic B was created. Therefore the final boundary remains NOT VERIFIED.
 
 ### Hard rule
 
