@@ -208,7 +208,8 @@ for(const c of cases){
     user_id:sender.id,policy_id:v2.id,evaluation_type:"REAL_OUTCOME",
     dataset_hash:"controlled-paired-real-outcomes-"+runId+"-"+c.suffix,
     baseline_score:comparison.baseline.verified_value,candidate_score:comparison.candidate.verified_value,
-    responsible_value:comparison.candidate.verified_value,verified:true,result:comparison.result,
+    responsible_value:comparison.candidate.verified_value,verified:true,
+    result:comparison.result==="POLICY_IMPROVEMENT_PROVEN"?"PASS":"NOT_PROVEN",
     evidence:{comparison,run_id:runId,case_id:caseId,head:process.env.GITHUB_SHA,baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,behavioral_difference:true,frozen_case_hash:inputHash}
   }).select("id").single();
   if(evalError||!evalRow) throw evalError||new Error("REAL_OUTCOME_EVALUATION_RECORD_FAILED");
