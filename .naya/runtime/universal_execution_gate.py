@@ -379,7 +379,8 @@ class UniversalExecutionGate:
             envelope_identity_id = identity_envelope.get("identity_id")
             if envelope_identity_id != normalized.actor_id:
                 reasons.append("identity_id does not match action actor_id")
-            authority_ids = identity_envelope.get("authority", {}).get("authority_ids", [])
+            authority_block = identity_envelope.get("authority")
+            authority_ids = authority_block.get("authority_ids", []) if isinstance(authority_block, Mapping) else []
             if authority.authority_id not in authority_ids:
                 reasons.append("identity envelope does not name the resolved authority_id")
             authorized_by = identity_envelope.get("authorized_by", [])
