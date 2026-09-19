@@ -1,0 +1,32 @@
+{
+  "schema": "naya/portable_authorization/v1",
+  "authorization": {
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-HUB-DEPLOY-509",
+    "decision_id": "CF-PORTABLE-PROOF-DEC-001",
+    "action_id": "CF-PORTABLE-PROOF-001",
+    "action_type": "deploy_public_runtime",
+    "target": "cloudflare-runtime:sparkling-shape-7ae5:environment:preview:repository:SoulSchoolAcademy/NayaPOWER:commit:44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "actor_id": "SoulSchoolAcademy",
+    "scope": "public-runtime:sparkling-shape-7ae5:/",
+    "permission": "deploy_public_runtime",
+    "governance_state": "AUTHORIZED",
+    "risk_tier": "LOW",
+    "validated_at": "2026-09-19T01:51:09.001699+00:00",
+    "binding_hash": "c3d77abb58ac892b815f91cba5d659dd3718dc118621962e156b2aed29c0436a",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "commit_sha": "44b4829c8815ea4c62d15c0a74befb963054ccc0",
+    "change_set": [],
+    "environment": "preview",
+    "deployment_surface": "cloudflare",
+    "worker_name": "sparkling-shape-7ae5",
+    "project_id": "",
+    "issued_at": "2026-09-19T01:51:09.004707+00:00",
+    "expires_at": "2026-09-19T02:11:09.004707+00:00",
+    "authority_fingerprint": "d224efb618eae7c98d3049da26cc2658d0bccfd5511996bddc174c2b8282ea39",
+    "registry_revision": "d8b185ef458df53faad5390a33a9a566be8badbadd1b91324d337d235c403bcc",
+    "identity_id": "SoulSchoolAcademy",
+    "identity_fingerprint": "a98dbac29153e7432f5753f7724ec69e36a5612f5c07fc7a29113ceda21c83cb",
+    "identity_binding_hash": "a816dfd2c73f12b04b9fe0f6d7fa1f361f6b6fb98d95498300145aa4dd758e99"
+  },
+  "signature": "7183a7853af78ac783a530b923bcd2d61a95c41dce8d75dadc4a09ec58d7232b91cd7e78d58db97cd8692634a0774c581527f6ecc2894264deb5cafa4b15ba0c"
+}
