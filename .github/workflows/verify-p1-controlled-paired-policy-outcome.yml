@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: p1-controlled-paired-policy-receipt
-          path: ${{ env.RUNNER_TEMP }}/p1-controlled-paired-policy-receipt.json
+          path: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
           retention-days: 30
