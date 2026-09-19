@@ -39,3 +39,20 @@ Map the existing production Smart Ledger implementation to this contract and pro
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-14-SMART-LEDGER-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-39-CROSS-SYSTEM-EVENT-CONTRACT.md`; `.naya/2026-09-12-NAYAPOWER-45-HUB-EVENT-INTEGRATION-PIS-ADAPTER-CONTRACT.md`; `.naya/2026-09-19-SMART-LEDGER-PRODUCTION-CLOSURE.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Runtime tables/functions identified
+- [x] Production receipt/ledger lineage observed historically
+- [ ] Current Hub retrieval mapped
+- [ ] Current RLS/visibility boundary documented and tested
+- [ ] Fresh authenticated retrieval proven
+- [ ] Replay/idempotency proven at product surface
+- [ ] Current source → build → runtime parity captured
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** IMPLEMENTED; not yet LIVE VERIFIED for the complete current product surface. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-LEDGER.md).
