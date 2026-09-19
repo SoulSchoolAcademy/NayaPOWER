@@ -1,18 +1,63 @@
-# Smart Ledger — Activity — 2026-09-19
+# SMART LEDGER — MASTER NAYA READINESS REVIEW — 2026-09-19
 
-FEATURE: Smart Ledger
-STATE: IMPLEMENTED — production runtime evidence exists; full Engineering System closure mapping remains
+**Role:** Smart Ledger owner  
+**Mission:** Turn the already-live evidence substrate into a human-verifiable product surface without turning Ledger into a second intelligence database.
 
-## VERIFIED RUNTIME EVIDENCE
-Live Supabase audit found nayanet_smart_ledger with 94 rows and nayanet_execution_receipts with 125 rows. Live database functions cover cognition, execution receipts, Smart Notes, learning evidence, Spaces, and Ledger/index projection. Production closure history includes real execution → receipt → cognition → Smart Ledger lineage.
+## Executive state
 
-## TODO
-- [ ] Map GitHub implementation to every live Ledger primitive.
-- [ ] Document exact RLS/visibility boundary.
-- [ ] Prove fresh authenticated Ledger retrieval in the current Hub.
-- [ ] Prove replay/idempotency at the product surface.
-- [ ] Capture current source → build → deployed runtime parity.
-- [ ] Promote to LIVE VERIFIED only after complete evidence is observed.
+**Current product readiness: 6.0 / 10 — engine substantially real; product surface and current authenticated proof incomplete.**
 
-## NEXT
-Run the current authenticated Smart Ledger write → receipt → fresh retrieval proof and bind the observed evidence back to this feature record.
+Fresh Supabase audit: `nayanet_smart_ledger` has **96 rows**; `nayanet_execution_receipts` has **125 rows**; `nayanet_cognition_events` has **124 rows**; `nayanet_intelligence_index` has **348 rows**. RLS is enabled on inspected tables.
+
+Historical production closure already proved real execution → receipt → cognition → Smart Ledger lineage.
+
+## Readiness matrix
+
+| Dimension | Rating |
+|---|---:|
+| Specification | 9.5/10 |
+| Requirements completeness | 9/10 |
+| Today's execution plan | 9/10 |
+| Engine/backend | 8/10 |
+| Interface/design | 5/10 |
+| Product integration | 4/10 |
+| Security/privacy | 6/10 |
+| Runtime/deployment | 6/10 |
+| Ship readiness | 6.0/10 |
+
+## What is real
+
+- Live Smart Ledger table.
+- Live execution receipts.
+- Live cognition and intelligence lineage.
+- Database functions connecting source classes into Ledger.
+- Historical production closure proof.
+- Explicit architecture law: Ledger is evidence/integrity projection, not canonical intelligence.
+
+## What is missing
+
+1. Current Hub Ledger route/surface mapping.
+2. Fresh authenticated retrieval from the current product.
+3. Detail lineage UI: source/context → authority → action → result → evidence.
+4. Recorded vs observed vs verified state distinction in UI.
+5. Unauthorized evidence hiding/denial proof.
+6. Replay/idempotency proof at the product surface.
+7. Current source→build→Cloudflare parity.
+8. Independent outcome evidence remains empty: `nayanet_execution_outcomes` currently has 0 rows.
+
+## Complete today
+
+1. Map current Ledger UI/source and backend reads.
+2. Run one fresh authenticated write → receipt → Ledger retrieval.
+3. Open the exact lineage from source to authority to action to receipt/evidence.
+4. Test replay/idempotency.
+5. Test unauthorized access with two real users.
+6. Reconcile empty outcome table as either a real architectural state or missing observation path; do not fabricate outcomes.
+7. Verify Cloudflare runtime parity.
+8. Record evidence.
+
+## Definition of COMPLETE
+
+Every consequential Ledger entry is freshly retrievable by an authorized human, reconstructable to its source/authority/action/result/evidence, protected from unauthorized users, idempotent under retry, and visibly distinguished between recorded/observed/verified.
+
+**NEXT:** Execute the authenticated Ledger write → receipt → fresh retrieval → lineage → replay/denial proof and resolve the outcome-observation gap.
