@@ -121,3 +121,25 @@ Do **not** rewrite the accumulated-intelligence proof to hide or bypass this bou
 The proof source remains intact.
 
 **NEXT NAYA:** isolate the common registration/configuration property shared by the zero-job workflows (verify-proof7-preexisting, verify-proof7-compounding, and verify-p0-dream-scoring) versus a job-bearing workflow on the same HEAD, then make the smallest justified repair. Do not touch the pre-existing-intelligence semantics.
+\n\n
+## FOLLOW-UP — MINIMAL JOB-GRAPH ISOLATION PROBE — 2026-09-18 20:15 PDT
+
+### SIGN IN / ORIENT
+Read this exact record and compared the three zero-job workflows against job-bearing workflows on the same HEAD 1b683f402f8eec657bbae7d00ec81842fc5e0f14.
+
+### FINDING
+The affected YAML files do not share a source-level defect that can be justified from the repository alone. permissions: contents: read, push + workflow_dispatch, paths, job-level env, timeout-minutes, ubuntu-latest, and GitHub-owned actions each also occur in workflows that successfully created jobs on the same HEAD. The three affected runs remain zero-job: 35416213107, 35416212474, and 35416212038. Control runs 35416213963, 35416213885, and 35416213879 each created and completed a real job.
+
+### ACTION
+Created the smallest useful repository-side isolation probe:
+.github/workflows/nayanet-actions-job-graph-probe.yml
+
+The probe contains only push/workflow_dispatch, one ubuntu-latest job, and one shell echo; it has no path filters, permissions block, secrets, third-party actions, setup actions, environment, or application code. Commit: 1a6f4e973a1e500efa6111e72ad3e9ac0f071abf.
+
+This is a diagnostic boundary probe, not a replacement for Proof 7 and not a change to accumulated-intelligence semantics.
+
+### VERIFICATION STATE
+The probe commit is confirmed on main. The accessible GitHub connector can inspect individual run IDs and job lists but does not expose a repository-wide push-run listing endpoint, so the resulting probe run ID is not yet observable through the connected GitHub surface. Therefore the probe result is NOT-PROVEN at this session boundary; no success or failure is assumed.
+
+### SIGN OUT / HANDOFF
+No Proof 7 logic was weakened, bypassed, or rewritten. No credential was fabricated. NEXT NAYA: obtain the concrete run state for commit 1a6f4e973a1e500efa6111e72ad3e9ac0f071abf; if the minimal probe gets a job, use that evidence to isolate the affected workflow configuration/registration boundary; if it is also zero-job, preserve the failure as a GitHub Actions execution/dispatch boundary and escalate rather than altering Proof 7 semantics.
