@@ -473,3 +473,16 @@ The current Intelligent Hub visual/product baseline is the repository file `2026
 **NEXT NAYA:** map the HTML baseline into the actual Cloudflare build/deploy path, preserve the visual design, then implement functional separation + activity projection surgically.
 
 [READ THE COMPLETE SESSION RECORD](./2026/09/19/2026-09-19__CANONICAL-HUB-BASELINE-CORRECTION.md)
+
+
+## 2026-09-19T16:27:35Z — Wave A: Smart Feed + Smart Tabs + Smart Ledger
+
+**Assigned owner:** one coordinated Naya for Wave A foundation.
+
+**Verified state:** Supabase inspected; naya-smart-feed v2 ACTIVE/JWT; Smart Ledger live with 96 rows, 125 receipts, 124 cognition events; execution outcomes 0; Smart Tabs previously had no persistence table.
+
+**Executed:** created owner-scoped nayanet_smart_tabs with RLS; deployed naya-smart-tabs v1; extended assistant-runtime.js; added smart-tabs.js; mounted Smart Tabs in canonical Hub; extended Cloudflare release/parity workflow. Recorded Smart Feed Session 004, Smart Tabs Session 001, Smart Ledger Session 001.
+
+**Protected:** no fake authentication, no second-user PASS, no fabricated outcome observation, no claim of Cloudflare Smart Tabs parity until the workflow proves it.
+
+**Current boundary:** authenticated Wave A transaction proof across Feed retrieval, Tabs CRUD/reload/isolation, and Ledger fresh lineage.
