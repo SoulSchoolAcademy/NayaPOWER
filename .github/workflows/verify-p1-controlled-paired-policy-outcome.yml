@@ -17,7 +17,6 @@ jobs:
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
       ASSISTANT_TEST_EMAIL: ${{ secrets.ASSISTANT_TEST_EMAIL }}
       ASSISTANT_TEST_PASSWORD: ${{ secrets.ASSISTANT_TEST_PASSWORD }}
-      RECEIPT_PATH: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
     steps:
       - name: Checkout exact source
         uses: actions/checkout@v4
@@ -31,16 +30,18 @@ jobs:
         run: npm install --no-save @supabase/supabase-js@2.57.0
 
       - name: Execute controlled paired experiment
-        run: node scripts/run-controlled-paired-policy-experiment.mjs
+        run: |
+          export RECEIPT_PATH="$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
+          node scripts/run-controlled-paired-policy-experiment.mjs
 
       - name: Validate machine receipt
         run: |
-          test -s "$RECEIPT_PATH"
-          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RECEIPT_PATH"
+          test -s "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
+          node -e "const r=require(process.argv[1]); if(r.status!=='NOT_PROVEN') throw new Error('unexpected result'); if(r.comparison?.baseline?.verified_value!==r.comparison?.candidate?.verified_value) throw new Error('receipt mismatch'); if(r.adversarial?.receipt_swap_rejected!==true) throw new Error('adversarial lineage gate missing');" "$RUNNER_TEMP/p1-controlled-paired-policy-receipt.json"
 
       - name: Upload canonical machine receipt
         uses: actions/upload-artifact@v4
         with:
           name: p1-controlled-paired-policy-receipt
-          path: ${{ runner.temp }}/p1-controlled-paired-policy-receipt.json
+          path: ${{ env.RUNNER_TEMP }}/p1-controlled-paired-policy-receipt.json
           retention-days: 30
