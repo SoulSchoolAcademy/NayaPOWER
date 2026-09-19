@@ -1,0 +1,49 @@
+name: Verify Two-User Owner Isolation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  owner-isolation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Require provisioning secret
+        shell: bash
+        run: |
+          test -n "$SUPABASE_SERVICE_ROLE_KEY" || {
+            echo "::error::SUPABASE_SERVICE_ROLE_KEY GitHub Actions secret is required."
+            exit 1
+          }
+
+      - name: Run authenticated A/B owner-isolation matrix
+        env:
+          PROOF_PATH: ${{ runner.temp }}/nayanet-two-user-owner-isolation-proof.json
+        run: node scripts/verify-two-user-owner-isolation.mjs
+
+      - name: Validate verified proof
+        env:
+          PROOF_PATH: ${{ runner.temp }}/nayanet-two-user-owner-isolation-proof.json
+        run: |
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('owner isolation not verified'); if(r.authenticated_runtime!==true) throw new Error('authenticated runtime proof missing'); if(r.credentials_exposed_in_source!==false) throw new Error('credential exposure flag failed');" "$PROOF_PATH"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-two-user-owner-isolation-proof
+          path: ${{ runner.temp }}/nayanet-two-user-owner-isolation-proof.json
+          if-no-files-found: error
+          retention-days: 30
