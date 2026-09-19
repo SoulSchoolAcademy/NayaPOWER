@@ -226,9 +226,10 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
                 "commit_sha": "test-head",
             },
         )
-        binding = dict(EC.load()["identity_binding"])
-        binding["identity_binding_hash"] = "0" * 64
-        # No Activity event exists yet; verification must refuse rather than invent a completion.
+        payload = EC.load()
+        payload["identity_binding"]["identity_binding_hash"] = "0" * 64
+        # No Activity event may be accepted against a tampered execution binding.
+        EC.STATE.write_text(json.dumps(payload), encoding="utf-8")
         with self.assertRaises(AssertionError) as ctx:
             EC.transition(
                 "VERIFIED",
