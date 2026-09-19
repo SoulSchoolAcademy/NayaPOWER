@@ -170,6 +170,21 @@ def self_test() -> int:
             start_head="test-head",
         )
 
+        identity = {
+            "schema_version": "1.0",
+            "identity_id": authority.principal_id,
+            "actor_class": "HUMAN",
+            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+            "knowledge": [{"knowledge_id": "K-MTG-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
+            "capabilities": ["repo_write"],
+            "authority": {"authority_ids": [authority.authority_id]},
+            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+            "received_artifacts": [{"artifact_id": "ART-MTG-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
+            "provenance": [{"subject_id": "ART-MTG-TEST", "source_ref": "test:request", "relation": "received_from"}],
+            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+            "actual_actions": [], "outcomes": [], "learning": [],
+        }
+
         action = {
             "action_id": "ACT-TEST-001",
             "action_type": "repository_write",
@@ -230,6 +245,8 @@ def self_test() -> int:
             authority=authority,
             decision=decision,
             action=bound_action,
+            identity_envelope=identity,
+            consequential=True,
             now="2026-01-01T00:00:00+00:00",
         )
         assert issued.allowed
@@ -237,6 +254,7 @@ def self_test() -> int:
             bound_action,
             execution_authorization=issued.authorization,
             gate=gate,
+            identity_envelope=identity,
             preflight=approved_preflight(),
         )
         assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING"
@@ -244,7 +262,7 @@ def self_test() -> int:
         # 3. Risk downgrade still refused.
         invalid = dict(bound_action, risk="L1")
         try:
-            authorize(invalid, execution_authorization=issued.authorization, gate=gate)
+            authorize(invalid, execution_authorization=issued.authorization, gate=gate, identity_envelope=identity)
         except AssertionError as exc:
             assert "does not match derived risk" in str(exc)
         else:
@@ -263,7 +281,7 @@ def self_test() -> int:
         )
         stale = dict(bound_action, protected_baseline="stale-head")
         try:
-            authorize(stale, execution_authorization=issued.authorization, gate=gate)
+            authorize(stale, execution_authorization=issued.authorization, gate=gate, identity_envelope=identity)
         except AssertionError as exc:
             assert "protected baseline" in str(exc)
         else:
