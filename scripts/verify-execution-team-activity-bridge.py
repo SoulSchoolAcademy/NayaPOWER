@@ -14,9 +14,9 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".naya" / "runtime"
 sys.path.insert(0, str(RUNTIME))
 
-import execution_controller as ec  # noqa: E402
-from execution_preflight_gate import approved_preflight  # noqa: E402
-from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalExecutionGate, VerificationPlan, load_registry  # noqa: E402
+import execution_controller as ec
+from execution_preflight_gate import approved_preflight
+from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalExecutionGate, VerificationPlan, load_registry
 
 
 def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha: str, run_id: str, action: str) -> None:
@@ -37,8 +37,7 @@ def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha
         "source": "github-actions",
     }
     capture_path.parent.mkdir(parents=True, exist_ok=True)
-    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "
-", encoding="utf-8")
+    capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
 def main() -> int:
@@ -140,8 +139,7 @@ def main() -> int:
             f"PROMOTION_STATUS={row['promotion_status']}",
             f"PROMOTED_ARTIFACTS={json.dumps(promoted)}",
         ]
-        output = "
-".join(output_lines)
+        output = "\n".join(output_lines)
         _write_ci_execution_capture(observed_output=output, result="PASS", commit_sha=os.environ.get("GITHUB_SHA", ""), run_id=run_id, action="Run governed execution through Activity to Intelligence promotion proof")
         print(output)
         return 0
@@ -154,3 +152,7 @@ def main() -> int:
                 ec.STATE.unlink()
         else:
             ec.STATE.write_text(original, encoding="utf-8")
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
