@@ -133,9 +133,37 @@
       "replay_identity_stable": true,
       "privacy_isolated": true,
       "interpretation": "Smart Feed presents authoritative Smart Ledger verification/evidence for a fresh production cognition event."
+    },
+    "proof7_compounding_loop": {
+      "status": "VERIFIED",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/verify-proof7-compounding-loop.yml",
+      "run_id": 35461270128,
+      "observed_head": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
+      "artifact": "nayanet-proof7-compounding-loop",
+      "artifact_id": 10589479660,
+      "proofs": [
+        "experience",
+        "memory",
+        "dream",
+        "learning",
+        "continuity",
+        "decision",
+        "outcome",
+        "authority_unchanged",
+        "new_learning",
+        "next_dream_context"
+      ],
+      "policy_improvement": "NOT_PROVEN"
+    },
+    "cognition_receipt_revision_repair": {
+      "status": "IMPLEMENTED_AND_LIVE",
+      "claim_type": "RUNTIME",
+      "migration": "20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
+      "reason": "Proof 7 exposed receipt revision collision during learning apply; live function now serializes revision allocation and selects max(receipt revision)+1."
     }
   },
-  "recording_commit": "1a6072b722913346c83de01aa0e5b7212ec9014f",
+  "recording_commit": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -245,6 +273,28 @@
       ],
       "artifact": "p1-controlled-paired-policy-receipt",
       "interpretation": "The controlled paired execution/receipt/comparison machinery is proven. Policy improvement is not proven because verified responsible values were equal."
+    },
+    "proof7_compounding_loop": {
+      "status": "VERIFIED",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/verify-proof7-compounding-loop.yml",
+      "run_id": 35461270128,
+      "observed_head": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
+      "artifact": "nayanet-proof7-compounding-loop",
+      "artifact_id": 10589479660,
+      "proofs": [
+        "experience",
+        "memory",
+        "dream",
+        "learning",
+        "continuity",
+        "decision",
+        "outcome",
+        "authority_unchanged",
+        "new_learning",
+        "next_dream_context"
+      ],
+      "policy_improvement": "NOT_PROVEN"
     }
   },
   "ih03_canonical_intelligence_identity": {
