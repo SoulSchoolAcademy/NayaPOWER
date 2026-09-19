@@ -144,3 +144,13 @@ Session records:
 - Smart Ledger: SMART-LEDGER/SESSION-006.md
 
 **Next:** finish those remaining closure boundaries; do not reopen already-proven backend work unless regression evidence appears.
+## Wave A Session 007 checkpoint — 2026-09-19T17:10Z
+
+A new runtime-layer defect was discovered and repaired after Session 006: the canonical Hub referenced a stale Assistant Runtime cache version. Live browser CDP observation captured the stale-runtime SyntaxError. The Hub query was bumped in commit **6018ed5002ee09505767852e4f39d1d81c9c96ab** and Cloudflare run **35457054828** passed exact parity and runtime baseline verification.
+
+Early live browser observation now confirms the current Assistant Runtime exists and exposes Smart Tabs runtime methods. The remaining boundary is legitimate browser authentication followed by UI-level Smart Tabs/Feed CRUD/navigation proof. No token injection or credential extraction is permitted.
+
+Session 007 records:
+- SMART-FEED/SESSION-007.md
+- SMART-TABS/SESSION-007.md
+- SMART-LEDGER/SESSION-007.md
