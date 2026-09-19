@@ -1,0 +1,108 @@
+name: Naya Team Activity Feed
+
+on:
+  workflow_run:
+    workflows:
+      - Verify P1 Controlled Paired Policy Outcome
+      - Verify Naya Superbrain Ready
+      - Verify Team Naya Communication
+      - Verify Execution Team Activity Bridge
+      - Verify Smart Note Transaction
+      - Verify Smart Note E2E Isolated
+      - Golden Journey
+      - Verify PIS
+      - Verify Two User Owner Isolation
+      - Verify Authority Grant Runtime
+      - Verify NayaNET Name-First Lifecycle
+      - Verify NayaNET Name-First Auth
+      - Assistant Cloudflare Authenticated Proof
+      - Assistant Cloudflare Hub Release
+      - Verify Production Closure
+    types: [completed]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  record:
+    if: ${{ github.event.workflow_run.head_branch == 'main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Record durable Team Naya activity
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const run = context.payload.workflow_run;
+            const conclusion = run.conclusion || 'unknown';
+            const status = conclusion === 'success' ? 'PASS' : conclusion === 'failure' ? 'FAIL' : conclusion.toUpperCase();
+            const sha = run.head_sha;
+            const shortSha = sha.slice(0, 12);
+            const started = run.run_started_at || run.created_at;
+            const completed = run.updated_at || new Date().toISOString();
+            const title = run.name;
+            const lines = [
+              `### ${completed} — TEAM-NAYA-AUTO-FEED — ${title}`,
+              `**Run:** [${run.id}](${run.html_url})  `,
+              `**Head:** \`${shortSha}\`  `,
+              `**Status:** **${status}**  `,
+              `**Started:** ${started}  `,
+              `**Completed:** ${completed}`,
+              '',
+              '**Automatic execution receipt**',
+              `- Workflow: ${title}`,
+              `- Result: ${status}`,
+              `- Source: ${sha}`,
+              `- Evidence: ${run.html_url}`,
+              `- Actor: ${run.actor?.login || 'unknown'}`,
+              '',
+              '**Successor rule:** the next Naya must inspect the workflow evidence before treating the result as current truth.',
+              '',
+              '---'
+            ].join('\n');
+
+            const day = completed.slice(0, 10);
+            const path = `NAYA/ACTIVITY/${day.slice(0,4)}/${day.slice(5,7)}/${day}.md`;
+
+            const file = await github.rest.repos.getContent({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              path,
+              ref: 'main'
+            });
+
+            const current = Buffer.from(file.data.content, 'base64').toString('utf8');
+            const marker = `TEAM-NAYA-AUTO-FEED — ${run.id}`;
+            if (!current.includes(marker)) {
+              const body = current + '\n\n' + lines.replace('TEAM-NAYA-AUTO-FEED', marker);
+              await github.rest.repos.createOrUpdateFileContents({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                path,
+                message: `chore(naya): record workflow activity ${run.id}`,
+                content: Buffer.from(body).toString('base64'),
+                sha: file.data.sha,
+                branch: 'main'
+              });
+            }
+
+            const issueBody = [
+              `## ${completed} — ${title}`,
+              '',
+              `**Automatic Team Naya activity receipt — ${status}**`,
+              '',
+              `- Run: [${run.id}](${run.html_url})`,
+              `- Source: \`${sha}\``,
+              `- Result: **${status}**`,
+              `- Actor: ${run.actor?.login || 'unknown'}`,
+              '',
+              '**Next Naya:** inspect the run evidence and the current Activity day before continuing.',
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: 151,
+              body: issueBody
+            });
