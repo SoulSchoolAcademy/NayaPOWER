@@ -178,7 +178,7 @@ if(!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_P
 
 const successorStrategy="HISTORY_PLUS_VERIFIED_RECEIPT_V1_REQUIRE_POSITIVE_DELTA";
 const successor=await insertPolicy(3,v2.id,successorStrategy);
-await evalPolicy(successor.id,"LEARNING_INHERITANCE",{
+await evalPolicy(successor.id,"CONTROLLED_TEST",{
   result:"PASS",verified:true,dataset_hash:"p1-learning-"+runId,
   learning_evidence_id:lesson.id,source_policy_id:v2.id,
   rule:"require candidate verified responsible value > baseline before promotion"
