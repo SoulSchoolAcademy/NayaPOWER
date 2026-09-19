@@ -46,7 +46,7 @@
       "supabase/migrations/20260919004000_p1_policy_execution_receipt_lineage.sql",
       "supabase/migrations/20260919004100_p1_policy_comparison_lineage_enforcement.sql",
       "supabase/functions/nayanet-smart-mail/index.ts",
-      "SUPERBRAIN/SMART-NOTES/2026/09/2026-09-18-P1-CONTROLLED-PAIRED-POLICY-OUTCOME.md"
+      "SUPERBRAIN/SMART-NOTES/2026/09/2026-09-19-P1-CONTROLLED-PAIRED-POLICY-OUTCOME.md"
     ],
     "target_state": "POLICY_IMPROVEMENT_PROVEN_OR_TRUTHFULLY_NOT_PROVEN",
     "next_action": "Build the smallest independent real-outcome/value contract on the existing Smart Mail receipt substrate so receiver-verified outcomes can carry inspectable benefit, harm, cost, and risk-adjusted-loss evidence without hardcoded send-path scoring; then run a frozen multi-case V1/V2 paired experiment and accept only PROVEN or NOT_PROVEN.",
