@@ -95,3 +95,12 @@ Assign one Naya to each feature report. Each Naya must start from the report, in
 - [Session 003 — Production surface deployment and parity closure](./SMART-FEED/SESSION-003.md)
 - **Priority 1:** VERIFIED — dedicated production feed surface deployed with exact source/runtime parity and desktop/mobile baseline proof.
 - **Next:** execute authenticated Activity retrieval and consequence proof.
+
+
+## Wave A coordination — 2026-09-19T16:27:35Z
+
+Smart Feed, Smart Tabs, and Smart Ledger are now being executed as one connected NayaNET foundation. Smart Tabs capability was implemented without creating a second intelligence store. Feed and Ledger remain on their canonical substrates. Authenticated end-to-end proof is the current boundary.
+
+- Smart Feed Session 004 recorded.
+- Smart Tabs Session 001 recorded.
+- Smart Ledger Session 001 recorded.
