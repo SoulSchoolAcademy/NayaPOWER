@@ -58,5 +58,5 @@ Deno.serve(async(req)=>{
    });
    if(activityError)return json({ok:false,error:"ACTIVITY_WRITE_FAILED",detail:activityError.message,execution_receipt_id:receiptId},500);
  }
- return json({ok:true,...result,authority_grant_id:input.authority_grant_id,request_id:result?.status==="CREATED"?requestId:(result?.request_id??requestId)});
+ return json({ok:true,...result,authority_grant_id:input.authority_grant_id,request_id:result?.request_id??requestId});
 });
