@@ -67,7 +67,7 @@ assert(verified.ok===true && verified.status==="VERIFIED","RECEIVER_VERIFICATION
 
 const receipt=await req("/rest/v1/nayanet_execution_receipts?select=id,status,authority_grant_id,evidence,value,learning,project_id,action&id=eq."+mail.execution_receipt_id,{headers:h(sender.access_token)});
 assert(receipt.length===1,"EXECUTION_RECEIPT_NOT_FOUND");
-assert(receipt[0].status==="VERIFIED","EXECUTION_RECEIPT_NOT_VERIFIED");
+assert(receipt[0].status==="SUCCESS","EXECUTION_RECEIPT_STATUS_UNEXPECTED");
 assert(receipt[0].authority_grant_id,"AUTHORITY_RECEIPT_MISSING");
 assert(receipt[0].value?.verified===true,"VERIFIED_VALUE_MISSING");
 
@@ -86,6 +86,7 @@ assert(le.length>=1,"LEDGER_LEARNING_EVIDENCE_MISSING");
 assert(ls.length>=1,"LEDGER_LEARNER_STATE_MISSING");
 assert(lc.length>=1,"LEDGER_LEARNING_COGNITION_MISSING");
 assert(lr.length>=1,"LEDGER_EXECUTION_RECEIPT_MISSING");
+assert(lr.some(x=>x.status==="VERIFIED" || x.verification?.status==="VERIFIED"),"LEDGER_EXECUTION_RECEIPT_NOT_VERIFIED");
 assert(la.length>=1,"LEDGER_ACTION_COGNITION_MISSING");
 
 const proof={
