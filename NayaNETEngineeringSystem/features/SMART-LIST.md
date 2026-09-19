@@ -66,3 +66,21 @@ Inspect existing list/save/favorite implementation and reconcile it with canonic
 - [x] One next action recorded
 
 **Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-LIST.md).
+
+
+## ACTION 06 EXECUTION — 2026-09-19
+
+No prior live List/Favorite/Saved/Collection/Group person-organization primitive was found. Canonical List storage is now:
+- `nayanet_smart_lists` — owner + name
+- `nayanet_smart_list_members` — List → canonical `nayanet_connections`
+
+Server RPCs:
+- `nayanet_create_smart_list`
+- `nayanet_add_connection_to_list`
+- `nayanet_remove_connection_from_list`
+
+RLS is owner-scoped. List membership cannot create or delete a Connection. Removing a List entry only removes organization state.
+
+Transactional authenticated-role proof passed for add + duplicate add; no test state persisted.
+
+Current state: **IMPLEMENTED SUBSTRATE / HUB RUNTIME UNPROVEN**.
