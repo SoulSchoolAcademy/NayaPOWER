@@ -114,9 +114,9 @@ jobs:
                 navCount: document.querySelectorAll('.naya509-primary-nav a').length,
                 blockCount: document.querySelectorAll('.block').length,
                 layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
-                bodyOverflowX: getComputedStyle(document.body).overflowX,
-                hasNaya: document.body.innerText.includes('Naya'),
-                hasIntelligence: document.body.innerText.includes('INTELLIGENCE')
+                bodyOverflowX: document.body ? getComputedStyle(document.body).overflowX : 'missing',
+                hasNaya: !!document.body && document.body.innerText.includes('Naya'),
+                hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
               }));
 
               if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
