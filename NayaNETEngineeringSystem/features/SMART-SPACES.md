@@ -48,3 +48,21 @@ Inspect the current Space/activity/messaging implementation and establish the sm
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-12-SMART-SPACES-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-47-SMART-SPACE-CONTRACT.md`; `.naya/2026-09-12-NAYAPOWER-43-SMART-FEED-ACTIVITY-PROJECTION-CONTRACT.md`; `.naya/2026-09-12-NAYAPOWER-44-DIRECT-ACTIVITY-EVENT-WRITE-ARCHITECTURE.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Live Space primitives identified
+- [ ] Deployed Space UI mapped
+- [ ] Complete authenticated lifecycle proven
+- [ ] Membership/revocation proven
+- [ ] Activity projection proven
+- [ ] Intelligence sharing authorization proven
+- [ ] AI participation authority proven
+- [ ] Source → build → runtime parity proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** FOUNDATION; not LIVE VERIFIED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-SPACES.md).
