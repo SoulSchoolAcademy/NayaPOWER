@@ -92,7 +92,7 @@ DEFAULT_REPOSITORY = BOUNDARY.DEFAULT_REPOSITORY
 
 def _authorization_binding_hash(authority_id: str, decision_id: str, action_id: str, action_type: str, target: str, actor_id: str, scope: str, permission: str, identity_id: str, identity_fingerprint: str, identity_binding_hash: str) -> str:
     execution_binding = _BINDING_HASH(authority_id, decision_id, action_id, action_type, target, actor_id, scope, permission)
-    return _BINDING_HASH(execution_binding, identity_id, identity_fingerprint, identity_binding_hash)
+    return hashlib.sha256("|".join((execution_binding, identity_id, identity_fingerprint, identity_binding_hash)).encode("utf-8")).hexdigest()
 RELEASE_ACTION_TYPES = BOUNDARY.RELEASE_ACTION_TYPES
 RELEASE_ENVIRONMENTS = BOUNDARY.RELEASE_ENVIRONMENTS
 REPO_MUTATION_ACTION_TYPES = BOUNDARY.REPO_MUTATION_ACTION_TYPES
