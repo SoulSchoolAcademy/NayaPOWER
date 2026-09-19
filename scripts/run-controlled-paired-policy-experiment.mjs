@@ -107,7 +107,7 @@ const prepare=async(p)=>{
 };
 await prepare(v1); await prepare(v2);
 
-const sha256=async(value)=>async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
+const sha256=async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");
 
 const spaceId=process.env.NAYA_EXISTING_SPACE_ID||"04ee4dc8-bc73-47df-a1de-162570f6a56e";
 const {data:space,error:spaceError}=await supabase.from("nayanet_spaces").select("id,visibility,owner_member_id").eq("id",spaceId).single();
