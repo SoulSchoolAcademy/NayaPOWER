@@ -6,7 +6,35 @@ const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/js
 const anon=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
 const sender=await anon(),receiver=await anon();
 const target='proof7-controlled-mail-'+crypto.randomBytes(8).toString('hex');
-const send=(token,recipient,body,idem)=>req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(token),body:JSON.stringify({recipient_user_id:recipient,body,subject:'NayaNET Proof 7 controlled action',kind:'direct',idempotency_key:idem,project_id:'NayaNET'})});
+const spaceId=process.env.NAYA_EXISTING_SPACE_ID||'04ee4dc8-bc73-47df-a1de-162570f6a56e';
+const {data:space,error:spaceError}=await req(base+'/rest/v1/nayanet_spaces?select=id,visibility,owner_member_id&id=eq.'+spaceId,{headers:h(sender.access_token)});
+if(spaceError||!Array.isArray(space)||space.length!==1||space[0].visibility!=='shared')throw spaceError||new Error('EXISTING_SHARED_SPACE_NOT_AVAILABLE');
+const joinSender=await req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_space_id:spaceId})});
+if(joinSender?.error)throw joinSender.error;
+const joinReceiver=await req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(receiver.access_token),body:JSON.stringify({p_space_id:spaceId})});
+if(joinReceiver?.error)throw joinReceiver.error;
+const connectionSender=await req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_target_member_id:receiver.user.id,p_space_id:spaceId})});
+if(connectionSender?.error)throw connectionSender.error;
+const connectionReceiver=await req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(receiver.access_token),body:JSON.stringify({p_target_member_id:sender.user.id,p_space_id:spaceId})});
+if(connectionReceiver?.error)throw connectionReceiver.error;
+const senderConnectionId=connectionSender?.connection?.id;
+const receiverConnectionId=connectionReceiver?.connection?.id;
+if(!senderConnectionId||!receiverConnectionId)throw new Error('MUTUAL_CONNECTION_NOT_CREATED');
+const authority=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({
+ p_subject_id:sender.user.id,
+ p_source_event_id:'proof7-smart-mail-authorization-'+crypto.randomBytes(8).toString('hex'),
+ p_mission_id:'NayaNET Proof 7 Compounding Loop',
+ p_scope:{project_id:'NayaNET',target:receiver.user.id},
+ p_actions:['smart_mail_send'],
+ p_constraints:{mode:'proof7',no_external_side_effects:true},
+ p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+ p_evidence:{authorization_type:'explicit_proof7_mail_authorization',space_id:spaceId},
+ p_parent_authority:null
+})});
+if(!authority?.grant_id)throw new Error('PROOF7_SMART_MAIL_AUTHORITY_GRANT_ISSUANCE_FAILED');
+const authorityCheck=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_grant_id:authority.grant_id,p_action:'smart_mail_send',p_target:receiver.user.id})});
+if(authorityCheck?.status!=='AUTHORIZED')throw new Error('PROOF7_SMART_MAIL_AUTHORITY_NOT_AUTHORIZED');
+const send=(token,recipient,body,idem)=>req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(token),body:JSON.stringify({recipient_user_id:recipient,body,subject:'NayaNET Proof 7 controlled action',kind:'direct',idempotency_key:idem,project_id:'NayaNET',authority_grant_id:authority.grant_id})});
 const verify=(token,messageId)=>req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(token),body:JSON.stringify({operation:'verify',message_id:messageId})});
 const initial=await send(sender.access_token,receiver.user.id,'Proof 7 historical experience: the receiver successfully retrieved a governed Smart Mail message.', 'proof7-history-'+crypto.randomBytes(8).toString('hex'));
 const initialRows=await req(base+'/rest/v1/v7_mail_messages?select=id&thread_id=eq.'+initial.thread_id,{headers:h(receiver.access_token)});
