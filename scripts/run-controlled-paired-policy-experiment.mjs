@@ -52,6 +52,13 @@ const prepare=async(p)=>{
   await evalPolicy(p.id,"HOLDOUT",{result:"PASS",dataset_hash:"controlled-paired-holdout-v1",baseline_score:1,candidate_score:1,verified:true,cases:1});
   await transition(p.id,"HOLDOUT_PASS",{result:"PASS",dataset_hash:"controlled-paired-holdout-v1",baseline_score:1,candidate_score:1,verified:true,cases:1});
   await transition(p.id,"AUTHORIZATION_REQUIRED",{request:"controlled-paired-real-outcome",authorized:false});
+  let unauthorizedBlocked=false;
+  try {
+    await transition(p.id,"CONTROLLED_TEST",{authorized:true,reason:"negative-test-no-canonical-authority"});
+  } catch (error) {
+    unauthorizedBlocked=String(error?.message||error).includes("CONTROLLED_TEST_REQUIRES_AUTHORITY_GRANT");
+  }
+  if(!unauthorizedBlocked) throw new Error("CONTROLLED_TEST_SELF_AUTHORIZATION_NOT_BLOCKED");
   const authority = await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
     p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+p.id,
