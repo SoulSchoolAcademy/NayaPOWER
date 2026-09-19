@@ -41,7 +41,7 @@ jobs:
           if (!frame) throw new Error('WELCOME_EMBEDDED_WORKER_NOT_FOUND');
           await frame.locator('#userName').fill('Naya Public Proof');
           await frame.locator('#entryForm button[type="submit"]').click();
-          await frame.waitForURL(/\/identity\.html\?name=Naya%20Public%20Proof/,{timeout:30000});
+          await frame.waitForURL(/\/identity\?name=Naya%20Public%20Proof/,{timeout:30000});
           const identity = await frame.evaluate(() => ({
             url:location.href,
             title:document.title,
