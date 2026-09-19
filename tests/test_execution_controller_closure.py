@@ -424,7 +424,12 @@ class TestExecutionControllerClosure(unittest.TestCase):
             self.assertTrue(issued.allowed)
 
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertIn("no longer permits", msg)
 
     # 18. valid gate-issued credential -> EXECUTING and onward
@@ -467,7 +472,13 @@ class TestExecutionControllerClosure(unittest.TestCase):
             path, gate, authority = registry_file_gate(grant_payload("HUMAN-T10-PREV"), Path(tmp))
             decision = make_decision(authority, "GBLC10-PREV-DEC")
             action = make_action(authority, decision.decision_id)
-            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            issued = gate.authorize(
+                authority=authority,
+                decision=decision,
+                action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
+            )
             self.assertTrue(issued.allowed)
 
             start_claimed()
