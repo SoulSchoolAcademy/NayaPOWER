@@ -28,7 +28,7 @@ jobs:
         run: |
           rm -rf proof-output
           python .naya/runtime/execution_activity_writer_test.py
-          test -f proof-output/NAYA-TEAM/2026/09/19/*/activity-writer-test-abc123.md
+          test -f proof-output/NAYA-TEAM/2026/09/19/*activity-writer-test-abc123.md
       - name: Run hard handoff regression
         run: python tests/test_execution_activity_handoff_gate.py
       - name: Run governed execution-to-Team-Naya bridge
@@ -36,7 +36,7 @@ jobs:
       - name: Inspect generated durable Team Naya record
         run: |
           find proof-output/NAYA-TEAM -type f -print
-          cat proof-output/NAYA-TEAM/2026/09/19/*/activity-writer-test-abc123.md
+          cat proof-output/NAYA-TEAM/2026/09/19/*activity-writer-test-abc123.md
       - name: Upload generated Activity proof record
         uses: actions/upload-artifact@v4
         with:
