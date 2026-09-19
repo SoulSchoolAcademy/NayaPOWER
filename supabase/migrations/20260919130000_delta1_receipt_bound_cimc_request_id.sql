@@ -38,6 +38,7 @@ declare
   v_correlation uuid:=gen_random_uuid();
   v_event_id text;
   v_revision bigint;
+  v_existing_request_id text;
 begin
   if (select auth.uid()) is null then raise exception 'AUTH_REQUIRED'; end if;
   if (select auth.uid()) <> p_sender_id then raise exception 'SENDER_IDENTITY_MISMATCH'; end if;
@@ -60,7 +61,9 @@ begin
    where sender_id=p_sender_id and metadata->>'idempotency_key'=p_idempotency_key limit 1;
   if existing_message.id is not null then
     select request_id into v_existing_request_id
-  from public.nayanet_execution_receipts\n  where id=(existing_message.metadata->>'execution_receipt_id')::uuid;\n  return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id','request_id',v_existing_request_id);
+  from public.nayanet_execution_receipts
+  where id=(existing_message.metadata->>'execution_receipt_id')::uuid;
+  return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id','request_id',v_existing_request_id);
   end if;
 
   if p_request_id is null or trim(p_request_id)='' or length(p_request_id)>128 then
@@ -146,13 +149,16 @@ begin
 
   return jsonb_build_object(
     'status','CREATED','correlation_id',v_correlation::text,'thread_id',v_thread,'message_id',v_message,
-    'cognition_event_id',v_event,'execution_receipt_id',v_receipt,'authority_changed',false,
+    'cognition_event_id',v_event,'execution_receipt_id',v_receipt,'request_id',p_request_id,'authority_changed',false,
     'policy',case when v_policy.id is null then null else jsonb_build_object('id',v_policy.id,'version',v_policy.version,'policy_key',v_policy.policy_key,'experiment_case_id',p_experiment_case_id) end
   );
 exception when unique_violation then
   select * into existing_message from public.v7_mail_messages where sender_id=p_sender_id and metadata->>'idempotency_key'=p_idempotency_key limit 1;
   if existing_message.id is null then raise; end if;
-  return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id');
+  select request_id into v_existing_request_id
+  from public.nayanet_execution_receipts
+  where id=(existing_message.metadata->>'execution_receipt_id')::uuid;
+  return jsonb_build_object('status','REPLAY','correlation_id',existing_message.metadata->>'correlation_id','thread_id',existing_message.thread_id,'message_id',existing_message.id,'execution_receipt_id',existing_message.metadata->>'execution_receipt_id','request_id',v_existing_request_id);
 end;
 $function$;
 
