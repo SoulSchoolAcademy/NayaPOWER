@@ -104,8 +104,9 @@ jobs:
               { width: 1440, height: 1000, label: 'desktop' },
               { width: 390, height: 844, label: 'mobile' }
             ]) {
-              const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
-              await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+              const page = await context.newPage();
+              await page.goto(`${url}/?naya_browser_proof=${Date.now()}-${viewport.label}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
               await page.waitForTimeout(1000);
 
               const result = await page.evaluate(() => ({
@@ -127,8 +128,9 @@ jobs:
               if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
 
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
-              await page.close();
+              await context.close();
             }
+          }
           } finally {
             await browser.close();
           }
