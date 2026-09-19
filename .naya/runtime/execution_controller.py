@@ -79,7 +79,7 @@ def _find_activity_event(event_id: str, events_root=None, index_path=None) -> di
     return None
 
 
-def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_id=None, events_root=None, index_path=None) -> tuple[bool, list[str]]:
+def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_id=None, identity_binding=None, smart_ledger=None, events_root=None, index_path=None) -> tuple[bool, list[str]]:
     if not event_id:
         return False, ["no canonical Activity Feed event_id was supplied"]
     event = _find_activity_event(event_id, events_root=events_root, index_path=index_path)
@@ -100,6 +100,17 @@ def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_i
             problems.append("canonical event is not bound to this execution run")
         if session_id and execution.get("session_id") != session_id:
             problems.append("canonical event is not bound to this execution session")
+        if isinstance(identity_binding, dict):
+            for key in ("identity_id", "identity_fingerprint", "identity_binding_hash", "execution_authorization_binding_hash"):
+                if execution.get(key) != identity_binding.get(key):
+                    problems.append(f"canonical event {key} is not bound to the execution identity")
+        if isinstance(smart_ledger, dict):
+            expected_ledger_id = (smart_ledger.get("ledger_event") or {}).get("ledger_event_id")
+            expected_receipt_id = (smart_ledger.get("verification_receipt") or {}).get("receipt_id")
+            if execution.get("smart_ledger_event_id") != expected_ledger_id:
+                problems.append("canonical event is not bound to the Smart Ledger event")
+            if execution.get("smart_ledger_receipt_id") != expected_receipt_id:
+                problems.append("canonical event is not bound to the Smart Ledger receipt")
     receipt = event.get("receipt")
     if not isinstance(receipt, dict):
         problems.append("canonical event is missing the required durable receipt block")
@@ -333,6 +344,12 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     evidence=emitted_evidence,
                     run_id=run_id,
                     session_id=data.get("session_id"),
+                    identity_id=(data.get("identity_binding") or {}).get("identity_id"),
+                    identity_fingerprint=(data.get("identity_binding") or {}).get("identity_fingerprint"),
+                    identity_binding_hash=(data.get("identity_binding") or {}).get("identity_binding_hash"),
+                    execution_authorization_binding_hash=(data.get("identity_binding") or {}).get("execution_authorization_binding_hash"),
+                    smart_ledger_event_id=((data.get("smart_ledger") or {}).get("ledger_event") or {}).get("ledger_event_id"),
+                    smart_ledger_receipt_id=((data.get("smart_ledger") or {}).get("verification_receipt") or {}).get("receipt_id"),
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
                 )
@@ -344,7 +361,15 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
             supplied = emitted["event_id"]
             fields["activity_event_id"] = supplied
             fields["activity_event_emitted"] = emitted.get("status")
-        ok, activity_problems = _verify_activity_event(supplied, claim_id, action_id, run_id, data.get("session_id"))
+        ok, activity_problems = _verify_activity_event(
+            supplied,
+            claim_id,
+            action_id,
+            run_id,
+            data.get("session_id"),
+            data.get("identity_binding"),
+            data.get("smart_ledger"),
+        )
         smart_ledger = data.get("smart_ledger")
         if not isinstance(smart_ledger, dict):
             fail("execution boundary refused: VERIFIED requires a canonical Smart Ledger execution receipt")
@@ -462,7 +487,13 @@ def validate(data: dict[str, Any] | None = None) -> dict[str, Any]:
         require_fields(data, ("evidence", "verification", "activity_event_id"))
         action_ctx = data.get("action") or {}
         ok, activity_problems = _verify_activity_event(
-            data.get("activity_event_id"), data.get("claim_id"), action_ctx.get("action_id"), data.get("run_id"), data.get("session_id")
+            data.get("activity_event_id"),
+            data.get("claim_id"),
+            action_ctx.get("action_id"),
+            data.get("run_id"),
+            data.get("session_id"),
+            data.get("identity_binding"),
+            data.get("smart_ledger"),
         )
         if not ok:
             fail(
