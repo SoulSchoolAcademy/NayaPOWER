@@ -6,11 +6,13 @@ import os
 import re
 import tempfile
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from typing import Any, Optional
 
 ROOT = Path(__file__).resolve().parents[2]
-ACTIVITY_ROOT = ROOT / "NAYA" / "ACTIVITY"
+ACTIVITY_ROOT = ROOT / "NAYA-TEAM"
+VANCOUVER = ZoneInfo("America/Vancouver")
 EVENT_ID_RE = re.compile(r"^SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+$")
 
 
@@ -36,11 +38,26 @@ def _require_authorized_execution(execution: dict[str, Any]) -> None:
         )
 
 
-def _day_path(effective_at: str, root: Path) -> Path:
+def _local_stamp(effective_at: str) -> datetime:
     stamp = datetime.fromisoformat(effective_at.replace("Z", "+00:00"))
-    return root / "{:%Y/%m/%d}.md".format(stamp)
+    if stamp.tzinfo is None:
+        raise AssertionError("Activity writer refused: effective_at must include timezone")
+    return stamp.astimezone(VANCOUVER)
 
 
+def _slug(subject: str, event_id: str) -> str:
+    raw = re.sub(r"[^A-Za-z0-9]+", "-", subject).strip("-").lower()
+    raw = raw[:60] or "execution"
+    return f"{raw}-{event_id.rsplit('-', 1)[-1]}"
+
+
+def _record_path(effective_at: str, subject: str, event_id: str, root: Path) -> Path:
+    stamp = _local_stamp(effective_at)
+    filename = (
+        f"{stamp:%Y-%m-%dT%H-%M-%S%z}__NAYA-EXECUTION-"
+        f"{_slug(subject, event_id)}.md"
+    )
+    return root / f"{stamp:%Y/%m/%d}" / filename
 def _section(*, effective_at: str, event_id: str, execution: dict[str, Any],
              subject: str, summary: str, evidence: list[str],
              next_action: str, successor: str) -> str:
@@ -54,7 +71,7 @@ def _section(*, effective_at: str, event_id: str, execution: dict[str, Any],
         "**Run:** " + execution["run_id"] + "  \n"
         "**Authority:** " + execution["authority_id"] + "  \n"
         "**Actor:** " + execution["actor_id"] + "  \n"
-        "**Event:** `" + event_id + "`\n\n"
+        "**EVENT:** `" + event_id + "`\n\n"
         "## WHAT HAPPENED\n\n"
         "- " + subject + "\n"
         "- " + summary + "\n\n"
@@ -68,18 +85,19 @@ def _section(*, effective_at: str, event_id: str, execution: dict[str, Any],
     )
 
 
-def _append_once(path: Path, section: str, event_id: str) -> bool:
+def _write_once(path: Path, content: str, event_id: str) -> bool:
     path.parent.mkdir(parents=True, exist_ok=True)
-    existing = path.read_text(encoding="utf-8") if path.exists() else ""
-    if "**Event:** `" + event_id + "`" in existing:
-        return False
-    fd, temp_name = tempfile.mkstemp(
-        prefix=".activity-", suffix=".tmp", dir=str(path.parent)
-    )
+    if path.exists():
+        existing = path.read_text(encoding="utf-8")
+        if f"**EVENT:** `{event_id}`" in existing:
+            return False
+        raise AssertionError(
+            f"Activity writer conflict: target record already exists for another event: {path}"
+        )
+    fd, temp_name = tempfile.mkstemp(prefix=".activity-", suffix=".tmp", dir=str(path.parent))
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as handle:
-            handle.write(existing)
-            handle.write(section)
+            handle.write(content)
             handle.flush()
             os.fsync(handle.fileno())
         os.replace(temp_name, path)
@@ -90,8 +108,6 @@ def _append_once(path: Path, section: str, event_id: str) -> bool:
             pass
         raise
     return True
-
-
 def write_execution_activity(*, event: dict[str, Any],
                               execution: dict[str, Any],
                               next_action: str, successor: str,
@@ -109,25 +125,25 @@ def write_execution_activity(*, event: dict[str, Any],
 
     root = Path(activity_root) if activity_root else ACTIVITY_ROOT
     effective_at = str(event.get("effective_at") or _now())
-    day = _day_path(effective_at, root)
+    subject = str(event.get("subject") or "Consequential Naya execution completed")
+    path = _record_path(effective_at, subject, event_id, root)
     section = _section(
         effective_at=effective_at,
         event_id=event_id,
         execution=execution,
-        subject=str(event.get("subject") or "Consequential Naya execution completed"),
+        subject=subject,
         summary=str((event.get("activity_feed_projection") or {}).get("summary") or ""),
         evidence=evidence,
         next_action=next_action,
         successor=successor,
     )
-    created = _append_once(day, section, event_id)
-    return {"status": "CREATED" if created else "REPLAY",
-            "event_id": event_id, "path": str(day)}
+    created = _write_once(path, section, event_id)
+    return {"status": "CREATED" if created else "REPLAY", "event_id": event_id, "path": str(path)}
 
 
 def find_daily_activity(event_id: str, *, activity_root: Optional[Path] = None) -> Optional[Path]:
     root = Path(activity_root) if activity_root else ACTIVITY_ROOT
-    needle = "**Event:** `" + event_id + "`"
+    needle = "**EVENT:** `" + event_id + "`"
     if not root.exists():
         return None
     for path in root.rglob("*.md"):
