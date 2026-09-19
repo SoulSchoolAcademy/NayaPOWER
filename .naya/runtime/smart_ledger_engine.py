@@ -5,10 +5,42 @@ CREATE SMART NOTE -> CREATE LEDGER EVENT -> VERIFY -> VALUE -> POINTS -> LEVEL -
 from __future__ import annotations
 
 from dataclasses import asdict, dataclass
+import importlib.util
+import sys
 from datetime import datetime, timezone
 from hashlib import sha256
-from typing import Optional
+from pathlib import Path
+from typing import Any, Mapping, Optional
 from uuid import uuid4
+
+
+_RUNTIME_DIR = Path(__file__).resolve().parent
+_IDENTITY_PATH = _RUNTIME_DIR / "intelligence_identity.py"
+
+
+def _load_canonical_identity():
+    private_name = "naya_canonical_intelligence_identity"
+    cached = sys.modules.get(private_name)
+    if cached is not None:
+        return cached
+    if not _IDENTITY_PATH.is_file():
+        raise RuntimeError("canonical intelligence identity module is missing")
+    spec = importlib.util.spec_from_file_location(private_name, _IDENTITY_PATH)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("canonical intelligence identity module cannot be loaded")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[private_name] = module
+    try:
+        spec.loader.exec_module(module)
+    except Exception:
+        sys.modules.pop(private_name, None)
+        raise
+    return module
+
+
+IDENTITY = _load_canonical_identity()
+identity_fingerprint = IDENTITY.identity_fingerprint
+identity_binding_fingerprint = IDENTITY.identity_binding_fingerprint
 
 POINTS = {
     "meaningful_like": 1, "helpful_reaction": 1, "save_useful_intelligence": 2,
@@ -50,6 +82,10 @@ class LedgerEvent:
     previous_integrity_hash: Optional[str]
     privacy_class: str
     status: str
+    execution_authorization_binding_hash: Optional[str] = None
+    identity_id: Optional[str] = None
+    identity_fingerprint: Optional[str] = None
+    identity_binding_hash: Optional[str] = None
 
 def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -61,6 +97,10 @@ def _ledger_payload(event: LedgerEvent) -> dict:
         "actor_ref": event.actor_ref, "object_ref": event.object_ref,
         "parent_event_id": event.parent_event_id, "evidence_ref": event.evidence_ref,
         "privacy_class": event.privacy_class, "status": "evidence_available",
+        "execution_authorization_binding_hash": event.execution_authorization_binding_hash,
+        "identity_id": event.identity_id,
+        "identity_fingerprint": event.identity_fingerprint,
+        "identity_binding_hash": event.identity_binding_hash,
     }
 
 def _hash_event(payload: dict, previous_hash: Optional[str]) -> str:
@@ -74,7 +114,11 @@ def create_smart_note(title: str, content: str, *, note_id: Optional[str] = None
     return SmartNote(note_id or f"note_{uuid4().hex}", title.strip(), content.strip(), utc_now())
 
 def create_ledger_event(note: SmartNote, *, actor_ref: Optional[str] = None,
-                        previous: Optional[LedgerEvent] = None) -> LedgerEvent:
+                        previous: Optional[LedgerEvent] = None,
+                        execution_authorization_binding_hash: Optional[str] = None,
+                        identity_id: Optional[str] = None,
+                        identity_fingerprint: Optional[str] = None,
+                        identity_binding_hash: Optional[str] = None) -> LedgerEvent:
     event_id = f"ledger_{uuid4().hex}"
     payload = {
         "ledger_event_id": event_id, "schema_version": "1.0", "event_type": "SMART_NOTE_CREATED",
@@ -82,6 +126,10 @@ def create_ledger_event(note: SmartNote, *, actor_ref: Optional[str] = None,
         "object_ref": note.note_id, "parent_event_id": previous.ledger_event_id if previous else None,
         "evidence_ref": f"note:{note.note_id}", "privacy_class": "protected" if actor_ref else "private",
         "status": "evidence_available",
+        "execution_authorization_binding_hash": execution_authorization_binding_hash,
+        "identity_id": identity_id,
+        "identity_fingerprint": identity_fingerprint,
+        "identity_binding_hash": identity_binding_hash,
     }
     return LedgerEvent(**payload, verification_receipt_ref=None,
                        integrity_hash=_hash_event(payload, previous.integrity_hash if previous else None),
@@ -98,8 +146,85 @@ def verify_event(event: LedgerEvent) -> tuple[LedgerEvent, dict]:
         "event_id": event.ledger_event_id, "verification_state": "verified", "verified_at": utc_now(),
         "method": "evidence_reference_and_sha256_integrity_match", "evidence_ref": event.evidence_ref,
         "verifier_ref": "smart-ledger-engine-v1", "reason": "Evidence exists and the deterministic integrity hash matches.",
+        "execution_authorization_binding_hash": event.execution_authorization_binding_hash,
+        "identity_id": event.identity_id,
+        "identity_fingerprint": event.identity_fingerprint,
+        "identity_binding_hash": event.identity_binding_hash,
     }
     return LedgerEvent(**{**asdict(event), "verification_receipt_ref": receipt["receipt_id"], "status": "verified"}), receipt
+
+def record_authorized_execution(
+    gate: Any,
+    authorization: Any,
+    identity_envelope: Mapping[str, Any],
+    *,
+    action_ref: str,
+    evidence_ref: str,
+    outcome_ref: str,
+    previous: Optional[LedgerEvent] = None,
+) -> tuple[LedgerEvent, dict]:
+    """Record an execution only after the exact gate authorization verifies."""
+    if not action_ref.strip() or not evidence_ref.strip() or not outcome_ref.strip():
+        raise ValueError("action_ref, evidence_ref, and outcome_ref are required")
+
+    ok, reasons = gate.verify(authorization, identity_envelope)
+    if not ok:
+        raise ValueError("execution authorization verification failed: " + "; ".join(reasons))
+
+    identity_fp = identity_fingerprint(identity_envelope)
+    execution_binding = {
+        "authority_id": authorization.authority_id,
+        "decision_id": authorization.decision_id,
+        "action_id": authorization.action_id,
+        "action_type": authorization.action_type,
+        "target": authorization.target,
+        "actor_id": authorization.actor_id,
+        "scope": authorization.scope,
+        "permission": authorization.permission,
+    }
+    identity_bound_hash = identity_binding_fingerprint(identity_envelope, execution_binding)
+    if authorization.identity_fingerprint != identity_fp:
+        raise ValueError("authorization identity fingerprint does not match receipt identity")
+    if authorization.identity_binding_hash != identity_bound_hash:
+        raise ValueError("authorization identity binding does not match receipt identity/action")
+
+    now = utc_now()
+    event_id = f"ledger_exec_{uuid4().hex}"
+    payload = {
+        "ledger_event_id": event_id,
+        "schema_version": "1.0",
+        "event_type": "CONSEQUENTIAL_ACTION_EXECUTED",
+        "event_at": now,
+        "created_at": now,
+        "actor_ref": str(identity_envelope["identity_id"]),
+        "object_ref": authorization.target,
+        "parent_event_id": previous.ledger_event_id if previous else None,
+        "evidence_ref": evidence_ref,
+        "privacy_class": "protected",
+        "status": "evidence_available",
+        "execution_authorization_binding_hash": authorization.binding_hash,
+        "identity_id": str(identity_envelope["identity_id"]),
+        "identity_fingerprint": identity_fp,
+        "identity_binding_hash": identity_bound_hash,
+    }
+    event = LedgerEvent(
+        **payload,
+        verification_receipt_ref=None,
+        integrity_hash=_hash_event(payload, previous.integrity_hash if previous else None),
+        previous_integrity_hash=previous.integrity_hash if previous else None,
+    )
+    verified_event, receipt = verify_event(event)
+    receipt.update({
+        "execution_id": authorization.action_id,
+        "action_ref": action_ref,
+        "outcome_ref": outcome_ref,
+        "authority_id": authorization.authority_id,
+        "decision_id": authorization.decision_id,
+        "target": authorization.target,
+        "permission": authorization.permission,
+    })
+    return verified_event, receipt
+
 
 def calculate_value(event: LedgerEvent, event_type: str = "smart_note") -> dict:
     if event.status != "verified":
