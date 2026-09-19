@@ -2,6 +2,7 @@
 """Tests for the write-authorized execution-boundary Activity writer."""
 from __future__ import annotations
 
+import os
 import tempfile
 from pathlib import Path
 
@@ -32,7 +33,8 @@ def _event() -> tuple[dict, dict]:
 
 
 def main() -> int:
-    root = Path(tempfile.mkdtemp(prefix="activity-writer-test-"))
+    proof_root = os.environ.get("ACTIVITY_WRITER_PROOF_ROOT")
+    root = Path(proof_root) if proof_root else Path(tempfile.mkdtemp(prefix="activity-writer-test-"))
     event, execution = _event()
 
     result = write_execution_activity(
