@@ -26,8 +26,9 @@ The 01–58 directive requires every area to define meaning, function, ownership
 5. `features/SMART-MAIL.md`
 6. `features/SMART-SHARE.md`
 7. `features/SMART-SPACES.md`
-8. `features/YOUR-INTELLIGENCE-TODAY.md`
-9. `features/INTELLIGENT-REPORTS.md`
+8. `features/YOUR-CONNECTIONS.md`
+9. `features/YOUR-INTELLIGENCE-TODAY.md`
+10. `features/INTELLIGENT-REPORTS.md`
 
 ## Standard feature contract
 
@@ -41,7 +42,7 @@ A feature is not considered complete merely because its UI exists. Source, build
 
 ## Source map
 
-The primary feature definitions are `.naya` 03–14, especially 04/05/07/08/09/11/12/13/14. System architecture and governance are informed by 15–39. Hub/runtime/event/identity/verification/continuity are defined by 40–58. The canonical 01–58 directive is `.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`.
+The primary feature definitions are `.naya` 03–14. Your Connections is a cross-cutting product surface derived from the existing Smart Space, identity/privacy, Smart Mail and Smart List contracts; no new relationship authority is invented until runtime mapping proves what already exists. System architecture and governance are informed by 15–39. Hub/runtime/event/identity/verification/continuity are defined by 40–58. The canonical 01–58 directive is `.naya/NAYAPOWER-01-58-SYSTEM-MAP-DEFINITION-DIRECTIVE-V1.md`.
 
 ## NIS operating rule
 
