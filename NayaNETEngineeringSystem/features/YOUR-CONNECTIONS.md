@@ -129,3 +129,18 @@ Existing Smart Space, identity/privacy/publication, Smart Mail and Smart List co
 - [x] One next action recorded
 
 **Current state:** DEFINED — ARCHITECTURE ESTABLISHED, RUNTIME UNPROVEN.
+
+
+## ACTION 02 RECONCILIATION — 2026-09-19
+
+**Canonical identity proven:** `auth.users.id = members.id` (291 auth users, 291 members, zero unmatched).
+
+**Canonical profile selected:** `nayanet_profiles.member_id → members.id` (83 populated rows). `v7_profiles` currently has 0 rows and is not the populated relationship profile substrate.
+
+**Canonical Space proven:** `nayanet_spaces`, owned by `owner_member_id → members.id`, visibility `private|shared`, owner-only RLS.
+
+**Membership result:** **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND.** No dedicated Space membership/participant table or Space JOIN/LEAVE/INVITE function exists in the live public production inventory. `v7_mail_members` is thread membership and must not be reused as Space membership.
+
+**Hub result:** the canonical Hub HTML is a visual baseline; it contains Connections/Smart Mail UI but no direct Supabase/auth/Space/Mail runtime wiring. UI labels are not runtime proof.
+
+**Implementation rule:** do not introduce membership until Action 03 reconciles `v7_connection_requests` and defines the canonical relationship state/provenance. No production schema was changed in Action 02.
