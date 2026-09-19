@@ -52,7 +52,7 @@ def test_failed_can_never_be_ready():
 
 
 if __name__ == "__main__":
-    test_current_repository_is_blocked_by_unproven_boundaries()
+    test_current_runtime_proofs_are_not_downgraded_by_control_plane_only_changes()
     test_unknown_can_never_be_ready()
     test_failed_can_never_be_ready()
     print("NAYA_SUPERBRAIN_READY_CONTRACT=PASS")
