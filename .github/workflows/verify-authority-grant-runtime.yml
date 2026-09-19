@@ -47,7 +47,7 @@ jobs:
           const browser=await chromium.launch({headless:true}),context=await browser.newContext(),page=await context.newPage();
           await page.goto(hub+'/identity.html?name='+encodeURIComponent(probe),{waitUntil:'networkidle',timeout:60000});
           await page.locator('#name').fill(probe); await page.locator('#alias').fill(alias); await page.locator('#enter').click();
-          await page.waitForURL(url => url.hostname === 'sparkling-shape-7ae5.smartnetpodcast.workers.dev' && url.pathname.includes('/releases/'),{waitUntil:'domcontentloaded',timeout:60000}); await page.waitForLoadState('networkidle',{timeout:60000});
+          await page.waitForURL(url => url.hostname === 'sparkling-shape-7ae5.smartnetpodcast.workers.dev' && url.pathname.includes('/releases/'),{waitUntil:'domcontentloaded',timeout:60000}); await page.waitForLoadState('domcontentloaded',{timeout:30000});
           const result=await page.evaluate(async ({url,key,run,dreamReplayId,learningEvidenceId})=>{
             const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
             const client=sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
