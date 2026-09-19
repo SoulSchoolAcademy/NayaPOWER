@@ -2,6 +2,7 @@ import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './app/App';
 import './styles/tokens.css';
+import './styles/feature-surfaces.css';
 import './styles/globals.css';
 import './styles/responsive.css';
 import './styles/smart-feed-board.css';

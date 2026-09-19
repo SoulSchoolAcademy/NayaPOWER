@@ -9,6 +9,7 @@ import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import type { PISFeed } from '../data/pis';
 import { AppShellV3 } from './AppShellV3';
 import { routes } from './routes';
+import { FeatureSurface } from './FeatureSurface';
 
 type LensTab = { key: Lens; label: string; detail: string; icon: string };
 const lensTabs: LensTab[] = [
@@ -112,6 +113,9 @@ function CommandCenter({ initialLens = 'personal' }: { initialLens?: Lens }) {
 function Workspace({ path }: { path: string }): ReactNode {
   if (path === routes.settings) return <AuthPanel />;
   if (path === routes.home) return <HubHome onExplore={() => { history.pushState({}, '', routes.feed); dispatchEvent(new PopStateEvent('popstate')); }} />;
+  const surfaces: Record<string, Parameters<typeof FeatureSurface>[0]['kind']> = { [routes.today]:'today', [routes.reports]:'reports', [routes.share]:'share', [routes.connections]:'connections', [routes.lists]:'lists', [routes.mail]:'mail', [routes.spaces]:'spaces', [routes.ledger]:'ledger' };
+  const surface = surfaces[path];
+  if (surface) return <FeatureSurface kind={surface} />;
   return <CommandCenter initialLens={routeLens(path)} />;
 }
 
