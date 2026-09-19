@@ -155,7 +155,7 @@ const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").i
   member_id:sender.id,
   target_id:"p1-controlled-paired-policy-"+runId,
   level:"E6_RETAINED",
-  provenance:"VERIFIED_OUTCOME",
+  provenance:"VERIFICATION",
   status:"ACTIVE",
   claim:lessonClaim,
   observed_value:{run_id:runId,baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,comparison_result:comparison.result,behavioral_difference:true,policy_id:v2.id},
