@@ -47,7 +47,7 @@ const receiverId = receiver.user.id;
 // do not bypass the relationship gate with direct table writes.
 const spaceRows = await request(base + '/rest/v1/nayanet_spaces', {
   method: 'POST',
-  headers: authHeaders(sender.access_token) ,
+  headers: { ...authHeaders(sender.access_token), Prefer: 'return=representation' },
   body: JSON.stringify({
     owner_member_id: senderId,
     name: 'P0 Smart Mail Proof Space',
