@@ -1,0 +1,49 @@
+# NayaNET Engineering System — Completion Pass
+Date: 2026-09-19
+
+## Purpose
+Engine-first closure of the ten NayaNET Engineering System feature areas. Human onboarding is intentionally excluded.
+
+## Review matrix
+
+| Feature | Before | Work completed | Current truth |
+|---|---|---|---|
+| Smart Tabs | Defined | Canonical production Edge Function reconciled into source; migration source restored; persistent authenticated Hub bar added; owner-scoped CRUD | IMPLEMENTED · runtime auth proof started |
+| Smart Feed | Defined / partial | Authenticated Hub lenses now call canonical `naya-smart-feed`; event adapter added; save/favorite/like/love and publication actions routed through governed backend | IMPLEMENTED SUBSTRATE · browser/runtime parity still to prove |
+| Smart Ledger | Implemented substrate | Canonical Ledger remains the only evidence store; feature surface reads owner-scoped Ledger | SUBSTRATE VERIFIED · current human surface not fully accepted |
+| Smart List | Implemented substrate | Canonical List surface now creates Lists through existing RPC and reads canonical Lists | IMPLEMENTED · two-user product proof pending |
+| Smart Mail | Implemented substrate | Product surface now sends through existing governed Edge Function; feature RPC anon execution removed | IMPLEMENTED · real two-user browser proof pending |
+| Smart Share | Defined | Publish/revoke routed through canonical Smart Feed publication boundary with explicit consent and owner checks | IMPLEMENTED SUBSTRATE · real recipient/privacy proof pending |
+| Smart Spaces | Foundation | Create, join, leave UI wired to canonical Space store/RPCs | IMPLEMENTED SUBSTRATE · two-user lifecycle proof pending |
+| Your Connections | Defined | Save/revoke UI wired to canonical Connection RPCs | IMPLEMENTED SUBSTRATE · two-user lifecycle proof pending |
+| Your Intelligence Today | Defined | Daily derived view reads canonical intelligence index, supports date selection, source traceability and truthful empty-day state | IMPLEMENTED DERIVED VIEW · synthesis/refresh acceptance pending |
+| Intelligent Reports | Defined | Report surface reads canonical `v7_intelligence_reports`, displays period/status/source evidence | IMPLEMENTED VIEW · generation/regeneration acceptance pending |
+
+## Security work
+The user-facing relationship, list, space and Smart Mail SECURITY DEFINER RPCs are now explicitly authenticated-only. Legacy anon EXECUTE grants were removed.
+
+Verified after migration:
+- `nayanet_join_space`: no longer in anon SECURITY DEFINER findings.
+- `nayanet_leave_space`: no longer in anon SECURITY DEFINER findings.
+- `nayanet_save_connection`: no longer in anon SECURITY DEFINER findings.
+- `nayanet_revoke_connection`: no longer in anon SECURITY DEFINER findings.
+- Smart List mutation RPCs: no longer in anon SECURITY DEFINER findings.
+- Smart Mail mutation RPCs: no longer in anon SECURITY DEFINER findings.
+
+Existing unrelated security-advisor findings remain and are not silently classified as solved by this pass.
+
+## Deliberate boundaries
+- No onboarding work.
+- No fabricated A/B identities.
+- No RLS weakening.
+- No alternate event store.
+- No alternate Ledger.
+- No replacement of the proven Smart Mail engine.
+- Today and Reports remain projections/derived views over canonical sources.
+
+## Verification boundary
+Source changes are on branch `nis-completion-20260919` and PR #329. Production Smart Tabs Edge Function was deployed as version 4 with JWT verification enabled.
+
+Unauthenticated Smart Tabs POST was observed returning HTTP 401.
+
+Full browser acceptance is still NOT VERIFIED. The next proof must be authenticated runtime verification of each changed surface, not more speculative architecture work.
