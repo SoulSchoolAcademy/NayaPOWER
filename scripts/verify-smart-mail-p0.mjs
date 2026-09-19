@@ -47,9 +47,17 @@ await rpc(sender.access_token, 'nayanet_join_space', { p_space_id: spaceId });
 await rpc(receiver.access_token, 'nayanet_join_space', { p_space_id: spaceId });
 await rpc(sender.access_token, 'nayanet_save_connection', { p_target_member_id: receiverId, p_space_id: spaceId });
 await rpc(receiver.access_token, 'nayanet_save_connection', { p_target_member_id: senderId, p_space_id: spaceId });
-const senderConnections = await rpc(sender.access_token, 'nayanet_list_connections', {});
-const mutual = senderConnections?.some?.(x => x.connected_member_id === receiverId && x.status === 'active');
-if (!mutual) throw new Error('MUTUAL_CONNECTION_SETUP_FAILED');
+const senderConnections = await request(
+  base + '/rest/v1/nayanet_connections?select=id,owner_member_id,connected_member_id,status&owner_member_id=eq.' + senderId + '&connected_member_id=eq.' + receiverId,
+  { headers: authHeaders(sender.access_token) }
+);
+const reverseConnections = await request(
+  base + '/rest/v1/nayanet_connections?select=id,owner_member_id,connected_member_id,status&owner_member_id=eq.' + receiverId + '&connected_member_id=eq.' + senderId,
+  { headers: authHeaders(receiver.access_token) }
+);
+if (senderConnections.length !== 1 || reverseConnections.length !== 1 || senderConnections[0].status !== 'active' || reverseConnections[0].status !== 'active') {
+  throw new Error('MUTUAL_CONNECTION_SETUP_FAILED');
+}
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
 const requestId = 'p0-request-' + crypto.randomUUID();
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
