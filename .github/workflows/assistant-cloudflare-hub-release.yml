@@ -211,7 +211,8 @@ jobs:
               await page.waitForTimeout(3000);
               const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
               if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('Authenticated NayaNET identity not established: ' + JSON.stringify(identityProof));
-              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              await page.waitForTimeout(3000);
               const result = await page.evaluate(async () => ({
                 title: document.title,
                 marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
