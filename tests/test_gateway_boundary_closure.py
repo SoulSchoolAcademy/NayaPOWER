@@ -276,7 +276,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         start_claimed()
         altered = dataclasses.replace(self.credential, **replacement)
         with self.assertRaises(AssertionError) as ctx:
-            MTG.authorize(self.action, execution_authorization=altered, gate=self.gate)
+            MTG.authorize(self.action, execution_authorization=altered, gate=self.gate, identity_envelope=self.identity)
         self.assertIn("binding_hash does not match", str(ctx.exception))
 
     def test_010_authority_id_mismatch_refused(self):
@@ -304,7 +304,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         start_claimed()
         altered = dataclasses.replace(self.credential, governance_state="EXECUTING")
         with self.assertRaises(AssertionError) as ctx:
-            MTG.authorize(self.action, execution_authorization=altered, gate=self.gate)
+            MTG.authorize(self.action, execution_authorization=altered, gate=self.gate, identity_envelope=self.identity)
         message = str(ctx.exception)
         self.assertTrue(
             any(k in message for k in ("not issued by this gate", "binding_hash", "governance_state is not AUTHORIZED")),
@@ -316,7 +316,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         start_claimed()
         action = dict(self.action, permission="deploy_public_runtime")
         with self.assertRaises(AssertionError) as ctx:
-            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate)
+            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate, identity_envelope=self.identity)
         self.assertIn("permission does not match", str(ctx.exception))
 
     def test_019_action_scope_outside_credential_refused(self):
@@ -378,7 +378,12 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
             path.write_text(json.dumps(payload), encoding="utf-8")
             start_claimed()
             with self.assertRaises(AssertionError) as ctx:
-                MTG.authorize(action, execution_authorization=issued.authorization, gate=gate)
+                MTG.authorize(
+                    action,
+                    execution_authorization=issued.authorization,
+                    gate=gate,
+                    identity_envelope=identity_for(authority),
+                )
             self.assertIn("revoked", str(ctx.exception))
 
     # ---- Q: expiration at time of use -----------------------------------
@@ -394,7 +399,14 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         gate = GATE.UniversalExecutionGate(GATE.AuthorityRegistry({grant.authority_id: grant}))
         decision = make_decision(grant, "GBLC-EXP-DEC")
         action = make_action(grant, decision.decision_id, action_id="GBLC-EXP-ACT")
-        issued = gate.authorize(authority=grant, decision=decision, action=action, now=now_iso(-1))
+        issued = gate.authorize(
+            authority=grant,
+            decision=decision,
+            action=action,
+            identity_envelope=identity_for(grant),
+            consequential=True,
+            now=now_iso(-1),
+        )
         self.assertTrue(issued.allowed)
 
         start_claimed()
