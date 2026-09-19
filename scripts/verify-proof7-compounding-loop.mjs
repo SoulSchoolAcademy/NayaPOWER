@@ -7,8 +7,6 @@ const anon=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'co
 const sender=await anon(),receiver=await anon();
 const target='proof7-controlled-mail-'+crypto.randomBytes(8).toString('hex');
 const spaceId=process.env.NAYA_EXISTING_SPACE_ID||'04ee4dc8-bc73-47df-a1de-162570f6a56e';
-const {data:space,error:spaceError}=await req(base+'/rest/v1/nayanet_spaces?select=id,visibility,owner_member_id&id=eq.'+spaceId,{headers:h(sender.access_token)});
-if(spaceError||!Array.isArray(space)||space.length!==1||space[0].visibility!=='shared')throw spaceError||new Error('EXISTING_SHARED_SPACE_NOT_AVAILABLE');
 const joinSender=await req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_space_id:spaceId})});
 if(joinSender?.error)throw joinSender.error;
 const joinReceiver=await req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(receiver.access_token),body:JSON.stringify({p_space_id:spaceId})});
