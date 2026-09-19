@@ -36,13 +36,26 @@ jobs:
         run: |
           set -euo pipefail
           test -s '2026 09 17 NAYANET HUB.html'
-          mkdir -p dist
+          test -s 'assistant-runtime.js'
+          test -s 'identity.html'
+          test -s 'NAYANET/name-first-auth-adapter.js'
+          mkdir -p dist/NAYANET
           cp '2026 09 17 NAYANET HUB.html' dist/index.html
           cp 'assistant-runtime.js' dist/assistant-runtime.js
+          cp 'identity.html' dist/identity.html
+          cp 'NAYANET/name-first-auth-adapter.js' dist/NAYANET/name-first-auth-adapter.js
           grep -q 'nayanet-direct-nine' dist/index.html
           grep -q 'assistant-runtime.js' dist/index.html
           grep -q 'NayaNET — Intelligent Hub' dist/index.html
+          grep -q 'id="name"' dist/identity.html
+          grep -q 'id="alias"' dist/identity.html
+          grep -q 'id="enter"' dist/identity.html
+          grep -q 'NayaNETNameFirstAuth' dist/identity.html
+          grep -q 'signInAnonymously' dist/NAYANET/name-first-auth-adapter.js
           sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
+          sha256sum dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
+          sha256sum dist/identity.html | tee "$RUNNER_TEMP/identity-source.sha256"
+          sha256sum dist/NAYANET/name-first-auth-adapter.js | tee "$RUNNER_TEMP/adapter-source.sha256"
           echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
 
       - name: Bind exact authorized Cloudflare target
@@ -65,24 +78,32 @@ jobs:
         run: |
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
+          runtime_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/runtime-source.sha256")
+          identity_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/identity-source.sha256")
+          adapter_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/adapter-source.sha256")
           verified=0
           for attempt in $(seq 1 30); do
             curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live.html"
             curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
+            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/identity.html?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-identity.html"
+            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/NAYANET/name-first-auth-adapter.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-name-first-adapter.js"
             sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
             live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
-            runtime_source_hash=$(sha256sum assistant-runtime.js | cut -d' ' -f1)
             runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
-            if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'assistant-runtime.js' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; then
+            identity_live_hash=$(sha256sum "$RUNNER_TEMP/live-identity.html" | cut -d' ' -f1)
+            adapter_live_hash=$(sha256sum "$RUNNER_TEMP/live-name-first-adapter.js" | cut -d' ' -f1)
+            if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
               verified=1
               break
             fi
-            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash runtime_source=$runtime_source_hash runtime_live=$runtime_live_hash"
+            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash runtime_source=$runtime_source_hash runtime_live=$runtime_live_hash identity_source=$identity_source_hash identity_live=$identity_live_hash adapter_source=$adapter_source_hash adapter_live=$adapter_live_hash"
             sleep 2
           done
           test "$verified" = "1"
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
           echo "LIVE_EXACT_RUNTIME_PARITY_VERIFIED sha256=$runtime_live_hash"
+          echo "LIVE_EXACT_IDENTITY_PARITY_VERIFIED sha256=$identity_live_hash"
+          echo "LIVE_EXACT_NAME_FIRST_ADAPTER_PARITY_VERIFIED sha256=$adapter_live_hash"
 
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
