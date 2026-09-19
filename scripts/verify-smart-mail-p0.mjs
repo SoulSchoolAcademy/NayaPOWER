@@ -92,6 +92,34 @@ const cognition = await request(
 if (!Array.isArray(cognition) || cognition.length !== 1) throw new Error('COGNITION_NOT_RETRIEVABLE');
 if (cognition[0].receipt_id !== first.execution_receipt_id) throw new Error('COGNITION_RECEIPT_LINEAGE_MISMATCH');
 
+const learningEvidence = await request(
+  base + '/rest/v1/learning_evidence?select=id,member_id,target_id,level,status,claim,source_event_id,verification_method,observed_value&member_id=eq.' + senderId + '&source_event_id=eq.' + encodeURIComponent(cognition[0].event_id) + '&status=eq.ACTIVE',
+  { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
+);
+if (!Array.isArray(learningEvidence) || learningEvidence.length !== 1) throw new Error('LEARNING_EVIDENCE_BRIDGE_MISSING');
+if (learningEvidence[0].source_event_id !== cognition[0].event_id || learningEvidence[0].member_id !== senderId) throw new Error('LEARNING_EVIDENCE_LINEAGE_MISMATCH');
+
+const appliedLearning = await request(base + '/functions/v1/naya-learning-apply', {
+  method: 'POST',
+  headers: authHeaders(sender.access_token),
+  body: JSON.stringify({ evidence_id: learningEvidence[0].id })
+});
+if (!appliedLearning?.ok || !appliedLearning.learning?.learner_state_version) throw new Error('LEARNING_APPLY_FAILED');
+
+const learnerState = await request(
+  base + '/rest/v1/learner_states?select=member_id,version,current_evidence_by_target&member_id=eq.' + senderId,
+  { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
+);
+if (!Array.isArray(learnerState) || learnerState.length !== 1 || Number(learnerState[0].version) < Number(appliedLearning.learning.learner_state_version)) throw new Error('LEARNER_STATE_NOT_PERSISTED');
+
+const coldDecision = await request(base + '/functions/v1/naya-decision-context', {
+  method: 'POST',
+  headers: authHeaders(sender.access_token),
+  body: JSON.stringify({ target_id: learningEvidence[0].target_id })
+});
+if (!coldDecision?.ok || coldDecision.decision?.decision !== 'USE_VERIFIED_LEARNING_CONTEXT' || coldDecision.decision?.influenced !== true) throw new Error('COLD_LEARNING_RETRIEVAL_NOT_INFLUENCED');
+if (coldDecision.decision?.authority?.changed !== false || coldDecision.decision?.authority?.granted !== false) throw new Error('LEARNING_CHANGED_AUTHORITY');
+
 const receipt = await request(
   base + '/rest/v1/nayanet_execution_receipts?select=id,user_id,action,status,evidence,learning,request_id,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
