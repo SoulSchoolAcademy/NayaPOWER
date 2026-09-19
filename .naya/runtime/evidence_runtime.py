@@ -135,7 +135,31 @@ def validate_store(expected_commit: str | None = None) -> list[str]:
     return errors
 
 
-def main() -> int:
+
+
+def persist_evidence(evidence: dict[str, Any], *, evidence_store: Path | None = None) -> dict[str, Any]:
+    """Persist one validated evidence record in the existing canonical evidence store.
+
+    This is a storage boundary only: it never verifies a claim or changes
+    verification status. Replays of the same evidence are accepted; conflicting
+    payloads for the same evidence_id are rejected.
+    """
+    errors = validate_evidence(evidence)
+    if errors:
+        raise ValueError("evidence rejected: " + "; ".join(errors))
+    store = Path(evidence_store) if evidence_store else EVIDENCE_STORE
+    store.mkdir(parents=True, exist_ok=True)
+    evidence_id = str(evidence["evidence_id"])
+    path = store / f"{evidence_id}.json"
+    canonical = json.dumps(evidence, sort_keys=True, ensure_ascii=False, indent=2) + "\\n"
+    if path.exists():
+        existing = json.loads(path.read_text(encoding="utf-8"))
+        if existing == evidence:
+            return {"status": "REPLAY", "evidence_id": evidence_id, "path": str(path)}
+        return {"status": "CONFLICT", "evidence_id": evidence_id, "path": str(path)}
+    path.write_text(canonical, encoding="utf-8")
+    return {"status": "CREATED", "evidence_id": evidence_id, "path": str(path)}
+\ndef main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     v = sub.add_parser("validate"); v.add_argument("--commit", default=None)
