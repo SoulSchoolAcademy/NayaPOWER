@@ -128,9 +128,9 @@ const receiverConnectionId=saveReceiver.data?.connection?.id;
 if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTION_NOT_CREATED");
 
 const cases=[
-  {suffix:"C1",task:"request a concise acknowledgement of the controlled test message",v1:{subject:"Controlled test acknowledgement 1",body:"Please acknowledge this controlled test message."},v2:{subject:"Controlled test acknowledgement 1",body:"Verified context shows this receiver retrieves governed messages. Please acknowledge this controlled test message."}},
-  {suffix:"C2",task:"request a concise confirmation that the receiver can retrieve a governed message",v1:{subject:"Controlled retrieval confirmation",body:"Please confirm you can retrieve this governed message."},v2:{subject:"Controlled retrieval confirmation",body:"Verified retrieval context is available. Please confirm you can retrieve this governed message."}},
-  {suffix:"C3",task:"request a concise acknowledgement of the final controlled test message",v1:{subject:"Controlled final acknowledgement",body:"Please acknowledge the final controlled test message."},v2:{subject:"Controlled final acknowledgement",body:"Verified receiver context is available. Please acknowledge the final controlled test message."}}
+  {suffix:"C1",task:"return the held-out answer token from verified context",answer_token:"NAYA-HOLDOUT-ALPHA-7",v1:{subject:"Controlled held-out response 1",body:"Please return the held-out answer token from your context."},v2:{subject:"Controlled held-out response 1",body:"Verified context contains the answer token NAYA-HOLDOUT-ALPHA-7. Please return the held-out answer token."}},
+  {suffix:"C2",task:"return the second held-out answer token from verified context",answer_token:"NAYA-HOLDOUT-BETA-9",v1:{subject:"Controlled held-out response 2",body:"Please return the second held-out answer token from your context."},v2:{subject:"Controlled held-out response 2",body:"Verified context contains the answer token NAYA-HOLDOUT-BETA-9. Please return the second held-out answer token."}},
+  {suffix:"C3",task:"return the third held-out answer token from verified context",answer_token:"NAYA-HOLDOUT-GAMMA-4",v1:{subject:"Controlled held-out response 3",body:"Please return the third held-out answer token from your context."},v2:{subject:"Controlled held-out response 3",body:"Verified context contains the answer token NAYA-HOLDOUT-GAMMA-4. Please return the third held-out answer token."}}
 ];
 
 const send=async(token,policy,decision,caseId,inputHash,group)=>{
@@ -163,6 +163,31 @@ const verify=async(token,messageId)=>{
   return data;
 };
 
+const recordReceiverReply = async (message, caseId, expectedToken) => {
+  const responseBody = message.body.includes(expectedToken) ? expectedToken : "NO_MATCH";
+  const {data:reply,error} = await receiverClient.from("v7_mail_messages").insert({
+    thread_id:message.thread_id,
+    sender_id:receiver.id,
+    body:responseBody,
+    metadata:{
+      schema_version:"NAYANET_TEST_REPLY_V1",
+      reply_to_message_id:message.id,
+      experiment_case_id:caseId,
+      receiver_fixture:"held_out_response_rule_v1"
+    }
+  }).select("id").single();
+  if(error||!reply?.id) throw error||new Error("RECEIVER_REPLY_CREATE_FAILED");
+  const expectedHash=await sha256(expectedToken);
+  const {data:outcome,error:outcomeError}=await receiverClient.rpc("nayanet_record_smart_mail_response_outcome",{
+    p_receipt_id:message.execution_receipt_id,
+    p_message_id:message.id,
+    p_reply_message_id:reply.id,
+    p_expected_reply_hash:expectedHash
+  });
+  if(outcomeError||outcome?.status!=="VERIFIED") throw outcomeError||new Error("RECEIVER_RESPONSE_OUTCOME_FAILED:"+JSON.stringify(outcome));
+  return {reply, outcome, expectedHash, responseBody};
+};
+
 const caseReports=[];
 for(const c of cases){
   const caseId="paired-"+runId+"-"+c.suffix;
@@ -173,7 +198,12 @@ for(const c of cases){
   await verify(receiverToken,a.data.message_id);
   await verify(receiverToken,b.data.message_id);
 
-  await transition(v1.id,"OBSERVED",{observation:"controlled execution and receiver verification completed",case_id:caseId});
+  const aMessage={id:a.data.message_id,thread_id:a.data.thread_id,execution_receipt_id:a.data.execution_receipt_id,body:c.v1.body};
+  const bMessage={id:b.data.message_id,thread_id:b.data.thread_id,execution_receipt_id:b.data.execution_receipt_id,body:c.v2.body};
+  const aResponse=await recordReceiverReply(aMessage,caseId,c.answer_token);
+  const bResponse=await recordReceiverReply(bMessage,caseId,c.answer_token);
+
+  await transition(v1.id,"OBSERVED",{observation:"controlled execution, receiver verification and response outcome completed",case_id:caseId});
   await transition(v2.id,"OBSERVED",{observation:"controlled execution and receiver verification completed",case_id:caseId});
   await transition(v1.id,"VERIFIED",{verification:"execution receipt + receiver verification",case_id:caseId});
   await transition(v2.id,"VERIFIED",{verification:"execution receipt + receiver verification",case_id:caseId});
@@ -190,10 +220,11 @@ for(const c of cases){
     .in("receipt_id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
   if(outcomeError||independentOutcomes?.length!==2) throw outcomeError||new Error("INDEPENDENT_OUTCOME_COUNT_FAILED");
   for(const o of independentOutcomes){
-    if(!o.verified||o.experiment_case_id!==caseId||!o.verifier_id||o.outcome_type!=="receiver_retrieval") throw new Error("INDEPENDENT_OUTCOME_LINEAGE_INCOMPLETE");
+    if(!o.verified||o.experiment_case_id!==caseId||!o.verifier_id||o.outcome_type!=="receiver_response_accuracy") throw new Error("INDEPENDENT_OUTCOME_LINEAGE_INCOMPLETE");
     const expected=Number(o.benefit)-Number(o.harm)-Number(o.cost)-Number(o.risk_adjusted_loss);
     if(Number(o.verified_value)!==expected) throw new Error("INDEPENDENT_OUTCOME_VALUE_FORMULA_FAILED");
-    if(o.evidence?.receiver_retrieved!==true) throw new Error("INDEPENDENT_RECEIVER_EVIDENCE_MISSING");
+    if(o.evidence?.response_outcome_contract!=="NAYANET_REAL_OUTCOME_VALUE_V2"||typeof o.evidence?.response_match!=="boolean") throw new Error("INDEPENDENT_RESPONSE_EVIDENCE_MISSING");
+    if(o.evidence?.response_sha256===o.evidence?.expected_reply_sha256 && Number(o.verified_value)!==1) throw new Error("RESPONSE_HASH_VALUE_INCONSISTENT");
   }
 
   const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts")
@@ -215,14 +246,22 @@ for(const c of cases){
   }).select("id").single();
   if(evalError||!evalRow) throw evalError||new Error("REAL_OUTCOME_EVALUATION_RECORD_FAILED");
 
-  caseReports.push({case_id:caseId,input_hash:inputHash,baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,result:comparison.result,decision_hashes:{baseline:a.decisionHash,candidate:b.decisionHash}});
+  caseReports.push({
+    case_id:caseId,input_hash:inputHash,answer_token:c.answer_token,
+    baseline_receipt_id:a.data.execution_receipt_id,candidate_receipt_id:b.data.execution_receipt_id,
+    baseline_value:comparison.baseline.verified_value,candidate_value:comparison.candidate.verified_value,
+    result:comparison.result,
+    baseline_response:aResponse.responseBody,candidate_response:bResponse.responseBody,
+    baseline_response_match:aResponse.outcome.response_match,candidate_response_match:bResponse.outcome.response_match,
+    decision_hashes:{baseline:a.decisionHash,candidate:b.decisionHash}
+  });
 }
 
 const aggregateBaseline=caseReports.reduce((n,c)=>n+Number(c.baseline_value),0);
 const aggregateCandidate=caseReports.reduce((n,c)=>n+Number(c.candidate_value),0);
 const aggregateResult=aggregateCandidate>aggregateBaseline?"PROVEN":"NOT_PROVEN";
 
-const lessonClaim="Multi-case held-out paired execution preserved policy identity, receiver verification, independent outcome lineage, and deterministic responsible-value comparison. Policy improvement is proven only if aggregate verified responsible value is strictly greater than baseline.";
+const lessonClaim="Verified receiver-response outcomes established the held-out fact "+cases[0].answer_token+" as reusable context; policy improvement is proven only if aggregate verified responsible value is strictly greater than baseline.";
 const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").insert({
   member_id:sender.id,
   target_id:"p1-controlled-paired-policy-"+runId,
@@ -248,13 +287,57 @@ try {
 }
 if(aggregateCandidate===aggregateBaseline&&!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
 
-const successorStrategy="HISTORY_PLUS_VERIFIED_RECEIPT_V1_REQUIRE_POSITIVE_DELTA";
+const applyLearning=await req(base+"/functions/v1/naya-learning-apply",{
+  method:"POST",headers:h,body:JSON.stringify({evidence_id:lesson.id})
+});
+if(!applyLearning?.ok||!applyLearning.learning?.learner_state_version) throw new Error("LEARNING_APPLY_FAILED");
+
+const coldDecision=await req(base+"/functions/v1/naya-decision-context",{
+  method:"POST",headers:h,body:JSON.stringify({target_id:"p1-controlled-paired-policy-"+runId})
+});
+if(!coldDecision?.ok||coldDecision.decision?.decision!=="USE_VERIFIED_LEARNING_CONTEXT"||coldDecision.decision?.influenced!==true) throw new Error("LEARNING_REUSE_NOT_INFLUENCED");
+if(coldDecision.decision?.authority?.changed!==false||coldDecision.decision?.authority?.granted!==false) throw new Error("LEARNING_REUSE_AUTHORITY_CHANGED");
+const learnedClaim=String(coldDecision.decision?.context?.claim||"");
+if(!learnedClaim.includes(cases[0].answer_token)) throw new Error("LEARNED_CONTEXT_MISSING_HELD_OUT_FACT");
+
+const successorStrategy="HISTORY_PLUS_VERIFIED_LEARNING_CONTEXT_V2";
 const successor=await insertPolicy(3,v2.id,successorStrategy);
+await prepare(successor);
 await evalPolicy(successor.id,"CONTROLLED_TEST",{
   result:"PASS",verified:true,dataset_hash:"p1-learning-"+runId,
   learning_evidence_id:lesson.id,source_policy_id:v2.id,
-  rule:"require candidate verified responsible value > baseline before promotion"
+  rule:"future behavior must consume cold retrieved learning context"
 });
+
+const futureCase={
+  suffix:"F1",
+  task:"return the learned held-out answer token in a fresh future case",
+  answer_token:cases[0].answer_token,
+  v1:{subject:"Future baseline response",body:"Please return the learned held-out answer token."},
+  v3:{subject:"Future learned response",body:"Use the verified learning context: "+learnedClaim+" Return the learned held-out answer token."}
+};
+const futureCaseId="future-"+runId+"-"+futureCase.suffix;
+const frozenFuture={case_id:futureCaseId,receiver_id:receiver.id,task:futureCase.task,prior_verified_context:{source:"cold decision context",claim_hash:await sha256(learnedClaim)}};
+const futureInputHash=await sha256(JSON.stringify(frozenFuture));
+const futureBaseline=await send(senderToken,v1,futureCase.v1,futureCaseId,futureInputHash,"V1F");
+const futureCandidate=await send(senderToken,successor,futureCase.v3,futureCaseId,futureInputHash,"V3F");
+await verify(receiverToken,futureBaseline.data.message_id);
+await verify(receiverToken,futureCandidate.data.message_id);
+const futureBaselineResponse=await recordReceiverReply({id:futureBaseline.data.message_id,thread_id:futureBaseline.data.thread_id,execution_receipt_id:futureBaseline.data.execution_receipt_id,body:futureCase.v1.body},futureCaseId,futureCase.answer_token);
+const futureCandidateResponse=await recordReceiverReply({id:futureCandidate.data.message_id,thread_id:futureCandidate.data.thread_id,execution_receipt_id:futureCandidate.data.execution_receipt_id,body:futureCase.v3.body},futureCaseId,futureCase.answer_token);
+await transition(v1.id,"OBSERVED",{observation:"future held-out baseline observed",case_id:futureCaseId});
+await transition(successor.id,"OBSERVED",{observation:"future learned candidate observed",case_id:futureCaseId});
+await transition(v1.id,"VERIFIED",{verification:"future receiver-response outcome",case_id:futureCaseId});
+await transition(successor.id,"VERIFIED",{verification:"future receiver-response outcome",case_id:futureCaseId});
+
+const {data:futureComparison,error:futureComparisonError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
+  p_baseline_policy_id:v1.id,p_candidate_policy_id:successor.id,
+  p_baseline_receipt_id:futureBaseline.data.execution_receipt_id,p_candidate_receipt_id:futureCandidate.data.execution_receipt_id
+});
+if(futureComparisonError) throw futureComparisonError;
+const futureBehaviorChanged=futureCase.v1.body!==futureCase.v3.body && futureCase.v3.body.includes(learnedClaim);
+if(!futureBehaviorChanged) throw new Error("FUTURE_BEHAVIOR_NOT_CHANGED_FROM_COLD_LEARNING");
+if(futureComparison.result!=="POLICY_IMPROVEMENT_PROVEN") throw new Error("FUTURE_LEARNING_IMPROVEMENT_NOT_PROVEN");
 
 const swapCase=caseReports[0];
 const {error:swapError}=await supabase.rpc("nayanet_compare_verified_policy_outcomes",{
@@ -280,19 +363,29 @@ if(postRevokeProbe.ok||postRevokeData?.ok||!["RELATIONSHIP_REQUIRED","AUTHORITY_
 
 const report={
   schema:"naya.p1.controlled.paired.outcome.receipt.v2",
-  status:aggregateResult==="PROVEN"?"PROVEN":"NOT_PROVEN",
+  status:(aggregateResult==="PROVEN"&&futureComparison.result==="POLICY_IMPROVEMENT_PROVEN")?"PROVEN":"NOT_PROVEN",
   head:process.env.GITHUB_SHA,
   run_id:runId,
   existing_space_id:spaceId,
   cases:caseReports,
   aggregate:{baseline_verified_value:aggregateBaseline,candidate_verified_value:aggregateCandidate,result:aggregateResult},
+  future_behavior:{case_id:futureCaseId,baseline_policy_id:v1.id,candidate_policy_id:successor.id,baseline_value:futureComparison.baseline.verified_value,candidate_value:futureComparison.candidate.verified_value,result:futureComparison.result,behavior_changed:futureBehaviorChanged,learned_claim:learnedClaim},
   receiver_anonymous:true,
   mutual_connection_verified:true,
   receiver_verification:true,
   independent_outcome_contract:true,
   adversarial:{receipt_swap_rejected:true,revocation_denial_proven:true},
-  learning:{durable:true,retrievable:true,successor_policy_created:true},
-  note:"Multi-case controlled paired real execution and receiver verification completed. Improvement is accepted only when aggregate verified responsible value is strictly greater than baseline."
+  learning:{
+    durable:true,
+    retrievable:true,
+    learner_state_version:applyLearning.learning.learner_state_version,
+    cold_decision_influenced:true,
+    authority_unchanged:true,
+    future_behavior_changed:futureBehaviorChanged,
+    successor_policy_created:true,
+    future_comparison:futureComparison
+  },
+  note:"Multi-case controlled paired execution used an independently verified receiver-response outcome. Improvement is accepted only when verified responsible value is strictly greater than baseline; future behavior must also consume cold retrieved learning."
 };
 console.log("P1_MULTI_CASE_CONTROLLED_EXECUTION=PASS");
 console.log("P1_POLICY_RECEIPT_LINEAGE=PASS");
