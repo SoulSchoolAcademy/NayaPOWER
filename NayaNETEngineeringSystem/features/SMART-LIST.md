@@ -31,7 +31,12 @@ Deletion semantics: deleting a list removes the list and memberships, not the un
 Conceptual objects: `smart_list(id, owner_id, name, description, visibility, status, created_at, updated_at)` and `smart_list_membership(list_id, target_id, added_by, added_at, position, source)`. Exact database/API names must follow existing implementation.
 
 ## Connections
-`Feed → Save/Favorite → Lists`; `Lists → Mail/Share/Spaces`; `Connections → optional relationship context`; `Today/Reports → list activity/patterns`; `Ledger → consequential organization/share evidence`.
+`Feed → Save/Favorite → Lists`; `Lists → Mail/Share/Spaces`; `Your Connections → canonical people/relationship references`; `Space membership → connection context → Lists`.
+
+A Smart List may contain canonical intelligence and eligible people/connections. Person entries reference canonical identity/relationship state; they do not copy profile or relationship data. Removing list membership does not remove the connection. `Today/Reports → list activity/patterns`; `Ledger → consequential organization/share evidence`.
+
+## Relationship-system verification
+Prove that a person/connection can be added to a List without duplicating identity, that removing List membership does not remove the connection, and that revoked/removed relationships cannot be used to bypass communication or intelligence authorization.
 
 ## Verification
 Create list; add the same note to two lists; prove no note duplication; remove membership without deleting note; delete list while note remains; refresh retrieval; share a list containing a protected note and prove protected content is not leaked.
