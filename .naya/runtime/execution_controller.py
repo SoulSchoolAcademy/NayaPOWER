@@ -440,10 +440,13 @@ def self_test() -> int:
     events_tmp = Path(tempfile.mkdtemp(prefix="ec-selftest-events-"))
     saved_events_root, saved_index_path = EVENTS_ROOT, INDEX_PATH
     saved_sessions_root, saved_sessions_index_path = SESSIONS_ROOT, SESSIONS_INDEX_PATH
+    import execution_activity_writer as _activity_writer
+    saved_activity_root = _activity_writer.ACTIVITY_ROOT
     EVENTS_ROOT = events_tmp / "events"
     INDEX_PATH = EVENTS_ROOT / "INDEX.json"
     SESSIONS_ROOT = events_tmp / "sessions"
     SESSIONS_INDEX_PATH = SESSIONS_ROOT / "INDEX.json"
+    _activity_writer.ACTIVITY_ROOT = events_tmp / "activity"
     try:
         if STATE.exists(): STATE.unlink()
         transition("CLAIMED", claim_id="CL-TEST", block_id="B-TEST", owner="Naya-Test", scope=["test/block"], start_head="test-head")
@@ -577,6 +580,7 @@ def self_test() -> int:
     finally:
         EVENTS_ROOT, INDEX_PATH = saved_events_root, saved_index_path
         SESSIONS_ROOT, SESSIONS_INDEX_PATH = saved_sessions_root, saved_sessions_index_path
+        _activity_writer.ACTIVITY_ROOT = saved_activity_root
         import shutil
 
         shutil.rmtree(str(events_tmp), ignore_errors=True)
