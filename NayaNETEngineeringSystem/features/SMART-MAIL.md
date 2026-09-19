@@ -86,3 +86,10 @@ The relationship check runs before authority validation and cannot be bypassed b
 Transactional database proof returned **`RELATIONSHIP_REQUIRED`** for a sender/receiver pair with no mutual active Connection.
 
 Current state: **RELATIONSHIP GATE IMPLEMENTED / BROWSER + TWO-REAL-USER PROOF UNPROVEN**.
+
+
+## ACTION 09 PARITY / ACTION 10 CLOSURE — 2026-09-19
+
+Cloudflare source/runtime parity is proven for the canonical Hub artifact. The deployed Hub HTML and `assistant-runtime.js` SHA-256 hashes exactly match the source artifact used for the parity check.
+
+The remaining status is **NOT VERIFIED** only because the final real-human two-user browser acceptance proof has not been executed. No database simulation is being promoted to replace that proof.
