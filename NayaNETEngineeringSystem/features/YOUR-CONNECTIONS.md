@@ -155,3 +155,10 @@ Existing Smart Space, identity/privacy/publication, Smart Mail and Smart List co
 **Events:** JOIN, LEAVE, SAVE CONNECTION and REVOKE CONNECTION use the existing cognition event substrate.
 
 **Not yet verified:** current Hub UI wiring, browser-authenticated lifecycle, Smart List, relationship-gated Smart Mail, two-user live browser proof, Cloudflare parity.
+
+
+## ACTION 09 PARITY / ACTION 10 CLOSURE — 2026-09-19
+
+Cloudflare source/runtime parity is proven for the canonical Hub artifact. The deployed Hub HTML and `assistant-runtime.js` SHA-256 hashes exactly match the source artifact used for the parity check.
+
+The remaining status is **NOT VERIFIED** only because the final real-human two-user browser acceptance proof has not been executed. No database simulation is being promoted to replace that proof.
