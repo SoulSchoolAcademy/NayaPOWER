@@ -1,75 +1,53 @@
-# 🔱 NayaPOWER — Vercel Project Routing Law
+# 🔱 NayaPOWER — Deployment Routing Law
 
-**STATUS:** CANONICAL CROSS-PROJECT DEPLOYMENT GUARDRAIL
-**LAST CONFIRMED:** 2026-08-28
+**STATUS:** CANONICAL CROSS-PROJECT DEPLOYMENT GUARDRAIL  
+**LAST CONFIRMED:** 2026-09-19
 
-## PROBLEM
+## PURPOSE
 
-A governance/source-of-truth confusion can cause an executor to attempt to deploy MAXIS through the NayaPOWER Vercel project merely because NayaPOWER governs MAXIS.
-
-That is incorrect.
-
-## SOLUTION
-
-Separate **governance authority** from **application deployment ownership**.
+Separate governance authority from application deployment ownership.
 
 - NayaPOWER governs the operating system and cross-project rules.
-- MAXIS owns the MAXIS application source.
-- The MAXIS Vercel project deploys MAXIS.
-- The NayaPOWER Vercel project deploys NayaPOWER.
+- NayaNET Hub source of truth is the GitHub repository.
+- **NayaNET Hub canonical runtime deployment is Cloudflare.**
+- MAXIS deployment ownership is independent of NayaPOWER governance.
 
 ## CANONICAL ROUTING
 
+### NayaPOWER / NayaNET Hub
+
+`SoulSchoolAcademy/NayaPOWER` → `main` → GitHub canonical source → authorized Cloudflare workflow → Worker `sparkling-shape-7ae5`
+
+Cloudflare account:
+`b5e2a51b3e883f7722287c5f51b1196b`
+
+Canonical runtime:
+`https://sparkling-shape-7ae5.smartnetpodcast.workers.dev`
+
+Canonical release workflow:
+
+`.github/workflows/assistant-cloudflare-hub-release.yml`
+
 ### MAXIS
 
-`SoulSchoolAcademy/Maxis` → `main` → Vercel `maxis` → `maxis.nayanet.technology`
-
-Vercel project ID:
-`prj_fAd4IwSnAJAZE76DaR2AjicT2epT`
-
-### NayaPOWER
-
-`SoulSchoolAcademy/NayaPOWER` → its own Vercel project `naya-power`
-
-Vercel project ID:
-`prj_cHa9gwrtscCW8JuMDjcvw6DafaOK`
+MAXIS deployment routing is governed by the MAXIS repository and its own deployment configuration. NayaPOWER must not substitute its own deployment surface for MAXIS.
 
 ## HARD RULE
 
-**NEVER DEPLOY MAXIS FROM NayaPOWER.**
+**Do not substitute Vercel, AppDeploy, or another deployment platform for the canonical NayaPOWER/NayaNET Hub Cloudflare runtime.**
 
-When the requested product is MAXIS, the first deployment source check must resolve:
+For NayaPOWER/NayaNET Hub, resolve:
 
-`SoulSchoolAcademy/Maxis`
-
-Then the Vercel project must resolve to:
-
-`maxis`
+`SoulSchoolAcademy/NayaPOWER` → exact source commit → authorized Cloudflare release workflow → `sparkling-shape-7ae5`
 
 If those identities do not match, STOP and resolve the routing contradiction before changing application code.
 
-## FAILURE → SOLUTION
+## TRUTH RULE
 
-**Wrong source/project**
-→ deployment routing error
-→ do not edit MAXIS code
-→ restore `SoulSchoolAcademy/Maxis`
-→ target Vercel project `maxis`
-→ verify Git SHA
-→ verify production target
-→ verify runtime.
+**GitHub source != released runtime; committed != released; verified build != production-proven.**
 
-## WHY THIS MATTERS
+A deployment is not claimed until the exact source/artifact/runtime identity and independent runtime evidence exist.
 
-A governing repository is not automatically the deployment repository for every application it governs.
+## HISTORICAL NOTE
 
-Confusing those roles creates false blockers, wasted engineering effort, and potentially deploys the wrong product.
-
-## VERIFICATION
-
-The mapping was directly confirmed against Vercel on 2026-08-28:
-
-- `maxis` is linked to `SoulSchoolAcademy/Maxis`.
-- `naya-power` is linked to `SoulSchoolAcademy/NayaPOWER`.
-
-This is the canonical routing rule for future Naya execution.
+Older repository files may still contain Vercel configuration from an earlier deployment architecture. Those files are **not the canonical NayaPOWER/NayaNET release surface** and must not be used to select or authorize a deployment.
