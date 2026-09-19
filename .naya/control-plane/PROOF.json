@@ -55,9 +55,9 @@
     ]
   },
   "verification_rule": "A VERIFIED claim must name the claim type and include claim-appropriate evidence. Missing evidence remains UNKNOWN.",
-  "stale_rule": "A recorded claim tied to a repository HEAD, deployment, test run, or evidence artifact is STALE when the authoritative current source no longer matches its recorded identity.",
+  "stale_rule": "A recorded claim tied to a repository source scope, deployment, test run, or evidence artifact is STALE when the authoritative current source for that claim no longer matches its recorded identity. Unrelated control-plane/documentation commits do not invalidate a proof whose claim-relevant source scope remains unchanged.",
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
-  "freshness_rule": "Recorded runtime evidence is CURRENT only when its observed HEAD exactly equals the live authoritative HEAD at claim time. Otherwise it remains HISTORICAL/STALE and cannot certify the current repository.",
+  "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_P1_POLICY_EXPERIMENT",
     "observed_head": "0a97c30b70e49a530094cc39869b05444ae2c858",
@@ -122,9 +122,11 @@
       ],
       "artifact": "p1-controlled-paired-policy-receipt",
       "interpretation": "The controlled paired execution/receipt/comparison machinery is proven. Policy improvement is not proven because verified responsible values were equal."
-    }
+    },
+    "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
+    "current_repository_head": "LIVE_RESOLUTION"
   },
-  "recording_commit": "0a97c30b70e49a530094cc39869b05444ae2c858",
+  "recording_commit": "SOURCE_SCOPE_CURRENT",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -272,5 +274,5 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Current main, current Assistant Cloudflare runtime parity, authenticated lifecycle/fresh-context retrieval, and the controlled paired policy-comparison mechanism are now verified at the same HEAD. Policy improvement remains NOT_PROVEN because the first real paired case produced equal verified responsible value (0 vs 0)."
+  "interpretation": "Current main, current Assistant Cloudflare runtime parity, authenticated lifecycle/fresh-context retrieval, and the controlled paired policy-comparison mechanism are now verified at the same HEAD. Policy improvement remains NOT_PROVEN because the first real paired case produced equal verified responsible value (0 vs 0). The repository now distinguishes claim-scope freshness from whole-repository HEAD freshness so documentation/control-plane reconciliation does not falsely invalidate independently verified runtime or policy evidence."
 }
