@@ -330,7 +330,7 @@ class TestGatewayBoundaryClosure(unittest.TestCase):
         start_claimed()
         action = dict(self.action, actor_id="someone_else")
         with self.assertRaises(AssertionError) as ctx:
-            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate)
+            MTG.authorize(action, execution_authorization=self.credential, gate=self.gate, identity_envelope=self.identity)
         self.assertIn("actor_id does not match", str(ctx.exception))
 
     # ---- P: revocation between authorization and execution --------------
