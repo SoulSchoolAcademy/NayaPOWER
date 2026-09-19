@@ -37,6 +37,18 @@ jobs:
             scripts:[...document.scripts].map(x=>x.src).filter(Boolean),
             body:document.body.innerText.slice(0,4000)
           }));
-          console.log(JSON.stringify(data,null,2));
+          const frame = p.frames().find(f => f.url().includes('shiny-wave-dd48.nayanet.workers.dev'));
+          if (!frame) throw new Error('WELCOME_EMBEDDED_WORKER_NOT_FOUND');
+          await frame.locator('#userName').fill('Naya Public Proof');
+          await frame.locator('#entryForm button[type="submit"]').click();
+          await frame.waitForURL(/\/identity\.html\?name=Naya%20Public%20Proof/,{timeout:30000});
+          const identity = await frame.evaluate(() => ({
+            url:location.href,
+            title:document.title,
+            hasAlias:!!document.querySelector('#aliasInput'),
+            activateTarget:String(window.activateAndRedirect).includes('academy.nayanet.app'),
+            usesSupabase:document.documentElement.innerHTML.includes('supabase')
+          }));
+          console.log(JSON.stringify({...data,public_welcome_interaction:identity},null,2));
           await b.close();
           NODE
