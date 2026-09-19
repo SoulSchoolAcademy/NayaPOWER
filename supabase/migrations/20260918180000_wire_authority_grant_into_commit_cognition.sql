@@ -161,7 +161,7 @@ begin
     authority_source_event_id, authority_validated_at
   )
   values(
-    auth.uid(), p_project_id, v.revision, p_action, p_expected_result, p_observed_result, p_status,
+    auth.uid(), p_project_id, v.revision, p_action, p_expected_result, p_observed_result,\n    case when p_status = 'FAILED' then 'FAILED' when p_status = 'BLOCKED' then 'BLOCKED' else 'SUCCESS' end,
     coalesce(p_evidence,'[]'::jsonb), coalesce(p_learning,'[]'::jsonb),
     (v_authority->>'grant_id')::uuid,
     (v_authority->>'issuer_id')::uuid,
