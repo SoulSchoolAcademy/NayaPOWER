@@ -596,6 +596,21 @@ def self_test() -> int:
             necessary_power=frozenset({"repo_write"}),
             requested_power=frozenset({"repo_write"}),
         )
+        identity = {
+            "schema_version": "1.0",
+            "identity_id": authority.principal_id,
+            "actor_class": "HUMAN",
+            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+            "knowledge": [{"knowledge_id": "K-EC-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
+            "capabilities": ["repo_write"],
+            "authority": {"authority_ids": [authority.authority_id]},
+            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+            "received_artifacts": [{"artifact_id": "ART-EC-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
+            "provenance": [{"subject_id": "ART-EC-TEST", "source_ref": "test:request", "relation": "received_from"}],
+            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+            "actual_actions": [], "outcomes": [], "learning": [],
+        }
+
         bound = {
             "action_id": "ACT-EC-SELFTEST-001",
             "action_type": "repository_write",
@@ -607,7 +622,7 @@ def self_test() -> int:
             "scope": decision.scope,
             "permission": decision.action,
         }
-        issued = gate.authorize(authority=authority, decision=decision, action=bound)
+        issued = gate.authorize(authority=authority, decision=decision, action=bound, identity_envelope=identity, consequential=True)
         assert issued.allowed
         from execution_preflight_gate import approved_preflight
 
@@ -616,9 +631,10 @@ def self_test() -> int:
             action=bound,
             execution_authorization=issued.authorization,
             gate=gate,
+            identity_envelope=identity,
             preflight=approved_preflight(),
         )
-        transition("OBSERVED", observation="actual runtime observation")
+        transition("OBSERVED", observation="actual runtime observation", execution_authorization=issued.authorization, gate=gate, identity_envelope=identity, execution_result={"execution_state":"COMPLETED","execution_id":bound["action_id"],"action":"self-test repository write","observed_output":"test action completed","result":"PASS","commit_sha":"test-head"})
         transition(
             "VERIFIED",
             evidence=["receipt:test"],
