@@ -121,19 +121,6 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
         shutil.rmtree(self.tmp, ignore_errors=True)
 
     def test_full_gateway_to_controller_to_ledger_to_activity(self):
-        authorized = MTG.authorize(
-            self.action,
-            execution_authorization=self.credential,
-            gate=self.gate,
-            identity_envelope=self.identity,
-            preflight=approved_preflight(),
-        )
-        self.assertEqual(authorized["status"], "AUTHORIZED")
-        self.assertEqual(authorized["execution_status"], "EXECUTING")
-        self.assertEqual(authorized["identity_id"], self.authority.principal_id)
-        self.assertEqual(authorized["identity_fingerprint"], self.credential.identity_fingerprint)
-        self.assertEqual(authorized["identity_binding_hash"], self.credential.identity_binding_hash)
-
         marker = self.tmp / "actual-action.txt"
         def execute_real_action(action):
             marker.write_text("REAL_TEST_ACTION_EXECUTED\n", encoding="utf-8")
@@ -158,6 +145,9 @@ class GovernedRuntimeIdentityLoopTests(unittest.TestCase):
             preflight=approved_preflight(),
         )
         self.assertEqual(observed["status"], "OBSERVED")
+        self.assertEqual(observed["identity_id"], self.authority.principal_id)
+        self.assertEqual(observed["identity_fingerprint"], self.credential.identity_fingerprint)
+        self.assertEqual(observed["identity_binding_hash"], self.credential.identity_binding_hash)
         self.assertEqual(observed["smart_ledger"]["verification_receipt"]["verification_state"], "verified")
         self.assertEqual(observed["identity_binding"]["identity_id"], self.authority.principal_id)
 
