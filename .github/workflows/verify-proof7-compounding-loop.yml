@@ -6,6 +6,7 @@ on:
     paths:
       - 'scripts/verify-proof7-compounding-loop.mjs'
       - '.github/workflows/verify-proof7-compounding-loop.yml'
+      - 'NAYA-TEAM/**'
   workflow_dispatch:
 
 permissions:
