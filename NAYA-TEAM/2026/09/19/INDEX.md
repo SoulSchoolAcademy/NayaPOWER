@@ -19,3 +19,10 @@ The Engineering System daily index contains the current feature-by-feature state
 
 ## HANDOFF LAW
 Do not say “done” because a document exists. Do not say “understood” without changing the repository when repository change is the required action.
+
+
+## CANONICAL HUB BASELINE — CORRECTED
+
+The current visual/product baseline is `2026 09 17 NAYANET HUB.html` at the repository root. Cloudflare is the deployment target. The prior Vercel targeting assumption is retired for this work.
+
+[READ THE CORRECTION SESSION](./2026-09-19__CANONICAL-HUB-BASELINE-CORRECTION.md)
