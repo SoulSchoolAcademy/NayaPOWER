@@ -3,7 +3,9 @@
 **Status:** CANONICAL OPERATING INDEX V1 — 2026-09-17  
 **Repository:** `SoulSchoolAcademy/NayaPOWER`  
 **Current branch authority:** `main`  
-**Current P0:** Issue #245 — Canonical Cold-Naya Operating Index + Repository Classification
+**Historical classification owner:** Issue #245 — Canonical Cold-Naya Operating Index + Repository Classification
+
+**Current execution focus:** governed Assistant-lane cognition wiring and authenticated ownership proof, as established by the latest control-plane evidence.
 
 ## START HERE
 
@@ -152,7 +154,7 @@ The complete issue matrix is stored at:
 
 `.naya/control-plane/GITHUB-ISSUE-CLASSIFICATION-2026-09-17.md`
 
-The matrix contains all 61 currently open issues identified by the September 17 inventory and assigns each a lifecycle class.
+The matrix contains the 61 issues captured by the September 17 open-issue inventory and one preserved #2 governance-law row. It is a dated historical snapshot, not a claim that GitHub's live issue set remains 61.
 
 ## 11. CURRENT WORKFLOW AUTHORITY
 
@@ -185,7 +187,7 @@ A cold Naya passes only if it can, using this index and linked repository source
 1. identify the repository;
 2. identify current authority;
 3. identify protected state;
-4. identify current P0;
+4. identify the current execution focus from fresh control-plane evidence;
 5. distinguish current/historical/superseded material;
 6. locate Smart Notes;
 7. locate Activity;
@@ -214,4 +216,4 @@ After the Cold-Naya acceptance test, the successor should:
 
 `READ THIS INDEX → READ CURRENT CONTROL PLANE → READ CLASSIFICATION MATRIX → EXECUTE ACCEPTANCE TEST → EXECUTE ONE P0 ACTION → VERIFY → RECORD → UPDATE STATE → HAND OFF`
 
-**One repository. One current identity. One current operating index. One current P0. One production release authority. One next action. Evidence over assertion.**
+**One repository. One current identity. One current operating index. One current execution focus. One production release authority. One next action. Evidence over assertion.**

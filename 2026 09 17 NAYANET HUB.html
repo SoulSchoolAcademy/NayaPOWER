@@ -900,5 +900,63 @@ const N=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\
 function run(){const boards=qq('#blocks > .block');boards.forEach((b,i)=>{b.classList.add('elite-board','naya-smart-board-v10');const h=q('h3',b);if(h&&i===0)h.textContent='What is Naya Power';const g=q('.glyph',b);if(g){const svg=q('.v10-icon',g);if(svg)g.replaceChildren(svg)}const n=q('.nutshell',b);if(n){const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}const layers=q('.layers',b);if(layers){const m=new Map();qq(':scope > .layer',layers).forEach(x=>{const h=q('.layerHead b',x);if(!h){x.remove();return}let t=A[N(h.textContent)]||N(h.textContent);if(!O.includes(t)){x.remove();return}h.textContent=t;m.set(t,x)});O.forEach(k=>{if(m.has(k))layers.appendChild(m.get(k))});}qq('.status',b).forEach(x=>x.remove());});const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>
 <script src="/assistant-runtime.js?v=20260918-r7"></script>
+<script>
+/* Canonical P0 cognition bridge: the Hub calls the governed Assistant runtime.
+   The database remains authoritative; this bridge never writes a user_id. */
+(()=>{'use strict';
+  const boot=()=>{
+    const runtime=window.NayaAssistantRuntime;
+    if(!runtime||window.__NAYA_COGNITION_BRIDGE__)return;
+    const bridge={
+      async retrievePersonalIntelligence(){
+        const snap=runtime.snapshot();
+        if(!snap.authenticated) throw new Error('AUTH_REQUIRED');
+        const rows=await runtime.retrieve();
+        window.dispatchEvent(new CustomEvent('nayanet:cognition-retrieved',{detail:{count:rows.length,rows}}));
+        return rows;
+      },
+      async recordIntelligence(input){
+        const snap=runtime.snapshot();
+        if(!snap.authenticated) throw new Error('AUTH_REQUIRED');
+        const result=await runtime.record({...input,source:input?.source||'nayanet-hub'});
+        window.dispatchEvent(new CustomEvent('nayanet:cognition-recorded',{detail:result}));
+        return result;
+      }
+    };
+    window.__NAYA_COGNITION_BRIDGE__=bridge;
+    window.dispatchEvent(new CustomEvent('nayanet:cognition-bridge-ready',{detail:bridge}));
+    document.addEventListener('click',async event=>{
+      const personal=event.target.closest('[data-feed="personal"]');
+      if(personal){
+        try{await bridge.retrievePersonalIntelligence();}catch(error){
+          window.dispatchEvent(new CustomEvent('nayanet:cognition-retrieval-blocked',{detail:{reason:String(error?.message||error)}}));
+        }
+        return;
+      }
+      const save=event.target.closest('[data-act="save"],[data-c4-kind="save"]');
+      if(save){
+        const block=save.closest('[data-real-smart-note],[data-intelligence-id]');
+        if(!block)return;
+        const title=(block.querySelector('h3')?.textContent||'Intelligence').trim();
+        const content=(block.querySelector('.nutshell p')?.textContent||block.textContent||'').trim();
+        try{
+          await bridge.recordIntelligence({
+            event_id:'hub_save_'+String(block.dataset.intelligenceId||block.dataset.realSmartNote||title).replace(/[^a-z0-9_-]+/gi,'_').toLowerCase(),
+            type:'intelligence',
+            classification:'knowledge',
+            title,
+            content,
+            metadata:{hub_action:'save',intelligence_id:block.dataset.intelligenceId||null}
+          });
+        }catch(error){
+          window.dispatchEvent(new CustomEvent('nayanet:cognition-record-blocked',{detail:{reason:String(error?.message||error)}}));
+        }
+      }
+    },true);
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+  window.addEventListener('load',boot,{once:true});
+})();
+</script>
 </body>
 </html>
