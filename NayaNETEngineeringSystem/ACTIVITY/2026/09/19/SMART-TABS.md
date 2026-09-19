@@ -107,3 +107,10 @@ A source review caught and repaired a real syntax/assembly defect before deploym
 **Important repair:** naya-smart-tabs advanced to **v2**. The prior delete handler could return a false-success envelope when RLS matched zero rows. The new handler requires a returned deleted row and emits TAB_NOT_FOUND_OR_NOT_AUTHORIZED otherwise.
 
 **Remaining:** authenticated browser click/navigation proof and final visual/mobile/accessibility acceptance. Backend CRUD, persistence, reload, reorder, favorite, delete, and server-side isolation are no longer unknown.
+## Session 007 — Live runtime cache-bust repair — 2026-09-19T17:10Z
+
+A live browser observation found a concrete deployment/runtime defect that the previous release parity workflow did not detect: the Hub HTML referenced stale Assistant Runtime cache key **20260918-r7** while the current runtime had changed. The stale live script threw a browser SyntaxError and prevented window.NayaAssistantRuntime from existing.
+
+The canonical Hub was repaired to use **20260919-wavea6**. Commit **6018ed5002ee09505767852e4f39d1d81c9c96ab** was deployed by Cloudflare run **35457054828**, which passed exact parity and runtime baseline checks.
+
+After repair, live CDP observation confirmed NayaAssistantRuntime is present and listSmartTabs is a function in the live Hub lifecycle. Full authenticated browser CRUD remains the next product-facing proof boundary; no token injection or credential extraction was used.
