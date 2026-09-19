@@ -20,12 +20,12 @@ from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalE
 def main() -> int:
     original = ec.STATE.read_text(encoding="utf-8") if ec.STATE.exists() else None
     tmp = Path(tempfile.mkdtemp(prefix="naya-execution-team-bridge-"))
-    saved = (ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH)
+    saved = (ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH)\n    import execution_activity_writer as activity_writer\n    saved_activity_root = activity_writer.ACTIVITY_ROOT
     events_root = tmp / "events"
     ec.EVENTS_ROOT = events_root
     ec.INDEX_PATH = events_root / "INDEX.json"
     ec.SESSIONS_ROOT = tmp / "sessions"
-    ec.SESSIONS_INDEX_PATH = ec.SESSIONS_ROOT / "INDEX.json"
+    ec.SESSIONS_INDEX_PATH = ec.SESSIONS_ROOT / "INDEX.json"\n    activity_writer.ACTIVITY_ROOT = tmp / "activity"
     try:
         if ec.STATE.exists():
             ec.STATE.unlink()
@@ -66,6 +66,27 @@ def main() -> int:
         assert bridge["continuity"]["next_action"] == next_action
         assert bridge["continuity"]["successor"] == successor
 
+        # Hard-handoff proof: remove the human-readable durable day projection.
+        # The canonical event still exists, but HANDED_OFF must refuse to close.
+        daily = activity_writer.find_daily_activity(state["activity_event_id"])
+        assert daily is not None
+        daily.unlink()
+        try:
+            ec.transition("HANDED_OFF", next_action=next_action, handoff={"current_state": "VERIFIED"})
+        except AssertionError as exc:
+            assert "NO DAILY RECORD = NO HANDOFF" in str(exc)
+        else:
+            raise AssertionError("HANDED_OFF accepted missing durable Team Naya day Activity")
+        activity_writer.write_execution_activity(
+            event=__import__("activity_event").find_event(state["activity_event_id"], events_root=events_root, index_path=ec.INDEX_PATH),
+            execution={**action, "claim_id": claim_id, "run_id": run_id, "session_id": state["session_id"], "governance_state": "AUTHORIZED", "authorization_verified": True},
+            next_action=next_action,
+            successor=successor,
+            evidence=["receipt:team-bridge-e2e", "test:hard-handoff"],
+        )
+        ec.transition("HANDED_OFF", next_action=next_action, handoff={"current_state": "VERIFIED"})
+        assert ec.load()["status"] == "HANDED_OFF"
+
         before = len(team_events)
         from activity_event import ensure_activity_event
         replay = ensure_activity_event(claim_id=claim_id, action_id=action["action_id"], decision_id=action["decision_id"], authority_id=action["authority_id"], actor_id=action["actor_id"], subject="VERIFIED completion — replay", summary="replay must reuse the canonical execution Activity event", receipt_id=f"RCP-{claim_id}", next_action=next_action, successor=successor, evidence=["receipt:team-bridge-e2e"], run_id=run_id, session_id=state.get("session_id"), events_root=events_root, index_path=ec.INDEX_PATH)
@@ -77,7 +98,7 @@ def main() -> int:
         print("EXECUTION_TO_TEAM_ACTIVITY=PASS")
         print("TEAM_ACTIVITY_EVIDENCE_BINDING=PASS")
         print("TEAM_ACTIVITY_HANDOFF=PASS")
-        print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")
+        print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")\n        print("HARD_HANDOFF_ACTIVITY_GATE=PASS")
         print(f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}")
         print(f"TEAM_NAYA_EVENT_ID={bridge['event_id']}")
         print(f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}")
