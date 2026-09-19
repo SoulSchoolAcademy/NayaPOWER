@@ -280,7 +280,7 @@ class UniversalExecutionGate:
         # here so downstream boundaries can distinguish genuine issuance from a
         # caller-constructed dataclass with identical fields. This is an
         # in-process issuance registry, not a new authority model.
-        self._issued: set[str] = set()
+        self._issued: dict[str, int] = {}
 
     @classmethod
     def from_canonical(cls) -> "UniversalExecutionGate":
@@ -437,7 +437,7 @@ class UniversalExecutionGate:
         authorization = ExecutionAuthorization(
             **{**authorization.__dict__, "binding_hash": _authorization_hash(authorization)}
         )
-        self._issued.add(authorization.binding_hash)
+        self._issued[authorization.binding_hash] = id(authorization)
         return GateDecision(allowed=True, reasons=(), authorization=authorization)
 
     def verify(
@@ -492,8 +492,8 @@ class UniversalExecutionGate:
             reasons.append("governance_state is not AUTHORIZED")
         if _authorization_hash(authorization) != authorization.binding_hash:
             reasons.append("binding_hash does not match authorization fields")
-        if authorization.binding_hash not in self._issued:
-            reasons.append("execution authorization was not issued by this gate")
+        if self._issued.get(authorization.binding_hash) != id(authorization):
+            reasons.append("execution authorization was not issued by this gate instance")
 
         resolved = self._current_registry().resolve(authorization.authority_id)
         if resolved is None:
