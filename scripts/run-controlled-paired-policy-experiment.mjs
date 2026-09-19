@@ -154,7 +154,7 @@ const lessonClaim="A richer verified-receipt context changed the candidate decis
 const {data:lesson,error:lessonError}=await supabase.from("learning_evidence").insert({
   member_id:sender.id,
   target_id:"p1-controlled-paired-policy-"+runId,
-  level:"E2_APPLIES",
+  level:"E6_RETAINED",
   provenance:"VERIFIED_OUTCOME",
   status:"ACTIVE",
   claim:lessonClaim,
