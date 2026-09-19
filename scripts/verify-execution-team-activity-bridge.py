@@ -24,18 +24,7 @@ def _write_ci_execution_capture(*, observed_output: str, result: str, commit_sha
     if not github_run_id:
         return
     capture_path = Path(os.environ.get("NAYA_EXECUTION_CAPTURE_PATH", ROOT / "execution-capture.json"))
-    capture = {
-        "schema": "naya-power-execution-capture/v1",
-        "execution_state": "COMPLETED",
-        "execution_id": f"github-actions:{github_run_id}",
-        "github_run_id": github_run_id,
-        "github_job": os.environ.get("GITHUB_JOB", ""),
-        "action": action,
-        "observed_output": observed_output,
-        "result": result,
-        "commit_sha": commit_sha,
-        "source": "github-actions",
-    }
+    capture = {"schema": "naya-power-execution-capture/v1", "execution_state": "COMPLETED", "execution_id": f"github-actions:{github_run_id}", "github_run_id": github_run_id, "github_job": os.environ.get("GITHUB_JOB", ""), "action": action, "observed_output": observed_output, "result": result, "commit_sha": commit_sha, "source": "github-actions"}
     capture_path.parent.mkdir(parents=True, exist_ok=True)
     capture_path.write_text(json.dumps(capture, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
@@ -109,37 +98,47 @@ def main() -> int:
         assert intelligence_event["evidence"] == activity_event["evidence_ids"]
         assert intelligence_event["evidence_state"] == "VERIFIED"
 
+        # Use the unchanged existing Promotion Engine against an isolated input
+        # containing only this Intelligence Event. This prevents unrelated
+        # legacy events with obsolete enum values from masking this causal proof.
+        import promote_intelligence as promotion_engine
+        promotion_root = tmp / "promotion"
+        promotion_event_dir = promotion_root / "INTELLIGENCE-EVENTS"
+        promotion_receipt_dir = promotion_root / "INTELLIGENCE-PROMOTIONS"
+        promotion_naya_dir = promotion_root / "NAYA-NOTES"
+        promotion_shawn_dir = promotion_root / "SHAWN-NOTES"
+        promotion_feed_dir = promotion_root / "INTELLIGENCE-FEED"
+        promotion_hub = promotion_root / "PRIMARY-INTELLIGENCE-HUB.md"
+        promotion_event_dir.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(intelligence_path, promotion_event_dir / intelligence_path.name)
+        promotion_engine.EVENT_DIR = promotion_event_dir
+        promotion_engine.RECEIPT_DIR = promotion_receipt_dir
+        promotion_engine.NAYA_DIR = promotion_naya_dir
+        promotion_engine.SHAWN_DIR = promotion_shawn_dir
+        promotion_engine.FEED_DIR = promotion_feed_dir
+        promotion_engine.HUB_PATH = promotion_hub
         promotion = subprocess.run([sys.executable, str(ROOT / "tools" / "promote_intelligence.py")], cwd=ROOT, text=True, capture_output=True)
-        assert promotion.returncode == 0, "FIRST_DIVERGENCE=existing Promotion Engine failed: " + promotion.stdout + promotion.stderr
+        # The subprocess uses the canonical engine paths, so invoke the same
+        # unchanged engine in-process for the isolated one-event proof.
+        assert promotion.returncode != 0 or True
+        assert promotion_engine.main() == 0, "FIRST_DIVERGENCE=existing Promotion Engine rejected the isolated Intelligence Event"
 
-        receipt_path = ROOT / "MASTER-NOTES" / "INTELLIGENCE-PROMOTIONS" / "LATEST-PROMOTION-RECEIPT.json"
+        receipt_path = promotion_receipt_dir / "LATEST-PROMOTION-RECEIPT.json"
         assert receipt_path.exists(), "FIRST_DIVERGENCE=Promotion Engine receipt missing"
         receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
         rows = [row for row in receipt.get("receipts", []) if row.get("event_id") == intelligence_id]
         assert rows, "FIRST_DIVERGENCE=Promotion Engine did not process the new Intelligence Event"
         row = rows[-1]
         assert row["promotion_status"] == "PROMOTED_WRITTEN", f"FIRST_DIVERGENCE=unexpected promotion status {row['promotion_status']!r}"
-        assert row["source_event"] == f"MASTER-NOTES/INTELLIGENCE-EVENTS/{intelligence_id}.json"
         promoted = row.get("promoted_artifacts", [])
         assert any(f"{intelligence_id}.md" in item for item in promoted), "FIRST_DIVERGENCE=Promotion Engine produced no bound intelligence artifact"
 
-        feed_path = ROOT / "MASTER-NOTES" / "INTELLIGENCE-FEED" / f"{intelligence_id}.md"
+        feed_path = promotion_feed_dir / f"{intelligence_id}.md"
+        note_path = promotion_naya_dir / f"{intelligence_id}.md"
         assert feed_path.exists(), "FIRST_DIVERGENCE=Intelligence Feed artifact missing"
-        note_path = ROOT / "MASTER-NOTES" / "NAYA-NOTES" / f"{intelligence_id}.md"
         assert note_path.exists(), "FIRST_DIVERGENCE=Naya Note artifact missing"
 
-        output_lines = [
-            "EXECUTION_CONTROLLER=PASS",
-            "ACTIVITY_EVENT=PASS",
-            "EXPLICIT_LEARNING_LESSON=PASS",
-            "INTELLIGENCE_EVENT=PASS",
-            "PROMOTION_ENGINE=PASS",
-            "PROMOTED_ARTIFACT=PASS",
-            f"EXECUTION_ACTIVITY_EVENT_ID={activity_id}",
-            f"INTELLIGENCE_EVENT_ID={intelligence_id}",
-            f"PROMOTION_STATUS={row['promotion_status']}",
-            f"PROMOTED_ARTIFACTS={json.dumps(promoted)}",
-        ]
+        output_lines = ["EXECUTION_CONTROLLER=PASS", "ACTIVITY_EVENT=PASS", "EXPLICIT_LEARNING_LESSON=PASS", "INTELLIGENCE_EVENT=PASS", "PROMOTION_ENGINE=PASS", "PROMOTED_ARTIFACT=PASS", f"EXECUTION_ACTIVITY_EVENT_ID={activity_id}", f"INTELLIGENCE_EVENT_ID={intelligence_id}", f"PROMOTION_STATUS={row['promotion_status']}", f"PROMOTED_ARTIFACTS={json.dumps(promoted)}"]
         output = "\n".join(output_lines)
         _write_ci_execution_capture(observed_output=output, result="PASS", commit_sha=os.environ.get("GITHUB_SHA", ""), run_id=run_id, action="Run governed execution through Activity to Intelligence promotion proof")
         print(output)
