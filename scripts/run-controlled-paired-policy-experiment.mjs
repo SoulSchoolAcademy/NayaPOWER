@@ -52,7 +52,30 @@ const prepare=async(p)=>{
   await evalPolicy(p.id,"HOLDOUT",{result:"PASS",dataset_hash:"controlled-paired-holdout-v1",baseline_score:1,candidate_score:1,verified:true,cases:1});
   await transition(p.id,"HOLDOUT_PASS",{result:"PASS",dataset_hash:"controlled-paired-holdout-v1",baseline_score:1,candidate_score:1,verified:true,cases:1});
   await transition(p.id,"AUTHORIZATION_REQUIRED",{request:"controlled-paired-real-outcome",authorized:false});
-  await transition(p.id,"CONTROLLED_TEST",{authorized:true,reason:"explicit-human-authorization-for-controlled-test"});
+  const authority = await supabase.rpc("nayanet_issue_authority_grant",{
+    p_subject_id:sender.id,
+    p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+p.id,
+    p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
+    p_scope:{project_id:"NayaNET",target:p.id},
+    p_actions:["policy.controlled_test"],
+    p_constraints:{mode:"controlled-test-only",no_external_side_effects:true},
+    p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+    p_evidence:{authorization_type:"explicit_controlled_experiment_authorization",run_id:runId,policy_id:p.id},
+    p_parent_authority:null
+  });
+  if(authority.error||!authority.data?.grant_id) throw authority.error||new Error("CONTROLLED_TEST_AUTHORITY_GRANT_ISSUANCE_FAILED");
+  const authorityCheck = await supabase.rpc("nayanet_validate_authority_grant",{
+    p_grant_id:authority.data.grant_id,
+    p_action:"policy.controlled_test",
+    p_target:p.id
+  });
+  if(authorityCheck.error||authorityCheck.data?.status!=="AUTHORIZED") throw authorityCheck.error||new Error("CONTROLLED_TEST_AUTHORITY_VALIDATION_FAILED:"+JSON.stringify(authorityCheck.data));
+  await transition(p.id,"CONTROLLED_TEST",{
+    authorized:true,
+    authority_grant_id:authority.data.grant_id,
+    authority_status:authorityCheck.data.status,
+    reason:"canonical-authority-grant-validated"
+  });
 };
 await prepare(v1); await prepare(v2);
 
