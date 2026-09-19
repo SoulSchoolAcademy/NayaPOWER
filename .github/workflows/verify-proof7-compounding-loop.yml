@@ -25,7 +25,18 @@ jobs:
         with:
           node-version: 20
       - name: Execute production Proof 7
-        run: node scripts/verify-proof7-compounding-loop.mjs
+        run: |
+          set +e
+          node scripts/verify-proof7-compounding-loop.mjs 2>&1 | tee "$RUNNER_TEMP/proof7-runtime.log"
+          status=${PIPESTATUS[0]}
+          exit $status
+      - name: Upload runtime failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: proof7-runtime-log
+          path: ${{ runner.temp }}/proof7-runtime.log
+          if-no-files-found: warn
       - name: Validate proof
         run: |
           test -s "$PROOF_PATH"
