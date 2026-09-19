@@ -28,7 +28,18 @@ jobs:
         with:
           node-version: 20
       - name: Execute production Dream scoring proof
-        run: node scripts/verify-p0-dream-scoring.mjs
+        run: |
+          set +e
+          node scripts/verify-p0-dream-scoring.mjs 2>&1 | tee "$RUNNER_TEMP/dream-runtime.log"
+          status=${PIPESTATUS[0]}
+          exit $status
+      - name: Upload runtime failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dream-runtime-log
+          path: ${{ runner.temp }}/dream-runtime.log
+          if-no-files-found: warn
       - name: Validate proof
         run: |
           test -s "$PROOF_PATH"
