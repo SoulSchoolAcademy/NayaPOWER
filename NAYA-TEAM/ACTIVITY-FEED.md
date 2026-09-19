@@ -544,3 +544,20 @@ Session 005 has begun actual execution rather than documentation-only handoff.
 **HANDOFF:** Action 03 reconciles `v7_connection_requests` before membership implementation.
 
 **SESSION:** `NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-02-IDENTITY-MEMBERSHIP-RECONCILIATION.md`
+
+
+## 2026-09-19 — COMMUNICATION + ORGANIZATION — ACTIONS 03–06
+
+**ACTION 03:** `v7_connection_requests` reconciled as request-only state; no durable Connection object or relationship functions existed.
+
+**ACTION 04:** canonical `nayanet_space_members` implemented with active/left/revoked state, provenance, RLS, JOIN/LEAVE RPCs and cognition-event lineage.
+
+**ACTION 05:** canonical `nayanet_connections` implemented as explicit saved relationship; active shared Space required; save/revoke RPCs and provenance added.
+
+**ACTION 06:** canonical Smart List storage implemented over Connections. Direct Smart Mail now requires mutual active Connections before existing authority validation.
+
+**PROOF:** transactional authenticated-role tests passed for JOIN idempotency/LEAVE idempotency, Connection save idempotency, List add idempotency, and Mail relationship denial. Test transactions rolled back.
+
+**NOT PROVEN:** current Hub browser wiring, two-real-user browser lifecycle, downstream Activity/Ledger closure, Cloudflare parity.
+
+**NEXT:** ACTION 07 — Activity + Ledger binding.
