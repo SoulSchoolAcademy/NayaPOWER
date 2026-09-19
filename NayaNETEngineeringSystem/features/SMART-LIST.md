@@ -44,3 +44,20 @@ Inspect existing list/save/favorite implementation and reconcile it with canonic
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-07-SMART-LISTS-SMART-NOTE.md`; `.naya/2026-09-11-NAYAPOWER-03-WHAT-ARE-SMART-NOTES-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Specification defined
+- [ ] Existing list/save/favorite implementation mapped
+- [ ] Canonical store identified
+- [ ] Membership persistence proven
+- [ ] Owner isolation proven
+- [ ] Share protection proven
+- [ ] Source → build → runtime parity proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-LIST.md).
