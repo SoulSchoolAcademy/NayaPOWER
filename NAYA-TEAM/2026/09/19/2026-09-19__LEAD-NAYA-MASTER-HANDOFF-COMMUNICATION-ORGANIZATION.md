@@ -7,7 +7,7 @@
 **Supabase Functions:** https://supabase.com/dashboard/project/dahisasgpfvziswqvmvm/functions  
 **Canonical Hub source:** `2026 09 17 NAYANET HUB.html`  
 **Deployment target:** Cloudflare  
-**Status:** IN PROGRESS — ACTIONS 01–08 EXECUTED; ACTION 09 IS THE IMMEDIATE EXECUTION
+**Status:** IN PROGRESS — ACTIONS 01–09 EXECUTED; ACTION 10 IS THE IMMEDIATE EXECUTION
 
 ---
 
@@ -1290,42 +1290,58 @@ No schema change was deployed in Action 02.
 
 Action 03 must reconcile `v7_connection_requests` before membership implementation.
 
-# 32. IMMEDIATE ACTION 09
+# 32. IMMEDIATE ACTION 10
 
-## ACTION 09 — CLOUDFLARE SOURCE / BUILD / RUNTIME PARITY
+## ACTION 10 — PRODUCTION CLOSURE / FINAL EVIDENCE PACKAGE
 
 **Status: IMMEDIATE EXECUTION**
 
 ### Mission
 
-Prove that the source-wired Communication + Organization Hub runtime is the exact runtime served by the canonical Cloudflare deployment.
+Close every Communication + Organization boundary that is actually proven, explicitly preserve every boundary that remains unproven, and leave a cold-start successor with one exact remaining execution path.
 
-### Exact sequence
+### Proven closure
 
-1. Verify the canonical Cloudflare release workflow.
-2. Verify trigger paths include `assistant-runtime.js`.
-3. Verify source branch and exact source commit.
-4. Verify build copies the canonical Hub and runtime.
-5. Verify worker identity and live route.
-6. Verify live Hub HTML hash against source.
-7. Verify live runtime JS hash against source.
-8. Verify the new relationship adapters are present in the deployed runtime.
-9. Verify Connections now maps to Your Connections.
-10. Verify Smart Spaces, Smart List and Smart Mail runtime adapters are present.
-11. Verify cache/stale markers do not expose the prior runtime.
-12. Record exact workflow run/job/artifact/route evidence.
-13. Update feature records, Team Naya and this master directive.
-14. Return immediately to Action 08 two-user browser proof.
+- canonical identity: `auth.users.id = members.id`
+- canonical profile: `nayanet_profiles`
+- canonical Space: `nayanet_spaces`
+- canonical membership: `nayanet_space_members`
+- request workflow: `v7_connection_requests`
+- canonical saved Connection: `nayanet_connections`
+- canonical Smart List: `nayanet_smart_lists` + `nayanet_smart_list_members`
+- direct Smart Mail relationship gate: mutual active Connection
+- authority remains separately validated
+- membership/Connection/List event lineage uses cognition→Ledger
+- Cloudflare Hub/runtime exact hash parity is proven
+- canonical Hub visual baseline remains unchanged
 
-### Hard rules
+### Final remaining proof
 
-No parity claim from source alone. No cache assumption. No browser success claim without actual runtime observation.
+The only material closure boundary not executed is:
 
-### Success condition
+**REAL AUTHENTICATED HUMAN A → REAL AUTHENTICATED HUMAN B → LIVE CLOUDFLARE BROWSER → JOIN → CONNECTION → LIST → AUTHORIZED MAIL → RECEIVER VERIFY → REPLAY → LEAVE/REVOKE → DENIAL**
 
-**SOURCE = BUILD = DEPLOYED RUNTIME = LIVE ROUTE**
+### Exact execution
+
+1. Use the first legitimate authenticated browser session.
+2. Use a distinct second legitimate authenticated browser session.
+3. Execute the final A→T acceptance test.
+4. Capture exact IDs and timestamps.
+5. Verify no duplicate state.
+6. Verify privacy/isolation.
+7. Verify revocation-at-use.
+8. Verify receiver outcome.
+9. Verify Activity/Ledger lineage.
+10. If every step passes, mark subsystem LIVE VERIFIED.
+11. If any step cannot execute because browser control is unavailable, record the exact tooling boundary and do not downgrade it into a database-only claim.
+12. Update every affected feature and Team Naya index.
+13. Produce the final cold-start successor directive.
+
+### Hard rule
+
+Do not declare LIVE VERIFIED until the authenticated browser proof passes.
 
 ### Canonical execution prompt
 
 See:
-`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-09-EXECUTION-PROMPT.md`
+`NAYA-TEAM/2026/09/19/COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-10-EXECUTION-PROMPT.md`
