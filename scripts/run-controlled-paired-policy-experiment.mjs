@@ -27,6 +27,13 @@ const insertPolicy=async(version,parent,strategy)=>{
   if(error) throw error;
   return data;
 };
+const jsonRequest=async(path,token,body)=>{
+  const res=await fetch(url+path,{method:"POST",headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},body:JSON.stringify(body)});
+  const text=await res.text(); let data=null; try{data=JSON.parse(text)}catch{data={raw:text}};
+  if(!res.ok) throw new Error(path+" HTTP "+res.status+" "+JSON.stringify(data));
+  return data;
+};
+
 const authorityGrants=new Map();
 const v1=await insertPolicy(1,null,"HISTORY_ONLY_V1");
 const v2=await insertPolicy(2,v1.id,"HISTORY_PLUS_VERIFIED_RECEIPT_V1");
@@ -287,14 +294,10 @@ try {
 }
 if(aggregateCandidate===aggregateBaseline&&!equalOutcomePromotionBlocked) throw new Error("LEARNED_PROMOTION_GUARD_NOT_PROVEN");
 
-const applyLearning=await req(base+"/functions/v1/naya-learning-apply",{
-  method:"POST",headers:h,body:JSON.stringify({evidence_id:lesson.id})
-});
+const applyLearning=await jsonRequest("/functions/v1/naya-learning-apply",senderToken,{evidence_id:lesson.id});
 if(!applyLearning?.ok||!applyLearning.learning?.learner_state_version) throw new Error("LEARNING_APPLY_FAILED");
 
-const coldDecision=await req(base+"/functions/v1/naya-decision-context",{
-  method:"POST",headers:h,body:JSON.stringify({target_id:"p1-controlled-paired-policy-"+runId})
-});
+const coldDecision=await jsonRequest("/functions/v1/naya-decision-context",senderToken,{target_id:"p1-controlled-paired-policy-"+runId});
 if(!coldDecision?.ok||coldDecision.decision?.decision!=="USE_VERIFIED_LEARNING_CONTEXT"||coldDecision.decision?.influenced!==true) throw new Error("LEARNING_REUSE_NOT_INFLUENCED");
 if(coldDecision.decision?.authority?.changed!==false||coldDecision.decision?.authority?.granted!==false) throw new Error("LEARNING_REUSE_AUTHORITY_CHANGED");
 const learnedClaim=String(coldDecision.decision?.context?.claim||"");
