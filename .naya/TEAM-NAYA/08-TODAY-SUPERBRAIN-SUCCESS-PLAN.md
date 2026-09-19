@@ -232,3 +232,8 @@ This is the correct result. The mechanism is proven; superiority is not. The cur
 ### NEXT SUCCESSOR
 
 Implement the independent outcome/value contract, verify it adversarially, then run the smallest valid multi-case held-out paired experiment. If V2 still does not exceed V1, record NOT_PROVEN and continue only with new information.
+
+
+## 2026-09-19 WINDOWS PORTABILITY FINDING
+
+A fresh Windows clone of current main failed checkout because Git cannot materialize a tracked filename containing a colon: `.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md`. This does not invalidate the Linux/GitHub runtime proofs, but it is a real Cold-Naya portability defect for Windows-local recovery. It must be normalized after the current P0 outcome/value work, with all references preserved.
