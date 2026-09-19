@@ -3,7 +3,7 @@
 **Status:** CANONICAL GOVERNANCE + RUNTIME CONTRACT  
 **Effective:** 2026-09-18  
 **Domain:** Human authority → consequential execution authorization  
-**Runtime status:** V1 IMPLEMENTED — EXECUTION BOUNDARY NOT YET WIRED
+**Runtime status:** V1 IMPLEMENTED — CONSEQUENTIAL COGNITION COMMIT GATE WIRED
 
 ## 1. Purpose
 
@@ -111,7 +111,7 @@ is intelligence provenance only. It cannot issue or inherit authority.
 - `authority_source_event_id`
 - `authority_validated_at`
 
-They remain nullable only because `nayanet_commit_cognition()` has not yet been wired to require successful validation. The execution function itself was not changed in this cycle.
+They remain nullable for backward schema compatibility, but consequential `nayanet_commit_cognition()` writes populate them only from successful validator output. The caller cannot supply authoritative provenance through `evidence`.
 
 ## 12. Required proof contract
 
