@@ -44,7 +44,12 @@ def main() -> int:
         activity_root=root,
     )
     assert result["status"] == "CREATED"
-    assert find_daily_activity(event["event_id"], activity_root=root) is not None
+    record = find_daily_activity(event["event_id"], activity_root=root)
+    assert record is not None
+    assert record.parent.name == "09"
+    assert record.parent.parent.name == "2026"
+    assert record.parent.parent.parent == root
+    assert "**EVENT:** `" + event["event_id"] + "`" in record.read_text(encoding="utf-8")
 
     replay = write_execution_activity(
         event=event,
