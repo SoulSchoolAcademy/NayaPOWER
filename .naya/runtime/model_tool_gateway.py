@@ -15,7 +15,7 @@ authorization. Their presence alone always terminates in REFUSED.
 from __future__ import annotations
 
 import argparse
-from typing import Any
+from typing import Any, Callable, Mapping
 
 from execution_controller import load, transition
 from risk_engine import classify
@@ -55,6 +55,7 @@ def authorize(
     *,
     execution_authorization: Any = None,
     gate: Any = None,
+    identity_envelope: Mapping[str, Any] | None = None,
     now: str | None = None,
     preflight: Any = None,
 ) -> dict[str, Any]:
@@ -79,8 +80,15 @@ def authorize(
     # The ONLY authorization credential is a gate-issued ExecutionAuthorization.
     if execution_authorization is None:
         raise AssertionError("gateway requires a gate-issued ExecutionAuthorization")
+    if identity_envelope is None:
+        raise AssertionError("gateway requires the governed intelligence identity envelope for consequential execution")
     issuer = gate if gate is not None else _default_gate()
-    valid, reasons = issuer.verify(execution_authorization, now=now)
+    valid, reasons = issuer.verify(
+        execution_authorization,
+        identity_envelope,
+        consequential=True,
+        now=now,
+    )
     if not valid:
         raise AssertionError("execution authorization refused: " + "; ".join(reasons))
 
@@ -106,6 +114,7 @@ def authorize(
         derived_risk=derived,
         execution_authorization=execution_authorization,
         gate=issuer,
+        identity_envelope=identity_envelope,
         preflight=preflight,
     )
     return {
@@ -119,9 +128,87 @@ def authorize(
         "decision_id": execution_authorization.decision_id,
         "validated_at": execution_authorization.validated_at,
         "binding_hash": execution_authorization.binding_hash,
+        "identity_id": execution_authorization.identity_id,
+        "identity_fingerprint": execution_authorization.identity_fingerprint,
+        "identity_binding_hash": execution_authorization.identity_binding_hash,
         "side_effect_authorized": True,
         "side_effect_executed": False,
         "proof_required_after_action": True,
+    }
+
+
+def execute_authorized(
+    action: dict[str, Any],
+    *,
+    execution_authorization: Any,
+    identity_envelope: Mapping[str, Any],
+    executor: Callable[[dict[str, Any]], Mapping[str, Any]],
+    gate: Any = None,
+    preflight: Any = None,
+    now: str | None = None,
+) -> dict[str, Any]:
+    """Authorize one action, execute it once, then persist observed evidence.
+
+    The supplied executor is the actual side-effect boundary. It is not invoked
+    until the consequential identity-bound UEG credential has been verified and
+    EXECUTING has been durably entered. Its returned facts are immediately sent
+    through the existing execution_evidence_adapter + Smart Ledger path.
+    """
+    authorized = authorize(
+        action,
+        execution_authorization=execution_authorization,
+        gate=gate,
+        identity_envelope=identity_envelope,
+        now=now,
+        preflight=preflight,
+    )
+    if authorized["execution_status"] != "EXECUTING":
+        raise AssertionError("authorized execution did not enter EXECUTING state")
+
+    try:
+        result = executor(dict(action))
+    except Exception as exc:
+        result = {
+            "execution_state": "COMPLETED",
+            "execution_id": action["action_id"],
+            "action": action["action_type"],
+            "observed_output": f"executor raised {type(exc).__name__}: {exc}",
+            "result": "FAIL",
+            "commit_sha": action["protected_baseline"],
+            "action_ref": f"tool:{action['action_type']}:{action['action_id']}",
+            "outcome_ref": f"outcome:{action['action_id']}",
+            "environment": "governed-model-tool-gateway",
+            "source": "executor",
+        }
+    if not isinstance(result, Mapping):
+        raise AssertionError("executor must return an object/mapping of observed execution facts")
+
+    observed_result = dict(result)
+    observed_result.setdefault("execution_state", "COMPLETED")
+    observed_result.setdefault("execution_id", action["action_id"])
+    observed_result.setdefault("action", action["action_type"])
+    observed_result.setdefault("action_ref", f"tool:{action['action_type']}:{action['action_id']}")
+    observed_result.setdefault("outcome_ref", f"outcome:{action['action_id']}")
+    observed_result.setdefault("commit_sha", action["protected_baseline"])
+    observed_result.setdefault("environment", "governed-model-tool-gateway")
+    observed_result.setdefault("source", "executor")
+
+    observed = transition(
+        "OBSERVED",
+        observation=str(observed_result.get("observed_output") or "executor returned no observed output"),
+        execution_authorization=execution_authorization,
+        gate=gate or _default_gate(),
+        identity_envelope=identity_envelope,
+        execution_result=observed_result,
+    )
+    return {
+        **authorized,
+        "status": observed["status"],
+        "execution_status": observed["status"],
+        "execution_result": observed["execution_result"],
+        "execution_evidence": observed["execution_evidence"],
+        "smart_ledger": observed["smart_ledger"],
+        "identity_binding": observed["identity_binding"],
     }
 
 
@@ -173,6 +260,21 @@ def self_test() -> int:
         registry = load_registry()
         authority = registry.resolve("HUMAN-SOULSCHOOLACADEMY-REPO-WRITE")
         gate = UniversalExecutionGate(registry)
+        identity = {
+            "schema_version": "1.0",
+            "identity_id": authority.principal_id,
+            "actor_class": "HUMAN",
+            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+            "knowledge": [{"knowledge_id": "K-MTG-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
+            "capabilities": ["repo_write"],
+            "authority": {"authority_ids": [authority.authority_id]},
+            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+            "received_artifacts": [{"artifact_id": "ART-MTG-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
+            "provenance": [{"subject_id": "ART-MTG-TEST", "source_ref": "test:request", "relation": "received_from"}],
+            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+            "actual_actions": [], "outcomes": [], "learning": [],
+        }
+
         decision = DecisionObject(
             decision_id="UEG-SELFTEST-DEC",
             mission="NayaPOWER governed repository maintenance",
@@ -218,6 +320,8 @@ def self_test() -> int:
             authority=authority,
             decision=decision,
             action=bound_action,
+            identity_envelope=identity,
+            consequential=True,
             now="2026-01-01T00:00:00+00:00",
         )
         assert issued.allowed
@@ -225,6 +329,7 @@ def self_test() -> int:
             bound_action,
             execution_authorization=issued.authorization,
             gate=gate,
+            identity_envelope=identity,
             preflight=approved_preflight(),
         )
         assert result["status"] == "AUTHORIZED" and result["execution_status"] == "EXECUTING"
@@ -232,7 +337,7 @@ def self_test() -> int:
         # 3. Risk downgrade still refused.
         invalid = dict(bound_action, risk="L1")
         try:
-            authorize(invalid, execution_authorization=issued.authorization, gate=gate)
+            authorize(invalid, execution_authorization=issued.authorization, gate=gate, identity_envelope=identity)
         except AssertionError as exc:
             assert "does not match derived risk" in str(exc)
         else:
@@ -251,7 +356,7 @@ def self_test() -> int:
         )
         stale = dict(bound_action, protected_baseline="stale-head")
         try:
-            authorize(stale, execution_authorization=issued.authorization, gate=gate)
+            authorize(stale, execution_authorization=issued.authorization, gate=gate, identity_envelope=identity)
         except AssertionError as exc:
             assert "protected baseline" in str(exc)
         else:
