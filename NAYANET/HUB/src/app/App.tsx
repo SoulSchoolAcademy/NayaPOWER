@@ -11,6 +11,7 @@ import type { PISFeed } from '../data/pis';
 import { SparklingShapeShell } from './SparklingShapeShell';
 import { routes } from './routes';
 import { FeatureSurface } from './FeatureSurface';
+import { ActivityBoard } from '../activity/ActivityBoard';
 
 type LensTab = { key: Lens; label: string; detail: string; icon: string };
 const lensTabs: LensTab[] = [
@@ -86,6 +87,7 @@ function HubHome({ onExplore }: { onExplore: (event?: IntelligentEvent) => void 
 }
 
 function CommandCenter({ initialLens = 'personal' }: { initialLens?: Lens }) {
+  if (initialLens === 'activity') return <ActivityBoard />;
   const identity = useIdentity();
   const [events, setEvents] = useState<IntelligentEvent[]>([]);
   const [feed, setFeed] = useState<PISFeed | undefined>();
