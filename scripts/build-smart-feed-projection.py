@@ -22,7 +22,7 @@ SRC = ROOT / "SMART FEED CONTENT"
 SMART_NOTES_ROOT = ROOT / "SUPERBRAIN" / "SMART-NOTES"
 OUT = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
 
-NOTE_RE = re.compile(r"(?:^|\n)🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s+(\d+)\s*\n")
+NOTE_RE = re.compile(r"(?:^|\n)>?\s*🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s+(\d+)\s*\n")
 SEC_RE = re.compile(r"(?:^|\n)\s*(?:#+\s*)?(\d+)\.\s+([^\n]+)\s*\n", re.M)
 HEADING_RE = re.compile(r"^##\s+(.+?)\s*$", re.M)
 META_RE = re.compile(r"^\*\*(.+?):\*\*\s*(.+?)\s*$", re.M)
