@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { supabase, useIdentity } from '../identity/session';
-import { SmartMailSurface } from './SmartMailSurface';
 
 type SurfaceKey='ledger'|'mail'|'spaces'|'lists'|'share'|'connections'|'reports'|'today';
 type Row=Record<string,unknown>;
@@ -19,7 +18,6 @@ function label(v:unknown){return typeof v==='string'?v:String(v??'');}
 function pretty(v:unknown){if(v==null)return '—'; if(typeof v==='object')return JSON.stringify(v); return String(v);}
 
 export function FeatureSurface({kind}:{kind:SurfaceKey}){
- if (kind === 'mail') return <SmartMailSurface />;
  const id=useIdentity(); const c=cfg[kind]; const [rows,setRows]=useState<Row[]>([]); const [error,setError]=useState(''); const [busy,setBusy]=useState(true);
  useEffect(()=>{let alive=true;setBusy(true);setError('');
    if(!id.is_authenticated){setRows([]);setBusy(false);return;}
