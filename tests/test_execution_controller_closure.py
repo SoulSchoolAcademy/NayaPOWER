@@ -373,7 +373,13 @@ class TestExecutionControllerClosure(unittest.TestCase):
             path, gate, authority = registry_file_gate(grant_payload("HUMAN-T10-REVOKE"), Path(tmp))
             decision = make_decision(authority, "GBLC10-REV-DEC")
             action = make_action(authority, decision.decision_id)
-            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            issued = gate.authorize(
+                authority=authority,
+                decision=decision,
+                action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
+            )
             self.assertTrue(issued.allowed)
 
             start_claimed()
@@ -391,7 +397,12 @@ class TestExecutionControllerClosure(unittest.TestCase):
             payload["authorities"][0]["revoked"] = True
             path.write_text(json.dumps(payload), encoding="utf-8")
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertTrue("revoked" in msg or "no longer permits" in msg, msg)
 
     # 17. expired authority -> REFUSED at time of use
@@ -406,6 +417,8 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 authority=authority,
                 decision=decision,
                 action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
                 now=now_iso(-60),
             )
             self.assertTrue(issued.allowed)
