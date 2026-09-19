@@ -75,3 +75,12 @@ The next level is **FEATURE → SESSION**. The indexes below are navigation/roll
 - **DECISION:** **MEMBERSHIP CANONICALITY BLOCKED — NO EXISTING SUBSTRATE FOUND**.
 - [Action 02 session](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-02-IDENTITY-MEMBERSHIP-RECONCILIATION.md)
 - [Action 03 execution prompt](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-03-EXECUTION-PROMPT.md)
+
+
+## COMMUNICATION + ORGANIZATION — ACTIONS 03–06
+
+- **Action 03:** connection-request primitive reconciled as request-only state.
+- **Action 04:** canonical Space membership implemented.
+- **Action 05:** canonical saved Connection implemented.
+- **Action 06:** canonical Smart List implemented; Smart Mail relationship gate added.
+- **Next:** [Action 07 execution prompt](./COMMUNICATION-ORGANIZATION/2026-09-19__ACTION-07-EXECUTION-PROMPT.md)
