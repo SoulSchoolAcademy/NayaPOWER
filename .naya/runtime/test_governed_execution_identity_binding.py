@@ -128,6 +128,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=self.identity,
+            consequential=True,
             now="2026-09-18T18:00:00Z",
         )
         self.assertTrue(result.allowed, result.reasons)
@@ -228,6 +229,7 @@ class GovernedExecutionIdentityBindingTests(unittest.TestCase):
             decision=decision(),
             action=action(),
             identity_envelope=self.identity,
+            consequential=True,
         ).authorization
         self.assertIsNotNone(authorization)
         event, receipt = record_authorized_execution(
