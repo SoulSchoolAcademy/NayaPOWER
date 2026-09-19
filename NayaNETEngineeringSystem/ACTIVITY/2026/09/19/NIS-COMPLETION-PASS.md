@@ -52,3 +52,12 @@ Source changes are on branch `nis-completion-20260919` and PR #329. Production S
 Unauthenticated Smart Tabs POST was observed returning HTTP 401.
 
 Full browser acceptance is still NOT VERIFIED. The next proof is authenticated runtime verification of the new Activity projection against the canonical `nayanet_team_activity` source, followed by the remaining ten-surface acceptance sequence. No onboarding or substitute deployment path is in scope.
+
+
+## Engineering Activity live-source verification — 2026-09-19
+
+**STATUS: OBSERVED / NOT YET RUNTIME-VERIFIED**
+
+Live Supabase inspection confirms the canonical `public.nayanet_team_activity` source currently contains **13 events across 13 sessions**, all dated today, spanning `2026-09-19 19:25:36.529+00` through `21:08:24.64+00`. The newest observed event is `SE-20260919210824-41feea8a-28e`, with session/run/receipt `SMART-MAIL-6606123a-4914-4082-80a9-851b186d351d` / `6606123a-4914-4082-80a9-851b186d351d` and the expected Activity fields populated.
+
+The Hub projection source was inspected and matches the canonical table/field contract. This proves the **data source exists and is populated**; it does not yet prove the deployed/browser Activity surface can authenticate, query, render, and navigate the live records. The next gate is therefore runtime proof, not another schema or storage change.
