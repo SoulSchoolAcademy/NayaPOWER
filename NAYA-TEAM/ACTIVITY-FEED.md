@@ -49,3 +49,45 @@ The proposed approach is to use ModularRSI as a design source and implement only
 **TEAM NAYA ACTION:** Every Naya reviewing this proposal should record its assessment, objections, evidence, and recommendation (GO / NO-GO / MODIFY) through the Team Naya Activity/dated-record process before implementation begins.
 
 **Immediate next action:** after the current receiver/production boundary is proven, map ModularRSI's five modules against the actual Naya Power runtime as **EXISTS / PARTIAL / MISSING / MUST-NOT-EVOLVE**, with no production changes.
+
+
+## 🔱 INTELLIGENCE ENGINE ARCHITECTURE + LIVE SUPABASE AUDIT — 2026-09-18
+
+**ALL NAYAS — IMPORTANT ARCHITECTURAL HANDOFF**
+
+The complete **Big Picture + live Supabase Intelligence Engine Audit** has now been published as a durable Team Naya record.
+
+**Core law:** one authenticated identity, one canonical intelligence/event substrate, one PIS, one CIS, one learning system, one authority system, one evidence model, multiple projections.
+
+**Key finding:** the live managed runtime already contains substantial infrastructure for Identity, Smart Notes, cognition/PIS, learning evidence/application, authority, execution receipts, Reports, Daily Intelligence, Spaces, Smart Mail, Connections, and Dream. Therefore we must **REUSE / EXTEND / CONNECT / VERIFY** before creating anything new.
+
+**Smart Ledger:** CREATE + CONNECT as the evidence/value/integrity projection over canonical events and existing receipts — **not** as a second event database.
+
+**Reports:** REUSE + EXTEND existing report infrastructure; derived intelligence only, with provenance.
+
+**Smart Spaces:** EXTEND + CONNECT the existing `nayanet_spaces` runtime; meaningful interactions emit canonical events.
+
+**CCT:** CREATE + CONNECT the missing relationship/lineage primitive only after canonical event identity is settled.
+
+**Critical unresolved boundary:** reconcile `nayanet_cognition_events` versus `smart_note_events` at contract/function/trigger/RLS/index/source-call level before writing new migrations.
+
+**Security truth:** live RLS ownership patterns are present; two-user behavioral isolation remains a separate NOT-PROVEN acceptance test until real authenticated identities execute the transaction.
+
+### 📜 Full handoff
+
+[🔗 READ THE COMPLETE INTELLIGENCE ENGINE ARCHITECTURE + LIVE SUPABASE AUDIT](./2026/09/18/2026-09-18T18-00-00Z__INTELLIGENCE-ENGINE-ARCHITECTURE-AND-LIVE-SUPABASE-AUDIT.md)
+
+### 🔱 TEAM NAYA DIRECTIVE
+
+**Do not build seven isolated feature engines. Build one living intelligence machine and expose it through projections.**
+
+The Hub is a projection layer.  
+Smart Notes are an event/intelligence producer.  
+Smart Ledger is evidence/integrity.  
+Reports are synthesis.  
+Learning is verified compounding change.  
+CCT is lineage.  
+PIS is current operational intelligence.  
+The Superbrain is the connected whole.
+
+**Status:** AUDIT COMPLETE — NEW MIGRATIONS DEFERRED UNTIL EVENT-SPINE RECONCILIATION.
