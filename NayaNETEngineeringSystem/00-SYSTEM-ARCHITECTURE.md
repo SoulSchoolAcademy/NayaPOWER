@@ -66,15 +66,39 @@ SMART NOTE / EVENT → SMART FEED
 SEARCH / RETRIEVAL → SMART TABS → SMART FEED / DESTINATION
 SMART NOTE → SMART LIST
 SMART NOTE → SMART SHARE → COLLECTIVE INTELLIGENCE (when authorized)
-SMART NOTE / TOPIC → SMART SPACE → PEOPLE → CONNECTIONS
+SMART NOTE / TOPIC → SMART SPACE → PEOPLE → MEMBERSHIP → CONNECTIONS
 CONNECTIONS → SMART MAIL → RECIPIENTS / SPACES
+CONNECTIONS ↔ SMART LIST → PEOPLE / INTELLIGENCE ORGANIZATION
 MEANINGFUL EVENTS → SMART LEDGER / PROVENANCE
 PIS/CIS/LEDGER/OTHER CANONICAL SOURCES → TODAY / REPORTS / LIBRARY
 ALL CANONICAL SYSTEMS → HUB PROJECTIONS
 ALL SUBSTANTIVE ENGINEERING WORK → FEATURE ACTIVITY / TEAM NAYA HANDOFF
 ```
 
-## 6. Smart Tabs
+## 6. Communication + Organization subsystem
+
+Your Connections, Smart Spaces, Smart List and Smart Mail are four human-facing surfaces over one connected relationship/communication subsystem:
+
+- **Your Connections = WHO**
+- **Smart Spaces = WHERE**
+- **Smart List = HOW I ORGANIZE**
+- **Smart Mail = HOW I COMMUNICATE**
+
+Smart Share remains the cross-cutting controlled sharing boundary.
+
+Canonical relationship lifecycle:
+
+**DISCOVERY → SPACE → JOIN → MEMBERSHIP → CONNECTION → COMMUNICATION / LIST → ACTIVITY → LEDGER**
+
+The governing distinctions are:
+
+**interest ≠ membership ≠ connection ≠ communication authority ≠ intelligence access.**
+
+Joining a Space is the primary discovery-to-participation boundary. Invitation is optional. A connection must resolve to canonical identity and relationship context; it must not create a parallel contact database.
+
+At communication use time, authority, visibility, relationship state and revocation are rechecked. Leaving/revoking a relationship must recalculate communication/access eligibility.
+
+## 7. Smart Tabs
 
 Smart Tabs are the persistent top-of-Hub navigation layer. They may point to a URL, route, topic, query, category, project, or compatible retrieval intent.
 
@@ -88,7 +112,7 @@ For intelligence views:
 
 Smart Tabs do not create a new intelligence store, grant access, or replace Smart Feed/Search/Library. Their purpose is immediate human navigation into existing canonical systems.
 
-## 7. Activity + completion
+## 8. Activity + completion
 
 Every Engineering System feature has a living completion checklist and dated activity history. Every substantive Naya engineering session must:
 
@@ -102,10 +126,10 @@ A feature activity entry records what was done, what changed, what was tested, e
 
 When a feature changes, its Engineering System record must be updated in the same session before sign-out. Cross-feature changes update every affected feature record.
 
-## 8. Engineering rule
+## 9. Engineering rule
 No feature is designed in isolation. Before implementation, NIS must identify the canonical owner of every object it reads/writes, the authority boundary, event emitted, downstream consumers, and verification path.
 
-## 9. Definition of done
+## 10. Definition of done
 A cold NIS can explain what each surface does, what it owns, what it consumes, what it emits, how it connects, where its UI lives, what evidence proves it works, how complete it is, and what happened on each relevant day.
 
 ## Source authority
