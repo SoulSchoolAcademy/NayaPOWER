@@ -1,7 +1,7 @@
-# CANONICAL RUNTIME RELEASE â deploy the exact current protected Hub freeze point.
+# CANONICAL RUNTIME RELEASE — deploy the exact current protected Hub freeze point.
 # Assistant lane only. GitHub 509 is a separate fail-closed lane.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
-name: NAYA â Canonical Assistant Cloudflare Hub Release
+name: NAYA — Canonical Assistant Cloudflare Hub Release
 
 on:
   push:
@@ -41,7 +41,7 @@ jobs:
           cp 'assistant-runtime.js' dist/assistant-runtime.js
           grep -q 'nayanet-direct-nine' dist/index.html
           grep -q 'assistant-runtime.js' dist/index.html
-          grep -q 'NayaNET â Intelligent Hub' dist/index.html
+          grep -q 'NayaNET — Intelligent Hub' dist/index.html
           sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
           echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
 
@@ -69,14 +69,14 @@ jobs:
           grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html"
           grep -q 'assistant-runtime.js' "$RUNNER_TEMP/live.html"
           grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js"
-          grep -q 'NayaNET â Intelligent Hub' "$RUNNER_TEMP/live.html"
+          grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"
           sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
           live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
           test "$source_hash" = "$live_hash"
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
 
-      - name: Verify Assistant runtime baseline â desktop and mobile
+      - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
         run: |
           set -euo pipefail
