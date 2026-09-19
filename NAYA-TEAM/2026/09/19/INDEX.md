@@ -35,17 +35,17 @@ The master directive is the boss-level execution contract. The individual job fi
 2. [Smart Tabs — Job 02](./JOBS/02-SMART-TABS.md)
 3. [Smart Ledger — Job 03](./JOBS/03-SMART-LEDGER.md)
 
-### Wave B — Action / Organization
-4. [Smart Mail — Job 04](./JOBS/04-SMART-MAIL.md)
+### Wave B — Communication + Organization
+4. [Communication + Organization subsystem — Job 04](./JOBS/04-COMMUNICATION-AND-ORGANIZATION.md)
+
+This one Naya owns four surfaces: [Your Connections](./YOUR-CONNECTIONS/INDEX.md), Smart Spaces, Smart List and Smart Mail.
+
+### Wave B½ — Controlled Sharing
 5. [Smart Share — Job 05](./JOBS/05-SMART-SHARE.md)
-6. [Smart List — Job 06](./JOBS/06-SMART-LIST.md)
 
-### Wave C — Collaboration
-7. [Smart Spaces — Job 07](./JOBS/07-SMART-SPACES.md)
-
-### Wave D — Synthesis
-8. [Your Intelligence Today — Job 08](./JOBS/08-YOUR-INTELLIGENCE-TODAY.md)
-9. [Intelligent Reports — Job 09](./JOBS/09-INTELLIGENT-REPORTS.md)
+### Wave C — Synthesis
+6. [Your Intelligence Today — Job 08](./JOBS/08-YOUR-INTELLIGENCE-TODAY.md)
+7. [Intelligent Reports — Job 09](./JOBS/09-INTELLIGENT-REPORTS.md)
 
 ## EXECUTION ORDER
 Wave A is the first coordinated run. Smart Feed establishes the retrieval spine; Smart Tabs consumes it as navigation; Smart Ledger establishes the durable consequence/evidence view. These may coordinate in the same execution window, but no dependent implementation should invent missing primitives in parallel.
@@ -59,6 +59,7 @@ The next level is **FEATURE → SESSION**. The indexes below are navigation/roll
 - [Smart Tabs](./SMART-TABS/INDEX.md)
 - [Smart Feed](./SMART-FEED/INDEX.md)
 - [Smart Ledger](./SMART-LEDGER/INDEX.md)
+- [Your Connections](./YOUR-CONNECTIONS/INDEX.md)
 - [Smart List](./SMART-LIST/INDEX.md)
 - [Smart Mail](./SMART-MAIL/INDEX.md)
 - [Smart Share](./SMART-SHARE/INDEX.md)
