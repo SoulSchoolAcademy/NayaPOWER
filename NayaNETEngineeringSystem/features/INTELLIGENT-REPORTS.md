@@ -40,3 +40,22 @@ Inspect existing report generation/storage/runtime and establish the canonical r
 
 ## Source authority
 `.naya/2026-09-11-NAYAPOWER-05-INTELLIGENCE-REPORTS-SMART-NOTE.md`; `.naya/2026-09-11-18-35-NAYAPOWER-32-MASTER-SYSTEM-ARCHITECTURE.md`; `.naya/2026-09-12-NAYAPOWER-50-INTELLIGENT-SEARCH-RETRIEVAL-CONTRACT.md`.
+
+
+## COMPLETION CHECKLIST — 2026-09-19
+
+- [x] Source contract identified
+- [x] .naya authority identified
+- [x] Report architecture identified
+- [x] Ledger report hook identified
+- [ ] Report UI mapped
+- [ ] Generation/storage pipeline mapped
+- [ ] Source/evidence traceability proven
+- [ ] Period boundaries proven
+- [ ] Regeneration proven
+- [ ] Privacy isolation proven
+- [ ] Fresh retrieval proven
+- [x] Dated activity record exists
+- [x] One next action recorded
+
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/INTELLIGENT-REPORTS.md).
