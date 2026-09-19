@@ -20,12 +20,15 @@ from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalE
 def main() -> int:
     original = ec.STATE.read_text(encoding="utf-8") if ec.STATE.exists() else None
     tmp = Path(tempfile.mkdtemp(prefix="naya-execution-team-bridge-"))
-    saved = (ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH)\n    import execution_activity_writer as activity_writer\n    saved_activity_root = activity_writer.ACTIVITY_ROOT
+    saved = (ec.EVENTS_ROOT, ec.INDEX_PATH, ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH)
+    import execution_activity_writer as activity_writer
+    saved_activity_root = activity_writer.ACTIVITY_ROOT
     events_root = tmp / "events"
     ec.EVENTS_ROOT = events_root
     ec.INDEX_PATH = events_root / "INDEX.json"
     ec.SESSIONS_ROOT = tmp / "sessions"
-    ec.SESSIONS_INDEX_PATH = ec.SESSIONS_ROOT / "INDEX.json"\n    activity_writer.ACTIVITY_ROOT = tmp / "activity"
+    ec.SESSIONS_INDEX_PATH = ec.SESSIONS_ROOT / "INDEX.json"
+    activity_writer.ACTIVITY_ROOT = tmp / "activity"
     try:
         if ec.STATE.exists():
             ec.STATE.unlink()
@@ -98,7 +101,8 @@ def main() -> int:
         print("EXECUTION_TO_TEAM_ACTIVITY=PASS")
         print("TEAM_ACTIVITY_EVIDENCE_BINDING=PASS")
         print("TEAM_ACTIVITY_HANDOFF=PASS")
-        print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")\n        print("HARD_HANDOFF_ACTIVITY_GATE=PASS")
+        print("TEAM_ACTIVITY_IDEMPOTENCY=PASS")
+        print("HARD_HANDOFF_ACTIVITY_GATE=PASS")
         print(f"EXECUTION_ACTIVITY_EVENT_ID={state['activity_event_id']}")
         print(f"TEAM_NAYA_EVENT_ID={bridge['event_id']}")
         print(f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}")
