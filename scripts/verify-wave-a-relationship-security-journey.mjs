@@ -63,7 +63,7 @@ const idem='wavea-mail-'+project;
 const first=await send(A.access_token,B.user.id,'Wave A real A-to-B governed Smart Mail action.',idem,grant.grant_id);
 if(first.status!=='CREATED'||!first.message_id||!first.execution_receipt_id||!first.cognition_event_id) throw new Error('SMART_MAIL_CREATE_FAILED');
 const replay=await send(A.access_token,B.user.id,'Wave A real A-to-B governed Smart Mail action.',idem,grant.grant_id);
-if(replay.message_id!==first.message_id||replay.execution_receipt_id!==first.execution_receipt_id||replay.cognition_event_id!==first.cognition_event_id) throw new Error('IDEMPOTENT_REPLAY_FAILED');
+if(replay.status!=='REPLAY'||replay.message_id!==first.message_id||replay.execution_receipt_id!==first.execution_receipt_id) throw new Error('IDEMPOTENT_REPLAY_FAILED');
 const threadRows=await req(base+'/rest/v1/v7_mail_messages?select=id,metadata&thread_id=eq.'+first.thread_id,{headers:h(B.access_token)});
 if(threadRows.length!==1||threadRows[0].id!==first.message_id) throw new Error('IDEMPOTENT_DUPLICATE_DURABLE_MESSAGE');
 const outcome=await verify(B.access_token,first.message_id);
