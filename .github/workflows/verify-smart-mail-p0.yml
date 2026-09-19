@@ -27,7 +27,18 @@ jobs:
         with:
           node-version: 20
       - name: Execute real production sender -> Naya -> receiver transaction
-        run: node scripts/verify-smart-mail-p0.mjs
+        run: |
+          set +e
+          node scripts/verify-smart-mail-p0.mjs 2>&1 | tee "$RUNNER_TEMP/smart-mail-runtime.log"
+          status=${PIPESTATUS[0]}
+          exit $status
+      - name: Upload runtime failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-mail-runtime-log
+          path: ${{ runner.temp }}/smart-mail-runtime.log
+          if-no-files-found: warn
       - name: Validate production proof
         run: |
           test -s "$PROOF_PATH"
