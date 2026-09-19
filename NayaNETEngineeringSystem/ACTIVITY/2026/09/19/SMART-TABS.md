@@ -62,4 +62,11 @@ Authenticated human creates a tab → tab persists → tab appears in the existi
 
 Do not redesign the Hub. Do not create a Smart Tab intelligence index. Reuse existing retrieval and authorization.
 
-**NEXT:** Map the real Hub navigation and existing persistence/retrieval primitives, then implement the smallest authenticated Smart Tab CRUD + navigation path and prove it in Cloudflare.
+**NEXT:** Run the Cloudflare release and then prove authenticated Smart Tabs create → reload → target navigation → favorite/edit/reorder/remove → second-user denial.
+
+
+## Session 001 — Production capability
+
+**Timestamp:** 2026-09-19T16:27:35Z
+
+Smart Tabs production capability is now implemented: owner-scoped persistence, JWT-protected Edge Function CRUD, canonical runtime bridge, Hub surface, and release/parity workflow support. Runtime deployment parity and authenticated CRUD/reload/isolation remain unproven.
