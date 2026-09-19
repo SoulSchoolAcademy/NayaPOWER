@@ -58,7 +58,7 @@ jobs:
             p_source_event_id: sourceEventId,
             p_mission_id: 'NayaPOWER-GITHUB-DISPATCH-PROOF',
             p_scope: { target: commitSha },
-            p_actions: { deploy_nayanet_hub_canonical: true },
+            p_actions: ['deploy_nayanet_hub_canonical'],
             p_constraints: { mode: 'verification-only', no_external_side_effects: false },
             p_evidence: { proof_id: proofId, source: 'verify-nayanet-github-dispatch-authority' }
           });
