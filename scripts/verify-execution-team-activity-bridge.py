@@ -129,8 +129,7 @@ def main() -> int:
             f"TEAM_NAYA_EVENT_ID={bridge['event_id']}",
             f"TEAM_NAYA_SUCCESSOR={bridge['continuity']['successor']}",
         ]
-        output = "
-".join(output_lines)
+        output = "\n".join(output_lines)
         _write_ci_execution_capture(
             observed_output=output,
             result="PASS",
