@@ -78,13 +78,32 @@ const prepare=async(p)=>{
     p_target:p.id
   });
   if(authorityCheck.error||authorityCheck.data?.status!=="AUTHORIZED") throw authorityCheck.error||new Error("CONTROLLED_TEST_AUTHORITY_VALIDATION_FAILED:"+JSON.stringify(authorityCheck.data));
-  authorityGrants.set(p.id,authority.data.grant_id);
   await transition(p.id,"CONTROLLED_TEST",{
     authorized:true,
     authority_grant_id:authority.data.grant_id,
     authority_status:authorityCheck.data.status,
     reason:"canonical-authority-grant-validated"
   });
+
+  const mailAuthority = await supabase.rpc("nayanet_issue_authority_grant",{
+    p_subject_id:sender.id,
+    p_source_event_id:"controlled-paired-smart-mail-authorization-"+runId+"-"+p.id,
+    p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
+    p_scope:{project_id:"NayaNET",target:receiver.id},
+    p_actions:["smart_mail_send"],
+    p_constraints:{mode:"controlled-test-only",no_external_side_effects:true,policy_id:p.id},
+    p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+    p_evidence:{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:p.id},
+    p_parent_authority:authority.data.grant_id
+  });
+  if(mailAuthority.error||!mailAuthority.data?.grant_id) throw mailAuthority.error||new Error("SMART_MAIL_AUTHORITY_GRANT_ISSUANCE_FAILED");
+  const mailAuthorityCheck = await supabase.rpc("nayanet_validate_authority_grant",{
+    p_grant_id:mailAuthority.data.grant_id,
+    p_action:"smart_mail_send",
+    p_target:receiver.id
+  });
+  if(mailAuthorityCheck.error||mailAuthorityCheck.data?.status!=="AUTHORIZED") throw mailAuthorityCheck.error||new Error("SMART_MAIL_AUTHORITY_GRANT_VALIDATION_FAILED:"+JSON.stringify(mailAuthorityCheck.data));
+  authorityGrants.set(p.id,mailAuthority.data.grant_id);
 };
 await prepare(v1); await prepare(v2);
 
