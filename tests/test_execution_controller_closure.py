@@ -81,6 +81,23 @@ def persist_activity_event(
     return event_id
 
 
+
+def identity_for(authority):
+    return {
+        "schema_version": "1.0",
+        "identity_id": authority.principal_id,
+        "actor_class": "HUMAN",
+        "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+        "knowledge": [{"knowledge_id": "K-EC-CLOSURE", "claim": "Execution target is the canonical governed repository.", "source_refs": ["test:request"], "epistemic_state": "VERIFIED"}],
+        "capabilities": ["repo_write"],
+        "authority": {"authority_ids": [authority.authority_id]},
+        "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+        "received_artifacts": [{"artifact_id": "ART-EC-CLOSURE", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-09-19T00:00:00Z"}],
+        "provenance": [{"subject_id": "ART-EC-CLOSURE", "source_ref": "test:request", "relation": "received_from"}],
+        "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+        "actual_actions": [], "outcomes": [], "learning": [],
+    }
+
 def now_iso(offset_seconds: int = 0) -> str:
     return (datetime.now(timezone.utc) + timedelta(seconds=offset_seconds)).isoformat()
 
@@ -192,7 +209,8 @@ class TestExecutionControllerClosure(unittest.TestCase):
         self.registry, self.authority, self.gate = canonical_setup()
         self.decision = make_decision(self.authority, "GBLC10-DEC-001")
         self.action = make_action(self.authority, self.decision.decision_id)
-        self.issued = self.gate.authorize(authority=self.authority, decision=self.decision, action=self.action)
+        self.identity = identity_for(self.authority)
+        self.issued = self.gate.authorize(authority=self.authority, decision=self.decision, action=self.action, identity_envelope=self.identity, consequential=True)
         self.credential = self.issued.authorization
         self.assertIsNotNone(self.credential)
 
@@ -203,6 +221,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 action=action if action is not None else self.action,
                 execution_authorization=credential,
                 gate=gate if gate is not None else self.gate,
+                identity_envelope=extra.pop("identity_envelope", self.identity),
                 **extra,
             )
         return str(ctx.exception)
@@ -354,7 +373,13 @@ class TestExecutionControllerClosure(unittest.TestCase):
             path, gate, authority = registry_file_gate(grant_payload("HUMAN-T10-REVOKE"), Path(tmp))
             decision = make_decision(authority, "GBLC10-REV-DEC")
             action = make_action(authority, decision.decision_id)
-            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            issued = gate.authorize(
+                authority=authority,
+                decision=decision,
+                action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
+            )
             self.assertTrue(issued.allowed)
 
             start_claimed()
@@ -363,6 +388,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 action=action,
                 execution_authorization=issued.authorization,
                 gate=gate,
+                identity_envelope=identity_for(authority),
                 preflight=approved_preflight(),
             )
             self.assertEqual(result["status"], "EXECUTING")
@@ -371,7 +397,12 @@ class TestExecutionControllerClosure(unittest.TestCase):
             payload["authorities"][0]["revoked"] = True
             path.write_text(json.dumps(payload), encoding="utf-8")
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertTrue("revoked" in msg or "no longer permits" in msg, msg)
 
     # 17. expired authority -> REFUSED at time of use
@@ -386,12 +417,19 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 authority=authority,
                 decision=decision,
                 action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
                 now=now_iso(-60),
             )
             self.assertTrue(issued.allowed)
 
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertIn("no longer permits", msg)
 
     # 18. valid gate-issued credential -> EXECUTING and onward
@@ -402,12 +440,27 @@ class TestExecutionControllerClosure(unittest.TestCase):
             action=self.action,
             execution_authorization=self.credential,
             gate=self.gate,
+            identity_envelope=self.identity,
             preflight=approved_preflight(),
         )
         self.assertEqual(result["status"], "EXECUTING")
-        result = EC.transition("OBSERVED", observation="actual runtime observation")
+        result = EC.transition(
+            "OBSERVED",
+            observation="actual runtime observation",
+            execution_authorization=self.credential,
+            gate=self.gate,
+            identity_envelope=self.identity,
+            execution_result={
+                "execution_state": "COMPLETED",
+                "execution_id": self.action["action_id"],
+                "action": "closure test action",
+                "observed_output": "actual runtime observation",
+                "result": "PASS",
+                "commit_sha": "test-head",
+            },
+        )
         self.assertEqual(result["status"], "OBSERVED")
-        result = EC.transition("VERIFIED", activity_event_id=persist_activity_event(), evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"})
+        result = EC.transition("VERIFIED", evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"}, next_action="continue test", successor="NEXT-EXECUTION-20260916-GBLC10-NEXT.md")
         self.assertEqual(result["status"], "VERIFIED")
         result = EC.transition("HANDED_OFF", next_action="continue test", handoff={"current_state": "VERIFIED"})
         self.assertEqual(result["status"], "HANDED_OFF")
@@ -419,7 +472,13 @@ class TestExecutionControllerClosure(unittest.TestCase):
             path, gate, authority = registry_file_gate(grant_payload("HUMAN-T10-PREV"), Path(tmp))
             decision = make_decision(authority, "GBLC10-PREV-DEC")
             action = make_action(authority, decision.decision_id)
-            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            issued = gate.authorize(
+                authority=authority,
+                decision=decision,
+                action=action,
+                identity_envelope=identity_for(authority),
+                consequential=True,
+            )
             self.assertTrue(issued.allowed)
 
             start_claimed()
@@ -428,6 +487,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
                 action=action,
                 execution_authorization=issued.authorization,
                 gate=gate,
+                identity_envelope=identity_for(authority),
                 preflight=approved_preflight(),
             )
             self.assertEqual(result["status"], "EXECUTING")
@@ -436,7 +496,12 @@ class TestExecutionControllerClosure(unittest.TestCase):
             payload["authorities"][0]["revoked"] = True
             path.write_text(json.dumps(payload), encoding="utf-8")
             start_claimed()
-            msg = self._refuse_transition(action=action, credential=issued.authorization, gate=gate)
+            msg = self._refuse_transition(
+                action=action,
+                credential=issued.authorization,
+                gate=gate,
+                identity_envelope=identity_for(authority),
+            )
             self.assertTrue("revoked" in msg or "no longer permits" in msg, msg)
 
     # 20. direct controller bypass (state written behind the gateway) -> REFUSED
