@@ -56,3 +56,20 @@ Map the existing production Smart Ledger implementation to this contract and pro
 - [x] One next action recorded
 
 **Current state:** IMPLEMENTED; not yet LIVE VERIFIED for the complete current product surface. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-LEDGER.md).
+
+
+## COMMUNICATION + ORGANIZATION BINDING — 2026-09-19
+
+The canonical cognition→Ledger trigger chain is now proven for the new relationship subsystem.
+
+Observed transactional lineage:
+- Space LEAVE cognition → Smart Ledger
+- Space JOIN cognition → Smart Ledger
+- Connection SAVE cognition → Smart Ledger
+- Smart List ADD cognition → Smart Ledger
+
+Smart Mail continues to use its existing receipt/cognition/Ledger path; the new relationship gate executes before authority validation, so authority remains independently enforced.
+
+No second event or Ledger store was created.
+
+Current state: **SUBSTRATE VERIFIED / REAL-HUMAN END-TO-END CLOSURE UNPROVEN**.
