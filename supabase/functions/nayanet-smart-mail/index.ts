@@ -20,21 +20,12 @@ Deno.serve(async(req)=>{
    if(!membership)return json({ok:false,error:"RECEIVER_NOT_AUTHORIZED"},403);
    const receiptId=message.metadata?.execution_receipt_id;
    if(!receiptId)return json({ok:false,error:"RECEIPT_NOT_LINKED"},409);
-   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence,value").eq("id",receiptId).maybeSingle();
+   const {data:receipt,error:receiptError}=await admin.from("nayanet_execution_receipts").select("id,status,evidence,value,experiment_case_id").eq("id",receiptId).maybeSingle();
    if(receiptError||!receipt)return json({ok:false,error:"RECEIPT_NOT_FOUND"},404);
-   const evidence=[...(receipt.evidence||[])];
-   const already=evidence.some((x:any)=>x?.receiver_retrieved_by===actorId&&x?.message_id===message.id);
-   if(!already)evidence.push({receiver_retrieved_by:actorId,message_id:message.id,receiver_retrieved_at:new Date().toISOString()});
-   const priorValue=receipt.value&&typeof receipt.value==="object"?receipt.value:{};
-   const benefit=typeof priorValue.benefit==="number"?priorValue.benefit:0;
-   const harm=typeof priorValue.harm==="number"?priorValue.harm:0;
-   const cost=typeof priorValue.cost==="number"?priorValue.cost:0;
-   const risk=typeof priorValue.risk_adjusted_loss==="number"?priorValue.risk_adjusted_loss:0;
-   const verifiedValue=benefit-harm-cost-risk;
-   const {error:updateError}=await admin.from("nayanet_execution_receipts").update({evidence,value:{...priorValue,verified:true,verification_method:"authenticated receiver retrieval",verified_value:verifiedValue}}).eq("id",receiptId);
-   if(updateError)return json({ok:false,error:"RECEIPT_UPDATE_FAILED",detail:updateError.message},500);
-   await admin.from("v7_mail_messages").update({metadata:{...message.metadata,receiver_verified_at:new Date().toISOString(),receiver_verified_by:actorId}}).eq("id",message.id);
-   return json({ok:true,status:"VERIFIED",message_id:message.id,thread_id:message.thread_id,execution_receipt_id:receiptId,receiver_id:actorId,authority_changed:false});
+   const {data:outcome,error:outcomeError}=await userClient.rpc("nayanet_record_smart_mail_outcome",{p_receipt_id:receiptId,p_message_id:message.id,p_experiment_case_id:receipt.experiment_case_id??null});
+   if(outcomeError)return json({ok:false,error:"OUTCOME_RECORD_FAILED",detail:outcomeError.message},409);
+   await admin.from("v7_mail_messages").update({metadata:{...message.metadata,receiver_verified_at:new Date().toISOString(),receiver_verified_by:actorId,outcome_id:outcome?.outcome_id??null}}).eq("id",message.id);
+   return json({ok:true,status:"VERIFIED",message_id:message.id,thread_id:message.thread_id,execution_receipt_id:receiptId,receiver_id:actorId,authority_changed:false,outcome});
  }
  if(!input?.recipient_user_id||!input?.body||!input?.idempotency_key)return json({ok:false,error:"RECIPIENT_BODY_IDEMPOTENCY_REQUIRED"},400);
  if(input.recipient_user_id===actorId)return json({ok:false,error:"SELF_RECIPIENT_NOT_ALLOWED"},400);
