@@ -26,6 +26,7 @@ const insertPolicy=async(version,parent,strategy)=>{
   if(error) throw error;
   return data;
 };
+const authorityGrants=new Map();
 const v1=await insertPolicy(1,null,"HISTORY_ONLY_V1");
 const v2=await insertPolicy(2,v1.id,"HISTORY_PLUS_VERIFIED_RECEIPT_V1");
 
@@ -77,6 +78,7 @@ const prepare=async(p)=>{
     p_target:p.id
   });
   if(authorityCheck.error||authorityCheck.data?.status!=="AUTHORIZED") throw authorityCheck.error||new Error("CONTROLLED_TEST_AUTHORITY_VALIDATION_FAILED:"+JSON.stringify(authorityCheck.data));
+  authorityGrants.set(p.id,authority.data.grant_id);
   await transition(p.id,"CONTROLLED_TEST",{
     authorized:true,
     authority_grant_id:authority.data.grant_id,
@@ -95,10 +97,12 @@ const decisions={
   v2:{subject:"Controlled test acknowledgement",body:"Verified context shows this receiver successfully retrieves governed messages. Please acknowledge this controlled test message."}
 };
 const send=async(token,policy,decision,group)=>{
+  const authorityGrantId=authorityGrants.get(policy.id);
+  if(!authorityGrantId) throw new Error("AUTHORITY_GRANT_MISSING_FOR_POLICY");
   const decisionHash=await sha256(JSON.stringify({case:frozenCase,decision}));
   const res=await fetch(url+"/functions/v1/nayanet-smart-mail",{
     method:"POST",headers:{authorization:"Bearer "+token,apikey:key,"content-type":"application/json"},
-    body:JSON.stringify({recipient_user_id:receiver.id,body:decision.body,subject:decision.subject,kind:"direct",idempotency_key:caseId+"-"+group,project_id:"NayaNET",policy_id:policy.id,experiment_case_id:caseId,policy_input_hash:inputHash,policy_decision_hash:decisionHash})
+    body:JSON.stringify({recipient_user_id:receiver.id,body:decision.body,subject:decision.subject,kind:"direct",idempotency_key:caseId+"-"+group,project_id:"NayaNET",policy_id:policy.id,experiment_case_id:caseId,policy_input_hash:inputHash,policy_decision_hash:decisionHash,authority_grant_id:authorityGrantId})
   });
   const data=await res.json();
   if(!res.ok||!data.ok) throw new Error("SEND_"+group+"_FAILED:"+JSON.stringify(data));
@@ -129,7 +133,19 @@ const {data:comparison,error:comparisonError}=await supabase.rpc("nayanet_compar
   p_baseline_receipt_id:a.data.execution_receipt_id,p_candidate_receipt_id:b.data.execution_receipt_id
 });
 if(comparisonError) throw comparisonError;
-if(comparison?.result!=="NOT_PROVEN") throw new Error("EXPECTED_NOT_PROVEN_FOR_EQUAL_VALUE_CASE");
+if(comparison?.result!=="POLICY_IMPROVEMENT_NOT_PROVEN") throw new Error("EXPECTED_POLICY_IMPROVEMENT_NOT_PROVEN_FOR_EQUAL_VALUE_CASE");
+
+const {data:independentOutcomes,error:outcomeError}=await supabase.from("nayanet_execution_outcomes")
+  .select("outcome_id,receipt_id,experiment_case_id,benefit,harm,cost,risk_adjusted_loss,verified_value,verified,verifier_id,evidence,verification_method")
+  .in("receipt_id",[a.data.execution_receipt_id,b.data.execution_receipt_id]);
+if(outcomeError) throw outcomeError;
+if(independentOutcomes?.length!==2) throw new Error("INDEPENDENT_OUTCOME_COUNT_FAILED");
+for(const o of independentOutcomes){
+  if(!o.verified||o.experiment_case_id!==caseId||!o.verifier_id||o.outcome_type==="") throw new Error("INDEPENDENT_OUTCOME_LINEAGE_INCOMPLETE");
+  const expected=Number(o.benefit)-Number(o.harm)-Number(o.cost)-Number(o.risk_adjusted_loss);
+  if(Number(o.verified_value)!==expected) throw new Error("INDEPENDENT_OUTCOME_VALUE_FORMULA_FAILED");
+  if(o.evidence?.receiver_retrieved!==true) throw new Error("INDEPENDENT_RECEIVER_EVIDENCE_MISSING");
+}
 
 const {data:receipts,error:receiptError}=await supabase.from("nayanet_execution_receipts")
   .select("id,policy_id,policy_version,policy_key,experiment_case_id,policy_input_hash,policy_decision_hash,status,value")
