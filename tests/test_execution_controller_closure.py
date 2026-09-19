@@ -51,6 +51,8 @@ EC.SESSIONS_INDEX_PATH = EC.SESSIONS_ROOT / "INDEX.json"
 import canonical_event_store as CES  # noqa: E402
 from activity_event import build_activity_event  # noqa: E402
 from execution_preflight_gate import approved_preflight  # noqa: E402
+import execution_activity_writer as EAW  # noqa: E402
+EAW.ACTIVITY_ROOT = _TMP / "activity"
 
 
 def persist_activity_event(
@@ -407,7 +409,7 @@ class TestExecutionControllerClosure(unittest.TestCase):
         self.assertEqual(result["status"], "EXECUTING")
         result = EC.transition("OBSERVED", observation="actual runtime observation")
         self.assertEqual(result["status"], "OBSERVED")
-        result = EC.transition("VERIFIED", activity_event_id=persist_activity_event(), evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"})
+        result = EC.transition("VERIFIED", next_action="continue test", successor="NEXT-EXECUTION-20260916-GBLC10-NEXT.md", evidence=["receipt:test"], verification={"status": "VERIFIED", "method": "test"})
         self.assertEqual(result["status"], "VERIFIED")
         result = EC.transition("HANDED_OFF", next_action="continue test", handoff={"current_state": "VERIFIED"})
         self.assertEqual(result["status"], "HANDED_OFF")
