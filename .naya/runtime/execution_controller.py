@@ -79,7 +79,7 @@ def _find_activity_event(event_id: str, events_root=None, index_path=None) -> di
     return None
 
 
-def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_id=None, events_root=None, index_path=None) -> tuple[bool, list[str]]:
+def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_id=None, identity_binding=None, smart_ledger=None, events_root=None, index_path=None) -> tuple[bool, list[str]]:
     if not event_id:
         return False, ["no canonical Activity Feed event_id was supplied"]
     event = _find_activity_event(event_id, events_root=events_root, index_path=index_path)
@@ -100,6 +100,17 @@ def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_i
             problems.append("canonical event is not bound to this execution run")
         if session_id and execution.get("session_id") != session_id:
             problems.append("canonical event is not bound to this execution session")
+        if isinstance(identity_binding, dict):
+            for key in ("identity_id", "identity_fingerprint", "identity_binding_hash", "execution_authorization_binding_hash"):
+                if execution.get(key) != identity_binding.get(key):
+                    problems.append(f"canonical event {key} is not bound to the execution identity")
+        if isinstance(smart_ledger, dict):
+            expected_ledger_id = (smart_ledger.get("ledger_event") or {}).get("ledger_event_id")
+            expected_receipt_id = (smart_ledger.get("verification_receipt") or {}).get("receipt_id")
+            if execution.get("smart_ledger_event_id") != expected_ledger_id:
+                problems.append("canonical event is not bound to the Smart Ledger event")
+            if execution.get("smart_ledger_receipt_id") != expected_receipt_id:
+                problems.append("canonical event is not bound to the Smart Ledger receipt")
     receipt = event.get("receipt")
     if not isinstance(receipt, dict):
         problems.append("canonical event is missing the required durable receipt block")
@@ -126,6 +137,7 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     # outside the credential check below.
     gate = fields.pop("gate", None)
     credential = fields.pop("execution_authorization", None)
+    identity_envelope = fields.pop("identity_envelope", None)
 
     if target == "EXECUTING":
         # The Universal Execution Gate is the ONLY authorization source. The
@@ -139,7 +151,13 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
             from universal_execution_gate import UniversalExecutionGate
 
             gate = UniversalExecutionGate.from_canonical()
-        valid, reasons = gate.verify(credential)
+        if identity_envelope is None:
+            fail("execution boundary refused: EXECUTING requires the governed intelligence identity envelope")
+        valid, reasons = gate.verify(
+            credential,
+            identity_envelope,
+            consequential=True,
+        )
         if not valid:
             fail("execution boundary refused: " + "; ".join(reasons))
         action = fields.get("action")
@@ -171,6 +189,14 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                 "execution boundary refused: EXECUTING requires an approved preflight gate: "
                 + "; ".join(preflight_verdict["reasons"])
             )
+
+    if target == "EXECUTING":
+        fields["identity_binding"] = {
+            "identity_id": credential.identity_id,
+            "identity_fingerprint": credential.identity_fingerprint,
+            "identity_binding_hash": credential.identity_binding_hash,
+            "execution_authorization_binding_hash": credential.binding_hash,
+        }
 
     data = load()
     current = data["status"]
@@ -204,13 +230,95 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     elif target == "EXECUTING":
         require_fields(data, ("claim_id", "block_id", "owner", "scope", "start_head"))
     elif target == "OBSERVED":
-        require_fields(fields, ("observation",))
+        require_fields(fields, ("observation", "execution_result"))
+        if credential is None:
+            fail("execution boundary refused: OBSERVED requires the gate-issued ExecutionAuthorization")
+        if identity_envelope is None:
+            fail("execution boundary refused: OBSERVED requires the governed intelligence identity envelope")
+        if gate is None:
+            from universal_execution_gate import UniversalExecutionGate
+            gate = UniversalExecutionGate.from_canonical()
+        valid, reasons = gate.verify(
+            credential,
+            identity_envelope,
+            consequential=True,
+        )
+        if not valid:
+            fail("execution boundary refused: OBSERVED authorization verification failed: " + "; ".join(reasons))
+
+        result = fields.get("execution_result")
+        if not isinstance(result, dict):
+            fail("execution boundary refused: OBSERVED execution_result must be an object")
+        result = dict(result)
+        if str(result.get("execution_state", "")).upper() != "COMPLETED":
+            fail("execution boundary refused: OBSERVED execution_result requires execution_state=COMPLETED")
+        if result.get("execution_id") != credential.action_id:
+            fail("execution boundary refused: execution_result.execution_id does not match authorization action_id")
+        action_ctx = data.get("action") or {}
+        if result.get("action_id") and result.get("action_id") != action_ctx.get("action_id"):
+            fail("execution boundary refused: execution_result.action_id does not match action")
+        if not result.get("action_ref"):
+            result["action_ref"] = f"execution:{credential.action_id}"
+        if not result.get("outcome_ref"):
+            result["outcome_ref"] = f"outcome:{credential.action_id}"
+
+        from execution_evidence_adapter import build_evidence
+        from smart_ledger_engine import record_authorized_execution
+
+        evidence_id = result.get("evidence_id") or f"EV-{data.get('claim_id')}-{credential.action_id}"
+        try:
+            evidence = build_evidence(
+                {
+                    "execution_state": "COMPLETED",
+                    "execution_id": credential.action_id,
+                    "action": result.get("action") or action_ctx.get("action_id") or credential.action_id,
+                    "observed_output": result.get("observed_output"),
+                    "result": result.get("result"),
+                    "commit_sha": result.get("commit_sha"),
+                },
+                evidence_id=evidence_id,
+                claim_id=str(data.get("claim_id") or ""),
+                method=str(result.get("evidence_method") or "command_execution"),
+                command=str(result.get("command") or result.get("action_ref")),
+                environment=str(result.get("environment") or "runtime"),
+                source=str(result.get("source") or "execution"),
+                observed_at=result.get("observed_at"),
+            )
+        except Exception as exc:
+            fail("execution boundary refused: OBSERVED evidence adapter rejected the execution result: " + str(exc))
+
+        try:
+            ledger_event, ledger_receipt = record_authorized_execution(
+                gate,
+                credential,
+                identity_envelope,
+                action_ref=str(result["action_ref"]),
+                evidence_ref=f"evidence:{evidence['evidence_id']}",
+                outcome_ref=str(result["outcome_ref"]),
+            )
+        except Exception as exc:
+            fail("execution boundary refused: OBSERVED could not produce the canonical Smart Ledger receipt: " + str(exc))
+
+        fields["execution_result"] = result
+        fields["execution_evidence"] = evidence
+        from dataclasses import asdict
+        fields["smart_ledger"] = {
+            "ledger_event": asdict(ledger_event),
+            "verification_receipt": ledger_receipt,
+        }
+        fields["identity_binding"] = {
+            "identity_id": credential.identity_id,
+            "identity_fingerprint": credential.identity_fingerprint,
+            "identity_binding_hash": credential.identity_binding_hash,
+            "execution_authorization_binding_hash": credential.binding_hash,
+        }
     elif target == "VERIFIED":
         require_fields(fields, ("evidence", "verification"))
         action_ctx = data.get("action") or {}
         claim_id = data.get("claim_id")
         action_id = action_ctx.get("action_id")
         run_id = data.get("run_id")
+
         supplied = fields.get("activity_event_id")
         if not supplied:
             # Automatic canonical Activity-event emission at the completion
@@ -237,6 +345,12 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     evidence=emitted_evidence,
                     run_id=run_id,
                     session_id=data.get("session_id"),
+                    identity_id=(data.get("identity_binding") or {}).get("identity_id"),
+                    identity_fingerprint=(data.get("identity_binding") or {}).get("identity_fingerprint"),
+                    identity_binding_hash=(data.get("identity_binding") or {}).get("identity_binding_hash"),
+                    execution_authorization_binding_hash=(data.get("identity_binding") or {}).get("execution_authorization_binding_hash"),
+                    smart_ledger_event_id=((data.get("smart_ledger") or {}).get("ledger_event") or {}).get("ledger_event_id"),
+                    smart_ledger_receipt_id=((data.get("smart_ledger") or {}).get("verification_receipt") or {}).get("receipt_id"),
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
                 )
@@ -248,7 +362,34 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
             supplied = emitted["event_id"]
             fields["activity_event_id"] = supplied
             fields["activity_event_emitted"] = emitted.get("status")
-        ok, activity_problems = _verify_activity_event(supplied, claim_id, action_id, run_id, data.get("session_id"))
+        ok, activity_problems = _verify_activity_event(
+            supplied,
+            claim_id,
+            action_id,
+            run_id,
+            data.get("session_id"),
+            data.get("identity_binding"),
+            data.get("smart_ledger"),
+        )
+        smart_ledger = data.get("smart_ledger")
+        if not isinstance(smart_ledger, dict):
+            fail("execution boundary refused: VERIFIED requires a canonical Smart Ledger execution receipt")
+        ledger_event = smart_ledger.get("ledger_event")
+        ledger_receipt = smart_ledger.get("verification_receipt")
+        identity_binding = data.get("identity_binding")
+        if not isinstance(ledger_event, dict) or not isinstance(ledger_receipt, dict) or not isinstance(identity_binding, dict):
+            fail("execution boundary refused: VERIFIED Smart Ledger/identity binding record is incomplete")
+        if ledger_receipt.get("event_id") != ledger_event.get("ledger_event_id"):
+            fail("execution boundary refused: Smart Ledger receipt is not bound to its ledger event")
+        if ledger_event.get("identity_id") != identity_binding.get("identity_id"):
+            fail("execution boundary refused: Smart Ledger identity_id does not match execution identity binding")
+        if ledger_event.get("identity_fingerprint") != identity_binding.get("identity_fingerprint"):
+            fail("execution boundary refused: Smart Ledger identity fingerprint does not match execution identity binding")
+        if ledger_event.get("identity_binding_hash") != identity_binding.get("identity_binding_hash"):
+            fail("execution boundary refused: Smart Ledger identity/action binding does not match execution identity binding")
+        if ledger_event.get("execution_authorization_binding_hash") != identity_binding.get("execution_authorization_binding_hash"):
+            fail("execution boundary refused: Smart Ledger authorization binding does not match execution identity binding")
+
         if not ok:
             fail(
                 "execution boundary refused: VERIFIED requires a canonical Activity Feed event "
@@ -320,12 +461,40 @@ def validate(data: dict[str, Any] | None = None) -> dict[str, Any]:
     if status in {"CLAIMED", "EXECUTING", "OBSERVED", "VERIFIED", "HANDED_OFF"}:
         require_fields(data, ("claim_id", "block_id", "owner", "scope", "start_head"))
     if status in {"OBSERVED", "VERIFIED", "HANDED_OFF"}:
-        require_fields(data, ("observation",))
+        require_fields(data, ("observation", "identity_binding", "smart_ledger"))
+        identity_binding = data.get("identity_binding") or {}
+        smart_ledger = data.get("smart_ledger") or {}
+        ledger_event = smart_ledger.get("ledger_event") or {}
+        if ledger_event.get("identity_id") != identity_binding.get("identity_id"):
+            fail("execution state identity binding diverges from Smart Ledger identity_id")
+        if ledger_event.get("identity_fingerprint") != identity_binding.get("identity_fingerprint"):
+            fail("execution state identity binding diverges from Smart Ledger identity fingerprint")
+        if ledger_event.get("identity_binding_hash") != identity_binding.get("identity_binding_hash"):
+            fail("execution state identity binding diverges from Smart Ledger identity/action binding")
+        if ledger_event.get("execution_authorization_binding_hash") != identity_binding.get("execution_authorization_binding_hash"):
+            fail("execution state identity binding diverges from Smart Ledger authorization binding")
+        try:
+            from dataclasses import fields as dataclass_fields
+            from smart_ledger_engine import LedgerEvent, verify_event
+            expected_keys = {item.name for item in dataclass_fields(LedgerEvent)}
+            if set(ledger_event) != expected_keys:
+                fail("Smart Ledger execution record is incomplete or has unexpected fields")
+            verified_ledger, _ = verify_event(LedgerEvent(**ledger_event))
+            if verified_ledger.status != "verified":
+                fail("Smart Ledger receipt did not remain verified")
+        except Exception as exc:
+            fail("execution state Smart Ledger integrity failure: " + str(exc))
     if status in {"VERIFIED", "HANDED_OFF"}:
         require_fields(data, ("evidence", "verification", "activity_event_id"))
         action_ctx = data.get("action") or {}
         ok, activity_problems = _verify_activity_event(
-            data.get("activity_event_id"), data.get("claim_id"), action_ctx.get("action_id"), data.get("run_id"), data.get("session_id")
+            data.get("activity_event_id"),
+            data.get("claim_id"),
+            action_ctx.get("action_id"),
+            data.get("run_id"),
+            data.get("session_id"),
+            data.get("identity_binding"),
+            data.get("smart_ledger"),
         )
         if not ok:
             fail(
@@ -428,6 +597,21 @@ def self_test() -> int:
             necessary_power=frozenset({"repo_write"}),
             requested_power=frozenset({"repo_write"}),
         )
+        identity = {
+            "schema_version": "1.0",
+            "identity_id": authority.principal_id,
+            "actor_class": "HUMAN",
+            "who_created_or_delegated": {"creator_ref": "human-controller", "delegator_ref": None, "lineage_state": "ROOT"},
+            "knowledge": [{"knowledge_id": "K-EC-TEST", "claim": "Test governed execution target.", "source_refs": ["test:source"], "epistemic_state": "VERIFIED"}],
+            "capabilities": ["repo_write"],
+            "authority": {"authority_ids": [authority.authority_id]},
+            "authorized_by": [{"authority_id": authority.authority_id, "authorizer_ref": "human-controller"}],
+            "received_artifacts": [{"artifact_id": "ART-EC-TEST", "artifact_type": "execution_request", "source_ref": "test:request", "received_at": "2026-01-01T00:00:00Z"}],
+            "provenance": [{"subject_id": "ART-EC-TEST", "source_ref": "test:request", "relation": "received_from"}],
+            "delegation": {"can_delegate": False, "delegation_scope": [], "chain": []},
+            "actual_actions": [], "outcomes": [], "learning": [],
+        }
+
         bound = {
             "action_id": "ACT-EC-SELFTEST-001",
             "action_type": "repository_write",
@@ -439,7 +623,7 @@ def self_test() -> int:
             "scope": decision.scope,
             "permission": decision.action,
         }
-        issued = gate.authorize(authority=authority, decision=decision, action=bound)
+        issued = gate.authorize(authority=authority, decision=decision, action=bound, identity_envelope=identity, consequential=True)
         assert issued.allowed
         from execution_preflight_gate import approved_preflight
 
@@ -448,9 +632,10 @@ def self_test() -> int:
             action=bound,
             execution_authorization=issued.authorization,
             gate=gate,
+            identity_envelope=identity,
             preflight=approved_preflight(),
         )
-        transition("OBSERVED", observation="actual runtime observation")
+        transition("OBSERVED", observation="actual runtime observation", execution_authorization=issued.authorization, gate=gate, identity_envelope=identity, execution_result={"execution_state":"COMPLETED","execution_id":bound["action_id"],"action":"self-test repository write","observed_output":"test action completed","result":"PASS","commit_sha":"test-head"})
         transition(
             "VERIFIED",
             evidence=["receipt:test"],
