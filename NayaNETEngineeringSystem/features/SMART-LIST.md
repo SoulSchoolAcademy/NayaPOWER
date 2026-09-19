@@ -84,3 +84,10 @@ RLS is owner-scoped. List membership cannot create or delete a Connection. Remov
 Transactional authenticated-role proof passed for add + duplicate add; no test state persisted.
 
 Current state: **IMPLEMENTED SUBSTRATE / HUB RUNTIME UNPROVEN**.
+
+
+## ACTION 09 PARITY / ACTION 10 CLOSURE — 2026-09-19
+
+Cloudflare source/runtime parity is proven for the canonical Hub artifact. The deployed Hub HTML and `assistant-runtime.js` SHA-256 hashes exactly match the source artifact used for the parity check.
+
+The remaining status is **NOT VERIFIED** only because the final real-human two-user browser acceptance proof has not been executed. No database simulation is being promoted to replace that proof.
