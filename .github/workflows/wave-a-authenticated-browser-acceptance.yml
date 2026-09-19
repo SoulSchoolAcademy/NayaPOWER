@@ -1,0 +1,74 @@
+name: Wave A authenticated browser handoff acceptance
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYA_EXISTING_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute live Hub browser acceptance
+        shell: bash
+        run: |
+          cat > wave-a-browser-acceptance.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL,spaceId=process.env.NAYA_EXISTING_SPACE_ID;
+          const project='NayaNET-WaveA-Browser-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
+          async function req(url,opt={}){const r=await fetch(url,opt);const t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}}if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
+          const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
+          const signup=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          const A=await signup(),B=await signup(),C=await signup();
+          if(!A.access_token||!B.access_token||!C.access_token)throw Error('AUTH_BOOTSTRAP_FAILED');
+          const join=async u=>req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_space_id:spaceId})});
+          await join(A);await join(B);await join(C);
+          const save=async(u,target)=>req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_target_member_id:target,p_space_id:spaceId})});
+          await save(A,B.user.id);await save(B,A.user.id);
+          const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({p_subject_id:A.user.id,p_source_event_id:'wavea-browser-authority-'+project,p_mission_id:'Wave A live Hub acceptance',p_scope:{project_id:'NayaNET',target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],p_constraints:{mode:'human-facing-acceptance',no_external_side_effects:true},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_wave_a_browser_acceptance',space_id:spaceId},p_parent_authority:null})});
+          if(!grant?.grant_id)throw Error('AUTHORITY_GRANT_FAILED');
+          const browser=await chromium.launch({headless:true});
+          async function contextFor(session){const c=await browser.newContext();const p=await c.newPage();await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});const uid=await p.evaluate(async ({base,key,session})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const c=sdk.createClient(base,key,{auth:{persistSession:true,autoRefreshToken:true,storage:localStorage,storageKey:'nayanet.supabase.auth'}});const r=await c.auth.setSession({access_token:session.access_token,refresh_token:session.refresh_token});if(r.error)throw r.error;return r.data.session?.user?.id},{base,key,session});if(uid!==session.user.id)throw Error('BROWSER_SESSION_HANDOFF_MISMATCH');await p.reload({waitUntil:'domcontentloaded'});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});return {c,p}}
+          const Actx=await contextFor(A),ap=Actx.p;
+          const aAuth=await ap.evaluate(()=>window.NayaAssistantRuntime.init());if(aAuth.user_id!==A.user.id||!aAuth.authenticated)throw Error('A_AUTHENTICATED_HANDOFF_FAILED');
+          const spaces=await ap.evaluate(()=>window.NayaAssistantRuntime.listSpaces());if(!spaces.some(x=>x.id===spaceId))throw Error('SPACE_VISIBILITY_FAILED');
+          const members=await ap.evaluate(id=>window.NayaAssistantRuntime.listSpaceMembers(id),spaceId);if(!members.some(x=>x.member_id===A.user.id)||!members.some(x=>x.member_id===B.user.id))throw Error('AB_MEMBERSHIP_UI_FAILED');
+          const connections=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());const ab=connections.find(x=>x.connected_member_id===B.user.id&&x.status==='active');if(!ab)throw Error('CONNECTIONS_UI_FAILED');
+          const created=await ap.evaluate(async name=>window.NayaAssistantRuntime.createSmartList(name),'Wave A live acceptance '+project);const listId=created?.list_id||created?.id||created?.list?.id;if(!listId)throw Error('SMART_LIST_CREATE_FAILED');
+          await ap.evaluate(async x=>window.NayaAssistantRuntime.addConnectionToList(x.listId,x.connectionId),{listId,connectionId:ab.id});const lists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());if(!lists.some(x=>x.id===listId&&x.members?.some(m=>m.connection_id===ab.id)))throw Error('SMART_LIST_UI_FAILED');
+          const mail=await ap.evaluate(async x=>window.NayaAssistantRuntime.sendSmartMail({receiver_id:x.receiver,body:'Wave A live Hub acceptance.',subject:'Wave A acceptance',authority_grant_id:x.grant,idempotency_key:x.key}),{receiver:B.user.id,grant:grant.grant_id,key:'wavea-browser-mail-'+project});if(!mail?.message_id)throw Error('SMART_MAIL_UI_FAILED');
+          const threadsA=await ap.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());if(!threadsA.some(x=>x.id===mail.thread_id))throw Error('SMART_MAIL_RENDER_FAILED');
+          const Bctx=await contextFor(B),bp=Bctx.p;const bAuth=await bp.evaluate(()=>window.NayaAssistantRuntime.init());if(bAuth.user_id!==B.user.id)throw Error('B_AUTH_HANDOFF_FAILED');
+          const verified=await bp.evaluate(id=>window.NayaAssistantRuntime.verifySmartMail(id),mail.message_id);if(!verified?.ok)throw Error('B_RECEIVER_VERIFICATION_UI_FAILED');
+          const bThreads=await bp.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());if(!bThreads.some(x=>x.id===mail.thread_id))throw Error('B_RETRIEVAL_UI_FAILED');
+          const intelligence=await bp.evaluate(()=>window.NayaAssistantRuntime.retrieve());if(!Array.isArray(intelligence)||intelligence.length<1)throw Error('INTELLIGENCE_UI_FAILED');
+          const Cctx=await contextFor(C),cp=Cctx.p;const cAuth=await cp.evaluate(()=>window.NayaAssistantRuntime.init());if(cAuth.user_id!==C.user.id)throw Error('C_AUTH_HANDOFF_FAILED');
+          const cThreads=await cp.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());if(cThreads.some(x=>x.id===mail.thread_id))throw Error('C_ISOLATION_UI_FAILED');
+          const receipt={schema:'nayanet.wave-a.browser-acceptance.v1',status:'VERIFIED',run_id:process.env.GITHUB_RUN_ID,project,space_id:spaceId,checks:{authenticated_browser_handoff:'PASS',production_space_visible:'PASS',ab_membership_visible:'PASS',connections:'PASS',smart_list:'PASS',smart_mail:'PASS',b_retrieval:'PASS',intelligence_retrieval:'PASS',c_isolation:'PASS'},identities:{A:A.user.id,B:B.user.id,C:C.user.id},message_id:mail.message_id};fs.writeFileSync(process.env.RECEIPT_PATH,JSON.stringify(receipt,null,2));console.log('WAVE_A_BROWSER_ACCEPTANCE=PASS');console.log(JSON.stringify(receipt));await browser.close();
+          EOF
+          export RECEIPT_PATH="$RUNNER_TEMP/wave-a-browser-acceptance.json"
+          node wave-a-browser-acceptance.mjs
+      - name: Upload machine receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: wave-a-browser-acceptance
+          path: ${{ runner.temp }}/wave-a-browser-acceptance.json
+          if-no-files-found: error
