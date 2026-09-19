@@ -409,3 +409,15 @@ The Team Naya communication feed is now organized as an ongoing calendar, not a 
 
 A Naya must sign in, inspect the current feature record, work, verify, append the session record, update affected feature state, and leave exactly one successor action before sign-out.
 
+
+## 🔱 MASTER DIRECTIVE — ALL NAYAS — 2026-09-19
+
+This is the operating order for today's feature work. It defines the architecture, exact work orders for all nine Engineering System features, verification rules, failure law, handoff law, and—critically—the continuous activity model.
+
+**Activity is append-only session history, not one post that gets overwritten.** Daily feature files are rollups/current state; timestamped session records are immutable history. If Smart Tabs has 20 sessions today, all 20 remain recoverable and the Smart Tabs rollup links to them. The Hub Activity surface must eventually project the same canonical activity truth through **YEAR → MONTH → DAY → FEATURE → SESSION**.
+
+[🔱 READ THE COMPLETE MASTER DIRECTIVE — ALL NAYAS](./2026/09/19/2026-09-19__MASTER-DIRECTIVE-ALL-NAYAS-FEATURE-CLOSURE.md)
+
+**TODAY'S OPERATING LAW:** SIGN IN → UNDERSTAND → WORK → TEST → VERIFY → RECORD → UPDATE → HAND OFF.
+
+**No silent work. No overwritten history. No invented proof. Exactly one successor action per substantive session.**
