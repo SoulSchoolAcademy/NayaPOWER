@@ -1,0 +1,45 @@
+name: Verify Execution Activity Boundary
+
+on:
+  push:
+    branches:
+      - fix/execution-boundary-team-naya-activity-v2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  execution-activity-boundary:
+    name: write-authorized-activity-hard-handoff
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Compile governed Activity boundary
+        run: python -m py_compile .naya/runtime/activity_event.py .naya/runtime/execution_activity_writer.py .naya/runtime/execution_activity_writer_test.py .naya/runtime/execution_controller.py tests/test_execution_activity_handoff_gate.py scripts/verify-execution-team-activity-bridge.py
+      - name: Run write-authorized Activity writer proof
+        env:
+          ACTIVITY_WRITER_PROOF_ROOT: ${{ github.workspace }}/proof-output/NAYA-TEAM
+        run: |
+          rm -rf proof-output
+          python .naya/runtime/execution_activity_writer_test.py
+          test -f proof-output/NAYA-TEAM/2026/09/19/*/activity-writer-test-abc123.md
+      - name: Run hard handoff regression
+        run: python tests/test_execution_activity_handoff_gate.py
+      - name: Run governed execution-to-Team-Naya bridge
+        run: python scripts/verify-execution-team-activity-bridge.py
+      - name: Inspect generated durable Team Naya record
+        run: |
+          find proof-output/NAYA-TEAM -type f -print
+          cat proof-output/NAYA-TEAM/2026/09/19/*/activity-writer-test-abc123.md
+      - name: Upload generated Activity proof record
+        uses: actions/upload-artifact@v4
+        with:
+          name: execution-activity-boundary-proof
+          path: proof-output/NAYA-TEAM/
+          if-no-files-found: error
