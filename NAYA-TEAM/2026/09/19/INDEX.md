@@ -26,3 +26,18 @@ Do not say “done” because a document exists. Do not say “understood” wit
 The current visual/product baseline is `2026 09 17 NAYANET HUB.html` at the repository root. Cloudflare is the deployment target. The prior Vercel targeting assumption is retired for this work.
 
 [READ THE CORRECTION SESSION](./2026-09-19__CANONICAL-HUB-BASELINE-CORRECTION.md)
+
+## FEATURE NAVIGATION — 2026-09-19
+
+The next level is **FEATURE → SESSION**. The indexes below are navigation/rollup surfaces; timestamped session files are the immutable history.
+
+- [Activity System](./ACTIVITY-SYSTEM/INDEX.md)
+- [Smart Tabs](./SMART-TABS/INDEX.md)
+- [Smart Feed](./SMART-FEED/INDEX.md)
+- [Smart Ledger](./SMART-LEDGER/INDEX.md)
+- [Smart List](./SMART-LIST/INDEX.md)
+- [Smart Mail](./SMART-MAIL/INDEX.md)
+- [Smart Share](./SMART-SHARE/INDEX.md)
+- [Smart Spaces](./SMART-SPACES/INDEX.md)
+- [Your Intelligence Today](./YOUR-INTELLIGENCE-TODAY/INDEX.md)
+- [Intelligent Reports](./INTELLIGENT-REPORTS/INDEX.md)
