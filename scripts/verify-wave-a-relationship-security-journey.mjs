@@ -80,7 +80,7 @@ if(ledger.length<1) throw new Error('LEDGER_LINEAGE_MISSING');
 const evidence=await req(base+'/rest/v1/learning_evidence',{method:'POST',headers:{...h(A.access_token),'Prefer':'return=representation'},body:JSON.stringify({
  member_id:A.user.id,target_id:'wavea-'+project,level:'E1_UNDERSTANDS',provenance:'VERIFICATION',status:'ACTIVE',
  claim:'A real A-to-B governed Smart Mail action was independently verified by the receiver and linked to cognition and Ledger.',
- observed_value:{message_id:first.message_id,receipt_id:first.execution_receipt_id,cognition_event_id:cognition[0].event_id,ledger_event_id:ledger[0].id},
+ observed_value:{message_id:first.message_id,receipt_id:first.execution_receipt_id,cognition_event_id:cognition[0].event_id,ledger_event_id:ledger[0].ledger_event_id},
  verification_method:'receiver verification + receipt + cognition/Ledger lineage',source_event_id:cognition[0].event_id
 })});
 if(evidence.length!==1) throw new Error('LEARNING_EVIDENCE_FAILED');
@@ -129,5 +129,5 @@ console.log('PROJECT='+project);
 console.log('INITIAL_MESSAGE_ID='+first.message_id);
 console.log('INITIAL_RECEIPT_ID='+first.execution_receipt_id);
 console.log('INITIAL_COGNITION_EVENT_ID='+cognition[0].event_id);
-console.log('INITIAL_LEDGER_EVENT_ID='+ledger[0].id);
+console.log('INITIAL_LEDGER_EVENT_ID='+ledger[0].ledger_event_id);
 console.log('CONTINUATION_MESSAGE_ID='+continuation.message_id);
