@@ -19,7 +19,6 @@ jobs:
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-      PROOF_PATH: ${{ runner.temp }}/nayanet-proof7-compounding-loop.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -40,6 +39,7 @@ jobs:
           if-no-files-found: warn
       - name: Validate proof
         run: |
+          export PROOF_PATH="$RUNNER_TEMP/nayanet-proof7-compounding-loop.json"
           test -s "$PROOF_PATH"
           node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof'); if(Object.values(r.proofs).some(v=>v!==true)) throw new Error('proof point failed'); if(r.governance.authority_changed!==false||r.governance.authority_granted!==false) throw new Error('authority changed'); if(r.policy.improvement!=='NOT_PROVEN') throw new Error('policy improvement fabricated');" "$PROOF_PATH"
       - uses: actions/upload-artifact@v4
