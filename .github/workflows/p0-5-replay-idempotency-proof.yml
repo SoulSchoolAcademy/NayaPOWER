@@ -145,7 +145,7 @@ jobs:
             same_message_id:first.message_id===second.message_id,
             same_thread_id:first.thread_id===second.thread_id
           };
-          fs.writeFileSync(process.env.RUNNER_TEMP+'/p0-5-replay.json',JSON.stringify(result,null,2));
+          fs.writeFileSync('p0-5-replay.json',JSON.stringify(result,null,2));
           console.log(JSON.stringify(result,null,2));
           if(first.message_id!==second.message_id) throw Error('P0_5_DUPLICATE_OR_IDENTITY_MISMATCH');
           if(first.thread_id!==second.thread_id) throw Error('P0_5_THREAD_ID_MISMATCH');
