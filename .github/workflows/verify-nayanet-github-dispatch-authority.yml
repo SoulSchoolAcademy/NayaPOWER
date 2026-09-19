@@ -1,10 +1,6 @@
 name: Verify NayaNET GitHub Dispatch Authority Boundary
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/verify-nayanet-github-dispatch-authority.yml'
   workflow_dispatch:
 
 permissions:
