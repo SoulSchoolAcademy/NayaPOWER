@@ -32,7 +32,35 @@ const receiverId = receiver.user.id;
 const idempotencyKey = 'p0-mail-proof-' + crypto.randomBytes(12).toString('hex');
 const body = 'P0 Smart Mail vertical proof: authenticated external sender -> Naya cognition -> governed mail -> receiver.';
 const sendPayload = { recipient_user_id: receiverId, body, subject: 'NayaNET P0 Sender Receiver Proof', kind: 'direct', idempotency_key: idempotencyKey, project_id: 'NayaNET' };
+const sourceEventId = 'human:smart-mail-send:' + idempotencyKey;
+const grant = await rpc(sender.access_token, 'nayanet_issue_authority_grant', {
+  p_subject_id: senderId,
+  p_source_event_id: sourceEventId,
+  p_mission_id: 'NayaNET-SMART-MAIL',
+  p_scope: { target: receiverId, project_id: 'NayaNET' },
+  p_actions: ['smart_mail_send'],
+  p_constraints: { kind: 'direct', no_model_authority: true },
+  p_expires_at: null,
+  p_evidence: { human_action: 'explicit authenticated proof authorization', idempotency_key: idempotencyKey },
+  p_parent_authority: null
+});
+if (!grant?.grant_id) throw new Error('AUTHORITY_GRANT_NOT_ISSUED');
+sendPayload.authority_grant_id = grant.grant_id;
+const preValidation = await rpc(sender.access_token, 'nayanet_validate_authority_grant', {
+  p_grant_id: grant.grant_id, p_action: 'smart_mail_send', p_target: receiverId
+});
+if (preValidation.status !== 'AUTHORIZED') throw new Error('AUTHORITY_PREVALIDATION_FAILED ' + JSON.stringify(preValidation));
 const authHeaders = token => ({ apikey: key, authorization: 'Bearer ' + token, 'content-type': 'application/json' });
+async function rawRequest(url, options = {}) {
+  const res = await fetch(url, options);
+  const text = await res.text();
+  let body = null;
+  try { body = JSON.parse(text); } catch { body = { raw: text }; }
+  return { status: res.status, body };
+}
+async function rpc(token, fn, payload) {
+  return request(base + '/rest/v1/rpc/' + fn, { method:'POST', headers:authHeaders(token), body:JSON.stringify(payload) });
+}
 
 const first = await request(functionUrl, { method: 'POST', headers: authHeaders(sender.access_token), body: JSON.stringify(sendPayload) });
 if (first.status !== 'CREATED') throw new Error('SEND_NOT_CREATED ' + JSON.stringify(first));
@@ -68,17 +96,33 @@ const receipt = await request(
   { headers: { apikey: key, authorization: 'Bearer ' + sender.access_token } }
 );
 if (!Array.isArray(receipt) || receipt.length !== 1 || receipt[0].status !== 'SUCCESS' || receipt[0].action !== 'smart_mail_send') throw new Error('EXECUTION_RECEIPT_INVALID');
-if (!receipt[0].authority_grant_id || receipt[0].authority_issuer_id !== senderId || receipt[0].authority_status_at_execution !== 'ACTIVE' || receipt[0].authority_source_event_id !== 'human:smart-mail-send:' + idempotencyKey || !receipt[0].authority_validated_at) throw new Error('AUTHORITY_PROVENANCE_INVALID');
+if (!receipt[0].authority_grant_id || receipt[0].authority_grant_id !== grant.grant_id || receipt[0].authority_issuer_id !== senderId || receipt[0].authority_status_at_execution !== 'ACTIVE' || receipt[0].authority_source_event_id !== sourceEventId || !receipt[0].authority_validated_at) throw new Error('AUTHORITY_PROVENANCE_INVALID');
 
 const replay = await request(functionUrl, { method: 'POST', headers: authHeaders(sender.access_token), body: JSON.stringify(sendPayload) });
 if (replay.status !== 'REPLAY' || replay.message_id !== first.message_id || replay.thread_id !== first.thread_id) throw new Error('IDEMPOTENCY_REPLAY_FAILED');
+
+const revoked = await rpc(sender.access_token, 'nayanet_revoke_authority_grant', {
+  p_grant_id: grant.grant_id,
+  p_evidence: { proof: 'revocation-at-use production proof', idempotency_key: idempotencyKey }
+});
+if (!revoked?.grant_id || revoked.status !== 'REVOKED') throw new Error('AUTHORITY_REVOKE_FAILED ' + JSON.stringify(revoked));
+
+const blockedAttempt = await rawRequest(functionUrl, { method:'POST', headers:authHeaders(sender.access_token), body:JSON.stringify({...sendPayload, idempotency_key:idempotencyKey + '-after-revoke'}) });
+if (blockedAttempt.status < 400 || !String(blockedAttempt.body?.detail ?? blockedAttempt.body?.error ?? '').includes('GRANT_REVOKED')) {
+  throw new Error('REVOKED_EXECUTION_NOT_BLOCKED ' + JSON.stringify(blockedAttempt));
+}
+const receiptAfterRevoke = await request(
+  base + '/rest/v1/nayanet_execution_receipts?select=id&user_id=eq.' + senderId + '&id=eq.' + first.execution_receipt_id,
+  { headers: { apikey:key, authorization:'Bearer '+sender.access_token } }
+);
+if (!Array.isArray(receiptAfterRevoke) || receiptAfterRevoke.length !== 1) throw new Error('ORIGINAL_RECEIPT_MISSING_AFTER_REVOKE');
 
 const proof = {
   schema: 'naya.nayanet.smart_mail.p0.production.proof.v1',
   status: 'VERIFIED',
   user: { sender_id: senderId, receiver_id: receiverId },
   transaction: { correlation_id: first.correlation_id, thread_id: first.thread_id, message_id: first.message_id, cognition_event_id: first.cognition_event_id, execution_receipt_id: first.execution_receipt_id, idempotency_key: idempotencyKey },
-  chain: { external_sender_authenticated: true, canonical_naya_identity: true, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true },
+  chain: { external_sender_authenticated: true, canonical_naya_identity: true, cognition_persisted: true, governed_processing_receipt: true, receiver_authenticated: true, receiver_retrieved_message: true, receiver_verified_receipt: true, correlation_preserved: true, authority_unchanged: true, idempotent_replay: true, authority_issued: true, authority_prevalidated: true, authority_revoked: true, revoked_execution_blocked: true, receipt_lineage_preserved_after_revoke: true },
   observed_at: new Date().toISOString()
 };
 const requiredProof=Object.values(proof.chain).every(v=>v===true); if(!requiredProof) throw new Error('SMART_MAIL_PROOF_POINT_FAILED '+JSON.stringify(proof.chain));
