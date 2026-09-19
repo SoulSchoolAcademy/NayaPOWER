@@ -14,9 +14,9 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — DISCRIMINATING OUTCOME + COMPOUNDING PROOF + FINAL HUMAN ACCEPTANCE",
+  "priority": "P0 — PUBLIC FRONT DOOR + CONSOLIDATED HUMAN ACCEPTANCE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "FINAL-COMPOUNDING-AND-HUMAN-ACCEPTANCE",
+  "current_block": "FINAL-HUMAN-ACCEPTANCE",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -92,7 +92,9 @@
     "The canonical Smart Mail replay contract returns status REPLAY with the original message/thread/receipt identity; it does not return cognition_event_id on replay. The proof was corrected to verify the canonical replay contract rather than inventing a field.",
     "Engine/security gates are no longer the blocker; authenticated Name-First lifecycle and Dream→learning→later-decision proofs are now passing, while the public Welcome→Identity handoff and complete human-facing relationship acceptance remain incomplete.",
     "Current main NAYA_SUPERBRAIN_READY run 35471113077 is READY with zero UNKNOWN and zero FAILED gates; exact current HEAD at observation is fb17b633934c0803833db76cb12f28171cbfbfb5.",
-    "Fresh Smart Mail learning bridge proof recorded in NAYA/ACTIVITY/2026/09/19.md: message e5133412-79aa-4740-97e3-52e8c9f3ffeb → receipt dfda38b8-ef21-4e9b-9386-358134093d85 → cognition smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342 → Ledger 30156e7c-36a3-457a-bc4e-7aab332ac0cf → learning evidence a0509374-cff6-4b59-aeb5-f17b68dda033 → learner state v1 → USE_VERIFIED_LEARNING_CONTEXT influenced=true → governed continuation da96d9db-3c8b-46c9-baf4-cba8df10a6e0."
+    "Fresh Smart Mail learning bridge proof recorded in NAYA/ACTIVITY/2026/09/19.md: message e5133412-79aa-4740-97e3-52e8c9f3ffeb → receipt dfda38b8-ef21-4e9b-9386-358134093d85 → cognition smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342 → Ledger 30156e7c-36a3-457a-bc4e-7aab332ac0cf → learning evidence a0509374-cff6-4b59-aeb5-f17b68dda033 → learner state v1 → USE_VERIFIED_LEARNING_CONTEXT influenced=true → governed continuation da96d9db-3c8b-46c9-baf4-cba8df10a6e0.",
+    "P1 controlled paired experiment run 35472129371 proved three held-out cases with aggregate baseline value 0 and candidate value 3, plus a future case whose learned successor improved 0→1; evidence artifact was CI-validated.",
+    "Live public welcome.nayanet.app currently embeds shiny-wave-dd48.nayanet.workers.dev; its live identity page activateAndRedirect() sends users to academy.nayanet.app rather than the canonical Assistant Cloudflare Hub."
   ],
   "unknown": [
     "Public welcome.nayanet.app → identity handoff remains unproven in the latest authenticated lifecycle receipt (welcome_to_identity=false).",
@@ -131,10 +133,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Discriminating real outcome contract for measurable improvement, then public Welcome → Identity and one consolidated human-facing production acceptance; engine readiness itself is no longer the bottleneck.",
-  "single_next_action": "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes.",
+  "bottleneck": "Public Welcome → Identity → canonical Assistant Hub handoff, followed by one consolidated human-facing production acceptance.",
+  "single_next_action": "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub.",
   "next_actions": [
-    "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes."
+    "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — FRESH-NAYA CONTINUATION PROOF\nResolve live main first. Read STATE/BLOCKS/MAP/PROOF and Team Naya. Retrieve current durable mission, evidence, failures, protected boundaries, authority and blockers in a genuinely fresh context. Select exactly one authorized continuation action from durable state. Execute it against the real system, independently observe and verify the result, record the resulting intelligence, then retrieve that new intelligence again from fresh context. Return PROVEN only when the complete RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → OBSERVE → VERIFY → RECORD → RETRIEVE AGAIN loop passes.",
@@ -158,16 +160,17 @@
   ],
   "recorded_at_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
   "latest_human_facing_observation": {
-    "status": "ENGINE_READY_PRODUCT_INCOMPLETE",
-    "readiness_run_id": 35471113077,
+    "status": "ENGINE_AND_COMPOUNDING_READY_PUBLIC_ENTRY_BLOCKED",
+    "current_main_head": "6a1b4cdc03aab44fedb1528ee6a9640d17c6f4fe",
     "checks": {
-      "engine_readiness": "READY",
+      "readiness_gate": "READY",
       "smart_mail_p0": "VERIFIED",
+      "p1_paired_compounding": "PROVEN",
+      "future_learning_behavior": "PROVEN",
+      "authority_constraint_hardening": "IMPLEMENTED_AND_POSITIVE_PATH_REGRESSION_PASS",
       "wave_a_browser_acceptance": "VERIFIED",
-      "fresh_learning_bridge": "VERIFIED",
-      "welcome_to_identity": "NOT_PROVEN",
-      "measurable_policy_improvement": "NOT_PROVEN",
-      "consolidated_public_acceptance": "NOT_PROVEN"
+      "public_welcome_source": "LIVE_AND_REACHES_IDENTITY",
+      "public_welcome_to_canonical_hub": "NOT_PROVEN_AND_CURRENTLY_BLOCKED"
     }
   }
 }
