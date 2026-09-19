@@ -17,10 +17,11 @@ const receiver=anon.user;
 const receiverToken=anon.session.access_token;
 
 const runId=process.env.GITHUB_RUN_ID||String(Date.now());
+const experimentProject="NayaNET:P1:"+runId;
 const policyKey="smart-mail-controlled-paired-"+runId;
 const insertPolicy=async(version,parent,strategy)=>{
   const {data,error}=await supabase.from("nayanet_policy_versions").insert({
-    user_id:sender.id,project_id:"NayaNET",policy_key:policyKey,version,parent_policy_id:parent,
+    user_id:sender.id,project_id:experimentProject,policy_key:policyKey,version,parent_policy_id:parent,
     state:"DRAFT",policy:{capability:"smart_mail_send",strategy},validation:{},adversarial:{},holdout:{},promotion:{},rollback:{}
   }).select("*").single();
   if(error) throw error;
@@ -89,7 +90,7 @@ const prepare=async(p)=>{
     p_subject_id:sender.id,
     p_source_event_id:"controlled-paired-smart-mail-authorization-"+runId+"-"+p.id,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
-    p_scope:{project_id:"NayaNET",target:receiver.id},
+    p_scope:{project_id:experimentProject,target:receiver.id},
     p_actions:["smart_mail_send"],
     p_constraints:{mode:"controlled-test-only",no_external_side_effects:true,policy_id:p.id},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
@@ -270,7 +271,7 @@ if(revokeReceiver.error) throw revokeReceiver.error;
 const postRevokeProbe=await fetch(url+"/functions/v1/nayanet-smart-mail",{
   method:"POST",
   headers:{authorization:"Bearer "+senderToken,apikey:key,"content-type":"application/json"},
-  body:JSON.stringify({recipient_user_id:receiver.id,body:"This must be denied after revocation.",subject:"Revocation negative test",kind:"direct",idempotency_key:"paired-"+runId+"-REVOCATION",project_id:"NayaNET",policy_id:v2.id,experiment_case_id:"paired-"+runId+"-REVOCATION",policy_input_hash:"revocation",policy_decision_hash:"revocation",authority_grant_id:authorityGrants.get(v2.id)})
+  body:JSON.stringify({recipient_user_id:receiver.id,body:"This must be denied after revocation.",subject:"Revocation negative test",kind:"direct",idempotency_key:"paired-"+runId+"-REVOCATION",project_id:experimentProject,policy_id:v2.id,experiment_case_id:"paired-"+runId+"-REVOCATION",policy_input_hash:"revocation",policy_decision_hash:"revocation",authority_grant_id:authorityGrants.get(v2.id)})
 });
 const postRevokeData=await postRevokeProbe.json();
 if(postRevokeProbe.ok||postRevokeData?.ok||!["RELATIONSHIP_REQUIRED","AUTHORITY_GRANT_VALIDATION_FAILED"].includes(postRevokeData?.detail||postRevokeData?.error)) {
