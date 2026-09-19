@@ -35,7 +35,7 @@ Canonical NayaNET planning library: `NAYANET/`
 - `SoulSchoolAcademy/nayanet-scene-one` currently contains an empty `index.html` plus minimal deployment metadata and is not an implementation target on current evidence.
 - The existing `NayaPOWER/NAYANET` directory is the canonical planning library, not proof that its documents are the deployed application.
 - The previously referenced Cloudflare destination has not been promoted to authority merely from its URL; deployment/source linkage must be proven.
-- GitHub Actions remains paused by explicit human direction and must not be used during the current pause.
+- GitHub Actions is active only on governed release/verification surfaces. The canonical production Hub release is `assistant-cloudflare-hub-release.yml`; the GitHub 509 lane remains fail-closed. Historical product-construction pause language does not override the current governed release boundary.
 
 ## VERIFIED
 - `SoulSchoolAcademy/NayaPOWER` is the canonical NayaPOWER repository.
@@ -45,6 +45,10 @@ Canonical NayaNET planning library: `NAYANET/`
 - E01's detailed specification exists and is currently marked SPECIFIED.
 - The NayaNET release blueprint requires concrete testing, deployment proof, human inspection, Oscar inspection, and Groove verification before a block is considered complete.
 - Existing application repositories can be inspected as evidence but do not outrank the North Star.
+
+## CONTROL-PLANE RECONCILIATION
+
+The broader NayaNET North-Star construction program remains a product-construction frontier and must not be confused with the current user-facing Hub projection. The protected user-facing Hub is `2026 09 17 NAYANET HUB.html`, released only through `.github/workflows/assistant-cloudflare-hub-release.yml`. `NAYANET/HUB/` remains engineering/reference material unless Shawn explicitly establishes a new freeze point.
 
 ## OPEN GAPS
 1. The authoritative current NayaNET implementation repository/deployment pairing is not yet proven. Continue cross-repository archaeology before changing an existing application.
