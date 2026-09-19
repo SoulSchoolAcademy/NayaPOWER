@@ -213,14 +213,19 @@ jobs:
               const result = await page.evaluate(async () => ({
                 title: document.title,
                 marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
-                baseline: document.querySelector('[data-nayanet-baseline-app="true"]') ? 'PRESENT' : '',
                 directNine: document.querySelector('meta[name="nayanet-direct-nine"]') ? 'PRESENT' : '',
-                smartNotes: document.body.innerText.includes('Smart Notes'),
-                privacy: document.body.innerText.includes('PRIVATE BY DEFAULT'),
-                mailButton: !!document.querySelector('button[data-page="mail"]'),
                 assistantRuntime: !!window.NayaAssistantRuntime,
                 identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null
               }));
+              const hubFrame = page.locator('iframe[title="NayaNET Intelligent Hub"]').contentFrame();
+              await hubFrame.locator('[data-nayanet-baseline-app="true"]').waitFor({ timeout: 10000 });
+              const baseline = await hubFrame.evaluate(() => ({
+                baseline: document.querySelector('[data-nayanet-baseline-app="true"]') ? 'PRESENT' : '',
+                smartNotes: document.body.innerText.includes('Smart Notes'),
+                privacy: document.body.innerText.includes('PRIVATE BY DEFAULT'),
+                mailButton: !!document.querySelector('button[data-page="mail"]')
+              }));
+              Object.assign(result, baseline);
               if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('Authenticated NayaNET identity not established');
               if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React canonical marker missing');
               if (result.baseline !== 'PRESENT') throw new Error('509 baseline host missing');
