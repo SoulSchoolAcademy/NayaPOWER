@@ -102,7 +102,7 @@ const prepare=async(p)=>{
     p_constraints:{mode:"controlled-test-only",no_external_side_effects:false,policy_id:p.id},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
     p_evidence:{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:p.id},
-    p_parent_authority:authority.data.grant_id
+    p_parent_authority:null
   });
   if(mailAuthority.error||!mailAuthority.data?.grant_id) throw mailAuthority.error||new Error("SMART_MAIL_AUTHORITY_GRANT_ISSUANCE_FAILED");
   const mailAuthorityCheck = await supabase.rpc("nayanet_validate_authority_grant",{
