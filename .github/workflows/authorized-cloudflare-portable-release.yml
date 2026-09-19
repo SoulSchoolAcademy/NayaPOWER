@@ -1,17 +1,6 @@
 name: NayaPOWER - Governed Cloudflare Portable Release Proof
 
 on:
-  push:
-    branches:
-      - feat/cloudflare-production-adapter-portable-v1
-    paths:
-      - '.github/workflows/authorized-cloudflare-portable-release.yml'
-      - '.naya/runtime/portable_authorization.py'
-      - '.naya/runtime/cloudflare_production_adapter.py'
-      - 'tools/cloudflare_portable_release_runner.py'
-      - '.naya/portable-proof/cloudflare/**'
-      - 'NAYANET/HUB/**'
-      - 'scripts/**'
   workflow_dispatch:
 
 permissions:
@@ -85,11 +74,6 @@ jobs:
           name: naya-cloudflare-portable-receipt
           path: ${{ runner.temp }}/portable
           if-no-files-found: error
-      - uses: actions/cache/save@v4
-        with:
-          path: ${{ runner.temp }}/portable/cloudflare-use.lock
-          key: naya-portable-use-cloudflare-${{ hashFiles('.naya/portable-proof/cloudflare/authorization.json') }}
-
   replay:
     needs: first-use
     runs-on: ubuntu-latest
