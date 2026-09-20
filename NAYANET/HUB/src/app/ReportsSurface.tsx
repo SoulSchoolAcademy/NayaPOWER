@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useIdentity } from '../identity/session';
-import type { IntelligentEvent } from '../intelligence/types';
+type ReportEvent = { event_id: string; title?: string; content?: string; created_at: string; status?: string; metadata?: Record<string, unknown> };
 
 type Period = 'today' | 'week' | 'month' | 'year';
 
@@ -15,30 +15,30 @@ function asText(value: unknown) {
   return value == null ? '' : String(value);
 }
 
-function eventTitle(event: IntelligentEvent) {
+function eventTitle(event: ReportEvent) {
   return event.source.label || event.human_input.raw || 'Untitled intelligence';
 }
 
-function isVerified(event: IntelligentEvent) {
-  const state = event.machine_evidence.verification_state.toLowerCase();
-  return state.includes('verified') || event.trust.level.toLowerCase().includes('verified');
+function isVerified(event: ReportEvent) {
+  const state = event.status || ''.toLowerCase();
+  return state.includes('verified') || event.status || ''.toLowerCase().includes('verified');
 }
 
-function within(event: IntelligentEvent, duration: number, now: number) {
+function within(event: ReportEvent, duration: number, now: number) {
   const time = new Date(event.created_at).getTime();
   return Number.isFinite(time) && now - time >= 0 && now - time <= duration;
 }
 
-function periodRows(events: IntelligentEvent[], duration: number, now: number) {
+function periodRows(events: ReportEvent[], duration: number, now: number) {
   return events.filter(event => within(event, duration, now));
 }
 
-function ReportCard({ period, events, now }: { period: typeof periods[number]; events: IntelligentEvent[]; now: number }) {
+function ReportCard({ period, events, now }: { period: typeof periods[number]; events: ReportEvent[]; now: number }) {
   const rows = periodRows(events, period.duration, now);
   const verified = rows.filter(isVerified).length;
-  const learned = rows.filter(event => Boolean(event.lesson.text?.trim())).length;
-  const actions = rows.filter(event => Boolean(event.action.text?.trim())).length;
-  const uniqueTopics = new Set(rows.flatMap(event => event.context.tags || [])).size;
+  const learned = rows.filter(event => Boolean(Boolean(asText(event.metadata?.lesson).trim()))).length;
+  const actions = rows.filter(event => Boolean(Boolean(asText(event.metadata?.action).trim()))).length;
+  const uniqueTopics = new Set(rows.flatMap(event => Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag): tag is string => typeof tag === 'string') : [])).size;
   const latest = rows.slice(0, 5);
 
   return (
@@ -62,7 +62,7 @@ function ReportCard({ period, events, now }: { period: typeof periods[number]; e
           {latest.map(event => (
             <div className="report-signal" key={event.event_id}>
               <b>{eventTitle(event)}</b>
-              <span>{event.lesson.text || event.meaning.text || event.human_input.raw}</span>
+              <span>{asText(event.metadata?.lesson) || asText(event.metadata?.meaning) || event.content || event.title || event.event_id}</span>
             </div>
           ))}
         </div>
@@ -89,7 +89,7 @@ export function ReportsSurface() {
       if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
       if (!runtime.snapshot()?.authenticated) throw new Error('AUTH_REQUIRED');
       const rows = await runtime.retrieve();
-      setEvents(Array.isArray(rows) ? rows as IntelligentEvent[] : []);
+      setEvents(Array.isArray(rows) ? rows as ReportEvent[] : []);
       setNow(Date.now());
     } catch (error) {
       setError(error instanceof Error ? error.message : 'REPORTS_LOAD_FAILED');
@@ -112,7 +112,7 @@ export function ReportsSurface() {
     const q = query.trim().toLowerCase();
     if (!q) return events;
     return events.filter(event =>
-      [eventTitle(event), event.human_input.raw, event.context.topic || '', ...(event.context.tags || []), event.lesson.text || '', event.meaning.text || '']
+      [eventTitle(event), event.human_input.raw, event.context.topic || '', ...(Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag): tag is string => typeof tag === 'string') : []), event.lesson.text || '', event.meaning.text || '']
         .join(' ')
         .toLowerCase()
         .includes(q),
