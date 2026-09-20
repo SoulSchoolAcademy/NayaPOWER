@@ -149,7 +149,7 @@ def canonical_to_learning_input(event: dict[str, Any]) -> dict[str, Any]:
 
 
 def event_date(event: dict[str, Any]) -> str:
-    value = str(event.get("timestamp", ""))
+    value = str(event.get("timestamp") or event.get("effective_at") or event.get("created_at") or "")
     try:
         return datetime.fromisoformat(value.replace("Z", "+00:00")).date().isoformat()
     except ValueError:
