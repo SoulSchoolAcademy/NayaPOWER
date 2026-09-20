@@ -110,13 +110,15 @@ jobs:
             echo 'REACT_SOURCE_ARTIFACT_READY'
           else
             test -s '2026 09 17 NAYANET HUB.html'
+            test -s 'NAYANET/HUB/index.html'
+            cmp -s '2026 09 17 NAYANET HUB.html' 'NAYANET/HUB/index.html'
             test -s 'assistant-runtime.js'
             test -s 'smart-feed.js'
             test -s 'smart-tabs.js'
             test -s 'identity.html'
             test -s 'NAYANET/name-first-auth-adapter.js'
             mkdir -p dist/NAYANET
-            cp '2026 09 17 NAYANET HUB.html' dist/index.html
+            cp 'NAYANET/HUB/index.html' dist/index.html
             cp 'assistant-runtime.js' dist/assistant-runtime.js
             cp 'smart-feed.js' dist/smart-feed.js
             cp 'smart-tabs.js' dist/smart-tabs.js
