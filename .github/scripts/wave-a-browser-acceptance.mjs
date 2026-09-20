@@ -92,7 +92,7 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           const inspectEvents=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const inspectEvent=inspectEvents.find(x=>x.source==='nayanet-hub.smart-ledger.inspect'&&x.metadata?.action==='inspect_evidence'&&x.metadata?.ledger_event_id);
           if(!inspectEvent)throw Error('SMART_LEDGER_INSPECT_RETRIEVAL_FAILED');
           const ledgerEventId=String(inspectEvent.metadata?.ledger_event_id||'');if(!ledgerEventId)throw Error('SMART_LEDGER_INSPECT_LEDGER_EVENT_ID_MISSING');const inspectReceipt=inspectEvent.receipt_id||inspectEvent.metadata?.receipt_id||'';if(!inspectReceipt)throw Error('SMART_LEDGER_INSPECT_RECEIPT_MISSING');
-          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);await ap.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
           const afterReload=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const retrievedInspect=afterReload.find(x=>x.event_id===inspectEvent.event_id&&x.metadata?.action==='inspect_evidence');
           if(!retrievedInspect||retrievedInspect.receipt_id!==inspectReceipt)throw Error('SMART_LEDGER_INSPECT_NOT_RETRIEVED_AFTER_RELOAD');
           console.log('SMART_LEDGER_INSPECT_RECEIPT_RELOAD_RETRIEVE_VERIFIED',JSON.stringify({ledgerEventId,eventId:inspectEvent.event_id,receiptId:inspectReceipt}));
