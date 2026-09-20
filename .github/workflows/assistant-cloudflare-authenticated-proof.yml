@@ -124,6 +124,7 @@ jobs:
           // use the existing React Hub deep-retrieval path to project the exact persisted object.
           await pageA.reload({waitUntil:'domcontentloaded', timeout:60000});
           await pageA.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+          await pageA.waitForSelector('.searchWrap input[aria-label="Search intelligence"]', {timeout:30000});
           const observedA = await pageA.evaluate(async ({eventId,title}) => {
             const search = document.querySelector('.searchWrap input[aria-label="Search intelligence"]');
             if (!search) throw new Error('CANONICAL_HUB_SEARCH_NOT_AVAILABLE');
@@ -154,6 +155,7 @@ jobs:
           const pageB = await contextB.newPage();
           await pageB.goto(runtimeUrl, {waitUntil:'domcontentloaded', timeout:60000});
           await pageB.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+          await pageB.waitForSelector('.searchWrap input[aria-label="Search intelligence"]', {timeout:30000});
           const coldAuth = await pageB.evaluate(async () => window.NayaAssistantRuntime.init());
           if (!coldAuth?.authenticated) throw new Error('COLD_CONTEXT_SESSION_NOT_PERSISTED');
 
