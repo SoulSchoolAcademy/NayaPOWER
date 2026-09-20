@@ -1,5 +1,25 @@
 # Naya Power Superbrain — AI START HERE
 
+# 🔱 HUB EXECUTION LOCK — MANDATORY FOR HUB WORK
+
+Before any Hub-related task, read:
+
+`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+
+**ONE AND ONLY CURRENT HUB:** `NAYANET/HUB/index.html`  
+**PROTECTED SOURCE SHA:** `f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+The mission is to make this exact Hub functional by connecting it to the existing verified Naya engine.
+
+**Welcome/front-door pages, legacy/V2/509 Hub HTML, E01/E02/E03 builds, static mirrors, Vercel/AppDeploy snapshots, generated artifacts, and alternate shells are not current Hub authorities.** Historical artifacts may be retained for provenance but must not be selected as the current Hub.
+
+Do not create, present, deploy, or pursue a competing Hub. Do not reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path for visual parity.
+
+**Current Hub execution starts with Smart Share, then Smart Mail, then Connections, Smart Spaces, and Smart Lists. Stop at the first actual governed boundary failure and repair only that boundary.**
+
+---
+
+
 **READ THIS FIRST.** This file is the mandatory entry point for any AI, agent, model, chat session, developer, or automation operating the Naya Power Superbrain.
 
 ## 🔱 OFFICIAL ACTIVATION — NAYA POWER ON
