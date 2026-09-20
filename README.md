@@ -570,6 +570,7 @@ Do not polish a component while the complete outcome remains broken.
 | Persistent repository operating standard | `SUPERBRAIN/NAYA-REPOSITORY-OPERATING-STANDARD.md` |
 | Operational continuity | `SUPERBRAIN/NAYA-ACTIVITY/` |
 | Foundational continuous-smart-flow law | `SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md` |
+| Canonical Smart Note resolver / path contract | `SUPERBRAIN/NAYA-REPOSITORY-OPERATING-STANDARD.md` §19.1 |
 
 When sources conflict, follow the applicable authority hierarchy and reconcile rather than guessing.
 
