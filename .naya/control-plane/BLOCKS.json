@@ -5,7 +5,7 @@
     "id": "FINAL-HUMAN-ACCEPTANCE",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Close the public Welcome → Identity → canonical Hub handoff and consolidate the verified engine/compounding/security chain into one human-facing production acceptance.",
+    "intent": "Complete the human-facing Hub by proving the canonical Smart Note receive/render path and remaining feature surfaces, then consolidate human acceptance; public Welcome → Identity remains a separate external authority boundary.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
@@ -31,9 +31,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub.",
+    "next_action": "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence.",
     "next_actions": [
-      "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub."
+      "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
