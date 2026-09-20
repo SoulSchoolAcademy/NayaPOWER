@@ -269,7 +269,7 @@ jobs:
                   }), { title: noteTitle });
                   const capturedId = captureResult?.event?.event_id || captureResult?.event_id || captureResult?.transaction?.evidence?.event_id || '';
                   if (!capturedId) throw new Error('SMART_FEED_OWNED_SMART_NOTE_EVENT_ID_MISSING:' + JSON.stringify(captureResult));
-                  const ownedBoardEventId = 'smart_note:' + capturedId;
+                  const ownedBoardEventId = capturedId;
                   await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedBoardEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                   await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                   await page.locator('.searchWrap input').fill(noteTitle);
