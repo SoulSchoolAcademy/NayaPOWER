@@ -5,6 +5,33 @@
 **Canonical repository:** `SoulSchoolAcademy/NayaPOWER`  
 **Governance branch:** `main`
 
+
+---
+
+# 🔱 CURRENT HUB NORTH STAR — SINGLE SOURCE
+
+For all current Hub work, there is exactly one human-facing Hub:
+
+> **`NAYANET/HUB/index.html`**
+
+Protected visual/structural source SHA:
+
+`f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+This is the Hub we are making functional. **Do not select, present, rebuild, or deploy another Hub.**
+
+Welcome/front-door pages are separate future onboarding work, not the current Hub. Older V2/509/legacy HTML, E01/E02/E03 builds, static mirrors, Vercel/AppDeploy snapshots, generated artifacts, and alternate shells are historical/non-authoritative unless Shawn explicitly changes the mission lock.
+
+**Current mission:** connect the existing verified Naya engine to the existing canonical Hub and make its existing controls work through real runtime, authority, persistence, receipts, and rendered outcomes.
+
+Read the binding mission lock:
+
+`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+
+And the visual/structural contract:
+
+`.naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md`
+
 NayaPOWER is the **constitutional governance and operating layer around intelligence and action**. It exists to help a human-directed AI system understand the mission, act within legitimate authority, preserve memory, verify reality, learn from experience, compound intelligence, and continue without forcing the human to become an AI project manager.
 
 > **You bring the vision. NayaPOWER governs how intelligence turns that vision into verified value.**
