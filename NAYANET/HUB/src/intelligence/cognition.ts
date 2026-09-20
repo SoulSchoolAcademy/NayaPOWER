@@ -110,8 +110,26 @@ export async function persistSmartFeedAction(input: {
 export async function retrieveSmartFeedActions(sourceEventId: string) {
   const runtime = window.NayaAssistantRuntime;
   if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
-  const session = await runtime.init();
-  if (!session?.authenticated) return [];
+  if (!runtime.snapshot()?.authenticated) {
+    await new Promise<void>((resolve) => {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        window.removeEventListener('naya-auth-state', onAuthState);
+        window.clearTimeout(timer);
+        resolve();
+      };
+      const onAuthState = (event: Event) => {
+        const detail = (event as CustomEvent<{authenticated?: boolean}>).detail;
+        if (detail?.authenticated) finish();
+      };
+      const timer = window.setTimeout(finish, 10000);
+      window.addEventListener('naya-auth-state', onAuthState);
+      if (runtime.snapshot()?.authenticated) finish();
+    });
+  }
+  if (!runtime.snapshot()?.authenticated) return [];
   return runtime.retrieveSmartFeedActions(sourceEventId);
 }
 
