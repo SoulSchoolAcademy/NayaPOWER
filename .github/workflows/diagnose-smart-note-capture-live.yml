@@ -1,0 +1,51 @@
+name: Diagnose live Smart Note capture
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-smart-note-capture-live.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: |
+          npm init -y >/dev/null 2>&1
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Trace live capture receiver response
+        shell: bash
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const crypto=require('node:crypto');
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_KEY,runtime=process.env.RUNTIME_URL;
+          async function req(url,opt={}){const r=await fetch(url,opt),t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}};if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
+          const signup=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          (async()=>{
+            const s=await signup(); if(!s.access_token)throw Error('AUTH_BOOTSTRAP_FAILED:'+JSON.stringify(s));
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({storageState:{cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(s)}]}]}}});
+            const page=await context.newPage();
+            page.on('request',r=>{if(r.url().includes('/functions/v1/v7-smart-note-canonical'))console.log('SMART_NOTE_RECEIVER_REQUEST',r.method(),r.url(),r.postData()||'')});
+            page.on('response',async r=>{if(r.url().includes('/functions/v1/v7-smart-note-canonical')){const text=await r.text().catch(()=>'<BODY_READ_FAILED>');console.log('SMART_NOTE_RECEIVER_RESPONSE',JSON.stringify({status:r.status(),statusText:r.statusText(),url:r.url(),headers:Object.fromEntries([...r.headers().entries()].filter(([k])=>['content-type','x-request-id','cf-ray'].includes(k.toLowerCase()))),body:text.slice(0,5000)}))}});
+            await page.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const auth=await page.evaluate(()=>window.NayaAssistantRuntime.init()); if(!auth.authenticated)throw Error('RUNTIME_AUTH_FAILED:'+JSON.stringify(auth));
+            const title='Live capture diagnostic '+process.env.GITHUB_RUN_ID+' '+crypto.randomBytes(4).toString('hex');
+            const content='Diagnostic Smart Note capture used only to identify the live canonical receiver response condition.';
+            try{const result=await page.evaluate(async({title,content})=>window.NayaAssistantRuntime.captureSmartNote({title,content}),{title,content});console.log('SMART_NOTE_CAPTURE_RESULT',JSON.stringify(result));}
+            catch(e){console.log('SMART_NOTE_CAPTURE_THROW',String(e?.message||e));}
+            await page.waitForTimeout(2000);await browser.close();
+          })().catch(e=>{console.error('DIAGNOSTIC_FAILED',e);process.exitCode=1});
+          NODE
