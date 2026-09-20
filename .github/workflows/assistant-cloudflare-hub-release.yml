@@ -307,7 +307,7 @@ jobs:
                   const sourceEventId = root?.getAttribute('data-event-id') || '';
                   const runtime = window.NayaAssistantRuntime;
                   let targetedCount = -1;
-                  let targetedActions: string[] = [];
+                  let targetedActions = [];
                   let runtimeUserId = '';
                   try {
                     runtimeUserId = String(runtime?.snapshot?.().user_id || '');
@@ -315,7 +315,7 @@ jobs:
                       ? await runtime.retrieveSmartFeedActions(sourceEventId)
                       : [];
                     targetedCount = actions.length;
-                    targetedActions = [...new Set(actions.map((x: any) => x?.metadata?.action).filter(Boolean))];
+                    targetedActions = [...new Set(actions.map(x => x?.metadata?.action).filter(Boolean))];
                   } catch (error) {
                     targetedActions = ['ERROR:' + String(error instanceof Error ? error.message : error)];
                   }
