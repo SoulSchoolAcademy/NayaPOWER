@@ -13,6 +13,7 @@ on:
       - 'assistant-runtime.js'
       - 'NAYANET/HUB/src/data/pis.ts'
       - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
+      - 'NAYANET/HUB/src/app/AppShellV3.tsx'
       - '.github/workflows/verify-live-smart-note-receiver.yml'
   workflow_dispatch:
 
