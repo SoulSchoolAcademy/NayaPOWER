@@ -72,3 +72,30 @@ The object may evolve through verified events. Consumers should tolerate additiv
 ## 8. QUALITY GATE
 
 A valid Intelligent Block must be understandable without opening Machine Note, traceable to a source/event, privacy-correct, state-correct, and actionable when an action is available.
+
+
+## 9. CANONICAL REPOSITORY LOCATION + LIFECYCLE
+
+Effective 2026-09-19, the single canonical human-facing repository collection for Smart Notes is:
+
+`SMART-NOTES/YYYY/MM/DD/SN-YYYYMMDD-<slug>.md`
+
+A Smart Note has one stable intelligence identity and one canonical human-facing repository home. It may have governed runtime representations elsewhere, but those representations are projections/runtime state and must preserve the same identity, provenance, privacy, and verification state.
+
+The canonical lifecycle is:
+
+**CREATE → CANONICALIZE → PERSIST → VERIFY → INDEX → LEARN → RETRIEVE → REPLAY/APPLY → VERIFY OUTCOME → COMPOUND**
+
+### Runtime separation
+
+- `SMART-NOTES/YYYY/MM/DD/` = canonical human-readable intelligence corpus.
+- `.naya/memory/` and other runtime paths = machine-readable events, indexes, receipts, validators, and implementation state.
+- Supabase / managed persistence = governed durable runtime persistence.
+- Intelligence Index / Intelligent Blocks / reports / learning evidence / Dream replay = derived or projected intelligence that must retain canonical provenance.
+- Intelligent Hub = human-facing projection/action surface, never a competing source of truth.
+
+### Cold-Naya rule
+
+Every Naya must read this contract and the canonical Activity Feed before creating a Smart Note. New canonical Smart Notes must use the `SMART-NOTES/YYYY/MM/DD/` convention. If an existing artifact is found elsewhere, classify it before moving, copying, deleting, or treating it as canonical.
+
+**One Smart Note = one stable identity = one canonical human-facing home.**
