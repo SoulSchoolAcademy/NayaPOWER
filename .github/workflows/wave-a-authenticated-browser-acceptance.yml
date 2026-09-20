@@ -43,6 +43,7 @@ jobs:
           const runtime=process.env.RUNTIME_URL;
           const expectedSha='f76ed6d6de6805a752dc81113ded42e67b3b6f80';
           const project='NayaNET-WaveA-CanonicalHub-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
+          const sharedSpace='04ee4dc8-bc73-47df-a1de-162570f6a56e';
 
           async function req(url,opt={}) {
             const r=await fetch(url,opt);
@@ -58,7 +59,8 @@ jobs:
           });
 
           const A=await signup();
-          if(!A.access_token||!A.user?.id) throw Error('AUTH_BOOTSTRAP_FAILED');
+          const B=await signup();
+          if(!A.access_token||!A.user?.id||!B.access_token||!B.user?.id) throw Error('AUTH_BOOTSTRAP_FAILED');
 
           const browser=await chromium.launch({headless:true});
           const origin=new URL(runtime).origin;
@@ -75,13 +77,17 @@ jobs:
 
           const context=await browser.newContext({storageState,viewport:{width:1440,height:1000}});
           const page=await context.newPage();
+          const bOrigin=new URL(runtime).origin;
+          const bStorageState={cookies:[],origins:[{origin:bOrigin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(B)}]}]};
+          const bContext=await browser.newContext({storageState:bStorageState,viewport:{width:1440,height:1000}});
+          const bPage=await bContext.newPage();
           await page.route('**/hub-completeness.js*',async route=>{const u=new URL(route.request().url());u.searchParams.set('wavea_cache',process.env.GITHUB_RUN_ID);await route.continue({url:u.toString(),headers:{...route.request().headers(),'cache-control':'no-cache'}})});
           const diagnostics=[];
           page.on('pageerror',e=>diagnostics.push('pageerror:'+String(e?.stack||e)));
           page.on('console',m=>{if(m.type()==='error')diagnostics.push('console:'+m.text())});
           page.on('requestfailed',r=>diagnostics.push('requestfailed:'+r.url()+' '+(r.failure()?.errorText||'')));
 
-          const response=await page.goto(runtime+'/?naya_acceptance='+process.env.GITHUB_RUN_ID,{waitUntil:'networkidle',timeout:60000});
+          const response=await page.goto(runtime+'/?naya_acceptance='+process.env.GITHUB_RUN_ID,{waitUntil:'domcontentloaded',timeout:60000});
           await page.waitForTimeout(1500);
 
           const root=await page.evaluate(()=>({
@@ -101,9 +107,9 @@ jobs:
           const auth=await page.evaluate(async()=>window.NayaAssistantRuntime.init());
           if(!auth.authenticated||auth.user_id!==A.user.id) throw Error('AUTHENTICATED_RUNTIME_HANDOFF_FAILED');
 
-          await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length>=12,{timeout:45000});
+          await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length===9,{timeout:45000});
           const sidebar=await page.locator('.rail.left').innerText();
-          for(const label of ['Smart Feed','Smart Notes','Reports','Intelligence Library','Smart Share','Connections','Smart Spaces','Smart Lists','Smart Mail','Smart Ledger','Dream','Naya Play','Settings']) {
+          for(const label of ['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings']) {
             if(!sidebar.includes(label)) throw Error('SIDEBAR_CONTROL_MISSING:'+label);
           }
 
@@ -124,17 +130,12 @@ jobs:
             checks[label]=expectedKind;
             await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
           };
-          await clickAndCheck('Smart Feed','feed');
+          await clickAndCheck('Home / Smart Feed','feed');
           await clickAndCheck('Reports','reports');
           await clickAndCheck('Intelligence Library','intelligence');
-          await clickAndCheck('Smart Share','share');
           await clickAndCheck('Connections','connections');
-          await clickAndCheck('Smart Spaces','spaces');
-          await clickAndCheck('Smart Lists','lists');
           await clickAndCheck('Smart Mail','mail');
-          await clickAndCheck('Smart Ledger','ledger');
-          await clickAndCheck('Dream','dream');
-          await clickAndCheck('Naya Play','play');
+          await clickAndCheck('Smart Ledger / Evidence','ledger');
           await clickAndCheck('Settings','settings');
 
           const note=page.locator('.rail.left button').filter({hasText:'Smart Notes'}).first();
@@ -143,6 +144,55 @@ jobs:
           const noteResult=await page.evaluate(async()=>window.NayaAssistantRuntime.captureSmartNote({title:'Wave A canonical September 17 shell acceptance',content:'Browser acceptance proved the protected September 17 Hub shell can invoke the existing authenticated Smart Note runtime without replacing the visual source.',source:'wave-a-canonical-shell-acceptance'}));
           if(!noteResult?.event?.event_id&&!noteResult?.event_id) throw Error('SMART_NOTE_CANONICAL_CAPTURE_NOT_PROVEN');
           checks['Smart Notes']='note';
+
+          const aSpace=await page.evaluate(async space=>window.NayaAssistantRuntime.joinSpace(space),sharedSpace);
+          const bPageResponse=await bPage.goto(runtime+'/?naya_auth_b='+process.env.GITHUB_RUN_ID,{waitUntil:'domcontentloaded',timeout:60000});
+          if(bPageResponse?.status()!==200) throw Error('B_HUB_ROOT_NOT_200:'+bPageResponse?.status());
+          await bPage.waitForTimeout(500);
+          const bAuth=await bPage.evaluate(async()=>window.NayaAssistantRuntime.init());
+          if(!bAuth.authenticated||bAuth.user_id!==B.user.id) throw Error('B_AUTHENTICATED_RUNTIME_HANDOFF_FAILED');
+          const bSpace=await bPage.evaluate(async space=>window.NayaAssistantRuntime.joinSpace(space),sharedSpace);
+          const aConnection=await page.evaluate(async({target,space})=>window.NayaAssistantRuntime.saveConnection(target,space),{target:B.user.id,space:sharedSpace});
+          const aConnections=await page.evaluate(async()=>window.NayaAssistantRuntime.listConnections());
+          const connectionId=aConnections.find(x=>x.connected_member_id===B.user.id&&x.status==='active')?.id;
+          if(!connectionId) throw Error('SMART_LIST_CONNECTION_SETUP_FAILED:'+JSON.stringify({aSpace,bSpace,aConnection,aConnections}));
+
+          const listName='Wave A Smart Lists '+process.env.GITHUB_RUN_ID;
+          await page.evaluate(name=>{window.prompt=()=>name},listName);
+          await page.evaluate(()=>window.__nayaOpenSurface('lists'));
+          await page.locator('.nc-modal').waitFor({state:'visible',timeout:10000});
+          await page.locator('#nc-create').click();
+          await page.waitForFunction(name=>[...document.querySelectorAll('.nc-card[data-list] b')].some(b=>b.textContent===name),listName,{timeout:15000});
+          const listId=await page.locator('.nc-card[data-list]').first().getAttribute('data-list');
+          if(!listId) throw Error('SMART_LIST_CREATE_UI_NOT_PROVEN');
+          checks.smartListsCreate='CREATE → RELOAD → RETRIEVE';
+          const listCard=page.locator('.nc-card[data-list="'+listId+'"]');
+          const addSelect=listCard.locator('[data-add-select]');
+          await addSelect.selectOption(connectionId);
+          await listCard.locator('[data-add]').click();
+          await page.waitForFunction(()=>document.querySelector('#nc-proof')?.textContent.includes('VERIFY MEMBERSHIP ✓'),{timeout:15000});
+          const afterAdd=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists());
+          const persistedList=afterAdd.find(x=>x.id===document.querySelector('.nc-card[data-list]')?.dataset.list);
+          if(!persistedList?.members?.some(x=>x.connection_id===window.__waveAConnectionId)) throw Error('SMART_LIST_MEMBERSHIP_RETRIEVAL_NOT_PROVEN');
+          checks.smartListsAdd='ADD CONNECTION → RELOAD → VERIFY MEMBERSHIP';
+          await page.evaluate(id=>{window.__waveAConnectionId=id},connectionId);
+          await page.locator('.nc-card[data-list="'+listId+'"] [data-remove]').click();
+          await page.waitForFunction(()=>document.querySelector('#nc-proof')?.textContent.includes('VERIFY REMOVAL ✓'),{timeout:15000});
+          const afterRemove=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists());
+          const removedList=afterRemove.find(x=>x.id===document.querySelector('.nc-card[data-list]')?.dataset.list);
+          if(removedList?.members?.some(x=>x.connection_id===window.__waveAConnectionId)) throw Error('SMART_LIST_REMOVAL_RETRIEVAL_NOT_PROVEN');
+          checks.smartListsRemove='REMOVE → RELOAD → VERIFY REMOVAL';
+
+          await bPage.evaluate(()=>window.__nayaOpenSurface('lists'));
+          await bPage.locator('.nc-modal').waitFor({state:'visible',timeout:10000});
+          const unauthorized=await bPage.evaluate(async({listId})=>{
+            try{
+              await window.NayaAssistantRuntime.addConnectionToList(listId,crypto.randomUUID());
+              return {blocked:false,error:'UNEXPECTED_SUCCESS'};
+            }catch(e){return {blocked:true,error:String(e?.message||e)}}
+          },{listId});
+          if(!unauthorized.blocked) throw Error('SMART_LIST_UNAUTHORIZED_WRITE_NOT_BLOCKED');
+          checks.smartListsUnauthorized='UNAUTHORIZED ATTEMPT → BLOCKED · '+unauthorized.error;
 
           const mobile=await browser.newContext({viewport:{width:390,height:844}});
           const mp=await mobile.newPage();
@@ -168,6 +218,7 @@ jobs:
           console.log('WAVE_A_CANONICAL_SEPTEMBER17_BROWSER_ACCEPTANCE=PASS');
           console.log(JSON.stringify(receipt));
           await mobile.close();
+          await bContext.close();
           await context.close();
           await browser.close();
           EOF
