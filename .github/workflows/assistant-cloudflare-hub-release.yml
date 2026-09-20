@@ -101,6 +101,7 @@ jobs:
             python3 -c "import json; d=json.load(open('dist/intelligence/pis-feed.json',encoding='utf-8')); assert d.get('event_count',0) > 0; assert d.get('events')"
             cd ../..
             sha256sum NAYANET/HUB/dist/index.html | tee "$RUNNER_TEMP/source.sha256"
+            sha256sum NAYANET/HUB/dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
             echo 'REACT_SOURCE_ARTIFACT_READY'
           else
             test -s '2026 09 17 NAYANET HUB.html'
@@ -163,7 +164,10 @@ jobs:
             sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
             live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
             if [ "$RELEASE_SURFACE" = "sparkling-shape-react" ]; then
-              if [ "$source_hash" = "$live_hash" ] && grep -q 'NAYANET-HUB-REACT-CANONICAL' "$RUNNER_TEMP/live.html" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; then
+              runtime_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/runtime-source.sha256")
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
+              runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
+              if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && grep -q 'NAYANET-HUB-REACT-CANONICAL' "$RUNNER_TEMP/live.html" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html"; then
                 verified=1
                 break
               fi
