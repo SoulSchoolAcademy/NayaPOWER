@@ -146,7 +146,7 @@ jobs:
           if [ "$RELEASE_SURFACE" = "sparkling-shape-react" ]; then
             printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","main":"/home/runner/work/NayaPOWER/NayaPOWER/NAYANET/HUB/worker.js","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/NAYANET/HUB/dist","binding":"ASSETS","html_handling":"none","not_found_handling":"single-page-application","run_worker_first":true},"cache":{"enabled":false}}' > "$RUNNER_TEMP/wrangler.jsonc"
           else
-            printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","html_handling":"none","not_found_handling":"single-page-application"}' > "$RUNNER_TEMP/wrangler.jsonc"
+            printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","html_handling":"none","not_found_handling":"single-page-application"}}' > "$RUNNER_TEMP/wrangler.jsonc"
           fi
       - name: Deploy exact Assistant-lane artifact
         shell: bash
