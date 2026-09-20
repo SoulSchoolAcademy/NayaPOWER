@@ -33,8 +33,20 @@ jobs:
       - name: Execute live Hub browser acceptance
         shell: bash
         run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('.github/scripts/wave-a-browser-acceptance.mjs')
+          s = p.read_text()
+          old = "await spaceSelect.selectOption(spaceId);await ap.waitForTimeout(500);"
+          new = """await spaceSelect.selectOption(spaceId);
+          const personSelect=ap.locator('.sfb-connection-picker .sfb-picker-field').nth(1).locator('select');
+          await personSelect.waitFor({state:'visible',timeout:10000});
+          await ap.waitForFunction(()=>{const s=document.querySelector('.sfb-connection-picker .sfb-picker-field:nth-child(2) select');return !!s&&!s.disabled&&s.options.length>=2;},null,{timeout:15000});"""
+          if old not in s:
+              raise SystemExit("WAVE_A_PICKER_PATCH_TARGET_MISSING")
+          p.write_text(s.replace(old, new, 1))
+          PY
           sed -i "s/const shareEventId=shareStatus.match(\\/EVENT (\\[^ ·\\]+)\\/)?.\\[1\\]||'';if(!shareEventId)throw Error('SMART_SHARE_RECEIPT_EVENT_ID_MISSING');/const shareEventId='smart-share-'+publicationId;/" .github/scripts/wave-a-browser-acceptance.mjs
-          sed -i "s/await spaceSelect.selectOption(spaceId);await ap.waitForTimeout(500);/await spaceSelect.selectOption(spaceId);const personSelect=ap.locator('.sfb-connection-picker .sfb-picker-field').nth(1).locator('select');await personSelect.waitFor({state:'visible',timeout:10000});await ap.waitForFunction(()=>{const s=document.querySelector('.sfb-connection-picker .sfb-picker-field:nth-child(2) select');return !!s&&!s.disabled&&s.options.length>=2;},null,{timeout:15000});/" .github/scripts/wave-a-browser-acceptance.mjs
           export RECEIPT_PATH="$RUNNER_TEMP/wave-a-browser-acceptance.json"
           node .github/scripts/wave-a-browser-acceptance.mjs
       - name: Upload machine receipt
