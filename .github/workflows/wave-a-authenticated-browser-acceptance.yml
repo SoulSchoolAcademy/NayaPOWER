@@ -2,7 +2,7 @@ name: Wave A authenticated browser handoff acceptance
 
 on:
   push:
-    branches: [main]
+    branches: [main, diag-smart-feed-hydration-v3]
     paths:
       - '.github/workflows/wave-a-authenticated-browser-acceptance.yml'
   workflow_dispatch:
