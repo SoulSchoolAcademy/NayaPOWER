@@ -314,6 +314,36 @@ jobs:
                 for (const required of requiredActions) if (!retrievalProof.actions.includes(required)) throw new Error('SMART_FEED_RETRIEVAL_MISSING:' + required + ':' + JSON.stringify(retrievalProof));
                 if (retrievalProof.count < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_EVENT_COUNT_TOO_LOW:' + JSON.stringify(retrievalProof));
 
+                const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
+                const spaceProofName = 'CI Canonical Private Space ' + process.env.GITHUB_SHA.slice(0, 12) + ' ' + viewport.label;
+                await board.getByRole('button', { name: '＋ CREATE SPACE', exact: true }).click();
+                await page.locator('.sfb-dialog input').first().fill(spaceProofName);
+                await page.locator('.sfb-dialog textarea').first().fill('Canonical private Space creation browser proof.');
+                await page.locator('.sfb-dialog select').selectOption('private');
+                await page.getByRole('button', { name: 'CREATE PRIVATE SPACE', exact: true }).click();
+                await page.waitForTimeout(900);
+                const createSpaceStatus = await board.locator('.sfb-status').textContent().catch(() => '');
+                const spaceMatch = String(createSpaceStatus || '').match(/CANONICAL ID ([0-9a-f-]{36})/i);
+                if (!spaceMatch) throw new Error('CANONICAL_PRIVATE_SPACE_CREATE_NOT_PROVEN:' + String(createSpaceStatus || 'NO_STATUS'));
+                const createdSpaceId = spaceMatch[1];
+                if (!/^[0-9a-f-]{36}$/i.test(createdSpaceId)) throw new Error('CANONICAL_SPACE_ID_INVALID:' + createdSpaceId);
+                await page.reload({ waitUntil: 'networkidle' });
+                await board.waitFor({ timeout: 10000 });
+                await page.waitForTimeout(700);
+                const spacesNav = navRoot.locator('button').filter({ hasText: 'Smart Spaces' });
+                await spacesNav.scrollIntoViewIfNeeded();
+                await spacesNav.click();
+                await page.waitForTimeout(900);
+                if (!page.url().includes('/spaces')) throw new Error('SMART_SPACES_ROUTE_FAILED');
+                if (!(await page.locator('.feature-surface').count())) throw new Error('SMART_SPACES_FEATURE_SURFACE_MISSING');
+                const spaceSurfaceText = await page.locator('.feature-surface').first().innerText();
+                if (!spaceSurfaceText.includes(spaceProofName)) throw new Error('CANONICAL_PRIVATE_SPACE_NOT_RETRIEVED_AFTER_RELOAD:' + spaceProofName);
+                if (!spaceSurfaceText.includes(createdSpaceId)) throw new Error('CANONICAL_PRIVATE_SPACE_ID_NOT_RETRIEVED:' + createdSpaceId);
+                console.log('CANONICAL_PRIVATE_SPACE_CREATE_RELOAD_RETRIEVE_VERIFIED', viewport.label, JSON.stringify({ spaceProofName, createdSpaceId }));
+                await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                await page.waitForTimeout(500);
+
                 await page.evaluate(() => window.NayaAssistantRuntime.signOut());
                 await page.waitForTimeout(250);
                 await board.locator('[aria-label="Favorite intelligence"]').first().click();
