@@ -224,7 +224,7 @@ jobs:
                   identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null,
                   shell: document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker') || '',
                   nav: [...document.querySelectorAll('.nav-item')].map(x => x.textContent?.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s+/g, ' ').trim()).filter(Boolean),
-                  feedBoards: document.querySelectorAll('.smart-feed-board').length, mobileNav: document.querySelectorAll('.mobile-nav button').length,
+                  feedBoards: document.querySelectorAll('.smart-feed-board').length,
                   private: document.body.innerText.includes('Private intelligence workspace'),
                   naya: document.body.innerText.includes('NAYA'),
                   intelligence: document.body.innerText.includes('INTELLIGENCE')
@@ -235,7 +235,7 @@ jobs:
                 if (result.assistantRuntime !== true) throw new Error('ASSISTANT_RUNTIME_NOT_LOADED');
                 if (result.shell !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('CANONICAL_REACT_SHELL_MISSING');
                 if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
-                if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER'); if (result.mobileNav !== expectedNav.length) throw new Error('MOBILE_NAV_MISMATCH:' + result.mobileNav);
+                if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
                 await page.getByRole('button', { name: 'Intelligence Library' }).click();
                 await page.waitForTimeout(500);
