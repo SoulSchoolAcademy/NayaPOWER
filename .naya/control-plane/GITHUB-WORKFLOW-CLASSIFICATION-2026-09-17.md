@@ -11,7 +11,7 @@ The canonical production deployment authority for the current NayaNET Hub is:
 
 Evidence:
 - explicitly declares itself the canonical runtime release;
-- watches the protected `2026 09 17 NAYANET HUB.html` source;
+- watches the protected `NAYANET/HUB/index.html` source;
 - binds the exact Cloudflare account/Worker target;
 - requires the `assistant-cloudflare-production` environment and Cloudflare token;
 - deploys the exact source artifact;
