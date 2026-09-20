@@ -109,7 +109,9 @@ jobs:
 
           const checks={};
           const clickAndCheck=async(label,expectedKind)=>{
-            const b=page.locator('.rail.left button').filter({hasText:label}).first();
+            const kindSelector={feed:'feed',reports:'reports',intelligence:'intelligence',share:'share',connections:'connections',spaces:'spaces',lists:'lists',mail:'mail',ledger:'ledger',dream:'dream',play:'play',settings:'settings'}[expectedKind];
+            const b=page.locator('.rail.left button[data-nc="'+kindSelector+'"]').first();
+            await b.waitFor({state:'visible',timeout:10000});
             await b.scrollIntoViewIfNeeded();
             await b.click({force:true});
             try{
