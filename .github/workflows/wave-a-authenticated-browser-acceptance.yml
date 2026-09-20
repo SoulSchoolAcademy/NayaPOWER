@@ -92,6 +92,24 @@ jobs:
           if(await ap.locator('.feature-card').filter({hasText:listName}).count()!==1)throw Error('SMART_LIST_NOT_RETRIEVED_AFTER_RELOAD');
           console.log('CANONICAL_SMART_LIST_CREATE_RECEIPT_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({listId:createdList.id,listName,receiptId:listReceiptId}));
 
+          // Smart Share: human click → canonical publication → publication retrieval → reload → Smart Share surface.
+          const navFeed=navRoot.locator('button').filter({hasText:'Smart Feed'});await navFeed.scrollIntoViewIfNeeded();await navFeed.click();await ap.waitForTimeout(700);
+          if(!(await ap.locator('h1').filter({hasText:'Intelligence'}).count()))throw Error('SMART_FEED_ROUTE_FOR_SHARE_FAILED');
+          const shareBoard=ap.locator('.smart-feed-board').first();await shareBoard.waitFor({state:'visible'});
+          const shareSourceEventId=String(await shareBoard.getAttribute('data-event-id')||'');if(!shareSourceEventId)throw Error('SMART_SHARE_SOURCE_EVENT_ID_MISSING');
+          const shareButton=shareBoard.getByRole('button',{name:'＋ SHARE',exact:true});await shareButton.click();
+          await ap.waitForFunction(()=>Array.from(document.querySelectorAll('.sfb-status')).some(x=>/SHARE PUBLISHED|SHARE BLOCKED/.test(String(x.textContent||''))),null,{timeout:15000});
+          const shareStatus=String(await ap.locator('.sfb-status').textContent().catch(()=>''));if(!shareStatus.includes('SHARE PUBLISHED · PUBLICATION '))throw Error('SMART_SHARE_PUBLICATION_NOT_PROVEN:'+shareStatus);
+          const publicationId=shareStatus.match(/PUBLICATION ([0-9a-f-]{36})/i)?.[1];if(!publicationId)throw Error('SMART_SHARE_PUBLICATION_ID_MISSING');
+          const shareEventId=shareStatus.match(/EVENT ([^ ·]+)/)?.[1]||'';if(!shareEventId)throw Error('SMART_SHARE_RECEIPT_EVENT_ID_MISSING');
+          const collective=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));const publishedItem=(collective?.items||[]).find(x=>x.publication_id===publicationId&&x.id===shareSourceEventId);if(!publishedItem)throw Error('SMART_SHARE_PUBLICATION_RUNTIME_RETRIEVAL_FAILED');
+          const shareReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const shareReceiptEvent=shareReceipts.find(x=>x.event_id===shareEventId&&x.source==='nayanet-hub.smart-share.publication'&&x.metadata?.publication_id===publicationId);if(!shareReceiptEvent)throw Error('SMART_SHARE_RECEIPT_RETRIEVAL_FAILED');
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
+          const navShare=ap.viewportSize()?.width<=760?ap.locator('.mobile-nav'):ap.locator('.nav-section');const shareNav=navShare.locator('button').filter({hasText:'Smart Share'});await shareNav.scrollIntoViewIfNeeded();await shareNav.click();await ap.waitForTimeout(900);
+          if(!ap.url().includes('/share'))throw Error('SMART_SHARE_ROUTE_FAILED');
+          const shareSurface=ap.locator('.feature-surface').first();await shareSurface.waitFor({state:'visible'});const shareSurfaceText=await shareSurface.innerText();if(!shareSurfaceText.includes(String(publishedItem.title||publishedItem.source?.label||shareSourceEventId)))throw Error('SMART_SHARE_NOT_VISIBLE_AFTER_RELOAD');
+          console.log('CANONICAL_SMART_SHARE_PUBLICATION_RECEIPT_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({sourceEventId:shareSourceEventId,publicationId,receiptEventId:shareEventId}));
+
           // Smart Ledger Inspect Evidence: human click → existing runtime authority → record → receipt → reload → retrieval.
           const navLedger=navRoot.locator('button').filter({hasText:'Smart Ledger'});await navLedger.scrollIntoViewIfNeeded();await navLedger.click();await ap.waitForTimeout(700);
           if(!(await ap.locator('h1').filter({hasText:'Smart Ledger'}).count()))throw Error('SMART_LEDGER_ROUTE_FAILED');
