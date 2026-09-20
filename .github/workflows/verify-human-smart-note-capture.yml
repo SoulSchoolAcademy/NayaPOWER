@@ -71,7 +71,7 @@ jobs:
             const persistenceDiagnostic=await page.evaluate(async({eventId})=>{
               const runtime=window.NayaAssistantRuntime;
               const snapshot=runtime?.snapshot?.()||null;
-              const rows=await runtime.retrieve('smart_note:'+eventId);
+              const rows=await runtime.retrieve(eventId);
               const cognition=rows?.[0]||null;
               const client=window.__NayaNETSupabaseClient;
               let indexRows=[],indexError=null;
