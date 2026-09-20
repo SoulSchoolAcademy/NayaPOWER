@@ -1,3 +1,4 @@
+// Canonical Smart Note receiver proof consumes this component as the identity/render boundary.
 import{useEffect,useMemo,useRef,useState}from'react';
 import type{CSSProperties,ReactNode}from'react';
 import type{IntelligentEvent,Lens,Perspective as EventPerspective}from'./types';
