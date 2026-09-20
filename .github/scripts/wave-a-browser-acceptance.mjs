@@ -1,7 +1,7 @@
           import { chromium } from 'playwright';
           import crypto from 'node:crypto';
           import fs from 'node:fs';
-          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY || "sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue";
           const runtime=process.env.RUNTIME_URL,spaceId=process.env.NAYA_EXISTING_SPACE_ID;
           const project='NayaNET-WaveA-Browser-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
           async function req(url,opt={}){const r=await fetch(url,opt);const t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}}if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
