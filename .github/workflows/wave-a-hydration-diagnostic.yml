@@ -5,7 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/wave-a-hydration-diagnostic.yml'
-  workflow_dispatch: {}
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -98,12 +98,7 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           // Smart Share: human click → canonical publication → publication retrieval → reload → Smart Share surface.
           const navFeed=navRoot.locator('button').filter({hasText:'Smart Feed'});await navFeed.scrollIntoViewIfNeeded();await navFeed.click();await ap.waitForTimeout(700);
           if(!(await ap.locator('h1').filter({hasText:'Intelligence'}).count()))throw Error('SMART_FEED_ROUTE_FOR_SHARE_FAILED');
-          const shareSetupTitle=String(await ap.locator('.smart-feed-board').first().getAttribute('data-event-title')||'').trim();if(!shareSetupTitle)throw Error('SMART_SHARE_SETUP_TITLE_MISSING');const hydrationTrace=[];
-          ap.on('request',r=>{if(r.url().includes('/rest/v1/nayanet_intelligence_index')){console.log('SMART_FEED_HYDRATION_REQUEST',JSON.stringify({url:r.url(),authorization_present:!!r.headers()['authorization'],apikey_present:!!r.headers()['apikey']}));}});
-          ap.on('response',async r=>{if(r.url().includes('/rest/v1/nayanet_intelligence_index')){const t=(await r.text().catch(()=>''));console.log('SMART_FEED_HYDRATION_RESPONSE',JSON.stringify({status:r.status(),url:r.url(),body:t.slice(0,8000)}));}});
-          const authTrace=await ap.evaluate(()=>{const raw=localStorage.getItem('nayanet.supabase.auth');let s=null;try{s=raw?JSON.parse(raw):null}catch{}return {raw_present:!!raw,user_id:s?.user?.id||s?.user?.sub||null,access_token_present:!!s?.access_token};});
-          console.log('SMART_FEED_HYDRATION_AUTH',JSON.stringify(authTrace));
-          const shareSetup=await ap.evaluate(async title=>window.NayaAssistantRuntime.captureSmartNote({title,content:'Authenticated runtime intelligence created solely as the source for the canonical Smart Share browser proof.'}),shareSetupTitle);if(!shareSetup)throw Error('SMART_SHARE_SETUP_CAPTURE_FAILED');const capturedSourceEventId=String(shareSetup?.event_id||shareSetup?.event?.event_id||'').trim();if(!capturedSourceEventId)throw Error('SMART_SHARE_CAPTURE_EVENT_ID_MISSING');await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(800);const shareBoard=ap.locator('.smart-feed-board[data-event-id="'+capturedSourceEventId+'"]');await shareBoard.waitFor({state:'visible',timeout:10000});
+          const shareSetupTitle=String(await ap.locator('.smart-feed-board').first().getAttribute('data-event-title')||'').trim();if(!shareSetupTitle)throw Error('SMART_SHARE_SETUP_TITLE_MISSING');const shareSetup=await ap.evaluate(async title=>window.NayaAssistantRuntime.captureSmartNote({title,content:'Authenticated runtime intelligence created solely as the source for the canonical Smart Share browser proof.'}),shareSetupTitle);if(!shareSetup)throw Error('SMART_SHARE_SETUP_CAPTURE_FAILED');const capturedSourceEventId=String(shareSetup?.event_id||shareSetup?.event?.event_id||'').trim();if(!capturedSourceEventId)throw Error('SMART_SHARE_CAPTURE_EVENT_ID_MISSING');await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(800);const shareBoard=ap.locator('.smart-feed-board[data-event-id="'+capturedSourceEventId+'"]');await shareBoard.waitFor({state:'visible',timeout:10000});
           const shareSourceEventId=String(await shareBoard.getAttribute('data-event-id')||'');if(shareSourceEventId!==capturedSourceEventId)throw Error('SMART_SHARE_SOURCE_EVENT_ID_MISMATCH');
           const shareButton=shareBoard.getByRole('button',{name:'＋ SHARE',exact:true});await shareButton.click();
           await ap.waitForFunction(()=>Array.from(document.querySelectorAll('.sfb-status')).some(x=>/SHARE PUBLISHED|SHARE BLOCKED/.test(String(x.textContent||''))),null,{timeout:15000});
