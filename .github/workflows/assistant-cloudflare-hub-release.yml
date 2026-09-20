@@ -237,6 +237,18 @@ jobs:
                 if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
                 if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
+
+                const favorite = page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first();
+                await favorite.click();
+                await page.waitForTimeout(800);
+                const actionStatus = await page.locator('.smart-feed-board .sfb-status').textContent().catch(() => '');
+                if (!String(actionStatus || '').includes('ACTION PERSISTED')) throw new Error('SMART_FEED_ACTION_NOT_PERSISTED:' + String(actionStatus || 'NO_STATUS'));
+                await page.reload({ waitUntil: 'networkidle' });
+                await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                await page.waitForTimeout(800);
+                const restoredFavorite = await page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first().getAttribute('class');
+                if (!String(restoredFavorite || '').includes('on')) throw new Error('SMART_FEED_ACTION_NOT_RESTORED');
+
                 const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
                 await libraryNav.scrollIntoViewIfNeeded();
