@@ -285,7 +285,7 @@ jobs:
                   Object.defineProperty(navigator, 'share', { configurable: true, value: async () => undefined });
                 });
                 await actionButton('＋ SHARE').click();
-                await page.waitForTimeout(700); await statusFor('share');
+                await page.waitForFunction(() => /SHARE PERSISTED|SHARE BLOCKED/.test(String(document.querySelector('.smart-feed-board .sfb-status')?.textContent || '')), null, { timeout: 15000 }); await statusFor('share');
 
                 await page.reload({ waitUntil: 'networkidle' });
                 await board.waitFor({ timeout: 10000 });
