@@ -1,5 +1,5 @@
-# CANONICAL RUNTIME RELEASE — deploy the exact current protected Hub freeze point.
-# Canonical source: NAYANET/HUB React host preserving the protected 509 baseline visual contract; legacy static Hub remains preserved as historical surface.
+# CANONICAL RUNTIME RELEASE — deploy the exact current September 17 HTML Hub shell.
+# Canonical source: NAYANET/HUB/index.html, byte-identical to the protected September 17 visual source; runtime capabilities are layered through the approved external runtime assets.
 # Assistant lane only. GitHub 509 is a separate fail-closed lane.
 # Closure verification: current main source must be redeployed before readiness can certify source-scoped runtime parity.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
@@ -115,6 +115,7 @@ jobs:
             test -s 'assistant-runtime.js'
             test -s 'smart-feed.js'
             test -s 'smart-tabs.js'
+            test -s 'NAYANET/HUB/public/hub-completeness.js'
             test -s 'identity.html'
             test -s 'NAYANET/name-first-auth-adapter.js'
             mkdir -p dist/NAYANET
@@ -122,6 +123,7 @@ jobs:
             cp 'assistant-runtime.js' dist/assistant-runtime.js
             cp 'smart-feed.js' dist/smart-feed.js
             cp 'smart-tabs.js' dist/smart-tabs.js
+            cp 'NAYANET/HUB/public/hub-completeness.js' dist/hub-completeness.js
             cp 'identity.html' dist/identity.html
             cp 'NAYANET/name-first-auth-adapter.js' dist/NAYANET/name-first-auth-adapter.js
             grep -q 'nayanet-direct-nine' dist/index.html
@@ -136,6 +138,7 @@ jobs:
             sha256sum dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
             sha256sum dist/smart-feed.js | tee "$RUNNER_TEMP/smart-feed-source.sha256"
             sha256sum dist/smart-tabs.js | tee "$RUNNER_TEMP/smart-tabs-source.sha256"
+            sha256sum dist/hub-completeness.js | tee "$RUNNER_TEMP/hub-completeness-source.sha256"
             sha256sum dist/identity.html | tee "$RUNNER_TEMP/identity-source.sha256"
             sha256sum dist/NAYANET/name-first-auth-adapter.js | tee "$RUNNER_TEMP/adapter-source.sha256"
             echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
@@ -190,14 +193,16 @@ jobs:
               curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
               curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-feed.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-feed.js"
               curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-tabs.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-tabs.js"
+              curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/hub-completeness.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-hub-completeness.js"
               curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/identity.html?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-identity.html"
               curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/NAYANET/name-first-auth-adapter.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-name-first-adapter.js"
               runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
               smart_feed_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-feed.js" | cut -d' ' -f1)
               smart_tabs_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-tabs.js" | cut -d' ' -f1)
+              hub_completeness_live_hash=$(sha256sum "$RUNNER_TEMP/live-hub-completeness.js" | cut -d' ' -f1)
               identity_live_hash=$(sha256sum "$RUNNER_TEMP/live-identity.html" | cut -d' ' -f1)
               adapter_live_hash=$(sha256sum "$RUNNER_TEMP/live-name-first-adapter.js" | cut -d' ' -f1)
-              if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$smart_feed_source_hash" = "$smart_feed_live_hash" ] && [ "$smart_tabs_source_hash" = "$smart_tabs_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NAYANET · LIVING INTELLIGENCE PROJECTION' "$RUNNER_TEMP/live-smart-feed.js" && grep -q 'SMART TABS · YOUR NAVIGATION' "$RUNNER_TEMP/live-smart-tabs.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
+              if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$smart_feed_source_hash" = "$smart_feed_live_hash" ] && [ "$smart_tabs_source_hash" = "$smart_tabs_live_hash" ] && [ "$(cut -d' ' -f1 "$RUNNER_TEMP/hub-completeness-source.sha256")" = "$hub_completeness_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NAYANET · LIVING INTELLIGENCE PROJECTION' "$RUNNER_TEMP/live-smart-feed.js" && grep -q 'SMART TABS · YOUR NAVIGATION' "$RUNNER_TEMP/live-smart-tabs.js" && grep -q 'wireSidebar' "$RUNNER_TEMP/live-hub-completeness.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
                 verified=1
                 break
               fi
