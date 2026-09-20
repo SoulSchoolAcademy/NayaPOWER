@@ -488,7 +488,7 @@ jobs:
                 await page.waitForTimeout(800);
                 if (!(await page.locator('[data-surface="naya-play"]').count())) throw new Error('NAYA_PLAY_SURFACE_MISSING');
                 if (!(await page.locator('h1,h2').filter({ hasText: 'Naya Play' }).count())) throw new Error('NAYA_PLAY_HEADING_MISSING');
-                const playButton = page.getByRole('button', { name: /^PLAY NAYA$/i });
+                const playButton = page.getByRole('button', { name: /PLAY NAYA/i });
                 await playButton.waitFor({ timeout: 10000 });
                 if (await playButton.isDisabled()) throw new Error('NAYA_PLAY_PRIMARY_ACTION_DISABLED');
                 await page.evaluate(() => {
