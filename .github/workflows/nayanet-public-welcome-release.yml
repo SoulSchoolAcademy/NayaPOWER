@@ -27,30 +27,23 @@ jobs:
       - name: Checkout exact current main
         uses: actions/checkout@v4
 
-      - name: Build canonical Welcome artifact without visual changes
+      - name: Build compatibility redirect to canonical Intelligent Hub
         shell: bash
         run: |
           set -euo pipefail
-          test -s WelcometoNayaNET.html
-          python3 - <<'PY'
-          import base64, pathlib
-          src = pathlib.Path('WelcometoNayaNET.html').read_bytes()
-          b64 = base64.b64encode(src).decode()
-          pathlib.Path('welcome-worker.js').write_text(
-              "const HTML = atob("+repr(b64)+");\n"
-              "export default {\n"
-              "  async fetch(request) {\n"
-              "    const url = new URL(request.url);\n"
-              "    if (url.pathname !== '/' && url.pathname !== '/index.html') "
-              "      return new Response('Not Found', {status:404});\n"
-              "    return new Response(HTML, {headers:{'Content-Type':'text/html; charset=UTF-8','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Permissions-Policy':'camera=(), microphone=(), geolocation=()'}});\n"
-              "  }\n"
-              "};\n",
-              encoding='utf-8'
-          )
-          PY
-          sha256sum WelcometoNayaNET.html | tee welcome-source.sha256
-          grep -q 'sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html' WelcometoNayaNET.html
+          cat > welcome-worker.js <<'JS'
+          const HUB = "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/";
+          export default {
+            async fetch(request) {
+              const url = new URL(request.url);
+              if (url.pathname !== "/" && url.pathname !== "/index.html") {
+                return new Response("Not Found", {status:404});
+              }
+              return Response.redirect(HUB, 302);
+            }
+          };
+          JS
+          echo "CANONICAL_HUB=$HUB" > welcome-source.sha256
 
       - name: Resolve authoritative nayanet.app zone
         shell: bash
@@ -89,29 +82,13 @@ jobs:
           JSON
           npx --yes wrangler@4 deploy --config wrangler.jsonc
 
-      - name: Verify public Welcome runtime and canonical identity target
+      - name: Verify public URL now lands on canonical Intelligent Hub
         shell: bash
         run: |
           set -euo pipefail
-          curl --fail --silent --show-error --location "$WELCOME_HOST/?naya_release=$GITHUB_SHA" -o welcome-live.html
-          grep -q 'sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html' welcome-live.html
-          if grep -Eq 'shiny-wave-dd48|academy.nayanet.app' welcome-live.html; then
-            echo 'LEGACY_PUBLIC_WELCOME_ROUTE_STILL_PRESENT'
-            exit 1
-          fi
-          npm install --no-save playwright@1.55.0
-          npx playwright install --with-deps chromium
-          node <<'NODE'
-          const {chromium}=require('playwright');
-          const browser=await chromium.launch({headless:true});
-          const page=await browser.newPage();
-          await page.goto(process.env.WELCOME_HOST+'/?name=Public%20Proof&naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
-          const target=await page.locator('a.enter,button.enter').first().getAttribute('href').catch(()=>null);
-          const scriptTarget=await page.evaluate(()=>typeof NAYA_HUB_IDENTITY_URL==='string'?NAYA_HUB_IDENTITY_URL:null);
-          if(!(String(target||scriptTarget||'').includes('sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html'))) throw new Error('WELCOME_IDENTITY_TARGET_NOT_CANONICAL');
-          await browser.close();
-          console.log('PUBLIC_WELCOME_RUNTIME_VERIFIED',JSON.stringify({target:target||scriptTarget,canonicalIdentity:process.env.CANONICAL_IDENTITY}));
-          NODE
+          final=$(curl --fail --silent --show-error --location --write-out '%{url_effective}' --output /dev/null "$WELCOME_HOST/?naya_release=$GITHUB_SHA")
+          test "$final" = "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/"
+          echo "WELCOME_HOST_CANONICAL_HUB_REDIRECT_VERIFIED final=$final"
 
       - name: Write immutable deployment receipt
         shell: bash
@@ -124,16 +101,15 @@ jobs:
             "observed_head": "$GITHUB_SHA",
             "worker": "$WELCOME_WORKER",
             "host": "$WELCOME_HOST",
-            "canonical_identity": "$CANONICAL_IDENTITY",
+            "canonical_hub": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
             "proof": [
-              "existing canonical Welcome source deployed without visual rewrite",
-              "welcome.nayanet.app returned the deployed artifact",
-              "legacy shiny-wave/academy target absent",
-              "Welcome Identity target points to canonical Assistant runtime",
-              "browser runtime verification passed"
+              "welcome.nayanet.app is now a compatibility redirect only",
+              "welcome.nayanet.app redirects directly to the canonical Intelligent Hub",
+              "the Welcome HTML is no longer served at the public URL"
             ]
           }
           JSON
           cat public-welcome-proof.json
 
-# Human Hub capture boundary: redeploy canonical Welcome so welcome.nayanet.app reaches the Assistant identity lane.
+
+# Compatibility boundary: welcome.nayanet.app must redirect directly to the canonical Intelligent Hub; do not rebuild the Welcome surface.
