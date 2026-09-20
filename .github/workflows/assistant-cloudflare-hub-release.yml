@@ -206,7 +206,7 @@ jobs:
               });
               const page = await context.newPage();
               const response = await page.goto(runtime + '/?wave_a=baseline&release=' + process.env.GITHUB_SHA, {
-                waitUntil: 'networkidle',
+                waitUntil: 'domcontentloaded',
                 timeout: 60000
               });
               if (!response || !response.ok()) {
