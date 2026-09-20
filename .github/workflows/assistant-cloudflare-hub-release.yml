@@ -96,8 +96,17 @@ jobs:
             npm run build
             test -s dist/index.html
             grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
-            grep -q 'CANONICAL-2026-09-17T17-20-00Z-WHAT-IS-A-SMART-NOTE' dist/intelligence/pis-feed.json
-            grep -q 'What Is a Smart Note?' dist/intelligence/pis-feed.json
+            grep -q '"schema_version": "PIS-3.0"' dist/intelligence/pis-feed.json
+            grep -q '"event_count":' dist/intelligence/pis-feed.json
+            test "$(python3 - <<'PY'
+import json
+p='dist/intelligence/pis-feed.json'
+d=json.load(open(p,encoding='utf-8'))
+assert d.get('event_count',0) > 0
+assert d.get('events')
+print('OK')
+PY
+)" = "OK"
             cd ../..
             sha256sum NAYANET/HUB/dist/index.html | tee "$RUNNER_TEMP/source.sha256"
             echo 'REACT_SOURCE_ARTIFACT_READY'
