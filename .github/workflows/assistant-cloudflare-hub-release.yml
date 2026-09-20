@@ -270,7 +270,7 @@ jobs:
                     project: 'NayaNET',
                     status: 'active',
                     actor: 'human',
-                    metadata: { acceptance_boundary: 'owned-source-for-share' }
+                    metadata: { event_id: eventId, acceptance_boundary: 'owned-source-for-share' }
                   }), ownedEventId);
                   const persistedOwnedId = ownedResult?.event?.event_id || ownedResult?.event_id || ownedEventId;
                   if (persistedOwnedId !== ownedEventId) throw new Error('SMART_FEED_OWNED_SOURCE_ID_MISMATCH:' + JSON.stringify(ownedResult));
