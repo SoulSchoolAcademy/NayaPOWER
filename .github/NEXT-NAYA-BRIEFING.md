@@ -308,3 +308,22 @@ Record the durable receipt in the Activity Feed (`SUPERBRAIN/NAYA-ACTIVITY/DAILY
 > **READ THE AUTHORITIES → UNDERSTAND THE MISSION → INSPECT REALITY → DO THE HIGHEST-VALUE SAFE WORK NOW → VERIFY IT IN THE REAL WORLD → RECORD WHAT WAS LEARNED → EQUIP THE NEXT NAYA.**
 
 TAG → YOU'RE IT → EXECUTE.
+
+## 4.3 THE SMART NOTE RULE
+
+**Smart Notes are first-class intelligence, not ordinary documentation.**
+
+Effective 2026-09-19, every new canonical human-facing Smart Note MUST be created at:
+
+`SMART-NOTES/YYYY/MM/DD/SN-YYYYMMDD-<slug>.md`
+
+The Smart Note / Intelligent Block contract is authoritative for content semantics. The canonical Activity Feed records the operational baton. Machine/runtime paths such as `.naya/memory/` may hold events, indexes, receipts, and runtime artifacts, but they are not a second human-facing Smart Note collection.
+
+The required intelligence lifecycle is:
+
+**CREATE → CANONICALIZE → PERSIST → VERIFY → INDEX → LEARN → RETRIEVE → REPLAY/APPLY → VERIFY OUTCOME → COMPOUND**
+
+Before creating a Smart Note, restore the relevant contracts and current Activity Feed. Preserve one stable identity and provenance across every projection. If an existing Smart Note-like artifact is found outside `SMART-NOTES/YYYY/MM/DD/`, classify it before changing it. Never delete valid runtime evidence merely to normalize the repository.
+
+**One Smart Note = one stable identity = one canonical human-facing home.**
+
