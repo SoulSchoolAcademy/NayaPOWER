@@ -43,6 +43,9 @@ type AssistantRuntimeApi = {
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
   createSmartList: (name: string) => Promise<unknown>;
   listSmartLists: () => Promise<unknown[]>;
+  smartFeed: (input?: {stream?: string; limit?: number; before?: string|null}) => Promise<unknown>;
+  smartFeedAction: (input?: {action?: string; stream?: string|null; source_id?: string|null; publication_id?: string|null; interaction?: string|null}) => Promise<unknown>;
+  publishSmartFeed: (sourceEventId: string) => Promise<unknown>;
 };
 
 declare global {
