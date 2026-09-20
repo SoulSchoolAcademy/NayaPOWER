@@ -295,23 +295,29 @@ jobs:
                 });
                 if (!restored.favorite || !restored.save || !restored.like || !restored.love || !restored.rank || !restored.comments || !restored.links) throw new Error('SMART_FEED_ACTIONS_NOT_RESTORED:' + JSON.stringify(restored));
 
-                const retrievalProof = await page.evaluate(async () => {
-                  const actions = await window.NayaAssistantRuntime.retrieve({
-                    query: 'Smart Feed favorite action',
-                    project: 'NayaNET',
-                    limit: 100
-                  });
-                  const matching = (actions || []).filter(x => x?.source === 'nayanet-hub.smart-feed.action');
+                const sourceEventId = await board.getAttribute('data-event-id');
+                if (!sourceEventId) throw new Error('SMART_FEED_SOURCE_EVENT_ID_MISSING');
+                const retrievalProof = await page.evaluate(async (eventId) => {
+                  const actions = await window.NayaAssistantRuntime.retrieve(eventId);
+                  const matching = (actions || []).filter(x => x?.source === 'nayanet-hub.smart-feed.action' && x?.metadata?.source_event_id === eventId);
                   return {
                     count: matching.length,
                     actions: [...new Set(matching.map(x => x?.metadata?.action).filter(Boolean))],
-                    receipts: matching.filter(x => x?.receipt_id || x?.metadata?.receipt_id).length
+                    eventIds: [...new Set(matching.map(x => x?.event_id).filter(Boolean))]
                   };
-                });
+                }, sourceEventId);
                 const requiredActions = ['favorite','save','like','love','rating','comments','links','share'];
                 for (const required of requiredActions) if (!retrievalProof.actions.includes(required)) throw new Error('SMART_FEED_RETRIEVAL_MISSING:' + required + ':' + JSON.stringify(retrievalProof));
-                if (retrievalProof.receipts < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_RECEIPTS_MISSING:' + JSON.stringify(retrievalProof));
-                console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof }));
+                if (retrievalProof.count < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_EVENT_COUNT_TOO_LOW:' + JSON.stringify(retrievalProof));
+
+                await page.evaluate(() => window.NayaAssistantRuntime.signOut());
+                await page.waitForTimeout(250);
+                await board.locator('[aria-label="Favorite intelligence"]').first().click();
+                await page.waitForTimeout(500);
+                const failureStatus = await board.locator('.sfb-status').textContent().catch(() => '');
+                if (!String(failureStatus || '').includes('ACTION BLOCKED') || !String(failureStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(failureStatus || 'NO_STATUS'));
+
+                console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof, failureStatus }));
                 const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
                 await libraryNav.scrollIntoViewIfNeeded();
