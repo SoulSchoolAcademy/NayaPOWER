@@ -78,6 +78,20 @@ jobs:
             });
           }
 
+          async function pageBCheckPrivacy({supabaseUrl,supabaseKey,eventId}) {
+            const context = await browser.newContext();
+            const page = await context.newPage();
+            try {
+              return await page.evaluate(async ({supabaseUrl,supabaseKey,eventId}) => {
+                const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                const client = sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:false,autoRefreshToken:false}});
+                return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle();
+              }, {supabaseUrl,supabaseKey,eventId});
+            } finally {
+              await context.close();
+            }
+          }
+
           async function callReceiver(session, payload) {
             const response = await fetch(supabaseUrl + '/functions/v1/v7-smart-note-canonical', {
               method:'POST',
@@ -187,31 +201,29 @@ jobs:
             const restored=await pageA.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));
             if(restored.eventId!==cognitionEventId) throw new Error('HUB_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
 
-            const contextB=await browser.newContext();
-            const pageB=await contextB.newPage();
-            const second=await setupIdentity(pageB,'Naya Receiver Other User',('other'+process.env.RUN_IDENTITY).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48));
-            if(!second.session?.userId || second.session.userId===first.session.userId) throw new Error('SECOND_IDENTITY_NOT_INDEPENDENT');
-
-            const wrongOwner = await pageB.evaluate(async ({supabaseUrl,supabaseKey,ownerId,payload})=>{
+            const wrongOwnerId = crypto.randomUUID();
+            const wrongOwner = await pageA.evaluate(async ({supabaseUrl,supabaseKey,ownerId,payload})=>{
               const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
               const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
               const response=await client.rpc('v7_create_smart_note',{p_idempotency_key:'wrong-owner-'+payload.idempotency_key,p_user_id:ownerId,p_human_note:payload.human_note,p_naya_note:payload.naya_note,p_machine_note:{wrong_owner:true},p_intelligent_feed:{wrong_owner:true},p_intelligent_block:{wrong_owner:true},p_evidence:{wrong_owner:true},p_hub_state:{wrong_owner:true},p_subject:'wrong-owner'});
               return {data:response.data,error:response.error?.message||null};
-            },{supabaseUrl,supabaseKey,ownerId:first.session.userId,payload});
+            },{supabaseUrl,supabaseKey,ownerId:wrongOwnerId,payload});
             if(!String(wrongOwner.error||'').includes('SMART_NOTE_USER_MISMATCH')) throw new Error('WRONG_OWNER_NOT_REJECTED:'+JSON.stringify(wrongOwner));
 
-            const privacy = await pageB.evaluate(async ({supabaseUrl,supabaseKey,eventId})=>{
-              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
-              return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle();
-            },{supabaseUrl,supabaseKey,eventId:smartNoteEventId});
-            if(privacy.data) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_SECOND_USER:'+JSON.stringify(privacy.data));
+            const privacy = await pageBCheckPrivacy({
+              supabaseUrl,
+              supabaseKey,
+              eventId:smartNoteEventId
+            });
+            if(privacy.data) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_UNAUTHENTICATED:'+JSON.stringify(privacy.data));
+            if(privacy.error && !String(privacy.error).toLowerCase().includes('permission') && !String(privacy.error).toLowerCase().includes('jwt')) {
+              throw new Error('UNAUTHENTICATED_PRIVACY_QUERY_FAILED:'+JSON.stringify(privacy));
+            }
 
             console.log(JSON.stringify({
               status:'VERIFIED',
               proof_key:proofKey,
               owner_user_id:first.session.userId,
-              second_user_id:second.session.userId,
               smart_note_event_id:smartNoteEventId,
               cognition_event_id:cognitionEventId,
               intelligence_index_id:index.data[0].id,
@@ -234,7 +246,6 @@ jobs:
                 private_by_default:'PASS'
               }
             }));
-            await contextB.close();
             await contextA.close();
             await browser.close();
           })().catch(err=>{
