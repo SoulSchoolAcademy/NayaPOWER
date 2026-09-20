@@ -309,3 +309,34 @@ The next milestone is not “build more.”
 It is:
 
 **prove the exact current system, record the proof, turn today's intelligence into durable intelligence, and let that intelligence drive tomorrow's work.**
+
+
+## Fresh closure update — exact-current claim scope reconciled
+
+**Proof completed after the earlier report snapshot.** The repository HEAD advanced beyond the historical `6af29d99` reference, so the release was explicitly rebound to the actual current claim-relevant Hub source at `bd5201e7252e744cea876beaf50f41b7bf541fef`. The authorized Cloudflare release run `35492451804` completed SUCCESS.
+
+Verified in that run:
+- exact current-main Assistant artifact deployed to `sparkling-shape-7ae5`;
+- live artifact identity and exact source parity PASS;
+- desktop and mobile runtime baseline PASS;
+- canonical React Hub marker/navigation/identity/feed/private-workspace PASS;
+- Smart Feed action persistence/retrieval matrix PASS;
+- unauthorized Smart Feed persistence blocked with `AUTH_REQUIRED`.
+
+The same current main source also has Smart Note E2E run `35491124160` with `SMART_NOTE_E2E=PASS`, authoritative persistence/privacy/provenance/CIS/PIS/Intelligent Block/cold-Naya checks PASS. Existing Smart Feed → Smart Ledger integration run `35460477460` is recorded VERIFIED.
+
+### First Distill → Promote result
+
+The first canonical Daily Intelligence input is now:
+`DI-20260919-CURRENT-HEAD-CLOUDFLARE-BROWSER-PROOF-001`.
+
+It was distilled into the reusable lesson **production/runtime proof must be source-scoped, and measurement boundaries are part of correctness**, classified as **PROCEDURE + MACHINE CONTRACT / TEST**, and promoted without changing governance or authority.
+
+Promotion outputs:
+- `.naya/intelligence/2026-09-19-LESSON-PRODUCTION-PARITY-MEASUREMENT-BOUNDARY.md`
+- `MASTER-NOTES/INTELLIGENCE-FEED/2026-09-19-CURRENT-HEAD-CLOUDFLARE-BROWSER-PROOF.md`
+- `.naya/receipts/2026-09-19-DI-001-CURRENT-HEAD-PROMOTION.md`
+
+The new promotion commits are documentation/intelligence-only and do not invalidate the Cloudflare proof because the claim-relevant Hub source scope remains unchanged.
+
+**Current continuation boundary:** use this promoted lesson as the precondition for the next Hub vertical transaction; do not reopen Cloudflare parity unless claim-relevant Hub source changes.
