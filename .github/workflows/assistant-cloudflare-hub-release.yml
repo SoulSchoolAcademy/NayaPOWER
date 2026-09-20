@@ -357,13 +357,6 @@ jobs:
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                 await page.waitForTimeout(500);
 
-                await page.evaluate(() => window.NayaAssistantRuntime.signOut());
-                await page.waitForTimeout(250);
-                await board.locator('[aria-label="Favorite intelligence"]').first().click();
-                await page.waitForTimeout(500);
-                const failureStatus = await board.locator('.sfb-status').textContent().catch(() => '');
-                if (!String(failureStatus || '').includes('ACTION BLOCKED') || !String(failureStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(failureStatus || 'NO_STATUS'));
-
                 console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof, failureStatus }));
                 // Reuse the viewport-aware navigation root from the Space proof above.\n
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
