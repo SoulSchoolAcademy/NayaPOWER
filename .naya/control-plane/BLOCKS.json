@@ -2,10 +2,10 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "FINAL-HUMAN-ACCEPTANCE",
+    "id": "CANONICAL-HUB-FUNCTIONALIZATION",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Complete deep human-facing Hub lifecycle acceptance after the canonical Smart Note transaction and core Hub runtime are production-proven; public Welcome remains deferred.",
+    "intent": "Make the existing canonical NAYANET/HUB/index.html human-facing Hub functional by connecting its existing controls to the verified governed Naya engine without redesigning the Hub or reopening the proven Smart Note/PIS compounding path.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
@@ -15,33 +15,32 @@
       "browser acceptance may proceed because engine/security closure is proven"
     ],
     "acceptance": [
-      "NAYA_SUPERBRAIN_READY=READY on current main",
-      "discriminating P1 improvement and future learning behavior are production-proven",
-      "one consolidated current human-facing acceptance receipt covers A/B/C, authority, Smart Mail, replay, revocation, isolation, Activity/Ledger, learning, and continuation",
-      "authority constraints have positive and negative runtime evidence",
-      "ordinary-user activation is proven",
-      "Windows portability is dispositioned",
-      "current Hub Smart Note human capture path is production-proven through receiver → cognition → PIS → Smart Feed → reload",
-      "deep lifecycle evidence exists for Smart Lists, Smart Share, Smart Ledger, Smart Mail, Reports, Search, and Settings according to each surface's actual contract"
+      "NAYANET/HUB/index.html is the sole current Hub product surface",
+      "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
+      "the first actual failing boundary is repaired surgically and re-proven",
+      "Smart Mail follows after Smart Share, then Connections, Smart Spaces, and Smart Lists",
+      "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
     ],
     "evidence": [
-      ".github/workflows/verify-proof7-compounding-loop.yml",
-      "scripts/verify-proof7-compounding-loop.mjs",
-      "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
-      "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
+      ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
+      ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+      ".naya/receipts/2026-09-20-HUMAN-END-TO-END-COMPOUNDING-ACCEPTANCE.md",
+      ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
     ],
-    "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Wait for canonical release run 35534913866 on current main to complete; then repair only its first failing acceptance boundary and rerun the same gate. Do not divert into Welcome until the authenticated human-facing acceptance block is green.",
+    "target_state": "CANONICAL_HUB_FUNCTIONAL_AND_BROWSER_PROVEN",
+    "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof.",
     "next_actions": [
-      "Wait for canonical release run 35534913866 on current main to complete; then repair only its first failing acceptance boundary and rerun the same gate. Do not divert into Welcome until the authenticated human-facing acceptance block is green."
+      "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof."
     ],
     "scope": [
-      "authenticated human-facing production acceptance",
-      "A↔B relationship",
-      "Smart Mail delivery and receiver verification",
-      "Smart List and Connections visibility",
-      "replay, revocation, and C isolation",
-      "fresh-Naya continuation"
+      "canonical NAYANET/HUB/index.html",
+      "Smart Share",
+      "Smart Mail",
+      "Connections",
+      "Smart Spaces",
+      "Smart Lists",
+      "governed action execution",
+      "browser/runtime proof"
     ],
     "next_action_count": 1
   },
