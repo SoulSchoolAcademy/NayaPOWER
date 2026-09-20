@@ -1,72 +1,3 @@
-# CANONICAL RUNTIME RELEASE — deploy the exact current September 17 HTML Hub shell.
-# Canonical source: NAYANET/HUB/index.html, byte-identical to the protected September 17 visual source; runtime capabilities are layered through the approved external runtime assets.
-# Assistant lane only. GitHub 509 is a separate fail-closed lane.
-# Closure verification: current main source must be redeployed before readiness can certify source-scoped runtime parity.
-# Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
-# Current-head parity reconciliation trigger: redeploy the exact protected main source before readiness re-evaluation.
-# Canonical Hub acceptance repair: release the protected HTML-first Hub before Wave A browser proof.
-# Current-main reconciliation: redeploy after the post-release Hub runtime-boundary changes.
-# Identity.html is a canonical release input; changes must trigger this same canonical Hub release lane.
-name: NAYA — Canonical Assistant Cloudflare Hub Release
-
-on:
-  push:
-    branches: [main]
-    paths:
-      - 'assistant-runtime.js'
-      - 'smart-feed.js'
-      - 'smart-tabs.js'
-      - 'identity.html'
-      - 'NAYANET/HUB/**'
-      - '.github/workflows/assistant-cloudflare-hub-release.yml'
-  workflow_dispatch:
-    inputs:
-      commit_sha:
-        required: false
-        type: string
-      approval:
-        required: false
-        type: string
-      reason:
-        required: false
-        type: string
-      release_surface:
-        required: false
-        type: choice
-        options:
-          - canonical-hub
-        default: canonical-hub
-
-concurrency:
-  group: assistant-cloudflare-production-${{ github.sha }}
-  cancel-in-progress: false
-
-permissions:
-  contents: read
-
-env:
-  CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
-  CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
-  NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
-  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
-  SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    environment: assistant-cloudflare-production
-    env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-
-    steps:
-      - name: Bind manual dispatch to exact current main
-        if: ${{ github.event_name == 'workflow_dispatch' }}
-        shell: bash
-        env:
-          REQUESTED_COMMIT_SHA: ${{ inputs.commit_sha }}
-          APPROVAL: ${{ inputs.approval }}
-          REASON: ${{ inputs.reason }}
-          RELEASE_SURFACE: ${{ inputs.release_surface }}
         run: |
           set -euo pipefail
           echo "DEBUG_GITHUB_SHA=${GITHUB_SHA}"
@@ -113,6 +44,36 @@ jobs:
           grep -q 'id="enter"' dist/identity.html
           grep -q 'NayaNETNameFirstAuth' dist/identity.html
           grep -q 'signInAnonymously' dist/NAYANET/name-first-auth-adapter.js
+          python3 - <<'PY'
+          import re, html
+          from pathlib import Path
+          s=Path('dist/index.html').read_text(encoding='utf-8')
+          m=re.search(r'<aside class="rail left">(.*?)</aside>',s,re.S)
+          if not m: raise SystemExit('CANONICAL_SIDEBAR_MISSING')
+          labels=[]
+          for kind,label in re.findall(r'<button[^>]*data-nc="([^"]+)"[^>]*>(.*?)</button>',m.group(1),re.S):
+              clean=html.unescape(re.sub(r'<[^>]+>',' ',label))
+              clean=' '.join(clean.split())
+              labels.append((kind,clean))
+          expected=[
+            ('feed','Your Intelligence Today'),
+            ('reports','Your Reports'),
+            ('intelligence','Intelligent Library'),
+            ('share','Smart Share'),
+            ('lists','Smart Lists'),
+            ('spaces','Smart Spaces'),
+            ('connections','Your Connections'),
+            ('mail','Smart Mail'),
+            ('ledger','Smart Ledger'),
+            ('settings','Settings'),
+          ]
+          if labels != expected:
+              raise SystemExit('CANONICAL_SIDEBAR_CONTRACT_MISMATCH:'+repr(labels))
+          forbidden=('Smart Notes','Collective','Evidence','Dream','Naya Play')
+          if any(any(x in label for x in forbidden) for _,label in labels):
+              raise SystemExit('FORBIDDEN_SIDEBAR_DESTINATION_PRESENT:'+repr(labels))
+          print('CANONICAL_SIDEBAR_CONTRACT_VERIFIED',labels)
+          PY
           sha256sum dist/index.html | tee "$RUNNER_TEMP/source.sha256"
           sha256sum dist/assistant-runtime.js | tee "$RUNNER_TEMP/runtime-source.sha256"
           sha256sum dist/smart-feed.js | tee "$RUNNER_TEMP/smart-feed-source.sha256"
@@ -123,129 +84,3 @@ jobs:
           echo 'ASSISTANT_SOURCE_ARTIFACT_READY'
       - name: Bind exact authorized Cloudflare target
         shell: bash
-        env:
-          RELEASE_SURFACE: canonical-hub
-        run: |
-          set -euo pipefail
-          test -n "${CLOUDFLARE_API_TOKEN:-}"
-          printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","html_handling":"none","not_found_handling":"single-page-application"}}' > "$RUNNER_TEMP/wrangler.jsonc"
-      - name: Deploy exact Assistant-lane artifact
-        shell: bash
-        run: |
-          set -euo pipefail
-          npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/wrangler.jsonc"
-
-      - name: Verify live artifact identity and exact source parity
-        shell: bash
-        env:
-          RELEASE_SURFACE: canonical-hub
-        run: |
-          set -euo pipefail
-          source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
-          verified=0
-          # Cloudflare asset propagation can transiently return 3xx/404 immediately after deploy.
-          # Retry the same exact source-scope check; fail closed after the bounded window.
-          set +e
-          for attempt in $(seq 1 30); do
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live.html"
-            sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
-            live_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/live.sha256")
-            runtime_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/runtime-source.sha256")
-            smart_feed_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-feed-source.sha256")
-            smart_tabs_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/smart-tabs-source.sha256")
-            identity_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/identity-source.sha256")
-            adapter_source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/adapter-source.sha256")
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-runtime.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-feed.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-feed.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/smart-tabs.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-smart-tabs.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/hub-completeness.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-hub-completeness.js"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/identity.html?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-identity.html"
-            curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/NAYANET/name-first-auth-adapter.js?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live-name-first-adapter.js"
-            runtime_live_hash=$(sha256sum "$RUNNER_TEMP/live-runtime.js" | cut -d' ' -f1)
-            smart_feed_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-feed.js" | cut -d' ' -f1)
-            smart_tabs_live_hash=$(sha256sum "$RUNNER_TEMP/live-smart-tabs.js" | cut -d' ' -f1)
-            hub_completeness_live_hash=$(sha256sum "$RUNNER_TEMP/live-hub-completeness.js" | cut -d' ' -f1)
-            identity_live_hash=$(sha256sum "$RUNNER_TEMP/live-identity.html" | cut -d' ' -f1)
-            adapter_live_hash=$(sha256sum "$RUNNER_TEMP/live-name-first-adapter.js" | cut -d' ' -f1)
-            if [ "$source_hash" = "$live_hash" ] && [ "$runtime_source_hash" = "$runtime_live_hash" ] && [ "$smart_feed_source_hash" = "$smart_feed_live_hash" ] && [ "$smart_tabs_source_hash" = "$smart_tabs_live_hash" ] && [ "$(cut -d' ' -f1 "$RUNNER_TEMP/hub-completeness-source.sha256")" = "$hub_completeness_live_hash" ] && [ "$identity_source_hash" = "$identity_live_hash" ] && [ "$adapter_source_hash" = "$adapter_live_hash" ] && grep -q 'nayanet-direct-nine' "$RUNNER_TEMP/live.html" && grep -q 'NayaAssistantRuntime' "$RUNNER_TEMP/live-runtime.js" && grep -q 'NAYANET · LIVING INTELLIGENCE PROJECTION' "$RUNNER_TEMP/live-smart-feed.js" && grep -q 'SMART TABS · YOUR NAVIGATION' "$RUNNER_TEMP/live-smart-tabs.js" && grep -q 'wireSidebar' "$RUNNER_TEMP/live-hub-completeness.js" && grep -q 'NayaNET — Intelligent Hub' "$RUNNER_TEMP/live.html" && grep -q 'id="name"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="alias"' "$RUNNER_TEMP/live-identity.html" && grep -q 'id="enter"' "$RUNNER_TEMP/live-identity.html" && grep -q 'NayaNETNameFirstAuth' "$RUNNER_TEMP/live-identity.html" && grep -q 'signInAnonymously' "$RUNNER_TEMP/live-name-first-adapter.js"; then
-              verified=1
-              break
-            fi
-            echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash"
-            sleep 2
-          done
-          set -e
-          test "$verified" = "1"
-          echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
-      - name: Verify Assistant runtime baseline — desktop and mobile
-        shell: bash
-        env:
-          RELEASE_SURFACE: canonical-hub
-        run: |
-          set -euo pipefail
-          npm install --no-save --no-package-lock playwright@1.55.0
-          cat > verify-assistant-runtime.mjs <<'EOF'
-          import { chromium } from 'playwright';
-
-          const runtime = process.env.NAYA_RUNTIME_URL;
-          if (!runtime) throw new Error('NAYA_RUNTIME_URL_MISSING');
-
-          const browser = await chromium.launch({
-            headless: true,
-            executablePath: '/usr/bin/google-chrome',
-            args: ['--no-sandbox','--disable-dev-shm-usage']
-          });
-
-          try {
-            for (const viewport of [
-              { width: 1440, height: 1000, label: 'desktop' },
-              { width: 390, height: 844, label: 'mobile' }
-            ]) {
-              const context = await browser.newContext({
-                serviceWorkers: 'block',
-                viewport: { width: viewport.width, height: viewport.height }
-              });
-              const page = await context.newPage();
-              const response = await page.goto(runtime + '/?wave_a=baseline&release=' + process.env.GITHUB_SHA, {
-                waitUntil: 'domcontentloaded',
-                timeout: 60000
-              });
-              if (!response || !response.ok()) {
-                throw new Error(`${viewport.label}: live Hub HTTP response unavailable: ${response?.status()}`);
-              }
-              await page.waitForTimeout(1500);
-
-              const result = await page.evaluate(() => ({
-                title: document.title,
-                directNine: document.querySelector('meta[name="nayanet-direct-nine"]')?.content || null,
-                welcome: document.body.innerText.includes('welcome.nayanet.app'),
-              }));
-
-              console.log(`ASSISTANT_RUNTIME_BASELINE_PROBE ${viewport.label}`, JSON.stringify(result));
-
-              // Baseline release gate is intentionally limited to the live canonical Hub identity.
-              // Feature completeness belongs to the post-deploy human-surface acceptance lane.
-              if (result.title !== 'NayaNET — Intelligent Hub V7 · 509 AAA')
-                throw new Error(`${viewport.label}: canonical Hub title mismatch: ${result.title}`);
-              if (result.directNine !== 'verified-static-top-nine')
-                throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
-              if (result.welcome)
-                throw new Error(`${viewport.label}: Welcome front door selected as Hub`);
-
-              console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
-              await context.close();
-            }
-          } finally {
-            await browser.close();
-          }
-          EOF
-          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
-          rm -f verify-assistant-runtime.mjs
-      - name: Final Assistant-lane runtime proof
-        shell: bash
-        run: |
-          echo "ASSISTANT_LANE_RUNTIME_VERIFIED=$NAYA_RUNTIME_URL"
-          echo "ASSISTANT_LANE_WORKER=$CLOUDFLARE_CANONICAL_WORKER"
-          echo "ASSISTANT_LANE_ACCOUNT=$CLOUDFLARE_CANONICAL_ACCOUNT_ID"
-          echo "SOURCE=NAYANET/HUB/index.html"
-          echo "LANE=ASSISTANT_CLOUDFLARE"
