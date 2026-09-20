@@ -218,9 +218,8 @@ jobs:
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
               await context.close();
             }
-          }
           } finally {
-          await browser.close();
+            await browser.close();
           }
           EOF
           NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
