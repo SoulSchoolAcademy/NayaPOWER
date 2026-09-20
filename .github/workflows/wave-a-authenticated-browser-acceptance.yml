@@ -2,7 +2,7 @@ name: Wave A authenticated browser handoff acceptance
 
 on:
   push:
-    branches: [main]
+    branches: [main, wave-a-hydration-v4]
     paths:
       - '.github/workflows/wave-a-authenticated-browser-acceptance.yml'
   workflow_dispatch:
