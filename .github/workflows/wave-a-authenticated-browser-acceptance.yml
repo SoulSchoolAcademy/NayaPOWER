@@ -90,6 +90,15 @@ jobs:
           const threadsA=await ap.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());
           if(!threadsA.some(x=>x.id===mail.thread_id))throw Error('SMART_MAIL_RENDER_FAILED');
 
+          // Smart Feed hydration diagnostic: capture one canonical event, reload, trace index response, then stop at first identity divergence.
+          ap.on('request',r=>{if(r.url().includes('/rest/v1/nayanet_intelligence_index'))console.log('SMART_FEED_HYDRATION_REQUEST',JSON.stringify({url:r.url(),authorization_present:!!r.headers()['authorization'],apikey_present:!!r.headers()['apikey']}));});
+          ap.on('response',async r=>{if(r.url().includes('/rest/v1/nayanet_intelligence_index'))console.log('SMART_FEED_HYDRATION_RESPONSE',JSON.stringify({status:r.status(),body:(await r.text().catch(()=>'' )).slice(0,12000)}));});
+          console.log('SMART_FEED_HYDRATION_AUTH',JSON.stringify(await ap.evaluate(()=>{const raw=localStorage.getItem('nayanet.supabase.auth');let s=null;try{s=raw?JSON.parse(raw):null}catch{}return {user_id:s?.user?.id||s?.user?.sub||null,access_token_present:!!s?.access_token};})));
+          const hydrationTitle='Wave A hydration trace '+project;const hydrationCapture=await ap.evaluate(async title=>window.NayaAssistantRuntime.captureSmartNote({title,content:'Authenticated runtime intelligence created solely for the Smart Feed hydration boundary trace.'}),hydrationTitle);if(!hydrationCapture)throw Error('SMART_FEED_HYDRATION_CAPTURE_FAILED');const hydrationEventId=String(hydrationCapture?.event_id||hydrationCapture?.event?.event_id||'').trim();if(!hydrationEventId)throw Error('SMART_FEED_HYDRATION_EVENT_ID_MISSING');console.log('SMART_FEED_HYDRATION_CAPTURE',JSON.stringify({event_id:hydrationEventId}));
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(1200);
+          const hydrationDom=await ap.evaluate(eventId=>({event_id:eventId,board_count:document.querySelectorAll('.smart-feed-board').length,matching_cards:Array.from(document.querySelectorAll('.smart-feed-board')).filter(x=>x.getAttribute('data-event-id')===eventId).map(x=>({event_id:x.getAttribute('data-event-id'),title:x.getAttribute('data-event-title')}))}),hydrationEventId);console.log('SMART_FEED_HYDRATION_DOM',JSON.stringify(hydrationDom));
+          if(hydrationDom.matching_cards.length!==1)throw Error('SMART_FEED_HYDRATION_SOURCE_CARD_MISSING:'+JSON.stringify(hydrationDom));
+
           // B: independent authenticated browser context using B's real Supabase session.
           const Bctx=await contextFor(B);const bp=Bctx.p;
           const bAuth=await bp.evaluate(()=>window.NayaAssistantRuntime.init());if(bAuth.user_id!==B.user.id)throw Error('B_AUTH_HANDOFF_FAILED');
