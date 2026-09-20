@@ -20,12 +20,16 @@ function css(){if(document.getElementById('naya-completeness-style'))return;cons
 .nc-input,.nc-textarea{width:100%;border:2px solid #ffffff20;border-radius:11px;background:#07070a;color:#fff;padding:12px;margin:5px 0}.nc-textarea{min-height:130px}
 .nc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.nc-card{padding:13px;border:1px solid #ffffff15;border-radius:12px;background:#09090d}.nc-card b{font-size:8px}.nc-card span{display:block;color:#9f98a7;font-size:8px;margin-top:5px;line-height:1.5}@media(max-width:700px){#naya-completeness{margin:0 14px 14px}.nc-grid{grid-template-columns:1fr}}
 `;document.head.append(s)}
-function modal(title,desc,body){const m=document.createElement('div');m.className='nc-modal';m.innerHTML='<div class="nc-dialog"><h2>'+esc(title)+'</h2><p>'+esc(desc)+'</p><div class="nc-body">'+body+'</div><div class="nc-actions"><button data-nc-close>DONE</button></div></div>';m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-nc-close]'))m.remove()});document.body.append(m);return m}
+function modal(title,desc,body){document.querySelectorAll('.nc-modal').forEach(x=>x.remove());const m=document.createElement('div');m.className='nc-modal';m.innerHTML='<div class="nc-dialog"><h2>'+esc(title)+'</h2><p>'+esc(desc)+'</p><div class="nc-body">'+body+'</div><div class="nc-actions"><button data-nc-close>DONE</button></div></div>';m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-nc-close]'))m.remove()});document.body.append(m);return m}
 async function open(kind, initialStream){
  const r=R(); if(!r)return;
- if(kind==='feed')return feed(r, initialStream);
+ const titles={feed:'Smart Feed',note:'Create Smart Note',reports:'Reports',intelligence:'Intelligence Library',share:'Smart Share',lists:'Smart Lists',spaces:'Smart Spaces',connections:'Connections',mail:'Smart Mail',ledger:'Smart Ledger',evidence:'Smart Ledger',dream:'Dream',play:'Naya Play',settings:'Settings'};
+ const snap=r.snapshot?.();
+ if(!snap?.authenticated && kind!=='settings'){location.assign('/identity.html');return}
+ modal(titles[kind]||kind.toUpperCase(),'Canonical runtime surface.','<div class="nc-state">LOADING CANONICAL RUNTIME SURFACE…</div>');
  try{
-  const snap=await r.init(); if(!snap.authenticated && !['settings'].includes(kind)){location.assign('/identity.html');return}
+  await r.init();
+  if(kind==='feed')return feed(r, initialStream);
   if(kind==='note')return note(r);
   if(kind==='reports')return reports(r);
   if(kind==='share')return share(r);
@@ -34,10 +38,12 @@ async function open(kind, initialStream){
   if(kind==='connections')return connections(r);
   if(kind==='mail')return mail(r);
   if(kind==='ledger')return ledger(r);
+  if(kind==='evidence')return ledger(r);
   if(kind==='dream')return dream(r);
   if(kind==='play')return play(r);
+  if(kind==='intelligence')return library(r);
   if(kind==='settings')return settings(r);
- }catch(e){modal('BLOCKED / FAILED','The Hub stopped at the first real runtime error.', '<div class="nc-state">'+esc(e?.message||e)+'</div>')}
+ }catch(e){modal(titles[kind]||'BLOCKED / FAILED','The Hub stopped at the first real runtime error.', '<div class="nc-state">BLOCKED / FAILED · '+esc(e?.message||e)+'</div>')}
 }
 async function feed(r, initialStream){
  const streams=['personal','collective','activity'];
