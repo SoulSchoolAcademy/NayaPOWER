@@ -261,25 +261,21 @@ jobs:
                   return Boolean(userId && rows?.some(row => row?.user_id === userId));
                 }, sourceEventIdBeforeOwnershipCheck) : false;
                 if (!sourceOwned) {
-                  const ownedEventId = 'ci-smart-feed-owned-' + process.env.GITHUB_SHA.slice(0, 12) + '-' + viewport.label;
-                  const ownedResult = await page.evaluate(async (eventId) => window.NayaAssistantRuntime.record({
-                    event_id: eventId,
-                    title: 'Canonical Smart Feed owned-source proof',
-                    content: 'Owned source created for the canonical Smart Feed action and share acceptance proof.',
-                    source: 'nayanet-hub.smart-feed.acceptance',
-                    project: 'NayaNET',
-                    status: 'active',
-                    actor: 'human',
-                    metadata: { event_id: eventId, acceptance_boundary: 'owned-source-for-share' }
-                  }), ownedEventId);
-                  const persistedOwnedId = ownedResult?.event?.event_id || ownedResult?.event_id || ownedEventId;
-                  if (persistedOwnedId !== ownedEventId) throw new Error('SMART_FEED_OWNED_SOURCE_ID_MISMATCH:' + JSON.stringify(ownedResult));
-                  await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                  const noteTitle = 'Canonical Smart Feed owned-source proof ' + process.env.GITHUB_SHA.slice(0, 12) + '-' + viewport.label;
+                  const captureResult = await page.evaluate(async ({ title }) => window.NayaAssistantRuntime.captureSmartNote({
+                    title,
+                    content: 'Owned Smart Note created for the canonical Smart Feed action and share acceptance proof.',
+                    source: 'nayanet-hub.smart-feed.acceptance'
+                  }), { title: noteTitle });
+                  const capturedId = captureResult?.event?.event_id || captureResult?.event_id || captureResult?.transaction?.evidence?.event_id || '';
+                  if (!capturedId) throw new Error('SMART_FEED_OWNED_SMART_NOTE_EVENT_ID_MISSING:' + JSON.stringify(captureResult));
+                  const ownedBoardEventId = 'smart_note:' + capturedId;
+                  await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedBoardEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                   await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
-                  await page.locator('.searchWrap input').fill('Canonical Smart Feed owned-source proof');
-                  await page.waitForFunction((expected) => Array.from(document.querySelectorAll('.smart-feed-board')).some(node => node.getAttribute('data-event-id') === expected), ownedEventId, { timeout: 15000 });
-                  board = page.locator('[data-event-id="' + ownedEventId + '"]').first();
-                  if (!(await board.count())) throw new Error('SMART_FEED_OWNED_SOURCE_NOT_RENDERED:' + ownedEventId);
+                  await page.locator('.searchWrap input').fill(noteTitle);
+                  await page.waitForFunction((expected) => Array.from(document.querySelectorAll('.smart-feed-board')).some(node => node.getAttribute('data-event-id') === expected), ownedBoardEventId, { timeout: 15000 });
+                  board = page.locator('[data-event-id="' + ownedBoardEventId + '"]').first();
+                  if (!(await board.count())) throw new Error('SMART_FEED_OWNED_SMART_NOTE_NOT_RENDERED:' + ownedBoardEventId);
                 }
                 const statusFor = async (label) => {
                   const status = await board.locator('.sfb-status').textContent().catch(() => '');
