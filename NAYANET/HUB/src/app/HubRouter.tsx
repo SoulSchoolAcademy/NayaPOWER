@@ -8,6 +8,7 @@ import type { IntelligentEvent } from '../intelligence/types';
 import { routes } from './routes';
 import { useIdentity } from '../identity/session';
 import { DreamSurface } from './DreamSurface';
+import { ReportsSurface } from './ReportsSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
@@ -94,7 +95,7 @@ export function HubRouter({ path }: { path: string }) {
     case routes.library:
       return <FeedView title="Intelligence Library" subtitle="Find the intelligence that exists, understand it, and reuse it without losing provenance." library />;
     case routes.reports:
-      return <FeatureSurface kind="reports" />;
+      return <ReportsSurface />;
     case routes.lists:
       return <FeatureSurface kind="lists" />;
     case routes.share:
