@@ -42,5 +42,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wave-a-browser-acceptance
-          path: $RUNNER_TEMP/wave-a-browser-acceptance.json
+          path: $RUNNER_TEMP/wave-a-canonical-hub-acceptance.json
           if-no-files-found: error
