@@ -2,6 +2,9 @@ name: Wave A authenticated browser handoff acceptance
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - wave-a-authenticated-browser-handoff
 
 permissions:
   contents: read
