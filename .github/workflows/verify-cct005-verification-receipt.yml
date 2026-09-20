@@ -12,6 +12,8 @@ on:
       - '.github/workflows/verify-cct005-verification-receipt.yml'
   workflow_dispatch:
 
+# Naya checkpoint: execute current CCT-005 verification receipt proof.
+
 permissions:
   contents: read
 
