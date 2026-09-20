@@ -75,6 +75,7 @@ jobs:
 
           const context=await browser.newContext({storageState,viewport:{width:1440,height:1000}});
           const page=await context.newPage();
+          await page.route('**/hub-completeness.js?*',async route=>{const u=new URL(route.request().url());u.searchParams.set('wavea_cache',process.env.GITHUB_RUN_ID);await route.continue({url:u.toString(),headers:{...route.request().headers(),'cache-control':'no-cache'}})});
           const diagnostics=[];
           page.on('pageerror',e=>diagnostics.push('pageerror:'+String(e?.stack||e)));
           page.on('console',m=>{if(m.type()==='error')diagnostics.push('console:'+m.text())});
