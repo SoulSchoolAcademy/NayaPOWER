@@ -49,7 +49,7 @@ def test_real_canonical_event_to_learning():
     assert learning["evidence_state"] == "VERIFIED"
     assert learning["provenance"]["canonical_event_id"] == EVENT_ID
     assert learning["source"]
-    assert EVENT_ID in learning["source"][0]
+    assert "conversation-and-repository-execution" in learning["source"][0]
     assert learning["learning_event_id"].startswith("LRN-")
 
 
