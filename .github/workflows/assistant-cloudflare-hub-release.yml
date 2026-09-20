@@ -263,6 +263,16 @@ jobs:
                 await page.waitForTimeout(500);
                 if (!page.url().includes('/mail')) throw new Error('SMART_MAIL_ROUTE_FAILED');
                 if (!(await page.locator('h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
+                const semanticTabs = ['Your Report','Smart Lists','Smart Share','Smart Spaces','Your Connections','Smart Ledger'];
+                for (const tabName of semanticTabs) {
+                  const tabNav = navRoot.locator('button').filter({hasText:tabName});
+                  await tabNav.scrollIntoViewIfNeeded();
+                  await tabNav.click();
+                  await page.waitForTimeout(350);
+                  if (!(await page.locator('.feature-surface').count())) throw new Error('FEATURE_SURFACE_MISSING:' + tabName);
+                  if (await page.locator('.feature-table').count()) throw new Error('LEGACY_GENERIC_TABLE_RENDERED:' + tabName);
+                  if (!(await page.locator('h1').filter({hasText:tabName.replace('Your Report','Your Reports')}).count())) throw new Error('FEATURE_HEADING_MISSING:' + tabName);
+                }
                 console.log('CANONICAL_REACT_HUB_VERIFIED', viewport.label, JSON.stringify(result));
                 await context.close();
               }
