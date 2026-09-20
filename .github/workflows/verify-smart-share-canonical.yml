@@ -63,23 +63,30 @@ jobs:
             const context=await browser.newContext({storageState:storageState(session),viewport:{width:1440,height:1000}});
             const page=await context.newPage();
             if(diagnoseShare) await page.addInitScript(()=>{
-              window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[],publishedEvents:[],failedEvents:[],stateMutations:[]};
+              window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[]};
               const nativeDispatch=EventTarget.prototype.dispatchEvent;
               window.dispatchEvent=function(event){
-                try{
-                  const type=String(event?.type||'');
-                  if(type==='nayanet:smart-share-published'||type==='nayanet:smart-share-failed'){
-                    const detail=event?.detail||{};
-                    window.__smartShareDiag.dispatches.push({type,publicationId:String(detail?.publication?.id||''),eventId:String(detail?.event_id||''),status:String(detail?.publication?.status||''),at:Date.now()});
-                  }
-                }catch{}
+                var type=event&&event.type||'';
+                if(type==='nayanet:smart-share-published'||type==='nayanet:smart-share-failed'){
+                  var detail=event&&event.detail||{};
+                  window.__smartShareDiag.dispatches.push({
+                    type:type,
+                    publicationId:String(detail&&detail.publication&&detail.publication.id||''),
+                    eventId:String(detail&&detail.event_id||''),
+                    status:String(detail&&detail.publication&&detail.publication.status||''),
+                    at:Date.now()
+                  });
+                }
                 return nativeDispatch.call(this,event);
               };
               const nativeAdd=EventTarget.prototype.addEventListener;
               EventTarget.prototype.addEventListener=function(type,listener,options){
-                if(type==='click'&&listener&&this?.matches?.('[data-c4-kind="share-intel"]')){
+                if(type==='click'&&listener&&this&&this.matches&&this.matches('[data-c4-kind="share-intel"]')){
                   window.__smartShareDiag.registrations++;
-                  const wrapped=function(...args){window.__smartShareDiag.handlerInvoked++;return listener.apply(this,args)};
+                  const wrapped=function(){
+                    window.__smartShareDiag.handlerInvoked++;
+                    return listener.apply(this,arguments);
+                  };
                   return nativeAdd.call(this,type,wrapped,options);
                 }
                 return nativeAdd.call(this,type,listener,options);
