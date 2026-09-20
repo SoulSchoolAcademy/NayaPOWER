@@ -21,6 +21,14 @@ from canonical_event_store import create_or_replay
 from cct_note_event_promotion import promote_note_event
 from memory_runtime import retrieve
 import retrieve_learning as rl
+from universal_execution_gate import (
+    Authority,
+    DecisionObject,
+    Epistemic,
+    Risk,
+    VerificationPlan,
+    UniversalExecutionGate,
+)
 
 EVENT_ID = "SE-20260825-200000-smart-brain-hardening-execution"
 NOTE_ID = "SN-20260825-200000-smart-brain-hardening-naya"
@@ -101,6 +109,120 @@ def test_real_note_retrieves_cold_by_runtime():
     retrieved = next(item[1] for item in results if item[1]["id"] == NOTE_ID)
     assert retrieved["event_id"] == EVENT_ID
     assert note["what_we_learned"][0] == "A constitution becomes operational only when code and CI enforce it."
+
+
+def test_cold_retrieval_binds_successor_decision_without_granting_authority():
+    event = load_real_event()
+    learning = ci.build_candidate(event)
+    assert learning is not None
+    with tempfile.TemporaryDirectory() as tmp:
+        learning_dir = Path(tmp) / "learning"
+        learning_dir.mkdir(parents=True)
+        learning_dir.joinpath(f"{learning['learning_event_id']}.json").write_text(
+            json.dumps(learning, indent=2) + "\n", encoding="utf-8"
+        )
+        retrieved = rl.retrieve_learning_event(
+            learning["learning_event_id"],
+            learning_dir=learning_dir,
+            note_dir=ROOT / ".naya" / "memory" / "notes",
+        )
+        receipt = retrieved["receipt"]
+        authority = Authority(
+            authority_id="HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+            principal_id="SoulSchoolAcademy",
+            purpose="governed maintenance and verification of NayaPOWER",
+            scope="repo:SoulSchoolAcademy/NayaPOWER",
+            granted_actions=frozenset({"repo_write"}),
+        )
+        decision = DecisionObject(
+            decision_id="DEC-COMPOUNDING-SUCCESSOR-001",
+            mission="apply verified learning to the next governed compounding proof",
+            actor_id=authority.principal_id,
+            action="repo_write",
+            purpose=authority.purpose,
+            scope=authority.scope,
+            current_truth="cold retrieval returned the canonical Smart Note and lesson",
+            gap="the successor proof must apply that lesson under existing governance",
+            evidence=(
+                f"learning:{learning['learning_event_id']}",
+                f"retrieval:{receipt['retrieval_receipt_id']}",
+            ),
+            epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}),
+            consequence="bounded repository verification change",
+            reversible=True,
+            risk=Risk(uncertainty=1, consequence=2, irreversibility=1),
+            alternatives=("do_not_execute",),
+            expected_value="preserve causal learning lineage while executing only within existing authority",
+            required_permission="repo_write",
+            verification=VerificationPlan(
+                "GitHub Actions observes the resulting proof run",
+                "the proof run completes with all causal bindings intact",
+                ("stop on any missing lineage or governance mismatch",),
+            ),
+            necessary_power=frozenset({"repo_write"}),
+            requested_power=frozenset({"repo_write"}),
+            learning_event_id=receipt["learning_event_id"],
+            retrieval_receipt_id=receipt["retrieval_receipt_id"],
+            retrieval_source_event_id=receipt["source_event_id"],
+            retrieval_smart_note_id=receipt["smart_note_id"],
+        )
+        assert decision.learning_lineage_complete() is True
+        assert decision.learning_event_id == learning["learning_event_id"]
+        assert decision.retrieval_receipt_id == receipt["retrieval_receipt_id"]
+        assert decision.retrieval_source_event_id == EVENT_ID
+        assert decision.retrieval_smart_note_id == NOTE_ID
+
+        action = {
+            "action_id": "ACT-COMPOUNDING-SUCCESSOR-001",
+            "action_type": "repository_write",
+            "target": "tools/test_canonical_compound_bridge.py",
+            "purpose": authority.purpose,
+            "scope": authority.scope,
+            "actor_id": authority.principal_id,
+            "permission": decision.action,
+            "decision_id": decision.decision_id,
+            "authority_id": authority.authority_id,
+        }
+        gate = UniversalExecutionGate.from_canonical()
+        authorized = gate.authorize(
+            authority=authority,
+            decision=decision,
+            action=action,
+        )
+        assert authorized.allowed is True
+        assert authorized.authorization is not None
+        assert authorized.authorization.decision_id == decision.decision_id
+        assert authorized.authorization.authority_id == authority.authority_id
+        # Learning lineage is provenance on the DecisionObject, not authority.
+        assert not hasattr(authorized.authorization, "learning_event_id")
+        assert not hasattr(authorized.authorization, "retrieval_receipt_id")
+
+        missing_receipt = DecisionObject(
+            decision_id=decision.decision_id,
+            mission=decision.mission,
+            actor_id=decision.actor_id,
+            action=decision.action,
+            purpose=decision.purpose,
+            scope=decision.scope,
+            current_truth=decision.current_truth,
+            gap=decision.gap,
+            evidence=decision.evidence,
+            epistemic=decision.epistemic,
+            consequence=decision.consequence,
+            reversible=decision.reversible,
+            risk=decision.risk,
+            alternatives=decision.alternatives,
+            expected_value=decision.expected_value,
+            required_permission=decision.required_permission,
+            verification=decision.verification,
+            necessary_power=decision.necessary_power,
+            requested_power=decision.requested_power,
+            learning_event_id=decision.learning_event_id,
+            retrieval_receipt_id=None,
+            retrieval_source_event_id=decision.retrieval_source_event_id,
+            retrieval_smart_note_id=decision.retrieval_smart_note_id,
+        )
+        assert missing_receipt.learning_lineage_complete() is False
 
 
 def test_daily_lineage_and_evidence_state():
