@@ -259,6 +259,7 @@ jobs:
                 private_by_default:'PASS'
               }
             };
+            fs.writeFileSync('receiver-proof-machine.json', JSON.stringify(proof) + '\n', 'utf8');
             console.log(JSON.stringify(proof));
             await contextA.close();
             await browser.close();
@@ -275,10 +276,7 @@ jobs:
           import json
           from pathlib import Path
           p = Path("receiver-proof-machine.json")
-          proof_lines = [line.strip() for line in p.read_text(encoding="utf-8").splitlines() if '"status":"VERIFIED"' in line]
-          if not proof_lines:
-              raise AssertionError({"receiver_proof_output": p.read_text(encoding="utf-8")[-4000:]})
-          payload = json.loads(proof_lines[-1])
+          payload = json.loads(p.read_text(encoding="utf-8"))
           assert payload["status"] == "VERIFIED", payload
           required = {
               "receive_validate_persist",
