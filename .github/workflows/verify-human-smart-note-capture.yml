@@ -95,6 +95,7 @@ jobs:
             if(!mappedJson.mapped_event_ids?.includes(eventId))throw new Error('PIS_INDEX_ROW_TO_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,mappedJson}));
             const responseHasEvent=pisNetwork.some(trace=>Array.isArray(trace.rows)&&trace.rows.some(row=>row.metadata_event_id===eventId||row.source_id===eventId));
             if(!responseHasEvent)throw new Error('PIS_BROWSER_RESPONSE_EVENT_ID_MISSING:'+JSON.stringify({eventId,pisNetwork}));
+            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'networkidle',timeout:60000});
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
             await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
             const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
