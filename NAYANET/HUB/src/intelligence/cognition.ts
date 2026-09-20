@@ -34,6 +34,7 @@ type CognitiveApi = {
   handoff: (reason?: string, project?: string) => unknown;
 };
 
+type SpaceSummary={id:string;name:string;purpose:string;visibility:string;created_at:string;owner_member_id?:string};
 type SpaceMember={id?:string;space_id?:string;member_id:string;role?:string;status?:string;joined_at?:string;left_at?:string;source_type?:string;source_id?:string;display_name?:string;smart_name?:string};
 type DreamReplay={id?:string;event_id?:string;status?:string;summary?:string;description?:string;[key:string]:unknown};
 
@@ -48,6 +49,9 @@ type AssistantRuntimeApi = {
   dreamReplay: (input?: {event_id?: string; idempotency_key?: string}) => Promise<DreamReplay>;
   recordLearningEvidence: (input: {claim: string; target_id?: string; source_event_id?: string; provenance?: string; verification_method?: string}) => Promise<unknown>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
+  listSpaces: () => Promise<SpaceSummary[]>;
+  joinSpace: (spaceId: string) => Promise<unknown>;
+  leaveSpace: (spaceId: string) => Promise<unknown>;
   listConnections: () => Promise<unknown[]>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
   revokeConnection: (targetMemberId: string) => Promise<unknown>;

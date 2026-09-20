@@ -13,6 +13,7 @@ import { SmartShareSurface } from './SmartShareSurface';
 import { SmartListsSurface } from './SmartListsSurface';
 import { ConnectionsSurface } from './ConnectionsSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
+import { SmartSpacesSurface } from './SmartSpacesSurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
   const identity = useIdentity();
@@ -104,7 +105,7 @@ export function HubRouter({ path }: { path: string }) {
     case routes.share:
       return <SmartShareSurface />;
     case routes.spaces:
-      return <FeatureSurface kind="spaces" />;
+      return <SmartSpacesSurface />;
     case routes.connections:
       return <ConnectionsSurface />;
     case routes.mail:
