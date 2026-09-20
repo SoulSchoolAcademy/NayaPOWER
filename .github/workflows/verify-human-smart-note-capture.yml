@@ -45,6 +45,9 @@ jobs:
             const browser=await chromium.launch({headless:true});
             const context=await browser.newContext({serviceWorkers:'block'});
             const page=await context.newPage();
+            const pisNetwork=[]; const pisMapped=[];
+            page.on('response',async response=>{if(response.url().includes('/rest/v1/nayanet_intelligence_index')){try{const body=await response.json();pisNetwork.push({status:response.status(),url:response.url(),row_count:Array.isArray(body)?body.length:null,rows:Array.isArray(body)?body.map(row=>({id:row.id,source_table:row.source_table,source_id:row.source_id,metadata_event_id:row.metadata?.event_id||null})):body});console.log('PIS_BROWSER_RESPONSE_TRACE',JSON.stringify(pisNetwork.at(-1)))}catch(error){pisNetwork.push({status:response.status(),url:response.url(),parse_error:String(error)});console.log('PIS_BROWSER_RESPONSE_TRACE',JSON.stringify(pisNetwork.at(-1)))}}});
+            page.on('console',message=>{if(message.text().includes('PIS_LIVE_INDEX_TRACE')){pisMapped.push(message.text());console.log('PIS_BROWSER_MAPPING_TRACE',message.text())}});
             const alias=('humanui'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
             const title='Human Hub Capture Proof '+process.env.GITHUB_RUN_ID;
             const content='A real human-facing NayaNET Hub capture control must send this note through the canonical Smart Note receiver and preserve the same event identity into Smart Feed and reload.';
@@ -82,6 +85,15 @@ jobs:
               return {snapshot:{authenticated:!!snapshot?.authenticated,user_id:snapshot?.user_id||null},cognition:cognition?{id:cognition.id,event_id:cognition.event_id,status:cognition.status,metadata:cognition.metadata}:null,indexRows,indexError};
             },{eventId});
             mark('PERSISTENCE_DIAGNOSTIC',persistenceDiagnostic);
+            const pisTrace={network:pisNetwork,mapping:pisMapped};
+            mark('PIS_BROWSER_BOUNDARY_TRACE',pisTrace);
+            if(!pisNetwork.length)throw new Error('PIS_BROWSER_RESPONSE_NOT_OBSERVED');
+            if(!pisMapped.length)throw new Error('PIS_BROWSER_MAPPING_NOT_OBSERVED');
+            const mappedJson=pisMapped.map(x=>{try{return JSON.parse(x.slice(x.indexOf('PIS_LIVE_INDEX_TRACE')+'PIS_LIVE_INDEX_TRACE'.length).trim())}catch{return null}}).filter(Boolean).at(-1);
+            if(!mappedJson)throw new Error('PIS_BROWSER_MAPPING_PARSE_FAILED');
+            if(!mappedJson.mapped_event_ids?.includes(eventId))throw new Error('PIS_INDEX_ROW_TO_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,mappedJson}));
+            const responseHasEvent=pisNetwork.some(trace=>Array.isArray(trace.rows)&&trace.rows.some(row=>row.metadata_event_id===eventId||row.source_id===eventId));
+            if(!responseHasEvent)throw new Error('PIS_BROWSER_RESPONSE_EVENT_ID_MISSING:'+JSON.stringify({eventId,pisNetwork}));
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
             await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
             const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
