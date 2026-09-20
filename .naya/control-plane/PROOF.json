@@ -145,7 +145,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "d796584ed796d9c97a74f844742be55b5261afbb",
+    "current_repository_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -446,6 +446,38 @@
         "cognition_row_id": "627dd24e-48e0-4317-b9df-c5e03c1c64b7",
         "index_row_id": "7595c62b-2a00-43c4-bdb5-13666397edef"
       }
+    },
+    "hub_release_35527973956": {
+      "status": "PRODUCTION_PROVEN",
+      "claim_type": "PRODUCTION",
+      "run_id": 35527973956,
+      "deployed_source_head": "4697d5e039b6bfbde2104c757cf37e1f2221b90c",
+      "cloudflare_version_id": "ba817d73-73b1-4307-845a-15f210314103",
+      "parity_sha256": "8b8e94799ea323d98fb3772a12da394f849d06e2d1f795a88200c790385c744e",
+      "evidence": [
+        "deployment success",
+        "exact source parity",
+        "desktop baseline",
+        "mobile baseline",
+        "final Assistant-lane runtime proof"
+      ]
+    },
+    "human_capture_smart_note_35528080864": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-human-smart-note-capture.yml",
+      "run_id": 35528080864,
+      "observed_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
+      "event_id": "1bdfee48-f79c-4b87-8d5f-53e345904cf7",
+      "transaction_id": "2ceacbbe-05b1-469a-a786-e7e33109435f",
+      "checks": [
+        "human_capture_control",
+        "canonical_receiver",
+        "same_event_identity",
+        "PIS_index_mapping",
+        "smart_feed_render",
+        "reload_identity"
+      ]
     }
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
@@ -696,7 +728,7 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Current human Hub Smart Note capture is production-proven through canonical receiver, cognition persistence, PIS projection, Smart Feed rendering, and reload identity. The control plane must now be reconciled before the next Hub acceptance action.",
+  "interpretation": "Production Hub source/build/runtime parity and the human Smart Note capture→receiver→PIS→Feed→reload journey are now current. The next proof frontier is deep human lifecycle acceptance for remaining surfaces; public Welcome remains deferred.",
   "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
