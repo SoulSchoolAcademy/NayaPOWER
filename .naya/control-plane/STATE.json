@@ -135,9 +135,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Public Welcome → Identity → canonical Assistant Hub handoff, followed by one consolidated human-facing production acceptance.",
-  "single_next_action": "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source, change only the identity activation target from academy.nayanet.app to the canonical Assistant Cloudflare Hub, then independently verify Welcome → Identity → canonical Hub.",
+  "single_next_action": "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub.",
   "next_actions": [
-    "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source, change only the identity activation target from academy.nayanet.app to the canonical Assistant Cloudflare Hub, then independently verify Welcome → Identity → canonical Hub."
+    "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — PUBLIC FRONT DOOR CLOSURE\nResolve live main 445198e9e63261e00b3b319fbedf5430260ea7ec. Live evidence proves welcome.nayanet.app embeds shiny-wave-dd48 and its /identity activation redirects to academy.nayanet.app. Do not modify NayaPOWER engine, learning, authority, or Hub source. Obtain only the authorized deployment capability for the owning shiny-wave public Welcome worker/source. Change only that activation target to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/. Then independently verify the real browser flow Welcome → Identity → canonical Hub and run the existing diagnostic once. Stop at any auth/deployment boundary that remains unavailable.",
