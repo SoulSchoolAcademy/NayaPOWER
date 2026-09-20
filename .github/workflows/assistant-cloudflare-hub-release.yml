@@ -33,7 +33,7 @@ on:
         options:
           - legacy-v7
           - sparkling-shape-react
-        default: sparkling-shape-react
+        default: legacy-v7
 
 concurrency:
   group: assistant-cloudflare-production
@@ -81,7 +81,7 @@ jobs:
       - name: Prepare authorized Hub artifact
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           rm -rf dist
