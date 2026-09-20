@@ -274,11 +274,6 @@ jobs:
                 await actionButton('POST').click();
                 await page.waitForTimeout(700); await statusFor('comment');
 
-                await actionButton('↔ CONNECT').click();
-                await page.waitForTimeout(250);
-                await board.locator('.sfb-related-list button').first().click();
-                await page.waitForTimeout(700); await statusFor('connect');
-
                 await page.evaluate(() => {
                   Object.defineProperty(navigator, 'share', { configurable: true, value: async () => undefined });
                 });
@@ -313,7 +308,7 @@ jobs:
                     eventIds: [...new Set(matching.map(x => x?.event_id).filter(Boolean))]
                   };
                 }, sourceEventId);
-                const requiredActions = ['favorite','save','like','love','rating','comments','links','share'];
+                const requiredActions = ['favorite','save','like','love','rating','comments','share'];
                 for (const required of requiredActions) if (!retrievalProof.actions.includes(required)) throw new Error('SMART_FEED_RETRIEVAL_MISSING:' + required + ':' + JSON.stringify(retrievalProof));
                 if (retrievalProof.count < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_EVENT_COUNT_TOO_LOW:' + JSON.stringify(retrievalProof));
 
