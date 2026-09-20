@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: {node-version: 20}
+        with: {node-version: 22}
       - run: npm install --no-save playwright@1.55.0
       - run: npx playwright install --with-deps chromium
       - name: Run human surface acceptance
@@ -25,7 +25,7 @@ jobs:
           const base=process.env.SUPABASE_URL;
           const runtime=process.env.RUNTIME_URL;
           const browser=await chromium.launch({headless:true});const ctx=await browser.newContext();const p=await ctx.newPage();
-          await p.goto(runtime+'/identity.html',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+          await p.goto(runtime+'/identity.html',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:60000}).catch(async e=>{throw Error('FIRST_DIVERGENCE:NAME_FIRST_AUTH_RUNTIME_MISSING url='+p.url()+' title='+await p.title()+' body='+((await p.locator('body').innerText()).slice(0,1200))+' err='+e.message)});
           const established=await p.evaluate(async()=>window.NayaNETNameFirstAuth.establish({name:'Surface Audit '+crypto.randomUUID().slice(0,8),alias:'surfaceaudit'+Date.now()}));if(!established?.authenticated||!established?.userId)throw Error('NAME_FIRST_AUTH_FAILED');
           await p.goto(runtime+'/',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:60000}).catch(async e=>{throw Error('FIRST_DIVERGENCE:RUNTIME_NOT_EXPOSED url='+p.url()+' title='+await p.title()+' body='+((await p.locator('body').innerText()).slice(0,1000))+' err='+e.message)});
           const user=established.userId;
