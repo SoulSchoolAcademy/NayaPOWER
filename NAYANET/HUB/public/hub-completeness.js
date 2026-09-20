@@ -183,6 +183,6 @@ function wireSidebar(){
  rail.querySelectorAll('.nav button[data-page]').forEach(b=>{const key=b.dataset.page,mapped=map[key];if(!mapped)return;b.dataset.nc=mapped[0];if(mapped[1])b.dataset.ncStream=mapped[1];else delete b.dataset.ncStream});
  return true;
 }
-function install(){css();const bind=()=>{wireSidebar();window.__nayaOpenSurface=open};bind();setTimeout(bind,0);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});document.addEventListener('click',e=>{const b=e.target.closest('[data-nc]');if(!b||b.closest('#naya-completeness'))return;e.preventDefault();e.stopImmediatePropagation();const action={kind:b.dataset.nc,stream:b.dataset.ncStream||null,at:new Date().toISOString()};void open(b.dataset.nc,b.dataset.ncStream).then(()=>{window.__nayaSidebarAction=action}).catch(()=>{window.__nayaSidebarAction=action})},true)}
+function install(){css();const bind=()=>{wireSidebar();window.__nayaOpenSurface=open};bind();setTimeout(bind,0);if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});document.addEventListener('click',e=>{const b=e.target.closest('[data-nc]');if(!b||b.closest('#naya-completeness'))return;e.preventDefault();e.stopImmediatePropagation();const action={kind:b.dataset.nc,stream:b.dataset.ncStream||null,at:new Date().toISOString()};window.__nayaSidebarAction=action;void open(b.dataset.nc,b.dataset.ncStream).catch(()=>{});},true)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
