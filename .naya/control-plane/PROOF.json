@@ -65,12 +65,12 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35485099497,
+      "deployment_run_id": 35485580713,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
       "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "deployed_source_head": "b69aaab3d99851263e743e7ea1cf971cd63cdf71",
-      "observed_head": "b69aaab3d99851263e743e7ea1cf971cd63cdf71",
+      "deployed_source_head": "792562518213e748b37812e1473e67234a842fb0",
+      "observed_head": "792562518213e748b37812e1473e67234a842fb0",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -85,7 +85,8 @@
         "live runtime source parity was verified by the release lane",
         "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified",
         "current exact-main Assistant release run 35485099497 succeeded",
-        "current deployed source/runtime parity and desktop/mobile runtime baseline were verified at b69aaab3d99851263e743e7ea1cf971cd63cdf71"
+        "current deployed source/runtime parity and desktop/mobile runtime baseline were verified at b69aaab3d99851263e743e7ea1cf971cd63cdf71",
+        "fresh current Smart Feed/Space/browser action matrix passed in release run 35485580713"
       ]
     },
     "authenticated_lifecycle": {
@@ -133,7 +134,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "095f30327dde785af8042f2087a46207aab84e6a",
+    "current_repository_head": "7e2726ff93311a5cd1b26c13af057fb5d96ae217",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -316,7 +317,7 @@
     "current_readiness": {
       "status": "PENDING_RECONCILIATION",
       "run_id": null,
-      "observed_head": "095f30327dde785af8042f2087a46207aab84e6a",
+      "observed_head": "7e2726ff93311a5cd1b26c13af057fb5d96ae217",
       "unknown_count": 0,
       "failed_count": 0,
       "reason": "Re-run current readiness gate after current-head runtime parity reconciliation."
