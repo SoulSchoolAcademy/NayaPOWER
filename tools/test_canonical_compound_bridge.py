@@ -19,6 +19,7 @@ import adaptive_learning as al
 from canonical_event_store import create_or_replay
 from cct_note_event_promotion import promote_note_event
 from memory_runtime import retrieve
+import retrieve_learning as rl
 
 EVENT_ID = "SE-20260825-200000-smart-brain-hardening-execution"
 NOTE_ID = "SN-20260825-200000-smart-brain-hardening-naya"
@@ -65,6 +66,28 @@ def test_real_event_promotes_to_intelligent_block():
     assert block["content"]["event_id"] == EVENT_ID
     assert block["content"]["learning"] == event["lesson"]
     assert block["verification"] == "VERIFIED"
+
+
+def test_learning_event_retrieves_through_existing_runtime():
+    event = load_real_event()
+    learning = ci.build_candidate(event)
+    assert learning is not None
+    with tempfile.TemporaryDirectory() as tmp:
+        learning_dir = Path(tmp) / "learning"
+        learning_dir.mkdir(parents=True)
+        learning_path = learning_dir / f"{learning['learning_event_id']}.json"
+        learning_path.write_text(json.dumps(learning, indent=2) + "\n", encoding="utf-8")
+        result = rl.retrieve_learning_event(
+            learning["learning_event_id"],
+            learning_dir=learning_dir,
+            note_dir=ROOT / ".naya" / "memory" / "notes",
+        )
+        receipt = result["receipt"]
+        assert receipt["learning_event_id"] == learning["learning_event_id"]
+        assert receipt["source_event_id"] == EVENT_ID
+        assert receipt["smart_note_id"] == NOTE_ID
+        assert receipt["retrieved_note_event_id"] == EVENT_ID
+        assert receipt["cold_context"] is True
 
 
 def test_real_note_retrieves_cold_by_runtime():
