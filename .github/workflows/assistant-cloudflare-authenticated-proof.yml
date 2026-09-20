@@ -59,7 +59,7 @@ jobs:
           const target = 'sparkling-shape-7ae5';
           const intent = 'prove durable cognition continuity across independent authenticated contexts';
           function smartNoteEventId(noteTitle, noteContent) {
-            const seed = (noteTitle + '\n' + noteContent).toLowerCase().replace(/\s+/g, ' ').trim();
+            const seed = (noteTitle + '\\n' + noteContent).toLowerCase().replace(/\s+/g, ' ').trim();
             let hash = 0;
             for (let i = 0; i < seed.length; i++) hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
             return 'smart-note-' + Math.abs(hash).toString(36);
@@ -107,6 +107,11 @@ jobs:
               verification: {state:'PENDING', method:'fresh-context retrieval + lineage comparison'}
             });
           }, {title,lesson,actionText,target,intent});
+          const recordedEventId = String(recorded?.event?.event_id || recorded?.event_id || '').trim();
+          if (!recordedEventId) throw new Error('RECORD_EVENT_ID_MISSING');
+          if (recordedEventId !== eventId) throw new Error('RECORD_EVENT_ID_MISMATCH');
+          console.log('REQUESTED_EVENT_ID=' + eventId);
+          console.log('RECORDED_EVENT_ID=' + recordedEventId);
 
           const retrievedA = await pageA.evaluate(async ({title,lesson}) => {
             const rows = await window.NayaAssistantRuntime.retrieve();
