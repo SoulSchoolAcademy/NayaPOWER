@@ -33,7 +33,8 @@ jobs:
           checks.hub='PASS';
           const title='Surface completeness search '+process.env.GITHUB_RUN_ID, content='Unique searchable intelligence '+crypto.randomUUID();
           const captured=await p.evaluate(async x=>window.NayaAssistantRuntime.captureSmartNote(x),{title,content});const eid=captured?.event_id||captured?.event?.event_id;if(!eid)throw Error('SEARCH_SETUP_CAPTURE_FAILED');
-          await p.goto(runtime+'/feed',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          await p.waitForFunction(async target=>{for(let i=0;i<20;i++){const rows=await window.NayaAssistantRuntime.retrieve(target);if(Array.isArray(rows)&&rows.some(x=>x.event_id===target))return true;await new Promise(r=>setTimeout(r,500));}return false;},eid,{timeout:15000});
+          await p.goto(runtime+'/feed',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});await p.waitForTimeout(500);
           const search=p.getByLabel('Search intelligence');await search.fill(title);await search.press('Enter');await p.waitForTimeout(1000);
           if(!(await p.locator('.smart-feed-board[data-event-id="'+eid+'"]').count()))throw Error('SEARCH_EXACT_EVENT_NOT_VISIBLE');
           checks.search='PASS';
