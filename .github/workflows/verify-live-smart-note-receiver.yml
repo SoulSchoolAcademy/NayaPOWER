@@ -60,8 +60,12 @@ jobs:
             await page.locator('#enter').click();
             await page.waitForFunction(async () => {
               const identity = await window.NayaNETNameFirstAuth?.current?.();
-              return Boolean(identity?.authenticated && identity?.userId);
-            }, null, { timeout:30000 });
+              if (!identity?.authenticated || !identity?.userId) return false;
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client = sdk.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              const session = (await client.auth.getSession()).data.session;
+              return Boolean(session?.user?.id && session.user.id === identity.userId && session.access_token);
+            }, null, { timeout:30000, polling:500 });
             const established = await page.evaluate(async () => ({ identity: await window.NayaNETNameFirstAuth?.current?.(), status: document.getElementById('status')?.textContent || '' }));
             if (!established.identity?.authenticated || !established.identity?.userId) throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
             return page.evaluate(async () => {
