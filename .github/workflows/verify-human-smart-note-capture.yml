@@ -54,7 +54,7 @@ jobs:
             await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000}); mark('AUTH_ADAPTER_READY');
             await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000}); mark('AUTHENTICATED');
             await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000}); mark('HUB_LOADED');
-            const shell=await page.locator('[data-shell-owner="AppShellV3"]').count(); if(shell!==1)throw new Error('CANONICAL_REACT_SHELL_MISSING'); mark('CANONICAL_REACT_SHELL_VISIBLE');
+            await page.locator('[data-shell-owner="AppShellV3"]').waitFor({state:'visible',timeout:30000}); const shell=await page.locator('[data-shell-owner="AppShellV3"]').count(); if(shell!==1)throw new Error('CANONICAL_REACT_SHELL_MISSING'); mark('CANONICAL_REACT_SHELL_VISIBLE');
             const runtime=await page.evaluate(()=>({runtime:!!window.NayaAssistantRuntime,auth:window.NayaAssistantRuntime?.snapshot?.()})); if(!runtime.runtime||!runtime.auth?.authenticated)throw new Error('HUB_RUNTIME_NOT_AUTHENTICATED:'+JSON.stringify(runtime)); mark('RUNTIME_AUTHENTICATED');
             const captureButton=page.getByTestId('capture-smart-note'); await captureButton.waitFor({state:'visible',timeout:30000}); mark('CAPTURE_CONTROL_VISIBLE');
             await page.evaluate(()=>{const rt=window.NayaAssistantRuntime;window.__humanCaptureResult=null;const original=rt.captureSmartNote.bind(rt);rt.captureSmartNote=async(...args)=>{const result=await original(...args);window.__humanCaptureResult=result;return result};});
