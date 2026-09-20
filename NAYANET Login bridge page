@@ -68,7 +68,7 @@
         if(existing?.authenticated){
           localStorage.setItem('nayanet_smart_name',existing.smartName||name);
           localStorage.setItem('nayanet_smart_alias',existing.smartAlias||cleanAlias(aliasInput.value));
-          window.location.replace('/');
+          window.location.replace('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/?name='+encodeURIComponent(smartName)+'&alias='+encodeURIComponent(smartAlias));
         }
       }catch(e){ console.debug('NayaNET session restore unavailable',e); }
     }
