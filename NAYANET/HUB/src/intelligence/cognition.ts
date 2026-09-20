@@ -40,6 +40,7 @@ type AssistantRuntimeApi = {
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
+  saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
 };
 
 declare global {
@@ -122,4 +123,20 @@ export async function createCanonicalPrivateSpace(input: {name: string; purpose:
   const space = await runtime.createSpace({name, purpose, visibility: 'private'});
   if (!space?.id) throw new Error('CANONICAL_SPACE_ID_NOT_RETURNED');
   return space;
+}
+
+export async function createCanonicalConnection(input: {targetMemberId: string; spaceId: string}) {
+  const runtime = window.NayaAssistantRuntime;
+  if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
+  const session = runtime.snapshot();
+  if (!session?.authenticated) throw new Error('AUTH_REQUIRED');
+  const targetMemberId = input.targetMemberId.trim();
+  const spaceId = input.spaceId.trim();
+  if (!targetMemberId || !spaceId) throw new Error('TARGET_MEMBER_AND_SHARED_SPACE_REQUIRED');
+  if (targetMemberId === (session as {user_id?: string}).user_id) throw new Error('CONNECTION_TARGET_MUST_BE_DIFFERENT_MEMBER');
+  const result = await runtime.saveConnection(targetMemberId, spaceId);
+  const payload = result as {connection_id?: string; id?: string; connection?: {id?: string}} | null;
+  const connectionId = payload?.connection_id || payload?.id || payload?.connection?.id || '';
+  if (!connectionId) throw new Error('CANONICAL_CONNECTION_ID_NOT_RETURNED');
+  return {connectionId, result};
 }
