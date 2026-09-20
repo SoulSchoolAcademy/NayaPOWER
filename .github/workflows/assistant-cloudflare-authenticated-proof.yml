@@ -53,12 +53,18 @@ jobs:
           if (!runtimeUrl) throw new Error('RUNTIME_MISSING');
 
           const runId = process.env.GITHUB_RUN_ID;
-          const eventId = 'assistant-proof-' + runId + '-' + crypto.randomBytes(6).toString('hex');
           const title = 'Assistant authenticated lifecycle proof ' + runId;
           const lesson = 'A verified persisted intelligence object must remain retrievable from a fresh context without the originating conversation.';
           const actionText = 'Retrieve the persisted intelligence and render it through the authenticated Personal Intelligence runtime.';
           const target = 'sparkling-shape-7ae5';
           const intent = 'prove durable cognition continuity across independent authenticated contexts';
+          function smartNoteEventId(noteTitle, noteContent) {
+            const seed = (noteTitle + '\n' + noteContent).toLowerCase().replace(/\s+/g, ' ').trim();
+            let hash = 0;
+            for (let i = 0; i < seed.length; i++) hash = ((hash << 5) - hash + seed.charCodeAt(i)) | 0;
+            return 'smart-note-' + Math.abs(hash).toString(36);
+          }
+          const eventId = smartNoteEventId(title, lesson);
 
           async function boot(context) {
             const page = await context.newPage();
