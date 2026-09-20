@@ -29,7 +29,7 @@ Deno.serve(async(req)=>{
     if(!authorityGrantId) return json({ok:false,error:'AUTHORITY_GRANT_REQUIRED'},403)
     const owned=await userSupabase.from('nayanet_cognition_events').select('id').eq('id',sourceId).eq('user_id',user.id).maybeSingle()
     if(owned.error||!owned.data) return json({ok:false,error:'SOURCE_NOT_OWNED'},403)
-    const validation=await userSupabase.rpc('nayanet_validate_authority_grant',{p_grant_id:authorityGrantId,p_action:'smart_feed_publish',p_target:sourceId})
+    const validation=await userSupabase.rpc('nayanet_validate_authority_grant',{p_grant_id:authorityGrantId,p_action:'smart_feed_publish',p_target:sourceKey})
     if(validation.error) return json({ok:false,error:'AUTHORITY_VALIDATION_FAILED',detail:validation.error.message},403)
     if(validation.data?.status!=='AUTHORIZED') return json({ok:false,error:'AUTHORITY_NOT_AUTHORIZED',detail:validation.data?.reason||'BLOCKED'},403)
     const result=await userSupabase.from('nayanet_intelligence_publications').upsert({intelligence_event_id:sourceId,owner_id:user.id,status:'published',consent_state:'explicit',published_at:new Date().toISOString()},{onConflict:'intelligence_event_id'}).select('*').single()
