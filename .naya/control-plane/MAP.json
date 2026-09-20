@@ -18,7 +18,11 @@
     "intelligent_hub_read_first": ".naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md",
     "intelligent_hub_master_contract": ".naya/2026-09-13-NAYAPOWER-MASTER-DESIGN-CONTRACT-INTELLIGENT-HUB.md",
     "intelligent_hub_pis_smart_note": ".naya/2026-09-13-NAYAPOWER-INTELLIGENT-HUB-MASTER-DESIGN-CONTRACT-SMART-NOTE.md",
-    "intelligent_hub_execution_roadmap": ".naya/NAYAPOWER-INTELLIGENT-HUB-10-TO-10-EXECUTION-ROADMAP.md"
+    "intelligent_hub_execution_roadmap": ".naya/NAYAPOWER-INTELLIGENT-HUB-10-TO-10-EXECUTION-ROADMAP.md",
+    "intelligent_hub_north_star": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+    "intelligent_hub_visual_structural_contract": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
+    "canonical_hub_path": "NAYANET/HUB/index.html",
+    "canonical_hub_source_sha": "f76ed6d6de6805a752dc81113ded42e67b3b6f80"
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
@@ -50,10 +54,13 @@
     "deep_sources": ".naya/",
     "roadmap": ".naya/NAYAPOWER-INTELLIGENT-HUB-10-TO-10-EXECUTION-ROADMAP.md",
     "first_checkpoint": "PHASE 0 — RESTORE + BASELINE TRUTH",
-    "lane_rule": "Assistant lane is the Cloudflare/live Hub; other Naya lane is GitHub 509. Never merge, promote, overwrite, or treat the two runtimes as one implementation.",
+    "lane_rule": "All Hub work targets NAYANET/HUB/index.html. Welcome/front-door and historical/alternate Hub artifacts are non-authoritative. Internal runtime code is implementation machinery behind the canonical Hub, not a competing Hub.",
     "current_capability_boundary": "GitHub repository operations are available; Cloudflare editing/deployment capability is not currently exposed in this tool environment.",
     "law": "No Naya may build, modify, redesign, restructure, deploy, or declare completion of Intelligent Hub work until the Hub Read-First set has been reviewed and the relevant deeper canonical sources have been inspected.",
-    "reason": "Human and machine context loss are treated as architectural risks. The repository must remind the Naya instead of relying on memory."
+    "reason": "Human and machine context loss are treated as architectural risks. The repository must remind the Naya instead of relying on memory.",
+    "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+    "canonical_hub": "NAYANET/HUB/index.html",
+    "first_feature": "Smart Share"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
@@ -66,12 +73,14 @@
     "one-authority/anti-duplication law",
     "continuous torch-pass and successor continuity",
     "MAXIS Living Sun presentation direction as recorded in Issue #69, without coupling presentation to scoring truth",
-    "2026-09-09 5:09 PM Hub reference baseline",
     "fail-closed evidence and authority boundaries",
     "Adaptive Reconstruction + Surgical Evolution",
     "Intelligent Hub Master Design Contract and its one-object/many-projections architecture",
     "Hub Read-First pre-execution gate",
-    "Intelligent Hub 6-to-10 execution roadmap and checkpoint sequence"
+    "Intelligent Hub 6-to-10 execution roadmap and checkpoint sequence",
+    "NAYANET/HUB/index.html as the sole protected Hub visual/structural North Star",
+    "NAYANET Hub North Star Mission Lock",
+    "NAYANET Hub Visual & Structural Contract"
   ],
   "major_systems": [
     "Naya activation",
@@ -96,15 +105,16 @@
     }
   },
   "execution_map": {
-    "current_program": "P0 — Public Front Door + Consolidated Human Acceptance",
+    "current_program": "P0 — CANONICAL HUB FUNCTIONALIZATION",
     "blocks": [
-      "P1-POLICY-LINEAGE",
-      "P2-REAL-OUTCOME-VALUE",
-      "P3-MULTI-CASE-HOLDOUT",
-      "P4-COLD-NAYA-CONTINUATION"
+      "SMART-SHARE-GOVERNED-ACTION",
+      "SMART-MAIL-GOVERNED-ACTION",
+      "CONNECTIONS-GOVERNED-ACTION",
+      "SMART-SPACES-GOVERNED-ACTION",
+      "SMART-LISTS-GOVERNED-ACTION"
     ],
-    "active_block": "FINAL-HUMAN-ACCEPTANCE",
-    "definition_of_done": "The Superbrain can execute comparable V1/V2 cases with immutable policy lineage, independently verified real outcomes, deterministic responsible-value comparison, adversarial protection, and truthful PROVEN/NOT_PROVEN results, then a fresh Naya can retrieve the result and continue one safe action."
+    "active_block": "CANONICAL-HUB-FUNCTIONALIZATION",
+    "definition_of_done": "The canonical NAYANET/HUB/index.html human-facing Hub is operational through the existing governed Naya engine, with real runtime actions, authority/consent, owner/scope isolation, revocation/expiry, idempotency/replay protection, execution receipts, persisted outcomes, and rendered browser evidence."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -147,6 +157,7 @@
     "After ten materially equivalent attempts without a material strategy change, treat the condition as RED ALERT and require a materially different route or documented human-authorized exception.",
     "For Hub work, resolve and review the Hub Read-First gate before implementation or consequential execution; skipping it is a continuity/architecture failure.",
     "For Hub implementation, follow the canonical 6-to-10 roadmap checkpoints and do not declare completion until exact runtime evidence exists.",
-    "Runtime and policy proof freshness is evaluated against the authoritative source paths that produced the claimed artifact, not merely the repository's unrelated documentation/control-plane HEAD."
+    "Runtime and policy proof freshness is evaluated against the authoritative source paths that produced the claimed artifact, not merely the repository's unrelated documentation/control-plane HEAD.",
+    "For Hub identity, NAYANET/HUB/index.html is the sole current product surface; Welcome and historical/alternate Hub artifacts are non-authoritative unless Shawn explicitly changes the mission lock."
   ]
 }
