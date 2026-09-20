@@ -58,11 +58,14 @@ jobs:
           set -euo pipefail
           npm install --no-save wrangler@4.135.0
           export ZONE_JSON; ZONE_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/zones?name=nayanet.app&status=active")
+          export ACCOUNT_JSON; ACCOUNT_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/accounts?page=1&per_page=100")
           python3 - <<'PY'
           import json, os
           data=json.loads(os.environ["ZONE_JSON"])
+          accounts=json.loads(os.environ["ACCOUNT_JSON"])
           rows=[{"id":z.get("id"),"name":z.get("name"),"status":z.get("status"),"account_id":(z.get("account") or {}).get("id"),"account_name":(z.get("account") or {}).get("name")} for z in data.get("result",[])]
-          print(json.dumps({"success":data.get("success"),"zones":rows}))
+          account_rows=[{"id":a.get("id"),"name":a.get("name")} for a in accounts.get("result",[])]
+          print(json.dumps({"zone_query":{"success":data.get("success"),"zones":rows},"account_query":{"success":accounts.get("success"),"accounts":account_rows}}))
           PY
       - name: Deploy authorized Welcome Worker and route
         shell: bash
