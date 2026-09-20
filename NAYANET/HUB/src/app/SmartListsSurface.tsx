@@ -23,9 +23,10 @@ export function SmartListsSurface() {
       if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
       if (!runtime.snapshot()?.authenticated) throw new Error('AUTH_REQUIRED');
       const [nextLists, nextConnections] = await Promise.all([runtime.listSmartLists(), runtime.listConnections()]);
-      setLists((nextLists || []) as SmartList[]);
+      const typedLists = (nextLists || []) as SmartList[];
+      setLists(typedLists);
       setConnections((nextConnections || []) as Connection[]);
-      setSelected(current => current && (nextLists || []).some((item: any) => item.id === current) ? current : (nextLists || [])[0]?.id || '');
+      setSelected(current => current && typedLists.some(item => item.id === current) ? current : typedLists[0]?.id || '');
     } catch (error) {
       setLists([]);
       setConnections([]);
