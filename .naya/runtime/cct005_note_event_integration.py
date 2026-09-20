@@ -49,6 +49,7 @@ def integrate_verified_note_event(
     context: dict[str, Any],
     privacy: str,
     outcome_id: str,
+    activity_receipt_id: str,
     consumers: list[str] | None = None,
 ) -> dict[str, Any]:
     """Execute the smallest complete Smart Note -> CCT-005 value loop."""
@@ -56,6 +57,8 @@ def integrate_verified_note_event(
         raise IntegrationRejected("input must be a canonical Smart Note/Note Event with an SN representation")
     if not isinstance(outcome_id, str) or not outcome_id:
         raise IntegrationRejected("unique outcome_id is required")
+    if not isinstance(activity_receipt_id, str) or not activity_receipt_id:
+        raise IntegrationRejected("canonical activity_receipt_id is required")
     consumers = list(consumers or [actor])
     if actor not in consumers:
         raise IntegrationRejected("actor must be explicitly authorized as a CCT consumer")
@@ -86,7 +89,11 @@ def integrate_verified_note_event(
         confidence=confidence,
         context=context,
         privacy=privacy,
-        provenance={"source_block": block["block_id"], "source_event": event["event_id"]},
+        provenance={
+            "source_block": block["block_id"],
+            "source_event": event["event_id"],
+            "activity_receipt_id": activity_receipt_id,
+        },
     )
     outcome_decision = verify_outcome(outcome, block_id=block["block_id"], authorized_actor=actor)
     if not outcome_decision.allowed:
@@ -97,4 +104,8 @@ def integrate_verified_note_event(
         "block": block,
         "outcome": outcome,
         "value": value_signal([outcome]),
+        "verification_reference": {
+            "subject_ref": outcome["outcome_id"],
+            "activity_receipt_id": activity_receipt_id,
+        },
     }
