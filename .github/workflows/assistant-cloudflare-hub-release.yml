@@ -439,8 +439,12 @@ jobs:
                   if(!target?.member_id) throw new Error('SMART_CONNECTION_SHARED_TARGET_NOT_AVAILABLE');
                   return {targetMemberId:target.member_id,spaceId:shared.id,joinStatus:joined?.status||'JOINED'};
                 });
-                await page.evaluate((values) => { window.prompt = () => values.shift() || ''; }, [connectionProof.targetMemberId, connectionProof.spaceId]);
                 await board.locator('.sfb-related-head button').first().click();
+                await page.waitForTimeout(250);
+                const connectionPicker = board.locator('.sfb-connection-picker');
+                await connectionPicker.waitFor({ timeout: 10000 });
+                await connectionPicker.locator('select').nth(0).selectOption(connectionProof.spaceId);
+                await connectionPicker.locator('select').nth(1).selectOption(connectionProof.targetMemberId);
                 await page.waitForTimeout(250);
                 await board.locator('.sfb-related-list button').first().click();
                 await page.waitForTimeout(900);
