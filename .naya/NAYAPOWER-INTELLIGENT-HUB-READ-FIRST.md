@@ -6,6 +6,34 @@
 
 ---
 
+
+
+---
+
+# 🔱 0. CURRENT HUB OVERRIDES LEGACY HUB MATERIAL
+
+Before reading any historical Hub material, read:
+
+**`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`**
+
+The current and only Hub product surface is:
+
+> **`NAYANET/HUB/index.html`**
+
+Protected source SHA:
+
+`f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+Welcome/front-door pages, 509 variants, V2/legacy HTML, E01/E02/E03 builds, static mirrors, Vercel/AppDeploy snapshots, generated artifacts, and alternate shells are historical/non-authoritative unless Shawn explicitly changes the mission lock.
+
+**This READ-FIRST document is now an architectural guide behind that lock. It must not route a Naya toward another Hub.**
+
+Current objective:
+
+> **Connect the existing verified Naya engine to the existing canonical Hub and make the Hub's existing controls work.**
+
+Do not redesign the Hub. Do not rebuild a competing Hub. Do not reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path for visual parity.
+
 # 1. THE RULE
 
 > **NO NAYA BUILDS, MODIFIES, REDESIGNS, RESTRUCTURES, DEPLOYS, OR DECLARES COMPLETION OF INTELLIGENT HUB WORK UNTIL THE HUB READ-FIRST SET HAS BEEN REVIEWED.**
