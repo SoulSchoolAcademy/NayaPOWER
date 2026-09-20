@@ -24,9 +24,12 @@ function searchableEvent(event:IntelligentEvent){return[event.source.label,event
 export async function searchPrimaryIntelligence(query:string,base?:PISFeed):Promise<PISFeed>{
  const source=base||await loadPrimaryIntelligence();const q=query.trim().toLowerCase();if(!q)return source;
  const local=source.events.filter(event=>searchableEvent(event).includes(q));
+ let persistent:PISFeed|null=null;
+ try{persistent=await loadPersistentPIS();}catch{}
+ const persistentMatches=(persistent?.events||[]).filter(event=>searchableEvent(event).includes(q));
  const engine=(window as typeof window & {NayaNetCognition?:{search:(query?:string,filters?:Record<string,string>)=>CognitiveEvent[]}}).NayaNetCognition;
- if(!engine)return{...source,event_count:local.length,events:local};
- const runtime=engine.search(query,{project:'NayaNET'}).map(cognitiveEventToIntelligence);
- const seen=new Set(local.map(event=>event.event_id));const merged=[...runtime.filter(event=>!seen.has(event.event_id)),...local];
+ const runtime=engine?engine.search(query,{project:'NayaNET'}).map(cognitiveEventToIntelligence):[];
+ const seen=new Set<string>();
+ const merged=[...runtime,...persistentMatches,...local].filter(event=>{if(seen.has(event.event_id))return false;seen.add(event.event_id);return true});
  return{...source,event_count:merged.length,events:sortPrimaryIntelligence(merged)};
 }
