@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useIdentity } from '../identity/session';
-type ReportEvent = { event_id: string; title?: string; content?: string; created_at: string; status?: string; metadata?: Record<string, unknown> };
+type ReportEvent = { event_id: string; title?: string; content?: string; created_at: string; status?: string; source?: { label?: string }; human_input?: { raw?: string }; metadata?: Record<string, unknown> };
 
 type Period = 'today' | 'week' | 'month' | 'year';
 
@@ -38,7 +38,7 @@ function ReportCard({ period, events, now }: { period: typeof periods[number]; e
   const verified = rows.filter(isVerified).length;
   const learned = rows.filter(event => Boolean(Boolean(asText(event.metadata?.lesson).trim()))).length;
   const actions = rows.filter(event => Boolean(Boolean(asText(event.metadata?.action).trim()))).length;
-  const uniqueTopics = new Set(rows.flatMap(event => Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag): tag is string => typeof tag === 'string') : [])).size;
+  const uniqueTopics = new Set(rows.flatMap(event => Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag: unknown): tag is string => typeof tag === 'string') : [])).size;
   const latest = rows.slice(0, 5);
 
   return (
@@ -75,7 +75,7 @@ function ReportCard({ period, events, now }: { period: typeof periods[number]; e
 
 export function ReportsSurface() {
   const identity = useIdentity();
-  const [events, setEvents] = useState<IntelligentEvent[]>([]);
+  const [events, setEvents] = useState<ReportEvent[]>([]);
   const [busy, setBusy] = useState(true);
   const [error, setError] = useState('');
   const [query, setQuery] = useState('');
