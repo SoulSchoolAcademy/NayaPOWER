@@ -204,10 +204,6 @@ jobs:
           RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
-          echo "=== ASSISTANT RUNTIME BARE RESPONSE HEADERS ==="
-          curl --fail --silent --show-error --head --location "$NAYA_RUNTIME_URL/assistant-runtime.js"
-          echo "=== ASSISTANT RUNTIME QUERY RESPONSE HEADERS ==="
-          curl --fail --silent --show-error --head --location "$NAYA_RUNTIME_URL/assistant-runtime.js?naya_release=${GITHUB_SHA}"
           npm install --no-save --no-package-lock playwright@1.55.0
           cat > verify-assistant-runtime.mjs <<'EOF'
           import { chromium } from 'playwright';
@@ -226,10 +222,6 @@ jobs:
               ]) {
                 const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
                 const page = await context.newPage();
-                page.on('pageerror', error => console.log('BROWSER_PAGEERROR', viewport.label, String(error?.stack || error)));
-                page.on('console', msg => { if (msg.type() === 'error') console.log('BROWSER_CONSOLE_ERROR', viewport.label, msg.text()); });
-                page.on('requestfailed', request => console.log('BROWSER_REQUEST_FAILED', viewport.label, request.url(), request.failure()?.errorText || 'unknown'));
-                page.on('response', response => { if (response.url().includes('/assistant-runtime.js')) console.log('BROWSER_RUNTIME_RESPONSE', viewport.label, response.status(), response.headers()['content-type'] || '', response.url()); });
                 const proofAlias = 'ci' + process.env.GITHUB_SHA.slice(0, 16) + viewport.label;
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/identity.html?name=Naya%20CI%20Proof&alias=' + proofAlias, { waitUntil: 'networkidle', timeout: 30000 });
                 await page.getByRole('button', { name: 'ENTER NAYANET' }).click();
@@ -241,8 +233,6 @@ jobs:
                 const shareBoardSetup = page.locator('.smart-feed-board').first(); await shareBoardSetup.waitFor({state:'visible',timeout:10000});
                 const result = await page.evaluate(async () => ({
                   title: document.title,
-                  runtimeScripts: [...document.scripts].filter(s => s.src.includes('/assistant-runtime.js')).map(s => s.src),
-                  runtimeReadyState: document.readyState,
                   marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
                   assistantRuntime: !!window.NayaAssistantRuntime,
                   identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null,
