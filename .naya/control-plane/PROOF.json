@@ -65,12 +65,12 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35470356001,
+      "deployment_run_id": 35485099497,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
       "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
-      "observed_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "deployed_source_head": "b69aaab3d99851263e743e7ea1cf971cd63cdf71",
+      "observed_head": "b69aaab3d99851263e743e7ea1cf971cd63cdf71",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -78,13 +78,14 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
         "NAYANET/HUB/src/app/SmartMailSurface.tsx",
         "identity.html",
-        "NayaNET/name-first-auth-adapter.js",
-        ".github/workflows/assistant-cloudflare-hub-release.yml"
+        "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
         "canonical Assistant Cloudflare release run 35470356001 succeeded",
         "live runtime source parity was verified by the release lane",
-        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified"
+        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified",
+        "current exact-main Assistant release run 35485099497 succeeded",
+        "current deployed source/runtime parity and desktop/mobile runtime baseline were verified at b69aaab3d99851263e743e7ea1cf971cd63cdf71"
       ]
     },
     "authenticated_lifecycle": {
@@ -132,7 +133,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
+    "current_repository_head": "095f30327dde785af8042f2087a46207aab84e6a",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -238,7 +239,6 @@
       "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
       "deployed_source_head": "16071081dd90dab568137b321dbc6fdbe776284c",
       "source_paths": [
-        ".github/workflows/verify-dream-learning-decision.yml",
         "assistant-runtime.js",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js",
@@ -314,11 +314,12 @@
       "result": "LEARNING_REUSE_VERIFIED"
     },
     "current_readiness": {
-      "status": "READY",
-      "run_id": 35471113077,
-      "observed_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
+      "status": "PENDING_RECONCILIATION",
+      "run_id": null,
+      "observed_head": "095f30327dde785af8042f2087a46207aab84e6a",
       "unknown_count": 0,
-      "failed_count": 0
+      "failed_count": 0,
+      "reason": "Re-run current readiness gate after current-head runtime parity reconciliation."
     },
     "fresh_smart_mail_learning_bridge": {
       "status": "VERIFIED",
