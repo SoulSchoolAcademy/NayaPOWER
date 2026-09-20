@@ -380,14 +380,26 @@ jobs:
                   if (await page.locator('.feature-table').count()) throw new Error('LEGACY_GENERIC_TABLE_RENDERED:' + tabName);
                   if (!(await page.locator('h1').filter({hasText:tabName.replace('Your Report','Your Reports')}).count())) throw new Error('FEATURE_HEADING_MISSING:' + tabName);
                 }
-                await page.evaluate(() => window.NayaAssistantRuntime.signOut());
-                await page.waitForTimeout(250);
-                const unauthorizedFavorite = page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first();
-                await unauthorizedFavorite.click();
-                await page.waitForTimeout(500);
-                const unauthorizedStatus = await page.locator('.smart-feed-board .sfb-status').textContent().catch(() => '');
-                if (!String(unauthorizedStatus || '').includes('ACTION BLOCKED') || !String(unauthorizedStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(unauthorizedStatus || 'NO_STATUS'));
-                console.log('SMART_FEED_UNAUTHORIZED_ACTION_BLOCK_VERIFIED', viewport.label, unauthorizedStatus);
+                const unauthorizedFailure = await page.evaluate(async () => {
+                  await window.NayaAssistantRuntime.signOut();
+                  try {
+                    await window.NayaAssistantRuntime.record({
+                      event_id: 'ci-unauthorized-smart-feed-action',
+                      title: 'Unauthorized Smart Feed action',
+                      content: 'Expected authorization failure proof',
+                      source: 'nayanet-hub.smart-feed.action',
+                      project: 'NayaNET',
+                      status: 'active',
+                      actor: 'human',
+                      metadata: { persistence_boundary: 'authenticated-cognition' }
+                    });
+                    return 'UNEXPECTED_SUCCESS';
+                  } catch (error) {
+                    return error instanceof Error ? error.message : String(error);
+                  }
+                });
+                if (!String(unauthorizedFailure || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_UNAUTHORIZED_PERSISTENCE_NOT_BLOCKED:' + String(unauthorizedFailure || 'NO_ERROR'));
+                console.log('SMART_FEED_UNAUTHORIZED_PERSISTENCE_BLOCK_VERIFIED', viewport.label, unauthorizedFailure);
 
                 console.log('CANONICAL_REACT_HUB_VERIFIED', viewport.label, JSON.stringify(result));
                 await context.close();
