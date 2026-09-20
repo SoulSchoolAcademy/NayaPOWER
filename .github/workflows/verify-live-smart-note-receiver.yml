@@ -196,7 +196,10 @@ jobs:
             const ledgerRow=ledger[0];
 
             await pageA.goto(hub + '/feed?receiver_proof=' + encodeURIComponent(proofKey),{waitUntil:'networkidle',timeout:60000});
-            await pageA.waitForSelector('[data-event-id="' + cognitionEventId + '"]',{timeout:30000});
+            await pageA.waitForSelector('.smart-feed-board',{timeout:30000});
+            const renderedIds=await pageA.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')})));
+            console.log('HUB_RENDERED_BOARD_IDS',JSON.stringify(renderedIds));
+            if(!renderedIds.some(row=>row.eventId===cognitionEventId)) throw new Error('HUB_RENDER_EXACT_EVENT_MISSING:'+JSON.stringify({expected:cognitionEventId,rendered:renderedIds}));
             const rendered=await pageA.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title'),text:node.textContent?.slice(0,800)}));
             if(rendered.eventId!==cognitionEventId) throw new Error('HUB_RENDER_EVENT_ID_MISMATCH:'+JSON.stringify(rendered));
             if(!String(rendered.title||'').includes(title)) throw new Error('HUB_RENDER_TITLE_MISMATCH:'+JSON.stringify(rendered));
