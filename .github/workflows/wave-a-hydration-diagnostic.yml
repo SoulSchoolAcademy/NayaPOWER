@@ -1,6 +1,7 @@
 name: Wave A authenticated browser handoff acceptance
 # Current-proof trigger: execute the unchanged Wave A acceptance against the current main source. Triggered for Smart Share boundary trace.
 # Trigger-only marker: Smart Share collective retrieval identity trace.
+# Trigger-only marker: Smart Share reload hydration identity trace.
 
 on:
   push:
