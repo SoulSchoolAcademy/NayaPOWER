@@ -154,3 +154,5 @@ jobs:
           PY
 
 # Execution-trigger marker: canonical Smart Note receiver trace requested from current main.
+
+# Re-run after canonical React Hub deployment so the human capture control is exercised against current live source.
