@@ -94,6 +94,9 @@ jobs:
           const crypto = require('node:crypto');
           const hub = process.env.HUB_URL;
           (async()=>{
+            const trace=[];
+            const mark=(step,extra={})=>{trace.push({step,at:new Date().toISOString(),...extra});console.log('HUMAN_UI_TRACE',JSON.stringify(trace.at(-1)))};
+            mark('START');
             const browser=await chromium.launch({headless:true});
             const context=await browser.newContext();
             const page=await context.newPage();
