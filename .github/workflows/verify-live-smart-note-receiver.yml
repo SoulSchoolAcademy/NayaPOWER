@@ -67,7 +67,7 @@ jobs:
           async function callReceiver(session,payload){const response=await fetch(supabaseUrl+'/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':supabaseKey,'Content-Type':'application/json','x-idempotency-key':payload.idempotency_key},body:JSON.stringify(payload)});return{status:response.status,body:await response.json().catch(()=>({}))}}
           async function callAnonymous(payload){const response=await fetch(supabaseUrl+'/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{'apikey':supabaseKey,'Content-Type':'application/json'},body:JSON.stringify(payload)});return{status:response.status,body:await response.json().catch(()=>({}))}}
           async function query(page,query){return page.evaluate(async({supabaseUrl,supabaseKey,query})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});return await client.from(query.table).select(query.select).match(query.match).limit(query.limit||50)},{supabaseUrl,supabaseKey,query})}
-          (async()=>{const browser=await chromium.launch({headless:true});const contextA=await browser.newContext();const pageA=await contextA.newPage();const first=await setupIdentity(pageA,'Naya Receiver Proof',alias);
+          (async()=>{const trace=[];const mark=(x,v={})=>{trace.push({step:x,at:new Date().toISOString(),...v});console.log('HUMAN_UI_TRACE',JSON.stringify(trace.at(-1)))};mark('START');const browser=await chromium.launch({headless:true});const contextA=await browser.newContext();const pageA=await contextA.newPage();const first=await setupIdentity(pageA,'Naya Receiver Proof',alias);
             const payload={idempotency_key:proofKey,subject:title,in_a_nutshell:'Verified production receiver chain.',human_note:{id:'HN-'+proofKey,text:content,subject:title,type:'insight'},naya_note:{id:'NN-'+proofKey,text:'Naya received, interpreted, and preserved the Smart Note through the canonical receiver.'},child_grandma:'A fresh Naya can find and use this intelligence later.',source:'naya-production-receiver-proof'};
             const firstCall=await callReceiver(first.session,payload);if(firstCall.status!==200||!firstCall.body?.ok)throw new Error('LIVE_RECEIVER_CREATE_FAILED:'+JSON.stringify(firstCall));const tx=firstCall.body.transaction;const smartNoteEventId=tx?.evidence?.event_id||tx?.hub_state?.event_id;if(!smartNoteEventId)throw new Error('SMART_NOTE_CANONICAL_EVENT_ID_MISSING');
             const duplicateCall=await callReceiver(first.session,payload);if(duplicateCall.status!==200||!duplicateCall.body?.ok)throw new Error('LIVE_RECEIVER_DUPLICATE_FAILED:'+JSON.stringify(duplicateCall));if(duplicateCall.body.transaction?.id!==tx.id)throw new Error('LIVE_RECEIVER_IDEMPOTENCY_ID_CHANGED');
@@ -99,42 +99,50 @@ jobs:
             const page=await context.newPage();
             const run=process.env.RUN_IDENTITY;
             const alias=('humanui'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
-            await page.goto(hub+'/identity?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+            mark('IDENTITY_GOTO'); await page.goto(hub+'/identity?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
             await page.locator('#name').fill('Naya Human UI Proof');
             await page.locator('#alias').fill(alias);
-            await page.locator('#enter').click();
-            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
-            await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
-            await page.goto(hub+'/',{waitUntil:'networkidle',timeout:60000});
-            await page.waitForSelector('[data-testid="capture-smart-note"]',{timeout:30000});
+            mark('IDENTITY_FORM_READY'); await page.locator('#enter').click(); mark('IDENTITY_ENTER_CLICKED');
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000}); mark('IDENTITY_ADAPTER_READY');
+            await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000}); mark('IDENTITY_AUTHENTICATED');
+            mark('HUB_GOTO'); await page.goto(hub+'/',{waitUntil:'networkidle',timeout:60000});
+            await page.waitForSelector('[data-testid="capture-smart-note"]',{timeout:30000}); mark('CAPTURE_CONTROL_VISIBLE');
             const title='Human Hub Smart Note Proof '+run;
             const content='Created by the real canonical NayaNET Hub capture control; this must cross the existing receiver and appear under the same canonical event identity.';
             await page.evaluate(()=>{const rt=window.NayaAssistantRuntime;window.__captureCalls=[];const original=rt.captureSmartNote.bind(rt);rt.captureSmartNote=async(...args)=>{const result=await original(...args);window.__captureCalls.push(result);return result};});
-            await page.getByTestId('capture-smart-note').click();
+            await page.getByTestId('capture-smart-note').click(); mark('CAPTURE_MODAL_OPEN');
             await page.getByTestId('smart-note-title').fill(title);
             await page.getByTestId('smart-note-content').fill(content);
-            await page.getByTestId('smart-note-capture-submit').click();
-            await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000});
-            await page.waitForFunction(()=>Array.isArray(window.__captureCalls)&&window.__captureCalls.length===1,{timeout:30000});
+            await page.getByTestId('smart-note-capture-submit').click(); mark('CAPTURE_SUBMITTED');
+            await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_NAVIGATED');
+            await page.waitForFunction(()=>Array.isArray(window.__captureCalls)&&window.__captureCalls.length===1,{timeout:30000}); mark('CAPTURE_RESULT_RETURNED');
             const capture=await page.evaluate(()=>window.__captureCalls[0]);
             const tx=capture?.transaction||{};
             const eventId=capture?.event?.event_id||capture?.event_id||tx?.evidence?.event_id||tx?.hub_state?.event_id||'';
-            if(!eventId)throw new Error('HUMAN_UI_CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(capture));
+            if(!eventId)throw new Error('HUMAN_UI_CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(capture)); mark('CANONICAL_EVENT_ID_RETURNED',{eventId});
             if(!tx?.id)throw new Error('HUMAN_UI_TRANSACTION_ID_MISSING');
             const auth=await page.evaluate(async()=>({identity:await window.NayaNETNameFirstAuth.current(),session:(await window.__NayaNETSupabaseClient.auth.getSession()).data.session}));
             if(!auth.session?.user?.id)throw new Error('HUMAN_UI_SESSION_MISSING');
-            await page.waitForSelector('.smart-feed-board',{timeout:30000});
+            await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('SMART_FEED_BOARD_VISIBLE');
             await page.waitForFunction((expected)=>Array.from(document.querySelectorAll('.smart-feed-board')).some(x=>x.getAttribute('data-event-id')===expected),eventId,{timeout:30000});
             const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
-            if(!rendered.some(x=>x.event_id===eventId))throw new Error('HUMAN_UI_FEED_EVENT_MISSING:'+JSON.stringify({eventId,rendered}));
-            await page.reload({waitUntil:'networkidle'});
+            if(!rendered.some(x=>x.event_id===eventId))throw new Error('HUMAN_UI_FEED_EVENT_MISSING:'+JSON.stringify({eventId,rendered})); mark('SMART_FEED_EXACT_EVENT_RENDERED',{eventId});
+            mark('RELOAD'); await page.reload({waitUntil:'networkidle'});
             await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
             const restored=await page.locator('[data-event-id="'+eventId+'"]').evaluate(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')}));
-            if(restored.event_id!==eventId)throw new Error('HUMAN_UI_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
+            if(restored.event_id!==eventId)throw new Error('HUMAN_UI_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored)); mark('RELOAD_EXACT_EVENT_PRESERVED',{eventId});
             console.log(JSON.stringify({status:'VERIFIED',title,event_id:eventId,transaction_id:tx.id,user_id:auth.session.user.id,checks:{human_capture_control:'PASS',canonical_receiver:'PASS',same_event_identity:'PASS',smart_feed_render:'PASS',reload_identity:'PASS'}}));
-            await context.close();await browser.close();
-          })().catch(error=>{console.error(error);process.exit(1)});
+            mark('VERIFIED'); console.log(JSON.stringify({status:'VERIFIED',title,event_id:eventId,transaction_id:tx.id,user_id:auth.session.user.id,checks:{human_capture_control:'PASS',canonical_receiver:'PASS',same_event_identity:'PASS',smart_feed_render:'PASS',reload_identity:'PASS'},trace})); await context.close();await browser.close();
+          })().catch(async error=>{try{require('node:fs').writeFileSync('human-ui-proof-trace.json',JSON.stringify({status:'FAILED',error:String(error?.stack||error),trace},null,2)+'\n')}catch{};console.error(error);process.exit(1)});
           NODE
+
+      - name: Upload human UI proof trace
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: human-ui-smart-note-proof-trace
+          path: human-ui-proof-trace.json
+          if-no-files-found: warn
 
       - name: Verify machine-readable receiver proof
         shell: bash
