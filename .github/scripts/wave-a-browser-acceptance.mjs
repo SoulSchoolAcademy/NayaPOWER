@@ -51,8 +51,7 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           const listName='Wave A live acceptance '+project;
           await ap.getByLabel('New Smart List name').fill(listName);
           const createListButton=ap.getByRole('button',{name:'＋ CREATE SMART LIST',exact:true});await createListButton.click();
-          await ap.waitForTimeout(700);
-          const listCard=ap.locator('.feature-card').filter({hasText:listName}).first();if(await listCard.count()!==1)throw Error('SMART_LIST_CREATE_NOT_VISIBLE');
+          const listCard=ap.locator('.feature-card').filter({hasText:listName}).first();await listCard.waitFor({state:'visible',timeout:10000});if(await listCard.count()!==1)throw Error('SMART_LIST_CREATE_NOT_VISIBLE');
           const smartLists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());const createdList=smartLists.find(x=>x.name===listName);if(!createdList?.id)throw Error('SMART_LIST_RUNTIME_RETRIEVAL_FAILED');
           const actionEvents=await ap.evaluate(async()=>window.NayaAssistantRuntime.retrieve());const listAction=actionEvents.find(x=>x.metadata?.action==='create_smart_list'&&x.metadata?.list_id===createdList.id);if(!listAction)throw Error('SMART_LIST_ACTION_RECEIPT_NOT_RETRIEVED');
           const listReceiptId=listAction.receipt_id||listAction.metadata?.receipt_id||'';if(!listReceiptId)throw Error('SMART_LIST_RECEIPT_ID_NOT_BOUND');
