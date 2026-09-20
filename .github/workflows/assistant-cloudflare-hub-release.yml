@@ -230,6 +230,7 @@ jobs:
                 if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('VIEWPORT_IDENTITY_NOT_AUTHENTICATED');
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 }); await page.waitForTimeout(500);
+                const shareSetupTitle = 'CI Smart Share source ' + process.env.GITHUB_SHA.slice(0, 12) + ' ' + viewport.label; const shareSetup = await page.evaluate(async title => window.NayaAssistantRuntime.captureSmartNote({title,content:'Authenticated runtime intelligence created solely as the source for the canonical Smart Share browser proof.',metadata:{proof_surface:'smart-share',proof_setup:true}}), shareSetupTitle); if(!shareSetup) throw new Error('SMART_SHARE_SETUP_CAPTURE_FAILED'); await page.reload({waitUntil:'networkidle'}); await page.locator('.smart-feed-board').waitFor({ timeout: 10000 }); await page.waitForTimeout(800); const shareBoardSetup = page.locator('.smart-feed-board').filter({hasText:shareSetupTitle}).first(); await shareBoardSetup.waitFor({state:'visible',timeout:10000});
                 const result = await page.evaluate(async () => ({
                   title: document.title,
                   marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
@@ -251,7 +252,7 @@ jobs:
                 if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
 
-                const board = page.locator('.smart-feed-board');
+                const board = page.locator('.smart-feed-board').filter({hasText:shareSetupTitle}).first();
                 const statusFor = async (label) => {
                   const status = await board.locator('.sfb-status').textContent().catch(() => '');
                   if (!String(status || '').includes('ACTION PERSISTED') && !String(status || '').includes('SHARE PERSISTED')) throw new Error('SMART_FEED_ACTION_NOT_PERSISTED:' + label + ':' + String(status || 'NO_STATUS'));
