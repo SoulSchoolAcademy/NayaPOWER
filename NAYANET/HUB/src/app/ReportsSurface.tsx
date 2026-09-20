@@ -16,12 +16,12 @@ function asText(value: unknown) {
 }
 
 function eventTitle(event: ReportEvent) {
-  return event.source.label || event.human_input.raw || 'Untitled intelligence';
+  return event.source?.label || event.human_input?.raw || event.title || 'Untitled intelligence';
 }
 
 function isVerified(event: ReportEvent) {
-  const state = event.status || ''.toLowerCase();
-  return state.includes('verified') || event.status || ''.toLowerCase().includes('verified');
+  const state = (event.status || '').toLowerCase();
+  return state.includes('verified');
 }
 
 function within(event: ReportEvent, duration: number, now: number) {
@@ -112,7 +112,7 @@ export function ReportsSurface() {
     const q = query.trim().toLowerCase();
     if (!q) return events;
     return events.filter(event =>
-      [eventTitle(event), event.human_input.raw, event.context.topic || '', ...(Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag): tag is string => typeof tag === 'string') : []), event.lesson.text || '', event.meaning.text || '']
+      [eventTitle(event), event.human_input?.raw || '', event.metadata?.topic ? asText(event.metadata.topic) : '', ...(Array.isArray(event.metadata?.tags) ? event.metadata.tags.filter((tag: unknown): tag is string => typeof tag === 'string') : []), asText(event.metadata?.lesson), asText(event.metadata?.meaning)]
         .join(' ')
         .toLowerCase()
         .includes(q),
