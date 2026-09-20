@@ -46,18 +46,16 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "CURRENT_HUB_REACT_RUNTIME_VERIFIED",
-    "observed_head": "c281f2f63df27495798aa4df68d8868913f709ca",
-    "readiness_run_id": 35471113077,
-    "readiness_result": "READY",
-    "hub_release_run_id": 35485053636,
-    "hub_release_result": "SUCCESS",
-    "hub_release_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+    "status": "CURRENT_MAIN_ASSISTANT_HUB_ACCEPTANCE_IN_PROGRESS",
+    "observed_head": "beff8c6052e3c2dbd4569d017e8857f58cdfd085",
+    "release_run_id": 35534913866,
+    "release_result": "PENDING",
     "hub_runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
-    "hub_runtime_parity": "VERIFIED",
-    "hub_runtime_baseline": "DESKTOP_AND_MOBILE_VERIFIED",
-    "smart_feed_action_receipt": "VERIFIED",
-    "smart_feed_action_reload": "VERIFIED"
+    "latest_verified_gate": "LIVE_EXACT_SOURCE_PARITY_VERIFIED",
+    "latest_verified_worker_version": "eaccbe84-1a5d-45fa-8277-941090baeb05",
+    "latest_failed_gate": "VERIFY_ASSISTANT_RUNTIME_BASELINE",
+    "latest_failed_boundary": "Naya Play acceptance harness event-id regex was stale; production action matrix and Naya Play receipt/reload had already passed before the harness assertion.",
+    "current_release_wait": "Run 35534913866 is pending; do not claim Gate 1/runtime acceptance green until it completes."
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -100,7 +98,14 @@
     "Human Hub Smart Note capture proof run 35527638171 is VERIFIED at live runtime: capture control → canonical receiver → canonical event e27faa0c-df86-4f32-bb34-62b283c7548f → cognition row 627dd24e-48e0-4317-b9df-c5e03c1c64b7 → PIS index 7595c62b-2a00-43c4-bdb5-13666397edef → Smart Feed render → reload identity preserved.",
     "Canonical Assistant Cloudflare release run 35527973956 is SUCCESS for deployed source 4697d5e039b6bfbde2104c757cf37e1f2221b90c; Cloudflare Version ID ba817d73-73b1-4307-845a-15f210314103; exact live parity sha256 8b8e94799ea323d98fb3772a12da394f849d06e2d1f795a88200c790385c744e.",
     "Human Hub Smart Note capture run 35528080864 is VERIFIED with event 1bdfee48-f79c-4b87-8d5f-53e345904cf7, cognition row 60c73ebb-c673-4587-ac76-f72c659115df, PIS mapping to the same canonical event ID, Smart Feed render, and reload identity preservation.",
-    "Release run 35527973956 also verified desktop/mobile Hub baseline, Smart Feed action matrix, unauthorized persistence block, private Space create/reload/retrieve, Connection create/reload/retrieve, Intelligence Library and Smart Mail routes."
+    "Release run 35527973956 also verified desktop/mobile Hub baseline, Smart Feed action matrix, unauthorized persistence block, private Space create/reload/retrieve, Connection create/reload/retrieve, Intelligence Library and Smart Mail routes.",
+    "2026-09-20 canonical React root deployment repair now serves the built Vite dist/index.html at the Worker root; exact live/source SHA parity passed in release run 35534356821 and later runs.",
+    "2026-09-20 Smart Share runtime boundary repair: Hub callers pass {sourceEventId} while the shared runtime previously accepted a raw string, producing PostgreSQL 22P02 '[object Object]'; runtime now normalizes both forms.",
+    "2026-09-20 Smart Share production action and reload proof passed in release run 35534680679 before the acceptance harness advanced to Naya Play.",
+    "2026-09-20 Smart Feed connection proof passed after aligning the acceptance harness with the canonical select-based connection picker.",
+    "2026-09-20 Naya Play is now exposed in canonical desktop/mobile Hub navigation; the surface itself records a canonical event and receipt and verifies retrieval before reporting PLAY VERIFIED.",
+    "2026-09-20 the current acceptance harness failure was test-contract-only at Naya Play event identity: runtime record() uses assistant_<timestamp> IDs, while the harness required UUIDs; PR #392 corrected that contract.",
+    "2026-09-20 release run 35534913866 is pending on current main after the Naya Play acceptance correction; its result is the next authoritative acceptance observation."
   ],
   "unknown": [
     "A single consolidated current human-facing acceptance receipt that includes the public welcome front door and every Wave A security/relationship step is not yet recorded.",
