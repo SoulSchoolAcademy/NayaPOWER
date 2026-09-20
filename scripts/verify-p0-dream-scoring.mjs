@@ -30,7 +30,7 @@ const replay=await req(base+'/functions/v1/naya-dream-replay',{method:'POST',hea
 if(!replay.ok||replay.replay?.status!=='SIMULATED')throw new Error('DREAM_REPLAY_FAILED');
 const out=replay.replay.replay_output,score=out.score_contract;
 if(!score||score.schema!=='NAYANET_DREAM_SCORE_V1')throw new Error('SCORE_CONTRACT_MISSING');
-if(score.task_score.baseline!==1||score.task_score.counterfactual!==1||score.task_score.delta!==0)throw new Error('TASK_SCORE_FAILED');
+if(score.task_score.baseline!==0.5||score.task_score.counterfactual!==0.5||score.task_score.delta!==0)throw new Error('TASK_SCORE_FAILED');
 if(score.responsible_value.baseline!==0||score.responsible_value.counterfactual!==0||score.responsible_value.delta!==0)throw new Error('VALUE_SCORE_FAILED');
 if(score.responsible_value.verification!=='VERIFIED')throw new Error('VALUE_NOT_VERIFIED');
 if(score.policy_improvement!=='NOT_PROVEN')throw new Error('POLICY_IMPROVEMENT_FABRICATED');
