@@ -43,7 +43,7 @@ jobs:
             }
           };
           JS
-          echo "CANONICAL_HUB=$HUB" > welcome-source.sha256
+          echo "CANONICAL_HUB=https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/" > welcome-source.sha256
 
       - name: Resolve authoritative nayanet.app zone
         shell: bash
