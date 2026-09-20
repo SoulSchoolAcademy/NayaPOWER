@@ -18,21 +18,33 @@ function FeedView({ title, subtitle, library = false }: { title: string; subtitl
 
   useEffect(() => {
     let alive = true;
+    const targetEventId = new URLSearchParams(window.location.search).get('event_id') || '';
     if (!identity.is_authenticated) {
       setEvents([]);
       setState('loading');
       return () => { alive = false; };
     }
     setState('loading');
-    loadPrimaryIntelligence()
-      .then(feed => {
-        if (!alive) return;
-        setEvents(sortPrimaryIntelligence(feed.events));
+    (async () => {
+      try {
+        let feed: Awaited<ReturnType<typeof loadPrimaryIntelligence>> | null = null;
+        for (let attempt = 0; attempt < 20; attempt += 1) {
+          feed = await loadPrimaryIntelligence();
+          if (!targetEventId || feed.events.some(event => event.event_id === targetEventId) || attempt === 19) break;
+          await new Promise(resolve => setTimeout(resolve, 500));
+        }
+        if (!alive || !feed) return;
+        const ordered = sortPrimaryIntelligence(feed.events);
+        setEvents(ordered);
+        const targetIndex = targetEventId ? ordered.findIndex(event => event.event_id === targetEventId) : -1;
+        setSelected(targetIndex >= 0 ? targetIndex : 0);
         setState('ready');
-      })
-      .catch(() => { if (alive) setState('error'); });
+      } catch {
+        if (alive) setState('error');
+      }
+    })();
     return () => { alive = false; };
-  }, [identity.is_authenticated]);
+  }, [identity.is_authenticated, window.location.search]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
