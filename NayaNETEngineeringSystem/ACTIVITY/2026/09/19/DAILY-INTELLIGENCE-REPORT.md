@@ -43,3 +43,17 @@ REMAINING:
 
 NEXT:
 - Finish the exact-current-HEAD authenticated browser proof and promote its verified evidence into the durable intelligence pipeline.
+
+
+## Fresh closure update — 2026-09-19
+
+- Exact current claim-relevant Hub source was reconciled and deployed through Cloudflare run `35492451804` at source scope `bd5201e7252e744cea876beaf50f41b7bf541fef`.
+- Exact live source parity, desktop/mobile baseline, canonical React Hub, Smart Feed persistence/retrieval, and unauthorized persistence blocking all passed.
+- Smart Note E2E on the same main HEAD passed in run `35491124160`.
+- Existing Smart Feed → Smart Ledger integration is VERIFIED in run `35460477460`.
+- First Daily Intelligence event promoted: `DI-20260919-CURRENT-HEAD-CLOUDFLARE-BROWSER-PROOF-001`.
+- Distilled lesson: production/runtime proof is source-scoped; measurement boundaries are part of correctness.
+- Promotion state: VERIFIED / CANONICAL; no governance or authority mutation.
+- Promotion receipt: `.naya/receipts/2026-09-19-DI-001-CURRENT-HEAD-PROMOTION.md`.
+
+**NEXT:** begin the next Hub vertical transaction using the promoted proof discipline.
