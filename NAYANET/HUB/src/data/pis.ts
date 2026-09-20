@@ -19,3 +19,14 @@ async function loadBuildPIS():Promise<PISFeed>{const response=await fetch(PIS_UR
 async function loadLocalCognitivePIS(base:PISFeed):Promise<PISFeed>{const engine=(window as typeof window & {NayaNetCognition?:{search:(query?:string,filters?:Record<string,string>)=>CognitiveEvent[]}}).NayaNetCognition;if(!engine)return base;const local=engine.search('',{project:'NayaNET'}).map(cognitiveEventToIntelligence);const seen=new Set(base.events.map(event=>event.event_id));const merged=[...local.filter(event=>!seen.has(event.event_id)),...base.events];return{...base,event_count:merged.length,events:merged}}
 export async function loadPrimaryIntelligence():Promise<PISFeed>{try{const persistent=await loadPersistentPIS();if(persistent&&persistent.events.length)return persistent}catch{}try{const build=await loadBuildPIS();return await loadLocalCognitivePIS(build)}catch(buildError){try{const persistent=await loadPersistentPIS();if(persistent)return persistent}catch{}try{return await loadCanonicalSmartFeed()}catch{throw buildError}}}
 export function sortPrimaryIntelligence(events:IntelligentEvent[]):IntelligentEvent[]{return[...events].sort((a,b)=>{const an=a.context.tags?.includes('canonical')?0:1;const bn=b.context.tags?.includes('canonical')?0:1;if(an!==bn)return an-bn;return b.created_at.localeCompare(a.created_at)})}
+
+function searchableEvent(event:IntelligentEvent){return[event.source.label,event.human_input.raw,event.context.topic||'',...(event.context.tags||[]),event.naya_interpretation.observation||'',event.naya_interpretation.interpretation||'',event.naya_interpretation.recommendation||'',event.weaver_synthesis.summary||'',event.lesson.text||'',event.meaning.text||'',event.action.text||'',event.whats_in_it_for_you||'',...event.perspectives.map(p=>p.body)].join(' ').toLowerCase()}
+export async function searchPrimaryIntelligence(query:string,base?:PISFeed):Promise<PISFeed>{
+ const source=base||await loadPrimaryIntelligence();const q=query.trim().toLowerCase();if(!q)return source;
+ const local=source.events.filter(event=>searchableEvent(event).includes(q));
+ const engine=(window as typeof window & {NayaNetCognition?:{search:(query?:string,filters?:Record<string,string>)=>CognitiveEvent[]}}).NayaNetCognition;
+ if(!engine)return{...source,event_count:local.length,events:local};
+ const runtime=engine.search(query,{project:'NayaNET'}).map(cognitiveEventToIntelligence);
+ const seen=new Set(local.map(event=>event.event_id));const merged=[...runtime.filter(event=>!seen.has(event.event_id)),...local];
+ return{...source,event_count:merged.length,events:sortPrimaryIntelligence(merged)};
+}
