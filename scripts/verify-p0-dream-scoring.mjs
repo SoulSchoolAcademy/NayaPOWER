@@ -6,7 +6,11 @@ const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/js
 const anon=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
 const sender=await anon(),receiver=await anon();
 const idem='p0-dream-score-'+crypto.randomBytes(10).toString('hex');
-const send=await req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({recipient_user_id:receiver.user.id,body:'P0 Dream scoring proof transaction.',subject:'P0 Dream scoring proof',kind:'direct',idempotency_key:idem,project_id:'NayaNET'})});
+const authority=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_subject_id:sender.user.id,p_source_event_id:'p0-dream-score-authority-'+idem,p_mission_id:'P0 Dream scoring proof',p_scope:{project_id:'NayaNET',target:receiver.user.id},p_actions:['smart_mail_send'],p_constraints:{mode:'p0-dream-score-proof',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_p0_dream_scoring_proof'},p_parent_authority:null})});
+if(!authority?.grant_id)throw new Error('AUTHORITY_GRANT_FAILED');
+const validated=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_grant_id:authority.grant_id,p_action:'smart_mail_send',p_target:receiver.user.id})});
+if(validated?.status!=='AUTHORIZED')throw new Error('AUTHORITY_NOT_AUTHORIZED');
+const send=await req(base+'/functions/v1/nayanet-smart-mail',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({recipient_user_id:receiver.user.id,body:'P0 Dream scoring proof transaction.',subject:'P0 Dream scoring proof',kind:'direct',idempotency_key:idem,project_id:'NayaNET',authority_grant_id:authority.grant_id})});
 if(send.status!=='CREATED')throw new Error('MAIL_CREATE_FAILED');
 const received=await req(base+'/rest/v1/v7_mail_messages?select=id&thread_id=eq.'+send.thread_id,{headers:h(receiver.access_token)});
 if(received.length!==1)throw new Error('RECEIVER_RETRIEVAL_FAILED');
