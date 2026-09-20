@@ -3,7 +3,7 @@ import crypto from "node:crypto";
 import fs from "node:fs";
 
 const base=process.env.SUPABASE_URL;
-const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+const key=process.env.SUPABASE_PUBLISHABLE_KEY || "sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue";
 const runtime=process.env.RUNTIME_URL;
 if(!base||!key||!runtime) throw new Error("WAVE_A_ENV_MISSING");
 
