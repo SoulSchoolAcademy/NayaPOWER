@@ -102,7 +102,6 @@ function wireSidebar(){
   ]],
   ['SYSTEM',[
    ['ledger','Smart Ledger','◇'],
-   ['play','Naya Play','▶'],
    ['settings','Settings','⚙']
   ]]
  ];
