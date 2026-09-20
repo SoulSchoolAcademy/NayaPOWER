@@ -28,6 +28,28 @@ jobs:
         run: |
           npm install --no-save playwright@1.55.0
           npx playwright install --with-deps chromium
+      - name: Instrument Smart Share PIS boundary
+        shell: bash
+        run: |
+          node <<'NODE'
+          import fs from 'node:fs';
+          const p='.github/scripts/wave-a-browser-acceptance.mjs';
+          const s=fs.readFileSync(p,'utf8');
+          const needle="const capturedSourceEventId=String(shareSetup?.event_id||shareSetup?.event?.event_id||'').trim();if(!capturedSourceEventId)throw Error('SMART_SHARE_CAPTURE_EVENT_ID_MISSING');await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(800);";
+          const insert=`const capturedSourceEventId=String(shareSetup?.event_id||shareSetup?.event?.event_id||'').trim();if(!capturedSourceEventId)throw Error('SMART_SHARE_CAPTURE_EVENT_ID_MISSING');
+          const authSnapshot=await ap.evaluate(()=>JSON.parse(localStorage.getItem('nayanet.supabase.auth')||'{}'));
+          const pisBoundary=await ap.evaluate(async({base,key,eventId,userId,token})=>{const headers={apikey:key,authorization:'Bearer '+token};const url=base+'/rest/v1/nayanet_intelligence_index?select=id,owner_id,source_table,source_id,title,event_time,status,metadata&owner_id=eq.'+encodeURIComponent(userId)+'&metadata->>event_id=eq.'+encodeURIComponent(eventId);const response=await fetch(url,{headers});const rows=await response.json().catch(()=>[]);return{eventId,status:response.status,matchingRows:Array.isArray(rows)?rows:[],matchingSourceIds:Array.isArray(rows)?rows.map(r=>r.source_id):[],matchingMetadataEventIds:Array.isArray(rows)?rows.map(r=>r.metadata?.event_id||null):[]}}, {base,key,eventId:capturedSourceEventId,userId:authSnapshot?.user?.id||'',token:authSnapshot?.access_token||''});
+          console.log('PIS_BROWSER_BOUNDARY_TRACE',JSON.stringify(pisBoundary));
+          if(!pisBoundary.matchingRows?.length)throw Error('SMART_SHARE_PIS_INDEX_ROW_NOT_FOUND:'+JSON.stringify(pisBoundary));
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(800);
+          const feedProjection=await ap.evaluate(eventId=>({targetEventId:eventId,boardEventIds:[...document.querySelectorAll('.smart-feed-board')].map(x=>x.getAttribute('data-event-id')).filter(Boolean),targetPresent:[...document.querySelectorAll('.smart-feed-board')].some(x=>x.getAttribute('data-event-id')===eventId),shellRoute:location.pathname,query:location.search}),capturedSourceEventId);
+          console.log('PIS_FEED_RELOAD_HYDRATION_TRACE',JSON.stringify(feedProjection));
+          if(!feedProjection.targetPresent)throw Error('SMART_SHARE_PIS_FEED_DOM_EVENT_MISSING:'+JSON.stringify(feedProjection));
+          const shareBoard=ap.locator('.smart-feed-board[data-event-id="'+capturedSourceEventId+'"]');await shareBoard.waitFor({state:'visible',timeout:10000});`;
+          if(!s.includes(needle)) throw new Error('PIS_INSTRUMENTATION_TARGET_NOT_FOUND');
+          fs.writeFileSync(p,s.replace(needle,insert),'utf8');
+          console.log('PIS_BROWSER_BOUNDARY_INSTRUMENTED');
+          NODE
       - name: Execute live Hub browser acceptance
         shell: bash
         run: |
