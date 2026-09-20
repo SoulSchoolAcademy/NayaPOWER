@@ -3,7 +3,7 @@
 
 Sources:
 - legacy/canonical SMART FEED CONTENT
-- canonical SUPERBRAIN/SMART-NOTES calendar
+- canonical .naya/memory/notes Smart Note calendar
 - optional in-transaction Smart Note objects
 
 The output is a projection, not a competing source of truth.
@@ -19,7 +19,7 @@ from typing import Any, Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "SMART FEED CONTENT"
-SMART_NOTES_ROOT = ROOT / "SUPERBRAIN" / "SMART-NOTES"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
 OUT = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
 
 NOTE_RE = re.compile(r"(?:^|\n)🧠\s*NAYA POWER\s*[—-]\s*SMART NOTE\s+(\d+)\s*\n")
@@ -103,13 +103,12 @@ def parse_canonical_note(path: Path, root: Path = ROOT) -> dict[str, Any] | None
     return {"event_id": eid, "user_id": "canonical", "created_at": timestamp, "updated_at": timestamp, "source": {"type": "smart_note", "id": eid, "label": topic}, "human_input": {"raw": sec.get("HUMAN NOTE", sec.get("IN A NUTSHELL", "")), "captured_at": timestamp}, "context": {"topic": topic, "tags": ["canonical", "smart-note", "naya-language"], "canonical_path": rel}, "naya_interpretation": {"observation": sec.get("IN A NUTSHELL", ""), "interpretation": sec.get("NAYA NOTE", ""), "recommendation": sec.get("HOW TO USE IT", ""), "uncertainty": "Projection is derived from the canonical Smart Note; truth status remains governed by its evidence."}, "machine_evidence": {"items": evidence + [f"CANONICAL_SMART_NOTE:{rel}", f"EID_SOURCE:{eid_source}"], "verification_state": "RECORDED"}, "weaver_synthesis": {"summary": sec.get("WHY IT MATTERS", topic), "relationships": []}, "lesson": {"text": sec.get("LEARNING LESSON / ADAPTIVE LEARNING", ""), "retained": True}, "meaning": {"text": sec.get("WHY IT MATTERS", ""), "significance": sec.get("WHY IT MATTERS", "")}, "action": {"text": sec.get("ONE NEXT ACTION", ""), "status": "canonical"}, "whats_in_it_for_you": sec.get("WHAT'S IN IT FOR ME / YOU / US", ""), "relationships": {"event_ids": [], "connection_ids": [], "space_ids": []}, "privacy": {"visibility": "private", "consent_state": "not_granted"}, "trust": {"level": "recorded", "evidence_ids": evidence}, "status": meta.get("status", "CANONICAL"), "perspectives": [{"label": "HUMAN", "body": sec.get("HUMAN NOTE", ""), "tone": "human"}, {"label": "CHILD", "body": sec.get("CHILD / DERIVED NOTE", ""), "tone": "child"}, {"label": "GRAMMAR", "body": sec.get("GRAMMAR NOTE", ""), "tone": "machine"}, {"label": "NAYA", "body": sec.get("NAYA NOTE", ""), "tone": "naya"}, {"label": "MACHINE", "body": sec.get("MACHINE NOTE", ""), "tone": "machine"}, {"label": "LEARNING", "body": sec.get("LEARNING LESSON / ADAPTIVE LEARNING", ""), "tone": "learning"}], "pis": {"source_ref": rel, "projection_version": "3.0", "timestamp_precision": "canonical-smart-note"}}
 
 
-def canonical_note_events(root: Path = SMART_NOTES_ROOT) -> list[dict[str, Any]]:
+def canonical_note_events(root: Path = SMART_NOTES_ROOT, repository_root: Path = ROOT) -> list[dict[str, Any]]:
     if not root.exists():
         return []
     events = []
-    repo_root = root.parents[1]
     for path in sorted(root.rglob("*.md")):
-        event = parse_canonical_note(path, repo_root)
+        event = parse_canonical_note(path, repository_root)
         if event:
             events.append(event)
     return events
@@ -119,7 +118,7 @@ def build_projection(*, extra_notes: Iterable[dict[str, Any]] | None = None, sou
     source_root = Path(source_root)
     source = source_root / "SMART FEED CONTENT"
     legacy = legacy_events(source.read_text(encoding="utf-8"), when()) if source.exists() else []
-    notes = canonical_note_events(source_root / "SUPERBRAIN" / "SMART-NOTES")
+    notes = canonical_note_events(source_root / ".naya" / "memory" / "notes", source_root)
     merged: dict[str, dict[str, Any]] = {e["event_id"]: e for e in legacy}
     for event in notes + list(extra_notes or []):
         merged[event["event_id"]] = event
