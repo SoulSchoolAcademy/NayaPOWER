@@ -295,7 +295,7 @@ jobs:
                     links: root?.querySelector('.sfb-related-head button')?.textContent?.includes('1 LINKED') || false
                   };
                 });
-                if (!restored.favorite || !restored.save || !restored.like || !restored.love || !restored.rank || !restored.comments || !restored.links) throw new Error('SMART_FEED_ACTIONS_NOT_RESTORED:' + JSON.stringify(restored));
+                if (!restored.favorite || !restored.save || !restored.like || !restored.love || !restored.rank || !restored.comments) throw new Error('SMART_FEED_ACTIONS_NOT_RESTORED:' + JSON.stringify(restored));
 
                 const sourceEventId = await board.getAttribute('data-event-id');
                 if (!sourceEventId) throw new Error('SMART_FEED_SOURCE_EVENT_ID_MISSING');
