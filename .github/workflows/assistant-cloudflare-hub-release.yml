@@ -357,7 +357,7 @@ jobs:
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                 await page.waitForTimeout(500);
 
-                console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof, failureStatus }));
+                console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof }));
                 // Reuse the viewport-aware navigation root from the Space proof above.\n
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
                 await libraryNav.scrollIntoViewIfNeeded();
