@@ -73,7 +73,7 @@ jobs:
               if (established.identity?.authenticated && established.identity?.userId) break;
               await new Promise(resolve => setTimeout(resolve, 500));
             }
-            const established = await page.evaluate(async () => ({ identity: await window.NayaNETNameFirstAuth?.current?.(), status: document.getElementById('status')?.textContent || '' }));
+
             if (!established.identity?.authenticated || !established.identity?.userId) throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
             return page.evaluate(async () => {
               const identity = await window.NayaNETNameFirstAuth.current();
