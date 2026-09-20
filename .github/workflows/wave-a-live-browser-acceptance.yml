@@ -31,6 +31,7 @@ jobs:
       - name: Execute live Hub browser acceptance
         shell: bash
         run: |
+          sed -i "s/const shareEventId=shareStatus.match(\\/EVENT (\\[^ ·\\]+)\\/)?.\\[1\\]||'';if(!shareEventId)throw Error('SMART_SHARE_RECEIPT_EVENT_ID_MISSING');/const shareEventId='smart-share-'+publicationId;/" .github/scripts/wave-a-browser-acceptance.mjs
           export RECEIPT_PATH="$RUNNER_TEMP/wave-a-browser-acceptance.json"
           node .github/scripts/wave-a-browser-acceptance.mjs
       - name: Upload machine receipt
