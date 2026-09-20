@@ -380,6 +380,18 @@ jobs:
                   if (await page.locator('.feature-table').count()) throw new Error('LEGACY_GENERIC_TABLE_RENDERED:' + tabName);
                   if (!(await page.locator('h1').filter({hasText:tabName.replace('Your Report','Your Reports')}).count())) throw new Error('FEATURE_HEADING_MISSING:' + tabName);
                 }
+                await page.evaluate(() => window.NayaAssistantRuntime.signOut());
+                await page.waitForTimeout(250);
+                await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA + '&unauthorized=1', { waitUntil: 'networkidle', timeout: 30000 });
+                await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                await page.waitForTimeout(500);
+                const unauthorizedFavorite = page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first();
+                await unauthorizedFavorite.click();
+                await page.waitForTimeout(500);
+                const unauthorizedStatus = await page.locator('.smart-feed-board .sfb-status').textContent().catch(() => '');
+                if (!String(unauthorizedStatus || '').includes('ACTION BLOCKED') || !String(unauthorizedStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(unauthorizedStatus || 'NO_STATUS'));
+                console.log('SMART_FEED_UNAUTHORIZED_ACTION_BLOCK_VERIFIED', viewport.label, unauthorizedStatus);
+
                 console.log('CANONICAL_REACT_HUB_VERIFIED', viewport.label, JSON.stringify(result));
                 await context.close();
               }
