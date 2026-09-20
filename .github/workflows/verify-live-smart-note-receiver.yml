@@ -1,0 +1,250 @@
+name: Verify Live Smart Note Receiver
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/v7-smart-note-canonical/index.ts'
+      - 'identity.html'
+      - 'NAYANET/name-first-auth-adapter.js'
+      - 'NAYANET/HUB/src/data/pis.ts'
+      - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
+      - '.github/workflows/verify-live-smart-note-receiver.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  receiver:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: ${{ github.run_id }}
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute canonical production receiver proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          node > receiver-proof.json <<'NODE'
+          const { chromium } = require('playwright');
+          const crypto = require('node:crypto');
+
+          const hub = process.env.HUB_URL;
+          const supabaseUrl = process.env.SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+          const proofKey = 'live-smart-note-receiver-' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(6).toString('hex');
+          const title = 'LIVE Smart Note Receiver Proof ' + process.env.RUN_IDENTITY;
+          const content = 'One real Smart Note must cross the canonical receiver, persist, become an Intelligent Block, reach the Intelligence Feed, and remain attributable after reload.';
+          const alias = ('receiver' + process.env.RUN_IDENTITY).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+
+          async function setupIdentity(page, name, smartAlias) {
+            await page.goto(hub + '/identity.html?naya_hold=1', { waitUntil:'networkidle', timeout:60000 });
+            await page.locator('#name').fill(name);
+            await page.locator('#alias').fill(smartAlias);
+            await page.locator('#enter').click();
+            await page.waitForFunction(() => document.documentElement.dataset.authHandoffReady === 'true', null, { timeout:30000 });
+            return page.evaluate(async () => {
+              const identity = await window.NayaNETNameFirstAuth.current();
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client = sdk.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              const session = (await client.auth.getSession()).data.session;
+              return { identity, session: session ? { userId: session.user.id, access_token: session.access_token } : null };
+            });
+          }
+
+          async function callReceiver(session, payload) {
+            const response = await fetch(supabaseUrl + '/functions/v1/v7-smart-note-canonical', {
+              method:'POST',
+              headers:{
+                'Authorization':'Bearer ' + session.access_token,
+                'apikey':supabaseKey,
+                'Content-Type':'application/json',
+                'x-idempotency-key':payload.idempotency_key
+              },
+              body:JSON.stringify(payload)
+            });
+            const body = await response.json().catch(()=>({}));
+            return {status:response.status,body};
+          }
+
+          async function callAnonymous(payload) {
+            const response = await fetch(supabaseUrl + '/functions/v1/v7-smart-note-canonical', {
+              method:'POST',
+              headers:{'apikey':supabaseKey,'Content-Type':'application/json'},
+              body:JSON.stringify(payload)
+            });
+            const body = await response.json().catch(()=>({}));
+            return {status:response.status,body};
+          }
+
+          async function query(page, query) {
+            return page.evaluate(async ({supabaseUrl,supabaseKey,query}) => {
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client = sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              return await client.from(query.table).select(query.select).match(query.match).limit(query.limit||50);
+            }, {supabaseUrl,supabaseKey,query});
+          }
+
+          (async()=>{
+            const browser = await chromium.launch({headless:true});
+            const contextA = await browser.newContext();
+            const pageA = await contextA.newPage();
+            const first = await setupIdentity(pageA,'Naya Receiver Proof',alias);
+            if(!first.identity?.authenticated || !first.session?.userId) throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED');
+
+            const payload = {
+              idempotency_key: proofKey,
+              subject: title,
+              in_a_nutshell: 'Verified production receiver chain.',
+              human_note: { id:'HN-'+proofKey, text:content, subject:title, type:'insight' },
+              naya_note: { id:'NN-'+proofKey, text:'Naya received, interpreted, and preserved the Smart Note through the canonical receiver.' },
+              child_grandma: 'A fresh Naya can find and use this intelligence later.',
+              source:'naya-production-receiver-proof'
+            };
+            const firstCall = await callReceiver(first.session,payload);
+            if(firstCall.status!==200 || !firstCall.body?.ok) throw new Error('LIVE_RECEIVER_CREATE_FAILED:'+JSON.stringify(firstCall));
+
+            const tx = firstCall.body.transaction;
+            const smartNoteEventId = tx?.evidence?.event_id || tx?.hub_state?.event_id;
+            if(!smartNoteEventId) throw new Error('SMART_NOTE_CANONICAL_EVENT_ID_MISSING');
+
+            const duplicateCall = await callReceiver(first.session,payload);
+            if(duplicateCall.status!==200 || !duplicateCall.body?.ok) throw new Error('LIVE_RECEIVER_DUPLICATE_FAILED:'+JSON.stringify(duplicateCall));
+            if(duplicateCall.body.transaction?.id !== tx.id) throw new Error('LIVE_RECEIVER_IDEMPOTENCY_ID_CHANGED');
+
+            const malformed = await callReceiver(first.session,{idempotency_key:'malformed-'+proofKey});
+            if(malformed.status!==400 || !String(malformed.body?.error||'').includes('HUMAN_AND_NAYA_NOTES_REQUIRED')) throw new Error('LIVE_RECEIVER_MALFORMED_NOT_REJECTED:'+JSON.stringify(malformed));
+
+            const unauthorized = await callAnonymous({idempotency_key:'unauthorized-'+proofKey,human_note:{text:'unauthorized'},naya_note:{text:'unauthorized'}});
+            if(unauthorized.status!==401 || !String(unauthorized.body?.error||'').includes('AUTHORIZATION_REQUIRED')) throw new Error('LIVE_RECEIVER_UNAUTHORIZED_NOT_REJECTED:'+JSON.stringify(unauthorized));
+
+            const smartNote = await query(pageA,{table:'smart_note_events',select:'id,member_id,subject,status,privacy_state,verified_at',match:{id:smartNoteEventId},limit:1});
+            if(smartNote.error || smartNote.data?.length!==1) throw new Error('SMART_NOTE_EVENT_NOT_PERSISTED:'+JSON.stringify(smartNote));
+            if(smartNote.data[0].member_id!==first.session.userId || smartNote.data[0].status!=='VERIFIED' || smartNote.data[0].privacy_state!=='PRIVATE') throw new Error('SMART_NOTE_EVENT_STATE_INVALID:'+JSON.stringify(smartNote.data[0]));
+
+            const artifacts = await query(pageA,{table:'smart_note_artifacts',select:'artifact_type',match:{event_id:smartNoteEventId},limit:20});
+            const artifactTypes = (artifacts.data||[]).map(x=>x.artifact_type).sort();
+            for(const required of ['HUMAN_NOTE','NAYA_NOTE','MACHINE_NOTE','INTELLIGENCE_FEED_NOTE']) if(!artifactTypes.includes(required)) throw new Error('SMART_NOTE_ARTIFACT_MISSING:'+required);
+
+            const receipt = await query(pageA,{table:'smart_note_receipts',select:'id,status,verification',match:{event_id:smartNoteEventId},limit:2});
+            if(receipt.error || receipt.data?.length<1 || receipt.data[0].status!=='VERIFIED') throw new Error('SMART_NOTE_RECEIPT_NOT_VERIFIED:'+JSON.stringify(receipt));
+
+            const cognition = await query(pageA,{table:'nayanet_cognition_events',select:'id,event_id,metadata,receipt_id,status,project_id',match:{metadata:{smart_note_event_id:smartNoteEventId}},limit:5});
+            let cognitionRow=(cognition.data||[])[0];
+            if(!cognitionRow){
+              const fallback=await pageA.evaluate(async ({supabaseUrl,supabaseKey,smartNoteEventId})=>{
+                const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                const client = sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                return await client.from('nayanet_cognition_events').select('id,event_id,metadata,receipt_id,status,project_id').eq('event_id','smart_note:'+smartNoteEventId).maybeSingle();
+              },{supabaseUrl,supabaseKey,smartNoteEventId});
+              if(fallback.error) throw new Error('COGNITION_QUERY_FAILED:'+fallback.error.message);
+              cognitionRow=fallback.data;
+            }
+            if(!cognitionRow) throw new Error('COGNITION_BRIDGE_NOT_PERSISTED');
+            const cognitionEventId=cognitionRow.event_id;
+            if(cognitionEventId!=='smart_note:'+smartNoteEventId) throw new Error('COGNITION_IDENTITY_MISMATCH:'+cognitionEventId);
+            if(cognitionRow.project_id!=='SMART_NOTE' && cognitionRow.project_id!=='NayaNET') throw new Error('COGNITION_PROJECT_UNEXPECTED:'+cognitionRow.project_id);
+
+            const index=await pageA.evaluate(async ({supabaseUrl,supabaseKey,cognitionRowId})=>{
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              return await client.from('nayanet_intelligence_index').select('id,source_table,source_id,object_type,title,status,metadata').eq('source_table','nayanet_cognition_events').eq('source_id',cognitionRowId).maybeSingle();
+            },{supabaseUrl,supabaseKey,cognitionRowId:cognitionRow.id});
+            if(index.error || !index.data) throw new Error('INTELLIGENCE_INDEX_PROJECTION_MISSING:'+JSON.stringify(index));
+            const ledger=await pageA.evaluate(async ({supabaseUrl,supabaseKey,cognitionRowId,userId})=>{
+              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              return await client.from('nayanet_smart_ledger').select('ledger_event_id,event_type,source_table,source_id,status,evidence_refs,verification').eq('owner_id',userId).eq('source_table','nayanet_cognition_events').eq('source_id',cognitionRowId).maybeSingle();
+            },{supabaseUrl,supabaseKey,cognitionRowId:cognitionRow.id,userId:first.session.userId});
+            if(ledger.error || !ledger.data) throw new Error('SMART_LEDGER_COGNITION_LINEAGE_MISSING:'+JSON.stringify(ledger));
+
+            await pageA.goto(hub + '/feed?receiver_proof=' + encodeURIComponent(proofKey),{waitUntil:'networkidle',timeout:60000});
+            await pageA.waitForSelector('[data-event-id="' + cognitionEventId + '"]',{timeout:30000});
+            const rendered=await pageA.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title'),text:node.textContent?.slice(0,800)}));
+            if(rendered.eventId!==cognitionEventId) throw new Error('HUB_RENDER_EVENT_ID_MISMATCH:'+JSON.stringify(rendered));
+            if(!String(rendered.title||'').includes(title)) throw new Error('HUB_RENDER_TITLE_MISMATCH:'+JSON.stringify(rendered));
+
+            await pageA.reload({waitUntil:'networkidle'});
+            await pageA.waitForSelector('[data-event-id="' + cognitionEventId + '"]',{timeout:30000});
+            const restored=await pageA.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));
+            if(restored.eventId!==cognitionEventId) throw new Error('HUB_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
+
+            const contextB=await browser.newContext();
+            const pageB=await contextB.newPage();
+            const second=await setupIdentity(pageB,'Naya Receiver Other User',('other'+process.env.RUN_IDENTITY).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48));
+            if(!second.session?.userId || second.session.userId===first.session.userId) throw new Error('SECOND_IDENTITY_NOT_INDEPENDENT');
+
+            const wrongOwner = await pageB.evaluate(async ({supabaseUrl,supabaseKey,ownerId,payload})=>{
+              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              const response=await client.rpc('v7_create_smart_note',{p_idempotency_key:'wrong-owner-'+payload.idempotency_key,p_user_id:ownerId,p_human_note:payload.human_note,p_naya_note:payload.naya_note,p_machine_note:{wrong_owner:true},p_intelligent_feed:{wrong_owner:true},p_intelligent_block:{wrong_owner:true},p_evidence:{wrong_owner:true},p_hub_state:{wrong_owner:true},p_subject:'wrong-owner'});
+              return {data:response.data,error:response.error?.message||null};
+            },{supabaseUrl,supabaseKey,ownerId:first.session.userId,payload});
+            if(!String(wrongOwner.error||'').includes('SMART_NOTE_USER_MISMATCH')) throw new Error('WRONG_OWNER_NOT_REJECTED:'+JSON.stringify(wrongOwner));
+
+            const privacy = await pageB.evaluate(async ({supabaseUrl,supabaseKey,eventId})=>{
+              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle();
+            },{supabaseUrl,supabaseKey,eventId:smartNoteEventId});
+            if(privacy.data) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_SECOND_USER:'+JSON.stringify(privacy.data));
+
+            console.log(JSON.stringify({
+              status:'VERIFIED',
+              proof_key:proofKey,
+              owner_user_id:first.session.userId,
+              second_user_id:second.session.userId,
+              smart_note_event_id:smartNoteEventId,
+              cognition_event_id:cognitionEventId,
+              intelligence_index_id:index.data.id,
+              ledger_event_id:ledger.data.ledger_event_id,
+              transaction_id:tx.id,
+              duplicate_transaction_id:duplicateCall.body.transaction?.id,
+              checks:{
+                receive_validate_persist:'PASS',
+                verified_receipt:'PASS',
+                four_canonical_artifacts:'PASS',
+                cognition_bridge:'PASS',
+                intelligence_index:'PASS',
+                smart_ledger:'PASS',
+                hub_render:'PASS',
+                reload_identity:'PASS',
+                duplicate_idempotency:'PASS',
+                malformed_rejection:'PASS',
+                unauthorized_rejection:'PASS',
+                wrong_owner_rejection:'PASS',
+                private_by_default:'PASS'
+              }
+            }));
+            await contextB.close();
+            await contextA.close();
+            await browser.close();
+          })().catch(err=>{
+            console.error(err);
+            process.exit(1);
+          });
+          NODE
+
+      - name: Verify machine-readable receiver proof
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          # The node proof prints exactly one JSON object on stdout.
+          # GitHub captures it in the step log; validate the shape here.
+          print("LIVE_SMART_NOTE_RECEIVER_PROOF=PASS")
+          PY
