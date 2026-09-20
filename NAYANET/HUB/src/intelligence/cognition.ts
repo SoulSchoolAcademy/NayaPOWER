@@ -41,6 +41,8 @@ type AssistantRuntimeApi = {
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
+  createSmartList: (name: string) => Promise<unknown>;
+  listSmartLists: () => Promise<unknown[]>;
 };
 
 declare global {
