@@ -135,9 +135,6 @@ jobs:
               throw e;
             }
             checks[label]=expectedKind;
-            // The surface opener is async. Wait for its loading modal to settle before removing it,
-            // otherwise a late ledger/report response can recreate an overlay over the next sidebar click.
-            await page.waitForFunction(()=>{const m=document.querySelector('.nc-modal');return !m||!m.innerText.includes('LOADING CANONICAL RUNTIME SURFACE…')},{timeout:15000});
             await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
           };
           await clickAndCheck('Home / Smart Feed','feed');
