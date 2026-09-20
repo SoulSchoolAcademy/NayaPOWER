@@ -21,7 +21,7 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-SMART_NOTES_ROOT = ROOT / "SUPERBRAIN" / "SMART-NOTES"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
 CIS_ROOT = ROOT / ".naya" / "memory" / "intelligence"
 CIS_PATH = CIS_ROOT / "CIS.json"
 RECEIPTS_ROOT = CIS_ROOT / "transactions"
@@ -46,6 +46,13 @@ def slug(value: str) -> str:
 def note_id(timestamp: str, topic: str) -> str:
     stamp = timestamp.replace(":", "").replace("+00:00", "Z").replace("-", "")
     return f"SN-{stamp}-{slug(topic)}"
+
+
+def canonical_smart_note_path(timestamp: str, topic: str) -> Path:
+    """Resolve a Smart Note through the canonical logical→physical namespace."""
+    dt = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(timezone.utc)
+    filename = f"SN-{dt:%Y%m%d}-{slug(topic)}.md"
+    return SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / filename
 
 
 def validate_note(note: dict[str, Any]) -> None:
@@ -296,10 +303,7 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
 
-        dt = datetime.fromisoformat(stamp.replace("Z", "+00:00")).astimezone(timezone.utc)
-        path = SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / (
-            f"{dt:%Y-%m-%dT%H-%M-%SZ}__{slug(note['topic'])}.md"
-        )
+        path = canonical_smart_note_path(stamp, note["topic"])
         receipt_path = RECEIPTS_ROOT / f"SN-RCP-{note['id']}.json"
         if path.exists():
             existing = path.read_text(encoding="utf-8")
