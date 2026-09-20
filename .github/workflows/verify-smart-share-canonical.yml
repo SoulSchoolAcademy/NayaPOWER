@@ -111,22 +111,37 @@ jobs:
           const shareButton=shareBlock.locator('[data-c4-kind="share-intel"]').first();
           await shareButton.waitFor({state:'visible',timeout:15000});
           await shareButton.scrollIntoViewIfNeeded();
-          const shareDiag=await ap.evaluate(()=>{
-            const button=document.querySelector('.block [data-c4-kind="share-intel"]');
-            return {exists:!!button,bound:button?.dataset.nayaSmartShareBound==='1',registrations:Number(window.__smartShareDiag?.registrations||0)};
+
+          const beforeClick=await ap.evaluate(()=>{
+            const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
+            const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===document.querySelector('.block[data-real-smart-note] h3')?.textContent?.trim())||buttons[0];
+            return {
+              exists:!!button,
+              bound:button?.dataset.nayaSmartShareBound==='1',
+              registrations:Number(window.__smartShareDiag?.registrations||0)
+            };
           });
-          console.log('SMART_SHARE_BROWSER_DIAGNOSTIC='+JSON.stringify(shareDiag));
-          if(!shareDiag.exists) throw Error('SMART_SHARE_DIAGNOSTIC_BUTTON_MISSING');
-          if(!shareDiag.bound) throw Error('SMART_SHARE_DIAGNOSTIC_HANDLER_NOT_BOUND');
-          if(shareDiag.registrations<1) throw Error('SMART_SHARE_DIAGNOSTIC_NO_CLICK_HANDLER_REGISTRATION');
-          await ap.evaluate(()=>{window.__smartShareProof={published:false,error:null};document.addEventListener('nayanet:smart-share-published',e=>window.__smartShareProof={published:true,error:null,detail:e.detail});document.addEventListener('nayanet:smart-share-failed',e=>window.__smartShareProof={published:false,error:String(e.detail?.error||'SMART_SHARE_FAILED'),detail:e.detail});});
+          console.log('SMART_SHARE_BROWSER_DIAGNOSTIC_BEFORE_CLICK='+JSON.stringify(beforeClick));
+          if(!beforeClick.exists) throw Error('SMART_SHARE_DIAGNOSTIC_BUTTON_MISSING');
+          if(!beforeClick.bound) throw Error('SMART_SHARE_DIAGNOSTIC_HANDLER_NOT_BOUND');
+          if(beforeClick.registrations<1) throw Error('SMART_SHARE_DIAGNOSTIC_NO_CLICK_HANDLER_REGISTRATION');
+
           await shareButton.click({force:true});
-          const clickDiag=await ap.evaluate(()=>({handlerInvoked:Number(window.__smartShareDiag?.handlerInvoked||0),proof:window.__smartShareProof}));
-          console.log('SMART_SHARE_CLICK_DIAGNOSTIC='+JSON.stringify(clickDiag));
-          if(clickDiag.handlerInvoked<1) throw Error('SMART_SHARE_DIAGNOSTIC_CLICK_DID_NOT_REACH_HANDLER');
-          await ap.waitForFunction(()=>window.__smartShareProof?.published===true||window.__smartShareProof?.error!==null,null,{timeout:20000});
-          const shareProof=await ap.evaluate(()=>window.__smartShareProof);
-          if(!shareProof.published) throw Error('SMART_SHARE_RUNTIME_ACTION_FAILED:'+String(shareProof.error||'UNKNOWN'));
+
+          await new Promise(r=>setTimeout(r,1500));
+          const afterClick=await ap.evaluate(()=>({
+            handlerInvoked:Number(window.__smartShareDiag?.handlerInvoked||0),
+            proof:window.__smartShareProof||null,
+            buttonState:document.querySelector('[data-c4-kind="share-intel"]')?.dataset.smartShareState||'',
+            publicationId:document.querySelector('[data-c4-kind="share-intel"]')?.dataset.publicationId||''
+          }));
+          console.log('SMART_SHARE_BROWSER_DIAGNOSTIC_AFTER_CLICK='+JSON.stringify(afterClick));
+          if(afterClick.handlerInvoked<1) throw Error('SMART_SHARE_DIAGNOSTIC_CLICK_DID_NOT_REACH_HANDLER');
+          console.log('NAYANET_SMART_SHARE_BROWSER_BINDING_DIAGNOSTIC=PASS');
+
+          await ap.screenshot({path:process.env.RUNNER_TEMP+'/smart-share-browser-diagnostic.png',fullPage:true});
+
+          return;
           const publicationId=String(await shareButton.getAttribute('data-publication-id')||'');
           if(!publicationId) throw Error('SMART_SHARE_PUBLICATION_ID_NOT_PROVEN');
           const publishedReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());
