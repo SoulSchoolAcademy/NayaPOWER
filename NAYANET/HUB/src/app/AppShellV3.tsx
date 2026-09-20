@@ -20,6 +20,7 @@ const items:NavItem[]=[
  {name:'Your Connections',route:routes.connections,icon:'↔'},
  {name:'Smart Mail',route:routes.mail,icon:'✉'},
  {name:'Smart Ledger',route:routes.ledger,icon:'⌘'},
+ {name:'Dream',route:routes.dream,icon:'◌'},
  {name:'Settings',route:routes.settings,icon:'⚙'}
 ];
 const normalize=(p:string)=>p.length>1&&p.endsWith('/')?p.slice(0,-1):p||'/';
