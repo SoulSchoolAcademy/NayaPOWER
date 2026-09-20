@@ -227,20 +227,43 @@ const recordReceiverReply = async (message, caseId, expectedToken) => {
   return {reply, outcome, expectedHash, responseBody};
 };
 
+const measureExecution=({startedAt,finishedAt,response,receipt,outcome,reworkCount=0})=>({resource_usage:{wall_time_ms:Math.max(0,finishedAt-startedAt),request_count:1,response_payload_bytes:Buffer.byteLength(response.responseBody||"","utf8"),verified_receipt_cost:Number(receipt?.value?.cost??0)},quality:{response_match:response.outcome.response_match===true,verified_value:Number(outcome?.verified_value??0)},rework:{retry_count:reworkCount,correction_count:reworkCount}});
 const caseReports=[];
 for(const c of cases){
   const caseId="paired-"+runId+"-"+c.suffix;
   const frozenCase={case_id:caseId,receiver_id:receiver.id,task:c.task,prior_verified_context:{receiver_retrieval_verified:true,source:"Proof7 verified receipt"}};
   const inputHash=await sha256(JSON.stringify(frozenCase));
+  const cycle1StartedAt=Date.now();
   const a=await send(senderToken,v1,c.v1,caseId,inputHash,"V1");
-  const b=await send(senderToken,v2,c.v2,caseId,inputHash,"V2");
   await verify(receiverToken,a.data.message_id);
-  await verify(receiverToken,b.data.message_id);
-
   const aMessage={id:a.data.message_id,thread_id:a.data.thread_id,execution_receipt_id:a.data.execution_receipt_id,body:c.v1.body};
-  const bMessage={id:b.data.message_id,thread_id:b.data.thread_id,execution_receipt_id:b.data.execution_receipt_id,body:c.v2.body};
   const aResponse=await recordReceiverReply(aMessage,caseId,c.answer_token);
+  const cycle1FinishedAt=Date.now();
+  const {data:cycle1Outcome,error:cycle1OutcomeError}=await supabase.from("nayanet_execution_outcomes").select("outcome_id,receipt_id,verified,verified_value").eq("receipt_id",a.data.execution_receipt_id).single();
+  if(cycle1OutcomeError||!cycle1Outcome?.verified) throw cycle1OutcomeError||new Error("CYCLE1_VERIFIED_OUTCOME_MISSING");
+  const {data:cycle1Receipt,error:cycle1ReceiptError}=await supabase.from("nayanet_execution_receipts").select("id,status,value").eq("id",a.data.execution_receipt_id).single();
+  if(cycle1ReceiptError||!cycle1Receipt||cycle1Receipt.status!=="SUCCESS"||cycle1Receipt.value?.verified!==true) throw cycle1ReceiptError||new Error("CYCLE1_RECEIPT_NOT_VERIFIED");
+  const cycle1Measurement=measureExecution({startedAt:cycle1StartedAt,finishedAt:cycle1FinishedAt,response:aResponse,receipt:cycle1Receipt,outcome:cycle1Outcome});
+  const cycleLearningTargetId="p1-controlled-paired-policy-"+runId+"-"+c.suffix;
+  const cycleLearningClaim="Verified Cycle 1 receiver-response outcome established the held-out fact "+c.answer_token+" as reusable context for the paired Cycle 2 decision.";
+  const {data:cycleLearning,error:cycleLearningError}=await supabase.from("learning_evidence").insert({member_id:sender.id,target_id:cycleLearningTargetId,level:"E6_RETAINED",provenance:"VERIFICATION",status:"ACTIVE",claim:cycleLearningClaim,observed_value:{run_id:runId,case_id:caseId,baseline_receipt_id:a.data.execution_receipt_id,baseline_outcome_id:cycle1Outcome.outcome_id,baseline_measurement:cycle1Measurement},verification_method:"Cycle 1 verified execution receipt + authenticated receiver response outcome",source_event_id:a.data.execution_receipt_id}).select("id,claim,status").single();
+  if(cycleLearningError||!cycleLearning?.id) throw cycleLearningError||new Error("CYCLE1_LEARNING_EVIDENCE_CREATE_FAILED");
+  const {data:cycleRetrievedLesson,error:cycleRetrieveError}=await supabase.from("learning_evidence").select("id,claim,status").eq("id",cycleLearning.id).single();
+  if(cycleRetrieveError||!cycleRetrievedLesson||cycleRetrievedLesson.status!=="ACTIVE"||cycleRetrievedLesson.id!==cycleLearning.id) throw cycleRetrieveError||new Error("CYCLE2_EXACT_LEARNING_EVIDENCE_MISSING");
+  const cycleApply=await jsonRequest("/functions/v1/naya-learning-apply",senderToken,{evidence_id:cycleRetrievedLesson.id});
+  if(!cycleApply?.ok||!cycleApply.learning?.learner_state_version) throw new Error("CYCLE2_LEARNING_APPLY_FAILED");
+  const cycleDecision=await jsonRequest("/functions/v1/naya-decision-context",senderToken,{target_id:cycleLearningTargetId});
+  if(!cycleDecision?.ok||cycleDecision.decision?.decision!=="USE_VERIFIED_LEARNING_CONTEXT"||cycleDecision.decision?.influenced!==true) throw new Error("CYCLE2_RETRIEVED_DECISION_NOT_INFLUENCED");
+  if(cycleDecision.decision?.authority?.changed!==false||cycleDecision.decision?.authority?.granted!==false) throw new Error("CYCLE2_AUTHORITY_CHANGED");
+  const cycleLearnedClaim=String(cycleDecision.decision?.context?.claim||"");
+  if(!cycleLearnedClaim.includes(c.answer_token)||!JSON.stringify(cycleDecision).includes(cycleRetrievedLesson.id)) throw new Error("CYCLE2_EXACT_LEARNING_CONTEXT_MISSING");
+  const cycle2Decision={...c.v2,body:"Use retrieved verified learning evidence "+cycleRetrievedLesson.id+": "+cycleLearnedClaim+" "+c.v2.body};
+  const cycle2StartedAt=Date.now();
+  const b=await send(senderToken,v2,cycle2Decision,caseId,inputHash,"V2");
+  await verify(receiverToken,b.data.message_id);
+  const bMessage={id:b.data.message_id,thread_id:b.data.thread_id,execution_receipt_id:b.data.execution_receipt_id,body:cycle2Decision.body};
   const bResponse=await recordReceiverReply(bMessage,caseId,c.answer_token);
+  const cycle2FinishedAt=Date.now();
 
   await transition(v1.id,"OBSERVED",{observation:"controlled execution, receiver verification and response outcome completed",case_id:caseId});
   await transition(v2.id,"OBSERVED",{observation:"controlled execution and receiver verification completed",case_id:caseId});
@@ -275,6 +298,13 @@ for(const c of cases){
     if(r.status!=="SUCCESS"||r.value?.verified!==true) throw new Error("RECEIPT_OUTCOME_NOT_VERIFIED");
   }
 
+  const cycle2Receipt=receipts.find(r=>r.id===b.data.execution_receipt_id);
+  const cycle2Outcome=independentOutcomes.find(o=>o.receipt_id===b.data.execution_receipt_id);
+  if(!cycle2Receipt||!cycle2Outcome?.verified) throw new Error("CYCLE2_MEASUREMENT_LINEAGE_MISSING");
+  const cycle2Measurement=measureExecution({startedAt:cycle2StartedAt,finishedAt:cycle2FinishedAt,response:bResponse,receipt:cycle2Receipt,outcome:cycle2Outcome});
+  const pairedDeltas={resource_usage:{wall_time_ms:cycle2Measurement.resource_usage.wall_time_ms-cycle1Measurement.resource_usage.wall_time_ms,request_count:0,response_payload_bytes:cycle2Measurement.resource_usage.response_payload_bytes-cycle1Measurement.resource_usage.response_payload_bytes,verified_receipt_cost:cycle2Measurement.resource_usage.verified_receipt_cost-cycle1Measurement.resource_usage.verified_receipt_cost},quality:{verified_value:cycle2Measurement.quality.verified_value-cycle1Measurement.quality.verified_value,response_match:Number(cycle2Measurement.quality.response_match)-Number(cycle1Measurement.quality.response_match)},rework:{retry_count:cycle2Measurement.rework.retry_count-cycle1Measurement.rework.retry_count,correction_count:cycle2Measurement.rework.correction_count-cycle1Measurement.rework.correction_count}};
+  if(pairedDeltas.quality.verified_value<0||pairedDeltas.quality.response_match<0) throw new Error("CYCLE2_QUALITY_REGRESSION");
+
   const {data:evalRow,error:evalError}=await supabase.from("nayanet_policy_evaluations").insert({
     user_id:sender.id,policy_id:v2.id,evaluation_type:"REAL_OUTCOME",
     dataset_hash:"controlled-paired-real-outcomes-"+runId+"-"+c.suffix,
@@ -292,7 +322,8 @@ for(const c of cases){
     result:comparison.result,
     baseline_response:aResponse.responseBody,candidate_response:bResponse.responseBody,
     baseline_response_match:aResponse.outcome.response_match,candidate_response_match:bResponse.outcome.response_match,
-    decision_hashes:{baseline:a.decisionHash,candidate:b.decisionHash}
+    decision_hashes:{baseline:a.decisionHash,candidate:b.decisionHash},
+    paired_measurement:{cycle_1:{baseline_receipt_id:a.data.execution_receipt_id,baseline_outcome_id:cycle1Outcome.outcome_id,learning_evidence_id:cycleRetrievedLesson.id,measurement:cycle1Measurement},cycle_2:{retrieved_learning_evidence_id:cycleRetrievedLesson.id,decision_influenced:true,authority_unchanged:true,receipt_id:b.data.execution_receipt_id,outcome_id:cycle2Outcome.outcome_id,measurement:cycle2Measurement},deltas:pairedDeltas,causal_binding:{learning_evidence_id:cycleRetrievedLesson.id,retrieved_before_action:true,decision_influenced:true,authority_unchanged:true,cycle2_receipt_id:b.data.execution_receipt_id,cycle2_outcome_id:cycle2Outcome.outcome_id,exact_lineage:true}}
   });
 }
 
@@ -404,6 +435,7 @@ const report={
   existing_space_id:spaceId,
   cases:caseReports,
   aggregate:{baseline_verified_value:aggregateBaseline,candidate_verified_value:aggregateCandidate,result:aggregateResult},
+  paired_measurement_contract:{cycle_1_baseline_present:caseReports.every(c=>Boolean(c.paired_measurement?.cycle_1?.learning_evidence_id)),exact_learning_evidence_retrieved_in_cycle_2:caseReports.every(c=>c.paired_measurement?.cycle_2?.retrieved_learning_evidence_id===c.paired_measurement?.cycle_1?.learning_evidence_id),causal_binding_present:caseReports.every(c=>c.paired_measurement?.causal_binding?.exact_lineage===true&&c.paired_measurement?.causal_binding?.retrieved_before_action===true),resource_deltas:caseReports.map(c=>c.paired_measurement.deltas.resource_usage),quality_deltas:caseReports.map(c=>c.paired_measurement.deltas.quality),rework_deltas:caseReports.map(c=>c.paired_measurement.deltas.rework),quality_regression:caseReports.some(c=>c.paired_measurement.deltas.quality.verified_value<0||c.paired_measurement.deltas.quality.response_match<0),meaningful_outcome_improvement:aggregateCandidate>aggregateBaseline||caseReports.some(c=>c.paired_measurement.deltas.quality.verified_value>0)}}
   future_behavior:{case_id:futureCaseId,baseline_policy_id:v1.id,candidate_policy_id:successor.id,baseline_value:futureComparison.baseline.verified_value,candidate_value:futureComparison.candidate.verified_value,result:futureComparison.result,behavior_changed:futureBehaviorChanged,learned_claim:learnedClaim},
   receiver_anonymous:true,
   mutual_connection_verified:true,
