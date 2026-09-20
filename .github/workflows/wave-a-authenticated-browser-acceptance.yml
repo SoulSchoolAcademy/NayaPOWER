@@ -55,7 +55,22 @@ jobs:
           const browser=await chromium.launch({headless:true});
           async function contextFor(session){
             const c=await browser.newContext();const p=await c.newPage();
+            const bootstrapTrace={responses:[],requestFailures:[],pageErrors:[],consoleErrors:[],navigations:[]};
+            p.on('response',async r=>{
+              if(r.url().includes('/assistant-runtime.js')){
+                const body=await r.body().catch(()=>Buffer.from(''));
+                bootstrapTrace.responses.push({status:r.status(),url:r.url(),content_type:r.headers()['content-type']||null,cache_control:r.headers()['cache-control']||null,sha256:crypto.createHash('sha256').update(body).digest('hex'),bytes:body.length,contains_runtime:body.includes(Buffer.from('NayaAssistantRuntime'))});
+              }
+            });
+            p.on('requestfailed',r=>bootstrapTrace.requestFailures.push({url:r.url(),failure:r.failure()?.errorText||null}));
+            p.on('pageerror',e=>bootstrapTrace.pageErrors.push(String(e?.stack||e)));
+            p.on('console',m=>{if(m.type()==='error')bootstrapTrace.consoleErrors.push(m.text());});
+            p.on('framenavigated',frame=>{if(frame===p.mainFrame())bootstrapTrace.navigations.push(frame.url());});
             await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            bootstrapTrace.initial_url=p.url();
+            bootstrapTrace.document_marker=await p.evaluate(()=>document.querySelector('meta[name="nayanet-hub-marker"]')?.content||document.body?.dataset?.marker||null).catch(()=>null);
+            bootstrapTrace.script_urls=await p.evaluate(()=>Array.from(document.scripts).map(s=>s.src||'inline')).catch(()=>[]);
+            console.log('WAVE_A_RUNTIME_BOOTSTRAP_TRACE',JSON.stringify(bootstrapTrace));
             await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
             const ok=await p.evaluate(async ({base,key,access_token,refresh_token})=>{
               const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
