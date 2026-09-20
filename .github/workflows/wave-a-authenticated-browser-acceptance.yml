@@ -5,8 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/wave-a-authenticated-browser-acceptance.yml'
-  workflow_dispatch:
-
+  workflow_dispatch: {}
 permissions:
   contents: read
 
