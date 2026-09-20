@@ -38,7 +38,7 @@ jobs:
           if(!(await p.locator('h1').filter({hasText:'Your Reports'}).count()))throw Error('REPORTS_SURFACE_FAILED');
           checks.reports='PASS';
           await p.goto(runtime+'/settings',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
-          if(!(await p.locator('.empty-route').count())||!(await p.locator('.empty-route').innerText()).includes('AUTHENTICATED'))throw Error('SETTINGS_SURFACE_FAILED');
+          if(!(await p.locator('[data-surface="settings"]').count())||!(await p.locator('h1').filter({hasText:'Settings'}).count()))throw Error('SETTINGS_SURFACE_FAILED');
           checks.settings='PASS';
           await p.goto(runtime+'/dream',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           const dreamTitle=await p.locator('h1,h2').allTextContents();
@@ -47,6 +47,21 @@ jobs:
           await p.goto(runtime+'/play',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
           checks.naya_play='PASS';
+          await p.goto(runtime+'/lists',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="lists"]').count())||!(await p.locator('h1').filter({hasText:'Smart Lists'}).count())||!(await p.getByLabel('New Smart List name').count()))throw Error('FIRST_DIVERGENCE:SMART_LISTS_SURFACE_MISSING');
+          checks.lists='PASS';
+          await p.goto(runtime+'/spaces',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="spaces"]').count())||!(await p.locator('h1').filter({hasText:'Smart Spaces'}).count())||!(await p.getByPlaceholder('Name your Space').count()))throw Error('FIRST_DIVERGENCE:SMART_SPACES_SURFACE_MISSING');
+          checks.spaces='PASS';
+          await p.goto(runtime+'/connections',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="connections"]').count())||!(await p.locator('h1').filter({hasText:'Your Connections'}).count()))throw Error('FIRST_DIVERGENCE:CONNECTIONS_SURFACE_MISSING');
+          checks.connections='PASS';
+          await p.goto(runtime+'/share',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="share"]').count())||!(await p.locator('h1').filter({hasText:'Smart Share'}).count())||!(await p.getByLabel('Find intelligence to share').count()))throw Error('FIRST_DIVERGENCE:SMART_SHARE_SURFACE_MISSING');
+          checks.share='PASS';
+          await p.goto(runtime+'/mail',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('.naya-mail-page').count())||!(await p.locator('h1').filter({hasText:'Smart Mail'}).count())||!(await p.getByRole('button',{name:/SEND THROUGH NAYAPOWER/i}).count()))throw Error('FIRST_DIVERGENCE:SMART_MAIL_SURFACE_MISSING');
+          checks.mail='PASS';
           console.log(JSON.stringify({status:'VERIFIED',checks}));
           await browser.close();
           NODE
