@@ -114,7 +114,7 @@ jobs:
             buttons:[...document.querySelectorAll('.rail.left button')].map(b=>({text:b.innerText,dataPage:b.dataset.page,dataNc:b.dataset.nc})),
             scripts:[...document.scripts].map(s=>s.src).filter(Boolean).filter(x=>x.includes('hub-completeness'))
           }));
-          if(sidebarRuntime.dataNc!==9) throw Error('SIDEBAR_RUNTIME_WIRING_MISSING:'+JSON.stringify(sidebarRuntime));
+          if(sidebarRuntime.dataNc!==10) throw Error('SIDEBAR_RUNTIME_WIRING_MISSING:'+JSON.stringify(sidebarRuntime));
           const sidebar=await page.locator('.rail.left').innerText();
           for(const label of ['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings']) {
             if(!sidebar.includes(label)) throw Error('SIDEBAR_CONTROL_MISSING:'+label);
