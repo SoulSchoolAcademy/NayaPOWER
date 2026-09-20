@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NayaNET × Lumen — Sidebar Experiment</title>
+<link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+<header class="experimentHeader"><div><strong>NayaNET × Lumen</strong><span>CONTROLLED SIDEBAR EXPERIMENT · FROZEN HUB REFERENCE</span></div><div class="experimentStatus" id="status">READY</div></header>
+<main class="experimentGrid">
+<section class="panel baseline"><div class="panelHead"><b>CONTROL</b><span>Frozen 2026 09 17 Hub</span></div>
+<iframe title="Frozen NayaNET Hub" src="https://raw.githubusercontent.com/SoulSchoolAcademy/NayaPOWER/main/2026%2009%2017%20NAYANET%20HUB.html"></iframe>
+</section>
+<section class="panel candidate"><div class="panelHead"><b>CANDIDATE</b><span>Lumen Elements · visual contract preserved</span></div>
+<div class="candidateCanvas">
+<lumen-sidebar class="nayaRail" variant="unstyled" aria-label="NayaNET navigation">
+<div class="brand"><img src="https://i.postimg.cc/LXJDD4Np/Nayanet-Logo.jpg" alt="NayaNET"><div><b>NayaNET</b><small>INTELLIGENT HUB · V7</small></div></div>
+<div class="label">PERSONAL</div>
+<lumen-navigation-menu class="nav" variant="unstyled" aria-label="Personal">
+<button class="active" data-page="home"><span class="ico">⌂</span>Home</button><button data-page="notes"><span class="ico">▤</span>Smart Notes</button><button data-page="reports"><span class="ico">◫</span>Reports</button><button data-page="intelligence"><span class="ico">✦</span>Intelligence Library</button>
+</lumen-navigation-menu>
+<div class="label">COLLECTIVE</div>
+<lumen-navigation-menu class="nav" variant="unstyled" aria-label="Collective">
+<button data-page="collective"><span class="ico">◎</span>Collective</button><button data-page="evidence"><span class="ico">◇</span>Evidence</button><button data-page="connections"><span class="ico">↗</span>Connections</button>
+</lumen-navigation-menu>
+<div class="label">COMMUNICATION</div>
+<lumen-navigation-menu class="nav" variant="unstyled" aria-label="Communication"><button data-page="mail"><span class="ico">✉</span>Smart Mail <span class="badge">NEW</span></button></lumen-navigation-menu>
+<div class="label">SYSTEM</div>
+<lumen-navigation-menu class="nav" variant="unstyled" aria-label="System"><button data-page="settings"><span class="ico">⚙</span>Settings</button></lumen-navigation-menu>
+<div class="private"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div>
+</lumen-sidebar>
+<section class="testInfo"><h1>One surface. No Hub migration.</h1><p>The candidate keeps the frozen NayaNET navigation styling and <code>data-page</code> hooks. Lumen supplies the navigation primitive and keyboard behavior underneath.</p>
+<div class="checks"><div><b>VISUAL</b><span>Custom NayaNET CSS remains authoritative.</span></div><div><b>BEHAVIOR</b><span>Use Arrow keys + Home/End while focused in a navigation group.</span></div><div><b>LOGIC</b><span>No production business logic is imported or changed.</span></div></div>
+<pre id="eventLog" aria-live="polite">Focus a navigation item to begin the keyboard test.</pre></section>
+</div></section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body></html>
