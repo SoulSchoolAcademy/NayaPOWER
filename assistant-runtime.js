@@ -55,7 +55,7 @@ async function bindCanonicalHubSmartShare(){
   if(window.__nayaCanonicalHubSmartShareBound)return;
   window.__nayaCanonicalHubSmartShareBound=true;
   const run=async e=>{
-    const button=e.target?.closest?.('[data-c4-kind="make-public"]');
+    const button=e.target?.closest?.('[data-c4-kind="share-intel"]');
     if(!button)return;
     e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
     const block=button.closest('.block');
