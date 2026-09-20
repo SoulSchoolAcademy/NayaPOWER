@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'supabase/functions/v7-smart-note-canonical/index.ts'
+      - 'supabase/migrations/20260920160000_align_smart_note_receiver_canonical_event_identity.sql'
       - 'identity.html'
       - 'NAYANET/name-first-auth-adapter.js'
       - 'NAYANET/HUB/src/data/pis.ts'
