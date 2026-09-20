@@ -65,6 +65,8 @@ jobs:
           EOF
 
       - name: Readiness gate contract
+        env:
+          NAYA_READINESS_EVIDENCE_FILE: ${{ runner.temp }}/naya-readiness-evidence.json
         run: python .naya/tests/test_naya_superbrain_ready.py
 
       - name: Enforce NAYA_SUPERBRAIN_READY
