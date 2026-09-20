@@ -112,7 +112,7 @@ Demonstrate actual persistence, indexing, retrieval, semantic match, temporal re
 Create additional genuine Smart Notes from meaningful work, then test retrieval for today's notes and prior days without creating a competing memory system.
 
 **smart_note_path:**
-.naya/SUPERBRAIN/SMART-NOTES/2026/09/19/2026-09-19-NAYA-POWER-SMART-NOTE-INTELLIGENCE-MUST-BE-USED-TO-TEST-THE-ENGINE.md
+.naya/memory/notes/2026/09/19/SN-20260919-nayapower-intelligence-must-be-used-to-test-the-engine.md
 
 ### ADAPTIVE LEARNING
 
