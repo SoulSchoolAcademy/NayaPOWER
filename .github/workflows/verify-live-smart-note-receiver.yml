@@ -10,6 +10,7 @@ on:
       - 'supabase/migrations/20260920170000_repair_smart_note_uuid_generation_namespace.sql'
       - 'identity.html'
       - 'NAYANET/name-first-auth-adapter.js'
+      - 'assistant-runtime.js'
       - 'NAYANET/HUB/src/data/pis.ts'
       - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
       - '.github/workflows/verify-live-smart-note-receiver.yml'
