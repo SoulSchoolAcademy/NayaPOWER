@@ -150,3 +150,5 @@ jobs:
           echo "WELCOME_CANONICAL_HANDOFF=verified"
           echo "WELCOME_PUBLIC_URL=${WELCOME_PUBLIC_URL}"
           echo "TARGET_RUNTIME=${WELCOME_RUNTIME_URL}"
+
+# Execution trigger: canonical Welcome deployment lane.
