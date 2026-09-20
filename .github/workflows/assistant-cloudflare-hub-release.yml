@@ -71,8 +71,9 @@ jobs:
           set -euo pipefail
           echo "DEBUG_GITHUB_SHA=${GITHUB_SHA}"
           echo "DEBUG_REQUESTED_COMMIT_SHA=${REQUESTED_COMMIT_SHA}"
-          test -n "${REQUESTED_COMMIT_SHA}"
-          test "${REQUESTED_COMMIT_SHA}" = "${GITHUB_SHA}"
+          if [ -n "${REQUESTED_COMMIT_SHA}" ]; then
+            test "${REQUESTED_COMMIT_SHA}" = "${GITHUB_SHA}"
+          fi
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
           test "${RELEASE_SURFACE}" = "canonical-hub"
