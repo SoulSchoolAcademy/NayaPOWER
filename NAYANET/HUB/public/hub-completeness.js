@@ -22,8 +22,8 @@ function css(){if(document.getElementById('naya-completeness-style'))return;cons
 `;document.head.append(s)}
 function modal(title,desc,body){const m=document.createElement('div');m.className='nc-modal';m.innerHTML='<div class="nc-dialog"><h2>'+esc(title)+'</h2><p>'+esc(desc)+'</p><div class="nc-body">'+body+'</div><div class="nc-actions"><button data-nc-close>DONE</button></div></div>';m.addEventListener('click',e=>{if(e.target===m||e.target.closest('[data-nc-close]'))m.remove()});document.body.append(m);return m}
 async function open(kind){
- if(kind==='feed'){location.assign('/feed');return}
- const r=R(); if(!r){return}
+ const r=R(); if(!r)return;
+ if(kind==='feed')return feed(r);
  try{
   const snap=await r.init(); if(!snap.authenticated && !['settings'].includes(kind)){location.assign('/identity.html');return}
   if(kind==='note')return note(r);
@@ -39,6 +39,26 @@ async function open(kind){
   if(kind==='settings')return settings(r);
  }catch(e){modal('BLOCKED / FAILED','The Hub stopped at the first real runtime error.', '<div class="nc-state">'+esc(e?.message||e)+'</div>')}
 }
+async function feed(r){
+ const streams=['personal','collective','activity'];
+ const m=modal('Smart Feed','Three lenses over the same canonical intelligence graph. No duplicate feed store is created.','<div class="nc-actions">'+streams.map(s=>'<button data-nc-stream="'+s+'">'+s.toUpperCase()+'</button>').join('')+'</div><div class="nc-state" id="nc-state">Reading PERSONAL intelligence…</div><div id="nc-feed" class="nc-grid"></div>');
+ const load=async(stream)=>{
+  const st=m.querySelector('#nc-state'),out=m.querySelector('#nc-feed');
+  st.textContent='READING CANONICAL '+stream.toUpperCase()+' INTELLIGENCE…';
+  try{
+   const data=await r.smartFeed({stream,limit:20});
+   const items=Array.isArray(data.items)?data.items:[];
+   out.innerHTML=items.length?items.map(x=>'<div class="nc-card"><b>'+esc(x.title||x.event_id||'Intelligence')+'</b><span>'+esc(String(x.content||'No content returned.').slice(0,420))+'<br><br>'+esc(x.verification_state||'UNKNOWN')+' · '+esc(x.visibility||'UNKNOWN')+'</span></div>').join(''):'<div class="nc-card"><b>NO CANONICAL ITEMS</b><span>This lens returned no verified records.</span></div>';
+   st.textContent='LIVE · '+stream.toUpperCase()+' · '+items.length+' ITEMS · CANONICAL RUNTIME';
+  }catch(e){st.textContent='BLOCKED / FAILED · '+(e?.message||e)}
+ };
+ m.querySelectorAll('[data-nc-stream]').forEach(b=>b.onclick=()=>void load(b.dataset.ncStream));
+ await load('personal');
+}
+async function library(r){
+ const rows=await r.retrieve();
+ modal('Intelligence Library','Durable retrieval over the authenticated canonical intelligence event store.','<div class="nc-state">'+esc(rows.map(x=>(x.created_at||'')+' · '+(x.title||x.event_id||'event')+' · '+(x.source||'')).join('\n')||'No canonical intelligence yet.')+'</div>');
+}
 function note(r){const m=modal('Create Smart Note','Human capture enters the canonical Smart Note receiver. No local-only success is reported.','<input class="nc-input" id="nc-title" placeholder="Title"><textarea class="nc-textarea" id="nc-content" placeholder="What matters?"></textarea><div class="nc-actions"><button id="nc-save">CAPTURE CANONICALLY</button></div><div class="nc-state" id="nc-state">Ready.</div>');m.querySelector('#nc-save').onclick=async()=>{const st=m.querySelector('#nc-state');st.textContent='CAPTURING → CANONICALIZING → PRESERVING…';try{const x=await r.captureSmartNote({title:m.querySelector('#nc-title').value,content:m.querySelector('#nc-content').value,source:'nayanet-hub.human-capture'});st.textContent='PERSISTED · EVENT '+(x.event?.event_id||'UNKNOWN')+' · RECEIPT '+(x.receipt?.receipt_id||'UNKNOWN')}catch(e){st.textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
 async function reports(r){const rows=await r.retrieve();const now=Date.now(),ranges=[['TODAY',86400000],['7 DAYS',604800000],['30 DAYS',2592000000],['YEAR',31536000000]];const cards=ranges.map(([n,d])=>'<div class="nc-card"><b>'+n+'</b><span>'+rows.filter(x=>now-new Date(x.created_at).getTime()<d).length+' canonical events</span></div>').join('');modal('Reports','Live report projections derived from the authenticated canonical event store.','<div class="nc-grid">'+cards+'</div><div class="nc-state" style="margin-top:12px">'+esc(rows.slice(0,20).map(x=>(x.created_at||'')+' · '+(x.title||x.event_id||'event')).join('\n')||'No canonical events yet.')+'</div>')}
 async function share(r){const rows=await r.retrieve();const owned=rows.find(x=>x.user_id===r.snapshot().user_id&&!String(x.source||'').includes('smart-share.publication'));const m=modal('Smart Share','Publication uses the canonical consent/publication boundary.','<div class="nc-state" id="nc-state">'+(owned?'Selected: '+esc(owned.title||owned.event_id):'No owned intelligence is available to publish.')+'</div><div class="nc-actions"><button id="nc-publish">PUBLISH SELECTED INTELLIGENCE</button></div>');m.querySelector('#nc-publish').onclick=async()=>{const st=m.querySelector('#nc-state');try{if(!owned)throw Error('NO_OWNED_INTELLIGENCE');const x=await r.publishSmartFeed(owned.event_id);st.textContent='PUBLISHED · PUBLICATION '+(x.publication?.id||'UNKNOWN')+' · RECEIPT '+(x.receipt?.event_id||x.receipt?.id||'UNKNOWN')}catch(e){st.textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
@@ -50,6 +70,15 @@ async function ledger(r){const rows=await r.listSmartLedger();modal('Smart Ledge
 async function dream(r){const replays=await r.listDreamReplays(),events=await r.retrieve();const latest=events[0];const m=modal('Dream','Deterministic replay of preserved intelligence; learning never becomes authority by itself.','<div class="nc-state" id="nc-state">'+esc(replays.length?replays.slice(0,10).map(x=>(x.created_at||'')+' · '+(x.status||'REPLAY')).join('\n'):'No Dream replays yet.')+'</div><div class="nc-actions"><button id="nc-dream">DREAM LATEST PRESERVED EVENT</button></div>');m.querySelector('#nc-dream').onclick=async()=>{try{if(!latest)throw Error('NO_PRESERVED_EVENT');const x=await r.dreamReplay({event_id:latest.event_id});m.querySelector('#nc-state').textContent='DREAM REPLAY PERSISTED · '+JSON.stringify(x)}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
 async function play(r){const ev=await r.retrieve(),le=await r.listLearningEvidence();const m=modal('Naya Play','A governed practice loop: choose understanding, replay experience, apply only with evidence, then verify the checkpoint.','<div class="nc-state" id="nc-state">Latest event: '+esc(ev[0]?.title||'none')+'\nLearning evidence: '+le.length+'</div><div class="nc-actions"><button id="nc-learn">LEARN LATEST</button><button id="nc-dream">DREAM LATEST</button><button id="nc-verify">VERIFY LATEST APPLICATION</button></div>');m.querySelector('#nc-learn').onclick=async()=>{try{const x=ev[0];if(!x)throw Error('NO_SMART_NOTE');const e=await r.recordLearningEvidence({claim:'Observed understanding of '+(x.title||x.event_id),target_id:x.event_id,source_event_id:x.event_id,provenance:'OBSERVATION',verification_method:'Hub human practice checkpoint'});m.querySelector('#nc-state').textContent='LEARNING EVIDENCE PERSISTED · '+e.id}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}};m.querySelector('#nc-dream').onclick=async()=>{try{const x=ev[0];if(!x)throw Error('NO_PRESERVED_EVENT');const d=await r.dreamReplay({event_id:x.event_id});m.querySelector('#nc-state').textContent='DREAM PERSISTED · '+JSON.stringify(d)}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}};m.querySelector('#nc-verify').onclick=async()=>{try{if(!r.verify)throw Error('VERIFY_RUNTIME_NOT_EXPOSED');const x=await r.verify(ev[0]?.event_id);m.querySelector('#nc-state').textContent='VERIFY CHECKPOINT PERSISTED · '+JSON.stringify(x)}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
 async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthful runtime state; no configuration is claimed that the current session cannot prove.','<div class="nc-state">'+esc(JSON.stringify(s,null,2))+'</div><div class="nc-actions"><button id="nc-out">SIGN OUT</button></div>');m.querySelector('#nc-out').onclick=async()=>{await r.signOut();m.querySelector('.nc-state').textContent='SIGNED OUT · PRIVATE DATA ACCESS BLOCKED';}}
-function install(){css();if(document.getElementById('naya-completeness'))return;const anchor=document.querySelector('.hero');if(!anchor)return;const root=document.createElement('section');root.id='naya-completeness';root.innerHTML='<div class="nc-label">NAYANET · HUMAN SURFACE COMPLETENESS</div><div class="nc-nav"></div>';root.querySelector('.nc-nav').innerHTML=nav.map(([label,kind])=>'<button data-nc="'+kind+'">'+label+'</button>').join('');anchor.after(root);root.addEventListener('click',e=>{const b=e.target.closest('[data-nc]');if(b)open(b.dataset.nc)});}
+function install(){
+ css();
+ document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-nc]');
+  if(!b||b.closest('#naya-completeness'))return;
+  e.preventDefault();
+  e.stopImmediatePropagation();
+  void open(b.dataset.nc);
+ },true);
+}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
