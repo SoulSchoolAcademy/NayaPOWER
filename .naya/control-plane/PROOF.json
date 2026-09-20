@@ -60,56 +60,62 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+    "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35492451804,
+      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "deployment_run_id": 35519856070,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
+      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
         "NAYANET/HUB/src/main.tsx",
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "canonical Assistant Cloudflare Hub release run 35492451804 succeeded",
-        "exact current claim-relevant main source was deployed to sparkling-shape-7ae5",
-        "live artifact identity and exact source parity passed",
+        "canonical Assistant Cloudflare Hub release run 35519856070 succeeded",
+        "exact live artifact identity and source parity passed",
         "Assistant runtime baseline passed on desktop and mobile",
-        "Final Assistant-lane runtime proof passed"
+        "Final Assistant-lane runtime proof passed",
+        "Smart Feed canonical identity remained unchanged through Smart Share and reload",
+        "Smart Feed durable action matrix restored after reload",
+        "Smart Feed publication retrieval and unauthorized persistence blocking passed"
       ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-      "run_id": 35492451804,
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "run_id": 35519856070,
+      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
         "NAYANET/HUB/src/main.tsx",
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
         "authenticated name-first identity established in desktop and mobile runtime proof",
-        "canonical React Hub authenticated persistence/retrieval actions passed",
-        "Smart Feed persistence and exact retrieval passed",
+        "canonical React Hub persistence and retrieval passed",
+        "Smart Feed canonical action matrix and reload restoration passed",
+        "Smart Share publication retrieval passed",
         "unauthorized persistence was blocked with AUTH_REQUIRED"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "NOT_CLAIMED_BY_THIS_RUN",
+      "fresh_naya_continuation_action": "VERIFIED_BY_DEDICATED_COLD_NAYA_PROOF",
       "receipt_id": null
     },
     "controlled_paired_policy_experiment": {
@@ -131,7 +137,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
+    "current_repository_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -233,11 +239,13 @@
       "status": "VERIFIED",
       "claim_type": "WHOLE_JOURNEY",
       "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35492591064,
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "run_id": 35520018767,
+      "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js",
         "NAYANET/HUB/index.html",
@@ -245,14 +253,14 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
       ],
       "evidence": [
-        "fresh authenticated context established against the current deployed Assistant runtime",
+        "fresh authenticated identity established against canonical Assistant runtime",
         "Dream replay persisted and replayed idempotently",
         "learning evidence persisted and learner state advanced",
-        "fresh-context later decision reused verified learning with influenced=true",
+        "cold context reused verified learning for later decision with influenced=true",
         "authority remained changed=false and granted=false",
-        "later decision event was recorded and freshly retrieved with evidence/replay identity"
+        "later decision event was persisted and retrieved with traceability"
       ],
-      "reason": "Current deployed runtime proves fresh-context learning reuse and governed later decision at the current claim-relevant Hub source scope; long-term universal compounding remains a separate claim."
+      "reason": "Fresh current-head cold-Naya proof passed against the current deployed runtime source scope. The latest repository change only expands proof coverage and does not alter deployed runtime source."
     },
     "fresh_canonical_hub_smart_mail_transaction": {
       "status": "VERIFIED",
@@ -314,11 +322,11 @@
     },
     "current_readiness": {
       "status": "PENDING_RECONCILIATION",
-      "run_id": null,
-      "observed_head": "7e2726ff93311a5cd1b26c13af057fb5d96ae217",
+      "run_id": 35520018724,
+      "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
       "unknown_count": 0,
       "failed_count": 0,
-      "reason": "Re-run current readiness gate after current-head runtime parity reconciliation."
+      "reason": "Fresh Cloudflare and cold-Naya evidence recorded; rerun readiness gate against this exact proof."
     },
     "fresh_smart_mail_learning_bridge": {
       "status": "VERIFIED",
@@ -413,67 +421,75 @@
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
   "fresh_validation_required": true,
-  "next_recording_requires_fresh_execution": true,
+  "next_recording_requires_fresh_execution": false,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35492451804,
+      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "deployment_run_id": 35519856070,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
+      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
         "NAYANET/HUB/src/main.tsx",
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "canonical Assistant Cloudflare Hub release run 35492451804 succeeded",
-        "exact current claim-relevant main source was deployed to sparkling-shape-7ae5",
-        "live artifact identity and exact source parity passed",
+        "canonical Assistant Cloudflare Hub release run 35519856070 succeeded",
+        "exact live artifact identity and source parity passed",
         "Assistant runtime baseline passed on desktop and mobile",
-        "Final Assistant-lane runtime proof passed"
+        "Final Assistant-lane runtime proof passed",
+        "Smart Feed canonical identity remained unchanged through Smart Share and reload",
+        "Smart Feed durable action matrix restored after reload",
+        "Smart Feed publication retrieval and unauthorized persistence blocking passed"
       ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-      "run_id": 35492451804,
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "run_id": 35519856070,
+      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
         "NAYANET/HUB/src/main.tsx",
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
         "authenticated name-first identity established in desktop and mobile runtime proof",
-        "canonical React Hub authenticated persistence/retrieval actions passed",
-        "Smart Feed persistence and exact retrieval passed",
+        "canonical React Hub persistence and retrieval passed",
+        "Smart Feed canonical action matrix and reload restoration passed",
+        "Smart Share publication retrieval passed",
         "unauthorized persistence was blocked with AUTH_REQUIRED"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "NOT_CLAIMED_BY_THIS_RUN",
+      "fresh_naya_continuation_action": "VERIFIED_BY_DEDICATED_COLD_NAYA_PROOF",
       "receipt_id": null
     },
     "external_cold_naya": {
       "status": "VERIFIED",
       "claim_type": "WHOLE_JOURNEY",
       "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35492591064,
-      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
-      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "run_id": 35520018767,
+      "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
+      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
       "source_paths": [
         "assistant-runtime.js",
+        "NAYANET/HUB/src/data/pis.ts",
+        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js",
         "NAYANET/HUB/index.html",
@@ -481,14 +497,14 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
       ],
       "evidence": [
-        "fresh authenticated context established against the current deployed Assistant runtime",
+        "fresh authenticated identity established against canonical Assistant runtime",
         "Dream replay persisted and replayed idempotently",
         "learning evidence persisted and learner state advanced",
-        "fresh-context later decision reused verified learning with influenced=true",
+        "cold context reused verified learning for later decision with influenced=true",
         "authority remained changed=false and granted=false",
-        "later decision event was recorded and freshly retrieved with evidence/replay identity"
+        "later decision event was persisted and retrieved with traceability"
       ],
-      "reason": "Current deployed runtime proves fresh-context learning reuse and governed later decision at the current claim-relevant Hub source scope; long-term universal compounding remains a separate claim."
+      "reason": "Fresh current-head cold-Naya proof passed against the current deployed runtime source scope. The latest repository change only expands proof coverage and does not alter deployed runtime source."
     },
     "ih03_canonical_intelligence_identity": {
       "status": "VERIFIED",
@@ -612,7 +628,8 @@
         "adversarial authority/action claims were denied without execution side effects"
       ],
       "result": "LEARNING_REUSE_VERIFIED"
-    }
+    },
+    "current_repository_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f"
   },
   "ih03_canonical_intelligence_identity": {
     "status": "VERIFIED",
