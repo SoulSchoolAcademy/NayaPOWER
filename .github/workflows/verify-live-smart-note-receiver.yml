@@ -185,8 +185,12 @@ jobs:
             },{supabaseUrl,supabaseKey,ownerId:first.session.userId,payload});
             if(!String(wrongOwner.error||'').includes('SMART_NOTE_USER_MISMATCH')) throw new Error('WRONG_OWNER_NOT_REJECTED:'+JSON.stringify(wrongOwner));
 
-            const secondUserView = await pageB.evaluate(async ({eventId}) => window.NayaAssistantRuntime.retrieve('smart_note:' + eventId), {eventId:smartNoteEventId});
-            if((secondUserView || []).length) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_SECOND_USER:'+JSON.stringify(secondUserView));
+            const privacy = await pageB.evaluate(async ({supabaseUrl,supabaseKey,eventId})=>{
+              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+              return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle();
+            },{supabaseUrl,supabaseKey,eventId:smartNoteEventId});
+            if(privacy.data) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_SECOND_USER:'+JSON.stringify(privacy.data));
 
             console.log(JSON.stringify({
               status:'VERIFIED',
