@@ -25,9 +25,9 @@ def test_current_runtime_proofs_are_not_downgraded_by_control_plane_only_changes
     assert payload["gate"] == "NAYA_SUPERBRAIN_READY"
     assert payload["fail_closed"] is True
     names = {c["name"]: c["status"] for c in payload["checks"]}
-    assert names["runtime_parity"] in {"VERIFIED", "PRODUCTION_PROVEN"}
-    assert names["authenticated_lifecycle"] in {"VERIFIED", "PRODUCTION_PROVEN"}
-    assert names["external_cold_naya"] in {"VERIFIED", "PRODUCTION_PROVEN"}
+    assert names["runtime_parity"] in {"VERIFIED", "PRODUCTION_PROVEN"}, payload
+    assert names["authenticated_lifecycle"] in {"VERIFIED", "PRODUCTION_PROVEN"}, payload
+    assert names["external_cold_naya"] in {"VERIFIED", "PRODUCTION_PROVEN"}, payload
     assert all(c["status"] != "FAILED" for c in payload["checks"] if c["name"] in {
         "runtime_parity", "authenticated_lifecycle", "external_cold_naya"
     })
