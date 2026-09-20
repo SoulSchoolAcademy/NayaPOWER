@@ -226,8 +226,8 @@ jobs:
                   nav: [...document.querySelectorAll('.nav-item')].map(x => x.textContent?.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s+/g, ' ').trim()).filter(Boolean),
                   feedBoards: document.querySelectorAll('.smart-feed-board').length,
                   private: document.querySelector('.side-context small')?.textContent?.trim() === 'Private intelligence workspace',
-                  naya: document.body.innerText.includes('NAYA'),
-                  intelligence: document.body.innerText.includes('INTELLIGENCE')
+                  naya: document.body.textContent.includes('NAYA'),
+                  intelligence: document.body.textContent.includes('INTELLIGENCE')
                 }));
                 const expectedNav = ['Your Intelligence Today','Smart Feed','Your Report','Intelligence Library','Smart Lists','Smart Share','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings'];
                 if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('HUB_IDENTITY_NOT_AUTHENTICATED');
