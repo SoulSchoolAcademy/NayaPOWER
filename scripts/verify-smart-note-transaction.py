@@ -26,7 +26,7 @@ def main() -> None:
     with tempfile.TemporaryDirectory(prefix="naya-smart-note-e2e-") as raw:
         temp = Path(raw)
         tx.ROOT = temp
-        tx.SMART_NOTES_ROOT = temp / "SUPERBRAIN/SMART-NOTES"
+        tx.SMART_NOTES_ROOT = temp / ".naya/memory/notes"
         tx.CIS_ROOT = temp / ".naya/memory/intelligence"
         tx.CIS_PATH = tx.CIS_ROOT / "CIS.json"
         tx.RECEIPTS_ROOT = tx.CIS_ROOT / "transactions"
