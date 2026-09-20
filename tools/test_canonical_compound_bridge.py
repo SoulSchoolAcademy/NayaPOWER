@@ -21,6 +21,7 @@ from canonical_event_store import create_or_replay
 from cct_note_event_promotion import promote_note_event
 from memory_runtime import retrieve
 import retrieve_learning as rl
+from activity_event import ensure_activity_event
 from universal_execution_gate import (
     Authority,
     DecisionObject,
@@ -293,6 +294,12 @@ def test_cold_retrieval_binds_successor_decision_without_granting_authority():
             "permission": decision.action,
             "decision_id": decision.decision_id,
             "authority_id": authority.authority_id,
+            # Activity provenance is copied from the already-bound DecisionObject;
+            # it is not part of ExecutionAuthorization and cannot grant authority.
+            "learning_event_id": decision.learning_event_id,
+            "retrieval_receipt_id": decision.retrieval_receipt_id,
+            "retrieval_source_event_id": decision.retrieval_source_event_id,
+            "retrieval_smart_note_id": decision.retrieval_smart_note_id,
         }
         gate = UniversalExecutionGate.from_canonical()
         authorized = gate.authorize(
@@ -307,6 +314,41 @@ def test_cold_retrieval_binds_successor_decision_without_granting_authority():
         # Learning lineage is provenance on the DecisionObject, not authority.
         assert not hasattr(authorized.authorization, "learning_event_id")
         assert not hasattr(authorized.authorization, "retrieval_receipt_id")
+
+        with tempfile.TemporaryDirectory() as activity_tmp:
+            activity_root = Path(activity_tmp) / "events"
+            activity_index = Path(activity_tmp) / "INDEX.json"
+            activity = ensure_activity_event(
+                claim_id="CL-COMPOUNDING-SUCCESSOR-001",
+                action_id=action["action_id"],
+                decision_id=decision.decision_id,
+                authority_id=authority.authority_id,
+                actor_id=decision.actor_id,
+                subject="Compounding successor execution",
+                summary="Decision learning lineage survives into canonical Activity.",
+                receipt_id="RCP-CL-COMPOUNDING-SUCCESSOR-001",
+                next_action="continue proof",
+                successor="NEXT-COMPOUNDING-PROOF",
+                evidence=[f"learning:{learning['learning_event_id']}", f"retrieval:{receipt['retrieval_receipt_id']}"],
+                run_id="RUN-COMPOUNDING-SUCCESSOR-001",
+                learning_event_id=decision.learning_event_id,
+                retrieval_receipt_id=decision.retrieval_receipt_id,
+                retrieval_source_event_id=decision.retrieval_source_event_id,
+                retrieval_smart_note_id=decision.retrieval_smart_note_id,
+                events_root=activity_root,
+                index_path=activity_index,
+            )
+            activity_event = activity["event"]
+            lineage = activity_event["execution"]["learning_lineage"]
+            receipt_lineage = activity_event["receipt"]["learning_lineage"]
+            assert lineage == receipt_lineage
+            assert lineage["learning_event_id"] == decision.learning_event_id
+            assert lineage["retrieval_receipt_id"] == decision.retrieval_receipt_id
+            assert lineage["retrieval_source_event_id"] == decision.retrieval_source_event_id
+            assert lineage["retrieval_smart_note_id"] == decision.retrieval_smart_note_id
+            assert activity_event["execution"]["decision_id"] == authorized.authorization.decision_id
+            assert activity_event["execution"]["authority_id"] == authorized.authorization.authority_id
+            assert activity_event["receipt"]["receipt_id"] == "RCP-CL-COMPOUNDING-SUCCESSOR-001"
 
         missing_receipt = DecisionObject(
             decision_id=decision.decision_id,
