@@ -119,8 +119,9 @@ def build_projection(*, extra_notes: Iterable[dict[str, Any]] | None = None, sou
     source = source_root / "SMART FEED CONTENT"
     legacy = legacy_events(source.read_text(encoding="utf-8"), when()) if source.exists() else []
     notes = canonical_note_events(source_root / ".naya" / "memory" / "notes", source_root)
+    human_notes = canonical_note_events(source_root / "SUPERBRAIN" / "SMART-NOTES", source_root)
     merged: dict[str, dict[str, Any]] = {e["event_id"]: e for e in legacy}
-    for event in notes + list(extra_notes or []):
+    for event in notes + human_notes + list(extra_notes or []):
         merged[event["event_id"]] = event
     events = sorted(merged.values(), key=lambda e: (e.get("created_at", ""), e["event_id"]), reverse=True)
     payload = {"schema_version": "PIS-3.0", "generated_at": datetime.now(timezone.utc).isoformat(), "source": "github:canonical-smart-notes+smart-feed", "event_count": len(events), "events": events}
