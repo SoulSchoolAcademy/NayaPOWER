@@ -31,9 +31,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome.",
+    "next_action": "Wait for canonical release run 35534913866 on current main to complete; then repair only its first failing acceptance boundary and rerun the same gate. Do not divert into Welcome until the authenticated human-facing acceptance block is green.",
     "next_actions": [
-      "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome."
+      "Wait for canonical release run 35534913866 on current main to complete; then repair only its first failing acceptance boundary and rerun the same gate. Do not divert into Welcome until the authenticated human-facing acceptance block is green."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
