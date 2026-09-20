@@ -411,7 +411,7 @@
       "next_action": "Add/execute a canonical repository-level negative test proving no_external_side_effects blocks before message/receipt side effects."
     }
   },
-  "recording_commit": "6a1b4cdc03aab44fedb1528ee6a9640d17c6f4fe",
+  "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -651,6 +651,27 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "The governed Superbrain engine and compounding loop are now operationally proven. The remaining project-completion blocker is the public human-facing entry boundary plus one consolidated acceptance; authority constraint semantics need a dedicated negative proof.",
-  "current_repository_head": "6a1b4cdc03aab44fedb1528ee6a9640d17c6f4fe"
+  "interpretation": "Current main now has production-proven Assistant React Hub source/runtime parity, responsive baseline, canonical navigation, Smart Feed rendering, durable Smart Feed action receipt/reload, Library route, and Smart Mail route. The next highest-value Hub gap is the canonical Smart Note receiver path and complete feature-surface acceptance. Public Welcome → Identity remains externally blocked and is not treated as Hub completion.",
+  "current_repository_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+  "hub_current_react_runtime": {
+    "status": "PRODUCTION_PROVEN",
+    "claim_type": "PRODUCTION",
+    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "run_id": 35485053636,
+    "observed_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+    "deployed_source_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "evidence": [
+      "exact current main checkout",
+      "authorized Assistant Cloudflare target binding",
+      "exact source parity verified",
+      "desktop and mobile runtime baseline verified",
+      "canonical React Hub marker and navigation verified",
+      "Smart Feed rendered from canonical projection",
+      "Smart Feed action persisted with receipt and survived reload",
+      "Intelligence Library route verified",
+      "Smart Mail route verified"
+    ],
+    "remaining_gap": "Smart Note receive/validate/persist/project/render causal path is not yet consolidated as one current Hub acceptance proof; remaining feature surfaces require full authenticated action acceptance."
+  }
 }
