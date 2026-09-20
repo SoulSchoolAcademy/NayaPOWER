@@ -4,6 +4,7 @@
 # Closure verification: current main source must be redeployed before readiness can certify source-scoped runtime parity.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
 # Current-head parity reconciliation trigger: redeploy the exact protected main source before readiness re-evaluation.
+# Canonical Hub acceptance repair: release the protected HTML-first Hub before Wave A browser proof.
 # Identity.html is a canonical release input; changes must trigger this same React deployment lane.
 name: NAYA — Canonical Assistant Cloudflare Hub Release
 
