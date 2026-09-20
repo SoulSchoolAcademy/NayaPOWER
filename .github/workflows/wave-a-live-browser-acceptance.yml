@@ -1,5 +1,6 @@
 # WAVE-A REGISTRATION REPAIR: second-source push proves this workflow from its registered definition.
 # Canonical lifecycle gate: Smart Note -> canonical event -> Personal Smart Feed -> reload -> same event ID.
+# Run after current-main release 683 so acceptance is source-current.
 name: Wave A authenticated browser handoff acceptance
 
 on:
