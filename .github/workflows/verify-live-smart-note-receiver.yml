@@ -83,7 +83,7 @@ jobs:
             });
           }
 
-          async function pageBCheckPrivacy({supabaseUrl,supabaseKey,eventId}) {
+          async function pageBCheckPrivacy({browser,supabaseUrl,supabaseKey,eventId}) {
             const context = await browser.newContext();
             const page = await context.newPage();
             try {
@@ -219,6 +219,7 @@ jobs:
             if(!String(wrongOwner.error||'').includes('SMART_NOTE_USER_MISMATCH')) throw new Error('WRONG_OWNER_NOT_REJECTED:'+JSON.stringify(wrongOwner));
 
             const privacy = await pageBCheckPrivacy({
+              browser,
               supabaseUrl,
               supabaseKey,
               eventId:smartNoteEventId
