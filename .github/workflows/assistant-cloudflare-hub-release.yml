@@ -251,7 +251,7 @@ jobs:
                   naya: document.body.textContent.includes('NAYA'),
                   intelligence: document.body.textContent.includes('INTELLIGENCE')
                 }));
-                const expectedNav = ['Your Intelligence Today','Smart Feed','Smart Notes','Your Report','Intelligence Library','Smart Lists','Smart Share','Collective Intelligence','Evidence','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings'];
+                const expectedNav = ['Your Intelligence Today','Smart Feed','Smart Notes','Your Report','Intelligence Library','Smart Lists','Smart Share','Collective Intelligence','Evidence','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Dream','Naya Play','Settings'];
                 if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('HUB_IDENTITY_NOT_AUTHENTICATED');
                 if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('REACT_MARKER_MISSING');
                 if (result.assistantRuntime !== true) throw new Error('ASSISTANT_RUNTIME_NOT_LOADED');
