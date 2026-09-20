@@ -48,11 +48,12 @@ def note_id(timestamp: str, topic: str) -> str:
     return f"SN-{stamp}-{slug(topic)}"
 
 
-def canonical_smart_note_path(timestamp: str, topic: str) -> Path:
+def canonical_smart_note_path(timestamp: str, topic: str, root: Path | None = None) -> Path:
     """Resolve a Smart Note through the canonical logical→physical namespace."""
     dt = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(timezone.utc)
     filename = f"SN-{dt:%Y%m%d}-{slug(topic)}.md"
-    return SMART_NOTES_ROOT / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / filename
+    base = Path(root) if root is not None else SMART_NOTES_ROOT
+    return base / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / filename
 
 
 def validate_note(note: dict[str, Any]) -> None:
