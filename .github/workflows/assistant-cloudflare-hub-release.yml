@@ -521,3 +521,5 @@ jobs:
           echo "ASSISTANT_LANE_ACCOUNT=$CLOUDFLARE_CANONICAL_ACCOUNT_ID"
           echo "SOURCE=2026 09 17 NAYANET HUB.html"
           echo "LANE=ASSISTANT_CLOUDFLARE"
+
+# Human Smart Note capture parity checkpoint: deploy current canonical React Hub before browser proof.
