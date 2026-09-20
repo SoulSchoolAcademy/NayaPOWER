@@ -352,7 +352,7 @@ jobs:
                 if (!String(failureStatus || '').includes('ACTION BLOCKED') || !String(failureStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(failureStatus || 'NO_STATUS'));
 
                 console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof, failureStatus }));
-                const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
+                // Reuse the viewport-aware navigation root from the Space proof above.\n
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
                 await libraryNav.scrollIntoViewIfNeeded();
                 await libraryNav.click();
