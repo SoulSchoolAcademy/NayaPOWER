@@ -216,7 +216,7 @@ jobs:
                 const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
                 if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('VIEWPORT_IDENTITY_NOT_AUTHENTICATED');
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
-                await page.waitForTimeout(2500);
+                await page.locator('.smart-feed-board').waitFor({ timeout: 10000 }); await page.waitForTimeout(500);
                 const result = await page.evaluate(async () => ({
                   title: document.title,
                   marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
