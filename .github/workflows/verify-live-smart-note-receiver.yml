@@ -144,6 +144,9 @@ jobs:
             if(!Array.isArray(tx?.evidence?.chain) || tx.evidence.chain.length < 5) throw new Error('SMART_NOTE_EVIDENCE_CHAIN_INCOMPLETE');
             if(tx?.hub_state?.event_id !== smartNoteEventId || tx?.hub_state?.smart_note_created !== true || tx?.hub_state?.intelligent_block_created !== true || tx?.hub_state?.feed_updated !== true) throw new Error('SMART_NOTE_HUB_STATE_INCOMPLETE:'+JSON.stringify(tx?.hub_state));
 
+            await pageA.goto(hub + '/', {waitUntil:'networkidle', timeout:60000});
+            await pageA.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+            await pageA.evaluate(async () => { await window.NayaAssistantRuntime.init(); });
             const cognition = await pageA.evaluate(async ({eventId}) => window.NayaAssistantRuntime.retrieve('smart_note:' + eventId), {eventId:smartNoteEventId});
             const cognitionRow = (cognition || [])[0];
             if(!cognitionRow) throw new Error('COGNITION_BRIDGE_NOT_PERSISTED');
