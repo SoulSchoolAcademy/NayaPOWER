@@ -39,6 +39,7 @@ type AssistantRuntimeApi = {
   snapshot: () => {authenticated?: boolean};
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
+  retrieveSmartFeedActions: (sourceEventId: string) => Promise<RuntimeEvent[]>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
   createSmartList: (name: string) => Promise<unknown>;
@@ -111,10 +112,7 @@ export async function retrieveSmartFeedActions(sourceEventId: string) {
   if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
   const session = runtime.snapshot();
   if (!session?.authenticated) return [];
-  const events = await runtime.retrieve();
-  return events
-    .filter((event) => event.metadata?.source_event_id === sourceEventId && event.source === 'nayanet-hub.smart-feed.action')
-    .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
+  return runtime.retrieveSmartFeedActions(sourceEventId);
 }
 
 export async function createCanonicalPrivateSpace(input: {name: string; purpose: string}) {
