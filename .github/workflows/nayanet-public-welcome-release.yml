@@ -52,6 +52,18 @@ jobs:
           sha256sum WelcometoNayaNET.html | tee welcome-source.sha256
           grep -q 'sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html' WelcometoNayaNET.html
 
+      - name: Resolve authoritative nayanet.app zone
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save wrangler@4.135.0
+          export ZONE_JSON; ZONE_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/zones?name=nayanet.app&status=active")
+          python3 - <<'PY'
+          import json, os
+          data=json.loads(os.environ["ZONE_JSON"])
+          rows=[{"id":z.get("id"),"name":z.get("name"),"status":z.get("status"),"account_id":(z.get("account") or {}).get("id"),"account_name":(z.get("account") or {}).get("name")} for z in data.get("result",[])]
+          print(json.dumps({"success":data.get("success"),"zones":rows}))
+          PY
       - name: Deploy authorized Welcome Worker and route
         shell: bash
         run: |
