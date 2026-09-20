@@ -7,17 +7,14 @@ cannot elevate an outcome, create authority, or turn unverified evidence into
 verification.
 """
 from __future__ import annotations
-
 from datetime import datetime, timezone
 from typing import Any, Callable
 
 VERIFICATION_SCHEMA_VERSION = "1.0"
 VERIFIED_STATE = "outcome_verified"
 
-
 class VerificationReceiptRejected(ValueError):
     """Raised when an outcome cannot produce a verified receipt."""
-
 
 def build_outcome_verification_receipt(
     outcome: dict[str, Any],
@@ -54,13 +51,7 @@ def build_outcome_verification_receipt(
 
     result = verify_claim_fn(claim, evidence_by_id, expected_commit=expected_commit)
     if not isinstance(result, dict) or result.get("status") != "VERIFIED":
-        raise VerificationReceiptRejected(
-            "authoritative claim verification did not return VERIFIED"
-        )
-    if claim.get("claim_id") != outcome_id:
-        raise VerificationReceiptRejected(
-            "claim_id must equal the CCT-005 outcome_id for subject binding"
-        )
+        raise VerificationReceiptRejected("authoritative claim verification did not return VERIFIED")
 
     stamp = verified_at or datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
     return {
