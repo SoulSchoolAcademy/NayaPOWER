@@ -19,6 +19,7 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Run human surface acceptance
         run: |
+          ln -s "$GITHUB_WORKSPACE/node_modules" /tmp/node_modules
           cat > /tmp/surface.mjs <<'NODE'
           import { chromium } from 'playwright';
           import crypto from 'node:crypto';
