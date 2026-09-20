@@ -480,6 +480,36 @@ jobs:
                 await page.waitForTimeout(500);
                 if (!page.url().includes('/mail')) throw new Error('SMART_MAIL_ROUTE_FAILED');
                 if (!(await page.locator('h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
+                await page.goto(process.env.NAYA_RUNTIME_URL + '/play?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                await page.waitForTimeout(800);
+                if (!(await page.locator('[data-surface="naya-play"]').count())) throw new Error('NAYA_PLAY_SURFACE_MISSING');
+                if (!(await page.locator('h1,h2').filter({ hasText: 'Naya Play' }).count())) throw new Error('NAYA_PLAY_HEADING_MISSING');
+                const playButton = page.getByRole('button', { name: /^PLAY NAYA$/i });
+                await playButton.waitFor({ timeout: 10000 });
+                if (await playButton.isDisabled()) throw new Error('NAYA_PLAY_PRIMARY_ACTION_DISABLED');
+                await page.evaluate(() => {
+                  Object.defineProperty(window, 'speechSynthesis', { configurable: true, value: {
+                    cancel() {},
+                    speak(utterance) { setTimeout(() => utterance.onend?.(), 25); }
+                  }});
+                });
+                await playButton.click();
+                await page.waitForFunction(() => /PLAY VERIFIED/.test(String(document.querySelector('[data-surface="naya-play"] [role="status"]')?.textContent || '')), null, { timeout: 15000 });
+                const playStatus = await page.locator('[data-surface="naya-play"] [role="status"]').textContent();
+                const playEventMatch = String(playStatus || '').match(/EVENT ([0-9a-f-]{36})/i);
+                const playReceiptMatch = String(playStatus || '').match(/RECEIPT ([0-9a-f-]{36})/i);
+                if (!playEventMatch || !playReceiptMatch) throw new Error('NAYA_PLAY_RECEIPT_OR_EVENT_MISSING:' + String(playStatus || 'NO_STATUS'));
+                const nayaPlayEventId = playEventMatch[1];
+                const nayaPlayReceiptId = playReceiptMatch[1];
+                await page.reload({ waitUntil: 'networkidle' });
+                await page.waitForTimeout(700);
+                const nayaPlayReload = await page.evaluate(async eventId => {
+                  const rows = await window.NayaAssistantRuntime.retrieve(eventId);
+                  return rows?.some(row => row?.event_id === eventId) || false;
+                }, nayaPlayEventId);
+                if (!nayaPlayReload) throw new Error('NAYA_PLAY_EVENT_NOT_RETRIEVED_AFTER_RELOAD:' + nayaPlayEventId);
+                console.log('NAYA_PLAY_HUMAN_ACTION_VERIFIED', viewport.label, JSON.stringify({ nayaPlayEventId, nayaPlayReceiptId }));
+
                 const semanticTabs = ['Your Report','Smart Lists','Smart Share','Smart Spaces','Your Connections','Smart Ledger'];
                 for (const tabName of semanticTabs) {
                   const tabNav = navRoot.locator('button').filter({hasText:tabName});
