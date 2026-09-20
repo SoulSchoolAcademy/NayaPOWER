@@ -2,8 +2,8 @@
 """NayaPOWER Compounding Intelligence Bridge v1.
 
 Canonical path:
-INTELLIGENCE EVENT → SMART NOTE → LEARNING EVENT → EVIDENCE →
-DAILY LEARNING → INTELLIGENCE FEED / COLLECTIVE PROJECTION.
+CANONICAL SE EVENT → SMART NOTE → INTELLIGENT BLOCK → LEARNING EVENT →
+EVIDENCE → DAILY LEARNING → INTELLIGENCE FEED / COLLECTIVE PROJECTION.
 
 This application layer reuses the existing promotion and Adaptive Learning
 engines. It does not train model weights or create a second memory system.
