@@ -138,6 +138,7 @@ def canonical_to_learning_input(event: dict[str, Any]) -> dict[str, Any]:
         provenance = {"canonical_source": source, "canonical_event_id": event_id}
     normalized = dict(event)
     normalized["lesson"] = lesson
+    normalized["learning"] = lesson
     normalized["smart_note_id"] = note_id
     normalized["evidence"] = _evidence_for_learning(event)
     normalized["evidence_state"] = _evidence_state_for_learning(event)
