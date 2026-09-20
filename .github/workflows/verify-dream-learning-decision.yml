@@ -7,6 +7,8 @@ on:
       - 'supabase/functions/naya-learning-apply/**'
       - 'supabase/functions/naya-decision-context/**'
       - 'assistant-runtime.js'
+      - 'NAYANET/HUB/src/data/pis.ts'
+      - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
       - '.github/workflows/verify-dream-learning-decision.yml'
 permissions:
   contents: read
