@@ -59,13 +59,17 @@ jobs:
           npm install --no-save wrangler@4.135.0
           export ZONE_JSON; ZONE_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/zones?name=nayanet.app&status=active")
           export ACCOUNT_JSON; ACCOUNT_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/accounts?page=1&per_page=100")
+          export WORKER_JSON; WORKER_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
           python3 - <<'PY'
           import json, os
           data=json.loads(os.environ["ZONE_JSON"])
           accounts=json.loads(os.environ["ACCOUNT_JSON"])
+          workers=json.loads(os.environ["WORKER_JSON"])
           rows=[{"id":z.get("id"),"name":z.get("name"),"status":z.get("status"),"account_id":(z.get("account") or {}).get("id"),"account_name":(z.get("account") or {}).get("name")} for z in data.get("result",[])]
           account_rows=[{"id":a.get("id"),"name":a.get("name")} for a in accounts.get("result",[])]
-          print(json.dumps({"zone_query":{"success":data.get("success"),"zones":rows},"account_query":{"success":accounts.get("success"),"accounts":account_rows}}))
+          worker_rows=[{"id":w.get("id"),"etag":w.get("etag")} for w in workers.get("result",[])]
+          matches=[w for w in worker_rows if w["id"]=="shiny-wave-dd48"]
+          print(json.dumps({"zone_query":{"success":data.get("success"),"zones":rows},"account_query":{"success":accounts.get("success"),"accounts":account_rows},"worker_query":{"success":workers.get("success"),"shiny_wave_matches":matches,"worker_count":len(worker_rows)}}))
           PY
       - name: Deploy authorized Welcome Worker and route
         shell: bash
