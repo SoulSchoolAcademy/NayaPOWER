@@ -234,7 +234,7 @@ jobs:
                 if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('REACT_MARKER_MISSING');
                 if (result.assistantRuntime !== true) throw new Error('ASSISTANT_RUNTIME_NOT_LOADED');
                 if (result.shell !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('CANONICAL_REACT_SHELL_MISSING');
-                console.log('HUB_RUNTIME_DEBUG', JSON.stringify({nav:result.nav, shell:result.shell, feedBoards:result.feedBoards, private:result.private, naya:result.naya, intelligence:result.intelligence, body:document.body.innerText.slice(0,1200), buttons:[...document.querySelectorAll('button')].map(x=>x.textContent?.replace(/\\s+/g,' ').trim()).filter(Boolean).slice(0,30)})); if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
+                if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
                 if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
                 await page.getByRole('button', { name: 'Intelligence Library' }).click();
