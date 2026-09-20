@@ -503,7 +503,7 @@ The template may be expanded. It must not be reduced below the level needed for 
 
 For current Hub work, the continuation packet must always preserve the Hub routing contract:
 
-**Current protected Hub:** `2026 09 17 NAYANET HUB.html`
+**Current protected Hub:** `NAYANET/HUB/index.html`
 
 **Rule:** do not edit it in place.
 
