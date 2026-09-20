@@ -5,7 +5,7 @@
     "id": "FINAL-HUMAN-ACCEPTANCE",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Complete the human-facing Hub by proving the canonical Smart Note receive/render path and remaining feature surfaces, then consolidate human acceptance; public Welcome → Identity remains a separate external authority boundary.",
+    "intent": "Complete the human-facing Hub by proving the canonical Smart Note receive/render path and remaining feature surfaces, then consolidate human acceptance; public Welcome → Identity remains deferred until the canonical Hub is complete.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
@@ -17,12 +17,11 @@
     "acceptance": [
       "NAYA_SUPERBRAIN_READY=READY on current main",
       "discriminating P1 improvement and future learning behavior are production-proven",
-      "public welcome.nayanet.app reaches the canonical Identity handoff",
-      "Identity activation enters canonical Assistant Hub runtime",
       "one consolidated current human-facing acceptance receipt covers A/B/C, authority, Smart Mail, replay, revocation, isolation, Activity/Ledger, learning, and continuation",
       "authority constraints have positive and negative runtime evidence",
       "ordinary-user activation is proven",
-      "Windows portability is dispositioned"
+      "Windows portability is dispositioned",
+      "current Hub Smart Note human capture path is production-proven through receiver → cognition → PIS → Smart Feed → reload"
     ],
     "evidence": [
       ".github/workflows/verify-proof7-compounding-loop.yml",
@@ -31,9 +30,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence.",
+    "next_action": "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source.",
     "next_actions": [
-      "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence."
+      "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
