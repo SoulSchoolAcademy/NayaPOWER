@@ -1,0 +1,59 @@
+name: Human Surface Completeness Acceptance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  surface:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Run human surface acceptance
+        run: |
+          cat > /tmp/surface.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL;
+          async function req(url,opt={}){const r=await fetch(url,opt);const t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}}if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
+          const A=await req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          if(!A.access_token)throw Error('AUTH_BOOTSTRAP_FAILED');
+          const origin=new URL(runtime).origin;
+          const storageState={cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(A)}]}]};
+          const browser=await chromium.launch({headless:true});const ctx=await browser.newContext({storageState});const p=await ctx.newPage();
+          await p.goto(runtime+'/',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+          const user=await p.evaluate(async({base,key})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const c=sdk.createClient(base,key,{auth:{persistSession:true,storage:localStorage,storageKey:'nayanet.supabase.auth'}});return (await c.auth.getUser()).data.user?.id},{base,key});if(user!==A.user.id)throw Error('BROWSER_HANDOFF_FAILED');
+          const checks={};
+          checks.hub='PASS';
+          const title='Surface completeness search '+process.env.GITHUB_RUN_ID, content='Unique searchable intelligence '+crypto.randomUUID();
+          const captured=await p.evaluate(async x=>window.NayaAssistantRuntime.captureSmartNote(x),{title,content});const eid=captured?.event_id||captured?.event?.event_id;if(!eid)throw Error('SEARCH_SETUP_CAPTURE_FAILED');
+          await p.goto(runtime+'/feed',{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(500);
+          const search=p.getByLabel('Search intelligence');await search.fill(title);await search.press('Enter');await p.waitForTimeout(1000);
+          if(!(await p.locator('.smart-feed-board[data-event-id="'+eid+'"]').count()))throw Error('SEARCH_EXACT_EVENT_NOT_VISIBLE');
+          checks.search='PASS';
+          await p.goto(runtime+'/reports',{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(700);
+          if(!(await p.locator('h1').filter({hasText:'Your Reports'}).count()))throw Error('REPORTS_SURFACE_FAILED');
+          checks.reports='PASS';
+          await p.goto(runtime+'/settings',{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('.empty-route').count())||!(await p.locator('.empty-route').innerText()).includes('AUTHENTICATED'))throw Error('SETTINGS_SURFACE_FAILED');
+          checks.settings='PASS';
+          await p.goto(runtime+'/dream',{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(700);
+          const dreamTitle=await p.locator('h1,h2').allTextContents();
+          if(!(await p.locator('.app').getAttribute('data-route')==='/dream')||!dreamTitle.some(x=>/dream/i.test(x)))throw Error('FIRST_DIVERGENCE:DREAM_ROUTE_OR_SURFACE_MISSING');
+          checks.dream='PASS';
+          await p.goto(runtime+'/play',{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(700);
+          if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
+          checks.naya_play='PASS';
+          console.log(JSON.stringify({status:'VERIFIED',checks,event_id:eid}));
+          await browser.close();
+          NODE
+          node /tmp/surface.mjs
