@@ -233,9 +233,9 @@
       "status": "VERIFIED",
       "claim_type": "WHOLE_JOURNEY",
       "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35470535019,
-      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
-      "deployed_source_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "run_id": 35492591064,
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
       "source_paths": [
         "assistant-runtime.js",
         "identity.html",
@@ -245,13 +245,14 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
       ],
       "evidence": [
-        "fresh authenticated context recovered canonical persisted cognition",
+        "fresh authenticated context established against the current deployed Assistant runtime",
         "Dream replay persisted and replayed idempotently",
-        "learning evidence persisted and learner state version advanced",
-        "later fresh-context decision used verified learning context with influenced=true",
-        "authority remained unchanged and adversarial authority smuggling was blocked"
+        "learning evidence persisted and learner state advanced",
+        "fresh-context later decision reused verified learning with influenced=true",
+        "authority remained changed=false and granted=false",
+        "later decision event was recorded and freshly retrieved with evidence/replay identity"
       ],
-      "reason": "Fresh-context learning reuse and governed later decision are verified; measurable long-term compounding improvement remains unproven."
+      "reason": "Current deployed runtime proves fresh-context learning reuse and governed later decision at the current claim-relevant Hub source scope; long-term universal compounding remains a separate claim."
     },
     "fresh_canonical_hub_smart_mail_transaction": {
       "status": "VERIFIED",
@@ -468,11 +469,10 @@
       "status": "VERIFIED",
       "claim_type": "WHOLE_JOURNEY",
       "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35470535019,
-      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
-      "deployed_source_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+      "run_id": 35492591064,
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
       "source_paths": [
-        ".github/workflows/verify-dream-learning-decision.yml",
         "assistant-runtime.js",
         "identity.html",
         "NayaNET/name-first-auth-adapter.js",
@@ -481,13 +481,14 @@
         "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
       ],
       "evidence": [
-        "fresh authenticated context recovered canonical persisted cognition",
+        "fresh authenticated context established against the current deployed Assistant runtime",
         "Dream replay persisted and replayed idempotently",
-        "learning evidence persisted and learner state version advanced",
-        "later fresh-context decision used verified learning context with influenced=true",
-        "authority remained unchanged and adversarial authority smuggling was blocked"
+        "learning evidence persisted and learner state advanced",
+        "fresh-context later decision reused verified learning with influenced=true",
+        "authority remained changed=false and granted=false",
+        "later decision event was recorded and freshly retrieved with evidence/replay identity"
       ],
-      "reason": "Fresh-context learning reuse and governed later decision are verified; measurable long-term compounding improvement remains unproven."
+      "reason": "Current deployed runtime proves fresh-context learning reuse and governed later decision at the current claim-relevant Hub source scope; long-term universal compounding remains a separate claim."
     },
     "ih03_canonical_intelligence_identity": {
       "status": "VERIFIED",
