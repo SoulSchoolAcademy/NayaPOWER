@@ -49,3 +49,5 @@ jobs:
             await page.waitForTimeout(2000);await browser.close();
           })().catch(e=>{console.error('DIAGNOSTIC_FAILED',e);process.exitCode=1});
           NODE
+          # retrigger marker
+          echo "DIAGNOSTIC_TRIGGER=${GITHUB_SHA}"
