@@ -1,5 +1,5 @@
 name: Wave A authenticated browser handoff acceptance
-# Current-proof trigger: execute the unchanged Wave A acceptance against the current main source.
+# Current-proof trigger: execute the unchanged Wave A acceptance against the current main source. Triggered for Smart Share boundary trace.
 
 on:
   push:
