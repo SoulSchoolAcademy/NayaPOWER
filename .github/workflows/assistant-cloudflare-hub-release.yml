@@ -303,28 +303,15 @@ jobs:
 
                 const sourceEventId = await board.getAttribute('data-event-id');
                 if (!sourceEventId) throw new Error('SMART_FEED_SOURCE_EVENT_ID_MISSING');
-                const retrievalProof = await page.evaluate(async ({eventId,url,key}) => {
-                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-                  const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
-                  const {data:{user},error:userError}=await client.auth.getUser();
-                  if (userError || !user?.id) throw new Error('SMART_FEED_RETRIEVAL_AUTH_MISSING');
-                  const {data,error}=await client
-                    .from('nayanet_cognition_events')
-                    .select('event_id,source,metadata,created_at')
-                    .eq('project_id','NayaNET')
-                    .eq('user_id',user.id)
-                    .eq('source','nayanet-hub.smart-feed.action')
-                    .eq('metadata->>source_event_id',eventId)
-                    .order('created_at',{ascending:false})
-                    .limit(50);
-                  if(error) throw error;
-                  const matching=data||[];
+                const retrievalProof = await page.evaluate(async (eventId) => {
+                  const actions = await window.NayaAssistantRuntime.retrieve();
+                  const matching = (actions || []).filter(x => x?.source === 'nayanet-hub.smart-feed.action' && x?.metadata?.source_event_id === eventId);
                   return {
                     count: matching.length,
                     actions: [...new Set(matching.map(x => x?.metadata?.action).filter(Boolean))],
                     eventIds: [...new Set(matching.map(x => x?.event_id).filter(Boolean))]
                   };
-                }, {eventId:sourceEventId,url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY});
+                }, sourceEventId);
                 const requiredActions = ['favorite','save','like','love','rating','comments','links','share'];
                 for (const required of requiredActions) if (!retrievalProof.actions.includes(required)) throw new Error('SMART_FEED_RETRIEVAL_MISSING:' + required + ':' + JSON.stringify(retrievalProof));
                 if (retrievalProof.count < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_EVENT_COUNT_TOO_LOW:' + JSON.stringify(retrievalProof));
