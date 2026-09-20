@@ -99,7 +99,11 @@ window.addEventListener('load',async()=>{try{await init()}catch(e){state.persist
   async function loadPersonal(){try{if(!window.NayaAssistantRuntime?.snapshot||!window.NayaAssistantRuntime?.retrieve)return;const snap=window.NayaAssistantRuntime.snapshot();if(!snap.authenticated)return;const events=await window.NayaAssistantRuntime.retrieve();const blocks=document.getElementById('blocks');if(!blocks)return;blocks.querySelectorAll('.naya-runtime-live').forEach(x=>x.remove());const relevant=(events||[]).filter(e=>String(e?.project_id||e?.project||'NayaNET')==='NayaNET').slice(0,20);if(relevant.length)blocks.insertAdjacentHTML('afterbegin',relevant.map(liveCard).join(''));const count=document.getElementById('feedCount');if(count)count.textContent=(relevant.length||0)+' LIVE + CANONICAL INTELLIGENCE';const title=document.getElementById('feedTitle');if(title)title.textContent='Personal Intelligence';const desc=document.getElementById('feedDesc');if(desc)desc.textContent='Authenticated intelligence retrieved from the governed NayaNET cognition boundary.'}catch(err){document.documentElement.dataset.nayaRuntimeFeedError='1'}}
   window.NayaAssistantRuntime&&(window.NayaAssistantRuntime.loadPersonalIntelligence=loadPersonal);
   function wire(){document.addEventListener('click',(event)=>{const feed=event.target.closest('[data-feed="personal"]');if(feed)setTimeout(()=>{ensureCaptureControl();loadPersonal()},0)},true);window.addEventListener('naya-auth-state',(event)=>{if(event.detail?.authenticated)setTimeout(loadPersonal,50)});window.addEventListener('naya-auth-ready',()=>setTimeout(()=>{ensureCaptureControl();loadPersonal()},50));if(document.documentElement.dataset.nayaAuth==='authenticated')setTimeout(loadPersonal,50)}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',wire,{once:true});else wire();
+  function loadCanonicalSidebarRuntime(){
+   if(document.getElementById('naya-canonical-sidebar-runtime'))return;
+   const s=document.createElement('script');s.id='naya-canonical-sidebar-runtime';s.src='/hub-completeness.js?runtime_sidebar='+Date.now();document.head.appendChild(s);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{wire();loadCanonicalSidebarRuntime()},{once:true});else{wire();loadCanonicalSidebarRuntime()}
 })();
 /* NAYANET NAME-FIRST AUTH OVERRIDE â€” one canonical adapter, no email/password UI. */
 (()=>{
