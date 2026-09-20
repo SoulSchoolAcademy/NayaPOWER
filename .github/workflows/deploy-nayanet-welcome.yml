@@ -1,0 +1,152 @@
+name: NAYA — Canonical Welcome Worker Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'identity.html'
+      - 'NAYANET/name-first-auth-adapter.js'
+      - '.github/workflows/deploy-nayanet-welcome.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  WELCOME_WORKER: shiny-wave-dd48
+  WELCOME_RUNTIME_URL: https://shiny-wave-dd48.nayanet.workers.dev
+  WELCOME_PUBLIC_URL: https://welcome.nayanet.app
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    steps:
+      - name: Checkout exact main source
+        uses: actions/checkout@v4
+
+      - name: Validate canonical identity source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s identity.html
+          test -s NAYANET/name-first-auth-adapter.js
+          grep -q 'NAYA_HUB_ORIGIN=' identity.html
+          grep -q 'sparkling-shape-7ae5.smartnetpodcast.workers.dev' identity.html
+          grep -q 'NayaNETNameFirstAuth' identity.html
+          grep -q 'signInAnonymously' NAYANET/name-first-auth-adapter.js
+
+      - name: Discover exact Cloudflare account for Welcome worker
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${CLOUDFLARE_API_TOKEN:-}"
+          accounts_json="$(curl -fsSL https://api.cloudflare.com/client/v4/accounts \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json")"
+          account_ids="$(printf '%s' "$accounts_json" | jq -r '.result[]?.id // empty')"
+          test -n "$account_ids"
+          found=""
+          while IFS= read -r account_id; do
+            [ -n "$account_id" ] || continue
+            scripts_json="$(curl -fsSL "https://api.cloudflare.com/client/v4/accounts/${account_id}/workers/scripts" \
+              -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+              -H "Content-Type: application/json")" || continue
+            if printf '%s' "$scripts_json" | jq -e --arg worker "${WELCOME_WORKER}" '.result[]?.id == $worker' >/dev/null; then
+              found="$account_id"
+              break
+            fi
+          done <<< "$account_ids"
+          test -n "$found"
+          echo "WELCOME_ACCOUNT_ID=$found" >> "$GITHUB_ENV"
+          echo "CANONICAL_WELCOME_WORKER=${WELCOME_WORKER}"
+          echo "CANONICAL_WELCOME_ACCOUNT_DISCOVERED=true"
+
+      - name: Preserve current Welcome surface and overlay canonical identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf welcome-dist
+          mkdir -p welcome-dist/NAYANET
+          curl -fsSL "${WELCOME_RUNTIME_URL}/index.html" -o welcome-dist/index.html
+          curl -fsSL "${WELCOME_RUNTIME_URL}/hub.html" -o welcome-dist/hub.html
+          curl -fsSL "${WELCOME_RUNTIME_URL}/manifest.webmanifest" -o welcome-dist/manifest.webmanifest
+          for asset in icon-192.png icon-512.png apple-touch-icon.png icon-192.jpg icon-512.jpg apple-touch-icon.jpg; do
+            curl -fsSL "${WELCOME_RUNTIME_URL}/${asset}" -o "welcome-dist/${asset}" 2>/dev/null || true
+          done
+          cp identity.html welcome-dist/identity.html
+          cp NAYANET/name-first-auth-adapter.js welcome-dist/NAYANET/name-first-auth-adapter.js
+          test -s welcome-dist/index.html
+          test -s welcome-dist/hub.html
+          test -s welcome-dist/manifest.webmanifest
+          test -s welcome-dist/identity.html
+          test -s welcome-dist/NAYANET/name-first-auth-adapter.js
+          grep -q "identity.html" welcome-dist/index.html
+          grep -q "sparkling-shape-7ae5.smartnetpodcast.workers.dev" welcome-dist/identity.html
+
+      - name: Prepare exact Wrangler target
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"shiny-wave-dd48","compatibility_date":"2026-09-15","account_id":"'${WELCOME_ACCOUNT_ID}'","assets":{"directory":"'${GITHUB_WORKSPACE}'/welcome-dist","not_found_handling":"single-page-application"}}' > "$RUNNER_TEMP/welcome-wrangler.jsonc"
+
+      - name: Dry-run exact Welcome deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/welcome-wrangler.jsonc" --dry-run
+
+      - name: Deploy exact Welcome artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 deploy --config "$RUNNER_TEMP/welcome-wrangler.jsonc"
+
+      - name: Verify Welcome worker identity handoff
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          (async () => {
+            const browser = await chromium.launch({ headless: true });
+            try {
+              const page = await browser.newPage();
+              await page.goto('https://welcome.nayanet.app/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 60000 });
+              const frame = page.frames().find(f => f.url().includes('shiny-wave-dd48.nayanet.workers.dev'));
+              if (!frame) throw new Error('WELCOME_WORKER_IFRAME_NOT_FOUND');
+
+              const input = frame.locator('input[placeholder="Enter Your Name"]').first();
+              await input.waitFor({ timeout: 15000 });
+              await input.fill('Naya Welcome Proof');
+              await frame.locator('button.enter').first().click();
+              await frame.waitForURL(/\\/identity\\.html/, { timeout: 30000 });
+              if (!frame.url().includes('/identity.html')) throw new Error('WELCOME_IDENTITY_HANDOFF_FAILED:' + frame.url());
+
+              await frame.locator('#name').fill('Naya Welcome Proof');
+              await frame.locator('#alias').fill(('welcome' + Date.now()).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48));
+              await frame.locator('#enter').click();
+              await frame.waitForURL(/sparkling-shape-7ae5\\.smartnetpodcast\\.workers\\.dev\\//, { timeout: 60000 });
+              if (!frame.url().includes('sparkling-shape-7ae5.smartnetpodcast.workers.dev')) {
+                throw new Error('WELCOME_CANONICAL_HUB_HANDOFF_FAILED:' + frame.url());
+              }
+              console.log('WELCOME_CANONICAL_HANDOFF_VERIFIED', JSON.stringify({ finalUrl: frame.url() }));
+            } finally {
+              await browser.close();
+            }
+          })().catch(error => { console.error(error); process.exit(1); });
+          NODE
+
+      - name: Final Welcome proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "WELCOME_CANONICAL_WORKER=shiny-wave-dd48"
+          echo "WELCOME_CANONICAL_HANDOFF=verified"
+          echo "WELCOME_PUBLIC_URL=${WELCOME_PUBLIC_URL}"
+          echo "TARGET_RUNTIME=${WELCOME_RUNTIME_URL}"
