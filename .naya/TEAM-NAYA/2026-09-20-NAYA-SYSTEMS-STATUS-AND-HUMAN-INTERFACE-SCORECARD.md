@@ -1,186 +1,85 @@
 # NayaPOWER / NayaNET Systems Status & Human Interface Scorecard
 Date: 2026-09-20
-Source of truth: `SoulSchoolAcademy/NayaPOWER`, `main`
+Source of truth: SoulSchoolAcademy/NayaPOWER / main
+Current checkpoint HEAD: a78f003b944423e53ce537182121afd1d3f85766
 
-## Purpose
+## Executive truth
 
-This is the current checkpoint for Team Naya. The system has two inseparable halves:
+NayaPOWER has a substantially proven engine and a production-proven canonical Assistant Cloudflare Hub source/runtime scope, but it is **not yet a consolidated human-facing production acceptance**.
 
-1. **Engine** — governance, intelligence capture, canonicalization, learning, memory, retrieval, execution, outcome, verification.
-2. **Body / Human Operating Surface** — the Hub, navigation, dashboards, controls, creation flows, search, organization, communication, activity, ledger, and visible feedback that let a human actually operate the engine.
+The remaining work is no longer “build the Superbrain from scratch.” It is to close the final causal and human acceptance seams without creating duplicate architecture.
 
-The engine is not considered product-complete if the human cannot visibly and reliably drive it.
+## Six-dimension scorecard
 
-## Current engine checkpoint
+Scores are evidence-weighted readiness indicators, not claims of completion.
 
-Recent source/evidence work has materially advanced:
+| Dimension | Score | Evidence | Critical gap |
+|---|---:|---|---|
+| Engine / Superbrain | 9/10 | governed execution, canonical compounding, cold retrieval, Wave A security journey, P1 held-out improvement, concurrency proof, Dream→learning→decision proof | latest CCT-005 verification-receipt workflow proof is not yet exposed as CI evidence on current HEAD; broader concurrency remains unproven |
+| Setup / control plane | 8.5/10 | constitution, STATE/BLOCKS/MAP/PROOF, Team Naya operating law, runtime registry, durable handoffs | several control-plane documents contain older checkpoints; Windows checkout portability remains blocked |
+| Hub / human body | 8/10 | Assistant Cloudflare source/build/runtime parity, desktop/mobile baseline, Smart Feed actions, Smart Share, relationship/security journey | complete surface-by-surface human audit is not yet recorded; Smart Note receiver is the active causal gap |
+| Overall readiness | 7.5/10 | many production/runtime proofs are green and source-scoped | no single consolidated human acceptance receipt; public Welcome remains wrong/stale; ordinary-user breadth is incomplete |
+| Sender | 8.5/10 | canonical Assistant release lane, exact source/build/runtime parity, authenticated sender journey and governed actions | full sender→receiver Smart Note proof still needs one end-to-end current receipt |
+| Receiver | 7.5/10 | authenticated receiver retrieval, fresh-context continuity, Smart Mail receiver verification, Smart Feed/Share retrieval | canonical Smart Note receiver validation/persistence/render/reload boundary still needs direct proof |
 
-- governed authority → decision → execution authorization → execution controller
-- Smart Note → canonical SE event → Intelligent Block → learning event
-- learning → cold retrieval → successor decision lineage
-- successor decision → governed execution → canonical Activity receipt
-- Activity receipt → CCT-005 outcome provenance
-- documented verification ownership boundary reaches `.naya/runtime/evidence_runtime.py::verify_claim()`
-- canonical Hub/browser observation work has been actively repaired
-- Smart Mail has been used as a real production proof surface and has received multiple causal-boundary repairs
-- public Welcome → Identity → canonical Hub remains an external deployment/route-authority boundary until independently verified
+## Current human-surface audit status
 
-**Important evidence rule:** source code, a workflow file, or a successful local run is not by itself production proof.
+| Surface | Evidence-backed status now | Next proof |
+|---|---|---|
+| Intelligent Hub / shell | RUNTIME-PROVEN | consolidated human acceptance |
+| Smart Feed | RUNTIME-PROVEN | cross-surface object journey |
+| Search | UNVERIFIED | real search → open → identity persistence |
+| Smart Notes | PARTIAL | canonical receiver → persist → Feed → reload |
+| Smart Lists | RUNTIME-PROVEN in Wave A scope | broader ordinary-user journey |
+| Smart Spaces | RUNTIME-PROVEN in Wave A relationship scope | ordinary-user create/manage audit |
+| Connections / Contacts | RUNTIME-PROVEN in Wave A scope | broader surface audit |
+| Smart Mail | PRODUCTION-PROVEN in governed A→B scope | consolidate into human acceptance |
+| Smart Share | RUNTIME-PROVEN | recipient/privacy acceptance |
+| Smart Ledger | RUNTIME-PROVEN for fresh cognition lineage | broader drill-down acceptance |
+| Reports | UNVERIFIED | generate/open/refresh proof |
+| Settings | UNVERIFIED | supported setting persistence proof |
+| Dream | RUNTIME-PROVEN as candidate/learning path | human-facing surface audit |
+| Naya Play | UNVERIFIED | real interaction/persistence proof |
 
-## Human interface scorecard
+## Known blockers / holes
 
-These are working planning estimates, not repository-reported percentages. They must be replaced by evidence from the dedicated UI audit.
+1. **Canonical Smart Note receiver boundary** — active P0.
+2. **Public Welcome mismatch** — current control-plane evidence says public Welcome still embeds the stale shiny-wave-dd48 path and redirects activation toward academy.nayanet.app, not the canonical Assistant identity/Hub.
+3. **Consolidated human acceptance receipt** — individual proofs exist, but the single human-facing whole-journey receipt does not.
+4. **Latest CCT-005 verification receipt CI proof** — source/test seam is repaired on current main, but combined status currently exposes only an unrelated Vercel failure and no CCT Actions result.
+5. **Windows portability** — tracked colon-containing filename prevents clean Windows checkout.
+6. **Broader multi-Naya concurrency** — only the proven eight-writer scope is green.
+7. **Surface breadth** — Search/Reports/Settings/Naya Play and parts of Spaces/Dream need evidence-backed human audit.
+8. **Stale documentation/checkpoints** — some Team Naya documents still describe older P0s; live STATE/BLOCKS/PROOF outrank those records.
 
-| Surface | Current working status | Provisional completion | Required proof |
-|---|---|---:|---|
-| Intelligent Hub / shell | LIVE/PARTIAL | 90% | open real runtime, navigate, interact, reload |
-| Smart Feed | LIVE/PARTIAL | 85-90% | create/read/update/persist/reload/search |
-| Search | PARTIAL | 80% | real cross-surface search + open result |
-| Smart Notes | PARTIAL/LIVE | 85% | create → persist → reload → retrieve |
-| Smart Lists | AUDIT REQUIRED | 40-50% | create/edit/use/persist/reload |
-| Smart Spaces | AUDIT REQUIRED | 25-35% | create → members/content/activity → reload |
-| Connections / Contacts | AUDIT REQUIRED | 35-45% | create/manage relationship → persist → use |
-| Smart Mail | LIVE/PARTIAL | 60-70% | compose/send/receive/thread + governed receipt + reload |
-| Smart Share | AUDIT REQUIRED | 40-50% | share → permission → recipient view → persistence |
-| Smart Ledger | PARTIAL | 45-55% | visible event → evidence → lineage → drill-down |
-| Reports | AUDIT REQUIRED | 40-50% | generate/open/refresh historical report |
-| Settings | AUDIT REQUIRED | 35-45% | change supported setting → persist → reload |
-| Dream | AUDIT REQUIRED | 25-40% | visible input/output + persistence + provenance |
-| Naya Play | AUDIT REQUIRED | 25-40% | enter/use/return + persistence where applicable |
+## Protected architecture
 
-## What "LIVE" means
+Do not create a second event store, second memory store, second learning system, alternate authority chain, alternate Hub source of truth, or competing verification engine.
 
-A surface may only be marked LIVE after all applicable layers are demonstrated:
+## LIVE definition
 
-1. visible page/component exists;
-2. control is actually clickable/operable;
-3. control invokes the real runtime path;
-4. backend state changes;
-5. state persists;
-6. page reload reconstructs the state;
-7. related surfaces can see the resulting object/event;
-8. failure states are truthful and fail closed;
-9. Activity/Ledger/evidence exists where the action is consequential.
+A surface is LIVE only when visible, clickable, real-runtime-backed, state-changing, persistent, reloadable, related-surface-connected, truthful on failure, and evidenced where consequential.
 
-A screenshot or static demo is not enough.
+## Immediate execution order
 
-## Team operating model
+1. Smart Note receiver.
+2. Latest CCT-005 verification CI proof.
+3. Consolidated human acceptance receipt.
+4. Public Welcome → canonical Identity → canonical Hub.
+5. Full surface audit and repairs.
+6. Adversarial regression.
+7. Final production checkpoint and handoff.
 
-The browser-based Nayas should work as a coordinated team, not seven independent builders.
+## Human acceptance
 
-### Lane A — Engine / Causal Integrity
-Owns only missing engine boundaries and proof gaps.
-Priority: canonical learning → retrieval → application → independent verification.
-Must not redesign the Hub.
+The milestone is:
 
-### Lane B — Human Interface / Hub
-Owns the actual visible NayaNET body.
-Priority: make every major surface enterable, operable, persistent, and visually coherent with the frozen Hub language.
-Must not replace working backend contracts with mock data.
+> Shawn can open the canonical Hub, create a real object, see it persist, reload it, search it, connect/share/use it, see intelligence and Activity/Ledger, retrieve it cold, understand why Naya acted, and see truthful denial when authorization is absent.
 
-### Lane C — Surface Integration
-Owns connections between UI surfaces and existing backend/runtime contracts.
-Priority: real calls, real IDs, real persistence, reload behavior.
-No second stores or duplicate intelligence paths.
+That is the dashboard + steering wheel test.
 
-### Lane D — Verification / Evidence
-Owns proof quality.
-Priority: claim → evidence → authoritative verification and durable receipt.
-Never upgrade evidence state merely because a file exists.
+## Team Naya handoff law
 
-### Lane E — Browser / Production QA
-Owns human-observable acceptance.
-Priority: actual browser interaction, source/build/runtime parity, deployed runtime, cold reload, and truthful failure states.
+WHERE / WORKING / BROKEN / FIXED / PROOF / NOT PROVEN / NEXT / TEAM / MEMORY.
 
-### Lane F — Team Coordinator / Checkpoint
-Owns the scoreboard.
-At each checkpoint, record:
-- current HEAD
-- work completed
-- exact files/PRs
-- exact runtime/proof IDs
-- current blockers
-- next action
-- which other lane/Naya was informed
-- whether memory was updated
-
-## Human-value priority rule
-
-Before starting work, each Naya must answer:
-
-- **Where am I?**
-- **What exact boundary am I working on?**
-- **Why does it matter to the human operating experience or engine integrity?**
-- **What evidence says this is the highest-value available action?**
-- **What existing work/contract am I building on?**
-- **Which other Naya needs to know?**
-- **What will I record when finished?**
-
-Do not spend a cycle polishing a surface while its runtime contract is missing.
-Do not spend a cycle extending backend architecture when a surface can already be made visibly operational from existing contracts.
-Do not create duplicate stores, duplicate canonical event paths, duplicate learning systems, or alternate authority chains.
-
-## Checkpoint protocol
-
-Every Naya handoff must leave a durable checkpoint containing:
-
-**DONE**
-- exact change
-- exact commit/PR
-- tests/proof
-- runtime observation if any
-
-**NOT DONE**
-- exact missing boundary
-- reason
-- blocked vs merely unverified
-
-**NEXT**
-- one smallest next action
-
-**TEAM**
-- what the next Naya must know
-- which lane owns the next action
-
-**MEMORY**
-- persist the durable state so a later Naya does not rediscover it.
-
-## Immediate program priority
-
-The immediate product milestone is:
-
-> **Make the NayaNET Intelligent Hub visibly operable as a human system while continuing to close the remaining engine verification boundary.**
-
-The next UI audit must trace each surface:
-
-`page/component → control → runtime call → persistence → reload → related surface → evidence`
-
-and classify it strictly as:
-
-`LIVE / PARTIAL / DEMO / STATIC / MISSING / BLOCKED`
-
-## Definition of the "I can touch it" milestone
-
-Shawn must be able to open the canonical Hub and, without knowing the repository internals:
-
-- navigate the major areas;
-- create a real object;
-- see the object persist;
-- reload and find it again;
-- search for it;
-- connect it to another relevant object/person/space;
-- perform an appropriate action;
-- see the resulting intelligence/activity;
-- inspect the relevant evidence/ledger trail;
-- understand what Naya did and why;
-- encounter truthful failure when something is not authorized or not available.
-
-That is the dashboard/steering-wheel acceptance test.
-
-## Current external boundary
-
-The public Welcome → Identity → canonical Hub deployment/route authority is still a separate production boundary. Until its browser flow is independently verified, it remains BLOCKED/UNVERIFIED rather than complete.
-
-## Next checkpoint
-
-Do the dedicated HUMAN INTERFACE AUDIT against `main`, then update this file with evidence-backed statuses. Do not change backend architecture merely to make the scorecard look better.
+Unknown is not success. Blocked is not pass. A workflow existing is not proof. A source change is not runtime proof.
