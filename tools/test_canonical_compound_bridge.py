@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
+sys.path.insert(0, str(ROOT / ".naya" / "memory"))
 import compound_intelligence as ci
 import adaptive_learning as al
 from canonical_event_store import create_or_replay
@@ -32,6 +33,7 @@ def load_real_event() -> dict:
 
 def test_real_canonical_event_to_learning():
     event = load_real_event()
+    assert any(item.get("event_id") == EVENT_ID for item in ci.load_events())
     normalized = ci.canonical_to_learning_input(event)
     assert normalized["event_id"] == EVENT_ID
     assert normalized["smart_note_id"] == NOTE_ID
@@ -46,6 +48,8 @@ def test_real_canonical_event_to_learning():
     assert learning["lesson"] == normalized["lesson"]
     assert learning["evidence_state"] == "VERIFIED"
     assert learning["provenance"]["canonical_event_id"] == EVENT_ID
+    assert learning["source"]
+    assert EVENT_ID in learning["source"][0]
     assert learning["learning_event_id"].startswith("LRN-")
 
 
