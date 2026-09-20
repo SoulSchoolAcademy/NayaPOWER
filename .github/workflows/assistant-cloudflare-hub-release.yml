@@ -352,6 +352,49 @@ jobs:
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                 await page.waitForTimeout(500);
 
+                const connectionProof = await page.evaluate(async () => {
+                  const runtime = window.NayaAssistantRuntime;
+                  const session = runtime?.snapshot?.();
+                  if (!session?.authenticated || !session.user_id) throw new Error('SMART_CONNECTION_AUTH_MISSING');
+                  const spaces = await runtime.listSpaces();
+                  const shared = (spaces || []).find(s => s?.visibility === 'shared');
+                  if (!shared?.id) throw new Error('SMART_CONNECTION_SHARED_SPACE_NOT_AVAILABLE');
+                  const joined = await runtime.joinSpace(shared.id);
+                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const client = sdk.createClient("https://dahisasgpfvziswqvmvm.supabase.co", "sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue",{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                  const {data:members,error:memberError}=await client.from('nayanet_space_members').select('member_id').eq('space_id',shared.id).eq('status','active');
+                  if(memberError) throw new Error('SMART_CONNECTION_SHARED_MEMBER_QUERY_FAILED:'+memberError.message);
+                  const target=members?.find(m=>m.member_id!==session.user_id);
+                  if(!target?.member_id) throw new Error('SMART_CONNECTION_SHARED_TARGET_NOT_AVAILABLE');
+                  return {targetMemberId:target.member_id,spaceId:shared.id,joinStatus:joined?.status||'JOINED'};
+                });
+                await page.evaluate((values) => { window.prompt = () => values.shift() || ''; }, [connectionProof.targetMemberId, connectionProof.spaceId]);
+                await board.getByRole('button', { name: /CONNECT$/ }).first().click();
+                await page.waitForTimeout(250);
+                await board.locator('.sfb-related-list button').first().click();
+                await page.waitForTimeout(900);
+                const connectionStatus = await board.locator('.sfb-status').textContent().catch(() => '');
+                if (!String(connectionStatus || '').includes('CONNECTION CREATED · CANONICAL ID ')) throw new Error('CANONICAL_CONNECTION_CREATE_NOT_PROVEN:' + String(connectionStatus || 'NO_STATUS'));
+                const connectionMatch = String(connectionStatus || '').match(/CANONICAL ID ([0-9a-f-]{36})/i);
+                if (!connectionMatch) throw new Error('CANONICAL_CONNECTION_ID_INVALID:' + String(connectionStatus || 'NO_ID'));
+                const connectionId = connectionMatch[1];
+                const canonicalConnection = await page.evaluate(async ({url,key,connectionId,targetMemberId,spaceId}) => {
+                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                  const {data:{user},error:userError}=await client.auth.getUser();
+                  if (userError || !user?.id) throw new Error('SMART_CONNECTION_RETRIEVAL_AUTH_MISSING');
+                  const {data,error}=await client.from('nayanet_connections').select('id,owner_member_id,connected_member_id,status,source_space_id').eq('id',connectionId).maybeSingle();
+                  if (error) throw error;
+                  return {data,userId:user.id,targetMemberId,spaceId};
+                }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY,connectionId,targetMemberId:connectionProof.targetMemberId,spaceId:connectionProof.spaceId});
+                if (!canonicalConnection.data || canonicalConnection.data.owner_member_id !== canonicalConnection.userId || canonicalConnection.data.connected_member_id !== connectionProof.targetMemberId || canonicalConnection.data.status !== 'active' || canonicalConnection.data.source_space_id !== connectionProof.spaceId) throw new Error('CANONICAL_CONNECTION_PERSISTENCE_MISMATCH:' + JSON.stringify(canonicalConnection));
+                await page.reload({ waitUntil: 'networkidle' });
+                await board.waitFor({ timeout: 10000 });
+                await page.waitForTimeout(700);
+                const reloadedConnections = await page.evaluate(() => window.NayaAssistantRuntime.listConnections());
+                if (!reloadedConnections.find(x => x.id === connectionId && x.connected_member_id === connectionProof.targetMemberId && x.status === 'active')) throw new Error('CANONICAL_CONNECTION_NOT_RETRIEVED_AFTER_RELOAD:' + JSON.stringify(reloadedConnections));
+                console.log('SMART_FEED_CONNECT_CANONICAL_VERIFIED', viewport.label, JSON.stringify({ connectionId, targetMemberId:connectionProof.targetMemberId, spaceId:connectionProof.spaceId, joinStatus:connectionProof.joinStatus }));
+
                 console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof }));
                 // Reuse the viewport-aware navigation root from the Space proof above.\n
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
