@@ -7,6 +7,7 @@ type ShellProps={children:(path:string)=>ReactNode};
 type NavItem={name:string;route:string;icon:string};
 const items:NavItem[]=[
  {name:'Your Intelligence Today',route:routes.home,icon:'◉'},
+ {name:'Smart Feed',route:routes.feed,icon:'◫'},
  {name:'Your Report',route:routes.reports,icon:'▤'},
  {name:'Intelligence Library',route:routes.library,icon:'▦'},
  {name:'Smart Lists',route:routes.lists,icon:'☷'},
@@ -14,6 +15,7 @@ const items:NavItem[]=[
  {name:'Smart Spaces',route:routes.spaces,icon:'▱'},
  {name:'Your Connections',route:routes.connections,icon:'↔'},
  {name:'Smart Mail',route:routes.mail,icon:'✉'},
+ {name:'Smart Ledger',route:routes.ledger,icon:'⌘'},
  {name:'Settings',route:routes.settings,icon:'⚙'}
 ];
 const normalize=(p:string)=>p.length>1&&p.endsWith('/')?p.slice(0,-1):p||'/';
