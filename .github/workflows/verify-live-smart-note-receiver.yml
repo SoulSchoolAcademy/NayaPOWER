@@ -77,10 +77,9 @@ jobs:
             if (!established.identity?.authenticated || !established.identity?.userId) throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
             return page.evaluate(async () => {
               const identity = await window.NayaNETNameFirstAuth.current();
-              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-              const client = sdk.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
-              const session = (await client.auth.getSession()).data.session;
-              return { identity, session: session ? { userId: session.user.id, access_token: session.access_token } : null };
+              const client = window.__NayaNETSupabaseClient;
+              const session = client ? (await client.auth.getSession()).data.session : null;
+              return { identity, session: session ? { userId: session.user.id, access_token: session.access_token } : null, adapterClient: Boolean(client) };
             });
           }
 
