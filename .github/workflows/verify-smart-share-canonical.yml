@@ -96,17 +96,12 @@ jobs:
           const sourceBefore=await ap.evaluate(async()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if((sourceBefore.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SOURCE_ALREADY_PUBLIC_BEFORE_SHARE');
 
-          const shareNav=ap.locator('.rail.left button[data-page="share"]').first();
-          await shareNav.waitFor({state:'visible',timeout:15000});
-          await shareNav.scrollIntoViewIfNeeded();
-          await shareNav.click({force:true});
-          await ap.locator('.nc-modal').waitFor({state:'visible',timeout:10000});
-          const shareModal=ap.locator('.nc-modal').last();
-          if(!(await shareModal.innerText()).includes('Smart Share')) throw Error('SMART_SHARE_SURFACE_NOT_OPEN');
-          const publishButton=shareModal.locator('#nc-publish');
-          await publishButton.click();
-          await ap.waitForFunction(()=>/PUBLISHED · PUBLICATION /.test(String(document.querySelector('.nc-modal #nc-state')?.textContent||'')),null,{timeout:20000});
-          const publishStatus=String(await shareModal.locator('#nc-state').textContent());
+          const shareButton=ap.locator('[data-c4-kind="share-intel"]').first();
+          await shareButton.waitFor({state:'visible',timeout:15000});
+          await shareButton.scrollIntoViewIfNeeded();
+          await shareButton.click({force:true});
+          await ap.waitForFunction(()=>document.querySelector('[data-c4-kind="share-intel"]')?.dataset.smartShareState==='PUBLISHED',null,{timeout:20000});
+          const publishStatus=String(await shareButton.getAttribute('data-publication-id')||'');
           const publicationId=publishStatus.match(/PUBLICATION ([0-9a-f-]{36})/i)?.[1]||'';
           const receiptEventId=publishStatus.match(/RECEIPT ([^ ]+)/)?.[1]||'';
           if(!publicationId||!receiptEventId) throw Error('SMART_SHARE_PUBLICATION_RECEIPT_NOT_PROVEN:'+publishStatus);
