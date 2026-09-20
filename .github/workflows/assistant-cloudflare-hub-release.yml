@@ -77,14 +77,13 @@ jobs:
           test -s NAYANET/name-first-auth-adapter.js
           grep -q 'nayanet-direct-nine' NAYANET/HUB/index.html
           grep -q '<title>NayaNET' NAYANET/HUB/index.html
-          grep -q 'data-nc="feed"' NAYANET/HUB/index.html
+          test -f "2026 09 17 NAYANET HUB.html"
+          cmp -s NAYANET/HUB/index.html "2026 09 17 NAYANET HUB.html"
+          grep -q 'data-page="home"' NAYANET/HUB/index.html
+          grep -q 'Smart Notes' NAYANET/HUB/index.html
           grep -q 'Smart Lists' NAYANET/HUB/index.html
           grep -q 'Smart Spaces' NAYANET/HUB/index.html
           grep -q 'Smart Ledger' NAYANET/HUB/index.html
-          ! grep -q 'data-page="notes"' NAYANET/HUB/index.html
-          ! grep -q 'data-page="collective"' NAYANET/HUB/index.html
-          ! grep -q 'data-page="evidence"' NAYANET/HUB/index.html
-          ! grep -q 'badge">NEW' NAYANET/HUB/index.html
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/index.html dist/index.html
           cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
