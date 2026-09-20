@@ -340,7 +340,17 @@ jobs:
                 if (!(await page.locator('.feature-surface').count())) throw new Error('SMART_SPACES_FEATURE_SURFACE_MISSING');
                 const spaceSurfaceText = await page.locator('.feature-surface').first().innerText();
                 if (!spaceSurfaceText.includes(spaceProofName)) throw new Error('CANONICAL_PRIVATE_SPACE_NOT_RETRIEVED_AFTER_RELOAD:' + spaceProofName);
-                if (!spaceSurfaceText.includes(createdSpaceId)) throw new Error('CANONICAL_PRIVATE_SPACE_ID_NOT_RETRIEVED:' + createdSpaceId);
+                const persistedSpace = await page.evaluate(async ({url,key,spaceId}) => {
+                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                  const {data:{user},error:userError}=await client.auth.getUser();
+                  if (userError || !user?.id) throw new Error('SMART_SPACE_RETRIEVAL_AUTH_MISSING');
+                  const {data,error}=await client.from('nayanet_spaces').select('id,owner_member_id,name,visibility').eq('id',spaceId).maybeSingle();
+                  if (error) throw error;
+                  return {data,userId:user.id};
+                }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY,spaceId:createdSpaceId});
+                if (!persistedSpace.data || persistedSpace.data.id !== createdSpaceId) throw new Error('CANONICAL_PRIVATE_SPACE_ID_NOT_RETRIEVED:' + createdSpaceId);
+                if (persistedSpace.data.owner_member_id !== persistedSpace.userId) throw new Error('CANONICAL_PRIVATE_SPACE_OWNER_MISMATCH:' + JSON.stringify(persistedSpace));
                 console.log('CANONICAL_PRIVATE_SPACE_CREATE_RELOAD_RETRIEVE_VERIFIED', viewport.label, JSON.stringify({ spaceProofName, createdSpaceId }));
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
