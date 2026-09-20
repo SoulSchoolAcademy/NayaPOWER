@@ -1,12 +1,37 @@
 # 🔱 TEAM NAYA — TODAY'S SUPERBRAIN OPERATING CENTER
 
-**Date:** 2026-09-17  
+**Date:** 2026-09-20  
 **Status:** ACTIVE  
 **Human authority:** Shawn Vibert  
 **Operating lead:** Lead Naya / Team Naya  
 **Repository:** `SoulSchoolAcademy/NayaPOWER`
 
 > **This is the Team Naya control room. Every Naya should be able to answer: What are we building? Why? What is current? What is true? What is done? What is not proven? Where do Smart Notes go? Where is Activity? What must not be redone? What happens next?**
+
+
+
+---
+
+# 🔱 CURRENT HUB MISSION RESET
+
+**Current Hub:** `NAYANET/HUB/index.html`  
+**Protected source SHA:** `f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+This is the **one and only current Hub product surface**.
+
+Welcome/front-door work is deferred. Historical V2/509/legacy Hub artifacts, alternate shells, static mirrors, Vercel/AppDeploy snapshots, and old deployment descriptions are not current Hub options.
+
+**Active P0:** `CANONICAL-HUB-FUNCTIONALIZATION`
+
+**Mission:** connect the existing verified Naya engine to the existing canonical Hub without redesigning the Hub or reopening the proven Smart Note → canonical event → PIS/Smart Feed compounding path.
+
+**Current feature order:** Smart Share → Smart Mail → Connections → Smart Spaces → Smart Lists.
+
+Every Naya must read:
+
+`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+
+before Hub work.
 
 ## WHAT ARE WE BUILDING?
 
@@ -50,9 +75,11 @@ This is an important milestone: the system caught its own coordination defect in
 
 ## CURRENT SINGLE NEXT ACTION
 
-> **Configure/verify the authorized Assistant-lane test identity as protected GitHub Environment secrets named exactly ASSISTANT_TEST_EMAIL and ASSISTANT_TEST_PASSWORD in assistant-cloudflare-production, then dispatch the authenticated lifecycle proof workflow against current main and advance through record → retrieve → action → observation → verification → independent fresh-context retrieval. Preserve secret-free receipts. If the environment secrets are absent, record BLOCKED and continue all executable non-authenticated proof gates.**
+> **Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result. Stop at the first actual failure, repair only that boundary, and rerun the proof.**
 
-If the required external capability is unavailable, do not guess, bypass, or fabricate. Record `UNKNOWN/BLOCKED`, reduce uncertainty using available evidence, and leave exactly one executable successor.
+Do not divert into Welcome. Do not create another Hub. Do not reopen the proven Smart Note/PIS compounding path.
+
+If the required external capability is unavailable, record `UNKNOWN/BLOCKED`, reduce uncertainty using available evidence, and leave exactly one executable successor.
 
 ## WHAT IS ALREADY DONE?
 
