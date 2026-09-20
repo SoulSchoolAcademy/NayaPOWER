@@ -31,9 +31,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub.",
+    "next_action": "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub.",
     "next_actions": [
-      "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub."
+      "Obtain authorized edit/deployment access to the live public Welcome embedded worker (shiny-wave-dd48) or its owning deployment source; change only the identity activation target from academy.nayanet.app to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/; then independently verify Welcome → Identity → canonical Hub."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
