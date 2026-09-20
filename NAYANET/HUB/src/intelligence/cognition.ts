@@ -50,6 +50,7 @@ type AssistantRuntimeApi = {
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   listConnections: () => Promise<unknown[]>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
+  revokeConnection: (targetMemberId: string) => Promise<unknown>;
   createSmartList: (name: string) => Promise<unknown>;
   addConnectionToList: (listId: string, connectionId: string) => Promise<unknown>;
   removeConnectionFromList: (listId: string, connectionId: string) => Promise<unknown>;

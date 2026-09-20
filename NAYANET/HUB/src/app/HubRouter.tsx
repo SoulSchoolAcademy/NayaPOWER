@@ -11,6 +11,7 @@ import { DreamSurface } from './DreamSurface';
 import { ReportsSurface } from './ReportsSurface';
 import { SmartShareSurface } from './SmartShareSurface';
 import { SmartListsSurface } from './SmartListsSurface';
+import { ConnectionsSurface } from './ConnectionsSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
@@ -105,7 +106,7 @@ export function HubRouter({ path }: { path: string }) {
     case routes.spaces:
       return <FeatureSurface kind="spaces" />;
     case routes.connections:
-      return <FeatureSurface kind="connections" />;
+      return <ConnectionsSurface />;
     case routes.mail:
       return <SmartMailSurface />;
     case routes.ledger:
