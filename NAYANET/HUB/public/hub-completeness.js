@@ -167,7 +167,7 @@ async function lists(r){
     proof.textContent=ok?'REMOVE ✓ · RELOAD ✓ · VERIFY REMOVAL ✓ · '+String(result?.status||'REMOVED'):'REMOVE returned but persisted membership is still present.';
    }
   }catch(e){state.textContent='BLOCKED / FAILED · '+(e?.message||e);proof.textContent='TRUTHFUL BLOCKED RESULT · '+(e?.message||e)}
- };
+ });
  await reload();
 }
 async function spaces(r){const rows=await r.listSpaces();const m=modal('Smart Spaces','Permissioned Spaces contain canonical intelligence only.','<div class="nc-state" id="nc-state">'+esc(rows.map(x=>x.name+' · '+x.visibility+' · '+x.purpose).join('\n\n')||'No Spaces yet.')+'</div><div class="nc-actions"><button id="nc-create">CREATE PRIVATE SPACE</button></div>');m.querySelector('#nc-create').onclick=async()=>{const name=prompt('Space name'),purpose=prompt('Purpose');if(!name||!purpose)return;try{const x=await r.createSpace({name,purpose,visibility:'private'});m.querySelector('#nc-state').textContent='CREATED · '+x.name+' · CANONICAL ID '+x.id+' · PERSISTED';}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
