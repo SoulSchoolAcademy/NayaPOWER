@@ -6,6 +6,36 @@
 
 ---
 
+
+
+---
+
+# 🔱 CURRENT HUB NORTH STAR — READ THIS BEFORE HUB WORK
+
+**THE ONE AND ONLY CURRENT HUB:** `NAYANET/HUB/index.html`
+
+Protected visual/structural source SHA:
+
+`f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+This is the human-facing Hub we are making functional. It is the North Star.
+
+**Do not choose another Hub. Do not present another Hub. Do not rebuild another Hub.**
+
+Welcome/front-door surfaces are separate future onboarding work. Historical Hub artifacts, V2/509/legacy HTML, older E02/E03 builds, static mirrors, Vercel/AppDeploy snapshots, and alternate shells are not Hub authorities. They may exist for historical evidence, but they must never be treated as the current product surface.
+
+**Current mission: connect the verified Naya engine to this exact Hub and make its existing controls work.**
+
+For the binding mission, priority order, prohibited competing surfaces, and execution chain, read:
+
+`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+
+Then read:
+
+`.naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md`
+
+**If any other document conflicts about which Hub is current, stop and resolve to this lock and Shawn's explicit authority.**
+
 # 1. THE PROBLEM WE ARE SOLVING
 
 A powerful AI can still fail as a long-term operating partner if it forgets context, cannot find prior decisions, confuses plans with reality, duplicates work, acts without authority, or cannot prove what actually happened.
