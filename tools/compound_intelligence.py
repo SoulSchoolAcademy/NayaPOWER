@@ -143,6 +143,12 @@ def canonical_to_learning_input(event: dict[str, Any]) -> dict[str, Any]:
     normalized["evidence"] = _evidence_for_learning(event)
     normalized["evidence_state"] = _evidence_state_for_learning(event)
     normalized["provenance"] = provenance
+    if isinstance(source, list):
+        normalized["source"] = source
+    elif source:
+        normalized["source"] = [json.dumps(source, sort_keys=True, ensure_ascii=False)]
+    else:
+        normalized["source"] = []
     normalized["canonical_event_id"] = event_id
     normalized["verification"] = verification
     return normalized
