@@ -84,9 +84,8 @@ jobs:
           const authA = await pageA.evaluate(async () => ({authenticated:true,is_anonymous:true,user_id:(await window.NayaAssistantRuntime.init()).user_id}));
           if (!authA?.authenticated || !authA?.is_anonymous) throw new Error('ANONYMOUS_AUTHENTICATION_FAILED');
 
-          const recorded = await pageA.evaluate(async ({eventId,title,lesson,actionText,target,intent}) => {
-            return await window.NayaAssistantRuntime.record({
-              event_id: eventId,
+          const recorded = await pageA.evaluate(async ({title,lesson,actionText,target,intent}) => {
+            return await window.NayaAssistantRuntime.captureSmartNote({
               title,
               content: lesson,
               source: 'nayanet-authenticated-assistant-proof',
@@ -101,7 +100,7 @@ jobs:
               privacy: {visibility:'private', consent_state:'not_granted'},
               verification: {state:'PENDING', method:'fresh-context retrieval + lineage comparison'}
             });
-          }, {eventId,title,lesson,actionText,target,intent});
+          }, {title,lesson,actionText,target,intent});
 
           const retrievedA = await pageA.evaluate(async (eventId) => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
@@ -112,9 +111,11 @@ jobs:
 
           // Action + observation at the real deployed runtime boundary:
           // use the retrieved canonical object to render Personal Intelligence.
-          await pageA.evaluate(async () => {
-            await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
-          });
+          // Reload the real deployed Hub after the authenticated Smart Note is persisted.
+          // This exercises the actual source -> build/runtime -> Hub retrieval boundary
+          // instead of depending on a non-existent runtime-only refresh helper.
+          await pageA.reload({waitUntil:'domcontentloaded', timeout:60000});
+          await pageA.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
           const observedA = await pageA.evaluate(async (eventId) => {
             const selector = '.smart-feed-board[data-event-id="' + eventId + '"]';
             await new Promise((resolve, reject) => {
