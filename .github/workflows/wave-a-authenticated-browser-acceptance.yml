@@ -107,7 +107,14 @@ jobs:
           const auth=await page.evaluate(async()=>window.NayaAssistantRuntime.init());
           if(!auth.authenticated||auth.user_id!==A.user.id) throw Error('AUTHENTICATED_RUNTIME_HANDOFF_FAILED');
 
-          await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length===9,{timeout:45000});
+          await page.waitForSelector('.rail.left',{state:'attached',timeout:45000});
+          await page.waitForTimeout(1000);
+          const sidebarRuntime=await page.evaluate(()=>({
+            dataNc:document.querySelectorAll('.rail.left [data-nc]').length,
+            buttons:[...document.querySelectorAll('.rail.left button')].map(b=>({text:b.innerText,dataPage:b.dataset.page,dataNc:b.dataset.nc})),
+            scripts:[...document.scripts].map(s=>s.src).filter(Boolean).filter(x=>x.includes('hub-completeness'))
+          }));
+          if(sidebarRuntime.dataNc!==9) throw Error('SIDEBAR_RUNTIME_WIRING_MISSING:'+JSON.stringify(sidebarRuntime));
           const sidebar=await page.locator('.rail.left').innerText();
           for(const label of ['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings']) {
             if(!sidebar.includes(label)) throw Error('SIDEBAR_CONTROL_MISSING:'+label);
