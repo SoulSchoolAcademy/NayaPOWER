@@ -49,8 +49,8 @@ jobs:
             const title='Human Hub Capture Proof '+process.env.GITHUB_RUN_ID;
             const content='A real human-facing NayaNET Hub capture control must send this note through the canonical Smart Note receiver and preserve the same event identity into Smart Feed and reload.';
             mark('START');
-            await page.goto(hub+'/identity?naya_hold=1',{waitUntil:'networkidle',timeout:60000}); mark('IDENTITY_LOADED');
-            await page.locator('#name').fill('Naya Human Capture Proof'); await page.locator('#alias').fill(alias); await page.locator('#enter').click(); mark('IDENTITY_SUBMITTED');
+            await page.goto(hub+'/identity.html?name='+encodeURIComponent('Naya Human Capture Proof')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000}); mark('IDENTITY_LOADED');
+            await page.getByRole('button',{name:'ENTER NAYANET'}).click(); mark('IDENTITY_SUBMITTED');
             await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000}); mark('AUTH_ADAPTER_READY');
             await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000}); mark('AUTHENTICATED');
             await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000}); mark('HUB_LOADED');
