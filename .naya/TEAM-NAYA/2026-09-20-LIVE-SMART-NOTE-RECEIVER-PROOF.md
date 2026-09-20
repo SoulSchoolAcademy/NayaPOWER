@@ -52,3 +52,55 @@ The next highest-value proof is not another backend receiver repair. It is the a
 
 ## Non-goals
 No alternate event store, memory store, learning system, authority chain, Hub source of truth, or verification engine was introduced.
+
+
+## Human Hub capture trace — 2026-09-20
+
+The canonical React Hub source now contains a real human-facing **Capture Smart Note** control wired directly to the existing `window.NayaAssistantRuntime.captureSmartNote()` receiver.
+
+The isolated browser proof was then executed against the live Assistant Worker.
+
+The first concrete divergence was:
+
+`welcome.nayanet.app/` redirected the authenticated browser to the public Welcome surface instead of leaving it on the canonical Assistant Hub.
+
+Observed trace:
+- identity loaded
+- identity submitted
+- name-first adapter ready
+- authenticated
+- Hub request completed
+- final URL: `https://welcome.nayanet.app/`
+- title: `NayaNET - Grow with US!`
+- canonical React shell absent
+
+Therefore the human capture control could not be exercised. No backend receiver repair was made.
+
+## Boundary repair attempt
+
+The existing canonical Public Welcome release workflow was triggered against current main.
+
+Workflow: NayaNET Public Welcome Release
+Run: 35526225603
+Result: FAILED at **Deploy authorized Welcome Worker and route**.
+
+Earlier steps passed:
+- canonical Welcome artifact build
+- authoritative `nayanet.app` zone resolution
+
+Deployment/route authorization remains the first external deployment boundary.
+
+## Current truth
+
+- Canonical Smart Note receiver: PRODUCTION-RUNTIME-PROVEN.
+- Canonical React Hub source capture control: SOURCE-PROVEN, NOT LIVE-PROVEN.
+- Human Hub capture → receiver → Feed → reload: NOT PROVEN.
+- Public Welcome → canonical Identity → canonical Hub: NOT PROVEN.
+- First concrete human-path divergence: public Welcome redirect.
+- Public Welcome deployment failed at authorized Worker/route deployment.
+
+## Next boundary
+
+Do not redesign Smart Note capture or the receiver.
+
+Close the Cloudflare Public Welcome Worker/route deployment authorization boundary, verify `welcome.nayanet.app` reaches the canonical Identity, then rerun the isolated human capture proof.
