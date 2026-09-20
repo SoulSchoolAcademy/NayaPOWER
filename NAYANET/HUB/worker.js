@@ -9,10 +9,10 @@ export default {
       return new Request(assetUrl, { method: request.method, headers: request.headers, cache: 'no-store' });
     };
 
-    // Canonical Hub root: serve an extensionless byte-identical copy of the built React entry.
+    // Canonical Hub root: serve the actual Vite-built React entry from dist/index.html.
     // Bind the asset lookup to this Worker version and bypass any stale asset-cache entry during parity verification.
     const assetRequest = (url.pathname === '/' || url.pathname === '/index.html')
-      ? versionedAsset('/__nayanet-canonical-hub')
+      ? versionedAsset('/index.html')
       : url.pathname === '/assistant-runtime.js'
         ? versionedAsset('/assistant-runtime.js')
         : request;
