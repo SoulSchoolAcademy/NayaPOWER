@@ -378,11 +378,63 @@ def test_canonical_store_replay_is_idempotent():
 
 
 def write_vertical_proof() -> None:
-    event = load_real_event()
-    learning = ci.build_candidate(event)
-    assert learning is not None
+    # The vertical proof must emit evidence from the same current canonical
+    # Smart Note namespace exercised by the successor-decision proof.
+    tx_path = ROOT / ".naya" / "runtime" / "smart_note_transaction.py"
+    spec = importlib.util.spec_from_file_location("canonical_tx_vertical_proof", tx_path)
+    assert spec is not None and spec.loader is not None
+    tx = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tx)
+
     with tempfile.TemporaryDirectory() as tmp:
-        learning_dir = Path(tmp) / "learning"
+        temp = Path(tmp)
+        tx.ROOT = temp
+        tx.SMART_NOTES_ROOT = temp / ".naya" / "memory" / "notes"
+        tx.CIS_ROOT = temp / ".naya" / "memory" / "intelligence"
+        tx.CIS_PATH = tx.CIS_ROOT / "CIS.json"
+        tx.RECEIPTS_ROOT = tx.CIS_ROOT / "transactions"
+        tx.PIS_PATH = temp / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
+        builder_path = ROOT / "scripts" / "build-smart-feed-projection.py"
+        builder_spec = importlib.util.spec_from_file_location("canonical_tx_vertical_projection_builder", builder_path)
+        assert builder_spec is not None and builder_spec.loader is not None
+        builder = importlib.util.module_from_spec(builder_spec)
+        builder_spec.loader.exec_module(builder)
+        tx.build_pis_projection = lambda current_note: builder.build_projection(
+            source_root=temp,
+            output=tx.PIS_PATH,
+            extra_notes=[builder.parse_canonical_note(tx.SMART_NOTES_ROOT / "2026" / "09" / "17" / "SN-20260917-IH-03-CANONICAL-INTELLIGENCE-IDENTITY.md", temp)],
+        )
+
+        timestamp = "2026-09-17T20:00:00+00:00"
+        canonical_id = "SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY"
+        note = {
+            "timestamp": timestamp,
+            "id": canonical_id,
+            "topic": "IH-03 Canonical Intelligence Identity",
+            "in_a_nutshell": "One intelligence object must remain one identity across every projection.",
+            "child": "One thing, one ID, everywhere.",
+            "grammar": "Identity is preserved through projection rather than recreated at each surface.",
+            "human": "The human meaning remains attached to the canonical intelligence object.",
+            "naya": "Preserve identity, provenance, privacy, and verification state across projection.",
+            "machine": "Resolve one canonical Smart Note identity through the existing transaction namespace.",
+            "learning": "Projection must preserve lineage rather than manufacture a new intelligence identity.",
+            "why_it_matters": "Stable lineage lets retrieval prove that the learning still refers to the same intelligence.",
+            "how_to_use": "Use the canonical Smart Note ID as the immutable identity across retrieval.",
+            "value": "A later Naya can retrieve the same intelligence without reconstructing prior conversation.",
+            "evidence": ["IH-03 automated canonical identity proof"],
+            "current_state": "Current canonical Smart Note transaction namespace is exercised in isolation.",
+            "next_action": "Preserve this identity contract in future compounding proofs.",
+        }
+        tx.execute(note)
+        pis = json.loads(tx.PIS_PATH.read_text(encoding="utf-8"))
+        event = next(e for e in pis["events"] if e["event_id"] == canonical_id)
+        event["verification"] = {"status": "VERIFIED", "evidence": ["IH-03 automated canonical identity proof"]}
+        event["evidence"] = ["IH-03 automated canonical identity proof"]
+        event["evidence_state"] = "VERIFIED"
+
+        learning = ci.build_candidate(event)
+        assert learning is not None
+        learning_dir = temp / "learning"
         learning_dir.mkdir(parents=True)
         learning_dir.joinpath(f"{learning['learning_event_id']}.json").write_text(
             json.dumps(learning, indent=2) + "\n", encoding="utf-8"
@@ -390,15 +442,15 @@ def write_vertical_proof() -> None:
         retrieved = rl.retrieve_learning_event(
             learning["learning_event_id"],
             learning_dir=learning_dir,
-            note_dir=ROOT / ".naya" / "memory" / "notes",
+            note_dir=tx.SMART_NOTES_ROOT,
         )
         action = "Run the canonical compounding proof under the governed CI boundary."
         receipt = {
             "schema": "naya-power/canonical-compounding-proof/v1",
             "status": "VERIFIED",
-            "source_event_id": EVENT_ID,
-            "smart_note_id": NOTE_ID,
-            "intelligent_block_id": f"IB-{EVENT_ID}",
+            "source_event_id": canonical_id,
+            "smart_note_id": canonical_id,
+            "intelligent_block_id": f"IB-{canonical_id}",
             "learning_event_id": learning["learning_event_id"],
             "retrieval_receipt": retrieved["receipt"],
             "decision": {
