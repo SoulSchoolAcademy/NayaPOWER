@@ -88,9 +88,32 @@ jobs:
           const actionEvents=await ap.evaluate(async()=>window.NayaAssistantRuntime.retrieve());const listAction=actionEvents.find(x=>x.metadata?.action==='create_smart_list'&&x.metadata?.list_id===createdList.id);if(!listAction)throw Error('SMART_LIST_ACTION_RECEIPT_NOT_RETRIEVED');
           const listReceiptId=listAction.receipt_id||listAction.metadata?.receipt_id||'';if(!listReceiptId)throw Error('SMART_LIST_RECEIPT_ID_NOT_BOUND');
           await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
-          if(!ap.url().includes('/lists'))throw Error('SMART_LIST_RELOAD_ROUTE_FAILED');
+          if(!(await ap.locator('h1').filter({hasText:'Smart Lists'}).count()))throw Error('SMART_LIST_RELOAD_SURFACE_FAILED');
           if(await ap.locator('.feature-card').filter({hasText:listName}).count()!==1)throw Error('SMART_LIST_NOT_RETRIEVED_AFTER_RELOAD');
           console.log('CANONICAL_SMART_LIST_CREATE_RECEIPT_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({listId:createdList.id,listName,receiptId:listReceiptId}));
+
+          // Smart Ledger Inspect Evidence: human click → existing runtime authority → record → receipt → reload → retrieval.
+          const navLedger=navRoot.locator('button').filter({hasText:'Smart Ledger'});await navLedger.scrollIntoViewIfNeeded();await navLedger.click();await ap.waitForTimeout(700);
+          if(!(await ap.locator('h1').filter({hasText:'Smart Ledger'}).count()))throw Error('SMART_LEDGER_ROUTE_FAILED');
+          const ledgerCards=ap.locator('.feature-card');if(await ledgerCards.count()<1)throw Error('SMART_LEDGER_NO_RECORDS');
+          const ledgerRow=await ap.evaluate(async({base,key})=>{const r=await fetch(base+'/rest/v1/nayanet_smart_ledger?select=*&order=event_at.desc&limit=1',{headers:{apikey:key,authorization:'Bearer '+key}});const t=await r.text();if(!r.ok)throw Error('SMART_LEDGER_READ_FAILED:'+r.status);return JSON.parse(t)[0]||null},{base,key});
+          if(!ledgerRow?.id)throw Error('SMART_LEDGER_ROW_ID_MISSING');
+          await ledgerCards.first().getByRole('button',{name:/Inspect evidence/i}).click();await ap.waitForTimeout(300);
+          const inspectButton=ap.getByRole('button',{name:/INSPECTING|INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/i}).last();
+          const inspectStatus=String(await inspectButton.textContent().catch(()=>''));if(!inspectStatus.includes('INSPECT PERSISTED'))throw Error('SMART_LEDGER_INSPECT_NOT_PERSISTED:'+inspectStatus);
+          const inspectEvents=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const inspectEvent=inspectEvents.find(x=>x.source==='nayanet-hub.smart-ledger.inspect'&&x.metadata?.action==='inspect_evidence'&&x.metadata?.ledger_event_id===ledgerRow.id);
+          if(!inspectEvent)throw Error('SMART_LEDGER_INSPECT_RETRIEVAL_FAILED');
+          const inspectReceipt=inspectEvent.receipt_id||inspectEvent.metadata?.receipt_id||'';if(!inspectReceipt)throw Error('SMART_LEDGER_INSPECT_RECEIPT_MISSING');
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
+          const afterReload=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const retrievedInspect=afterReload.find(x=>x.event_id===inspectEvent.event_id&&x.metadata?.action==='inspect_evidence');
+          if(!retrievedInspect||retrievedInspect.receipt_id!==inspectReceipt)throw Error('SMART_LEDGER_INSPECT_NOT_RETRIEVED_AFTER_RELOAD');
+          console.log('SMART_LEDGER_INSPECT_RECEIPT_RELOAD_RETRIEVE_VERIFIED',JSON.stringify({ledgerEventId:ledgerRow.id,eventId:inspectEvent.event_id,receiptId:inspectReceipt}));
+
+          // Unauthorized failure proof against the same canonical runtime.record() boundary.
+          const unauthCtx=await browser.newContext();const unauth=await unauthCtx.newPage();await unauth.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await unauth.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+          const blocked=await unauth.evaluate(async ledgerEventId=>{try{await window.NayaAssistantRuntime.record({title:'Smart Ledger evidence inspection',content:JSON.stringify({ledger_event_id:ledgerEventId}),source:'nayanet-hub.smart-ledger.inspect',project:'NayaNET',status:'active',actor:'human',tags:['intelligent-hub','smart-ledger','inspect-evidence'],metadata:{action:'inspect_evidence',ledger_event_id:ledgerEventId,persistence_boundary:'authenticated-canonical-runtime'}});return 'NO_BLOCK'}catch(e){return e instanceof Error?e.message:String(e)}},ledgerRow.id);
+          if(blocked!=='AUTH_REQUIRED')throw Error('SMART_LEDGER_UNAUTHORIZED_PERSISTENCE_NOT_BLOCKED:'+blocked);
+          await unauthCtx.close();console.log('SMART_LEDGER_UNAUTHORIZED_PERSISTENCE_BLOCK_VERIFIED',blocked);
 
           const created=await ap.evaluate(async name=>window.NayaAssistantRuntime.createSmartList(name),'Wave A legacy runtime '+project);const listId=created?.list_id||created?.id||created?.list?.id;if(!listId)throw Error('SMART_LIST_CREATE_FAILED');
           await ap.evaluate(async x=>window.NayaAssistantRuntime.addConnectionToList(x.listId,x.connectionId),{listId,connectionId:ab.id});const lists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());if(!lists.some(x=>x.id===listId&&x.members?.some(m=>m.connection_id===ab.id)))throw Error('SMART_LIST_UI_FAILED');
