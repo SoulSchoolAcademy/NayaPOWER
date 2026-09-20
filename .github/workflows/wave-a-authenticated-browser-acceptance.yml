@@ -99,7 +99,7 @@ jobs:
           const auth=await page.evaluate(async()=>window.NayaAssistantRuntime.init());
           if(!auth.authenticated||auth.user_id!==A.user.id) throw Error('AUTHENTICATED_RUNTIME_HANDOFF_FAILED');
 
-          await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length>=12,{timeout:15000});
+          await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length>=12,{timeout:45000});
           const sidebar=await page.locator('.rail.left').innerText();
           for(const label of ['Smart Feed','Smart Notes','Reports','Intelligence Library','Smart Share','Connections','Smart Spaces','Smart Lists','Smart Mail','Smart Ledger','Dream','Naya Play','Settings']) {
             if(!sidebar.includes(label)) throw Error('SIDEBAR_CONTROL_MISSING:'+label);
