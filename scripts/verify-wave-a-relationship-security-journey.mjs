@@ -52,7 +52,7 @@ await expectDenied(send(A.access_token,B.user.id,'This must be denied without ex
 const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({
  p_subject_id:A.user.id,p_source_event_id:'wavea-authority-'+project,p_mission_id:'NayaNET Wave A real relationship journey',
  p_scope:{project_id:project,target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],
- p_constraints:{mode:'wave-a-proof',no_external_side_effects:true},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
+ p_constraints:{mode:'wave-a-proof',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
  p_evidence:{authorization_type:'explicit_wave_a_authorization',space_id:spaceId,connection_id:connA[0].id},p_parent_authority:null
 })});
 if(!grant?.grant_id) throw new Error('AUTHORITY_GRANT_ISSUANCE_FAILED');
