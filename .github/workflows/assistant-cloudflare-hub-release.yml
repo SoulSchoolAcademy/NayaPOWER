@@ -412,6 +412,7 @@ jobs:
                 console.log('CANONICAL_PRIVATE_SPACE_CREATE_RELOAD_RETRIEVE_VERIFIED', viewport.label, JSON.stringify({ spaceProofName, createdSpaceId }));
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                board = page.locator('.smart-feed-board').first();
                 await page.waitForTimeout(500);
 
                 const connectionProof = await page.evaluate(async () => {
