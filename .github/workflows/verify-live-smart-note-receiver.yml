@@ -210,6 +210,49 @@ jobs:
             const restored=await pageA.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));
             if(restored.eventId!==cognitionEventId) throw new Error('HUB_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
 
+            // Fresh authenticated browser-context proof: close the original context, restore only its auth storage state, and traverse the canonical Hub load path again.
+            const freshStorageState = await contextA.storageState();
+            await contextA.close();
+            const freshContext = await browser.newContext({storageState:freshStorageState});
+            const freshPage = await freshContext.newPage();
+            try {
+              await freshPage.goto(hub + '/feed?receiver_proof=' + encodeURIComponent(proofKey),{waitUntil:'networkidle',timeout:60000});
+              await freshPage.waitForFunction(() => !!window.NayaNETNameFirstAuth, null, {timeout:30000});
+              const freshIdentity = await freshPage.evaluate(async () => {
+                const identity = await window.NayaNETNameFirstAuth.current();
+                const client = window.__NayaNETSupabaseClient;
+                const session = client ? (await client.auth.getSession()).data.session : null;
+                return {identity,sessionUserId:session?.user?.id||null,adapterClient:!!client};
+              });
+              console.log('FRESH_CONTEXT_IDENTITY',JSON.stringify(freshIdentity));
+              if(!freshIdentity.identity?.authenticated || freshIdentity.identity?.userId!==first.session.userId) throw new Error('FRESH_CONTEXT_IDENTITY_FAILED:'+JSON.stringify(freshIdentity));
+              if(freshIdentity.sessionUserId!==first.session.userId) throw new Error('FRESH_CONTEXT_SESSION_USER_MISMATCH:'+JSON.stringify(freshIdentity));
+
+              await freshPage.waitForSelector('.smart-feed-board',{timeout:30000});
+              const freshBoards=await freshPage.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')})));
+              console.log('FRESH_CONTEXT_RENDERED_BOARD_IDS',JSON.stringify(freshBoards));
+              if(!freshBoards.some(row=>row.eventId===cognitionEventId)) throw new Error('FRESH_CONTEXT_RENDER_EXACT_EVENT_MISSING:'+JSON.stringify({expected:cognitionEventId,rendered:freshBoards}));
+
+              await freshPage.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
+              const freshRuntime=await freshPage.evaluate(async ({expectedEventId}) => {
+                const runtime=window.NayaAssistantRuntime;
+                const snapshot=runtime.snapshot?.();
+                const rows=await runtime.retrieve(expectedEventId);
+                const row=rows?.[0]||null;
+                return {snapshot,row:row?{id:row.id,event_id:row.event_id,metadata:row.metadata,status:row.status}:null};
+              },{expectedEventId:cognitionEventId});
+              console.log('FRESH_CONTEXT_RUNTIME_RETRIEVAL',JSON.stringify(freshRuntime));
+              if(!freshRuntime.snapshot?.authenticated || freshRuntime.snapshot?.user_id!==first.session.userId) throw new Error('FRESH_CONTEXT_RUNTIME_AUTH_FAILED:'+JSON.stringify(freshRuntime));
+              if(freshRuntime.row?.event_id!==cognitionEventId) throw new Error('FRESH_CONTEXT_RUNTIME_IDENTITY_FAILED:'+JSON.stringify(freshRuntime.row));
+              if(freshRuntime.row?.metadata?.smart_note_event_id!==smartNoteEventId) throw new Error('FRESH_CONTEXT_RUNTIME_LINEAGE_FAILED:'+JSON.stringify(freshRuntime.row));
+
+              const freshRendered=await freshPage.locator('[data-event-id="' + cognitionEventId + '"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));
+              if(freshRendered.eventId!==cognitionEventId) throw new Error('FRESH_CONTEXT_DOM_IDENTITY_FAILED:'+JSON.stringify(freshRendered));
+              console.log('FRESH_CONTEXT_CANONICAL_IDENTITY',JSON.stringify({identityUserId:freshIdentity.identity.userId,runtimeEventId:freshRuntime.row.event_id,domEventId:freshRendered.eventId,smartNoteEventId}));
+            } finally {
+              await freshContext.close();
+            }
+
             const wrongOwnerId = crypto.randomUUID();
             const wrongOwner = await pageA.evaluate(async ({supabaseUrl,supabaseKey,ownerId,payload})=>{
               const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
@@ -252,6 +295,7 @@ jobs:
                 smart_ledger:'PASS',
                 hub_render:'PASS',
                 reload_identity:'PASS',
+                fresh_authenticated_context:'PASS',
                 duplicate_idempotency:'PASS',
                 malformed_rejection:'PASS',
                 unauthorized_rejection:'PASS',
@@ -287,6 +331,7 @@ jobs:
               "smart_ledger",
               "hub_render",
               "reload_identity",
+              "fresh_authenticated_context",
               "duplicate_idempotency",
               "malformed_rejection",
               "unauthorized_rejection",
