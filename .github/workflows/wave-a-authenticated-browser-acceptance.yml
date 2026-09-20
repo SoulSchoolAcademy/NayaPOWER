@@ -112,7 +112,12 @@ jobs:
             const b=page.locator('.rail.left button').filter({hasText:label}).first();
             await b.scrollIntoViewIfNeeded();
             await b.click({force:true});
-            await page.waitForFunction(kind=>window.__nayaSidebarAction?.kind===kind,expectedKind,{timeout:10000});
+            try{
+              await page.waitForFunction(kind=>window.__nayaSidebarAction?.kind===kind,expectedKind,{timeout:10000});
+            }catch(e){
+              console.log('SIDEBAR_ACTION_DIAGNOSTIC',JSON.stringify({expectedKind,scripts:[...document.scripts].map(s=>s.src).filter(Boolean),marker:window.__nayaSidebarAction||null,sidebar:document.querySelector('.rail.left')?.innerText||'',errors:diagnostics}));
+              throw e;
+            }
             checks[label]=expectedKind;
             await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
           };
