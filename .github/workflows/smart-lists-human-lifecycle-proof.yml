@@ -1,0 +1,85 @@
+name: NayaNET Smart Lists human lifecycle proof
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute Smart Lists lifecycle
+        shell: bash
+        run: |
+          cat > smart-lists-proof.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL;
+          const run=process.env.GITHUB_RUN_ID;
+          async function req(url,opt={}){const r=await fetch(url,opt);const t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}}if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
+          async function signup(){return req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'})}
+          const A=await signup(); const B=await signup();
+          if(!A.access_token||!A.user?.id||!B.access_token||!B.user?.id)throw Error('AUTH_BOOTSTRAP_FAILED');
+          const browser=await chromium.launch({headless:true});
+          const origin=new URL(runtime).origin;
+          const state=t=>({cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(t)}]}]});
+          const ac=await browser.newContext({storageState:state(A),viewport:{width:1440,height:1000}});
+          const bc=await browser.newContext({storageState:state(B),viewport:{width:1440,height:1000}});
+          const page=await ac.newPage(); const bpage=await bc.newPage();
+          await page.goto(runtime+'/?smart_lists_proof='+run,{waitUntil:'domcontentloaded',timeout:60000});
+          await page.waitForTimeout(1000); await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+          await bpage.goto(runtime+'/?smart_lists_proof_b='+run,{waitUntil:'domcontentloaded',timeout:60000});
+          await bpage.waitForTimeout(500); await bpage.evaluate(async()=>window.NayaAssistantRuntime.init());
+          const space='04ee4dc8-bc73-47df-a1de-162570f6a56e';
+          await page.evaluate(s=>window.NayaAssistantRuntime.joinSpace(s),space); await bpage.evaluate(s=>window.NayaAssistantRuntime.joinSpace(s),space);
+          await page.evaluate(async({target,space})=>window.NayaAssistantRuntime.saveConnection(target,space),{target:B.user.id,space});
+          const connections=await page.evaluate(async()=>window.NayaAssistantRuntime.listConnections());
+          const connectionId=connections.find(x=>x.connected_member_id===B.user.id&&x.status==='active')?.id;
+          if(!connectionId)throw Error('CONNECTION_SETUP_FAILED');
+          const listName='Smart Lists human proof '+run;
+          await page.evaluate(name=>{window.prompt=()=>name},listName);
+          await page.evaluate(()=>window.__nayaOpenSurface('lists'));
+          await page.locator('.nc-modal').waitFor({state:'visible',timeout:15000});
+          await page.locator('#nc-create').click();
+          await page.waitForFunction(name=>[...document.querySelectorAll('.nc-card[data-list] b')].some(b=>b.textContent===name),listName,{timeout:15000});
+          let listId=await page.locator('.nc-card[data-list]').first().getAttribute('data-list');
+          if(!listId)throw Error('CREATE_NOT_PROVEN');
+          await page.reload({waitUntil:'domcontentloaded',timeout:60000}); await page.waitForTimeout(1000); await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+          let lists=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists());
+          if(!lists.some(x=>x.id===listId))throw Error('RELOAD_RETRIEVE_CREATE_NOT_PROVEN');
+          await page.evaluate(()=>window.__nayaOpenSurface('lists')); await page.locator('.nc-modal').waitFor({state:'visible',timeout:15000});
+          let card=page.locator('.nc-card[data-list="'+listId+'"]');
+          await card.locator('[data-add-select]').selectOption(connectionId); await card.locator('[data-add]').click();
+          await page.waitForFunction(()=>document.querySelector('#nc-proof')?.textContent.includes('VERIFY MEMBERSHIP ✓'),{timeout:15000});
+          await page.reload({waitUntil:'domcontentloaded',timeout:60000}); await page.waitForTimeout(1000); await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+          lists=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists()); let persisted=lists.find(x=>x.id===listId);
+          if(!persisted?.members?.some(x=>x.connection_id===connectionId))throw Error('RELOAD_RETRIEVE_ADD_NOT_PROVEN');
+          await page.evaluate(()=>window.__nayaOpenSurface('lists')); await page.locator('.nc-modal').waitFor({state:'visible',timeout:15000});
+          card=page.locator('.nc-card[data-list="'+listId+'"]'); await card.locator('[data-remove]').click();
+          await page.waitForFunction(()=>document.querySelector('#nc-proof')?.textContent.includes('VERIFY REMOVAL ✓'),{timeout:15000});
+          await page.reload({waitUntil:'domcontentloaded',timeout:60000}); await page.waitForTimeout(1000); await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+          lists=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists()); let removed=lists.find(x=>x.id===listId);
+          if(!removed||removed.members?.some(x=>x.connection_id===connectionId))throw Error('RELOAD_RETRIEVE_REMOVE_NOT_PROVEN');
+          const bLists=await bpage.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists());
+          if(bLists.some(x=>x.id===listId))throw Error('PRIVACY_LEAK');
+          const unauthorized=await bpage.evaluate(async id=>{try{await window.NayaAssistantRuntime.addConnectionToList(id,crypto.randomUUID());return {blocked:false,error:'UNEXPECTED_SUCCESS'}}catch(e){return {blocked:true,error:String(e?.message||e)}}},listId);
+          if(!unauthorized.blocked)throw Error('UNAUTHORIZED_WRITE_NOT_BLOCKED');
+          console.log(JSON.stringify({status:'VERIFIED',run_id:run,runtime,list_id:listId,connection_id:connectionId,checks:['CREATE','RELOAD','RETRIEVE','ADD','RELOAD','VERIFY MEMBERSHIP','REMOVE','RELOAD','VERIFY REMOVAL','AUTHORIZATION BLOCKED','PRIVACY ISOLATED'],unauthorized}));
+          await bc.close(); await ac.close(); await browser.close();
+          EOF
+          node smart-lists-proof.mjs
