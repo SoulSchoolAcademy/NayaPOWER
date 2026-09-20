@@ -7,6 +7,37 @@
 
 ---
 
+
+---
+
+# 🔱 CURRENT HUB ROUTING — MANDATORY HANDOFF CONTEXT
+
+For every current Hub continuation, the only Hub product surface is:
+
+**`NAYANET/HUB/index.html`**
+
+Protected visual/structural source SHA:
+
+`f76ed6d6de6805a752dc81113ded42e67b3b6f80`
+
+The active mission is to make this exact Hub functional by connecting it to the existing verified Naya engine.
+
+**Welcome/front-door work is deferred. Historical/alternate Hub artifacts are non-authoritative. Internal React/runtime code is implementation machinery behind this Hub, not a competing Hub.**
+
+Current execution order:
+
+**Smart Share → Smart Mail → Connections → Smart Spaces → Smart Lists**
+
+Every Hub continuation must preserve the proven Smart Note → canonical event → PIS/Smart Feed compounding path unless a new independent regression is demonstrated.
+
+The exact mission lock is:
+
+`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+
+The visual/structural contract is:
+
+`.naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md`
+
 # 1. WHY THIS PROTOCOL EXISTS
 
 The Superbrain is being built so Shawn does **not** have to remain the project's external memory, routing system, QA system, and handoff manager.
