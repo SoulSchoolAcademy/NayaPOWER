@@ -27,6 +27,8 @@ jobs:
         run: |
           test -s "$RECEIPT_PATH"
           node -e "const r=require(process.argv[1]); const m=r.paired_measurement_contract; if(r.status!=='PROVEN') throw new Error('paired improvement not proven'); if(r.learning?.durable!==true||r.learning?.retrievable!==true||r.learning?.cold_decision_influenced!==true) throw new Error('exact learning evidence not proven in Cycle 2'); if(r.learning?.authority_unchanged!==true) throw new Error('authority changed'); if(r.independent_outcome_contract!==true) throw new Error('independent outcome contract missing'); if(!m?.cycle_1_baseline_present) throw new Error('CYCLE1_BASELINE_MISSING'); if(!m?.exact_learning_evidence_retrieved_in_cycle_2) throw new Error('CYCLE2_EXACT_LEARNING_EVIDENCE_MISSING'); if(!m?.causal_binding_present) throw new Error('CAUSAL_BINDING_MISSING'); if(m.quality_regression) throw new Error('QUALITY_REGRESSION'); if(!m.meaningful_outcome_improvement) throw new Error('NO_MEANINGFUL_IMPROVEMENT');" "$RECEIPT_PATH"
+      - name: Stage controlled proof artifact
+        run: cp "$RECEIPT_PATH" "$RUNNER_TEMP/nayanet-proof7-paired.json"
       - uses: actions/upload-artifact@v4
         with:
           name: nayanet-proof7-controlled-paired
