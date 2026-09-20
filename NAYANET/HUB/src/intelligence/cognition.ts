@@ -110,7 +110,7 @@ export async function persistSmartFeedAction(input: {
 export async function retrieveSmartFeedActions(sourceEventId: string) {
   const runtime = window.NayaAssistantRuntime;
   if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
-  const session = runtime.snapshot();
+  const session = await runtime.init();
   if (!session?.authenticated) return [];
   return runtime.retrieveSmartFeedActions(sourceEventId);
 }
