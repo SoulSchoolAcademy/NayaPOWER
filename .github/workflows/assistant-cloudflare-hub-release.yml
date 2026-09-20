@@ -14,6 +14,7 @@ on:
       - 'assistant-runtime.js'
       - 'smart-feed.js'
       - 'smart-tabs.js'
+      - 'identity.html'
       - 'NAYANET/HUB/**'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
   workflow_dispatch:
