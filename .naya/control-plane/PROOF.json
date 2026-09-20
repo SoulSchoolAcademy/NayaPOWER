@@ -60,17 +60,17 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
+    "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35485580713,
+      "deployment_run_id": 35485948287,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
       "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "deployed_source_head": "792562518213e748b37812e1473e67234a842fb0",
-      "observed_head": "792562518213e748b37812e1473e67234a842fb0",
+      "deployed_source_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+      "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -81,12 +81,10 @@
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "canonical Assistant Cloudflare release run 35470356001 succeeded",
-        "live runtime source parity was verified by the release lane",
-        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified",
-        "current exact-main Assistant release run 35485099497 succeeded",
-        "current deployed source/runtime parity and desktop/mobile runtime baseline were verified at b69aaab3d99851263e743e7ea1cf971cd63cdf71",
-        "fresh current Smart Feed/Space/browser action matrix passed in release run 35485580713"
+        "canonical Assistant Cloudflare release run 35485948287 succeeded",
+        "exact current-main source parity was verified by the release lane",
+        "Assistant runtime baseline desktop and mobile verification passed in step 8",
+        "Final Assistant-lane runtime proof passed in step 9"
       ]
     },
     "authenticated_lifecycle": {
@@ -134,7 +132,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "7e2726ff93311a5cd1b26c13af057fb5d96ae217",
+    "current_repository_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -420,12 +418,12 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35470356001,
+      "deployment_run_id": 35485948287,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
       "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
       "live_runtime_observed": true,
-      "deployed_source_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
-      "observed_head": "3448b13251d2d0756738a3e343c97270e9a575bd",
+      "deployed_source_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+      "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -437,9 +435,10 @@
         ".github/workflows/assistant-cloudflare-hub-release.yml"
       ],
       "evidence": [
-        "canonical Assistant Cloudflare release run 35470356001 succeeded",
-        "live runtime source parity was verified by the release lane",
-        "canonical Hub browser/runtime markers and authenticated Assistant runtime were verified"
+        "canonical Assistant Cloudflare release run 35485948287 succeeded",
+        "exact current-main source parity was verified by the release lane",
+        "Assistant runtime baseline desktop and mobile verification passed",
+        "Final Assistant-lane runtime proof passed"
       ]
     },
     "authenticated_lifecycle": {
@@ -654,7 +653,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Current main now has production-proven Assistant React Hub source/runtime parity, responsive baseline, canonical navigation, Smart Feed rendering, durable Smart Feed action receipt/reload, Library route, and Smart Mail route. The next highest-value Hub gap is the canonical Smart Note receiver path and complete feature-surface acceptance. Public Welcome → Identity remains externally blocked and is not treated as Hub completion.",
-  "current_repository_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+  "current_repository_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
