@@ -126,6 +126,26 @@ jobs:
           if(!beforeClick.bound) throw Error('SMART_SHARE_DIAGNOSTIC_HANDLER_NOT_BOUND');
           if(beforeClick.registrations<1) throw Error('SMART_SHARE_DIAGNOSTIC_NO_CLICK_HANDLER_REGISTRATION');
 
+          const smartFeedNetworkLog=[];
+          ap.on('request',request=>{
+            if(request.method()==='POST'&&request.url().includes('/functions/v1/naya-smart-feed')){
+              const entry={phase:'request',method:request.method(),url:request.url(),postData:request.postData()};
+              smartFeedNetworkLog.push(entry); console.log('SMART_FEED_NETWORK_REQUEST='+JSON.stringify(entry));
+            }
+          });
+          ap.on('response',async response=>{
+            if(response.request().method()==='POST'&&response.url().includes('/functions/v1/naya-smart-feed')){
+              let body=''; try{body=await Promise.race([response.text(),new Promise((_,reject)=>setTimeout(()=>reject(new Error('RESPONSE_BODY_TIMEOUT')),5000)])}catch(e){body='[body-read-error:'+String(e?.message||e)+']'}
+              const entry={phase:'response',url:response.url(),status:response.status(),statusText:response.statusText(),body:body.slice(0,4000)};
+              smartFeedNetworkLog.push(entry); console.log('SMART_FEED_NETWORK_RESPONSE='+JSON.stringify(entry));
+            }
+          });
+          ap.on('requestfailed',request=>{
+            if(request.method()==='POST'&&request.url().includes('/functions/v1/naya-smart-feed')){
+              const entry={phase:'requestfailed',method:request.method(),url:request.url(),failure:request.failure()};
+              smartFeedNetworkLog.push(entry); console.log('SMART_FEED_NETWORK_FAILED='+JSON.stringify(entry));
+            }
+          });
           await shareButton.click({force:true});
 
           await new Promise(r=>setTimeout(r,1500));
