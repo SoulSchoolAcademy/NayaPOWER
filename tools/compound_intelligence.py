@@ -113,8 +113,10 @@ def _evidence_for_learning(event: dict[str, Any]) -> list[Any]:
 
 def _evidence_state_for_learning(event: dict[str, Any]) -> str:
     explicit = str(event.get("evidence_state", "")).strip()
-    if explicit in al.EVIDENCE_STATES:
-        return explicit
+    if explicit:
+        # Explicit but unrecognized historical vocabulary is intentionally
+        # downgraded to UNKNOWN; never silently upgrade an unknown string.
+        return explicit if explicit in al.EVIDENCE_STATES else "UNKNOWN"
     # This is a schema bridge, not a file-existence inference: VERIFIED is
     # accepted only when the canonical event itself carries VERIFIED status and
     # non-empty verification evidence. Otherwise the state remains UNKNOWN.
