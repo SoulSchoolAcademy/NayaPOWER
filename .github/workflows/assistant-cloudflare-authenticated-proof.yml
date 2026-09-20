@@ -115,14 +115,22 @@ jobs:
           await pageA.evaluate(async () => {
             await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
           });
-          const observedA = await pageA.evaluate((eventId) => {
-            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]');
-            const doc = frame?.contentDocument || document;
-            const node = doc.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+          const observedA = await pageA.evaluate(async (eventId) => {
+            const selector = '.smart-feed-board[data-event-id="' + eventId + '"]';
+            await new Promise((resolve, reject) => {
+              const deadline = Date.now() + 30000;
+              const tick = () => {
+                if (document.querySelector(selector)) return resolve();
+                if (Date.now() >= deadline) return reject(new Error('CANONICAL_HUB_INTELLIGENCE_RENDER_TIMEOUT'));
+                setTimeout(tick, 100);
+              };
+              tick();
+            });
+            const node = document.querySelector(selector);
             return {
               rendered: !!node,
-              event_id: node?.getAttribute('data-naya-runtime-event') || null,
-              text: node?.innerText || ''
+              event_id: node?.getAttribute('data-event-id') || null,
+              text: node?.textContent || ''
             };
           }, eventId);
           if (!observedA.rendered || observedA.event_id !== eventId) throw new Error('ACTION_OBSERVATION_FAILED');
@@ -142,10 +150,17 @@ jobs:
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
             const event = rows?.find(x => String(x.event_id) === eventId);
             if (!event) return null;
-            await window.NayaAssistantRuntime.loadPersonalIntelligence?.();
-            const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]');
-            const doc = frame?.contentDocument || document;
-            const node = doc.querySelector('[data-naya-runtime-event="' + eventId + '"]');
+            const selector = '.smart-feed-board[data-event-id="' + eventId + '"]';
+            await new Promise((resolve, reject) => {
+              const deadline = Date.now() + 30000;
+              const tick = () => {
+                if (document.querySelector(selector)) return resolve();
+                if (Date.now() >= deadline) return reject(new Error('COLD_CANONICAL_HUB_INTELLIGENCE_RENDER_TIMEOUT'));
+                setTimeout(tick, 100);
+              };
+              tick();
+            });
+            const node = document.querySelector(selector);
             return {
               event_id: event.event_id,
               title: event.title,
@@ -157,7 +172,7 @@ jobs:
               provenance: event.provenance,
               verification: event.verification,
               rendered: !!node,
-              rendered_event_id: node?.getAttribute('data-naya-runtime-event') || null,
+              rendered_event_id: node?.getAttribute('data-event-id') || null,
               continuation: event.action?.text || null
             };
           }, eventId);
