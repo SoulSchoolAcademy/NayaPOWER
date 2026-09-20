@@ -56,7 +56,7 @@ jobs:
             await page.locator('#name').fill(name);
             await page.locator('#alias').fill(smartAlias);
             await page.locator('#enter').click();
-            await page.waitForFunction(() => document.getElementById('status')?.dataset.authHandoffReady === 'true', null, { timeout:30000 });
+            await page.waitForFunction(async () => { const identity = await window.NayaNETNameFirstAuth?.current?.(); return !!identity?.authenticated && !!identity?.userId; }, null, { timeout:30000 });
             return page.evaluate(async () => {
               const identity = await window.NayaNETNameFirstAuth.current();
               const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
