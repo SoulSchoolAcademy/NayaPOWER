@@ -76,7 +76,23 @@ jobs:
           const connectionSurfaceText=await ap.locator('.feature-surface').first().innerText();if(!connectionSurfaceText.includes(B.user.id))throw Error('CONNECTION_NOT_VISIBLE_IN_SURFACE');
           console.log('CANONICAL_CONNECTION_CREATE_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({connectionId,ownerMemberId:A.user.id,targetMemberId:B.user.id,spaceId}));
 
-          const created=await ap.evaluate(async name=>window.NayaAssistantRuntime.createSmartList(name),'Wave A live acceptance '+project);const listId=created?.list_id||created?.id||created?.list?.id;if(!listId)throw Error('SMART_LIST_CREATE_FAILED');
+          const navLists=navRoot.locator('button').filter({hasText:'Smart Lists'});await navLists.scrollIntoViewIfNeeded();await navLists.click();await ap.waitForTimeout(700);
+          if(!ap.url().includes('/lists'))throw Error('SMART_LIST_ROUTE_FAILED');
+          const listName='Wave A live acceptance '+project;
+          const createListButton=ap.getByRole('button',{name:'＋ CREATE SMART LIST',exact:true});await createListButton.click();
+          await ap.getByRole('dialog').getByLabel('LIST NAME').fill(listName);
+          await ap.getByRole('dialog').getByRole('button',{name:'CREATE SMART LIST',exact:true}).click();
+          await ap.waitForTimeout(700);
+          const listCard=ap.locator('.feature-card').filter({hasText:listName}).first();if(await listCard.count()!==1)throw Error('SMART_LIST_CREATE_NOT_VISIBLE');
+          const smartLists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());const createdList=smartLists.find(x=>x.name===listName);if(!createdList?.id)throw Error('SMART_LIST_RUNTIME_RETRIEVAL_FAILED');
+          const actionEvents=await ap.evaluate(async()=>window.NayaAssistantRuntime.retrieve());const listAction=actionEvents.find(x=>x.metadata?.action==='create_smart_list'&&x.metadata?.list_id==='${createdList.id}');if(!listAction)throw Error('SMART_LIST_ACTION_RECEIPT_NOT_RETRIEVED');
+          const listReceiptId=listAction.receipt_id||listAction.receipt?.id||listAction.receipt?.receipt_id||listAction.metadata?.receipt_id||'';if(!listReceiptId&&listAction.receipt_id!==null)throw Error('SMART_LIST_RECEIPT_ID_NOT_BOUND');
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
+          if(!ap.url().includes('/lists'))throw Error('SMART_LIST_RELOAD_ROUTE_FAILED');
+          if(await ap.locator('.feature-card').filter({hasText:listName}).count()!==1)throw Error('SMART_LIST_NOT_RETRIEVED_AFTER_RELOAD');
+          console.log('CANONICAL_SMART_LIST_CREATE_RECEIPT_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({listId:createdList.id,listName,receiptId:listReceiptId}));
+
+          const created=await ap.evaluate(async name=>window.NayaAssistantRuntime.createSmartList(name),'Wave A legacy runtime '+project);const listId=created?.list_id||created?.id||created?.list?.id;if(!listId)throw Error('SMART_LIST_CREATE_FAILED');
           await ap.evaluate(async x=>window.NayaAssistantRuntime.addConnectionToList(x.listId,x.connectionId),{listId,connectionId:ab.id});const lists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());if(!lists.some(x=>x.id===listId&&x.members?.some(m=>m.connection_id===ab.id)))throw Error('SMART_LIST_UI_FAILED');
           const mail=await ap.evaluate(async x=>window.NayaAssistantRuntime.sendSmartMail({receiver_id:x.receiver,body:'Wave A live Hub acceptance.',subject:'Wave A acceptance',authority_grant_id:x.grant,idempotency_key:x.key}),{receiver:B.user.id,grant:grant.grant_id,key:'wavea-browser-mail-'+project});if(!mail?.message_id)throw Error('SMART_MAIL_UI_FAILED');
           const threadsA=await ap.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());if(!threadsA.some(x=>x.id===mail.thread_id))throw Error('SMART_MAIL_RENDER_FAILED');
