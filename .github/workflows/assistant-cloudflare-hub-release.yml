@@ -237,11 +237,16 @@ jobs:
                 if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
                 if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
-                await page.locator('.nav-section button').filter({hasText:'Intelligence Library'}).click();
+                const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
+                const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
+                await libraryNav.scrollIntoViewIfNeeded();
+                await libraryNav.click();
                 await page.waitForTimeout(500);
                 if (!page.url().includes('/library')) throw new Error('INTELLIGENCE_LIBRARY_ROUTE_FAILED');
                 if (!(await page.locator('h1').filter({hasText:'Intelligence Library'}).count())) throw new Error('INTELLIGENCE_LIBRARY_SURFACE_MISSING');
-                await page.locator('.nav-section button').filter({hasText:'Smart Mail'}).click();
+                const mailNav = navRoot.locator('button').filter({hasText:'Smart Mail'});
+                await mailNav.scrollIntoViewIfNeeded();
+                await mailNav.click();
                 await page.waitForTimeout(500);
                 if (!page.url().includes('/mail')) throw new Error('SMART_MAIL_ROUTE_FAILED');
                 if (!(await page.locator('h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
