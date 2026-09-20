@@ -96,11 +96,15 @@ jobs:
           const navLedger=navRoot.locator('button').filter({hasText:'Smart Ledger'});await navLedger.scrollIntoViewIfNeeded();await navLedger.click();await ap.waitForTimeout(700);
           if(!(await ap.locator('h1').filter({hasText:'Smart Ledger'}).count()))throw Error('SMART_LEDGER_ROUTE_FAILED');
           const ledgerCards=ap.locator('.feature-card');if(await ledgerCards.count()<1)throw Error('SMART_LEDGER_NO_RECORDS');
+          const inspectSnapshot=()=>ap.evaluate(()=>({modals:document.querySelectorAll('[role="dialog"]').length,buttons:Array.from(document.querySelectorAll('button')).map((b,i)=>({i,text:String(b.textContent||'').trim(),disabled:!!b.disabled})).filter(x=>/INSPECT|CLOSE|COPY RECORD/.test(x.text)),inspectButtons:Array.from(document.querySelectorAll('button')).filter(b=>/INSPECTING|INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/.test(String(b.textContent||''))).length}));
+          console.log('SMART_LEDGER_DOM_BEFORE_CLICK',JSON.stringify(await inspectSnapshot()));
           await ledgerCards.first().getByRole('button',{name:/Inspect evidence/i}).click();
-          const inspectButton=ap.getByRole('button',{name:/INSPECTING|INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/i}).last();
-          await inspectButton.waitFor({state:'attached'});
+          console.log('SMART_LEDGER_DOM_AFTER_CLICK',JSON.stringify(await inspectSnapshot()));
+          await ap.waitForTimeout(250);
+          console.log('SMART_LEDGER_DOM_250MS',JSON.stringify(await inspectSnapshot()));
           await ap.waitForFunction(()=>Array.from(document.querySelectorAll('button')).some(b=>/INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/.test(String(b.textContent||''))),null,{timeout:10000});
-          const inspectStatus=String(await inspectButton.textContent().catch(()=>''));if(!inspectStatus.includes('INSPECT PERSISTED'))throw Error('SMART_LEDGER_INSPECT_NOT_PERSISTED:'+inspectStatus);
+          console.log('SMART_LEDGER_DOM_AFTER_RESULT',JSON.stringify(await inspectSnapshot()));
+          const inspectStatus=String((await inspectSnapshot()).buttons.find(x=>/INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/.test(x.text))?.text||'');if(!inspectStatus.includes('INSPECT PERSISTED'))throw Error('SMART_LEDGER_INSPECT_NOT_PERSISTED:'+inspectStatus);
           const inspectEvents=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const inspectEvent=inspectEvents.find(x=>x.source==='nayanet-hub.smart-ledger.inspect'&&x.metadata?.action==='inspect_evidence'&&x.metadata?.ledger_event_id);
           if(!inspectEvent)throw Error('SMART_LEDGER_INSPECT_RETRIEVAL_FAILED');
           const ledgerEventId=String(inspectEvent.metadata?.ledger_event_id||'');if(!ledgerEventId)throw Error('SMART_LEDGER_INSPECT_LEDGER_EVENT_ID_MISSING');const inspectReceipt=inspectEvent.receipt_id||inspectEvent.metadata?.receipt_id||'';if(!inspectReceipt)throw Error('SMART_LEDGER_INSPECT_RECEIPT_MISSING');
