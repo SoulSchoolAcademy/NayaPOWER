@@ -75,7 +75,101 @@ async function reports(r){
  }catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}
 }
 async function share(r){const rows=await r.retrieve();const owned=rows.find(x=>x.user_id===r.snapshot().user_id&&!String(x.source||'').includes('smart-share.publication'));const m=modal('Smart Share','Publication uses the canonical consent/publication boundary.','<div class="nc-state" id="nc-state">'+(owned?'Selected: '+esc(owned.title||owned.event_id):'No owned intelligence is available to publish.')+'</div><div class="nc-actions"><button id="nc-publish">PUBLISH SELECTED INTELLIGENCE</button></div>');m.querySelector('#nc-publish').onclick=async()=>{const st=m.querySelector('#nc-state');try{if(!owned)throw Error('NO_OWNED_INTELLIGENCE');const x=await r.publishSmartFeed(owned.event_id);st.textContent='PUBLISHED · PUBLICATION '+(x.publication?.id||'UNKNOWN')+' · RECEIPT '+(x.receipt?.event_id||x.receipt?.id||'UNKNOWN')}catch(e){st.textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
-async function lists(r){const rows=await r.listSmartLists();const m=modal('Smart Lists','Owner-scoped organization over canonical Connections.','<div class="nc-state" id="nc-state">'+esc(rows.map(x=>x.name+' · '+x.members.length+' connections').join('\n')||'No Smart Lists yet.')+'</div><div class="nc-actions"><button id="nc-create">CREATE SMART LIST</button></div>');m.querySelector('#nc-create').onclick=async()=>{const name=prompt('List name');if(!name)return;try{await r.createSmartList(name);m.querySelector('#nc-state').textContent='CREATED · '+name+' · PERSISTED';}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
+async function lists(r){
+ const m=modal('Smart Lists','Owner-scoped organization over canonical Connections. Every mutation is re-read from canonical persistence; local UI state is never treated as proof.',
+  '<div class="nc-actions">'+
+   '<button id="nc-create">CREATE SMART LIST</button>'+
+   '<button id="nc-refresh">RELOAD / RETRIEVE</button>'+
+   '<button id="nc-unauthorized">AUTHORIZATION / FAILURE TEST</button>'+
+  '</div>'+
+  '<div class="nc-state" id="nc-state">RETRIEVING CANONICAL SMART LISTS…</div>'+
+  '<div class="nc-grid" id="nc-lists"></div>'+
+  '<div class="nc-state" id="nc-proof">Lifecycle proof: CREATE → RELOAD → RETRIEVE → ADD → RELOAD → VERIFY → REMOVE → RELOAD → VERIFY.</div>');
+ const state=m.querySelector('#nc-state'), grid=m.querySelector('#nc-lists'), proof=m.querySelector('#nc-proof');
+ let listsRows=[], connections=[];
+ const labelConn=x=>String(x.connected_member_id||x.id||'Connection');
+ const render=()=>{
+  grid.innerHTML=listsRows.length?listsRows.map(x=>{
+   const members=Array.isArray(x.members)?x.members:[];
+   const memberIds=new Set(members.map(y=>String(y.connection_id)));
+   const available=connections.filter(c=>String(c.status||'').toLowerCase()==='active'&&!memberIds.has(String(c.id)));
+   return '<div class="nc-card" data-list="'+esc(x.id)+'">'+
+    '<b>'+esc(x.name)+'</b><span>'+members.length+' persisted connection(s) · '+esc(x.id)+'</span>'+
+    '<div class="nc-actions">'+
+      '<select class="nc-input" data-add-select><option value="">SELECT ACTIVE CONNECTION</option>'+
+        available.map(c=>'<option value="'+esc(c.id)+'">'+esc(labelConn(c))+'</option>').join('')+
+      '</select>'+
+      '<button data-add>ADD CONNECTION</button>'+
+      (members.length?'<button data-remove>REMOVE FIRST MEMBER</button>':'')+
+    '</div>'+
+    '<div class="nc-state" data-members>'+esc(members.length?members.map(y=>y.connection_id).join('\n'):'NO PERSISTED MEMBERS')+'</div>'+
+   '</div>';
+  }).join(''):'<div class="nc-card"><b>NO SMART LISTS</b><span>Create one to begin the canonical lifecycle.</span></div>';
+ };
+ const reload=async(stage='RELOAD / RETRIEVE')=>{
+  state.textContent=stage+' · READING CANONICAL SMART LISTS + CONNECTIONS…';
+  try{
+   [listsRows,connections]=await Promise.all([r.listSmartLists(),r.listConnections()]);
+   render();
+   state.textContent='LIVE · '+listsRows.length+' SMART LIST(S) · '+connections.length+' OWNER-SCOPED CONNECTION(S) · CANONICAL RETRIEVAL';
+  }catch(e){state.textContent='BLOCKED / FAILED · '+(e?.message||e)}
+ };
+ m.querySelector('#nc-refresh').onclick=()=>void reload();
+ m.querySelector('#nc-create').onclick=async()=>{
+  const name=prompt('List name');if(!name)return;
+  state.textContent='CREATE → CANONICAL PERSISTENCE…';
+  try{
+   const created=await r.createSmartList(name);
+   await reload('RELOAD / RETRIEVE AFTER CREATE');
+   const persisted=listsRows.find(x=>String(x.id)===String(created.id)||x.name===name);
+   proof.textContent=persisted?'CREATE ✓ · RELOAD ✓ · RETRIEVE ✓ · PERSISTED LIST '+persisted.name:'CREATE returned but canonical retrieval did not confirm persistence.';
+  }catch(e){state.textContent='BLOCKED / FAILED · '+(e?.message||e)}
+ };
+ m.querySelector('#nc-unauthorized').onclick=async()=>{
+  state.textContent='AUTHORIZATION TEST → ATTEMPTING WRITE AGAINST A NON-OWNED LIST ID…';
+  try{
+   const conn=connections.find(c=>String(c.status||'').toLowerCase()==='active');
+   if(!conn)throw Error('NO_ACTIVE_CONNECTION_FOR_AUTHORIZATION_TEST');
+   const foreignListId=crypto.randomUUID();
+   await r.addConnectionToList(foreignListId,conn.id);
+   state.textContent='UNEXPECTED SUCCESS · AUTHORIZATION BOUNDARY DID NOT BLOCK UNKNOWN LIST ID';
+   proof.textContent='AUTHORIZATION TEST FAILED · UNEXPECTED SUCCESS';
+  }catch(e){
+   state.textContent='BLOCKED / FAILED · '+(e?.message||e);
+   proof.textContent='AUTHORIZATION / FAILURE ✓ · REQUEST BLOCKED TRUTHFULLY · '+(e?.message||e);
+  }
+ };
+ m.addEventListener('click',async e=>{
+  const add=e.target.closest('[data-add]'), remove=e.target.closest('[data-remove]');
+  if(!add&&!remove)return;
+  const card=e.target.closest('[data-list]'), listId=card?.dataset.list;
+  if(!listId)return;
+  state.textContent=(add?'ADD CONNECTION':'REMOVE CONNECTION')+' → CANONICAL RPC…';
+  try{
+   const current=listsRows.find(x=>String(x.id)===String(listId));
+   if(!current)throw Error('SMART_LIST_NOT_FOUND');
+   if(add){
+    const sel=card.querySelector('[data-add-select]');
+    if(!sel?.value)throw Error('CONNECTION_REQUIRED');
+    const selectedId=sel.value;
+    const result=await r.addConnectionToList(listId,selectedId);
+    await reload('RELOAD / VERIFY MEMBERSHIP');
+    const verified=listsRows.find(x=>String(x.id)===String(listId));
+    const ok=(verified?.members||[]).some(y=>String(y.connection_id)===String(selectedId));
+    proof.textContent=ok?'ADD ✓ · RELOAD ✓ · VERIFY MEMBERSHIP ✓ · '+String(result?.status||'ADDED'):'ADD returned but persisted membership was not verified.';
+   }else{
+    const member=current.members?.[0];
+    if(!member)throw Error('NO_PERSISTED_MEMBER');
+    const result=await r.removeConnectionFromList(listId,member.connection_id);
+    await reload('RELOAD / VERIFY REMOVAL');
+    const verified=listsRows.find(x=>String(x.id)===String(listId));
+    const ok=!(verified?.members||[]).some(y=>String(y.connection_id)===String(member.connection_id));
+    proof.textContent=ok?'REMOVE ✓ · RELOAD ✓ · VERIFY REMOVAL ✓ · '+String(result?.status||'REMOVED'):'REMOVE returned but persisted membership is still present.';
+   }
+  }catch(e){state.textContent='BLOCKED / FAILED · '+(e?.message||e);proof.textContent='TRUTHFUL BLOCKED RESULT · '+(e?.message||e)}
+ };
+ await reload();
+}
 async function spaces(r){const rows=await r.listSpaces();const m=modal('Smart Spaces','Permissioned Spaces contain canonical intelligence only.','<div class="nc-state" id="nc-state">'+esc(rows.map(x=>x.name+' · '+x.visibility+' · '+x.purpose).join('\n\n')||'No Spaces yet.')+'</div><div class="nc-actions"><button id="nc-create">CREATE PRIVATE SPACE</button></div>');m.querySelector('#nc-create').onclick=async()=>{const name=prompt('Space name'),purpose=prompt('Purpose');if(!name||!purpose)return;try{const x=await r.createSpace({name,purpose,visibility:'private'});m.querySelector('#nc-state').textContent='CREATED · '+x.name+' · CANONICAL ID '+x.id+' · PERSISTED';}catch(e){m.querySelector('#nc-state').textContent='BLOCKED / FAILED · '+(e?.message||e)}}}
 async function connections(r){const rows=await r.listConnections();modal('Connections','Deliberate relationships. A Connection does not create authority.','<div class="nc-state">'+esc(rows.map(x=>x.connected_member_id+' · '+x.status+' · '+(x.source_space_id||'no source Space')).join('\n')||'No active Connections yet.')+'</div>')}
 async function mail(r){const rows=await r.listMailThreads();modal('Smart Mail','Communication requires the current mutual Connection and authority boundary.','<div class="nc-state">'+esc(rows.map(x=>(x.subject||'Untitled')+' · '+x.kind+' · '+x.created_at).join('\n')||'No mail threads yet.')+'</div>')}
@@ -85,46 +179,10 @@ async function play(r){const ev=await r.retrieve(),le=await r.listLearningEviden
 async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthful runtime state; no configuration is claimed that the current session cannot prove.','<div class="nc-state">'+esc(JSON.stringify(s,null,2))+'</div><div class="nc-actions"><button id="nc-out">SIGN OUT</button></div>');m.querySelector('#nc-out').onclick=async()=>{await r.signOut();m.querySelector('.nc-state').textContent='SIGNED OUT · PRIVATE DATA ACCESS BLOCKED';}}
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
- // The HTML Hub is the protected visual source of truth. Never rebuild, reorder,
- // rename, or inject a new sidebar here. Runtime acceptance annotations are
- // additive only and therefore cannot turn the canonical Hub into a different UI.
- const map={
-   home:['feed','activity'],
-   notes:['note',null],
-   reports:['reports',null],
-   intelligence:['intelligence',null],
-   collective:['feed','collective'],
-   evidence:['ledger',null],
-   connections:['connections',null],
-   mail:['mail',null],
-   settings:['settings',null],
-   share:['share',null],
-   lists:['lists',null],
-   spaces:['spaces',null],
-   ledger:['ledger',null],
-   play:['play',null]
- };
- rail.querySelectorAll('.nav button[data-page]').forEach(b=>{
-   const key=b.dataset.page;
-   const mapped=map[key];
-   if(!mapped)return;
-   b.dataset.nc=mapped[0];
-   if(mapped[1])b.dataset.ncStream=mapped[1];
-   else delete b.dataset.ncStream;
- });
+ const map={home:['feed','activity'],notes:['note',null],reports:['reports',null],intelligence:['intelligence',null],collective:['feed','collective'],evidence:['ledger',null],connections:['connections',null],mail:['mail',null],settings:['settings',null],share:['share',null],lists:['lists',null],spaces:['spaces',null],ledger:['ledger',null],play:['play',null]};
+ rail.querySelectorAll('.nav button[data-page]').forEach(b=>{const key=b.dataset.page,mapped=map[key];if(!mapped)return;b.dataset.nc=mapped[0];if(mapped[1])b.dataset.ncStream=mapped[1];else delete b.dataset.ncStream});
  return true;
 }
-function install(){
- css();
- wireSidebar();
- document.addEventListener('click',e=>{
-  const b=e.target.closest('[data-nc]');
-  if(!b||b.closest('#naya-completeness'))return;
-  e.preventDefault();
-  e.stopImmediatePropagation();
-  window.__nayaSidebarAction={kind:b.dataset.nc,stream:b.dataset.ncStream||null,at:new Date().toISOString()};
-  void open(b.dataset.nc, b.dataset.ncStream);
- },true);
-}
+function install(){css();wireSidebar();document.addEventListener('click',e=>{const b=e.target.closest('[data-nc]');if(!b||b.closest('#naya-completeness'))return;e.preventDefault();e.stopImmediatePropagation();window.__nayaSidebarAction={kind:b.dataset.nc,stream:b.dataset.ncStream||null,at:new Date().toISOString()};void open(b.dataset.nc,b.dataset.ncStream)},true)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
