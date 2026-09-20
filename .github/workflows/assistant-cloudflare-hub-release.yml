@@ -90,7 +90,7 @@ jobs:
           set -euo pipefail
           rm -rf dist
           test -s 'NAYANET/HUB/index.html'
-          test -s 'assistant-runtime.js'
+          test -s 'NAYANET/HUB/public/assistant-runtime.js'
           test -s 'smart-feed.js'
           test -s 'smart-tabs.js'
           test -s 'NAYANET/HUB/public/hub-completeness.js'
@@ -98,7 +98,7 @@ jobs:
           test -s 'NAYANET/name-first-auth-adapter.js'
           mkdir -p dist/NAYANET
           cp 'NAYANET/HUB/index.html' dist/index.html
-          cp 'assistant-runtime.js' dist/assistant-runtime.js
+          cp 'NAYANET/HUB/public/assistant-runtime.js' dist/assistant-runtime.js
           cp 'smart-feed.js' dist/smart-feed.js
           cp 'smart-tabs.js' dist/smart-tabs.js
           cp 'NAYANET/HUB/public/hub-completeness.js' dist/hub-completeness.js
