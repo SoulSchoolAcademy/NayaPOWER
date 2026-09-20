@@ -77,13 +77,17 @@ jobs:
           if(root.directNine!=='verified-static-top-nine') throw Error('CANONICAL_DIRECT_NINE_MISSING');
           if(root.welcome) throw Error('WELCOME_FRONT_DOOR_PRESENT_ON_CANONICAL_HUB');
 
-          const note=await ap.evaluate(async()=>window.NayaAssistantRuntime.captureSmartNote({
+          const source=await ap.evaluate(async()=>window.NayaAssistantRuntime.record({
             title:'Canonical Smart Share proof '+location.hostname,
             content:'Fresh owned intelligence created for the governed Smart Share lifecycle proof.',
-            source:'nayanet-smart-share-proof'
+            source:'nayanet-smart-share-proof',
+            type:'INSIGHT',
+            classification:'observation',
+            status:'active',
+            tags:['smart-share','governed-proof']
           }));
-          const sourceEventId=String(note?.event?.event_id||note?.event_id||'');
-          const sourceReceiptId=String(note?.receipt?.receipt_id||note?.receipt_id||'');
+          const sourceEventId=String(source?.event_id||source?.event?.event_id||'');
+          const sourceReceiptId=String(source?.receipt?.id||source?.receipt_id||'');
           if(!sourceEventId||!sourceReceiptId) throw Error('SOURCE_CAPTURE_RECEIPT_NOT_PROVEN');
 
           const sourceRows=await ap.evaluate(id=>window.NayaAssistantRuntime.retrieve(id),sourceEventId);
