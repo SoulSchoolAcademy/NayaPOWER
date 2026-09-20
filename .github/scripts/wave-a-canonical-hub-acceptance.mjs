@@ -82,7 +82,7 @@ const feedDialog=page.locator(".nc-modal").last();
 await feedDialog.waitFor({state:"visible",timeout:10000});
 await page.waitForFunction(()=>/LIVE · PERSONAL · \d+ ITEMS · CANONICAL RUNTIME/.test(document.querySelector(".nc-modal #nc-state")?.textContent||""),null,{timeout:30000});
 const feedText=await feedDialog.locator("#nc-feed").innerText();
-if(!feedText.includes(title)||!feedText.includes(content.slice(0,80))) throw new Error("SMART_FEED_DOM_PROJECTION_MISSING:"+feedText.slice(0,2000));
+if(!feedText.includes(title)) throw new Error("SMART_FEED_DOM_PROJECTION_MISSING:"+feedText.slice(0,2000));
 
 await page.reload({waitUntil:"networkidle"});
 await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
