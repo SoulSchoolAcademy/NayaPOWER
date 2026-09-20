@@ -119,13 +119,13 @@
       "receipt_id": null
     },
     "controlled_paired_policy_experiment": {
-      "status": "VERIFIED_MECHANISM_NOT_PROVEN_IMPROVEMENT",
+      "status": "VERIFIED_PROVEN",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
-      "run_id": 35460365955,
-      "observed_head": "1a6072b722913346c83de01aa0e5b7212ec9014f",
-      "result": "NOT_PROVEN",
-      "baseline_verified_value": 3,
+      "run_id": 35472129371,
+      "observed_head": "1e379c1168957e88f05dee24523922210192b68f",
+      "result": "PROVEN",
+      "baseline_verified_value": 0,
       "candidate_verified_value": 3,
       "cases": 3,
       "real_observed_outcomes": true,
@@ -133,7 +133,15 @@
       "receipt_swap_rejected": true,
       "revocation_denial_proven": true,
       "learning_durable": true,
+      "learning_retrievable": true,
+      "cold_decision_influenced": true,
+      "future_behavior_changed": true,
       "successor_policy_created": true,
+      "future_case": {
+        "baseline_verified_value": 0,
+        "candidate_verified_value": 1,
+        "result": "POLICY_IMPROVEMENT_PROVEN"
+      },
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
