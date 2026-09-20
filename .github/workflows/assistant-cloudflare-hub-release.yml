@@ -369,12 +369,39 @@ jobs:
                   window.prompt = () => values.shift() || '';
                 }, connectionPrompts);
                 await actionButton('↔ CONNECT').click();
+                await page.waitForTimeout(250);
+                const relatedTarget = board.locator('.sfb-related-list button').first();
+                await relatedTarget.click();
                 await page.waitForTimeout(900);
                 const connectionStatus = await board.locator('.sfb-status').textContent().catch(() => '');
                 if (!String(connectionStatus || '').includes('CONNECTION CREATED · CANONICAL ID ')) throw new Error('CANONICAL_CONNECTION_CREATE_NOT_PROVEN:' + String(connectionStatus || 'NO_STATUS'));
                 const connectionMatch = String(connectionStatus || '').match(/CANONICAL ID ([0-9a-f-]{36})/i);
                 if (!connectionMatch) throw new Error('CANONICAL_CONNECTION_ID_INVALID:' + String(connectionStatus || 'NO_ID'));
-                console.log('SMART_FEED_CONNECT_CANONICAL_VERIFIED', viewport.label, JSON.stringify({ connectionId:connectionMatch[1], targetMemberId:connectionTarget.id, spaceId:createdSpaceId }));
+                const connectionId = connectionMatch[1];
+                const canonicalConnection = await page.evaluate(async ({url,key,connectionId,targetMemberId,spaceId}) => {
+                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                  const {data:{user},error:userError}=await client.auth.getUser();
+                  if (userError || !user?.id) throw new Error('SMART_CONNECTION_RETRIEVAL_AUTH_MISSING');
+                  const {data,error}=await client.from('nayanet_connections').select('id,owner_member_id,connected_member_id,status,source_space_id').eq('id',connectionId).maybeSingle();
+                  if (error) throw error;
+                  return {data,userId:user.id,targetMemberId,spaceId};
+                }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY,connectionId,targetMemberId:connectionTarget.id,spaceId:createdSpaceId});
+                if (!canonicalConnection.data || canonicalConnection.data.owner_member_id !== canonicalConnection.userId || canonicalConnection.data.connected_member_id !== connectionTarget.id || canonicalConnection.data.status !== 'active' || canonicalConnection.data.source_space_id !== createdSpaceId) throw new Error('CANONICAL_CONNECTION_PERSISTENCE_MISMATCH:' + JSON.stringify(canonicalConnection));
+                await page.reload({waitUntil:'networkidle'});
+                await board.waitFor({timeout:10000});
+                await page.waitForTimeout(700);
+                const reloadedConnections = await page.evaluate(() => window.NayaAssistantRuntime.listConnections());
+                const reloadedConnection = reloadedConnections.find(x => x.id === connectionId && x.connected_member_id === connectionTarget.id && x.status === 'active');
+                if (!reloadedConnection) throw new Error('CANONICAL_CONNECTION_NOT_RETRIEVED_AFTER_RELOAD:' + JSON.stringify(reloadedConnections));
+                const connectionsNav = navRoot.locator('button').filter({hasText:'Your Connections'});
+                await connectionsNav.scrollIntoViewIfNeeded();
+                await connectionsNav.click();
+                await page.waitForTimeout(700);
+                if (!page.url().includes('/connections')) throw new Error('CONNECTIONS_ROUTE_FAILED');
+                const connectionSurfaceText = await page.locator('.feature-surface').first().innerText();
+                if (!connectionSurfaceText.includes(connectionTarget.id)) throw new Error('CONNECTION_NOT_VISIBLE_IN_SURFACE:' + connectionTarget.id);
+                console.log('SMART_FEED_CONNECT_CANONICAL_VERIFIED', viewport.label, JSON.stringify({ connectionId, targetMemberId:connectionTarget.id, spaceId:createdSpaceId }));
 
                 console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof }));
                 // Reuse the viewport-aware navigation root from the Space proof above.\n
