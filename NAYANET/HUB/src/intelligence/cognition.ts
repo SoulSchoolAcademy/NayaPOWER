@@ -20,6 +20,12 @@ type CognitiveEventInput = {
   metadata?: Record<string, unknown>;
 };
 
+type RuntimeEvent = CognitiveEventInput & {
+  event_id: string;
+  created_at?: string;
+  metadata?: Record<string, unknown>;
+};
+
 type CognitiveApi = {
   init: (project?: string) => Promise<CognitivePersistence>;
   recordPersistent: (input: CognitiveEventInput) => Promise<{persisted?: boolean; persistence: CognitivePersistence}>;
@@ -28,9 +34,17 @@ type CognitiveApi = {
   handoff: (reason?: string, project?: string) => unknown;
 };
 
+type AssistantRuntimeApi = {
+  init: () => Promise<{authenticated?: boolean}>;
+  snapshot: () => {authenticated?: boolean};
+  record: (input: CognitiveEventInput) => Promise<unknown>;
+  retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
+};
+
 declare global {
   interface Window {
     NayaNetCognition?: CognitiveApi;
+    NayaAssistantRuntime?: AssistantRuntimeApi;
   }
 }
 
@@ -46,4 +60,50 @@ export async function rememberIntelligence(input: CognitiveEventInput) {
     return {persisted: false, persistence: {mode: 'unavailable', status: 'engine_not_loaded'}};
   }
   return window.NayaNetCognition.recordPersistent({...input, project: 'NayaNET'});
+}
+
+export async function persistSmartFeedAction(input: {
+  sourceEventId: string;
+  action: string;
+  value: unknown;
+  state: Record<string, unknown>;
+}) {
+  const runtime = window.NayaAssistantRuntime;
+  if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
+  const session = runtime.snapshot();
+  if (!session?.authenticated) throw new Error('AUTH_REQUIRED');
+  const eventId = crypto.randomUUID();
+  const result = await runtime.record({
+    event_id: eventId,
+    title: 'Smart Feed ' + input.action + ' action',
+    content: JSON.stringify({
+      source_event_id: input.sourceEventId,
+      action: input.action,
+      value: input.value,
+    }),
+    source: 'nayanet-hub.smart-feed.action',
+    project: 'NayaNET',
+    status: 'active',
+    actor: 'human',
+    tags: ['intelligent-hub', 'smart-feed', 'action', input.action],
+    metadata: {
+      source_event_id: input.sourceEventId,
+      action: input.action,
+      value: input.value,
+      state: input.state,
+      persistence_boundary: 'authenticated-cognition',
+    },
+  });
+  return {eventId, result};
+}
+
+export async function retrieveSmartFeedActions(sourceEventId: string) {
+  const runtime = window.NayaAssistantRuntime;
+  if (!runtime) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
+  const session = runtime.snapshot();
+  if (!session?.authenticated) return [];
+  const events = await runtime.retrieve();
+  return events
+    .filter((event) => event.metadata?.source_event_id === sourceEventId && event.source === 'nayanet-hub.smart-feed.action')
+    .sort((a, b) => String(a.created_at || '').localeCompare(String(b.created_at || '')));
 }
