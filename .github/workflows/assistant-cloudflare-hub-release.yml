@@ -302,6 +302,26 @@ jobs:
                     links: root?.querySelector('.sfb-related-head button')?.textContent?.includes('1 LINKED') || false
                   };
                 });
+                const restorationDiagnostic = await page.evaluate(async () => {
+                  const root = document.querySelector('.smart-feed-board');
+                  const sourceEventId = root?.getAttribute('data-event-id') || '';
+                  const runtime = window.NayaAssistantRuntime;
+                  let targetedCount = -1;
+                  let targetedActions: string[] = [];
+                  let runtimeUserId = '';
+                  try {
+                    runtimeUserId = String(runtime?.snapshot?.().user_id || '');
+                    const actions = sourceEventId && runtime?.retrieveSmartFeedActions
+                      ? await runtime.retrieveSmartFeedActions(sourceEventId)
+                      : [];
+                    targetedCount = actions.length;
+                    targetedActions = [...new Set(actions.map((x: any) => x?.metadata?.action).filter(Boolean))];
+                  } catch (error) {
+                    targetedActions = ['ERROR:' + String(error instanceof Error ? error.message : error)];
+                  }
+                  return { sourceEventId, runtimeUserId, targetedCount, targetedActions, status: root?.querySelector('.sfb-status')?.textContent || '' };
+                });
+                console.log('SMART_FEED_RELOAD_RESTORATION_DIAGNOSTIC', viewport.label, JSON.stringify({restored, restorationDiagnostic}));
                 if (!restored.favorite || !restored.save || !restored.like || !restored.love || !restored.rank || !restored.comments) throw new Error('SMART_FEED_ACTIONS_NOT_RESTORED:' + JSON.stringify(restored));
 
                 const sourceEventId = await board.getAttribute('data-event-id');
