@@ -65,12 +65,10 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35485948287,
+      "deployment_run_id": 35492451804,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
-      "live_runtime_observed": true,
-      "deployed_source_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
-      "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -81,19 +79,20 @@
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "canonical Assistant Cloudflare release run 35485948287 succeeded",
-        "exact current-main source parity was verified by the release lane",
-        "Assistant runtime baseline desktop and mobile verification passed in step 8",
-        "Final Assistant-lane runtime proof passed in step 9"
+        "canonical Assistant Cloudflare Hub release run 35492451804 succeeded",
+        "exact current claim-relevant main source was deployed to sparkling-shape-7ae5",
+        "live artifact identity and exact source parity passed",
+        "Assistant runtime baseline passed on desktop and mobile",
+        "Final Assistant-lane runtime proof passed"
       ]
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
-      "run_id": 35470519946,
-      "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
-      "deployed_source_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
+      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "run_id": 35492451804,
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -104,13 +103,13 @@
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "authenticated session established in the canonical Assistant runtime",
-        "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
-        "independent fresh-context cold-Naya retrieval and render passed",
-        "tested source scope remained unchanged after the successful 9479d0f proof correction"
+        "authenticated name-first identity established in desktop and mobile runtime proof",
+        "canonical React Hub authenticated persistence/retrieval actions passed",
+        "Smart Feed persistence and exact retrieval passed",
+        "unauthorized persistence was blocked with AUTH_REQUIRED"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
+      "fresh_naya_continuation_action": "NOT_CLAIMED_BY_THIS_RUN",
       "receipt_id": null
     },
     "controlled_paired_policy_experiment": {
@@ -132,7 +131,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+    "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -418,36 +417,10 @@
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
       "claim_type": "PRODUCTION",
-      "deployment_run_id": 35485948287,
+      "deployment_run_id": 35492451804,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "canonical_release_header": "3448b13251d2d0756738a3e343c97270e9a575bd",
-      "live_runtime_observed": true,
-      "deployed_source_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
-      "observed_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
-      "source_paths": [
-        "assistant-runtime.js",
-        "NAYANET/HUB/index.html",
-        "NAYANET/HUB/src/main.tsx",
-        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
-        "identity.html",
-        "NayaNET/name-first-auth-adapter.js",
-        ".github/workflows/assistant-cloudflare-hub-release.yml"
-      ],
-      "evidence": [
-        "canonical Assistant Cloudflare release run 35485948287 succeeded",
-        "exact current-main source parity was verified by the release lane",
-        "Assistant runtime baseline desktop and mobile verification passed",
-        "Final Assistant-lane runtime proof passed"
-      ]
-    },
-    "authenticated_lifecycle": {
-      "status": "VERIFIED",
-      "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/assistant-cloudflare-authenticated-proof.yml",
-      "run_id": 35470519946,
-      "observed_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
-      "deployed_source_head": "9479d0f3144e038f81024cfa9b9ecceea9a59896",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
       "source_paths": [
         "assistant-runtime.js",
         "NAYANET/HUB/index.html",
@@ -458,13 +431,37 @@
         "NayaNET/name-first-auth-adapter.js"
       ],
       "evidence": [
-        "authenticated session established in the canonical Assistant runtime",
-        "PERSISTED → RETRIEVED → ACTION → OBSERVE → VERIFY all passed",
-        "independent fresh-context cold-Naya retrieval and render passed",
-        "tested source scope remained unchanged after the successful 9479d0f proof correction"
+        "canonical Assistant Cloudflare Hub release run 35492451804 succeeded",
+        "exact current claim-relevant main source was deployed to sparkling-shape-7ae5",
+        "live artifact identity and exact source parity passed",
+        "Assistant runtime baseline passed on desktop and mobile",
+        "Final Assistant-lane runtime proof passed"
+      ]
+    },
+    "authenticated_lifecycle": {
+      "status": "VERIFIED",
+      "claim_type": "RUNTIME",
+      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+      "run_id": 35492451804,
+      "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+      "source_paths": [
+        "assistant-runtime.js",
+        "NAYANET/HUB/index.html",
+        "NAYANET/HUB/src/main.tsx",
+        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
+        "NAYANET/HUB/src/app/SmartMailSurface.tsx",
+        "identity.html",
+        "NayaNET/name-first-auth-adapter.js"
+      ],
+      "evidence": [
+        "authenticated name-first identity established in desktop and mobile runtime proof",
+        "canonical React Hub authenticated persistence/retrieval actions passed",
+        "Smart Feed persistence and exact retrieval passed",
+        "unauthorized persistence was blocked with AUTH_REQUIRED"
       ],
       "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "VERIFIED_AS_GOVERNED_RUNTIME_ACTION_OBSERVATION",
+      "fresh_naya_continuation_action": "NOT_CLAIMED_BY_THIS_RUN",
       "receipt_id": null
     },
     "external_cold_naya": {
@@ -653,25 +650,22 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Current main now has production-proven Assistant React Hub source/runtime parity, responsive baseline, canonical navigation, Smart Feed rendering, durable Smart Feed action receipt/reload, Library route, and Smart Mail route. The next highest-value Hub gap is the canonical Smart Note receiver path and complete feature-surface acceptance. Public Welcome → Identity remains externally blocked and is not treated as Hub completion.",
-  "current_repository_head": "a01080415030f18deab887df2236f8a8fa14d7d7",
+  "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
     "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-    "run_id": 35485053636,
-    "observed_head": "c281f2f63df27495798aa4df68d8868913f709ca",
-    "deployed_source_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+    "run_id": 35492451804,
+    "observed_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
+    "deployed_source_head": "bd5201e7252e744cea876beaf50f41b7bf541fef",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
     "evidence": [
-      "exact current main checkout",
+      "exact claim-relevant current main source deployed",
       "authorized Assistant Cloudflare target binding",
       "exact source parity verified",
       "desktop and mobile runtime baseline verified",
-      "canonical React Hub marker and navigation verified",
-      "Smart Feed rendered from canonical projection",
-      "Smart Feed action persisted with receipt and survived reload",
-      "Intelligence Library route verified",
-      "Smart Mail route verified"
+      "canonical React Hub marker/navigation/Smart Feed/private workspace verified",
+      "Smart Feed action persistence/reload/retrieval and unauthorized persistence block verified"
     ],
     "remaining_gap": "Smart Note receive/validate/persist/project/render causal path is not yet consolidated as one current Hub acceptance proof; remaining feature surfaces require full authenticated action acceptance."
   }
