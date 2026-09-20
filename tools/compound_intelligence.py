@@ -172,6 +172,7 @@ def build_candidate(event: dict[str, Any]) -> dict[str, Any] | None:
     if not str(event.get("lesson", "")).strip():
         return None
     outcome = {
+        "timestamp": event.get("timestamp") or event.get("effective_at") or event.get("created_at", ""),
         "intent": event.get("intent", event.get("what_happened", "")),
         "action": event.get("action", ""),
         "expected_outcome": event.get("expected_outcome", ""),
