@@ -225,7 +225,10 @@ jobs:
               eventId:smartNoteEventId
             });
             if(privacy.data) throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_UNAUTHENTICATED:'+JSON.stringify(privacy.data));
-            if(privacy.error && !String(privacy.error).toLowerCase().includes('permission') && !String(privacy.error).toLowerCase().includes('jwt')) {
+            const privacyErrorText = typeof privacy.error === 'string'
+              ? privacy.error.toLowerCase()
+              : String(privacy.error?.message || privacy.error?.code || '').toLowerCase();
+            if(privacy.error && !privacyErrorText.includes('permission') && !privacyErrorText.includes('jwt') && privacy.error?.code !== '42501') {
               throw new Error('UNAUTHENTICATED_PRIVACY_QUERY_FAILED:'+JSON.stringify(privacy));
             }
 
