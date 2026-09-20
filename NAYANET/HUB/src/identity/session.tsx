@@ -4,7 +4,8 @@ import {createClient,type Session,type SupabaseClient} from '@supabase/supabase-
 import {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from '../config/supabase';
 
 export type Identity={user_id:string;session_id:string;display_name:string;smart_name:string;smart_alias:string;permissions:string[];privacy_state:string;is_authenticated:boolean};
-const supabase:SupabaseClient=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'nayanet.supabase.auth'}});
+function getSharedSupabaseClient():SupabaseClient{const globalClient=(window as typeof window & {__NayaNETSupabaseClient?:SupabaseClient}).__NayaNETSupabaseClient;if(globalClient)return globalClient;const client=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'nayanet.supabase.auth'}});(window as typeof window & {__NayaNETSupabaseClient?:SupabaseClient}).__NayaNETSupabaseClient=client;return client}
+const supabase:SupabaseClient=getSharedSupabaseClient();
 const fallback:Identity={user_id:'local-preview',session_id:'local-preview',display_name:'Preview',smart_name:'Preview User',smart_alias:'preview',permissions:['personal'],privacy_state:'PRIVATE BY DEFAULT',is_authenticated:false};
 function identityFromSession(session:Session):Identity{
   const metadata=session.user.user_metadata||{};
