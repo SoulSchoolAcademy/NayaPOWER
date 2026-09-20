@@ -122,6 +122,7 @@ function install(){
   if(!b||b.closest('#naya-completeness'))return;
   e.preventDefault();
   e.stopImmediatePropagation();
+  window.__nayaSidebarAction={kind:b.dataset.nc,stream:b.dataset.ncStream||null,at:new Date().toISOString()};
   void open(b.dataset.nc, b.dataset.ncStream);
  },true);
 }
