@@ -272,7 +272,7 @@ jobs:
                   const cognitionRows = await page.evaluate(async (eventId) => window.NayaAssistantRuntime.retrieve(eventId), capturedId);
                   const ownedBoardEventId = cognitionRows?.[0]?.id || '';
                   if (!ownedBoardEventId) throw new Error('SMART_FEED_OWNED_COGNITION_ROW_ID_MISSING:' + JSON.stringify({ capturedId, cognitionRows }));
-                  await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedBoardEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                  await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?event_id=' + encodeURIComponent(ownedBoardEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                   await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                   await page.locator('.searchWrap input').fill(noteTitle);
                   await page.waitForFunction((expected) => Array.from(document.querySelectorAll('.smart-feed-board')).some(node => node.getAttribute('data-event-id') === expected), ownedBoardEventId, { timeout: 15000 });
