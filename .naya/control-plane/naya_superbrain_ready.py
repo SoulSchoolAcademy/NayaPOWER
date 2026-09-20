@@ -61,7 +61,7 @@ def result(name: str, status: str, evidence: list[str], reason: str) -> dict[str
 
 def mission_claim(proof: dict[str, Any], name: str, current: str, runtime_claims: dict[str, Any] | None = None) -> dict[str, Any]:
     """Accept a mission-boundary claim only when PROOF binds it to this HEAD."""
-    claim = (runtime_claims or {}).get(name) or proof.get("readiness_evidence", {}).get(name)
+    claim = (runtime_claims or {}).get(name) or proof.get("readiness_evidence", {}).get(name) or proof.get("current_evidence", {}).get(name)
     if not isinstance(claim, dict):
         return result(name, "UNKNOWN", [str(REQUIRED["proof"].relative_to(ROOT))],
                       "no current claim-appropriate evidence is recorded")
