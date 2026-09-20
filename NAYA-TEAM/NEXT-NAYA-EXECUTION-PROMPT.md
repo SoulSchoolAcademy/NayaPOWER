@@ -1,3 +1,18 @@
+# 🔴 CURRENT 2026-09-19 EXECUTION OVERRIDE
+
+The active successor mission is now defined by:
+**[ULTIMATE PRODUCTION CLOSURE EXECUTION PROMPT](./2026/09/19/ULTIMATE-PRODUCTION-CLOSURE-EXECUTION-PROMPT.md)**
+
+Read and execute that document as the current boss-level mission. It supersedes older "current blocker" wording in this file where later verified evidence conflicts with it, while preserving this document's operating laws and handoff requirements.
+
+Current live repository HEAD at this handoff: `6990fbb185920e0e16bd002a7d6245589b02739c`.
+
+Latest material correction: P1 controlled paired experiment run `35472129371` is **PROVEN**, with aggregate baseline verified responsible value `0` vs candidate `3`, and future learned behavior baseline `0` vs candidate `1`. Do not repeat older records that say P1 improvement is merely NOT_PROVEN.
+
+The remaining P0 human-facing blocker is the **public Welcome → Identity → canonical Assistant Hub handoff**, followed by consolidated human-facing acceptance.
+
+---
+
 # NAYA POWER — NEXT NAYA EXECUTION PROMPT
 
 **Status:** ACTIVE — CANONICAL SUCCESSOR MISSION  
