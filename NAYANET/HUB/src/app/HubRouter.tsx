@@ -14,6 +14,7 @@ import { SmartListsSurface } from './SmartListsSurface';
 import { ConnectionsSurface } from './ConnectionsSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
 import { SmartSpacesSurface } from './SmartSpacesSurface';
+import { SettingsSurface } from './SettingsSurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
   const identity = useIdentity();
@@ -114,7 +115,7 @@ export function HubRouter({ path }: { path: string }) {
     case routes.evidence:
       return <FeatureSurface kind="ledger" />;
     case routes.settings:
-      return <AuthPanel />;
+      return <SettingsSurface />;
     case routes.dream:
       return <DreamSurface />;
     case routes.play:
