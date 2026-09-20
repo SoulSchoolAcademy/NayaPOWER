@@ -45,7 +45,7 @@ type AssistantRuntimeApi = {
   listSmartLists: () => Promise<unknown[]>;
   smartFeed: (input?: {stream?: string; limit?: number; before?: string|null}) => Promise<unknown>;
   smartFeedAction: (input?: {action?: string; stream?: string|null; source_id?: string|null; publication_id?: string|null; interaction?: string|null}) => Promise<unknown>;
-  publishSmartFeed: (sourceEventId: string) => Promise<unknown>;
+  publishSmartFeed: (input: {sourceEventId: string; sourceTitle?: string; sourceContent?: string}) => Promise<unknown>;
 };
 
 declare global {
