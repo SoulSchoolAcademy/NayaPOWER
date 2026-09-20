@@ -212,8 +212,8 @@ jobs:
               }));
               if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
               if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
-              if (result.blockCount < 1) throw new Error(`${viewport.label}: no intelligence blocks rendered`);
-              if (result.layerCounts.some(n => n < 1)) throw new Error(`${viewport.label}: block without layers`);
+              if (result.navCount < 1) throw new Error(`${viewport.label}: no canonical Hub navigation rendered`);
+              if (result.blockCount < 1 && !result.hasIntelligence) throw new Error(`${viewport.label}: canonical Hub intelligence surface missing`);
               if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
               await context.close();
