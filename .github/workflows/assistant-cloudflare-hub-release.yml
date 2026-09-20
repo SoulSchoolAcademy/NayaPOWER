@@ -4,7 +4,7 @@
 # Closure verification: current main source must be redeployed before readiness can certify source-scoped runtime parity.
 # Execution note: protected-main push and manual dispatch are both canonical execution surfaces.
 # Current-head parity reconciliation trigger: redeploy the exact protected main source before readiness re-evaluation.
-# Identity.html is a canonical release input; changes must trigger this same legacy-v7 deployment lane.
+# Identity.html is a canonical release input; changes must trigger this same React deployment lane.
 name: NAYA — Canonical Assistant Cloudflare Hub Release
 
 on:
@@ -35,7 +35,7 @@ on:
         options:
           - legacy-v7
           - sparkling-shape-react
-        default: legacy-v7
+        default: sparkling-shape-react
 
 concurrency:
   group: assistant-cloudflare-production
@@ -83,7 +83,7 @@ jobs:
       - name: Prepare authorized Hub artifact
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
           rm -rf dist
@@ -139,7 +139,7 @@ jobs:
       - name: Bind exact authorized Cloudflare target
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
           test -n "${CLOUDFLARE_API_TOKEN:-}"
@@ -157,7 +157,7 @@ jobs:
       - name: Verify live artifact identity and exact source parity
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
@@ -207,7 +207,7 @@ jobs:
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
         run: |
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
