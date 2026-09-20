@@ -215,37 +215,50 @@ jobs:
                 await page.waitForTimeout(1500);
                 const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
                 if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('VIEWPORT_IDENTITY_NOT_AUTHENTICATED');
+
                 await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
-                await page.waitForTimeout(2500);
-                const result = await page.evaluate(async () => ({
-                  title: document.title,
-                  marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
-                  assistantRuntime: !!window.NayaAssistantRuntime,
-                  identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null,
-                  shell: document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker') || '',
-                  nav: [...document.querySelectorAll('.nav-item')].map(x => x.textContent?.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s+/g, ' ').trim()).filter(Boolean),
-                  feedBoards: document.querySelectorAll('.smart-feed-board').length,
-                  private: document.body.innerText.includes('Private intelligence workspace'),
-                  naya: document.body.innerText.includes('NAYA'),
-                  intelligence: document.body.innerText.includes('INTELLIGENCE')
-                }));
-                const expectedNav = ['Your Intelligence Today','Smart Feed','Your Report','Intelligence Library','Smart Lists','Smart Share','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings'];
-                if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('HUB_IDENTITY_NOT_AUTHENTICATED');
-                if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('REACT_MARKER_MISSING');
-                if (result.assistantRuntime !== true) throw new Error('ASSISTANT_RUNTIME_NOT_LOADED');
-                if (result.shell !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('CANONICAL_REACT_SHELL_MISSING');
-                if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
-                if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
-                if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
-                await page.locator('.nav-section button').filter({hasText:'Intelligence Library'}).click();
-                await page.waitForTimeout(500);
-                if (!page.url().includes('/library')) throw new Error('INTELLIGENCE_LIBRARY_ROUTE_FAILED');
-                if (!(await page.locator('h1').filter({hasText:'Intelligence Library'}).count())) throw new Error('INTELLIGENCE_LIBRARY_SURFACE_MISSING');
-                await page.locator('.nav-section button').filter({hasText:'Smart Mail'}).click();
-                await page.waitForTimeout(500);
-                if (!page.url().includes('/mail')) throw new Error('SMART_MAIL_ROUTE_FAILED');
-                if (!(await page.locator('h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
-                console.log('CANONICAL_REACT_HUB_VERIFIED', viewport.label, JSON.stringify(result));
+                await page.waitForTimeout(2000);
+
+                const result = await page.evaluate(async () => {
+                  const frame = document.querySelector('iframe[title="NayaNET Intelligent Hub"]');
+                  const doc = frame?.contentDocument || null;
+                  return {
+                    title: document.title,
+                    assistantRuntime: !!window.NayaAssistantRuntime,
+                    iframe: !!frame,
+                    directNine: !!doc?.querySelector('meta[name="nayanet-direct-nine"]'),
+                    baselineTitle: doc?.title || '',
+                    blockCount: doc?.querySelectorAll('.block').length || 0,
+                    layerCounts: doc ? [...doc.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length) : [],
+                    pageTargets: doc ? [...doc.querySelectorAll('[data-page]')].map(x => x.getAttribute('data-page')).filter(Boolean) : [],
+                    naya: !!doc?.body?.innerText.includes('Naya'),
+                    intelligence: !!doc?.body?.innerText.includes('INTELLIGENCE'),
+                    smartFeedAsset: await fetch('/smart-feed.js').then(r => r.ok),
+                    smartTabsAsset: await fetch('/smart-tabs.js').then(r => r.ok)
+                  };
+                });
+
+                const expectedPages = ['home','notes','reports','intelligence','collective','evidence','connections','mail','settings'];
+                if (!result.iframe) throw new Error('CANONICAL_HUB_IFRAME_MISSING');
+                if (!result.directNine) throw new Error('CANONICAL_509_BASELINE_MARKER_MISSING');
+                if (!result.baselineTitle.includes('NayaNET')) throw new Error('CANONICAL_HUB_TITLE_MISSING');
+                if (result.blockCount < 9) throw new Error('CANONICAL_INTELLIGENCE_BLOCKS_MISSING:' + result.blockCount);
+                if (result.layerCounts.some(n => n < 8)) throw new Error('CANONICAL_BLOCK_LAYERS_INCOMPLETE:' + JSON.stringify(result.layerCounts));
+                if (!expectedPages.every(x => result.pageTargets.includes(x))) throw new Error('CANONICAL_PAGE_TARGETS_MISSING:' + JSON.stringify(result.pageTargets));
+                if (!result.naya || !result.intelligence) throw new Error('CANONICAL_HUB_CONTENT_MISSING');
+                if (!result.smartFeedAsset || !result.smartTabsAsset) throw new Error('CANONICAL_PROJECTION_ASSETS_MISSING');
+
+                const frame = page.frameLocator('iframe[title="NayaNET Intelligent Hub"]');
+                await frame.locator('[data-page="intelligence"]').first().click();
+                await page.waitForTimeout(600);
+                if (!(await frame.locator('#naya-receiver-panel').count())) throw new Error('INTELLIGENCE_SURFACE_DID_NOT_OPEN');
+
+                await frame.locator('[data-page="mail"]').first().click();
+                await page.waitForTimeout(800);
+                if (!(await page.locator('#naya-react-mail-root').count())) throw new Error('SMART_MAIL_REACT_BRIDGE_MISSING');
+                if (!(await page.locator('#naya-react-mail-root h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
+
+                console.log('CANONICAL_BASELINE_HUB_VERIFIED', viewport.label, JSON.stringify(result));
                 await context.close();
               }
             } else {
