@@ -172,8 +172,8 @@ jobs:
           await listCard.locator('[data-add]').click();
           await page.waitForFunction(()=>document.querySelector('#nc-proof')?.textContent.includes('VERIFY MEMBERSHIP ✓'),{timeout:15000});
           const afterAdd=await page.evaluate(async()=>window.NayaAssistantRuntime.listSmartLists());
-          const persistedList=afterAdd.find(x=>x.id===document.querySelector('.nc-card[data-list]')?.dataset.list);
-          if(!persistedList?.members?.some(x=>x.connection_id===window.__waveAConnectionId)) throw Error('SMART_LIST_MEMBERSHIP_RETRIEVAL_NOT_PROVEN');
+          const persistedList=afterAdd.find(x=>x.id===listId);
+          if(!persistedList?.members?.some(x=>x.connection_id===connectionId)) throw Error('SMART_LIST_MEMBERSHIP_RETRIEVAL_NOT_PROVEN');
           checks.smartListsAdd='ADD CONNECTION → RELOAD → VERIFY MEMBERSHIP';
           await page.evaluate(id=>{window.__waveAConnectionId=id},connectionId);
           await page.locator('.nc-card[data-list="'+listId+'"] [data-remove]').click();
