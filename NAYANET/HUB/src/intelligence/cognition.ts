@@ -40,6 +40,7 @@ type AssistantRuntimeApi = {
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
   retrieveSmartFeedActions: (sourceEventId: string) => Promise<RuntimeEvent[]>;
+  listSpaceMembers: (spaceId: string) => Promise<unknown[]>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
   createSmartList: (name: string) => Promise<unknown>;
