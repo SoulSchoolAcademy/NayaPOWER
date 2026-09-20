@@ -331,12 +331,18 @@ jobs:
                 const sourceEventId = await board.getAttribute('data-event-id');
                 if (!sourceEventId) throw new Error('SMART_FEED_SOURCE_EVENT_ID_MISSING');
                 const retrievalProof = await page.evaluate(async (eventId) => {
-                  const actions = await window.NayaAssistantRuntime.retrieve();
-                  const matching = (actions || []).filter(x => x?.source === 'nayanet-hub.smart-feed.action' && x?.metadata?.source_event_id === eventId);
+                  const actions = await window.NayaAssistantRuntime.retrieveSmartFeedActions(eventId);
+                  const all = await window.NayaAssistantRuntime.retrieve();
+                  const shareReceipts = (all || []).filter(x =>
+                    x?.source === 'nayanet-hub.smart-share.publication' &&
+                    x?.metadata?.intelligence_event_id === eventId
+                  );
+                  const actionNames = [...new Set(actions.map(x => x?.metadata?.action).filter(Boolean))];
                   return {
-                    count: matching.length,
-                    actions: [...new Set(matching.map(x => x?.metadata?.action).filter(Boolean))],
-                    eventIds: [...new Set(matching.map(x => x?.event_id).filter(Boolean))]
+                    count: actions.length + (shareReceipts.length ? 1 : 0),
+                    actions: [...new Set([...actionNames, ...(shareReceipts.length ? ['share'] : [])])],
+                    eventIds: [...new Set(actions.map(x => x?.event_id).filter(Boolean))],
+                    shareReceiptIds: [...new Set(shareReceipts.map(x => x?.event_id).filter(Boolean))]
                   };
                 }, sourceEventId);
                 const requiredActions = ['favorite','save','like','love','rating','comments','share'];
