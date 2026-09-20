@@ -37,27 +37,54 @@ def retrieve_learning_event(
         raise FileNotFoundError(learning_path)
 
     learning = json.loads(learning_path.read_text(encoding="utf-8"))
-    source_event_id = str(learning.get("source_event_id", ""))
-    smart_note_id = str(learning.get("smart_note_id", ""))
+    source_event_id = str(learning.get("source_event_id", "")).strip()
+    smart_note_id = str(learning.get("smart_note_id", "")).strip()
     lesson = str(learning.get("lesson", "")).strip()
-    if not source_event_id.startswith("SE-"):
+    if not source_event_id:
         raise ValueError("learning event is missing canonical source_event_id")
     if not smart_note_id.startswith("SN-"):
         raise ValueError("learning event is missing Smart Note identity")
     if not lesson:
         raise ValueError("learning event is missing lesson")
 
-    previous_note_dir = memory.NOTE_DIR
-    try:
-        memory.NOTE_DIR = note_dir
-        candidates = memory.retrieve(lesson, limit)
-    finally:
-        memory.NOTE_DIR = previous_note_dir
+    # The canonical Smart Note resolver is the authority for the logical→physical
+    # location. Do not ask the legacy JSON memory runtime to discover canonical
+    # Markdown notes, and do not invent a second resolver.
+    import importlib.util
+    tx_path = ROOT / ".naya" / "runtime" / "smart_note_transaction.py"
+    spec = importlib.util.spec_from_file_location("naya_smart_note_transaction", tx_path)
+    if spec is None or spec.loader is None:
+        raise RuntimeError("cannot load canonical Smart Note resolver")
+    tx = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tx)
 
-    retrieved = next(
-        (note for _, note in candidates if note.get("id") == smart_note_id),
-        None,
-    )
+    match = __import__("re").match(r"^SN-(\\d{8}T\\d{6}[+-]\\d{4})-(.+)$", smart_note_id)
+    if not match:
+        raise ValueError("learning event has unsupported canonical Smart Note identity")
+    timestamp = datetime.strptime(match.group(1), "%Y%m%dT%H%M%S%z").isoformat()
+    topic_slug = match.group(2)
+    canonical_path = tx.canonical_smart_note_path(timestamp, topic_slug, root=note_dir)
+    if not canonical_path.exists():
+        raise LookupError(f"canonical Smart Note does not exist: {canonical_path}")
+
+    rendered = canonical_path.read_text(encoding="utf-8")
+    id_marker = f"**Smart Note ID:** `{smart_note_id}`"
+    if id_marker not in rendered:
+        raise LookupError(f"canonical Smart Note identity mismatch at {canonical_path}")
+
+    title_match = __import__("re").search(r"^# SMART NOTE — (.+)$", rendered, __import__("re").MULTILINE)
+    lesson_match = __import__("re").search(r"^## Learning Lesson / Adaptive Learning\\n\\n(.+?)(?=\\n\\n## |\\Z)", rendered, __import__("re").DOTALL)
+    retrieved = {
+        "id": smart_note_id,
+        "event_id": smart_note_id,
+        "title": title_match.group(1).strip() if title_match else topic_slug,
+        "created_at": timestamp,
+        "effective_at": timestamp,
+        "content": rendered,
+        "what_we_learned": [lesson_match.group(1).strip()] if lesson_match else [lesson],
+        "canonical_path": str(canonical_path.relative_to(ROOT)).replace("\\\\", "/") if canonical_path.is_relative_to(ROOT) else str(canonical_path),
+        "status": "CANONICAL",
+    }
     if retrieved is None:
         raise LookupError(
             f"learning event {learning_event_id} resolved to {smart_note_id}, "
