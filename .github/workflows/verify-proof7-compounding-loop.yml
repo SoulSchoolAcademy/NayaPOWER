@@ -30,6 +30,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: nayanet-proof7-controlled-paired
-          path: ${{ github.workspace }}/nayanet-proof7-paired.json
+          path: ${{ runner.temp }}/nayanet-proof7-paired.json
           if-no-files-found: error
           retention-days: 30
