@@ -101,10 +101,12 @@ jobs:
           await shareButton.scrollIntoViewIfNeeded();
           await shareButton.click({force:true});
           await ap.waitForFunction(()=>document.querySelector('[data-c4-kind="share-intel"]')?.dataset.smartShareState==='PUBLISHED',null,{timeout:20000});
-          const publishStatus=String(await shareButton.getAttribute('data-publication-id')||'');
-          const publicationId=publishStatus.match(/PUBLICATION ([0-9a-f-]{36})/i)?.[1]||'';
-          const receiptEventId=publishStatus.match(/RECEIPT ([^ ]+)/)?.[1]||'';
-          if(!publicationId||!receiptEventId) throw Error('SMART_SHARE_PUBLICATION_RECEIPT_NOT_PROVEN:'+publishStatus);
+          const publicationId=String(await shareButton.getAttribute('data-publication-id')||'');
+          if(!publicationId) throw Error('SMART_SHARE_PUBLICATION_ID_NOT_PROVEN');
+          const publishedReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());
+          const receipt=publishedReceipts.find(x=>x.source==='nayanet-hub.smart-share.publication'&&x.metadata?.publication_id===publicationId);
+          const receiptEventId=String(receipt?.event_id||'');
+          if(!receiptEventId) throw Error('SMART_SHARE_RECEIPT_EVENT_ID_NOT_PROVEN:'+publicationId);
 
           const grants=await ap.evaluate(target=>window.NayaAssistantRuntime.listAuthorityGrants(target),A.user.id);
           const grant=grants.find(g=>g.source_event_id===sourceEventId&&g.actions?.includes('smart_feed_publish')&&g.scope?.target===sourceRows[0].id);
