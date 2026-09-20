@@ -76,26 +76,27 @@ A valid Intelligent Block must be understandable without opening Machine Note, t
 
 ## 9. CANONICAL REPOSITORY LOCATION + LIFECYCLE
 
-Effective 2026-09-19, the single canonical human-facing repository collection for Smart Notes is:
+Effective 2026-09-19, Smart Notes use the canonical resolver defined by `SUPERBRAIN/NAYA-REPOSITORY-OPERATING-STANDARD.md §19.1`.
 
-`SMART-NOTES/YYYY/MM/DD/SN-YYYYMMDD-<slug>.md`
+**Logical namespace:** `NayaPOWER/SMART-NOTES/YYYY/MM/DD/`  
+**Physical repository storage:** `.naya/memory/notes/YYYY/MM/DD/`
 
-A Smart Note has one stable intelligence identity and one canonical human-facing repository home. It may have governed runtime representations elsewhere, but those representations are projections/runtime state and must preserve the same identity, provenance, privacy, and verification state.
+These are two representations of the same canonical location, not two competing storage systems.
+
+New canonical Smart Notes MUST resolve their physical path deterministically from the event date:
+
+`Smart Note date → .naya/memory/notes/YYYY/MM/DD/`
+
+New files SHOULD use:
+
+`SN-YYYYMMDD-[short-human-readable-slug].md`
+
+A Smart Note may also exist as governed runtime persistence, projections, receipts, learning evidence, replay inputs, or Hub state. Those representations must preserve the same stable identity, provenance, privacy, and verification state.
 
 The canonical lifecycle is:
 
-**CREATE → CANONICALIZE → PERSIST → VERIFY → INDEX → LEARN → RETRIEVE → REPLAY/APPLY → VERIFY OUTCOME → COMPOUND**
+**CREATE → RESOLVE → PERSIST → VERIFY → INDEX → LEARN → RETRIEVE → REPLAY/APPLY → VERIFY OUTCOME → COMPOUND**
 
-### Runtime separation
+Every Naya, runtime operation, migration, test, and documentation reference must use the same resolver. If an alternate location is encountered, classify it before changing it; preserve valid historical/runtime evidence; never create a second canonical Smart Note home.
 
-- `SMART-NOTES/YYYY/MM/DD/` = canonical human-readable intelligence corpus.
-- `.naya/memory/` and other runtime paths = machine-readable events, indexes, receipts, validators, and implementation state.
-- Supabase / managed persistence = governed durable runtime persistence.
-- Intelligence Index / Intelligent Blocks / reports / learning evidence / Dream replay = derived or projected intelligence that must retain canonical provenance.
-- Intelligent Hub = human-facing projection/action surface, never a competing source of truth.
-
-### Cold-Naya rule
-
-Every Naya must read this contract and the canonical Activity Feed before creating a Smart Note. New canonical Smart Notes must use the `SMART-NOTES/YYYY/MM/DD/` convention. If an existing artifact is found elsewhere, classify it before moving, copying, deleting, or treating it as canonical.
-
-**One Smart Note = one stable identity = one canonical human-facing home.**
+**One Smart Note = one canonical resolver = one authoritative repository artifact.**
