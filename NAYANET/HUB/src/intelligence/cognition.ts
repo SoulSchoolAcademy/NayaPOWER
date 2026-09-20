@@ -40,6 +40,7 @@ type DreamReplay={id?:string;event_id?:string;status?:string;summary?:string;des
 
 type AssistantRuntimeApi = {
   init: () => Promise<{authenticated?: boolean}>;
+  signOut: () => Promise<void>;
   snapshot: () => {authenticated?: boolean; user_id?: string};
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
@@ -48,6 +49,7 @@ type AssistantRuntimeApi = {
   listDreamReplays: () => Promise<DreamReplay[]>;
   dreamReplay: (input?: {event_id?: string; idempotency_key?: string}) => Promise<DreamReplay>;
   recordLearningEvidence: (input: {claim: string; target_id?: string; source_event_id?: string; provenance?: string; verification_method?: string}) => Promise<unknown>;
+  verify: () => {valid:boolean;events:number;receipts:number;indexed:boolean;persistence?:{mode:string;status:string;last_sync_at?:string;last_write_at?:string;last_error?:string}};
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   listSpaces: () => Promise<SpaceSummary[]>;
   joinSpace: (spaceId: string) => Promise<unknown>;
