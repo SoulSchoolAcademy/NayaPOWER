@@ -45,6 +45,7 @@ type AssistantRuntimeApi = {
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
   retrieveSmartFeedActions: (sourceEventId: string) => Promise<RuntimeEvent[]>;
+  captureSmartNote: (input: {title:string;content:string;source?:string}) => Promise<any>;
   listSpaceMembers: (spaceId: string) => Promise<SpaceMember[]>;
   listDreamReplays: () => Promise<DreamReplay[]>;
   dreamReplay: (input?: {event_id?: string; idempotency_key?: string}) => Promise<DreamReplay>;
