@@ -145,7 +145,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
+    "current_repository_head": "d796584ed796d9c97a74f844742be55b5261afbb",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -425,6 +425,27 @@
       "smart_mail_wavea_regression_run": 35472383857,
       "negative_live_probe": "NOT_PROVEN_DUE_TOOL_SAFETY_BLOCK",
       "next_action": "Add/execute a canonical repository-level negative test proving no_external_side_effects blocks before message/receipt side effects."
+    },
+    "human_capture_smart_note": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-human-smart-note-capture.yml",
+      "run_id": 35527638171,
+      "observed_head": "d796584ed796d9c97a74f844742be55b5261afbb",
+      "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+      "event_id": "e27faa0c-df86-4f32-bb34-62b283c7548f",
+      "transaction_id": "3d3e97ef-5009-46ba-98ea-7e2abeba2596",
+      "checks": [
+        "human_capture_control",
+        "canonical_receiver",
+        "same_event_identity",
+        "smart_feed_render",
+        "reload_identity"
+      ],
+      "persistence": {
+        "cognition_row_id": "627dd24e-48e0-4317-b9df-c5e03c1c64b7",
+        "index_row_id": "7595c62b-2a00-43c4-bdb5-13666397edef"
+      }
     }
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
@@ -675,7 +696,7 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Current main now has production-proven Assistant React Hub source/runtime parity, responsive baseline, canonical navigation, Smart Feed rendering, durable Smart Feed action receipt/reload, Library route, and Smart Mail route. The next highest-value Hub gap is the canonical Smart Note receiver path and complete feature-surface acceptance. Public Welcome → Identity remains externally blocked and is not treated as Hub completion.",
+  "interpretation": "Current human Hub Smart Note capture is production-proven through canonical receiver, cognition persistence, PIS projection, Smart Feed rendering, and reload identity. The control plane must now be reconciled before the next Hub acceptance action.",
   "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
