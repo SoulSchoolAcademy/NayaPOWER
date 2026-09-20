@@ -341,6 +341,7 @@ def test_cold_retrieval_binds_successor_decision_without_granting_authority():
             activity_event = activity["event"]
             lineage = activity_event["execution"]["learning_lineage"]
             receipt_lineage = activity_event["receipt"]["learning_lineage"]
+            # Re-run this proof whenever the canonical Activity receipt seam changes.
             assert lineage == receipt_lineage
             assert lineage["learning_event_id"] == decision.learning_event_id
             assert lineage["retrieval_receipt_id"] == decision.retrieval_receipt_id
