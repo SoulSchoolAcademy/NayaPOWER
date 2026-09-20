@@ -1,0 +1,32 @@
+name: Diagnose canonical identity route
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/diagnose-identity-route.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect identity route variants
+        shell: bash
+        run: |
+          set -euo pipefail
+          base='https://sparkling-shape-7ae5.smartnetpodcast.workers.dev'
+          for path in '/identity.html?naya_hold=1' '/identity.html?name=Naya%20CI%20Proof&alias=ci-route-proof'; do
+            echo "=== $path ==="
+            curl --fail --silent --show-error --location "$base$path" -D /tmp/headers -o /tmp/body
+            cat /tmp/headers
+            echo "BODY_SHA256=$(sha256sum /tmp/body | cut -d' ' -f1)"
+            grep -o 'id="name"' /tmp/body | head -1 || true
+            grep -o 'id="alias"' /tmp/body | head -1 || true
+            grep -o 'id="enter"' /tmp/body | head -1 || true
+            grep -o 'NayaNETNameFirstAuth' /tmp/body | head -1 || true
+            grep -o 'NAYANET-HUB-REACT-CANONICAL' /tmp/body | head -1 || true
+          done
