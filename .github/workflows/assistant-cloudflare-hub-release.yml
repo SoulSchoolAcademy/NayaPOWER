@@ -91,7 +91,7 @@ jobs:
             test -s 'NAYANET/HUB/src/app/App.tsx'
             test -s 'NAYANET/HUB/src/baseline/HubBaselineApp.tsx'
             test -s 'NAYANET/HUB/src/baseline/hub-baseline.html'
-            test -s 'assistant-runtime.js'
+            test -s 'NAYANET/HUB/public/assistant-runtime.js'
             cd NAYANET/HUB
             npm install --no-audit --no-fund
             npm run build
