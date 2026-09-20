@@ -27,7 +27,7 @@ jobs:
           const browser=await chromium.launch({headless:true});const ctx=await browser.newContext();const p=await ctx.newPage();
           const alias=('surface'+process.env.GITHUB_RUN_ID+'-'+crypto.randomUUID().slice(0,6)).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
           await p.goto(runtime+'/identity.html?name='+encodeURIComponent('Naya Surface Audit')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});await p.getByRole('button',{name:'ENTER NAYANET'}).click();await p.waitForTimeout(1500);await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});await p.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
-          await p.goto(runtime+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});const initialized=await p.evaluate(()=>window.NayaAssistantRuntime.init());if(!initialized?.authenticated)throw Error('RUNTIME_AUTH_INIT_FAILED');
+          await p.goto(runtime+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});const initialized=await p.evaluate(()=>window.NayaAssistantRuntime.init());if(!initialized?.authenticated)throw Error('RUNTIME_AUTH_INIT_FAILED');
           const user=initialized.user_id;
           const checks={};
           checks.hub='PASS';
@@ -48,7 +48,7 @@ jobs:
           await p.goto(runtime+'/play',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
           checks.naya_play='PASS';
-          console.log(JSON.stringify({status:'VERIFIED',checks,event_id:eid}));
+          console.log(JSON.stringify({status:'VERIFIED',checks}));
           await browser.close();
           NODE
           node /tmp/surface.mjs
