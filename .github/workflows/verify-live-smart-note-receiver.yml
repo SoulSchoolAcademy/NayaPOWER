@@ -58,7 +58,10 @@ jobs:
             await page.locator('#name').fill(name);
             await page.locator('#alias').fill(smartAlias);
             await page.locator('#enter').click();
-            await page.waitForTimeout(5000);
+            await page.waitForFunction(async () => {
+              const identity = await window.NayaNETNameFirstAuth?.current?.();
+              return Boolean(identity?.authenticated && identity?.userId);
+            }, null, { timeout:30000 });
             const established = await page.evaluate(async () => ({ identity: await window.NayaNETNameFirstAuth?.current?.(), status: document.getElementById('status')?.textContent || '' }));
             if (!established.identity?.authenticated || !established.identity?.userId) throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
             return page.evaluate(async () => {
