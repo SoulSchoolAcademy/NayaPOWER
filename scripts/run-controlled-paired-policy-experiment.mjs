@@ -144,7 +144,7 @@ if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTIO
     p_constraints:{mode:"constraint-negative-proof",no_external_side_effects:true,policy_id:v1.id},
     p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
     p_evidence:{authorization_type:"explicit_negative_constraint_proof",run_id:runId,policy_id:v1.id},
-    p_parent_authority:authority.data.grant_id
+    p_parent_authority:authorityGrants.get(v1.id)||null
   });
   if(conflicting.error||!conflicting.data?.grant_id) throw conflicting.error||new Error("CONSTRAINT_NEGATIVE_GRANT_FAILED");
 
