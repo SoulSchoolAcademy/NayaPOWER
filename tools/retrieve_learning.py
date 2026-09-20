@@ -58,7 +58,7 @@ def retrieve_learning_event(
     tx = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(tx)
 
-    match = __import__("re").match(r"^SN-(\\d{8}T\\d{6}[+-]\\d{4})-(.+)$", smart_note_id)
+    match = __import__("re").match(r"^SN-(\d{8}T\d{6}[+-]\d{4})-(.+)$", smart_note_id)
     if not match:
         raise ValueError("learning event has unsupported canonical Smart Note identity")
     timestamp = datetime.strptime(match.group(1), "%Y%m%dT%H%M%S%z").isoformat()
@@ -73,7 +73,7 @@ def retrieve_learning_event(
         raise LookupError(f"canonical Smart Note identity mismatch at {canonical_path}")
 
     title_match = __import__("re").search(r"^# SMART NOTE — (.+)$", rendered, __import__("re").MULTILINE)
-    lesson_match = __import__("re").search(r"^## Learning Lesson / Adaptive Learning\\n\\n(.+?)(?=\\n\\n## |\\Z)", rendered, __import__("re").DOTALL)
+    lesson_match = __import__("re").search(r"^## Learning Lesson / Adaptive Learning\n\n(.+?)(?=\n\n## |\Z)", rendered, __import__("re").DOTALL)
     retrieved = {
         "id": smart_note_id,
         "event_id": smart_note_id,
@@ -82,7 +82,7 @@ def retrieve_learning_event(
         "effective_at": timestamp,
         "content": rendered,
         "what_we_learned": [lesson_match.group(1).strip()] if lesson_match else [lesson],
-        "canonical_path": str(canonical_path.relative_to(ROOT)).replace("\\\\", "/") if canonical_path.is_relative_to(ROOT) else str(canonical_path),
+        "canonical_path": str(canonical_path.relative_to(ROOT)).replace("\\", "/") if canonical_path.is_relative_to(ROOT) else str(canonical_path),
         "status": "CANONICAL",
     }
     if retrieved is None:
