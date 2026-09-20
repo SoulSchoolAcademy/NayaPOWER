@@ -35,7 +35,8 @@ jobs:
           (async()=>{
             const s=await signup(); if(!s.access_token)throw Error('AUTH_BOOTSTRAP_FAILED:'+JSON.stringify(s));
             const browser=await chromium.launch({headless:true});
-            const context=await browser.newContext({storageState:{cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(s)}]}]}}});
+            const storageState={cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(s)}]}]};
+            const context=await browser.newContext({storageState});
             const page=await context.newPage();
             page.on('request',r=>{if(r.url().includes('/functions/v1/v7-smart-note-canonical'))console.log('SMART_NOTE_RECEIVER_REQUEST',r.method(),r.url(),r.postData()||'')});
             page.on('response',async r=>{if(r.url().includes('/functions/v1/v7-smart-note-canonical')){const text=await r.text().catch(()=>'<BODY_READ_FAILED>');console.log('SMART_NOTE_RECEIVER_RESPONSE',JSON.stringify({status:r.status(),statusText:r.statusText(),url:r.url(),headers:Object.fromEntries([...r.headers().entries()].filter(([k])=>['content-type','x-request-id','cf-ray'].includes(k.toLowerCase()))),body:text.slice(0,5000)}))}});
