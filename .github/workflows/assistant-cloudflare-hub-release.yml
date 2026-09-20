@@ -249,6 +249,13 @@ jobs:
                 await page.waitForTimeout(800);
                 const restoredFavorite = await page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first().getAttribute('class');
                 if (!String(restoredFavorite || '').includes('on')) throw new Error('SMART_FEED_ACTION_NOT_RESTORED');
+                const deepSearch = page.locator('.searchRow input[aria-label="Search intelligence"]');
+                await deepSearch.fill('Smart Feed favorite action');
+                await deepSearch.press('Enter');
+                await page.waitForTimeout(1200);
+                const deepSearchText = await page.locator('.hub-route').textContent();
+                if (!String(deepSearchText || '').toLowerCase().includes('smart feed favorite action')) throw new Error('CANONICAL_DEEP_SEARCH_MISS');
+
 
                 const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
