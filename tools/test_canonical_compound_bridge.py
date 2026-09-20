@@ -187,6 +187,16 @@ def test_cold_retrieval_binds_successor_decision_without_granting_authority():
         tx.CIS_PATH = tx.CIS_ROOT / "CIS.json"
         tx.RECEIPTS_ROOT = tx.CIS_ROOT / "transactions"
         tx.PIS_PATH = temp / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
+        builder_path = ROOT / "scripts" / "build-smart-feed-projection.py"
+        builder_spec = importlib.util.spec_from_file_location("canonical_tx_successor_projection_builder", builder_path)
+        assert builder_spec is not None and builder_spec.loader is not None
+        builder = importlib.util.module_from_spec(builder_spec)
+        builder_spec.loader.exec_module(builder)
+        tx.build_pis_projection = lambda current_note: builder.build_projection(
+            source_root=temp,
+            output=tx.PIS_PATH,
+            extra_notes=[builder.parse_canonical_note(tx.SMART_NOTES_ROOT / "2026" / "09" / "17" / "SN-20260917-IH-03-CANONICAL-INTELLIGENCE-IDENTITY.md", temp)],
+        )
 
         timestamp = "2026-09-17T20:00:00+00:00"
         canonical_id = "SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY"
