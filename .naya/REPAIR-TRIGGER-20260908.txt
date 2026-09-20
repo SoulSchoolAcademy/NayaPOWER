@@ -1,0 +1,1 @@
+Temporary trigger for the canonical NayaNET Hub repair workflow. Remove after verified deployment.

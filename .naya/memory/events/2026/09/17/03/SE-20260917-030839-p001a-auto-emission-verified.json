@@ -1,0 +1,90 @@
+{
+  "activity_feed_projection": {
+    "event_id": "SE-20260917-030839-p001a-auto-emission-verified",
+    "feed": "NAYA-ACTIVITY",
+    "summary": "VERIFIED now auto-emits and persists exactly one canonical Activity event bound to the execution run; suppression, persistence-failure, replay, and tamper all fail closed.",
+    "title": "P0-01 automatic Activity emission VERIFIED at the execution boundary"
+  },
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "handoff": {
+      "next_action": "Machine-enforce the preflight gate at the EXECUTING boundary (STEP 2 / priority 2)",
+      "successor": "NEXT-EXECUTION-20260916-P002-PREFLIGHT-GATE.md"
+    },
+    "learning_status": "RECORDED"
+  },
+  "created_at": "2026-09-17T03:08:39.396210+00:00",
+  "effective_at": "2026-09-17T03:08:39.396210+00:00",
+  "event_id": "SE-20260917-030839-p001a-auto-emission-verified",
+  "event_type": "activity",
+  "evidence_ids": [
+    "tests/test_activity_event_auto_emission.py",
+    "tests/test_activity_event_closure.py",
+    ".naya/runtime/activity_event.py",
+    ".naya/runtime/execution_controller.py"
+  ],
+  "execution": {
+    "action_id": "ACT-AUTO-EMISSION-BOUNDARY",
+    "actor_id": "SoulSchoolAcademy",
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+    "claim_id": "CL-P001A-AUTO-EMISSION",
+    "decision_id": "DEC-P001A-AUTO-EMISSION",
+    "event_id": "SE-20260917-030839-p001a-auto-emission-verified",
+    "run_id": "RUN-P001A-AUTO-EMISSION"
+  },
+  "ledger": {
+    "evidence_to_hub": "Shawn can trace: Activity Feed -> Smart Link -> implementation -> tests -> independent verdict",
+    "increment": "P0-01 automatic canonical Activity-event emission",
+    "independent_verifier": "ACCEPT (49/49 adversarial assertions; no repo files modified; real event store untouched)",
+    "proofs": [
+      "positive automatic emission at VERIFIED (runtime built+persisted the event BECAUSE execution happened)",
+      "missing successor metadata refused, nothing emitted",
+      "persistence failure + CONFLICT fail closed (execution stays OBSERVED)",
+      "idempotent replay: same run -> REPLAY_EVENT, single event",
+      "crash-resume reuses the one durable event (no duplicate)",
+      "stale previous run never reused: new run emits its own event",
+      "tamper after acceptance detected: deletion, receipt removal, run re-binding all return activity event integrity failure"
+    ],
+    "protected": [
+      "fail-closed semantics preserved and strengthened (run binding)",
+      "canonical event store remains the sole authority; no competing store/message-bus",
+      "all prior governed suites stay GREEN"
+    ],
+    "status": "IMPLEMENTED + TESTED + INDEPENDENTLY VERIFIED",
+    "unknown": [
+      "human-facing live Hub Activity Feed projection NOT yet certified (no live runtime evidence)",
+      "pre-existing out-of-scope RED unchanged (VALIDATION-REPORT timezone; legacy DAILY filenames; GovernanceKernel collection)"
+    ]
+  },
+  "receipt": {
+    "event_id": "SE-20260917-030839-p001a-auto-emission-verified",
+    "receipt_id": "RCP-P001A-AUTO-EMISSION",
+    "schema": "naya-power-evidence/v1",
+    "status": "MATCHED"
+  },
+  "source": {
+    "event_id": "EXECUTION-CL-P001A-AUTO-EMISSION",
+    "generator": "team-naya-boundary-increment",
+    "kind": "execution"
+  },
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "P0-01 automatic Activity emission VERIFIED at the execution boundary",
+  "tags": [
+    "activity",
+    "p0-01",
+    "auto-emission"
+  ],
+  "title": "P0-01 automatic Activity emission VERIFIED at the execution boundary",
+  "verification": {
+    "evidence": [
+      "python tests/test_activity_event_auto_emission.py -> ACTIVITY_AUTO_EMISSION_CLOSURE_TESTS=GREEN count=10",
+      "python tests/test_activity_event_closure.py -> UNIVERSAL_ACTIVITY_REPORTING_CLOSURE_TESTS=GREEN count=11",
+      "python .naya/runtime/execution_controller.py self-test -> PASS (VERIFIED auto-emits the canonical Activity event)",
+      "pytest 8 governed files -> 155 passed, 4 xfailed",
+      "Independent adversarial verifier -> ACCEPT; 49/49 probe assertions PASS; real store untouched (INDEX SHA256 unchanged)"
+    ],
+    "method": "independent-adversarial-verification",
+    "schema": "naya-power-evidence/v1",
+    "status": "VERIFIED"
+  }
+}

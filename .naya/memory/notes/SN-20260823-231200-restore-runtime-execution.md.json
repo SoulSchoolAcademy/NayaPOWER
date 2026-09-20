@@ -1,0 +1,21 @@
+{
+  "id":"SN-20260823-231200-restore-runtime-execution",
+  "type":"milestone",
+  "title":"Restore Context Runtime First End-to-End Slice Verified",
+  "status":"ACTIVE",
+  "created_at":"2026-08-23T19:12:00-07:00",
+  "effective_at":"2026-08-23T19:12:00-07:00",
+  "superseded_at":null,
+  "source":{"kind":"github","path":"SoulSchoolAcademy/NayaPOWER/pull/35","commit":"21641055f328b6990cbbac0d37569d69ab406abe","conversation_ref":null},
+  "summary":"The first complete Naya Power continuity slice is implemented and verified: Restore Context reconstructs current or historical state from repository reality, canonical state, and temporally valid Smart Notes, with checkpoint and handoff contracts and CI enforcement.",
+  "what_happened":"The architectural review was converted into a working Restore Context runtime, acceptance tests, CI enforcement, canonical repository boot corrections, and governance guardrails.",
+  "what_we_learned":["The smallest coherent vertical slice is more valuable than expanding the specification.","Temporal restore requires Git history in CI; shallow checkout is insufficient for historical verification.","Tests that write checkpoints into the repository can contaminate repository-reality evidence and must be isolated.","Governance guardrails must validate the actual current context rather than a stale hard-coded repository state."],
+  "why_it_matters":"This establishes a real, model-independent continuity primitive instead of a documentation-only promise and creates a foundation for later retrieval, Oscar, learning, and self-optimization capabilities.",
+  "what_changed":["Added deterministic Restore Context runtime.","Added current and historical restore modes.","Added checkpoint and handoff generation.","Added runtime acceptance tests.","Extended CI to execute and verify restore behavior.","Corrected the canonical repository/boot protocol from stale MaxRESULTS references.","Upgraded the context manifest to v4 and aligned its governance guardrail.","Changed the governance workflow to validate the actual PR context."],
+  "next_best_action":"Merge only after the PR evidence remains green, then update canonical runtime state to record Restore Context as VERIFIED and begin the next vertical slice: evidence/claim enforcement plus adversarial tests.",
+  "tags":["restore-context","runtime","continuity","checkpoint","handoff","verification","ci","north-star","milestone"],
+  "aliases":["Restore Context verified","continuity runtime","context restoration","first end-to-end runtime","restore checkpoint"],
+  "relationships":{"related":["SN-20260823-220000-north-star","SN-20260823-220001-memory-brain-principle","SN-20260823-220002-temporal-history","SN-20260823-220003-smart-note-quality"],"supersedes":null,"superseded_by":null,"depends_on":["SN-20260823-220001-memory-brain-principle","SN-20260823-220002-temporal-history"]},
+  "confidence":"HIGH",
+  "evidence":["GitHub Actions run 32682241078 — Naya Power Memory + Restore Runtime — success","GitHub Actions run 32682240851 — Naya Context Boot — Governance Guardrail — success","PR #35 head 21641055f328b6990cbbac0d37569d69ab406abe"]
+}

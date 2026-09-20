@@ -1,0 +1,225 @@
+/* NayaNET — Component Physics / canonical interaction-material layer
+   Law: DEPTH -> LIGHT -> STATE -> RESPONSE -> CONSEQUENCE
+   This stylesheet is additive: it preserves working E02 behavior while giving
+   reusable controls one coherent physical/material language. */
+:root{
+  --np-obsidian:#05050a;
+  --np-surface:#0a0a11;
+  --np-surface-2:#10101a;
+  --np-white:#f8f7fb;
+  --np-muted:#9b94a5;
+  --np-violet:#b86cff;
+  --np-indigo:#6f7cff;
+  --np-cyan:#4fe7ff;
+  --np-teal:#57d9c0;
+  --np-green:#76e8b0;
+  --np-gold:#e9c46a;
+  --np-magenta:#ee4eff;
+  --np-ease:cubic-bezier(.2,.75,.2,1);
+  --np-press:cubic-bezier(.2,.65,.25,1);
+}
+
+/* ---- Universal physical-object foundation ---- */
+.np-power-object,
+.np-intelligence-surface,
+.np-identity-portal,
+.np-energy-path,
+.np-intelligence-icon{
+  -webkit-tap-highlight-color:transparent;
+  backface-visibility:hidden;
+}
+
+.np-power-object{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden;
+  transform:translateZ(0);
+  transition:
+    transform 180ms var(--np-ease),
+    border-color 180ms var(--np-ease),
+    box-shadow 220ms var(--np-ease),
+    background 220ms var(--np-ease),
+    color 180ms ease,
+    filter 220ms ease;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.105),
+    inset 0 -18px 32px rgba(0,0,0,.24),
+    0 12px 30px rgba(0,0,0,.28);
+}
+.np-power-object::before{
+  content:"";
+  position:absolute;
+  left:8%;right:8%;top:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.52),transparent);
+  opacity:.28;
+  transform:translateX(-16%);
+  transition:opacity 180ms ease,transform 420ms var(--np-ease);
+  pointer-events:none;
+  z-index:2;
+}
+.np-power-object::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background:radial-gradient(circle at 18% 0%,rgba(184,108,255,.11),transparent 38%);
+  opacity:0;
+  transition:opacity 220ms ease;
+  pointer-events:none;
+  z-index:-1;
+}
+.np-power-object:hover{
+  transform:translateY(-2px) translateZ(0);
+  border-color:rgba(255,255,255,.28)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.15),
+    inset 0 -18px 32px rgba(0,0,0,.25),
+    0 17px 38px rgba(0,0,0,.38),
+    0 0 28px rgba(184,108,255,.11);
+}
+.np-power-object:hover::before{opacity:.62;transform:translateX(16%)}
+.np-power-object:hover::after{opacity:1}
+.np-power-object:focus-visible{
+  outline:none!important;
+  border-color:rgba(118,232,176,.72)!important;
+  box-shadow:
+    0 0 0 2px rgba(118,232,176,.15),
+    0 0 0 4px rgba(118,232,176,.08),
+    0 16px 38px rgba(0,0,0,.4);
+}
+.np-power-object:active,
+.np-power-object.np-pressed{
+  transform:translateY(1px) scale(.988) translateZ(0)!important;
+  box-shadow:
+    inset 0 3px 12px rgba(0,0,0,.48),
+    inset 0 0 0 1px rgba(255,255,255,.08),
+    0 4px 12px rgba(0,0,0,.35)!important;
+  filter:brightness(.98);
+}
+.np-power-object:active::before{opacity:.9;transform:scaleX(.7)}
+.np-power-object[disabled],
+.np-power-object[aria-disabled="true"]{
+  transform:none!important;
+  filter:saturate(.55) brightness(.68);
+  cursor:not-allowed;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 8px 20px rgba(0,0,0,.2);
+}
+
+/* Semantic button families */
+.np-power-object[data-np-tone="intelligence"]::after{background:radial-gradient(circle at 18% 0%,rgba(184,108,255,.16),transparent 42%)}
+.np-power-object[data-np-tone="knowledge"]::after{background:radial-gradient(circle at 18% 0%,rgba(111,124,255,.14),transparent 42%)}
+.np-power-object[data-np-tone="connection"]::after{background:radial-gradient(circle at 18% 0%,rgba(79,231,255,.14),transparent 42%)}
+.np-power-object[data-np-tone="growth"]::after{background:radial-gradient(circle at 18% 0%,rgba(118,232,176,.15),transparent 42%)}
+.np-power-object[data-np-tone="significance"]::after{background:radial-gradient(circle at 18% 0%,rgba(233,196,106,.13),transparent 42%)}
+.np-power-object[data-np-tone="creation"]::after{background:radial-gradient(circle at 18% 0%,rgba(238,78,255,.15),transparent 42%)}
+
+/* ---- Intelligence surfaces: cards and destinations ---- */
+.np-intelligence-surface{
+  position:relative!important;
+  isolation:isolate;
+  overflow:hidden;
+  transform:translateZ(0);
+  transition:transform 260ms var(--np-ease),box-shadow 260ms var(--np-ease),border-color 220ms ease,background 260ms ease;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),inset 0 -26px 46px rgba(0,0,0,.2),0 14px 36px rgba(0,0,0,.25);
+}
+.np-intelligence-surface::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:linear-gradient(125deg,rgba(255,255,255,.065),transparent 22%,transparent 72%,rgba(184,108,255,.045));
+  opacity:.65;transition:opacity 260ms ease;
+}
+.np-intelligence-surface:hover{
+  transform:translateY(-4px) translateZ(0);
+  border-color:rgba(184,108,255,.36)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.13),inset 0 -26px 46px rgba(0,0,0,.2),0 22px 52px rgba(0,0,0,.38),0 0 34px rgba(184,108,255,.09);
+}
+.np-intelligence-surface:hover::before{opacity:1}
+.np-intelligence-surface:focus-visible{outline:none;box-shadow:0 0 0 2px rgba(118,232,176,.16),0 0 0 4px rgba(118,232,176,.06),0 20px 50px rgba(0,0,0,.4)}
+.np-intelligence-surface.np-selected{
+  border-color:rgba(184,108,255,.72)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),inset 0 -28px 50px rgba(0,0,0,.22),0 0 0 1px rgba(184,108,255,.18),0 24px 60px rgba(0,0,0,.44),0 0 46px rgba(184,108,255,.16);
+}
+
+/* ---- Identity portals: inputs / textareas / search ---- */
+.np-identity-portal{
+  position:relative!important;
+  isolation:isolate;
+  transition:transform 200ms var(--np-ease),border-color 200ms ease,box-shadow 240ms var(--np-ease),background 240ms ease;
+  box-shadow:inset 0 2px 18px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.06),0 12px 28px rgba(0,0,0,.22);
+}
+.np-identity-portal::before{
+  content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle at 18% 0%,rgba(184,108,255,.10),transparent 48%);
+  opacity:0;transition:opacity 220ms ease;
+}
+.np-identity-portal:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.25)!important}
+.np-identity-portal:focus,
+.np-identity-portal:focus-within{
+  outline:none!important;transform:translateY(-2px);
+  border-color:rgba(184,108,255,.68)!important;
+  box-shadow:inset 0 2px 18px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.10),0 16px 34px rgba(0,0,0,.3),0 0 30px rgba(184,108,255,.10);
+}
+.np-identity-portal:focus::before,.np-identity-portal:focus-within::before{opacity:1}
+.np-identity-portal.np-valid{border-color:rgba(118,232,176,.56)!important;box-shadow:inset 0 2px 18px rgba(0,0,0,.32),0 0 28px rgba(118,232,176,.08)}
+.np-identity-portal.np-invalid{border-color:rgba(255,110,130,.55)!important}
+
+/* ---- Energy paths ---- */
+.np-energy-path{position:relative;overflow:hidden;isolation:isolate}
+.np-energy-path::after{
+  content:"";position:absolute;top:50%;left:0;width:7px;height:7px;border-radius:50%;
+  transform:translate(-50%,-50%);background:#fff;opacity:0;box-shadow:0 0 10px #fff,0 0 22px var(--np-violet);
+  pointer-events:none;
+}
+.np-energy-path.np-active::after{opacity:.9;animation:npEnergyLead 1.35s linear infinite}
+@keyframes npEnergyLead{0%{left:0;opacity:.15}8%{opacity:1}92%{opacity:1}100%{left:100%;opacity:.12}}
+
+/* ---- Intelligence icons ---- */
+.np-intelligence-icon{
+  display:inline-grid;place-items:center;
+  transform:translateZ(0);
+  transition:transform 180ms var(--np-ease),filter 180ms ease,text-shadow 180ms ease,color 180ms ease;
+}
+.np-intelligence-icon:hover{transform:translateY(-1px) scale(1.045);filter:brightness(1.15);text-shadow:0 0 14px currentColor}
+.np-intelligence-icon.np-icon-active{color:var(--np-violet)!important;filter:brightness(1.2);text-shadow:0 0 16px currentColor}
+
+/* ---- Living Sun state language ---- */
+body.np-state-idle .naya-core{--np-core-state:var(--np-green)}
+body.np-state-approach .naya-core{filter:saturate(1.05) brightness(1.05)}
+body.np-state-touch .naya-core{--np-core-state:var(--np-violet);filter:saturate(1.18) brightness(1.08)}
+body.np-state-intelligence .naya-core{filter:saturate(1.2) brightness(1.08);box-shadow:0 0 0 1px rgba(184,108,255,.28),0 0 64px rgba(184,108,255,.25),0 0 120px rgba(118,232,176,.08)!important}
+body.np-state-speaking .naya-core::after{animation:npSunSpeak 1.25s ease-out infinite}
+body.np-state-playing .naya-core{filter:saturate(1.16) brightness(1.05)}
+body.np-state-playing .naya-core::after{animation:npSunPlay 2s ease-in-out infinite}
+body.np-state-return .naya-core::after{animation:npSunReturn .65s var(--np-ease) 1}
+@keyframes npSunSpeak{0%{transform:scale(.92);opacity:.1}45%{transform:scale(1.18);opacity:.7}100%{transform:scale(1.36);opacity:0}}
+@keyframes npSunPlay{0%,100%{transform:scale(1);opacity:.25}50%{transform:scale(1.12);opacity:.62}}
+@keyframes npSunReturn{0%{transform:scale(1.3);opacity:.75}100%{transform:scale(1);opacity:.15}}
+
+/* ---- Destination / board surfaces ---- */
+.world-destination,.destination-panel,.world-bottom,.power-player,.intelligence-rail,.world-card,.cast,.world{
+  --np-board-depth:0;
+}
+.destination-panel,.world-bottom,.power-player,.intelligence-rail{
+  position:relative;isolation:isolate;
+}
+.destination-panel::before,.world-bottom::before,.power-player::before,.intelligence-rail::before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(135deg,rgba(255,255,255,.035),transparent 28%,rgba(184,108,255,.025));
+}
+
+/* Audio instrument: unify track + waveform + play state */
+.waveform.np-energy-path i{transform-origin:center bottom;transition:height 120ms ease,filter 160ms ease}
+body.audio-live .waveform.np-energy-path i{filter:brightness(1.22);animation:npWave 720ms ease-in-out infinite alternate}
+@keyframes npWave{from{transform:scaleY(.62)}to{transform:scaleY(1)}}
+
+/* Reduced motion preserves state through light/depth instead */
+@media(prefers-reduced-motion:reduce){
+  .np-power-object,.np-intelligence-surface,.np-identity-portal{transition-duration:1ms!important}
+  .np-power-object:hover,.np-intelligence-surface:hover,.np-identity-portal:hover,.np-identity-portal:focus-within{transform:none}
+  .np-energy-path.np-active::after,.np-intelligence-icon,.waveform.np-energy-path i{animation:none!important}
+  body.np-state-speaking .naya-core::after,body.np-state-playing .naya-core::after{animation:none!important}
+}
+
+@media(max-width:760px){
+  .np-power-object:hover,.np-intelligence-surface:hover{transform:translateY(-1px) translateZ(0)}
+  .np-power-object:active,.np-power-object.np-pressed{transform:translateY(1px) scale(.985)!important}
+}

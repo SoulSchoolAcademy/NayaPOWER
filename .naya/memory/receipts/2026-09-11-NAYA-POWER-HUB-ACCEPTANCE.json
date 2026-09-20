@@ -1,0 +1,46 @@
+{
+  "schema": "naya/memory/receipt/v1",
+  "receipt_id": "NPR-HUB-ACCEPTANCE-2026-09-11-0354",
+  "status": "VERIFIED",
+  "objective": "Make the first real NayaNET Intelligent Hub acceptance workload executable and runner-verifiable under Naya Power evidence discipline.",
+  "source_of_truth": "SoulSchoolAcademy/NayaPOWER main",
+  "canonical_source": "NAYANET/E02-INTELLIGENT-HUB-CLOUDFLARE",
+  "canonical_runtime": [
+    "index.html",
+    "nayanet-10-experience.css",
+    "nayanet-10.js",
+    "naya-data.js",
+    "powercasts.json"
+  ],
+  "selected_action": "ADD_CANONICAL_NAYANET_HUB_ACCEPTANCE_GATE",
+  "why": "The runtime was proven, but no executable gate yet proved that the canonical Hub source itself remained structurally intact. A source-level acceptance gate was the highest-value low-risk integration step before changing product UI.",
+  "observations": {
+    "github_actions_run": "34560163025",
+    "job_id": "103141056536",
+    "status": "PASS",
+    "checks": [
+      "canonical files present",
+      "deployment truth markers present",
+      "canonical CSS module imports present",
+      "canonical Powercast/world/source markers present",
+      "nayanet-10.js syntax PASS under Node 22",
+      "naya-data.js syntax PASS under Node 22",
+      "acceptance test compilation PASS"
+    ]
+  },
+  "learning": [
+    "The canonical Hub is E02, and its deployment notes explicitly define index.html plus the NayaNET 10 CSS/JS/data modules as the active shell.",
+    "The current source contains nine world definitions, eighteen Powercasts, Smart Note capture, Intelligent Space creation, and MAXESS handoff markers.",
+    "Source integrity can be continuously verified, but this does not prove visual correctness or production runtime behavior.",
+    "The repository's own deployment notes correctly distinguish committed, verified, and production-proven states; that distinction remains a release law."
+  ],
+  "verification_boundary": {
+    "source_verified": true,
+    "javascript_syntax_verified": true,
+    "visual_runtime_verified": false,
+    "deployed_url_verified": false,
+    "production_proven": false
+  },
+  "current_state": "RUNTIME_AND_CANONICAL_HUB_SOURCE_ACCEPTANCE_VERIFIED",
+  "next_action": "Use the governed ChatGPT host on an actual Hub change request: inspect the exact canonical UI source, choose the smallest justified surgical improvement, execute it through the claim/gateway boundary, run source and CI verification, inspect the deployed artifact separately, then record the observed UX result and continue."
+}

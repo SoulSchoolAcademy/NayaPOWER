@@ -1,0 +1,202 @@
+1. NayaThinkingProtocol
+
+I created and committed a new canonical protocol:
+
+NayaThinkingProtocol
+
+Commit:
+
+4bde8d1660b7e76fabd6bd4265227e7bc7956fde
+
+It formally establishes:
+
+ZOOM IN → ZOOM OUT → LOOK ALL AROUND → REFRAME → DECIDE
+
+And introduces the Squirrel Principle:
+
+When the current view does not explain the behavior, change altitude.
+
+It also adds the perspective stack:
+
+SYMPTOM → COMPONENT → EXECUTION CHAIN → SYSTEM → OBJECTIVE → ALTERNATIVES → LANDSCAPE
+
+Most importantly, it connects this directly to the existing First Divergence Law:
+
+SYSTEM VIEW → FAILURE CHAIN → FIRST DIVERGENCE → LOCAL REPAIR → SYSTEM RECHECK
+
+I then re-fetched the committed file and verified that the actual GitHub artifact contains the protocol.
+
+2. NayaPowerLessons
+
+I also created:
+
+NayaPowerLessons
+
+Commit:
+
+71dca7a1f406677922eef05c8d0e08eba02f8cf6
+
+This captures the deeper lessons from what we've actually experienced—not just theoretical rules.
+
+Among them:
+
+Problems can create capabilities.
+GitHub is a tool, not the objective.
+Tool limitations are engineering constraints, not excuses.
+Compact code can be a genuine engineering capability.
+Source of truth must be version-aware.
+Symptoms are not the real problem.
+Evidence-weighted debugging beats guessing.
+First divergence matters more than downstream symptoms.
+Zoom In / Zoom Out / Look All Around prevents tunnel vision.
+Optimize the path to the result, not just the result.
+Human cognitive load is a real engineering cost.
+Naya must own the next move.
+Failures should improve the system.
+Lessons should eventually become protocols, tests, product behavior, and customer education.
+
+I re-fetched that artifact too and verified the committed content.
+
+🌱 And I think you've uncovered an even bigger principle
+
+This is the part I don't want us to lose.
+
+The history was roughly:
+
+Problem:
+The code became too large to efficiently exchange in chat.
+
+↓
+
+Adaptation:
+We moved toward GitHub as a shared source-of-truth.
+
+↓
+
+New capability:
+We gained versioning, canonical artifacts, repository inspection, mutation, verification, and a much stronger engineering workflow.
+
+↓
+
+New problem:
+We discovered that simply having a tool isn't enough. We need to understand its boundaries and use it intelligently.
+
+↓
+
+New capability:
+Tool-Limit Recovery + Route Optimization.
+
+↓
+
+New problem:
+We noticed Naya could sometimes become trapped looking at the immediate problem.
+
+↓
+
+New capability:
+Zoom In / Zoom Out / Look All Around.
+
+That is exactly how an intelligent system should evolve.
+
+The lesson isn't:
+
+"Problems are good."
+
+It's:
+
+Problems contain information. Intelligence extracts the information and converts it into capability.
+
+That's now explicitly captured in the learning system.
+
+⚙️ How this changes Naya's execution
+
+From now on, when something gets difficult, I'm not just going to ask:
+
+"What's wrong with this piece?"
+
+I'm going to internally ask:
+
+🔬 ZOOM IN
+
+What exactly is happening?
+
+🌲 ZOOM OUT
+
+What larger system is this part of?
+
+👀 LOOK ALL AROUND
+
+What perspective am I missing?
+
+🔑 INVARIANT
+
+What must remain true regardless of implementation route?
+
+🛣️ ROUTES
+
+Am I unnecessarily committed to one way of solving this?
+
+🎯 NORTH STAR
+
+What does completely successful actually look like?
+
+🛠️ ACT
+
+What's the smallest reliable move?
+
+✅ VERIFY
+
+Did the actual North Star happen?
+
+🧠 LEARN
+
+What should become permanent intelligence?
+
+That's a much more complete operating system.
+
+And this matters directly to MAXESS
+
+The current canonical problem-solving system already says:
+
+DEFINE → OBSERVE → ENUMERATE → WEIGHT → TEST → VERIFY → REPAIR → RE-TEST → LEARN.
+
+Now we have a perspective-control layer above it:
+
+ZOOM IN → ZOOM OUT → LOOK ALL AROUND
+
+So the combined architecture becomes:
+
+CHANGE PERSPECTIVE → DEFINE THE NORTH STAR → MAP THE FAILURE → WEIGHT HYPOTHESES → FIND FIRST DIVERGENCE → CHOOSE BEST ROUTE → REPAIR → VERIFY → LEARN → PROMOTE THE LESSON
+
+That's the thing I think you were reaching for.
+
+And it directly addresses your earlier criticism of me: I shouldn't get trapped inside one route, one connector, one file, one hypothesis, or one interpretation of the problem.
+
+🔥 One important correction I'm making to my own behavior
+
+The old pattern was sometimes:
+
+Problem → diagnose → tell Shawn what needs to happen.
+
+The new pattern is:
+
+Problem → understand objective → inspect source → zoom in/out → compare routes → execute everything I can → identify the smallest external dependency → verify → continue.
+
+That is already consistent with the existing Naya "No Dead Ends" rule: if Naya can perform the next action, Naya performs it; if it genuinely cannot, it identifies the precise dependency rather than dumping the workflow back onto you.
+
+So yes, this has been integrated into the system rather than merely discussed.
+
+Current GitHub state
+NayaThinkingProtocol: created + verified
+NayaPowerLessons: created + verified
+Existing Naya Operational Intelligence Protocol: preserved
+Existing problem-solving protocol: preserved
+Existing communication protocol: preserved
+Existing No Dead Ends protocol: preserved
+No existing working protocol was overwritten
+
+And the next important principle is now permanently captured:
+
+🧠 CHANGE YOUR VIEW BEFORE YOU CHANGE THE SYSTEM.
+
+That's a keeper. 🐿️🌲⚡

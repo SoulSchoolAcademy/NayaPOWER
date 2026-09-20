@@ -1,0 +1,60 @@
+{
+  "event_id": "SN-20260907-INTELLIGENT-BLOCK-DISPLAY-ORDER",
+  "event_type": "CREATE_SMART_NOTE",
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "Intelligent Block display order, multiple perspectives, and the Grandma perspective",
+  "created_at": "2026-09-07T22:00:00-07:00",
+  "privacy": "PRIVATE_BY_DEFAULT",
+  "provenance": {
+    "source": "Shawn Vibert conversation",
+    "source_type": "human_instruction",
+    "captured_by": "Naya"
+  },
+  "perspectives": {
+    "human_note": "Shawn clarified that 'Grammar' was not intended. He means a Grandma perspective: a wise, experienced, human-life view that helps explain what the intelligence means in practical terms. He wants an official Intelligent Block to present multiple useful perspectives on one subject, with the most immediately useful summary first.",
+    "naya_note": "The strongest UX is one canonical intelligence event with multiple perspectives, not multiple disconnected notes. The feed should optimize for usefulness by putting the Nutshell/Wisdom first, then the person's own Human Note, then Child, Grandma, Naya/AI, and Machine perspectives. The bottom should close the block with the Lesson, Meaning, and How to Use It. This creates fast comprehension first and deeper understanding second.",
+    "machine_note": {
+      "event_type": "CREATE_SMART_NOTE",
+      "canonical_object": "ONE_INTELLIGENT_BLOCK",
+      "display_order": [
+        "NUTSHELL",
+        "HUMAN_NOTE",
+        "CHILD_NOTE",
+        "GRANDMA_NOTE",
+        "NAYA_NOTE",
+        "MACHINE_NOTE",
+        "LESSON",
+        "MEANING_AND_HOW_TO_USE"
+      ],
+      "identity_rule": "All perspectives share the same event_id and provenance.",
+      "ux_rule": "Human-readable value precedes technical metadata.",
+      "retrieval_rule": "The canonical block remains one retrievable intelligence object.",
+      "privacy_rule": "Private by default; sharing requires explicit choice/consent."
+    },
+    "child_note": "One idea can be easier to understand when you see it in a few different ways. First tell me the short version, then what the person said, then explain it like I am a child, then explain it like a wise Grandma, then give Naya's smart explanation, and finally give the machine details.",
+    "grandma_note": "A wise Grandma would say: if something is worth remembering, make it simple enough to understand, honest enough to trust, and useful enough to apply. Give people the short truth first, then the human story, then different explanations that help it make sense. Knowledge becomes wisdom when people can understand it and use it in life.",
+    "nutshell": "Put the most useful truth first. One Intelligent Block can give people the nutshell, human experience, child-simple explanation, Grandma wisdom, Naya's intelligence, machine structure, and finally the lesson and how to use it.",
+    "lesson": "Multiple perspectives increase usefulness when they remain views of one canonical intelligence event. The display should move from fastest comprehension to deeper context to actionable wisdom.",
+    "meaning_and_how_to_use": "Meaning: the Intelligent Feed should serve both skimmers and deep learners without fragmenting the intelligence. Use the Nutshell as the first and largest comprehension layer; preserve the Human Note as the source experience; use Child and Grandma to make the idea accessible and life-relevant; use Naya for synthesis; use Machine for structured intelligence; close with the Lesson and practical application."
+  },
+  "canonical_display_contract": {
+    "top": "NUTSHELL / WISDOM",
+    "second": "HUMAN NOTE",
+    "third": "CHILD NOTE",
+    "fourth": "GRANDMA NOTE",
+    "fifth": "NAYA NOTE / AI NOTE",
+    "sixth": "MACHINE NOTE",
+    "bottom": "LESSON + MEANING + HOW TO USE IT"
+  },
+  "verification": {
+    "repository_persistence": true,
+    "six_core_semantic_perspectives_present": true,
+    "grandma_replaces_grammar": true,
+    "single_canonical_event": true,
+    "display_order_recorded": true,
+    "hub_runtime_propagation": false,
+    "hub_runtime_propagation_claimed": false,
+    "receipt_status": "INCOMPLETE_FOR_HUB_RUNTIME_PROPAGATION",
+    "next_runtime_action": "Implement and independently verify this canonical Intelligent Block display contract inside NAYANETHUBONE.html."
+  }
+}

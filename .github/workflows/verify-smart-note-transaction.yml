@@ -1,0 +1,66 @@
+name: Verify Smart Note Transaction
+
+# Golden-path runtime verification trigger.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-note-transaction:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Syntax check
+        run: python -m py_compile .naya/runtime/smart_note_transaction.py .naya/runtime/team_activity_event.py scripts/build-smart-feed-projection.py scripts/verify-smart-note-transaction.py scripts/verify-team-naya-communication.py
+      - name: Team Naya shared communication proof
+        run: python scripts/verify-team-naya-communication.py
+      - name: End-to-end Smart Note transaction proof
+        run: python scripts/verify-smart-note-transaction.py
+      - name: IH-03 canonical intelligence identity proof
+        run: python scripts/verify-ih03-canonical-intelligence-identity.py
+      - name: Install test runner
+        run: python -m pip install --disable-pip-version-check pytest==8.4.2
+      - name: Canonical Smart Note resolver proof
+        run: python -m pytest -q .naya/tests/test_smart_note_canonical_resolver.py
+      - name: Privacy boundary proof
+        run: python -m pytest -q tests/test_personal_feed_privacy_boundary.py
+      - name: Cross-process transaction lock proof
+        run: python -m pytest -q tests/test_smart_note_transaction_concurrency.py
+      - name: Install Intelligent Hub
+        working-directory: NAYANET/HUB
+        run: npm install
+      - name: Typecheck Intelligent Hub
+        working-directory: NAYANET/HUB
+        run: npm run typecheck
+      - name: Build Intelligent Hub and PIS
+        working-directory: NAYANET/HUB
+        run: npm run build
+      - name: Verify PIS survives production build
+        working-directory: NAYANET/HUB
+        run: |
+          test -s public/intelligence/pis-feed.json
+          test -s dist/intelligence/pis-feed.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for path in [Path('public/intelligence/pis-feed.json'), Path('dist/intelligence/pis-feed.json')]:
+              payload = json.loads(path.read_text(encoding='utf-8'))
+              count = payload.get('event_count', 0)
+              events = payload.get('events', [])
+              assert isinstance(events, list) and count == len(events) and count > 0, f'Invalid PIS at {path}'
+              print(f'PIS_PROOF path={path} events={count}')
+          PY

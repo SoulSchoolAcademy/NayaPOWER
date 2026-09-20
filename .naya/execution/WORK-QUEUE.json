@@ -1,0 +1,910 @@
+{
+  "$schema": "naya/master-work-queue/v1",
+  "status": "CANONICAL",
+  "authority": {
+    "subordinate_to": [
+      ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+      ".naya/control-plane/GOVERNANCE-KERNEL.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/PROOF.json"
+    ],
+    "selector": ".naya/runtime/priority_decision.py",
+    "record_layer": ".naya/actions/"
+  },
+  "quality_policy": {
+    "minimum_score": 9.0,
+    "target_score": 9.5,
+    "objective_score": 10.0,
+    "regression_law": "A task is not successful if it improves one thing while damaging another. A net reduction in an applicable score is REJECTED and must be repaired or reverted before acceptance."
+  },
+  "tasks": [
+    {
+      "task_id": "TASK-NAYA-M1-MASTER-WORK-QUEUE",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Create ONE durable, priority-aware Master Work Queue that stores every legitimate mission/task with the full §8 field set and feeds the canonical priority selector.",
+      "current_state": "priority_decision.choose_priority existed but consumed an in-memory iterable; no durable queue file or validator existed anywhere in the repository.",
+      "why_it_matters": "The queue is the foundation of continuous execution. Without it the selector has nothing to rank and the supervisor (M2) has nothing to pull from.",
+      "dependencies": [],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §8, §32; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Do not create a competing state database or state machine.",
+        "Reuse .naya/runtime/priority_decision.py as the only selector.",
+        "Remain subordinate to the constitution, control plane, and governance kernel."
+      ],
+      "protected_boundaries": [
+        "NAYANET/HUB/**",
+        "SMART FEED CONTENT",
+        "NAYANET/HUB/src/data/pis.ts",
+        "509-* workflows and assets",
+        "deployment authority"
+      ],
+      "acceptance_criteria": [
+        "A canonical queue file exists and validates.",
+        "The queue feeds priority_decision and yields exactly one highest-value task.",
+        "Adversarial tests prove fail-closed rejection of malformed queues."
+      ],
+      "test_requirements": [
+        "python .naya/execution/validate_work_queue.py validate",
+        "python .naya/execution/validate_work_queue.py self-test",
+        "python .naya/execution/test_work_queue.py"
+      ],
+      "evidence_requirements": [
+        "validator GREEN output",
+        "test run output",
+        "selector output naming one task",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "completeness", "state_data", "truth", "evidence", "continuity"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "New additive files only; remove .naya/execution/WORK-QUEUE.json, MASTER-WORK-QUEUE-V1.schema.json, validate_work_queue.py, test_work_queue.py and the README to revert cleanly.",
+      "next_action": "Build the durable Master Work Queue, validator/selector bridge, adversarial tests, and README, then wire the test into the canonical local suite.",
+      "successor_action": "Build the M2 execution supervisor that consumes this queue and composes restore, select, govern, execute, observe, verify, score, repair, record, and continue.",
+      "autonomy_level": 3,
+      "status": "COMPLETE",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 1.0,
+        "urgency": 0.9,
+        "dependency_impact": 1.0,
+        "reversibility": 0.9,
+        "risk": 0.2,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-PROGRESS-INDEX",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Create ONE canonical measurement layer (Naya Power Progress Index) that records each checkpoint with exact HEAD, evidence, weighted subsystem score, independent adjudication, and explicit accepted/rejected status under the 9.0 floor.",
+      "current_state": "No system-level scorecard existed. PROGRESS-CHECKPOINT.json protects verified progress from rewind but does not measure system quality, so progress could not be objectively compared across HEADs.",
+      "why_it_matters": "It makes progress visible and non-fakeable: open PRs, commits, issues, and lines of code are not progress; only verified improvement to the system is.",
+      "dependencies": [],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 P0-C; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse the control plane; do not create a second checkpoint or anti-rewind authority.",
+        "Measurement never authorizes and never executes.",
+        "Declared scores are recorded but independently recomputed; divergence is surfaced, never smoothed."
+      ],
+      "protected_boundaries": [
+        ".naya/control-plane/PROOF.json and STATE.json truth authority",
+        "human authority"
+      ],
+      "acceptance_criteria": [
+        "A canonical progress index validates.",
+        "The declared score is independently recomputed and any divergence is recorded.",
+        "Nothing below 9.0 can be accepted.",
+        "A malformed index fails closed."
+      ],
+      "test_requirements": [
+        "python .naya/state/validate_progress_index.py validate",
+        "python .naya/state/validate_progress_index.py self-test",
+        "python .naya/state/test_progress_index.py"
+      ],
+      "evidence_requirements": [
+        "validator GREEN output",
+        "adjudication output",
+        "test run output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "state_data", "truth", "evidence", "edge_cases"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Additive files only; remove .naya/state/NAYA-POWER-PROGRESS-INDEX-V1.schema.json, CHECKPOINT-001.json, validate_progress_index.py, test_progress_index.py and the README to revert cleanly.",
+      "next_action": "Record CHECKPOINT-001 (baseline 6.70 rejected) and re-score at each new accepted HEAD as work proceeds.",
+      "successor_action": "Re-score at the next accepted HEAD and treat any drop from an accepted score as a REGRESSION requiring repair.",
+      "autonomy_level": 2,
+      "status": "COMPLETE",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 0.9,
+        "urgency": 0.85,
+        "dependency_impact": 0.7,
+        "reversibility": 0.95,
+        "risk": 0.1,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-MAIN-RECONCILE",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Reconcile the divergent histories so the execution branch contains main 94d2c561 (master AI agent design contract + priority relay) before further Hub/product work; a non-rewriting merge is the proposed strategy.",
+      "current_state": "wiz/autonomous-hardening @ 9ea2b240 and origin/main @ 94d2c561 share merge-base 23aa3a8; the branch is 4 ahead / 2 behind; main's .naya/MASTER-NAYA-POWER-AI-AGENT-DESIGN-CONTRACT-V1.md is absent from the worktree.",
+      "why_it_matters": "The scored baseline is NOT an ancestor of the execution branch; building further on a stale base risks duplicating or contradicting the master architecture.",
+      "dependencies": [],
+      "authority": {
+        "source": "REQUIRES HUMAN AUTHORITY — history reconciliation strategy (merge vs rebase) on a shared branch",
+        "scope": ["repo:history"]
+      },
+      "constraints": [
+        "Do not rewrite published history.",
+        "Do not force-push.",
+        "Preserve the evidence of both lines."
+      ],
+      "protected_boundaries": [
+        "human authority",
+        ".naya/control-plane/PROGRESS-CHECKPOINT.json anti-rewind",
+        "main branch history"
+      ],
+      "acceptance_criteria": [
+        "The execution branch contains 94d2c561.",
+        "No published history is rewritten.",
+        "The canonical suite remains GREEN after reconciliation.",
+        "A fresh checkpoint binds the reconciled HEAD."
+      ],
+      "test_requirements": [
+        "git merge-base --is-ancestor 94d2c561 HEAD",
+        "python tools/run_superbrain_local_suite.py"
+      ],
+      "evidence_requirements": [
+        "ancestor proof",
+        "suite output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "continuity", "truth", "release_readiness"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R3",
+      "rollback_repair": "A merge is reversible by resetting to the pre-merge commit; no force-push is used.",
+      "next_action": "Request the human decision: merge origin/main (94d2c561) into wiz/autonomous-hardening (non-rewriting, recommended) versus rebase the four local commits onto main (rewrites local history only).",
+      "successor_action": "After reconciliation, re-bind the progress checkpoint to the reconciled HEAD, then build M2.",
+      "autonomy_level": 1,
+      "status": "BLOCKED",
+      "blocked_reason": "Human authority required: choosing merge versus rebase changes the integration history of a shared branch.",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 0.95,
+        "urgency": 0.95,
+        "dependency_impact": 0.9,
+        "reversibility": 0.6,
+        "risk": 0.5,
+        "executable": false,
+        "blocked": true
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-M2-EXECUTION-SUPERVISOR",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Build the composition layer that turns the existing canonical primitives into one governed, evidence-driven, restartable execution transaction, and exposes one executable next action.",
+      "current_state": "Every primitive exists (restore_context, priority_decision, governance_kernel, execution_controller, model_tool_gateway, evidence_runtime, oscar, continuity_enforcement, executable_torch) but no top-level caller composes them.",
+      "why_it_matters": "This is the missing seam that converts governance-as-documentation into governance-in-execution. It unblocks M3, M4, boot wiring, and the Hub mission.",
+      "dependencies": ["TASK-NAYA-M1-MASTER-WORK-QUEUE"],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §22, §23, §27; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse the existing controller, governance kernel, event store, and Activity system.",
+        "Do not create a second controller, governance kernel, event store, or Activity system.",
+        "Fail closed on ambiguous authority or missing evidence."
+      ],
+      "protected_boundaries": [
+        "NAYANET/HUB/**",
+        "SMART FEED CONTENT",
+        "509-* workflows and assets",
+        "deployment authority",
+        "human authority"
+      ],
+      "acceptance_criteria": [
+        "The supervisor refuses ungoverned execution.",
+        "A full cycle produces a durable receipt and exactly one next action.",
+        "Restart is safe and idempotent."
+      ],
+      "test_requirements": [
+        "adversarial supervisor test proving fail-closed on missing authority/evidence",
+        "end-to-end cycle test"
+      ],
+      "evidence_requirements": [
+        "test run output",
+        "cycle receipt",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["architecture", "correctness", "coherence", "security", "edge_cases", "truth", "continuity", "release_readiness"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R2",
+      "rollback_repair": "Additive composition module; revert by removing the supervisor and its test. No existing primitive is modified.",
+      "next_action": "Compose restore_context, priority_decision, governance_kernel, execution_controller, model_tool_gateway, evidence_runtime, oscar, and continuity_enforcement into one supervisor with a dry-run mode first.",
+      "successor_action": "Wire automatic canonical Activity creation into the composed lifecycle (M3) so substantive governed execution emits an Activity event without human action.",
+      "autonomy_level": 3,
+      "status": "READY",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 1.0,
+        "urgency": 0.9,
+        "dependency_impact": 1.0,
+        "reversibility": 0.9,
+        "risk": 0.2,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-M3-ACTIVITY-AUTOWRITE",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Prove Property B as a runtime property: substantive governed execution automatically produces a canonical .naya/activity event, so NO VALID ACTIVITY EVENT -> NO HANDED_OFF holds end-to-end.",
+      "current_state": "Property A is proven. Property B is modeled but not observed; the Activity writer is not called from any production lifecycle.",
+      "why_it_matters": "It closes the evidence loop and makes overnight work auditable without human transcription.",
+      "dependencies": ["TASK-NAYA-M2-EXECUTION-SUPERVISOR"],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §23; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse .naya/activity/validate_activity_structure.py and the existing 12-section contract.",
+        "Do not create a second Activity system or feed."
+      ],
+      "protected_boundaries": [
+        ".naya/activity/ canonical numbering",
+        "historical events (never rewrite)",
+        "SUPERBRAIN/NAYA-ACTIVITY/ (frozen legacy)"
+      ],
+      "acceptance_criteria": [
+        "A governed execution cycle emits a valid, contiguous Activity event automatically.",
+        "A cycle that cannot emit a valid event fails closed and cannot reach HANDED_OFF."
+      ],
+      "test_requirements": [
+        "adversarial test: automatic write with valid event vs fail-closed on invalid/missing event"
+      ],
+      "evidence_requirements": [
+        "test output",
+        "resulting Activity event path",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "state_data", "truth", "evidence", "continuity", "edge_cases"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R2",
+      "rollback_repair": "Disable the automatic writer call; the manual Activity process remains authoritative.",
+      "next_action": "Add the automatic canonical Activity writer call at the VERIFIED->HANDED_OFF boundary of the composed lifecycle and test it adversarially.",
+      "successor_action": "Build the 16-dimension quality scorecard gate (M4) and enforce the 9.0 floor before acceptance.",
+      "autonomy_level": 4,
+      "status": "PROPOSED",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 0.95,
+        "urgency": 0.8,
+        "dependency_impact": 0.8,
+        "reversibility": 0.85,
+        "risk": 0.25,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-M4-QUALITY-SCORECARD",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Build the runtime that scores each substantive task against the 16 excellence dimensions, enforces the 9.0 floor, and requires an explicit WHY IS THIS NOT 10 answer for anything below 10.",
+      "current_state": "The excellence operating contract and OSCAR exist, but no runtime produces a persisted dimensioned score or blocks acceptance below 9.0.",
+      "why_it_matters": "It makes Nothing knowingly below 9.0 passes mechanically true rather than aspirational.",
+      "dependencies": ["TASK-NAYA-M2-EXECUTION-SUPERVISOR"],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §4, §5, §16; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse .naya/state/excellence-operating-contract.v1.json as the dimension source.",
+        "Reuse oscar and evidence_runtime; do not create a second verifier."
+      ],
+      "protected_boundaries": [
+        "existing OSCAR and evidence semantics",
+        "no weakening of fail-closed gates"
+      ],
+      "acceptance_criteria": [
+        "A score below 9.0 blocks acceptance.",
+        "A sub-10 score records concrete defects and the exact 10 requirements.",
+        "Unknown is never scored as pass."
+      ],
+      "test_requirements": [
+        "adversarial test: <9.0 blocked, >=9.0 accepted, unknown rejected"
+      ],
+      "evidence_requirements": [
+        "test output",
+        "persisted scorecard artifact",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "evidence", "truth", "coherence", "edge_cases"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Scoring remains advisory if disabled; no existing gate is weakened.",
+      "next_action": "Implement the dimensioned scorecard runtime and 9.0 acceptance gate, then wire it into the supervisor's VERIFY step.",
+      "successor_action": "Build the regression detector (M5) that compares before/after scores and rejects net regression.",
+      "autonomy_level": 4,
+      "status": "PROPOSED",
+      "selector": {
+        "mission_alignment": 0.95,
+        "expected_value": 0.9,
+        "urgency": 0.75,
+        "dependency_impact": 0.7,
+        "reversibility": 0.9,
+        "risk": 0.15,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-M5-REGRESSION-GUARD",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Detect net regression by comparing applicable before/after scores and protected-path state, and reject or repair any net reduction.",
+      "current_state": "PROGRESS-CHECKPOINT provides anti-rewind and baseline protection, but no score-based regression comparison drives acceptance.",
+      "why_it_matters": "It enforces the No Regression law and prevents local gains from causing global loss.",
+      "dependencies": ["TASK-NAYA-M4-QUALITY-SCORECARD"],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §11; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse PROGRESS-CHECKPOINT.json and the scorecard runtime.",
+        "Do not create a competing checkpoint or baseline system."
+      ],
+      "protected_boundaries": [
+        ".naya/control-plane/PROGRESS-CHECKPOINT.json anti-rewind",
+        "protected_scope paths"
+      ],
+      "acceptance_criteria": [
+        "A net score reduction is rejected and routed to repair/revert.",
+        "A protected-path change without a fresh checkpoint fails closed."
+      ],
+      "test_requirements": [
+        "adversarial test: regression rejected, improvement accepted"
+      ],
+      "evidence_requirements": [
+        "test output",
+        "comparison artifact",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["correctness", "state_data", "truth", "edge_cases", "continuity"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Comparison stays advisory if disabled; no existing checkpoint is modified.",
+      "next_action": "Implement the regression comparison and wire it between scoring and acceptance in the supervisor.",
+      "successor_action": "Wire the continuous-loop contract into the cold-Naya boot chain and manifest so the loop is discoverable and machine-checkable.",
+      "autonomy_level": 5,
+      "status": "PROPOSED",
+      "selector": {
+        "mission_alignment": 0.9,
+        "expected_value": 0.85,
+        "urgency": 0.7,
+        "dependency_impact": 0.6,
+        "reversibility": 0.9,
+        "risk": 0.15,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-BOOT-WIRING",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Wire SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md and the Master Work Queue into the mandatory cold-Naya boot/discovery chain with machine-checkable conformance.",
+      "current_state": "The loop contract exists, but START-HERE.md does not reference it (0 matches) and the manifest/boot order do not require it.",
+      "why_it_matters": "A cold Naya must discover the operating loop and the queue without conversational archaeology.",
+      "dependencies": ["TASK-NAYA-M2-EXECUTION-SUPERVISOR"],
+      "authority": {
+        "source": "Human authority — AUTONOMOUS CONTINUOUS EXECUTION MISSION V1 §17, §32; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Reuse the existing bootloader, manifest, and control plane.",
+        "Do not create a competing boot path or manifest."
+      ],
+      "protected_boundaries": [
+        "SUPERBRAIN/AI-BOOT/ current mandatory entry contract",
+        ".naya/naya-context-manifest.json boot_order"
+      ],
+      "acceptance_criteria": [
+        "The loop contract and queue are discoverable from the canonical boot entry.",
+        "A machine check proves the boot chain references them."
+      ],
+      "test_requirements": [
+        "boot/context test asserting the loop and queue are reachable from the boot chain"
+      ],
+      "evidence_requirements": [
+        "test output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["coherence", "continuity", "completeness", "truth"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Revert the boot/manifest reference additions.",
+      "next_action": "Add the loop contract and Master Work Queue to START-HERE and the context manifest boot order, then add a conformance check.",
+      "successor_action": "Resume the Hub mission through the composed system once the release, Hub-source, and PIS authority decisions (D1-D3) are authorized.",
+      "autonomy_level": 3,
+      "status": "PROPOSED",
+      "selector": {
+        "mission_alignment": 0.85,
+        "expected_value": 0.75,
+        "urgency": 0.6,
+        "dependency_impact": 0.6,
+        "reversibility": 0.95,
+        "risk": 0.15,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-CONSUMER-REPOINT",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Repoint the remaining legacy ACTIVITY consumers to .naya/activity/** so one clear current path exists.",
+      "current_state": "path-ignore patterns in naya-control-plane.yml, superbrain-current-main-behavioral-proof.yml, verify-primary-intelligence-system.yml plus README, INTELLIGENCE-FEED, and BLOCKS/STATE evidence pointers still name the legacy path (recorded in Activity event 002).",
+      "why_it_matters": "Consumers of a frozen path create ambiguity about what is current authority.",
+      "dependencies": [],
+      "authority": {
+        "source": "Recorded successor action of Activity event 002; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Do not mass-delete legacy history.",
+        "Do not weaken fail-closed gates."
+      ],
+      "protected_boundaries": [
+        "SUPERBRAIN/NAYA-ACTIVITY/ (frozen, preserve)",
+        "509-* workflows and assets"
+      ],
+      "acceptance_criteria": [
+        "No current consumer references the legacy activity path as current.",
+        "The canonical suite remains GREEN."
+      ],
+      "test_requirements": [
+        "grep evidence for remaining legacy references",
+        "python tools/run_superbrain_local_suite.py"
+      ],
+      "evidence_requirements": [
+        "before/after reference count",
+        "suite output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["coherence", "state_data", "truth", "continuity"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Revert the repointed files.",
+      "next_action": "Repoint the legacy ACTIVITY path consumers and re-run the canonical suite.",
+      "successor_action": "Continue the convergence plan.",
+      "autonomy_level": 3,
+      "status": "READY",
+      "selector": {
+        "mission_alignment": 0.6,
+        "expected_value": 0.6,
+        "urgency": 0.7,
+        "dependency_impact": 0.4,
+        "reversibility": 0.95,
+        "risk": 0.1,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-C3-SCHEMA-DEDUP",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Resolve the duplicate NAYA_ACTION schemas so exactly one canonical schema exists.",
+      "current_state": ".naya/actions/NAYA_ACTION_V1.schema.json and .naya/contracts/NAYA-ACTION-V1.schema.json both exist.",
+      "why_it_matters": "Two schemas invite drift and contradictory validation.",
+      "dependencies": [],
+      "authority": {
+        "source": "ONE MEANS ONE convergence law; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Classify before deleting; preserve history if either is referenced.",
+        "Do not weaken validation."
+      ],
+      "protected_boundaries": [
+        "existing canonical action records"
+      ],
+      "acceptance_criteria": [
+        "Exactly one canonical action schema remains authoritative.",
+        "All validators still pass."
+      ],
+      "test_requirements": [
+        "reference search for both schema paths",
+        "relevant validator runs"
+      ],
+      "evidence_requirements": [
+        "reference map",
+        "validator output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["coherence", "correctness", "truth"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Restore the removed schema copy.",
+      "next_action": "Produce the evidence-backed ownership decision for the two schemas, then converge to one.",
+      "successor_action": "Continue the convergence plan.",
+      "autonomy_level": 2,
+      "status": "READY",
+      "selector": {
+        "mission_alignment": 0.5,
+        "expected_value": 0.5,
+        "urgency": 0.4,
+        "dependency_impact": 0.5,
+        "reversibility": 0.95,
+        "risk": 0.1,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-GOV-KERNEL-DEDUP",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Resolve the two governance_kernel.py copies into one canonical module with a documented import path.",
+      "current_state": ".naya/control-plane/governance_kernel.py and .naya/governance/governance_kernel.py both exist.",
+      "why_it_matters": "Two governance kernels are a direct competing-authority risk.",
+      "dependencies": [],
+      "authority": {
+        "source": "ONE MEANS ONE convergence law; repository-side execution authorized",
+        "scope": ["repo:SoulSchoolAcademy/NayaPOWER"]
+      },
+      "constraints": [
+        "Do not create a second constitutional authority.",
+        "Prove byte-identity or a documented divergence before converging."
+      ],
+      "protected_boundaries": [
+        ".naya/governance/authority-registry.json"
+      ],
+      "acceptance_criteria": [
+        "Exactly one canonical governance kernel is imported by all callers.",
+        "Governance tests remain GREEN."
+      ],
+      "test_requirements": [
+        ".naya/governance/test_governance_kernel.py",
+        "import-path search"
+      ],
+      "evidence_requirements": [
+        "diff or identity proof",
+        "test output",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["coherence", "correctness", "security", "truth"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R1",
+      "rollback_repair": "Restore the removed copy.",
+      "next_action": "Compare the two kernels, identify the canonical import path, and converge.",
+      "successor_action": "Continue the convergence plan.",
+      "autonomy_level": 2,
+      "status": "READY",
+      "selector": {
+        "mission_alignment": 0.55,
+        "expected_value": 0.55,
+        "urgency": 0.45,
+        "dependency_impact": 0.5,
+        "reversibility": 0.9,
+        "risk": 0.15,
+        "executable": true,
+        "blocked": false
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-D1-CANONICAL-RUNTIME",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Human-authorize ONE canonical Hub runtime/release authority and reconcile the four competing surfaces and the absent authorized-vercel-release.yml.",
+      "current_state": "Competing surfaces: Vercel naya-power (named canonical by DEPLOYMENT-GOVERNANCE.json, but its workflow is absent), Cloudflare sparkling-shape-7ae5, AppDeploy mirror, and the aged-art-7c12 React runtime.",
+      "why_it_matters": "Release authority ambiguity blocks the Hub mission and every production proof.",
+      "dependencies": [],
+      "authority": {
+        "source": "REQUIRES HUMAN AUTHORITY — cannot be self-authorized",
+        "scope": ["deployment:external"]
+      },
+      "constraints": [
+        "Do not silently convert a recommendation into authorization.",
+        "Do not create a competing deployment authority."
+      ],
+      "protected_boundaries": [
+        "deployment authority",
+        "human authority"
+      ],
+      "acceptance_criteria": [
+        "Exactly one canonical runtime and release lane is authorized and recorded.",
+        "The declared release workflow exists or is replaced by an authorized equivalent."
+      ],
+      "test_requirements": [
+        "control-plane + deployment governance coherence check"
+      ],
+      "evidence_requirements": [
+        "decision package per candidate",
+        "authorization record",
+        "exact commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["truth", "release_readiness", "evidence", "coherence"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R4",
+      "rollback_repair": "Authorization is not reversible by the agent; any change requires a new human authorization.",
+      "next_action": "Present the CANDIDATE/CURRENT PURPOSE/WHO DEPLOYS IT/WHAT IT SERVES/LIVE CONTENT/SOURCE/ARTIFACT/DEPENDENCIES/VERIFICATION/RISKS/MIGRATION COST/RECOMMENDED STATUS package for each runtime candidate and request one authorized decision.",
+      "successor_action": "Wire the authorized release lane into the supervisor and resume the Hub mission.",
+      "autonomy_level": 1,
+      "status": "BLOCKED",
+      "blocked_reason": "Human authority required: canonical runtime/release surface is a consequential, irreversible deployment decision.",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 1.0,
+        "urgency": 0.9,
+        "dependency_impact": 1.0,
+        "reversibility": 0.2,
+        "risk": 0.8,
+        "executable": false,
+        "blocked": true
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-D2-HUB-SOURCE",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Human-authorize the canonical Hub source and artifact (React NAYANET/HUB vs standalone HTML).",
+      "current_state": "Evidence supports NAYANET/HUB/ (React, Vite dist) with AppShellV3 as the shell, but the decision remains a human-authority recommendation.",
+      "why_it_matters": "Without one source and one artifact, every Hub build is ambiguous.",
+      "dependencies": [],
+      "authority": {
+        "source": "REQUIRES HUMAN AUTHORITY — cannot be self-authorized",
+        "scope": ["product:NAYANET/HUB"]
+      },
+      "constraints": [
+        "Do not silently convert the reconciliation recommendation into authorization.",
+        "Do not modify protected Hub source while un-authorized."
+      ],
+      "protected_boundaries": [
+        "NAYANET/HUB/**",
+        "SMART FEED CONTENT",
+        "NAYANET/HUB/src/data/pis.ts"
+      ],
+      "acceptance_criteria": [
+        "Exactly one canonical Hub source and artifact is authorized and recorded."
+      ],
+      "test_requirements": [
+        "build + typecheck for the authorized source",
+        "artifact identity record"
+      ],
+      "evidence_requirements": [
+        "decision record",
+        "artifact digest",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["truth", "coherence", "release_readiness"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R3",
+      "rollback_repair": "Human-authorized decision; agent does not reverse it.",
+      "next_action": "Present the classified candidate package for the Hub source/artifact and request one authorized decision.",
+      "successor_action": "Build ONE authoritative Hub source through the composed system.",
+      "autonomy_level": 1,
+      "status": "BLOCKED",
+      "blocked_reason": "Human authority required: canonical Hub source/artifact selection is a consequential product decision.",
+      "selector": {
+        "mission_alignment": 0.95,
+        "expected_value": 0.95,
+        "urgency": 0.8,
+        "dependency_impact": 0.9,
+        "reversibility": 0.4,
+        "risk": 0.6,
+        "executable": false,
+        "blocked": true
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-D3-PIS-AUTHORITY",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Human-authorize ONE primary intelligence system authority so one source produces one projection, one output, and one verification path.",
+      "current_state": "build-smart-feed-projection.py (PIS-2.0, SMART FEED CONTENT) and build-primary-intelligence-feed.py (PIS-1.0, .naya/) write the same output; GOVERNANCE-KERNEL names the 1.0 builder as the Hub pre-execution gate.",
+      "why_it_matters": "Nondeterministic overwrite of the intelligence feed destroys trust in the projection.",
+      "dependencies": [],
+      "authority": {
+        "source": "REQUIRES HUMAN AUTHORITY — competing intelligence authority cannot self-resolve",
+        "scope": ["product:primary-intelligence"]
+      },
+      "constraints": [
+        "Do not create competing intelligence authority.",
+        "Do not modify SMART FEED CONTENT or pis.ts."
+      ],
+      "protected_boundaries": [
+        "SMART FEED CONTENT",
+        "NAYANET/HUB/src/data/pis.ts"
+      ],
+      "acceptance_criteria": [
+        "Exactly one PIS source, one projection, one output, one schema, one verification path."
+      ],
+      "test_requirements": [
+        "single-producer determinism check",
+        "PIS verification workflow"
+      ],
+      "evidence_requirements": [
+        "decision record",
+        "determinism proof",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["state_data", "truth", "coherence", "evidence"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R3",
+      "rollback_repair": "Human-authorized decision; agent does not reverse it.",
+      "next_action": "Present both builders' provenance, outputs, and consumers, then request one authorized PIS authority decision.",
+      "successor_action": "Converge the PIS to one producer and one verification path.",
+      "autonomy_level": 1,
+      "status": "BLOCKED",
+      "blocked_reason": "Human authority required: competing intelligence authority selection is a consequential decision.",
+      "selector": {
+        "mission_alignment": 0.8,
+        "expected_value": 0.8,
+        "urgency": 0.7,
+        "dependency_impact": 0.6,
+        "reversibility": 0.5,
+        "risk": 0.5,
+        "executable": false,
+        "blocked": true
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-C4-513-CLASSIFY",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Reclassify the self-modifying 513-smart-board-canonical-finalizer.yml lane as frozen competing authority without destroying historical evidence.",
+      "current_state": "513 has contents:write and pushes to main and deploys, making deployment a source-writing authority.",
+      "why_it_matters": "A deployment mechanism that writes source violates the SOURCE -> BUILD -> ARTIFACT -> DEPLOY -> VERIFY architecture.",
+      "dependencies": [],
+      "authority": {
+        "source": "REQUIRES HUMAN AUTHORITY for disablement; classification may be documented by the agent",
+        "scope": ["governance:workflows"]
+      },
+      "constraints": [
+        "Do not silently delete or destroy historical evidence.",
+        "Classify using INSPECT -> CLASSIFY -> PROTECT -> VERIFY -> PROPOSE -> AUTHORIZE -> DELETE."
+      ],
+      "protected_boundaries": [
+        "509-* workflows and assets",
+        "deployment authority"
+      ],
+      "acceptance_criteria": [
+        "513 is explicitly classified and recorded.",
+        "No further architectural expansion depends on it."
+      ],
+      "test_requirements": [
+        "workflow authority audit"
+      ],
+      "evidence_requirements": [
+        "classification record",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["truth", "coherence", "release_readiness"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R3",
+      "rollback_repair": "Classification only; no destructive change without authorization.",
+      "next_action": "Record the 513 classification and present the freeze/disable proposal with evidence for one authorized decision.",
+      "successor_action": "Continue governance convergence.",
+      "autonomy_level": 1,
+      "status": "BLOCKED",
+      "blocked_reason": "Human authority required: disabling a workflow that writes to main is a consequential governance action.",
+      "selector": {
+        "mission_alignment": 0.7,
+        "expected_value": 0.7,
+        "urgency": 0.6,
+        "dependency_impact": 0.5,
+        "reversibility": 0.7,
+        "risk": 0.4,
+        "executable": false,
+        "blocked": true
+      }
+    },
+    {
+      "task_id": "TASK-NAYA-HUB-PRODUCT-950",
+      "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+      "objective": "Build the canonical React Intelligent Hub through the composed system to a verified 9.5+ product, then prove the full source-to-runtime chain.",
+      "current_state": "The React Hub exists as a skeleton; the nine-board/ten-layer target is not implemented; no canonical release lane is wired.",
+      "why_it_matters": "The Hub is the first major proving ground for the whole operating system.",
+      "dependencies": ["TASK-NAYA-D1-CANONICAL-RUNTIME", "TASK-NAYA-D2-HUB-SOURCE"],
+      "authority": {
+        "source": "Human authority — Intelligent Hub construction authorized once D1 and D2 are decided",
+        "scope": ["product:NAYANET/HUB"]
+      },
+      "constraints": [
+        "Build only through the composed system.",
+        "Respect every protected boundary."
+      ],
+      "protected_boundaries": [
+        "NAYANET/HUB/**",
+        "SMART FEED CONTENT",
+        "NAYANET/HUB/src/data/pis.ts",
+        "509-* assets"
+      ],
+      "acceptance_criteria": [
+        "Product score >= 9.5 with evidence.",
+        "Full source -> build -> artifact -> deploy -> runtime -> verification chain proven."
+      ],
+      "test_requirements": [
+        "typecheck, build, PIS parity",
+        "browser acceptance desktop/tablet/mobile",
+        "runtime verification at the authorized target"
+      ],
+      "evidence_requirements": [
+        "artifact digest",
+        "deployment identity",
+        "runtime observation",
+        "scorecard",
+        "commit_sha"
+      ],
+      "quality_scorecard": {
+        "dimensions": ["human_value", "human_experience", "design_craft", "accessibility", "performance", "security", "release_readiness"]
+      },
+      "minimum_score": 9.0,
+      "target_score": 9.5,
+      "risk": "R3",
+      "rollback_repair": "Redeploy the last verified artifact; preserve all prior artifacts by digest.",
+      "next_action": "Blocked until D1 and D2 are authorized.",
+      "successor_action": "Proceed to later roadmap phases through the same system.",
+      "autonomy_level": 4,
+      "status": "PROPOSED",
+      "selector": {
+        "mission_alignment": 1.0,
+        "expected_value": 1.0,
+        "urgency": 0.8,
+        "dependency_impact": 0.9,
+        "reversibility": 0.5,
+        "risk": 0.4,
+        "executable": true,
+        "blocked": false
+      }
+    }
+  ]
+}

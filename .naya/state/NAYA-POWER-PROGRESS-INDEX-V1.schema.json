@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya-power-progress-index/v1",
+  "title": "Naya Power Progress Index",
+  "type": "object",
+  "required": ["$schema", "status", "acceptance_law", "checkpoints"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {"const": "naya-power-progress-index/v1"},
+    "status": {"const": "CANONICAL"},
+    "acceptance_law": {
+      "type": "object",
+      "required": ["floor", "target", "objective", "bands", "rule"],
+      "additionalProperties": false,
+      "properties": {
+        "floor": {"const": 9.0},
+        "target": {"const": 9.5},
+        "objective": {"const": 10.0},
+        "rule": {"type": "string", "minLength": 1},
+        "bands": {
+          "type": "array",
+          "minItems": 6,
+          "items": {
+            "type": "object",
+            "required": ["min", "max", "status"],
+            "additionalProperties": false,
+            "properties": {
+              "min": {"type": "number", "minimum": 0, "maximum": 10},
+              "max": {"type": "number", "minimum": 0, "maximum": 10},
+              "status": {"enum": ["Failing", "Developing", "Strong but incomplete", "Accepted", "Elite", "Objective achieved"]}
+            }
+          }
+        }
+      }
+    },
+    "checkpoints": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/checkpoint"}
+    }
+  },
+  "$defs": {
+    "hex40": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "band_status": {"enum": ["Failing", "Developing", "Strong but incomplete", "Accepted", "Elite", "Objective achieved"]},
+    "subsystem": {
+      "type": "object",
+      "required": ["id", "name", "weight_pct", "score", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^S[0-9]{2}$"},
+        "name": {"type": "string", "minLength": 1},
+        "weight_pct": {"type": "number", "minimum": 0, "maximum": 100},
+        "score": {"type": "number", "minimum": 0, "maximum": 10},
+        "status": {"$ref": "#/$defs/band_status"},
+        "human_label": {"type": "string", "minLength": 1}
+      }
+    },
+    "improvement": {
+      "type": "object",
+      "required": ["id", "title", "queue_task", "why"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "pattern": "^P0-[A-Z]$"},
+        "title": {"type": "string", "minLength": 1},
+        "queue_task": {"type": "string", "pattern": "^TASK-"},
+        "why": {"type": "string", "minLength": 1}
+      }
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": [
+        "checkpoint_id", "sequence", "kind", "recorded_at", "recorded_by", "repository",
+        "baseline_reference", "execution_head", "subsystems", "aggregate", "verdict",
+        "evidence", "highest_value_improvements", "known_risks", "unknowns", "next_action"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "checkpoint_id": {"type": "string", "minLength": 1},
+        "sequence": {"type": "integer", "minimum": 1},
+        "kind": {"enum": ["BASELINE", "PROGRESS"]},
+        "recorded_at": {"type": "string", "minLength": 1},
+        "recorded_by": {"type": "string", "minLength": 1},
+        "repository": {"const": "SoulSchoolAcademy/NayaPOWER"},
+        "baseline_reference": {
+          "type": "object",
+          "required": ["main_head", "observed_by", "verification"],
+          "additionalProperties": false,
+          "properties": {
+            "main_head": {"$ref": "#/$defs/hex40"},
+            "observed_by": {"enum": ["human", "machine"]},
+            "verification": {"enum": ["REMOTE_CONFIRMED_VIA_FETCH", "LOCAL_ONLY", "UNVERIFIED"]}
+          }
+        },
+        "execution_head": {
+          "type": "object",
+          "required": ["commit", "branch", "relation_to_baseline"],
+          "additionalProperties": false,
+          "properties": {
+            "commit": {"$ref": "#/$defs/hex40"},
+            "branch": {"type": "string", "minLength": 1},
+            "relation_to_baseline": {
+              "type": "object",
+              "required": ["merge_base", "ahead", "behind", "is_ancestor"],
+              "additionalProperties": false,
+              "properties": {
+                "merge_base": {"$ref": "#/$defs/hex40"},
+                "ahead": {"type": "integer", "minimum": 0},
+                "behind": {"type": "integer", "minimum": 0},
+                "is_ancestor": {"type": "boolean"}
+              }
+            }
+          }
+        },
+        "subsystems": {"type": "array", "minItems": 10, "maxItems": 10, "items": {"$ref": "#/$defs/subsystem"}},
+        "aggregate": {
+          "type": "object",
+          "required": ["weight_sum", "weight_sum_valid", "weighted_total", "unweighted_mean", "declared_system_score", "declared_source", "divergence"],
+          "additionalProperties": false,
+          "properties": {
+            "weight_sum": {"type": "number"},
+            "weight_sum_valid": {"type": "boolean"},
+            "weighted_total": {"type": "number", "minimum": 0, "maximum": 10},
+            "unweighted_mean": {"type": "number", "minimum": 0, "maximum": 10},
+            "declared_system_score": {"type": "number", "minimum": 0, "maximum": 10},
+            "declared_source": {"type": "string", "minLength": 1},
+            "divergence": {"type": "number"}
+          }
+        },
+        "verdict": {
+          "type": "object",
+          "required": ["adjudicated_score", "threshold", "status", "accepted", "reason"],
+          "additionalProperties": false,
+          "properties": {
+            "adjudicated_score": {"type": "number", "minimum": 0, "maximum": 10},
+            "threshold": {"const": 9.0},
+            "status": {"$ref": "#/$defs/band_status"},
+            "accepted": {"type": "boolean"},
+            "reason": {"type": "string", "minLength": 1}
+          }
+        },
+        "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "highest_value_improvements": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/improvement"}},
+        "known_risks": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "unknowns": {"type": "array", "items": {"type": "string", "minLength": 1}},
+        "next_action": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

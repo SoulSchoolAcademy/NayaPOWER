@@ -1,0 +1,152 @@
+name: Verify NayaNET GitHub Dispatch Authority Boundary
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+env:
+  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Supabase client
+        run: npm install --no-save @supabase/supabase-js@2
+
+      - name: Execute pre-issued grant → dispatch → revoke proof
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          cat > verify-github-dispatch.mjs <<'EOF'
+          import { createClient } from '@supabase/supabase-js';
+          import crypto from 'node:crypto';
+
+          const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_PUBLISHABLE_KEY, {
+            auth: { persistSession: false, autoRefreshToken: false }
+          });
+
+          const { data: authData, error: authError } = await supabase.auth.signInAnonymously();
+          if (authError) throw authError;
+          const session = authData.session;
+          const user = authData.user;
+          if (!session?.access_token || !user?.id) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
+
+          const commitSha = process.env.GITHUB_SHA.toLowerCase();
+          const proofId = crypto.randomUUID();
+          const sourceEventId = 'github-dispatch-proof-' + proofId;
+          const idempotencyKey = 'github-dispatch-proof-' + proofId;
+
+          const { data: grant, error: grantError } = await supabase.rpc('nayanet_issue_authority_grant', {
+            p_subject_id: user.id,
+            p_source_event_id: sourceEventId,
+            p_mission_id: 'NayaPOWER-GITHUB-DISPATCH-PROOF',
+            p_scope: { target: commitSha },
+            p_actions: ['deploy_nayanet_hub_canonical'],
+            p_constraints: { mode: 'verification-only', no_external_side_effects: false },
+            p_evidence: { proof_id: proofId, source: 'verify-nayanet-github-dispatch-authority' }
+          });
+          if (grantError) throw grantError;
+          const grantId = grant.grant_id;
+
+          const { data: validated, error: validationError } = await supabase.rpc('nayanet_validate_authority_grant', {
+            p_grant_id: grantId,
+            p_action: 'deploy_nayanet_hub_canonical',
+            p_target: commitSha
+          });
+          if (validationError) throw validationError;
+          if (validated?.status !== 'AUTHORIZED') throw new Error('PREVALIDATION_FAILED:' + JSON.stringify(validated));
+
+          const edgeUrl = process.env.SUPABASE_URL + '/functions/v1/nayanet-github-dispatch';
+          const dispatchResponse = await fetch(edgeUrl, {
+            method: 'POST',
+            headers: {
+              authorization: 'Bearer ' + session.access_token,
+              apikey: process.env.SUPABASE_PUBLISHABLE_KEY,
+              'content-type': 'application/json',
+              'x-idempotency-key': idempotencyKey
+            },
+            body: JSON.stringify({
+              commit_sha: commitSha,
+              approval: 'EXPLICIT_APPROVAL_GRANTED',
+              reason: 'Proof of pre-issued authority grant → real GitHub workflow dispatch → receipt → revoke.',
+              authority_grant_id: grantId,
+              idempotency_key: idempotencyKey
+            })
+          });
+          const dispatchBody = await dispatchResponse.json();
+          if (!dispatchResponse.ok || !dispatchBody.ok) {
+            throw new Error('DISPATCH_FAILED:' + JSON.stringify(dispatchBody));
+          }
+          if (dispatchBody.authority_grant_id !== grantId) throw new Error('RECEIPT_GRANT_MISMATCH');
+          if (dispatchBody.pipeline !== 'DISPATCH_ACCEPTED') throw new Error('DISPATCH_NOT_ACCEPTED');
+
+          const receiptId = dispatchBody.receipt?.id;
+          if (!receiptId) throw new Error('DISPATCH_RECEIPT_MISSING');
+
+          const { data: revoked, error: revokeError } = await supabase.rpc('nayanet_revoke_authority_grant', {
+            p_grant_id: grantId,
+            p_evidence: { proof_id: proofId, stage: 'post-dispatch-revocation' }
+          });
+          if (revokeError) throw revokeError;
+          if (revoked?.status !== 'REVOKED') throw new Error('REVOKE_FAILED:' + JSON.stringify(revoked));
+
+          const blockedResponse = await fetch(edgeUrl, {
+            method: 'POST',
+            headers: {
+              authorization: 'Bearer ' + session.access_token,
+              apikey: process.env.SUPABASE_PUBLISHABLE_KEY,
+              'content-type': 'application/json',
+              'x-idempotency-key': idempotencyKey + '-revoked'
+            },
+            body: JSON.stringify({
+              commit_sha: commitSha,
+              approval: 'EXPLICIT_APPROVAL_GRANTED',
+              reason: 'Must be blocked after revocation.',
+              authority_grant_id: grantId,
+              idempotency_key: idempotencyKey + '-revoked'
+            })
+          });
+          const blockedBody = await blockedResponse.json();
+          if (blockedResponse.status !== 403 || blockedBody.error !== 'AUTHORITY_GRANT_VALIDATION_FAILED' || blockedBody.detail?.reason !== 'GRANT_REVOKED') {
+            throw new Error('REVOKED_DISPATCH_NOT_BLOCKED:' + JSON.stringify(blockedBody));
+          }
+
+          const headers = {
+            accept: 'application/vnd.github+json',
+            authorization: 'Bearer ' + process.env.GITHUB_TOKEN,
+            'x-github-api-version': '2026-03-10'
+          };
+
+          let run = null;
+          for (let attempt = 1; attempt <= 30; attempt++) {
+            const response = await fetch(`https://api.github.com/repos/SoulSchoolAcademy/NayaPOWER/actions/workflows/assistant-cloudflare-hub-release.yml/runs?event=workflow_dispatch&head_sha=${commitSha}&per_page=20`, { headers });
+            if (!response.ok) throw new Error('GITHUB_RUN_LOOKUP_FAILED:' + response.status);
+            const data = await response.json();
+            run = (data.workflow_runs || []).find(r => r.event === 'workflow_dispatch' && r.head_sha?.toLowerCase() === commitSha);
+            if (run && run.status === 'completed') break;
+            await new Promise(resolve => setTimeout(resolve, 2000));
+          }
+
+          if (!run) throw new Error('GITHUB_DISPATCH_RUN_NOT_FOUND');
+          if (run.conclusion !== 'success') throw new Error('GITHUB_DISPATCH_RUN_FAILED:' + run.conclusion);
+          console.log('GITHUB_DISPATCH_AUTHORITY_PROOF=VERIFIED');
+          console.log('GITHUB_DISPATCH_USER_ID=' + user.id);
+          console.log('GITHUB_DISPATCH_GRANT_ID=' + grantId);
+          console.log('GITHUB_DISPATCH_RECEIPT_ID=' + receiptId);
+          console.log('GITHUB_DISPATCH_RUN_ID=' + run.id);
+          console.log('GITHUB_DISPATCH_REVOKED_BLOCKED=PASS');
+          EOF
+          node verify-github-dispatch.mjs

@@ -1,0 +1,181 @@
+.
+
+🧠 Applying Naya Operational Intelligence to MAXESS
+
+The canonical problem-solving chain already says exactly what we should do:
+
+DEFINE → OBSERVE → ENUMERATE → WEIGHT → TEST → VERIFY → REPAIR → RE-TEST → LEARN
+
+And the MAXESS North Star is already defined:
+
+Q15 answer → Continue → response saved → calculation → five dimensions → MAXESS_RESULT_V1 → validation → persistence → broadcast → Results.
+
+So let's stop calling this simply "the Continue button problem."
+
+The real problem is:
+
+Where does the Q15 execution chain first diverge from the required terminal state?
+
+That's the problem we're solving.
+
+🔎 First: mathematical audit
+
+I inspected the matrix you supplied.
+
+There is an important finding:
+
+The score normalization itself is internally coherent.
+
+Each question has five possible scores, with values ranging from 0–4.
+
+Each dimension contains exactly 3 questions.
+
+Therefore:
+
+Maximum per dimension = 4 + 4 + 4 = 12
+Dimension normalization = raw / 12 × 100
+5 dimensions × 12 = 60
+Overall normalization = raw / 60 × 100
+
+So the basic arithmetic isn't the first suspect.
+
+That means we should NOT rewrite the scoring mathematics yet.
+
+That's Naya Intelligence in action: don't modify a component merely because it's near the failure.
+
+🚨 But I found something much more important
+
+Look at the actual terminal path:
+
+Continue
+   ↓
+next()
+   ↓
+save()
+   ↓
+state.i === 14
+   ↓
+publish()
+   ↓
+buildResult()
+   ↓
+valid()
+   ↓
+persistResult()
+   ↓
+broadcast()
+   ↓
+renderLocalResults()
+   ↓
+verifyLocalResults()
+   ↓
+releaseResultsSections()
+   ↓
+attemptResultsHandoff()
+
+The code you've supplied does explicitly call publish() when Q15 is submitted.
+
+And publish() explicitly:
+
+builds the result
+validates it
+persists it
+broadcasts it
+renders local Results
+verifies local Results
+releases downstream Results
+attempts external handoff
+
+So the question becomes:
+
+Why isn't that chain completing in the live environment?
+
+That's much narrower.
+
+🥇 Current hypothesis ranking
+
+Based on the actual code, I'd rank the likely causes approximately like this:
+
+Rank	Hypothesis	Weight	Why
+1	Live code is not executing the supplied JavaScript correctly	30%	The supplied artifact contains escaped/malformed-looking syntax in multiple places
+2	The live embed differs from the code supplied here	22%	We need the actual canonical/live artifact before assuming this is the executed version
+3	Initialization/runtime error occurs before handlers are installed	18%	A JS initialization failure can make the UI appear present while controls become inert
+4	Q15 Continue remains disabled	8%	Possible, but updateContinue() should enable it after selection
+5	save() / selected answer state failure	6%	Possible, but relatively contained
+6	publish() throws during result construction/validation	6%	Several explicit throw points exist
+7	Groove isolation / parent-document behavior	4%	Relevant downstream, but shouldn't explain a dead local Continue
+8	External Results navigation	3%	Happens after local result rendering
+9	storage failure	2%	Explicitly caught
+10	downstream Results sections	1%	Too late in the chain to explain the initial click failure
+The important thing
+
+Those aren't claims of certainty.
+
+They're working weights.
+
+The next piece of evidence can completely reorder them.
+
+That is exactly how the Operational Intelligence Protocol says Naya should reason: KNOWN → LIKELY → POSSIBLE → UNKNOWN, with weights updated as evidence arrives.
+
+🚨 The first thing I would test
+
+Hypothesis #1: Is the JavaScript actually parsing/executing?
+
+Because I can already see a major red flag in the code you pasted.
+
+There are sequences such as:
+
+selected\:null
+
+and:
+
+if(window\.parent
+
+and:
+
+state.i+1
+
+with escaped syntax appearing throughout the JavaScript.
+
+If those backslashes are literally present in the live JavaScript, the script can fail to parse.
+
+And if the script fails during parsing:
+
+handlers never get installed → Continue doesn't work → everything downstream appears broken.
+
+That would be an extraordinarily high-value explanation because one problem could explain a huge amount of the observed behavior.
+
+But I'm deliberately not declaring that the root cause yet.
+
+We need to establish whether those escapes are actually in the live artifact or were introduced during transmission/rendering of the code.
+
+That's our first divergence test.
+
+🎯 What I need next
+
+I need the actual current E00/MAXESS scorecard code from the live/canonical source, not a reconstructed copy.
+
+The repository search did not expose a file named NayaAIScore, so I don't want to invent its location or pretend I've inspected a file I haven't.
+
+So, Shawn, one exact action:
+
+Paste/copy the current E00 scorecard code from the version that is actually running in Groove.
+
+That's all I need from you right now.
+
+Then I own the diagnosis.
+
+I will:
+
+1. Parse/audit it
+2. Map the complete execution chain
+3. Test the highest-probability failure first
+4. Identify the first divergence
+5. Make the smallest complete repair
+6. Give you the complete replacement code if a code change is required
+7. Verify the scoring math independently
+8. Verify Q15 → Result contract
+9. Capture the lesson as a Smart Note
+10. Update the protocol intelligence if the live test teaches us something new
+
+And we will know whether this new system actually works because we're using it on the exact problem that caused us to invent it. 🔥
