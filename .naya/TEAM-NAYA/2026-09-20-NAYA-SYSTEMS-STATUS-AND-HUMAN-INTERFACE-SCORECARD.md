@@ -1,7 +1,7 @@
 # NayaPOWER / NayaNET Systems Status & Human Interface Scorecard
 Date: 2026-09-20
 Source of truth: SoulSchoolAcademy/NayaPOWER / main
-Current checkpoint HEAD: 715869182fe7abebbdddbfe867e98c870fc36410
+Current checkpoint HEAD: 88b045a62ed17a2711ca1c753341a74ce8a1a212
 
 ## Executive truth
 
@@ -43,7 +43,7 @@ Scores are evidence-weighted readiness indicators, not claims of completion.
 
 ## Known blockers / holes
 
-1. **Human UI Smart Note capture → receiver proof** — backend receiver is now proven; the remaining sender-side human acceptance must establish the same canonical event from the actual Hub capture control.
+1. **Human UI Smart Note capture → receiver proof** — CLOSED by run 35530465496; the actual Hub capture control produced event `993e52ac-1616-4a20-ab7c-6fdecb7e467c`, which persisted, projected, rendered in Smart Feed, and survived reload.
 2. **Public Welcome mismatch** — current control-plane evidence says public Welcome still embeds the stale shiny-wave-dd48 path and redirects activation toward academy.nayanet.app, not the canonical Assistant identity/Hub.
 3. **Consolidated human acceptance receipt** — individual proofs exist, but the single human-facing whole-journey receipt does not.
 4. **Latest CCT-005 verification receipt CI proof** — source/test seam is repaired, but current CI evidence still needs an exposed successful run.
@@ -62,8 +62,8 @@ A surface is LIVE only when visible, clickable, real-runtime-backed, state-chang
 
 ## Immediate execution order
 
-1. **Human UI Smart Note capture → same canonical receiver**.
-2. Latest CCT-005 verification CI proof.
+1. **Latest CCT-005 verification CI proof**.
+2. Consolidated human acceptance receipt.
 3. Consolidated human acceptance receipt.
 4. Public Welcome → canonical Identity → canonical Hub.
 5. Full surface audit and repairs.
