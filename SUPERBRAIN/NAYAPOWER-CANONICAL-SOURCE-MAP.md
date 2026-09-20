@@ -173,6 +173,27 @@ V1.1 does **not** become a second constitution. It is a governed extension under
 
 ---
 
+# 7A. NAYAPOWER INNOVATION RESEARCH
+
+The canonical research artifacts are:
+
+- SUPERBRAIN/NAYAPOWER-INNOVATION-THESIS-V1.0.md — why the architecture is potentially differentiated, the category thesis, the collective-intelligence model, and the strategic technology proposition.
+- SUPERBRAIN/NAYAPOWER-INNOVATION-EVIDENCE-MATRIX-V1.0.md — claim-by-claim evidence state, implementation/verification boundaries, experiments required, prior-art references, and IP-review candidates.
+
+These are **specialized canonical research artifacts**. They do not override the current constitution, control plane, or subsystem authority.
+
+The Evidence Matrix is the operative research-truth companion to the Thesis:
+
+**THESIS = WHAT WE THINK THE INNOVATION IS**
+  
+**EVIDENCE MATRIX = WHAT WE CAN ACTUALLY SUPPORT TODAY**
+
+The matrix must preserve the repository truth law:
+
+**INTENDED ≠ IMPLEMENTED ≠ VERIFIED ≠ PRODUCTION-PROVEN**
+
+and must not convert a compelling innovation thesis into an unverified fact.
+
 # 8. HISTORY, ACTIVITY, TORCH, PIS, AND INTELLIGENCE ARE NOT AUTHORITY
 
 NayaPOWER explicitly separates:
