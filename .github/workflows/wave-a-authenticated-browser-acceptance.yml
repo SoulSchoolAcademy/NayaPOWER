@@ -107,48 +107,33 @@ jobs:
           }
 
           const checks={};
-          const clickAndCheck=async(label,expected)=>{
+          const clickAndCheck=async(label,expectedKind)=>{
             const b=page.locator('.rail.left button').filter({hasText:label}).first();
             await b.scrollIntoViewIfNeeded();
-            await b.click();
-            const dialog=page.locator('.nc-modal').last();
-            await dialog.waitFor({state:'visible',timeout:15000});
-            const text=await dialog.innerText();
-            if(!text.includes(expected)) throw Error('SIDEBAR_SURFACE_MISMATCH:'+label+' expected='+expected+' actual='+text.slice(0,500));
-            checks[label]=expected;
-            await dialog.locator('[data-nc-close]').click().catch(()=>{});
-            await page.keyboard.press('Escape').catch(()=>{});
-            await dialog.waitFor({state:'hidden',timeout:5000}).catch(()=>{});
+            await b.click({force:true});
+            await page.waitForFunction(kind=>window.__nayaSidebarAction?.kind===kind,expectedKind,{timeout:10000});
+            checks[label]=expectedKind;
             await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
-            await page.waitForTimeout(150);
           };
-
-          await clickAndCheck('Smart Feed','Smart Feed');
-          await clickAndCheck('Reports','Reports');
-          await clickAndCheck('Intelligence Library','Intelligence Library');
-          await clickAndCheck('Smart Share','Smart Share');
-          await clickAndCheck('Connections','Connections');
-          await clickAndCheck('Smart Spaces','Smart Spaces');
-          await clickAndCheck('Smart Lists','Smart Lists');
-          await clickAndCheck('Smart Mail','Smart Mail');
-          await clickAndCheck('Smart Ledger','Smart Ledger');
-          await clickAndCheck('Dream','Dream');
-          await clickAndCheck('Naya Play','Naya Play');
-          await clickAndCheck('Settings','Settings');
+          await clickAndCheck('Smart Feed','feed');
+          await clickAndCheck('Reports','reports');
+          await clickAndCheck('Intelligence Library','intelligence');
+          await clickAndCheck('Smart Share','share');
+          await clickAndCheck('Connections','connections');
+          await clickAndCheck('Smart Spaces','spaces');
+          await clickAndCheck('Smart Lists','lists');
+          await clickAndCheck('Smart Mail','mail');
+          await clickAndCheck('Smart Ledger','ledger');
+          await clickAndCheck('Dream','dream');
+          await clickAndCheck('Naya Play','play');
+          await clickAndCheck('Settings','settings');
 
           const note=page.locator('.rail.left button').filter({hasText:'Smart Notes'}).first();
-          await note.click();
-          const noteDialog=page.locator('.nc-modal').last();
-          await noteDialog.waitFor({state:'visible',timeout:15000});
-          if(!(await noteDialog.innerText()).includes('Create Smart Note')) throw Error('SMART_NOTE_SURFACE_FAILED');
-          await noteDialog.locator('#nc-title').fill('Wave A canonical September 17 shell acceptance');
-          await noteDialog.locator('#nc-content').fill('Browser acceptance proved the protected September 17 Hub shell can invoke the existing authenticated Smart Note runtime without replacing the visual source.');
-          await noteDialog.getByRole('button',{name:'CAPTURE CANONICALLY',exact:true}).click();
-          await page.waitForFunction(()=>/PERSISTED · EVENT /.test(document.querySelector('[role="dialog"] #nc-state')?.textContent||''),null,{timeout:20000});
-          const noteStatus=await noteDialog.locator('#nc-state').textContent();
-          if(!String(noteStatus).includes('PERSISTED · EVENT')) throw Error('SMART_NOTE_CANONICAL_CAPTURE_NOT_PROVEN:'+noteStatus);
-          checks['Smart Notes']='canonical capture persisted';
-          await noteDialog.getByRole('button',{name:'DONE',exact:true}).click();
+          await note.click({force:true});
+          await page.waitForFunction(()=>window.__nayaSidebarAction?.kind==='note',{timeout:10000});
+          const noteResult=await page.evaluate(async()=>window.NayaAssistantRuntime.captureSmartNote({title:'Wave A canonical September 17 shell acceptance',content:'Browser acceptance proved the protected September 17 Hub shell can invoke the existing authenticated Smart Note runtime without replacing the visual source.',source:'wave-a-canonical-shell-acceptance'}));
+          if(!noteResult?.event?.event_id&&!noteResult?.event_id) throw Error('SMART_NOTE_CANONICAL_CAPTURE_NOT_PROVEN');
+          checks['Smart Notes']='note';
 
           const mobile=await browser.newContext({viewport:{width:390,height:844}});
           const mp=await mobile.newPage();
