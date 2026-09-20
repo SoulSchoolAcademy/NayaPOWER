@@ -113,13 +113,12 @@ jobs:
           console.log('REQUESTED_EVENT_ID=' + eventId);
           console.log('RECORDED_EVENT_ID=' + recordedEventId);
 
-          const retrievedA = await pageA.evaluate(async ({title,lesson}) => {
-            const rows = await window.NayaAssistantRuntime.retrieve();
-            return rows.find(x => String(x.title) === title && String(x.content) === lesson) || null;
-          }, {title,lesson});
+          const retrievedA = await pageA.evaluate(async (eventId) => {
+            const rows = await window.NayaAssistantRuntime.retrieve(eventId);
+            return rows?.[0] || null;
+          }, eventId);
           if (!retrievedA) throw new Error('RECORD_NOT_RETRIEVABLE');
-          const eventId = String(retrievedA.event_id || '');
-          if (!eventId) throw new Error('CANONICAL_EVENT_ID_MISSING');
+          if (String(retrievedA.event_id) !== eventId) throw new Error('EVENT_ID_MISMATCH');
 
           // Action + observation at the real deployed runtime boundary:
           // use the existing React Hub deep-retrieval path to project the exact persisted object.
