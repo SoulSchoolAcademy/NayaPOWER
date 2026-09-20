@@ -103,7 +103,8 @@ jobs:
           const sourceBefore=await ap.evaluate(async()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if((sourceBefore.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SOURCE_ALREADY_PUBLIC_BEFORE_SHARE');
 
-          const shareButton=ap.locator('[data-c4-kind="share-intel"]').first();
+          const shareBlock=ap.locator('.block').filter({hasText:String(sourceSelection.title)}).first();
+          const shareButton=shareBlock.locator('[data-c4-kind="share-intel"]').first();
           await shareButton.waitFor({state:'visible',timeout:15000});
           await shareButton.scrollIntoViewIfNeeded();
           await ap.evaluate(()=>{window.__smartShareProof={published:false,error:null};document.addEventListener('nayanet:smart-share-published',e=>window.__smartShareProof={published:true,error:null,detail:e.detail});document.addEventListener('nayanet:smart-share-failed',e=>window.__smartShareProof={published:false,error:String(e.detail?.error||'SMART_SHARE_FAILED'),detail:e.detail});},{});
