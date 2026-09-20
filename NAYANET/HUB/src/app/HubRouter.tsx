@@ -7,6 +7,7 @@ import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntellig
 import type { IntelligentEvent } from '../intelligence/types';
 import { routes } from './routes';
 import { useIdentity } from '../identity/session';
+import { DreamSurface } from './DreamSurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
   const identity = useIdentity();
@@ -108,6 +109,8 @@ export function HubRouter({ path }: { path: string }) {
       return <FeatureSurface kind="ledger" />;
     case routes.settings:
       return <AuthPanel />;
+    case routes.dream:
+      return <DreamSurface />;
     default:
       return <FeedView title="Your Intelligence Today" subtitle="What matters now — the intelligence you can understand, use, verify, and carry forward." />;
   }
