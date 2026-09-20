@@ -34,4 +34,15 @@ jobs:
           python-version: "3.12"
 
       - name: Execute canonical compounding P0 proof
+        env:
+          PROOF_PATH: ${{ runner.temp }}/canonical-compounding-proof.json
         run: python tools/test_canonical_compound_bridge.py
+
+      - name: Upload canonical compounding proof receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-compounding-proof
+          path: ${{ runner.temp }}/canonical-compounding-proof.json
+          if-no-files-found: warn
+          retention-days: 30
