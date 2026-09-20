@@ -219,9 +219,9 @@ jobs:
               await context.close();
             }
           }
-        } finally {
+          } finally {
           await browser.close();
-        }
+          }
           EOF
           NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
           rm -f verify-assistant-runtime.mjs
