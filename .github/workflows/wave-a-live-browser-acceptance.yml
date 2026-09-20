@@ -1,5 +1,4 @@
 # WAVE-A REGISTRATION REPAIR: second-source push proves this workflow from its registered definition.
-# WAVE-A RERUN: execute after Smart Ledger browser reload lifecycle repair.
 name: Wave A authenticated browser handoff acceptance
 
 on:
@@ -39,8 +38,6 @@ jobs:
           s = p.read_text()
           old = "await spaceSelect.selectOption(spaceId);await ap.waitForTimeout(500);"
           new = """await spaceSelect.selectOption(spaceId);
-          const personSelect=ap.locator('.sfb-connection-picker .sfb-picker-field').nth(1).locator('select');
-          await personSelect.waitFor({state:'visible',timeout:10000});
           await ap.waitForFunction(()=>{const s=document.querySelector('.sfb-connection-picker .sfb-picker-field:nth-child(2) select');return !!s&&!s.disabled&&s.options.length>=2;},null,{timeout:15000});"""
           if old not in s:
               raise SystemExit("WAVE_A_PICKER_PATCH_TARGET_MISSING")
@@ -53,5 +50,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: wave-a-browser-acceptance
-          path: ${{ runner.temp }}/wave-a-browser-acceptance.json
+          path: $RUNNER_TEMP/wave-a-browser-acceptance.json
           if-no-files-found: error
