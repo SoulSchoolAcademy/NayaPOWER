@@ -15,7 +15,9 @@ export default {
       ? versionedAsset('/index.html')
       : url.pathname === '/assistant-runtime.js'
         ? versionedAsset('/assistant-runtime.js')
-        : request;
+        : url.pathname === '/hub-completeness.js'
+          ? versionedAsset('/hub-completeness.js')
+          : request;
     const response = await env.ASSETS.fetch(assetRequest);
 
     if (url.pathname === '/' || url.pathname === '/index.html') {
@@ -24,6 +26,19 @@ export default {
       headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
       headers.set('Pragma', 'no-cache');
       headers.set('X-Naya-Canonical-Asset', 'index.html');
+      headers.set('X-Naya-Asset-Version', versionId);
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers
+      });
+    }
+
+    if (url.pathname === '/hub-completeness.js') {
+      const headers = new Headers(response.headers);
+      headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+      headers.set('Pragma', 'no-cache');
+      headers.set('X-Naya-Hub-Completeness-Asset', 'live');
       headers.set('X-Naya-Asset-Version', versionId);
       return new Response(response.body, {
         status: response.status,
