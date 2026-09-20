@@ -1,0 +1,8 @@
+{
+  "name": "nayanet-lumen-sidebar-experiment",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {"dev": "vite", "build": "vite build"},
+  "dependencies": {"@santi020k/lumen-elements": "latest", "vite": "latest"}
+}
