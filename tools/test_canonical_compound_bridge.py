@@ -78,25 +78,74 @@ def test_real_event_promotes_to_intelligent_block():
 
 
 def test_learning_event_retrieves_through_existing_runtime():
-    event = load_real_event()
-    learning = ci.build_candidate(event)
-    assert learning is not None
+    # Exercise the current canonical Smart Note transaction namespace directly.
+    # The historical SE fixture above intentionally remains a compatibility
+    # fixture; it is not a valid locator for the current LRN -> Smart Note seam.
+    tx_path = ROOT / ".naya" / "runtime" / "smart_note_transaction.py"
+    spec = importlib.util.spec_from_file_location("canonical_tx_for_learning_bridge", tx_path)
+    assert spec is not None and spec.loader is not None
+    tx = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(tx)
+
     with tempfile.TemporaryDirectory() as tmp:
-        learning_dir = Path(tmp) / "learning"
+        temp = Path(tmp)
+        tx.ROOT = temp
+        tx.SMART_NOTES_ROOT = temp / ".naya" / "memory" / "notes"
+        tx.CIS_ROOT = temp / ".naya" / "memory" / "intelligence"
+        tx.CIS_PATH = tx.CIS_ROOT / "CIS.json"
+        tx.RECEIPTS_ROOT = tx.CIS_ROOT / "transactions"
+        tx.PIS_PATH = temp / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
+
+        timestamp = "2026-09-17T20:00:00+00:00"
+        canonical_id = "SN-20260917T200000+0000-IH-03-CANONICAL-INTELLIGENCE-IDENTITY"
+        note = {
+            "timestamp": timestamp,
+            "id": canonical_id,
+            "topic": "IH-03 Canonical Intelligence Identity",
+            "in_a_nutshell": "One intelligence object must remain one identity across every projection.",
+            "child": "One thing, one ID, everywhere.",
+            "grammar": "Identity is preserved through projection rather than recreated at each surface.",
+            "human": "The human meaning remains attached to the canonical intelligence object.",
+            "naya": "Preserve identity, provenance, privacy, and verification state across projection.",
+            "machine": "Resolve one canonical Smart Note identity through the existing transaction namespace.",
+            "learning": "Projection must preserve lineage rather than manufacture a new intelligence identity.",
+            "why_it_matters": "Stable lineage lets retrieval prove that the learning still refers to the same intelligence.",
+            "how_to_use": "Use the canonical Smart Note ID as the immutable identity across retrieval.",
+            "value": "A later Naya can retrieve the same intelligence without reconstructing prior conversation.",
+            "evidence": ["IH-03 automated canonical identity proof"],
+            "current_state": "Current canonical Smart Note transaction namespace is exercised in isolation.",
+            "next_action": "Preserve this identity contract in future compounding proofs.",
+        }
+
+        result = tx.execute(note)
+        pis = json.loads(tx.PIS_PATH.read_text(encoding="utf-8"))
+        event = next(e for e in pis["events"] if e["event_id"] == canonical_id)
+        event["verification"] = {"status": "VERIFIED", "evidence": ["IH-03 automated canonical identity proof"]}
+        event["evidence"] = ["IH-03 automated canonical identity proof"]
+        event["evidence_state"] = "VERIFIED"
+
+        learning = ci.build_candidate(event)
+        assert learning is not None
+        assert learning["smart_note_id"] == canonical_id
+
+        learning_dir = temp / "learning"
         learning_dir.mkdir(parents=True)
         learning_path = learning_dir / f"{learning['learning_event_id']}.json"
         learning_path.write_text(json.dumps(learning, indent=2) + "\n", encoding="utf-8")
-        result = rl.retrieve_learning_event(
+
+        retrieved = rl.retrieve_learning_event(
             learning["learning_event_id"],
             learning_dir=learning_dir,
-            note_dir=ROOT / ".naya" / "memory" / "notes",
+            note_dir=tx.SMART_NOTES_ROOT,
         )
-        receipt = result["receipt"]
+        receipt = retrieved["receipt"]
         assert receipt["learning_event_id"] == learning["learning_event_id"]
-        assert receipt["source_event_id"] == EVENT_ID
-        assert receipt["smart_note_id"] == NOTE_ID
-        assert receipt["retrieved_note_event_id"] == EVENT_ID
+        assert receipt["smart_note_id"] == canonical_id
+        assert receipt["retrieved_note_event_id"] == canonical_id
         assert receipt["cold_context"] is True
+        assert retrieved["note"]["canonical_path"].endswith(
+            "2026/09/17/SN-20260917-IH-03-CANONICAL-INTELLIGENCE-IDENTITY.md"
+        )
 
 
 def test_real_note_retrieves_cold_by_runtime():
