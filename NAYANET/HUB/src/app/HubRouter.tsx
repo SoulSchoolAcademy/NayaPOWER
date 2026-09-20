@@ -3,7 +3,7 @@ import { AuthPanel } from '../identity/AuthPanel';
 import { SmartMailSurface } from './SmartMailSurface';
 import { FeatureSurface } from './FeatureSurface';
 import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
-import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
+import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import type { IntelligentEvent } from '../intelligence/types';
 import { routes } from './routes';
 
@@ -12,6 +12,7 @@ function FeedView({ title, subtitle, library = false }: { title: string; subtitl
   const [selected, setSelected] = useState(0);
   const [query, setQuery] = useState('');
   const [state, setState] = useState<'loading' | 'ready' | 'error'>('loading');
+  const [deepSearching, setDeepSearching] = useState(false);
 
   useEffect(() => {
     let alive = true;
@@ -52,8 +53,8 @@ function FeedView({ title, subtitle, library = false }: { title: string; subtitl
       <div className="nayaMark"><span>✦</span><b>NAYA</b><small>INTELLIGENCE MADE VISIBLE</small></div>
     </div>
     <div className="searchRow">
-      <label className="searchWrap"><span>⌕</span><input value={query} onChange={e => { setQuery(e.target.value); setSelected(0); }} placeholder={library ? 'Search your intelligence library…' : 'Search intelligence — what, why, source, learning, meaning…'} aria-label="Search intelligence" /></label>
-      <button className="ask" onClick={() => document.querySelector<HTMLInputElement>('.universal-search input')?.focus()}>✦ TALK TO NAYA</button>
+      <label className="searchWrap"><span>⌕</span><input value={query} onChange={e => { setQuery(e.target.value); setSelected(0); }} onKeyDown={async e => { if(e.key !== 'Enter' || !query.trim()) return; setDeepSearching(true); try { const result = await searchPrimaryIntelligence(query, { schema_version:'PIS-1.1', generated_at:new Date().toISOString(), source:'github:smart_feed_content', event_count:events.length, events }); setEvents(sortPrimaryIntelligence(result.events)); setSelected(0); } finally { setDeepSearching(false); } }} placeholder={library ? 'Search your intelligence library… Press Enter for deep retrieval' : 'Search intelligence — what, why, source, learning, meaning… Press Enter for deep retrieval'} aria-label="Search intelligence" /></label>
+      <button className="ask" disabled={deepSearching} onClick={() => document.querySelector<HTMLInputElement>('.universal-search input')?.focus()}>{deepSearching ? '⌁ SEARCHING CANONICAL INTELLIGENCE…' : '✦ TALK TO NAYA'}</button>
     </div>
     <div className="feedHead"><div><span className="eyebrow">{library ? 'INTELLIGENCE LIBRARY' : 'YOUR INTELLIGENCE TODAY'}</span><h2>{filtered.length} INTELLIGENT {filtered.length === 1 ? 'BLOCK' : 'BLOCKS'}</h2><p className="feedSub">One canonical intelligence object can be understood, applied, verified, and reused without creating a second source of truth.</p></div><div className="lens"><button className="selected">INTELLIGENCE</button><button onClick={() => window.dispatchEvent(new CustomEvent('nayanet:navigate', { detail: { path: routes.mail } }))}>SMART MAIL</button></div></div>
     {!current ? <section className="feature-empty"><b>NO MATCHING INTELLIGENCE</b><span>No verified intelligence matches this search.</span></section> :
