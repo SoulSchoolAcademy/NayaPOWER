@@ -6,11 +6,11 @@ export default {
       const assetUrl = new URL(pathname, url);
       assetUrl.search = '';
       assetUrl.searchParams.set('naya_asset_version', versionId);
-      return new Request(assetUrl, request);
+      return new Request(assetUrl, { method: request.method, headers: request.headers, cache: 'no-store' });
     };
 
     // Canonical Hub root: serve an extensionless byte-identical copy of the built React entry.
-    // The Worker-version query prevents a prior edge asset cache from masking a new deployment.
+    // Bind the asset lookup to this Worker version and bypass any stale asset-cache entry during parity verification.
     const assetRequest = (url.pathname === '/' || url.pathname === '/index.html')
       ? versionedAsset('/__nayanet-canonical-hub')
       : url.pathname === '/assistant-runtime.js'
