@@ -243,6 +243,7 @@ jobs:
                 await page.waitForTimeout(800);
                 const actionStatus = await page.locator('.smart-feed-board .sfb-status').textContent().catch(() => '');
                 if (!String(actionStatus || '').includes('ACTION PERSISTED')) throw new Error('SMART_FEED_ACTION_NOT_PERSISTED:' + String(actionStatus || 'NO_STATUS'));
+                if (!String(actionStatus || '').includes('RECEIPT ')) throw new Error('SMART_FEED_ACTION_RECEIPT_NOT_RETURNED:' + String(actionStatus || 'NO_RECEIPT'));
                 await page.reload({ waitUntil: 'networkidle' });
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                 await page.waitForTimeout(800);
