@@ -203,41 +203,51 @@ jobs:
 
           try {
             if (process.env.RELEASE_SURFACE === 'sparkling-shape-react') {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: 1440, height: 1000 } });
-              const page = await context.newPage();
-              const proofAlias = 'ci' + process.env.GITHUB_SHA.slice(0, 16);
-              await page.goto(process.env.NAYA_RUNTIME_URL + '/identity.html?name=Naya%20CI%20Proof&alias=' + proofAlias, { waitUntil: 'networkidle', timeout: 30000 });
-              await page.getByRole('button', { name: 'ENTER NAYANET' }).click();
-              await page.waitForTimeout(3000);
-              const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
-              if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('Authenticated NayaNET identity not established: ' + JSON.stringify(identityProof));
-              await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'domcontentloaded', timeout: 30000 });
-              await page.waitForTimeout(3000);
-              const result = await page.evaluate(async () => ({
-                title: document.title,
-                marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
-                directNine: document.querySelector('meta[name="nayanet-direct-nine"]') ? 'PRESENT' : '',
-                assistantRuntime: !!window.NayaAssistantRuntime,
-                identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null
-              }));
-              const iframe = page.locator('iframe[title="NayaNET Intelligent Hub"]');
-              await iframe.waitFor({ timeout: 10000 });
-              const srcdoc = await iframe.getAttribute('srcdoc') || '';
-              Object.assign(result, {
-                baseline: srcdoc.length > 700000 ? 'PRESENT' : '',
-                smartNotes: srcdoc.includes('Smart Notes'),
-                privacy: srcdoc.includes('PRIVATE BY DEFAULT'),
-                mailButton: srcdoc.includes('data-page="mail"')
-              });
-              if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('Authenticated NayaNET identity not established');
-              if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('React canonical marker missing');
-              if (result.baseline !== 'PRESENT') throw new Error('509 baseline host missing');
-              if (result.smartNotes !== true) throw new Error('Smart Notes baseline surface missing');
-              if (result.privacy !== true) throw new Error('Privacy baseline surface missing');
-              if (result.mailButton !== true) throw new Error('Smart Mail navigation missing');
-              if (result.assistantRuntime !== true) throw new Error('Governed Assistant runtime not loaded');
-              console.log('BASELINE_REACT_RUNTIME_VERIFIED', JSON.stringify(result));
-              await context.close();
+              for (const viewport of [
+                { width: 1440, height: 1000, label: 'desktop' },
+                { width: 390, height: 844, label: 'mobile' }
+              ]) {
+                const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+                const page = await context.newPage();
+                const proofAlias = 'ci' + process.env.GITHUB_SHA.slice(0, 16) + viewport.label;
+                await page.goto(process.env.NAYA_RUNTIME_URL + '/identity.html?name=Naya%20CI%20Proof&alias=' + proofAlias, { waitUntil: 'networkidle', timeout: 30000 });
+                await page.getByRole('button', { name: 'ENTER NAYANET' }).click();
+                await page.waitForTimeout(1500);
+                const identityProof = await page.evaluate(async () => window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null);
+                if (!identityProof?.authenticated || !identityProof?.userId) throw new Error('VIEWPORT_IDENTITY_NOT_AUTHENTICATED');
+                await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                await page.waitForTimeout(2500);
+                const result = await page.evaluate(async () => ({
+                  title: document.title,
+                  marker: document.querySelector('meta[name="nayanet-canonical-marker"]')?.getAttribute('content') || '',
+                  assistantRuntime: !!window.NayaAssistantRuntime,
+                  identity: window.NayaNETNameFirstAuth ? await window.NayaNETNameFirstAuth.current() : null,
+                  shell: document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker') || '',
+                  nav: [...document.querySelectorAll('.nav-item')].map(x => x.textContent?.replace(/\s+/g, ' ').trim()).filter(Boolean),
+                  feedBoards: document.querySelectorAll('.smart-feed-board').length,
+                  private: document.body.innerText.includes('PRIVATE BY DEFAULT'),
+                  naya: document.body.innerText.includes('NAYA'),
+                  intelligence: document.body.innerText.includes('INTELLIGENCE')
+                }));
+                const expectedNav = ['Your Intelligence Today','Your Report','Intelligence Library','Smart Lists','Smart Share','Smart Spaces','Your Connections','Smart Mail','Settings'];
+                if (!result.identity?.authenticated || !result.identity?.userId) throw new Error('HUB_IDENTITY_NOT_AUTHENTICATED');
+                if (result.marker !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('REACT_MARKER_MISSING');
+                if (result.assistantRuntime !== true) throw new Error('ASSISTANT_RUNTIME_NOT_LOADED');
+                if (result.shell !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error('CANONICAL_REACT_SHELL_MISSING');
+                if (JSON.stringify(result.nav) !== JSON.stringify(expectedNav)) throw new Error('CANONICAL_SIDEBAR_MISMATCH:' + JSON.stringify(result.nav));
+                if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
+                if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
+                await page.getByRole('button', { name: 'Intelligence Library' }).click();
+                await page.waitForTimeout(500);
+                if (!page.url().includes('/library')) throw new Error('INTELLIGENCE_LIBRARY_ROUTE_FAILED');
+                if (!(await page.locator('h1').filter({hasText:'Intelligence Library'}).count())) throw new Error('INTELLIGENCE_LIBRARY_SURFACE_MISSING');
+                await page.getByRole('button', { name: 'Smart Mail' }).click();
+                await page.waitForTimeout(500);
+                if (!page.url().includes('/mail')) throw new Error('SMART_MAIL_ROUTE_FAILED');
+                if (!(await page.locator('h1').filter({hasText:'Smart Mail'}).count())) throw new Error('SMART_MAIL_SURFACE_MISSING');
+                console.log('CANONICAL_REACT_HUB_VERIFIED', viewport.label, JSON.stringify(result));
+                await context.close();
+              }
             } else {
               for (const viewport of [
                 { width: 1440, height: 1000, label: 'desktop' },
