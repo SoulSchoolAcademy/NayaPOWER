@@ -30,7 +30,7 @@ def _is_canonical_smart_note(event: dict[str, Any]) -> bool:
         if not isinstance(representation, dict):
             continue
         note_id = representation.get("id")
-        if isinstance(note_id, str) and note_id.startswith("SN-") and representation.get("canonical_event_id") == event_id:
+        if isinstance(note_id, str) and note_id.startswith("SN-") and (representation.get("canonical_event_id") in (None, event_id) or representation.get("event_id") == event_id):
             return True
     return False
 
