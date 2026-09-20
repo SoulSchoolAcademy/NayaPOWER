@@ -110,13 +110,16 @@ jobs:
           if (String(retrievedA.event_id) !== eventId) throw new Error('EVENT_ID_MISMATCH');
 
           // Action + observation at the real deployed runtime boundary:
-          // use the retrieved canonical object to render Personal Intelligence.
-          // Reload the real deployed Hub after the authenticated Smart Note is persisted.
-          // This exercises the actual source -> build/runtime -> Hub retrieval boundary
-          // instead of depending on a non-existent runtime-only refresh helper.
+          // use the existing React Hub deep-retrieval path to project the exact persisted object.
           await pageA.reload({waitUntil:'domcontentloaded', timeout:60000});
           await pageA.waitForFunction(() => !!window.NayaAssistantRuntime, null, {timeout:30000});
-          const observedA = await pageA.evaluate(async (eventId) => {
+          const observedA = await pageA.evaluate(async ({eventId,title}) => {
+            const search = document.querySelector('.searchWrap input[aria-label="Search intelligence"]');
+            if (!search) throw new Error('CANONICAL_HUB_SEARCH_NOT_AVAILABLE');
+            const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+            setter?.call(search, title);
+            search.dispatchEvent(new Event('input', {bubbles:true}));
+            search.dispatchEvent(new KeyboardEvent('keydown', {key:'Enter',code:'Enter',bubbles:true}));
             const selector = '.smart-feed-board[data-event-id="' + eventId + '"]';
             await new Promise((resolve, reject) => {
               const deadline = Date.now() + 30000;
@@ -128,12 +131,8 @@ jobs:
               tick();
             });
             const node = document.querySelector(selector);
-            return {
-              rendered: !!node,
-              event_id: node?.getAttribute('data-event-id') || null,
-              text: node?.textContent || ''
-            };
-          }, eventId);
+            return {rendered:!!node,event_id:node?.getAttribute('data-event-id')||null,text:node?.textContent||''};
+          }, {eventId,title});
           if (!observedA.rendered || observedA.event_id !== eventId) throw new Error('ACTION_OBSERVATION_FAILED');
 
           // Context B: genuinely independent browser context with the same persisted
@@ -147,10 +146,16 @@ jobs:
           const coldAuth = await pageB.evaluate(async () => window.NayaAssistantRuntime.init());
           if (!coldAuth?.authenticated) throw new Error('COLD_CONTEXT_SESSION_NOT_PERSISTED');
 
-          const cold = await pageB.evaluate(async (eventId) => {
+          const cold = await pageB.evaluate(async ({eventId,title}) => {
             const rows = await window.NayaAssistantRuntime.retrieve(eventId);
             const event = rows?.find(x => String(x.event_id) === eventId);
             if (!event) return null;
+            const search = document.querySelector('.searchWrap input[aria-label="Search intelligence"]');
+            if (!search) throw new Error('COLD_CANONICAL_HUB_SEARCH_NOT_AVAILABLE');
+            const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+            setter?.call(search, title);
+            search.dispatchEvent(new Event('input', {bubbles:true}));
+            search.dispatchEvent(new KeyboardEvent('keydown', {key:'Enter',code:'Enter',bubbles:true}));
             const selector = '.smart-feed-board[data-event-id="' + eventId + '"]';
             await new Promise((resolve, reject) => {
               const deadline = Date.now() + 30000;
@@ -176,7 +181,7 @@ jobs:
               rendered_event_id: node?.getAttribute('data-event-id') || null,
               continuation: event.action?.text || null
             };
-          }, eventId);
+          }, {eventId,title});
           if (!cold) throw new Error('COLD_NAYA_RETRIEVAL_FAILED');
           if (cold.event_id !== eventId) throw new Error('COLD_EVENT_ID_MISMATCH');
           if (cold.content !== lesson) throw new Error('COLD_CONTENT_MISMATCH');
