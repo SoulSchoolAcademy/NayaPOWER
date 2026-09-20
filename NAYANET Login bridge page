@@ -85,7 +85,7 @@
         const identity=await window.NayaNETNameFirstAuth.establish({name:smartName,alias:smartAlias});
         if(!identity?.authenticated||!identity?.userId) throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
         displayIdentity.textContent='AUTHENTICATED';status.textContent=`Welcome, ${identity.smartName}. Entering Intelligent Hub…`;
-        window.location.replace('/');
+        window.location.replace('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/?name='+encodeURIComponent(existing.smartName||name)+'&alias='+encodeURIComponent(existing.smartAlias||cleanAlias(aliasInput.value)));
       }catch(e){console.error(e);displayIdentity.textContent='NOT ESTABLISHED';status.textContent='Identity setup needs attention';error.textContent=e?.message||'Unable to establish your NayaNET session.';btn.disabled=false;}
     });
   </script>
