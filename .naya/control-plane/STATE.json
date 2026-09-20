@@ -97,7 +97,7 @@
     "Current main NAYA_SUPERBRAIN_READY run 35471113077 is READY with zero UNKNOWN and zero FAILED gates; exact current HEAD at observation is fb17b633934c0803833db76cb12f28171cbfbfb5.",
     "Fresh Smart Mail learning bridge proof recorded in NAYA/ACTIVITY/2026/09/19.md: message e5133412-79aa-4740-97e3-52e8c9f3ffeb → receipt dfda38b8-ef21-4e9b-9386-358134093d85 → cognition smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342 → Ledger 30156e7c-36a3-457a-bc4e-7aab332ac0cf → learning evidence a0509374-cff6-4b59-aeb5-f17b68dda033 → learner state v1 → USE_VERIFIED_LEARNING_CONTEXT influenced=true → governed continuation da96d9db-3c8b-46c9-baf4-cba8df10a6e0.",
     "P1 controlled paired experiment run 35472129371 proved three held-out cases with aggregate baseline value 0 and candidate value 3, plus a future case whose learned successor improved 0→1; evidence artifact was CI-validated.",
-    "Live public welcome.nayanet.app currently embeds shiny-wave-dd48.nayanet.workers.dev; its live identity page activateAndRedirect() sends users to academy.nayanet.app rather than the canonical Assistant Cloudflare Hub.",
+    "Welcome/front-door work is deferred until the canonical Hub is functional; it is not the current execution target.",
     "Human Hub Smart Note capture proof run 35527638171 is VERIFIED at live runtime: capture control → canonical receiver → canonical event e27faa0c-df86-4f32-bb34-62b283c7548f → cognition row 627dd24e-48e0-4317-b9df-c5e03c1c64b7 → PIS index 7595c62b-2a00-43c4-bdb5-13666397edef → Smart Feed render → reload identity preserved.",
     "Canonical Assistant Cloudflare release run 35527973956 is SUCCESS for deployed source 4697d5e039b6bfbde2104c757cf37e1f2221b90c; Cloudflare Version ID ba817d73-73b1-4307-845a-15f210314103; exact live parity sha256 8b8e94799ea323d98fb3772a12da394f849d06e2d1f795a88200c790385c744e.",
     "Human Hub Smart Note capture run 35528080864 is VERIFIED with event 1bdfee48-f79c-4b87-8d5f-53e345904cf7, cognition row 60c73ebb-c673-4587-ac76-f72c659115df, PIS mapping to the same canonical event ID, Smart Feed render, and reload identity preservation.",
@@ -155,7 +155,7 @@
     "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — PUBLIC FRONT DOOR CLOSURE\nResolve live main 445198e9e63261e00b3b319fbedf5430260ea7ec. Live evidence proves welcome.nayanet.app embeds shiny-wave-dd48 and its /identity activation redirects to academy.nayanet.app. Do not modify NayaPOWER engine, learning, authority, or Hub source. Obtain only the authorized deployment capability for the owning shiny-wave public Welcome worker/source. Change only that activation target to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/. Then independently verify the real browser flow Welcome → Identity → canonical Hub and run the existing diagnostic once. Stop at any auth/deployment boundary that remains unavailable.",
+  "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
@@ -197,5 +197,5 @@
     },
     "interpretation": "The canonical Hub is deployed and source-parity verified. The human Smart Note transaction is independently proven. Remaining work is deep lifecycle acceptance across the remaining human surfaces."
   },
-  "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome; stop at the first actual failure and repair only that boundary."
+  "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof."
 }
