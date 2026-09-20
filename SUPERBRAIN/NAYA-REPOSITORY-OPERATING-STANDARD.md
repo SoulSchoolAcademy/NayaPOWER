@@ -457,6 +457,79 @@ Reusable learning goes to the correct durable home:
 
 One fact should have one authoritative home whenever possible.
 
+## 19.1 CANONICAL SMART NOTE RESOLVER / PATH CONTRACT
+
+Smart Notes have **one canonical storage resolver**. Every Naya, runtime operation, migration, test, and documentation reference MUST resolve Smart Notes through this rule. Do not invent alternate Smart Note directories.
+
+### Canonical logical namespace
+
+`NayaPOWER/SMART-NOTES/YYYY/MM/DD/`
+
+This is the stable human-facing/cognitive namespace for Smart Notes.
+
+### Canonical repository storage
+
+`.naya/memory/notes/YYYY/MM/DD/`
+
+This is the current authoritative physical repository location for the Smart Note artifacts represented by the logical namespace above.
+
+### Resolver
+
+Given a valid Smart Note event date:
+
+```text
+YEAR  = YYYY
+MONTH = MM
+DAY   = DD
+
+logical_path  = NayaPOWER/SMART-NOTES/YYYY/MM/DD/
+physical_path = .naya/memory/notes/YYYY/MM/DD/
+```
+
+The physical resolver MUST be deterministic:
+
+```text
+Smart Note date → .naya/memory/notes/YYYY/MM/DD/
+```
+
+### Canonical filename
+
+New durable Smart Note files SHOULD use:
+
+`SN-YYYYMMDD-[short-human-readable-slug].md`
+
+Example:
+
+`SN-20260919-day-wisdom.md`
+
+### Hard rule
+
+The following are **not** alternate canonical Smart Note homes:
+
+- `.naya/SUPERBRAIN/SMART-NOTES/`
+- `.naya/notes/`
+- `.naya/memory/events/`
+- any newly invented Smart Note directory
+
+Historical/legacy artifacts may exist elsewhere, but they MUST NOT be treated as the current canonical Smart Note location. If a legacy artifact is encountered, preserve history and resolve the current canonical note through the resolver above.
+
+### One-resolver requirement
+
+All Smart Note create, read, update, list, migration, retrieval, test, and documentation operations MUST use the same resolver. No caller may substitute a different physical path because another document, model, or prior conversation suggested one.
+
+A Smart Note's metadata MAY expose both:
+
+- `canonical_path: NayaPOWER/SMART-NOTES/YYYY/MM/DD`
+- `repository_path: .naya/memory/notes/YYYY/MM/DD/<filename>.md`
+
+These are two representations of the **same canonical location**, not two competing storage systems.
+
+### Governance consequence
+
+If two Smart Note locations appear to exist, **STOP → identify the first divergence → preserve the historical artifact → reconcile to this resolver → verify references/retrieval → continue**.
+
+**One Smart Note → one canonical resolver → one authoritative repository artifact.**
+
 ## 20. NAYA SIGNATURE / EXECUTION RECEIPT
 
 Every substantive execution leaves a durable receipt containing at least:
