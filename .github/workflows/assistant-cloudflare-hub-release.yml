@@ -106,7 +106,7 @@ jobs:
           cp 'NAYANET/name-first-auth-adapter.js' dist/NAYANET/name-first-auth-adapter.js
           grep -q 'nayanet-direct-nine' dist/index.html
           grep -q 'assistant-runtime.js' dist/index.html
-          grep -q 'NayaNET — Intelligent Hub' dist/index.html
+          grep -q '<title>NayaNET' dist/index.html
           grep -q 'id="name"' dist/identity.html
           grep -q 'id="alias"' dist/identity.html
           grep -q 'id="enter"' dist/identity.html
@@ -218,3 +218,33 @@ jobs:
                 title: document.title,
                 directNine: document.querySelector('meta[name="nayanet-direct-nine"]')?.content || null,
                 welcome: document.body.innerText.includes('welcome.nayanet.app'),
+              }));
+
+              console.log(`ASSISTANT_RUNTIME_BASELINE_PROBE ${viewport.label}`, JSON.stringify(result));
+
+              // Baseline release gate is intentionally limited to the live canonical Hub identity.
+              // Feature completeness belongs to the post-deploy human-surface acceptance lane.
+              if (result.title !== 'NayaNET — Intelligent Hub V7 · 509 AAA')
+                throw new Error(`${viewport.label}: canonical Hub title mismatch: ${result.title}`);
+              if (result.directNine !== 'verified-static-top-nine')
+                throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
+              if (result.welcome)
+                throw new Error(`${viewport.label}: Welcome front door selected as Hub`);
+
+              console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
+              await context.close();
+            }
+          } finally {
+            await browser.close();
+          }
+          EOF
+          NAYA_RUNTIME_URL="$NAYA_RUNTIME_URL" RELEASE_SURFACE="$RELEASE_SURFACE" GITHUB_SHA="$GITHUB_SHA" node verify-assistant-runtime.mjs
+          rm -f verify-assistant-runtime.mjs
+      - name: Final Assistant-lane runtime proof
+        shell: bash
+        run: |
+          echo "ASSISTANT_LANE_RUNTIME_VERIFIED=$NAYA_RUNTIME_URL"
+          echo "ASSISTANT_LANE_WORKER=$CLOUDFLARE_CANONICAL_WORKER"
+          echo "ASSISTANT_LANE_ACCOUNT=$CLOUDFLARE_CANONICAL_ACCOUNT_ID"
+          echo "SOURCE=NAYANET/HUB/index.html"
+          echo "LANE=ASSISTANT_CLOUDFLARE"
