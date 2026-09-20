@@ -17,7 +17,10 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
-EVENT_DIR = ROOT / "MASTER-NOTES/INTELLIGENCE-EVENTS"
+CANONICAL_EVENT_DIR = ROOT / ".naya/memory/events"
+# Canonical Note Events are the authoritative compounding input. EVENT_DIR is
+# retained as the test-injection seam used by the existing bridge tests.
+EVENT_DIR = CANONICAL_EVENT_DIR
 LEARNING_DIR = ROOT / "MASTER-NOTES/ADAPTIVE-LEARNING"
 DAILY_DIR = LEARNING_DIR / "DAILY"
 COLLECTIVE_DIR = LEARNING_DIR / "COLLECTIVE"
@@ -30,20 +33,118 @@ VERIFIED_RANK = al.evidence_rank("VERIFIED")
 
 
 def load_events() -> list[dict[str, Any]]:
+    """Load canonical SE-* events, or a flat injected test directory.
+
+    The production path is deliberately recursive because canonical events are
+    stored in YEAR/MONTH/DAY/HOUR buckets by canonical_event_store.py. A flat
+    directory remains supported only for the existing deterministic unit tests.
+    """
     events: list[dict[str, Any]] = []
     if not EVENT_DIR.exists():
         return events
-    for path in sorted(EVENT_DIR.glob("*.json")):
+    canonical_mode = EVENT_DIR == CANONICAL_EVENT_DIR
+    paths = sorted(EVENT_DIR.rglob("SE-*.json")) if canonical_mode else sorted(EVENT_DIR.glob("*.json"))
+    for path in paths:
         try:
             event = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             raise ValueError(f"{path}: invalid JSON: {exc}") from exc
+        if not isinstance(event, dict) or not str(event.get("event_id", "")).startswith("SE-"):
+            continue
         try:
             event["_path"] = str(path.relative_to(EVENT_DIR))
         except ValueError:
             event["_path"] = str(path)
         events.append(event)
     return events
+
+
+def _first_smart_note_id(event: dict[str, Any]) -> str:
+    explicit = event.get("smart_note_id")
+    if isinstance(explicit, str) and explicit.startswith("SN-"):
+        return explicit
+    representations = event.get("representations") or {}
+    if isinstance(representations, dict):
+        for representation in representations.values():
+            if isinstance(representation, dict):
+                note_id = representation.get("id")
+                if isinstance(note_id, str) and note_id.startswith("SN-"):
+                    return note_id
+    return ""
+
+
+def _lesson_from_canonical_event(event: dict[str, Any]) -> str:
+    direct = str(event.get("lesson", "")).strip()
+    if direct:
+        return direct
+    learning = event.get("learning")
+    if isinstance(learning, dict):
+        for key in ("principle", "lesson", "problem"):
+            value = str(learning.get(key, "")).strip()
+            if value:
+                return value
+        lessons = learning.get("lessons")
+        if isinstance(lessons, list) and lessons:
+            return str(lessons[0]).strip()
+    representations = event.get("representations") or {}
+    if isinstance(representations, dict):
+        for representation in representations.values():
+            if not isinstance(representation, dict):
+                continue
+            lessons = representation.get("lessons")
+            if isinstance(lessons, list) and lessons:
+                return str(lessons[0]).strip()
+            value = str(representation.get("lesson", "")).strip()
+            if value:
+                return value
+    return ""
+
+
+def _evidence_for_learning(event: dict[str, Any]) -> list[Any]:
+    evidence = event.get("evidence")
+    if isinstance(evidence, list) and evidence:
+        return evidence
+    verification = event.get("verification")
+    if isinstance(verification, dict) and isinstance(verification.get("evidence"), list):
+        return verification["evidence"]
+    evidence_ids = event.get("evidence_ids")
+    return evidence_ids if isinstance(evidence_ids, list) else []
+
+
+def _evidence_state_for_learning(event: dict[str, Any]) -> str:
+    explicit = str(event.get("evidence_state", "")).strip()
+    if explicit in al.EVIDENCE_STATES:
+        return explicit
+    # This is a schema bridge, not a file-existence inference: VERIFIED is
+    # accepted only when the canonical event itself carries VERIFIED status and
+    # non-empty verification evidence. Otherwise the state remains UNKNOWN.
+    verification = event.get("verification")
+    if isinstance(verification, dict) and str(verification.get("status", "")).upper() == "VERIFIED" and verification.get("evidence"):
+        return "VERIFIED"
+    return "UNKNOWN"
+
+
+def canonical_to_learning_input(event: dict[str, Any]) -> dict[str, Any]:
+    """Normalize a canonical SE event into the existing learning-engine schema."""
+    event_id = str(event.get("event_id", ""))
+    if not event_id.startswith("SE-"):
+        raise ValueError("canonical compounding input must use an SE-* event_id")
+    note_id = _first_smart_note_id(event)
+    lesson = _lesson_from_canonical_event(event)
+    verification = event.get("verification") if isinstance(event.get("verification"), dict) else {}
+    source = event.get("source")
+    provenance = event.get("provenance")
+    if not isinstance(provenance, dict):
+        provenance = {"canonical_source": source, "canonical_event_id": event_id}
+    normalized = dict(event)
+    normalized["lesson"] = lesson
+    normalized["smart_note_id"] = note_id
+    normalized["evidence"] = _evidence_for_learning(event)
+    normalized["evidence_state"] = _evidence_state_for_learning(event)
+    normalized["provenance"] = provenance
+    normalized["canonical_event_id"] = event_id
+    normalized["verification"] = verification
+    return normalized
 
 
 def event_date(event: dict[str, Any]) -> str:
@@ -59,6 +160,8 @@ def has_collective_consent(event: dict[str, Any]) -> bool:
 
 
 def build_candidate(event: dict[str, Any]) -> dict[str, Any] | None:
+    if str(event.get("event_id", "")).startswith("SE-"):
+        event = canonical_to_learning_input(event)
     if not str(event.get("lesson", "")).strip():
         return None
     outcome = {
@@ -80,6 +183,9 @@ def build_candidate(event: dict[str, Any]) -> dict[str, Any] | None:
     learning["collective_consent"] = has_collective_consent(event)
     learning["visibility"] = "COLLECTIVE" if learning["collective_consent"] else "PRIVATE"
     learning["source_event_path"] = event.get("_path", "")
+    learning["canonical_event_id"] = event.get("canonical_event_id", event.get("event_id", ""))
+    learning["provenance"] = event.get("provenance", {})
+    learning["verification"] = event.get("verification", {})
     return learning
 
 
