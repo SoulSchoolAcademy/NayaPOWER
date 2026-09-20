@@ -252,7 +252,34 @@ jobs:
                 if (result.feedBoards < 1) throw new Error('INTELLIGENT_FEED_DID_NOT_RENDER');
                 if (!result.private || !result.naya || !result.intelligence) throw new Error('REQUIRED_HUB_CONTENT_MISSING');
 
-                const board = page.locator('.smart-feed-board').first();
+                let board = page.locator('.smart-feed-board').first();
+                const runtimeSnapshot = await page.evaluate(() => window.NayaAssistantRuntime.snapshot());
+                const sourceEventIdBeforeOwnershipCheck = await board.getAttribute('data-event-id');
+                const sourceOwned = sourceEventIdBeforeOwnershipCheck ? await page.evaluate(async (eventId) => {
+                  const rows = await window.NayaAssistantRuntime.retrieve(eventId);
+                  const userId = window.NayaAssistantRuntime.snapshot()?.user_id;
+                  return Boolean(userId && rows?.some(row => row?.user_id === userId));
+                }, sourceEventIdBeforeOwnershipCheck) : false;
+                if (!sourceOwned) {
+                  const ownedEventId = 'ci-smart-feed-owned-' + process.env.GITHUB_SHA.slice(0, 12) + '-' + viewport.label;
+                  const ownedResult = await page.evaluate(async (eventId) => window.NayaAssistantRuntime.record({
+                    event_id: eventId,
+                    title: 'Canonical Smart Feed owned-source proof',
+                    content: 'Owned source created for the canonical Smart Feed action and share acceptance proof.',
+                    source: 'nayanet-hub.smart-feed.acceptance',
+                    project: 'NayaNET',
+                    status: 'active',
+                    actor: 'human',
+                    metadata: { acceptance_boundary: 'owned-source-for-share' }
+                  }), ownedEventId);
+                  const persistedOwnedId = ownedResult?.event?.event_id || ownedResult?.event_id || ownedEventId;
+                  if (persistedOwnedId !== ownedEventId) throw new Error('SMART_FEED_OWNED_SOURCE_ID_MISMATCH:' + JSON.stringify(ownedResult));
+                  await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
+                  await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                  await page.waitForFunction((expected) => Array.from(document.querySelectorAll('.smart-feed-board')).some(node => node.getAttribute('data-event-id') === expected), ownedEventId, { timeout: 15000 });
+                  board = page.locator('[data-event-id="' + ownedEventId + '"]').first();
+                  if (!(await board.count())) throw new Error('SMART_FEED_OWNED_SOURCE_NOT_RENDERED:' + ownedEventId);
+                }
                 const statusFor = async (label) => {
                   const status = await board.locator('.sfb-status').textContent().catch(() => '');
                   if (!String(status || '').includes('ACTION PERSISTED') && !String(status || '').includes('SHARE PERSISTED')) throw new Error('SMART_FEED_ACTION_NOT_PERSISTED:' + label + ':' + String(status || 'NO_STATUS'));
