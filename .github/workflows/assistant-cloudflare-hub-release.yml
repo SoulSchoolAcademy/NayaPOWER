@@ -38,7 +38,7 @@ on:
         default: canonical-hub
 
 concurrency:
-  group: assistant-cloudflare-production
+  group: assistant-cloudflare-production-${{ github.sha }}
   cancel-in-progress: false
 
 permissions:
