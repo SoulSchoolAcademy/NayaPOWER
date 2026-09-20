@@ -1,0 +1,35 @@
+name: Verify NayaNET Proof 7 Controlled Paired Compounding Loop
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof7-paired:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RECEIPT_PATH: ${{ runner.temp }}/nayanet-proof7-paired.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install paired-test runtime dependency
+        run: npm install --no-save @supabase/supabase-js
+      - name: Execute controlled paired experiment
+        run: node scripts/run-controlled-paired-policy-experiment.mjs
+      - name: Validate controlled proof
+        run: |
+          test -s "$RECEIPT_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='PROVEN') throw new Error('paired improvement not proven'); if(r.learning?.durable!==true||r.learning?.retrievable!==true||r.learning?.cold_decision_influenced!==true) throw new Error('exact learning evidence not proven in Cycle 2'); if(r.learning?.authority_unchanged!==true) throw new Error('authority changed'); if(r.independent_outcome_contract!==true) throw new Error('independent outcome contract missing');" "$RECEIPT_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-proof7-controlled-paired
+          path: ${{ runner.temp }}/nayanet-proof7-paired.json
+          if-no-files-found: error
+          retention-days: 30
