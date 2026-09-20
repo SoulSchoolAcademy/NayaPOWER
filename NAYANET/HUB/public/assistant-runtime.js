@@ -42,7 +42,46 @@ async function listMailThreads(){if(!client)await init();if(!session)throw new E
 async function smartFeed(input={}){if(!client)await init();if(!session)throw new Error('AUTH_REQUIRED');const r=await fetch(URL+'/functions/v1/naya-smart-feed',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify({stream:String(input.stream||'personal'),limit:Number(input.limit||20),before:input.before||null})});const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok)throw new Error(data.error||'SMART_FEED_FAILED');return data}
 async function smartFeedAction(input={}){if(!client)await init();if(!session)throw new Error('AUTH_REQUIRED');const r=await fetch(URL+'/functions/v1/naya-smart-feed',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify({action:String(input.action||''),stream:input.stream||null,source_id:input.source_id||null,publication_id:input.publication_id||null,interaction:input.interaction||null,authority_grant_id:input.authority_grant_id||null})});const data=await r.json().catch(()=>({}));if(!r.ok||!data.ok)throw new Error(data.error||data.detail||'SMART_FEED_ACTION_FAILED');return data}
 async function publishSmartFeed(input={}){if(!client)await init();if(!session)throw new Error('AUTH_REQUIRED');const sourceKey=String(typeof input==='string'?input:input?.sourceEventId||'').trim();if(!sourceKey)throw new Error('SOURCE_EVENT_ID_REQUIRED');let sourceId='';const resolvedByEventId=await client.from('nayanet_cognition_events').select('id').eq('event_id',sourceKey).eq('user_id',session.user.id).maybeSingle();if(resolvedByEventId.error)throw resolvedByEventId.error;if(resolvedByEventId.data?.id)sourceId=resolvedByEventId.data.id;else{const resolvedByRowId=await client.from('nayanet_cognition_events').select('id').eq('id',sourceKey).eq('user_id',session.user.id).maybeSingle();if(resolvedByRowId.error)throw resolvedByRowId.error;if(!resolvedByRowId.data?.id)throw new Error('SOURCE_NOT_OWNED');sourceId=resolvedByRowId.data.id}let grantId='';const existingGrant=await client.from('nayanet_authority_grants').select('grant_id,status,expires_at,actions,source_event_id,scope').eq('issuer_id',session.user.id).eq('subject_id',session.user.id).eq('source_event_id',sourceKey).order('created_at',{ascending:false}).limit(1).maybeSingle();if(existingGrant.error)throw existingGrant.error;if(existingGrant.data?.grant_id&&existingGrant.data.status==='ACTIVE'&&(!existingGrant.data.expires_at||new Date(existingGrant.data.expires_at)>new Date())&&Array.isArray(existingGrant.data.actions)&&existingGrant.data.actions.includes('smart_feed_publish')&&String(existingGrant.data.scope?.target||'')===sourceId)grantId=existingGrant.data.grant_id;if(!grantId){const grant=await client.rpc('nayanet_issue_authority_grant',{p_subject_id:session.user.id,p_source_event_id:sourceKey,p_mission_id:'NayaNET Smart Share',p_scope:{project_id:PROJECT,target:sourceId},p_actions:['smart_feed_publish'],p_constraints:{consent_state:'explicit',source_event_id:sourceKey},p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_human_share_click',source_event_id:sourceKey},p_parent_authority:null});if(grant.error||!grant.data?.grant_id)throw grant.error||new Error('AUTHORITY_GRANT_ISSUANCE_FAILED');grantId=grant.data.grant_id}const validation=await client.rpc('nayanet_validate_authority_grant',{p_grant_id:grantId,p_action:'smart_feed_publish',p_target:sourceId});if(validation.error||validation.data?.status!=='AUTHORIZED')throw validation.error||new Error('AUTHORITY_NOT_AUTHORIZED');const publication=await smartFeedAction({action:'publish',stream:'collective',source_id:sourceId,authority_grant_id:grantId});const pub=publication?.publication;if(!pub?.id)throw new Error('CANONICAL_PUBLICATION_ID_NOT_RETURNED');const receipt=await record({event_id:'smart-share-'+pub.id,title:'Smart Share publication receipt',content:JSON.stringify({publication_id:pub.id,intelligence_event_id:sourceKey,source_row_id:sourceId,status:pub.status,consent_state:pub.consent_state,authority_grant_id:grantId}),source:'nayanet-hub.smart-share.publication',project:PROJECT,status:'active',actor:'human',tags:['intelligent-hub','smart-share','publication'],metadata:{action:'publish_intelligence',publication_id:pub.id,intelligence_event_id:sourceKey,source_row_id:sourceId,consent_state:pub.consent_state,authority_grant_id:grantId,authority_status:validation.data.status,persistence_boundary:'authenticated-canonical-publication'}});return {publication:pub,receipt,event_id:sourceKey,authority:{grant_id:grantId,status:validation.data.status}}}
-async function bindCanonicalHubSmartShare(){if(window.__nayaCanonicalHubSmartShareBound)return;window.__nayaCanonicalHubSmartShareBound=true;const run=async e=>{const button=e.target?.closest?.('[data-c4-kind="share-intel"]');if(!button)return;e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();const block=button.closest('.block');const title=String(block?.querySelector('h3')?.textContent||'').trim();const runtimeEventId=String(block?.getAttribute('data-naya-runtime-event')||'').trim();try{const snap=await init();if(!snap.authenticated)throw new Error('AUTH_REQUIRED');const feed=await smartFeed({stream:'personal',limit:50,before:null});const item=(feed.items||[]).find(x=>String(x.title||'').trim()===title);const sourceEventId=runtimeEventId||String(item?.event_id||'').trim();if(!sourceEventId)throw new Error('OWNED_INTELLIGENCE_EVENT_NOT_FOUND');const result=await publishSmartFeed({sourceEventId});button.dataset.publicationId=String(result.publication.id);button.dataset.smartShareState='PUBLISHED';button.textContent='PUBLISHED';button.classList.add('on');window.dispatchEvent(new CustomEvent('nayanet:smart-share-published',{detail:{...result,title}}))}catch(err){button.dataset.smartShareState='FAILED';window.dispatchEvent(new CustomEvent('nayanet:smart-share-failed',{detail:{error:String(err?.message||err),title}}))}};document.addEventListener('click',run,true)}
+async function bindCanonicalHubSmartShare(){
+  if(window.__nayaCanonicalHubSmartShareBound)return;
+  window.__nayaCanonicalHubSmartShareBound=true;
+  const run=async e=>{
+    const button=e.currentTarget;
+    if(!button?.matches?.('[data-c4-kind="share-intel"]'))return;
+    e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+    const block=button.closest('.block');
+    const title=String(block?.querySelector('h3')?.textContent||'').trim();
+    const runtimeEventId=String(block?.getAttribute('data-naya-runtime-event')||'').trim();
+    try{
+      const snap=await init();
+      if(!snap.authenticated)throw new Error('AUTH_REQUIRED');
+      const feed=await smartFeed({stream:'personal',limit:50,before:null});
+      const item=(feed.items||[]).find(x=>String(x.title||'').trim()===title);
+      const sourceEventId=runtimeEventId||String(item?.event_id||'').trim();
+      if(!sourceEventId)throw new Error('OWNED_INTELLIGENCE_EVENT_NOT_FOUND');
+      const result=await publishSmartFeed({sourceEventId});
+      button.dataset.publicationId=String(result.publication.id);
+      button.dataset.smartShareState='PUBLISHED';
+      button.textContent='PUBLISHED';
+      button.classList.add('on');
+      window.dispatchEvent(new CustomEvent('nayanet:smart-share-published',{detail:{...result,title}}));
+    }catch(err){
+      button.dataset.smartShareState='FAILED';
+      window.dispatchEvent(new CustomEvent('nayanet:smart-share-failed',{detail:{error:String(err?.message||err),title}}));
+    }
+  };
+  const bind=button=>{
+    if(!button||button.dataset.nayaSmartShareBound==='1')return;
+    button.dataset.nayaSmartShareBound='1';
+    button.addEventListener('click',run,true);
+  };
+  const scan=()=>document.querySelectorAll('[data-c4-kind="share-intel"]').forEach(bind);
+  scan();
+  if(document.body&&!window.__nayaCanonicalHubSmartShareObserver){
+    window.__nayaCanonicalHubSmartShareObserver=new MutationObserver(scan);
+    window.__nayaCanonicalHubSmartShareObserver.observe(document.body,{subtree:true,childList:true});
+  }
+}
 
 async function smartTabs(input={}){if(!client)await init();if(!session)throw new Error('AUTH_REQUIRED');const r=await fetch(URL+'/functions/v1/naya-smart-tabs',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':KEY,'Content-Type':'application/json'},body:JSON.stringify(input)});const data=await r.json().catch(()=>({}));if(!r.ok||data.error)throw new Error(data.error||'SMART_TABS_FAILED');return data}
 async function listSmartTabs(){return smartTabs({op:'list'})}
