@@ -77,22 +77,17 @@ jobs:
           if(root.directNine!=='verified-static-top-nine') throw Error('CANONICAL_DIRECT_NINE_MISSING');
           if(root.welcome) throw Error('WELCOME_FRONT_DOOR_PRESENT_ON_CANONICAL_HUB');
 
-          const source=await ap.evaluate(async()=>window.NayaAssistantRuntime.record({
-            title:'Canonical Smart Share proof '+location.hostname,
-            content:'Fresh owned intelligence created for the governed Smart Share lifecycle proof.',
-            source:'nayanet-smart-share-proof',
-            type:'INSIGHT',
-            classification:'observation',
-            status:'active',
-            tags:['smart-share','governed-proof']
-          }));
-          const sourceEventId=String(source?.event_id||source?.event?.event_id||'');
-          const sourceReceiptId=String(source?.receipt?.id||source?.receipt_id||'');
-          if(!sourceEventId||!sourceReceiptId) throw Error('SOURCE_CAPTURE_RECEIPT_NOT_PROVEN');
-
+          const sourceSelection=await ap.evaluate(async()=>{
+            const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50,before:null});
+            const blocks=[...document.querySelectorAll('.block')].map(b=>({title:String(b.querySelector('h3')?.textContent||'').replace(/\\s+/g,' ').trim()})).filter(x=>x.title);
+            const item=(feed.items||[]).find(x=>blocks.some(b=>b.title===String(x.title||'').replace(/\\s+/g,' ').trim()));
+            return item?{event_id:item.event_id,id:item.id,title:item.title}:null;
+          });
+          if(!sourceSelection?.event_id) throw Error('SMART_SHARE_OWNED_SOURCE_NOT_BOUND_TO_CANONICAL_HUB_BLOCK');
+          const sourceEventId=String(sourceSelection.event_id);
           const sourceRows=await ap.evaluate(id=>window.NayaAssistantRuntime.retrieve(id),sourceEventId);
           if(!sourceRows.some(x=>x.event_id===sourceEventId&&x.user_id===A.user.id)) throw Error('OWNED_SOURCE_RETRIEVAL_FAILED');
-
+          const sourceReceiptId=String(sourceRows.find(x=>x.event_id===sourceEventId)?.receipt_id||'');
           const sourceBefore=await ap.evaluate(async()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if((sourceBefore.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SOURCE_ALREADY_PUBLIC_BEFORE_SHARE');
 
