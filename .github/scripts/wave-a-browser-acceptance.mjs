@@ -50,7 +50,7 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           if(!ap.url().includes('/lists'))throw Error('SMART_LIST_ROUTE_FAILED');
           const listName='Wave A live acceptance '+project;
           const createListButton=ap.getByRole('button',{name:'＋ CREATE SMART LIST',exact:true});await createListButton.click();
-          await ap.getByRole('dialog').getByLabel('LIST NAME').fill(listName);
+          await ap.getByLabel('New Smart List name').fill(listName);
           await ap.getByRole('dialog').getByRole('button',{name:'CREATE SMART LIST',exact:true}).click();
           await ap.waitForTimeout(700);
           const listCard=ap.locator('.feature-card').filter({hasText:listName}).first();if(await listCard.count()!==1)throw Error('SMART_LIST_CREATE_NOT_VISIBLE');
