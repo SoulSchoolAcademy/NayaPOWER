@@ -45,6 +45,9 @@ jobs:
           if(!A.access_token||!B.access_token||!C.access_token)throw Error('AUTH_BOOTSTRAP_FAILED');
           const join=async u=>req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_space_id:spaceId})});
           await join(A);await join(B);await join(C);
+          // Smart Mail's canonical relationship gate requires a mutual active connection.
+          // Establish the reciprocal leg through the existing connection RPC before the UI send proof.
+          await save(B,A.user.id);
           const save=async(u,target)=>req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_target_member_id:target,p_space_id:spaceId})});
           const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({p_subject_id:A.user.id,p_source_event_id:'wavea-browser-authority-'+project,p_mission_id:'Wave A live Hub acceptance',p_scope:{project_id:'NayaNET',target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],p_constraints:{mode:'human-facing-acceptance',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_wave_a_browser_acceptance',space_id:spaceId},p_parent_authority:null})});
           if(!grant?.grant_id)throw Error('AUTHORITY_GRANT_FAILED');
