@@ -268,6 +268,6 @@ A fresh Windows clone of current main failed checkout because Git cannot materia
 
 ## 2026-09-18 CONTROL-PLANE RECONCILIATION
 
-The current user-facing Hub boundary is explicit: `2026 09 17 NAYANET HUB.html` → `.github/workflows/assistant-cloudflare-hub-release.yml` → `sparkling-shape-7ae5`. The React/Vite `NAYANET/HUB/` implementation is reference/engineering material only. The legacy `deploy-nayanet-intelligent-hub.yml` is retired/disabled.
+The current user-facing Hub boundary is explicit: `NAYANET/HUB/index.html` → `.github/workflows/assistant-cloudflare-hub-release.yml` → `sparkling-shape-7ae5`. Internal runtime implementation supports this exact Hub; it is not a competing Hub. Welcome is deferred.
 
 The active P0 is the independent real-outcome/value contract followed by the held-out multi-case V1/V2 experiment and then cold-Naya continuation proof. Historical authentication/deployment blockers are not the current P0.
