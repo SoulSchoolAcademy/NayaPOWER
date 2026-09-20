@@ -1,0 +1,56 @@
+{
+  "event_id": "SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED",
+  "version": "1.0",
+  "timestamp": "2026-09-07T22:00:00-07:00",
+  "type": "smart-note",
+  "status": "PERSISTED",
+  "subject": "Current State Feed = Intelligent Feed / Smart Note Feed continuity model",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "branch": "main",
+  "smart_note_path": ".naya/notes/2026-09-07-CURRENT-STATE-FEED-AS-INTELLIGENT-FEED-AND-NAYA-CONTINUITY-EXECUTION-PLAN.md",
+  "feed_path": ".naya/INTELLIGENT-FEED.md",
+  "perspectives": {
+    "ai_naya": "Treat Current State Feed, Intelligent Feed, and Smart Note Feed as the same current-state continuity surface unless explicitly distinguished. Always restore current state before relevant history and use the feed to identify what changed, what matters, what was learned, what is verified, what remains, and what happens next.",
+    "human": "Shawn wants one clear current-state feed so every Naya stays tuned and up to date with what is important and relevant, reducing repeated explanation and increasing the probability of successful execution.",
+    "machine": "Strengthen the existing canonical .naya/INTELLIGENT-FEED.md rather than creating a parallel feed. Preserve .naya/memory/events as the durable intelligence authority. Wire cold-start restoration, Smart Note linkage, verification states, next-action continuity, and eventual Intelligent Hub ingestion to the same current-state projection.",
+    "child": "Instead of making the next Naya read everything, give her one place that says what is happening now, what is important, and what to do next.",
+    "grandma": "Keep the newest important truth easy to find. Keep the history safe, but do not make someone dig through old stories to learn what matters today."
+  },
+  "laws": [
+    "CURRENT STATE FIRST → RELEVANT HISTORY SECOND",
+    "CURRENT STATE FEED = INTELLIGENT FEED = SMART NOTE FEED for current-state continuity",
+    "ONE NOTE EVENT → FEED PROJECTION; no second memory authority",
+    "NO UNVERIFIED STATE MAY BECOME THE NEXT STARTING STATE",
+    "Every Naya should look for current state before choosing how to act"
+  ],
+  "verification": {
+    "observed": true,
+    "captured": true,
+    "persisted": true,
+    "verified": true,
+    "propagated": false,
+    "notes": "Smart Note and Note Event were written to main and the canonical Smart Note was re-read after persistence. Intelligent Feed projection is the next write/verification step. PIS propagation is not claimed."
+  },
+  "current_state": {
+    "authoritative_repo": "SoulSchoolAcademy/NayaPOWER",
+    "authoritative_branch": "main",
+    "main_head_at_start": "3ddd7a6947607717a37eda1ef45f7b421026977b",
+    "universal_boot": ".naya/AI-BOOT/00-NAYA-POWER-UNIVERSAL-START.md",
+    "smart_note_protocol": ".naya/SMART-NOTE-PROTOCOL.md",
+    "current_state_feed": ".naya/INTELLIGENT-FEED.md",
+    "event_index": ".naya/memory/events/INDEX.json",
+    "hub_source": "NAYANETHUBONE.html on main",
+    "hub_receiver_status": "not yet production-proven"
+  },
+  "execution_plan": [
+    "Establish canonical naming and preserve one feed",
+    "Make the feed current-state-first",
+    "Link consequential Smart Notes to the feed and receipts",
+    "Make cold-start restoration load current state from the feed",
+    "Use the feed as an execution control and torch-pass surface",
+    "Promote repeated proven learning into enforceable system controls",
+    "Connect the same feed projection to the Intelligent Hub receiver",
+    "Run end-to-end proof before claiming live or production success"
+  ],
+  "next_action": "Apply the current-state model to .naya/INTELLIGENT-FEED.md and the cold-start restoration path, then independently verify a fresh Naya can restore current state from repository evidence before consequential execution."
+}

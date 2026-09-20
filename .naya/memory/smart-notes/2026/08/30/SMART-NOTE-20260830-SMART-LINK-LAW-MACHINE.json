@@ -1,0 +1,27 @@
+{
+  "$schema": "naya/smart-note-machine/v1",
+  "canonical_event_id": "SE-20260830-080000-smart-note-smart-link-law",
+  "representation": "MACHINE",
+  "authority": "DERIVED_FROM_CANONICAL_NOTE_EVENT",
+  "single_canonical_event": true,
+  "required_representations": ["shawn", "naya", "machine"],
+  "required_delivery": {
+    "persist_shawn_note": true,
+    "persist_naya_note": true,
+    "persist_machine_note": true,
+    "return_smart_link_for_each": true,
+    "return_pis_propagation_evidence_when_applicable": true,
+    "return_continuation_prompt_for_substantive_work": true
+  },
+  "invariants": [
+    "SMART_NOTE_WITHOUT_SMART_LINKS_IS_INCOMPLETE",
+    "NO_CLAIM_OF_CREATION_WITHOUT_DELIVERABLE_EVIDENCE",
+    "PIS_IS_PRIMARY_INTERNAL_INTELLIGENCE_SYNTHESIS_LAYER",
+    "RUNNING_FEED_IS_ORIENTATION_PROJECTION_NOT_COMPETING_AUTHORITY",
+    "UPLOADED_CUSTOMER_MATERIAL_IS_NOT_AUTHORITY_BY_UPLOAD_ALONE",
+    "VALUE_CAPTURE_SHOULD_BE_PROACTIVE_WHEN_DURABLE_VALUE_IS_CLEAR"
+  ],
+  "consumers": ["smart-note-runtime", "PIS", "Daily Intelligence", "CIS", "restore-context", "future-Naya"],
+  "verification_requirement": "Direct Smart Links must resolve to the persisted representation artifacts before the delivery is represented as fully evidenced.",
+  "machine_lesson": "The system must optimize for retained intelligence, not merely retained information; durable value should be captured, linked, verified, propagated where authorized, and made reusable."
+}

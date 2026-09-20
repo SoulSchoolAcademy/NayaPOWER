@@ -1,0 +1,289 @@
+/* NayaNET FRONT DOOR — MASTERS ULTIMATE
+   Final visual pass: physical portal, not a webpage.
+   Law: depth -> light -> state -> response -> consequence.
+*/
+
+#frontDoor.north-star-front-door{
+  --nn-green:#72e7ad;
+  --nn-purple:#a77aff;
+  --nn-white:#fff;
+  --nn-muted:rgba(255,255,255,.56);
+  --nn-ink:#020207;
+  isolation:isolate!important;
+  overflow:hidden!important;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(120,82,190,.075) 0 12%,transparent 34%),
+    radial-gradient(ellipse at 50% 105%,rgba(114,231,173,.035),transparent 45%),
+    #020207!important;
+}
+
+/* Kill decorative remnants that make the entrance read like an older concept. */
+#frontDoor.north-star-front-door .threshold-stage:before,
+#frontDoor.north-star-front-door .threshold-stage:after,
+#frontDoor.north-star-front-door .threshold-naya-aura,
+#frontDoor.north-star-front-door .threshold-naya-ring,
+#frontDoor.north-star-front-door .threshold-naya-core{display:none!important}
+
+/* One architectural object: a deep circular aperture. */
+#frontDoor.north-star-front-door .threshold-chamber{
+  width:min(900px,88svh,92vw)!important;
+  aspect-ratio:1!important;
+  border-radius:50%!important;
+  overflow:visible!important;
+  background:
+    radial-gradient(circle at 50% 47%,rgba(22,19,32,.99) 0 24%,rgba(10,9,17,.995) 53%,#020207 78%,#000005 100%)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:
+    0 80px 180px rgba(0,0,0,.88),
+    0 24px 70px rgba(0,0,0,.72),
+    inset 0 2px 0 rgba(255,255,255,.09),
+    inset 0 -90px 130px rgba(0,0,0,.82),
+    inset 0 0 100px rgba(167,122,255,.055),
+    0 0 0 1px rgba(167,122,255,.025)!important;
+}
+
+/* A precision rim: light has a direction and therefore feels physical. */
+#frontDoor.north-star-front-door .threshold-chamber:before{
+  content:""!important;
+  position:absolute!important;
+  inset:-1px!important;
+  border-radius:50%!important;
+  background:conic-gradient(from 218deg,transparent 0 28%,rgba(255,255,255,.20) 31%,rgba(167,122,255,.30) 35%,transparent 41% 67%,rgba(114,231,173,.16) 72%,transparent 78%)!important;
+  -webkit-mask:radial-gradient(circle,transparent calc(100% - 2px),#000 calc(100% - 1px))!important;
+  mask:radial-gradient(circle,transparent calc(100% - 2px),#000 calc(100% - 1px))!important;
+  opacity:.8!important;
+  animation:nnUltimateRim 28s linear infinite!important;
+  pointer-events:none!important;
+}
+
+#frontDoor.north-star-front-door .threshold-chamber:after{
+  content:""!important;
+  position:absolute!important;
+  inset:6%!important;
+  border-radius:50%!important;
+  border:1px solid rgba(255,255,255,.045)!important;
+  box-shadow:inset 0 0 90px rgba(167,122,255,.035)!important;
+  animation:nnUltimateBreath 8s ease-in-out infinite!important;
+  pointer-events:none!important;
+}
+
+/* Real supplied mark: identity object, not an ornament. */
+#frontDoor.north-star-front-door .threshold-naya{
+  position:absolute!important;
+  left:50%!important;
+  top:8.2%!important;
+  width:clamp(150px,21%,215px)!important;
+  height:112px!important;
+  transform:translateX(-50%)!important;
+  opacity:1!important;
+  z-index:30!important;
+  pointer-events:none!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  overflow:visible!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark:before{
+  content:""!important;
+  position:absolute!important;
+  width:78%!important;
+  height:55%!important;
+  border-radius:50%!important;
+  background:radial-gradient(ellipse,rgba(167,122,255,.14),transparent 68%)!important;
+  filter:blur(18px)!important;
+  z-index:0!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark:after{
+  content:""!important;
+  position:absolute!important;
+  inset:-10%!important;
+  border-radius:50%!important;
+  border-top:1px solid rgba(255,255,255,.12)!important;
+  border-bottom:1px solid rgba(114,231,173,.06)!important;
+  opacity:.35!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark img{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:contain!important;
+  object-position:center!important;
+  border:0!important;
+  border-radius:12px!important;
+  background:transparent!important;
+  box-shadow:0 18px 45px rgba(0,0,0,.48),0 0 38px rgba(167,122,255,.06)!important;
+  filter:contrast(1.04) saturate(1.03)!important;
+}
+
+/* The typography becomes one calm hierarchy. */
+#frontDoor.north-star-front-door .threshold-copy{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  padding:21% 8% 0!important;
+  box-sizing:border-box!important;
+  margin:0!important;
+  display:block!important;
+  text-align:center!important;
+}
+
+#frontDoor.north-star-front-door .threshold-eyebrow{
+  margin:0 0 12px!important;
+  color:rgba(255,255,255,.52)!important;
+  font-size:9px!important;
+  font-weight:650!important;
+  line-height:1!important;
+  letter-spacing:.66em!important;
+  text-indent:.66em!important;
+}
+
+#frontDoor.north-star-front-door .threshold-copy>h1{
+  margin:0!important;
+  color:#fff!important;
+  font-size:clamp(42px,5.2vw,68px)!important;
+  font-weight:500!important;
+  line-height:1.02!important;
+  letter-spacing:-.055em!important;
+  text-shadow:0 20px 55px rgba(0,0,0,.72)!important;
+}
+
+#frontDoor.north-star-front-door .threshold-lead{
+  margin:13px 0 0!important;
+  color:rgba(255,255,255,.70)!important;
+  font-size:13px!important;
+  line-height:1.45!important;
+  letter-spacing:.10em!important;
+}
+#frontDoor.north-star-front-door .threshold-lead strong{color:inherit!important;font-weight:450!important}
+
+/* Human threshold: exact center of the chamber. */
+#frontDoor.north-star-front-door .identity-portal{
+  position:absolute!important;
+  left:50%!important;
+  top:50%!important;
+  width:min(430px,62%)!important;
+  margin:0!important;
+  transform:translate(-50%,-50%)!important;
+  z-index:50!important;
+}
+
+#frontDoor.north-star-front-door .portal-input{
+  position:relative!important;
+  height:70px!important;
+  padding:5px!important;
+  box-sizing:border-box!important;
+  border-radius:22px!important;
+  background:linear-gradient(155deg,rgba(31,28,42,.98),rgba(3,3,9,.995))!important;
+  border:1px solid rgba(114,231,173,.62)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -24px 38px rgba(0,0,0,.62),
+    0 24px 70px rgba(0,0,0,.72),
+    0 0 40px rgba(114,231,173,.045)!important;
+  transition:transform .38s cubic-bezier(.16,1,.3,1),border-color .35s,box-shadow .35s!important;
+}
+
+#frontDoor.north-star-front-door .portal-input:focus-within{
+  transform:translateY(-4px)!important;
+  border-color:rgba(167,122,255,.88)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -24px 38px rgba(0,0,0,.58),
+    0 30px 80px rgba(0,0,0,.76),
+    0 0 55px rgba(167,122,255,.13)!important;
+}
+
+#frontDoor.north-star-front-door .portal-prefix{
+  width:36px!important;height:36px!important;margin-left:12px!important;
+  background:rgba(4,4,10,.9)!important;
+  border:1px solid rgba(114,231,173,.35)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.15),0 0 20px rgba(114,231,173,.06)!important;
+}
+#frontDoor.north-star-front-door .portal-prefix i{background:var(--nn-green)!important;box-shadow:0 0 9px var(--nn-green),0 0 20px rgba(114,231,173,.45)!important}
+#frontDoor.north-star-front-door .portal-input:focus-within .portal-prefix{border-color:rgba(167,122,255,.62)!important}
+#frontDoor.north-star-front-door .portal-input:focus-within .portal-prefix i{background:var(--nn-purple)!important;box-shadow:0 0 10px var(--nn-purple),0 0 22px rgba(167,122,255,.5)!important}
+#frontDoor.north-star-front-door .portal-input input{font-size:17px!important;color:#fff!important;letter-spacing:.03em!important;caret-color:var(--nn-purple)!important}
+#frontDoor.north-star-front-door .portal-input input::placeholder{color:rgba(255,255,255,.84)!important;opacity:1!important}
+#frontDoor.north-star-front-door .portal-input[data-state="ready"]{border-color:rgba(114,231,173,.96)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.2),inset 0 -24px 38px rgba(0,0,0,.58),0 30px 80px rgba(0,0,0,.74),0 0 60px rgba(114,231,173,.13)!important}
+
+/* Power object: white at rest, green on consequence. */
+#frontDoor.north-star-front-door .portal-input button{
+  position:absolute!important;
+  left:50%!important;
+  top:calc(100% + 18px)!important;
+  transform:translateX(-50%)!important;
+  width:230px!important;
+  height:60px!important;
+  margin:0!important;
+  border-radius:18px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,.055))!important;
+  border:1px solid rgba(255,255,255,.55)!important;
+  color:#fff!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -14px 22px rgba(0,0,0,.38),0 20px 42px rgba(0,0,0,.64)!important;
+  font-size:9px!important;
+  font-weight:800!important;
+  letter-spacing:.20em!important;
+  transition:transform .18s cubic-bezier(.16,1,.3,1),background .24s,border-color .24s,box-shadow .24s!important;
+}
+#frontDoor.north-star-front-door .portal-input button:not(:disabled):hover{transform:translateX(-50%) translateY(-4px)!important;border-color:rgba(255,255,255,.82)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.46),inset 0 -14px 22px rgba(0,0,0,.29),0 25px 52px rgba(0,0,0,.70),0 0 36px rgba(255,255,255,.055)!important}
+#frontDoor.north-star-front-door .portal-input button:not(:disabled):active,
+#frontDoor.north-star-front-door .portal-input button[data-state="active"]{transform:translateX(-50%) translateY(2px) scale(.965)!important;background:linear-gradient(145deg,#8bf1bd,#55c991)!important;border-color:#d5ffe7!important;color:#03130b!important;box-shadow:inset 0 4px 14px rgba(0,0,0,.25),0 8px 17px rgba(0,0,0,.58),0 0 48px rgba(114,231,173,.30)!important}
+#frontDoor.north-star-front-door .portal-input button:not(:disabled):focus-visible{outline:2px solid rgba(114,231,173,.8)!important;outline-offset:6px!important}
+
+#frontDoor.north-star-front-door .threshold-subline{
+  position:absolute!important;
+  left:50%!important;
+  top:calc(50% + 118px)!important;
+  width:min(430px,62%)!important;
+  margin:0!important;
+  transform:translateX(-50%)!important;
+  color:rgba(255,255,255,.45)!important;
+  font-size:10px!important;
+  letter-spacing:.13em!important;
+  line-height:1.5!important;
+}
+
+/* Subtle ambient response: the environment breathes, never performs. */
+#frontDoor.north-star-front-door .threshold-chamber{animation:nnUltimateChamber 10s ease-in-out infinite!important}
+@keyframes nnUltimateChamber{0%,100%{transform:translateZ(0) scale(1)}50%{transform:translateZ(0) scale(1.002)}}
+@keyframes nnUltimateBreath{0%,100%{opacity:.32;transform:scale(.992)}50%{opacity:.72;transform:scale(1)}}
+@keyframes nnUltimateRim{to{transform:rotate(360deg)}}
+
+@media(max-width:700px){
+  #frontDoor.north-star-front-door .threshold-chamber{width:min(92vw,78svh)!important}
+  #frontDoor.north-star-front-door .threshold-naya{top:7%!important;width:150px!important;height:92px!important}
+  #frontDoor.north-star-front-door .threshold-copy{padding-top:20%!important}
+  #frontDoor.north-star-front-door .threshold-copy>h1{font-size:clamp(34px,7.2vw,52px)!important}
+  #frontDoor.north-star-front-door .identity-portal{width:72%!important}
+  #frontDoor.north-star-front-door .threshold-subline{width:72%!important;top:calc(50% + 114px)!important}
+}
+@media(max-width:430px){
+  #frontDoor.north-star-front-door .threshold-chamber{width:94vw!important}
+  #frontDoor.north-star-front-door .threshold-naya{top:6.5%!important;width:132px!important;height:78px!important}
+  #frontDoor.north-star-front-door .threshold-copy{padding-top:18%!important}
+  #frontDoor.north-star-front-door .threshold-copy>h1{font-size:31px!important}
+  #frontDoor.north-star-front-door .threshold-eyebrow{font-size:7px!important;letter-spacing:.48em!important;text-indent:.48em!important}
+  #frontDoor.north-star-front-door .identity-portal{width:78%!important}
+  #frontDoor.north-star-front-door .portal-input{height:64px!important}
+  #frontDoor.north-star-front-door .portal-input button{width:210px!important;height:56px!important}
+  #frontDoor.north-star-front-door .threshold-subline{width:78%!important;font-size:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  #frontDoor.north-star-front-door .threshold-chamber,
+  #frontDoor.north-star-front-door .threshold-chamber:before,
+  #frontDoor.north-star-front-door .threshold-chamber:after{animation:none!important}
+}

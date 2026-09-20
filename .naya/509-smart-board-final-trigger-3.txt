@@ -1,0 +1,1 @@
+Final Smart Board runtime trigger after full-window canonical enforcement.

@@ -1,0 +1,26 @@
+{
+  "schema": "NAYA_PROJECT_V1",
+  "project_id": "PROJECT-NAYAPOWER",
+  "name": "Naya Power",
+  "status": "ACTIVE",
+  "canonical": true,
+  "created_at": "2026-09-16T19:00:00-07:00",
+  "timezone": "America/Vancouver",
+  "mission": "Build a governed, verifiable, recoverable AI-human Superbrain that can continuously advance the Intelligent Hub without losing context.",
+  "north_star": "Maximum Responsible Verified Value per Action and Moment",
+  "temporal_chain": "PROJECT -> SESSION -> ACTIVITY EVENT -> SMART NOTE -> INTELLIGENCE -> STATE -> NEXT ACTION",
+  "canonical_event_store": ".naya/memory/events/",
+  "canonical_activity_projection": "SUPERBRAIN/NAYA-ACTIVITY/DAILY/",
+  "supporting_activity_receipts": ".naya/activity/",
+  "intelligence_sources": [
+    ".naya/memory/",
+    "SUPERBRAIN/NIA-COMMUNICATION/",
+    "SUPERBRAIN/NAYA-ACTIVITY/"
+  ],
+  "current_state": "Temporal architecture is being repaired so Project, Session, Activity, and Smart Note records are durably linked and retrievable by date/time.",
+  "current_gap": "Historical records are fragmented and new session/activity/intelligence linkage is not yet fully machine-enforced.",
+  "next_action": "Implement the temporal index and runtime session/activity linkage, then prove cold-Naya seven-day retrieval.",
+  "human_authority": "Shawn Vibert",
+  "truth_rule": "Never fabricate missing history; classify gaps explicitly.",
+  "required_successor": "A cold Naya can locate current state, today's activity, recent sessions, relevant Smart Notes, evidence, and exactly one next action without conversation memory."
+}

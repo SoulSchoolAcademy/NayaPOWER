@@ -1,0 +1,53 @@
+{
+  "$schema": "naya/note-event/v3",
+  "canonical_event_id": "SE-20260830-SUPERBRAIN-COMPOUNDING-LOOP",
+  "representation": "MACHINE",
+  "status": "CANONICAL_DERIVED_REPRESENTATION",
+  "contract": {
+    "purpose": "Compound validated knowledge and wisdom across time and Naya instances.",
+    "canonical_memory_object": "Note Event",
+    "smart_note": ["shawn", "naya", "machine"],
+    "smart_links_required": true,
+    "pis_role": "Primary Intelligence System is the internal intelligence/synthesis layer for applicable Naya Note propagation.",
+    "running_feed_role": "Chronological operational-orientation projection; not a competing authority.",
+    "daily_intelligence_role": "Review daily captured intelligence, identify lessons and material changes, and promote appropriate durable knowledge/system controls.",
+    "cold_start_requirement": "A new Naya must restore current authoritative intelligence before acting.",
+    "restore_sources": [
+      "canonical Runtime Briefing",
+      "canonical Running Feed",
+      "Primary Intelligence System / intelligence hub",
+      "relevant canonical Note Events",
+      "current project state"
+    ],
+    "learning_loop": [
+      "OBSERVE",
+      "CAPTURE",
+      "PERSIST",
+      "PROPAGATE_TO_PIS",
+      "SYNTHESIZE",
+      "PUBLISH_OR_UPDATE_FEED",
+      "RESTORE",
+      "APPLY",
+      "VERIFY",
+      "LEARN_AGAIN"
+    ]
+  },
+  "state_model": {
+    "created": "canonical note event exists",
+    "persisted": "required artifacts are written",
+    "linked": "Smart Links resolve to actual persisted representations",
+    "propagated": "Naya Note entered the PIS lifecycle",
+    "verified": "evidence proves the claimed lifecycle transition",
+    "consumed": "a later Naya loaded the updated intelligence during restore"
+  },
+  "invariants": [
+    "Do not treat note persistence as proof of PIS propagation.",
+    "Do not treat PIS propagation as proof that a future Naya consumed the update.",
+    "Do not claim runtime behavior without runtime evidence.",
+    "Every meaningful Smart Note delivery requires direct Smart Links to the persisted representations.",
+    "Proactive capture must remain authorized and evidence-based.",
+    "Canonical Note Events remain the memory authority; feeds and reports are projections/synthesis layers."
+  ],
+  "optimization_target": "MAXIMUM VERIFIED VALUE PER MEANINGFUL INTERACTION",
+  "desired_system_effect": "Each validated lesson reduces future rediscovery and makes the next Naya more informed and less likely to repeat known mistakes."
+}

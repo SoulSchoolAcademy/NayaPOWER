@@ -1,0 +1,107 @@
+name: Verify Live Smart Note Receiver
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/v7-smart-note-canonical/index.ts'
+      - 'supabase/migrations/20260920160000_align_smart_note_receiver_canonical_event_identity.sql'
+      - 'supabase/migrations/20260920162000_enforce_smart_note_single_canonical_event_identity.sql'
+      - 'supabase/migrations/20260920170000_repair_smart_note_uuid_generation_namespace.sql'
+      - 'identity.html'
+      - 'NAYANET/name-first-auth-adapter.js'
+      - 'assistant-runtime.js'
+      - 'NAYANET/HUB/src/data/pis.ts'
+      - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
+      - 'NAYANET/HUB/src/app/AppShellV3.tsx'
+      - '.github/workflows/verify-live-smart-note-receiver.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  receiver:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: ${{ github.run_id }}
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute canonical production receiver proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee receiver-proof.json
+          const { chromium } = require('playwright');
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+          const hub = process.env.HUB_URL;
+          const supabaseUrl = process.env.SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+          const proofKey = 'live-smart-note-receiver-' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(6).toString('hex');
+          const title = 'LIVE Smart Note Receiver Proof ' + process.env.RUN_IDENTITY;
+          const content = 'One real Smart Note must cross the canonical receiver, persist, become an Intelligent Block, reach the Intelligence Feed, and remain attributable after reload.';
+          const alias = ('receiver' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          async function setupIdentity(page, name, smartAlias) {
+            await page.goto(hub + '/identity?naya_hold=1', { waitUntil:'networkidle', timeout:60000 });
+            await page.locator('#name').fill(name); await page.locator('#alias').fill(smartAlias); await page.locator('#enter').click();
+            await page.waitForFunction(() => !!window.NayaNETNameFirstAuth, null, { timeout:10000 });
+            let established=null;
+            for(let attempt=0;attempt<60;attempt++){established=await page.evaluate(async()=>{try{return{identity:await window.NayaNETNameFirstAuth?.current?.(),status:document.getElementById('status')?.textContent||''}}catch(error){return{identity:null,status:document.getElementById('status')?.textContent||'',error:String(error?.message||error)}}});if(established.identity?.authenticated&&established.identity?.userId)break;await new Promise(r=>setTimeout(r,500))}
+            if(!established.identity?.authenticated||!established.identity?.userId)throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
+            return page.evaluate(async()=>{const identity=await window.NayaNETNameFirstAuth.current();const client=window.__NayaNETSupabaseClient;const session=client?(await client.auth.getSession()).data.session:null;return{identity,session:session?{userId:session.user.id,access_token:session.access_token}:null,adapterClient:Boolean(client)}});
+          }
+          async function pageBCheckPrivacy({browser,supabaseUrl,supabaseKey,eventId}){const context=await browser.newContext();const page=await context.newPage();try{return await page.evaluate(async({supabaseUrl,supabaseKey,eventId})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:false,autoRefreshToken:false}});return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle()},{supabaseUrl,supabaseKey,eventId})}finally{await context.close()}}
+          async function callReceiver(session,payload){const response=await fetch(supabaseUrl+'/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':supabaseKey,'Content-Type':'application/json','x-idempotency-key':payload.idempotency_key},body:JSON.stringify(payload)});return{status:response.status,body:await response.json().catch(()=>({}))}}
+          async function callAnonymous(payload){const response=await fetch(supabaseUrl+'/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{'apikey':supabaseKey,'Content-Type':'application/json'},body:JSON.stringify(payload)});return{status:response.status,body:await response.json().catch(()=>({}))}}
+          async function query(page,query){return page.evaluate(async({supabaseUrl,supabaseKey,query})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});return await client.from(query.table).select(query.select).match(query.match).limit(query.limit||50)},{supabaseUrl,supabaseKey,query})}
+          (async()=>{const trace=[];const mark=(x,v={})=>{trace.push({step:x,at:new Date().toISOString(),...v});console.log('HUMAN_UI_TRACE',JSON.stringify(trace.at(-1)))};mark('START');const browser=await chromium.launch({headless:true});const contextA=await browser.newContext();const pageA=await contextA.newPage();const first=await setupIdentity(pageA,'Naya Receiver Proof',alias);
+            const payload={idempotency_key:proofKey,subject:title,in_a_nutshell:'Verified production receiver chain.',human_note:{id:'HN-'+proofKey,text:content,subject:title,type:'insight'},naya_note:{id:'NN-'+proofKey,text:'Naya received, interpreted, and preserved the Smart Note through the canonical receiver.'},child_grandma:'A fresh Naya can find and use this intelligence later.',source:'naya-production-receiver-proof'};
+            const firstCall=await callReceiver(first.session,payload);if(firstCall.status!==200||!firstCall.body?.ok)throw new Error('LIVE_RECEIVER_CREATE_FAILED:'+JSON.stringify(firstCall));const tx=firstCall.body.transaction;const smartNoteEventId=tx?.evidence?.event_id||tx?.hub_state?.event_id;if(!smartNoteEventId)throw new Error('SMART_NOTE_CANONICAL_EVENT_ID_MISSING');
+            const duplicateCall=await callReceiver(first.session,payload);if(duplicateCall.status!==200||!duplicateCall.body?.ok)throw new Error('LIVE_RECEIVER_DUPLICATE_FAILED:'+JSON.stringify(duplicateCall));if(duplicateCall.body.transaction?.id!==tx.id)throw new Error('LIVE_RECEIVER_IDEMPOTENCY_ID_CHANGED');
+            const malformed=await callReceiver(first.session,{idempotency_key:'malformed-'+proofKey});if(malformed.status!==400||!String(malformed.body?.error||'').includes('HUMAN_AND_NAYA_NOTES_REQUIRED'))throw new Error('LIVE_RECEIVER_MALFORMED_NOT_REJECTED:'+JSON.stringify(malformed));
+            const unauthorized=await callAnonymous({idempotency_key:'unauthorized-'+proofKey,human_note:{text:'unauthorized'},naya_note:{text:'unauthorized'}});if(unauthorized.status!==401||!String(unauthorized.body?.error||'').includes('AUTHORIZATION_REQUIRED'))throw new Error('LIVE_RECEIVER_UNAUTHORIZED_NOT_REJECTED:'+JSON.stringify(unauthorized));
+            if(tx?.status!=='completed')throw new Error('SMART_NOTE_TRANSACTION_NOT_COMPLETED:'+JSON.stringify(tx));if(tx?.human_note?.id!==payload.human_note.id||tx?.naya_note?.id!==payload.naya_note.id)throw new Error('SMART_NOTE_CANONICAL_NOTE_ARTIFACTS_MISMATCH');if(!tx?.machine_note||!tx?.intelligent_feed||!tx?.intelligent_block)throw new Error('SMART_NOTE_CANONICAL_ARTIFACT_SET_INCOMPLETE');if(tx.intelligent_block?.block_id!==smartNoteEventId)throw new Error('SMART_NOTE_BLOCK_IDENTITY_MISMATCH:'+JSON.stringify(tx.intelligent_block));if(tx?.evidence?.event_id!==smartNoteEventId||!tx?.evidence?.receipt_id)throw new Error('SMART_NOTE_RECEIPT_LINEAGE_INCOMPLETE:'+JSON.stringify(tx?.evidence));if(!Array.isArray(tx?.evidence?.chain)||tx.evidence.chain.length<5)throw new Error('SMART_NOTE_EVIDENCE_CHAIN_INCOMPLETE');if(tx?.hub_state?.event_id!==smartNoteEventId||tx?.hub_state?.smart_note_created!==true||tx?.hub_state?.intelligent_block_created!==true||tx?.hub_state?.feed_updated!==true)throw new Error('SMART_NOTE_HUB_STATE_INCOMPLETE:'+JSON.stringify(tx?.hub_state));
+            await pageA.goto(hub+'/',{waitUntil:'networkidle',timeout:60000});await pageA.waitForFunction(()=>!!window.NayaAssistantRuntime,null,{timeout:30000});await pageA.evaluate(async()=>{await window.NayaAssistantRuntime.init()});const cognition=await pageA.evaluate(async({eventId})=>window.NayaAssistantRuntime.retrieve(eventId),{eventId:smartNoteEventId});const cognitionRow=(cognition||[])[0];if(!cognitionRow)throw new Error('COGNITION_BRIDGE_NOT_PERSISTED');if(cognitionRow.event_id!==smartNoteEventId)throw new Error('COGNITION_IDENTITY_MISMATCH:'+cognitionRow.event_id);if(cognitionRow.metadata?.smart_note_event_id!==smartNoteEventId)throw new Error('COGNITION_SOURCE_LINEAGE_MISSING:'+JSON.stringify(cognitionRow.metadata));if(cognitionRow.status!=='verified'&&cognitionRow.status!=='active')throw new Error('COGNITION_STATUS_UNEXPECTED:'+cognitionRow.status);const cognitionEventId=cognitionRow.event_id;
+            const index=await query(pageA,{table:'nayanet_intelligence_index',select:'id,source_table,source_id,object_type,title,status,metadata',match:{source_table:'nayanet_cognition_events',source_id:cognitionRow.id},limit:5});if(index.error||!index.data?.length)throw new Error('INTELLIGENCE_INDEX_PROJECTION_MISSING:'+JSON.stringify(index));if(cognitionRow.project_id!=='SMART_NOTE'&&cognitionRow.project_id!=='NayaNET')throw new Error('COGNITION_PROJECT_UNEXPECTED:'+cognitionRow.project_id);
+            const ledger=await pageA.evaluate(async({cognitionRowId})=>(await window.NayaAssistantRuntime.listSmartLedger()).filter(row=>row.source_table==='nayanet_cognition_events'&&row.source_id===cognitionRowId),{cognitionRowId:cognitionRow.id});if(!ledger.length)throw new Error('SMART_LEDGER_COGNITION_LINEAGE_MISSING');const ledgerRow=ledger[0];
+            await pageA.goto(hub+'/feed?event_id='+encodeURIComponent(cognitionEventId)+'&receiver_proof='+encodeURIComponent(proofKey),{waitUntil:'networkidle',timeout:60000});await pageA.waitForSelector('.smart-feed-board',{timeout:30000});const renderedIds=await pageA.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')})));if(!renderedIds.some(row=>row.eventId===cognitionEventId))throw new Error('HUB_RENDER_EXACT_EVENT_MISSING:'+JSON.stringify({expected:cognitionEventId,rendered:renderedIds}));const rendered=await pageA.locator('[data-event-id="'+cognitionEventId+'"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));if(rendered.eventId!==cognitionEventId||!String(rendered.title||'').includes(title))throw new Error('HUB_RENDER_EVENT_MISMATCH:'+JSON.stringify(rendered));
+            await pageA.reload({waitUntil:'networkidle'});await pageA.waitForSelector('[data-event-id="'+cognitionEventId+'"]',{timeout:30000});const restored=await pageA.locator('[data-event-id="'+cognitionEventId+'"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));if(restored.eventId!==cognitionEventId)throw new Error('HUB_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
+            const freshStorageState=await contextA.storageState();const freshContext=await browser.newContext({storageState:freshStorageState});const freshPage=await freshContext.newPage();try{await freshPage.goto(hub+'/feed?event_id='+encodeURIComponent(cognitionEventId)+'&receiver_proof='+encodeURIComponent(proofKey),{waitUntil:'networkidle',timeout:60000});await freshPage.waitForFunction(()=>!!window.NayaNETNameFirstAuth,null,{timeout:30000});const freshIdentity=await freshPage.evaluate(async()=>{const identity=await window.NayaNETNameFirstAuth.current();const client=window.__NayaNETSupabaseClient;const session=client?(await client.auth.getSession()).data.session:null;return{identity,sessionUserId:session?.user?.id||null,adapterClient:!!client}});if(!freshIdentity.identity?.authenticated||freshIdentity.identity?.userId!==first.session.userId||freshIdentity.sessionUserId!==first.session.userId)throw new Error('FRESH_CONTEXT_IDENTITY_FAILED:'+JSON.stringify(freshIdentity));await freshPage.waitForSelector('.smart-feed-board',{timeout:30000});const freshBoards=await freshPage.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')})));if(!freshBoards.some(row=>row.eventId===cognitionEventId))throw new Error('FRESH_CONTEXT_RENDER_EXACT_EVENT_MISSING:'+JSON.stringify({expected:cognitionEventId,rendered:freshBoards}));await freshPage.waitForFunction(()=>!!window.NayaAssistantRuntime,null,{timeout:30000});const freshRuntime=await freshPage.evaluate(async({expectedEventId})=>{const runtime=window.NayaAssistantRuntime;const snapshot=runtime.snapshot?.();const rows=await runtime.retrieve(expectedEventId);const row=rows?.[0]||null;return{snapshot,row:row?{id:row.id,event_id:row.event_id,metadata:row.metadata,status:row.status}:null}},{expectedEventId:cognitionEventId});if(!freshRuntime.snapshot?.authenticated||freshRuntime.snapshot?.user_id!==first.session.userId||freshRuntime.row?.event_id!==cognitionEventId||freshRuntime.row?.metadata?.smart_note_event_id!==smartNoteEventId)throw new Error('FRESH_CONTEXT_RUNTIME_LINEAGE_FAILED:'+JSON.stringify(freshRuntime));const freshRendered=await freshPage.locator('[data-event-id="'+cognitionEventId+'"]').evaluate(node=>({eventId:node.getAttribute('data-event-id'),title:node.getAttribute('data-event-title')}));if(freshRendered.eventId!==cognitionEventId)throw new Error('FRESH_CONTEXT_DOM_IDENTITY_FAILED:'+JSON.stringify(freshRendered));}finally{await freshContext.close()}
+            const wrongOwnerId=crypto.randomUUID();const wrongOwner=await pageA.evaluate(async({supabaseUrl,supabaseKey,ownerId,payload})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});const response=await client.rpc('v7_create_smart_note',{p_idempotency_key:'wrong-owner-'+payload.idempotency_key,p_user_id:ownerId,p_human_note:payload.human_note,p_naya_note:{...payload.naya_note},p_machine_note:{wrong_owner:true},p_intelligent_feed:{wrong_owner:true},p_intelligent_block:{wrong_owner:true},p_evidence:{wrong_owner:true},p_hub_state:{wrong_owner:true},p_subject:'wrong-owner'});return{data:response.data,error:response.error?.message||null}},{supabaseUrl,supabaseKey,ownerId:wrongOwnerId,payload});if(!String(wrongOwner.error||'').includes('SMART_NOTE_USER_MISMATCH'))throw new Error('WRONG_OWNER_NOT_REJECTED:'+JSON.stringify(wrongOwner));
+            const privacy=await pageBCheckPrivacy({browser,supabaseUrl,supabaseKey,eventId:smartNoteEventId});if(privacy.data)throw new Error('PRIVATE_SMART_NOTE_LEAKED_TO_UNAUTHENTICATED:'+JSON.stringify(privacy.data));
+            const proof={status:'VERIFIED',proof_key:proofKey,owner_user_id:first.session.userId,smart_note_event_id:smartNoteEventId,cognition_event_id:cognitionEventId,intelligence_index_id:index.data[0].id,ledger_event_id:ledgerRow.ledger_event_id,transaction_id:tx.id,duplicate_transaction_id:duplicateCall.body.transaction?.id,checks:{receive_validate_persist:'PASS',verified_receipt:'PASS',four_canonical_artifacts:'PASS',cognition_bridge:'PASS',intelligence_index_via_hub:'PASS',smart_ledger:'PASS',hub_render:'PASS',reload_identity:'PASS',fresh_authenticated_context:'PASS',duplicate_idempotency:'PASS',malformed_rejection:'PASS',unauthorized_rejection:'PASS',wrong_owner_rejection:'PASS',private_by_default:'PASS'}};fs.writeFileSync('receiver-proof-machine.json',JSON.stringify(proof)+'\n','utf8');console.log(JSON.stringify(proof));await contextA.close();await browser.close()})().catch(err=>{console.error(err);process.exit(1)});
+          NODE
+
+      - name: Verify machine-readable receiver proof
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path("receiver-proof-machine.json")
+          payload=json.loads(p.read_text(encoding="utf-8"))
+          assert payload["status"]=="VERIFIED",payload
+          required={"receive_validate_persist","verified_receipt","four_canonical_artifacts","cognition_bridge","intelligence_index_via_hub","smart_ledger","hub_render","reload_identity","fresh_authenticated_context","duplicate_idempotency","malformed_rejection","unauthorized_rejection","wrong_owner_rejection","private_by_default"}
+          checks=payload["checks"];assert required<=checks.keys(),sorted(required-checks.keys());assert all(checks[k]=="PASS" for k in required),checks
+          assert payload["smart_note_event_id"] and payload["cognition_event_id"] and payload["intelligence_index_id"] and payload["ledger_event_id"]
+          assert payload["transaction_id"]==payload["duplicate_transaction_id"]
+          print("LIVE_SMART_NOTE_RECEIVER_PROOF=PASS")
+          print(json.dumps({"status":payload["status"],"checks":checks},sort_keys=True))
+          PY
+
+# Execution-trigger marker: canonical Smart Note receiver trace requested from current main.
+
+# Re-run after canonical React Hub deployment so the human capture control is exercised against current live source.

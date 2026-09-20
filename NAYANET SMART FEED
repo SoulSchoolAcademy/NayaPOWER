@@ -1,0 +1,540 @@
+# NayaNET Intelligent Hub — Ultimate Intelligent Feed Master Directive v1.0 — 2026-09-10
+
+**CANONICAL MASTER EXECUTION DIRECTIVE**  
+
+**Effective:** 2026-09-10  
+
+**Status:** CURRENT / AUTHORITATIVE FOR INTELLIGENT FEED WORK
+
+## 1. Mission
+
+NayaNET is not building another social feed or AI dashboard. The **Intelligent Feed** is the primary human-facing interface to NayaNET intelligence. Its job is to transform experience, information, evidence, AI analysis, conversations, documents, lessons, problems, solutions, and discoveries into intelligence a human can understand quickly, remember, connect, evaluate, and use.
+
+**EXPERIENCE → CAPTURE → ANALYZE → DISTILL → UNDERSTAND → VERIFY → LEARN → MEAN → ACT → CONNECT → REMEMBER → COMPOUND**
+
+The Superbrain is the intelligence infrastructure underneath. Naya is the reasoning/synthesis layer. The human supplies lived experience, judgment, meaning, choice, and action. The Intelligent Feed is the human-facing manifestation of that system.
+
+> **Do not make the user read the intelligence. Make the intelligence reveal itself.**
+> 
+
+> **Complexity belongs underneath. Clarity belongs above.**
+> 
+
+## 2. Definition: Smart Feed
+
+A **Smart Feed** is a living, searchable stream of **Intelligence Events**. It is not simply a chronological list of posts.
+
+One event may originate from a question, human experience, conversation, document, source, lesson, problem, solution, AI discovery, or other meaningful input. Naya distills it into structured intelligence, preserves provenance and uncertainty, connects it to existing knowledge, and makes it actionable.
+
+A Smart Feed should therefore feel like a **living intelligence library in motion**.
+
+## 3. Smart Feed vs Intelligent Feed
+
+**Smart Feed** = the visible product surface: the stream the user scrolls.  
+
+**Intelligent Feed** = the intelligence architecture expressed through that surface: events are distilled, structured, contextualized, evidence-aware, connected, and usable.
+
+A normal feed asks: **What was posted?**
+
+NayaNET asks: **What happened? What is it? What does it mean? What should I learn? How can I use it? Can I trust it? What does it connect to?**
+
+## 4. Three feed lenses
+
+These are three views over the **same Intelligence Events**. Changing a lens must never destroy event identity, provenance, relationships, saves, ratings, or interactions.
+
+### ACTIVITY — movement
+
+Answers: **“What is happening?”**
+
+Shows recent captures, new intelligence, updates, interactions, saves, shares, evidence changes, connections, and Smart Space activity. It may be chronological or intelligently ranked, but it must never become a noisy social ticker.
+
+### PERSONAL INTELLIGENCE — ownership + relevance
+
+Answers: **“What is becoming part of MY intelligence?”**
+
+Prioritizes the user's captures, saved intelligence, Smart Lists, Smart Spaces, learning history, connections, active context, unresolved questions, and useful follow-ups. It is the user's evolving external memory and learning environment.
+
+### EFFECTIVE INTELLIGENCE — usefulness + value
+
+Answers: **“What intelligence is most useful right now?”**
+
+Prioritizes relevance, evidence/trust quality, demonstrated usefulness, freshness where freshness matters, connection strength, actionability, learning value, active goals, and context.
+
+**Truth rule:** engagement must never silently outrank truth. Popular does not mean trustworthy. Emotional does not mean accurate.
+
+**Activity = movement. Personal Intelligence = ownership/relevance. Effective Intelligence = usefulness/value.**
+
+## 5. Atomic unit: one Intelligence Event = one Board
+
+The board is not a conventional post, generic card, dashboard panel, or grid of unrelated AI cards.
+
+It must communicate one coherent object:
+
+**ONE THING → MANY WAYS TO UNDERSTAND IT → EVIDENCE → LEARNING → ACTION → CONNECTION → HUMAN RESPONSE**
+
+## 6. The most important visual requirement: living depth
+
+The Intelligent Board must **look physically elevated**.
+
+The depth stack is:
+
+**PAGE/BACKGROUND → MAIN OBSIDIAN BOARD → ELEVATED INNER INTELLIGENCE BOARDS → TACTILE CONTROLS**
+
+The main board must visibly float above the page. It needs layered deep shadows, subtle upper-edge highlights, material separation, controlled semantic glow, and restrained perspective/light cues.
+
+Then every inner section — **IN A NUTSHELL, HUMAN, CHILD, GRANDMA, NAYA, MACHINE, LEARNING, MEANING, ACTION, TRUST, CONNECTIONS** — must itself be an independently elevated surface above the main board.
+
+The user should perceive **multiple layers coming forward toward them**.
+
+A 1px border is not elevation. One generic shadow on the entire board is not elevation. Flat dark rectangles are not acceptable.
+
+The reference quality is the existing 5:09 Nutshell surface where the inner surface appears to sit forward. That physical language must extend through the entire board.
+
+### Depth execution
+
+- Main board shadow: deep, broad, soft, multi-layered.
+- Main board edge: subtle highlight that establishes the upper plane.
+- Inner board shadow: distinct from main-board shadow.
+- Inner board edge: subtle semantic-color keyline/highlight.
+- Ambient glow: restrained and tied to the board/section color.
+- Hover: slight increase in elevation, never layout jumping.
+- No gratuitous animation.
+- The effect should feel like **living material**, not a gimmicky 3D demo.
+
+## 7. Main material and palette
+
+Primary material is **obsidian / near-black**, not gray.
+
+Canonical palette:
+
+- Obsidian **#050507**
+- Deep panel **#0B0B10**
+- White **#FFFFFF**
+- Muted **#A9A4B1**
+- Royal Purple **#7C4DFF**
+- Indigo **#6675FF**
+- Sapphire **#55B9EE**
+- Emerald **#55E39A**
+- Gold **#E8C766**
+- Magenta **#D86CFF**
+
+Obsidian remains dominant. Color communicates semantic identity; it is not decorative neon.
+
+## 8. Outer-board color progression
+
+Across the feed, board accents should use a deliberate spectrum progression:
+
+**PURPLE → ROYAL PURPLE → INDIGO → SAPPHIRE/BLUE → EMERALD → GOLD → MAGENTA**
+
+Use the appropriate subset for the event. Do not randomly recolor boards.
+
+Color should mainly appear in edge/keyline, ambient glow, selected states, and semantic accents while the obsidian material remains dominant.
+
+## 9. Inner-section color grammar
+
+Default semantic accents:
+
+- **HUMAN — MAGENTA #D86CFF**
+- **CHILD — ROYAL PURPLE #7C4DFF**
+- **GRANDMA — INDIGO #6675FF**
+- **NAYA — SAPPHIRE #55B9EE**
+- **MACHINE — EMERALD #55E39A**
+- **LEARNING — GOLD #E8C766 + WHITE**
+
+Meaning, Action, Trust, and Connections use restrained white/indigo/semantic treatment unless a later dated directive supersedes this mapping.
+
+The inner colors should echo the outer board's identity so the entire event reads as one coherent system.
+
+## 10. Vertical comprehension architecture
+
+Inner sections are **full-width, vertical, one after another**.
+
+Never place Human / Child / Grandma / Naya / Machine side-by-side in a desktop grid.
+
+Default order:
+
+1. **IN A NUTSHELL**
+2. **HUMAN**
+3. **CHILD**
+4. **GRANDMA**
+5. **NAYA**
+6. **MACHINE**
+7. **LEARNING**
+8. **MEANING**
+9. **ACTION**
+10. **TRUST**
+11. **CONNECTIONS**
+
+This is a default grammar, not a rigid form. Omit sections that do not improve understanding. Never manufacture filler.
+
+## 11. Content-length agnostic law
+
+A 20-word section and a 2,000-word section must both remain beautiful.
+
+**The content determines the height.**
+
+Never shrink typography, compress line-height, force fixed heights, truncate useful intelligence, squeeze sections into columns, or distort content to preserve a visual ratio.
+
+**The interface adapts to intelligence. Intelligence does not adapt to the interface.**
+
+## 12. Section execution specification
+
+### IN A NUTSHELL
+
+Highest visual priority. The smallest useful explanation containing the actual essence. Large confident type, maximum contrast, generous breathing room, clear headline, concise support, elevated surface. If only this is read, the user should understand what the subject is.
+
+### HUMAN
+
+Translate intelligence into lived human reality, emotion, relevance, and context. Magenta semantic accent. Elevated surface. Warm, highly readable white typography. Answer: **What does this mean in real life?**
+
+### CHILD
+
+Simplest accurate explanation. Royal-purple accent. One clean analogy/example when useful. Never childish decoration. Answer: **Can this be understood simply without becoming wrong?**
+
+### GRANDMA
+
+Durable wisdom, consequence, mistakes to avoid, and what survives technical language. Indigo accent. Calm, authoritative presentation. Answer: **What wisdom should stay with me?**
+
+### NAYA
+
+Synthesis, not repetition. Sapphire accent. Show patterns, implications, contradictions, opportunities, risks, relationships, and unanswered questions. Clearly distinguish known, inferred, uncertain, and unknown. Naya must be willing to say **UNKNOWN / UNVERIFIED / I DON'T KNOW**. Answer: **What does the intelligence reveal when connected?**
+
+### MACHINE
+
+Evidence and operational reality. Emerald accent. Show observations, measurements, tests, sources, architecture/runtime state where relevant, and limitations. Technical but readable; never a wall of code. Answer: **What does the evidence actually show?**
+
+### LEARNING
+
+Durable memory. Gold + white. Extract what should still be remembered tomorrow. Allow direct saving of useful learning. Answer: **What should I remember?**
+
+### MEANING
+
+Significance and consequence. Strong white typography with restrained semantic accent. Do not repeat Nutshell. Answer: **Why does this matter?**
+
+### ACTION
+
+Convert understanding into useful movement. Present one primary next move and optional secondary actions. Concrete, not vague motivation. Answer: **What can I do with this?**
+
+### TRUST
+
+Make epistemic status visible. Distinguish **FACT / OBSERVATION / INTERPRETATION / HYPOTHESIS / UNKNOWN / SOURCE**. Show grounded confidence/trust state and inspectable provenance where available. Answer: **How much should I believe this, and why?**
+
+### CONNECTIONS
+
+Make intelligence compound. Show related Intelligence Events, Smart Notes, Smart Lists, Smart Spaces, people, experiences, problems, solutions, documents, research, and conversations. Connections must be actionable and navigable. Answer: **What does this belong to, and what else does it connect to?**
+
+## 13. Exact board controls
+
+### TOP LEFT — CREATE SPACE
+
+Creates a meaningful persistent Smart Space/context for the intelligence.
+
+### TOP RIGHT — SAVE / FAVORITE
+
+Saves the Intelligence Event into **Smart List**. Favorite is a personal quality signal; Save is persistence. They may share a control if the underlying states remain coherent.
+
+### BOTTOM LEFT — LOVE / LIKE / RANK
+
+**Love:** heart; white when unselected, red when selected.  
+
+**Like:** thumbs-up; white when unselected, indigo blue when selected.  
+
+**Rank:** five-star interaction.
+
+### BOTTOM CENTER — RATE THIS INTELLIGENCE
+
+Use a clear label such as **Rate This Intelligence** / **Rate This Intel**, with the five-star interaction centered in the bottom interaction zone. Rating is persistent and belongs to the Intelligence Event.
+
+### BOTTOM RIGHT — SHARE INTEL +
+
+The plus is the share action. Desktop opens the sharing workflow. Mobile should use device sharing where supported. Sharing preserves event identity, context, and provenance.
+
+## 14. Smart List behavior
+
+Save flow:
+
+**INTELLIGENCE BOARD → SAVE → SMART LIST**
+
+Smart List is the user's persistent intelligence shelf. Users can save, favorite, organize into custom lists, retrieve later, continue learning, connect, associate with Smart Spaces, and share.
+
+A saved item remains the same Intelligence Event. Never create a disconnected duplicate merely because it was saved.
+
+## 15. Smart Space behavior
+
+A Smart Space is a living context around a subject, goal, project, question, relationship, or body of knowledge.
+
+Flow:
+
+**CREATE SPACE → DEFINE CONTEXT → BOARD BECOMES PART OF SPACE → FUTURE RELATED INTELLIGENCE CAN ACCUMULATE THERE**
+
+A Smart Space is not merely a folder. It is a context in which intelligence compounds.
+
+## 16. Sidebar relationships
+
+The Intelligent Feed is one surface in the broader NayaNET intelligence environment.
+
+- **Your Intelligence Today** — current personal intelligence pulse/highest-value understanding.
+- **Your Reports** — generated reports over accumulated intelligence.
+- **Intelligent Library** — broad persistent intelligence repository.
+- **Smart Lists** — saved/favorited/organized intelligence.
+- **Smart Share** — sharing/distribution.
+- **Your Evidence** — sources/provenance/verification/supporting material.
+- **Your Connections** — relationships among intelligence, people, concepts, experiences, and spaces.
+- **Smart Mail** — communication that can become persistent intelligence.
+- **Smart Spaces** — living contexts where intelligence compounds.
+
+The sidebar is navigation through the intelligence system, not a collection of duplicate labels.
+
+## 17. Search / Talk to Naya
+
+The search surface should support:
+
+**SEARCH OR TALK TO NAYA**
+
+It can find existing intelligence or ask Naya to explain, connect, verify, interpret, or create intelligence.
+
+There must be no competing flashing philosophical statement immediately beneath Search.
+
+The NayaNET statement belongs as a stable, beautiful, centered statement near the bottom of the page:
+
+**YOUR LIFE CREATES YOUR INTELLIGENCE EVERY DAY.**
+
+**CAPTURE → UNDERSTAND → REMEMBER → COMPOUND → USE**
+
+No first-load flash. No layout shift.
+
+## 18. Remove known non-value UI
+
+Remove:
+
+**View · Scam · Learn · Verify · Operate · Explore · Teach**
+
+because this bar currently adds cognitive noise without a sufficiently clear product function.
+
+Also remove the random code/text blocks at the bottom of the center area and replace them with the correct Intelligent Board feed surfaces.
+
+Remove duplicate feeds, decorative cards with no function, dead buttons, fake interactions, tiny text, and flat surfaces pretending to be elevated.
+
+## 19. Typography
+
+Use **Inter / system-ui / Segoe UI fallback** unless a later dated brand-font directive supersedes it.
+
+Guidance:
+
+- primary board/title ~34–56px;
+- Nutshell lead ~28–44px;
+- section headings ~18–28px;
+- primary body ~15–18px;
+- metadata ~10–12px.
+
+These are hierarchy guides, not permission to shrink content. Readability always wins.
+
+## 20. Composition
+
+The center feed is the hero.
+
+Desktop composition:
+
+**PRECISION SIDEBAR → PRIMARY INTELLIGENCE STAGE → OPTIONAL CONTEXTUAL NAYA/RELATIONSHIP RAIL**
+
+Do not allow secondary panels to visually compete with the Intelligence Board.
+
+The board should feel wide, premium, cinematic, dimensional, and calm enough to read.
+
+## 21. Motion
+
+Use restrained tactile motion only:
+
+- hover raises controls slightly;
+- selected states visibly change;
+- focus is obvious;
+- transitions are short and smooth;
+- elevation may subtly increase on hover;
+- no flashing content;
+- no uncontrolled layout shifts;
+- no gratuitous particles;
+- no animation that interferes with reading.
+
+**Living depth means physical visual layering, not constant animation.**
+
+## 22. Progressive disclosure
+
+The intended comprehension journey is:
+
+**GLANCE → UNDERSTAND → LEARN → MEAN → ACT → TRUST → CONNECT → EXPLORE DEEPLY**
+
+Essential meaning comes first. Detailed reasoning, raw source material, counterarguments, history, technical traces, and deeper evidence remain available beneath expandable surfaces.
+
+Do not hide essential meaning merely to make the interface look clean.
+
+## 23. Adaptive comprehension
+
+Long-term direction: Naya can learn how much explanation the user needs. If understanding is demonstrated, a layer can be compressed while preserving access to depth. If the user struggles, Naya can expand Child, Human, analogy, examples, or explanation.
+
+This is **Adaptive Comprehension**. Do not claim it is implemented until it is actually implemented and independently verified.
+
+## 24. Data/rendering contract
+
+Renderer receives structured Intelligence Event data rather than a preformatted wall of prose.
+
+The model should support, as applicable:
+
+- event identity;
+- source/raw input;
+- title/topic;
+- nutshell;
+- perspectives;
+- learning;
+- meaning;
+- action;
+- trust/provenance;
+- connections;
+- privacy/status;
+- timestamps;
+- reactions;
+- rating;
+- saves/favorites;
+- Smart Lists;
+- Smart Spaces;
+- sharing state.
+
+The renderer chooses the smallest sufficient section set for each event.
+
+## 25. Accessibility
+
+Premium must remain readable: high contrast, meaningful icon labels, adequate tap targets, visible focus states, no information communicated only through color, obvious selected/unselected states, and no motion required to understand content.
+
+## 26. Non-regression / source-of-truth law
+
+The **5:09 NayaNET Hub is the foundation, not the goal**. It is the proven house containing valuable shell, navigation, content, interactions, dimensionality, Naya presence, and feed ideas. Existing middle-feed prototypes are research/specimen material.
+
+Keep what is genuinely right. Replace what is structurally wrong.
+
+**509 FOUNDATION → FORENSIC INSPECTION → IDENTIFY VALUE → IDENTIFY DEFECTS → SURGICAL REPLACEMENT → VERIFY → ADVANCE**
+
+Do not rebuild the whole house because one room is wrong. Do not preserve a bad room merely because it already exists.
+
+## 27. Definition of RIGHT
+
+A correct board:
+
+- feels like one coherent intelligence object;
+- visibly floats above the page;
+- contains inner surfaces that visibly float above the main board;
+- creates multiple layers coming forward;
+- uses obsidian as the dominant material;
+- uses semantic color with restraint;
+- keeps sections vertical and full-width;
+- lets long content become taller;
+- makes Nutshell immediately understandable;
+- uses Human/Child/Grandma/Naya/Machine as genuinely different comprehension modes;
+- converts understanding into Learning/Meaning/Action;
+- makes Trust visible and honest;
+- makes Connections navigable and compounding;
+- uses the exact control placement;
+- connects Save to Smart List;
+- connects Create Space to Smart Spaces;
+- connects Share Intel to sharing;
+- lets Activity/Personal/Effective change the lens without creating unrelated copies.
+
+A wrong board:
+
+- is a perspective grid;
+- uses tiny text;
+- uses fixed-height intelligence boxes;
+- is flat;
+- uses one generic shadow as fake 3D;
+- uses random neon decoration;
+- contains competing banners;
+- duplicates the feed;
+- contains dead buttons;
+- looks like generic social media or SaaS;
+- buries Trust in microscopic metadata;
+- treats popularity as truth;
+- truncates intelligence to preserve a visual ratio.
+
+## 28. 10/10 scorecard
+
+Score 0–10:
+
+1. Intelligence quality
+2. Comprehension
+3. Visual hierarchy
+4. 3D living depth
+5. Typography/readability
+6. Semantic color system
+7. Interaction/functionality
+8. Memory/Smart List behavior
+9. Trust/provenance
+10. Connections/compounding
+11. Responsive quality
+12. Non-regression against 509
+13. Performance/stability
+14. Practical usefulness
+15. Category-level product distinction
+
+**Release minimum: 9.5. Desired: 9.99+.**
+
+A beautiful screenshot is not evidence of a 10.
+
+## 29. Evidence gate
+
+Never declare “done,” “10/10,” “production ready,” or “working” from source code alone.
+
+For consequential deployment changes verify:
+
+**SOURCE → BUILD → DEPLOYMENT → EXACT PUBLIC RUNTIME → INDEPENDENT OBSERVATION**
+
+Report exact GitHub commit/PR, build/test evidence, deployment identity, runtime evidence, independent visual/functional observation, and remaining defects when applicable.
+
+## 30. Master execution command to every Naya
+
+You are not being asked to invent a generic new feed. You are being asked to understand NayaNET and implement this exact product language.
+
+Before editing:
+
+1. Inspect the actual 509 source and current runtime.
+2. Identify what already works.
+3. Identify what is actually wrong.
+4. Map every proposed change to this directive.
+5. Make the smallest change that creates the largest real improvement.
+6. Preserve unrelated working functionality.
+7. Test every changed interaction.
+8. Verify real desktop and mobile dimensions.
+9. Verify deployment/runtime when applicable.
+10. Report evidence, not adjectives.
+
+If it looks like a generic SaaS dashboard, stop and correct it.
+
+If users must squint, stop and correct it.
+
+If the board is flat, stop and correct it.
+
+If inner sections are squeezed into a grid, stop and correct it.
+
+If controls are decorative, stop and correct them.
+
+If Save does not persist into Smart List, stop and correct it.
+
+If Create Space does not create meaningful context, stop and correct it.
+
+If Trust is fabricated or hidden, stop and correct it.
+
+If Connections are decorative rather than navigable, stop and correct them.
+
+If the new version is less useful or less beautiful than the proven foundation, it is a regression and must not ship.
+
+## 31. Final product definition
+
+A person looking at one Intelligent Board should immediately feel:
+
+**“This is not a post. This is a piece of intelligence.”**
+
+They see the essence first. They choose depth. They can understand it from different perspectives. They can distinguish known from unknown. They can remember it, use it, save it, place it into a living Space, share it, and connect it to everything else they know.
+
+When they return later, the intelligence remains available and can become more useful because new intelligence has connected to it.
+
+> **NayaNET does not merely deliver information. It turns information and experience into usable, connected, compounding human intelligence.**
+> 
+
+**CURRENT AS OF 2026-09-10. Future changes must be date-stamped, explicitly versioned, and state what they supersede.**

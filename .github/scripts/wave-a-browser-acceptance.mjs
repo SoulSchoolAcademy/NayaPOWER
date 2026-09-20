@@ -51,7 +51,7 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           const listName='Wave A live acceptance '+project;
           const createListButton=ap.getByRole('button',{name:'＋ CREATE SMART LIST',exact:true});await createListButton.click();
           await ap.getByLabel('New Smart List name').fill(listName);
-          
+          await ap.getByRole('dialog').getByRole('button',{name:'CREATE SMART LIST',exact:true}).click();
           await ap.waitForTimeout(700);
           const listCard=ap.locator('.feature-card').filter({hasText:listName}).first();if(await listCard.count()!==1)throw Error('SMART_LIST_CREATE_NOT_VISIBLE');
           const smartLists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());const createdList=smartLists.find(x=>x.name===listName);if(!createdList?.id)throw Error('SMART_LIST_RUNTIME_RETRIEVAL_FAILED');

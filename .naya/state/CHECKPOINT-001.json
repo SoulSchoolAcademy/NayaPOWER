@@ -1,0 +1,104 @@
+{
+  "$schema": "naya-power-progress-index/v1",
+  "status": "CANONICAL",
+  "acceptance_law": {
+    "floor": 9.0,
+    "target": 9.5,
+    "objective": 10.0,
+    "rule": "Nothing below 9.0 is accepted. Not 'probably good', not 'looks good', not 'the code is there'. Rejected until repaired. A later drop from an accepted/elite score is a REGRESSION that requires repair.",
+    "bands": [
+      {"min": 0.0, "max": 5.9, "status": "Failing"},
+      {"min": 6.0, "max": 7.9, "status": "Developing"},
+      {"min": 8.0, "max": 8.9, "status": "Strong but incomplete"},
+      {"min": 9.0, "max": 9.4, "status": "Accepted"},
+      {"min": 9.5, "max": 9.9, "status": "Elite"},
+      {"min": 10.0, "max": 10.0, "status": "Objective achieved"}
+    ]
+  },
+  "checkpoints": [
+    {
+      "checkpoint_id": "NAYA-POWER-BASELINE-CHECKPOINT-001",
+      "sequence": 1,
+      "kind": "BASELINE",
+      "recorded_at": "2026-09-16T18:27:04-07:00",
+      "recorded_by": "OpenCode (Naya Execution Agent) recording human-declared baseline; independent adjudication by the measurement layer",
+      "repository": "SoulSchoolAcademy/NayaPOWER",
+      "baseline_reference": {
+        "main_head": "94d2c561d4e6410c03a116f691186bead710b78c",
+        "observed_by": "human",
+        "verification": "REMOTE_CONFIRMED_VIA_FETCH"
+      },
+      "execution_head": {
+        "commit": "9ea2b240786601fbe6d08e5488c06920faa64f70",
+        "branch": "wiz/autonomous-hardening",
+        "relation_to_baseline": {
+          "merge_base": "23aa3a815ac672a86e46799598a584bade6535f4",
+          "ahead": 4,
+          "behind": 2,
+          "is_ancestor": false
+        }
+      },
+      "subsystems": [
+        {"id": "S01", "name": "Architecture & intelligence model", "weight_pct": 15, "score": 8.5, "status": "Strong but incomplete", "human_label": "Strong"},
+        {"id": "S02", "name": "Governance & authority", "weight_pct": 15, "score": 8.0, "status": "Strong but incomplete", "human_label": "Strong, still converging"},
+        {"id": "S03", "name": "Real execution machinery", "weight_pct": 15, "score": 5.0, "status": "Failing", "human_label": "Major gap"},
+        {"id": "S04", "name": "Independent verification / evidence", "weight_pct": 10, "score": 6.0, "status": "Developing", "human_label": "Partial"},
+        {"id": "S05", "name": "Continuous autonomous loop", "weight_pct": 15, "score": 4.0, "status": "Failing", "human_label": "Major gap"},
+        {"id": "S06", "name": "Quality / scoring / repair", "weight_pct": 10, "score": 5.5, "status": "Failing", "human_label": "Partial"},
+        {"id": "S07", "name": "Memory / Activity / compounding", "weight_pct": 5, "score": 7.0, "status": "Developing", "human_label": "Mixed"},
+        {"id": "S08", "name": "Intelligent Hub product", "weight_pct": 10, "score": 5.5, "status": "Failing", "human_label": "Not production-proven"},
+        {"id": "S09", "name": "Deployment / production truth", "weight_pct": 5, "score": 4.0, "status": "Failing", "human_label": "Major gap"},
+        {"id": "S10", "name": "Team Naya coordination / continuity", "weight_pct": 5, "score": 6.5, "status": "Developing", "human_label": "Improving"}
+      ],
+      "aggregate": {
+        "weight_sum": 105,
+        "weight_sum_valid": false,
+        "weighted_total": 6.0952,
+        "unweighted_mean": 6.00,
+        "declared_system_score": 6.70,
+        "declared_source": "Human holistic adjudication supplied as Scorecard 001 (2026-09-16/17)",
+        "divergence": 0.6048
+      },
+      "verdict": {
+        "adjudicated_score": 6.70,
+        "threshold": 9.0,
+        "status": "Developing",
+        "accepted": false,
+        "reason": "Baseline 6.70 < 9.0 acceptance floor: REJECTED. Two declaration defects are preserved rather than reconciled: (1) the declared subsystem weights sum to 105, not 100, so the weighted total is reported as the normalized weighted mean (sum(w*s)/sum(w) = 6.0952) and the weight-sum defect is recorded in weight_sum_valid=false; (2) the declared holistic score 6.70 diverges +0.6048 from that weighted total and +0.70 from the unweighted mean 6.00. All three figures sit below the floor, so the rejection is robust regardless of which aggregate is used."
+      },
+      "evidence": [
+        "Scorecard 001 declared by Shawn Vibert (human), 2026-09-16/17: architecture 8.5, governance 8.0, execution 5.0, verification 6.0, continuous autonomy 4.0, quality/repair 5.5, memory/compounding 7.0, Intelligent Hub 5.5, production 4.0, team continuity 6.5; overall ~6.7/10; 5,960 commits; 43 open PRs; 60 open issues",
+        "Independent arithmetic over the declared weights (15,15,15,10,15,10,5,10,5,5) and scores: sum(w*s) = 640, sum(w) = 105 (declared as 100%), normalized weighted mean = 6.0952, unweighted mean = 6.00, declared 6.70, divergence +0.6048",
+        "git ls-remote origin refs/heads/main -> 94d2c561d4e6410c03a116f691186bead710b78c (baseline HEAD remote-confirmed via fetch; 23aa3a81..94d2c561 fast-forwarded origin/main)",
+        "git rev-list --left-right --count HEAD...origin/main -> 4 2 (execution branch and main have diverged)",
+        "git log --oneline HEAD..origin/main -> 94d2c561 feat: add master Naya Power AI agent design contract; d5ba497d feat: establish Team Naya 100/100 priority relay",
+        "git merge-base HEAD origin/main -> 23aa3a815ac672a86e46799598a584bade6535f4",
+        "git cat-file -t 94d2c561:.naya/MASTER-NAYA-POWER-AI-AGENT-DESIGN-CONTRACT-V1.md -> blob; the same path is absent from the execution worktree (Test-Path False), confirming the branch predates main's master contract",
+        "python .naya/execution/validate_work_queue.py self-test -> PASS (11 adversarial RED checks, selection GREEN); select -> TASK-NAYA-M2-EXECUTION-SUPERVISOR (score 0.86, 4 candidates)",
+        "python .naya/execution/test_work_queue.py -> Ran 19 tests OK",
+        "python tools/run_superbrain_local_suite.py -> SUPERBRAIN LOCAL SUITE: PASS (observed HEAD 9ea2b240786601fbe6d08e5488c06920faa64f70)",
+        "python .naya/activity/validate_activity_structure.py -> ACTIVITY_STRUCTURE=GREEN (8 day directories)",
+        "python .naya/control-plane/validate_control_plane.py -> GREEN (proof_freshness STALE_RELATIVE_TO_LIVE_HEAD, which is correct honesty and is superseded by this checkpoint)"
+      ],
+      "highest_value_improvements": [
+        {"id": "P0-A", "title": "Build the continuous execution supervisor", "queue_task": "TASK-NAYA-M2-EXECUTION-SUPERVISOR", "why": "Turns 'we have an execution architecture' into 'the system actually executes continuously' by composing the existing governed pieces into one fail-closed loop."},
+        {"id": "P0-B", "title": "Build the universal Quality Gate (score < 9.0 is mechanically unacceptable)", "queue_task": "TASK-NAYA-M4-QUALITY-SCORECARD", "why": "Makes the 9.0 floor a controlling machine law with weighted dimensions, independent challenger, regression detection, repair requirement, and acceptance receipt."},
+        {"id": "P0-C", "title": "Establish current-state measurement (exact HEAD + evidence + score + accept/reject)", "queue_task": "TASK-NAYA-PROGRESS-INDEX", "why": "Gives every checkpoint an exact HEAD, the evidence that supports it, an independently adjudicated score, and an explicit accepted/rejected status so progress is visible and cannot be faked."}
+      ],
+      "known_risks": [
+        "Measurement-integrity finding: the declared subsystem weights sum to 105, not 100. The weighted total is therefore reported as a normalized weighted mean (sum(w*s)/sum(w) = 6.0952) and weight_sum_valid is false; the defect is preserved, never silently normalized to a fictitious 100.",
+        "The scored baseline (main 94d2c561) is NOT an ancestor of the execution branch (wiz/autonomous-hardening @ 9ea2b240). Local P0-01 work and main's master-contract work are on divergent histories, so any 'current HEAD' proof is branch-relative, not baseline-relative.",
+        "Two main commits are absent from the execution branch, including .naya/MASTER-NAYA-POWER-AI-AGENT-DESIGN-CONTRACT-V1.md; building further Hub/product work on the stale base risks duplicating or contradicting the master architecture.",
+        "GitHub server-side branch protection/rulesets are not configured; the control plane remains a CI enforcement layer only.",
+        "Cutting this M1 + checkpoint commit advances the execution HEAD, so this checkpoint's execution_head (9ea2b240) becomes a predecessor, not the live head; a fresh checkpoint is required to re-bind.",
+        "43 open PRs and 60 open issues remain as historical execution surface; open PR != progress and must not be counted as improvement."
+      ],
+      "unknowns": [
+        "UNKNOWN: whether the human's declared 6.70 represents an intended holistic judgment or an arithmetic slip; the measurement layer records both computed values (6.40 weighted, 6.00 unweighted) and does not overwrite the declared figure.",
+        "UNKNOWN: independent GitHub Actions re-execution of M1 at an exact pushed HEAD (local proof only; nothing pushed).",
+        "UNKNOWN: whether main 94d2c561 (and d5ba497d) change the subsystem scores; the baseline was adjudicated at 94d2c561 but the execution evidence is at 9ea2b240, so the two are not yet the same measured state."
+      ],
+      "next_action": "Raise the two blocking systems in dependency order: (1) reconcile the divergent histories so the execution branch contains main 94d2c561 (merge is non-rewriting; requires a human decision on strategy), then (2) build M2 the continuous execution supervisor, so the P0-A/P0-B/P0-C machine can actually run. Keep D1-D4 (runtime, Hub source, PIS authority, 513) BLOCKED pending explicit human authorization."
+    }
+  ]
+}

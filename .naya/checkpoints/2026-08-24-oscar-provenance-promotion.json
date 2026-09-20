@@ -1,0 +1,17 @@
+{
+  "schema":"naya-power-checkpoint/v1",
+  "status":"PENDING_POST_MERGE_EXACT_CI",
+  "created_at":"2026-08-24T02:54:00Z",
+  "repository":"SoulSchoolAcademy/NayaPOWER",
+  "base_commit":"02922d3e928e36e8f7b276fc0f3542ab22bb3ad5",
+  "execution_branch":"feat/oscar-run-provenance-boundary",
+  "execution_head":"dd2d1db7eb8f45aae0b835a8f2ee08d011ed64ab",
+  "mission":"Build a portable, reliable, human-proof Naya Power runtime whose continuity can be restored from GitHub.",
+  "objective":"Make independent Oscar acceptance provenance-bound, tamper-evident, and bound to the active CI execution context.",
+  "implemented":["claim fingerprint binding","evidence-set fingerprint binding","exact Oscar implementation provenance","exact implementation commit binding","result integrity digest","GitHub Actions execution provenance","active CI run binding at promotion","adversarial tamper and wrong-run rejection tests"],
+  "verified":["fresh PR #42 exact-head CI on 5f93f2ba295bb29a9e48f8edaf011ac1fdd7a75f","fresh PR #43 exact-head CI on dd2d1db7eb8f45aae0b835a8f2ee08d011ed64ab","Oscar ACCEPT artifacts 9505150597 and 9505194326","21 promotion tests and 18 Oscar tests on corrected PR #43 head"],
+  "post_merge_status":"The corrected implementation was merged as main commit 02922d3e928e36e8f7b276fc0f3542ab22bb3ad5. The accessible GitHub connector exposes PR-triggered exact-head runs but not the push-triggered run listing for that merge SHA, so the merge commit itself remains explicitly unverified rather than being promoted by inference.",
+  "protected":["Claim/Evidence verification boundary","Restore Context contract","canonical source hierarchy","historical Smart Notes","customer-facing protocol intent","Oscar provenance boundary","evidence promotion boundary"],
+  "next_best_action":"Obtain inspectable push-triggered CI for exact main SHA 02922d3e928e36e8f7b276fc0f3542ab22bb3ad5; verify every relevant job and artifact; then mark current main VERIFIED_CI if and only if the exact SHA is the CI target.",
+  "integrity":{"principle":"Do not promote without fresh evidence on the exact observed commit.","forbidden_shortcut":"Do not infer exact merge-commit verification solely from a verified PR head or identical tree."}
+}

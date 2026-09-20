@@ -1,0 +1,53 @@
+{
+  "$schema": "naya/smart-note/machine-v1",
+  "event_id": "SE-20260830-SMART-NOTE-DELIVERY-TEACHING",
+  "created_at": "2026-08-30",
+  "category": "LEARNING",
+  "status": "ACTIVE",
+  "scope": "PROJECT",
+  "subject": "Smart Note delivery and NayaPOWER teaching",
+  "keywords": ["Smart Note", "Naya Note", "Shawn Note", "Machine Note", "Smart Links", "receipts", "PIS", "Running Feed", "proactive capture", "teaching", "activation", "cold-start", "9.1"],
+  "learning": {
+    "cold_start_score": 9.1,
+    "cold_start_result": "successful orientation with material Smart Note delivery gap",
+    "delivery_failure": "Assistant recognized durable learning but did not return the complete Shawn/Naya/Machine evidence bundle with direct Smart Links and separate propagation receipts.",
+    "explicit_request_contract": "MAKE_SMART_NOTE_INTENT_IS_EXECUTION_TRIGGER",
+    "proactive_capture": true,
+    "teaching_requirement": "Optimize NayaPOWER teaching for comprehension and application, not curriculum dumping."
+  },
+  "required_behavior": {
+    "explicit_smart_note": [
+      "recognize durable value",
+      "create_or_update_one_canonical_intelligence_event",
+      "create_aligned_shawn_naya_machine_representations",
+      "persist",
+      "return_direct_smart_links",
+      "return_exact_receipts",
+      "report_pis_state",
+      "report_running_feed_state",
+      "verify_claimed_states"
+    ],
+    "proactive_capture": "When substantive conversation creates durable value and legitimate storage is available, capture it without waiting for the human and report what was captured, why, and the evidence.",
+    "teaching": "When asked to teach NayaPOWER, use simple language, concrete examples, progressive disclosure, comprehension checks when useful, and an immediate practical action."
+  },
+  "state_boundaries": {
+    "note_created": true,
+    "representations_persisted": true,
+    "smart_links_persisted": true,
+    "pis_propagation": "PERSISTENCE_UPDATE_RECORDED; DOWNSTREAM_RUNTIME_PROPAGATION_NOT_PROVEN_IN_THIS_TURN",
+    "running_feed": "NOT_RUNTIME_VERIFIED_IN_THIS_TURN",
+    "successor_consumption": "NOT_RUNTIME_VERIFIED_IN_THIS_TURN"
+  },
+  "representations": {
+    "shawn": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-SHAWN.md",
+    "naya": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-NAYA.md",
+    "machine": ".naya/memory/smart-notes/2026/08/30/SMART-NOTE-20260830-SMART-NOTE-DELIVERY-TEACHING-MACHINE.json"
+  },
+  "evidence": {
+    "cold_start_score_source": "Shawn-supplied fresh-Naya cold-start response",
+    "system_contract": "docs/NAYA-SMART-NOTE-DELIVERY-AND-PIS-TRIGGER-CONTRACT.md",
+    "teaching_source": "Teaching",
+    "persistence_receipts": "GitHub commit receipts for canonical event and three canonical representations"
+  },
+  "next_action": "Runtime-test the explicit Smart Note path end-to-end, including automatic PIS propagation and Running Feed update, with observable receipts."
+}

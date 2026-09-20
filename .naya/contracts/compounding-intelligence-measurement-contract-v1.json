@@ -1,0 +1,129 @@
+{
+  "schema": "naya-power-compounding-intelligence-measurement-contract/v1",
+  "contract_version": "1.0",
+  "status": "DOCUMENTED_CONTRACT",
+  "purpose": "Measure whether verified intelligence compounds by reducing future computation, error, latency, human effort, or other cost while preserving or improving verified outcome quality and provenance.",
+  "constitutional_principle": "Never pay twice for proven truth; continuously distill; preserve provenance; measure waste by verified progress; reject false economies; start from the best known verified state.",
+  "measurement_unit": {
+    "primary": "verified_state_change",
+    "efficiency": "verified_state_change_per_resource_unit",
+    "waste": "resource_units_per_verified_state_change"
+  },
+  "resource_units": ["input_tokens","output_tokens","reasoning_tokens","tool_calls","tool_latency_ms","wall_time_ms","compute_cost","human_time_ms","rework_count"],
+  "record": {
+    "measurement_id": "required",
+    "request_id": "required",
+    "action_id": "required",
+    "parent_action_id": "optional",
+    "actor_ref": "required_for_consequential_actions",
+    "observed_at": "required_timezone_aware",
+    "commit_sha": "required_when_code_or_runtime_is_under_test",
+    "environment": "required",
+    "provenance_refs": "required_non_empty_for_verified_records",
+    "verification_receipt_ref": "required_for_verified_state_change",
+    "resource_usage": {
+      "input_tokens": "optional_number",
+      "output_tokens": "optional_number",
+      "reasoning_tokens": "optional_number",
+      "tool_calls": "required_number",
+      "tool_latency_ms": "required_number",
+      "wall_time_ms": "required_number",
+      "compute_cost": "optional_number",
+      "human_time_ms": "optional_number",
+      "rework_count": "required_number"
+    },
+    "verified_state_change": {
+      "state_change_id": "required",
+      "before_state_ref": "required",
+      "after_state_ref": "required",
+      "change_type": "required",
+      "verification_status": "VERIFIED|REJECTED|PARTIAL|UNKNOWN",
+      "evidence_refs": "required_non_empty_when_verified"
+    },
+    "knowledge_reuse": {
+      "reused": "required_boolean",
+      "knowledge_refs": "required_if_reused",
+      "applicability_basis": "required_if_reused",
+      "retrieval_cost": "optional_resource_object",
+      "estimated_rederivation_cost": "required_if_reuse_is_claimed",
+      "avoided_resource_units": "required_if_reuse_is_claimed",
+      "reuse_verification": "required_if_reuse_is_claimed"
+    },
+    "new_learning": {
+      "created": "required_boolean",
+      "learning_ref": "required_if_created",
+      "distillation_ref": "required_if_created",
+      "provenance_refs": "required_if_created",
+      "verification_receipt_ref": "required_if_created",
+      "retention_status": "required_if_created"
+    },
+    "downstream_compounding": {
+      "observed": "required_boolean",
+      "later_action_ref": "required_if_observed",
+      "learning_application_ref": "required_if_observed",
+      "baseline_measurement_ref": "required_if_observed",
+      "comparison_measurement_ref": "required_if_observed",
+      "delta": {
+        "cost": "optional_number",
+        "tokens": "optional_number",
+        "latency_ms": "optional_number",
+        "error_rate": "optional_number",
+        "human_time_ms": "optional_number",
+        "verified_value": "optional_number",
+        "capability": "optional_description"
+      },
+      "improvement_verified": "required_if_observed"
+    },
+    "false_economy_check": {
+      "performed": "required_boolean",
+      "quality_preserved_or_improved": "required_if_performed",
+      "provenance_preserved": "required_if_performed",
+      "rework_not_increased": "required_if_performed",
+      "verification_passed": "required_if_performed"
+    }
+  },
+  "promotion_rules": {
+    "stored": "Record exists with provenance.",
+    "retrieved": "Stored learning is successfully located.",
+    "applied": "Retrieved learning materially influences a later action.",
+    "verified": "Application produces a verified state change.",
+    "compounded": "Verified application demonstrates an attributable improvement in capability, computation, error, latency, human effort, value, or equivalent resource efficiency without violating quality, safety, authority, or provenance constraints."
+  },
+  "hard_rules": [
+    "A model assertion, memory assertion, user assertion, or unverified retrieval cannot establish a verified state change.",
+    "A cheaper result is not an optimization if it increases error, destroys provenance, creates material rework, or weakens verification.",
+    "A learning cannot be marked compounded merely because it was stored or retrieved.",
+    "Reuse claims must identify the retained knowledge and the basis for applicability.",
+    "Avoided computation is a claim and requires an explicit baseline or defensible counterfactual measurement method.",
+    "No measurement may weaken NayaPOWER authority, privacy, safety, evidence, or verification controls.",
+    "Missing required evidence blocks promotion to VERIFIED or COMPOUNDED.",
+    "The contract measures outcomes; it does not authorize actions."
+  ],
+  "runtime_mapping": {
+    "governance_kernel": {"role": "Authority, risk, decision, verification-plan, and execution-boundary control.", "contract_fields": ["action_id","actor_ref","verification_receipt_ref"], "gap": "No universal compounding-efficiency decision gate."},
+    "evidence_runtime": {"role": "Claim/evidence/verification and commit-bound evidence.", "contract_fields": ["provenance_refs","verification_receipt_ref","evidence_refs","commit_sha","environment"], "gap": "Does not yet measure resource usage or downstream compounding."},
+    "smart_ledger_engine": {"role": "Integrity-chained durable event record and verified value event.", "contract_fields": ["measurement_id","action_id","provenance_refs","verification_receipt_ref","verified_state_change"], "gap": "No efficiency/resource or learning-compounding event schema."},
+    "PIS_CIS": {"role": "Capture, distill, retain, retrieve, apply, verify, and compound intelligence.", "contract_fields": ["knowledge_reuse","new_learning","downstream_compounding"], "gap": "Full production loop and measurable economic compounding are not yet enforced system-wide."},
+    "adaptive_learning": {"role": "Turn verified outcomes into future behavior improvement.", "contract_fields": ["downstream_compounding"], "gap": "Needs measurable before/after evidence tied to the learning."},
+    "smart_notes": {"role": "Human/Naya durable intelligence capture.", "contract_fields": ["new_learning.learning_ref","distillation_ref","provenance_refs"], "gap": "Need machine-enforced promotion from note to verified reusable learning."}
+  },
+  "required_runtime_capabilities_before_cis_efficiency_engine": [
+    "Canonical measurement writer at the authorized execution boundary.",
+    "Resource usage capture with provider/model/tool attribution where available.",
+    "Verified state-change linkage to evidence and receipts.",
+    "Knowledge reuse record with applicability basis.",
+    "Baseline/counterfactual mechanism for defensible avoided-cost measurement.",
+    "Learning object with provenance and retention state.",
+    "Downstream application linkage.",
+    "Before/after comparison and improvement verification.",
+    "False-economy gate.",
+    "Tests proving missing evidence blocks VERIFIED and COMPOUNDED states."
+  ],
+  "non_goals": [
+    "This contract does not create a new memory database.",
+    "This contract does not replace the Governance Kernel.",
+    "This contract does not replace Claim/Evidence/Verification.",
+    "This contract does not authorize model routing or execution.",
+    "This contract does not treat token minimization as an independent objective when quality or verification degrades."
+  ]
+}

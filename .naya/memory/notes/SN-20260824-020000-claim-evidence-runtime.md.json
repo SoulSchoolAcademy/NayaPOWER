@@ -1,0 +1,21 @@
+{
+  "id":"SN-20260824-020000-claim-evidence-runtime",
+  "type":"architecture",
+  "title":"Claim Evidence Verification Became a Mechanical Runtime Boundary",
+  "status":"ACTIVE",
+  "created_at":"2026-08-24T02:00:00Z",
+  "effective_at":"2026-08-24T02:00:00Z",
+  "superseded_at":null,
+  "source":{"kind":"github","path":"SoulSchoolAcademy/NayaPOWER/pull/35","commit":"57beb47de65178264d705f0aec8935eefcbd1766","conversation_ref":null},
+  "summary":"A deterministic Claim → Evidence → Verification runtime was added so VERIFIED cannot be a model assertion, memory assertion, user assertion, or stale result; evidence is tied to the commit it observed and adversarial CI tests the boundary.",
+  "what_happened":"The next load-bearing enforcement slice after Restore Context was implemented with a standard-library runtime, ten adversarial unit tests, a CI workflow that generates current-commit evidence, validates it, verifies a claim, and publishes machine-readable evidence.",
+  "what_we_learned":["Verification must be derived from observed evidence rather than status labels or model confidence.","Evidence freshness must be bound to the commit under verification; historical evidence cannot silently prove changed current state.","Adversarial tests must explicitly reject model, memory, user, and retrieved-content assertions as evidence-producing methods.","CI should emit machine-readable evidence tied to the exact checkout so green status can be reconstructed rather than merely remembered."],
+  "why_it_matters":"This closes a critical gap between Naya remembering that something worked and Naya being able to prove that it worked on the exact system state being evaluated.",
+  "what_changed":["Added .naya/runtime/evidence_runtime.py.","Added ten adversarial Claim/Evidence tests.","Added Claim/Evidence contract documentation.","Added Claim Evidence CI enforcement with exact-commit evidence generation and artifact publication.","Added evidence store README and canonical memory note."],
+  "next_best_action":"Run the new Claim Evidence workflow, inspect every job and artifact, then use the verified evidence boundary as the substrate for independent Oscar challenge and promotion rules.",
+  "tags":["claim","evidence","verification","runtime","ci","adversarial","provenance","continuity"],
+  "aliases":["claim evidence runtime","verification boundary","evidence enforcement","proof layer","verified claim"],
+  "relationships":{"related":["SN-20260823-231200-restore-runtime-execution","SN-20260823-220001-memory-brain-principle"],"supersedes":null,"superseded_by":null,"depends_on":["SN-20260823-231200-restore-runtime-execution"]},
+  "confidence":"HIGH",
+  "evidence":[]
+}
