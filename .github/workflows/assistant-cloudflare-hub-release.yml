@@ -382,9 +382,6 @@ jobs:
                 }
                 await page.evaluate(() => window.NayaAssistantRuntime.signOut());
                 await page.waitForTimeout(250);
-                await page.goto(process.env.NAYA_RUNTIME_URL + '/?naya_release=' + process.env.GITHUB_SHA + '&unauthorized=1', { waitUntil: 'networkidle', timeout: 30000 });
-                await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
-                await page.waitForTimeout(500);
                 const unauthorizedFavorite = page.locator('.smart-feed-board [aria-label="Favorite intelligence"]').first();
                 await unauthorizedFavorite.click();
                 await page.waitForTimeout(500);
