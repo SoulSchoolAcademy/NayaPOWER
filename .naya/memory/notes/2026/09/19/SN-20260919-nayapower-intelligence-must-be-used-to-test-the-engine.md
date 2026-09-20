@@ -1,6 +1,8 @@
 # SMART NOTE — NAYA POWER: INTELLIGENCE MUST BE USED TO TEST THE ENGINE
 
 **DATE:** 2026-09-19
+**CANONICAL PATH:** NayaPOWER/SMART-NOTES/2026/09/19
+**REPOSITORY PATH:** .naya/memory/notes/2026/09/19/SN-20260919-nayapower-intelligence-must-be-used-to-test-the-engine.md
 **TYPE:** INSIGHT / TESTING / COMPOUNDING INTELLIGENCE
 **STATUS:** CANONICAL INTELLIGENCE - V1
 **SUBJECT ID:** NAYA-POWER-2026-09-19-01
@@ -198,10 +200,10 @@ And, importantly, the system can be tested against real life instead of only aga
 ### SMART LINK
 
 Canonical Smart Note:
-https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/SUPERBRAIN/SMART-NOTES/2026/09/19/2026-09-19-NAYA-POWER-SMART-NOTE-INTELLIGENCE-MUST-BE-USED-TO-TEST-THE-ENGINE.md
+https://github.com/SoulSchoolAcademy/NayaPOWER/blob/main/.naya/memory/notes/2026/09/19/SN-20260919-nayapower-intelligence-must-be-used-to-test-the-engine.md
 
 Daily Smart Notes folder:
-https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main/.naya/SUPERBRAIN/SMART-NOTES/2026/09/19
+https://github.com/SoulSchoolAcademy/NayaPOWER/tree/main/.naya/memory/notes/2026/09/19
 
 ### ACCEPTANCE / TRUTH STATE
 
