@@ -22,6 +22,7 @@ from cct_note_event_promotion import promote_note_event
 from memory_runtime import retrieve
 import retrieve_learning as rl
 from activity_event import ensure_activity_event
+from cct005_note_event_integration import integrate_verified_note_event
 from universal_execution_gate import (
     Authority,
     DecisionObject,
@@ -377,6 +378,49 @@ def test_cold_retrieval_binds_successor_decision_without_granting_authority():
             retrieval_smart_note_id=decision.retrieval_smart_note_id,
         )
         assert missing_receipt.learning_lineage_complete() is False
+
+
+def test_activity_receipt_binds_cct005_outcome_to_independent_verification_reference():
+    event = load_real_event()
+    activity_receipt_id = "RCP-CCT005-ACTIVITY-001"
+    result = integrate_verified_note_event(
+        event,
+        producer="nayapower-compounding-p0",
+        actor="successor-naya",
+        intended_use="inherit-learning",
+        action="apply verified learning to successor proof",
+        result="observed completion",
+        classification="SUCCESS",
+        evidence=[{"type": "OBSERVED", "ref": activity_receipt_id}],
+        confidence=1.0,
+        context={"activity_receipt_id": activity_receipt_id},
+        privacy="PRIVATE",
+        outcome_id="OUT-CCT005-ACTIVITY-001",
+        activity_receipt_id=activity_receipt_id,
+        consumers=["successor-naya"],
+    )
+    outcome = result["outcome"]
+    assert outcome["provenance"]["activity_receipt_id"] == activity_receipt_id
+    assert outcome["provenance"]["source_event"] == EVENT_ID
+    assert outcome["provenance"]["source_block"] == result["block"]["block_id"]
+
+    # The verification reference is independent of outcome construction: it
+    # identifies the outcome as its subject and the canonical Activity receipt
+    # as its evidence reference. No authorization fields are introduced.
+    verification_receipt = {
+        "receipt_id": "VR-CCT005-ACTIVITY-001",
+        "schema_version": "1.0",
+        "subject_ref": outcome["outcome_id"],
+        "verification_state": "outcome_verified",
+        "verified_at": "2026-09-20T00:00:00+00:00",
+        "verifier_type": "external_evidence",
+        "evidence_refs": [activity_receipt_id],
+        "verification_method": "independent observation of canonical Activity receipt",
+    }
+    assert verification_receipt["subject_ref"] == outcome["outcome_id"]
+    assert activity_receipt_id in verification_receipt["evidence_refs"]
+    assert "authority_id" not in outcome["provenance"]
+    assert "decision_id" not in outcome["provenance"]
 
 
 def test_daily_lineage_and_evidence_state():
