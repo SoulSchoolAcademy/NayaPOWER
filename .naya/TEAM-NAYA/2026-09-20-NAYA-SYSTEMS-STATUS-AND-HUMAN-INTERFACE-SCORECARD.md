@@ -1,7 +1,7 @@
 # NayaPOWER / NayaNET Systems Status & Human Interface Scorecard
 Date: 2026-09-20
 Source of truth: SoulSchoolAcademy/NayaPOWER / main
-Current checkpoint HEAD: 88b045a62ed17a2711ca1c753341a74ce8a1a212
+Current checkpoint HEAD: 54d230e16d077deeb644da6ea39fa1518434eace
 
 ## Executive truth
 
@@ -46,7 +46,7 @@ Scores are evidence-weighted readiness indicators, not claims of completion.
 1. **Human UI Smart Note capture → receiver proof** — CLOSED by run 35530465496; the actual Hub capture control produced event `993e52ac-1616-4a20-ab7c-6fdecb7e467c`, which persisted, projected, rendered in Smart Feed, and survived reload.
 2. **Public Welcome mismatch** — current control-plane evidence says public Welcome still embeds the stale shiny-wave-dd48 path and redirects activation toward academy.nayanet.app, not the canonical Assistant identity/Hub.
 3. **Consolidated human acceptance receipt** — individual proofs exist, but the single human-facing whole-journey receipt does not.
-4. **Latest CCT-005 verification receipt CI proof** — source/test seam is repaired, but current CI evidence still needs an exposed successful run.
+4. **Consolidated human acceptance receipt** — current human Smart Note capture and CCT-005 verification are now green; the single whole-journey receipt still needs current evidence.
 5. **Windows portability** — tracked colon-containing filename prevents clean Windows checkout.
 6. **Broader multi-Naya concurrency** — only the proven eight-writer scope is green.
 7. **Surface breadth** — Search/Reports/Settings/Naya Play and parts of Spaces/Dream need evidence-backed human audit.
