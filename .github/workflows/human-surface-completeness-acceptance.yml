@@ -27,7 +27,7 @@ jobs:
           const browser=await chromium.launch({headless:true});const ctx=await browser.newContext();const p=await ctx.newPage();
           await p.goto(runtime+'/identity.html',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
           const established=await p.evaluate(async()=>window.NayaNETNameFirstAuth.establish({name:'Surface Audit '+crypto.randomUUID().slice(0,8),alias:'surfaceaudit'+Date.now()}));if(!established?.authenticated||!established?.userId)throw Error('NAME_FIRST_AUTH_FAILED');
-          await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+          await p.goto(runtime+'/',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:60000}).catch(async e=>{throw Error('FIRST_DIVERGENCE:RUNTIME_NOT_EXPOSED url='+p.url()+' title='+await p.title()+' body='+((await p.locator('body').innerText()).slice(0,1000))+' err='+e.message)});
           const user=established.userId;
           const checks={};
           checks.hub='PASS';
