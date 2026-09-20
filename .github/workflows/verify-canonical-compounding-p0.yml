@@ -1,0 +1,37 @@
+name: Verify canonical compounding P0 seam
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'tools/compound_intelligence.py'
+      - 'tools/test_canonical_compound_bridge.py'
+      - 'tools/adaptive_learning.py'
+      - '.naya/runtime/canonical_event_store.py'
+      - '.naya/runtime/cct_intelligent_block.py'
+      - '.naya/runtime/cct_note_event_promotion.py'
+      - '.naya/memory/events/**'
+      - '.naya/memory/notes/**'
+      - '.github/workflows/verify-canonical-compounding-p0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-compounding:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact main source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Execute canonical compounding P0 proof
+        run: python tools/test_canonical_compound_bridge.py
