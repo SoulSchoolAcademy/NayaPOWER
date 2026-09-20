@@ -44,6 +44,8 @@ env:
   CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
   CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
   NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+  SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+  SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
 
 jobs:
   deploy:
