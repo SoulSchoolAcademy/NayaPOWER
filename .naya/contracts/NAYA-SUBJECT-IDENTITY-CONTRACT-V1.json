@@ -1,0 +1,70 @@
+{
+  "$schema": "naya/contracts/naya-subject-identity/v1",
+  "contract": "NAYA_SUBJECT_IDENTITY",
+  "schema_version": "1.0",
+  "status": "CANONICAL_CONTRACT",
+  "effective_date": "2026-09-20",
+  "purpose": "Define the canonical runtime subject identity for NAYA without conflating the AI identity with a human Supabase Auth identity.",
+  "canonical_subject": {
+    "subject_id": "NAYA",
+    "subject_type": "AI_AGENT",
+    "role": "human-facing intelligent operating partner",
+    "system": "NayaPOWER",
+    "network": "NayaNET",
+    "identity_authority": "This contract defines identity only; it does not grant authority."
+  },
+  "identity_model": {
+    "canonical_runtime_subject_id": "NAYA",
+    "human_auth_identity": null,
+    "supabase_auth_uuid": null,
+    "member_id": null,
+    "rule": "NAYA is not to be represented by a human/member Supabase Auth UUID unless a separate canonical binding contract explicitly establishes that relationship.",
+    "naya_identity_binding": {
+      "status": "DEFINED_AS_RUNTIME_SUBJECT",
+      "value": "NAYA",
+      "binding_to_human_auth": "NOT_ESTABLISHED"
+    }
+  },
+  "existing_runtime_evidence": {
+    "agent_interface_protocol": "naya-power-agent-interface/v1",
+    "agent_identity_field": "agent_id",
+    "session_identity_field": "session_id",
+    "actor_identity_field": "actor_id",
+    "finding": "Existing runtime contracts carry agent_id/actor_id values but do not canonically bind NAYA to a Supabase Auth UUID."
+  },
+  "authority_boundary": {
+    "authority_source": "Existing canonical governance and Authority Grant contracts",
+    "action": "smart_note_capture",
+    "rule": "Identity does not imply authority. A NAYA subject must receive explicit authority through the existing authority mechanism before consequential action.",
+    "no_self_issuance": true,
+    "no_auth_uuid_invention": true,
+    "no_test_identity_substitution": true
+  },
+  "subject_binding_requirements": {
+    "required_before_auth_based_authority_grant": [
+      "A canonical adapter/binding from runtime subject NAYA to the subject representation accepted by the Authority Grant issuance contract.",
+      "Proof that the binding is intentional, unique, and not a human member identity.",
+      "Preservation of NAYA identity through authorization, execution, evidence, receipt, and verification."
+    ],
+    "current_status": "NOT_ESTABLISHED"
+  },
+  "prohibitions": [
+    "Do not select an arbitrary auth.users UUID as NAYA.",
+    "Do not reuse a human member UUID as the NAYA subject.",
+    "Do not treat agent_id, actor_id, session_id, or repository identity as an Authority Grant subject without an explicit binding.",
+    "Do not modify Authority Grants merely to accommodate this identity contract.",
+    "Do not create a second identity hierarchy."
+  ],
+  "related_contracts": [
+    ".naya/projects/2026-09-09-NayaNET-Intelligent-Hub/11-IDENTITY-BOOTSTRAP-CONTRACT.md",
+    ".naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md",
+    ".naya/runtime/naya_agent_interface.py",
+    "docs/NAYA-AUTHORITY-GRANT-ISSUANCE-CONTRACT-V1.md"
+  ],
+  "truth_state": {
+    "canonical_runtime_subject": "NAYA",
+    "human_supabase_auth_binding": "UNKNOWN",
+    "authority_grant_compatibility": "BLOCKED_PENDING_SUBJECT_BINDING",
+    "grant_issued": false
+  }
+}
