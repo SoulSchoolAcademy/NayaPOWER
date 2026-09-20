@@ -85,15 +85,42 @@ async function play(r){const ev=await r.retrieve(),le=await r.listLearningEviden
 async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthful runtime state; no configuration is claimed that the current session cannot prove.','<div class="nc-state">'+esc(JSON.stringify(s,null,2))+'</div><div class="nc-actions"><button id="nc-out">SIGN OUT</button></div>');m.querySelector('#nc-out').onclick=async()=>{await r.signOut();m.querySelector('.nc-state').textContent='SIGNED OUT · PRIVATE DATA ACCESS BLOCKED';}}
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
- const map={home:'feed',notes:'note',reports:'reports',intelligence:'intelligence',collective:'feed',evidence:'evidence',connections:'connections',mail:'mail',settings:'settings'};
- rail.querySelectorAll('[data-page]').forEach(b=>{const key=b.getAttribute('data-page');if(map[key]){b.dataset.nc=map[key];if(key==='collective')b.dataset.ncStream='collective';}b.removeAttribute('data-page')});
- const navs=[...rail.querySelectorAll('.nav')];
- const add=(nav,key,label,icon,stream)=>{if(!nav||nav.querySelector('[data-nc="'+key+'"]'))return;const b=document.createElement('button');b.type='button';b.dataset.nc=key;if(stream)b.dataset.ncStream=stream;b.innerHTML='<span class="ico">'+icon+'</span>'+label;nav.appendChild(b)};
- const personal=navs[0];if(personal){const first=personal.querySelector('[data-nc="feed"]');if(first){first.innerHTML='<span class="ico">✦</span>Smart Feed';first.dataset.nc='feed';first.dataset.ncStream='personal'}add(personal,'note','Smart Notes','▤')}
- const collective=navs[1];if(collective)add(collective,'share','Smart Share','↗');
- const communication=navs[2];if(communication){add(communication,'ledger','Smart Ledger','◇');add(communication,'dream','Dream','✧')}
- const tools=navs[3]||navs[2];if(tools){add(tools,'lists','Smart Lists','☷');add(tools,'spaces','Smart Spaces','◌');add(tools,'play','Naya Play','▶')}
- const settings=rail.querySelector('[data-nc="settings"]');if(settings)settings.dataset.nc='settings';
+ const groups=[
+  ['PERSONAL',[
+   ['feed','Intelligence Today','✦','activity'],
+   ['reports','Reports','◫'],
+   ['intelligence','Library','▱'],
+   ['share','Smart Share','↗']
+  ]],
+  ['ORGANIZE',[
+   ['lists','Smart Lists','☷'],
+   ['spaces','Smart Spaces','◌']
+  ]],
+  ['CONNECT',[
+   ['connections','Connections','↗'],
+   ['mail','Smart Mail','✉']
+  ]],
+  ['SYSTEM',[
+   ['ledger','Smart Ledger','◇'],
+   ['play','Naya Play','▶'],
+   ['settings','Settings','⚙']
+  ]]
+ ];
+ const brand=rail.querySelector('.brand'), privateNote=rail.querySelector('.private');
+ rail.querySelectorAll('.label,.nav').forEach(x=>x.remove());
+ let anchor=brand?.nextSibling||null;
+ for(const [label,items] of groups){
+   const heading=document.createElement('div'); heading.className='label'; heading.textContent=label;
+   const nav=document.createElement('nav'); nav.className='nav';
+   items.forEach(([key,text,icon,stream])=>{
+     const b=document.createElement('button'); b.type='button'; b.dataset.nc=key;
+     if(stream)b.dataset.ncStream=stream;
+     b.innerHTML='<span class="ico">'+icon+'</span>'+text;
+     nav.appendChild(b);
+   });
+   rail.insertBefore(heading,anchor);
+   rail.insertBefore(nav,anchor);
+ }
  return true;
 }
 function install(){
