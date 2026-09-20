@@ -10,7 +10,6 @@ jobs:
     env:
       RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
-      SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,20 +18,16 @@ jobs:
       - run: npx playwright install --with-deps chromium
       - name: Run human surface acceptance
         run: |
-          ln -s "$GITHUB_WORKSPACE/node_modules" /tmp/node_modules
           cat > /tmp/surface.mjs <<'NODE'
           import { chromium } from 'playwright';
           import crypto from 'node:crypto';
-          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const base=process.env.SUPABASE_URL;
           const runtime=process.env.RUNTIME_URL;
-          async function req(url,opt={}){const r=await fetch(url,opt);const t=await r.text();let b;try{b=JSON.parse(t)}catch{b={raw:t}}if(!r.ok)throw Error(r.status+' '+JSON.stringify(b));return b}
-          const A=await req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
-          if(!A.access_token)throw Error('AUTH_BOOTSTRAP_FAILED');
-          const origin=new URL(runtime).origin;
-          const storageState={cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(A)}]}]};
-          const browser=await chromium.launch({headless:true});const ctx=await browser.newContext({storageState});const p=await ctx.newPage();
+          const browser=await chromium.launch({headless:true});const ctx=await browser.newContext();const p=await ctx.newPage();
+          await p.goto(runtime+'/identity.html',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+          const established=await p.evaluate(async()=>window.NayaNETNameFirstAuth.establish({name:'Surface Audit '+crypto.randomUUID().slice(0,8),alias:'surfaceaudit'+Date.now()}));if(!established?.authenticated||!established?.userId)throw Error('NAME_FIRST_AUTH_FAILED');
           await p.goto(runtime+'/',{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
-          const user=await p.evaluate(async({base,key})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const c=sdk.createClient(base,key,{auth:{persistSession:true,storage:localStorage,storageKey:'nayanet.supabase.auth'}});return (await c.auth.getUser()).data.user?.id},{base,key});if(user!==A.user.id)throw Error('BROWSER_HANDOFF_FAILED');
+          const user=established.userId;
           const checks={};
           checks.hub='PASS';
           const title='Surface completeness search '+process.env.GITHUB_RUN_ID, content='Unique searchable intelligence '+crypto.randomUUID();
