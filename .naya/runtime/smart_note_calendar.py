@@ -11,10 +11,11 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-from calendar_projection import _utc_parts, calendar_record_path, safe_topic
+from calendar_projection import _utc_parts, safe_topic
+from smart_note_transaction import canonical_smart_note_path
 
 ROOT = Path(__file__).resolve().parents[2]
-SMART_NOTES_ROOT = ROOT / "SUPERBRAIN" / "SMART-NOTES"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
 
 REQUIRED_HEADINGS = (
     "Parent / predecessor",
@@ -43,7 +44,7 @@ def persist_smart_note(*, timestamp: str | None, topic: str, body: str, root: Pa
         raise ValueError("Smart Note contract missing headings: " + ", ".join(missing))
     stamp = timestamp or datetime.now(timezone.utc).isoformat()
     destination_root = Path(root) if root else SMART_NOTES_ROOT
-    path = calendar_record_path(destination_root, stamp, topic)
+    path = canonical_smart_note_path(stamp, topic, root=destination_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         existing = path.read_text(encoding="utf-8")
