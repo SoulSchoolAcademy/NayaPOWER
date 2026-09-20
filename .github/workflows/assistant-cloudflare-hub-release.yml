@@ -98,15 +98,7 @@ jobs:
             grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
             grep -q '"schema_version": "PIS-3.0"' dist/intelligence/pis-feed.json
             grep -q '"event_count":' dist/intelligence/pis-feed.json
-            test "$(python3 - <<'PY'
-import json
-p='dist/intelligence/pis-feed.json'
-d=json.load(open(p,encoding='utf-8'))
-assert d.get('event_count',0) > 0
-assert d.get('events')
-print('OK')
-PY
-)" = "OK"
+            python3 -c "import json; d=json.load(open('dist/intelligence/pis-feed.json',encoding='utf-8')); assert d.get('event_count',0) > 0; assert d.get('events')"
             cd ../..
             sha256sum NAYANET/HUB/dist/index.html | tee "$RUNNER_TEMP/source.sha256"
             echo 'REACT_SOURCE_ARTIFACT_READY'
