@@ -1,0 +1,124 @@
+name: Verify Human Hub Smart Note Capture
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/HUB/src/app/AppShellV3.tsx'
+      - 'NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx'
+      - 'NAYANET/HUB/src/data/pis.ts'
+      - 'NAYANET/HUB/public/assistant-runtime.js'
+      - '.github/workflows/verify-human-smart-note-capture.yml'
+  workflow_dispatch:
+
+# Naya execution checkpoint: run the existing human Smart Note capture proof on the current main push.
+
+permissions:
+  contents: read
+
+jobs:
+  human-capture:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute human capture → receiver → feed → reload
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const hub = process.env.HUB_URL;
+          const trace=[];
+          const mark=(step,extra={})=>{trace.push({step,at:new Date().toISOString(),...extra});console.log('HUMAN_CAPTURE_TRACE',JSON.stringify(trace.at(-1)))};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            const pisNetwork=[]; const pisMapped=[];
+            page.on('response',async response=>{if(response.url().includes('/rest/v1/nayanet_intelligence_index')){try{const body=await response.json();pisNetwork.push({status:response.status(),url:response.url(),row_count:Array.isArray(body)?body.length:null,rows:Array.isArray(body)?body.map(row=>({id:row.id,source_table:row.source_table,source_id:row.source_id,metadata_event_id:row.metadata?.event_id||null})):body});console.log('PIS_BROWSER_RESPONSE_TRACE',JSON.stringify(pisNetwork.at(-1)))}catch(error){pisNetwork.push({status:response.status(),url:response.url(),parse_error:String(error)});console.log('PIS_BROWSER_RESPONSE_TRACE',JSON.stringify(pisNetwork.at(-1)))}}});
+            page.on('console',message=>{if(message.text().includes('PIS_LIVE_INDEX_TRACE')){pisMapped.push(message.text());console.log('PIS_BROWSER_MAPPING_TRACE',message.text())}});
+            const alias=('humanui'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+            const title='Human Hub Capture Proof '+process.env.GITHUB_RUN_ID;
+            const content='A real human-facing NayaNET Hub capture control must send this note through the canonical Smart Note receiver and preserve the same event identity into Smart Feed and reload.';
+            mark('START');
+            await page.goto(hub+'/identity.html?name='+encodeURIComponent('Naya Human Capture Proof')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000}); mark('IDENTITY_LOADED');
+            await page.getByRole('button',{name:'ENTER NAYANET'}).click(); mark('IDENTITY_SUBMITTED'); await page.waitForTimeout(1500);
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000}); mark('AUTH_ADAPTER_READY');
+            await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000}); mark('AUTHENTICATED');
+            await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000}); mark('HUB_LOADED',{url:page.url(),title:await page.title(),marker:await page.locator('meta[name="nayanet-canonical-marker"]').getAttribute('content').catch(()=>null),body:((await page.locator('body').innerText().catch(()=>''))||'').slice(0,300)});
+            await page.locator('[data-shell-owner="AppShellV3"]').waitFor({state:'visible',timeout:30000}); const shell=await page.locator('[data-shell-owner="AppShellV3"]').count(); if(shell!==1)throw new Error('CANONICAL_REACT_SHELL_MISSING'); mark('CANONICAL_REACT_SHELL_VISIBLE');
+            const runtime=await page.evaluate(()=>({runtime:!!window.NayaAssistantRuntime,auth:window.NayaAssistantRuntime?.snapshot?.()})); if(!runtime.runtime||!runtime.auth?.authenticated)throw new Error('HUB_RUNTIME_NOT_AUTHENTICATED:'+JSON.stringify(runtime)); mark('RUNTIME_AUTHENTICATED');
+            const captureButton=page.getByTestId('capture-smart-note'); await captureButton.waitFor({state:'visible',timeout:30000}); mark('CAPTURE_CONTROL_VISIBLE');
+            await page.evaluate(()=>{const rt=window.NayaAssistantRuntime;window.__humanCaptureResult=null;const original=rt.captureSmartNote.bind(rt);rt.captureSmartNote=async(...args)=>{const result=await original(...args);window.__humanCaptureResult=result;return result};});
+            await captureButton.click(); mark('CAPTURE_MODAL_OPEN');
+            await page.getByTestId('smart-note-title').fill(title); await page.getByTestId('smart-note-content').fill(content); mark('CAPTURE_FORM_FILLED');
+            await page.getByTestId('smart-note-capture-submit').click(); mark('CAPTURE_SUBMITTED');
+            await page.waitForFunction(()=>!!window.__humanCaptureResult,{timeout:30000}); mark('RECEIVER_RESULT_RETURNED');
+            const result=await page.evaluate(()=>window.__humanCaptureResult);
+            const tx=result?.transaction||{};
+            const eventId=result?.event?.event_id||result?.event_id||tx?.evidence?.event_id||tx?.hub_state?.event_id||'';
+            if(!eventId)throw new Error('CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(result));
+            if(!tx?.id)throw new Error('TRANSACTION_ID_MISSING');
+            mark('CANONICAL_EVENT_ID_RETURNED',{eventId,transactionId:tx.id});
+            await page.reload({waitUntil:'networkidle',timeout:60000}); mark('PIS_RELOAD_AFTER_CAPTURE');
+            const persistenceDiagnostic=await page.evaluate(async({eventId})=>{
+              const runtime=window.NayaAssistantRuntime;
+              const snapshot=runtime?.snapshot?.()||null;
+              const rows=await runtime.retrieve(eventId);
+              const cognition=rows?.[0]||null;
+              const client=window.__NayaNETSupabaseClient;
+              let indexRows=[],indexError=null;
+              if(client&&snapshot?.user_id&&cognition?.id){
+                const q=await client.from('nayanet_intelligence_index').select('id,owner_id,source_table,source_id,object_type,title,status,metadata').eq('owner_id',snapshot.user_id).eq('source_table','nayanet_cognition_events').eq('source_id',cognition.id).limit(5);
+                indexRows=q.data||[]; indexError=q.error?.message||null;
+              }
+              return {snapshot:{authenticated:!!snapshot?.authenticated,user_id:snapshot?.user_id||null},cognition:cognition?{id:cognition.id,event_id:cognition.event_id,status:cognition.status,metadata:cognition.metadata}:null,indexRows,indexError};
+            },{eventId});
+            mark('PERSISTENCE_DIAGNOSTIC',persistenceDiagnostic);
+            const pisTrace={network:pisNetwork,mapping:pisMapped};
+            mark('PIS_BROWSER_BOUNDARY_TRACE',pisTrace);
+            if(!pisNetwork.length)throw new Error('PIS_BROWSER_RESPONSE_NOT_OBSERVED');
+            if(!pisMapped.length)throw new Error('PIS_BROWSER_MAPPING_NOT_OBSERVED');
+            const mappedJson=pisMapped.map(x=>{try{return JSON.parse(x.slice(x.indexOf('PIS_LIVE_INDEX_TRACE')+'PIS_LIVE_INDEX_TRACE'.length).trim())}catch{return null}}).filter(Boolean).at(-1);
+            if(!mappedJson)throw new Error('PIS_BROWSER_MAPPING_PARSE_FAILED');
+            if(!mappedJson.mapped_event_ids?.includes(eventId))throw new Error('PIS_INDEX_ROW_TO_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,mappedJson}));
+            const responseHasEvent=pisNetwork.some(trace=>Array.isArray(trace.rows)&&trace.rows.some(row=>row.metadata_event_id===eventId||row.source_id===eventId));
+            if(!responseHasEvent)throw new Error('PIS_BROWSER_RESPONSE_EVENT_ID_MISSING:'+JSON.stringify({eventId,pisNetwork}));
+            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'networkidle',timeout:60000});
+            await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
+            await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
+            const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
+            if(!rendered.some(x=>x.event_id===eventId))throw new Error('EXACT_EVENT_NOT_RENDERED_IN_FEED:'+JSON.stringify({eventId,rendered}));
+            mark('EXACT_EVENT_RENDERED',{eventId});
+            await page.reload({waitUntil:'networkidle'}); mark('FEED_RELOADED');
+            await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
+            const restored=await page.locator('[data-event-id="'+eventId+'"]').evaluate(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')}));
+            if(restored.event_id!==eventId)throw new Error('RELOAD_EVENT_IDENTITY_LOST:'+JSON.stringify({eventId,restored}));
+            mark('RELOAD_EXACT_EVENT_PRESERVED',{eventId});
+            const proof={status:'VERIFIED',title,event_id:eventId,transaction_id:tx.id,checks:{human_capture_control:'PASS',canonical_receiver:'PASS',same_event_identity:'PASS',smart_feed_render:'PASS',reload_identity:'PASS'},trace};
+            fs.writeFileSync('human-smart-note-capture-proof.json',JSON.stringify(proof,null,2)+'\n');
+            console.log(JSON.stringify(proof));
+            await context.close();await browser.close();
+          })().catch(async error=>{fs.writeFileSync('human-smart-note-capture-proof.json',JSON.stringify({status:'FAILED',error:String(error?.stack||error),trace},null,2)+'\n');console.error(error);process.exit(1)});
+          NODE
+
+      - name: Upload human capture proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: human-smart-note-capture-proof
+          path: human-smart-note-capture-proof.json
+          if-no-files-found: error

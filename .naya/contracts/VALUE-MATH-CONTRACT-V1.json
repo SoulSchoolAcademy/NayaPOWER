@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://contracts/value-math-v1",
+  "title": "NayaNET Value and Math Contract V1",
+  "description": "Machine-readable foundation for constitutional gating, bounded value scoring, MVPA optimization, evidence separation, and scorecard integration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["contract_version", "value_scale", "constitutional_gate", "optimization", "verification"],
+  "properties": {
+    "contract_version": {"const": "1.0"},
+    "value_scale": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum", "maximum", "neutral", "step", "invalid_is_separate_from_zero"],
+      "properties": {
+        "minimum": {"const": -9},
+        "maximum": {"const": 9},
+        "neutral": {"const": 0},
+        "step": {"const": 1},
+        "invalid_is_separate_from_zero": {"const": true}
+      }
+    },
+    "constitutional_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["order", "hard_gate", "invalid_state"],
+      "properties": {
+        "order": {"const": 1},
+        "hard_gate": {"const": true},
+        "invalid_state": {"const": "INVALID"}
+      }
+    },
+    "optimization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["objective", "formula", "eligible_action_rule"],
+      "properties": {
+        "objective": {"const": "MAXIMIZE RESPONSIBLE VERIFIED VALUE PER ACTION PER MOMENT"},
+        "formula": {"const": "MVPA = VERIFIED_RESPONSIBLE_VALUE / RESOURCE_COST"},
+        "eligible_action_rule": {"const": "argmax(MVPA) over constitutionally eligible and authorized actions"}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequence", "confidence_is_separate_from_value"],
+      "properties": {
+        "sequence": {"const": ["PREDICTED", "OBSERVED", "VERIFIED"]},
+        "confidence_is_separate_from_value": {"const": true}
+      }
+    },
+    "separation_of_measures": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value_score", "points", "scorecard_score"],
+      "properties": {
+        "value_score": {"const": "eligible outcome value on -9..+9 scale"},
+        "points": {"const": "defined contribution/accounting units"},
+        "scorecard_score": {"const": "quality assessment against objective-specific criteria and weights"}
+      }
+    },
+    "hard_principles": {
+      "type": "array",
+      "items": {"type": "string"},
+      "const": [
+        "DO NO HARM TO YOURSELF OR OTHERS",
+        "CONSTITUTION FIRST",
+        "INVALID IS NOT ZERO VALUE",
+        "VALUE IS CONTEXTUAL",
+        "CONFIDENCE IS NOT VALUE",
+        "SCORE IS NOT PROOF",
+        "POINTS ARE NOT HUMAN WORTH",
+        "NEVER OPTIMIZE A METRIC AT THE EXPENSE OF THE UNDERLYING OBJECTIVE",
+        "HUMAN AUTHORITY REMAINS THE AUTHORITY BOUNDARY"
+      ]
+    }
+  }
+}

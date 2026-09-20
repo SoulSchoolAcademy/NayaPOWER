@@ -1,0 +1,32 @@
+{
+  "event_id": "SN-20260907-INTELLIGENT-HUB-PIPELINE-READINESS-ROADMAP",
+  "timestamp": "2026-09-07 22:00",
+  "type": "smart-note",
+  "status": "canonical",
+  "subject": "Intelligent Hub pipeline readiness and execution roadmap",
+  "project": "NayaPOWER / NayaNET Intelligent Hub",
+  "smart_note_path": ".naya/notes/2026-09-07-SMART-NOTE-INTELLIGENT-HUB-PIPELINE-READINESS-ROADMAP.md",
+  "perspectives": {
+    "ai_naya": "Make the Intelligent Hub receiver ready before turning on Smart Note engines and triggers. Do not assume GitHub persistence equals Hub delivery. Build and verify the complete chain in order: authority, receiver, receiver contract, sender/trigger, transport, Daily Intelligence Report, end-to-end test, then lock the official activation protocol.",
+    "human": "Shawn wants a repeatable flow where saying 'Hey, make a Smart Note about this' causes Naya to create the Smart Note, persist it in GitHub, trigger the authorized synchronization path, and display it beautifully in the Intelligent Hub. The Hub is close but needs receiver and presentation finishing first.",
+    "machine": "Treat source, build artifact, deployment, runtime, sender, trigger, transport, receiver, presentation, history/search, and verification as separate states. Finish the receiver first, define its exact event contract, implement one explicit GitHub persistence-to-Hub transport route, then prove one real event end-to-end.",
+    "child": "Get the receiving mailbox ready before sending the letter. Then send one real letter, watch it arrive, and only send more after the whole path works.",
+    "grandma": "Set the table before bringing the food in. Make sure everything fits, send one plate through the whole kitchen, watch where it goes, and only then open the floodgates."
+  },
+  "priority_order": [
+    "P0 authority and deployment lock",
+    "P1 Hub receiver readiness",
+    "P2 receiver contract",
+    "P3 sender, trigger, and transport",
+    "P4 Daily Intelligence Report",
+    "P5 end-to-end proof",
+    "P6 official Smart Notes to Intelligent Hub activation protocol"
+  ],
+  "verification_states": ["OBSERVED","CAPTURED","PERSISTED","TRIGGERED","RECEIVED","RENDERED","RETRIEVABLE","VERIFIED","RECEIPTED"],
+  "protected_laws": [
+    "DO NOT TURN ON THE ENGINES UNTIL THE RECEIVER IS READY, THE TRANSPORT IS DEFINED, AND ONE REAL EVENT HAS BEEN VERIFIED END-TO-END.",
+    "GITHUB PERSISTENCE IS NOT HUB DELIVERY.",
+    "SOURCE SUCCESS IS NOT RUNTIME SUCCESS."
+  ],
+  "next_action": "Lock the authoritative Hub source and deployment path, then finish and verify the Hub receiver before implementing or enabling the Smart Note trigger/transport."
+}

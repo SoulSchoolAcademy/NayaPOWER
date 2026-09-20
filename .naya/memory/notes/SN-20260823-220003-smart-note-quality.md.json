@@ -1,0 +1,14 @@
+{
+  "id":"SN-20260823-220003-smart-note-quality","type":"lesson","title":"Smart Note Quality Requires Compression, Semantics, Relationships, and Validation","status":"CANONICAL","created_at":"2026-08-23T22:00:03-07:00","effective_at":"2026-08-23T22:00:03-07:00","superseded_at":null,
+  "source":{"kind":"conversation","path":"Naya Power Smart Notes runtime design","commit":null,"conversation_ref":"2026-08-23"},
+  "summary":"A Smart Note should capture durable meaning rather than a transcript, use a compact five-line core, include semantic aliases and relationships, preserve provenance and time, and pass automated quality validation.",
+  "what_happened":"The conversation established that valuable outputs should be turned into structured notes rather than large conversation dumps.",
+  "what_we_learned":["Good memory is selective, not maximal.","Retrieval should work by concept as well as exact wording.","The note itself should be optimized for future Naya retrieval, not merely human archival reading.","Validation is necessary so missing timestamps, broken relationships, duplicate IDs, and false supersession states are caught automatically."],
+  "why_it_matters":"This turns knowledge compounding into a repeatable engineering process rather than a manual habit that degrades over time.",
+  "what_changed":["A canonical Smart Note schema, index, retrieval manifest, validator, tests, and CI workflow were introduced."],
+  "next_best_action":"Expand adversarial fixtures to cover contradiction, stale assumptions, duplicate concepts, broken provenance, and historical retrieval.",
+  "tags":["smart-notes","quality","validator","retrieval","knowledge-compounding"],
+  "aliases":["note quality","memory quality","knowledge compounding","smart note validator","semantic retrieval"],
+  "relationships":{"related":["SN-20260823-220001-memory-brain-principle","SN-20260823-220002-temporal-history"],"supersedes":null,"superseded_by":null,"depends_on":[]},
+  "confidence":"HIGH","evidence":["Runtime implementation committed to NayaPOWER on 2026-08-23"]
+}

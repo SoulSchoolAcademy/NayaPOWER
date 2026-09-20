@@ -1,0 +1,115 @@
+name: NayaNET Public Welcome Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'WelcometoNayaNET.html'
+      - 'NAYANETWELCOME PORTAL.html'
+      - '.github/workflows/nayanet-public-welcome-release.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      CLOUDFLARE_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      WELCOME_WORKER: nayanet-public-welcome
+      WELCOME_HOST: https://welcome.nayanet.app
+      CANONICAL_IDENTITY: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/identity.html
+    steps:
+      - name: Checkout exact current main
+        uses: actions/checkout@v4
+
+      - name: Build compatibility redirect to canonical Intelligent Hub
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > welcome-worker.js <<'JS'
+          const HUB = "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/";
+          export default {
+            async fetch(request) {
+              const url = new URL(request.url);
+              if (url.pathname !== "/" && url.pathname !== "/index.html") {
+                return new Response("Not Found", {status:404});
+              }
+              return Response.redirect(HUB, 302);
+            }
+          };
+          JS
+          echo "CANONICAL_HUB=https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/" > welcome-source.sha256
+
+      - name: Resolve authoritative nayanet.app zone
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save wrangler@4.135.0
+          export ZONE_JSON; ZONE_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/zones?name=nayanet.app&status=active")
+          export ACCOUNT_JSON; ACCOUNT_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/accounts?page=1&per_page=100")
+          export WORKER_JSON; WORKER_JSON=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts")
+          python3 - <<'PY'
+          import json, os
+          data=json.loads(os.environ["ZONE_JSON"])
+          accounts=json.loads(os.environ["ACCOUNT_JSON"])
+          workers=json.loads(os.environ["WORKER_JSON"])
+          rows=[{"id":z.get("id"),"name":z.get("name"),"status":z.get("status"),"account_id":(z.get("account") or {}).get("id"),"account_name":(z.get("account") or {}).get("name")} for z in data.get("result",[])]
+          account_rows=[{"id":a.get("id"),"name":a.get("name")} for a in accounts.get("result",[])]
+          worker_rows=[{"id":w.get("id"),"etag":w.get("etag")} for w in workers.get("result",[])]
+          matches=[w for w in worker_rows if w["id"]=="shiny-wave-dd48"]
+          print(json.dumps({"zone_query":{"success":data.get("success"),"zones":rows},"account_query":{"success":accounts.get("success"),"accounts":account_rows},"worker_query":{"success":workers.get("success"),"shiny_wave_matches":matches,"worker_count":len(worker_rows)}}))
+          PY
+      - name: Deploy authorized Welcome Worker and route
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > wrangler.jsonc <<'JSON'
+          {
+            "$schema": "node_modules/wrangler/config-schema.json",
+            "name": "nayanet-public-welcome",
+            "main": "welcome-worker.js",
+            "compatibility_date": "2026-09-15",
+            "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+            "routes": [
+              { "pattern": "welcome.nayanet.app/*", "zone_name": "nayanet.app" }
+            ]
+          }
+          JSON
+          npx --yes wrangler@4 deploy --config wrangler.jsonc
+
+      - name: Verify public URL now lands on canonical Intelligent Hub
+        shell: bash
+        run: |
+          set -euo pipefail
+          final=$(curl --fail --silent --show-error --location --write-out '%{url_effective}' --output /dev/null "$WELCOME_HOST/?naya_release=$GITHUB_SHA")
+          test "$final" = "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/"
+          echo "WELCOME_HOST_CANONICAL_HUB_REDIRECT_VERIFIED final=$final"
+
+      - name: Write immutable deployment receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > public-welcome-proof.json <<JSON
+          {
+            "status": "PRODUCTION_PROVEN",
+            "workflow": ".github/workflows/nayanet-public-welcome-release.yml",
+            "observed_head": "$GITHUB_SHA",
+            "worker": "$WELCOME_WORKER",
+            "host": "$WELCOME_HOST",
+            "canonical_hub": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+            "proof": [
+              "welcome.nayanet.app is now a compatibility redirect only",
+              "welcome.nayanet.app redirects directly to the canonical Intelligent Hub",
+              "the Welcome HTML is no longer served at the public URL"
+            ]
+          }
+          JSON
+          cat public-welcome-proof.json
+
+
+# Compatibility boundary: welcome.nayanet.app must redirect directly to the canonical Intelligent Hub; do not rebuild the Welcome surface.

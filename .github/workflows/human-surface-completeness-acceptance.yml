@@ -1,0 +1,68 @@
+name: Human Surface Completeness Acceptance
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  surface:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: assistant-cloudflare-production
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 22}
+      - run: npm install --no-save playwright@1.55.0
+      - run: npx playwright install --with-deps chromium
+      - name: Run human surface acceptance
+        run: |
+          ln -s "$GITHUB_WORKSPACE/node_modules" /tmp/node_modules
+          cat > /tmp/surface.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          const base=process.env.SUPABASE_URL;
+          const runtime=process.env.RUNTIME_URL;
+          const browser=await chromium.launch({headless:true});const ctx=await browser.newContext({serviceWorkers:'block'});const p=await ctx.newPage();
+          const alias=('surface'+process.env.GITHUB_RUN_ID+'-'+crypto.randomUUID().slice(0,6)).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          await p.goto(runtime+'/identity.html?name='+encodeURIComponent('Naya Surface Audit')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});const established=await p.evaluate(async()=>window.NayaNETNameFirstAuth.establish({name:'Naya Surface Audit',alias:location.search.match(/[?&]alias=([^&]+)/)?.[1]||('surface'+Date.now())}));if(!established?.authenticated||!established?.userId)throw Error('FIRST_DIVERGENCE:NAME_FIRST_ESTABLISH_FAILED:'+JSON.stringify(established));
+          const checks={};
+          await p.goto(runtime+'/feed?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});
+          checks.hub='PASS';await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});await p.waitForFunction(()=>!!document.querySelector('input[aria-label="Search intelligence"]'),{timeout:30000});
+          const search=p.getByLabel('Search intelligence');await search.fill('intelligence');await search.press('Enter');await p.waitForTimeout(1200);
+          if(!(await p.locator('[data-shell-owner="AppShellV3"]').count()))throw Error('SEARCH_SURFACE_DISAPPEARED');
+          checks.search='PASS';
+          await p.goto(runtime+'/reports',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
+          if(!(await p.locator('h1').filter({hasText:'Your Reports'}).count()))throw Error('REPORTS_SURFACE_FAILED');
+          checks.reports='PASS';
+          await p.goto(runtime+'/settings',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="settings"]').count())||!(await p.locator('h1').filter({hasText:'Settings'}).count()))throw Error('SETTINGS_SURFACE_FAILED');
+          checks.settings='PASS';
+          await p.goto(runtime+'/dream',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
+          const dreamTitle=await p.locator('h1,h2').allTextContents();
+          if(!(await p.locator('.app').getAttribute('data-route')==='/dream')||!dreamTitle.some(x=>/dream/i.test(x)))throw Error('FIRST_DIVERGENCE:DREAM_ROUTE_OR_SURFACE_MISSING');
+          checks.dream='PASS';
+          await p.goto(runtime+'/play',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
+          if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
+          checks.naya_play='PASS';
+          await p.goto(runtime+'/lists',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="lists"]').count())||!(await p.locator('h1').filter({hasText:'Smart Lists'}).count())||!(await p.getByLabel('New Smart List name').count()))throw Error('FIRST_DIVERGENCE:SMART_LISTS_SURFACE_MISSING');
+          checks.lists='PASS';
+          await p.goto(runtime+'/spaces',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="spaces"]').count())||!(await p.locator('h1').filter({hasText:'Smart Spaces'}).count())||!(await p.getByPlaceholder('Name your Space').count()))throw Error('FIRST_DIVERGENCE:SMART_SPACES_SURFACE_MISSING');
+          checks.spaces='PASS';
+          await p.goto(runtime+'/connections',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="connections"]').count())||!(await p.locator('h1').filter({hasText:'Your Connections'}).count()))throw Error('FIRST_DIVERGENCE:CONNECTIONS_SURFACE_MISSING');
+          checks.connections='PASS';
+          await p.goto(runtime+'/share',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('[data-surface="share"]').count())||!(await p.locator('h1').filter({hasText:'Smart Share'}).count())||!(await p.getByLabel('Find intelligence to share').count()))throw Error('FIRST_DIVERGENCE:SMART_SHARE_SURFACE_MISSING');
+          checks.share='PASS';
+          await p.goto(runtime+'/mail',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
+          if(!(await p.locator('.naya-mail-page').count())||!(await p.locator('h1').filter({hasText:'Smart Mail'}).count())||!(await p.getByRole('button',{name:/SEND THROUGH NAYAPOWER/i}).count()))throw Error('FIRST_DIVERGENCE:SMART_MAIL_SURFACE_MISSING');
+          checks.mail='PASS';
+          console.log(JSON.stringify({status:'VERIFIED',checks}));
+          await browser.close();
+          NODE
+          node /tmp/surface.mjs

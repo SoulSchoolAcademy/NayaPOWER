@@ -1,0 +1,1065 @@
++ Thought: 1.4s
+$ Get-ChildItem -Force | Select-Object Mode, Name
+...
+
+-- .git                                                                                                           
+d----- .github                                                                                                        
+d----- .naya                                                                                                          
+d----- ACTIVATION                                                                                                     
+d----- docs                                                                                                           
+d----- GOVERNANCE                                                                                                     
+d----- groove                                                                                                         
+d----- HUMAN_LAWS                                                                                                     
+d----- intelligence                                                                                                   
+d----- intelligence-receipts                                                                                          
+d----- MASTER-NOTES                                                                                                   
+d----- NAYA                                                                                                           
+d----- Naya Power Player                                                                                              
+d----- NAYANET                                                                                                        
+d----- NAYA_NOTES                                                                                                     
+d----- scripts                                                                                                        
+d----- smart-notes                                                                                                    
+d----- snapshots                                                                                                      
+d----- supabase                                                                                                       
+d----- SUPERBRAIN                                                                                                     
+d----- tests                                                                                                          
+d----- tools                                                                                                          
+-a---- 00 ?? NAYA POWER - ACTIVATION 00 � INITIALIZATION                                                              
+-a---- 00-NAYA-POWER-CONSTITUTIONAL-MANDATES-ADAPTIVE-LEARNING-AMENDMENT.md                                           
+-a---- 00-NAYA-POWER-CONSTITUTIONAL-MANDATES.md                                                                       
+-a---- 01 ?? NAYA POWER CORE AI ACTIVATION 01 SMART NOTES + RECEIPTS MACHINE _ AI ACTIVATION CONTRACT                 
+-a---- 02 ?? NAYA POWER - "AI" ACTIVATION 02 CONTINUOUS ACTION + NO DEAD ENDS                                         
+-a---- 03 ?? NAYA POWER - AI ACTIVATION 03 � CONTINUITY, CONTEXT + ALWAYS TUNED IN                                    
+-a---- 04 ?? NAYA POWER - AI ACTIVATION 04 � AAA EXCELLENCE + 10-STAR HUMAN SERVICE                                   
+-a---- 05 ?? NAYA POWER AI ACTIVATION 05 SMART NOTES  INTELLIGENT FEED  ADAPTIVE LEARNING  COMPOUNDING INTELLIGENCE
+-a---- 07 ?? ? NAYA POWER NITRO ACTIVATION                                                                            
+-a---- 08 ?? NAYA BRAIN ACTIVATION                                                                                    
+-a---- 09 ?? NAYA POWER LANGUAGE ACTIVATION                                                                           
+-a---- 10 ?? NAYA POWER LAW ACTIVATION                                                                                
+-a---- 11 ?? NAYA POWER MODES ACTIVATION                                                                              
+-a---- 13 ?? NAYA POWER MASTER DESIGNER ACTIVATION                                                                    
+-a---- 14 ?? NAYA POWER MASTER CODER ACTIVATION                                                                       
+-a---- 2026 09 07 NAYANET INTELLIGENT HUB V13 SURGICAL SIDEBAR RESTORATION.js                                         
+-a---- 2026 09 08 NAYANET INTELLIGENT FEED V4 INTERIOR EVOLUTION.js                                                   
+-a---- 2026 09 08 NAYANET INTELLIGENT HUB V10 RAIL POLISH.js                                                          
+-a---- 2026 09 08 NAYANET INTELLIGENT HUB V11 FINAL POLISH.js                                                         
+-a---- 2026 09 08 NAYANET INTELLIGENT HUB V12 DEPLOYMENT AUTHORITY.js                                                 
+-a---- 2026 09 13 NayaNET HUB 509 AAA.html                                                                            
+-a---- 2026 09 15 NayaNETHUB.html                                                                                     
+-a---- 5 Day Challenge                                                                                                
+-a---- AAAAI NEXT LEVEL                                                                                               
+-a---- ABOUT NAYANET                                                                                                  
+-a---- Aboutuspagecode                                                                                                
+-a---- Aboutuspagecode_ULTIMATE_V2                                                                                    
+-a---- Aboutuspagecode_ULTIMATE_V3                                                                                    
+-a---- Aboutuspagecode_ULTIMATE_V4                                                                                    
+-a---- AIFEEDBACK                                                                                                     
+-a---- AIWasteandEthicsSmartnote                                                                                      
+-a---- Al Masterclass.jpg                                                                                             
+-a---- CCT and MPA Notes                                                                                              
+-a---- CCT DRAFT 01                                                                                                   
+-a---- CERTIFICATE & PDF OUTPUT - NAYA.md                                                                             
+-a---- CERTIFICATE & PDF OUTPUT - SHAWN.md                                                                            
+-a---- Chattalklogic                                                                                                  
+-a---- CIS CAPTURE & VERIFICATION - NAYA.md                                                                           
+-a---- CIS CAPTURE & VERIFICATION - SHAWN.md                                                                          
+-a---- CIS DUAL REPRESENTATION & LEARNING PATH - NAYA.md                                                              
+-a---- CIS Notes                                                                                                      
+-a---- CIS PROTOCOL PLAN - NAYA.md                                                                                    
+-a---- CIS PROTOCOL PLAN - SEAN.md                                                                                    
+-a---- CIS UNIVERSAL LEARNING ENGINE - NAYA.md                                                                        
+-a---- CIS UNIVERSAL LEARNING ENGINE - SHAWN.md                                                                       
+-a---- CIS - NAYA POWER UNIVERSAL ASSESSMENT NORTH STAR - NAYA.md                                                     
+-a---- CIS - NAYA POWER UNIVERSAL ASSESSMENT NORTH STAR - SHAWN.md                                                    
+-a---- COLORORBIT.html                                                                                                
+-a---- Communicationskills                                                                                            
+-a---- Cover photo for HMC Podcast.png                                                                                
+-a---- DAILY INTELLIGENCE BRIEFING - 2026-08-25.md                                                                    
+-a---- E00 1800                                                                                                       
+-a---- E00 700                                                                                                        
+-a---- E00 796                                                                                                        
+-a---- E00.01                                                                                                         
+-a---- E00.02                                                                                                         
+-a---- E00.03                                                                                                         
+-a---- E01                                                                                                            
+-a---- E02                                                                                                            
+-a---- E03                                                                                                            
+-a---- E04                                                                                                            
+-a---- E05                                                                                                            
+-a---- E06                                                                                                            
+-a---- E07                                                                                                            
+-a---- E08                                                                                                            
+-a---- e08 1043 am 1026 08 20                                                                                         
+-a---- E09                                                                                                            
+-a---- Enterance to Naya                                                                                              
+-a---- FIVE-DAY CHALLENGE - MASTER BLUEPRINT - FROZEN 2026-08-25.md                                                   
+-a---- HMC Button design spec (1).pdf                                                                                 
+-a---- HMC Strandard! (1).pdf                                                                                         
+-a---- Human Maximus Codex - Meaning.pdf                                                                              
+-a---- Human Maximus Codex Logo What it says!.pdf                                                                     
+-a---- Human Maximus Codex membership page.png                                                                        
+-a---- Human Maximus Codex Series.jpg                                                                                 
+-a---- Human Maximus codex.png                                                                                        
+-a---- ICON LOGO.png                                                                                                  
+-a---- index.html                                                                                                     
+-a---- intelhubpage.html                                                                                              
+-a---- LAW 04 � AAA EXCELLENCE + 10-STAR HUMAN SERVICE                                                                
+-a---- MaxessCode.html                                                                                                
+-a---- MAXESS_STEP3_RUNTIME_TRIGGER.txt                                                                               
+-a---- Maximus 1.png                                                                                                  
+-a---- Maximus 2.png                                                                                                  
+-a---- MAXIS AAA CONTINUOUS EXECUTION DIRECTIVE QMAX  LIVING DEPTH  COMPLETE PRODUCT  VERIFIED REALITY  TORCH PASS
+-a---- Meet Naya - The Intelligence That Grows With You                                                               
+-a---- Memberships .png                                                                                               
+-a---- Membrship page.png                                                                                             
+-a---- Naya Assitant.png                                                                                              
+-a---- Naya Bc.png                                                                                                    
+-a---- NAYA BRAIN ACTIVATION                                                                                          
+-a---- Naya Brian set up notes                                                                                        
+-a---- Naya Full Kelowna.png                                                                                          
+-a---- Naya ICON OFFICAL NEW.png                                                                                      
+-a---- Naya Kelowna 2.png                                                                                             
+-a---- NAYA LANGUAGE ACTIVATION                                                                                       
+-a---- NAYA LAW ACTIVATION                                                                                            
+-a---- NAYA LAW - SHOW THE PROOF - SMART NOTE EVIDENCE STANDARD.md                                                    
+-a---- NAYA MASTER CODER ACTIVATION                                                                                   
+-a---- NAYA MASTER DESIGNER ACTIVATION                                                                                
+-a---- NAYA MASTER PLAN                                                                                               
+-a---- NAYA MODES ACTIVATION                                                                                          
+-a---- Naya net login.png                                                                                             
+-a---- NAYA NOTE - 2026-08-24 - AI AND LIFE FOCUS + NAYANET VISION - SHAWN NOTE.md                                    
+-a---- NAYA NOTE - 2026-08-24 - AI AND LIFE FOCUS + NAYANET VISION.md                                                 
+-a---- NAYA NOTE - FIVE-DAY CHALLENGE FREEZE - 2026-08-25.md                                                          
+-a---- NAYA POWER - WHITE PAPER ( II ) THE HUMAN-AI INTELLIGENCE OPERATING LAYER                                      
+-a---- NAYA POWER AI REVIEW FROM GROK. GEMINI, CLAUDE and META ( Summary of Architectural Evaluation )                
+-a---- NAYA POWER Alignment Foundational Model                                                                        
+-a---- NAYA POWER CANONICAL KNOWLEDGE TRIFECTA.md                                                                     
+-a---- Naya Power Masterplan Notes                                                                                    
+-a---- NAYA POWER Official Foundational Validation Specification                                                      
+-a---- NAYA POWER PLAYER IMAGES AND LINKS                                                                             
+-a---- Naya Power Runtime Text                                                                                        
+-a---- NAYA POWER SMART APP                                                                                           
+-a---- NAYA POWER SMARTNOTES PROTOCOL AND FEED DESIGN                                                                 
+-a---- NAYA POWER Value Alignment & Constitution Protocol                                                             
+-a---- NAYA POWER WHITE PAPER ( I ) A LETTER FROM THE FOUNDER                                                         
+-a---- NAYA POWER WHITE PAPER DISTRIBUTION PLAN.md                                                                    
+-a---- NAYA POWER.jpg                                                                                                 
+-a---- Naya Profile 10.jpg                                                                                            
+-a---- Naya Profile 2.jpg                                                                                             
+-a---- Naya Profile 3.jpg                                                                                             
+-a---- Naya Profile 4.jpg                                                                                             
+-a---- Naya Profile 5.jpg                                                                                             
+-a---- Naya Profile 6.jpg                                                                                             
+-a---- Naya Profile 7.jpg                                                                                             
+-a---- Naya Profile 8.jpg                                                                                             
+-a---- Naya Profile 9.jpg                                                                                             
+-a---- Naya Profile black face zoom.jpg                                                                               
+-a---- Naya Profile black full.jpg                                                                                    
+-a---- Naya Profile Black.jpg                                                                                         
+-a---- Naya Profile white.jpg                                                                                         
+-a---- NAYA PROTOCAL NOTE                                                                                             
+-a---- Naya Thinking protocol                                                                                         
+-a---- NAYA THINKING SYSTEM                                                                                           
+-a---- NAYA-NITRO-BUILD-PROTOCOL.md                                                                                   
+-a---- NAYA-NITRO-LEAD-PROMPT.md                                                                                      
+-a---- NAYA-NITRO-VISUAL-BUILD-PROTOCOL.md                                                                            
+-a---- NAYA-OS.md                                                                                                     
+-a---- NAYA-POWER-ADVERSARIAL-TEST-SUITE-V1.0.md                                                                      
+-a---- NAYA-POWER-INTELLIGENCE-LIBRARY.md                                                                             
+-a---- NAYA-POWER-PLAYER-MASTER-BLUEPRINT.md                                                                          
+-a---- naya-power-starter-kit.zip                                                                                     
+-a---- NAYA-READ-FIRST.md                                                                                             
+-a---- NAYACORE Understanding                                                                                         
+-a---- nayafeedbackaireview                                                                                           
+-a---- NAYAHUB-AUTHORITY.md                                                                                           
+-a---- NAYANET DESIGN MASTER DOC                                                                                      
+-a---- NAYANET Login bridge page                                                                                      
+-a---- Nayanet opening.png                                                                                            
+-a---- NayaNET Powercast.html                                                                                         
+-a---- NAYANET SMART FEED                                                                                             
+-a---- NAYANET WORLD                                                                                                  
+-a---- NayaNET WORLD PLAN                                                                                             
+-a---- NAYANET-CORE-INTELLIGENCE-MAP-V1.md                                                                            
+-a---- nayanet-hub-collections.js                                                                                     
+-a---- nayanet-intelligent-feed-v5.js                                                                                 
+-a---- nayanet-intelligent-feed-v6.js                                                                                 
+-a---- NayaNET-Intelligent-Hub-Cloudflare.zip                                                                         
+-a---- NAYANET-INTELLIGENT-HUB-V10-V11-SOURCE.md                                                                      
+-a---- NAYANET-LIVE-HUB.html                                                                                          
+-a---- NAYANET-LIVING-INTELLIGENCE-CLOUDFLARE (1).zip                                                                 
+-a---- nayanet-v7-surgical-upgrade-v2.js                                                                              
+-a---- nayanet-v7-surgical-upgrade.js                                                                                 
+-a---- NAYANETPOWERAPP.html                                                                                           
+-a---- NAYANETWELCOME PORTAL.html                                                                                     
+-a---- NAYANETWELOMEENTERANCE.html                                                                                    
+-a---- nayanetxyzpage                                                                                                 
+-a---- NayaOPIntel                                                                                                    
+-a---- NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1-IMPLEMENTATION-MATRIX.md                                                  
+-a---- NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1-REQUIREMENT-IMPLEMENTATION-TEST-EVIDENCE-MATRIX.md                        
+-a---- NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.1.md                                                                      
+-a---- NAYAPOWER-ULTIMATE-GOVERNANCE-ACT-V1.md                                                                        
+-a---- NayaPowerIntelligenceMap.html                                                                                  
+-a---- NayaPowerIntelligenceMap_Hero_V2.html                                                                          
+-a---- NayaPowerLessons                                                                                               
+-a---- nayapriority                                                                                                   
+-a---- NayaThinkingProtocol                                                                                           
+-a---- NAYAUNIVERSE                                                                                                   
+-a---- NAYA_IASCORE_EXECUTE_TRIGGER.txt                                                                               
+-a---- NAYA_MAIN_REPAIR_TRIGGER.txt                                                                                   
+-a---- NAYA_NOTE - DAILY INTELLIGENCE BRIEFING - CANONICAL OPERATING RITUAL.md                                        
+-a---- NAYA_SMART_NOTE_ACTIVITY_INTELLIGENCE_WISDOM.md                                                                
+-a---- NAYA_SMART_NOTE_CURRENT_ACTIVITY_2026-09-07.md                                                                 
+-a---- NAYA_SMART_NOTE_CURRENT_ROADMAP.md                                                                             
+-a---- NAYA_SMART_NOTE_REAL_EXAMPLE_V1.html                                                                           
+-a---- NAYA_SMART_NOTE_STANDARD_V1.md                                                                                 
+-a---- Nodeadends                                                                                                     
+-a---- PATCH_E00_TRIGGER                                                                                              
+-a---- PATCH_E00_TRIGGER_2                                                                                            
+-a---- Power & Days a Week.jpg                                                                                        
+-a---- Powercastplayer.html                                                                                           
+-a---- PowerCastWhitePapers.html                                                                                      
+-a---- Pro Max Player.jpg                                                                                             
+-a---- ProblemsProcess                                                                                                
+-a---- README.md                                                                                                      
+-a---- SEAN NOTE - FIVE-DAY CHALLENGE FREEZE - 2026-08-25.md                                                          
+-a---- SEAN_NOTE - DAILY INTELLIGENCE BRIEFING - CANONICAL OPERATING RITUAL.md                                        
+-a---- Shawn and Naya.png                                                                                             
+-a---- SMART FEED CONTENT                                                                                             
+-a---- SMART NOTE - FIVE-DAY CHALLENGE FREEZE - 2026-08-25.md                                                         
+-a---- SMART NOTES PROTOCOL                                                                                           
+-a---- SMART-LINK-HOW-NAYANET-INTELLIGENT-FEEDS-WORK.html                                                             
+-a---- SMART-NOTE-MAXESS-TERMINAL-BUTTON-SOLUTION.md                                                                  
+-a---- SMART-NOTE-MAXESS-TERMINAL-FORENSICS-AND-LESSONS.md                                                            
+-a---- SMARTFEED DESIGN FLOW                                                                                          
+-a---- SmartNOTE BOARDS                                                                                               
+-a---- SMART_NOTE_CONSTITUTION.md                                                                                     
+-a---- SMART_NOTE_RUNTIME_PROTOCOL.md                                                                                 
+-a---- START-HERE.md                                                                                                  
+-a---- Teaching                                                                                                       
+-a---- Textplayer.html                                                                                                
+-a---- The HMC QMAX Craftsman's Manifesto (1).pdf                                                                     
+-a---- THE NAYA POWER OPERATING MODEL - WHITE PAPER ( III )                                                           
+-a---- THE NAYA POWER OPERATING MODEL - WHITE PAPER ( III ) NEW                                                       
+-a---- V13_SIDEBAR_RESTORE_NOTES.md                                                                                   
+-a---- VAULTPORTALART.html                                                                                            
+-a---- vercel.json                                                                                                    
+-a---- WelcometoNayaNET.html                                                                                          
+-a---- What do you see.png                                                                                            
+-a---- Whitepaperpagecheckpoint                                                                                       
+-a---- Worldclassinterface                                                                                            
+-a---- _redirects                                                                                                     
+-a---- ? NAYA NITRO ACTIVATION                                                                                        
+-a---- ?? THE NAYANET ELITE INTERFACE STANDARD                                                                        
+-a---- ?? NAYA NOTES ACTIVATION                                                                                       
+-a---- ?? The NayaNET Alignment Architecture
+Click to collapse
+$ git log --oneline -10; git status --short
+896594e9 Repair canonical Cloudflare release lane for current Smart Board
+9493c1bf Correct Smart Board typography to 18px titles and 14px descriptions
+e0293903 Finalize Smart Board 18px titles and 14px descriptions
+6f129574 Correct Smart Board typography to 18px titles and 14px descriptions
+82c91834 Tighten Smart Board layer alignment and typography
+49d27dbf Tighten Smart Board layer alignment and typography
+a68e94e9 Finalize congruent V10 Smart Board icon geometry
+c65e60a7 Fix final geometry verification command
+a98f7a7f Execute final V10 geometry correction on current canonical artifact
+e99c26cd Align V10 Smart Board icons and typography to Nutshell geometry
+…
+Click to expand
++ Thought: 497ms
+$ Get-ChildItem -Recurse -File -Path ".naya" | Select-Object FullName, Length | Format-Table -AutoSize
+...
+
+in\NayaPOWER-Windows\.naya\memory\events\2026\09\03\11\SE-20260903-110000-smart-note-cis-contract-lock.json
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\05\11\SN-20260905-110000-smart-note-execution-test.json   
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\SN-20260907-EXECUTION-OBSTACLE-SOLUTION-LOOP.json      
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\SN-20260907-FORWARD-ONLY-EXECUTION-AND-COMPOUNDING-I...
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\19\SN-20260907-HUB-STABILIZATION-ROADMAP.json          
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\22\SN-20260907-CURRENT-STATE-FEED-INTELLIGENT-FEED.json
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\22\SN-20260907-GUARDRAILS-AND-ACTIVITY-FEED.json       
+C:\Users\Admin\NayaPOWER-Windows\.naya\memory\events\2026\09\07\22\SN-20260907-INTELLIGENT-BLOCK-DISPLAY-ORDER.json    
+…
+Click to expand
+$ Get-ChildItem -Recurse -File -Path "tools", "scripts" | Select-Object FullName, Length | Format-Table -AutoSize
+FullName                                                                    Length
+--------                                                                    ------
+C:\Users\Admin\NayaPOWER-Windows\tools\adaptive_learning.py                  10058
+C:\Users\Admin\NayaPOWER-Windows\tools\compound_intelligence.py               9082
+C:\Users\Admin\NayaPOWER-Windows\tools\execute_maxess_batch1_v3.py            9331
+C:\Users\Admin\NayaPOWER-Windows\tools\execute_maxess_result_bridge.py        7028
+C:\Users\Admin\NayaPOWER-Windows\tools\execute_maxess_section01.py           12429
+C:\Users\Admin\NayaPOWER-Windows\tools\finish_v21_aaa_remaining_v2.py         6926
+C:\Users\Admin\NayaPOWER-Windows\tools\promote_intelligence.py                9323
+C:\Users\Admin\NayaPOWER-Windows\tools\propagate_intelligence_to_pis.py       5723
+…
+Click to expand
+$ Get-ChildItem -Recurse -File -Path ".github" | Select-Object FullName, Length | Format-Table -AutoSize
+FullName                                                                                        Length
+--------                                                                                        ------
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-finish-smart-feed.yml                       524
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-sidebar-nav-audit.yml                       432
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-sidebar-nav-correction.yml                  390
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-smart-board-final-deploy.yml                612
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-smart-board-runtime-authority-v2.yml        448
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-smart-board-runtime-authority-v6.yml        386
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-smart-board-runtime-authority.yml           445
+C:\Users\Admin\NayaPOWER-Windows\.github\workflows\509-smart-board-world-class.yml                 787
+…
+Click to expand
++ Thought: 234ms
+$ Test-Path ".naya/control-plane"; Get-ChildItem -Recurse -File -Path ".naya/control-plane" -ErrorAction SilentlyContinue | Select-Object FullName, Length | Format-Table -AutoSize
+True
+
+FullName                                                                                       Length
+--------                                                                                       ------
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\BLOCKS.json                                 3989
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\CANONICAL-IDENTITY-REGISTRY.json            1323
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\DEPLOYMENT-GOVERNANCE.json                  2110
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\GOVERNANCE-KERNEL.json                      3933
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\governance_kernel.py                        1714
+C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\MAP.json                                    9161
+…
+Click to expand
+$ Get-ChildItem -Force ".naya" | Select-Object Mode, Name
+Mode   Name                                                                                 
+----   ----                                                                                 
+d----- actions                                                                              
+d----- activity                                                                             
+d----- AI-BOOT                                                                              
+d----- architecture                                                                         
+d----- audits                                                                               
+d----- backups                                                                              
+d----- build                                                                                
+d----- cct                                                                                  
+…
+Click to expand
++ Thought: 1.2s
+This is a large adversarial verification task. Let me set up tracking and begin systematic inspection.
+# Todos
+[•] Test 1: Invent actual execution graph (entry points, authority checks)
+[ ] Test 2: Direct runtime bypass analysis (adapters)
+[ ] Test 3-4: REFUSED/STOPPED attack (in-memory)
+[ ] Test 5-6: REVOKED/EXPIRED authority attack
+[ ] Test 7: AUTHORIZED->EXECUTING gap
+[ ] Test 8-9: Capability without authority / boolean authority
+[ ] Test 10-12: Lower-layer escape / workflows / schedule
+[ ] Test 13-16: Retry, tool gateway, computer, side-effect closure
+[ ] Test 17-20: Bypass matrix, verdict, gap, closure map
+→Read .naya\control-plane\workflow_gate.py 
+→Read .naya\control-plane\governance_kernel.py 
+→Read .naya\governance\governance_kernel.py 
++ Thought: 620ms
+→Read .naya\runtime\model_tool_gateway.py 
+→Read .naya\runtime\execution_controller.py 
+→Read .naya\runtime\release_authorization.py 
++ Thought: 5.1s
+→Read .naya\runtime\torch_execution_adapter.py 
+→Read .naya\runtime\naya_agent_interface.py 
+→Read .naya\runtime\naya_power_live.py 
++ Thought: 2.3s
+→Read .naya\runtime\naya_power_orchestrator.py 
+→Read .naya\runtime\chatgpt_host_adapter.py 
++ Thought: 429ms
+→Read .naya\runtime\naya_power_kernel.py 
+→Read .naya\runtime\evidence_runtime.py 
++ Thought: 11.5s
+→Read .naya\runtime\executable_torch.py 
+→Read .naya\runtime\project_execution_contract.py 
+→Read .naya\runtime\naya_preflight_gate.py 
++ Thought: 847ms
+Now let me inspect the workflows, especially the release/deploy ones.
+→Read .github\workflows\assistant-cloudflare-hub-release.yml 
+→Read .github\workflows\nayanet-canonical-hub-production-release.yml 
+→Read .github\workflows\510-aaa-smart-board-visual-surgery.yml 
++ Thought: 4.9s
+Major findings emerging. Let me check whether workflow_gate.py is actually invoked anywhere, and scan the remaining workflows for deploy/mutation steps.
+✱Grep "workflow_gate|authorize_workflow|naya-preflight|governance_kernel|release_authorization" (56 matches)
+$ Get-ChildItem ".github/workflows" -Filter *.yml | ForEach-Object { Write-Output "===== $($_.Name) ====="; Select-String -Path $_.FullName -Pattern 'on:|push|schedule|workflow_dispatch|permissions|contents:|wrangler|npx|git push|git commit|python|bash|node |curl |gh ' | ForEach-Object { "$($_.LineNumber): $($_.Line.Trim())" } }
+===== 509-finish-smart-feed.yml =====
+8: on:
+9: workflow_dispatch:
+13: runs-on: ubuntu-latest
+===== 509-sidebar-nav-audit.yml =====
+4: # post-deploy runtime gate. A second push-triggered audit creates noise without
+7: on:
+8: workflow_dispatch:
+12: runs-on: ubuntu-latest
+===== 509-sidebar-nav-correction.yml =====
+…
+Click to expand
++ Thought: 8.0s
+No workflow calls workflow_gate.py — it's only syntax-checked. Let me now scan for executable side-effect primitives (subprocess, HTTP, filesystem mutation) across the runtime/tools/scripts and inspect the mutating GitHub Actions workflows more closely.
+✱Grep "subprocess|os\.system|os\.popen|Popen|shell=True|requests\.(post|put|patch|delete)|urllib|http\.client|httpx|\.post\(|\.put\(|\.delete\(" in .naya (42 matches)
+✱Grep "subprocess|os\.system|shell=|git push|git commit|requests|wranger|vercel" in tools (8 matches)
+✱Grep "subprocess|os\.system|shell=|curl|git|npm|npx" in scripts (9 matches)
++ Thought: 1.9s
+→Read .naya\runtime\runtime_failure_isolation.py 
+→Read .naya\runtime\runtime_activation_check.py 
+→Read .naya\control-plane\RELEASE-AUTHORIZATION.json 
++ Thought: 6.3s
+$ Test-Path ".naya/governance/authority-registry.json"; Get-ChildItem ".naya/governance" -Filter *.json | Select-Object Name
+True
+
+Name                           
+----                           
+ACTION-LEDGER.json             
+authority-registry.json        
+NAYA-AUTHORITY-REGISTRY-V1.json
+→Read .naya\governance\NAYA-AUTHORITY-REGISTRY-V1.json 
+→Read .naya\control-plane\DEPLOYMENT-GOVERNANCE.json 
++ Thought: 2.0s
+→Read .naya\governance\authority-registry.json 
+$ Test-Path ".github/workflows/authorized-vercel-release.yml"; Test-Path "SUPERBRAIN/runtime/naya_power_runtime.py"; Test-Path "SUPERBRAIN/runtime/host_executor.py"; Test-Path "SUPERBRAIN/runtime/mission_state_store.py"; Test-Path "SUPERBRAIN/runtime/quality_gate.py"; Test-Path ".github/workflows/torch-pass-gate.yml"; Test-Path "SUPERBRAIN/naya_power_decision_calculus.py"
+False
+True
+True
+True
+True
+False
+True
++ Thought: 1.4s
+$ Get-ChildItem -Recurse -File "SUPERBRAIN" | Where-Object { $_.Name -match 'runtime|executor|mission|decision|quality|authority|gate' } | Select-Object FullName, Length | Format-Table -AutoSize
+FullName                                                                                                               
+--------                                                                                                               
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\NAYA-POWER-DECISION-CALCULUS.md                                            
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\naya_power_decision_calculus.json                                          
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\naya_power_decision_calculus.py                                            
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\test_naya_power_decision_calculus.py                                       
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\MASTER-NOTES\SN-20260828-MAXIS-COMPLETE-PRODUCT-MISSION-LOCK.md            
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\MASTER-NOTES\SN-20260828-MIRROR-BEFORE-RELEASE-QUALITY-GATE.md             
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\MASTER-NOTES\SN-20260828-MISSION-STATE-RUNTIME-GATES-EVIDENCE-HANDOFF.md   
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\MASTER-NOTES\SN-20260828-NAYA-10-STAR-COMPLETION-MIRROR-AND-VALUE-GATE.md  
+…
+Click to expand
+→Read SUPERBRAIN\runtime\host_executor.py 
+→Read SUPERBRAIN\runtime\naya_power_runtime.py 
++ Thought: 3.2s
+$ Get-ChildItem -Recurse -File "SUPERBRAIN" -Filter "governance_contract*" | Select-Object FullName; Get-ChildItem -Recurse -File -Filter "governance_contract.py" | Select-Object FullName
+FullName                                                                  
+--------                                                                  
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\runtime\governance_contract.py
+C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\runtime\governance_contract.py
+→Read SUPERBRAIN\runtime\governance_contract.py 
+→Read SUPERBRAIN\runtime\mission_state_store.py 
++ Thought: 13.9s
+Now let me inspect the tools/entry points and run safe in-memory governance kernel tests.
+→Read tools\execute_maxess_section01.py 
+$ python --version; python -c "import sys; print(sys.executable)"
+Python 3.13.15
+C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe
++ Thought: 4.7s
+Now let me run safe in-memory governance kernel tests (Tests 3–6, and the AUTHORIZED→EXECUTING gap). I'll write the script to the pre-approved temp directory so the repo stays untouched.
+# Wrote ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+import importlib.util, sys, os, tempfile, json
+from pathlib import Path
+from datetime import datetime, timezone, timedelta
+
+ROOT = Path(r"C:\Users\Admin\NayaPOWER-Windows")
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+gk = load("gk", ROOT / ".naya/governance/governance_kernel.py")
+
+LCM = lambda **k: gk.DecisionObject(
+    decision_id=k.get("decision_id","D-TEST"), mission="test mission",
+    actor_id=k.get("actor_id","actor"), action=k.get("action","repo_write"),
+    purpose=k.get("purpose","purpose"), scope=k.get("scope","repo:SoulSchoolAcademy/NayaPOWER"),
+    current_truth="truth", gap="gap", evidence=("e1",),
+    epistemic=frozenset({gk.Epistemic.OBSERVED, gk.Epistemic.VERIFIED}),
+    consequence="c", reversible=True,
+    risk=gk.Risk(uncertainty=2, consequence=2, irreversibility=2),
+    alternatives=("do_not_execute",), expected_value="ev",
+    required_permission=k.get("required_permission","repo_write"),
+    verification=gk.VerificationPlan(observation="o", success_criteria="sc"),
+    necessary_power=frozenset({"repo_write"}), requested_power=frozenset({"repo_write"}),
+)
+
+now = datetime.now(timezone.utc)
+
+print("="*70)
+print("TEST 6/5: EXPIRED and REVOKED authority -> kernel rejections")
+expired = gk.Authority(authority_id="A-EXP", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), expires_at=(now - timedelta(seconds=1)).isoformat())
+valid_short = gk.Authority(authority_id="A-SHORT", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), expires_at=(now + timedelta(hours=1)).isoformat())
+revoked = gk.Authority(authority_id="A-REV", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), revoked=True)
+
+d = LCM()
+print("expired.permits(now=T1):", expired.permits(actor_id="actor", action="repo_write", scope="repo:SoulSchoolAcademy/NayaPOWER", now=now.isoformat()))
+print("revoked.permits:", revoked.permits(actor_id="actor", action="repo_write", scope="repo:SoulSchoolAcademy/NayaPOWER", now=now.isoformat()))
+r_exp = gk.evaluate(d, expired, now=now.isoformat())
+r_rev = gk.evaluate(d, revoked, now=now.isoformat())
+print("evaluate(expired) allowed:", r_exp.allowed, "state:", r_exp.state, "decision:", r_exp.decision)
+print("evaluate(revoked) allowed:", r_rev.allowed, "state:", r_rev.state, "decision:", r_rev.decision)
+
+print("="*70)
+print("TEST 3/4: REFUSED/STOPPED states - are they callable downstream?")
+res = gk.evaluate(d, revoked, now=now.isoformat())
+print("REFUSED/INVESTIGATE result captured:", res.allowed is False)
+
+# Check execution_controller's state machine has any REFUSED/STOPPED handling
+ec = load("ec", ROOT / ".naya/runtime/execution_controller.py")
+print("execution_controller.VALID_STATES:", ec.VALID_STATES)
+print("execution_controller.TRANSITIONS:", ec.TRANSITIONS)
+print("Has REFUSED/STOPPED/DENIED state?", any(s in ec.VALID_STATES for s in ("REFUSED","STOPPED","DENIED")))
+
+print("="*70)
+print("TEST 3 (direct): can model_tool_gateway.authorize be reached without any Authority/Decision?")
+mtg = load("mtg", ROOT / ".naya/runtime/model_tool_gateway.py")
+tmp = Path(tempfile.mkdtemp(prefix="ec"))
+ec.STATE = tmp / "EXECUTION-STATE.json"
+mtg_ec = sys.modules["mtg"]
+import model_tool_gateway as _m
+# point the loaded module's execution_controller reference to the patched one
+_m.execution_controller = ec
+from risk_engine import classify
+# seed CLAIMED state in temp
+ec.transition("CLAIMED", claim_id="CL-ATTACK", block_id="B-ATTACK", owner="unauthorized-agent", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="head")
+action = {"action_id":"ACT-ATTACK","action_type":"repository_write","target":"docs","purpose":"attack","risk":"L2","protected_baseline":"head","observation_target":"files","evidence_requirement":["x"],"verification_requirement":["y"]}
+try:
+    out = _m.authorize(action)
+    print("model_tool_gateway.authorize() with NO Authority/Decision/registry:")
+    print("  =>", json.dumps(out))
+    print("  => side_effect_authorized =", out["side_effect_authorized"])
+    print("  => execution_status =", out["execution_status"])
+except Exception as exc:
+    print("  => DENIED:", type(exc).__name__, exc)
+
+print("="*70)
+print("TEST 9: runtime kernel trusts caller-supplied authorization string")
+npk = load("npk", ROOT / ".naya/runtime/naya_power_kernel.py")
+req = {
+    "request_id":"ATTACK-1","mission":"m","context":{},
+    "authority":{"actor":"attacker","scope":"none"},
+    "constitution_version":"1.0.0",
+    "candidates":[
+        {"id":"evil","description":"deploy unauthorized change","expected_benefit":10,"necessary_cost":1,
+         "risk_loss":2,"authorization":"approved","boundary_violations":[],
+         "evidence_state":"VERIFIED","reversible":True,"governance_sensitive":False}
+    ],
+}
+rec = npk.evaluate(req)
+print("  decision:", rec["decision"], "| selected:", rec["selected_candidate"], "| reason:", rec["reason"])
+
+print("="*70)
+print("TEST 3/4 continued: orchestrator continuation for REFUSED")
+orchestrator = load("orch", ROOT / ".naya/runtime/naya_power_orchestrator.py")
+cont = orchestrator.continuation_for({"decision":"REFUSE","candidate_evaluations":[]})
+print("continuation for REFUSE:", cont)
+
+print("DONE")
+# Running in ~\AppData\Local\Temp\opencode
+$ python test5_kernel_bypass.py
+======================================================================
+TEST 6/5: EXPIRED and REVOKED authority -> kernel rejections
+expired.permits(now=T1): False
+revoked.permits: False
+evaluate(expired) allowed: False state: GovernanceState.READY_FOR_DECISION decision: Decision.INVESTIGATE
+evaluate(revoked) allowed: False state: GovernanceState.READY_FOR_DECISION decision: Decision.INVESTIGATE
+======================================================================
+TEST 3/4: REFUSED/STOPPED states - are they callable downstream?
+REFUSED/INVESTIGATE result captured: True
+execution_controller.VALID_STATES: {'CLAIMED', 'READY', 'EXECUTING', 'VERIFIED', 'HANDED_OFF', 'OBSERVED'}
+…
+Click to expand
++ Thought: 257ms
+← Edit ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+print("Has REFUSED/STOPPED/DENIED state?", any(s in ec.VALID_STATES for s in ("REFUSED","STOPPED","DENIED")))
+
+print("="*70)
+print("TEST 3 (direct): can model_tool_gateway.authorize be reached without any Authority/Decision?")
+mtg = load("mtg", ROOT / ".naya/runtime/model_tool_gateway.py")
+
+
+
+
+
+tmp = Path(tempfile.mkdtemp(prefix="ec"))
+ec.STATE = tmp / "EXECUTION-STATE.json"
+mtg_ec = sys.modules["mtg"]
+import model_tool_gateway as _m
+# point the loaded module's execution_controller reference to the patched one
+_m.execution_controller = ec
+from risk_engine import classify
+← Edit ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+ec.STATE = tmp / "EXECUTION-STATE.json"
+import model_tool_gateway as _m
+# point the loaded module's execution_controller reference to the patched one
+_m.execution_controller = ec
+from risk_engine import classify
+# seed CLAIMED state in temp
+ec.transition("CLAIMED", claim_id="CL-ATTACK", block_id="B-ATTACK", owner="unauthorized-agent", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="head")
+action = {"action_id":"ACT-ATTACK","action_type":"repository_write","target":"docs","purpose":"attack","risk":"L2","protected_baseline":"head","observation_target":"files","evidence_requirement":["x"],"verification_requirement":["y"]}
+try:
++ Thought: 4.4s
+# Wrote ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+import importlib.util, sys, os, tempfile, json
+from pathlib import Path
+from datetime import datetime, timezone, timedelta
+
+ROOT = Path(r"C:\Users\Admin\NayaPOWER-Windows")
+RUNTIME = ROOT / ".naya/runtime"
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules[name] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+gk = load("gk", ROOT / ".naya/governance/governance_kernel.py")
+
+def decision(**k):
+    return gk.DecisionObject(
+        decision_id=k.get("decision_id","D-TEST"), mission="test mission",
+        actor_id=k.get("actor_id","actor"), action=k.get("action","repo_write"),
+        purpose=k.get("purpose","purpose"), scope=k.get("scope","repo:SoulSchoolAcademy/NayaPOWER"),
+        current_truth="truth", gap="gap", evidence=("e1",),
+        epistemic=frozenset({gk.Epistemic.OBSERVED, gk.Epistemic.VERIFIED}),
+        consequence="c", reversible=True,
+        risk=gk.Risk(uncertainty=2, consequence=2, irreversibility=2),
+        alternatives=("do_not_execute",), expected_value="ev",
+        required_permission=k.get("required_permission","repo_write"),
+        verification=gk.VerificationPlan(observation="o", success_criteria="sc"),
+        necessary_power=frozenset({"repo_write"}), requested_power=frozenset({"repo_write"}),
+    )
+
+now = datetime.now(timezone.utc)
+
+print("="*70)
+print("KERNEL: EXPIRED / REVOKED / STALE re-check")
+expired = gk.Authority(authority_id="A-EXP", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), expires_at=(now - timedelta(seconds=1)).isoformat())
+short = gk.Authority(authority_id="A-SHORT", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), expires_at=(now + timedelta(hours=1)).isoformat())
+revoked = gk.Authority(authority_id="A-REV", principal_id="actor", purpose="purpose", scope="repo:SoulSchoolAcademy/NayaPOWER", granted_actions=frozenset({"repo_write"}), revoked=True)
+
+d = decision()
+print("expired.permits(T1):", expired.permits(actor_id="actor", action="repo_write", scope="repo:SoulSchoolAcademy/NayaPOWER", now=now.isoformat()))
+print("revoked.permits:     ", revoked.permits(actor_id="actor", action="repo_write", scope="repo:SoulSchoolAcademy/NayaPOWER", now=now.isoformat()))
+print("evaluate(expired):", gk.evaluate(d, expired, now=now.isoformat()).allowed)
+print("evaluate(revoked):", gk.evaluate(d, revoked, now=now.isoformat()).allowed)
+print("evaluate(valid, T0):", gk.evaluate(d, short, now=now.isoformat()).allowed)
+
+print("="*70)
+print("EXECUTION CONTROLLER: does it know REFUSED/STOPPED/DENIED?")
+ec = load("ec", RUNTIME / "execution_controller.py")
+print("VALID_STATES:", sorted(ec.VALID_STATES))
+print("no REFUSED/STOPPED/DENIED state:", not any(s in ec.VALID_STATES for s in ("REFUSED","STOPPED","DENIED")))
+
+print("="*70)
+print("MODEL_TOOL_GATEWAY direct call WITHOUT Authority/DecisionObject/registry")
+tmp = Path(tempfile.mkdtemp(prefix="ec"))
+ec.STATE = tmp / "EXECUTION-STATE.json"
+sys.modules["execution_controller"] = ec
+mtg = load("mtg", RUNTIME / "model_tool_gateway.py")
+# seed CLAIMED in temp state
+ec.transition("CLAIMED", claim_id="CL-ATTACK", block_id="B-ATTACK", owner="unauthorized-agent", scope=["repo:SoulSchoolAcademy/NayaPOWER"], start_head="head")
+action = {"action_id":"ACT-ATTACK","action_type":"repository_write","target":"docs","purpose":"attack","risk":"L2","protected_baseline":"head","observation_target":"files","evidence_requirement":["x"],"verification_requirement":["y"]}
+try:
+    out = mtg.authorize(action)
+    print("authorize() returned:", json.dumps(out))
+    print("side_effect_authorized:", out["side_effect_authorized"], "| execution_status:", out["execution_status"])
+    print("state file now:", json.loads(ec.STATE.read_text())["status"])
+except Exception as exc:
+    print("DENIED:", type(exc).__name__, exc)
+
+print("="*70)
+print("RUNTIME KERNEL trusts caller-supplied authorization='approved' string?")
+npk = load("npk", RUNTIME / "naya_power_kernel.py")
+req = {"request_id":"ATTACK-1","mission":"m","context":{},"authority":{"actor":"attacker","scope":"none"},"constitution_version":"1.0.0",
+       "candidates":[{"id":"evil","description":"deploy unauthorized change","expected_benefit":10,"necessary_cost":1,
+                      "risk_loss":2,"authorization":"approved","boundary_violations":[],"evidence_state":"VERIFIED","reversible":True,"governance_sensitive":False}]}
+rec = npk.evaluate(req)
+print("decision:", rec["decision"], "| selected:", rec["selected_candidate"])
+print("reason:", rec["reason"])
+
+print("="*70)
+print("ORCHESTRATOR continuation after REFUSE/FORCED-STOP")
+orch = load("orch", RUNTIME / "naya_power_orchestrator.py")
+print("REFUSE  ->", orch.continuation_for({"decision":"REFUSE","candidate_evaluations":[]}))
+print("ESCALATE->", orch.continuation_for({"decision":"ESCALATE","candidate_evaluations":[]}))
+print("(no STOP case exists in continuation_for)")
+
+print("="*70)
+print("SUPERBRAIN governance_contract: default-true booleans, decision_state control")
+gc = load("gc", ROOT / "SUPERBRAIN/runtime/governance_contract.py")
+ga = gc.GovernedAction()  # all defaults
+print("GovernedAction defaults: capability_available=%s constitutional_eligible=%s risk_acceptable=%s responsible_value=%s decision_state=%s" % (
+    ga.capability_available, ga.constitutional_eligible, ga.risk_acceptable, ga.responsible_value_eligible, ga.decision_state))
+res = gc.evaluate_governance(ga, registry=None)
+print("evaluate_governance(defaults, registry=None) eligible:", res.eligible, "| reasons:", res.reasons)
+
+print("="*70)
+print("SUPERBRAIN ActionCandidate default authorized=True")
+npr = load("npr", ROOT / "SUPERBRAIN/runtime/naya_power_runtime.py")
+cand = npr.ActionCandidate(action_id="X", description="act", value=5)
+print("candidate.authorized default:", cand.authorized)
+print("candidate.eligible(registry=None):", cand.eligible(registry=None))
+
+print("DONE")
+# Running in ~\AppData\Local\Temp\opencode
+$ python test5_kernel_bypass.py
+======================================================================
+KERNEL: EXPIRED / REVOKED / STALE re-check
+expired.permits(T1): False
+revoked.permits:      False
+evaluate(expired): False
+evaluate(revoked): False
+evaluate(valid, T0): True
+======================================================================
+EXECUTION CONTROLLER: does it know REFUSED/STOPPED/DENIED?
+VALID_STATES: ['CLAIMED', 'EXECUTING', 'HANDED_OFF', 'OBSERVED', 'READY', 'VERIFIED']
+…
+Click to expand
++ Thought: 824ms
+← Edit ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+from datetime import datetime, timezone, timedelta
+
+ROOT = Path(r"C:\Users\Admin\NayaPOWER-Windows")
+RUNTIME = ROOT / ".naya/runtime"
+
+
+def load(name, path):
+    spec = importlib.util.spec_from_file_location(name, path)
+    mod = importlib.util.module_from_spec(spec)
+# Running in ~\AppData\Local\Temp\opencode
+$ python test5_kernel_bypass.py
+======================================================================
+KERNEL: EXPIRED / REVOKED / STALE re-check
+expired.permits(T1): False
+revoked.permits:      False
+evaluate(expired): False
+evaluate(revoked): False
+evaluate(valid, T0): True
+======================================================================
+EXECUTION CONTROLLER: does it know REFUSED/STOPPED/DENIED?
+VALID_STATES: ['CLAIMED', 'EXECUTING', 'HANDED_OFF', 'OBSERVED', 'READY', 'VERIFIED']
+…
+Click to expand
++ Thought: 10.4s
+← Edit ~\AppData\Local\Temp\opencode\test5_kernel_bypass.py
+print("evaluate_governance(defaults, registry=None) eligible:", res.eligible, "| reasons:", res.reasons)
+
+print("="*70)
+print("SUPERBRAIN ActionCandidate default authorized=True")
+
+npr = load("npr", ROOT / "SUPERBRAIN/runtime/naya_power_runtime.py")
+cand = npr.ActionCandidate(action_id="X", description="act", value=5)
+print("candidate.authorized default:", cand.authorized)
+print("candidate.eligible(registry=None):", cand.eligible(registry=None))
+
+
+
+
+
+
+
+
+
+
+print("DONE")
+# Running in ~\AppData\Local\Temp\opencode
+$ python test5_kernel_bypass.py
+======================================================================
+KERNEL: EXPIRED / REVOKED / STALE re-check
+expired.permits(T1): False
+revoked.permits:      False
+evaluate(expired): False
+evaluate(revoked): False
+evaluate(valid, T0): True
+======================================================================
+EXECUTION CONTROLLER: does it know REFUSED/STOPPED/DENIED?
+VALID_STATES: ['CLAIMED', 'EXECUTING', 'HANDED_OFF', 'OBSERVED', 'READY', 'VERIFIED']
+…
+Click to expand
++ Thought: 5.8s
+Key evidence is accumulating. Let me read the host integration contract and remaining deploy workflows.
+→Read .naya\runtime\NAYA-POWER-CHATGPT-HOST-INTEGRATION-V1.0.md 
+→Read .github\workflows\naya-power-adversarial-p0.yml 
++ Thought: 2.7s
+$ Get-Content ".github/workflows/509-smart-board-final-deploy.yml"; Write-Output "====="; Get-Content ".github/workflows/deploy-509-c4-final-presentation-fix.yml"; Write-Output "====="; Get-Content ".github/workflows/deploy-smart-feed-direct-v2.yml"; Write-Output "====="; Get-Content ".github/workflows/deploy-feature-board-v4.yml"
+name: 509 �?" Smart Board Final Authorized Runtime (DISABLED)
+
+# DISABLED: this workflow was a second public-runtime deployment lane.
+# Multiple push-triggered deployers allowed later runs to overwrite a verified
+# runtime and made the public UI appear to yo-yo between incompatible states.
+# The single authoritative lane is 509-smart-board-runtime-authority-v6.yml.
+# Keep this file as historical evidence; do not deploy from it.
+
+on:
+  workflow_dispatch:
+…
+Click to expand
+$ Get-Content ".github/workflows/naya-canonical-react-build-handoff.yml"; Write-Output "====="; Get-Content ".github/workflows/verify-nayanet-hub-build-only.yml"
+name: Naya Canonical React Build Handoff
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/**'
+      - '.github/workflows/naya-canonical-react-build-handoff.yml'
+
+…
+Click to expand
++ Thought: 3.2s
+$ Get-ChildItem ".github/workflows" -Filter *.yml | ForEach-Object { $c = Get-Content $_.FullName -Raw; if ($c -match 'schedule:|repository_dispatch|cron:') { Write-Output "SCHEDULE FOUND: $($_.Name)" } }; Write-Output "--- scan done ---"
+--- scan done ---
+$ Get-Content ".github/workflows/509-smart-board-runtime-authority-v6.yml"; Write-Output "====="; Get-Content ".github/workflows/509-smart-board-world-class.yml"; Write-Output "====="; Get-Content ".github/workflows/restore-509-exact.yml"; Write-Output "====="; Get-Content ".github/workflows/509-smart-notes-surgical-final-v3.yml"
+name: 509 �?" Smart Board Runtime Authority V6 (RETIRED)
+
+# RETIRED: historical one-board execution lane. Do not execute.
+# The canonical public runtime authority is the dedicated world-class 509 lane.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  retired:
+…
+Click to expand
++ Thought: 12.7s
+$ Select-String -Path ".github/workflows/*.yml" -Pattern "vercel" | ForEach-Object { "$($_.Filename):$($_.LineNumber): $($_.Line.Trim())" }
+(no output)
+$ Get-Content "vercel.json"
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "framework": "vite",
+  "buildCommand": "cd NAYANET/HUB && npm install && npm run build",
+  "outputDirectory": "NAYANET/HUB/dist",
+  "git": {
+    "deploymentEnabled": false
+  },
+  "rewrites": [
+…
+Click to expand
++ Thought: 5.5s
+$ Select-String -Path ".github/workflows/*.yml" -Pattern "workflow_gate.py|release_authorization.py|governance_kernel.py|authority-registry|naya_power_kernel|execution_controller|model_tool_gateway" | ForEach-Object { "$($_.Filename):$($_.LineNumber): $($_.Line.Trim())" }; Write-Output "--- none means not wired ---"
+naya-control-plane.yml:39: run: python -m py_compile .naya/governance/governance_kernel.py .naya/control-plane/workflow_gate.py .naya/governance/test_naya_execution_boundaries.py
+naya-control-plane.yml:41: run: python .naya/governance/test_governance_kernel.py
+--- none means not wired ---
+$ Test-Path ".naya/runtime/EXECUTION-STATE.json"; if (Test-Path ".naya/runtime/EXECUTION-STATE.json") { Get-Content ".naya/runtime/EXECUTION-STATE.json" }
+False
+$ Select-String -Path ".naya/runtime/promotion_runtime.py",".naya/runtime/restore_context.py",".naya/runtime/oscar.py" -Pattern "write_text|write_bytes|mkdir|\.write\(" | ForEach-Object { "$($_.Filename):$($_.LineNumber): $($_.Line.Trim())" }
+restore_context.py:100: directory.mkdir(parents=True,exist_ok=True); path=directory/f'{prefix}-{now().strftime("%Y%m%dT%H%M%SZ")}.json'; path.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n',encoding='utf-8'); return path
++ Thought: 5.0s
+$ Get-Content ".github/workflows/naya-memory-runtime.yml"; Write-Output "====="; Get-Content ".github/workflows/verify-primary-intelligence-system.yml" | Select-Object -First 40
+name: Naya Power Memory + Restore Runtime
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/memory/**'
+      - '.naya/runtime/restore_context.py'
+      - '.naya/runtime/test_restore_context.py'
+      - '.naya/checkpoints/**'
+…
+Click to expand
++ Thought: 11.9s
+→Read .naya\runtime\NAYA-POWER-RUNTIME-CONTRACT.json 
+→Read .naya\runtime\NAYA-POWER-MODEL-ADAPTER-CONTRACT-V1.0.md 
++ Thought: 12.4s
+→Read .naya\governance\test_naya_execution_boundaries.py 
++ Thought: 3.5s
+$ Get-ChildItem ".github/workflows" -Name | Sort-Object
+509-finish-smart-feed.yml
+509-sidebar-nav-audit.yml
+509-sidebar-nav-correction.yml
+509-smart-board-final-deploy.yml
+509-smart-board-runtime-authority.yml
+509-smart-board-runtime-authority-v2.yml
+509-smart-board-runtime-authority-v6.yml
+509-smart-board-world-class.yml
+509-smart-notes-board-presentation-fix.yml
+509-smart-notes-presentation-final.yml
+…
+Click to expand
++ Thought: 30.8s
+Objective
+- Complete the adversarial "Naya POWER Test #5 — Runtime Authority Closure & Bypass" audit of the repository at C:\Users\Admin\NayaPOWER-Windows: determine, from actual code and safe in-memory execution only, whether any execution path can reach a consequential side effect without a valid, current, scope-correct Naya Power authorization.
+- Produce the full 20-test report (execution graph, bypass attacks, tool-gateway/computer/side-effect closure, bypass matrix, exact YES/NO/UNKNOWN verdict for Test 18, single architectural gap, final closure map with ✓/△/✗/? markers), then STOP and wait. No file modifications, no commits/pushes/deploys/external calls.
+Important Details
+- HARD CONSTRAINT: read-only inspection. No repo writes, no commits/pushes/dispatches/deploys, no external services, no production credentials. Safe in-memory Python execution is allowed. Every finding must be labeled (EXECUTABLE CODE / SAFE TEST EXECUTION / MACHINE-READABLE STATE / DOCUMENTATION / INTERPRETATION / UNCERTAIN).
+- Environment: Windows, Python 3.13.15 at C:\Users\Admin\AppData\Local\Programs\Python\Python313\python.exe. Repo git HEAD 896594e9; untracked __pycache__/ dirs pre-exist (not ours).
+- Safe test harness exists in the pre-approved temp dir (NOT the repo): C:\Users\Admin\AppData\Local\Temp\opencode\test5_kernel_bypass.py — it patches execution_controller.STATE to a tempfile so .naya/runtime/EXECUTION-STATE.json is never touched, and inserts .naya/runtime and SUPERBRAIN/runtime into sys.path before loading modules.
+- TWO (actually three) contradictory governance implementations exist — report both, do not resolve by assumption:
+1. .naya/governance/governance_kernel.py (canonical constitutional kernel: Authority, AuthorityRegistry, DecisionObject, GovernanceState incl. REFUSED/STOPPED, Decision.EXECUTE/INVESTIGATE/REFUSE/STOP, evaluate; fail-closed on expired/revoked).
+2. .naya/runtime/naya_power_kernel.py (runtime SELECT/REFUSE/ESCALATE kernel; trusts caller-supplied candidate["authorization"] strings "approved"/"denied"/"unknown"; imports SUPERBRAIN.naya_power_decision_calculus; does NOT import the governance kernel or registry).
+3. SUPERBRAIN/runtime/governance_contract.py + SUPERBRAIN/runtime/naya_power_runtime.py (registry-based governed eligibility; ActionCandidate default authorized=True; eligible(registry=None) is fail-closed).
+- .naya/control-plane/governance_kernel.py is only a self-test shim that runs the canonical test suite — it is NOT a policy surface.
+- GitHub Actions workflows never call workflow_gate.py or release_authorization.py; grep found workflow_gate only py_compile'd in .github/workflows/naya-control-plane.yml. The "canonical release workflow" authorized-vercel-release.yml named in DEPLOYMENT-GOVERNANCE.json DOES NOT EXIST (Test-Path = False).
+- Live host loop: naya_power_live.py explicitly does NOT execute actions (external_execution: NOT_EXECUTED_BY_CLI); execution of a SELECT is delegated to the host's tools ("EXECUTE ONLY SELECTED ELIGIBLE ACTION" per NAYA-POWER-CHATGPT-HOST-INTEGRATION-V1.0.md).
+- Evidence so far (from safe execution):
+- model_tool_gateway.authorize() (no Authority/DecisionObject/registry) returned {"status":"AUTHORIZED","execution_status":"EXECUTING","side_effect_authorized":true,...}.
+- naya_power_kernel.evaluate with candidate authorization:"approved" → decision: SELECT, selected "evil".
+- execution_controller.VALID_STATES = READY/CLAIMED/EXECUTING/OBSERVED/VERIFIED/HANDED_OFF — no REFUSED/STOPPED/DENIED.
+- Governance kernel: expired and revoked authorities → permits()=False, evaluate(...).allowed=False (state READY_FOR_DECISION, decision INVESTIGATE); valid authority at T0 → allowed True.
+- orchestrator.continuation_for: REFUSE→REFUSE_AND_PROPOSE_SAFE_ALTERNATIVE, ESCALATE→ESCALATE_FOR_HUMAN_AUTHORITY, SELECT→EXECUTE_SELECTED_ACTION; NO STOP branch exists.
+- SUPERBRAIN GovernedAction() defaults capability/constitutional/risk/responsible flags = True, decision_state=EXECUTE; evaluate_governance(defaults, registry=None) ineligible (registry required). Candidate with authority_id="AUTH-001" scope "constitutional_boundaries" still ineligible (scope token mismatch).
+Work State
+Completed
+- Repo layout inventory: .naya/{runtime,governance,control-plane,actions,evidence,...}, tools/, scripts/, .github/workflows/ (~35 workflows).
+- Read core files: governance_kernel.py (canonical), workflow_gate.py, control-plane governance_kernel.py, execution_controller.py, model_tool_gateway.py, release_authorization.py (partial), torch_execution_adapter.py, executable_torch.py, project_execution_contract.py, naya_agent_interface.py, naya_power_live.py, naya_power_orchestrator.py, naya_power_kernel.py, chatgpt_host_adapter.py, evidence_runtime.py (partial), naya_preflight_gate.py, runtime_failure_isolation.py (partial), runtime_activation_check.py (partial), SUPERBRAIN/runtime/{governance_contract.py, naya_power_runtime.py, mission_state_store.py, host_executor.py}, RELEASE-AUTHORIZATION.json (status TEMPLATE), DEPLOYMENT-GOVERNANCE.json, NAYA-AUTHORITY-REGISTRY-V1.json, .naya/governance/authority-registry.json (3 HUMAN-* entries, expires_at null).
+- Workflows inspected: assistant-cloudflare-hub-release.yml (push+dispatch wrangler deploy to sparkling-shape-7ae5, NO gate → OPEN), nayanet-canonical-hub-production-release.yml (dispatch + magic string RELEASE_CANONICAL_HUB, no kernel → PARTIALLY CLOSED), 510-aaa-smart-board-visual-surgery.yml (contents: write, push-triggered inline-Python mutation + git commit/git push origin HEAD:main, NO gate → OPEN), naya-power-adversarial-p0.yml (offline governance/adversarial tests), naya-canonical-react-build-handoff.yml (build only), disabled stubs (509-smart-board-final-deploy, deploy-509-*, deploy-smart-feed-direct-v2, deploy-feature-board-v4).
+- Ran and completed the safe in-memory harness (test5_kernel_bypass.py) producing all findings listed above in Important Details.
+- Established tools/execute_maxess_section01.py mutates tools/build_v21_canonical.py (filesystem write, no authority check in body).
+Active
+- Test-by-test findings gathered but final 20-test report not yet written out; todo list partially updated.
+- release_authorization.py full body not yet read (need to verify whether it re-checks revocation/expiry and whether it is referenced anywhere besides tests).
+- 509-smart-board-runtime-authority-v6.yml (claimed canonical deployment lane) and verify-nayanet-hub-build-only.yml remainder not yet read.
+- No schedule:/cron/retry inventory done yet (Test 12/13); no lower-layer/computer-boundary analysis write-up (Test 10/15); side-effect closure matrix (Test 16), bypass matrix (Test 17), verdict (Test 18), architectural gap (Test 19), closure map (Test 20) not yet produced.
+Blocked
+- (none)
+Next Move
+1. Finish static reads: full release_authorization.py, 509-smart-board-runtime-authority-v6.yml, verify-nayanet-hub-build-only.yml, tail of evidence_runtime.py, tools/run_superbrain_local_suite.py/promote_intelligence.py (side-effect surface), and grep workflows for schedule:| cron| retry (Tests 12–13).
+2. Assemble and write the final report to the conversation: Test 1–17 walkthroughs with evidence labels, Test 17 bypass matrix table, Test 18 answer (lead with YES/NO/UNKNOWN; expected NO/UNKNOWN given verified SELECT-from-"approved" string and gated-less wrangler deploy), Test 19 single gap (candidate: ungoverned runtime kernel trusting caller-supplied authorization="approved" + execution/tool gateway not wired to authoritative registry), Test 20 closure map with every ✗/△ itemized.
+3. Clean up the temp test harness if desired (it is outside the repo, so optional), then STOP and wait per user instruction.
+Relevant Files
+- C:\Users\Admin\NayaPOWER-Windows\.naya\runtime\naya_power_kernel.py: runtime SELECT kernel trusting caller-supplied authorization strings (Test 9 bypass, proven by execution).
+- C:\Users\Admin\NayaPOWER-Windows\.naya\runtime\model_tool_gateway.py: execution gate with claim-based checks only; no Authority/registry/governance (Test 2/3/14, proven by execution).
+- C:\Users\Admin\NayaPOWER-Windows\.naya\runtime\execution_controller.py: state machine with no REFUSED/STOPPED states; writes EXECUTION-STATE.json (Tests 3/4/10).
+- C:\Users\Admin\NayaPOWER-Windows\.naya\governance\governance_kernel.py: canonical kernel; correctly rejects expired/revoked at evaluation time (Tests 5/6 kernel side).
+- C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\workflow_gate.py: canonical workflow adapter; NOT invoked by any workflow.
+- C:\Users\Admin\NayaPOWER-Windows\.naya\control-plane\release_authorization.py + RELEASE-AUTHORIZATION.json: fail-closed release gate; template file; not wired into actual deploy workflows.
+- C:\Users\Admin\NayaPOWER-Windows\.github\workflows\assistant-cloudflare-hub-release.yml: auto-deploy (wrangler) on push, no gate (Test 11 OPEN).
+- C:\Users\Admin\NayaPOWER-Windows\.github\workflows\nayanet-canonical-hub-production-release.yml: dispatch + magic-string confirm only (Test 11 PARTIALLY CLOSED).
+- C:\Users\Admin\NayaPOWER-Windows\.github\workflows\510-aaa-smart-board-visual-surgery.yml: contents:write, push-triggered mutate + git push, no gate (Test 11 OPEN).
+- C:\Users\Admin\NayaPOWER-Windows\.naya\governance\authority-registry.json and NAYA-AUTHORITY-REGISTRY-V1.json: two distinct registry formats; second references torch-pass-gate.yml which does not exist.
+- C:\Users\Admin\NayaPOWER-Windows\SUPERBRAIN\runtime\governance_contract.py, naya_power_runtime.py, host_executor.py: alternate registry-based governed runtime; host-supplied executor callback arbitrary; receipt.verified self-asserted by executor.
+- C:\Users\Admin\AppData\Local\Temp\opencode\test5_kernel_bypass.py: safe in-memory test harness already built and run (do not run against repo state paths).
+▣  Compaction · Big Pickle · 1m 5s
++ Thought: 9.0s
+$ $classified = @( '509-finish-smart-feed.yml','509-sidebar-nav-audit.yml','509-sidebar-nav-correction.yml','509-smart-notes-board-presentation-fix.yml','509-smart-notes-presentation-final.yml','509-smart-notes-surgical-final-v3.yml','deploy-509-c4-final-presentation-fix.yml','deploy-509-c4-flow-repair-v2.yml','deploy-509-c4-flow-repair.yml','deploy-509-c4-nine-note-parser-v2.yml','deploy-509-c4-nine-note-parser.yml','deploy-509-c4-real-smart-feed-finalize.yml','deploy-smart-feed-direct.yml','naya-control-plane.yml','naya-memory-runtime.yml','naya-power-adversarial-p0.yml','naya-preflight-governance.yml','nayapower-activity-feed-integrity.yml','restore-509-exact.yml','superbrain-current-main-behavioral-proof.yml','verify-nayanet-hub-build-only.yml','verify-primary-intelligence-system.yml'); $actual = Get-ChildItem ".github/workflows" -Name; Write-Output "IN TEST BUT ABSENT FROM REPO:"; ($classified | Where-Object { $_ -notin $actual }); Write-Output "IN REPO BUT NOT COVERED BY BOUNDARY TEST:"; ($actual | Where-Object { $_ -notin $classified }); Write-Output ("counts: actual={0} classified={1}" -f $actual.Count, $classified.Count)
+IN TEST BUT ABSENT FROM REPO:
+deploy-smart-feed-direct.yml
+IN REPO BUT NOT COVERED BY BOUNDARY TEST:
+509-smart-board-final-deploy.yml
+509-smart-board-runtime-authority-v2.yml
+509-smart-board-runtime-authority-v6.yml
+509-smart-board-runtime-authority.yml
+509-smart-board-world-class.yml
+510-aaa-smart-board-visual-surgery.yml
+assistant-cloudflare-hub-release.yml
+…
+Click to expand
+$ Get-Content ".github/workflows/verify-nayanet-hub-nine-board.yml" | Select-Object -First 45; Write-Output "====="; Get-Content ".github/workflows/nayapower-progress-protection.yml" | Select-Object -First 45
+name: NAYA 509 �?" Nine Board Build Gate
+
+on:
+  push:
+    paths:
+      - 'NAYANET/HUB/**'
+      - 'scripts/build-smart-feed-projection.py'
+      - 'scripts/nayanet-cognitive-engine.js'
+      - 'scripts/validate-nayanet-hub-nine-board.py'
+      - '.github/workflows/verify-nayanet-hub-nine-board.yml'
+…
+Click to expand
++ Thought: 1m 6s
+Let me confirm the production-release workflow's exact deploy behavior and the assistant lane trigge, then verify the git state is untouched.
+→Read .github\workflows\nayanet-canonical-hub-production-release.yml 
+→Read .github\workflows\assistant-cloudflare-hub-release.yml 
+$ git status --short; Write-Output "---"; git log --oneline -1
+?? .naya/control-plane/__pycache__/
+?? .naya/governance/__pycache__/
+?? .naya/runtime/__pycache__/
+?? SUPERBRAIN/__pycache__/
+?? SUPERBRAIN/runtime/__pycache__/
+---
+896594e9 Repair canonical Cloudflare release lane for current Smart Board
++ Thought: 7.5s
+All evidence is gathered and the required audit is complete. Repository state confirmed untouched (only pre-existing untracked __pycache__/ dirs remain; HEAD 896594e9).
+NAYA POWER TEST #5 — RUNTIME AUTHORITY CLOSURE & BYPASS
+Method: read-only inspection of every runtime/control-plane/governance source + all 34 workflows, plus safe in-memory execution via C:\Users\Admin\AppData\Local\Temp\opencode\test5_kernel_bypass.py (sys.path injected, EXECUTION-STATE.json redirected to a tempfile, nothing written to the repo). No commits, no deploys.
+Evidence labels: [EXEC] executable code · [TEST] safe test execution · [STATE] machine-readable state · [DOC] documentation · [INT] interpretation · [?] uncertain.
+Head commit: 896594e9.
+T1 — Execution graph: entry points → authority gates → side effects
+Live consequential entry points ([EXEC]):
+Entry	Trigger
+assistant-cloudflare-hub-release.yml	push to 2026 09 15 NayaNETHUB.html, PROGRESS-CHECKPOINT.json, or the workflow
+nayanet-canonical-hub-production-release.yml	manual workflow_dispatch
+510-aaa-smart-board-visual-surgery.yml	push (incl. push of the workflow file itself or SMART-BOARD-REFINEMENT-TRIGGER.md)
+naya-canonical-react-build-handoff.yml, verify-*, naya-memory-runtime.yml etc.	push/dispatch
+Desktop runtime naya_power_live.py → host	host loop
+tools/*.py, scripts/*.py, .naya/runtime/*.py	CLI
+Zero of 34 workflows call workflow_gate.py, release_authorization.py, governance_kernel.py, or the registry ([EXEC] grep; sole hits are py_compile + kernel self-test in naya-control-plane.yml:39-41). The workflow_gate.py CLI can produce AUTHORIZED for the registered HUMAN-* authorities but nothing invokes it ([EXEC] + [TEST] of test_naya_execution_boundaries.py).
+T2 — Direct runtime bypass
+BYPASSABLE [TEST]: calling model_tool_gateway.authorize() directly returned {"status":"AUTHORIZED","action_id":"ACT-ATTACK","execution_status":"EXECUTING","claim_id":"CL-ATTACK","block_id":"B-ATTACK","risk":"L2","side_effect_authorized":true,...} with no Authority, no DecisionObject, no registry check. execution_controller.transition also enforces no authority ([EXEC]).
+T3 — REFUSED handling
+Not enforced [TEST]+[INT]: the runtime kernel's REFUSE → REFUSE_AND_PROPOSE_SAFE_ALTERNATIVE (orchestrator.continuation_for, no other branches apply) is advisory. Nothing ties the tool gateway to the refusal receipt; the same model that produced authorization:"denied" can resubmit "approved" and get SELECT. execution_controller has no REFUSED state to block. Only the chatgpt host adapter's internal normalize→execute path checks that a SELECT receipt was emitted — a compiler-volume check, not a protected boundary.
+T4 — STOPPED handling
+STOPPED exists only as GovernanceState.STOPPED/Decision.STOP constants in .naya/governance/governance_kernel.py [EXEC]. Not referenced by execution_controller (no state), naya_power_kernel (no branch), or orchestrator (no continuation, [TEST]). STOP never gates anything at runtime — documentary only.
+T5 — Revoked authority
+Canonical kernel honors revocation at evaluation time ([TEST]: revoked.permits() == False, evaluate().allowed == False), but no execution path calls it [EXEC]; the tool gateway and string-authorization path have no authority identity to revoke (receipt carries authorization:"approved", not an authority_id) [TEST]. Revocation is not honored across the execution boundary.
+T6 — Expired authority
+Same split: kernel rejects expired at evaluation ([TEST]), but model_tool_gateway, the string path, and the workflow magic-string lane never check expiry/set expires_at on registry entries (3 HUMAN-* entries: expires_at: null — [STATE]). Expiry blocks nothing at runtime.
+T7 — AUTHORIZED→EXECUTING gap
+The object crossing to execution is the claimed EXECUTION-STATE.json (claim_id / block_id / owner / scope / start_head / risk — caller-supplied) [EXEC]. It contains no authority_id, Authority, DecisionObject, governance receipt, expiry, or revocation marker. No revalidation exists between evaluation and EXECUTING ([TEST]).
+T8 — Capabilities without authority
+GitHub-actor capability = capability: contents: write on 510-…visual-surgery and workflow_dispatch + CLOUDFLARE_API_TOKEN on both Cloudflare lanes are usable by any actor able to trigger the workflow, with no kernel authority resolution [EXEC]. vercel.json disables git auto-deploy (deploymentEnabled: false [STATE]), so Vercel is not a live lane. Deprecated 509/deploy-* lanes are DISABLED stubs (echo/exit 1) [EXEC].
+T9 — Boolean/string authority accepted
+Proven [TEST]: naya_power_kernel.evaluate with candidate["authorization"]="approved" → decision: SELECT, selected the attack candidate (value 59.65) with no registry, no Authority object. The adapter contract itself defines authorization_states: ["approved","denied","unknown"] ([STATE] NAYA-POWER-RUNTIME-CONTRACT.json) and the model supplies that string. Prod lane uses magic string RELEASE_CANONICAL_HUB [EXEC]. Boolean/string authority is the operative authority model.
+T10 — Lower-layer escape
+execution_controller VALID_STATES = READY/CLAIMED/EXECUTING/OBSERVED/VERIFIED/HANDED_OFF — no REFUSED/STOPPED/DENIED ([TEST]). A lower layer can transition to EXECUTING an action the canonical/governance layer refused; nothing propagates refusals downward [EXEC].
+T11 — Workflow escape
+Live deploy lanes never pass through an authority gate [EXEC]: push auto-deploy (assistant lane), magic-string manual lane, push auto-commit lane. Additionally DEPLOYMENT-GOVERNANCE.json names the canonical gate workflow authorized-vercel-release.yml, which does not exist (Test-Path = False, [STATE]). The boundary test suite itself is stale: test_naya_execution_boundaries.py classifies exactly 22 workflow files vs the repo's 34; it references absent deploy-smart-feed-direct.yml and omits all three live deploy lanes ([TEST] set-difference 34 actual vs 22 classified; deploy-smart-feed-direct.yml absent).
+T12 — Schedule/cron bypass
+None: no schedule:/cron:/repository_dispatch: in any workflow [EXEC]. But push-triggers are equivalently unattended triggers.
+T13 — Retry / repetition
+No replay protection: reruns/re-dispatches re-enter without authority; the kernel is idempotent-safe only by claim/block fields, not by authority. Async-only concern — [TEST]/[INT]; not a distinct bypass vector beyond T2/T9.
+T14 — Tool-gateway closure
+model_tool_gateway.authorize() checks [EXEC]: risk in L1–L3, claim-type/block fields, start_head == protected_baseline. It does not check: Authority existence, registry lookup, authority scope vs action scope, provenance, purpose/DecisionObject, governance state, expiry/revocation, or receipt binding. Scope is caller-supplied. side_effect_authorized: true at L2 with zero authority [TEST].
+T15 — Computer boundary
+No OS-level fence: on this Windows host the assistant/cli tools (and tools/*.py) execute in-process on the user's machine [INT]; the external "executor" is contractually the human host (naya_power_live.py returns NOT_EXECUTED_BY_CLI, host adapter's execute() normalizes receipts [EXEC]). Boundary is procedural, not enforced.
+T16 — Side-effect closure matrix
+Side effect
+Cloudflare push deploy (assistant lane)
+Cloudflare manual deploy (canonical lane)
+Auto git commit+push mutation (510 lane)
+Artifact build/upload, feed projections
+Runtime external action (host loop)
+Repo filesystem writes (tools/restore)
+Memory/restore runs in CI
+T17 — Bypass matrix
+#	Attack
+B1	Set authorization:"approved" on candidate
+B2	Call tool_gateway.authorize() directly
+B3	Write claimed EXECUTION-STATE / transition lower state
+B4	Push to main touching hub HTML or checkpoint
+B5	Type magic string / dispatch prod lane
+B6	Run tools/*.py/scripts on machine
+B7	Reuse valid-but-unbound legacy Authority
+B8	Scope/sub-field spoof in claim/request
+T18 — Verdict
+NO. Runtime authority closure is not implemented. There is no enforced runtime authority system: string authorization produces SELECT; the tool/execution gateway issues AUTHORIZED+EXECUTING without any Authority object; and every live deployment lane executes without a governance-kernel gate. The canonical kernel/registry ([TEST]-proven fail-closed) is real but orphaned — nothing in the runtime or CI chain consumes it.
+T19 — Single most important architectural gap
+The action-selection kernel and the execution/CI boundary evaluate different authority sources: naya_power_kernel trusts the model-supplied authorization string, and model_tool_gateway trusts the caller's claim file — neither consumes the canonical Authority/registry/governance kernel, and the canonical kernel is not wired into any deployment path. One source of authority (authority-registry.json + governance kernel) is required but not enforced at any execution boundary.
+T20 — Closure map
+Closure property
+Model never authoritative for permissions
+Equivalent models, kernels, executors
+Registry autonomy (reads ownership not claimed)
+Expiry/revocation honored at runtime
+DecisionObject / authority binding
+AUTHORIZED→EXECUTING gap closed
+Low-risk/lowest-risk gated correctly
+Automated triggers all gated
+Kernel/oracle ownership by authority-defined subsystem
+Initial-auth requires prior authority
+Runtime never calls Kernel on runtime model
+Live host Implements hard fail-closed errors
+Registration & scope in canonical registry
+No authority registry bypass
+No toggles / no rollback to unverified state
+No single-point authority introspector
+No hidden wire/coaxial bypass, no universe tampering
+No bypass of the Authority boundary
+Everything wired, one doc, no orphan systems
+Optional tests, no refresh, no source mutation
+Result per closure map: 3 ✓ / 7 △ / 10 ✗ / 2 ? — not closed.
+Stopping here as instructed. Note: the pre-existing __pycache__/ dirs are untracked artifacts, not something I created or modified; the only file I wrote is the harness in the temp dir outside the repo.

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Naya Power Adaptive Learning Event",
+  "type": "object",
+  "required": [
+    "learning_event_id",
+    "timestamp",
+    "source_event_id",
+    "lesson",
+    "evidence_state",
+    "learning_state"
+  ],
+  "properties": {
+    "learning_event_id": {"type": "string", "minLength": 8},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "source_event_id": {"type": "string", "minLength": 1},
+    "project": {"type": "string"},
+    "intent": {"type": "string"},
+    "action": {"type": "string"},
+    "expected_outcome": {"type": "string"},
+    "actual_outcome": {"type": "string"},
+    "lesson": {"type": "string", "minLength": 1},
+    "root_cause": {"type": "string"},
+    "recommendation": {"type": "string"},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "evidence_state": {
+      "type": "string",
+      "enum": ["UNKNOWN", "IMPLEMENTED", "TESTED", "VERIFIED", "RUNTIME-PROVEN", "PRODUCTION-PROVEN"]
+    },
+    "learning_state": {
+      "type": "string",
+      "enum": ["OBSERVED", "PROPOSED", "CONFIRMED", "OPERATIONAL", "SUPERSEDED"]
+    },
+    "smart_note_id": {"type": "string"},
+    "smart_link": {"type": "string"},
+    "preflight": {"type": "string"},
+    "verification_required": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

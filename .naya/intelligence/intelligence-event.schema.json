@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya-intelligence-event/v1",
+  "title": "Naya Intelligence Event",
+  "type": "object",
+  "required": ["event_id", "timestamp", "project", "lesson", "source", "evidence_state", "promotion_status"],
+  "properties": {
+    "event_id": {"type": "string", "minLength": 8},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "project": {"type": "string", "minLength": 1},
+    "title": {"type": "string"},
+    "what_happened": {"type": "string"},
+    "intended_outcome": {"type": "string"},
+    "actual_outcome": {"type": "string"},
+    "lesson": {"type": "string", "minLength": 1},
+    "value": {"type": "string"},
+    "root_cause": {"type": "string"},
+    "recommendation": {"type": "string"},
+    "next_action": {"type": "string"},
+    "source": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "evidence_state": {"enum": ["UNKNOWN", "IMPLEMENTED", "TESTED", "VERIFIED", "RUNTIME-PROVEN", "PRODUCTION-PROVEN"]},
+    "promotion_status": {"enum": ["NOT_REQUIRED", "PROPOSED", "WRITTEN", "TESTED", "VERIFIED", "CANONICAL", "BLOCKED", "FAILED", "UNKNOWN"]},
+    "candidate_homes": {"type": "array", "items": {"enum": ["LAW", "GUARDRAIL", "MACHINE_CONTRACT", "TEST", "PROCEDURE", "MISSION_STATE", "ARCHITECTURE", "SPECIFICATION", "NAYA_NOTE", "HUMAN_SMART_NOTE"]}},
+    "promoted_artifacts": {"type": "array", "items": {"type": "string"}},
+    "successor_instruction": {"type": "string"},
+    "supersedes": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}

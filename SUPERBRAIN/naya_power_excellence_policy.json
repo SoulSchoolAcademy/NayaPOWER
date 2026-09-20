@@ -1,0 +1,93 @@
+{
+  "policy_id": "NAYA-POWER-EXCELLENCE-BY-DEFAULT",
+  "version": "1.0.0",
+  "status": "canonical",
+  "effective_date": "2026-09-10",
+  "purpose": "Make purposeful, responsible, verified excellence the default delivery standard for Naya Power.",
+  "constitutional_precedence": [
+    "protected_boundaries",
+    "legitimate_authority",
+    "responsible_value",
+    "excellence",
+    "execution",
+    "verification",
+    "learning"
+  ],
+  "hard_gates": {
+    "protected_boundary_violation": true,
+    "unauthorized_side_effect": true,
+    "fabricated_evidence": true,
+    "material_security_failure": true,
+    "critical_correctness_failure": true,
+    "false_provenance": true,
+    "unresolved_impossible_requirement": true
+  },
+  "quality": {
+    "delivery_threshold": 9.0,
+    "exceptional_target": 9.5,
+    "exceptional_dimensions": {
+      "correctness": 0.16,
+      "completeness": 0.12,
+      "coherence": 0.08,
+      "clarity": 0.08,
+      "usability": 0.10,
+      "craft": 0.10,
+      "design": 0.10,
+      "performance": 0.06,
+      "maintainability": 0.06,
+      "evidence": 0.08,
+      "safety": 0.03,
+      "verification": 0.03
+    },
+    "scale": {
+      "min": 0.0,
+      "max": 10.0
+    },
+    "missing_evidence_policy": "conservative",
+    "single_metric_optimization": false
+  },
+  "delivery_states": [
+    "INTENDED",
+    "BUILT",
+    "TESTED",
+    "OBSERVED",
+    "VERIFIED"
+  ],
+  "excellence_dimensions": [
+    "correctness",
+    "completeness",
+    "coherence",
+    "clarity",
+    "usability",
+    "craft",
+    "design",
+    "performance",
+    "maintainability",
+    "evidence",
+    "safety",
+    "verification"
+  ],
+  "completion_questions": [
+    "What was the intended outcome?",
+    "What requirements were satisfied?",
+    "What quality gate was applied?",
+    "What evidence exists?",
+    "What remains uncertain?",
+    "What was actually observed?",
+    "What should happen next?"
+  ],
+  "design_defaults": {
+    "contrast": "strong",
+    "hierarchy": "intentional",
+    "typography": "readable",
+    "primary_controls": "obvious_and_premium",
+    "interaction_states": "complete",
+    "responsive_behavior": "required",
+    "accessibility": "required",
+    "visual_depth": "purposeful",
+    "design_system_consistency": "required"
+  },
+  "learning_rule": "Promote durable corrections into policy, tests, design rules, or Smart Notes so repeated human reminders become unnecessary.",
+  "anti_goodhart_rule": "Never treat the quality score as the sole objective. Hard constitutional gates, multidimensional evaluation, and independent verification remain mandatory.",
+  "decision_objective": "Best responsible verified result reasonably achievable under known information, authorization, constraints, uncertainty, consequence, reversibility, resources, and verification capability."
+}

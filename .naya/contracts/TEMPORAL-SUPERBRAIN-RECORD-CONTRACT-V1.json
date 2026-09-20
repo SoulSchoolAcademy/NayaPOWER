@@ -1,0 +1,83 @@
+{
+  "schema": "NAYA_TEMPORAL_RECORD_CONTRACT_V1",
+  "status": "CANONICAL",
+  "effective_date": "2026-09-16",
+  "project_id_required": true,
+  "session_id_required_for": ["SESSION", "ACTIVITY", "SMART_NOTE"],
+  "required_fields": [
+    "id",
+    "project_id",
+    "timestamp",
+    "actor",
+    "source",
+    "status",
+    "evidence_refs",
+    "smart_links",
+    "next_action"
+  ],
+  "timestamp": {
+    "format": "ISO-8601",
+    "timezone_required": true,
+    "commit_timestamp_is_not_a_session_timestamp": true
+  },
+  "record_types": {
+    "PROJECT": {
+      "canonical_path_root": "SUPERBRAIN/PROJECTS/",
+      "requires": ["project_id", "mission", "current_state", "current_gap", "next_action"]
+    },
+    "SESSION": {
+      "canonical_path_root": "SUPERBRAIN/PROJECTS/<project>/SESSIONS/",
+      "requires": ["session_id", "project_id", "start_timestamp", "actor", "objective", "preflight", "status", "next_action"],
+      "lifecycle": ["SIGN_IN", "RESTORE", "PREFLIGHT", "GOVERN", "EXECUTE", "VERIFY", "RECORD", "HANDOFF", "SIGN_OUT"]
+    },
+    "ACTIVITY": {
+      "machine_source": ".naya/memory/events/",
+      "human_projection": "SUPERBRAIN/NAYA-ACTIVITY/DAILY/YYYY-MM-DD.md",
+      "requires": ["session_id", "project_id", "timestamp", "actor", "action", "outcome", "evidence_refs", "next_action"]
+    },
+    "SMART_NOTE": {
+      "requires": ["project_id", "session_id", "timestamp", "claim", "intelligence", "evidence_refs", "origin_activity_ids"]
+    }
+  },
+  "relationships": {
+    "project_to_session": "project_id",
+    "session_to_activity": "session_id",
+    "activity_to_smart_note": "origin_activity_ids",
+    "smart_note_to_evidence": "evidence_refs"
+  },
+  "canonical_roles": {
+    "event_store": ".naya/memory/events/",
+    "activity_feed": "SUPERBRAIN/NAYA-ACTIVITY/DAILY/",
+    "activity_receipts": ".naya/activity/",
+    "project_registry": "SUPERBRAIN/PROJECTS/",
+    "temporal_index": "SUPERBRAIN/INDEX/"
+  },
+  "prohibited": [
+    "second_event_store",
+    "second_canonical_activity_feed",
+    "fabricated_historical_sessions",
+    "invented_timestamps",
+    "orphaned_smart_notes_for_new_work",
+    "activity_records_without_project_and_session_binding",
+    "session_records_without_activity_evidence_after_substantive_work"
+  ],
+  "truth_states": ["RECOVERED", "PARTIAL", "MISSING", "CONFLICTED", "UNKNOWN"],
+  "cold_naya_required_queries": [
+    "current_project",
+    "today_activity",
+    "recent_sessions",
+    "relevant_smart_notes",
+    "evidence",
+    "current_state",
+    "next_action"
+  ],
+  "definition_of_done": [
+    "new substantive session is automatically timestamped",
+    "substantive execution automatically produces canonical activity evidence",
+    "activity is bound to project and session",
+    "smart note is bound to originating activity and project",
+    "temporal index is rebuildable from canonical evidence",
+    "validator rejects missing required relationships",
+    "cold Naya can reconstruct seven days without conversation memory"
+  ]
+}
