@@ -1,39 +1,39 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { supabase, useIdentity } from '../identity/session';
 
 type SurfaceKey='ledger'|'mail'|'spaces'|'lists'|'share'|'connections'|'reports'|'today';
 type Row=Record<string,unknown>;
-const cfg:Record<SurfaceKey,{title:string;subtitle:string;table:string;order:string;empty:string}>={
- ledger:{title:'Smart Ledger',subtitle:'Canonical record of meaningful intelligence and authorized action.',table:'nayanet_smart_ledger',order:'event_at',empty:'No Ledger events are visible for this identity yet.'},
- mail:{title:'Smart Mail',subtitle:'Authorized intelligence moving between people through the canonical Mail path.',table:'v7_mail_messages',order:'created_at',empty:'No Mail messages are visible for this identity yet.'},
- spaces:{title:'Smart Spaces',subtitle:'Permissioned places where intelligence can be shared and compounded.',table:'nayanet_spaces',order:'created_at',empty:'No Smart Spaces are visible for this identity yet.'},
- lists:{title:'Smart Lists',subtitle:'Actionable intelligence organized around real connections.',table:'nayanet_smart_lists',order:'created_at',empty:'No Smart Lists are visible for this identity yet.'},
- share:{title:'Smart Share',subtitle:'Consent-bound publication of intelligence from the canonical source.',table:'nayanet_intelligence_publications',order:'published_at',empty:'No shared intelligence is visible for this identity yet.'},
- connections:{title:'Your Connections',subtitle:'Canonical relationships available to the authenticated identity.',table:'nayanet_connections',order:'created_at',empty:'No Connections are visible for this identity yet.'},
- reports:{title:'Your Reports',subtitle:'Reports derived from canonical intelligence rather than a second source of truth.',table:'v7_intelligence_reports',order:'created_at',empty:'No Intelligence Reports are visible for this identity yet.'},
- today:{title:'Your Intelligence Today',subtitle:'A live summary of the canonical intelligence system available now.',table:'nayanet_intelligence_index',order:'event_time',empty:'No canonical intelligence is visible for this identity yet.'},
+type SurfaceCfg={title:string;subtitle:string;table:string;order:string;empty:string;eyebrow:string;primary:string[];secondary:string[];meta:string[];action:string};
+
+const cfg:Record<SurfaceKey,SurfaceCfg>={
+ ledger:{title:'Smart Ledger',subtitle:'See what happened, what was authorized, and what evidence followed.',table:'nayanet_smart_ledger',order:'event_at',empty:'No Ledger events are visible for this identity yet.',eyebrow:'ACCOUNTABILITY · ACTION · EVIDENCE',primary:['title','event_type','action','subject'],secondary:['outcome','result','description','summary'],meta:['status','event_at','event_time','created_at'],action:'Inspect evidence'},
+ mail:{title:'Smart Mail',subtitle:'Authorized intelligence moving between people through the canonical Mail path.',table:'v7_mail_messages',order:'created_at',empty:'No Mail messages are visible for this identity yet.',eyebrow:'GOVERNED COMMUNICATION',primary:['subject','title','message'],secondary:['body','content','summary','status'],meta:['created_at','sent_at','received_at','status'],action:'Open message'},
+ spaces:{title:'Smart Spaces',subtitle:'Permissioned places where intelligence can be shared and compounded.',table:'nayanet_spaces',order:'created_at',empty:'No Smart Spaces are visible for this identity yet.',eyebrow:'CONTEXT · CONSENT · COLLABORATION',primary:['name','title'],secondary:['purpose','description','summary'],meta:['visibility','status','created_at'],action:'Open space'},
+ lists:{title:'Smart Lists',subtitle:'Turn intelligence into actionable commitments and follow-ups.',table:'nayanet_smart_lists',order:'created_at',empty:'No Smart Lists are visible for this identity yet.',eyebrow:'ACTION · FOLLOW-THROUGH',primary:['name','title'],secondary:['description','purpose','summary','next_action'],meta:['status','due_at','created_at'],action:'Open list'},
+ share:{title:'Smart Share',subtitle:'Share intelligence by consent while preserving provenance and privacy.',table:'nayanet_intelligence_publications',order:'published_at',empty:'No shared intelligence is visible for this identity yet.',eyebrow:'CONSENT · PROVENANCE · SHARING',primary:['title','subject','intelligence_title'],secondary:['summary','description','source','canonical_path'],meta:['visibility','consent_state','status','published_at','created_at'],action:'Inspect share'},
+ connections:{title:'Your Connections',subtitle:'See the people and relationships available to this authenticated identity.',table:'nayanet_connections',order:'created_at',empty:'No Connections are visible for this identity yet.',eyebrow:'PEOPLE · RELATIONSHIPS · TRUST',primary:['name','display_name','full_name','title'],secondary:['email','role','relationship','notes','summary'],meta:['status','created_at','updated_at'],action:'Inspect connection'},
+ reports:{title:'Your Reports',subtitle:'Compressed intelligence over time — what changed, what matters, and what was learned.',table:'v7_intelligence_reports',order:'created_at',empty:'No Intelligence Reports are visible for this identity yet.',eyebrow:'COMPRESSION · LEARNING · TIME',primary:['title','name','report'],secondary:['summary','meaning','learning','description'],meta:['period','status','created_at','updated_at'],action:'Read report'},
+ today:{title:'Your Intelligence Today',subtitle:'A live summary of the canonical intelligence system available now.',table:'nayanet_intelligence_index',order:'event_time',empty:'No canonical intelligence is visible for this identity yet.',eyebrow:'TODAY · SIGNAL · INTELLIGENCE',primary:['title','name'],secondary:['summary','description','meaning','lesson'],meta:['status','event_time','created_at','updated_at'],action:'Open intelligence'},
 };
 
-function label(v:unknown){return typeof v==='string'?v:String(v??'');}
-function pretty(v:unknown){if(v==null)return '—'; if(typeof v==='object')return JSON.stringify(v); return String(v);}
+function text(v:unknown){return v==null?'':typeof v==='string'?v:String(v);}
+function pick(row:Row,keys:string[]){for(const key of keys){const value=text(row[key]);if(value.trim())return value.trim();}return '';}
+function short(value:string,max=220){return value.length>max?value.slice(0,max-1)+'…':value;}
+function displayDate(value:string){if(!value)return '';const d=new Date(value);return Number.isNaN(d.getTime())?value:d.toLocaleString();}
+function recordId(row:Row,index:number){return text(row.id||row.ledger_event_id||row.publication_id||row.connection_id||row.space_id||row.list_id||row.report_id)||String(index);}
 
 export function FeatureSurface({kind}:{kind:SurfaceKey}){
- const id=useIdentity(); const c=cfg[kind]; const [rows,setRows]=useState<Row[]>([]); const [error,setError]=useState(''); const [busy,setBusy]=useState(true);
- useEffect(()=>{let alive=true;setBusy(true);setError('');
-   if(!id.is_authenticated){setRows([]);setBusy(false);return;}
-   (async()=>{const result=await supabase.from(c.table).select('*').order(c.order,{ascending:false}).limit(25);
-     if(!alive)return; if(result.error){setError(result.error.message);setRows([]);}else setRows((result.data||[]) as Row[]);setBusy(false);
-   })().catch(e=>{if(alive){setError(e instanceof Error?e.message:'SURFACE_LOAD_FAILED');setBusy(false);}});
-   return()=>{alive=false};
- },[id.is_authenticated,c.table,c.order]);
- const fields=rows.length?Object.keys(rows[0]).filter(k=>!['metadata','verification','value','outcome','evidence_refs','learning_refs','report'].includes(k)).slice(0,8):[];
+ const id=useIdentity(); const c=cfg[kind]; const [rows,setRows]=useState<Row[]>([]); const [error,setError]=useState(''); const [busy,setBusy]=useState(true); const [query,setQuery]=useState(''); const [selected,setSelected]=useState<Row|null>(null);
+ const load=async()=>{setBusy(true);setError('');if(!id.is_authenticated){setRows([]);setBusy(false);return;}try{const result=await supabase.from(c.table).select('*').order(c.order,{ascending:false}).limit(50);if(result.error){setError(result.error.message);setRows([])}else setRows((result.data||[]) as Row[])}catch(e){setError(e instanceof Error?e.message:'SURFACE_LOAD_FAILED')}finally{setBusy(false)}};
+ useEffect(()=>{void load()},[id.is_authenticated,c.table,c.order]);
+ const filtered=useMemo(()=>{const q=query.trim().toLowerCase();if(!q)return rows;return rows.filter(row=>Object.values(row).some(value=>text(value).toLowerCase().includes(q)))},[rows,query]);
  return <section className="feature-surface">
-   <div className="feature-hero"><div><div className="eyebrow">NAYANET · CANONICAL SYSTEM SURFACE</div><h1>{c.title}</h1><p>{c.subtitle}</p></div><div className="feature-state">{id.is_authenticated?'AUTHENTICATED':'AUTHENTICATION REQUIRED'} · {rows.length} RECORDS</div></div>
+   <div className="feature-hero"><div><div className="eyebrow">NAYANET · {c.eyebrow}</div><h1>{c.title}</h1><p>{c.subtitle}</p></div><div className="feature-state">{id.is_authenticated?'AUTHENTICATED':'AUTHENTICATION REQUIRED'} · {rows.length} {rows.length===1?'RECORD':'RECORDS'}</div></div>
    {!id.is_authenticated ? <div className="feature-empty"><b>AUTHENTICATION REQUIRED</b><span>Sign in through the normal NayaNET identity surface to access this private system data. No browser session is fabricated.</span></div>
-   : busy ? <div className="feature-empty"><b>LOADING CANONICAL STATE…</b></div>
-   : error ? <div className="feature-empty"><b>SYSTEM READ FAILED</b><span>{error}</span></div>
-   : !rows.length ? <div className="feature-empty"><b>{c.title.toUpperCase()} IS READY</b><span>{c.empty}</span></div>
-   : <div className="feature-table" role="table"><div className="feature-table-head">{fields.map(f=><span key={f}>{f.replaceAll('_',' ').toUpperCase()}</span>)}</div>{rows.map((row,i)=><article className="feature-row" key={label(row.id||row.ledger_event_id||i)}>{fields.map(f=><span key={f}>{pretty(row[f])}</span>)}</article>)}</div>}
+   : busy ? <div className="feature-empty"><b>READING CANONICAL STATE…</b><span>Loading the existing {c.title} data. No synthetic records are created.</span></div>
+   : error ? <div className="feature-empty"><b>SYSTEM READ FAILED</b><span>{error}</span><button onClick={()=>void load()}>RETRY WITH NEW INFORMATION</button></div>
+   : <><div className="feature-toolbar"><label><span>⌕</span><input value={query} onChange={e=>setQuery(e.target.value)} placeholder={`Search ${c.title.toLowerCase()}…`} aria-label={`Search ${c.title}`}/></label><button onClick={()=>void load()}>↻ REFRESH</button><span>{filtered.length} VISIBLE</span></div>{!filtered.length ? <div className="feature-empty"><b>{c.title.toUpperCase()} IS READY</b><span>{query?'No canonical records match this search.':c.empty}</span></div> : <div className="feature-cards">{filtered.map((row,index)=>{const primary=pick(row,c.primary)||`Untitled ${kind} record`;const secondary=pick(row,c.secondary);const meta=c.meta.map(k=>({key:k,value:text(row[k])})).find(x=>x.value);const status=pick(row,['status','state']);return <article className="feature-card" key={recordId(row,index)}><div className="feature-card-head"><div><span className="feature-card-kicker">{kind.replaceAll('_',' ').toUpperCase()}</span><h2>{short(primary,100)}</h2></div>{status&&<span className="feature-card-status">{status}</span>}</div>{secondary&&<p>{short(secondary)}</p>}<div className="feature-card-meta">{meta&&<span>{meta.key.replaceAll('_',' ').toUpperCase()} · {displayDate(meta.value)}</span>}<span>CANONICAL · {c.table}</span></div><button onClick={()=>setSelected(row)}>{c.action} →</button></article>})}</div>}</>}
    <div className="feature-foot"><span>CANONICAL SOURCE</span><b>{c.table}</b><span>•</span><span>PRIVATE BY DEFAULT · SHARED BY CHOICE</span></div>
+   {selected&&<div className="feature-modal" role="dialog" aria-modal="true"><div className="feature-dialog"><div className="eyebrow">CANONICAL RECORD · {c.title.toUpperCase()}</div><h2>{short(pick(selected,c.primary)||'Record',140)}</h2><div className="feature-detail-grid">{[...c.primary,...c.secondary,...c.meta].filter((key,index,array)=>array.indexOf(key)===index).map(key=>{const value=text(selected[key]);return value?<div key={key}><b>{key.replaceAll('_',' ').toUpperCase()}</b><span>{value}</span></div>:null})}</div><div className="feature-dialog-actions"><button onClick={()=>setSelected(null)}>CLOSE</button><button onClick={()=>navigator.clipboard?.writeText(JSON.stringify(selected,null,2))}>COPY RECORD</button></div></div></div>}
  </section>;
 }
