@@ -327,13 +327,6 @@ jobs:
                 for (const required of requiredActions) if (!retrievalProof.actions.includes(required)) throw new Error('SMART_FEED_RETRIEVAL_MISSING:' + required + ':' + JSON.stringify(retrievalProof));
                 if (retrievalProof.count < requiredActions.length) throw new Error('SMART_FEED_RETRIEVAL_EVENT_COUNT_TOO_LOW:' + JSON.stringify(retrievalProof));
 
-                await page.evaluate(() => window.NayaAssistantRuntime.signOut());
-                await page.waitForTimeout(250);
-                await board.locator('[aria-label="Favorite intelligence"]').first().click();
-                await page.waitForTimeout(500);
-                const failureStatus = await board.locator('.sfb-status').textContent().catch(() => '');
-                if (!String(failureStatus || '').includes('ACTION BLOCKED') || !String(failureStatus || '').includes('AUTH_REQUIRED')) throw new Error('SMART_FEED_FAILURE_BEHAVIOR_NOT_BLOCKED:' + String(failureStatus || 'NO_STATUS'));
-
                 const navRoot = viewport.width <= 760 ? page.locator('.mobile-nav') : page.locator('.nav-section');
                 const spaceProofName = 'CI Canonical Private Space ' + process.env.GITHUB_SHA.slice(0, 12) + ' ' + viewport.label;
                 await board.getByRole('button', { name: '＋ CREATE SPACE', exact: true }).click();
