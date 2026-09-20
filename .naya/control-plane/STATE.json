@@ -14,9 +14,9 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — CANONICAL HUB HUMAN ACCEPTANCE",
+  "priority": "P0 — CANONICAL HUB FUNCTIONALIZATION",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "FINAL-HUMAN-ACCEPTANCE",
+  "current_block": "CANONICAL-HUB-FUNCTIONALIZATION",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -27,9 +27,12 @@
     "pis_builder": "scripts/build-primary-intelligence-feed.py",
     "pis_verification": ".github/workflows/verify-smart-note-transaction.yml",
     "deeper_source_set": ".naya/",
-    "law": "No Naya may build, modify, redesign, restructure, deploy, or declare completion of Intelligent Hub work until the Hub Read-First set has been reviewed and the relevant deeper canonical sources have been inspected.",
+    "law": "All current Hub work targets NAYANET/HUB/index.html. Welcome/front-door and historical/alternate Hub artifacts are non-authoritative. Internal runtime code is implementation machinery behind the canonical Hub, not a competing Hub.",
     "purpose": "Prevent context loss and architectural forgetting by making the Hub mental model operationally discoverable and mandatory before Hub execution.",
-    "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya."
+    "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.",
+    "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+    "canonical_hub": "NAYANET/HUB/index.html",
+    "canonical_hub_source_sha": "f76ed6d6de6805a752dc81113ded42e67b3b6f80"
   },
   "operational_truth_model": {
     "canonical_state": ".naya/control-plane/STATE.json",
@@ -41,8 +44,8 @@
   },
   "current_operating_reset": {
     "date": "2026-09-17",
-    "team_naya_operating_center": ".naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md",
-    "purpose": "Make Team Naya operate from one current mission, one truth model, one active block, one next action, one evidence path, and no duplicate work.",
+    "team_naya_operating_center": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+    "purpose": "Keep every Naya on one canonical Hub, one mission, one active feature boundary, one evidence path, and no competing Hub work.",
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
@@ -63,7 +66,7 @@
     "The canonical navigation/authority map is SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md.",
     "The governance kernel points to the current constitution and is fail-closed.",
     "The active repository block is WAVE-A-PRODUCTION-RELATIONSHIP-JOURNEY, now transitioned from engine/security closure into final reuse/compounding and human-facing acceptance.",
-    "The canonical user-facing Hub is the React/Vite host released by .github/workflows/assistant-cloudflare-hub-release.yml; the protected `2026 09 17 NAYANET HUB.html` remains the preserved embedded baseline.",
+    "The canonical user-facing Hub is NAYANET/HUB/index.html. Internal React/Vite/runtime code is implementation machinery behind that exact human-facing Hub and must not be treated as a competing Hub.",
     "Naya Control Plane run 34725200501 passed governance kernel, execution boundary, validator self-test, P0 workflow contract, Cold Naya control-plane acceptance, Cold Naya boot/no-orphan acceptance, MAP → STATE → BLOCK → PROOF acceptance, and CCT regression at HEAD 28b935cc1d759bae89c92b508c9d47d871c9a1c9.",
     "P0 run 34724442337 passed its offline adversarial workflow contract and behavioral bypass suite on e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
     "The Smart Feed runtime loader repair was implemented in 0d56f6e47288e69eeda2adddf1aa18bb4235b062.",
@@ -72,7 +75,7 @@
     "Issue #57 is a future/deferred NayaMail + Ambassador Growth Hub project explicitly marked not for today; it is not current execution work.",
     "The 2026-09-17 Team Naya reset created a visible operating center and reconciled the STATE/BLOCK next-action conflict.",
     "The authorized GitHub execution surface on the connected desktop can dispatch workflows through an authenticated gh session without exposing credential values.",
-    "The canonical production deployment workflow is .github/workflows/assistant-cloudflare-hub-release.yml; the legacy React/Vite deployment workflow is retired/disabled.",
+    "The canonical Hub production release must serve the canonical NAYANET/HUB/index.html surface; deployment infrastructure is subordinate to this source-of-truth contract.",
     "The protected standalone Hub and assistant-runtime source/live parity were verified by the canonical Assistant Cloudflare release lane.",
     "Current main HEAD is resolved live at execution time; deployment proof remains claim-scope based and is tied to the exact source artifacts used by the Assistant Cloudflare release.",
     "Assistant authenticated lifecycle run 35470519946 is VERIFIED against the canonical live Assistant Cloudflare lane with independent fresh-context retrieval/render proof.",
@@ -193,5 +196,6 @@
       "smart_note_human_capture_receiver_feed_reload": "PASS"
     },
     "interpretation": "The canonical Hub is deployed and source-parity verified. The human Smart Note transaction is independently proven. Remaining work is deep lifecycle acceptance across the remaining human surfaces."
-  }
+  },
+  "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome; stop at the first actual failure and repair only that boundary."
 }
