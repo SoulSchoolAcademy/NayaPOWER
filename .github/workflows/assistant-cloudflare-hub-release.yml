@@ -364,12 +364,9 @@ jobs:
                   return {id:target.id,userId:target.user_id};
                 }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY});
 
-                let connectionPromptIndex = 0;
                 const connectionPrompts = [connectionTarget.id, createdSpaceId];
                 await page.evaluate((values) => {
-                  const originalPrompt = window.prompt;
                   window.prompt = () => values.shift() || '';
-                  (window as any).__nayaOriginalPrompt = originalPrompt;
                 }, connectionPrompts);
                 await actionButton('↔ CONNECT').click();
                 await page.waitForTimeout(900);
