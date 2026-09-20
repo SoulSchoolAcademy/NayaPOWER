@@ -11,6 +11,8 @@ on:
       - '.github/workflows/verify-human-smart-note-capture.yml'
   workflow_dispatch:
 
+# Naya execution checkpoint: run the existing human Smart Note capture proof on the current main push.
+
 permissions:
   contents: read
 
