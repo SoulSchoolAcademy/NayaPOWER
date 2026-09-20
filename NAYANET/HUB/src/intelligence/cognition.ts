@@ -34,15 +34,18 @@ type CognitiveApi = {
   handoff: (reason?: string, project?: string) => unknown;
 };
 
+type SpaceMember={id?:string;space_id?:string;member_id:string;role?:string;status?:string;joined_at?:string;left_at?:string;source_type?:string;source_id?:string;display_name?:string;smart_name?:string};
+type DreamReplay={id?:string;event_id?:string;status?:string;summary?:string;description?:string;[key:string]:unknown};
+
 type AssistantRuntimeApi = {
   init: () => Promise<{authenticated?: boolean}>;
   snapshot: () => {authenticated?: boolean; user_id?: string};
   record: (input: CognitiveEventInput) => Promise<unknown>;
   retrieve: (eventId?: string) => Promise<RuntimeEvent[]>;
   retrieveSmartFeedActions: (sourceEventId: string) => Promise<RuntimeEvent[]>;
-  listSpaceMembers: (spaceId: string) => Promise<unknown[]>;
-  listDreamReplays: () => Promise<unknown[]>;
-  dreamReplay: (input?: {event_id?: string; idempotency_key?: string}) => Promise<unknown>;
+  listSpaceMembers: (spaceId: string) => Promise<SpaceMember[]>;
+  listDreamReplays: () => Promise<DreamReplay[]>;
+  dreamReplay: (input?: {event_id?: string; idempotency_key?: string}) => Promise<DreamReplay>;
   recordLearningEvidence: (input: {claim: string; target_id?: string; source_event_id?: string; provenance?: string; verification_method?: string}) => Promise<unknown>;
   createSpace: (input: {name: string; purpose: string; visibility?: 'private'|'shared'}) => Promise<{id: string; name: string; purpose: string; visibility: string; created_at: string}>;
   saveConnection: (targetMemberId: string, spaceId: string) => Promise<unknown>;
