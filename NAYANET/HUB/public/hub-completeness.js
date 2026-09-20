@@ -85,41 +85,33 @@ async function play(r){const ev=await r.retrieve(),le=await r.listLearningEviden
 async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthful runtime state; no configuration is claimed that the current session cannot prove.','<div class="nc-state">'+esc(JSON.stringify(s,null,2))+'</div><div class="nc-actions"><button id="nc-out">SIGN OUT</button></div>');m.querySelector('#nc-out').onclick=async()=>{await r.signOut();m.querySelector('.nc-state').textContent='SIGNED OUT · PRIVATE DATA ACCESS BLOCKED';}}
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
- const groups=[
-  ['PERSONAL',[
-   ['feed','Intelligence Today','✦','activity'],
-   ['reports','Reports','◫'],
-   ['intelligence','Library','▱'],
-   ['share','Smart Share','↗']
-  ]],
-  ['ORGANIZE',[
-   ['lists','Smart Lists','☷'],
-   ['spaces','Smart Spaces','◌']
-  ]],
-  ['CONNECT',[
-   ['connections','Connections','↗'],
-   ['mail','Smart Mail','✉']
-  ]],
-  ['SYSTEM',[
-   ['ledger','Smart Ledger','◇'],
-   ['settings','Settings','⚙']
-  ]]
- ];
- const brand=rail.querySelector('.brand'), privateNote=rail.querySelector('.private');
- rail.querySelectorAll('.label,.nav').forEach(x=>x.remove());
- let anchor=brand?.nextSibling||null;
- for(const [label,items] of groups){
-   const heading=document.createElement('div'); heading.className='label'; heading.textContent=label;
-   const nav=document.createElement('nav'); nav.className='nav';
-   items.forEach(([key,text,icon,stream])=>{
-     const b=document.createElement('button'); b.type='button'; b.dataset.nc=key;
-     if(stream)b.dataset.ncStream=stream;
-     b.innerHTML='<span class="ico">'+icon+'</span>'+text;
-     nav.appendChild(b);
-   });
-   rail.insertBefore(heading,anchor);
-   rail.insertBefore(nav,anchor);
- }
+ // The HTML Hub is the protected visual source of truth. Never rebuild, reorder,
+ // rename, or inject a new sidebar here. Runtime acceptance annotations are
+ // additive only and therefore cannot turn the canonical Hub into a different UI.
+ const map={
+   home:['feed','activity'],
+   notes:['note',null],
+   reports:['reports',null],
+   intelligence:['intelligence',null],
+   collective:['feed','collective'],
+   evidence:['ledger',null],
+   connections:['connections',null],
+   mail:['mail',null],
+   settings:['settings',null],
+   share:['share',null],
+   lists:['lists',null],
+   spaces:['spaces',null],
+   ledger:['ledger',null],
+   play:['play',null]
+ };
+ rail.querySelectorAll('.nav button[data-page]').forEach(b=>{
+   const key=b.dataset.page;
+   const mapped=map[key];
+   if(!mapped)return;
+   b.dataset.nc=mapped[0];
+   if(mapped[1])b.dataset.ncStream=mapped[1];
+   else delete b.dataset.ncStream;
+ });
  return true;
 }
 function install(){
