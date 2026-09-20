@@ -284,6 +284,8 @@ jobs:
                 await page.evaluate(() => {
                   Object.defineProperty(navigator, 'share', { configurable: true, value: async () => undefined });
                 });
+                const canonicalSourceEventId = await board.getAttribute('data-event-id');
+                if (!canonicalSourceEventId) throw new Error('SMART_FEED_SOURCE_EVENT_ID_MISSING_BEFORE_SHARE');
                 await actionButton('＋ SHARE').click();
                 await page.waitForFunction(() => /SHARE PERSISTED|SHARE BLOCKED/.test(String(document.querySelector('.smart-feed-board .sfb-status')?.textContent || '')), null, { timeout: 15000 }); await statusFor('share');
 
@@ -302,6 +304,8 @@ jobs:
                     links: root?.querySelector('.sfb-related-head button')?.textContent?.includes('1 LINKED') || false
                   };
                 });
+                const restoredSourceEventId = await board.getAttribute('data-event-id');
+                if (restoredSourceEventId !== canonicalSourceEventId) throw new Error('SMART_FEED_CANONICAL_ID_CHANGED_ON_RELOAD:' + JSON.stringify({canonicalSourceEventId,restoredSourceEventId}));
                 const restorationDiagnostic = await page.evaluate(async () => {
                   const root = document.querySelector('.smart-feed-board');
                   const sourceEventId = root?.getAttribute('data-event-id') || '';
