@@ -27,7 +27,7 @@ const consoleErrors=[];
 page.on("console",m=>{if(m.type()==="error")consoleErrors.push(m.text())});
 page.on("pageerror",e=>consoleErrors.push(String(e)));
 
-await page.goto(runtime+"/?wave_a=canonical",{waitUntil:"networkidle",timeout:60000});
+await page.goto(runtime+"/?wave_a=canonical",{waitUntil:"domcontentloaded",timeout:60000});
 await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
 
 const shell=await page.evaluate(()=>({
