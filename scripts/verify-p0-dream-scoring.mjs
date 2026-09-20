@@ -5,8 +5,14 @@ async function req(url,opt={}){const r=await fetch(url,opt),t=await r.text();let
 const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
 const anon=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
 const sender=await anon(),receiver=await anon();
+const spaceId=process.env.NAYA_EXISTING_SPACE_ID||'04ee4dc8-bc73-47df-a1de-162570f6a56e';
+const join=async(session)=>req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(session.access_token),body:JSON.stringify({p_space_id:spaceId})});
+await join(sender); await join(receiver);
+const connect=async(session,target)=>req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(session.access_token),body:JSON.stringify({p_target_member_id:target,p_space_id:spaceId})});
+const senderConnection=await connect(sender,receiver.user.id),receiverConnection=await connect(receiver,sender.user.id);
+if(!senderConnection?.connection?.id||!receiverConnection?.connection?.id)throw new Error('RELATIONSHIP_BOOTSTRAP_FAILED');
 const idem='p0-dream-score-'+crypto.randomBytes(10).toString('hex');
-const authority=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_subject_id:sender.user.id,p_source_event_id:'p0-dream-score-authority-'+idem,p_mission_id:'P0 Dream scoring proof',p_scope:{project_id:'NayaNET',target:receiver.user.id},p_actions:['smart_mail_send'],p_constraints:{mode:'p0-dream-score-proof',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_p0_dream_scoring_proof'},p_parent_authority:null})});
+const authority=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_subject_id:sender.user.id,p_source_event_id:'p0-dream-score-authority-'+idem,p_mission_id:'P0 Dream scoring proof',p_scope:{project_id:'NayaNET',target:receiver.user.id,space_id:spaceId},p_actions:['smart_mail_send'],p_constraints:{mode:'p0-dream-score-proof',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_p0_dream_scoring_proof'},p_parent_authority:null})});
 if(!authority?.grant_id)throw new Error('AUTHORITY_GRANT_FAILED');
 const validated=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{method:'POST',headers:h(sender.access_token),body:JSON.stringify({p_grant_id:authority.grant_id,p_action:'smart_mail_send',p_target:receiver.user.id})});
 if(validated?.status!=='AUTHORIZED')throw new Error('AUTHORITY_NOT_AUTHORIZED');
