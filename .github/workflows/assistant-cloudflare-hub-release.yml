@@ -278,6 +278,7 @@ jobs:
                   if (!(await board.count())) throw new Error('SMART_FEED_OWNED_SMART_NOTE_NOT_RENDERED:' + ownedBoardEventId);
                 }
                 const statusFor = async (label) => {
+                  await page.waitForFunction(() => /ACTION PERSISTED|SHARE PERSISTED|ACTION BLOCKED|SHARE BLOCKED/.test(String(document.querySelector('.smart-feed-board .sfb-status')?.textContent || '')), null, { timeout: 15000 });
                   const status = await board.locator('.sfb-status').textContent().catch(() => '');
                   if (!String(status || '').includes('ACTION PERSISTED') && !String(status || '').includes('SHARE PERSISTED')) throw new Error('SMART_FEED_ACTION_NOT_PERSISTED:' + label + ':' + String(status || 'NO_STATUS'));
                   if (!String(status || '').includes('RECEIPT ')) throw new Error('SMART_FEED_ACTION_RECEIPT_NOT_RETURNED:' + label + ':' + String(status || 'NO_RECEIPT'));
