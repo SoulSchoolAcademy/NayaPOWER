@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<meta name="color-scheme" content="dark">
+<meta name="maxess-artifact" content="E05-SECTION-05-WORKING">
+<title>MAXESS — Section 05 · Does Any of This Sound Familiar?</title>
+<style>
+#e05{--bg:#000;--white:#fff;--soft:rgba(255,255,255,.68);--purple:#9b62ff;position:relative;width:100%;background:#000;color:#fff;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;overflow:hidden;isolation:isolate}
+#e05,#e05 *{box-sizing:border-box}
+#e05 .e05-glow{position:absolute;left:50%;top:0;width:900px;height:700px;transform:translateX(-50%);background:radial-gradient(circle,rgba(155,98,255,.12),transparent 66%);filter:blur(44px);pointer-events:none}
+#e05 .e05-wrap{position:relative;z-index:2;width:min(1160px,100%);margin:auto;padding:78px 30px 90px}
+#e05 .e05-head{text-align:center;max-width:820px;margin:0 auto 66px}
+#e05 .e05-kicker{margin:0 0 17px;font-size:9px;font-weight:900;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+#e05 h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(42px,6vw,72px);line-height:1;letter-spacing:-.05em}
+#e05 .e05-intro{max-width:660px;margin:23px auto 0;color:rgba(255,255,255,.7);font-size:15px;line-height:1.72}
+#e05 .e05-rule{width:90px;height:1px;margin:27px auto 0;background:linear-gradient(90deg,transparent,var(--purple),transparent);box-shadow:0 0 20px rgba(155,98,255,.55)}
+#e05 .e05-item{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:54px;align-items:center;width:min(1060px,100%);margin:0 auto 86px}
+#e05 .e05-item.reverse{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)}
+#e05 .e05-item.reverse .e05-visual{order:2}
+#e05 .e05-item.reverse .e05-copy{order:1}
+#e05 .e05-visual{position:relative;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.12);border-radius:26px;overflow:hidden;background:#050505;box-shadow:0 24px 70px rgba(0,0,0,.55),0 0 60px rgba(155,98,255,.08)}
+#e05 .e05-visual img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.8) contrast(1.06);transition:transform .7s ease}
+#e05 .e05-item:hover .e05-visual img{transform:scale(1.025)}
+#e05 .e05-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.16),rgba(10,0,20,.42)),radial-gradient(circle at 72% 28%,rgba(155,98,255,.24),transparent 40%);pointer-events:none}
+#e05 .e05-orbit{position:absolute;right:19px;bottom:18px;width:66px;height:66px;border:1px solid rgba(255,255,255,.22);border-radius:50%;box-shadow:0 0 26px rgba(155,98,255,.22);z-index:2}
+#e05 .e05-orbit:before{content:"";position:absolute;inset:11px;border:1px solid rgba(255,255,255,.15);border-radius:50%}
+#e05 .e05-orbit:after{content:"";position:absolute;top:0;left:50%;width:6px;height:6px;border-radius:50%;background:#fff;box-shadow:0 0 12px 4px rgba(155,98,255,.8);transform:translateX(-50%)}
+#e05 .e05-copy{padding:8px 4px}
+#e05 .e05-meta{display:flex;align-items:center;gap:12px;margin-bottom:23px}
+#e05 .e05-face{width:43px;height:43px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.28);box-shadow:0 0 22px rgba(155,98,255,.2)}
+#e05 .e05-naya{font-size:9px;font-weight:900;letter-spacing:.25em;text-transform:uppercase}
+#e05 .e05-mark{margin-left:auto;width:29px;height:29px;object-fit:contain;opacity:.82}
+#e05 .e05-index{margin:0 0 9px;color:rgba(255,255,255,.38);font-size:9px;font-weight:900;letter-spacing:.28em;text-transform:uppercase}
+#e05 .e05-title{margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(27px,3.2vw,40px);line-height:1.1;letter-spacing:-.035em}
+#e05 .e05-quote-mark{margin:22px 0 -7px;color:var(--purple);font-family:Georgia,serif;font-size:70px;line-height:.65;text-shadow:0 0 24px rgba(155,98,255,.35)}
+#e05 blockquote{margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(20px,2.25vw,29px);line-height:1.32;letter-spacing:-.02em}
+#e05 .e05-caption{margin:20px 0 0;padding-left:16px;border-left:1px solid rgba(155,98,255,.78);color:rgba(255,255,255,.66);font-size:12px;line-height:1.72}
+#e05 .e05-footer{width:min(800px,100%);margin:6px auto 0;padding:38px 0 0;border-top:1px solid rgba(255,255,255,.1);text-align:center}
+#e05 .e05-footer p{margin:0;color:#fff;font-family:Georgia,"Times New Roman",serif;font-size:clamp(21px,2.5vw,28px);line-height:1.5;letter-spacing:-.015em}
+#e05 .e05-footer small{display:block;margin-top:16px;color:rgba(255,255,255,.45);font-size:9px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}
+@media(max-width:760px){#e05 .e05-wrap{padding:54px 18px 66px}#e05 .e05-head{margin-bottom:46px}#e05 .e05-intro{font-size:14px}#e05 .e05-item,#e05 .e05-item.reverse{grid-template-columns:1fr;gap:28px;margin-bottom:66px}#e05 .e05-item.reverse .e05-visual,#e05 .e05-item.reverse .e05-copy{order:initial}#e05 .e05-visual{border-radius:21px}#e05 .e05-copy{padding:0 4px}#e05 .e05-title{font-size:31px}#e05 blockquote{font-size:25px}#e05 .e05-footer p{font-size:21px}}
+@media print{#e05{background:#fff!important;color:#111!important;overflow:visible}#e05 .e05-glow{display:none}#e05 .e05-wrap{padding:14mm 12mm;background:#fff!important}#e05 .e05-item{break-inside:avoid;page-break-inside:avoid;margin-bottom:18mm}#e05 h1,#e05 .e05-title,#e05 blockquote,#e05 .e05-footer p{color:#111}#e05 .e05-kicker,#e05 .e05-index,#e05 .e05-caption,#e05 .e05-intro,#e05 .e05-footer small{color:#444}#e05 .e05-visual{box-shadow:none;border-color:#ddd}#e05 .e05-visual:after{display:none}#e05 .e05-naya{color:#111}#e05 .e05-mark{filter:invert(1)}}
+@media(prefers-reduced-motion:reduce){#e05 *{transition:none!important}}
+</style>
+</head>
+<body>
+<section id="e05" aria-labelledby="e05-title">
+<div class="e05-glow" aria-hidden="true"></div><div class="e05-wrap">
+<header class="e05-head"><p class="e05-kicker">MAXESS · THE AI FRICTION</p><h1 id="e05-title">Does any of this sound familiar?</h1><p class="e05-intro">If you've ever felt that AI should be giving you better results than it is, you're not alone. Here are seven of the most common moments that get in the way.</p><div class="e05-rule" aria-hidden="true"></div></header>
+
+<article class="e05-item"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%20Black.jpg" alt="Naya" loading="eager"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%20black%20face%20zoom.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">01 · The Direction Problem</p><h2 class="e05-title">“It doesn't understand what I mean.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>You know what you want. You explain it to AI… and somehow the answer still isn't what you had in your head.</blockquote><p class="e05-caption">The intelligence is there. The frustration often comes from not yet having a reliable way to translate your intention into direction AI can act on.</p></div></article>
+
+<article class="e05-item reverse"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%202.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%202.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">02 · The Consistency Problem</p><h2 class="e05-title">“Sometimes it's amazing. Sometimes it's… not.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>You get one incredible result, and then you try again and wonder why you can't get AI to do it that way consistently.</blockquote><p class="e05-caption">Great results are exciting. Repeatable great results are a system. That's the difference between discovering a trick and developing a method.</p></div></article>
+
+<article class="e05-item"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%204.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%204.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">03 · The Overwhelm Problem</p><h2 class="e05-title">“I know AI can do more. I just don't know where to start.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>There are prompts, models, tools, updates, agents, workflows… and suddenly using AI feels like another thing you have to learn.</blockquote><p class="e05-caption">You don't need more noise. You need a clear path that turns a huge possibility into a practical next move.</p></div></article>
+
+<article class="e05-item reverse"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%203.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%203.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">04 · The Context Problem</p><h2 class="e05-title">“Why does it keep forgetting?”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>You already explained all of this. You had the conversation. And somehow you're back at the beginning again.</blockquote><p class="e05-caption">Losing context forces you to repeat yourself and breaks momentum. Better systems preserve what matters so your thinking can keep moving forward.</p></div></article>
+
+<article class="e05-item"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%205.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%205.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">05 · The Quality Problem</p><h2 class="e05-title">“It's good… but I know it could be better.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>The answer technically works. The design is almost there. The writing is okay. But something is missing—and you're not quite sure how to get it across the finish line.</blockquote><p class="e05-caption">Exceptional work rarely appears on the first attempt. The missing skill is often knowing how to evaluate, refine, and raise the standard deliberately.</p></div></article>
+
+<article class="e05-item reverse"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%207.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%207.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">06 · The “Start Over” Problem</p><h2 class="e05-title">“I keep having to start over.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>You spend time getting somewhere useful, then the thread changes, the context disappears, or the next session doesn't know what happened before.</blockquote><p class="e05-caption">Starting over costs more than time. It breaks continuity. A better AI workflow lets your work accumulate instead of constantly resetting.</p></div></article>
+
+<article class="e05-item"><div class="e05-visual"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%206.jpg" alt="Naya" loading="lazy"><div class="e05-orbit" aria-hidden="true"></div></div><div class="e05-copy"><div class="e05-meta"><img class="e05-face" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%206.jpg" alt="Naya"><span class="e05-naya">Naya</span><img class="e05-mark" src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/ICON%20LOGO.png" alt="MAXESS"></div><p class="e05-index">07 · The “I Know There’s More” Problem</p><h2 class="e05-title">“I know I'm only scratching the surface.”</h2><div class="e05-quote-mark" aria-hidden="true">“</div><blockquote>You can feel that AI is capable of something much bigger—but you haven't yet found the method that lets you consistently unlock it.</blockquote><p class="e05-caption">That feeling isn't a limitation. It's recognition that there's another level available—and that the right system can help you reach it.</p></div></article>
+
+<footer class="e05-footer"><p>If you recognized yourself in these moments, you've discovered a pattern — not a limitation.</p><small>There is another way to work with AI.</small></footer>
+</div></section>
+</body>
+</html>

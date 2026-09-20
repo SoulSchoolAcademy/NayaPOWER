@@ -1,0 +1,777 @@
+<!-- ============================================================
+     E00.03 — MAXESS RESULTS CONTROLLER
+     MAXESS_RESULT_V1
+
+     PURPOSE:
+     - Wait for the authoritative E00 result
+     - Obtain the canonical result from E00.01
+     - Verify that the result is complete and valid
+     - Release the Results Bridge exactly once
+     - Pass the official result through the release event
+     - DO NOT render Results UI
+     - DO NOT contain Results content
+     - DO NOT score the assessment
+     - DO NOT modify E00 assessment layout
+     - DO NOT release E01-E09 directly
+     - E00.02 owns the visual Results release
+
+     ARCHITECTURE:
+
+       E00
+        |
+        | MAXESS_RESULT_READY
+        v
+       E00.01
+       OFFICIAL RESULTS DATA
+        |
+        | MAXESS_OFFICIAL_RESULT_READY
+        v
+       E00.03
+       RESULTS CONTROLLER
+        |
+        | MAXESS_ISOLATION_RELEASE
+        v
+       E00.02
+       BRIDGE
+        |
+        v
+       E01 → E09
+
+     VERSION:
+       1.0.0
+
+     STATUS:
+       OFFICIAL / FINAL CONTROLLER
+     ============================================================ -->
+
+<div
+  id="MAXESS_E00_03_RESULTS_CONTROLLER"
+  aria-hidden="true"
+  style="
+    display:none!important;
+    width:0!important;
+    height:0!important;
+    overflow:hidden!important;
+    position:absolute!important;
+    left:-99999px!important;
+    top:-99999px!important;
+    pointer-events:none!important;
+    opacity:0!important;
+    visibility:hidden!important;
+  "
+></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /*
+   * ============================================================
+   * SINGLE-INITIALIZATION GUARD
+   * ============================================================
+   */
+
+  if (window.__MAXESS_E00_03_RESULTS_CONTROLLER__) {
+    return;
+  }
+
+  window.__MAXESS_E00_03_RESULTS_CONTROLLER__ = true;
+
+  /*
+   * ============================================================
+   * CONTRACT
+   * ============================================================
+   */
+
+  const CONTROLLER_VERSION = '1.0.0';
+  const CONTRACT_NAME = 'MAXESS_RESULT_V1';
+
+  const OFFICIAL_RESULT_EVENT =
+    'MAXESS_OFFICIAL_RESULT_READY';
+
+  const RESULT_READY_EVENT =
+    'MAXESS_RESULT_READY';
+
+  const RELEASE_EVENT =
+    'MAXESS_ISOLATION_RELEASE';
+
+  /*
+   * ============================================================
+   * INTERNAL STATE
+   * ============================================================
+   */
+
+  let officialResult = null;
+  let released = false;
+
+  /*
+   * ============================================================
+   * RESULT VALIDATION
+   *
+   * E00.03 does not create or calculate the result.
+   * It only verifies that the object it receives satisfies
+   * the minimum MAXESS_RESULT_V1 contract before releasing it.
+   * ============================================================
+   */
+
+  function isValidResult(result) {
+
+    if (!result || typeof result !== 'object') {
+      return false;
+    }
+
+    if (
+      result.contractVersion !== CONTRACT_NAME
+    ) {
+      return false;
+    }
+
+    if (
+      !Number.isInteger(result.overallScore) ||
+      result.overallScore < 0 ||
+      result.overallScore > 100
+    ) {
+      return false;
+    }
+
+    if (
+      ![
+        'foundation',
+        'developing',
+        'advancing',
+        'mastery'
+      ].includes(result.masteryBand)
+    ) {
+      return false;
+    }
+
+    if (
+      !Array.isArray(result.dimensions) ||
+      result.dimensions.length !== 5
+    ) {
+      return false;
+    }
+
+    if (
+      !Array.isArray(result.responses) ||
+      result.responses.length !== 15
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  /*
+   * ============================================================
+   * SAFE RESULT COPY
+   *
+   * Prevent the controller from mutating the official result.
+   * ============================================================
+   */
+
+  function copyResult(result) {
+
+    try {
+      return JSON.parse(
+        JSON.stringify(result)
+      );
+    } catch (error) {
+
+      console.error(
+        '[E00.03] Could not copy official result.',
+        error
+      );
+
+      return null;
+    }
+  }
+
+  /*
+   * ============================================================
+   * GET CANONICAL RESULT
+   *
+   * E00.01 is authoritative.
+   *
+   * Prefer:
+   *   window.MAXESS_OFFICIAL_RESULT
+   *
+   * Then fall back to:
+   *   window.MAXESS_E00_01.getResult()
+   *
+   * The controller never invents result data.
+   * ============================================================
+   */
+
+  function getCanonicalResult() {
+
+    let result = null;
+
+    if (
+      window.MAXESS_OFFICIAL_RESULT
+    ) {
+      result =
+        window.MAXESS_OFFICIAL_RESULT;
+    }
+
+    if (
+      !isValidResult(result) &&
+      window.MAXESS_E00_01 &&
+      typeof window.MAXESS_E00_01.getResult ===
+        'function'
+    ) {
+      try {
+        result =
+          window.MAXESS_E00_01.getResult();
+      } catch (error) {
+
+        console.warn(
+          '[E00.03] E00.01 getResult() failed.',
+          error
+        );
+      }
+    }
+
+    if (!isValidResult(result)) {
+      return null;
+    }
+
+    return result;
+  }
+
+  /*
+   * ============================================================
+   * RELEASE RESULTS
+   *
+   * THIS IS THE CRITICAL HANDOFF.
+   *
+   * E00.02 is listening for:
+   *
+   *   MAXESS_ISOLATION_RELEASE
+   *
+   * E00.03 is the component that officially issues that command.
+   *
+   * It happens once only.
+   * ============================================================
+   */
+
+  function releaseResults(result) {
+
+    if (released) {
+
+      console.log(
+        '[E00.03] Results already released. Ignoring duplicate release.'
+      );
+
+      return false;
+    }
+
+    if (!isValidResult(result)) {
+
+      console.error(
+        '[E00.03] Release refused: invalid official result.',
+        result
+      );
+
+      return false;
+    }
+
+    const safeResult =
+      copyResult(result);
+
+    if (!safeResult) {
+      return false;
+    }
+
+    officialResult = safeResult;
+
+    released = true;
+
+    /*
+     * ----------------------------------------------------------
+     * CANONICAL CONTROLLER STATE
+     * ----------------------------------------------------------
+     */
+
+    window.MAXESS_RESULTS_RELEASED = true;
+
+    window.MAXESS_RESULTS_CONTROLLER = {
+      version: CONTROLLER_VERSION,
+      contractVersion: CONTRACT_NAME,
+      released: true,
+      result: officialResult
+    };
+
+    /*
+     * ----------------------------------------------------------
+     * RELEASE EVENT
+     *
+     * This is the exact event E00.02 is listening for.
+     * ----------------------------------------------------------
+     */
+
+    window.dispatchEvent(
+      new CustomEvent(
+        RELEASE_EVENT,
+        {
+          detail: {
+            result: officialResult,
+            contractVersion: CONTRACT_NAME,
+            controllerVersion:
+              CONTROLLER_VERSION,
+            source:
+              'E00.03'
+          }
+        }
+      )
+    );
+
+    /*
+     * ----------------------------------------------------------
+     * ALSO ANNOUNCE CONTROLLER RELEASE
+     *
+     * This gives downstream components an explicit semantic
+     * event without changing the Bridge contract.
+     * ----------------------------------------------------------
+     */
+
+    window.dispatchEvent(
+      new CustomEvent(
+        'MAXESS_RESULTS_RELEASED',
+        {
+          detail: {
+            result: officialResult,
+            contractVersion: CONTRACT_NAME,
+            source:
+              'E00.03'
+          }
+        }
+      )
+    );
+
+    /*
+     * ----------------------------------------------------------
+     * CROSS-FRAME NOTIFICATION
+     *
+     * If the Groove/embed architecture places this controller
+     * inside a child frame, notify the parent/top window too.
+     * ----------------------------------------------------------
+     */
+
+    const message = {
+      type:
+        'MAXESS_ISOLATION_RELEASE',
+
+      contractVersion:
+        CONTRACT_NAME,
+
+      controllerVersion:
+        CONTROLLER_VERSION,
+
+      result:
+        officialResult,
+
+      source:
+        'E00.03'
+    };
+
+    try {
+
+      if (
+        window.parent &&
+        window.parent !== window
+      ) {
+
+        window.parent.postMessage(
+          message,
+          '*'
+        );
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[E00.03] Parent release notification failed.',
+        error
+      );
+    }
+
+    try {
+
+      if (
+        window.top &&
+        window.top !== window
+      ) {
+
+        window.top.postMessage(
+          message,
+          '*'
+        );
+      }
+
+    } catch (error) {
+
+      console.warn(
+        '[E00.03] Top-window release notification failed.',
+        error
+      );
+    }
+
+    console.log(
+      '[E00.03] RESULTS RELEASED.',
+      {
+        overallScore:
+          officialResult.overallScore,
+
+        masteryBand:
+          officialResult.masteryBand
+      }
+    );
+
+    return true;
+  }
+
+  /*
+   * ============================================================
+   * PROCESS RESULT
+   * ============================================================
+   */
+
+  function processResult(result) {
+
+    if (!result) {
+      return false;
+    }
+
+    if (!isValidResult(result)) {
+
+      console.error(
+        '[E00.03] Received result does not satisfy MAXESS_RESULT_V1.',
+        result
+      );
+
+      return false;
+    }
+
+    officialResult =
+      copyResult(result);
+
+    return releaseResults(
+      result
+    );
+  }
+
+  /*
+   * ============================================================
+   * RECEIVE OFFICIAL RESULT FROM E00.01
+   *
+   * This is the preferred pathway.
+   * ============================================================
+   */
+
+  window.addEventListener(
+    OFFICIAL_RESULT_EVENT,
+    function (event) {
+
+      if (
+        !event ||
+        !event.detail
+      ) {
+        return;
+      }
+
+      processResult(
+        event.detail
+      );
+    }
+  );
+
+  /*
+   * ============================================================
+   * RECEIVE ORIGINAL E00 RESULT
+   *
+   * This fallback allows E00.03 to work even if the event
+   * ordering means the original E00 event reaches it before
+   * E00.01's official announcement.
+   *
+   * IMPORTANT:
+   * We still validate the result before release.
+   * ============================================================
+   */
+
+  window.addEventListener(
+    RESULT_READY_EVENT,
+    function (event) {
+
+      if (
+        !event ||
+        !event.detail
+      ) {
+        return;
+      }
+
+      /*
+       * Give E00.01 the opportunity to establish the canonical
+       * result first.
+       */
+      setTimeout(
+        function () {
+
+          if (released) {
+            return;
+          }
+
+          const canonical =
+            getCanonicalResult();
+
+          if (canonical) {
+
+            processResult(
+              canonical
+            );
+
+            return;
+          }
+
+          /*
+           * If E00.01 has not yet established its global
+           * reference, use the validated E00 payload as the
+           * fallback.
+           */
+          processResult(
+            event.detail
+          );
+
+        },
+        0
+      );
+    }
+  );
+
+  /*
+   * ============================================================
+   * RECEIVE CROSS-FRAME OFFICIAL RESULT
+   *
+   * Supports Groove/embed boundaries.
+   * ============================================================
+   */
+
+  window.addEventListener(
+    'message',
+    function (event) {
+
+      const data =
+        event &&
+        event.data;
+
+      if (
+        !data ||
+        typeof data !== 'object'
+      ) {
+        return;
+      }
+
+      if (
+        data.type ===
+          OFFICIAL_RESULT_EVENT
+      ) {
+
+        if (
+          data.result
+        ) {
+
+          processResult(
+            data.result
+          );
+        }
+
+        return;
+      }
+
+      if (
+        data.type ===
+          RESULT_READY_EVENT
+      ) {
+
+        if (
+          data.result
+        ) {
+
+          processResult(
+            data.result
+          );
+        }
+      }
+
+    }
+  );
+
+  /*
+   * ============================================================
+   * RECOVER EXISTING OFFICIAL RESULT
+   *
+   * Important for cases where E00.01 initializes before this
+   * controller and the controller misses the event.
+   * ============================================================
+   */
+
+  function recoverExistingResult() {
+
+    if (released) {
+      return true;
+    }
+
+    const result =
+      getCanonicalResult();
+
+    if (!result) {
+      return false;
+    }
+
+    return processResult(
+      result
+    );
+  }
+
+  /*
+   * ============================================================
+   * PUBLIC CONTROLLER API
+   * ============================================================
+   */
+
+  window.MAXESS_E00_03 = {
+
+    version:
+      CONTROLLER_VERSION,
+
+    contractVersion:
+      CONTRACT_NAME,
+
+    isReleased:
+      function () {
+        return released;
+      },
+
+    getResult:
+      function () {
+        return officialResult;
+      },
+
+    check:
+      function () {
+        return recoverExistingResult();
+      },
+
+    release:
+      function () {
+
+        if (released) {
+          return true;
+        }
+
+        const result =
+          getCanonicalResult();
+
+        if (!result) {
+
+          console.warn(
+            '[E00.03] No valid official result available.'
+          );
+
+          return false;
+        }
+
+        return releaseResults(
+          result
+        );
+      },
+
+    reset:
+      function () {
+
+        released = false;
+        officialResult = null;
+
+        try {
+          delete window.MAXESS_RESULTS_RELEASED;
+        } catch (error) {
+          window.MAXESS_RESULTS_RELEASED =
+            false;
+        }
+
+        try {
+          delete window.MAXESS_RESULTS_CONTROLLER;
+        } catch (error) {
+          window.MAXESS_RESULTS_CONTROLLER =
+            null;
+        }
+
+        console.log(
+          '[E00.03] Results Controller reset.'
+        );
+      }
+  };
+
+  /*
+   * ============================================================
+   * INITIALIZATION
+   * ============================================================
+   *
+   * Do not force an immediate release before the page has had
+   * an opportunity to establish E00.01.
+   * ============================================================
+   */
+
+  function initialize() {
+
+    /*
+     * First attempt after the current execution stack.
+     */
+    setTimeout(
+      function () {
+        recoverExistingResult();
+      },
+      0
+    );
+
+    /*
+     * Second recovery pass for embeds that initialize in a
+     * slightly different DOM/script order.
+     */
+    setTimeout(
+      function () {
+
+        if (!released) {
+          recoverExistingResult();
+        }
+
+      },
+      100
+    );
+
+  }
+
+  if (
+    document.readyState ===
+    'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initialize,
+      {
+        once: true
+      }
+    );
+
+  } else {
+
+    initialize();
+  }
+
+  console.log(
+    '[E00.03] MAXESS Results Controller initialized.'
+  );
+
+})();
+</script>

@@ -1,0 +1,1 @@
+{"rewrites":[{"source":"/feed","destination":"/"},{"source":"/notes","destination":"/"},{"source":"/reports","destination":"/"},{"source":"/library","destination":"/"},{"source":"/collective","destination":"/"},{"source":"/evidence","destination":"/"},{"source":"/connections","destination":"/"},{"source":"/mail","destination":"/"},{"source":"/settings","destination":"/"}]}

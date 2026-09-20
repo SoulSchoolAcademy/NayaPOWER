@@ -1,0 +1,73 @@
+{
+  "schema": "naya-power-runtime-state/v3",
+  "status": "CONTROL_PLANE_PROJECTION",
+  "updated_at": "2026-09-18",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "branch": "main",
+  "state_role": "COMPATIBILITY_AND_HISTORY_PROJECTION",
+  "authority_rule": "This file is not the canonical operational current-state authority. It MUST NOT override live Git identity or .naya/control-plane/STATE.json.",
+  "canonical_operational_state": ".naya/control-plane/STATE.json",
+  "canonical_active_block": ".naya/control-plane/BLOCKS.json",
+  "canonical_mission_map": ".naya/control-plane/MAP.json",
+  "canonical_proof_contract": ".naya/control-plane/PROOF.json",
+  "live_identity_rule": "Resolve repository and HEAD from executing Git at validation time. Stored commit values are never authoritative.",
+  "current": {
+    "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "priority": "P0 — MACHINE TRUTH RESTORATION",
+    "active_block": "TORCH-59-MACHINE-TRUTH-RESTORATION",
+    "active_block_status": "ACTIVE",
+    "next_action": "Obtain an authorized execution surface capable of dispatching .github/workflows/assistant-cloudflare-hub-release.yml against the exact live main HEAD; execute it, observe the actual runtime, verify source → execution → runtime → behavior, record the result in Team Naya Activity, and then rerun the Cold-Naya readiness gate. Do not substitute GitHub 509 or another runtime.",
+    "next_action_count": 1
+  },
+  "continuity_priority_zero": {
+    "master_note": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
+    "objective": "Make cold-Naya restoration and successor torch passing coherent, machine-checkable, and executable without conversational archaeology.",
+    "required_chain": "RESTORE → UNDERSTAND → EXECUTE → VERIFY → RECORD → HANDOFF → COLD RESTORE → CONTINUE",
+    "cold_start_required": [
+      "identity",
+      "live HEAD",
+      "mission",
+      "current project/block",
+      "completed work",
+      "verified evidence",
+      "failures",
+      "unknowns",
+      "protected baseline",
+      "authority",
+      "single next action",
+      "execution steps",
+      "acceptance",
+      "verification",
+      "after-success continuation"
+    ]
+  },
+  "known": [
+    "NayaPOWER is the canonical shared Superbrain.",
+    "Live Git HEAD is the repository identity source of truth.",
+    "The control-plane STATE/BLOCK/MAP/PROOF surfaces are the canonical operational control plane.",
+    "This file is a derived compatibility/history projection only.",
+    "The current active block is TORCH-59-MACHINE-TRUTH-RESTORATION.",
+    "The canonical next action is the Assistant-lane Cloudflare release-mechanism/target reconciliation described in .naya/control-plane/BLOCKS.json and .naya/control-plane/STATE.json.",
+    "A complete cold-Naya behavioral proof beyond repository-level acceptance remains a separate external runtime boundary."
+  ],
+  "unknown": [
+    "Authorized Cloudflare/live Hub source location outside the accessible GitHub repository surface.",
+    "Approved live value for NAYA_POWER_TARGET_URL is unavailable to this execution plane.",
+    "Fresh live behavioral proof against an authorized runtime target.",
+    "Exact current production runtime parity for the repaired Smart Feed loader commit.",
+    "External LLM cold-start behavioral proof beyond repository-level acceptance.",
+    "Whether an external/current canonical Cloudflare release mechanism exists outside the current GitHub workflow set."
+  ],
+  "protected": [
+    "NayaPOWER constitutional and governing laws",
+    "canonical Note Event authority",
+    "MAXESS scoring/result authority",
+    "one-authority/anti-duplication law",
+    "UNKNOWN is not VERIFIED",
+    "source intent is not runtime truth",
+    "release proof must establish source SHA → build artifact → deployed runtime → independent observation",
+    "do not create parallel deployment authorities to manufacture a green result"
+  ],
+  "handoff_rule": "Every substantive execution must leave one directly executable ready-to-run next action in canonical control-plane state. The successor must not need the previous conversation to reconstruct the current mission or task.",
+  "history_pointer": ".naya/memory/events/ and execution receipts"
+}

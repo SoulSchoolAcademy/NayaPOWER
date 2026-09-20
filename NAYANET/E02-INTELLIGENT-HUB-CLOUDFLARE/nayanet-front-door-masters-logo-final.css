@@ -1,0 +1,183 @@
+/* NayaNET FRONT DOOR — LOGO / PORTAL MASTER LAYER
+   The supplied NayaNET mark is the identity object. Decorative placeholder geometry
+   is demoted; the mark receives its own material, light, depth and state.
+*/
+
+#frontDoor.north-star-front-door .threshold-naya{
+  position:absolute!important;
+  left:50%!important;
+  top:10.5%!important;
+  width:clamp(120px,18%,190px)!important;
+  height:auto!important;
+  aspect-ratio:1.65/1!important;
+  transform:translateX(-50%)!important;
+  opacity:1!important;
+  filter:none!important;
+  z-index:18!important;
+  pointer-events:none!important;
+}
+
+#frontDoor.north-star-front-door .threshold-naya-aura,
+#frontDoor.north-star-front-door .threshold-naya-ring,
+#frontDoor.north-star-front-door .threshold-naya-core{
+  display:none!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark{
+  position:absolute!important;
+  inset:0!important;
+  display:grid!important;
+  place-items:center!important;
+  overflow:hidden!important;
+  border-radius:28px!important;
+  background:rgba(4,4,9,.76)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.62),
+    0 4px 12px rgba(0,0,0,.7),
+    inset 0 1px 0 rgba(255,255,255,.18),
+    inset 0 -18px 30px rgba(0,0,0,.5),
+    0 0 44px rgba(167,122,255,.075)!important;
+  transform:translateZ(0)!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark:before{
+  content:""!important;
+  position:absolute!important;
+  inset:-20%!important;
+  background:radial-gradient(ellipse at 50% 35%,rgba(167,122,255,.15),transparent 54%)!important;
+  filter:blur(16px)!important;
+  opacity:.8!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark:after{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:linear-gradient(120deg,rgba(255,255,255,.10),transparent 27%,transparent 72%,rgba(114,231,173,.035))!important;
+  mix-blend-mode:screen!important;
+  opacity:.8!important;
+}
+
+#frontDoor.north-star-front-door .nayanet-logo-mark img{
+  position:relative!important;
+  z-index:2!important;
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  border:0!important;
+  border-radius:27px!important;
+  opacity:.98!important;
+  transform:scale(1.005)!important;
+  filter:saturate(.98) contrast(1.03)!important;
+  box-shadow:none!important;
+}
+
+/* A quiet depth bridge connects the logo to the chamber rather than making it a sticker. */
+#frontDoor.north-star-front-door .nayanet-logo-mark + *{display:none!important}
+#frontDoor.north-star-front-door .threshold-chamber:before{
+  pointer-events:none!important;
+}
+
+/* Give the identity moment more vertical authority now that the logo owns the upper axis. */
+#frontDoor.north-star-front-door .threshold-copy{
+  padding-top:20.5%!important;
+}
+
+#frontDoor.north-star-front-door .threshold-eyebrow{
+  opacity:.72!important;
+  margin-bottom:12px!important;
+}
+
+#frontDoor.north-star-front-door .threshold-copy>h1{
+  font-size:clamp(39px,5.15vw,66px)!important;
+  letter-spacing:-.052em!important;
+}
+
+/* Make the circular chamber read as an aperture behind the identity object. */
+#frontDoor.north-star-front-door .threshold-chamber{
+  box-shadow:
+    0 55px 150px rgba(0,0,0,.82),
+    inset 0 1px 0 rgba(255,255,255,.12),
+    inset 0 -70px 115px rgba(0,0,0,.78),
+    inset 0 25px 80px rgba(167,122,255,.035),
+    inset 0 0 110px rgba(114,231,173,.025),
+    0 0 0 1px rgba(255,255,255,.025),
+    0 0 160px rgba(112,72,208,.065)!important;
+}
+
+/* The field is the true threshold: more depth, less generic form styling. */
+#frontDoor.north-star-front-door .portal-input{
+  border-width:1px!important;
+  border-radius:23px!important;
+  background:linear-gradient(145deg,rgba(30,27,40,.98),rgba(4,4,10,.995))!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.17),
+    inset 0 -22px 38px rgba(0,0,0,.62),
+    0 20px 58px rgba(0,0,0,.64),
+    0 0 40px rgba(114,231,173,.06)!important;
+}
+
+#frontDoor.north-star-front-door .portal-input input{
+  font-size:16px!important;
+  letter-spacing:.035em!important;
+}
+
+/* The action has a distinct plane and a restrained “awake” edge. */
+#frontDoor.north-star-front-door .portal-input button{
+  width:226px!important;
+  min-width:226px!important;
+  height:60px!important;
+  border-radius:19px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.055))!important;
+  border-color:rgba(255,255,255,.48)!important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.34),
+    inset 0 -15px 23px rgba(0,0,0,.36),
+    0 18px 38px rgba(0,0,0,.62),
+    0 1px 0 rgba(255,255,255,.05)!important;
+}
+
+#frontDoor.north-star-front-door .portal-input button:not(:disabled):hover{
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.42),
+    inset 0 -15px 23px rgba(0,0,0,.29),
+    0 23px 48px rgba(0,0,0,.66),
+    0 0 40px rgba(255,255,255,.06)!important;
+}
+
+#frontDoor.north-star-front-door .portal-input button:not(:disabled):active,
+#frontDoor.north-star-front-door .portal-input button[data-state="active"]{
+  box-shadow:
+    inset 0 4px 14px rgba(0,0,0,.26),
+    0 7px 16px rgba(0,0,0,.58),
+    0 0 44px rgba(114,231,173,.28)!important;
+}
+
+/* Subline becomes a quiet grounding inscription. */
+#frontDoor.north-star-front-door .threshold-subline{
+  color:rgba(255,255,255,.48)!important;
+  letter-spacing:.12em!important;
+}
+
+@media(max-width:700px){
+  #frontDoor.north-star-front-door .threshold-naya{
+    top:8%!important;
+    width:clamp(105px,25%,150px)!important;
+  }
+  #frontDoor.north-star-front-door .threshold-copy{padding-top:19%!important}
+}
+
+@media(max-width:430px){
+  #frontDoor.north-star-front-door .threshold-naya{top:7.5%!important;width:126px!important}
+  #frontDoor.north-star-front-door .nayanet-logo-mark{border-radius:22px!important}
+  #frontDoor.north-star-front-door .nayanet-logo-mark img{border-radius:21px!important}
+  #frontDoor.north-star-front-door .threshold-copy{padding-top:18%!important}
+}
+
+@media(prefers-reduced-motion:reduce){
+  #frontDoor.north-star-front-door .nayanet-logo-mark,
+  #frontDoor.north-star-front-door .nayanet-logo-mark img{transition:none!important;animation:none!important}
+}

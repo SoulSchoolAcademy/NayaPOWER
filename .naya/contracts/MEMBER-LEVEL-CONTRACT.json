@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://contracts/member-level-v1",
+  "title": "NayaNET Member Level Contract V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["level", "name", "minimum_points"],
+  "properties": {
+    "level": {"type": "integer", "minimum": 1, "maximum": 10},
+    "name": {"type": "string", "minLength": 1},
+    "minimum_points": {"type": "integer", "minimum": 0}
+  },
+  "x-levels": [
+    {"level": 1, "name": "Awakening Member", "minimum_points": 0},
+    {"level": 2, "name": "Emerging Member", "minimum_points": 50},
+    {"level": 3, "name": "Developing Member", "minimum_points": 150},
+    {"level": 4, "name": "Advancing Member", "minimum_points": 400},
+    {"level": 5, "name": "Five-Star Member", "minimum_points": 1000},
+    {"level": 6, "name": "Mastering Member", "minimum_points": 2500},
+    {"level": 7, "name": "Catalyst Member", "minimum_points": 6000},
+    {"level": 8, "name": "Luminary Member", "minimum_points": 15000},
+    {"level": 9, "name": "Visionary Member", "minimum_points": 35000},
+    {"level": 10, "name": "Ten-Star Member", "minimum_points": 75000}
+  ]
+}

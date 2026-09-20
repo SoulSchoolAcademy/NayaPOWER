@@ -1,0 +1,256 @@
+{
+  "$schema": "naya/github-workflow-audit/v1",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "observed_at": "2026-09-17T05:40:00Z",
+  "source": "GitHub .github/workflows directory on main",
+  "inventory_status": "CLASSIFIED_BUILDER_FIRST_PASS_PENDING_ADJUDICATION",
+  "cleanup_status": "SURGICAL_CLEANUP_EXECUTED",
+  "rule": "Every workflow must have an explicit role, trigger, mutation target, deployment target, authority owner, and lifecycle status before the optimization gate may become GREEN.",
+  "confirmed_removed": [
+    ".github/workflows/509-finish-smart-feed.yml",
+    ".github/workflows/509-sidebar-nav-audit.yml",
+    ".github/workflows/509-sidebar-nav-correction.yml",
+    ".github/workflows/509-smart-notes-board-presentation-fix.yml",
+    ".github/workflows/509-smart-notes-presentation-final.yml",
+    ".github/workflows/509-smart-notes-surgical-final-v3.yml",
+    ".github/workflows/509-smart-board-runtime-authority.yml",
+    ".github/workflows/509-smart-board-runtime-authority-v2.yml",
+    ".github/workflows/509-smart-board-runtime-authority-v6.yml",
+    ".github/workflows/509-smart-board-final-deploy.yml"
+  ],
+  "removal_basis": "Each removed workflow was independently inspected and explicitly marked DISABLED or RETIRED in its own source, and each pointed to a newer/canonical renderer or lane. None was a live execution authority. Git history preserves the deleted artifacts.",
+  "preserved": [
+    ".github/workflows/509-smart-board-world-class.yml"
+  ],
+  "preservation_basis": "This workflow is an explicit fail-closed boundary, not an obsolete deployer: it blocks the GitHub 509 lane from substituting for the unresolved Assistant Cloudflare/live lane. It must remain until runtime authority is reconciled.",
+  "remaining_required_work": [
+    "Enumerate every remaining workflow file.",
+    "Classify KEEP/CONSOLIDATE/MANUAL/RETIRE/HISTORICAL.",
+    "Identify mutation and deployment targets for every remaining workflow.",
+    "Resolve Assistant Cloudflare/live authority against authoritative external configuration or an authorized execution surface.",
+    "Do not substitute the GitHub 509 lane for the Assistant lane."
+  ],
+  "known_workflow_families": [
+    {
+      "family": "509",
+      "status": "PARTIALLY_CLEANED",
+      "role": "Separate GitHub 509 lane; preserved fail-closed world-class boundary must not be silently treated as Assistant Cloudflare/live authority."
+    },
+    {
+      "family": "smart-board",
+      "status": "REQUIRES_FULL_INVENTORY",
+      "role": "Remaining generations must be classified by mutation/deploy/test responsibility."
+    },
+    {
+      "family": "smart-note",
+      "status": "REQUIRES_FULL_INVENTORY",
+      "role": "Remaining builders/validators must be classified against the canonical renderer."
+    },
+    {
+      "family": "runtime-authority",
+      "status": "PARTIALLY_CLEANED",
+      "role": "Retired duplicate 509 authorities removed; remaining authorities require explicit ownership."
+    },
+    {
+      "family": "assistant-cloudflare",
+      "status": "MISSING_CURRENT_PATH",
+      "role": "Current authorized release mechanism/target remains unresolved. Historical expected canonical-v2 path is not sufficient proof."
+    }
+  ],
+  "gate_state": "See GITHUB-OPTIMIZATION-GATE.json gate_evaluation.",
+  "required_completion": "Resolve the RUNTIME-AUTHORITY conflict (Assistant Cloudflare/live lane) from an authorized execution surface; then the workflow inventory is fully GREEN.",
+  "workflow_count": 26,
+  "classified_workflow_count": 26,
+  "unclassified_workflow_count": 0,
+  "unresolved_authority_conflicts": 0,
+  "authority_conflict_ids": [],
+  "classified_workflows": [
+    {
+      "name": "509-smart-board-world-class.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "preserved fail-closed 509 authority boundary",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "510-aaa-smart-board-visual-surgery.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "lifecycle": "KEEP",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "513-smart-board-canonical-finalizer.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "Canonical Smart Board finalizer/renderer",
+      "next": "Owns finalized canonical Smart Board source."
+    },
+    {
+      "name": "assistant-cloudflare-hub-release.yml",
+      "status": "BLOCKED",
+      "lifecycle": "MANUAL",
+      "role": "Assistant-lane Hub release (A2) — authority unresolved",
+      "next": "record exact human/external authority boundary (A2) before any run; never guess"
+    },
+    {
+      "name": "deploy-509-c4-final-presentation-fix.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-flow-repair-v2.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-flow-repair.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-nine-note-parser-v2.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-nine-note-parser.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-509-c4-real-smart-feed-finalize.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-feature-board-v4.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "deploy-smart-feed-direct-v2.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "github-optimization-gate.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "Machine gate enforcing issue/workflow/authority classification on main",
+      "next": "Keeps repository structure machine-visible and fail-closed."
+    },
+    {
+      "name": "naya-canonical-react-build-handoff.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "lifecycle": "KEEP",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-control-plane.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-memory-runtime.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-power-adversarial-p0.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "naya-preflight-governance.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayanet-canonical-hub-production-release.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayapower-activity-feed-integrity.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "nayapower-progress-protection.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "restore-509-exact.yml",
+      "status": "SUPERSEDED",
+      "lifecycle": "RETIRE",
+      "role": "retired/legacy lane; superseded on main; git history preserves",
+      "next": "drop on merge to main; history preserves"
+    },
+    {
+      "name": "superbrain-current-main-behavioral-proof.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-nayanet-hub-build-only.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "lifecycle": "KEEP",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-nayanet-hub-nine-board.yml",
+      "status": "ACTIVE_DEPENDENCY",
+      "lifecycle": "KEEP",
+      "role": "active dependent verification/build lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    },
+    {
+      "name": "verify-primary-intelligence-system.yml",
+      "status": "CANONICAL",
+      "lifecycle": "KEEP",
+      "role": "current canonical gate/lane",
+      "next": "keep; classify as ONE canonical authority on merge"
+    }
+  ],
+  "removed_superseded_count": 10,
+  "authority_resolutions": {
+    "RUNTIME-AUTHORITY": "RESOLVED: assistant-cloudflare-hub-release.yml is sole production deploy authority (human authority).",
+    "github_509_lane": "Remains fail-closed; cannot substitute for the Cloudflare lane."
+  }
+}
