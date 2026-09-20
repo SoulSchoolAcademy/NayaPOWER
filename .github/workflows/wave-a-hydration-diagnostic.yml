@@ -167,3 +167,5 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           name: wave-a-browser-acceptance
           path: ${{ runner.temp }}/wave-a-browser-acceptance.json
           if-no-files-found: error
+
+# Trigger-only marker: Smart Ledger reload/navigation lifecycle rerun probe 2.
