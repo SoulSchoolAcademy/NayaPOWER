@@ -340,3 +340,34 @@ Promotion outputs:
 The new promotion commits are documentation/intelligence-only and do not invalidate the Cloudflare proof because the claim-relevant Hub source scope remains unchanged.
 
 **Current continuation boundary:** use this promoted lesson as the precondition for the next Hub vertical transaction; do not reopen Cloudflare parity unless claim-relevant Hub source changes.
+
+
+## Surface closure update — Wave A browser acceptance
+
+After the current-source Cloudflare reconciliation and first intelligence promotion, the existing authenticated browser harness was run against the live Assistant runtime at claim-relevant source scope `bd5201e7252e744cea876beaf50f41b7bf541fef`.
+
+Run `35492630746` completed **SUCCESS** and produced a machine receipt with `status=VERIFIED`.
+
+The first vertical surface closure is **Smart Ledger**:
+
+**human click → authenticated runtime → canonical record() → receipt → exact retrieval → reload/retrieval → visible persisted result**
+
+Evidence:
+- ledger_event_id `475121a9-4576-4251-8626-654e9a82ada7`;
+- inspect event_id `assistant_mu9ecues`;
+- inspect receipt `8d89bd11-69a4-40fa-8c95-58866dce323c`;
+- reload/retrieval PASS;
+- unauthenticated persistence blocked with `AUTH_REQUIRED`.
+
+The same existing Wave A harness also closed tested vertical acceptance boundaries for Smart Lists, Connections, and Smart Mail:
+- Smart List create/receipt/reload/retrieve PASS;
+- Connection create/retrieve/reload/surface PASS;
+- Smart Mail receiver verification, execution receipt, cognition lineage, learning evidence/apply/reuse, and authority-unchanged PASS.
+
+Durable receipt: `.naya/receipts/2026-09-19-HUB-WAVE-A-BROWSER-CLOSURE.md`.
+
+### Readiness consequence
+
+A fresh Dream → learning → later decision proof was also run against the current deployed runtime in run `35492591064`, proving fresh-context learning reuse with `influenced=true` while authority remained unchanged. After recording that evidence in the canonical control-plane proof, the NAYA Superbrain Readiness Gate run `35492648603` completed **SUCCESS**: 13/13 mission/control checks were VERIFIED or PRODUCTION_PROVEN, with zero UNKNOWN and zero FAILED.
+
+This is a major closure point: exact current claim-relevant Cloudflare parity, authenticated browser behavior, fresh cold-Naya learning reuse, and fail-closed readiness are now reconciled. The next work is surface-by-surface product closure, not architectural reinvention.
