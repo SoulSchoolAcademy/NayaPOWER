@@ -25,6 +25,9 @@ jobs:
       - name: Control-plane validation
         run: python .naya/control-plane/validate_control_plane.py
 
+      - name: Canonical compounding P0 seam
+        run: python tools/test_canonical_compound_bridge.py
+
       - name: Golden Journey evidence
         run: |
           python scripts/verify-smart-note-transaction.py
