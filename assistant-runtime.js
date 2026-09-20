@@ -51,7 +51,36 @@ async function listSmartTabs(){return smartTabs({op:'list'})}
 async function createSmartTab(input){return smartTabs({op:'create',...input})}
 async function updateSmartTab(input){return smartTabs({op:'update',...input})}
 async function deleteSmartTab(id){return smartTabs({op:'delete',id})}
-window.NayaAssistantRuntime={init,signIn,signOut,record,retrieve,retrieveSmartFeedActions,snapshot,captureSmartNote,dreamReplay,recordLearningEvidence,applyLearning,decisionContext,recordNayaDecision,listLearningEvidence,listDreamReplays,listSpaces,listSpaceMembers,joinSpace,leaveSpace,listConnections,saveConnection,revokeConnection,listSmartLists,createSmartList,addConnectionToList,removeConnectionFromList,listAuthorityGrants,sendSmartMail,verifySmartMail,listSpaceIntelligence,listSmartLedger,createSpace,placeIntelligenceInSpace,retrieveSpaceContext,listMailThreads,smartFeed,smartFeedAction,smartTabs,listSmartTabs,createSmartTab,updateSmartTab,deleteSmartTab,publishSmartFeed};
+async function bindCanonicalHubSmartShare(){
+  if(window.__nayaCanonicalHubSmartShareBound)return;
+  window.__nayaCanonicalHubSmartShareBound=true;
+  const run=async e=>{
+    const button=e.target?.closest?.('[data-c4-kind="make-public"]');
+    if(!button)return;
+    e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+    const block=button.closest('.block');
+    const title=String(block?.querySelector('h3')?.textContent||'').trim();
+    try{
+      const snap=await init();
+      if(!snap.authenticated)throw new Error('AUTH_REQUIRED');
+      const feed=await smartFeed({stream:'personal',limit:50,before:null});
+      const item=(feed.items||[]).find(x=>String(x.title||'').trim()===title);
+      const sourceEventId=String(item?.event_id||'').trim();
+      if(!sourceEventId)throw new Error('OWNED_INTELLIGENCE_EVENT_NOT_FOUND');
+      const result=await publishSmartFeed({sourceEventId});
+      button.dataset.publicationId=String(result.publication.id);
+      button.dataset.smartShareState='PUBLISHED';
+      button.textContent='PUBLISHED';
+      button.classList.add('on');
+      window.dispatchEvent(new CustomEvent('nayanet:smart-share-published',{detail:{...result,title}}));
+    }catch(err){
+      button.dataset.smartShareState='FAILED';
+      window.dispatchEvent(new CustomEvent('nayanet:smart-share-failed',{detail:{error:String(err?.message||err),title}}));
+    }
+  };
+  document.addEventListener('click',run,true);
+}
+window.NayaAssistantRuntime={init,bindCanonicalHubSmartShare,signIn,signOut,record,retrieve,retrieveSmartFeedActions,snapshot,captureSmartNote,dreamReplay,recordLearningEvidence,applyLearning,decisionContext,recordNayaDecision,listLearningEvidence,listDreamReplays,listSpaces,listSpaceMembers,joinSpace,leaveSpace,listConnections,saveConnection,revokeConnection,listSmartLists,createSmartList,addConnectionToList,removeConnectionFromList,listAuthorityGrants,sendSmartMail,verifySmartMail,listSpaceIntelligence,listSmartLedger,createSpace,placeIntelligenceInSpace,retrieveSpaceContext,listMailThreads,smartFeed,smartFeedAction,smartTabs,listSmartTabs,createSmartTab,updateSmartTab,deleteSmartTab,publishSmartFeed};
 function ui(){if(document.getElementById('naya-assistant-auth'))return;const style=document.createElement('style');style.textContent='#naya-assistant-auth{position:fixed;inset:0;z-index:1000;display:none;place-items:center;background:#000d;backdrop-filter:blur(18px);padding:18px}#naya-assistant-auth.open{display:grid}#naya-assistant-auth .box{width:min(460px,100%);padding:24px;border:2px solid #9d75ff88;border-radius:22px;background:linear-gradient(145deg,#17111f,#08080d);box-shadow:0 35px 90px #000f}#naya-assistant-auth h2{margin:0 0 6px;font-size:25px}#naya-assistant-auth p{color:#aaa4b1;font-size:10px;line-height:1.6}#naya-assistant-auth input{width:100%;margin:6px 0;padding:13px;border:2px solid #ffffff22;border-radius:11px;background:#07070a;color:#fff}#naya-assistant-auth button{min-height:40px;margin:8px 6px 0 0;padding:0 14px;border:2px solid #8b63ff66;border-radius:11px;background:#0b0a10;color:#fff;font-weight:900}#naya-assistant-auth .state{margin-top:10px;color:#9ff2bb;font-size:9px}';document.head.append(style);const m=document.createElement('div');m.id='naya-assistant-auth';m.innerHTML='<div class="box"><h2>NayaNET Member Access</h2><p>Real Supabase authentication. Authenticated sessions unlock the governed persistent intelligence boundary. No preview identity is promoted.</p><input id="naya-auth-email" type="email" autocomplete="email" placeholder="Email"><input id="naya-auth-password" type="password" autocomplete="current-password" placeholder="Password"><button id="naya-auth-signin">SIGN IN</button><button id="naya-auth-close">CLOSE</button><div class="state" id="naya-auth-state"></div></div>';document.body.append(m);modal=m;const close=()=>modal?.classList.remove('open');document.getElementById('naya-auth-close').onclick=close;document.getElementById('naya-auth-signin').onclick=async()=>{const st=document.getElementById('naya-auth-state');st.textContent='Signing inâ€¦';try{await signIn(document.getElementById('naya-auth-email').value,document.getElementById('naya-auth-password').value);st.textContent='AUTHENTICATED Â· SUPABASE SESSION ACTIVE';close();window.dispatchEvent(new CustomEvent('naya-auth-ready',{detail:snapshot()}))}catch(e){st.textContent='SIGN IN FAILED Â· '+(e?.message||'AUTH_ERROR')}};window.NayaAssistantRuntime.openAuth=()=>modal?.classList.add('open')}
 ui();
 window.addEventListener('load',async()=>{try{await init()}catch(e){state.persistence='error';document.documentElement.dataset.nayaAuthError='1'}window.dispatchEvent(new CustomEvent('naya-auth-state',{detail:snapshot()}))});
