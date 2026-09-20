@@ -93,7 +93,9 @@ function wireSidebar(){
  if(!tools){
   const label=document.createElement('div'); label.className='label'; label.dataset.nayaSidebarTools='true'; label.textContent='INTELLIGENCE TOOLS';
   const nav=document.createElement('nav'); nav.className='nav'; nav.setAttribute('aria-label','Intelligence tools');
-  label.after(nav); communication?.after(label); tools=nav;
+  if(communication) communication.after(label); else rail.appendChild(label);
+  label.after(nav);
+  tools=nav;
  }else tools=tools.querySelector('.nav')||tools;
  add(tools,'lists','Smart Lists','☷');add(tools,'spaces','Smart Spaces','◌');add(tools,'play','Naya Play','▶');
  const settings=rail.querySelector('[data-nc="settings"]'); if(settings)settings.dataset.nc='settings';
