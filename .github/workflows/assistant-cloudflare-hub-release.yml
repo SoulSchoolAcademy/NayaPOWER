@@ -186,6 +186,9 @@ jobs:
           cat > verify-assistant-runtime.mjs <<'EOF'
           import { chromium } from 'playwright';
 
+          const runtime = process.env.NAYA_RUNTIME_URL;
+          if (!runtime) throw new Error('NAYA_RUNTIME_URL_MISSING');
+
           const browser = await chromium.launch({
             headless: true,
             executablePath: '/usr/bin/google-chrome',
@@ -197,25 +200,55 @@ jobs:
               { width: 1440, height: 1000, label: 'desktop' },
               { width: 390, height: 844, label: 'mobile' }
             ]) {
-              const context = await browser.newContext({ serviceWorkers: 'block', viewport: { width: viewport.width, height: viewport.height } });
+              const context = await browser.newContext({
+                serviceWorkers: 'block',
+                viewport: { width: viewport.width, height: viewport.height }
+              });
               const page = await context.newPage();
-              await page.goto('file://' + process.env.RUNNER_TEMP + '/live.html', { waitUntil: 'domcontentloaded', timeout: 30000 });
-              await page.waitForTimeout(1000);
+              const response = await page.goto(runtime + '/?wave_a=baseline&release=' + process.env.GITHUB_SHA, {
+                waitUntil: 'networkidle',
+                timeout: 60000
+              });
+              if (!response || !response.ok()) {
+                throw new Error(`${viewport.label}: live Hub HTTP response unavailable: ${response?.status()}`);
+              }
+              await page.waitForTimeout(1500);
+
               const result = await page.evaluate(() => ({
                 title: document.title,
-                directNine: !!document.querySelector('meta[name="nayanet-direct-nine"]'),
+                directNine: document.querySelector('meta[name="nayanet-direct-nine"]')?.content || null,
+                welcome: document.body.innerText.includes('welcome.nayanet.app'),
+                reactMarker: document.documentElement.innerHTML.includes('NAYANET-HUB-REACT-CANONICAL'),
                 navCount: document.querySelectorAll('.naya509-primary-nav a').length,
+                feedControls: [...document.querySelectorAll('.feedNav button')].map(x => x.innerText.replace(/\s+/g,' ').trim()),
                 blockCount: document.querySelectorAll('.block').length,
-                layerCounts: [...document.querySelectorAll('.block')].map(b => b.querySelectorAll('.layer').length),
-                hasNaya: !!document.body && document.body.innerText.includes('Naya'),
-                hasIntelligence: !!document.body && document.body.innerText.includes('INTELLIGENCE')
+                realBlockCount: document.querySelectorAll('[data-real-smart-note]').length,
+                layerCounts: [...document.querySelectorAll('[data-real-smart-note]')].map(b => b.querySelectorAll('.layer').length),
+                hasNaya: document.body.innerText.includes('Naya'),
+                hasIntelligence: document.body.innerText.includes('INTELLIGENCE')
               }));
+
               console.log(`ASSISTANT_RUNTIME_BASELINE_PROBE ${viewport.label}`, JSON.stringify(result));
-              if (!result.directNine) throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
-              if (!result.title.includes('NayaNET')) throw new Error(`${viewport.label}: unexpected title ${result.title}`);
-              if (result.navCount < 1) throw new Error(`${viewport.label}: no canonical Hub navigation rendered`);
-              if (result.blockCount < 1 && !result.hasIntelligence) throw new Error(`${viewport.label}: canonical Hub intelligence surface missing`);
-              if (!result.hasNaya || !result.hasIntelligence) throw new Error(`${viewport.label}: expected runtime content missing`);
+
+              if (result.title !== 'NayaNET — Intelligent Hub V7 · 509 AAA')
+                throw new Error(`${viewport.label}: canonical Hub title mismatch: ${result.title}`);
+              if (result.directNine !== 'verified-static-top-nine')
+                throw new Error(`${viewport.label}: missing direct-nine runtime marker`);
+              if (result.welcome)
+                throw new Error(`${viewport.label}: Welcome front door selected as Hub`);
+              if (result.reactMarker)
+                throw new Error(`${viewport.label}: obsolete React Hub marker present`);
+              if (result.navCount < 1)
+                throw new Error(`${viewport.label}: no canonical Hub navigation rendered`);
+              if (result.feedControls.length < 3)
+                throw new Error(`${viewport.label}: Personal/Collective/Activity feed controls missing`);
+              if (result.realBlockCount < 1 || result.blockCount < 1)
+                throw new Error(`${viewport.label}: live canonical intelligent blocks missing`);
+              if (result.layerCounts.some(n => n < 7))
+                throw new Error(`${viewport.label}: canonical intelligent block perspectives missing: ${JSON.stringify(result.layerCounts)}`);
+              if (!result.hasNaya || !result.hasIntelligence)
+                throw new Error(`${viewport.label}: expected live Hub intelligence content missing`);
+
               console.log(`ASSISTANT_RUNTIME_BASELINE_VERIFIED ${viewport.label}`, JSON.stringify(result));
               await context.close();
             }
