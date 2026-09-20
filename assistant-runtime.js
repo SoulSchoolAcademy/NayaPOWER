@@ -52,7 +52,7 @@ async function bindCanonicalHubSmartShare(){
     const title=String(block?.querySelector('h3')?.textContent||'').trim();
     const runtimeEventId=String(block?.getAttribute('data-naya-runtime-event')||'').trim();
     try{
-      const snap=await init();
+      const snap=snapshot();
       if(!snap.authenticated)throw new Error('AUTH_REQUIRED');
       const feed=await smartFeed({stream:'personal',limit:50,before:null});
       const item=(feed.items||[]).find(x=>String(x.title||'').trim()===title);
