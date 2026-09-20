@@ -6,8 +6,10 @@ import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
 import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import type { IntelligentEvent } from '../intelligence/types';
 import { routes } from './routes';
+import { useIdentity } from '../identity/session';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
+  const identity = useIdentity();
   const [events, setEvents] = useState<IntelligentEvent[]>([]);
   const [selected, setSelected] = useState(0);
   const [query, setQuery] = useState('');
@@ -16,6 +18,11 @@ function FeedView({ title, subtitle, library = false }: { title: string; subtitl
 
   useEffect(() => {
     let alive = true;
+    if (!identity.is_authenticated) {
+      setEvents([]);
+      setState('loading');
+      return () => { alive = false; };
+    }
     setState('loading');
     loadPrimaryIntelligence()
       .then(feed => {
@@ -25,7 +32,7 @@ function FeedView({ title, subtitle, library = false }: { title: string; subtitl
       })
       .catch(() => { if (alive) setState('error'); });
     return () => { alive = false; };
-  }, []);
+  }, [identity.is_authenticated]);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
