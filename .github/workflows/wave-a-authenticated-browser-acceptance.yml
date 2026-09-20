@@ -115,7 +115,8 @@ jobs:
             try{
               await page.waitForFunction(kind=>window.__nayaSidebarAction?.kind===kind,expectedKind,{timeout:10000});
             }catch(e){
-              console.log('SIDEBAR_ACTION_DIAGNOSTIC',JSON.stringify({expectedKind,scripts:[...document.scripts].map(s=>s.src).filter(Boolean),marker:window.__nayaSidebarAction||null,sidebar:document.querySelector('.rail.left')?.innerText||'',errors:diagnostics}));
+              const sidebarDiagnostic=await ap.evaluate(({expectedKind,diagnostics})=>({expectedKind,scripts:[...document.scripts].map(s=>s.src).filter(Boolean),marker:window.__nayaSidebarAction||null,sidebar:document.querySelector('.rail.left')?.innerText||'',errors:diagnostics}),{expectedKind,diagnostics});
+              console.log('SIDEBAR_ACTION_DIAGNOSTIC',JSON.stringify(sidebarDiagnostic));
               throw e;
             }
             checks[label]=expectedKind;
