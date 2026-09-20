@@ -106,8 +106,11 @@ jobs:
           const shareButton=ap.locator('[data-c4-kind="share-intel"]').first();
           await shareButton.waitFor({state:'visible',timeout:15000});
           await shareButton.scrollIntoViewIfNeeded();
+          await ap.evaluate(()=>{window.__smartShareProof={published:false,error:null};document.addEventListener('nayanet:smart-share-published',e=>window.__smartShareProof={published:true,error:null,detail:e.detail});document.addEventListener('nayanet:smart-share-failed',e=>window.__smartShareProof={published:false,error:String(e.detail?.error||'SMART_SHARE_FAILED'),detail:e.detail});},{});
           await shareButton.click({force:true});
-          await ap.waitForFunction(()=>document.querySelector('[data-c4-kind="share-intel"]')?.dataset.smartShareState==='PUBLISHED',null,{timeout:20000});
+          await ap.waitForFunction(()=>window.__smartShareProof?.published===true||window.__smartShareProof?.error!==null,null,{timeout:20000});
+          const shareProof=await ap.evaluate(()=>window.__smartShareProof);
+          if(!shareProof.published) throw Error('SMART_SHARE_RUNTIME_ACTION_FAILED:'+String(shareProof.error||'UNKNOWN'));
           const publicationId=String(await shareButton.getAttribute('data-publication-id')||'');
           if(!publicationId) throw Error('SMART_SHARE_PUBLICATION_ID_NOT_PROVEN');
           const publishedReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());
