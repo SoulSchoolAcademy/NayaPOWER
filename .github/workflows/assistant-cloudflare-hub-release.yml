@@ -137,7 +137,7 @@ jobs:
       - name: Bind exact authorized Cloudflare target
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           test -n "${CLOUDFLARE_API_TOKEN:-}"
@@ -155,7 +155,7 @@ jobs:
       - name: Verify live artifact identity and exact source parity
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
@@ -201,7 +201,7 @@ jobs:
       - name: Verify Assistant runtime baseline — desktop and mobile
         shell: bash
         env:
-          RELEASE_SURFACE: ${{ inputs.release_surface || 'sparkling-shape-react' }}
+          RELEASE_SURFACE: ${{ inputs.release_surface || 'legacy-v7' }}
         run: |
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
