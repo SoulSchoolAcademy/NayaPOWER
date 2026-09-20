@@ -145,6 +145,10 @@ jobs:
             if(cognitionRow.event_id!=='smart_note:'+smartNoteEventId) throw new Error('COGNITION_IDENTITY_MISMATCH:'+cognitionRow.event_id);
             if(cognitionRow.metadata?.smart_note_event_id!==smartNoteEventId) throw new Error('COGNITION_SOURCE_LINEAGE_MISSING:'+JSON.stringify(cognitionRow.metadata));
             if(cognitionRow.status!=='verified' && cognitionRow.status!=='active') throw new Error('COGNITION_STATUS_UNEXPECTED:'+cognitionRow.status);
+            const cognitionEventId=cognitionRow.event_id;
+
+            const index = await query(pageA,{table:'nayanet_intelligence_index',select:'id,source_table,source_id,object_type,title,status,metadata',match:{source_table:'nayanet_cognition_events',source_id:cognitionRow.id},limit:5});
+            if(index.error || !index.data?.length) throw new Error('INTELLIGENCE_INDEX_PROJECTION_MISSING:'+JSON.stringify(index));
 
             if(cognitionEventId!=='smart_note:'+smartNoteEventId) throw new Error('COGNITION_IDENTITY_MISMATCH:'+cognitionEventId);
             if(cognitionRow.project_id!=='SMART_NOTE' && cognitionRow.project_id!=='NayaNET') throw new Error('COGNITION_PROJECT_UNEXPECTED:'+cognitionRow.project_id);
@@ -190,8 +194,8 @@ jobs:
               second_user_id:second.session.userId,
               smart_note_event_id:smartNoteEventId,
               cognition_event_id:cognitionEventId,
-              intelligence_index_id:index.data.id,
-              ledger_event_id:ledger.data.ledger_event_id,
+              intelligence_index_id:index.data[0].id,
+              ledger_event_id:ledgerRow.ledger_event_id,
               transaction_id:tx.id,
               duplicate_transaction_id:duplicateCall.body.transaction?.id,
               checks:{
