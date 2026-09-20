@@ -229,6 +229,31 @@ class DecisionObject:
     verification: VerificationPlan
     necessary_power: FrozenSet[str] = field(default_factory=frozenset)
     requested_power: FrozenSet[str] = field(default_factory=frozenset)
+    # Optional causal lineage for decisions/application records influenced by
+    # retrieved learning. These fields are provenance only: they never grant,
+    # expand, or imply authority. Authority remains exclusively governed by the
+    # canonical Authority registry + UniversalExecutionGate.
+    learning_event_id: Optional[str] = None
+    retrieval_receipt_id: Optional[str] = None
+    retrieval_source_event_id: Optional[str] = None
+    retrieval_smart_note_id: Optional[str] = None
+
+    def learning_lineage_complete(self) -> bool:
+        """Whether this decision explicitly binds cold-retrieved learning.
+
+        A decision does not need learning lineage to be governable. When a
+        decision claims to be a successor application of retrieved learning,
+        however, all four causal identifiers must be present.
+        """
+        fields = (
+            self.learning_event_id,
+            self.retrieval_receipt_id,
+            self.retrieval_source_event_id,
+            self.retrieval_smart_note_id,
+        )
+        if all(value in (None, "") for value in fields):
+            return False
+        return all(isinstance(value, str) and value.strip() for value in fields)
 
     def complete_for_governance(self) -> bool:
         required = (
