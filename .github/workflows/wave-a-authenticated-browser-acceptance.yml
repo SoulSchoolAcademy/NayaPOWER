@@ -1,4 +1,5 @@
 name: Wave A canonical September 17 Hub browser acceptance
+# Post-release acceptance rerun: validate the already-deployed canonical shell.
 
 on:
   push:
