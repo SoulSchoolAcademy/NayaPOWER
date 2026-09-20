@@ -85,6 +85,57 @@ jobs:
             const proof={status:'VERIFIED',proof_key:proofKey,owner_user_id:first.session.userId,smart_note_event_id:smartNoteEventId,cognition_event_id:cognitionEventId,intelligence_index_id:index.data[0].id,ledger_event_id:ledgerRow.ledger_event_id,transaction_id:tx.id,duplicate_transaction_id:duplicateCall.body.transaction?.id,checks:{receive_validate_persist:'PASS',verified_receipt:'PASS',four_canonical_artifacts:'PASS',cognition_bridge:'PASS',intelligence_index_via_hub:'PASS',smart_ledger:'PASS',hub_render:'PASS',reload_identity:'PASS',fresh_authenticated_context:'PASS',duplicate_idempotency:'PASS',malformed_rejection:'PASS',unauthorized_rejection:'PASS',wrong_owner_rejection:'PASS',private_by_default:'PASS'}};fs.writeFileSync('receiver-proof-machine.json',JSON.stringify(proof)+'\n','utf8');console.log(JSON.stringify(proof));await contextA.close();await browser.close()})().catch(err=>{console.error(err);process.exit(1)});
           NODE
 
+      - name: Execute human Hub Smart Note capture proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const crypto = require('node:crypto');
+          const hub = process.env.HUB_URL;
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext();
+            const page=await context.newPage();
+            const run=process.env.RUN_IDENTITY;
+            const alias=('humanui'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+            await page.goto(hub+'/identity?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+            await page.locator('#name').fill('Naya Human UI Proof');
+            await page.locator('#alias').fill(alias);
+            await page.locator('#enter').click();
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+            await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
+            await page.goto(hub+'/',{waitUntil:'networkidle',timeout:60000});
+            await page.waitForSelector('[data-testid="capture-smart-note"]',{timeout:30000});
+            const title='Human Hub Smart Note Proof '+run;
+            const content='Created by the real canonical NayaNET Hub capture control; this must cross the existing receiver and appear under the same canonical event identity.';
+            await page.evaluate(()=>{const rt=window.NayaAssistantRuntime;window.__captureCalls=[];const original=rt.captureSmartNote.bind(rt);rt.captureSmartNote=async(...args)=>{const result=await original(...args);window.__captureCalls.push(result);return result};});
+            await page.getByTestId('capture-smart-note').click();
+            await page.getByTestId('smart-note-title').fill(title);
+            await page.getByTestId('smart-note-content').fill(content);
+            await page.getByTestId('smart-note-capture-submit').click();
+            await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000});
+            await page.waitForFunction(()=>Array.isArray(window.__captureCalls)&&window.__captureCalls.length===1,{timeout:30000});
+            const capture=await page.evaluate(()=>window.__captureCalls[0]);
+            const tx=capture?.transaction||{};
+            const eventId=capture?.event?.event_id||capture?.event_id||tx?.evidence?.event_id||tx?.hub_state?.event_id||'';
+            if(!eventId)throw new Error('HUMAN_UI_CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(capture));
+            if(!tx?.id)throw new Error('HUMAN_UI_TRANSACTION_ID_MISSING');
+            const auth=await page.evaluate(async()=>({identity:await window.NayaNETNameFirstAuth.current(),session:(await window.__NayaNETSupabaseClient.auth.getSession()).data.session}));
+            if(!auth.session?.user?.id)throw new Error('HUMAN_UI_SESSION_MISSING');
+            await page.waitForSelector('.smart-feed-board',{timeout:30000});
+            await page.waitForFunction((expected)=>Array.from(document.querySelectorAll('.smart-feed-board')).some(x=>x.getAttribute('data-event-id')===expected),eventId,{timeout:30000});
+            const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
+            if(!rendered.some(x=>x.event_id===eventId))throw new Error('HUMAN_UI_FEED_EVENT_MISSING:'+JSON.stringify({eventId,rendered}));
+            await page.reload({waitUntil:'networkidle'});
+            await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
+            const restored=await page.locator('[data-event-id="'+eventId+'"]').evaluate(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')}));
+            if(restored.event_id!==eventId)throw new Error('HUMAN_UI_RELOAD_IDENTITY_LOST:'+JSON.stringify(restored));
+            console.log(JSON.stringify({status:'VERIFIED',title,event_id:eventId,transaction_id:tx.id,user_id:auth.session.user.id,checks:{human_capture_control:'PASS',canonical_receiver:'PASS',same_event_identity:'PASS',smart_feed_render:'PASS',reload_identity:'PASS'}}));
+            await context.close();await browser.close();
+          })().catch(error=>{console.error(error);process.exit(1)});
+          NODE
+
       - name: Verify machine-readable receiver proof
         shell: bash
         run: |
