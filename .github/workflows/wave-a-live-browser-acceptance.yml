@@ -1,4 +1,5 @@
 # WAVE-A REGISTRATION REPAIR: second-source push proves this workflow from its registered definition.
+# WAVE-A RERUN: execute after Smart Ledger browser reload lifecycle repair.
 name: Wave A authenticated browser handoff acceptance
 
 on:
