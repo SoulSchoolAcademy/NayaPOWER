@@ -1060,3 +1060,82 @@ The enduring architectural principle is:
 And the enduring user promise is:
 
 **More intelligence. Less hunting. One tap away.**
+
+
+---
+
+# 2026-09-20 CANONICAL UX + ENGINEERING PRIORITY UPDATE
+
+## Smart Tabs placement is now locked
+
+Smart Tabs are **sidebar Quick Access tabs** inside the existing canonical NayaNET Hub sidebar.
+
+They are **not** a horizontal bar across the top or bottom of the Hub.
+
+The canonical sidebar has two classes of navigation:
+
+1. **Fixed NayaNET features** — product-defined, protected, and not user-editable/deletable.
+2. **QUICK ACCESS / Smart Tabs** — human-created shortcuts that can be added, edited, renamed, reordered, and deleted.
+
+A Smart Tab may point to a canonical Smart Note, Smart Space, intelligence area, Smart List, Report, Search, route/page, or URL. It stores a reference or retrieval intent; it does not duplicate the target.
+
+The existing top presentation/global bar remains intact. Do not duplicate it with another feature-navigation strip. **Settings must not be moved above the search bar to accommodate Smart Tabs.**
+
+**Smart Feed is a feed/intelligence presentation surface, not a sidebar navigation destination.** Do not add a standalone Smart Feed sidebar item.
+
+### Canonical mental model
+
+Top = presentation / identity / global controls / search  
+Sidebar = fixed operating navigation + personalized Quick Access  
+Smart Feed = intelligence surface  
+Smart Tabs = user shortcuts within the sidebar  
+Naya = intelligence / interaction surface  
+Runtime = governed engine
+
+## Engineering priority is independent of conversation order
+
+A feature being discussed is **not automatically the next feature to build**.
+
+Product conversation provides intent, constraints, and reminders. Engineering order must be determined by:
+
+1. dependency
+2. current failure/blocker
+3. risk to the protected core
+4. verification leverage
+5. value to the complete human journey
+6. implementation efficiency
+7. compounding benefit
+
+Therefore Smart Tabs are a **locked architectural requirement**, not a P0 escalation merely because this decision was discussed today.
+
+The correct operating loop is:
+
+OBSERVE → MAP DEPENDENCIES → IDENTIFY FIRST BROKEN BOUNDARY → REPAIR SURGICALLY → VERIFY → PRESERVE → MOVE TO NEXT HIGHEST-VALUE UNVERIFIED CAPABILITY
+
+Do not redesign the Hub to accommodate Smart Tabs. Do not create a second navigation shell. Do not create a second intelligence store. Do not reopen proven core behavior without evidence of regression.
+
+## Smart Tabs implementation gate
+
+When Smart Tabs become the correct next implementation target, build them into the existing sidebar using existing persistence, navigation, retrieval, privacy, and authority primitives wherever possible.
+
+The release must prove:
+
+- Quick Access is in the canonical sidebar.
+- No top/bottom Smart Tab bar exists.
+- Fixed feature buttons remain protected.
+- Add/edit/rename/reorder/delete work for user-created tabs.
+- Tabs resolve real canonical targets.
+- URL targets navigate correctly.
+- Retrieval targets use existing retrieval primitives.
+- Permission/authority is enforced before presentation.
+- Deleting a tab does not delete its target.
+- Refresh/re-entry preserves expected tabs.
+- No intelligence is duplicated.
+- Smart Feed remains the presentation surface.
+- No standalone Smart Feed sidebar item exists.
+
+Required evidence chain:
+
+SOURCE → BUILD → DEPLOYMENT → EXACT RUNTIME → BROWSER → HUMAN ACTION → RESULT → PERSISTENCE → RELOAD → EVIDENCE
+
+**This decision is canonical as of 2026-09-20.**
