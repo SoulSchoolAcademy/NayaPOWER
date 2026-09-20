@@ -240,10 +240,11 @@ def daily_synthesis(events: list[dict[str, Any]], learnings: list[dict[str, Any]
             "collective_lessons": len(collective),
             "private_lessons": len(private),
         },
+        "lessons": lessons,
         "collective_lessons": [x for x in lessons if x["visibility"] == "COLLECTIVE"],
         "private_lessons_count": len(private),
         "privacy_rule": "PRIVATE BY DEFAULT; SHARED BY CHOICE; COLLECTIVE BY CONSENT; PUBLIC BY DECISION",
-        "lineage": "INTELLIGENCE EVENT → SMART NOTE → LEARNING EVENT → EVIDENCE → DAILY LEARNING",
+        "lineage": "CANONICAL SE EVENT → SMART NOTE → INTELLIGENT BLOCK → LEARNING EVENT → EVIDENCE → DAILY LEARNING",
     }
 
 
