@@ -352,6 +352,33 @@ jobs:
                 await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
                 await page.waitForTimeout(500);
 
+                const connectionTarget = await page.evaluate(async ({url,key}) => {
+                  const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const client = sdk.createClient(url,key,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storage:window.localStorage,storageKey:'nayanet.supabase.auth'}});
+                  const {data:{user},error:userError}=await client.auth.getUser();
+                  if (userError || !user?.id) throw new Error('SMART_CONNECTION_AUTH_MISSING');
+                  const {data,error}=await client.from('members').select('id,user_id').neq('user_id',user.id).limit(1);
+                  if(error) throw error;
+                  const target=data?.[0];
+                  if(!target?.id) throw new Error('SMART_CONNECTION_TARGET_MEMBER_NOT_AVAILABLE');
+                  return {id:target.id,userId:target.user_id};
+                }, {url:process.env.SUPABASE_URL,key:process.env.SUPABASE_PUBLISHABLE_KEY});
+
+                let connectionPromptIndex = 0;
+                const connectionPrompts = [connectionTarget.id, createdSpaceId];
+                await page.evaluate((values) => {
+                  const originalPrompt = window.prompt;
+                  window.prompt = () => values.shift() || '';
+                  (window as any).__nayaOriginalPrompt = originalPrompt;
+                }, connectionPrompts);
+                await actionButton('↔ CONNECT').click();
+                await page.waitForTimeout(900);
+                const connectionStatus = await board.locator('.sfb-status').textContent().catch(() => '');
+                if (!String(connectionStatus || '').includes('CONNECTION CREATED · CANONICAL ID ')) throw new Error('CANONICAL_CONNECTION_CREATE_NOT_PROVEN:' + String(connectionStatus || 'NO_STATUS'));
+                const connectionMatch = String(connectionStatus || '').match(/CANONICAL ID ([0-9a-f-]{36})/i);
+                if (!connectionMatch) throw new Error('CANONICAL_CONNECTION_ID_INVALID:' + String(connectionStatus || 'NO_ID'));
+                console.log('SMART_FEED_CONNECT_CANONICAL_VERIFIED', viewport.label, JSON.stringify({ connectionId:connectionMatch[1], targetMemberId:connectionTarget.id, spaceId:createdSpaceId }));
+
                 console.log('SMART_FEED_CANONICAL_ACTION_MATRIX_VERIFIED', viewport.label, JSON.stringify({ restored, retrievalProof }));
                 // Reuse the viewport-aware navigation root from the Space proof above.\n
                 const libraryNav = navRoot.locator('button').filter({hasText:'Intelligence Library'});
