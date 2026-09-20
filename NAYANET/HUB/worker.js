@@ -1,7 +1,12 @@
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
-    const response = await env.ASSETS.fetch(request);
+    // Canonical Hub root: explicitly resolve `/` to the built React entry artifact.
+    // This prevents the SPA fallback from ever selecting a legacy Welcome surface.
+    const assetRequest = url.pathname === '/'
+      ? new Request(new URL('/index.html', url), request)
+      : request;
+    const response = await env.ASSETS.fetch(assetRequest);
 
     if (url.pathname === '/' || url.pathname === '/index.html') {
       const headers = new Headers(response.headers);
