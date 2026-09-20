@@ -432,7 +432,7 @@ jobs:
                   return {targetMemberId:target.member_id,spaceId:shared.id,joinStatus:joined?.status||'JOINED'};
                 });
                 await page.evaluate((values) => { window.prompt = () => values.shift() || ''; }, [connectionProof.targetMemberId, connectionProof.spaceId]);
-                await board.getByRole('button', { name: /CONNECT$/ }).first().click();
+                await board.locator('.sfb-related-head button').first().click();
                 await page.waitForTimeout(250);
                 await board.locator('.sfb-related-list button').first().click();
                 await page.waitForTimeout(900);
