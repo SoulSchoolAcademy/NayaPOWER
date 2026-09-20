@@ -71,6 +71,7 @@ jobs:
             if(!eventId)throw new Error('CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(result));
             if(!tx?.id)throw new Error('TRANSACTION_ID_MISSING');
             mark('CANONICAL_EVENT_ID_RETURNED',{eventId,transactionId:tx.id});
+            await page.reload({waitUntil:'networkidle',timeout:60000}); mark('PIS_RELOAD_AFTER_CAPTURE');
             const persistenceDiagnostic=await page.evaluate(async({eventId})=>{
               const runtime=window.NayaAssistantRuntime;
               const snapshot=runtime?.snapshot?.()||null;
