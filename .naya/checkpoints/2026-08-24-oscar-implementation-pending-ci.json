@@ -1,0 +1,18 @@
+{
+  "schema":"naya-power-checkpoint/v1",
+  "status":"PENDING_VERIFICATION",
+  "created_at":"2026-08-24T02:35:00Z",
+  "repository":"SoulSchoolAcademy/NayaPOWER",
+  "base_commit":"823d8369c0e3d622f1937ec3960b2cd654720ee3",
+  "execution_branch":"feat/oscar-independent-verification",
+  "execution_head":"f1faa667b2a8a63855fe3af718f5c662715a7932",
+  "mission":"Build a portable, reliable, human-proof Naya Power runtime whose continuity can be restored from GitHub.",
+  "objective":"Add independent adversarial Oscar verification to the Claim -> Evidence -> Verification boundary.",
+  "implemented":["deterministic Oscar challenger","13 adversarial Oscar tests","explicit success-criteria evidence coverage","forbidden-source rejection","exact-commit challenge binding","Claim Evidence CI Oscar step","machine-readable Oscar result publication","canonical Oscar runtime documentation"],
+  "verified_locally":["Oscar challenge accepts a sufficient package","Oscar rejects forbidden evidence methods","Oscar rejects wrong commit","Oscar rejects missing criteria coverage","Oscar rejects FAIL evidence","Oscar rejects cross-claim evidence"],
+  "ci_status":"FRESH_CI_ON_CURRENT_HEAD_NOT_YET_INSPECTED",
+  "protected":["Claim/Evidence verification boundary","Restore Context contract","canonical source hierarchy","historical Smart Notes","customer-facing protocol intent"],
+  "unknown":["fresh CI result for current Oscar-integrated head","machine-readable Oscar artifact from fresh CI","whether promotion to main is justified"],
+  "next_best_action":"Inspect fresh PR #36 CI on the current head; if green, inspect the Oscar artifact, promote verification state, merge, then re-run main verification. If failed, apply First Divergence Law.",
+  "integrity":{"principle":"Do not promote without fresh evidence on the exact observed commit."}
+}

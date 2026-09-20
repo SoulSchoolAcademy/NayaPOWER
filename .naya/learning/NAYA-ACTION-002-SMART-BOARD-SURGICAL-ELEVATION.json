@@ -1,0 +1,31 @@
+{
+  "schema": "naya/learning/v1",
+  "learning_id": "NAYA-LEARNING-002-SMART-BOARD-SURGICAL-ELEVATION",
+  "source_action": "NAYA-ACTION-002-SMART-BOARD-COMPLETE-EDGE",
+  "proof_scope": "505c5996376f960732222f7be0f9279985f537c0",
+  "principle": "When a canonical renderer already satisfies intelligence semantics, close a measured presentation gap with the smallest isolated adapter layer rather than creating a competing renderer.",
+  "preconditions": [
+    "canonical renderer exists",
+    "design divergence is explicitly documented",
+    "change can be isolated without altering intelligence semantics",
+    "existing architecture remains the authority"
+  ],
+  "execution_pattern": [
+    "READ canonical design contract",
+    "IDENTIFY one highest-value divergence",
+    "PRESERVE existing renderer",
+    "ADD one isolated presentation layer",
+    "VERIFY exact changed files and intended diff",
+    "SEPARATE repository proof from runtime proof"
+  ],
+  "anti_patterns": [
+    "new competing renderer",
+    "wholesale redesign",
+    "semantic/data-model changes for a visual gap",
+    "claiming runtime verification from source inspection alone"
+  ],
+  "verification_rule": "IMPLEMENTED, REPOSITORY-VERIFIED, BUILD-VERIFIED, and RUNTIME-PROVEN are distinct states and must never be collapsed.",
+  "reusable_value": "Surgical visual elevation can be machine-learned as an architecture-preserving execution pattern.",
+  "next_action_policy": "Every completed action produces one executable successor action grounded in the new verified state.",
+  "recorded_at": "2026-09-15"
+}

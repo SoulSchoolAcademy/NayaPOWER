@@ -1,0 +1,76 @@
+{
+  "activity_feed_projection": {
+    "event_id": "SE-20260917-035249-activity-cl-p003-p004-session-index-act-session-r-39e07f",
+    "feed": "NAYA-ACTIVITY",
+    "summary": "Real Session records now exist (naya_session runtime: OPEN->preflight->bound Activity->COMPLETED, sessions outside the append-only event store). The Canonical Cold-Naya Operating Index (00-NAYA-OPERATING-INDEX.md) is the one front door that LINKS to the canonical authorities (state/map/blocks/proof/events/feed/torch) and never copies them; START-HERE read order points to it first. Optimization gate is honestly RED until the classification pass (61 issues / 35 workflows / authority A1+A2).",
+    "title": "STEP 3 — real Sessions + Activity binding substrate, and the Canonical Cold-Naya Operating Index front door"
+  },
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "handoff": {
+      "next_action": "CLASSIFICATION PASS: classify all 61 open issues (50 unclassified), every remaining workflow, and the two unresolved authority boundaries (A1 .naya/activity role; A2 Assistant-lane) to turn the GitHub optimization gate GREEN, then bind Smart Notes to Sessions/Activities (contract priority #3).",
+      "successor": "NEXT-EXECUTION-20260917-P004-CLASSIFICATION-GATE-GREEN.md"
+    },
+    "learning_status": "RECORDED"
+  },
+  "created_at": "2026-09-17T03:52:49.600017+00:00",
+  "effective_at": "2026-09-17T03:52:49.600017+00:00",
+  "event_id": "SE-20260917-035249-activity-cl-p003-p004-session-index-act-session-r-39e07f",
+  "event_type": "activity",
+  "evidence_ids": [
+    "SESSION_CLOSURE_TESTS=GREEN count=10 (tests/test_session_closure.py)",
+    "pytest on 10 governed files -> 159 passed, 4 xfailed",
+    "execution_controller self-test -> PASS (CLAIMED opens a real Session; HANDED_OFF closes it)",
+    "model_tool_gateway self-test -> PASS 4/4",
+    "release_authorization_test -> 8/8 OK",
+    "project_execution_contract validate -> GREEN (meaningful_events_checked 3, historical_exempted 13, error_count 0)",
+    "STEP-1 independent adversarial verifier -> ACCEPT 49/49 (existing baseline)",
+    "PREFLIGHT_GATE_CLOSURE_TESTS=GREEN count=14 (existing baseline)",
+    "Canonical Cold-Naya Operating Index created: 00-NAYA-OPERATING-INDEX.md (front door; links, never copies)",
+    "START-HERE.md read order now points at the Operating Index first"
+  ],
+  "execution": {
+    "action_id": "ACT-SESSION-RUNTIME-AND-OPERATING-INDEX",
+    "actor_id": "SoulSchoolAcademy",
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+    "claim_id": "CL-P003-P004-SESSION-INDEX",
+    "decision_id": "DEC-P3P4",
+    "event_id": "SE-20260917-035249-activity-cl-p003-p004-session-index-act-session-r-39e07f",
+    "run_id": "RUN-20260917035249",
+    "session_id": "NAYA-20260917-035249-0FE4"
+  },
+  "receipt": {
+    "event_id": "SE-20260917-035249-activity-cl-p003-p004-session-index-act-session-r-39e07f",
+    "receipt_id": "RCP-P3P4-SESSION-INDEX",
+    "schema": "naya-power-evidence/v1",
+    "status": "MATCHED"
+  },
+  "source": {
+    "event_id": "EXECUTION-CL-P003-P004-SESSION-INDEX",
+    "generator": "activity_event.build_activity_event",
+    "kind": "execution"
+  },
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "STEP 3 — real Sessions + Activity binding substrate, and the Canonical Cold-Naya Operating Index front door",
+  "tags": [
+    "activity"
+  ],
+  "title": "STEP 3 — real Sessions + Activity binding substrate, and the Canonical Cold-Naya Operating Index front door",
+  "verification": {
+    "evidence": [
+      "SESSION_CLOSURE_TESTS=GREEN count=10 (tests/test_session_closure.py)",
+      "pytest on 10 governed files -> 159 passed, 4 xfailed",
+      "execution_controller self-test -> PASS (CLAIMED opens a real Session; HANDED_OFF closes it)",
+      "model_tool_gateway self-test -> PASS 4/4",
+      "release_authorization_test -> 8/8 OK",
+      "project_execution_contract validate -> GREEN (meaningful_events_checked 3, historical_exempted 13, error_count 0)",
+      "STEP-1 independent adversarial verifier -> ACCEPT 49/49 (existing baseline)",
+      "PREFLIGHT_GATE_CLOSURE_TESTS=GREEN count=14 (existing baseline)",
+      "Canonical Cold-Naya Operating Index created: 00-NAYA-OPERATING-INDEX.md (front door; links, never copies)",
+      "START-HERE.md read order now points at the Operating Index first"
+    ],
+    "method": "human-naya-verification",
+    "schema": "naya-power-evidence/v1",
+    "status": "VERIFIED"
+  }
+}

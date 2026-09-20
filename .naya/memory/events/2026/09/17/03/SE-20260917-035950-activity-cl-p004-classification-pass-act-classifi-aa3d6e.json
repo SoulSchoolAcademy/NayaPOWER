@@ -1,0 +1,66 @@
+{
+  "activity_feed_projection": {
+    "event_id": "SE-20260917-035950-activity-cl-p004-classification-pass-act-classifi-aa3d6e",
+    "feed": "NAYA-ACTIVITY",
+    "summary": "First-pass builder classification is complete and machine-readable. GITHUB-CLASSIFICATION.json covers 61/61 open issues (CANONICAL 8, ACTIVE_DEPENDENCY 9, PRODUCT_ASSET 13, REFERENCE 7, HISTORICAL_INTELLIGENCE 7, DUPLICATE 4, SUPERSEDED 13) and 35/35 workflows (CANONICAL 11, ACTIVE_DEPENDENCY 4, BLOCKED 1, SUPERSEDED 19). Authority A1 (.naya/activity/ role) and A2 (Assistant-lane vs preserved 509 fail-closed boundary) recorded as UNRESOLVED_RECORDED — never guessed; HUB_PARITY BLOCKED. The path to the GitHub optimization gate GREEN is now mechanical: merge this branch onto main, independently adjudicate, apply statuses to live issues.",
+    "title": "P004 classification pass — all 61 open issues and 35 workflows classified; authority A1/A2 recorded"
+  },
+  "continuity": {
+    "execution_state": "COMPLETED",
+    "handoff": {
+      "next_action": "Reach GATE GREEN: merge naya/universal-execution-gate-v1 onto main (runtime + index + classification), independently adjudicate the first-pass classification, apply issue/workflow statuses on the live GitHub inventory, then bind Smart Notes to Sessions/Activities (contract priority #3).",
+      "successor": "NEXT-EXECUTION-20260917-P004-CLASSIFICATION-GATE-GREEN.md"
+    },
+    "learning_status": "RECORDED"
+  },
+  "created_at": "2026-09-17T03:59:50.409260+00:00",
+  "effective_at": "2026-09-17T03:59:50.409260+00:00",
+  "event_id": "SE-20260917-035950-activity-cl-p004-classification-pass-act-classifi-aa3d6e",
+  "event_type": "activity",
+  "evidence_ids": [
+    "GITHUB-CLASSIFICATION.json: 61/61 open issues classified (dist above)",
+    "GITHUB-CLASSIFICATION.json: 35/35 workflows classified (dist above)",
+    "A1 + A2 recorded UNRESOLVED_RECORDED with decision_needed; HUB_PARITY BLOCKED",
+    "61-issue population fetched live from GitHub REST API (number/title/labels snapshot)",
+    "00-NAYA-OPERATING-INDEX.md gate section updated: GREEN path is mechanical, not interpretive"
+  ],
+  "execution": {
+    "action_id": "ACT-CLASSIFICATION-PASS-GATE-GREEN",
+    "actor_id": "SoulSchoolAcademy",
+    "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+    "claim_id": "CL-P004-CLASSIFICATION-PASS",
+    "decision_id": "DEC-P004",
+    "event_id": "SE-20260917-035950-activity-cl-p004-classification-pass-act-classifi-aa3d6e",
+    "run_id": "RUN-20260917035950",
+    "session_id": "NAYA-20260917-035950-4BBC"
+  },
+  "receipt": {
+    "event_id": "SE-20260917-035950-activity-cl-p004-classification-pass-act-classifi-aa3d6e",
+    "receipt_id": "RCP-P004-CLASSIFICATION",
+    "schema": "naya-power-evidence/v1",
+    "status": "MATCHED"
+  },
+  "source": {
+    "event_id": "EXECUTION-CL-P004-CLASSIFICATION-PASS",
+    "generator": "activity_event.build_activity_event",
+    "kind": "execution"
+  },
+  "status": "VERIFIED_REPOSITORY_RECORD",
+  "subject": "P004 classification pass — all 61 open issues and 35 workflows classified; authority A1/A2 recorded",
+  "tags": [
+    "activity"
+  ],
+  "title": "P004 classification pass — all 61 open issues and 35 workflows classified; authority A1/A2 recorded",
+  "verification": {
+    "evidence": [
+      "GITHUB-CLASSIFICATION.json: 61/61 open issues classified (dist above)",
+      "GITHUB-CLASSIFICATION.json: 35/35 workflows classified (dist above)",
+      "A1 + A2 recorded UNRESOLVED_RECORDED with decision_needed; HUB_PARITY BLOCKED",
+      "61-issue population fetched live from GitHub REST API (number/title/labels snapshot)",
+      "00-NAYA-OPERATING-INDEX.md gate section updated: GREEN path is mechanical, not interpretive"
+    ],
+    "method": "human-naya-verification",
+    "schema": "naya-power-evidence/v1",
+    "status": "VERIFIED"
+  }
+}

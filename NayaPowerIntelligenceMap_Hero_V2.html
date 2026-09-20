@@ -1,0 +1,83 @@
+<!-- NAYANET / NAYA POWER — HERO V2
+     Surgical replacement for the FIRST / ABOVE-THE-FOLD section only.
+     Replace the current .nim-hero block with this block.
+     All other Intelligence Map sections remain unchanged.
+-->
+<div class="nim-hero-v2" id="naya-power-hero">
+  <style>
+    #naya-power-hero{--b:#050408;--b2:#0b0910;--w:#fff;--p:#9b5de5;--pl:#dcbcff;--m:#ff3fd1;--c:#32d9e8;--g:#5ee58a;position:relative;min-height:calc(100vh - 72px);width:100%;overflow:hidden;background:var(--b);color:var(--w);isolation:isolate;font-family:Inter,Segoe UI,Arial,sans-serif}
+    #naya-power-hero *{box-sizing:border-box}
+    #naya-power-hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 48%,rgba(155,93,229,.24),transparent 30%),radial-gradient(circle at 92% 80%,rgba(50,217,232,.10),transparent 22%),linear-gradient(90deg,#050408 0%,#050408 45%,rgba(5,4,8,.82) 66%,rgba(5,4,8,.28) 100%);z-index:0}
+    #naya-power-hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:32%;background:linear-gradient(transparent,rgba(5,4,8,.82));z-index:0;pointer-events:none}
+    .npv2-wrap{position:relative;z-index:2;width:min(1440px,calc(100% - 72px));min-height:calc(100vh - 72px);margin:auto;display:grid;grid-template-columns:minmax(0,1.02fr) minmax(430px,.98fr);gap:55px;align-items:center;padding:78px 0 68px}
+    .npv2-copy{max-width:760px}
+    .npv2-eyebrow{display:flex;align-items:center;gap:11px;margin-bottom:24px;font-size:11px;line-height:1;font-weight:950;letter-spacing:.22em;text-transform:uppercase;color:#fff}
+    .npv2-eyebrow:before{content:"";width:42px;height:2px;background:var(--p);box-shadow:0 0 18px var(--p)}
+    .npv2-h1{margin:0 0 26px;font-size:clamp(54px,6.6vw,104px);line-height:.88;letter-spacing:-.065em;font-weight:900}
+    .npv2-h1 em{font-style:normal;color:var(--pl)}
+    .npv2-lead{max-width:700px;margin:0 0 27px;font-size:clamp(19px,1.7vw,25px);line-height:1.42;letter-spacing:-.018em;color:#fff}
+    .npv2-body{max-width:670px;margin:0 0 31px;font-size:16px;line-height:1.68;color:#d9d4df}
+    .npv2-body strong{color:#fff}
+    .npv2-actions{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:34px}
+    .npv2-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 23px;border-radius:15px;background:linear-gradient(180deg,#30283a,#111019 52%,#050408);border:1px solid rgba(255,255,255,.62);box-shadow:0 1px 0 #fff5 inset,0 -3px 0 #000 inset,0 4px 0 #45245f,0 13px 28px rgba(0,0,0,.58),0 18px 42px rgba(155,93,229,.22);color:#fff;text-decoration:none;font-size:10px;font-weight:950;letter-spacing:.13em;text-transform:uppercase;transition:.22s}
+    .npv2-btn:hover{transform:translateY(-4px);filter:brightness(1.08);box-shadow:0 1px 0 #fff7 inset,0 -3px 0 #000 inset,0 5px 0 #63317f,0 17px 34px rgba(0,0,0,.7),0 24px 55px rgba(155,93,229,.4)}
+    .npv2-proof{display:flex;flex-wrap:wrap;gap:9px}
+    .npv2-pill{display:inline-flex;align-items:center;gap:8px;min-height:34px;padding:0 12px;border:1px solid rgba(255,255,255,.17);border-radius:999px;background:rgba(255,255,255,.045);font-size:9px;font-weight:950;letter-spacing:.11em;text-transform:uppercase;color:#e9e4ee}
+    .npv2-pill i{width:7px;height:7px;border-radius:50%;background:var(--p);box-shadow:0 0 12px var(--p)}
+    .npv2-stage{position:relative;min-height:620px;display:grid;place-items:center}
+    .npv2-photo{position:relative;width:min(520px,100%);aspect-ratio:1/1.05;border-radius:34px;overflow:hidden;border:1px solid rgba(255,255,255,.25);background:#09070d;box-shadow:0 38px 100px rgba(0,0,0,.62),0 1px 0 #fff5 inset,0 0 80px rgba(155,93,229,.16)}
+    .npv2-photo:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(5,4,8,.08) 60%,rgba(5,4,8,.88) 100%);z-index:1}
+    .npv2-photo img{width:100%;height:100%;display:block;object-fit:cover;object-position:center top;filter:saturate(1.04) contrast(1.03)}
+    .npv2-photo-label{position:absolute;left:25px;right:25px;bottom:24px;z-index:3}
+    .npv2-photo-label small{display:block;margin-bottom:8px;font-size:9px;font-weight:950;letter-spacing:.19em;text-transform:uppercase;color:var(--pl)}
+    .npv2-photo-label strong{display:block;font-size:clamp(22px,2.4vw,34px);line-height:1;letter-spacing:-.035em}
+    .npv2-orbit{position:absolute;width:620px;height:620px;border:1px solid rgba(155,93,229,.20);border-radius:50%;box-shadow:0 0 100px rgba(155,93,229,.08) inset;pointer-events:none}
+    .npv2-orbit.o2{width:470px;height:470px;border-color:rgba(50,217,232,.16)}
+    .npv2-chip{position:absolute;z-index:4;padding:13px 16px;border-radius:15px;background:linear-gradient(145deg,rgba(27,22,34,.97),rgba(7,6,11,.97));border:1px solid rgba(255,255,255,.25);box-shadow:0 20px 42px rgba(0,0,0,.55),0 1px 0 #fff3 inset;font-size:9px;font-weight:950;letter-spacing:.12em;text-transform:uppercase;backdrop-filter:blur(12px)}
+    .npv2-chip:before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;vertical-align:1px;background:var(--chip);box-shadow:0 0 13px var(--chip)}
+    .npv2-chip.a{--chip:var(--m);top:7%;right:-1%}.npv2-chip.b{--chip:var(--p);top:40%;left:-2%}.npv2-chip.c{--chip:var(--c);bottom:13%;right:-3%}.npv2-chip.d{--chip:var(--g);bottom:2%;left:8%}
+    .npv2-puzzle{position:absolute;z-index:5;left:50%;bottom:-23px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;padding:12px 15px;border-radius:17px;background:rgba(7,6,10,.95);border:1px solid rgba(255,255,255,.22);box-shadow:0 18px 42px rgba(0,0,0,.55),0 1px 0 #fff3 inset;white-space:nowrap}
+    .npv2-puzzle span{padding:8px 9px;border-radius:9px;background:rgba(255,255,255,.05);border:1px solid color-mix(in srgb,var(--x) 50%,transparent);color:var(--x);font-size:8px;font-weight:950;letter-spacing:.1em;text-transform:uppercase}
+    .npv2-puzzle span:nth-child(1){--x:var(--m)}.npv2-puzzle span:nth-child(2){--x:var(--p)}.npv2-puzzle span:nth-child(3){--x:var(--c)}.npv2-puzzle span:nth-child(4){--x:var(--g)}
+    .npv2-scroll{position:absolute;z-index:4;left:50%;bottom:21px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:7px;font-size:8px;font-weight:950;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.58)}
+    .npv2-scroll i{width:1px;height:31px;background:linear-gradient(var(--p),transparent);box-shadow:0 0 10px var(--p)}
+    @media(max-width:980px){.npv2-wrap{grid-template-columns:1fr;gap:20px;align-items:start;padding-top:70px}.npv2-copy{max-width:850px}.npv2-stage{min-height:520px}.npv2-photo{width:min(510px,92vw)}.npv2-orbit{width:570px;height:570px}.npv2-orbit.o2{width:430px;height:430px}.npv2-chip.a{right:1%}.npv2-chip.c{right:0}.npv2-scroll{display:none}}
+    @media(max-width:600px){#naya-power-hero{min-height:auto}.npv2-wrap{width:min(100% - 36px,1440px);padding:56px 0 80px}.npv2-h1{font-size:clamp(48px,15vw,72px)}.npv2-lead{font-size:19px}.npv2-body{font-size:15px}.npv2-stage{min-height:430px;margin-top:10px}.npv2-photo{width:100%;border-radius:25px}.npv2-orbit{width:115%;height:auto;aspect-ratio:1}.npv2-orbit.o2{width:88%;height:auto;aspect-ratio:1}.npv2-chip{padding:10px 11px;font-size:7px}.npv2-chip.a{top:3%;right:-2%}.npv2-chip.b{left:-3%;top:40%}.npv2-chip.c{right:-3%;bottom:16%}.npv2-chip.d{left:1%;bottom:4%}.npv2-puzzle{bottom:-17px;gap:3px;padding:8px}.npv2-puzzle span{padding:7px 6px;font-size:6px}}
+  </style>
+
+  <div class="npv2-wrap">
+    <div class="npv2-copy">
+      <div class="npv2-eyebrow">NAYA POWER · THE INTELLIGENCE OPERATING LAYER</div>
+      <h1 class="npv2-h1">What if your AI<br><em>didn't make you start over?</em></h1>
+      <p class="npv2-lead">What if every important conversation could become part of something bigger — something that <strong>remembers, learns, acts, and gets better with you?</strong></p>
+      <p class="npv2-body">That's the idea behind <strong>Naya Power.</strong> Instead of treating every AI conversation like a one-time question and answer, Naya helps turn what you discover, decide, create, and learn into intelligence you can use again.</p>
+      <div class="npv2-actions">
+        <a class="npv2-btn" href="#why">SEE HOW IT WORKS ↓</a>
+        <a class="npv2-btn" href="#superbrain">DISCOVER THE SUPERBRAIN →</a>
+      </div>
+      <div class="npv2-proof">
+        <span class="npv2-pill"><i></i> Remember</span>
+        <span class="npv2-pill"><i style="--p:var(--p)"></i> Understand</span>
+        <span class="npv2-pill"><i style="background:var(--c);box-shadow:0 0 12px var(--c)"></i> Act</span>
+        <span class="npv2-pill"><i style="background:var(--g);box-shadow:0 0 12px var(--g)"></i> Compound</span>
+      </div>
+    </div>
+
+    <div class="npv2-stage" aria-label="Human and AI working together">
+      <div class="npv2-orbit"></div>
+      <div class="npv2-orbit o2"></div>
+      <div class="npv2-photo">
+        <img src="https://drive.google.com/thumbnail?id=1m6QSnwfTwgMV2Qmh-7zuJY5BZmjXaKJV&amp;sz=w2400" alt="Shawn and Naya — human and AI working together">
+        <div class="npv2-photo-label"><small>The relationship changes</small><strong>Human + AI → Intelligence</strong></div>
+      </div>
+      <div class="npv2-chip a">Memory that stays</div>
+      <div class="npv2-chip b">Naya understands context</div>
+      <div class="npv2-chip c">Action becomes learning</div>
+      <div class="npv2-chip d">Learning compounds</div>
+      <div class="npv2-puzzle" aria-label="The intelligence puzzle pieces">
+        <span>Intent</span><span>Memory</span><span>Action</span><span>Growth</span>
+      </div>
+    </div>
+  </div>
+  <div class="npv2-scroll">Keep going<i></i></div>
+</div>

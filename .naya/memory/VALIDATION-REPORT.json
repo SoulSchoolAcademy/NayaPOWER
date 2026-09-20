@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "checked_at": "DERIVED",
+  "status": "RED",
+  "error_count": 4,
+  "errors": [
+    "C:\\Users\\Admin\\NayaPOWER-Windows\\.naya\\memory\\events\\2026\\08\\31\\SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK.json: invalid created_at: 'No time zone found with key America/Vancouver'",
+    "C:\\Users\\Admin\\NayaPOWER-Windows\\.naya\\memory\\events\\2026\\08\\31\\SE-20260831-NAYANET-E01-INTELLIGENT-HUB-NETWORK.json: invalid effective_at: 'No time zone found with key America/Vancouver'",
+    "C:\\Users\\Admin\\NayaPOWER-Windows\\.naya\\memory\\events\\2026\\08\\31\\SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json: invalid created_at: 'No time zone found with key America/Vancouver'",
+    "C:\\Users\\Admin\\NayaPOWER-Windows\\.naya\\memory\\events\\2026\\08\\31\\SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json: invalid effective_at: 'No time zone found with key America/Vancouver'"
+  ],
+  "canonical_event_count": 35
+}

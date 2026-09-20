@@ -1,0 +1,117 @@
+{
+  "$schema": "naya/github-optimization-gate/v1",
+  "name": "NayaPOWER GitHub Optimization Gate",
+  "purpose": "Make GitHub a clean, coherent, machine-checkable operating environment rather than a pile of competing instructions.",
+  "authority": {
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "branch": "main",
+    "state": ".naya/control-plane/STATE.json",
+    "block": ".naya/control-plane/BLOCKS.json",
+    "map": ".naya/control-plane/MAP.json",
+    "proof": ".naya/control-plane/PROOF.json"
+  },
+  "required_questions": [
+    "WHAT_ARE_WE_BUILDING",
+    "WHY",
+    "WHAT_IS_AUTHORITATIVE",
+    "WHAT_IS_CURRENT",
+    "WHAT_IS_PROTECTED",
+    "WHAT_IS_ACTUALLY_VERIFIED",
+    "WHAT_IS_BROKEN",
+    "WHAT_IS_OBSOLETE",
+    "SINGLE_HIGHEST_VALUE_NEXT_ACTION",
+    "HOW_IS_IT_PROVEN",
+    "WHERE_IS_IT_RECORDED",
+    "WHAT_DOES_NEXT_NAYA_DO"
+  ],
+  "invariants": {
+    "one_canonical_state": true,
+    "one_canonical_machine_event_store": true,
+    "one_human_activity_projection": true,
+    "one_highest_value_next_action": true,
+    "unknown_is_not_verified": true,
+    "blocked_is_not_pass": true,
+    "historical_is_not_current": true,
+    "builder_is_not_judge": true,
+    "no_unclassified_open_issue": true,
+    "no_unclassified_workflow_authority": true,
+    "no_unresolved_runtime_authority_conflict": true
+  },
+  "audit_inputs": {
+    "issue_inventory": ".naya/control-plane/GITHUB-ISSUE-AUDIT.json",
+    "workflow_inventory": ".naya/control-plane/GITHUB-WORKFLOW-AUDIT.json",
+    "authority_inventory": ".naya/control-plane/GITHUB-AUTHORITY-AUDIT.json"
+  },
+  "status_values": [
+    "CANONICAL",
+    "ACTIVE_DEPENDENCY",
+    "PRODUCT_ASSET",
+    "HISTORICAL_INTELLIGENCE",
+    "REFERENCE",
+    "DUPLICATE",
+    "SUPERSEDED",
+    "ORPHAN",
+    "UNKNOWN",
+    "BLOCKED"
+  ],
+  "failure_policy": "The gate fails closed. A passing gate means the repository structure is internally classifiable; it does not by itself prove a live runtime is correct.",
+  "cleanup_policy": {
+    "delete_only_when": [
+      "artifact is demonstrably obsolete, retired, disabled, duplicate, superseded, or orphaned",
+      "current authority and dependency checks show no unique active role",
+      "replacement or surviving canonical source is identified when applicable",
+      "deletion preserves current functionality and Git history remains available"
+    ],
+    "preserve_when": [
+      "artifact is current canonical source",
+      "artifact is required machine-readable law/state/proof",
+      "artifact is current product functionality",
+      "artifact is a fail-closed boundary that prevents an unsafe authority substitution",
+      "artifact contains unique historical intelligence not safely represented elsewhere"
+    ],
+    "never": [
+      "delete merely because a filename is old",
+      "delete current NIS/canonical intelligence without direct evidence",
+      "delete the current 509 boundary merely to reduce file count",
+      "erase historical truth to make the repository look cleaner"
+    ]
+  },
+  "current_cleanup_result": {
+    "status": "SURGICAL_CLEANUP_EXECUTED",
+    "removed_confirmed_retired_509_workflows": 10,
+    "preserved_fail_closed_509_boundary": ".github/workflows/509-smart-board-world-class.yml",
+    "reason": "Ten workflows were explicitly DISABLED/RETIRED and each identified a newer/canonical replacement. The preserved world-class workflow is a live fail-closed boundary and therefore remains useful until Assistant-lane authority is resolved."
+  },
+  "next_action": "Independently adjudicate the first-pass classification (Oscar, Builder != Judge); apply status labels to the 61 live GitHub issues via an authenticated surface; then bind Smart Notes to Sessions/Activities and build the temporal day/project retrieval index, proving cold-Naya acceptance behaviorally on CI.",
+  "gate_state": "GREEN_STRUCTURAL",
+  "gate_evaluation": {
+    "as_of": "2026-09-17T06:20:00Z",
+    "result": "NAYAPOWER_GITHUB_OPTIMIZATION_GATE=GREEN (scripts/validate_github_optimization_gate.py exit 0)",
+    "classification_invariants_satisfied": [
+      "no_unclassified_open_issue",
+      "no_unclassified_workflow_authority"
+    ],
+    "authority_invariants_satisfied": [
+      "no_unresolved_runtime_authority_conflict"
+    ],
+    "authority_resolutions": [
+      {
+        "id": "A1",
+        "resolution": ".naya/activity = COMPATIBILITY_ARCHIVE (index L121 classification task); SUPERBRAIN/NAYA-ACTIVITY first-class projection."
+      },
+      {
+        "id": "A2",
+        "resolution": "assistant-cloudflare-hub-release.yml = sole production deployment authority (human authority, commits 6780aabf/3cfa3f76)."
+      }
+    ],
+    "items": {
+      "issues_classified": 61,
+      "issues_unclassified": 0,
+      "workflows_classified": 26,
+      "workflows_unclassified": 0,
+      "authority_conflicts": 0
+    },
+    "failure_policy_note": "Structural GREEN per declared policy: repository is internally classifiable; it does not by itself prove a live runtime is correct. Runtime/live proof remains workflow-gated.",
+    "builder_vs_judge": "Classification first pass is Builder-produced; independent Oscar review is the recorded next action."
+  }
+}

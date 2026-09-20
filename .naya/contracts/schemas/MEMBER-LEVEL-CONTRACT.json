@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/member-level-contract/v1",
+  "title": "NayaNET Member Level Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["level","name","minimum_points"],
+  "properties": {
+    "level": {"type":"integer","minimum":1,"maximum":10},
+    "name": {"type":"string","minLength":1},
+    "minimum_points": {"type":"integer","minimum":0},
+    "maximum_points": {"type":["integer","null"],"minimum":0}
+  }
+}

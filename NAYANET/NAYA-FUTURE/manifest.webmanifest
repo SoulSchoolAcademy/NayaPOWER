@@ -1,0 +1,10 @@
+{
+  "name": "NayaNET",
+  "short_name": "NayaNET",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#08060d",
+  "theme_color": "#08060d",
+  "description": "Create. Connect. Grow with US.",
+  "icons": []
+}

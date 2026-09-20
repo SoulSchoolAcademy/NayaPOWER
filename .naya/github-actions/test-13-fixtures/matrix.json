@@ -1,0 +1,186 @@
+{
+  "schema": "naya/test-13-matrix/v1",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "cases": [
+    {
+      "id": "T01",
+      "file": "cases/T01-genuine.json",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "T02",
+      "file": "cases/T02-altered-signature.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T03",
+      "file": "cases/T03-altered-payload.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T04",
+      "file": "cases/T04-different-public-key.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T05",
+      "file": "cases/T05-different-authority-id.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T06",
+      "file": "cases/T06-altered-authority-fingerprint.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T07",
+      "file": "cases/T07-different-action-id.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T08",
+      "file": "cases/T08-different-decision-id.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T09",
+      "file": "cases/T09-different-actor.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T10",
+      "file": "cases/T10-different-permission.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T11",
+      "file": "cases/T11-different-scope.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T12",
+      "file": "cases/T12-different-action-type.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T13",
+      "file": "cases/T13-different-target.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T14",
+      "file": "cases/T14-different-repository.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T15",
+      "file": "cases/T15-different-commit.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T16",
+      "file": "cases/T16-different-environment.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T17",
+      "file": "cases/T17-different-deployment-surface.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T18",
+      "file": "cases/T18-different-worker-project.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T19",
+      "file": "cases/T19-expired.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T20",
+      "file": "cases/T20-revoked-authority.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T21",
+      "file": "cases/T21-removed-authority.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T22",
+      "file": "cases/T22-modified-grant.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T23",
+      "file": "cases/T23-github-token.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T24",
+      "file": "cases/T24-dispatch-approved.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T25",
+      "file": "cases/T25-authorization-approved.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T26",
+      "file": "cases/T26-fabricated-receipt.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T27",
+      "file": "cases/T27-fabricated-claim.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T28",
+      "file": "cases/T28-execution-state.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T29",
+      "file": "cases/T29-model-approval.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T30",
+      "file": "cases/T30-agent-approval.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T31",
+      "file": "cases/T31-provider-credential.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T32",
+      "file": "cases/T32-no-issuer-memory.json",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "T33",
+      "file": "cases/T33-no-private-key.json",
+      "expected": "ALLOW"
+    },
+    {
+      "id": "T34",
+      "file": "cases/T34-cannot-mint.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T35",
+      "file": "cases/T35-copied-artifact-rebound.json",
+      "expected": "REFUSED"
+    },
+    {
+      "id": "T36",
+      "file": "cases/T36-direct-bypass.json",
+      "expected": "REFUSED"
+    }
+  ]
+}

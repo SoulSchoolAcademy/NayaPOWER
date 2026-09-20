@@ -1,0 +1,42 @@
+name: Verify frozen learning compounding entry point
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/verify-frozen-learning-compounding.mjs'
+      - '.github/workflows/verify-frozen-learning-compounding.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      FROZEN_LEARNING_EVIDENCE_ID: 95c09288-3351-483a-89bd-feae756f707a
+      FROZEN_ACCESS_TOKEN: ${{ secrets.NAYANET_FROZEN_LEARNING_ACCESS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute frozen-learning proof
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/frozen-learning-compounding.json"
+          node scripts/verify-frozen-learning-compounding.mjs
+      - name: Validate stopped proof
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/frozen-learning-compounding.json"
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='STOPPED') throw new Error('proof did not stop at a missing causal link'); if(!r.stop_at) throw new Error('missing stop_at');" "$PROOF_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frozen-learning-compounding-proof
+          path: ${{ runner.temp }}/frozen-learning-compounding.json
+          if-no-files-found: error
+          retention-days: 30

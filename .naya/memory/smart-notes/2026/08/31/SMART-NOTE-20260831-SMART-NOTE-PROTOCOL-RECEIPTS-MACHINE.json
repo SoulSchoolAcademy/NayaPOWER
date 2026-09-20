@@ -1,0 +1,32 @@
+{
+  "event_id": "SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS",
+  "date": "2026-08-31",
+  "type": "machine_note",
+  "title": "Smart Note protocol enforcement and receipts",
+  "trigger": "Human explicitly requested a Smart Note and identified a delivery gap.",
+  "required_contract": {
+    "shawn_note": true,
+    "naya_note": true,
+    "machine_note": true,
+    "intelligent_feed_update": true,
+    "pis_update": true,
+    "direct_smart_links": true,
+    "exact_receipts": true,
+    "verification": true
+  },
+  "prior_canonical_evidence": {
+    "intelligence_feed": "MASTER-NOTES/INTELLIGENCE-FEED/2026-08-30-SMART-NOTE-DELIVERY-TEACHING.md",
+    "commit": "3af7f8da537a447221b086e32422c0f72a2db91d"
+  },
+  "new_artifacts": [
+    ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-SHAWN.md",
+    ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-NAYA.md",
+    ".naya/memory/smart-notes/2026/08/31/SMART-NOTE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS-MACHINE.json",
+    ".naya/memory/events/2026/08/31/SE-20260831-SMART-NOTE-PROTOCOL-RECEIPTS.json",
+    "MASTER-NOTES/INTELLIGENCE-FEED/2026-08-31-SMART-NOTE-PROTOCOL-RECEIPTS.md",
+    "MASTER-NOTES/PIS-UPDATES/2026-08-31-SMART-NOTE-PROTOCOL-RECEIPTS.md"
+  ],
+  "implementation_rule": "A Smart Note request must invoke the complete Smart Note delivery contract. A generic project note alone is insufficient.",
+  "evidence_rule": "Completion claims must be accompanied by exact navigable receipts.",
+  "verification_status": "artifacts being persisted in this operation; downstream successor consumption is not claimed without proof"
+}

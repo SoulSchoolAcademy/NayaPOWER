@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/smart-ledger-event/v1",
+  "title": "NayaNET Smart Ledger Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["ledger_event_id","schema_version","event_type","event_at","created_at","status","privacy_classification"],
+  "properties": {
+    "ledger_event_id": {"type":"string","minLength":1},
+    "schema_version": {"const":"1.0"},
+    "event_type": {"type":"string","minLength":1},
+    "event_at": {"type":"string","format":"date-time"},
+    "created_at": {"type":"string","format":"date-time"},
+    "protected_actor_ref": {"type":"string","minLength":1},
+    "source_object_ref": {"type":"string","minLength":1},
+    "parent_event_ref": {"type":"string","minLength":1},
+    "related_event_refs": {"type":"array","items":{"type":"string"}},
+    "evidence_ref": {"type":"string","minLength":1},
+    "verification_receipt_ref": {"type":"string","minLength":1},
+    "integrity_hash": {"type":"string","minLength":1},
+    "previous_event_ref": {"type":"string","minLength":1},
+    "privacy_classification": {"enum":["private","internal","authorized","collective"]},
+    "value_event_ref": {"type":"string","minLength":1},
+    "score_calculation_ref": {"type":"string","minLength":1},
+    "status": {"enum":["recorded","evidence_available","verified","valued","applied","outcome_verified","superseded","rejected"]},
+    "supersedes_event_ref": {"type":"string","minLength":1},
+    "correction_event_ref": {"type":"string","minLength":1},
+    "smart_link_ref": {"type":"string","minLength":1}
+  }
+}

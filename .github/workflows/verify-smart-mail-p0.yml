@@ -1,0 +1,53 @@
+name: Verify NayaNET P0 Smart Mail Vertical
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/nayanet-smart-mail/index.ts'
+      - 'supabase/migrations/20260918223000_p0_smart_mail_vertical.sql'
+      - 'scripts/verify-smart-mail-p0.mjs'
+      - '.github/workflows/verify-smart-mail-p0.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-mail-p0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYA_EXISTING_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute real production sender -> Naya -> receiver transaction
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/nayanet-smart-mail-p0-proof.json"
+          set +e
+          node scripts/verify-smart-mail-p0.mjs 2>&1 | tee "$RUNNER_TEMP/smart-mail-runtime.log"
+          status=${PIPESTATUS[0]}
+          exit $status
+      - name: Upload runtime failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-mail-runtime-log
+          path: ${{ runner.temp }}/smart-mail-runtime.log
+          if-no-files-found: warn
+      - name: Validate production proof
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/nayanet-smart-mail-p0-proof.json"
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof');" "$PROOF_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-smart-mail-p0-proof
+          path: ${{ runner.temp }}/nayanet-smart-mail-p0-proof.json
+          if-no-files-found: error
+          retention-days: 30

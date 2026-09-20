@@ -1,0 +1,43 @@
+name: Verify Smart Feed Ledger Integration
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/naya-smart-feed/index.ts'
+      - 'scripts/verify-smart-feed-ledger-integration.mjs'
+      - '.github/workflows/verify-smart-feed-ledger-integration.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-feed-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Supabase JS
+        run: npm install --no-save @supabase/supabase-js@2.57.0
+      - name: Execute production Smart Feed -> Ledger proof
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/smart-feed-ledger-proof.json"
+          node scripts/verify-smart-feed-ledger-integration.mjs
+      - name: Validate proof
+        run: |
+          export PROOF_PATH="$RUNNER_TEMP/smart-feed-ledger-proof.json"
+          test -s "$PROOF_PATH"
+          node -e "const r=require(process.argv[1]); if(r.status!=='VERIFIED') throw new Error('bad proof');" "$PROOF_PATH"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: smart-feed-ledger-proof
+          path: ${{ runner.temp }}/smart-feed-ledger-proof.json
+          if-no-files-found: error
+          retention-days: 30

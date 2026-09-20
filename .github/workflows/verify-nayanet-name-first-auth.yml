@@ -1,0 +1,80 @@
+name: Verify NayaNET Name-First Auth
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/name-first-auth-adapter.js'
+      - 'NAYANET/HUB/src/identity/AuthPanel.tsx'
+      - 'identity.html'
+      - '.github/workflows/verify-nayanet-name-first-auth.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-anonymous-auth:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Verify adapter source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s NAYANET/name-first-auth-adapter.js
+          grep -q "signInAnonymously" NAYANET/name-first-auth-adapter.js
+          grep -q "members" NAYANET/name-first-auth-adapter.js
+          grep -q "nayanet_profiles" NAYANET/name-first-auth-adapter.js
+          grep -q "nayanet_identity_version" NAYANET/name-first-auth-adapter.js
+          if grep -Eq "signInWithPassword|[\"']email[\"']|password[[:space:]]*:" NAYANET/name-first-auth-adapter.js; then
+            echo "Name-first adapter must not introduce email/password authentication."
+            exit 1
+          fi
+
+      - name: Verify real Supabase anonymous authentication
+        env:
+          SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+          SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const url = process.env.SUPABASE_URL;
+          const key = process.env.SUPABASE_PUBLISHABLE_KEY;
+          const res = await fetch(`${url}/auth/v1/signup`, {
+            method: 'POST',
+            headers: {
+              apikey: key,
+              Authorization: `Bearer ${key}`,
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              data: {
+                display_name: `NayaNET Auth Probe ${Date.now()}`,
+                nayanet_identity_version: 'name-first-v1-probe'
+              }
+            })
+          });
+          const body = await res.text();
+          let parsed;
+          try { parsed = JSON.parse(body); } catch { parsed = { raw: body }; }
+          if (!res.ok || !parsed.user?.id || !parsed.access_token) {
+            console.error(JSON.stringify({ status: res.status, body: parsed }, null, 2));
+            process.exit(1);
+          }
+          console.log(JSON.stringify({
+            status: res.status,
+            authenticated: true,
+            user_id_present: true,
+            access_token_present: true,
+            is_anonymous: parsed.user.is_anonymous === true,
+            identity_provider: parsed.user.app_metadata?.provider ?? null
+          }, null, 2));
+          if (parsed.user.is_anonymous !== true) process.exit(2);
+          NODE

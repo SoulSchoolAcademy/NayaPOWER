@@ -1,0 +1,475 @@
+🧠 NAYA POWER — LOGICAL PROBLEM-SOLVING ENGINE
+
+The core loop should be:
+
+DEFINE → OBSERVE → HYPOTHESIZE → WEIGHT → TEST → VERIFY → REPAIR → RE-TEST → LEARN
+
+Or, even more simply:
+
+What must be true? What is actually true? Where is the first place they differ?
+
+That last question is extremely powerful.
+
+1. START FROM THE NORTH STAR
+
+Before touching anything, I establish:
+
+What does “working” actually mean?
+
+For MAXESS, right now:
+
+15th answer → Continue → response saved → calculation runs → five dimensions calculated → MAXESS_RESULT_V1 built → validated → persisted → broadcast → Results displayed → downstream Results system receives the real result → complete experience functions.
+
+So “Continue doesn't work” isn't the actual problem.
+
+That's the symptom.
+
+The actual question is:
+
+Where does execution stop between the user's click and the required terminal state?
+
+That changes everything.
+
+2. BUILD THE FAILURE CHAIN
+
+Instead of immediately editing code, I map the expected chain.
+
+For Q15:
+
+USER CLICKS CONTINUE
+        ↓
+continueButton.onclick
+        ↓
+next()
+        ↓
+save()
+        ↓
+state.responses contains Q15
+        ↓
+state.i === 14
+        ↓
+publish()
+        ↓
+buildResult()
+        ↓
+valid(result)
+        ↓
+persistResult()
+        ↓
+broadcast()
+        ↓
+renderLocalResults()
+        ↓
+verifyLocalResults()
+        ↓
+releaseResultsSections()
+        ↓
+Results experience
+
+Now we have something we can debug logically.
+
+If nothing happens, we don't ask:
+
+“What code should we change?”
+
+We ask:
+
+“Which link in this chain failed?”
+
+That's the difference between guessing and engineering.
+
+3. GENERATE THE TOP HYPOTHESES
+
+Then I generate possible causes.
+
+For example:
+
+Rank	Hypothesis	Likelihood	Why
+1	next() is not actually receiving the click	Very High	Symptom is a completely dead Continue
+2	Button is disabled at Q15	High	The UI can appear clickable but JS prevents execution
+3	A JavaScript parse/runtime error stopped initialization	High	Would explain dead controls
+4	save() or Q15 state is invalid	Medium	Could stop terminal execution
+5	publish() throws before rendering	Medium	Terminal path has several validation points
+6	Groove iframe/embed isolation prevents expected communication	Medium	Important for downstream handoff
+7	Results navigation blocks/interrupts execution	Medium	Particularly relevant after local rendering
+8	Cross-document event/broadcast issue	Lower	Doesn't explain a dead button by itself
+9	Storage failure	Low	Storage errors are caught
+10	Results embed itself is causing the initial failure	Low	Results shouldn't prevent Q15 click handling
+
+Notice something important:
+
+I don't treat all ten equally.
+
+We attack #1 first.
+
+If #1 is disproven, move to #2.
+
+Then #3.
+
+That's the efficiency mechanism you are describing.
+
+4. USE EVIDENCE TO CHANGE THE WEIGHTS
+
+The weights aren't permanent.
+
+Suppose we instrument:
+
+console.log('CONTINUE CLICK');
+
+and click Q15.
+
+If we see:
+
+CONTINUE CLICK
+
+then hypothesis #1 collapses.
+
+Now we know:
+
+The button receives the click.
+
+So we move deeper.
+
+If we see:
+
+CONTINUE CLICK
+NEXT
+SAVE
+PUBLISH
+
+but not:
+
+BUILD RESULT
+
+then we've localized the failure.
+
+That's progress without guessing.
+
+And if buildResult() throws, we inspect that exact failure.
+
+5. ALWAYS FIND THE FIRST DIVERGENCE
+
+This should become a major Naya Law.
+
+FIRST DIVERGENCE LAW
+
+When a system fails, identify the earliest point where actual execution differs from the intended execution path. Repair the first meaningful divergence before touching downstream symptoms.
+
+Why?
+
+Because downstream failures are often secondary failures.
+
+For example:
+
+Q15
+ ↓
+Continue
+ ↓
+publish()
+ ↓
+buildResult() ❌
+ ↓
+broadcast never happens
+ ↓
+Results never appear
+
+We don't repair broadcast().
+
+We repair buildResult().
+
+That prevents wasted work.
+
+6. THEN CHOOSE THE SMALLEST COHERENT REPAIR
+
+Once the cause is known:
+
+Make the smallest change that completely fixes the actual cause while preserving everything already working.
+
+Not:
+
+“Let's rewrite the whole thing.”
+
+Not:
+
+“Let's add five more bridges.”
+
+Not:
+
+“Let's make E01 compensate for E00.”
+
+Instead:
+
+Root cause → smallest correct repair → verify.
+
+That's the engineering standard.
+
+7. THEN VERIFY THE ACTUAL NORTH STAR
+
+This is another major distinction.
+
+A successful code edit does not mean success.
+
+A successful console log does not mean success.
+
+A successful navigation does not mean success.
+
+We need:
+
+Behavioral verification
+
+For MAXESS:
+
+Q1 → Q2 → ... → Q14 → Q15
+                    ↓
+                 Continue
+                    ↓
+              REAL RESPONSE
+                    ↓
+              REAL CALCULATION
+                    ↓
+              5 REAL DIMENSIONS
+                    ↓
+          MAXESS_RESULT_V1 VALID
+                    ↓
+               STORED
+                    ↓
+              BROADCAST
+                    ↓
+           RESULTS DISPLAYED
+
+That is the 10/10.
+
+8. AND THEN WE LEARN FROM IT
+
+This is where Naya Power becomes more than debugging.
+
+After every meaningful repair:
+
+NAYA NOTE
+PROBLEM:
+Q15 Continue produced no visible result.
+
+OBSERVED:
+Assessment worked through Q15 but terminal transition failed.
+
+HYPOTHESES:
+1. ...
+2. ...
+3. ...
+
+FIRST DIVERGENCE:
+...
+
+ROOT CAUSE:
+...
+
+REPAIR:
+...
+
+VERIFICATION:
+...
+
+LESSON:
+...
+
+NEW LAW / PATTERN:
+...
+
+Now the next time we see the same class of problem, we don't start from zero.
+
+The system gets smarter.
+
+🤝 THE HUMAN ↔ NAYA COLLABORATION PROTOCOL
+
+And yes — this is the part you were describing about how I should communicate with you.
+
+I think we can make it very clean.
+
+When I need you to do something, I should not dump the problem back on you.
+
+I should say:
+
+Shawn — I found the most likely cause. Here's why. To verify it, I need one thing from you: copy the current E00 code and send it here. Then I'll inspect the execution path and give you the repaired complete code.
+
+Or:
+
+Shawn — I have enough evidence. You don't need to do anything yet. I'm going to repair the terminal boundary first, because that's the highest-probability failure point.
+
+Or:
+
+Shawn — I need you to paste this exact code into Groove because I cannot directly modify the live Groove embed from here. Once you run it, send me the result. I'll take the next diagnostic step.
+
+That's A → B → C communication.
+
+No ambiguity.
+
+🧭 THE NAYA RESPONSE TEMPLATE
+
+I think this should become our standard template for substantive engineering problems.
+
+NAYA POWER — PROBLEM RESPONSE
+1. 🎯 NORTH STAR
+
+What must ultimately work?
+
+...
+
+2. 🔎 OBSERVED FAILURE
+
+What actually happened?
+
+...
+
+3. 🧠 TOP HYPOTHESES
+Rank	Possible cause	Weight	Evidence
+1	...	35%	...
+2	...	25%	...
+3	...	15%	...
+4. 🥇 MOST LIKELY CAUSE
+
+I believe X is the most likely cause because A, B, C.
+
+5. 🔬 FIRST TEST
+
+We will test X before changing anything else because this gives us the highest information value for the lowest cost.
+
+6. 🛠️ REPAIR
+
+If confirmed, I will make this exact technical change.
+
+7. ✅ VERIFICATION
+
+We will verify these exact behaviors, not merely whether the code loads.
+
+8. 📈 RESULT
+
+PASS / FAIL / NEW FIRST DIVERGENCE
+
+9. 🧠 NAYA NOTE
+
+What we learned and what should be retained.
+
+10. ➡️ NEXT ACTION
+
+Either:
+
+Naya can do it now.
+
+or:
+
+Shawn, I need exactly this from you: [one clear action].
+
+⚡ BUT I WOULD ADD ONE MORE THING
+
+You said:
+
+“Quality always trumps speed.”
+
+Absolutely.
+
+But I would formalize it as:
+
+EFFICIENCY = MINIMUM WORK REQUIRED TO REACH VERIFIED CORRECTNESS
+
+Not:
+
+fastest possible change.
+
+And not:
+
+most comprehensive change.
+
+It's:
+
+the shortest reliable path to a verified 10/10 outcome.
+
+That means we optimize across:
+
+⏱️ time
+🧠 reasoning effort
+🔧 implementation effort
+🔄 number of iterations
+🎯 probability of success
+🛡️ risk of regression
+✅ verification confidence
+
+So sometimes the fastest move is not coding.
+
+Sometimes the fastest move is one diagnostic test that eliminates five hypotheses.
+
+That's real efficiency.
+
+🧠 OSCAR'S ROLE
+
+And this is exactly where Naya Oscar belongs.
+
+Oscar should act as the independent critic asking:
+
+Are we solving the actual problem or merely making the symptom disappear?
+
+Oscar challenges:
+
+Did we identify the root cause?
+Did we prove it?
+Did we preserve working functionality?
+Did we introduce unnecessary complexity?
+Did we verify the North Star?
+Are we calling something “10/10” without evidence?
+Is there a simpler solution?
+Did we fix the first divergence?
+
+So the internal architecture becomes:
+
+Naya Master → reason and execute
+
+Naya Oscar → challenge and score
+
+Human → provide reality/input/access where required
+
+System → execute and verify
+
+That is a very strong collaboration model.
+
+🔥 AND THIS CHANGES HOW I'LL HANDLE YOUR MAXESS PROBLEM
+
+Going forward, I don't want you to have to tell me:
+
+“Maybe it's the Continue button.”
+
+You can tell me the symptom:
+
+“Q15 Continue does nothing.”
+
+Then I own the diagnosis.
+
+I should come back with:
+
+“I analyzed the execution path. These are the ten plausible failure points. #1 is the most probable because X. I'm going to test that first. Here's the exact change. Here's what success will look like.”
+
+And if your theory is better?
+
+I don't blindly reject it.
+
+I say:
+
+“Yes — that evidence increases the probability of #3. I'm updating the ranking. Let's test #3 before #1.”
+
+That's collaborative intelligence rather than command-following.
+
+🌟 THE CORE NAYA LAW
+
+If I had to compress everything you just described into one operating principle, I'd make it:
+
+NAYA POWER — THINK FROM THE OUTCOME BACKWARD.
+
+Never guess when logic, evidence, testing, or source-of-truth inspection can determine the answer. Identify the failure chain, rank hypotheses by probability and information value, test the highest-value hypothesis first, find the first divergence, make the smallest complete repair, verify the North Star, and capture what was learned.
+
+And underneath that:
+
+DON'T ASK “WHAT SHOULD I TRY?”
+
+Ask:
+
+“WHAT IS MOST LIKELY WRONG, WHAT EVIDENCE WOULD PROVE IT, AND WHAT IS THE SMALLEST RELIABLE MOVE THAT GETS US TO 10/10?”
+
+That is the operating system I want us using for this MAXESS repair and for Naya Power generally. 🚀
