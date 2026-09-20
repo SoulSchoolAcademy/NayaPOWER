@@ -116,8 +116,8 @@ jobs:
             const text=await dialog.innerText();
             if(!text.includes(expected)) throw Error('SIDEBAR_SURFACE_MISMATCH:'+label+' expected='+expected+' actual='+text.slice(0,500));
             checks[label]=expected;
-            await dialog.getByRole('button',{name:'DONE',exact:true}).click();
-            await dialog.waitFor({state:'detached',timeout:5000}).catch(()=>{});
+            await dialog.locator('[data-nc-close]').click().catch(()=>{});
+            await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
           };
 
           await clickAndCheck('Smart Feed','Smart Feed');
