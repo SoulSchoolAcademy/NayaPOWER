@@ -5,7 +5,7 @@
     "id": "FINAL-HUMAN-ACCEPTANCE",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Complete the human-facing Hub by proving the canonical Smart Note receive/render path and remaining feature surfaces, then consolidate human acceptance; public Welcome → Identity remains deferred until the canonical Hub is complete.",
+    "intent": "Complete deep human-facing Hub lifecycle acceptance after the canonical Smart Note transaction and core Hub runtime are production-proven; public Welcome remains deferred.",
     "protected": [
       "existing production Space",
       "existing Connections and Smart List substrate",
@@ -21,7 +21,8 @@
       "authority constraints have positive and negative runtime evidence",
       "ordinary-user activation is proven",
       "Windows portability is dispositioned",
-      "current Hub Smart Note human capture path is production-proven through receiver → cognition → PIS → Smart Feed → reload"
+      "current Hub Smart Note human capture path is production-proven through receiver → cognition → PIS → Smart Feed → reload",
+      "deep lifecycle evidence exists for Smart Lists, Smart Share, Smart Ledger, Smart Mail, Reports, Search, and Settings according to each surface's actual contract"
     ],
     "evidence": [
       ".github/workflows/verify-proof7-compounding-loop.yml",
@@ -30,9 +31,9 @@
       "supabase/migrations/20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql"
     ],
     "target_state": "HUMAN_FACING_PRODUCTION_ACCEPTANCE_READY",
-    "next_action": "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source.",
+    "next_action": "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome.",
     "next_actions": [
-      "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source."
+      "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome."
     ],
     "scope": [
       "authenticated human-facing production acceptance",
