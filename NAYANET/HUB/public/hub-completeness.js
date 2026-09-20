@@ -86,32 +86,14 @@ async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthf
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
  const map={home:'feed',notes:'note',reports:'reports',intelligence:'intelligence',collective:'feed',evidence:'evidence',connections:'connections',mail:'mail',settings:'settings'};
- rail.querySelectorAll('[data-page]').forEach(b=>{
-  const key=b.getAttribute('data-page'); if(map[key]){b.dataset.nc=map[key]; if(key==='collective')b.dataset.ncStream='collective';}
-  b.removeAttribute('data-page');
- });
+ rail.querySelectorAll('[data-page]').forEach(b=>{const key=b.getAttribute('data-page');if(map[key]){b.dataset.nc=map[key];if(key==='collective')b.dataset.ncStream='collective';}b.removeAttribute('data-page')});
  const navs=[...rail.querySelectorAll('.nav')];
- const add=(nav,key,label,icon,stream)=>{
-  if(rail.querySelector('[data-nc="'+key+'"]'))return;
-  const b=document.createElement('button'); b.type='button'; b.dataset.nc=key; if(stream)b.dataset.ncStream=stream;
-  b.innerHTML='<span class="ico">'+icon+'</span>'+label; nav.appendChild(b);
- };
- const personal=navs[0];
- if(personal){const first=personal.querySelector('[data-nc="feed"]'); if(first){first.textContent=''; first.innerHTML='<span class="ico">✦</span>Smart Feed'; first.dataset.nc='feed'; first.dataset.ncStream='personal';} add(personal,'note','Smart Notes','▤');}
- const collective=navs[1];
- if(collective){add(collective,'share','Smart Share','↗');}
- const communication=navs[2];
- if(communication){add(communication,'ledger','Smart Ledger','◇');add(communication,'dream','Dream','✧');}
- let tools=rail.querySelector('[data-naya-sidebar-tools]');
- if(!tools){
-  const label=document.createElement('div'); label.className='label'; label.dataset.nayaSidebarTools='true'; label.textContent='INTELLIGENCE TOOLS';
-  const nav=document.createElement('nav'); nav.className='nav'; nav.setAttribute('aria-label','Intelligence tools');
-  if(communication) communication.after(label); else rail.appendChild(label);
-  label.after(nav);
-  tools=nav;
- }else tools=tools.querySelector('.nav')||tools;
- add(tools,'lists','Smart Lists','☷');add(tools,'spaces','Smart Spaces','◌');add(tools,'play','Naya Play','▶');
- const settings=rail.querySelector('[data-nc="settings"]'); if(settings)settings.dataset.nc='settings';
+ const add=(nav,key,label,icon,stream)=>{if(!nav||nav.querySelector('[data-nc="'+key+'"]'))return;const b=document.createElement('button');b.type='button';b.dataset.nc=key;if(stream)b.dataset.ncStream=stream;b.innerHTML='<span class="ico">'+icon+'</span>'+label;nav.appendChild(b)};
+ const personal=navs[0];if(personal){const first=personal.querySelector('[data-nc="feed"]');if(first){first.innerHTML='<span class="ico">✦</span>Smart Feed';first.dataset.nc='feed';first.dataset.ncStream='personal'}add(personal,'note','Smart Notes','▤')}
+ const collective=navs[1];if(collective)add(collective,'share','Smart Share','↗');
+ const communication=navs[2];if(communication){add(communication,'ledger','Smart Ledger','◇');add(communication,'dream','Dream','✧')}
+ const tools=navs[3]||navs[2];if(tools){add(tools,'lists','Smart Lists','☷');add(tools,'spaces','Smart Spaces','◌');add(tools,'play','Naya Play','▶')}
+ const settings=rail.querySelector('[data-nc="settings"]');if(settings)settings.dataset.nc='settings';
  return true;
 }
 function install(){
