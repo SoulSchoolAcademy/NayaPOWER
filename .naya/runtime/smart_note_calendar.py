@@ -10,6 +10,11 @@ from __future__ import annotations
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+import sys
+
+RUNTIME_ROOT = Path(__file__).resolve().parent
+if str(RUNTIME_ROOT) not in sys.path:
+    sys.path.insert(0, str(RUNTIME_ROOT))
 
 from calendar_projection import _utc_parts, safe_topic
 from smart_note_transaction import canonical_smart_note_path
