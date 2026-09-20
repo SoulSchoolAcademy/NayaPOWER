@@ -14,7 +14,7 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — PUBLIC FRONT DOOR + CONSOLIDATED HUMAN ACCEPTANCE",
+  "priority": "P0 — CANONICAL HUB HUMAN ACCEPTANCE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "FINAL-HUMAN-ACCEPTANCE",
   "current_block_status": "ACTIVE",
@@ -96,7 +96,8 @@
     "Current main NAYA_SUPERBRAIN_READY run 35471113077 is READY with zero UNKNOWN and zero FAILED gates; exact current HEAD at observation is fb17b633934c0803833db76cb12f28171cbfbfb5.",
     "Fresh Smart Mail learning bridge proof recorded in NAYA/ACTIVITY/2026/09/19.md: message e5133412-79aa-4740-97e3-52e8c9f3ffeb → receipt dfda38b8-ef21-4e9b-9386-358134093d85 → cognition smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342 → Ledger 30156e7c-36a3-457a-bc4e-7aab332ac0cf → learning evidence a0509374-cff6-4b59-aeb5-f17b68dda033 → learner state v1 → USE_VERIFIED_LEARNING_CONTEXT influenced=true → governed continuation da96d9db-3c8b-46c9-baf4-cba8df10a6e0.",
     "P1 controlled paired experiment run 35472129371 proved three held-out cases with aggregate baseline value 0 and candidate value 3, plus a future case whose learned successor improved 0→1; evidence artifact was CI-validated.",
-    "Live public welcome.nayanet.app currently embeds shiny-wave-dd48.nayanet.workers.dev; its live identity page activateAndRedirect() sends users to academy.nayanet.app rather than the canonical Assistant Cloudflare Hub."
+    "Live public welcome.nayanet.app currently embeds shiny-wave-dd48.nayanet.workers.dev; its live identity page activateAndRedirect() sends users to academy.nayanet.app rather than the canonical Assistant Cloudflare Hub.",
+    "Human Hub Smart Note capture proof run 35527638171 is VERIFIED at live runtime: capture control → canonical receiver → canonical event e27faa0c-df86-4f32-bb34-62b283c7548f → cognition row 627dd24e-48e0-4317-b9df-c5e03c1c64b7 → PIS index 7595c62b-2a00-43c4-bdb5-13666397edef → Smart Feed render → reload identity preserved."
   ],
   "unknown": [
     "A single consolidated current human-facing acceptance receipt that includes the public welcome front door and every Wave A security/relationship step is not yet recorded.",
@@ -119,7 +120,8 @@
     "Name-First run 35470452943 failed on a stale /releases/ route expectation; the corrected run 35470526689 passed after accepting the canonical root handoff.",
     "Authenticated lifecycle run 35470355975 failed because the observer searched the outer document; current run 35470519946 passed after observing the canonical iframe projection.",
     "Dream learning run 35470355965 failed on the same stale /releases/ assumption; current run 35470535019 passed after aligning the root handoff.",
-    "Fresh current-main Welcome diagnostic run 35483739274 was intentionally cancelled after remaining stalled at npm install in the proof runner; direct live-runtime inspection independently established the same causal boundary."
+    "Fresh current-main Welcome diagnostic run 35483739274 was intentionally cancelled after remaining stalled at npm install in the proof runner; direct live-runtime inspection independently established the same causal boundary.",
+    "Current control-plane state was stale: it still exposed the Smart Note receiver as the next action after that boundary had been closed. Reconciliation is required before consequential Hub work."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -136,10 +138,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Human-facing Hub completion: Smart Note receiver/ingestion → Hub persistence/rendering, followed by complete feature-surface acceptance; public Welcome → Identity remains a separate external authority boundary.",
-  "single_next_action": "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence.",
+  "bottleneck": "Complete human-facing Hub acceptance after closing the canonical Smart Note human capture transaction; public Welcome remains deferred until Hub completion.",
+  "single_next_action": "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source.",
   "next_actions": [
-    "Close the canonical Smart Note receiver boundary in NAYANET/HUB: prove one real Smart Note can be received, validated, persisted, projected into the Intelligent Feed, rendered as the same intelligence object, and rejected safely on duplicate/unauthorized/malformed input; then record the evidence."
+    "Reconcile MAP → STATE → BLOCKS → PROOF → ACTIVITY → HANDOFF against the exact current main and record Smart Note Action 01 as VERIFIED; then expose exactly one next action: final canonical deployment of that reconciled source."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — PUBLIC FRONT DOOR CLOSURE\nResolve live main 445198e9e63261e00b3b319fbedf5430260ea7ec. Live evidence proves welcome.nayanet.app embeds shiny-wave-dd48 and its /identity activation redirects to academy.nayanet.app. Do not modify NayaPOWER engine, learning, authority, or Hub source. Obtain only the authorized deployment capability for the owning shiny-wave public Welcome worker/source. Change only that activation target to https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/. Then independently verify the real browser flow Welcome → Identity → canonical Hub and run the existing diagnostic once. Stop at any auth/deployment boundary that remains unavailable.",
@@ -161,28 +163,28 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+  "recorded_at_head": "d796584ed796d9c97a74f844742be55b5261afbb",
   "latest_human_facing_observation": {
-    "status": "HUB_RUNTIME_VERIFIED_RECEIVER_AND_FULL_FEATURE_ACCEPTANCE_REMAIN",
-    "current_main_head": "c281f2f63df27495798aa4df68d8868913f709ca",
+    "status": "SMART_NOTE_HUMAN_CAPTURE_VERIFIED",
+    "current_main_head": "d796584ed796d9c97a74f844742be55b5261afbb",
+    "workflow": ".github/workflows/verify-human-smart-note-capture.yml",
+    "run_id": 35527638171,
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "event_id": "e27faa0c-df86-4f32-bb34-62b283c7548f",
+    "transaction_id": "3d3e97ef-5009-46ba-98ea-7e2abeba2596",
     "checks": {
-      "assistant_cloudflare_release": "SUCCESS",
-      "exact_source_parity": "VERIFIED",
-      "desktop_runtime_baseline": "VERIFIED",
-      "mobile_runtime_baseline": "VERIFIED",
-      "canonical_navigation": "VERIFIED",
-      "smart_feed_render": "VERIFIED",
-      "smart_feed_action_persistence": "VERIFIED",
-      "smart_feed_action_receipt": "VERIFIED",
-      "smart_feed_action_reload": "VERIFIED",
-      "library_route": "VERIFIED",
-      "smart_mail_route": "VERIFIED",
-      "public_welcome_to_canonical_hub": "BLOCKED"
+      "human_capture_control": "PASS",
+      "canonical_receiver": "PASS",
+      "same_event_identity": "PASS",
+      "smart_feed_render": "PASS",
+      "reload_identity": "PASS"
     },
-    "live_observation": {
-      "runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
-      "release_run_id": 35485053636,
-      "release_head": "c281f2f63df27495798aa4df68d8868913f709ca"
-    }
+    "persistence": {
+      "cognition_row_id": "627dd24e-48e0-4317-b9df-c5e03c1c64b7",
+      "index_row_id": "7595c62b-2a00-43c4-bdb5-13666397edef",
+      "owner_id": "d7c1209e-fae6-4211-bc60-2d39e8554033",
+      "status": "verified"
+    },
+    "interpretation": "The human-facing Smart Note sender now reaches the canonical receiver and the same canonical event identity is rendered in Smart Feed and preserved after reload."
   }
 }
