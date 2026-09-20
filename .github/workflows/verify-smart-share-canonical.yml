@@ -96,7 +96,10 @@ jobs:
           const sourceBefore=await ap.evaluate(async()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if((sourceBefore.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SOURCE_ALREADY_PUBLIC_BEFORE_SHARE');
 
-          await ap.evaluate(()=>window.__nayaOpenSurface('share'));
+          const shareNav=ap.locator('.rail.left button[data-page="share"]').first();
+          await shareNav.waitFor({state:'visible',timeout:15000});
+          await shareNav.scrollIntoViewIfNeeded();
+          await shareNav.click({force:true});
           await ap.locator('.nc-modal').waitFor({state:'visible',timeout:10000});
           const shareModal=ap.locator('.nc-modal').last();
           if(!(await shareModal.innerText()).includes('Smart Share')) throw Error('SMART_SHARE_SURFACE_NOT_OPEN');
