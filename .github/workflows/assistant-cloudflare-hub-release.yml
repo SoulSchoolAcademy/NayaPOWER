@@ -261,7 +261,7 @@ jobs:
                   return Boolean(userId && rows?.some(row => row?.user_id === userId));
                 }, sourceEventIdBeforeOwnershipCheck) : false;
                 if (!sourceOwned) {
-                  const noteTitle = 'Canonical Smart Feed owned-source proof ' + process.env.GITHUB_SHA.slice(0, 12) + '-' + viewport.label;
+                  const noteTitle = 'Canonical Smart Feed owned-source proof ' + process.env.GITHUB_RUN_ID + '-' + viewport.label;
                   const captureResult = await page.evaluate(async ({ title }) => window.NayaAssistantRuntime.captureSmartNote({
                     title,
                     content: 'Owned Smart Note created for the canonical Smart Feed action and share acceptance proof.',
