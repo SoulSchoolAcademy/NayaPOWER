@@ -57,3 +57,17 @@ NEXT:
 - Promotion receipt: `.naya/receipts/2026-09-19-DI-001-CURRENT-HEAD-PROMOTION.md`.
 
 **NEXT:** begin the next Hub vertical transaction using the promoted proof discipline.
+
+
+## Surface closure update — Wave A browser acceptance
+
+- Run `35492630746` completed SUCCESS against the live Assistant runtime.
+- Smart Ledger inspect vertical transaction: human click → canonical runtime record → receipt → exact retrieval → reload/retrieval → visible persisted result = PASS.
+- Smart Ledger evidence: ledger_event_id `475121a9-4576-4251-8626-654e9a82ada7`, inspect event `assistant_mu9ecues`, receipt `8d89bd11-69a4-40fa-8c95-58866dce323c`.
+- Unauthorized Smart Ledger persistence blocked with `AUTH_REQUIRED`.
+- Smart List, Connections, and Smart Mail tested vertical transactions also passed in the same existing harness.
+- Durable receipt: `.naya/receipts/2026-09-19-HUB-WAVE-A-BROWSER-CLOSURE.md`.
+- Fresh Dream → learning → later decision run `35492591064` passed; fresh-context learning reuse influenced the later decision while authority remained unchanged.
+- Superbrain Readiness Gate run `35492648603` completed SUCCESS with zero UNKNOWN and zero FAILED checks.
+
+**NEXT:** move to the next unresolved Hub surface and repeat the same causal proof standard.
