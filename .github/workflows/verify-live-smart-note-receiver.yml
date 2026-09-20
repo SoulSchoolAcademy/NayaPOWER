@@ -212,7 +212,6 @@ jobs:
 
             // Fresh authenticated browser-context proof: close the original context, restore only its auth storage state, and traverse the canonical Hub load path again.
             const freshStorageState = await contextA.storageState();
-            await contextA.close();
             const freshContext = await browser.newContext({storageState:freshStorageState});
             const freshPage = await freshContext.newPage();
             try {
