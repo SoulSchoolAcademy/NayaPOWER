@@ -96,8 +96,10 @@ jobs:
           const navLedger=navRoot.locator('button').filter({hasText:'Smart Ledger'});await navLedger.scrollIntoViewIfNeeded();await navLedger.click();await ap.waitForTimeout(700);
           if(!(await ap.locator('h1').filter({hasText:'Smart Ledger'}).count()))throw Error('SMART_LEDGER_ROUTE_FAILED');
           const ledgerCards=ap.locator('.feature-card');if(await ledgerCards.count()<1)throw Error('SMART_LEDGER_NO_RECORDS');
-          await ledgerCards.first().getByRole('button',{name:/Inspect evidence/i}).click();await ap.waitForTimeout(300);
+          await ledgerCards.first().getByRole('button',{name:/Inspect evidence/i}).click();
           const inspectButton=ap.getByRole('button',{name:/INSPECTING|INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/i}).last();
+          await inspectButton.waitFor({state:'attached'});
+          await ap.waitForFunction(()=>Array.from(document.querySelectorAll('button')).some(b=>/INSPECT PERSISTED|LEDGER_INSPECT_FAILED|AUTH_REQUIRED/.test(String(b.textContent||''))),null,{timeout:10000});
           const inspectStatus=String(await inspectButton.textContent().catch(()=>''));if(!inspectStatus.includes('INSPECT PERSISTED'))throw Error('SMART_LEDGER_INSPECT_NOT_PERSISTED:'+inspectStatus);
           const inspectEvents=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());const inspectEvent=inspectEvents.find(x=>x.source==='nayanet-hub.smart-ledger.inspect'&&x.metadata?.action==='inspect_evidence'&&x.metadata?.ledger_event_id);
           if(!inspectEvent)throw Error('SMART_LEDGER_INSPECT_RETRIEVAL_FAILED');
