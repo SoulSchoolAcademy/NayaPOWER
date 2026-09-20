@@ -162,6 +162,9 @@ jobs:
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "$RUNNER_TEMP/source.sha256")
           verified=0
+          # Cloudflare asset propagation can transiently return 3xx/404 immediately after deploy.
+          # Retry the same exact source-scope check; fail closed after the bounded window.
+          set +e
           for attempt in $(seq 1 30); do
             curl --fail --silent --show-error --location "$NAYA_RUNTIME_URL/?naya_release=${GITHUB_SHA}-attempt-${attempt}" -o "$RUNNER_TEMP/live.html"
             sha256sum "$RUNNER_TEMP/live.html" | tee "$RUNNER_TEMP/live.sha256"
@@ -198,6 +201,7 @@ jobs:
             echo "WAITING_FOR_CLOUDFLARE_PROPAGATION attempt=$attempt source=$source_hash live=$live_hash"
             sleep 2
           done
+          set -e
           test "$verified" = "1"
           echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=$live_hash"
       - name: Verify Assistant runtime baseline — desktop and mobile
