@@ -1,8 +1,0 @@
-{
-  "receipt_id":"RCPT-20260826-0045-retrieval-hardening",
-  "state":"PENDING_AUTHORITATIVE_CI",
-  "commit":"846529daea1bd35af564bdc061f3fb74a1b7f485",
-  "previous_verified_commit":"9aefe57a71bd6425681bb435d70417ad33832198",
-  "changes":["exact matching","BM25","TF-IDF","metadata filters","query expansion","recency weighting","authority weighting","relationship reranking","fail-closed unknown queries","precision/recall/MRR benchmark"],
-  "next":"authoritative Superbrain Gate on exact current main"
-}
