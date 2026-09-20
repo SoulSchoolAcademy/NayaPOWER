@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
 import { useIdentity } from '../identity/session';
-import type { WindowRuntime } from '../intelligence/runtime-types';
-
 type Row = Record<string, unknown>;
+type WindowRuntime = {
+  snapshot: () => { authenticated?: boolean; user_id?: string };
+  listMailThreads: () => Promise<unknown[]>;
+  listMailMessages: (threadId?: string) => Promise<unknown[]>;
+  listConnections: () => Promise<unknown[]>;
+  listAuthorityGrants: (targetId: string) => Promise<unknown[]>;
+  sendSmartMail: (input: { receiver_id: string; body: string; subject?: string; kind?: string; idempotency_key?: string; authority_grant_id: string }) => Promise<any>;
+  verifySmartMail: (messageId: string) => Promise<any>;
+};
 const short = (v: unknown) => { const s = String(v || ''); return s.length > 18 ? `${s.slice(0, 8)}…${s.slice(-6)}` : s; };
 
 function runtime(): WindowRuntime {
