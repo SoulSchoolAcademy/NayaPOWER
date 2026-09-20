@@ -351,6 +351,29 @@ The event must be understood and, where applicable, delivered through **five per
 
 These five perspectives do **not** create five independent memory authorities. They enrich the one canonical Note Event and its aligned Naya/Human/Machine representations.
 
+## 24A. CANONICAL SMART NOTE CAPTURE ACTION
+
+**Human governance decision — 2026-09-19:** The canonical governed machine action for Smart Note capture is:
+
+**`smart_note_capture`**
+
+This action means: create/persist one canonical Smart Note through the existing Smart Note resolver and canonical persistence/verification pipeline, subject to the existing governance, authority, privacy, scope, evidence, and verification rules.
+
+This action identifier is the canonical vocabulary binding for the Smart Note Proposal contract's `CAPTURE_IF_AUTHORIZED` request. It does **not** itself grant authority. An agent or caller may invoke `smart_note_capture` only when an existing valid authority representation explicitly grants that action for the applicable principal, purpose, scope, and target.
+
+The action does not include, by implication:
+
+- public publication or disclosure;
+- policy or governance changes;
+- consequential external actions;
+- execution authority beyond canonical Smart Note capture;
+- permission to convert uncertainty into truth;
+- permission to bypass the existing Smart Note resolver, PIS, receipt, or verification path.
+
+**Authority boundary:** `smart_note_capture` is an action vocabulary decision, not an authority grant. Concrete grants remain controlled by the existing authority registry/governance mechanism and must be explicitly established there before an AI-initiated proposal may execute capture.
+
+**Canonical mapping:** `CAPTURE_IF_AUTHORIZED` → `smart_note_capture` → existing governance/authority evaluation → existing canonical Smart Note creation pipeline.
+
 For every consequential Smart Note request, the operating behavior is:
 
 **GITHUB FIRST → READ → UNDERSTAND → RESTORE RELEVANT INTELLIGENCE → CAPTURE → EXTRACT → CLASSIFY → RELATE → TIMESTAMP → WRITE → VALIDATE → VERIFY → RECEIPT → INDEX → INTELLIGENT FEED → PIS WHEN AUTHORIZED → CIS → NEXT ACTION**
