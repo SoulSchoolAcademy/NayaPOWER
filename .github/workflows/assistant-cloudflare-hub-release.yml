@@ -70,8 +70,8 @@ jobs:
         run: |
           set -euo pipefail
           echo "DEBUG_GITHUB_SHA=${GITHUB_SHA}"
-echo "DEBUG_REQUESTED_COMMIT_SHA=${REQUESTED_COMMIT_SHA}"
-test -n "${REQUESTED_COMMIT_SHA}"
+          echo "DEBUG_REQUESTED_COMMIT_SHA=${REQUESTED_COMMIT_SHA}"
+          test -n "${REQUESTED_COMMIT_SHA}"
           test "${REQUESTED_COMMIT_SHA}" = "${GITHUB_SHA}"
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
