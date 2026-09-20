@@ -52,7 +52,7 @@ jobs:
           const proofKey = 'live-smart-note-receiver-' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(6).toString('hex');
           const title = 'LIVE Smart Note Receiver Proof ' + process.env.RUN_IDENTITY;
           const content = 'One real Smart Note must cross the canonical receiver, persist, become an Intelligent Block, reach the Intelligence Feed, and remain attributable after reload.';
-          const alias = ('receiver' + process.env.RUN_IDENTITY).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          const alias = ('receiver' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
 
           async function setupIdentity(page, name, smartAlias) {
             await page.goto(hub + '/identity.html?naya_hold=1', { waitUntil:'networkidle', timeout:60000 });
