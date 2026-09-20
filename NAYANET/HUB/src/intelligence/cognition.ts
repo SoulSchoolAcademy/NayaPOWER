@@ -94,7 +94,9 @@ export async function persistSmartFeedAction(input: {
       persistence_boundary: 'authenticated-cognition',
     },
   });
-  return {eventId, result};
+  const payload = result as {receipt?: {id?: string; receipt_id?: string}; state?: {revision?: number}; event?: {event_id?: string}} | null;
+  const receiptId = payload?.receipt?.receipt_id || payload?.receipt?.id || '';
+  return {eventId, receiptId, revision: payload?.state?.revision, result};
 }
 
 export async function retrieveSmartFeedActions(sourceEventId: string) {
