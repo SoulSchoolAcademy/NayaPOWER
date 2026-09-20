@@ -9,6 +9,7 @@ import { routes } from './routes';
 import { useIdentity } from '../identity/session';
 import { DreamSurface } from './DreamSurface';
 import { ReportsSurface } from './ReportsSurface';
+import { SmartShareSurface } from './SmartShareSurface';
 import { NayaPlaySurface } from './NayaPlaySurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
@@ -99,7 +100,7 @@ export function HubRouter({ path }: { path: string }) {
     case routes.lists:
       return <FeatureSurface kind="lists" />;
     case routes.share:
-      return <FeatureSurface kind="share" />;
+      return <SmartShareSurface />;
     case routes.spaces:
       return <FeatureSurface kind="spaces" />;
     case routes.connections:
