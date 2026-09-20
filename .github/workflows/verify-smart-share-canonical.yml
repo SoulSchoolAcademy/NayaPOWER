@@ -1,0 +1,222 @@
+name: NayaNET canonical Smart Share governed proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-smart-share-canonical.yml'
+      - 'NAYANET/HUB/index.html'
+      - 'NAYANET/HUB/public/assistant-runtime.js'
+      - 'NAYANET/HUB/public/hub-completeness.js'
+      - 'smart-feed.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-share:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute canonical Smart Share proof
+        shell: bash
+        run: |
+          cat > verify-smart-share.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL;
+          const project='NayaNET-Smart-Share-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
+
+          async function req(url,opt={}) {
+            const r=await fetch(url,opt);
+            const t=await r.text();
+            let b; try { b=JSON.parse(t) } catch { b={raw:t} }
+            if(!r.ok) throw Error(r.status+' '+JSON.stringify(b));
+            return b;
+          }
+          const headers=(token,extra={})=>({apikey:key,authorization:'Bearer '+token,'content-type':'application/json',...extra});
+          const signup=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          const A=await signup(), B=await signup(), C=await signup();
+          if(!A.access_token||!A.user?.id||!B.access_token||!B.user?.id||!C.access_token||!C.user?.id) throw Error('AUTH_BOOTSTRAP_FAILED');
+
+          const browser=await chromium.launch({headless:true});
+          const origin=new URL(runtime).origin;
+          const storageState=session=>({cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(session)}]}]});
+          async function contextFor(session,label) {
+            const context=await browser.newContext({storageState:storageState(session),viewport:{width:1440,height:1000}});
+            const page=await context.newPage();
+            const response=await page.goto(runtime+'/?smart_share_proof='+process.env.GITHUB_RUN_ID+'-'+label,{waitUntil:'domcontentloaded',timeout:60000});
+            if(response?.status()!==200) throw Error(label+'_HUB_ROOT_NOT_200:'+response?.status());
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const auth=await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+            if(!auth.authenticated||auth.user_id!==session.user.id) throw Error(label+'_AUTHENTICATED_HANDOFF_FAILED');
+            return {context,page};
+          }
+
+          const Actx=await contextFor(A,'A');
+          const ap=Actx.page;
+          const root=await ap.evaluate(()=>({title:document.title,directNine:document.querySelector('meta[name="nayanet-direct-nine"]')?.content||'',source:document.querySelector('meta[name="nayanet-source-commit"]')?.content||'',welcome:document.body.innerText.includes('welcome.nayanet.app')}));
+          if(root.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw Error('CANONICAL_TITLE_MISMATCH:'+root.title);
+          if(root.directNine!=='verified-static-top-nine') throw Error('CANONICAL_DIRECT_NINE_MISSING');
+          if(root.welcome) throw Error('WELCOME_FRONT_DOOR_PRESENT_ON_CANONICAL_HUB');
+
+          const note=await ap.evaluate(async()=>window.NayaAssistantRuntime.captureSmartNote({
+            title:'Canonical Smart Share proof '+location.hostname,
+            content:'Fresh owned intelligence created for the governed Smart Share lifecycle proof.',
+            source:'nayanet-smart-share-proof'
+          }));
+          const sourceEventId=String(note?.event?.event_id||note?.event_id||'');
+          const sourceReceiptId=String(note?.receipt?.receipt_id||note?.receipt_id||'');
+          if(!sourceEventId||!sourceReceiptId) throw Error('SOURCE_CAPTURE_RECEIPT_NOT_PROVEN');
+
+          const sourceRows=await ap.evaluate(id=>window.NayaAssistantRuntime.retrieve(id),sourceEventId);
+          if(!sourceRows.some(x=>x.event_id===sourceEventId&&x.user_id===A.user.id)) throw Error('OWNED_SOURCE_RETRIEVAL_FAILED');
+
+          const sourceBefore=await ap.evaluate(async()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if((sourceBefore.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SOURCE_ALREADY_PUBLIC_BEFORE_SHARE');
+
+          await ap.evaluate(()=>window.__nayaOpenSurface('share'));
+          await ap.locator('.nc-modal').waitFor({state:'visible',timeout:10000});
+          const shareModal=ap.locator('.nc-modal').last();
+          if(!(await shareModal.innerText()).includes('Smart Share')) throw Error('SMART_SHARE_SURFACE_NOT_OPEN');
+          const publishButton=shareModal.locator('#nc-publish');
+          await publishButton.click();
+          await ap.waitForFunction(()=>/PUBLISHED · PUBLICATION /.test(String(document.querySelector('.nc-modal #nc-state')?.textContent||'')),null,{timeout:20000});
+          const publishStatus=String(await shareModal.locator('#nc-state').textContent());
+          const publicationId=publishStatus.match(/PUBLICATION ([0-9a-f-]{36})/i)?.[1]||'';
+          const receiptEventId=publishStatus.match(/RECEIPT ([^ ]+)/)?.[1]||'';
+          if(!publicationId||!receiptEventId) throw Error('SMART_SHARE_PUBLICATION_RECEIPT_NOT_PROVEN:'+publishStatus);
+
+          const grants=await ap.evaluate(target=>window.NayaAssistantRuntime.listAuthorityGrants(target),A.user.id);
+          const grant=grants.find(g=>g.source_event_id===sourceEventId&&g.actions?.includes('smart_feed_publish')&&g.scope?.target===sourceRows[0].id);
+          if(!grant||grant.status!=='ACTIVE') throw Error('SMART_SHARE_AUTHORITY_GRANT_NOT_RETRIEVED:'+JSON.stringify(grants));
+
+          const validation=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{
+            method:'POST',
+            headers:headers(A.access_token),
+            body:JSON.stringify({p_grant_id:grant.grant_id,p_action:'smart_feed_publish',p_target:sourceRows[0].id})
+          });
+          if(validation.status!=='AUTHORIZED') throw Error('SMART_SHARE_AUTHORITY_NOT_AUTHORIZED:'+JSON.stringify(validation));
+
+          const collectiveA=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          const publishedA=(collectiveA.items||[]).find(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id);
+          if(!publishedA) throw Error('SMART_SHARE_COLLECTIVE_RETRIEVAL_FAILED');
+
+          const receiptRows=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve(receiptEventId));
+          if(!receiptRows.some(x=>x.event_id===receiptEventId&&x.source==='nayanet-hub.smart-share.publication'&&x.metadata?.publication_id===publicationId)) throw Error('SMART_SHARE_RECEIPT_RETRIEVAL_FAILED');
+
+          const publicationRow=await req(base+'/rest/v1/nayanet_intelligence_publications?select=id,intelligence_event_id,owner_id,status,consent_state&id=eq.'+publicationId,{headers:headers(A.access_token)});
+          if(publicationRow.length!==1||publicationRow[0].status!=='published'||publicationRow[0].consent_state!=='explicit'||publicationRow[0].owner_id!==A.user.id) throw Error('SMART_SHARE_DATABASE_PERSISTENCE_FAILED:'+JSON.stringify(publicationRow));
+
+          const Bctx=await contextFor(B,'B');
+          const bp=Bctx.page;
+          const collectiveB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if(!(collectiveB.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_COLLECTIVE_RECEIVER_RETRIEVAL_FAILED');
+          const personalB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50}));
+          if((personalB.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SMART_SHARE_PRIVATE_SOURCE_LEAKED_TO_RECEIVER_PERSONAL_FEED');
+
+          const replay=await ap.evaluate(id=>window.NayaAssistantRuntime.publishSmartFeed(id),sourceEventId);
+          if(String(replay?.publication?.id||'')!==publicationId) throw Error('SMART_SHARE_REPLAY_PUBLICATION_ID_CHANGED');
+          if(String(replay?.receipt?.event_id||'')!==receiptEventId) throw Error('SMART_SHARE_REPLAY_RECEIPT_ID_CHANGED');
+
+          const Cctx=await contextFor(C,'C');
+          const cp=Cctx.page;
+          const collectiveC=await cp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if(!(collectiveC.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_COLLECTIVE_THIRD_PARTY_RETRIEVAL_FAILED');
+          const personalC=await cp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50}));
+          if((personalC.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SMART_SHARE_PRIVATE_SOURCE_LEAKED_TO_THIRD_PARTY_PERSONAL_FEED');
+
+          await ap.reload({waitUntil:'networkidle'});
+          await ap.waitForTimeout(700);
+          const reloadCollective=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if(!(reloadCollective.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_NOT_RETRIEVED_AFTER_RELOAD');
+
+          const revoke=await ap.evaluate(id=>window.NayaAssistantRuntime.smartFeedAction({action:'revoke',publication_id:id}),publicationId);
+          if(revoke?.publication?.status!=='revoked') throw Error('SMART_SHARE_REVOKE_NOT_CONFIRMED:'+JSON.stringify(revoke));
+
+          const revokedDb=await req(base+'/rest/v1/nayanet_intelligence_publications?select=id,status,consent_state&id=eq.'+publicationId,{headers:headers(A.access_token)});
+          if(revokedDb.length!==1||revokedDb[0].status!=='revoked') throw Error('SMART_SHARE_REVOKE_DATABASE_NOT_PERSISTED');
+
+          const revokedA=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if((revokedA.items||[]).some(x=>x.publication_id===publicationId)) throw Error('SMART_SHARE_REVOKED_STILL_RETRIEVABLE_A');
+          const revokedB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
+          if((revokedB.items||[]).some(x=>x.publication_id===publicationId)) throw Error('SMART_SHARE_REVOKED_STILL_RETRIEVABLE_B');
+
+          const shortExpiry=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{
+            method:'POST',
+            headers:headers(A.access_token),
+            body:JSON.stringify({
+              p_subject_id:A.user.id,
+              p_source_event_id:'expiry-'+project,
+              p_mission_id:'NayaNET Smart Share expiry proof',
+              p_scope:{project_id:'NayaNET',target:sourceRows[0].id},
+              p_actions:['smart_feed_publish'],
+              p_constraints:{consent_state:'explicit',source_event_id:'expiry-'+project},
+              p_expires_at:new Date(Date.now()+1200).toISOString(),
+              p_evidence:{authorization_type:'smart-share-expiry-proof'},
+              p_parent_authority:null
+            })
+          });
+          if(!shortExpiry?.grant_id) throw Error('EXPIRY_GRANT_ISSUANCE_FAILED');
+          await new Promise(r=>setTimeout(r,2200));
+          const expired=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{
+            method:'POST',
+            headers:headers(A.access_token),
+            body:JSON.stringify({p_grant_id:shortExpiry.grant_id,p_action:'smart_feed_publish',p_target:sourceRows[0].id})
+          });
+          if(expired.status!=='BLOCKED'||expired.reason!=='GRANT_EXPIRED') throw Error('SMART_SHARE_EXPIRY_NOT_BLOCKED:'+JSON.stringify(expired));
+
+          const unauthorized=await bp.evaluate(async({sourceId})=>{
+            try{
+              await window.NayaAssistantRuntime.smartFeedAction({action:'publish',source_id:sourceId,authority_grant_id:'00000000-0000-0000-0000-000000000000'});
+              return 'UNEXPECTED_SUCCESS';
+            }catch(e){return String(e?.message||e)}
+          },{sourceId:sourceRows[0].id});
+          if(!/AUTHORITY_(NOT_AUTHORIZED|VALIDATION_FAILED)|SOURCE_NOT_OWNED|BLOCKED/i.test(unauthorized)) throw Error('SMART_SHARE_UNAUTHORIZED_FAILURE_NOT_TRUTHFUL:'+unauthorized);
+
+          const receipt={schema:'nayanet.smart-share.governed-proof.v1',status:'VERIFIED',run_id:process.env.GITHUB_RUN_ID,commit:process.env.GITHUB_SHA,runtime,identities:{owner:A.user.id,receiver:B.user.id,observer:C.user.id},source:{event_id:sourceEventId,receipt_id:sourceReceiptId},authority:{grant_id:grant.grant_id,status:validation.status,expires_at:grant.expires_at},publication:{id:publicationId,status:'revoked',consent_state:'explicit'},receipt_event_id:receiptEventId,checks:{
+            source_capture:'PASS',
+            owner_scope:'PASS',
+            authority_issuance:'PASS',
+            authority_validation:'PASS',
+            database_persistence:'PASS',
+            collective_retrieval:'PASS',
+            receiver_retrieval:'PASS',
+            third_party_isolation:'PASS',
+            receipt_retrieval:'PASS',
+            replay_idempotency:'PASS',
+            reload_retrieval:'PASS',
+            revocation:'PASS',
+            revoked_retrieval_denied:'PASS',
+            expiry_denied:'PASS',
+            unauthorized_failure:'PASS'
+          }};
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/smart-share-governed-proof.json',JSON.stringify(receipt,null,2));
+          console.log('NAYANET_SMART_SHARE_GOVERNED_PROOF=VERIFIED');
+          console.log(JSON.stringify(receipt));
+          await Cctx.context.close(); await Bctx.context.close(); await Actx.context.close(); await browser.close();
+          EOF
+          node verify-smart-share.mjs
+      - name: Upload Smart Share proof receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-smart-share-governed-proof
+          path: ${{ runner.temp }}/smart-share-governed-proof.json
+          if-no-files-found: error
