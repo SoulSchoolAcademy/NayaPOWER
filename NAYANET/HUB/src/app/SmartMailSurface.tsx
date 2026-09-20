@@ -39,12 +39,14 @@ export function SmartMailSurface() {
     }
     setError('');
     const rt = runtime();
-    const [threadRows, connectionRows] = await Promise.all([rt.listMailThreads(), rt.listConnections()]);
-    setThreads((threadRows || []) as Row[]);
-    setRecipients((connectionRows || [])
+    const [threadResult, connectionResult] = await Promise.all([rt.listMailThreads(), rt.listConnections()]);
+    const threadRows = threadResult as Row[];
+    const connectionRows = connectionResult as Row[];
+    setThreads(threadRows);
+    setRecipients(connectionRows
       .filter((x: Row) => String(x.status || '') === 'active')
       .map((x: Row) => ({ id: String(x.connected_member_id || ''), display_name: `Connected member · ${short(x.connected_member_id)}` })));
-    const latest = (threadRows || [])[0] as Row | undefined;
+    const latest = threadRows[0] as Row | undefined;
     setMessages(latest?.id ? ((await rt.listMailMessages(String(latest.id))) as Row[]) : []);
   };
 
@@ -53,8 +55,8 @@ export function SmartMailSurface() {
     setGrants([]);
     if (!targetId || !id.is_authenticated) return;
     try {
-      const rows = await runtime().listAuthorityGrants(targetId);
-      setGrants((rows || []).filter((g: Row) => String(g.status || '').toUpperCase() === 'ACTIVE'
+      const rows = (await runtime().listAuthorityGrants(targetId)) as Row[];
+      setGrants(rows.filter((g: Row) => String(g.status || '').toUpperCase() === 'ACTIVE'
         && JSON.stringify(g.actions || '').includes('smart_mail_send')) as Row[]);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'SMART_MAIL_AUTHORITY_LOAD_FAILED');
