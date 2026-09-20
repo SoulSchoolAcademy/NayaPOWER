@@ -225,7 +225,7 @@ jobs:
                   shell: document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker') || '',
                   nav: [...document.querySelectorAll('.nav-item')].map(x => x.textContent?.replace(/^[^\p{L}\p{N}]+/u, '').replace(/\s+/g, ' ').trim()).filter(Boolean),
                   feedBoards: document.querySelectorAll('.smart-feed-board').length,
-                  private: document.body.innerText.includes('PRIVATE BY DEFAULT'),
+                  private: document.body.innerText.includes('Private intelligence workspace'),
                   naya: document.body.innerText.includes('NAYA'),
                   intelligence: document.body.innerText.includes('INTELLIGENCE')
                 }));
