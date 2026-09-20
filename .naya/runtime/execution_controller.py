@@ -237,6 +237,10 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
                     evidence=emitted_evidence,
                     run_id=run_id,
                     session_id=data.get("session_id"),
+                    learning_event_id=action_ctx.get("learning_event_id"),
+                    retrieval_receipt_id=action_ctx.get("retrieval_receipt_id"),
+                    retrieval_source_event_id=action_ctx.get("retrieval_source_event_id"),
+                    retrieval_smart_note_id=action_ctx.get("retrieval_smart_note_id"),
                     events_root=EVENTS_ROOT,
                     index_path=INDEX_PATH,
                     measurement_context={
