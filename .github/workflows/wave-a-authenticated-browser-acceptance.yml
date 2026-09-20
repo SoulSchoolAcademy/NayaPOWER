@@ -46,16 +46,33 @@ jobs:
           const join=async u=>req(base+'/rest/v1/rpc/nayanet_join_space',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_space_id:spaceId})});
           await join(A);await join(B);await join(C);
           const save=async(u,target)=>req(base+'/rest/v1/rpc/nayanet_save_connection',{method:'POST',headers:h(u.access_token),body:JSON.stringify({p_target_member_id:target,p_space_id:spaceId})});
-          await save(A,B.user.id);await save(B,A.user.id);
           const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({p_subject_id:A.user.id,p_source_event_id:'wavea-browser-authority-'+project,p_mission_id:'Wave A live Hub acceptance',p_scope:{project_id:'NayaNET',target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],p_constraints:{mode:'human-facing-acceptance',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),p_evidence:{authorization_type:'explicit_wave_a_browser_acceptance',space_id:spaceId},p_parent_authority:null})});
           if(!grant?.grant_id)throw Error('AUTHORITY_GRANT_FAILED');
           const browser=await chromium.launch({headless:true});
           async function contextFor(session){const origin=new URL(runtime).origin;const storageState={cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(session)}]}]};const c=await browser.newContext({storageState});const p=await c.newPage();await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});const auth=await p.evaluate(async({base,key})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const c=sdk.createClient(base,key,{auth:{persistSession:true,autoRefreshToken:true,storage:localStorage,storageKey:'nayanet.supabase.auth'}});const r=await c.auth.getUser();if(r.error)throw r.error;return r.data.user?.id},{base,key});if(auth!==session.user.id)throw Error('BROWSER_SESSION_HANDOFF_MISMATCH');return {c,p}}
           const Actx=await contextFor(A),ap=Actx.p;
           const aAuth=await ap.evaluate(()=>window.NayaAssistantRuntime.init());if(aAuth.user_id!==A.user.id||!aAuth.authenticated)throw Error('A_AUTHENTICATED_HANDOFF_FAILED');
+          let connectDialogStep=0;
+          ap.on('dialog',async dialog=>{if(dialog.type()!=='prompt')throw Error('UNEXPECTED_CONNECT_DIALOG:'+dialog.type());connectDialogStep+=1;await dialog.accept(connectDialogStep===1?B.user.id:spaceId);});
           const spaces=await ap.evaluate(()=>window.NayaAssistantRuntime.listSpaces());if(!spaces.some(x=>x.id===spaceId))throw Error('SPACE_VISIBILITY_FAILED');
           const members=await ap.evaluate(id=>window.NayaAssistantRuntime.listSpaceMembers(id),spaceId);if(!members.some(x=>x.member_id===A.user.id)||!members.some(x=>x.member_id===B.user.id))throw Error('AB_MEMBERSHIP_UI_FAILED');
-          const connections=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());const ab=connections.find(x=>x.connected_member_id===B.user.id&&x.status==='active');if(!ab)throw Error('CONNECTIONS_UI_FAILED');
+          const connectionsBefore=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());if(connectionsBefore.some(x=>x.connected_member_id===B.user.id&&x.status==='active'))throw Error('CONNECTION_PREEXISTING');
+          const connectButton=ap.getByRole('button',{name:'↔ CONNECT',exact:true}).first();await connectButton.click();await ap.waitForTimeout(250);
+          await ap.locator('.sfb-related-list button').first().click();await ap.waitForTimeout(900);
+          const connectStatus=await ap.locator('.sfb-status').textContent().catch(()=> '');
+          if(!String(connectStatus||'').includes('CONNECTION CREATED · CANONICAL ID '))throw Error('CANONICAL_CONNECTION_CREATE_NOT_PROVEN:'+String(connectStatus||'NO_STATUS'));
+          const connectionId=String(connectStatus).match(/CANONICAL ID ([0-9a-f-]{36})/i)?.[1];if(!connectionId)throw Error('CANONICAL_CONNECTION_ID_MISSING');
+          const connections=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());const ab=connections.find(x=>x.id===connectionId&&x.owner_member_id===A.user.id&&x.connected_member_id===B.user.id&&x.status==='active'&&x.source_space_id);
+          if(!ab||ab.source_space_id!==spaceId)throw Error('CANONICAL_CONNECTION_RUNTIME_RETRIEVAL_FAILED:'+JSON.stringify(connections));
+          await ap.reload({waitUntil:'networkidle'});await ap.waitForTimeout(700);
+          const reloadedConnections=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());const reloaded=reloadedConnections.find(x=>x.id===connectionId&&x.connected_member_id===B.user.id&&x.status==='active');
+          if(!reloaded)throw Error('CANONICAL_CONNECTION_NOT_RETRIEVED_AFTER_RELOAD');
+          const navRoot=ap.viewportSize()?.width<=760?ap.locator('.mobile-nav'):ap.locator('.nav-section');
+          const connectionsNav=navRoot.locator('button').filter({hasText:'Your Connections'});await connectionsNav.scrollIntoViewIfNeeded();await connectionsNav.click();await ap.waitForTimeout(700);
+          if(!ap.url().includes('/connections'))throw Error('CONNECTIONS_ROUTE_FAILED');
+          const connectionSurfaceText=await ap.locator('.feature-surface').first().innerText();if(!connectionSurfaceText.includes(B.user.id))throw Error('CONNECTION_NOT_VISIBLE_IN_SURFACE');
+          console.log('CANONICAL_CONNECTION_CREATE_RELOAD_RETRIEVE_SURFACE_VERIFIED',JSON.stringify({connectionId,ownerMemberId:A.user.id,targetMemberId:B.user.id,spaceId}));
+
           const created=await ap.evaluate(async name=>window.NayaAssistantRuntime.createSmartList(name),'Wave A live acceptance '+project);const listId=created?.list_id||created?.id||created?.list?.id;if(!listId)throw Error('SMART_LIST_CREATE_FAILED');
           await ap.evaluate(async x=>window.NayaAssistantRuntime.addConnectionToList(x.listId,x.connectionId),{listId,connectionId:ab.id});const lists=await ap.evaluate(()=>window.NayaAssistantRuntime.listSmartLists());if(!lists.some(x=>x.id===listId&&x.members?.some(m=>m.connection_id===ab.id)))throw Error('SMART_LIST_UI_FAILED');
           const mail=await ap.evaluate(async x=>window.NayaAssistantRuntime.sendSmartMail({receiver_id:x.receiver,body:'Wave A live Hub acceptance.',subject:'Wave A acceptance',authority_grant_id:x.grant,idempotency_key:x.key}),{receiver:B.user.id,grant:grant.grant_id,key:'wavea-browser-mail-'+project});if(!mail?.message_id)throw Error('SMART_MAIL_UI_FAILED');
