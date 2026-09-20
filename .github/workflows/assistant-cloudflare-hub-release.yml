@@ -276,6 +276,7 @@ jobs:
                   if (persistedOwnedId !== ownedEventId) throw new Error('SMART_FEED_OWNED_SOURCE_ID_MISMATCH:' + JSON.stringify(ownedResult));
                   await page.goto(process.env.NAYA_RUNTIME_URL + '/feed?ci_owned_source=' + encodeURIComponent(ownedEventId) + '&naya_release=' + process.env.GITHUB_SHA, { waitUntil: 'networkidle', timeout: 30000 });
                   await page.locator('.smart-feed-board').waitFor({ timeout: 10000 });
+                  await page.locator('.searchWrap input').fill('Canonical Smart Feed owned-source proof');
                   await page.waitForFunction((expected) => Array.from(document.querySelectorAll('.smart-feed-board')).some(node => node.getAttribute('data-event-id') === expected), ownedEventId, { timeout: 15000 });
                   board = page.locator('[data-event-id="' + ownedEventId + '"]').first();
                   if (!(await board.count())) throw new Error('SMART_FEED_OWNED_SOURCE_NOT_RENDERED:' + ownedEventId);
