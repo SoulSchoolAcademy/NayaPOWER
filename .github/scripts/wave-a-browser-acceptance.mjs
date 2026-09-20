@@ -29,7 +29,8 @@ ap.on('response',async r=>{if(r.url().includes('nayanet_record_cognition_event')
           const spaces=await ap.evaluate(()=>window.NayaAssistantRuntime.listSpaces());if(!spaces.some(x=>x.id===spaceId))throw Error('SPACE_VISIBILITY_FAILED');
           const members=await ap.evaluate(id=>window.NayaAssistantRuntime.listSpaceMembers(id),spaceId);if(!members.some(x=>x.member_id===A.user.id)||!members.some(x=>x.member_id===B.user.id))throw Error('AB_MEMBERSHIP_UI_FAILED');
           const connectionsBefore=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());if(connectionsBefore.some(x=>x.connected_member_id===B.user.id&&x.status==='active'))throw Error('CONNECTION_PREEXISTING');
-          const connectButton=ap.getByRole('button',{name:'↔ CONNECT',exact:true}).first();await connectButton.click();await ap.waitForTimeout(250);
+          const connectButton=ap.getByRole('button',{name:'↔ CONNECT',exact:true}).first();await connectButton.click();await ap.waitForTimeout(500);
+          const personSelect=ap.locator('.sfb-connection-picker .sfb-picker-field').nth(1).locator('select');await personSelect.waitFor({state:'visible',timeout:10000});if(await personSelect.locator('option').count()<2)throw Error('CONNECTION_PERSON_OPTIONS_MISSING');await personSelect.selectOption({index:1});await ap.waitForTimeout(250);
           await ap.locator('.sfb-related-list button').first().click();await ap.waitForTimeout(900);
           const connectStatus=await ap.locator('.sfb-status').textContent().catch(()=> '');
           if(!String(connectStatus||'').includes('CONNECTION CREATED · CANONICAL ID '))throw Error('CANONICAL_CONNECTION_CREATE_NOT_PROVEN:'+String(connectStatus||'NO_STATUS'));
