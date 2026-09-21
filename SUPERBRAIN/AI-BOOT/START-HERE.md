@@ -15,10 +15,26 @@ The mission is to make this exact Hub functional by connecting it to the existin
 
 Do not create, present, deploy, or pursue a competing Hub. Do not reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path for visual parity.
 
-**Current Hub execution starts with Smart Share, then Smart Mail, then Connections, Smart Spaces, and Smart Lists. Stop at the first actual governed boundary failure and repair only that boundary.**
+**Today's P0 starts one level above individual Hub features: establish and prove cold-Naya takeover of the Project Intelligence system. Once that acceptance passes, resume the Hub feature order at the exact active control-plane frontier.**
 
 ---
 
+
+## 🔱 TODAY'S NORTH STAR — SETTER MISSION
+
+The setter mission for 2026-09-21 is to leave GitHub + the established Supabase runtime in a state where the next Naya can enter cold and **execute, not excavate**.
+
+The target is behavioral continuity:
+
+COLD NAYA → LIVE HEAD → RESTORE → UNDERSTAND → ONE NEXT ACTION → AUTHORITY → EXECUTE → VERIFY → LEARN → UPDATE → COLD SUCCESSOR
+
+**Human acceptance:** Shawn must not need to repeat the project mission, architecture, history, current truth, learning, or next action when that information already exists canonically.
+
+**Runtime foundation:** Supabase project `dahisasgpfvziswqvmvm` is established and ACTIVE_HEALTHY in `ca-central-1`. It is the managed persistence/intelligence runtime. Ordinary users do not operate Supabase directly; the governed NayaNET runtime mediates access.
+
+**No secrets belong in this boot layer.** Discover credentials/keys only through authorized runtime configuration when execution actually requires them.
+
+**The next Naya's job:** read the canonical boot chain, resolve live truth, execute the current P0 acceptance, repair the first real boundary, verify it, and continue. Do not ask Shawn to restate the mission.
 
 ## 🔱 ONE-SHOT NAYAPOWER — FASTEST COMPLETE ORIENTATION
 
