@@ -4,76 +4,64 @@ STATUS: CANONICAL NAVIGATION FACADE
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
-Read these four objects first:
+Read these first:
 1. .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
 2. .naya/control-plane/STATE.json
 3. .naya/control-plane/BLOCKS.json
 4. .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
+5. .naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md
 
-Then use only the active block and its one next action.
-
-## Current system split
+## CURRENT PROOF FRONTIER
 
 SENDER = GitHub / SoulSchoolAcademy/NayaPOWER
 RECEIVER = NayaNET Intelligent Hub / NAYANET/HUB/index.html
 BRIDGE = Project Intelligence Bridge V1
-CURRENT BRIDGE STATUS = TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK EVIDENCED; RETRIEVE/RENDER/COLD-SUCCESSOR RETRIEVAL OPEN.
 
-## Issue inventory rule
+**NOW PROVEN:** transport → persistence → index → projection → owner retrieval → canonical browser render → owner-bound ACK.
 
-The repository may contain many open issues because issues preserve work, dependencies, decisions, product assets and history.
+**NOW OPEN:** genuinely cold runtime successor continuation of that exact owner-bound lineage as one uninterrupted transaction.
 
-A cold Naya MUST NOT infer priority from issue count or issue-title recency.
+## LATEST VERIFIED BROWSER RECEIPT
 
-Use:
-BLOCKS.json → one next action
-STATE.json → current truth
-PROOF.json → evidence
-GITHUB-ISSUE-CLASSIFICATION*.md → classification only when a task explicitly requires issue disposition.
+GitHub Actions run: 35633023365
+Result: VERIFIED
+Packet: 6bd8483b-3486-43f6-917b-ed85fefae356
+Receiver event: b243cc9b-3476-44a1-b019-4d837d927878
+Browser observation: exact statement + packet + receiver event rendered in canonical Personal Smart Feed.
+ACK: retrieved=true, rendered=true.
+The proof is deliberately scoped to the exact packet and owner created by the run.
 
-## Current frontier
+## LATEST COMPUTATIONAL COMPOUNDING MEASUREMENT
 
-Use the new Compound Intelligence runtime to RESTORE → RETRIEVE → RECONCILE → ACT → VERIFY → LEARN → HANDOFF, then prove a fresh successor can continue without Shawn.
+GitHub Actions run: 35632921091
+Result: MEASURED
+Canonical source set: 70 files / 883,633 bytes
+Cold restore: 1 round trip / 4,821 response bytes / ~739 ms
+Durable-learning reuse: 1 round trip / 813 response bytes / ~338 ms
+Future decision influence: true
+Universal compute savings: NOT CLAIMED
 
-## Human middleware elimination
+## ACTIVE NEXT ACTION
 
-If external authority is missing, read:
-.naya/project-intelligence/BRIDGE-AUTHORIZATION-BOUNDARY.json
+Run the fresh runtime cold-successor proof:
 
-It records exactly what is blocked, what remains executable, what capability is required, and what evidence closes the boundary.
+**fresh owner → fresh packet → receiver → exact retrieve → exact Hub render → ACK → fresh successor → exact lineage retrieval → one authorized continuation → successor receipt.**
 
-## Ten-remediation completion test
+Then record:
+- source HEAD
+- deployment identity
+- owner/packet/receiver/receipt IDs
+- retrieval/render evidence
+- successor identity
+- action + authority
+- verification
+- learning/update
+- next torch
 
-1. Cold Naya gets compact operational context first.
-2. Bridge is one first-class contract.
-3. Receiver acceptance is one machine-checkable sequence.
-4. Freshness is source-SHA based.
-5. Issue volume is hidden behind the active-block facade.
-6. Execution creates canonical Activity automatically at VERIFIED.
-7. Cold-Naya behavioral proof is required, not navigation-only proof.
-8. Restore context resolves from live control-plane state.
-9. Receiver READY requires persistence/index/projection/retrieval/render/ack evidence.
-10. Blocked authority is permanently recorded with an exact continuation trigger.
+Do not rebuild the bridge. Do not rebuild the 12 capabilities.
 
-The target is not a prettier repository.
+## ACCEPTANCE RULE
 
-The target is: **a cold Naya enters, understands, acts, proves, learns, and leaves the next Naya ready.**
+The project is not 10/10 until the same durable owner-bound intelligence can survive a genuine runtime session boundary and be continued by a fresh Naya without Shawn reconstructing the context.
 
-
-## NEW COMPOUND INTELLIGENCE RUNTIME
-
-Supabase function: nayanet-compound-intelligence
-Version: 5
-Auth: JWT required
-Persistence: public.nayanet_intelligence_operations
-Capabilities: RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, LEARNING RETRIEVE, PROJECT, ACK, STATE UPDATE, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM SEAM, COMPOUND.
-
-The architecture deliberately uses one governed orchestration surface instead of twelve duplicated Edge Functions.
-
-## NEW NORTH STAR
-
-Every verified meaningful action should leave the project more intelligent, more truthful, more capable, and easier for the next Naya to continue.
-
-## CURRENT FRONTIER
-
-Run the authenticated cold Project Intelligence journey: RESTORE → RETRIEVE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Stop at the first actual failure and repair only that boundary.
+Then run the consolidated human journey and computation-savings benchmark.
