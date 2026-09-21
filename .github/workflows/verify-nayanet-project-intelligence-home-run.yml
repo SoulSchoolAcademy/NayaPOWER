@@ -239,7 +239,9 @@ jobs:
               const fresh=await browser.newContext({storageState:state});
               const fp=await fresh.newPage();
               let continuationEventId=null;
+              let continuationReceiptId=null;
               let successorHandoff=null;
+              let successorReceiptId=null;
               try{
                 await fp.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
                 const freshSession = await (async()=>{
@@ -287,7 +289,9 @@ jobs:
                 });
                 if(continuation.status!=='CONTINUATION_VERIFIED'||!continuation.continuation_event?.event_id||!continuation.receipt?.id) throw new Error('AUTHORIZED_CONTINUATION_FAILED');
                 continuationEventId=continuation.continuation_event.event_id;
-                mark('CONTINUATION','PASS',{continuation_event_id:continuationEventId,receipt_id:continuation.receipt.id});
+                continuationReceiptId=continuation.receipt?.receipt?.id ?? continuation.receipt?.id ?? null;
+                if(!continuationReceiptId) throw new Error('AUTHORIZED_CONTINUATION_RECEIPT_MISSING:'+JSON.stringify(continuation));
+                mark('CONTINUATION','PASS',{continuation_event_id:continuationEventId,receipt_id:continuationReceiptId});
 
                 successorHandoff=await compound(fp,freshSession,'successor_handoff',{
                   parent_event_id:continuationEventId,
@@ -298,11 +302,13 @@ jobs:
                   why:'Preserve the verified successor torch.',
                   evidence_required:['fresh continuation retrieval','successor receipt']
                 });
-                if(!successorHandoff.successor?.event_id||!successorHandoff.receipt?.id) throw new Error('SUCCESSOR_RECEIPT_FAILED');
-                mark('SUCCESSOR_RECEIPT','PASS',{successor_event_id:successorHandoff.successor.event_id,receipt_id:successorHandoff.receipt.id,parent_event_id:continuationEventId});
+                if(!successorHandoff.successor?.event_id) throw new Error('SUCCESSOR_RECEIPT_FAILED:'+JSON.stringify(successorHandoff));
+                successorReceiptId=successorHandoff.receipt?.receipt?.id ?? successorHandoff.receipt?.id ?? null;
+                if(!successorReceiptId) throw new Error('SUCCESSOR_RECEIPT_MISSING:'+JSON.stringify(successorHandoff));
+                mark('SUCCESSOR_RECEIPT','PASS',{successor_event_id:successorHandoff.successor.event_id,receipt_id:successorReceiptId,parent_event_id:continuationEventId});
               }finally{await fresh.close()}
 
-              const proof={schema:'NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1',status:'PROVEN',run_id:run,source_head:process.env.GITHUB_SHA,packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:receiverEventId,receipt_id:ack.receipt_id,continuation_event_id:continuationEventId,successor_event_id:successorHandoff.successor.event_id,successor_receipt_id:successorHandoff.receipt.id,trace};
+              const proof={schema:'NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1',status:'PROVEN',run_id:run,source_head:process.env.GITHUB_SHA,packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:receiverEventId,receipt_id:ack.receipt_id,continuation_event_id:continuationEventId,continuation_receipt_id:continuationReceiptId,successor_event_id:successorHandoff.successor.event_id,successor_receipt_id:successorReceiptId,trace};
               fs.writeFileSync('project-intelligence-home-run-proof.json',JSON.stringify(proof,null,2));
               console.log(JSON.stringify(proof,null,2));
             }finally{await ctx.close();await browser.close()}
