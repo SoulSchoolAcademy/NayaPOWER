@@ -1,0 +1,18 @@
+{
+  "$schema":"nayanet/project-intelligence/agency-retry/v1",
+  "agency_levels":{
+    "L0":"Observe only; no mutation.",
+    "L1":"Recommend; no external side effect.",
+    "L2":"Prepare reversible action; execution requires separate authorization.",
+    "L3":"Execute bounded reversible action within explicit scope.",
+    "L4":"Execute multi-step workflow within explicit scope and authority.",
+    "L5":"Delegate/coordinate only when delegation authority is explicitly granted."
+  },
+  "laws":[
+    "Effective agency must be explicitly granted; capability never raises agency.",
+    "Requested action level must be <= granted agency.",
+    "Authorization must bind actor, action, resource, scope, and time.",
+    "A retry of materially equivalent work is forbidden unless new information changes the test, inputs, authority, or causal hypothesis.",
+    "After three materially equivalent failures, strategy reassessment is mandatory."
+  ]
+}
