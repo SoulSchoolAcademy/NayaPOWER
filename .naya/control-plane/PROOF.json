@@ -884,5 +884,32 @@
     "pi01_home_run": 35638451543,
     "control_plane_status": "RECONCILED",
     "note": "PI-01 is now proven at the tested owner-bound production scope. Current operational frontier moves to measured computation efficiency."
+  },
+  "compound_intelligence_12": {
+    "status": "PROVEN",
+    "workflow_run": 35639958653,
+    "job_id": 106466577483,
+    "artifact_id": 10657239254,
+    "source_head": "55120e6ca45b95bac99b1a071a1296ef7eb3abb1",
+    "schema": "NAYANET_COMPOUND_INTELLIGENCE_12_PROOF_V1",
+    "claim_scope": "authenticated production Supabase runtime through canonical Hub identity/session",
+    "capabilities": [
+      "restore",
+      "understand",
+      "retrieve",
+      "reconcile",
+      "learning_candidate",
+      "learning_verify",
+      "successor_handoff",
+      "share",
+      "supersede",
+      "health",
+      "dream",
+      "compound"
+    ],
+    "learning_evidence_id": "4035f4a5-8f80-4d22-b966-76724ecd4a49",
+    "successor_event_id": "successor:ba3da452-1f04-4298-9c0c-d01fd65afac8",
+    "superseding_event_id": "supersede:354ac686-7196-408b-b6ad-9292ce638576",
+    "dream_replay_id": "55aa78fd-68d2-4c0a-b668-eafc7751e076"
   }
 }

@@ -645,3 +645,56 @@ The first home-run was not treated as permanent truth after downstream state cha
 - #431/#432: malformed historical event timestamp could crash reconstruction; invalid historical events are now quarantined as UNKNOWN and safely sorted.
 
 **Next:** measure computational compounding. PI-01 remains closed unless regression evidence appears.
+
+
+---
+
+## 2026-09-21 — COMPOUND INTELLIGENCE 12-CAPABILITY PROOF
+
+**Status:** 🟢 **PROVEN — AUTHENTICATED PRODUCTION RUNTIME**
+
+**Workflow:** `35639958653`  
+**Job:** `106466577483`  
+**Artifact:** `10657239254`  
+**Proof schema:** `NAYANET_COMPOUND_INTELLIGENCE_12_PROOF_V1`
+
+### All 12 governed capabilities passed
+
+1. RESTORE
+2. UNDERSTAND
+3. RETRIEVE
+4. RECONCILE
+5. LEARNING CANDIDATE
+6. LEARNING VERIFY
+7. SUCCESSOR HANDOFF
+8. SHARE
+9. SUPERSEDE
+10. HEALTH
+11. DREAM
+12. COMPOUND
+
+### Important boundary now proven
+
+The reconcile capability was tested correctly against its real contract: one canonical-runtime claim plus one intentionally conflicting documentation claim.
+
+Result: **RECONCILED_WITH_CONFLICTS**, with both an authoritative match and preserved conflict evidence.
+
+That is important because reconciliation is not supposed to make disagreement disappear. It is supposed to tell the truth about it.
+
+### Learning lineage
+
+- Understanding event: `understanding:c423257a-914a-4f9f-9b5e-24c4b9fe88b2`
+- Learning evidence: `4035f4a5-8f80-4d22-b966-76724ecd4a49`
+- Successor event: `successor:ba3da452-1f04-4298-9c0c-d01fd65afac8`
+- Superseding event: `supersede:354ac686-7196-408b-b6ad-9292ce638576`
+- Dream replay: `55aa78fd-68d2-4c0a-b668-eafc7751e076`
+
+### What this proves
+
+The Compound Intelligence runtime is no longer merely a collection of deployed functions. The controlled production proof exercised the complete 12-capability surface through authenticated Hub identity/session.
+
+### What it does NOT prove
+
+It does **not** yet prove universal autonomous compounding, universal computation savings, or that learning always changes future behavior outside the tested controlled scope.
+
+**Current frontier remains:** COMPUTATION-EFFICIENCY-P1.
