@@ -1,0 +1,51 @@
+name: Verify Team Naya Cold Baton
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/team_naya_baton_acceptance.py"
+      - ".naya/team-naya/**"
+      - ".github/workflows/verify-team-naya-baton.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  team-naya-baton:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Resolve immutable source
+        id: source
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Run four isolated cold sessions
+        env:
+          EXPECTED_HEAD: ${{ steps.source.outputs.sha }}
+          TEAM_NAYA_BATON_RUN: ${{ github.run_id }}
+        run: python .naya/runtime/team_naya_baton_acceptance.py
+      - name: Validate baton artifact
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          p=pathlib.Path('.naya/team-naya/batons/${{ github.run_id }}/MANIFEST.json')
+          d=json.loads(p.read_text())
+          assert d['status']=='PASS'
+          assert d['sessions']==['A-PRIME','B-OSCAR','C-RUNTIME','D-COLD-SUCCESSOR']
+          assert len(d['acceptance'])==6
+          print('TEAM_NAYA_BATON=PASS')
+          print('SOURCE_HEAD='+d['live_head'])
+          PY
+      - name: Publish baton evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: team-naya-cold-baton
+          path: .naya/team-naya/batons/${{ github.run_id }}/
+          retention-days: 30
