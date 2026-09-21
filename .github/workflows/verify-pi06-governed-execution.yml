@@ -51,7 +51,7 @@ jobs:
           if(!receiptId)throw Error('EXECUTION_RECEIPT_ID_MISSING');
           const rows=await rest('nayanet_execution_receipts?id=eq.'+encodeURIComponent(receiptId)+'&select=id,project_id,action,status,expected_result,observed_result,authority_grant_id,authority_status_at_execution,authority_scope,authority_actions,authority_constraints,authority_source_event_id',t);
           if(!rows?.[0])throw Error('EXECUTION_RECEIPT_NOT_RETRIEVABLE');
-          if(rows[0].status!=='SUCCESS'||rows[0].authority_status_at_execution!=='AUTHORIZED')throw Error('EXECUTION_RECEIPT_NOT_VERIFIED:'+JSON.stringify(rows[0]));
+          if(rows[0].status!=='SUCCESS'||rows[0].authority_status_at_execution!=='ACTIVE')throw Error('EXECUTION_RECEIPT_NOT_VERIFIED:'+JSON.stringify(rows[0]));
           console.log('PI06_RESULT='+JSON.stringify({schema:'NAYANET_PI06_GOVERNED_EXECUTION_PROOF_V1',run_id:runId,fresh_authenticated_context:true,unauthorized_blocked:true,authorized_executed:true,receipt_id:receiptId,observable_result:exec.body.execution?.observed_result,external_side_effects:false,status:'VERIFIED'}));
           EOF
           node verify-pi06.mjs
