@@ -10,7 +10,7 @@
       "source": "git:HEAD",
       "resolution": "LIVE_AT_EXECUTION_TIME",
       "recorded_head_is_not_authoritative": true,
-      "latest_verified_live_head": "da4fd6cf34425213bda801aee3b0c48c58119289"
+      "latest_verified_live_head": "4add93a78696bbdbf307132b5757328b57587a79"
     },
     "state": ".naya/control-plane/STATE.json",
     "block": ".naya/control-plane/BLOCKS.json",
@@ -24,15 +24,17 @@
     "Repository-local compounding Project Intelligence proof exists.",
     "Project Intelligence Bridge server-to-server transaction is proven at the governed receiver boundary: packet accepted, persisted, indexed, projected, acknowledged, and replayed idempotently.",
     "Supabase Project Intelligence operating layer version 5 is deployed with restore, retrieve, reconcile, understand, learning candidate/verify/retrieve, project, ack, successor handoff, share, supersede lineage, health, state update and compound lifecycle capabilities.",
-    "Canonical project state is persisted in public.nayanet_project_intelligence_state and bridge retrieval/render evidence is distinct from transport flags."
+    "Canonical project state is persisted in public.nayanet_project_intelligence_state and bridge retrieval/render evidence is distinct from transport flags.",
+    "Current-head PI-01 predecessor acceptance is recognized by the frontier-aware repository proof validator; stale active-block assertions are no longer authoritative."
   ],
   "unknown": [
-    "Hub-facing retrieval/render of the bridge transaction and a genuinely cold successor retrieving that exact receipt are still open.",
-    "Hub/runtime retrieval/render of the exact bridge receipt and genuinely cold successor retrieval remain open.",
-    "Universal real-world computation savings remain unmeasured."
+    "Universal real-world computation savings remain unmeasured.",
+    "Universal model/provider learning quality remains unproven.",
+    "Complete human-facing journey acceptance remains open.",
+    "Production release revalidation for the current canonical source requires a completed latest workflow observation."
   ],
   "blocked": [
-    "A live receiver transaction requires the authorized receiver endpoint and credential boundary."
+    "The current canonical Hub production release workflow is queued behind the configured assistant-cloudflare-production environment boundary; no credential is exposed in conversation."
   ],
   "protected": [
     "Canonical control plane",
@@ -53,7 +55,7 @@
   "bridge": {
     "type": "project_intelligence_bridge",
     "contract": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
-    "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
+    "status": "TRANSPORT_AND_RUNTIME_CONTINUITY_PROVEN_AT_RECORDED_SCOPE",
     "target": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
     "latest_proof": {
       "workflow_run": 35623988420,
@@ -70,15 +72,15 @@
     "operating_function_version": 5
   },
   "current_next_action": {
-    "action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
-    "reason": "Remove manual archaeology and make architecture carry continuity.",
+    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "reason": "Close the first incomplete human-facing acceptance boundary after Project Intelligence continuity was proven.",
     "proof_required": [
-      "restore response",
-      "bridge receipt",
-      "retrieval evidence",
-      "render evidence",
-      "cold successor receipt",
-      "continuation outcome"
+      "live canonical source parity",
+      "browser journey evidence",
+      "durable saved result",
+      "reload/fresh-context retrieval",
+      "evidence/provenance display",
+      "authorized continuation outcome"
     ]
   },
   "cold_naya_restore": [
@@ -92,9 +94,10 @@
     "Record successor continuity."
   ],
   "current_frontier": {
-    "active_block": "PROJECT-INTELLIGENCE-PI-01",
-    "priority": "P0",
-    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
-    "success_condition": "Cold Naya restores the canonical project object, retrieves exact bridge lineage, distinguishes truth/unknown/blocked, selects one authorized action, verifies it, updates learning, and leaves an executable successor."
-  }
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "priority": "P1",
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "success_condition": "The canonical Hub completes the human journey with durable evidence and continuity, while computation efficiency is measured without sacrificing verified outcome quality."
+  },
+  "current_repository_head": "4add93a78696bbdbf307132b5757328b57587a79"
 }
