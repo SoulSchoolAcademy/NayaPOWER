@@ -20,6 +20,8 @@ Prevent long-running AI work from collapsing into lost context, duplicated effor
 
 ## CURRENT STATE
 
+**Compound Intelligence 12-capability runtime:** PROVEN in authenticated production proof run 35627801895. See `.naya/project-intelligence/COMPOUND-INTELLIGENCE-12-PROOF-2026-09-21.md` and `.naya/TEAM-NAYA/13-COMPOUND-INTELLIGENCE-12-CAPABILITY-MISSION.md`.
+
 **Active P0 block:** `TORCH-59-MACHINE-TRUTH-RESTORATION`
 
 **Team Naya operating center:** `.naya/TEAM-NAYA/08-TODAY-SUPERBRAIN-SUCCESS-PLAN.md`
@@ -56,6 +58,14 @@ Repository evidence establishes substantial real progress, including:
 These are capability-specific proofs, not proof that the entire production Superbrain is complete.
 
 ## WHAT IS NOT PROVEN
+
+- receiver retrieval/render plus genuinely cold successor retrieval/continuation as one uninterrupted Project Intelligence journey;
+- complete human journey and same-human-surface acceptance;
+- consolidated sender → receiver → retrieval → render → cold successor chain;
+- universal real-world computation savings measurement;
+- final adversarial/Oscar acceptance.
+
+## WHAT IS NOT PROVEN — HISTORICAL LIST
 
 - full production Smart Note → CIS → PIS → Hub → retrieval → application → outcome loop;
 - repeated behavioral Cold-Naya continuation;
@@ -113,14 +123,14 @@ Do not delete valuable history. Do not treat it as today's queue.
 
 ## NEXT PROOF ORDER
 
-1. Reconcile/verify the Assistant-lane Cloudflare/live release authority and runtime target.
-2. If externally blocked, record the exact blocker and reduce uncertainty without substituting the 509 lane.
-3. Audit actual Team Naya executions against commits, Activity, Smart Notes, evidence and handoffs.
-4. Complete evidence-backed Smart Note/workflow/issue reconciliation.
-5. Prove behavioral Cold-Naya continuation.
-6. Close the first missing machine-enforced compounding link.
-7. Benchmark retrieval/provenance/supersession.
-8. Establish repeated end-to-end continuity.
+1. Prove receiver retrieval/render and genuinely cold successor continuation as one governed journey.
+2. Prove the complete INTENT → IDENTITY → RESTORE → RETRIEVE → ACT → VERIFY → LEARN → UPDATE → COLD SUCCESSOR chain.
+3. Close same-human-surface acceptance and complete human journey.
+4. Close consolidated sender → receiver → retrieve → render → successor acceptance.
+5. Run adversarial/Oscar acceptance across the complete chain.
+6. Measure universal computation savings against a cold/repeated baseline.
+7. Automate source/runtime/proof/state reconciliation so stale scorecards are self-detected.
+8. Establish repeated end-to-end continuity across multiple fresh Nayas.
 
 ## SUCCESS CONDITION
 
