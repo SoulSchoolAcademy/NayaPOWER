@@ -30,7 +30,8 @@ There is one enduring project intelligence here. Nayas are operating instances t
 - subject reconciliation at `23-NAYANET-SUBJECT-RECONCILIATION.md`;
 - Intelligence Feed and succession contract at `22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md`;
 - master proof contract at `24-NAYANET-MASTER-PROOF-CONTRACT.md`;
-- cold-start interrogation contract/result at `26-NAYANET-COLD-START-INTERROGATION-001.md`.
+- cold-start interrogation contract/result at `26-NAYANET-COLD-START-INTERROGATION-001.md`;
+- 14-question cold-Naya reconstruction + torch Smart Note at `.naya/2026-09-20-NAYANET-14-QUESTION-COLD-NAYA-RECONSTRUCTION-TORCH-SMART-NOTE.md`.
 
 ## NOT PROVEN BY DOCUMENTATION ALONE
 
@@ -42,14 +43,14 @@ A file does not prove runtime behavior. A workflow does not prove its intended o
 
 ## PI FRONTIER
 
-**PI-01** Project identity.  
-**PI-02** Model reconstruction.  
-**PI-03** Cold retrieval.  
-**PI-04** Current-state reconciliation.  
-**PI-05** One responsible next action.  
-**PI-06** Governed execution continuity.  
-**PI-07** Durable learning/update.  
-**PI-08** Cold-Naya repeat.
+**PI-01** Project identity — **PASS at source checkpoint `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`**.  
+**PI-02** Model reconstruction — **NEXT**.  
+**PI-03** Cold retrieval — **UNKNOWN / not entered**.  
+**PI-04** Current-state reconciliation — **UNKNOWN / not entered**.  
+**PI-05** One responsible next action — **UNKNOWN / not entered**.  
+**PI-06** Governed execution continuity — **UNKNOWN / not entered**.  
+**PI-07** Durable learning/update — **UNKNOWN / not entered**.  
+**PI-08** Cold-Naya repeat — **UNKNOWN / not entered**.
 
 These are not separate product components. They are acceptance boundaries for proving that NayaNET itself is intelligent enough to continue.
 
@@ -57,33 +58,63 @@ These are not separate product components. They are acceptance boundaries for pr
 
 The previously blocking Windows portability class has been repaired.
 
-**Verified source head:** `974c6b1d44190daed7bfcb3439fcb37c631a8701`.  
-**Fresh Windows worktree:** successfully materialized from the repaired branch.  
+**Verified fresh Windows worktree:** `C:\Users\Admin\NayaNET-master-proof-002`.  
 **Tracked colon-containing paths:** `0`.
 
-This clears the PRE-PI-01 execution-environment boundary.
+The PRE-PI-01 execution-environment boundary is cleared.
 
-## COLD-START INTERROGATION
+## PI-01 EXACT SOURCE IDENTITY
 
-The 14-question cold-start interrogation was executed from canonical durable sources after the fresh checkout.
+PI-01 was proven from a genuinely fresh Windows worktree against the live canonical branch at the proof checkpoint.
 
-**Result:** all 14 questions were answerable without conversation archaeology.
+**Source checkpoint:** `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`  
+**Worktree HEAD:** exact match  
+**Repository:** `https://github.com/SoulSchoolAcademy/NayaPOWER.git`  
+**Worktree:** clean  
+**Execution host:** `DESKTOP-OJ712N5`  
+**Tracked colon paths:** `0`  
+**Receipt:** `.naya/project-intelligence/28-NAYANET-PI-01-RECEIPT-002.md`
 
-**Receipt:** `.naya/project-intelligence/26-NAYANET-COLD-START-INTERROGATION-001.md`.
+Important: the previously named `6dcb2506…` was a historical live ref. Subsequent canonical evidence commits advanced the branch to `b830f9e2…` and beyond. The proof correctly used the current live ref rather than forcing a stale hash.
 
-This establishes the reconstruction prerequisite but does **not** constitute PI-01→PI-08 proof.
+## COLD-NAYA RECONSTRUCTION
+
+The minimum intelligence interface is now explicitly encoded as a Smart Note and Feed torch.
+
+Every Naya must answer, from durable project evidence, before acting:
+
+1. WHO are we?
+2. WHAT are we building?
+3. WHY are we building it?
+4. WHAT does success mean?
+5. WHAT is true right now?
+6. WHAT has already been proven?
+7. WHAT is unknown?
+8. WHAT authority exists?
+9. WHAT happened previously?
+10. WHAT did we learn?
+11. WHAT should happen next?
+12. HOW do I prove it?
+13. WHERE do I record it?
+14. HOW does the next Naya continue?
+
+Each answer must carry evidence and one of: **PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED**.
+
+**Smart Note:** `.naya/2026-09-20-NAYANET-14-QUESTION-COLD-NAYA-RECONSTRUCTION-TORCH-SMART-NOTE.md`  
+**Feed torch:** `.naya/INTELLIGENCE-FEED.md`
 
 ## MASTER-PROOF STATUS
 
 **Attempt 001:** blocked before PI-01 by Windows portability.  
 **Repair:** completed and fresh-checkout verified.  
-**Current frontier:** PI-01.
+**PI-01:** **PASS at exact source checkpoint `b830f9e2…`**.  
+**Current frontier:** PI-02.
 
-No PI-01→PI-08 result is claimed yet.
+No PI-02→PI-08 result is claimed yet.
 
 ## NEXT CAUSAL ACTION
 
-> **Begin the identical Contract 24 NayaNET PI-01 → PI-08 master proof from the verified fresh Windows worktree.**
+> **Verify the PI-01 receipt against current canonical truth, create a fresh clean Windows worktree from the current live branch, perform the 14-question cold reconstruction, then begin Contract 24 at PI-02.**
 
 At the first deterministic causal failure:
 
@@ -92,3 +123,5 @@ At the first deterministic causal failure:
 ## TRUTH DISCIPLINE
 
 Never convert **DOCUMENTED → VERIFIED** or **IMPLEMENTED → PRODUCTION-PROVEN** without matching evidence.
+
+Never treat a prior torch's source hash as current merely because it is written in the Feed. **Reconcile the torch against the live canonical source every time.**
