@@ -1,0 +1,76 @@
+name: NayaNET PI-03 cold retrieval proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi03-cold-retrieval.yml'
+permissions:
+  contents: read
+jobs:
+  pi03:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute PI-03 fresh-context retrieval proof
+        shell: bash
+        run: |
+          cat > verify-pi03.mjs <<'EOF'
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runId=process.env.GITHUB_RUN_ID;
+          const h=(token)=>({apikey:key,authorization:'Bearer '+token,'content-type':'application/json'});
+          async function post(path,token,body={}){
+            const r=await fetch(base+'/functions/v1/'+path,{method:'POST',headers:h(token),body:JSON.stringify(body)});
+            const t=await r.text(); let b; try{b=JSON.parse(t)}catch{b={raw:t}};
+            return {status:r.status,body:b};
+          }
+          function flat(v,out=[]){
+            if(v===null||v===undefined)return out;
+            if(typeof v==='string'||typeof v==='number'||typeof v==='boolean')out.push(String(v));
+            else if(Array.isArray(v))for(const x of v)flat(x,out);
+            else if(typeof v==='object')for(const [k,x] of Object.entries(v)){out.push(k);flat(x,out);}
+            return out;
+          }
+          const authR=await fetch(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          const auth=await authR.json();
+          if(!authR.ok||!auth.access_token)throw Error('FRESH_AUTH_FAILED:'+JSON.stringify(auth));
+          const token=auth.access_token;
+          const restore=await post('nayanet-project-intelligence-restore',token,{});
+          const retrieve=await post('nayanet-project-intelligence-retrieve',token,{query:'NayaNET'});
+          console.log('PI03_RUN_ID='+runId);
+          console.log('RESTORE_STATUS='+restore.status);
+          console.log('RESTORE_BODY='+JSON.stringify(restore.body));
+          console.log('RETRIEVE_STATUS='+retrieve.status);
+          console.log('RETRIEVE_BODY='+JSON.stringify(retrieve.body));
+          if(restore.status!==200||restore.body?.ok!==true)throw Error('PI03_RESTORE_FAILED');
+          if(retrieve.status!==200||retrieve.body?.ok!==true)throw Error('PI03_RETRIEVE_FAILED');
+          const corpus=flat({restore:restore.body,retrieve:retrieve.body}).join('\\n').toLowerCase();
+          const required=[
+            ['project identity','nayanet'],
+            ['project intelligence identity','project intelligence'],
+            ['cold-successor outcome','cold successor']
+          ];
+          const missing=required.filter(([,needle])=>!corpus.includes(needle));
+          if(missing.length)throw Error('PI03_REQUIRED_INTELLIGENCE_MISSING:'+JSON.stringify(missing));
+          const result={
+            schema:'NAYANET_PI03_COLD_RETRIEVAL_PROOF_V1',
+            run_id:runId,
+            fresh_authenticated_context:true,
+            conversation_archaeology:false,
+            restore_status:restore.status,
+            retrieve_status:retrieve.status,
+            required_intelligence:required.map(([name])=>name),
+            missing:missing.map(([name])=>name),
+            status:'VERIFIED'
+          };
+          console.log('PI03_RESULT='+JSON.stringify(result));
+          EOF
+          node verify-pi03.mjs
