@@ -1,0 +1,57 @@
+name: Verify Project Intelligence Bridge
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".naya/project-intelligence/**"
+      - ".naya/runtime/project_intelligence_bridge.py"
+      - ".naya/control-plane/**"
+      - ".github/workflows/verify-project-intelligence-bridge.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bridge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate canonical bridge
+        run: python .naya/runtime/project_intelligence_bridge.py validate
+      - name: Build canonical packet
+        run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-bridge-packet.json
+      - name: Assert packet contract
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open("project-intelligence-bridge-packet.json",encoding="utf-8"))
+          required={"protocol","packet_id","project_id","source_ref","content_hash","operating_context","intelligence","provenance","privacy","idempotency_key"}
+          assert required <= p.keys()
+          assert p["protocol"]=="NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1"
+          assert p["project_id"]=="NayaNET"
+          assert p["privacy"]["default_visibility"]=="PRIVATE"
+          print("PROJECT_INTELLIGENCE_BRIDGE_PACKET=VALID")
+          print("SOURCE_REF="+p["source_ref"])
+          print("PACKET_ID="+p["packet_id"])
+          print("CONTENT_HASH="+p["content_hash"])
+          PY
+      - name: Send to authorized receiver when configured
+        if: ${{ env.NAYANET_BRIDGE_URL != '' && env.NAYANET_BRIDGE_TOKEN != '' }}
+        env:
+          NAYANET_BRIDGE_URL: ${{ secrets.NAYANET_BRIDGE_URL }}
+          NAYANET_BRIDGE_TOKEN: ${{ secrets.NAYANET_BRIDGE_TOKEN }}
+        run: python .naya/runtime/project_intelligence_bridge.py send project-intelligence-bridge-packet.json
+      - name: Publish bridge packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-intelligence-bridge-packet
+          path: project-intelligence-bridge-packet.json
+          retention-days: 14
