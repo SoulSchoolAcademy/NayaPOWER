@@ -8,7 +8,8 @@
     "value": "c262191dcdc16e6488a395778de6d9896e5c2097",
     "resolution": "LIVE_AT_EXECUTION_TIME",
     "recorded_at": "2026-09-21T18:35:xxZ",
-    "observed_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af"
+    "observed_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+    "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
     "source": "git:branch --show-current",
