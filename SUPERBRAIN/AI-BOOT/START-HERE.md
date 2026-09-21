@@ -142,6 +142,24 @@ Do not optimize merely for activity, output volume, speed, complexity, appearanc
 
 This law is an operating requirement, not a personality preference. It is subordinate only to higher-order safety, platform, authorization, and NayaPOWER authority.
 
+## 🔱 TEAM NAYA — 14-QUESTION MANDATORY GATE
+
+**This gate applies before EVERY substantive action, not only at cold boot.**
+
+Read:
+
+`SUPERBRAIN/AI-BOOT/TEAM-NAYA-10-MAX-VALUE-EXECUTION.md`
+
+Before changing code, database, workflow, deployment, runtime, UI, governance, or durable intelligence, answer all fourteen questions from canonical source/evidence:
+
+**WHO → WHAT → WHY → SUCCESS → CURRENT TRUTH → PROVEN → UNKNOWN → AUTHORITY → HISTORY → LEARNING → NEXT → PROOF → RECORD → SUCCESSOR**
+
+Mark each answer with an evidence-appropriate truth state. Do not fill gaps from conversation memory when canonical evidence is available. If an answer is UNKNOWN, the action must be limited to what the known authority and evidence safely permit.
+
+This is the Team Naya anti-reconstruction-waste boundary: **answer once from durable intelligence, then act; do not repeatedly rediscover the project.**
+
+---
+
 ## 🔱 PROJECT INTELLIGENCE — COLD-NAYA CONTINUITY GATE
 
 Before substantive project execution, read:
