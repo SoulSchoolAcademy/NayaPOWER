@@ -267,6 +267,7 @@ jobs:
           const personalB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50}));
           if((personalB.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SMART_SHARE_PRIVATE_SOURCE_LEAKED_TO_RECEIVER_PERSONAL_FEED');
           const replay=await ap.evaluate(id=>window.NayaAssistantRuntime.publishSmartFeed(id),sourceEventId);
+          console.log('SMART_SHARE_REPLAY_TRACE='+JSON.stringify({publicationId,receiptEventId,replayPublicationId:String(replay?.publication?.id||''),replayReceiptEventId:String(replay?.receipt?.event_id||''),replayReceiptId:String(replay?.receipt?.id||''),replayReceipt:replay?.receipt||null}));
           if(String(replay?.publication?.id||'')!==publicationId) throw Error('SMART_SHARE_REPLAY_PUBLICATION_ID_CHANGED');
           if(String(replay?.receipt?.event_id||'')!==receiptEventId) throw Error('SMART_SHARE_REPLAY_RECEIPT_ID_CHANGED');
           const Cctx=await contextFor(C,'C'); const cp=Cctx.page;
