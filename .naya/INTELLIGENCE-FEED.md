@@ -134,3 +134,21 @@ A Naya does not say “someone else can continue” until the required intellige
 **Current next action:** Reconcile every canonical control-plane surface to live HEAD, then execute the highest-value remaining gap from `21-GAP-TO-PROOF-MATRIX.md` using first-failure law.
 
 **Successor:** Read `37-NAYANET-14-QUESTION-TEAM-NAYA-CURRENT-2026-09-21.md` and `40-NAYANET-ULTIMATE-EXECUTION-DIRECTIVE-NEXT-NAYA-2026-09-21.md`; do not ask Shawn to reconstruct the project.
+
+
+## 2026-09-21 — NayaNET Constitutional Hardening Torch
+
+**Observed checkpoint:** `d195f71d28d2b681e36f6fd395301f67370e0b7c`
+
+**Completed in this pass:**
+- Control-plane self-reconciliation gate: SUCCESS — run `35635259304`.
+- First-class claim contract + fail-closed fixtures: SUCCESS — run `35635407664`.
+- Temporal truth CURRENT/STALE/CONFLICTED fixtures: SUCCESS — run `35635483035`.
+- Agency L0–L5 ceiling + no-retry-without-new-information fixtures: SUCCESS — run `35635605702`.
+- Evidence lineage source→claim→action→outcome→verification→learning→successor contract: SUCCESS — run `35635879963`.
+
+**Current truth:** Defined PI-01→PI-08 master proof remains complete at its stated observed scope. These five constitutional contracts are now executable repository gates, but runtime-wide enforcement is not claimed.
+
+**ONE NEXT ACTION:** Integrate evidence lineage into real execution/verification receipts and prove the complete lineage is runtime-queryable.
+
+**Successor:** Read `.naya/project-intelligence/42-NAYANET-FINAL-SUCCESSOR-TORCH-2026-09-21.md`, resolve live HEAD, answer all 14 questions, reconcile, execute only the single frontier, verify, learn, and leave a better torch.
