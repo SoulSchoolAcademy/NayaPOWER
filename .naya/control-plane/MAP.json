@@ -166,7 +166,7 @@
   "current_frontier": {
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "OPEN",
-    "source_checkpoint": "0b5875ab36f8e163edc32b5b7a4d0d68a78fe558",
+    "source_checkpoint": "51deebe45071a17f59c99e69242980ea6ce19b1f",
     "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
     "evidence_required": [
       "deployed runtime integration",
