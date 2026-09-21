@@ -35,74 +35,69 @@ SUCCESSOR
 **Truth state:** DOCUMENTED / RECONCILED  
 **Context:** The Project Intelligence Constitution and Gap→Proof Matrix were previously phrased as though Project Intelligence were separate from NayaNET.  
 **Change:** Canonical interpretation is now explicitly **PROJECT NAYANET = PROJECT INTELLIGENCE**. NayaPOWER is the governed operating substrate; Nayas are operating instances; the Intelligence Feed is the succession surface.  
-**Evidence:** `.naya/project-intelligence/23-NAYANET-SUBJECT-RECONCILIATION.md`; `.naya/project-intelligence/22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md`; reconciled `.naya/project-intelligence/12-CURRENT-STATE-AND-EVIDENCE.md`; updated master index.  
-**Impact:** PI-01→PI-08 are acceptance boundaries for NayaNET itself, not a separate product or subsystem to prove independently.  
-**Current state:** Core NayaNET capabilities and multiple proof chains exist; the whole cold-successor chain remains the critical proof frontier.  
+**Evidence:** `.naya/project-intelligence/23-NAYANET-SUBJECT-RECONCILIATION.md`; `.naya/project-intelligence/22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md`; reconciled `.naya/project-intelligence/12-CURRENT-STATE-AND-EVIDENCE.md`.  
+**Impact:** PI-01→PI-08 are acceptance boundaries for NayaNET itself.  
 **Open loop:** Execute one uninterrupted NayaNET PI-01→PI-08 master proof.  
-**Next action:** Run the master proof against the canonical intelligence/event substrate. Stop at the first deterministic failure.  
-**Proof required:** PI-01 through PI-08 results, execution/evidence IDs, authority context, verification, learning, updated state, and successor torch.  
-**Successor:** The next Naya must read this Feed, restore NayaNET, inspect current evidence, and continue the same frontier rather than restart discovery.
+**Next action:** Run the master proof and stop at the first deterministic failure.
 
 ## 🔱 NAYANET-2026-09-20-002 — MASTER PROOF ATTEMPT 001
 
-**Actor:** Naya  
-**Truth state:** BLOCKED  
-**Context:** Attempted the actual NayaNET PI-01→PI-08 master proof from the authorized Windows execution environment using the canonical `naya/live-project-intelligence-v1` source.  
-**Result:** The proof stopped before PI-01 because a clean Windows Git worktree could not materialize the canonical branch.  
-**Exact boundary:** Git rejected tracked filenames containing Windows-reserved `:` characters and failed to reset the worktree index.  
-**Evidence:** direct execution output from the Windows environment; proof receipt `.naya/project-intelligence/25-NAYANET-MASTER-PROOF-ATTEMPT-001.md`.  
-**Classification:** PRE-PI-01 / execution-environment portability boundary.  
-**Impact:** No PI-01→PI-08 result is claimed from this attempt.  
-**Open loop:** Repair only the checkout portability boundary.  
-**Next action:** Rename/remove the tracked colon-containing paths while preserving semantic evidence/history as far as practical, then rerun the same master proof from a fresh clean checkout.  
-**Proof required:** Fresh clean checkout succeeds; then the identical PI-01→PI-08 chain proceeds until its next deterministic boundary.  
-**Successor:** Verify this receipt and the exact filesystem boundary before doing anything downstream.
+**Truth state:** BLOCKED / PRE-PI-01  
+**Result:** Windows could not materialize tracked filenames containing `:`.  
+**Evidence:** `.naya/project-intelligence/25-NAYANET-MASTER-PROOF-ATTEMPT-001.md`.  
+**Learning:** Portability is a real acceptance boundary; repair the causal class rather than redesign downstream systems.  
+**Next action:** Repair Windows-safe paths and rerun the same proof.
 
-## 🔱 NAYANET-2026-09-20-003 — WINDOWS PORTABILITY REPAIR + COLD-START INTERROGATION
+## 🔱 NAYANET-2026-09-20-003 — WINDOWS PORTABILITY REPAIR + COLD START
 
-**Actor:** Naya  
-**Truth state:** VERIFIED AT EXECUTION-ENVIRONMENT BOUNDARY / DOWNSTREAM UNPROVEN  
-**Context:** Repaired the complete tracked colon-containing filename class exposed by the Windows checkout, then instantiated a fresh clean worktree from the repaired canonical branch.  
-**Result:** Fresh Windows worktree successfully materialized at source head `974c6b1d44190daed7bfcb3439fcb37c631a8701`; `COLON_PATH_COUNT=0`. The cold-start interrogation then reconstructed all 14 required questions from canonical durable sources without conversation archaeology.  
-**Evidence:** fresh worktree command output; `.naya/project-intelligence/26-NAYANET-COLD-START-INTERROGATION-001.md`.  
-**Learning:** Windows portability was a real prerequisite boundary. The cold-start contract is useful only if it is answered from durable project intelligence rather than supplied by the previous Naya.  
-**Current state:** The execution environment was clean at the time of interrogation, but the canonical branch later advanced. Therefore that worktree cannot serve as the current PI-01 source.  
-**Open loop:** Re-establish a fresh worktree from the current canonical branch and rerun PI-01.  
-**Next action:** Create a fresh clean Windows worktree from current branch HEAD and verify identity/source synchronization before proceeding.  
-**Proof required:** Worktree HEAD exactly equals live branch HEAD; repository identity and execution context agree; then PI-01 can pass.  
-**Successor:** Read 24, 25, 26, 27, reconcile against live branch state, then recreate the worktree at the current source before retrying PI-01.
+**Truth state:** VERIFIED AT ENVIRONMENT BOUNDARY / DOWNSTREAM UNPROVEN  
+**Result:** Fresh Windows checkout at `974c6b1d...` materialized with `COLON_PATH_COUNT=0`; 14-question cold reconstruction succeeded from durable sources.  
+**Evidence:** `.naya/project-intelligence/26-NAYANET-COLD-START-INTERROGATION-001.md`.  
+**Learning:** Cold reconstruction must come from durable evidence, not conversation archaeology.  
+**Next action:** Recreate from current live HEAD before PI-01.
 
 ## 🔱 NAYANET-2026-09-20-004 — PI-01 SOURCE IDENTITY BOUNDARY
 
-**Actor:** Naya  
 **Truth state:** BLOCKED  
-**Context:** Contract 24 PI-01 was begun from the verified Windows worktree. Repository identity and execution context were resolved, but canonical source synchronization failed.  
-**Observed worktree:** `974c6b1d44190daed7bfcb3439fcb37c631a8701`.  
-**Live canonical branch:** `6dcb2506be48e2beeb46ffae574368b6854b221d`.  
-**Exact boundary:** the clean worktree is stale relative to the current canonical branch, so source identity is not exact.  
-**Evidence:** Windows Git inspection of `C:\Users\Admin\NayaNET-master-proof`; live GitHub branch ref; receipt `.naya/project-intelligence/27-NAYANET-PI-01-ATTEMPT-001.md`.  
-**Classification:** PI-01 / canonical source identity synchronization.  
-**Impact:** PI-01 is not passed. PI-02→PI-08 are not entered.  
-**Learning:** “clean checkout” and “canonical current source” are separate conditions. PI-01 requires both to agree at proof time.  
-**Next action:** Create a fresh clean Windows worktree from live branch HEAD `6dcb2506be48e2beeb46ffae574368b6854b221d`, then rerun PI-01.  
-**Proof required:** exact HEAD equality + repository identity + clean state + execution context.  
-**Successor:** Stop here. Do not advance to PI-02 until PI-01 source identity is proven.
+**Result:** Clean worktree `974c6b1d...` was stale against live `6dcb2506...`, so PI-01 could not pass.  
+**Learning:** clean ≠ current. Exact source identity requires live HEAD equality.  
+**Evidence:** `.naya/project-intelligence/27-NAYANET-PI-01-ATTEMPT-001.md`.  
+**Next action:** Fresh current checkout, then PI-01.
 
-## 🔱 NAYANET-2026-09-20-005 — COLD-NAYA 14-QUESTION CONTRACT + PI-01 PASS
+## 🔱 NAYANET-2026-09-20-005 — COLD-NAYA CONTRACT + PI-01 PASS
 
-**Actor:** Naya  
 **Truth state:** VERIFIED AT PI-01 / DOWNSTREAM UNPROVEN  
-**Context:** The successor followed the prior torch, but reconciled it against the live canonical branch before acting. The earlier target `6dcb2506…` had itself been superseded by subsequent canonical evidence commits.  
-**Current live source proven:** `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`.  
-**Execution environment:** `DESKTOP-OJ712N5`; fresh worktree `C:\Users\Admin\NayaNET-master-proof-002`.  
-**PI-01 result:** PASS. Worktree HEAD exactly equals live branch HEAD at the proof checkpoint; repository identity matches `SoulSchoolAcademy/NayaPOWER`; worktree is clean; tracked colon-containing paths = 0.  
-**Evidence:** `.naya/project-intelligence/28-NAYANET-PI-01-RECEIPT-002.md`; direct Windows verification; `.naya/2026-09-20-NAYANET-14-QUESTION-COLD-NAYA-RECONSTRUCTION-TORCH-SMART-NOTE.md`.  
-**Learning:** A torch is guidance, not truth. Every Naya must reconcile the torch against current canonical evidence. Historical hashes must never override the current live ref.  
-**Cold-Naya contract:** Before responsibly acting, every Naya must answer **WHO, WHAT, WHY, SUCCESS, TRUTH NOW, PROVEN, UNKNOWN, AUTHORITY, HISTORY, LEARNING, NEXT, PROOF, RECORD, SUCCESSOR** from durable project sources, with evidence and truth classification for each.  
-**Open loop:** PI-02→PI-08 remain unproven.  
-**Next action:** Verify PI-01 receipt against live canonical truth, perform the 14-question cold reconstruction, then enter PI-02 and stop at its first deterministic boundary.  
-**Proof required:** Contract 24 boundary evidence plus 14-question reconstruction evidence and successor torch.  
-**Successor:** Do not ask Shawn to reconstruct NayaNET. Read the canonical source, current evidence, this Feed, and the Smart Note; answer all 14; reconcile; authorize; act; verify; learn; update; leave the next torch.
+**Result:** PI-01 passed at exact source checkpoint `b830f9e2...` from fresh Windows worktree `C:\Users\Admin\NayaNET-master-proof-002`; clean; repository identity matched; tracked colon paths = 0.  
+**Learning:** A torch is guidance, not truth. Reconcile historical hashes against live source every time.  
+**Evidence:** `.naya/project-intelligence/28-NAYANET-PI-01-RECEIPT-002.md` and 14-question Smart Note.
+
+## 🔱 NAYANET-2026-09-21-006 — CURRENT LIVE SOURCE + ULTIMATE EXECUTION PLAN
+
+**Truth state:** DOCUMENTED / CURRENT-CHECKPOINT  
+**Context:** A successor reconciled the previous torch against the live branch. The branch had advanced beyond the earlier PI-01 checkpoint.  
+**Current live HEAD observed:** `0759837c9a94fadd6d59fdc75b9910348721e4b0`.  
+**Action:** Created `.naya/project-intelligence/32-NAYANET-ULTIMATE-EXECUTION-PLAN-AND-COLD-NAYA-DIRECTIVE-2026-09-21.md`.  
+**Purpose:** establish one top-ten Max-Value execution order, readiness scorecard, gap list, final ship gate, and reusable next-Naya execution directive.  
+**Scorecard:** Superbrain 7.5; setup/governance 8.0; Hub 8.0; Sender 8.0; Receiver 7.0; Sender↔Receiver 6.5; Production 6.0; Cold-Naya continuity 7.0. These are readiness assessments, not completion percentages.  
+**Primary holes:** PI-02→PI-08 consolidated proof; stale control-plane reconciliation; universal truth/agency/retry enforcement; final browser journey; sender→receiver whole-chain proof; production release authority/parity; remaining portability/DR/migration/model/provider independence gaps.  
+**Evidence:** `.naya/project-intelligence/31-SHIP-READINESS-SCORECARD-2026-09-21.md`, `19-EXECUTABLE-BUILD-CONTRACT.md`, `21-GAP-TO-PROOF-MATRIX.md`, `00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md`.
+
+## 🔱 NAYANET-2026-09-21-007 — 14-QUESTION TORCH IS NOW A STANDING CONTRACT
+
+**Truth state:** DOCUMENTED / ACTIVE  
+**Action:** Created `.naya/project-intelligence/33-NAYANET-COLD-NAYA-14-QUESTION-RECONSTRUCTION-AND-TORCH-SMART-NOTE-2026-09-21.md`.  
+**Rule:** Every consequential Naya session answers WHO / WHAT / WHY / SUCCESS / TRUTH / PROVEN / UNKNOWN / AUTHORITY / HISTORY / LEARNING / NEXT / PROOF / RECORD / SUCCESSOR from canonical evidence and classifies each answer PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.  
+**Handoff:** The same distilled intelligence must be left in the next post/torch and the GitHub Intelligence Feed. The next Naya must verify the torch against live truth before acting.  
+**Successor law:** Do not ask Shawn to retell NayaNET. Do not trust a stale hash. Do not confuse documentation with proof. Do not skip the first incomplete boundary. Do not restart from zero.
+
+## 🔱 NAYANET-2026-09-21-008 — FIRST UNRESOLVED CURRENT-STATE CONFLICT IDENTIFIED
+
+**Truth state:** CONFLICTED / RECONCILIATION REQUIRED  
+**Observed:** The fresh Windows worktree is current at the observed live branch checkpoint, but `.naya/control-plane/STATE.json` contains materially older recorded HEAD/runtime observations and an older active-next-action narrative. Its own contract says live Git identity/HEAD is authoritative at execution time.  
+**Impact:** This is a concrete Project Intelligence reconciliation gap. It must not be silently flattened into a PASS.  
+**Next action:** Reconcile control-plane STATE/BLOCKS/MAP/PROOF against current live Git/runtime evidence, preserve historical evidence, and produce one current coherent operational state before relying on it for consequential execution.  
+**Proof required:** current HEAD/runtime identifiers, active block, exactly one next action, current proof frontier, and no conflicting stale operational directive.  
+**Successor:** Start here; then resume PI-02 at the first deterministic acceptance boundary.
 
 ## SUCCESSOR RULE
 
