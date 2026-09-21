@@ -67,3 +67,16 @@ Current-head source identity, deployment identity/parity, browser evidence for t
 
 ## HANDOFF LAW
 Play tag. Never restart from zero.
+
+
+## OFFICIAL INTELLIGENCE ARCHITECTURE UPDATE — 2026-09-21
+
+Canonical contracts are now recorded:
+- `.naya/project-intelligence/INTELLIGENT-EVENT-V1.md`
+- `.naya/project-intelligence/INTELLIGENT-BLOCK-V1.md`
+
+Core distinction: **INTELLIGENT EVENT = WHAT HAPPENED; INTELLIGENT BLOCK = WHAT WE CURRENTLY UNDERSTAND.**
+
+The latest human Smart Note capture proof remains FAILED at workflow run 35656078724 / job 106519981824 because the deployed runtime timed out waiting for `[data-shell-owner="AppShellV3"]`. This is recorded as the first deterministic human-journey boundary and is not promoted to PASS.
+
+The new architecture does not create a parallel event store. Existing receipt, Smart Note, notification, learning, and Project Intelligence machinery is the candidate implementation substrate to reconcile against the canonical contracts.
