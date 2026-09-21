@@ -63,7 +63,60 @@ jobs:
             const context=await browser.newContext({storageState:storageState(session),viewport:{width:1440,height:1000}});
             const page=await context.newPage();
             if(diagnoseShare) await page.addInitScript(()=>{
-              window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[],timeline:[]};
+              window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[],timeline:[],binderInvocations:[],scanCalls:[],observerCalls:[]};
+              const startedAt=Date.now();
+              const pushTimeline=(kind,data={})=>{
+                const row={kind,ms:Date.now()-startedAt,...data};
+                const t=window.__smartShareDiag.timeline;
+                const prev=t[t.length-1];
+                if(!prev||JSON.stringify({...prev,ms:0})!==JSON.stringify({...row,ms:0})) t.push(row);
+              };
+              const nativeQsa=Document.prototype.querySelectorAll;
+              Document.prototype.querySelectorAll=function(selector){
+                const result=nativeQsa.call(this,selector);
+                if(String(selector).includes('share-intel')){
+                  const row={ms:Date.now()-startedAt,selector:String(selector),count:result.length,guard:window.__nayaCanonicalHubSmartShareBound===true,boundCount:[...result].filter(b=>b.dataset?.nayaSmartShareBound==='1').length};
+                  window.__smartShareDiag.scanCalls.push(row);
+                  pushTimeline('scan',row);
+                }
+                return result;
+              };
+              const nativeMO=window.MutationObserver;
+              if(nativeMO){
+                const WrappedMO=class extends nativeMO{
+                  constructor(cb){
+                    const wrappedCb=(records,observer)=>{
+                      window.__smartShareDiag.observerCalls.push({kind:'callback',ms:Date.now()-startedAt,recordCount:records.length});
+                      return cb(records,observer);
+                    };
+                    super(wrappedCb);
+                    window.__smartShareDiag.observerCalls.push({kind:'construct',ms:Date.now()-startedAt});
+                  }
+                  observe(target,options){
+                    window.__smartShareDiag.observerCalls.push({kind:'observe',ms:Date.now()-startedAt,target:target?.nodeName||'',options});
+                    return super.observe(target,options);
+                  }
+                };
+                window.MutationObserver=WrappedMO;
+              }
+              const binderPoll=setInterval(()=>{
+                try{
+                  const rt=window.NayaAssistantRuntime;
+                  if(rt?.bindCanonicalHubSmartShare&&!rt.__smartShareBinderTraceWrapped){
+                    const original=rt.bindCanonicalHubSmartShare;
+                    rt.bindCanonicalHubSmartShare=function(){
+                      const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
+                      const row={ms:Date.now()-startedAt,guardBefore:window.__nayaCanonicalHubSmartShareBound===true,buttonCount:buttons.length,boundCount:buttons.filter(b=>b.dataset?.nayaSmartShareBound==='1').length};
+                      window.__smartShareDiag.binderInvocations.push(row);
+                      pushTimeline('binder-invocation',row);
+                      return original.apply(this,arguments);
+                    };
+                    rt.__smartShareBinderTraceWrapped=true;
+                    clearInterval(binderPoll);
+                  }
+                }catch{}
+              },1);
+              setTimeout(()=>clearInterval(binderPoll),12000);
               const startedAt=Date.now();
               const pushTimeline=(kind,data={})=>{
                 const row={kind,ms:Date.now()-startedAt,...data};
