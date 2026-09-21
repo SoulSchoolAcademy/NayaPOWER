@@ -1,0 +1,15 @@
+{
+  "$schema":"naya/project-intelligence/bridge-authorization-boundary/v1",
+  "status":"RECORDED",
+  "purpose":"Make the remaining external authorization boundary explicit so no human becomes implicit middleware.",
+  "sender":"GitHub/NayaPOWER",
+  "receiver":"NayaNET Intelligent Hub",
+  "required_capability":"Authorized receiver endpoint accepting NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1 packets",
+  "credential_location":"GitHub Actions secret or managed runtime secret; never stored in repository and never requested in chat",
+  "required_secrets":["NAYANET_BRIDGE_URL","NAYANET_BRIDGE_TOKEN"],
+  "safe_without_authority":["build packet","validate packet","verify source provenance","verify idempotency key","publish sender proof artifact","run repository-local cold-successor proof"],
+  "blocked_without_authority":["live sender-to-receiver POST","receiver persistence proof","receiver retrieval/render proof","full bridge completion"],
+  "unblock_trigger":"Both authorized secrets are present in the approved execution environment and the receiver endpoint implements the V1 acknowledgement contract.",
+  "success_evidence":["packet_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","fresh_successor_retrieval"],
+  "human_role":"Provide or authorize the external capability only; do not manually copy Project Intelligence between systems."
+}
