@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Repository-level behavioral proof for the NayaNET cold-Naya chain.
 
+Current-frontier aware: completed predecessor proofs remain valid after block advancement.
+
 This deliberately proves only what the repository can prove without inventing
 external runtime authority. It uses an isolated temp state for the action,
 then starts a genuinely separate successor process that reconstructs the
