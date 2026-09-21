@@ -903,60 +903,9 @@ const A={'ADAPTIVE LEARNING':'LEARNING LESSON','ADAPTER LEARNING':'LEARNING LESS
 const N=s=>String(s||'').replace(/\s+/g,' ').trim().toUpperCase().replace(/^\d+\s*[·.)-]\s*/,'');
 function run(){const boards=qq('#blocks > .block');boards.forEach((b,i)=>{b.classList.add('elite-board','naya-smart-board-v10');const h=q('h3',b);if(h&&i===0)h.textContent='What is Naya Power';const g=q('.glyph',b);if(g){const svg=q('.v10-icon',g);if(svg)g.replaceChildren(svg)}const n=q('.nutshell',b);if(n){const p=q('p',n),label=q('b',n);[...n.children].forEach(x=>{if(x!==label&&x!==p)x.remove()});if(label){label.replaceChildren();const star=document.createElement('span');star.className='v10-nutshell-star';star.setAttribute('aria-hidden','true');label.append(star,document.createTextNode('IN A NUTSHELL'));}}const layers=q('.layers',b);if(layers){const m=new Map();qq(':scope > .layer',layers).forEach(x=>{const h=q('.layerHead b',x);if(!h){x.remove();return}let t=A[N(h.textContent)]||N(h.textContent);if(!O.includes(t)){x.remove();return}h.textContent=t;m.set(t,x)});O.forEach(k=>{if(m.has(k))layers.appendChild(m.get(k))});}qq('.status',b).forEach(x=>x.remove());});const t=q('.top .title');if(t)t.textContent=new Intl.DateTimeFormat(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit'}).format(new Date());}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();})();</script>
+<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(){}observe(){}disconnect(){}takeRecords(){return[]}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
 <script src="/assistant-runtime.js?v=20260920-smartshare-bindfix3"></script>
 <script src="/smart-feed.js?v=20260919-p1"></script>
 <script src="/smart-tabs.js?v=20260919-p1"></script>\n<script src="/hub-completeness.js?v=20260920-completeness1"></script>
-
-<!-- NAYA-PI-CANONICAL-RENDER-V1 -->
-<style id="naya-pi-canonical-render-style">
-#naya-pi-render-root{display:none;margin:0 22px 22px;padding:24px;border:2px solid #8b63ff55;border-radius:20px;background:linear-gradient(145deg,#12101a,#08080d);box-shadow:inset 0 1px #fff3,0 18px 42px #0009}
-#naya-pi-render-root[data-status="loading"],#naya-pi-render-root[data-status="rendered"],#naya-pi-render-root[data-status="error"]{display:block}
-#naya-pi-render-root .pi-label{font-size:8px;font-weight:1000;letter-spacing:.16em;color:#d86cff;margin-bottom:8px}
-#naya-pi-render-root .pi-title{font-size:28px;font-weight:900;letter-spacing:-.04em;margin:0 0 9px;color:#fff}
-#naya-pi-render-root .pi-content{font-size:15px;line-height:1.65;color:#e7e2eb;white-space:pre-wrap}
-#naya-pi-render-root .pi-meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px;color:#aaa4b1;font-size:7px;font-weight:900;letter-spacing:.07em}
-#naya-pi-render-root .pi-meta span{padding:6px 8px;border:1px solid #ffffff18;border-radius:999px;background:#09090e}
-#naya-pi-render-root .pi-error{color:#ffb4bd}
-</style>
-<script id="naya-pi-canonical-render-script">
-(()=>{'use strict';
-const qs=new URLSearchParams(location.search), eventId=qs.get('event_id');
-if(!eventId)return;
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]||c));
-const feed=document.querySelector('.feed');
-if(!feed)return;
-let root=document.getElementById('naya-pi-render-root');
-if(!root){root=document.createElement('section');root.id='naya-pi-render-root';root.setAttribute('aria-live','polite');const blocks=document.getElementById('blocks');(blocks?.parentNode||feed).insertBefore(root,blocks||null)}
-root.dataset.status='loading';
-root.innerHTML='<div class="pi-label">PROJECT INTELLIGENCE · VERIFIED RECEIVER EVENT</div><div class="pi-title">Loading exact intelligence event…</div>';
-async function run(){
-  try{
-    for(let i=0;i<40;i++){
-      try{await window.NayaAssistantRuntime?.init?.()}catch{}
-      const runtime=window.NayaAssistantRuntime;
-      if(runtime?.init&&runtime?.retrieve){
-        const snapshot=await runtime.init();
-        if(!snapshot?.authenticated)throw new Error('PI_OWNER_SESSION_NOT_READY');
-        const rows=await runtime.retrieve(eventId);
-        const e=rows.find(row=>String(row.event_id)===String(eventId));
-        if(!e)throw new Error('PI_RECEIVER_EVENT_NOT_FOUND');
-        if(e.user_id!==snapshot.user_id)throw new Error('PI_RECEIVER_EVENT_OWNER_MISMATCH');
-        root.innerHTML='<div class="pi-label">PROJECT INTELLIGENCE · VERIFIED RECEIVER EVENT</div><h2 class="pi-title">'+esc(e.title||e.event_id)+'</h2><div class="pi-content">'+esc(e.content||'')+'</div><div class="pi-meta"><span>EVENT '+esc(e.event_id)+'</span><span>TYPE '+esc(e.type||'UNKNOWN')+'</span><span>STATUS '+esc(e.status||'UNKNOWN')+'</span><span>CREATED '+esc(e.created_at||'')+'</span></div>';
-        const card=document.createElement('article');
-        card.dataset.eventId=e.event_id;card.dataset.eventTitle=e.title||e.event_id;card.dataset.canonicalPiRender='true';card.setAttribute('aria-label','Canonical Project Intelligence receiver event');
-        root.prepend(card);
-        card.append(...[...root.children].filter(x=>x!==card));
-        root.dataset.status='rendered';
-        window.__NayaProjectIntelligenceRender={eventId:e.event_id,rendered:true,canonical:true,source:'authenticated-cognition-event',at:new Date().toISOString()};
-        return;
-      }
-      await new Promise(r=>setTimeout(r,250));
-    }
-    throw new Error('PI_OWNER_SESSION_NOT_READY');
-  }catch(error){root.dataset.status='error';root.innerHTML='<div class="pi-label">PROJECT INTELLIGENCE · RENDER ERROR</div><div class="pi-title">Exact receiver event was not rendered.</div><div class="pi-content pi-error">'+esc(error?.message||error)+'</div>';window.__NayaProjectIntelligenceRender={eventId,rendered:false,error:String(error?.message||error)}}
-}
-run();
-})();
-</script>
 </body>
 </html>
