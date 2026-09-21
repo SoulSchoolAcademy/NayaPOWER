@@ -1,0 +1,39 @@
+name: Verify NayaNET Project Intelligence Whole Chain
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/verify_project_intelligence_whole_chain.py"
+      - ".naya/project-intelligence/**"
+      - ".naya/control-plane/**"
+      - "SUPERBRAIN/AI-BOOT/**"
+      - "SUPERBRAIN/INTELLIGENCE-FEED.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  whole-chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify canonical control plane
+        run: python .naya/control-plane/validate_control_plane.py
+      - name: Execute consolidated Project Intelligence chain
+        run: python .naya/runtime/verify_project_intelligence_whole_chain.py
+      - name: Emit proof summary
+        if: always()
+        run: |
+          echo "PROJECT= NayaNET"
+          echo "HEAD=$(git rev-parse HEAD)"
+          echo "PROOF=PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF"
+          echo "CLAIM_SCOPE=repository behavioral continuity only"
+          echo "EXTERNAL_RUNTIME_NOT_CLAIMED=true"
