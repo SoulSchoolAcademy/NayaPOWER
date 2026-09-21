@@ -25,6 +25,8 @@ from governance_kernel import (  # noqa: E402
 
 REGISTRY_PATH = GOVERNANCE_DIR / "authority-registry.json"
 
+from quality_gate import QualityGateInput, evaluate_quality  # noqa: E402
+
 
 def resolve_authority(
     registry: AuthorityRegistry,
@@ -71,6 +73,11 @@ def authorize_workflow(
     irreversibility: int,
     scope: str,
     evidence: list[str],
+    intent_understood: bool,
+    context_complete: bool,
+    material_unknowns: list[str],
+    quality_ready: bool,
+    evidence_ready: bool,
 ) -> dict:
     """Construct the decision and pass it through the canonical kernel."""
     required = {
@@ -85,6 +92,17 @@ def authorize_workflow(
         raise ValueError("workflow gate identity, purpose, permission, request, mission, and scope are required")
     if not evidence:
         raise ValueError("workflow gate requires evidence")
+
+    quality = evaluate_quality(QualityGateInput(
+        intent_understood=intent_understood,
+        context_complete=context_complete,
+        material_unknowns=tuple(material_unknowns),
+        consequence=consequence,
+        quality_ready=quality_ready,
+        evidence_ready=evidence_ready,
+    ))
+    if not quality.allowed:
+        raise RuntimeError("TUNE_IN=" + quality.state + "; " + "; ".join(quality.reasons))
 
     registry = load_authority_registry(REGISTRY_PATH)
     authority = resolve_authority(
@@ -154,6 +172,11 @@ def main() -> int:
     parser.add_argument("--irreversibility", type=int, required=True)
     parser.add_argument("--scope", required=True)
     parser.add_argument("--evidence", action="append", default=[])
+    parser.add_argument("--intent-understood", action="store_true")
+    parser.add_argument("--context-complete", action="store_true")
+    parser.add_argument("--material-unknown", action="append", default=[])
+    parser.add_argument("--quality-ready", action="store_true")
+    parser.add_argument("--evidence-ready", action="store_true")
     args = parser.parse_args()
     try:
         result = authorize_workflow(
@@ -167,6 +190,11 @@ def main() -> int:
             irreversibility=args.irreversibility,
             scope=args.scope,
             evidence=args.evidence,
+            intent_understood=args.intent_understood,
+            context_complete=args.context_complete,
+            material_unknowns=args.material_unknown,
+            quality_ready=args.quality_ready,
+            evidence_ready=args.evidence_ready,
         )
     except (ValueError, RuntimeError) as exc:
         print(f"GOVERNANCE_GATE=DENIED: {exc}")
