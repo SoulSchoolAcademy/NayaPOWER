@@ -375,7 +375,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Smart Share governed human lifecycle is production-proven at current main HEAD. The two discovered proof/authority boundaries were repaired surgically and rerun successfully. The next acceptance frontier is the canonical Smart Mail lifecycle.",
-  "current_repository_head": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
+  "current_repository_head": "80612def906c670942071ef0a35f4431cbd72ff3",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -397,8 +397,8 @@
   "single_current_frontier": {
     "id": "REMAINING-CONSTITUTIONAL-PRODUCT-HARDENING",
     "status": "OPEN",
-    "source_checkpoint": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
-    "next_action": "Harden the remaining constitutional/product gaps without reopening proven PI-01→PI-08 boundaries: first reconcile all canonical control-plane surfaces to this live HEAD, then execute the highest-value remaining acceptance boundary from the gap matrix.",
+    "source_checkpoint": "80612def906c670942071ef0a35f4431cbd72ff3",
+    "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
     "evidence_required": [
       "current control-plane reconciliation receipt",
       "selected gap acceptance receipt",
@@ -408,7 +408,7 @@
     "recovery": "Use first-failure law on the first deterministic remaining gap."
   },
   "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
-  "latest_execution_head": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
+  "latest_execution_head": "80612def906c670942071ef0a35f4431cbd72ff3",
   "latest_deployment_receipt": ".naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md",
   "latest_deployment_status": "12_CANONICAL_PI_FUNCTIONS_ACTIVE"
 }
