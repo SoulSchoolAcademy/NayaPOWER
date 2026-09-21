@@ -23,7 +23,7 @@
     "Live Smart Note receiver verification exists in the repository verification lane.",
     "Repository-local compounding Project Intelligence proof exists.",
     "Project Intelligence Bridge server-to-server transaction is proven at the governed receiver boundary: packet accepted, persisted, indexed, projected, acknowledged, and replayed idempotently.",
-    "Supabase Project Intelligence operating layer version 4 is deployed with restore, retrieve, reconcile, understand, learning candidate/verify/retrieve, project, ack, successor handoff, share, supersede lineage, health, state update and compound lifecycle capabilities.",
+    "Supabase Project Intelligence operating layer version 5 is deployed with restore, retrieve, reconcile, understand, learning candidate/verify/retrieve, project, ack, successor handoff, share, supersede lineage, health, state update and compound lifecycle capabilities.",
     "Canonical project state is persisted in public.nayanet_project_intelligence_state and bridge retrieval/render evidence is distinct from transport flags."
   ],
   "unknown": [
@@ -67,7 +67,7 @@
     },
     "retrieval_rule": "retrieved/rendered require explicit evidence; indexed/projected transport flags never imply retrieval/render",
     "operating_function": "nayanet-compound-intelligence",
-    "operating_function_version": 4
+    "operating_function_version": 5
   },
   "current_next_action": {
     "action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
