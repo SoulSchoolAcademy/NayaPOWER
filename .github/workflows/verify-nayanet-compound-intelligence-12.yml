@@ -55,7 +55,7 @@ jobs:
           };
 
           async function setupIdentity(page) {
-            await page.goto(hub + '/identity?naya_hold=1', {waitUntil:'networkidle', timeout:60000});
+            await page.goto(hub + '/identity.html?naya_hold=1', {waitUntil:'networkidle', timeout:60000});
             await page.locator('#name').fill('Compound Intelligence Proof');
             await page.locator('#alias').fill(alias);
             await page.locator('#enter').click();
