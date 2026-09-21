@@ -5,7 +5,7 @@
     "id": "COLD-NAYA-TAKEOVER-PROOF",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Make GitHub the durable operating memory and Supabase the established governed runtime persistence layer so a cold Naya can restore, understand, act, learn, update, and hand off without Shawn reconstructing the project.",
+    "intent": "Make GitHub durable Project Intelligence and the NayaNET Intelligent Hub operate as one governed continuity loop so a cold Naya can restore, act, verify, learn, and hand off without Shawn reconstructing the project.",
     "protected": [
       "canonical NayaPOWER governance",
       "canonical Project Intelligence bridge",
@@ -22,7 +22,10 @@
       "A cold Naya can identify exactly one highest-value authorized next action without asking Shawn to reconstruct repository state.",
       "The established Supabase runtime is discoverable through canonical project sources without exposing secrets or requiring direct ordinary-user database access.",
       "The cold Naya can execute the current authorized action, verify it, record learning, update durable state, and leave a runnable successor.",
-      "The proof distinguishes repository reconstruction from actual external LLM/provider behavior."
+      "The proof distinguishes repository reconstruction from actual external LLM/provider behavior.",
+      "The Project Intelligence Bridge packet is built from live main, preserves source/object identity and provenance, and is validated before transport.",
+      "The receiver readiness sequence is proven by one real transaction: RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE.",
+      "A fresh successor Naya retrieves the exact resulting intelligence and receipt lineage without Shawn context transfer."
     ],
     "evidence": [
       "SUPERBRAIN/AI-BOOT/START-HERE.md",
@@ -34,12 +37,16 @@
       ".naya/control-plane/BLOCKS.json",
       ".naya/control-plane/PROOF.json",
       ".github/workflows/verify-nayanet-cold-project-intelligence.yml",
-      "Supabase project dahisasgpfvziswqvmvm runtime inspection"
+      "Supabase project dahisasgpfvziswqvmvm runtime inspection",
+      ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
+      ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",
+      ".naya/runtime/project_intelligence_bridge.py",
+      ".github/workflows/verify-project-intelligence-bridge.yml"
     ],
-    "target_state": "COLD_NAYA_CAN_RESTORE_UNDERSTAND_EXECUTE_VERIFY_LEARN_AND_HANDOFF",
-    "next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
+    "target_state": "COLD_NAYA_CAN_RESTORE_UNDERSTAND_EXECUTE_VERIFY_LEARN_HANDOFF_AND_CROSS_PROJECT_INTELLIGENCE_BOUNDARY",
+    "next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval.",
     "next_actions": [
-      "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary."
+      "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval."
     ],
     "scope": [
       "GitHub durable intelligence",
