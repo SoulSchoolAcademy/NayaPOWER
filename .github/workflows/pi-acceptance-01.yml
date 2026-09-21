@@ -57,6 +57,7 @@ jobs:
           if(ex.status!==200||ex.body?.ok!==true)throw Error('EXECUTION_FAILED');
           const receiptId=ex.body.receipt?.id;if(!receiptId)throw Error('RECEIPT_ID_MISSING');
           const learning=await P('nayanet-learning-verify',t,{learning_id:claim,verification_method:'PI-ACCEPTANCE-01 independent runtime verification',evidence_refs:[source,receiptId],receipt_id:receiptId});
+          console.log('LEARNING_RUNTIME_RESPONSE='+JSON.stringify(learning));
           if(learning.status!==200||learning.body?.ok!==true||learning.body?.verified!==true)throw Error('LEARNING_FAILED');
           const handoff=await P('nayanet-successor-handoff',t,{receipt_id:receiptId,what_happened:'PI-ACCEPTANCE-01 runtime lineage executed and verified',what_changed:'Runtime receipt binds source claim action outcome verification learning successor',learned:[{learning_id:claim,verified:true}],next_action:'Reconcile live Project Intelligence and execute the next incomplete acceptance boundary',why:'Cold-successor continuity requires durable verified lineage.',evidence_required:['runtime lineage receipt','verification evidence','successor handoff'],source_head:process.env.GITHUB_SHA});
           if(handoff.status!==200||handoff.body?.ok!==true)throw Error('HANDOFF_FAILED');
