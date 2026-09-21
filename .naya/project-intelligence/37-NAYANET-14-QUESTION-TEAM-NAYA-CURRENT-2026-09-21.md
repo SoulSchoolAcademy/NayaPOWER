@@ -1,7 +1,7 @@
 # TEAM NAYA — 14 QUESTION COLD RECONSTRUCTION — 2026-09-21
 Project: NayaNET
 Branch: naya/live-project-intelligence-v1
-Latest repository HEAD at this receipt: 6e23755be85feba2c75a8f180e7faeabfb7fdc3a
+Latest repository HEAD at this receipt: 77dcac16dbfb49c11162dc81d316f8e216337e13
 
 Each answer is classified: PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
 
@@ -11,7 +11,7 @@ Each answer is classified: PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
 | 2 | WHAT are we building? | A persistent, governed, interoperable intelligence system that captures experience, preserves evidence, retrieves relevant intelligence, acts within authority, verifies outcomes, learns, compounds and hands off to the next Naya. | DOCUMENTED + SUBSYSTEM PROVEN |
 | 3 | WHY are we building it? | To prevent intelligence from disappearing with conversations/models and reduce repeated archaeology, wasted computation and human project-management overhead. | DOCUMENTED |
 | 4 | WHAT does success mean? | Cold Naya restores → orients → distinguishes truth → retrieves → decides → acts when authorized → verifies → learns → updates → hands off; another cold Naya continues without Shawn reconstructing the project. | DOCUMENTED; WHOLE CHAIN UNKNOWN |
-| 5 | WHAT is true right now? | Live branch is naya/live-project-intelligence-v1. The current execution HEAD is 6e23755be85feba2c75a8f180e7faeabfb7fdc3a. Control-plane frontier is PI-03 cold retrieval. Twelve canonical nayanet-pi-* Edge Functions are ACTIVE. | PROVEN for Git/Supabase observations |
+| 5 | WHAT is true right now? | Live branch is naya/live-project-intelligence-v1. The current execution HEAD is 6e23755be85feba2c75a8f180e7faeabfb7fdc3a. Control-plane frontier is PI-03 cold retrieval. The twelve requested named Project Intelligence capability endpoints are ACTIVE; the older nayanet-pi-* orchestration layer is also ACTIVE. | PROVEN for Git/Supabase observations |
 | 6 | WHAT has already been proven? | Numerous Hub/runtime, authorization, persistence, Smart Feed/Smart Share, Dream→learning→later-decision, relationship/security, sender/receiver substrate and source/runtime parity claims have evidence. The twelve PI functions are deployed ACTIVE. | PROVEN within claim scope |
 | 7 | WHAT is unknown? | Authenticated invocation and one uninterrupted RESTORE→RETRIEVE→RECONCILE→UNDERSTAND→LEARN→DREAM/COMPOUND→HANDOFF→cold-successor runtime proof; full human journey; sender→receiver production continuity as one chain; universal computation savings. | UNKNOWN |
 | 8 | WHAT authority exists? | Human-directed governed authority. Authenticated runtime access is required for user-scoped operations. Capability does not create authority. Secrets are not exposed in chat. | PROVEN / PROTECTED |
@@ -72,3 +72,8 @@ nayanet-pi-supersede
 nayanet-pi-health
 nayanet-pi-dream
 nayanet-pi-compound
+
+
+## Latest runtime proof observation
+
+Run 35629040960 is the current authenticated twelve-function proof attempt after repairing the ACK negative-path contract. At the time of this handoff it is queued/in progress; therefore runtime VERIFIED is not yet claimed. The first deterministic failures have been captured and repaired in sequence.
