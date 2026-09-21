@@ -1,0 +1,96 @@
+{
+  "project_id": "naya-project",
+  "project_name": "Naya Project",
+  "first_project_instance": "NayaPOWER",
+  "network": "NayaNET",
+  "version": "1.0",
+  "mission": "Build NayaPOWER by using NayaPOWER so the same governed intelligence operating system can help humans successfully build, learn, know, solve, create, and do meaningful projects.",
+  "north_star": "Make the intelligence required to accomplish something available, understandable, actionable, verifiable, and continuously compounding for the human who wants to accomplish it.",
+  "human_modes": [
+    "CREATE",
+    "LEARN",
+    "KNOW",
+    "DO"
+  ],
+  "intelligence_modes": [
+    "REMEMBER",
+    "THINK",
+    "COMPOUND"
+  ],
+  "core_loop": [
+    "INTENTION",
+    "UNDERSTAND",
+    "GATHER",
+    "DISTILL",
+    "PLAN",
+    "CREATE_LEARN_ACT",
+    "VERIFY",
+    "REMEMBER",
+    "LEARN",
+    "COMPOUND",
+    "CONTINUE"
+  ],
+  "architecture": {
+    "canonical": "CANONICAL EVENTS + RELATIONSHIPS + VERIFIED STATE + EVIDENCE + LEARNING + DECISIONS",
+    "project_intelligence": "reconstructable derived view; not a second source of truth",
+    "canonical_event_rule": "ONE_CANONICAL_EVENT -> MANY_AUTHORIZED_VIEWS"
+  },
+  "restore_contract": [
+    "WHAT",
+    "WHY",
+    "WHERE",
+    "AUTHORITY",
+    "PROTECTED",
+    "VERIFIED",
+    "FAILED",
+    "UNKNOWN",
+    "CURRENT_GAP",
+    "NEXT_ACTION",
+    "PROOF"
+  ],
+  "evidence_ladder": [
+    "CLAIMED",
+    "PRESENT_IN_SOURCE",
+    "TESTED",
+    "RUNTIME_OBSERVED",
+    "VERIFIED",
+    "PRODUCTION_PROVEN"
+  ],
+  "truth_laws": [
+    "CAPABILITY != AUTHORITY",
+    "IMPLEMENTED != VERIFIED",
+    "VERIFIED != PRODUCTION_PROVEN",
+    "UNKNOWN != SUCCESS",
+    "BLOCKED != PASS",
+    "ACTIVITY != PROGRESS"
+  ],
+  "acceptance": [
+    "PI-01 Cold Restore",
+    "PI-02 Truth Reconciliation",
+    "PI-03 One Frontier",
+    "PI-04 Authorized Execution",
+    "PI-05 Successor Continuity",
+    "PI-06 Compounding",
+    "PI-07 Generalization"
+  ],
+  "required_reading": [
+    "NAYA-PROJECT/README.md",
+    "SUPERBRAIN/NAYAPOWER-BUILD-ANYTHING-SUPERBRAIN-OPERATING-SPEC-V1.md",
+    "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+    "repository constitution",
+    "current control plane",
+    "active mission/protection locks",
+    "relevant subsystem contracts"
+  ],
+  "first_engineering_question": "What does current main already prove, what does Naya Project require, and what is the first missing causal boundary?",
+  "stop_conditions": [
+    "authority missing",
+    "source/runtime disagreement",
+    "insufficient evidence",
+    "protected boundary would be crossed",
+    "second source of truth would be required",
+    "repair scope exceeds proven failure boundary",
+    "acceptance test fails"
+  ],
+  "status": "TARGET OPERATING MODEL ESTABLISHED; END-TO-END GENERIC PROJECT LOOP NOT YET CLAIMED AS PRODUCTION-PROVEN"
+}
