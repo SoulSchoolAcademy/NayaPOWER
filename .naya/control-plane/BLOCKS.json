@@ -25,7 +25,8 @@
       "The proof distinguishes repository reconstruction from actual external LLM/provider behavior.",
       "The Project Intelligence Bridge packet is built from live main, preserves source/object identity and provenance, and is validated before transport.",
       "The receiver readiness sequence is proven by one real transaction: RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE.",
-      "A fresh successor Naya retrieves the exact resulting intelligence and receipt lineage without Shawn context transfer."
+      "A fresh successor Naya retrieves the exact resulting intelligence and receipt lineage without Shawn context transfer.",
+      "The transport boundary must be distinguished from retrieval/render and cold-successor proof; exact source scope remains attached to every proof."
     ],
     "evidence": [
       "SUPERBRAIN/AI-BOOT/START-HERE.md",
@@ -44,9 +45,9 @@
       ".github/workflows/verify-project-intelligence-bridge.yml"
     ],
     "target_state": "COLD_NAYA_CAN_RESTORE_UNDERSTAND_EXECUTE_VERIFY_LEARN_HANDOFF_AND_CROSS_PROJECT_INTELLIGENCE_BOUNDARY",
-    "next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval.",
+    "next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
     "next_actions": [
-      "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval."
+      "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
     ],
     "scope": [
       "GitHub durable intelligence",
