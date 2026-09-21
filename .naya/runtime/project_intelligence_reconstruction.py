@@ -88,7 +88,6 @@ def build_current(project_id="NayaNET"):
     return reconstruct(load_events(),project_id,json.loads(STATE.read_text()),json.loads(MAP.read_text()),json.loads(BLOCKS.read_text()),json.loads(PROOF.read_text()))
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--project",default="NayaNET");ap.add_argument("--out");a=ap.parse_args();r=build_current(a.project);raw=json.dumps(r,indent=2,ensure_ascii=False)
-    if a.out:Path(a.out).write_text(raw+"
-",encoding="utf-8")
+    if a.out:Path(a.out).write_text(raw+"\\n",encoding="utf-8")
     print(raw)
 if __name__=="__main__":main()
