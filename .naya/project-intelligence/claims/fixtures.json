@@ -1,0 +1,22 @@
+{
+  "schema":"nayanet/project-intelligence/claim-fixtures/v1",
+  "valid":[
+    {
+      "claim_id":"CLM-NAYANET-MASTER-PROOF-SCOPED",
+      "subject":"Project NayaNET",
+      "assertion":"PI-01 through PI-08 are proven at the defined observed claim scope recorded by the master proof receipt.",
+      "source":{"kind":"execution","ref":".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md","observed_head":"1b88648fe69db5d4a130e85e71d2c36345b55135"},
+      "scope":{"project":"NAYANET","claim_scope":"DEFINED_OBSERVED_CLAIMS_ONLY"},
+      "time":{"asserted_at":"2026-09-21T17:42:33Z","observed_at":"2026-09-21T17:42:33Z","valid_from":"2026-09-21T17:42:33Z","valid_until":null},
+      "truth_state":"VERIFIED",
+      "evidence":[{"evidence_id":"RUN-35631352527","kind":"github_actions","ref":"35631352527","supports":"PI-08 cold successor"}],
+      "supersession":{"status":"CURRENT","supersedes":[],"superseded_by":null},
+      "confidence":1,
+      "limitations":["Scoped to the exact observed runs and environments named by the master receipt; not universal constitutional completion."]
+    }
+  ],
+  "invalid":[
+    {"case":"missing_evidence","claim":{"claim_id":"CLM-INVALID-NO-EVIDENCE","subject":"NayaNET","assertion":"This is proven.","source":{"kind":"repository","ref":"README"},"scope":{"project":"NAYANET","claim_scope":"test"},"time":{"asserted_at":"2026-09-21T17:42:33Z","observed_at":"2026-09-21T17:42:33Z","valid_from":"2026-09-21T17:42:33Z","valid_until":null},"truth_state":"VERIFIED","evidence":[],"supersession":{"status":"CURRENT","supersedes":[],"superseded_by":null},"confidence":1,"limitations":["test"]}},
+    {"case":"unknown-promoted","claim":{"claim_id":"CLM-INVALID-UNKNOWN-GREEN","subject":"NayaNET","assertion":"Unknown claim.","source":{"kind":"repository","ref":".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md"},"scope":{"project":"NAYANET","claim_scope":"test"},"time":{"asserted_at":"2026-09-21T17:42:33Z","observed_at":"2026-09-21T17:42:33Z","valid_from":"2026-09-21T17:42:33Z","valid_until":null},"truth_state":"UNKNOWN","evidence":[{"evidence_id":"DOC-1","kind":"documentation","ref":".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md","supports":"unknown"}],"supersession":{"status":"CURRENT","supersedes":[],"superseded_by":null},"confidence":1,"limitations":["unknown"]}}
+  ]
+}
