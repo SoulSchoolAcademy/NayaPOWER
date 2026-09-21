@@ -814,7 +814,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "c262191dcdc16e6488a395778de6d9896e5c2097",
+  "current_repository_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -911,5 +911,30 @@
     "successor_event_id": "successor:ba3da452-1f04-4298-9c0c-d01fd65afac8",
     "superseding_event_id": "supersede:354ac686-7196-408b-b6ad-9292ce638576",
     "dream_replay_id": "55aa78fd-68d2-4c0a-b668-eafc7751e076"
+  },
+  "project_intelligence_home_run": {
+    "status": "VERIFIED_PROVEN",
+    "claim_type": "WHOLE_JOURNEY",
+    "workflow": ".github/workflows/verify-nayanet-project-intelligence-home-run.yml",
+    "run_id": 35640130080,
+    "job_id": 106467147709,
+    "observed_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+    "packet_id": "0f71204b-3802-5d71-9f56-b6c025e66529",
+    "receiver_event_id": "cb191967-15e7-4a70-b413-e6f66f45f0ab",
+    "ack_receipt_id": "6bdd2fc0-bb86-492a-a93e-670a4566295e",
+    "continuation_event_id": "continuation:d286f40a-3121-40c5-a571-d7722ac77236",
+    "continuation_receipt_id": "cfc748de-14c1-497f-84ff-90612ea8cab4",
+    "successor_event_id": "successor:dd0f9374-eeee-4f05-9b78-89de47afdb96",
+    "successor_receipt_id": "cceee0a2-77f1-443b-afd9-ecc60aba4204",
+    "consolidated_gate_receipt_id": "b6b2ae9a-0d31-4622-ba82-09b3b49d88ef",
+    "four_gates": {
+      "CANONICAL_CURRENT_TRUTH_RESOLUTION": "PASS",
+      "FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION": "PASS",
+      "COLD_NAYA_CONSUMPTION": "PASS",
+      "COLD_SUCCESSOR_CONTINUATION": "PASS"
+    },
+    "cold_14q_evidence_metadata": true,
+    "source_scope": "Current main commit and governed Assistant Cloudflare runtime source scope exercised by the home-run proof.",
+    "interpretation": "Fresh owner-bound sender→receiver→retrieval→render→ACK→cold successor→authority→authorized continuation→successor receipt completed as one runtime journey. Four PI gates were consolidated into a durable receipt."
   }
 }
