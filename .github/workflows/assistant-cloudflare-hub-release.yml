@@ -129,7 +129,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","html_handling":"none","not_found_handling":"single-page-application"}}' > "${RUNNER_TEMP}/wrangler.jsonc"
+          printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","main":"/home/runner/work/NayaPOWER/NayaPOWER/NAYANET/HUB/cloudflare-static-worker.js","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","binding":"ASSETS","run_worker_first":true,"html_handling":"none","not_found_handling":"single-page-application"}}' > "${RUNNER_TEMP}/wrangler.jsonc"
           npx --yes wrangler@4 deploy --config "${RUNNER_TEMP}/wrangler.jsonc"
 
       - name: Verify exact live source parity
