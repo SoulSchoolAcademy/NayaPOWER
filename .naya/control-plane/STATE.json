@@ -5,9 +5,9 @@
   "state_authority": "Canonical operational current-state contract. Live repository identity/HEAD must be resolved at execution time.",
   "current_head": {
     "source": "git:HEAD",
-    "value": "96bba45bd382e3cf7422a505b0caa3bfcfb9acab",
+    "value": "c262191dcdc16e6488a395778de6d9896e5c2097",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-21T18:29:24Z"
+    "recorded_at": "2026-09-21T18:35:xxZ"
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -52,10 +52,10 @@
   "latest_automation_observation": {
     "status": "PROVEN",
     "workflow": ".github/workflows/verify-nayanet-project-intelligence-home-run.yml",
-    "run_id": 35638451543,
-    "job_id": 106461599787,
-    "source_head": "cc3afacd9d3502440f37444c59d4517445b9144d",
-    "artifact_id": 10657306507,
+    "run_id": 35639400253,
+    "job_id": 106464749083,
+    "source_head": "c262191dcdc16e6488a395778de6d9896e5c2097",
+    "artifact_id": 10657402815,
     "chain": [
       "RECEIVE",
       "RETRIEVE",
@@ -260,16 +260,16 @@
     "readiness_sequence": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
     "rule": "Documentation and packet construction are not receiver proof.",
     "latest_proof": {
-      "workflow_run": 35638451543,
-      "job_id": 106461599787,
-      "source_ref": "cc3afacd9d3502440f37444c59d4517445b9144d",
-      "packet_id": "ad1c3e76-9898-5607-b590-d2c8675d8855",
-      "receiver_event_id": "98b6bd4b-a7b8-493e-8020-3c8315881ff9",
-      "receipt_id": "c46d3eb1-31a9-4a06-ae14-73e95a1d22a5",
-      "continuation_event_id": "continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866",
-      "continuation_receipt_id": "52146218-28d7-40c9-a95b-05c66f028b3d",
-      "successor_event_id": "successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab",
-      "successor_receipt_id": "6c4a79af-78bb-4419-b71a-b2b53adc82a5"
+      "workflow_run": 35639400253,
+      "job_id": 106464749083,
+      "source_ref": "c262191dcdc16e6488a395778de6d9896e5c2097",
+      "packet_id": "3e7a40fb-9c16-57e0-a8fc-0357998dd9af",
+      "receiver_event_id": "fad90097-7e35-4b0e-bd1b-70899b43a80e",
+      "receipt_id": "a1d7d052-305e-499b-8dd1-ca5e93fff595",
+      "continuation_event_id": "continuation:39beeb98-6155-42e6-8bc9-2a14c4ac00a4",
+      "continuation_receipt_id": "5c851c08-3943-4ca7-932d-98b5b877f113",
+      "successor_event_id": "successor:cfa3c219-ff1f-4cfe-b2a4-7bf06176968e",
+      "successor_receipt_id": "76fbc0e1-6aaa-42d6-9bb3-e945f02fcba3"
     }
   },
   "current_frontier": {

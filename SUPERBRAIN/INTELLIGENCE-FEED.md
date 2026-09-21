@@ -621,3 +621,27 @@ Universal computation savings remain **UNKNOWN** until independently measured.
 - PR #425: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/425
 
 **Successor instruction:** Resolve live `main`, read this entry and the control plane, do not repeat PI-01, and begin the computation-efficiency benchmark from the single next action above.
+
+
+---
+
+## 2026-09-21 — PI-01 REVALIDATED AFTER STATE/RECONSTRUCTION REPAIRS
+
+**Status:** 🟢 **PROVEN / REVALIDATED**
+
+The first home-run was not treated as permanent truth after downstream state changes. We re-ran the complete proof after reconciling the control plane and fixing latent reconstruction defects.
+
+**Latest proof:** run `35639400253`, job `106464749083`, source HEAD `c262191dcdc16e6488a395778de6d9896e5c2097`, artifact `10657402815`.
+
+**All gates passed:** RECEIVE, RETRIEVE, RENDER, ACK, SUCCESSOR_HANDOFF, COLD_14Q, COLD_SUCCESSOR, AUTHORITY, CONTINUATION, SUCCESSOR_RECEIPT.
+
+**Current-truth reconstruction:** PASS.
+
+**Newly verified learning:** The architecture now survives not only a fresh Naya/session boundary, but also a control-plane state transition from P0 to P1 without losing the ability to reconstruct current state and continue.
+
+**Important defects found and repaired during revalidation:**
+- #429: control-plane STATE/BLOCK/MAP frontier schema mismatch.
+- #430: reconstruction resolver passed control-plane objects into the wrong positional parameters.
+- #431/#432: malformed historical event timestamp could crash reconstruction; invalid historical events are now quarantined as UNKNOWN and safely sorted.
+
+**Next:** measure computational compounding. PI-01 remains closed unless regression evidence appears.

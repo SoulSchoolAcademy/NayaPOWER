@@ -21,7 +21,7 @@ ACTIVE={"ACTIVE","CANONICAL"}
 def parse_time(v:str)->datetime:
     if v.endswith("Z"):v=v[:-1]+"+00:00"
     d=datetime.fromisoformat(v)
-    if d.tzinfo is None:raise ValueError(f"timestamp must include timezone: {v!r}")
+    if d.tzinfo is None:raise ValueError("timestamp must include timezone")
     return d.astimezone(timezone.utc)
 def subject(e:dict[str,Any])->str:
     return re.sub(r"\s+"," ",str(e.get("subject") or e.get("title") or e.get("event_type") or e.get("type") or e.get("event_id","")).strip()).casefold()
@@ -42,29 +42,10 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
         superseded |= {x for x in targets(e,"supersedes") if x in by_id}
         # Existing schema: superseded_by lives on the replaced event.
         if targets(e,"superseded_by") & set(by_id): superseded.add(e["event_id"])
-    # Historical event data can be malformed without being allowed to crash
-    # the current-truth resolver. Invalid timestamps are quarantined as UNKNOWN;
-    # they can never become current merely because they are recent or parseable
-    # after the fact.
-    valid_rows=[];invalid_rows=[]
-    for e in rows:
-        try:
-            parse_time(str(e["effective_at"]))
-            valid_rows.append(e)
-        except Exception as exc:
-            e["_reconstruction_error"]="INVALID_EFFECTIVE_AT"
-            e["_reconstruction_error_detail"]=str(exc)
-            invalid_rows.append(e)
-
     groups={}
-    for e in valid_rows:groups.setdefault(subject(e),[]).append(e)
-    current=[];historical=[];superseded_rows=[];stale=[];conflicted=[];unknown=list(invalid_rows)
-    def key(e):
-        try:
-            t=parse_time(str(e["effective_at"]))
-        except Exception:
-            t=datetime.min.replace(tzinfo=timezone.utc)
-        return (t,str(e["event_id"]))
+    for e in rows:groups.setdefault(subject(e),[]).append(e)
+    current=[];historical=[];superseded_rows=[];stale=[];conflicted=[];unknown=[]
+    key=lambda e:(parse_time(str(e["effective_at"])),str(e["event_id"]))
     for group in groups.values():
         group.sort(key=key,reverse=True);active=[]
         for e in group:

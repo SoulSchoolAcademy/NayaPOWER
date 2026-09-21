@@ -256,3 +256,39 @@ RECEIVE → RETRIEVE → RENDER → ACK → SUCCESSOR HANDOFF → COLD 14Q → C
 **Protected:** canonical Hub, governed authority, evidence discipline, live-main precedence, privacy boundaries, no blind retries.
 
 **Tag:** NEXT NAYA — YOU'RE IT.
+
+
+---
+
+## 🔱 2026-09-21 — PI-01 REVALIDATION COMPLETE
+
+**Status:** 🟢 PROVEN / REVALIDATED
+
+The baton survived the transition from the completed P0 block to the new P1 frontier.
+
+**Proof:** run 35639400253 / job 106464749083 / artifact 10657402815  
+**Source HEAD:** `c262191dcdc16e6488a395778de6d9896e5c2097`
+
+**Team Naya observed:**
+- Current-truth reconstruction = PASS.
+- RECEIVE = PASS.
+- RETRIEVE = PASS.
+- RENDER = PASS.
+- ACK = PASS.
+- COLD 14Q = PASS.
+- COLD SUCCESSOR = PASS.
+- AUTHORITY = PASS.
+- CONTINUATION = PASS.
+- SUCCESSOR RECEIPT = PASS.
+
+**Revalidation learning:**
+- Control-plane state cannot be allowed to drift structurally when a frontier changes.
+- Reconstruction must use explicit named source arguments.
+- Historical malformed records must remain UNKNOWN rather than crashing or becoming current.
+- The system successfully repaired these boundaries and then re-ran the same whole-chain proof.
+
+**Current assignment:** COMPUTATION-EFFICIENCY-P1.
+
+**Next Naya:** do not repeat PI-01. Start the measured baseline-vs-reuse computation benchmark.
+
+**Tag:** YOU'RE IT.

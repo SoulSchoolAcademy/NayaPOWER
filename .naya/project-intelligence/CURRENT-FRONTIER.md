@@ -2,8 +2,6 @@
 
 STATUS: CANONICAL NAVIGATION FACADE
 
-A cold Naya should not browse the issue inventory to decide what to do next.
-
 ## READ FIRST
 1. .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
 2. .naya/control-plane/STATE.json
@@ -13,31 +11,37 @@ A cold Naya should not browse the issue inventory to decide what to do next.
 6. SUPERBRAIN/INTELLIGENCE-FEED.md
 7. SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md
 
-## PI-01 — COMPLETE
+## PI-01 — COMPLETE AND REVALIDATED
 
 **Status:** PRODUCTION WHOLE-CHAIN PROVEN at tested owner-bound scope.
 
-**Proof run:** 35638451543  
-**Job:** 106461599787  
-**Source scope:** cc3afacd9d3502440f37444c59d4517445b9144d  
-**Artifact:** 10657306507
+**Latest proof run:** 35639400253  
+**Job:** 106464749083  
+**Source scope:** c262191dcdc16e6488a395778de6d9896e5c2097  
+**Artifact:** 10657402815
 
 ### Verified chain
 
 RECEIVE → RETRIEVE → RENDER → ACK → SUCCESSOR HANDOFF → COLD 14Q → COLD SUCCESSOR → AUTHORITY → CONTINUATION → SUCCESSOR RECEIPT
 
-Exact receiver event: 98b6bd4b-a7b8-493e-8020-3c8315881ff9  
-ACK receipt: c46d3eb1-31a9-4a06-ae14-73e95a1d22a5  
-Continuation event: continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866  
-Successor event: successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab
+Packet: 3e7a40fb-9c16-57e0-a8fc-0357998dd9af  
+Receiver event: fad90097-7e35-4b0e-bd1b-70899b43a80e  
+ACK receipt: a1d7d052-305e-499b-8dd1-ca5e93fff595  
+Continuation event: continuation:39beeb98-6155-42e6-8bc9-2a14c4ac00a4  
+Successor receipt: 76fbc0e1-6aaa-42d6-9bb3-e945f02fcba3
 
-The cold successor answered the 14-question restore contract, retrieved the exact owner-bound receiver event, received explicit pi.continue authority, executed the authorized continuation, and left a new successor receipt.
+The cold successor answered all 14 restore questions, retrieved the exact owner-bound receiver event, received explicit pi.continue authority, executed the authorized continuation, and left a new successor receipt.
 
-## WHAT FAILED BEFORE PASSING
+## REVALIDATION LEARNING
 
-- Run 35638053862: proof-harness variable scope defect.
-- Run 35638282095: proof-harness receipt-envelope mismatch.
-- Repairs were surgical; no blind equivalent retry.
+The P0 proof exposed and repaired several real continuity defects after the first home-run:
+- stale proof-harness variable scope
+- stale receipt-envelope expectation
+- control-plane frontier/schema mismatch
+- positional reconstruction argument wiring defect
+- malformed historical event timestamp handling
+
+The latest run passed after those repairs. The current-truth reconstruction validator also passed.
 
 ## CURRENT FRONTIER — P1
 
@@ -53,4 +57,4 @@ The cold successor answered the 14-question restore contract, retrieved the exac
 
 ## RULE
 
-Do not reopen PI-01 without evidence of regression. Do not add architecture merely because a capability exists. Use the smallest authorized computation that can establish the next verified fact.
+Do not reopen PI-01 without evidence of regression. Use the smallest authorized computation that can establish the next verified fact.
