@@ -186,3 +186,15 @@ A Naya does not say “someone else can continue” until the required intellige
 **Next action:** Execute and independently observe the end-to-end runtime lineage proof.  
 **Proof required:** seven bound nodes, six required edges, `status=COMPLETE`, and independent post-execution retrieval.  
 **Successor:** Do not advance to causal verification until this boundary is VERIFIED.
+
+## 🔱 NAYANET-2026-09-21-013 — CURRENT SUCCESSOR TORCH / LOCKED EXECUTION LADDER
+
+**Truth state:** ACTIVE / VERIFIED HANDOFF CONTRACT  
+**Current branch:** `naya/live-project-intelligence-v1`  
+**Torch:** `.naya/project-intelligence/45-NAYANET-CURRENT-SUCCESSOR-TORCH-AND-EXECUTION-LADDER-2026-09-21.md`  
+**Mission:** Execute the locked ten-frontier constitutional hardening ladder without restarting from zero.  
+**Current frontier:** #1 runtime evidence-lineage end-to-end proof.  
+**Current truth:** lineage implementation is deployed; end-to-end runtime receipt remains UNVERIFIED because an independently observable proof result has not yet been retrieved.  
+**Next action:** Execute/observe the runtime lineage proof and independently retrieve one receipt with seven bound nodes, six required edges, and `status=COMPLETE`.  
+**Stop condition:** Do not advance to causal verification until #1 is VERIFIED.  
+**Successor:** Read the torch, resolve live HEAD, answer all 14 questions, reconcile, execute one frontier, verify, learn, update, and pass the torch.
