@@ -1,0 +1,36 @@
+name: Verify Project Intelligence Bridge Adversarially
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  adversarial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build packet
+        run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-bridge-packet.json
+      - name: Mint GitHub OIDC bridge token
+        id: oidc
+        shell: bash
+        run: |
+          token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+      - name: Oscar adversarial bridge checks
+        env:
+          NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
+          NAYANET_BRIDGE_TOKEN: ${{ steps.oidc.outputs.token }}
+        run: python .naya/runtime/verify_project_intelligence_bridge_adversarial.py
+      - name: Publish adversarial evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-intelligence-bridge-adversarial
+          path: project-intelligence-bridge-packet.json
+          retention-days: 30
