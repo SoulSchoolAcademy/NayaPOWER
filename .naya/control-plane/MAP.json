@@ -113,9 +113,9 @@
       "SMART-SPACES-GOVERNED-ACTION",
       "SMART-LISTS-GOVERNED-ACTION"
     ],
-    "active_block": "NAYANET-CONSTITUTIONAL-HARDENING-02",
-    "definition_of_done": "EVIDENCE_LINEAGE_REGISTRY_VERIFIED",
-    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval."
+    "active_block": "NAYANET-CONSTITUTIONAL-HARDENING-03",
+    "definition_of_done": "RUNTIME_EVIDENCE_LINEAGE_VERIFIED",
+    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -165,8 +165,8 @@
   ],
   "current_frontier": {
     "master_proof_contract": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-    "frontier": "NAYANET-CONSTITUTIONAL-HARDENING-02",
-    "source_checkpoint": "dd2684f46c67d23e15a87937a2ad31a15f266dea",
+    "frontier": "NAYANET-CONSTITUTIONAL-HARDENING-03",
+    "source_checkpoint": "5ccc635f773e7b7cfc48319b6b0399eb91b93cb3",
     "branch": "naya/live-project-intelligence-v1",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
     "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
@@ -174,7 +174,7 @@
     "canonical_hub": "NAYANET/HUB/index.html",
     "hub_source_runtime_parity": "VERIFIED",
     "downstream_hub_frontier": "SMART_MAIL_HUMAN_LIFECYCLE",
-    "rule": "Universal evidence/lineage hardening is the current frontier; proven boundaries remain protected unless new evidence changes claim scope.",
-    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval."
+    "rule": "Runtime evidence lineage integration is the current frontier; prior contract proofs remain protected.",
+    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
   }
 }
