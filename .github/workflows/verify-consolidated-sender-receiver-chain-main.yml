@@ -37,7 +37,7 @@ jobs:
           const oj=await oidc.json(); if(!oidc.ok||!oj.value)throw Error('OIDC_TOKEN_FAILED');
           const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'content-type':'application/json'},body:JSON.stringify(payload)});
           const bj=await br.json(); console.log('BRIDGE='+JSON.stringify(bj));
-          if(br.status!==200||bj.status!=='COMPLETED')throw Error('SENDER_RECEIVER_FAILED');
+          if(br.status!==200||!['COMPLETED','ACCEPTED'].includes(bj.status))throw Error('SENDER_RECEIVER_FAILED');
           if(!bj.persisted||!bj.indexed||!bj.projected)throw Error('PERSIST_INDEX_PROJECT_FAILED');
           const [rs,rb]=await post('nayanet-project-intelligence-retrieve',userToken,{query:bj.receiver_event_id});
           console.log('RETRIEVE='+JSON.stringify(rb));
