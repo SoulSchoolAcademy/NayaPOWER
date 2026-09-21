@@ -4,11 +4,10 @@
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "state_authority": "Canonical operational current-state contract. Live repository identity/HEAD must be resolved at execution time.",
   "current_head": {
-    "source": "git:HEAD",
-    "mode": "LIVE_RESOLUTION",
-    "recorded_head_is_not_authoritative": true,
-    "observed_head": "da4fd6cf34425213bda801aee3b0c48c58119289",
-    "note": "Live main changed while the Supabase Project Intelligence operating layer was deployed. Resolve live HEAD again before each execution."
+    "sha": "c3b99e7fa1c13628dc059e66e4168fb171450908",
+    "branch": "main",
+    "resolution": "LIVE_AT_EXECUTION_TIME",
+    "note": "PI-01 home-run proof was executed at prior exact source head cc3afacd9d3502440f37444c59d4517445b9144d; current main now includes the verified feed/activity recording commits."
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -19,7 +18,7 @@
   "priority": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "PROJECT-INTELLIGENCE-PI-01",
-  "current_block_status": "ACTIVE",
+  "current_block_status": "P1",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
     "index": ".naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md",
@@ -51,14 +50,24 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "proof7_run_id": 35616507762,
-    "next_frontier": "COLD-NAYA-TAKEOVER-PROOF",
-    "proof7_job_id": 106388476799,
-    "repaired_boundary": "CONTROLLED_PROOF_SOURCE_EVENT_OWNERSHIP",
-    "observed_head": "a27f4a4318150c71a920b5ea1e4aa36e7106ba67",
-    "previous_failed_boundary": "AUTHORITY_SOURCE_NOT_OWNED",
-    "status": "PROOF7_COMPOUNDING_LOOP_VERIFIED",
-    "proof7_result": "PROVEN"
+    "status": "PROVEN",
+    "workflow": ".github/workflows/verify-nayanet-project-intelligence-home-run.yml",
+    "run_id": 35638451543,
+    "job_id": 106461599787,
+    "source_head": "cc3afacd9d3502440f37444c59d4517445b9144d",
+    "artifact_id": 10657306507,
+    "chain": [
+      "RECEIVE",
+      "RETRIEVE",
+      "RENDER",
+      "ACK",
+      "SUCCESSOR_HANDOFF",
+      "COLD_14Q",
+      "COLD_SUCCESSOR",
+      "AUTHORITY",
+      "CONTINUATION",
+      "SUCCESSOR_RECEIPT"
+    ]
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -161,10 +170,21 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Cold successor restore/retrieve/act/verify/learn/handoff using the new Compound Intelligence runtime, plus direct receiver retrieval/render proof for the exact Project Intelligence receipt.",
-  "single_next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+  "bottleneck": "Measured computational compounding remains unproven universally; PI-01 whole-chain continuity is proven at tested owner-bound production scope.",
+  "single_next_action": {
+    "action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
+    "reason": "PI-01 whole-chain continuity is proven; the highest-value unresolved property is measurable computational compounding.",
+    "proof_required": [
+      "baseline context/search/tool/model/token/latency/human-time measurements",
+      "retained-intelligence reuse measurements",
+      "verified outcome equivalence or improvement",
+      "defensible avoided-computation calculation",
+      "provenance and receipt lineage"
+    ],
+    "success_condition": "A fresh benchmark demonstrates what verified intelligence reuse eliminates or reduces without degrading outcome quality, provenance, authority, or verification."
+  },
   "next_actions": [
-    "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey."
+    "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -202,20 +222,7 @@
     "compound_runtime_version": 5,
     "operating_migration": "20260921093000_project_intelligence_operating_layer_v1"
   },
-  "today_mission": {
-    "status": "ACTIVE",
-    "date": "2026-09-21",
-    "north_star": "Set the intelligence foundation once so every Naya starts from a better state: maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-    "mission": "Prepare GitHub + established Supabase + canonical Project Intelligence so the next Naya is the executor, not the archaeologist.",
-    "acceptance": "A cold Naya can resolve live main, restore canonical intelligence, execute the current authorized action, verify the result, record learning, and leave a better successor. The Project Intelligence bridge now proves transport/persistence/index/projection/ack at exact source scope; retrieval/render and cold successor retrieval remain the active frontier.",
-    "human_requirement": "Shawn should not need to re-explain project purpose, architecture, current truth, history, learning, or the next authorized action when those are already durably recorded.",
-    "proof_harness": {
-      "workflow": ".github/workflows/verify-nayanet-cold-project-intelligence.yml",
-      "history_required": true,
-      "checkout_fetch_depth": 0,
-      "reason": "validator checks proof recording ancestry against live HEAD"
-    }
-  },
+  "today_mission": "Complete the next highest-value property after PI-01: measure computational compounding without sacrificing verified value, provenance, authority, or human agency.",
   "supabase_runtime": {
     "status": "ACTIVE_HEALTHY",
     "project_ref": "dahisasgpfvziswqvmvm",
@@ -253,7 +260,7 @@
     "cold_successor_proof": "OPEN"
   },
   "project_intelligence_bridge": {
-    "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
+    "status": "PRODUCTION_WHOLE_CHAIN_PROVEN_AT_TESTED_SCOPE",
     "contract": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
     "operating_context": ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",
     "sender_runtime": ".naya/runtime/project_intelligence_bridge.py",
@@ -264,20 +271,22 @@
     "readiness_sequence": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
     "rule": "Documentation and packet construction are not receiver proof.",
     "latest_proof": {
-      "workflow_run": 35623988420,
-      "job_id": 106413689632,
-      "source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
-      "packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
-      "receiver_transaction_id": "022c4131-2729-45f7-be84-85d6f9dde228",
-      "receiver_event_id": "51cecc6a-0d37-4aca-80d2-a707f00b31be",
-      "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
-      "idempotent_replay_verified": true
+      "workflow_run": 35638451543,
+      "job_id": 106461599787,
+      "source_ref": "cc3afacd9d3502440f37444c59d4517445b9144d",
+      "packet_id": "ad1c3e76-9898-5607-b590-d2c8675d8855",
+      "receiver_event_id": "98b6bd4b-a7b8-493e-8020-3c8315881ff9",
+      "receipt_id": "c46d3eb1-31a9-4a06-ae14-73e95a1d22a5",
+      "continuation_event_id": "continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866",
+      "continuation_receipt_id": "52146218-28d7-40c9-a95b-05c66f028b3d",
+      "successor_event_id": "successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab",
+      "successor_receipt_id": "6c4a79af-78bb-4419-b71a-b2b53adc82a5"
     }
   },
   "current_frontier": {
-    "active_block": "PROJECT-INTELLIGENCE-PI-01",
-    "priority": "P0",
-    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
-    "completion": "Cold Naya restores the canonical project object, retrieves exact bridge lineage, distinguishes truth/unknown/blocked, selects one authorized action, verifies it, updates learning, and leaves an executable successor."
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "priority": "P1",
+    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
+    "completion": "Claim-appropriate measured avoided computation with verified outcome preservation."
   }
 }

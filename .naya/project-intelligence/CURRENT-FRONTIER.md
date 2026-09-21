@@ -4,64 +4,53 @@ STATUS: CANONICAL NAVIGATION FACADE
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
-Read these first:
+## READ FIRST
 1. .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
 2. .naya/control-plane/STATE.json
 3. .naya/control-plane/BLOCKS.json
 4. .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
 5. .naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md
+6. SUPERBRAIN/INTELLIGENCE-FEED.md
+7. SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md
 
-## CURRENT PROOF FRONTIER
+## PI-01 — COMPLETE
 
-SENDER = GitHub / SoulSchoolAcademy/NayaPOWER
-RECEIVER = NayaNET Intelligent Hub / NAYANET/HUB/index.html
-BRIDGE = Project Intelligence Bridge V1
+**Status:** PRODUCTION WHOLE-CHAIN PROVEN at tested owner-bound scope.
 
-**NOW PROVEN:** transport → persistence → index → projection → owner retrieval → canonical browser render → owner-bound ACK.
+**Proof run:** 35638451543  
+**Job:** 106461599787  
+**Source scope:** cc3afacd9d3502440f37444c59d4517445b9144d  
+**Artifact:** 10657306507
 
-**NOW OPEN:** genuinely cold runtime successor continuation of that exact owner-bound lineage as one uninterrupted transaction.
+### Verified chain
 
-## LATEST VERIFIED BROWSER RECEIPT
+RECEIVE → RETRIEVE → RENDER → ACK → SUCCESSOR HANDOFF → COLD 14Q → COLD SUCCESSOR → AUTHORITY → CONTINUATION → SUCCESSOR RECEIPT
 
-GitHub Actions run: 35633023365
-Result: VERIFIED
-Packet: 6bd8483b-3486-43f6-917b-ed85fefae356
-Receiver event: b243cc9b-3476-44a1-b019-4d837d927878
-Browser observation: exact statement + packet + receiver event rendered in canonical Personal Smart Feed.
-ACK: retrieved=true, rendered=true.
-The proof is deliberately scoped to the exact packet and owner created by the run.
+Exact receiver event: 98b6bd4b-a7b8-493e-8020-3c8315881ff9  
+ACK receipt: c46d3eb1-31a9-4a06-ae14-73e95a1d22a5  
+Continuation event: continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866  
+Successor event: successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab
 
-## LATEST COMPUTATIONAL COMPOUNDING MEASUREMENT
+The cold successor answered the 14-question restore contract, retrieved the exact owner-bound receiver event, received explicit pi.continue authority, executed the authorized continuation, and left a new successor receipt.
 
-GitHub Actions run: 35632921091
-Result: MEASURED
-Canonical source set: 70 files / 883,633 bytes
-Cold restore: 1 round trip / 4,821 response bytes / ~739 ms
-Durable-learning reuse: 1 round trip / 813 response bytes / ~338 ms
-Future decision influence: true
-Universal compute savings: NOT CLAIMED
+## WHAT FAILED BEFORE PASSING
 
-## ACTIVE NEXT ACTION
+- Run 35638053862: proof-harness variable scope defect.
+- Run 35638282095: proof-harness receipt-envelope mismatch.
+- Repairs were surgical; no blind equivalent retry.
 
-Run the fresh runtime cold-successor proof:
+## CURRENT FRONTIER — P1
 
-**fresh owner → fresh packet → receiver → exact retrieve → exact Hub render → ACK → fresh successor → exact lineage retrieval → one authorized continuation → successor receipt.**
+### COMPUTATION-EFFICIENCY-P1
 
-Then record:
-- source HEAD
-- deployment identity
-- owner/packet/receiver/receipt IDs
-- retrieval/render evidence
-- successor identity
-- action + authority
-- verification
-- learning/update
-- next torch
+**Single next action:** Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.
 
-Do not rebuild the bridge. Do not rebuild the 12 capabilities.
+**Measure:** context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, verified outcomes, provenance, and defensible avoided computation.
 
-## ACCEPTANCE RULE
+**Acceptance:** demonstrate a claim-appropriate reduction in repeated work while preserving or improving verified outcome quality, authority, provenance, and verification.
 
-The project is not 10/10 until the same durable owner-bound intelligence can survive a genuine runtime session boundary and be continued by a fresh Naya without Shawn reconstructing the context.
+**Universal savings:** NOT CLAIMED until measured.
 
-Then run the consolidated human journey and computation-savings benchmark.
+## RULE
+
+Do not reopen PI-01 without evidence of regression. Do not add architecture merely because a capability exists. Use the smallest authorized computation that can establish the next verified fact.
