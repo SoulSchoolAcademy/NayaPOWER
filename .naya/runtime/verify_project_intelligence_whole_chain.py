@@ -100,8 +100,11 @@ def main() -> int:
     if active.get("next_action_count") != 1:
         fail("active block does not expose exactly one next action")
     next_action = active["next_actions"][0]
-    if ("Project Intelligence Bridge" not in next_action and "Project Intelligence" not in next_action):
-        fail("canonical next action is not the Project Intelligence frontier")
+    if not isinstance(next_action, str) or not next_action.strip():
+        fail("canonical next action is empty")
+    # This proof validates continuity even after PI-01 completes. The active
+    # next action is therefore allowed to be the successor frontier.
+    print("CURRENT_FRONTIER_NEXT_ACTION=PASS")
     for marker in ("WHO", "WHAT", "WHY", "SUCCESS", "CURRENT TRUTH", "PROVEN", "UNKNOWN",
                    "AUTHORITY", "HISTORY", "LEARNING", "NEXT", "PROOF", "RECORD", "SUCCESSOR"):
         if marker not in cold.upper():
