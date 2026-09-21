@@ -27,13 +27,15 @@ def packet():
         prov.append({"path":rel,"sha256":d,"bytes":len(raw)})
         intel.append({"object_id":"github:"+rel,"operation":"UPSERT","source_path":rel,"content_sha256":d,"content":raw.decode("utf-8")})
     reconstruction=pir.build_current("NayaNET")
-    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
+    owner_id=os.environ.get("NAYANET_OWNER_ID","").strip()
+    if not owner_id: raise RuntimeError("NAYANET_OWNER_ID_REQUIRED_FOR_PRIVATE_PROJECT_INTELLIGENCE")
+    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","owner_id":owner_id,"sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
     canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
     p["content_hash"]=digest(canonical); p["packet_id"]=str(uuid5(NAMESPACE_URL,"nayanet:project-intelligence:"+h+":"+p["content_hash"])); p["idempotency_key"]="nayanet-pi-"+h+"-"+p["content_hash"][:24]
     return p
 
 def validate(p):
-    req=["protocol","packet_type","project_id","sender","receiver","source_ref","created_at","freshness","operating_context","project_intelligence_reconstruction","intelligence","provenance","privacy","content_hash","packet_id","idempotency_key"]
+    req=["protocol","packet_type","project_id","sender","receiver","source_ref","created_at","freshness","operating_context","project_intelligence_reconstruction","intelligence","provenance","privacy","owner_id","content_hash","packet_id","idempotency_key"]
     e=["missing:"+x for x in req if x not in p]
     if p.get("protocol")!="NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1": e.append("protocol_mismatch")
     if p.get("project_id")!="NayaNET": e.append("project_mismatch")
