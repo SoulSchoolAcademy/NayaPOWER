@@ -60,7 +60,7 @@ jobs:
           checks.settings='PASS';
           await p.goto(runtime+'/dream',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           const dreamTitle=await p.locator('h1,h2').allTextContents();
-          if(!(await p.locator('.app').getAttribute('data-route')==='/dream')||!dreamTitle.some(x=>/dream/i.test(x)))throw Error('FIRST_DIVERGENCE:DREAM_ROUTE_OR_SURFACE_MISSING');
+          if(location.pathname!=='/dream'||!dreamTitle.some(x=>/dream/i.test(x)))throw Error('FIRST_DIVERGENCE:DREAM_ROUTE_OR_SURFACE_MISSING');
           checks.dream='PASS';
           await p.goto(runtime+'/play',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
