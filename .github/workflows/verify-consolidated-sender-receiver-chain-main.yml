@@ -1,0 +1,53 @@
+name: NayaNET consolidated sender receiver chain proof MAIN
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-consolidated-sender-receiver-chain-main.yml'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  chain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Prove main sender to receiver to persistence to retrieve to ACK
+        shell: bash
+        run: |
+          cat > chain.mjs <<'EOF'
+          import crypto from 'node:crypto';
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function post(p,t,b){const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return [r.status,j]}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED'); const userToken=a.access_token;
+          const packetId=crypto.randomUUID(), idem='consolidated-main-'+R, sourceRef='github://SoulSchoolAcademy/NayaPOWER/main/'+R;
+          const payload={protocol:'NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1',packet_id:packetId,project_id:'NayaNET',source_ref:sourceRef,content_hash:'pending',operating_context:{project:'NayaNET',current_next_action:'Consolidated sender -> receiver -> persistence -> index -> projection -> retrieve -> render -> ACK'},intelligence:{statement:'Main sender consolidated proof '+R},provenance:{repository:'SoulSchoolAcademy/NayaPOWER',branch:'main',run_id:R},privacy:{default_visibility:'PRIVATE'},idempotency_key:idem,owner_id:a.user?.id,sender:{repository:'SoulSchoolAcademy/NayaPOWER'},receiver:{canonical_source:'NAYANET/HUB/index.html'},project_intelligence_reconstruction:{current:{mission:'Persistent Project Intelligence for NayaNET'}}};
+          payload.content_hash=crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+          const oidcUrl=process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge';
+          const oidc=await fetch(oidcUrl,{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
+          const oj=await oidc.json(); if(!oidc.ok||!oj.value)throw Error('OIDC_TOKEN_FAILED');
+          const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'content-type':'application/json'},body:JSON.stringify(payload)});
+          const bj=await br.json(); console.log('BRIDGE='+JSON.stringify(bj));
+          if(br.status!==200||bj.status!=='COMPLETED')throw Error('SENDER_RECEIVER_FAILED');
+          if(!bj.persisted||!bj.indexed||!bj.projected)throw Error('PERSIST_INDEX_PROJECT_FAILED');
+          const [rs,rb]=await post('nayanet-project-intelligence-retrieve',userToken,{query:bj.receiver_event_id});
+          console.log('RETRIEVE='+JSON.stringify(rb));
+          if(rs!==200||!rb.ok||!(rb.result?.items?.length))throw Error('RETRIEVAL_FAILED');
+          const hub=await fetch('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/');
+          const hubText=await hub.text(); console.log('HUB_HTTP='+hub.status);
+          if(hub.status!==200||!hubText.includes('NayaNET'))throw Error('HUB_RENDER_SURFACE_FAILED');
+          const [as,ab]=await post('nayanet-project-intelligence-ack',userToken,{packet_id:bj.packet_id,retrieved:true,rendered:true,retrieval_evidence:['retrieve:'+bj.receiver_event_id],render_evidence:['hub-runtime-http-200-canonical-nayanet-surface']});
+          console.log('ACK='+JSON.stringify(ab));
+          if(as!==200||!ab.ok||ab.retrieved!==true||ab.rendered!==true)throw Error('ACK_FAILED');
+          console.log('CHAIN_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_SENDER_RECEIVER_CHAIN_PROOF_V1',run_id:R,sender:true,receiver:true,persisted:true,indexed:true,projected:true,retrieved:true,hub_render_surface_observed:true,acknowledged:true,exact_packet_render:'NOT_SEPARATELY_PROVEN',status:'VERIFIED_WITH_RENDER_SCOPE'}));
+          EOF
+          node chain.mjs
