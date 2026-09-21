@@ -139,7 +139,7 @@ def main() -> int:
         assert result["source_lineage"]["event_count"] == 1
         assert result["source_lineage"]["pis_note_count"] == 1
 
-    print("PASS — Project Intelligence Context v1")
+    print("PASS - Project Intelligence Context v1")
     print("PROJECT_INTELLIGENCE=PASS")
     return 0
 
