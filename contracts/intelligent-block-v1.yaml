@@ -1,0 +1,106 @@
+schema_version: NAYANET_INTELLIGENT_BLOCK_V1
+identity:
+  object_id: "IB-<stable-id>"
+  event_id: "<canonical-event-id>"
+  version: 1
+  namespace: "nayanet"
+type:
+  object_type: "INTELLIGENT_EVENT"
+  event_type: "OBSERVATION"
+  classification: "intelligence"
+meaning:
+  subject: "What this intelligence is about"
+  title: "Human-readable title"
+  content: "Canonical semantic content"
+  summary: "Short explanation"
+  in_a_nutshell: "The simplest useful understanding"
+  interpretation: "Evidence-bound interpretation"
+  human: "Natural-language human representation"
+  naya: "AI-semantic representation"
+  machine: "Machine-oriented representation"
+  simple: "Plain-language representation"
+actors:
+  creator: "<actor-ref>"
+  observer: "<actor-ref>"
+  verifier: "<actor-ref>"
+  authorizer: "<actor-ref>"
+  executor: "<actor-ref>"
+  beneficiary: "<actor-ref>"
+  affected_parties: []
+context:
+  project: "<project>"
+  scope: "PRIVATE"
+  environment: "production"
+  audience: ["owner"]
+  session: "<session-ref>"
+  visibility: "PRIVATE"
+time:
+  occurred_at: "2026-09-21T00:00:00Z"
+  observed_at: "2026-09-21T00:00:00Z"
+  effective_at: "2026-09-21T00:00:00Z"
+  valid_from: "2026-09-21T00:00:00Z"
+  valid_until: null
+intent:
+  purpose: "Why this exists"
+  why: "Why it matters"
+  desired_outcome: "What success would mean"
+  expected_value: 0
+provenance:
+  source: "canonical-source"
+  source_ref: "<source-reference>"
+  source_hash: "<hash-if-available>"
+  captured_by: "<capture-actor>"
+  derived_from: []
+evidence:
+  evidence_state: VERIFIED
+  evidence_refs: ["<evidence-ref>"]
+  verification: "Claim-specific verification statement"
+  verification_method: "How this was established"
+truth:
+  state: VERIFIED
+  confidence: 1.0
+  conflicts: []
+authority:
+  state: AUTHORIZED
+  authority_ref: "<authority-ref>"
+  policy_ref: "<policy-ref>"
+  consent_ref: "<consent-ref-if-required>"
+  constraints: []
+relationships: []
+value:
+  state: OBSERVED
+  benefit: 0
+  harm: 0
+  cost: 0
+  risk: 0
+  effort: 0
+  relevance: 0
+  responsible_value: 0
+action:
+  action: null
+  method: null
+  authorization_basis: null
+  expected_result: null
+outcome:
+  state: UNKNOWN
+  observed_result: null
+  measurements: {}
+  unexpected_effects: []
+learning:
+  what_changed: null
+  lesson: null
+  reusable_rule: null
+  evidence_basis: []
+  applicability: null
+successor:
+  type: null
+  target: null
+  reason: null
+projections:
+  human: {}
+  naya: {}
+  machine: {}
+  simple: {}
+  hub: {}
+  api: {}
+metadata: {}
