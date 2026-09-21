@@ -3,7 +3,7 @@
 **Status:** CANONICAL OPERATING INDEX V1 — 2026-09-17  
 **Repository:** `SoulSchoolAcademy/NayaPOWER`  
 **Current branch authority:** `main`  
-**Current P0:** Issue #245 — Canonical Cold-Naya Operating Index + Repository Classification
+**Current P0:** COLD-NAYA TAKEOVER / PROJECT INTELLIGENCE BRIDGE
 
 ## START HERE
 
@@ -11,7 +11,19 @@ A cold Naya must not reconstruct this project from chat history or choose among 
 
 ### One operating path
 
-`COLD NAYA → THIS INDEX → CONTROL PLANE → CURRENT PROJECT → PROOF → ACTIVITY → SMART NOTES → ONE NEXT ACTION → EXECUTE → VERIFY → RECORD → HANDOFF`
+COLD NAYA → THIS INDEX → OPERATING CONTEXT → CONTROL PLANE → PROJECT INTELLIGENCE → SENDER → BRIDGE → RECEIVER → PROOF → LEARNING → ONE NEXT ACTION → EXECUTE → VERIFY → RECORD → HANDOFF
+
+### ZERO-ARCHAEOLOGY RULE
+
+The cold Naya MUST read the compact operational context before traversing the repository:
+
+.naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
+
+Then read the single bridge contract:
+
+.naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
+
+These are navigation/operating projections, not competing authorities. Canonical truth remains in the control plane and referenced source systems.
 
 ## NAYANET OPERATING MAP
 
@@ -172,15 +184,41 @@ Historical workflow cleanup may continue only after replacement/equivalence evid
 
 The repository-wide derived relationship layer is `.naya/control-plane/RELATIONSHIP-INDEX.json`, with a human-readable projection at `SUPERBRAIN/NAYA-ACTIVITY/RELATIONSHIP-INDEX.md` and rebuild contract at `.naya/control-plane/RELATIONSHIP-INDEX-CONTRACT.md`. Rebuild it with `scripts/build_repository_relationship_index.py`. It is navigation only and does not replace canonical events, memory, governance, or state.
 
-## 13. THE ONE NEXT ACTION
+## 13. PROJECT INTELLIGENCE BRIDGE — CURRENT SPINE
 
-**Use the NayaNET / GitHub Operating Map and repository relationship index as the navigation spine; audit remaining current-vs-historical and project/activity relationships, then strengthen only missing explicit source links.**
+**Sender:** GitHub / NayaPOWER.
 
-The next Naya must not choose a second P0 from historical issue titles.
+**Receiver:** NayaNET Intelligent Hub at NAYANET/HUB/index.html.
 
-## 14. COLD-NAYA ACCEPTANCE
+**Canonical contract:** .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
 
-A cold Naya passes only if it can, using this index and linked repository sources:
+**Operating context:** .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
+
+**Sender implementation:** .naya/runtime/project_intelligence_bridge.py
+
+**Verification workflow:** .github/workflows/verify-project-intelligence-bridge.yml
+
+The bridge packet carries a compact cold-Naya operating context plus exact source artifacts, source SHA, content hashes, provenance, privacy, idempotency, and required receiver evidence. The receiver is not considered proven merely because the packet builds locally.
+
+### Bridge status
+
+Current status: NOT_PROVEN until an authorized live transaction returns a verified receipt proving persistence, indexing, projection, retrieval and rendering with preserved lineage.
+
+### Receiver readiness sequence
+
+RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE
+
+### The one next action
+
+**Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary.**
+
+Success means a fresh Naya can retrieve the exact resulting intelligence and receipt lineage from the Hub without Shawn supplying missing context.
+
+The next Naya must not select a competing P0 from historical issue titles.
+
+## 14. COLD-NAYA HOME RUN TEST
+
+A cold Naya passes the Home Run Test only if, starting with no project explanation other than “Go into NayaPOWER and continue the project,” she can:
 
 1. identify the repository;
 2. identify current authority;
@@ -193,9 +231,14 @@ A cold Naya passes only if it can, using this index and linked repository source
 9. identify unresolved authority/verification gaps;
 10. identify exactly one next action;
 11. locate the evidence required to prove that action;
-12. leave a successor continuation.
+12. leave a successor continuation;
+13. prove the sender packet/bridge contract;
+14. execute or explicitly and permanently record the exact receiver authorization boundary;
+15. verify the receiver outcome when authorized;
+16. create/update Project Intelligence and successor state;
+17. allow a fresh Naya to reconstruct the result and continue without Shawn.
 
-The machine acceptance test is `scripts/cold_naya_operating_index_test.py`. It is intentionally navigation/integrity-only; it must not be represented as proof that an external fresh model can execute the entire loop.
+The existing machine acceptance test remains useful for navigation/integrity. It is not sufficient for Home Run completion. Home Run completion additionally requires behavioral cold-Naya evidence and a real sender → bridge → receiver transaction.
 
 ## 15. DO NOT REDO
 
@@ -210,9 +253,9 @@ The machine acceptance test is `scripts/cold_naya_operating_index_test.py`. It i
 
 ## 16. SUCCESSOR
 
-After the Cold-Naya acceptance test, the successor should:
+After the Home Run Test, the successor should:
 
-`READ THIS INDEX → READ CURRENT CONTROL PLANE → READ CLASSIFICATION MATRIX → EXECUTE ACCEPTANCE TEST → EXECUTE ONE P0 ACTION → VERIFY → RECORD → UPDATE STATE → HAND OFF`
+READ THIS INDEX → READ OPERATING CONTEXT → RESOLVE LIVE HEAD → READ CONTROL PLANE → READ BRIDGE CONTRACT → CHECK LATEST BRIDGE PROOF → EXECUTE ONE AUTHORIZED ACTION → VERIFY → RECORD → UPDATE INTELLIGENCE/STATE → HAND OFF
 
 **One repository. One current identity. One current operating index. One current P0. One production release authority. One next action. Evidence over assertion.**
 
