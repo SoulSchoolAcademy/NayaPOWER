@@ -39,7 +39,7 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
     rows=[e for e in events if (authorized_event_ids is None or e.get("event_id") in authorized_event_ids) and (not e.get("project") or str(e["project"]).casefold()==project_id.casefold())]
     by_id={e["event_id"]:e for e in rows};superseded=set()
     for e in rows:
-        superseded |= {x for x in targets(e,"supersedes")|targets(e,"superseded_by") if x in by_id}
+        superseded |= {x for x in targets(e,"supersedes") if x in by_id}\n        # Existing schema: superseded_by lives on the replaced event.\n        if targets(e,"superseded_by") & set(by_id): superseded.add(e["event_id"])
     groups={}
     for e in rows:groups.setdefault(subject(e),[]).append(e)
     current=[];historical=[];superseded_rows=[];stale=[];conflicted=[];unknown=[]
