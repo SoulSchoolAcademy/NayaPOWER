@@ -1,0 +1,47 @@
+name: NayaNET PI-08 cold successor proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi08-cold-successor.yml'
+permissions:
+  contents: read
+jobs:
+  pi08:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Prove cold successor continuation
+        shell: bash
+        run: |
+          cat > p.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(p,t,b){const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return [r.status,j]}
+          async function fresh(){const r=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),j=await r.json();if(!r.ok||!j.access_token)throw Error('AUTH_FAILED');return j.access_token}
+          const a=fresh(); const t1=await a;
+          let [s,sb]=await P('nayanet-pi-restore',t1,{});
+          if(s!==200||!sb.ok)throw Error('SUCCESSOR_RESTORE_FAILED');
+          let [h,hb]=await P('nayanet-successor-handoff',t1,{what_happened:'PI-01 through PI-07 proof boundaries are now proven at recorded scopes.',what_changed:'PI-06 governed execution and PI-07 verified learning influence were proven.',learned:['Execution authority must be explicit.','Verified learning can influence later decision context.'],next_action:'Consolidate sender -> receiver -> persistence -> index -> projection -> retrieve -> render -> ACK.',why:'Continue the master proof from a durable successor torch.',evidence_required:['PI-03 receipt','PI-04 receipt','PI-05 receipt','PI-06 receipt','PI-07 receipt','consolidated end-to-end receipt']});
+          if(h!==200||!hb.ok)throw Error('SUCCESSOR_HANDOFF_FAILED');
+          const next={why:'Continue the master proof from a durable successor torch.',action:'Consolidate sender -> receiver -> persistence -> index -> projection -> retrieve -> render -> ACK.',evidence_required:['sender evidence','receiver evidence','persistence/index/projection evidence','retrieve evidence','render evidence','ACK evidence'],success_condition:'One uninterrupted production chain is proven from sender through receiver persistence, index, projection, retrieval, render, and acknowledgement.'};
+          let [u,ub]=await P('nayanet-compound-intelligence',t1,{action:'state_update',authority:'PROJECT_DIRECTOR',current_next_action:next});
+          if(u!==200||!ub.ok)throw Error('SUCCESSOR_STATE_UPDATE_FAILED');
+          const t2=await fresh();
+          let [r2,b2]=await P('nayanet-pi-restore',t2,{});
+          console.log('PI08_RUN_ID='+R); console.log('PI08_SECOND_CONTEXT='+JSON.stringify(b2));
+          if(r2!==200||!b2.ok)throw Error('COLD_SUCCESSOR_RESTORE_FAILED');
+          const got=b2.result?.CURRENT_NEXT_ACTION??b2.restore?.CURRENT_NEXT_ACTION;
+          if(JSON.stringify(got)!==JSON.stringify(next))throw Error('SUCCESSOR_DID_NOT_INHERIT_NEXT_ACTION');
+          const text=JSON.stringify(b2).toLowerCase();
+          for(const x of ['nayanet','project intelligence','unknown','protected'])if(!text.includes(x))throw Error('SUCCESSOR_CONTEXT_MISSING:'+x);
+          console.log('PI08_RESULT='+JSON.stringify({schema:'NAYANET_PI08_COLD_SUCCESSOR_PROOF_V1',run_id:R,first_context_handoff:true,second_fresh_context:true,next_action_inherited:true,project_identity_inherited:true,truth_boundaries_inherited:true,status:'VERIFIED'}));
+          EOF
+          node p.mjs
