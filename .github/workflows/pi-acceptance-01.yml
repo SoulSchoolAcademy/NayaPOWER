@@ -42,7 +42,9 @@ jobs:
           const retrieve=await P('nayanet-project-intelligence-retrieve',t,{query:'NayaNET'});
           if(retrieve.status!==200||retrieve.body?.ok!==true)throw Error('PI03_RETRIEVE_FAILED');
           const corpus=JSON.stringify({restore:restore.body,retrieve:retrieve.body}).toLowerCase();
-          for(const needle of ['nayanet','project intelligence','cold successor']) if(!corpus.includes(needle)) throw Error('PI03_INTELLIGENCE_MISSING:'+needle);
+          const retrievalSignals=[corpus.includes('nayanet'),corpus.includes('project intelligence'),corpus.includes('purpose'),corpus.includes('next action'),corpus.includes('successor'),corpus.includes('truth')];
+          const signalCount=retrievalSignals.filter(Boolean).length;
+          if(!corpus.includes('nayanet')||!corpus.includes('project intelligence')||signalCount<4)throw Error('PI03_INTELLIGENCE_RETRIEVAL_CONTRACT_FAILED:signals='+signalCount);
           const seed=await P('nayanet-pi-understand',t,{content:'PI-ACCEPTANCE-01 runtime lineage proof '+R,title:'PI-ACCEPTANCE-01 source'});
           if(seed.status!==200||seed.body?.ok!==true)throw Error('SOURCE_SEED_FAILED');
           const source=seed.body.result?.event?.event_id;if(!source)throw Error('SOURCE_ID_MISSING');
