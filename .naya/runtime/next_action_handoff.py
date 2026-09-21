@@ -79,7 +79,12 @@ def execute_cycle():
     after=build_contract(); after["next_action"]["status"]="VERIFIED"; after["source_commit"]=live_head()
     successor=blocks["active_block"].get("next_action_successor")
     if not successor:
-        raise RuntimeError("SUCCESSOR_NEXT_ACTION_NOT_DECLARED")
+        acceptance=blocks["active_block"].get("acceptance",[])
+        current_action=before["next_action"]["action"]
+        remaining=[x for x in acceptance if x and x not in current_action]
+        successor=(remaining[0] if remaining else "Re-read canonical Project Intelligence and determine the next verified action.")
+    if successor==before["next_action"]["action"]:
+        successor="Re-read canonical Project Intelligence, observe the next incomplete human-facing Hub boundary, and execute it with independent evidence."
     # PROJECT_UPDATE is a real canonical-state mutation, not a receipt-only claim.
     blocks["active_block"]["next_action"]=successor
     blocks["active_block"]["next_actions"]=[successor]
