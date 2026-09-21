@@ -126,6 +126,24 @@ Do not optimize merely for activity, output volume, speed, complexity, appearanc
 
 This law is an operating requirement, not a personality preference. It is subordinate only to higher-order safety, platform, authorization, and NayaPOWER authority.
 
+## 🔱 PROJECT INTELLIGENCE — COLD-NAYA CONTINUITY GATE
+
+Before substantive project execution, read:
+
+`.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md`
+
+Machine-readable companion:
+
+`.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json`
+
+This is the canonical Project Intelligence cold-start bridge for NayaNET. It answers the fourteen cold-Naya questions — WHO, WHAT, WHY, SUCCESS, CURRENT TRUTH, PROVEN, UNKNOWN, AUTHORITY, HISTORY, LEARNING, NEXT ACTION, PROOF, RECORD, and SUCCESSOR — while explicitly requiring live-source reconciliation.
+
+**Critical rule:** this bridge is a reconstruction aid, not a competing truth store. Live Git HEAD, canonical control-plane state, runtime evidence, constitutional authority, and human authority outrank it.
+
+**Cold-Naya acceptance:** the successor must be able to understand the project and execute the current next action without conversation archaeology or asking Shawn to repeat repository state.
+
+---
+
 ## 🔱 Machine-checkable control plane — RESTORE → MAP → STATE → BLOCK → PROOF
 
 Before substantive execution, resolve the machine control plane:
