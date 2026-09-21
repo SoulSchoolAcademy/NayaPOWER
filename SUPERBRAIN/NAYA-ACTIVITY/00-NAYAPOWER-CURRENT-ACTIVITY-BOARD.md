@@ -182,3 +182,27 @@ The repository-level relay crossed the decisive cold-successor proof boundary. I
 - `.github/workflows/verify-nayanet-cold-project-intelligence.yml`
 
 **Successor law:** PLAY TAG. YOU'RE IT. NEVER RESTART FROM ZERO.
+
+
+---
+
+## 🔥 2026-09-21 — FIRST DETERMINISTIC HUMAN-SURFACE DIVERGENCE FOUND AND SURGICALLY REPAIRED
+
+**Status:** REPAIR APPLIED / RUNTIME REDEPLOY TRIGGERED / VERIFICATION PENDING
+
+**Proof:** Human Surface Acceptance run `35617188745`, job `106390807147` failed.
+
+**First deterministic boundary:** `NAME_FIRST_ESTABLISH` precondition was never reached because the browser timed out waiting for `window.NayaNETNameFirstAuth` after loading `/identity.html`.
+
+**Evidence:** The acceptance log shows Chromium and Playwright setup succeeded; the failure occurred at the name-first adapter availability gate, before Hub/search/reports/settings/etc. could be evaluated.
+
+**Causal reconciliation:** `identity.html` requires `/NAYANET/name-first-auth-adapter.js`. The canonical release workflow also requires `NayaNET/name-first-auth-adapter.js` and deploys it into `dist/NayaNET/name-first-auth-adapter.js`. The repository tree contained the adapter under the canonical path, but the GitHub Contents operation did not expose it as an existing file; the current `main` source was therefore repaired by restoring the canonical adapter blob into the explicit path and adding a source-sync checkpoint.
+
+**Repair:** Commit `d29181b05dcf584977ab191cbafcf953db729d62` restores `NayaNET/name-first-auth-adapter.js` as an explicit tracked source file and is on `main`. Because the canonical Cloudflare release workflow is path-triggered on this file, the repair intentionally triggers a fresh canonical runtime deployment.
+
+**Rule followed:** No blind retry. New information identified a concrete source/runtime parity boundary; only that boundary was repaired.
+
+**Current proof state:** UNKNOWN pending fresh release/deployment and a new human-surface acceptance observation. The failed run remains historical evidence and is not promoted to pass.
+
+**Next action:** Observe the canonical release result for `d29181b05dcf584977ab191cbafcf953db729d62`. If release succeeds, rerun the same Human Surface Acceptance proof. If it fails, stop at its first deterministic boundary.
+
