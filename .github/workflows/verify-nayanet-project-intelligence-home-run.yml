@@ -21,6 +21,7 @@ jobs:
     timeout-minutes: 20
     env:
       HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      PI_PROOF_MODE: retrieval-render-ack-cold-successor
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
       NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
