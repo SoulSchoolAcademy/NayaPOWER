@@ -59,7 +59,12 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
     groups={}
     for e in valid_rows:groups.setdefault(subject(e),[]).append(e)
     current=[];historical=[];superseded_rows=[];stale=[];conflicted=[];unknown=list(invalid_rows)
-    key=lambda e:(parse_time(str(e["effective_at"])),str(e["event_id"]))
+    def key(e):
+        try:
+            t=parse_time(str(e["effective_at"]))
+        except Exception:
+            t=datetime.min.replace(tzinfo=timezone.utc)
+        return (t,str(e["event_id"]))
     for group in groups.values():
         group.sort(key=key,reverse=True);active=[]
         for e in group:
