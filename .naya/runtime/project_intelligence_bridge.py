@@ -18,7 +18,7 @@ def digest(b): return hashlib.sha256(b).hexdigest()
 def head(): return subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
 
 def packet():
-    h=head(); now=datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00","Z")
+    h=head(); now=subprocess.check_output(["git","show","-s","--format=%cI",h],cwd=ROOT,text=True).strip().replace("+00:00","Z")
     prov=[]; intel=[]
     for rel in SOURCES:
         raw=(ROOT/rel).read_bytes(); d=digest(raw)
