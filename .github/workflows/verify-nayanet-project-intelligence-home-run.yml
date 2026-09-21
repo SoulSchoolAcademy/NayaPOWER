@@ -78,11 +78,20 @@ jobs:
           }
 
           async function compound(page,session,action,extra={}){
-            const key='pi-home-'+run+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
-            const r=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,extra,key})=>{
-              const x=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...extra})});
+            const slugs={
+              restore:'nayanet-pi-restore',
+              retrieve:'nayanet-pi-retrieve',
+              reconcile:'nayanet-pi-reconcile',
+              successor_handoff:'nayanet-pi-successor-handoff',
+              ack:'nayanet-project-intelligence-ack'
+            };
+            const slug=slugs[action];
+            if(!slug) throw new Error('UNMAPPED_HOME_RUN_ENDPOINT:'+action);
+            const key='pi-home-direct-'+run+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
+            const r=await page.evaluate(async({supabaseUrl,supabaseKey,token,slug,action,extra,key})=>{
+              const x=await fetch(supabaseUrl+'/functions/v1/'+slug,{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...extra})});
               return {status:x.status,body:await x.json().catch(()=>({}))};
-            },{supabaseUrl,supabaseKey,token:session.access_token,action,extra,key});
+            },{supabaseUrl,supabaseKey,token:session.access_token,slug,action,extra,key});
             if(r.status!==200||r.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(r));
             return r.body.result;
           }
