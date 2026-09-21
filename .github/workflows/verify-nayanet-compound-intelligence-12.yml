@@ -131,8 +131,14 @@ jobs:
               const retrieve=await call(page,session,'retrieve',{query:title,limit:10});
               if(!retrieve.items?.some(x=>x.event_id===eventId)) throw new Error('RETRIEVE_DID_NOT_FIND_UNDERSTANDING');
 
-              const reconcile=await call(page,session,'reconcile');
-              if(!['TRANSPORT_PROVEN_RETRIEVAL_OPEN','NO_BRIDGE_RECEIPT'].includes(reconcile.status)) throw new Error('RECONCILE_STATUS_UNEXPECTED:'+reconcile.status);
+              const reconcile=await call(page,session,'reconcile',{
+                claims:[
+                  {field:'current_next_action',value:restore.CURRENT_NEXT_ACTION,source_kind:'CANONICAL_RUNTIME'},
+                  {field:'current_next_action',value:'DOCUMENTED_BUT_INTENTIONALLY_NONCURRENT_'+run,source_kind:'DOCUMENTATION'}
+                ]
+              });
+              if(reconcile.status!=='RECONCILED_WITH_CONFLICTS') throw new Error('RECONCILE_STATUS_UNEXPECTED:'+reconcile.status);
+              if(reconcile.conflict_count<1||reconcile.authoritative_match_count<1) throw new Error('RECONCILE_EVIDENCE_INVALID');
 
               const candidate=await call(page,session,'learning_candidate',{
                 target_id:'compound-12-'+run,
