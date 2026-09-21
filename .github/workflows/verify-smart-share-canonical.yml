@@ -188,9 +188,24 @@ jobs:
               smartFeedNetworkLog.push(entry); console.log('SMART_FEED_NETWORK_FAILED='+JSON.stringify(entry));
             }
           });
+          const publishedDispatchPromise=ap.evaluate(()=>new Promise(resolve=>{
+            const handler=event=>{
+              const detail=event?.detail||{};
+              window.removeEventListener('nayanet:smart-share-published',handler);
+              resolve({
+                type:String(event?.type||''),
+                publicationId:String(detail?.publication?.id||''),
+                status:String(detail?.publication?.status||''),
+                eventId:String(detail?.event_id||''),
+                at:Date.now()
+              });
+            };
+            window.addEventListener('nayanet:smart-share-published',handler,{once:true});
+          }));
+
           await shareButton.click({force:true});
 
-          await new Promise(r=>setTimeout(r,1500));
+          const publishedDispatch=await publishedDispatchPromise;
           const afterClick=await ap.evaluate(()=>({
             handlerInvoked:Number(window.__smartShareDiag?.handlerInvoked||0),
             proof:window.__smartShareProof||null,
@@ -204,9 +219,16 @@ jobs:
             buttonState:afterClick.buttonState,
             handlerInvoked:afterClick.handlerInvoked,
             dispatches:afterClick.dispatches,
-            correlationMatch:afterClick.dispatches.some(x=>x.type==='nayanet:smart-share-published'&&x.publicationId===afterClick.publicationId)
+            observedPublishedDispatch:publishedDispatch,
+            correlationMatch:publishedDispatch.type==='nayanet:smart-share-published'&&!!afterClick.publicationId&&publishedDispatch.publicationId===afterClick.publicationId,
+            publicationIdPresent:!!afterClick.publicationId
           }));
           if(afterClick.handlerInvoked<1) throw Error('SMART_SHARE_DIAGNOSTIC_CLICK_DID_NOT_REACH_HANDLER');
+          if(!afterClick.publicationId) throw Error('SMART_SHARE_PUBLICATION_ID_NOT_PROVEN_AFTER_CLICK');
+          if(publishedDispatch.type!=='nayanet:smart-share-published') throw Error('SMART_SHARE_PUBLISHED_DISPATCH_NOT_OBSERVED');
+          if(!publishedDispatch.publicationId) throw Error('SMART_SHARE_PUBLISHED_DISPATCH_PUBLICATION_ID_MISSING');
+          if(publishedDispatch.publicationId!==afterClick.publicationId) throw Error('SMART_SHARE_PUBLISHED_DISPATCH_PUBLICATION_ID_MISMATCH:'+publishedDispatch.publicationId+'!='+afterClick.publicationId);
+          if(afterClick.buttonState!=='PUBLISHED') throw Error('SMART_SHARE_PUBLICATION_COMPLETION_NOT_REFLECTED_IN_BUTTON');
           console.log('NAYANET_SMART_SHARE_BROWSER_BINDING_DIAGNOSTIC=PASS');
 
           await ap.screenshot({path:process.env.RUNNER_TEMP+'/smart-share-browser-diagnostic.png',fullPage:true});
