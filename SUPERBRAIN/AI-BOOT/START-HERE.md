@@ -20,6 +20,17 @@ Do not create, present, deploy, or pursue a competing Hub. Do not reopen the pro
 ---
 
 
+## 🔱 NAYA PROJECT — EXECUTABLE BUILD COMMAND CENTER
+
+Before treating the numbered Naya Project library as documentation, read:
+.naya/project/00-NAYA-PROJECT-INDEX.md
+
+This is the executable synthesis for a cold successor. It answers WHAT NayaPOWER is, WHAT NayaNET is, HOW the Superbrain, intelligence substrate, Project Intelligence, GitHub, runtime, and canonical Hub relate, WHERE to inspect each system, HOW to execute a build/repair cycle, HOW to classify proof, and HOW to leave the next Naya able to continue.
+
+Important: this is not a new constitution, control plane, memory database, or Hub. It is a distilled routing/build layer over existing canonical sources.
+
+The standard is not "understand the words." The standard is: a new Naya can restore the system, determine current truth, find the first causal gap, build the correct boundary, verify it, learn from it, and continue.
+
 ## 🔱 ONE-SHOT NAYAPOWER — FASTEST COMPLETE ORIENTATION
 
 Read `NAYAPOWER-ONE-SHOT.md` for the shortest complete human + machine explanation of NayaPOWER, its purpose, engine, human operating body, Project Intelligence, distillation, governance, truth model, Naya Nine operating lenses, and cold-Naya continuity. It is an orientation/compression layer; canonical laws, control-plane state, source, runtime evidence, and human authority outrank it.
