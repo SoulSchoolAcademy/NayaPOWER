@@ -36,7 +36,7 @@ This is the current Team Naya baton for Project NayaNET / Project Intelligence.
 ## LIVE RUNTIME UPDATE
 
 Supabase function: nayanet-compound-intelligence
-Latest deployed version: 4
+Latest deployed version: 5
 JWT verification: ON
 New hardened RESTORE schema: NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2
 Governed actions now include explicit:
