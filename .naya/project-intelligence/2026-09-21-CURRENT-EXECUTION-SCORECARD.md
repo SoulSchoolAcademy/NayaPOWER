@@ -3,7 +3,7 @@
 ## Live source
 - Repository: SoulSchoolAcademy/NayaPOWER
 - Branch: main
-- Latest observed HEAD at this record: b8ff870fa0ec769542ed1d156a9d77c683741798
+- Latest observed HEAD at this record: 71595b04154d71fca8694bd845eb0c28c1b88fae
 - Recorded HEAD is never authoritative; resolve live HEAD before consequential action.
 
 ## Score rule
@@ -21,6 +21,10 @@ A score is claim-scoped. 10/10 requires boundary-appropriate behavioral proof. D
 | HUMAN JOURNEY | 7.0/10 | Many surfaces individually evidenced | OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → EVIDENCE → CONTINUE |
 | PRODUCTION SHIP READINESS | 7.5/10 | Release machinery exists | Latest release completion + current-head browser acceptance + public entry consolidation |
 | OVERALL | 8.5/10 | NOT 10/10 | Human journey, release consolidation, adversarial acceptance, benchmark expansion |
+
+## Official architecture update — 2026-09-21
+
+INTELLIGENT_EVENT_V1 and INTELLIGENT_BLOCK_V1 are now canonical project contracts. The event ledger is the temporal spine of meaningful intelligence; Intelligent Blocks represent current reusable understanding derived from one or more events.
 
 ## Proven now
 - Project Intelligence home-run: run 35640130080, recorded as verified/proven at its source scope.
