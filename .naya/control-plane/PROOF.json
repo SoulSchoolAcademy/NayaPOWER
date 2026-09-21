@@ -396,16 +396,15 @@
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   },
   "single_current_frontier": {
-    "id": "NAYANET-CONSTITUTIONAL-HARDENING-02",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "OPEN",
-    "source_checkpoint": "dd2684f46c67d23e15a87937a2ad31a15f266dea",
-    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval.",
+    "source_checkpoint": "fbf6158d0556b64ec55ef033535a8438cf13f32b",
+    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
     "evidence_required": [
-      "evidence registry schema",
-      "lineage fixtures",
-      "GitHub Actions receipt"
+      "runtime lineage integration",
+      "end-to-end lineage receipt"
     ],
-    "stop_condition": "Do not reopen proven PI-01→PI-08 or completed hardening gates without new evidence.",
+    "stop_condition": "Do not reopen proven PI-01→PI-08 or prior hardening contracts without new evidence.",
     "recovery": "Use first-failure law."
   },
   "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
