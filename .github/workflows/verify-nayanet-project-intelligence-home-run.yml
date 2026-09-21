@@ -1,0 +1,166 @@
+name: Verify NayaNET Project Intelligence Home Run
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/project-intelligence/**'
+      - '.naya/runtime/project_intelligence_bridge.py'
+      - 'supabase/functions/nayanet-compound-intelligence/index.ts'
+      - '.github/workflows/verify-nayanet-project-intelligence-home-run.yml'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  home-run:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
+      RUN_IDENTITY: ${{ github.run_id }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Build canonical bridge packet
+        run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-home-run-packet.json
+
+      - name: Send packet through governed OIDC receiver
+        id: send
+        shell: bash
+        run: |
+          set -euo pipefail
+          token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
+          echo "token=$token" >> "$GITHUB_OUTPUT"
+          export NAYANET_BRIDGE_TOKEN="$token"
+          python .naya/runtime/project_intelligence_bridge.py send project-intelligence-home-run-packet.json | tee bridge-send.json
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Prove receive → retrieve → render → ack → cold successor
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee project-intelligence-home-run-proof.json
+          const {chromium}=require('playwright');
+          const crypto=require('node:crypto');
+          const fs=require('node:fs');
+          const hub=process.env.HUB_URL, supabaseUrl=process.env.SUPABASE_URL, supabaseKey=process.env.SUPABASE_PUBLISHABLE_KEY, run=process.env.RUN_IDENTITY;
+          const trace=[];
+          const mark=(step,status,e={})=>{const x={step,status,at:new Date().toISOString(),...e};trace.push(x);console.log('PI_HOME_RUN',JSON.stringify(x));};
+          const alias=('pir'+run+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+
+          async function identity(page){
+            await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+            await page.locator('#name').fill('Project Intelligence Home Run');
+            await page.locator('#alias').fill(alias);
+            await page.locator('#enter').click();
+            for(let i=0;i<60;i++){
+              const id=await page.evaluate(async()=>{try{return await window.NayaNETNameFirstAuth?.current?.()}catch{return null}});
+              if(id?.authenticated&&id.userId) break;
+              await new Promise(r=>setTimeout(r,500));
+            }
+            const s=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id,access_token:x.access_token}:null});
+            if(!s?.access_token) throw new Error('SESSION_NOT_ESTABLISHED');
+            return s;
+          }
+
+          async function compound(page,session,action,extra={}){
+            const key='pi-home-'+run+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
+            const r=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,extra,key})=>{
+              const x=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...extra})});
+              return {status:x.status,body:await x.json().catch(()=>({}))};
+            },{supabaseUrl,supabaseKey,token:session.access_token,action,extra,key});
+            if(r.status!==200||r.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(r));
+            return r.body.result;
+          }
+
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const ctx=await browser.newContext();
+            const page=await ctx.newPage();
+            try{
+              const session=await identity(page);
+              const restored=await compound(page,session,'restore');
+              const bridge=restored.CURRENT_BRIDGE?.latest;
+              if(!bridge?.packet_id) throw new Error('NO_LATEST_BRIDGE_PACKET');
+              if(!bridge.persisted||!bridge.indexed||!bridge.projected) throw new Error('BRIDGE_TRANSPORT_NOT_COMPLETE');
+              mark('RECEIVE','PASS',{packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:bridge.receiver_event_id});
+
+              const receiverEventId=bridge.receiver_event_id;
+              const direct=await page.evaluate(async({supabaseUrl,supabaseKey,token,receiverEventId})=>{
+                const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                return await c.from('nayanet_cognition_events').select('id,event_id,type,title,status,metadata,created_at').eq('event_id',receiverEventId).maybeSingle();
+              },{supabaseUrl,supabaseKey,token:session.access_token,receiverEventId});
+              if(direct.error||!direct.data) throw new Error('RECEIVER_RETRIEVAL_FAILED:'+JSON.stringify(direct));
+              mark('RETRIEVE','PASS',{event_id:direct.data.event_id,cognition_id:direct.data.id});
+
+              await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
+              await page.waitForSelector('.smart-feed-board',{timeout:30000});
+              const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
+              if(!rendered.some(x=>x.eventId===receiverEventId)) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
+              mark('RENDER','PASS',{event_id:receiverEventId});
+
+              const ack=await compound(page,session,'ack',{
+                packet_id:bridge.packet_id,
+                retrieved:true,
+                rendered:true,
+                retrieval_evidence:[{method:'authenticated_supabase_query',event_id:receiverEventId,cognition_id:direct.data.id}],
+                render_evidence:[{method:'canonical_hub_dom',route:'/feed',selector:'[data-event-id]',event_id:receiverEventId}]
+              });
+              if(!ack.retrieved||!ack.rendered||!ack.receipt_id) throw new Error('ACK_NOT_COMPLETE:'+JSON.stringify(ack));
+              mark('ACK','PASS',{receipt_id:ack.receipt_id});
+
+              const successor=await compound(page,session,'successor_handoff',{
+                parent_event_id:receiverEventId,
+                what_happened:'Project Intelligence crossed the governed receiver, was retrieved and rendered on the canonical Hub, and received a verified acknowledgement.',
+                what_changed:'Receiver retrieval/render evidence is now recorded against the exact bridge packet.',
+                learned:['Transport/persistence/index/projection are not sufficient; retrieval/render require explicit evidence.'],
+                next_action:'Prove a fresh successor can retrieve the exact receiver event and continue without Shawn context.',
+                why:'Close the continuity boundary.',
+                evidence_required:['fresh successor retrieval','continuation outcome']
+              });
+              if(!successor.successor?.event_id) throw new Error('SUCCESSOR_HANDOFF_FAILED');
+              mark('SUCCESSOR_HANDOFF','PASS',{successor_event_id:successor.successor.event_id});
+
+              const state=await ctx.storageState();
+              const fresh=await browser.newContext({storageState:state});
+              const fp=await fresh.newPage();
+              try{
+                const freshRestore=await compound(fp,session,'restore');
+                const latest=freshRestore.CURRENT_BRIDGE?.latest;
+                if(latest?.packet_id!==bridge.packet_id||latest?.retrieved!==true||latest?.rendered!==true) throw new Error('FRESH_RESTORE_BRIDGE_PROOF_FAILED:'+JSON.stringify(latest));
+                const freshRetrieve=await compound(fp,session,'retrieve',{query:direct.data.title,limit:20});
+                if(!freshRetrieve.items?.some(x=>x.event_id===receiverEventId)) throw new Error('COLD_SUCCESSOR_RETRIEVAL_FAILED');
+                mark('COLD_SUCCESSOR','PASS',{packet_id:bridge.packet_id,event_id:receiverEventId});
+              }finally{await fresh.close()}
+
+              const proof={schema:'NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1',status:'PROVEN',run_id:run,source_head:process.env.GITHUB_SHA,packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:receiverEventId,receipt_id:ack.receipt_id,successor_event_id:successor.successor.event_id,trace};
+              fs.writeFileSync('project-intelligence-home-run-proof.json',JSON.stringify(proof,null,2));
+              console.log(JSON.stringify(proof,null,2));
+            }finally{await ctx.close();await browser.close()}
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+      - name: Upload home-run proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-project-intelligence-home-run-proof-${{ github.run_id }}
+          path: |
+            project-intelligence-home-run-packet.json
+            project-intelligence-home-run-proof.json
+          if-no-files-found: ignore
