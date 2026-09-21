@@ -642,3 +642,25 @@ Major closure: a real owner-scoped intelligence object was created through the c
 The first adapter attempt used the wrong action shape and was caught by source inspection before any PASS claim. No fake data, credentials, service-role impersonation, or security weakening was used.
 
 Remaining: human-click UI acceptance, target navigation, refresh durability, mobile/accessibility, final Wave A acceptance.
+
+## 🔱 MASTER VISUAL CRAFT DIRECTIVE — ALL NAYAS — 2026-09-21
+
+**IMPORTANT DESIGN CORRECTION — EFFECTIVE IMMEDIATELY**
+
+Human acceptance has clarified a recurring failure mode: NayaNET must not be produced at a basic/generic web-UI level when elite digital-industrial craft is achievable.
+
+**MASTER VISUAL LAW:** Icons, jewel/card objects, buttons, boards/surfaces, navigation and hierarchy must share one premium physical language: **DEPTH → LIGHT → STATE → RESPONSE → CONSEQUENCE**.
+
+Required qualities include dimensional materiality, semantic color, controlled illumination, elevated surfaces, tactile hover/press states, deliberate hierarchy, precision iconography and whole-screen composition. The target is not decoration or gaming-style glow. The target is an extraordinary, coherent, useful and unmistakably NayaNET instrument.
+
+**ANTI-BASIC LAW:** Clean, functional, responsive, modern, technically correct or screenshot-passable is not by itself visual acceptance. Do not normalize weak craft. Do not substitute generic component patterns when the protected design language can be reconstructed at a higher level.
+
+**AUTHORITY:** The protected `2026 09 17 NAYANET HUB.html` remains the visual source of truth. This directive strengthens fidelity and craft; it does not authorize redesign away from that reference.
+
+**CURRENT GATE:** Command Station → complete 1440×1000 widescreen browser render → human visual inspection. Smart Feed remains blocked until this surface earns acceptance.
+
+**DURABLE RECORD:** [🔗 Master Visual Craft Directive](./2026/09/21/2026-09-21T21-26-00Z__MASTER-VISUAL-CRAFT-DIRECTIVE.md)
+
+**STANDARD UPDATED:** `🔱 THE NAYANET ELITE INTERFACE STANDARD` now contains the canonical Master Visual Craft Directive.
+
+**NEXT NAYA:** read the directive, inspect the actual Command Station render, make only the smallest causal visual repair required, render again, and judge the whole composition before advancing.
