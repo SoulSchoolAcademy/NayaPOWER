@@ -44,8 +44,8 @@ A file does not prove runtime behavior. A workflow does not prove its intended o
 ## PI FRONTIER
 
 **PI-01** Project identity — **PASS at source checkpoint `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`**.  
-**PI-02** Model reconstruction — **NEXT**.  
-**PI-03** Cold retrieval — **UNKNOWN / not entered**.  
+**PI-02** Model reconstruction — **PASS at source checkpoint `fa1904805a9070bc1ae322f3ea53aea2e167700a`**.  
+**PI-03** Cold retrieval — **NEXT**.  
 **PI-04** Current-state reconciliation — **UNKNOWN / not entered**.  
 **PI-05** One responsible next action — **UNKNOWN / not entered**.  
 **PI-06** Governed execution continuity — **UNKNOWN / not entered**.  
@@ -108,13 +108,15 @@ Each answer must carry evidence and one of: **PROVEN / DOCUMENTED / UNKNOWN / CO
 **Attempt 001:** blocked before PI-01 by Windows portability.  
 **Repair:** completed and fresh-checkout verified.  
 **PI-01:** **PASS at exact source checkpoint `b830f9e2…`**.  
-**Current frontier:** PI-02.
+**Current frontier:** PI-03.
 
 No PI-02→PI-08 result is claimed yet.
 
 ## NEXT CAUSAL ACTION
 
-> **Verify the PI-01 receipt against current canonical truth, create a fresh clean Windows worktree from the current live branch, perform the 14-question cold reconstruction, then begin Contract 24 at PI-02.**
+> **Execute PI-03 cold retrieval in a genuinely fresh context without conversation archaeology.**
+
+PI-02 is now proven: the required Project Intelligence model was independently reconstructed from canonical durable evidence and recorded in `.naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md`.
 
 At the first deterministic causal failure:
 

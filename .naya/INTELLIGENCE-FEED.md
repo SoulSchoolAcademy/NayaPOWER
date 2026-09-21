@@ -106,3 +106,17 @@ The newest Feed entry is not automatically the newest truth. A successor must re
 ## HANDOFF RULE
 
 A Naya does not say “someone else can continue” until the required intelligence is written here and the durable canonical records contain the supporting evidence.
+
+
+## 🔱 NAYANET-2026-09-21-009 — CONTROL-PLANE RECONCILIATION + PI-02 PASS
+
+**Truth state:** VERIFIED / PI-02 PASS / DOWNSTREAM UNPROVEN  
+**Source checkpoint:** `fa1904805a9070bc1ae322f3ea53aea2e167700a`  
+**Change:** Reconciled STATE/BLOCKS/MAP/PROOF against live branch and runtime evidence. Canonical Hub source and public runtime matched byte-for-byte at SHA-256 `079264e6...`. The single master-proof frontier then entered PI-02.  
+**Result:** Independently reconstructed the required 14-question model and required Project Intelligence fields from canonical durable sources, with truth classifications and claim-to-evidence mapping. No conversation archaeology was used as a source.  
+**Evidence:** `.naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md`; `.naya/project-intelligence/34-NAYANET-CONTROL-PLANE-RECONCILIATION-RECEIPT-2026-09-21.md`; Contract 24; control-plane surfaces.  
+**Learning:** Reconciliation is not documentation; it is the prerequisite that makes the next proof boundary executable. PI-02 can now be treated as proven at an exact checkpoint.  
+**Current state:** PI-01 PASS at historical checkpoint; control-plane reconciliation VERIFIED; PI-02 PASS at `fa1904805a9070bc1ae322f3ea53aea2e167700a`; PI-03 is next.  
+**Next action:** Execute PI-03 cold retrieval from a genuinely fresh context without conversation archaeology.  
+**Proof required:** fresh-context retrieval of the same intelligence, with no hidden dependence on this conversation or the PI-02 answer.  
+**Successor:** Verify live HEAD and this torch first. Re-answer all 14. Then prove PI-03. Do not ask Shawn to retell NayaNET.

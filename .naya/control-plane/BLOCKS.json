@@ -2,49 +2,41 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "NAYANET-PI-02-RECONSTRUCTION",
+    "id": "NAYANET-PI-03-COLD-RETRIEVAL",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Prove that a genuinely cold Naya can reconstruct the complete operational Project Intelligence of NayaNET from canonical durable evidence without conversation archaeology, then leave a reproducible receipt for the next Naya.",
+    "intent": "Prove a genuinely fresh Naya context can retrieve the required NayaNET Project Intelligence without conversation archaeology or hidden dependence on the prior reconstruction output.",
     "protected": [
-      "Project NayaNET = Project Intelligence identity",
+      "Project NayaNET = Project Intelligence",
       "canonical source hierarchy",
-      "14-question cold-Naya standing contract",
-      "master proof Contract 24",
-      "truth classification and evidence linkage",
-      "live HEAD resolution at execution time",
-      "one responsible next action",
-      "no fabricated certainty"
+      "14-question contract",
+      "Contract 24",
+      "truth classification",
+      "one next action",
+      "human authority"
     ],
     "acceptance": [
-      "Resolve live canonical branch identity before reconstruction",
-      "Reconstruct WHO / WHAT / WHY / SUCCESS / TRUTH NOW / PROVEN / UNKNOWN / AUTHORITY / HISTORY / LEARNING / NEXT / PROOF / RECORD / SUCCESSOR",
-      "Reconstruct required Project Intelligence fields: identity, purpose, desired outcome, requirements, constraints, architecture, decisions, dependencies, context, memory, knowledge, relationships, evidence, current state, capabilities, authority, agency, execution history, verification, learning, open loops, risks, definition of done, next action, proof required, successor handoff",
-      "Classify each reconstructed claim PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED",
-      "Map consequential claims to canonical evidence and preserve uncertainty",
-      "Produce a PI-02 receipt bound to the exact source checkpoint and evidence set",
-      "Do not claim PI-03 or downstream PI pass merely because reconstruction succeeds"
+      "Fresh context starts without this conversation",
+      "Identity, purpose, current state, proven/unknown/failed, authority, open loops, next action, and proof requirements are retrieved from durable sources",
+      "Retrieved model is consistent with canonical evidence",
+      "No prior assistant answer is used as an unstated source",
+      "PI-03 receipt is written and verified"
     ],
     "evidence": [
-      ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
+      ".naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md",
       ".naya/project-intelligence/33-NAYANET-COLD-NAYA-14-QUESTION-RECONSTRUCTION-AND-TORCH-SMART-NOTE-2026-09-21.md",
-      ".naya/control-plane/STATE.json",
-      ".naya/control-plane/BLOCKS.json",
-      ".naya/control-plane/MAP.json",
-      ".naya/control-plane/PROOF.json",
-      ".naya/INTELLIGENCE-FEED.md"
+      ".naya/control-plane/"
     ],
-    "target_state": "PI-02_RECONSTRUCTION_PROVEN",
-    "next_action": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required Project Intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
+    "target_state": "PI-03_COLD_RETRIEVAL_PROVEN",
+    "next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
     "next_actions": [
-      "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required Project Intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt."
+      "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut."
     ],
     "scope": [
       ".naya/project-intelligence/",
       ".naya/control-plane/",
       ".naya/INTELLIGENCE-FEED.md",
-      "SUPERBRAIN/",
-      "canonical runtime evidence"
+      "SUPERBRAIN/"
     ],
     "next_action_count": 1
   },

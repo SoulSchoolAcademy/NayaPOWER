@@ -18,7 +18,7 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 — NAYANET PROJECT INTELLIGENCE COLD-SUCCESSOR PROOF",
   "priority_zero_master_note": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-  "current_block": "NAYANET-PI-02-RECONSTRUCTION",
+  "current_block": "NAYANET-PI-03-COLD-RETRIEVAL",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -61,7 +61,7 @@
     "canonical_hub_blob_sha": "225845955b9442995f38bb6e13642390b959b71b",
     "source_runtime_sha256_parity": "VERIFIED",
     "prior_hub_feature_frontier": "SMART_SHARE_PRODUCTION_PROVEN",
-    "next_project_intelligence_frontier": "PI-02_RECONSTRUCTION",
+    "next_project_intelligence_frontier": "PI-03_COLD_RETRIEVAL",
     "production_route_authority": "NOT_PROVEN_BY_THIS_RECONCILIATION"
   },
   "known": [
@@ -158,13 +158,13 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "NayaNET Project Intelligence proof: PI-02 reconstruction is the first unresolved master-proof boundary; downstream Hub feature work resumes after the PI proof frontier advances.",
-  "single_next_action": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required project-intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
+  "bottleneck": "NayaNET Project Intelligence proof: PI-03 cold retrieval is the first unresolved master-proof boundary after PI-02 reconstruction passed.",
+  "single_next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
   "next_actions": [
-    "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required project-intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure."
+    "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required project-intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
+  "ready_to_run_execution": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
@@ -183,7 +183,7 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+  "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
   "latest_human_facing_observation": {
     "status": "SMART_SHARE_PRODUCTION_PROVEN_PI_02_NEXT",
     "current_branch": "naya/live-project-intelligence-v1",
@@ -192,7 +192,7 @@
     "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
     "runtime_sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "next_boundary": "PI-02_RECONSTRUCTION",
+    "next_boundary": "PI-03_COLD_RETRIEVAL",
     "downstream_hub_next_after_pi": "SMART_MAIL_HUMAN_LIFECYCLE"
   },
   "next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."

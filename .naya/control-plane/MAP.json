@@ -113,8 +113,8 @@
       "SMART-SPACES-GOVERNED-ACTION",
       "SMART-LISTS-GOVERNED-ACTION"
     ],
-    "active_block": "NAYANET-PI-02-RECONSTRUCTION",
-    "definition_of_done": "PI-02 reconstruction is reproducibly proven from canonical durable evidence, with truth classifications, evidence mapping, exact source checkpoint, and a successor-ready receipt."
+    "active_block": "NAYANET-PI-03-COLD-RETRIEVAL",
+    "definition_of_done": "PI-03 cold retrieval is reproducibly proven from a genuinely fresh context without conversation archaeology."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -159,11 +159,12 @@
     "For Hub implementation, follow the canonical 6-to-10 roadmap checkpoints and do not declare completion until exact runtime evidence exists.",
     "Runtime and policy proof freshness is evaluated against the authoritative source paths that produced the claimed artifact, not merely the repository's unrelated documentation/control-plane HEAD.",
     "For Hub identity, NAYANET/HUB/index.html is the sole current product surface; Welcome and historical/alternate Hub artifacts are non-authoritative unless Shawn explicitly changes the mission lock.",
-    "When the NayaNET master proof is the active P0 frontier, PI-02 reconstruction outranks downstream feature execution until the PI-02 boundary is proven or blocked."
+    "When the NayaNET master proof is the active P0 frontier, PI-02 reconstruction outranks downstream feature execution until the PI-02 boundary is proven or blocked.",
+    "After PI-02 passes, the next master-proof frontier is PI-03 cold retrieval; downstream product work remains preserved but does not replace the proof frontier."
   ],
   "current_frontier": {
     "master_proof_contract": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-    "frontier": "PI-02_RECONSTRUCTION",
+    "frontier": "PI-03_COLD_RETRIEVAL",
     "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
     "branch": "naya/live-project-intelligence-v1",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
@@ -172,6 +173,7 @@
     "canonical_hub": "NAYANET/HUB/index.html",
     "hub_source_runtime_parity": "VERIFIED",
     "downstream_hub_frontier": "SMART_MAIL_HUMAN_LIFECYCLE",
-    "rule": "The master-proof frontier is the current execution priority; downstream feature work is preserved and resumes after the PI frontier advances."
+    "rule": "The master-proof frontier is the current execution priority; downstream feature work is preserved and resumes after the PI frontier advances.",
+    "next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut."
   }
 }

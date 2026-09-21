@@ -86,7 +86,18 @@
       "coherent_next_action": true
     },
     "pi01": "VERIFIED_AT_CHECKPOINT_B830F9E2",
-    "pi02": "PROVING_NOW"
+    "pi02": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "source_checkpoint": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
+      "receipt": ".naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md",
+      "reconstruction_independence": "PASS",
+      "fourteen_questions": "PASS",
+      "required_project_intelligence_fields": "PASS",
+      "truth_classification": "PASS",
+      "evidence_mapping": "PASS"
+    },
+    "pi03": "PROVING_NOW"
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
   "fresh_validation_required": true,
@@ -357,20 +368,17 @@
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   },
   "single_current_frontier": {
-    "id": "PI-02_RECONSTRUCTION",
+    "id": "PI-03_COLD_RETRIEVAL",
     "status": "PROVING_NOW",
-    "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
-    "next_action": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required project-intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
+    "source_checkpoint": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
+    "next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
     "evidence_required": [
-      "14-question reconstruction",
-      "required Project Intelligence field reconstruction",
-      "truth classifications",
-      "claim-to-evidence mapping",
-      "exact source checkpoint",
-      "PI-02 receipt"
+      "fresh-context retrieval",
+      "identity/purpose/current-state/proven-unknown-failed/authority/open-loops/next-action/proof requirements",
+      "PI-03 receipt"
     ],
-    "stop_condition": "Any required field cannot be reconstructed from canonical durable evidence without inventing certainty, or any source-authority conflict remains unresolved.",
-    "recovery": "STOP → capture exact boundary → classify → repair smallest causal boundary → rerun PI-02 with new information."
+    "stop_condition": "Fresh retrieval depends on this conversation, hidden prior answer, stale control-plane state, or cannot recover required intelligence from durable sources.",
+    "recovery": "STOP → capture exact boundary → classify → repair smallest causal boundary → rerun PI-03 with new information."
   },
-  "recorded_at_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb"
+  "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a"
 }
