@@ -1,4 +1,5 @@
 name: NAYA — Canonical Assistant Cloudflare Hub Release
+# RELEASE-TRIGGER: canonical Hub source/runtime drift reconciliation after proof-run observation
 
 on:
   push:
