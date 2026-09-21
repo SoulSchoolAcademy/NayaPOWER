@@ -3,6 +3,9 @@ import type { ReactNode } from 'react';
 import { useIdentity } from '../identity/session';
 import { routes } from './routes';
 
+import { restoreProjectIntelligence } from '../intelligence/compoundIntelligence';
+
+
 type ShellProps = { children: (path: string) => ReactNode };
 
 const nav: [string, string, string][] = [
@@ -28,6 +31,17 @@ export function AppShell({ children }: ShellProps) {
   const id = useIdentity();
   const [path, setPath] = useState(() => normalize(window.location.pathname));
   const [query, setQuery] = useState('');
+
+  useEffect(() => {
+    if (!id.is_authenticated) return;
+    let cancelled = false;
+    void restoreProjectIntelligence().then((restore) => {
+      if (cancelled || !restore) return;
+      (window as typeof window & { __NayaNETRestore?: unknown }).__NayaNETRestore = restore;
+      window.dispatchEvent(new CustomEvent('nayanet:project-intelligence-restored', { detail: restore }));
+    }).catch(() => undefined);
+    return () => { cancelled = true; };
+  }, [id.is_authenticated]);
 
   useEffect(() => {
     const onPop = () => setPath(normalize(window.location.pathname));
