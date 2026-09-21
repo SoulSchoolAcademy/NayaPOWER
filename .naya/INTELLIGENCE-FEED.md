@@ -66,11 +66,27 @@ SUCCESSOR
 **Result:** Fresh Windows worktree successfully materialized at source head `974c6b1d44190daed7bfcb3439fcb37c631a8701`; `COLON_PATH_COUNT=0`. The cold-start interrogation then reconstructed all 14 required questions from canonical durable sources without conversation archaeology.  
 **Evidence:** fresh worktree command output; `.naya/project-intelligence/26-NAYANET-COLD-START-INTERROGATION-001.md`.  
 **Learning:** Windows portability was a real prerequisite boundary. The cold-start contract is useful only if it is answered from durable project intelligence rather than supplied by the previous Naya.  
-**Current state:** The execution environment is now clean enough to begin PI-01. The whole PI-01→PI-08 chain remains unproven.  
-**Open loop:** Execute the identical Contract 24 master proof.  
-**Next action:** Begin PI-01 from the verified fresh worktree and stop at the first deterministic boundary.  
-**Proof required:** Observable evidence for PI-01, then sequentially PI-02 through PI-08; no downstream pass claims without direct evidence.  
-**Successor:** Read 24, 25, 26, reconcile with live source/runtime, then continue at PI-01.
+**Current state:** The execution environment was clean at the time of interrogation, but the canonical branch later advanced. Therefore that worktree cannot serve as the current PI-01 source.  
+**Open loop:** Re-establish a fresh worktree from the current canonical branch and rerun PI-01.  
+**Next action:** Create a fresh clean Windows worktree from current branch HEAD and verify identity/source synchronization before proceeding.  
+**Proof required:** Worktree HEAD exactly equals live branch HEAD; repository identity and execution context agree; then PI-01 can pass.  
+**Successor:** Read 24, 25, 26, 27, reconcile against live branch state, then recreate the worktree at the current source before retrying PI-01.
+
+## 🔱 NAYANET-2026-09-20-004 — PI-01 SOURCE IDENTITY BOUNDARY
+
+**Actor:** Naya  
+**Truth state:** BLOCKED  
+**Context:** Contract 24 PI-01 was begun from the verified Windows worktree. Repository identity and execution context were resolved, but canonical source synchronization failed.  
+**Observed worktree:** `974c6b1d44190daed7bfcb3439fcb37c631a8701`.  
+**Live canonical branch:** `6dcb2506be48e2beeb46ffae574368b6854b221d`.  
+**Exact boundary:** the clean worktree is stale relative to the current canonical branch, so source identity is not exact.  
+**Evidence:** Windows Git inspection of `C:\Users\Admin\NayaNET-master-proof`; live GitHub branch ref; receipt `.naya/project-intelligence/27-NAYANET-PI-01-ATTEMPT-001.md`.  
+**Classification:** PI-01 / canonical source identity synchronization.  
+**Impact:** PI-01 is not passed. PI-02→PI-08 are not entered.  
+**Learning:** “clean checkout” and “canonical current source” are separate conditions. PI-01 requires both to agree at proof time.  
+**Next action:** Create a fresh clean Windows worktree from live branch HEAD `6dcb2506be48e2beeb46ffae574368b6854b221d`, then rerun PI-01.  
+**Proof required:** exact HEAD equality + repository identity + clean state + execution context.  
+**Successor:** Stop here. Do not advance to PI-02 until PI-01 source identity is proven.
 
 ## SUCCESSOR RULE
 
