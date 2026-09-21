@@ -1,4 +1,5 @@
 name: Verify NayaNET Project Intelligence Whole Chain
+# Validates completed PI-01 predecessor plus current frontier
 
 on:
   push:
