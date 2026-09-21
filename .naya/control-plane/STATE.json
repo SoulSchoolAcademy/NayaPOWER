@@ -159,9 +159,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Consolidated Project Intelligence whole-chain proof: connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted cold-successor acceptance chain. Computational-efficiency measurement is the next engineering layer after this causal chain is proven.",
-  "single_next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
+  "single_next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval.",
   "next_actions": [
-    "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary."
+    "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
@@ -192,7 +192,6 @@
     "status": "PROOF7_COMPOUNDING_PROVEN_PI_WHOLE_CHAIN_NEXT",
     "canonical_hub": "NAYANET/HUB/index.html"
   },
-  "next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require a verified receipt and fresh-successor retrieval before declaring the bridge proven.",
   "today_mission": {
     "status": "ACTIVE",
     "date": "2026-09-21",
@@ -227,6 +226,5 @@
     "receiver_canonical_source": "NAYANET/HUB/index.html",
     "readiness_sequence": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
     "rule": "Documentation and packet construction are not receiver proof."
-  },
-  "next_action_success_condition": "A fresh Naya retrieves the exact Project Intelligence packet, preserved provenance, receiver event and verified receipt from the Hub and continues without Shawn supplying missing context."
+  }
 }
