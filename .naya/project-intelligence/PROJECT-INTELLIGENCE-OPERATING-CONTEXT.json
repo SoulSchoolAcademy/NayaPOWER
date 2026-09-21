@@ -72,15 +72,14 @@
     "operating_function_version": 5
   },
   "current_next_action": {
-    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-    "reason": "Close the first incomplete human-facing acceptance boundary after Project Intelligence continuity was proven.",
+    "action": "Build and prove the canonical next_action + handoff operational contract through one real execution cycle: CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.",
+    "reason": "Make next action and successor handoff first-class operational objects in the existing Project Intelligence/control-plane path before the product frontier continues.",
     "proof_required": [
-      "live canonical source parity",
-      "browser journey evidence",
-      "durable saved result",
-      "reload/fresh-context retrieval",
-      "evidence/provenance display",
-      "authorized continuation outcome"
+      "canonical contract validation",
+      "real execution observation",
+      "durable project update",
+      "new successor next action",
+      "machine-readable handoff"
     ]
   },
   "cold_naya_restore": [
@@ -96,7 +95,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Build and prove the canonical next_action + handoff operational contract through one real execution cycle: CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.",
     "success_condition": "The canonical Hub completes the human journey with durable evidence and continuity, while computation efficiency is measured without sacrificing verified outcome quality."
   },
   "current_repository_head": "4add93a78696bbdbf307132b5757328b57587a79"
