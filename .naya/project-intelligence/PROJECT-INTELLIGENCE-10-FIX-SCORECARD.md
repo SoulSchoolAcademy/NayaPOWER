@@ -16,7 +16,7 @@ RULE: evidence over assertion; unknown and blocked remain explicit.
 | 8 | Structured RESTORE | IMPLEMENTED + RUNTIME SURFACE ADDED | GitHub operating context plus Supabase nayanet-compound-intelligence action=restore |
 | 9 | Receiver READY contract | TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK EVIDENCED; RETRIEVE/RENDER OPEN | Explicit receiver sequence exists; exact bridge receipts exist; direct retrieval/render proof remains required |
 | 10 | Shawn middleware elimination | IMPLEMENTED BOUNDARY RECORD + CONTINUITY RUNTIME | BRIDGE-AUTHORIZATION-BOUNDARY.json plus successor_handoff and restore runtime |
-| 11 | Compound Intelligence runtime | IMPLEMENTED | Supabase nayanet-compound-intelligence version 2 exposes 12 governed lifecycle actions |
+| 11 | Compound Intelligence runtime | IMPLEMENTED | Supabase nayanet-compound-intelligence latest observed deployed version 3 exposes the governed 12-capability lifecycle surface plus explicit learning/project/ack/state helper actions. |
 | 12 | Intelligence operation durability | IMPLEMENTED | public.nayanet_intelligence_operations with owner-scoped RLS records orchestration success/failure and lineage |
 
 ## 12 CAPABILITIES NOW IMPLEMENTED
@@ -44,8 +44,8 @@ COLD PROJECT INTELLIGENCE: VERIFIED BY GITHUB ACTIONS
 REPOSITORY WHOLE-CHAIN: VERIFIED BY GITHUB ACTIONS
 BRIDGE TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK: EVIDENCED AT EXACT SOURCE SCOPE
 BRIDGE RETRIEVE/RENDER: OPEN
-COMPOUND INTELLIGENCE ORCHESTRATION: DEPLOYED
-COLD SUCCESSOR USING NEW RESTORE RUNTIME: NOT_YET_PROVEN
+COMPOUND INTELLIGENCE ORCHESTRATION: DEPLOYED • LIVE VERSION 3
+COLD SUCCESSOR USING NEW RESTORE RUNTIME: OPEN — HUB WIRING COMMITTED; BEHAVIORAL PROOF REQUIRED
 
 ## HOME RUN DEFINITION
 
@@ -75,4 +75,4 @@ Maximum verified human value per unit of effort, with compounding intelligence a
 
 ## CURRENT NEXT ACTION
 
-Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context. Stop at the first actual failure and repair only that boundary.
+HUB RESTORE WIRING: COMMITTED. NEXT: run authenticated cold-successor behavioral proof, then direct bridge RETRIEVE/RENDER proof. Stop at the first actual failure and repair only that boundary.
