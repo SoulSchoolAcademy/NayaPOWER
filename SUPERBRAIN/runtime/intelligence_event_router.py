@@ -166,3 +166,46 @@ def delivery_state(receipts: Tuple[DeliveryReceipt, ...]) -> str:
     if "FAILED" in states:
         return "FAILED"
     return "PENDING"
+
+
+def event_from_execution(
+    *,
+    event_id: str,
+    occurred_at: str,
+    source_naya_id: str,
+    mission: str,
+    action_id: str,
+    result: str,
+    evidence_state: str,
+    related_receipt_id: str | None = None,
+    visibility: Visibility = Visibility.PRIVATE,
+) -> IntelligenceEvent:
+    """Build the canonical communication event for an observed execution result.
+
+    This is a contract builder, not a second persistence system. Production
+    persistence/triggering is owned by the managed runtime boundary.
+    """
+    event_type = {
+        "VERIFIED": EventType.ACTION_COMPLETED,
+        "LIVE_VERIFIED": EventType.ACTION_COMPLETED,
+        "BLOCKED": EventType.ACTION_BLOCKED,
+        "FAILED": EventType.VERIFICATION_FAILED,
+    }.get(evidence_state.upper(), EventType.ACTIVITY_CREATED)
+    event = IntelligenceEvent(
+        event_id=event_id,
+        event_type=event_type,
+        occurred_at=occurred_at,
+        source_naya_id=source_naya_id,
+        source_surface="NayaPOWER",
+        mission=mission,
+        summary=result,
+        why_it_matters="A material execution result changed the mission's observed state.",
+        required_awareness=True,
+        authority_state="UNCHANGED",
+        evidence_state=evidence_state.upper(),
+        visibility=visibility,
+        related_receipt_id=related_receipt_id,
+        caused_by=action_id,
+    )
+    event.validate()
+    return event
