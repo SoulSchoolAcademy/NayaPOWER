@@ -473,7 +473,13 @@ Deno.serve(async (req) => {
       case "supersede": result=await supersede(client,user.id,body); break;
       case "health": result=await health(client,user.id); break;
       case "dream": {
-        result={next:"invoke naya-dream-replay", reason:"Dream/replay remains the governed simulation capability; this orchestrator records the lifecycle seam without duplicating it."};
+        const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
+        const dreamHeaders:any = { "Authorization": req.headers.get("Authorization")!, "apikey": ANON, "Content-Type": "application/json" };
+        const dreamBody = { ...body, project_id: PROJECT, idempotency_key: body.idempotency_key ?? req.headers.get("x-idempotency-key") ?? ("compound-dream-" + crypto.randomUUID()) };
+        const dreamResponse = await fetch(dreamUrl, { method: "POST", headers: dreamHeaders, body: JSON.stringify(dreamBody) });
+        const dreamResult = await dreamResponse.json().catch(() => ({}));
+        if (!dreamResponse.ok || dreamResult?.ok !== true) throw new Error("DREAM_REPLAY_DELEGATE_FAILED:" + JSON.stringify(dreamResult));
+        result = { schema: "NAYANET_COMPOUND_DREAM_SEAM_V2", delegated: true, replay: dreamResult.replay, idempotent: dreamResult.idempotent === true };
         break;
       }
       case "compound": {
