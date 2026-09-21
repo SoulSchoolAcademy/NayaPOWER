@@ -139,6 +139,7 @@ jobs:
             const ctx=await browser.newContext({storageState:'.nayanet-owner-state.json'});
             const page=await ctx.newPage();
             try{
+              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
               const session=await identity(page);
               const restored=await compound(page,session,'restore');
               const bridge=restored.CURRENT_BRIDGE?.latest;
