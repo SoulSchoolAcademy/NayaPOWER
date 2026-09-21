@@ -113,8 +113,9 @@
       "SMART-SPACES-GOVERNED-ACTION",
       "SMART-LISTS-GOVERNED-ACTION"
     ],
-    "active_block": "NAYANET-PI-03-COLD-RETRIEVAL",
-    "definition_of_done": "PI-03 cold retrieval is reproducibly proven from a genuinely fresh context without conversation archaeology."
+    "active_block": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+    "definition_of_done": "CLAIMS_CONTRACT_VERIFIED",
+    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -164,8 +165,8 @@
   ],
   "current_frontier": {
     "master_proof_contract": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-    "frontier": "PI-03_COLD_RETRIEVAL",
-    "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+    "frontier": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+    "source_checkpoint": "0daeed21d9563e4aa24555d13b05a2e433497a5b",
     "branch": "naya/live-project-intelligence-v1",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
     "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
@@ -173,7 +174,7 @@
     "canonical_hub": "NAYANET/HUB/index.html",
     "hub_source_runtime_parity": "VERIFIED",
     "downstream_hub_frontier": "SMART_MAIL_HUMAN_LIFECYCLE",
-    "rule": "The master-proof frontier is the current execution priority; downstream feature work is preserved and resumes after the PI frontier advances.",
-    "next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut."
+    "rule": "Current constitutional hardening frontier outranks downstream feature work; proven PI-01→PI-08 remains protected unless new evidence changes claim scope.",
+    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions."
   }
 }
