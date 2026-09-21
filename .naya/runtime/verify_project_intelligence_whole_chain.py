@@ -57,6 +57,8 @@ def main() -> int:
     blocks = json.loads(load(".naya/control-plane/BLOCKS.json"))
     proof = json.loads(load(".naya/control-plane/PROOF.json"))
     cold = load(".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md")
+    bridge_contract = load(".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md")
+    bridge_context = load(".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json")
     boot = load("SUPERBRAIN/AI-BOOT/START-HERE.md")
 
     active = blocks.get("active_block", {})
@@ -65,8 +67,8 @@ def main() -> int:
     if active.get("next_action_count") != 1:
         fail("active block does not expose exactly one next action")
     next_action = active["next_actions"][0]
-    if "cold Project Intelligence acceptance" not in next_action:
-        fail("canonical next action is not the cold Project Intelligence acceptance")
+    if ("Project Intelligence Bridge" not in next_action and "Project Intelligence" not in next_action):
+        fail("canonical next action is not the Project Intelligence frontier")
     for marker in ("WHO", "WHAT", "WHY", "SUCCESS", "CURRENT TRUTH", "PROVEN", "UNKNOWN",
                    "AUTHORITY", "HISTORY", "LEARNING", "NEXT", "PROOF", "RECORD", "SUCCESSOR"):
         if marker not in cold.upper():
@@ -75,6 +77,12 @@ def main() -> int:
         fail("mandatory Team Naya boot gate missing")
     if proof.get("separation_rules") is None:
         fail("proof separation rules missing")
+    for marker in ("SENDER", "RECEIVER", "BRIDGE", "FRESHNESS", "IDEMPOTENCY", "ACK", "RECEIVE", "PERSIST", "INDEX", "PROJECT", "RETRIEVE", "RENDER"):
+        if marker not in bridge_contract.upper():
+            fail(f"bridge contract missing {marker}")
+    for marker in ("you_are_here", "sender", "receiver", "bridge", "current_next_action"):
+        if marker not in bridge_context:
+            fail(f"operating context missing {marker}")
 
     # 8–11: execute one explicitly authorized, harmless action in an isolated
     # governed state. This is not an external production action.
