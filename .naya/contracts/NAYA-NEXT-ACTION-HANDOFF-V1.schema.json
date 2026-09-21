@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "naya/next-action-handoff/v1",
+  "title": "NAYA_NEXT_ACTION_HANDOFF_V1",
+  "description": "Canonical machine contract for one current executable next action and its successor handoff. It projects existing control-plane truth; it is not a competing mission state machine.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "mission_id",
+    "source_of_truth",
+    "current_state",
+    "next_action",
+    "handoff",
+    "success_condition",
+    "evidence_required"
+  ],
+  "properties": {
+    "schema": {
+      "const": "naya/next-action-handoff/v1"
+    },
+    "mission_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_of_truth": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "next_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "actor",
+        "status",
+        "action",
+        "objective",
+        "reason",
+        "constraints",
+        "expected_result",
+        "success_criteria",
+        "verification_method",
+        "evidence_required"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "RECOMMENDED",
+            "REQUESTED",
+            "AUTHORIZED",
+            "ATTEMPTED",
+            "EXECUTED",
+            "OBSERVED",
+            "VERIFIED",
+            "BLOCKED"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "constraints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "success_criteria": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification_method": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_required": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "human_action_required": {
+          "type": "boolean"
+        },
+        "human_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "handoff": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_actor",
+        "context",
+        "objective",
+        "scope",
+        "inputs",
+        "expected_result",
+        "verification",
+        "failure_response",
+        "successor_action"
+      ],
+      "properties": {
+        "target_actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "objective": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "expected_result": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification": {
+          "type": "string",
+          "minLength": 1
+        },
+        "failure_response": {
+          "type": "string",
+          "minLength": 1
+        },
+        "successor_action": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "success_condition": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_required": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string"
+    }
+  }
+}
