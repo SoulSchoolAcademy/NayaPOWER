@@ -62,8 +62,10 @@ jobs:
           const dreamTitle=await p.locator('h1,h2').allTextContents();
           const dreamRoute=await p.evaluate(()=>location.pathname);if(dreamRoute!=='/dream'||!dreamTitle.some(x=>/dream/i.test(x)))throw Error('FIRST_DIVERGENCE:DREAM_ROUTE_OR_SURFACE_MISSING');
           checks.dream='PASS';
-          await p.goto(runtime+'/play',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
-          if(!(await p.locator('h1,h2').allTextContents()).some(x=>/naya play/i.test(x)))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_ROUTE_OR_SURFACE_MISSING');
+          await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
+          const playNav=p.locator('[data-page="play"]').first();if(!(await playNav.count()))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_NAV_MISSING');
+          await playNav.click();await p.waitForTimeout(500);
+          const playModal=p.locator('.nc-modal').last();if(!(await playModal.count())||!(await playModal.locator('h2').filter({hasText:'Naya Play'}).count()))throw Error('FIRST_DIVERGENCE:NAYA_PLAY_SURFACE_MISSING');
           checks.naya_play='PASS';
           await p.goto(runtime+'/lists',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
           if(!(await p.locator('[data-surface="lists"]').count())||!(await p.locator('h1').filter({hasText:'Smart Lists'}).count())||!(await p.getByLabel('New Smart List name').count()))throw Error('FIRST_DIVERGENCE:SMART_LISTS_SURFACE_MISSING');
