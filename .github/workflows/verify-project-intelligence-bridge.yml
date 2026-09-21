@@ -43,11 +43,10 @@ jobs:
           print("PACKET_ID="+p["packet_id"])
           print("CONTENT_HASH="+p["content_hash"])
           PY
-      - name: Send to authorized receiver when configured
-        if: ${{ env.NAYANET_BRIDGE_URL != '' && env.NAYANET_BRIDGE_TOKEN != '' }}
+      - name: Send to authorized receiver
         env:
-          NAYANET_BRIDGE_URL: ${{ secrets.NAYANET_BRIDGE_URL }}
-          NAYANET_BRIDGE_TOKEN: ${{ secrets.NAYANET_BRIDGE_TOKEN }}
+          NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
+          NAYANET_BRIDGE_TOKEN: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: python .naya/runtime/project_intelligence_bridge.py send project-intelligence-bridge-packet.json
       - name: Publish bridge packet
         uses: actions/upload-artifact@v4
