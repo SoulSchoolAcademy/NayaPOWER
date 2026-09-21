@@ -2,7 +2,7 @@
 
 **STATUS:** CANONICAL OPERATIONAL RULE
 **EFFECTIVE:** 2026-09-08
-**SCOPE:** Every Naya Power / NayaNET project, Smart Note, source artifact, activity record, and consequential working file.
+**SCOPE:** Every Naya Power / NayaNET project, Smart Note, source artifact, activity record, notification, briefing, and consequential working file.
 
 ## PRIME ORGANIZATION LAW
 
@@ -36,7 +36,7 @@ New consequential work is organized under:
 
 Canonical activity structure:
 
-`/.naya/activity/YYYY/MM/DD/`
+`/.naya/INTELLIGENCE/YYYY/MM/DD/`
 
 The day's index is:
 
@@ -50,7 +50,7 @@ There is always one current-day `TODAY` file for active work.
 
 For the current day, Naya must read:
 
-`/.naya/activity/2026/09/08/2026-09-08-TODAY.md`
+`/.naya/INTELLIGENCE/2026/09/08/INDEX.md`
 
 before beginning consequential work when that file exists.
 
@@ -84,7 +84,7 @@ All consequential work created on a given day belongs to that day's bucket by de
 
 Smart Notes, project receipts, execution plans, source snapshots, design decisions, and repair records created on September 8, 2026 belong under:
 
-`/.naya/activity/2026/09/08/`
+`/.naya/INTELLIGENCE/2026/09/08/`
 
 Do not scatter today's working intelligence across unrelated historical directories.
 
@@ -157,7 +157,11 @@ Never use:
 
 **TOPIC → FIRST FILE FOUND → EDIT.**
 
-## 12. FINAL LAW
+## 12. CENTRAL BRAIN RESOLUTION
+
+For cross-Naya restoration, the canonical intelligence map is `.naya/SUPERBRAIN/NAYA-INTELLIGENCE-CENTRAL-BRAIN-V1.md` and its machine-readable companion. Resolve that map first, then follow its source-of-truth order and daily intelligence paths.
+
+## 13. FINAL LAW
 
 > **DATE TELLS US WHEN. TIME TELLS US WHICH STATE. NAME TELLS US WHAT. CONTENT PROVES WHETHER IT IS CURRENT.**
 
