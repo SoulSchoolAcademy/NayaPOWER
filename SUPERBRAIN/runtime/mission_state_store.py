@@ -16,6 +16,7 @@ from pathlib import Path
 from typing import Any, Sequence
 
 from governance_contract import AuthorityRegistry
+from intelligence_event_router import event_from_execution
 from naya_power_runtime import (
     ActionCandidate,
     ActionPlan,
@@ -85,5 +86,20 @@ class LeadModeEngine:
         """Record observed execution evidence and persist the next mission state."""
         state = self.store.load()
         updated = record_result(state, plan, receipt)
+
+        # Validate the canonical communication event at the same execution
+        # boundary. Persistence/dispatch remains owned by the managed runtime;
+        # this Python host does not create a competing event store.
+        event_from_execution(
+            event_id=f"receipt:{receipt.action_id}:{receipt.timestamp}",
+            occurred_at=receipt.timestamp,
+            source_naya_id=os.environ.get("NAYA_ID", "NAYA_RUNTIME"),
+            mission=state.mission,
+            action_id=receipt.action_id,
+            result=receipt.result,
+            evidence_state=receipt.evidence_state.value,
+            related_receipt_id=f"receipt:{receipt.action_id}:{receipt.timestamp}",
+        )
+
         self.store.save(updated)
         return updated
