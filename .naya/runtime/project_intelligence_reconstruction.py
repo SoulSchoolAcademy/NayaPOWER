@@ -85,7 +85,7 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
     state=current_state or {};blk=(blocks or {}).get("active_block",{})
     return {"schema":"naya-power-project-intelligence/v1","project_id":project_id,"resolution":{"status":"RECONSTRUCTED","law":["AUTHORIZED_CANONICAL_EVENTS_ONLY","SUBJECT_FROM_EXISTING_EVENT_SUBJECT","EFFECTIVE_TIME_ORDERS_ONLY","EXPLICIT_SUPERSESSION_RESOLVES_LINEAGE","SUPERSEDED_AND_STALE_NEVER_CURRENT","UNRESOLVED_ACTIVE_COMPETING_CLAIMS_REMAIN_CONFLICTED","INSUFFICIENT_EVIDENCE_REMAINS_UNKNOWN","RECENCY_NEVER_PROVES_TRUTH"]},"current":current,"historical":historical,"superseded":superseded_rows,"stale":stale,"conflicted":conflicted,"unknown":unknown,"evidence":evidence,"causal_lineage":lineage,"project_state":state,"current_block":blk,"proof":proof or {},"control_map":control_map or {},"next_action":blk.get("next_action") or state.get("single_next_action"),"counts":{"events":len(rows),"current":len(current),"historical":len(historical),"superseded":len(superseded_rows),"stale":len(stale),"conflicted":len(conflicted),"unknown":len(unknown),"evidence":len(evidence),"causal_lineage":len(lineage)}}
 def build_current(project_id="NayaNET"):
-    return reconstruct(load_events(),project_id,json.loads(STATE.read_text()),json.loads(MAP.read_text()),json.loads(BLOCKS.read_text()),json.loads(PROOF.read_text()))
+    return reconstruct(load_events(),project_id,current_state=json.loads(STATE.read_text()),control_map=json.loads(MAP.read_text()),blocks=json.loads(BLOCKS.read_text()),proof=json.loads(PROOF.read_text()))
 def main():
     ap=argparse.ArgumentParser()
     ap.add_argument("--project",default="NayaNET")
