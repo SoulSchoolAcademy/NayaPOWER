@@ -193,6 +193,14 @@ async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthf
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
  const map={home:['feed','activity'],notes:['note',null],reports:['reports',null],intelligence:['intelligence',null],collective:['feed','collective'],evidence:['ledger',null],connections:['connections',null],mail:['mail',null],settings:['settings',null],share:['share',null],lists:['lists',null],spaces:['spaces',null],ledger:['ledger',null],play:['play',null]};
+ if(!rail.querySelector('[data-page="play"]')){
+   const systemNav=[...rail.querySelectorAll('.nav')].find(n=>n.querySelector('[data-page="settings"]'));
+   if(systemNav){
+     const b=document.createElement('button');
+     b.type='button'; b.dataset.page='play'; b.innerHTML='<span class="ico">✦</span>Naya Play';
+     systemNav.insertBefore(b,systemNav.querySelector('[data-page="settings"]'));
+   }
+ }
  rail.querySelectorAll('.nav button[data-page]').forEach(b=>{const key=b.dataset.page,mapped=map[key];if(!mapped)return;b.dataset.nc=mapped[0];if(mapped[1])b.dataset.ncStream=mapped[1];else delete b.dataset.ncStream});
  return true;
 }
