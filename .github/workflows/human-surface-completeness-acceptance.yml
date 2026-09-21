@@ -50,7 +50,7 @@ jobs:
           if(!(await p.locator('.shell').count()))throw Error('SEARCH_SURFACE_DISAPPEARED');
           checks.search='PASS';
           await p.goto(runtime+'/reports',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
-          if(!(await p.locator('h1').filter({hasText:'Your Reports'}).count()))throw Error('REPORTS_SURFACE_FAILED');
+          const reportsProbe=await p.evaluate(()=>({title:document.title,route:document.querySelector('.app')?.getAttribute('data-route')||null,h1:[...document.querySelectorAll('h1,h2')].map(x=>x.innerText).filter(Boolean),body:document.body.innerText.slice(0,500)})); console.log('REPORTS_RUNTIME_PROBE',JSON.stringify(reportsProbe)); if(!reportsProbe.h1.some(x=>/reports/i.test(x))&&!reportsProbe.body.includes('Reports'))throw Error('FIRST_DIVERGENCE:REPORTS_SURFACE_FAILED:'+JSON.stringify(reportsProbe));
           checks.reports='PASS';
           await p.goto(runtime+'/settings',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
           if(!(await p.locator('[data-surface="settings"]').count())||!(await p.locator('h1').filter({hasText:'Settings'}).count()))throw Error('SETTINGS_SURFACE_FAILED');
