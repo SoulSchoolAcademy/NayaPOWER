@@ -1,0 +1,58 @@
+name: NayaNET PI-04 reconciliation proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi04-reconciliation.yml'
+permissions:
+  contents: read
+jobs:
+  pi04:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute PI-04 adversarial reconciliation proof
+        shell: bash
+        run: |
+          cat > verify-pi04.mjs <<'EOF'
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY,runId=process.env.GITHUB_RUN_ID;
+          const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function post(p,t,b){const r=await fetch(base+'/functions/v1/'+p,{method:'POST',headers:h(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          const ar=await fetch(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('FRESH_AUTH_FAILED');
+          const t=a.access_token;
+          const restore=await post('nayanet-project-intelligence-restore',t,{});
+          if(restore.status!==200||restore.body?.ok!==true)throw Error('RESTORE_FAILED');
+          const canonical=restore.body.result?.CURRENT_NEXT_ACTION ?? restore.body.result?.CURRENT_STATE?.current_next_action ?? restore.body.restore?.CURRENT_NEXT_ACTION ?? restore.body.restore?.CURRENT_STATE?.current_next_action;
+          if(canonical===undefined)throw Error('CANONICAL_NEXT_ACTION_MISSING');
+          const conflict=typeof canonical==='string'?canonical+' [CONFLICT]':{...canonical,action:String(canonical.action??'')+' [CONFLICT]'};
+          const claims=[
+            {field:'current_next_action',value:canonical,source_kind:'CANONICAL_RUNTIME'},
+            {field:'current_next_action',value:canonical,source_kind:'RECORDED_CHECKPOINT',source_version:0},
+            {field:'current_next_action',value:conflict,source_kind:'RUNTIME_ASSERTION'},
+            {field:'current_next_action',value:canonical,source_kind:'DOCUMENTATION'},
+            {field:'current_next_action',value:conflict,source_kind:'INFERRED'}
+          ];
+          const rec=await post('nayanet-pi-reconcile',t,{claims});
+          console.log('PI04_RUN_ID='+runId);
+          console.log('PI04_STATUS='+rec.status);
+          console.log('PI04_BODY='+JSON.stringify(rec.body));
+          if(rec.status!==200||rec.body?.ok!==true)throw Error('PI04_RECONCILE_CALL_FAILED');
+          const rs=rec.body.result;
+          const truths=(rs?.claims??[]).map(x=>x.truth);
+          const required=['CURRENT_VERIFIED','STALE','CONFLICTING','DOCUMENTED_MATCH','INFERRED_NOT_AUTHORITATIVE'];
+          const missing=required.filter(x=>!truths.includes(x));
+          if(missing.length)throw Error('PI04_EXPECTED_TRUTH_CLASS_MISSING:'+JSON.stringify(missing));
+          if(rs.status!=='RECONCILED_WITH_CONFLICTS')throw Error('PI04_NOT_RECONCILED_WITH_CONFLICTS');
+          if((rs.conflict_count??0)<2)throw Error('PI04_CONFLICTS_NOT_PRESERVED');
+          console.log('PI04_RESULT='+JSON.stringify({schema:'NAYANET_PI04_RECONCILIATION_PROOF_V1',run_id:runId,fresh_authenticated_context:true,truth_classes:truths,missing,status:'VERIFIED'}));
+          EOF
+          node verify-pi04.mjs
