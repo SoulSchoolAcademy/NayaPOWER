@@ -201,11 +201,31 @@ jobs:
               mark('RETRIEVE','PASS',{event_id:direct.data.event_id,cognition_id:direct.data.id});
 
               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
-              await page.waitForFunction((id)=>{
-                const legacy=document.querySelector('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id="'+CSS.escape(id)+'"]');
-                const react=document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"] .smart-feed-board[data-event-id="'+CSS.escape(id)+'"]');
-                return !!legacy || !!react;
-              },receiverEventId,{timeout:30000});
+              try{
+                await page.waitForFunction((id)=>{
+                  const legacy=document.querySelector('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id="'+CSS.escape(id)+'"]');
+                  const react=document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"] .smart-feed-board[data-event-id="'+CSS.escape(id)+'"]');
+                  return !!legacy || !!react;
+                },receiverEventId,{timeout:30000});
+              }catch(error){
+                const diagnostics=await page.evaluate(()=>({
+                  url:location.href,title:document.title,readyState:document.readyState,
+                  release:document.documentElement.getAttribute('data-nayanet-release')||null,
+                  canonicalFlag:document.documentElement.getAttribute('data-nayanet-canonical')||null,
+                  rootPresent:!!document.querySelector('#root'),
+                  rootText:document.querySelector('#root')?.innerText.slice(0,2500)||'',
+                  rootHtml:document.querySelector('#root')?.innerHTML.slice(0,5000)||'',
+                  legacyRoot:!!document.querySelector('#naya-pi-render-root'),
+                  legacyStatus:document.querySelector('#naya-pi-render-root')?.getAttribute('data-status')||null,
+                  legacyIds:Array.from(document.querySelectorAll('#naya-pi-render-root [data-event-id]')).map(n=>n.getAttribute('data-event-id')).slice(0,20),
+                  reactShell:!!document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]'),
+                  reactBoards:Array.from(document.querySelectorAll('.smart-feed-board[data-event-id]')).map(n=>n.getAttribute('data-event-id')).slice(0,20),
+                  scripts:Array.from(document.scripts).map(s=>s.src).filter(Boolean).slice(-20)
+                }));
+                console.error('RECEIVER_RENDER_DIAGNOSTICS',JSON.stringify(diagnostics));
+                fs.writeFileSync('pi-render-timeout-diagnostics.json',JSON.stringify(diagnostics,null,2));
+                throw error;
+              }
               const legacy=await page.locator('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:n.getAttribute('data-canonical-pi-render'),surface:'legacy-canonical-pi'})));
               const react=await page.locator('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"] .smart-feed-board[data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:'true',surface:'react-smart-feed-board'})));
               const rendered=[...legacy,...react];
@@ -286,4 +306,5 @@ jobs:
           path: |
             project-intelligence-home-run-packet.json
             project-intelligence-home-run-proof.json
+            pi-render-timeout-diagnostics.json
           if-no-files-found: ignore
