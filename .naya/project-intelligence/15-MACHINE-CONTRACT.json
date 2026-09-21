@@ -1,0 +1,20 @@
+{
+  "contract": "NAYAPOWER_PROJECT_INTELLIGENCE_V1",
+  "status": "BUILD_TARGET",
+  "project": "NayaPOWER",
+  "network": "NayaNET",
+  "definition": "A canonical, reconstructable view of everything Naya needs to understand the current project and responsibly continue it.",
+  "not_a_second_store": true,
+  "human_inputs": ["mission", "goal", "concept", "desired_outcome", "values", "authority", "constraints"],
+  "naya_responsibilities": ["understand", "qualify", "derive_requirements", "derive_design", "map_dependencies", "inspect_reality", "execute_when_authorized", "verify", "learn", "distill", "handoff"],
+  "required_state": ["identity", "purpose", "mission", "vision", "north_star", "human_outcome", "requirements", "constraints", "architecture", "design", "decisions", "dependencies", "current_state", "verified", "failed", "unknown", "stale", "superseded", "conflicted", "open_loops", "learning", "evidence", "definition_of_done", "authority", "next_action", "proof_required"],
+  "truth_ladder": ["DOCUMENTED", "IMPLEMENTED", "TESTED", "VERIFIED", "RUNTIME_PROVEN", "PRODUCTION_PROVEN"],
+  "laws": ["CAPABILITY_DOES_NOT_CREATE_AUTHORITY", "UNKNOWN_IS_NOT_SUCCESS", "BLOCKED_IS_NOT_PASS", "RETRY_REQUIRES_NEW_INFORMATION", "ONE_CANONICAL_EVENT_MANY_AUTHORIZED_VIEWS", "PRIVATE_BY_DEFAULT", "DERIVED_INDEXES_MUST_BE_REBUILDABLE"],
+  "runtime_loop": ["RESTORE", "UNDERSTAND", "RECONCILE", "IDENTIFY_GAP", "PRIORITIZE", "CHECK_AUTHORITY", "EXECUTE", "VERIFY", "RECORD", "LEARN", "UPDATE", "CONTINUE"],
+  "acceptance": {
+    "session_a": "ingest_and_persist",
+    "session_b": "cold_restore_and_one_authorized_action",
+    "session_c": "retrieve_change_and_continue",
+    "conversation_memory_required": false
+  }
+}
