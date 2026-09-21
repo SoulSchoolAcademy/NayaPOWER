@@ -104,14 +104,16 @@ jobs:
           async function identity(page){
             await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
             const s=await page.evaluate(async({access_token,refresh_token})=>{
+              try{await window.NayaAssistantRuntime?.init?.()}catch{}
               const c=window.__NayaNETSupabaseClient;
               if(!c) return null;
               const x=await c.auth.setSession({access_token,refresh_token});
+              if(x.error) return {error:x.error.message};
               const session=x.data?.session;
               return session?{userId:session.user.id,access_token:session.access_token,refresh_token:session.refresh_token}:null;
             },{access_token:process.env.NAYANET_OWNER_ACCESS_TOKEN,refresh_token:process.env.NAYANET_OWNER_REFRESH_TOKEN});
-            if(!s?.access_token) throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
-            if(s.userId!==process.env.NAYANET_OWNER_ID) throw new Error('OWNER_SESSION_MISMATCH');
+            if(!s?.access_token) throw new Error('OWNER_SESSION_NOT_ESTABLISHED:'+JSON.stringify(s));
+            if(s.userId!==process.env.NAYANET_OWNER_ID) throw new Error('OWNER_SESSION_MISMATCH:'+s.userId);
             return s;
           }
 
