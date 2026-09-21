@@ -2,51 +2,39 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "NAYANET-MASTER-PROOF-CONSOLIDATION",
-    "status": "COMPLETE",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+    "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Close the defined NayaNET Project Intelligence master proof from PI-01 through PI-08 and the consolidated runtime/browser/adversarial/measurement acceptance scope.",
+    "intent": "Turn the defined Project Intelligence spine into a self-reconciling constitutional intelligence system, beginning with first-class evidence-linked claims.",
+    "scope": "Single-project NayaNET constitutional hardening; do not reopen PI-01→PI-08 unless new evidence changes their claim scope or truth state.",
     "protected": [
       "Project NayaNET = Project Intelligence",
-      "canonical source hierarchy",
-      "14-question contract",
-      "Contract 24",
-      "truth classification",
-      "one next action",
-      "human authority"
+      "canonical control-plane authority",
+      "14-question cold interface",
+      "evidence outranks assertion",
+      "recorded != current",
+      "unknown != success",
+      "blocked != pass",
+      "capability != authority",
+      "no retry without new information"
     ],
     "acceptance": [
-      "12-function authenticated runtime proof verified",
-      "PI-03 cold retrieval verified",
-      "PI-04 reconciliation verified",
-      "PI-05 authorized next action verified",
-      "PI-06 governed execution and receipt verified",
-      "PI-07 learning influence verified",
-      "PI-08 cold successor verified",
-      "sender→receiver→persistence→index→projection→retrieve→render→ACK verified",
-      "exact bridge packet browser render verified",
-      "human/browser acceptance and adversarial bridge acceptance passed",
-      "computational compounding measured"
+      "canonical claim object is machine-readable",
+      "claim source/scope/time/truth/evidence/supersession are explicit",
+      "invalid claim fixtures fail closed",
+      "valid claim fixture passes",
+      "claim acceptance is executed in GitHub Actions",
+      "receipt identifies exact live HEAD and evidence"
     ],
     "evidence": [
-      ".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md",
-      ".github/workflows/verify-project-intelligence-operating-layer.yml",
-      ".github/workflows/verify-pi03-cold-retrieval.yml",
-      ".github/workflows/verify-pi04-reconciliation.yml",
-      ".github/workflows/verify-pi05-authorized-next-action.yml",
-      ".github/workflows/verify-pi06-governed-execution.yml",
-      ".github/workflows/verify-pi07-learning-influence.yml",
-      ".github/workflows/verify-pi08-cold-successor.yml",
-      ".github/workflows/verify-consolidated-sender-receiver-chain-main.yml",
-      ".github/workflows/verify-consolidated-bridge-browser-render-main.yml",
-      ".github/workflows/wave-a-authenticated-browser-acceptance.yml",
-      ".github/workflows/verify-project-intelligence-bridge-adversarial.yml",
-      ".github/workflows/measure-nayanet-computational-compounding.yml"
+      ".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md",
+      ".naya/project-intelligence/40-NAYANET-ULTIMATE-EXECUTION-DIRECTIVE-NEXT-NAYA-2026-09-21.md",
+      ".naya/control-plane/validate_control_plane.py"
     ],
-    "target_state": "MASTER_PROOF_COMPLETE",
-    "next_action": "Verify the final Master Proof receipt against its cited evidence at live execution time; do not reopen proven boundaries without new information.",
+    "target_state": "CLAIMS_CONTRACT_VERIFIED",
+    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions.",
     "next_actions": [
-      "Verify the final Master Proof receipt against its cited evidence at live execution time; do not reopen proven boundaries without new information."
+      "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions."
     ],
     "next_action_count": 1
   },
