@@ -175,7 +175,7 @@ jobs:
                   p_subject_id:userId,
                   p_source_event_id:sourceEventId,
                   p_mission_id:'PI-12-COMPOUND-PROOF-'+run,
-                  p_scope:{project_id:'NayaNET',target:sourceEventId},
+                  p_scope:{project_id:'NayaNET',target:sourceRow.data.id},
                   p_actions:['smart_feed_publish'],
                   p_constraints:{proof_run:run},
                   p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
