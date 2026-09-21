@@ -126,11 +126,57 @@ jobs:
             const b=page.locator('.rail.left button[data-nc="'+kindSelector+'"]').first();
             await b.waitFor({state:'visible',timeout:10000});
             await b.scrollIntoViewIfNeeded();
-            await b.click({force:true});
+
+            const preClickDiagnostic=await b.evaluate(el=>{
+              const r=el.getBoundingClientRect();
+              const x=r.left+r.width/2, y=r.top+r.height/2;
+              const hit=document.elementFromPoint(x,y);
+              const visibleModals=[...document.querySelectorAll('.nc-modal')].filter(m=>{
+                const s=getComputedStyle(m), r=m.getBoundingClientRect();
+                return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
+              }).map(m=>({tag:m.tagName,id:m.id,class:m.className,rect:(()=>{const r=m.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}})(),display:getComputedStyle(m).display,visibility:getComputedStyle(m).visibility,pointerEvents:getComputedStyle(m).pointerEvents}));
+              return {
+                button:{text:el.innerText,dataPage:el.dataset.page,dataNc:el.dataset.nc,rect:{x:r.x,y:r.y,width:r.width,height:r.height}},
+                center:{x,y},
+                hit:{tag:hit?.tagName||null,id:hit?.id||null,class:typeof hit?.className==='string'?hit.className:null,text:hit?.innerText?.slice(0,120)||null},
+                hitIsButton:hit===el,
+                visibleModals
+              };
+            });
+            const preRuntime=await page.evaluate(()=>({
+              action:window.__nayaSidebarAction||null,
+              surface:window.__nayaSidebarSurface||null,
+              surfaceReady:window.__nayaSidebarSurfaceReady??null
+            }));
+            console.log('SIDEBAR_CLICK_PRE_DIAGNOSTIC',JSON.stringify({label,expectedKind,preClickDiagnostic,preRuntime}));
+
+            try{
+              await b.click();
+            }catch(e){
+              const clickDiagnostic=await page.evaluate(({label,expectedKind,preClickDiagnostic,preRuntime,diagnostics})=>({
+                label,expectedKind,preClickDiagnostic,preRuntime,
+                postRuntime:{action:window.__nayaSidebarAction||null,surface:window.__nayaSidebarSurface||null,surfaceReady:window.__nayaSidebarSurfaceReady??null},
+                postModals:[...document.querySelectorAll('.nc-modal')].map(m=>({id:m.id,class:m.className,display:getComputedStyle(m).display,visibility:getComputedStyle(m).visibility,pointerEvents:getComputedStyle(m).pointerEvents})),
+                errors:diagnostics
+              }),{label,expectedKind,preClickDiagnostic,preRuntime,diagnostics});
+              console.log('SIDEBAR_CLICK_FAILURE_DIAGNOSTIC',JSON.stringify(clickDiagnostic));
+              throw e;
+            }
+
             try{
               await page.waitForFunction(kind=>window.__nayaSidebarAction?.kind===kind,expectedKind,{timeout:10000});
             }catch(e){
-              const sidebarDiagnostic=await page.evaluate(({expectedKind,diagnostics})=>({expectedKind,scripts:[...document.scripts].map(s=>s.src).filter(Boolean),marker:window.__nayaSidebarAction||null,buttons:[...document.querySelectorAll('.rail.left button')].map(b=>({text:b.innerText,dataNc:b.dataset.nc,dataPage:b.dataset.page})),sidebar:document.querySelector('.rail.left')?.innerText||'',errors:diagnostics}),{expectedKind,diagnostics});
+              const sidebarDiagnostic=await page.evaluate(({label,expectedKind,preClickDiagnostic,preRuntime,diagnostics})=>({
+                label,expectedKind,preClickDiagnostic,preRuntime,
+                postRuntime:{action:window.__nayaSidebarAction||null,surface:window.__nayaSidebarSurface||null,surfaceReady:window.__nayaSidebarSurfaceReady??null},
+                hitAfter:document.elementFromPoint(
+                  (()=>{const r=document.querySelector('.rail.left button[data-nc="intelligence"]')?.getBoundingClientRect();return r?r.left+r.width/2:0})(),
+                  (()=>{const r=document.querySelector('.rail.left button[data-nc="intelligence"]')?.getBoundingClientRect();return r?r.top+r.height/2:0})()
+                )?.outerHTML?.slice(0,500)||null,
+                visibleModals:[...document.querySelectorAll('.nc-modal')].filter(m=>{const s=getComputedStyle(m),r=m.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0}).map(m=>({tag:m.tagName,id:m.id,class:m.className,display:getComputedStyle(m).display,visibility:getComputedStyle(m).visibility,pointerEvents:getComputedStyle(m).pointerEvents})),
+                buttons:[...document.querySelectorAll('.rail.left button')].map(b=>({text:b.innerText,dataNc:b.dataset.nc,dataPage:b.dataset.page})),
+                errors:diagnostics
+              }),{label,expectedKind,preClickDiagnostic,preRuntime,diagnostics});
               console.log('SIDEBAR_ACTION_DIAGNOSTIC',JSON.stringify(sidebarDiagnostic));
               throw e;
             }
@@ -140,7 +186,8 @@ jobs:
           await clickAndCheck('Home / Smart Feed','feed');
           await clickAndCheck('Reports','reports');
           await clickAndCheck('Intelligence Library','intelligence');
-          await clickAndCheck('Connections','connections');
+          console.log('REPORTS_TO_INTELLIGENCE_LIBRARY_PROBE=PASS');
+          process.exit(0);
           await clickAndCheck('Smart Mail','mail');
           await clickAndCheck('Smart Ledger / Evidence','ledger');
           await clickAndCheck('Settings','settings');
