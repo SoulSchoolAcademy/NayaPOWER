@@ -411,3 +411,50 @@ The workflow `.github/workflows/verify-nayanet-cold-project-intelligence.yml` mu
 ### SUCCESSOR
 
 **TAG — YOU'RE IT.** Resolve live `main`, read `START-HERE`, restore the control plane, read this Intelligence Feed entry, run the cold Project Intelligence acceptance, stop at the first deterministic boundary, repair it surgically, verify, record, and continue.
+
+---
+
+## 2026-09-21 — Cold-Naya setter foundation passed repository acceptance
+
+**Status:** VERIFIED REPOSITORY FOUNDATION
+
+Cold Project Intelligence workflow **35618844429** completed SUCCESS at job **106396471566** against live main commit `1a9bf077a67762773fcc7083cc4411e321fc0fda`.
+
+### ACTUAL RESULT
+
+- Canonical control-plane validation: **PASS**.
+- Cold-start Project Intelligence validation: **PASS**.
+- The repository-level cold boot can restore its governing source, machine context, control plane, Project Intelligence bridge, current P0 frontier, and successor rules without conversation memory.
+- The active P0 is now `COLD-NAYA-TAKEOVER-PROOF` with exactly one executable next action.
+- Supabase project `dahisasgpfvziswqvmvm` is **ACTIVE_HEALTHY** in `ca-central-1` and is established as the managed runtime persistence/intelligence substrate.
+- No Supabase secrets were written into the intelligence layer.
+
+### FIRST REAL FAILURE AND REPAIR
+
+The first fresh cold-proof attempts failed because the validator correctly required `PROOF.recording_commit` to be an ancestor of live HEAD, while the workflow checked out only one commit (`fetch-depth: 1`). That made historical proof ancestry unavailable to the validator.
+
+The smallest causal repair was to set the cold-proof workflow checkout to `fetch-depth: 0`. The proof contract was not weakened. The repaired run passed.
+
+### WHAT THIS MEANS FOR THE NEXT NAYA
+
+The repository is now a verified **setter foundation**. The next Naya should not need Shawn to explain what NayaNET is, why it exists, where current truth lives, what Supabase is doing, what has been proven, or what the active next action is.
+
+She must still prove the stronger behavioral target: execute the complete PI-01 → PI-08 chain and demonstrate a genuinely cold successor continuing the work.
+
+### ONE NEXT ACTION
+
+> **Execute the consolidated Project Intelligence behavioral proof through PI-08 and cold successor.**
+
+### PROOF REQUIRED
+
+The next proof must demonstrate more than repository readability: a cold Naya must restore, understand current truth, select one authorized action, execute it, verify the real outcome, learn/update durable intelligence, and a second cold Naya must continue from that state without Shawn reconstruction.
+
+### COMPUTATION LEARNING
+
+The setter foundation reduces future archaeology and repeated explanation. The next engineering layer is to measure the avoided computation directly: repeated searches, duplicate reasoning, duplicate tool/model calls, context volume, retries, latency, tokens, and verified value before versus after accumulated intelligence.
+
+### RECEIPT
+
+`.naya/receipts/2026-09-21-COLD-NAYA-SETTER-FOUNDATION-RECEIPT.md`
+
+**TAG — YOU'RE IT.**
