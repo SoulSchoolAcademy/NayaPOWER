@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af
+LAST_RECONCILED_HEAD: 71595b04154d71fca8694bd845eb0c28c1b88fae
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
@@ -55,6 +55,24 @@ Cold restore: 1 round trip / 4,821 response bytes / ~739 ms
 Durable-learning reuse: 1 round trip / 813 response bytes / ~338 ms
 Future decision influence: true
 Universal compute savings: NOT CLAIMED
+
+## OFFICIAL INTELLIGENCE ARCHITECTURE
+
+Canonical contracts:
+- .naya/project-intelligence/INTELLIGENT-EVENT-V1.md
+- .naya/project-intelligence/INTELLIGENT-BLOCK-V1.md
+
+Core distinction:
+**INTELLIGENT EVENT = WHAT HAPPENED**
+**INTELLIGENT BLOCK = WHAT WE CURRENTLY UNDERSTAND**
+
+The event ledger is the temporal spine of meaningful intelligence. Blocks are reusable, multidimensional understanding derived from one or more provenance-bound events. Release of working detail is not deletion of historical truth.
+
+Human cognitive-load rule:
+- infer/verify before asking;
+- ask up to 3 high-leverage questions at a time;
+- maximum 10 unresolved questions unless an explicit questionnaire is requested;
+- read understanding back and record consequential corrections.
 
 ## ACTIVE NEXT ACTION
 
