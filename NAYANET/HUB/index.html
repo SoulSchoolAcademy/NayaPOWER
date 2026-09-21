@@ -933,14 +933,14 @@ async function run(){
   try{
     for(let i=0;i<40;i++){
       try{await window.NayaAssistantRuntime?.init?.()}catch{}
-      const client=window.__NayaNETSupabaseClient;
-      const session=client?(await client.auth.getSession()).data.session:null;
-      if(session?.access_token&&session.user?.id){
-        const result=await client.from('nayanet_cognition_events').select('id,user_id,event_id,type,title,content,status,source,created_at,metadata').eq('event_id',eventId).maybeSingle();
-        if(result.error)throw new Error(result.error.message);
-        if(!result.data)throw new Error('PI_RECEIVER_EVENT_NOT_FOUND');
-        if(result.data.user_id!==session.user.id)throw new Error('PI_RECEIVER_EVENT_OWNER_MISMATCH');
-        const e=result.data;
+      const runtime=window.NayaAssistantRuntime;
+      if(runtime?.init&&runtime?.retrieve){
+        const snapshot=await runtime.init();
+        if(!snapshot?.authenticated)throw new Error('PI_OWNER_SESSION_NOT_READY');
+        const rows=await runtime.retrieve(eventId);
+        const e=rows.find(row=>String(row.event_id)===String(eventId));
+        if(!e)throw new Error('PI_RECEIVER_EVENT_NOT_FOUND');
+        if(e.user_id!==snapshot.user_id)throw new Error('PI_RECEIVER_EVENT_OWNER_MISMATCH');
         root.innerHTML='<div class="pi-label">PROJECT INTELLIGENCE · VERIFIED RECEIVER EVENT</div><h2 class="pi-title">'+esc(e.title||e.event_id)+'</h2><div class="pi-content">'+esc(e.content||'')+'</div><div class="pi-meta"><span>EVENT '+esc(e.event_id)+'</span><span>TYPE '+esc(e.type||'UNKNOWN')+'</span><span>STATUS '+esc(e.status||'UNKNOWN')+'</span><span>CREATED '+esc(e.created_at||'')+'</span></div>';
         const card=document.createElement('article');
         card.dataset.eventId=e.event_id;card.dataset.eventTitle=e.title||e.event_id;card.dataset.canonicalPiRender='true';card.setAttribute('aria-label','Canonical Project Intelligence receiver event');
