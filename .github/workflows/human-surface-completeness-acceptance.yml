@@ -52,8 +52,11 @@ jobs:
           await p.goto(runtime+'/reports',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           const reportsProbe=await p.evaluate(()=>({title:document.title,route:document.querySelector('.app')?.getAttribute('data-route')||null,h1:[...document.querySelectorAll('h1,h2')].map(x=>x.innerText).filter(Boolean),body:document.body.innerText.slice(0,500)})); console.log('REPORTS_RUNTIME_PROBE',JSON.stringify(reportsProbe)); if(!reportsProbe.h1.some(x=>/reports/i.test(x))&&!reportsProbe.body.includes('Reports'))throw Error('FIRST_DIVERGENCE:REPORTS_SURFACE_FAILED:'+JSON.stringify(reportsProbe));
           checks.reports='PASS';
-          await p.goto(runtime+'/settings',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(500);
-          if(!(await p.locator('[data-surface="settings"]').count())||!(await p.locator('h1').filter({hasText:'Settings'}).count()))throw Error('SETTINGS_SURFACE_FAILED');
+          await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
+          const settingsNav=p.locator('[data-page="settings"]').first();if(!(await settingsNav.count()))throw Error('FIRST_DIVERGENCE:SETTINGS_NAV_MISSING');
+          await settingsNav.click();await p.waitForTimeout(300);
+          const settingsPanel=p.locator('#naya-receiver-panel');
+          if(!(await settingsPanel.count())||!(await settingsPanel.locator('h2').filter({hasText:'Settings'}).count())||!(await settingsPanel.locator('.naya-receiver-state').count()))throw Error('FIRST_DIVERGENCE:SETTINGS_SURFACE_FAILED');
           checks.settings='PASS';
           await p.goto(runtime+'/dream',{waitUntil:'domcontentloaded',timeout:60000});await p.waitForTimeout(700);
           const dreamTitle=await p.locator('h1,h2').allTextContents();
