@@ -7,7 +7,7 @@
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
     "recorded_head_is_not_authoritative": true,
-    "observed_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+    "observed_head": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
     "last_execution_observation": {
       "observed_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
       "observed_at": "2026-09-21",
@@ -68,7 +68,7 @@
     "prior_hub_feature_frontier": "SMART_SHARE_PRODUCTION_PROVEN",
     "next_project_intelligence_frontier": "MASTER_PROOF_COMPLETE",
     "production_route_authority": "NOT_PROVEN_BY_THIS_RECONCILIATION",
-    "latest_repository_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+    "latest_repository_head": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
     "project_intelligence_edge_functions": "12 canonical nayanet-pi-* functions ACTIVE; deployment receipt .naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md",
     "runtime_evidence_lineage_integration": {
       "status": "DEPLOYED_NOT_END_TO_END_VERIFIED",
@@ -190,7 +190,7 @@
     "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
+  "ready_to_run_execution": "Execute and independently observe the runtime evidence-lineage proof; retrieve the final execution receipt and require seven bound nodes, six required edges, and lineage status COMPLETE.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
@@ -209,7 +209,7 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "recorded_at_head": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
   "latest_human_facing_observation": {
     "status": "SMART_SHARE_PRODUCTION_PROVEN_PI_02_NEXT",
     "current_branch": "naya/live-project-intelligence-v1",
@@ -218,15 +218,15 @@
     "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
     "runtime_sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "next_boundary": "PI-03_COLD_RETRIEVAL",
+    "next_boundary": "NAYANET-CONSTITUTIONAL-HARDENING-03_RUNTIME_EVIDENCE_LINEAGE",
     "downstream_hub_next_after_pi": "SMART_MAIL_HUMAN_LIFECYCLE"
   },
   "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
-  "latest_execution_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+  "latest_execution_head": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
   "current_frontier": {
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "ACTIVE",
-    "source_checkpoint": "2f95f5eb06233949e01815bb9befbad4b25dac62",
+    "source_checkpoint": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
     "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
     "definition_of_done": "RUNTIME_EVIDENCE_LINEAGE_VERIFIED",
     "evidence_required": [
@@ -237,7 +237,7 @@
   "single_current_frontier": {
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "OPEN",
-    "source_checkpoint": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+    "source_checkpoint": "b0f7fb21281d9d924dab52bf4217ad71b30f5a43",
     "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
     "evidence_required": [
       "deployed runtime integration",
