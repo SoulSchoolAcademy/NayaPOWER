@@ -166,12 +166,13 @@ jobs:
 
               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
               await page.waitForFunction((id)=>{
-                const root=document.querySelector('#naya-pi-render-root');
-                return root?.getAttribute('data-status')==='rendered' && !!root.querySelector('[data-event-id="'+CSS.escape(id)+'"]');
+                const shell=document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]');
+                const board=document.querySelector('.smart-feed-board[data-event-id="'+CSS.escape(id)+'"]');
+                return !!shell && !!board;
               },receiverEventId,{timeout:30000});
-              const rendered=await page.locator('#naya-pi-render-root [data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:n.getAttribute('data-canonical-pi-render')})));
+              const rendered=await page.locator('.smart-feed-board[data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:n.closest('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]')?'true':'false'})));
               if(!rendered.some(x=>x.eventId===receiverEventId&&x.canonical==='true')) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
-              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:'#naya-pi-render-root'});
+              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:'.smart-feed-board',runtime_marker:'NAYANET-HUB-REACT-CANONICAL'});
 
               const ack=await compound(page,session,'ack',{
                 packet_id:bridge.packet_id,
