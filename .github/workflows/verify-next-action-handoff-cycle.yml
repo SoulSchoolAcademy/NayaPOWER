@@ -10,10 +10,7 @@ on:
       - '.naya/control-plane/STATE.json'
       - '.naya/control-plane/BLOCKS.json'
       - '.naya/control-plane/MAP.json'
-  issues:
-    types: [opened]
-  pull_request:
-    types: [opened, synchronize]
+      - '.github/workflows/verify-next-action-handoff-cycle.yml'
 
 permissions:
   contents: write
