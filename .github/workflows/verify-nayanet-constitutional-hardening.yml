@@ -6,6 +6,7 @@ on:
     paths:
       - '.naya/control-plane/**'
       - '.github/workflows/verify-nayanet-constitutional-hardening.yml'
+      - '.naya/naya-context-manifest.json'
 permissions:
   contents: read
 jobs:
