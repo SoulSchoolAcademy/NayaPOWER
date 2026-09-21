@@ -75,6 +75,10 @@ def main():
     req=urllib.request.Request(url,data=json.dumps(q,separators=(",",":"),ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"Content-Type":"application/json","X-Naya-Project-Id":q["project_id"],"X-Naya-Source-Ref":q["source_ref"],"X-Naya-Idempotency-Key":q["idempotency_key"]})
     try:
         with urllib.request.urlopen(req,timeout=60) as r: ack=json.loads(r.read().decode())
+    except urllib.error.HTTPError as ex:
+        detail=ex.read().decode("utf-8","replace")
+        print("BRIDGE_SEND=FAILED:"+str(ex)+" BODY="+detail)
+        return 1
     except Exception as ex: print("BRIDGE_SEND=FAILED:"+str(ex)); return 1
     reqd=["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]
     missing=[x for x in reqd if x not in ack]
