@@ -4,14 +4,14 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-  issues:
-    types: [opened]
     paths:
       - '.naya/contracts/NAYA-NEXT-ACTION-HANDOFF-V1.schema.json'
       - '.naya/runtime/next_action_handoff.py'
       - '.naya/control-plane/STATE.json'
       - '.naya/control-plane/BLOCKS.json'
       - '.naya/control-plane/MAP.json'
+  issues:
+    types: [opened]
 
 permissions:
   contents: write
