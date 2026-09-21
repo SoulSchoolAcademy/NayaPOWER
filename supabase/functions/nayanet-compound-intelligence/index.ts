@@ -518,6 +518,33 @@ async function continueAuthorized(client: any, userId: string, body: any) {
   };
 }
 
+async function consolidatePiGates(client: any, userId: string, body: any) {
+  const flags = body.flags ?? {};
+  const required = ["CANONICAL_CURRENT_TRUTH_RESOLUTION","FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION","COLD_NAYA_CONSUMPTION","COLD_SUCCESSOR_CONTINUATION"];
+  if(required.some(k=>flags[k]!==true)) throw new Error("PI_GATE_CONSOLIDATION_REQUIRES_ALL_FOUR_PASS");
+  const sourceHead=String(body.source_head ?? "").trim();
+  const proofRunId=String(body.proof_run_id ?? "").trim();
+  if(!sourceHead || !proofRunId) throw new Error("PI_GATE_SOURCE_HEAD_AND_RUN_REQUIRED");
+  const event={
+    event_id:"pi-gates:"+crypto.randomUUID(),
+    type:"project_intelligence_gate_consolidation",
+    classification:"proof_consolidation",
+    title:"Project Intelligence four-gate current-head consolidation",
+    content:JSON.stringify({flags,source_head:sourceHead,proof_run_id:proofRunId,evidence_refs:Array.isArray(body.evidence_refs)?body.evidence_refs:[]}),
+    source:"nayanet-compound-intelligence",
+    status:"verified",
+    actor:"naya",
+    confidence:1,
+    tags:["project-intelligence","proof","consolidated-gates"],
+    parent_event_id:body.parent_event_id ?? null,
+    source_hash:"pi-gates:"+sourceHead+":"+proofRunId,
+    schema_version:"1.0.0",
+    metadata:{flags,source_head:sourceHead,proof_run_id:proofRunId,verified:true}
+  };
+  const receipt=await record(client,event,"pi.gates.consolidated","All four Project Intelligence acceptance gates passed","Current-head cold-successor proof consolidated the four PI gates.",[...required.map(k=>({gate:k,status:"PASS"})),{source_head:sourceHead,proof_run_id:proofRunId,evidence_refs:body.evidence_refs??[]}]);
+  return {schema:"NAYANET_PROJECT_INTELLIGENCE_GATE_CONSOLIDATION_V1",status:"PI_GATES_CONSOLIDATED",event,receipt,flags,source_head:sourceHead,proof_run_id:proofRunId};
+}
+
 async function share(client: any, userId: string, body: any) {
   const sourceId = String(body.source_event_id ?? "").trim();
   if (!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
@@ -584,6 +611,7 @@ Deno.serve(async (req) => {
       case "successor_handoff": result=await successor(client,user.id,body); break;
       case "issue_pi_authority": result=await issuePiAuthority(client,user.id,body); break;
       case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
+      case "consolidate_pi_gates": result=await consolidatePiGates(client,user.id,body); break;
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
       case "health": result=await health(client,user.id); break;
