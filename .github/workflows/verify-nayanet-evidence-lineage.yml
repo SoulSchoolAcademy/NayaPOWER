@@ -1,0 +1,22 @@
+name: NayaNET universal evidence lineage contract
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.naya/project-intelligence/evidence-lineage.schema.json'
+      - '.naya/project-intelligence/evidence-lineage-fixture.json'
+      - '.naya/project-intelligence/validate_evidence_lineage.py'
+      - '.github/workflows/verify-nayanet-evidence-lineage.yml'
+permissions:
+  contents: read
+jobs:
+  lineage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate evidence lineage
+        run: python3 .naya/project-intelligence/validate_evidence_lineage.py
