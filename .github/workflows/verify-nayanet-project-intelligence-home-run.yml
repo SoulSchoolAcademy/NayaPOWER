@@ -82,11 +82,27 @@ jobs:
 
       - name: Send packet through governed OIDC receiver
         id: send
-        continue-on-error: true
         shell: bash
         run: |
           set -euo pipefail
-          token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
+          token=""
+          for attempt in 1 2 3 4 5; do
+            response=$(curl -sS -w '\nHTTP_STATUS:%{http_code}' -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge")
+            status=$(printf '%s\n' "$response" | sed -n 's/^HTTP_STATUS://p' | tail -1)
+            body=$(printf '%s\n' "$response" | sed '/^HTTP_STATUS:/d')
+            if [ "$status" = "200" ]; then
+              token=$(printf '%s' "$body" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
+              break
+            fi
+            if [ "$status" = "429" ] || [ "$status" -ge 500 ] 2>/dev/null; then
+              echo "OIDC_TOKEN_REQUEST_TRANSIENT_FAILURE attempt=$attempt status=$status" >&2
+              sleep $((attempt * 2))
+              continue
+            fi
+            echo "OIDC_TOKEN_REQUEST_FAILED status=$status body=$body" >&2
+            exit 1
+          done
+          [ -n "$token" ] || { echo "OIDC_TOKEN_REQUEST_EXHAUSTED"; exit 1; }
           echo "token=$token" >> "$GITHUB_OUTPUT"
           export NAYANET_BRIDGE_TOKEN="$token"
           python .naya/runtime/project_intelligence_bridge.py send project-intelligence-home-run-packet.json | tee bridge-send.json
