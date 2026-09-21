@@ -1,66 +1,82 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
+LAST_RECONCILED_HEAD: bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af
 
-## READ FIRST
+A cold Naya should not browse the issue inventory to decide what to do next.
+
+Read these first:
 1. .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
 2. .naya/control-plane/STATE.json
 3. .naya/control-plane/BLOCKS.json
 4. .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
 5. .naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md
-6. SUPERBRAIN/INTELLIGENCE-FEED.md
-7. SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md
 
-## PI-01 — COMPLETE AND REVALIDATED
+## CURRENT PROOF FRONTIER
 
-**Status:** PRODUCTION WHOLE-CHAIN PROVEN at tested owner-bound scope.
+SENDER = GitHub / SoulSchoolAcademy/NayaPOWER
+RECEIVER = NayaNET Intelligent Hub / NAYANET/HUB/index.html
+BRIDGE = Project Intelligence Bridge V1
 
-**Latest proof run:** 35639400253  
-**Job:** 106464749083  
-**Source scope:** c262191dcdc16e6488a395778de6d9896e5c2097  
-**Artifact:** 10657402815
+**NOW PROVEN:** current-head transport → persistence → index → projection → owner retrieval → canonical browser render → owner-bound ACK → fresh cold successor → 14-question restore with evidence metadata → exact lineage retrieval → authority grant → authorized continuation → successor receipt → four-gate consolidation.
 
-### Verified chain
+## LATEST VERIFIED COLD-SUCCESSOR RECEIPT
 
-RECEIVE → RETRIEVE → RENDER → ACK → SUCCESSOR HANDOFF → COLD 14Q → COLD SUCCESSOR → AUTHORITY → CONTINUATION → SUCCESSOR RECEIPT
+GitHub Actions run: 35640130080
+Job: 106467147709
+Source HEAD: bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af
+Packet: 0f71204b-3802-5d71-9f56-b6c025e66529
+Receiver event: cb191967-15e7-4a70-b413-e6f66f45f0ab
+ACK receipt: 6bdd2fc0-bb86-492a-a93e-670a4566295e
+Continuation event: continuation:d286f40a-3121-40c5-a571-d7722ac77236
+Continuation receipt: cfc748de-14c1-497f-84ff-90612ea8cab4
+Successor event: successor:dd0f9374-eeee-4f05-9b78-89de47afdb96
+Successor receipt: cceee0a2-77f1-443b-afd9-ecc60aba4204
+Four-gate consolidation receipt: b6b2ae9a-0d31-4622-ba82-09b3b49d88ef
 
-Packet: 3e7a40fb-9c16-57e0-a8fc-0357998dd9af  
-Receiver event: fad90097-7e35-4b0e-bd1b-70899b43a80e  
-ACK receipt: a1d7d052-305e-499b-8dd1-ca5e93fff595  
-Continuation event: continuation:39beeb98-6155-42e6-8bc9-2a14c4ac00a4  
-Successor receipt: 76fbc0e1-6aaa-42d6-9bb3-e945f02fcba3
+## CURRENT PI GATES
 
-The cold successor answered all 14 restore questions, retrieved the exact owner-bound receiver event, received explicit pi.continue authority, executed the authorized continuation, and left a new successor receipt.
+- CANONICAL_CURRENT_TRUTH_RESOLUTION = PASS at current-head proof scope
+- FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION = PASS at current-head proof scope
+- COLD_NAYA_CONSUMPTION = PASS at current-head runtime scope
+- COLD_SUCCESSOR_CONTINUATION = PASS at current-head runtime scope
 
-## REVALIDATION LEARNING
+## LATEST 14-QUESTION PROOF
 
-The P0 proof exposed and repaired several real continuity defects after the first home-run:
-- stale proof-harness variable scope
-- stale receipt-envelope expectation
-- control-plane frontier/schema mismatch
-- positional reconstruction argument wiring defect
-- malformed historical event timestamp handling
+All 14 questions restored successfully and each now carries runtime-validated metadata:
+status, source_path, source_scope, evidence_identity, freshness, next_responsible_action.
 
-The latest run passed after those repairs. The current-truth reconstruction validator also passed.
+## LATEST COMPUTATIONAL COMPOUNDING MEASUREMENT
 
-## CURRENT FRONTIER — P1
+GitHub Actions run: 35632921091
+Result: MEASURED
+Canonical source set: 70 files / 883,633 bytes
+Cold restore: 1 round trip / 4,821 response bytes / ~739 ms
+Durable-learning reuse: 1 round trip / 813 response bytes / ~338 ms
+Future decision influence: true
+Universal compute savings: NOT CLAIMED
 
-### COMPUTATION-EFFICIENCY-P1
+## ACTIVE NEXT ACTION
 
-**Single next action:** Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.
+Advance from Project Intelligence closure into the consolidated human journey:
+**OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.**
 
-**Measure:** context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, verified outcomes, provenance, and defensible avoided computation.
+Do not reopen the proven Project Intelligence bridge. Use it as the continuity substrate while closing the first incomplete human-facing boundary.
 
-**Acceptance:** demonstrate a claim-appropriate reduction in repeated work while preserving or improving verified outcome quality, authority, provenance, and verification.
+## REMAINING HIGH-VALUE FRONTIER
 
-**Universal savings:** NOT CLAIMED until measured.
+1. Complete human journey.
+2. Smart Mail full human lifecycle acceptance.
+3. Remaining Hub feature acceptance: Search / Library / Reports / Settings / Identity / Smart Ledger / Smart Spaces / Smart Lists.
+4. Current-head Smart Share reconciliation where claim scope requires it.
+5. Universal computation-saving, human-time, reuse-quality, and regression benchmarks.
+6. Welcome/public entry and production release consolidation.
+7. Final AAA visual/interaction pass.
+8. Final cold-Naya torch handoff and ship.
 
-## COMPOUND INTELLIGENCE 12 — PROVEN
+## ACCEPTANCE RULE
 
-Run `35639958653` / job `106466577483` proved all 12 governed capabilities through the authenticated production Supabase runtime. Reconciliation was tested with both a canonical-runtime claim and an intentionally conflicting documentation claim, proving the system preserves conflict instead of silently promoting it.
+Project Intelligence is no longer the blocking causal frontier at the recorded current-head scope. The product is not 10/10 until the human journey and remaining Hub surfaces are independently runtime-proven and the production release is consolidated.
 
-**Next:** measure computational compounding; do not confuse capability coverage with demonstrated computation savings.
-
-## RULE
-
-Do not reopen PI-01 without evidence of regression. Use the smallest authorized computation that can establish the next verified fact.
+The law remains:
+**Don't show that NayaPOWER was built. Show that I can use it.**
