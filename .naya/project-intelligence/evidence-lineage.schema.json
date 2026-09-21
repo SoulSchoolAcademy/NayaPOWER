@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"nayanet/project-intelligence/evidence-lineage/v1",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["lineage_id","project","nodes","edges"],
+  "properties":{
+    "lineage_id":{"type":"string","pattern":"^LIN-[A-Z0-9._-]+$"},
+    "project":{"const":"NAYANET"},
+    "nodes":{"type":"array","minItems":7,"items":{"type":"object","additionalProperties":false,"required":["node_id","kind","ref"],"properties":{"node_id":{"type":"string","minLength":1},"kind":{"enum":["source","claim","action","outcome","verification","learning","successor"]},"ref":{"type":"string","minLength":1}}}},
+    "edges":{"type":"array","minItems":6,"items":{"type":"object","additionalProperties":false,"required":["from","to","relation"],"properties":{"from":{"type":"string"},"to":{"type":"string"},"relation":{"enum":["SUPPORTS","CAUSES","RESULTS_IN","VERIFIES","TEACHES","HANDOFF_TO"]}}}}
+  }
+}
