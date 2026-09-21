@@ -112,7 +112,7 @@ jobs:
               const eventId=understanding.event?.event_id;
               if(!eventId) throw new Error('UNDERSTAND_EVENT_ID_MISSING');
 
-              const retrieve=await call(page,session,'retrieve',{query:unique,limit:10});
+              const retrieve=await call(page,session,'retrieve',{query:title,limit:10});
               if(!retrieve.items?.some(x=>x.event_id===eventId)) throw new Error('RETRIEVE_DID_NOT_FIND_UNDERSTANDING');
 
               const reconcile=await call(page,session,'reconcile');
