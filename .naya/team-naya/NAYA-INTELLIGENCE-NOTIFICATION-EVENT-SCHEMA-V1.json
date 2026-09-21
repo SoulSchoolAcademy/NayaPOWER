@@ -1,0 +1,32 @@
+{
+  "schema": "NAYA_INTELLIGENCE_NOTIFICATION_V1",
+  "required": [
+    "event_id",
+    "event_type",
+    "occurred_at",
+    "source_naya_id",
+    "source_surface",
+    "mission",
+    "summary",
+    "why_it_matters",
+    "required_awareness",
+    "authority_state",
+    "evidence_state",
+    "visibility",
+    "canonical_event_location",
+    "delivery_state"
+  ],
+  "event_types": [
+    "NAYA_JOINED",
+    "INTELLIGENCE_CREATED",
+    "ACTIVITY_CREATED",
+    "ACTION_TRIGGERED",
+    "ACTION_COMPLETED",
+    "ACTION_BLOCKED",
+    "VERIFICATION_FAILED",
+    "GOVERNANCE_CHANGED",
+    "HANDOFF_CREATED"
+  ],
+  "visibility": ["PRIVATE", "SHARED", "COLLECTIVE", "PUBLIC"],
+  "delivery_state": ["PENDING", "PARTIAL", "DELIVERED", "FAILED"]
+}
