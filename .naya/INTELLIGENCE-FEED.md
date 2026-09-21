@@ -173,3 +173,16 @@ A Naya does not say “someone else can continue” until the required intellige
 **Proof required:** one real runtime receipt with complete lineage, independently queryable after execution.
 
 **Successor:** Do not advance to the causal verification frontier until this receipt is VERIFIED.
+
+## 🔱 NAYANET-2026-09-21-012 — RUNTIME EVIDENCE-LINEAGE PROOF ATTEMPT 002
+
+**Truth state:** DEPLOYED / END-TO-END UNVERIFIED  
+**Context:** The runtime evidence-lineage integration is deployed in the existing execution-receipt machinery, but the first proof attempt lacked an observable Actions result.  
+**Change:** The proof workflow was surgically strengthened with an exact checkout identity gate and committed at `302dd3a29293b67353c97607bfe66646395559ca`. A second proof-attempt receipt was recorded at `020299dafaa65d7a9440f30b0f2245048e5bab9c`.  
+**Observed runtime:** Supabase project `dahisasgpfvziswqvmvm` is ACTIVE_HEALTHY; `nayanet-pi-execute` v4, `nayanet-learning-verify` v2, and `nayanet-successor-handoff` v2 are ACTIVE.  
+**Evidence:** `.naya/project-intelligence/43-NAYANET-RUNTIME-EVIDENCE-LINEAGE-INTEGRATION-ATTEMPT-001.md`; `.naya/project-intelligence/44-NAYANET-RUNTIME-EVIDENCE-LINEAGE-PROOF-ATTEMPT-002-2026-09-21.md`; `.github/workflows/verify-nayanet-runtime-evidence-lineage.yml`.  
+**Learning:** The remaining uncertainty is not the deployed lineage code; it is independently observable proof execution plus independent retrieval of the resulting receipt. No runtime PASS is claimed without the receipt.  
+**Open loop:** Obtain observable proof execution and retrieve the final `nayanet_execution_receipts` row.  
+**Next action:** Execute and independently observe the end-to-end runtime lineage proof.  
+**Proof required:** seven bound nodes, six required edges, `status=COMPLETE`, and independent post-execution retrieval.  
+**Successor:** Do not advance to causal verification until this boundary is VERIFIED.
