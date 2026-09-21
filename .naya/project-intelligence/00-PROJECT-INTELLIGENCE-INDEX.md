@@ -26,7 +26,8 @@ This is the map, not the whole forest.
 
 ## SUCCESSION + COMMUNICATION
 
-[22 — NayaNET Intelligence Feed + Succession Contract](22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md)
+[22 — NayaNET Intelligence Feed + Succession Contract](22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md)  
+[Root — NayaNET Intelligence Feed](../INTELLIGENCE-FEED.md)
 
 The Intelligence Feed is the durable communication and torch-passing surface between Nayas. It is a projection of canonical project intelligence, not a replacement for canonical evidence.
 
