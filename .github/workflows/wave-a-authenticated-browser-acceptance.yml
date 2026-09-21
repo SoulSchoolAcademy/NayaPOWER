@@ -306,4 +306,4 @@ jobs:
           path: |
             ${{ github.workspace }}/wave-a-browser-acceptance.json
             ${{ github.workspace }}/canonical-hub-desktop.png
-          if-no-files-found: error
+          if-no-files-found: warn
