@@ -33,12 +33,13 @@ AUTHORIZED EVENTS
 2. Explicit `supersedes` / `superseded_by` establishes lineage.
 3. `SUPERSEDED` and `STALE` never become CURRENT.
 4. Multiple unresolved active claims about the same existing `subject` are CONFLICTED.
-5. A verification label without supporting evidence cannot manufacture current truth.
-6. Unknown remains UNKNOWN.
-7. Unauthorized events never enter reconstruction.
-8. Historical truth remains recoverable.
-9. Every current claim carries evidence and causal lineage.
-10. Canonical events remain the authority; reconstruction is rebuildable.
+5. A uniquely stronger candidate may become CURRENT only when its existing verification has explicit evidence and it strictly outranks competing active candidates; verification without evidence cannot resolve anything.
+6. Equal-strength verified candidates remain CONFLICTED; recency is only a tie-breaker for deterministic ordering inside an already resolved class, never proof of truth.
+7. Unknown remains UNKNOWN.
+8. Unauthorized events never enter reconstruction.
+9. Historical truth remains recoverable.
+10. Every current claim carries evidence and causal lineage.
+11. Canonical events remain the authority; reconstruction is rebuildable.
 
 ## COLD-NAYA PACKET
 
