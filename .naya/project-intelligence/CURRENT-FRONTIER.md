@@ -58,10 +58,10 @@ Universal compute savings: NOT CLAIMED
 
 ## ACTIVE NEXT ACTION
 
-Advance from Project Intelligence closure into the consolidated human journey:
-**OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.**
+Build and prove the canonical next_action + handoff operational contract through one real execution cycle:
+**CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.**
 
-Do not reopen the proven Project Intelligence bridge. Use it as the continuity substrate while closing the first incomplete human-facing boundary.
+The cycle must use the existing Project Intelligence/control-plane path, produce durable evidence, update canonical state, and leave the exact successor action for the next Naya.
 
 ## REMAINING HIGH-VALUE FRONTIER
 
