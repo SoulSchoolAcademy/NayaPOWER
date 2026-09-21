@@ -17,8 +17,8 @@
     "acceptance": [
       "NAYANET/HUB/index.html is the sole current Hub product surface",
       "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
-      "the first actual failing boundary is repaired surgically and re-proven",
-      "Smart Mail follows after Smart Share, then Connections, Smart Spaces, and Smart Lists",
+      "Smart Share is production-proven and its first causal failures were repaired surgically and re-proven; remaining feature gates continue in the locked order.",
+      "Smart Mail follows next, then Connections, Smart Spaces, and Smart Lists.",
       "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
     ],
     "evidence": [
@@ -28,9 +28,9 @@
       ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
     ],
     "target_state": "CANONICAL_HUB_FUNCTIONAL_AND_BROWSER_PROVEN",
-    "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof.",
+    "next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof.",
     "next_actions": [
-      "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof."
+      "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."
     ],
     "scope": [
       "canonical NAYANET/HUB/index.html",
