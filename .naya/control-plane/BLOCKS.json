@@ -5,7 +5,7 @@
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Integrate first-class evidence lineage into real runtime execution and verification receipts.",
+    "intent": "Integrate first-class evidence lineage into the real nayanet_execution_receipts evidence/learning machinery without introducing a new store, then prove the complete runtime lineage.",
     "scope": "Single-project NayaNET runtime evidence spine; preserve prior contract and master-proof evidence.",
     "protected": [
       "Project NayaNET = Project Intelligence",
@@ -24,17 +24,23 @@
       "invalid claim fixtures fail closed",
       "valid claim fixture passes",
       "claim acceptance is executed in GitHub Actions",
-      "receipt identifies exact live HEAD and evidence"
+      "receipt identifies exact live HEAD and evidence",
+      "real execution receipt contains NAYANET_EVIDENCE_LINEAGE_RUNTIME_V1",
+      "source → claim → action → outcome → verification → learning → successor is runtime-queryable from the receipt",
+      "final lineage status COMPLETE with all required nodes and edges bound"
     ],
     "evidence": [
       ".naya/project-intelligence/evidence-lineage.schema.json",
       ".naya/project-intelligence/41-NAYANET-CONSTITUTIONAL-HARDENING-RECEIPT-2026-09-21.md",
-      "runtime execution receipt evidence"
+      "runtime execution receipt evidence",
+      "deployed nayanet-pi-execute v4, nayanet-learning-verify v2, nayanet-successor-handoff v2",
+      ".github/workflows/verify-nayanet-runtime-evidence-lineage.yml",
+      ".naya/project-intelligence/43-NAYANET-RUNTIME-EVIDENCE-LINEAGE-INTEGRATION-ATTEMPT-001.md"
     ],
     "target_state": "RUNTIME_EVIDENCE_LINEAGE_VERIFIED",
-    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
+    "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
     "next_actions": [
-      "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
+      "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE."
     ],
     "next_action_count": 1
   },
