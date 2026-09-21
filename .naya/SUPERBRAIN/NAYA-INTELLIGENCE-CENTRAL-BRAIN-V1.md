@@ -104,7 +104,7 @@ Relevant existing runtime surfaces include nayanet_cognition_events, nayanet_exe
 ## 12. SUPABASE NOTIFICATION BOUNDARY
 Managed Supabase now contains the notification/outbox boundary: nayanet_intelligence_notifications and nayanet_intelligence_notification_deliveries.
 
-An execution-receipt INSERT automatically creates the notification event and logical delivery records through a PostgreSQL trigger. The trigger also emits a PostgreSQL notification signal for listeners.
+An execution-receipt INSERT automatically creates the notification event and logical delivery records through a PostgreSQL trigger. The trigger also emits a PostgreSQL notification signal for listeners. Applied Supabase migrations: 20260921221050 (bus) and 20260921221249 (owner-read RLS).
 
 An outbox row is not proof of external delivery. Delivery remains separately evidenced.
 
