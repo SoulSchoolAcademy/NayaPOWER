@@ -53,5 +53,5 @@ jobs:
       - name: Publish cycle proof
         uses: actions/upload-artifact@v4
         with:
-          name: next-action-handoff-cycle-\${{ github.run_id }}
+          name: next-action-handoff-cycle-${{ github.run_id }}
           path: .naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json
