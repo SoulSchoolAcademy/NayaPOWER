@@ -1,0 +1,55 @@
+name: NayaNET PI-05 authorized next action proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi05-authorized-next-action.yml'
+permissions:
+  contents: read
+jobs:
+  pi05:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute PI-05 one authorized next action proof
+        shell: bash
+        run: |
+          cat > verify-pi05.mjs <<'EOF'
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY,runId=process.env.GITHUB_RUN_ID;
+          const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function post(p,t,b){const r=await fetch(base+'/functions/v1/'+p,{method:'POST',headers:h(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          const ar=await fetch(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('FRESH_AUTH_FAILED');
+          const t=a.access_token;
+          const restore=await post('nayanet-project-intelligence-restore',t,{});
+          if(restore.status!==200||restore.body?.ok!==true)throw Error('RESTORE_FAILED');
+          const current=restore.body.restore?.CURRENT_NEXT_ACTION??restore.body.result?.CURRENT_NEXT_ACTION??null;
+          if(!current||typeof current!=='object')throw Error('ONE_NEXT_ACTION_MISSING');
+          for(const k of ['why','action','evidence_required','success_condition'])if(!current[k])throw Error('NEXT_ACTION_FIELD_MISSING:'+k);
+          const next={
+            why:'Advance the master proof one governed boundary at a time.',
+            action:'PI-06: Prove governed execution + durable execution receipt.',
+            evidence_required:['authorized execution request','actor/action/resource/scope/authority','execution receipt','observable result','verification'],
+            success_condition:'An authorized action executes once within scope, leaves a durable receipt, and its observable result is verified.'
+          };
+          const denied=await post('nayanet-compound-intelligence',t,{action:'state_update',current_next_action:next});
+          if(denied.status!==400||!String(denied.body?.error??'').includes('STATE_UPDATE_AUTHORITY_REQUIRED'))throw Error('UNAUTHORIZED_STATE_UPDATE_NOT_BLOCKED:'+JSON.stringify(denied.body));
+          const allowed=await post('nayanet-compound-intelligence',t,{action:'state_update',authority:'PROJECT_DIRECTOR',current_next_action:next});
+          console.log('PI05_RUN_ID='+runId);
+          console.log('PI05_DENIED='+JSON.stringify(denied.body));
+          console.log('PI05_ALLOWED='+JSON.stringify(allowed.body));
+          if(allowed.status!==200||allowed.body?.ok!==true)throw Error('AUTHORIZED_NEXT_ACTION_FAILED');
+          const after=await post('nayanet-project-intelligence-restore',t,{});
+          const selected=after.body.restore?.CURRENT_NEXT_ACTION??after.body.result?.CURRENT_NEXT_ACTION??null;
+          if(JSON.stringify(selected)!==JSON.stringify(next))throw Error('NEXT_ACTION_NOT_PERSISTED');
+          console.log('PI05_RESULT='+JSON.stringify({schema:'NAYANET_PI05_AUTHORIZED_NEXT_ACTION_PROOF_V1',run_id:runId,fresh_authenticated_context:true,one_action:true,unauthorized_blocked:true,authorized_persisted:true,authority:'PROJECT_DIRECTOR',status:'VERIFIED'}));
+          EOF
+          node verify-pi05.mjs
