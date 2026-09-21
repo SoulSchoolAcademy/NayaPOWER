@@ -17,7 +17,8 @@ const items:NavItem[]=[
  {name:'Smart Mail',route:routes.mail,icon:'✉'},
  {name:'Smart Ledger',route:routes.ledger,icon:'◇'},
  {name:'Naya Play',route:routes.play,icon:'▶'},
- {name:'Settings',route:routes.settings,icon:'⚙'}
+ {name:'Settings',route:routes.settings,icon:'⚙'},
+];
 
 const normalize=(p:string)=>p.length>1&&p.endsWith('/')?p.slice(0,-1):p||'/';
 function SmartNoteCapture({go}:{go:(p:string)=>void}){
