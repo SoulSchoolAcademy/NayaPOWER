@@ -15,7 +15,7 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - CONSOLIDATED PROJECT INTELLIGENCE PROOF",
+  "priority": "P0 - COLD NAYA TAKEOVER / PROJECT INTELLIGENCE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "COLD-NAYA-TAKEOVER-PROOF",
   "current_block_status": "ACTIVE",
@@ -161,7 +161,7 @@
   "bottleneck": "Consolidated Project Intelligence whole-chain proof: connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted cold-successor acceptance chain. Computational-efficiency measurement is the next engineering layer after this causal chain is proven.",
   "single_next_action": "Execute the consolidated Project Intelligence proof against live main: INTENT -> IDENTITY -> RECONSTRUCTION -> COLD RESTORE -> RETRIEVAL -> CURRENT STATE -> ONE NEXT ACTION -> AUTHORITY -> EXECUTION -> VERIFICATION -> LEARNING -> UPDATE -> COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
   "next_actions": [
-    "Execute the consolidated Project Intelligence proof against live main: INTENT -> IDENTITY -> RECONSTRUCTION -> COLD RESTORE -> RETRIEVAL -> CURRENT STATE -> ONE NEXT ACTION -> AUTHORITY -> EXECUTION -> VERIFICATION -> LEARNING -> UPDATE -> COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence."
+    "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
@@ -192,7 +192,7 @@
     "status": "PROOF7_COMPOUNDING_PROVEN_PI_WHOLE_CHAIN_NEXT",
     "canonical_hub": "NAYANET/HUB/index.html"
   },
-  "next_action": "Execute the consolidated Project Intelligence proof against live main: INTENT -> IDENTITY -> RECONSTRUCTION -> COLD RESTORE -> RETRIEVAL -> CURRENT STATE -> ONE NEXT ACTION -> AUTHORITY -> EXECUTION -> VERIFICATION -> LEARNING -> UPDATE -> COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
+  "next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
   "today_mission": {
     "status": "ACTIVE",
     "date": "2026-09-21",
