@@ -280,5 +280,9 @@
     "live_main_before_reconciliation": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
     "control_plane_reconciliation_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
     "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
+  },
+  "current_next_action": {
+    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "reason": "Project Intelligence current-head cold successor boundary is verified; advance to human-facing acceptance without reopening proven substrate."
   }
 }
