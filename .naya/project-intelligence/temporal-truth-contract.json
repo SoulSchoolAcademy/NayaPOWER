@@ -1,0 +1,17 @@
+{
+  "$schema":"nayanet/project-intelligence/temporal-truth/v1",
+  "fields":{
+    "event_time":"When the underlying event happened.",
+    "observed_at":"When the evidence was observed by the system.",
+    "asserted_at":"When the claim was asserted.",
+    "valid_from":"Earliest time the claim is intended to apply.",
+    "valid_until":"Optional expiry/supersession boundary."
+  },
+  "rules":[
+    "Never substitute assertion time for event time.",
+    "Never treat an observation as current without checking validity.",
+    "A claim with valid_until before as_of is STALE.",
+    "Two current claims for the same subject with materially different assertions are CONFLICTED until governed resolution.",
+    "Historical evidence remains historical; time does not silently promote it to current truth."
+  ]
+}
