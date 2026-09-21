@@ -209,13 +209,26 @@ jobs:
           await boundShareButton.click({force:true});
 
           const publishedDispatch=await publishedDispatchPromise;
-          const afterClick=await ap.evaluate(()=>({
-            handlerInvoked:Number(window.__smartShareDiag?.handlerInvoked||0),
-            proof:window.__smartShareProof||null,
-            dispatches:Array.isArray(window.__smartShareDiag?.dispatches)?window.__smartShareDiag.dispatches:[],
-            buttonState:document.querySelector('[data-c4-kind="share-intel"]')?.dataset.smartShareState||'',
-            publicationId:document.querySelector('[data-c4-kind="share-intel"]')?.dataset.publicationId||''
-          }));
+          const afterClick=await ap.evaluate(async expectedPublicationId=>{
+            const handlerInvoked=Number(window.__smartShareDiag?.handlerInvoked||0);
+            const proof=window.__smartShareProof||null;
+            const dispatches=Array.isArray(window.__smartShareDiag?.dispatches)?window.__smartShareDiag.dispatches:[];
+            const button=await new Promise(resolve=>{
+              const find=()=>{
+                const match=[...document.querySelectorAll('[data-c4-kind="share-intel"]')].find(b=>String(b.dataset.publicationId||'')===expectedPublicationId&&String(b.dataset.smartShareState||'')==='PUBLISHED');
+                if(match) return resolve(match);
+                setTimeout(find,25);
+              };
+              find();
+            });
+            return {
+              handlerInvoked,
+              proof,
+              dispatches,
+              buttonState:String(button?.dataset.smartShareState||''),
+              publicationId:String(button?.dataset.publicationId||'')
+            };
+          },publishedDispatch.publicationId);
           console.log('SMART_SHARE_BROWSER_DIAGNOSTIC_AFTER_CLICK='+JSON.stringify(afterClick));
           console.log('SMART_SHARE_POST_HANDLER_TRACE='+JSON.stringify({
             publicationId:afterClick.publicationId,
