@@ -245,7 +245,7 @@ jobs:
           const receiptEventId=String(publicationReceipt?.event_id||'');
           if(!receiptEventId) throw Error('SMART_SHARE_RECEIPT_EVENT_ID_NOT_PROVEN:'+publicationId);
 
-          const authorizationEvent=await ap.evaluate(sourceId=>window.NayaAssistantRuntime.retrieve().then(rows=>(rows||[]).find(x=>x.type==='smart_share_authorization'&&x.parent_event_id===sourceId&&x.user_id===A.user.id)),sourceEventId);
+          const authorizationEvent=await ap.evaluate(({sourceId,userId})=>window.NayaAssistantRuntime.retrieve().then(rows=>(rows||[]).find(x=>x.type==='smart_share_authorization'&&x.parent_event_id===sourceId&&x.user_id===userId)),{sourceId:sourceEventId,userId:A.user.id});
           const authorizationEventId=String(authorizationEvent?.event_id||'');
           if(!authorizationEventId) throw Error('SMART_SHARE_AUTHORIZATION_EVENT_NOT_RETRIEVED:'+sourceEventId);
           const grants=await ap.evaluate(target=>window.NayaAssistantRuntime.listAuthorityGrants(target),A.user.id);
