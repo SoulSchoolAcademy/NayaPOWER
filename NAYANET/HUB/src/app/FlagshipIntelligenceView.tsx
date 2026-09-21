@@ -80,7 +80,7 @@ export function FlagshipIntelligenceView({ title, subtitle, library = false }: P
       <aside className="lens-rail">
         <div className="lens-rail-head"><span>INTELLIGENCE</span><i>LIVE</i></div>
         <div className="lens-rail-orbit"><span /><span /><span /></div>
-        {(Object.keys(lensCopy) as Array<keyof typeof lensCopy>).map(x => <button key={x} className={`lens-tab ${lens === x ? 'active' : ''}`} onClick={() => setLens(x)}><span className="lens-glyph">{x === 'personal' ? '◉' : x === 'collective' ? '◎' : '◷'}</span><span className="lens-copy"><b>{x.toUpperCase()}</b><small>{lensCopy[x]}</small></span><em>{x === lens ? '●' : '○'}</em></button>)}
+        {(Object.keys(lensCopy) as Array<keyof typeof lensCopy>).map(x => <button key={x} data-lens={x} className={`lens-tab ${lens === x ? 'active' : ''}`} onClick={() => setLens(x)}><span className="lens-glyph">{x === 'personal' ? '◉' : x === 'collective' ? '◎' : '◷'}</span><span className="lens-copy"><b>{x.toUpperCase()}</b><small>{lensCopy[x]}</small></span><em>{x === lens ? '●' : '○'}</em></button>)}
         <div className="lens-divider" />
         <button className="rail-tool" onClick={() => window.dispatchEvent(new CustomEvent('nayanet:navigate', { detail: { path: routes.library } }))}><span>▱</span><b>LIBRARY</b></button>
         <button className="rail-tool" onClick={() => window.dispatchEvent(new CustomEvent('nayanet:navigate', { detail: { path: routes.reports } }))}><span>◫</span><b>REPORTS</b></button>
