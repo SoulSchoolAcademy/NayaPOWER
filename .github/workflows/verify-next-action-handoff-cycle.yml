@@ -4,6 +4,8 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
+  issues:
+    types: [opened]
     paths:
       - '.naya/contracts/NAYA-NEXT-ACTION-HANDOFF-V1.schema.json'
       - '.naya/runtime/next_action_handoff.py'
