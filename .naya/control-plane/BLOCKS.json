@@ -1,68 +1,68 @@
 {
-  "$schema": "naya/control-plane/block/v1",
-  "status": "CANONICAL",
-  "active_block": {
-    "id": "CANONICAL-HUB-FUNCTIONALIZATION",
-    "status": "ACTIVE",
-    "priority": "P0",
-    "intent": "Make the existing canonical NAYANET/HUB/index.html human-facing Hub functional by connecting its existing controls to the verified governed Naya engine without redesigning the Hub or reopening the proven Smart Note/PIS compounding path.",
-    "protected": [
-      "existing production Space",
-      "existing Connections and Smart List substrate",
-      "explicit authority boundary",
-      "Smart Mail receipt/cognition/Ledger lineage",
-      "fail-closed security",
-      "browser acceptance may proceed because engine/security closure is proven"
-    ],
-    "acceptance": [
-      "NAYANET/HUB/index.html is the sole current Hub product surface",
-      "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
-      "Smart Share is production-proven and its first causal failures were repaired surgically and re-proven; remaining feature gates continue in the locked order.",
-      "Smart Mail follows next, then Connections, Smart Spaces, and Smart Lists.",
-      "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
-    ],
-    "evidence": [
-      ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
-      ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
-      ".naya/receipts/2026-09-20-HUMAN-END-TO-END-COMPOUNDING-ACCEPTANCE.md",
-      ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
-    ],
-    "target_state": "CANONICAL_HUB_FUNCTIONAL_AND_BROWSER_PROVEN",
-    "next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof.",
-    "next_actions": [
-      "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."
-    ],
-    "scope": [
-      "canonical NAYANET/HUB/index.html",
-      "Smart Share",
-      "Smart Mail",
-      "Connections",
-      "Smart Spaces",
-      "Smart Lists",
-      "governed action execution",
-      "browser/runtime proof"
-    ],
-    "next_action_count": 1
-  },
-  "status_vocabulary": [
-    "INTENDED",
-    "IMPLEMENTED",
-    "COMPLETE",
-    "VERIFIED",
-    "RACE_READY",
-    "PRODUCTION_PROVEN",
-    "UNKNOWN",
-    "FAILED",
-    "STALE"
-  ],
-  "rules": {
-    "verified_requires_proof": true,
-    "unknown_is_not_green": true,
-    "recorded_is_not_current": true,
-    "one_next_action": true,
-    "one_shot_ten_first": true,
-    "no_dead_end_handoff": true,
-    "no_orphan_execution": true,
-    "cold_naya_state_reconstruction_by_human": false
-  }
+    "$schema":  "naya/control-plane/block/v1",
+    "status":  "CANONICAL",
+    "active_block":  {
+                         "id":  "PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF",
+                         "status":  "ACTIVE",
+                         "priority":  "P0",
+                         "intent":  "Connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted Project Intelligence acceptance chain.",
+                         "protected":  [
+                                           "existing production Space",
+                                           "existing Connections and Smart List substrate",
+                                           "explicit authority boundary",
+                                           "Smart Mail receipt/cognition/Ledger lineage",
+                                           "fail-closed security",
+                                           "browser acceptance may proceed because engine/security closure is proven"
+                                       ],
+                         "acceptance":  [
+                                            "NAYANET/HUB/index.html is the sole current Hub product surface",
+                                            "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
+                                            "Smart Share is production-proven and its first causal failures were repaired surgically and re-proven; remaining feature gates continue in the locked order.",
+                                            "Smart Mail follows next, then Connections, Smart Spaces, and Smart Lists.",
+                                            "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
+                                        ],
+                         "evidence":  [
+                                          ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
+                                          ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+                                          ".naya/receipts/2026-09-20-HUMAN-END-TO-END-COMPOUNDING-ACCEPTANCE.md",
+                                          ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
+                                      ],
+                         "target_state":  "PROJECT_INTELLIGENCE_WHOLE_CHAIN_AND_COLD_SUCCESSOR_PROVEN",
+                         "next_action":  "Execute the consolidated Project Intelligence proof: INTENT -\u003e IDENTITY -\u003e RECONSTRUCTION -\u003e COLD RESTORE -\u003e RETRIEVAL -\u003e CURRENT STATE -\u003e ONE NEXT ACTION -\u003e AUTHORITY -\u003e EXECUTION -\u003e VERIFICATION -\u003e LEARNING -\u003e UPDATE -\u003e COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
+                         "next_actions":  [
+                                              "Execute the consolidated Project Intelligence proof: INTENT -\u003e IDENTITY -\u003e RECONSTRUCTION -\u003e COLD RESTORE -\u003e RETRIEVAL -\u003e CURRENT STATE -\u003e ONE NEXT ACTION -\u003e AUTHORITY -\u003e EXECUTION -\u003e VERIFICATION -\u003e LEARNING -\u003e UPDATE -\u003e COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence."
+                                          ],
+                         "scope":  [
+                                       "canonical NAYANET/HUB/index.html",
+                                       "Smart Share",
+                                       "Smart Mail",
+                                       "Connections",
+                                       "Smart Spaces",
+                                       "Smart Lists",
+                                       "governed action execution",
+                                       "browser/runtime proof"
+                                   ],
+                         "next_action_count":  1
+                     },
+    "status_vocabulary":  [
+                              "INTENDED",
+                              "IMPLEMENTED",
+                              "COMPLETE",
+                              "VERIFIED",
+                              "RACE_READY",
+                              "PRODUCTION_PROVEN",
+                              "UNKNOWN",
+                              "FAILED",
+                              "STALE"
+                          ],
+    "rules":  {
+                  "verified_requires_proof":  true,
+                  "unknown_is_not_green":  true,
+                  "recorded_is_not_current":  true,
+                  "one_next_action":  true,
+                  "one_shot_ten_first":  true,
+                  "no_dead_end_handoff":  true,
+                  "no_orphan_execution":  true,
+                  "cold_naya_state_reconstruction_by_human":  false
+              }
 }
