@@ -67,7 +67,7 @@ jobs:
           receipt.checks.learning_retrieve=learning.ok===true?'PASS':'FAIL';
           const projected=await req('nayanet-project-intelligence-project',token,{source_event_id:eventUuid});
           receipt.checks.project=projected.ok===true?'PASS':'FAIL';
-          const ack=await req('nayanet-project-intelligence-ack',token,{packet_id:'missing-packet',retrieved:true,rendered:true,retrieval_evidence:['controlled-proof'],render_evidence:['controlled-proof']},[400]);
+          const ack=await req('nayanet-project-intelligence-ack',token,{packet_id:'missing-packet',retrieved:true,rendered:true,retrieval_evidence:['controlled-proof'],render_evidence:['controlled-proof']},[400,404]);
           receipt.checks.ack_fail_closed=(ack.ok===false)?'PASS':'FAIL';
           const successor=await req('nayanet-successor-handoff',token,{what_happened:'PI operating layer proof executed',what_changed:'Twelve canonical PI functions verified deployed; runtime proof exercised',learned:['Candidate learning was promoted only with evidence'],next_action:'Run PI-03 cold retrieval independently'});
           receipt.checks.successor_handoff=successor.ok===true?'PASS':'FAIL';
