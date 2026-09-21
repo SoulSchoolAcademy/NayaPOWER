@@ -125,11 +125,29 @@
     "pi06": "VERIFIED",
     "pi07": "VERIFIED",
     "pi08": "VERIFIED",
-    "observed_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb"
+    "observed_head": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
+    "runtime_evidence_lineage_integration": {
+      "status": "DEPLOYED_NOT_END_TO_END_VERIFIED",
+      "claim_type": "RUNTIME",
+      "observed_head": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
+      "receipt_surface": "public.nayanet_execution_receipts.evidence",
+      "function_versions": {
+        "nayanet_pi_execute": 4,
+        "nayanet_learning_verify": 2,
+        "nayanet_successor_handoff": 2
+      },
+      "source_files": [
+        "supabase/functions/nayanet-pi-execute/index.ts",
+        "supabase/functions/nayanet-learning-verify/index.ts",
+        "supabase/functions/nayanet-successor-handoff/index.ts"
+      ],
+      "workflow": ".github/workflows/verify-nayanet-runtime-evidence-lineage.yml",
+      "verification_gap": "Connected GitHub read surface did not expose a resulting Actions run/check after trigger commits; no runtime lineage receipt is claimed VERIFIED until independently observed."
+    }
   },
-  "recording_commit": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "recording_commit": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
   "fresh_validation_required": true,
-  "next_recording_requires_fresh_execution": false,
+  "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
@@ -376,7 +394,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "The defined PI-01→PI-08 master proof remains complete at its observed claim scope. The current execution frontier is constitutional hardening; current repository HEAD must always be resolved live before consequential action.",
-  "current_repository_head": "80612def906c670942071ef0a35f4431cbd72ff3",
+  "current_repository_head": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -398,13 +416,17 @@
   "single_current_frontier": {
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "OPEN",
-    "source_checkpoint": "fbf6158d0556b64ec55ef033535a8438cf13f32b",
-    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
+    "source_checkpoint": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
+    "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
     "evidence_required": [
-      "runtime lineage integration",
-      "end-to-end lineage receipt"
+      "deployed runtime integration",
+      "end-to-end runtime lineage receipt",
+      "independent retrieval of final receipt",
+      "all seven lineage nodes bound",
+      "all six lineage edges present",
+      "lineage status COMPLETE"
     ],
-    "stop_condition": "Do not reopen proven PI-01→PI-08 or prior hardening contracts without new evidence.",
+    "stop_condition": "Do not advance to the causal verification frontier until the runtime lineage receipt is VERIFIED.",
     "recovery": "Use first-failure law."
   },
   "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
