@@ -24,7 +24,7 @@ def parse_time(v:str)->datetime:
     if d.tzinfo is None:raise ValueError("timestamp must include timezone")
     return d.astimezone(timezone.utc)
 def subject(e:dict[str,Any])->str:
-    return re.sub(r"\\s+"," ",str(e.get("subject") or e.get("title") or e.get("event_type") or e.get("type") or e.get("event_id","")).strip()).casefold()
+    return re.sub(r"\s+"," ",str(e.get("subject") or e.get("title") or e.get("event_type") or e.get("type") or e.get("event_id","")).strip()).casefold()
 def targets(e:dict[str,Any],key:str)->set[str]:
     r=e.get("relationships") or {};v=r.get(key,[]) if isinstance(r,dict) else []
     if isinstance(v,str):return {v}
