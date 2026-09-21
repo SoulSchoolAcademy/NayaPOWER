@@ -1,0 +1,14 @@
+{
+  "schema":"nayanet/project-intelligence/agency-retry-fixtures/v1",
+  "agency":[
+    {"id":"L0-blocks-write","granted":"L0","requested":"L1","expected":"DENY"},
+    {"id":"L2-allows-prepare","granted":"L2","requested":"L2","expected":"ALLOW"},
+    {"id":"L3-allows-reversible","granted":"L3","requested":"L2","expected":"ALLOW"},
+    {"id":"L4-blocks-L5","granted":"L4","requested":"L5","expected":"DENY"},
+    {"id":"L5-allows-delegation","granted":"L5","requested":"L5","expected":"ALLOW"}
+  ],
+  "retry":[
+    {"id":"same-input-same-hypothesis","changed":false,"expected":"DENY"},
+    {"id":"new-evidence","changed":true,"expected":"ALLOW"}
+  ]
+}
