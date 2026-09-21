@@ -10,7 +10,7 @@
       "source": "git:HEAD",
       "resolution": "LIVE_AT_EXECUTION_TIME",
       "recorded_head_is_not_authoritative": true,
-      "latest_verified_live_head": "3c7102c5adc8b464b6843c82de0ae72139c8fb69"
+      "latest_verified_live_head": "da4fd6cf34425213bda801aee3b0c48c58119289"
     },
     "state": ".naya/control-plane/STATE.json",
     "block": ".naya/control-plane/BLOCKS.json",
@@ -22,10 +22,14 @@
     "Cold-start Project Intelligence validation exists.",
     "Live Smart Note receiver verification exists in the repository verification lane.",
     "Repository-local compounding Project Intelligence proof exists.",
-    "Project Intelligence Bridge server-to-server transaction is proven at the governed receiver boundary: packet accepted, persisted, indexed, projected, acknowledged, and replayed idempotently."
+    "Project Intelligence Bridge server-to-server transaction is proven at the governed receiver boundary: packet accepted, persisted, indexed, projected, acknowledged, and replayed idempotently.",
+    "Supabase Project Intelligence operating layer version 3 is deployed with restore, retrieve, reconcile, understand, learning candidate/verify/retrieve, project, ack, successor handoff, share, supersede lineage, health, state update and compound lifecycle capabilities.",
+    "Canonical project state is persisted in public.nayanet_project_intelligence_state and bridge retrieval/render evidence is distinct from transport flags."
   ],
   "unknown": [
-    "Hub-facing retrieval/render of the bridge transaction and a genuinely cold successor retrieving that exact receipt are still open."
+    "Hub-facing retrieval/render of the bridge transaction and a genuinely cold successor retrieving that exact receipt are still open.",
+    "Hub/runtime retrieval/render of the exact bridge receipt and genuinely cold successor retrieval remain open.",
+    "Universal real-world computation savings remain unmeasured."
   ],
   "blocked": [
     "A live receiver transaction requires the authorized receiver endpoint and credential boundary."
@@ -60,11 +64,22 @@
       "receiver_event_id": "51cecc6a-0d37-4aca-80d2-a707f00b31be",
       "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
       "idempotent_replay_verified": true
-    }
+    },
+    "retrieval_rule": "retrieved/rendered require explicit evidence; indexed/projected transport flags never imply retrieval/render",
+    "operating_function": "nayanet-compound-intelligence",
+    "operating_function_version": 3
   },
   "current_next_action": {
-    "action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
-    "success_condition": "The exact packet, source_ref, receiver_event_id, receipt_id and projected intelligence are retrieved through the governed Hub/runtime path and a fresh successor continues from them."
+    "action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+    "reason": "Remove manual archaeology and make architecture carry continuity.",
+    "proof_required": [
+      "restore response",
+      "bridge receipt",
+      "retrieval evidence",
+      "render evidence",
+      "cold successor receipt",
+      "continuation outcome"
+    ]
   },
   "cold_naya_restore": [
     "Read this context.",
@@ -75,5 +90,11 @@
     "Select one authorized next action.",
     "Verify actual outcome.",
     "Record successor continuity."
-  ]
+  ],
+  "current_frontier": {
+    "active_block": "PROJECT-INTELLIGENCE-PI-01",
+    "priority": "P0",
+    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+    "success_condition": "Cold Naya restores the canonical project object, retrieves exact bridge lineage, distinguishes truth/unknown/blocked, selects one authorized action, verifies it, updates learning, and leaves an executable successor."
+  }
 }
