@@ -1,0 +1,8 @@
+{
+  "schema":"nayanet/project-intelligence/temporal-fixtures/v1",
+  "cases":[
+    {"id":"CURRENT","as_of":"2026-09-21T18:00:00Z","claims":[{"assertion":"A","valid_from":"2026-09-21T17:00:00Z","valid_until":null}],"expected":"CURRENT"},
+    {"id":"STALE","as_of":"2026-09-21T18:00:00Z","claims":[{"assertion":"A","valid_from":"2026-09-20T17:00:00Z","valid_until":"2026-09-21T17:59:59Z"}],"expected":"STALE"},
+    {"id":"CONFLICTED","as_of":"2026-09-21T18:00:00Z","claims":[{"assertion":"A","valid_from":"2026-09-21T17:00:00Z","valid_until":null},{"assertion":"B","valid_from":"2026-09-21T17:00:00Z","valid_until":null}],"expected":"CONFLICTED"}
+  ]
+}
