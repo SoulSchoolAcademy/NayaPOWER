@@ -380,5 +380,8 @@
     "stop_condition": "Fresh retrieval depends on this conversation, hidden prior answer, stale control-plane state, or cannot recover required intelligence from durable sources.",
     "recovery": "STOP → capture exact boundary → classify → repair smallest causal boundary → rerun PI-03 with new information."
   },
-  "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a"
+  "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
+  "latest_execution_head": "c4391c952cd21ea2e4c01e956a469358049158da",
+  "latest_deployment_receipt": ".naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md",
+  "latest_deployment_status": "12_CANONICAL_PI_FUNCTIONS_ACTIVE"
 }
