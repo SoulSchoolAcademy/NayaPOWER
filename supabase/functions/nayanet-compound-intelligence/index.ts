@@ -16,6 +16,9 @@ const json = (body: unknown, status = 200) =>
 const MISSION = "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.";
 const NORTH_STAR = "Maximum verified human value per unit of effort, with compounding intelligence and continuity.";
 const PROJECT = "NayaNET";
+const CANONICAL_HUB = "NAYANET/HUB/index.html";
+const GITHUB_REPO = "SoulSchoolAcademy/NayaPOWER";
+const GITHUB_REF = "main";
 
 async function auth(req: Request) {
   const authorization = req.headers.get("Authorization");
@@ -47,7 +50,9 @@ async function record(client: any, event: any, action: string, expected: string,
 }
 
 async function restore(client: any, userId: string) {
-  const [events, learning, replays, receipts, ops] = await Promise.all([
+  const [state, events, learning, replays, receipts, ops, bridge] = await Promise.all([
+    admin.from("nayanet_project_intelligence_state")
+      .select("*").eq("project_id", PROJECT).maybeSingle(),
     client.from("nayanet_cognition_events")
       .select("id,event_id,type,classification,title,content,source,status,confidence,tags,parent_event_id,source_hash,schema_version,metadata,created_at")
       .eq("user_id", userId).eq("project_id", PROJECT).order("created_at", { ascending: false }).limit(30),
@@ -62,58 +67,144 @@ async function restore(client: any, userId: string) {
       .eq("user_id", userId).eq("project_id", PROJECT).order("created_at", { ascending: false }).limit(20),
     client.from("nayanet_intelligence_operations")
       .select("id,operation,status,output,created_at")
-      .eq("user_id", userId).eq("project_id", PROJECT).order("created_at", { ascending: false }).limit(10)
+      .eq("user_id", userId).eq("project_id", PROJECT).order("created_at", { ascending: false }).limit(20),
+    admin.from("nayanet_project_intelligence_bridge")
+      .select("packet_id,project_id,source_ref,content_hash,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected,retrieved,rendered,retrieval_evidence,render_evidence,acknowledged_at,verified_at,accepted_at")
+      .eq("project_id", PROJECT).order("accepted_at", { ascending: false }).limit(10)
   ]);
-  for (const r of [events, learning, replays, receipts, ops]) if (r.error) throw r.error;
+  for (const r of [state, events, learning, replays, receipts, ops, bridge]) if (r.error) throw r.error;
 
   const current = events.data?.[0] ?? null;
   const latestLearning = learning.data?.filter((x: any) => x.status === "ACTIVE").slice(0, 10) ?? [];
   const latestReplay = replays.data?.[0] ?? null;
   const latestReceipt = receipts.data?.[0] ?? null;
+  const latestBridge = bridge.data?.[0] ?? null;
+  const canonicalState = state.data ?? null;
+
+  const proven = [
+    ...(Array.isArray(canonicalState?.proven) ? canonicalState.proven : []),
+    ...(latestBridge ? ["Project Intelligence Bridge transaction exists at receiver scope."] : []),
+    ...(latestBridge?.persisted && latestBridge?.indexed && latestBridge?.projected ? ["Bridge persistence/index/projection are evidenced."] : []),
+    ...(latestBridge?.retrieved && latestBridge?.rendered ? ["Bridge retrieval/render are evidenced for the latest transaction."] : [])
+  ];
+
+  const unknown = [
+    ...(Array.isArray(canonicalState?.unknown) ? canonicalState.unknown : []),
+    ...(!latestBridge?.retrieved ? ["Direct receiver retrieval of the latest bridge object is not evidenced."] : []),
+    ...(!latestBridge?.rendered ? ["Direct receiver render of the latest bridge object is not evidenced."] : [])
+  ];
+
+  const blocked = Array.isArray(canonicalState?.blocked) ? canonicalState.blocked : [];
+  const protectedRules = Array.isArray(canonicalState?.protected) ? canonicalState.protected : [
+    "UNKNOWN is not VERIFIED",
+    "BLOCKED is not PASS",
+    "Truth over agreement",
+    "Private by default • Shared by choice • Collective by consent • Public by decision",
+    "Capability does not create authority"
+  ];
 
   return {
-    schema: "NAYANET_PROJECT_INTELLIGENCE_RESTORE_V1",
+    schema: "NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2",
     restored_at: new Date().toISOString(),
-    project: PROJECT,
-    mission: MISSION,
-    vision: "A persistent, governed, interoperable intelligence infrastructure in which intelligence compounds across time, experience, decisions, learning and Nayas.",
-    north_star: NORTH_STAR,
+    source_authority: {
+      repository: GITHUB_REPO,
+      ref: GITHUB_REF,
+      current_source_resolution: "Resolve live GitHub main at execution time; recorded HEAD is not authoritative.",
+      control_plane: [".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".naya/control-plane/PROOF.json"],
+      current_frontier: ".naya/project-intelligence/CURRENT-FRONTIER.md",
+      team_naya: ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md"
+    },
+
+    "1_WHO_ARE_WE": "We are Project NayaNET — Project Intelligence itself. Shawn is the human director. Nayas are operating instances. NayaPOWER is the governed operating substrate.",
+    "2_WHAT_ARE_WE_BUILDING": "A persistent, governed, interoperable intelligence network that captures experience, preserves evidence, retrieves relevant intelligence, applies authorized action, verifies outcomes, learns, compounds, and hands off to the next Naya.",
+    "3_WHY_ARE_WE_BUILDING_IT": "So valuable human intelligence does not disappear when a conversation or Naya instance ends, and so humans do not have to repeatedly reconstruct context or manage AI project-by-project.",
+    "4_WHAT_DOES_SUCCESS_MEAN": "A cold Naya restores the project, distinguishes truth from uncertainty, knows authority, chooses one authorized next action, acts, verifies, learns, updates durable intelligence, leaves a successor context, and another cold Naya continues without Shawn reconstructing the project.",
+    "5_WHAT_IS_TRUE_RIGHT_NOW": {
+      project: PROJECT,
+      canonical_hub: CANONICAL_HUB,
+      active_block: "PROJECT-INTELLIGENCE-PI-01",
+      state: canonicalState?.status ?? "UNKNOWN",
+      current_next_action: canonicalState?.current_next_action ?? {"action":"Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey."},
+      latest_event: current,
+      latest_bridge: latestBridge
+    },
+    "6_WHAT_HAS_ALREADY_BEEN_PROVEN": proven,
+    "7_WHAT_IS_UNKNOWN": unknown,
+    "8_WHAT_AUTHORITY_EXISTS": {
+      human_director: "Shawn Vibert",
+      rule: "Capability does not create authority.",
+      runtime_rule: "Authenticated user authority is required for user-scoped operations; system-wide state and receiver acknowledgements must not be treated as implicit permission to change human authority.",
+      secrets: "Secrets and tokens are never exposed in conversation."
+    },
+    "9_WHAT_HAPPENED_PREVIOUSLY": {
+      recent_events: events.data ?? [],
+      recent_receipts: receipts.data ?? [],
+      recent_operations: ops.data ?? [],
+      recent_bridge: bridge.data ?? []
+    },
+    "10_WHAT_DID_WE_LEARN": {
+      active_learning: latestLearning,
+      durable_lessons: [
+        "Evidence outranks assertion.",
+        "IMPLEMENTED is not VERIFIED.",
+        "Transport/persistence/index/projection do not imply retrieval/render.",
+        "Repair the smallest causal boundary and rerun the same proof.",
+        "The system must not depend on a Naya remembering to remember."
+      ]
+    },
+    "11_WHAT_SHOULD_HAPPEN_NEXT": canonicalState?.current_next_action ?? {
+      action: "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+      reason: "Remove manual archaeology and make architecture carry continuity."
+    },
+    "12_HOW_DO_I_PROVE_IT": {
+      chain: ["INTENT","IDENTITY","RECONSTRUCTION","COLD_RESTORE","RETRIEVAL","CURRENT_STATE","ONE_NEXT_ACTION","AUTHORITY","EXECUTION","VERIFICATION","LEARNING","UPDATE","COLD_SUCCESSOR"],
+      rule: "Stop at the first deterministic failure, capture exact evidence, repair only that causal boundary, rerun the same proof, and record the result."
+    },
+    "13_WHERE_DO_I_RECORD_IT": {
+      canonical_intelligence: ".naya/",
+      state: ".naya/control-plane/STATE.json",
+      block: ".naya/control-plane/BLOCKS.json",
+      proof: ".naya/control-plane/PROOF.json",
+      frontier: ".naya/project-intelligence/CURRENT-FRONTIER.md",
+      team_naya: "NAYA/ACTIVITY/ and .naya/TEAM-NAYA/",
+      runtime_operations: "public.nayanet_intelligence_operations",
+      bridge_proof: "public.nayanet_project_intelligence_bridge"
+    },
+    "14_HOW_DOES_THE_NEXT_NAYA_CONTINUE": "Read this restore object and its cited canonical sources, resolve live main, verify the latest evidence, identify the first incomplete boundary, execute only the authorized next action, verify it, record learning and successor state, then leave the next Naya a better torch.",
     YOU_ARE_HERE: {
-      latest_event_id: current?.event_id ?? null,
-      latest_event_at: current?.created_at ?? null,
-      latest_receipt_id: latestReceipt?.id ?? null,
-      latest_learning_id: latestLearning[0]?.id ?? null
+      project: PROJECT,
+      mission: MISSION,
+      vision: "A persistent, governed, interoperable intelligence infrastructure in which intelligence compounds across time, experience, decisions, learning and Nayas.",
+      north_star: NORTH_STAR,
+      active_block: "PROJECT-INTELLIGENCE-PI-01"
     },
-    CURRENT_STATE: current ? {
-      title: current.title, type: current.type, classification: current.classification,
-      status: current.status, confidence: current.confidence, content: current.content,
-      source: current.source, source_hash: current.source_hash
-    } : null,
-    PROVEN: {
-      active_learning_count: latestLearning.length,
-      latest_verified_receipt: latestReceipt?.status === "SUCCESS" ? latestReceipt.id : null,
-      latest_dream_replay: latestReplay?.id ?? null
+    MISSION,
+    VISION: "A persistent, governed, interoperable intelligence infrastructure in which intelligence compounds across time, experience, decisions, learning and Nayas.",
+    NORTH_STAR,
+    CURRENT_PROJECT: PROJECT,
+    CURRENT_STATE: canonicalState?.current_state ?? null,
+    PROVEN: proven,
+    UNKNOWN: unknown,
+    BLOCKED: blocked,
+    PROTECTED: protectedRules,
+    CURRENT_HUB: {
+      type: "nayanet_intelligent_hub",
+      canonical_source: CANONICAL_HUB,
+      rule: "One Hub. Internal runtime code is implementation machinery behind this source."
     },
-    UNKNOWN: [
-      "Current human-facing runtime proof must remain tied to current source scope.",
-      "Claims not supported by durable evidence remain UNKNOWN."
-    ],
-    BLOCKED: [],
-    PROTECTED: [
-      "UNKNOWN is not VERIFIED",
-      "BLOCKED is not PASS",
-      "Truth over agreement",
-      "Private by default • Shared by choice • Collective by consent • Public by decision",
-      "Capability does not create authority"
-    ],
-    CURRENT_NEXT_ACTION: {
-      action: "RESTORE → RETRIEVE → DECIDE → ACT → VERIFY → LEARN → HANDOFF",
-      reason: "The system must prepare the next Naya instead of requiring Shawn to reconstruct context."
+    CURRENT_BRIDGE: {
+      contract: ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
+      target: "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
+      latest: latestBridge
     },
-    RECENT_LEARNING: latestLearning,
-    RECENT_DREAM: latestReplay,
-    RECENT_RECEIPT: latestReceipt,
-    RECENT_OPERATIONS: ops.data ?? [],
+    CURRENT_LEARNING: latestLearning,
+    RECENT_OUTCOMES: receipts.data ?? [],
+    ACTIVE_DECISIONS: canonicalState?.current_next_action ?? null,
+    CURRENT_NEXT_ACTION: canonicalState?.current_next_action ?? null,
+    WHY: "Remove manual archaeology and make architecture carry continuity.",
+    SUCCESS_CONDITION: canonicalState?.current_next_action?.success_condition ?? "Cold Naya restores, retrieves, acts, verifies, learns and hands off.",
+    EVIDENCE_REQUIRED: ["restore response","exact bridge lineage","retrieval evidence","render evidence","execution/verification receipt","cold successor receipt","continuation outcome"],
+    HANDOFF_REQUIREMENT: "Leave what happened, what changed, what was learned, unknowns, blocks, protections, next action, why, and evidence required.",
     successor_requirement: "Leave a durable successor context containing what happened, what changed, what was learned, what remains unknown, what is blocked, what is protected, the next action, why, and the evidence required."
   };
 }
@@ -153,6 +244,90 @@ async function reconcile(client: any, userId: string) {
   };
 }
 
+async function learningRetrieve(client: any, userId: string, body: any) {
+  const q = String(body.query ?? "").trim();
+  const limit = Math.min(Math.max(Number(body.limit ?? 20), 1), 50);
+  let query = client.from("learning_evidence")
+    .select("id,target_id,level,status,claim,observed_value,verification_method,source_event_id,created_at")
+    .eq("member_id", userId).eq("status", "ACTIVE").order("created_at",{ascending:false}).limit(limit);
+  if (q) query = query.or("claim.ilike.%"+q+"%,target_id.ilike.%"+q+"%,verification_method.ilike.%"+q+"%");
+  const {data,error}=await query;
+  if(error) throw error;
+  return {schema:"NAYANET_LEARNING_RETRIEVE_V1",query:q,count:data?.length??0,items:data??[]};
+}
+
+async function projectIntelligence(client: any, userId: string, body: any) {
+  const sourceId=String(body.source_event_id??"").trim();
+  if(!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
+  const {data:event,error:eventError}=await client.from("nayanet_cognition_events")
+    .select("id,event_id,title,type,status,created_at,metadata").eq("id",sourceId).eq("user_id",userId).eq("project_id",PROJECT).single();
+  if(eventError||!event) throw new Error("SOURCE_EVENT_NOT_FOUND");
+  const {data:existing,error:existingError}=await client.from("nayanet_intelligence_index")
+    .select("id,revision,updated_at").eq("owner_id",userId).eq("source_table","nayanet_cognition_events").eq("source_id",sourceId).maybeSingle();
+  if(existingError) throw existingError;
+  let row:any=existing;
+  if(row){
+    const {data,error}=await client.from("nayanet_intelligence_index").update({
+      title:event.title,event_time:event.created_at,status:event.status,project_id:PROJECT,
+      revision:Number(row.revision??0)+1,metadata:{...(event.metadata??{}),projection_source:event.event_id,projected_at:new Date().toISOString()}
+    }).eq("id",row.id).select("*").single();
+    if(error) throw error;
+    row=data;
+  } else {
+    const {data,error}=await client.from("nayanet_intelligence_index").insert({
+      owner_id:userId,source_table:"nayanet_cognition_events",source_id:sourceId,object_type:event.type,
+      title:event.title,event_time:event.created_at,status:event.status,project_id:PROJECT,revision:1,
+      metadata:{...(event.metadata??{}),projection_source:event.event_id,projected_at:new Date().toISOString()}
+    }).select("*").single();
+    if(error) throw error;
+    row=data;
+  }
+  return {schema:"NAYANET_PROJECT_INTELLIGENCE_PROJECT_V1",status:"PROJECTED",index:row,source_event:event};
+}
+
+async function ackBridge(client: any, userId: string, body: any) {
+  const packetId=String(body.packet_id??"").trim();
+  if(!packetId) throw new Error("PACKET_ID_REQUIRED");
+  const retrievalEvidence=Array.isArray(body.retrieval_evidence)?body.retrieval_evidence:[];
+  const renderEvidence=Array.isArray(body.render_evidence)?body.render_evidence:[];
+  const retrieved=body.retrieved===true;
+  const rendered=body.rendered===true;
+  if(!retrieved || !rendered || retrievalEvidence.length===0 || renderEvidence.length===0) {
+    throw new Error("ACK_REQUIRES_RETRIEVED_RENDERED_AND_EVIDENCE");
+  }
+  const existing=await admin.from("nayanet_project_intelligence_bridge").select("*").eq("packet_id",packetId).single();
+  if(existing.error||!existing.data) throw new Error("BRIDGE_PACKET_NOT_FOUND");
+  const now=new Date().toISOString();
+  const {data,error}=await admin.from("nayanet_project_intelligence_bridge").update({
+    retrieved:true,rendered:true,retrieval_evidence:retrievalEvidence,render_evidence:renderEvidence,
+    acknowledged_at:now,verified_at:now
+  }).eq("packet_id",packetId).select("*").single();
+  if(error) throw error;
+  return {
+    schema:"NAYANET_PROJECT_INTELLIGENCE_ACK_V1",
+    packet_id:packetId,source_ref:existing.data.source_ref,content_hash:existing.data.content_hash,
+    receiver_transaction_id:existing.data.receiver_transaction_id,receiver_event_id:existing.data.receiver_event_id,
+    receipt_id:existing.data.receipt_id,persisted:existing.data.persisted,indexed:existing.data.indexed,
+    projected:existing.data.projected,retrieved:true,rendered:true,acknowledged_at:now,verified_at:now,
+    actor:userId,record:data
+  };
+}
+
+async function stateUpdate(client: any, userId: string, body: any) {
+  const {data:member,error:memberError}=await client.from("members").select("id,display_name").eq("id",userId).maybeSingle();
+  if(memberError) throw memberError;
+  if(!member) throw new Error("MEMBER_NOT_FOUND");
+  const {data:current,error:readError}=await admin.from("nayanet_project_intelligence_state").select("*").eq("project_id",PROJECT).single();
+  if(readError) throw readError;
+  const allowed=["current_state","current_next_action","unknown","blocked","protected","evidence_refs"];
+  const patch:any={updated_at:new Date().toISOString(),version:Number(current.version??1)+1};
+  for(const key of allowed) if(Object.prototype.hasOwnProperty.call(body,key)) patch[key]=body[key];
+  if(Object.keys(patch).length===2) throw new Error("STATE_PATCH_REQUIRED");
+  const {data,error}=await admin.from("nayanet_project_intelligence_state").update(patch).eq("project_id",PROJECT).select("*").single();
+  if(error) throw error;
+  return {schema:"NAYANET_PROJECT_INTELLIGENCE_STATE_UPDATE_V1",status:"UPDATED",actor:userId,operator:member.display_name,state:data};
+}
+
 async function understand(client: any, userId: string, body: any) {
   const content = String(body.content ?? "").trim();
   if (!content) throw new Error("CONTENT_REQUIRED");
@@ -176,6 +351,9 @@ async function learningCandidate(client: any, userId: string, body: any) {
   const target = String(body.target_id ?? "").trim();
   const sourceEvent = body.source_event_id ? String(body.source_event_id) : null;
   if (!claim || !target) throw new Error("CLAIM_AND_TARGET_REQUIRED");
+  if (!sourceEvent) throw new Error("SOURCE_EVENT_ID_REQUIRED_FOR_CANDIDATE");
+  const { data: source } = await client.from("nayanet_cognition_events").select("id,event_id").eq("event_id",sourceEvent).eq("user_id",userId).eq("project_id",PROJECT).maybeSingle();
+  if (!source) throw new Error("SOURCE_EVENT_NOT_FOUND");
   const row = {
     member_id: userId, target_id: target, level: String(body.level ?? "E1_UNDERSTANDS"),
     provenance: String(body.provenance ?? "nayanet-compound-intelligence"),
@@ -192,7 +370,9 @@ async function learningCandidate(client: any, userId: string, body: any) {
 async function learningVerify(client: any, userId: string, body: any) {
   const id = String(body.evidence_id ?? "").trim();
   const method = String(body.verification_method ?? "").trim();
+  const evidenceRefs = Array.isArray(body.evidence_refs) ? body.evidence_refs : [];
   if (!id || !method) throw new Error("EVIDENCE_ID_AND_VERIFICATION_METHOD_REQUIRED");
+  if (evidenceRefs.length === 0 && !body.observed_value) throw new Error("VERIFICATION_EVIDENCE_REQUIRED");
   const { data: evidence, error: readError } = await client.from("learning_evidence").select("*").eq("id",id).eq("member_id",userId).single();
   if (readError || !evidence) throw new Error("LEARNING_EVIDENCE_NOT_FOUND");
   if (evidence.status !== "CANDIDATE" && evidence.status !== "ACTIVE") throw new Error("LEARNING_EVIDENCE_NOT_PROMOTABLE");
@@ -284,6 +464,10 @@ Deno.serve(async (req) => {
       case "understand": result=await understand(client,user.id,body); break;
       case "learning_candidate": result=await learningCandidate(client,user.id,body); break;
       case "learning_verify": result=await learningVerify(client,user.id,body); break;
+      case "learning_retrieve": result=await learningRetrieve(client,user.id,body); break;
+      case "project": result=await projectIntelligence(client,user.id,body); break;
+      case "ack": result=await ackBridge(client,user.id,body); break;
+      case "state_update": result=await stateUpdate(client,user.id,body); break;
       case "successor_handoff": result=await successor(client,user.id,body); break;
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
