@@ -243,7 +243,9 @@ jobs:
           const publishedReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());
           const publicationReceipt=publishedReceipts.find(x=>x.source==='nayanet-hub.smart-share.publication'&&x.metadata?.publication_id===publicationId);
           const receiptEventId=String(publicationReceipt?.event_id||'');
+          const receiptId=String(publicationReceipt?.receipt_id||'');
           if(!receiptEventId) throw Error('SMART_SHARE_RECEIPT_EVENT_ID_NOT_PROVEN:'+publicationId);
+          if(!receiptId) throw Error('SMART_SHARE_RECEIPT_ID_NOT_PROVEN:'+publicationId);
 
           const authorizationEvent=await ap.evaluate(({sourceId,userId})=>window.NayaAssistantRuntime.retrieve().then(rows=>(rows||[]).find(x=>x.type==='smart_share_authorization'&&x.parent_event_id===sourceId&&x.user_id===userId)),{sourceId:sourceEventId,userId:A.user.id});
           const authorizationEventId=String(authorizationEvent?.event_id||'');
@@ -267,9 +269,10 @@ jobs:
           const personalB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50}));
           if((personalB.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SMART_SHARE_PRIVATE_SOURCE_LEAKED_TO_RECEIVER_PERSONAL_FEED');
           const replay=await ap.evaluate(id=>window.NayaAssistantRuntime.publishSmartFeed(id),sourceEventId);
-          console.log('SMART_SHARE_REPLAY_TRACE='+JSON.stringify({publicationId,receiptEventId,replayPublicationId:String(replay?.publication?.id||''),replayReceiptEventId:String(replay?.receipt?.event_id||''),replayReceiptId:String(replay?.receipt?.id||''),replayReceipt:replay?.receipt||null}));
+          console.log('SMART_SHARE_REPLAY_TRACE='+JSON.stringify({publicationId,receiptEventId,receiptId,replayPublicationId:String(replay?.publication?.id||''),replayReceiptEventId:String(replay?.receipt?.event?.event_id||''),replayReceiptId:String(replay?.receipt?.receipt?.id||''),replayReceipt:replay?.receipt||null}));
           if(String(replay?.publication?.id||'')!==publicationId) throw Error('SMART_SHARE_REPLAY_PUBLICATION_ID_CHANGED');
-          if(String(replay?.receipt?.event_id||'')!==receiptEventId) throw Error('SMART_SHARE_REPLAY_RECEIPT_ID_CHANGED');
+          if(String(replay?.receipt?.event?.event_id||'')!==receiptEventId) throw Error('SMART_SHARE_REPLAY_RECEIPT_EVENT_ID_CHANGED');
+          if(String(replay?.receipt?.receipt?.id||'')!==receiptId) throw Error('SMART_SHARE_REPLAY_RECEIPT_ID_CHANGED');
           const Cctx=await contextFor(C,'C'); const cp=Cctx.page;
           const collectiveC=await cp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if(!(collectiveC.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_COLLECTIVE_THIRD_PARTY_RETRIEVAL_FAILED');
