@@ -269,6 +269,35 @@ jobs:
                 const freshRetrieve=await compound(fp,freshSession,'retrieve',{query:direct.data.title,limit:20});
                 if(!freshRetrieve.items?.some(x=>x.event_id===receiverEventId)) throw new Error('COLD_SUCCESSOR_RETRIEVAL_FAILED');
                 mark('COLD_SUCCESSOR','PASS',{packet_id:bridge.packet_id,event_id:receiverEventId});
+
+      const authority=await compound(fp,freshSession,'issue_pi_authority',{
+        source_event_id:receiverEventId,
+        target:receiverEventId
+      });
+      if(!authority.grant?.grant_id) throw new Error('AUTHORITY_GRANT_FAILED');
+      mark('AUTHORITY','PASS',{grant_id:authority.grant.grant_id,action:'pi.continue',target:receiverEventId});
+
+      const continuation=await compound(fp,freshSession,'continue_authorized',{
+        authority_grant_id:authority.grant.grant_id,
+        parent_event_id:receiverEventId,
+        source_head:process.env.GITHUB_SHA,
+        outcome:'Fresh successor executed the explicitly authorized Project Intelligence continuation.'
+      });
+      if(continuation.status!=='CONTINUATION_VERIFIED'||!continuation.continuation_event?.event_id||!continuation.receipt?.id) throw new Error('AUTHORIZED_CONTINUATION_FAILED');
+      const continuationEventId=continuation.continuation_event.event_id;
+      mark('CONTINUATION','PASS',{continuation_event_id:continuationEventId,receipt_id:continuation.receipt.id});
+
+      const successorHandoff=await compound(fp,freshSession,'successor_handoff',{
+        parent_event_id:continuationEventId,
+        what_happened:'Fresh successor restored the project, retrieved exact bridge lineage, and executed the explicitly authorized continuation.',
+        what_changed:'A new verified continuation event and receipt were created.',
+        learned:['Retrieval alone is insufficient; consequential continuation requires explicit authority.'],
+        next_action:'Continue from the new verified continuation event.',
+        why:'Preserve the verified successor torch.',
+        evidence_required:['fresh continuation retrieval','successor receipt']
+      });
+      if(!successorHandoff.successor?.event_id||!successorHandoff.receipt?.id) throw new Error('SUCCESSOR_RECEIPT_FAILED');
+      mark('SUCCESSOR_RECEIPT','PASS',{successor_event_id:successorHandoff.successor.event_id,receipt_id:successorHandoff.receipt.id,parent_event_id:continuationEventId});
               }finally{await fresh.close()}
 
               const proof={schema:'NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1',status:'PROVEN',run_id:run,source_head:process.env.GITHUB_SHA,packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:receiverEventId,receipt_id:ack.receipt_id,successor_event_id:successor.successor.event_id,trace};
