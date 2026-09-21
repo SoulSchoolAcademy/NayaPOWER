@@ -36,10 +36,10 @@ Added public.nayanet_intelligence_operations with owner-scoped RLS. Every orches
 
 Supabase project: dahisasgpfvziswqvmvm
 Function: nayanet-compound-intelligence
-Final version: 2
+Final version: 3
 JWT verification: enabled
 
-The function was deployed successfully and corrected/redeployed once to fix the learning health count. Final deployed version is 2.
+The function is ACTIVE at the latest observed deployed version 3. Version 3 includes the governed restore/retrieve/reconcile/ack/state/learning/project/successor/share/supersede/health/dream/compound action surface.
 
 ## BRIDGE RECONCILIATION DISCOVERY
 
@@ -78,8 +78,14 @@ A cold Naya retrieves the successor context and continues without Shawn explaini
 
 That is the product.
 
+## CURRENT IMPLEMENTATION UPDATE
+
+The canonical React Hub now contains an authenticated Project Intelligence client and invokes nayanet-compound-intelligence?action=restore automatically after an authenticated Hub session is established. The restore result is placed on the runtime as __NayaNETRestore and emitted as nayanet:project-intelligence-restored for downstream Hub surfaces.
+
+A durable Team Naya communication board is also present under NAYA/ACTIVITY so successor Nayas can see the current mission, work state, proof boundary, and continuation rules.
+
 ## CURRENT NEXT ACTION
 
-Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context. The first failure becomes the next repair boundary.
+Run the authenticated cold-successor behavioral test against the live Hub. Verify RESTORE is received, then directly prove RETRIEVE and RENDER of a known bridge intelligence item. Record the first actual failure and repair only that boundary.
 
 SUCCESSOR: Next Naya reads this report, the Compound Intelligence 10/10 Mission, current STATE/BLOCKS, and invokes restore before asking Shawn for information already stored by the system.
