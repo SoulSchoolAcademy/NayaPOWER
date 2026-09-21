@@ -2,10 +2,10 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "COLD-NAYA-TAKEOVER-PROOF",
+    "id": "PROJECT-INTELLIGENCE-PI-01",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Make GitHub durable Project Intelligence and the NayaNET Intelligent Hub operate as one governed continuity loop so a cold Naya can restore, act, verify, learn, and hand off without Shawn reconstructing the project.",
+    "intent": "Make the architecture itself carry the human's project intelligence so Naya restores, understands, retrieves, decides, acts, verifies, learns, compounds, and hands off without Shawn repeatedly reconstructing the project.",
     "protected": [
       "canonical NayaPOWER governance",
       "canonical Project Intelligence bridge",
@@ -26,7 +26,16 @@
       "The Project Intelligence Bridge packet is built from live main, preserves source/object identity and provenance, and is validated before transport.",
       "The receiver readiness sequence is proven by one real transaction: RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE.",
       "A fresh successor Naya retrieves the exact resulting intelligence and receipt lineage without Shawn context transfer.",
-      "The transport boundary must be distinguished from retrieval/render and cold-successor proof; exact source scope remains attached to every proof."
+      "The transport boundary must be distinguished from retrieval/render and cold-successor proof; exact source scope remains attached to every proof.",
+      "Supabase canonical Project Intelligence state exists and exposes exactly one current next action.",
+      "Restore returns mission, vision, north star, current state, proven, unknown, blocked, protected, relevant learning and bridge status.",
+      "Runtime reconciliation distinguishes transport/index/projection from actual retrieval/render evidence.",
+      "Project Intelligence projection writes real index evidence rather than setting a boolean without projection.",
+      "Learning candidates are distinct from verified reusable learning.",
+      "Supersession creates explicit lineage rather than leaving contradictory intelligence as peers.",
+      "Bridge acknowledgement records explicit retrieval/render evidence and verification.",
+      "Health reports missing index/projection/retrieval/render gaps.",
+      "Computation accounting fields exist for model/provider/tokens/tools/latency/human time/avoided computation/verified value."
     ],
     "evidence": [
       "SUPERBRAIN/AI-BOOT/START-HERE.md",
@@ -45,7 +54,7 @@
       ".github/workflows/verify-project-intelligence-bridge.yml"
     ],
     "target_state": "COLD_NAYA_CAN_RESTORE_UNDERSTAND_EXECUTE_VERIFY_LEARN_HANDOFF_AND_CROSS_PROJECT_INTELLIGENCE_BOUNDARY",
-    "next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
+    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
     "next_actions": [
       "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
     ],
@@ -79,5 +88,11 @@
     "no_dead_end_handoff": true,
     "no_orphan_execution": true,
     "cold_naya_state_reconstruction_by_human": false
+  },
+  "current_frontier": {
+    "active_block": "PROJECT-INTELLIGENCE-PI-01",
+    "priority": "P0",
+    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+    "completion": "Evidence-backed cold successor continuation; otherwise explicitly BLOCKED/FAILED/UNKNOWN."
   }
 }
