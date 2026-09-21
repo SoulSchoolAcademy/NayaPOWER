@@ -27,7 +27,7 @@ def packet():
         prov.append({"path":rel,"sha256":d,"bytes":len(raw)})
         intel.append({"object_id":"github:"+rel,"operation":"UPSERT","source_path":rel,"content_sha256":d,"content":raw.decode("utf-8")})
     reconstruction=pir.build_current("NayaNET")
-    owner_id=os.environ.get("NAYANET_OWNER_ID","").strip()
+    owner_id=os.environ.get("NAYANET_OWNER_ID","").strip()\n    if not owner_id and Path(".nayanet-owner-id").exists(): owner_id=Path(".nayanet-owner-id").read_text(encoding="utf-8").strip()
     if not owner_id: raise RuntimeError("NAYANET_OWNER_ID_REQUIRED_FOR_PRIVATE_PROJECT_INTELLIGENCE")
     p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","owner_id":owner_id,"sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
     canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
