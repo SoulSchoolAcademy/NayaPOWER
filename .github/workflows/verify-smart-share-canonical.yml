@@ -236,8 +236,7 @@ jobs:
           try{await ap.screenshot({path:process.env.RUNNER_TEMP+'/smart-share-browser-diagnostic.png',fullPage:true,timeout:5000});console.log('SMART_SHARE_BROWSER_SCREENSHOT=PASS')}catch(e){console.log('SMART_SHARE_BROWSER_SCREENSHOT=UNAVAILABLE:'+String(e?.message||e))}
 
           fs.writeFileSync(process.env.RUNNER_TEMP+'/smart-share-governed-proof.json',JSON.stringify({project,runtime,proof:'NAYANET_SMART_SHARE_BROWSER_BINDING_DIAGNOSTIC=PASS',checks:{share_button_exists:beforeClick.exists?'PASS':'FAIL',nayaSmartShareBound:beforeClick.bound?'PASS':'FAIL',click_reached_bound_handler:afterClick.handlerInvoked>0?'PASS':'FAIL'},beforeClick,afterClick},null,2));
-          await Actx.context.close(); await browser.close();
-          if(false){
+          if(true){
           const publicationId=String(await shareButton.getAttribute('data-publication-id')||'');
           if(!publicationId) throw Error('SMART_SHARE_PUBLICATION_ID_NOT_PROVEN');
           const publishedReceipts=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve());
