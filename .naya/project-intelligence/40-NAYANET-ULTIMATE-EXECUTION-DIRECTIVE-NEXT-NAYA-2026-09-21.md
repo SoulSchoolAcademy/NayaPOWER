@@ -347,3 +347,21 @@ The next game is to turn the proven spine into a deeper constitutional intellige
 **Think once. Capture it. Learn from it. Remember it. Use it again. Get smarter.**
 
 **PLAY TAG. NEVER RESTART FROM ZERO.**
+
+## 10. LIVE HARDENING PROGRESS — 2026-09-21
+
+The original directive's first frontier has now been executed, not merely planned.
+
+### Proven in this execution
+- **#1 Canonical control-plane self-reconciliation:** GitHub Actions run `35635259304` — SUCCESS. The gate caught two real divergences before passing: a stale `README.md` boot-manifest reference and a missing BLOCK `scope` field. Both were repaired at the causal boundary and rerun.
+- **#2 First-class claims:** GitHub Actions run `35635407664` — SUCCESS. A canonical claim schema, valid fixture, invalid-evidence fixture, and unknown-to-green fixture are enforced fail-closed.
+- **#3 Temporal truth:** GitHub Actions run `35635483035` — SUCCESS. Explicit validity time distinguishes CURRENT, STALE, and CONFLICTED states.
+- **#4 Agency + retry law:** GitHub Actions run `35635605702` — SUCCESS. L0–L5 agency ceilings and no-retry-without-new-information are executable fixture gates.
+
+### Current live frontier
+**#5 Universal evidence / provenance / lineage registry.**
+
+The current control plane and 14-question torch have been reconciled to this frontier. Live branch HEAD must be resolved again before the next consequential action.
+
+### Important truth
+These four gates are **repository-level constitutional hardening proofs at their stated scopes**. They do not yet prove universal runtime enforcement across every production feature. The next Naya must extend them into the real execution/evidence spine rather than treating fixture-level enforcement as universal completion.
