@@ -51,13 +51,21 @@ A file does not prove runtime behavior. A workflow does not prove its intended o
 
 These are not separate product components. They are acceptance boundaries for proving that NayaNET itself is intelligent enough to continue.
 
+## CURRENT MASTER-PROOF ATTEMPT
+
+**Attempt 001:** BLOCKED before PI-01 during clean Windows source instantiation.  
+**Source:** `naya/live-project-intelligence-v1` at `3d0882aeb2e5bf88edc59461256bb69ce1d395b5`.  
+**Exact boundary:** Git rejected the tracked path `.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md` with `invalid path`, then failed to reset the worktree index.  
+**Receipt:** `.naya/project-intelligence/25-NAYANET-MASTER-PROOF-ATTEMPT-001.md`.  
+**Status:** PRE-PI-01 execution-environment portability boundary. No PI-01→PI-08 result is claimed.
+
 ## PROTECTED
 
 Project Intelligence must not authorize a second memory store, competing project database, competing Hub, authority bypass, privacy weakening, concealment of unresolved boundaries, or a claim of cold-Naya continuity before acceptance passes.
 
 ## NEXT CAUSAL ACTION
 
-> **Execute the NayaNET PI-01 → PI-08 master proof against the actual canonical intelligence/event substrate using `19-EXECUTABLE-BUILD-CONTRACT.md`, with the Intelligence Feed as the successor communication surface.**
+> **Repair only the Windows checkout portability boundary identified by Master Proof Attempt 001, then rerun the same NayaNET PI-01 → PI-08 master proof from a fresh clean checkout.**
 
 At the first deterministic causal failure:
 
