@@ -38,13 +38,13 @@
 **VERIFIED HISTORY.** Human Surface Acceptance run `35617188745`, job `106390807147`, failed at the `NAME_FIRST_ESTABLISH` boundary after Playwright/Chromium setup succeeded.
 
 ## 10. What caused it?
-**CAUSALLY IDENTIFIED.** The browser could not observe `window.NayaNETNameFirstAuth` because the expected `/NayaNET/name-first-auth-adapter.js` runtime asset was not reliably present through the deployed source path.
+**FIRST CAUSE REPAIRED; CURRENT CAUSE UNKNOWN.** The original source/runtime divergence was real: the nested adapter URL returned the SPA HTML fallback instead of JavaScript. That boundary was repaired by serving the same canonical adapter source at `/name-first-auth-adapter.js`. The live root asset is now HTTP 200 `text/javascript` and syntax-valid, yet the GitHub Human Surface Acceptance runner still times out waiting for `window.NayaNETNameFirstAuth`. The current browser-context cause is therefore not yet proven.
 
 ## 11. Was it repaired?
-**REPAIRED / VERIFICATION PENDING FOR THAT SPECIFIC POST-REPAIR RUN.** Commit `d29181b05dcf584977ab191cbafcf953db729d62` explicitly restored the tracked adapter source and added a source-sync checkpoint to trigger the canonical Cloudflare release lane.
+**YES — THE ORIGINAL ASSET BOUNDARY IS REPAIRED; THE CURRENT BROWSER DIVERGENCE IS OPEN.** Commit `d29181b05dcf584977ab191cbafcf953db729d62` restored the canonical adapter source. Subsequent repairs moved the runtime asset to a served root path, added propagation polling, and versioned the browser asset URL. Release run `35621512968` passed source parity and browser baseline.
 
 ## 12. Did the repair change the causal boundary?
-**YES — SOURCE/PACKAGING PARITY WAS THE TARGET.** The repair did not weaken the browser acceptance or identity contract. It changed the exact source-to-release boundary implicated by the failure. Fresh release and browser evidence are still required before declaring the boundary closed.
+**YES.** The first repair moved the failure from a missing/incorrect deployed asset boundary to a narrower GitHub-runner browser observation boundary. The acceptance contract was preserved. The current unresolved boundary is `window.NayaNETNameFirstAuth` visibility/execution in the acceptance browser context.
 
 ## 13. What is the current next action?
 **ONE ACTIVE ACTION / P0.** Run the canonical consolidated Project Intelligence acceptance on freshly reconciled main state; stop at the first deterministic boundary, repair only that boundary, rerun with new information, verify, record learning, and continue.
@@ -74,7 +74,7 @@
 **PRODUCTION-PROVEN AT RECORDED SOURCE SCOPE.** The canonical Assistant/Cloudflare Hub release lane has recorded source/runtime parity and authenticated runtime behavior, including persistent/retrievable intelligence and governed actions. The fresh post-`d29181` name-first acceptance still needs current evidence.
 
 ## 22. Is the deployed runtime the same source as GitHub?
-**SOURCE-SCOPED: VERIFIED FOR RECORDED DEPLOYMENTS. CURRENT POST-REPAIR: UNKNOWN UNTIL FRESH RELEASE EVIDENCE.** The release lane records exact deployed source identity and parity for prior deployments. The `d29181` repair deliberately requires a new release/browser observation.
+**SOURCE-SCOPED: VERIFIED CURRENTLY.** Release run `35621512968` passed exact live source parity and live Hub browser baseline for the repaired main source scope. The remaining failure is not currently a source-parity failure; it is the narrower Human Surface Acceptance browser-context boundary.
 
 ## 23. Can authority be bypassed?
 **DEFINED BOUNDARIES: FAIL-CLOSED / VERIFIED.** Proofs include unauthorized-action denial, revocation denial, ownership checks, and receipt-swap rejection. No system can honestly claim universal bypass impossibility from finite tests, so the correct state is verified fail-closed behavior for tested boundaries, with adversarial testing continuing.
@@ -98,7 +98,7 @@
 **YES, WHEN CLAIM-SCOPE EVIDENCE REMAINS VALID.** The canonical proof contract uses source-scope freshness: unrelated documentation/control-plane changes do not invalidate a deployment proof whose claim-relevant source paths and deployment identity remain unchanged. A claim must record its source scope so this rule is auditable.
 
 ## 30. Can we honestly say COMPLETE?
-**NO — NOT YET.** The repository foundation is verified and major subsystem/production-shaped proofs exist, but the single uninterrupted cold-Naya behavioral chain and the remaining current human-surface parity/sender-receiver acceptance are not yet fully proven. Universal computation-savings measurement is also not complete. The honest state is **IN PROGRESS / P0 WHOLE-CHAIN PROOF**, not COMPLETE.
+**NO — NOT YET.** The repository whole-chain behavioral sub-proof is proven, the repaired Cloudflare source/deployment/browser baseline is proven, but the identical Human Surface Acceptance still fails at `window.NayaNETNameFirstAuth` in the GitHub runner. The stronger real-runtime cold-successor chain, complete human journey, consolidated sender→receiver acceptance, and universal computation-savings measurement remain incomplete. The honest state is **IN PROGRESS / FIRST DETERMINISTIC BROWSER BOUNDARY OPEN**, not COMPLETE.
 
 ---
 
