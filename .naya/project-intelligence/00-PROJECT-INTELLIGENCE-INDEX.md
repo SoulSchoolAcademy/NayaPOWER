@@ -33,9 +33,10 @@ The Intelligence Feed is the durable communication and torch-passing surface bet
 
 ## NEXT EXECUTION BOUNDARY
 
-[24 — NayaNET Master Proof Contract](24-NAYANET-MASTER-PROOF-CONTRACT.md)
+[24 — NayaNET Master Proof Contract](24-NAYANET-MASTER-PROOF-CONTRACT.md)  
+[25 — NayaNET Master Proof Attempt 001](25-NAYANET-MASTER-PROOF-ATTEMPT-001.md)
 
-**Current frontier:** execute PI-01 → PI-08 as one NayaNET proof chain. Stop at the first deterministic causal failure; repair only that boundary; rerun the same proof; record the result in the Intelligence Feed.
+**Current frontier:** repair the first deterministic execution boundary recorded by Attempt 001, then execute PI-01 → PI-08 as one NayaNET proof chain. Stop at the first deterministic causal failure; repair only that boundary; rerun the same proof; record the result in the Intelligence Feed.
 
 ## BUILD PATH
 
