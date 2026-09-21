@@ -175,3 +175,91 @@ Normalization proceeds in this order:
 **SEARCH → CLASSIFY → DISTILL → INDEX → RECONCILE → RETIRE DUPLICATES → MIGRATE ONLY WHEN VALUABLE → VERIFY**
 
 The library is first a logical retrieval system. Physical relocation is a separate engineering change and must not break workflows, links, evidence, deployment, or provenance.
+
+## Dependency/reference normalization — 2026-09-21 — 509 implementation history + remaining root laws
+
+### Method
+
+Each candidate was tested against the current repository release boundary rather than filename age alone:
+
+**WHO USES IT → WHAT REFERENCES IT → WHAT CAPABILITY DEPENDS ON IT → WHAT CURRENT SOURCE SUPERSEDES IT → WHAT EVIDENCE IT PROVIDES → DELETE / RETAIN / DISTILL**
+
+For the 509 implementation family, the decisive runtime check is the current canonical Hub at `NAYANET/HUB/index.html`: it contains the 509-derived behavior inline and has **no external `src` reference to any `NAYANET/509-*` file**. The current release path therefore does not depend on these standalone 509 JavaScript files. Historical deployment/repair provenance remains recoverable from Git history and the distilled registry below.
+
+### Root `.naya` law/directive disposition
+
+| Artifact | Dependency/reference finding | Current source relationship | Evidence value | Disposition |
+|---|---|---|---|---|
+| `.naya/NAYA-LAW-SYSTEM-PROTOCOL.md` | No current runtime dependency identified; its own header points to the former `SoulSchoolAcademy/MaxRESULTS` governance environment. | Superseded in practice by the current NayaPOWER execution/governance stack, especially `NAYA-MASTER-EXECUTION-CONTRACT.md`, current runtime constitution/completeness laws, and current repository identity. | Historical record of an earlier governance model and GitHub-first execution discipline. | **RETIRE / DISTILL** |
+| `.naya/NAYA-MASTER-EXECUTION-CONTRACT.md` | Current operating contract; retained as a named canonical execution authority. | Current and still materially useful. | Durable execution loop, authority order, verification, preservation, continuity. | **RETAIN** |
+| `.naya/NAYANET-ULTIMATE-EXECUTION-DIRECTIVE.md` | No destructive dependency found; remains a NayaNET operating directive created as canonical earlier. | Overlaps the master execution contract but does not have a demonstrated runtime dependency that warrants deletion. | Historical + operational execution doctrine. | **RETAIN** |
+| `.naya/NAYANET-MASTER-BUILD-AND-EXECUTION-DIRECTIVE.md` | No runtime code dependency identified. | Still contains product/build hierarchy and execution guidance, but its implementation target is historically specific (`E02-INTELLIGENT-HUB-CLOUDFLARE`). | Useful provenance for NayaNET build method; not a runtime source of truth. | **RETAIN / HISTORICAL** |
+| `.naya/NAYANET-NORTH-STAR-BUILD-LAW.md` | No runtime dependency identified. | Product/build governance remains conceptually relevant; repository/deployment portions are authority guidance, not executable dependency. | Durable North-Star/reuse-replace reasoning. | **RETAIN** |
+
+### 509 standalone implementation history
+
+**Common finding:** the standalone `NAYANET/509-*.js` files are historical patch/source artifacts, not current release dependencies. The canonical Hub currently carries the relevant 509-derived implementation inline; the current Hub declares no external script source pointing at these standalone files. Therefore retaining every successive patch as an active source would create parallel implementation authority.
+
+| Family / artifacts | Dependency finding | Evidence/history retained by distillation | Disposition |
+|---|---|---|---|
+| `509-AAA-SMART-BOARD-V5` through `V26` | No current external runtime reference identified. V6+ progressively supersede earlier board rendering/reconciliation attempts; V26 is the latest standalone member of this sequence. | Evolution from visual interaction → canonical content runtime → repeated child/outer restore/reconciliation attempts; current Hub preserves the resulting behavior inline. | **DISTILL + RETIRE STANDALONE FILES** |
+| `509-AAA-REAL-SMART-FEED-*` family | No current external runtime reference identified. | Feed content, lifecycle, navigation, parser, placement, presentation and restoration repair history. | **DISTILL + RETIRE STANDALONE FILES** |
+| `509-AAA-FEATURE-BOARD-*` family | No current external runtime reference identified. | Board presentation/runtime-completion iterations and their evolution. | **DISTILL + RETIRE STANDALONE FILES** |
+| `509-AAA-ECOSYSTEM-LINK-LAYER*` | No current external runtime reference identified. V2 is later than V1. | Ecosystem-link experiment history. | **DISTILL + RETIRE STANDALONE FILES** |
+| `509-AAA-C4-*` family | No current external runtime reference identified. Current protected Hub contains the live interaction behavior; C4 history is valuable provenance. | C4 single-board continuity constraint, preservation of existing interactive nodes/listeners, duplicate-control cleanup, mode switching, rating preservation and wrapper geometry repair. | **DISTILL + RETIRE STANDALONE FILES** |
+| Remaining 509 surgical/feed/smart-note JavaScript artifacts | No current external runtime reference identified. | Individual surgical implementation history retained through Git history + this registry. | **DISTILL + RETIRE STANDALONE FILES** |
+| `509-AAA-SMART-NOTES-01-09-CANONICAL.md` | Content/reference artifact, not standalone executable dependency. | Canonical Smart Note content used by the 509 presentation layer; remains useful as intelligence/content provenance. | **RETAIN** |
+
+### 509 inventory retired by this pass
+
+- `NAYANET/509-AAA-C4-ACTION-CLEANUP.js`
+- `NAYANET/509-AAA-C4-FEED-VIEW-CONTROLLER.js`
+- `NAYANET/509-AAA-C4-LOVE-LIKE-PERSONAL-POLISH.js`
+- `NAYANET/509-AAA-C4-SINGLE-BOARD-RUNTIME-REPAIR.js`
+- `NAYANET/509-AAA-C4-UNIFIED-BOARD-REPAIR.js`
+- `NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER-V2.js`
+- `NAYANET/509-AAA-ECOSYSTEM-LINK-LAYER.js`
+- `NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE-V2.js`
+- `NAYANET/509-AAA-FEATURE-BOARD-PRESENTATION-UPGRADE.js`
+- `NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V3.js`
+- `NAYANET/509-AAA-FEATURE-BOARD-RUNTIME-COMPLETION-V4.js`
+- `NAYANET/509-AAA-FEED-FLOW-AND-BOARD-VISIBLE-REPAIR.js`
+- `NAYANET/509-AAA-HUB-FINAL-POLISH.js`
+- `NAYANET/509-AAA-INTELLIGENT-BOARD-C4.js`
+- `NAYANET/509-AAA-NEXT-LEVEL.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-CONTENT.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-DISTILLATION.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-FINAL-PRESENTATION-FIX.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-LIFECYCLE-REPAIR.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-NAV-ADJACENT-PLACEMENT.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-NAV-RESTORE.js`
+- `NAYANET/509-AAA-REAL-SMART-FEED-NINE-NOTE-PARSER.js`
+- `NAYANET/509-AAA-SMART-BOARD-STRUCTURAL-LOCK.js`
+- `NAYANET/509-AAA-SMART-BOARD-V10-FINAL-GEOMETRY.js`
+- `NAYANET/509-AAA-SMART-BOARD-V11-CHILD-RESTORE-FINALIZER.js`
+- `NAYANET/509-AAA-SMART-BOARD-V12-CANONICAL-CHILD-REPAIR.js`
+- `NAYANET/509-AAA-SMART-BOARD-V13-CHILD-WATCHDOG.js`
+- `NAYANET/509-AAA-SMART-BOARD-V14-CHILD-WATCHDOG-STABLE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V15-CHILD-WATCHDOG-START-RETRY.js`
+- `NAYANET/509-AAA-SMART-BOARD-V16-CHILD-CANONICAL-BY-NOTE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V17-CHILD-RESTORE-USING-CANONICAL-V6-PARSER.js`
+- `NAYANET/509-AAA-SMART-BOARD-V18-CHILD-GLOBAL-CANONICAL-PARSER.js`
+- `NAYANET/509-AAA-SMART-BOARD-V19-CHILD-GUARANTEED-RESTORE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V20-CANONICAL-LAYER-RECONCILER.js`
+- `NAYANET/509-AAA-SMART-BOARD-V21-FINAL-ACCEPTANCE-FIX.js`
+- `NAYANET/509-AAA-SMART-BOARD-V22-CANONICAL-RESTORE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V23-DETERMINISTIC-RESTORE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V24-OUTER-CANONICAL-LOCK.js`
+- `NAYANET/509-AAA-SMART-BOARD-V25-FINAL-CANONICAL-RESTORE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V26-CANONICAL-OUTER-RESTORE.js`
+- `NAYANET/509-AAA-SMART-BOARD-V5-VISUAL-INTERACTION.js`
+- `NAYANET/509-AAA-SMART-BOARD-V6-CANONICAL-CONTENT-RUNTIME.js`
+- `NAYANET/509-AAA-SMART-BOARD-V7-LIVE-RUNTIME-CORRECTION.js`
+- `NAYANET/509-AAA-SMART-BOARD-V8-LATE-SEMANTIC-FINALIZER.js`
+- `NAYANET/509-AAA-SMART-BOARD-V9-SURGICAL-RESTORATION.js`
+- `NAYANET/509-AAA-SMART-FEED-C3.js`
+- `NAYANET/509-AAA-SMART-NOTE-CANONICAL-RENDERER.js`
+- `NAYANET/509-AAA-SMART-NOTE-CANONICAL-TITLE-LOCK.js`
+- `NAYANET/509-AAA-SURGICAL-LAYER.js`
+
+**Result:** the standalone 509 JavaScript patch pile is no longer treated as a parallel implementation surface. The current Hub is the runtime source; Git history and this registry preserve the repair lineage. `509-AAA-SMART-NOTES-01-09-CANONICAL.md` remains as content intelligence.
