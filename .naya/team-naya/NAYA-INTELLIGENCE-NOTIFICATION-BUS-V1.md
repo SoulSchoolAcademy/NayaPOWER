@@ -47,13 +47,19 @@ Each event MUST carry:
 
 No notification may grant authority merely because it is visible.
 
+## Canonical daily record
+
+All new notification events are durably organized under `.naya/INTELLIGENCE/YYYY/MM/DD/NOTIFICATIONS.jsonl` according to the Canonical Intelligence Record Layout V1. Briefings are recorded in the same day's `BRIEFINGS.md`. Activity and Smart Notes for that day use the same daily intelligence space.
+
+The day is the human navigation unit. Exact timestamps remain event metadata; hourly directories are not required.
+
 ## Delivery model
 
 1. **Canonical NayaPOWER event ledger** — durable source of truth.
 2. **GitHub NayaPOWER** — internal engineering/governance awareness projection.
 3. **NayaNET Intelligence Hub** — human-facing visual intelligence projection.
 4. **New Naya bootstrap/re-entry** — notification replay is part of context restoration.
-5. **Current live Nayas** — live subscription/polling projection where supported.
+5. **Current live Nayas** — event-driven delivery projection where supported; polling is a fallback transport, not the canonical model.
 
 ## New-Naya rule
 
@@ -84,3 +90,4 @@ The Hub should make the system feel alive without becoming noisy:
 - Never let a UI projection become the canonical event.
 - Never claim live delivery without delivery evidence.
 - Never discard a material event because a downstream surface is unavailable.
+- Never create a second Smart Note, Activity, Notification, or Briefing storage convention when the canonical daily layout applies.
