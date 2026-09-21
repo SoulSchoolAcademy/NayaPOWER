@@ -153,7 +153,8 @@ jobs:
               ack:'nayanet-project-intelligence-ack',
               understand:'nayanet-compound-intelligence',
               issue_pi_authority:'nayanet-compound-intelligence',
-              continue_authorized:'nayanet-compound-intelligence'
+              continue_authorized:'nayanet-compound-intelligence',
+              consolidate_pi_gates:'nayanet-compound-intelligence'
             };
             const slug=slugs[action];
             if(!slug) throw new Error('UNMAPPED_HOME_RUN_ENDPOINT:'+action);
@@ -306,6 +307,26 @@ jobs:
                 successorReceiptId=successorHandoff.receipt?.receipt?.id ?? successorHandoff.receipt?.id ?? null;
                 if(!successorReceiptId) throw new Error('SUCCESSOR_RECEIPT_MISSING:'+JSON.stringify(successorHandoff));
                 mark('SUCCESSOR_RECEIPT','PASS',{successor_event_id:successorHandoff.successor.event_id,receipt_id:successorReceiptId,parent_event_id:continuationEventId});
+                const consolidated=await compound(fp,freshSession,'consolidate_pi_gates',{
+                  parent_event_id:continuationEventId,
+                  source_head:process.env.GITHUB_SHA,
+                  proof_run_id:run,
+                  flags:{
+                    CANONICAL_CURRENT_TRUTH_RESOLUTION:true,
+                    FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION:true,
+                    COLD_NAYA_CONSUMPTION:true,
+                    COLD_SUCCESSOR_CONTINUATION:true
+                  },
+                  evidence_refs:[
+                    {kind:'home_run',run_id:run,source_head:process.env.GITHUB_SHA},
+                    {kind:'bridge',packet_id:bridge.packet_id,receiver_event_id:receiverEventId,ack_receipt_id:ack.receipt_id},
+                    {kind:'continuation',event_id:continuationEventId,receipt_id:continuationReceiptId},
+                    {kind:'successor',event_id:successorHandoff.successor.event_id,receipt_id:successorReceiptId}
+                  ]
+                });
+                if(consolidated.status!=='PI_GATES_CONSOLIDATED'||!consolidated.receipt?.receipt?.id && !consolidated.receipt?.id) throw new Error('PI_GATE_CONSOLIDATION_FAILED:'+JSON.stringify(consolidated));
+                const consolidatedReceiptId=consolidated.receipt?.receipt?.id ?? consolidated.receipt?.id;
+                mark('PI_GATES_CONSOLIDATED','PASS',{receipt_id:consolidatedReceiptId,source_head:process.env.GITHUB_SHA});
               }finally{await fresh.close()}
 
               const proof={schema:'NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1',status:'PROVEN',run_id:run,source_head:process.env.GITHUB_SHA,packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:receiverEventId,receipt_id:ack.receipt_id,continuation_event_id:continuationEventId,continuation_receipt_id:continuationReceiptId,successor_event_id:successorHandoff.successor.event_id,successor_receipt_id:successorReceiptId,trace};
