@@ -153,9 +153,19 @@ jobs:
           await shareButton.waitFor({state:'visible',timeout:15000});
           await shareButton.scrollIntoViewIfNeeded();
 
-          const beforeClick=await ap.evaluate(()=>{
+          await ap.waitForFunction(()=>{
+            const expected=String(window.__smartShareDiag?.expectedTitle||'').trim();
             const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
-            const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===document.querySelector('.block[data-real-smart-note] h3')?.textContent?.trim())||buttons[0];
+            const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===expected)||buttons[0];
+            if(!button||button.dataset.nayaSmartShareBound!=='1') return false;
+            const state=window.__smartShareProofBindingStability||(window.__smartShareProofBindingStability={button:null,since:0});
+            if(state.button!==button){state.button=button;state.since=Date.now();return false;}
+            return Date.now()-state.since>=500;
+          },{timeout:5000,polling:50});
+          const beforeClick=await ap.evaluate(()=>{
+            const expected=String(window.__smartShareDiag?.expectedTitle||'').trim();
+            const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
+            const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===expected)||buttons[0];
             return {
               exists:!!button,
               bound:button?.dataset.nayaSmartShareBound==='1',
