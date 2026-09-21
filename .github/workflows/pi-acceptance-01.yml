@@ -1,0 +1,75 @@
+name: NayaNET PI-ACCEPTANCE-01 — cold truth to runtime lineage
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/pi-acceptance-01.yml'
+permissions:
+  contents: read
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Reconcile live source identity
+        run: |
+          test "$GITHUB_SHA" = "$(git rev-parse HEAD)"
+          echo "SOURCE_HEAD=$GITHUB_SHA"
+          echo "SOURCE_REF=$GITHUB_REF"
+      - name: Execute PI-ACCEPTANCE-01 from fresh authenticated context
+        shell: bash
+        run: |
+          cat > acceptance.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(fn,t,b={}){const r=await fetch(B+'/functions/v1/'+fn,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function RPC(fn,t,b){const r=await fetch(B+'/rest/v1/rpc/'+fn,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function GET(path,t){const r=await fetch(B+'/rest/v1/'+path,{headers:H(t)});const x=await r.text();if(!r.ok)throw Error('GET_'+r.status+':'+x);return JSON.parse(x);}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'});
+          const a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('FRESH_AUTH_FAILED');
+          const t=a.access_token;
+          const restore=await P('nayanet-project-intelligence-restore',t,{});
+          if(restore.status!==200||restore.body?.ok!==true)throw Error('PI03_RESTORE_FAILED');
+          const retrieve=await P('nayanet-project-intelligence-retrieve',t,{query:'NayaNET'});
+          if(retrieve.status!==200||retrieve.body?.ok!==true)throw Error('PI03_RETRIEVE_FAILED');
+          const corpus=JSON.stringify({restore:restore.body,retrieve:retrieve.body}).toLowerCase();
+          for(const needle of ['nayanet','project intelligence','cold successor']) if(!corpus.includes(needle)) throw Error('PI03_INTELLIGENCE_MISSING:'+needle);
+          const seed=await P('nayanet-pi-understand',t,{content:'PI-ACCEPTANCE-01 runtime lineage proof '+R,title:'PI-ACCEPTANCE-01 source'});
+          if(seed.status!==200||seed.body?.ok!==true)throw Error('SOURCE_SEED_FAILED');
+          const source=seed.body.result?.event?.event_id;if(!source)throw Error('SOURCE_ID_MISSING');
+          const cand=await P('nayanet-learning-candidate',t,{claim:'PI-ACCEPTANCE-01 runtime lineage survives execution verification learning and successor handoff',target_id:'PI-ACCEPTANCE-01-'+R,source_event_id:source,observed_value:{run:R}});
+          if(cand.status!==200||cand.body?.ok!==true)throw Error('CLAIM_FAILED');
+          const claim=cand.body.result?.candidate?.id;if(!claim)throw Error('CLAIM_ID_MISSING');
+          const grant=await RPC('nayanet_issue_authority_grant',t,{p_subject_id:a.user?.id,p_source_event_id:source,p_mission_id:'PI-ACCEPTANCE-01',p_scope:{target:'PI-ACCEPTANCE-01-'+R,project_id:'NayaNET'},p_actions:['pi.controlled_execution'],p_constraints:{no_external_side_effects:true,proof_run:R},p_expires_at:new Date(Date.now()+600000).toISOString(),p_evidence:{proof_run:R,source_event_id:source},p_parent_authority:null});
+          if(grant.status!==200||!grant.body?.grant_id)throw Error('AUTHORITY_FAILED');
+          const ex=await P('nayanet-pi-execute',t,{authority_grant_id:grant.body.grant_id,action_id:'pi.controlled_execution',resource:'PI-ACCEPTANCE-01-'+R,expected_result:'Durable runtime lineage receipt',source_event_id:source,claim_id:claim,request_id:'pi-acceptance-01-'+R});
+          if(ex.status!==200||ex.body?.ok!==true)throw Error('EXECUTION_FAILED');
+          const receiptId=ex.body.receipt?.id;if(!receiptId)throw Error('RECEIPT_ID_MISSING');
+          const learning=await P('nayanet-learning-verify',t,{learning_id:claim,verification_method:'PI-ACCEPTANCE-01 independent runtime verification',evidence_refs:[source,receiptId],receipt_id:receiptId});
+          if(learning.status!==200||learning.body?.ok!==true||learning.body?.verified!==true)throw Error('LEARNING_FAILED');
+          const handoff=await P('nayanet-successor-handoff',t,{receipt_id:receiptId,what_happened:'PI-ACCEPTANCE-01 runtime lineage executed and verified',what_changed:'Runtime receipt binds source claim action outcome verification learning successor',learned:[{learning_id:claim,verified:true}],next_action:'Reconcile live Project Intelligence and execute the next incomplete acceptance boundary',why:'Cold-successor continuity requires durable verified lineage.',evidence_required:['runtime lineage receipt','verification evidence','successor handoff'],source_head:process.env.GITHUB_SHA});
+          if(handoff.status!==200||handoff.body?.ok!==true)throw Error('HANDOFF_FAILED');
+          const rows=await GET('nayanet_execution_receipts?id=eq.'+encodeURIComponent(receiptId)+'&select=id,project_id,action,status,request_id,evidence,learning,authority_grant_id,authority_source_event_id',t);
+          if(!rows?.[0])throw Error('INDEPENDENT_RETRIEVAL_FAILED');
+          const receipt=rows[0];
+          const lineage=(receipt.evidence||[]).map(x=>x?.lineage).find(Boolean);
+          if(!lineage)throw Error('LINEAGE_MISSING');
+          const kinds=['source','claim','action','outcome','verification','learning','successor'];
+          const missingNodes=kinds.filter(k=>{const n=lineage.nodes?.find(x=>x.kind===k);return !n?.ref||n.ref==='UNBOUND';});
+          if(missingNodes.length)throw Error('LINEAGE_NODES_MISSING:'+missingNodes.join(','));
+          const edges=['SUPPORTS','CAUSES','RESULTS_IN','VERIFIES','TEACHES','HANDOFF_TO'];
+          const missingEdges=edges.filter(e=>!(lineage.edges||[]).some(x=>x.relation===e));
+          if(missingEdges.length)throw Error('LINEAGE_EDGES_MISSING:'+missingEdges.join(','));
+          if(lineage.status!=='COMPLETE')throw Error('LINEAGE_STATUS:'+lineage.status);
+          console.log(JSON.stringify({schema:'NAYANET_PI_ACCEPTANCE_01_V1',status:'COMPLETE',source_head:process.env.GITHUB_SHA,run_id:R,fresh_authenticated_context:true,conversation_archaeology:false,pi03:'VERIFIED',receipt_id:receiptId,source_event_id:source,claim_id:claim,verification_operation_id:learning.body.verification_operation_id,successor_operation_id:handoff.body.successor_operation_id,lineage}));
+          EOF
+          node acceptance.mjs
