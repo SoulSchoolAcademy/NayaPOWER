@@ -36,7 +36,7 @@ Added public.nayanet_intelligence_operations with owner-scoped RLS. Every orches
 
 Supabase project: dahisasgpfvziswqvmvm
 Function: nayanet-compound-intelligence
-Final version: 3
+Final version: 6
 JWT verification: enabled
 
 The function is ACTIVE at the latest observed deployed version 3. Version 3 includes the governed restore/retrieve/reconcile/ack/state/learning/project/successor/share/supersede/health/dream/compound action surface.
@@ -89,3 +89,34 @@ A durable Team Naya communication board is also present under NAYA/ACTIVITY so s
 Run the authenticated cold-successor behavioral test against the live Hub. Verify RESTORE is received, then directly prove RETRIEVE and RENDER of a known bridge intelligence item. Record the first actual failure and repair only that boundary.
 
 SUCCESSOR: Next Naya reads this report, the Compound Intelligence 10/10 Mission, current STATE/BLOCKS, and invokes restore before asking Shawn for information already stored by the system.
+
+
+## 2026-09-21 RECONCILIATION + PROOF UPDATE
+
+The new 14-question cold reconstruction contract is now canonical:
+.naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md
+
+The ultimate next-Naya execution prompt is canonical:
+.naya/project-intelligence/ULTIMATE-NEXT-NAYA-EXECUTION-PROMPT-V1.md
+
+The ultimate readiness scorecard is canonical:
+.naya/project-intelligence/ULTIMATE-READINESS-SCORECARD-V1.md
+
+Team Naya has a durable 14-question baton:
+NAYA/ACTIVITY/2026/09/21-TEAM-NAYA-14-QUESTION-STATUS.md
+
+The Compound Intelligence function is ACTIVE and JWT-protected at latest observed version 6. The hardened source includes explicit 14-question RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, LEARNING RETRIEVE, PROJECT, ACK, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM delegation and COMPOUND orchestration. STATE_UPDATE is fail-closed behind an explicit authority boundary.
+
+Two repository proof runs were executed after finding and repairing actual control-plane drift:
+- Whole-chain proof: run 35627609734 — SUCCESS.
+- Cold Project Intelligence proof: run 35627655171 — SUCCESS.
+
+The repairs were causal, not cosmetic:
+1. MAP active block was reconciled to PROJECT-INTELLIGENCE-PI-01.
+2. BLOCK next_actions was reconciled to its canonical next_action.
+3. Whole-chain proof runner was reconciled from its stale COLD-NAYA-TAKEOVER-PROOF hard-code to PROJECT-INTELLIGENCE-PI-01.
+
+These repairs demonstrate the exact compounding behavior we want: detect drift → identify first failing boundary → repair only that boundary → rerun the same proof → preserve the lesson.
+
+CURRENT REMAINING ACCEPTANCE:
+Positive live receiver RETRIEVE + canonical Hub RENDER + positive ACK + genuinely cold external successor retrieval remain open. No 10/10 claim is made for those boundaries until runtime/browser evidence exists.
