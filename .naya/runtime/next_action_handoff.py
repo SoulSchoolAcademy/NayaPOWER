@@ -74,7 +74,7 @@ def execute_cycle():
     state=load(STATE); blocks=load(BLOCKS); load(MAP)
     if state["repository"]!="SoulSchoolAcademy/NayaPOWER": raise RuntimeError("CANONICAL_REPOSITORY_MISMATCH")
     if blocks["rules"].get("one_next_action") is not True: raise RuntimeError("ONE_NEXT_ACTION_LAW_NOT_ENABLED")
-    if blocks["next_action_count"]!=1: raise RuntimeError("CONTROL_PLANE_NEXT_ACTION_COUNT_NOT_ONE")
+    if blocks["active_block"].get("next_action_count")!=1: raise RuntimeError("CONTROL_PLANE_NEXT_ACTION_COUNT_NOT_ONE")
     verification={"status":"VERIFIED","checks":["canonical repository identity","single next_action invariant","control-plane state readable","active block readable","mission map readable","machine handoff fields complete"]}
     after=build_contract(); after["next_action"]["status"]="VERIFIED"; after["source_commit"]=live_head()
     successor=blocks["active_block"].get("next_action_successor")
