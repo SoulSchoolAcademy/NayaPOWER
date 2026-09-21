@@ -164,17 +164,17 @@
     "After PI-02 passes, the next master-proof frontier is PI-03 cold retrieval; downstream product work remains preserved but does not replace the proof frontier."
   ],
   "current_frontier": {
-    "master_proof_contract": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-    "frontier": "NAYANET-CONSTITUTIONAL-HARDENING-03",
-    "source_checkpoint": "5ccc635f773e7b7cfc48319b6b0399eb91b93cb3",
-    "branch": "naya/live-project-intelligence-v1",
-    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
-    "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
-    "runtime_sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847",
-    "canonical_hub": "NAYANET/HUB/index.html",
-    "hub_source_runtime_parity": "VERIFIED",
-    "downstream_hub_frontier": "SMART_MAIL_HUMAN_LIFECYCLE",
-    "rule": "Runtime evidence lineage integration is the current frontier; prior contract proofs remain protected.",
-    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
+    "status": "OPEN",
+    "source_checkpoint": "0b5875ab36f8e163edc32b5b7a4d0d68a78fe558",
+    "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
+    "evidence_required": [
+      "deployed runtime integration",
+      "end-to-end runtime lineage receipt",
+      "independent retrieval of final receipt",
+      "all seven lineage nodes bound",
+      "all six lineage edges present",
+      "lineage status COMPLETE"
+    ]
   }
 }
