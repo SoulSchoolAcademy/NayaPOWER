@@ -1,0 +1,44 @@
+name: NayaNET PI-07 learning influence proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi07-learning-influence.yml'
+permissions:
+  contents: read
+jobs:
+  pi07:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Prove verified learning influences later decision
+        shell: bash
+        run: |
+          cat > p.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(p,t,b){const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return [r.status,j]}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED'); const t=a.access_token,target='PI07-'+R;
+          let [s,sb]=await P('nayanet-pi-understand',t,{content:'verified experience '+R,title:'PI07'});
+          if(s!==200||!sb.ok)throw Error('UNDERSTAND_FAILED'); const eid=sb.result.event.event_id;
+          let [c,cb]=await P('nayanet-learning-candidate',t,{claim:'verified lesson influences later decision',target_id:target,source_event_id:eid,observed_value:{run:R}});
+          if(c!==200||!cb.ok)throw Error('CANDIDATE_FAILED'); const lid=cb.result.candidate.id;
+          let [v,vb]=await P('nayanet-learning-verify',t,{learning_id:lid,verification_method:'controlled PI07 evidence',evidence_refs:[eid],observed_value:{run:R,verified:true}});
+          if(v!==200||!vb.ok)throw Error('VERIFY_FAILED'); const evid=vb.result.learning.id;
+          let [ap,ab]=await P('naya-learning-apply',t,{evidence_id:evid});
+          if(ap!==200||!ab.ok)throw Error('APPLY_FAILED:'+JSON.stringify(ab));
+          let [d,db]=await P('naya-decision-context',t,{target_id:target});
+          console.log('PI07_RUN_ID='+R); console.log('PI07_DECISION='+JSON.stringify(db));
+          if(d!==200||!db.ok)throw Error('DECISION_FAILED');
+          if(db.decision.influenced!==true||db.decision.decision!=='USE_VERIFIED_LEARNING_CONTEXT')throw Error('LEARNING_DID_NOT_INFLUENCE');
+          console.log('PI07_RESULT='+JSON.stringify({schema:'NAYANET_PI07_LEARNING_INFLUENCE_PROOF_V1',run_id:R,verified_learning:true,applied:true,future_context_influenced:true,status:'VERIFIED'}));
+          EOF
+          node p.mjs
