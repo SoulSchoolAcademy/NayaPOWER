@@ -92,7 +92,7 @@ At execution time:
 5. read `.naya/control-plane/PROOF.json`;
 6. read current Activity/Intelligence Feed and applicable runtime evidence.
 
-The active control-plane mission is **P0 — CONSOLIDATED PROJECT INTELLIGENCE PROOF** with active block **PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF**.
+The active control-plane mission is **P0 — COLD NAYA TAKEOVER / PROJECT INTELLIGENCE BRIDGE** with active block **COLD-NAYA-TAKEOVER-PROOF**.
 
 The latest recorded Proof7 result is **PROVEN** for the controlled paired compounding loop. Its evidence must still be read from the current proof record rather than inferred from this summary.
 
@@ -122,7 +122,7 @@ Current repository evidence establishes substantial working foundations, includi
 
 **Truth state: UNKNOWN / UNPROVEN**
 
-The material unresolved frontier is the **single uninterrupted Project Intelligence acceptance chain**:
+The material unresolved frontier is the **single uninterrupted sender → bridge → receiver → successor Project Intelligence acceptance chain**:
 
 - PI-02 reproducible reconstruction;
 - PI-03 cold retrieval;
@@ -132,7 +132,7 @@ The material unresolved frontier is the **single uninterrupted Project Intellige
 - PI-07 learning/update in the same chain;
 - PI-08 cold successor continuation.
 
-The complete human journey and consolidated sender → receiver chain also require final acceptance evidence.
+The repository now contains the canonical Project Intelligence Bridge contract, compact Operating Context, executable sender packet builder, and automatic bridge-contract verification. These prove sender-side readiness and packet integrity; they do not claim an external receiver transaction until a real authorized acknowledgement exists.
 
 Do not convert documentation or individual subsystem proofs into whole-chain completion.
 
@@ -183,7 +183,7 @@ These are learning assets, not reasons to repeat old work.
 
 Exactly one primary action:
 
-> **Execute the consolidated Project Intelligence proof from INTENT through PI-01 → PI-08 and the cold successor, using live canonical state and stopping at the first deterministic boundary.**
+> **Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval.**
 
 Do not redesign already-proven architecture to avoid doing the proof.
 
