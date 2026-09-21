@@ -160,7 +160,7 @@ jobs:
               return {status:x.status,body:await x.json().catch(()=>({}))};
             },{supabaseUrl,supabaseKey,token:session.access_token,slug,action,extra,key});
             if(r.status!==200||r.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(r));
-            return r.body.result;
+            return r.body.result??r.body.ack??r.body;
           }
 
           (async()=>{
