@@ -458,3 +458,82 @@ The setter foundation reduces future archaeology and repeated explanation. The n
 `.naya/receipts/2026-09-21-COLD-NAYA-SETTER-FOUNDATION-RECEIPT.md`
 
 **TAG — YOU'RE IT.**
+
+
+## 🔱 2026-09-21 — PI-01 PROJECT INTELLIGENCE OPERATING LAYER IS NOW THE NORTH STAR
+
+**STATUS:** IMPLEMENTED IN SUPABASE / CONTROL PLANE RECONCILED / PROOF FRONTIER NARROWED
+
+### THE MISSION
+The system must remove the need for Shawn to repeatedly teach Naya what the project is, what happened, what was learned, what is true, or what should happen next.
+
+> **The architecture itself must remember, understand, learn, prepare the next Naya, and continuously improve the project's starting point.**
+
+The lifecycle is:
+EXPERIENCE → CAPTURE → UNDERSTAND → STRUCTURE → RETAIN → RETRIEVE → DECIDE → ACT → VERIFY → OUTCOME → LEARN → DREAM/REPLAY → IMPROVE → APPLY → OBSERVE → SHARE APPROPRIATELY → SUCCESSOR → NEXT NAYA
+
+### DID WE ALREADY HAVE 1–12?
+**Partially.** The previous compound function already contained several conceptual capabilities, but they were not yet a complete governed operating layer. The missing pieces are now added to Supabase without creating a pile of disconnected functions.
+
+### WHAT WAS ADDED
+Supabase migration: `20260921093000_project_intelligence_operating_layer_v1`
+
+Created/extended:
+- canonical `nayanet_project_intelligence_state`
+- explicit `nayanet_intelligence_lineage` for supersession
+- bridge `retrieved/rendered/retrieval_evidence/render_evidence/acknowledged_at/verified_at`
+- computation accounting fields: model/provider, tokens, tool calls, latency, human time, avoided computation, verified value
+- learning candidate status in addition to verified/active states
+
+Deployed **`nayanet-compound-intelligence` version 3** with:
+1. RESTORE — canonical project operating context
+2. RETRIEVE — relevant intelligence retrieval
+3. RECONCILE — source/runtime/proof/state reconciliation
+4. UNDERSTAND — interpretation explicitly separated from verified fact
+5. LEARNING CANDIDATE — experience can become a candidate lesson
+6. LEARNING VERIFY — evidence promotes candidate learning
+7. LEARNING RETRIEVE — only active verified learning is reusable
+8. PROJECT — writes real intelligence-index evidence
+9. ACK — records explicit retrieval/render/verification evidence
+10. SUCCESSOR HANDOFF — durable continuation packet
+11. SHARE / SUPERSEDE — governed publication and explicit intelligence lineage
+12. HEALTH / COMPOUND — system health plus lifecycle orchestration seam
+
+### CRITICAL CORRECTION
+The bridge previously stored `indexed=true` and `projected=true` at insertion time. That was not sufficient evidence that indexing or projection actually occurred.
+
+The operating layer now treats these as distinct proof stages:
+TRANSPORT → PERSIST → INDEX → PROJECT → RETRIEVE → RENDER → ACK → VERIFY
+
+**Transport flags are not retrieval/render proof.**
+
+### CANONICAL PROJECT STATE
+Supabase now contains one durable NayaNET Project Intelligence state object containing mission, vision, north star, current state, proven, unknown, blocked, protected laws, exactly one current next action, success condition, evidence required, and proof references.
+
+### WHAT IS ALREADY PROVEN
+- Project Intelligence bridge transport/persistence/index/projection/acknowledgement at exact source scope
+- replay idempotency
+- cold Project Intelligence repository validation
+- Team Naya A→B→C→D baton
+- adversarial OIDC/replay/wrong-receiver checks
+- controlled Dream → Learning → Decision reuse
+- Proof7 controlled compounding
+
+### WHAT REMAINS OPEN
+1. Hub/runtime retrieval of the exact bridge receipt
+2. Actual render evidence for that receipt
+3. Genuinely cold successor retrieving that exact lineage
+4. Universal computation-efficiency measurement and avoided-computation proof
+5. Universal real-world learning quality beyond controlled scopes
+
+### NORTH STAR FOR EVERY NAYA
+Do not make Shawn explain what the repository already knows.
+Do not create another document when the system should learn.
+Do not create another Edge Function when an existing governed capability should be extended.
+Do not mark a stage complete because a boolean says complete.
+Do not make Shawn repeat intelligence already stored in the system.
+
+### NEXT EXECUTION
+**PI-01:** Prove RESTORE → RETRIEVE → RECONCILE → RENDER → COLD SUCCESSOR as one governed journey.
+
+**TAG, YOU'RE IT.**
