@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
     "recorded_head_is_not_authoritative": true,
-    "observed_head": "7bf27dc66037c8577760331f0980dad8bd100e20",
-    "note": "Live main changed after the proven bridge transaction because the durable Project Intelligence context was reconciled. The bridge proof remains valid at its exact source_ref 3c7102c5adc8b464b6843c82de0ae72139c8fb69."
+    "observed_head": "da4fd6cf34425213bda801aee3b0c48c58119289",
+    "note": "Live main changed while the Supabase Project Intelligence operating layer was deployed. Resolve live HEAD again before each execution."
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -16,9 +16,9 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - COMPOUND INTELLIGENCE / COLD NAYA TAKEOVER",
+  "priority": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "COMPOUND-INTELLIGENCE-10-10",
+  "current_block": "PROJECT-INTELLIGENCE-PI-01",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -117,16 +117,17 @@
     "2026-09-21 live GitHub main resolved to a27f4a4318150c71a920b5ea1e4aa36e7106ba67 before the setter update.",
     "Supabase project dahisasgpfvziswqvmvm is ACTIVE_HEALTHY in ca-central-1 and is established as the managed persistence/runtime substrate; the database has RLS-enabled intelligence, cognition, learning, receipt, authority, Ledger, relationship, and activity surfaces.",
     "The cold-Naya objective is now explicitly a first-class mission: the next Naya must enter as executor, not archaeologist, and must not require Shawn to repeat project context already stored in GitHub.",
-    "The repository already has a canonical cold-Naya boot bridge and machine context manifest; the remaining acceptance is behavioral cold takeover, not another documentation exercise."
+    "The repository already has a canonical cold-Naya boot bridge and machine context manifest; the remaining acceptance is behavioral cold takeover, not another documentation exercise.",
+    "Supabase migration 20260921093000_project_intelligence_operating_layer_v1 created canonical project state, intelligence lineage, bridge retrieval/render evidence fields, and computation-accounting fields.",
+    "Supabase nayanet-compound-intelligence Edge Function version 3 exposes restore V2, retrieve, reconcile V2, understand, learning candidate/verify/retrieve, project, bridge ack, successor handoff, share, supersede lineage, health V2, state update, dream seam, and compound lifecycle.",
+    "Project Intelligence state is persisted in public.nayanet_project_intelligence_state with one canonical NayaNET row and one explicit current next action.",
+    "Bridge retrieved/rendered flags are separate from indexed/projected and require explicit evidence; transport flags are never sufficient to claim retrieval/render."
   ],
   "unknown": [
-    "A single consolidated current human-facing acceptance receipt that includes the public welcome front door and every Wave A security/relationship step is not yet recorded.",
-    "Long-term universal compounding beyond the proven held-out P1 experiment remains a separate claim; the latest controlled P1 experiment did prove policy improvement on its frozen held-out cases and a future learned case.",
-    "Comprehensive multi-Naya concurrency beyond the proven eight concurrent writers in one authenticated user/project remains unknown.",
-    "Windows-local repository checkout portability remains blocked by the tracked colon-containing filename.",
-    "Activation breadth beyond the currently proven Hub/engine path (GitHub App bridge, Spaces/Contacts/Lists/Share/Play as a complete ordinary-user journey) remains incomplete.",
-    "Public Welcome source/runtime is externally hosted outside the NayaPOWER repository; current live embedded shiny-wave identity activation still targets academy.nayanet.app rather than the canonical Assistant Cloudflare Hub.",
-    "Hub-facing retrieval/render of the proven bridge transaction and genuinely cold successor retrieval of the exact receipt remain open."
+    "End-to-end Hub retrieval/render of bridge receipt remains open.",
+    "Cold successor retrieval of exact bridge lineage through governed runtime remains open.",
+    "Universal real-world computation savings remain unmeasured.",
+    "Universal model/provider learning quality remains unproven."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -226,7 +227,20 @@
     "status": "DEPLOYED_VERSION_2",
     "runtime": "nayanet-compound-intelligence",
     "supabase_project": "dahisasgpfvziswqvmvm",
-    "capabilities": ["RESTORE","RETRIEVE","RECONCILE","UNDERSTAND","LEARNING_CANDIDATE","LEARNING_VERIFY","SUCCESSOR_HANDOFF","SHARE","SUPERSEDE","HEALTH","DREAM_SEAM","COMPOUND"],
+    "capabilities": [
+      "RESTORE",
+      "RETRIEVE",
+      "RECONCILE",
+      "UNDERSTAND",
+      "LEARNING_CANDIDATE",
+      "LEARNING_VERIFY",
+      "SUCCESSOR_HANDOFF",
+      "SHARE",
+      "SUPERSEDE",
+      "HEALTH",
+      "DREAM_SEAM",
+      "COMPOUND"
+    ],
     "persistence": "public.nayanet_intelligence_operations",
     "rls": "owner_scoped",
     "new_north_star": "Every verified meaningful action should leave the project more intelligent, more truthful, more capable, and easier for the next Naya to continue.",
@@ -253,5 +267,11 @@
       "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
       "idempotent_replay_verified": true
     }
+  },
+  "current_frontier": {
+    "active_block": "PROJECT-INTELLIGENCE-PI-01",
+    "priority": "P0",
+    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+    "completion": "Cold Naya restores the canonical project object, retrieves exact bridge lineage, distinguishes truth/unknown/blocked, selects one authorized action, verifies it, updates learning, and leaves an executable successor."
   }
 }
