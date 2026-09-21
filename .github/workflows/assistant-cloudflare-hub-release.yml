@@ -224,6 +224,7 @@ jobs:
           rm -f verify-flagship.mjs
 
       - name: Verify Command Station and Smart Feed interaction
+        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -236,16 +237,15 @@ jobs:
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
               const page=await context.newPage();
-              await page.goto(runtime+'/?interface-acceptance='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
+              await page.goto(runtime+'/?interface-acceptance='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
               await page.waitForTimeout(1400);
               const probe=await page.evaluate((expected)=>{
                 const station=document.querySelector('.naya-command-station');
                 const buttons=[...document.querySelectorAll('[data-naya-surface]')];
                 const labels=buttons.map(x=>(x.querySelector('.label')?.textContent||x.textContent).trim()).filter(Boolean);
                 const feed=[...document.querySelectorAll('.feedNav [data-feed]')];
-                const feedLabels=feed.map(x=>x.textContent.trim());
                 const rect=station?.getBoundingClientRect();
-                return {station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'&&rect.width>0&&rect.height>0,labels,missing:expected.filter(x=>!labels.includes(x)),feedLabels,feedCount:feed.length};
+                return {station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'&&rect.width>0&&rect.height>0,labels,missing:expected.filter(x=>!labels.includes(x)),feedCount:feed.length};
               },surfaces);
               console.log('INTERFACE_ACCEPTANCE_PROBE',viewport.label,JSON.stringify(probe));
               if(!probe.station||!probe.stationVisible) throw new Error(viewport.label+': Command Station is not visible');
@@ -254,18 +254,65 @@ jobs:
               for (const key of ['personal','collective','activity']) {
                 await page.locator('.feedNav [data-feed="'+key+'"]').click();
                 await page.waitForTimeout(80);
-                const mode=await page.evaluate((k)=>({key:k,active:[...document.querySelectorAll('.feedNav [data-feed]')].filter(x=>x.classList.contains('active')).map(x=>x.dataset.feed),title:document.querySelector('#feedTitle')?.textContent||'',visibleBlocks:[...document.querySelectorAll('.blocks .block')].filter(x=>getComputedStyle(x).display!=='none').length}),key);
+                const mode=await page.evaluate((k)=>({key:k,active:[...document.querySelectorAll('.feedNav [data-feed]')].filter(x=>x.classList.contains('active')).map(x=>x.dataset.feed),title:document.querySelector('#feedTitle')?.textContent||''}),key);
                 console.log('SMART_FEED_MODE_ACCEPTED',viewport.label,JSON.stringify(mode));
                 if(mode.active.length!==1||mode.active[0]!==key) throw new Error(viewport.label+': Smart Feed mode '+key+' did not activate');
                 if(mode.title.length===0) throw new Error(viewport.label+': Smart Feed title disappeared for '+key);
               }
               await context.close();
             }
-            console.log('INTERFACE_ACCEPTANCE_VERIFIED desktop+mobile Command Station + Personal/Collective/Activity');
+            console.log('INTERFACE_ACCEPTANCE_VERIFIED legacy static Command Station + Personal/Collective/Activity');
           } finally { await browser.close(); }
           EOF
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-interface-acceptance.mjs
           rm -f verify-interface-acceptance.mjs
+
+      - name: Verify React Command Station and Smart Feed interaction
+        if: ${{ inputs.release_surface == 'canonical-react' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          cat > verify-react-interface.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.NAYA_RUNTIME_URL;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          const surfaces=['Intelligence Today','Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Naya Play','Settings'];
+          try {
+            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
+              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
+              const page=await context.newPage();
+              const response=await page.goto(runtime+'/?name=Shawn&alias=shawn&react-interface='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
+              if(!response?.ok()) throw new Error(viewport.label+': React Hub HTTP unavailable');
+              await page.waitForTimeout(1200);
+              const probe=await page.evaluate((expected)=>{
+                const shell=document.querySelector('[data-shell-owner="AppShellV3"]');
+                const buttons=[...document.querySelectorAll('[data-naya-surface]')];
+                const labels=buttons.map(x=>(x.textContent||'').trim()).filter(Boolean);
+                const station=document.querySelector('.hub-experience');
+                return {shell:!!shell,marker:shell?.getAttribute('data-runtime-marker')||null,labels,missing:expected.filter(x=>!labels.includes(x)),station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'};
+              },surfaces);
+              console.log('REACT_INTERFACE_ACCEPTANCE_PROBE',viewport.label,JSON.stringify(probe));
+              if(!probe.shell||probe.marker!=='NAYANET-HUB-REACT-CANONICAL') throw new Error(viewport.label+': React command shell marker missing');
+              if(probe.missing.length) throw new Error(viewport.label+': missing visible Hub surfaces '+probe.missing.join(', '));
+              if(!probe.station||!probe.stationVisible) throw new Error(viewport.label+': Intelligence Today flagship surface is not visible');
+              const lenses=page.locator('.lens-tab[data-lens]');
+              if(await lenses.count()!==3) throw new Error(viewport.label+': expected three Intelligence lenses');
+              for(const key of ['personal','collective','activity']){
+                await page.locator('.lens-tab[data-lens="'+key+'"]').click();
+                await page.waitForTimeout(80);
+                const mode=await page.evaluate(k=>({active:[...document.querySelectorAll('.lens-tab[data-lens]')].filter(x=>x.classList.contains('active')).map(x=>x.getAttribute('data-lens')),context:document.querySelector('.signal-kicker')?.textContent||''}),key);
+                console.log('REACT_LENS_ACCEPTED',viewport.label,JSON.stringify(mode));
+                if(mode.active.length!==1||mode.active[0]!==key) throw new Error(viewport.label+': lens '+key+' did not activate');
+                if(!mode.context.includes(key.toUpperCase())) throw new Error(viewport.label+': lens context did not update for '+key);
+              }
+              await context.close();
+            }
+            console.log('REACT_INTERFACE_ACCEPTANCE_VERIFIED desktop+mobile Command Station + Intelligence Today + Smart Feed lenses');
+          } finally { await browser.close(); }
+          EOF
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-react-interface.mjs
+          rm -f verify-react-interface.mjs
 
       - name: Final proof
         run: |
