@@ -11,6 +11,8 @@ import hashlib, json, os, subprocess, sys, tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / ".naya/runtime"))
+import project_intelligence_reconstruction as pir
 def run(*args: str) -> str:
     return subprocess.check_output(args, cwd=ROOT, text=True).strip()
 
@@ -59,6 +61,13 @@ def main() -> int:
     cold = load(".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md")
     bridge_contract = load(".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md")
     bridge_context = load(".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json")
+    reconstruction = pir.build_current("NayaNET")
+    required_reconstruction = {"current","historical","superseded","stale","conflicted","unknown","evidence","causal_lineage","project_state","current_block","next_action"}
+    if not required_reconstruction.issubset(reconstruction):
+        fail("project reconstruction contract incomplete")
+    if reconstruction["resolution"]["status"] != "RECONSTRUCTED":
+        fail("project reconstruction did not resolve")
+    print("PI03_CANONICAL_RECONSTRUCTION=PASS")
     boot = load("SUPERBRAIN/AI-BOOT/START-HERE.md")
 
     active = blocks.get("active_block", {})
@@ -111,6 +120,8 @@ def main() -> int:
             "intent": "prove cold-Naya behavioral continuity",
             "identity": "NayaNET",
             "reconstruction": "PASS",
+            "reconstruction_schema": reconstruction["schema"],
+            "reconstruction_counts": reconstruction["counts"],
             "cold_restore": "PASS",
             "retrieval": "PASS",
             "current_state": "PASS",
