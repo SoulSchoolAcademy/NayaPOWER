@@ -1,68 +1,75 @@
 {
-    "$schema":  "naya/control-plane/block/v1",
-    "status":  "CANONICAL",
-    "active_block":  {
-                         "id":  "PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF",
-                         "status":  "ACTIVE",
-                         "priority":  "P0",
-                         "intent":  "Connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted Project Intelligence acceptance chain.",
-                         "protected":  [
-                                           "existing production Space",
-                                           "existing Connections and Smart List substrate",
-                                           "explicit authority boundary",
-                                           "Smart Mail receipt/cognition/Ledger lineage",
-                                           "fail-closed security",
-                                           "browser acceptance may proceed because engine/security closure is proven"
-                                       ],
-                         "acceptance":  [
-                                            "NAYANET/HUB/index.html is the sole current Hub product surface",
-                                            "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
-                                            "Smart Share is production-proven and its first causal failures were repaired surgically and re-proven; remaining feature gates continue in the locked order.",
-                                            "Smart Mail follows next, then Connections, Smart Spaces, and Smart Lists.",
-                                            "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
-                                        ],
-                         "evidence":  [
-                                          ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
-                                          ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
-                                          ".naya/receipts/2026-09-20-HUMAN-END-TO-END-COMPOUNDING-ACCEPTANCE.md",
-                                          ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
-                                      ],
-                         "target_state":  "PROJECT_INTELLIGENCE_WHOLE_CHAIN_AND_COLD_SUCCESSOR_PROVEN",
-                         "next_action":  "Execute the consolidated Project Intelligence proof: INTENT -\u003e IDENTITY -\u003e RECONSTRUCTION -\u003e COLD RESTORE -\u003e RETRIEVAL -\u003e CURRENT STATE -\u003e ONE NEXT ACTION -\u003e AUTHORITY -\u003e EXECUTION -\u003e VERIFICATION -\u003e LEARNING -\u003e UPDATE -\u003e COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
-                         "next_actions":  [
-                                              "Execute the consolidated Project Intelligence proof: INTENT -\u003e IDENTITY -\u003e RECONSTRUCTION -\u003e COLD RESTORE -\u003e RETRIEVAL -\u003e CURRENT STATE -\u003e ONE NEXT ACTION -\u003e AUTHORITY -\u003e EXECUTION -\u003e VERIFICATION -\u003e LEARNING -\u003e UPDATE -\u003e COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence."
-                                          ],
-                         "scope":  [
-                                       "canonical NAYANET/HUB/index.html",
-                                       "Smart Share",
-                                       "Smart Mail",
-                                       "Connections",
-                                       "Smart Spaces",
-                                       "Smart Lists",
-                                       "governed action execution",
-                                       "browser/runtime proof"
-                                   ],
-                         "next_action_count":  1
-                     },
-    "status_vocabulary":  [
-                              "INTENDED",
-                              "IMPLEMENTED",
-                              "COMPLETE",
-                              "VERIFIED",
-                              "RACE_READY",
-                              "PRODUCTION_PROVEN",
-                              "UNKNOWN",
-                              "FAILED",
-                              "STALE"
-                          ],
-    "rules":  {
-                  "verified_requires_proof":  true,
-                  "unknown_is_not_green":  true,
-                  "recorded_is_not_current":  true,
-                  "one_next_action":  true,
-                  "one_shot_ten_first":  true,
-                  "no_dead_end_handoff":  true,
-                  "no_orphan_execution":  true,
-                  "cold_naya_state_reconstruction_by_human":  false
-              }
+  "$schema": "naya/control-plane/block/v1",
+  "status": "CANONICAL",
+  "active_block": {
+    "id": "COLD-NAYA-TAKEOVER-PROOF",
+    "status": "ACTIVE",
+    "priority": "P0",
+    "intent": "Make GitHub the durable operating memory and Supabase the established governed runtime persistence layer so a cold Naya can restore, understand, act, learn, update, and hand off without Shawn reconstructing the project.",
+    "protected": [
+      "canonical NayaPOWER governance",
+      "canonical Project Intelligence bridge",
+      "live main as current source identity",
+      "established Supabase runtime",
+      "canonical Hub NAYANET/HUB/index.html",
+      "fail-closed authority",
+      "existing proven Smart Note/PIS/learning/security paths"
+    ],
+    "acceptance": [
+      "A cold Naya resolves live main before trusting recorded state.",
+      "A cold Naya reads the canonical boot chain and Project Intelligence bridge.",
+      "A cold Naya can answer WHO/WHAT/WHY/SUCCESS/CURRENT TRUTH/PROVEN/UNKNOWN/AUTHORITY/HISTORY/LEARNING/NEXT/PROOF/RECORD/CONTINUE from repository intelligence.",
+      "A cold Naya can identify exactly one highest-value authorized next action without asking Shawn to reconstruct repository state.",
+      "The established Supabase runtime is discoverable through canonical project sources without exposing secrets or requiring direct ordinary-user database access.",
+      "The cold Naya can execute the current authorized action, verify it, record learning, update durable state, and leave a runnable successor.",
+      "The proof distinguishes repository reconstruction from actual external LLM/provider behavior."
+    ],
+    "evidence": [
+      "SUPERBRAIN/AI-BOOT/START-HERE.md",
+      ".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md",
+      ".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json",
+      ".naya/naya-context-manifest.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/PROOF.json",
+      ".github/workflows/verify-nayanet-cold-project-intelligence.yml",
+      "Supabase project dahisasgpfvziswqvmvm runtime inspection"
+    ],
+    "target_state": "COLD_NAYA_CAN_RESTORE_UNDERSTAND_EXECUTE_VERIFY_LEARN_AND_HANDOFF",
+    "next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
+    "next_actions": [
+      "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary."
+    ],
+    "scope": [
+      "GitHub durable intelligence",
+      "Project Intelligence cold boot",
+      "canonical control plane",
+      "Supabase established runtime",
+      "successor continuity",
+      "governed execution"
+    ],
+    "next_action_count": 1
+  },
+  "status_vocabulary": [
+    "INTENDED",
+    "IMPLEMENTED",
+    "COMPLETE",
+    "VERIFIED",
+    "RACE_READY",
+    "PRODUCTION_PROVEN",
+    "UNKNOWN",
+    "FAILED",
+    "STALE"
+  ],
+  "rules": {
+    "verified_requires_proof": true,
+    "unknown_is_not_green": true,
+    "recorded_is_not_current": true,
+    "one_next_action": true,
+    "one_shot_ten_first": true,
+    "no_dead_end_handoff": true,
+    "no_orphan_execution": true,
+    "cold_naya_state_reconstruction_by_human": false
+  }
 }
