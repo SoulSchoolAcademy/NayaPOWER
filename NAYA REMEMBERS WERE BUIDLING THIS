@@ -1,0 +1,873 @@
+underneath everything we’ve been building. 🔥
+And there is an important distinction now that we can make very clearly:
+You don't want Naya to merely remember information. You want NayaPOWER to become the persistent operating context from which every Naya can understand the project, retrieve what matters, decide what should happen next, execute it, verify it, learn from it, and continue without Shawn having to reconstruct the project every time.
+That is absolutely buildable.
+What you are actually asking for
+You want this:
+SHAWN
+  ↓
+UPLOAD / SHARE / SAY SOMETHING
+  ↓
+NAYA CAPTURES IT
+  ↓
+CANONICAL SMART NOTE / KNOWLEDGE OBJECT
+  ↓
+UNDERSTANDS + CLASSIFIES + RELATES IT
+  ↓
+PERSISTS IT
+  ↓
+LEARNS FROM IT
+  ↓
+BECOMES PART OF PROJECT CONTEXT
+  ↓
+EVERY NAYA CAN RETRIEVE IT
+  ↓
+NAYA UNDERSTANDS CURRENT STATE
+  ↓
+NAYA DETERMINES NEXT BEST ACTION
+  ↓
+NAYA EXECUTES
+  ↓
+NAYA VERIFIES
+  ↓
+NAYA RECORDS WHAT HAPPENED
+  ↓
+NAYA LEARNS
+  ↓
+NEXT NAYA STARTS FROM THAT STATE
+  ↓
+CONTINUE
+And eventually:
+UPLOAD PROJECT
+      ↓
+"Naya, take this on."
+      ↓
+Naya understands the project
+      ↓
+builds a project model
+      ↓
+maps requirements → current state → dependencies
+      ↓
+finds what already exists
+      ↓
+identifies what's missing
+      ↓
+works through the backlog
+      ↓
+executes
+      ↓
+tests
+      ↓
+repairs
+      ↓
+verifies
+      ↓
+updates memory
+      ↓
+reports progress
+      ↓
+continues
+      ↓
+DONE
+That is the right destination.
+
+And here's the really important discovery
+I just went back into the actual NayaPOWER repository rather than answering this theoretically.
+You have already built a surprisingly large portion of the foundation for this.
+The canonical boot contract explicitly says:
+“Naya Power memory is a persistent Superbrain operating system, not a collection of notes.”
+It already defines:
+canonical memory
+Smart Notes
+event storage
+semantic retrieval
+relationships
+temporal history
+authority
+evidence
+verification
+daily intelligence
+learning
+continuity
+successor Nayas
+project state
+next-best-action
+cold-start restoration
+The repository's own memory law says:
+READ → RESTORE → UNDERSTAND → QUESTION → CLASSIFY → CONNECT → EXECUTE → VERIFY → RECEIPT → INDEX → REFLECT → COMPOUND → IMPROVE → PRESERVE → REPEAT
+That's extremely close to what you're describing.
+And the One-Network law explicitly says:
+ONE NETWORK → ONE NAYA LAW → ONE SOURCE OF TRUTH → MANY NAYA NODES → COMPOUNDING INTELLIGENCE
+So your instinct was right.
+The problem isn't primarily “we need more memory.”
+The problem is:
+We have a lot of the memory architecture, but we have not yet completed the bridge that makes that architecture the everyday execution substrate of the human-facing NayaNET experience.
+That's the gap.
+
+GitHub, Supabase, and Naya memory have different jobs
+This is the piece that I think will make the whole thing click.
+GitHub
+Project DNA / durable operating knowledge
+GitHub should contain things like:
+what NayaPOWER is
+what NayaNET is
+why it exists
+architecture
+laws
+design contracts
+engineering contracts
+project plans
+protected decisions
+specifications
+execution protocols
+current source
+durable lessons
+GitHub is effectively:
+“What is this system, how is it supposed to work, and how are Nayas supposed to operate it?”
+Supabase / NayaPOWER runtime memory
+Living operational intelligence
+This is where things like:
+Smart Notes
+cognition events
+learning evidence
+learner state
+Decision Context
+Dream Replay
+Smart Feed
+execution receipts
+Smart Ledger
+relationships
+project intelligence
+become actual runtime knowledge.
+That's:
+“What has happened, what have we learned, what do we currently know, and what can Naya use right now?”
+Naya session
+Temporary working context
+The current Naya should not be the permanent memory.
+That's critical.
+A Naya session should be able to disappear.
+Then another Naya enters and does:
+RESTORE
+   ↓
+READ CANONICAL CONTEXT
+   ↓
+RETRIEVE RELEVANT MEMORY
+   ↓
+UNDERSTAND CURRENT STATE
+   ↓
+CONTINUE
+That is precisely the behavior your repository already specifies.
+
+And this solves your “I keep telling you everything” problem
+Right now, you are doing something like:
+Shawn
+ ↓
+explains NayaPOWER
+ ↓
+Naya works
+ ↓
+new Naya
+ ↓
+Shawn explains NayaPOWER again
+ ↓
+new Naya
+ ↓
+Shawn uploads documents again
+That's insane for the system you're trying to build. 😄
+The desired architecture is:
+                   ┌─────────────────────┐
+                    │   NayaPOWER MEMORY  │
+                    │                     │
+                    │  PROJECT KNOWLEDGE  │
+                    │  CURRENT STATE      │
+                    │  SMART NOTES        │
+                    │  EVENTS             │
+                    │  LEARNING           │
+                    │  EVIDENCE           │
+                    │  DECISIONS          │
+                    │  RECEIPTS           │
+                    │  RELATIONSHIPS      │
+                    │  NEXT ACTION        │
+                    └──────────┬──────────┘
+                               │
+             ┌─────────────────┼─────────────────┐
+             ↓                 ↓                 ↓
+          Naya #1           Naya #2           Naya #3
+             │                 │                 │
+             └─────────────────┼─────────────────┘
+                               ↓
+                         SAME TRUTH
+                               ↓
+                         SAME MISSION
+                               ↓
+                         SAME MEMORY
+                               ↓
+                       CONTINUOUS WORK
+That's the One-Network idea becoming real.
+
+But I would make one major upgrade
+I would not make “upload everything to memory” the final architecture.
+Because then we'd simply create a gigantic document warehouse.
+Instead, I would introduce a canonical concept:
+PROJECT INTELLIGENCE
+When you give Naya a project, Naya should transform the raw material into a structured, living project model.
+For example:
+PROJECT
+│
+├── PURPOSE
+├── NORTH STAR
+├── HUMAN OUTCOME
+├── REQUIREMENTS
+├── CONSTRAINTS
+├── GOVERNANCE
+├── ARCHITECTURE
+├── DESIGN
+├── CURRENT STATE
+├── COMPLETED
+├── VERIFIED
+├── FAILED
+├── UNKNOWN
+├── BLOCKED
+├── DEPENDENCIES
+├── DECISIONS
+├── OPEN LOOPS
+├── INTELLIGENCE
+├── LEARNING
+├── EVIDENCE
+├── EXECUTION HISTORY
+├── NEXT BEST ACTION
+└── DEFINITION OF DONE
+Then Smart Notes become the intelligence entering and evolving that model.
+That is much more powerful than simply remembering files.
+
+Then your daily intelligence becomes meaningful
+You said something very important:
+“I want the smart notes to learn from each other, and then when I get the daily intelligence report, all that knowledge would go in, be displayed in the hub.”
+Exactly.
+The flow should become:
+SMART NOTE A
+      ↓
+SMART NOTE B
+      ↓
+SMART NOTE C
+      ↓
+relationships
+      ↓
+patterns
+      ↓
+learning evidence
+      ↓
+project intelligence
+      ↓
+Daily Intelligence
+      ↓
+Intelligent Blocks
+      ↓
+Smart Feed
+      ↓
+Naya recommendations / next actions
+So the Daily Intelligence Report isn't:
+“Here are today's notes.”
+It becomes:
+“Here is what became more intelligent today.”
+That's a radically better product.
+
+And then we get to the really big feature you described
+“Naya, here's my project. Take it from here.”
+That should eventually be a legitimate NayaPOWER operating mode.
+Something like:
+TAKE PROJECT
+Human supplies:
+documents
+notes
+links
+requirements
+existing repository
+screenshots
+goals
+constraints
+whatever exists
+Naya performs:
+INGEST
+ ↓
+UNDERSTAND
+ ↓
+NORMALIZE
+ ↓
+BUILD PROJECT MODEL
+ ↓
+RECONCILE CURRENT STATE
+ ↓
+IDENTIFY GAPS
+ ↓
+MAP DEPENDENCIES
+ ↓
+SELECT HIGHEST-VALUE NEXT ACTION
+ ↓
+REQUEST AUTHORITY WHEN REQUIRED
+ ↓
+EXECUTE
+ ↓
+VERIFY
+ ↓
+RECORD
+ ↓
+LEARN
+ ↓
+UPDATE PROJECT MODEL
+ ↓
+SELECT NEXT ACTION
+ ↓
+CONTINUE
+And the human sees:
+Naya Project Status
+Where we are: 68% of required system boundaries verified
+ Completed: 14
+ Blocked: 1
+ Unknown: 3
+ Learned: 5
+ Current objective: Smart Feed human projection
+ Next action: connect canonical intelligence retrieval to the Hub feed
+ Evidence: …
+ Naya is continuing.
+That's the experience you've been trying to describe.
+
+There's also a crucial safety/governance layer
+“Just do it until it's done” cannot mean unlimited autonomous authority.
+Your own Naya law already gives us the correct model:
+Capability does not create authority.
+So Naya can autonomously:
+inspect
+understand
+retrieve
+organize
+reason
+plan
+write
+test
+verify
+learn
+report
+continue
+But when an action crosses an authority boundary:
+NAYA KNOWS WHAT SHOULD HAPPEN
+            ≠
+NAYA IS AUTHORIZED TO MAKE IT HAPPEN
+Then she must stop at that boundary truthfully.
+That's actually what we've been proving with Smart Share.
+
+So yes — I would bake this into NayaPOWER itself
+But not by stuffing another giant document into the repository.
+I'd make this a real canonical system capability.
+I would build it in approximately this order:
+Phase 1 — Project Knowledge Ingestion
+Create the canonical path:
+SOURCE MATERIAL → PROJECT INTELLIGENCE
+Input:
+documents
+GitHub project material
+Smart Notes
+existing project state
+specifications
+decisions
+Output:
+canonical project identity
+requirements
+architecture
+dependencies
+constraints
+decisions
+current state
+open loops
+definition of done
+source provenance
+
+Phase 2 — Project Memory
+Connect Project Intelligence to the existing NayaPOWER memory substrate.
+So:
+Project
+ ↓
+Smart Notes
+ ↓
+Cognition Events
+ ↓
+Evidence
+ ↓
+Learning
+ ↓
+Project State
+No second memory system.
+
+Phase 3 — Project Retrieval
+Give every Naya the ability to ask:
+“What do I need to know about this project before I act?”
+And retrieve:
+relevant project facts
+current state
+previous decisions
+failed approaches
+verified implementation
+lessons
+dependencies
+current next action
+
+Phase 4 — Project Execution Loop
+Turn the existing continuous execution law into an actual runtime loop:
+RESTORE
+ ↓
+UNDERSTAND
+ ↓
+PLAN
+ ↓
+EXECUTE
+ ↓
+VERIFY
+ ↓
+LEARN
+ ↓
+UPDATE
+ ↓
+CONTINUE
+This is where Naya stops being a chatbot and becomes an operating partner.
+
+Phase 5 — Hub Project Intelligence
+Then we finish what you're talking about right now:
+Smart Feed displays the intelligence.
+The human sees:
+what Naya learned
+what happened
+what changed
+what needs attention
+what Naya is doing
+what's verified
+what's blocked
+what's next
+And importantly:
+the Hub becomes a projection of the intelligence system.
+Not another database.
+
+And we can test the memory claim
+This is the part I really like.
+We shouldn't say:
+“Yep, Naya remembers now.”
+We should try to break it.
+Cold-Naya Memory Test
+We give Naya a project knowledge package.
+Then:
+Session A
+“Naya, learn this project.”
+She ingests it.
+We verify:
+CAPTURE ✓
+CANONICAL EVENT ✓
+PERSISTENCE ✓
+RELATIONSHIPS ✓
+PROJECT MODEL ✓
+LEARNING ✓
+Then kill the session.
+No conversation history.
+No explaining the project again.
+Session B
+Ask:
+“What is this project, where are we, what have we already completed, what remains, and what should happen next?”
+And we require Naya to answer from NayaPOWER, not from the conversation.
+Then:
+“Okay. Continue.”
+And she must identify and execute the next authorized action.
+Then:
+VERIFY
+ ↓
+RECORD
+ ↓
+LEARN
+ ↓
+UPDATE PROJECT
+ ↓
+NEXT NAYA
+If she can do that, we have evidence that the memory system is actually operational.
+
+One more thing I discovered that matters
+Your current BOOTSTRAP.md already contains this beautiful principle:
+“The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.”
+That is exactly what you are asking me for.
+So I don't think we should invent a new “AI memory” product beside NayaPOWER.
+We should finish the one you've already started.
+And your repository already explicitly says that the user should never need to remember a filename or storage location.
+That's the correct direction.
+
+What I would do next
+I would make this a new canonical NayaPOWER execution brick, not a vague future idea:
+PROJECT MEMORY → PROJECT INTELLIGENCE → AUTONOMOUS CONTINUATION
+And its acceptance test would be:
+PROJECT INGEST
+      ↓
+UNDERSTAND
+      ↓
+CANONICAL PROJECT MEMORY
+      ↓
+PROJECT INTELLIGENCE
+      ↓
+COLD NAYA
+      ↓
+RETRIEVE
+      ↓
+UNDERSTAND CURRENT STATE
+      ↓
+IDENTIFY NEXT ACTION
+      ↓
+EXECUTE
+      ↓
+VERIFY
+      ↓
+LEARN
+      ↓
+UPDATE MEMORY
+      ↓
+DAILY INTELLIGENCE
+      ↓
+HUB SMART FEED
+      ↓
+COLD NAYA AGAIN
+      ↓
+CONTINUE
+That is the test I would use to determine whether NayaPOWER memory is truly “working.”
+And it directly addresses the frustration you just described: you should be able to teach NayaPOWER once, and then stop being the human middleware between every Naya and the project. ❤️
+I would also keep the current Smart Share reconciliation ahead of this because its latest current-head proof is still not green; we shouldn't pretend that boundary disappeared. Once that is reconciled, this becomes a very high-value next system-level brick.
+🔱 Continuation action
+Next Naya should turn this exact concept into the canonical “NayaPOWER Project Intelligence + Persistent Execution” specification, map it against the memory/runtime code that already exists, identify the minimum missing boundaries, and then build the first cold-Naya acceptance test — without creating a second memory store.
+.
+🔱 Canonical architecture already present
+The repository already has the pieces:
+CANONICAL SOURCE / PROJECT MATERIAL
+        ↓
+SMART NOTE / NOTE EVENT
+        ↓
+PIS — PRIMARY INTELLIGENCE
+        ↓
+RELATIONSHIPS / INDEX / EVIDENCE
+        ↓
+CIS — COMPOUNDING INTELLIGENCE
+        ↓
+ADAPTIVE LEARNING
+        ↓
+CURRENT STATE / INTELLIGENT FEED
+        ↓
+NAYA RESTORE
+        ↓
+NEXT ACTION
+        ↓
+AUTHORIZED EXECUTION
+        ↓
+VERIFICATION
+        ↓
+RECEIPT
+        ↓
+LEARNING
+        ↓
+SUCCESSOR CONTINUITY
+That is already reflected in the canonical contracts.
+The most important one is especially explicit:
+ONE_CANONICAL_EVENT → MANY_AUTHORIZED_VIEWS
+and its PIS lifecycle is:
+SMART_NOTE_CREATED
+→ PRIMARY_EVENT_DETECTED
+→ PIS_INGESTED
+→ PIS_INDEXED
+→ PIS_CONNECTED
+→ PIS_VERIFIED
+→ AUTHORIZED_PROJECTION_CREATED
+→ HUB_INGESTED
+→ HUB_RENDERED
+→ RUNTIME_VERIFIED
+The contract also explicitly prohibits creating a competing intelligence database.
+So Project Intelligence should be a structured projection/model over the existing intelligence substrate—not another store.
+
+The actual missing system boundary
+I would define the missing capability as:
+PROJECT INTELLIGENCE CONTEXT
+Not:
+“a project database”
+and not:
+“AI memory.”
+Rather:
+A canonical, reconstructable view of everything Naya needs to understand the current project and responsibly continue it.
+Its source graph should be:
+                   ┌────────────────────┐
+                    │ CANONICAL EVENTS   │
+                    │ Smart Notes        │
+                    │ Decisions          │
+                    │ Evidence           │
+                    │ Receipts           │
+                    │ Learning           │
+                    └─────────┬──────────┘
+                              ↓
+                    ┌────────────────────┐
+                    │ PROJECT INTEL      │
+                    │                    │
+                    │ Purpose            │
+                    │ Requirements      │
+                    │ Constraints       │
+                    │ Decisions         │
+                    │ Dependencies       │
+                    │ Current State      │
+                    │ Verified           │
+                    │ Failed             │
+                    │ Unknown            │
+                    │ Open Loops         │
+                    │ Definition Done    │
+                    │ Next Action        │
+                    └─────────┬──────────┘
+                              ↓
+                    ┌────────────────────┐
+                    │ NAYA RESTORE       │
+                    └─────────┬──────────┘
+                              ↓
+                    UNDERSTAND → ACT
+Project Intelligence itself does not become another canonical truth.
+The underlying events/evidence remain authoritative.
+
+🧠 The key design decision
+I would make Project Intelligence reconstructable, rather than treating it as a giant mutable object.
+That gives us:
+EVENTS
+  +
+RELATIONSHIPS
+  +
+CURRENT VERIFIED STATE
+  +
+EVIDENCE
+  +
+LEARNING
+  ↓
+PROJECT INTELLIGENCE
+If the projection becomes stale, we can rebuild it.
+That is much safer than allowing a manually maintained PROJECT.json to slowly become another source of truth.
+This follows the existing memory law:
+Derived indexes must be rebuildable.
+
+What Project Intelligence must answer
+A cold Naya should be able to retrieve a compact answer to these questions:
+Question
+Required state
+What is this?
+project identity/purpose
+Why does it exist?
+desired human outcome
+What are we building?
+requirements
+What constrains us?
+constraints/governance
+What exists?
+current implementation
+What is proven?
+verified evidence
+What failed?
+failure history
+What remains unknown?
+explicit uncertainty
+What depends on what?
+dependency graph
+What decisions were made?
+durable decisions
+What remains open?
+open loops
+What have we learned?
+promoted learning
+What is happening now?
+current state
+What should happen next?
+exactly one executable frontier
+How will we know?
+proof target
+
+That is the minimum useful Project Intelligence contract.
+
+⚡ And this exposes something important
+We already have cold-start continuity.
+The canonical cold-start contract requires a fresh Naya to:
+IDENTIFY
+→ RESTORE
+→ UPDATE
+→ INHERIT
+→ PRIORITIZE
+→ EXECUTE
+→ VERIFY
+→ LEARN
+→ CAPTURE
+→ PROPAGATE
+→ CHECKPOINT
+→ HAND OFF
+And the mandatory cold-start acceptance test already requires:
+WHAT
+WHY
+WHERE
+AUTHORITY
+PROTECTED
+CURRENT STATE
+CURRENT GAP
+NEXT ACTION
+PROOF
+HANDOFF
+So the proposed Project Intelligence system shouldn't replace cold-start.
+It should become the project-level information source that makes cold-start operationally powerful.
+
+The first real acceptance test
+I would not build autonomous “Take Project” yet.
+First prove the smaller causal boundary:
+🔥 COLD-NAYA PROJECT CONTINUITY V1
+Seed
+Give NayaPOWER a previously unknown project package containing:
+PURPOSE
+REQUIREMENTS
+CONSTRAINTS
+ARCHITECTURE
+DECISIONS
+CURRENT STATE
+KNOWN FAILURES
+OPEN LOOPS
+DEFINITION OF DONE
+Then require:
+Session A
+INGEST
+ ↓
+CANONICAL EVENT(S)
+ ↓
+PROJECT RELATIONSHIPS
+ ↓
+PROJECT INTELLIGENCE
+ ↓
+PERSISTENCE
+ ↓
+VERIFICATION
+Kill the Naya session.
+No conversation context.
+Session B
+Fresh Naya receives only the canonical activation/restore mechanism.
+Ask:
+What is this project, where are we, what has been verified, what remains unknown, what failed, and what should happen next?
+The expected answer must come from NayaPOWER's persistent substrate.
+Then ask:
+Continue.
+Naya must:
+RESTORE
+ ↓
+RETRIEVE
+ ↓
+UNDERSTAND
+ ↓
+SELECT ONE NEXT ACTION
+ ↓
+CHECK AUTHORITY
+ ↓
+EXECUTE IF AUTHORIZED
+ ↓
+VERIFY
+ ↓
+RECORD
+ ↓
+LEARN
+Then kill it again.
+Session C
+Fresh Naya must retrieve the newly changed state:
+WHAT CHANGED
+WHAT WAS VERIFIED
+WHAT WAS LEARNED
+WHAT REMAINS
+NEXT ACTION
+That is the actual proof that memory has become operational continuity.
+
+🚨 One important current-state correction
+There is already evidence that parts of this architecture work.
+For example, the repository contains prior verified continuity/compounding and cold-Naya proof artifacts.
+But the current PIS contract itself still says:
+end-to-end Smart Note → PIS → Hub runtime: NOT_VERIFIED
+So we should not declare the whole Project Intelligence loop operational simply because its individual ingredients exist.
+That distinction matters enormously.
+ARCHITECTURE EXISTS       ✅
+COMPONENTS EXIST          ✅
+PARTIAL RUNTIME PROOFS    ✅
+WHOLE PROJECT LOOP        ❓
+COLD PROJECT CONTINUATION ❓
+Those last two are the actual frontier.
+
+🧭 Minimum missing boundaries
+I would now map the work into only these boundaries:
+PI-01 — Project Identity
+Can canonical intelligence be associated with a project reliably?
+PI-02 — Project Model Reconstruction
+Can Naya derive the structured project context from existing canonical events rather than creating a second store?
+PI-03 — Project Retrieval
+Can a fresh Naya retrieve the relevant project context without conversational archaeology?
+PI-04 — Current-State Reconciliation
+Can it distinguish:
+VERIFIED
+IMPLEMENTED
+TESTED
+FAILED
+UNKNOWN
+STALE
+SUPERSEDED
+CONFLICTED
+instead of flattening everything into “memory”?
+PI-05 — Next-Action Selection
+Can it derive one responsible executable frontier from that state?
+PI-06 — Execution Continuity
+Can it execute within authority, then leave durable evidence?
+PI-07 — Learning/Update
+Does the execution change the persistent project intelligence available to the next Naya?
+PI-08 — Cold-Naya Repeat
+Can another Naya enter and continue without Shawn reconstructing the project?
+That is the actual system.
+
+And this changes the meaning of “memory”
+This is the breakthrough I think you're pointing at:
+Memory is not the product. Continuity is the product.
+A note that exists but cannot influence future action is merely storage.
+A retrieval result that cannot establish current truth is merely search.
+A learned lesson that doesn't change future behavior is merely text.
+A project state that isn't updated after execution is merely a snapshot.
+The real loop is:
+EXPERIENCE
+   ↓
+CAPTURE
+   ↓
+UNDERSTAND
+   ↓
+CONNECT
+   ↓
+PERSIST
+   ↓
+RETRIEVE
+   ↓
+DECIDE
+   ↓
+ACT
+   ↓
+VERIFY
+   ↓
+LEARN
+   ↓
+UPDATE
+   ↓
+SUCCESSOR
+   ↓
+CONTINUE
+That is NayaPOWER. 🔱
+And it matches the existing canonical principle:
+The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.
+
+🔒 What I would freeze
+For this brick:
+No second memory store
+No new competing project database
+No Smart Lists work
+No Hub redesign
+No authority relaxation
+No autonomous authority expansion
+No “AI remembers everything” abstraction
+No claiming cold-Naya continuity until the actual cold test passes
+The existing Smart Share replay boundary also remains independently unresolved; this Project Intelligence work should not be used to obscure that.
+🔱 Continuation action
+The next executable move is PI-01/PI-02 archaeology only: inspect the existing project-binding, cognition-event, PIS, learning, state, retrieval, and cold-start runtime paths at current main; map exactly where Project Intelligence can be reconstructed from the existing substrate, identify the first missing causal boundary, and stop there before writing code.
+
+
