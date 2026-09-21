@@ -907,5 +907,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script src="/assistant-runtime.js?v=20260920-smartshare-bindfix3"></script>
 <script src="/smart-feed.js?v=20260919-p1"></script>
 <script src="/smart-tabs.js?v=20260919-p1"></script>\n<script src="/hub-completeness.js?v=20260920-completeness1"></script>
+
+<!-- NAYA-CANONICAL-DREAM-SURFACE-V1 -->
+<script>
+(()=>{
+  if(location.pathname!=='/dream') return;
+  const main=document.querySelector('.main'); if(!main) return;
+  main.innerHTML=`<section class="hub-route" data-surface="dream" style="padding:32px 22px 120px">
+    <div class="orientation"><div><span class="eyebrow">NAYANET · DREAM · REPLAY · SYNTHESIS</span><h1>Dream</h1><p class="sub">Replay preserved intelligence into a governed learning candidate without changing authority.</p></div><div class="nayaMark"><span>✦</span><b>NAYA</b><small>GOVERNED REPLAY</small></div></div>
+    <div class="nutshell"><b>IN A NUTSHELL</b><p>Dream replays preserved intelligence through the governed learning path. It does not silently change authority.</p></div>
+    <div class="actions"><button class="action" id="nayaDreamRun">✦ DREAM REPLAY</button></div>
+    <div class="nayaInsight" id="nayaDreamStatus" role="status"><b>DREAM</b><p>Loading authenticated preserved intelligence…</p></div>
+    <div class="layers" id="nayaDreamReplays"></div>
+  </section>`;
+  const rt=window.NayaAssistantRuntime;
+  const status=document.getElementById('nayaDreamStatus'); const cards=document.getElementById('nayaDreamReplays'); const btn=document.getElementById('nayaDreamRun');
+  const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const setStatus=(t)=>{if(status)status.querySelector('p').textContent=t};
+  const render=rows=>{if(!cards)return;cards.innerHTML=(rows||[]).map((r,i)=>'<article class="layer"><div class="layerHead"><span class="dot"></span><b>DREAM REPLAY</b><span class="state">'+esc(r.status||'RECORDED')+'</span></div><div class="layerBody"><strong>'+esc(r.id||('Replay '+(i+1)))+'</strong><br>'+esc(r.summary||r.description||'Deterministic replay of preserved intelligence.')+'<br><small>EVENT · '+esc(r.event_id||'unknown')+'</small></div></article>').join('')||'<div class="feature-empty"><b>DREAM IS READY</b><span>Select preserved intelligence through the governed runtime and run a replay.</span></div>'};
+  (async()=>{try{if(!rt?.snapshot||!rt?.retrieve||!rt?.listDreamReplays)throw new Error('DREAM_RUNTIME_UNAVAILABLE');const snap=rt.snapshot();if(!snap.authenticated)throw new Error('AUTH_REQUIRED');const rows=await rt.listDreamReplays();render(rows);setStatus('Authenticated. '+rows.length+' replay(s) currently recorded.');}catch(e){setStatus(e?.message||'DREAM_LOAD_FAILED')}})();
+  btn?.addEventListener('click',async()=>{try{if(!rt?.dreamReplay)throw new Error('DREAM_RUNTIME_UNAVAILABLE');btn.disabled=true;setStatus('DREAM REPLAY RUNNING…');const events=await rt.retrieve();const source=(events||[]).find(e=>!['LEARN','DREAM','APPLY','VERIFY'].includes(String(e?.metadata?.stage||'').toUpperCase()));const replay=await rt.dreamReplay({event_id:source?.event_id||null,idempotency_key:'hub-dream-'+(source?.event_id||'latest')});const rows=await rt.listDreamReplays();render(rows);setStatus('DREAM REPLAY VERIFIED · '+String(replay?.id||'REPLAY'));}catch(e){setStatus(e?.message||'DREAM_REPLAY_FAILED')}finally{btn.disabled=false}});
+})();
+</script>
 </body>
 </html>
