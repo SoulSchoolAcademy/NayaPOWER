@@ -34,7 +34,7 @@ const jsonRequest=async(path,token,body)=>{
   return data;
 };
 
-const authorityGrants=new Map();
+const sha256=async(value)=>Buffer.from(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value))).toString("hex");`n`nconst ensureAuthoritySourceEvent=async(eventId,projectId,title,metadata)=>{`n  const sourceHash=await sha256(JSON.stringify({eventId,projectId,title,metadata}));`n  const {error}=await supabase.from("nayanet_cognition_events").upsert({`n    user_id:sender.id,project_id:projectId,event_id:eventId,created_at:new Date().toISOString(),updated_at:new Date().toISOString(),`n    type:"authorization",classification:"decision",title,content:title,source:"controlled-proof7",status:"verified",actor:"system",confidence:1,`n    tags:["authority","controlled-test","proof7"],parent_event_id:null,source_hash:sourceHash,schema_version:"1.0.0",receipt_id:"",`n    metadata:{...metadata,canonical_source:"controlled-proof7",issuer_user_id:sender.id}``n  },{onConflict:"user_id,project_id,event_id"});`n  if(error) throw error;`n};`n`nconst authorityGrants=new Map();
 const v1=await insertPolicy(1,null,"HISTORY_ONLY_V1");
 const v2=await insertPolicy(2,v1.id,"HISTORY_PLUS_VERIFIED_RECEIPT_V1");
 
@@ -68,9 +68,9 @@ const prepare=async(p)=>{
     unauthorizedBlocked=String(error?.message||error).includes("CONTROLLED_TEST_REQUIRES_AUTHORITY_GRANT");
   }
   if(!unauthorizedBlocked) throw new Error("CONTROLLED_TEST_SELF_AUTHORIZATION_NOT_BLOCKED");
-  const authority = await supabase.rpc("nayanet_issue_authority_grant",{
+  const authoritySourceEventId="controlled-paired-human-authorization-"+runId+"-"+p.id;`n  await ensureAuthoritySourceEvent(authoritySourceEventId,experimentProject,"Controlled Proof7 authority source",{authorization_type:"explicit_controlled_experiment_authorization",run_id:runId,policy_id:p.id});`n  const authority = await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
-    p_source_event_id:"controlled-paired-human-authorization-"+runId+"-"+p.id,
+    p_source_event_id:authoritySourceEventId,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
     p_scope:{project_id:experimentProject,target:p.id},
     p_actions:["policy.controlled_test"],
@@ -93,9 +93,9 @@ const prepare=async(p)=>{
     reason:"canonical-authority-grant-validated"
   });
 
-  const mailAuthority = await supabase.rpc("nayanet_issue_authority_grant",{
+  const mailAuthoritySourceEventId="controlled-paired-smart-mail-authorization-"+runId+"-"+p.id;`n  await ensureAuthoritySourceEvent(mailAuthoritySourceEventId,experimentProject,"Controlled Proof7 smart-mail authority source",{authorization_type:"explicit_controlled_experiment_mail_authorization",run_id:runId,policy_id:p.id});`n  const mailAuthority = await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
-    p_source_event_id:"controlled-paired-smart-mail-authorization-"+runId+"-"+p.id,
+    p_source_event_id:mailAuthoritySourceEventId,
     p_mission_id:"NayaNET Controlled Paired Policy Outcome Experiment",
     p_scope:{project_id:experimentProject,target:receiver.id},
     p_actions:["smart_mail_send"],
@@ -135,9 +135,9 @@ const senderConnectionId=saveSender.data?.connection?.id;
 const receiverConnectionId=saveReceiver.data?.connection?.id;
 if(!senderConnectionId||!receiverConnectionId) throw new Error("MUTUAL_CONNECTION_NOT_CREATED");
 
-  const conflicting=await supabase.rpc("nayanet_issue_authority_grant",{
+  const conflictingSourceEventId="controlled-constraint-negative-"+runId+"-"+v1.id;`n  await ensureAuthoritySourceEvent(conflictingSourceEventId,experimentProject,"Controlled Proof7 constraint-negative authority source",{authorization_type:"explicit_negative_constraint_proof",run_id:runId,policy_id:v1.id});`n  const conflicting=await supabase.rpc("nayanet_issue_authority_grant",{
     p_subject_id:sender.id,
-    p_source_event_id:"controlled-constraint-negative-"+runId+"-"+v1.id,
+    p_source_event_id:conflictingSourceEventId,
     p_mission_id:"NayaNET authority constraint negative proof",
     p_scope:{project_id:experimentProject,target:receiver.id},
     p_actions:["smart_mail_send"],
