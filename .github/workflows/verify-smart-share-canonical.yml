@@ -291,7 +291,7 @@ jobs:
           if(!(collectiveC.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_COLLECTIVE_THIRD_PARTY_RETRIEVAL_FAILED');
           const personalC=await cp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50}));
           if((personalC.items||[]).some(x=>x.id===sourceRows[0].id)) throw Error('SMART_SHARE_PRIVATE_SOURCE_LEAKED_TO_THIRD_PARTY_PERSONAL_FEED');
-          await ap.reload({waitUntil:'networkidle'}); await ap.waitForTimeout(700);
+          await ap.reload({waitUntil:'domcontentloaded'}); await ap.waitForFunction(()=>Boolean(window.NayaAssistantRuntime),null,{timeout:10000});
           const reloadCollective=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if(!(reloadCollective.items||[]).some(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id)) throw Error('SMART_SHARE_NOT_RETRIEVED_AFTER_RELOAD');
           const revoke=await ap.evaluate(id=>window.NayaAssistantRuntime.smartFeedAction({action:'revoke',publication_id:id}),publicationId);
