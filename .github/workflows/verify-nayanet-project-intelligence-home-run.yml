@@ -238,6 +238,8 @@ jobs:
               const state=await ctx.storageState();
               const fresh=await browser.newContext({storageState:state});
               const fp=await fresh.newPage();
+              let continuationEventId=null;
+              let successorHandoff=null;
               try{
                 await fp.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
                 const freshSession = await (async()=>{
@@ -284,10 +286,10 @@ jobs:
                   outcome:'Fresh successor executed the explicitly authorized Project Intelligence continuation.'
                 });
                 if(continuation.status!=='CONTINUATION_VERIFIED'||!continuation.continuation_event?.event_id||!continuation.receipt?.id) throw new Error('AUTHORIZED_CONTINUATION_FAILED');
-                const continuationEventId=continuation.continuation_event.event_id;
+                continuationEventId=continuation.continuation_event.event_id;
                 mark('CONTINUATION','PASS',{continuation_event_id:continuationEventId,receipt_id:continuation.receipt.id});
 
-                const successorHandoff=await compound(fp,freshSession,'successor_handoff',{
+                successorHandoff=await compound(fp,freshSession,'successor_handoff',{
                   parent_event_id:continuationEventId,
                   what_happened:'Fresh successor restored the project, retrieved exact bridge lineage, and executed the explicitly authorized continuation.',
                   what_changed:'A new verified continuation event and receipt were created.',
