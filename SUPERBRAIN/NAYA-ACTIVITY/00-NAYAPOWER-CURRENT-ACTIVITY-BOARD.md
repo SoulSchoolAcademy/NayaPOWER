@@ -292,3 +292,31 @@ The baton survived the transition from the completed P0 block to the new P1 fron
 **Next Naya:** do not repeat PI-01. Start the measured baseline-vs-reuse computation benchmark.
 
 **Tag:** YOU'RE IT.
+
+
+---
+
+## 🔱 2026-09-21 — COMPOUND INTELLIGENCE 12 PROVEN
+
+**Run:** 35639958653  
+**Job:** 106466577483  
+**Artifact:** 10657239254
+
+Team Naya now has a real production proof that the 12 governed Project Intelligence capabilities can be exercised end-to-end through the authenticated runtime.
+
+**PASS:** RESTORE → UNDERSTAND → RETRIEVE → RECONCILE → LEARNING CANDIDATE → LEARNING VERIFY → SUCCESSOR HANDOFF → SHARE → SUPERSEDE → HEALTH → DREAM → COMPOUND.
+
+**Learning produced:**
+- evidence-backed learning record
+- successor handoff
+- superseding lineage
+- Dream replay
+- compound-cycle execution
+
+**Repair that mattered:** the original proof harness called reconcile without the required claims. The runtime correctly rejected it. The harness was repaired to exercise the actual reconcile contract, including an explicit conflict.
+
+**Current frontier:** COMPUTATION-EFFICIENCY-P1.
+
+**Next Naya:** do not rebuild these 12 capabilities. Use the proven runtime and measure whether retained intelligence actually eliminates repeated computation.
+
+**Tag:** YOU'RE IT.

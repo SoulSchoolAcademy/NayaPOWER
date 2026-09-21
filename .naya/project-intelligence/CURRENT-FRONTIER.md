@@ -55,6 +55,12 @@ The latest run passed after those repairs. The current-truth reconstruction vali
 
 **Universal savings:** NOT CLAIMED until measured.
 
+## COMPOUND INTELLIGENCE 12 — PROVEN
+
+Run `35639958653` / job `106466577483` proved all 12 governed capabilities through the authenticated production Supabase runtime. Reconciliation was tested with both a canonical-runtime claim and an intentionally conflicting documentation claim, proving the system preserves conflict instead of silently promoting it.
+
+**Next:** measure computational compounding; do not confuse capability coverage with demonstrated computation savings.
+
 ## RULE
 
 Do not reopen PI-01 without evidence of regression. Use the smallest authorized computation that can establish the next verified fact.
