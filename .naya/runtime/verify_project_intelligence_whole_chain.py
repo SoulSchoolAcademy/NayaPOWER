@@ -33,6 +33,11 @@ def successor(receipt_path: str) -> int:
     receipt = json.loads(Path(receipt_path).read_text(encoding="utf-8"))
     # A cold successor gets only the receipt path plus the canonical repository.
     state = json.loads(receipt["durable_state"])
+    reconstruction = state.get("project_intelligence_reconstruction")
+    if not reconstruction or reconstruction.get("resolution",{}).get("status") != "RECONSTRUCTED":
+        fail("successor: reconstructed Project Intelligence not restored")
+    if not {"current","historical","superseded","stale","conflicted","unknown","evidence","causal_lineage","next_action"}.issubset(reconstruction):
+        fail("successor: reconstructed context contract incomplete")
     if state["verified_marker"] != receipt["verified_marker"]:
         fail("successor: durable marker mismatch")
     if state["learning"] != "verified-state-change can be carried forward with provenance":
@@ -106,6 +111,7 @@ def main() -> int:
             "action": "write_verified_proof_marker",
             "verified_marker": marker,
             "learning": "verified-state-change can be carried forward with provenance",
+            "project_intelligence_reconstruction": reconstruction,
             "next_action": "continue from the canonical active block",
         }
         state_path.write_text(json.dumps(state, sort_keys=True), encoding="utf-8")
