@@ -296,14 +296,14 @@ jobs:
           await context.close();
           await browser.close();
           EOF
-          export RECEIPT_PATH="$RUNNER_TEMP/wave-a-browser-acceptance.json"
-          export SCREENSHOT_PATH="$RUNNER_TEMP/canonical-hub-desktop.png"
+          export RECEIPT_PATH="$GITHUB_WORKSPACE/wave-a-browser-acceptance.json"
+          export SCREENSHOT_PATH="$GITHUB_WORKSPACE/canonical-hub-desktop.png"
           node wave-a-browser-acceptance.mjs
       - name: Upload machine receipt and canonical shell screenshot
         uses: actions/upload-artifact@v4
         with:
           name: wave-a-canonical-september17-browser-acceptance
           path: |
-            ${{ runner.temp }}/wave-a-browser-acceptance.json
-            ${{ runner.temp }}/canonical-hub-desktop.png
+            ${{ github.workspace }}/wave-a-browser-acceptance.json
+            ${{ github.workspace }}/canonical-hub-desktop.png
           if-no-files-found: error
