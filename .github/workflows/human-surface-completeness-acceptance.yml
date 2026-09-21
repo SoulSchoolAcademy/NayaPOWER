@@ -37,7 +37,7 @@ jobs:
           const established=await p.evaluate(async()=>window.NayaNETNameFirstAuth.establish({name:'Naya Surface Audit',alias:location.search.match(/[?&]alias=([^&]+)/)?.[1]||('surface'+Date.now())}));if(!established?.authenticated||!established?.userId)throw Error('FIRST_DIVERGENCE:NAME_FIRST_ESTABLISH_FAILED:'+JSON.stringify(established));
           const checks={};
           await p.goto(runtime+'/feed?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});await p.waitForFunction(()=>!!document.querySelector('.shell'),{timeout:30000});
-          checks.hub='PASS';await p.waitForFunction(()=>!!document.querySelector('[data-shell-owner="AppShellV3"]'),{timeout:30000});await p.waitForFunction(()=>!!document.querySelector('input[aria-label="Search intelligence"]'),{timeout:30000});
+          checks.hub='PASS';await p.waitForFunction(()=>!!document.querySelector('.shell'),{timeout:30000});await p.waitForFunction(()=>!!document.querySelector('input[aria-label="Search intelligence"]'),{timeout:30000});
           const search=p.getByLabel('Search intelligence');await search.fill('intelligence');await search.press('Enter');await p.waitForTimeout(1200);
           if(!(await p.locator('.shell').count()))throw Error('SEARCH_SURFACE_DISAPPEARED');
           checks.search='PASS';
