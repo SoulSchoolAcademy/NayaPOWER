@@ -21,10 +21,10 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 — NAYANET PROJECT INTELLIGENCE MASTER PROOF",
+  "priority": "P0 — NAYANET CONSTITUTIONAL HARDENING",
   "priority_zero_master_note": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-  "current_block": "NAYANET-MASTER-PROOF-CONSOLIDATION",
-  "current_block_status": "COMPLETE",
+  "current_block": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+  "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
     "index": ".naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md",
@@ -176,9 +176,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "REMAINING_CONSTITUTIONAL_AND_PRODUCT_ACCEPTANCE_GAPS",
-  "single_next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
+  "single_next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions.",
   "next_actions": [
-    "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected."
+    "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
@@ -213,5 +213,17 @@
     "downstream_hub_next_after_pi": "SMART_MAIL_HUMAN_LIFECYCLE"
   },
   "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
-  "latest_execution_head": "1b88648fe69db5d4a130e85e71d2c36345b55135"
+  "latest_execution_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "current_frontier": {
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+    "status": "ACTIVE",
+    "source_checkpoint": "0daeed21d9563e4aa24555d13b05a2e433497a5b",
+    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions.",
+    "definition_of_done": "CLAIMS_CONTRACT_VERIFIED",
+    "evidence_required": [
+      "claim schema",
+      "valid/invalid fixtures",
+      "GitHub Actions receipt"
+    ]
+  }
 }
