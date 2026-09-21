@@ -205,7 +205,7 @@ jobs:
             window.addEventListener('nayanet:smart-share-published',handler,{once:true});
           }));
 
-          await shareButton.click({force:true});
+          await boundShareButton.click({force:true});
 
           const publishedDispatch=await publishedDispatchPromise;
           const afterClick=await ap.evaluate(()=>({
