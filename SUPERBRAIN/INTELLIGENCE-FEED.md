@@ -537,3 +537,87 @@ Do not make Shawn repeat intelligence already stored in the system.
 **PI-01:** Prove RESTORE → RETRIEVE → RECONCILE → RENDER → COLD SUCCESSOR as one governed journey.
 
 **TAG, YOU'RE IT.**
+
+
+---
+
+## 2026-09-21 — PI-01 PROJECT INTELLIGENCE WHOLE-CHAIN HOME RUN
+
+**Status:** 🟢 **PRODUCTION WHOLE-CHAIN PROVEN**
+
+**Canonical proof:** GitHub Actions run `35638451543`, job `106461599787`, source HEAD `cc3afacd9d3502440f37444c59d4517445b9144d`.
+
+### WHAT WE KNEW
+
+The Project Intelligence architecture already had governed restore, retrieve, bridge, canonical Hub rendering, ACK, authority, learning, and successor capabilities. The remaining P0 question was whether one genuinely fresh runtime successor could consume the durable intelligence and continue without Shawn reconstructing the project.
+
+### WHAT WE DID
+
+We executed the same governed PI-01 proof and stopped at the first deterministic boundary on each failure.
+
+1. Run `35638053862` proved RECEIVE → RETRIEVE → RENDER → ACK → COLD_14Q → COLD_SUCCESSOR → AUTHORITY, then exposed a proof-harness scope defect.
+2. Repaired only that boundary in PR #423: continuation/successor receipt variables were declared inside the fresh-successor block but referenced afterward.
+3. Run `35638282095` reached the same causal frontier and exposed a second proof-contract defect: the runtime's canonical continuation response nests the execution receipt at `result.receipt.receipt.id`, while the harness still expected `result.receipt.id`.
+4. Repaired only that envelope-validation boundary in PRs #424 and #425.
+5. Fresh run `35638451543` completed **SUCCESS** with the complete home-run proof.
+
+### WHAT ACTUALLY HAPPENED
+
+```
+RECEIVE             PASS
+RETRIEVE            PASS
+RENDER              PASS
+ACK                 PASS
+SUCCESSOR_HANDOFF   PASS
+COLD_14Q            PASS (14/14)
+COLD_SUCCESSOR      PASS
+AUTHORITY           PASS
+CONTINUATION        PASS
+SUCCESSOR_RECEIPT   PASS
+```
+
+Exact production lineage:
+
+- Packet: `ad1c3e76-9898-5607-b590-d2c8675d8855`
+- Receiver event: `98b6bd4b-a7b8-493e-8020-3c8315881ff9`
+- Cognition record: `29049b0c-e3ea-45c2-a8f9-aeaa5c7de5d5`
+- ACK receipt: `c46d3eb1-31a9-4a06-ae14-73e95a1d22a5`
+- Continuation event: `continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866`
+- Continuation receipt: `52146218-28d7-40c9-a95b-05c66f028b3d`
+- Successor event: `successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab`
+- Successor receipt: `6c4a79af-78bb-4419-b71a-b2b53adc82a5`
+
+Canonical browser evidence was the real Smart Feed surface: `/feed` → `#naya-smart-feed .sf-card[data-event-id]`.
+
+### WHAT WE LEARNED
+
+- **Implemented ≠ verified.**
+- Transport/persistence/index/projection ≠ retrieval/render.
+- A successful runtime action can still be falsely rejected by a stale proof harness; the harness must match the canonical response contract.
+- Cold continuity is now an observed runtime property at the tested owner-bound scope, not merely an architectural claim.
+- Authority remained explicit: the cold successor received a scoped `pi.continue` grant before consequential continuation.
+- The system now demonstrates the intended pattern: durable intelligence survives the Naya/session boundary and produces a new verified successor receipt.
+
+### WHAT CHANGED
+
+**PI-01 is no longer the active P0 frontier.** The consolidated chain is proven at the tested production scope.
+
+### WHAT REMAINS
+
+The central unresolved engineering property is now **measured computational compounding**: quantify baseline cold reconstruction/re-derivation work versus reuse of retained verified intelligence while preserving outcome quality, provenance, and verification.
+
+Universal computation savings remain **UNKNOWN** until independently measured.
+
+### NEXT ACTION
+
+**Build and run the first production computation-efficiency benchmark:** baseline vs retained-intelligence reuse, measuring context, searches, tool/model calls, tokens, latency, retries, human time, verified outcomes, and defensible avoided computation.
+
+### EVIDENCE
+
+- Home-run: https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35638451543
+- Artifact: https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35638451543/artifacts/10657306507
+- PR #423: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/423
+- PR #424: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/424
+- PR #425: https://github.com/SoulSchoolAcademy/NayaPOWER/pull/425
+
+**Successor instruction:** Resolve live `main`, read this entry and the control plane, do not repeat PI-01, and begin the computation-efficiency benchmark from the single next action above.
