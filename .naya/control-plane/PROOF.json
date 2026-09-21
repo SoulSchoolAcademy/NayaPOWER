@@ -145,7 +145,7 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
+    "current_repository_head": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
     "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
@@ -545,9 +545,27 @@
         "artifact": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35553013422/artifacts/10618664793"
       },
       "interpretation": "Smart Share is fully production-proven against the canonical Hub/runtime. The gate can now advance to Smart Mail."
-    }
+    },
+    "project_intelligence_bridge_transport": {
+      "status": "PRODUCTION_PROVEN",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-project-intelligence-bridge.yml",
+      "transport_run_id": 35623939680,
+      "idempotent_replay_run_id": 35623988420,
+      "source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
+      "packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
+      "receiver_transaction_id": "022c4131-2729-45f7-be84-85d6f9dde228",
+      "receiver_event_id": "51cecc6a-0d37-4aca-80d2-a707f00b31be",
+      "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
+      "persisted": true,
+      "indexed": true,
+      "projected": true,
+      "idempotent_replay_verified": true,
+      "caveat": "Transport/persistence/index/projection/ack is proven at the exact source_ref. Hub-facing retrieval/render and cold-successor retrieval remain open."
+    },
+    "project_intelligence_bridge_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
   },
-  "recording_commit": "0f83f62757deed9c5dadfbcd89c46d2429a76b50",
+  "recording_commit": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": false,
   "readiness_evidence": {
@@ -795,8 +813,8 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Proof7 compounding is now verified/proven at the latest live main head. The control-plane proof surface is being reconciled to that evidence. The remaining causal frontier is the consolidated Project Intelligence cold-successor chain.",
-  "current_repository_head": "a1168dd01eb19e175070e84cc0efdb78a9ac7993",
+  "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
+  "current_repository_head": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
