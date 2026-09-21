@@ -2,11 +2,11 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "NAYANET-CONSTITUTIONAL-HARDENING-01",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-02",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Turn the defined Project Intelligence spine into a self-reconciling constitutional intelligence system, beginning with first-class evidence-linked claims.",
-    "scope": "Single-project NayaNET constitutional hardening; do not reopen PI-01→PI-08 unless new evidence changes their claim scope or truth state.",
+    "intent": "Make evidence and lineage universal across claims, actions, outcomes, verification, learning, and successor continuity.",
+    "scope": "Single-project NayaNET evidence/provenance hardening; preserve proven PI-01→PI-08 and prior hardening proofs.",
     "protected": [
       "Project NayaNET = Project Intelligence",
       "canonical control-plane authority",
@@ -27,14 +27,15 @@
       "receipt identifies exact live HEAD and evidence"
     ],
     "evidence": [
-      ".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md",
-      ".naya/project-intelligence/40-NAYANET-ULTIMATE-EXECUTION-DIRECTIVE-NEXT-NAYA-2026-09-21.md",
-      ".naya/control-plane/validate_control_plane.py"
+      ".naya/project-intelligence/claim.schema.json",
+      ".naya/project-intelligence/temporal-truth-contract.json",
+      ".naya/project-intelligence/agency-retry-contract.json",
+      ".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md"
     ],
-    "target_state": "CLAIMS_CONTRACT_VERIFIED",
-    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions.",
+    "target_state": "EVIDENCE_LINEAGE_REGISTRY_VERIFIED",
+    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval.",
     "next_actions": [
-      "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions."
+      "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval."
     ],
     "next_action_count": 1
   },
