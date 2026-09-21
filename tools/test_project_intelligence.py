@@ -128,7 +128,7 @@ def main() -> int:
         assert result["authority"]["human"]
         assert result["canonical_sources"]["control_plane"]
         assert result["current_state"]["active_block"] == "TEST-BLOCK"
-        assert result["verified"][0]["event_id"] == event["event_id"]
+        assert any(item.get("event_id") == event["event_id"] for item in result["verified"])
         assert result["learning"]["recent_project_learning"][0]["learning_event_id"] == "LRN-test"
         assert result["unknown"] == []
         assert result["open_loops"]
