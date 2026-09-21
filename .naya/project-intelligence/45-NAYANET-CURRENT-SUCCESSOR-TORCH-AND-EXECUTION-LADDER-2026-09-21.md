@@ -4,7 +4,7 @@
 **Project:** NayaNET = Project Intelligence  
 **Operating substrate:** NayaPOWER  
 **Branch:** `naya/live-project-intelligence-v1`  
-**Current live HEAD at torch creation:** `b95d7eb13c3ca38d07cb874cee9cde51ab4b6793`
+**Current live HEAD at latest verified execution:** `ee05fe589b33ea7d53c9b7dd5dd879be9776f5d3`
 
 ## MISSION
 
@@ -47,7 +47,7 @@ No new evidence store or lineage table.
 
 ### PROOF STATUS
 
-**DEPLOYED / END-TO-END UNVERIFIED**
+**VERIFIED / END-TO-END COMPLETE AT DEFINED RUNTIME SCOPE**
 
 Proof workflow:
 
@@ -89,9 +89,7 @@ Only then mark #1 VERIFIED.
 
 ## CURRENT TRUTH RULE
 
-The connected GitHub read surface currently exposes repository source and commit/status information but has not exposed a resulting Actions run/check for the push-triggered runtime-lineage proof. Therefore:
-
-**Do not claim the runtime lineage proof passed.**
+The push-triggered proof is now independently observable and passed. Persisted receipt `0830b969-7e92-4002-b125-1ed4b645afdc` contains 7/7 bound nodes, 6/6 required edges, and `status=COMPLETE`.
 
 Vercel failure on the trigger commit is a separate provider status and is not evidence that the lineage runtime proof failed; CodeRabbit success is likewise not proof of runtime lineage.
 
@@ -100,7 +98,7 @@ Vercel failure on the trigger commit is a separate provider status and is not ev
 Immediately:
 
 1. capture exact runtime receipt and run evidence;
-2. create a proof receipt;
+2. create/record the proof receipt;
 3. update STATE/BLOCKS/MAP/PROOF;
 4. update INTELLIGENCE-FEED;
 5. re-score the gap matrix from live evidence;
@@ -186,3 +184,12 @@ The major unclosed families are:
 A genuinely cold Naya must enter, verify the torch against live source, answer the 14 questions without conversation archaeology, execute the one authorized frontier, independently prove the result, convert the experience into durable intelligence, update the canonical project state, and leave a better torch.
 
 **PLAY TAG. NEVER RESTART FROM ZERO.**
+
+
+## #1 VERIFIED — 2026-09-21
+
+Run `35657512293` passed from source commit `ee05fe589b33ea7d53c9b7dd5dd879be9776f5d3`. Persisted receipt `0830b969-7e92-4002-b125-1ed4b645afdc` independently retrieved with complete runtime lineage. The workflow's prior response-path mismatch was corrected surgically; no runtime redesign was required.
+
+### NEXT FRONTIER — #2
+
+**Universal Causal Verification Object:** preserve intended change, preconditions, action, observed change, evidence, causal assessment, verification, and limitations. Prove both positive and insufficient-causality cases. Do not confuse temporal succession with causation.
