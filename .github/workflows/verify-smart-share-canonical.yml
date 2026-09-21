@@ -191,36 +191,52 @@ jobs:
               smartFeedNetworkLog.push(entry); console.log('SMART_FEED_NETWORK_FAILED='+JSON.stringify(entry));
             }
           });
-          const publishedDispatchPromise=ap.evaluate(()=>new Promise(resolve=>{
-            const handler=event=>{
+          const publishedDispatchPromise=ap.evaluate(()=>new Promise((resolve,reject)=>{
+            let settled=false;
+            const finish=(event)=>{
+              if(settled)return;
+              settled=true;
+              clearTimeout(timer);
+              window.removeEventListener('nayanet:smart-share-published',onPublished);
+              window.removeEventListener('nayanet:smart-share-failed',onFailed);
               const detail=event?.detail||{};
-              window.removeEventListener('nayanet:smart-share-published',handler);
               resolve({
                 type:String(event?.type||''),
                 publicationId:String(detail?.publication?.id||''),
                 status:String(detail?.publication?.status||''),
                 eventId:String(detail?.event_id||''),
+                error:String(detail?.error||''),
                 at:Date.now()
               });
             };
-            window.addEventListener('nayanet:smart-share-published',handler,{once:true});
+            const onPublished=event=>finish(event);
+            const onFailed=event=>finish(event);
+            const timer=setTimeout(()=>{
+              if(settled)return;
+              settled=true;
+              window.removeEventListener('nayanet:smart-share-published',onPublished);
+              window.removeEventListener('nayanet:smart-share-failed',onFailed);
+              reject(new Error('SMART_SHARE_OUTCOME_TIMEOUT_20000MS'));
+            },20000);
+            window.addEventListener('nayanet:smart-share-published',onPublished,{once:true});
+            window.addEventListener('nayanet:smart-share-failed',onFailed,{once:true});
           }));
 
           await boundShareButton.click({force:true});
 
           const publishedDispatch=await publishedDispatchPromise;
-          const afterClick=await ap.evaluate(async expectedPublicationId=>{
+          if(publishedDispatch.type==='nayanet:smart-share-failed'){
+            throw Error('SMART_SHARE_RUNTIME_FAILED_AFTER_CLICK:'+publishedDispatch.error);
+          }
+          await ap.waitForFunction(expectedPublicationId=>{
+            const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
+            return buttons.some(b=>String(b.dataset.publicationId||'')===String(expectedPublicationId)&&String(b.dataset.smartShareState||'')==='PUBLISHED');
+          },publishedDispatch.publicationId,{timeout:10000,polling:50});
+          const afterClick=await ap.evaluate(expectedPublicationId=>{
             const handlerInvoked=Number(window.__smartShareDiag?.handlerInvoked||0);
             const proof=window.__smartShareProof||null;
             const dispatches=Array.isArray(window.__smartShareDiag?.dispatches)?window.__smartShareDiag.dispatches:[];
-            const button=await new Promise(resolve=>{
-              const find=()=>{
-                const match=[...document.querySelectorAll('[data-c4-kind="share-intel"]')].find(b=>String(b.dataset.publicationId||'')===expectedPublicationId&&String(b.dataset.smartShareState||'')==='PUBLISHED');
-                if(match) return resolve(match);
-                setTimeout(find,25);
-              };
-              find();
-            });
+            const button=[...document.querySelectorAll('[data-c4-kind="share-intel"]')].find(b=>String(b.dataset.publicationId||'')===String(expectedPublicationId));
             return {
               handlerInvoked,
               proof,
