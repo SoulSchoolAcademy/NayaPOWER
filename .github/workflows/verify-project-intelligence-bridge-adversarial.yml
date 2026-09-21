@@ -1,6 +1,10 @@
 name: Verify Project Intelligence Bridge Adversarially
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-project-intelligence-bridge-adversarial.yml'
 permissions:
   contents: read
   id-token: write
