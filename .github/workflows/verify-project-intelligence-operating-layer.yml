@@ -59,9 +59,9 @@ jobs:
           const eventUuid=rows[0].id;
           const candidate=await req('nayanet-learning-candidate',token,{claim:'Verified candidate lesson for PI proof '+runId,target_id:'pi-proof',source_event_id:eventId,observed_value:{proof_run:runId}});
           receipt.checks.learning_candidate=candidate.ok===true?'PASS':'FAIL';
-          const learningId=candidate?.result?.learning?.id;
+          const learningId=candidate?.result?.candidate?.id;
           if(!learningId) throw Error('LEARNING_CANDIDATE_ID_MISSING');
-          const verified=await req('nayanet-learning-verify',token,{evidence_id:learningId,verification_method:'Controlled PI operating-layer proof run',evidence_refs:[eventId],observed_value:{verified_by_run:runId}});
+          const verified=await req('nayanet-learning-verify',token,{learning_id:learningId,verification_method:'Controlled PI operating-layer proof run',evidence_refs:[eventId],observed_value:{verified_by_run:runId}});
           receipt.checks.learning_verify=verified.ok===true?'PASS':'FAIL';
           const learning=await req('nayanet-learning-retrieve',token,{query:'PI proof'});
           receipt.checks.learning_retrieve=learning.ok===true?'PASS':'FAIL';
@@ -73,7 +73,7 @@ jobs:
           receipt.checks.successor_handoff=successor.ok===true?'PASS':'FAIL';
           const share=await req('nayanet-intelligence-share',token,{source_event_id:eventUuid},[403]);
           receipt.checks.share_authority_fail_closed=(share.ok===false)?'PASS':'FAIL';
-          const supersede=await req('nayanet-intelligence-supersede',token,{superseded_event_id:eventUuid,content:'Superseding PI proof interpretation '+runId,reason:'Controlled proof lineage'});
+          const supersede=await req('nayanet-intelligence-supersede',token,{source_event_id:eventUuid,relation:'SUPERSEDES',reason:'Controlled proof lineage',evidence_refs:[eventId]});
           receipt.checks.supersede=supersede.ok===true?'PASS':'FAIL';
           const health=await req('nayanet-pi-health',token,{});
           receipt.checks.health=health.ok===true?'PASS':'FAIL';
