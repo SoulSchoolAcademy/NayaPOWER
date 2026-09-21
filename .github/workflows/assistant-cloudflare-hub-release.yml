@@ -113,10 +113,16 @@ jobs:
           source_hash=$(cut -d' ' -f1 "${RUNNER_TEMP}/source.sha256")
           asset_url="${NAYA_RUNTIME_URL}/name-first-auth-adapter.js"
           asset_body="${RUNNER_TEMP}/name-first-auth-adapter.js"
-          curl --fail --silent --show-error --location "${asset_url}?release=${GITHUB_SHA}" -o "${asset_body}"
-          test -s "${asset_body}"
-          grep -q "NayaNET name-first identity adapter" "${asset_body}"
-          echo "LIVE_NAME_FIRST_ADAPTER_ASSET_VERIFIED=${asset_url}"
+          adapter_verified=false
+          for attempt in $(seq 1 30); do
+            if curl --fail --silent --show-error --location "${asset_url}?release=${GITHUB_SHA}&attempt=${attempt}" -o "${asset_body}" &&                test -s "${asset_body}" &&                grep -q "NayaNET name-first identity adapter" "${asset_body}"; then
+              adapter_verified=true
+              echo "LIVE_NAME_FIRST_ADAPTER_ASSET_VERIFIED=${asset_url} attempt=${attempt}"
+              break
+            fi
+            sleep 2
+          done
+          test "${adapter_verified}" = true
           for attempt in $(seq 1 30); do
             curl --fail --silent --show-error --location "${NAYA_RUNTIME_URL}/?release=${GITHUB_SHA}&attempt=${attempt}" -o "${RUNNER_TEMP}/live.html"
             live_hash=$(sha256sum "${RUNNER_TEMP}/live.html" | cut -d' ' -f1)
