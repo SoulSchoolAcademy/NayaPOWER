@@ -168,20 +168,20 @@ jobs:
                 return await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();
               },{supabaseUrl,supabaseKey,token:session.access_token,eventId});
               if(sourceRow.error||!sourceRow.data?.id) throw new Error('CANONICAL_EVENT_ROW_NOT_FOUND');
-              const grant=await page.evaluate(async({supabaseUrl,supabaseKey,token,sourceEventId,userId,run})=>{
+              const grant=await page.evaluate(async({supabaseUrl,supabaseKey,token,sourceEventId,sourceId,userId,run})=>{
                 const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
                 const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
                 return await c.rpc('nayanet_issue_authority_grant',{
                   p_subject_id:userId,
                   p_source_event_id:sourceEventId,
                   p_mission_id:'PI-12-COMPOUND-PROOF-'+run,
-                  p_scope:{project_id:'NayaNET',target:sourceRow.data.id},
+                  p_scope:{project_id:'NayaNET',target:sourceId},
                   p_actions:['smart_feed_publish'],
                   p_constraints:{proof_run:run},
                   p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
                   p_evidence:{method:'authenticated_controlled_proof',run}
                 });
-              },{supabaseUrl,supabaseKey,token:session.access_token,sourceEventId:eventId,userId:session.userId,run});
+              },{supabaseUrl,supabaseKey,token:session.access_token,sourceEventId:eventId,sourceId:sourceRow.data.id,userId:session.userId,run});
               if(grant.error||!grant.data?.grant_id) throw new Error('AUTHORITY_GRANT_ISSUE_FAILED:'+JSON.stringify(grant));
               mark('AUTHORITY_GRANT','PASS',{grant_id:grant.data.grant_id});
               const share=await call(page,session,'share',{source_event_id:sourceRow.data.id,authority_grant_id:grant.data.grant_id});
