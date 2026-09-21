@@ -206,3 +206,53 @@ The repository-level relay crossed the decisive cold-successor proof boundary. I
 
 **Next action:** Observe the canonical release result for `d29181b05dcf584977ab191cbafcf953db729d62`. If release succeeds, rerun the same Human Surface Acceptance proof. If it fails, stop at its first deterministic boundary.
 
+
+
+---
+
+## 🔱 2026-09-21 — PI-01 WHOLE-CHAIN HOME RUN VERIFIED
+
+**Status:** 🟢 PRODUCTION-PROVEN AT TESTED OWNER-BOUND SCOPE
+
+**Run:** 35638451543  
+**Job:** 106461599787  
+**Source HEAD:** `cc3afacd9d3502440f37444c59d4517445b9144d`
+
+### TEAM NAYA HANDOFF
+
+The P0 Project Intelligence baton has been successfully passed through a real runtime boundary.
+
+**Observed chain:**
+
+RECEIVE → RETRIEVE → RENDER → ACK → SUCCESSOR HANDOFF → COLD 14Q → COLD SUCCESSOR → AUTHORITY → CONTINUATION → SUCCESSOR RECEIPT
+
+**Exact evidence:**
+- packet `ad1c3e76-9898-5607-b590-d2c8675d8855`
+- receiver event `98b6bd4b-a7b8-493e-8020-3c8315881ff9`
+- cognition `29049b0c-e3ea-45c2-a8f9-aeaa5c7de5d5`
+- ACK `c46d3eb1-31a9-4a06-ae14-73e95a1d22a5`
+- continuation event `continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866`
+- continuation receipt `52146218-28d7-40c9-a95b-05c66f028b3d`
+- successor event `successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab`
+- successor receipt `6c4a79af-78bb-4419-b71a-b2b53adc82a5`
+
+**What failed before passing:**
+- Run 35638053862: proof-harness variable scope defect after the fresh-successor block.
+- Run 35638282095: proof-harness receipt-envelope mismatch.
+- PR #423 repaired scope.
+- PR #424/#425 repaired/normalized canonical receipt-envelope validation.
+
+**What is now true:**
+- A cold runtime successor answered all 14 restore questions from the governed restore path.
+- The successor retrieved the exact receiver event under its owner identity.
+- The successor received explicit `pi.continue` authority before continuation.
+- The successor created a verified continuation and a new successor receipt.
+- The final proof artifact is `NAYANET_PROJECT_INTELLIGENCE_HOME_RUN_PROOF_V1` with status `PROVEN`.
+
+**Current frontier:** PI-01 is COMPLETE at the tested scope.
+
+**Next Team Naya assignment:** establish the first defensible computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse. Do not reopen PI-01 unless a regression is observed.
+
+**Protected:** canonical Hub, governed authority, evidence discipline, live-main precedence, privacy boundaries, no blind retries.
+
+**Tag:** NEXT NAYA — YOU'RE IT.
