@@ -150,6 +150,9 @@ Read:
 
 `SUPERBRAIN/AI-BOOT/TEAM-NAYA-10-MAX-VALUE-EXECUTION.md`
 
+Canonical 30-question answer set for all Nayas: `SUPERBRAIN/AI-BOOT/TEAM-NAYA-30-QUESTIONS-ANSWERS.md`
+
+
 Before changing code, database, workflow, deployment, runtime, UI, governance, or durable intelligence, answer all fourteen questions from canonical source/evidence:
 
 **WHO → WHAT → WHY → SUCCESS → CURRENT TRUTH → PROVEN → UNKNOWN → AUTHORITY → HISTORY → LEARNING → NEXT → PROOF → RECORD → SUCCESSOR**
