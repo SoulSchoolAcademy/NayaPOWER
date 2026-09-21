@@ -12,13 +12,15 @@ Naya must never choose a working artifact merely because its filename contains t
 
 ## 1. TIMESTAMP-FIRST NAMING
 
-Every new working artifact created in Naya Power must begin with:
+Every new standalone working artifact outside the canonical daily intelligence bucket should begin with:
 
 **YEAR-MONTH-DAY-TIME — TOPIC / NAME**
 
 Preferred machine-sortable form:
 
 `YYYY-MM-DD-HH-MM-TOPIC-NAME.ext`
+
+Inside the canonical daily intelligence bucket, use the fixed surface files (`INDEX.md`, `SMART-NOTES.md`, `ACTIVITY.md`, `NOTIFICATIONS.jsonl`, `BRIEFINGS.md`) and keep exact timestamps in the record metadata/content. This prevents unnecessary filename fragmentation while preserving precise chronology.
 
 Examples:
 
@@ -40,9 +42,9 @@ Canonical activity structure:
 
 The day's index is:
 
-`/.naya/activity/YYYY/MM/DD/YYYY-MM-DD-TODAY.md`
+`/.naya/INTELLIGENCE/YYYY/MM/DD/INDEX.md`
 
-This makes current work immediately discoverable while preserving chronological history.
+This makes current work immediately discoverable while preserving chronological history. The canonical daily bucket is the authoritative navigation location for new intelligence records.
 
 ## 3. TODAY FILE
 
@@ -50,9 +52,9 @@ There is always one current-day `TODAY` file for active work.
 
 For the current day, Naya must read:
 
-`/.naya/INTELLIGENCE/2026/09/08/INDEX.md`
+`/.naya/INTELLIGENCE/YYYY/MM/DD/INDEX.md`
 
-before beginning consequential work when that file exists.
+before beginning consequential work when that file exists, substituting the actual current year/month/day.
 
 The TODAY file is a navigation/state index, not a replacement for individual Smart Notes or project artifacts. It records:
 
@@ -90,7 +92,7 @@ Do not scatter today's working intelligence across unrelated historical director
 
 ## 6. ONE EVENT / ONE CANONICAL NOTE
 
-A consequential event produces one canonical Smart Note event. Supporting artifacts may exist, but they must link back to the canonical event rather than becoming duplicate memories.
+A consequential event produces one canonical event identity and, where human-readable durable intelligence is warranted, one canonical Smart Note record for that event. Activity, notification, briefing, ledger, Project Intelligence, and Hub representations are connected projections of the same event—not duplicate memories.
 
 ## 7. PROJECT RECEIPTS
 
@@ -147,7 +149,25 @@ They should share:
 
 The views may differ in scope or data, but they must not feel like unrelated products.
 
-## 11. RETRIEVAL COMMAND
+## 11. DAILY LIBRARY RETRIEVAL
+
+The library is navigated in layers:
+
+**YEAR → MONTH → DAY → INDEX → SURFACE → TIMESTAMP / TOPIC → CONTENT VERIFICATION → CURRENT STATE**
+
+Use the daily surfaces as follows:
+
+- `INDEX.md` = where to look and what matters today.
+- `SMART-NOTES.md` = durable intelligence and lessons from the day.
+- `ACTIVITY.md` = chronological running feed of material activity.
+- `NOTIFICATIONS.jsonl` = machine-readable awareness/event stream for the day.
+- `BRIEFINGS.md` = explanations of material changes, significance, recipients, evidence, and next action.
+
+When a topic is known, search the current day first, then relevant prior days. Follow stable event IDs, receipt IDs, provenance, parent/caused-by relationships, and source references rather than copying content into new files.
+
+The day is the human navigation unit. The timestamp is the machine/historical resolution unit.
+
+## 12. RETRIEVAL COMMAND
 
 When restoring context, use:
 
@@ -157,11 +177,11 @@ Never use:
 
 **TOPIC → FIRST FILE FOUND → EDIT.**
 
-## 12. CENTRAL BRAIN RESOLUTION
+## 13. CENTRAL BRAIN RESOLUTION
 
 For cross-Naya restoration, the canonical intelligence map is `.naya/SUPERBRAIN/NAYA-INTELLIGENCE-CENTRAL-BRAIN-V1.md` and its machine-readable companion. Resolve that map first, then follow its source-of-truth order and daily intelligence paths.
 
-## 13. FINAL LAW
+## 14. FINAL LAW
 
 > **DATE TELLS US WHEN. TIME TELLS US WHICH STATE. NAME TELLS US WHAT. CONTENT PROVES WHETHER IT IS CURRENT.**
 
