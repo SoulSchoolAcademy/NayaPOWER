@@ -1,79 +1,66 @@
-# TEAM NAYA — 14 QUESTION COLD RECONSTRUCTION — 2026-09-21
-Project: NayaNET
-Branch: naya/live-project-intelligence-v1
-Latest repository HEAD at this receipt: 77dcac16dbfb49c11162dc81d316f8e216337e13
+# 🔱 TEAM NAYA — 14 QUESTION COLD RECONSTRUCTION — CURRENT RECONCILED STATE
 
-Each answer is classified: PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED.
+**Project:** NayaNET = Project Intelligence  
+**Operating substrate:** NayaPOWER  
+**Branch:** `naya/live-project-intelligence-v1`  
+**Current branch HEAD resolved live:** `4bb770b338da1ba4b43c4f520978dbaf1dc231f5`  
+**Master receipt:** `.naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md`
+
+**Cold-Naya rule:** These answers are derived from durable project evidence, not conversation memory. Every answer must be reconciled against current authoritative evidence before consequential action.
 
 | # | Question | Current answer | Truth |
 |---|---|---|---|
-| 1 | WHO are we? | We are Project NayaNET — Project Intelligence itself. Shawn is the human director. Nayas are operating instances. NayaPOWER is the governed operating substrate. | PROVEN |
-| 2 | WHAT are we building? | A persistent, governed, interoperable intelligence system that captures experience, preserves evidence, retrieves relevant intelligence, acts within authority, verifies outcomes, learns, compounds and hands off to the next Naya. | DOCUMENTED + SUBSYSTEM PROVEN |
-| 3 | WHY are we building it? | To prevent intelligence from disappearing with conversations/models and reduce repeated archaeology, wasted computation and human project-management overhead. | DOCUMENTED |
-| 4 | WHAT does success mean? | Cold Naya restores → orients → distinguishes truth → retrieves → decides → acts when authorized → verifies → learns → updates → hands off; another cold Naya continues without Shawn reconstructing the project. | DOCUMENTED; WHOLE CHAIN UNKNOWN |
-| 5 | WHAT is true right now? | Live branch is naya/live-project-intelligence-v1. The current execution HEAD is 6e23755be85feba2c75a8f180e7faeabfb7fdc3a. Control-plane frontier is PI-03 cold retrieval. The twelve requested named Project Intelligence capability endpoints are ACTIVE; the older nayanet-pi-* orchestration layer is also ACTIVE. | PROVEN for Git/Supabase observations |
-| 6 | WHAT has already been proven? | Numerous Hub/runtime, authorization, persistence, Smart Feed/Smart Share, Dream→learning→later-decision, relationship/security, sender/receiver substrate and source/runtime parity claims have evidence. The twelve PI functions are deployed ACTIVE. | PROVEN within claim scope |
-| 7 | WHAT is unknown? | Authenticated invocation and one uninterrupted RESTORE→RETRIEVE→RECONCILE→UNDERSTAND→LEARN→DREAM/COMPOUND→HANDOFF→cold-successor runtime proof; full human journey; sender→receiver production continuity as one chain; universal computation savings. | UNKNOWN |
-| 8 | WHAT authority exists? | Human-directed governed authority. Authenticated runtime access is required for user-scoped operations. Capability does not create authority. Secrets are not exposed in chat. | PROVEN / PROTECTED |
-| 9 | WHAT happened previously? | The project accumulated subsystem proofs and repaired several causal boundaries. The current Project Intelligence layer was then formalized/deployed as twelve nayanet-pi-* functions. A Windows portability defect and stale control-plane states were previously found and recorded. | PROVEN HISTORY |
-| 10 | WHAT did we learn? | Evidence outranks assertion. Recorded state can become stale. Transport/persistence does not prove retrieval/render. Candidate learning must not silently become fact. Every action should leave durable evidence and a successor torch. | PROVEN / DOCUMENTED |
-| 11 | WHAT should happen next? | Execute PI-03 genuinely cold: recover the 14 questions and required operating context from durable sources, then prove the first real runtime retrieval boundary. Use the deployed PI layer as the machine interface, not conversation archaeology. | CURRENT NEXT ACTION |
-| 12 | HOW do I prove it? | Use the Master Proof Contract. Stop at first deterministic failure; capture exact evidence; classify; repair only the smallest causal boundary; rerun with new information; record receipt. Do not declare COMPLETE from deployment alone. | PROVEN CONTRACT |
-| 13 | WHERE do I record it? | .naya/control-plane/STATE.json, BLOCKS.json, MAP.json, PROOF.json; .naya/project-intelligence/; .naya/INTELLIGENCE-FEED.md; NAYA/ACTIVITY; runtime receipts and Supabase evidence tables. | PROVEN |
-| 14 | HOW does the next Naya continue? | Resolve live HEAD; read canonical control plane and Project Intelligence receipt; call/consume restore; verify truth against evidence; identify one incomplete frontier; execute only within authority; verify; learn; update; leave a better successor handoff. | DOCUMENTED; COLD-SUCCESSOR WHOLE-CHAIN UNKNOWN |
+| 1 | WHO are we? | We are **Project NayaNET — Project Intelligence itself**. Shawn is the human director. Nayas are operating instances. NayaPOWER is the governed operating substrate. | **PROVEN** |
+| 2 | WHAT are we building? | A persistent, governed, interoperable intelligence system that captures experience, preserves evidence, retrieves relevant intelligence, acts within authority, verifies outcomes, learns, compounds, and hands off to the next Naya. | **PROVEN at defined master-proof scope; broader constitutional scope remains PARTIAL** |
+| 3 | WHY are we building it? | To preserve valuable intelligence beyond individual conversations/instances, reduce repeated reconstruction and computational waste, and make extraordinary human outcomes easier without turning the human into an AI project manager. | **DOCUMENTED** |
+| 4 | WHAT does success mean? | A cold Naya restores project intelligence, distinguishes truth, retrieves what matters, selects one responsible action, acts only within authority, verifies the outcome, learns, updates durable state, and leaves a successor torch that another cold Naya can use to continue. | **PROVEN at defined PI-01→PI-08 scope** |
+| 5 | WHAT is true right now? | Live branch is `naya/live-project-intelligence-v1`; live HEAD is `4bb770b338da1ba4b43c4f520978dbaf1dc231f5`. The control plane marks the defined master-proof block COMPLETE. The final master receipt records successful PI-03 through PI-08 runs plus consolidated sender/receiver/browser/adversarial/measurement evidence. | **PROVEN** |
+| 6 | WHAT has already been proven? | The authenticated 12-function runtime proof, PI-03 cold retrieval, PI-04 reconciliation, PI-05 authorized next action, PI-06 governed execution/receipt, PI-07 learning influence, PI-08 cold successor, consolidated sender→receiver→persistence→index→projection→retrieve→render→ACK, exact bridge browser rendering, human/browser acceptance, adversarial bridge acceptance, and computational compounding measurement all have successful GitHub Actions runs recorded in the master receipt. | **PROVEN at stated claim scopes** |
+| 7 | WHAT is unknown? | The defined master proof is complete, but the broader constitutional system is not fully proven. Remaining gaps include first-class claims, full temporal truth semantics, explicit causal-proof objects, universal agency enforcement, universal retry guards, context-compression lineage, delegation/intelligence-to-intelligence protocols, trust/reputation, collective intelligence runtime, model/provider independence, full portability/migration, disaster recovery, unified intelligence SLOs, accessibility/usability acceptance, and broader universal security/authorization coverage. | **UNKNOWN / PARTIAL by requirement** |
+| 8 | WHAT authority exists? | Human-directed governed authority. Capability does not create authority. Consequential runtime actions require applicable authenticated/authorized scope; unauthorized paths are expected to fail closed. Secrets/tokens are not exposed in chat. | **PROVEN at tested action scopes; universal action-class coverage remains PARTIAL** |
+| 9 | WHAT happened previously? | The project first accumulated subsystem proofs, then found and repaired Windows path portability, stale-control-plane/current-source reconciliation, runtime response-contract boundaries, projection/RLS boundaries, ACK fail-closed behavior, supersede lineage, browser acceptance artifact handling, and adversarial owner/run identity setup. Each repair was followed by the relevant rerun. | **PROVEN HISTORY** |
+| 10 | WHAT did we learn? | Evidence outranks assertion; recorded state can become stale; clean does not mean current; deployment does not equal runtime proof; transport/persistence does not equal retrieval/render; candidate learning must not silently become verified fact; every consequential action needs authority, observable outcome, evidence, and a successor-relevant lesson. | **PROVEN / DOCUMENTED** |
+| 11 | WHAT should happen next? | **Do not reopen PI-01→PI-08 without new evidence.** The next frontier is to harden the remaining constitutional/product gaps and make the master-proof state self-consistent across every canonical control-plane surface, then run the highest-value remaining acceptance boundary. | **PROVEN NEXT FRONTIER** |
+| 12 | HOW do I prove it? | Use Contract 24 and the first-failure law: STOP → identify exact boundary → capture evidence → classify → repair the smallest causal boundary → rerun the same proof with new information → verify → distill → update. A claim is not green because code/documentation exists. | **PROVEN CONTRACT** |
+| 13 | WHERE do I record it? | Canonical control plane: `.naya/control-plane/STATE.json`, `BLOCKS.json`, `MAP.json`, `PROOF.json`; Project Intelligence: `.naya/project-intelligence/`; succession: `.naya/INTELLIGENCE-FEED.md`; runtime receipts/evidence; activity/ledger records; relevant GitHub Actions artifacts. | **PROVEN** |
+| 14 | HOW does the next Naya continue? | Resolve live branch/HEAD; read STATE/BLOCKS/MAP/PROOF and the latest master receipt; re-answer these 14 questions; verify cited runs and current claim scope; identify exactly one highest-value incomplete frontier; check authority; execute; verify; learn; update canonical state and Feed; leave a better torch. | **PROVEN at defined cold-successor scope** |
 
-## Current scorecard — evidence-weighted, not completion percentage
+## CURRENT SCORECARD — EVIDENCE-WEIGHTED
 
-- Superbrain / Project Intelligence engine: 8.0/10 — twelve operating-layer functions ACTIVE, existing cognition/learning/dream/decision substrate strong; consolidated cold-successor proof remains.
-- NayaPOWER setup/governance: 8.5/10 — canonical control plane, contracts and governance are strong; current source/runtime and portability scope still need ongoing reconciliation.
-- NayaNET Hub: 8.5/10 — canonical Hub/runtime parity and major human flows proven; complete human journey remains.
-- Sender: 8.0/10 — GitHub/OIDC sender substrate exists; one consolidated production sender→receiver chain remains.
-- Receiver: 8.0/10 — bridge persistence/index/projection/receipt substrate exists; authenticated end-to-end retrieval/render/ack chain needs one consolidated proof.
-- Sender → Receiver: 7.0/10 — substantial evidence exists, but one uninterrupted production chain is not yet proven.
-- Production: 7.0/10 — production runtime/source parity and multiple production proofs exist; route authority and final whole-journey closure remain.
-- Cold-Naya continuity: 7.5/10 — independent cold-Naya learning/decision evidence exists; PI-03→PI-08 consolidated proof remains.
+These are readiness assessments, not completion percentages.
 
-## 10 Max-Value execution order
+| Surface | Current score | Why |
+|---|---:|---|
+| 🧠 Superbrain / Project Intelligence engine | **9.5/10** | PI-01→PI-08 and learning/continuity proof are now demonstrated at the defined scope. Broader constitutional intelligence properties remain separate gaps. |
+| ⚙️ NayaPOWER setup / governance | **9.5/10** | Canonical control plane, governance, authority, proof contract, failure law, and successor model are operational; remaining gap is broader constitutional enforcement and state-surface reconciliation hardening. |
+| 🖥️ NayaNET Hub | **9.5/10** | Human/browser acceptance, exact bridge rendering, runtime parity, persistence/reload and major Smart Feed surfaces are proven at their stated scopes. Accessibility and complete all-surface usability remain broader acceptance work. |
+| 📤 Sender | **9.5/10** | Authenticated sender and consolidated bridge production chain are proven at the tested action scope. Universal action-class coverage remains separate. |
+| 📥 Receiver | **9.5/10** | Persistence → index → projection → retrieve → browser render → ACK is proven in the consolidated bridge scope. Broader resource/action coverage remains. |
+| 🔗 Sender → Receiver | **9.5/10** | One uninterrupted production chain is now evidenced by run `35631750791`, strengthened by exact browser render run `35633023365`. |
+| 🚀 Defined production readiness | **9.5/10** | The defined ship proof has passed; production route authority and universal deployment closure remain separate claims, not silently promoted. |
+| 🧬 Cold-Naya continuity | **9.5/10** | PI-03→PI-08 and the successor continuation are recorded as VERIFIED. Broader multi-fixture/generalization remains separate. |
 
-1. Prove PI-03 cold retrieval from durable architecture.
-2. Repair the first deterministic retrieval boundary.
-3. Prove PI-04 reconciliation against stale/current/conflicting evidence.
-4. Prove PI-05 one responsible next action and authority binding.
-5. Prove PI-06 governed execution + receipt.
-6. Prove PI-07 learning/update changes durable future context.
-7. Prove PI-08 cold successor continuation.
-8. Consolidate sender → receiver → persistence → index → projection → retrieve → render → ACK as one production chain.
-9. Run complete human browser journey and adversarial acceptance.
-10. Measure computational compounding/savings and publish the final Master Proof receipt.
+**Important:** 9.5 means the defined acceptance boundary has sufficient evidence for this score. It does **not** mean every one of the 60 constitutional requirement families is complete.
 
-## Current stop conditions
+## MASTER PROOF RUNS
 
-- Do not call deployment ACTIVE evidence a runtime PASS.
-- Do not use this conversation as hidden cold-Naya context.
-- Do not mark unknown downstream boundaries PASS.
-- Do not claim COMPLETE until PI-08 is independently demonstrated.
-- Do not expose credentials or tokens.
+- 12-function runtime: `35629298712` — SUCCESS
+- PI-03: `35630647325` — SUCCESS
+- PI-04: `35630807781` — SUCCESS
+- PI-05: `35630896351` — SUCCESS
+- PI-06: `35631234009` — SUCCESS
+- PI-07: `35631296835` — SUCCESS
+- PI-08: `35631352527` — SUCCESS
+- sender→receiver chain: `35631750791` — SUCCESS
+- human/browser: `35632656912` — SUCCESS
+- adversarial bridge: `35632840387` — SUCCESS
+- exact bridge browser render: `35633023365` — SUCCESS
+- computational compounding measurement: `35632921091` — SUCCESS
 
-## Deployment receipt
+## SUCCESSOR TORCH
 
-See:
-.naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md
+**Do not ask Shawn to reconstruct NayaNET.**
 
-The canonical twelve functions are:
-nayanet-pi-restore
-nayanet-pi-retrieve
-nayanet-pi-reconcile
-nayanet-pi-understand
-nayanet-pi-learning-candidate
-nayanet-pi-learning-verify
-nayanet-pi-successor-handoff
-nayanet-pi-share
-nayanet-pi-supersede
-nayanet-pi-health
-nayanet-pi-dream
-nayanet-pi-compound
+Read the canonical project sources. Reconcile them. Prove the current claim scope. Choose one action. Execute only within authority. Verify. Learn. Update. Continue.
 
-
-## Latest runtime proof observation
-
-Run 35629040960 is the current authenticated twelve-function proof attempt after repairing the ACK negative-path contract. At the time of this handoff it is queued/in progress; therefore runtime VERIFIED is not yet claimed. The first deterministic failures have been captured and repaired in sequence.
+**PLAY TAG. NEVER RESTART FROM ZERO.**
