@@ -19,6 +19,10 @@ The cold Naya MUST read the compact operational context before traversing the re
 
 .naya/project-intelligence/CURRENT-FRONTIER.md
 
+Then read the live ten-fix scorecard:
+
+.naya/project-intelligence/PROJECT-INTELLIGENCE-10-FIX-SCORECARD.md
+
 Then:
 
 .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
