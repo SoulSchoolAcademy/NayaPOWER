@@ -64,7 +64,6 @@ jobs:
             const page=await context.newPage();
             if(diagnoseShare) await page.addInitScript(()=>{
               window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[],timeline:[],binderInvocations:[],scanCalls:[],observerCalls:[]};
-              const startedAt=Date.now();
               const pushTimeline=(kind,data={})=>{
                 const row={kind,ms:Date.now()-startedAt,...data};
                 const t=window.__smartShareDiag.timeline;
