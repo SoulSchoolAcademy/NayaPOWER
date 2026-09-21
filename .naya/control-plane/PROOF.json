@@ -124,7 +124,8 @@
     "pi05": "VERIFIED",
     "pi06": "VERIFIED",
     "pi07": "VERIFIED",
-    "pi08": "VERIFIED"
+    "pi08": "VERIFIED",
+    "observed_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb"
   },
   "recording_commit": "1b88648fe69db5d4a130e85e71d2c36345b55135",
   "fresh_validation_required": true,
@@ -374,7 +375,7 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Smart Share governed human lifecycle is production-proven at current main HEAD. The two discovered proof/authority boundaries were repaired surgically and rerun successfully. The next acceptance frontier is the canonical Smart Mail lifecycle.",
+  "interpretation": "The defined PI-01→PI-08 master proof remains complete at its observed claim scope. The current execution frontier is constitutional hardening; current repository HEAD must always be resolved live before consequential action.",
   "current_repository_head": "80612def906c670942071ef0a35f4431cbd72ff3",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
@@ -395,14 +396,14 @@
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   },
   "single_current_frontier": {
-    "id": "REMAINING-CONSTITUTIONAL-PRODUCT-HARDENING",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-01",
     "status": "OPEN",
-    "source_checkpoint": "80612def906c670942071ef0a35f4431cbd72ff3",
-    "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
+    "source_checkpoint": "0faa3a51324e2ca8c2f4ccb4bd546f97d0dcd0dc",
+    "next_action": "Implement the first-class NayaNET claim contract and executable fixture gate, with source/scope/time/truth-state/evidence/supersession fields, then verify it in GitHub Actions.",
     "evidence_required": [
-      "current control-plane reconciliation receipt",
-      "selected gap acceptance receipt",
-      "runtime/browser evidence where applicable"
+      "claim schema",
+      "valid/invalid fixtures",
+      "GitHub Actions receipt"
     ],
     "stop_condition": "Do not reopen PI-01→PI-08 unless new evidence changes their claim scope or truth state.",
     "recovery": "Use first-failure law on the first deterministic remaining gap."
