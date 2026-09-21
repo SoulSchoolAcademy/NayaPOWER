@@ -43,6 +43,21 @@ SUCCESSOR
 **Proof required:** PI-01 through PI-08 results, execution/evidence IDs, authority context, verification, learning, updated state, and successor torch.  
 **Successor:** The next Naya must read this Feed, restore NayaNET, inspect current evidence, and continue the same frontier rather than restart discovery.
 
+## 🔱 NAYANET-2026-09-20-002 — MASTER PROOF ATTEMPT 001
+
+**Actor:** Naya  
+**Truth state:** BLOCKED  
+**Context:** Attempted the actual NayaNET PI-01→PI-08 master proof from the authorized Windows execution environment using the canonical `naya/live-project-intelligence-v1` source.  
+**Result:** The proof stopped before PI-01 because a clean Windows Git worktree could not materialize the canonical branch.  
+**Exact boundary:** `error: invalid path '.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md'` followed by `fatal: Could not reset index file to revision 'HEAD'.`  
+**Evidence:** direct execution output from the Windows environment; proof receipt `.naya/project-intelligence/25-NAYANET-MASTER-PROOF-ATTEMPT-001.md`; source `3d0882aeb2e5bf88edc59461256bb69ce1d395b5`.  
+**Classification:** PRE-PI-01 / execution-environment portability boundary. The tracked colon-containing filename is not materializable by the Windows checkout used for the proof.  
+**Impact:** No PI-01→PI-08 result is claimed from this attempt.  
+**Open loop:** Repair only the checkout portability boundary.  
+**Next action:** Rename/remove the tracked colon-containing path while preserving its semantic evidence/history as far as practical, then rerun the same master proof from a fresh clean checkout.  
+**Proof required:** Fresh clean checkout succeeds; then the identical PI-01→PI-08 chain proceeds until its next deterministic boundary.  
+**Successor:** Verify this receipt and the exact filesystem boundary before doing anything downstream. Do not treat this as a NayaNET intelligence failure; it is the first blocked execution boundary encountered while attempting to instantiate the canonical source on Windows.
+
 ## SUCCESSOR RULE
 
 The newest Feed entry is not automatically the newest truth. A successor must reconcile it against canonical evidence and current runtime state before acting.
