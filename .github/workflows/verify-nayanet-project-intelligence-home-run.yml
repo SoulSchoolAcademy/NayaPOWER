@@ -256,12 +256,12 @@ jobs:
                   if(!a?.access_token||a.userId!==session.userId) throw new Error('COLD_SUCCESSOR_AUTH_FAILED');
                   return a;
                 })();
-                const exactBridge=await fp.evaluate(async({supabaseUrl,supabaseKey,token,packetId})=>{
+                const exactLineage=await fp.evaluate(async({supabaseUrl,supabaseKey,token,eventId,userId})=>{
                   const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
                   const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
-                  return await c.from('nayanet_project_intelligence_bridge').select('packet_id,owner_id,retrieved,rendered,receiver_event_id').eq('packet_id',packetId).maybeSingle();
-                },{supabaseUrl,supabaseKey,token:freshSession.access_token,packetId:bridge.packet_id});
-                if(exactBridge.error||!exactBridge.data||exactBridge.data.owner_id!==freshSession.userId||exactBridge.data.retrieved!==true||exactBridge.data.rendered!==true) throw new Error('FRESH_RESTORE_BRIDGE_PROOF_FAILED:'+JSON.stringify(exactBridge));
+                  return await c.from('nayanet_cognition_events').select('id,event_id,user_id,project_id,parent_event_id,status,metadata').eq('event_id',eventId).eq('user_id',userId).eq('project_id','NayaNET').maybeSingle();
+                },{supabaseUrl,supabaseKey,token:freshSession.access_token,eventId:receiverEventId,userId:freshSession.userId});
+                if(exactLineage.error||!exactLineage.data||exactLineage.data.event_id!==receiverEventId||exactLineage.data.user_id!==freshSession.userId||exactLineage.data.project_id!=='NayaNET') throw new Error('FRESH_RESTORE_LINEAGE_PROOF_FAILED:'+JSON.stringify(exactLineage));
                 const restored=await compound(fp,freshSession,'restore');
                 const q=['1_WHO_ARE_WE','2_WHAT_ARE_WE_BUILDING','3_WHY_ARE_WE_BUILDING_IT','4_WHAT_DOES_SUCCESS_MEAN','5_WHAT_IS_TRUE_RIGHT_NOW','6_WHAT_HAS_ALREADY_BEEN_PROVEN','7_WHAT_IS_UNKNOWN','8_WHAT_AUTHORITY_EXISTS','9_WHAT_HAPPENED_PREVIOUSLY','10_WHAT_DID_WE_LEARN','11_WHAT_SHOULD_HAPPEN_NEXT','12_HOW_DO_I_PROVE_IT','13_WHERE_DO_I_RECORD_IT','14_HOW_DOES_THE_NEXT_NAYA_CONTINUE'];
                 for(const k of q) if(restored?.[k]===undefined||restored?.[k]===null) throw new Error('COLD_14Q_GAP:'+k);
