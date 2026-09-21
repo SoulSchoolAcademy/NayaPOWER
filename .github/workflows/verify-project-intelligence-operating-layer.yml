@@ -51,14 +51,14 @@ jobs:
           receipt.checks.reconcile=reconcile.ok===true?'PASS':'FAIL';
           const understand=await req('nayanet-pi-understand',token,{content:'PI operating-layer proof experience '+runId,title:'PI proof experience'});
           receipt.checks.understand=understand.ok===true?'PASS':'FAIL';
-          const eventId=understand?.result?.event?.event_id;
+          const eventId=understand?.result?.result?.event?.event_id;
           if(!eventId) throw Error('UNDERSTANDING_EVENT_ID_MISSING');
           const rows=await rest('nayanet_cognition_events?event_id=eq.'+encodeURIComponent(eventId)+'&select=id,event_id',token);
           if(!rows?.[0]?.id) throw Error('UNDERSTANDING_EVENT_UUID_MISSING');
           const eventUuid=rows[0].id;
           const candidate=await req('nayanet-pi-learning-candidate',token,{claim:'Verified candidate lesson for PI proof '+runId,target_id:'pi-proof',source_event_id:eventId,observed_value:{proof_run:runId}});
           receipt.checks.learning_candidate=candidate.ok===true?'PASS':'FAIL';
-          const learningId=candidate?.result?.learning?.id;
+          const learningId=candidate?.result?.result?.learning?.id;
           if(!learningId) throw Error('LEARNING_CANDIDATE_ID_MISSING');
           const verified=await req('nayanet-pi-learning-verify',token,{evidence_id:learningId,verification_method:'Controlled PI operating-layer proof run',evidence_refs:[eventId],observed_value:{verified_by_run:runId}});
           receipt.checks.learning_verify=verified.ok===true?'PASS':'FAIL';
