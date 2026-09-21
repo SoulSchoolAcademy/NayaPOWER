@@ -420,7 +420,7 @@ async function issuePiAuthority(client: any, userId: string, body: any) {
     p_evidence:{reason:"cold-successor Project Intelligence continuation"}
   });
   if(error) throw error;
-  return {schema:"NAYANET_PROJECT_INTELLIGENCE_AUTHORITY_V1",status:"AUTHORIZED",grant:data};
+  return {schema:"NAYANET_PROJECT_INTELLIGENCE_AUTHORITY_V1",status:"AUTHORIZED",grant};
 }
 
 async function continueAuthorized(client: any, userId: string, body: any) {
