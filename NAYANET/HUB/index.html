@@ -929,5 +929,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   btn?.addEventListener('click',async()=>{try{if(!rt?.dreamReplay)throw new Error('DREAM_RUNTIME_UNAVAILABLE');btn.disabled=true;setStatus('DREAM REPLAY RUNNING…');const events=await rt.retrieve();const source=(events||[]).find(e=>!['LEARN','DREAM','APPLY','VERIFY'].includes(String(e?.metadata?.stage||'').toUpperCase()));const replay=await rt.dreamReplay({event_id:source?.event_id||null,idempotency_key:'hub-dream-'+(source?.event_id||'latest')});const rows=await rt.listDreamReplays();render(rows);setStatus('DREAM REPLAY VERIFIED · '+String(replay?.id||'REPLAY'));}catch(e){setStatus(e?.message||'DREAM_REPLAY_FAILED')}finally{btn.disabled=false}});
 })();
 </script>
+<script src="/nayanet-interface-command-station.js?v=20260921-v1"></script>
 </body>
 </html>
