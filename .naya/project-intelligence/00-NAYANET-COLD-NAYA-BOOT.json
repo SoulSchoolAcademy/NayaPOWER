@@ -25,10 +25,10 @@
     "CONTINUE": "Resolve live main, restore, reconcile, execute one action, verify, learn, update, hand off."
   },
   "current_frontier": {
-    "active_block": "PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF",
+    "active_block": "COLD-NAYA-TAKEOVER-PROOF",
     "priority": "P0",
-    "next_action": "Execute consolidated Project Intelligence proof INTENT → PI-01 → PI-08 → cold successor.",
-    "completion": "Only evidence-backed COMPLETE; otherwise BLOCKED/FAILED/UNKNOWN as applicable."
+    "next_action": "Run the canonical cold Project Intelligence acceptance on freshly reconciled main; repair the first deterministic boundary and rerun with new information.",
+    "completion": "Evidence-backed cold successor continuation; otherwise explicitly BLOCKED/FAILED/UNKNOWN."
   },
   "laws": [
     "CAPABILITY DOES NOT CREATE AUTHORITY",
@@ -39,5 +39,17 @@
     "VERIFIED != PRODUCTION_PROVEN",
     "NO RETRY WITHOUT NEW INFORMATION",
     "PLAY TAG. YOU'RE IT. NEVER RESTART FROM ZERO."
-  ]
+  ],
+  "today_setter_mission": {
+    "date": "2026-09-21",
+    "mission": "Prepare GitHub + established Supabase so a cold Naya can execute rather than ask Shawn to reconstruct NayaNET.",
+    "acceptance": "Cold Naya restores, understands, selects one authorized next action, executes, verifies, learns, updates, and hands off.",
+    "supabase": {
+      "project_ref": "dahisasgpfvziswqvmvm",
+      "status": "ACTIVE_HEALTHY",
+      "region": "ca-central-1",
+      "managed_runtime": true,
+      "no_secret_recorded": true
+    }
+  }
 }
