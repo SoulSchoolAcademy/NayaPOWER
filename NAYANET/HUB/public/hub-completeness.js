@@ -7,6 +7,7 @@ const nav=[
  ['SMART LEDGER','ledger'],['DREAM','dream'],['NAYA PLAY','play'],['SETTINGS','settings']
 ];
 function css(){if(document.getElementById('naya-completeness-style'))return;const s=document.createElement('style');s.id='naya-completeness-style';s.textContent=`
+.private{pointer-events:none!important}
 #naya-completeness{margin:0 22px 20px;padding:12px;border:1px solid #ffffff16;border-radius:17px;background:#08080c;box-shadow:inset 0 1px #fff3,0 16px 35px #0009}
 #naya-completeness .nc-label{font-size:7px;font-weight:1000;letter-spacing:.16em;color:#aaa4b1;margin-bottom:8px}
 #naya-completeness .nc-nav{display:flex;gap:7px;flex-wrap:wrap}
