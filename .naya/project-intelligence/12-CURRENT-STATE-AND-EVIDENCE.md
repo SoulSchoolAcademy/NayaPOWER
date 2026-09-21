@@ -28,11 +28,13 @@ There is one enduring project intelligence here. Nayas are operating instances t
 - NayaPOWER as the governed operating machinery for that intelligence;
 - executable build contract at `19-EXECUTABLE-BUILD-CONTRACT.md`;
 - subject reconciliation at `23-NAYANET-SUBJECT-RECONCILIATION.md`;
-- Intelligence Feed and succession contract at `22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md`.
+- Intelligence Feed and succession contract at `22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md`;
+- master proof contract at `24-NAYANET-MASTER-PROOF-CONTRACT.md`;
+- cold-start interrogation contract/result at `26-NAYANET-COLD-START-INTERROGATION-001.md`.
 
 ## NOT PROVEN BY DOCUMENTATION ALONE
 
-A file does not prove runtime behavior. A workflow does not prove its intended outcome. A commit does not prove production. A screenshot does not prove the whole journey. A previous Naya's report does not outrank current truth. The library itself does not prove PI-01 through PI-08.
+A file does not prove runtime behavior. A workflow does not prove its intended outcome. A commit does not prove production. A screenshot does not prove the whole journey. A previous Naya's report does not outrank current truth.
 
 ## WHOLE-CHAIN PROOF TARGET
 
@@ -51,25 +53,41 @@ A file does not prove runtime behavior. A workflow does not prove its intended o
 
 These are not separate product components. They are acceptance boundaries for proving that NayaNET itself is intelligent enough to continue.
 
-## CURRENT MASTER-PROOF ATTEMPT
+## PORTABILITY REPAIR
 
-**Attempt 001:** BLOCKED before PI-01 during clean Windows source instantiation.  
-**Source:** `naya/live-project-intelligence-v1` at `3d0882aeb2e5bf88edc59461256bb69ce1d395b5`.  
-**Exact boundary:** Git rejected the tracked path `.naya/execution/2026 09 07 1:18 PM — PHASE 1 SOURCE-LOCK RECEIPT.md` with `invalid path`, then failed to reset the worktree index.  
-**Receipt:** `.naya/project-intelligence/25-NAYANET-MASTER-PROOF-ATTEMPT-001.md`.  
-**Status:** PRE-PI-01 execution-environment portability boundary. No PI-01→PI-08 result is claimed.
+The previously blocking Windows portability class has been repaired.
 
-## PROTECTED
+**Verified source head:** `974c6b1d44190daed7bfcb3439fcb37c631a8701`.  
+**Fresh Windows worktree:** successfully materialized from the repaired branch.  
+**Tracked colon-containing paths:** `0`.
 
-Project Intelligence must not authorize a second memory store, competing project database, competing Hub, authority bypass, privacy weakening, concealment of unresolved boundaries, or a claim of cold-Naya continuity before acceptance passes.
+This clears the PRE-PI-01 execution-environment boundary.
+
+## COLD-START INTERROGATION
+
+The 14-question cold-start interrogation was executed from canonical durable sources after the fresh checkout.
+
+**Result:** all 14 questions were answerable without conversation archaeology.
+
+**Receipt:** `.naya/project-intelligence/26-NAYANET-COLD-START-INTERROGATION-001.md`.
+
+This establishes the reconstruction prerequisite but does **not** constitute PI-01→PI-08 proof.
+
+## MASTER-PROOF STATUS
+
+**Attempt 001:** blocked before PI-01 by Windows portability.  
+**Repair:** completed and fresh-checkout verified.  
+**Current frontier:** PI-01.
+
+No PI-01→PI-08 result is claimed yet.
 
 ## NEXT CAUSAL ACTION
 
-> **Repair only the Windows checkout portability boundary identified by Master Proof Attempt 001, then rerun the same NayaNET PI-01 → PI-08 master proof from a fresh clean checkout.**
+> **Begin the identical Contract 24 NayaNET PI-01 → PI-08 master proof from the verified fresh Windows worktree.**
 
 At the first deterministic causal failure:
 
-**STOP → IDENTIFY BOUNDARY → REPAIR ONLY THAT BOUNDARY → RERUN THE SAME PROOF → RECORD THE LEARNING IN NAYANET INTELLIGENCE.**
+**STOP → IDENTIFY BOUNDARY → CAPTURE EVIDENCE → REPAIR ONLY THAT BOUNDARY → RERUN THE SAME PROOF → RECORD THE LEARNING IN NAYANET INTELLIGENCE.**
 
 ## TRUTH DISCIPLINE
 
