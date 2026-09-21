@@ -29,9 +29,9 @@
       "PI-01 proof run 35638451543"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
     "next_actions": [
-      "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
+      "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -73,7 +73,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
-    "completion": "Claim-appropriate measured avoided computation with verified outcome preservation."
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "completion": "Project Intelligence current-head cold successor proof is verified; next completion boundary is human-facing whole-journey acceptance with evidence."
   }
 }
