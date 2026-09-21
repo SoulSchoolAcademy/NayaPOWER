@@ -664,3 +664,20 @@ Required qualities include dimensional materiality, semantic color, controlled i
 **STANDARD UPDATED:** `🔱 THE NAYANET ELITE INTERFACE STANDARD` now contains the canonical Master Visual Craft Directive.
 
 **NEXT NAYA:** read the directive, inspect the actual Command Station render, make only the smallest causal visual repair required, render again, and judge the whole composition before advancing.
+
+
+## 🔱 COMMAND STATION — DOM-ALIGNED REPAIR — 2026-09-21
+
+**FINDING:** The first jewel pass targeted stale class names (`.nav-item`, `.nav-icon`, `.nav-name`) that are not used by the current AppShell. The actual rendered navigation uses `.nav > button` and `.ico`.
+
+**REPAIR:** Rebound the jewel/material system to the actual Command Station DOM. The repair now governs navigation buttons, Settings, jewel icons, semantic spectrum, hover lift, active illumination, dimensional depth/highlights and reduced-motion behavior.
+
+**COMMIT:** `c46e8a5f537fa57c29ede2a73e44ac19d92ea4cb`
+
+**PROTECTED:** `2026 09 17 NAYANET HUB.html` untouched. Smart Feed source untouched.
+
+**STATUS:** Implementation repair complete. Visual acceptance remains UNKNOWN until the actual 1440×1000 browser render is inspected as a whole.
+
+[🔗 Full DOM-alignment repair record](./2026/09/21/2026-09-21T21-34-00Z__COMMAND-STATION-DOM-ALIGNMENT-REPAIR.md)
+
+**NEXT NAYA:** render the Command Station, inspect the complete composition, and make only a causal Command Station visual repair if the master visual bar is not yet met.
