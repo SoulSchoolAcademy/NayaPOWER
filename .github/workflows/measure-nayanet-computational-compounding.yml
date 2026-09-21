@@ -1,0 +1,50 @@
+name: NayaNET computational compounding measurement
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/measure-nayanet-computational-compounding.yml'
+permissions:
+  contents: read
+jobs:
+  measure:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Measure context reuse and compounding
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          files=[p for root in ['.naya/project-intelligence','.naya/control-plane'] for p in Path(root).rglob('*') if p.is_file()]
+          total=sum(p.stat().st_size for p in files)
+          print(f"CANONICAL_SOURCE_FILE_COUNT={len(files)}")
+          print(f"CANONICAL_SOURCE_BYTES={total}")
+          PY
+          cat > m.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(p,t,b){const a=performance.now();const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j,ms:performance.now()-a,bytes:Buffer.byteLength(x)}}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED');const t=a.access_token;
+          const restore=await P('nayanet-project-intelligence-restore',t,{});
+          if(restore.status!==200||!restore.body.ok)throw Error('RESTORE_FAILED');
+          const target='COMPOUND-'+R;
+          const seed=await P('nayanet-pi-understand',t,{content:'Measured compounding experience '+R,title:'Compounding measurement'});
+          const eid=seed.body.result?.event?.event_id;if(!eid)throw Error('SEED_FAILED');
+          const cand=await P('nayanet-learning-candidate',t,{claim:'Verified context can be reused without reconstructing source history.',target_id:target,source_event_id:eid,observed_value:{run:R}});
+          const lid=cand.body.result?.candidate?.id;if(!lid)throw Error('CANDIDATE_FAILED');
+          const ver=await P('nayanet-learning-verify',t,{learning_id:lid,verification_method:'measured compounding proof',evidence_refs:[eid],observed_value:{run:R}});
+          const evid=ver.body.result?.learning?.id;if(!evid)throw Error('VERIFY_FAILED');
+          const ap=await P('naya-learning-apply',t,{evidence_id:evid});if(ap.status!==200||!ap.body.ok)throw Error('APPLY_FAILED');
+          const decision=await P('naya-decision-context',t,{target_id:target});
+          if(decision.status!==200||!decision.body.ok||decision.body.decision?.influenced!==true)throw Error('REUSE_NOT_INFLUENCED');
+          console.log('COMPOUNDING_MEASUREMENT='+JSON.stringify({schema:'NAYANET_COMPUTATIONAL_COMPOUNDING_MEASUREMENT_V1',run_id:R,canonical_source_file_count:'from_step_output',cold_restore_round_trips:1,cold_restore_response_bytes:restore.bytes,cold_restore_latency_ms:restore.ms,learning_reuse_round_trips:1,learning_reuse_response_bytes:decision.bytes,learning_reuse_latency_ms:decision.ms,future_context_influenced:true,measured_property:'durable verified learning is reusable through one specialized decision-context retrieval without conversation archaeology',universal_compute_savings:'NOT_CLAIMED',status:'MEASURED'}));
+          EOF
+          node m.mjs
