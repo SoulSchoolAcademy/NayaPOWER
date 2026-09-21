@@ -1,0 +1,22 @@
+name: NayaNET temporal truth contract
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.naya/project-intelligence/temporal-truth-contract.json'
+      - '.naya/project-intelligence/temporal-truth-fixtures.json'
+      - '.naya/project-intelligence/validate_temporal_truth.py'
+      - '.github/workflows/verify-nayanet-temporal-truth.yml'
+permissions:
+  contents: read
+jobs:
+  temporal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate temporal truth
+        run: python3 .naya/project-intelligence/validate_temporal_truth.py
