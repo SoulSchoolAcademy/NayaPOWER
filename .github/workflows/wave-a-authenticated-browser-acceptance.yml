@@ -1,5 +1,5 @@
 name: Wave A canonical September 17 Hub browser acceptance
-# Post-release acceptance rerun: validate the already-deployed canonical shell.
+# Post-release acceptance rerun: validate the already-deployed canonical shell.\n# PI-09 execution trigger: run against current live runtime.
 
 on:
   push:
