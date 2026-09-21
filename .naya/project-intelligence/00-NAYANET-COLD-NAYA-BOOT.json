@@ -1,6 +1,6 @@
 {
   "schema": "nayanet/project-intelligence/cold-boot/v1",
-  "status": "CANONICAL_COLD_START_BRIDGE",
+  "status": "CANONICAL_PROJECT_INTELLIGENCE_OPERATING_BRIDGE_V2",
   "project": "NayaNET",
   "operating_substrate": "NayaPOWER",
   "repository": "SoulSchoolAcademy/NayaPOWER",
@@ -15,20 +15,20 @@
     "SUCCESS": "Cold Naya restores, understands, retrieves, reconciles, selects one responsible next action, checks authority, executes, verifies, learns, updates and enables a cold successor.",
     "CURRENT_TRUTH": "Resolve live main and reconcile MAP, STATE, BLOCKS, PROOF, Activity Board, Intelligence Feed and runtime evidence.",
     "PROVEN": "Governance, persistence, Smart Feed, Smart Share, Smart Mail, privacy/ownership, replay/idempotency, receipts/Ledger, browser/runtime machinery and controlled Proof7 compounding are proven at defined scopes.",
-    "UNKNOWN": "The consolidated PI-02 through PI-08 uninterrupted master chain, plus final human journey and consolidated sender-receiver acceptance.",
+    "UNKNOWN": "Hub-facing retrieval/render of the Project Intelligence bridge and genuinely cold successor retrieval of the exact receipt lineage remain open; universal computation savings remain unmeasured.",
     "AUTHORITY": "Capability does not create authority; action-specific actor/scope/resource/purpose/source/consent/expiry/revocation/ownership boundaries apply.",
     "PREVIOUS": "Windows path portability failure repaired; stale checkout discovered; Proof7 authority-source ownership failure repaired without weakening governance.",
     "LEARNED": "Live HEAD outranks torch; clean is not current; implemented is not verified; retrieval is not learning; security boundaries are repaired; no retry without new information.",
-    "NEXT": "Execute the consolidated Project Intelligence proof through cold successor.",
+    "NEXT": "Use RESTORE V2 → RECONCILE V2 → RETRIEVE → DECIDE → ACT → VERIFY → LEARN → UPDATE → SUCCESSOR. Do not ask Shawn to restate repository intelligence.",
     "PROOF": "Intent → identity → reconstruction → cold restore → retrieval → current state → one next action → authority → execution → observation → verification → learning → durable update → cold successor.",
     "RECORD": "Control plane, canonical boot/source map, Activity Board, Intelligence Feed, runtime receipts/evidence, and .naya/project-intelligence.",
-    "CONTINUE": "Resolve live main, restore, reconcile, execute one action, verify, learn, update, hand off."
+    "CONTINUE": "Resolve live main, call/consume canonical Project Intelligence restore, reconcile runtime against source/proof, choose one authorized action, execute, verify, learn, update, and hand off."
   },
   "current_frontier": {
-    "active_block": "COLD-NAYA-TAKEOVER-PROOF",
+    "active_block": "PROJECT-INTELLIGENCE-PI-01",
     "priority": "P0",
-    "next_action": "Run the canonical cold Project Intelligence acceptance on freshly reconciled main; repair the first deterministic boundary and rerun with new information.",
-    "completion": "Evidence-backed cold successor continuation; otherwise explicitly BLOCKED/FAILED/UNKNOWN."
+    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
+    "completion": "Cold Naya continues without Shawn reconstructing project context."
   },
   "laws": [
     "CAPABILITY DOES NOT CREATE AUTHORITY",
@@ -51,5 +51,29 @@
       "managed_runtime": true,
       "no_secret_recorded": true
     }
+  },
+  "supabase_operating_layer": {
+    "project_ref": "dahisasgpfvziswqvmvm",
+    "migration": "20260921093000_project_intelligence_operating_layer_v1",
+    "edge_function": "nayanet-compound-intelligence",
+    "edge_function_version": 3,
+    "capabilities": [
+      "restore",
+      "retrieve",
+      "reconcile",
+      "understand",
+      "learning_candidate",
+      "learning_verify",
+      "learning_retrieve",
+      "project",
+      "ack",
+      "successor_handoff",
+      "share",
+      "supersede",
+      "health",
+      "state_update",
+      "compound"
+    ],
+    "principle": "Architecture remembers; Naya executes. Unknown never becomes verified merely because a field says so."
   }
 }
