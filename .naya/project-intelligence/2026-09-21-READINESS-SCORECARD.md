@@ -1,107 +1,129 @@
 # NayaNET — 2026-09-21 READINESS SCORECARD
 
-This is an evidence-based engineering scorecard, not a claim of final completion.
+This is an evidence-based engineering scorecard. A score closes only when the property is proven at the boundary where it matters.
 
-## 1. SUPERBRAIN / COMPOUND INTELLIGENCE ENGINE — 8.0/10
+## 1. SUPERBRAIN / COMPOUND INTELLIGENCE ENGINE — 8.5/10
 
 **PROVEN**
 - Authenticated production Compound Intelligence runtime.
 - All 12 requested capabilities pass in one controlled production journey.
 - Operation ledger exists.
-- Dream now delegates to the real governed replay engine.
+- Dream delegates to the governed replay engine.
 - Learning candidate → verification boundary is explicit.
 - Successor handoff is durable.
 - Share requires explicit consent.
-- Supersede preserves parent lineage.
+- Supersede preserves lineage.
+- A measured durable-learning reuse path now proves that a later decision context can be influenced without conversation archaeology.
 
 **OPEN**
-- `compound` is currently an orchestration contract/stage map, not yet a fully automatic execution of every stage.
-- `reconcile` is runtime-aware but does not yet fetch/compare GitHub source truth itself.
-- Retrieval is currently basic field matching, not the full project/topic/time/event/decision/learning/policy/outcome/relationship/source retrieval contract.
-- Intelligence lineage table exists but is not yet populated by the supersede operation.
+- `compound` remains an orchestration contract/stage map rather than fully automatic execution of every stage.
+- `reconcile` does not yet fetch/compare GitHub source truth itself.
+- Retrieval remains narrower than the full project/topic/time/event/decision/learning/policy/outcome/relationship/source contract.
+- Universal computation savings are not claimed; the current measurement proves a reuse property, not a universal savings percentage.
 
 ## 2. GOVERNANCE / SETUP — 9.0/10
 
 **PROVEN**
 - Canonical control plane: STATE/BLOCKS/MAP/PROOF.
 - Team Naya operating center and successor protocol.
-- Authority rule: capability does not create authority.
-- Operation ledger with owner-scoped runtime records.
-- Durable proof artifacts and dated Team Naya handoff.
-- Current frontier now reflects the 12-capability proof.
+- Capability does not create authority.
+- Owner-scoped runtime records and fail-closed authorization.
+- Durable proof artifacts and dated handoff.
+- Cold-Naya 14-question reconstruction contract.
 
 **OPEN**
-- Some production migrations/runtime state were deployed before their exact migration-source counterpart was reconciled into the repository.
-- Supabase advisors still report security-hardening findings requiring separate review.
+- Exact production migration/source reconciliation still needs a final audit.
+- Supabase security-advisor findings require separate hardening review.
+- Universal constitutional/agency enforcement remains incomplete.
 
-## 3. HUMAN HUB — 8.0/10
+## 3. HUMAN HUB — 8.5/10
 
 **PROVEN**
-- Canonical Hub production runtime has previously passed source/live parity and multiple human-surface acceptance boundaries.
-- Name-first identity works through the canonical `identity.html` entry.
-- Smart Feed, Smart Note capture, Smart Share and related human surfaces have prior runtime proof.
+- Canonical Hub runtime has source/live parity and prior human-surface acceptance.
+- Name-first identity works.
+- Smart Feed, Smart Note, Smart Share and related human surfaces have runtime evidence.
+- Fresh receiver-produced Project Intelligence packet was retrieved and rendered in the canonical Personal Smart Feed in GitHub Actions run 35633023365.
+- Exact packet, receiver event and statement were all observed in the browser; owner-bound ACK was written only after retrieval/render evidence.
 
 **OPEN**
-- Project Intelligence receiver objects are not yet proven to retrieve/render through the human Hub.
-- Complete human journey and same-human-surface acceptance remain open.
-- Current Cloudflare GitHub builds are independently showing rate-limit failures on unrelated Workers integrations; this must not be confused with the Supabase Compound proof.
+- Complete end-to-end human journey remains open.
+- Same-human-surface acceptance across the entire NayaNET product remains open.
+- Welcome/front-door acceptance is deferred until the canonical Hub acceptance lane is closed.
 
-## 4. READINESS / CONTINUITY — 7.5/10
+## 4. READINESS / CONTINUITY — 8.5/10
 
 **PROVEN**
-- Cold restore object contains the required operating context.
+- Cold restore contract and machine boot context exist.
 - Twelve runtime capabilities are proven.
 - Team Naya handoff is durable.
-- Successor handoff capability is production-proven.
+- Repository-level cold successor behavior is proven.
+- Runtime Project Intelligence retrieve/render is now proven for a fresh receiver packet.
 
 **OPEN**
-- A genuinely cold successor has not yet been proven to retrieve the exact receiver-produced intelligence and continue the same Project Intelligence transaction.
-- Complete whole-chain proof remains open.
+- A genuinely cold runtime successor must retrieve the exact receiver lineage and continue the same Project Intelligence transaction, not merely replay repository state.
+- Consolidated whole-chain production acceptance remains open.
 
 ## 5. SENDER — 9.0/10
 
 **PROVEN**
 - GitHub/NayaPOWER is canonical sender.
 - Live main SHA is resolved.
-- Canonical packet builder validates provenance, source SHA, hashes, privacy and idempotency.
-- OIDC sender authorization is fail-closed to repository/main/public-visibility claims.
-- Sender → receiver transport/persistence/index/projection/ack foundations are evidenced.
+- Packet builder validates provenance, hashes, privacy and idempotency.
+- OIDC sender authorization is fail-closed.
+- Sender → receiver transport/persistence/index/projection foundations are evidenced.
+- Fresh sender packet was consumed by the receiver/browser proof.
 
 **OPEN**
-- Sender proof must be connected to receiver retrieval/render and cold successor in one uninterrupted acceptance.
+- Connect sender proof to runtime cold-successor continuation in one uninterrupted receipt.
 
-## 6. RECEIVER — 6.5/10
+## 6. RECEIVER — 8.5/10
 
 **PROVEN**
 - OIDC authentication and repository/ref/visibility checks.
-- Packet validation.
-- Persistence.
-- Receiver transaction/event/receipt identities.
+- Packet validation, persistence, transaction/event/receipt identity.
 - Indexed/projected transport flags.
-- Idempotent replay behavior.
+- Owner-bound retrieval.
+- Exact browser render of a fresh receiver packet.
+- ACK after retrieval/render evidence.
+- Current database observation shows packet 6bd8483b-3486-43f6-917b-ed85fefae356 as persisted/indexed/projected/retrieved/rendered with explicit retrieval/render evidence.
 
-**OPEN / FIRST CAUSAL FRONTIER**
-- A newly received Project Intelligence packet did not appear as a retrievable `nayanet_cognition_events` object in the home-run proof.
-- Therefore receiver RETRIEVE is not yet proven for Project Intelligence.
-- Receiver RENDER is consequently not yet proven.
-- ACK can only legitimately close after real retrieval/render evidence exists.
+**OPEN**
+- The exact receiver-to-cold-successor lineage still needs one uninterrupted runtime acceptance.
+- Adversarial owner-vs-non-owner retrieval/render should be consolidated into the final acceptance.
 
-## OVERALL CURRENT READINESS — 8.0/10
+## 7. COMPUTATIONAL COMPOUNDING — 7.5/10
 
-The 12-capability Compound Intelligence runtime is now **PROVEN**.
+**PROVEN**
+- Run 35632921091 measured: canonical source set = 70 files / 883,633 bytes.
+- Cold restore: 1 runtime round trip, 4,821 response bytes, ~739 ms.
+- Reuse decision context: 1 runtime round trip, 813 response bytes, ~338 ms.
+- Future decision was influenced by verified durable learning.
+- These measurements establish a concrete reuse mechanism.
 
-The project is **not yet 10/10 shipped** because the remaining gap is no longer the existence of intelligence operations. It is the final machine boundary:
+**NOT YET PROVEN**
+- Universal percentage computation savings versus a matched cold baseline.
+- Token savings, tool-call savings, retry/error reduction and time-to-outcome across representative workloads.
+- Therefore no universal “100% efficient” or fixed savings claim is made.
 
-**RECEIVE → RETRIEVE → RENDER → ACK → COLD SUCCESSOR**
+## OVERALL CURRENT READINESS — 8.5/10
 
-Then:
+The major frontier has moved from RECEIVE/RETRIEVE/RENDER to:
 
-**WHOLE JOURNEY → HUMAN ACCEPTANCE → ADVERSARIAL ACCEPTANCE → MEASURED COMPUTATION SAVINGS**
+**RUNTIME COLD SUCCESSOR → WHOLE JOURNEY → HUMAN ACCEPTANCE → ADVERSARIAL ACCEPTANCE → MEASURED COMPUTATION SAVINGS**
 
-## FIRST NEXT ACTION
+The 12-capability engine is proven at its recorded scope. The receiver browser-render boundary is proven at its recorded scope. The remaining work is integration/acceptance, not bridge reconstruction.
 
-Do not rebuild Compound Intelligence.
+## ACTIVE NEXT ACTION
 
-Repair the receiver's Project Intelligence retrieval/projection boundary, then rerun the same home-run proof from the first failing boundary.
+Execute one fresh runtime Project Intelligence journey in which:
 
-**No redesign. No archaeology. No false pass.**
+1. Sender creates a genuinely fresh owner-bound packet.
+2. Receiver persists/indexes/projects it.
+3. Authorized owner retrieves the exact packet.
+4. Canonical Hub renders the exact packet.
+5. ACK closes only after actual retrieval/render evidence.
+6. A fresh successor context, with no prior conversation state, restores the same owner-bound lineage.
+7. Successor identifies the same current frontier and performs one authorized continuation action.
+8. The complete receipt is recorded.
+
+**No redesign. No false promotion. No retry without new information.**
