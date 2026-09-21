@@ -82,7 +82,72 @@ A document can contain useful intelligence without being current authority. Usef
 | `NAYA/ACTIVITY/` | EVIDENCE / ACTIVITY | Keep. Dated activity is continuity evidence, not a competing standard. |
 | `NAYA/SMART-NOTES/` | INTELLIGENCE / MEMORY | Keep as durable intelligence records and normalize metadata/indexing over time. |
 
-## Immediate duplicate/obsolescence result
+
+## Second-pass individual-document normalization — 2026-09-21
+
+This pass inspects individual candidates rather than treating directory names as authority.
+
+### SUPERBRAIN/MASTER-NOTES
+
+| Candidate | Classification | Disposition |
+|---|---|---|
+| NAYA-ELITE-SYSTEM-EXECUTION-LAW.md | ACTIVE CONTRACT | Keep. It governs execution excellence broadly and is not merely a design/coding standard. |
+| NE-20260827-NAYA-CODE-OF-HONOR.md and dated SN-* records | HISTORICAL INTELLIGENCE | Keep. Dated records preserve provenance, decisions, lessons, failures, and evolution. |
+| *-RECEIPT-*, execution receipts, forensic maps | EVIDENCE / HISTORICAL INTELLIGENCE | Keep. Receipts and forensic records are evidence, not competing standards. |
+| remaining MASTER-NOTES documents | MIXED | Do not mass-delete. Classify by individual role before retirement. The directory is storage, not authority. |
+
+### .naya
+
+| Candidate family | Classification | Disposition |
+|---|---|---|
+| 00-NAYA-PREFLIGHT-GOVERNANCE-EXECUTION-GATE.md | ACTIVE CONTRACT | Keep. Mandatory preflight/decision gate with a distinct operational role. |
+| dated 2026-09-11 and 2026-09-12 Smart Notes/contracts | HISTORICAL INTELLIGENCE / ACTIVE CONTRACT | Keep. These preserve project evolution and contract lineage; they do not silently outrank current standards. |
+| NAYA-EXECUTION-*, NAYANET-*, NAYAPOWER-* laws/directives | MIXED | Classify individually. Many are specialized execution, runtime, continuity, release, or evidence contracts. |
+| naya-context-manifest.json, runtime registry, trigger artifacts | IMPLEMENTATION / RUNTIME | Keep. Machine/runtime surfaces are not documentation duplicates. |
+| retired PR #440 design/coding standards | OBSOLETE | Remain deleted. Never recreate them. |
+
+### docs
+
+| Candidate | Classification | Disposition |
+|---|---|---|
+| NAYA-LANGUAGE-DICTIONARY-V2.md | CURRENT / ACTIVE CONTRACT | Keep and promote as the single current language authority. |
+| NAYA-LANGUAGE-DICTIONARY.md | OBSOLETE / DUPLICATE | Retire. V2 explicitly supersedes it; repository code search found no remaining reference to the old filename. |
+| NAYA-UNIVERSAL-EXECUTION-LAW.md | ACTIVE CONTRACT | Keep. Broad universal operating layer; not equivalent to the design/engineering standard. |
+| NAYA-MASTER-EXECUTION-GATE.md | HISTORICAL / SUPPORTING | Keep for now. Useful execution-gate provenance; current gating is governed by the active .naya preflight contract. |
+| NAYANET_ARCHITECTURE_CONTRACT_V1.md | ACTIVE CONTRACT | Keep. Architecture-specific contract. |
+| NAYANET-CANONICAL-ROUTING-CONTRACT-V1.md | ACTIVE CONTRACT | Keep. Current routing/runtime boundary. |
+| NAYANET_INTELLIGENT_FEED_PRINCIPLE.md | ACTIVE CONTRACT | Keep. Feed-specific product intelligence principle. |
+| MAXESS-*, Smart Note, learning, authority, deployment and product contracts | ACTIVE CONTRACT / EVIDENCE | Keep unless an individual replacement is proven. Product-specific scope is not a duplicate merely because it uses MASTER or V1 naming. |
+
+### NAYANET
+
+| Candidate | Classification | Disposition |
+|---|---|---|
+| README.md | CURRENT DIRECTORY INDEX | Keep. NayaNET planning/operating index and read-order map. |
+| README_FIRST.md | ACTIVE CONTINUITY / EXECUTION CONTRACT | Keep. Fresh-Naya evidence/continuity entry point; distinct from the directory index. |
+| 00-NAYANET-MASTER-DIRECTIVE.md | CURRENT / ACTIVE CONTRACT | Keep. Broad NayaNET directive; current Design + Engineering Intelligence governs design/coding details where scopes overlap. |
+| E01-ULTIMATE-ENTRANCE-MASTER-DIRECTIVE.md | ACTIVE PRODUCT CONTRACT | Keep. Despite filename, this is E01-specific construction/product/QA guidance, not a global standard. |
+| NAYANET-BUILD-MISSION.md | HISTORICAL / TASK-LOCAL CONTRACT | Keep for provenance, but its embedded historical HEAD must never be treated as current truth. |
+| NAYANET-IMPLEMENTATION-ARCHAEOLOGY-BASELINE.md | EVIDENCE / BASELINE | Keep. Prior-state archaeology evidence, not current authority. |
+| 03-DESIGN-SYSTEM-AND-LIVING-SUN-SPEC.md | ACTIVE PRODUCT DESIGN CONTRACT | Keep. Governed by current Design + Engineering Intelligence standard. |
+| 04-ENGINEERING-BLUEPRINT.md | ACTIVE ENGINEERING CONTRACT | Keep. Concrete deployment/engineering rules remain operationally useful. |
+| E01-* detailed/question/spec artifacts | ACTIVE PRODUCT CONTRACT / EVIDENCE | Keep individually; they define the E01 product and verification surface. |
+| 509-* repair scripts | IMPLEMENTATION / HISTORICAL IMPLEMENTATION | Keep unless dependency analysis proves retirement is safe. Filename versioning alone is insufficient evidence. |
+
+## Confirmed retirement from this second pass
+
+### docs/NAYA-LANGUAGE-DICTIONARY.md
+
+Reason: NAYA-LANGUAGE-DICTIONARY-V2.md explicitly identifies itself as the current NayaPOWER language revision and the older file as its predecessor. The old dictionary adds a second semantic authority without a distinct operational role. Repository code search for the old filename returned no remaining references.
+
+Action: delete the old dictionary; V2 becomes the single current language authority.
+
+## Second-pass result
+
+This pass produces one confirmed deletion rather than speculative mass deletion. No duplicate blob SHAs were found across the inspected four directories, so the remaining cleanup requires semantic/reference analysis rather than filename or byte-identity assumptions.
+
+Next normalization frontier: individual dependency/reference analysis of the remaining .naya laws/directives and the 509-* implementation history, followed by retirement only where current source, references, runtime behavior, and evidence establish that an artifact has no remaining operational or provenance value.
+
 
 PR #440 already retired the six confirmed competing design/coding standards:
 
