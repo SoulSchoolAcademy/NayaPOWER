@@ -1,0 +1,57 @@
+name: NayaNET PI-06 governed execution proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-pi06-governed-execution.yml'
+permissions:
+  contents: read
+jobs:
+  pi06:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute PI-06 governed execution proof
+        shell: bash
+        run: |
+          cat > verify-pi06.mjs <<'EOF'
+          const base=process.env.SUPABASE_URL,key=process.env.SUPABASE_PUBLISHABLE_KEY,runId=process.env.GITHUB_RUN_ID;
+          const h=t=>({apikey:key,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function post(p,t,b){const r=await fetch(base+'/functions/v1/'+p,{method:'POST',headers:h(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function rpc(name,t,b){const r=await fetch(base+'/rest/v1/rpc/'+name,{method:'POST',headers:h(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function rest(path,t){const r=await fetch(base+'/rest/v1/'+path,{headers:h(t)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};if(!r.ok)throw Error('REST '+r.status+':'+x);return j;}
+          const ar=await fetch(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('FRESH_AUTH_FAILED');
+          const t=a.access_token;
+          const seed=await post('nayanet-pi-understand',t,{content:'PI-06 controlled execution proof '+runId,title:'PI-06 execution proof'});
+          if(seed.status!==200||seed.body?.ok!==true)throw Error('SEED_FAILED');
+          const eventId=seed.body.result?.event?.event_id;
+          if(!eventId)throw Error('EVENT_ID_MISSING');
+          const resource='PI-06-CONTROLLED-EXECUTION-'+runId;
+          const denied=await post('nayanet-pi-execute',t,{authority_grant_id:'00000000-0000-0000-0000-000000000000',action_id:'pi.controlled_execution',resource,expected_result:'Durable controlled execution receipt'});
+          if(denied.status!==403)throw Error('UNAUTHORIZED_EXECUTION_NOT_BLOCKED:'+JSON.stringify(denied.body));
+          const expiry=new Date(Date.now()+10*60*1000).toISOString();
+          const grant=await rpc('nayanet_issue_authority_grant',t,{p_subject_id:a.user?.id,p_source_event_id:eventId,p_mission_id:'NayaNET PI-06 controlled execution proof',p_scope:{target:resource,project_id:'NayaNET'},p_actions:['pi.controlled_execution'],p_constraints:{no_external_side_effects:true,proof_run:runId},p_expires_at:expiry,p_evidence:{proof_run:runId,source_event_id:eventId},p_parent_authority:null});
+          if(grant.status!==200||!grant.body?.grant_id)throw Error('AUTHORITY_GRANT_ISSUE_FAILED:'+JSON.stringify(grant.body));
+          const exec=await post('nayanet-pi-execute',t,{authority_grant_id:grant.body.grant_id,action_id:'pi.controlled_execution',resource,expected_result:'Durable controlled execution receipt',request_id:'pi06-'+runId});
+          console.log('PI06_RUN_ID='+runId);
+          console.log('PI06_DENIED='+JSON.stringify(denied.body));
+          console.log('PI06_GRANT='+JSON.stringify(grant.body));
+          console.log('PI06_EXEC='+JSON.stringify(exec.body));
+          if(exec.status!==200||exec.body?.ok!==true)throw Error('AUTHORIZED_EXECUTION_FAILED');
+          const receiptId=exec.body.receipt?.id;
+          if(!receiptId)throw Error('EXECUTION_RECEIPT_ID_MISSING');
+          const rows=await rest('nayanet_execution_receipts?id=eq.'+encodeURIComponent(receiptId)+'&select=id,project_id,action,status,expected_result,observed_result,authority_grant_id,authority_status_at_execution,authority_scope,authority_actions,authority_constraints,authority_source_event_id',t);
+          if(!rows?.[0])throw Error('EXECUTION_RECEIPT_NOT_RETRIEVABLE');
+          if(rows[0].status!=='SUCCESS'||rows[0].authority_status_at_execution!=='AUTHORIZED')throw Error('EXECUTION_RECEIPT_NOT_VERIFIED:'+JSON.stringify(rows[0]));
+          console.log('PI06_RESULT='+JSON.stringify({schema:'NAYANET_PI06_GOVERNED_EXECUTION_PROOF_V1',run_id:runId,fresh_authenticated_context:true,unauthorized_blocked:true,authorized_executed:true,receipt_id:receiptId,observable_result:exec.body.execution?.observed_result,external_side_effects:false,status:'VERIFIED'}));
+          EOF
+          node verify-pi06.mjs
