@@ -120,3 +120,17 @@ A Naya does not say “someone else can continue” until the required intellige
 **Next action:** Execute PI-03 cold retrieval from a genuinely fresh context without conversation archaeology.  
 **Proof required:** fresh-context retrieval of the same intelligence, with no hidden dependence on this conversation or the PI-02 answer.  
 **Successor:** Verify live HEAD and this torch first. Re-answer all 14. Then prove PI-03. Do not ask Shawn to retell NayaNET.
+
+## 🔱 NAYANET-2026-09-21-010 — MASTER PROOF CLOSED / CONSTITUTIONAL HARDENING FRONTIER
+
+**Truth state:** VERIFIED at defined master-proof scope / broader constitutional scope PARTIAL
+
+**Result:** PI-01→PI-08 and the consolidated sender→receiver→persistence→index→projection→retrieve→render→ACK chain passed at the claim scopes recorded in `.naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md`.
+
+**Evidence:** 12-function run 35629298712; PI-03 35630647325; PI-04 35630807781; PI-05 35630896351; PI-06 35631234009; PI-07 35631296835; PI-08 35631352527; consolidated chain 35631750791; exact browser render 35633023365; human/browser 35632656912; adversarial 35632840387; compounding measurement 35632921091.
+
+**Learning:** The single Project Intelligence spine is now demonstrated. The remaining challenge is not proving that the spine exists; it is hardening the broader constitutional properties so claims, temporal truth, causal evidence, agency, retry law, provenance, recovery, accessibility, and network-scale interoperability become machine-enforced rather than merely documented.
+
+**Current next action:** Reconcile every canonical control-plane surface to live HEAD, then execute the highest-value remaining gap from `21-GAP-TO-PROOF-MATRIX.md` using first-failure law.
+
+**Successor:** Read `37-NAYANET-14-QUESTION-TEAM-NAYA-CURRENT-2026-09-21.md` and `40-NAYANET-ULTIMATE-EXECUTION-DIRECTIVE-NEXT-NAYA-2026-09-21.md`; do not ask Shawn to reconstruct the project.
