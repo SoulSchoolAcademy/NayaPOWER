@@ -27,8 +27,11 @@ on:
       release_surface:
         required: false
         type: choice
-        options: [canonical-hub]
+        options: [canonical-hub, canonical-react]
         default: canonical-hub
+      source_ref:
+        required: false
+        type: string
 
 concurrency:
   group: assistant-cloudflare-production-${{ github.sha }}
@@ -60,12 +63,15 @@ jobs:
           set -euo pipefail
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
-          test "${RELEASE_SURFACE}" = "canonical-hub"
+          test "${RELEASE_SURFACE}" = "canonical-hub" || test "${RELEASE_SURFACE}" = "canonical-react"
 
       - name: Checkout exact resolved revision
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || inputs.commit_sha || github.sha }}
 
       - name: Prepare canonical Hub artifact
+        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -103,6 +109,22 @@ jobs:
           grep -q 'NayaNET name-first identity adapter' dist/name-first-auth-adapter.js
           sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
 
+      - name: Prepare canonical React Hub artifact
+        if: ${{ inputs.release_surface == 'canonical-react' }}
+        working-directory: NAYANET/HUB
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-package-lock
+          npm run typecheck
+          npm run build
+          test -s dist/index.html
+          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/assets/*.js
+          rm -rf ../../dist
+          mkdir -p ../../dist
+          cp -R dist/. ../../dist/
+          sha256sum ../../dist/index.html | tee "${RUNNER_TEMP}/react-source.sha256"
+
       - name: Deploy exact canonical Hub
         shell: bash
         run: |
@@ -111,6 +133,7 @@ jobs:
           npx --yes wrangler@4 deploy --config "${RUNNER_TEMP}/wrangler.jsonc"
 
       - name: Verify exact live source parity
+        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -140,6 +163,7 @@ jobs:
           exit 1
 
       - name: Verify live Hub browser baseline
+        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -168,8 +192,40 @@ jobs:
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-hub-baseline.mjs
           rm -f verify-hub-baseline.mjs
 
+      - name: Verify live flagship React Hub
+        if: ${{ inputs.release_surface == 'canonical-react' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          cat > verify-flagship.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.NAYA_RUNTIME_URL;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          try {
+            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
+              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
+              const page=await context.newPage();
+              const response=await page.goto(runtime+'/?name=Shawn&alias=shawn&flagship='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
+              if(!response?.ok()) throw new Error(viewport.label+': live React Hub HTTP unavailable');
+              await page.waitForTimeout(1800);
+              const result=await page.evaluate(()=>({title:document.title,shell:document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker')||null,today:[...document.querySelectorAll('button')].some(x=>x.textContent?.includes('Intelligence Today')),feed:document.body.innerText.includes('Living intelligence, made visible.'),pis:document.body.innerText.includes('SMART FEED · CANONICAL PIS'),project:document.body.innerText.includes('NAYANET · PROJECT INTELLIGENCE')}));
+              console.log('FLAGSHIP_RUNTIME_PROBE',viewport.label,JSON.stringify(result));
+              if(result.shell!=='NAYANET-HUB-REACT-CANONICAL') throw new Error(viewport.label+': React shell marker missing');
+              if(!result.today) throw new Error(viewport.label+': Intelligence Today navigation missing');
+              if(!result.feed) throw new Error(viewport.label+': flagship Smart Feed surface missing');
+              if(!result.pis) throw new Error(viewport.label+': canonical PIS surface missing');
+              if(!result.project) throw new Error(viewport.label+': Project Intelligence command surface missing');
+              await context.close();
+            }
+          } finally { await browser.close(); }
+          EOF
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-flagship.mjs
+          rm -f verify-flagship.mjs
+
       - name: Final proof
         run: |
           echo "LIVE_VERIFIED=${NAYA_RUNTIME_URL}"
           echo "WORKER=${CLOUDFLARE_CANONICAL_WORKER}"
-          echo "SOURCE=NAYANET/HUB/index.html"
+          echo "SOURCE=${{ inputs.source_ref || inputs.commit_sha || github.sha }}"
+          echo "SURFACE=${{ inputs.release_surface || 'canonical-hub' }}"
