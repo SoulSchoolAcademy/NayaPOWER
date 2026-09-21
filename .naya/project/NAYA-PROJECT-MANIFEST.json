@@ -3,7 +3,8 @@
   "project_id": "NayaPOWER",
   "project_name": "NayaPOWER / NayaNET",
   "package": "Naya Project — One-Shot Intelligence Library",
-  "status": "CANONICAL_PROJECT_CONTEXT_PACKAGE",
+  "status": "EXECUTABLE_PROJECT_CONTEXT_PACKAGE",
+  "command_center": ".naya/project/00-NAYA-PROJECT-INDEX.md",
   "authority": {
     "constitution": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
     "control_plane": [
@@ -40,10 +41,10 @@
   "system_roles": {
     "human": "director / principal / authority",
     "naya": "governed intelligence and execution partner",
-    "nayapower": "Superbrain / control substrate",
+    "nayapower": "governed Superbrain operating system / control substrate",
     "github": "durable engineering and source context",
     "nayanet": "governed network/application environment",
-    "hub": "human-facing visual brain / operating surface"
+    "hub": "human-facing visual brain / operating surface, not source of truth"
   },
   "proof_ladder": [
     "PI-01 RESTORE",
@@ -55,6 +56,7 @@
     "PI-07 GENERALIZE"
   ],
   "links": {
+    "command_center": ".naya/project/00-NAYA-PROJECT-INDEX.md",
     "one_shot": "NAYAPOWER-ONE-SHOT.md",
     "source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
     "build_anything": "SUPERBRAIN/NAYAPOWER-BUILD-ANYTHING-SUPERBRAIN-OPERATING-SPEC-V1.md",
