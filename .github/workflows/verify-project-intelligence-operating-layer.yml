@@ -71,7 +71,7 @@ jobs:
           receipt.checks.ack_fail_closed=(ack.ok===false)?'PASS':'FAIL';
           const successor=await req('nayanet-successor-handoff',token,{what_happened:'PI operating layer proof executed',what_changed:'Twelve canonical PI functions verified deployed; runtime proof exercised',learned:['Candidate learning was promoted only with evidence'],next_action:'Run PI-03 cold retrieval independently'});
           receipt.checks.successor_handoff=successor.ok===true?'PASS':'FAIL';
-          const share=await req('nayanet-intelligence-share',token,{source_event_id:eventUuid},[403]);
+          const share=await req('nayanet-intelligence-share',token,{source_event_id:eventUuid,visibility:'SHARED_BY_CHOICE'},[403]);
           receipt.checks.share_authority_fail_closed=(share.ok===false)?'PASS':'FAIL';
           const supersede=await req('nayanet-intelligence-supersede',token,{source_event_id:eventUuid,relation:'SUPERSEDES',reason:'Controlled proof lineage',evidence_refs:[eventId]});
           receipt.checks.supersede=supersede.ok===true?'PASS':'FAIL';
