@@ -93,6 +93,7 @@ jobs:
           await mailButton.waitFor({state:'visible',timeout:10000});
           await mailButton.click();
           await ap.locator('#nc-mail-recipient').waitFor({state:'visible',timeout:15000});
+          await ap.waitForFunction(expected=>[...document.querySelectorAll('#nc-mail-recipient option')].some(o=>o.value===expected),B.user.id,{timeout:15000});
           const optionValues=await ap.locator('#nc-mail-recipient option').evaluateAll(opts=>opts.map(o=>o.value));
           if(!optionValues.includes(B.user.id)) throw Error('SMART_MAIL_RECEIVER_NOT_EXPOSED_BY_HUMAN_SURFACE:'+JSON.stringify(optionValues));
           await ap.locator('#nc-mail-recipient').selectOption(B.user.id);
