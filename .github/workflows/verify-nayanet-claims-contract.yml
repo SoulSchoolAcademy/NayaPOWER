@@ -1,0 +1,22 @@
+name: NayaNET first-class claims contract
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.naya/project-intelligence/claim.schema.json'
+      - '.naya/project-intelligence/claims/**'
+      - '.naya/project-intelligence/validate_claims.py'
+      - '.github/workflows/verify-nayanet-claims-contract.yml'
+permissions:
+  contents: read
+jobs:
+  claims:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate first-class claims
+        run: python3 .naya/project-intelligence/validate_claims.py
