@@ -318,7 +318,22 @@ jobs:
           if((revokedA.items||[]).some(x=>x.publication_id===publicationId)) throw Error('SMART_SHARE_REVOKED_STILL_RETRIEVABLE_A');
           const revokedB=await bp.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           if((revokedB.items||[]).some(x=>x.publication_id===publicationId)) throw Error('SMART_SHARE_REVOKED_STILL_RETRIEVABLE_B');
-          const shortExpiry=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:headers(A.access_token),body:JSON.stringify({p_subject_id:A.user.id,p_source_event_id:authorizationEventId,p_mission_id:'NayaNET Smart Share',p_scope:{project_id:project,target:sourceRows[0].id},p_actions:['smart_feed_publish'],p_constraints:{consent_state:'explicit',source_event_id:sourceEventId},p_expires_at:new Date(Date.now()+1000).toISOString(),p_evidence:{proof:'smart-share-expiry'},p_parent_authority:null})});
+          const expiryAuthorization=await ap.evaluate(sourceId=>window.NayaAssistantRuntime.record({
+            event_id:'smart-share-expiry-authorization-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7),
+            parent_event_id:sourceId,
+            type:'smart_share_authorization',
+            classification:'authorization',
+            title:'Smart Share expiry authorization',
+            content:JSON.stringify({source_event_id:sourceId,consent_state:'explicit',authorization_type:'explicit_human_share_click_expiry_probe'}),
+            source:'nayanet-hub.smart-share.expiry-proof',
+            status:'active',
+            actor:'human',
+            tags:['intelligent-hub','smart-share','authorization','expiry-proof'],
+            metadata:{action:'smart_share_expiry_probe',consent_state:'explicit',source_event_id:sourceId,persistence_boundary:'authenticated-canonical-cognition'}
+          }),sourceEventId);
+          const expiryAuthorizationEventId=String(expiryAuthorization?.event?.event_id||'');
+          if(!expiryAuthorizationEventId) throw Error('SMART_SHARE_EXPIRY_AUTHORIZATION_EVENT_NOT_RECORDED');
+          const shortExpiry=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:headers(A.access_token),body:JSON.stringify({p_subject_id:A.user.id,p_source_event_id:expiryAuthorizationEventId,p_mission_id:'NayaNET Smart Share',p_scope:{project_id:project,target:sourceRows[0].id},p_actions:['smart_feed_publish'],p_constraints:{consent_state:'explicit',source_event_id:sourceEventId,authorization_event_id:expiryAuthorizationEventId},p_expires_at:new Date(Date.now()+1000).toISOString(),p_evidence:{proof:'smart-share-expiry',source_event_id:sourceEventId,authorization_event_id:expiryAuthorizationEventId},p_parent_authority:null})});
           if(!shortExpiry?.grant_id) throw Error('SMART_SHARE_EXPIRY_GRANT_ISSUANCE_FAILED');
           await new Promise(r=>setTimeout(r,1500));
           const expiryValidation=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{method:'POST',headers:headers(A.access_token),body:JSON.stringify({p_grant_id:shortExpiry.grant_id,p_action:'smart_feed_publish',p_target:sourceRows[0].id})});
