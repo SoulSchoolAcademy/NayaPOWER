@@ -6,7 +6,8 @@
   "current_head": {
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
-    "recorded_head_is_not_authoritative": true
+    "recorded_head_is_not_authoritative": true,
+    "observed_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416"
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -108,7 +109,10 @@
     "2026-09-20 Smart Feed connection proof passed after aligning the acceptance harness with the canonical select-based connection picker.",
     "2026-09-20 Naya Play is now exposed in canonical desktop/mobile Hub navigation; the surface itself records a canonical event and receipt and verifies retrieval before reporting PLAY VERIFIED.",
     "2026-09-20 the current acceptance harness failure was test-contract-only at Naya Play event identity: runtime record() uses assistant_<timestamp> IDs, while the harness required UUIDs; PR #392 corrected that contract.",
-    "2026-09-20 release run 35534913866 is pending on current main after the Naya Play acceptance correction; its result is the next authoritative acceptance observation."
+    "2026-09-20 release run 35534913866 is pending on current main after the Naya Play acceptance correction; its result is the next authoritative acceptance observation.",
+    "Smart Share governed proof run 35553013422 is PRODUCTION_PROVEN at current main HEAD 4168f19eeb632c728c3fd9b080ce5e0937e5e416; all 27 gate requirements passed and artifact 10618664793 uploaded.",
+    "Smart Share authority hardening preserves fail-closed issuer/source ownership while retaining the SECURITY DEFINER mutation boundary.",
+    "Smart Share expiry proof now uses a separate owned authorization event, respecting the canonical unique issuer/source_event_id constraint."
   ],
   "unknown": [
     "A single consolidated current human-facing acceptance receipt that includes the public welcome front door and every Wave A security/relationship step is not yet recorded.",
@@ -149,10 +153,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Deep human-facing feature lifecycle acceptance remains after production-proven Hub release, Smart Note capture, Smart Feed action matrix, Spaces, Connections, and responsive/runtime baseline.",
-  "single_next_action": "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome.",
+  "bottleneck": "Deep human-facing feature lifecycle acceptance now begins with Smart Mail after Smart Share production proof closure; Connections, Smart Spaces, Smart Lists, Reports/Search, Activity/Ledger, compounding, sender/receiver whole journey, and final fresh-browser acceptance remain.",
+  "single_next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof.",
   "next_actions": [
-    "Execute the remaining deep human feature lifecycles on the canonical Hub: Smart Lists → Smart Share → Smart Ledger → Smart Mail → Reports/Search/Settings, proving CREATE/ACT/RETRIEVE/RELOAD/EVIDENCE/AUTHORIZATION where the surface supports those actions; do not divert into Welcome."
+    "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
@@ -174,28 +178,15 @@
     "A real outcome comparison with equal verified responsible value is NOT_PROVEN, not FAIL and not PASS.",
     "The current controlled paired experiment proves the machinery, not superiority."
   ],
-  "recorded_at_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
+  "recorded_at_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
   "latest_human_facing_observation": {
-    "status": "HUB_RELEASE_AND_SMART_NOTE_PRODUCTION_PROVEN",
-    "current_main_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
-    "deployed_source_head": "4697d5e039b6bfbde2104c757cf37e1f2221b90c",
-    "release_run_id": 35527973956,
-    "cloudflare_version_id": "ba817d73-73b1-4307-845a-15f210314103",
-    "parity_sha256": "8b8e94799ea323d98fb3772a12da394f849d06e2d1f795a88200c790385c744e",
-    "smart_note_proof_run_id": 35528080864,
-    "smart_note_event_id": "1bdfee48-f79c-4b87-8d5f-53e345904cf7",
-    "checks": {
-      "source_build_runtime_parity": "PASS",
-      "desktop_baseline": "PASS",
-      "mobile_baseline": "PASS",
-      "canonical_hub": "PASS",
-      "smart_feed_action_matrix": "PASS",
-      "smart_feed_unauthorized_block": "PASS",
-      "private_space_create_reload_retrieve": "PASS",
-      "connection_create_reload_retrieve": "PASS",
-      "smart_note_human_capture_receiver_feed_reload": "PASS"
-    },
-    "interpretation": "The canonical Hub is deployed and source-parity verified. The human Smart Note transaction is independently proven. Remaining work is deep lifecycle acceptance across the remaining human surfaces."
+    "status": "SMART_SHARE_PRODUCTION_PROVEN_SMART_MAIL_NEXT",
+    "current_main_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
+    "smart_share_run_id": 35553013422,
+    "smart_share_artifact_id": 10618664793,
+    "runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "canonical_hub": "NAYANET/HUB/index.html",
+    "next_boundary": "SMART_MAIL_HUMAN_LIFECYCLE"
   },
-  "next_action": "Trace Smart Share from the canonical Hub control through runtime → authority → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persisted outcome → rendered result; stop at the first actual failure, repair only that boundary, and rerun the proof."
+  "next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."
 }
