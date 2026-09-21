@@ -1,90 +1,161 @@
 # 🔱 NAYA DESIGN + ENGINEERING INTELLIGENCE
 
 **Status:** CANONICAL PROJECT INTELLIGENCE — DESIGN + CODING STANDARD  
+**Version:** 1.1  
 **Repository:** SoulSchoolAcademy/NayaPOWER  
 **Owner:** Project Intelligence / NayaNET  
 **Canonical location:** `NAYA/INTELLIGENCE/DESIGN-ENGINEERING/`  
-**Version:** 1.0  
 **Quality target:** AAA / 10-Star / verified  
 **Human principle:** Push-button simple. Deeply intelligent underneath.
 
 ## 1. PURPOSE
 
-This directory is the durable, machine-readable and human-readable standard for how Naya designs, codes, reviews, builds, tests, verifies, and improves NayaPOWER and NayaNET.
-
-It consolidates the strongest reusable principles found across the current design, coding, interface, Smart Feed, NayaNET, HMC, and deep-system materials.
+This directory is the single current standard for how Naya designs, codes, reviews, builds, tests, verifies, and improves NayaPOWER, NayaNET, the Intelligent Hub, and related Project Intelligence experiences.
 
 The governing relationship is:
 
-**HUMAN INTENT → EXPERIENCE DESIGN → INTERACTION → CODE → ENGINE → RUNTIME → EVIDENCE → VERIFICATION → LEARNING → BETTER DESIGN + CODE**
+**HUMAN INTENT → EXPERIENCE DESIGN → INTERACTION → STATE → CODE → ENGINE → RUNTIME → EVIDENCE → VERIFICATION → LEARNING → BETTER DESIGN + CODE**
 
-Naya must not treat design and engineering as separate disciplines. A beautiful interface whose engine is false, slow, insecure, or unverifiable is not AAA. An excellent engine exposed through confusing or inaccessible interaction is also not AAA.
+Design and engineering are one system. Beautiful UI with false engine state is failure. Excellent code exposed through confusing or inaccessible interaction is also failure.
 
-## 2. CANONICAL FILES
+## 2. THE FOUR CANONICAL FILES
 
 | File | Role |
 |---|---|
-| `CONSTITUTION.md` | Human-readable laws, principles, quality hierarchy, non-negotiables, and system model. |
-| `SPEC.json` | Strict machine-readable contracts, component/state schemas, tokens, quality gates, and verification states. |
-| `PLAYBOOK.md` | Operational procedure Naya follows before, during, and after consequential design/coding work. |
-| `README.md` | Entry point, source map, authority model, and maintenance rules. |
+| `CONSTITUTION.md` | Durable laws, principles, quality hierarchy, and non-negotiables. |
+| `SPEC.json` | Machine-readable contracts, states, tokens, quality gates, and verification rules. |
+| `PLAYBOOK.md` | Operational procedure for consequential design/coding work. |
+| `README.md` | Discovery, authority, library, maintenance, and source map. |
 
-**Authority rule:** these four files form one standard. They are not four competing standards.
+These are **one standard**, not four competing standards.
 
-## 3. SOURCE MATERIAL CONSOLIDATED
+## 3. CURRENT-AUTHORITY LAW
 
-Primary source set inspected from the NayaPOWER repository:
+**THE CURRENT CANONICAL STANDARD IS THE AUTHORITY.**
 
-- `HMC Button design spec (1).pdf`
-- `HMC Strandard! (1).pdf`
-- `Human Maximus Codex Logo What it says!.pdf`
-- `04 🔱 NAYA POWER — AI ACTIVATION 04 · AAA EXCELLENCE + 10-STAR HUMAN SERVICE`
-- `NAYA MASTER CODER ACTIVATION`
-- `NAYA MASTER DESIGNER ACTIVATION`
-- `NAYANET DESIGN MASTER DOC`
-- `SMARTFEED DESIGN FLOW`
-- `🔱 THE NAYANET ELITE INTERFACE STANDARD`
-- `🧠 NAYAPOWER 01–58 — THE DEEP SYSTEM MODEL Q & A`
+A newer accepted version supersedes an older version when the current state intentionally changes the rule.
 
-Additional repository standards used for reconciliation include:
+Do not preserve obsolete competing standards merely because they contain useful wording. Distill useful knowledge into the current standard, then retire the duplicate.
+
+Historical documents, implementation evidence, decisions, and receipts may remain when they provide provenance or are required to understand what happened. They are history/evidence, not current design authority.
+
+Never determine authority by filename words such as `FINAL`, `MASTER`, `ULTIMATE`, `CANONICAL`, or by document size, age, or visual polish. Authority comes from the current governed state.
+
+## 4. CONTINUOUS DISTILLATION LAW
+
+Naya must continuously:
+
+**OPTIMIZE → MAXIMIZE → SYNERGIZE → EQUALIZE → BALANCE → TUNE → DISTILL → UPDATE → VERIFY**
+
+This is not permission to change things for novelty. Optimization means improving real value while preserving truth, safety, authority, working behavior, maintainability, and continuity.
+
+When new information arrives:
+
+1. compare it with the current standard;
+2. identify what is genuinely new;
+3. preserve what remains correct;
+4. merge the useful improvement into the current authority;
+5. retire conflicting/duplicated rules;
+6. update machine-readable contracts when enforceable;
+7. verify affected behavior;
+8. record the change and its provenance.
+
+**Distill knowledge. Do not accumulate standards.**
+
+## 5. PROJECT-INTELLIGENCE LIBRARY LAW
+
+Project Intelligence is organized as a searchable library, not an undifferentiated pile of notes.
+
+Every durable intelligence item should have machine-readable metadata for:
+
+- `project`
+- `category`
+- `year`
+- `month`
+- `day`
+- `time`
+- `title`
+- `type`
+- `status`
+- `authority`
+- `source`
+- `provenance`
+- `relationships`
+- `privacy`
+- `verification`
+
+Canonical conceptual index:
+
+**PROJECT → CATEGORY → YEAR → MONTH → DAY → TIME → INTELLIGENCE**
+
+Date/time identifies when intelligence was created or observed. It does **not** automatically determine current authority. A newer dated item becomes authoritative only when the governing system promotes it as current.
+
+Recommended durable path model:
+
+`NAYA/INTELLIGENCE/LIBRARY/<PROJECT>/<CATEGORY>/<YEAR>/<MONTH>/<DAY>/<TIME>-<SLUG>.md`
+
+The index should support retrieval by any combination of:
+
+**project + category + date + time + type + authority + status + relationship**
+
+Do not duplicate the same intelligence merely to make multiple searches possible. Use metadata and indexes.
+
+## 6. PROJECT CREATION LAW
+
+When a human provides a vision, mission, goal, problem, or sufficiently coherent brain dump, Naya should be able to turn it into a Project Intelligence container.
+
+Minimum project model:
+
+**VISION → MISSION → OUTCOMES → CURRENT TRUTH → AUTHORITY → INTELLIGENCE → WORK → EVIDENCE → LEARNING → NEXT ACTION**
+
+A project should have one identity and one intelligence home. Its intelligence can contain design, engineering, decisions, research, activity, evidence, lessons, and other categories without creating competing project identities.
+
+For this system, **Project Intelligence is the unified NayaNET / NayaPOWER intelligence environment**. Do not create artificial separation between the project and the intelligence that defines and advances it.
+
+## 7. SOURCE MATERIAL / DISTILLATION RECORD
+
+The current standard was created by reconciling the supplied HMC, Naya Master Designer/Coder, NayaNET design, Smart Feed, Elite Interface, AAA/10-Star, and NayaPOWER deep-system materials with existing repository standards.
+
+The three HMC documents are present in GitHub as binary PDF blobs. Their existence is verified, but the connected text interface cannot decode their binary bytes. Therefore this standard does not claim to quote or reproduce PDF-specific wording that was not actually machine-readable.
+
+The supplied source documents are inputs/evidence. **This directory is the current design + engineering authority after distillation.**
+
+## 8. RETIRED DUPLICATE STANDARDS
+
+The following competing design/coding standards were intentionally retired in this consolidation because their durable knowledge has been distilled into this canonical standard:
 
 - `.naya/NAYANET-DESIGN-SYSTEM-STANDARD.md`
 - `.naya/NAYANET-LIVING-INTERFACE-DESIGN-LAW.md`
-- `.naya/NAYANET-SMART-BOARD-AND-SMART-FEED-DESIGN-CONTRACT-V1.md`
 - `.naya/MASTER-NAYA-POWER-AI-AGENT-DESIGN-CONTRACT-V1.md`
 - `SUPERBRAIN/MASTER-NOTES/NAYA-ULTIMATE-MASTER-DESIGN-CODING-CONTRACT.md`
 - `docs/NAYA-MASTER-DESIGN-CODER-LAWS.md`
-- `NAYANET/03-DESIGN-SYSTEM-AND-LIVING-SUN-SPEC.md`
 - `NAYANET/E01-DESIGN-DIRECTIVE.md`
-- `NAYANET/HUB/DESIGN-DNA-RECONCILIATION-2026-09-15.md`
 
-### Binary-source note
+Do not recreate these as parallel standards.
 
-The three HMC documents above are present in GitHub as PDF blobs and their repository existence was verified. The connected GitHub text interface can inventory those binary blobs but cannot decode their PDF bytes. Therefore this v1 consolidation does **not** invent PDF-specific wording that was not machine-readable.
+Product-specific contracts, protected visual references, implementation gates, activity records, and other documents that serve a different purpose are not automatically duplicates. Their authority must be interpreted through the current governance hierarchy.
 
-The standard already incorporates the compatible HMC/button/brand principles that are independently present in the repository's text design standards. When direct PDF extraction becomes available, the PDFs must be reconciled against this standard as evidence, not silently treated as a second authority.
+## 9. AUTHORITY MODEL
 
-## 4. AUTHORITY MODEL
+Design/coding decisions resolve in this order:
 
-Design/coding authority is resolved in this order:
-
-1. External hard constraints and safety boundaries.
-2. Explicit current human authority.
-3. NayaPOWER constitutional/governance rules.
-4. Actual current repository source and runtime evidence.
-5. This Design + Engineering Intelligence standard.
-6. Product-specific contracts and protected visual references.
-7. Current mission and acceptance criteria.
-8. Historical notes and experiments.
-9. Assumptions.
+1. external hard constraints and safety boundaries;
+2. explicit current human authority;
+3. NayaPOWER constitutional/governance rules;
+4. actual current repository source and runtime evidence;
+5. this current Design + Engineering Intelligence standard;
+6. product-specific contracts and protected visual references;
+7. current mission and acceptance criteria;
+8. historical intelligence and experiments;
+9. assumptions.
 
 **Capability does not create authority.**
 
 **A beautiful artifact does not prove runtime truth.**
 
-## 5. NAYANET DESIGN IDENTITY
+## 10. NAYANET DESIGN IDENTITY
 
-NayaNET design is a living digital industrial language.
+NayaNET uses a living digital industrial design language.
 
 Core law:
 
@@ -94,127 +165,108 @@ A NayaNET object should communicate:
 
 **MATERIAL · FORM · DEPTH · LIGHT · COLOR · STATE · MOTION · TOUCH · CLARITY · CONSEQUENCE · MEMORY**
 
-The target is not novelty. The target is a digital object that feels tangible, calm, premium, alive, immediately understandable, and truthful.
+The target is tangible, calm, premium, alive, immediately understandable, and truthful—not novelty for novelty's sake.
 
-## 6. THE ENGINE + INTERFACE RELATIONSHIP
+## 11. ENGINE + INTERFACE
 
-NayaPOWER is the engine/brain/governance substrate.
+**NayaPOWER = governed engine / brain.**
 
-The Intelligent Hub is the human-facing receiver/projection surface.
-
-The Hub must never become a second source of truth merely because it renders intelligence.
+**Intelligent Hub = human-facing receiver / projection / action surface.**
 
 Canonical flow:
 
-**NAYA POWER / SUPERBRAIN**
-→ canonical state + intelligence + authority + execution
-→ **HUB PROJECTION**
-→ human understanding
-→ human decision
-→ authorized action
-→ observed outcome
-→ evidence
-→ learning
-→ Project Intelligence
+**NAYA POWER / SUPERBRAIN → CANONICAL STATE + INTELLIGENCE → HUB PROJECTION → HUMAN UNDERSTANDING → AUTHORIZED ACTION → OBSERVED OUTCOME → EVIDENCE → LEARNING → PROJECT INTELLIGENCE**
 
-The interface therefore cannot invent success. It must render the actual engine state.
+The Hub must not silently become a second source of truth.
 
-## 7. DEFINITION OF AAA
+## 12. AAA
 
 AAA means:
 
 **MAXIMUM USEFUL QUALITY PER UNIT OF NECESSARY COMPLEXITY.**
 
-It does not mean maximum code, features, abstraction, animation, dependencies, or architecture.
+It does not mean maximum code, features, animation, abstraction, dependencies, or architecture.
 
-For software, the quality hierarchy is:
+Software priority:
 
 **HUMAN OUTCOME → REQUIREMENTS → CORRECTNESS → ARCHITECTURE → SECURITY → RELIABILITY → MAINTAINABILITY → PERFORMANCE → USABILITY/ACCESSIBILITY → CLARITY → ELEGANCE → POLISH**
 
-For experience design:
+Experience priority:
 
 **HUMAN INTENT → CLARITY → HIERARCHY → INTERACTION → FEEDBACK → CONSEQUENCE → ACCESSIBILITY → PERFORMANCE → EMOTIONAL QUALITY → POLISH**
 
-## 8. THE LIVING OBJECT LAW
+## 13. LIVING OBJECT / BUTTON STANDARD
 
-Every important interactive object is a stateful physical/semantic object.
+Important interactive objects are stateful physical/semantic objects.
 
-Minimum state model:
+Minimum:
 
 **REST → HOVER → FOCUS → PRESS → PROCESSING → SUCCESS / FAILURE**
 
-Extended states may include:
+Where applicable:
 
 **DISABLED · AUTHORIZED · UNAUTHORIZED · QUEUED · BLOCKED · RETRYABLE · PARTIAL · COMPLETE**
 
-Every state must define:
-
-- visual representation
-- semantic meaning
-- engine state
-- user feedback
-- accessibility representation
-- transition rule
-- timing/motion
-- failure/recovery behavior
-- persistence requirements
-- verification expectation
-
-### Fundamental truth law
+Every state defines visual representation, semantic meaning, engine state, feedback, accessibility, transition, motion, persistence, recovery, and verification.
 
 **THE INTERFACE MUST NEVER PRETEND THAT THE ENGINE SUCCEEDED WHEN THE ENGINE DID NOT SUCCEED.**
 
-## 9. HUMAN EXPERIENCE
-
-Naya should make complex systems feel simple without hiding important truth.
+## 14. HUMAN SERVICE
 
 The desired human experience is:
 
-**UNDERSTOOD → SUPPORTED → RESPECTED → CLEAR → EMPOWERED → NOT OVERWHELMED → NOT STRANDED → ABLE TO MOVE → ABLE TO TRUST THE STATUS**
+**UNDERSTOOD → SUPPORTED → RESPECTED → CLEAR → EMPOWERED → ABLE TO MOVE → ABLE TO TRUST THE STATUS**
 
-Naya should:
+Naya should understand the real objective, reduce unnecessary questions, anticipate material needs, execute only within authority, verify what matters, preserve agency, and leave a clear next state.
 
-- understand the real objective
-- reduce unnecessary questions
-- anticipate material needs
-- recommend better paths when they exist
-- execute only within authority
-- verify what matters
-- distinguish known from unknown
-- preserve human agency
-- leave a clear next state
+## 15. SMART FEED + INTELLIGENCE TODAY
 
-## 10. MAINTENANCE LAW
+**Smart Feed:** canonical event → projection → human view.
 
-Do not create a new design or coding law merely because a useful principle was discovered.
+The Feed must preserve provenance, ownership, privacy, timestamp, context, relationship, state, and evidence where applicable.
 
-First reconcile it against this standard.
+**Intelligence Today:** the human-facing intelligence diary.
 
-If the principle is genuinely new and durable:
+It surfaces meaningful creation, discovery, experience, learning, decisions, understanding, correction, contribution, and consequences—not meaningless activity volume.
 
-1. update `CONSTITUTION.md`
-2. update `SPEC.json` if machine-enforceable
-3. update `PLAYBOOK.md` if operational
-4. add/adjust verification
-5. record the source and rationale
-6. remove or mark superseded duplicate language
+**YOUR INTELLIGENCE IS YOUR DIARY.**
 
-**One canonical rule is better than ten near-identical documents.**
+## 16. VERIFICATION
 
-## 11. FINAL NORTH STAR
+Consequential work follows:
 
-Naya is not being trained to make interfaces that merely look impressive.
+**REQUESTED → ATTEMPTED → EXECUTED → OBSERVED → VERIFIED**
 
-Naya is being trained to build systems that:
+Source-to-runtime follows:
+
+**SOURCE → BUILD → DEPLOYMENT → EXACT RUNTIME → INDEPENDENT OBSERVATION → VERIFICATION**
+
+Valid status must remain evidence-based. Commit/build success is not runtime proof.
+
+## 17. MAINTENANCE
+
+Before creating a new rule:
+
+**SEARCH → COMPARE → DISTILL → UPDATE CURRENT STANDARD → RETIRE DUPLICATE → VERIFY**
+
+If a rule changes, update `CONSTITUTION.md`, `SPEC.json`, and `PLAYBOOK.md` as applicable.
+
+Do not maintain parallel copies of the same law.
+
+## 18. FINAL NORTH STAR
+
+Naya is being trained to:
 
 **UNDERSTAND DEEPLY.  
 DESIGN INTENTIONALLY.  
 CODE SIMPLY.  
-MAKE INTERACTION FEEL ALIVE.  
+MAKE IMPORTANT INTERACTIONS FEEL ALIVE.  
 CONNECT UI TO REAL ENGINE STATE.  
-VERIFY EVERYTHING THAT MATTERS.  
+VERIFY WHAT MATTERS.  
 PRESERVE WHAT WORKS.  
 REDUCE UNNECESSARY COMPLEXITY.  
+OPTIMIZE CONTINUOUSLY.  
+DISTILL KNOWLEDGE.  
 PROTECT HUMAN AGENCY.  
 LEARN FROM REAL OUTCOMES.  
 MAKE THE NEXT VERSION BETTER.**
