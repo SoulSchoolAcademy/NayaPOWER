@@ -78,12 +78,11 @@
       "sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847"
     },
     "control_plane_reconciliation": {
-      "status": "READY_FOR_PI_02",
-      "state_parent_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
-      "blocks_next_action": "PI-02_RECONSTRUCTION",
-      "map_frontier": "PI-02_RECONSTRUCTION",
-      "proof_frontier": "PI-02_RECONSTRUCTION",
-      "coherent_next_action": true
+      "status": "CURRENT_RECONCILED",
+      "source_checkpoint": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
+      "master_proof_status": "COMPLETE_AT_DEFINED_SCOPE",
+      "current_14_question_receipt": ".naya/project-intelligence/37-NAYANET-14-QUESTION-TEAM-NAYA-CURRENT-2026-09-21.md",
+      "remaining_gap_matrix": ".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md"
     },
     "pi01": "VERIFIED_AT_CHECKPOINT_B830F9E2",
     "pi02": {
@@ -97,7 +96,7 @@
       "truth_classification": "PASS",
       "evidence_mapping": "PASS"
     },
-    "pi03": "PROVING_NOW",
+    "pi03": "VERIFIED",
     "master_proof": {
       "status": "COMPLETE",
       "claim_type": "WHOLE_JOURNEY",
@@ -120,7 +119,12 @@
       "scope": "DEFINED_OBSERVED_CLAIMS_ONLY",
       "universal_compute_savings": "NOT_CLAIMED",
       "universal_product_completion": "NOT_CLAIMED"
-    }
+    },
+    "pi04": "VERIFIED",
+    "pi05": "VERIFIED",
+    "pi06": "VERIFIED",
+    "pi07": "VERIFIED",
+    "pi08": "VERIFIED"
   },
   "recording_commit": "1b88648fe69db5d4a130e85e71d2c36345b55135",
   "fresh_validation_required": true,
@@ -371,7 +375,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Smart Share governed human lifecycle is production-proven at current main HEAD. The two discovered proof/authority boundaries were repaired surgically and rerun successfully. The next acceptance frontier is the canonical Smart Mail lifecycle.",
-  "current_repository_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "current_repository_head": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -391,30 +395,20 @@
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   },
   "single_current_frontier": {
-    "id": "MASTER_PROOF_COMPLETE",
-    "status": "COMPLETE",
-    "source_checkpoint": "1b88648fe69db5d4a130e85e71d2c36345b55135",
-    "next_action": "Verify the final Master Proof receipt against its cited evidence at live execution time; do not reopen proven boundaries without new information.",
+    "id": "REMAINING-CONSTITUTIONAL-PRODUCT-HARDENING",
+    "status": "OPEN",
+    "source_checkpoint": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
+    "next_action": "Harden the remaining constitutional/product gaps without reopening proven PI-01→PI-08 boundaries: first reconcile all canonical control-plane surfaces to this live HEAD, then execute the highest-value remaining acceptance boundary from the gap matrix.",
     "evidence_required": [
-      "39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md",
-      "12-function runtime proof 35629298712",
-      "PI-03 35630647325",
-      "PI-04 35630807781",
-      "PI-05 35630896351",
-      "PI-06 35631234009",
-      "PI-07 35631296835",
-      "PI-08 35631352527",
-      "consolidated chain 35631750791",
-      "exact browser render 35633023365",
-      "human/browser 35632656912",
-      "adversarial 35632840387",
-      "compounding measurement 35632921091"
+      "current control-plane reconciliation receipt",
+      "selected gap acceptance receipt",
+      "runtime/browser evidence where applicable"
     ],
-    "stop_condition": "Reopen a proven boundary only when new evidence changes its claim scope or truth state.",
-    "recovery": "Resolve the new first deterministic boundary and apply the first-failure law."
+    "stop_condition": "Do not reopen PI-01→PI-08 unless new evidence changes their claim scope or truth state.",
+    "recovery": "Use first-failure law on the first deterministic remaining gap."
   },
   "recorded_at_head": "fa1904805a9070bc1ae322f3ea53aea2e167700a",
-  "latest_execution_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "latest_execution_head": "1ed11c89fc482f12a92b48cefb9f4763009a5433",
   "latest_deployment_receipt": ".naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md",
   "latest_deployment_status": "12_CANONICAL_PI_FUNCTIONS_ACTIVE"
 }
