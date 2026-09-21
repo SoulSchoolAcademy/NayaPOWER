@@ -162,12 +162,12 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Cold successor restore/retrieve/act/verify/learn/handoff using the new Compound Intelligence runtime, plus direct receiver retrieval/render proof for the exact Project Intelligence receipt.",
-  "single_next_action": "Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context.",
+  "single_next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
   "next_actions": [
-    "Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context."
+    "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey."
   ],
   "next_action_count": 1,
-  "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
+  "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
   "truth_rules": [
     "LIVE authoritative source outranks recorded state.",
     "RECORDED_BUT_STALE is not CURRENT.",
@@ -188,7 +188,7 @@
   ],
   "recorded_at_head": "031bee2a6b996fb747f7159d2e7572575b5defde",
   "latest_human_facing_observation": {
-    "next_boundary": "PROJECT_INTELLIGENCE_RECEIVE_RETRIEVE_RENDER_COLD_SUCCESSOR",
+    "next_boundary": "PROJECT_INTELLIGENCE_RESTORE_RETRIEVE_RENDER_COLD_SUCCESSOR",
     "proof7_job_id": 106388476799,
     "current_main_head": "031bee2a6b996fb747f7159d2e7572575b5defde",
     "proof7_run_id": 35616507762,
@@ -198,7 +198,9 @@
     "bridge_idempotent_replay_run": 35623988420,
     "bridge_source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
     "bridge_packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
-    "bridge_receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c"
+    "bridge_receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
+    "compound_runtime_version": 3,
+    "operating_migration": "20260921093000_project_intelligence_operating_layer_v1"
   },
   "today_mission": {
     "status": "ACTIVE",
@@ -224,7 +226,7 @@
     "no_secret_recorded": true
   },
   "compound_intelligence": {
-    "status": "DEPLOYED_VERSION_2",
+    "status": "DEPLOYED_VERSION_3",
     "runtime": "nayanet-compound-intelligence",
     "supabase_project": "dahisasgpfvziswqvmvm",
     "capabilities": [
@@ -234,14 +236,18 @@
       "UNDERSTAND",
       "LEARNING_CANDIDATE",
       "LEARNING_VERIFY",
+      "LEARNING_RETRIEVE",
+      "PROJECT",
+      "ACK",
       "SUCCESSOR_HANDOFF",
       "SHARE",
       "SUPERSEDE",
       "HEALTH",
+      "STATE_UPDATE",
       "DREAM_SEAM",
       "COMPOUND"
     ],
-    "persistence": "public.nayanet_intelligence_operations",
+    "persistence": "public.nayanet_intelligence_operations + public.nayanet_project_intelligence_state + public.nayanet_intelligence_lineage",
     "rls": "owner_scoped",
     "new_north_star": "Every verified meaningful action should leave the project more intelligent, more truthful, more capable, and easier for the next Naya to continue.",
     "cold_successor_proof": "OPEN"
