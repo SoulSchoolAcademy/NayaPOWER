@@ -198,3 +198,17 @@ A Naya does not say “someone else can continue” until the required intellige
 **Next action:** Execute/observe the runtime lineage proof and independently retrieve one receipt with seven bound nodes, six required edges, and `status=COMPLETE`.  
 **Stop condition:** Do not advance to causal verification until #1 is VERIFIED.  
 **Successor:** Read the torch, resolve live HEAD, answer all 14 questions, reconcile, execute one frontier, verify, learn, update, and pass the torch.
+## 🔱 NAYANET-2026-09-21-014 — RUNTIME EVIDENCE-LINEAGE PROOF VERIFIED
+
+**Truth state:** VERIFIED / #1 COMPLETE AT DEFINED RUNTIME SCOPE  
+**Source:** `ee05fe589b33ea7d53c9b7dd5dd879be9776f5d3`  
+**Workflow run:** `35657512293`  
+**Receipt:** `0830b969-7e92-4002-b125-1ed4b645afdc`  
+**Result:** The real runtime execution completed successfully and the persisted receipt independently retrieved after execution contains all 7 lineage nodes bound, all 6 required edges, and `lineage.status=COMPLETE`.  
+**Learning verification:** `f55843cd-073b-431b-867c-986b9cd0c88a`  
+**Successor handoff:** `c11aaae9-21fd-464b-af70-afcedd7cd0fd`  
+**Learning:** The prior failure was a workflow response-path contract mismatch, not a runtime lineage failure. The API returned verification under `result.verified`; the workflow now reads the contract at the correct path.  
+**Impact:** The source→claim→action→outcome→verification→learning→successor runtime lineage is now independently proven at this tested boundary.  
+**Next frontier:** #2 Universal Causal Verification Object — distinguish observed outcome from defensible causal evidence.  
+**Proof required:** causal claim schema/object, provenance, explicit causal assessment, negative/insufficient evidence path, and runtime acceptance.  
+**Successor:** Reconcile this entry against live HEAD before acting; do not treat this proof as universal causal verification.
