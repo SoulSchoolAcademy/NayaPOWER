@@ -110,6 +110,7 @@ def main() -> int:
             "authority": state["authority"],
             "execution": "PASS",
             "observed_result": observed["verified_marker"],
+            "verified_marker": marker,
             "observed_state_hash": observed_hash,
             "verification": "PASS",
             "learning": state["learning"],
