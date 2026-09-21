@@ -7,11 +7,11 @@
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
     "recorded_head_is_not_authoritative": true,
-    "observed_head": "80612def906c670942071ef0a35f4431cbd72ff3",
+    "observed_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
     "last_execution_observation": {
-      "observed_head": "80612def906c670942071ef0a35f4431cbd72ff3",
+      "observed_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
       "observed_at": "2026-09-21",
-      "source": "live Git ref"
+      "source": "live Git ref before current runtime-lineage state reconciliation"
     }
   },
   "current_branch": {
@@ -68,8 +68,17 @@
     "prior_hub_feature_frontier": "SMART_SHARE_PRODUCTION_PROVEN",
     "next_project_intelligence_frontier": "MASTER_PROOF_COMPLETE",
     "production_route_authority": "NOT_PROVEN_BY_THIS_RECONCILIATION",
-    "latest_repository_head": "80612def906c670942071ef0a35f4431cbd72ff3",
-    "project_intelligence_edge_functions": "12 canonical nayanet-pi-* functions ACTIVE; deployment receipt .naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md"
+    "latest_repository_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+    "project_intelligence_edge_functions": "12 canonical nayanet-pi-* functions ACTIVE; deployment receipt .naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md",
+    "runtime_evidence_lineage_integration": {
+      "status": "DEPLOYED_NOT_END_TO_END_VERIFIED",
+      "execute_function_version": 4,
+      "learning_verify_function_version": 2,
+      "successor_handoff_function_version": 2,
+      "receipt_surface": "nayanet_execution_receipts.evidence + learning",
+      "proof_workflow": ".github/workflows/verify-nayanet-runtime-evidence-lineage.yml",
+      "proof_workflow_observation": "Connected GitHub read surface exposes the workflow source but not a resulting Actions run/check; end-to-end runtime proof remains UNVERIFIED."
+    }
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -213,7 +222,7 @@
     "downstream_hub_next_after_pi": "SMART_MAIL_HUMAN_LIFECYCLE"
   },
   "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
-  "latest_execution_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
+  "latest_execution_head": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
   "current_frontier": {
     "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "ACTIVE",
@@ -223,6 +232,20 @@
     "evidence_required": [
       "runtime lineage integration",
       "end-to-end lineage receipt"
+    ]
+  },
+  "single_current_frontier": {
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
+    "status": "OPEN",
+    "source_checkpoint": "a53780bc24cfe00127099ee60655e25a1c8a52b9",
+    "next_action": "Execute and independently observe the end-to-end runtime lineage proof so one real nayanet_execution_receipts row is queryable with source → claim → action → outcome → verification → learning → successor all bound and status COMPLETE.",
+    "evidence_required": [
+      "deployed runtime integration",
+      "end-to-end runtime lineage receipt",
+      "independent retrieval of final receipt",
+      "all seven lineage nodes bound",
+      "all six lineage edges present",
+      "lineage status COMPLETE"
     ]
   }
 }
