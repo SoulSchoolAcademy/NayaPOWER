@@ -1,5 +1,6 @@
 name: Verify NayaNET Project Intelligence Home Run
 # PI-01 LIVE PROOF: canonical Hub render boundary repaired 2026-09-21
+# DIAGNOSTIC: authorized continuation response is persisted before proof assertion.
 
 on:
   workflow_dispatch:
