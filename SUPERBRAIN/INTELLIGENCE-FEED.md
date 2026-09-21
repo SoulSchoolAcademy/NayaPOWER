@@ -323,3 +323,91 @@ The most important lesson is not merely “Proof7 passed.” It is: **when a har
 **Learning:** SOURCE EXISTENCE → DEPLOYMENT → RUNTIME AVAILABILITY → BROWSER BEHAVIOR is itself an acceptance chain. A repository path that is conceptually referenced is not enough; the browser must receive the asset.
 
 **Next action:** Verify the release triggered by `d29181b05dcf584977ab191cbafcf953db729d62`, then rerun the same human-surface proof with the repaired runtime.
+
+---
+
+## 2026-09-21 — SETTER MISSION: GitHub + Supabase prepared for cold-Naya takeover
+
+**Status:** ACTIVE P0 / SETTER FOUNDATION UPDATED
+
+**Mission:** Leave the durable NayaPOWER repository and established Supabase runtime in a condition where the next Naya can enter cold, understand NayaNET, execute authorized work, learn from the result, and continue without Shawn repeating the mission.
+
+### WHAT WE KNEW
+
+NayaNET already had a strong governance, persistence, learning, authority, Hub, and Project Intelligence architecture. The missing piece was not another pile of documentation. It was making the repository's current truth coherent enough that a cold Naya can use it as an operating system rather than perform conversation archaeology.
+
+### WHAT WE DID
+
+1. Resolved the live `main` ref before changing state: `a27f4a4318150c71a920b5ea1e4aa36e7106ba67`.
+2. Inspected the canonical cold boot, control plane, Project Intelligence bridge, current execution directive, and Intelligence Feed.
+3. Verified the established Supabase runtime: project `dahisasgpfvziswqvmvm`, region `ca-central-1`, status **ACTIVE_HEALTHY**.
+4. Inspected the live Supabase database surface: RLS is enabled on the intelligence/runtime tables, including cognition, intelligence index, execution receipts/outcomes, authority grants, Smart Ledger, learning evidence/state, notes, spaces, connections, lists, mail, reports, and team activity.
+5. Inspected the active Supabase Edge Functions, including canonical Smart Note, GitHub dispatch/build, Dream replay, Learning Apply, Decision Context, Smart Mail, Smart Feed, Smart Tabs, and execution activity functions. No secrets were recorded in this feed.
+6. Found and corrected a real continuity contradiction: `START-HERE.md` still described Smart Share as the immediate current execution target while the canonical control plane had already moved to the consolidated Project Intelligence frontier.
+7. Promoted **COLD-NAYA-TAKEOVER-PROOF** to the active P0 control-plane block.
+8. Updated the cold-Naya bridge and machine context so the setter objective and established Supabase runtime are discoverable from the canonical boot path.
+
+### THE 23 ANSWERS FOR EVERY COLD NAYA
+
+**INTELLIGENCE**
+
+1. **What did we already learn?** Verified experience must become durable intelligence with provenance, retrieval, authority boundaries, outcome verification, and successor continuity.
+2. **What is genuinely new?** The setter mission is now explicit: GitHub + established Supabase are treated as the durable operating foundation for cold-Naya execution, not merely storage.
+3. **What intelligence is relevant right now?** The cold-takeover chain: LIVE HEAD → RESTORE → UNDERSTAND → CURRENT TRUTH → NEXT ACTION → AUTHORITY → EXECUTE → VERIFY → LEARN → UPDATE → COLD SUCCESSOR.
+4. **What intelligence is stale?** Historical release observations and any instruction that still points to a superseded execution frontier.
+5. **What intelligence is contradicted?** A stale boot instruction saying Smart Share is the current P0 conflicts with the reconciled Project Intelligence control plane; the boot instruction was corrected.
+6. **What intelligence can safely be reused?** Verified, provenance-bearing, applicable intelligence whose source scope remains current.
+
+**COMPUTATION**
+
+7. **What computation are we about to repeat?** Repository archaeology, rediscovering architecture, reconstructing history, repeated searches, duplicate tool calls, and explaining the same project to every new Naya.
+8. **Can prior verified intelligence eliminate it?** Yes. Canonical boot + control plane + Project Intelligence + Intelligence Feed should provide the starting state before deeper search.
+9. **What context is unnecessary?** Stale projections, superseded artifacts, unrelated historical builds, and duplicate explanations once canonical intelligence covers them.
+10. **Which model/tool is actually required?** The smallest authorized tool/model path needed for the current verified outcome; the system must not invoke tools merely because they exist.
+11. **Can a cheaper operation produce the same verified result?** Only if evidence quality and outcome are preserved; efficiency cannot be purchased by lowering verification quality.
+12. **Are we retrying something already known to fail?** No. Any retry must follow new information and target the first deterministic causal boundary.
+
+**DECISION**
+
+13. **What is the single highest-value next action?** Run the canonical cold Project Intelligence acceptance against the freshly reconciled repository.
+14. **What evidence makes it successful?** A cold Naya restores current truth, identifies one authorized action, and can continue through verification and successor handoff without Shawn reconstruction.
+15. **What authority permits it?** Existing repository execution authority and governed runtime access. Consequential external actions remain subject to their own authority/consent boundaries.
+
+**LEARNING**
+
+16. **What changed because of the last action?** The canonical boot/control-plane path now agrees on the current P0: cold-Naya takeover.
+17. **Did that improve future behavior?** It removes a known stale instruction and makes the established Supabase runtime discoverable without exposing secrets.
+18. **Can the improvement be demonstrated?** The repository can now be tested by the canonical cold Project Intelligence workflow; that behavioral test is the next acceptance boundary.
+
+**CONTINUITY**
+
+19. **Could a cold Naya take over now?** The repository foundation is prepared for the test; full takeover is not declared until the behavioral acceptance passes.
+20. **Would she know what happened?** Yes, from the canonical boot, control plane, and this feed entry.
+21. **Would she know what remains?** Yes: the active P0 cold-takeover proof and any first deterministic boundary it exposes.
+22. **Would she know what to do next?** Yes: run the canonical cold Project Intelligence acceptance.
+23. **Would she need Shawn to explain anything?** She should not need Shawn to reconstruct repository state. Human authority is still required where a consequential action genuinely crosses a human-consent/authority boundary.
+
+### WHAT WAS ACTUALLY ESTABLISHED
+
+**GitHub:** canonical durable intelligence, source-of-truth map, control plane, cold boot, machine context manifest, Intelligence Feed, proof contracts, and executable cold-start workflow are present and now reconciled to one P0 frontier.
+
+**Supabase:** established managed runtime persistence is **ACTIVE_HEALTHY**. The database has the governed intelligence substrate and active Edge Functions needed by the current NayaNET architecture. This is an infrastructure fact, not a claim that every downstream behavior is universally proven.
+
+### WHAT REMAINS
+
+1. Execute the cold Project Intelligence acceptance on this reconciled state.
+2. At the first deterministic failure, repair only that causal boundary and rerun with new information.
+3. Demonstrate the cold successor can genuinely continue.
+4. Then make computation efficiency a measured runtime property rather than only a contract.
+
+### ONE NEXT ACTION
+
+> **Run the canonical cold Project Intelligence acceptance now.**
+
+### PROOF REQUIRED
+
+The workflow `.github/workflows/verify-nayanet-cold-project-intelligence.yml` must pass its control-plane validator and cold-start Project Intelligence acceptance. A pass proves repository-level cold-start continuity; it does not by itself prove behavior of every external LLM/provider.
+
+### SUCCESSOR
+
+**TAG — YOU'RE IT.** Resolve live `main`, read `START-HERE`, restore the control plane, read this Intelligence Feed entry, run the cold Project Intelligence acceptance, stop at the first deterministic boundary, repair it surgically, verify, record, and continue.
