@@ -2,7 +2,7 @@
 
 **Status:** DISTILLED CURRENT-STATE ROUTE — SUBORDINATE TO LIVE TRUTH  
 **Project:** NayaNET  
-**Last reconciled:** 2026-09-20 UTC
+**Last reconciled:** 2026-09-21 UTC
 
 This file never outranks live Git identity, direct evidence, control-plane state, or runtime proof.
 
@@ -45,12 +45,12 @@ A file does not prove runtime behavior. A workflow does not prove its intended o
 
 **PI-01** Project identity — **PASS at source checkpoint `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`**.  
 **PI-02** Model reconstruction — **PASS at source checkpoint `fa1904805a9070bc1ae322f3ea53aea2e167700a`**.  
-**PI-03** Cold retrieval — **NEXT**.  
-**PI-04** Current-state reconciliation — **UNKNOWN / not entered**.  
-**PI-05** One responsible next action — **UNKNOWN / not entered**.  
-**PI-06** Governed execution continuity — **UNKNOWN / not entered**.  
-**PI-07** Durable learning/update — **UNKNOWN / not entered**.  
-**PI-08** Cold-Naya repeat — **UNKNOWN / not entered**.
+**PI-03** Cold retrieval — **PROVEN at defined master-proof scope**.  
+**PI-04** Current-state reconciliation — **PROVEN at defined master-proof scope**.  
+**PI-05** One responsible next action — **PROVEN at defined master-proof scope**.  
+**PI-06** Governed execution continuity — **PROVEN at defined master-proof scope**.  
+**PI-07** Durable learning/update — **PROVEN at defined master-proof scope**.  
+**PI-08** Cold-Naya repeat — **PROVEN at defined master-proof scope**.
 
 These are not separate product components. They are acceptance boundaries for proving that NayaNET itself is intelligent enough to continue.
 
@@ -108,13 +108,13 @@ Each answer must carry evidence and one of: **PROVEN / DOCUMENTED / UNKNOWN / CO
 **Attempt 001:** blocked before PI-01 by Windows portability.  
 **Repair:** completed and fresh-checkout verified.  
 **PI-01:** **PASS at exact source checkpoint `b830f9e2…`**.  
-**Current frontier:** PI-03.
+**Current frontier:** #2 Causal Verification Object.
 
 No PI-02→PI-08 result is claimed yet.
 
 ## NEXT CAUSAL ACTION
 
-> **Execute PI-03 cold retrieval in a genuinely fresh context without conversation archaeology.**
+> **Implement and prove the causal verification object at the next constitutional boundary.**
 
 PI-02 is now proven: the required Project Intelligence model was independently reconstructed from canonical durable evidence and recorded in `.naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md`.
 
@@ -127,3 +127,14 @@ At the first deterministic causal failure:
 Never convert **DOCUMENTED → VERIFIED** or **IMPLEMENTED → PRODUCTION-PROVEN** without matching evidence.
 
 Never treat a prior torch's source hash as current merely because it is written in the Feed. **Reconcile the torch against the live canonical source every time.**
+
+
+## RUNTIME EVIDENCE-LINEAGE PROOF — VERIFIED
+
+Workflow run: `35657512293`  
+Source commit: `ee05fe589b33ea7d53c9b7dd5dd879be9776f5d3`  
+Persisted receipt: `0830b969-7e92-4002-b125-1ed4b645afdc`  
+Result: 7/7 lineage nodes bound; 6/6 required edges present; `lineage.status=COMPLETE`; receipt independently retrieved after execution.  
+**#1 runtime evidence-lineage integration: VERIFIED at defined runtime scope.**
+
+**Next:** #2 causal verification object — distinguish observed outcome from causal evidence.
