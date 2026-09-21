@@ -53,7 +53,7 @@ jobs:
           if(ex.status!==200||ex.body?.ok!==true)throw Error('EXECUTION_FAILED:'+JSON.stringify(ex.body));
           const receiptId=ex.body.receipt?.id;if(!receiptId)throw Error('RECEIPT_ID_MISSING');
           const learning=await P('nayanet-learning-verify',t,{learning_id:claimId,verification_method:'End-to-end runtime lineage proof',evidence_refs:[sourceEventId,receiptId],receipt_id:receiptId});
-          if(learning.status!==200||learning.body?.ok!==true||learning.body?.verified!==true)throw Error('LEARNING_VERIFY_FAILED:'+JSON.stringify(learning.body));
+          if(learning.status!==200||learning.body?.ok!==true||learning.body?.result?.verified!==true)throw Error('LEARNING_VERIFY_FAILED:'+JSON.stringify(learning.body));
           const handoff=await P('nayanet-successor-handoff',t,{receipt_id:receiptId,what_happened:'Runtime lineage proof executed and verified',what_changed:'Receipt now binds source, claim, action, outcome, verification, learning and successor',learned:[{learning_id:claimId,verified:true}],next_action:'Reassess the next constitutional hardening frontier from live evidence',why:'Prove the complete runtime lineage and leave a successor-ready torch.',evidence_required:['runtime lineage receipt','verification evidence','successor handoff'],source_head:process.env.GITHUB_SHA});
           if(handoff.status!==200||handoff.body?.ok!==true)throw Error('HANDOFF_FAILED:'+JSON.stringify(handoff.body));
           const rows=await REST('nayanet_execution_receipts?id=eq.'+encodeURIComponent(receiptId)+'&select=id,project_id,action,status,request_id,evidence,learning,authority_grant_id,authority_source_event_id',t);
