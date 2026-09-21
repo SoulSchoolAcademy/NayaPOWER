@@ -12,6 +12,8 @@
     "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md",
     "SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md",
     ".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md",
+    "SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md",
+    ".naya/runtime/project_intelligence_reconstruction.py",
     ".naya/control-plane/MAP.json",
     ".naya/control-plane/STATE.json",
     ".naya/control-plane/BLOCKS.json",
@@ -172,6 +174,11 @@
       "machine_companion": ".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json",
       "purpose": "Canonical NayaNET Project Intelligence bridge answering the fourteen cold-Naya questions and binding them to live source reconciliation, current proof, one next action, and successor continuation.",
       "authority_note": "Reconstruction aid only; live Git HEAD, control-plane state, runtime evidence, constitutional authority, and human authority outrank this bridge."
+    },
+    "project_intelligence_current_truth": {
+      "canonical": "SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md",
+      "implementation": ".naya/runtime/project_intelligence_reconstruction.py",
+      "purpose": "Canonical distilled current-truth reconstruction: authorized events, semantic subjects, effective-time precedence, explicit supersession, stale/history preservation, evidence-backed resolution, conflict/unknown preservation, causal lineage, and cold-Naya continuation."
     }
   },
   "task_routes": {
