@@ -20,6 +20,18 @@ Do not create, present, deploy, or pursue a competing Hub. Do not reopen the pro
 ---
 
 
+## 🔱 LIVE PROJECT INTELLIGENCE — NAYAPOWER IS THE FIRST REAL PROJECT
+
+Before substantive project work, read the canonical Project Intelligence package:
+
+`.naya/project-intelligence/00-PROJECT-INTELLIGENCE-INDEX.md`
+
+Then read the numbered package in order. It defines the mission, human outcome, qualification questions, required project files, requirements, architecture, design/build method, governance, execution/learning/torch, current-state boundary, build roadmap, cold-Naya acceptance, successor handoff, and source route.
+
+**This is not a second memory store.** It is the reconstructable project-intelligence layer over the existing canonical event/evidence/runtime substrate.
+
+**NayaPOWER is the first live Project Intelligence project.** The system must use its own intelligence-continuity protocol to understand, build, verify, learn, and continue building itself.
+
 ## 🔱 ONE-SHOT NAYAPOWER — FASTEST COMPLETE ORIENTATION
 
 Read `NAYAPOWER-ONE-SHOT.md` for the shortest complete human + machine explanation of NayaPOWER, its purpose, engine, human operating body, Project Intelligence, distillation, governance, truth model, Naya Nine operating lenses, and cold-Naya continuity. It is an orientation/compression layer; canonical laws, control-plane state, source, runtime evidence, and human authority outrank it.
