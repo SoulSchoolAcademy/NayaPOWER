@@ -105,7 +105,7 @@
     }
   },
   "execution_map": {
-    "current_program": "P0 - COLD NAYA TAKEOVER / PROJECT INTELLIGENCE",
+    "current_program": "P1 - MEASURED COMPUTATIONAL COMPOUNDING",
     "blocks": [
       "PI-01-INTENT",
       "PI-02-IDENTITY",
@@ -116,8 +116,8 @@
       "PI-07-LEARNING-UPDATE",
       "PI-08-COLD-SUCCESSOR"
     ],
-    "active_block": "PROJECT-INTELLIGENCE-PI-01",
-    "definition_of_done": "A completely cold Naya can enter the repository, restore and understand current Project Intelligence, identify one authorized next action, execute and verify it, learn/update durable intelligence, and a cold successor can continue without Shawn reconstructing the project."
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "definition_of_done": "A fresh benchmark demonstrates claim-appropriate computational savings from retained verified intelligence while preserving or improving verified outcome quality, provenance, authority, and verification."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
