@@ -189,6 +189,10 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
             "--irreversibility", "2",
             "--scope", "repo:SoulSchoolAcademy/NayaPOWER:path:index.html",
             "--evidence", "explicit workflow_dispatch approval",
+            "--intent-understood",
+            "--context-complete",
+            "--quality-ready",
+            "--evidence-ready",
         )
         self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
         self.assertIn('"status": "AUTHORIZED"', result.stdout)
@@ -205,6 +209,10 @@ class NayaExecutionBoundaryTests(unittest.TestCase):
             "--irreversibility", "8",
             "--scope", "public-runtime:sparkling-shape-7ae5:/",
             "--evidence", "explicit deployment approval",
+            "--intent-understood",
+            "--context-complete",
+            "--quality-ready",
+            "--evidence-ready",
             "--evidence", "exact source SHA verified",
         )
         self.assertEqual(result.returncode, 0, result.stderr + result.stdout)
