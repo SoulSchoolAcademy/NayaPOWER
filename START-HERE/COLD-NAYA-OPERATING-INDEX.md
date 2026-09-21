@@ -17,6 +17,10 @@ COLD NAYA → THIS INDEX → OPERATING CONTEXT → CONTROL PLANE → PROJECT INT
 
 The cold Naya MUST read the compact operational context before traversing the repository:
 
+.naya/project-intelligence/CURRENT-FRONTIER.md
+
+Then:
+
 .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
 
 Then read the single bridge contract:
@@ -142,7 +146,7 @@ Activity completion target:
 
 `SUBSTANTIVE EXECUTION → CANONICAL EVENT AUTOMATICALLY CREATED → ACTIVITY PROJECTION → VERIFICATION → HANDOFF`
 
-The current implementation has enforcement around required Activity evidence, but automatic event creation at the true execution boundary is still a known gap.
+The execution controller now auto-emits the canonical Activity event at the VERIFIED boundary and binds it to the real Session, then writes the durable Team Naya Activity projection. This is repository-runtime verified; continue to require fresh proof for future changes.
 
 ## 8. PROJECT ORGANIZATION
 
@@ -150,7 +154,7 @@ The project model is:
 
 `PROJECT → SESSION → ACTIVITY EVENT → SMART NOTE → INTELLIGENCE → CURRENT STATE → NEXT ACTION`
 
-The repository currently has strong Project/State/Activity/Smart Note ingredients but does not yet mechanically bind every session to the chain. This is a P0/P1 architecture gap, not a reason to create a second store.
+The execution controller now opens a real Session at CLAIMED, binds the canonical Activity event at VERIFIED, and closes the Session at HANDED_OFF behind the durable Activity gate. Remaining work is to extend this automatic binding across every qualifying non-controller event path, if evidence shows such a path exists.
 
 ## 9. CURRENT HUB DIRECTION
 
@@ -266,4 +270,4 @@ The prior index language that treated `NAYANET/HUB` as reference material is now
 
 This does not erase historical NayaNET product-construction work. It separates current user-facing Hub authority from future North-Star product construction so a cold Naya cannot silently substitute one for the other.
 
-**Current P0:** independent real-outcome/value contract → held-out multi-case policy experiment → cold-Naya continuation.
+**Current P0:** canonical Project Intelligence Bridge transaction → verified receiver receipt → fresh-successor retrieval without Shawn context transfer.
