@@ -1,0 +1,53 @@
+name: Verify Next Action + Handoff Operational Cycle
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/contracts/NAYA-NEXT-ACTION-HANDOFF-V1.schema.json'
+      - '.naya/runtime/next_action_handoff.py'
+      - '.naya/control-plane/STATE.json'
+      - '.naya/control-plane/BLOCKS.json'
+      - '.naya/control-plane/MAP.json'
+
+permissions:
+  contents: write
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate canonical next_action + handoff contract
+        run: python .naya/runtime/next_action_handoff.py validate
+      - name: Execute complete operational cycle
+        run: python .naya/runtime/next_action_handoff.py cycle
+      - name: Validate durable receipt
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('.naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json')
+          r=json.loads(p.read_text())
+          assert r['status']=='VERIFIED'
+          assert r['cycle']==['CURRENT_STATE','NEXT_ACTION','EXECUTION','VERIFICATION','PROJECT_UPDATE','NEW_NEXT_ACTION']
+          assert r['new_next_action']['action']
+          assert r['new_next_action']['handoff']['successor_action']
+          print('PASS — durable end-to-end next_action + handoff cycle receipt is valid')
+          PY
+      - name: Commit durable project update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json
+          git commit -m "chore: record next-action handoff cycle receipt" || echo "No durable receipt change to commit"
+          git push
+      - name: Publish cycle proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: next-action-handoff-cycle-\${{ github.run_id }}
+          path: .naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json
