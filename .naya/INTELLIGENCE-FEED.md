@@ -88,6 +88,22 @@ SUCCESSOR
 **Proof required:** exact HEAD equality + repository identity + clean state + execution context.  
 **Successor:** Stop here. Do not advance to PI-02 until PI-01 source identity is proven.
 
+## 🔱 NAYANET-2026-09-20-005 — COLD-NAYA 14-QUESTION CONTRACT + PI-01 PASS
+
+**Actor:** Naya  
+**Truth state:** VERIFIED AT PI-01 / DOWNSTREAM UNPROVEN  
+**Context:** The successor followed the prior torch, but reconciled it against the live canonical branch before acting. The earlier target `6dcb2506…` had itself been superseded by subsequent canonical evidence commits.  
+**Current live source proven:** `b830f9e241f6dfea288bdfaaa152db5b0d48d28b`.  
+**Execution environment:** `DESKTOP-OJ712N5`; fresh worktree `C:\Users\Admin\NayaNET-master-proof-002`.  
+**PI-01 result:** PASS. Worktree HEAD exactly equals live branch HEAD at the proof checkpoint; repository identity matches `SoulSchoolAcademy/NayaPOWER`; worktree is clean; tracked colon-containing paths = 0.  
+**Evidence:** `.naya/project-intelligence/28-NAYANET-PI-01-RECEIPT-002.md`; direct Windows verification; `.naya/2026-09-20-NAYANET-14-QUESTION-COLD-NAYA-RECONSTRUCTION-TORCH-SMART-NOTE.md`.  
+**Learning:** A torch is guidance, not truth. Every Naya must reconcile the torch against current canonical evidence. Historical hashes must never override the current live ref.  
+**Cold-Naya contract:** Before responsibly acting, every Naya must answer **WHO, WHAT, WHY, SUCCESS, TRUTH NOW, PROVEN, UNKNOWN, AUTHORITY, HISTORY, LEARNING, NEXT, PROOF, RECORD, SUCCESSOR** from durable project sources, with evidence and truth classification for each.  
+**Open loop:** PI-02→PI-08 remain unproven.  
+**Next action:** Verify PI-01 receipt against live canonical truth, perform the 14-question cold reconstruction, then enter PI-02 and stop at its first deterministic boundary.  
+**Proof required:** Contract 24 boundary evidence plus 14-question reconstruction evidence and successor torch.  
+**Successor:** Do not ask Shawn to reconstruct NayaNET. Read the canonical source, current evidence, this Feed, and the Smart Note; answer all 14; reconcile; authorize; act; verify; learn; update; leave the next torch.
+
 ## SUCCESSOR RULE
 
 The newest Feed entry is not automatically the newest truth. A successor must reconcile it against canonical evidence and current runtime state before acting.
