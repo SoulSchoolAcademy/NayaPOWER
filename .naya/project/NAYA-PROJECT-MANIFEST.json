@@ -1,0 +1,68 @@
+{
+  "schema": "naya/project-manifest/v1",
+  "project_id": "NayaPOWER",
+  "project_name": "NayaPOWER / NayaNET",
+  "package": "Naya Project — One-Shot Intelligence Library",
+  "status": "EXECUTABLE_PROJECT_CONTEXT_PACKAGE",
+  "command_center": ".naya/project/00-NAYA-PROJECT-INDEX.md",
+  "authority": {
+    "constitution": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+    "control_plane": [
+      ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/PROOF.json",
+      ".naya/control-plane/GOVERNANCE-KERNEL.json"
+    ]
+  },
+  "read_order": [
+    "00-NAYA-PROJECT-INDEX.md",
+    "01-MISSION-VISION-NORTH-STAR.md",
+    "02-PURPOSE-HUMAN-OUTCOME.md",
+    "03-REQUIREMENTS-CONSTRAINTS.md",
+    "04-ARCHITECTURE-SYSTEM-MODEL.md",
+    "05-INTELLIGENCE-QUESTIONS.md",
+    "06-SOURCE-OF-TRUTH-MAP.md",
+    "07-TEAM-NAYA-HANDOFF.md",
+    "08-GOVERNANCE-TRUTH-AND-VALUE.md",
+    "09-ACCEPTANCE-PROOF-LADDER.md",
+    "10-CURRENT-STATE-AND-NEXT.md"
+  ],
+  "core_principles": [
+    "Memory is not the product. Continuity is the product.",
+    "One canonical event -> many authorized views.",
+    "Capability does not create authority.",
+    "Unknown is not verified.",
+    "Distillation is value-preserving.",
+    "Maximum responsible verified value per action and per moment.",
+    "Private by default -> shared by choice -> collective by consent -> public by decision."
+  ],
+  "system_roles": {
+    "human": "director / principal / authority",
+    "naya": "governed intelligence and execution partner",
+    "nayapower": "governed Superbrain operating system / control substrate",
+    "github": "durable engineering and source context",
+    "nayanet": "governed network/application environment",
+    "hub": "human-facing visual brain / operating surface, not source of truth"
+  },
+  "proof_ladder": [
+    "PI-01 RESTORE",
+    "PI-02 RECONCILE",
+    "PI-03 CONTINUE",
+    "PI-04 EXECUTE + VERIFY",
+    "PI-05 SUCCESSOR",
+    "PI-06 LEARN",
+    "PI-07 GENERALIZE"
+  ],
+  "links": {
+    "command_center": ".naya/project/00-NAYA-PROJECT-INDEX.md",
+    "one_shot": "NAYAPOWER-ONE-SHOT.md",
+    "source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+    "build_anything": "SUPERBRAIN/NAYAPOWER-BUILD-ANYTHING-SUPERBRAIN-OPERATING-SPEC-V1.md",
+    "boot": "SUPERBRAIN/AI-BOOT/START-HERE.md",
+    "hub": "NAYANET/HUB/index.html",
+    "project_intelligence": "tools/project_intelligence.py",
+    "restore": ".naya/runtime/restore_context.py"
+  }
+}
