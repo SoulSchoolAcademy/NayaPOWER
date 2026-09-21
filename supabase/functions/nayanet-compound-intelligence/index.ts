@@ -314,6 +314,7 @@ async function ackBridge(client: any, userId: string, body: any) {
 }
 
 async function stateUpdate(client: any, userId: string, body: any) {
+  if (body.authority !== "PROJECT_DIRECTOR") throw new Error("STATE_UPDATE_AUTHORITY_REQUIRED");
   const {data:member,error:memberError}=await client.from("members").select("id,display_name").eq("id",userId).maybeSingle();
   if(memberError) throw memberError;
   if(!member) throw new Error("MEMBER_NOT_FOUND");
@@ -356,7 +357,7 @@ async function learningCandidate(client: any, userId: string, body: any) {
   if (!source) throw new Error("SOURCE_EVENT_NOT_FOUND");
   const row = {
     member_id: userId, target_id: target, level: String(body.level ?? "E1_UNDERSTANDS"),
-    provenance: String(body.provenance ?? "nayanet-compound-intelligence"),
+    provenance: String(body.provenance ?? "OBSERVATION"),
     status: "CANDIDATE", claim,
     observed_value: body.observed_value ?? {},
     verification_method: String(body.verification_method ?? "PENDING_VERIFICATION"),
