@@ -306,3 +306,20 @@ The most important lesson is not merely “Proof7 passed.” It is: **when a har
 **Important distinction:** This does not create a second intelligence store. The bridge is a reconstruction aid. Current Git identity, canonical control-plane state, runtime evidence, constitutional authority, and human authority remain authoritative.
 
 **Next action:** Prove the bridge by executing the consolidated Project Intelligence acceptance chain through the cold successor. The objective is not another document; it is behavioral continuity.
+
+
+---
+
+## 2026-09-21 — Source/runtime parity boundary discovered at name-first identity
+
+**Status:** REPAIR APPLIED / VERIFICATION PENDING
+
+**Canonical evidence:** Human Surface Acceptance `35617188745` / job `106390807147`.
+
+**Intelligence gained:** A deployed browser proof can fail before business behavior begins when a canonical runtime asset is not reliably present at its expected path. The correct response is not to weaken the browser test or bypass identity; reconcile the exact source path and redeploy the canonical runtime.
+
+**Repair:** `NayaNET/name-first-auth-adapter.js` was explicitly restored on `main` with commit `d29181b05dcf584977ab191cbafcf953db729d62`, deliberately triggering the existing Assistant Cloudflare release workflow.
+
+**Learning:** SOURCE EXISTENCE → DEPLOYMENT → RUNTIME AVAILABILITY → BROWSER BEHAVIOR is itself an acceptance chain. A repository path that is conceptually referenced is not enough; the browser must receive the asset.
+
+**Next action:** Verify the release triggered by `d29181b05dcf584977ab191cbafcf953db729d62`, then rerun the same human-surface proof with the repaired runtime.
