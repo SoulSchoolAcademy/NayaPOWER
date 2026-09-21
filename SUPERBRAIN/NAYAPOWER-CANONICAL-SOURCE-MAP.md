@@ -293,3 +293,25 @@ The source architecture reaches 10/10 when all are true:
 - live runtime and production proof remain separate from documentation claims.
 
 **This map is the navigation contract that keeps the repository understandable as it grows.**
+
+
+## 7B. BUILD ANYTHING / PROJECT INTELLIGENCE OPERATING SPEC
+
+**`SUPERBRAIN/NAYAPOWER-BUILD-ANYTHING-SUPERBRAIN-OPERATING-SPEC-V1.md`** is the canonical specialized project-operating specification for the NayaPOWER/NayaNET foundation.
+
+It establishes **NayaPOWER itself as the first formal project instance** and defines the reusable model for turning any meaningful human intention into a persistent intelligence-and-action process.
+
+It defines:
+
+- NayaPOWER as the governed Superbrain operating system;
+- NayaNET as the governed network/application environment;
+- Project Intelligence as a reconstructable view, not a second database;
+- **ONE_CANONICAL_EVENT → MANY_AUTHORIZED_VIEWS**;
+- distillation from information to actionable intelligence;
+- CREATE / LEARN / KNOW / DO as the primary human uses;
+- RESTORE → UNDERSTAND → RECONCILE → EXECUTE → VERIFY → LEARN → CONTINUE;
+- one responsible next executable frontier;
+- the PI-01 through PI-07 cold-project continuity proof ladder.
+
+This specification is **subordinate to the current constitution, control plane, and specialized subsystem contracts**. It does not change the active Hub mission, create a competing Hub, create a competing intelligence database, or expand authority.
+
