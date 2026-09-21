@@ -406,6 +406,23 @@ async function successor(client: any, userId: string, body: any) {
   return { successor: successorEvent, receipt };
 }
 
+async function issuePiAuthority(client: any, userId: string, body: any) {
+  const sourceEventId=String(body.source_event_id ?? "").trim();
+  const target=String(body.target ?? "").trim();
+  if(!sourceEventId || !target) throw new Error("AUTHORITY_SOURCE_AND_TARGET_REQUIRED");
+  const {data:grant,error}=await client.rpc("nayanet_issue_authority_grant",{
+    p_subject_id:userId,
+    p_source_event_id:sourceEventId,
+    p_mission_id:"NayaNET Project Intelligence",
+    p_scope:{project_id:PROJECT,target},
+    p_actions:["pi.continue"],
+    p_constraints:{single_use:true},
+    p_evidence:{reason:"cold-successor Project Intelligence continuation"}
+  });
+  if(error) throw error;
+  return {schema:"NAYANET_PROJECT_INTELLIGENCE_AUTHORITY_V1",status:"AUTHORIZED",grant:data};
+}
+
 async function continueAuthorized(client: any, userId: string, body: any) {
   const grantId=String(body.authority_grant_id ?? "").trim();
   const parentEventId=String(body.parent_event_id ?? "").trim();
@@ -545,6 +562,7 @@ Deno.serve(async (req) => {
       case "ack": result=await ackBridge(client,user.id,body); break;
       case "state_update": result=await stateUpdate(client,user.id,body); break;
       case "successor_handoff": result=await successor(client,user.id,body); break;
+      case "issue_pi_authority": result=await issuePiAuthority(client,user.id,body); break;
       case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
