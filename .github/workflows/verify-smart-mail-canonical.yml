@@ -1,0 +1,183 @@
+name: NayaNET canonical Smart Mail human lifecycle proof
+# PROOF-TRIGGER: canonical Hub Smart Mail surface and governed send/verify path
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-smart-mail-canonical.yml'
+      - 'NAYANET/HUB/index.html'
+      - 'NAYANET/HUB/public/assistant-runtime.js'
+      - 'NAYANET/HUB/public/hub-completeness.js'
+
+permissions:
+  contents: read
+
+jobs:
+  smart-mail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      SHARED_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute canonical Smart Mail proof
+        shell: bash
+        run: |
+          cat > verify-smart-mail.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
+
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runtime=process.env.RUNTIME_URL;
+          const sharedSpace=process.env.SHARED_SPACE_ID;
+          const project='NayaNET-Smart-Mail-'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(4).toString('hex');
+
+          async function req(url,opt={}) {
+            const r=await fetch(url,opt);
+            const t=await r.text();
+            let b; try { b=JSON.parse(t) } catch { b={raw:t} }
+            if(!r.ok) throw Error(r.status+' '+JSON.stringify(b));
+            return b;
+          }
+          const headers=(token,extra={})=>({apikey:key,authorization:'Bearer '+token,'content-type':'application/json',...extra});
+          const signup=()=>req(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});
+          const [A,B,C]=await Promise.all([signup(),signup(),signup()]);
+          if(!A.access_token||!A.user?.id||!B.access_token||!B.user?.id||!C.access_token||!C.user?.id) throw Error('AUTH_BOOTSTRAP_FAILED');
+
+          const browser=await chromium.launch({headless:true});
+          const origin=new URL(runtime).origin;
+          const storageState=session=>({cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(session)}]}]});
+          async function contextFor(session,label){
+            const context=await browser.newContext({storageState:storageState(session),viewport:{width:1440,height:1000}});
+            const page=await context.newPage();
+            const response=await page.goto(runtime+'/?smart_mail_proof='+process.env.GITHUB_RUN_ID+'-'+label,{waitUntil:'domcontentloaded',timeout:60000});
+            if(response?.status()!==200) throw Error(label+'_HUB_ROOT_NOT_200:'+response?.status());
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const auth=await page.evaluate(async()=>window.NayaAssistantRuntime.init());
+            if(!auth.authenticated||auth.user_id!==session.user.id) throw Error(label+'_AUTHENTICATED_HANDOFF_FAILED');
+            await page.waitForSelector('.rail.left',{state:'attached',timeout:30000});
+            await page.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length>=8,{timeout:15000});
+            return {context,page};
+          }
+
+          const Actx=await contextFor(A,'A'), ap=Actx.page;
+          const Bctx=await contextFor(B,'B'), bp=Bctx.page;
+          const Cctx=await contextFor(C,'C'), cp=Cctx.page;
+
+          const canonical=await ap.evaluate(()=>({title:document.title,staticMarker:document.querySelector('meta[name="nayanet-direct-nine"]')?.content||'',react:!!document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]')}));
+          if(canonical.title!=='NayaNET — Intelligent Hub V7 · 509 AAA'||canonical.staticMarker!=='verified-static-top-nine'||canonical.react) throw Error('CANONICAL_HUB_BASELINE_FAILED:'+JSON.stringify(canonical));
+
+          await ap.evaluate(space=>window.NayaAssistantRuntime.joinSpace(space),sharedSpace);
+          await bp.evaluate(space=>window.NayaAssistantRuntime.joinSpace(space),sharedSpace);
+          const aConn=await ap.evaluate(({target,space})=>window.NayaAssistantRuntime.saveConnection(target,space),{target:B.user.id,space:sharedSpace});
+          const bConn=await bp.evaluate(({target,space})=>window.NayaAssistantRuntime.saveConnection(target,space),{target:A.user.id,space:sharedSpace});
+          const aConnections=await ap.evaluate(()=>window.NayaAssistantRuntime.listConnections());
+          const bConnections=await bp.evaluate(()=>window.NayaAssistantRuntime.listConnections());
+          if(!aConnections.some(x=>x.connected_member_id===B.user.id&&x.status==='active')) throw Error('A_TO_B_CONNECTION_NOT_ACTIVE:'+JSON.stringify(aConn));
+          if(!bConnections.some(x=>x.connected_member_id===A.user.id&&x.status==='active')) throw Error('B_TO_A_CONNECTION_NOT_ACTIVE:'+JSON.stringify(bConn));
+
+          const mailButton=ap.locator('.rail.left button[data-nc="mail"]').first();
+          await mailButton.waitFor({state:'visible',timeout:10000});
+          await mailButton.click();
+          await ap.locator('#nc-mail-recipient').waitFor({state:'visible',timeout:15000});
+          const optionValues=await ap.locator('#nc-mail-recipient option').evaluateAll(opts=>opts.map(o=>o.value));
+          if(!optionValues.includes(B.user.id)) throw Error('SMART_MAIL_RECEIVER_NOT_EXPOSED_BY_HUMAN_SURFACE:'+JSON.stringify(optionValues));
+          await ap.locator('#nc-mail-recipient').selectOption(B.user.id);
+
+          const messageBody='Canonical Smart Mail proof message · '+project;
+          const subject='NayaNET Smart Mail proof';
+          await ap.locator('#nc-mail-subject').fill(subject);
+          await ap.locator('#nc-mail-body').fill(messageBody);
+          await ap.locator('#nc-mail-send').click();
+          await ap.waitForFunction(()=>/SENT · AUTHORIZED|REPLAY VERIFIED/.test(document.querySelector('#nc-mail-state')?.textContent||''),{timeout:20000});
+          const senderState=await ap.locator('#nc-mail-state').innerText();
+          if(!/SENT · AUTHORIZED|REPLAY VERIFIED/.test(senderState)) throw Error('SMART_MAIL_SEND_NOT_CONFIRMED:'+senderState);
+
+          const senderThreads=await ap.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());
+          const senderThread=senderThreads.find(t=>t.subject===subject);
+          if(!senderThread) throw Error('SMART_MAIL_SENDER_THREAD_NOT_PERSISTED');
+          const senderMessages=await ap.evaluate(id=>window.NayaAssistantRuntime.listMailMessages(id),senderThread.id);
+          const senderMessage=senderMessages.find(m=>m.body===messageBody&&m.sender_id===A.user.id);
+          if(!senderMessage) throw Error('SMART_MAIL_SENDER_MESSAGE_NOT_RETRIEVED');
+          const senderReceiptId=String(senderMessage.metadata?.execution_receipt_id||'');
+          const senderCognitionId=String(senderMessage.metadata?.cognition_event_id||'');
+          if(!senderReceiptId||!senderCognitionId) throw Error('SMART_MAIL_RECEIPT_OR_COGNITION_LINEAGE_MISSING');
+
+          await ap.locator('#nc-mail-retry').click();
+          await ap.waitForFunction(()=>/REPLAY VERIFIED/.test(document.querySelector('#nc-mail-state')?.textContent||''),{timeout:15000});
+
+          const bMailButton=bp.locator('.rail.left button[data-nc="mail"]').first();
+          await bMailButton.click();
+          await bp.locator('#nc-mail-threads').waitFor({state:'visible',timeout:15000});
+          await bp.waitForFunction(body=>(document.querySelector('#nc-mail-threads')?.textContent||'').includes(body),messageBody,{timeout:15000});
+          const receiverVisible=await bp.locator('#nc-mail-threads').innerText();
+          if(!receiverVisible.includes(messageBody)||!receiverVisible.includes(subject)) throw Error('SMART_MAIL_RECEIVER_HUMAN_RETRIEVAL_FAILED:'+receiverVisible);
+          const receiverThreads=await bp.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());
+          const receiverThread=receiverThreads.find(t=>t.id===senderThread.id);
+          if(!receiverThread) throw Error('SMART_MAIL_RECEIVER_THREAD_NOT_RETRIEVED');
+          const receiverMessages=await bp.evaluate(id=>window.NayaAssistantRuntime.listMailMessages(id),receiverThread.id);
+          const receiverMessage=receiverMessages.find(m=>m.id===senderMessage.id&&m.body===messageBody&&m.sender_id===A.user.id);
+          if(!receiverMessage) throw Error('SMART_MAIL_RECEIVER_MESSAGE_NOT_RETRIEVED');
+
+          const verified=await bp.evaluate(id=>window.NayaAssistantRuntime.verifySmartMail(id),receiverMessage.id);
+          if(verified.status!=='VERIFIED'||verified.authority_changed!==false||!verified.learning_evidence_id) throw Error('SMART_MAIL_RECEIVER_VERIFICATION_FAILED:'+JSON.stringify(verified));
+
+          await bp.reload({waitUntil:'domcontentloaded'});
+          await bp.waitForFunction(()=>Boolean(window.NayaAssistantRuntime),null,{timeout:10000});
+          await bp.evaluate(async()=>window.NayaAssistantRuntime.init());
+          await bp.waitForFunction(()=>document.querySelectorAll('.rail.left [data-nc]').length>=8,{timeout:15000});
+          await bp.locator('.rail.left button[data-nc="mail"]').first().click();
+          await bp.locator('#nc-mail-threads').waitFor({state:'visible',timeout:15000});
+          await bp.waitForFunction(body=>(document.querySelector('#nc-mail-threads')?.textContent||'').includes(body),messageBody,{timeout:15000});
+          const reloadVisible=await bp.locator('#nc-mail-threads').innerText();
+          if(!reloadVisible.includes(messageBody)) throw Error('SMART_MAIL_RELOAD_RETRIEVAL_FAILED');
+
+          const cBlocked=await cp.evaluate(async target=>{
+            try{
+              await window.NayaAssistantRuntime.sendSmartMail({receiver_id:target,body:'UNAUTHORIZED',subject:'UNAUTHORIZED'});
+              return {blocked:false,error:'UNEXPECTED_SUCCESS'};
+            }catch(e){return {blocked:true,error:String(e?.message||e)}}
+          },A.user.id);
+          if(!cBlocked.blocked) throw Error('SMART_MAIL_UNAUTHORIZED_SEND_NOT_BLOCKED');
+          if(!/RELATIONSHIP_REQUIRED|INVALID_MAIL_RECIPIENT/.test(cBlocked.error)) throw Error('SMART_MAIL_UNAUTHORIZED_WRONG_BOUNDARY:'+cBlocked.error);
+          const cThreads=await cp.evaluate(()=>window.NayaAssistantRuntime.listMailThreads());
+          if(cThreads.some(t=>t.subject==='UNAUTHORIZED')) throw Error('SMART_MAIL_UNAUTHORIZED_SIDE_EFFECT_DETECTED');
+          const cGrants=await cp.evaluate(target=>window.NayaAssistantRuntime.listAuthorityGrants(target),A.user.id);
+          if(cGrants.length) throw Error('SMART_MAIL_UNAUTHORIZED_GRANT_SIDE_EFFECT_DETECTED:'+JSON.stringify(cGrants));
+
+          const receipt={
+            schema:'nayanet.smart-mail.human-lifecycle.v1',
+            status:'VERIFIED',
+            run_id:process.env.GITHUB_RUN_ID,
+            project,
+            runtime,
+            source:{sender_user_id:A.user.id,receiver_user_id:B.user.id,message_id:senderMessage.id,thread_id:senderThread.id,execution_receipt_id:senderReceiptId,cognition_event_id:senderCognitionId,learning_evidence_id:verified.learning_evidence_id},
+            checks:{canonical_hub:'PASS',mutual_connection:'PASS',human_compose_surface:'PASS',governed_authorization:'PASS',send_persistence:'PASS',sender_retrieval:'PASS',receiver_human_retrieval:'PASS',receiver_runtime_retrieval:'PASS',receiver_verification:'PASS',replay_identity:'PASS',hard_reload:'PASS',unauthorized_block:'PASS',unauthorized_no_side_effects:'PASS'},
+            connections:{aConn,bConn}
+          };
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/smart-mail-human-proof.json',JSON.stringify(receipt,null,2));
+          console.log('NAYANET_SMART_MAIL_HUMAN_LIFECYCLE=VERIFIED');
+          console.log(JSON.stringify(receipt));
+          await Cctx.context.close(); await Bctx.context.close(); await Actx.context.close(); await browser.close();
+          EOF
+          node verify-smart-mail.mjs
+      - name: Upload Smart Mail proof receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-smart-mail-human-proof
+          path: ${{ runner.temp }}/smart-mail-human-proof.json
+          if-no-files-found: ignore
