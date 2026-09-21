@@ -814,7 +814,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
+  "current_repository_head": "c3b99e7fa1c13628dc059e66e4168fb171450908",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -834,9 +834,13 @@
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   },
   "consolidated_project_intelligence": {
-    "next_action": "Execute the consolidated Project Intelligence proof: INTENT -> IDENTITY -> RECONSTRUCTION -> COLD RESTORE -> RETRIEVAL -> CURRENT STATE -> ONE NEXT ACTION -> AUTHORITY -> EXECUTION -> VERIFICATION -> LEARNING -> UPDATE -> COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
-    "status": "IN_PROGRESS",
-    "required_chain": [
+    "status": "PROVEN",
+    "claim_type": "WHOLE_JOURNEY",
+    "proof_run_id": 35638451543,
+    "proof_job_id": 106461599787,
+    "observed_source_head": "cc3afacd9d3502440f37444c59d4517445b9144d",
+    "artifact_id": 10657306507,
+    "chain": [
       "INTENT",
       "IDENTITY",
       "RECONSTRUCTION",
@@ -851,13 +855,39 @@
       "UPDATE",
       "COLD_SUCCESSOR"
     ],
-    "claim_type": "WHOLE_JOURNEY",
-    "proof7_precondition": "VERIFIED_PROVEN"
+    "evidence": {
+      "packet_id": "ad1c3e76-9898-5607-b590-d2c8675d8855",
+      "receiver_event_id": "98b6bd4b-a7b8-493e-8020-3c8315881ff9",
+      "cognition_id": "29049b0c-e3ea-45c2-a8f9-aeaa5c7de5d5",
+      "ack_receipt_id": "c46d3eb1-31a9-4a06-ae14-73e95a1d22a5",
+      "continuation_event_id": "continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866",
+      "continuation_receipt_id": "52146218-28d7-40c9-a95b-05c66f028b3d",
+      "successor_event_id": "successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab",
+      "successor_receipt_id": "6c4a79af-78bb-4419-b71a-b2b53adc82a5"
+    },
+    "repairs": [
+      {
+        "runs": [
+          35638053862
+        ],
+        "boundary": "proof variable scope",
+        "result": "repaired in PR #423"
+      },
+      {
+        "runs": [
+          35638282095
+        ],
+        "boundary": "canonical receipt envelope validation",
+        "result": "repaired in PR #424/#425"
+      }
+    ],
+    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
   },
   "reconciliation": {
     "date": "2026-09-21",
-    "live_main_before_reconciliation": "a27f4a4318150c71a920b5ea1e4aa36e7106ba67",
-    "control_plane_reconciliation_head": "a1168dd01eb19e175070e84cc0efdb78a9ac7993",
-    "note": "Proof recording_commit points to an ancestor containing this proof record; current live repository identity is resolved separately. Source-scope runtime proofs remain scoped to their deployed source paths."
+    "live_main_after_recording": "c3b99e7fa1c13628dc059e66e4168fb171450908",
+    "pi01_home_run": 35638451543,
+    "control_plane_status": "RECONCILED",
+    "note": "PI-01 is now proven at the tested owner-bound production scope. Current operational frontier moves to measured computation efficiency."
   }
 }

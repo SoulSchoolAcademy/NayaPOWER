@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "active_block": {
     "id": "PROJECT-INTELLIGENCE-PI-01",
-    "status": "ACTIVE",
+    "status": "COMPLETE",
     "priority": "P0",
     "intent": "Make the architecture itself carry the human's project intelligence so Naya restores, understands, retrieves, decides, acts, verifies, learns, compounds, and hands off without Shawn repeatedly reconstructing the project.",
     "protected": [
@@ -66,7 +66,15 @@
       "successor continuity",
       "governed execution"
     ],
-    "next_action_count": 1
+    "next_action_count": 1,
+    "completed_at": "2026-09-21T18:27:47Z",
+    "completion_evidence": {
+      "workflow_run": 35638451543,
+      "job_id": 106461599787,
+      "source_head": "cc3afacd9d3502440f37444c59d4517445b9144d",
+      "artifact_id": 10657306507,
+      "claim": "PI-01 whole-chain production proof passed at tested owner-bound scope"
+    }
   },
   "status_vocabulary": [
     "INTENDED",
@@ -90,9 +98,9 @@
     "cold_naya_state_reconstruction_by_human": false
   },
   "current_frontier": {
-    "active_block": "PROJECT-INTELLIGENCE-PI-01",
-    "priority": "P0",
-    "next_action": "Prove Project Intelligence restore + receiver retrieval/render + cold successor continuation as one governed runtime journey.",
-    "completion": "Evidence-backed cold successor continuation; otherwise explicitly BLOCKED/FAILED/UNKNOWN."
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "priority": "P1",
+    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
+    "completion": "Claim-appropriate measured avoided computation with verified outcome preservation."
   }
 }
