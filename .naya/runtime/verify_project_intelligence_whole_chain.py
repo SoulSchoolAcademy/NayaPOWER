@@ -76,8 +76,25 @@ def main() -> int:
     boot = load("SUPERBRAIN/AI-BOOT/START-HERE.md")
 
     active = blocks.get("active_block", {})
-    if active.get("id") != "PROJECT-INTELLIGENCE-PI-01":
-        fail("active block is not PROJECT-INTELLIGENCE-PI-01")
+    # PI-01 is a predecessor proof, not the permanent active block. Once the
+    # canonical block has advanced, this repository-level continuity proof must
+    # validate the predecessor evidence plus the current frontier instead of
+    # requiring a stale block id.
+    active_id = active.get("id")
+    if active_id == "PROJECT-INTELLIGENCE-PI-01":
+        pass
+    else:
+        predecessor = active.get("predecessor")
+        predecessor_proof = active.get("predecessor_proof", {})
+        if predecessor != "PROJECT-INTELLIGENCE-PI-01":
+            fail(f"active block has no PI-01 predecessor: {active_id}")
+        if not predecessor_proof.get("workflow_run") or not predecessor_proof.get("source_head"):
+            fail("PI-01 predecessor proof metadata missing")
+        if "proven" not in str(predecessor_proof.get("claim", "")).lower():
+            fail("PI-01 predecessor is not marked proven")
+        if active.get("status") != "ACTIVE":
+            fail("current active block is not ACTIVE")
+        print("PI01_PREDECESSOR_PROOF=PASS")
     if active.get("next_action_count") != 1:
         fail("active block does not expose exactly one next action")
     next_action = active["next_actions"][0]
