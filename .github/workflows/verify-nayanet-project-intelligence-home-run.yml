@@ -147,11 +147,12 @@ jobs:
             try{
               await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
               const session=await identity(page);
-              const restored=await compound(page,session,'restore');
-              const bridge=restored.CURRENT_BRIDGE?.latest;
-              if(!bridge?.packet_id) throw new Error('NO_LATEST_BRIDGE_PACKET');
+              const sent=JSON.parse(fs.readFileSync('bridge-send.json','utf8'));
+              const bridge=sent.ack||sent;
+              if(!bridge?.packet_id) throw new Error('NO_SENT_BRIDGE_RECEIPT');
               if(!bridge.persisted||!bridge.indexed||!bridge.projected) throw new Error('BRIDGE_TRANSPORT_NOT_COMPLETE');
-              mark('RECEIVE','PASS',{packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:bridge.receiver_event_id});
+              if(bridge.owner_id!==session.userId) throw new Error('BRIDGE_OWNER_SESSION_MISMATCH');
+              mark('RECEIVE','PASS',{packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:bridge.receiver_event_id,owner_id:bridge.owner_id});
 
               const receiverEventId=bridge.receiver_event_id;
               const direct=await page.evaluate(async({supabaseUrl,supabaseKey,token,receiverEventId})=>{
@@ -194,9 +195,13 @@ jobs:
               const fresh=await browser.newContext({storageState:state});
               const fp=await fresh.newPage();
               try{
-                const freshRestore=await compound(fp,session,'restore');
-                const latest=freshRestore.CURRENT_BRIDGE?.latest;
-                if(latest?.packet_id!==bridge.packet_id||latest?.retrieved!==true||latest?.rendered!==true) throw new Error('FRESH_RESTORE_BRIDGE_PROOF_FAILED:'+JSON.stringify(latest));
+                await fp.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+                const exactBridge=await fp.evaluate(async({supabaseUrl,supabaseKey,token,packetId})=>{
+                  const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                  return await c.from('nayanet_project_intelligence_bridge').select('packet_id,owner_id,retrieved,rendered,receiver_event_id').eq('packet_id',packetId).maybeSingle();
+                },{supabaseUrl,supabaseKey,token:session.access_token,packetId:bridge.packet_id});
+                if(exactBridge.error||!exactBridge.data||exactBridge.data.owner_id!==session.userId||exactBridge.data.retrieved!==true||exactBridge.data.rendered!==true) throw new Error('FRESH_RESTORE_BRIDGE_PROOF_FAILED:'+JSON.stringify(exactBridge));
                 const freshRetrieve=await compound(fp,session,'retrieve',{query:direct.data.title,limit:20});
                 if(!freshRetrieve.items?.some(x=>x.event_id===receiverEventId)) throw new Error('COLD_SUCCESSOR_RETRIEVAL_FAILED');
                 mark('COLD_SUCCESSOR','PASS',{packet_id:bridge.packet_id,event_id:receiverEventId});
