@@ -25,7 +25,7 @@ from governance_kernel import (  # noqa: E402
 
 REGISTRY_PATH = GOVERNANCE_DIR / "authority-registry.json"
 
-from quality_gate import QualityGateInput, evaluate_quality  # noqa: E402
+from quality_gate import QualityGateInput, evaluate_execution  # noqa: E402
 
 
 def resolve_authority(
@@ -93,7 +93,7 @@ def authorize_workflow(
     if not evidence:
         raise ValueError("workflow gate requires evidence")
 
-    quality = evaluate_quality(QualityGateInput(
+    quality = evaluate_execution(QualityGateInput(
         intent_understood=intent_understood,
         context_complete=context_complete,
         material_unknowns=tuple(material_unknowns),
