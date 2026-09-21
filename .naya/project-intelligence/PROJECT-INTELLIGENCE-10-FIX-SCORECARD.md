@@ -16,7 +16,7 @@ RULE: evidence over assertion; unknown and blocked remain explicit.
 | 8 | Structured RESTORE | IMPLEMENTED + RUNTIME SURFACE ADDED | GitHub operating context plus Supabase nayanet-compound-intelligence action=restore |
 | 9 | Receiver READY contract | TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK EVIDENCED; RETRIEVE/RENDER OPEN | Explicit receiver sequence exists; exact bridge receipts exist; direct retrieval/render proof remains required |
 | 10 | Shawn middleware elimination | IMPLEMENTED BOUNDARY RECORD + CONTINUITY RUNTIME | BRIDGE-AUTHORIZATION-BOUNDARY.json plus successor_handoff and restore runtime |
-| 11 | Compound Intelligence runtime | IMPLEMENTED | Supabase nayanet-compound-intelligence latest observed deployed version 4 exposes the governed 12-capability lifecycle surface plus explicit learning/project/ack/state helper actions. |
+| 11 | Compound Intelligence runtime | IMPLEMENTED | Supabase nayanet-compound-intelligence latest observed deployed version 5 exposes the governed 12-capability lifecycle surface plus explicit learning/project/ack/state helper actions. |
 | 12 | Intelligence operation durability | IMPLEMENTED | public.nayanet_intelligence_operations with owner-scoped RLS records orchestration success/failure and lineage |
 
 ## 12 CAPABILITIES NOW IMPLEMENTED
@@ -44,7 +44,7 @@ COLD PROJECT INTELLIGENCE: VERIFIED BY GITHUB ACTIONS
 REPOSITORY WHOLE-CHAIN: VERIFIED BY GITHUB ACTIONS
 BRIDGE TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK: EVIDENCED AT EXACT SOURCE SCOPE
 BRIDGE RETRIEVE/RENDER: OPEN
-COMPOUND INTELLIGENCE ORCHESTRATION: DEPLOYED • LIVE VERSION 4
+COMPOUND INTELLIGENCE ORCHESTRATION: DEPLOYED • LIVE VERSION 5
 COLD SUCCESSOR USING NEW RESTORE RUNTIME: OPEN — HUB WIRING COMMITTED; BEHAVIORAL PROOF REQUIRED
 
 ## HOME RUN DEFINITION
