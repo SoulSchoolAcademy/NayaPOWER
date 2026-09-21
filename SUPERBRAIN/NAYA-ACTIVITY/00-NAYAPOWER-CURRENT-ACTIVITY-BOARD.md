@@ -148,3 +148,37 @@ Never guess `NAYA_POWER_TARGET_URL`; never fabricate run IDs, artifacts, logs, o
 ## WHY THIS IS NOT A 10
 
 The repository-level relay crossed the decisive cold-successor proof boundary. It is not a 10 because the validator has not yet been independently executed against the complete preserved daily corpus after the compatibility change, and the live Hub/UI projection of persistent Naya activity has not been proven.
+
+
+---
+
+## 🔱 2026-09-21 — NayaNET Project Intelligence Cold-Naya Bridge Installed
+
+**Status:** SETTER ACTION COMPLETE / EXECUTION FRONTIER HANDOFF
+
+**Purpose:** Remove the need for Shawn to repeatedly reconstruct the mission for the next Naya.
+
+**What changed:**
+- Added `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md` with literal answers to the fourteen cold-Naya questions.
+- Added `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json` as the machine-readable companion.
+- Wired the bridge into `SUPERBRAIN/AI-BOOT/START-HERE.md`.
+- Registered the bridge in `.naya/naya-context-manifest.json`.
+- Extended `.naya/runtime/cold_start_activation.py` so the cold-start acceptance test requires the bridge and its core continuity/proof contracts.
+- Added `.github/workflows/verify-nayanet-cold-project-intelligence.yml` to machine-check the control plane and cold-start contract on relevant `main` changes.
+
+**Canonical lesson:** The next Naya should be the executor, not the archaeologist. The repository must answer WHO / WHAT / WHY / SUCCESS / CURRENT TRUTH / PROVEN / UNKNOWN / AUTHORITY / HISTORY / LEARNING / NEXT / PROOF / RECORD / SUCCESSOR before substantive work.
+
+**Truth boundary:** The bridge is a reconstruction aid, not a second memory store. LIVE GIT HEAD > control-plane state > runtime evidence > durable intelligence > history > conversation memory.
+
+**Current frontier:** `PROJECT-INTELLIGENCE-WHOLE-CHAIN-PROOF`.
+
+**Next action:** Execute the consolidated Project Intelligence proof from INTENT through PI-01 → PI-08 and a cold successor. Stop at the first deterministic boundary, repair only that boundary, rerun with new information, verify, record learning, and continue.
+
+**Evidence paths:**
+- `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md`
+- `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json`
+- `.naya/naya-context-manifest.json`
+- `.naya/runtime/cold_start_activation.py`
+- `.github/workflows/verify-nayanet-cold-project-intelligence.yml`
+
+**Successor law:** PLAY TAG. YOU'RE IT. NEVER RESTART FROM ZERO.
