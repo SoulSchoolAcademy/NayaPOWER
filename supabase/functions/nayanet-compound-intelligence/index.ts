@@ -1,3 +1,4 @@
+// PI deterministic reconstruction timezone normalization verified 2026-09-21
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 
