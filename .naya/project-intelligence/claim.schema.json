@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"nayanet/project-intelligence/claim/v1",
+  "title":"NayaNET First-Class Claim",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["claim_id","subject","assertion","source","scope","time","truth_state","evidence","supersession","confidence","limitations"],
+  "properties":{
+    "claim_id":{"type":"string","pattern":"^CLM-[A-Z0-9._-]+$"},
+    "subject":{"type":"string","minLength":1},
+    "assertion":{"type":"string","minLength":1},
+    "source":{"type":"object","additionalProperties":false,"required":["kind","ref"],"properties":{"kind":{"enum":["repository","runtime","execution","human","external"]},"ref":{"type":"string","minLength":1},"observed_head":{"type":["string","null"]}}},
+    "scope":{"type":"object","additionalProperties":false,"required":["project","claim_scope"],"properties":{"project":{"const":"NAYANET"},"claim_scope":{"type":"string","minLength":1}}},
+    "time":{"type":"object","additionalProperties":false,"required":["asserted_at","observed_at","valid_from"],"properties":{"asserted_at":{"type":"string","format":"date-time"},"observed_at":{"type":"string","format":"date-time"},"valid_from":{"type":"string","format":"date-time"},"valid_until":{"type":["string","null"],"format":"date-time"}}},
+    "truth_state":{"enum":["DOCUMENTED","IMPLEMENTED","VERIFIED","RUNTIME_PROVEN","PRODUCTION_PROVEN","UNKNOWN","CONFLICTED","STALE","BLOCKED","FAILED","SUPERSEDED"]},
+    "evidence":{"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,"required":["evidence_id","kind","ref","supports"],"properties":{"evidence_id":{"type":"string","minLength":1},"kind":{"type":"string","minLength":1},"ref":{"type":"string","minLength":1},"supports":{"type":"string","minLength":1}}}},
+    "supersession":{"type":"object","additionalProperties":false,"required":["status","supersedes","superseded_by"],"properties":{"status":{"enum":["CURRENT","SUPERSEDING","SUPERSEDED","NONE"]},"supersedes":{"type":"array","items":{"type":"string"}},"superseded_by":{"type":["string","null"]}}},
+    "confidence":{"type":"number","minimum":0,"maximum":1},
+    "limitations":{"type":"array","items":{"type":"string"}}
+  }
+}
