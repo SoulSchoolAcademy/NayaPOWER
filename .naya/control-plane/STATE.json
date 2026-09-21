@@ -7,7 +7,8 @@
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
     "recorded_head_is_not_authoritative": true,
-    "observed_head": "a27f4a4318150c71a920b5ea1e4aa36e7106ba67"
+    "observed_head": "7bf27dc66037c8577760331f0980dad8bd100e20",
+    "note": "Live main changed after the proven bridge transaction because the durable Project Intelligence context was reconciled. The bridge proof remains valid at its exact source_ref 3c7102c5adc8b464b6843c82de0ae72139c8fb69."
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -124,7 +125,8 @@
     "Comprehensive multi-Naya concurrency beyond the proven eight concurrent writers in one authenticated user/project remains unknown.",
     "Windows-local repository checkout portability remains blocked by the tracked colon-containing filename.",
     "Activation breadth beyond the currently proven Hub/engine path (GitHub App bridge, Spaces/Contacts/Lists/Share/Play as a complete ordinary-user journey) remains incomplete.",
-    "Public Welcome source/runtime is externally hosted outside the NayaPOWER repository; current live embedded shiny-wave identity activation still targets academy.nayanet.app rather than the canonical Assistant Cloudflare Hub."
+    "Public Welcome source/runtime is externally hosted outside the NayaPOWER repository; current live embedded shiny-wave identity activation still targets academy.nayanet.app rather than the canonical Assistant Cloudflare Hub.",
+    "Hub-facing retrieval/render of the proven bridge transaction and genuinely cold successor retrieval of the exact receipt remain open."
   ],
   "failures": [
     "Previous P0 adversarial workflow contract failure was repaired in e0757b3ea253b9b2753468b2b7c2a82a79c9c4b8.",
@@ -158,10 +160,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Consolidated Project Intelligence whole-chain proof: connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted cold-successor acceptance chain. Computational-efficiency measurement is the next engineering layer after this causal chain is proven.",
-  "single_next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval.",
+  "bottleneck": "Receiver retrieval/render plus genuinely cold successor retrieval of the exact proven Project Intelligence receipt. The transport/persist/index/project/ack boundary is now proven at an exact source scope.",
+  "single_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
   "next_actions": [
-    "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require verified receipt plus fresh-successor retrieval."
+    "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
@@ -185,19 +187,24 @@
   ],
   "recorded_at_head": "031bee2a6b996fb747f7159d2e7572575b5defde",
   "latest_human_facing_observation": {
-    "next_boundary": "CONSOLIDATED_PROJECT_INTELLIGENCE_PI_01_PI_08",
+    "next_boundary": "PROJECT_INTELLIGENCE_RECEIVE_RETRIEVE_RENDER_COLD_SUCCESSOR",
     "proof7_job_id": 106388476799,
     "current_main_head": "031bee2a6b996fb747f7159d2e7572575b5defde",
     "proof7_run_id": 35616507762,
-    "status": "PROOF7_COMPOUNDING_PROVEN_PI_WHOLE_CHAIN_NEXT",
-    "canonical_hub": "NAYANET/HUB/index.html"
+    "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
+    "canonical_hub": "NAYANET/HUB/index.html",
+    "bridge_transport_run": 35623939680,
+    "bridge_idempotent_replay_run": 35623988420,
+    "bridge_source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
+    "bridge_packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
+    "bridge_receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c"
   },
   "today_mission": {
     "status": "ACTIVE",
     "date": "2026-09-21",
     "north_star": "Set the intelligence foundation once so every Naya starts from a better state: maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "mission": "Prepare GitHub + established Supabase + canonical Project Intelligence so the next Naya is the executor, not the archaeologist.",
-    "acceptance": "A cold Naya can resolve live main, restore canonical intelligence, understand NayaNET, know what is proven/unknown, identify one next action, use established runtime persistence where authorized, verify the result, record learning, and leave a better successor.",
+    "acceptance": "A cold Naya can resolve live main, restore canonical intelligence, execute the current authorized action, verify the result, record learning, and leave a better successor. The Project Intelligence bridge now proves transport/persistence/index/projection/ack at exact source scope; retrieval/render and cold successor retrieval remain the active frontier.",
     "human_requirement": "Shawn should not need to re-explain project purpose, architecture, current truth, history, learning, or the next authorized action when those are already durably recorded.",
     "proof_harness": {
       "workflow": ".github/workflows/verify-nayanet-cold-project-intelligence.yml",
@@ -216,7 +223,7 @@
     "no_secret_recorded": true
   },
   "project_intelligence_bridge": {
-    "status": "NOT_PROVEN",
+    "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
     "contract": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
     "operating_context": ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",
     "sender_runtime": ".naya/runtime/project_intelligence_bridge.py",
@@ -225,6 +232,16 @@
     "receiver": "NayaNET Intelligent Hub",
     "receiver_canonical_source": "NAYANET/HUB/index.html",
     "readiness_sequence": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
-    "rule": "Documentation and packet construction are not receiver proof."
+    "rule": "Documentation and packet construction are not receiver proof.",
+    "latest_proof": {
+      "workflow_run": 35623988420,
+      "job_id": 106413689632,
+      "source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
+      "packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
+      "receiver_transaction_id": "022c4131-2729-45f7-be84-85d6f9dde228",
+      "receiver_event_id": "51cecc6a-0d37-4aca-80d2-a707f00b31be",
+      "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
+      "idempotent_replay_verified": true
+    }
   }
 }
