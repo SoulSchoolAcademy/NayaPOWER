@@ -4,11 +4,11 @@ Project: NayaNET / Project Intelligence
 Supabase project: dahisasgpfvziswqvmvm
 GitHub repository: SoulSchoolAcademy/NayaPOWER
 GitHub branch: naya/live-project-intelligence-v1
-GitHub HEAD at final receipt update: 0ab70a8375e1eb3af5e89d0022f5869daaff1509
+GitHub HEAD at latest receipt update: 2b689f41a2ac60e24758a78216fe0acc8a8438fe
 
 ## Result
 
-The Project Intelligence operating layer is deployed as twelve active Edge Functions. The canonical deployed set is:
+The twelve requested Project Intelligence capability endpoints are deployed ACTIVE. The pre-existing nayanet-pi-* orchestration set remains deployed as a compatibility/legacy layer; it is not counted as part of the requested twelve.
 
 1. nayanet-pi-restore — ACTIVE v1 — SHA 49a9e19e35d2f2da084fbc39c265c87cc8762388a9d49a06fe76c3bb3cbf4168
 2. nayanet-pi-retrieve — ACTIVE v1 — SHA cf707b86baae859c5341300d1adb56c415d39616df29c59ef2ddb0462a80f304
@@ -78,6 +78,22 @@ nayanet-intelligence-share
 nayanet-intelligence-supersede
 
 These are active authenticated endpoints. They are compatibility/capability surfaces; the canonical twelve-function Project Intelligence contract above remains the nayanet-pi-* set.
+
+## Runtime proof attempts
+
+Authenticated GitHub Actions proof run 35628452911 reached the understanding response-shape boundary and failed before artifact creation. Repair: extract the persisted event from the wrapper response.
+
+Run 35628532395 reached the missing learning-retrieve endpoint boundary. Repair: use the requested named capability endpoint rather than a non-existent pi alias.
+
+Run 35628694654 reached the learning candidate response-contract boundary. Repair: use result.candidate.id and learning_id.
+
+Run 35628770754 reached the project projection boundary. Repair: make the requested project capability write/read the canonical intelligence index with service-role projection authority after user ownership is validated.
+
+Run 35628897989 reached the same projection boundary and was corrected by version 4 of nayanet-project-intelligence-project.
+
+Run 35628963106 reached the canonical ACK fail-closed boundary: missing packet returns HTTP 404 PACKET_NOT_FOUND. The proof contract was corrected to accept the canonical 400/404 rejection as PASS for the negative-path test.
+
+Latest run 35629040960 is queued on the branch after that correction. It is the current authoritative runtime observation and must be allowed to complete before the twelve-function runtime proof is marked VERIFIED.
 
 ## Verification boundary
 
