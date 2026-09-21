@@ -1,0 +1,36 @@
+name: verify-ai-constitution-and-intelligent-block
+
+on:
+  push:
+    paths:
+      - ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.md"
+      - ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.yaml"
+      - ".naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md"
+      - "contracts/intelligent-block-v1.md"
+      - "contracts/intelligent-block-v1.schema.json"
+      - "contracts/intelligent-block-v1.yaml"
+      - "NAYAPOWER-AI-CONSTITUTION.md"
+      - "tests/test_intelligent_block_contract.py"
+      - ".github/workflows/verify-ai-constitution-and-intelligent-block.yml"
+  pull_request:
+    paths:
+      - ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.md"
+      - ".naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.yaml"
+      - ".naya/TEAM-NAYA/00-START-HERE-FOR-EVERY-NAYA.md"
+      - "contracts/intelligent-block-v1.md"
+      - "contracts/intelligent-block-v1.schema.json"
+      - "contracts/intelligent-block-v1.yaml"
+      - "NAYAPOWER-AI-CONSTITUTION.md"
+      - "tests/test_intelligent_block_contract.py"
+      - ".github/workflows/verify-ai-constitution-and-intelligent-block.yml"
+
+jobs:
+  contract-gate:
+    name: Constitutional + Intelligent Block contract gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run canonical contract gate
+        run: python3 tests/test_intelligent_block_contract.py
