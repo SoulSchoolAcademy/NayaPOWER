@@ -286,3 +286,23 @@ The most important lesson is not merely “Proof7 passed.” It is: **when a har
 **Pass condition:** a cold successor can genuinely continue from the resulting canonical state without Shawn reconstructing the project conversationally.
 
 **Do not:** create another Hub, redesign the canonical Hub without a verified defect, reopen proven subsystems without regression evidence, treat historical state as current, or claim computation savings without measurement evidence.
+
+---
+
+## 2026-09-21 — Project Intelligence became an explicit cold-Naya boot boundary
+
+**Status:** CANONICAL OPERATING INTELLIGENCE / ACTIVE
+
+**Canonical artifacts:**
+- `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md`
+- `.naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.json`
+- `SUPERBRAIN/AI-BOOT/START-HERE.md`
+- `.naya/naya-context-manifest.json`
+- `.naya/runtime/cold_start_activation.py`
+- `.github/workflows/verify-nayanet-cold-project-intelligence.yml`
+
+**Intelligence gained:** NayaNET's continuity requirement is now explicitly encoded at the repository boot boundary. A cold Naya is given literal answers to the fourteen critical questions and a direct route to the current proof frontier instead of relying on conversational memory or a historical torch.
+
+**Important distinction:** This does not create a second intelligence store. The bridge is a reconstruction aid. Current Git identity, canonical control-plane state, runtime evidence, constitutional authority, and human authority remain authoritative.
+
+**Next action:** Prove the bridge by executing the consolidated Project Intelligence acceptance chain through the cold successor. The objective is not another document; it is behavioral continuity.
