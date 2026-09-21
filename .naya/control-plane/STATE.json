@@ -15,7 +15,7 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - COLD NAYA TAKEOVER / PROJECT INTELLIGENCE",
+  "priority": "P0 - COLD NAYA TAKEOVER / PROJECT INTELLIGENCE BRIDGE",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
   "current_block": "COLD-NAYA-TAKEOVER-PROOF",
   "current_block_status": "ACTIVE",
@@ -192,7 +192,7 @@
     "status": "PROOF7_COMPOUNDING_PROVEN_PI_WHOLE_CHAIN_NEXT",
     "canonical_hub": "NAYANET/HUB/index.html"
   },
-  "next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
+  "next_action": "Execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary; require a verified receipt and fresh-successor retrieval before declaring the bridge proven.",
   "today_mission": {
     "status": "ACTIVE",
     "date": "2026-09-21",
@@ -215,5 +215,18 @@
     "ordinary_user_rule": "Users and ordinary Naya flows do not access Supabase directly as a control surface; governed application/runtime boundaries mediate persistence and execution.",
     "verified_surface": "tables, RLS-enabled schemas, migrations, and active Edge Functions were inspected on 2026-09-21",
     "no_secret_recorded": true
-  }
+  },
+  "project_intelligence_bridge": {
+    "status": "NOT_PROVEN",
+    "contract": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
+    "operating_context": ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",
+    "sender_runtime": ".naya/runtime/project_intelligence_bridge.py",
+    "verification_workflow": ".github/workflows/verify-project-intelligence-bridge.yml",
+    "sender": "GitHub/NayaPOWER",
+    "receiver": "NayaNET Intelligent Hub",
+    "receiver_canonical_source": "NAYANET/HUB/index.html",
+    "readiness_sequence": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
+    "rule": "Documentation and packet construction are not receiver proof."
+  },
+  "next_action_success_condition": "A fresh Naya retrieves the exact Project Intelligence packet, preserved provenance, receiver event and verified receipt from the Hub and continues without Shawn supplying missing context."
 }
