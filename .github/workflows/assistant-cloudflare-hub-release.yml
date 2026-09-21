@@ -73,6 +73,7 @@ jobs:
           test -s NAYANET/HUB/index.html
           test -s NAYANET/HUB/public/assistant-runtime.js
           test -s NAYANET/HUB/public/hub-completeness.js
+          test -s NAYANET/HUB/public/nayanet-interface-command-station.js
           test -s smart-feed.js
           test -s smart-tabs.js
           test -s identity.html
@@ -92,6 +93,7 @@ jobs:
           cp NAYANET/HUB/index.html dist/index.html
           cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
           cp NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
+          cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
           cp identity.html dist/identity.html
