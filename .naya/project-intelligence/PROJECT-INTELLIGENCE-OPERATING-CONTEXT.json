@@ -44,6 +44,7 @@
     ],
     "rule": "The more consequential or ambitious the goal, the more deeply Naya should understand before acting."
   },
+  "intelligent_event_architecture": {"version":"V1","event_contract":".naya/project-intelligence/INTELLIGENT-EVENT-V1.md","block_contract":".naya/project-intelligence/INTELLIGENT-BLOCK-V1.md","core_distinction":"INTELLIGENT EVENT = WHAT HAPPENED; INTELLIGENT BLOCK = WHAT WE CURRENTLY UNDERSTAND","ledger_principle":"Meaningful intelligence events form the temporal spine; blocks are reusable multidimensional understanding derived from provenance-bound events.","human_question_rule":"Infer and verify before asking; ask up to 3 high-leverage questions at a time; never exceed 10 unresolved questions unless an explicit questionnaire is requested; read inferred understanding back and record consequential corrections."},
   "compounding_intelligence": {
     "principle": "Every meaningful interaction is an opportunity to become wiser.",
     "loop": "EXPERIENCE → CAPTURE → UNDERSTAND → DISTILL → RETAIN → RETRIEVE → APPLY → VERIFY → LEARN → REVIEW → COMPOUND → NEXT NAYA",
@@ -56,7 +57,7 @@
       "source": "git:HEAD",
       "resolution": "LIVE_AT_EXECUTION_TIME",
       "recorded_head_is_not_authoritative": true,
-      "latest_verified_live_head": "4add93a78696bbdbf307132b5757328b57587a79"
+      "latest_verified_live_head": "71595b04154d71fca8694bd845eb0c28c1b88fae"
     },
     "state": ".naya/control-plane/STATE.json",
     "block": ".naya/control-plane/BLOCKS.json",
@@ -144,7 +145,7 @@
     "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
     "success_condition": "The canonical Hub completes the human journey with durable evidence and continuity, while computation efficiency is measured without sacrificing verified outcome quality."
   },
-  "current_repository_head": "4add93a78696bbdbf307132b5757328b57587a79",
+  "current_repository_head": "71595b04154d71fca8694bd845eb0c28c1b88fae",
   "last_next_action_cycle": {
     "status": "VERIFIED",
     "receipt": ".naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json",
