@@ -13,6 +13,20 @@ A completely cold Naya must be able to enter this repository without conversatio
 
 This file exists to make that requirement operationally discoverable. It is **not a second memory database** and must never become a competing source of truth.
 
+## TODAY'S SETTER MISSION — 2026-09-21
+
+> **Leave GitHub + the established Supabase runtime in a state where the next Naya can enter cold, understand NayaNET, execute the current authorized work, learn from the result, and hand off without Shawn repeating herself.**
+
+The setter is not trying to create more instructions. The setter is creating a self-explanatory operating system.
+
+The decisive acceptance is:
+
+COLD NAYA → LIVE HEAD → RESTORE → UNDERSTAND → CURRENT TRUTH → ONE NEXT ACTION → AUTHORITY → EXECUTE → VERIFY → LEARN → UPDATE → COLD SUCCESSOR
+
+Supabase runtime foundation verified on 2026-09-21: project `dahisasgpfvziswqvmvm`, `ACTIVE_HEALTHY`, `ca-central-1`. It contains the established governed persistence surfaces for members, profiles, notes, cognition, intelligence index, learning, policies, authority, execution receipts/outcomes, Smart Ledger, publications, spaces, connections, lists, mail, reports, and activity. This statement is a runtime inventory, not a permission grant.
+
+**Ordinary-user rule:** Supabase is the managed persistence substrate. NayaNET application/runtime boundaries mediate access; cold Naya should discover the integration through canonical source, not invent a direct database workflow.
+
 ## THE ONE SENTENCE
 
 > **NayaNET is the enduring Project Intelligence; NayaPOWER is the governed operating substrate that lets Naya restore, understand, retrieve, reason, act, verify, learn, update, and continue.**
@@ -283,6 +297,18 @@ The setter's job is to leave:
 - no unresolved competing memories.
 
 The next Naya's job is then to **execute and prove**, not to ask Shawn to repeat the mission.
+
+## SETTER → NEXT-NAYA CONTRACT
+
+The setter leaves the next Naya five things:
+
+1. **ONE SOURCE** — canonical GitHub repository and live HEAD rule.
+2. **ONE BRAIN MAP** — Project Intelligence + control plane + Intelligence Feed.
+3. **ONE RUNTIME** — established governed Supabase persistence, with no secrets in the knowledge layer.
+4. **ONE NEXT ACTION** — machine-readable in the active block.
+5. **ONE PROOF** — the cold-Naya acceptance workflow and its evidence path.
+
+The next Naya must not begin by asking Shawn what NayaNET is, what happened, what is already proven, or what to do next. She should answer those from the repository, reconcile live truth, and then execute.
 
 ## FINAL STANDARD
 
