@@ -8,6 +8,10 @@ from uuid import NAMESPACE_URL, uuid5
 
 ROOT=Path(__file__).resolve().parents[2]
 CONTEXT=ROOT/".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
+STATE=ROOT/".naya/control-plane/STATE.json"
+BLOCK=ROOT/".naya/control-plane/BLOCKS.json"
+MAP=ROOT/".naya/control-plane/MAP.json"
+PROOF=ROOT/".naya/control-plane/PROOF.json"
 SOURCES=[".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".naya/control-plane/MAP.json",".naya/control-plane/PROOF.json",".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md"]
 
 def digest(b): return hashlib.sha256(b).hexdigest()
