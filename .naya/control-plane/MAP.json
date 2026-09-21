@@ -55,7 +55,7 @@
     "roadmap": ".naya/NAYAPOWER-INTELLIGENT-HUB-10-TO-10-EXECUTION-ROADMAP.md",
     "first_checkpoint": "PHASE 0 — RESTORE + BASELINE TRUTH",
     "lane_rule": "All Hub work targets NAYANET/HUB/index.html. Welcome/front-door and historical/alternate Hub artifacts are non-authoritative. Internal runtime code is implementation machinery behind the canonical Hub, not a competing Hub.",
-    "current_capability_boundary": "GitHub repository operations are available; Cloudflare editing/deployment capability is not currently exposed in this tool environment.",
+    "current_capability_boundary": "GitHub repository operations are available; Cloudflare editing/deployment capability is not exposed in this tool environment; public runtime observation is available and was used for source/runtime parity verification.",
     "law": "No Naya may build, modify, redesign, restructure, deploy, or declare completion of Intelligent Hub work until the Hub Read-First set has been reviewed and the relevant deeper canonical sources have been inspected.",
     "reason": "Human and machine context loss are treated as architectural risks. The repository must remind the Naya instead of relying on memory.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
@@ -105,7 +105,7 @@
     }
   },
   "execution_map": {
-    "current_program": "P0 — CANONICAL HUB FUNCTIONALIZATION",
+    "current_program": "P0 — NAYANET PROJECT INTELLIGENCE COLD-SUCCESSOR PROOF",
     "blocks": [
       "SMART-SHARE-GOVERNED-ACTION",
       "SMART-MAIL-GOVERNED-ACTION",
@@ -113,8 +113,8 @@
       "SMART-SPACES-GOVERNED-ACTION",
       "SMART-LISTS-GOVERNED-ACTION"
     ],
-    "active_block": "CANONICAL-HUB-FUNCTIONALIZATION",
-    "definition_of_done": "The canonical NAYANET/HUB/index.html human-facing Hub is operational through the existing governed Naya engine, with real runtime actions, authority/consent, owner/scope isolation, revocation/expiry, idempotency/replay protection, execution receipts, persisted outcomes, and rendered browser evidence."
+    "active_block": "NAYANET-PI-02-RECONSTRUCTION",
+    "definition_of_done": "PI-02 reconstruction is reproducibly proven from canonical durable evidence, with truth classifications, evidence mapping, exact source checkpoint, and a successor-ready receipt."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -158,6 +158,20 @@
     "For Hub work, resolve and review the Hub Read-First gate before implementation or consequential execution; skipping it is a continuity/architecture failure.",
     "For Hub implementation, follow the canonical 6-to-10 roadmap checkpoints and do not declare completion until exact runtime evidence exists.",
     "Runtime and policy proof freshness is evaluated against the authoritative source paths that produced the claimed artifact, not merely the repository's unrelated documentation/control-plane HEAD.",
-    "For Hub identity, NAYANET/HUB/index.html is the sole current product surface; Welcome and historical/alternate Hub artifacts are non-authoritative unless Shawn explicitly changes the mission lock."
-  ]
+    "For Hub identity, NAYANET/HUB/index.html is the sole current product surface; Welcome and historical/alternate Hub artifacts are non-authoritative unless Shawn explicitly changes the mission lock.",
+    "When the NayaNET master proof is the active P0 frontier, PI-02 reconstruction outranks downstream feature execution until the PI-02 boundary is proven or blocked."
+  ],
+  "current_frontier": {
+    "master_proof_contract": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
+    "frontier": "PI-02_RECONSTRUCTION",
+    "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+    "branch": "naya/live-project-intelligence-v1",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "runtime_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
+    "runtime_sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847",
+    "canonical_hub": "NAYANET/HUB/index.html",
+    "hub_source_runtime_parity": "VERIFIED",
+    "downstream_hub_frontier": "SMART_MAIL_HUMAN_LIFECYCLE",
+    "rule": "The master-proof frontier is the current execution priority; downstream feature work is preserved and resumes after the PI frontier advances."
+  }
 }

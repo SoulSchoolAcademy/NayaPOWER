@@ -59,490 +59,34 @@
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
-    "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
-    "observed_branch": "main",
-    "runtime_parity": {
-      "status": "PRODUCTION_PROVEN",
-      "claim_type": "PRODUCTION",
-      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-      "deployment_run_id": 35519856070,
-      "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
-      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
-      "source_paths": [
-        "assistant-runtime.js",
-        "NAYANET/HUB/index.html",
-        "NAYANET/HUB/src/main.tsx",
-        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/data/pis.ts",
-        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
-        "identity.html",
-        "NayaNET/name-first-auth-adapter.js"
-      ],
-      "evidence": [
-        "canonical Assistant Cloudflare Hub release run 35519856070 succeeded",
-        "exact live artifact identity and source parity passed",
-        "Assistant runtime baseline passed on desktop and mobile",
-        "Final Assistant-lane runtime proof passed",
-        "Smart Feed canonical identity remained unchanged through Smart Share and reload",
-        "Smart Feed durable action matrix restored after reload",
-        "Smart Feed publication retrieval and unauthorized persistence blocking passed"
-      ]
+    "classification": "CURRENT_RECONCILED_SOURCE_AND_RUNTIME",
+    "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+    "observed_branch": "naya/live-project-intelligence-v1",
+    "canonical_hub": {
+      "path": "NAYANET/HUB/index.html",
+      "blob_sha": "225845955b9442995f38bb6e13642390b959b71b",
+      "runtime_embedded_source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
+      "source_runtime_sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847",
+      "parity": "VERIFIED"
     },
-    "authenticated_lifecycle": {
-      "status": "VERIFIED",
+    "runtime": {
+      "status": "OBSERVED",
       "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-      "run_id": 35519856070,
-      "observed_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
-      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
-      "source_paths": [
-        "assistant-runtime.js",
-        "NAYANET/HUB/index.html",
-        "NAYANET/HUB/src/main.tsx",
-        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx",
-        "NAYANET/HUB/src/data/pis.ts",
-        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
-        "identity.html",
-        "NayaNET/name-first-auth-adapter.js"
-      ],
-      "evidence": [
-        "authenticated name-first identity established in desktop and mobile runtime proof",
-        "canonical React Hub persistence and retrieval passed",
-        "Smart Feed canonical action matrix and reload restoration passed",
-        "Smart Share publication retrieval passed",
-        "unauthorized persistence was blocked with AUTH_REQUIRED"
-      ],
-      "fresh_context_retrieval": "VERIFIED",
-      "fresh_naya_continuation_action": "VERIFIED_BY_DEDICATED_COLD_NAYA_PROOF",
-      "receipt_id": null
+      "url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+      "http_status": 200,
+      "source_commit": "f7a5ad535403201d0d942319166c87affcc1d93d",
+      "sha256": "079264e6a5a4ed2cd15dd685f6612e5b31241c78575a78caa684ccede6153847"
     },
-    "controlled_paired_policy_experiment": {
-      "status": "VERIFIED_PROVEN",
-      "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
-      "run_id": 35472129371,
-      "observed_head": "1e379c1168957e88f05dee24523922210192b68f",
-      "result": "PROVEN",
-      "baseline_verified_value": 0,
-      "candidate_verified_value": 3,
-      "cases": 3,
-      "real_observed_outcomes": true,
-      "policy_identity_lineage": true,
-      "receipt_swap_rejected": true,
-      "revocation_denial_proven": true,
-      "learning_durable": true,
-      "learning_retrievable": true,
-      "cold_decision_influenced": true,
-      "future_behavior_changed": true,
-      "successor_policy_created": true,
-      "future_case": {
-        "baseline_verified_value": 0,
-        "candidate_verified_value": 1,
-        "result": "POLICY_IMPROVEMENT_PROVEN"
-      },
-      "artifact": "p1-controlled-paired-policy-receipt"
+    "control_plane_reconciliation": {
+      "status": "READY_FOR_PI_02",
+      "state_parent_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+      "blocks_next_action": "PI-02_RECONSTRUCTION",
+      "map_frontier": "PI-02_RECONSTRUCTION",
+      "proof_frontier": "PI-02_RECONSTRUCTION",
+      "coherent_next_action": true
     },
-    "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
-    "smart_feed_ledger_integration": {
-      "status": "VERIFIED",
-      "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/verify-smart-feed-ledger-integration.yml",
-      "run_id": 35460477460,
-      "observed_head": "c054fdf4f5867760bc9ab998e6986bc76c35efd8",
-      "production_event_id": "7904056a-7299-4732-8c7a-4f50b1705daf",
-      "ledger_event_id": "8797fc24-34c0-46c7-8c28-dda896f5abda",
-      "verification_state": "active",
-      "verification_confidence": 1,
-      "ledger_evidence_available": true,
-      "replay_identity_stable": true,
-      "privacy_isolated": true,
-      "interpretation": "Smart Feed presents authoritative Smart Ledger verification/evidence for a fresh production cognition event."
-    },
-    "proof7_compounding_loop": {
-      "status": "VERIFIED",
-      "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/verify-proof7-compounding-loop.yml",
-      "run_id": 35461270128,
-      "observed_head": "2aa4d498a547a0ec6f36fb4e1dc235ebf0fe3ecb",
-      "artifact": "nayanet-proof7-compounding-loop",
-      "artifact_id": 10589479660,
-      "proofs": [
-        "experience",
-        "memory",
-        "dream",
-        "learning",
-        "continuity",
-        "decision",
-        "outcome",
-        "authority_unchanged",
-        "new_learning",
-        "next_dream_context"
-      ],
-      "policy_improvement": "NOT_PROVEN"
-    },
-    "cognition_receipt_revision_repair": {
-      "status": "VERIFIED",
-      "claim_type": "RUNTIME",
-      "migration": "20260919183100_align_cognition_receipt_revision_with_receipt_namespace.sql",
-      "reason": "Proof 7 exposed receipt revision collision during learning apply; live function now serializes revision allocation and selects max(receipt revision)+1.",
-      "verification_run_id": 35461980944
-    },
-    "cognition_receipt_revision_concurrency": {
-      "status": "VERIFIED",
-      "claim_type": "RUNTIME",
-      "workflow": ".github/workflows/verify-cognition-receipt-concurrency.yml",
-      "run_id": 35461980944,
-      "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
-      "concurrent_writers": 8,
-      "unique_receipt_ids": 8,
-      "receipt_revisions": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8
-      ],
-      "db_receipts": 8,
-      "cognition_state_revision": 8,
-      "evidence": [
-        "eight concurrent authenticated production writers",
-        "unique receipt IDs",
-        "contiguous canonical receipt revisions",
-        "cognition-state revision 8"
-      ]
-    },
-    "wave_a_relationship_security_journey": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-wave-a-relationship-security-journey.yml",
-      "run_id": 35462235010,
-      "observed_head": "59a9e1cd8d169c88263284a8dbec07dec6781ff7",
-      "project": "NayaNET-waveA-relationship-1789843560708-c7be120b",
-      "proofs": [
-        "SMART_LIST_PRIVACY",
-        "NO_GRANT_DENIAL",
-        "EXPLICIT_AUTHORITY",
-        "SMART_MAIL_A_TO_B",
-        "RECEIVER_VERIFICATION",
-        "COGNITION_RECEIPT_LEDGER_LINEAGE",
-        "IDEMPOTENT_REPLAY",
-        "REVOCATION_DENIAL",
-        "C_ISOLATION",
-        "FRESH_NAYA_RETRIEVAL",
-        "FRESH_NAYA_CONTINUATION"
-      ],
-      "initial_message_id": "f7dcb2b5-30e4-4b64-a2ff-22ffbdbc8934",
-      "initial_receipt_id": "a1bc79cc-235c-4656-bd75-39ef762720dd",
-      "initial_cognition_event_id": "smart-mail-proof-0243233e98014306ae171f2c74280bb5",
-      "initial_ledger_event_id": "c0882ad3-4bef-4d89-b699-347504d0be42",
-      "continuation_message_id": "e1e2733e-de47-4d9c-b090-3b7dd8d33f7b"
-    },
-    "external_cold_naya": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35520018767,
-      "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
-      "deployed_source_head": "6e33cf3ba0dec513623178cca20d4f15aa333d58",
-      "source_paths": [
-        "assistant-runtime.js",
-        "NAYANET/HUB/src/data/pis.ts",
-        "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
-        "identity.html",
-        "NayaNET/name-first-auth-adapter.js",
-        "NAYANET/HUB/index.html",
-        "NAYANET/HUB/src/main.tsx",
-        "NAYANET/HUB/src/baseline/HubBaselineApp.tsx"
-      ],
-      "evidence": [
-        "fresh authenticated identity established against canonical Assistant runtime",
-        "Dream replay persisted and replayed idempotently",
-        "learning evidence persisted and learner state advanced",
-        "cold context reused verified learning for later decision with influenced=true",
-        "authority remained changed=false and granted=false",
-        "later decision event was persisted and retrieved with traceability"
-      ],
-      "reason": "Fresh current-head cold-Naya proof passed against the current deployed runtime source scope. The latest repository change only expands proof coverage and does not alter deployed runtime source."
-    },
-    "fresh_canonical_hub_smart_mail_transaction": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-      "run_id": 35470242000,
-      "observed_head": "df8fd926b210d56b6b79dcd9736ce5d5b87ace7e",
-      "evidence": [
-        "fresh sender and fresh receiver authenticated in canonical Hub",
-        "explicit smart_mail_send authority grant existed before send",
-        "Smart Mail CREATED with persisted thread/message/execution receipt",
-        "cognition event, durable Activity, and Smart Ledger lineage were independently recovered",
-        "receiver verification passed"
-      ],
-      "transaction_ids": {
-        "sender_user_id": "ae11bbab-90ab-401d-97fa-252707a038f4",
-        "receiver_user_id": "c18e6ce3-0b7f-40bd-b531-88f28031d8c5",
-        "authority_grant_id": "9ec53507-9d3e-4ef2-83ba-b53109c2a392",
-        "correlation_id": "91aa25f1-35fc-4afd-b943-6548b5e77ba9",
-        "thread_id": "0c48e554-9a2d-48bb-a910-b1fe8da7b3d4",
-        "message_id": "4479a587-f9c1-473d-b1aa-db4bb8b15e14",
-        "execution_receipt_id": "3579d4e5-3495-4d41-a30c-66b8af491268",
-        "cognition_event_id": "6873f3ad-51a3-4ae9-8b78-b32dbb22a844",
-        "activity_event_id": "SE-20260919212408-f24827a8-602",
-        "ledger_event_id": "696649c0-0913-4369-94e1-aecd6f9a47fe"
-      },
-      "reason": "The fresh Hub transaction is proven through governed execution and durable lineage. Learning capture is present; reuse and compounding require separate proof."
-    },
-    "p05_replay_idempotency": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/p0-5-replay-idempotency-proof.yml",
-      "run_id": 35470371926,
-      "observed_head": "7ea24c6b40d89191f850cce32be23bb6ddda0ffe",
-      "branch": "p0-5-replay-idempotency-proof",
-      "evidence": [
-        "canonical authenticated runtime entry passed",
-        "first Smart Mail attempt returned CREATED",
-        "second identical idempotency key returned REPLAY",
-        "message, thread, request, correlation, authority-grant and receipt identity remained stable",
-        "machine-generated P0.5 receipt artifact upload step passed"
-      ],
-      "result": "REPLAY_PROOF_VERIFIED"
-    },
-    "dream_learning_later_decision": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-dream-learning-decision.yml",
-      "run_id": 35470535019,
-      "observed_head": "16071081dd90dab568137b321dbc6fdbe776284c",
-      "evidence": [
-        "Dream replay simulated without authority or execution side effects",
-        "learning evidence persisted and learner state updated",
-        "later decision was USE_VERIFIED_LEARNING_CONTEXT with influenced=true",
-        "authority remained changed=false and granted=false",
-        "adversarial authority/action claims were denied without execution side effects"
-      ],
-      "result": "LEARNING_REUSE_VERIFIED"
-    },
-    "current_readiness": {
-      "status": "SMART_SHARE_GATE_CLOSED_SMART_MAIL_NEXT",
-      "run_id": 35520018724,
-      "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
-      "unknown_count": 0,
-      "failed_count": 0,
-      "reason": "Fresh Cloudflare and cold-Naya evidence recorded; rerun readiness gate against this exact proof."
-    },
-    "fresh_smart_mail_learning_bridge": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "recorded_in": "NAYA/ACTIVITY/2026/09/19.md",
-      "observed_head": "fb17b633934c0803833db76cb12f28171cbfbfb5",
-      "message_id": "e5133412-79aa-4740-97e3-52e8c9f3ffeb",
-      "execution_receipt_id": "dfda38b8-ef21-4e9b-9386-358134093d85",
-      "cognition_event_id": "smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342",
-      "ledger_event_id": "30156e7c-36a3-457a-bc4e-7aab332ac0cf",
-      "learning_evidence_id": "a0509374-cff6-4b59-aeb5-f17b68dda033",
-      "learner_state_version": 1,
-      "decision": "USE_VERIFIED_LEARNING_CONTEXT",
-      "influenced": true,
-      "authority_changed": false,
-      "authority_granted": false,
-      "continuation_message_id": "da96d9db-3c8b-46c9-baf4-cba8df10a6e0"
-    },
-    "wave_a_browser_acceptance": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "run_id": 35471038295,
-      "observed_head": "5d8f54450d60f4e882b042e6d7185a1823890dc3",
-      "evidence": [
-        "authenticated browser handoff",
-        "production shared Space",
-        "A/B membership",
-        "mutual Connections",
-        "Smart List",
-        "A→B Smart Mail",
-        "B receiver retrieval",
-        "execution receipt",
-        "cognition lineage",
-        "learning evidence",
-        "learning apply",
-        "cold learning reuse",
-        "authority unchanged",
-        "C isolation"
-      ],
-      "note": "Receipt artifact reports activity_event_id=null; durable Activity lineage is separately proven by Smart Mail backend Activity receipts. Public Welcome → Identity is not included in this acceptance and remains unproven."
-    },
-    "outcome_discrimination": {
-      "status": "NOT_PROVEN",
-      "claim_type": "RUNTIME",
-      "reason": "Current independent receiver-retrieval outcome contract produces verified value 1 and does not discriminate policy quality; no improvement claim is made.",
-      "next_action": "Close the final causal gap: define the smallest existing independently evidenced outcome contract that can discriminate held-out policy behavior without gaming the value model, then run the controlled comparison and require measurable learning-driven future behavior change. Keep improvement NOT_PROVEN until the evidence changes."
-    },
-    "p1_discriminating_compounding": {
-      "status": "PRODUCTION_PROVEN",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-p1-controlled-paired-policy-outcome.yml",
-      "run_id": 35472129371,
-      "observed_head": "1e379c1168957e88f05dee24523922210192b68f",
-      "evidence": {
-        "held_out_cases": 3,
-        "aggregate_baseline_value": 0,
-        "aggregate_candidate_value": 3,
-        "comparison_result": "PROVEN",
-        "future_case_id": "future-35472129371-F1",
-        "future_baseline_value": 0,
-        "future_candidate_value": 1,
-        "future_result": "POLICY_IMPROVEMENT_PROVEN",
-        "learning_reused": true,
-        "learning_influenced": true,
-        "future_behavior_changed": true,
-        "authority_changed": false,
-        "adversarial_receipt_swap_rejected": true,
-        "revocation_denial_proven": true,
-        "controlled_receiver_response_contract": "NAYANET_REAL_OUTCOME_VALUE_V2"
-      },
-      "caveat": "This is a controlled causal proof using deterministic held-out receiver-response fixtures; it proves the engine can measure and compound a verified behavioral difference, not universal real-world model quality."
-    },
-    "public_welcome": {
-      "status": "BLOCKED",
-      "claim_type": "RUNTIME",
-      "runtime_url": "https://welcome.nayanet.app/",
-      "embedded_runtime": "https://shiny-wave-dd48.nayanet.workers.dev/",
-      "identity_target": "https://academy.nayanet.app/",
-      "canonical_assistant_runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "reason": "Live public identity page currently routes activation to legacy Academy/Groove surface; no repository-controlled canonical deployment authority for welcome.nayanet.app was found.",
-      "next_action": "Prove and close the public Welcome → Identity → canonical Assistant Hub handoff; use the live welcome.nayanet.app flow, and do not declare completion while it lands on the legacy Academy/Groove surface instead of the canonical Hub."
-    },
-    "authority_constraints": {
-      "status": "IMPLEMENTED",
-      "claim_type": "RUNTIME",
-      "migration": "20260919005000_harden_smart_mail_authority_constraints_v1.sql",
-      "smart_mail_policy_positive_regression_run": 35472382460,
-      "smart_mail_wavea_regression_run": 35472383857,
-      "negative_live_probe": "NOT_PROVEN_DUE_TOOL_SAFETY_BLOCK",
-      "next_action": "Add/execute a canonical repository-level negative test proving no_external_side_effects blocks before message/receipt side effects."
-    },
-    "human_capture_smart_note": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-human-smart-note-capture.yml",
-      "run_id": 35527638171,
-      "observed_head": "d796584ed796d9c97a74f844742be55b5261afbb",
-      "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
-      "event_id": "e27faa0c-df86-4f32-bb34-62b283c7548f",
-      "transaction_id": "3d3e97ef-5009-46ba-98ea-7e2abeba2596",
-      "checks": [
-        "human_capture_control",
-        "canonical_receiver",
-        "same_event_identity",
-        "smart_feed_render",
-        "reload_identity"
-      ],
-      "persistence": {
-        "cognition_row_id": "627dd24e-48e0-4317-b9df-c5e03c1c64b7",
-        "index_row_id": "7595c62b-2a00-43c4-bdb5-13666397edef"
-      }
-    },
-    "hub_release_35527973956": {
-      "status": "PRODUCTION_PROVEN",
-      "claim_type": "PRODUCTION",
-      "run_id": 35527973956,
-      "deployed_source_head": "4697d5e039b6bfbde2104c757cf37e1f2221b90c",
-      "cloudflare_version_id": "ba817d73-73b1-4307-845a-15f210314103",
-      "parity_sha256": "8b8e94799ea323d98fb3772a12da394f849d06e2d1f795a88200c790385c744e",
-      "evidence": [
-        "deployment success",
-        "exact source parity",
-        "desktop baseline",
-        "mobile baseline",
-        "final Assistant-lane runtime proof"
-      ]
-    },
-    "human_capture_smart_note_35528080864": {
-      "status": "VERIFIED",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-human-smart-note-capture.yml",
-      "run_id": 35528080864,
-      "observed_head": "4dadcdb01ad6c37ac841e3a2591391d1ba6238da",
-      "event_id": "1bdfee48-f79c-4b87-8d5f-53e345904cf7",
-      "transaction_id": "2ceacbbe-05b1-469a-a786-e7e33109435f",
-      "checks": [
-        "human_capture_control",
-        "canonical_receiver",
-        "same_event_identity",
-        "PIS_index_mapping",
-        "smart_feed_render",
-        "reload_identity"
-      ]
-    },
-    "smart_share_governed_action": {
-      "status": "PRODUCTION_PROVEN",
-      "claim_type": "WHOLE_JOURNEY",
-      "workflow": ".github/workflows/verify-smart-share-canonical.yml",
-      "run_id": 35553013422,
-      "job_id": 106191167880,
-      "observed_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
-      "runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
-      "publication_id": "31332623-12a3-4f28-9660-495b5cda9e6d",
-      "source_event_id": "assistant_mualtlmq",
-      "source_receipt_id": "44a86bf7-04be-401c-9a83-e26e022ceecd",
-      "publication_receipt_event_id": "smart-share-31332623-12a3-4f28-9660-495b5cda9e6d",
-      "authority_grant_id": "45394220-437f-41e6-867c-84fd225f2609",
-      "artifact_id": 10618664793,
-      "artifact_digest": "sha256:d9643012703e7246667a8cb78df6ed335602776c15f8a3ff988612f09f2990a6",
-      "checks": [
-        "01_canonical_hub:PASS",
-        "02_authenticated_human:PASS",
-        "03_owned_intelligence:PASS",
-        "04_smart_share_visible:PASS",
-        "05_correct_button_binding:PASS",
-        "06_real_click:PASS",
-        "07_source_ownership:PASS",
-        "08_authority_issuance:PASS",
-        "09_authority_validation:PASS",
-        "10_publication:PASS",
-        "11_publication_persistence:PASS",
-        "12_explicit_consent:PASS",
-        "13_publication_receipt:PASS",
-        "14_collective_retrieval:PASS",
-        "15_receiver_retrieval:PASS",
-        "16_private_source_isolation:PASS",
-        "17_third_party_privacy:PASS",
-        "18_replay_publication_identity:PASS",
-        "19_replay_receipt_identity:PASS",
-        "20_hard_reload_retrieval:PASS",
-        "21_revocation:PASS",
-        "22_revoked_retrieval_denied:PASS",
-        "23_expiry_denied:PASS",
-        "24_unauthorized_issuer_denied:PASS",
-        "25_evidence_receipt:PASS",
-        "26_clean_browser_shutdown:PASS",
-        "27_artifact_upload:PASS"
-      ],
-      "repairs": [
-        {
-          "commit": "060099d0a4aec30e248d73b1fc64b4f130535285",
-          "boundary": "authority mutation",
-          "cause": "issuer-ownership hardening removed SECURITY DEFINER from the governed grant RPC while authenticated clients remain denied direct INSERT",
-          "repair": "restored SECURITY DEFINER while retaining issuer-owned source-event enforcement"
-        },
-        {
-          "commit": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
-          "boundary": "expiry proof fixture",
-          "cause": "expiry test reused a source_event_id already consumed by the canonical unique issuer/source constraint",
-          "repair": "created a separate owned expiry authorization event; no production authority semantics changed"
-        }
-      ],
-      "evidence_links": {
-        "workflow": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35553013422",
-        "artifact": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35553013422/artifacts/10618664793"
-      },
-      "interpretation": "Smart Share is fully production-proven against the canonical Hub/runtime. The gate can now advance to Smart Mail."
-    }
+    "pi01": "VERIFIED_AT_CHECKPOINT_B830F9E2",
+    "pi02": "PROVING_NOW"
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
   "fresh_validation_required": true,
@@ -811,5 +355,22 @@
       "Smart Feed action persistence/reload/retrieval and unauthorized persistence block verified"
     ],
     "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
-  }
+  },
+  "single_current_frontier": {
+    "id": "PI-02_RECONSTRUCTION",
+    "status": "PROVING_NOW",
+    "source_checkpoint": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+    "next_action": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required project-intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
+    "evidence_required": [
+      "14-question reconstruction",
+      "required Project Intelligence field reconstruction",
+      "truth classifications",
+      "claim-to-evidence mapping",
+      "exact source checkpoint",
+      "PI-02 receipt"
+    ],
+    "stop_condition": "Any required field cannot be reconstructed from canonical durable evidence without inventing certainty, or any source-authority conflict remains unresolved.",
+    "recovery": "STOP → capture exact boundary → classify → repair smallest causal boundary → rerun PI-02 with new information."
+  },
+  "recorded_at_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb"
 }

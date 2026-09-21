@@ -2,45 +2,49 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "CANONICAL-HUB-FUNCTIONALIZATION",
+    "id": "NAYANET-PI-02-RECONSTRUCTION",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Make the existing canonical NAYANET/HUB/index.html human-facing Hub functional by connecting its existing controls to the verified governed Naya engine without redesigning the Hub or reopening the proven Smart Note/PIS compounding path.",
+    "intent": "Prove that a genuinely cold Naya can reconstruct the complete operational Project Intelligence of NayaNET from canonical durable evidence without conversation archaeology, then leave a reproducible receipt for the next Naya.",
     "protected": [
-      "existing production Space",
-      "existing Connections and Smart List substrate",
-      "explicit authority boundary",
-      "Smart Mail receipt/cognition/Ledger lineage",
-      "fail-closed security",
-      "browser acceptance may proceed because engine/security closure is proven"
+      "Project NayaNET = Project Intelligence identity",
+      "canonical source hierarchy",
+      "14-question cold-Naya standing contract",
+      "master proof Contract 24",
+      "truth classification and evidence linkage",
+      "live HEAD resolution at execution time",
+      "one responsible next action",
+      "no fabricated certainty"
     ],
     "acceptance": [
-      "NAYANET/HUB/index.html is the sole current Hub product surface",
-      "Smart Share governed action is traced from human control to runtime, authority, isolation, revocation/expiry, replay/idempotency, receipt, persistence, and rendered outcome",
-      "Smart Share is production-proven and its first causal failures were repaired surgically and re-proven; remaining feature gates continue in the locked order.",
-      "Smart Mail follows next, then Connections, Smart Spaces, and Smart Lists.",
-      "existing Smart Note → canonical event → PIS/Smart Feed compounding proof remains protected unless an independent regression is demonstrated"
+      "Resolve live canonical branch identity before reconstruction",
+      "Reconstruct WHO / WHAT / WHY / SUCCESS / TRUTH NOW / PROVEN / UNKNOWN / AUTHORITY / HISTORY / LEARNING / NEXT / PROOF / RECORD / SUCCESSOR",
+      "Reconstruct required Project Intelligence fields: identity, purpose, desired outcome, requirements, constraints, architecture, decisions, dependencies, context, memory, knowledge, relationships, evidence, current state, capabilities, authority, agency, execution history, verification, learning, open loops, risks, definition of done, next action, proof required, successor handoff",
+      "Classify each reconstructed claim PROVEN / DOCUMENTED / UNKNOWN / CONFLICTED / BLOCKED",
+      "Map consequential claims to canonical evidence and preserve uncertainty",
+      "Produce a PI-02 receipt bound to the exact source checkpoint and evidence set",
+      "Do not claim PI-03 or downstream PI pass merely because reconstruction succeeds"
     ],
     "evidence": [
-      ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
-      ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
-      ".naya/receipts/2026-09-20-HUMAN-END-TO-END-COMPOUNDING-ACCEPTANCE.md",
-      ".naya/receipts/2026-09-20-DREAM-APPLY-VERIFY-COLD-COMPOUNDING.md"
+      ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
+      ".naya/project-intelligence/33-NAYANET-COLD-NAYA-14-QUESTION-RECONSTRUCTION-AND-TORCH-SMART-NOTE-2026-09-21.md",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/PROOF.json",
+      ".naya/INTELLIGENCE-FEED.md"
     ],
-    "target_state": "CANONICAL_HUB_FUNCTIONAL_AND_BROWSER_PROVEN",
-    "next_action": "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof.",
+    "target_state": "PI-02_RECONSTRUCTION_PROVEN",
+    "next_action": "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required Project Intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt. Stop at the first deterministic failure.",
     "next_actions": [
-      "Execute the Smart Mail human lifecycle on the canonical Hub: compose/send → receiver retrieval → persistence → reload → verification → evidence → authorization/privacy replay checks; stop at the first actual failure, repair only that boundary, and rerun the smallest relevant proof."
+      "Execute PI-02 reconstruction from canonical durable sources only: independently reconstruct the 14-question model plus required Project Intelligence fields, classify truth states, map each claim to evidence, and produce the PI-02 receipt."
     ],
     "scope": [
-      "canonical NAYANET/HUB/index.html",
-      "Smart Share",
-      "Smart Mail",
-      "Connections",
-      "Smart Spaces",
-      "Smart Lists",
-      "governed action execution",
-      "browser/runtime proof"
+      ".naya/project-intelligence/",
+      ".naya/control-plane/",
+      ".naya/INTELLIGENCE-FEED.md",
+      "SUPERBRAIN/",
+      "canonical runtime evidence"
     ],
     "next_action_count": 1
   },
