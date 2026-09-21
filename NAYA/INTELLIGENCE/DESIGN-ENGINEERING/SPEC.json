@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://project-intelligence/design-engineering/spec-v1",
+  "title": "Naya Design + Engineering Intelligence Specification",
+  "version": "1.0",
+  "status": "canonical",
+  "purpose": "Machine-readable contract for designing, implementing, reviewing, verifying, and improving NayaPOWER and NayaNET experiences.",
+  "north_star": "Maximum useful quality per unit of necessary complexity.",
+  "system_model": [
+    "human_intent",
+    "experience_design",
+    "interaction",
+    "state",
+    "code",
+    "engine",
+    "runtime",
+    "evidence",
+    "verification",
+    "learning",
+    "compounding_intelligence"
+  ],
+  "authority": {
+    "principle": "capability_does_not_create_authority",
+    "source_of_truth_order": [
+      "external_hard_constraints",
+      "explicit_current_human_authority",
+      "constitutional_governance",
+      "current_repository_and_runtime_evidence",
+      "this_standard",
+      "product_specific_contracts",
+      "current_mission",
+      "historical_intelligence",
+      "assumptions"
+    ]
+  },
+  "quality": {
+    "target": "AAA",
+    "service_target": "10-star",
+    "definition": "maximum useful quality per unit of necessary complexity",
+    "engineering_priority": [
+      "human_outcome",
+      "requirements",
+      "correctness",
+      "architecture",
+      "security",
+      "reliability",
+      "maintainability",
+      "performance",
+      "usability_accessibility",
+      "clarity",
+      "elegance",
+      "polish"
+    ],
+    "design_priority": [
+      "human_intent",
+      "clarity",
+      "hierarchy",
+      "interaction",
+      "feedback",
+      "consequence",
+      "accessibility",
+      "performance",
+      "emotional_quality",
+      "polish"
+    ]
+  },
+  "design_language": {
+    "identity": "living digital industrial design",
+    "prime_law": "depth -> light -> state -> response -> consequence",
+    "object_dimensions": [
+      "material",
+      "form",
+      "depth",
+      "light",
+      "color",
+      "state",
+      "motion",
+      "touch",
+      "clarity",
+      "consequence",
+      "memory"
+    ],
+    "material_stack": [
+      "base",
+      "inner_surface",
+      "edge",
+      "highlight",
+      "shadow",
+      "atmosphere"
+    ],
+    "depth_levels": {
+      "0": "background",
+      "1": "environment",
+      "2": "surface",
+      "3": "interactive_object",
+      "4": "intelligence_focal_point",
+      "5": "active_consequence"
+    },
+    "light_layers": [
+      "edge",
+      "semantic",
+      "atmospheric"
+    ],
+    "color_semantics": {
+      "obsidian": "foundation_depth",
+      "white": "clarity_neutral",
+      "silver": "precision_control",
+      "green": "healthy_go_growth",
+      "purple": "naya_intelligence_transformation",
+      "magenta": "creation_energy_accent",
+      "cyan": "connection_flow",
+      "blue": "knowledge_trust",
+      "red": "danger_destructive_state"
+    },
+    "color_rule": "color_must_not_be_the_only_carrier_of_important_meaning"
+  },
+  "interaction": {
+    "minimum_state_machine": [
+      "rest",
+      "hover",
+      "focus",
+      "press",
+      "processing",
+      "success",
+      "failure"
+    ],
+    "extended_states": [
+      "disabled",
+      "authorized",
+      "unauthorized",
+      "queued",
+      "blocked",
+      "retryable",
+      "partial",
+      "complete"
+    ],
+    "fundamental_transition": "intent -> response -> transformation",
+    "truth_rule": "ui_must_never_claim_engine_success_without_engine_success"
+  },
+  "component_contract": {
+    "required": [
+      "purpose",
+      "semantic_role",
+      "states",
+      "interaction",
+      "accessibility",
+      "responsive_behavior",
+      "failure_behavior",
+      "engine_binding",
+      "verification"
+    ],
+    "completion_questions": [
+      "does_it_have_intentional_material",
+      "does_depth_communicate_hierarchy",
+      "does_light_communicate_meaning",
+      "does_color_communicate_state",
+      "are_states_explicit",
+      "is_response_immediate",
+      "does_press_feel_physical",
+      "is_purpose_obvious",
+      "is_there_a_visible_consequence",
+      "is_meaningful_state_preserved",
+      "is_accessible",
+      "is_responsive",
+      "does_it_reflect_real_engine_state",
+      "can_failure_recover",
+      "can_important_behavior_be_proven"
+    ]
+  },
+  "button": {
+    "type": "power_object",
+    "rest": ["dimensional_core", "restrained_edge", "semantic_light", "depth"],
+    "hover": ["controlled_lift", "edge_response", "semantic_response", "shadow_change"],
+    "focus": ["visible_keyboard_focus", "preserved_geometry"],
+    "press": ["physical_compression", "shadow_collapse", "immediate_feedback"],
+    "processing": ["honest_busy_state", "duplicate_guard_when_required"],
+    "success": ["engine_backed_consequence", "truthful_persistence"],
+    "failure": ["local_explanation", "input_preservation", "recovery_path", "truthful_state"]
+  },
+  "responsive": {
+    "principle": "adapt_the_experience_not_merely_the_width",
+    "desktop": "spatial_atmospheric",
+    "tablet_laptop": "compressed_hierarchy",
+    "mobile": "touch_first_recomposed_legible"
+  },
+  "accessibility": {
+    "required": [
+      "semantic_structure",
+      "keyboard_operation",
+      "visible_focus",
+      "screen_reader_meaning",
+      "readable_contrast",
+      "touch_usability",
+      "reduced_motion",
+      "meaningful_labels",
+      "non_color_state_communication",
+      "recoverable_errors"
+    ]
+  },
+  "engineering": {
+    "laws": [
+      "source_of_truth",
+      "preserve_what_works",
+      "smallest_coherent_change",
+      "architecture_first",
+      "single_source",
+      "explicit_data_contracts",
+      "least_privilege",
+      "no_hard_coded_secrets",
+      "intentional_failure",
+      "explicit_state",
+      "async_safety",
+      "concurrency_safety",
+      "dependency_minimization",
+      "readability",
+      "meaningful_tests",
+      "measure_before_micro_optimization",
+      "ai_generated_code_is_untrusted_until_verified"
+    ],
+    "failure_protocol": [
+      "observe",
+      "localize",
+      "explain",
+      "root_cause",
+      "repair",
+      "test",
+      "reverify",
+      "prevent_recurrence"
+    ]
+  },
+  "verification": {
+    "status_order": [
+      "unknown",
+      "documented",
+      "implemented",
+      "locally_tested",
+      "remotely_observed",
+      "live_verified"
+    ],
+    "execution_chain": [
+      "requested",
+      "attempted",
+      "executed",
+      "observed",
+      "verified"
+    ],
+    "runtime_chain": [
+      "source",
+      "build_artifact",
+      "deployment",
+      "exact_runtime",
+      "independent_observation",
+      "verification"
+    ],
+    "forbidden_inference": [
+      "commit_exists_implies_runtime_verified",
+      "build_passes_implies_product_verified",
+      "ui_success_implies_engine_success",
+      "document_exists_implies_capability_exists"
+    ]
+  },
+  "human_service": {
+    "principles": [
+      "understand",
+      "anticipate",
+      "act",
+      "verify",
+      "improve"
+    ],
+    "minimum_question_rule": "ask_only_when_answer_materially_changes_safe_or_correct_outcome",
+    "blocked_action_rule": "blocked -> reason -> alternatives -> next_action",
+    "agency_rule": "human_remains_decision_maker_within_authority"
+  },
+  "privacy": {
+    "rule": "private_by_default_shared_by_choice collective_by_consent public_by_decision"
+  },
+  "nayanet": {
+    "engine": "NayaPOWER",
+    "human_surface": "Intelligent Hub",
+    "architecture_rule": "hub_is_projection_and_action_surface_not_source_of_truth",
+    "smart_feed_rule": "canonical_event -> projection -> human_view",
+    "intelligence_today": "human_facing_intelligence_diary",
+    "diary_principle": "your_intelligence_is_your_diary"
+  },
+  "verification_object": {
+    "required_fields": [
+      "execution_id",
+      "requested_action",
+      "authority",
+      "source",
+      "build_or_commit",
+      "timestamp",
+      "result",
+      "observed_state",
+      "verification_state",
+      "limitations",
+      "next_state"
+    ],
+    "unknown_policy": "unknown_must_remain_unknown_until_evidenced"
+  },
+  "maintenance": {
+    "rule": "reconcile_before_adding_new_standard",
+    "canonical_files": [
+      "README.md",
+      "CONSTITUTION.md",
+      "SPEC.json",
+      "PLAYBOOK.md"
+    ]
+  }
+}
