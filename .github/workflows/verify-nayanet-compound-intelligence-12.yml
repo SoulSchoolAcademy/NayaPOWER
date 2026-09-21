@@ -146,25 +146,14 @@ jobs:
               });
               if(!successor.successor?.event_id) throw new Error('SUCCESSOR_EVENT_MISSING');
 
-              const share=await call(page,session,'share',{source_event_id:understanding.receipt?.id||null});
-              if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') {
-                // The source contract is UUID-backed; retry with the canonical cognition row id resolved below.
-                const row=await page.evaluate(async({supabaseUrl,supabaseKey,token,eventId})=>{
-                  const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-                  const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
-                  return await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();
-                },{supabaseUrl,supabaseKey,token:session.access_token,eventId});
-                if(row.error||!row.data?.id) throw new Error('SOURCE_ROW_LOOKUP_FAILED:'+JSON.stringify(row));
-                const share2=await call(page,session,'share',{source_event_id:row.data.id});
-                if(share2.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share2));
-              }
-
               const sourceRow=await page.evaluate(async({supabaseUrl,supabaseKey,token,eventId})=>{
                 const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
                 const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
                 return await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();
               },{supabaseUrl,supabaseKey,token:session.access_token,eventId});
               if(sourceRow.error||!sourceRow.data?.id) throw new Error('CANONICAL_EVENT_ROW_NOT_FOUND');
+              const share=await call(page,session,'share',{source_event_id:sourceRow.data.id});
+              if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share));
 
               const supersede=await call(page,session,'supersede',{
                 superseded_event_id:sourceRow.data.id,
