@@ -17,15 +17,15 @@ A human or cold Naya should immediately understand what is being built, why it e
 2. [01 — Creator Constitution](01-CREATOR-CONSTITUTION.md)
 3. [02 — Product Definition](02-PRODUCT-DEFINITION-AND-BOUNDARIES.md)
 4. [03 — 100 Questions + Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)
-5. [04 — Library + Intelligence Organization](04-LIBRARY-AND-INTELLIGENCE-ORGANIZATION.md)
+5. [20 — Constitution + Architecture Specification](20-PROJECT-INTELLIGENCE-CONSTITUTION-AND-ARCHITECTURE-SPEC.md)
 
 ### 🛠️ BUILDER PATH
 
-**05 Requirements → 06 Architecture → 07 Intelligence/Memory → 08 Governance → 09 Execution/Learning → 10 Interoperability → 11 Design/Build → 19 Executable Build Contract**
+**05 Requirements → 06 Architecture → 07 Intelligence/Memory → 08 Governance → 09 Execution/Learning → 10 Interoperability → 11 Design/Build → 20 Constitution/Architecture → 19 Executable Build**
 
 ### 🔬 PROOF PATH
 
-**12 Current State → 13 PI Roadmap → 14 Cold-Naya Acceptance → 15 Successor → 16 Decisions → 17 Source Route → 18 Machine Contract → 19 Executable Build Contract**
+**12 Current State → 13 PI Roadmap → 14 Cold-Naya Acceptance → 15 Successor → 16 Decisions → 17 Source Route → 18 Machine Contract → 19 Executable Build Contract → 20 Constitutional acceptance target**
 
 ## WHAT I AM BUILDING
 
@@ -49,7 +49,7 @@ Naya should understand the outcome, determine what success requires, gather and 
 
 The human becomes more capable, not more dependent.
 
-## FIVE UNIVERSAL QUESTIONS
+## SIX UNIVERSAL QUESTIONS
 
 | Question | Meaning |
 |---|---|
@@ -58,8 +58,9 @@ The human becomes more capable, not more dependent.
 | WHY? | purpose, intent, goals, decisions |
 | MAY? | authority, permission, consent, constraints |
 | DID? | action, result, evidence, verification, learning |
+| WHAT NEXT? | continuity and current execution frontier |
 
-**UNDERSTAND → DECIDE → ACT → VERIFY → LEARN → CONTINUE**
+**RESTORE → UNDERSTAND → RETRIEVE → RECONCILE → ACT → VERIFY → LEARN → CONTINUE**
 
 ## THE PROOF
 
@@ -73,6 +74,7 @@ A folder full of documentation is not enough.
 - [NayaPOWER One-Shot](../../NAYAPOWER-ONE-SHOT.md)
 - [Intelligence Operating Model](../../SUPERBRAIN/NAYA-POWER-INTELLIGENCE-OPERATING-MODEL.md)
 - [Canonical Source Map](../../SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md)
+- [Project Intelligence Constitution + Architecture](20-PROJECT-INTELLIGENCE-CONSTITUTION-AND-ARCHITECTURE-SPEC.md)
 - [Control Plane MAP](../control-plane/MAP.json)
 - [Control Plane STATE](../control-plane/STATE.json)
 - [Control Plane BLOCKS](../control-plane/BLOCKS.json)
