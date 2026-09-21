@@ -69,6 +69,7 @@ async function bindCanonicalHubSmartShare(){
       window.dispatchEvent(new CustomEvent('nayanet:smart-share-failed',{detail:{error:String(err?.message||err),title}}));
     }
   };
+  const NativeMutationObserver=window.__nayaNativeMutationObserver||window.MutationObserver;
   const bind=button=>{
     if(!button||button.dataset.nayaSmartShareBound==='1')return;
     button.dataset.nayaSmartShareBound='1';
@@ -76,8 +77,8 @@ async function bindCanonicalHubSmartShare(){
   };
   const scan=()=>document.querySelectorAll('[data-c4-kind="share-intel"]').forEach(bind);
   scan();
-  if(document.body&&!window.__nayaCanonicalHubSmartShareObserver){
-    window.__nayaCanonicalHubSmartShareObserver=new MutationObserver(scan);
+  if(document.body&&!window.__nayaCanonicalHubSmartShareObserver&&NativeMutationObserver){
+    window.__nayaCanonicalHubSmartShareObserver=new NativeMutationObserver(scan);
     window.__nayaCanonicalHubSmartShareObserver.observe(document.body,{subtree:true,childList:true});
   }
 }
