@@ -1,4 +1,5 @@
 name: NayaNET canonical Smart Share governed proof
+# PROOF-TRIGGER: rerun after canonical Hub source/runtime parity redeploy
 
 on:
   push:
