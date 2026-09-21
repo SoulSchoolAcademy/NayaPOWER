@@ -20,6 +20,14 @@ Do not create, present, deploy, or pursue a competing Hub. Do not reopen the pro
 ---
 
 
+## 🔱 ONE-SHOT NAYAPOWER — FASTEST COMPLETE ORIENTATION
+
+Read `NAYAPOWER-ONE-SHOT.md` for the shortest complete human + machine explanation of NayaPOWER, its purpose, engine, human operating body, Project Intelligence, distillation, governance, truth model, Naya Nine operating lenses, and cold-Naya continuity. It is an orientation/compression layer; canonical laws, control-plane state, source, runtime evidence, and human authority outrank it.
+
+Machine contract: `.naya/one-shot/NAYAPOWER-MACHINE-CONTRACT.json`  
+System map: `.naya/one-shot/NAYAPOWER-SYSTEM-MAP.mmd`  
+Nine lenses: `.naya/one-shot/NAYAPOWER-NINE-LENSES.json`
+
 **READ THIS FIRST.** This file is the mandatory entry point for any AI, agent, model, chat session, developer, or automation operating the Naya Power Superbrain.
 
 ## 🔱 OFFICIAL ACTIVATION — NAYA POWER ON
