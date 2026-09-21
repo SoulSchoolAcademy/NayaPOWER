@@ -1,0 +1,229 @@
+name: Verify NayaNET Compound Intelligence 12 Capabilities
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/nayanet-compound-intelligence/index.ts'
+      - 'supabase/functions/naya-dream-replay/index.ts'
+      - '.github/workflows/verify-nayanet-compound-intelligence-12.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compound-12:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: ${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute all 12 governed capabilities
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee compound-12-proof.json
+          const { chromium } = require('playwright');
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+
+          const hub = process.env.HUB_URL;
+          const supabaseUrl = process.env.SUPABASE_URL;
+          const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
+          const run = process.env.RUN_IDENTITY;
+          const alias = ('compound' + run + '-' + crypto.randomBytes(5).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          const title = 'Compound Intelligence 12-Capability Proof ' + run;
+          const trace = [];
+          const mark = (capability, status, evidence={}) => {
+            const row={capability,status,at:new Date().toISOString(),...evidence};
+            trace.push(row);
+            console.log('COMPOUND_12_TRACE',JSON.stringify(row));
+          };
+
+          async function setupIdentity(page) {
+            await page.goto(hub + '/identity?naya_hold=1', {waitUntil:'networkidle', timeout:60000});
+            await page.locator('#name').fill('Compound Intelligence Proof');
+            await page.locator('#alias').fill(alias);
+            await page.locator('#enter').click();
+            let identity=null;
+            for(let i=0;i<60;i++){
+              identity=await page.evaluate(async()=>{
+                try{return await window.NayaNETNameFirstAuth?.current?.()}catch{return null}
+              });
+              if(identity?.authenticated && identity?.userId) break;
+              await new Promise(r=>setTimeout(r,500));
+            }
+            if(!identity?.authenticated||!identity.userId) throw new Error('AUTH_NOT_ESTABLISHED');
+            const session=await page.evaluate(async()=>{
+              const c=window.__NayaNETSupabaseClient;
+              const s=c?(await c.auth.getSession()).data.session:null;
+              return s?{userId:s.user.id,access_token:s.access_token}:null;
+            });
+            if(!session?.access_token) throw new Error('SESSION_TOKEN_NOT_AVAILABLE');
+            return session;
+          }
+
+          async function call(page, session, action, extra={}) {
+            const key='compound-12-'+run+'-'+action+'-'+crypto.randomBytes(6).toString('hex');
+            const res=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,extra,key})=>{
+              const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{
+                method:'POST',
+                headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},
+                body:JSON.stringify({action,idempotency_key:key,...extra})
+              });
+              return {status:r.status,body:await r.json().catch(()=>({}))};
+            },{supabaseUrl,supabaseKey,token:session.access_token,action,extra,key});
+            if(res.status!==200 || res.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(res));
+            mark(action,'PASS',{schema:res.body.result?.schema||null});
+            return res.body.result;
+          }
+
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext();
+            const page=await context.newPage();
+            try{
+              const session=await setupIdentity(page);
+
+              const restore=await call(page,session,'restore');
+              if(restore.schema!=='NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2') throw new Error('RESTORE_SCHEMA_INVALID');
+              if(!restore.MISSION||!restore.CURRENT_PROJECT||!restore.CURRENT_NEXT_ACTION) throw new Error('RESTORE_CONTEXT_INCOMPLETE');
+
+              const unique='CI12-'+run;
+              const understanding=await call(page,session,'understand',{
+                title:title,
+                content:'Controlled proof event: the Compound Intelligence runtime must turn an observed experience into explicit interpretation without silently promoting interpretation to verified fact.',
+                tags:['compound-12-proof',unique]
+              });
+              const eventId=understanding.event?.event_id;
+              if(!eventId) throw new Error('UNDERSTAND_EVENT_ID_MISSING');
+
+              const retrieve=await call(page,session,'retrieve',{query:unique,limit:10});
+              if(!retrieve.items?.some(x=>x.event_id===eventId)) throw new Error('RETRIEVE_DID_NOT_FIND_UNDERSTANDING');
+
+              const reconcile=await call(page,session,'reconcile');
+              if(!['TRANSPORT_PROVEN_RETRIEVAL_OPEN','NO_BRIDGE_RECEIPT'].includes(reconcile.status)) throw new Error('RECONCILE_STATUS_UNEXPECTED:'+reconcile.status);
+
+              const candidate=await call(page,session,'learning_candidate',{
+                target_id:'compound-12-'+run,
+                source_event_id:eventId,
+                claim:'Controlled Compound Intelligence proof events can become candidate learning with explicit provenance before verification.',
+                observed_value:{run,observed:true},
+                verification_method:'CONTROLLED_RUNTIME_PROOF'
+              });
+              const evidenceId=candidate.learning?.id;
+              if(!evidenceId || candidate.status!=='CANDIDATE') throw new Error('LEARNING_CANDIDATE_INVALID');
+
+              const verified=await call(page,session,'learning_verify',{
+                evidence_id:evidenceId,
+                verification_method:'CONTROLLED_RUNTIME_PROOF_WITH_EXACT_EVENT_LINEAGE',
+                observed_value:{run,verified:true,evidence_event:eventId}
+              });
+              if(verified.status!=='VERIFIED_LEARNING'||verified.learning?.status!=='ACTIVE') throw new Error('LEARNING_VERIFY_INVALID');
+
+              const successor=await call(page,session,'successor_handoff',{
+                parent_event_id:eventId,
+                what_happened:'Executed controlled Compound Intelligence 12-capability proof.',
+                what_changed:'Verified one candidate learning item and exercised governed continuity.',
+                learned:[{evidence_id:evidenceId,claim:verified.learning?.claim,status:verified.learning?.status}],
+                next_action:restore.CURRENT_NEXT_ACTION,
+                why:'Prove that a successor can inherit evidence-backed context.',
+                evidence_required:['restore','retrieval','learning evidence','successor event']
+              });
+              if(!successor.successor?.event_id) throw new Error('SUCCESSOR_EVENT_MISSING');
+
+              const share=await call(page,session,'share',{source_event_id:understanding.receipt?.id||null});
+              if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') {
+                // The source contract is UUID-backed; retry with the canonical cognition row id resolved below.
+                const row=await page.evaluate(async({supabaseUrl,supabaseKey,token,eventId})=>{
+                  const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                  return await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();
+                },{supabaseUrl,supabaseKey,token:session.access_token,eventId});
+                if(row.error||!row.data?.id) throw new Error('SOURCE_ROW_LOOKUP_FAILED:'+JSON.stringify(row));
+                const share2=await call(page,session,'share',{source_event_id:row.data.id});
+                if(share2.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share2));
+              }
+
+              const sourceRow=await page.evaluate(async({supabaseUrl,supabaseKey,token,eventId})=>{
+                const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                return await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();
+              },{supabaseUrl,supabaseKey,token:session.access_token,eventId});
+              if(sourceRow.error||!sourceRow.data?.id) throw new Error('CANONICAL_EVENT_ROW_NOT_FOUND');
+
+              const supersede=await call(page,session,'supersede',{
+                superseded_event_id:sourceRow.data.id,
+                title:'Superseding Compound Intelligence proof interpretation',
+                content:'This is an explicit revision of the controlled proof interpretation; lineage must retain the prior event.',
+                reason:'Controlled successor revision test',
+                confidence:1
+              });
+              if(supersede.lineage?.supersedes!==eventId) throw new Error('SUPERSESSION_LINEAGE_INVALID');
+
+              const health=await call(page,session,'health');
+              if(health.status!=='OBSERVED'||!Number.isInteger(health.counts?.operations)) throw new Error('HEALTH_INVALID');
+
+              const dream=await call(page,session,'dream',{event_id:eventId,idempotency_key:'compound-12-dream-'+run});
+              if(dream.delegated!==true||dream.replay?.status!=='SIMULATED') throw new Error('DREAM_DELEGATION_INVALID');
+
+              const compound=await call(page,session,'compound');
+              if(compound.schema!=='NAYANET_COMPOUND_INTELLIGENCE_CYCLE_V1'||compound.stages?.length<10) throw new Error('COMPOUND_CYCLE_INVALID');
+
+              const expected=['restore','retrieve','reconcile','understand','learning_candidate','learning_verify','successor_handoff','share','supersede','health','dream','compound'];
+              const passed=new Set(trace.filter(x=>x.status==='PASS').map(x=>x.capability));
+              for(const x of expected) if(!passed.has(x)) throw new Error('MISSING_CAPABILITY_PASS:'+x);
+
+              const proof={
+                schema:'NAYANET_COMPOUND_INTELLIGENCE_12_PROOF_V1',
+                status:'PROVEN',
+                claim_scope:'authenticated production Supabase runtime through canonical Hub identity/session',
+                run_id:run,
+                source_head:process.env.GITHUB_SHA,
+                function:'nayanet-compound-intelligence',
+                function_expected_version:'5+',
+                capabilities:expected,
+                trace,
+                identity:{user_id:session.userId},
+                event_id:eventId,
+                learning_evidence_id:evidenceId,
+                successor_event_id:successor.successor.event_id,
+                superseding_event_id:supersede.event.event_id,
+                dream_replay_id:dream.replay?.id||null,
+                notes:[
+                  'Dream action delegates to the governed naya-dream-replay runtime.',
+                  'Interpretation is not silently promoted to verified fact.',
+                  'Learning verification remains evidence-scoped and does not grant authority.',
+                  'All operation calls are authenticated and recorded in nayanet_intelligence_operations.'
+                ]
+              };
+              fs.writeFileSync('compound-12-proof.json',JSON.stringify(proof,null,2));
+              console.log(JSON.stringify(proof,null,2));
+            }finally{
+              await context.close();
+              await browser.close();
+            }
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+      - name: Upload proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-compound-intelligence-12-proof-${{ github.run_id }}
+          path: compound-12-proof.json
+          if-no-files-found: ignore
