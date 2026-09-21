@@ -1,0 +1,125 @@
+name: NAYA — Flagship Hub React Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        description: 'Exact Git ref or SHA containing the flagship Hub source'
+        required: true
+        type: string
+      approval:
+        description: 'Explicit release approval'
+        required: true
+        type: string
+      reason:
+        description: 'Release reason'
+        required: true
+        type: string
+
+concurrency:
+  group: nayanet-flagship-hub-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  CLOUDFLARE_CANONICAL_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  CLOUDFLARE_CANONICAL_WORKER: sparkling-shape-7ae5
+  NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+
+    steps:
+      - name: Bind authorized release
+        shell: bash
+        env:
+          APPROVAL: ${{ inputs.approval }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
+          test -n "${REASON}"
+
+      - name: Checkout exact Hub source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref }}
+
+      - name: Typecheck and build canonical React Hub
+        working-directory: NAYANET/HUB
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-package-lock
+          npm run typecheck
+          npm run build
+          test -s dist/index.html
+          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/assets/*.js
+          test -s public/assistant-runtime.js
+          test -s public/hub-completeness.js
+          test -s public/nayanet-cognitive-engine.js
+
+      - name: Prepare Worker assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf dist-worker
+          mkdir -p dist-worker
+          cp -R NAYANET/HUB/dist/. dist-worker/
+          sha256sum dist-worker/index.html | tee "${RUNNER_TEMP}/hub-react-source.sha256"
+
+      - name: Deploy flagship React Hub
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist-worker","html_handling":"none","not_found_handling":"single-page-application"}}' > "${RUNNER_TEMP}/wrangler.jsonc"
+          npx --yes wrangler@4 deploy --config "${RUNNER_TEMP}/wrangler.jsonc"
+
+      - name: Verify deployed React runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm install --no-save --no-package-lock playwright@1.55.0
+          cat > verify-flagship.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime = process.env.NAYA_RUNTIME_URL;
+          const browser = await chromium.launch({ headless: true, executablePath: '/usr/bin/google-chrome', args: ['--no-sandbox','--disable-dev-shm-usage'] });
+          try {
+            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
+              const context = await browser.newContext({ serviceWorkers:'block', viewport:{width:viewport.width,height:viewport.height} });
+              const page = await context.newPage();
+              const response = await page.goto(runtime + '/?name=Shawn&alias=shawn&flagship=' + process.env.GITHUB_SHA, { waitUntil:'domcontentloaded', timeout:60000 });
+              if (!response?.ok()) throw new Error(viewport.label + ': HTTP unavailable');
+              await page.waitForTimeout(1500);
+              const result = await page.evaluate(() => ({
+                title: document.title,
+                shell: document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker') || null,
+                today: [...document.querySelectorAll('button')].some(x => x.textContent?.includes('Intelligence Today')),
+                feed: document.body.innerText.includes('Living intelligence, made visible.'),
+                pis: document.body.innerText.includes('SMART FEED · CANONICAL PIS'),
+                source: document.body.innerText.includes('NAYANET · PROJECT INTELLIGENCE')
+              }));
+              console.log('FLAGSHIP_RUNTIME_PROBE', viewport.label, JSON.stringify(result));
+              if (result.shell !== 'NAYANET-HUB-REACT-CANONICAL') throw new Error(viewport.label + ': React shell marker missing');
+              if (!result.today) throw new Error(viewport.label + ': Intelligence Today navigation missing');
+              if (!result.feed) throw new Error(viewport.label + ': flagship Smart Feed surface missing');
+              if (!result.pis) throw new Error(viewport.label + ': canonical PIS surface missing');
+              if (!result.source) throw new Error(viewport.label + ': Project Intelligence command surface missing');
+              await context.close();
+            }
+          } finally { await browser.close(); }
+          EOF
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-flagship.mjs
+          rm -f verify-flagship.mjs
+
+      - name: Final proof
+        run: |
+          echo "FLAGSHIP_HUB_VERIFIED=${NAYA_RUNTIME_URL}"
+          echo "WORKER=${CLOUDFLARE_CANONICAL_WORKER}"
+          echo "SOURCE_REF=${{ inputs.source_ref }}"
