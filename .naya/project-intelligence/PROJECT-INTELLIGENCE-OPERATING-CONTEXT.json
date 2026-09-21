@@ -1,38 +1,79 @@
 {
-  "$schema":"naya/project-intelligence/operating-context/v1",
-  "status":"LIVE_TEMPLATE",
-  "project_id":"NayaNET",
-  "mission":"Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "north_star":"Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "you_are_here":"COLD-NAYA-TAKEOVER / PROJECT INTELLIGENCE",
-  "current_truth":{
-    "head":{"source":"git:HEAD","resolution":"LIVE_AT_EXECUTION_TIME","recorded_head_is_not_authoritative":true},
-    "state":".naya/control-plane/STATE.json",
-    "block":".naya/control-plane/BLOCKS.json",
-    "map":".naya/control-plane/MAP.json",
-    "proof":".naya/control-plane/PROOF.json"
+  "$schema": "naya/project-intelligence/operating-context/v1",
+  "status": "LIVE_TEMPLATE",
+  "project_id": "NayaNET",
+  "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+  "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
+  "you_are_here": "COLD-NAYA-TAKEOVER / PROJECT INTELLIGENCE",
+  "current_truth": {
+    "head": {
+      "source": "git:HEAD",
+      "resolution": "LIVE_AT_EXECUTION_TIME",
+      "recorded_head_is_not_authoritative": true,
+      "latest_verified_live_head": "3c7102c5adc8b464b6843c82de0ae72139c8fb69"
+    },
+    "state": ".naya/control-plane/STATE.json",
+    "block": ".naya/control-plane/BLOCKS.json",
+    "map": ".naya/control-plane/MAP.json",
+    "proof": ".naya/control-plane/PROOF.json"
   },
-  "proven":[
+  "proven": [
     "Canonical NayaPOWER control-plane architecture exists.",
     "Cold-start Project Intelligence validation exists.",
     "Live Smart Note receiver verification exists in the repository verification lane.",
-    "Repository-local compounding Project Intelligence proof exists."
+    "Repository-local compounding Project Intelligence proof exists.",
+    "Project Intelligence Bridge server-to-server transaction is proven at the governed receiver boundary: packet accepted, persisted, indexed, projected, acknowledged, and replayed idempotently."
   ],
-  "unknown":[
-    "Universal sender-to-receiver Project Intelligence transport is not yet externally certified as one canonical transaction."
+  "unknown": [
+    "Hub-facing retrieval/render of the bridge transaction and a genuinely cold successor retrieving that exact receipt are still open."
   ],
-  "blocked":[
+  "blocked": [
     "A live receiver transaction requires the authorized receiver endpoint and credential boundary."
   ],
-  "protected":[
+  "protected": [
     "Canonical control plane",
     "Canonical Hub source",
     "Smart Note/PIS/Activity machinery",
     "Historical intelligence and evidence"
   ],
-  "sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main","head_resolution":"live"},
-  "receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},
-  "bridge":{"type":"project_intelligence_bridge","contract":".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md","status":"NOT_PROVEN","target":"RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE"},
-  "current_next_action":{"action":"Implement and execute the canonical Project Intelligence Bridge transaction against the authorized receiver boundary.","success_condition":"A fresh Naya retrieves the exact Project Intelligence packet and receipt lineage from the Hub without Shawn supplying missing context."},
-  "cold_naya_restore":["Read this context.","Resolve live main HEAD.","Read STATE/BLOCK/MAP/PROOF.","Read the bridge contract.","Check the bridge workflow and latest proof.","Select one authorized next action.","Verify actual outcome.","Record successor continuity."]
+  "sender": {
+    "type": "github_repository",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "ref": "main",
+    "head_resolution": "live"
+  },
+  "receiver": {
+    "type": "nayanet_intelligent_hub",
+    "canonical_source": "NAYANET/HUB/index.html"
+  },
+  "bridge": {
+    "type": "project_intelligence_bridge",
+    "contract": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
+    "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
+    "target": "RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE",
+    "latest_proof": {
+      "workflow_run": 35623988420,
+      "job_id": 106413689632,
+      "source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
+      "packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
+      "receiver_transaction_id": "022c4131-2729-45f7-be84-85d6f9dde228",
+      "receiver_event_id": "51cecc6a-0d37-4aca-80d2-a707f00b31be",
+      "receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
+      "idempotent_replay_verified": true
+    }
+  },
+  "current_next_action": {
+    "action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
+    "success_condition": "The exact packet, source_ref, receiver_event_id, receipt_id and projected intelligence are retrieved through the governed Hub/runtime path and a fresh successor continues from them."
+  },
+  "cold_naya_restore": [
+    "Read this context.",
+    "Resolve live main HEAD.",
+    "Read STATE/BLOCK/MAP/PROOF.",
+    "Read the bridge contract.",
+    "Check the bridge workflow and latest proof.",
+    "Select one authorized next action.",
+    "Verify actual outcome.",
+    "Record successor continuity."
+  ]
 }
