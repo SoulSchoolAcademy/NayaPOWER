@@ -1,0 +1,235 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://nayanet.app/contracts/intelligent-block-v1.schema.json",
+  "title": "NayaNET Intelligent Block V1",
+  "description": "Portable canonical representation of an intelligence event. The block is a semantic object, not a competing source of truth.",
+  "type": "object",
+  "required": ["identity", "type", "meaning", "context", "time", "provenance", "evidence", "truth", "authority", "value"],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "required": ["object_id", "event_id", "version", "schema_version"],
+      "properties": {
+        "object_id": {"type": "string", "minLength": 1},
+        "event_id": {"type": "string", "minLength": 1},
+        "version": {"type": "integer", "minimum": 1},
+        "namespace": {"type": "string"},
+        "schema_version": {"const": "NAYANET_INTELLIGENT_BLOCK_V1"}
+      },
+      "additionalProperties": false
+    },
+    "type": {
+      "type": "object",
+      "required": ["object_type", "event_type"],
+      "properties": {
+        "object_type": {"type": "string"},
+        "event_type": {"type": "string"},
+        "classification": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "meaning": {
+      "type": "object",
+      "required": ["subject"],
+      "properties": {
+        "subject": {"type": "string"},
+        "title": {"type": "string"},
+        "content": {"type": "string"},
+        "summary": {"type": "string"},
+        "in_a_nutshell": {"type": "string"},
+        "interpretation": {"type": "string"},
+        "human": {"type": "string"},
+        "naya": {"type": "string"},
+        "machine": {"type": "string"},
+        "simple": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "actors": {
+      "type": "object",
+      "properties": {
+        "creator": {"type": "string"},
+        "observer": {"type": "string"},
+        "verifier": {"type": "string"},
+        "authorizer": {"type": "string"},
+        "executor": {"type": "string"},
+        "beneficiary": {"type": "string"},
+        "affected_parties": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "context": {
+      "type": "object",
+      "required": ["scope"],
+      "properties": {
+        "project": {"type": "string"},
+        "scope": {"type": "string"},
+        "environment": {"type": "string"},
+        "audience": {"type": "array", "items": {"type": "string"}},
+        "session": {"type": "string"},
+        "visibility": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "time": {
+      "type": "object",
+      "required": ["occurred_at"],
+      "properties": {
+        "occurred_at": {"type": "string", "format": "date-time"},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "effective_at": {"type": "string", "format": "date-time"},
+        "valid_from": {"type": "string", "format": "date-time"},
+        "valid_until": {"type": "string", "format": "date-time"},
+        "superseded_at": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    },
+    "intent": {
+      "type": "object",
+      "properties": {
+        "purpose": {"type": "string"},
+        "why": {"type": "string"},
+        "desired_outcome": {"type": "string"},
+        "expected_value": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source"],
+      "properties": {
+        "source": {"type": "string"},
+        "source_ref": {"type": "string"},
+        "source_hash": {"type": "string"},
+        "captured_by": {"type": "string"},
+        "derived_from": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["evidence_state"],
+      "properties": {
+        "evidence_state": {"enum": ["ASSUMED", "INFERRED", "OBSERVED", "IMPLEMENTED", "VERIFIED", "LIVE_VERIFIED", "UNKNOWN", "CONFLICTED", "SUPERSEDED", "REJECTED", "BLOCKED"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}},
+        "verification": {"type": "string"},
+        "verification_method": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "truth": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["UNKNOWN", "SUPPORTED", "VERIFIED", "CONFLICTED", "REJECTED", "SUPERSEDED"]},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "conflicts": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "authority": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["NONE", "PROPOSED", "AUTHORIZED", "REVOKED", "EXPIRED"]},
+        "authority_ref": {"type": "string"},
+        "policy_ref": {"type": "string"},
+        "consent_ref": {"type": "string"},
+        "constraints": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["relationship_id", "relation", "source", "target"],
+        "properties": {
+          "relationship_id": {"type": "string"},
+          "relation": {
+            "enum": ["DERIVED_FROM", "REPRESENTS", "PROJECTS", "CAUSED", "RESULTED_IN", "TRIGGERED", "SUPPORTS", "CONTRADICTS", "QUALIFIES", "SUPERSEDES", "VERIFIED_BY", "DEPENDS_ON", "REQUIRES", "APPLIED_TO", "PRODUCED_OUTCOME_FOR", "LEARNED_FROM", "GENERATED_LEARNING", "CREATES_SUCCESSOR", "AUTHORIZED_BY", "REVOKED_BY", "CONSTRAINED_BY"]
+          },
+          "source": {"type": "string"},
+          "target": {"type": "string"},
+          "reason": {"type": "string"},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}},
+          "authority_ref": {"type": "string"},
+          "created_at": {"type": "string", "format": "date-time"},
+          "effective_at": {"type": "string", "format": "date-time"}
+        },
+        "additionalProperties": true
+      }
+    },
+    "value": {
+      "type": "object",
+      "required": ["state"],
+      "properties": {
+        "state": {"enum": ["UNKNOWN", "POTENTIAL", "OBSERVED", "VERIFIED", "NEGATIVE"]},
+        "benefit": {"type": "number"},
+        "harm": {"type": "number"},
+        "cost": {"type": "number"},
+        "risk": {"type": "number"},
+        "effort": {"type": "number"},
+        "relevance": {"type": "number"},
+        "responsible_value": {"type": "number"}
+      },
+      "additionalProperties": true
+    },
+    "action": {
+      "type": "object",
+      "properties": {
+        "action": {"type": "string"},
+        "method": {"type": "string"},
+        "authorization_basis": {"type": "string"},
+        "expected_result": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "outcome": {
+      "type": "object",
+      "properties": {
+        "state": {"enum": ["SUCCESS", "FAILURE", "PARTIAL", "NO_EFFECT", "UNEXPECTED", "HARM", "UNKNOWN"]},
+        "observed_result": {"type": "string"},
+        "measurements": {"type": "object"},
+        "unexpected_effects": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": true
+    },
+    "learning": {
+      "type": "object",
+      "properties": {
+        "what_changed": {"type": "string"},
+        "lesson": {"type": "string"},
+        "reusable_rule": {"type": "string"},
+        "evidence_basis": {"type": "array", "items": {"type": "string"}},
+        "applicability": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "successor": {
+      "type": "object",
+      "properties": {
+        "type": {"enum": ["NEXT_ACTION", "NEXT_QUESTION", "NEXT_TEST", "NEXT_LEARNING", "NEXT_OWNER", "NEXT_DEPENDENCY", "SUCCESSOR_EVENT"]},
+        "target": {"type": "string"},
+        "reason": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "projections": {
+      "type": "object",
+      "properties": {
+        "human": {"type": "object"},
+        "naya": {"type": "object"},
+        "machine": {"type": "object"},
+        "simple": {"type": "object"},
+        "hub": {"type": "object"},
+        "api": {"type": "object"}
+      },
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false
+}
