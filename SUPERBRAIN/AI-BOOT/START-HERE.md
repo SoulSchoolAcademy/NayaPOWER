@@ -1,3 +1,22 @@
+## 🔱 PROJECT INTELLIGENCE — HUMAN + NAYA MASTER LIBRARY
+
+The canonical Project Intelligence landing page is:
+
+.naya/project-intelligence/README.md
+
+Open the folder landing page first.
+
+FAST HUMAN PATH: README → 00 INDEX → 01 CREATOR CONSTITUTION → 02 PRODUCT DEFINITION → 03 100 QUESTIONS + MY ANSWERS.
+
+BUILDER PATH: 05 REQUIREMENTS → 06 ARCHITECTURE → 07 INTELLIGENCE / MEMORY → 08 GOVERNANCE → 09 EXECUTION → 10 INTEROPERABILITY → 11 DESIGN / BUILD.
+
+PROOF PATH: 12 CURRENT STATE → 13 ROADMAP → 14 COLD NAYA → 15 SUCCESSOR → 16 DECISIONS → 17 SOURCE ROUTE → 18 MACHINE CONTRACT.
+
+CREATOR OWNERSHIP RULE: this specification is intentionally written in first-person creator voice. It records the creator's answers, design decisions, constraints, evidence boundaries, and unresolved research questions.
+
+
+---
+
 # Naya Power Superbrain — AI START HERE
 
 # 🔱 HUB EXECUTION LOCK — MANDATORY FOR HUB WORK
