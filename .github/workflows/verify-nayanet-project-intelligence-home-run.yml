@@ -64,8 +64,8 @@ jobs:
               }
               if(!identity?.userId||!session?.userId)throw new Error('PRIVATE_PI_OWNER_SESSION_NOT_ESTABLISHED');
               if(identity.userId!==session.userId)throw new Error('PRIVATE_PI_OWNER_IDENTITY_SESSION_MISMATCH');
-              fs.writeFileSync('.nayanet-owner-id',session.userId+'\\n');
-              fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\\n');
+              fs.writeFileSync('.nayanet-owner-id',session.userId+'\n');
+              fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\n');
               console.log('OWNER_BOUND=TRUE');
             }finally{await browser.close()}
           })().catch(e=>{console.error(e);process.exit(1)});
