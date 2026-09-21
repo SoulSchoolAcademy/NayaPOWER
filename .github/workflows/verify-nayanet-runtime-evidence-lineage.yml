@@ -1,0 +1,60 @@
+name: NayaNET runtime evidence lineage end-to-end proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-nayanet-runtime-evidence-lineage.yml'
+permissions:
+  contents: read
+jobs:
+  runtime-lineage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Prove runtime source to successor lineage
+        shell: bash
+        run: |
+          cat > prove.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(fn,t,b){const r=await fetch(B+'/functions/v1/'+fn,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function RPC(name,t,b){const r=await fetch(B+'/rest/v1/rpc/'+name,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return {status:r.status,body:j};}
+          async function REST(path,t){const r=await fetch(B+'/rest/v1/'+path,{headers:H(t)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};if(!r.ok)throw Error('REST_'+r.status+':'+x);return j;}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error('FRESH_AUTH_FAILED');const t=a.access_token;
+          const seed=await P('nayanet-pi-understand',t,{content:'Runtime evidence-lineage proof '+R,title:'Runtime lineage proof'});
+          if(seed.status!==200||seed.body?.ok!==true)throw Error('SEED_FAILED:'+JSON.stringify(seed.body));
+          const sourceEventId=seed.body.result?.event?.event_id;if(!sourceEventId)throw Error('SOURCE_EVENT_ID_MISSING');
+          const cand=await P('nayanet-learning-candidate',t,{claim:'Runtime lineage survives execution, verification, learning and successor handoff',target_id:'RUNTIME-LINEAGE-'+R,source_event_id:sourceEventId,observed_value:{run:R}});
+          if(cand.status!==200||cand.body?.ok!==true)throw Error('CLAIM_FAILED:'+JSON.stringify(cand.body));
+          const claimId=cand.body.result?.candidate?.id;if(!claimId)throw Error('CLAIM_ID_MISSING');
+          const expiry=new Date(Date.now()+10*60*1000).toISOString();
+          const grant=await RPC('nayanet_issue_authority_grant',t,{p_subject_id:a.user?.id,p_source_event_id:sourceEventId,p_mission_id:'NayaNET runtime evidence lineage proof',p_scope:{target:'RUNTIME-LINEAGE-'+R,project_id:'NayaNET'},p_actions:['pi.controlled_execution'],p_constraints:{no_external_side_effects:true,proof_run:R},p_expires_at:expiry,p_evidence:{proof_run:R,source_event_id:sourceEventId},p_parent_authority:null});
+          if(grant.status!==200||!grant.body?.grant_id)throw Error('GRANT_FAILED:'+JSON.stringify(grant.body));
+          const ex=await P('nayanet-pi-execute',t,{authority_grant_id:grant.body.grant_id,action_id:'pi.controlled_execution',resource:'RUNTIME-LINEAGE-'+R,expected_result:'Durable runtime lineage receipt',source_event_id:sourceEventId,claim_id:claimId,request_id:'runtime-lineage-'+R});
+          if(ex.status!==200||ex.body?.ok!==true)throw Error('EXECUTION_FAILED:'+JSON.stringify(ex.body));
+          const receiptId=ex.body.receipt?.id;if(!receiptId)throw Error('RECEIPT_ID_MISSING');
+          const learning=await P('nayanet-learning-verify',t,{learning_id:claimId,verification_method:'End-to-end runtime lineage proof',evidence_refs:[sourceEventId,receiptId],receipt_id:receiptId});
+          if(learning.status!==200||learning.body?.ok!==true||learning.body?.verified!==true)throw Error('LEARNING_VERIFY_FAILED:'+JSON.stringify(learning.body));
+          const handoff=await P('nayanet-successor-handoff',t,{receipt_id:receiptId,what_happened:'Runtime lineage proof executed and verified',what_changed:'Receipt now binds source, claim, action, outcome, verification, learning and successor',learned:[{learning_id:claimId,verified:true}],next_action:'Reassess the next constitutional hardening frontier from live evidence',why:'Prove the complete runtime lineage and leave a successor-ready torch.',evidence_required:['runtime lineage receipt','verification evidence','successor handoff'],source_head:process.env.GITHUB_SHA});
+          if(handoff.status!==200||handoff.body?.ok!==true)throw Error('HANDOFF_FAILED:'+JSON.stringify(handoff.body));
+          const rows=await REST('nayanet_execution_receipts?id=eq.'+encodeURIComponent(receiptId)+'&select=id,project_id,action,status,request_id,evidence,learning,authority_grant_id,authority_source_event_id',t);
+          if(!rows?.[0])throw Error('FINAL_RECEIPT_NOT_RETRIEVABLE');
+          const receipt=rows[0],lineage=(receipt.evidence||[]).map(x=>x?.lineage).find(Boolean);
+          if(!lineage)throw Error('FINAL_LINEAGE_MISSING');
+          const kinds=['source','claim','action','outcome','verification','learning','successor'];
+          for(const k of kinds){const n=lineage.nodes?.find(x=>x.kind===k);if(!n||!n.ref||n.ref==='UNBOUND')throw Error('LINEAGE_NODE_INCOMPLETE:'+k);}
+          if(lineage.status!=='COMPLETE')throw Error('LINEAGE_NOT_COMPLETE:'+lineage.status);
+          const expectedEdges=['SUPPORTS','CAUSES','RESULTS_IN','VERIFIES','TEACHES','HANDOFF_TO'];
+          if(expectedEdges.some(e=>!(lineage.edges||[]).some(x=>x.relation===e)))throw Error('LINEAGE_EDGE_MISSING');
+          console.log('RUNTIME_LINEAGE_RESULT='+JSON.stringify({schema:'NAYANET_RUNTIME_EVIDENCE_LINEAGE_PROOF_V1',run_id:R,source_event_id:sourceEventId,claim_id:claimId,receipt_id:receiptId,verification_operation_id:learning.body.verification_operation_id,successor_operation_id:handoff.body.successor_operation_id,lineage,status:lineage.status,complete:true}));
+          EOF
+          node prove.mjs
