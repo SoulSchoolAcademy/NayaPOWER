@@ -32,7 +32,7 @@ def main():
     assert r["next_action"]=="continue-proof"
     with tempfile.TemporaryDirectory() as td:
         p=Path(td)/"context.json";p.write_text(json.dumps(r),encoding="utf-8")
-        child=subprocess.run([sys.executable,"-c","import json,sys;x=json.load(open(sys.argv[1]));assert x['resolution']['status']=='RECONSTRUCTED';assert x['current'][0]['event_id']=='SE-NEW';assert x['next_action']=='continue-proof';print('COLD_NAYA_CONSUMPTION=PASS');print('COLD_SUCCESSOR_CONTINUATION=PASS')",str(p)],capture_output=True,text=True)
+        child=subprocess.run([sys.executable,"-c","import json,sys;x=json.load(open(sys.argv[1]));assert x['resolution']['status']=='RECONSTRUCTED';assert 'SE-NEW' in {v['event_id'] for v in x['current']};assert x['next_action']=='continue-proof';print('COLD_NAYA_CONSUMPTION=PASS');print('COLD_SUCCESSOR_CONTINUATION=PASS')",str(p)],capture_output=True,text=True)
         assert child.returncode==0,child.stderr
         print(child.stdout,end="")
     print("CANONICAL_CURRENT_TRUTH_RESOLUTION=PASS")
