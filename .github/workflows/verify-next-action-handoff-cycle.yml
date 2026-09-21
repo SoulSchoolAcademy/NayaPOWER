@@ -12,6 +12,8 @@ on:
       - '.naya/control-plane/MAP.json'
   issues:
     types: [opened]
+  pull_request:
+    types: [opened, synchronize]
 
 permissions:
   contents: write
