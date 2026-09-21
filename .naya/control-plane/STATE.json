@@ -159,7 +159,7 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Consolidated Project Intelligence whole-chain proof: connect the already-proven identity, reconstruction, retrieval, authority, execution, verification, learning, update, and successor boundaries into one uninterrupted cold-successor acceptance chain. Computational-efficiency measurement is the next engineering layer after this causal chain is proven.",
-  "single_next_action": "Execute the consolidated Project Intelligence proof against live main: INTENT -> IDENTITY -> RECONSTRUCTION -> COLD RESTORE -> RETRIEVAL -> CURRENT STATE -> ONE NEXT ACTION -> AUTHORITY -> EXECUTION -> VERIFICATION -> LEARNING -> UPDATE -> COLD SUCCESSOR. Stop at the first deterministic boundary, repair only that boundary, rerun the same proof, and record the resulting evidence.",
+  "single_next_action": "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary.",
   "next_actions": [
     "Run the canonical cold Project Intelligence acceptance on the freshly reconciled main state; if it passes, use the resulting evidence to execute the next governed frontier. If it fails, stop at the first deterministic boundary and repair only that boundary."
   ],
