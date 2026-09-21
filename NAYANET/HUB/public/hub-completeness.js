@@ -198,10 +198,12 @@ function wireSidebar(){
    const systemNav=[...rail.querySelectorAll('.nav')].find(n=>n.querySelector('[data-page="settings"]'));
    if(systemNav){
      const b=document.createElement('button');
-     b.type='button'; b.dataset.page='play'; b.innerHTML='<span class="ico">✦</span>Naya Play';
+     b.type='button'; b.dataset.page='play'; b.dataset.nayaSurface='play'; b.innerHTML='<span class="ico">✦</span>Naya Play';
      systemNav.insertBefore(b,systemNav.querySelector('[data-page="settings"]'));
    }
  }
+ const surfaceMap={lists:'lists',spaces:'spaces',contacts:'contacts',share:'share',mail:'mail',settings:'settings',play:'play'};
+ rail.querySelectorAll('.nav button[data-page]').forEach(b=>{if(surfaceMap[b.dataset.page])b.dataset.nayaSurface=surfaceMap[b.dataset.page]});
  rail.querySelectorAll('.nav button[data-page]').forEach(b=>{const key=b.dataset.page,mapped=map[key];if(!mapped)return;b.dataset.nc=mapped[0];if(mapped[1])b.dataset.ncStream=mapped[1];else delete b.dataset.ncStream});
  return true;
 }
