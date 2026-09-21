@@ -7,7 +7,12 @@
     "source": "git:HEAD",
     "mode": "LIVE_RESOLUTION",
     "recorded_head_is_not_authoritative": true,
-    "observed_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb"
+    "observed_head": "4ffb97e41fcb05aa75167f8ebb7c9968f6bffadb",
+    "last_execution_observation": {
+      "observed_head": "c4391c952cd21ea2e4c01e956a469358049158da",
+      "observed_at": "2026-09-21",
+      "source": "live Git ref"
+    }
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -62,7 +67,9 @@
     "source_runtime_sha256_parity": "VERIFIED",
     "prior_hub_feature_frontier": "SMART_SHARE_PRODUCTION_PROVEN",
     "next_project_intelligence_frontier": "PI-03_COLD_RETRIEVAL",
-    "production_route_authority": "NOT_PROVEN_BY_THIS_RECONCILIATION"
+    "production_route_authority": "NOT_PROVEN_BY_THIS_RECONCILIATION",
+    "latest_repository_head": "c4391c952cd21ea2e4c01e956a469358049158da",
+    "project_intelligence_edge_functions": "12 canonical nayanet-pi-* functions ACTIVE; deployment receipt .naya/project-intelligence/36-NAYANET-12-EDGE-FUNCTION-DEPLOYMENT-RECEIPT-2026-09-21.md"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
