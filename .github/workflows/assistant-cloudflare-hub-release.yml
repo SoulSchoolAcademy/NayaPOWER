@@ -119,7 +119,7 @@ jobs:
           npm run typecheck
           npm run build
           test -s dist/index.html
-          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/assets/*.js
+          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
           rm -rf ../../dist
           mkdir -p ../../dist
           cp -R dist/. ../../dist/
