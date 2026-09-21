@@ -249,8 +249,9 @@ jobs:
           const authorizationEventId=String(authorizationEvent?.event_id||'');
           if(!authorizationEventId) throw Error('SMART_SHARE_AUTHORIZATION_EVENT_NOT_RETRIEVED:'+sourceEventId);
           const grants=await ap.evaluate(target=>window.NayaAssistantRuntime.listAuthorityGrants(target),A.user.id);
-          const grant=grants.find(g=>g.source_event_id===sourceEventId&&g.constraints?.authorization_event_id===authorizationEventId&&g.actions?.includes('smart_feed_publish')&&g.scope?.target===sourceRows[0].id);
+          const grant=grants.find(g=>g.source_event_id===sourceEventId&&g.actions?.includes('smart_feed_publish')&&g.scope?.target===sourceRows[0].id);
           if(!grant||grant.status!=='ACTIVE') throw Error('SMART_SHARE_AUTHORITY_GRANT_NOT_RETRIEVED:'+JSON.stringify(grants));
+          if(String(grant.constraints?.authorization_event_id||'')!==authorizationEventId) throw Error('SMART_SHARE_AUTHORITY_EVENT_LINEAGE_MISMATCH:'+JSON.stringify({authorizationEventId,grantConstraints:grant.constraints}));
           const validation=await req(base+'/rest/v1/rpc/nayanet_validate_authority_grant',{method:'POST',headers:headers(A.access_token),body:JSON.stringify({p_grant_id:grant.grant_id,p_action:'smart_feed_publish',p_target:sourceRows[0].id})});
           if(validation.status!=='AUTHORIZED') throw Error('SMART_SHARE_AUTHORITY_NOT_AUTHORIZED:'+JSON.stringify(validation));
           const collectiveA=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
