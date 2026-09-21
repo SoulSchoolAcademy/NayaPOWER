@@ -69,3 +69,13 @@ def evaluate_quality(gate: QualityGateInput, *, consequential: bool = True) -> Q
         reasons=("all TUNE IN predicates satisfied",),
         required_actions=(),
     )
+
+
+def evaluate_delivery(gate: QualityGateInput) -> QualityGateResult:
+    """Gate consequential Naya output before it is delivered to the human."""
+    return evaluate_quality(gate, consequential=True)
+
+
+def evaluate_execution(gate: QualityGateInput) -> QualityGateResult:
+    """Gate consequential Naya execution before an external effect is permitted."""
+    return evaluate_quality(gate, consequential=True)
