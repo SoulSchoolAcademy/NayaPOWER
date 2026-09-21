@@ -17,7 +17,7 @@ Then use only the active block and its one next action.
 SENDER = GitHub / SoulSchoolAcademy/NayaPOWER
 RECEIVER = NayaNET Intelligent Hub / NAYANET/HUB/index.html
 BRIDGE = Project Intelligence Bridge V1
-CURRENT BRIDGE STATUS = NOT_PROVEN until a real receiver receipt proves the complete receive-to-render chain.
+CURRENT BRIDGE STATUS = TRANSPORT/PERSISTENCE/INDEX/PROJECT/ACK EVIDENCED; RETRIEVE/RENDER/COLD-SUCCESSOR RETRIEVAL OPEN.
 
 ## Issue inventory rule
 
@@ -33,7 +33,7 @@ GITHUB-ISSUE-CLASSIFICATION*.md → classification only when a task explicitly r
 
 ## Current frontier
 
-Implement and execute the canonical sender → bridge → receiver transaction, then prove fresh successor retrieval.
+Use the new Compound Intelligence runtime to RESTORE → RETRIEVE → RECONCILE → ACT → VERIFY → LEARN → HANDOFF, then prove a fresh successor can continue without Shawn.
 
 ## Human middleware elimination
 
@@ -58,3 +58,22 @@ It records exactly what is blocked, what remains executable, what capability is 
 The target is not a prettier repository.
 
 The target is: **a cold Naya enters, understands, acts, proves, learns, and leaves the next Naya ready.**
+
+
+## NEW COMPOUND INTELLIGENCE RUNTIME
+
+Supabase function: nayanet-compound-intelligence
+Version: 2
+Auth: JWT required
+Persistence: public.nayanet_intelligence_operations
+Capabilities: RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM SEAM, COMPOUND.
+
+The architecture deliberately uses one governed orchestration surface instead of twelve duplicated Edge Functions.
+
+## NEW NORTH STAR
+
+Every verified meaningful action should leave the project more intelligent, more truthful, more capable, and easier for the next Naya to continue.
+
+## CURRENT FRONTIER
+
+Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context. Stop at the first actual failure and repair only that boundary.
