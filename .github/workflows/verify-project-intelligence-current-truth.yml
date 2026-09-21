@@ -1,0 +1,52 @@
+name: Verify Project Intelligence Current Truth
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".naya/runtime/project_intelligence_reconstruction.py"
+      - ".naya/runtime/test_project_intelligence_reconstruction.py"
+      - ".naya/memory/events/**"
+      - ".naya/control-plane/**"
+      - "SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  current-truth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Adversarial current-truth proof
+        run: python .naya/runtime/test_project_intelligence_reconstruction.py
+      - name: Generate full project context
+        run: python .naya/runtime/project_intelligence_reconstruction.py --project NayaNET --out project-intelligence-current.json
+      - name: Assert reconstruction contract
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open("project-intelligence-current.json",encoding="utf-8"))
+          required={"current","historical","superseded","stale","conflicted","unknown","evidence","causal_lineage","project_state","current_block","next_action"}
+          assert required <= p.keys()
+          assert p["resolution"]["status"]=="RECONSTRUCTED"
+          assert p["resolution"]["law"]
+          assert p["next_action"]
+          print("FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION=PASS")
+          print("CANONICAL_CURRENT_TRUTH_RESOLVER=PASS")
+          print("COLD_NAYA_CONTEXT_GENERATED=PASS")
+          print("COLD_SUCCESSOR_INPUT=PASS")
+          PY
+      - name: Publish reconstructed context
+        uses: actions/upload-artifact@v4
+        with:
+          name: project-intelligence-current-truth
+          path: project-intelligence-current.json
+          retention-days: 14
