@@ -5,6 +5,9 @@ on:
     branches: [naya/live-project-intelligence-v1]
     paths:
       - '.github/workflows/verify-nayanet-runtime-evidence-lineage.yml'
+      - 'supabase/functions/nayanet-pi-execute/index.ts'
+      - 'supabase/functions/nayanet-learning-verify/index.ts'
+      - 'supabase/functions/nayanet-successor-handoff/index.ts'
 permissions:
   contents: read
 jobs:
