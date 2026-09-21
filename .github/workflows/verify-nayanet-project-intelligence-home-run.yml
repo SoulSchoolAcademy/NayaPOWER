@@ -59,7 +59,7 @@ jobs:
               let identity=null,session=null;
               for(let i=0;i<60;i++){
                 identity=await page.evaluate(async()=>{try{return await window.NayaNETNameFirstAuth?.current?.()}catch{return null}});
-                session=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id}:null});
+                session=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id,session:x}:null});
                 if(identity?.authenticated&&identity?.userId&&session?.userId)break;
                 await new Promise(r=>setTimeout(r,500));
               }
@@ -138,7 +138,9 @@ jobs:
 
           (async()=>{
             const browser=await chromium.launch({headless:true});
+            const ownerSession=JSON.parse(fs.readFileSync('.nayanet-owner-session.json','utf8'));
             const ctx=await browser.newContext({storageState:'.nayanet-owner-state.json'});
+            await ctx.addInitScript((session)=>{localStorage.setItem('nayanet.supabase.auth',JSON.stringify(session));},ownerSession);
             const page=await ctx.newPage();
             try{
               await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
