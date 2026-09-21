@@ -199,7 +199,13 @@
     "north_star": "Set the intelligence foundation once so every Naya starts from a better state: maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "mission": "Prepare GitHub + established Supabase + canonical Project Intelligence so the next Naya is the executor, not the archaeologist.",
     "acceptance": "A cold Naya can resolve live main, restore canonical intelligence, understand NayaNET, know what is proven/unknown, identify one next action, use established runtime persistence where authorized, verify the result, record learning, and leave a better successor.",
-    "human_requirement": "Shawn should not need to re-explain project purpose, architecture, current truth, history, learning, or the next authorized action when those are already durably recorded."
+    "human_requirement": "Shawn should not need to re-explain project purpose, architecture, current truth, history, learning, or the next authorized action when those are already durably recorded.",
+    "proof_harness": {
+      "workflow": ".github/workflows/verify-nayanet-cold-project-intelligence.yml",
+      "history_required": true,
+      "checkout_fetch_depth": 0,
+      "reason": "validator checks proof recording ancestry against live HEAD"
+    }
   },
   "supabase_runtime": {
     "status": "ACTIVE_HEALTHY",
