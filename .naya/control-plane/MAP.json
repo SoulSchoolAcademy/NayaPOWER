@@ -116,7 +116,7 @@
       "PI-07-LEARNING-UPDATE",
       "PI-08-COLD-SUCCESSOR"
     ],
-    "active_block": "COLD-NAYA-TAKEOVER-PROOF",
+    "active_block": "PROJECT-INTELLIGENCE-PI-01",
     "definition_of_done": "A completely cold Naya can enter the repository, restore and understand current Project Intelligence, identify one authorized next action, execute and verify it, learn/update durable intelligence, and a cold successor can continue without Shawn reconstructing the project."
   },
   "design_direction": {
