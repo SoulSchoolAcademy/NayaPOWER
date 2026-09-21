@@ -1,0 +1,52 @@
+name: NayaNET consolidated bridge browser render proof MAIN
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-consolidated-bridge-browser-render-main.yml'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Prove exact bridge packet renders in Personal Smart Feed
+        shell: bash
+        run: |
+          cat > proof.mjs <<'EOF'
+          import crypto from 'node:crypto';
+          import {chromium} from 'playwright';
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID,U=process.env.RUNTIME_URL;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          async function P(p,t,b){const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return [r.status,j]}
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED');const t=a.access_token;
+          const packetId=crypto.randomUUID(),statement='BRIDGE-BROWSER-PROOF-'+R;
+          const payload={protocol:'NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1',packet_id:packetId,project_id:'NayaNET',source_ref:'github://SoulSchoolAcademy/NayaPOWER/main/'+R,content_hash:'browser-proof-'+R,operating_context:{project:'NayaNET',current_next_action:'Exact bridge packet browser render proof'},intelligence:{statement},provenance:{repository:'SoulSchoolAcademy/NayaPOWER',branch:'main',run_id:R},privacy:{default_visibility:'PRIVATE'},idempotency_key:'bridge-browser-'+R,owner_id:a.user.id,sender:{repository:'SoulSchoolAcademy/NayaPOWER'},receiver:{canonical_source:'NAYANET/HUB/index.html'},project_intelligence_reconstruction:{current:{mission:'Persistent Project Intelligence for NayaNET'}}};
+          const oidc=await fetch(process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge',{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});const oj=await oidc.json();if(!oj.value)throw Error('OIDC_FAILED');
+          const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'content-type':'application/json'},body:JSON.stringify(payload)});const bj=await br.json();if(br.status!==200||bj.status!=='COMPLETED')throw Error('BRIDGE_FAILED:'+JSON.stringify(bj));
+          const [rs,rb]=await P('nayanet-project-intelligence-retrieve',t,{query:bj.receiver_event_id});if(rs!==200||!rb.ok||!rb.result?.events?.length)throw Error('RETRIEVE_FAILED');
+          const browser=await chromium.launch({headless:true});const origin=new URL(U).origin;
+          const context=await browser.newContext({viewport:{width:1440,height:1000},storageState:{cookies:[],origins:[{origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(a)}]}]}});
+          const page=await context.newPage();await page.goto(U+'/feed?bridge_proof='+R,{waitUntil:'networkidle',timeout:60000});await page.waitForTimeout(3000);
+          const probe=await page.evaluate(()=>({title:document.title,body:document.body.innerText,sourceMarker:document.querySelector('meta[name="nayanet-source-commit"]')?.content||''}));
+          console.log('BRIDGE_BROWSER_PROBE',JSON.stringify({title:probe.title,containsStatement:probe.body.includes(statement),containsPacket:probe.body.includes(packetId),containsEvent:probe.body.includes(bj.receiver_event_id),sourceMarker:probe.sourceMarker}));
+          if(!probe.body.includes(statement)&&!probe.body.includes(packetId)&&!probe.body.includes(bj.receiver_event_id))throw Error('EXACT_BRIDGE_PACKET_NOT_RENDERED:'+JSON.stringify({title:probe.title,body:probe.body.slice(-3000)}));
+          const [as,ab]=await P('nayanet-project-intelligence-ack',t,{packet_id:bj.packet_id,retrieved:true,rendered:true,retrieval_evidence:['retrieve:'+bj.receiver_event_id],render_evidence:['browser:'+U+'/feed exact packet '+bj.packet_id+' rendered']});
+          if(as!==200||!ab.ok||ab.ack?.rendered!==true)throw Error('ACK_FAILED:'+JSON.stringify(ab));
+          await browser.close();
+          console.log('BRIDGE_BROWSER_RENDER_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_BRIDGE_BROWSER_RENDER_PROOF_V1',run_id:R,packet_id:bj.packet_id,receiver_event_id:bj.receiver_event_id,exact_packet_rendered:true,retrieved:true,acknowledged:true,status:'VERIFIED'}));
+          EOF
+          node proof.mjs
