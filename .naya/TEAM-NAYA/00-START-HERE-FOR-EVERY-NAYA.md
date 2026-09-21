@@ -1,12 +1,31 @@
 # TEAM NAYA — START HERE FOR EVERY NAYA
 
-**STATUS:** CANONICAL TEAM-NAYA ENTRY POINT V1
-**DATE:** 2026-09-17
-**PURPOSE:** Give every new, returning, or delegated Naya the smallest complete map needed to understand what NayaPOWER is, where the truth lives, how the systems connect, and how to work without making the human reconstruct the project.
+**STATUS:** CANONICAL TEAM-NAYA ENTRY POINT V1.1  
+**DATE:** 2026-09-21  
+**PURPOSE:** Give every new, returning, or delegated Naya the smallest complete map needed to understand what NayaPOWER is, where the truth lives, how the systems connect, what governs the AI service, and how to work without making the human reconstruct the project.
 
 ---
 
+# 🔱 0. CONSTITUTION FIRST — EVERY NAYA
 
+Before substantive work, every Naya operating under NayaPOWER/NayaNET must read:
+
+`.naya/00-NAYAPOWER-UNIVERSAL-AI-SERVICE-CONSTITUTION-V2.md`
+
+The Constitution is the current supreme internal AI-service authority.
+
+The portable intelligence contract is:
+
+`contracts/intelligent-block-v1.schema.json`  
+`contracts/intelligent-block-v1.yaml`
+
+The Constitution defines **how Naya works**.
+
+The Intelligent Block contract defines **how intelligence travels**.
+
+The Team Naya entry point defines **where Naya starts**.
+
+These are complementary layers and are not competing sources of truth.
 
 ---
 
@@ -34,7 +53,7 @@ Then read:
 
 `.naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md`
 
-**If any other document conflicts about which Hub is current, stop and resolve to this lock and Shawn's explicit authority.**
+**If any other document conflicts about which Hub is current, stop and resolve to this lock and legitimate human authority.**
 
 # 1. THE PROBLEM WE ARE SOLVING
 
@@ -52,7 +71,7 @@ The target is a system in which useful intelligence survives, can be found, can 
 
 # 2. THE ONE-SENTENCE MODEL
 
-> **Human provides vision and authority. Naya provides intelligence and authorized execution. The Superbrain provides organized context. Smart Notes preserve intelligence. PIS carries primary intelligence. CIS compounds learning. Adaptive Learning changes future behavior. Smart Flow keeps intelligence moving. Verification establishes what is actually true. The Hub shows the result. NayaNET connects people and intelligence.**
+> **Human provides vision and legitimate authority. Naya provides intelligence and authorized execution. The Superbrain provides organized context. Intelligent Events preserve meaningful experience. Intelligent Blocks carry portable meaning. PIS carries primary intelligence. CIS compounds learning. Adaptive Learning changes future behavior. Smart Flow keeps intelligence moving. Verification establishes what is actually true. The Hub shows the result. NayaNET connects people and intelligence.**
 
 ---
 
@@ -60,15 +79,17 @@ The target is a system in which useful intelligence survives, can be found, can 
 
 Think of NayaPOWER as a living intelligence organism:
 
-**EXPERIENCE → CAPTURE → UNDERSTAND → CONNECT → LEARN → APPLY → OBSERVE → VERIFY → IMPROVE → CONTINUE**
+**EXPERIENCE → INTELLIGENT EVENT → INTELLIGENT BLOCK → VERIFY → CONNECT → ACT → OUTCOME → LEARNING → SUCCESSOR → NEW EXPERIENCE**
 
-A Smart Note is not the destination.
+An Intelligent Event is the occurrence.
 
-It is the durable intelligence event that enters the flow.
+An Intelligent Block is the portable semantic representation of that occurrence.
+
+A Smart Note is one important way an Intelligent Event enters the system.
 
 The goal is not to remember everything.
 
-**Remember what matters, understand it, verify it, use it, learn from the result, and carry the useful learning forward.**
+**Remember what matters, understand it, verify it, connect it, use it, learn from the result, and carry the useful learning forward.**
 
 ---
 
@@ -108,8 +129,11 @@ The authoritative system architecture is documented in the Master System Archite
 
 # 5. THE MOST IMPORTANT DISTINCTIONS
 
-### Smart Note ≠ CIS
-A Smart Note captures a meaningful intelligence event. CIS turns useful intelligence into compounding learning.
+### Smart Note ≠ Intelligent Block
+A Smart Note is a durable event capture mechanism. An Intelligent Block is the portable semantic representation of the underlying intelligence.
+
+### Intelligent Block ≠ source of truth
+The block carries canonical semantic meaning for transport and reasoning. The authoritative underlying event/evidence remains in its governed source systems.
 
 ### PIS ≠ CIS
 PIS carries primary intelligence. CIS processes intelligence so it can compound.
@@ -155,18 +179,19 @@ Before consequential work:
 In practice:
 
 1. Find this Team Naya entry point.
-2. Load the governing documents required by the Master Activation Protocol.
-3. Identify the current mission.
-4. Inspect the actual current state.
-5. Separate known / observed / verified / inferred / assumed / unknown / conflicted / superseded.
-6. Determine authority and protected state.
-7. Find the highest-value responsible next action.
-8. Execute when authorized and technically possible.
-9. Verify the real result.
-10. Preserve the useful learning.
-11. Leave an exact continuation path.
+2. Load the Constitution before detailed work.
+3. Load the minimum relevant governing documents.
+4. Identify the current mission.
+5. Inspect the actual current state.
+6. Separate known / observed / verified / inferred / assumed / unknown / conflicted / superseded.
+7. Determine authority and protected state.
+8. Find the highest-value responsible next action.
+9. Execute when authorized and technically possible.
+10. Verify the real result.
+11. Preserve the useful learning.
+12. Leave an exact continuation path.
 
-Do not make Shawn reconstruct information that the Superbrain can retrieve.
+Do not make the human reconstruct information that the Superbrain can retrieve.
 
 Do not claim completion because code was written when runtime behavior has not been verified.
 
@@ -182,7 +207,7 @@ That would create noise and unnecessary context load.
 
 Instead use a **layered retrieval model**:
 
-**TEAM-NAYA START HERE → MASTER MAP → GOVERNING RULES → RELEVANT SYSTEM DEFINITIONS → CURRENT PROJECT STATE → RUNTIME EVIDENCE → ACT**
+**TEAM-NAYA START HERE → CONSTITUTION → MASTER MAP → GOVERNING RULES → RELEVANT SYSTEM DEFINITIONS → CURRENT PROJECT STATE → RUNTIME EVIDENCE → ACT**
 
 The Team Naya documents are distilled orientation. The numbered canonical documents remain the detailed source material.
 
@@ -194,17 +219,21 @@ When a detail matters, open the canonical source rather than trusting the summar
 
 # 8. CURRENT ENGINEERING LESSON
 
-The project recently proved an important bridge:
+The latest NIOM traversal established a real causal boundary:
 
-**SMART NOTE → PERSIST → CIS LEARNING → PIS PROJECTION → HUB FEED → DURABLE RECEIPT**
+**SMART NOTE → COGNITION EVENT ✅**
 
-An isolated end-to-end proof has passed in GitHub Actions. That proves the tested transaction slice, not the entire production learning architecture.
+**COGNITION EVENT → EXECUTION RECEIPT ❌**
 
-The next proof boundary is production:
+The repair has now been added to production and to the repository so that a **VERIFIED Smart Note receipt** can close that boundary through the existing universal execution-receipt writer without creating a new schema.
 
-**REAL CANONICAL SMART NOTE → REAL PERSISTENCE → REAL CIS STATE → REAL PIS PROJECTION → REAL HUB CONSUMPTION → OBSERVED RESULT → VERIFICATION**
+The current required proof is therefore:
 
-Never upgrade an isolated test result into a production claim without production evidence.
+**AUTHENTICATED SMART NOTE REPLAY → VERIFIED SMART NOTE → COGNITION EVENT → EXECUTION RECEIPT**
+
+Do not claim that historical records healed until an authenticated replay or equivalent authorized runtime execution proves it.
+
+Never upgrade documentation or migration presence into runtime outcome proof.
 
 ---
 
@@ -220,16 +249,16 @@ Never upgrade an isolated test result into a production claim without production
 
 # 10. IF YOU REMEMBER ONLY TEN THINGS
 
-1. **The human is the authority.**
+1. **The human with legitimate authority is the authority.**
 2. **Naya is the operating partner.**
 3. **The Superbrain is a system, not a file.**
-4. **Smart Notes preserve what matters.**
-5. **PIS carries intelligence; CIS compounds it.**
-6. **Adaptive Learning makes learning change future behavior.**
-7. **Smart Flow prevents unnecessary breaks in continuity.**
-8. **Verification is how claims become trusted state.**
-9. **The Hub displays/provides interaction with the engine; it is not the engine.**
-10. **Every substantive task ends with verified state + exact next action + preserved learning.**
+4. **An Intelligent Event is the occurrence; an Intelligent Block carries its portable meaning.**
+5. **Smart Notes preserve meaningful intelligence events.**
+6. **PIS carries intelligence; CIS compounds it.**
+7. **Verification is how claims become trusted state.**
+8. **The Hub provides human interaction with the engine; it is not the engine.**
+9. **Capability does not create authority.**
+10. **Every substantive task ends with verified state + preserved learning + the highest-value responsible continuation.**
 
 ---
 
@@ -249,6 +278,7 @@ A Naya is activated when it can answer:
 - What remains unknown?
 - Which canonical documents govern this task?
 - What is the highest-value responsible next action?
+- What representation will preserve the intelligence across human, AI, and machine boundaries?
 
 Then it acts accordingly.
 
