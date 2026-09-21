@@ -7,7 +7,8 @@
     "source": "git:HEAD",
     "value": "c262191dcdc16e6488a395778de6d9896e5c2097",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-21T18:35:xxZ"
+    "recorded_at": "2026-09-21T18:35:xxZ",
+    "observed_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af"
   },
   "current_branch": {
     "source": "git:branch --show-current",
@@ -50,24 +51,16 @@
     "status": "ACTIVE"
   },
   "latest_automation_observation": {
-    "status": "PROVEN",
-    "workflow": ".github/workflows/verify-nayanet-project-intelligence-home-run.yml",
-    "run_id": 35639400253,
-    "job_id": 106464749083,
-    "source_head": "c262191dcdc16e6488a395778de6d9896e5c2097",
-    "artifact_id": 10657402815,
-    "chain": [
-      "RECEIVE",
-      "RETRIEVE",
-      "RENDER",
-      "ACK",
-      "SUCCESSOR_HANDOFF",
-      "COLD_14Q",
-      "COLD_SUCCESSOR",
-      "AUTHORITY",
-      "CONTINUATION",
-      "SUCCESSOR_RECEIPT"
-    ]
+    "home_run_id": 35640130080,
+    "home_run_job_id": 106467147709,
+    "observed_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+    "repaired_boundaries": [
+      "canonical_hub_render_wait",
+      "authorized_continuation_receipt_shape",
+      "project_intelligence_event_timezone_normalization"
+    ],
+    "status": "COLD_SUCCESSOR_HOME_RUN_VERIFIED",
+    "proof_result": "PROVEN"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
@@ -130,7 +123,10 @@
     "Supabase migration 20260921093000_project_intelligence_operating_layer_v1 created canonical project state, intelligence lineage, bridge retrieval/render evidence fields, and computation-accounting fields.",
     "Supabase nayanet-compound-intelligence Edge Function version 5 exposes restore V2, retrieve, reconcile V2, understand, learning candidate/verify/retrieve, project, bridge ack, successor handoff, share, supersede lineage, health V2, state update, dream seam, and compound lifecycle.",
     "Project Intelligence state is persisted in public.nayanet_project_intelligence_state with one canonical NayaNET row and one explicit current next action.",
-    "Bridge retrieved/rendered flags are separate from indexed/projected and require explicit evidence; transport flags are never sufficient to claim retrieval/render."
+    "Bridge retrieved/rendered flags are separate from indexed/projected and require explicit evidence; transport flags are never sufficient to claim retrieval/render.",
+    "Current-head Project Intelligence home-run run 35640130080 is VERIFIED_PROVEN: fresh owner, bridge receive, exact retrieval, canonical Hub render, ACK, fresh cold successor, 14-question restore with evidence metadata, authorized pi.continue, successor receipt, and four-gate consolidated receipt.",
+    "Project Intelligence event reconstruction timezone defect was repaired in two historical canonical events whose effective_at values lacked timezone offsets; deterministic reconstruction now passes current-head home-run.",
+    "The current Project Intelligence home-run proves sender → receiver → retrieval → render → ACK → cold successor → authority → authorized continuation → successor receipt as one current-head runtime chain at the recorded source scope."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -277,5 +273,11 @@
     "priority": "P1",
     "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
     "completion": "Claim-appropriate measured avoided computation with verified outcome preservation."
+  },
+  "reconciliation": {
+    "date": "2026-09-21",
+    "live_main_before_reconciliation": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+    "control_plane_reconciliation_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+    "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
   }
 }
