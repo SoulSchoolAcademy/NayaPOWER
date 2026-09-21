@@ -270,7 +270,12 @@ jobs:
                 const restored=await compound(fp,freshSession,'restore');
                 const q=['1_WHO_ARE_WE','2_WHAT_ARE_WE_BUILDING','3_WHY_ARE_WE_BUILDING_IT','4_WHAT_DOES_SUCCESS_MEAN','5_WHAT_IS_TRUE_RIGHT_NOW','6_WHAT_HAS_ALREADY_BEEN_PROVEN','7_WHAT_IS_UNKNOWN','8_WHAT_AUTHORITY_EXISTS','9_WHAT_HAPPENED_PREVIOUSLY','10_WHAT_DID_WE_LEARN','11_WHAT_SHOULD_HAPPEN_NEXT','12_HOW_DO_I_PROVE_IT','13_WHERE_DO_I_RECORD_IT','14_HOW_DOES_THE_NEXT_NAYA_CONTINUE'];
                 for(const k of q) if(restored?.[k]===undefined||restored?.[k]===null) throw new Error('COLD_14Q_GAP:'+k);
-                mark('COLD_14Q','PASS',{questions:14,source:'nayanet-compound-intelligence/restore'});
+                const meta=restored?.QUESTION_METADATA?.items;
+                for(const k of q){
+                  const m=meta?.[k];
+                  if(!m?.status||!m?.source_path||!m?.source_scope||!m?.evidence_identity||!m?.freshness||!m?.next_responsible_action) throw new Error('COLD_14Q_EVIDENCE_METADATA_GAP:'+k);
+                }
+                mark('COLD_14Q','PASS',{questions:14,evidence_metadata:true,source:'nayanet-compound-intelligence/restore'});
                 const freshRetrieve=await compound(fp,freshSession,'retrieve',{query:direct.data.title,limit:20});
                 if(!freshRetrieve.items?.some(x=>x.event_id===receiverEventId)) throw new Error('COLD_SUCCESSOR_RETRIEVAL_FAILED');
                 mark('COLD_SUCCESSOR','PASS',{packet_id:bridge.packet_id,event_id:receiverEventId});
