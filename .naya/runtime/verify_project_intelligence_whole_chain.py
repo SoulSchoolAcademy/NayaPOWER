@@ -62,8 +62,8 @@ def main() -> int:
     boot = load("SUPERBRAIN/AI-BOOT/START-HERE.md")
 
     active = blocks.get("active_block", {})
-    if active.get("id") != "COLD-NAYA-TAKEOVER-PROOF":
-        fail("active block is not COLD-NAYA-TAKEOVER-PROOF")
+    if active.get("id") != "PROJECT-INTELLIGENCE-PI-01":
+        fail("active block is not PROJECT-INTELLIGENCE-PI-01")
     if active.get("next_action_count") != 1:
         fail("active block does not expose exactly one next action")
     next_action = active["next_actions"][0]
