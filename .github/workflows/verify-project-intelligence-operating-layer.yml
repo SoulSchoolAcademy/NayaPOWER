@@ -1,0 +1,98 @@
+name: NayaNET Project Intelligence operating-layer proof
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.github/workflows/verify-project-intelligence-operating-layer.yml'
+permissions:
+  contents: read
+jobs:
+  project-intelligence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Execute 12-function operating-layer proof
+        shell: bash
+        run: |
+          cat > verify-pi.mjs <<'EOF'
+          import fs from 'node:fs';
+          const base=process.env.SUPABASE_URL;
+          const key=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const runId=process.env.GITHUB_RUN_ID;
+          const headers=(token,extra={})=>({apikey:key,authorization:'Bearer '+token,'content-type':'application/json',...extra});
+          async function req(path,token,body={},expected=[200]){
+            const r=await fetch(base+'/functions/v1/'+path,{method:'POST',headers:headers(token),body:JSON.stringify(body)});
+            const t=await r.text(); let b; try{b=JSON.parse(t)}catch{b={raw:t}};
+            if(!expected.includes(r.status)) throw Error(path+' expected '+expected.join('/')+' got '+r.status+' '+JSON.stringify(b));
+            return b;
+          }
+          async function rest(path,token){
+            const r=await fetch(base+'/rest/v1/'+path,{headers:headers(token)});
+            const t=await r.text(); let b; try{b=JSON.parse(t)}catch{b={raw:t}};
+            if(!r.ok) throw Error('REST '+r.status+' '+t);
+            return b;
+          }
+          const auth=await (async()=>{const r=await fetch(base+'/auth/v1/signup',{method:'POST',headers:{apikey:key,'content-type':'application/json'},body:'{}'});const b=await r.json();if(!r.ok||!b.access_token)throw Error('AUTH_BOOTSTRAP_FAILED:'+JSON.stringify(b));return b;})();
+          const token=auth.access_token;
+          const receipt={schema:'NAYANET_PROJECT_INTELLIGENCE_OPERATING_LAYER_PROOF_V1',run_id:runId,checks:{}};
+          const restore=await req('nayanet-pi-restore',token,{});
+          receipt.checks.restore=restore.ok===true?'PASS':'FAIL';
+          const retrieve=await req('nayanet-pi-retrieve',token,{query:'NayaNET'});
+          receipt.checks.retrieve=retrieve.ok===true?'PASS':'FAIL';
+          const reconcile=await req('nayanet-pi-reconcile',token,{});
+          receipt.checks.reconcile=reconcile.ok===true?'PASS':'FAIL';
+          const understand=await req('nayanet-pi-understand',token,{content:'PI operating-layer proof experience '+runId,title:'PI proof experience'});
+          receipt.checks.understand=understand.ok===true?'PASS':'FAIL';
+          const eventId=understand?.result?.event?.event_id;
+          if(!eventId) throw Error('UNDERSTANDING_EVENT_ID_MISSING');
+          const rows=await rest('nayanet_cognition_events?event_id=eq.'+encodeURIComponent(eventId)+'&select=id,event_id',token);
+          if(!rows?.[0]?.id) throw Error('UNDERSTANDING_EVENT_UUID_MISSING');
+          const eventUuid=rows[0].id;
+          const candidate=await req('nayanet-pi-learning-candidate',token,{claim:'Verified candidate lesson for PI proof '+runId,target_id:'pi-proof',source_event_id:eventId,observed_value:{proof_run:runId}});
+          receipt.checks.learning_candidate=candidate.ok===true?'PASS':'FAIL';
+          const learningId=candidate?.result?.learning?.id;
+          if(!learningId) throw Error('LEARNING_CANDIDATE_ID_MISSING');
+          const verified=await req('nayanet-pi-learning-verify',token,{evidence_id:learningId,verification_method:'Controlled PI operating-layer proof run',evidence_refs:[eventId],observed_value:{verified_by_run:runId}});
+          receipt.checks.learning_verify=verified.ok===true?'PASS':'FAIL';
+          const learning=await req('nayanet-pi-learning-retrieve',token,{query:'PI proof'});
+          receipt.checks.learning_retrieve=learning.ok===true?'PASS':'FAIL';
+          const projected=await req('nayanet-pi-project',token,{source_event_id:eventUuid});
+          receipt.checks.project=projected.ok===true?'PASS':'FAIL';
+          const ack=await req('nayanet-pi-ack',token,{packet_id:'missing-packet',retrieved:true,rendered:true,retrieval_evidence:['controlled-proof'],render_evidence:['controlled-proof']},[400]);
+          receipt.checks.ack_fail_closed=(ack.ok===false)?'PASS':'FAIL';
+          const successor=await req('nayanet-pi-successor-handoff',token,{what_happened:'PI operating layer proof executed',what_changed:'Twelve canonical PI functions verified deployed; runtime proof exercised',learned:['Candidate learning was promoted only with evidence'],next_action:'Run PI-03 cold retrieval independently'});
+          receipt.checks.successor_handoff=successor.ok===true?'PASS':'FAIL';
+          const share=await req('nayanet-pi-share',token,{source_event_id:eventUuid},[403]);
+          receipt.checks.share_authority_fail_closed=(share.ok===false)?'PASS':'FAIL';
+          const supersede=await req('nayanet-pi-supersede',token,{superseded_event_id:eventUuid,content:'Superseding PI proof interpretation '+runId,reason:'Controlled proof lineage'});
+          receipt.checks.supersede=supersede.ok===true?'PASS':'FAIL';
+          const health=await req('nayanet-pi-health',token,{});
+          receipt.checks.health=health.ok===true?'PASS':'FAIL';
+          const dream=await req('nayanet-pi-dream',token,{event_id:eventId,idempotency_key:'pi-dream-'+runId});
+          receipt.checks.dream=dream.ok===true?'PASS':'FAIL';
+          const compound=await req('nayanet-pi-compound',token,{});
+          receipt.checks.compound=compound.ok===true?'PASS':'FAIL';
+          const failures=Object.entries(receipt.checks).filter(([,v])=>v!=='PASS');
+          receipt.status=failures.length?'FAILED':'VERIFIED';
+          receipt.failures=failures;
+          fs.writeFileSync(process.env.RUNNER_TEMP+'/nayanet-project-intelligence-proof.json',JSON.stringify(receipt,null,2));
+          console.log('NAYANET_PROJECT_INTELLIGENCE_OPERATING_LAYER='+receipt.status);
+          console.log(JSON.stringify(receipt));
+          if(failures.length) process.exit(1);
+          EOF
+          node verify-pi.mjs
+      - name: Upload PI operating-layer proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nayanet-project-intelligence-operating-layer-proof
+          path: ${{ runner.temp }}/nayanet-project-intelligence-proof.json
+          if-no-files-found: ignore
