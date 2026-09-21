@@ -152,3 +152,24 @@ A Naya does not say “someone else can continue” until the required intellige
 **ONE NEXT ACTION:** Integrate evidence lineage into real execution/verification receipts and prove the complete lineage is runtime-queryable.
 
 **Successor:** Read `.naya/project-intelligence/42-NAYANET-FINAL-SUCCESSOR-TORCH-2026-09-21.md`, resolve live HEAD, answer all 14 questions, reconcile, execute only the single frontier, verify, learn, and leave a better torch.
+
+## 🔱 NAYANET-2026-09-21-011 — RUNTIME EVIDENCE-LINEAGE INTEGRATION DEPLOYED / PROOF STILL OPEN
+
+**Truth state:** DEPLOYED / END-TO-END UNVERIFIED  
+**Observed control-plane checkpoint:** `6fdc8f1d53a494ee120d0a96c384a0658a066ba4`
+
+**Change:** Evidence lineage is wired into the existing `nayanet_execution_receipts` machinery. No new evidence store or lineage table was introduced. Runtime sources are tracked in GitHub for `nayanet-pi-execute` v4, `nayanet-learning-verify` v2, and `nayanet-successor-handoff` v2.
+
+**Runtime contract:** `source → claim → action → outcome → verification → learning → successor`.
+
+**Evidence:** `.naya/project-intelligence/43-NAYANET-RUNTIME-EVIDENCE-LINEAGE-INTEGRATION-ATTEMPT-001.md`; `.github/workflows/verify-nayanet-runtime-evidence-lineage.yml`; deployed Supabase function versions.
+
+**Learning:** Integration is not proof. The receipt itself must be independently retrieved and show all seven nodes and six edges with `status=COMPLETE`. A triggered workflow without an observable result is not a pass.
+
+**Current state:** NAYANET-CONSTITUTIONAL-HARDENING-03 remains OPEN.
+
+**Next action:** Execute and independently observe the end-to-end runtime lineage proof.
+
+**Proof required:** one real runtime receipt with complete lineage, independently queryable after execution.
+
+**Successor:** Do not advance to the causal verification frontier until this receipt is VERIFIED.
