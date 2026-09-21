@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
 """Canonical Project Intelligence Bridge packet builder/validator."""
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess, urllib.request
+import argparse, hashlib, json, os, subprocess, sys, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import NAMESPACE_URL, uuid5
 
 ROOT=Path(__file__).resolve().parents[2]
+sys.path.insert(0,str(ROOT/".naya/runtime"))
+import project_intelligence_reconstruction as pir
 CONTEXT=ROOT/".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
 STATE=ROOT/".naya/control-plane/STATE.json"
 BLOCK=ROOT/".naya/control-plane/BLOCKS.json"
@@ -24,19 +26,24 @@ def packet():
         raw=(ROOT/rel).read_bytes(); d=digest(raw)
         prov.append({"path":rel,"sha256":d,"bytes":len(raw)})
         intel.append({"object_id":"github:"+rel,"operation":"UPSERT","source_path":rel,"content_sha256":d,"content":raw.decode("utf-8")})
-    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
+    reconstruction=pir.build_current("NayaNET")
+    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
     canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
     p["content_hash"]=digest(canonical); p["packet_id"]=str(uuid5(NAMESPACE_URL,"nayanet:project-intelligence:"+h+":"+p["content_hash"])); p["idempotency_key"]="nayanet-pi-"+h+"-"+p["content_hash"][:24]
     return p
 
 def validate(p):
-    req=["protocol","packet_type","project_id","sender","receiver","source_ref","created_at","freshness","operating_context","intelligence","provenance","privacy","content_hash","packet_id","idempotency_key"]
+    req=["protocol","packet_type","project_id","sender","receiver","source_ref","created_at","freshness","operating_context","project_intelligence_reconstruction","intelligence","provenance","privacy","content_hash","packet_id","idempotency_key"]
     e=["missing:"+x for x in req if x not in p]
     if p.get("protocol")!="NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1": e.append("protocol_mismatch")
     if p.get("project_id")!="NayaNET": e.append("project_mismatch")
     if p.get("sender",{}).get("repository")!="SoulSchoolAcademy/NayaPOWER": e.append("sender_mismatch")
     if p.get("receiver",{}).get("canonical_source")!="NAYANET/HUB/index.html": e.append("receiver_mismatch")
     c=p.get("operating_context",{})
+    r=p.get("project_intelligence_reconstruction",{})
+    for k in ["current","historical","superseded","stale","conflicted","unknown","evidence","causal_lineage","next_action"]:
+        if k not in r: e.append("reconstruction_missing:"+k)
+    if r.get("resolution",{}).get("status")!="RECONSTRUCTED": e.append("reconstruction_not_reconstructed")
     for k in ["you_are_here","mission","north_star","current_truth","proven","unknown","blocked","protected","sender","receiver","bridge","current_next_action"]:
         if k not in c: e.append("context_missing:"+k)
     if not p.get("intelligence"): e.append("intelligence_empty")
