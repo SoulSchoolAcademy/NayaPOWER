@@ -9,14 +9,13 @@ This is the map, not the whole forest.
 
 [01 — Creator Constitution](01-CREATOR-CONSTITUTION.md)  
 [02 — Product Definition](02-PRODUCT-DEFINITION-AND-BOUNDARIES.md)  
-[03 — 100 Qualification Questions + Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)  
+[03 — 100 Questions + Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)  
 [04 — Library + Intelligence Organization](04-LIBRARY-AND-INTELLIGENCE-ORGANIZATION.md)
 
 ## CONSTITUTION + ARCHITECTURE
 
-[20 — Project Intelligence Constitution + Architecture Specification](20-PROJECT-INTELLIGENCE-CONSTITUTION-AND-ARCHITECTURE-SPEC.md)
-
-This is the synthesized constitutional/architectural target. It adds temporal truth, causal evidence, claims, lineage, replay/idempotency, consent-vs-authority, security, versioning, amendments, recovery, evaluation, resource awareness, human agency, and network-level intelligence contracts.
+[20 — Project Intelligence Constitution + Architecture Specification](20-PROJECT-INTELLIGENCE-CONSTITUTION-AND-ARCHITECTURE-SPEC.md)  
+[21 — Gap → Proof Matrix](21-GAP-TO-PROOF-MATRIX.md)
 
 ## BUILD PATH
 
