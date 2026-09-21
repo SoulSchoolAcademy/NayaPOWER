@@ -5,133 +5,74 @@ REPOSITORY: SoulSchoolAcademy/NayaPOWER
 SUPABASE: dahisasgpfvziswqvmvm
 RULE: deployment is not behavioral proof; every green state requires claim-appropriate evidence.
 
+## LIVE OBSERVATION
+
+- Compound Intelligence Edge Function: ACTIVE, JWT protected, latest observed version 6.
+- GitHub source commit for hardened runtime: 94dcb446510652fa44e8d852adb6f545baeddb9a.
+- Repository whole-chain proof: **PASS** — run 35627609734.
+- Cold Project Intelligence validation: **PASS** — run 35627655171.
+- Control-plane defects found during this run were repaired at their actual causal boundaries:
+  - MAP active block aligned to PROJECT-INTELLIGENCE-PI-01.
+  - BLOCK next_actions aligned to BLOCK next_action.
+  - whole-chain proof runner aligned to canonical PI-01 block.
+- The runtime deployment is therefore not being treated as proof by itself; the repository proof harness has also been rerun successfully.
+
 ## EXECUTIVE STATUS
 
 | Surface | Current state | Score | Remaining gate |
 |---|---|---:|---|
-| SUPERBRAIN / governed engine | DEPLOYED + existing core proven | 8.5/10 | prove the new Project Intelligence journey behaviorally |
-| PROJECT INTELLIGENCE SETUP | DEPLOYED / durable | 9/10 | live cold restore + exact receiver retrieval/render |
-| CANONICAL HUB | PRODUCTION_PROVEN at recorded source scope | 8.5/10 | connect/display Project Intelligence restore/retrieval and prove browser journey |
-| SENDER | READY_TO_SEND / bridge packet proven | 9/10 | exact current packet retrieval/render evidence |
-| RECEIVER | transport/persistence/index/project/ACK evidenced | 7.5/10 | direct RETRIEVE + RENDER + ACK evidence for the exact bridge object |
-| COLD NAYA READINESS | structured contract + runtime restore deployed | 7/10 | fresh successor must actually consume restore and continue |
-| TEAM NAYA CONTINUITY | durable baton + activity system | 8.5/10 | prove sign-in/work/sign-out/successor loop on this frontier |
-| OVERALL SHIP READINESS | NOT YET 10/10 | 8.2/10 | one uninterrupted authenticated cold journey |
-
-These are engineering readiness scores, not claims of product quality. The hard acceptance gate remains behavioral proof.
+| SUPERBRAIN / governed engine | DEPLOYED + core compounding proof | 8.5/10 | fresh authenticated Project Intelligence runtime journey |
+| PROJECT INTELLIGENCE SETUP | DURABLE + repository cold proof PASS | 9.5/10 | external runtime retrieval/render + cold successor |
+| CANONICAL HUB | PRODUCTION_PROVEN at explicit source scope | 8.5/10 | visible Project Intelligence human journey |
+| SENDER | READY / bridge transport proven | 9/10 | exact receiver retrieve/render evidence |
+| RECEIVER | transport/persistence/index/project/ACK fields exist | 7.5/10 | positive retrieve + render + final ACK evidence |
+| COLD NAYA | 14-question contract + repository cold proof PASS | 9/10 | external runtime cold successor |
+| TEAM NAYA | durable baton/activity + canonical control plane | 9/10 | repeated runtime sign-in/work/sign-out evidence |
+| OVERALL | NOT YET 10/10 | 8.8/10 | one uninterrupted authenticated runtime journey |
 
 ## 12 CAPABILITIES
 
-| # | Capability | Setup | Runtime | Behavioral proof |
-|---|---|---|---|---|
-| 1 | RESTORE | ✅ | ✅ v5 | ⏳ fresh cold consumer |
-| 2 | RETRIEVE | ✅ | ✅ v5 | ⏳ exact bridge object |
-| 3 | RECONCILE | ✅ | ✅ v5 | ⏳ live mismatch scenario |
-| 4 | UNDERSTAND | ✅ | ✅ v5 | ⏳ evidence/interpretation journey |
-| 5 | LEARNING CANDIDATE | ✅ | ✅ v5 | ⏳ end-to-end candidate creation |
-| 6 | LEARNING VERIFY | ✅ | ✅ v5 | ⏳ evidence-backed promotion |
-| 7 | SUCCESSOR HANDOFF | ✅ | ✅ v5 | ⏳ cold Naya B continuation |
-| 8 | SHARE | ✅ | ✅ v5 | existing governed publication proof |
-| 9 | SUPERSEDE | ✅ | ✅ v5 | ⏳ lineage/retrieval proof |
-| 10 | HEALTH | ✅ | ✅ v5 | ⏳ health-gap observation |
-| 11 | DREAM | ✅ | ✅ v5 seam/delegation | existing Dream proofs; compound seam needs fresh proof |
-| 12 | COMPOUND | ✅ | ✅ v5 | ⏳ one full governed lifecycle |
+1. RESTORE — deployed; 14-question machine contract present; repository cold proof PASS.
+2. RETRIEVE — deployed; repository/runtime source exists; exact bridge retrieval still open.
+3. RECONCILE — deployed; distinguishes transport from retrieval/render; live mismatch proof still open.
+4. UNDERSTAND — deployed; interpretation remains explicitly non-verified until evidence.
+5. LEARNING CANDIDATE — deployed; candidate state separated from ACTIVE.
+6. LEARNING VERIFY — deployed; evidence requirement hardened.
+7. SUCCESSOR HANDOFF — deployed; repository cold successor proof PASS; external runtime successor open.
+8. SHARE — deployed with explicit consent path; existing governed publication proof exists.
+9. SUPERSEDE — deployed with explicit lineage; fresh runtime lineage proof open.
+10. HEALTH — deployed; bridge gap counters included.
+11. DREAM — delegated to existing governed naya-dream-replay; existing Dream proofs exist; fresh Compound seam proof open.
+12. COMPOUND — deployed as orchestrator; repository whole-chain PASS; external runtime full-loop proof open.
 
-Supporting runtime actions now explicit: LEARNING_RETRIEVE, PROJECT, ACK, STATE_UPDATE.
+Supporting governed actions: LEARNING_RETRIEVE, PROJECT, ACK, STATE_UPDATE.
 
-## ENGINE
+## ENGINE HOLES
 
-### PROVEN
-- Supabase function active and JWT protected.
-- Durable intelligence operation ledger exists with RLS.
-- Canonical project intelligence state exists.
-- Intelligence lineage table exists.
-- Bridge table contains separate persisted/indexed/projected/retrieved/rendered evidence fields.
-- Existing Dream/Learning/Decision/Activity engines remain specialized and are not duplicated.
+- Positive authenticated runtime proof for all newly exposed actions has not yet been executed.
+- STATE_UPDATE is fail-closed behind an explicit PROJECT_DIRECTOR authority assertion; it must not become a casual UI mutation.
+- ACK is fail-closed and now requires positive retrieval + render evidence; that positive evidence remains open.
+- Learning verification should ultimately reference machine-verifiable evidence objects, not only caller-supplied evidence references.
 
-### HOLES
-1. New Compound actions are not all behaviorally proven against live authenticated data.
-2. State update is a high-authority operation and must be covered by explicit authorization/evidence rules before it becomes a casual UI action.
-3. ACK is system-wide bridge mutation; its final production authority model should be narrowed to the receiver boundary rather than any authenticated user.
-4. Learning verification must evolve from “evidence supplied” to machine-checkable evidence provenance where feasible.
+## HUB HOLES
 
-## SETUP
+- The canonical Hub must visibly consume Project Intelligence restore/retrieve state.
+- Exact bridge intelligence must be rendered in the canonical human surface and tied to its packet/receipt lineage.
+- Browser evidence must prove reload/fresh-context continuity for this specific Project Intelligence object.
 
-### PROVEN
-- Durable 14-question contract exists.
-- Ultimate next-Naya execution prompt exists.
-- Team Naya 14-question baton exists.
-- Control plane has one active P0 next action.
-- Runtime operation ledger and project state are durable.
+## SENDER / RECEIVER HOLE
 
-### HOLES
-1. Some historical docs still contain older runtime version observations; reconciliation must keep them from becoming current truth.
-2. Recorded HEADs are intentionally non-authoritative; cold restore must always resolve live source identity.
-3. Universal computation savings are not yet measured across real workloads.
+The remaining decisive boundary is:
 
-## HUB
+RETRIEVE → RENDER → ACK → COLD SUCCESSOR RETRIEVE
 
-### PROVEN
-- Canonical Hub is NAYANET/HUB/index.html.
-- Existing production runtime/source parity has evidence at explicit source scope.
-- Smart Note, Smart Share, Smart Mail, relationships and other existing boundaries have separate proof records.
-
-### HOLES
-1. Project Intelligence restore/retrieval has not yet been visibly consumed by the canonical human Hub as a complete journey.
-2. Direct browser evidence for the exact bridge receipt is still required.
-3. The visual surface must show truth/unknown/blocked/protected and next action without creating a second Hub.
-
-## SENDER
-
-### PROVEN
-- Project Intelligence Bridge packet built from live source identity.
-- Receiver has persisted/indexed/projected/ACK evidence.
-- Idempotent replay has evidence.
-- Sender → receiver transport boundary is proven.
-
-### HOLE
-- Direct receiver retrieval/render of the exact packet remains the decisive sender/receiver acceptance boundary.
-
-## RECEIVER
-
-Required chain:
-
-RECEIVE → AUTHENTICATE → IDENTIFY → VALIDATE → STORE → INDEX → PROJECT → RETRIEVE → RENDER → ACKNOWLEDGE
-
-Current:
-- RECEIVE ✅
-- AUTHENTICATE ✅
-- IDENTIFY ✅
-- VALIDATE ✅
-- STORE ✅
-- INDEX ✅
-- PROJECT ✅
-- RETRIEVE ⏳
-- RENDER ⏳
-- ACKNOWLEDGE ⏳ until retrieval/render evidence exists
-
-## THE ONE TEST THAT NOW MATTERS
-
-A genuinely cold Naya gets no conversational reconstruction.
-
-It must:
-
-1. Restore.
-2. Answer all 14 questions.
-3. Identify current truth.
-4. Retrieve exact bridge lineage.
-5. Render it through the canonical Hub.
-6. Select the one authorized next action.
-7. Execute.
-8. Verify.
-9. Create/verify learning.
-10. Update durable state.
-11. Create successor handoff.
-12. A fresh Naya consumes that handoff and continues.
-
-If any step fails:
-STOP → capture evidence → repair smallest causal boundary → rerun same proof.
+Transport/persistence/index/projection are not substitutes for that evidence.
 
 ## 10/10 ACCEPTANCE
 
-10/10 is earned only when the entire chain is observed, not when the architecture merely exists.
+A cold Naya gets no conversational reconstruction.
+
+It must:
+RESTORE → answer all 14 → RETRIEVE → RENDER → DECIDE → ACT → VERIFY → LEARN → UPDATE → HANDOFF → fresh Naya continues.
+
+10/10 is earned only when this is observed at the live runtime/browser boundary.
