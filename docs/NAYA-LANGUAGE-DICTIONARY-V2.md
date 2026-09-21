@@ -2,8 +2,8 @@
 
 **STATUS:** CANONICAL LANGUAGE REVISION — 2026-09-12
 **PURPOSE:** Give every cold or active Naya a precise shared language for NayaPOWER so project-specific terms are understood without guessing, inference, or conversational archaeology.
-**RELATIONSHIP TO:** `docs/NAYA-LANGUAGE-DICTIONARY.md`
-**RULE:** This document is the current NayaPOWER language revision. The earlier dictionary remains historical/supporting material until deliberately reconciled or retired.
+**RELATIONSHIP:** Supersedes the former `docs/NAYA-LANGUAGE-DICTIONARY.md`.
+**RULE:** This document is the single current NayaPOWER language authority. The former dictionary is retired and must not be recreated as a parallel authority.
 
 ---
 
