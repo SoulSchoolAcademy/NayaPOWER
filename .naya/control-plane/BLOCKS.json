@@ -2,10 +2,10 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "NAYANET-PI-03-COLD-RETRIEVAL",
-    "status": "ACTIVE",
+    "id": "NAYANET-MASTER-PROOF-CONSOLIDATION",
+    "status": "COMPLETE",
     "priority": "P0",
-    "intent": "Prove a genuinely fresh Naya context can retrieve the required NayaNET Project Intelligence without conversation archaeology or hidden dependence on the prior reconstruction output.",
+    "intent": "Close the defined NayaNET Project Intelligence master proof from PI-01 through PI-08 and the consolidated runtime/browser/adversarial/measurement acceptance scope.",
     "protected": [
       "Project NayaNET = Project Intelligence",
       "canonical source hierarchy",
@@ -16,27 +16,37 @@
       "human authority"
     ],
     "acceptance": [
-      "Fresh context starts without this conversation",
-      "Identity, purpose, current state, proven/unknown/failed, authority, open loops, next action, and proof requirements are retrieved from durable sources",
-      "Retrieved model is consistent with canonical evidence",
-      "No prior assistant answer is used as an unstated source",
-      "PI-03 receipt is written and verified"
+      "12-function authenticated runtime proof verified",
+      "PI-03 cold retrieval verified",
+      "PI-04 reconciliation verified",
+      "PI-05 authorized next action verified",
+      "PI-06 governed execution and receipt verified",
+      "PI-07 learning influence verified",
+      "PI-08 cold successor verified",
+      "sender→receiver→persistence→index→projection→retrieve→render→ACK verified",
+      "exact bridge packet browser render verified",
+      "human/browser acceptance and adversarial bridge acceptance passed",
+      "computational compounding measured"
     ],
     "evidence": [
-      ".naya/project-intelligence/35-NAYANET-PI-02-RECONSTRUCTION-RECEIPT-2026-09-21.md",
-      ".naya/project-intelligence/33-NAYANET-COLD-NAYA-14-QUESTION-RECONSTRUCTION-AND-TORCH-SMART-NOTE-2026-09-21.md",
-      ".naya/control-plane/"
+      ".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md",
+      ".github/workflows/verify-project-intelligence-operating-layer.yml",
+      ".github/workflows/verify-pi03-cold-retrieval.yml",
+      ".github/workflows/verify-pi04-reconciliation.yml",
+      ".github/workflows/verify-pi05-authorized-next-action.yml",
+      ".github/workflows/verify-pi06-governed-execution.yml",
+      ".github/workflows/verify-pi07-learning-influence.yml",
+      ".github/workflows/verify-pi08-cold-successor.yml",
+      ".github/workflows/verify-consolidated-sender-receiver-chain-main.yml",
+      ".github/workflows/verify-consolidated-bridge-browser-render-main.yml",
+      ".github/workflows/wave-a-authenticated-browser-acceptance.yml",
+      ".github/workflows/verify-project-intelligence-bridge-adversarial.yml",
+      ".github/workflows/measure-nayanet-computational-compounding.yml"
     ],
-    "target_state": "PI-03_COLD_RETRIEVAL_PROVEN",
-    "next_action": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
+    "target_state": "MASTER_PROOF_COMPLETE",
+    "next_action": "Verify the final Master Proof receipt against its cited evidence at live execution time; do not reopen proven boundaries without new information.",
     "next_actions": [
-      "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut."
-    ],
-    "scope": [
-      ".naya/project-intelligence/",
-      ".naya/control-plane/",
-      ".naya/INTELLIGENCE-FEED.md",
-      "SUPERBRAIN/"
+      "Verify the final Master Proof receipt against its cited evidence at live execution time; do not reopen proven boundaries without new information."
     ],
     "next_action_count": 1
   },
