@@ -1,0 +1,21 @@
+{
+  "lineage_id":"LIN-NAYANET-MASTER-PROOF-20260921",
+  "project":"NAYANET",
+  "nodes":[
+    {"node_id":"SRC-39","kind":"source","ref":".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md"},
+    {"node_id":"CLM-PI-SCOPED","kind":"claim","ref":"CLM-NAYANET-MASTER-PROOF-SCOPED"},
+    {"node_id":"ACT-35631352527","kind":"action","ref":"GitHub Actions run 35631352527"},
+    {"node_id":"OUT-PI08","kind":"outcome","ref":"PI-08 cold successor observed success"},
+    {"node_id":"VER-PI08","kind":"verification","ref":"35631352527"},
+    {"node_id":"LRN-CLAIM-SCOPE","kind":"learning","ref":"Do not promote scoped proof to universal completion"},
+    {"node_id":"SUC-NEXT","kind":"successor","ref":".naya/project-intelligence/40-NAYANET-ULTIMATE-EXECUTION-DIRECTIVE-NEXT-NAYA-2026-09-21.md"}
+  ],
+  "edges":[
+    {"from":"SRC-39","to":"CLM-PI-SCOPED","relation":"SUPPORTS"},
+    {"from":"CLM-PI-SCOPED","to":"ACT-35631352527","relation":"CAUSES"},
+    {"from":"ACT-35631352527","to":"OUT-PI08","relation":"RESULTS_IN"},
+    {"from":"VER-PI08","to":"OUT-PI08","relation":"VERIFIES"},
+    {"from":"OUT-PI08","to":"LRN-CLAIM-SCOPE","relation":"TEACHES"},
+    {"from":"LRN-CLAIM-SCOPE","to":"SUC-NEXT","relation":"HANDOFF_TO"}
+  ]
+}
