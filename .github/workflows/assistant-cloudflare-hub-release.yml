@@ -223,6 +223,50 @@ jobs:
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-flagship.mjs
           rm -f verify-flagship.mjs
 
+      - name: Verify Command Station and Smart Feed interaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > verify-interface-acceptance.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.NAYA_RUNTIME_URL;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          const surfaces=['Intelligence Today','Feed','Reports','Library','Smart Lists','Smart Share','Smart Mail','Contacts','Smart Spaces','Dream','Smart Ledger','Settings','Naya Play'];
+          try {
+            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
+              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
+              const page=await context.newPage();
+              await page.goto(runtime+'/?interface-acceptance='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
+              await page.waitForTimeout(1400);
+              const probe=await page.evaluate((expected)=>{
+                const station=document.querySelector('.naya-command-station');
+                const buttons=[...document.querySelectorAll('[data-naya-surface]')];
+                const labels=buttons.map(x=>x.textContent.trim()).filter(Boolean);
+                const feed=[...document.querySelectorAll('.feedNav [data-feed]')];
+                const feedLabels=feed.map(x=>x.textContent.trim());
+                const rect=station?.getBoundingClientRect();
+                return {station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'&&rect.width>0&&rect.height>0,labels,missing:expected.filter(x=>!labels.includes(x)),feedLabels,feedCount:feed.length};
+              },surfaces);
+              console.log('INTERFACE_ACCEPTANCE_PROBE',viewport.label,JSON.stringify(probe));
+              if(!probe.station||!probe.stationVisible) throw new Error(viewport.label+': Command Station is not visible');
+              if(probe.missing.length) throw new Error(viewport.label+': missing surfaces '+probe.missing.join(', '));
+              if(probe.feedCount!==3) throw new Error(viewport.label+': Smart Feed does not expose exactly three modes');
+              for (const key of ['personal','collective','activity']) {
+                await page.locator('.feedNav [data-feed="'+key+'"]').click();
+                await page.waitForTimeout(80);
+                const mode=await page.evaluate((k)=>({key:k,active:[...document.querySelectorAll('.feedNav [data-feed]')].filter(x=>x.classList.contains('active')).map(x=>x.dataset.feed),title:document.querySelector('#feedTitle')?.textContent||'',visibleBlocks:[...document.querySelectorAll('.blocks .block')].filter(x=>getComputedStyle(x).display!=='none').length}),key);
+                console.log('SMART_FEED_MODE_ACCEPTED',viewport.label,JSON.stringify(mode));
+                if(mode.active.length!==1||mode.active[0]!==key) throw new Error(viewport.label+': Smart Feed mode '+key+' did not activate');
+                if(mode.title.length===0) throw new Error(viewport.label+': Smart Feed title disappeared for '+key);
+              }
+              await context.close();
+            }
+            console.log('INTERFACE_ACCEPTANCE_VERIFIED desktop+mobile Command Station + Personal/Collective/Activity');
+          } finally { await browser.close(); }
+          EOF
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-interface-acceptance.mjs
+          rm -f verify-interface-acceptance.mjs
+
       - name: Final proof
         run: |
           echo "LIVE_VERIFIED=${NAYA_RUNTIME_URL}"
