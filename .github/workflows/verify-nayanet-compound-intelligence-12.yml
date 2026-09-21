@@ -78,17 +78,33 @@ jobs:
           }
 
           async function call(page, session, action, extra={}) {
-            const key='compound-12-'+run+'-'+action+'-'+crypto.randomBytes(6).toString('hex');
-            const res=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,extra,key})=>{
-              const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{
+            const slugs={
+              restore:'nayanet-pi-restore',
+              retrieve:'nayanet-pi-retrieve',
+              reconcile:'nayanet-pi-reconcile',
+              understand:'nayanet-pi-understand',
+              learning_candidate:'nayanet-pi-learning-candidate',
+              learning_verify:'nayanet-pi-learning-verify',
+              successor_handoff:'nayanet-pi-successor-handoff',
+              share:'nayanet-pi-share',
+              supersede:'nayanet-pi-supersede',
+              health:'nayanet-pi-health',
+              dream:'nayanet-pi-dream',
+              compound:'nayanet-pi-compound'
+            };
+            const slug=slugs[action];
+            if(!slug) throw new Error('UNKNOWN_PI_ENDPOINT:'+action);
+            const key='compound-12-direct-'+run+'-'+action+'-'+crypto.randomBytes(6).toString('hex');
+            const res=await page.evaluate(async({supabaseUrl,supabaseKey,token,slug,action,extra,key})=>{
+              const r=await fetch(supabaseUrl+'/functions/v1/'+slug,{
                 method:'POST',
                 headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},
                 body:JSON.stringify({action,idempotency_key:key,...extra})
               });
               return {status:r.status,body:await r.json().catch(()=>({}))};
-            },{supabaseUrl,supabaseKey,token:session.access_token,action,extra,key});
+            },{supabaseUrl,supabaseKey,token:session.access_token,slug,action,extra,key});
             if(res.status!==200 || res.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(res));
-            mark(action,'PASS',{schema:res.body.result?.schema||null});
+            mark(action,'PASS',{endpoint:slug,schema:res.body.result?.schema||null});
             return res.body.result;
           }
 
