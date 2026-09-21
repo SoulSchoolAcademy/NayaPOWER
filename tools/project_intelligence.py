@@ -340,6 +340,8 @@ def build_project_intelligence() -> dict[str, Any]:
 
     verified = collect_event_state(events, {"VERIFIED", "RUNTIME-PROVEN", "PRODUCTION-PROVEN"})
     verified_state = state.get("verified_evidence", {}).get("known", [])
+    if not verified_state and isinstance(state.get("known"), list):
+        verified_state = state.get("known", [])
     if isinstance(verified_state, list):
         verified = [{"source": ".naya/control-plane/STATE.json", "statement": str(item)} for item in verified_state] + verified
     failed = collect_event_state(events, {"FAILED", "BLOCKED"})
