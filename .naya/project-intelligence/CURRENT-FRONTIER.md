@@ -63,10 +63,10 @@ The target is: **a cold Naya enters, understands, acts, proves, learns, and leav
 ## NEW COMPOUND INTELLIGENCE RUNTIME
 
 Supabase function: nayanet-compound-intelligence
-Version: 2
+Version: 4
 Auth: JWT required
 Persistence: public.nayanet_intelligence_operations
-Capabilities: RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM SEAM, COMPOUND.
+Capabilities: RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, LEARNING RETRIEVE, PROJECT, ACK, STATE UPDATE, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM SEAM, COMPOUND.
 
 The architecture deliberately uses one governed orchestration surface instead of twelve duplicated Edge Functions.
 
@@ -76,4 +76,4 @@ Every verified meaningful action should leave the project more intelligent, more
 
 ## CURRENT FRONTIER
 
-Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context. Stop at the first actual failure and repair only that boundary.
+Run the authenticated cold Project Intelligence journey: RESTORE → RETRIEVE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Stop at the first actual failure and repair only that boundary.
