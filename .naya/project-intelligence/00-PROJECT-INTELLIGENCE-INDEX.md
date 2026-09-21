@@ -1,7 +1,11 @@
-# 🔱 00 — PROJECT INTELLIGENCE MASTER INDEX
+# 🔱 00 — PROJECT NAYANET PROJECT INTELLIGENCE MASTER INDEX
 
 **Status:** CANONICAL NAVIGATION CONTRACT  
 **Audience:** HUMAN · NAYA · BUILDER · REVIEWER · SUCCESSOR
+
+> **NAYANET IS THE PROJECT. PROJECT INTELLIGENCE IS NAYANET.**
+>
+> Every Naya is an operating instance of the one enduring Project Intelligence: NayaNET.
 
 This is the map, not the whole forest.
 
@@ -15,7 +19,16 @@ This is the map, not the whole forest.
 ## CONSTITUTION + ARCHITECTURE
 
 [20 — Project Intelligence Constitution + Architecture Specification](20-PROJECT-INTELLIGENCE-CONSTITUTION-AND-ARCHITECTURE-SPEC.md)  
-[21 — Gap → Proof Matrix](21-GAP-TO-PROOF-MATRIX.md)
+[21 — NayaNET Gap → Proof Matrix](21-GAP-TO-PROOF-MATRIX.md)  
+[23 — NayaNET Subject Reconciliation](23-NAYANET-SUBJECT-RECONCILIATION.md)
+
+**Canonical interpretation:** Documents 20 and 21 define the constitutional requirements and proof state of **Project NayaNET itself**. They are not a separate subsystem or separate project.
+
+## SUCCESSION + COMMUNICATION
+
+[22 — NayaNET Intelligence Feed + Succession Contract](22-NAYANET-INTELLIGENCE-FEED-AND-SUCCESSION-CONTRACT.md)
+
+The Intelligence Feed is the durable communication and torch-passing surface between Nayas. It is a projection of canonical project intelligence, not a replacement for canonical evidence.
 
 ## BUILD PATH
 
@@ -63,10 +76,10 @@ This is the map, not the whole forest.
 
 ## DEFINITION OF DONE
 
-A fresh Naya can identify the project, explain the outcome, locate authority, reconstruct current intelligence, distinguish truth states, reconcile current state, select one responsible next action, execute when authorized, verify the actual outcome, preserve evidence and learning, leave a complete torch, and enable a second cold Naya to continue.
+A fresh Naya can identify **NayaNET as the project**, explain the outcome, locate authority, reconstruct current intelligence, distinguish truth states, reconcile current state, select one responsible next action, execute when authorized, verify the actual outcome, preserve evidence and learning, write the distilled result to the Intelligence Feed, leave a complete torch, and enable a second cold Naya to continue.
 
 ## FINAL QUESTION
 
-> **If I disappear right now, can a cold Naya use only the repository and durable evidence to execute the next action correctly?**
+> **If I disappear right now, can a cold Naya use only NayaNET’s repository, durable evidence, and authorized tools to execute the next action correctly — without asking me to reconstruct the project?**
 
 If not, the work is not finished.
