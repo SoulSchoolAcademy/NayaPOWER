@@ -21,7 +21,7 @@ ACTIVE={"ACTIVE","CANONICAL"}
 def parse_time(v:str)->datetime:
     if v.endswith("Z"):v=v[:-1]+"+00:00"
     d=datetime.fromisoformat(v)
-    if d.tzinfo is None:raise ValueError("timestamp must include timezone")
+    if d.tzinfo is None:raise ValueError(f"timestamp must include timezone: {v!r}")
     return d.astimezone(timezone.utc)
 def subject(e:dict[str,Any])->str:
     return re.sub(r"\s+"," ",str(e.get("subject") or e.get("title") or e.get("event_type") or e.get("type") or e.get("event_id","")).strip()).casefold()
