@@ -31,6 +31,46 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Establish explicit private Project Intelligence owner
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const crypto=require('node:crypto');
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const page=await browser.newPage();
+            try{
+              const hub=process.env.HUB_URL, run=process.env.RUN_IDENTITY;
+              const alias=('piowner'+run+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+              await page.locator('#name').fill('Project Intelligence Home Run');
+              await page.locator('#alias').fill(alias);
+              await page.locator('#enter').click();
+              let session=null;
+              for(let i=0;i<60;i++){
+                session=await page.evaluate(async()=>{
+                  const c=window.__NayaNETSupabaseClient;
+                  if(!c)return null;
+                  const x=(await c.auth.getSession()).data.session;
+                  return x?{userId:x.user.id,access_token:x.access_token}:null;
+                });
+                if(session?.userId&&session?.access_token)break;
+                await new Promise(r=>setTimeout(r,500));
+              }
+              if(!session?.userId)throw new Error('PRIVATE_PI_OWNER_SESSION_NOT_ESTABLISHED');
+              require('fs').appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\\n');
+              console.log(JSON.stringify({status:'OWNER_BOUND',owner_id:session.userId}));
+            }finally{await browser.close()}
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
       - name: Build canonical bridge packet
         run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-home-run-packet.json
 
@@ -43,11 +83,6 @@ jobs:
           echo "token=$token" >> "$GITHUB_OUTPUT"
           export NAYANET_BRIDGE_TOKEN="$token"
           python .naya/runtime/project_intelligence_bridge.py send project-intelligence-home-run-packet.json | tee bridge-send.json
-
-      - name: Install browser
-        run: |
-          npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
 
       - name: Prove receive → retrieve → render → ack → cold successor
         shell: bash
