@@ -142,10 +142,11 @@
         "supabase/functions/nayanet-successor-handoff/index.ts"
       ],
       "workflow": ".github/workflows/verify-nayanet-runtime-evidence-lineage.yml",
-      "verification_gap": "Connected GitHub read surface did not expose a resulting Actions run/check after trigger commits; no runtime lineage receipt is claimed VERIFIED until independently observed."
+      "proof_workflow_trigger_commit": "302dd3a29293b67353c97607bfe66646395559ca",
+      "verification_gap": "The proof workflow source is bound to trigger commit 302dd3a29293b67353c97607bfe66646395559ca, but the connected GitHub read surface still does not expose a resulting Actions run/check; no runtime lineage receipt is claimed VERIFIED until independently observed."
     }
   },
-  "recording_commit": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
+  "recording_commit": "cd43af884e301ea6ce84f61889a15b47db3fb9fa",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
@@ -394,7 +395,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "The defined PI-01→PI-08 master proof remains complete at its observed claim scope. The current execution frontier is constitutional hardening; current repository HEAD must always be resolved live before consequential action.",
-  "current_repository_head": "4a691d8b48de7019a3c5a8fa72c1e664f9cddfcf",
+  "current_repository_head": "cd43af884e301ea6ce84f61889a15b47db3fb9fa",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
