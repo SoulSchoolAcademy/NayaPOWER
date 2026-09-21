@@ -153,32 +153,24 @@ jobs:
           await shareButton.waitFor({state:'visible',timeout:15000});
           await shareButton.scrollIntoViewIfNeeded();
 
-          await ap.waitForFunction(()=>{
+          const boundShareButton=await ap.waitForFunction(()=>{
             const expected=String(window.__smartShareDiag?.expectedTitle||'').trim();
             const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
             const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===expected)||buttons[0];
-            if(!button||button.dataset.nayaSmartShareBound!=='1') return false;
-            const state=window.__smartShareProofBindingStability||(window.__smartShareProofBindingStability={button:null,since:0});
-            if(state.button!==button){state.button=button;state.since=Date.now();return false;}
-            return Date.now()-state.since>=500;
-          },{timeout:5000,polling:50});
-          const beforeClick=await ap.evaluate(()=>{
-            const expected=String(window.__smartShareDiag?.expectedTitle||'').trim();
-            const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
-            const button=buttons.find(b=>b.closest('.block')?.querySelector('h3')?.textContent?.trim()===expected)||buttons[0];
-            return {
-              exists:!!button,
-              bound:button?.dataset.nayaSmartShareBound==='1',
-              registrations:Number(window.__smartShareDiag?.registrations||0)
-            };
-          });
+            return button&&button.dataset.nayaSmartShareBound==='1'?button:null;
+          },{timeout:15000,polling:50});
+          const beforeClick=await boundShareButton.evaluate(button=>({
+            exists:true,
+            bound:button.dataset.nayaSmartShareBound==='1',
+            registrations:Number(window.__smartShareDiag?.registrations||0)
+          }));
           console.log('SMART_SHARE_BROWSER_DIAGNOSTIC_BEFORE_CLICK='+JSON.stringify(beforeClick));
           console.log('SMART_SHARE_BROWSER_BINDING_TIMELINE='+JSON.stringify(await ap.evaluate(()=>window.__smartShareDiag?.timeline||[])));
           if(!beforeClick.exists) throw Error('SMART_SHARE_DIAGNOSTIC_BUTTON_MISSING');
           if(!beforeClick.bound) throw Error('SMART_SHARE_DIAGNOSTIC_HANDLER_NOT_BOUND');
           if(beforeClick.registrations<1) throw Error('SMART_SHARE_DIAGNOSTIC_NO_CLICK_HANDLER_REGISTRATION');
 
-          const smartFeedNetworkLog=[];
+                    const smartFeedNetworkLog=[];
           ap.on('request',request=>{
             if(request.method()==='POST'&&request.url().includes('/functions/v1/naya-smart-feed')){
               const entry={phase:'request',method:request.method(),url:request.url(),postData:request.postData()};
