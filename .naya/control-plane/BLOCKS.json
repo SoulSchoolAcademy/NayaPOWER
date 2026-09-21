@@ -26,19 +26,20 @@
       ".naya/project-intelligence/COMPUTATION-EFFICIENCY-MEASUREMENT-CONTRACT.md",
       "SUPERBRAIN/INTELLIGENCE-FEED.md",
       "Supabase nayanet_project_intelligence_state",
-      "PI-01 proof run 35638451543"
+      "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse.",
     "next_actions": [
-      "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+      "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
     "predecessor_proof": {
-      "workflow_run": 35638451543,
-      "job_id": 106461599787,
-      "source_head": "cc3afacd9d3502440f37444c59d4517445b9144d"
+      "workflow_run": 35639968134,
+      "job_id": 106466612229,
+      "source_head": "9c364e66e46ec3900119e84722c5087b1ed8083e",
+      "claim": "PI-01 whole-chain home-run remains proven after current-main revalidation."
     },
     "scope": [
       "computation accounting",
