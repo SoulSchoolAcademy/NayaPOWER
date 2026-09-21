@@ -63,7 +63,7 @@ The target is: **a cold Naya enters, understands, acts, proves, learns, and leav
 ## NEW COMPOUND INTELLIGENCE RUNTIME
 
 Supabase function: nayanet-compound-intelligence
-Version: 4
+Version: 5
 Auth: JWT required
 Persistence: public.nayanet_intelligence_operations
 Capabilities: RESTORE, RETRIEVE, RECONCILE, UNDERSTAND, LEARNING CANDIDATE, LEARNING VERIFY, LEARNING RETRIEVE, PROJECT, ACK, STATE UPDATE, SUCCESSOR HANDOFF, SHARE, SUPERSEDE, HEALTH, DREAM SEAM, COMPOUND.
