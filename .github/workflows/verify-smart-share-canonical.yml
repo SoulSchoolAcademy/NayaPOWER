@@ -257,7 +257,7 @@ jobs:
           const collectiveA=await ap.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:'collective',limit:50}));
           const publishedA=(collectiveA.items||[]).find(x=>x.publication_id===publicationId&&x.id===sourceRows[0].id);
           if(!publishedA) throw Error('SMART_SHARE_COLLECTIVE_RETRIEVAL_FAILED');
-          const receiptRows=await ap.evaluate(()=>window.NayaAssistantRuntime.retrieve(receiptEventId));
+          const receiptRows=await ap.evaluate(id=>window.NayaAssistantRuntime.retrieve(id),receiptEventId);
           if(!receiptRows.some(x=>x.event_id===receiptEventId&&x.source==='nayanet-hub.smart-share.publication'&&x.metadata?.publication_id===publicationId)) throw Error('SMART_SHARE_RECEIPT_RETRIEVAL_FAILED');
           const publicationRow=await req(base+'/rest/v1/nayanet_intelligence_publications?select=id,intelligence_event_id,owner_id,status,consent_state&id=eq.'+publicationId,{headers:headers(A.access_token)});
           if(publicationRow.length!==1||publicationRow[0].status!=='published'||publicationRow[0].consent_state!=='explicit'||publicationRow[0].owner_id!==A.user.id) throw Error('SMART_SHARE_DATABASE_PERSISTENCE_FAILED:'+JSON.stringify(publicationRow));
