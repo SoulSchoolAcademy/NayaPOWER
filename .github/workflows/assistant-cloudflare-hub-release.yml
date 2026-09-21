@@ -288,7 +288,7 @@ jobs:
               const probe=await page.evaluate((expected)=>{
                 const shell=document.querySelector('[data-shell-owner="AppShellV3"]');
                 const buttons=[...document.querySelectorAll('[data-naya-surface]')];
-                const labels=buttons.map(x=>(x.textContent||'').trim()).filter(Boolean);
+                const labels=buttons.map(x=>(x.querySelector('.nav-name,.mobile-nav b')?.textContent||x.textContent||'').trim()).filter(Boolean);
                 const station=document.querySelector('.hub-experience');
                 return {shell:!!shell,marker:shell?.getAttribute('data-runtime-marker')||null,labels,missing:expected.filter(x=>!labels.includes(x)),station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'};
               },surfaces);
