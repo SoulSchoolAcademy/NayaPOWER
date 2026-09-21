@@ -9,6 +9,7 @@ from uuid import NAMESPACE_URL, uuid5
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/runtime"))
 import project_intelligence_reconstruction as pir
+import next_action_handoff as nah
 CONTEXT=ROOT/".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
 STATE=ROOT/".naya/control-plane/STATE.json"
 BLOCK=ROOT/".naya/control-plane/BLOCKS.json"
@@ -27,12 +28,13 @@ def packet():
         prov.append({"path":rel,"sha256":d,"bytes":len(raw)})
         intel.append({"object_id":"github:"+rel,"operation":"UPSERT","source_path":rel,"content_sha256":d,"content":raw.decode("utf-8")})
     reconstruction=pir.build_current("NayaNET")
+    next_action_handoff=nah.build_contract()
     run_identity=os.environ.get("RUN_IDENTITY","").strip()
     if not run_identity: raise RuntimeError("RUN_IDENTITY_REQUIRED_FOR_FRESH_PROJECT_INTELLIGENCE")
     owner_id=os.environ.get("NAYANET_OWNER_ID","").strip()
     if not owner_id and Path(".nayanet-owner-id").exists(): owner_id=Path(".nayanet-owner-id").read_text(encoding="utf-8").strip()
     if not owner_id: raise RuntimeError("NAYANET_OWNER_ID_REQUIRED_FOR_PRIVATE_PROJECT_INTELLIGENCE")
-    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","owner_id":owner_id,"run_identity":run_identity,"sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
+    p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","owner_id":owner_id,"run_identity":run_identity,"sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"next_action_handoff":next_action_handoff,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
     canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
     p["content_hash"]=digest(canonical); p["packet_id"]=str(uuid5(NAMESPACE_URL,"nayanet:project-intelligence:"+h+":"+run_identity+":"+p["content_hash"])); p["idempotency_key"]="nayanet-pi-"+h+"-"+p["content_hash"][:24]
     return p
@@ -49,6 +51,8 @@ def validate(p):
     for k in ["current","historical","superseded","stale","conflicted","unknown","evidence","causal_lineage","next_action"]:
         if k not in r: e.append("reconstruction_missing:"+k)
     if r.get("resolution",{}).get("status")!="RECONSTRUCTED": e.append("reconstruction_not_reconstructed")
+    try: nah.validate(p.get("next_action_handoff", {}))
+    except Exception as exc: e.append("next_action_handoff_invalid:"+str(exc))
     for k in ["you_are_here","mission","north_star","current_truth","proven","unknown","blocked","protected","sender","receiver","bridge","current_next_action"]:
         if k not in c: e.append("context_missing:"+k)
     if not p.get("intelligence"): e.append("intelligence_empty")
