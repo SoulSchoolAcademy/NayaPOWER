@@ -85,7 +85,7 @@
     "P1 controlled paired experiment run 35472129371 supersedes the earlier NOT_PROVEN result: three held-out cases produced aggregate baseline verified value 0 and candidate verified value 3; receipt-swap rejection, revocation denial, durable learning, retrieval, cold decision influence, and future behavior change all passed. Result: POLICY_IMPROVEMENT_PROVEN.",
     "Smart Feed Ledger integration run 35460477460 is VERIFIED at current main: fresh cognition event 7904056a-7299-4732-8c7a-4f50b1705daf projected to Ledger event 8797fc24-34c0-46c7-8c28-dda896f5abda, feed returned active verification confidence 1, Ledger hash/evidence lineage, replay identity stability and personal-feed privacy isolation.",
     "The 88 cognition events without Smart Ledger linkage are all legacy records created before the first ledgered cognition event on 2026-09-19 01:53:49 UTC; no current Wave A cognition event is missing Ledger coverage. They require disposition, not fabricated historical backfill.",
-    "The current Smart Feed runtime is deployed as Edge Function version 4; nayanet-smart-mail is deployed as version 13.",
+    "The current Smart Feed runtime is deployed as Edge Function version 5; nayanet-smart-mail is deployed as version 13.",
     "Proof 7 compounding Superbrain loop run 35461270128 is VERIFIED: experience, memory, dream, learning, continuity, decision, outcome, authority unchanged, new learning, and next decision-context retrieval all passed; policy improvement remains NOT_PROVEN.",
     "Cognition receipt revision allocation was repaired in production by serializing per-user/project execution-receipt revision allocation and choosing the next revision from the canonical execution-receipt namespace.",
     "Proof 7 now uses the existing production shared Space, mutual Connections, and explicit least-privilege smart_mail_send authority.",
@@ -119,7 +119,7 @@
     "The cold-Naya objective is now explicitly a first-class mission: the next Naya must enter as executor, not archaeologist, and must not require Shawn to repeat project context already stored in GitHub.",
     "The repository already has a canonical cold-Naya boot bridge and machine context manifest; the remaining acceptance is behavioral cold takeover, not another documentation exercise.",
     "Supabase migration 20260921093000_project_intelligence_operating_layer_v1 created canonical project state, intelligence lineage, bridge retrieval/render evidence fields, and computation-accounting fields.",
-    "Supabase nayanet-compound-intelligence Edge Function version 4 exposes restore V2, retrieve, reconcile V2, understand, learning candidate/verify/retrieve, project, bridge ack, successor handoff, share, supersede lineage, health V2, state update, dream seam, and compound lifecycle.",
+    "Supabase nayanet-compound-intelligence Edge Function version 5 exposes restore V2, retrieve, reconcile V2, understand, learning candidate/verify/retrieve, project, bridge ack, successor handoff, share, supersede lineage, health V2, state update, dream seam, and compound lifecycle.",
     "Project Intelligence state is persisted in public.nayanet_project_intelligence_state with one canonical NayaNET row and one explicit current next action.",
     "Bridge retrieved/rendered flags are separate from indexed/projected and require explicit evidence; transport flags are never sufficient to claim retrieval/render."
   ],
@@ -199,7 +199,7 @@
     "bridge_source_ref": "3c7102c5adc8b464b6843c82de0ae72139c8fb69",
     "bridge_packet_id": "07dc9a08-aee0-55ce-a435-adc227f38c08",
     "bridge_receipt_id": "aa932ddb-88cc-479d-be90-fd063a42846c",
-    "compound_runtime_version": 4,
+    "compound_runtime_version": 5,
     "operating_migration": "20260921093000_project_intelligence_operating_layer_v1"
   },
   "today_mission": {
@@ -226,7 +226,7 @@
     "no_secret_recorded": true
   },
   "compound_intelligence": {
-    "status": "DEPLOYED_VERSION_4",
+    "status": "DEPLOYED_VERSION_5",
     "runtime": "nayanet-compound-intelligence",
     "supabase_project": "dahisasgpfvziswqvmvm",
     "capabilities": [
