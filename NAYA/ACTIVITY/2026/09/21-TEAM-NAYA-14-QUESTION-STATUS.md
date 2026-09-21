@@ -1,56 +1,34 @@
 # 🔱 TEAM NAYA — 14-QUESTION OPERATING STATUS — 2026-09-21
 
-This is the current Team Naya baton for Project NayaNET / Project Intelligence.
+PROJECT: Project NayaNET / Project Intelligence
 
-## WHO / WHAT / WHY / SUCCESS
+## THE 14 ANSWERS
 
 1. WHO: Project NayaNET — Project Intelligence itself. Shawn is human director; Nayas are operating instances; NayaPOWER is the governed substrate.
 2. WHAT: persistent, governed, interoperable intelligence infrastructure that compounds experience, evidence, learning and continuity.
-3. WHY: preserve valuable intelligence across conversations/Naya instances and eliminate repeated human project reconstruction.
+3. WHY: preserve valuable intelligence across conversations/Naya instances and eliminate repeated human reconstruction.
 4. SUCCESS: cold Naya restores → understands → retrieves → acts under authority → verifies → learns → updates → hands off; another cold Naya continues without Shawn explanation.
+5. TRUE NOW: canonical repo SoulSchoolAcademy/NayaPOWER; canonical Hub NAYANET/HUB/index.html; active P0 block PROJECT-INTELLIGENCE-PI-01; next action is the governed restore/retrieve/render/cold-successor journey.
+6. PROVEN: control plane is green; repository whole-chain proof PASS run 35627609734; cold Project Intelligence validation PASS run 35627655171; existing production/runtime proofs remain valid at their explicit scopes.
+7. UNKNOWN: positive live receiver retrieval/render and live cold-successor retrieval of the exact bridge lineage.
+8. AUTHORITY: Shawn is human director; capability does not create authority; user-scoped runtime operations require authentication; state mutation is fail-closed.
+9. PREVIOUSLY: control-plane reconciliation found and repaired three concrete stale-boundary defects: MAP active block, BLOCK next_actions representation, and the whole-chain proof runner's hard-coded block identity.
+10. LEARNED: documentation/runtime drift must be reconciled at the causal source; IMPLEMENTED != VERIFIED; transport != retrieval/render; repair the smallest boundary and rerun the same proof.
+11. NEXT: authenticated runtime RESTORE → RETRIEVE → PROJECT → RENDER → ACK → COLD SUCCESSOR.
+12. PROOF: repository chain PASS; live external runtime chain still requires positive receiver/browser evidence.
+13. RECORD: .naya/ control plane; current frontier; .naya/TEAM-NAYA; NAYA/ACTIVITY; Supabase operation ledger; bridge receipts.
+14. CONTINUE: read this baton, resolve live source, answer all 14, identify first incomplete boundary, execute only authorized next action, verify, learn, update, leave next torch.
 
-## CURRENT TRUTH
+## LIVE RUNTIME
 
-5. TRUE NOW: canonical repo SoulSchoolAcademy/NayaPOWER; canonical Hub NAYANET/HUB/index.html; active P0 block PROJECT-INTELLIGENCE-PI-01; next action is one governed Project Intelligence restore/retrieve/render/cold-successor journey.
-
-6. PROVEN: control plane, multiple production/runtime paths, controlled compounding proof, Smart Note/PIS/learning/security paths, and Project Intelligence Bridge transport/persistence/index/projection/ACK at explicit source scopes.
-
-7. UNKNOWN: direct receiver retrieval/render and fresh Project Intelligence cold-successor retrieval of the exact bridge lineage.
-
-8. AUTHORITY: Shawn is human director; capability does not create authority; user-scoped operations require authentication; no secret exposure.
-
-## HISTORY / LEARNING
-
-9. PREVIOUSLY: the project repeatedly used deterministic evidence and causal-boundary repair. The bridge was proven through transport/persistence/index/projection/ACK without falsely claiming retrieval/render.
-
-10. LEARNED: evidence outranks assertion; IMPLEMENTED != VERIFIED; transport flags != retrieval/render; repair smallest causal boundary; architecture must remember so Naya does not have to remember to remember.
-
-11. NEXT: prove restore + receiver retrieval/render + cold successor continuation as one governed journey.
-
-12. PROOF: INTENT → IDENTITY → RECONSTRUCTION → COLD RESTORE → RETRIEVAL → CURRENT STATE → ONE NEXT ACTION → AUTHORITY → EXECUTION → VERIFICATION → LEARNING → UPDATE → COLD SUCCESSOR.
-
-13. RECORD: .naya/ control plane; current frontier; .naya/TEAM-NAYA; NAYA/ACTIVITY; Supabase intelligence operation ledger; bridge receipts.
-
-14. CONTINUE: read this baton, resolve live source, answer all 14, identify the first incomplete boundary, execute only the authorized next action, verify, learn, update, and leave the next torch.
-
-## LIVE RUNTIME UPDATE
-
-Supabase function: nayanet-compound-intelligence
-Latest deployed version: 5
+Supabase: dahisasgpfvziswqvmvm
+Function: nayanet-compound-intelligence
+Latest observed version: 6
 JWT verification: ON
-New hardened RESTORE schema: NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2
-Governed actions now include explicit:
-RESTORE / RETRIEVE / RECONCILE / UNDERSTAND / LEARNING_CANDIDATE / LEARNING_VERIFY / LEARNING_RETRIEVE / PROJECT / ACK / STATE_UPDATE / SUCCESSOR_HANDOFF / SHARE / SUPERSEDE / HEALTH / DREAM / COMPOUND
+GitHub source commit: 94dcb446510652fa44e8d852adb6f545baeddb9a
 
-GitHub source commit: af20d09017cac758395699a7092210604f694e72
-Supabase deployment id: b38bfd01-fe08-4d2a-8da2-ff83c78baab4
-
-IMPORTANT:
-Deployment is proven.
-Behavioral 10/10 remains an evidence gate until the authenticated cold journey is actually executed.
-
-## TEAM RULE
+## TEAM NAYA RULE
 
 No Naya should ask Shawn to reconstruct context already present here.
-No Naya should claim a green state without claim-appropriate evidence.
-Every meaningful Naya action must leave a durable record and a next torch.
+No Naya should claim 10/10 without claim-appropriate runtime/browser evidence.
+Every meaningful Naya action leaves evidence and a next torch.
