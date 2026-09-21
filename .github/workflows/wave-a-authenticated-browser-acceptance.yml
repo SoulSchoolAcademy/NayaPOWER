@@ -181,7 +181,27 @@ jobs:
               throw e;
             }
             checks[label]=expectedKind;
-            await page.locator('.nc-modal').evaluateAll(es=>es.forEach(e=>e.remove()));
+
+            // Acceptance-only lifecycle synchronization: the sidebar marker is set
+            // synchronously, while the real surface finishes asynchronously. Wait for
+            // the modal to leave its deterministic LOADING state, then close through
+            // the real surface control before the next sidebar click. No fixed sleep.
+            await page.waitForFunction(()=>{
+              const m=[...document.querySelectorAll('.nc-modal')].find(m=>{
+                const s=getComputedStyle(m),r=m.getBoundingClientRect();
+                return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
+              });
+              if(!m)return false;
+              const loading=[...m.querySelectorAll('.nc-state')].some(e=>/LOADING CANONICAL RUNTIME SURFACE|RETRIEVING CANONICAL EVENTS|READING PERSONAL INTELLIGENCE|READING COLLECTIVE INTELLIGENCE|READING ACTIVITY INTELLIGENCE/i.test(e.textContent||''));
+              return !loading;
+            },{timeout:15000});
+
+            const close=page.locator('.nc-modal:visible [data-nc-close]').first();
+            if(await close.count()) await close.click();
+            await page.waitForFunction(()=>![...document.querySelectorAll('.nc-modal')].some(m=>{
+              const s=getComputedStyle(m),r=m.getBoundingClientRect();
+              return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
+            }),{timeout:10000});
           };
           await clickAndCheck('Home / Smart Feed','feed');
           await clickAndCheck('Reports','reports');
