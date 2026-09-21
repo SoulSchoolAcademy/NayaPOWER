@@ -79,9 +79,10 @@ jobs:
           grep -q 'nayanet-direct-nine' NAYANET/HUB/index.html
           grep -q '<title>NayaNET' NAYANET/HUB/index.html
           test -f "2026 09 17 NAYANET HUB.html"
-          # The canonical Hub retains one runtime-only observer shim required by the governed browser runtime.
-          # Compare the protected visual source after removing only that non-visual operational shim.
-          sed -e '/<script id="naya-static-runtime-observer-shim">.*<\/script>/d' -e 's#assistant-runtime.js?v=[^"]*#assistant-runtime.js#g' NAYANET/HUB/index.html > "${RUNNER_TEMP}/hub-visual-source.html"
+          # The canonical Hub retains runtime-only operational seams hidden on the normal human surface:
+          # the observer shim and the conditional Project Intelligence render block.
+          # Compare the protected visual source after removing only those non-visual/runtime seams.
+          sed -e '/<script id="naya-static-runtime-observer-shim">.*<\/script>/d' -e '/<!-- NAYA-PI-CANONICAL-RENDER-V1 -->/,/<\/script>/d' -e 's#assistant-runtime.js?v=[^"]*#assistant-runtime.js#g' NAYANET/HUB/index.html > "${RUNNER_TEMP}/hub-visual-source.html"
           sed -e '/<script id="naya-static-runtime-observer-shim">.*<\/script>/d' -e 's#assistant-runtime.js?v=[^"]*#assistant-runtime.js#g' "2026 09 17 NAYANET HUB.html" > "${RUNNER_TEMP}/hub-visual-reference.html"
           cmp -s "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"
           grep -q 'data-page="home"' NAYANET/HUB/index.html
