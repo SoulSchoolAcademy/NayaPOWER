@@ -565,7 +565,7 @@
     },
     "project_intelligence_bridge_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
   },
-  "recording_commit": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
+  "recording_commit": "c262191dcdc16e6488a395778de6d9896e5c2097",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": false,
   "readiness_evidence": {
@@ -814,7 +814,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "c3b99e7fa1c13628dc059e66e4168fb171450908",
+  "current_repository_head": "c262191dcdc16e6488a395778de6d9896e5c2097",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -836,10 +836,10 @@
   "consolidated_project_intelligence": {
     "status": "PROVEN",
     "claim_type": "WHOLE_JOURNEY",
-    "proof_run_id": 35638451543,
-    "proof_job_id": 106461599787,
-    "observed_source_head": "cc3afacd9d3502440f37444c59d4517445b9144d",
-    "artifact_id": 10657306507,
+    "proof_run_id": 35639400253,
+    "proof_job_id": 106464749083,
+    "observed_source_head": "c262191dcdc16e6488a395778de6d9896e5c2097",
+    "artifact_id": 10657402815,
     "chain": [
       "INTENT",
       "IDENTITY",
@@ -856,31 +856,26 @@
       "COLD_SUCCESSOR"
     ],
     "evidence": {
-      "packet_id": "ad1c3e76-9898-5607-b590-d2c8675d8855",
-      "receiver_event_id": "98b6bd4b-a7b8-493e-8020-3c8315881ff9",
-      "cognition_id": "29049b0c-e3ea-45c2-a8f9-aeaa5c7de5d5",
-      "ack_receipt_id": "c46d3eb1-31a9-4a06-ae14-73e95a1d22a5",
-      "continuation_event_id": "continuation:a5f687d9-459e-4dd8-add1-7fe3ea71d866",
-      "continuation_receipt_id": "52146218-28d7-40c9-a95b-05c66f028b3d",
-      "successor_event_id": "successor:7e725e86-c83d-404d-b4c8-baa38dd3fbab",
-      "successor_receipt_id": "6c4a79af-78bb-4419-b71a-b2b53adc82a5"
+      "packet_id": "3e7a40fb-9c16-57e0-a8fc-0357998dd9af",
+      "receiver_event_id": "fad90097-7e35-4b0e-bd1b-70899b43a80e",
+      "ack_receipt_id": "a1d7d052-305e-499b-8dd1-ca5e93fff595",
+      "continuation_event_id": "continuation:39beeb98-6155-42e6-8bc9-2a14c4ac00a4",
+      "continuation_receipt_id": "5c851c08-3943-4ca7-932d-98b5b877f113",
+      "successor_event_id": "successor:cfa3c219-ff1f-4cfe-b2a4-7bf06176968e",
+      "successor_receipt_id": "76fbc0e1-6aaa-42d6-9bb3-e945f02fcba3"
     },
-    "repairs": [
-      {
-        "runs": [
-          35638053862
-        ],
-        "boundary": "proof variable scope",
-        "result": "repaired in PR #423"
-      },
-      {
-        "runs": [
-          35638282095
-        ],
-        "boundary": "canonical receipt envelope validation",
-        "result": "repaired in PR #424/#425"
-      }
-    ],
+    "revalidation": {
+      "run_id": 35639400253,
+      "result": "SUCCESS",
+      "current_truth_reconstruction": "PASS",
+      "repaired_boundaries": [
+        "proof variable scope (#423)",
+        "canonical receipt envelope validation (#424/#425)",
+        "control-plane P1 schema (#429)",
+        "reconstruction argument wiring (#430)",
+        "malformed historical event quarantine/sort (#431/#432)"
+      ]
+    },
     "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
   },
   "reconciliation": {
