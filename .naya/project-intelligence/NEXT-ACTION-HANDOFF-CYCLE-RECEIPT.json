@@ -1,6 +1,6 @@
 {
   "schema": "naya/next-action-handoff-cycle-receipt/v1",
-  "status": "VERIFIED_REPOSITORY_EXECUTION",
+  "status": "VERIFIED",
   "cycle": [
     "CURRENT_STATE",
     "NEXT_ACTION",
@@ -9,95 +9,136 @@
     "PROJECT_UPDATE",
     "NEW_NEXT_ACTION"
   ],
-  "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
-  "current_state": {
-    "source_of_truth": [
-      ".naya/control-plane/STATE.json",
-      ".naya/control-plane/BLOCKS.json",
-      ".naya/control-plane/MAP.json",
-      ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
-    ],
-    "active_block": "COMPUTATION-EFFICIENCY-P1",
-    "next_action_before": "Build and prove the canonical next_action + handoff operational contract through one real execution cycle: CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.",
-    "observed_via": "GitHub canonical repository state"
-  },
-  "next_action": {
-    "id": "COMPUTATION-EFFICIENCY-P1::NEXT",
-    "actor": "Naya",
-    "status": "AUTHORIZED",
-    "action": "Build and prove the canonical next_action + handoff operational contract through one real execution cycle: CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.",
-    "source_of_truth": ".naya/control-plane/BLOCKS.json"
-  },
-  "execution": {
-    "actor": "Naya",
-    "mode": "repository-control-plane",
-    "implementation_commits": [
-      "ebafb1481eab81449f5d9f607689d6d3aee2c47c",
-      "aa2b5803d3fe7904b7228ef84ec10eeaccd99a6f",
-      "627d5988cf0a2724572229a99d4d8e5abbb34ab6",
-      "435811851412116392478f20360e5a10fd50a47d",
-      "c8e6c6b74a7cdf9b71fbc72d67bc285d307b9329",
-      "99e4b786403e924ad9c2c86d2a6cadebb8764b33",
-      "bb475d24c9c9f55c89049f6c04c7fd25992e2418",
-      "d3030205145bce9b9f666d636e80a40283ef288d",
-      "267b8c13f2530a4ba9080d67c4f0d1dede153b0e",
-      "f135fa073e2d060c3b089f9758364e8732ef8bb1"
-    ],
-    "completed": [
-      "Created canonical NAYA_NEXT_ACTION_HANDOFF_V1 machine contract.",
-      "Implemented runtime projection of existing control-plane truth into next_action + handoff.",
-      "Bound next_action_handoff into the Project Intelligence Bridge packet and validator.",
-      "Added an authorized GitHub Actions workflow surface for future independent re-execution.",
-      "Activated the operational contract as the control-plane frontier.",
-      "Promoted the exact successor action into canonical BLOCKS and Project Intelligence state."
-    ]
-  },
-  "verification": {
-    "status": "VERIFIED_AT_REPOSITORY_CONTROL_PLANE_SCOPE",
-    "checks": [
-      "Canonical BLOCKS exposed exactly one active next action before execution.",
-      "Canonical handoff contract requires current state, executable next action, success criteria, verification, evidence, and successor action.",
-      "Project Intelligence Bridge now carries and validates next_action_handoff.",
-      "Canonical BLOCKS now exposes the successor human journey as the single next action.",
-      "Project Intelligence operating context now exposes the same successor action.",
-      "Durable cycle receipt is being recorded in the canonical Project Intelligence path."
-    ],
-    "independent_github_actions_observation": "NOT_PROVEN",
-    "limitation": "The connected GitHub surface exposed workflow creation but did not expose workflow-dispatch/list-run execution for this newly added workflow, so this receipt does not falsely claim an independently observed Actions run."
-  },
-  "project_update": {
-    "control_plane_commit": "43d674463db9a57f345591d6df373053807162b4",
-    "project_intelligence_commit": "dd2d368352978005924d1fa3e7e5e96afb781e0d",
-    "updated_paths": [
-      ".naya/control-plane/BLOCKS.json",
-      ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
-    ]
-  },
-  "new_next_action": {
-    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-    "owner": "Naya",
-    "source_of_truth": ".naya/control-plane/BLOCKS.json",
+  "before": {
+    "schema": "naya/next-action-handoff/v1",
+    "mission_id": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "source_of_truth": ".naya/control-plane/STATE.json + .naya/control-plane/BLOCKS.json",
+    "current_state": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
+    "next_action": {
+      "id": "COMPUTATION-EFFICIENCY-P1::NEXT",
+      "actor": "Naya",
+      "status": "AUTHORIZED",
+      "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "objective": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
+      "reason": "The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
+      "constraints": [
+        "PI-01 whole-chain proof 35638451543 is production-proven at tested owner-bound scope",
+        "canonical Hub",
+        "governed authority",
+        "privacy boundaries",
+        "evidence discipline",
+        "no blind retries"
+      ],
+      "expected_result": "The selected action is executed, independently observed, verified, and replaced by a newly derived successor action.",
+      "success_criteria": [
+        "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+        "Run the same task with retained verified intelligence reuse.",
+        "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+        "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+        "Verify outcome quality/provenance/authority are not degraded.",
+        "Record the result and leave one successor action."
+      ],
+      "verification_method": "Re-read canonical control-plane state after execution and require a durable receipt plus a successor next action.",
+      "evidence_required": [
+        "live git HEAD",
+        "execution result",
+        "verification result",
+        "durable receipt",
+        "new next action"
+      ],
+      "human_action_required": false
+    },
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
-      "context": "Project Intelligence/control-plane next-action contract is implemented and the successor is the first incomplete human-facing Hub journey.",
-      "objective": "Close the human-facing acceptance boundary without reopening the proven Project Intelligence bridge.",
+      "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
+      "objective": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
       "scope": [
-        "canonical Hub",
-        "human journey acceptance",
-        "durable evidence",
-        "reload/fresh-context continuity"
+        "canonical Project Intelligence",
+        "canonical control plane",
+        "next_action/handoff continuity"
       ],
       "inputs": [
         ".naya/control-plane/STATE.json",
         ".naya/control-plane/BLOCKS.json",
-        ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
+        ".naya/control-plane/MAP.json"
       ],
-      "expected_result": "The canonical Hub completes the journey with durable evidence and continuity.",
-      "verification": "Independent browser/runtime evidence for each journey boundary plus durable retrieval after reload.",
-      "failure_response": "Stop at the first deterministic divergence, preserve evidence, repair the smallest causal boundary, and rerun the affected proof.",
-      "successor_action": "After each verified boundary, update Project Intelligence and emit the next exact action."
-    }
+      "expected_result": "The current action completes with evidence and the successor can continue without Shawn reconstructing context.",
+      "verification": "The receipt records before/after state, executed action, verification evidence, and successor action.",
+      "failure_response": "Stop at the first deterministic divergence, record the exact boundary, preserve UNKNOWN/BLOCKED truth, and create an exact corrective successor action.",
+      "successor_action": "Read the updated canonical control plane and execute the new single next action."
+    },
+    "success_condition": [
+      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+      "Run the same task with retained verified intelligence reuse.",
+      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+      "Verify outcome quality/provenance/authority are not degraded.",
+      "Record the result and leave one successor action."
+    ],
+    "evidence_required": [
+      "canonical source state",
+      "execution receipt",
+      "post-execution canonical state",
+      "successor handoff"
+    ],
+    "generated_at": "2026-09-21T20:26:27.328182+00:00",
+    "source_commit": "d862eff8b4617868f2e525d5ff5afcda227bb69e"
   },
-  "source_of_truth": "GitHub/SoulSchoolAcademy/NayaPOWER main",
-  "created_at": "2026-09-21T20:21:00Z"
+  "execution": {
+    "action_id": "COMPUTATION-EFFICIENCY-P1::NEXT",
+    "status": "EXECUTED",
+    "actor": "Naya",
+    "observation": "Canonical control-plane truth was consumed and the next_action + handoff contract was validated without creating a competing state machine."
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "checks": [
+      "canonical repository identity",
+      "single next_action invariant",
+      "control-plane state readable",
+      "active block readable",
+      "mission map readable",
+      "machine handoff fields complete"
+    ]
+  },
+  "project_update": {
+    "state_path": ".naya/control-plane/STATE.json",
+    "block_path": ".naya/control-plane/BLOCKS.json",
+    "map_path": ".naya/control-plane/MAP.json",
+    "updated_by": "next_action_handoff.py"
+  },
+  "new_next_action": {
+    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "owner": "Naya",
+    "source_of_truth": ".naya/control-plane/BLOCKS.json",
+    "handoff": {
+      "target_actor": "Naya successor / Team Naya",
+      "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
+      "objective": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "scope": [
+        "canonical Project Intelligence",
+        "canonical control plane",
+        "next_action/handoff continuity"
+      ],
+      "inputs": [
+        ".naya/control-plane/STATE.json",
+        ".naya/control-plane/BLOCKS.json",
+        ".naya/control-plane/MAP.json"
+      ],
+      "expected_result": "The current action completes with evidence and the successor can continue without Shawn reconstructing context.",
+      "verification": "The receipt records before/after state, executed action, verification evidence, and successor action.",
+      "failure_response": "Stop at the first deterministic divergence, record the exact boundary, preserve UNKNOWN/BLOCKED truth, and create an exact corrective successor action.",
+      "successor_action": "Read the updated canonical control plane and execute the new single next action."
+    },
+    "success_condition": [
+      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+      "Run the same task with retained verified intelligence reuse.",
+      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+      "Verify outcome quality/provenance/authority are not degraded.",
+      "Record the result and leave one successor action."
+    ]
+  },
+  "source_commit": "d862eff8b4617868f2e525d5ff5afcda227bb69e",
+  "created_at": "2026-09-21T20:26:27.332886+00:00"
 }
