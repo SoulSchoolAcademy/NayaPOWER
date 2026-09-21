@@ -1,0 +1,36 @@
+{
+  "contract": "NAYAPOWER_PROJECT_INTELLIGENCE_V3_EXECUTABLE_SPEC",
+  "status": "BUILD_AND_ACCEPTANCE_TARGET",
+  "project": "NayaPOWER",
+  "network": "NayaNET",
+  "definition": "Persistent, evidence-grounded intelligence of an evolving endeavor, capable of restoring context and participating in governed continuity.",
+  "human_outcome": "Make extraordinary human outcomes dramatically easier to accomplish without making the human an AI project manager.",
+  "north_star": "MAXIMUM RESPONSIBLE VERIFIED HUMAN VALUE PER ACTION AND PER MOMENT",
+  "one_shot_definition": "A cold Naya can autonomously traverse every derivable boundary, execute authorized work, verify actual outcomes, repair causal failures, preserve learning, and continue until acceptance passes or a genuine authority/dependency boundary is reached.",
+  "principles": ["HUMAN_SOVEREIGNTY","CAPABILITY_DOES_NOT_CREATE_AUTHORITY","TRUTH_REQUIRES_EVIDENCE","MEMORY_IS_NOT_TRUTH","UNKNOWN_IS_NOT_SUCCESS","BLOCKED_IS_NOT_PASS","IMPLEMENTED_IS_NOT_VERIFIED","NO_RETRY_WITHOUT_NEW_INFORMATION","ONE_CANONICAL_EVENT_MANY_AUTHORIZED_VIEWS","DERIVED_INTELLIGENCE_MUST_BE_REBUILDABLE","PRIVATE_BY_DEFAULT","SHARED_BY_CHOICE","COLLECTIVE_BY_CONSENT","PUBLIC_BY_DECISION","MODEL_INDEPENDENCE","PORTABILITY_AND_EXIT","SUCCESSOR_CONTINUITY"],
+  "required_project_state": ["identity","purpose","desired_outcome","participants","goals","requirements","constraints","architecture","decisions","dependencies","context","memory","knowledge","relationships","evidence","current_state","capabilities","authority","agency","execution_history","verification","learning","open_loops","unknowns","risks","definition_of_done","next_action","proof_required","successor_handoff"],
+  "truth_states": ["DOCUMENTED","OBSERVED","REPORTED","INFERRED","PREDICTED","IMPLEMENTED","TESTED","VERIFIED","RUNTIME_PROVEN","PRODUCTION_PROVEN","UNKNOWN","FAILED","STALE","SUPERSEDED","CONFLICTED","REVOKED"],
+  "agency_levels": {"L0":"OBSERVE","L1":"RECOMMEND","L2":"PREPARE","L3":"BOUNDED_EXECUTE","L4":"CONSEQUENTIAL_EXECUTE","L5":"GOVERNED_AUTONOMOUS_OPERATION"},
+  "runtime_loop": ["RESTORE","UNDERSTAND","RECONCILE","IDENTIFY_GAP","PRIORITIZE","CHECK_AUTHORITY","EXECUTE","OBSERVE","VERIFY","RECORD","LEARN","UPDATE","CONTINUE"],
+  "project_intelligence_boundaries": {"PI-01":"PROJECT_IDENTITY","PI-02":"MODEL_RECONSTRUCTION","PI-03":"RETRIEVAL","PI-04":"CURRENT_STATE_RECONCILIATION","PI-05":"NEXT_ACTION_SELECTION","PI-06":"EXECUTION_CONTINUITY","PI-07":"LEARNING_UPDATE","PI-08":"COLD_NAYA_REPEAT"},
+  "execution_contract": {
+    "entry": ".naya/project-intelligence/19-EXECUTABLE-BUILD-CONTRACT.md",
+    "source_route": ".naya/project-intelligence/17-SOURCE-ROUTE.md",
+    "protected_baseline": "NAYANET/HUB/index.html",
+    "control_plane": {"map":".naya/control-plane/MAP.json","state":".naya/control-plane/STATE.json","blocks":".naya/control-plane/BLOCKS.json","proof":".naya/control-plane/PROOF.json"},
+    "failure_protocol": ["STOP","IDENTIFY_BOUNDARY","CAPTURE_EVIDENCE","CLASSIFY_FAILURE","IDENTIFY_NEW_INFORMATION","REPAIR_SMALLEST_CAUSAL_BOUNDARY","RERUN_SAME_PROOF","VERIFY","RECORD_LEARNING","CONTINUE"],
+    "completion_states": ["COMPLETE","BLOCKED","FAILED"],
+    "forbidden_completion_state": "LOOKS_GOOD"
+  },
+  "navigation": {
+    "human_entry": ".naya/project-intelligence/README.md",
+    "master_index": ".naya/project-intelligence/00-PROJECT-INTELLIGENCE-INDEX.md",
+    "creator_answers": ".naya/project-intelligence/03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md",
+    "current_state": ".naya/project-intelligence/12-CURRENT-STATE-AND-EVIDENCE.md",
+    "acceptance": ".naya/project-intelligence/14-COLD-NAYA-ACCEPTANCE.md",
+    "handoff": ".naya/project-intelligence/15-SUCCESSOR-HANDOFF.md",
+    "executable_build_contract": ".naya/project-intelligence/19-EXECUTABLE-BUILD-CONTRACT.md"
+  },
+  "source_of_truth": {"primary":"canonical events and direct evidence","operational":".naya/control-plane/STATE.json","block":".naya/control-plane/BLOCKS.json","map":".naya/control-plane/MAP.json","proof":".naya/control-plane/PROOF.json","project_intelligence":".naya/project-intelligence/"},
+  "acceptance": {"session_a":"INGEST_PERSIST_VERIFY","session_b":"COLD_RESTORE_EXECUTE_VERIFY_LEARN","session_c":"COLD_RETRIEVE_CHANGE_AND_CONTINUE","pi_01_through_pi_08_required":true,"conversation_memory_required":false,"product_completion_separate_from_pi_completion":true}
+}

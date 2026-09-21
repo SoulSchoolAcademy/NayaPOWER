@@ -1,3 +1,22 @@
+## 🔱 PROJECT INTELLIGENCE — HUMAN + NAYA MASTER LIBRARY
+
+The canonical Project Intelligence landing page is:
+
+.naya/project-intelligence/README.md
+
+Open the folder landing page first.
+
+FAST HUMAN PATH: README → 00 INDEX → 01 CREATOR CONSTITUTION → 02 PRODUCT DEFINITION → 03 100 QUESTIONS + MY ANSWERS.
+
+BUILDER PATH: 05 REQUIREMENTS → 06 ARCHITECTURE → 07 INTELLIGENCE / MEMORY → 08 GOVERNANCE → 09 EXECUTION → 10 INTEROPERABILITY → 11 DESIGN / BUILD.
+
+PROOF PATH: 12 CURRENT STATE → 13 ROADMAP → 14 COLD NAYA → 15 SUCCESSOR → 16 DECISIONS → 17 SOURCE ROUTE → 18 MACHINE CONTRACT.
+
+CREATOR OWNERSHIP RULE: this specification is intentionally written in first-person creator voice. It records the creator's answers, design decisions, constraints, evidence boundaries, and unresolved research questions.
+
+
+---
+
 # Naya Power Superbrain — AI START HERE
 
 # 🔱 HUB EXECUTION LOCK — MANDATORY FOR HUB WORK
@@ -19,6 +38,18 @@ Do not create, present, deploy, or pursue a competing Hub. Do not reopen the pro
 
 ---
 
+
+## 🔱 LIVE PROJECT INTELLIGENCE — NAYAPOWER IS THE FIRST REAL PROJECT
+
+Before substantive project work, read the canonical Project Intelligence package:
+
+`.naya/project-intelligence/00-PROJECT-INTELLIGENCE-INDEX.md`
+
+Then read the numbered package in order. It defines the mission, human outcome, qualification questions, required project files, requirements, architecture, design/build method, governance, execution/learning/torch, current-state boundary, build roadmap, cold-Naya acceptance, successor handoff, and source route.
+
+**This is not a second memory store.** It is the reconstructable project-intelligence layer over the existing canonical event/evidence/runtime substrate.
+
+**NayaPOWER is the first live Project Intelligence project.** The system must use its own intelligence-continuity protocol to understand, build, verify, learn, and continue building itself.
 
 ## 🔱 ONE-SHOT NAYAPOWER — FASTEST COMPLETE ORIENTATION
 
