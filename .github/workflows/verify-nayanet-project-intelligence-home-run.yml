@@ -65,7 +65,7 @@ jobs:
                 await new Promise(r=>setTimeout(r,500));
               }
               if(!session?.userId)throw new Error('PRIVATE_PI_OWNER_SESSION_NOT_ESTABLISHED');
-              require('fs').appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\\n');
+              require('fs').writeFileSync('.nayanet-owner-id',session.userId+'\\n');\n              require('fs').appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\\n');
               console.log(JSON.stringify({status:'OWNER_BOUND',owner_id:session.userId}));
             }finally{await browser.close()}
           })().catch(e=>{console.error(e);process.exit(1)});
