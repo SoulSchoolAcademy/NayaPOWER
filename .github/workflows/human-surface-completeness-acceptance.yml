@@ -43,9 +43,9 @@ jobs:
           await p.goto(runtime+'/feed?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});await p.waitForTimeout(1000);
           const feedProbe=await p.evaluate(()=>({url:location.href,title:document.title,shell:document.querySelectorAll('.shell').length,search:document.querySelectorAll('input[aria-label="Search intelligence"]').length,body:document.body.innerText.slice(0,220)}));
           console.log('FEED_RUNTIME_PROBE',JSON.stringify(feedProbe));
-          if(feedProbe.shell!==1)throw Error('FIRST_DIVERGENCE:HUB_SHELL_MISSING:'+JSON.stringify(feedProbe));
+          if(feedProbe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA'||!feedProbe.body.includes('Smart Feed'))throw Error('FIRST_DIVERGENCE:SMART_FEED_SURFACE_MISSING:'+JSON.stringify(feedProbe));
           checks.hub='PASS';
-          if(feedProbe.search!==1)throw Error('FIRST_DIVERGENCE:SEARCH_INPUT_MISSING:'+JSON.stringify(feedProbe));
+          const searchProbe=await p.evaluate(()=>({count:document.querySelectorAll('input[aria-label="Search intelligence"]').length,body:document.body.innerText.slice(0,400)})); console.log('SEARCH_RUNTIME_PROBE',JSON.stringify(searchProbe)); if(searchProbe.count!==1)throw Error('FIRST_DIVERGENCE:SEARCH_INPUT_MISSING:'+JSON.stringify(searchProbe));
           const search=p.getByLabel('Search intelligence');await search.fill('intelligence');await search.press('Enter');await p.waitForTimeout(1200);
           if(!(await p.locator('.shell').count()))throw Error('SEARCH_SURFACE_DISAPPEARED');
           checks.search='PASS';
