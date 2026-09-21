@@ -31,6 +31,12 @@ This is the map, not the whole forest.
 
 The Intelligence Feed is the durable communication and torch-passing surface between Nayas. It is a projection of canonical project intelligence, not a replacement for canonical evidence.
 
+## NEXT EXECUTION BOUNDARY
+
+[24 — NayaNET Master Proof Contract](24-NAYANET-MASTER-PROOF-CONTRACT.md)
+
+**Current frontier:** execute PI-01 → PI-08 as one NayaNET proof chain. Stop at the first deterministic causal failure; repair only that boundary; rerun the same proof; record the result in the Intelligence Feed.
+
 ## BUILD PATH
 
 [05 — Requirements + Definition of Done](05-REQUIREMENTS-AND-DEFINITION-OF-DONE.md)  
