@@ -54,8 +54,24 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
             elif s in ACTIVE:active.append(e)
             elif s=="CONFLICTED":conflicted.append(e)
             else:unknown.append(e)
-        if len(active)==1:current.append(active[0])
-        elif len(active)>1:conflicted.extend(active)
+        if len(active)==1:
+            current.append(active[0])
+        elif len(active)>1:
+            # Existing verification/evidence/authority may resolve only a strict,
+            # evidence-backed leader. A tie remains CONFLICTED; recency alone never wins.
+            def strength(e):
+                v=e.get("verification") or {}
+                evidence=v.get("evidence") or []
+                verified=v.get("status") in {"VERIFIED","LIVE_VERIFIED"} and bool(evidence)
+                authority=str(e.get("authority") or "").casefold()
+                authority_rank={"human-decision":3,"canonical":3,"repository-execution":3,"source-of-truth":3,"derived":1}.get(authority,0)
+                return (1 if verified else 0, authority_rank)
+            ranked=sorted(active,key=lambda e:(strength(e),key(e)),reverse=True)
+            if len(ranked)>=2 and strength(ranked[0]) > strength(ranked[1]) and strength(ranked[0])[0]==1:
+                current.append(ranked[0])
+                conflicted.extend(ranked[1:])
+            else:
+                conflicted.extend(active)
     evidence=[];lineage=[]
     for e in rows:
         v=e.get("verification") or {}
@@ -70,6 +86,6 @@ def build_current(project_id="NayaNET"):
     return reconstruct(load_events(),project_id,json.loads(STATE.read_text()),json.loads(MAP.read_text()),json.loads(BLOCKS.read_text()),json.loads(PROOF.read_text()))
 def main():
     ap=argparse.ArgumentParser();ap.add_argument("--project",default="NayaNET");ap.add_argument("--out");a=ap.parse_args();r=build_current(a.project);raw=json.dumps(r,indent=2,ensure_ascii=False)
-    if a.out:Path(a.out).write_text(raw+"\\n",encoding="utf-8")
+    if a.out:Path(a.out).write_text(raw+"\n",encoding="utf-8")
     print(raw)
 if __name__=="__main__":main()
