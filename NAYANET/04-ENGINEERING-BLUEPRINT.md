@@ -1,5 +1,11 @@
 # 🔱 NAYANET — ENGINEERING BLUEPRINT
 
+**Status:** ACTIVE PRODUCT ENGINEERING CONTRACT  
+**Governing authority:** `NAYA/INTELLIGENCE/DESIGN-ENGINEERING/`  
+**Scope:** NayaNET implementation, deployment, isolation, API seams, performance, security, testing, and completion gates
+
+> This document remains an active concrete engineering contract. It is not a competing global coding standard. General design/engineering laws are governed by the current Design + Engineering Intelligence standard.
+
 ## 1. Engineering objective
 
 Deliver a premium static-first application that can be deployed immediately, remains modular, and has clean seams for future authenticated intelligence services.
@@ -201,3 +207,11 @@ with evidence for every claimed state.
 ## 16. Engineering law
 
 > **The simplest deployable artifact is the default. Complexity must earn its place.**
+
+## 17. Governance
+
+When this blueprint conflicts with the current Design + Engineering Intelligence standard, the current standard governs. Concrete product requirements in this blueprint remain active unless explicitly retired.
+
+Before adding a new general engineering law, use:
+
+**SEARCH → COMPARE → DISTILL → UPDATE CURRENT STANDARD → RETIRE DUPLICATE → VERIFY**

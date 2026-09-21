@@ -1,5 +1,11 @@
 # 🔱 NAYANET — DESIGN SYSTEM + LIVING SUN SPECIFICATION
 
+**Status:** ACTIVE PRODUCT DESIGN CONTRACT  
+**Governing authority:** `NAYA/INTELLIGENCE/DESIGN-ENGINEERING/`  
+**Scope:** NayaNET visual identity, Living Sun, surfaces, interaction language, and product-specific design details
+
+> This document remains useful as a product-specific design reference. It is not a competing global design standard. Where this document conflicts with the current Design + Engineering Intelligence standard, the current standard governs.
+
 ## 1. Design north star
 
 The visual system must communicate intelligence, energy, warmth, depth, precision, and possibility without becoming visually noisy.
@@ -25,9 +31,9 @@ Core palette:
 - magenta for energy/activation;
 - blue for intelligence/communication;
 - green for success/growth;
-- yellow/gold for insight/high-value emphasis.
+- semantic accents only when they improve meaning and remain subordinate to the canonical design system.
 
-Gold is a premium accent, not a dominant background color.
+Do not introduce yellow/gold as a default product accent merely because an older version of this specification mentioned it. Any premium/high-value emphasis must remain compatible with the current canonical design language and accessibility requirements.
 
 ## 3. Typography
 
@@ -183,17 +189,35 @@ Primary CTA:
 - short verb;
 - unmistakable active state;
 - keyboard focus;
-- touch-safe dimensions.
+- touch-safe dimensions;
+- truthful engine/state feedback;
+- physical/depth cues only when they improve clarity and do not obscure semantics.
 
 Examples:
 
-**Meet Naya**
-**Create My NayaNET**
-**Ask Naya**
-**Start the Challenge**
-**Enter My Hub**
+**Meet Naya**  
+**Create My NayaNET**  
+**Ask Naya**  
+**Start the Challenge**  
+**Enter My Hub**  
 **Activate Naya Power**
+
+The canonical living-object model is:
+
+**REST → HOVER → FOCUS → PRESS → PROCESSING → SUCCESS / FAILURE**
+
+Where applicable, include semantic states such as disabled, authorized, unauthorized, queued, blocked, retryable, partial, and complete. The interface must never imply engine success when the engine did not succeed.
 
 ## 18. Design law
 
 > **Every visual element must either communicate state, hierarchy, meaning, or emotion. If it does none of those, remove it.**
+
+## 19. Governance
+
+This product specification is maintained by the current Design + Engineering Intelligence standard.
+
+Before adding a new global design rule, use:
+
+**SEARCH → COMPARE → DISTILL → UPDATE CURRENT STANDARD → RETIRE DUPLICATE → VERIFY**
+
+Product-specific detail belongs here only when it has a concrete NayaNET role. General design/coding laws belong in `NAYA/INTELLIGENCE/DESIGN-ENGINEERING/`.
