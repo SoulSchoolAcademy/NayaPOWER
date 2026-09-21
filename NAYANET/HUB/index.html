@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(){}observe(){}disconnect(){}takeRecords(){return[]}}window.MutationObserver=NayaStaticMutationObserver})();</script>
+<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(){}observe(){}disconnect(){}takeRecords(){return[]}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
 
 <meta name="nayanet-direct-nine" content="verified-static-top-nine">
 <meta charset="utf-8">
