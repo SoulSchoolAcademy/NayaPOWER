@@ -41,7 +41,7 @@ jobs:
           if(!bj.persisted||!bj.indexed||!bj.projected)throw Error('PERSIST_INDEX_PROJECT_FAILED');
           const [rs,rb]=await post('nayanet-project-intelligence-retrieve',userToken,{query:bj.receiver_event_id});
           console.log('RETRIEVE='+JSON.stringify(rb));
-          if(rs!==200||!rb.ok||!(rb.result?.items?.length))throw Error('RETRIEVAL_FAILED');
+          if(rs!==200||!rb.ok||!(rb.result?.events?.length))throw Error('RETRIEVAL_FAILED');
           const hub=await fetch('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/');
           const hubText=await hub.text(); console.log('HUB_HTTP='+hub.status);
           if(hub.status!==200||!hubText.includes('NayaNET'))throw Error('HUB_RENDER_SURFACE_FAILED');
