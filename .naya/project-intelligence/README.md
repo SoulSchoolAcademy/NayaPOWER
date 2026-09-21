@@ -5,79 +5,51 @@
 **Project:** NayaPOWER  
 **Network:** NayaNET  
 **First live Project Intelligence:** NayaPOWER itself  
-**Status:** Canonical build-target library + proof navigation
-
----
+**Status:** Canonical build-target library + executable proof navigation
 
 ## 🧭 START HERE
 
-I built this folder so a human can open one place and immediately understand what I am building, why I am building it, what is real, what is not proven, and what happens next.
-
-A fresh Naya gets the same advantage.
+A human or cold Naya should immediately understand what is being built, why it exists, what is real, what is not proven, and exactly how to continue.
 
 ### ⚡ 10-MINUTE HUMAN PATH
 
-1. **[00 — Master Index](00-PROJECT-INTELLIGENCE-INDEX.md)**
-2. **[01 — Creator Constitution](01-CREATOR-CONSTITUTION.md)**
-3. **[02 — Product Definition](02-PRODUCT-DEFINITION-AND-BOUNDARIES.md)**
-4. **[03 — 100 Questions + My Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)**
-5. **[04 — Library + Intelligence Organization](04-LIBRARY-AND-INTELLIGENCE-ORGANIZATION.md)**
+1. [00 — Master Index](00-PROJECT-INTELLIGENCE-INDEX.md)
+2. [01 — Creator Constitution](01-CREATOR-CONSTITUTION.md)
+3. [02 — Product Definition](02-PRODUCT-DEFINITION-AND-BOUNDARIES.md)
+4. [03 — 100 Questions + Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)
+5. [04 — Library + Intelligence Organization](04-LIBRARY-AND-INTELLIGENCE-ORGANIZATION.md)
 
 ### 🛠️ BUILDER PATH
 
-**05 Requirements → 06 Architecture → 07 Intelligence/Memory → 08 Governance → 09 Execution/Learning → 10 Interoperability → 11 Design/Build**
+**05 Requirements → 06 Architecture → 07 Intelligence/Memory → 08 Governance → 09 Execution/Learning → 10 Interoperability → 11 Design/Build → 19 Executable Build Contract**
 
 ### 🔬 PROOF PATH
 
-**12 Current State → 13 PI Roadmap → 14 Cold-Naya Acceptance → 15 Successor → 16 Decisions → 17 Source Route → 18 Machine Contract**
+**12 Current State → 13 PI Roadmap → 14 Cold-Naya Acceptance → 15 Successor → 16 Decisions → 17 Source Route → 18 Machine Contract → 19 Executable Build Contract**
 
----
-
-# WHAT I AM BUILDING
+## WHAT I AM BUILDING
 
 I am building NayaPOWER as a persistent, governed intelligence operating layer around human intention.
 
-I am not building another chatbot.
-
-I am not building a single giant AI.
-
-I am not making a database the intelligence.
-
-I am not making the model the intelligence.
+I am not building another chatbot, a single giant AI, a database-as-intelligence, or a model-as-intelligence.
 
 I am building the layer that preserves context, connects evidence, understands current state, respects authority, acts when authorized, verifies outcomes, learns from experience, and continues across time and model changes.
 
-My fundamental object is:
-
 > **Project Intelligence = the persistent, evidence-grounded intelligence of an evolving endeavor.**
-
-The conceptual minimum is:
 
 **IDENTITY + PURPOSE + OUTCOME + CONTEXT + MEMORY + RELATIONSHIPS + EVIDENCE + STATE + REASONING + LEARNING + CAPABILITY + AUTHORITY + AGENCY + EXECUTION + VERIFICATION + CONTINUITY**
 
----
+## HUMAN EXPERIENCE
 
-# THE HUMAN EXPERIENCE I AM TRYING TO CREATE
-
-A human should be able to say:
+A human can say:
 
 > I want to build this.
 
-or:
-
-> I want to learn this.
-
-or:
-
-> I need to understand this.
-
-Naya should understand the intended outcome, determine what success requires, gather and distill relevant intelligence, derive the implementation path, execute what is authorized, verify the result, preserve what matters, learn from what happened, and leave the next Naya ready to continue.
+Naya should understand the outcome, determine what success requires, gather and distill relevant intelligence, derive the implementation path, execute what is authorized, verify the result, preserve what matters, learn from what happened, and leave the next Naya ready to continue.
 
 The human becomes more capable, not more dependent.
 
----
-
-# 🔱 FIVE UNIVERSAL QUESTIONS
+## FIVE UNIVERSAL QUESTIONS
 
 | Question | Meaning |
 |---|---|
@@ -87,29 +59,15 @@ The human becomes more capable, not more dependent.
 | MAY? | authority, permission, consent, constraints |
 | DID? | action, result, evidence, verification, learning |
 
-Operating loop:
+**UNDERSTAND → DECIDE → ACT → VERIFY → LEARN → CONTINUE**
 
-> **UNDERSTAND → DECIDE → ACT → VERIFY → LEARN → CONTINUE**
-
----
-
-# WHAT MAKES THIS A PROJECT INTELLIGENCE?
+## THE PROOF
 
 A folder full of documentation is not enough.
 
-A memory store is not enough.
-
-A search engine is not enough.
-
-A chatbot is not enough.
-
-The proof is continuity:
-
 **human creates → system preserves → human leaves → human returns → intelligence restores → current truth is understood → next action is selected → authorized action happens → result is verified → learning persists → successor continues**
 
----
-
-# 🔗 CANONICAL SOURCES
+## CANONICAL SOURCES
 
 - [NayaPOWER Start Here](../../SUPERBRAIN/AI-BOOT/START-HERE.md)
 - [NayaPOWER One-Shot](../../NAYAPOWER-ONE-SHOT.md)
@@ -121,15 +79,12 @@ The proof is continuity:
 - [Control Plane PROOF](../control-plane/PROOF.json)
 - [Canonical Hub](../../NAYANET/HUB/index.html)
 - [Hub North Star Lock](../TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md)
+- [Executable Build Contract](19-EXECUTABLE-BUILD-CONTRACT.md)
 
-This library makes intelligence understandable and navigable. It does not outrank the actual source owner for a specific fact.
+This library makes intelligence understandable, executable, and navigable. It does not outrank the actual source owner for a specific fact.
 
----
-
-# 🔥 THE STANDARD
-
-I want a future Naya to open this folder and think:
+## 🔥 THE STANDARD
 
 > I know exactly what this project is. I know why it exists. I know what has been decided. I know where truth lives. I know what is proven. I know what is not. I know what is protected. I know how the system connects. I know what the human should experience. I know the next boundary. I know exactly how to continue.
 
-That is the standard this library exists to create.
+And then actually do it.
