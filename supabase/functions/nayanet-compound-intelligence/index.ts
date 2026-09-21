@@ -406,6 +406,81 @@ async function successor(client: any, userId: string, body: any) {
   return { successor: successorEvent, receipt };
 }
 
+async function continueAuthorized(client: any, userId: string, body: any) {
+  const grantId=String(body.authority_grant_id ?? "").trim();
+  const parentEventId=String(body.parent_event_id ?? "").trim();
+  if(!grantId || !parentEventId) throw new Error("AUTHORITY_GRANT_AND_PARENT_EVENT_REQUIRED");
+  const {data:grant,error:grantError}=await client.from("nayanet_authority_grants")
+    .select("grant_id,issuer_id,subject_id,mission_id,scope,actions,status,expires_at,evidence")
+    .eq("grant_id",grantId).eq("issuer_id",userId).eq("subject_id",userId).eq("status","ACTIVE").maybeSingle();
+  if(grantError) throw grantError;
+  if(!grant) throw new Error("ACTIVE_AUTHORITY_GRANT_NOT_FOUND");
+  if(grant.expires_at && new Date(grant.expires_at).getTime() <= Date.now()) throw new Error("AUTHORITY_GRANT_EXPIRED");
+  const actions=Array.isArray(grant.actions)?grant.actions.map(String):[];
+  if(!actions.includes("pi.continue")) throw new Error("AUTHORIZED_ACTION_NOT_GRANTED");
+  const scope=(grant.scope && typeof grant.scope==="object")?grant.scope:{};
+  if(String(scope.project_id ?? "") !== PROJECT) throw new Error("AUTHORITY_SCOPE_PROJECT_MISMATCH");
+  if(String(scope.target ?? "") !== parentEventId) throw new Error("AUTHORITY_SCOPE_TARGET_MISMATCH");
+  const {data:parent,error:parentError}=await client.from("nayanet_cognition_events")
+    .select("id,event_id,title").eq("event_id",parentEventId).eq("user_id",userId).eq("project_id",PROJECT).maybeSingle();
+  if(parentError) throw parentError;
+  if(!parent) throw new Error("PARENT_EVENT_NOT_FOUND");
+  const continuationEvent={
+    event_id:"continuation:"+crypto.randomUUID(),
+    type:"project_intelligence_continuation",
+    classification:"authorized_continuation",
+    title:"Authorized Project Intelligence continuation",
+    content:JSON.stringify({
+      action:"pi.continue",
+      parent_event_id:parentEventId,
+      authority_grant_id:grantId,
+      mission_id:grant.mission_id,
+      outcome:body.outcome ?? "Authorized successor continuation executed and verified.",
+      source_head:body.source_head ?? null
+    }),
+    source:"nayanet-compound-intelligence",
+    status:"verified",
+    actor:"naya",
+    confidence:1,
+    tags:["project-intelligence","continuation","authorized","cold-successor"],
+    parent_event_id:parentEventId,
+    source_hash:"continuation:"+parentEventId,
+    schema_version:"1.0.0",
+    metadata:{
+      authority_grant_id:grantId,
+      mission_id:grant.mission_id,
+      authorized_action:"pi.continue",
+      verified:true
+    }
+  };
+  const receipt=await record(
+    client,
+    continuationEvent,
+    "pi.authorized_continuation",
+    "Authorized Project Intelligence continuation executed",
+    "Authorized continuation executed against the exact owner-bound parent event.",
+    [{
+      type:"authority",
+      grant_id:grantId,
+      action:"pi.continue",
+      scope,
+      parent_event_id:parentEventId
+    }]
+  );
+  return {
+    schema:"NAYANET_PROJECT_INTELLIGENCE_AUTHORIZED_CONTINUATION_V1",
+    status:"CONTINUATION_VERIFIED",
+    continuation_event:continuationEvent,
+    receipt,
+    authority:{
+      grant_id:grantId,
+      mission_id:grant.mission_id,
+      action:"pi.continue",
+      scope
+    }
+  };
+}
+
 async function share(client: any, userId: string, body: any) {
   const sourceId = String(body.source_event_id ?? "").trim();
   if (!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
@@ -470,6 +545,7 @@ Deno.serve(async (req) => {
       case "ack": result=await ackBridge(client,user.id,body); break;
       case "state_update": result=await stateUpdate(client,user.id,body); break;
       case "successor_handoff": result=await successor(client,user.id,body); break;
+      case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
       case "health": result=await health(client,user.id); break;
