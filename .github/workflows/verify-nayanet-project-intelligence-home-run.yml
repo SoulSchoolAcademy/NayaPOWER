@@ -150,7 +150,10 @@ jobs:
               retrieve:'nayanet-pi-retrieve',
               reconcile:'nayanet-pi-reconcile',
               successor_handoff:'nayanet-pi-successor-handoff',
-              ack:'nayanet-project-intelligence-ack'
+              ack:'nayanet-project-intelligence-ack',
+              understand:'nayanet-compound-intelligence',
+              issue_pi_authority:'nayanet-compound-intelligence',
+              continue_authorized:'nayanet-compound-intelligence'
             };
             const slug=slugs[action];
             if(!slug) throw new Error('UNMAPPED_HOME_RUN_ENDPOINT:'+action);
