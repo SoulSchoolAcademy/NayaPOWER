@@ -23,7 +23,7 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 — NAYANET CONSTITUTIONAL HARDENING",
   "priority_zero_master_note": ".naya/project-intelligence/24-NAYANET-MASTER-PROOF-CONTRACT.md",
-  "current_block": "NAYANET-CONSTITUTIONAL-HARDENING-02",
+  "current_block": "NAYANET-CONSTITUTIONAL-HARDENING-03",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -176,9 +176,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "REMAINING_CONSTITUTIONAL_AND_PRODUCT_ACCEPTANCE_GAPS",
-  "single_next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval.",
+  "single_next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
   "next_actions": [
-    "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval."
+    "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "Execute PI-03 cold retrieval in a genuinely fresh context: retrieve identity, purpose, current state, proven/unknown/failed state, authority, open loops, next action, and proof requirements without using this conversation or the PI-02 answer as a hidden shortcut.",
@@ -215,15 +215,14 @@
   "next_action": "Execute the highest-value remaining constitutional/product hardening boundary from 21-GAP-TO-PROOF-MATRIX.md, beginning with canonical control-plane self-reconciliation if any stale contradiction is detected.",
   "latest_execution_head": "1b88648fe69db5d4a130e85e71d2c36345b55135",
   "current_frontier": {
-    "id": "NAYANET-CONSTITUTIONAL-HARDENING-02",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "ACTIVE",
-    "source_checkpoint": "dd2684f46c67d23e15a87937a2ad31a15f266dea",
-    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval.",
-    "definition_of_done": "EVIDENCE_LINEAGE_REGISTRY_VERIFIED",
+    "source_checkpoint": "2f95f5eb06233949e01815bb9befbad4b25dac62",
+    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
+    "definition_of_done": "RUNTIME_EVIDENCE_LINEAGE_VERIFIED",
     "evidence_required": [
-      "evidence registry schema",
-      "lineage fixtures",
-      "GitHub Actions receipt"
+      "runtime lineage integration",
+      "end-to-end lineage receipt"
     ]
   }
 }
