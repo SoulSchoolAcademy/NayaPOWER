@@ -50,7 +50,7 @@ jobs:
           const reconcile=await req('nayanet-intelligence-context',token,{question:'What intelligence is required for the next authorized action?'});
           receipt.checks.reconcile=reconcile.ok===true?'PASS':'FAIL';
           const seed=await req('nayanet-pi-understand',token,{content:'PI operating-layer proof experience '+runId,title:'PI proof experience'});
-          const eventId=seed?.result?.result?.event?.event_id;
+          const eventId=seed?.result?.event?.event_id;
           if(!eventId) throw Error('UNDERSTANDING_EVENT_ID_MISSING');
           const understand=await req('nayanet-intelligence-understand',token,{event_id:eventId,content:'PI interpretation for '+runId,title:'PI interpretation'});
           receipt.checks.understand=understand.ok===true?'PASS':'FAIL';
