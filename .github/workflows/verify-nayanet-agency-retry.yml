@@ -1,0 +1,22 @@
+name: NayaNET agency and retry law
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.naya/project-intelligence/agency-retry-contract.json'
+      - '.naya/project-intelligence/agency-retry-fixtures.json'
+      - '.naya/project-intelligence/validate_agency_retry.py'
+      - '.github/workflows/verify-nayanet-agency-retry.yml'
+permissions:
+  contents: read
+jobs:
+  agency-retry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Validate agency and retry laws
+        run: python3 .naya/project-intelligence/validate_agency_retry.py
