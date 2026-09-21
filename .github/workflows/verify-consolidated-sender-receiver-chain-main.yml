@@ -47,7 +47,7 @@ jobs:
           if(hub.status!==200||!hubText.includes('NayaNET'))throw Error('HUB_RENDER_SURFACE_FAILED');
           const [as,ab]=await post('nayanet-project-intelligence-ack',userToken,{packet_id:bj.packet_id,retrieved:true,rendered:true,retrieval_evidence:['retrieve:'+bj.receiver_event_id],render_evidence:['hub-runtime-http-200-canonical-nayanet-surface']});
           console.log('ACK='+JSON.stringify(ab));
-          if(as!==200||!ab.ok||ab.retrieved!==true||ab.rendered!==true)throw Error('ACK_FAILED');
+          if(as!==200||!ab.ok||ab.ack?.retrieved!==true||ab.ack?.rendered!==true)throw Error('ACK_FAILED');
           console.log('CHAIN_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_SENDER_RECEIVER_CHAIN_PROOF_V1',run_id:R,sender:true,receiver:true,persisted:true,indexed:true,projected:true,retrieved:true,hub_render_surface_observed:true,acknowledged:true,exact_packet_render:'NOT_SEPARATELY_PROVEN',status:'VERIFIED_WITH_RENDER_SCOPE'}));
           EOF
           node chain.mjs
