@@ -1,0 +1,27 @@
+name: NayaNET constitutional hardening — control-plane self-reconciliation
+on:
+  workflow_dispatch:
+  push:
+    branches: [naya/live-project-intelligence-v1]
+    paths:
+      - '.naya/control-plane/**'
+      - '.github/workflows/verify-nayanet-constitutional-hardening.yml'
+permissions:
+  contents: read
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Resolve live identity
+        shell: bash
+        run: |
+          echo "LIVE_BRANCH=$(git branch --show-current)"
+          echo "LIVE_HEAD=$(git rev-parse HEAD)"
+      - name: Validate canonical control plane
+        shell: bash
+        run: |
+          python3 .naya/control-plane/validate_control_plane.py
