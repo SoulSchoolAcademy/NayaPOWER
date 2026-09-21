@@ -287,7 +287,7 @@ jobs:
                   source_head:process.env.GITHUB_SHA,
                   outcome:'Fresh successor executed the explicitly authorized Project Intelligence continuation.'
                 });
-                if(continuation.status!=='CONTINUATION_VERIFIED'||!continuation.continuation_event?.event_id) throw new Error('AUTHORIZED_CONTINUATION_FAILED');
+                if(continuation.status!=='CONTINUATION_VERIFIED'||!continuation.continuation_event?.event_id) throw new Error('AUTHORIZED_CONTINUATION_FAILED:'+JSON.stringify({status:continuation.status,continuation_event:continuation.continuation_event,receipt:continuation.receipt,authority:continuation.authority,schema:continuation.schema}));
                 continuationEventId=continuation.continuation_event.event_id;
                 continuationReceiptId=continuation.receipt?.receipt?.id ?? continuation.receipt?.id ?? null;
                 if(!continuationReceiptId) throw new Error('AUTHORIZED_CONTINUATION_RECEIPT_MISSING:'+JSON.stringify(continuation));
