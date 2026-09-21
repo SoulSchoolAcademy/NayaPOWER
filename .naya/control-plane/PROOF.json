@@ -329,7 +329,7 @@
       "result": "LEARNING_REUSE_VERIFIED"
     },
     "current_readiness": {
-      "status": "PENDING_RECONCILIATION",
+      "status": "SMART_SHARE_GATE_CLOSED_SMART_MAIL_NEXT",
       "run_id": 35520018724,
       "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
       "unknown_count": 0,
@@ -478,6 +478,70 @@
         "smart_feed_render",
         "reload_identity"
       ]
+    },
+    "smart_share_governed_action": {
+      "status": "PRODUCTION_PROVEN",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-smart-share-canonical.yml",
+      "run_id": 35553013422,
+      "job_id": 106191167880,
+      "observed_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
+      "runtime": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+      "publication_id": "31332623-12a3-4f28-9660-495b5cda9e6d",
+      "source_event_id": "assistant_mualtlmq",
+      "source_receipt_id": "44a86bf7-04be-401c-9a83-e26e022ceecd",
+      "publication_receipt_event_id": "smart-share-31332623-12a3-4f28-9660-495b5cda9e6d",
+      "authority_grant_id": "45394220-437f-41e6-867c-84fd225f2609",
+      "artifact_id": 10618664793,
+      "artifact_digest": "sha256:d9643012703e7246667a8cb78df6ed335602776c15f8a3ff988612f09f2990a6",
+      "checks": [
+        "01_canonical_hub:PASS",
+        "02_authenticated_human:PASS",
+        "03_owned_intelligence:PASS",
+        "04_smart_share_visible:PASS",
+        "05_correct_button_binding:PASS",
+        "06_real_click:PASS",
+        "07_source_ownership:PASS",
+        "08_authority_issuance:PASS",
+        "09_authority_validation:PASS",
+        "10_publication:PASS",
+        "11_publication_persistence:PASS",
+        "12_explicit_consent:PASS",
+        "13_publication_receipt:PASS",
+        "14_collective_retrieval:PASS",
+        "15_receiver_retrieval:PASS",
+        "16_private_source_isolation:PASS",
+        "17_third_party_privacy:PASS",
+        "18_replay_publication_identity:PASS",
+        "19_replay_receipt_identity:PASS",
+        "20_hard_reload_retrieval:PASS",
+        "21_revocation:PASS",
+        "22_revoked_retrieval_denied:PASS",
+        "23_expiry_denied:PASS",
+        "24_unauthorized_issuer_denied:PASS",
+        "25_evidence_receipt:PASS",
+        "26_clean_browser_shutdown:PASS",
+        "27_artifact_upload:PASS"
+      ],
+      "repairs": [
+        {
+          "commit": "060099d0a4aec30e248d73b1fc64b4f130535285",
+          "boundary": "authority mutation",
+          "cause": "issuer-ownership hardening removed SECURITY DEFINER from the governed grant RPC while authenticated clients remain denied direct INSERT",
+          "repair": "restored SECURITY DEFINER while retaining issuer-owned source-event enforcement"
+        },
+        {
+          "commit": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
+          "boundary": "expiry proof fixture",
+          "cause": "expiry test reused a source_event_id already consumed by the canonical unique issuer/source constraint",
+          "repair": "created a separate owned expiry authorization event; no production authority semantics changed"
+        }
+      ],
+      "evidence_links": {
+        "workflow": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35553013422",
+        "artifact": "https://github.com/SoulSchoolAcademy/NayaPOWER/actions/runs/35553013422/artifacts/10618664793"
+      },
+      "interpretation": "Smart Share is fully production-proven against the canonical Hub/runtime. The gate can now advance to Smart Mail."
     }
   },
   "recording_commit": "dfd33e64c8019cab4d2bd7b58dcbf636de8794909",
@@ -728,8 +792,8 @@
     ],
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
-  "interpretation": "Production Hub source/build/runtime parity and the human Smart Note capture→receiver→PIS→Feed→reload journey are now current. The next proof frontier is deep human lifecycle acceptance for remaining surfaces; public Welcome remains deferred.",
-  "current_repository_head": "df1cb836ff41a471d776345a2ffaf1208dd86023",
+  "interpretation": "Smart Share governed human lifecycle is production-proven at current main HEAD. The two discovered proof/authority boundaries were repaired surgically and rerun successfully. The next acceptance frontier is the canonical Smart Mail lifecycle.",
+  "current_repository_head": "4168f19eeb632c728c3fd9b080ce5e0937e5e416",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -746,6 +810,6 @@
       "canonical React Hub marker/navigation/Smart Feed/private workspace verified",
       "Smart Feed action persistence/reload/retrieval and unauthorized persistence block verified"
     ],
-    "remaining_gap": "Smart Note receive/validate/persist/project/render causal path is not yet consolidated as one current Hub acceptance proof; remaining feature surfaces require full authenticated action acceptance."
+    "remaining_gap": "Smart Mail human lifecycle acceptance is now the next blocking feature boundary; Smart Share is no longer incomplete."
   }
 }
