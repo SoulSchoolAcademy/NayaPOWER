@@ -12,6 +12,9 @@ jobs:
   adversarial:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,6 +22,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Establish fresh proof owner identity
+        shell: bash
+        run: |
+          owner=$(curl -sSf -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" "$SUPABASE_URL/auth/v1/signup" -d '{}')
+          owner_id=$(python -c 'import json,sys; print(json.load(sys.stdin)["user"]["id"])' <<< "$owner")
+          echo "NAYANET_OWNER_ID=$owner_id" >> "$GITHUB_ENV"
+          echo "RUN_IDENTITY=github-actions:${GITHUB_RUN_ID}:${GITHUB_SHA}" >> "$GITHUB_ENV"
       - name: Build packet
         run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-bridge-packet.json
       - name: Mint GitHub OIDC bridge token
