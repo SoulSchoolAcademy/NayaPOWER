@@ -64,19 +64,14 @@ jobs:
             const page=await context.newPage();
             if(diagnoseShare) await page.addInitScript(()=>{
               window.__smartShareDiag={registrations:0,handlerInvoked:0,dispatches:[],timeline:[],binderInvocations:[],scanCalls:[],observerCalls:[]};
-              const pushTimeline=(kind,data={})=>{
-                const row={kind,ms:Date.now()-startedAt,...data};
-                const t=window.__smartShareDiag.timeline;
-                const prev=t[t.length-1];
-                if(!prev||JSON.stringify({...prev,ms:0})!==JSON.stringify({...row,ms:0})) t.push(row);
-              };
+              const tracePushTimeline=(kind,data={})=>{ window.__smartShareDiag.timeline.push({kind,ms:Date.now()-startedAt,...data}); };
               const nativeQsa=Document.prototype.querySelectorAll;
               Document.prototype.querySelectorAll=function(selector){
                 const result=nativeQsa.call(this,selector);
                 if(String(selector).includes('share-intel')){
                   const row={ms:Date.now()-startedAt,selector:String(selector),count:result.length,guard:window.__nayaCanonicalHubSmartShareBound===true,boundCount:[...result].filter(b=>b.dataset?.nayaSmartShareBound==='1').length};
                   window.__smartShareDiag.scanCalls.push(row);
-                  pushTimeline('scan',row);
+                  tracePushTimeline('scan',row);
                 }
                 return result;
               };
@@ -107,7 +102,7 @@ jobs:
                       const buttons=[...document.querySelectorAll('[data-c4-kind="share-intel"]')];
                       const row={ms:Date.now()-startedAt,guardBefore:window.__nayaCanonicalHubSmartShareBound===true,buttonCount:buttons.length,boundCount:buttons.filter(b=>b.dataset?.nayaSmartShareBound==='1').length};
                       window.__smartShareDiag.binderInvocations.push(row);
-                      pushTimeline('binder-invocation',row);
+                      tracePushTimeline('binder-invocation',row);
                       return original.apply(this,arguments);
                     };
                     rt.__smartShareBinderTraceWrapped=true;
