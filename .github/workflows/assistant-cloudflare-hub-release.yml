@@ -241,7 +241,7 @@ jobs:
               const probe=await page.evaluate((expected)=>{
                 const station=document.querySelector('.naya-command-station');
                 const buttons=[...document.querySelectorAll('[data-naya-surface]')];
-                const labels=buttons.map(x=>x.textContent.trim()).filter(Boolean);
+                const labels=buttons.map(x=>(x.querySelector('.label')?.textContent||x.textContent).trim()).filter(Boolean);
                 const feed=[...document.querySelectorAll('.feedNav [data-feed]')];
                 const feedLabels=feed.map(x=>x.textContent.trim());
                 const rect=station?.getBoundingClientRect();
