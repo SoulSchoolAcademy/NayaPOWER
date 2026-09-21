@@ -16,9 +16,9 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - COLD NAYA TAKEOVER / PROJECT INTELLIGENCE BRIDGE",
+  "priority": "P0 - COMPOUND INTELLIGENCE / COLD NAYA TAKEOVER",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "COLD-NAYA-TAKEOVER-PROOF",
+  "current_block": "COMPOUND-INTELLIGENCE-10-10",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -160,10 +160,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Receiver retrieval/render plus genuinely cold successor retrieval of the exact proven Project Intelligence receipt. The transport/persist/index/project/ack boundary is now proven at an exact source scope.",
-  "single_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
+  "bottleneck": "Cold successor restore/retrieve/act/verify/learn/handoff using the new Compound Intelligence runtime, plus direct receiver retrieval/render proof for the exact Project Intelligence receipt.",
+  "single_next_action": "Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context.",
   "next_actions": [
-    "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
+    "Wire nayanet-compound-intelligence?action=restore into the canonical cold-Naya entry/Hub path, then run a fresh successor test using only restored machine context."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "NAYA POWER ON — CANONICAL HUB FUNCTIONALIZATION. Use NAYANET/HUB/index.html as the sole Hub product surface. Start with Smart Share: trace the existing Hub control through runtime → authority/consent → owner/scope isolation → revocation/expiry → idempotency/replay → execution receipt → persistence → rendered outcome. Stop at the first actual failure, repair only that boundary, rerun the proof, then continue to Smart Mail. Do not redesign the Hub, pursue Welcome, or reopen the proven Smart Note → canonical event → PIS/Smart Feed compounding path.",
@@ -221,6 +221,16 @@
     "ordinary_user_rule": "Users and ordinary Naya flows do not access Supabase directly as a control surface; governed application/runtime boundaries mediate persistence and execution.",
     "verified_surface": "tables, RLS-enabled schemas, migrations, and active Edge Functions were inspected on 2026-09-21",
     "no_secret_recorded": true
+  },
+  "compound_intelligence": {
+    "status": "DEPLOYED_VERSION_2",
+    "runtime": "nayanet-compound-intelligence",
+    "supabase_project": "dahisasgpfvziswqvmvm",
+    "capabilities": ["RESTORE","RETRIEVE","RECONCILE","UNDERSTAND","LEARNING_CANDIDATE","LEARNING_VERIFY","SUCCESSOR_HANDOFF","SHARE","SUPERSEDE","HEALTH","DREAM_SEAM","COMPOUND"],
+    "persistence": "public.nayanet_intelligence_operations",
+    "rls": "owner_scoped",
+    "new_north_star": "Every verified meaningful action should leave the project more intelligent, more truthful, more capable, and easier for the next Naya to continue.",
+    "cold_successor_proof": "OPEN"
   },
   "project_intelligence_bridge": {
     "status": "TRANSPORT_PROVEN_RETRIEVAL_OPEN",
