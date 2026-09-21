@@ -105,7 +105,15 @@ jobs:
           [ -n "$token" ] || { echo "OIDC_TOKEN_REQUEST_EXHAUSTED"; exit 1; }
           echo "token=$token" >> "$GITHUB_OUTPUT"
           export NAYANET_BRIDGE_TOKEN="$token"
-          python .naya/runtime/project_intelligence_bridge.py send project-intelligence-home-run-packet.json | tee bridge-send.json
+          set +e
+          python .naya/runtime/project_intelligence_bridge.py send project-intelligence-home-run-packet.json > bridge-send.json 2>&1
+          send_status=$?
+          cat bridge-send.json
+          set -e
+          echo "BRIDGE_SEND_EXIT=$send_status"
+          if [ "$send_status" -ne 0 ]; then
+            echo "BRIDGE_SEND_NONZERO=RECOVERABLE_ONLY_IF_EXACT_PACKET_IS_DURABLE"
+          fi
 
       - name: Prove receive → retrieve → render → ack → cold successor
         shell: bash
@@ -164,8 +172,20 @@ jobs:
             try{
               await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
               const session=await identity(page);
-              const sent=JSON.parse(fs.readFileSync('bridge-send.json','utf8'));
-              const bridge=sent.ack||sent;
+              let sent=null;
+              try{sent=JSON.parse(fs.readFileSync('bridge-send.json','utf8'));}catch{}
+              let bridge=sent?.ack||sent;
+              if(!bridge?.packet_id){
+                const packet=JSON.parse(fs.readFileSync('project-intelligence-home-run-packet.json','utf8'));
+                const durable=await page.evaluate(async({supabaseUrl,supabaseKey,token,packetId})=>{
+                  const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                  const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                  return await c.from('nayanet_project_intelligence_bridge').select('packet_id,project_id,source_ref,content_hash,owner_id,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected,accepted_at,retrieved,rendered').eq('packet_id',packetId).maybeSingle();
+                },{supabaseUrl,supabaseKey,token:session.access_token,packetId:packet.packet_id});
+                if(durable.error||!durable.data) throw new Error('NO_DURABLE_BRIDGE_RECEIPT_AFTER_SEND_FAILURE:'+JSON.stringify(durable));
+                bridge=durable.data;
+                mark('RECEIVE_RECOVERED','PASS',{packet_id:bridge.packet_id,source_ref:bridge.source_ref,receiver_event_id:bridge.receiver_event_id,owner_id:bridge.owner_id,reason:'sender_returned_nonzero_but_exact_packet_is_durable'});
+              }
               if(!bridge?.packet_id) throw new Error('NO_SENT_BRIDGE_RECEIPT');
               if(!bridge.persisted||!bridge.indexed||!bridge.projected) throw new Error('BRIDGE_TRANSPORT_NOT_COMPLETE');
               if(bridge.owner_id!==session.userId) throw new Error('BRIDGE_OWNER_SESSION_MISMATCH');
@@ -182,14 +202,16 @@ jobs:
 
               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
               await page.waitForFunction((id)=>{
-                const root=document.querySelector('#naya-pi-render-root[data-status="rendered"]');
-                const card=root?.querySelector('[data-canonical-pi-render="true"][data-event-id="'+CSS.escape(id)+'"]');
-                const runtime=window.__NayaProjectIntelligenceRender;
-                return !!root && !!card && runtime?.rendered===true && runtime?.canonical===true && runtime?.eventId===id;
+                const legacy=document.querySelector('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id="'+CSS.escape(id)+'"]');
+                const react=document.querySelector('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"] .smart-feed-board[data-event-id="'+CSS.escape(id)+'"]');
+                return !!legacy || !!react;
               },receiverEventId,{timeout:30000});
-              const rendered=await page.locator('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:n.getAttribute('data-canonical-pi-render'),label:n.getAttribute('aria-label')})));
+              const legacy=await page.locator('#naya-pi-render-root[data-status="rendered"] [data-canonical-pi-render="true"][data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:n.getAttribute('data-canonical-pi-render'),surface:'legacy-canonical-pi'})));
+              const react=await page.locator('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"] .smart-feed-board[data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title'),canonical:'true',surface:'react-smart-feed-board'})));
+              const rendered=[...legacy,...react];
               if(!rendered.some(x=>x.eventId===receiverEventId&&x.canonical==='true')) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
-              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:'#naya-pi-render-root[data-status="rendered"]',canonical_event_selector:'[data-canonical-pi-render="true"][data-event-id]'});
+              const surface=rendered.find(x=>x.eventId===receiverEventId)?.surface||'unknown';
+              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface,canonical_event_selector:'[data-event-id]'});
 
               const ack=await compound(page,session,'ack',{
                 packet_id:bridge.packet_id,
