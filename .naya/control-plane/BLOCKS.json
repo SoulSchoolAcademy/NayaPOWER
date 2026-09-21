@@ -2,11 +2,11 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "NAYANET-CONSTITUTIONAL-HARDENING-02",
+    "id": "NAYANET-CONSTITUTIONAL-HARDENING-03",
     "status": "ACTIVE",
     "priority": "P0",
-    "intent": "Make evidence and lineage universal across claims, actions, outcomes, verification, learning, and successor continuity.",
-    "scope": "Single-project NayaNET evidence/provenance hardening; preserve proven PI-01→PI-08 and prior hardening proofs.",
+    "intent": "Integrate first-class evidence lineage into real runtime execution and verification receipts.",
+    "scope": "Single-project NayaNET runtime evidence spine; preserve prior contract and master-proof evidence.",
     "protected": [
       "Project NayaNET = Project Intelligence",
       "canonical control-plane authority",
@@ -27,15 +27,14 @@
       "receipt identifies exact live HEAD and evidence"
     ],
     "evidence": [
-      ".naya/project-intelligence/claim.schema.json",
-      ".naya/project-intelligence/temporal-truth-contract.json",
-      ".naya/project-intelligence/agency-retry-contract.json",
-      ".naya/project-intelligence/39-NAYANET-MASTER-PROOF-RECEIPT-2026-09-21.md"
+      ".naya/project-intelligence/evidence-lineage.schema.json",
+      ".naya/project-intelligence/41-NAYANET-CONSTITUTIONAL-HARDENING-RECEIPT-2026-09-21.md",
+      "runtime execution receipt evidence"
     ],
-    "target_state": "EVIDENCE_LINEAGE_REGISTRY_VERIFIED",
-    "next_action": "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval.",
+    "target_state": "RUNTIME_EVIDENCE_LINEAGE_VERIFIED",
+    "next_action": "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end.",
     "next_actions": [
-      "Build the universal evidence/provenance/lineage registry linking source → claim → action → outcome → verification → learning → successor, then prove complete lineage retrieval."
+      "Integrate the evidence-lineage contract into real execution/verification receipts so source → claim → action → outcome → verification → learning → successor is runtime-queryable, then prove it end-to-end."
     ],
     "next_action_count": 1
   },
