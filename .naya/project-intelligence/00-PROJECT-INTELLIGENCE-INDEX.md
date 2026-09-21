@@ -1,65 +1,139 @@
-# NayaPOWER — PROJECT INTELLIGENCE
+# 🔱 00 — PROJECT INTELLIGENCE MASTER INDEX
 
-STATUS: CANONICAL PROJECT INTELLIGENCE PACKAGE — BUILD TARGET
+**Status:** CANONICAL NAVIGATION CONTRACT  
+**Audience:** HUMAN · NAYA · BUILDER · REVIEWER · SUCCESSOR
 
-Project Intelligence is the reconstructable bridge from HUMAN INTENTION to INTELLIGENT EXECUTION to VERIFIED OUTCOME to SUCCESSOR CONTINUITY.
+---
 
-It is not a second memory database. Canonical events, evidence, receipts, source files, control-plane state, and runtime state remain authoritative.
+# I. WHY THIS INDEX EXISTS
 
-NayaPOWER is the first live Project Intelligence project. We are using the system to build the system.
+This is the map, not the whole forest.
 
-CORE LOOP
+Open this page when you need to answer one of five things:
 
-HUMAN INTENTION
-→ PROJECT INTELLIGENCE
-→ NAYA UNDERSTANDS
-→ DEFINE SUCCESS
-→ DISTILL REQUIREMENTS
-→ DESIGN
-→ BUILD / LEARN / ACT
-→ VERIFY
-→ RECORD
-→ LEARN
-→ UPDATE PROJECT INTELLIGENCE
-→ PASS TORCH
-→ NEXT NAYA RECONCILES
-→ CONTINUE
+**What is it? Why is it here? Where is truth? What is proven? What happens next?**
 
-READING ORDER
+---
 
-00 Index
-01 Mission, Vision, North Star, Human Outcome
-02 Concept, Product Boundaries
-03 Qualification Questions
-04 Required Project Files and Contents
-05 Requirements and Definition of Done
-06 System Architecture and Source of Truth
-07 Design and Build Method
-08 Governance, Truth, Privacy, Authority
-09 Execution, Learning, Torch Pass
-10 Current State and Evidence
-11 Build Roadmap and Boundaries
-12 Cold-Naya Acceptance
-13 Successor Handoff
-14 Source Route
-15 Machine Contract
+# II. THE HUMAN READING PATH
 
-MASTER QUESTION
+### 01 — WHY
 
-What does success actually require, and what must the next Naya know to make it more likely?
+[Creator Constitution](01-CREATOR-CONSTITUTION.md)
 
-NON-NEGOTIABLES
+My mission, values, North Star, design commitments, and non-negotiables.
 
-No competing intelligence database.
-No invented completion claims.
-No authority inferred from capability.
-No UNKNOWN converted to success.
-No retry without new information.
-No Hub redesign to solve Project Intelligence.
-No Smart Lists detour while this brick is being proven.
-No cold-Naya continuity claim until the cold test passes.
-Every substantive execution leaves a usable torch.
+### 02 — WHAT
 
-DEFINITION OF DONE
+[Product Definition](02-PRODUCT-DEFINITION-AND-BOUNDARIES.md)
 
-A fresh Naya can enter the repository, answer the qualification questions from canonical sources, reconstruct NayaPOWER's project intelligence, identify what is actually proven, identify the first unresolved causal boundary, and execute the next authorized step without Shawn rebuilding the context.
+What NayaPOWER, NayaNET, Naya, the Hub, and Project Intelligence are.
+
+### 03 — ANSWERS
+
+[100 Qualification Questions + My Answers](03-QUALIFICATION-QUESTIONS-AND-ANSWERS.md)
+
+The creator-level interview. I ask the hard questions and answer them myself wherever the architecture can responsibly decide.
+
+### 04 — LIBRARY
+
+[Library + Intelligence Organization](04-LIBRARY-AND-INTELLIGENCE-ORGANIZATION.md)
+
+How the intelligence itself is organized, dated, recalled, and inherited.
+
+---
+
+# III. THE BUILD PATH
+
+[05 — Requirements + Definition of Done](05-REQUIREMENTS-AND-DEFINITION-OF-DONE.md)
+
+[06 — Architecture + Source of Truth](06-SYSTEM-ARCHITECTURE-AND-SOURCE-OF-TRUTH.md)
+
+[07 — Intelligence / Memory / Epistemic Model](07-INTELLIGENCE-MEMORY-EPISTEMIC-MODEL.md)
+
+[08 — Governance / Authority / Privacy / Trust](08-GOVERNANCE-AUTHORITY-PRIVACY-TRUST.md)
+
+[09 — Execution / Learning / Continuity](09-EXECUTION-LEARNING-CONTINUITY.md)
+
+[10 — Interoperability / Internet of Intelligence](10-INTEROPERABILITY-INTERNET-OF-INTELLIGENCE.md)
+
+[11 — Design + Build Method](11-DESIGN-BUILD-METHOD.md)
+
+---
+
+# IV. THE PROOF PATH
+
+[12 — Current State + Evidence](12-CURRENT-STATE-AND-EVIDENCE.md)
+
+[13 — PI-01 → PI-08 Roadmap](13-ROADMAP-PI-01-PI-08.md)
+
+[14 — Cold-Naya Acceptance](14-COLD-NAYA-ACCEPTANCE.md)
+
+[15 — Successor Handoff](15-SUCCESSOR-HANDOFF.md)
+
+[16 — Creator Decision Register](16-DECISION-REGISTER.md)
+
+[17 — Source Route](17-SOURCE-ROUTE.md)
+
+[18 — Machine Contract](18-MACHINE-CONTRACT.json)
+
+---
+
+# V. THE FIVE UNIVERSAL QUESTIONS
+
+**WHO?** Identity, ownership, actors, relationships.
+
+**WHAT?** Knowledge, requirements, capabilities, state.
+
+**WHY?** Purpose, intent, goals, decisions.
+
+**MAY?** Authority, permission, consent, constraints.
+
+**DID?** Action, outcome, evidence, verification, learning.
+
+---
+
+# VI. MASTER OPERATING LOOP
+
+**INTENTION → UNDERSTAND → RETRIEVE → REASON → DEFINE SUCCESS → CHECK AUTHORITY → ACT → VERIFY → LEARN → UPDATE → CONTINUE**
+
+---
+
+# VII. SOURCE-OF-TRUTH ORDER
+
+1. Direct canonical events and evidence.
+2. Verified runtime / CIS / intelligence state.
+3. Control-plane state and governing law.
+4. Protected source and implementation.
+5. Human-readable Project Intelligence.
+6. Derived indexes and search views.
+7. Conversation memory.
+
+---
+
+# VIII. DEFINITION OF DONE
+
+A fresh Naya can:
+
+- identify NayaPOWER;
+- explain why it exists;
+- state the desired human outcome;
+- locate authoritative sources;
+- distinguish current from historical state;
+- identify verified, failed, unknown, stale, superseded, and conflicted state;
+- explain architecture and relationships;
+- identify authority;
+- choose one responsible next action;
+- execute when authorized;
+- verify the outcome;
+- preserve evidence and learning;
+- leave a complete torch;
+- allow a second cold Naya to continue.
+
+---
+
+# IX. FINAL SUCCESSOR QUESTION
+
+> **If I disappear right now, can a cold Naya use only the repository and durable evidence to execute the next action correctly?**
+
+If not, the work is not finished.
