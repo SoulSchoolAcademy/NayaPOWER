@@ -65,7 +65,7 @@ Deno.serve(async(req)=>{
 
   const fields='id,user_id,event_id,project_id,type,classification,title,content,source,status,confidence,tags,parent_event_id,created_at,updated_at,metadata'
   const attachLedger=async(items:any[],ownerId:string,collective=false)=>{
-    const ids=[...new Set(items.flatMap((e:any)=>[e.id,e.event_id].map((v:any)=>String(v||'')).filter(Boolean))]
+    const ids=[...new Set(items.flatMap((e:any)=>[e.id,e.event_id].map((v:any)=>String(v||'')).filter(Boolean)))]
     if(!ids.length) return items
     let ledgerQuery=admin.from('nayanet_smart_ledger')
       .select('ledger_event_id,source_id,event_hash,status,privacy_classification,verification,evidence_refs,value,outcome,learning_refs')
