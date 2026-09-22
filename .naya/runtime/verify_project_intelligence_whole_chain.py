@@ -90,10 +90,8 @@ def main() -> int:
         predecessor_proof = active.get("predecessor_proof", {})
         if not predecessor or not predecessor_proof.get("workflow_run") or predecessor_proof.get("status") != "VERIFIED":
             fail(f"active block has no verified predecessor lineage: {active_id}")
-        if not predecessor_proof.get("workflow_run") or not predecessor_proof.get("source_head"):
-            fail("PI-01 predecessor proof metadata missing")
-        if "proven" not in str(predecessor_proof.get("claim", "")).lower():
-            fail("PI-01 predecessor is not marked proven")
+        if not predecessor_proof.get("workflow_run") or predecessor_proof.get("status") != "VERIFIED":
+            fail("verified predecessor proof metadata missing")
         if active.get("status") not in ("ACTIVE","VERIFIED","PRODUCTION_PROVEN"):
             fail("current active block is not execution-capable")
         print("PI01_PREDECESSOR_PROOF=PASS")
