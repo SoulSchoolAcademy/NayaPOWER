@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt."
+    "block_next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,13 +70,13 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
+    "action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "The repository contains an official adversarial specification and several narrower proof runners, but no current-head executable runner was found that implements the exact nine requested dimensions as one consolidated matrix. The existing Project Intelligence Bridge adversarial workflow proves only replay/idempotency, wrong-receiver rejection, and invalid-token rejection. The generic P0 harness is a broader constitutional suite and is not the requested nine-dimension runtime matrix. Therefore no unsupported consolidated PASS is claimed.",
-    "verification": "Do not claim consolidated PASS until all nine dimensions execute at one exact source identity and fresh receipts are independently verified."
+    "reason": "The canonical consolidated nine-dimension runner now exists on main and passed fresh managed-runtime execution plus independent receipt verification at run 35787965745.",
+    "verification": "Do not reopen or relabel the matrix proof without fresh evidence; the nine-dimension matrix is PROVEN at run 35787965745."
   },
   "successor_prompt": {
-    "prompt": "Resolve current live main 24e957997c7d2193697507ce0955599a4335a24c, then Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
+    "prompt": "Resolve current live main 24e957997c7d2193697507ce0955599a4335a24c, then Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
     "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the requested consolidated matrix. Do not claim PASS."
   },
   "playback": {
