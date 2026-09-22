@@ -1,1 +1,235 @@
-{"identity":{"object_id":"IB:NAYANET-SYSTEM-MODEL-001","event_id":"NAYANET-SYSTEM-MODEL-001","version":1,"namespace":"nayanet","schema_version":"NAYANET_INTELLIGENT_BLOCK_V1"},"type":{"object_type":"INTELLIGENT_BLOCK","event_type":"SYSTEM_MODEL_DISTILLATION","classification":"NAYANET_SYSTEM_ARCHITECTURE"},"meaning":{"subject":"NayaNET System Model","title":"How human intent becomes connected, governed, reusable intelligence.","summary":"Humans direct. NayaPOWER governs and preserves continuity. Naya/agents reason and act. Project Intelligence preserves persistent context. Intelligent Events preserve what happened. Intelligent Blocks preserve what is understood. CCT connects meaning. The Hub presents canonical intelligence.","in_a_nutshell":"One intelligence. Many representations. One canonical meaning.","human":"Keep the intelligence, not just the conversation. Tell Naya what matters, understand what happened, preserve the useful parts, use them again, and share only by choice.","naya":"Restore current truth before consequential action. Preserve authority, privacy, provenance and evidence. Use deterministic software for certainty; use AI for ambiguity, synthesis and reasoning. Retrieve before recomputing. Act only within authority. Verify outcomes. Turn outcomes into learning. Preserve successor context.","machine":"HUMAN = intent/consent/authority/values; NAYAPOWER = governance/control/execution/continuity; AGENT = replaceable reasoning/tool layer; PROJECT_INTELLIGENCE = persistent identity/memory/context/state/relationships; INTELLIGENT_EVENT = what happened; INTELLIGENT_BLOCK = what is understood; CCT = relationships; LEDGER/RECEIPTS = integrity/evidence; HUB = human projection; ADAPTERS = external interfaces. Never confuse model, agent, intelligence, storage or authority. External channels never become canonical authority.","simple":"A human tells Naya what matters. NayaPOWER remembers, understands, connects, verifies, learns and carries the useful intelligence forward.","application":"Connect authorized people, agents, models and applications to the same canonical intelligence without creating a competing store or authority.","benefit":"Preserves intelligence across conversations and model changes, reduces repeated context reconstruction, improves verification and continuity, and enables permissioned collective learning.","limitations":"Architecture and several production boundaries are verified; universal real-world computation savings, universal model/provider learning quality and long-run planetary multi-agent effects remain empirical questions."},"actors":{"creator":"human_directed_system","observer":"NayaNET","verifier":"repository_and_production_evidence","beneficiary":"humans_and_authorized_agents"},"context":{"project":"NayaNET / NayaPOWER","scope":"system","environment":"GitHub + Supabase + Cloudflare canonical Hub","audience":["human","naya","ai_agent","developer","system"],"visibility":"PUBLIC_REPOSITORY"},"time":{"occurred_at":"2026-09-22T02:40:40Z","observed_at":"2026-09-22T02:40:40Z","effective_at":"2026-09-22T02:40:40Z","valid_until":null,"superseded_at":null},"intent":{"purpose":"Distill the major NayaNET/NayaPOWER architecture into one reusable machine and human understanding.","why":"Prevent fragmentation and give every future Naya a compact model of how the major parts connect.","desired_outcome":"A compatible Naya or agent can understand the architecture and choose the correct interface without inventing a competing model, store or authority."},"provenance":{"source":"SoulSchoolAcademy/NayaPOWER main","source_ref":"git:main@a1db54d31038210d76f78dd168919b24f8342666","source_hash":"a1db54d31038210d76f78dd168919b24f8342666","captured_by":"Naya architectural distillation","derived_from":["🔱 THE NAYANET MODEL.md","THE 10 TRILLION DOLLAR QUESTION - READ THIS! THIS THE GOAL!","🧠 NAYAPOWER 01–58 — THE DEEP SYSTEM MODEL Q & A","🧠 The NayaNET Alignment Architecture","NayaNETEngineeringSystem/00-SYSTEM-ARCHITECTURE.md","NayaNETEngineeringSystem/05-01-58-SOURCE-MATRIX.md","SUPERBRAIN/UNIVERSAL-INTERFACE-AND-CONTROL-SUBSTRATE-CONTRACT.md","docs/NAYANET_ARCHITECTURE_CONTRACT_V1.md",".naya/project-intelligence/INTELLIGENT-EVENT-V1.md",".naya/project-intelligence/INTELLIGENT-BLOCK-V1.md",".naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md",".naya/governance/CANONICAL-INTELLIGENCE-RECORD-LAYOUT-V1.md",".naya/governance/INTELLIGENCE-DIARY-DOCTRINE-V1.md",".naya/2026-09-12-NAYAPOWER-57-CONTINUOUS-CONVERSATION-INTELLIGENCE-FEED.md",".naya/2026-09-12-NAYAPOWER-58-ULTIMATE-TRUST-LOOP-BLUEPRINT.md","live Supabase Intelligent Block/event/receipt/notification/ledger observations","production Cloudflare Hub + Smart Note receiver proof"]},"evidence":{"evidence_state":"LIVE_VERIFIED","evidence_refs":["git:a1db54d31038210d76f78dd168919b24f8342666","live:nayanet_intelligent_blocks","live:nayanet_cognition_events","live:nayanet_execution_receipts","live:nayanet_intelligence_notifications","live:nayanet_smart_ledger","production:live-smart-note-receiver-35676565575","production:canonical-cloudflare-release-35676698696"],"verification":"The synthesis is supported by canonical architecture documents plus live observations of first-class Intelligent Blocks, event/receipt chains, notifications, ledger records and the canonical Hub. The complete universal vision is not claimed as fully production-proven.","verification_method":"Repository reconciliation + live database inspection + production receiver/browser evidence."},"truth":{"state":"SUPPORTED","confidence":0.96,"conflicts":[]},"authority":{"state":"NONE","constraints":["This block is understanding, not consequential-action authorization.","Human authority remains the consent boundary.","External channels must not become competing intelligence authorities."]},"value":{"state":"POTENTIAL","benefit":0,"harm":0,"cost":0,"risk":0,"effort":0,"relevance":1,"responsible_value":0},"action":{"action":"Use this block before designing, integrating or extending NayaNET capabilities.","method":"restore -> understand -> identify canonical owner -> choose authorized interface -> act -> verify -> learn","authorization_basis":"Existing NayaPOWER governance; this block grants none.","expected_result":"New Nayas and agents navigate the architecture without recreating context or authority."},"outcome":{"state":"UNKNOWN","observed_result":null,"measurements":{},"unexpected_effects":[]},"learning":{"what_changed":"The major model documents and live primitives were distilled into one common system model.","lesson":"Separation of roles makes the system simpler: stable canonical meaning, replaceable agents, persistent intelligence and many projections.","reusable_rule":"One intelligence. Many representations. One canonical meaning. External channels are adapters, never authorities.","evidence_basis":["architecture documents","live database","production receiver proof"],"applicability":"All future NayaNET features, integrations and Project Intelligence work."},"successor":{"type":"NEXT_ACTION","target":"Implement the Universal Agent Interface beginning with a remote MCP boundary plus REST/OpenAPI, reusing the existing governance and execution substrate.","reason":"This is the next bridge from architectural coherence to independent agents actually using the intelligence system."},"lifecycle":{"stage":"DISTILLED","captured_at":"2026-09-22T02:40:40Z","verified_at":"2026-09-22T02:40:40Z","updated_at":"2026-09-22T02:40:40Z"},"projections":{"human":{"headline":"NayaNET is the network; NayaPOWER is the governed engine; Project Intelligence is persistent context; Intelligent Blocks are reusable understanding; the Hub is the cockpit.","core_loop":"Experience -> Capture -> Understand -> Distill -> Validate -> Connect -> Apply -> Measure -> Learn -> Compound"},"naya":{"operating_rule":"Restore -> understand -> authorize -> act -> verify -> learn -> preserve successor.","cold_start":"Use the 14-question reconstruction contract before consequential work."},"machine":{"canonical_roles":["human_authority","nayapower_control_substrate","replaceable_agent","project_intelligence","intelligent_event","intelligent_block","cct_relationships","persistence_index_ledger","hub_projection","external_adapters"],"channel_priority":["MCP","REST_OPENAPI","GITHUB_APP","WEBHOOKS","SDK_EMBED","A2A"]},"simple":{"sentence":"Keep the intelligence, not just the conversation, and let any authorized Naya or application use the same truth."},"hub":{"primary_experience":"SEE -> UNDERSTAND -> PRESS -> SOMETHING HAPPENS","role":"human-facing projection, never canonical authority"},"api":{"role":"universal_intelligence_boundary","canonical_operations":["restore","retrieve","understand","search","record_event","create_or_update_block","request_authorization","execute_authorized_action","record_receipt","observe_outcome","record_learning","create_successor"],"transport_channels":{"mcp":"primary vendor-neutral agent/tool interface","rest_openapi":"universal deterministic fallback","github_app":"software-development/control-substrate adapter","webhooks":"event ingestion and asynchronous notification","sdk_embedded":"application-embedded interface","a2a":"future inter-agent collaboration boundary"}}},"metadata":{"created_for":"First system-level Intelligent Block","repository":"SoulSchoolAcademy/NayaPOWER","main_head_at_creation":"a1db54d31038210d76f78dd168919b24f8342666","review_scope":"Whole-project major component architecture synthesis","canonical_contract":"contracts/intelligent-block-v1.schema.json","status_note":"Architecture is supported by current repository and live evidence; universal outcomes remain empirical."},"integrity":{"algorithm":"SHA-256","content_hash":"e62b61429980e86d588dfef65c96dd60d910e81b4cd27b6620b0e5bb821b13df"}}
+{
+  "identity": {
+    "object_id": "IB:NAYANET-SYSTEM-MODEL-001",
+    "event_id": "NAYANET-SYSTEM-MODEL-001",
+    "version": 1,
+    "namespace": "nayanet",
+    "schema_version": "NAYANET_INTELLIGENT_BLOCK_V1"
+  },
+  "type": {
+    "object_type": "INTELLIGENT_BLOCK",
+    "event_type": "SYSTEM_MODEL_DISTILLATION",
+    "classification": "NAYANET_SYSTEM_ARCHITECTURE"
+  },
+  "meaning": {
+    "subject": "NayaNET System Model",
+    "title": "How human intent becomes connected, governed, reusable intelligence.",
+    "summary": "NayaNET is a governed intelligence network; NayaPOWER is the governed operating/control substrate; Naya is the reasoning/orchestration partner; Project Intelligence preserves durable context; Intelligent Events preserve what happened; Intelligent Blocks preserve reusable understood intelligence distilled from one or many provenance-bound sources; CCT connects meaning; the Hub projects canonical intelligence.",
+    "in_a_nutshell": "One intelligence. Many representations. One canonical meaning. An Intelligent Block is the reusable unit of understood intelligence.",
+    "human": "Keep the intelligence, not just the conversation. Tell Naya what matters, understand what happened, preserve the useful parts, use them again, and share only by choice.",
+    "naya": "Restore current truth before consequential action. Preserve authority, privacy, provenance and evidence. Use deterministic software for certainty; use AI for ambiguity, synthesis and reasoning. Retrieve before recomputing. Act only within authority. Verify outcomes. Turn outcomes into learning. Preserve successor context.",
+    "machine": "HUMAN = intent/consent/authority/values; NAYAPOWER = governance/control/execution/continuity; AGENT = replaceable reasoning/tool layer; PROJECT_INTELLIGENCE = persistent identity/memory/context/state/relationships; INTELLIGENT_EVENT = what happened; INTELLIGENT_BLOCK = what is understood; CCT = relationships; LEDGER/RECEIPTS = integrity/evidence; HUB = human projection; ADAPTERS = external interfaces. Never confuse model, agent, intelligence, storage or authority. External channels never become canonical authority.",
+    "simple": "Give Naya one source or many sources. Distill what matters into a validated Block, preserve its provenance, connect it, reuse it, verify outcomes, and learn.",
+    "application": "Connect authorized people, agents, models and applications to the same canonical intelligence without creating a competing store or authority.",
+    "benefit": "Preserves intelligence across conversations and model changes, reduces repeated context reconstruction, improves verification and continuity, and enables permissioned collective learning.",
+    "limitations": "Architecture and several production boundaries are verified; universal real-world computation savings, universal model/provider learning quality and long-run planetary multi-agent effects remain empirical questions."
+  },
+  "actors": {
+    "creator": "human_directed_system",
+    "observer": "NayaNET",
+    "verifier": "repository_and_production_evidence",
+    "beneficiary": "humans_and_authorized_agents"
+  },
+  "context": {
+    "project": "NayaNET / NayaPOWER",
+    "scope": "system",
+    "environment": "GitHub + Supabase + Cloudflare canonical Hub",
+    "audience": [
+      "human",
+      "naya",
+      "ai_agent",
+      "developer",
+      "system"
+    ],
+    "visibility": "PUBLIC_REPOSITORY"
+  },
+  "time": {
+    "occurred_at": "2026-09-22T02:40:40Z",
+    "observed_at": "2026-09-22T02:40:40Z",
+    "effective_at": "2026-09-22T02:40:40Z",
+    "valid_until": null,
+    "superseded_at": null
+  },
+  "intent": {
+    "purpose": "Distill groups of conversations, documents, events, evidence, perspectives and outcomes into reusable, human-readable and machine-readable intelligence while preserving provenance, authority, privacy and continuity.",
+    "why": "Prevent fragmentation and give every future Naya a compact model of how the major parts connect.",
+    "desired_outcome": "A compatible Naya or agent can understand the architecture and choose the correct interface without inventing a competing model, store or authority."
+  },
+  "provenance": {
+    "source": "SoulSchoolAcademy/NayaPOWER main",
+    "source_ref": "git:main@fffa0888b3bee9a04ddf14f5b6ea50586c340812",
+    "source_hash": "fffa0888b3bee9a04ddf14f5b6ea50586c340812",
+    "captured_by": "Naya architectural distillation",
+    "derived_from": [
+      "🔱 THE NAYANET MODEL.md",
+      "THE 10 TRILLION DOLLAR QUESTION - READ THIS! THIS THE GOAL!",
+      "🧠 NAYAPOWER 01–58 — THE DEEP SYSTEM MODEL Q & A",
+      "🧠 The NayaNET Alignment Architecture",
+      "NayaNETEngineeringSystem/00-SYSTEM-ARCHITECTURE.md",
+      "NayaNETEngineeringSystem/05-01-58-SOURCE-MATRIX.md",
+      "SUPERBRAIN/UNIVERSAL-INTERFACE-AND-CONTROL-SUBSTRATE-CONTRACT.md",
+      "docs/NAYANET_ARCHITECTURE_CONTRACT_V1.md",
+      ".naya/project-intelligence/INTELLIGENT-EVENT-V1.md",
+      ".naya/project-intelligence/INTELLIGENT-BLOCK-V1.md",
+      ".naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md",
+      ".naya/governance/CANONICAL-INTELLIGENCE-RECORD-LAYOUT-V1.md",
+      ".naya/governance/INTELLIGENCE-DIARY-DOCTRINE-V1.md",
+      ".naya/2026-09-12-NAYAPOWER-57-CONTINUOUS-CONVERSATION-INTELLIGENCE-FEED.md",
+      ".naya/2026-09-12-NAYAPOWER-58-ULTIMATE-TRUST-LOOP-BLUEPRINT.md",
+      "live Supabase Intelligent Block/event/receipt/notification/ledger observations",
+      "production Cloudflare Hub + Smart Note receiver proof",
+      "2026-09-22 Intelligent Block V1 source-bundle distillation model"
+    ]
+  },
+  "evidence": {
+    "evidence_state": "LIVE_VERIFIED",
+    "evidence_refs": [
+      "git:a1db54d31038210d76f78dd168919b24f8342666",
+      "live:nayanet_intelligent_blocks",
+      "live:nayanet_cognition_events",
+      "live:nayanet_execution_receipts",
+      "live:nayanet_intelligence_notifications",
+      "live:nayanet_smart_ledger",
+      "production:live-smart-note-receiver-35676565575",
+      "production:canonical-cloudflare-release-35676698696"
+    ],
+    "verification": "The synthesis is supported by canonical architecture documents plus live observations of first-class Intelligent Blocks, event/receipt chains, notifications, ledger records and the canonical Hub. The complete universal vision is not claimed as fully production-proven.",
+    "verification_method": "Repository reconciliation + live database inspection + production receiver/browser evidence."
+  },
+  "truth": {
+    "state": "SUPPORTED",
+    "confidence": 0.96,
+    "conflicts": []
+  },
+  "authority": {
+    "state": "NONE",
+    "constraints": [
+      "This block is understanding, not consequential-action authorization.",
+      "Human authority remains the consent boundary.",
+      "External channels must not become competing intelligence authorities."
+    ]
+  },
+  "value": {
+    "state": "POTENTIAL",
+    "benefit": 0,
+    "harm": 0,
+    "cost": 0,
+    "risk": 0,
+    "effort": 0,
+    "relevance": 1,
+    "responsible_value": 0
+  },
+  "action": {
+    "action": "Use this block before designing, integrating or extending NayaNET capabilities.",
+    "method": "restore -> understand -> identify canonical owner -> choose authorized interface -> act -> verify -> learn",
+    "authorization_basis": "Existing NayaPOWER governance; this block grants none.",
+    "expected_result": "New Nayas and agents navigate the architecture without recreating context or authority."
+  },
+  "outcome": {
+    "state": "UNKNOWN",
+    "observed_result": null,
+    "measurements": {},
+    "unexpected_effects": []
+  },
+  "learning": {
+    "what_changed": "The Block model is now explicitly defined as a provenance-bound container that may unify one or many sources and perspectives, with separate distillation, validation, connection, application, verification and learning stages.",
+    "lesson": "Separation of roles makes the system simpler: stable canonical meaning, replaceable agents, persistent intelligence and many projections.",
+    "reusable_rule": "Many sources can become one Block; one source can become one Block; the Block is reusable understanding, while Events and source material remain historical/provenance truth.",
+    "evidence_basis": [
+      "architecture documents",
+      "live database",
+      "production receiver proof"
+    ],
+    "applicability": "All future NayaNET features, integrations and Project Intelligence work."
+  },
+  "successor": {
+    "type": "NEXT_TEST",
+    "target": "Prove a real multi-source Intelligent Block: combine at least two independent source inputs plus an event/evidence lineage, distill into one Block, validate it, project it to Markdown/JSON/database/Hub, retrieve it through authorization, and verify successor comprehension.",
+    "reason": "This is the smallest empirical proof that the new source-bundle Block model works beyond a single Smart Note payload."
+  },
+  "lifecycle": {
+    "stage": "DISTILLED",
+    "captured_at": "2026-09-22T02:40:40Z",
+    "verified_at": "2026-09-22T02:40:40Z",
+    "updated_at": "2026-09-22T02:40:40Z"
+  },
+  "projections": {
+    "human": {
+      "headline": "NayaNET is the network; NayaPOWER is the governed engine; Project Intelligence is persistent context; Intelligent Blocks are reusable understanding distilled from one or many sources; the Hub is the cockpit.",
+      "core_loop": "Experience -> Capture -> Understand -> Distill -> Validate -> Connect -> Apply -> Measure -> Learn -> Compound"
+    },
+    "naya": {
+      "operating_rule": "Restore -> understand -> authorize -> act -> verify -> learn -> preserve successor.",
+      "cold_start": "Use the 14-question reconstruction contract before consequential work."
+    },
+    "machine": {
+      "canonical_roles": [
+        "human_authority",
+        "nayapower_control_substrate",
+        "replaceable_agent",
+        "project_intelligence",
+        "intelligent_event",
+        "intelligent_block",
+        "cct_relationships",
+        "persistence_index_ledger",
+        "hub_projection",
+        "external_adapters"
+      ],
+      "channel_priority": [
+        "MCP",
+        "REST_OPENAPI",
+        "GITHUB_APP",
+        "WEBHOOKS",
+        "SDK_EMBED",
+        "A2A"
+      ],
+      "source_bundle": "One or many provenance-bound inputs may be distilled into one Block.",
+      "perspectives": "Relevant human, child, AI, machine, engineering, meaning, evidence and governance perspectives may coexist; interpretation is not automatically truth.",
+      "lifecycle": "source_bundle -> distill -> validate -> connect -> apply -> observe -> verify -> learn -> successor"
+    },
+    "simple": {
+      "sentence": "Give Naya the pieces. Naya distills the gold into a validated Block, preserves where it came from, connects it, and makes it reusable."
+    },
+    "hub": {
+      "primary_experience": "SEE -> UNDERSTAND -> PRESS -> SOMETHING HAPPENS",
+      "role": "human-facing projection, never canonical authority"
+    },
+    "api": {
+      "role": "universal_intelligence_boundary",
+      "canonical_operations": [
+        "restore",
+        "retrieve",
+        "understand",
+        "search",
+        "record_event",
+        "create_or_update_block",
+        "request_authorization",
+        "execute_authorized_action",
+        "record_receipt",
+        "observe_outcome",
+        "record_learning",
+        "create_successor"
+      ],
+      "transport_channels": {
+        "mcp": "primary vendor-neutral agent/tool interface",
+        "rest_openapi": "universal deterministic fallback",
+        "github_app": "software-development/control-substrate adapter",
+        "webhooks": "event ingestion and asynchronous notification",
+        "sdk_embedded": "application-embedded interface",
+        "a2a": "future inter-agent collaboration boundary"
+      }
+    }
+  },
+  "metadata": {
+    "created_for": "First system-level Intelligent Block",
+    "repository": "SoulSchoolAcademy/NayaPOWER",
+    "main_head_at_creation": "fffa0888b3bee9a04ddf14f5b6ea50586c340812",
+    "review_scope": "Whole-project system model plus multi-source Intelligent Block distillation model",
+    "canonical_contract": "contracts/intelligent-block-v1.schema.json",
+    "status_note": "Canonical system model updated to make multi-source distillation, perspectives, machine readability, human readability, validation, projection and successor continuity explicit."
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "content_hash": "e62b61429980e86d588dfef65c96dd60d910e81b4cd27b6620b0e5bb821b13df"
+  }
+}
