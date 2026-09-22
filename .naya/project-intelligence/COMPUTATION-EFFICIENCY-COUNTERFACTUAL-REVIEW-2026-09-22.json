@@ -1,0 +1,31 @@
+{
+  "schema": "NAYANET_COMPUTATION_EFFICIENCY_COUNTERFACTUAL_REVIEW_V1",
+  "status": "VERIFIED_BOUNDARY",
+  "reviewed_proof": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-PAIRED-RUN-2026-09-22.json",
+  "contract": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-MEASUREMENT-CONTRACT.md",
+  "measured": {
+    "baseline_units": 4,
+    "compounding_units": 1,
+    "arithmetic_avoided_units": 3,
+    "state": "DERIVED"
+  },
+  "applicability_tests": {
+    "frozen_task": true,
+    "cycle_a_performed_claimed_work": false,
+    "cycle_b_retrieved_durable_provenance_bound_object": true,
+    "cycle_b_used_object_before_avoided_work": true,
+    "independently_verified": true,
+    "authority_bypassed": false,
+    "quality_regression": false
+  },
+  "decision": {
+    "three_unit_reduction_qualifies_under_full_contract": false,
+    "reason": "The benchmark creates the retained-unit record before executing the cold reconstruction within the same run. Therefore the durable retained object is not demonstrably produced by Cycle A after Cycle A performed the four claimed reconstruction units. The arithmetic 4 - 1 = 3 is measured/derived as an instrumented workload difference, but the contract's counterfactual rule #2 is not satisfied, so the 3 units cannot yet be claimed as defensible avoided computation under the full production benchmark acceptance.",
+    "model_token_savings": "NOT_CLAIMED",
+    "semantic_duplicate_reasoning": "NOT_CLAIMED",
+    "human_time": "UNKNOWN",
+    "gpu_dollar_savings": "NOT_CLAIMED"
+  },
+  "required_repair": "Make the paired benchmark causal: Cycle A must execute and persist the retained learning artifact only after completing its measured reconstruction; Cycle B must load that artifact from the durable result, then independently revalidate mutable canonical truth and measure the same frozen task.",
+  "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+}
