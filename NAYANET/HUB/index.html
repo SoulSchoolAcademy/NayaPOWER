@@ -887,8 +887,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="label">SYSTEM</div>
   <nav class="nav" aria-label="System">
     <button data-page="ledger"><span class="ico">◈</span>Smart Ledger</button>
-    <button data-page="dream"><span class="ico">☼</span>Dream</button>
-    <button data-page="play"><span class="ico">▶</span>Naya Play</button>
     <button data-page="settings"><span class="ico">⚙</span>Settings</button>
   </nav>
   <div class="private"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div>
@@ -1280,7 +1278,7 @@ const RT=()=>window.NayaAssistantRuntime;
 const q=(s,r=document)=>r.querySelector(s), qa=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=v=>String(v??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const root=()=>q('.main')||document.body;
-const state={stream:'personal',before:null,items:[],busy:false};
+const state={stream:'collective',before:null,items:[],busy:false};
 const titles={today:'Your Intelligence Today',report:'Your Report',library:'Intelligence Library',lists:'Smart Lists',share:'Smart Share',spaces:'Smart Spaces',connections:'Connections',mail:'Smart Mail',settings:'Settings'};
 const tones={personal:'#55e39a',collective:'#55b9ee',activity:'#9d75ff'};
 function css(){
@@ -1329,11 +1327,37 @@ function showLegacyHome(){qa('.naya-command-deck,.naya-at-a-glance,.hero,.feed')
 function setNav(page){qa('[data-page]').forEach(b=>b.classList.toggle('active',(page==='today'?b.dataset.page==='today':b.dataset.page===page)))}
 function status(msg){const x=q('.naya-live-status');if(x)x.textContent=msg}
 function feedCard(x){
- const tone=tones[state.stream]||tones.activity;
- const id=String(x.source_id||x.event_id||x.id||''); const title=x.title||x.subject||x.event_id||'Intelligence';
+ const stream=state.stream,tone=tones[stream]||tones.activity;
+ const id=String(x.source_id||x.event_id||x.id||'');
+ const title=x.title||x.subject||x.event_id||'Intelligence';
  const body=x.content||x.summary||'No verified content returned.';
- const actions=(x.available_actions||[]).map(a=>'<button data-live-act="'+esc(a)+'" data-source="'+esc(id)+'" data-publication="'+esc(x.publication_id||'')+'">'+esc(String(a).replace(/-/g,' ').toUpperCase())+'</button>').join('');
- return '<article class="naya-live-card" style="--tone:'+tone+'" data-source-id="'+esc(id)+'"><div class="naya-live-meta"><span class="naya-live-pill">'+esc(state.stream.toUpperCase())+'</span><span class="naya-live-pill truth">'+esc(x.verification_state||'UNKNOWN')+'</span><span class="naya-live-pill">'+esc(x.visibility||'PRIVATE')+'</span><span class="naya-live-pill">'+esc(x.published_at||x.created_at||'')+'</span></div><h4>'+esc(title)+'</h4><div class="body">'+esc(body)+'</div><div class="naya-live-evidence"><div><b>SOURCE</b><span>'+esc(x.source||x.source_id||'canonical intelligence')+'</span></div><div><b>EVENT</b><span>'+esc(x.event_id||'—')+'</span></div><div><b>TRUTH / CONFIDENCE</b><span>'+esc(x.classification||'UNKNOWN')+' · '+esc(x.confidence??'unknown')+'</span></div></div><div class="naya-live-card-actions">'+(actions||'<span class="naya-live-pill">NO AUTHORIZED ACTION</span>')+'</div></article>'
+ const meta=x.metadata&&typeof x.metadata==='object'?x.metadata:{};
+ const block=meta.intelligent_block_v1&&typeof meta.intelligent_block_v1==='object'?meta.intelligent_block_v1:{};
+ const identity=block.identity||{},context=block.context||{},truth=block.truth||{},authority=block.authority||{},value=block.value||{},lifecycle=block.lifecycle||{},integrity=block.integrity||{};
+ const source=String(x.source||x.source_id||'canonical intelligence');
+ const verification=String(x.verification_state||truth.state||'UNKNOWN');
+ const visibility=String(context.visibility||x.visibility||(stream==='personal'?'PRIVATE':'SHARED'));
+ const available=Array.isArray(x.available_actions)?x.available_actions:[];
+ const glyph=stream==='personal'?'✦':stream==='collective'?'◇':'↗';
+ const read=String(block.naya_read||block.interpretation||block.meaning||'').trim();
+ const actions=available.map(a=>'<button class="naya-live-action" data-live-act="'+esc(a)+'" data-source="'+esc(id)+'" data-publication="'+esc(x.publication_id||'')+'">'+esc(String(a).replace(/-/g,' ').toUpperCase())+'</button>').join('');
+ return '<article class="naya-live-card" style="--tone:'+tone+'" data-source-id="'+esc(id)+'" data-stream="'+esc(stream)+'">'+
+ '<div class="naya-live-card-glow" aria-hidden="true"></div>'+
+ '<div class="naya-live-main">'+
+ '<div class="naya-live-card-head"><div class="naya-live-orb" aria-hidden="true">'+glyph+'</div><div class="naya-live-head-copy"><div class="naya-live-meta"><span class="naya-live-pill stream">'+esc(stream.toUpperCase())+'</span><span class="naya-live-pill truth">'+esc(verification)+'</span><span class="naya-live-pill">'+esc(visibility)+'</span><span class="naya-live-time">'+esc(x.published_at||x.created_at||'')+'</span></div><h4>'+esc(title)+'</h4></div></div>'+
+ '<div class="naya-live-body">'+esc(body)+'</div>'+
+ (read?'<section class="naya-live-read"><b>NAYA READ</b><p>'+esc(read)+'</p></section>':'')+
+ '<details class="naya-live-inspect"><summary>UNDERSTAND THIS INTELLIGENCE</summary><div class="naya-live-evidence">'+
+ '<div><b>SOURCE</b><span>'+esc(source)+'</span></div>'+
+ '<div><b>EVENT</b><span>'+esc(x.event_id||'—')+'</span></div>'+
+ '<div><b>CLASSIFICATION</b><span>'+esc(x.classification||'UNKNOWN')+' · confidence '+esc(x.confidence??'unknown')+'</span></div>'+
+ '<div><b>INTELLIGENT BLOCK</b><span>'+esc(identity.schema_version||'NOT PRESENT')+' · '+esc(lifecycle.stage||'NO LIFECYCLE')+'</span></div>'+
+ '<div><b>AUTHORITY</b><span>'+esc(authority.state||'UNKNOWN')+'</span></div>'+
+ '<div><b>VALUE / TRUTH</b><span>'+esc(value.state||'UNKNOWN')+' · '+esc(truth.state||verification)+'</span></div>'+
+ (integrity.content_hash?'<div><b>INTEGRITY</b><span>'+esc(integrity.content_hash)+'</span></div>':'')+
+ '</div></details></div>'+
+ '<div class="naya-live-card-actions">'+(actions||'<span class="naya-live-pill">NO AUTHORIZED ACTION</span>')+'</div>'+
+ '</article>';
 }
 async function loadFeed(reset=true){
  const rt=RT(); if(!rt)throw Error('ASSISTANT_RUNTIME_UNAVAILABLE');
@@ -1341,6 +1365,34 @@ async function loadFeed(reset=true){
  if(state.busy)return; state.busy=true; status(reset?'Reading canonical '+state.stream+' intelligence…':'Reading next page…');
  try{const d=await rt.smartFeed({stream:state.stream,limit:20,before:reset?null:state.before});if(reset){state.items=[];state.before=null}state.items.push(...(d.items||[]));state.before=d.next_before||null;q('#naya-live-list').innerHTML=state.items.map(feedCard).join('')||'<div class="naya-surface-empty"><b>NO INTELLIGENCE YET</b>This view is empty at the canonical source. Nothing is fabricated.</div>';status('LIVE · '+state.stream.toUpperCase()+' · '+state.items.length+' ITEMS · CANONICAL RUNTIME');const more=q('#naya-live-more');if(more){more.disabled=!state.before;more.textContent=state.before?'LOAD MORE':'END OF CURRENT PROJECTION'}}catch(e){status('BLOCKED / FAILED · '+(e?.message||e));q('#naya-live-list').innerHTML='<div class="naya-surface-empty"><b>RUNTIME STOPPED</b>'+esc(e?.message||e)+'</div>'}finally{state.busy=false}
 }
+document.addEventListener('click',async e=>{
+ const action=e.target.closest('[data-live-act]');
+ if(!action)return;
+ const rt=RT(); if(!rt) return;
+ const card=action.closest('.naya-live-card');
+ const kind=String(action.dataset.liveAct||'').trim();
+ const sourceId=String(action.dataset.source||'').trim();
+ const publicationId=String(action.dataset.publication||'').trim();
+ if(!kind||!sourceId)return;
+ const label=action.textContent.trim();
+ action.disabled=true;
+ status('AUTHORIZING '+label+' → '+state.stream.toUpperCase()+'…');
+ try{
+  const snap=rt.snapshot(); if(!snap.authenticated)throw Error('AUTH_REQUIRED');
+  const isPublish=kind==='publish';
+  const out=await rt.smartFeedAction(isPublish
+    ? {action:'publish',stream:'collective',source_id:sourceId,publication_id:publicationId||null}
+    : {action:'interact',interaction:kind,source_id:sourceId,publication_id:publicationId||null,stream:state.stream});
+  const receipt=out?.receipt?.id||out?.receipt?.receipt_id||out?.execution_receipt_id||out?.event_id||'RETURNED';
+  status('CONSEQUENCE VERIFIED · '+label+' · RECEIPT '+receipt+' · REFRESHING');
+  state.before=null;
+  await loadFeed(true);
+ }catch(err){
+  status('BLOCKED / FAILED · '+(err?.message||err));
+  action.disabled=false;
+ }
+});
+
 function today(){
  clearMain();css();setNav('today');
  const shell=document.createElement('div');shell.className='naya-live-shell';
@@ -1367,8 +1419,6 @@ async function surface(page){
  if(page==='library')return renderLibrary(shell,rt);
  if(page==='report')return renderReport(shell,rt);
  if(page==='ledger')return renderLedger(shell,rt);
- if(page==='dream'){location.href='/dream';return}
- if(page==='play')return renderPlay(shell,rt);
  if(page==='settings')return renderSettings(shell,rt);
 }
 function head(title,sub){return '<div class="naya-surface-head"><div><h2>'+esc(title)+'</h2><p>'+esc(sub)+'</p></div><span class="naya-live-pill">CANONICAL RUNTIME</span></div>'}
