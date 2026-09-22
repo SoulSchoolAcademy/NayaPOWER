@@ -74,9 +74,13 @@ action
 outcome
 learning
 successor
+lifecycle
+integrity
 projections
 metadata
 ```
+
+The portable V1 contract also requires an explicit lifecycle stage and a SHA-256 integrity hash so transport can be tested for semantic identity rather than visual similarity.
 
 Unknown information must remain explicitly unknown rather than being invented.
 
@@ -342,7 +346,41 @@ That is better than a richer-looking block containing fabricated detail.
 
 ---
 
-## 14. Acceptance test
+## 14. Integrity and round-trip test
+
+The V1 block carries:
+
+```text
+integrity.algorithm = SHA-256
+integrity.content_hash = SHA-256(canonical block without integrity)
+```
+
+Canonical hashing must use deterministic key ordering and preserve the exact semantic payload. A receiving system may re-encode the block, but it must reproduce the same canonical content hash.
+
+For an end-to-end transport proof, compare at minimum:
+
+```text
+identity.event_id
+meaning.subject
+meaning.content
+meaning.human
+meaning.naya
+meaning.machine
+context.scope
+context.visibility
+evidence.evidence_state
+truth.state
+authority.state
+value.state
+lifecycle.stage
+integrity.content_hash
+```
+
+Any mismatch is a transport-integrity failure until explained by an explicit, authorized projection rule.
+
+---
+
+## 15. Acceptance test
 
 An Intelligent Block is fit for cross-system use when:
 
@@ -361,7 +399,7 @@ An Intelligent Block is fit for cross-system use when:
 
 ---
 
-## 15. North Star
+## 16. North Star
 
 > **ONE INTELLIGENCE. MANY REPRESENTATIONS. ONE CANONICAL MEANING.**
 
