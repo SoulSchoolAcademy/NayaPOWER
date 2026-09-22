@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "active_block": {
     "id": "HUMAN-JOURNEY-P2",
-    "status": "ACTIVE",
+    "status": "VERIFIED",
     "priority": "P1",
     "intent": "Prove the complete human-facing NayaNET journey on the canonical Hub with direct behavioral evidence and no source/projection divergence.",
     "protected": [
@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
     "next_actions": [
-      "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
+      "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,13 +57,14 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection.",
+    "next_action_reason": "The human-facing Smart Feed journey is now verified. The remaining adjacent runtime hole is the convenience smartFeed() API boundary observed as Failed to fetch.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
       "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
       "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
-    }
+    },
+    "completion": "HUMAN JOURNEY LIVE VERIFIED"
   },
   "status_vocabulary": [
     "INTENDED",
@@ -89,8 +90,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
-    "completion": "Prove the complete human-facing journey with one current source scope, direct browser evidence, durable retrieval, visible evidence/provenance, and authorized continuation."
+    "next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
+    "completion": "Human journey verified; close the remaining runtime smartFeed API boundary and then continue production-readiness reconciliation."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
