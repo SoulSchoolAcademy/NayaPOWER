@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: NayaNET Universal Agent Interface
+  version: 1.0.0
+  description: Canonical REST/OpenAPI adapter over the existing governed NayaPOWER intelligence runtime.
+servers:
+  - url: https://nayanet-agent-interface.workers.dev
+security:
+  - bearerAuth: []
+paths:
+  /v1/restore:
+    post:
+      operationId: restoreProjectIntelligence
+      summary: Restore authorized Project Intelligence
+      responses:
+        '200': {description: Restored canonical Project Intelligence}
+        '401': {description: Authentication required}
+  /v1/retrieve:
+    post:
+      operationId: retrieveIntelligence
+      summary: Retrieve canonical intelligence by query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [query]
+              properties:
+                query: {type: string, minLength: 1}
+                limit: {type: integer, minimum: 1, maximum: 50, default: 20}
+      responses:
+        '200': {description: Canonical retrieval result}
+        '400': {description: Invalid request}
+        '401': {description: Authentication required}
+  /v1/understand:
+    post:
+      operationId: advanceUnderstanding
+      summary: Advance understanding through the canonical runtime
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {type: object, additionalProperties: true}
+      responses:
+        '200': {description: Canonical understanding result}
+        '401': {description: Authentication required}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
