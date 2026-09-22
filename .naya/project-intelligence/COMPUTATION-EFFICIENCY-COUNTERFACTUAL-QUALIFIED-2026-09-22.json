@@ -1,0 +1,77 @@
+{
+  "schema": "NAYANET_COMPUTATION_EFFICIENCY_PROOF_V1",
+  "status": "VERIFIED",
+  "causal_sequence": [
+    "CYCLE_A",
+    "DURABLE_RETAINED_ARTIFACT",
+    "CYCLE_B",
+    "INDEPENDENT_REVALIDATION",
+    "COUNTERFACTUAL_TEST"
+  ],
+  "frozen_task": "Recover mission, active block, and exactly one canonical next action from STATE + BLOCKS + MAP + PROOF without reading BATON.json or conversation history.",
+  "task_hash": "8f22ea0516988dfbc84034d9f54c09a1884515dc440cebbd6f977af2ac0ef35c",
+  "cycle_a": {
+    "reconstruction_units": 4,
+    "completed_before_artifact": true,
+    "artifact_persisted_after_reconstruction": true
+  },
+  "retained_artifact": {
+    "path": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-RETAINED-UNIT.json",
+    "task_hash": "8f22ea0516988dfbc84034d9f54c09a1884515dc440cebbd6f977af2ac0ef35c",
+    "provenance_bound": true,
+    "produced_by": "Cycle A",
+    "produced_after_measured_work": true
+  },
+  "cycle_b": {
+    "reused_units": 3,
+    "reconstruction_units": 1,
+    "artifact_consumed_before_reuse": true,
+    "reused_fields": [
+      "mission",
+      "active_block",
+      "active_block_status"
+    ],
+    "mutable_field_recomputed": [
+      "next_action"
+    ]
+  },
+  "counterfactual": {
+    "baseline_units": 4,
+    "compounding_units": 1,
+    "avoided_units": 3,
+    "evidence_state": "COUNTERFACTUAL",
+    "qualified_under_v1": true,
+    "rationale": "All seven V1 counterfactual conditions are satisfied: frozen task; Cycle A performed all four field reconstructions before creating the retained artifact; Cycle B consumed that durable provenance-bound artifact before reusing three fields; outcome was independently revalidated against canonical sources; no authority boundary was bypassed; no quality regression was observed; and the result is reproducible on the same source snapshot."
+  },
+  "contract_tests": {
+    "frozen_task": true,
+    "cycle_a_performed_claimed_work": true,
+    "cycle_b_retrieved_durable_provenance_bound_intelligence": true,
+    "cycle_b_used_intelligence_before_avoided_work": true,
+    "independent_verification": true,
+    "authority_boundary_preserved": true,
+    "quality_regression": false
+  },
+  "resources": {
+    "search_calls": 0,
+    "tool_calls": 0,
+    "model_calls": 0,
+    "tokens": "NOT_CLAIMED",
+    "human_time_ms": "UNKNOWN",
+    "retries": 0,
+    "duplicate_reasoning": "Only field reconstruction units are measured; semantic duplicate reasoning is NOT_CLAIMED.",
+    "wall_time_ms": {
+      "cycle_a": 0.003,
+      "cycle_b": 0.002
+    }
+  },
+  "interpretation": "Three field-reconstruction units qualify as defensible avoided computation under the V1 contract. This is a bounded engineering measurement only; it is not model-token, GPU, provider-cost, dollar, semantic-reasoning, or human-time savings.",
+  "evidence_boundary": "Model/token work, semantic duplicate reasoning, and human time remain unmeasured and are not claimed.",
+  "execution": {
+    "machine": "DESKTOP-OJ712N5",
+    "snapshot": "C:\\Temp\\NayaPOWER-causal-benchmark",
+    "canonical_source_head": "origin/main snapshot at execution",
+    "runtime_sequence_verified": true
+  },
+  "next_action": "Verify outcome quality/provenance/authority are not degraded."
+}
