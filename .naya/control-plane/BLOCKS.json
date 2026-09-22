@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
+    "next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
     "next_actions": [
-      "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey."
+      "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,7 +57,7 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "The human-facing Smart Feed journey is now verified. The remaining adjacent runtime hole is the convenience smartFeed() API boundary observed as Failed to fetch.",
+    "next_action_reason": "GAP-002, the complete human journey, and the direct Smart Feed runtime API boundary are now verified. The next highest-value frontier is consolidated adversarial acceptance.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
@@ -90,8 +90,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
-    "completion": "Human journey verified; close the remaining runtime smartFeed API boundary and then continue production-readiness reconciliation."
+    "next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
+    "completion": "Complete the adversarial production acceptance matrix and then final production parity/readiness reconciliation."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
