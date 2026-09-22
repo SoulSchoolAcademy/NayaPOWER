@@ -1,0 +1,42 @@
+{
+  "schema": "naya/baton-cold-successor-proof/v1",
+  "status": "PROVEN",
+  "claim_scope": "BATON -> COLD NAYA -> EXACT CURRENT STATE -> EXACT ONE NEXT ACTION",
+  "conversation_memory": "EMPTY",
+  "conversational_archaeology": false,
+  "archaeology_sources_used": [],
+  "baton_source": ".naya/control-plane/BATON.json",
+  "source_authorities_used_for_reconciliation": [
+    ".naya/control-plane/STATE.json",
+    ".naya/control-plane/BLOCKS.json",
+    ".naya/control-plane/MAP.json",
+    ".naya/control-plane/PROOF.json"
+  ],
+  "live_head": "40ecf9b94f11fd1c4e7c2a7250d848c89912d3c7",
+  "recovered_current_state": {
+    "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
+    "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block_status": "ACTIVE"
+  },
+  "recovered_one_next_action": {
+    "count": 1,
+    "status": "AUTHORIZED",
+    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "source": ".naya/control-plane/BLOCKS.json"
+  },
+  "exact_match_checks": {
+    "mission": true,
+    "active_block": true,
+    "active_block_status": true,
+    "next_action": true,
+    "next_action_count": true,
+    "map_canonical": true,
+    "proof_canonical": true
+  },
+  "successor_prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
+  "interpretation": "A fresh successor can recover the current mission/state and exactly one authorized next action from the canonical baton without conversational history. This proof does not claim that an external LLM independently executed the action.",
+  "baton_sha256": "167c22ac0647fb172feb90d0a0996274387ce244ac54ee631bf4a7a9a23d2a9a",
+  "created_at": "2026-09-22T18:19:47.737050+00:00"
+}

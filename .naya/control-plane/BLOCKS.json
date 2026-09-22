@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "next_actions": [
-      "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+      "Establish a baseline cold reconstruction workload with explicit resource measurements."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -49,7 +49,7 @@
       "human time",
       "provenance"
     ],
-    "next_action_reason": "Derived automatically after the verified next_action + handoff operational cycle."
+    "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle."
   },
   "status_vocabulary": [
     "INTENDED",
@@ -75,7 +75,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "completion": "Project Intelligence current-head cold successor proof is verified; next completion boundary is human-facing whole-journey acceptance with evidence."
   },
   "last_next_action_cycle": {

@@ -2,21 +2,30 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22",
+  "generated_at": "2026-09-22T18:19:47.679267+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
     "active_block": ".naya/control-plane/BLOCKS.json",
     "mission_map": ".naya/control-plane/MAP.json",
     "proof": ".naya/control-plane/PROOF.json",
-    "history": ".naya/memory/events/ and execution receipts"
+    "history": "NAYA/ACTIVITY/ and execution receipts"
+  },
+  "source_snapshot": {
+    "live_head": "40ecf9b94f11fd1c4e7c2a7250d848c89912d3c7",
+    "state_status": "LIVE_BOUND",
+    "map_status": "CANONICAL",
+    "proof_status": "CANONICAL",
+    "state_block": "COMPUTATION-EFFICIENCY-P1",
+    "block_next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements."
   },
   "current_state": {
-    "rule": "Resolve live Git HEAD at execution time; do not treat this snapshot as authoritative over STATE.json.",
+    "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-    "active_program": "P1 - MEASURED COMPUTATIONAL COMPOUNDING",
-    "active_block": "COMPUTATION-EFFICIENCY-P1"
+    "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block_status": "ACTIVE"
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -26,15 +35,23 @@
     "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md"
   },
   "truth": {
+    "proof_contract_status": "CANONICAL",
+    "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
+    "separation_rules": [
+      "IMPLEMENTED != VERIFIED",
+      "VERIFIED != PRODUCTION_PROVEN",
+      "RECORDED != CURRENT",
+      "UNKNOWN != GREEN",
+      "BLOCKED != PASS"
+    ],
     "proven": [
       "Control-plane current-state/active-block/mission-map/proof contracts exist.",
       "Continuous Smart Flow and cold-Naya operating directive is canonical.",
-      "Next-action + handoff execution cycle exists and is machine-checkable.",
-      "Smart Note receiver and Intelligent Block runtime proof mechanisms exist."
+      "Next-action + handoff execution cycle exists and is machine-checkable."
     ],
     "unknown": [
-      "Universal automatic Smart Note → Intelligent Block transformation across every meaningful Naya output.",
-      "Universal automatic Intelligence → Activity → Control Plane synchronization.",
+      "Universal automatic Smart Note -> Intelligent Block transformation across every meaningful Naya output.",
+      "Universal automatic Intelligence -> Activity -> Control Plane synchronization.",
       "Universal lineage/Playback runtime behavior.",
       "Automatic successor-prompt generation from every meaningful output.",
       "Full intended-scope cold Naya independent continuation across all work."
@@ -50,23 +67,23 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Use the existing verified Project Intelligence substrate and advance the current human-facing acceptance boundary without reopening proven infrastructure.",
-    "acceptance": "Complete the defined journey with evidence for each step and preserve durable saved state.",
-    "verification": "Independently observe the result, reload/fresh-context retrieve it, verify evidence/provenance, and leave a successor next action."
-  },
-  "evidence": {
-    "control_plane": "STATE.json + BLOCKS.json + MAP.json + PROOF.json",
-    "continuation_cycle": ".naya/runtime/next_action_handoff.py",
-    "cold_start": ".naya/runtime/cold_start_activation.py",
-    "smart_note_receiver": ".github/workflows/verify-live-smart-note-receiver.yml",
-    "activity": "NAYA/ACTIVITY/2026/09/22.md"
+    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "acceptance": [
+      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+      "Run the same task with retained verified intelligence reuse.",
+      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+      "Verify outcome quality/provenance/authority are not degraded.",
+      "Record the result and leave one successor action."
+    ],
+    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
   },
   "successor_prompt": {
-    "rule": "Read the updated canonical baton and referenced control-plane sources before consequential execution.",
-    "prompt": "Restore live NayaPOWER state from the canonical control plane, verify the single next action against current evidence and authority, execute only that action, independently verify the result, record what changed and what remains unknown, update the baton, and leave exactly one executable successor action.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources can provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
+    "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
+    "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
