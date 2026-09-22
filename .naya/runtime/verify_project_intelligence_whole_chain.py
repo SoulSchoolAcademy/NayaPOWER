@@ -88,8 +88,13 @@ def main() -> int:
     else:
         predecessor = active.get("predecessor")
         predecessor_proof = active.get("predecessor_proof", {})
-        if predecessor != "PROJECT-INTELLIGENCE-PI-01":
-            fail(f"active block has no PI-01 predecessor: {active_id}")
+        pi_predecessor = active.get("project_intelligence_predecessor")
+        pi_predecessor_proof = active.get("project_intelligence_predecessor_proof", {})
+        if predecessor != "PROJECT-INTELLIGENCE-PI-01" and pi_predecessor != "PROJECT-INTELLIGENCE-PI-01":
+            fail(f"active block has no PI-01 predecessor lineage: {active_id}")
+        if pi_predecessor == "PROJECT-INTELLIGENCE-PI-01":
+            predecessor = pi_predecessor
+            predecessor_proof = pi_predecessor_proof
         if not predecessor_proof.get("workflow_run") or not predecessor_proof.get("source_head"):
             fail("PI-01 predecessor proof metadata missing")
         if "proven" not in str(predecessor_proof.get("claim", "")).lower():
