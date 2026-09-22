@@ -51,13 +51,17 @@ jobs:
             visibleLeftRails:[...document.querySelectorAll('.shell > .rail.left')].filter(x=>getComputedStyle(x).display!=='none'&&x.getBoundingClientRect().width>0).length,
             visibleRightRails:[...document.querySelectorAll('.shell > .rail.right')].filter(x=>getComputedStyle(x).display!=='none'&&x.getBoundingClientRect().width>0).length,
             reactShellCount:document.querySelectorAll('[data-shell-owner="AppShellV3"]').length,
-            reactMarkerCount:document.querySelectorAll('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]').length
+            reactMarkerCount:document.querySelectorAll('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]').length,
+            commandSurfaceCount:document.querySelectorAll('.naya-cs-btn').length,
+            visibleMobileCommandRail:getComputedStyle(document.querySelector('.naya-cs-mobile')||document.body).display
           }));
           console.log('SHELL_OWNERSHIP_PROBE',JSON.stringify(shellProbe));
           if(shellProbe.shellCount!==1)throw Error('FIRST_DIVERGENCE:SHELL_COUNT_NOT_ONE:'+JSON.stringify(shellProbe));
           if(shellProbe.leftRailCount!==1||shellProbe.visibleLeftRails!==1)throw Error('FIRST_DIVERGENCE:LEFT_RAIL_OWNERSHIP_FAILED:'+JSON.stringify(shellProbe));
           if(shellProbe.visibleRightRails!==0)throw Error('FIRST_DIVERGENCE:COMPETING_RIGHT_RAIL_VISIBLE:'+JSON.stringify(shellProbe));
           if(shellProbe.reactShellCount!==0||shellProbe.reactMarkerCount!==0)throw Error('FIRST_DIVERGENCE:REACT_SHELL_COMPETING_WITH_CANONICAL_HUB:'+JSON.stringify(shellProbe));
+          if(shellProbe.commandSurfaceCount!==13)throw Error('FIRST_DIVERGENCE:DUPLICATE_COMMAND_NAVIGATION:'+JSON.stringify(shellProbe));
+          if(shellProbe.visibleMobileCommandRail!=='none')throw Error('FIRST_DIVERGENCE:MOBILE_COMMAND_RAIL_VISIBLE_ON_DESKTOP:'+JSON.stringify(shellProbe));
           if(feedProbe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA'||!feedProbe.body.includes('Smart Feed'))throw Error('FIRST_DIVERGENCE:SMART_FEED_SURFACE_MISSING:'+JSON.stringify(feedProbe));
           checks.hub='PASS';
           await p.goto(runtime+'/',{waitUntil:'domcontentloaded',timeout:60000}); await p.waitForTimeout(800); const searchProbe=await p.evaluate(()=>({count:document.querySelectorAll('input[aria-label="Search intelligence"]').length,searchLike:[...document.querySelectorAll('input,button')].map(e=>({tag:e.tagName,aria:e.getAttribute('aria-label'),text:e.innerText})).filter(x=>/search/i.test((x.aria||'')+' '+(x.text||''))).slice(0,20)})); console.log('SEARCH_RUNTIME_PROBE',JSON.stringify(searchProbe)); if(searchProbe.count!==1)throw Error('FIRST_DIVERGENCE:SEARCH_INPUT_MISSING:'+JSON.stringify(searchProbe));
