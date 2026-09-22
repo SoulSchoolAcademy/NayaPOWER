@@ -61,11 +61,7 @@ jobs:
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
 
-      - name: Checkout exact canonical source
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.source_ref || github.sha }}
-          fetch-depth: 2
+      - name: Checkout exact canonical source          fetch-depth: 2
 
       - name: Enforce Naya session and merge-boundary lease
         shell: bash
@@ -94,10 +90,6 @@ jobs:
               raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_BRANCH')
           print('NAYA_SESSION_VERIFIED',s['session_id'],'MERGE_COMMIT',parents[1],'EXECUTION_BRANCH',execution_branch_parent)
           PY
-
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.source_ref || github.sha }}
 
       - name: Prepare canonical Hub artifact
         shell: bash
