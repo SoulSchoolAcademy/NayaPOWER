@@ -295,6 +295,34 @@ The source architecture reaches 10/10 when all are true:
 **This map is the navigation contract that keeps the repository understandable as it grows.**
 
 
+## 7A. PROJECT INTELLIGENCE — CANONICAL ROOT SPECIFICATION
+
+**`SUPERBRAIN/PROJECT-INTELLIGENCE-CANONICAL-ROOT-SPEC-V1.md`** is the canonical specialized root specification for the meaning, structure, authority, lifecycle, value model, and machine-readable foundation of Project Intelligence.
+
+It is subordinate to the current constitution and control plane. It does not create a second constitution, memory database, event store, Hub, or authority hierarchy.
+
+The companion machine-readable registry is:
+
+**`.naya/project-intelligence/PROJECT-INTELLIGENCE-ROOT-REGISTRY.json`**
+
+The root specification establishes:
+
+- Project Intelligence as the living, verified, governed, connected intelligence that makes a project intelligent;
+- Naya as the intelligent operating partner;
+- NayaNET as the interconnect between human and machine intelligence;
+- the human as director and source of intent/authority;
+- AI models as replaceable intelligence engines;
+- the North Star: **Create as much real value as possible, in every action and every moment, for everyone**;
+- the value question: **What value does this create, for whom, based on what evidence, at what cost or risk, and how do we know?**;
+- Intelligent Event as **WHAT HAPPENED**;
+- Intelligent Block as **WHAT WE CURRENTLY UNDERSTAND**;
+- Project Intelligence Context as a reconstructable view over authoritative sources;
+- privacy as **PRIVATE BY DEFAULT → SHARED BY CHOICE → COLLECTIVE BY CONSENT → PUBLIC BY DECISION**;
+- the distinction between existing proven foundations and remaining acceptance frontiers;
+- machine-readable project context as a pointer/classification layer rather than a competing source of truth.
+
+The root registry is the first machine-readable Project Intelligence layer and must remain lightweight, provenance-bound, and reconstructable.
+
 ## 7B. BUILD ANYTHING / PROJECT INTELLIGENCE OPERATING SPEC
 
 **`SUPERBRAIN/NAYAPOWER-BUILD-ANYTHING-SUPERBRAIN-OPERATING-SPEC-V1.md`** is the canonical specialized project-operating specification for the NayaPOWER/NayaNET foundation.
