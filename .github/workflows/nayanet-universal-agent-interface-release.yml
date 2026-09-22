@@ -1,0 +1,120 @@
+name: NAYA — Universal Agent Interface Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      approval:
+        description: Explicit authorization to deploy the Universal Agent Interface
+        required: true
+        type: string
+      reason:
+        description: Why this release is authorized
+        required: true
+        type: string
+      source_ref:
+        description: Exact source ref or commit to deploy
+        required: true
+        default: main
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      SUPABASE_URL: ${{ secrets.NAYANET_SUPABASE_URL }}
+      SUPABASE_ANON_KEY: ${{ secrets.NAYANET_SUPABASE_ANON_KEY }}
+      CF_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+    steps:
+      - name: Require explicit deployment authorization
+        shell: bash
+        env:
+          APPROVAL: ${{ inputs.approval }}
+          REASON: ${{ inputs.reason }}
+        run: |
+          set -euo pipefail
+          test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
+          test -n "${REASON}"
+
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref }}
+
+      - name: Validate canonical adapter source
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
+          test -s NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml
+          grep -q "nayanet-compound-intelligence" NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
+          grep -q "/mcp" NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
+          grep -q "/v1/retrieve" NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml
+          test -n "${SUPABASE_URL}"
+          test -n "${SUPABASE_ANON_KEY}"
+          test -n "${CLOUDFLARE_API_TOKEN}"
+
+      - name: Write Wrangler config
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > wrangler.jsonc <<'EOF'
+          {
+            "$schema": "node_modules/wrangler/config-schema.json",
+            "name": "nayanet-universal-agent-interface",
+            "main": "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js",
+            "compatibility_date": "2026-09-21",
+            "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+            "vars": {
+              "SUPABASE_URL": "https://${NAYANET_SUPABASE_PROJECT_REF}.supabase.co"
+            }
+          }
+          EOF
+          test -n "${NAYANET_SUPABASE_PROJECT_REF}"
+
+      - name: Deploy remote agent interface
+        shell: bash
+        env:
+          NAYANET_SUPABASE_PROJECT_REF: ${{ secrets.NAYANET_SUPABASE_PROJECT_REF }}
+        run: |
+          set -euo pipefail
+          test -n "${NAYANET_SUPABASE_PROJECT_REF}"
+          python - <<'PY'
+          import json
+          p=json.load(open("wrangler.jsonc"))
+          p["vars"]["SUPABASE_URL"]="https://"+__import__("os").environ["NAYANET_SUPABASE_PROJECT_REF"]+".supabase.co"
+          json.dump(p,open("wrangler.jsonc","w"),indent=2)
+          PY
+          npx --yes wrangler@4 deploy
+
+      - name: Verify public health
+        shell: bash
+        run: |
+          set -euo pipefail
+          for attempt in $(seq 1 20); do
+            if curl --fail --silent --show-error https://nayanet-universal-agent-interface.workers.dev/health | grep -q '"canonical":true'; then
+              echo "UNIVERSAL_AGENT_INTERFACE_HEALTH_VERIFIED"
+              exit 0
+            fi
+            sleep 3
+          done
+          exit 1
+
+      - name: Verify unauthorized fail-closed boundary
+        shell: bash
+        run: |
+          set -euo pipefail
+          status=$(curl --silent --output /tmp/unauthorized.json --write-out '%{http_code}' -X POST https://nayanet-universal-agent-interface.workers.dev/v1/restore -H 'Content-Type: application/json' -d '{}')
+          test "${status}" = "401"
+          grep -q 'AUTHORIZATION_REQUIRED' /tmp/unauthorized.json
+          echo "UNAUTHORIZED_RESTORE_REJECTED"
+
+      - name: Verify MCP surface without credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          status=$(curl --silent --output /tmp/mcp.json --write-out '%{http_code}' -X POST https://nayanet-universal-agent-interface.workers.dev/mcp -H 'Content-Type: application/json' -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}')
+          test "${status}" = "401"
+          grep -q 'AUTHORIZATION_REQUIRED' /tmp/mcp.json
+          echo "MCP_UNAUTHORIZED_REJECTED"
