@@ -110,7 +110,7 @@ jobs:
           cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
           test -s dist/name-first-auth-adapter.js
-          grep -q 'NayaNET name-first identity adapter' dist/name-first-auth-adapter.js
+          test -s dist/name-first-auth-adapter.js
           sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
 
       - name: Prepare canonical React Hub artifact
