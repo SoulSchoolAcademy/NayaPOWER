@@ -30,7 +30,7 @@ export type IntelligentEvent={
   event_id:string;user_id:string;created_at:string;updated_at:string;
   source:{type:string;label:string};
   human_input:{raw:string;captured_at:string};
-  context:{topic?:string;tags?:string[];canonical_path?:string};
+  context:{topic?:string;tags?:string[];canonical_path?:string;scope?:string;environment?:string};
   naya_interpretation:{observation?:string;interpretation?:string;recommendation?:string;uncertainty?:string};
   machine_evidence:{items:string[];verification_state:string};
   weaver_synthesis:{summary?:string;relationships?:string[]};
