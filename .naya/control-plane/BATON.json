@@ -67,9 +67,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "reason": "Derived from the verified computation-efficiency counterfactual review.",
     "acceptance": [
       "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "Run the same task with retained verified intelligence reuse.",
@@ -78,7 +78,7 @@
       "Verify outcome quality/provenance/authority are not degraded.",
       "Record the result and leave one successor action."
     ],
-    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
+    "verification": "Independently observe the repaired paired run, re-read canonical state, verify durable retained evidence and counterfactual validity, and leave exactly one successor action."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
