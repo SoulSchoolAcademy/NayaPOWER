@@ -76,15 +76,26 @@ Human cognitive-load rule:
 
 ## ACTIVE NEXT ACTION
 
-The system-model distillation is now committed as **INTELLIGENT BLOCK 001 — NayaNET System Model** at live `main` HEAD `da69237219e03692ec05c8ce2e4d7358d9525f6d`.
+**Block 001 is the governing semantic contract for NayaNET.**
 
-Its explicit successor is now the Universal Agent Interface:
-**RESTORE → RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → VERIFY → LEARN → SUCCESSOR**, exposed through one canonical intelligence boundary and multiple adapters.
+The repository has now been audited by canonical object and causal role rather than file-by-file. Audit artifact:
 
-First implementation boundary:
-**remote MCP + REST/OpenAPI**, both bound to the existing NayaPOWER governance/execution substrate. Do not create a second brain, second event store, or competing authority.
+`.naya/project-intelligence/BLOCK-001-CONFORMANCE-AUDIT-2026-09-21.md`
 
-The implementation must prove one authorized agent can use the same canonical intelligence truth path as the existing Hub/runtime, with transport, authorization, persistence, retrieval, and outcome verification separately evidenced. Source adapters and a governed release workflow are now committed; live deployment/proof remains gated on the authorized Cloudflare production boundary and required runtime secrets.
+The audit confirms that the major semantic primitives are present and separated: Smart Notes/capture, Cognition Events/history, Receipts/proof, Intelligent Blocks/understanding, Index/retrieval, Ledger/provenance, Learning, Project Intelligence/continuity, product projections, and governed adapters.
+
+The remaining causal frontiers are:
+1. Intelligent Block lifecycle proof: idempotent replay/update + supersession + second real verified Block.
+2. Canonical event time: occurred_at versus recorded_at.
+3. Reusable projection lineage enforcement.
+4. Universal Agent Interface live proof.
+5. Human product/runtime closure.
+6. Authority-advisor hardening.
+
+Do not create a second event store, universal mega-table, or competing intelligence authority.
+
+**Next responsible action:** close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.
+
 
 ## REMAINING HIGH-VALUE FRONTIER
 
