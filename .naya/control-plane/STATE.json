@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T20:37:30.000Z",
-    "observed_head": "cac2d01e0f9739c69f6c227ba84a4efce701431a",
+    "recorded_at": "2026-09-22T21:04:00.000Z",
+    "observed_head": "f390a847225431e4c25acdf4e060e895043a61bd",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -291,10 +291,11 @@
     "completion": "HUMAN JOURNEY LIVE VERIFIED; next frontier is consolidated adversarial acceptance."
   },
   "reconciliation": {
-    "date": "2026-09-21",
-    "live_main_before_reconciliation": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
-    "control_plane_reconciliation_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
-    "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
+    "date": "2026-09-22",
+    "live_main_after_recording": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "control_plane_status": "RECONCILIATED_TO_CANONICAL_CLOUDFLARE_RELEASE",
+    "deployment_run": 35784147783,
+    "note": "Canonical Hub cache-identity repair deployed successfully; exact live HTML parity and fresh desktop/mobile browser surface acceptance passed. Consolidated adversarial acceptance remains unexecuted pending live Desktop Commander transport."
   },
   "current_next_action": {
     "action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
@@ -306,5 +307,27 @@
   "operating_truth_model": {
     "canonical_baton": ".naya/control-plane/BATON.json",
     "current_state_pointer": "README-FIRST.md → .naya/control-plane/BATON.json"
+  },
+  "latest_hub_release": {
+    "status": "VERIFIED",
+    "claim_type": "DEPLOYMENT_LIVE_PARITY_BROWSER_SURFACE",
+    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "run_id": 35784147783,
+    "job_id": 106936705828,
+    "source_head": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "hub_path": "NAYANET/HUB/index.html",
+    "hub_blob_sha": "ddffaf5a6ac5eccbca8d8a6c4b76ff26d3b70058",
+    "worker": "sparkling-shape-7ae5",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+    "gates": {
+      "deployment": "PASS",
+      "exact_live_source_parity": "PASS",
+      "fresh_browser_baseline_desktop": "PASS",
+      "fresh_browser_baseline_mobile": "PASS",
+      "command_station_smart_feed_desktop": "PASS",
+      "command_station_smart_feed_mobile": "PASS"
+    },
+    "next_gap": "FULL_HUMAN_SMART_NOTE_RELOAD_IDENTITY_AND_CONSOLIDATED_ADVERSARIAL_MATRIX",
+    "note": "Desktop Commander transport remains blocked; nine-dimension adversarial matrix is not claimed."
   }
 }
