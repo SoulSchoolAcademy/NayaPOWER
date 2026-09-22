@@ -24,7 +24,7 @@
     "intelligent_hub_north_star": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "intelligent_hub_visual_structural_contract": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
     "canonical_hub_path": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "f76ed6d6de6805a752dc81113ded42e67b3b6f80"
+    "canonical_hub_source_sha": "ddffaf5a6ac5eccbca8d8a6c4b76ff26d3b70058"
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
@@ -166,5 +166,16 @@
     "For Hub implementation, follow the canonical 6-to-10 roadmap checkpoints and do not declare completion until exact runtime evidence exists.",
     "Runtime and policy proof freshness is evaluated against the authoritative source paths that produced the claimed artifact, not merely the repository's unrelated documentation/control-plane HEAD.",
     "For Hub identity, NAYANET/HUB/index.html is the sole current product surface; Welcome and historical/alternate Hub artifacts are non-authoritative unless Shawn explicitly changes the mission lock."
-  ]
+  ],
+  "latest_canonical_hub_release": {
+    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "run_id": 35784147783,
+    "job_id": 106936705828,
+    "source_head": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "worker": "sparkling-shape-7ae5",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+    "exact_live_source_parity": "PASS",
+    "browser_surface_acceptance": "PASS",
+    "consolidated_adversarial_matrix": "NOT_EXECUTED"
+  }
 }
