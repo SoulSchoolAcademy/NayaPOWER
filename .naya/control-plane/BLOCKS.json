@@ -2,59 +2,67 @@
   "$schema": "naya/control-plane/block/v1",
   "status": "CANONICAL",
   "active_block": {
-    "id": "COMPUTATION-EFFICIENCY-P1",
+    "id": "HUMAN-JOURNEY-P2",
     "status": "ACTIVE",
     "priority": "P1",
-    "intent": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
+    "intent": "Prove the complete human-facing NayaNET journey on the canonical Hub with direct behavioral evidence and no source/projection divergence.",
     "protected": [
-      "PI-01 whole-chain proof 35638451543 is production-proven at tested owner-bound scope",
       "canonical Hub",
+      "protected visual source",
       "governed authority",
       "privacy boundaries",
       "evidence discipline",
-      "no blind retries"
+      "no second intelligence store"
     ],
     "acceptance": [
-      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
-      "Run the same task with retained verified intelligence reuse.",
-      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
-      "Verify outcome quality/provenance/authority are not degraded.",
-      "Record the result and leave one successor action."
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ],
     "evidence": [
-      ".naya/project-intelligence/COMPUTATION-EFFICIENCY-MEASUREMENT-CONTRACT.md",
-      "SUPERBRAIN/INTELLIGENCE-FEED.md",
-      "Supabase nayanet_project_intelligence_state",
-      "PI-01 home-run run 35639968134"
+      "protected Hub source",
+      "live Hub/browser evidence",
+      "durable Smart Note / Intelligent Block",
+      "Activity / Smart Ledger receipt",
+      "fresh reload/retrieval evidence",
+      "cold successor continuation"
     ],
-    "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
     "next_actions": [
-      "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+      "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
     ],
     "next_action_count": 1,
-    "predecessor": "PROJECT-INTELLIGENCE-PI-01",
+    "predecessor": "COMPUTATION-EFFICIENCY-P1",
     "predecessor_proof": {
-      "workflow_run": 35639968134,
-      "job_id": 106466612229,
-      "source_head": "9c364e66e46ec3900119e84722c5087b1ed8083e",
-      "claim": "PI-01 whole-chain home-run remains proven after current-main revalidation."
+      "source": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-CAUSAL-PAIRED-RUN-2026-09-22.json",
+      "workflow_run": 35770708460,
+      "status": "VERIFIED"
     },
     "scope": [
-      "computation accounting",
-      "retained-intelligence reuse",
-      "verified outcome equivalence",
-      "avoided computation",
-      "human time",
-      "provenance"
+      "canonical Hub",
+      "human journey",
+      "Smart Notes",
+      "Intelligent Blocks",
+      "Activity",
+      "evidence",
+      "reload",
+      "authorized continuation"
     ],
-    "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "next_action_reason": "Selected from the maximum-value execution order after the causal computational-compounding boundary was directly verified.",
     "current_frontier": {
-      "active_block": "COMPUTATION-EFFICIENCY-P1",
+      "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
-      "completion": "Defensible avoided computation requires a causal retained artifact produced by Cycle A, followed by matched Cycle B reuse and verified outcome preservation."
+      "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "completion": "Complete the full human journey with direct live behavioral evidence."
     }
   },
   "status_vocabulary": [
@@ -79,10 +87,10 @@
     "cold_naya_state_reconstruction_by_human": false
   },
   "current_frontier": {
-    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
-    "completion": "Defensible avoided computation requires a causal retained artifact produced by Cycle A, followed by matched Cycle B reuse and verified outcome preservation."
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "completion": "Complete the full human journey with direct live behavioral evidence."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
@@ -95,7 +103,71 @@
       "PROJECT_UPDATE",
       "NEW_NEXT_ACTION"
     ],
-    "execution_scope": "Repository control-plane execution by Naya; GitHub Actions trigger surface is installed for future independent re-execution.",
-    "successor_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
-  }
+    "execution_scope": "Repository control-plane transition after verified causal computation-efficiency proof.",
+    "successor_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+  },
+  "completed_blocks": [
+    {
+      "id": "COMPUTATION-EFFICIENCY-P1",
+      "status": "COMPLETE",
+      "priority": "P1",
+      "intent": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
+      "protected": [
+        "PI-01 whole-chain proof 35638451543 is production-proven at tested owner-bound scope",
+        "canonical Hub",
+        "governed authority",
+        "privacy boundaries",
+        "evidence discipline",
+        "no blind retries"
+      ],
+      "acceptance": [
+        "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+        "Run the same task with retained verified intelligence reuse.",
+        "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+        "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+        "Verify outcome quality/provenance/authority are not degraded.",
+        "Record the result and leave one successor action."
+      ],
+      "evidence": [
+        ".naya/project-intelligence/COMPUTATION-EFFICIENCY-MEASUREMENT-CONTRACT.md",
+        "SUPERBRAIN/INTELLIGENCE-FEED.md",
+        "Supabase nayanet_project_intelligence_state",
+        "PI-01 home-run run 35639968134"
+      ],
+      "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
+      "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+      "next_actions": [
+        "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+      ],
+      "next_action_count": 1,
+      "predecessor": "PROJECT-INTELLIGENCE-PI-01",
+      "predecessor_proof": {
+        "workflow_run": 35639968134,
+        "job_id": 106466612229,
+        "source_head": "9c364e66e46ec3900119e84722c5087b1ed8083e",
+        "claim": "PI-01 whole-chain home-run remains proven after current-main revalidation."
+      },
+      "scope": [
+        "computation accounting",
+        "retained-intelligence reuse",
+        "verified outcome equivalence",
+        "avoided computation",
+        "human time",
+        "provenance"
+      ],
+      "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle.",
+      "current_frontier": {
+        "active_block": "COMPUTATION-EFFICIENCY-P1",
+        "priority": "P1",
+        "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+        "completion": "Defensible avoided computation requires a causal retained artifact produced by Cycle A, followed by matched Cycle B reuse and verified outcome preservation."
+      },
+      "completion_evidence": {
+        "proof": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-CAUSAL-PAIRED-RUN-2026-09-22.json",
+        "status": "VERIFIED",
+        "run": 35770708460,
+        "claim": "Cycle A durably produced retained intelligence before Cycle B; Cycle B reused it and directly avoided two canonical content reads while preserving the verified outcome."
+      }
+    }
+  ]
 }
