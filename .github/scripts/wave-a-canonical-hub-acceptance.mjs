@@ -1,6 +1,7 @@
 import { chromium } from "playwright";
 import crypto from "node:crypto";
 import fs from "node:fs";
+// LIVE_SMART_FEED_AUTH_BOUNDARY: naya-smart-feed uses explicit in-function Bearer authentication so browser preflight can reach OPTIONS.
 
 const base=process.env.SUPABASE_URL;
 const key=process.env.SUPABASE_PUBLISHABLE_KEY || "sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue";
