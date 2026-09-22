@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T19:25:42.322Z",
+  "generated_at": "2026-09-22T20:04:43.953Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
+    "block_next_action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,22 +70,26 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection.",
     "acceptance": [
-      "Authenticate a fresh audit identity through the canonical Hub.",
-      "Create a real Smart Note through the human Hub control.",
-      "Observe canonical event/receipt and durable persistence.",
-      "See the resulting intelligence in Smart Feed.",
-      "Reload and retrieve the same canonical identity.",
-      "Inspect visible evidence/provenance and leave one successor action."
+      "Open the canonical live Hub.",
+      "Understand the current intelligence/activity projection.",
+      "Navigate required Hub surfaces.",
+      "Search for existing intelligence.",
+      "Create and save a real Smart Note / Intelligent Block.",
+      "See the resulting canonical projection.",
+      "Reload and recover the same identity.",
+      "Find it again through authorized retrieval.",
+      "Understand visible evidence/provenance.",
+      "Continue with one authorized next action."
     ],
     "verification": "Independently verify event identity, persistence, Smart Feed projection, reload retrieval, and evidence without relying on prior conversation."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Restore current NayaPOWER state, execute only the Smart Note golden path, independently verify canonical event identity and Smart Feed projection after reload, record proof/unknowns, rebuild the baton, and leave exactly one executable successor action.",
+    "prompt": "Restore current NayaPOWER state, execute the complete canonical human journey on the live Hub, independently verify every transition and durable identity, record proof/unknowns, rebuild the baton, and leave exactly one executable successor action.",
     "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
   },
   "playback": {
