@@ -13,6 +13,7 @@ on:
   workflow_dispatch:
 
 # Naya checkpoint: execute current CCT-005 verification receipt proof.
+# Production frontier: receipt integrity and independent verification.
 
 permissions:
   contents: read
