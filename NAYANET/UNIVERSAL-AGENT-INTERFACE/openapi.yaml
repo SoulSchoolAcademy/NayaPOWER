@@ -8,6 +8,14 @@ servers:
 security:
   - bearerAuth: []
 paths:
+  /v1/cold-restore:
+    post:
+      operationId: coldRestoreProjectIntelligence
+      summary: Mandatory 14-question Cold Naya Project Intelligence restore
+      description: First-class governed restore contract required before consequential Universal Agent Interface actions.
+      responses:
+        '200': {description: Verified 14-question cold restore}
+        '401': {description: Authentication required}
   /v1/restore:
     post:
       operationId: restoreProjectIntelligence
