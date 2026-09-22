@@ -187,9 +187,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+  "single_next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
   "next_actions": [
-    "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
+    "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -332,8 +332,8 @@
     }
   },
   "current_next_action": {
-    "action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
-    "reason": "The consolidated nine-dimension matrix is PROVEN at run 35787965745; the next causal gap is canonical Project Intelligence retrieval/render continuity."
+    "action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+    "reason": "Fresh current-main Project Intelligence home-run run 35789192530 passed and its exact bridge retrieval/render plus cold successor evidence was independently verified."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
