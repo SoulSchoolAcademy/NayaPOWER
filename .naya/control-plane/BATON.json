@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T21:57:22.798Z",
+  "generated_at": "2026-09-22T22:04:23Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "930f4147dc2b135d48c0e9ab55d9c333a743ca37",
+    "live_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -90,5 +90,14 @@
       "SUPERBRAIN/INTELLIGENT-BLOCKS/"
     ],
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
+  },
+  "execution_attempt": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "workflow": ".github/workflows/verify-non-owner-managed-retrieval.yml",
+    "trigger_commit": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "result": "No managed-runtime execution receipt available; non-owner boundary remains UNKNOWN.",
+    "owner_receipt_check": "PASS",
+    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
   }
 }
