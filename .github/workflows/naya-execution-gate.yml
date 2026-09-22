@@ -44,9 +44,12 @@ jobs:
           if s.get('record',{}).get('status')!='COMPLETE': raise SystemExit('ACTIVITY_RECORD_NOT_COMPLETE')
           if s.get('control_plane',{}).get('updated') is not True: raise SystemExit('CONTROL_PLANE_NOT_UPDATED')
           if s.get('sign_out',{}).get('status')!='SIGNED_OUT': raise SystemExit('SIGN_OUT_MISSING')
-          p=subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip()
-          if s['parent_head']!=p: raise SystemExit(f'SESSION_PARENT_MISMATCH expected={p} recorded={s["parent_head"]}')
-          print('NAYA_EXECUTION_SESSION_VERIFIED',s['session_id'])
+          parents=subprocess.check_output(['git','rev-list','--parents','-n','1','HEAD'],text=True).strip().split()
+          if len(parents)!=3: raise SystemExit('CANONICAL_RELEASE_REQUIRES_MERGE_COMMIT')
+          merge_parent=parents[2]
+          ok=subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],merge_parent]).returncode==0
+          if not ok: raise SystemExit(f'SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_BRANCH parent={s["parent_head"]} branch_head={merge_parent}')
+          print('NAYA_EXECUTION_SESSION_VERIFIED',s['session_id'],'MERGE_PARENT',merge_parent)
           PY
       - name: Enforce canonical Hub authority
         run: |
