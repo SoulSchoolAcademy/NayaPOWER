@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T21:28:59.350Z",
-    "observed_head": "b49c7a99544ae5c87283a410938b9ed2a01a88a0",
+    "recorded_at": "2026-09-22T21:54:56.245Z",
+    "observed_head": "2279bbb492c8c8e0da163f33cac3769c94fafcd7",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -144,7 +144,8 @@
     "A separate NayaAssistantRuntime.smartFeed() convenience call remains UNKNOWN: browser acceptance observed TypeError: Failed to fetch at assistant-runtime.js against naya-smart-feed. This is not evidence that the human Smart Feed surface is broken because the same acceptance run independently verified Smart Feed DOM projection and fresh retrieval after reload.",
     "Smart Feed runtime API boundary is now VERIFIED: NayaAssistantRuntime.smartFeed() returned HTTP 200 through the established Supabase client after the canonical capture redirect settled, and returned the canonical Intelligent Block projection. The deployed naya-smart-feed function is version 16 with explicit in-function Bearer authentication and inline canonical-block fallback.",
     "Fresh exact-head adversarial preflight run 35785808063 independently confirmed a control-plane coherence failure: STATE.current_next_action diverged from BLOCKS.current_frontier.next_action, preventing baton construction and therefore preventing the nine-dimension matrix from executing.",
-    "Fresh run 35785994422 at current main 703e013a39df16d88485571e72a83e43df508348 passed the existing Project Intelligence Bridge adversarial verifier: replay returned the same receipt, wrong receiver was rejected, invalid OIDC token was rejected. Independent Supabase verification confirmed the fresh receipt row and persistence/index/projection."
+    "Fresh run 35785994422 at current main 703e013a39df16d88485571e72a83e43df508348 passed the existing Project Intelligence Bridge adversarial verifier: replay returned the same receipt, wrong receiver was rejected, invalid OIDC token was rejected. Independent Supabase verification confirmed the fresh receipt row and persistence/index/projection.",
+    "Fresh Project Intelligence home-run run 35789192530 passed at main 2279bbb492c8c8e0da163f33cac3769c94fafcd7: exact bridge 03c11b93-bd80-58f8-a48a-9787a55b12fa retrieved=true rendered=true; cold 14Q evidence metadata passed; authorized continuation and successor receipt passed; consolidated PI receipt c3d3a978-9b40-4d6c-96e1-7616599b0ec9 independently retrieved."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
