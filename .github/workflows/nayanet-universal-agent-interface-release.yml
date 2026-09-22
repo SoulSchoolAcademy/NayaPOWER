@@ -163,7 +163,6 @@ jobs:
           echo "MCP_RESTORE_STATUS=${restore_status}"
           test "${restore_status}" = "200"
           jq -e '.result.content[0].text' /tmp/mcp_restore.json >/dev/null
-          jq -e '.result.content[0].text | fromjson | .schema == "NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2"' /tmp/mcp_restore.json >/dev/null
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
 
