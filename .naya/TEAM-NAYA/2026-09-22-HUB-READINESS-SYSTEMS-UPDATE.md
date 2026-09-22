@@ -3,7 +3,7 @@
 **Date:** 2026-09-22
 **Status:** ACTIVE — TAG → YOU'RE IT
 **Canonical repository:** SoulSchoolAcademy/NayaPOWER
-**Current live main at observation:** 3e4756e9ad3be87864769388fa4f0df4a0126364
+**Current live main at observation:** 929b0b9573ce35e19e6e30a8b801a76403153391
 
 ## Mission
 Finish the canonical NayaNET Intelligent Hub as one human operating surface connected to one governed intelligence substrate. Do not create another brain, Hub, persistence authority, or competing architecture.
@@ -15,6 +15,10 @@ Finish the canonical NayaNET Intelligent Hub as one human operating surface conn
 - The canonical Smart Note golden-path workflow exists and now triggers when the readiness inventory changes.
 - Intelligent Block substrate persistence/index/retrieval is proven at recorded scope.
 - The current remaining boundary is human-facing Intelligent Block truth/provenance projection plus whole-journey continuation.
+
+## Canonical readiness inventory
+
+The complete feature-by-feature readiness matrix is now canonical at `.naya/TEAM-NAYA/2026-09-22-HUB-READINESS-INVENTORY.md`. It is the single Hub readiness classification surface. The Activity Board remains the operational relay; the control plane remains machine authority.
 
 ## First deterministic gap
 **GAP-002 — Intelligent Block truth projection in the canonical Smart Feed.**
