@@ -930,5 +930,68 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();
 </script>
 <script src="/nayanet-interface-command-station.js?v=20260921-v1"></script>
+
+<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->
+<script>
+(()=>{'use strict';
+const MARK='<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->';
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function style(){
+ if(document.getElementById('naya-canonical-capture-style'))return;
+ const s=document.createElement('style');s.id='naya-canonical-capture-style';s.textContent=`
+ .naya-capture-button{min-height:46px;padding:0 16px;margin-left:12px;border:2px solid #9d75ff;border-radius:12px;background:linear-gradient(145deg,#17111f,#08080c);color:#fff;font-weight:900;letter-spacing:.04em;box-shadow:inset 0 1px #fff5,0 9px 22px #0008,0 0 20px #9d75ff20;cursor:pointer}
+ .naya-capture-button:hover{transform:translateY(-2px);border-color:#d86cff;box-shadow:inset 0 1px #fff8,0 13px 28px #000a,0 0 25px #d86cff30}
+ .naya-capture-state{margin-top:12px;padding:10px 12px;border:1px solid #ffffff18;border-radius:10px;color:#cfc8d6;font-size:12px;line-height:1.5;min-height:18px}
+ .naya-capture-proof{margin-top:10px;color:#55e39a;font-size:11px;font-weight:800}
+ `;document.head.appendChild(s)
+}
+function openCapture(){
+ const modal=document.getElementById('modal');if(!modal)return;
+ modal.className='modal open';
+ modal.innerHTML=`<div class="dialog" role="dialog" aria-modal="true" aria-label="Capture Smart Note">
+  <div class="capture-eyebrow">SMART NOTE · CANONICAL CAPTURE</div>
+  <h2>CAPTURE A SMART NOTE</h2>
+  <p>Save this intelligence through the authenticated canonical receiver. NayaNET returns the canonical event and receipt identity; the Hub remains a projection.</p>
+  <label>TITLE<input data-testid="smart-note-title" id="nayaCaptureTitle" placeholder="What should Naya remember?"></label>
+  <label>CONTENT<textarea data-testid="smart-note-content" id="nayaCaptureContent" placeholder="What should Naya remember, connect, learn, and reuse?"></textarea></label>
+  <div class="actions"><button class="action" data-testid="smart-note-capture-cancel" data-close>CANCEL</button><button class="action" data-testid="smart-note-capture-submit" id="nayaCaptureSubmit">CAPTURE &amp; PERSIST</button></div>
+  <div class="naya-capture-state" data-testid="smart-note-capture-status" role="status"></div>
+ </div>`;
+ const title=document.getElementById('nayaCaptureTitle'),content=document.getElementById('nayaCaptureContent'),submit=document.getElementById('nayaCaptureSubmit'),state=document.querySelector('[data-testid="smart-note-capture-status"]');
+ submit.onclick=async()=>{
+  const t=title.value.trim(),v=content.value.trim();if(!t||!v){state.textContent='TITLE AND CONTENT REQUIRED';return}
+  submit.disabled=true;state.textContent='CAPTURING THROUGH CANONICAL RECEIVER…';
+  try{
+   const rt=window.NayaAssistantRuntime;if(!rt?.snapshot?.()?.authenticated)throw new Error('AUTH_REQUIRED');
+   const result=await rt.captureSmartNote({title:t,content:v,source:'nayanet-hub.human-capture'});
+   const tx=result?.transaction||{},eventId=result?.event?.event_id||result?.event_id||tx?.evidence?.event_id||tx?.hub_state?.event_id||'',receiptId=result?.receipt?.receipt_id||result?.receipt?.id||result?.receipt_id||tx?.evidence?.receipt_id||'';
+   if(!eventId)throw new Error('CANONICAL_EVENT_ID_NOT_RETURNED');
+   const deadline=Date.now()+15000;let found=false;
+   while(Date.now()<deadline){const rows=await rt.retrieve(eventId);if(Array.isArray(rows)&&rows.some(x=>x?.event_id===eventId)){found=true;break}await new Promise(r=>setTimeout(r,500))}
+   if(!found)throw new Error('SMART_NOTE_PERSISTENCE_NOT_OBSERVABLE');
+   state.innerHTML='CAPTURED · PERSISTED · EVENT '+esc(eventId)+' · RECEIPT '+esc(receiptId||'RETURNED_BY_RECEIVER');
+   state.classList.add('naya-capture-proof');
+   await new Promise(r=>setTimeout(r,500));
+   location.href='/feed?event_id='+encodeURIComponent(eventId);
+  }catch(e){state.textContent='CAPTURE BLOCKED · '+String(e?.message||e);submit.disabled=false}
+ };
+ title.focus();
+}
+function boot(){
+ style();
+ const top=document.querySelector('.top');
+ if(top&&!document.querySelector('[data-testid="capture-smart-note"]')){
+  const b=document.createElement('button');b.type='button';b.className='naya-capture-button';b.dataset.testid='capture-smart-note';b.textContent='＋ CAPTURE SMART NOTE';b.onclick=openCapture;
+  top.querySelector('.status')?.before(b)||top.appendChild(b);
+ }
+ document.addEventListener('click',e=>{
+  const page=e.target.closest?.('[data-page="notes"]');if(page){e.preventDefault();e.stopImmediatePropagation();openCapture()}
+ },true);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+new MutationObserver(boot).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
 </body>
 </html>
