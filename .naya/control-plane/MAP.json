@@ -220,5 +220,8 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation."
+  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
+  "current_next_action": {
+    "action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries."
+  }
 }
