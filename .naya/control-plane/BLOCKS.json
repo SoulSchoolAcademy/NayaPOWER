@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
+    "next_action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary.",
     "next_actions": [
-      "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary."
+      "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,7 +57,7 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "GAP-002, the complete human journey, and the direct Smart Feed runtime API boundary are now verified. The next highest-value frontier is consolidated adversarial acceptance.",
+    "next_action_reason": "Canonical Hub deployment/cache-identity boundary is now verified at run 35784147783. The remaining authorized frontier is consolidated adversarial acceptance, blocked only by Desktop Commander transport.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
@@ -91,7 +91,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
+    "next_action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary.",
     "completion": "Complete the adversarial production acceptance matrix and then final production parity/readiness reconciliation."
   },
   "last_next_action_cycle": {
