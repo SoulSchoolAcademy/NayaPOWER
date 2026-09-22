@@ -99,7 +99,7 @@ jobs:
             proof.checks.smart_feed_projection='PASS';
             mark('SMART_FEED_RESULT_VISIBLE');
 
-            await page.screenshot({path:'golden-path-after-capture.png',fullPage:true});
+            try { await page.screenshot({path:'golden-path-after-capture.png',fullPage:true,timeout:5000}); } catch (error) { mark('CAPTURE_SCREENSHOT_NON_BLOCKING',{error:String(error)}); }
 
             await page.reload({waitUntil:'networkidle',timeout:60000});
             await page.waitForTimeout(1500);
@@ -109,7 +109,7 @@ jobs:
             proof.checks.reload_retrieval='PASS';
             mark('RELOAD_RETRIEVAL_VERIFIED');
 
-            await page.screenshot({path:'golden-path-after-reload.png',fullPage:true});
+            try { await page.screenshot({path:'golden-path-after-reload.png',fullPage:true,timeout:5000}); } catch (error) { mark('RELOAD_SCREENSHOT_NON_BLOCKING',{error:String(error)}); }
 
             const eventIds=await page.locator('[data-event-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-event-id')).filter(Boolean));
             const eventTextMatch=(await page.locator('body').innerText()).match(/Event ID:\s*([0-9a-f-]{36})/i);
