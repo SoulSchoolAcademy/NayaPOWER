@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Record the result and leave one successor action.",
+    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
     "next_actions": [
-      "Record the result and leave one successor action."
+      "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -53,8 +53,8 @@
     "current_frontier": {
       "active_block": "COMPUTATION-EFFICIENCY-P1",
       "priority": "P1",
-      "next_action": "Verify outcome quality/provenance/authority are not degraded.",
-      "completion": "Verify the measured compounding result preserves outcome quality, provenance, and authority."
+      "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+      "completion": "Defensible avoided computation requires a causal retained artifact produced by Cycle A, followed by matched Cycle B reuse and verified outcome preservation."
     }
   },
   "status_vocabulary": [
@@ -81,8 +81,8 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Record the result and leave one successor action.",
-    "completion": "Project Intelligence current-head cold successor proof is verified; next completion boundary is human-facing whole-journey acceptance with evidence."
+    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "completion": "Complete the causal paired benchmark and verify outcome quality, provenance, authority, and counterfactual validity."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
@@ -96,6 +96,6 @@
       "NEW_NEXT_ACTION"
     ],
     "execution_scope": "Repository control-plane execution by Naya; GitHub Actions trigger surface is installed for future independent re-execution.",
-    "successor_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+    "successor_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
   }
 }
