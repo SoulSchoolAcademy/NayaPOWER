@@ -291,7 +291,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+    "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
     "completion": "HUMAN JOURNEY LIVE VERIFIED; next frontier is consolidated adversarial acceptance."
   },
   "reconciliation": {
@@ -397,5 +397,6 @@
     ],
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
-  }
+  },
+  "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
 }
