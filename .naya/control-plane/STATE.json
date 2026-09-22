@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T23:51:12.971Z",
-    "observed_head": "6511b22c4bb07bac63b2a435afdcd471a6d595ea",
+    "recorded_at": "2026-09-22T23:53:31.741Z",
+    "observed_head": "87d3cc1283323d27cc26b83c384722b32cd12edc",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -19,7 +19,7 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 - NAYA EXECUTION CONTINUITY + CANONICAL HUB AUTHORITY",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "CANONICAL-RELEASE-SYNTAX",
+  "current_block": "CANONICAL-RELEASE-CHECKOUT",
   "current_block_status": "IN_PROGRESS",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -405,7 +405,7 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
+    "action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "current_action_attempt": {
