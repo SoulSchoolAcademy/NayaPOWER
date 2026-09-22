@@ -58,19 +58,19 @@ if(!auth.authenticated||auth.user_id!==A.user.id) throw new Error("BROWSER_AUTH_
 
 const title="Wave A canonical Smart Note "+Date.now();
 const content="Protected approved Hub browser proof "+crypto.randomUUID()+" — Smart Note must become one canonical event, persist, retrieve, and survive reload.";
-const noteButton=page.locator('button[data-naya-surface="feed"]').first();
-await page.locator('button[data-naya-surface="today"]').first().click(); await page.waitForTimeout(200); const noteButton=page.locator('button[data-naya-surface="feed"]').first(); await noteButton.click();
-const dialog=page.locator(".nc-modal").last();
-await dialog.waitFor({state:"visible",timeout:10000});
-await dialog.locator("#nc-title").fill(title);
-await dialog.locator("#nc-content").fill(content);
-await dialog.locator("#nc-save").click();
-await page.waitForFunction(()=>/PERSISTED · EVENT [^ ·]+ · RECEIPT /.test(document.querySelector(".nc-modal #nc-state")?.textContent||""),null,{timeout:30000});
-const noteState=await dialog.locator("#nc-state").textContent();
+const captureButton=page.locator('[data-testid="capture-smart-note"]').first();
+if(!(await captureButton.count())) throw new Error("CANONICAL_CAPTURE_BUTTON_MISSING");
+await captureButton.click();
+const captureTitle=page.locator('#nayaCaptureTitle');
+const captureContent=page.locator('#nayaCaptureContent');
+const captureSubmit=page.locator('#nayaCaptureSubmit');
+const captureStatus=page.locator('[data-testid="smart-note-capture-status"]');
+await captureTitle.fill(title); await captureContent.fill(content); await captureSubmit.click();
+await page.waitForFunction(()=>/CAPTURED · PERSISTED · EVENT [^ ·]+ · RECEIPT /.test(document.querySelector('[data-testid="smart-note-capture-status"]')?.textContent||''),null,{timeout:30000});
+const noteState=await captureStatus.textContent();
 const eventId=noteState.match(/EVENT ([^ ·]+)/)?.[1]||"";
 const receiptId=noteState.match(/RECEIPT ([^ ·]+)/)?.[1]||"";
 if(!eventId||!receiptId) throw new Error("SMART_NOTE_RECEIPT_NOT_PROVEN:"+noteState);
-
 const runtimeFeed=await page.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:"personal",limit:50}));
 const items=Array.isArray(runtimeFeed?.items)?runtimeFeed.items:[];
 const exact=items.find(x=>x.event_id===eventId);
