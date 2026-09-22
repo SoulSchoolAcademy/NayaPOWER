@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:53:37.057669+00:00",
+  "generated_at": "2026-09-22T19:19:31.464Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,19 +12,19 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "06849c42ccedc100111ec23e5075cabe1a7a8a6e",
+    "live_head": "LIVE_AT_EXECUTION_TIME",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements."
+    "state_block": "HUMAN-JOURNEY-P2",
+    "block_next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
-    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block": "HUMAN-JOURNEY-P2",
     "active_block_status": "ACTIVE"
   },
   "current_intelligence": {
@@ -67,28 +67,22 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Selected from the verified maximum-value execution order after causal computation-compounding proof.",
+    "reason": "The canonical Hub readiness inventory identifies shell/source/build/runtime ownership as the first deterministic boundary.",
     "acceptance": [
-      "OPEN the canonical Hub in the real user-facing environment.",
-      "UNDERSTAND the current intelligence and activity projection.",
-      "NAVIGATE across required Hub surfaces.",
-      "SEARCH for existing intelligence.",
-      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
-      "SAVE it durably.",
-      "SEE the result in the canonical projection.",
-      "RELOAD and recover the same result.",
-      "FIND it again through authorized retrieval.",
-      "UNDERSTAND the evidence/provenance displayed with it.",
-      "CONTINUE with one authorized next action from the recovered state."
+      "Identify the exact source/build/runtime chain serving the canonical Hub.",
+      "Establish exactly one active shell owner without deleting historical evidence.",
+      "Add/execute deterministic acceptance that detects competing rendered shell ownership.",
+      "Record source/runtime identity and the acceptance result.",
+      "Update the baton and leave exactly one successor action."
     ],
-    "verification": "Independently observe the live Hub journey, verify durable result and evidence, reload/retrieve it fresh, and leave exactly one successor action."
+    "verification": "Independently inspect the source, build/deployment path, and live DOM/runtime; fail if competing shell ownership remains ambiguous."
   },
   "successor_prompt": {
-    "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
-    "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
+    "rule": "Read README-FIRST.md and the canonical baton before consequential execution.",
+    "prompt": "Restore live NayaPOWER state from BATON.json, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only GAP-001, independently verify source/build/runtime shell ownership, record what changed and remains unknown, rebuild the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not ask Shawn to reconstruct repository state. Do not begin broad visual redesign before shell ownership is reconciled. Do not treat route/text selectors as visual or causal proof."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
