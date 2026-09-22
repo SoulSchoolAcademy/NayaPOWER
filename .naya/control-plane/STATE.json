@@ -187,9 +187,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
+  "single_next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
   "next_actions": [
-    "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+    "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -291,7 +291,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
+    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
     "completion": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden path PROVEN; next frontier is non-owner Project Intelligence retrieval isolation."
   },
   "reconciliation": {
@@ -398,7 +398,7 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
+  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
   "current_action_attempt": {
     "status": "PROVEN",
     "workflow_run": 35790762731,
