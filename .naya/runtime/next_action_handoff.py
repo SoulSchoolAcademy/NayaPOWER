@@ -9,6 +9,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
+from baton import build_baton, validate_baton, write_baton
+
 ROOT=Path(__file__).resolve().parents[2]
 STATE=ROOT/".naya/control-plane/STATE.json"
 BLOCKS=ROOT/".naya/control-plane/BLOCKS.json"
@@ -23,6 +25,8 @@ def load(path:Path)->dict[str,Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 def build_contract():
+    # BATON is the canonical continuation projection; its source owners remain STATE/BLOCKS/MAP/PROOF.
+    baton=build_baton(); validate_baton(baton)
     state=load(STATE); blocks=load(BLOCKS); active=blocks["active_block"]
     action=active.get("next_action")
     if not action: raise RuntimeError("CONTROL_PLANE_HAS_NO_SINGLE_NEXT_ACTION")
@@ -108,6 +112,8 @@ def execute_cycle():
       "source_commit":live_head(),"created_at":datetime.now(timezone.utc).isoformat()
     }
     RECEIPT.write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
+    # Rebuild after the canonical project update so the baton never points at the prior action.
+    write_baton()
     return receipt
 
 def main():
