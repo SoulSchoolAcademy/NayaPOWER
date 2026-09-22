@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
+    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
     "next_actions": [
-      "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+      "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -91,7 +91,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, without reopening proven Hub/GAP-001 or nine-dimension proofs.",
+    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
     "completion": "GAP-001 closed: one production Hub shell owner is established, exact source/build/runtime identity is proven at the deployed source scope, and the human Smart Note golden path passed.",
     "status": "PROVEN"
   },
@@ -194,7 +194,7 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
   "current_attempt": {
     "status": "PROVEN",
     "workflow_run": 35790762731,
