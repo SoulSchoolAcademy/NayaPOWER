@@ -58,7 +58,7 @@ jobs:
             await page.getByRole('button',{name:'ENTER NAYANET'}).click(); mark('IDENTITY_SUBMITTED'); await page.waitForTimeout(1500);
             await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000}); mark('AUTH_ADAPTER_READY');
             await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000}); mark('AUTHENTICATED');
-            await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000}); mark('HUB_LOADED',{url:page.url(),title:await page.title(),marker:await page.locator('meta[name="nayanet-canonical-marker"]').getAttribute('content').catch(()=>null),body:((await page.locator('body').innerText().catch(()=>''))||'').slice(0,300)});
+            await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000}); await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000}); mark('HUB_LOADED',{url:page.url(),title:await page.title(),marker:await page.locator('meta[name="nayanet-canonical-marker"]').getAttribute('content').catch(()=>null),body:((await page.locator('body').innerText().catch(()=>''))||'').slice(0,300)});
             await page.locator('[data-shell-owner="AppShellV3"]').waitFor({state:'visible',timeout:30000}); const shell=await page.locator('[data-shell-owner="AppShellV3"]').count(); if(shell!==1)throw new Error('CANONICAL_REACT_SHELL_MISSING'); mark('CANONICAL_REACT_SHELL_VISIBLE');
             const runtime=await page.evaluate(()=>({runtime:!!window.NayaAssistantRuntime,auth:window.NayaAssistantRuntime?.snapshot?.()})); if(!runtime.runtime||!runtime.auth?.authenticated)throw new Error('HUB_RUNTIME_NOT_AUTHENTICATED:'+JSON.stringify(runtime)); mark('RUNTIME_AUTHENTICATED');
             const captureButton=page.getByTestId('capture-smart-note'); await captureButton.waitFor({state:'visible',timeout:30000}); mark('CAPTURE_CONTROL_VISIBLE');
@@ -73,7 +73,7 @@ jobs:
             if(!eventId)throw new Error('CANONICAL_EVENT_ID_MISSING:'+JSON.stringify(result));
             if(!tx?.id)throw new Error('TRANSACTION_ID_MISSING');
             mark('CANONICAL_EVENT_ID_RETURNED',{eventId,transactionId:tx.id});
-            await page.reload({waitUntil:'networkidle',timeout:60000}); mark('PIS_RELOAD_AFTER_CAPTURE');
+            await page.reload({waitUntil:'domcontentloaded',timeout:60000}); await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000}); mark('PIS_RELOAD_AFTER_CAPTURE');
             const persistenceDiagnostic=await page.evaluate(async({eventId})=>{
               const runtime=window.NayaAssistantRuntime;
               const snapshot=runtime?.snapshot?.()||null;
@@ -97,13 +97,13 @@ jobs:
             if(!mappedJson.mapped_event_ids?.includes(eventId))throw new Error('PIS_INDEX_ROW_TO_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,mappedJson}));
             const responseHasEvent=pisNetwork.some(trace=>Array.isArray(trace.rows)&&trace.rows.some(row=>row.metadata_event_id===eventId||row.source_id===eventId));
             if(!responseHasEvent)throw new Error('PIS_BROWSER_RESPONSE_EVENT_ID_MISSING:'+JSON.stringify({eventId,pisNetwork}));
-            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'networkidle',timeout:60000});
+            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'domcontentloaded',timeout:60000});
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
             await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
             const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
             if(!rendered.some(x=>x.event_id===eventId))throw new Error('EXACT_EVENT_NOT_RENDERED_IN_FEED:'+JSON.stringify({eventId,rendered}));
             mark('EXACT_EVENT_RENDERED',{eventId});
-            await page.reload({waitUntil:'networkidle'}); mark('FEED_RELOADED');
+            await page.reload({waitUntil:'domcontentloaded',timeout:60000}); mark('FEED_RELOADED');
             await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
             const restored=await page.locator('[data-event-id="'+eventId+'"]').evaluate(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')}));
             if(restored.event_id!==eventId)throw new Error('RELOAD_EVENT_IDENTITY_LOST:'+JSON.stringify({eventId,restored}));
