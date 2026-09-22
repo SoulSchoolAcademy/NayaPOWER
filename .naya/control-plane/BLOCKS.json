@@ -65,14 +65,7 @@
       "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
     },
     "completion": "HUMAN JOURNEY LIVE VERIFIED",
-    "proof_receipt": "NAYA/ACTIVITY/2026/09/22-GAP-002-HUMAN-JOURNEY-SMARTFEED-VERIFIED.md",
-    "project_intelligence_predecessor": "PROJECT-INTELLIGENCE-PI-01",
-    "project_intelligence_predecessor_proof": {
-      "source": ".naya/project-intelligence/PROJECT-INTELLIGENCE-PI-01-PROOF.json",
-      "workflow_run": 35772925264,
-      "status": "VERIFIED",
-      "claim": "PI-01 predecessor proven and inherited by current frontier"
-    }
+    "proof_receipt": "NAYA/ACTIVITY/2026/09/22-GAP-002-HUMAN-JOURNEY-SMARTFEED-VERIFIED.md"
   },
   "status_vocabulary": [
     "INTENDED",
