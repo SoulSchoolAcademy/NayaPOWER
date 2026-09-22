@@ -229,6 +229,29 @@ async function restore(client: any, userId: string) {
   };
 }
 
+async function coldRestore(client: any, userId: string) {
+  const restored = await restore(client, userId);
+  const requiredQuestions = Array.from({ length: 14 }, (_, i) => `${i + 1}_`);
+  const missing = requiredQuestions.filter((prefix) =>
+    !Object.keys(restored).some((key) => key.startsWith(prefix))
+  );
+  if (missing.length) throw new Error("COLD_RESTORE_CONTRACT_INCOMPLETE:" + missing.join(","));
+  const metadata = restored.QUESTION_METADATA?.items ?? {};
+  const missingMetadata = requiredQuestions.filter((prefix) =>
+    !Object.keys(metadata).some((key) => key.startsWith(prefix))
+  );
+  if (missingMetadata.length) throw new Error("COLD_RESTORE_METADATA_INCOMPLETE:" + missingMetadata.join(","));
+  return {
+    schema: "NAYANET_COLD_NAYA_RESTORE_V1",
+    status: "COLD_RESTORE_VERIFIED",
+    mandatory_pre_action: true,
+    question_count: 14,
+    questions: restored,
+    contract: ".naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md",
+    rule: "Resolve canonical Project Intelligence before consequential Universal Agent Interface action."
+  };
+}
+
 async function retrieve(client: any, userId: string, body: any) {
   const q = String(body.query ?? "").trim();
   if (!q) throw new Error("QUERY_REQUIRED");
@@ -599,6 +622,7 @@ Deno.serve(async (req) => {
     let result:any;
     switch(action) {
       case "restore": result=await restore(client,user.id); break;
+      case "cold_restore": result=await coldRestore(client,user.id); break;
       case "retrieve": result=await retrieve(client,user.id,body); break;
       case "reconcile": result=await reconcile(client,user.id); break;
       case "understand": result=await understand(client,user.id,body); break;
