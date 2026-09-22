@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T22:10:30Z",
+  "generated_at": "2026-09-22T22:22:54.836Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "1f5fe62c56adecca9231375d4854993649472150",
+    "live_head": "86eb8293b2d46704f234aa82d889028e89b70857",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
+    "block_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -67,15 +67,15 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "next_action": {
-    "action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
+    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main at execution time. Preserve the proven nine-dimension matrix, Project Intelligence owner retrieval/render, and GAP-001 Hub source/build/runtime + human golden-path evidence. Execute only the fresh non-owner retrieval attempt against packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda; independently verify that no private packet/event is returned and that owner receipt d1cf85ec-e470-436a-8f8e-ae13fc011802 is unchanged. Then record the result and leave one successor action.",
-    "do_not": "Do not alter the proven owner receipt. Do not redesign the Hub. Do not reopen proven matrix or source parity claims without new evidence."
+    "prompt": "Resolve live main. Preserve the nine-dimension matrix, GAP-001, owner PI retrieval/render, non-owner isolation, and this fresh Smart Note learning proof. Execute only the later-decision influence boundary.",
+    "do_not": "Do not reopen proven boundaries. Do not treat the failed workflow verifier syntax as a runtime learning failure. Do not claim workflow-level PASS beyond the independently verified runtime boundary."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -89,35 +89,34 @@
   },
   "execution_attempt": {
     "status": "PROVEN",
-    "workflow_run": 35790762731,
-    "job_id": 106958397659,
-    "source_head": "1f5fe62c56adecca9231375d4854993649472150",
-    "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
-    "owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
-    "non_owner_id": "04ebccbd-9085-4451-ba21-9493705e3090",
-    "retrieval_http_status": 200,
-    "non_owner_events_count": 0,
-    "private_packet_returned": false,
-    "canonical_event_returned": false,
-    "owner_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
-    "owner_event_id": "241159af-a285-4fc3-b322-c86797818548",
-    "owner_transaction_id": "154264ea-5e28-4fcc-8c70-8b5b640a0ce7",
-    "owner_receipt_unchanged": true,
-    "owner_state": {
-      "persisted": true,
-      "indexed": true,
-      "projected": true,
-      "retrieved": true,
-      "rendered": true,
-      "verified_at": "2026-09-22 21:46:21.865+00"
-    },
+    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_LEARNING_RETRIEVAL",
+    "workflow_run": 35791868426,
+    "job_id": 106962015427,
+    "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+    "owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+    "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+    "evidence_id": "06fefcfb-64d0-4c40-a1c3-f51491f04d0b",
+    "capture_receipt_id": "127a437a-8841-4699-b89c-e3da38be9a1d",
+    "runtime_observation": "Smart Note captured through canonical Hub; learning_candidate created; learning_verify promoted evidence to ACTIVE; learning_retrieve returned the exact ACTIVE evidence.",
     "independent_verification": "PASS",
-    "verification_source": "Supabase managed SQL read after runtime execution",
-    "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
-    "verification_details": {
-      "runtime_observation": "HTTP 200; ok=true; events_count=0; packet_returned=false; response_keys=[ok,result]",
-      "fresh_identity_not_owner": true,
-      "owner_receipt_independent_check": "PASS"
-    }
+    "independent_verification_source": "Supabase managed SQL read after workflow runtime",
+    "independently_verified": {
+      "learning_status": "ACTIVE",
+      "learning_member_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+      "learning_source_event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+      "event_owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+      "event_project_id": "NayaNET",
+      "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+      "verification_method": "MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL"
+    },
+    "workflow_harness_note": "Workflow job conclusion FAILED after the managed-runtime boundary completed because its independent-verification Node heredoc used require() with top-level await, producing ERR_AMBIGUOUS_MODULE_SYNTAX. This is proof-harness failure only; the persisted runtime result was independently verified outside the failed step.",
+    "causal_repairs": [
+      {
+        "defect": "Browser page.evaluate() failed to fetch the compound-intelligence Edge Function.",
+        "repair": "Moved managed-runtime Edge Function invocation to the GitHub runner's Node fetch while retaining the authenticated session token.",
+        "repair_source_commit": "76a54f5fd508595072d532ffe8b6fcad9374ff17"
+      }
+    ],
+    "final_truth_boundary": "The Smart Note → learning_candidate → learning_verify → learning_retrieve runtime boundary is PROVEN for this fresh owner and source scope. The workflow's final independent-verifier step is not itself passing and must not be described as a successful workflow job."
   }
 }
