@@ -1,0 +1,120 @@
+{
+  "schema": "naya/computation-efficiency-baseline/v1",
+  "status": "MEASURED",
+  "cycle": "B_RETAINED_VERIFIED_INTELLIGENCE_REUSE",
+  "frozen_task": "Recover mission, active block, and exactly one canonical next action from STATE + BLOCKS + MAP + PROOF without reading BATON.json or conversation history.",
+  "frozen_task_sha256": "8f22ea0516988dfbc84034d9f54c09a1884515dc440cebbd6f977af2ac0ef35c",
+  "conversation_memory": "EMPTY",
+  "retained_task_specific_intelligence_used": true,
+  "retained_intelligence": {
+    "source": "COMPUTATION-EFFICIENCY-CYCLE-A-BASELINE.json",
+    "status": "VERIFIED",
+    "retained_intelligence_chars": 475,
+    "objects": 1,
+    "reusable_fields": {
+      "mission": true,
+      "active_block": true,
+      "active_block_status": true
+    },
+    "reusable_field_count": 3,
+    "canonical_source_revalidation_required": true,
+    "retained_next_action_reused": false,
+    "reason": "Prior next action was stale after Cycle A; current next action was independently verified from STATE + BLOCKS."
+  },
+  "source_revalidation": {
+    "canonical_files_read": 4,
+    "current_context_chars": 87530,
+    "note": "Character count used because the execution environment did not expose a UTF-8 byte counter; Cycle A byte measurement remains the authoritative byte baseline."
+  },
+  "resource_measurements": {
+    "context_objects": {
+      "value": 4,
+      "state": "MEASURED"
+    },
+    "context_chars": {
+      "value": 87530,
+      "state": "MEASURED"
+    },
+    "retained_intelligence_objects": {
+      "value": 1,
+      "state": "MEASURED"
+    },
+    "retained_intelligence_chars": {
+      "value": 475,
+      "state": "MEASURED"
+    },
+    "retrieval_calls": {
+      "value": 0,
+      "state": "MEASURED",
+      "note": "Connector reads occurred before timed reconstruction segment."
+    },
+    "search_calls": {
+      "value": 0,
+      "state": "MEASURED"
+    },
+    "tool_calls": {
+      "value": 0,
+      "state": "MEASURED",
+      "note": "No calls inside timed reconstruction segment."
+    },
+    "model_calls": {
+      "value": 0,
+      "state": "MEASURED"
+    },
+    "tokens": {
+      "value": null,
+      "state": "NOT_CLAIMED"
+    },
+    "wall_time_ms": {
+      "value": 0,
+      "state": "MEASURED",
+      "note": "Timer resolution produced 0 ms; do not interpret as zero computational cost."
+    },
+    "human_time_ms": {
+      "value": null,
+      "state": "UNKNOWN"
+    },
+    "retries": {
+      "value": 0,
+      "state": "MEASURED"
+    },
+    "verification_calls": {
+      "value": 1,
+      "state": "MEASURED"
+    },
+    "duplicate_context_objects": {
+      "value": 0,
+      "state": "MEASURED"
+    }
+  },
+  "reconstruction": {
+    "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block_status": "ACTIVE",
+    "next_action_count": 1,
+    "next_action": "Run the same task with retained verified intelligence reuse."
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "checks": [
+      "repository identity",
+      "MAP canonical",
+      "PROOF canonical",
+      "STATE/BLOCK active block equality",
+      "STATE/BLOCK exact next-action equality",
+      "exactly-one-next-action invariant",
+      "retained intelligence reused only where still current",
+      "stale prior next action not reused"
+    ]
+  },
+  "comparison": {
+    "cycle_a_context_bytes": 87934,
+    "cycle_b_context_chars": 87530,
+    "cycle_a_wall_time_ms": 1.148,
+    "cycle_b_wall_time_ms": 0,
+    "directly_observed_avoided_computation": "NOT_CLAIMED",
+    "interpretation": "Cycle B demonstrated safe retained-intelligence reuse while still revalidating canonical current truth. No token, dollar, or total-computation savings claim is made."
+  },
+  "source_head": "RESOLVE_LIVE_GIT_HEAD_AT_EXECUTION",
+  "created_at": "2026-09-22T18:32:02.590Z"
+}
