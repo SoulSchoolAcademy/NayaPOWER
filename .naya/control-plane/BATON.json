@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "17b8091b56b3472b6188d83e30c0322bd1d6c512",
+    "live_head": "930f4147dc2b135d48c0e9ab55d9c333a743ca37",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -67,19 +67,19 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
+    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
   },
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+    "action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Fresh managed-runtime Project Intelligence retrieval/render proof passed at run 35789192530 with independent receipt verification.",
-    "verification": "Preserve run 35789192530 and nine-dimension run 35787965745 as scoped proof; do not reopen either without new evidence."
+    "reason": "GAP-001 Hub shell/source/build/runtime and human golden-path proof is complete at the exact deployed source scope.",
+    "verification": "Preserve the GAP-001 proof and prior nine-dimension/Project Intelligence home-run proofs; do not reopen without new evidence."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main at execution time. Preserve the proven nine-dimension and Project Intelligence retrieval/render evidence. Then close GAP-001 by establishing one canonical Hub shell owner and proving source→build→runtime identity before broader visual/functionality acceptance.",
-    "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the proven matrix. Do not reopen the matrix without fresh evidence."
+    "prompt": "Resolve live main at execution time. Preserve the proven nine-dimension matrix, Project Intelligence owner retrieval/render, and GAP-001 Hub source/build/runtime + human golden-path evidence. Execute only the fresh non-owner retrieval attempt against packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda; independently verify that no private packet/event is returned and that owner receipt d1cf85ec-e470-436a-8f8e-ae13fc011802 is unchanged. Then record the result and leave one successor action.",
+    "do_not": "Do not alter the proven owner receipt. Do not redesign the Hub. Do not reopen proven matrix or source parity claims without new evidence."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
