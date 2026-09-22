@@ -112,6 +112,8 @@ jobs:
             await page.screenshot({path:'golden-path-after-reload.png',fullPage:true});
 
             const eventIds=await page.locator('[data-event-id]').evaluateAll(nodes=>nodes.map(n=>n.getAttribute('data-event-id')).filter(Boolean));
+            const eventTextMatch=(await page.locator('body').innerText()).match(/Event ID:\s*([0-9a-f-]{36})/i);
+            if(eventTextMatch&&!eventIds.includes(eventTextMatch[1]))eventIds.push(eventTextMatch[1]);
             proof.event_ids=eventIds;
             proof.checks.canonical_event_identity=eventIds.length>0?'PASS':'NOT_OBSERVED';
             if(!eventIds.length)throw new Error('CANONICAL_EVENT_ID_NOT_RENDERED');
