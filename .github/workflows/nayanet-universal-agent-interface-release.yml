@@ -129,11 +129,10 @@ jobs:
         run: |
           set -euo pipefail
           test -n "${SUPABASE_ANON_KEY}"
-          auth_key=(-H "apikey: ${SUPABASE_ANON_KEY}" -H "Content-Type: application/json")
-          auth_json=$(curl --fail --silent --show-error -X POST "${SUPABASE_URL}/auth/v1/signup" "${auth_key[@]}" -d '{}')
+          auth_json=$(curl --silent --show-error -X POST "${SUPABASE_URL}/auth/v1/signup" -H "apikey: ${SUPABASE_ANON_KEY}" -H "Content-Type: application/json" -d '{}')
           access_token=$(printf '%s' "${auth_json}" | jq -r '.access_token // empty')
           test -n "${access_token}"
-          auth=(-H "Authorization: Bearer ${access_token}" -H "Content-Type: application/json")
+          auth=(-H "Authorization: Bearer ${access_token}" -H 'Content-Type: application/json')
           init_status=$(curl --silent --output /tmp/mcp_init.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}')
           echo "MCP_INIT_STATUS=${init_status}"
           test "${init_status}" = "200"
