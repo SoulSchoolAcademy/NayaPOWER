@@ -69,58 +69,57 @@ Each operating day has its own feed file. Previous days remain available for aud
 
 ## 🎯 ONE BEST NEXT ACTION
 
-**STEP 4/P004 — CLASSIFICATION PASS: classify all 61 open issues (50 unclassified), every remaining workflow (35), and the two unresolved authority boundaries (A1 `.naya/activity/` role; A2 Assistant-lane) into CANONICAL / ACTIVE_DEPENDENCY / HISTORICAL_INTELLIGENCE / SUPERSEDED, turning the GitHub optimization gate GREEN; then bind Smart Notes to Sessions/Activities (contract priority #3).**
+**P0-01 / GAP-002 — PROVE THE CANONICAL SMART NOTE → INTELLIGENT BLOCK → SMART FEED GOLDEN PATH.**
 
-This is the single active continuation — it directly attacks Readiness + Organization + Recall + Activity + Project dimensions. Do not create a second competing next action.
+The canonical readiness inventory is:
+`.naya/TEAM-NAYA/2026-09-22-HUB-READINESS-INVENTORY.md`
 
-Front door: [00-NAYA-OPERATING-INDEX.md](../../00-NAYA-OPERATING-INDEX.md) (canonical Cold-Naya Operating Index — links to truth, never copies).
+The current mission update is:
+`.naya/TEAM-NAYA/2026-09-22-HUB-READINESS-SYSTEMS-UPDATE.md`
 
-## 🧭 NEXT NAYA — READY TO RUN
+### Exact pass condition
 
-```text
-🏎️ NAYAPOWER — YOU'RE IT
+**SMART NOTE → INTELLIGENT BLOCK → INDEX → SMART FEED → RELOAD → FRESH RETRIEVAL → VISIBLE IDENTITY/TRUTH/AUTHORITY/PROVENANCE/LIFECYCLE/INTEGRITY/EVIDENCE → ONE AUTHORIZED CONTINUATION → RECEIPT**
 
-MISSION:
-STEP 4 / P004 — the CLASSIFICATION PASS: turn the GitHub optimization gate GREEN and bind Smart Notes to Sessions/Activities (contract priority #3).
+The proof must use a fresh creation, not a historical fixture, and must prove that every displayed Block field comes from the canonical persisted object rather than UI invention.
 
-CURRENT KNOWN STATE:
-Real Session runtime VERIFIED (OPEN→preflight→bound Activity→COMPLETED; integrity PASS; first real Sessions recorded on disk). STEP 1 auto-emission VERIFIED (49/49 adversarial). STEP 2 preflight gate TESTED (adjudication pending). 10 governed suites GREEN (159 passed, 4 xfailed); contract validator GREEN; canonical index event_count 41. Cold-Naya Operating Index (00-NAYA-OPERATING-INDEX.md) is the front door; START-HERE points to it. GitHub optimization gate RED_UNTIL_CLASSIFICATION_COMPLETE (61 issues, 11 classified, 50 unclassified; 35 workflows here; authority conflicts A1 `.naya/activity/` role and A2 Assistant-lane).
+### Current scorecard
 
-RESOURCE LAW:
-Do NOT invoke GitHub Actions merely to record progress or pass the baton. Direct-write the repo; use Actions only for independent leverage that actually changes a decision.
+- Superbrain / Compound Intelligence Engine: **8.5/10 — RED**
+- Governance / Setup: **9.0/10 — RED**
+- Canonical Hub: **9.0/10 — RED**
+- Cold Naya / Continuity: **9.0/10 — RED**
+- Sender: **9.0/10 — RED**
+- Receiver: **8.5/10 — RED**
+- Universal Agent Interface: **7.5/10 — RED**
+- Computational Compounding: **7.5/10 — RED**
+- Broad-use readiness: **NOT READY**
 
-ONE BEST NEXT ACTION:
-Classify every open issue, workflow, and authority entry into the ten gate statuses (CANONICAL/ACTIVE_DEPENDENCY/PRODUCT_ASSET/HISTORICAL_INTELLIGENCE/REFERENCE/DUPLICATE/SUPERSEDED/ORPHAN/UNKNOWN/BLOCKED); resolve or explicitly record A1 and A2; then bind the machine Smart-Note store to origin Session/Activity.
+### Protected boundaries
 
-EXECUTE:
-1. Fetch the complete open-issue population; classify each (number→status→role→next) into a machine-readable classification record.
-2. Inventory + classify every .github/workflows entry (35) against ONE canonical authority.
-3. Resolve/record A1 (.naya/activity/ role) and A2 (Assistant-lane vs preserved 509 fail-closed boundary — never guess).
-4. Bind machine Smart Notes to Sessions/Activities; add the temporal day/project retrieval index.
-5. Prove gate-GREEN inputs; run governed suites; record the next canonical event; leave one torch.
+- `NAYANET/HUB/` is the canonical Hub source.
+- `2026 09 17 NAYANET HUB.html` is protected visual reference only.
+- One shell, one navigation authority, one Smart Feed renderer, one Intelligent Block renderer.
+- No permanent right sidebar.
+- Hub is a projection/action surface, never a second brain.
+- Supabase is managed persistence; ordinary users/agents do not bypass the governed runtime.
+- Unknown and blocked states are never green.
+- No retry without new information.
 
-SUCCESS CONDITION:
-Gate inputs fully classified → optimization gate GREEN; machine Smart-Note store non-empty with provenance; a cold Naya answers all 14 Operating-Index questions from one front door.
+### NEXT NAYA — TAG → YOU'RE IT
 
-TAG → YOU'RE IT → EXECUTE.
-```
+1. Read the canonical readiness inventory.
+2. Reconcile live `main` and current control-plane state.
+3. Run/inspect the canonical Smart Note golden-path proof.
+4. Stop at the first deterministic failure.
+5. Repair only that causal boundary.
+6. Rerun with new information.
+7. Verify the fresh Block projection after reload/retrieval.
+8. Record evidence and learning.
+9. Update Activity/control-plane/baton.
+10. Leave exactly one executable successor action.
 
-## 📌 CURRENT TRUTH
-
-- Repository: `SoulSchoolAcademy/NayaPOWER`
-- Branch: `naya/universal-execution-gate-v1` (in-flight governed work; not merged)
-- **Operating System front door: `00-NAYA-OPERATING-INDEX.md`** — canonical Cold-Naya Operating Index (14-question front door that LINKS to truth, never copies); START-HERE read order points to it first.
-- **Real Session runtime: `VERIFIED`** — sessions open at CLAIMED, record the approved preflight at EXECUTING, bind every auto-emitted Activity at VERIFIED, close at HANDED_OFF; `session_integrity` enforced. First real Sessions on disk: `NAYA-20260917-035249-0FE4` (primary) + `NAYA-20260917-035241-C251` (crash-recovery run superseded by the primary).
-- **P0-01 automatic emission: `VERIFIED`** — `transition("VERIFIED")` auto-emits and persists exactly one canonical Activity event bound to the execution `run_id` AND `session_id` via `canonical_event_store.create_or_replay`; `validate()` detects suppression, tamper, stale-run reuse, and run re-binding as integrity failures.
-- Independent adversarial verifier (STEP 1): **ACCEPT** (49/49 probe assertions; no repo files modified; real event store untouched).
-- **STEP 2 machine-enforced preflight gate: `IMPLEMENTED + TESTED`** — `transition("EXECUTING")` requires an approved classified 10-question preflight (`execution_preflight_gate.py`); missing/empty/partial, unknown authority, CONFLICTED, REQUIRES_HUMAN_AUTHORITY, UNKNOWN baseline, and invalid classification all refused fail-closed; `validate()` re-checks (tamper → "preflight gate integrity failure"); `model_tool_gateway.authorize` passes the preflight through. Independent adjudication pending.
-- Canonical evidence: `SE-20260916-193500-p001-universal-activity-gate`, `SE-20260916-200000-p001-preflight-handoff-contract`, `SE-20260917-030839-p001a-auto-emission-verified`, `SE-20260917-032003-p002-preflight-gate`, `SE-20260917-035249-activity-cl-p003-p004-session-index-*`, `SE-20260917-035241-activity-cl-p003-p004-session-index-*` (index event_count 41).
-- Governed test evidence: pytest on 10 governed files → **159 passed, 4 xfailed**; session closure 10/10; controller self-test PASS (Session lifecycle); contract validator GREEN (error_count 0).
-- Current daily feed: `SUPERBRAIN/NAYA-ACTIVITY/DAILY/2026-09-17.md`.
-- Next increment: STEP 4/P004 — **classification pass** (issues/workflows/authority A1+A2) to turn the GitHub optimization gate GREEN, then Smart Note→Session/Activity binding (torch `P004`; `P003` superseded).
-- Preflight/handoff contract: [V1](../AI-BOOT/NAYA-PREFLIGHT-AND-HANDOFF-CONTRACT-V1.md) — mandatory 100-question preflight + 30-question handoff for every substantive execution; machine enforcement landed at EXECUTING.
-- Pre-existing RED (out of scope): VALIDATION-REPORT timezone errors; legacy DAILY filenames; pre-broken full pytest collection.
-- Certification: `NOT CERTIFIED` for human-facing live Hub Activity Feed runtime.
+**Do not ask Shawn to reconstruct the project. Execute the established frontier.**
 
 ## 🔎 SMART EVIDENCE LINKS
 
