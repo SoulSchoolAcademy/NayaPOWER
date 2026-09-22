@@ -108,7 +108,7 @@
     }
   },
   "execution_map": {
-    "current_program": "P1 - MEASURED COMPUTATIONAL COMPOUNDING",
+    "current_program": "P2 - HUMAN JOURNEY LIVE VERIFICATION",
     "blocks": [
       "PI-01-INTENT",
       "PI-02-IDENTITY",
@@ -117,10 +117,11 @@
       "PI-05-RETRIEVAL-CURRENT-STATE",
       "PI-06-AUTHORITY-EXECUTION-VERIFICATION",
       "PI-07-LEARNING-UPDATE",
-      "PI-08-COLD-SUCCESSOR"
+      "PI-08-COLD-SUCCESSOR",
+      "HUMAN-JOURNEY-P2"
     ],
-    "active_block": "COMPUTATION-EFFICIENCY-P1",
-    "definition_of_done": "A fresh benchmark demonstrates claim-appropriate computational savings from retained verified intelligence while preserving or improving verified outcome quality, provenance, authority, and verification."
+    "active_block": "HUMAN-JOURNEY-P2",
+    "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
