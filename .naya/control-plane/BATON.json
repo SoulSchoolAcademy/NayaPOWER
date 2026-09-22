@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:19:47.679267+00:00",
+  "generated_at": "2026-09-22T18:24:20.018968+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "40ecf9b94f11fd1c4e7c2a7250d848c89912d3c7",
+    "live_head": "13368bfa179388ea5905aaa50135896d60e6dad9",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements."
+    "block_next_action": "Run the same task with retained verified intelligence reuse."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -67,7 +67,7 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "action": "Run the same task with retained verified intelligence reuse.",
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "acceptance": [

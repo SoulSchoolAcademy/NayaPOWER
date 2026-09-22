@@ -18,7 +18,7 @@
       "id": "COMPUTATION-EFFICIENCY-P1::NEXT",
       "actor": "Naya",
       "status": "AUTHORIZED",
-      "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "objective": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
       "reason": "The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
       "constraints": [
@@ -51,7 +51,7 @@
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
       "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "objective": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -81,8 +81,8 @@
       "post-execution canonical state",
       "successor handoff"
     ],
-    "generated_at": "2026-09-22T18:19:47.577857+00:00",
-    "source_commit": "40ecf9b94f11fd1c4e7c2a7250d848c89912d3c7"
+    "generated_at": "2026-09-22T18:24:19.947932+00:00",
+    "source_commit": "13368bfa179388ea5905aaa50135896d60e6dad9"
   },
   "execution": {
     "action_id": "COMPUTATION-EFFICIENCY-P1::NEXT",
@@ -108,13 +108,13 @@
     "updated_by": "next_action_handoff.py"
   },
   "new_next_action": {
-    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "action": "Run the same task with retained verified intelligence reuse.",
     "owner": "Naya",
     "source_of_truth": ".naya/control-plane/BLOCKS.json",
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
       "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+      "objective": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -139,6 +139,6 @@
       "Record the result and leave one successor action."
     ]
   },
-  "source_commit": "40ecf9b94f11fd1c4e7c2a7250d848c89912d3c7",
-  "created_at": "2026-09-22T18:19:47.587205+00:00"
+  "source_commit": "13368bfa179388ea5905aaa50135896d60e6dad9",
+  "created_at": "2026-09-22T18:24:19.957248+00:00"
 }
