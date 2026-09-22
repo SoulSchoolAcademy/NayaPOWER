@@ -76,8 +76,8 @@
     "verification": "Do not reopen or relabel the matrix proof without fresh evidence; the nine-dimension matrix is PROVEN at run 35787965745."
   },
   "successor_prompt": {
-    "prompt": "Resolve current live main 24e957997c7d2193697507ce0955599a4335a24c, then Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
-    "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the requested consolidated matrix. Do not claim PASS."
+    "prompt": "Resolve live main at execution time. Confirm the consolidated nine-dimension matrix remains PROVEN, then Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+    "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the proven matrix. Do not reopen the matrix without fresh evidence."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
