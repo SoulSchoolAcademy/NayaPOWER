@@ -153,3 +153,14 @@ Distillation and validation remain separate operations. Distillation simplifies 
 
 The next empirical boundary is a real **multi-source Block proof**: source bundle → Block → validation → JSON/Markdown/database/Hub projection → authorized retrieval → successor comprehension.
 
+
+
+## Multi-Source Intelligent Block Proof 001 — 2026-09-22
+
+**SUBSTRATE PROVEN / INTERFACE BOUNDARY OPEN.**
+
+A real Block was created from six existing NayaNET source components: three canonical repository artifacts plus three verified Project Intelligence events. The Block persisted in `public.nayanet_intelligent_blocks`, indexed in `public.nayanet_intelligence_index`, and emitted a canonical cognition/activity event with receipt `f6eaf6be-cf67-4f59-9180-fc182eafd6db`. Owner-scoped database retrieval was verified.
+
+The exact remaining boundary is **canonical runtime retrieval → fresh Hub observation → cold successor comprehension**. Do not mark the full chain PROVEN until that boundary has fresh evidence.
+
+Proof record: `NAYA/ACTIVITY/2026/09/22-MULTI-SOURCE-INTELLIGENT-BLOCK-PROOF-001.md`.
