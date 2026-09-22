@@ -98,3 +98,14 @@ Project Intelligence is no longer the blocking causal frontier at the recorded c
 
 The law remains:
 **Don't show that NayaPOWER was built. Show that I can use it.**
+
+
+## 2026-09-21 — Intelligent Block V1 boundary proven
+
+The existing Smart Note `intelligent_block` payload has now been promoted into first-class `public.nayanet_intelligent_blocks` persistence without creating a parallel event store. The existing canonical event identity is retained, evidence is linked to the Smart Note receipt, the Block projects into `nayanet_intelligence_index`, and authorized retrieval returns the same Block identity and source-event lineage.
+
+Proof artifact: `NAYA/ACTIVITY/2026/09/21-INTELLIGENT-BLOCK-V1-PROOF.md`
+
+Live proof Block: `b06846b3-49eb-45c1-8557-a986831f0d4c`
+
+Next boundary: idempotent replay/update, then a second real verified event → new Block → evidence → index → authorized retrieval proof. The existing AppShellV3 human-capture failure remains independent and is not promoted to pass.
