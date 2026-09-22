@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T21:19:17.548Z",
+  "generated_at": "2026-09-22T21:21:54.155Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "423ea6352d0637f71bb87dff5d90a442dd6cf7e8",
+    "live_head": "703e013a39df16d88485571e72a83e43df508348",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main."
+    "block_next_action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,22 +70,22 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main.",
+    "action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Exact-head adversarial preflight run 35785808063 failed before matrix execution at STATE_BLOCK_NEXT_ACTION_MISMATCH. The first causal boundary is control-plane coherence, not a runtime adversarial result.",
+    "reason": "The exact-head control-plane mismatch was repaired; fresh run 35785994422 now proves only the existing bridge adversarial subset. The nine-dimension matrix remains incomplete.",
     "acceptance": [
-      "STATE.current_next_action equals BLOCKS.current_frontier.next_action",
-      "canonical baton validates",
-      "all nine adversarial dimensions execute at exact source identity",
-      "independent receipt verification",
+      "all nine dimensions execute at one exact source identity",
+      "fresh receipts for each applicable dimension",
+      "independent verification of each receipt",
+      "no unauthorized persistence or privacy leakage",
       "complete Activity + control-plane reconciliation"
     ],
-    "verification": "Do not claim matrix PASS until a fresh receipt proves all nine dimensions."
+    "verification": "Do not claim consolidated PASS until all nine dimensions are freshly executed and independently verified."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Resolve exact live main 423ea6352d0637f71bb87dff5d90a442dd6cf7e8, reconcile STATE/BLOCK next-action coherence, validate BATON/control-plane construction, then execute the consolidated nine-dimension adversarial acceptance matrix; independently verify any fresh receipts; update Activity and control-plane evidence; leave exactly one successor action.",
-    "do_not": "Do not claim a nine-dimension matrix PASS. Do not reopen the verified Hub cache boundary without regression evidence. Do not redesign the Hub or create competing persistence, intelligence, or authority systems."
+    "prompt": "Resolve current live main 703e013a39df16d88485571e72a83e43df508348, execute the full consolidated nine-dimension adversarial matrix, independently verify each fresh receipt, update Activity and control-plane evidence, and leave exactly one successor action.",
+    "do_not": "Do not call the current bridge subset a consolidated nine-dimension pass. Do not redesign the Hub or create competing persistence, intelligence, or authority systems."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
