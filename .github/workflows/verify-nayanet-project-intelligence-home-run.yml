@@ -1,5 +1,6 @@
 name: Verify NayaNET Project Intelligence Home Run
 # PI-01 LIVE PROOF: canonical Hub render boundary repaired 2026-09-21
+# Fresh managed-runtime execution trigger 2026-09-22 — no workflow semantics changed.
 
 on:
   workflow_dispatch:
