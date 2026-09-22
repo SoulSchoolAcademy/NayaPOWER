@@ -180,6 +180,7 @@ function bind(){
  });
 }
 async function boot(){
+ if(location.pathname!=='/feed'&&!document.documentElement.dataset.nayaExplicitSmartFeed)return;
  if(!$('.feed'))return;
  if(document.documentElement.dataset[KEY]==='1')return;
  document.documentElement.dataset[KEY]='1';css();shell();bind();
