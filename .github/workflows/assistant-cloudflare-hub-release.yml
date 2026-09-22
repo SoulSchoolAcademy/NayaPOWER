@@ -61,7 +61,11 @@ jobs:
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
 
-      - name: Checkout exact canonical source          fetch-depth: 2
+      - name: Checkout exact canonical source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || github.sha }}
+          fetch-depth: 2
 
       - name: Enforce Naya session and merge-boundary lease
         shell: bash
