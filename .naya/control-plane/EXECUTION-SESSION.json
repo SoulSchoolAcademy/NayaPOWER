@@ -1,0 +1,51 @@
+{
+  "$schema": "naya/control-plane/execution-session/v1",
+  "session_id": "NAYA-20260922-CANONICAL-AUTHORITY-CONTINUITY-03",
+  "naya_id": "Naya",
+  "status": "CLOSED",
+  "parent_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
+  "authorized_action": "Harden the Naya execution boundary and lock Cloudflare production to NAYANET/HUB/index.html without changing downstream Hub journey behavior.",
+  "read_ack": {
+    "all_required_sources": true,
+    "sources": [
+      "README-FIRST.md",
+      ".naya/control-plane/BATON.json",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/PROOF.json",
+      ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
+      ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+      "NAYANET/HUB/index.html",
+      "2026 09 17 NAYANET HUB.html",
+      ".github/workflows/assistant-cloudflare-hub-release.yml"
+    ]
+  },
+  "execution_lease": {
+    "status": "ACQUIRED",
+    "exclusive": true,
+    "scope": "NayaPOWER main continuity + canonical Hub release authority"
+  },
+  "action_result": {
+    "verification": "PASS",
+    "evidence": [
+      "canonical source/reference normalized visual parity",
+      "alternate production authority identified and removed from release contract",
+      "machine-checkable session gate added"
+    ]
+  },
+  "record": {
+    "status": "COMPLETE",
+    "activity_path": "NAYA/ACTIVITY/2026/09/22.md"
+  },
+  "control_plane": {
+    "updated": true,
+    "state": ".naya/control-plane/STATE.json",
+    "baton": ".naya/control-plane/BATON.json"
+  },
+  "sign_out": {
+    "status": "SIGNED_OUT",
+    "at": "2026-09-22T23:43:54.402Z"
+  },
+  "successor_prompt": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
+}
