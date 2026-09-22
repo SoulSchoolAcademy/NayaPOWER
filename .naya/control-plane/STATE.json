@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T20:04:43.949Z",
-    "observed_head": "4427f6b086298416a4723e76a40c7d0aebb3dcae",
+    "recorded_at": "2026-09-22T20:13:13.532Z",
+    "observed_head": "847f06023649ce05d4550ed9c46d3164ec97923c",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -139,7 +139,9 @@
     "Current React App selects AppShellV3 as its shell; HubBaselineApp remains a separate iframe-based baseline implementation and must not become a competing production shell.",
     "Human Surface Completeness run 35773282882 verified canonical root shell ownership: one shell, one left rail, zero visible right rail, zero React competing shell in canonical static release.",
     "Fresh live visual observation confirmed Smart Feed is visibly rendered; a fresh authenticated audit identity returned 0 Feed items, making real Smart Note creation/projection the next boundary.",
-    "GAP-002 Intelligent Block → Smart Feed whole-journey proof run 35777770347 is VERIFIED on main 4427f6b086298416a4723e76a40c7d0aebb3dcae: fresh authenticated Smart Note 90aabca1-2231-44c4-98d5-da7c6fc4e8d7 became cognition/index/Ledger lineage, canonical Intelligent Block V1 projected into live Smart Feed, round-tripped in fresh authenticated context, survived reload, and passed idempotency, malformed/unauthorized/wrong-owner rejection and private-by-default checks."
+    "GAP-002 Intelligent Block → Smart Feed whole-journey proof run 35777770347 is VERIFIED on main 4427f6b086298416a4723e76a40c7d0aebb3dcae: fresh authenticated Smart Note 90aabca1-2231-44c4-98d5-da7c6fc4e8d7 became cognition/index/Ledger lineage, canonical Intelligent Block V1 projected into live Smart Feed, round-tripped in fresh authenticated context, survived reload, and passed idempotency, malformed/unauthorized/wrong-owner rejection and private-by-default checks.",
+    "Human-facing canonical Hub journey run 35778698368 is VERIFIED: OPEN/UNDERSTAND/NAVIGATE/SEARCH/CREATE/SAVE/SEE RESULT/RELOAD/FIND/UNDERSTAND EVIDENCE/CONTINUE passed against the live Hub; fresh Smart Note event 384304bf-5983-439a-be41-bdd3a32959dd and receipt df05b1fe-577e-4e03-b93f-a1ef3a9cca46 remained identity-stable after reload; artifact 10716777194 is available.",
+    "A separate NayaAssistantRuntime.smartFeed() convenience call remains UNKNOWN: browser acceptance observed TypeError: Failed to fetch at assistant-runtime.js against naya-smart-feed. This is not evidence that the human Smart Feed surface is broken because the same acceptance run independently verified Smart Feed DOM projection and fresh retrieval after reload."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
