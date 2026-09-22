@@ -164,3 +164,49 @@ A real Block was created from six existing NayaNET source components: three cano
 The exact remaining boundary is **canonical runtime retrieval → fresh Hub observation → cold successor comprehension**. Do not mark the full chain PROVEN until that boundary has fresh evidence.
 
 Proof record: `NAYA/ACTIVITY/2026/09/22-MULTI-SOURCE-INTELLIGENT-BLOCK-PROOF-001.md`.
+
+
+## 2026-09-22 — Cold Naya interface promoted to governed UAI pre-action boundary
+
+The existing 14-question Cold Naya reconstruction was promoted from a documented contract into a first-class canonical runtime operation:
+
+- Runtime action: `cold_restore`
+- Response schema: `NAYANET_COLD_NAYA_RESTORE_V1`
+- Contract source: `.naya/project-intelligence/COLD-NAYA-14-QUESTION-RECONSTRUCTION-CONTRACT.md`
+- The operation verifies all fourteen question fields and their `QUESTION_METADATA` entries before returning `COLD_RESTORE_VERIFIED`.
+- Runtime operations are logged through the existing `nayanet_intelligence_operations` path; no second store or competing authority was introduced.
+
+Universal Agent Interface source now enforces the boundary:
+
+**COLD RESTORE → consequential agent action → canonical NayaPOWER runtime**
+
+- REST/OpenAPI exposes `POST /v1/cold-restore`.
+- MCP exposes `nayanet_cold_restore`.
+- UAI REST `retrieve` and `understand` perform the governed cold restore first.
+- UAI MCP `nayanet_retrieve` and `nayanet_understand` perform the governed cold restore first.
+- The UAI release proof workflow now validates the 14-question restore before MCP/REST persistence and retrieval checks.
+
+Source commits:
+- `38bbfbed398991bd76ebc40ae8de73dd18ab920e` — first-class runtime `cold_restore`
+- `bb51c70e63fc66163ec4212b6c0a4562908b05cd` — UAI mandatory cold restore
+- `31f27686b186374509aa34edde957c4266e6c6f8` — MCP cold-restore mapping repair
+- `4995eccc210d4c16cabb23b78ece12c3f6f57531` — OpenAPI exposure
+- `3b5b937d2e229db165616e1383ae9853db9d07e1` — UAI contract documentation
+- `6aca2fd06adc139d349ea5919a829ef21ec1d76d` — UAI proof workflow validation
+
+### Proof status
+
+**SOURCE IMPLEMENTED. LIVE RUNTIME PROOF OPEN.**
+
+The mandatory boundary is now encoded in source and the proof workflow. Live deployment/execution has not yet been re-run after these commits. The authorized desktop execution bridge is currently disconnected, so no live MCP/REST result is claimed.
+
+Required live proof remains:
+
+1. Resolve exact live `main` HEAD.
+2. Deploy the exact source through the authorized Cloudflare release boundary.
+3. MCP: initialize → tools/list → `nayanet_cold_restore` → validate all 14 questions → `nayanet_understand` → fresh `nayanet_retrieve`.
+4. REST: `/v1/cold-restore` → validate all 14 questions → `/v1/understand` → fresh `/v1/retrieve`.
+5. Verify both transports return the same canonical Project Intelligence meaning/path and persisted receipt lineage.
+6. Record the live run, evidence identity, source/deployment/runtime parity, and successor context.
+
+No implementation status is promoted to production proof until that run succeeds.
