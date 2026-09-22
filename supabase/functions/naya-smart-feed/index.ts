@@ -111,7 +111,7 @@ Deno.serve(async(req)=>{
       for(const eventId of block.source_event_ids||[]) byEvent.set(String(eventId),block)
     }
     return items.map((e:any)=>{
-      const block=byEvent.get(String(e.id))
+      const block=byEvent.get(String(e.id))||byEvent.get(String(e.event_id))
       if(!block) return e
       if(!collective) return {...e,intelligent_block:block}
       return {...e,intelligent_block:{
