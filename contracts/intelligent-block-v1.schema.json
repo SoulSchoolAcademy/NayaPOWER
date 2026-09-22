@@ -4,7 +4,7 @@
   "title": "NayaNET Intelligent Block V1",
   "description": "Portable canonical representation of an intelligence event. The block is a semantic object, not a competing source of truth.",
   "type": "object",
-  "required": ["identity", "type", "meaning", "context", "time", "provenance", "evidence", "truth", "authority", "value"],
+  "required": ["identity", "type", "meaning", "context", "time", "provenance", "evidence", "truth", "authority", "value", "lifecycle", "integrity"],
   "properties": {
     "identity": {
       "type": "object",
@@ -60,7 +60,7 @@
     },
     "context": {
       "type": "object",
-      "required": ["scope"],
+      "required": ["scope", "visibility"],
       "properties": {
         "project": {"type": "string"},
         "scope": {"type": "string"},
@@ -79,8 +79,8 @@
         "observed_at": {"type": "string", "format": "date-time"},
         "effective_at": {"type": "string", "format": "date-time"},
         "valid_from": {"type": "string", "format": "date-time"},
-        "valid_until": {"type": "string", "format": "date-time"},
-        "superseded_at": {"type": "string", "format": "date-time"}
+        "valid_until": {"type": ["string", "null"], "format": "date-time"},
+        "superseded_at": {"type": ["string", "null"], "format": "date-time"}
       },
       "additionalProperties": false
     },
@@ -96,7 +96,7 @@
     },
     "provenance": {
       "type": "object",
-      "required": ["source"],
+      "required": ["source", "source_ref"],
       "properties": {
         "source": {"type": "string"},
         "source_ref": {"type": "string"},
@@ -189,7 +189,7 @@
       "type": "object",
       "properties": {
         "state": {"enum": ["SUCCESS", "FAILURE", "PARTIAL", "NO_EFFECT", "UNEXPECTED", "HARM", "UNKNOWN"]},
-        "observed_result": {"type": "string"},
+        "observed_result": {"type": ["string", "null"]},
         "measurements": {"type": "object"},
         "unexpected_effects": {"type": "array", "items": {"type": "string"}}
       },
@@ -198,11 +198,11 @@
     "learning": {
       "type": "object",
       "properties": {
-        "what_changed": {"type": "string"},
-        "lesson": {"type": "string"},
-        "reusable_rule": {"type": "string"},
+        "what_changed": {"type": ["string", "null"]},
+        "lesson": {"type": ["string", "null"]},
+        "reusable_rule": {"type": ["string", "null"]},
         "evidence_basis": {"type": "array", "items": {"type": "string"}},
-        "applicability": {"type": "string"}
+        "applicability": {"type": ["string", "null"]}
       },
       "additionalProperties": true
     },
@@ -210,10 +210,30 @@
       "type": "object",
       "properties": {
         "type": {"enum": ["NEXT_ACTION", "NEXT_QUESTION", "NEXT_TEST", "NEXT_LEARNING", "NEXT_OWNER", "NEXT_DEPENDENCY", "SUCCESSOR_EVENT"]},
-        "target": {"type": "string"},
-        "reason": {"type": "string"}
+        "target": {"type": ["string", "null"]},
+        "reason": {"type": ["string", "null"]}
       },
       "additionalProperties": true
+    },
+    "lifecycle": {
+      "type": "object",
+      "required": ["stage"],
+      "properties": {
+        "stage": {"enum": ["CAPTURED", "IDENTIFIED", "CONTEXTUALIZED", "SUPPORTED", "VERIFIED", "UNDERSTOOD", "DISTILLED", "OFFICIAL", "SURFACED", "APPLIED", "MEASURED", "LEARNED", "RETAINED", "SUPERSEDED"]},
+        "captured_at": {"type": "string", "format": "date-time"},
+        "verified_at": {"type": "string", "format": "date-time"},
+        "updated_at": {"type": "string", "format": "date-time"}
+      },
+      "additionalProperties": false
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["algorithm", "content_hash"],
+      "properties": {
+        "algorithm": {"const": "SHA-256"},
+        "content_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      },
+      "additionalProperties": false
     },
     "projections": {
       "type": "object",

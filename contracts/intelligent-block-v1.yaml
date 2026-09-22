@@ -103,4 +103,12 @@ projections:
   simple: {}
   hub: {}
   api: {}
+lifecycle:
+  stage: VERIFIED
+  captured_at: "2026-09-21T00:00:00Z"
+  verified_at: "2026-09-21T00:00:00Z"
+  updated_at: "2026-09-21T00:00:00Z"
+integrity:
+  algorithm: SHA-256
+  content_hash: "<64-lowercase-hex>"
 metadata: {}
