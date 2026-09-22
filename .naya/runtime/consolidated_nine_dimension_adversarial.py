@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/runtime"))
+sys.path.insert(0,str(ROOT/".naya/governance"))
 from cct_intelligent_block import make_block, content_hash
 from cct004_adversarial import validate_block_semantics
 from governance_kernel import Authority, DecisionObject, Epistemic, Risk, VerificationPlan, evaluate
