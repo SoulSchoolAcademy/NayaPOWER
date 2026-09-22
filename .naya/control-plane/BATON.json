@@ -59,7 +59,7 @@
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "COMPUTATION-EFFICIENCY-P1",
+    "id": "HUMAN-JOURNEY-P2",
     "status": "ACTIVE",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json"
@@ -67,18 +67,23 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived from the verified computation-efficiency counterfactual review.",
+    "reason": "Selected from the verified maximum-value execution order after causal computation-compounding proof.",
     "acceptance": [
-      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
-      "Run the same task with retained verified intelligence reuse.",
-      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
-      "Verify outcome quality/provenance/authority are not degraded.",
-      "Record the result and leave one successor action."
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ],
-    "verification": "Independently observe the repaired paired run, re-read canonical state, verify durable retained evidence and counterfactual validity, and leave exactly one successor action."
+    "verification": "Independently observe the live Hub journey, verify durable result and evidence, reload/retrieve it fresh, and leave exactly one successor action."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
