@@ -835,14 +835,27 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <div class="shell">
 <aside class="rail left">
   <div class="brand"><img src="https://i.postimg.cc/LXJDD4Np/Nayanet-Logo.jpg" alt="NayaNET"><div><b>NayaNET</b><small>INTELLIGENT HUB · V7</small></div></div>
-  <div class="label">PERSONAL</div>
-  <nav class="nav"><button class="active" data-page="home"><span class="ico">⌂</span>Home</button><button data-page="notes"><span class="ico">▤</span>Smart Notes</button><button data-page="reports"><span class="ico">◫</span>Reports</button><button data-page="intelligence"><span class="ico">✦</span>Intelligence Library</button></nav>
+  <div class="label">YOUR INTELLIGENCE</div>
+  <nav class="nav" aria-label="Your Intelligence">
+    <button class="active" data-page="today"><span class="ico">✦</span>Your Intelligence Today</button>
+    <button data-page="report"><span class="ico">◫</span>Your Report</button>
+    <button data-page="library"><span class="ico">▤</span>Intelligence Library</button>
+    <button data-page="lists"><span class="ico">☷</span>Smart Lists</button>
+  </nav>
   <div class="label">COLLECTIVE</div>
-  <nav class="nav"><button data-page="collective"><span class="ico">◎</span>Collective</button><button data-page="evidence"><span class="ico">◇</span>Evidence</button><button data-page="connections"><span class="ico">↗</span>Connections</button></nav>
+  <nav class="nav" aria-label="Collective">
+    <button data-page="share"><span class="ico">◇</span>Smart Share</button>
+    <button data-page="spaces"><span class="ico">⬡</span>Smart Spaces</button>
+    <button data-page="connections"><span class="ico">↗</span>Connections</button>
+  </nav>
   <div class="label">COMMUNICATION</div>
-  <nav class="nav"><button data-page="share"><span class="ico">↗</span>Smart Share</button><button data-page="mail"><span class="ico">✉</span>Smart Mail <span class="badge">NEW</span></button></nav>
+  <nav class="nav" aria-label="Communication">
+    <button data-page="mail"><span class="ico">✉</span>Smart Mail</button>
+  </nav>
   <div class="label">SYSTEM</div>
-  <nav class="nav"><button data-page="settings"><span class="ico">⚙</span>Settings</button></nav>
+  <nav class="nav" aria-label="System">
+    <button data-page="settings"><span class="ico">⚙</span>Settings</button>
+  </nav>
   <div class="private"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div>
 </aside>
 <main class="main">
@@ -1148,7 +1161,81 @@ function nayaCommandDeck(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',nayaCommandDeck,{once:true});else nayaCommandDeck();
 })();
-</script></body>
+</script>
+<!-- NAYA-HUB-SURFACE-COMPLETION-V1 -->
+<style id="naya-hub-surface-completion-v1">
+.naya-hub-surface{margin:4px 22px 28px;padding:26px;border:2px solid #8b63ff66;border-radius:28px;background:radial-gradient(700px 240px at 70% 0%,#d86cff12,transparent 70%),linear-gradient(145deg,#0d0b12,#050507);box-shadow:inset 0 1px #fff6,0 28px 70px #000b,0 0 42px #8b63ff12}
+.naya-hub-surface .surface-kicker{font-size:7px;font-weight:1000;letter-spacing:.18em;color:#bca8ff}
+.naya-hub-surface h2{font-size:clamp(30px,4vw,48px);margin:6px 0 8px;letter-spacing:-.055em}
+.naya-hub-surface .surface-lede{max-width:900px;color:#c9c2d1;font-size:12px;line-height:1.7;margin:0 0 20px}
+.naya-surface-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.naya-surface-card{min-height:150px;padding:18px;border:2px solid #ffffff14;border-radius:19px;background:linear-gradient(145deg,#121019,#08080c);box-shadow:inset 0 1px #fff4,0 14px 30px #0008}
+.naya-surface-card b{display:block;font-size:9px;letter-spacing:.09em;margin-bottom:7px}.naya-surface-card span{display:block;color:#aaa3b2;font-size:9px;line-height:1.6}
+.naya-surface-card strong{display:block;color:#fff;font-size:25px;margin:4px 0}
+.naya-surface-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.naya-surface-actions button{min-height:44px;padding:0 14px;border:2px solid #8b63ff66;border-radius:12px;background:linear-gradient(145deg,#17131f,#08080c);color:#fff;font-size:8px;font-weight:1000;letter-spacing:.06em;cursor:pointer;box-shadow:inset 0 1px #fff4,0 9px 20px #0008}
+.naya-surface-actions button:hover{transform:translateY(-2px);border-color:#d86cff;box-shadow:inset 0 1px #fff6,0 14px 26px #000a,0 0 24px #d86cff1c}
+.naya-surface-list{display:grid;gap:8px;margin-top:16px}.naya-surface-list button{text-align:left;padding:13px;border:1px solid #ffffff14;border-radius:12px;background:#09090d;color:#eeeaf3;cursor:pointer}.naya-surface-list small{display:block;color:#817b88;margin-top:4px}
+.naya-surface-input{width:100%;min-height:46px;padding:0 13px;border:2px solid #ffffff18;border-radius:12px;background:#07070a;color:#fff;outline:0;margin-top:12px}.naya-surface-input:focus{border-color:#d86cff}
+.naya-surface-status{margin-top:14px;padding:12px 14px;border:1px solid #55e39a35;border-radius:13px;background:#08110c;color:#bfffd8;font-size:9px;line-height:1.55}
+@media(max-width:900px){.naya-surface-grid{grid-template-columns:1fr 1fr}}@media(max-width:600px){.naya-hub-surface{margin:4px 10px 20px;padding:18px;border-radius:22px}.naya-surface-grid{grid-template-columns:1fr}}
+</style>
+<script id="naya-hub-surface-completion-runtime-v1">
+(()=>{'use strict';
+const q=(s,r=document)=>r.querySelector(s),qq=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const titleMap={today:'Your Intelligence Today',report:'Your Report',library:'Intelligence Library',lists:'Smart Lists',share:'Smart Share',spaces:'Smart Spaces',connections:'Connections',mail:'Smart Mail',settings:'Settings'};
+const copy={
+ today:['YOUR INTELLIGENCE · TODAY','The living view of what matters now. Your Smart Feed is the primary projection: understand first, then act.'],
+ report:['YOUR INTELLIGENCE · REPORT','Turn accumulated intelligence into meaning over time — what changed, what was learned, and what deserves attention next.'],
+ library:['YOUR INTELLIGENCE · LIBRARY','One intelligence object can appear in many places without becoming many truths. Browse the canonical blocks already carried by this Hub.'],
+ lists:['YOUR INTELLIGENCE · SMART LISTS','Organize intelligence around what you are doing. Save is a personal retrieval signal; it does not rewrite the underlying intelligence.'],
+ share:['COLLECTIVE · SMART SHARE','Share intelligence deliberately. Public visibility is a governance decision, not a default state.'],
+ spaces:['COLLECTIVE · SMART SPACES','A Smart Space is an environment where people, conversation, and intelligence can create more intelligence together.'],
+ connections:['COLLECTIVE · CONNECTIONS','See how intelligence relates to people, topics, projects, spaces, sources, evidence, learning, and outcomes.'],
+ mail:['COMMUNICATION · SMART MAIL','Communication becomes intelligence when meaningful messages can be preserved, understood, verified, and reused.'],
+ settings:['SYSTEM · SETTINGS','Control how this Hub behaves on this device. Governance remains server-side; these controls never weaken authority.']
+};
+function blocks(){return qq('.block')}
+function saved(){const out=[];try{const s=JSON.parse(localStorage.getItem('nayanet-509-next-level-v1')||'{}');blocks().forEach((b,i)=>{const id=b.dataset.intelligenceId||b.id||('block-'+i);if(s[id+':save'])out.push(b)})}catch{}return out}
+function shell(page){
+ let s=q('#nayaHubSurface');if(!s){s=document.createElement('section');s.id='nayaHubSurface';s.className='naya-hub-surface';q('.naya-command-deck')?.after(s)||q('.main')?.prepend(s)}
+ const [k,lead]=copy[page]||copy.today;s.innerHTML='<div class="surface-kicker">'+esc(k)+'</div><h2>'+esc(titleMap[page])+'</h2><p class="surface-lede">'+esc(lead)+'</p><div class="naya-surface-grid" id="nayaSurfaceGrid"></div><div class="naya-surface-actions" id="nayaSurfaceActions"></div><div id="nayaSurfaceExtra"></div>';
+ return s;
+}
+function card(b,detail){return '<article class="naya-surface-card"><b>'+esc(b[0])+'</b>'+ (detail?'<strong>'+esc(b[1])+'</strong>':'')+'<span>'+esc(b[2])+'</span></article>'}
+function render(page){
+ const s=shell(page),grid=q('#nayaSurfaceGrid',s),actions=q('#nayaSurfaceActions',s),extra=q('#nayaSurfaceExtra',s),bs=blocks(),count=bs.length;
+ if(page==='today'){grid.innerHTML=card(['SMART FEED',count+' BLOCKS','Collective · Personal · Activity are the three living intelligence lenses.'],true)+card(['CREATE','READY','Capture a Smart Note through the canonical receiver.'],true)+card(['CONTINUITY','LIVE','Reload, retrieve, understand evidence, and continue from preserved intelligence.'],true);actions.innerHTML='<button data-surface-action="capture">＋ CAPTURE SMART NOTE</button><button data-surface-action="feed">VIEW SMART FEED</button>'}
+ if(page==='report'){grid.innerHTML=card(['MEANING','INTERPRET','Reports answer what accumulated experience means over time.'])+card(['PROVENANCE','PRESERVED','Evidence remains attached to the intelligence it explains.'])+card(['NEXT','DECIDE','A useful report ends with a clearer responsible next action.']);actions.innerHTML='<button data-surface-action="feed">OPEN TODAY</button>'}
+ if(page==='library'){grid.innerHTML=card(['CANONICAL BLOCKS',count,'These are projections of the intelligence already carried by the Hub.'],true)+card(['IDENTITY','ONE OBJECT','A block can be projected without creating a second intelligence authority.'])+card(['REUSE','FIND AGAIN','Select an intelligence item to return directly to its canonical feed block.']);extra.innerHTML='<div class="naya-surface-list">'+bs.map((b,i)=>{const id=b.id||('naya509-'+String(i+1).padStart(2,'0')),t=tx(q('h3',b))||'Intelligence';return '<button data-jump="'+esc(id)+'"><b>'+esc(t)+'</b><small>CANONICAL INTELLIGENT BLOCK · '+String(i+1).padStart(2,'0')+'</small></button>'}).join('')+'</div>'}
+ if(page==='lists'){const ss=saved();grid.innerHTML=card(['SAVED',ss.length,'Personal retrieval signals remembered on this device.'],true)+card(['FAVORITES','PERSONAL','Keep importance signals separate from truth and provenance.'])+card(['NO DUPLICATION','SAFE','Lists organize intelligence; they do not become another brain.']);actions.innerHTML='<button data-surface-action="feed">OPEN FEED</button>';extra.innerHTML=ss.length?'<div class="naya-surface-list">'+ss.map(b=>'<button data-jump="'+esc(b.id)+'"><b>'+esc(tx(q('h3',b)))+'</b><small>SAVED INTELLIGENCE</small></button>').join('')+'</div>':'<div class="naya-surface-status">Nothing saved on this device yet. Use SAVE on an Intelligent Block and it will appear here.</div>'}
+ if(page==='share'){grid.innerHTML=card(['PRIVATE BY DEFAULT','ON','Sharing begins with your intelligence remaining yours.'])+card(['CONSENT','REQUIRED','Collective sharing is deliberate and visible.'])+card(['PUBLIC','DECISION','Publication is an authority change and is never implied by a local UI state.']);actions.innerHTML='<button data-surface-action="share">SHARE CURRENT INTELLIGENCE</button><button data-surface-action="feed">RETURN TO FEED</button>'}
+ if(page==='spaces'){grid.innerHTML=card(['SPACE','CREATE','Turn a meaningful subject into a shared intelligence environment.'])+card(['PEOPLE','CONNECT','Conversations can generate new intelligence rather than disappear into chat history.'])+card(['LEARNING','COMPOUND','Useful outcomes can become reusable intelligence.']);extra.innerHTML='<input class="naya-surface-input" id="nayaSpaceName" placeholder="Name a Smart Space"><div class="naya-surface-actions"><button data-surface-action="space">CREATE SPACE WORKSPACE</button></div><div class="naya-surface-status" id="nayaSpaceStatus">Workspace intent is local until a governed Smart Space runtime is invoked.</div>'}
+ if(page==='connections'){grid.innerHTML=card(['INTELLIGENCE ↔ PEOPLE','MAP','Relationships give intelligence context and make discovery useful.'])+card(['TOPICS ↔ PROJECTS','LINK','Connections should expose why two intelligence objects belong together.'])+card(['EVIDENCE ↔ OUTCOMES','TRACE','A connection is useful when it helps explain or act on intelligence.']);actions.innerHTML='<button data-surface-action="feed">EXPLORE INTELLIGENCE</button>'}
+ if(page==='mail'){grid.innerHTML=card(['MESSAGE','INPUT','Meaningful communication can become durable intelligence.'])+card(['VERIFY','PROTECT','Authority, identity, provenance, and privacy stay attached.'])+card(['LEARN','REUSE','Verified outcomes can influence future decisions.']);actions.innerHTML='<button data-surface-action="capture">CAPTURE FROM THIS MOMENT</button><button data-surface-action="feed">VIEW INTELLIGENCE</button>'}
+ if(page==='settings'){grid.innerHTML=card(['IDENTITY','LOCAL','This device can remember presentation preferences without becoming an authority.'])+card(['PRIVACY','PROTECTED','Private by default remains the human-facing promise.'])+card(['AUTHORITY','FAIL CLOSED','No UI preference grants server authority.']);actions.innerHTML='<button data-surface-action="motion">TOGGLE REDUCED MOTION</button><button data-surface-action="feed">RETURN TO INTELLIGENCE</button>'}
+}
+function tx(e){return(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim()}
+function home(){q('#nayaHubSurface')?.remove();qq('.naya-command-deck,.naya-at-a-glance,.hero,.feed').forEach(x=>x.style.removeProperty('display'));q('#topTitle')&&(q('#topTitle').textContent='Your Intelligence Today')}
+function show(page){qq('[data-page]').forEach(b=>{const active=(page==='today'?b.dataset.page==='today':b.dataset.page===page);b.classList.toggle('active',active)});q('#topTitle')&&(q('#topTitle').textContent=titleMap[page]||titleMap.today);if(page==='today'){home();return}qq('.naya-command-deck,.naya-at-a-glance,.hero,.feed').forEach(x=>x.style.setProperty('display','none','important'));render(page);window.scrollTo({top:0,behavior:'smooth'})}
+function bind(){
+ const rail=q('.rail');if(!rail||rail.dataset.surfaceV1)return;rail.dataset.surfaceV1='1';
+ rail.addEventListener('click',e=>{const b=e.target.closest('[data-page]');if(!b)return;e.preventDefault();e.stopPropagation();show(b.dataset.page)},true);
+ document.addEventListener('click',e=>{
+  const a=e.target.closest('[data-surface-action]');if(a){const k=a.dataset.surfaceAction;
+   if(k==='feed'||k==='capture'){show('today');setTimeout(()=>k==='capture'?q('[data-testid="capture-smart-note"]')?.click():q('.feedNav')?.scrollIntoView({behavior:'smooth'}),80);return}
+   if(k==='share'){const b=blocks()[0],t=tx(q('h3',b))||'NayaNET Intelligence',payload={title:t,text:t+' — NayaNET Intelligent Hub',url:location.href};(navigator.share?navigator.share(payload):navigator.clipboard?.writeText(location.href)).catch(()=>{});return}
+   if(k==='space'){const name=q('#nayaSpaceName')?.value.trim();const st=q('#nayaSpaceStatus');if(st)st.textContent=name?'SPACE WORKSPACE INTENT RECORDED · '+name+' · governed runtime required for shared persistence.':'NAME REQUIRED';return}
+   if(k==='motion'){document.documentElement.classList.toggle('naya-reduced-motion');localStorage.setItem('nayanet-reduced-motion',document.documentElement.classList.contains('naya-reduced-motion')?'1':'0');if(document.documentElement.classList.contains('naya-reduced-motion')){const st=document.createElement('style');st.id='nayaReducedMotion';st.textContent='*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}';document.head.append(st)}else q('#nayaReducedMotion')?.remove();return}}
+  const j=e.target.closest('[data-jump]');if(j){show('today');setTimeout(()=>document.getElementById(j.dataset.jump)?.scrollIntoView({behavior:'smooth',block:'center'}),100)}
+ });
+ const params=new URLSearchParams(location.search);if(params.get('surface')&&titleMap[params.get('surface')])show(params.get('surface'));
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();
+})();
+</script>
+</body>
 <!-- HUB-VISUAL-UX-V1-RELEASE-CHECKPOINT -->
 <!-- HUB-VISUAL-UX-V1-RELEASE-2 -->
 <!-- HUB-COMMAND-DECK-V1-RELEASE-CHECKPOINT -->
