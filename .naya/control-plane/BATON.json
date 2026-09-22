@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:24:20.018968+00:00",
+  "generated_at": "2026-09-22T18:32:39.084Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "13368bfa179388ea5905aaa50135896d60e6dad9",
+    "live_head": "43fb5f5fe6788d434e7f96e51e7547ff6eb446b6",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Run the same task with retained verified intelligence reuse."
+    "block_next_action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -67,9 +67,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Run the same task with retained verified intelligence reuse.",
+    "action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "reason": "Derived automatically after verified Cycle B retained-intelligence reuse measurement and handoff repair.",
     "acceptance": [
       "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "Run the same task with retained verified intelligence reuse.",
