@@ -181,9 +181,9 @@ jobs:
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
               const page=await context.newPage();
-              const response=await page.goto(runtime+'/?baseline='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
+              const response=await page.goto(runtime+'/?baseline='+process.env.GITHUB_SHA,{waitUntil:'commit',timeout:20000});
               if(!response?.ok()) throw new Error(viewport.label+': live Hub HTTP unavailable');
-              await page.waitForTimeout(1200);
+              await page.waitForTimeout(3000);
               const result=await page.evaluate(()=>({title:document.title,directNine:document.querySelector('meta[name="nayanet-direct-nine"]')?.content||null,welcome:document.body.innerText.includes('welcome.nayanet.app')}));
               console.log('LIVE_HUB_BASELINE_PROBE',viewport.label,JSON.stringify(result));
               if(result.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical Hub title mismatch');
