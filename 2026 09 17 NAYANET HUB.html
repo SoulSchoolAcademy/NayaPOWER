@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(callback){this.callback=callback;this.native=new window.__nayaNativeMutationObserver(callback);this.target=null;this.options=null;this.started=false}observe(target,options){this.target=target;this.options=options;if(this.started)return;const start=()=>{if(this.started)return;this.started=true;this.native.observe(this.target,this.options)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()}disconnect(){this.native.disconnect();this.started=false}takeRecords(){return this.native.takeRecords()}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
+<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(callback){this.callback=callback;this.native=new window.__nayaNativeMutationObserver(callback);this.target=null;this.options=null;this.started=false}observe(target,options){this.target=target;this.options=options;if(this.started)return;const start=()=>{if(this.started)return;this.started=true;this.native.observe(this.target,this.options)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,0),{once:true});else start()}disconnect(){this.native.disconnect();this.started=false}takeRecords(){return this.native.takeRecords()}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
 
 <meta name="nayanet-direct-nine" content="verified-static-top-nine">
 <meta charset="utf-8">
@@ -432,7 +432,7 @@ function elevate(){document.querySelectorAll('.perspectiveNo').forEach(e=>e.remo
 function removeSyntheticMission(){document.querySelectorAll('.naya509-mission').forEach(e=>e.remove())}
 let scheduled=false;function boot(){if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;css();const r=REAL();if(r&&typeof r.boot==='function')r.boot();if(r&&typeof r.run==='function'&&document.querySelectorAll('[data-real-smart-note]').length!==9)r.run();removeObsoleteBanners();elevate();removeSyntheticMission();document.documentElement.dataset.nayaRealSmartFeed='true'})}
 function observe(){if(window.__naya509RealLifecycleObserver)return;const root=document.body||document.documentElement;if(!root)return;const mo=new MutationObserver(()=>boot());mo.observe(root,{childList:true,subtree:true});window.__naya509RealLifecycleObserver=mo;document.addEventListener('click',e=>{if(e.target.closest('.feedNav button'))[0,40,150,500,1000,2000].forEach(ms=>setTimeout(boot,ms))},true);boot();setInterval(boot,750)}
-function start(){css();observe()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+function start(){css();observe()}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>setTimeout(start,0),{once:true});else start();
 })();
 </script>
 <script>
