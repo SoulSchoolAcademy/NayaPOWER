@@ -572,8 +572,8 @@
       "head_sha": "4427f6b086298416a4723e76a40c7d0aebb3dcae",
       "smart_feed_source_commit": "72dda5bb466ddd022ef0771585d1e63a6383ef3f",
       "deployed_function": "naya-smart-feed",
-      "deployed_function_version": 9,
-      "deployed_function_ezbr_sha256": "f7d9e16bc7fc404096f768ca5fb21670a7f325cb731fe210161cec683b91f500",
+      "deployed_function_version": 16,
+      "deployed_function_ezbr_sha256": "940eaf27068c82d96ea289a1c24317a35ad6345735b30aed03ac97d2e75651a0",
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
       "evidence": {
         "smart_note_event_id": "90aabca1-2231-44c4-98d5-da7c6fc4e8d7",
@@ -601,21 +601,22 @@
         "intelligent_block_v1_source": "PASS",
         "intelligent_block_roundtrip": "PASS",
         "intelligent_block_hub_projection": "PASS"
-      }
+      },
+      "latest_browser_run": 35781191036,
+      "latest_source_head": "ea5cd50b0e0bedf93d25fe30eeb4efba24f1d900"
     },
     "human_journey_live_browser": {
       "status": "VERIFIED",
       "claim_type": "WHOLE_JOURNEY",
       "workflow": ".github/workflows/wave-a-live-browser-acceptance.yml",
-      "run_id": 35778698368,
-      "head_sha": "847f06023649ce05d4550ed9c46d3164ec97923c",
-      "artifact": "wave-a-canonical-hub-acceptance",
-      "artifact_id": 10716777194,
-      "artifact_sha256": "6cb4c54d740b9ed9d49ef013895a739986e13f862b30405cf0a35c884796b10a",
+      "run_id": 35781191036,
+      "head_sha": "ea5cd50b0e0bedf93d25fe30eeb4efba24f1d900",
+      "artifact_id": 10717912938,
+      "artifact_sha256": "d1df4b7fc11fb4af621eb5e5eef7ce79fe5505a8644f32bd6f23c145b18a34fc",
       "evidence": {
-        "event_id": "384304bf-5983-439a-be41-bdd3a32959dd",
-        "receipt_id": "df05b1fe-577e-4e03-b93f-a1ef3a9cca46",
-        "fresh_user_id": "ddbe6012-cdcd-4ba7-901d-a20c2184c8f7",
+        "event_id": "3ffe7940-1571-4918-b4e1-10f0681e42d1",
+        "receipt_id": "1b46f984-cf9f-4226-b840-5e98745c6947",
+        "fresh_user_id": "9427c556-39c5-40c7-94de-192820697bc2",
         "nav_count": 26,
         "search": true,
         "initial_match": true,
@@ -639,11 +640,18 @@
       ]
     },
     "smart_feed_runtime_helper": {
-      "status": "UNKNOWN",
+      "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "source_path": "assistant-runtime.js",
-      "observed_failure": "Browser acceptance helper call to NayaAssistantRuntime.smartFeed() raised TypeError: Failed to fetch against /functions/v1/naya-smart-feed.",
-      "interpretation": "The canonical human Smart Feed DOM/retrieval journey is VERIFIED independently; the convenience runtime smartFeed() API boundary remains unproven and requires causal diagnosis."
+      "fix": "route smartFeed() through established Supabase client; bust Hub runtime cache; deploy naya-smart-feed with explicit in-function authentication and canonical block projection fallback",
+      "runtime_source_cache_key": "20260922-smartfeed-client-fix1",
+      "supabase_function_version": 16,
+      "verified_by_workflow_run": 35781191036,
+      "evidence": {
+        "response_status": 200,
+        "canonical_block_projected": true,
+        "smart_feed_event_id": "3ffe7940-1571-4918-b4e1-10f0681e42d1"
+      }
     }
   },
   "recording_commit": "c262191dcdc16e6488a395778de6d9896e5c2097",
