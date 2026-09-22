@@ -44,3 +44,5 @@ jobs:
           node proof.mjs
 
 # causal repair: non-owner runtime proof is isolated from owner-scoped receipt RLS; owner receipt is independently verified outside the non-owner identity
+
+# fresh non-owner managed retrieval proof trigger 2026-09-22
