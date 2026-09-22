@@ -1174,5 +1174,33 @@
       ".github/workflows/assistant-cloudflare-hub-release.yml": "59f50eca9aa9a1bf3291ee9d8a28d923c30108f6"
     },
     "independent_verification": "PASS"
+  },
+  "non_owner_managed_retrieval_boundary": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "claim_scope": "Fresh non-owner managed-runtime Project Intelligence retrieval isolation",
+    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml",
+    "trigger_commit": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
+    "expected_owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
+    "expected_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
+    "expected_event_id": "241159af-a285-4fc3-b322-c86797818548",
+    "non_owner_execution": "NOT_OBSERVED",
+    "non_owner_result": "UNKNOWN",
+    "independent_owner_receipt_verification": {
+      "status": "PASS",
+      "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
+      "owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
+      "receiver_transaction_id": "154264ea-5e28-4fcc-8c70-8b5b640a0ce7",
+      "receiver_event_id": "241159af-a285-4fc3-b322-c86797818548",
+      "receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
+      "persisted": true,
+      "indexed": true,
+      "projected": true,
+      "retrieved": true,
+      "rendered": true,
+      "verified_at": "2026-09-22 21:46:21.865+00"
+    },
+    "do_not_promote": "Do not mark non-owner isolation PROVEN from workflow source or trigger commit alone."
   }
 }
