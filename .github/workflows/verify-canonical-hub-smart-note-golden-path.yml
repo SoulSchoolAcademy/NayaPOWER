@@ -92,6 +92,7 @@ jobs:
             proof.checks.receiver_persistence='PASS';
             mark('CAPTURE_PERSISTED',{state:captureState});
 
+            await page.waitForFunction((expected)=>document.body.innerText.includes(expected),title,{timeout:30000});
             const bodyAfterCapture=await page.locator('body').innerText();
             if(!bodyAfterCapture.includes(title))throw new Error('SMART_NOTE_NOT_VISIBLE_AFTER_CAPTURE');
             proof.checks.smart_feed_projection='PASS';
