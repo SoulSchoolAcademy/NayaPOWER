@@ -563,7 +563,46 @@
       "idempotent_replay_verified": true,
       "caveat": "Transport/persistence/index/projection/ack is proven at the exact source_ref. Hub-facing retrieval/render and cold-successor retrieval remain open."
     },
-    "project_intelligence_bridge_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context."
+    "project_intelligence_bridge_next_action": "Prove receiver retrieval/render of the exact Project Intelligence receipt and have a genuinely cold successor retrieve that same lineage without Shawn context.",
+    "gap_002_intelligent_block_smart_feed": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/verify-live-smart-note-receiver.yml",
+      "run_id": 35777770347,
+      "head_sha": "4427f6b086298416a4723e76a40c7d0aebb3dcae",
+      "smart_feed_source_commit": "72dda5bb466ddd022ef0771585d1e63a6383ef3f",
+      "deployed_function": "naya-smart-feed",
+      "deployed_function_version": 9,
+      "deployed_function_ezbr_sha256": "f7d9e16bc7fc404096f768ca5fb21670a7f325cb731fe210161cec683b91f500",
+      "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+      "evidence": {
+        "smart_note_event_id": "90aabca1-2231-44c4-98d5-da7c6fc4e8d7",
+        "cognition_event_id": "90aabca1-2231-44c4-98d5-da7c6fc4e8d7",
+        "intelligence_index_id": "3d7d336c-8e08-426e-a276-393362adef85",
+        "ledger_event_id": "3e69f678-7079-44ea-a73b-ad13a6258604",
+        "transaction_id": "125baacc-2857-4a62-a0ea-e82f63161419",
+        "duplicate_transaction_id": "125baacc-2857-4a62-a0ea-e82f63161419"
+      },
+      "checks": {
+        "receive_validate_persist": "PASS",
+        "verified_receipt": "PASS",
+        "four_canonical_artifacts": "PASS",
+        "cognition_bridge": "PASS",
+        "intelligence_index_via_hub": "PASS",
+        "smart_ledger": "PASS",
+        "hub_render": "PASS",
+        "reload_identity": "PASS",
+        "fresh_authenticated_context": "PASS",
+        "duplicate_idempotency": "PASS",
+        "malformed_rejection": "PASS",
+        "unauthorized_rejection": "PASS",
+        "wrong_owner_rejection": "PASS",
+        "private_by_default": "PASS",
+        "intelligent_block_v1_source": "PASS",
+        "intelligent_block_roundtrip": "PASS",
+        "intelligent_block_hub_projection": "PASS"
+      }
+    }
   },
   "recording_commit": "c262191dcdc16e6488a395778de6d9896e5c2097",
   "fresh_validation_required": true,
