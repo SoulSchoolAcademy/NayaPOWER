@@ -60,7 +60,7 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "e29c9c226b9101be71c5b77090de4a20f5f6dd4f",
+    "observed_head": "ea5cd50b0e0bedf93d25fe30eeb4efba24f1d900",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
@@ -654,7 +654,7 @@
       }
     }
   },
-  "recording_commit": "c262191dcdc16e6488a395778de6d9896e5c2097",
+  "recording_commit": "cac2d01e0f9739c69f6c227ba84a4efce701431a",
   "fresh_validation_required": true,
   "next_recording_requires_fresh_execution": false,
   "readiness_evidence": {
