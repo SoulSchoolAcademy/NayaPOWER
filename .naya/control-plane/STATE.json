@@ -42,8 +42,11 @@
     "canonical_block": ".naya/control-plane/BLOCKS.json",
     "canonical_map": ".naya/control-plane/MAP.json",
     "canonical_proof": ".naya/control-plane/PROOF.json",
+    "canonical_baton": ".naya/control-plane/BATON.json",
+    "baton_contract": ".naya/control-plane/BATON-CONTRACT.md",
     "legacy_projection": ".naya/memory/STATE.json",
-    "legacy_projection_authority": "NONE — compatibility/history projection only"
+    "legacy_projection_authority": "NONE — compatibility/history projection only",
+    "baton_authority": "Canonical continuation handoff assembled from STATE/BLOCK/MAP/PROOF; it does not override their truth ownership."
   },
   "current_operating_reset": {
     "date": "2026-09-17",
