@@ -98,7 +98,7 @@ Deno.serve(async(req)=>{
     const owners=[...new Set(items.map((e:any)=>String(e.user_id||'')).filter(Boolean))]
     let blockQuery=admin.from('nayanet_intelligent_blocks')
       .select('block_id,owner_id,subject_id,title,block_type,version,status,understanding_state,owner_scope,source_event_ids,evidence_refs,provenance,value_context,applicable_scope,content,supersedes_block_id,superseded_by_block_id,created_at,updated_at,schema_version')
-      .overlaps('source_event_ids',ids)
+      .in('block_id',ids)
     if(collective){
       if(owners.length) blockQuery=blockQuery.in('owner_id',owners)
     }else if(owners[0]){
