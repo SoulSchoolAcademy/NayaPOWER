@@ -11,6 +11,8 @@ from typing import Any
 
 from baton import build_baton, validate_baton, write_baton
 
+from baton import build_baton, validate_baton, write_baton
+
 ROOT=Path(__file__).resolve().parents[2]
 STATE=ROOT/".naya/control-plane/STATE.json"
 BLOCKS=ROOT/".naya/control-plane/BLOCKS.json"
