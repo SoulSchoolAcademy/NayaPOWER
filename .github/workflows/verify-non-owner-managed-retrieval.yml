@@ -48,3 +48,5 @@ jobs:
           console.log('NON_OWNER_MANAGED_RETRIEVAL_PROOF='+JSON.stringify({schema:'NAYANET_NON_OWNER_MANAGED_RETRIEVAL_PROOF_V1',packet_id:P,non_owner_id:a.user.id,retrieval_http_status:rr.status,non_owner_events_count:events.length,private_packet_returned:false,canonical_owner_receipt_unchanged:true,receipt_id:row.receipt_id,verified_at:row.verified_at,status:'VERIFIED'}));
           EOF
           node proof.mjs
+
+# governed trigger: execute the authorized non-owner retrieval boundary on main
