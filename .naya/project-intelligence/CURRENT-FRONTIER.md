@@ -135,3 +135,21 @@ Proof artifact: `NAYA/ACTIVITY/2026/09/21-INTELLIGENT-BLOCK-V1-PROOF.md`
 Live proof Block: `b06846b3-49eb-45c1-8557-a986831f0d4c`
 
 Next boundary: idempotent replay/update, then a second real verified event → new Block → evidence → index → authorized retrieval proof. The existing AppShellV3 human-capture failure remains independent and is not promoted to pass.
+
+
+## 2026-09-22 — Intelligent Block source-bundle distillation model
+
+The canonical Intelligent Block V1 contract is now explicitly defined as a reusable unit of understood intelligence that may unify **one or many provenance-bound sources**: conversations, documents, events, evidence, perspectives, decisions, observations, runtime outcomes, and prior Blocks.
+
+The governing distinction is:
+
+**SOURCE MATERIAL = what we have**  
+**INTELLIGENT EVENT = what happened**  
+**INTELLIGENT BLOCK = what we currently understand**  
+**CCT = how understanding connects**  
+**PROJECT INTELLIGENCE = the living connected intelligence**  
+
+Distillation and validation remain separate operations. Distillation simplifies and preserves reusable meaning; validation determines what the evidence supports. Human-readable and machine-readable representations remain projections of the same canonical meaning.
+
+The next empirical boundary is a real **multi-source Block proof**: source bundle → Block → validation → JSON/Markdown/database/Hub projection → authorized retrieval → successor comprehension.
+
