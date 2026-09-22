@@ -77,7 +77,7 @@ jobs:
             mark('CAPTURE_CONTROL_VISIBLE');
 
             const visibleCommandButtons=await page.locator('.naya-cs-btn:visible').count();
-            if(visibleCommandButtons!==13)throw new Error('COMMAND_STATION_VISIBLE_BUTTON_COUNT_NOT_13:'+visibleCommandButtons);
+            if(visibleCommandButtons!==11)throw new Error('COMMAND_STATION_VISIBLE_BUTTON_COUNT_NOT_11:'+visibleCommandButtons);
             proof.checks.single_command_station='PASS';
             mark('SINGLE_COMMAND_STATION',{visible_buttons:visibleCommandButtons});
 
