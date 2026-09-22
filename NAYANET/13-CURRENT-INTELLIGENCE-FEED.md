@@ -23,6 +23,42 @@ NayaNET is being shaped as a **private intelligence community**: a place where h
 
 The standard now applies to product, design, engineering, verification, handoff, and successor judgment. A result that requires an apology is not finished. A successor Naya must leave the system more valuable, more truthful, and more capable than it found it.
 
+
+
+## 🔴 PRODUCT ONTOLOGY CORRECTION — HUB SURFACE GATE
+**UPDATED:** 2026-09-22
+
+This correction is authoritative for successor Nayas working on the Hub:
+
+- **Dream is not a sidebar tab or ordinary user destination.** Dream is an internal thinking/replay capability: Naya revisits preserved Smart Note/intelligence evidence, analyzes it, synthesizes understanding, and uses the result to improve subsequent reasoning/action.
+- **Naya Play is not a sidebar tab or separate library.** Playback belongs on Intelligent Blocks and relevant intelligence objects so the human can hear/experience Naya's output in context.
+- **Smart Notes are capture/process inputs, not the canonical intelligence object.** The durable human-facing object is the **Intelligent Block** produced/preserved by the governed intelligence lifecycle.
+- **Smart Feed is the flagship Hub experience.** Personal Intelligence, Collective Intelligence, and Activity are three authorized projections over the canonical system—not three separate stores.
+- **Sidebar items are front doors into projections/actions over the same governed engine.** They must not create parallel truth stores.
+- **Never add a surface merely because a label seems useful.** Before creating UI, determine the documented product meaning, source of truth, authority boundary, user value, and actual runtime capability.
+
+### Successor understanding gate
+Before changing the Hub, a successor Naya MUST:
+
+1. Read the current Intelligence Feed and the relevant Smart Notes.
+2. Read the Hub North Star/Mission Lock, Product + UX Blueprint, Visual/Structural Contract, and Living Sun design specification.
+3. Inspect the current canonical Hub source and the runtime files it actually loads.
+4. Write down the intended meaning of each affected surface **before implementation**.
+5. Cross-check the intended meaning against existing source/runtime evidence.
+6. Reject any proposed tab, feature, or object that conflicts with the canonical ontology.
+7. Implement only after the above comparison is complete.
+8. After implementation, test the actual human interaction and record the observed result.
+9. Update the Intelligence Feed with the new evidence and next node.
+
+**Failure mode this gate prevents:** turning a capability such as Dream or Naya Play into a decorative navigation label, or treating a visual treatment as completion when the underlying interaction is absent.
+
+### Current Hub flagship requirement
+The Smart Feed acceptance boundary is now:
+
+**canonical runtime retrieval → correct Personal/Collective/Activity projection → extraordinary Intelligent Block presentation → truthful source/provenance/truth/authority/value context → meaningful authorized actions → observed human interaction → consequence/receipt where applicable → refreshed projection → durable evidence.**
+
+A Smart Feed is not complete because its tabs, cards, or labels exist. It is complete when a human can actually use the intelligence and the system truthfully reflects what happened.
+
 ## ACTIVE MISSION
 
 Establish NayaNET/Naya Power as a self-driving intelligence system in which a human can provide the vision, mission, and goal, after which Naya understands the desired outcome, leads the execution, continuously advances the highest-value next node, and passes an exact continuation baton to the next Naya until the North Star is reached.
