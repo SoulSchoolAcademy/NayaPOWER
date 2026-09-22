@@ -1,0 +1,41 @@
+name: Verify Causal Computation Efficiency Benchmark
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run causal paired benchmark
+        run: python .naya/runtime/computation_efficiency_causal_benchmark.py
+      - name: Validate benchmark acceptance
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=json.loads(Path('.naya/project-intelligence/COMPUTATION-EFFICIENCY-CAUSAL-PAIRED-RUN-2026-09-22.json').read_text())
+          assert p['status']=='VERIFIED'
+          assert p['acceptance']['causal_retention'] is True
+          assert p['acceptance']['directly_observed_avoided_work'] is True
+          assert p['verification']['verified_outcome_preserved'] is True
+          assert p['avoided_work']['canonical_content_objects'] >= 1
+          print('PASS — causal retained intelligence directly avoided canonical content work')
+          PY
+      - name: Commit durable benchmark evidence
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .naya/runtime/computation_efficiency_causal_benchmark.py .naya/project-intelligence/COMPUTATION-EFFICIENCY-RETAINED-UNIT-CAUSAL-2026-09-22.json .naya/project-intelligence/COMPUTATION-EFFICIENCY-CAUSAL-PAIRED-RUN-2026-09-22.json
+          git commit -m "proof: record causal retained-computation benchmark"
+          git push
