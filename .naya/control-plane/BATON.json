@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T20:13:13.532Z",
+  "generated_at": "2026-09-22T20:36:14.665Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey."
+    "block_next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,9 +70,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
+    "action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "The human-facing Smart Feed journey is now verified. The remaining adjacent runtime hole is the convenience smartFeed() API boundary observed as Failed to fetch.",
+    "reason": "GAP-002, the complete human journey, and the direct Smart Feed runtime API boundary are now verified. The next highest-value frontier is consolidated adversarial acceptance.",
     "acceptance": [
       "Open the canonical live Hub.",
       "Understand the current intelligence/activity projection.",
@@ -85,11 +85,11 @@
       "Understand visible evidence/provenance.",
       "Continue with one authorized next action."
     ],
-    "verification": "Diagnose the direct authenticated runtime API failure, prove the corrected helper against naya-smart-feed, and preserve the already-verified DOM/reload journey."
+    "verification": "Execute one consolidated current-main adversarial acceptance and record every required PASS/UNKNOWN/BLOCKED result."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Restore current state, diagnose only the NayaAssistantRuntime.smartFeed() direct authenticated API boundary, make the smallest causal repair, independently prove the helper against the deployed naya-smart-feed function, update proof/control-plane, and leave exactly one successor action.",
+    "prompt": "Restore current state, execute the consolidated adversarial acceptance matrix, independently verify every security/privacy/replay/lineage receipt boundary, record proof and unknowns, reconcile the control plane, and leave exactly one successor action.",
     "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
   },
   "playback": {
