@@ -176,28 +176,17 @@
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
     "exact_live_source_parity": "PASS",
     "browser_surface_acceptance": "PASS",
-    "consolidated_adversarial_matrix": "NOT_EXECUTED"
+    "consolidated_adversarial_matrix": "PROVEN",
+    "consolidated_adversarial_matrix_run": 35787965745,
+    "consolidated_adversarial_matrix_source_head": "e21a87889506cbde3564c0f74db0090ac4a71f36"
   },
   "last_adversarial_attempt": {
-    "status": "BLOCKED_NOT_EXECUTED",
-    "source_head": "24e957997c7d2193697507ce0955599a4335a24c",
-    "reason": "The canonical consolidated nine-dimension runner now exists on main and passed fresh managed-runtime execution plus independent receipt verification at run 35787965745.",
-    "prior_fresh_subset": {
-      "run": 35785994422,
-      "receipt": "eec76e06-bf71-40ae-bfe8-6b19c51c9463",
-      "artifact": 10720735285
-    },
-    "required_dimensions": [
-      "owner/non-owner isolation",
-      "revocation",
-      "expiration",
-      "replay/idempotency",
-      "stale intelligence",
-      "superseded lineage",
-      "receipt integrity",
-      "unauthorized persistence",
-      "privacy boundary"
-    ]
+    "status": "PROVEN",
+    "source_head": "e21a87889506cbde3564c0f74db0090ac4a71f36",
+    "run": 35787965745,
+    "job": 106949286253,
+    "reason": "All nine dimensions executed at one exact source identity and every managed-runtime receipt was independently verified.",
+    "artifact": 10720229874
   },
   "current_frontier": {
     "next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
