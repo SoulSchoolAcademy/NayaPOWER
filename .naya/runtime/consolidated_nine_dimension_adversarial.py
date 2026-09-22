@@ -77,7 +77,7 @@ def make_receipt(owner_id,dimension,status,evidence):
     ih=hashlib.sha256(json.dumps(evidence,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     dh=hashlib.sha256(json.dumps({"dimension":dimension,"status":status},sort_keys=True,separators=(",",":")).encode()).hexdigest()
     row={"user_id":owner_id,"project_id":"NayaNET","revision":1,"action":"ADVERSARIAL_MATRIX:"+dimension,"expected_result":"PASS","observed_result":status,
-      "status":status,"evidence":evidence,"learning":{"matrix":"CONSOLIDATED_NINE_DIMENSION","source_sha":SOURCE_SHA,"run_identity":RUN_ID},
+      "status":"SUCCESS" if status=="PASS" else "FAILED","evidence":evidence,"learning":{"matrix":"CONSOLIDATED_NINE_DIMENSION","source_sha":SOURCE_SHA,"run_identity":RUN_ID},
       "value":{"dimension":dimension,"managed_runtime":True},"policy_key":"NAYANET-CONSOLIDATED-ADVERSARIAL-V1","policy_input_hash":ih,
       "policy_decision_hash":dh,"request_id":f"{RUN_ID}:{dimension}"}
     s,d=rest("/rest/v1/"+RECEIPT_TABLE,"POST",row,os.environ["OWNER_TOKEN"])
@@ -110,7 +110,7 @@ def cct_cases():
     return a,b,{"stale_rejected":a,"superseded_parent_rejected":b}
 
 def receipt_rows():
-    return rest("/rest/v1/"+RECEIPT_TABLE,token=os.environ["OWNER_TOKEN"],params={"select":"request_id,status,policy_input_hash,policy_decision_hash,evidence,learning","request_id":"like."+RUN_ID+":*"})
+    return rest("/rest/v1/"+RECEIPT_TABLE,token=os.environ["OWNER_TOKEN"],params={"select":"request_id,status,observed_result,policy_input_hash,policy_decision_hash,evidence,learning","request_id":"like."+RUN_ID+":*"})
 
 def run():
     owner,token=signup(); os.environ["OWNER_TOKEN"]=token
@@ -149,7 +149,7 @@ def verify():
         if d not in expected: continue
         ih=hashlib.sha256(json.dumps(r.get("evidence",{}),sort_keys=True,separators=(",",":")).encode()).hexdigest()
         dh=hashlib.sha256(json.dumps({"dimension":d,"status":r["status"]},sort_keys=True,separators=(",",":")).encode()).hexdigest()
-        if r["status"]!="PASS" or ih!=r["policy_input_hash"] or dh!=r["policy_decision_hash"]: failures.append(d+":integrity")
+        if r["status"]!="SUCCESS" or r.get("observed_result")!="PASS" or ih!=r["policy_input_hash"] or dh!=r["policy_decision_hash"]: failures.append(d+":integrity")
     ok=not failures and expected==found
     print(json.dumps({"status":"PASS" if ok else "FAIL","source_sha":data["source_sha"],"run_identity":data["run_identity"],"verified_dimensions":sorted(found),"failures":failures},indent=2))
     return 0 if ok else 1
