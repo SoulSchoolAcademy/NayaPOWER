@@ -1,0 +1,68 @@
+{
+  "schema": "naya/computation-efficiency-paired-run/v1",
+  "status": "VERIFIED",
+  "execution": {
+    "machine": "DESKTOP-OJ712N5",
+    "actual_checkout": "C:\\Users\\Admin\\NayaPOWER",
+    "checkout_branch": "repair-smart-share-runtime",
+    "checkout_head": "4c4b0d1e6cbf4ba90d908931e924f780907de6b1",
+    "checkout_state": "DIRTY_AND_105_COMMITS_BEHIND_ORIGIN_MAIN",
+    "canonical_source_head": "979cc4d8142fd199fb17806b2799a11f22d5ef0c",
+    "execution_mode": "Windows runtime using a clean task-specific snapshot extracted from origin/main because full Windows checkout of origin/main is blocked by an existing repository path containing ':'",
+    "snapshot_path": "C:\\Temp\\NayaPOWER-paired-benchmark"
+  },
+  "frozen_task": "Recover mission, active block, and exactly one canonical next action from STATE + BLOCKS + MAP + PROOF without reading BATON.json or conversation history.",
+  "task_hash": "8f22ea0516988dfbc84034d9f54c09a1884515dc440cebbd6f977af2ac0ef35c",
+  "cycle_a": {
+    "mode": "COLD",
+    "reconstruction_units": 4,
+    "wall_time_ms": 0.003
+  },
+  "cycle_b": {
+    "mode": "RETAINED",
+    "reused_units": 3,
+    "reconstruction_units": 1,
+    "wall_time_ms": 0
+  },
+  "unit_definition": "One field reconstruction = one canonical field resolved into the frozen task result. This is an instrumented engineering unit, not a model-token equivalent.",
+  "retained_learning": {
+    "path": ".naya/project-intelligence/COMPUTATION-EFFICIENCY-RETAINED-UNIT.json",
+    "task_hash": "8f22ea0516988dfbc84034d9f54c09a1884515dc440cebbd6f977af2ac0ef35c",
+    "provenance_bound": true,
+    "reused_fields": [
+      "mission",
+      "active_block",
+      "active_block_status"
+    ]
+  },
+  "avoided_work": {
+    "units": 3,
+    "status": "COUNTERFACTUAL",
+    "basis": "Cycle A performed four field reconstructions; Cycle B reused three provenance-bound values whose source hashes remained unchanged.",
+    "applicability": "Same frozen task and same canonical source snapshot; next_action remains mutable and is independently recomputed."
+  },
+  "verification": {
+    "status": "VERIFIED",
+    "independent_canonical_revalidation": true,
+    "outcome_equal": true,
+    "next_action_recomputed": true,
+    "source_hashes": {
+      "STATE.json": "59abc8bf9e7120129445b84aeb83ee74e6fc2c2b7dab774fb2e1603bbac8a276",
+      "BLOCKS.json": "116d39dddb95401bdc98c340980bb319dd783382c26f1a5c790b6497ba7ef2c2",
+      "MAP.json": "81b1ff0b6c589312e06f2ae7265b065b9d9ecae621a07e74660ef15cbc39c799",
+      "PROOF.json": "fc5bcc68c965ce7a3c08aa5a18924cc0b181305d34058cba49ffca7e8f1d93bc"
+    }
+  },
+  "resources": {
+    "search_calls": 0,
+    "tool_calls": 0,
+    "model_calls": 0,
+    "tokens": "NOT_CLAIMED",
+    "retries": 0,
+    "human_time_ms": "UNKNOWN",
+    "duplicate_reasoning": "instrumented as field units; semantic duplicate reasoning is not claimed"
+  },
+  "interpretation": "The run directly observed three avoided field-reconstruction units under the defined engineering unit. This is a bounded computation-saving measurement, not a claim of model-token, GPU, dollar, or semantic-reasoning savings.",
+  "evidence_boundary": "Model/token work, semantic duplicate reasoning, and human time remain unmeasured; they are explicitly not claimed.",
+  "continuation": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced."
+}
