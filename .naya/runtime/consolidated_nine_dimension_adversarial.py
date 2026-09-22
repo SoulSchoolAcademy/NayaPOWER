@@ -158,3 +158,5 @@ if __name__=="__main__":
     ap=argparse.ArgumentParser(); ap.add_argument("--verify",action="store_true")
     if ap.parse_args().verify: raise SystemExit(verify())
     run()
+
+# canonical-matrix-trigger-closure: 2026-09-22
