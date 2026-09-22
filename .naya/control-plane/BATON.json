@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:44:43.599Z",
+  "generated_at": "2026-09-22T18:45:03.448118+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "979cc4d8142fd199fb17806b2799a11f22d5ef0c",
+    "live_head": "c4e7cce540c5d4666eb3b0b8b0450f90a98170e2",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Verify outcome quality/provenance/authority are not degraded."
+    "block_next_action": "Record the result and leave one successor action."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -25,8 +25,7 @@
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
     "active_block": "COMPUTATION-EFFICIENCY-P1",
-    "active_block_status": "ACTIVE",
-    "current_frontier": "Verify outcome quality/provenance/authority are not degraded."
+    "active_block_status": "ACTIVE"
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -68,9 +67,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Verify outcome quality/provenance/authority are not degraded.",
+    "action": "Record the result and leave one successor action.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived after causal benchmark qualified three provenance-bound avoided field-reconstruction units under the V1 counterfactual rules.",
+    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "acceptance": [
       "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "Run the same task with retained verified intelligence reuse.",

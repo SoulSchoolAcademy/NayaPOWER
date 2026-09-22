@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Verify outcome quality/provenance/authority are not degraded.",
+    "next_action": "Record the result and leave one successor action.",
     "next_actions": [
-      "Verify outcome quality/provenance/authority are not degraded."
+      "Record the result and leave one successor action."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -49,7 +49,7 @@
       "human time",
       "provenance"
     ],
-    "next_action_reason": "Derived after causal benchmark qualified three provenance-bound avoided field-reconstruction units under the V1 counterfactual rules.",
+    "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "current_frontier": {
       "active_block": "COMPUTATION-EFFICIENCY-P1",
       "priority": "P1",
@@ -81,7 +81,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+    "next_action": "Record the result and leave one successor action.",
     "completion": "Project Intelligence current-head cold successor proof is verified; next completion boundary is human-facing whole-journey acceptance with evidence."
   },
   "last_next_action_cycle": {
