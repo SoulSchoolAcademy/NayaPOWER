@@ -132,7 +132,11 @@
     "Project Intelligence event reconstruction timezone defect was repaired in two historical canonical events whose effective_at values lacked timezone offsets; deterministic reconstruction now passes current-head home-run.",
     "The current Project Intelligence home-run proves sender → receiver → retrieval → render → ACK → cold successor → authority → authorized continuation → successor receipt as one current-head runtime chain at the recorded source scope.",
     "Paired computation-efficiency benchmark executed on DESKTOP-OJ712N5 against the canonical origin/main source snapshot 979cc4d8142fd199fb17806b2799a11f22d5ef0c: Cycle A performed 4 instrumented field-reconstruction units; Cycle B reused 3 provenance-bound units and independently recomputed the mutable next action. This proves a bounded 3-unit avoided-work measurement, not model/token/GPU/dollar savings.",
-    "Causal paired benchmark run 2026-09-22 now qualifies three avoided field-reconstruction units under the V1 counterfactual rules: Cycle A performed four units before persisting retained intelligence; Cycle B consumed that durable artifact, reused three fields, independently recomputed mutable next_action, and verified equal outcome."
+    "Causal paired benchmark run 2026-09-22 now qualifies three avoided field-reconstruction units under the V1 counterfactual rules: Cycle A performed four units before persisting retained intelligence; Cycle B consumed that durable artifact, reused three fields, independently recomputed mutable next_action, and verified equal outcome.",
+    "2026-09-22 canonical Hub readiness inventory established at .naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md.",
+    "2026-09-22 README-FIRST.md established as the boot pointer; BATON.json remains the single current continuation object.",
+    "Human Surface Completeness run 35771409482 passed its declared route/surface checks, but it does not prove visual fidelity, singular shell ownership, or the full human causal journey.",
+    "Current React App selects AppShellV3 as its shell; HubBaselineApp remains a separate iframe-based baseline implementation and must not become a competing production shell."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -277,8 +281,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-    "completion": "Complete the full human journey with direct live behavioral evidence."
+    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+    "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
   },
   "reconciliation": {
     "date": "2026-09-21",
@@ -287,7 +291,7 @@
     "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
   },
   "current_next_action": {
-    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-    "reason": "The causal computation-efficiency boundary is verified; the next maximum-value frontier is direct live human-journey proof."
+    "action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+    "reason": "The readiness inventory identified shell/source/build/runtime ownership as the first deterministic boundary before visual and feature work."
   }
 }
