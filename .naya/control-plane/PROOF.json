@@ -936,8 +936,8 @@
       "751e51f0-5b21-43ef-a3fd-329facc2ae1f"
     ]
   },
-  "interpretation": "The consolidated nine-dimension matrix and current-head Project Intelligence home-run remain proven at their recorded scopes. GAP-001 is now proven at the canonical Hub source scope: one shell owner, exact source/build/live parity, and fresh human Smart Note golden-path execution against the deployed runtime. The next causal frontier is the fresh non-owner Project Intelligence retrieval boundary.",
-  "current_repository_head": "17b8091b56b3472b6188d83e30c0322bd1d6c512",
+  "interpretation": "Fresh Smart Note → verified learning → learning retrieval is now proven at current-main managed-runtime scope. The final workflow verifier failed only because its Node heredoc mixed require() with top-level await; independent Supabase verification confirmed the persisted learning/event lineage. The next causal frontier is current-main learning influence on a later governed decision.",
+  "current_repository_head": "86eb8293b2d46704f234aa82d889028e89b70857",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1207,5 +1207,37 @@
       "fresh_identity_not_owner": true,
       "owner_receipt_independent_check": "PASS"
     }
+  },
+  "project_intelligence_smart_note_learning_boundary": {
+    "status": "PROVEN",
+    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_LEARNING_RETRIEVAL",
+    "workflow_run": 35791868426,
+    "job_id": 106962015427,
+    "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+    "owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+    "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+    "evidence_id": "06fefcfb-64d0-4c40-a1c3-f51491f04d0b",
+    "capture_receipt_id": "127a437a-8841-4699-b89c-e3da38be9a1d",
+    "runtime_observation": "Smart Note captured through canonical Hub; learning_candidate created; learning_verify promoted evidence to ACTIVE; learning_retrieve returned the exact ACTIVE evidence.",
+    "independent_verification": "PASS",
+    "independent_verification_source": "Supabase managed SQL read after workflow runtime",
+    "independently_verified": {
+      "learning_status": "ACTIVE",
+      "learning_member_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+      "learning_source_event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+      "event_owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+      "event_project_id": "NayaNET",
+      "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+      "verification_method": "MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL"
+    },
+    "workflow_harness_note": "Workflow job conclusion FAILED after the managed-runtime boundary completed because its independent-verification Node heredoc used require() with top-level await, producing ERR_AMBIGUOUS_MODULE_SYNTAX. This is proof-harness failure only; the persisted runtime result was independently verified outside the failed step.",
+    "causal_repairs": [
+      {
+        "defect": "Browser page.evaluate() failed to fetch the compound-intelligence Edge Function.",
+        "repair": "Moved managed-runtime Edge Function invocation to the GitHub runner's Node fetch while retaining the authenticated session token.",
+        "repair_source_commit": "76a54f5fd508595072d532ffe8b6fcad9374ff17"
+      }
+    ],
+    "final_truth_boundary": "The Smart Note → learning_candidate → learning_verify → learning_retrieve runtime boundary is PROVEN for this fresh owner and source scope. The workflow's final independent-verifier step is not itself passing and must not be described as a successful workflow job."
   }
 }
