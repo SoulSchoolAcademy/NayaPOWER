@@ -1046,23 +1046,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script src="/smart-feed.js?v=20260919-p1"></script>
 <script src="/smart-tabs.js?v=20260919-p1"></script>\n<script src="/hub-completeness.js?v=20260922-completeness2"></script>
 <script src="/nayanet-interface-command-station.js?v=20260921-v1"></script>
-<script id="naya-hub-command-deck-runtime-v1">
-(()=>{'use strict';
-function nayaCommandDeck(){
-  const deck=document.querySelector('.naya-command-deck'); if(!deck||deck.dataset.ready)return; deck.dataset.ready='1';
-  deck.addEventListener('click',e=>{
-    const b=e.target.closest('[data-naya-command]'); if(!b)return;
-    const k=b.dataset.nayaCommand;
-    if(k==='capture'&&typeof window.openCapture==='function'){window.openCapture();return}
-    if(k==='ask'){
-      const s=document.getElementById('search'); if(s){s.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>s.focus(),250)} return;
-    }
-    if(k==='explore'){document.querySelector('.feedNav')?.scrollIntoView({behavior:'smooth',block:'center'});}
-  });
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',nayaCommandDeck,{once:true});else nayaCommandDeck();
-})();
-</script><!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->
+<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->
 <script>
 (()=>{'use strict';
 const MARK='<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->';
@@ -1121,6 +1105,23 @@ function boot(){
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 new MutationObserver(boot).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+<script id="naya-hub-command-deck-runtime-v1">
+(()=>{'use strict';
+function nayaCommandDeck(){
+  const deck=document.querySelector('.naya-command-deck'); if(!deck||deck.dataset.ready)return; deck.dataset.ready='1';
+  deck.addEventListener('click',e=>{
+    const b=e.target.closest('[data-naya-command]'); if(!b)return;
+    const k=b.dataset.nayaCommand;
+    if(k==='capture'&&typeof window.openCapture==='function'){window.openCapture();return}
+    if(k==='ask'){
+      const s=document.getElementById('search'); if(s){s.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>s.focus(),250)} return;
+    }
+    if(k==='explore'){document.querySelector('.feedNav')?.scrollIntoView({behavior:'smooth',block:'center'});}
+  });
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',nayaCommandDeck,{once:true});else nayaCommandDeck();
 })();
 </script></body>
 <!-- HUB-VISUAL-UX-V1-RELEASE-CHECKPOINT -->
