@@ -79,6 +79,7 @@ const runtimeFeed=await page.evaluate(()=>window.NayaAssistantRuntime.smartFeed(
 const apiItems=Array.isArray(runtimeFeed?.items)?runtimeFeed.items:[];
 const apiExact=apiItems.find(x=>x?.event_id===eventId);
 if(!apiExact) throw new Error("SMART_FEED_RUNTIME_API_PROJECTION_MISSING:"+JSON.stringify(apiItems.slice(0,10).map(x=>({event_id:x.event_id,title:x.title}))));
+console.log("SMART_FEED_API_SAMPLE",JSON.stringify({eventId,apiExact}));
 if(!apiExact.intelligent_block||apiExact.intelligent_block.block_id!==eventId) throw new Error("SMART_FEED_RUNTIME_API_BLOCK_MISSING:"+JSON.stringify(apiExact.intelligent_block));
 await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
 const rendered=await page.locator('[data-event-id="'+eventId+'"]').evaluate(node=>({eventId:node.getAttribute("data-event-id"),title:node.querySelector("h2")?.textContent||"",schema:node.getAttribute("data-intelligent-block-schema"),blockEventId:node.getAttribute("data-intelligent-block-event-id"),truth:node.getAttribute("data-intelligent-block-truth"),authority:node.getAttribute("data-intelligent-block-authority"),privacy:node.getAttribute("data-intelligent-block-privacy"),lifecycle:node.getAttribute("data-intelligent-block-lifecycle"),hash:node.getAttribute("data-intelligent-block-hash")}));
