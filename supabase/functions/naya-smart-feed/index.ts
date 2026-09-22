@@ -4,7 +4,7 @@ const URL = Deno.env.get('SUPABASE_URL')!
 const publishable = JSON.parse(Deno.env.get('SUPABASE_PUBLISHABLE_KEYS')!).default
 const secret = JSON.parse(Deno.env.get('SUPABASE_SECRET_KEYS')!).default
 const admin = createClient(URL, secret)
-const cors = {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization,apikey,content-type','Access-Control-Allow-Methods':'POST,OPTIONS'}
+const cors = {'Access-Control-Allow-Origin':'*','Access-Control-Allow-Headers':'authorization,apikey,content-type,x-client-info,x-supabase-api-version','Access-Control-Allow-Methods':'POST,OPTIONS'}
 const json=(body:any,status=200)=>new Response(JSON.stringify(body),{status,headers:{...cors,'Content-Type':'application/json'}})
 
 Deno.serve(async(req)=>{
