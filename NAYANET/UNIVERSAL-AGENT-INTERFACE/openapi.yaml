@@ -4,7 +4,7 @@ info:
   version: 1.0.0
   description: Canonical REST/OpenAPI adapter over the existing governed NayaPOWER intelligence runtime.
 servers:
-  - url: https://nayanet-universal-agent-interface.workers.dev
+  - url: https://nayanet-universal-agent-interface.smartnetpodcast.workers.dev
 security:
   - bearerAuth: []
 paths:
