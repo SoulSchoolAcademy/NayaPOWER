@@ -114,7 +114,8 @@ def receipt_rows():
     return rest("/rest/v1/"+RECEIPT_TABLE,token=os.environ["OWNER_TOKEN"],params={"select":"request_id,status,observed_result,policy_input_hash,policy_decision_hash,evidence,learning","request_id":"like."+RUN_ID+":*"})
 
 def run():
-    owner,token=signup(); os.environ["OWNER_TOKEN"]=token
+    owner=os.environ["NAYANET_OWNER_ID"]
+    token=os.environ["OWNER_TOKEN"]
     results={}; receipts={}
     ok,e=owner_nonowner(owner,token); results["owner_non_owner"]=ok; receipts["owner_non_owner"]=make_receipt(owner,"owner_non_owner","PASS" if ok else "FAIL",e)
     ok,e=authority_case(revoked=True); results["revocation"]=ok; receipts["revocation"]=make_receipt(owner,"revocation","PASS" if ok else "FAIL",e)
