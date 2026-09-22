@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Run the same task with retained verified intelligence reuse.",
+    "next_action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
     "next_actions": [
-      "Run the same task with retained verified intelligence reuse."
+      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -49,7 +49,7 @@
       "human time",
       "provenance"
     ],
-    "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle."
+    "next_action_reason": "Derived automatically after verified Cycle B retained-intelligence reuse measurement and handoff repair."
   },
   "status_vocabulary": [
     "INTENDED",
@@ -75,7 +75,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Run the same task with retained verified intelligence reuse.",
+    "next_action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
     "completion": "Project Intelligence current-head cold successor proof is verified; next completion boundary is human-facing whole-journey acceptance with evidence."
   },
   "last_next_action_cycle": {
