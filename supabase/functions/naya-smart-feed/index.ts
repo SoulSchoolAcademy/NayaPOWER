@@ -92,6 +92,36 @@ Deno.serve(async(req)=>{
       return {...base,ledger_verification:verification,ledger_evidence_refs:l?.evidence_refs??[],ledger_value:l?.value??{},ledger_outcome:l?.outcome??{},ledger_learning_refs:l?.learning_refs??{}}
     })
   }
+  const attachBlocks=async(items:any[],collective=false)=>{
+    const ids=items.map((e:any)=>String(e.id)).filter(Boolean)
+    if(!ids.length) return items
+    const owners=[...new Set(items.map((e:any)=>String(e.user_id||'')).filter(Boolean))]
+    let blockQuery=admin.from('nayanet_intelligent_blocks')
+      .select('block_id,owner_id,subject_id,title,block_type,version,status,understanding_state,owner_scope,source_event_ids,evidence_refs,provenance,value_context,applicable_scope,content,supersedes_block_id,superseded_by_block_id,created_at,updated_at,schema_version')
+      .overlaps('source_event_ids',ids)
+    if(collective){
+      if(owners.length) blockQuery=blockQuery.in('owner_id',owners)
+    }else if(owners[0]){
+      blockQuery=blockQuery.eq('owner_id',owners[0])
+    }
+    const blockResult=await blockQuery
+    if(blockResult.error) throw new Error('INTELLIGENT_BLOCK_LOOKUP_FAILED:'+blockResult.error.message)
+    const byEvent=new Map<string,any>()
+    for(const block of blockResult.data||[]){
+      for(const eventId of block.source_event_ids||[]) byEvent.set(String(eventId),block)
+    }
+    return items.map((e:any)=>{
+      const block=byEvent.get(String(e.id))
+      if(!block) return e
+      if(!collective) return {...e,intelligent_block:block}
+      return {...e,intelligent_block:{
+        block_id:block.block_id,title:block.title,block_type:block.block_type,version:block.version,
+        status:block.status,understanding_state:block.understanding_state,owner_scope:block.owner_scope,
+        applicable_scope:block.applicable_scope,created_at:block.created_at,updated_at:block.updated_at,
+        schema_version:block.schema_version,source_event_ids:[String(e.id)]
+      }}
+    })
+  }
   if(stream==='personal'||stream==='activity'){
     let q=userSupabase.from('nayanet_cognition_events').select(fields).eq('project_id','NayaNET').eq('user_id',user.id).order('created_at',{ascending:false}).limit(limit+1)
     if(before) q=q.lt('created_at',before)
@@ -99,7 +129,7 @@ Deno.serve(async(req)=>{
     if(result.error) return json({ok:false,error:result.error.message},400)
     const rows=result.data||[]
     let items=rows.slice(0,limit).map((e:any)=>({...e,stream,source_id:e.id,visibility:'private',available_actions:stream==='personal'?['save','favorite','publish']:['save','favorite']}))
-    try{items=await attachLedger(items,user.id,false)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
+    try{items=await attachLedger(items,user.id,false);items=await attachBlocks(items,false)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
     return json({ok:true,stream,items,next_before:rows.length>limit?rows[limit-1].created_at:null})
   }
 
@@ -118,7 +148,7 @@ Deno.serve(async(req)=>{
     }
     const byId=new Map(events.map((e:any)=>[e.id,e]))
     let items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
-    try{items=await attachLedger(items,null,true)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
+    try{items=await attachLedger(items,null,true);items=await attachBlocks(items,true)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
     return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null})
   }
   return json({ok:false,error:'INVALID_STREAM'},400)
