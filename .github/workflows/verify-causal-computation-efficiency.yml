@@ -28,7 +28,8 @@ jobs:
           assert p['status']=='VERIFIED'
           assert p['acceptance']['causal_retention'] is True
           assert p['acceptance']['directly_observed_avoided_work'] is True
-          assert p['verification']['verified_outcome_preserved'] is True
+          assert p['verification']['outcome_equal'] is True
+          assert p['verification']['quality_regression'] is False
           assert p['avoided_work']['canonical_content_objects'] >= 1
           print('PASS — causal retained intelligence directly avoided canonical content work')
           PY
