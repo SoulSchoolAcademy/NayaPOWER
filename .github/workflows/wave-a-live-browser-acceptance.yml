@@ -10,6 +10,7 @@ on:
       - '.github/workflows/wave-a-hydration-diagnostic.yml'
       - '.github/workflows/wave-a-live-browser-acceptance.yml'
       - '.github/scripts/wave-a-canonical-hub-acceptance.mjs'
+      - '.naya/control-plane/BLOCKS.json'
   workflow_dispatch:
 
 permissions:
