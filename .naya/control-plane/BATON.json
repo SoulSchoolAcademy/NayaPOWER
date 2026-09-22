@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T20:04:43.953Z",
+  "generated_at": "2026-09-22T20:13:13.532Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
+    "block_next_action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -25,7 +25,7 @@
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
     "active_block": "HUMAN-JOURNEY-P2",
-    "active_block_status": "ACTIVE"
+    "active_block_status": "VERIFIED"
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -70,9 +70,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute the complete canonical human journey on the live Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "action": "Diagnose and repair the NayaAssistantRuntime.smartFeed() convenience API boundary against the deployed naya-smart-feed function, then rerun a direct authenticated runtime API proof without changing the verified human Hub journey.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection.",
+    "reason": "The human-facing Smart Feed journey is now verified. The remaining adjacent runtime hole is the convenience smartFeed() API boundary observed as Failed to fetch.",
     "acceptance": [
       "Open the canonical live Hub.",
       "Understand the current intelligence/activity projection.",
@@ -85,11 +85,11 @@
       "Understand visible evidence/provenance.",
       "Continue with one authorized next action."
     ],
-    "verification": "Independently verify event identity, persistence, Smart Feed projection, reload retrieval, and evidence without relying on prior conversation."
+    "verification": "Diagnose the direct authenticated runtime API failure, prove the corrected helper against naya-smart-feed, and preserve the already-verified DOM/reload journey."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Restore current NayaPOWER state, execute the complete canonical human journey on the live Hub, independently verify every transition and durable identity, record proof/unknowns, rebuild the baton, and leave exactly one executable successor action.",
+    "prompt": "Restore current state, diagnose only the NayaAssistantRuntime.smartFeed() direct authenticated API boundary, make the smallest causal repair, independently prove the helper against the deployed naya-smart-feed function, update proof/control-plane, and leave exactly one successor action.",
     "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
   },
   "playback": {
