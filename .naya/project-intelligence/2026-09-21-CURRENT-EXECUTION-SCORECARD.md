@@ -3,7 +3,7 @@
 ## Live source
 - Repository: SoulSchoolAcademy/NayaPOWER
 - Branch: main
-- Latest observed HEAD at this record: 71595b04154d71fca8694bd845eb0c28c1b88fae
+- Latest observed HEAD at this record: da69237219e03692ec05c8ce2e4d7358d9525f6d
 - Recorded HEAD is never authoritative; resolve live HEAD before consequential action.
 
 ## Score rule
@@ -33,14 +33,14 @@ INTELLIGENT_EVENT_V1 and INTELLIGENT_BLOCK_V1 are now canonical project contract
 - Frontier-aware whole-chain validator repair is in source; old stale active-block failure is no longer a valid reason to fail.
 
 ## Open / blocked
-1. Latest canonical Hub release run must complete before current production runtime can be treated as current-head.
-2. Human Surface Completeness previously failed because the deployed runtime did not satisfy the /dream route probe; the failure was a real runtime/source parity boundary, not evidence of a missing React route in current source.
-3. Current release is queued behind the configured assistant-cloudflare-production environment boundary.
-4. Computation efficiency is measured only for a bounded reuse case; universal savings are not claimed.
-5. Smart Mail and remaining feature lifecycles require consolidated human acceptance.
+1. The latest canonical Cloudflare release is now completed successfully at run `35676698696` (head `107d3dc3b77d432e37b8171769bc920e407b1cfc`); this proves that release machinery completed, but it does not automatically prove the newer `main` head is deployed.
+2. Human Surface Completeness / consolidated human journey remains an independent acceptance frontier; the recorded AppShellV3 capture failure must not be promoted to pass without a fresh successful browser proof.
+3. Computation efficiency is measured only for a bounded reuse case; universal savings are not claimed.
+4. Smart Mail and remaining feature lifecycles require consolidated human acceptance.
+5. Universal Agent Interface interoperability is now the architectural successor from Intelligent Block 001 and requires its own authorized MCP + REST/OpenAPI proof.
 
 ## Active next action
-Execute the consolidated human journey against the canonical Hub, beginning with current source → deployment parity, then OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.
+Implement and prove the first Universal Agent Interface boundary — remote MCP + REST/OpenAPI — against the existing NayaPOWER governance/execution substrate, while preserving the separate human-journey frontier. The proof must show one authorized agent using the same canonical intelligence truth path with transport, authorization, persistence, retrieval, and outcome verification separately evidenced.
 
 ## Acceptance law
 Do not promote an old successful run across a new source HEAD. Do not infer runtime behavior from source code. Stop at the first deterministic failure, repair only that boundary, rerun with new information, record the lesson, and continue.
