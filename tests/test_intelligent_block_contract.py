@@ -37,6 +37,9 @@ schema = json.loads(block_schema.read_text(encoding="utf-8"))
 assert schema["$id"] == "https://nayanet.app/contracts/intelligent-block-v1.schema.json"
 assert schema["title"] == "NayaNET Intelligent Block V1"
 assert schema["properties"]["identity"]["properties"]["schema_version"]["const"] == "NAYANET_INTELLIGENT_BLOCK_V1"
+assert {"lifecycle", "integrity"} <= set(schema["required"])
+assert schema["properties"]["integrity"]["properties"]["algorithm"]["const"] == "SHA-256"
+assert "truth" in schema["required"] and "authority" in schema["required"] and "value" in schema["required"]
 
 # Validate the portable YAML with Ruby's standard YAML parser when available in CI.
 # The contract gate also checks the canonical schema identifier without requiring
