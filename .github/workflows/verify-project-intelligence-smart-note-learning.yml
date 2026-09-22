@@ -52,10 +52,8 @@ jobs:
           }
           async function runtime(page,token,action,body){
             const key='pi-learning-'+process.env.GITHUB_RUN_ID+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
-            const r=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,body,key})=>{
-              const x=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
-              return {status:x.status,body:await x.json().catch(()=>({}))};
-            },{supabaseUrl,supabaseKey,token,action,body,key});
+            const x=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
+            const r={status:x.status,body:await x.json().catch(()=>({}))};
             if(r.status!==200||r.body?.ok!==true) throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(r));
             return r.body.result;
           }
