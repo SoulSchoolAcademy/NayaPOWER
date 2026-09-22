@@ -106,20 +106,42 @@ The proof must use a fresh creation, not a historical fixture, and must prove th
 - Unknown and blocked states are never green.
 - No retry without new information.
 
+### EXECUTION RECEIPT — 2026-09-22 12:xx PT
+
+**Completed in this baton:**
+1. Inspected the protected Hub visual reference and canonical Hub contracts.
+2. Inspected current AppShellV3, HubRouter, SmartFeedBoard, PIS receiver and Intelligent Block types.
+3. Created the canonical feature-by-feature Hub Readiness Inventory.
+4. Bound the systems update to that inventory.
+5. Established the single operational Activity Board relay.
+6. Identified GAP-002 as the first deterministic remaining release boundary.
+7. Confirmed the source-level Intelligent Block → Smart Feed projection repair in commit `72dda5bb466ddd022ef0771585d1e63a6383ef3f`.
+8. Removed the legacy competing `AppShell.tsx` implementation.
+9. Removed the legacy `SparklingShapeShell.tsx` implementation containing the competing right rail.
+10. Removed the unused `hub-right-rail.css` import so AppShellV3 is the sole canonical shell source.
+
+**What is NOT yet proven:** the fresh deployed runtime causal chain for the repaired Block projection. Source implementation is not runtime verification.
+
 ### NEXT NAYA — TAG → YOU'RE IT
 
-1. Read the canonical readiness inventory.
-2. Reconcile live `main` and current control-plane state.
-3. Run/inspect the canonical Smart Note golden-path proof.
-4. Stop at the first deterministic failure.
-5. Repair only that causal boundary.
-6. Rerun with new information.
-7. Verify the fresh Block projection after reload/retrieval.
-8. Record evidence and learning.
-9. Update Activity/control-plane/baton.
-10. Leave exactly one executable successor action.
+**ONE ACTION ONLY: independently verify GAP-002 against the fresh current source/runtime.**
 
-**Do not ask Shawn to reconstruct the project. Execute the established frontier.**
+Required chain:
+
+`FRESH SMART NOTE → INTELLIGENT BLOCK → INDEX → SMART FEED → RELOAD → FRESH RETRIEVAL → VISIBLE IDENTITY/TRUTH/AUTHORITY/PROVENANCE/LIFECYCLE/INTEGRITY/EVIDENCE → ONE AUTHORIZED CONTINUATION → RECEIPT`
+
+Do not broaden the mission until this gate is green.
+
+**Execution method:**
+- Reconcile current `main` first.
+- Run the canonical Hub golden-path proof against the current source.
+- If it fails, classify the first causal failure and make exactly one boundary repair.
+- Rerun only with new information.
+- If it passes, independently inspect the evidence artifact and exact deployment/source identity.
+- Then update the inventory, control-plane state, Activity relay, and successor baton.
+- Leave exactly one next action.
+
+**Never ask Shawn to reconstruct state. TAG → YOU'RE IT.**
 
 ## 🔎 SMART EVIDENCE LINKS
 
