@@ -5,8 +5,12 @@ on:
     branches: [main]
     paths:
       - 'NAYANET/HUB/index.html'
-      - 'NAYANET/HUB/public/assistant-runtime.js'
+      - 'assistant-runtime.js'
+      - 'hub-completeness.js'
+      - 'smart-feed.js'
+      - 'smart-tabs.js'
       - 'NAYANET/HUB/public/nayanet-interface-command-station.js'
+      - '.github/workflows/assistant-cloudflare-hub-release.yml'
       - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/verify-canonical-hub-smart-note-golden-path.yml'
       - '.naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md'
