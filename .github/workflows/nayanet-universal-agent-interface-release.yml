@@ -23,8 +23,6 @@ jobs:
     environment: assistant-cloudflare-production
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      SUPABASE_URL: ${{ secrets.NAYANET_SUPABASE_URL }}
-      SUPABASE_ANON_KEY: ${{ secrets.NAYANET_SUPABASE_ANON_KEY }}
       CF_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
     steps:
       - name: Require explicit deployment authorization
@@ -42,6 +40,20 @@ jobs:
         with:
           ref: ${{ inputs.source_ref }}
 
+      - name: Resolve canonical runtime configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s assistant-runtime.js
+          SUPABASE_URL="$(sed -n "s/.*const URL='\\([^']*\\)'.*/\\1/p" assistant-runtime.js | head -n1)"
+          SUPABASE_ANON_KEY="$(sed -n "s/.*KEY='\\([^']*\\)'.*/\\1/p" assistant-runtime.js | head -n1)"
+          test -n "${SUPABASE_URL}"
+          test -n "${SUPABASE_ANON_KEY}"
+          {
+            echo "SUPABASE_URL=${SUPABASE_URL}"
+            echo "SUPABASE_ANON_KEY=${SUPABASE_ANON_KEY}"
+          } >> "${GITHUB_ENV}"
+
       - name: Validate canonical adapter source
         shell: bash
         run: |
@@ -51,6 +63,8 @@ jobs:
           grep -q "nayanet-compound-intelligence" NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
           grep -q "/mcp" NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
           grep -q "/v1/retrieve" NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml
+          grep -q "nayanet-universal-agent-interface.workers.dev" NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml
+          grep -q "url.pathname==='/health'" NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js
           test -n "${SUPABASE_URL}"
           test -n "${SUPABASE_ANON_KEY}"
           test -n "${CLOUDFLARE_API_TOKEN}"
