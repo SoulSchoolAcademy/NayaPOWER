@@ -937,7 +937,7 @@
     ]
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "b49c7a99544ae5c87283a410938b9ed2a01a88a0",
+  "current_repository_head": "2279bbb492c8c8e0da163f33cac3769c94fafcd7",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1083,7 +1083,6 @@
     "claim_scope": "canonical static Hub deployment/runtime surface only",
     "non_claims": [
       "full Smart Note creation/reload identity at this exact deployment",
-      "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
       "fresh UAI MCP/REST production proof",
       "learning behavior-change proof"
     ],
@@ -1109,5 +1108,32 @@
       "unauthorized persistence",
       "privacy boundary"
     ]
+  },
+  "project_intelligence_home_run_20260922": {
+    "status": "VERIFIED_PROVEN",
+    "claim_type": "FRESH_MANAGED_RUNTIME_WHOLE_JOURNEY",
+    "workflow": ".github/workflows/verify-nayanet-project-intelligence-home-run.yml",
+    "run_id": 35789192530,
+    "job_id": 106953327025,
+    "observed_head": "2279bbb492c8c8e0da163f33cac3769c94fafcd7",
+    "packet_id": "03c11b93-bd80-58f8-a48a-9787a55b12fa",
+    "receiver_event_id": "e36f8d6e-4ba3-4f80-a4e4-f70234030881",
+    "ack_receipt_id": "5409e245-e9de-4002-b4db-b9c2b97d65dc",
+    "continuation_event_id": "continuation:275024ef-4453-4685-8cbe-f2382648a067",
+    "continuation_receipt_id": "a61da5e5-efb3-4594-a092-7a14733beed3",
+    "successor_event_id": "successor:137d2418-b12f-4a77-b288-bd02b94e5cdd",
+    "successor_receipt_id": "34e62abb-07cb-4eec-bb98-c1b20b832034",
+    "consolidated_gate_receipt_id": "c3d3a978-9b40-4d6c-96e1-7616599b0ec9",
+    "artifact_id": 10721925186,
+    "artifact_sha256": "7927a15e4be0c71c4403f475b161bca28790130cc589380c6bd844a7c574b8d",
+    "flags": {
+      "retrieved": true,
+      "rendered": true,
+      "cold_14q_evidence_metadata": true,
+      "cold_successor": true,
+      "authorized_continuation": true
+    },
+    "independent_receipt_verification": "PASS",
+    "claim_scope": "fresh current-main owner-bound Project Intelligence bridge retrieval/render/cold-successor runtime"
   }
 }
