@@ -150,7 +150,7 @@ def verify():
         d=r["request_id"].split(":")[-1]
         if d not in expected: continue
         ih=hashlib.sha256(json.dumps(r.get("evidence",{}),sort_keys=True,separators=(",",":")).encode()).hexdigest()
-        dh=hashlib.sha256(json.dumps({"dimension":d,"status":r["status"]},sort_keys=True,separators=(",",":")).encode()).hexdigest()
+        dh=hashlib.sha256(json.dumps({"dimension":d,"status":r.get("observed_result")},sort_keys=True,separators=(",",":")).encode()).hexdigest()
         if r["status"]!="SUCCESS" or r.get("observed_result")!="PASS" or ih!=r["policy_input_hash"] or dh!=r["policy_decision_hash"]: failures.append(d+":integrity")
     ok=not failures and expected==found
     print(json.dumps({"status":"PASS" if ok else "FAIL","source_sha":data["source_sha"],"run_identity":data["run_identity"],"verified_dimensions":sorted(found),"failures":failures},indent=2))
