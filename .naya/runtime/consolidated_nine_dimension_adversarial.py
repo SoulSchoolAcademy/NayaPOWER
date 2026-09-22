@@ -76,7 +76,7 @@ def base_packet(owner_id,suffix):
 def make_receipt(owner_id,dimension,status,evidence):
     ih=hashlib.sha256(json.dumps(evidence,sort_keys=True,separators=(",",":")).encode()).hexdigest()
     dh=hashlib.sha256(json.dumps({"dimension":dimension,"status":status},sort_keys=True,separators=(",",":")).encode()).hexdigest()
-    row={"user_id":owner_id,"project_id":"NayaNET","revision":1,"action":"ADVERSARIAL_MATRIX:"+dimension,"expected_result":"PASS","observed_result":status,
+    row={"user_id":owner_id,"project_id":"NayaNET","revision":int(hashlib.sha256(dimension.encode()).hexdigest()[:12],16),"action":"ADVERSARIAL_MATRIX:"+dimension,"expected_result":"PASS","observed_result":status,
       "status":"SUCCESS" if status=="PASS" else "FAILED","evidence":evidence,"learning":{"matrix":"CONSOLIDATED_NINE_DIMENSION","source_sha":SOURCE_SHA,"run_identity":RUN_ID},
       "value":{"dimension":dimension,"managed_runtime":True},"policy_key":"NAYANET-CONSOLIDATED-ADVERSARIAL-V1","policy_input_hash":ih,
       "policy_decision_hash":dh,"request_id":f"{RUN_ID}:{dimension}"}
