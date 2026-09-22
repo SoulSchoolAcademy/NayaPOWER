@@ -21,7 +21,6 @@
     ".naya/memory/NAYAPOWER-RUNTIME-BRIEFING.md",
     ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
     "README.md",
-    ".naya/NAYA-LAW-SYSTEM-PROTOCOL.md",
     ".naya/NAYA-CONTEXT-BOOT-PROTOCOL.md",
     ".naya/SUPERBRAIN-COLD-START-AND-CONTINUITY-CONTRACT.md",
     ".naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md",
@@ -82,10 +81,6 @@
     "superbrain_continuity": {
       "canonical": ".naya/SUPERBRAIN-COLD-START-AND-CONTINUITY-CONTRACT.md",
       "purpose": "Canonical lifecycle for identify, restore, update, inherit, prioritize, execute, verify, learn, capture, propagate, checkpoint, handoff, and repeat"
-    },
-    "naya_law": {
-      "canonical": ".naya/NAYA-LAW-SYSTEM-PROTOCOL.md",
-      "purpose": "Mandatory execution-integrity protocol and Pre-Action Gate"
     },
     "constitution": {
       "canonical": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
@@ -193,7 +188,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "context",
       "execution_continuity",
@@ -217,7 +211,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "context",
       "execution_continuity",
@@ -243,7 +236,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "context",
       "execution_continuity",
@@ -275,7 +267,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "context",
       "execution_continuity",
@@ -300,7 +291,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "context",
       "execution_continuity",
@@ -327,7 +317,6 @@
       "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
-      "naya_law",
       "constitution",
       "memory",
       "retrieval",
