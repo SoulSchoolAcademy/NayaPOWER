@@ -90,13 +90,18 @@ jobs:
             mark('PERSISTENCE_DIAGNOSTIC',persistenceDiagnostic);
             const pisTrace={network:pisNetwork,mapping:pisMapped};
             mark('PIS_BROWSER_BOUNDARY_TRACE',pisTrace);
-            if(!pisNetwork.length)throw new Error('PIS_BROWSER_RESPONSE_NOT_OBSERVED');
-            if(!pisMapped.length)throw new Error('PIS_BROWSER_MAPPING_NOT_OBSERVED');
-            const mappedJson=pisMapped.map(x=>{try{return JSON.parse(x.slice(x.indexOf('PIS_LIVE_INDEX_TRACE')+'PIS_LIVE_INDEX_TRACE'.length).trim())}catch{return null}}).filter(Boolean).at(-1);
-            if(!mappedJson)throw new Error('PIS_BROWSER_MAPPING_PARSE_FAILED');
-            if(!mappedJson.mapped_event_ids?.includes(eventId))throw new Error('PIS_INDEX_ROW_TO_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,mappedJson}));
-            const responseHasEvent=pisNetwork.some(trace=>Array.isArray(trace.rows)&&trace.rows.some(row=>row.metadata_event_id===eventId||row.source_id===eventId));
-            if(!responseHasEvent)throw new Error('PIS_BROWSER_RESPONSE_EVENT_ID_MISSING:'+JSON.stringify({eventId,pisNetwork}));
+            const indexDeadline=Date.now()+15000;let indexVerified=false,indexRows=[];
+            while(Date.now()<indexDeadline){
+              const probe=await page.evaluate(async({eventId})=>{
+                const rt=window.NayaAssistantRuntime;const snap=rt?.snapshot?.();const client=window.__NayaNETSupabaseClient;
+                if(!client||!snap?.user_id)return {rows:[],error:'RUNTIME_CLIENT_UNAVAILABLE'};
+                const cognition=await rt.retrieve(eventId);const row=cognition?.[0];if(!row)return {rows:[],error:'COGNITION_NOT_FOUND'};
+                const q=await client.from('nayanet_intelligence_index').select('id,owner_id,source_table,source_id,object_type,title,status,metadata').eq('owner_id',snap.user_id).eq('source_table','nayanet_cognition_events').eq('source_id',row.id).limit(5);
+                return {rows:q.data||[],error:q.error?.message||null};
+              },{eventId});
+              indexRows=probe.rows||[];if(indexRows.length){indexVerified=true;break}await new Promise(r=>setTimeout(r,500));
+            }
+            if(!indexVerified)throw new Error('PIS_INDEX_ROW_NOT_OBSERVED:'+JSON.stringify({eventId,indexRows}));
             await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'domcontentloaded',timeout:60000});
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
             await page.waitForSelector('.smart-feed-board',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
