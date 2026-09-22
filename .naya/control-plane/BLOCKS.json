@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary.",
+    "next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main.",
     "next_actions": [
-      "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary."
+      "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,7 +57,7 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "Canonical Hub deployment/cache-identity boundary is now verified at run 35784147783. The remaining authorized frontier is consolidated adversarial acceptance, blocked only by Desktop Commander transport.",
+    "next_action_reason": "The first exact-head adversarial preflight failed before matrix execution because STATE.current_next_action and BLOCKS.current_frontier.next_action diverged.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
@@ -91,7 +91,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary.",
+    "next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main.",
     "completion": "Complete the adversarial production acceptance matrix and then final production parity/readiness reconciliation."
   },
   "last_next_action_cycle": {
@@ -171,5 +171,22 @@
         "claim": "Cycle A durably produced retained intelligence before Cycle B; Cycle B reused it and directly avoided two canonical content reads while preserving the verified outcome."
       }
     }
-  ]
+  ],
+  "last_adversarial_attempt": {
+    "status": "BLOCKED",
+    "claim_type": "CONSOLIDATED_ADVERSARIAL_ACCEPTANCE",
+    "source_head": "423ea6352d0637f71bb87dff5d90a442dd6cf7e8",
+    "workflow": "Verify Project Intelligence Bridge Adversarially",
+    "run_id": 35785808063,
+    "job_id": 106942208670,
+    "first_failure": "STATE_BLOCK_NEXT_ACTION_MISMATCH",
+    "failure_boundary": ".naya/runtime/next_action_handoff.py → .naya/runtime/baton.py → build_baton()",
+    "matrix_executed": false,
+    "owner_identity_step": "COMPLETED",
+    "packet_build": "FAILED_BEFORE_MATRIX",
+    "evidence": "GitHub Actions job log at run 35785808063 shows checkout of exact 423ea6352d0637f71bb87dff5d90a442dd6cf7e8 followed by RuntimeError STATE_BLOCK_NEXT_ACTION_MISMATCH.",
+    "receipt_status": "NO_MATRIX_RECEIPT_ISSUED",
+    "independent_verification": "Failure independently verified from workflow job steps/logs; no matrix PASS claimed.",
+    "next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main."
+  }
 }
