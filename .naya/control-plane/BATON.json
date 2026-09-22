@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T20:36:14.665Z",
+  "generated_at": "2026-09-22T20:37:30.000Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "LIVE_AT_EXECUTION_TIME",
+    "live_head": "cac2d01e0f9739c69f6c227ba84a4efba24f1d900",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -63,7 +63,7 @@
   },
   "active_block": {
     "id": "HUMAN-JOURNEY-P2",
-    "status": "ACTIVE",
+    "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json"
   },
@@ -74,22 +74,23 @@
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "GAP-002, the complete human journey, and the direct Smart Feed runtime API boundary are now verified. The next highest-value frontier is consolidated adversarial acceptance.",
     "acceptance": [
-      "Open the canonical live Hub.",
-      "Understand the current intelligence/activity projection.",
-      "Navigate required Hub surfaces.",
-      "Search for existing intelligence.",
-      "Create and save a real Smart Note / Intelligent Block.",
-      "See the resulting canonical projection.",
-      "Reload and recover the same identity.",
-      "Find it again through authorized retrieval.",
-      "Understand visible evidence/provenance.",
-      "Continue with one authorized next action."
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ],
-    "verification": "Execute one consolidated current-main adversarial acceptance and record every required PASS/UNKNOWN/BLOCKED result."
+    "verification": "Independently execute and observe the consolidated adversarial acceptance matrix; record durable proof and one successor action."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Restore current state, execute the consolidated adversarial acceptance matrix, independently verify every security/privacy/replay/lineage receipt boundary, record proof and unknowns, reconcile the control plane, and leave exactly one successor action.",
+    "prompt": "Restore live NayaPOWER state, reconcile STATE + BLOCKS + MAP + PROOF, execute exactly the authorized consolidated adversarial acceptance action, independently verify every boundary, record durable evidence, and leave exactly one successor action.",
     "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
   },
   "playback": {
