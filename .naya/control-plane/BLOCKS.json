@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
     "next_actions": [
-      "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+      "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,12 +57,12 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "Selected from the maximum-value execution order after the causal computational-compounding boundary was directly verified.",
+    "next_action_reason": "The canonical Hub readiness inventory identifies shell/source/build/runtime ownership as the first deterministic boundary.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-      "completion": "Complete the full human journey with direct live behavioral evidence."
+      "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+      "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
     }
   },
   "status_vocabulary": [
@@ -89,8 +89,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
-    "completion": "Complete the full human journey with direct live behavioral evidence."
+    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+    "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
@@ -104,7 +104,7 @@
       "NEW_NEXT_ACTION"
     ],
     "execution_scope": "Repository control-plane transition after verified causal computation-efficiency proof.",
-    "successor_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
+    "successor_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
   },
   "completed_blocks": [
     {
