@@ -95,6 +95,6 @@ def main():
     }
     RECEIPT.parent.mkdir(parents=True,exist_ok=True)
     RECEIPT.write_text(json.dumps(receipt,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
-    print(json.dumps(receipt,indent=2,ensure_ascii=False))
+    print(json.dumps(receipt,indent=2,ensure_ascii=True))
 
 if __name__=="__main__": main()
