@@ -7,11 +7,6 @@ on:
     paths:
       - '.naya/contracts/NAYA-NEXT-ACTION-HANDOFF-V1.schema.json'
       - '.naya/runtime/next_action_handoff.py'
-      - '.naya/control-plane/STATE.json'
-      - '.naya/control-plane/BLOCKS.json'
-      - '.naya/control-plane/MAP.json'
-      - '.naya/control-plane/PROOF.json'
-      - '.naya/control-plane/BATON.json'
       - '.naya/control-plane/BATON-CONTRACT.md'
       - '.naya/runtime/baton.py'
       - '.naya/runtime/cold_baton_successor.py'
