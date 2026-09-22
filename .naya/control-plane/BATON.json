@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T20:37:30.000Z",
+  "generated_at": "2026-09-22T21:04:00.000Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "cac2d01e0f9739c69f6c227ba84a4efba24f1d900",
+    "live_head": "f390a847225431e4c25acdf4e060e895043a61bd",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary."
+    "block_next_action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,28 +70,22 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
+    "action": "Restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix on exact live main: owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "GAP-002, the complete human journey, and the direct Smart Feed runtime API boundary are now verified. The next highest-value frontier is consolidated adversarial acceptance.",
+    "reason": "Run 35784147783 verified the repaired canonical Hub deployment, exact live source parity, and fresh browser surface acceptance. The only remaining authorized project frontier is consolidated adversarial acceptance; local execution is currently blocked by disconnected Desktop Commander transport.",
     "acceptance": [
-      "OPEN the canonical Hub in the real user-facing environment.",
-      "UNDERSTAND the current intelligence and activity projection.",
-      "NAVIGATE across required Hub surfaces.",
-      "SEARCH for existing intelligence.",
-      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
-      "SAVE it durably.",
-      "SEE the result in the canonical projection.",
-      "RELOAD and recover the same result.",
-      "FIND it again through authorized retrieval.",
-      "UNDERSTAND the evidence/provenance displayed with it.",
-      "CONTINUE with one authorized next action from the recovered state."
+      "Successful Desktop Commander command response",
+      "Exact live main SHA resolved immediately before matrix",
+      "All nine adversarial dimensions executed",
+      "Independent receipt verification",
+      "Complete Activity + control-plane reconciliation"
     ],
-    "verification": "Independently execute and observe the consolidated adversarial acceptance matrix; record durable proof and one successor action."
+    "verification": "Do not claim PASS until a fresh receipt proves the nine dimensions."
   },
   "successor_prompt": {
     "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Restore live NayaPOWER state, reconcile STATE + BLOCKS + MAP + PROOF, execute exactly the authorized consolidated adversarial acceptance action, independently verify every boundary, record durable evidence, and leave exactly one successor action.",
-    "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
+    "prompt": "Resolve live main, read the canonical boot/control-plane chain, treat release run 35784147783 at source f390a847225431e4c25acdf4e060e895043a61bd as verified deployment/live-parity/browser-surface evidence, restore Desktop Commander transport with a successful command, then execute the consolidated nine-dimension adversarial acceptance matrix, independently verify the receipt, update Activity and control-plane evidence, and leave exactly one successor action.",
+    "do_not": "Do not reopen the repaired cache boundary without regression evidence. Do not claim the nine-dimension matrix passed. Do not redesign the Hub or create competing persistence, intelligence, or authority systems."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
