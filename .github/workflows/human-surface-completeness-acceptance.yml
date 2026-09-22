@@ -52,7 +52,7 @@ jobs:
             visibleRightRails:[...document.querySelectorAll('.shell > .rail.right')].filter(x=>getComputedStyle(x).display!=='none'&&x.getBoundingClientRect().width>0).length,
             reactShellCount:document.querySelectorAll('[data-shell-owner="AppShellV3"]').length,
             reactMarkerCount:document.querySelectorAll('[data-runtime-marker="NAYANET-HUB-REACT-CANONICAL"]').length,
-            commandSurfaceCount:document.querySelectorAll('.naya-cs-btn').length,
+            commandSurfaceCount:[...document.querySelectorAll('.naya-cs-btn')].filter(x=>getComputedStyle(x).display!=='none'&&x.getBoundingClientRect().width>0).length,
             visibleMobileCommandRail:getComputedStyle(document.querySelector('.naya-cs-mobile')||document.body).display
           }));
           console.log('SHELL_OWNERSHIP_PROBE',JSON.stringify(shellProbe));
