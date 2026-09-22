@@ -91,8 +91,9 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
-    "completion": "GAP-001 closed: one production Hub shell owner is established, exact source/build/runtime identity is proven at the deployed source scope, and the human Smart Note golden path passed."
+    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, without reopening proven Hub/GAP-001 or nine-dimension proofs.",
+    "completion": "GAP-001 closed: one production Hub shell owner is established, exact source/build/runtime identity is proven at the deployed source scope, and the human Smart Note golden path passed.",
+    "status": "PROVEN"
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
@@ -195,12 +196,32 @@
   },
   "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
   "current_attempt": {
-    "status": "BLOCKED_NOT_EXECUTED",
-    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
-    "workflow": ".github/workflows/verify-non-owner-managed-retrieval.yml",
-    "trigger_commit": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
-    "reason": "The canonical verifier was prepared and a governed main push trigger was committed, but the connected execution surface provides no workflow-dispatch write operation and the Desktop Commander channel is usage-paused; therefore no fresh non-owner runtime identity or retrieval result exists.",
-    "owner_receipt_check": "PASS",
-    "next_action_preserved": true
+    "status": "PROVEN",
+    "workflow_run": 35790762731,
+    "job_id": 106958397659,
+    "source_head": "1f5fe62c56adecca9231375d4854993649472150",
+    "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
+    "owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
+    "non_owner_id": "04ebccbd-9085-4451-ba21-9493705e3090",
+    "retrieval_http_status": 200,
+    "non_owner_events_count": 0,
+    "private_packet_returned": false,
+    "canonical_event_returned": false,
+    "owner_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
+    "owner_event_id": "241159af-a285-4fc3-b322-c86797818548",
+    "owner_transaction_id": "154264ea-5e28-4fcc-8c70-8b5b640a0ce7",
+    "owner_receipt_unchanged": true,
+    "owner_state": {
+      "persisted": true,
+      "indexed": true,
+      "projected": true,
+      "retrieved": true,
+      "rendered": true,
+      "verified_at": "2026-09-22 21:46:21.865+00"
+    },
+    "independent_verification": "PASS",
+    "verification_source": "Supabase managed SQL read after runtime execution",
+    "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
+    "completed_at": "2026-09-22T22:09:08Z"
   }
 }
