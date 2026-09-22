@@ -12,6 +12,7 @@ on:
       - '.github/scripts/wave-a-canonical-hub-acceptance.mjs'
       - '.naya/control-plane/BLOCKS.json'
       - 'assistant-runtime.js'
+      - 'NAYANET/HUB/index.html'
   workflow_dispatch:
 
 permissions:
