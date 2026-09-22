@@ -1,5 +1,6 @@
 name: NAYA — Canonical Assistant Cloudflare Hub Release
 # RELEASE-TRIGGER: canonical Hub source/runtime drift reconciliation after proof-run observation
+# CURRENT-SMART-FEED-RUNTIME-REPAIR: deploy assistant-runtime.js client-boundary repair
 # Current-main acceptance revalidation: deploy exact canonical source before human-surface proof.
 
 on:
