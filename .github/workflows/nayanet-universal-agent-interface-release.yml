@@ -143,18 +143,25 @@ jobs:
           grep -q 'nayanet_restore' /tmp/mcp_list.json
           grep -q 'nayanet_retrieve' /tmp/mcp_list.json
           marker="UAI-MCP-PROOF-${GITHUB_RUN_ID}"
-          understand_status=$(curl --silent --output /tmp/mcp_understand.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"nayanet_understand","arguments":{"title":"Universal Agent Interface proof","content":"${marker}","confidence":1,"tags":["uai-proof","production-boundary"]}}}")
+          understand_payload=$(jq -n --arg marker "$marker" '{jsonrpc:"2.0",id:3,method:"tools/call",params:{name:"nayanet_understand",arguments:{title:"Universal Agent Interface proof",content:$marker,confidence:1,tags:["uai-proof","production-boundary"]}}}')
+          curl --silent --show-error --output /tmp/mcp_understand.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$understand_payload" > /tmp/mcp_understand_status
+          understand_status=$(cat /tmp/mcp_understand_status)
           echo "MCP_UNDERSTAND_STATUS=${understand_status}"
           test "${understand_status}" = "200"
           grep -q '"ok":true' /tmp/mcp_understand.json
           grep -q '"receipt"' /tmp/mcp_understand.json
-          retrieve_status=$(curl --silent --output /tmp/mcp_retrieve.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"nayanet_retrieve","arguments":{"query":"${marker}","limit":5}}}")
+          retrieve_payload=$(jq -n --arg marker "$marker" '{jsonrpc:"2.0",id:4,method:"tools/call",params:{name:"nayanet_retrieve",arguments:{query:$marker,limit:5}}}')
+          curl --silent --show-error --output /tmp/mcp_retrieve.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$retrieve_payload" > /tmp/mcp_retrieve_status
+          retrieve_status=$(cat /tmp/mcp_retrieve_status)
           echo "MCP_RETRIEVE_STATUS=${retrieve_status}"
           test "${retrieve_status}" = "200"
-          grep -q 'UAI-MCP-PROOF-' /tmp/mcp_retrieve.json
-          restore_status=$(curl --silent --output /tmp/mcp_restore.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"nayanet_restore","arguments":{}}}')
+          grep -q "UAI-MCP-PROOF-" /tmp/mcp_retrieve.json
+          restore_payload='{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"nayanet_restore","arguments":{}}}'
+          restore_status=$(curl --silent --show-error --output /tmp/mcp_restore.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$restore_payload")
           echo "MCP_RESTORE_STATUS=${restore_status}"
           test "${restore_status}" = "200"
-          grep -q 'UAI-MCP-PROOF-' /tmp/mcp_restore.json
+          grep -q "UAI-MCP-PROOF-" /tmp/mcp_restore.json
+          grep -q '"receipt"' /tmp/mcp_restore.json
+          echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
 
