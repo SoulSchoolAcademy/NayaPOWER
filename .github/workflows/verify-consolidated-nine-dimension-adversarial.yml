@@ -53,3 +53,4 @@ jobs:
           name: consolidated-nine-dimension-adversarial
           path: nine-dimension-run.json
           retention-days: 30
+# trigger-closure: 2026-09-22
