@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://nayanet.app/contracts/intelligent-block-v1.schema.json",
   "title": "NayaNET Intelligent Block V1",
-  "description": "Portable canonical representation of an intelligence event. The block is a semantic object, not a competing source of truth.",
+  "description": "Portable canonical representation of reusable understood intelligence. An Intelligent Block may unify one or many provenance-bound sources; it is a semantic object, not a competing source of truth.",
   "type": "object",
   "required": ["identity", "type", "meaning", "context", "time", "provenance", "evidence", "truth", "authority", "value", "lifecycle", "integrity"],
   "properties": {
@@ -18,7 +18,7 @@
       },
       "additionalProperties": false
     },
-    "type": {
+    "source_bundle": {\n      "type": "array",\n      "description": "One or more provenance-bound sources distilled into the current understanding.",\n      "items": {\n        "type": "object",\n        "required": ["source_type", "source_ref"],\n        "properties": {\n          "source_type": {"type": "string"},\n          "source_ref": {"type": "string"},\n          "source_id": {"type": "string"},\n          "scope": {"type": "string"},\n          "hash": {"type": "string"},\n          "version": {"type": ["string", "integer"]},\n          "relationship": {"type": "string"},\n          "evidence_refs": {"type": "array", "items": {"type": "string"}}\n        },\n        "additionalProperties": true\n      }\n    },\n    "perspectives": {\n      "type": "object",\n      "description": "Human and machine perspectives preserved around the subject; perspectives are interpretations, not automatic truth.",\n      "additionalProperties": {"type": ["string", "object", "array"]}\n    },\n    "distillation": {\n      "type": "object",\n      "properties": {\n        "method": {"type": "string"},\n        "source_count": {"type": "integer", "minimum": 1},\n        "preserved": {"type": "array", "items": {"type": "string"}},\n        "removed_as_redundant": {"type": "array", "items": {"type": "string"}},\n        "compression_notes": {"type": "string"}\n      },\n      "additionalProperties": true\n    },\n    "type": {
       "type": "object",
       "required": ["object_type", "event_type"],
       "properties": {
