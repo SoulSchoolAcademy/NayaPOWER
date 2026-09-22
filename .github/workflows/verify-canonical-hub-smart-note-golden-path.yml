@@ -9,6 +9,7 @@ on:
       - 'NAYANET/HUB/public/nayanet-interface-command-station.js'
       - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/verify-canonical-hub-smart-note-golden-path.yml'
+      - '.naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md'
   workflow_dispatch:
 
 permissions:
