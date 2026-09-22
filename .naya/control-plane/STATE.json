@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T21:21:08.863Z",
-    "observed_head": "703e013a39df16d88485571e72a83e43df508348",
+    "recorded_at": "2026-09-22T21:28:59.350Z",
+    "observed_head": "24e957997c7d2193697507ce0955599a4335a24c",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -186,9 +186,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt.",
+  "single_next_action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
   "next_actions": [
-    "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt."
+    "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -290,7 +290,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt.",
+    "next_action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
     "completion": "HUMAN JOURNEY LIVE VERIFIED; next frontier is consolidated adversarial acceptance."
   },
   "reconciliation": {
@@ -331,8 +331,8 @@
     }
   },
   "current_next_action": {
-    "action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt.",
-    "reason": "The control-plane mismatch was repaired and the fresh bridge adversarial runner now passes, but that runner covers only a subset of the consolidated nine dimensions. Full matrix execution remains required."
+    "action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
+    "reason": "No exact consolidated nine-dimension executable runner is present on current main; do not substitute narrower suites."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -363,5 +363,26 @@
     "next_gap": "CONTROL_PLANE_STATE_BLOCK_COHERENCE_BEFORE_ADVERSARIAL_MATRIX",
     "note": "Desktop Commander transport remains blocked; nine-dimension adversarial matrix is not claimed.",
     "desktop_commander": "RESTORED"
+  },
+  "adversarial_frontier": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "24e957997c7d2193697507ce0955599a4335a24c",
+    "reason": "The repository contains an official adversarial specification and several narrower proof runners, but no current-head executable runner was found that implements the exact nine requested dimensions as one consolidated matrix. The existing Project Intelligence Bridge adversarial workflow proves only replay/idempotency, wrong-receiver rejection, and invalid-token rejection. The generic P0 harness is a broader constitutional suite and is not the requested nine-dimension runtime matrix. Therefore no unsupported consolidated PASS is claimed.",
+    "prior_fresh_subset": {
+      "run": 35785994422,
+      "receipt": "eec76e06-bf71-40ae-bfe8-6b19c51c9463",
+      "artifact": 10720735285
+    },
+    "required_dimensions": [
+      "owner/non-owner isolation",
+      "revocation",
+      "expiration",
+      "replay/idempotency",
+      "stale intelligence",
+      "superseded lineage",
+      "receipt integrity",
+      "unauthorized persistence",
+      "privacy boundary"
+    ]
   }
 }
