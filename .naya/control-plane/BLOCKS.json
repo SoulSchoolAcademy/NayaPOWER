@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+    "next_action": "Verify outcome quality/provenance/authority are not degraded.",
     "next_actions": [
-      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced."
+      "Verify outcome quality/provenance/authority are not degraded."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -49,7 +49,13 @@
       "human time",
       "provenance"
     ],
-    "next_action_reason": "Derived after verified paired benchmark measurement; next boundary is to test the counterfactual/applicability calculation explicitly."
+    "next_action_reason": "Derived after causal benchmark qualified three provenance-bound avoided field-reconstruction units under the V1 counterfactual rules.",
+    "current_frontier": {
+      "active_block": "COMPUTATION-EFFICIENCY-P1",
+      "priority": "P1",
+      "next_action": "Verify outcome quality/provenance/authority are not degraded.",
+      "completion": "Verify the measured compounding result preserves outcome quality, provenance, and authority."
+    }
   },
   "status_vocabulary": [
     "INTENDED",
