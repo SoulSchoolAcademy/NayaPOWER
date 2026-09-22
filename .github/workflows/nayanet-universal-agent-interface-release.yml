@@ -132,16 +132,23 @@ jobs:
           test -n "${NAYANET_FROZEN_LEARNING_ACCESS_TOKEN}"
           auth=(-H "Authorization: Bearer ${NAYANET_FROZEN_LEARNING_ACCESS_TOKEN}" -H 'Content-Type: application/json')
           init_status=$(curl --silent --output /tmp/mcp_init.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}')
+          echo "MCP_INIT_STATUS=${init_status}"
           test "${init_status}" = "200"
           grep -q 'nayanet-universal-agent-interface' /tmp/mcp_init.json
           list_status=$(curl --silent --output /tmp/mcp_list.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}')
+          echo "MCP_TOOLS_LIST_STATUS=${list_status}"
           test "${list_status}" = "200"
           grep -q 'nayanet_restore' /tmp/mcp_list.json
           grep -q 'nayanet_retrieve' /tmp/mcp_list.json
           restore_status=$(curl --silent --output /tmp/mcp_restore.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"nayanet_restore","arguments":{}}}')
+          echo "MCP_RESTORE_STATUS=${restore_status}"
+          jq -r '"MCP_RESTORE_ERROR="+((.error // .result.result.error // empty)|tostring)' /tmp/mcp_restore.json 2>/dev/null || true
           test "${restore_status}" = "200"
           grep -q '"ok":true' /tmp/mcp_restore.json
           retrieve_status=$(curl --silent --output /tmp/mcp_retrieve.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"nayanet_retrieve","arguments":{"query":"NayaNET","limit":3}}}')
+          echo "MCP_RETRIEVE_STATUS=${retrieve_status}"
+          jq -r '"MCP_RETRIEVE_ERROR="+((.error // .result.result.error // empty)|tostring)' /tmp/mcp_retrieve.json 2>/dev/null || true
           test "${retrieve_status}" = "200"
           grep -q '"ok":true' /tmp/mcp_retrieve.json
           echo "MCP_AUTHENTICATED_CONTRACT_VERIFIED"
+
