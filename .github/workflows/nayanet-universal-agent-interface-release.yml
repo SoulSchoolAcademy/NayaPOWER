@@ -65,28 +65,18 @@ jobs:
             "name": "nayanet-universal-agent-interface",
             "main": "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js",
             "compatibility_date": "2026-09-21",
-            "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
-            "vars": {
-              "SUPABASE_URL": "https://${NAYANET_SUPABASE_PROJECT_REF}.supabase.co"
-            }
+            "account_id": "b5e2a51b3e883f7722287c5f51b1196b"
           }
           EOF
-          test -n "${NAYANET_SUPABASE_PROJECT_REF}"
 
-      - name: Deploy remote agent interface
+      - name: Bind canonical runtime configuration
         shell: bash
-        env:
-          NAYANET_SUPABASE_PROJECT_REF: ${{ secrets.NAYANET_SUPABASE_PROJECT_REF }}
         run: |
           set -euo pipefail
-          test -n "${NAYANET_SUPABASE_PROJECT_REF}"
-          python - <<'PY'
-          import json
-          p=json.load(open("wrangler.jsonc"))
-          p["vars"]["SUPABASE_URL"]="https://"+__import__("os").environ["NAYANET_SUPABASE_PROJECT_REF"]+".supabase.co"
-          json.dump(p,open("wrangler.jsonc","w"),indent=2)
-          PY
-          npx --yes wrangler@4 deploy
+          test -n "${SUPABASE_URL}"
+          test -n "${SUPABASE_ANON_KEY}"
+          printf '%s' "${SUPABASE_ANON_KEY}" | npx --yes wrangler@4 secret put SUPABASE_ANON_KEY --name nayanet-universal-agent-interface
+          npx --yes wrangler@4 deploy --var "SUPABASE_URL:${SUPABASE_URL}"
 
       - name: Verify public health
         shell: bash
