@@ -77,7 +77,7 @@ jobs:
               const m=(statusText||'').match(/EVENT\s+([^\s]+)\s+·\s+RECEIPT\s+([^\s]+)/);
               if(!m)throw new Error('CAPTURE_IDENTITY_NOT_OBSERVED:'+statusText);
               eventId=m[1]; receiptId=m[2]; mark('CAPTURE','PASS',{event_id:eventId,receipt_id:receiptId,title});
-              const candidate=await runtime(page,session.access_token,'learning_candidate',{target_id:eventId,source_event_id:eventId,level:'E1_UNDERSTANDS',provenance:'OBSERVED_RUNTIME_BEHAVIOR',claim,observed_value:{event_id:eventId,capture_status:'PERSISTED'},verification_method:'PENDING_RUNTIME_VERIFICATION'});
+              const candidate=await runtime(page,session.access_token,'learning_candidate',{target_id:eventId,source_event_id:eventId,level:'E1_UNDERSTANDS',provenance:'OBSERVATION',claim,observed_value:{event_id:eventId,capture_status:'PERSISTED'},verification_method:'PENDING_RUNTIME_VERIFICATION'});
               evidenceId=candidate.learning?.id; if(!evidenceId)throw new Error('LEARNING_CANDIDATE_ID_MISSING');
               mark('LEARNING_CANDIDATE','PASS',{evidence_id:evidenceId,source_event_id:eventId,status:candidate.status});
               const verified=await runtime(page,session.access_token,'learning_verify',{evidence_id:evidenceId,verification_method:'MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL',observed_value:{event_id:eventId,capture_verified:true,source_event_verified:true}});
