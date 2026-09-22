@@ -10,10 +10,19 @@ on:
       - '.naya/control-plane/STATE.json'
       - '.naya/control-plane/BLOCKS.json'
       - '.naya/control-plane/MAP.json'
+      - '.naya/control-plane/PROOF.json'
+      - '.naya/control-plane/BATON.json'
+      - '.naya/control-plane/BATON-CONTRACT.md'
+      - '.naya/runtime/baton.py'
+      - '.naya/runtime/cold_baton_successor.py'
       - '.github/workflows/verify-next-action-handoff-cycle.yml'
 
 permissions:
   contents: write
+
+concurrency:
+  group: nayanet-next-action-handoff
+  cancel-in-progress: false
 
 jobs:
   cycle:
@@ -27,6 +36,28 @@ jobs:
         run: python .naya/runtime/next_action_handoff.py validate
       - name: Execute complete operational cycle
         run: python .naya/runtime/next_action_handoff.py cycle
+      - name: Build and validate canonical baton
+        run: |
+          python .naya/runtime/baton.py build-and-validate
+      - name: Cold successor consumes baton with empty conversation memory
+        run: |
+          python .naya/runtime/cold_baton_successor.py
+      - name: Validate baton cold-successor proof
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('.naya/project-intelligence/BATON-COLD-SUCCESSOR-PROOF.json')
+          r=json.loads(p.read_text())
+          assert r['status']=='PROVEN'
+          assert r['conversation_memory']=='EMPTY'
+          assert r['conversational_archaeology'] is False
+          assert r['archaeology_sources_used']==[]
+          assert r['recovered_one_next_action']['count']==1
+          assert r['exact_match_checks']['next_action'] is True
+          assert r['exact_match_checks']['active_block'] is True
+          print('PASS — cold successor recovered exact one next action from BATON.json without conversational archaeology')
+          PY
       - name: Validate durable receipt
         run: |
           python - <<'PY'
@@ -44,8 +75,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json
-          git commit -m "chore: record next-action handoff cycle receipt" || echo "No durable receipt change to commit"
+          git add .naya/control-plane/BATON.json .naya/project-intelligence/NEXT-ACTION-HANDOFF-CYCLE-RECEIPT.json .naya/project-intelligence/BATON-COLD-SUCCESSOR-PROOF.json .naya/control-plane/BLOCKS.json .naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json
+          git commit -m "chore: record baton and next-action handoff proof" || echo "No durable receipt change to commit"
           git push
       - name: Publish cycle proof
         uses: actions/upload-artifact@v4
