@@ -602,6 +602,48 @@
         "intelligent_block_roundtrip": "PASS",
         "intelligent_block_hub_projection": "PASS"
       }
+    },
+    "human_journey_live_browser": {
+      "status": "VERIFIED",
+      "claim_type": "WHOLE_JOURNEY",
+      "workflow": ".github/workflows/wave-a-live-browser-acceptance.yml",
+      "run_id": 35778698368,
+      "head_sha": "847f06023649ce05d4550ed9c46d3164ec97923c",
+      "artifact": "wave-a-canonical-hub-acceptance",
+      "artifact_id": 10716777194,
+      "artifact_sha256": "6cb4c54d740b9ed9d49ef013895a739986e13f862b30405cf0a35c884796b10a",
+      "evidence": {
+        "event_id": "384304bf-5983-439a-be41-bdd3a32959dd",
+        "receipt_id": "df05b1fe-577e-4e03-b93f-a1ef3a9cca46",
+        "fresh_user_id": "ddbe6012-cdcd-4ba7-901d-a20c2184c8f7",
+        "nav_count": 26,
+        "search": true,
+        "initial_match": true,
+        "dom_projection": true,
+        "reload_match": true,
+        "same_event_id": true,
+        "console_errors": 0
+      },
+      "journey": [
+        "OPEN",
+        "UNDERSTAND",
+        "NAVIGATE",
+        "SEARCH",
+        "CREATE",
+        "SAVE",
+        "SEE RESULT",
+        "RELOAD",
+        "FIND",
+        "UNDERSTAND EVIDENCE",
+        "CONTINUE"
+      ]
+    },
+    "smart_feed_runtime_helper": {
+      "status": "UNKNOWN",
+      "claim_type": "RUNTIME",
+      "source_path": "assistant-runtime.js",
+      "observed_failure": "Browser acceptance helper call to NayaAssistantRuntime.smartFeed() raised TypeError: Failed to fetch against /functions/v1/naya-smart-feed.",
+      "interpretation": "The canonical human Smart Feed DOM/retrieval journey is VERIFIED independently; the convenience runtime smartFeed() API boundary remains unproven and requires causal diagnosis."
     }
   },
   "recording_commit": "c262191dcdc16e6488a395778de6d9896e5c2097",
