@@ -903,7 +903,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "bba0b3f76120b0f8ea5c0e5c6e19e4885234f2af",
+  "current_repository_head": "f390a847225431e4c25acdf4e060e895043a61bd",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1025,5 +1025,34 @@
     "cold_14q_evidence_metadata": true,
     "source_scope": "Current main commit and governed Assistant Cloudflare runtime source scope exercised by the home-run proof.",
     "interpretation": "Fresh owner-bound sender→receiver→retrieval→render→ACK→cold successor→authority→authorized continuation→successor receipt completed as one runtime journey. Four PI gates were consolidated into a durable receipt."
+  },
+  "canonical_hub_release_20260922": {
+    "status": "VERIFIED",
+    "claim_type": "DEPLOYMENT_LIVE_PARITY_BROWSER_SURFACE",
+    "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "run_id": 35784147783,
+    "job_id": 106936705828,
+    "source_head": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "hub_path": "NAYANET/HUB/index.html",
+    "hub_blob_sha": "ddffaf5a6ac5eccbca8d8a6c4b76ff26d3b70058",
+    "worker": "sparkling-shape-7ae5",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+    "gates": [
+      "exact canonical checkout",
+      "governed deployment",
+      "exact live HTML source parity",
+      "fresh desktop browser baseline",
+      "fresh mobile browser baseline",
+      "desktop Command Station + Smart Feed interaction",
+      "mobile Command Station + Smart Feed interaction"
+    ],
+    "claim_scope": "canonical static Hub deployment/runtime surface only",
+    "non_claims": [
+      "full Smart Note creation/reload identity at this exact deployment",
+      "nine-dimension adversarial matrix",
+      "fresh UAI MCP/REST production proof",
+      "learning behavior-change proof"
+    ],
+    "desktop_commander": "BLOCKED"
   }
 }
