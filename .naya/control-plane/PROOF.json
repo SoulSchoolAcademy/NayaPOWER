@@ -903,7 +903,7 @@
     "interpretation": "IH-03 canonical intelligence identity is verified by the existing canonical Smart Note transaction and CCT machinery at exact main HEAD 214b151c...; this is automated repository/runtime-shaped evidence, not production deployment proof."
   },
   "interpretation": "Proof7 compounding is verified/proven at its recorded scope. The Team Naya A→B→C→D coordination mechanism is proven. The Project Intelligence Bridge transport/persistence/index/projection/ack is now production-proven at exact source scope with replay idempotency. The remaining causal frontier is receiver retrieval/render plus genuinely cold successor retrieval.",
-  "current_repository_head": "703e013a39df16d88485571e72a83e43df508348",
+  "current_repository_head": "24e957997c7d2193697507ce0955599a4335a24c",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1049,42 +1049,31 @@
     "claim_scope": "canonical static Hub deployment/runtime surface only",
     "non_claims": [
       "full Smart Note creation/reload identity at this exact deployment",
-      "nine-dimension adversarial matrix",
+      "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
       "fresh UAI MCP/REST production proof",
       "learning behavior-change proof"
     ],
     "desktop_commander": "BLOCKED"
   },
   "consolidated_adversarial_acceptance": {
-    "status": "PARTIAL_PRECONDITION_PROOF_ONLY",
-    "claim_type": "CONSOLIDATED_ADVERSARIAL_ACCEPTANCE",
-    "source_head": "703e013a39df16d88485571e72a83e43df508348",
-    "workflow_run": 35785994422,
-    "job_id": 106942828814,
-    "matrix_status": "NOT_CONSOLIDATED",
-    "dimensions_executed": [
-      "replay/idempotency",
-      "wrong-receiver rejection",
-      "invalid-token rejection"
-    ],
-    "fresh_receipt_id": "eec76e06-bf71-40ae-bfe8-6b19c51c9463",
-    "packet_id": "fa553af1-c3e2-5df5-b052-db5a1c44be42",
-    "receiver_transaction_id": "c0206c52-5b23-46ac-bf03-5a06ea379441",
-    "receiver_event_id": "49d95f31-18f8-4381-a1b9-0fc4d744d8c5",
-    "owner_id": "eef6faf5-df39-46c2-8cfc-d6ccc686fb14",
-    "content_hash": "6178cc84886cc67e870ff7e3fed2d4bb285ea0cdc584ee715192da838cb2db50",
-    "artifact_id": 10720735285,
-    "artifact_digest": "sha256:88d3188561217c840cfbd9364882b13ff314197c8ce12176d185f46b718fde03",
-    "independent_verification": {
-      "github_job_log": true,
-      "artifact_digest_observed": true,
-      "supabase_bridge_row_verified": true,
-      "db_persisted": true,
-      "db_indexed": true,
-      "db_projected": true,
-      "db_retrieved": false,
-      "db_rendered": false
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "24e957997c7d2193697507ce0955599a4335a24c",
+    "reason": "The repository contains an official adversarial specification and several narrower proof runners, but no current-head executable runner was found that implements the exact nine requested dimensions as one consolidated matrix. The existing Project Intelligence Bridge adversarial workflow proves only replay/idempotency, wrong-receiver rejection, and invalid-token rejection. The generic P0 harness is a broader constitutional suite and is not the requested nine-dimension runtime matrix. Therefore no unsupported consolidated PASS is claimed.",
+    "prior_fresh_subset": {
+      "run": 35785994422,
+      "receipt": "eec76e06-bf71-40ae-bfe8-6b19c51c9463",
+      "artifact": 10720735285
     },
-    "result": "Fresh bridge adversarial proof passed replay identity stability, wrong receiver rejection (403 RECEIVER_MISMATCH), and invalid token rejection (401 OIDC_INVALID). This is not the nine-dimension matrix."
+    "required_dimensions": [
+      "owner/non-owner isolation",
+      "revocation",
+      "expiration",
+      "replay/idempotency",
+      "stale intelligence",
+      "superseded lineage",
+      "receipt integrity",
+      "unauthorized persistence",
+      "privacy boundary"
+    ]
   }
 }
