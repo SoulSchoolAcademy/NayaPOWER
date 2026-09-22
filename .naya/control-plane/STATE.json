@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T22:10:30Z",
-    "observed_head": "1f5fe62c56adecca9231375d4854993649472150",
+    "recorded_at": "2026-09-22T22:22:54.836Z",
+    "observed_head": "86eb8293b2d46704f234aa82d889028e89b70857",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -145,7 +145,8 @@
     "Smart Feed runtime API boundary is now VERIFIED: NayaAssistantRuntime.smartFeed() returned HTTP 200 through the established Supabase client after the canonical capture redirect settled, and returned the canonical Intelligent Block projection. The deployed naya-smart-feed function is version 16 with explicit in-function Bearer authentication and inline canonical-block fallback.",
     "Fresh exact-head adversarial preflight run 35785808063 independently confirmed a control-plane coherence failure: STATE.current_next_action diverged from BLOCKS.current_frontier.next_action, preventing baton construction and therefore preventing the nine-dimension matrix from executing.",
     "Fresh run 35785994422 at current main 703e013a39df16d88485571e72a83e43df508348 passed the existing Project Intelligence Bridge adversarial verifier: replay returned the same receipt, wrong receiver was rejected, invalid OIDC token was rejected. Independent Supabase verification confirmed the fresh receipt row and persistence/index/projection.",
-    "Fresh Project Intelligence home-run run 35789192530 passed at main 2279bbb492c8c8e0da163f33cac3769c94fafcd7: exact bridge 03c11b93-bd80-58f8-a48a-9787a55b12fa retrieved=true rendered=true; cold 14Q evidence metadata passed; authorized continuation and successor receipt passed; consolidated PI receipt c3d3a978-9b40-4d6c-96e1-7616599b0ec9 independently retrieved."
+    "Fresh Project Intelligence home-run run 35789192530 passed at main 2279bbb492c8c8e0da163f33cac3769c94fafcd7: exact bridge 03c11b93-bd80-58f8-a48a-9787a55b12fa retrieved=true rendered=true; cold 14Q evidence metadata passed; authorized continuation and successor receipt passed; consolidated PI receipt c3d3a978-9b40-4d6c-96e1-7616599b0ec9 independently retrieved.",
+    "Fresh current-main Smart Note → learning boundary run 35791868426 completed managed-runtime capture, learning candidate, ACTIVE verification, and learning retrieval; independent Supabase verification confirmed exact owner/event/evidence lineage."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -169,7 +170,8 @@
     "Fresh current-main Welcome diagnostic run 35483739274 was intentionally cancelled after remaining stalled at npm install in the proof runner; direct live-runtime inspection independently established the same causal boundary.",
     "Current control-plane state was stale: it still exposed the Smart Note receiver as the next action after that boundary had been closed. Reconciliation is required before consequential Hub work.",
     "Proof 7 run 35615245358 first stopped at AUTHORITY_SOURCE_NOT_OWNED because the controlled experiment supplied synthetic source_event_ids that did not exist as owned cognition events; this was the exact causal boundary, not a downstream test failure. The smallest repair was to persist owned source events at the authenticated sender boundary, then rerun the same proof.",
-    "2026-09-22 run 35785808063 at exact main 423ea6352d0637f71bb87dff5d90a442dd6cf7e8 stopped at STATE_BLOCK_NEXT_ACTION_MISMATCH before matrix execution; no matrix result was claimed."
+    "2026-09-22 run 35785808063 at exact main 423ea6352d0637f71bb87dff5d90a442dd6cf7e8 stopped at STATE_BLOCK_NEXT_ACTION_MISMATCH before matrix execution; no matrix result was claimed.",
+    "Workflow 35791868426 final verifier failed after runtime proof due Node ERR_AMBIGUOUS_MODULE_SYNTAX; classified as proof-harness failure, not runtime learning failure."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -187,9 +189,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
+  "single_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
   "next_actions": [
-    "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries."
+    "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -291,8 +293,9 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
-    "completion": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden path PROVEN; next frontier is non-owner Project Intelligence retrieval isolation."
+    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "completion": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden path PROVEN; next frontier is non-owner Project Intelligence retrieval isolation.",
+    "status": "PROVEN"
   },
   "reconciliation": {
     "date": "2026-09-22",
@@ -332,8 +335,9 @@
     }
   },
   "current_next_action": {
-    "action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
-    "reason": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden-path acceptance were freshly revalidated; the remaining Project Intelligence privacy boundary is the non-owner retrieval test."
+    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "reason": "Smart Note capture and verified learning are now proven at fresh current-main managed-runtime scope; the next unclosed compounding boundary is demonstrated influence on a later governed decision.",
+    "status": "AUTHORIZED_AFTER_PROOF"
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -398,34 +402,26 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
+  "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
   "current_action_attempt": {
-    "status": "PROVEN",
-    "workflow_run": 35790762731,
-    "job_id": 106958397659,
-    "source_head": "1f5fe62c56adecca9231375d4854993649472150",
-    "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
-    "owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
-    "non_owner_id": "04ebccbd-9085-4451-ba21-9493705e3090",
-    "retrieval_http_status": 200,
-    "non_owner_events_count": 0,
-    "private_packet_returned": false,
-    "canonical_event_returned": false,
-    "owner_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
-    "owner_event_id": "241159af-a285-4fc3-b322-c86797818548",
-    "owner_transaction_id": "154264ea-5e28-4fcc-8c70-8b5b640a0ce7",
-    "owner_receipt_unchanged": true,
-    "owner_state": {
-      "persisted": true,
-      "indexed": true,
-      "projected": true,
-      "retrieved": true,
-      "rendered": true,
-      "verified_at": "2026-09-22 21:46:21.865+00"
-    },
+    "status": "PROVEN_WITH_HARNESS_FAILURE",
+    "workflow_run": 35791868426,
+    "job_id": 106962015427,
+    "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+    "owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
+    "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
+    "evidence_id": "06fefcfb-64d0-4c40-a1c3-f51491f04d0b",
+    "capture_receipt_id": "127a437a-8841-4699-b89c-e3da38be9a1d",
     "independent_verification": "PASS",
     "verification_source": "Supabase managed SQL read after runtime execution",
-    "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
-    "completed_at": "2026-09-22T22:09:08Z"
+    "runtime_steps": [
+      "capture",
+      "learning_candidate",
+      "learning_verify",
+      "learning_retrieve"
+    ],
+    "causal_repair": "Moved Edge Function invocation from browser page.evaluate to managed runner Node fetch; exact runtime then passed.",
+    "harness_failure": "Independent-verification Node heredoc failed with ERR_AMBIGUOUS_MODULE_SYNTAX after runtime proof completed.",
+    "completed_at": "2026-09-22T22:22:54.836Z"
   }
 }
