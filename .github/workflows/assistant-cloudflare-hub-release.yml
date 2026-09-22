@@ -172,11 +172,10 @@ jobs:
         run: |
           set -euo pipefail
           npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install chromium
           cat > verify-hub-baseline.mjs <<'EOF'
           import { chromium } from 'playwright';
           const runtime=process.env.NAYA_RUNTIME_URL;
-          const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
           try {
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
