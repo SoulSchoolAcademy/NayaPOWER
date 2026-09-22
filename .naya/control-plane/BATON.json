@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T21:29:15.908Z",
+  "generated_at": "2026-09-22T21:54:51.433Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "24e957997c7d2193697507ce0955599a4335a24c",
+    "live_head": "2279bbb492c8c8e0da163f33cac3769c94fafcd7",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
+    "block_next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -66,18 +66,19 @@
     "id": "HUMAN-JOURNEY-P2",
     "status": "VERIFIED",
     "priority": "P1",
-    "source": ".naya/control-plane/BLOCKS.json"
+    "source": ".naya/control-plane/BLOCKS.json",
+    "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
   },
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+    "action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "The canonical consolidated nine-dimension runner now exists on main and passed fresh managed-runtime execution plus independent receipt verification at run 35787965745.",
-    "verification": "Do not reopen or relabel the matrix proof without fresh evidence; the nine-dimension matrix is PROVEN at run 35787965745."
+    "reason": "Fresh managed-runtime Project Intelligence retrieval/render proof passed at run 35789192530 with independent receipt verification.",
+    "verification": "Preserve run 35789192530 and nine-dimension run 35787965745 as scoped proof; do not reopen either without new evidence."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main at execution time. Confirm the consolidated nine-dimension matrix remains PROVEN, then Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+    "prompt": "Resolve live main at execution time. Preserve the proven nine-dimension and Project Intelligence retrieval/render evidence. Then close GAP-001 by establishing one canonical Hub shell owner and proving source→build→runtime identity before broader visual/functionality acceptance.",
     "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the proven matrix. Do not reopen the matrix without fresh evidence."
   },
   "playback": {
