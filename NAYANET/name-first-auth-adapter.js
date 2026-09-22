@@ -74,6 +74,22 @@
     if (memberError) throw memberError;
 
     const smartId = smartAlias || ('member-' + user.id.replace(/-/g, '').slice(0, 16));
+
+    // The profile has two uniqueness boundaries: member_id and smart_id.
+    // Upserting on member_id alone turns an alias collision into an opaque
+    // database error. Resolve the alias boundary explicitly so the human
+    // gets a truthful, actionable result and repeated identity establishment
+    // remains idempotent for the same member.
+    const { data: existingByAlias, error: aliasLookupError } = await client
+      .from('nayanet_profiles')
+      .select('member_id,smart_id,public_alias')
+      .eq('smart_id', smartId)
+      .maybeSingle();
+    if (aliasLookupError) throw aliasLookupError;
+    if (existingByAlias && existingByAlias.member_id !== user.id) {
+      throw new Error('NAYANET_ADDRESS_TAKEN');
+    }
+
     const { error: profileError } = await client
       .from('nayanet_profiles')
       .upsert({
