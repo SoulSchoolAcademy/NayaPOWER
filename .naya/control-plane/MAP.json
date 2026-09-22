@@ -121,7 +121,8 @@
       "HUMAN-JOURNEY-P2"
     ],
     "active_block": "HUMAN-JOURNEY-P2",
-    "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation."
+    "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation.",
+    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -189,7 +190,8 @@
     "artifact": 10720229874
   },
   "current_frontier": {
-    "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "status": "PROVEN"
   },
   "non_owner_retrieval_boundary": {
     "status": "PROVEN",
@@ -220,8 +222,10 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
+  "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
   "current_next_action": {
-    "action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries."
+    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "status": "AUTHORIZED_AFTER_PROOF",
+    "proof_scope": "Fresh Smart Note → learning candidate → verified ACTIVE learning → learning retrieval"
   }
 }
