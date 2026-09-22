@@ -234,7 +234,7 @@ jobs:
           import { chromium } from 'playwright';
           const runtime=process.env.NAYA_RUNTIME_URL;
           const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          const surfaces=['Intelligence Today','Feed','Reports','Library','Smart Lists','Smart Share','Smart Mail','Contacts','Smart Spaces','Dream','Smart Ledger','Settings','Naya Play'];
+          const surfaces=['Intelligence Today','Feed','Reports','Library','Smart Lists','Smart Share','Smart Mail','Contacts','Smart Spaces','Smart Ledger','Settings'];
           try {
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
@@ -279,7 +279,7 @@ jobs:
           import { chromium } from 'playwright';
           const runtime=process.env.NAYA_RUNTIME_URL;
           const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          const surfaces=['Intelligence Today','Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Naya Play','Settings'];
+          const surfaces=['Intelligence Today','Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings'];
           try {
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
