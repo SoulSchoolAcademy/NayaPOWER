@@ -130,7 +130,8 @@
     "Bridge retrieved/rendered flags are separate from indexed/projected and require explicit evidence; transport flags are never sufficient to claim retrieval/render.",
     "Current-head Project Intelligence home-run run 35640130080 is VERIFIED_PROVEN: fresh owner, bridge receive, exact retrieval, canonical Hub render, ACK, fresh cold successor, 14-question restore with evidence metadata, authorized pi.continue, successor receipt, and four-gate consolidated receipt.",
     "Project Intelligence event reconstruction timezone defect was repaired in two historical canonical events whose effective_at values lacked timezone offsets; deterministic reconstruction now passes current-head home-run.",
-    "The current Project Intelligence home-run proves sender → receiver → retrieval → render → ACK → cold successor → authority → authorized continuation → successor receipt as one current-head runtime chain at the recorded source scope."
+    "The current Project Intelligence home-run proves sender → receiver → retrieval → render → ACK → cold successor → authority → authorized continuation → successor receipt as one current-head runtime chain at the recorded source scope.",
+    "Paired computation-efficiency benchmark executed on DESKTOP-OJ712N5 against the canonical origin/main source snapshot 979cc4d8142fd199fb17806b2799a11f22d5ef0c: Cycle A performed 4 instrumented field-reconstruction units; Cycle B reused 3 provenance-bound units and independently recomputed the mutable next action. This proves a bounded 3-unit avoided-work measurement, not model/token/GPU/dollar savings."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -171,9 +172,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Measured computational compounding remains unproven universally; PI-01 whole-chain continuity is proven at tested owner-bound production scope.",
-  "single_next_action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+  "single_next_action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
   "next_actions": [
-    "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome."
+    "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -275,7 +276,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
+    "next_action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
     "completion": "Claim-appropriate measured avoided computation with verified outcome preservation."
   },
   "reconciliation": {
@@ -285,7 +286,7 @@
     "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
   },
   "current_next_action": {
-    "action": "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-    "reason": "Successor action generated after verified Cycle B retained-intelligence reuse measurement."
+    "action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+    "reason": "Derived after verified paired benchmark measurement of three provenance-bound avoided field-reconstruction units."
   }
 }
