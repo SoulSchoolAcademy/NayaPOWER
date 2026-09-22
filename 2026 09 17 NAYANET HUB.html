@@ -716,6 +716,34 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 .elite-board:first-child .blockTop{gap:28px!important}.elite-board:first-child .identity{gap:22px!important}.elite-board:first-child .glyph{width:116px!important;height:116px!important;flex:0 0 116px!important}.elite-board:first-child .glyph .v10-icon{width:78px!important;height:78px!important}
 @media(max-width:820px){.elite-board:first-child .nutshell b,.elite-board .layerHead{min-height:92px!important;padding:11px 18px!important;gap:14px!important}.elite-board:first-child .nutshell b .v10-nutshell-star{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .layerHead .dot{width:62px!important;height:62px!important;flex-basis:62px!important}.elite-board .dot .v10-icon{width:46px!important;height:46px!important}.elite-board:first-child .nutshell p,.elite-board .layerBody{padding:20px 21px 25px!important;font-size:21px!important;line-height:1.58!important}}
 </style>
+<style id="naya-hub-mobile-nav-ux-v1">
+/* HUMAN UX V1 — mobile primary navigation becomes a single tactile horizontal control strip.
+   Desktop is untouched. No destination or intelligence logic changes. */
+@media (max-width:800px){
+  .top{overflow:hidden!important}
+  .naya509-primary-nav{
+    width:100%!important;
+    max-width:none!important;
+    grid-template-columns:none!important;
+    display:flex!important;
+    flex-wrap:nowrap!important;
+    overflow-x:auto!important;
+    overflow-y:hidden!important;
+    scrollbar-width:none!important;
+    -webkit-overflow-scrolling:touch!important;
+    scroll-snap-type:x proximity!important;
+    gap:8px!important;
+    padding:0 166px 4px 2px!important;
+  }
+  .naya509-primary-nav::-webkit-scrollbar{display:none!important}
+  .naya509-primary-nav a{
+    flex:0 0 132px!important;
+    min-height:48px!important;
+    scroll-snap-align:start!important;
+    font-size:8px!important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="shell">
