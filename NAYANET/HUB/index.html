@@ -829,7 +829,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  .naya-command span:last-child{font-size:8px}
  .naya-at-a-glance{margin:-1px 14px 17px}
 }
-</style><script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(callback){this.callback=callback;this.native=new window.__nayaNativeMutationObserver(callback);this.target=null;this.options=null;this.started=false}observe(target,options){this.target=target;this.options=options;if(this.started)return;const start=()=>{if(this.started)return;this.started=true;this.native.observe(this.target,this.options)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()}disconnect(){this.native.disconnect();this.started=false}takeRecords(){return this.native.takeRecords()}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
+</style>
+<script id="naya-static-runtime-observer-shim">(()=>{class NayaStaticMutationObserver{constructor(callback){this.callback=callback;this.native=new window.__nayaNativeMutationObserver(callback);this.target=null;this.options=null;this.started=false}observe(target,options){this.target=target;this.options=options;if(this.started)return;const start=()=>{if(this.started)return;this.started=true;this.native.observe(this.target,this.options)};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start()}disconnect(){this.native.disconnect();this.started=false}takeRecords(){return this.native.takeRecords()}}window.__nayaNativeMutationObserver=window.MutationObserver;window.MutationObserver=NayaStaticMutationObserver})();</script>
 </head>
 <body>
 <div class="shell">
