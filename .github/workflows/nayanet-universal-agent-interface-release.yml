@@ -162,8 +162,8 @@ jobs:
           restore_status=$(curl --silent --show-error --output /tmp/mcp_restore.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$restore_payload")
           echo "MCP_RESTORE_STATUS=${restore_status}"
           test "${restore_status}" = "200"
-          grep -q "UAI-MCP-PROOF-" /tmp/mcp_restore.json
-          grep -q '"receipt"' /tmp/mcp_restore.json
+          jq -e '.result.content[0].text' /tmp/mcp_restore.json >/dev/null
+          jq -e '.result.content[0].text | fromjson | .schema == "NAYANET_PROJECT_INTELLIGENCE_RESTORE_V2"' /tmp/mcp_restore.json >/dev/null
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
 
