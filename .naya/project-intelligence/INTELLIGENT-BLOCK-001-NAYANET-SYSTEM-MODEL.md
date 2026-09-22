@@ -1,10 +1,10 @@
 # 🔱 INTELLIGENT BLOCK 001 — NayaNET System Model
 
-**STATUS:** DISTILLED / SUPPORTED  
+**STATUS:** GOVERNING SEMANTIC CONTRACT / CANONICAL  
 **SCHEMA:** NAYANET_INTELLIGENT_BLOCK_V1  
 **OBJECT:** `IB:NAYANET-SYSTEM-MODEL-001`  
 **EVENT:** `NAYANET-SYSTEM-MODEL-001`  
-**SOURCE HEAD:** `a1db54d31038210d76f78dd168919b24f8342666`
+**SOURCE HEAD:** `9c3fa32c9bd0bc1cd12ada2162194f0808bfec7a`
 
 ## HUMAN — What this means
 
@@ -31,6 +31,48 @@ The system's purpose is simple:
 **Keep the intelligence, not just the conversation.**
 
 Capture experience. Understand it. Preserve what matters. Connect it. Use it. Verify what happened. Learn from the outcome. Carry the useful understanding forward. Share only by choice.
+
+
+## GOVERNING SEMANTIC CONTRACT
+
+This block is the semantic contract against which the NayaNET system is interpreted.
+
+Every major component MUST be explainable as a participant in the canonical intelligence graph:
+
+`WHO / IDENTITY → TIME → TYPE → SUBJECT → RELATIONSHIP → EVIDENCE → STATE → VALUE → ACTION → OUTCOME → LEARNING → SUCCESSOR`
+
+For every component, implementation and verification must answer:
+
+1. **Canonical object** — What object does it create, read, update, or project?
+2. **Identity** — What stable identity binds it to canonical truth?
+3. **Evidence** — What observable evidence supports its state or claim?
+4. **Authority** — What authority may it exercise, and what authority may it never infer?
+5. **Learning** — Where does an observed outcome or correction become durable learning?
+6. **Successor** — Can a cold successor reconstruct why it exists, what is true, what is unknown, and what should happen next?
+
+### Conformance law
+
+No downstream representation may silently become a competing source of truth. Every projection, summary, interface, adapter, cache, report, activity record, or derived intelligence object must retain lineage to its canonical source.
+
+**The Event is the historical occurrence. The Block is the governed, revisable understanding derived from events and evidence.**
+
+A later Block may supersede an earlier Block without falsifying historical Events.
+
+### Audit law
+
+Repository structure is not the unit of semantic ownership. **Canonical objects and causal relationships are.**
+
+Therefore NayaNET is audited by component role and object flow, not by file count:
+
+`COMPONENT → CANONICAL OBJECT → IDENTITY → EVIDENCE → AUTHORITY → LEARNING → SUCCESSOR`
+
+A component is not considered semantically complete merely because its code, schema, UI, or documentation exists.
+
+### Continuity law
+
+A successor Naya must be able to retrieve the same canonical meaning without reconstructing it from conversation archaeology.
+
+**The conversation is temporary. The intelligence is the asset.**
 
 ## NAYA — How Naya should operate
 
