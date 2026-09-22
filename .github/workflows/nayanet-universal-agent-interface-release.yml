@@ -140,8 +140,17 @@ jobs:
           list_status=$(curl --silent --output /tmp/mcp_list.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}')
           echo "MCP_TOOLS_LIST_STATUS=${list_status}"
           test "${list_status}" = "200"
+          grep -q 'nayanet_cold_restore' /tmp/mcp_list.json
           grep -q 'nayanet_restore' /tmp/mcp_list.json
           grep -q 'nayanet_retrieve' /tmp/mcp_list.json
+          cold_payload='{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"nayanet_cold_restore","arguments":{}}}'
+          cold_status=$(curl --silent --show-error --output /tmp/mcp_cold.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$cold_payload")
+          echo "MCP_COLD_RESTORE_STATUS=${cold_status}"
+          test "${cold_status}" = "200"
+          jq -r '.result.content[0].text' /tmp/mcp_cold.json > /tmp/mcp_cold_inner.json
+          jq -e '.status == "COLD_RESTORE_VERIFIED" and .question_count == 14 and .mandatory_pre_action == true' /tmp/mcp_cold_inner.json >/dev/null
+          for key in 1_WHO_ARE_WE 2_WHAT_ARE_WE_BUILDING 3_WHY_ARE_WE_BUILDING_IT 4_WHAT_DOES_SUCCESS_MEAN 5_WHAT_IS_TRUE_RIGHT_NOW 6_WHAT_HAS_ALREADY_BEEN_PROVEN 7_WHAT_IS_UNKNOWN 8_WHAT_AUTHORITY_EXISTS 9_WHAT_HAPPENED_PREVIOUSLY 10_WHAT_DID_WE_LEARN 11_WHAT_SHOULD_HAPPEN_NEXT 12_HOW_DO_I_PROVE_IT 13_WHERE_DO_I_RECORD_IT 14_HOW_DOES_THE_NEXT_NAYA_CONTINUE; do jq -e --arg k "$key" '.questions[$k] != null and .questions.QUESTION_METADATA.items[$k] != null' /tmp/mcp_cold_inner.json >/dev/null; done
+          echo "MCP_14_QUESTION_COLD_RESTORE_VERIFIED"
           marker="UAI-MCP-PROOF-${GITHUB_RUN_ID}"
           understand_payload=$(jq -n --arg marker "$marker" '{jsonrpc:"2.0",id:3,method:"tools/call",params:{name:"nayanet_understand",arguments:{title:"Universal Agent Interface proof",content:$marker,confidence:1,tags:["uai-proof","production-boundary"]}}}')
           curl --silent --show-error --output /tmp/mcp_understand.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$understand_payload" > /tmp/mcp_understand_status
@@ -166,3 +175,26 @@ jobs:
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
           echo "MCP_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
 
+
+      - name: Verify authenticated REST contract on same canonical path
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth=(-H "Authorization: Bearer ${access_token}" -H 'Content-Type: application/json')
+          cold_status=$(curl --silent --show-error --output /tmp/rest_cold.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/v1/cold-restore" "${auth[@]}" -d '{}')
+          echo "REST_COLD_RESTORE_STATUS=${cold_status}"
+          test "${cold_status}" = "200"
+          jq -e '.result.result.status == "COLD_RESTORE_VERIFIED" and .result.result.question_count == 14' /tmp/rest_cold.json >/dev/null
+          marker="UAI-REST-PROOF-${GITHUB_RUN_ID}"
+          rest_understand=$(jq -n --arg marker "$marker" '{title:"Universal Agent Interface REST proof",content:$marker,confidence:1,tags:["uai-proof","rest","production-boundary"]}')
+          rest_understand_status=$(curl --silent --show-error --output /tmp/rest_understand.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/v1/understand" "${auth[@]}" -d "$rest_understand")
+          echo "REST_UNDERSTAND_STATUS=${rest_understand_status}"
+          test "${rest_understand_status}" = "200"
+          jq -e '.result.result.ok == true and .result.result.result.receipt != null and .result.result.result.event.event_id != null' /tmp/rest_understand.json >/dev/null
+          rest_retrieve=$(jq -n --arg marker "$marker" '{query:$marker,limit:5}')
+          rest_retrieve_status=$(curl --silent --show-error --output /tmp/rest_retrieve.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/v1/retrieve" "${auth[@]}" -d "$rest_retrieve")
+          echo "REST_RETRIEVE_STATUS=${rest_retrieve_status}"
+          test "${rest_retrieve_status}" = "200"
+          grep -q "UAI-REST-PROOF-" /tmp/rest_retrieve.json
+          echo "REST_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
+          echo "UAI_MCP_AND_REST_SAME_CANONICAL_PATH_VERIFIED"
