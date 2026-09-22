@@ -35,7 +35,7 @@ const shell=await page.evaluate(()=>({
   directNine:document.querySelector('meta[name="nayanet-direct-nine"]')?.content||null,
   reactMarker:document.documentElement.innerHTML.includes("NAYANET-HUB-REACT-CANONICAL"),
   welcome:document.body.innerText.includes("welcome.nayanet.app"),
-  nav:[...document.querySelectorAll("button[data-nc]")].map(b=>({kind:b.dataset.nc,text:b.innerText.replace(/\s+/g," ").trim()})),
+  nav:[...document.querySelectorAll("button[data-naya-surface]")].map(b=>({kind:b.dataset.nayaSurface,text:b.innerText.replace(/\s+/g," ").trim()})),
   search:!!document.querySelector("#search.search"),
   runtime:{
     init:typeof window.NayaAssistantRuntime?.init,
@@ -48,7 +48,7 @@ if(shell.title!=="NayaNET — Intelligent Hub V7 · 509 AAA") throw new Error("C
 if(shell.directNine!=="verified-static-top-nine") throw new Error("CANONICAL_HUB_MARKER_MISSING");
 if(shell.reactMarker) throw new Error("OBSOLETE_REACT_HUB_PRESENT");
 if(shell.welcome) throw new Error("WELCOME_FRONT_DOOR_SELECTED_AS_HUB");
-const required=["feed","note","reports","share","lists","spaces","connections","mail","ledger","dream","play","settings"];
+const required=["feed","today","reports","library","share","lists","spaces","connections","mail","ledger","dream","play","settings"];
 if(shell.nav.filter(x=>required.includes(x.kind)).length<12) throw new Error("CANONICAL_HUB_NAV_INCOMPLETE");
 if(!shell.search) throw new Error("CANONICAL_HUB_SEARCH_MISSING");
 for(const [k,v] of Object.entries(shell.runtime)) if(v!=="function") throw new Error("RUNTIME_CONTRACT_MISSING:"+k);
@@ -58,8 +58,8 @@ if(!auth.authenticated||auth.user_id!==A.user.id) throw new Error("BROWSER_AUTH_
 
 const title="Wave A canonical Smart Note "+Date.now();
 const content="Protected approved Hub browser proof "+crypto.randomUUID()+" — Smart Note must become one canonical event, persist, retrieve, and survive reload.";
-const noteButton=page.locator('button[data-nc="note"]').first();
-await noteButton.click();
+const noteButton=page.locator('button[data-naya-surface="feed"]').first();
+await page.locator('button[data-naya-surface="today"]').first().click(); await page.waitForTimeout(200); const noteButton=page.locator('button[data-naya-surface="feed"]').first(); await noteButton.click();
 const dialog=page.locator(".nc-modal").last();
 await dialog.waitFor({state:"visible",timeout:10000});
 await dialog.locator("#nc-title").fill(title);
@@ -77,7 +77,7 @@ const exact=items.find(x=>x.event_id===eventId);
 if(!exact) throw new Error("SMART_NOTE_EVENT_NOT_IN_PERSONAL_SMART_FEED:"+JSON.stringify(items.map(x=>({event_id:x.event_id,title:x.title,source:x.source}))));
 
 await dialog.locator("[data-nc-close]").click();
-await page.locator('button[data-nc="feed"]').first().click();
+await page.locator('button[data-naya-surface="feed"]').first().click();
 const feedDialog=page.locator(".nc-modal").last();
 await feedDialog.waitFor({state:"visible",timeout:10000});
 await page.waitForFunction(()=>/LIVE · PERSONAL · \d+ ITEMS · CANONICAL RUNTIME/.test(document.querySelector(".nc-modal #nc-state")?.textContent||""),null,{timeout:30000});
@@ -91,6 +91,11 @@ const reloadedItems=Array.isArray(reloaded?.items)?reloaded.items:[];
 const same=reloadedItems.find(x=>x.event_id===eventId);
 if(!same) throw new Error("SMART_NOTE_EVENT_NOT_RETRIEVED_AFTER_RELOAD");
 if(same.event_id!==eventId) throw new Error("SMART_NOTE_EVENT_ID_CHANGED_AFTER_RELOAD");
+if(!same.intelligent_block||same.intelligent_block.block_id!==eventId) throw new Error("INTELLIGENT_BLOCK_NOT_RETRIEVED_AFTER_RELOAD:"+JSON.stringify(same.intelligent_block));
+if(same.intelligent_block.truth?.state!=="VERIFIED"||same.intelligent_block.authority?.state!=="AUTHORIZED"||same.intelligent_block.context?.visibility!=="PRIVATE"||same.intelligent_block.identity?.schema_version!=="NAYANET_INTELLIGENT_BLOCK_V1") throw new Error("INTELLIGENT_BLOCK_EVIDENCE_INCOMPLETE:"+JSON.stringify(same.intelligent_block));
+if(!same.intelligent_block.provenance||!same.intelligent_block.source_event_ids?.includes(eventId)) throw new Error("INTELLIGENT_BLOCK_LINEAGE_INCOMPLETE:"+JSON.stringify(same.intelligent_block));
+const continuation=await page.evaluate(async({sourceId})=>window.NayaAssistantRuntime.smartFeedAction({action:"interact",stream:"personal",source_id:sourceId,interaction:"save"}),{sourceId:same.id});
+if(!continuation?.ok||continuation.action!=="interact"||continuation.interaction!=="save"||!continuation.receipt) throw new Error("AUTHORIZED_CONTINUATION_FAILED:"+JSON.stringify(continuation));
 const postReloadAuth=await page.evaluate(()=>window.NayaAssistantRuntime.init());
 if(!postReloadAuth.authenticated||postReloadAuth.user_id!==A.user.id) throw new Error("AUTHORITY_CHANGED_AFTER_RELOAD");
 
