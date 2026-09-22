@@ -19,7 +19,11 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "COMPUTATION-EFFICIENCY-P1",
+  "current_block": {
+    "id": "HUMAN-JOURNEY-P2",
+    "status": "ACTIVE",
+    "priority": "P1"
+  },
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
@@ -173,9 +177,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+  "single_next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
   "next_actions": [
-    "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+    "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -275,10 +279,10 @@
     }
   },
   "current_frontier": {
-    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
-    "completion": "Verify the measured compounding result preserves outcome quality, provenance, and authority."
+    "next_action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "completion": "Complete the full human journey with direct live behavioral evidence."
   },
   "reconciliation": {
     "date": "2026-09-21",
@@ -287,7 +291,7 @@
     "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
   },
   "current_next_action": {
-    "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
-    "reason": "Current computation-efficiency counterfactual review requires causal benchmark repair before any avoided-computation claim."
+    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "reason": "The causal computation-efficiency boundary is verified; the next maximum-value frontier is direct live human-journey proof."
   }
 }
