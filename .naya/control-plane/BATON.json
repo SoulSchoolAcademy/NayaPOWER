@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T21:21:54.155Z",
+  "generated_at": "2026-09-22T21:29:15.908Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "703e013a39df16d88485571e72a83e43df508348",
+    "live_head": "24e957997c7d2193697507ce0955599a4335a24c",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt."
+    "block_next_action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,22 +70,14 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Execute the full consolidated nine-dimension adversarial matrix at the current exact main SHA after the control-plane coherence repair; cover owner/non-owner isolation, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary, then independently verify every fresh receipt.",
+    "action": "Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "The exact-head control-plane mismatch was repaired; fresh run 35785994422 now proves only the existing bridge adversarial subset. The nine-dimension matrix remains incomplete.",
-    "acceptance": [
-      "all nine dimensions execute at one exact source identity",
-      "fresh receipts for each applicable dimension",
-      "independent verification of each receipt",
-      "no unauthorized persistence or privacy leakage",
-      "complete Activity + control-plane reconciliation"
-    ],
-    "verification": "Do not claim consolidated PASS until all nine dimensions are freshly executed and independently verified."
+    "reason": "The repository contains an official adversarial specification and several narrower proof runners, but no current-head executable runner was found that implements the exact nine requested dimensions as one consolidated matrix. The existing Project Intelligence Bridge adversarial workflow proves only replay/idempotency, wrong-receiver rejection, and invalid-token rejection. The generic P0 harness is a broader constitutional suite and is not the requested nine-dimension runtime matrix. Therefore no unsupported consolidated PASS is claimed.",
+    "verification": "Do not claim consolidated PASS until all nine dimensions execute at one exact source identity and fresh receipts are independently verified."
   },
   "successor_prompt": {
-    "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
-    "prompt": "Resolve current live main 703e013a39df16d88485571e72a83e43df508348, execute the full consolidated nine-dimension adversarial matrix, independently verify each fresh receipt, update Activity and control-plane evidence, and leave exactly one successor action.",
-    "do_not": "Do not call the current bridge subset a consolidated nine-dimension pass. Do not redesign the Hub or create competing persistence, intelligence, or authority systems."
+    "prompt": "Resolve current live main 24e957997c7d2193697507ce0955599a4335a24c, then Build or restore one canonical executable consolidated nine-dimension adversarial runner on the current main SHA, bound to fresh owner/run identity and managed-runtime receipts, then execute all nine dimensions and independently verify every receipt.",
+    "do_not": "Do not substitute the P0 constitutional suite or the three-case bridge verifier for the requested consolidated matrix. Do not claim PASS."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
