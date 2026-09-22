@@ -87,8 +87,12 @@ def execute_cycle():
     if not successor:
         acceptance=blocks["active_block"].get("acceptance",[])
         current_action=before["next_action"]["action"]
-        remaining=[x for x in acceptance if x and x not in current_action]
-        successor=(remaining[0] if remaining else "Re-read canonical Project Intelligence and determine the next verified action.")
+        try:
+            current_index=acceptance.index(current_action)
+        except ValueError:
+            current_index=-1
+        successor=(acceptance[current_index+1] if current_index+1 < len(acceptance)
+                   else "Re-read canonical Project Intelligence and determine the next verified action.")
     if successor==before["next_action"]["action"]:
         successor="Re-read canonical Project Intelligence, observe the next incomplete human-facing Hub boundary, and execute it with independent evidence."
     # PROJECT_UPDATE is a real canonical-state mutation, not a receipt-only claim.
