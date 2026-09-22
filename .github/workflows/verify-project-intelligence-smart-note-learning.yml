@@ -1,0 +1,128 @@
+name: Verify Project Intelligence Smart Note Learning Boundary
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-project-intelligence-smart-note-learning.yml'
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  smart-note-learning:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute Smart Note to learning through managed runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee pi-smart-note-learning-proof.json
+          const {chromium}=require('playwright');
+          const crypto=require('node:crypto');
+          const fs=require('node:fs');
+          const hub=process.env.HUB_URL, supabaseUrl=process.env.SUPABASE_URL, supabaseKey=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const run=process.env.GITHUB_RUN_ID, alias=('pilrn'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          const title='PI Learning Boundary '+run;
+          const content='A verified Smart Note must become reusable learning before it can compound into future Project Intelligence.';
+          const claim='Verified Smart Note learning survives the originating capture and is retrievable as ACTIVE learning.';
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('PI_SMART_NOTE_LEARNING',JSON.stringify(x));};
+          async function sessionFrom(page){
+            const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());
+            const a=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id,access_token:x.access_token}:null});
+            if(!s?.authenticated||!a?.access_token||s.userId!==a.userId) throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
+            return a;
+          }
+          async function runtime(page,token,action,body){
+            const key='pi-learning-'+process.env.GITHUB_RUN_ID+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
+            const r=await page.evaluate(async({supabaseUrl,supabaseKey,token,action,body,key})=>{
+              const x=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
+              return {status:x.status,body:await x.json().catch(()=>({}))};
+            },{supabaseUrl,supabaseKey,token,action,body,key});
+            if(r.status!==200||r.body?.ok!==true) throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(r));
+            return r.body.result;
+          }
+          (async()=>{
+            const browser=await chromium.launch({headless:true}), ctx=await browser.newContext(), page=await ctx.newPage();
+            let ownerId=null,eventId=null,evidenceId=null,receiptId=null;
+            try{
+              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+              await page.locator('#name').fill('Project Intelligence Learning Boundary');
+              await page.locator('#alias').fill(alias);
+              await page.locator('#enter').click();
+              for(let i=0;i<60;i++){const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());if(s?.authenticated&&s.userId)break;await new Promise(r=>setTimeout(r,500));}
+              const session=await sessionFrom(page); ownerId=session.userId; mark('IDENTITY','PASS',{owner_id:ownerId,alias});
+              await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
+              await page.locator('[data-testid="capture-smart-note"]').click();
+              await page.locator('[data-testid="smart-note-title"]').fill(title);
+              await page.locator('[data-testid="smart-note-content"]').fill(content);
+              await page.locator('[data-testid="smart-note-capture-submit"]').click();
+              await page.waitForFunction(()=>/CAPTURED · PERSISTED/i.test(document.querySelector('[data-testid="smart-note-capture-status"]')?.textContent||''),{timeout:30000});
+              const statusText=await page.locator('[data-testid="smart-note-capture-status"]').textContent();
+              const m=(statusText||'').match(/EVENT\s+([^\s]+)\s+·\s+RECEIPT\s+([^\s]+)/);
+              if(!m)throw new Error('CAPTURE_IDENTITY_NOT_OBSERVED:'+statusText);
+              eventId=m[1]; receiptId=m[2]; mark('CAPTURE','PASS',{event_id:eventId,receipt_id:receiptId,title});
+              const candidate=await runtime(page,session.access_token,'learning_candidate',{target_id:eventId,source_event_id:eventId,level:'E1_UNDERSTANDS',provenance:'OBSERVED_RUNTIME_BEHAVIOR',claim,observed_value:{event_id:eventId,capture_status:'PERSISTED'},verification_method:'PENDING_RUNTIME_VERIFICATION'});
+              evidenceId=candidate.learning?.id; if(!evidenceId)throw new Error('LEARNING_CANDIDATE_ID_MISSING');
+              mark('LEARNING_CANDIDATE','PASS',{evidence_id:evidenceId,source_event_id:eventId,status:candidate.status});
+              const verified=await runtime(page,session.access_token,'learning_verify',{evidence_id:evidenceId,verification_method:'MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL',observed_value:{event_id:eventId,capture_verified:true,source_event_verified:true}});
+              if(verified.status!=='VERIFIED_LEARNING'||verified.learning?.status!=='ACTIVE')throw new Error('LEARNING_VERIFY_NOT_ACTIVE:'+JSON.stringify(verified));
+              mark('LEARNING_VERIFY','PASS',{evidence_id:evidenceId,status:verified.learning.status});
+              const retrieved=await runtime(page,session.access_token,'learning_retrieve',{query:claim,limit:20});
+              const hit=retrieved.items?.find(x=>x.id===evidenceId&&x.source_event_id===eventId&&x.status==='ACTIVE');
+              if(!hit)throw new Error('LEARNING_RETRIEVAL_FAILED:'+JSON.stringify(retrieved));
+              mark('LEARNING_RETRIEVE','PASS',{evidence_id:evidenceId,source_event_id:eventId,count:retrieved.count});
+              fs.writeFileSync('.pi-learning-verification-input.json',JSON.stringify({ownerId,eventId,evidenceId,claim,receiptId,sourceHead:process.env.GITHUB_SHA},null,2));
+            }finally{await ctx.close();await browser.close();}
+            fs.writeFileSync('pi-smart-note-learning-proof.json',JSON.stringify({schema:'NAYANET_PI_SMART_NOTE_LEARNING_BOUNDARY_V1',status:'OBSERVED',run_id:run,source_head:process.env.GITHUB_SHA,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,trace},null,2));
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+
+      - name: Independently verify persisted learning evidence
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee pi-smart-note-learning-independent-verification.json
+          const fs=require('node:fs');
+          const x=JSON.parse(fs.readFileSync('.pi-learning-verification-input.json','utf8'));
+          const url=process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY, base=url+'/rest/v1', h={'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json'};
+          async function get(path){const r=await fetch(base+path,{headers:h});return {status:r.status,body:await r.json().catch(()=>null)};}
+          const learning=await get('/learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&id=eq.'+encodeURIComponent(x.evidenceId));
+          const event=await get('/nayanet_cognition_events?select=id,event_id,user_id,project_id,title,type&event_id=eq.'+encodeURIComponent(x.eventId));
+          if(learning.status!==200||!Array.isArray(learning.body)||learning.body.length!==1)throw new Error('INDEPENDENT_LEARNING_READ_FAILED:'+JSON.stringify(learning));
+          if(event.status!==200||!Array.isArray(event.body)||event.body.length!==1)throw new Error('INDEPENDENT_EVENT_READ_FAILED:'+JSON.stringify(event));
+          const l=learning.body[0], e=event.body[0];
+          if(l.member_id!==x.ownerId||l.source_event_id!==x.eventId||l.status!=='ACTIVE'||l.claim!==x.claim)throw new Error('LEARNING_LINEAGE_MISMATCH:'+JSON.stringify({l,x}));
+          if(e.user_id!==x.ownerId||e.project_id!=='NayaNET'||e.event_id!==x.eventId)throw new Error('EVENT_OWNER_LINEAGE_MISMATCH:'+JSON.stringify({e,x}));
+          const proof={schema:'NAYANET_PI_SMART_NOTE_LEARNING_INDEPENDENT_VERIFICATION_V1',status:'VERIFIED',run_id:process.env.GITHUB_RUN_ID,source_head:process.env.GITHUB_SHA,owner_id:x.ownerId,event_id:x.eventId,evidence_id:x.evidenceId,learning:l,event:e,source_receipt:x.receiptId};
+          fs.writeFileSync('pi-smart-note-learning-independent-verification.json',JSON.stringify(proof,null,2));
+          console.log(JSON.stringify(proof,null,2));
+          NODE
+
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pi-smart-note-learning-boundary
+          path: |
+            pi-smart-note-learning-proof.json
+            pi-smart-note-learning-independent-verification.json
+            .pi-learning-verification-input.json
+          if-no-files-found: ignore
