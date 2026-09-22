@@ -1,0 +1,76 @@
+name: NAYA — Execution Gate
+on:
+  workflow_call:
+    inputs:
+      source_ref:
+        required: true
+        type: string
+      parent_sha:
+        required: false
+        type: string
+  workflow_dispatch:
+    inputs:
+      source_ref:
+        required: false
+        type: string
+        default: main
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout exact session source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || github.event.inputs.source_ref || github.sha }}
+          fetch-depth: 2
+      - name: Enforce closed Naya session contract
+        run: |
+          set -euo pipefail
+          test -s .naya/control-plane/EXECUTION-SESSION.json
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          s=json.loads(Path('.naya/control-plane/EXECUTION-SESSION.json').read_text())
+          required=['session_id','naya_id','status','parent_head','authorized_action','successor_prompt']
+          missing=[k for k in required if not s.get(k)]
+          if missing: raise SystemExit('SESSION_FIELDS_MISSING:'+','.join(missing))
+          if s['status']!='CLOSED': raise SystemExit('SESSION_NOT_CLOSED')
+          if not s.get('read_ack',{}).get('all_required_sources'): raise SystemExit('READ_ACK_FAILED')
+          lease=s.get('execution_lease',{})
+          if lease.get('status')!='ACQUIRED' or lease.get('exclusive') is not True: raise SystemExit('EXECUTION_LEASE_FAILED')
+          if s.get('action_result',{}).get('verification')!='PASS': raise SystemExit('VERIFICATION_NOT_PASS')
+          if s.get('record',{}).get('status')!='COMPLETE': raise SystemExit('ACTIVITY_RECORD_NOT_COMPLETE')
+          if s.get('control_plane',{}).get('updated') is not True: raise SystemExit('CONTROL_PLANE_NOT_UPDATED')
+          if s.get('sign_out',{}).get('status')!='SIGNED_OUT': raise SystemExit('SIGN_OUT_MISSING')
+          p=subprocess.check_output(['git','rev-parse','HEAD^'],text=True).strip()
+          if s['parent_head']!=p: raise SystemExit(f'SESSION_PARENT_MISMATCH expected={p} recorded={s["parent_head"]}')
+          print('NAYA_EXECUTION_SESSION_VERIFIED',s['session_id'])
+          PY
+      - name: Enforce canonical Hub authority
+        run: |
+          set -euo pipefail
+          test -s NAYANET/HUB/index.html
+          test -f '2026 09 17 NAYANET HUB.html'
+          ! grep -R -n 'canonical-react|NAYANET-HUB-REACT-CANONICAL' .github/workflows/assistant-cloudflare-hub-release.yml NAYANET/HUB
+          echo 'CANONICAL_HUB_AUTHORITY_VERIFIED=NAYANET/HUB/index.html'
+      - name: Verify protected visual parity
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          def n(text,source):
+            if source:
+              for p in [r'<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->[sS]*?</script>',r'<!-- NAYA-PI-CANONICAL-RENDER-V1 -->[sS]*?</script>',r'<!-- NAYA-CANONICAL-DREAM-SURFACE-V1 -->[sS]*?</script>']: text=re.sub(p,'',text)
+            text=re.sub(r'<script id="naya-static-runtime-observer-shim">[sS]*?</script>','',text)
+            text=re.sub(r'<script[^>]*src="[^"]*(?:assistant-runtime.js|smart-feed.js|smart-tabs.js|hub-completeness.js)[^"]*"[^>]*></script>','',text)
+            text=re.sub(r'<script>s*/*s*naya-509-real-smart-feed-(?:content|nine-note-parser|lifecycle-repair|final-presentation-fix|nav-restore|nav-adjacent-placement).jss**/[sS]*?</script>','',text)
+            text=re.sub(r'assistant-runtime.js?v=[^"]*','assistant-runtime.js',text)
+            text=re.sub(r'</style>s*</head>','</style></head>',text)
+            return '
+'.join(x for x in text.splitlines() if x.strip())
+          if n(Path('NAYANET/HUB/index.html').read_text(),1)!=n(Path('2026 09 17 NAYANET HUB.html').read_text(),0): raise SystemExit('CANONICAL_HUB_VISUAL_PARITY_FAILED')
+          print('CANONICAL_HUB_VISUAL_PARITY_VERIFIED')
+          PY

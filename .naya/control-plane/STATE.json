@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T22:22:54.836Z",
-    "observed_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+    "recorded_at": "2026-09-22T23:43:54.402Z",
+    "observed_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -17,10 +17,10 @@
   },
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-  "priority": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
+  "priority": "P0 - NAYA EXECUTION CONTINUITY + CANONICAL HUB AUTHORITY",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": "HUMAN-JOURNEY-P2",
-  "current_block_status": "VERIFIED",
+  "current_block": "NAYA-CONTINUITY-HARDENING",
+  "current_block_status": "IN_PROGRESS",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
     "index": ".naya/NAYAPOWER-INTELLIGENT-HUB-READ-FIRST.md",
@@ -146,7 +146,9 @@
     "Fresh exact-head adversarial preflight run 35785808063 independently confirmed a control-plane coherence failure: STATE.current_next_action diverged from BLOCKS.current_frontier.next_action, preventing baton construction and therefore preventing the nine-dimension matrix from executing.",
     "Fresh run 35785994422 at current main 703e013a39df16d88485571e72a83e43df508348 passed the existing Project Intelligence Bridge adversarial verifier: replay returned the same receipt, wrong receiver was rejected, invalid OIDC token was rejected. Independent Supabase verification confirmed the fresh receipt row and persistence/index/projection.",
     "Fresh Project Intelligence home-run run 35789192530 passed at main 2279bbb492c8c8e0da163f33cac3769c94fafcd7: exact bridge 03c11b93-bd80-58f8-a48a-9787a55b12fa retrieved=true rendered=true; cold 14Q evidence metadata passed; authorized continuation and successor receipt passed; consolidated PI receipt c3d3a978-9b40-4d6c-96e1-7616599b0ec9 independently retrieved.",
-    "Fresh current-main Smart Note → learning boundary run 35791868426 completed managed-runtime capture, learning candidate, ACTIVE verification, and learning retrieval; independent Supabase verification confirmed exact owner/event/evidence lineage."
+    "Fresh current-main Smart Note → learning boundary run 35791868426 completed managed-runtime capture, learning candidate, ACTIVE verification, and learning retrieval; independent Supabase verification confirmed exact owner/event/evidence lineage.",
+    "2026-09-22 continuity repair: canonical production release is locked to NAYANET/HUB/index.html; canonical-react release paths are prohibited.",
+    "2026-09-22 continuity repair: substantive release sessions require EXECUTION-SESSION.json with read acknowledgement, exclusive lease, verification, record, control-plane update, sign-out, and successor prompt."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -402,7 +404,10 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+  "next_action": {
+    "action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed.",
+    "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
+  },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",
     "workflow_run": 35791868426,

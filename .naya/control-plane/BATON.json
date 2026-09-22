@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T22:22:54.836Z",
+  "generated_at": "2026-09-22T23:43:54.402Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,20 +12,20 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+    "live_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
+    "state_block": "NAYA-CONTINUITY-HARDENING",
+    "block_next_action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
-    "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
-    "active_block": "HUMAN-JOURNEY-P2",
-    "active_block_status": "VERIFIED"
+    "active_program": "P0 - NAYA EXECUTION CONTINUITY + CANONICAL HUB AUTHORITY",
+    "active_block": "NAYA-CONTINUITY-HARDENING",
+    "active_block_status": "IN_PROGRESS"
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -63,19 +63,19 @@
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "HUMAN-JOURNEY-P2",
-    "status": "VERIFIED",
-    "priority": "P1",
-    "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
+    "id": "NAYA-CONTINUITY-HARDENING",
+    "status": "IN_PROGRESS",
+    "priority": "P0",
+    "source": ".naya/control-plane/STATE.json",
+    "next_action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
   },
   "next_action": {
-    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
-    "status": "AUTHORIZED_AFTER_PROOF"
+    "action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed.",
+    "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Preserve the nine-dimension matrix, GAP-001, owner PI retrieval/render, non-owner isolation, and this fresh Smart Note learning proof. Execute only the later-decision influence boundary.",
-    "do_not": "Do not reopen proven boundaries. Do not treat the failed workflow verifier syntax as a runtime learning failure. Do not claim workflow-level PASS beyond the independently verified runtime boundary."
+    "prompt": "Resolve live main. Read README-FIRST, BATON, STATE, BLOCKS, MAP, PROOF, and EXECUTION-SESSION. Verify the execution gate passed. Then execute only the canonical Cloudflare #feed proof: source NAYANET/HUB/index.html → live worker → desktop/mobile visual parity → Personal/Collective/Activity.",
+    "do_not": "Do not use React/Vite as the production Hub. Do not use historical Hub files as deployable source. Do not reopen proven downstream journey steps before canonical Hub authority and continuity are verified."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -89,34 +89,8 @@
   },
   "execution_attempt": {
     "status": "PROVEN",
-    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_LEARNING_RETRIEVAL",
-    "workflow_run": 35791868426,
-    "job_id": 106962015427,
-    "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
-    "owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-    "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-    "evidence_id": "06fefcfb-64d0-4c40-a1c3-f51491f04d0b",
-    "capture_receipt_id": "127a437a-8841-4699-b89c-e3da38be9a1d",
-    "runtime_observation": "Smart Note captured through canonical Hub; learning_candidate created; learning_verify promoted evidence to ACTIVE; learning_retrieve returned the exact ACTIVE evidence.",
-    "independent_verification": "PASS",
-    "independent_verification_source": "Supabase managed SQL read after workflow runtime",
-    "independently_verified": {
-      "learning_status": "ACTIVE",
-      "learning_member_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-      "learning_source_event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-      "event_owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-      "event_project_id": "NayaNET",
-      "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-      "verification_method": "MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL"
-    },
-    "workflow_harness_note": "Workflow job conclusion FAILED after the managed-runtime boundary completed because its independent-verification Node heredoc used require() with top-level await, producing ERR_AMBIGUOUS_MODULE_SYNTAX. This is proof-harness failure only; the persisted runtime result was independently verified outside the failed step.",
-    "causal_repairs": [
-      {
-        "defect": "Browser page.evaluate() failed to fetch the compound-intelligence Edge Function.",
-        "repair": "Moved managed-runtime Edge Function invocation to the GitHub runner's Node fetch while retaining the authenticated session token.",
-        "repair_source_commit": "76a54f5fd508595072d532ffe8b6fcad9374ff17"
-      }
-    ],
-    "final_truth_boundary": "The Smart Note → learning_candidate → learning_verify → learning_retrieve runtime boundary is PROVEN for this fresh owner and source scope. The workflow's final independent-verifier step is not itself passing and must not be described as a successful workflow job."
+    "claim_type": "CONTINUITY_AND_CANONICAL_AUTHORITY_REPAIR",
+    "source_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
+    "independent_verification": "PENDING_FRESH_EXECUTION"
   }
 }

@@ -23,17 +23,10 @@ on:
       reason:
         required: true
         type: string
-      commit_sha:
-        required: false
-        type: string
-      release_surface:
-        required: false
-        type: choice
-        options: [canonical-hub, canonical-react]
-        default: canonical-hub
       source_ref:
         required: false
         type: string
+        default: main
 
 concurrency:
   group: assistant-cloudflare-production-${{ github.sha }}
@@ -48,6 +41,14 @@ env:
   NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
 
 jobs:
+  continuity:
+    name: Canonical Naya execution gate
+    uses: ./.github/workflows/naya-execution-gate.yml
+    secrets: inherit
+    with:
+      source_ref: ${{ inputs.source_ref || github.sha }}
+      parent_sha: ${{ github.event.before }}
+
   deploy:
     runs-on: ubuntu-latest
     environment: assistant-cloudflare-production
@@ -60,20 +61,17 @@ jobs:
         env:
           APPROVAL: ${{ inputs.approval }}
           REASON: ${{ inputs.reason }}
-          RELEASE_SURFACE: ${{ inputs.release_surface }}
         run: |
           set -euo pipefail
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
-          test "${RELEASE_SURFACE}" = "canonical-hub" || test "${RELEASE_SURFACE}" = "canonical-react"
 
       - name: Checkout exact resolved revision
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.source_ref || inputs.commit_sha || github.sha }}
+          ref: ${{ inputs.source_ref || github.sha }}
 
       - name: Prepare canonical Hub artifact
-        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -113,22 +111,6 @@ jobs:
           test -s dist/name-first-auth-adapter.js
           python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
 
-      - name: Prepare canonical React Hub artifact
-        if: ${{ inputs.release_surface == 'canonical-react' }}
-        working-directory: NAYANET/HUB
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm install --no-package-lock
-          npm run typecheck
-          npm run build
-          test -s dist/index.html
-          grep -q 'NAYANET-HUB-REACT-CANONICAL' dist/index.html
-          rm -rf ../../dist
-          mkdir -p ../../dist
-          cp -R dist/. ../../dist/
-          sha256sum ../../dist/index.html | tee "${RUNNER_TEMP}/react-source.sha256"
-
       - name: Deploy exact canonical Hub
         shell: bash
         run: |
@@ -137,7 +119,6 @@ jobs:
           npx --yes wrangler@4 deploy --config "${RUNNER_TEMP}/wrangler.jsonc"
 
       - name: Verify exact live source parity
-        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -167,7 +148,6 @@ jobs:
           exit 1
 
       - name: Verify live Hub browser baseline
-        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -197,40 +177,7 @@ jobs:
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-hub-baseline.mjs
           rm -f verify-hub-baseline.mjs
 
-      - name: Verify live flagship React Hub
-        if: ${{ inputs.release_surface == 'canonical-react' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install chromium
-          cat > verify-flagship.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          const runtime=process.env.NAYA_RUNTIME_URL;
-          const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
-          try {
-            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
-              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
-              const page=await context.newPage();
-              const response=await page.goto(runtime+'/?name=Shawn&alias=shawn&flagship='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
-              if(!response?.ok()) throw new Error(viewport.label+': live React Hub HTTP unavailable');
-              await page.waitForTimeout(1800);
-              const result=await page.evaluate(()=>({title:document.title,shell:document.querySelector('[data-shell-owner="AppShellV3"]')?.getAttribute('data-runtime-marker')||null,today:[...document.querySelectorAll('button')].some(x=>x.textContent?.includes('Intelligence Today')),feed:document.body.innerText.includes('Living intelligence, made visible.'),pis:document.body.innerText.includes('SMART FEED · CANONICAL PIS'),project:document.body.innerText.includes('NAYANET · PROJECT INTELLIGENCE')}));
-              console.log('FLAGSHIP_RUNTIME_PROBE',viewport.label,JSON.stringify(result));
-              if(result.shell!=='NAYANET-HUB-REACT-CANONICAL') throw new Error(viewport.label+': React shell marker missing');
-              if(!result.today) throw new Error(viewport.label+': Intelligence Today navigation missing');
-              if(!result.feed) throw new Error(viewport.label+': flagship Smart Feed surface missing');
-              if(!result.pis) throw new Error(viewport.label+': canonical PIS surface missing');
-              if(!result.project) throw new Error(viewport.label+': Project Intelligence command surface missing');
-              await context.close();
-            }
-          } finally { await browser.close(); }
-          EOF
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-flagship.mjs
-          rm -f verify-flagship.mjs
-
       - name: Verify Command Station and Smart Feed interaction
-        if: ${{ inputs.release_surface != 'canonical-react' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -273,57 +220,8 @@ jobs:
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-interface-acceptance.mjs
           rm -f verify-interface-acceptance.mjs
 
-      - name: Verify React Command Station and Smart Feed interaction
-        if: ${{ inputs.release_surface == 'canonical-react' }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install chromium
-          cat > verify-react-interface.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          const runtime=process.env.NAYA_RUNTIME_URL;
-          const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
-          const surfaces=['Intelligence Today','Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings'];
-          try {
-            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
-              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
-              const page=await context.newPage();
-              const response=await page.goto(runtime+'/?name=Shawn&alias=shawn&react-interface='+process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
-              if(!response?.ok()) throw new Error(viewport.label+': React Hub HTTP unavailable');
-              await page.waitForTimeout(1200);
-              const probe=await page.evaluate((expected)=>{
-                const shell=document.querySelector('[data-shell-owner="AppShellV3"]');
-                const buttons=[...document.querySelectorAll('[data-naya-surface]')];
-                const labels=buttons.map(x=>(x.querySelector('.nav-name,.mobile-nav b')?.textContent||x.textContent||'').trim()).filter(Boolean);
-                const station=document.querySelector('.hub-experience');
-                return {shell:!!shell,marker:shell?.getAttribute('data-runtime-marker')||null,labels,missing:expected.filter(x=>!labels.includes(x)),station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'};
-              },surfaces);
-              console.log('REACT_INTERFACE_ACCEPTANCE_PROBE',viewport.label,JSON.stringify(probe));
-              if(!probe.shell||probe.marker!=='NAYANET-HUB-REACT-CANONICAL') throw new Error(viewport.label+': React command shell marker missing');
-              if(probe.missing.length) throw new Error(viewport.label+': missing visible Hub surfaces '+probe.missing.join(', '));
-              if(!probe.station||!probe.stationVisible) throw new Error(viewport.label+': Intelligence Today flagship surface is not visible');
-              const lenses=page.locator('.lens-tab[data-lens]');
-              if(await lenses.count()!==3) throw new Error(viewport.label+': expected three Intelligence lenses');
-              for(const key of ['personal','collective','activity']){
-                await page.locator('.lens-tab[data-lens="'+key+'"]').click();
-                await page.waitForTimeout(80);
-                const mode=await page.evaluate(k=>({active:[...document.querySelectorAll('.lens-tab[data-lens]')].filter(x=>x.classList.contains('active')).map(x=>x.getAttribute('data-lens')),context:document.querySelector('.signal-kicker')?.textContent||''}),key);
-                console.log('REACT_LENS_ACCEPTED',viewport.label,JSON.stringify(mode));
-                if(mode.active.length!==1||mode.active[0]!==key) throw new Error(viewport.label+': lens '+key+' did not activate');
-                if(!mode.context.includes(key.toUpperCase())) throw new Error(viewport.label+': lens context did not update for '+key);
-              }
-              await context.close();
-            }
-            console.log('REACT_INTERFACE_ACCEPTANCE_VERIFIED desktop+mobile Command Station + Intelligence Today + Smart Feed lenses');
-          } finally { await browser.close(); }
-          EOF
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-react-interface.mjs
-          rm -f verify-react-interface.mjs
-
       - name: Final proof
         run: |
           echo "LIVE_VERIFIED=${NAYA_RUNTIME_URL}"
           echo "WORKER=${CLOUDFLARE_CANONICAL_WORKER}"
-          echo "SOURCE=${{ inputs.source_ref || inputs.commit_sha || github.sha }}"
-          echo "SURFACE=${{ inputs.release_surface || 'canonical-hub' }}"
+          echo "SOURCE=${{ inputs.source_ref || github.sha }}"

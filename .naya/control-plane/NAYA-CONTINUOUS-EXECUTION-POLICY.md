@@ -151,3 +151,16 @@ The canonical Hub readiness inventory is:
 **TAG → YOU'RE IT → EXECUTE → VERIFY → RECORD → UPDATE → PASS THE BATON.**
 
 **The next Naya should never need Shawn to tell it what the system already knows.**
+
+
+## Hard execution boundary — effective 2026-09-22
+
+The policy is now enforced at the production boundary, not merely documented.
+
+Every substantive release execution MUST carry `.naya/control-plane/EXECUTION-SESSION.json` and satisfy the machine-checkable lifecycle:
+
+**SIGN IN → READ/ACK → EXCLUSIVE EXECUTION LEASE → ONE AUTHORIZED ACTION → INDEPENDENT VERIFICATION → ACTIVITY RECORD → CONTROL-PLANE UPDATE → SIGN OUT → ONE SUCCESSOR PROMPT**
+
+The execution gate fails closed when any required lifecycle field is missing, when the session parent HEAD does not equal the commit being advanced from, when verification is not PASS, when the control plane was not updated, or when sign-out/handoff is absent.
+
+For Hub production, there is exactly one deployable authority: **`NAYANET/HUB/index.html`**. The protected `2026 09 17 NAYANET HUB.html` file is the visual reference only. React/Vite builds, historical Hub copies, archived shells, and alternate surfaces are never production authority and are prohibited from the canonical Cloudflare release lane.
