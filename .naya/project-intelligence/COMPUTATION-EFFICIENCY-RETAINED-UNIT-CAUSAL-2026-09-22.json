@@ -1,0 +1,19 @@
+{
+  "schema": "naya/computation-efficiency-retained-unit/v2",
+  "status": "VERIFIED",
+  "created_after": "CYCLE_A",
+  "source_head": "91968384eb2ebd1b35c0fefee6f6a06fcb0e6d54",
+  "task_hash": "f27ed3d518e54905775935bd997499fcd19319763145fc9194b5336798423348",
+  "retained_fields": {
+    "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "active_block": "COMPUTATION-EFFICIENCY-P1",
+    "active_block_status": "ACTIVE"
+  },
+  "source_provenance": {
+    ".naya/control-plane/BLOCKS.json": "0905ca8d1a1bcfece17ee828c94bcea971f71b13",
+    ".naya/control-plane/MAP.json": "c354279cc1cc4bf60299756af3649685a6791ef6",
+    ".naya/control-plane/PROOF.json": "5f9edbe8eee1960a4afa7d05928c0b60b90a679b",
+    ".naya/control-plane/STATE.json": "0ee206d73589f5854e6dfdc3b4242268a854bf50"
+  },
+  "purpose": "Causal retained intelligence produced by Cycle A before Cycle B."
+}
