@@ -50,3 +50,5 @@ jobs:
           console.log('BRIDGE_BROWSER_RENDER_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_BRIDGE_BROWSER_RENDER_PROOF_V1',run_id:R,packet_id:bj.packet_id,receiver_event_id:bj.receiver_event_id,exact_packet_rendered:true,retrieved:true,acknowledged:true,status:'VERIFIED'}));
           EOF
           node proof.mjs
+
+# retrieval-render-proof-trigger: 2026-09-22T21:45:00Z
