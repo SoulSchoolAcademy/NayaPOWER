@@ -44,14 +44,6 @@ env:
   NAYA_RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
 
 jobs:
-  continuity:
-    name: Canonical Naya execution gate
-    uses: ./.github/workflows/naya-execution-gate.yml
-    secrets: inherit
-    with:
-      source_ref: ${{ inputs.source_ref || github.sha }}
-      parent_sha: ${{ github.event.before }}
-
   deploy:
     runs-on: ubuntu-latest
     environment: assistant-cloudflare-production
@@ -69,7 +61,40 @@ jobs:
           test "${APPROVAL}" = "EXPLICIT_APPROVAL_GRANTED"
           test -n "${REASON}"
 
-      - name: Checkout exact resolved revision
+      - name: Checkout exact canonical source
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.source_ref || github.sha }}
+          fetch-depth: 2
+
+      - name: Enforce Naya session and merge-boundary lease
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s .naya/control-plane/EXECUTION-SESSION.json
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          s=json.loads(Path('.naya/control-plane/EXECUTION-SESSION.json').read_text())
+          required=['session_id','naya_id','status','parent_head','authorized_action','successor_prompt']
+          missing=[k for k in required if not s.get(k)]
+          if missing: raise SystemExit('SESSION_FIELDS_MISSING:'+','.join(missing))
+          if s['status']!='CLOSED': raise SystemExit('SESSION_NOT_CLOSED')
+          if not s.get('read_ack',{}).get('all_required_sources'): raise SystemExit('READ_ACK_FAILED')
+          lease=s.get('execution_lease',{})
+          if lease.get('status')!='ACQUIRED' or lease.get('exclusive') is not True: raise SystemExit('EXECUTION_LEASE_FAILED')
+          if s.get('action_result',{}).get('verification')!='PASS': raise SystemExit('VERIFICATION_NOT_PASS')
+          if s.get('record',{}).get('status')!='COMPLETE': raise SystemExit('ACTIVITY_RECORD_NOT_COMPLETE')
+          if s.get('control_plane',{}).get('updated') is not True: raise SystemExit('CONTROL_PLANE_NOT_UPDATED')
+          if s.get('sign_out',{}).get('status')!='SIGNED_OUT': raise SystemExit('SIGN_OUT_MISSING')
+          parents=subprocess.check_output(['git','rev-list','--parents','-n','1','HEAD'],text=True).strip().split()
+          if len(parents)!=3: raise SystemExit('CANONICAL_RELEASE_REQUIRES_MERGE_COMMIT')
+          execution_branch_parent=parents[2]
+          if subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],execution_branch_parent]).returncode!=0:
+              raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_BRANCH')
+          print('NAYA_SESSION_VERIFIED',s['session_id'],'MERGE_COMMIT',parents[1],'EXECUTION_BRANCH',execution_branch_parent)
+          PY
+
         uses: actions/checkout@v4
         with:
           ref: ${{ inputs.source_ref || github.sha }}

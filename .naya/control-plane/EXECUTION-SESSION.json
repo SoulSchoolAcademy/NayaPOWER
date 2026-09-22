@@ -1,10 +1,10 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260922-CANONICAL-AUTHORITY-CONTINUITY-03",
+  "session_id": "NAYA-20260922-CANONICAL-AUTHORITY-CONTINUITY-04",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
-  "authorized_action": "Harden the Naya execution boundary and lock Cloudflare production to NAYANET/HUB/index.html without changing downstream Hub journey behavior.",
+  "parent_head": "1f71700a1d28f76bad2d281afc9bd83de316303f",
+  "authorized_action": "Inline the Naya continuity gate into the canonical Cloudflare release and remove the broken reusable workflow path without changing Hub behavior.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
@@ -29,9 +29,9 @@
   "action_result": {
     "verification": "PASS",
     "evidence": [
-      "canonical source/reference normalized visual parity",
-      "alternate production authority identified and removed from release contract",
-      "machine-checkable session gate added"
+      "canonical Hub visual parity already verified",
+      "reusable gate invocation produced a zero-job failure boundary",
+      "continuity gate moved inline into the production release workflow"
     ]
   },
   "record": {
@@ -45,7 +45,7 @@
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-22T23:43:54.402Z"
+    "at": "2026-09-22T23:48:54.756Z"
   },
-  "successor_prompt": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
+  "successor_prompt": "Merge this branch, then resolve live main and run the canonical Cloudflare #feed release. The release must pass the inline Naya session gate and serve NAYANET/HUB/index.html exactly."
 }

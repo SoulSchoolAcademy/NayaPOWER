@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T23:43:54.402Z",
-    "observed_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
+    "recorded_at": "2026-09-22T23:48:54.756Z",
+    "observed_head": "1f71700a1d28f76bad2d281afc9bd83de316303f",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -405,7 +405,7 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed.",
+    "action": "Merge the inline continuity-gate repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "current_action_attempt": {

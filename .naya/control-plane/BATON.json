@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T23:43:54.402Z",
+  "generated_at": "2026-09-22T23:48:54.756Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
+    "live_head": "1f71700a1d28f76bad2d281afc9bd83de316303f",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "NAYA-CONTINUITY-HARDENING",
-    "block_next_action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
+    "block_next_action": "Merge the inline continuity-gate repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,12 +70,12 @@
     "next_action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
   },
   "next_action": {
-    "action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed.",
+    "action": "Merge the inline continuity-gate repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Read README-FIRST, BATON, STATE, BLOCKS, MAP, PROOF, and EXECUTION-SESSION. Verify the execution gate passed. Then execute only the canonical Cloudflare #feed proof: source NAYANET/HUB/index.html → live worker → desktop/mobile visual parity → Personal/Collective/Activity.",
-    "do_not": "Do not use React/Vite as the production Hub. Do not use historical Hub files as deployable source. Do not reopen proven downstream journey steps before canonical Hub authority and continuity are verified."
+    "prompt": "Resolve live main. Read EXECUTION-SESSION and Baton. Verify the inline release session gate is present. Then run only the canonical Cloudflare #feed deployment and desktop/mobile source parity proof.",
+    "do_not": "Do not use React/Vite as production authority. Do not restore the reusable gate workflow. Do not touch downstream journey steps until #feed source/live parity is proven."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
