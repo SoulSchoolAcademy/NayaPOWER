@@ -1,10 +1,10 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260922-CANONICAL-RELEASE-SYNTAX-05",
+  "session_id": "NAYA-20260922-CANONICAL-RELEASE-CHECKOUT-06",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "6511b22c4bb07bac63b2a435afdcd471a6d595ea",
-  "authorized_action": "Repair the deterministic canonical Cloudflare workflow syntax defect and then re-run only the canonical release gate.",
+  "parent_head": "87d3cc1283323d27cc26b83c384722b32cd12edc",
+  "authorized_action": "Repair the deterministic malformed canonical checkout step and then re-run only the canonical release.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
@@ -29,8 +29,8 @@
   "action_result": {
     "verification": "PASS",
     "evidence": [
-      "identified orphaned checkout step after inline gate",
-      "removed invalid duplicate step so the release workflow can parse and execute"
+      "line-level inspection found the checkout step name and fetch-depth collapsed into one malformed step",
+      "restored a valid actions/checkout step with explicit ref and fetch-depth"
     ]
   },
   "record": {
@@ -44,7 +44,7 @@
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-22T23:51:12.971Z"
+    "at": "2026-09-22T23:53:31.741Z"
   },
-  "successor_prompt": "Resolve live main. Read the latest Baton and session. Verify the canonical release workflow parses and then run only the canonical #feed source/live/browser proof."
+  "successor_prompt": "Resolve live main. Read the latest Baton and session. Verify the canonical release workflow is structurally valid, then run only the canonical #feed source/live/browser proof."
 }
