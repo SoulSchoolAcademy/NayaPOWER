@@ -1,0 +1,50 @@
+name: NayaNET non-owner managed retrieval proof
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-non-owner-managed-retrieval.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      PACKET_ID: 84c6b111-fe32-4a8e-8fe1-402bd107cdda
+      EXPECTED_OWNER_ID: e2526a64-7d91-4e73-b793-8dd53a5372d1
+      EXPECTED_RECEIPT_ID: d1cf85ec-e470-436a-8f8e-ae13fc011802
+      EXPECTED_EVENT_ID: 241159af-a285-4fc3-b322-c86797818548
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Fresh non-owner retrieval and independent receipt check
+        shell: bash
+        run: |
+          cat > proof.mjs <<'EOF'
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,P=process.env.PACKET_ID;
+          const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
+          const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'});const a=await ar.json();
+          if(!ar.ok||!a.access_token||!a.user?.id)throw Error('NON_OWNER_AUTH_FAILED');
+          if(a.user.id===process.env.EXPECTED_OWNER_ID)throw Error('IDENTITY_COLLISION_OWNER');
+          const t=a.access_token;
+          const rr=await fetch(B+'/functions/v1/nayanet-project-intelligence-retrieve',{method:'POST',headers:H(t),body:JSON.stringify({query:process.env.EXPECTED_EVENT_ID})});
+          const raw=await rr.text();let body;try{body=JSON.parse(raw)}catch{body={raw}};
+          const events=Array.isArray(body?.result?.events)?body.result.events:[];
+          const leaked=events.some(e=>e.packet_id===P||e.event_id===process.env.EXPECTED_EVENT_ID);
+          console.log('NON_OWNER_RETRIEVAL_RESULT='+JSON.stringify({http_status:rr.status,ok:body?.ok===true,non_owner_id:a.user.id,events_count:events.length,packet_returned:leaked,response_keys:Object.keys(body||{}).sort()}));
+          if(leaked)throw Error('PRIVATE_PACKET_LEAKED_TO_NON_OWNER');
+          if(rr.status!==200 && rr.status!==401 && rr.status!==403)throw Error('UNEXPECTED_RETRIEVAL_STATUS:'+rr.status);
+          const sr=await fetch(B+'/rest/v1/nayanet_project_intelligence_bridge?select=packet_id,owner_id,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected,retrieved,rendered,verified_at&packet_id=eq.'+P,{headers:{apikey:K,authorization:'Bearer '+K}});const rows=await sr.json();
+          if(!sr.ok||rows.length!==1)throw Error('CANONICAL_RECEIPT_READ_FAILED:'+JSON.stringify(rows));
+          const row=rows[0];
+          const same=row.packet_id===P&&row.owner_id===process.env.EXPECTED_OWNER_ID&&row.receiver_event_id===process.env.EXPECTED_EVENT_ID&&row.receipt_id===process.env.EXPECTED_RECEIPT_ID&&row.persisted===true&&row.indexed===true&&row.projected===true&&row.retrieved===true&&row.rendered===true&&!!row.verified_at;
+          console.log('INDEPENDENT_OWNER_RECEIPT_CHECK='+JSON.stringify({same_canonical_receipt:same,packet_id:row.packet_id,owner_id:row.owner_id,receiver_event_id:row.receiver_event_id,receipt_id:row.receipt_id,persisted:row.persisted,indexed:row.indexed,projected:row.projected,retrieved:row.retrieved,rendered:row.rendered,verified_at:row.verified_at}));
+          if(!same)throw Error('OWNER_RECEIPT_CHANGED_OR_MISMATCHED');
+          console.log('NON_OWNER_MANAGED_RETRIEVAL_PROOF='+JSON.stringify({schema:'NAYANET_NON_OWNER_MANAGED_RETRIEVAL_PROOF_V1',packet_id:P,non_owner_id:a.user.id,retrieval_http_status:rr.status,non_owner_events_count:events.length,private_packet_returned:false,canonical_owner_receipt_unchanged:true,receipt_id:row.receipt_id,verified_at:row.verified_at,status:'VERIFIED'}));
+          EOF
+          node proof.mjs
