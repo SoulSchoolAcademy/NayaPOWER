@@ -2,6 +2,7 @@
 # Canonical lifecycle gate: Smart Note -> canonical event -> Personal Smart Feed -> reload -> same event ID.
 # Run after current-main release 683 so acceptance is source-current.
 # CURRENT_SMART_FEED_LINEAGE_REPAIR: verify row-id and canonical event-id block projection.
+# CURRENT_SMART_FEED_BLOCK_LOOKUP_REPAIR: map returned items by id or event_id.
 name: Wave A authenticated browser handoff acceptance
 
 on:
