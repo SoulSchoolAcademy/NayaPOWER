@@ -1,0 +1,81 @@
+{
+  "$schema": "naya/control-plane/baton/v1",
+  "status": "CANONICAL",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "generated_at": "2026-09-22",
+  "source_of_truth": {
+    "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
+    "live_state": ".naya/control-plane/STATE.json",
+    "active_block": ".naya/control-plane/BLOCKS.json",
+    "mission_map": ".naya/control-plane/MAP.json",
+    "proof": ".naya/control-plane/PROOF.json",
+    "history": ".naya/memory/events/ and execution receipts"
+  },
+  "current_state": {
+    "rule": "Resolve live Git HEAD at execution time; do not treat this snapshot as authoritative over STATE.json.",
+    "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
+    "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
+    "active_program": "P1 - MEASURED COMPUTATIONAL COMPOUNDING",
+    "active_block": "COMPUTATION-EFFICIENCY-P1"
+  },
+  "current_intelligence": {
+    "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+    "continuous_flow": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
+    "intelligent_block_protocol": "SUPERBRAIN/INTELLIGENT-BLOCK-PROTOCOL.md",
+    "intelligence_distiller": "SUPERBRAIN/INTELLIGENCE-DISTILLER-PROTOCOL.md",
+    "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md"
+  },
+  "truth": {
+    "proven": [
+      "Control-plane current-state/active-block/mission-map/proof contracts exist.",
+      "Continuous Smart Flow and cold-Naya operating directive is canonical.",
+      "Next-action + handoff execution cycle exists and is machine-checkable.",
+      "Smart Note receiver and Intelligent Block runtime proof mechanisms exist."
+    ],
+    "unknown": [
+      "Universal automatic Smart Note → Intelligent Block transformation across every meaningful Naya output.",
+      "Universal automatic Intelligence → Activity → Control Plane synchronization.",
+      "Universal lineage/Playback runtime behavior.",
+      "Automatic successor-prompt generation from every meaningful output.",
+      "Full intended-scope cold Naya independent continuation across all work."
+    ],
+    "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
+  },
+  "active_block": {
+    "id": "COMPUTATION-EFFICIENCY-P1",
+    "status": "ACTIVE",
+    "priority": "P1",
+    "source": ".naya/control-plane/BLOCKS.json"
+  },
+  "next_action": {
+    "count": 1,
+    "status": "AUTHORIZED",
+    "action": "Execute the consolidated human journey against the canonical Hub: OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE.",
+    "source": ".naya/control-plane/BLOCKS.json",
+    "reason": "Use the existing verified Project Intelligence substrate and advance the current human-facing acceptance boundary without reopening proven infrastructure.",
+    "acceptance": "Complete the defined journey with evidence for each step and preserve durable saved state.",
+    "verification": "Independently observe the result, reload/fresh-context retrieve it, verify evidence/provenance, and leave a successor next action."
+  },
+  "evidence": {
+    "control_plane": "STATE.json + BLOCKS.json + MAP.json + PROOF.json",
+    "continuation_cycle": ".naya/runtime/next_action_handoff.py",
+    "cold_start": ".naya/runtime/cold_start_activation.py",
+    "smart_note_receiver": ".github/workflows/verify-live-smart-note-receiver.yml",
+    "activity": "NAYA/ACTIVITY/2026/09/22.md"
+  },
+  "successor_prompt": {
+    "rule": "Read the updated canonical baton and referenced control-plane sources before consequential execution.",
+    "prompt": "Restore live NayaPOWER state from the canonical control plane, verify the single next action against current evidence and authority, execute only that action, independently verify the result, record what changed and what remains unknown, update the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources can provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
+  },
+  "playback": {
+    "current_default": "Latest applicable canonical intelligence/state.",
+    "lineage_sources": [
+      "NAYA/ACTIVITY/",
+      "execution receipts",
+      ".naya/memory/events/",
+      "SUPERBRAIN/INTELLIGENT-BLOCKS/"
+    ],
+    "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
+  }
+}
