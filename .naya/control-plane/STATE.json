@@ -293,5 +293,12 @@
   "current_next_action": {
     "action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
     "reason": "The readiness inventory identified shell/source/build/runtime ownership as the first deterministic boundary before visual and feature work."
+  },
+  "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
+  "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
+  "read_first": "README-FIRST.md",
+  "operating_truth_model": {
+    "canonical_baton": ".naya/control-plane/BATON.json",
+    "current_state_pointer": "README-FIRST.md → .naya/control-plane/BATON.json"
   }
 }
