@@ -365,14 +365,13 @@
     "desktop_commander": "RESTORED"
   },
   "adversarial_frontier": {
-    "status": "BLOCKED_NOT_EXECUTED",
-    "source_head": "24e957997c7d2193697507ce0955599a4335a24c",
-    "reason": "The canonical consolidated nine-dimension runner now exists on main and passed fresh managed-runtime execution plus independent receipt verification at run 35787965745.",
-    "prior_fresh_subset": {
-      "run": 35785994422,
-      "receipt": "eec76e06-bf71-40ae-bfe8-6b19c51c9463",
-      "artifact": 10720735285
-    },
+    "status": "PROVEN",
+    "source_head": "e21a87889506cbde3564c0f74db0090ac4a71f36",
+    "matrix_run": 35787965745,
+    "matrix_job": 106949286253,
+    "matrix_owner": "d811ce97-4b06-4aea-b8ba-a8bafde19c8a",
+    "run_identity": "github-actions:35787965745:e21a87889506cbde3564c0f74db0090ac4a71f36",
+    "reason": "All nine dimensions executed at one exact source identity and every managed-runtime receipt was independently verified.",
     "required_dimensions": [
       "owner/non-owner isolation",
       "revocation",
@@ -383,6 +382,19 @@
       "receipt integrity",
       "unauthorized persistence",
       "privacy boundary"
-    ]
+    ],
+    "receipt_ids": [
+      "a2e4ab45-98ff-46c5-82ee-2f081aac4c3e",
+      "7167eea1-4a5b-4e45-a08e-c4520ee32421",
+      "766f370d-2882-476a-b333-e60c01dd5487",
+      "e72d7032-6c08-40a3-8952-e5a07c1bb077",
+      "65436476-30dc-4f06-a128-c7f27bade8ad",
+      "2894ae08-38a1-4a3c-ae2a-8cb11e14a751",
+      "17230c55-515e-436d-b85a-e0f4ed872dfd",
+      "da034f2b-ebd8-4189-beee-69cddc7b9b5f",
+      "751e51f0-5b21-43ef-a3fd-329facc2ae1f"
+    ],
+    "artifact_id": 10720229874,
+    "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   }
 }
