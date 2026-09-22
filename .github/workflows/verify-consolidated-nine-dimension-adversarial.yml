@@ -37,6 +37,7 @@ jobs:
             f.write("NAYANET_OWNER_ID="+d["user"]["id"]+"\n")
             f.write("OWNER_TOKEN="+token+"\n")
             f.write("RUN_IDENTITY=github-actions:"+os.environ["GITHUB_RUN_ID"]+":"+os.environ["GITHUB_SHA"]+"\n")
+          PY
       - name: Mint GitHub OIDC bridge token
         shell: bash
         run: |
