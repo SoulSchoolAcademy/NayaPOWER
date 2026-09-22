@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:45:03.448118+00:00",
+  "generated_at": "2026-09-22T18:53:37.057669+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "c4e7cce540c5d4666eb3b0b8b0450f90a98170e2",
+    "live_head": "06849c42ccedc100111ec23e5075cabe1a7a8a6e",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Record the result and leave one successor action."
+    "block_next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -67,9 +67,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived from the verified computation-efficiency counterfactual review.",
+    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "acceptance": [
       "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "Run the same task with retained verified intelligence reuse.",
@@ -78,13 +78,12 @@
       "Verify outcome quality/provenance/authority are not degraded.",
       "Record the result and leave one successor action."
     ],
-    "verification": "Independently observe the repaired paired run, re-read canonical state, verify durable retained evidence and counterfactual validity, and leave exactly one successor action."
+    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
     "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
-    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof.",
-    "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",

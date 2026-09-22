@@ -18,7 +18,7 @@
       "id": "COMPUTATION-EFFICIENCY-P1::NEXT",
       "actor": "Naya",
       "status": "AUTHORIZED",
-      "action": "Verify outcome quality/provenance/authority are not degraded.",
+      "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
       "objective": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
       "reason": "The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
       "constraints": [
@@ -51,7 +51,7 @@
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
       "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Verify outcome quality/provenance/authority are not degraded.",
+      "objective": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -81,8 +81,8 @@
       "post-execution canonical state",
       "successor handoff"
     ],
-    "generated_at": "2026-09-22T18:45:03.351077+00:00",
-    "source_commit": "c4e7cce540c5d4666eb3b0b8b0450f90a98170e2"
+    "generated_at": "2026-09-22T18:53:36.962341+00:00",
+    "source_commit": "06849c42ccedc100111ec23e5075cabe1a7a8a6e"
   },
   "execution": {
     "action_id": "COMPUTATION-EFFICIENCY-P1::NEXT",
@@ -108,13 +108,13 @@
     "updated_by": "next_action_handoff.py"
   },
   "new_next_action": {
-    "action": "Record the result and leave one successor action.",
+    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "owner": "Naya",
     "source_of_truth": ".naya/control-plane/BLOCKS.json",
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
       "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Verify outcome quality/provenance/authority are not degraded.",
+      "objective": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -139,6 +139,6 @@
       "Record the result and leave one successor action."
     ]
   },
-  "source_commit": "c4e7cce540c5d4666eb3b0b8b0450f90a98170e2",
-  "created_at": "2026-09-22T18:45:03.360515+00:00"
+  "source_commit": "06849c42ccedc100111ec23e5075cabe1a7a8a6e",
+  "created_at": "2026-09-22T18:53:36.971758+00:00"
 }

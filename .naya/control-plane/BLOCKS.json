@@ -29,9 +29,9 @@
       "PI-01 home-run run 35639968134"
     ],
     "target_state": "MEASURED_COMPOUNDING_WITH_VERIFIED_OUTCOME_PRESERVATION",
-    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "next_actions": [
-      "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual."
+      "Establish a baseline cold reconstruction workload with explicit resource measurements."
     ],
     "next_action_count": 1,
     "predecessor": "PROJECT-INTELLIGENCE-PI-01",
@@ -81,7 +81,7 @@
   "current_frontier": {
     "active_block": "COMPUTATION-EFFICIENCY-P1",
     "priority": "P1",
-    "next_action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+    "next_action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
     "completion": "Complete the causal paired benchmark and verify outcome quality, provenance, authority, and counterfactual validity."
   },
   "last_next_action_cycle": {
