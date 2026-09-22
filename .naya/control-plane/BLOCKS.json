@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification.",
+    "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
     "next_actions": [
-      "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
+      "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,15 +57,15 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "The consolidated nine-dimension matrix is now freshly proven at GitHub Actions run 35787965745 with independent verification of all nine managed-runtime receipts. The next causal gap is retrieval/render continuity for the canonical Project Intelligence bridge.",
+    "next_action_reason": "The fresh current-main Project Intelligence retrieval/render proof passed with owner binding, retrieved=true, rendered=true, cold 14Q evidence, authorized continuation, and independently verified receipts.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
-      "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
+      "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+      "completion": "One production Hub shell owner is established and its exact source/build/runtime identity is independently proven."
     },
     "completion": "HUMAN JOURNEY LIVE VERIFIED",
-    "proof_receipt": "NAYA/ACTIVITY/2026/09/22-GAP-002-HUMAN-JOURNEY-SMARTFEED-VERIFIED.md"
+    "proof_receipt": ".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md"
   },
   "status_vocabulary": [
     "INTENDED",
