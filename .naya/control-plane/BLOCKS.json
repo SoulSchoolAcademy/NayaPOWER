@@ -193,5 +193,14 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell."
+  "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+  "current_attempt": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "workflow": ".github/workflows/verify-non-owner-managed-retrieval.yml",
+    "trigger_commit": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "reason": "The canonical verifier was prepared and a governed main push trigger was committed, but the connected execution surface provides no workflow-dispatch write operation and the Desktop Commander channel is usage-paused; therefore no fresh non-owner runtime identity or retrieval result exists.",
+    "owner_receipt_check": "PASS",
+    "next_action_preserved": true
+  }
 }
