@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T23:53:31.741Z",
+  "generated_at": "2026-09-22T23:59:08.479Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "87d3cc1283323d27cc26b83c384722b32cd12edc",
+    "live_head": "72a78a292d47af3d66769d7988edcc7b375b8218",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "CANONICAL-RELEASE-CHECKOUT",
-    "block_next_action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity."
+    "state_block": "CANONICAL-VISUAL-PARITY-SEAMS",
+    "block_next_action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -63,19 +63,19 @@
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "CANONICAL-RELEASE-CHECKOUT",
+    "id": "CANONICAL-VISUAL-PARITY-SEAMS",
     "status": "IN_PROGRESS",
     "priority": "P0",
     "source": ".naya/control-plane/STATE.json",
-    "next_action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity."
+    "next_action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile."
   },
   "next_action": {
-    "action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity.",
+    "action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Verify the checkout step is structurally valid. Then execute only canonical Cloudflare #feed source/live/browser proof.",
-    "do_not": "Do not touch Hub UI or downstream journey."
+    "prompt": "Resolve live main. Verify parity accepts only the two documented runtime seams. Then deploy canonical #feed and prove source/live/browser parity.",
+    "do_not": "Do not change Hub visual source to satisfy the parity gate. Do not revert functional #feed/defer seams."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
