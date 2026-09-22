@@ -1,0 +1,102 @@
+{
+  "$schema": "nayanet/project-intelligence/root-registry/v1",
+  "status": "CANONICAL",
+  "version": "1.0",
+  "effective_date": "2026-09-21",
+  "project_id": "NayaNET",
+  "canonical_spec": "SUPERBRAIN/PROJECT-INTELLIGENCE-CANONICAL-ROOT-SPEC-V1.md",
+  "constitutional_authority": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
+  "control_plane": {
+    "map": ".naya/control-plane/MAP.json",
+    "state": ".naya/control-plane/STATE.json",
+    "blocks": ".naya/control-plane/BLOCKS.json",
+    "proof": ".naya/control-plane/PROOF.json",
+    "governance_kernel": ".naya/control-plane/GOVERNANCE-KERNEL.json"
+  },
+  "identity": {
+    "network": "NayaNET",
+    "operating_substrate": "NayaPOWER",
+    "operator": "Naya",
+    "human_role": "Director",
+    "model_policy": "AI-agnostic"
+  },
+  "north_star": "Create as much real value as possible, in every action and every moment, for everyone.",
+  "constitutional_objective": "HIGHEST RESPONSIBLE VERIFIED VALUE",
+  "value_question": "What value does this create, for whom, based on what evidence, at what cost or risk, and how do we know?",
+  "privacy": "PRIVATE BY DEFAULT → SHARED BY CHOICE → COLLECTIVE BY CONSENT → PUBLIC BY DECISION",
+  "canonical_contracts": {
+    "intelligent_event": ".naya/project-intelligence/INTELLIGENT-EVENT-V1.md",
+    "intelligent_block": ".naya/project-intelligence/INTELLIGENT-BLOCK-V1.md",
+    "operating_context": ".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json",
+    "bridge": ".naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md",
+    "smart_note_constitution": "SMART_NOTE_CONSTITUTION.md",
+    "smart_note_runtime": "SMART_NOTE_RUNTIME_PROTOCOL.md"
+  },
+  "existing_capabilities": [
+    "canonical governance",
+    "control-plane truth",
+    "project-intelligence reconstruction",
+    "intelligent event",
+    "intelligent block",
+    "Smart Notes",
+    "PIS/indexing",
+    "learning verification",
+    "successor handoff",
+    "supersession lineage",
+    "Dream replay",
+    "compound intelligence",
+    "bridge transport/persistence/index/projection/ack",
+    "retrieval/render evidence at recorded scopes",
+    "authority/privacy/replay adversarial evidence",
+    "canonical Hub"
+  ],
+  "open_frontiers": [
+    "universal computation savings",
+    "universal model/provider learning quality",
+    "complete human-facing journey acceptance",
+    "broader adversarial retrieval coverage",
+    "latest production source/runtime revalidation where claim-relevant",
+    "materially different project generalization",
+    "broader automatic compound orchestration",
+    "empirically calibrated value weights and decision thresholds"
+  ],
+  "machine_readable_first": {
+    "priority": 1,
+    "artifact": "this registry",
+    "purpose": "pointer/classification layer for Project Intelligence",
+    "must_not_become": [
+      "second database",
+      "second event store",
+      "competing authority",
+      "duplicate source-of-truth"
+    ],
+    "required_fields": [
+      "identity",
+      "mission",
+      "north_star",
+      "authority",
+      "current_state",
+      "active_block",
+      "proof",
+      "known",
+      "unknown",
+      "blocked",
+      "protected",
+      "current_frontier",
+      "evidence",
+      "learning",
+      "next_action",
+      "provenance",
+      "schema_version"
+    ]
+  },
+  "source_rule": "LIVE AUTHORITATIVE SOURCE → CURRENT CONSTITUTION → CURRENT CONTROL PLANE → CURRENT VERIFIED SPECIALIZED SPEC → VERIFIED OPERATIONAL RECORD → HISTORICAL/DERIVED/LEGACY → CONVERSATION MEMORY",
+  "implementation_rule": "INSPECT → MAP → IDENTIFY AUTHORITY → REUSE EXISTING INTELLIGENCE → FIND FIRST MISSING BOUNDARY → REPAIR ONLY THAT BOUNDARY → VERIFY → RECORD → LEARN",
+  "protected_surfaces": [
+    "canonical Hub source",
+    "control plane",
+    "Smart Note/PIS/Activity machinery",
+    "historical intelligence and evidence",
+    "existing authority/privacy boundaries"
+  ]
+}
