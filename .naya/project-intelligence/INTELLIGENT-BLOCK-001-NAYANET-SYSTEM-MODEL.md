@@ -1,272 +1,402 @@
-# 🔱 INTELLIGENT BLOCK 001 — NayaNET System Model
+# 🔱 INTELLIGENT BLOCK 001 — NayaNET SYSTEM MODEL
 
 **STATUS:** GOVERNING SEMANTIC CONTRACT / CANONICAL  
 **SCHEMA:** NAYANET_INTELLIGENT_BLOCK_V1  
 **OBJECT:** `IB:NAYANET-SYSTEM-MODEL-001`  
 **EVENT:** `NAYANET-SYSTEM-MODEL-001`  
-**SOURCE HEAD:** `9c3fa32c9bd0bc1cd12ada2162194f0808bfec7a`
+**SOURCE HEAD:** `fffa0888b3bee9a04ddf14f5b6ea50586c340812`
 
-## HUMAN — What this means
+## HUMAN MEANING
 
-NayaNET is the intelligence network.
+NayaNET is a governed intelligence network that allows humans, AIs, agents, applications, and machines to preserve, understand, connect, exchange, verify, and compound intelligence through a shared canonical meaning layer while preserving ownership, privacy, consent, identity, provenance, and human authority.
 
 NayaPOWER is the governed operating and control substrate.
 
-Naya is the replaceable intelligent interface and reasoning partner.
+Naya is the intelligent reasoning and orchestration partner.
 
-Project Intelligence is persistent context, memory, state, relationships, and accumulated experience.
+Project Intelligence is the persistent intelligence of an evolving person, project, organization, or system.
 
-An **Intelligent Event** records **WHAT HAPPENED**.
+An Intelligent Event records **WHAT HAPPENED**.
 
-An **Intelligent Block** records **WHAT IS UNDERSTOOD**.
+An Intelligent Block records **WHAT WE CURRENTLY UNDERSTAND**.
 
-Collective Chain Technology connects meaning across events and blocks.
+An Intelligent Block may be distilled from one document, one conversation, or a large grouping of conversations, documents, events, evidence, perspectives, decisions, observations, runtime results, and prior Blocks.
 
-The Smart Ledger, execution receipts, evidence, authority rules, privacy rules, and verification system make the intelligence accountable.
+**The Block is the reusable unit of understood intelligence.**
 
-The Intelligent Hub is the human-facing cockpit. It presents the intelligence; it is not the canonical intelligence authority.
+CCT connects intelligence by meaning and provenance.
 
-The system's purpose is simple:
+Evidence, verification, receipts, governance, privacy, and the Smart Ledger make intelligence accountable.
 
-**Keep the intelligence, not just the conversation.**
+The Hub is the human-facing cockpit. It presents canonical intelligence but does not become the source of truth.
 
-Capture experience. Understand it. Preserve what matters. Connect it. Use it. Verify what happened. Learn from the outcome. Carry the useful understanding forward. Share only by choice.
+The purpose is:
 
+**KEEP THE INTELLIGENCE, NOT JUST THE CONVERSATION.**
 
-## GOVERNING SEMANTIC CONTRACT
+---
 
-This block is the semantic contract against which the NayaNET system is interpreted.
+## THE INTELLIGENT BLOCK DISTILLATION MODEL
 
-Every major component MUST be explainable as a participant in the canonical intelligence graph:
+A Block is not simply a file.
 
-`WHO / IDENTITY → TIME → TYPE → SUBJECT → RELATIONSHIP → EVIDENCE → STATE → VALUE → ACTION → OUTCOME → LEARNING → SUCCESSOR`
+It is a governed semantic container that answers:
 
-For every component, implementation and verification must answer:
+```text
+WHAT IS THIS?
+WHY DOES IT MATTER?
+WHAT SOURCES CREATED THIS UNDERSTANDING?
+WHAT HAPPENED?
+WHAT DO WE CURRENTLY UNDERSTAND?
+WHAT IS VERIFIED?
+WHAT IS INFERRED?
+WHAT IS UNKNOWN?
+WHAT PERSPECTIVES MATTER?
+WHO OWNS / CONTROLS IT?
+WHAT MAY BE SHARED?
+WHAT DOES IT CONNECT TO?
+WHAT VALUE DOES IT CREATE?
+WHAT CAN WE DO WITH IT?
+WHAT HAPPENED WHEN WE APPLIED IT?
+WHAT DID WE LEARN?
+WHAT IS THE SUCCESSOR?
+```
 
-1. **Canonical object** — What object does it create, read, update, or project?
-2. **Identity** — What stable identity binds it to canonical truth?
-3. **Evidence** — What observable evidence supports its state or claim?
-4. **Authority** — What authority may it exercise, and what authority may it never infer?
-5. **Learning** — Where does an observed outcome or correction become durable learning?
-6. **Successor** — Can a cold successor reconstruct why it exists, what is true, what is unknown, and what should happen next?
+Multiple sources can become one Block:
 
-### Conformance law
+```text
+CONVERSATIONS
+DOCUMENTS
+FILES
+EVENTS
+EVIDENCE
+DECISIONS
+OBSERVATIONS
+HUMAN CORRECTIONS
+RUNTIME RESULTS
+PRIOR BLOCKS
+        ↓
+    DISTILLATION
+        ↓
+INTELLIGENT BLOCK
+        ↓
+VALIDATE → CONNECT → APPLY → VERIFY → LEARN
+```
 
-No downstream representation may silently become a competing source of truth. Every projection, summary, interface, adapter, cache, report, activity record, or derived intelligence object must retain lineage to its canonical source.
+The original sources remain historical/provenance material.
 
-**The Event is the historical occurrence. The Block is the governed, revisable understanding derived from events and evidence.**
+The Block preserves the reusable understanding.
 
-A later Block may supersede an earlier Block without falsifying historical Events.
+---
 
-### Audit law
-
-Repository structure is not the unit of semantic ownership. **Canonical objects and causal relationships are.**
-
-Therefore NayaNET is audited by component role and object flow, not by file count:
-
-`COMPONENT → CANONICAL OBJECT → IDENTITY → EVIDENCE → AUTHORITY → LEARNING → SUCCESSOR`
-
-A component is not considered semantically complete merely because its code, schema, UI, or documentation exists.
-
-### Continuity law
-
-A successor Naya must be able to retrieve the same canonical meaning without reconstructing it from conversation archaeology.
-
-**The conversation is temporary. The intelligence is the asset.**
-
-## NAYA — How Naya should operate
-
-Before consequential action:
-
-`RESTORE → UNDERSTAND → IDENTIFY CANONICAL OWNER → CHECK AUTHORITY → ACT → VERIFY → LEARN → PRESERVE SUCCESSOR`
-
-Naya must distinguish:
-
-- model from agent;
-- agent from NayaPOWER;
-- NayaPOWER from storage;
-- storage from intelligence;
-- intelligence from authority;
-- canonical truth from projection.
-
-Use deterministic software for certainty. Use AI where ambiguity, synthesis, interpretation, or reasoning adds value. Use human authority for consent and consequential permission.
-
-Never turn UNKNOWN into VERIFIED.
-
-Never infer authority from capability.
-
-Never replace canonical intelligence with a convenient duplicate.
-
-Retrieve before recomputing.
-
-## MACHINE — Canonical system grammar
+## MACHINE MODEL
 
 ```text
 HUMAN
-  = intent + values + consent + authority
+= intent + values + consent + legitimate authority
 
 NAYAPOWER
-  = governance + control + execution + continuity
+= governance + control + execution + continuity
 
-AGENT
-  = replaceable reasoning + tool-use capability
+NAYA / AGENT
+= reasoning + interpretation + orchestration + tool use
 
 PROJECT_INTELLIGENCE
-  = persistent identity + memory + context + state + relationships
+= persistent identity + memory + context + state + relationships + learning
 
 INTELLIGENT_EVENT
-  = WHAT_HAPPENED
+= WHAT_HAPPENED
 
 INTELLIGENT_BLOCK
-  = WHAT_IS_UNDERSTOOD
+= WHAT_IS_CURRENTLY_UNDERSTOOD
+
+SOURCE_BUNDLE
+= one or more provenance-bound inputs distilled into a Block
+
+PERSPECTIVES
+= relevant human / AI / machine / domain interpretations
 
 CCT
-  = semantic relationships connecting intelligence
+= semantic relationships connecting intelligence
 
-LEDGER / RECEIPTS / EVIDENCE
-  = provenance + integrity + accountability + verification
+EVIDENCE / RECEIPTS / LEDGER
+= provenance + verification + integrity + accountability
 
 HUB
-  = human-facing projection + interaction
+= human-facing projection
 
-EXTERNAL_ADAPTERS
-  = MCP + REST/OpenAPI + GitHub App + Webhooks + SDK/embedded UI + future A2A
+EXTERNAL_CHANNEL
+= authorized interface to the canonical intelligence core
 ```
 
-### Invariants
+---
 
-`MODEL ≠ AGENT ≠ NAYAPOWER ≠ STORAGE ≠ AUTHORITY ≠ NETWORK ≠ INTELLIGENCE`
+## UNIVERSAL INTELLIGENCE LOOP
 
-`CAPABILITY DOES NOT CREATE AUTHORITY`
+```text
+EXPERIENCE
+→ CAPTURE
+→ UNDERSTAND
+→ DISTILL
+→ VALIDATE
+→ CONNECT
+→ APPLY
+→ OBSERVE
+→ VERIFY
+→ LEARN
+→ COMPOUND
+→ BETTER FUTURE ACTION
+```
 
-`UNKNOWN ≠ SUCCESS`
+---
 
-`ONE INTELLIGENCE → MANY REPRESENTATIONS → ONE CANONICAL MEANING`
+## NON-NEGOTIABLE INVARIANTS
 
-`PRIVATE BY DEFAULT → SHARED BY CHOICE → COLLECTIVE BY CONSENT → PUBLIC BY DECISION`
+```text
+MODEL ≠ AGENT ≠ NAYAPOWER ≠ STORAGE ≠ AUTHORITY ≠ NETWORK ≠ INTELLIGENCE
 
-`EXTERNAL CHANNEL ≠ CANONICAL AUTHORITY`
+CAPABILITY DOES NOT CREATE AUTHORITY
 
-## The compounding loop
+UNKNOWN ≠ VERIFIED
 
-**Experience → Capture → Understand → Distill → Validate → Connect → Apply → Measure → Learn → Compound**
+PROJECTION ≠ SOURCE OF TRUTH
 
-This is the real engine.
+ONE INTELLIGENCE
+→ MANY REPRESENTATIONS
+→ ONE CANONICAL MEANING
 
-The model is replaceable.
+PRIVATE BY DEFAULT
+→ SHARED BY CHOICE
+→ COLLECTIVE BY CONSENT
+→ PUBLIC BY DECISION
 
-The interface is replaceable.
+EXTERNAL CHANNEL ≠ CANONICAL AUTHORITY
+```
 
-The storage substrate is replaceable.
+---
 
-The persistent intelligence must survive.
+## PERSPECTIVE MODEL
 
-## Where the major product parts fit
+A Block may preserve multiple perspectives without flattening them into one unsupported conclusion.
 
-| Layer | Role |
-|---|---|
-| Constitution | why the system exists and what it may never violate |
-| Governance | who may authorize what |
-| NayaPOWER | governed execution and continuity substrate |
-| Naya / Agent | intelligence, interpretation, reasoning, tool use |
-| Smart Notes | durable meaningful intelligence capture |
-| Intelligent Events | temporal spine: what happened |
-| Intelligent Blocks | reusable understanding: what we understand |
-| PIS | primary intelligence flow |
-| CIS | compounding across intelligence |
-| Adaptive Learning | verified learning and behavioral improvement |
-| CCT | connections between intelligence |
-| Smart Ledger | evidence, provenance, accountability |
-| Project Intelligence | durable context for an evolving endeavor |
-| Feeds / Reports / Library / Lists | projections and retrieval experiences |
-| Connections / Mail / Spaces / Share | controlled relationship and communication surfaces |
-| Hub | human-facing cockpit |
-| External interfaces | ways other agents and applications use the same substrate |
+Relevant perspectives can include:
 
-## The economic and human meaning
+```text
+NUTSHELL
+HUMAN
+CHILD
+PRACTICAL
+LIVED WISDOM
+AI
+MACHINE
+ALGORITHM
+SOFTWARE
+ENGINEERING
+MEANING
+APPLICATION
+BENEFIT
+USEFULNESS
+EVIDENCE
+GOVERNANCE
+COLLECTIVE
+LIMITATIONS
+```
+
+A perspective is an interpretation, not automatically truth.
+
+If perspectives conflict, the conflict and supporting evidence remain visible.
+
+---
+
+## VALIDATION MODEL
+
+Distillation and validation are different operations.
+
+```text
+DISTILL
+= make the understanding smaller, clearer, more useful
+
+VALIDATE
+= determine what the evidence actually supports
+
+CONNECT
+= place the understanding into its semantic context
+
+APPLY
+= use it
+
+OBSERVE
+= measure what happened
+
+LEARN
+= turn verified outcome into durable improvement
+```
+
+The Block may therefore move through:
+
+```text
+CANDIDATE
+→ CONTEXTUALIZED
+→ SUPPORTED
+→ VERIFIED
+→ DISTILLED
+→ APPLIED
+→ LEARNED
+→ SUPERSEDED
+```
+
+Unknown remains unknown.
+
+---
+
+## UNIVERSAL AGENT INTERFACE
+
+NayaPOWER exposes one canonical intelligence boundary through multiple transports.
+
+### Primary
+
+```text
+MCP
+REST / OpenAPI
+```
+
+### Specialized
+
+```text
+GitHub App
+SDK / Embedded
+```
+
+### Network
+
+```text
+Webhooks / Events
+A2A
+```
+
+All channels resolve to the same canonical operations:
+
+```text
+restore
+retrieve
+search
+understand
+record_event
+create_or_update_block
+request_authorization
+execute_authorized_action
+record_receipt
+observe_outcome
+record_learning
+create_successor
+```
+
+No channel may create a competing intelligence store or authority.
+
+---
+
+## NAYA OPERATING RULE
+
+Before consequential work:
+
+```text
+RESTORE
+→ UNDERSTAND
+→ IDENTIFY CANONICAL OWNER
+→ CHECK AUTHORITY
+→ ACT
+→ VERIFY
+→ LEARN
+→ PRESERVE SUCCESSOR
+```
+
+Naya retrieves before recomputing.
+
+Naya uses deterministic systems for certainty and AI for ambiguity, synthesis, interpretation, and reasoning.
+
+Naya does not convert capability into permission.
+
+Naya does not convert uncertainty into certainty.
+
+Naya does not convert conversation into truth without evidence.
+
+---
+
+## VALUE PRINCIPLE
 
 The primitive is not money.
 
-The primitive is **useful value created for someone**.
+The primitive is useful value created for someone.
 
-Money can be an expression of value after value exists.
-
-The system therefore asks:
+The governing question is:
 
 **What value does this create, for whom, based on what evidence, at what cost or risk, and how do we know?**
 
-The long-term objective is:
+The system seeks:
 
 **HIGHEST RESPONSIBLE VERIFIED HUMAN VALUE**
 
-The network effect comes from allowing independently owned intelligence to connect by permission without destroying ownership, provenance, privacy, or agency.
+while preserving human agency, truth, privacy, safety, provenance, and legitimate authority.
 
-## The agent connection strategy
+---
 
-The external interface should be one semantic boundary with multiple transports.
+## STORAGE AND PROJECTION MODEL
 
-### 1. MCP — primary agent/tool boundary
+One canonical Block can have many representations:
 
-Use remote MCP as the first-class vendor-neutral agent interface. ChatGPT supports custom MCP apps; GitHub Copilot supports remote MCP servers. MCP should expose the same canonical NayaPOWER operations rather than implement a second brain.
+```text
+ONE CANONICAL INTELLIGENCE OBJECT
+        ↓
+ ┌──────┼────────┬─────────┬────────┐
+ ↓      ↓        ↓         ↓        ↓
+ MD    JSON   DATABASE    HUB     API/MCP
+ ```
 
-### 2. REST / OpenAPI — universal fallback
+These representations are projections or storage representations of the same meaning.
 
-Every canonical MCP operation should have a deterministic API form so any application, local agent, custom agent, enterprise system, or future model can connect without being MCP-native.
+They MUST NOT silently become competing authorities.
 
-### 3. GitHub App — software/control-substrate adapter
+---
 
-GitHub remains an important development and control substrate, not NayaPOWER itself. It should connect coding agents and repository workflows to the canonical intelligence boundary.
+## THE ULTIMATE SYSTEM
 
-### 4. Webhooks / event subscriptions
+```text
+HUMAN PURPOSE
+      ↓
+NAYA UNDERSTANDING
+      ↓
+NAYAPOWER GOVERNANCE
+      ↓
+AUTHORIZED ACTION
+      ↓
+REAL-WORLD OUTCOME
+      ↓
+EVIDENCE
+      ↓
+INTELLIGENT EVENT
+      ↓
+INTELLIGENT BLOCK
+      ↓
+CONNECTION
+      ↓
+LEARNING
+      ↓
+PROJECT INTELLIGENCE
+      ↓
+COMPOUNDING
+      ↓
+BETTER FUTURE ACTION
+```
 
-Use for asynchronous ingestion, notifications, system events, and outbound reactions. Webhooks complement retrieval; they do not replace it.
+The model can change.
 
-### 5. SDK / embedded interface
+The agent can change.
 
-Allow application developers to put Naya intelligence directly inside their products without creating a second intelligence system.
+The interface can change.
 
-### 6. A2A — agent-to-agent boundary
+The storage can change.
 
-Use a dedicated agent-to-agent protocol when Nayas and external agents need to collaborate directly. Keep this distinct from the tool/context interface.
+The intelligence should survive.
 
-## Important implementation rule
+**One intelligence. Many doors. One canonical meaning.**
 
-Do not build six brains.
-
-Build **one governed intelligence substrate** and expose it through six adapters.
-
-The correct architecture is:
-
-`ONE CANONICAL INTELLIGENCE CORE`
-
-`↓`
-
-`MCP | REST/OpenAPI | GitHub App | Webhooks | SDK | A2A`
-
-`↓`
-
-`ChatGPT | Copilot | Claude/other MCP clients | custom agents | applications | Nayas`
-
-All adapters must resolve to the same:
-
-`identity → context → evidence → authority → value → lifecycle → provenance → outcome → learning → successor`
-
-## What is proven now
-
-The repository contains the major constitutional, architectural, Project Intelligence, event, block, Hub, governance, and continuity layers.
-
-Live Supabase currently contains first-class records for Intelligent Blocks, cognition events, execution receipts, notifications, ledger events, learning evidence, and Project Intelligence bridge objects.
-
-The production Smart Note receiver has been independently verified across persistence, Intelligent Block creation, cognition/receipt linkage, Intelligence Index, Smart Ledger, canonical Hub rendering, reload, fresh authenticated context, idempotency, malformed/unauthorized/wrong-owner rejection, privacy, full Intelligent Block round trip, and Hub projection.
-
-The full universal vision is **not** claimed as production-proven. Real-world computation savings, universal model/provider learning quality, and long-run planetary multi-agent outcomes remain empirical questions.
-
-## The next useful step
-
-**Implement the Universal Agent Interface, starting with remote MCP + REST/OpenAPI, and bind both to the existing NayaPOWER governance/execution substrate.**
-
-The purpose is not to create another interface project.
-
-The purpose is to make the intelligence already being built **usable by any authorized Naya or compatible agent through the same canonical truth path**.
-
-> **One intelligence. Many representations. One canonical meaning.**
