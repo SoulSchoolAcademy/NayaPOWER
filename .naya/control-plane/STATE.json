@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T21:57:28.620Z",
-    "observed_head": "17b8091b56b3472b6188d83e30c0322bd1d6c512",
+    "recorded_at": "2026-09-22T22:04:23Z",
+    "observed_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -398,5 +398,19 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+  "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`.",
+  "current_action_attempt": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "workflow": ".github/workflows/verify-non-owner-managed-retrieval.yml",
+    "trigger_commit": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "boundary": "Fresh separately authenticated non-owner managed-runtime Project Intelligence retrieval for packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda.",
+    "observed_result": "No GitHub Actions execution receipt/run was exposed by the connected GitHub execution surface. The connected GitHub toolset exposes workflow reads/reruns but no workflow_dispatch/write trigger. The Desktop Commander execution channel is usage-paused.",
+    "independent_owner_receipt_check": "PASS",
+    "owner_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
+    "owner_event_id": "241159af-a285-4fc3-b322-c86797818548",
+    "owner_transaction_id": "154264ea-5e28-4fcc-8c70-8b5b640a0ce7",
+    "owner_state_unchanged": true,
+    "proof_not_claimed": "Non-owner isolation was not executed and is not proven by this attempt."
+  }
 }
