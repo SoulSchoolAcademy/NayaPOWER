@@ -70,7 +70,7 @@
     "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
   },
   "next_action": {
-    "action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, without reopening proven Hub/GAP-001 or nine-dimension proofs.",
+    "action": "Derive the next highest-value Project Intelligence whole-chain acceptance boundary after non-owner isolation, preserving all proven boundaries.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "successor_prompt": {
