@@ -1,0 +1,55 @@
+name: Verify Consolidated Nine-Dimension Adversarial Matrix
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/consolidated_nine_dimension_adversarial.py'
+      - '.github/workflows/verify-consolidated-nine-dimension-adversarial.yml'
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - name: Establish fresh owner and run identity
+        shell: bash
+        run: |
+          owner=$(curl -sSf -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" "$SUPABASE_URL/auth/v1/signup" -d '{}')
+          export OWNER_JSON="$owner"
+          python - <<'PY'
+          import json,os
+          d=json.loads(os.environ["OWNER_JSON"])
+          token=d.get("access_token")
+          if not token: raise SystemExit("fresh owner access token missing")
+          print("::add-mask::"+token)
+          with open(os.environ["GITHUB_ENV"],"a") as f:
+            f.write("NAYANET_OWNER_ID="+d["user"]["id"]+"\n")
+            f.write("OWNER_TOKEN="+token+"\n")
+            f.write("RUN_IDENTITY=github-actions:"+os.environ["GITHUB_RUN_ID"]+":"+os.environ["GITHUB_SHA"]+"\n")
+      - name: Mint GitHub OIDC bridge token
+        shell: bash
+        run: |
+          token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
+          echo "::add-mask::$token"
+          echo "NAYANET_BRIDGE_TOKEN=$token" >> "$GITHUB_ENV"
+      - name: Execute all nine dimensions
+        run: python .naya/runtime/consolidated_nine_dimension_adversarial.py
+      - name: Independently verify every managed-runtime receipt
+        run: python .naya/runtime/consolidated_nine_dimension_adversarial.py --verify
+      - name: Publish consolidated matrix receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-nine-dimension-adversarial
+          path: nine-dimension-run.json
+          retention-days: 30
