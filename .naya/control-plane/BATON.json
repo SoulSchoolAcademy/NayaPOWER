@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T18:42:00.645Z",
+  "generated_at": "2026-09-22T18:44:43.599Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "COMPUTATION-EFFICIENCY-P1",
-    "block_next_action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced."
+    "block_next_action": "Verify outcome quality/provenance/authority are not degraded."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -25,7 +25,8 @@
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "active_program": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
     "active_block": "COMPUTATION-EFFICIENCY-P1",
-    "active_block_status": "ACTIVE"
+    "active_block_status": "ACTIVE",
+    "current_frontier": "Verify outcome quality/provenance/authority are not degraded."
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -67,9 +68,9 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
+    "action": "Verify outcome quality/provenance/authority are not degraded.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived after verified paired benchmark measurement of three provenance-bound avoided field-reconstruction units.",
+    "reason": "Derived after causal benchmark qualified three provenance-bound avoided field-reconstruction units under the V1 counterfactual rules.",
     "acceptance": [
       "Establish a baseline cold reconstruction workload with explicit resource measurements.",
       "Run the same task with retained verified intelligence reuse.",
