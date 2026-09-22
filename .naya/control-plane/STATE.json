@@ -19,11 +19,7 @@
   "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "priority": "P0 - PROJECT INTELLIGENCE RESTORE / RECONCILIATION / RETRIEVAL / COMPOUNDING",
   "priority_zero_master_note": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
-  "current_block": {
-    "id": "HUMAN-JOURNEY-P2",
-    "status": "ACTIVE",
-    "priority": "P1"
-  },
+  "current_block": "HUMAN-JOURNEY-P2",
   "current_block_status": "ACTIVE",
   "hub_pre_execution_gate": {
     "status": "CANONICAL_READ_FIRST_REQUIRED_FOR_HUB_WORK",
