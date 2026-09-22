@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: 71595b04154d71fca8694bd845eb0c28c1b88fae
+LAST_RECONCILED_HEAD: da69237219e03692ec05c8ce2e4d7358d9525f6d
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
@@ -76,10 +76,15 @@ Human cognitive-load rule:
 
 ## ACTIVE NEXT ACTION
 
-Build and prove the canonical next_action + handoff operational contract through one real execution cycle:
-**CURRENT STATE → NEXT ACTION → EXECUTION → VERIFICATION → PROJECT UPDATE → NEW NEXT ACTION.**
+The system-model distillation is now committed as **INTELLIGENT BLOCK 001 — NayaNET System Model** at live `main` HEAD `da69237219e03692ec05c8ce2e4d7358d9525f6d`.
 
-The cycle must use the existing Project Intelligence/control-plane path, produce durable evidence, update canonical state, and leave the exact successor action for the next Naya.
+Its explicit successor is now the Universal Agent Interface:
+**RESTORE → RETRIEVE → UNDERSTAND → AUTHORIZE → ACT → VERIFY → LEARN → SUCCESSOR**, exposed through one canonical intelligence boundary and multiple adapters.
+
+First implementation boundary:
+**remote MCP + REST/OpenAPI**, both bound to the existing NayaPOWER governance/execution substrate. Do not create a second brain, second event store, or competing authority.
+
+The implementation must prove one authorized agent can use the same canonical intelligence truth path as the existing Hub/runtime, with transport, authorization, persistence, retrieval, and outcome verification separately evidenced.
 
 ## REMAINING HIGH-VALUE FRONTIER
 
@@ -99,6 +104,16 @@ Project Intelligence is no longer the blocking causal frontier at the recorded c
 The law remains:
 **Don't show that NayaPOWER was built. Show that I can use it.**
 
+
+## 2026-09-22 — Live architecture reconciliation
+
+Live `main` was resolved to `da69237219e03692ec05c8ce2e4d7358d9525f6d`.
+
+The repository now contains **INTELLIGENT BLOCK 001 — NayaNET System Model**, a system-level distillation that fixes the major role boundaries: Human authority; NayaPOWER governance/control/continuity; replaceable agents; Project Intelligence; Intelligent Events; Intelligent Blocks; CCT relationships; Ledger/Receipts/Evidence; Hub projection; and external adapters.
+
+The block explicitly preserves the rule **ONE CANONICAL INTELLIGENCE CORE → MANY REPRESENTATIONS → ONE CANONICAL MEANING** and names MCP + REST/OpenAPI as the first Universal Agent Interface boundary, with GitHub App, webhooks, SDK/embedded, and A2A remaining adapters rather than separate brains.
+
+This is an architectural/documentation advancement, not a claim that universal agent interoperability or universal computation savings is already production-proven.
 
 ## 2026-09-21 — Intelligent Block V1 boundary proven
 
