@@ -80,8 +80,8 @@ jobs:
           set -euo pipefail
           rm -rf dist
           test -s NAYANET/HUB/index.html
-          test -s assistant-runtime.js
-          test -s hub-completeness.js
+          test -s NAYANET/HUB/public/assistant-runtime.js
+          test -s NAYANET/HUB/public/hub-completeness.js
           test -s NAYANET/HUB/public/nayanet-interface-command-station.js
           test -s smart-feed.js
           test -s smart-tabs.js
@@ -102,8 +102,8 @@ jobs:
           grep -q 'Smart Notes' NAYANET/HUB/index.html
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/index.html dist/index.html
-          cp assistant-runtime.js dist/assistant-runtime.js
-          cp hub-completeness.js dist/hub-completeness.js
+          cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
+          cp NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
           cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
@@ -111,8 +111,8 @@ jobs:
           cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
           test -s dist/name-first-auth-adapter.js
-          cmp -s assistant-runtime.js dist/assistant-runtime.js
-          cmp -s hub-completeness.js dist/hub-completeness.js
+          cmp -s NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
+          cmp -s NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
           cmp -s smart-feed.js dist/smart-feed.js
           cmp -s smart-tabs.js dist/smart-tabs.js
           python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
