@@ -93,36 +93,36 @@ jobs:
           # the observer shim and the conditional Project Intelligence render block.
           # Compare the protected visual source after removing only those non-visual/runtime seams.
           python3 - <<'PY'
-import re
-from pathlib import Path
-names = [
-  "naya-509-real-smart-feed-content.js",
-  "naya-509-real-smart-feed-nine-note-parser.js",
-  "naya-509-real-smart-feed-lifecycle-repair.js",
-  "naya-509-real-smart-feed-final-presentation-fix.js",
-  "naya-509-real-smart-feed-nav-restore.js",
-  "naya-509-real-smart-feed-nav-adjacent-placement.js",
-]
-def clean(path, out):
-    s = Path(path).read_text()
-    for pattern in [
-        r'<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->.*?</script>',
-        r'<script id="naya-static-runtime-observer-shim">.*?</script>',
-        r'<!-- NAYA-PI-CANONICAL-RENDER-V1 -->.*?</script>',
-        r'<!-- NAYA-CANONICAL-DREAM-SURFACE-V1 -->.*?</script>',
-    ]:
-        s = re.sub(pattern, '', s, flags=re.S)
-    for name in names:
-        s = re.sub(r'<script>\s*/\*\s*'+re.escape(name)+r'\s*\*/.*?</script>', '', s, flags=re.S)
-    for asset in ["assistant-runtime.js","smart-feed.js","smart-tabs.js","hub-completeness.js"]:
-        s = re.sub(r'^.*'+re.escape(asset)+r'.*$', '', s, flags=re.M)
-    s = re.sub(r'assistant-runtime\.js\?v=[^"]*', 'assistant-runtime.js', s)
-    s = '\n'.join(x for x in s.splitlines() if x.strip())
-    Path(out).write_text(s)
-clean("NAYANET/HUB/index.html", "${RUNNER_TEMP}/hub-visual-source.html")
-clean("2026 09 17 NAYANET HUB.html", "${RUNNER_TEMP}/hub-visual-reference.html")
-PY
-cmp -s "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"
+          import re
+          from pathlib import Path
+          names = [
+            "naya-509-real-smart-feed-content.js",
+            "naya-509-real-smart-feed-nine-note-parser.js",
+            "naya-509-real-smart-feed-lifecycle-repair.js",
+            "naya-509-real-smart-feed-final-presentation-fix.js",
+            "naya-509-real-smart-feed-nav-restore.js",
+            "naya-509-real-smart-feed-nav-adjacent-placement.js",
+          ]
+          def clean(path, out):
+              s = Path(path).read_text()
+              for pattern in [
+                  r'<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->.*?</script>',
+                  r'<script id="naya-static-runtime-observer-shim">.*?</script>',
+                  r'<!-- NAYA-PI-CANONICAL-RENDER-V1 -->.*?</script>',
+                  r'<!-- NAYA-CANONICAL-DREAM-SURFACE-V1 -->.*?</script>',
+              ]:
+                  s = re.sub(pattern, '', s, flags=re.S)
+              for name in names:
+                  s = re.sub(r'<script>\s*/\*\s*'+re.escape(name)+r'\s*\*/.*?</script>', '', s, flags=re.S)
+              for asset in ["assistant-runtime.js","smart-feed.js","smart-tabs.js","hub-completeness.js"]:
+                  s = re.sub(r'^.*'+re.escape(asset)+r'.*$', '', s, flags=re.M)
+              s = re.sub(r'assistant-runtime\.js\?v=[^"]*', 'assistant-runtime.js', s)
+              s = '\n'.join(x for x in s.splitlines() if x.strip())
+              Path(out).write_text(s)
+          clean("NAYANET/HUB/index.html", "${RUNNER_TEMP}/hub-visual-source.html")
+          clean("2026 09 17 NAYANET HUB.html", "${RUNNER_TEMP}/hub-visual-reference.html")
+          PY
+mp -s "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"
           grep -q 'data-page="home"' NAYANET/HUB/index.html
           grep -q 'Smart Notes' NAYANET/HUB/index.html
           mkdir -p dist/NAYANET
