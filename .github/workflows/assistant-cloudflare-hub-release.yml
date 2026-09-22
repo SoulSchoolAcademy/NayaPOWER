@@ -111,7 +111,7 @@ jobs:
           cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
           test -s dist/name-first-auth-adapter.js
           test -s dist/name-first-auth-adapter.js
-          sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
+          python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
 
       - name: Prepare canonical React Hub artifact
         if: ${{ inputs.release_surface == 'canonical-react' }}
