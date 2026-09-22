@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T23:48:54.756Z",
+  "generated_at": "2026-09-22T23:51:12.971Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "1f71700a1d28f76bad2d281afc9bd83de316303f",
+    "live_head": "6511b22c4bb07bac63b2a435afdcd471a6d595ea",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "NAYA-CONTINUITY-HARDENING",
-    "block_next_action": "Merge the inline continuity-gate repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
+    "state_block": "CANONICAL-RELEASE-SYNTAX",
+    "block_next_action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -63,19 +63,19 @@
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "NAYA-CONTINUITY-HARDENING",
+    "id": "CANONICAL-RELEASE-SYNTAX",
     "status": "IN_PROGRESS",
     "priority": "P0",
     "source": ".naya/control-plane/STATE.json",
-    "next_action": "Run one cold-Naya execution-gate proof from the resulting main commit, then verify the canonical Cloudflare Hub serves the exact NAYANET/HUB/index.html visual surface at #feed."
+    "next_action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
   },
   "next_action": {
-    "action": "Merge the inline continuity-gate repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
+    "action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Read EXECUTION-SESSION and Baton. Verify the inline release session gate is present. Then run only the canonical Cloudflare #feed deployment and desktop/mobile source parity proof.",
-    "do_not": "Do not use React/Vite as production authority. Do not restore the reusable gate workflow. Do not touch downstream journey steps until #feed source/live parity is proven."
+    "prompt": "Resolve live main. Verify the release workflow parses, then execute only canonical Cloudflare #feed deployment and desktop/mobile source parity.",
+    "do_not": "Do not alter Hub UI or downstream journey. Do not introduce another production surface."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
