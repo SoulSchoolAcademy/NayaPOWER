@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T19:19:31.464Z",
+  "generated_at": "2026-09-22T19:19:56.654Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -32,7 +32,10 @@
     "continuous_flow": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
     "intelligent_block_protocol": "SUPERBRAIN/INTELLIGENT-BLOCK-PROTOCOL.md",
     "intelligence_distiller": "SUPERBRAIN/INTELLIGENCE-DISTILLER-PROTOCOL.md",
-    "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md"
+    "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md",
+    "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
+    "continuous_execution_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
+    "read_first": "README-FIRST.md"
   },
   "truth": {
     "proof_contract_status": "CANONICAL",
