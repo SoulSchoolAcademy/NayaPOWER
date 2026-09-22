@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T23:51:12.971Z",
+  "generated_at": "2026-09-22T23:53:31.741Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "6511b22c4bb07bac63b2a435afdcd471a6d595ea",
+    "live_head": "87d3cc1283323d27cc26b83c384722b32cd12edc",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "CANONICAL-RELEASE-SYNTAX",
-    "block_next_action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
+    "state_block": "CANONICAL-RELEASE-CHECKOUT",
+    "block_next_action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -63,19 +63,19 @@
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "CANONICAL-RELEASE-SYNTAX",
+    "id": "CANONICAL-RELEASE-CHECKOUT",
     "status": "IN_PROGRESS",
     "priority": "P0",
     "source": ".naya/control-plane/STATE.json",
-    "next_action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit."
+    "next_action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity."
   },
   "next_action": {
-    "action": "Merge the deterministic release-workflow syntax repair, then verify the canonical Cloudflare #feed deployment from the resulting main commit.",
+    "action": "Merge the checkout-step repair, then execute the canonical Cloudflare #feed release and verify exact source/live parity.",
     "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Verify the release workflow parses, then execute only canonical Cloudflare #feed deployment and desktop/mobile source parity.",
-    "do_not": "Do not alter Hub UI or downstream journey. Do not introduce another production surface."
+    "prompt": "Resolve live main. Verify the checkout step is structurally valid. Then execute only canonical Cloudflare #feed source/live/browser proof.",
+    "do_not": "Do not touch Hub UI or downstream journey."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
