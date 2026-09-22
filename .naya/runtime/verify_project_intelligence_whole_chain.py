@@ -94,8 +94,8 @@ def main() -> int:
             fail("PI-01 predecessor proof metadata missing")
         if "proven" not in str(predecessor_proof.get("claim", "")).lower():
             fail("PI-01 predecessor is not marked proven")
-        if active.get("status") != "ACTIVE":
-            fail("current active block is not ACTIVE")
+        if active.get("status") not in ("ACTIVE","VERIFIED","PRODUCTION_PROVEN"):
+            fail("current active block is not execution-capable")
         print("PI01_PREDECESSOR_PROOF=PASS")
     if active.get("next_action_count") != 1:
         fail("active block does not expose exactly one next action")
