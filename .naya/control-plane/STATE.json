@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-22T21:04:00.000Z",
-    "observed_head": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "recorded_at": "2026-09-22T21:19:17.548Z",
+    "observed_head": "423ea6352d0637f71bb87dff5d90a442dd6cf7e8",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -142,7 +142,8 @@
     "GAP-002 Intelligent Block → Smart Feed whole-journey proof run 35777770347 is VERIFIED on main 4427f6b086298416a4723e76a40c7d0aebb3dcae: fresh authenticated Smart Note 90aabca1-2231-44c4-98d5-da7c6fc4e8d7 became cognition/index/Ledger lineage, canonical Intelligent Block V1 projected into live Smart Feed, round-tripped in fresh authenticated context, survived reload, and passed idempotency, malformed/unauthorized/wrong-owner rejection and private-by-default checks.",
     "Human-facing canonical Hub journey run 35778698368 is VERIFIED: OPEN/UNDERSTAND/NAVIGATE/SEARCH/CREATE/SAVE/SEE RESULT/RELOAD/FIND/UNDERSTAND EVIDENCE/CONTINUE passed against the live Hub; fresh Smart Note event 384304bf-5983-439a-be41-bdd3a32959dd and receipt df05b1fe-577e-4e03-b93f-a1ef3a9cca46 remained identity-stable after reload; artifact 10716777194 is available.",
     "A separate NayaAssistantRuntime.smartFeed() convenience call remains UNKNOWN: browser acceptance observed TypeError: Failed to fetch at assistant-runtime.js against naya-smart-feed. This is not evidence that the human Smart Feed surface is broken because the same acceptance run independently verified Smart Feed DOM projection and fresh retrieval after reload.",
-    "Smart Feed runtime API boundary is now VERIFIED: NayaAssistantRuntime.smartFeed() returned HTTP 200 through the established Supabase client after the canonical capture redirect settled, and returned the canonical Intelligent Block projection. The deployed naya-smart-feed function is version 16 with explicit in-function Bearer authentication and inline canonical-block fallback."
+    "Smart Feed runtime API boundary is now VERIFIED: NayaAssistantRuntime.smartFeed() returned HTTP 200 through the established Supabase client after the canonical capture redirect settled, and returned the canonical Intelligent Block projection. The deployed naya-smart-feed function is version 16 with explicit in-function Bearer authentication and inline canonical-block fallback.",
+    "Fresh exact-head adversarial preflight run 35785808063 independently confirmed a control-plane coherence failure: STATE.current_next_action diverged from BLOCKS.current_frontier.next_action, preventing baton construction and therefore preventing the nine-dimension matrix from executing."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -165,7 +166,8 @@
     "Dream learning run 35470355965 failed on the same stale /releases/ assumption; current run 35470535019 passed after aligning the root handoff.",
     "Fresh current-main Welcome diagnostic run 35483739274 was intentionally cancelled after remaining stalled at npm install in the proof runner; direct live-runtime inspection independently established the same causal boundary.",
     "Current control-plane state was stale: it still exposed the Smart Note receiver as the next action after that boundary had been closed. Reconciliation is required before consequential Hub work.",
-    "Proof 7 run 35615245358 first stopped at AUTHORITY_SOURCE_NOT_OWNED because the controlled experiment supplied synthetic source_event_ids that did not exist as owned cognition events; this was the exact causal boundary, not a downstream test failure. The smallest repair was to persist owned source events at the authenticated sender boundary, then rerun the same proof."
+    "Proof 7 run 35615245358 first stopped at AUTHORITY_SOURCE_NOT_OWNED because the controlled experiment supplied synthetic source_event_ids that did not exist as owned cognition events; this was the exact causal boundary, not a downstream test failure. The smallest repair was to persist owned source events at the authenticated sender boundary, then rerun the same proof.",
+    "2026-09-22 run 35785808063 at exact main 423ea6352d0637f71bb87dff5d90a442dd6cf7e8 stopped at STATE_BLOCK_NEXT_ACTION_MISMATCH before matrix execution; no matrix result was claimed."
   ],
   "protected_boundaries": [
     "Never guess NAYA_POWER_TARGET_URL.",
@@ -183,9 +185,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary.",
+  "single_next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main.",
   "next_actions": [
-    "Run the consolidated adversarial acceptance matrix on current main: owner/non-owner isolation, revocation, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, and privacy boundary."
+    "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -292,14 +294,29 @@
   },
   "reconciliation": {
     "date": "2026-09-22",
-    "live_main_after_recording": "f390a847225431e4c25acdf4e060e895043a61bd",
-    "control_plane_status": "RECONCILIATED_TO_CANONICAL_CLOUDFLARE_RELEASE",
-    "deployment_run": 35784147783,
-    "note": "Canonical Hub cache-identity repair deployed successfully; exact live HTML parity and fresh desktop/mobile browser surface acceptance passed. Consolidated adversarial acceptance remains unexecuted pending live Desktop Commander transport."
+    "live_main_after_recording": "423ea6352d0637f71bb87dff5d90a442dd6cf7e8",
+    "control_plane_status": "RECONCILIATION_REQUIRED",
+    "adversarial_attempt": {
+      "status": "BLOCKED",
+      "claim_type": "CONSOLIDATED_ADVERSARIAL_ACCEPTANCE",
+      "source_head": "423ea6352d0637f71bb87dff5d90a442dd6cf7e8",
+      "workflow": "Verify Project Intelligence Bridge Adversarially",
+      "run_id": 35785808063,
+      "job_id": 106942208670,
+      "first_failure": "STATE_BLOCK_NEXT_ACTION_MISMATCH",
+      "failure_boundary": ".naya/runtime/next_action_handoff.py → .naya/runtime/baton.py → build_baton()",
+      "matrix_executed": false,
+      "owner_identity_step": "COMPLETED",
+      "packet_build": "FAILED_BEFORE_MATRIX",
+      "evidence": "GitHub Actions job log at run 35785808063 shows checkout of exact 423ea6352d0637f71bb87dff5d90a442dd6cf7e8 followed by RuntimeError STATE_BLOCK_NEXT_ACTION_MISMATCH.",
+      "receipt_status": "NO_MATRIX_RECEIPT_ISSUED",
+      "independent_verification": "Failure independently verified from workflow job steps/logs; no matrix PASS claimed.",
+      "next_action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main."
+    }
   },
   "current_next_action": {
-    "action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
-    "reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection."
+    "action": "Reconcile STATE/BLOCK next-action coherence after the exact-live-main adversarial preflight failure, validate the canonical baton/control-plane chain, then rerun the consolidated nine-dimension adversarial acceptance matrix against exact live main.",
+    "reason": "Fresh exact-head adversarial preflight run 35785808063 stopped before matrix execution because the canonical baton builder detected STATE/BLOCK next-action divergence."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -327,7 +344,8 @@
       "command_station_smart_feed_desktop": "PASS",
       "command_station_smart_feed_mobile": "PASS"
     },
-    "next_gap": "FULL_HUMAN_SMART_NOTE_RELOAD_IDENTITY_AND_CONSOLIDATED_ADVERSARIAL_MATRIX",
-    "note": "Desktop Commander transport remains blocked; nine-dimension adversarial matrix is not claimed."
+    "next_gap": "CONTROL_PLANE_STATE_BLOCK_COHERENCE_BEFORE_ADVERSARIAL_MATRIX",
+    "note": "Desktop Commander transport remains blocked; nine-dimension adversarial matrix is not claimed.",
+    "desktop_commander": "RESTORED"
   }
 }
