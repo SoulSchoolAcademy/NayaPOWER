@@ -1235,6 +1235,76 @@ function bind(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();
 })();
 </script>
+
+<!-- NAYA-INTELLIGENCE-CARDS-V3 -->
+<style id="naya-intelligence-cards-v3">
+.naya-v3-stage{margin:2px 22px 22px;padding:18px 20px;border:1px solid #ffffff18;border-radius:24px;background:radial-gradient(600px 180px at 12% 0%,#9d75ff16,transparent 70%),radial-gradient(600px 180px at 88% 100%,#55b9ee0b,transparent 70%),#08080d;box-shadow:inset 0 1px #fff5,0 22px 55px #000a;position:relative;overflow:hidden}
+.naya-v3-stage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 0 35%,#ffffff03 50%,transparent 65%);transform:translateX(-100%);animation:nayaV3Sweep 8s ease-in-out infinite}
+@keyframes nayaV3Sweep{0%,65%{transform:translateX(-100%)}85%,100%{transform:translateX(100%)}}
+.naya-v3-stage-top{display:flex;align-items:end;justify-content:space-between;gap:18px;position:relative;z-index:1}.naya-v3-kicker{font-size:7px;font-weight:1000;letter-spacing:.2em;color:#bda9ff}.naya-v3-title{font-size:clamp(25px,3vw,40px);font-weight:950;letter-spacing:-.055em;margin:4px 0 0}.naya-v3-sub{margin:6px 0 0;color:#958e9e;font-size:9px;line-height:1.5}
+.naya-v3-metrics{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}.naya-v3-metric{min-width:82px;padding:9px 10px;border:1px solid #ffffff15;border-radius:13px;background:#0b0a10;text-align:center}.naya-v3-metric b{display:block;font-size:17px;line-height:1;color:#fff}.naya-v3-metric span{display:block;margin-top:4px;color:#817a8a;font-size:6px;font-weight:1000;letter-spacing:.1em}
+.naya-v3-rail{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:5px;margin-top:16px;position:relative;z-index:1}.naya-v3-node{height:4px;border:0;border-radius:99px;background:#ffffff16;transition:.25s}.naya-v3-node.live{background:var(--tone,#9d75ff);box-shadow:0 0 13px var(--tone,#9d75ff)}
+.naya-v3-controls{display:flex;align-items:center;gap:7px;margin-top:12px;position:relative;z-index:2}.naya-v3-filter{min-height:34px;padding:0 11px;border:1px solid #ffffff18;border-radius:10px;background:#0b0a0f;color:#9c95a5;font-size:7px;font-weight:1000;letter-spacing:.08em;cursor:pointer}.naya-v3-filter.active{color:#fff;border-color:#9d75ff;background:#171024;box-shadow:0 0 18px #9d75ff18}.naya-v3-hint{margin-left:auto;color:#686171;font-size:7px;letter-spacing:.04em}
+.blocks.naya-v3-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 22px}.blocks.naya-v3-grid .block{min-width:0;margin:0!important;padding:0!important;border:1px solid #ffffff16!important;border-radius:24px!important;background:linear-gradient(145deg,#111018,#07070b)!important;box-shadow:inset 0 1px #fff5,0 18px 38px #0009!important;overflow:hidden;transition:transform .28s cubic-bezier(.16,.84,.22,1),border-color .28s,box-shadow .28s;isolation:isolate}.blocks.naya-v3-grid .block:before{left:0!important;top:0!important;bottom:0!important;width:3px!important;z-index:2;opacity:.75}.blocks.naya-v3-grid .block:hover{transform:translateY(-5px);border-color:#ffffff32!important;box-shadow:inset 0 1px #fff7,0 30px 60px #000c,0 0 38px color-mix(in srgb,var(--tone,#9d75ff) 10%,transparent)!important}.blocks.naya-v3-grid .block.naya-v3-feature{grid-column:span 2}.blocks.naya-v3-grid .block.naya-v3-dim{opacity:.25;transform:scale(.985);pointer-events:none}
+.naya-v3-cardbar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;border-bottom:1px solid #ffffff0d;background:#ffffff02}.naya-v3-index{display:flex;align-items:center;gap:7px;color:#777080;font-size:6px;font-weight:1000;letter-spacing:.15em}.naya-v3-dot{width:6px;height:6px;border-radius:50%;background:var(--tone,#9d75ff);box-shadow:0 0 12px var(--tone,#9d75ff)}.naya-v3-private{padding:5px 7px;border:1px solid #55e39a35;border-radius:999px;color:#8cebb1;background:#55e39a08;font-size:5px;font-weight:1000;letter-spacing:.12em}
+.naya-v3-inner{padding:20px 20px 18px!important}.blocks.naya-v3-grid .block h3{font-size:clamp(22px,2.3vw,32px);line-height:1.03;margin-bottom:6px}.blocks.naya-v3-grid .block.naya-v3-feature h3{font-size:clamp(28px,3vw,43px)}.blocks.naya-v3-grid .nutshell{margin:15px 0 12px;padding:15px 16px;border-radius:16px;background:#09090e}.blocks.naya-v3-grid .nutshell p{font-size:14px;line-height:1.55}
+.blocks.naya-v3-grid .layers{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s cubic-bezier(.16,.84,.22,1),opacity .25s ease;margin:0}.blocks.naya-v3-grid .block.naya-v3-expanded .layers{max-height:1800px;opacity:1;margin-top:12px}.blocks.naya-v3-grid .layer{border-radius:13px}.blocks.naya-v3-grid .layerBody{font-size:10px}
+.naya-v3-reveal{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:40px;padding:0 12px;margin-top:10px;border:1px solid #8b63ff55;border-radius:11px;background:#0b0a10;color:#d9d2e2;font-size:7px;font-weight:1000;letter-spacing:.08em;cursor:pointer;transition:.2s}.naya-v3-reveal:hover{border-color:#d86cff;background:#15101d;transform:translateY(-1px)}.naya-v3-reveal span:last-child{color:#777080;font-size:6px}.naya-v3-expanded .naya-v3-reveal{border-color:#55e39a55;color:#bfffd8;background:#09110d}
+.blocks.naya-v3-grid .actions{margin-top:11px}.blocks.naya-v3-grid .action{min-height:34px;padding:0 10px;font-size:6px}.naya-v3-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:13px;padding-top:10px;border-top:1px solid #ffffff0d;color:#696271;font-size:6px;letter-spacing:.09em}.naya-v3-depth{color:#aaa2b1}.naya-v3-depth b{color:#f0ebf5}
+.naya-v3-focus{position:fixed;inset:0;z-index:180;display:none;place-items:center;padding:18px;background:#000e;backdrop-filter:blur(20px)}.naya-v3-focus.open{display:grid}.naya-v3-dialog{width:min(1040px,100%);max-height:92vh;overflow:auto;border:1px solid #9d75ff66;border-radius:28px;background:linear-gradient(145deg,#15111c,#07070b);box-shadow:0 45px 120px #000f,inset 0 1px #fff6}.naya-v3-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:17px 20px;border-bottom:1px solid #ffffff12}.naya-v3-dialog-title{font-size:9px;font-weight:1000;letter-spacing:.14em;color:#bca7ff}.naya-v3-close{width:34px;height:34px;border:1px solid #ffffff20;border-radius:10px;background:#0b0a0f;color:#fff;cursor:pointer}.naya-v3-dialog-body{padding:20px}.naya-v3-dialog-body h2{font-size:clamp(30px,4vw,54px);letter-spacing:-.06em;margin:0 0 9px}.naya-v3-dialog-body .lead{font-size:16px;line-height:1.65;color:#e8e2ed;margin:0 0 18px}.naya-v3-evidence{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}.naya-v3-evidence>div{padding:13px;border:1px solid #ffffff15;border-radius:14px;background:#0b0a10}.naya-v3-evidence b{display:block;font-size:6px;letter-spacing:.12em;color:#777080}.naya-v3-evidence span{display:block;margin-top:6px;color:#f4eff7;font-size:10px;line-height:1.45}.naya-v3-dialog .layers{max-height:none!important;opacity:1!important;margin-top:18px!important}
+@media(max-width:900px){.blocks.naya-v3-grid{grid-template-columns:1fr}.blocks.naya-v3-grid .block.naya-v3-feature{grid-column:span 1}.naya-v3-stage-top{display:block}.naya-v3-metrics{justify-content:flex-start;margin-top:12px}.naya-v3-hint{display:none}}@media(max-width:560px){.naya-v3-stage{margin:2px 10px 16px;padding:15px}.blocks.naya-v3-grid{padding:0 10px;gap:9px}.naya-v3-metric{min-width:70px}.naya-v3-evidence{grid-template-columns:1fr}.blocks.naya-v3-grid .block h3{font-size:25px}}
+</style>
+<script id="naya-intelligence-cards-v3-runtime">
+(()=>{'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const tx=e=>(e?.innerText||e?.textContent||'').replace(/\s+/g,' ').trim();
+let filter='all';
+function addStage(bs){
+ if($('#nayaV3Stage'))return;
+ const feed=$('.feed'),nav=$('.feedNav');if(!feed||!nav)return;
+ const s=document.createElement('section');s.id='nayaV3Stage';s.className='naya-v3-stage';
+ s.innerHTML='<div class="naya-v3-stage-top"><div><div class="naya-v3-kicker">INTELLIGENCE OBJECTS · LIVE</div><div class="naya-v3-title">Your intelligence, alive.</div><p class="naya-v3-sub">Each object has a meaning, a history, evidence, and actions. Open only the depth you need.</p></div><div class="naya-v3-metrics"><div class="naya-v3-metric"><b>'+bs.length+'</b><span>OBJECTS</span></div><div class="naya-v3-metric"><b>3</b><span>VIEWS</span></div><div class="naya-v3-metric"><b>1</b><span>OWNER</span></div></div></div><div class="naya-v3-rail">'+bs.map((b,i)=>'<button class="naya-v3-node '+(i===0?'live':'')+'" style="--tone:'+((getComputedStyle(b).getPropertyValue('--tone')||'#9d75ff').trim())+'" aria-label="Intelligence '+(i+1)+'"></button>').join('')+'</div><div class="naya-v3-controls"><button class="naya-v3-filter active" data-v3-filter="all">ALL INTELLIGENCE</button><button class="naya-v3-filter" data-v3-filter="expanded">OPENED</button><button class="naya-v3-filter" data-v3-filter="unopened">UNOPENED</button><span class="naya-v3-hint">Hover an object · reveal depth · double-click for full view</span></div>';
+ nav.before(s);
+}
+function decorate(b,i,total){
+ if(b.dataset.v3Ready)return;b.dataset.v3Ready='1';b.classList.add('naya-v3-card');if(i===0)b.classList.add('naya-v3-feature');
+ const inner=$('.blockInner',b);if(!inner)return;
+ const bar=document.createElement('div');bar.className='naya-v3-cardbar';bar.innerHTML='<span class="naya-v3-index"><i class="naya-v3-dot"></i> INTELLIGENCE '+String(i+1).padStart(2,'0')+'</span><span class="naya-v3-private">PRIVATE BY DEFAULT</span>';inner.prepend(bar);
+ const layers=$('.layers',inner),actions=$('.actions',inner),count=layers?$$('.layer',layers).length:0;
+ const reveal=document.createElement('button');reveal.className='naya-v3-reveal';reveal.type='button';reveal.innerHTML='<span>REVEAL INTELLIGENCE DEPTH</span><span>'+count+' LAYERS · PROVENANCE + MEANING</span>';reveal.setAttribute('aria-expanded','false');
+ if(layers)layers.before(reveal);
+ reveal.addEventListener('click',()=>{const open=b.classList.toggle('naya-v3-expanded');reveal.setAttribute('aria-expanded',String(open));reveal.firstElementChild.textContent=open?'HIDE INTELLIGENCE DEPTH':'REVEAL INTELLIGENCE DEPTH';b.dataset.v3Opened=open?'1':'0';sync()});
+ const foot=document.createElement('div');foot.className='naya-v3-footer';foot.innerHTML='<span class="naya-v3-depth">DEPTH <b>'+count+'</b> · '+(actions?$$('.action',actions).length:0)+' ACTIONS</span><span>OBJECT '+String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0')+'</span>';inner.appendChild(foot);
+ const title=$('h3',b);if(title)title.title='Double-click to open full intelligence';
+}
+function sync(){
+ const bs=$$('.blocks .block');$$('.naya-v3-node').forEach((n,i)=>n.classList.toggle('live',i===0||bs[i]?.dataset.v3Opened==='1'));
+ bs.forEach(b=>{const show=filter==='all'||(filter==='expanded'&&b.dataset.v3Opened==='1')||(filter==='unopened'&&b.dataset.v3Opened!=='1');b.classList.toggle('naya-v3-dim',!show)});
+ $$('.naya-v3-filter').forEach(f=>f.classList.toggle('active',f.dataset.v3Filter===filter));
+}
+function openFull(b){
+ const clone=b.cloneNode(true);clone.classList.remove('naya-v3-card','naya-v3-feature','naya-v3-expanded','naya-v3-dim');clone.style.cssText='';
+ const rev=$('.naya-v3-reveal',clone);if(rev)rev.remove();
+ const o=document.createElement('div');o.className='naya-v3-focus open';o.innerHTML='<div class="naya-v3-dialog" role="dialog" aria-modal="true"><div class="naya-v3-dialog-head"><span class="naya-v3-dialog-title">FULL INTELLIGENCE OBJECT</span><button class="naya-v3-close" aria-label="Close">×</button></div><div class="naya-v3-dialog-body"></div></div>';
+ const body=$('.naya-v3-dialog-body',o);body.appendChild(clone);
+ const h=$('h3',clone);if(h)h.insertAdjacentHTML('beforebegin','<div class="naya-v3-kicker">CANONICAL INTELLIGENCE</div>');
+ const layers=$('.layers',clone),ev=document.createElement('div');ev.className='naya-v3-evidence';ev.innerHTML='<div><b>STATE</b><span>Verified intelligence projection</span></div><div><b>DEPTH</b><span>'+(layers?$$('.layer',layers).length:0)+' evidence layers available</span></div><div><b>CONTROL</b><span>Private by default · shared by choice</span></div>';body.appendChild(ev);
+ document.body.appendChild(o);
+ const close=()=>{o.remove();document.removeEventListener('keydown',key)},key=e=>{if(e.key==='Escape')close()};
+ $('.naya-v3-close',o).onclick=close;o.addEventListener('click',e=>{if(e.target===o)close()});document.addEventListener('keydown',key);
+}
+function bind(){
+ const bs=$$('.blocks .block');if(!bs.length||$('.naya-v3-stage'))return;
+ addStage(bs);const grid=$('.blocks');grid.classList.add('naya-v3-grid');bs.forEach((b,i)=>decorate(b,i,bs.length));sync();
+ $$('.naya-v3-node').forEach((n,i)=>n.addEventListener('click',()=>bs[i]?.scrollIntoView({behavior:'smooth',block:'center'})));
+ $$('.naya-v3-filter').forEach(f=>f.addEventListener('click',()=>{filter=f.dataset.v3Filter;sync()}));
+ grid.addEventListener('dblclick',e=>{const b=e.target.closest('.block');if(b)openFull(b)});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bind,{once:true});else bind();
+new MutationObserver(()=>{if(!$('.naya-v3-stage'))bind()}).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+<!-- /NAYA-INTELLIGENCE-CARDS-V3 -->
 </body>
 <!-- HUB-VISUAL-UX-V1-RELEASE-CHECKPOINT -->
 <!-- HUB-VISUAL-UX-V1-RELEASE-2 -->
