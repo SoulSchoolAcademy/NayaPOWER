@@ -24,6 +24,8 @@ const storageState={cookies:[],origins:[{origin,localStorage:[{name:"nayanet.sup
 const ctx=await browser.newContext({storageState});
 const page=await ctx.newPage();
 const consoleErrors=[];
+page.on("response",r=>{if(r.url().includes("/functions/v1/naya-smart-feed"))console.log("SMART_FEED_RESPONSE",r.status(),r.headers()["content-type"]||"",r.url())});
+page.on("requestfailed",r=>{if(r.url().includes("/functions/v1/naya-smart-feed"))console.log("SMART_FEED_REQUEST_FAILED",r.failure()?.errorText||"unknown",r.url())});
 page.on("console",m=>{if(m.type()==="error")consoleErrors.push(m.text())});
 page.on("pageerror",e=>consoleErrors.push(String(e)));
 
