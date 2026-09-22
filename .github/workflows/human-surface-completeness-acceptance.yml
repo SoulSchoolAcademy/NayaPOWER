@@ -60,7 +60,7 @@ jobs:
           if(shellProbe.leftRailCount!==1||shellProbe.visibleLeftRails!==1)throw Error('FIRST_DIVERGENCE:LEFT_RAIL_OWNERSHIP_FAILED:'+JSON.stringify(shellProbe));
           if(shellProbe.visibleRightRails!==0)throw Error('FIRST_DIVERGENCE:COMPETING_RIGHT_RAIL_VISIBLE:'+JSON.stringify(shellProbe));
           if(shellProbe.reactShellCount!==0||shellProbe.reactMarkerCount!==0)throw Error('FIRST_DIVERGENCE:REACT_SHELL_COMPETING_WITH_CANONICAL_HUB:'+JSON.stringify(shellProbe));
-          if(shellProbe.commandSurfaceCount!==13)throw Error('FIRST_DIVERGENCE:DUPLICATE_COMMAND_NAVIGATION:'+JSON.stringify(shellProbe));
+          if(shellProbe.shellCount!==1||shellProbe.leftRailCount!==1||shellProbe.rightRailCount!==0||shellProbe.reactShellCount!==0||shellProbe.reactMarkerCount!==0)throw Error('FIRST_DIVERGENCE:SHELL_OWNERSHIP:'+JSON.stringify(shellProbe));
           if(shellProbe.visibleMobileCommandRail!=='none')throw Error('FIRST_DIVERGENCE:MOBILE_COMMAND_RAIL_VISIBLE_ON_DESKTOP:'+JSON.stringify(shellProbe));
           if(feedProbe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA'||!feedProbe.body.includes('Smart Feed'))throw Error('FIRST_DIVERGENCE:SMART_FEED_SURFACE_MISSING:'+JSON.stringify(feedProbe));
           checks.hub='PASS';
