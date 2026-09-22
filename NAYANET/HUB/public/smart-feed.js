@@ -29,7 +29,7 @@ function styles(){
  const s=document.createElement('style');s.id='naya-smart-feed-v2-style';
  s.textContent=`
  .naya-sf-v2{margin:0 22px 30px;position:relative}
- .naya-sf-v2 .sf-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:2px 0 14px}
+ .feed:has(#naya-smart-feed-v2) > .feedHead,.feed:has(#naya-smart-feed-v2) > .blocks{display:none!important}\n .naya-sf-v2 .sf-intro{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin:2px 0 14px}
  .naya-sf-v2 .sf-kicker{font-size:8px;font-weight:1000;letter-spacing:.18em;color:#938b9c}
  .naya-sf-v2 .sf-title{margin:5px 0 5px;font-size:clamp(28px,4vw,52px);line-height:.96;letter-spacing:-.055em;color:#fff}
  .naya-sf-v2 .sf-description{max-width:850px;margin:0;color:#aaa4b1;font-size:10px;line-height:1.55}
