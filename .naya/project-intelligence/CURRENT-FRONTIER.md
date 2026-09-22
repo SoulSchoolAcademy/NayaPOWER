@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: da69237219e03692ec05c8ce2e4d7358d9525f6d
+LAST_RECONCILED_HEAD: 84515c576d4219e38bbb5277bace62ab1a3fb0c1
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
@@ -84,7 +84,7 @@ Its explicit successor is now the Universal Agent Interface:
 First implementation boundary:
 **remote MCP + REST/OpenAPI**, both bound to the existing NayaPOWER governance/execution substrate. Do not create a second brain, second event store, or competing authority.
 
-The implementation must prove one authorized agent can use the same canonical intelligence truth path as the existing Hub/runtime, with transport, authorization, persistence, retrieval, and outcome verification separately evidenced.
+The implementation must prove one authorized agent can use the same canonical intelligence truth path as the existing Hub/runtime, with transport, authorization, persistence, retrieval, and outcome verification separately evidenced. Source adapters and a governed release workflow are now committed; live deployment/proof remains gated on the authorized Cloudflare production boundary and required runtime secrets.
 
 ## REMAINING HIGH-VALUE FRONTIER
 
