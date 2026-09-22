@@ -4,7 +4,7 @@ const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 const nav=[
  ['SMART FEED','feed'],['CREATE NOTE','note'],['REPORTS','reports'],['SMART SHARE','share'],
  ['SMART LISTS','lists'],['SMART SPACES','spaces'],['CONNECTIONS','connections'],['SMART MAIL','mail'],
- ['SMART LEDGER','ledger'],['DREAM','dream'],['NAYA PLAY','play'],['SETTINGS','settings']
+ ['SMART LEDGER','ledger'],['SETTINGS','settings']
 ];
 function css(){if(document.getElementById('naya-completeness-style'))return;const s=document.createElement('style');s.id='naya-completeness-style';s.textContent=`
 .private{pointer-events:none!important}
@@ -193,16 +193,8 @@ async function play(r){const ev=await r.retrieve(),le=await r.listLearningEviden
 async function settings(r){const s=r.snapshot();const m=modal('Settings','Truthful runtime state; no configuration is claimed that the current session cannot prove.','<div class="nc-state">'+esc(JSON.stringify(s,null,2))+'</div><div class="nc-actions"><button id="nc-out">SIGN OUT</button></div>');m.querySelector('#nc-out').onclick=async()=>{await r.signOut();m.querySelector('.nc-state').textContent='SIGNED OUT · PRIVATE DATA ACCESS BLOCKED';}}
 function wireSidebar(){
  const rail=document.querySelector('.rail.left'); if(!rail)return false;
- const map={home:['feed','activity'],notes:['note',null],reports:['reports',null],intelligence:['intelligence',null],collective:['feed','collective'],evidence:['ledger',null],connections:['connections',null],mail:['mail',null],settings:['settings',null],share:['share',null],lists:['lists',null],spaces:['spaces',null],ledger:['ledger',null],play:['play',null]};
- if(!rail.querySelector('[data-page="play"]')){
-   const systemNav=[...rail.querySelectorAll('.nav')].find(n=>n.querySelector('[data-page="settings"]'));
-   if(systemNav){
-     const b=document.createElement('button');
-     b.type='button'; b.dataset.page='play'; b.dataset.nayaSurface='play'; b.innerHTML='<span class="ico">✦</span>Naya Play';
-     systemNav.insertBefore(b,systemNav.querySelector('[data-page="settings"]'));
-   }
- }
- const surfaceMap={lists:'lists',spaces:'spaces',contacts:'contacts',share:'share',mail:'mail',settings:'settings',play:'play'};
+ const map={home:['feed','activity'],notes:['note',null],reports:['reports',null],intelligence:['intelligence',null],collective:['feed','collective'],evidence:['ledger',null],connections:['connections',null],mail:['mail',null],settings:['settings',null],share:['share',null],lists:['lists',null],spaces:['spaces',null],ledger:['ledger',null]};
+ const surfaceMap={lists:'lists',spaces:'spaces',contacts:'contacts',share:'share',mail:'mail',settings:'settings'};
  rail.querySelectorAll('.nav button[data-page]').forEach(b=>{if(surfaceMap[b.dataset.page])b.dataset.nayaSurface=surfaceMap[b.dataset.page]});
  rail.querySelectorAll('.nav button[data-page]').forEach(b=>{const key=b.dataset.page,mapped=map[key];if(!mapped)return;b.dataset.nc=mapped[0];if(mapped[1])b.dataset.ncStream=mapped[1];else delete b.dataset.ncStream});
  return true;
