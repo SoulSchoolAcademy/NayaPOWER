@@ -136,7 +136,9 @@
     "2026-09-22 canonical Hub readiness inventory established at .naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md.",
     "2026-09-22 README-FIRST.md established as the boot pointer; BATON.json remains the single current continuation object.",
     "Human Surface Completeness run 35771409482 passed its declared route/surface checks, but it does not prove visual fidelity, singular shell ownership, or the full human causal journey.",
-    "Current React App selects AppShellV3 as its shell; HubBaselineApp remains a separate iframe-based baseline implementation and must not become a competing production shell."
+    "Current React App selects AppShellV3 as its shell; HubBaselineApp remains a separate iframe-based baseline implementation and must not become a competing production shell.",
+    "Human Surface Completeness run 35773282882 verified canonical root shell ownership: one shell, one left rail, zero visible right rail, zero React competing shell in canonical static release.",
+    "Fresh live visual observation confirmed Smart Feed is visibly rendered; a fresh authenticated audit identity returned 0 Feed items, making real Smart Note creation/projection the next boundary."
   ],
   "unknown": [
     "End-to-end Hub retrieval/render of bridge receipt remains open.",
@@ -281,8 +283,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
-    "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
+    "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
   },
   "reconciliation": {
     "date": "2026-09-21",
@@ -291,8 +293,8 @@
     "note": "Current control-plane reconciliation now records the fresh cold-successor home-run evidence; source-scope runtime proofs remain claim-specific."
   },
   "current_next_action": {
-    "action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
-    "reason": "The readiness inventory identified shell/source/build/runtime ownership as the first deterministic boundary before visual and feature work."
+    "action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
