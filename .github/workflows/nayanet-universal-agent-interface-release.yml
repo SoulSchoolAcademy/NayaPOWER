@@ -25,6 +25,7 @@ jobs:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CF_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
       AGENT_BASE_URL: https://nayanet-universal-agent-interface.smartnetpodcast.workers.dev
+      NAYANET_FROZEN_LEARNING_ACCESS_TOKEN: ${{ secrets.NAYANET_FROZEN_LEARNING_ACCESS_TOKEN }}
     steps:
       - name: Require explicit deployment authorization
         shell: bash
@@ -123,3 +124,24 @@ jobs:
           test "${status}" = "401"
           grep -q 'AUTHORIZATION_REQUIRED' /tmp/mcp.json
           echo "MCP_UNAUTHORIZED_REJECTED"
+
+      - name: Verify authenticated MCP contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -n "${NAYANET_FROZEN_LEARNING_ACCESS_TOKEN}"
+          auth=(-H "Authorization: Bearer ${NAYANET_FROZEN_LEARNING_ACCESS_TOKEN}" -H 'Content-Type: application/json')
+          init_status=$(curl --silent --output /tmp/mcp_init.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}')
+          test "${init_status}" = "200"
+          grep -q 'nayanet-universal-agent-interface' /tmp/mcp_init.json
+          list_status=$(curl --silent --output /tmp/mcp_list.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":2,"method":"tools/list","params":{}}')
+          test "${list_status}" = "200"
+          grep -q 'nayanet_restore' /tmp/mcp_list.json
+          grep -q 'nayanet_retrieve' /tmp/mcp_list.json
+          restore_status=$(curl --silent --output /tmp/mcp_restore.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"nayanet_restore","arguments":{}}}')
+          test "${restore_status}" = "200"
+          grep -q '"ok":true' /tmp/mcp_restore.json
+          retrieve_status=$(curl --silent --output /tmp/mcp_retrieve.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"nayanet_retrieve","arguments":{"query":"NayaNET","limit":3}}}')
+          test "${retrieve_status}" = "200"
+          grep -q '"ok":true' /tmp/mcp_retrieve.json
+          echo "MCP_AUTHENTICATED_CONTRACT_VERIFIED"
