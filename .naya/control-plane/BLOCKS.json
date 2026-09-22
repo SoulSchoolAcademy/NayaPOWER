@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+    "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
     "next_actions": [
-      "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
+      "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,12 +57,12 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "The canonical Hub readiness inventory identifies shell/source/build/runtime ownership as the first deterministic boundary.",
+    "next_action_reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
-      "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
+      "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+      "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
     }
   },
   "status_vocabulary": [
@@ -89,8 +89,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
-    "completion": "Close GAP-001 with source/build/runtime identity evidence and a deterministic single-shell acceptance."
+    "next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
+    "completion": "Prove the complete Smart Note → Intelligent Block → Smart Feed lifecycle with durable reload/retrieval and evidence."
   },
   "last_next_action_cycle": {
     "status": "VERIFIED",
@@ -104,7 +104,7 @@
       "NEW_NEXT_ACTION"
     ],
     "execution_scope": "Repository control-plane transition after verified causal computation-efficiency proof.",
-    "successor_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
+    "successor_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
   },
   "completed_blocks": [
     {
