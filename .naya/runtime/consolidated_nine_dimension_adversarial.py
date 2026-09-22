@@ -88,7 +88,7 @@ def owner_nonowner(owner_id,owner_token):
     other_id,other_token=signup()
     packet=base_packet(owner_id,"owner-isolation")
     s,ack=bridge(packet)
-    event_id=ack.get("projection",{}).get("cognition_event_id")
+    event_id=ack.get("receiver_event_id")
     if s!=200 or not event_id:return False,{"bridge_status":s,"event_id":event_id,"ack":ack}
     so,ro=rest("/rest/v1/nayanet_cognition_events",token=owner_token,params={"select":"event_id","event_id":"eq."+event_id})
     sn,rn=rest("/rest/v1/nayanet_cognition_events",token=other_token,params={"select":"event_id","event_id":"eq."+event_id})
