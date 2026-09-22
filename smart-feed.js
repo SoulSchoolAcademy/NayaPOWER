@@ -6,7 +6,7 @@
    ACTIVITY = what happened.
    Event is history. Intelligent Block is current understanding. Runtime remains canonical.
 */
-const KEY='naya-smart-feed-v2';
+const KEY='nayaSmartFeedV2';
 const tone={personal:'#55b9ee',collective:'#9d75ff',activity:'#55e39a'};
 const views={
  personal:['PERSONAL INTELLIGENCE','Your private intelligence — captured, saved, and carried forward.'],
