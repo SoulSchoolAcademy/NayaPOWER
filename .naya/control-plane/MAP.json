@@ -190,5 +190,16 @@
   },
   "current_frontier": {
     "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet `84c6b111-fe32-4a8e-8fe1-402bd107cdda`, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt `d1cf85ec-e470-436a-8f8e-ae13fc011802`."
+  },
+  "non_owner_retrieval_boundary": {
+    "status": "BLOCKED_NOT_EXECUTED",
+    "source_head": "ed7867b9ea0f05d2da5c53a4a562eb3125ad46bb",
+    "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml",
+    "packet_id": "84c6b111-fe32-4a8e-8fe1-402bd107cdda",
+    "expected_owner_id": "e2526a64-7d91-4e73-b793-8dd53a5372d1",
+    "expected_receipt_id": "d1cf85ec-e470-436a-8f8e-ae13fc011802",
+    "owner_receipt_independent_check": "PASS",
+    "non_owner_runtime_result": "UNKNOWN — not executed",
+    "authority_gap": "Connected GitHub execution surface has no workflow_dispatch/write trigger; Desktop Commander is usage-paused."
   }
 }
