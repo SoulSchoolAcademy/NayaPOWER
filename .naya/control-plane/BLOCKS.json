@@ -61,7 +61,7 @@
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Reconcile and close GAP-001: establish one canonical production Hub shell owner, prove source→build→runtime identity, then run the human golden path against that exact shell.",
+      "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt d1cf85ec-e470-436a-8f8e-ae13fc011802.",
       "completion": "One production Hub shell owner is established and its exact source/build/runtime identity is independently proven."
     },
     "completion": "HUMAN JOURNEY LIVE VERIFIED",
@@ -106,7 +106,7 @@
       "NEW_NEXT_ACTION"
     ],
     "execution_scope": "Repository control-plane transition after verified causal computation-efficiency proof.",
-    "successor_action": "Execute one fresh managed-runtime Project Intelligence retrieval/render proof for the canonical bridge, proving owner-only retrieval, retrieved=true, rendered=true, verified_at, lineage, and independent receipt verification."
+    "successor_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt d1cf85ec-e470-436a-8f8e-ae13fc011802."
   },
   "completed_blocks": [
     {
