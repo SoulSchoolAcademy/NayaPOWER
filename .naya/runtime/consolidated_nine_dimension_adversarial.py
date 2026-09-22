@@ -75,7 +75,7 @@ def base_packet(owner_id,suffix):
 
 def make_receipt(owner_id,dimension,status,evidence):
     ih=hashlib.sha256(json.dumps(evidence,sort_keys=True,separators=(",",":")).encode()).hexdigest()
-    dh=hashlib.sha256(json.dumps({"dimension":dimension,"status":status},sort_keys=True,separators=(",",":")).encode()).hexdigest()
+    dh=hashlib.sha256(json.dumps({"dimension":dimension,"status":"PASS" if status=="PASS" else "FAIL"},sort_keys=True,separators=(",",":")).encode()).hexdigest()
     row={"user_id":owner_id,"project_id":"NayaNET","revision":int(hashlib.sha256(dimension.encode()).hexdigest()[:12],16),"action":"ADVERSARIAL_MATRIX:"+dimension,"expected_result":"PASS","observed_result":status,
       "status":"SUCCESS" if status=="PASS" else "FAILED","evidence":evidence,"learning":{"matrix":"CONSOLIDATED_NINE_DIMENSION","source_sha":SOURCE_SHA,"run_identity":RUN_ID},
       "value":{"dimension":dimension,"managed_runtime":True},"policy_key":"NAYANET-CONSOLIDATED-ADVERSARIAL-V1","policy_input_hash":ih,
@@ -85,10 +85,11 @@ def make_receipt(owner_id,dimension,status,evidence):
     return {"request_id":row["request_id"],"input_hash":ih,"decision_hash":dh,"status":status}
 
 def owner_nonowner(owner_id,owner_token):
-    other_id,other_token=signup(); event_id=str(uuid.uuid4())
-    row={"user_id":owner_id,"project_id":"NayaNET","event_id":event_id,"type":"adversarial_matrix","classification":"private","title":"matrix-owner-isolation","content":"PRIVATE-MATRIX","source":"matrix","status":"active","actor":"machine","confidence":1,"tags":["matrix"],"schema_version":"1.0.0"}
-    s,_=rest("/rest/v1/nayanet_cognition_events","POST",row,owner_token)
-    if s>=300:return False,{"owner_insert_status":s}
+    other_id,other_token=signup()
+    packet=base_packet(owner_id,"owner-isolation")
+    s,ack=bridge(packet)
+    event_id=ack.get("projection",{}).get("cognition_event_id")
+    if s!=200 or not event_id:return False,{"bridge_status":s,"event_id":event_id,"ack":ack}
     so,ro=rest("/rest/v1/nayanet_cognition_events",token=owner_token,params={"select":"event_id","event_id":"eq."+event_id})
     sn,rn=rest("/rest/v1/nayanet_cognition_events",token=other_token,params={"select":"event_id","event_id":"eq."+event_id})
     ok=so==200 and isinstance(ro,list) and len(ro)==1 and sn==200 and rn==[]
@@ -126,7 +127,7 @@ def run():
     if ok:
         for r in rows:
             ev=r.get("evidence",{}); dim=r["request_id"].split(":")[-1]
-            ih=hashlib.sha256(json.dumps(ev,sort_keys=True,separators=(",",":")).encode()).hexdigest(); dh=hashlib.sha256(json.dumps({"dimension":dim,"status":r["status"]},sort_keys=True,separators=(",",":")).encode()).hexdigest()
+            ih=hashlib.sha256(json.dumps(ev,sort_keys=True,separators=(",",":")).encode()).hexdigest(); dh=hashlib.sha256(json.dumps({"dimension":dim,"status":r.get("observed_result")},sort_keys=True,separators=(",",":")).encode()).hexdigest()
             if ih!=r["policy_input_hash"] or dh!=r["policy_decision_hash"]: ok=False
     results["receipt_integrity"]=ok; receipts["receipt_integrity"]=make_receipt(owner,"receipt_integrity","PASS" if ok else "FAIL",{"checked":len(rows or []),"query_status":s})
     bad=base_packet(owner,"unauthorized-persistence"); bad["privacy"]["default_visibility"]="PUBLIC"; sb,ab=bridge(bad)
