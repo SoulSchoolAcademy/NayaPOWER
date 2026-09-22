@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-22T19:19:56.654Z",
+  "generated_at": "2026-09-22T19:25:42.322Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign."
+    "block_next_action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -70,22 +70,23 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Resolve GAP-001: trace the canonical Hub source → build artifact → live runtime, establish exactly one active shell owner, and add/execute a deterministic shell-ownership acceptance before any visual redesign.",
+    "action": "Execute the Smart Note → Intelligent Block → Smart Feed golden path on the canonical Hub: AUTHENTICATE → CREATE → SAVE → SEE RESULT → RELOAD → FIND → UNDERSTAND EVIDENCE → CONTINUE.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "The canonical Hub readiness inventory identifies shell/source/build/runtime ownership as the first deterministic boundary.",
+    "reason": "GAP-001 shell/source/runtime ownership is verified at current runtime scope; the next deterministic human-facing boundary is proving real intelligence creation and projection.",
     "acceptance": [
-      "Identify the exact source/build/runtime chain serving the canonical Hub.",
-      "Establish exactly one active shell owner without deleting historical evidence.",
-      "Add/execute deterministic acceptance that detects competing rendered shell ownership.",
-      "Record source/runtime identity and the acceptance result.",
-      "Update the baton and leave exactly one successor action."
+      "Authenticate a fresh audit identity through the canonical Hub.",
+      "Create a real Smart Note through the human Hub control.",
+      "Observe canonical event/receipt and durable persistence.",
+      "See the resulting intelligence in Smart Feed.",
+      "Reload and retrieve the same canonical identity.",
+      "Inspect visible evidence/provenance and leave one successor action."
     ],
-    "verification": "Independently inspect the source, build/deployment path, and live DOM/runtime; fail if competing shell ownership remains ambiguous."
+    "verification": "Independently verify event identity, persistence, Smart Feed projection, reload retrieval, and evidence without relying on prior conversation."
   },
   "successor_prompt": {
-    "rule": "Read README-FIRST.md and the canonical baton before consequential execution.",
-    "prompt": "Restore live NayaPOWER state from BATON.json, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only GAP-001, independently verify source/build/runtime shell ownership, record what changed and remains unknown, rebuild the baton, and leave exactly one executable successor action.",
-    "do_not": "Do not ask Shawn to reconstruct repository state. Do not begin broad visual redesign before shell ownership is reconciled. Do not treat route/text selectors as visual or causal proof."
+    "rule": "Read README-FIRST.md and BATON.json before consequential execution.",
+    "prompt": "Restore current NayaPOWER state, execute only the Smart Note golden path, independently verify canonical event identity and Smart Feed projection after reload, record proof/unknowns, rebuild the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not redesign the Hub while the causal golden path is being proven. Do not treat a route or selector as persistence proof. Do not invent intelligence content or evidence."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
