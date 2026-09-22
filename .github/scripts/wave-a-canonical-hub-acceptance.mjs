@@ -74,7 +74,7 @@ const noteState=await captureStatus.textContent();
 const eventId=noteState.match(/EVENT ([^ ·]+)/)?.[1]||"";
 const receiptId=noteState.match(/RECEIPT ([^ ·]+)/)?.[1]||"";
 if(!eventId||!receiptId) throw new Error("SMART_NOTE_RECEIPT_NOT_PROVEN:"+noteState);
-await page.waitForURL(url=>url.pathname==="/feed" && url.searchParams.get("event_id")===eventId,{timeout:30000});
+if(!(new URL(page.url()).pathname==="/feed" && new URL(page.url()).searchParams.get("event_id")===eventId)) await page.waitForURL(url=>url.pathname==="/feed" && url.searchParams.get("event_id")===eventId,{timeout:30000});
 const runtimeFeed=await page.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:"personal",limit:50}));
 const apiItems=Array.isArray(runtimeFeed?.items)?runtimeFeed.items:[];
 const apiExact=apiItems.find(x=>x?.event_id===eventId);
