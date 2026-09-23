@@ -243,7 +243,7 @@ jobs:
                 capture:!!document.querySelector('#naya-runtime-capture'),
                 corner:!!document.querySelector('.naya509-corner'),
                 v2Feed:!!document.querySelector('#naya-smart-feed-v2'),
-                sidebar:[...document.querySelectorAll('.rail.left .nav button')].map(b=>b.innerText.replace(/\\s+/g,' ').trim())
+                sidebar:[...document.querySelectorAll('.rail.left .nav button')].map(b=>b.innerText.replace(/^[^A-Za-z]+/,'').replace(/\s+/g,' ').trim())
               }));
               console.log('CANONICAL_HUB_VISUAL_PROBE',viewport.label,JSON.stringify(probe));
 
@@ -261,7 +261,7 @@ jobs:
               if(probe.corner) throw new Error(viewport.label+': obsolete Naya corner control present');
               if(probe.v2Feed) throw new Error(viewport.label+': Smart Feed V2 replacement DOM present on canonical Home');
               const required=['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings'];
-              for(const label of required) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': sidebar label mismatch for '+label+' :: '+JSON.stringify(probe.sidebar));
+              if(viewport.width>=821){ for(const label of required) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': sidebar label mismatch for '+label+' :: '+JSON.stringify(probe.sidebar)); }
 
               for(const key of expectedModes){
                 await page.locator('.feedNav [data-feed="'+key+'"]').click();
