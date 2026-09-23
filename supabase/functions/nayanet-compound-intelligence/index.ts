@@ -8,7 +8,7 @@ const SECRET = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
 const admin = createClient(URL, SECRET);
 const cors = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization,apikey,content-type,x-idempotency-key",
+  "Access-Control-Allow-Headers": "authorization,apikey,content-type,x-idempotency-key,x-client-info,traceparent,tracestate,baggage",
   "Access-Control-Allow-Methods": "POST,OPTIONS"
 };
 const json = (body: unknown, status = 200) =>
