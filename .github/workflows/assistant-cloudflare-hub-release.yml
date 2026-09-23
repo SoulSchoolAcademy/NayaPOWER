@@ -15,6 +15,7 @@ on:
       - 'hub-completeness.js'
       - 'smart-feed.js'
       - 'smart-tabs.js'
+      - 'NAYANET/HUB/intelligence-surfaces-runtime.js'
       - 'identity.html'
       - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
@@ -108,6 +109,7 @@ jobs:
           test -s NAYANET/HUB/public/nayanet-interface-command-station.js
           test -s smart-feed.js
           test -s smart-tabs.js
+          test -s NAYANET/HUB/intelligence-surfaces-runtime.js
           test -s identity.html
           test -s NAYANET/name-first-auth-adapter.js
           grep -q 'nayanet-direct-nine' NAYANET/HUB/index.html
@@ -133,6 +135,8 @@ jobs:
           cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
+          mkdir -p dist/NAYANET/HUB
+          cp NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
           cp identity.html dist/identity.html
           cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
@@ -141,6 +145,7 @@ jobs:
           cmp -s NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
           cmp -s smart-feed.js dist/smart-feed.js
           cmp -s smart-tabs.js dist/smart-tabs.js
+          cmp -s NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
           python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
 
       - name: Deploy exact canonical Hub
@@ -278,6 +283,32 @@ jobs:
           mkdir -p hub-visual-proof
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-canonical-hub.mjs
           rm -f verify-canonical-hub.mjs
+
+      - name: Verify ten intelligence surfaces in live browser
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > verify-intelligence-surfaces.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.NAYA_RUNTIME_URL;
+          const expected=[['today','Your Intelligence Today'],['reports','Your Reports'],['library','Intelligent Library'],['share','Smart Share'],['ledger','Smart Ledger'],['connections','Your Connections'],['lists','Smart Lists'],['mail','Smart Mail'],['spaces','Smart Spaces'],['settings','Settings']];
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          try {
+            const context=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});
+            const page=await context.newPage(); const failed=[]; page.on('pageerror',e=>failed.push('pageerror:'+e.message));
+            const response=await page.goto(runtime+'/?intelligence-surfaces='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
+            if(!response?.ok()) throw new Error('live Hub HTTP unavailable');
+            await page.waitForTimeout(1200);
+            const boot=await page.evaluate(()=>({legacy:!!document.querySelector('#naya-smart-tabs'),runtimeLoaded:!!document.querySelector('script[data-naya-real-surfaces]')}));
+            console.log('INTELLIGENCE_SURFACE_BOOT_PROBE',JSON.stringify(boot));
+            if(boot.legacy) throw new Error('legacy Smart Tabs surface still present');
+            if(!boot.runtimeLoaded) throw new Error('real intelligence surface runtime did not load');
+            for(const [key,label] of expected){ const button=page.locator('.naya-intelligence-nav [data-page="'+key+'"]'); if(await button.count()!==1) throw new Error('missing surface nav '+label); await button.click(); await page.waitForTimeout(120); const s=await page.evaluate(()=>({active:document.querySelector('.naya-intelligence-nav [data-page].active')?.dataset.page||null,heading:document.querySelector('.naya-real-workspace h2')?.textContent?.trim()||null,workspace:!!document.querySelector('.naya-real-workspace')})); console.log('INTELLIGENCE_SURFACE_PROBE',key,JSON.stringify(s)); if(s.active!==key||!s.workspace||s.heading!==label) throw new Error(label+': surface contract failed'); }
+            if(failed.length) throw new Error(failed.join(' | ')); console.log('TEN_INTELLIGENCE_SURFACES_BROWSER_VERIFIED'); await context.close();
+          } finally { await browser.close(); }
+          EOF
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-intelligence-surfaces.mjs
+          rm -f verify-intelligence-surfaces.mjs
 
       - name: Capture canonical Hub visual proof
         shell: bash
