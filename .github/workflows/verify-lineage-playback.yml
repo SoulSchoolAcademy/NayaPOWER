@@ -1,0 +1,19 @@
+name: Verify Lineage Playback
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/lineage_playback.py'
+      - '.naya/runtime/test_lineage_playback.py'
+      - '.github/workflows/verify-lineage-playback.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  lineage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python .naya/runtime/test_lineage_playback.py
