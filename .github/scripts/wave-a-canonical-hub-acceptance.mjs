@@ -103,21 +103,23 @@ const initialItems=Array.isArray(apiInitial?.items)?apiInitial.items:[];
 const apiExact=initialItems.find(x=>String(x?.event_id||x?.id||"")===eventId);
 if(!apiExact) throw new Error("SMART_FEED_RUNTIME_API_PROJECTION_MISSING:"+JSON.stringify(initialItems.slice(0,10).map(x=>({event_id:x.event_id,id:x.id,title:x.title}))));
 if(!apiExact.metadata?.intelligent_block_v1) throw new Error("SMART_FEED_INTELLIGENT_BLOCK_METADATA_MISSING");
+const sourceId=String(apiExact.source_id||apiExact.id||eventId);
 
 const personal=page.locator('.feedNav button[data-feed="personal"]');
 await personal.click();
 await page.waitForFunction(()=>document.documentElement.dataset.nayaCanonicalSmartFeed==="live",{timeout:30000});
-await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),eventId,{timeout:30000});
+await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),sourceId,{timeout:30000});
 
 const rendered=await page.locator('.blocks .block').filter({hasText:title}).first().evaluate(node=>({
   intelligenceId:node.dataset.intelligenceId||"",
+  sourceId,
   feed:node.dataset.nayaFeed||"",
   provenance:node.dataset.provenance||"",
   title:node.querySelector("h3")?.textContent||"",
   truth:node.querySelector(".truth")?.textContent||"",
   nutshell:node.querySelector(".nutshell p")?.textContent||""
 }));
-if(rendered.intelligenceId!==eventId||rendered.feed!=="personal"||rendered.provenance!=="Canonical runtime"||!rendered.title.includes(title)||!rendered.truth) throw new Error("SMART_FEED_CANONICAL_DOM_PROJECTION_FAILED:"+JSON.stringify(rendered));
+if(rendered.intelligenceId!==sourceId||rendered.feed!=="personal"||rendered.provenance!=="Canonical runtime"||!rendered.title.includes(title)||!rendered.truth) throw new Error("SMART_FEED_CANONICAL_DOM_PROJECTION_FAILED:"+JSON.stringify(rendered));
 
 for(const stream of ["collective","activity","personal"]){
   await page.locator('.feedNav button[data-feed="'+stream+'"]').click();
@@ -128,7 +130,7 @@ for(const stream of ["collective","activity","personal"]){
 await page.reload({waitUntil:"networkidle"});
 await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
 await page.locator('.feedNav button[data-feed="personal"]').click();
-await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),eventId,{timeout:30000});
+await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),sourceId,{timeout:30000});
 
 const recovered=await page.evaluate(async expected=>{
   const rows=await window.NayaAssistantRuntime.retrieve(expected);
@@ -146,7 +148,7 @@ const receipt={
   sidebar:navChecks,
   identity:{user_id:A.user.id},
   smartNote:{title,content,event_id:eventId,status:statusBeforeReload},
-  smartFeed:{api_match:true,intelligent_block_metadata:true,dom_projection:true,three_mode_switch:true,reload_match:true,retrieval_match:true,same_event_id:true},
+  smartFeed:{source_id:sourceId,api_match:true,intelligent_block_metadata:true,dom_projection:true,three_mode_switch:true,reload_match:true,retrieval_match:true,same_event_id:true},
   consoleErrors
 };
 fs.writeFileSync(process.env.RECEIPT_PATH||"wave-a-canonical-receipt.json",JSON.stringify(receipt,null,2));
