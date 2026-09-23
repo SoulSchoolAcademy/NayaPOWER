@@ -825,6 +825,47 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
     source_head:body.source_head ?? null
   });
+  const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
+  const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
+  blockDigest[6] = (blockDigest[6] & 0x0f) | 0x50;
+  blockDigest[8] = (blockDigest[8] & 0x3f) | 0x80;
+  const blockId = Array.from(blockDigest.slice(0,16)).map((v)=>v.toString(16).padStart(2,"0")).join("")
+    .replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/,"$1-$2-$3-$4-$5");
+  const existingBlock = await admin.from("nayanet_intelligent_blocks")
+    .select("*").eq("block_id",blockId).eq("owner_id",userId).maybeSingle();
+  if (existingBlock.error) throw existingBlock.error;
+  let intelligentBlock:any = existingBlock.data;
+  if (!intelligentBlock) {
+    const blockContent:any = {
+      identity:{object_id:"IB:"+blockId,event_id:eventId,version:1,namespace:"nayanet",schema_version:"NAYANET_INTELLIGENT_BLOCK_V1"},
+      context:{project_id:PROJECT,category,topic,visibility:"PRIVATE",owner_id:userId},
+      truth:{state:"CANDIDATE",status:"UNVERIFIED",source:"nayanet-compound-intelligence",confidence:Number(body.confidence ?? 0.8)},
+      authority:{state:"AUTHORIZED",scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",actor:userId},
+      value:{state:"CAPTURED",learning_claim:learningClaim,applicable_scope:body.applicable_scope ?? null},
+      lifecycle:{stage:"CAPTURED_INTEGRATED_CHECKPOINTED",captured_at:new Date().toISOString(),checkpoint_id:checkpointId},
+      content:{title,content,category,topic,tags,what_changed:body.what_changed ?? null,next_use:body.next_use ?? null,successor_relevance:"Cold successor must restore this intelligence, recognize applicability, use it when valid, and verify the outcome."}
+    };
+    const blockHashBytes = new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(JSON.stringify(blockContent))));
+    blockContent.integrity={algorithm:"SHA-256",content_hash:Array.from(blockHashBytes).map((v)=>v.toString(16).padStart(2,"0")).join("")};
+    const insertedBlock = await admin.from("nayanet_intelligent_blocks").insert({
+      block_id:blockId,owner_id:userId,subject_id:String(body.target_id ?? topic),
+      title,block_type:category || "INTELLIGENCE",version:1,status:"ACTIVE",
+      understanding_state:"CANDIDATE",owner_scope:"PRIVATE",source_event_ids:[sourceEvent.id],
+      evidence_refs:[
+        {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
+        {kind:"source_event",event_id:eventId,source_row_id:sourceEvent.id},
+        {kind:"intelligence_index",index_id:projection.index?.id ?? null},
+        {kind:"checkpoint",checkpoint_id:checkpointId,receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null}
+      ],
+      provenance:{source:"nayanet-compound-intelligence",idempotency_key:idempotencyKey,canonical_event_id:eventId,source_event_id:sourceEvent.id,checkpoint_id:checkpointId},
+      value_context:body.value_context ?? {learning_claim:learningClaim},
+      applicable_scope:body.applicable_scope ?? {},
+      content:blockContent,
+      schema_version:"INTELLIGENT_BLOCK_V1"
+    }).select("*").single();
+    if (insertedBlock.error) throw insertedBlock.error;
+    intelligentBlock=insertedBlock.data;
+  }
   return {
     schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
     idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
