@@ -60,7 +60,7 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
+    "observed_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "STALE",
@@ -90,7 +90,7 @@
         "Smart Feed publication retrieval and unauthorized persistence blocking passed"
       ],
       "stale_reason": "Current main canonical Hub source (cae18df2) is not the source identity of the recorded deployment proof; current live parity remains unproven until the canonical release is re-established.",
-      "current_main_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
+      "current_main_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
       "current_hub_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
       "required_next": "Authorized canonical Cloudflare release on exact current main, then exact live source parity and browser proof."
     },
