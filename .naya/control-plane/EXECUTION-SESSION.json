@@ -3,8 +3,8 @@
   "session_id": "NAYA-20260923-GAP-002-RELEASE-BRIDGE-01",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "b3451510ea65e4875a7b3323f23f970d98ab647b",
-  "authorized_action": "Release the current canonical Hub source after the Smart Feed runtime connection repair. Preserve the canonical visual surface; deploy the exact current main source; verify source/runtime parity, browser behavior, Smart Feed projection, and GAP-002 truth/provenance evidence. Do not use Welcome or historical Hub artifacts as the product surface.",
+  "parent_head": "069ea3084ffe2ad6aae032a42d536be6385e7322",
+  "authorized_action": "Ship and prove the current canonical Hub runtime batch: canonical Smart Feed connection, feed tab projection, legacy-renderer isolation, active sidebar runtime surfaces, cache-busted runtime assets, and browser acceptance. Preserve the canonical visual surface and do not introduce a competing Hub.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
@@ -29,8 +29,8 @@
     "verification": "PASS",
     "evidence": [
       "canonical visual/browser proof is production-proven at commit 5f0a36cff1ead894e92376ece217f38d3632591a",
-      "current main repair commit b3451510ea65e4875a7b3323f23f970d98ab647b connects the canonical Hub feed to the persisted Smart Feed runtime",
-      "the automatic release for b345151 failed before deployment because the release validator requires HEAD to be a merge commit; this bridge makes b345151 the verified parent boundary for the next canonical release"
+      "current main batch connects canonical Smart Feed, activates sidebar runtime surfaces, reconciles the control plane, and cache-busts both runtime assets",
+      "the prior direct-push release attempts were correctly rejected by the merge-boundary lease; the current merge parent is now the explicit release-session boundary"
     ]
   },
   "record": {
@@ -46,5 +46,5 @@
     "status": "SIGNED_OUT",
     "at": "2026-09-23T03:00:00.000Z"
   },
-  "successor_prompt": "Merge this release bridge into main. The resulting merge commit must trigger the canonical Cloudflare Hub release. Verify exact source/live parity and then execute GAP-002 fresh Smart Note → Intelligent Block → Smart Feed → reload → retrieval → visible truth/provenance → authorized continuation proof."
+  "successor_prompt": "Merge-boundary release is now the current execution frontier. Verify exact source/live parity, then execute the fresh authenticated Smart Note → Smart Feed → reload → authorized retrieval proof and activate any remaining sidebar surfaces without changing the protected visual design."
 }
