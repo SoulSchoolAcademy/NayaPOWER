@@ -132,6 +132,7 @@ jobs:
           auth_json=$(curl --silent --show-error -X POST "${SUPABASE_URL}/auth/v1/signup" -H "apikey: ${SUPABASE_ANON_KEY}" -H "Content-Type: application/json" -d '{}')
           access_token=$(printf '%s' "${auth_json}" | jq -r '.access_token // empty')
           test -n "${access_token}"
+          echo "UAI_ACCESS_TOKEN=${access_token}" >> "${GITHUB_ENV}"
           auth=(-H "Authorization: Bearer ${access_token}" -H 'Content-Type: application/json')
           init_status=$(curl --silent --output /tmp/mcp_init.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18"}}')
           echo "MCP_INIT_STATUS=${init_status}"
@@ -181,7 +182,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          auth=(-H "Authorization: Bearer ${access_token}" -H 'Content-Type: application/json')
+          auth=(-H "Authorization: Bearer ${UAI_ACCESS_TOKEN}" -H 'Content-Type: application/json')
           cold_status=$(curl --silent --show-error --output /tmp/rest_cold.json --write-out '%{http_code}' -X POST "${AGENT_BASE_URL}/v1/cold-restore" "${auth[@]}" -d '{}')
           echo "REST_COLD_RESTORE_STATUS=${cold_status}"
           test "${cold_status}" = "200"
