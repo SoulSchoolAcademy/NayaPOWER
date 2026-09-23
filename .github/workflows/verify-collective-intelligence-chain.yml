@@ -197,7 +197,7 @@ jobs:
               checkpoint_id:'checkpoint:'+lessonId+':outcome',
               source_event_ids:[eventId,connectedEventId,outcomeEventId],
               current_understanding:'The continuation lesson was connected to a reconciled interpretation, verified as active learning, retrieved in a fresh governed decision context, applied without authority change, and produced an observed verified outcome.',
-              title:'Improved checkpoint after verified collective lesson',
+              title:lessonTitle+' — Improved checkpoint after verified collective lesson',
               confidence:1,
               tags:['collective-chain','checkpoint','improved'],
               what_changed:'The initial lesson checkpoint was strengthened by verified applicability, behavior change, and an observed outcome.',
