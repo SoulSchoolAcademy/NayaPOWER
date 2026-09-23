@@ -23,12 +23,32 @@ EXPERIENCE → CAPTURE → UNDERSTAND → DISTILL → COMPARE → EVALUATE → R
 
 A Smart Note is an input to cognition. A Smart Note is not automatically truth, learning, or wisdom merely because it was stored.
 
-## 3. NO REPLAY
-NO REPLAY does not mean never retrieving history.
+## 3. NO UNNECESSARY REPLAY / PROGRESSIVE INTELLIGENCE LOCK-IN
+The canonical principle is **NO UNNECESSARY REPLAY / PROGRESSIVE INTELLIGENCE LOCK-IN**.
 
-> Do not repeatedly reconstruct knowledge that has already been successfully understood, verified, and integrated.
+This does **not** mean never retrieving history, never thinking again, or blindly automating a previous decision.
 
-Retrieve prior intelligence when it is relevant. Do not make the human teach the same lesson again.
+> Reuse verified understanding whenever it remains applicable. Recompute only when new information, uncertainty, changed circumstances, conflicting evidence, or insufficient confidence makes additional reasoning necessary.
+
+The objective is maximum responsible verified value and effectiveness with the least unnecessary reconstruction, computation, friction, and human repetition.
+
+Expertise is not “never think.” It is:
+- know what is already known,
+- recognize when that knowledge applies,
+- reuse it when valid,
+- recognize when circumstances changed,
+- think harder when the old understanding is insufficient or contradicted,
+- improve the current understanding when new evidence teaches us something.
+
+The progressive lock-in loop is:
+
+CHECKPOINT 01 → CURRENT UNDERSTANDING → NEW EXPERIENCE / INFORMATION → REASON → COMPARE → IMPROVE / CORRECT / EXTEND → CHECKPOINT 02 → BETTER CURRENT UNDERSTANDING → …
+
+A retained lesson is therefore not a frozen rule. It is the best verified current understanding at that point in time, with its applicability, limits, evidence, and known uncertainty preserved.
+
+**Human teaching principle:** when a human teaches Naya something important once, the system should convert that teaching into governed intelligence that a later cold Naya can retrieve, understand, recognize as applicable, use without re-teaching, verify through outcome, and improve when experience provides new evidence.
+
+Retrieve prior intelligence when relevant. Do not make the human repeatedly reconstruct a lesson that has already been successfully understood, verified, and integrated.
 
 ## 4. Promotion ladder
 OBSERVED → UNDERSTOOD → SUPPORTED → VERIFIED → LEARNED → REUSABLE → PRINCIPLE → WISDOM SIGNAL
@@ -145,8 +165,8 @@ A new meaningful lesson is captured and promoted through the governed lifecycle.
 The current understanding and provenance are durably checkpointed.
 ### Test C — cold retrieval
 A fresh Naya with no conversation context retrieves the checkpoint.
-### Test D — no replay
-The fresh Naya uses the learned intelligence without Shawn re-teaching it.
+### Test D — no unnecessary replay
+The fresh Naya recognizes whether the learned intelligence applies to the current situation and, when it does, uses it without Shawn re-teaching it. The test must not require blind reuse when the context has changed or evidence conflicts.
 ### Test E — behavior change
 The learned intelligence changes a later decision/action.
 ### Test F — outcome
@@ -162,10 +182,14 @@ The system is not PROVEN until the complete chain passes.
 The first runtime primitive is the governed checkpoint operation on the existing nayanet-compound-intelligence boundary.
 It must create durable, provenance-bound cognition state without introducing a second persistence system.
 
-After the Intelligent Block lifecycle proof is closed, wire the existing Smart Note/conversation capture path to this checkpoint boundary and then prove the complete learn-once/no-replay behavioral chain.
+After the Intelligent Block lifecycle proof is closed, wire the existing Smart Note/conversation capture path to this checkpoint boundary and then prove the complete learn-once/progressive-lock-in behavioral chain:
+
+LEARN ONCE → CHECKPOINT → COLD RETRIEVE → RECOGNIZE APPLICABILITY → ACT WITHOUT RE-TEACHING → VERIFY → IMPROVE CHECKPOINT.
+
+The proof must use one real lesson and must demonstrate the causal connection between the retained lesson and the later behavior. A stored row, retrieval event, or green workflow alone is insufficient.
 
 ## 16. North-star test
-> If Shawn teaches Naya something important once today, can a cold Naya tomorrow understand it, retrieve it, apply it, verify the outcome, and continue without Shawn repeating the lesson?
+> If Shawn teaches Naya something important once today, can a cold Naya tomorrow understand it, retrieve it, recognize whether it applies, use it without Shawn repeating it, verify the outcome, improve the understanding when warranted, and leave a better checkpoint for the next Naya?
 
 If not, the brain is not yet compounding.
 
