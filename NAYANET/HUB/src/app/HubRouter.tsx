@@ -16,6 +16,7 @@ import { NayaPlaySurface } from './NayaPlaySurface';
 import { SmartSpacesSurface } from './SmartSpacesSurface';
 import { SettingsSurface } from './SettingsSurface';
 import { SmartNoteSurface } from './SmartNoteSurface';
+import { IntelligenceTodaySurface } from './IntelligenceTodaySurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
   const identity = useIdentity();
@@ -94,7 +95,7 @@ export function HubRouter({ path }: { path: string }) {
   switch (path) {
     case routes.home:
     case routes.today:
-      return <FeedView title="Your Intelligence Today" subtitle="What matters now — the intelligence you can understand, use, verify, and carry forward." />;
+      return <IntelligenceTodaySurface />;
     case routes.feed:
       return <FeedView title="Intelligence" subtitle="Living intelligence made visible, useful, and reusable." />;
     case routes.notes:
