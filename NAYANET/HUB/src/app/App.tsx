@@ -1,13 +1,13 @@
 import { IdentityProvider } from '../identity/session';
-import { AppShell } from './AppShellV3';
+import { AppShell } from './AppShell';
 import { HubRouter } from './HubRouter';
 
 export default function App() {
   return (
     <IdentityProvider>
-      <AppShellV3>
+      <AppShell>
         {(path) => <HubRouter path={path} />}
-      </AppShellV3>
+      </AppShell>
     </IdentityProvider>
   );
 }
