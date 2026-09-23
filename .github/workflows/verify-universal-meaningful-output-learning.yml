@@ -83,7 +83,7 @@ jobs:
               const db=async path=>{const r=await fetch(supabaseUrl+'/rest/v1/'+path,{headers:{apikey:supabaseKey,Authorization:'Bearer '+session.access_token}});return {status:r.status,body:await r.json().catch(()=>null)}};
               const before=await db('nayanet_cognition_events?select=id,event_id,user_id,title,type&event_id=eq.'+encodeURIComponent(eventId));
               if(before.status!==200||before.body?.length!==1)throw new Error('SOURCE_EVENT_READ_FAILED:'+JSON.stringify(before));
-              const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
+              const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
               if(blockQ.status!==200)throw new Error('BLOCK_READ_FAILED:'+JSON.stringify(blockQ));
               blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
               const learningQ=await db('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&member_id=eq.'+encodeURIComponent(ownerId)+'&id=eq.'+encodeURIComponent(evidenceId));
@@ -127,7 +127,6 @@ jobs:
                 reason='LEARNING_OUTPUT_IS_REUSABLE_NEW_UNDERSTANDING_AND_SOURCE_EVENT_HAS_NO_EXISTING_INTELLIGENT_BLOCK';
                 mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId,promoted_event_id:promotedEventId,promoted_checkpoint_id:promotedBlockId});
                 const promotedQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
-                blockAfter=promotedQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.includes ? false : false);
                 blockAfter=promotedQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id)===false && b.owner_id===ownerId && b.title==='Verified learning: '+title);
                 if(blockAfter.length!==1)throw new Error('LEARNING_PROMOTED_BLOCK_MISSING:'+JSON.stringify(promotedQ.body));
                 mark('PROMOTION_PERSISTENCE','PASS',{block_id:blockAfter[0].block_id,owner_id:ownerId,source_event_id:before.body[0].id,promoted_event_id:promotedEventId});
