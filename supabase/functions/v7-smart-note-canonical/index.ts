@@ -185,6 +185,22 @@ Deno.serve(async(req)=>{
   const {data,error}=await supabase.rpc("v7_create_smart_note",{p_idempotency_key:idempotencyKey,p_user_id:user.id,p_human_note:canonicalHuman,p_naya_note:canonicalNaya,p_machine_note:machine,p_intelligent_feed:feed,p_intelligent_block:block,p_evidence:evidence,p_hub_state:hubState,p_subject:subject});
   if(error)throw error;
 
+  // Idempotent replay must continue from the persisted canonical event identity.
+  // The RPC is the transaction authority; a replay must never generate a fresh
+  // downstream event/checkpoint identity or attempt to re-run learning against it.
+  const persistedEventId=String(data?.evidence?.event_id||data?.hub_state?.event_id||"").trim();
+  if(!persistedEventId)throw new Error("SMART_NOTE_CANONICAL_EVENT_ID_MISSING");
+  if(persistedEventId!==eventId){
+    return json({
+      ok:true,
+      pipeline:"replayed",
+      canonical_event:true,
+      collection:"Smart Notes",
+      replayed:true,
+      transaction:data
+    });
+  }
+
   // Every canonical Smart Note now enters the same governed learning/checkpoint boundary.
   // The Smart Note transaction remains the single source event; the checkpoint is its
   // provenance-bound cognitive state, not a second intelligence/event model.
