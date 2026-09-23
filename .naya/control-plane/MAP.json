@@ -123,7 +123,7 @@
     ],
     "active_block": "HUMAN-JOURNEY-P2",
     "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation.",
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
+    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -223,9 +223,9 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+  "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
   "current_next_action": {
-    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "status": "AUTHORIZED_AFTER_PROOF",
     "proof_scope": "Fresh Smart Note → learning candidate → verified ACTIVE learning → learning retrieval"
   }
