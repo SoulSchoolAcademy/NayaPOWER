@@ -36,7 +36,7 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block." as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "next_actions": [
       "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
     ],
@@ -202,7 +202,7 @@
     "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
     "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
     "causal_boundary": "intelligence_commit → canonical Intelligent Block materialization",
-    "next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "legacy_cognition_disposition": {
     "cohort_size": 88,
