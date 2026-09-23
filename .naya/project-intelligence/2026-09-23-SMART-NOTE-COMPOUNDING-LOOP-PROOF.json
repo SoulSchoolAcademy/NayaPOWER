@@ -1,0 +1,34 @@
+{
+  "schema": "NAYANET_SMART_NOTE_COMPOUNDING_LOOP_PROOF_V1",
+  "status": "VERIFIED",
+  "verified_at": "2026-09-23",
+  "workflow_run": 35893121151,
+  "workflow_job": 107290247494,
+  "source_head": "833bf8f9473528b7d53ad17636679e0f766bb8ef",
+  "claim": "A meaningful Smart Note can become verified reusable learning, be integrated into canonical learner state, influence a governed later decision without changing authority, and be reused by a fresh Naya runtime without reteaching.",
+  "chain": [
+    "Smart Note captured through canonical authenticated receiver",
+    "Learning candidate created from the captured event",
+    "Learning verified ACTIVE",
+    "Learning retrieved by source-event lineage",
+    "Learning applied into canonical learner state",
+    "Governed decision context used the ACTIVE learning",
+    "Decision authority remained unchanged",
+    "Fresh browser context reused the same verified learning through decision context",
+    "Direct managed-persistence reads independently verified learning and event owner lineage",
+    "Proof artifact validation passed"
+  ],
+  "evidence": {
+    "owner_id": "e5cf0f1a-cf50-4724-9683-1e048f90d0c4",
+    "event_id": "0c7bceeb-bbea-4ebb-a251-858befcbf70c",
+    "evidence_id": "f6b5310d-70e0-4ebe-825e-5c153d0fa4a0",
+    "receipt_id": "46d2ae5e-bd5b-4611-b30f-310324dbb250",
+    "decision": "USE_VERIFIED_LEARNING_CONTEXT",
+    "authority_changed": false,
+    "cold_reuse": true,
+    "learner_state_version": 1,
+    "independent_persistence_verification": true
+  },
+  "interpretation": "This proves the first bounded compounding rung: verified experience became reusable learned intelligence that changed later governed behavior and remained available to a fresh Naya context.",
+  "boundary": "This is proven at the Smart Note owner-bound scope. Universal automatic promotion of every meaningful Naya output remains UNKNOWN and is not claimed by this receipt."
+}
