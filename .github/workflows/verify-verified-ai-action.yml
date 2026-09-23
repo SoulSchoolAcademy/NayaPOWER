@@ -1,0 +1,33 @@
+name: Verify Verified AI Action
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/causal_verification.py'
+      - '.naya/runtime/verified_ai_action.py'
+      - '.naya/contracts/schemas/CAUSAL-VERIFICATION-OBJECT-SCHEMA.json'
+      - '.naya/contracts/schemas/VERIFIED-AI-ACTION-V1-SCHEMA.json'
+      - 'tools/test_causal_verification_object.py'
+      - 'tools/test_verified_ai_action.py'
+      - '.github/workflows/verify-verified-ai-action.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verified-ai-action:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify causal proof
+        run: python tools/test_causal_verification_object.py
+      - name: Verify universal action contract
+        run: python tools/test_verified_ai_action.py
