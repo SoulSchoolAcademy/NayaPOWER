@@ -7,6 +7,7 @@ from smart_ledger_engine import (
     create_smart_note,
     determine_level,
     generate_smart_link,
+    record_verified_ai_action,
     run_vertical_slice,
     verify_event,
 )
