@@ -191,9 +191,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+  "single_next_action": "Prove RELATIONSHIP as the next representative universal-output class: determine whether a relationship artifact is reusable intelligence or relationship event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, consent/authority, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
   "next_actions": [
-    "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "Prove RELATIONSHIP as the next representative universal-output class: determine whether a relationship artifact is reusable intelligence or relationship event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, consent/authority, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -295,7 +295,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "next_action": "Prove RELATIONSHIP as the next representative universal-output class: determine whether a relationship artifact is reusable intelligence or relationship event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, consent/authority, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
     "status": "PROVEN"
   },
@@ -347,8 +347,8 @@
     "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "current_next_action": {
-    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
-    "reason": "LEARNING_OUTPUT is already dispositioned; COMMUNICATION is the single remaining representative semantic boundary in the current universal-output progression.",
+    "action": "Prove RELATIONSHIP as the next representative universal-output class: determine whether a relationship artifact is reusable intelligence or relationship event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, consent/authority, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "reason": "COMMUNICATION is VERIFIED as DECLINE_PROMOTION because the examined Smart Mail artifact is a transaction-specific communication event/state; RELATIONSHIP is the next representative semantic boundary.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
@@ -415,10 +415,10 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove RELATIONSHIP as the next representative universal-output class: determine whether a relationship artifact is reusable intelligence or relationship event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, consent/authority, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE; COMMUNICATION is the next representative universal-output class."
+    "reason": "COMMUNICATION classified and explicitly declined for Block promotion; RELATIONSHIP is the next representative universal-output class."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",
