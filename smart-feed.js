@@ -250,7 +250,7 @@ function renderCanonicalHub(items,stream){
 }
 async function bootCanonicalHub(){
  const rt=window.NayaAssistantRuntime;if(!rt?.smartFeed){return false;}
- const snap=rt.snapshot?rt.snapshot():await rt.init();if(!snap?.authenticated){return false;}
+ const snap=await rt.init();if(!snap?.authenticated){return false;}
  const stream=String(document.querySelector('.feedNav button.active')?.dataset.feed||'personal').toLowerCase();
  try{
    const data=await rt.smartFeed({stream,limit:20,before:null});
