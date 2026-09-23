@@ -147,9 +147,54 @@ def authorize_workflow(
     if not result.allowed:
         raise RuntimeError("; ".join(result.reasons))
 
+    # Mandatory consequential-execution bridge: governance eligibility alone
+    # never authorizes a side effect. Every workflow mutation must receive a
+    # real ExecutionAuthorization from the ONE UniversalExecutionGate.
+    from universal_execution_gate import UniversalExecutionGate
+
+    gate = UniversalExecutionGate.from_canonical()
+    action = {
+        "action_id": f"workflow:{actor}:{request}",
+        "action_type": "workflow_mutation",
+        "target": f"workflow:{request}",
+        "purpose": purpose,
+        "scope": scope,
+        "actor_id": actor,
+        "permission": permission,
+        "decision_id": decision.decision_id,
+        "authority_id": authority.authority_id,
+    }
+    issued = gate.authorize(
+        authority=authority,
+        decision=decision,
+        action=action,
+        now=now,
+    )
+    if not issued.allowed or issued.authorization is None:
+        raise RuntimeError(
+            "universal execution gate denied workflow mutation: "
+            + "; ".join(issued.reasons)
+        )
+
+    authorization = issued.authorization
     return {
         "status": "AUTHORIZED",
         "kernel": "NAYAPOWER-GOVERNANCE-KERNEL-V1",
+        "execution_gate": "NAYAPOWER-UNIVERSAL-EXECUTION-GATE-V1",
+        "execution_authorization": {
+            "authority_id": authorization.authority_id,
+            "decision_id": authorization.decision_id,
+            "action_id": authorization.action_id,
+            "action_type": authorization.action_type,
+            "target": authorization.target,
+            "actor_id": authorization.actor_id,
+            "scope": authorization.scope,
+            "permission": authorization.permission,
+            "governance_state": authorization.governance_state,
+            "risk_tier": authorization.risk_tier,
+            "validated_at": authorization.validated_at,
+            "binding_hash": authorization.binding_hash,
+        },
         "risk_tier": decision.risk.tier,
         "risk_score": decision.risk.score,
         "actor": actor,
