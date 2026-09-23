@@ -642,6 +642,29 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
   if (!understanding) throw new Error("CURRENT_UNDERSTANDING_REQUIRED");
   if (sourceEventIds.length === 0) throw new Error("SOURCE_EVENT_IDS_REQUIRED");
 
+  const existing = await client.from("nayanet_cognition_events")
+    .select("*")
+    .eq("event_id", checkpointId)
+    .eq("user_id", userId)
+    .eq("project_id", PROJECT)
+    .maybeSingle();
+  if (existing.error) throw existing.error;
+  if (existing.data) {
+    const existingSources = Array.isArray(existing.data.metadata?.source_event_ids) ? existing.data.metadata.source_event_ids.map(String) : [];
+    if (existing.data.metadata?.checkpoint_id !== checkpointId || existingSources.join("|") !== sourceEventIds.join("|")) {
+      throw new Error("CHECKPOINT_IDENTITY_CONFLICT");
+    }
+    return {
+      schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
+      status: "CHECKPOINT_VERIFIED",
+      replayed: true,
+      checkpoint: existing.data,
+      source_events: [],
+      receipt: null,
+      rule: "Checkpoint replay returns the original checkpoint identity."
+    };
+  }
+
   const source = await client.from("nayanet_cognition_events")
     .select("id,event_id,title,content,status,confidence,metadata,created_at")
     .in("event_id", sourceEventIds)
