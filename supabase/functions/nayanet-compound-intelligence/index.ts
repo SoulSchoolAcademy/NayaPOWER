@@ -765,6 +765,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     sourceEvent=persisted.data;
   }
   const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
+  const learningClaim=String(body.learning_claim ?? content).trim();
   const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
   const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
   blockDigest[6] = (blockDigest[6] & 0x0f) | 0x50;
@@ -806,8 +807,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     if (insertedBlock.error) throw insertedBlock.error;
     intelligentBlock=insertedBlock.data;
   }
-    const learningClaim=String(body.learning_claim ?? content).trim();
-  const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
+    const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
     .eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
   if(learningExisting.error) throw learningExisting.error;
   let learning:any=learningExisting.data;
