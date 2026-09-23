@@ -179,7 +179,68 @@ function bind(){
    const action=e.target.closest('[data-sf-action]');if(action)await act(action);
  });
 }
+function canonicalHub(){return !!document.querySelector('meta[name="nayanet-direct-nine"]')&&!!document.querySelector('.feed .blocks');}
+function canonicalText(v){return String(v??'').replace(/\\s+/g,' ').trim();}
+function canonicalValue(o,...ks){for(const k of ks){const v=o?.[k];if(v!==undefined&&v!==null&&canonicalText(v))return v}return '';}
+function canonicalLayerData(item){
+ const ib=item?.metadata?.intelligent_block_v1||{}, identity=ib.identity||{}, truth=ib.truth||{}, authority=ib.authority||{}, context=ib.context||{}, life=ib.lifecycle||{}, value=ib.value||{}, integrity=ib.integrity||{};
+ return [
+  ['SOURCE · PROVENANCE','Source: '+canonicalValue(item,'source','source_type')+'\\nEvent: '+canonicalValue(item,'event_id','id')],
+  ['TRUTH · VERIFICATION','State: '+canonicalValue(item,'verification_state','verification','status')+'\\nEvidence: '+canonicalValue(truth,'evidence_state','evidence')],
+  ['AUTHORITY','State: '+canonicalValue(authority,'state','status')+'\\nScope: '+canonicalValue(authority,'scope','reason')],
+  ['PRIVACY · CONTEXT','Visibility: '+canonicalValue(item,'visibility','sharing_state')+'\\nClassification: '+canonicalValue(item,'classification','type')],
+  ['LIFECYCLE','Stage: '+canonicalValue(life,'stage','status')+'\\nLineage: '+canonicalValue(life,'lineage','parent_event_id')],
+  ['VALUE','State: '+canonicalValue(value,'state','status')+'\\nConfidence: '+canonicalValue(item,'confidence')],
+  ['INTEGRITY','Content hash: '+canonicalValue(integrity,'content_hash','sha256')],
+  ['BLOCK · IDENTITY','Schema: '+canonicalValue(identity,'schema_version','schema')+'\\nEvent: '+canonicalValue(identity,'event_id') ]
+ ];
+}
+function renderCanonicalHub(items,stream){
+ const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks');if(!blocks)return false;
+ blocks.dataset.nayaRealRendering='1';
+ const cards=[...blocks.querySelectorAll('.block')];
+ const count=document.querySelector('#feedCount'),title=document.querySelector('#feedTitle'),desc=document.querySelector('#feedDesc');
+ const view=views[stream]||views.personal;
+ if(title)title.textContent=view[0];
+ if(desc)desc.textContent='Live intelligence retrieved from the authenticated canonical NayaNET runtime.';
+ if(count)count.textContent=items.length+' LIVE · CANONICAL INTELLIGENCE';
+ cards.forEach((card,i)=>{
+   const item=items[i];
+   card.style.display=item?'block':'none';
+   if(!item)return;
+   const id=canonicalText(canonicalValue(item,'source_id','intelligence_id','id','event_id')||('canonical-'+i));
+   card.dataset.intelligenceId=id;card.dataset.nayaFeed=stream;card.dataset.provenance='Canonical runtime';
+   const h=card.querySelector('h3');if(h)h.textContent=canonicalText(canonicalValue(item,'title','name','event_type','event_id')||'Intelligence');
+   const meta=card.querySelector('.meta');if(meta)meta.innerHTML='<span>'+esc(stream.toUpperCase())+'</span><span>CANONICAL INTELLIGENCE</span><span>'+esc(canonicalValue(item,'source','source_type')||'NAYA RUNTIME')+'</span>';
+   const truth=card.querySelector('.truth');if(truth)truth.textContent=canonicalText(canonicalValue(item,'verification_state','verification','status')||'UNKNOWN');
+   const nutshell=card.querySelector('.nutshell p');if(nutshell)nutshell.textContent=canonicalText(canonicalValue(item,'content','summary','description')||'No content was returned by the canonical runtime.');
+   const layers=[...card.querySelectorAll('.layer')],data=canonicalLayerData(item);
+   layers.forEach((layer,j)=>{const d=data[j];if(!d)return;const head=layer.querySelector('.layerHead b'),body=layer.querySelector('.layerBody');if(head)head.textContent=d[0];if(body)body.textContent=d[1];});
+   const foot=card.querySelector('.blockFoot');if(foot)foot.innerHTML='<span>REAL INTELLIGENCE · SOURCE: CANONICAL SMART FEED</span><span>EVENT '+esc(canonicalValue(item,'event_id','id')||id)+'</span>';
+ });
+ return true;
+}
+async function bootCanonicalHub(){
+ const rt=window.NayaAssistantRuntime;if(!rt?.smartFeed){return false;}
+ const snap=rt.snapshot?rt.snapshot():await rt.init();if(!snap?.authenticated){return false;}
+ const stream=String(document.querySelector('.feedNav button.active')?.dataset.feed||'personal').toLowerCase();
+ try{
+   const data=await rt.smartFeed({stream,limit:20,before:null});
+   const items=list(data?.items);
+   renderCanonicalHub(items,stream);
+   document.documentElement.dataset.nayaCanonicalSmartFeed='live';
+   return true;
+ }catch(e){
+   document.documentElement.dataset.nayaCanonicalSmartFeed='blocked';
+   const count=document.querySelector('#feedCount');if(count)count.textContent='CANONICAL FEED · BLOCKED';
+   return false;
+ }
+}
 async function boot(){
+ if(canonicalHub()){
+   css();
+   if(await bootCanonicalHub()) return;
+ }
  const feedRoute=location.pathname==='/feed'||location.hash==='#feed';
  if(!feedRoute&&!document.documentElement.dataset.nayaExplicitSmartFeed)return;
  if(!$('.feed'))return;
