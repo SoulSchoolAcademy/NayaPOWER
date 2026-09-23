@@ -62,7 +62,7 @@ jobs:
           }
           (async()=>{
             const browser=await chromium.launch({headless:true}), ctx=await browser.newContext(), page=await ctx.newPage();
-            let ownerId=null,eventId=null,evidenceId=null,receiptId=null;
+            let ownerId=null,eventId=null,evidenceId=null,receiptId=null,independent=null;
             try{
               await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
               await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth?.establish,{timeout:30000});
@@ -100,7 +100,6 @@ jobs:
               const decision=await page.evaluate(async({targetId})=>{const s=await window.__NayaNETSupabaseClient.auth.getSession();if(!s.data?.session?.access_token)throw new Error('OWNER_ACCESS_TOKEN_NOT_ESTABLISHED');const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/naya-decision-context',{method:'POST',headers:{Authorization:'Bearer '+s.data.session.access_token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({target_id:targetId})});return await r.json();},{targetId:eventId});
               if(decision?.ok!==true||decision?.decision?.influenced!==true||decision?.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT')throw new Error('LEARNING_DID_NOT_INFLUENCE_DECISION:'+JSON.stringify(decision));
               mark('DECISION_INFLUENCE','PASS',{target_id:eventId,decision:decision.decision.decision,influenced:decision.decision.influenced,authority_changed:decision.decision.authority?.changed||false});
-              let independent=null;
               const fresh=await browser.newContext();
               const freshPage=await fresh.newPage();
               try{
