@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T20:27:00Z",
+  "generated_at": "2026-09-23T20:40:56Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -69,16 +69,16 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval."
+    "next_action": "Advance to Priority #2: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, without deleting or fabricating backfill."
   },
   "next_action": {
-    "action": "Resolve the fresh P0-04 canonical-ingress TypeError after IDENTITY → AUTHORITY on deployed nayanet-compound-intelligence v28. Inspect the live runtime response/logs for the exact first causal divergence, make exactly one smallest causal repair, deploy only that repair, then rerun P0-04 once.",
+    "action": "Advance to Priority #2: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, without deleting or fabricating backfill.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "The learning rung itself is now VERIFIED by run 35915387903, including learning_verify, active retrieval, decision influence, cold reuse, unchanged authority, and independent DB verification. The next P0-04 regression on main reached IDENTITY → AUTHORITY but failed at intelligence_commit with browser TypeError: Failed to fetch. Do not advance to unrelated gaps until the canonical promotion path is green again."
+    "reason": "P0-04 canonical promotion is green again at the bounded acceptance scope. Fresh run 35915882471 passed IDENTITY, AUTHORITY, intelligence_commit, provenance/validation/integration/checkpoint, Intelligent Block, and fresh retrieval. Learning verification and later decision influence were separately proven by run 35915387903. The earlier ingress TypeError did not reproduce; Supabase logs show transient deployment/runtime 503 churn across versions 29/30 before stable version 31. No additional source-code repair was justified."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Preserve the proven Smart Note receiver and Intelligent Block lifecycle. Then execute exactly one bounded P0-04 proof: submit one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, prove provenance → validation → integration → checkpoint → fresh retrieval, and do not claim arbitrary ChatGPT conversation capture.",
+    "prompt": "Resolve live main. P0-04 is bounded-verified. Advance to Priority #2 only: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, preserve all source history, make one causal repair only if evidence identifies one, and produce a bounded proof before advancing.",
     "do_not": "Do not redesign the proven Smart Note/PIS path. Do not create a second intelligence store. Do not claim universal promotion from the bounded proof. Do not start a second active front."
   },
   "playback": {
@@ -92,14 +92,16 @@
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
   },
   "execution_attempt": {
-    "status": "FAILED_AT_CANONICAL_INGRESS",
+    "status": "VERIFIED",
     "workflow_run": 35915882471,
+    "job": 107372505645,
     "source_head": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
-    "deployed_function_version": 28,
+    "deployed_function_version": 31,
     "first_deterministic_failure": "CANONICAL_INGRESS",
-    "error": "TypeError: Failed to fetch",
-    "endpoint_health": "BOOT OK / invalid JWT correctly returns 401; authenticated P0-04 request still fails at ingress",
-    "repair_commit": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
-    "proof_status": "OPEN"
+    "error": "Prior TypeError: Failed to fetch did not reproduce on fresh rerun; logs show transient 503 deployment/runtime churn before v31 stabilized.",
+    "recovery": "No arbitrary source repair; fresh rerun against stabilized production v31 passed.",
+    "proof_status": "VERIFIED",
+    "artifact_id": 10776170794,
+    "receipt": ".naya/project-intelligence/41-NAYANET-P0-04-CANONICAL-INGRESS-RECOVERY-RECEIPT-2026-09-23.md"
   }
 }
