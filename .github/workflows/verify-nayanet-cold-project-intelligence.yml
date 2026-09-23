@@ -6,6 +6,8 @@ on:
     paths:
       - ".naya/project-intelligence/**"
       - ".naya/control-plane/**"
+      - ".naya/TEAM-NAYA/**"
+      - "NAYANET/HUB/index.html"
       - ".naya/naya-context-manifest.json"
       - ".naya/runtime/cold_start_activation.py"
       - "SUPERBRAIN/AI-BOOT/START-HERE.md"
