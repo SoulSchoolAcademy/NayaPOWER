@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 export function SmartNoteSurface(){
  const identity=useIdentity();const[title,setTitle]=useState('');const[content,setContent]=useState('');const[busy,setBusy]=useState(false);const[status,setStatus]=useState('');
