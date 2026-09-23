@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail-closed MAP → STATE → BLOCK → PROOF repository validator."""
+"""Fail-closed LIVE HEAD → STATE → BLOCKS → MAP → PROOF → BATON repository validator."""
 from __future__ import annotations
 import importlib.util
 import json
@@ -13,6 +13,9 @@ MAP=ROOT/'.naya/control-plane/MAP.json'
 STATE=ROOT/'.naya/control-plane/STATE.json'
 BLOCKS=ROOT/'.naya/control-plane/BLOCKS.json'
 PROOF=ROOT/'.naya/control-plane/PROOF.json'
+BATON=ROOT/'.naya/control-plane/BATON.json'
+HUB=ROOT/'NAYANET/HUB/index.html'
+TEAM_NAYA_HUB_LOCK=ROOT/'.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md'
 KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'
 KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'
 LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
