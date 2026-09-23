@@ -126,7 +126,7 @@ jobs:
                 classification='PROMOTE';
                 reason='LEARNING_OUTPUT_IS_REUSABLE_NEW_UNDERSTANDING_AND_SOURCE_EVENT_HAS_NO_EXISTING_INTELLIGENT_BLOCK';
                 mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId,promoted_event_id:promotedEventId,promoted_checkpoint_id:promotedBlockId});
-                const promotedQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
+                const promotedQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
                 blockAfter=promotedQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id)===false && b.owner_id===ownerId && b.title==='Verified learning: '+title);
                 if(blockAfter.length!==1)throw new Error('LEARNING_PROMOTED_BLOCK_MISSING:'+JSON.stringify(promotedQ.body));
                 mark('PROMOTION_PERSISTENCE','PASS',{block_id:blockAfter[0].block_id,owner_id:ownerId,source_event_id:before.body[0].id,promoted_event_id:promotedEventId});
