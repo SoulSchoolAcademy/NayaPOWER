@@ -101,8 +101,8 @@ jobs:
           set -euo pipefail
           rm -rf dist
           test -s NAYANET/HUB/index.html
-          test -s NAYANET/HUB/public/assistant-runtime.js
-          test -s NAYANET/HUB/public/hub-completeness.js
+          test -s assistant-runtime.js
+          test -s hub-completeness.js
           test -s NAYANET/HUB/public/nayanet-interface-command-station.js
           test -s smart-feed.js
           test -s smart-tabs.js
@@ -123,8 +123,8 @@ jobs:
           grep -q 'Smart Notes' NAYANET/HUB/index.html
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/index.html dist/index.html
-          cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
-          cp NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
+          cp assistant-runtime.js dist/assistant-runtime.js
+          cp hub-completeness.js dist/hub-completeness.js
           cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
@@ -203,48 +203,74 @@ jobs:
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-hub-baseline.mjs
           rm -f verify-hub-baseline.mjs
 
-      - name: Verify Command Station and Smart Feed interaction
+      - name: Verify canonical Hub visual surface and Smart Feed modes
         shell: bash
         run: |
           set -euo pipefail
-          cat > verify-interface-acceptance.mjs <<'EOF'
+          cat > verify-canonical-hub.mjs <<'EOF'
           import { chromium } from 'playwright';
           const runtime=process.env.NAYA_RUNTIME_URL;
           const browser=await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
-          const surfaces=['Intelligence Today','Feed','Reports','Library','Smart Lists','Smart Share','Smart Mail','Contacts','Smart Spaces','Smart Ledger','Settings'];
           try {
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
               const page=await context.newPage();
-              await page.goto(runtime+'/?interface-acceptance='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
-              await page.waitForTimeout(1400);
-              const probe=await page.evaluate((expected)=>{
-                const station=document.querySelector('.naya-command-station');
-                const buttons=[...document.querySelectorAll('[data-naya-surface]')];
-                const labels=buttons.map(x=>(x.querySelector('.label')?.textContent||x.textContent).trim()).filter(Boolean);
-                const feed=[...document.querySelectorAll('.feedNav [data-feed]')];
-                const rect=station?.getBoundingClientRect();
-                return {station:!!station,stationVisible:!!station&&getComputedStyle(station).display!=='none'&&rect.width>0&&rect.height>0,labels,missing:expected.filter(x=>!labels.includes(x)),feedCount:feed.length};
-              },surfaces);
-              console.log('INTERFACE_ACCEPTANCE_PROBE',viewport.label,JSON.stringify(probe));
-              if(!probe.station||!probe.stationVisible) throw new Error(viewport.label+': Command Station is not visible');
-              if(probe.missing.length) throw new Error(viewport.label+': missing surfaces '+probe.missing.join(', '));
-              if(probe.feedCount!==3) throw new Error(viewport.label+': Smart Feed does not expose exactly three modes');
-              for (const key of ['personal','collective','activity']) {
+              const response=await page.goto(runtime+'/?canonical-visual='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
+              if(!response?.ok()) throw new Error(viewport.label+': live Hub HTTP unavailable');
+              await page.waitForTimeout(1800);
+
+              const probe=await page.evaluate(()=>({
+                title:document.title,
+                welcome:(document.body.innerText.match(/Good (?:morning|afternoon|evening),\\s+\\w+/i)||[])[0]||null,
+                leftRail:!!document.querySelector('.rail.left'),
+                rightRail:!!document.querySelector('.rail.right'),
+                topTitle:!!document.querySelector('#topTitle'),
+                ecosystem:!!document.querySelector('.ecosystem'),
+                search:!!document.querySelector('#search'),
+                hero:!!document.querySelector('.hero'),
+                feed:!!document.querySelector('.feed'),
+                blocks:document.querySelectorAll('.blocks > .block').length,
+                feedModes:[...document.querySelectorAll('.feedNav [data-feed]')].map(x=>x.dataset.feed),
+                mission:document.querySelector('.mission')?.innerText||'',
+                features:!!document.querySelector('.features'),
+                commandDeck:!!document.querySelector('.naya-command-deck'),
+                commandGlance:!!document.querySelector('.naya-at-a-glance'),
+                capture:!!document.querySelector('#naya-runtime-capture'),
+                corner:!!document.querySelector('.naya509-corner'),
+                v2Feed:!!document.querySelector('#naya-smart-feed-v2'),
+                sidebar:[...document.querySelectorAll('.rail.left .nav button')].map(b=>b.innerText.replace(/\\s+/g,' ').trim())
+              }));
+              console.log('CANONICAL_HUB_VISUAL_PROBE',viewport.label,JSON.stringify(probe));
+
+              if(probe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical title mismatch');
+              if(!probe.welcome) throw new Error(viewport.label+': welcome greeting missing');
+              if(!probe.leftRail||!probe.rightRail) throw new Error(viewport.label+': canonical side rails missing');
+              if(!probe.topTitle||!probe.ecosystem||!probe.search||!probe.hero||!probe.feed) throw new Error(viewport.label+': canonical shell surface incomplete');
+              if(probe.blocks<3) throw new Error(viewport.label+': canonical Intelligent Block presentation missing');
+              const expectedModes=['collective','personal','activity'];
+              if(JSON.stringify(probe.feedModes)!==JSON.stringify(expectedModes)) throw new Error(viewport.label+': Smart Feed mode contract mismatch '+JSON.stringify(probe.feedModes));
+              if(!probe.mission.includes('Your life creates your intelligence every day.')) throw new Error(viewport.label+': mission bar missing');
+              if(!probe.features) throw new Error(viewport.label+': feature reports bar missing');
+              if(probe.commandDeck||probe.commandGlance) throw new Error(viewport.label+': obsolete command-deck furniture present');
+              if(probe.capture) throw new Error(viewport.label+': Hub Smart Note capture control present');
+              if(probe.corner) throw new Error(viewport.label+': obsolete Naya corner control present');
+              if(probe.v2Feed) throw new Error(viewport.label+': Smart Feed V2 replacement DOM present on canonical Home');
+              const required=['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings'];
+              for(const label of required) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': sidebar label mismatch for '+label+' :: '+JSON.stringify(probe.sidebar));
+
+              for(const key of expectedModes){
                 await page.locator('.feedNav [data-feed="'+key+'"]').click();
                 await page.waitForTimeout(80);
-                const mode=await page.evaluate((k)=>({key:k,active:[...document.querySelectorAll('.feedNav [data-feed]')].filter(x=>x.classList.contains('active')).map(x=>x.dataset.feed),title:document.querySelector('#feedTitle')?.textContent||''}),key);
-                console.log('SMART_FEED_MODE_ACCEPTED',viewport.label,JSON.stringify(mode));
-                if(mode.active.length!==1||mode.active[0]!==key) throw new Error(viewport.label+': Smart Feed mode '+key+' did not activate');
-                if(mode.title.length===0) throw new Error(viewport.label+': Smart Feed title disappeared for '+key);
+                const active=await page.locator('.feedNav [data-feed].active').getAttribute('data-feed');
+                if(active!==key) throw new Error(viewport.label+': Smart Feed mode '+key+' did not activate');
               }
+
               await context.close();
             }
-            console.log('INTERFACE_ACCEPTANCE_VERIFIED legacy static Command Station + Personal/Collective/Activity');
           } finally { await browser.close(); }
           EOF
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-interface-acceptance.mjs
-          rm -f verify-interface-acceptance.mjs
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-canonical-hub.mjs
+          rm -f verify-canonical-hub.mjs
 
       - name: Final proof
         run: |
