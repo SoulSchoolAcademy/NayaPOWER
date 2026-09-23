@@ -1,0 +1,58 @@
+name: Verify Smart Ledger Coverage Audit (Priority 2 cohort)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/20260923090000_nayanet_smart_ledger_coverage_audit_rpc_v1.sql'
+      - 'scripts/verify-ledger-coverage-audit.mjs'
+      - '.github/workflows/verify-ledger-coverage-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  coverage-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute read-only ledger coverage audit
+        shell: bash
+        run: node scripts/verify-ledger-coverage-audit.mjs
+
+      - name: Validate audit artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('ledger-coverage-audit.json','utf8'));
+          if(p.schema!=='NAYANET_SMART_LEDGER_COVERAGE_AUDIT_V1')throw new Error('SCHEMA_MISMATCH');
+          if(p.status!=='VERIFIED')throw new Error('STATUS_NOT_VERIFIED');
+          const a=p.audit;
+          if(a.unlinked_cognition!==a.cognition_total-a.ledgered_cognition)throw new Error('COUNT_INCONSISTENT');
+          if(a.unlinked_cognition!==a.cohort_local)throw new Error('COHORT_INCONSISTENT');
+          if(a.unlinked_cognition===0)throw new Error('UNEXPECTED_EMPTY_COHORT');
+          console.log(JSON.stringify({status:p.status,schema:p.schema,cognition_total:a.cognition_total,ledgered_cognition:a.ledgered_cognition,unlinked_cognition:a.unlinked_cognition,first_ledgered_cognition_at:a.first_ledgered_cognition_at,groups:a.unlinked_groups},null,2));
+          NODE
+
+      - name: Upload audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ledger-coverage-audit
+          path: ledger-coverage-audit.json
+          if-no-files-found: error

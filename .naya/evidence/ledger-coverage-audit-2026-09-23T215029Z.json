@@ -1,0 +1,56 @@
+{
+  "schema": "NAYANET_SMART_LEDGER_COVERAGE_AUDIT_V1",
+  "status": "VERIFIED",
+  "run_id": "local-audit",
+  "source_head": null,
+  "owner_id": "2d07c089-8944-487b-a0cc-90668bfbece5",
+  "audit": {
+    "rls": "aggregates_only_no_row_data",
+    "schema": "NAYANET_SMART_LEDGER_COVERAGE_AUDIT_V1",
+    "cohort_local": 88,
+    "generated_at": "2026-09-23T21:50:29.547687+00:00",
+    "cognition_total": 4653,
+    "unlinked_groups": [
+      {
+        "type": "communication",
+        "count": 45,
+        "source": "nayanet-smart-mail",
+        "classification": "observation"
+      },
+      {
+        "type": "intelligence",
+        "count": 22,
+        "source": "nayanet-name-first-runtime-proof",
+        "classification": "observation"
+      },
+      {
+        "type": "intelligence",
+        "count": 12,
+        "source": "nayanet-authenticated-assistant-proof",
+        "classification": "observation"
+      },
+      {
+        "type": "intelligence",
+        "count": 4,
+        "source": "dream-learning-decision-proof",
+        "classification": "decision_context_test"
+      },
+      {
+        "type": "intelligence",
+        "count": 4,
+        "source": "dream-learning-decision-proof",
+        "classification": "observation"
+      },
+      {
+        "type": "verification",
+        "count": 1,
+        "source": "NayaNET 10/10 readiness gate",
+        "classification": "authenticated_lifecycle"
+      }
+    ],
+    "ledgered_cognition": 4565,
+    "unlinked_cognition": 88,
+    "cohort_fingerprint_sha256": "58fc76519416537537a4fd6ffaf051041ab90164aecbe60410223222cb90ec8e",
+    "first_ledgered_cognition_at": "2026-09-17T20:00:00+00:00"
+  }
+}
