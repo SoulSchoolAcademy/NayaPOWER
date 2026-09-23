@@ -1,0 +1,74 @@
+{
+  "$schema": "naya/control-plane/hub-preservation/v1",
+  "name": "NayaNET Canonical Hub Preservation and Freeze Gate",
+  "version": 1,
+  "status": "ACTIVE",
+  "purpose": "Prevent accidental loss, silent authority transfer, architectural forgetting, and unverified production drift in the canonical human-facing Hub.",
+  "canonical": {
+    "human_facing_entrypoint": "NAYANET/HUB/index.html",
+    "implementation_root": "NAYANET/HUB/src/",
+    "build_contract": "NAYANET/HUB/package.json",
+    "production_workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+    "protected_visual_reference": "2026 09 17 NAYANET HUB.html",
+    "protected_visual_reference_status": "HISTORICAL_REFERENCE_REQUIRES_EXPLICIT_PRESERVATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
+  },
+  "preservation_rules": {
+    "additive_by_default": true,
+    "rule": "Existing Hub -> preserve -> add room/surface -> verify. Never reconstruct the Hub around a room.",
+    "no_silent_authority_transfer": true,
+    "authority_transfer_rule": "Moving the active Hub implementation between artifacts or architectures requires an explicit recorded transfer with source, destination, reason, preservation checkpoint, and verification scope.",
+    "destructive_change_rule": "A destructive or replacement change is blocked unless the preservation checkpoint and explicit authorization are recorded.",
+    "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
+  },
+  "current_checkpoint": {
+    "main_observed_head": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
+    "checkpoint_branch": "recovery/hub-freeze-2026-09-23-f0b25adb",
+    "checkpoint_type": "CURRENT_CANONICAL_SOURCE_RECOVERY",
+    "previous_major_hub_checkpoint_commit": "74884cb69badf54fee2bff0398a3f452c6c74384",
+    "previous_major_hub_checkpoint_path": "NAYANET/HUB/index.html",
+    "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
+  },
+  "active_architecture": {
+    "entrypoint_mode": "REACT_VITE_BOOTSTRAP",
+    "entrypoint_blob_sha_at_checkpoint": "81fdf6dbd19cff7c29a79e2f19a15f6979209e34",
+    "implementation_authority": "NAYANET/HUB/src/",
+    "shell_owner": "AppShell",
+    "legacy_static_implementation": "PRESERVED_AS_HISTORICAL_EVIDENCE_ONLY"
+  },
+  "recorded_authority_transfer": {
+    "required": true,
+    "status": "RECORDED",
+    "from": "NAYANET/HUB/index.html embedded static Hub implementation",
+    "to": "NAYANET/HUB/index.html React/Vite entrypoint + NAYANET/HUB/src/",
+    "reason": "Canonical Hub functionality was migrated into the React implementation lane while preserving the historical static implementation as recoverable evidence.",
+    "preservation_baseline": "74884cb69badf54fee2bff0398a3f452c6c74384",
+    "recovery_baseline": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
+    "verification_requirement": "Source/build/deploy/live/browser parity must pass before the active architecture is considered production-proven."
+  },
+  "required_gate_sequence": [
+    "IDENTIFY_CANONICAL_HUB",
+    "PRESERVE_PRECHANGE_STATE",
+    "DECLARE_AUTHORITY_TRANSFER_IF_ANY",
+    "DIFF_SOURCE_AND_IMPLEMENTATION",
+    "VERIFY_BUILD",
+    "VERIFY_DEPLOYMENT",
+    "VERIFY_EXACT_SOURCE_LIVE_PARITY",
+    "VERIFY_BROWSER_CANONICAL_SHELL",
+    "RECORD_EVIDENCE_AND_CONTINUATION"
+  ],
+  "recovery_layers": [
+    "HUMAN_OWNED_COPY",
+    "GIT_COMMIT_HISTORY",
+    "NAMED_RECOVERY_CHECKPOINT",
+    "CANONICAL_SOURCE",
+    "BUILD_ARTIFACT",
+    "PRODUCTION_DEPLOYMENT",
+    "RUNTIME_BROWSER_PROOF"
+  ],
+  "truth_boundary": {
+    "unknown_is_not_success": true,
+    "blocked_is_not_pass": true,
+    "stale_proof_does_not_prove_changed_source": true,
+    "browser_render_does_not_by_itself_prove_source_preservation": true
+  }
+}
