@@ -1,34 +1,34 @@
-name: Verify Learning Output Semantic Classification — Read Only
+name: Verify Generalized Learning Output Classification — Read Only
 on:
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  learning-output:
+  generalized-learning:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Classify exact production learning artifact snapshot
+      - name: Classify exact production generalized-learning artifact snapshot
         env:
-          LEARNING_EVIDENCE_ID: a0509374-cff6-4b59-aeb5-f17b68dda033
-          SOURCE_EVENT_ID: smart-mail-proof-bdee9ea5adfc4e0085e7bbecf2e2b342
-          MEMBER_ID: cf2f610a-1c38-46ae-a8c2-f53ddc2f9f91
+          LEARNING_EVIDENCE_ID: 1112073e-08ee-407e-a47a-8b65b845f57b
+          SOURCE_EVENT_ID: understanding:88ab61f7-f2c9-49b3-af74-72b76addad9d
+          MEMBER_ID: a9653796-1e09-4f03-a4ce-5a7cb9f32e63
         run: |
           node <<'NODE'
           const fs=require('node:fs');
-          const evidence={id:process.env.LEARNING_EVIDENCE_ID,member_id:process.env.MEMBER_ID,target_id:'smart-mail:dfda38b8-ef21-4e9b-9386-358134093d85',level:'E1_UNDERSTANDS',provenance:'VERIFICATION',status:'ACTIVE',claim:'Smart Mail controlled policy execution persisted through the canonical cognition boundary.',observed_value:{thread_id:'8c6e110d-e81e-4a03-a24c-eb3f5455111d',message_id:'e5133412-79aa-4740-97e3-52e8c9f3ffeb',outcome_id:'46c7dbd3-8993-43dc-9cbd-89279b3f121d',receipt_id:'dfda38b8-ef21-4e9b-9386-358134093d85',receiver_id:'76ea0ed5-2110-4160-bae6-d5329ef44ef9',verified_value:1},verification_method:'authenticated receiver verification',source_event_id:process.env.SOURCE_EVENT_ID};
-          const sourceEvent={id:'76ef82e4-78e0-46a1-acea-1731b51cea7f',event_id:process.env.SOURCE_EVENT_ID,type:'communication',title:'NayaNET Smart Mail controlled policy transaction'};
-          const transactionSpecific=evidence.target_id.startsWith('smart-mail:')&&evidence.provenance==='VERIFICATION'&&!!evidence.observed_value.message_id&&!!evidence.observed_value.outcome_id&&evidence.verification_method==='authenticated receiver verification';
-          if(!transactionSpecific)throw new Error('CLASSIFICATION_PRECONDITION_FAILED');
-          const decision='DECLINE_PROMOTION';
-          const reason='CANONICAL_EVIDENCE_STATE: transaction-specific verified learning evidence belongs in learning_evidence; promoting it to Intelligent Block would duplicate canonical evidence rather than create generalized reusable understanding.';
-          const result={schema:'NAYANET_LEARNING_OUTPUT_CLASSIFICATION_V1',status:'VERIFIED_AT_SEMANTIC_SCOPE',mode:'READ_ONLY',source_head:process.env.GITHUB_SHA,evidence,source_event:sourceEvent,decision,reason,canonical_home:'learning_evidence',zero_duplicate_block:true,duplicate_block_count_independently_verified:0};
-          console.log('LEARNING_OUTPUT_CLASSIFICATION',JSON.stringify({decision,reason,canonical_home:result.canonical_home,zero_duplicate_block:true,evidence_id:evidence.id,source_event_id:evidence.source_event_id}));
+          const evidence={id:process.env.LEARNING_EVIDENCE_ID,member_id:process.env.MEMBER_ID,target_id:'COMPOUND-35632921091',level:'E1_UNDERSTANDS',provenance:'VERIFICATION',status:'ACTIVE',claim:'Verified context can be reused without reconstructing source history.',observed_value:{run:'35632921091'},verification_method:'measured compounding proof',source_event_id:process.env.SOURCE_EVENT_ID};
+          const sourceEvent={id:'05f2c908-670a-4ebb-a9d2-b8483636a72b',event_id:process.env.SOURCE_EVENT_ID,type:'understanding',title:'Compounding measurement',source:'nayanet-compound-intelligence'};
+          const generalized= evidence.claim==='Verified context can be reused without reconstructing source history.' && evidence.provenance==='VERIFICATION' && evidence.verification_method==='measured compounding proof' && evidence.level==='E1_UNDERSTANDS';
+          if(!generalized)throw new Error('CLASSIFICATION_PRECONDITION_FAILED');
+          const decision='CANDIDATE_FOR_UNIVERSAL_PROMOTION';
+          const reason='GENERALIZED_REUSABLE_UNDERSTANDING: the claim describes a reusable property of the intelligence system rather than a single transaction outcome, and the source is an understanding event with measured compounding proof.';
+          const result={schema:'NAYANET_LEARNING_OUTPUT_CLASSIFICATION_V1',status:'VERIFIED_AT_SEMANTIC_SCOPE',mode:'READ_ONLY',source_head:process.env.GITHUB_SHA,evidence,source_event:sourceEvent,decision,reason,canonical_home:'learning_evidence',zero_duplicate_block:true,duplicate_block_count_independently_verified:0,promotion_permitted:false};
+          console.log('LEARNING_OUTPUT_CLASSIFICATION',JSON.stringify({decision,reason,canonical_home:result.canonical_home,zero_duplicate_block:true,evidence_id:evidence.id,source_event_id:evidence.source_event_id,promotion_permitted:false}));
           fs.writeFileSync('learning-output-classification-proof.json',JSON.stringify(result,null,2)+'\n');
           NODE
       - uses: actions/upload-artifact@v4
         with:
-          name: learning-output-classification-proof
+          name: generalized-learning-output-classification-proof
           path: learning-output-classification-proof.json
           if-no-files-found: error
