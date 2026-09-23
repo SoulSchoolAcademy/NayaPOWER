@@ -190,10 +190,12 @@ def validate_block(b):
         if looks_like_repo_path(item): repo_path(item,'BLOCK evidence')
 
 
-def git_blob_sha(path):
-    data=path.read_bytes()
-    import hashlib
-    return hashlib.sha1((f'blob {len(data)}\\0').encode()+data).hexdigest()
+def canonical_hub_source_sha():
+    import re
+    text=HUB.read_text(encoding='utf-8',errors='replace')
+    m=re.search(r'<meta name="nayanet-source-commit" content="([0-9a-f]{40})"', text, re.I)
+    if not m: fail('canonical Hub has no nayanet-source-commit identity')
+    return m.group(1)
 
 def extract_team_hub_sha():
     text=TEAM_NAYA_HUB_LOCK.read_text(encoding='utf-8',errors='replace')
@@ -223,7 +225,7 @@ def validate_baton_surface(ba,s,b,m,p):
 
 def validate_hub_identity(s,m):
     if not HUB.is_file(): fail('canonical Hub source missing')
-    actual=git_blob_sha(HUB)
+    actual=canonical_hub_source_sha()
     state_sha=s.get('hub',{}).get('canonical_hub_source_sha') or s.get('hub_pre_execution_gate',{}).get('canonical_hub_source_sha')
     map_sha=m.get('intelligent_hub',{}).get('canonical_hub_source_sha') or m.get('intelligent_hub_pre_execution',{}).get('canonical_hub_source_sha')
     team_sha=extract_team_hub_sha()
