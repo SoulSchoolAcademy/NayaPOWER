@@ -135,7 +135,7 @@ jobs:
           if s.get('sign_out',{}).get('status')!='SIGNED_OUT': raise SystemExit('SIGN_OUT_MISSING')
           parents=subprocess.check_output(['git','rev-list','--parents','-n','1','HEAD'],text=True).strip().split()
           execution_parent=parents[1]
-          subprocess.run(['git','fetch','--no-tags','--unshallow','origin'],check=True)
+          subprocess.run(['git','fetch','--no-tags','origin','main'],check=True)
           if subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],execution_parent]).returncode!=0:
               raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_COMMIT')
           print('NAYA_SESSION_VERIFIED',s['session_id'],'HEAD',parents[0],'PARENT',execution_parent)
