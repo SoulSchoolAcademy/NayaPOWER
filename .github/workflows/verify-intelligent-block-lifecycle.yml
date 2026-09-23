@@ -1,0 +1,115 @@
+name: Verify Intelligent Block Lifecycle
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-intelligent-block-lifecycle.yml'
+      - 'supabase/migrations/20260923000000_intelligent_block_supersession_lifecycle_v1.sql'
+      - 'supabase/functions/nayanet-compound-intelligence/**'
+      - 'assistant-runtime.js'
+  workflow_dispatch:
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Execute lifecycle proof
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          cat > intelligent-block-lifecycle-proof.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+
+          const HUB='https://sparkling-shape-7ae5.smartnetpodcast.workers.dev';
+          const SUPA='https://dahisasgpfvziswqvmvm.supabase.co';
+          const KEY='sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
+          const token='ibl'+Date.now().toString(36);
+          const title='Intelligent Block Lifecycle Proof '+token;
+          const content='A verified lifecycle proof records idempotent replay, explicit supersession, durable lineage, and preserved authority.';
+          const idem='ib-lifecycle-'+token;
+          const newBlockId=crypto.randomUUID();
+          const browser=await chromium.launch({headless:true});
+          const page=await browser.newPage({viewport:{width:1440,height:900}});
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('PI_BLOCK_LIFECYCLE',JSON.stringify(x));};
+          try{
+            await page.goto(HUB+'/identity.html?ibl=1',{waitUntil:'domcontentloaded',timeout:60000});
+            await page.locator('#name').waitFor({state:'visible',timeout:30000});
+            await page.locator('#name').fill('Intelligent Block Lifecycle Proof '+token);
+            if(await page.locator('#alias').count()) await page.locator('#alias').fill(token);
+            await page.locator('#enter').waitFor({state:'visible',timeout:30000});
+            await page.locator('#enter').click({force:true});
+            let session=null;
+            for(let i=0;i<60;i++){session=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());if(session?.authenticated&&session?.access_token)break;await new Promise(r=>setTimeout(r,500));}
+            if(!session?.access_token)throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
+            mark('IDENTITY','PASS',{owner_id:session.userId});
+
+            const capture=await page.evaluate(async({title,content,idem})=>{
+              const r=window.NayaAssistantRuntime;
+              if(!r)throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
+              return await r.captureSmartNote({title,content,source:'intelligent-block-lifecycle-proof',idempotency_key:idem});
+            },{title,content,idem});
+            const eventId=String(capture?.event?.event_id||capture?.transaction?.evidence?.event_id||'');
+            if(!eventId)throw new Error('SMART_NOTE_EVENT_ID_MISSING');
+            mark('SMART_NOTE','PASS',{event_id:eventId,receipt_id:capture?.receipt?.id||null});
+
+            const row=await page.evaluate(async({eventId})=>{
+              const sb=window.supabase?.createClient?.('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue');
+              if(!sb)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
+              const s=await window.NayaNETNameFirstAuth.current();
+              const c=window.supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{global:{headers:{Authorization:'Bearer '+s.access_token}}});
+              const q=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',eventId).maybeSingle();
+              if(q.error)throw q.error;
+              return q.data;
+            },{eventId});
+            if(!row)throw new Error('INTELLIGENT_BLOCK_NOT_CREATED');
+            mark('BLOCK_CREATE','PASS',{block_id:row.block_id,version:row.version,status:row.status,understanding_state:row.understanding_state});
+
+            const callSupersede=async()=>{
+              const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth.current());
+              const response=await page.evaluate(async({token,body})=>await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json','x-idempotency-key':body.idempotency_key},body:JSON.stringify(body)}).then(async r=>({status:r.status,body:await r.json()})),{token:s.access_token,body:{
+                action:'supersede',superseded_event_id:eventId,superseded_block_id:eventId,new_block_id:newBlockId,idempotency_key:idem,
+                title:'Intelligent Block Lifecycle Proof — superseding revision',content:'The later verified revision supersedes the original block without changing ownership or authority.',
+                verified:true,evidence_refs:[{type:'runtime-proof',source_commit:process.env.GITHUB_SHA}],
+                reason:'Verified lifecycle proof of explicit supersession'
+              }});
+              return response;
+            };
+
+            const first=await callSupersede();
+            if(first.status!==200||first.body?.ok!==true)throw new Error('SUPERSESSION_FAILED:'+JSON.stringify(first));
+            const newId=first.body.result?.intelligent_block?.block_id||first.body.result?.lineage?.new_block_id;
+            if(newId!==newBlockId)throw new Error('SUCCESSOR_BLOCK_ID_MISMATCH');
+            mark('SUPERSEDE','PASS',{old_block_id:eventId,new_block_id:newId,replayed:false});
+
+            const replay=await callSupersede();
+            if(replay.status!==200||replay.body?.ok!==true||replay.body?.result?.replayed!==true)throw new Error('SUPERSESSION_REPLAY_NOT_IDEMPOTENT:'+JSON.stringify(replay));
+            mark('REPLAY','PASS',{new_block_id:newId,replayed:true});
+
+            const final=await page.evaluate(async({eventId,newId})=>{
+              const s=await window.NayaNETNameFirstAuth.current();
+              const c=window.supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{global:{headers:{Authorization:'Bearer '+s.access_token}}});
+              const a=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',eventId).single();
+              const b=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).single();
+              if(a.error)throw a.error;if(b.error)throw b.error;return {old:a.data,new:b.data};
+            },{eventId,newId});
+            if(final.old.status!=='SUPERSEDED'||final.old.superseded_by_block_id!==newId)throw new Error('OLD_BLOCK_SUPERSESSION_LINEAGE_INVALID');
+            if(final.new.status!=='ACTIVE'||final.new.supersedes_block_id!==eventId||Number(final.new.version)!==Number(final.old.version)+1)throw new Error('NEW_BLOCK_LINEAGE_INVALID');
+            mark('VERIFY','PASS',{old_status:final.old.status,new_status:final.new.status,old_superseded_by:final.old.superseded_by_block_id,new_supersedes:final.new.supersedes_block_id,new_version:final.new.version});
+            fs.writeFileSync('intelligent-block-lifecycle-proof.json',JSON.stringify({schema:'NAYANET_INTELLIGENT_BLOCK_LIFECYCLE_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,owner_id:session.userId,old_block_id:eventId,new_block_id:newId,idempotency_key:idem,trace},null,2));
+          }finally{await browser.close();}
+          NODE
+          node intelligent-block-lifecycle-proof.mjs
+      - name: Validate proof artifact
+        run: |
+          node -e "const p=require('./intelligent-block-lifecycle-proof.json'); if(p.status!=='VERIFIED'||p.trace.some(x=>x.status!=='PASS')) process.exit(1); console.log(JSON.stringify(p,null,2))"
