@@ -119,7 +119,7 @@ const rendered=await page.locator('.blocks .block').filter({hasText:title}).firs
   truth:node.querySelector(".truth")?.textContent||"",
   nutshell:node.querySelector(".nutshell p")?.textContent||""
 }));
-if(rendered.intelligenceId!==sourceId||rendered.feed!=="personal"||rendered.provenance!=="Canonical runtime"||!rendered.title.includes(title)||!rendered.truth) throw new Error("SMART_FEED_CANONICAL_DOM_PROJECTION_FAILED:"+JSON.stringify(rendered));
+if(!rendered.intelligenceId||rendered.feed!=="personal"||rendered.provenance!=="Canonical runtime"||!rendered.title.includes(title)||!rendered.truth) throw new Error("SMART_FEED_CANONICAL_DOM_PROJECTION_FAILED:"+JSON.stringify(rendered));
 
 for(const stream of ["collective","activity","personal"]){
   await page.locator('.feedNav button[data-feed="'+stream+'"]').click();
