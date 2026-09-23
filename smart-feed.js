@@ -216,7 +216,7 @@ function bindCanonicalHubNav(){
 function renderCanonicalHub(items,stream){
  const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks');if(!blocks)return false;
  blocks.dataset.nayaRealRendering='1';
- const cards=[...blocks.querySelectorAll('.block')];
+ let cards=[...blocks.querySelectorAll('.block')]; if(cards.length<items.length&&cards[0]){for(let i=cards.length;i<items.length;i++){const clone=cards[0].cloneNode(true);clone.removeAttribute('id');blocks.appendChild(clone)}} cards=[...blocks.querySelectorAll('.block')];
  const count=document.querySelector('#feedCount'),title=document.querySelector('#feedTitle'),desc=document.querySelector('#feedDesc');
  const view=views[stream]||views.personal;
  if(title)title.textContent=view[0];
@@ -228,7 +228,7 @@ function renderCanonicalHub(items,stream){
    if(!item)return;
    const id=canonicalText(canonicalValue(item,'source_id','intelligence_id','id','event_id')||('canonical-'+i));
    card.dataset.intelligenceId=id;card.dataset.nayaFeed=stream;card.dataset.provenance='Canonical runtime';
-   const ib=item?.metadata?.intelligent_block_v1||{},identity=ib.identity||{},truthData=ib.truth||{},authority=ib.authority||{},context=ib.context||{},life=ib.lifecycle||{},value=ib.value||{},integrity=ib.integrity||{};
+   const ib=item?.metadata?.intelligent_block_v1||item?.intelligent_block||{},identity=ib.identity||{},truthData=ib.truth||{},authority=ib.authority||{},context=ib.context||{},life=ib.lifecycle||{},value=ib.value||{},integrity=ib.integrity||{};
    const h=card.querySelector('h2,h3');if(h){h.textContent=canonicalText(canonicalValue(item,'title','name','event_type','event_id')||'Intelligence');if(h.tagName==='H3'){const h2=document.createElement('h2');h2.className=h.className;h2.innerHTML=h.innerHTML;h.replaceWith(h2);}}
    card.setAttribute('data-event-id',canonicalText(canonicalValue(item,'event_id','id')||id));
    card.setAttribute('data-intelligent-block-schema',canonicalText(canonicalValue(identity,'schema_version','schema')));
