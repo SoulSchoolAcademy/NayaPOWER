@@ -88,7 +88,7 @@ jobs:
                   c.from('nayanet_intelligence_index').select('*').eq('id',indexId).eq('owner_id',ownerId).single(),
                   c.from('learning_evidence').select('*').eq('id',learningId).eq('member_id',ownerId).single(),
                   c.from('nayanet_cognition_events').select('*').eq('event_id',checkpointId).eq('user_id',ownerId).single(),
-                  c.from('nayanet_intelligent_blocks').select('*').contains('source_event_ids', [persisted.event.id]).eq('owner_id',ownerId).maybeSingle()
+                  c.from('nayanet_intelligent_blocks').select('*').contains('source_event_ids', [event.data.id]).eq('owner_id',ownerId).maybeSingle()
                 ]);
                 return {event:event.data,index:index.data,learning:learning.data,checkpoint:checkpoint.data,block:block.data,errors:{event:event.error?.message,index:index.error?.message,learning:learning.error?.message,checkpoint:checkpoint.error?.message,block:block.error?.message}};
               },{eventId,indexId,learningId,checkpointId,ownerId:snap.user_id});
