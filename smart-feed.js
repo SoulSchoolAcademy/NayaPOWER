@@ -216,14 +216,14 @@ function bindCanonicalHubNav(){
 function renderCanonicalHub(items,stream){
  const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks');if(!blocks)return false;
  blocks.dataset.nayaRealRendering='1';
- let cards=[...blocks.querySelectorAll('.block')]; if(cards.length<items.length&&cards[0]){for(let i=cards.length;i<items.length;i++){const clone=cards[0].cloneNode(true);clone.removeAttribute('id');blocks.appendChild(clone)}} cards=[...blocks.querySelectorAll('.block')];
+ const cards=[...blocks.querySelectorAll('.block')]; const projected=[...items].sort((a,b)=>{const ai=a?.intelligent_block?1:0,bi=b?.intelligent_block?1:0;if(ai!==bi)return bi-ai;return new Date(b?.created_at||b?.occurred_at||0)-new Date(a?.created_at||a?.occurred_at||0)}).slice(0,cards.length);
  const count=document.querySelector('#feedCount'),title=document.querySelector('#feedTitle'),desc=document.querySelector('#feedDesc');
  const view=views[stream]||views.personal;
  if(title)title.textContent=view[0];
  if(desc)desc.textContent='Live intelligence retrieved from the authenticated canonical NayaNET runtime.';
  if(count)count.textContent=items.length+' LIVE · CANONICAL INTELLIGENCE';
  cards.forEach((card,i)=>{
-   const item=items[i];
+   const item=projected[i];
    card.style.setProperty('display',item?'block':'none','important');
    if(!item)return;
    const id=canonicalText(canonicalValue(item,'source_id','intelligence_id','id','event_id')||('canonical-'+i));
