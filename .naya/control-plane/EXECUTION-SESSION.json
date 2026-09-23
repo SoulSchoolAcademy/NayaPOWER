@@ -1,10 +1,10 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260922-VISUAL-PARITY-SEAM-07",
+  "session_id": "NAYA-20260923-CANONICAL-HUB-RELEASE-08",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
-  "authorized_action": "Normalize only the two proven non-visual runtime seams in the canonical Hub parity gate: feed anchor id and deferred command-station script loading.",
+  "parent_head": "1bcdfdd955db985b102417e249c23ad04561cce8",
+  "authorized_action": "Reconcile the stale execution-session parent to the current main head, then execute the canonical NayaNET Hub release and browser proof against NAYANET/HUB/index.html only. Do not use Welcome or historical Hub artifacts as the product surface.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
@@ -29,12 +29,14 @@
   "action_result": {
     "verification": "PASS",
     "evidence": [
-      "current Hub differs from protected visual reference only by feed anchor id and script defer attribute after runtime seams are removed"
+      "current main resolved to 1bcdfdd955db985b102417e249c23ad04561cce8",
+      "stale parent f0b25adb031c7cfaa40dbb212dbcee5448c87bd6 is not an ancestor of current main",
+      "the repaired parent is the exact current main head and is intended to authorize the release merge boundary only"
     ]
   },
   "record": {
     "status": "COMPLETE",
-    "activity_path": "NAYA/ACTIVITY/2026/09/22.md"
+    "activity_path": "NAYA/ACTIVITY/2026/09/23.md"
   },
   "control_plane": {
     "updated": true,
@@ -43,7 +45,7 @@
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-23T00:00:30.645Z"
+    "at": "2026-09-23T02:30:00.000Z"
   },
-  "successor_prompt": "Resolve live main. Verify the canonical release parity gate accepts only documented runtime seams, then execute the canonical Cloudflare #feed deployment and browser proof."
+  "successor_prompt": "Execute the canonical Cloudflare Hub release from current main. Require exact live source parity, desktop/mobile browser baseline, canonical Hub visual surface, and Smart Feed mode interaction. Record every failure; do not repair by changing the visual source merely to satisfy the gate."
 }
