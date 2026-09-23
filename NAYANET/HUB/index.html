@@ -721,8 +721,8 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <aside class="rail left" aria-label="Your intelligence">
   <div class="brand"><img src="https://i.postimg.cc/LXJDD4Np/Nayanet-Logo.jpg" alt="NayaNET"><div><b>NayaNET</b><small>INTELLIGENT HUB · V7</small></div></div>
   <nav class="nav naya-intelligence-nav" aria-label="Intelligence surfaces">
-    <button class="active" data-page="today" style="--nav:#d86cff"><span class="ico" aria-hidden="true">✦</span><span>Your Intelligence Today</span></button>
-    <button data-page="notes" style="--nav:#9d75ff"><span class="ico" aria-hidden="true">✎</span><span>Smart Notes</span></button>
+    <button data-main-hub class="naya-main-nav" style="--nav:#55e39a"><span class="ico" aria-hidden="true">⌂</span><span>Smart Feed</span></button>
+    <button data-page="today" style="--nav:#d86cff"><span class="ico" aria-hidden="true">✦</span><span>Your Intelligence Today</span></button>
     <button data-page="reports" style="--nav:#6675ff"><span class="ico" aria-hidden="true">▦</span><span>Your Reports</span></button>
     <button data-page="library" style="--nav:#55b9ee"><span class="ico" aria-hidden="true">◈</span><span>Intelligent Library</span></button>
     <button data-page="share" style="--nav:#55e39a"><span class="ico" aria-hidden="true">⇄</span><span>Smart Share</span></button>
@@ -736,6 +736,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
   <div class="private"><b>PRIVATE BY DEFAULT</b>Shared by choice · Collective by consent · Public by decision</div>
 </aside>
 <main class="main">
+<div id="nayaRealWorkspace" class="naya-real-workspace" hidden aria-live="polite"></div>
 <header class="top"><div class="title" id="topTitle">Smart Notes</div><div class="status"><i class="led"></i><span>SOURCE · VISIBLE</span></div></header>
 <nav class="ecosystem" aria-label="NayaNET ecosystem">
 <a class="powerBtn" href="https://hmclibrary.groovemember.net/home">HOME</a>
