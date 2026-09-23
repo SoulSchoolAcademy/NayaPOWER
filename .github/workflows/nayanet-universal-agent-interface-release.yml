@@ -161,7 +161,7 @@ jobs:
           jq -r '.result.content[0].text' /tmp/mcp_understand.json > /tmp/mcp_understand_inner.json
           cat /tmp/mcp_understand_inner.json
           jq -e '.ok == true' /tmp/mcp_understand_inner.json >/dev/null
-          jq -e '.result.receipt != null and .result.event.event_id != null' /tmp/mcp_understand_inner.json >/dev/null
+          jq -e '.result.result.receipt != null and .result.result.event.event_id != null' /tmp/mcp_understand_inner.json >/dev/null
           retrieve_payload=$(jq -n --arg marker "$marker" '{jsonrpc:"2.0",id:4,method:"tools/call",params:{name:"nayanet_retrieve",arguments:{query:$marker,limit:5}}}')
           curl --silent --show-error --output /tmp/mcp_retrieve.json --write-out "%{http_code}" -X POST "${AGENT_BASE_URL}/mcp" "${auth[@]}" -d "$retrieve_payload" > /tmp/mcp_retrieve_status
           retrieve_status=$(cat /tmp/mcp_retrieve_status)
