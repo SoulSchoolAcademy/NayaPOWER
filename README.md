@@ -1,5 +1,15 @@
 # NayaPOWER 🧠⚡
 
+## 🔱 CURRENT NAYANET AAA PRODUCT TREE — 2026-09-22
+
+The canonical product architecture is now defined as Human → NayaPOWER → Naya → Superbrain → Intelligent Event → Intelligent Block → Smart Feed → Smart Doors → governed capabilities → persistence/index → retrieval → verification → learning → compounding. The Hub is the human-facing projection/action surface. The implementation boundary is `NAYANET/HUB`; historical Hub generations are not implementation authorities.
+
+Canonical map: `NAYANET/HUB/CANONICAL-PRODUCT-TREE.md`  
+Feature matrix: `NAYANET/HUB/docs/CANONICAL-FEATURE-MATRIX.md`  
+North Star note: `.naya/NORTH-STAR-2026-09-22-NAYANET-AAA-PRODUCT-TREE.md`
+
+
+
 > **THE SUPERBRAIN GOVERNANCE + EXECUTION OS FOR HUMAN–AI COLLABORATION**
 
 **Canonical repository:** `SoulSchoolAcademy/NayaPOWER`  
@@ -26,11 +36,11 @@ Welcome/front-door pages are separate future onboarding work, not the current Hu
 
 Read the binding mission lock:
 
-`.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md`
+`.naya/NORTH-STAR-2026-09-22-NAYANET-AAA-PRODUCT-TREE.md`
 
 And the visual/structural contract:
 
-`.naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md`
+`NAYANET/HUB/CANONICAL-PRODUCT-TREE.md`
 
 NayaPOWER is the **constitutional governance and operating layer around intelligence and action**. It exists to help a human-directed AI system understand the mission, act within legitimate authority, preserve memory, verify reality, learn from experience, compound intelligence, and continue without forcing the human to become an AI project manager.
 

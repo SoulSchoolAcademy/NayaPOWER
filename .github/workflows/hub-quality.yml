@@ -25,10 +25,14 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: NAYANET/HUB/package.json
+          cache-dependency-path: NAYANET/HUB/package-lock.json
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci
+      - name: Canonical boundary
+        run: npm run verify:boundary
       - name: Typecheck
         run: npm run typecheck
-      - name: Build
+      - name: Deterministic build
         run: npm run build
+      - name: Source to artifact proof
+        run: npm run verify:artifact
