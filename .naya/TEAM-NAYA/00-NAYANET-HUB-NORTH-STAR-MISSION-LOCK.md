@@ -14,7 +14,7 @@ There is **one** NayaNET Hub for product construction:
 
 Its current protected source identity is:
 
-> **SHA: `f76ed6d6de6805a752dc81113ded42e67b3b6f80`**
+> **SHA: `f7a5ad535403201d0d942319166c87affcc1d93d`**
 
 This file is the **visual and structural North Star**.
 
