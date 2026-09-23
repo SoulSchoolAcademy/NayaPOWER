@@ -54,7 +54,7 @@ jobs:
               const owner=await page.evaluate(()=>window.NayaNETNameFirstAuth.current());
               mark('IDENTITY','PASS',{owner_id:owner.userId});
               await page.goto(hub+'/?p004='+head,{waitUntil:'domcontentloaded',timeout:60000});
-              await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+              await page.waitForFunction((ownerId)=>{const s=window.NayaAssistantRuntime?.snapshot?.();return !!s?.authenticated&&s.user_id===ownerId;},{timeout:30000},owner.userId);
               const snap=await page.evaluate(()=>window.NayaAssistantRuntime.snapshot());
               if(!snap.authenticated||snap.user_id!==owner.userId)throw new Error('CANONICAL_SESSION_AUTHORITY_MISMATCH');
               mark('AUTHORITY','PASS',{owner_id:snap.user_id,persistence:snap.persistence});
