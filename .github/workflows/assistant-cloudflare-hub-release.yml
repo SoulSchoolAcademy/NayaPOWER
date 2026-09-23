@@ -71,6 +71,47 @@ jobs:
           ref: ${{ inputs.source_ref || github.sha }}
           fetch-depth: 2
 
+      - name: Enforce canonical Hub preservation and freeze gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s .naya/control-plane/HUB-PRESERVATION.json
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          p=Path('.naya/control-plane/HUB-PRESERVATION.json')
+          g=json.loads(p.read_text())
+          if g.get('status')!='ACTIVE': raise SystemExit('HUB_PRESERVATION_GATE_NOT_ACTIVE')
+          c=g.get('canonical',{})
+          required_paths=[
+              'NAYANET/HUB/index.html',
+              'NAYANET/HUB/src/',
+              '.github/workflows/assistant-cloudflare-hub-release.yml'
+          ]
+          if c.get('human_facing_entrypoint')!='NAYANET/HUB/index.html': raise SystemExit('CANONICAL_HUB_ENTRYPOINT_MISMATCH')
+          if c.get('implementation_root')!='NAYANET/HUB/src/': raise SystemExit('CANONICAL_HUB_IMPLEMENTATION_ROOT_MISMATCH')
+          rules=g.get('preservation_rules',{})
+          if rules.get('additive_by_default') is not True: raise SystemExit('ADDITIVE_BY_DEFAULT_GATE_MISSING')
+          if rules.get('no_silent_authority_transfer') is not True: raise SystemExit('SILENT_AUTHORITY_TRANSFER_GATE_MISSING')
+          transfer=g.get('recorded_authority_transfer',{})
+          if transfer.get('required') is True and transfer.get('status')!='RECORDED':
+              raise SystemExit('AUTHORITY_TRANSFER_NOT_RECORDED')
+          cp=g.get('current_checkpoint',{})
+          for k in ['main_observed_head','checkpoint_branch','previous_major_hub_checkpoint_commit','previous_major_hub_checkpoint_blob_sha']:
+              if not cp.get(k): raise SystemExit('PRESERVATION_CHECKPOINT_MISSING:'+k)
+          if not subprocess.run(['git','cat-file','-e',cp['main_observed_head']+'^{commit}'],capture_output=True).returncode==0:
+              raise SystemExit('RECOVERY_CHECKPOINT_COMMIT_NOT_REACHABLE')
+          if not subprocess.run(['git','cat-file','-e',cp['previous_major_hub_checkpoint_commit']+'^{commit}'],capture_output=True).returncode==0:
+              raise SystemExit('HISTORICAL_CHECKPOINT_COMMIT_NOT_REACHABLE')
+          print('HUB_PRESERVATION_GATE_VERIFIED')
+          print('CANONICAL_ENTRYPOINT',c['human_facing_entrypoint'])
+          print('IMPLEMENTATION_ROOT',c['implementation_root'])
+          print('CURRENT_RECOVERY',cp['checkpoint_branch'],cp['main_observed_head'])
+          print('HISTORICAL_RECOVERY',cp['previous_major_hub_checkpoint_commit'],cp['previous_major_hub_checkpoint_blob_sha'])
+          print('AUTHORITY_TRANSFER',transfer.get('status'))
+          PY
+
       - name: Enforce Naya session and merge-boundary lease
         shell: bash
         run: |
