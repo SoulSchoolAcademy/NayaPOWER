@@ -127,4 +127,4 @@ jobs:
             .pi-learning-verification-input.json
           if-no-files-found: ignore
 
-# trigger: repaired 2026-09-22 — wrap independent verifier in CommonJS async IIFE
+# trigger: fresh verification requested after canonical baton reconciliation 2026-09-22
