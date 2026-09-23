@@ -1,0 +1,132 @@
+name: Verify Universal Meaningful Output — Learning Output
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-meaningful-output-learning.yml'
+      - 'supabase/functions/nayanet-compound-intelligence/**'
+      - 'supabase/functions/v7-smart-note-canonical/**'
+permissions:
+  contents: read
+jobs:
+  learning-output:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 && npx playwright install --with-deps chromium
+      - name: Execute bounded learning-output semantic disposition proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const hub=process.env.HUB_URL, supabaseUrl=process.env.SUPABASE_URL, supabaseKey=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const run=process.env.GITHUB_RUN_ID;
+          const alias=('lrnout'+run+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase();
+          const title='Learning Output Disposition '+run;
+          const claim='Verified learning should change future behavior without creating a duplicate intelligence destination.';
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('LEARNING_OUTPUT_TRACE',JSON.stringify(x));};
+          async function runtime(page,token,action,body){
+            const key='learning-output-'+run+'-'+action+'-'+crypto.randomBytes(4).toString('hex');
+            const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
+            const out={status:r.status,body:await r.json().catch(()=>({}))};
+            if(out.status!==200||out.body?.ok!==true)throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
+            return out.body.result;
+          }
+          (async()=>{
+            const browser=await chromium.launch({headless:true}), ctx=await browser.newContext({serviceWorkers:'block'}), page=await ctx.newPage();
+            let ownerId,eventId,evidenceId,receiptId,classification,reason,blockBefore,blockAfter;
+            try{
+              await page.goto(hub+'/identity.html?name='+encodeURIComponent('Learning Output Disposition Proof')+'&alias='+encodeURIComponent(alias),{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth?.establish,{timeout:30000});
+              const identity=await page.evaluate(async({alias})=>window.NayaNETNameFirstAuth.establish({name:'Learning Output Disposition Proof',alias}),{alias});
+              if(!identity?.authenticated||!identity?.userId)throw new Error('IDENTITY_FAILED');
+              ownerId=identity.userId; mark('IDENTITY','PASS',{owner_id:ownerId});
+              const session=(await page.evaluate(async()=>await window.__NayaNETSupabaseClient.auth.getSession())).data.session;
+              if(!session?.access_token||session.user.id!==ownerId)throw new Error('SESSION_AUTHORITY_FAILED');
+              await page.goto(hub+'/?learning-output='+run,{waitUntil:'domcontentloaded',timeout:60000});
+              const init=await page.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!init?.authenticated||init.user_id!==ownerId)throw new Error('RUNTIME_AUTHORITY_FAILED');
+              mark('AUTHORITY','PASS',{owner_id:ownerId});
+              const capture=await page.evaluate(async({title,claim,run,token})=>{
+                const key='learning-output-source-'+run+'-'+crypto.randomUUID();
+                const human_note={id:key,subject:title,text:claim,content:claim,type:'INSIGHT'};
+                const naya_note={subject:title,text:claim,summary:claim};
+                const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({idempotency_key:key,human_note,naya_note,in_a_nutshell:claim,source:'learning-output-disposition-proof',subject:title})});
+                return {status:r.status,body:await r.json().catch(()=>({}))};
+              },{title,claim,run,token:session.access_token});
+              if(capture.status!==200||capture.body?.ok!==true)throw new Error('SMART_NOTE_CAPTURE_FAILED:'+JSON.stringify(capture));
+              eventId=String(capture.body?.transaction?.evidence?.event_id||capture.body?.event?.event_id||'');
+              receiptId=String(capture.body?.transaction?.evidence?.receipt_id||capture.body?.receipt?.id||'');
+              if(!eventId)throw new Error('SOURCE_EVENT_ID_MISSING');
+              mark('SOURCE_CAPTURE','PASS',{event_id:eventId,receipt_id:receiptId});
+              const candidate=await runtime(page,session.access_token,'learning_candidate',{target_id:eventId,source_event_id:eventId,level:'E1_UNDERSTANDS',provenance:'OBSERVATION',claim,observed_value:{event_id:eventId,source:'learning-output-disposition-proof'},verification_method:'PENDING_RUNTIME_VERIFICATION'});
+              evidenceId=String(candidate.learning?.id||'');
+              if(!evidenceId)throw new Error('LEARNING_EVIDENCE_ID_MISSING');
+              mark('LEARNING_CANDIDATE','PASS',{evidence_id:evidenceId,status:candidate.status});
+              const verified=await runtime(page,session.access_token,'learning_verify',{evidence_id:evidenceId,verification_method:'MANAGED_RUNTIME_LEARNING_OUTPUT_DISPOSITION',observed_value:{event_id:eventId,source_event_verified:true}});
+              if(verified.status!=='VERIFIED_LEARNING'||verified.learning?.status!=='ACTIVE')throw new Error('LEARNING_NOT_ACTIVE:'+JSON.stringify(verified));
+              mark('LEARNING_VERIFY','PASS',{evidence_id:evidenceId,status:verified.learning.status});
+              const db=async path=>{const r=await fetch(supabaseUrl+'/rest/v1/'+path,{headers:{apikey:supabaseKey,Authorization:'Bearer '+session.access_token}});return {status:r.status,body:await r.json().catch(()=>null)}};
+              const before=await db('nayanet_cognition_events?select=id,event_id,user_id,title,type&event_id=eq.'+encodeURIComponent(eventId));
+              if(before.status!==200||before.body?.length!==1)throw new Error('SOURCE_EVENT_READ_FAILED:'+JSON.stringify(before));
+              const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
+              if(blockQ.status!==200)throw new Error('BLOCK_READ_FAILED:'+JSON.stringify(blockQ));
+              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              const learningQ=await db('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&member_id=eq.'+encodeURIComponent(ownerId)+'&id=eq.'+encodeURIComponent(evidenceId));
+              if(learningQ.status!==200||learningQ.body?.length!==1)throw new Error('LEARNING_READ_FAILED:'+JSON.stringify(learningQ));
+              const learning=learningQ.body[0];
+              const reusableUnderstanding=learning.status==='ACTIVE' && !!learning.claim && learning.source_event_id===eventId && learning.target_id===eventId;
+              if(!reusableUnderstanding)throw new Error('LEARNING_SEMANTIC_CLASSIFICATION_FAILED:'+JSON.stringify(learning));
+              const alreadyCanonical=blockBefore.length>=1;
+              if(!alreadyCanonical)throw new Error('EXPECTED_EXISTING_CANONICAL_BLOCK_MISSING');
+              classification='DECLINE_PROMOTION';
+              reason='LEARNING_OUTPUT_IS_REUSABLE_UNDERSTANDING_BUT_IS_ALREADY_REPRESENTED_BY_THE_SOURCE_CANONICAL_INTELLIGENT_BLOCK;_PROMOTING_AGAIN_WOULD_CREATE_DUPLICATE_DURABLE_INTELLIGENCE';
+              mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId});
+              const blockQ2=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
+              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              if(blockAfter.length!==blockBefore.length)throw new Error('DECLINE_MUTATED_BLOCK_COUNT');
+              if(blockAfter[0]?.block_id!==blockBefore[0]?.block_id)throw new Error('DECLINE_CHANGED_BLOCK_ID');
+              mark('NO_DUPLICATE_PROMOTION','PASS',{existing_block_count_before:blockBefore.length,existing_block_count_after:blockAfter.length,block_id:blockAfter[0]?.block_id||null});
+              const freshCtx=await browser.newContext({serviceWorkers:'block'}), fresh=await freshCtx.newPage();
+              await fresh.goto(hub+'/?learning-output-fresh='+run,{waitUntil:'domcontentloaded',timeout:60000});
+              const freshRows=await fresh.evaluate(async({supabaseUrl,supabaseKey,evidenceId,eventId})=>{
+                const s=await window.__NayaNETSupabaseClient.auth.getSession(); const token=s.data.session.access_token;
+                const h={apikey:supabaseKey,Authorization:'Bearer '+token};
+                const get=async p=>{const r=await fetch(supabaseUrl+'/rest/v1/'+p,{headers:h});return {status:r.status,body:await r.json().catch(()=>null)}};
+                return {learning:await get('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id&id=eq.'+encodeURIComponent(evidenceId)),event:await get('nayanet_cognition_events?select=id,event_id,user_id&event_id=eq.'+encodeURIComponent(eventId))};
+              },{supabaseUrl,supabaseKey,evidenceId,eventId});
+              if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='ACTIVE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
+              if(freshRows.event.status!==200||freshRows.event.body?.length!==1||freshRows.event.body[0].user_id!==ownerId)throw new Error('FRESH_EVENT_RETRIEVAL_FAILED');
+              mark('FRESH_RETRIEVAL','PASS',{evidence_id:evidenceId,event_id:eventId,owner_id:ownerId});
+              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_UNDERSTANDING_ALREADY_CANONICAL',disposition:classification,disposition_reason:reason,existing_block_id:blockAfter[0]?.block_id||null,existing_block_count:blockAfter.length,trace};
+              fs.writeFileSync('universal-learning-output-proof.json',JSON.stringify(proof,null,2)+'\n');
+              await fresh.close(); await freshCtx.close();
+            }catch(e){
+              fs.writeFileSync('universal-learning-output-proof.json',JSON.stringify({schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'FAILED',source_head:process.env.GITHUB_SHA,run_id:run,error:String(e?.stack||e),trace},null,2)+'\n');
+              throw e;
+            }finally{await ctx.close();await browser.close();}
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - name: Validate disposition receipt
+        run: |
+          node -e "const p=require('./universal-learning-output-proof.json'); if(p.status!=='VERIFIED') throw Error('PROOF_NOT_VERIFIED'); if(p.disposition!=='DECLINE_PROMOTION') throw Error('DISPOSITION_NOT_DECLINE'); if(!p.existing_block_id) throw Error('CANONICAL_BLOCK_MISSING'); console.log(JSON.stringify(p,null,2));"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: universal-learning-output-proof
+          path: universal-learning-output-proof.json
+          if-no-files-found: error
