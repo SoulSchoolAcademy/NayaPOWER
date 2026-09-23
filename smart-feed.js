@@ -179,7 +179,7 @@ function bind(){
    const action=e.target.closest('[data-sf-action]');if(action)await act(action);
  });
 }
-function canonicalHub(){return !!document.querySelector('meta[name="nayanet-direct-nine"]')&&!!document.querySelector('.feed .blocks');}
+function canonicalHub(){return !!document.querySelector('meta[name="nayanet-direct-nine"]')&&!!(document.querySelector('.feed .blocks')||document.querySelector('#blocks'));}
 function canonicalText(v){return String(v??'').replace(/\s+/g,' ').trim();}
 function canonicalValue(o,...ks){for(const k of ks){const v=o?.[k];if(v!==undefined&&v!==null&&canonicalText(v))return v}return '';}
 function canonicalLayerData(item){
@@ -214,7 +214,7 @@ function bindCanonicalHubNav(){
  }));
 }
 function renderCanonicalHub(items,stream){
- const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks');if(!blocks)return false;
+ const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks')||document.querySelector('#blocks');if(!blocks)return false;
  blocks.dataset.nayaRealRendering='1';
  const cards=[...blocks.querySelectorAll('.block')]; const projected=[...items].sort((a,b)=>{const ai=a?.intelligent_block?1:0,bi=b?.intelligent_block?1:0;if(ai!==bi)return bi-ai;return new Date(b?.created_at||b?.occurred_at||0)-new Date(a?.created_at||a?.occurred_at||0)}).slice(0,cards.length);
  const count=document.querySelector('#feedCount'),title=document.querySelector('#feedTitle'),desc=document.querySelector('#feedDesc');
