@@ -106,3 +106,20 @@ Before acting on this sub-project:
 ## Current next action
 
 Deepen `01-YOUR-INTELLIGENCE-TODAY.md` into the full Product + UX + Intelligence Contract, then implement only against that contract.
+
+
+## 2026-09-23 — Room 01 first bounded implementation
+
+**Decision:** Room 01 is now implemented in the canonical Hub middle workspace before any Cloudflare deployment claim.
+
+**Implementation:** `NAYANET/HUB/index.html` was changed in PR #530 and merged to main as `74884cb69badf54fee2bff0398a3f452c6c74384`. The implementation checkpoint that introduced the room was `fcc454be72e26d5f295927520eee5c6c2e994f0a`.
+
+**What now exists:** A real daily cockpit structure with Room Header, Today Pulse, What Changed?, What Did I Learn?, What Matters Now?, What Should I Remember?, What Am I Missing?, Naya's View, and high-value in-place actions. Existing Smart Note capture and Personal / Collective / Activity routing are reused rather than replaced.
+
+**Truth boundary:** The room does not manufacture today's metrics. Daily comparison, daily learning-event retrieval, governed prioritization, memory recommendations, and verified daily activity retrieval are explicitly shown as NOT VERIFIED until an authoritative runtime boundary can substantiate them.
+
+**Source-preservation rule:** GitHub main now contains the Room 01 source before production deployment. Cloudflare must receive this exact main version; no direct production-only edit is acceptable.
+
+**Current stage:** IMPLEMENTED → awaiting live deployment/proof. Do not mark PROVEN or FROZEN from source inspection alone.
+
+**Next action:** Trigger the canonical Cloudflare release from this main merge boundary and verify exact source/live parity plus Room 01 browser behavior.
