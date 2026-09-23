@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "block_next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
     "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
   },
   "current_state": {
@@ -69,10 +69,10 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
+    "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block."
   },
   "next_action": {
-    "action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
     "reason": "Priority #2 legacy cognition-event disposition is complete as HISTORICAL_ONLY; no database repair is warranted. This is the single next readiness boundary."
