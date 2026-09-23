@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "next_actions": [
-      "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
+      "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,11 +57,11 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "Fresh Smart Note learning boundary is proven; later decision influence is the next causal compounding boundary.",
+    "next_action_reason": "Fresh Dream → verified learning → later decision influence is now proven; the next open compounding boundary is the Intelligent Block lifecycle.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Execute one fresh non-owner managed-runtime Project Intelligence retrieval attempt against packet 84c6b111-fe32-4a8e-8fe1-402bd107cdda, proving the same private packet/event is withheld from a separately authenticated non-owner and independently verifying the unchanged owner receipt d1cf85ec-e470-436a-8f8e-ae13fc011802.",
+      "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
       "completion": "One production Hub shell owner is established and its exact source/build/runtime identity is independently proven."
     },
     "completion": "HUMAN JOURNEY LIVE VERIFIED",
@@ -91,7 +91,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "completion": "Fresh current-main Smart Note → learning candidate → verified ACTIVE learning → learning retrieval is proven; workflow harness had a post-runtime verifier syntax failure.",
     "status": "PROVEN"
   },
