@@ -1,9 +1,9 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260923-CANONICAL-HUB-RELEASE-09",
+  "session_id": "NAYA-20260923-CANONICAL-HUB-RELEASE-10",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "be48794695dc92a088a46fc60ca2f912d733c349",
+  "parent_head": "439bb3a2f317430f261aa75b4d7f906aaeb58022",
   "authorized_action": "Reconcile the stale execution-session parent to the current main head, then execute the canonical NayaNET Hub release and browser proof against NAYANET/HUB/index.html only. Do not use Welcome or historical Hub artifacts as the product surface.",
   "read_ack": {
     "all_required_sources": true,
@@ -29,9 +29,9 @@
   "action_result": {
     "verification": "PASS",
     "evidence": [
-      "current release execution merge second parent is be48794695dc92a088a46fc60ca2f912d733c349",
-      "the prior parent 1bcdfdd955db985b102417e249c23ad04561cce8 is a valid repository commit but is not present in the release job's depth-2 checkout",
-      "the parent is now anchored to the exact execution-branch parent available to the release gate"
+      "current main release boundary is 439bb3a2f317430f261aa75b4d7f906aaeb58022",
+      "the execution session is anchored to that exact current main head before the release-only repair commit",
+      "the release validator will explicitly fetch the recorded parent before ancestry validation so shallow checkout cannot convert a valid continuity reference into UNKNOWN"
     ]
   },
   "record": {
@@ -47,5 +47,5 @@
     "status": "SIGNED_OUT",
     "at": "2026-09-23T02:30:00.000Z"
   },
-  "successor_prompt": "Execute the canonical Cloudflare Hub release from this exact main merge boundary. Require exact live source parity, desktop/mobile browser baseline, canonical Hub visual surface, and Smart Feed mode interaction. Do not use Welcome. Do not change visual source merely to satisfy the gate."
+  "successor_prompt": "Execute the canonical Cloudflare Hub release from the exact current main boundary. Require exact live source parity, desktop/mobile browser baseline, canonical Hub visual surface, and Smart Feed mode interaction. Do not use Welcome. Do not change visual source merely to satisfy the gate."
 }
