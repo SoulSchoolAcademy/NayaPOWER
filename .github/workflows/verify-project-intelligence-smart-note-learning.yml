@@ -98,6 +98,7 @@ jobs:
         run: |
           set -euo pipefail
           node <<'NODE' | tee pi-smart-note-learning-independent-verification.json
+          (async()=>{
           const fs=require('node:fs');
           const x=JSON.parse(fs.readFileSync('.pi-learning-verification-input.json','utf8'));
           const url=process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY, base=url+'/rest/v1', h={'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json'};
@@ -112,6 +113,7 @@ jobs:
           const proof={schema:'NAYANET_PI_SMART_NOTE_LEARNING_INDEPENDENT_VERIFICATION_V1',status:'VERIFIED',run_id:process.env.GITHUB_RUN_ID,source_head:process.env.GITHUB_SHA,owner_id:x.ownerId,event_id:x.eventId,evidence_id:x.evidenceId,learning:l,event:e,source_receipt:x.receiptId};
           fs.writeFileSync('pi-smart-note-learning-independent-verification.json',JSON.stringify(proof,null,2));
           console.log(JSON.stringify(proof,null,2));
+          })().catch(e=>{console.error(e);process.exit(1)});
           NODE
 
       - name: Upload proof
@@ -125,4 +127,4 @@ jobs:
             .pi-learning-verification-input.json
           if-no-files-found: ignore
 
-# trigger: 2026-09-22T22:18:17.381Z
+# trigger: repaired 2026-09-22 — wrap independent verifier in CommonJS async IIFE
