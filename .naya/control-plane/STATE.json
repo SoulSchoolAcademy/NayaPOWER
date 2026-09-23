@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-23T20:06:05.778Z",
-    "observed_head": "285c9207c777d1b491453dfea191ca171694378e",
+    "recorded_at": "2026-09-23T20:06:22.932Z",
+    "observed_head": "7978c60ce985bfae2738cf1d85e08cd8c4ee6193",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
