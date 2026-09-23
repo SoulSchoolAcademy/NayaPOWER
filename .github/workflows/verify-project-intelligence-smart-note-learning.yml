@@ -111,34 +111,38 @@ jobs:
                 },{accessToken:session.access_token,targetId:eventId});
                 if(cold?.ok!==true||cold?.decision?.influenced!==true||cold?.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT')throw new Error('COLD_NAYA_REUSE_FAILED:'+JSON.stringify(cold));
                 mark('COLD_REUSE','PASS',{target_id:eventId,decision:cold.decision.decision,influenced:cold.decision.influenced,learner_state_version:cold.learner_state_version});
+                const independent=await page.evaluate(async({accessToken,eventId,evidenceId,ownerId,claim})=>{
+                  const base='https://dahisasgpfvziswqvmvm.supabase.co/rest/v1';
+                  const headers={apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',Authorization:'Bearer '+accessToken};
+                  const get=async(path)=>{const r=await fetch(base+path,{headers});return {status:r.status,body:await r.json().catch(()=>null)}};
+                  const learning=await get('/learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&id=eq.'+encodeURIComponent(evidenceId));
+                  const event=await get('/nayanet_cognition_events?select=id,event_id,user_id,project_id,title,type&event_id=eq.'+encodeURIComponent(eventId));
+                  if(learning.status!==200||!Array.isArray(learning.body)||learning.body.length!==1)throw new Error('INDEPENDENT_LEARNING_READ_FAILED:'+JSON.stringify(learning));
+                  if(event.status!==200||!Array.isArray(event.body)||event.body.length!==1)throw new Error('INDEPENDENT_EVENT_READ_FAILED:'+JSON.stringify(event));
+                  const l=learning.body[0],e=event.body[0];
+                  if(l.member_id!==ownerId||l.source_event_id!==eventId||l.status!=='ACTIVE'||l.claim!==claim)throw new Error('LEARNING_LINEAGE_MISMATCH:'+JSON.stringify({l,ownerId,eventId,claim}));
+                  if(e.user_id!==ownerId||e.project_id!=='NayaNET'||e.event_id!==eventId)throw new Error('EVENT_OWNER_LINEAGE_MISMATCH:'+JSON.stringify({e,ownerId,eventId}));
+                  return {status:'VERIFIED',learning:l,event:e};
+                },{accessToken:session.access_token,eventId,evidenceId,ownerId,claim});
+                mark('INDEPENDENT_DB_VERIFY','PASS',{evidence_id:evidenceId,event_id:eventId,learning_status:independent.learning.status,event_owner:independent.event.user_id});
               }finally{await fresh.close();}
               fs.writeFileSync('.pi-learning-verification-input.json',JSON.stringify({ownerId,eventId,evidenceId,claim,receiptId,sourceHead:process.env.GITHUB_SHA},null,2));
             }finally{await ctx.close();await browser.close();}
-            fs.writeFileSync('pi-smart-note-learning-proof.json',JSON.stringify({schema:'NAYANET_PI_SMART_NOTE_LEARNING_BOUNDARY_V1',status:'OBSERVED',run_id:run,source_head:process.env.GITHUB_SHA,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,trace},null,2));
+            fs.writeFileSync('pi-smart-note-learning-proof.json',JSON.stringify({schema:'NAYANET_PI_SMART_NOTE_LEARNING_BOUNDARY_V1',status:'VERIFIED',run_id:run,source_head:process.env.GITHUB_SHA,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,trace,independent_verification:independent},null,2));
           })().catch(e=>{console.error(e);process.exit(1)});
           NODE
 
-      - name: Independently verify persisted learning evidence
+      - name: Validate direct persistence proof
         shell: bash
         run: |
           set -euo pipefail
-          node <<'NODE' | tee pi-smart-note-learning-independent-verification.json
-          (async()=>{
+          node - <<'NODE'
           const fs=require('node:fs');
-          const x=JSON.parse(fs.readFileSync('.pi-learning-verification-input.json','utf8'));
-          const url=process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY, base=url+'/rest/v1', h={'apikey':key,'Authorization':'Bearer '+key,'Content-Type':'application/json'};
-          async function get(path){const r=await fetch(base+path,{headers:h});return {status:r.status,body:await r.json().catch(()=>null)};}
-          const learning=await get('/learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&id=eq.'+encodeURIComponent(x.evidenceId));
-          const event=await get('/nayanet_cognition_events?select=id,event_id,user_id,project_id,title,type&event_id=eq.'+encodeURIComponent(x.eventId));
-          if(learning.status!==200||!Array.isArray(learning.body)||learning.body.length!==1)throw new Error('INDEPENDENT_LEARNING_READ_FAILED:'+JSON.stringify(learning));
-          if(event.status!==200||!Array.isArray(event.body)||event.body.length!==1)throw new Error('INDEPENDENT_EVENT_READ_FAILED:'+JSON.stringify(event));
-          const l=learning.body[0], e=event.body[0];
-          if(l.member_id!==x.ownerId||l.source_event_id!==x.eventId||l.status!=='ACTIVE'||l.claim!==x.claim)throw new Error('LEARNING_LINEAGE_MISMATCH:'+JSON.stringify({l,x}));
-          if(e.user_id!==x.ownerId||e.project_id!=='NayaNET'||e.event_id!==x.eventId)throw new Error('EVENT_OWNER_LINEAGE_MISMATCH:'+JSON.stringify({e,x}));
-          const proof={schema:'NAYANET_PI_SMART_NOTE_LEARNING_INDEPENDENT_VERIFICATION_V1',status:'VERIFIED',run_id:process.env.GITHUB_RUN_ID,source_head:process.env.GITHUB_SHA,owner_id:x.ownerId,event_id:x.eventId,evidence_id:x.evidenceId,learning:l,event:e,source_receipt:x.receiptId};
-          fs.writeFileSync('pi-smart-note-learning-independent-verification.json',JSON.stringify(proof,null,2));
-          console.log(JSON.stringify(proof,null,2));
-          })().catch(e=>{console.error(e);process.exit(1)});
+          const p=JSON.parse(fs.readFileSync('pi-smart-note-learning-proof.json','utf8'));
+          if(p.status!=='VERIFIED')throw new Error('PROOF_STATUS_NOT_VERIFIED');
+          if(p.independent_verification?.status!=='VERIFIED')throw new Error('DIRECT_PERSISTENCE_PROOF_MISSING');
+          if(!Array.isArray(p.trace)||p.trace.some(x=>x.status!=='PASS'&&x.status!=='CANDIDATE'&&x.status!=='ACTIVE'))throw new Error('TRACE_INVALID:'+JSON.stringify(p.trace));
+          console.log(JSON.stringify({status:p.status,independent:p.independent_verification.status,trace:p.trace},null,2));
           NODE
 
       - name: Upload proof
