@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: 6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e
+LAST_RECONCILED_HEAD: 7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
