@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: b9c9252ea8163c2fdb4957218a12295668cf4622
+LAST_RECONCILED_HEAD: 0ea190e66afd33119defeef76560297eb7a8009a
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
@@ -94,8 +94,26 @@ The remaining causal frontiers are:
 
 Do not create a second event store, universal mega-table, or competing intelligence authority.
 
-**Next responsible action:** close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.
+**Next responsible action:** P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval. Do not claim arbitrary ChatGPT conversation capture.
 
+
+## 2026-09-23 — P0-02 Intelligent Block lifecycle CLOSED
+
+Current main: `0ea190e66afd33119defeef76560297eb7a8009a`
+
+Fresh lifecycle proof:
+- Run: `35906051544`
+- Job: `107333901794`
+- Cloudflare Hub release: `35905783323`
+
+Acceptance:
+**IDENTITY → SMART_NOTE → BLOCK_CREATE → SUPERSEDE → REPLAY → VERIFY → RETRIEVE → RENDER → CONTINUE → SUCCESSOR = PASS**
+
+The canonical Hub render boundary is now proven at current-main/live-runtime scope. The renderer now grows its existing canonical card pool when retrieved Smart Feed items exceed the fixed static-card count. The Hub runtime now reuses/exposes one canonical browser Supabase session client across navigation.
+
+Historical failures `35900769397` and `35905911694` are preserved as causal evidence and are superseded by `35906051544`.
+
+The next causal frontier is **P0-04 meaningful-output promotion**, not another Intelligent Block lifecycle redesign.
 
 ## REMAINING HIGH-VALUE FRONTIER
 
