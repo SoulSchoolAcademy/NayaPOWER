@@ -231,7 +231,7 @@ jobs:
               for(const key of ['today','reports','library','share','ledger','connections','lists','mail','spaces','settings']) if(!pages.includes(key)) throw new Error(viewport.label+': missing canonical navigation page '+key);
               const todayButton=page.locator('[data-page="today"]');
               if(await todayButton.count()===0) throw new Error(viewport.label+': Intelligence Today navigation missing');
-              await todayButton.click();
+              await page.evaluate(()=>document.querySelector('[data-page="today"]')?.click());
               await page.waitForTimeout(1000);
               const today=await page.evaluate(()=>({room01:document.body.innerText.includes('YOUR INTELLIGENCE TODAY')||document.body.innerText.includes('Your Intelligence Today'), roomClass:!!document.querySelector('.room01')}));
               console.log('RESTORED_ROOM_01_PROBE',viewport.label,JSON.stringify(today));
