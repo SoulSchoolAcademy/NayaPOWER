@@ -113,11 +113,11 @@ jobs:
           cd ../..
           test -s NAYANET/HUB/dist/index.html
           test -s NAYANET/HUB/dist/assistant-runtime.js
-          test -s NAYANET/HUB/dist/name-first-auth-adapter.js || cp NAYANET/name-first-auth-adapter.js NAYANET/HUB/dist/name-first-auth-adapter.js
+          test -s NAYANET/HUB/dist/name-first-auth-adapter.js || cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js NAYANET/HUB/dist/name-first-auth-adapter.js
           mkdir -p dist
           cp -R NAYANET/HUB/dist/. dist/
           mkdir -p dist/NAYANET
-          cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
+          cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp identity.html dist/identity.html
           test -s dist/index.html
           test -s dist/NAYANET/name-first-auth-adapter.js
