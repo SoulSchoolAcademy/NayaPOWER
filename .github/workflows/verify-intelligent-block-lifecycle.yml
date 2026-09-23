@@ -44,15 +44,10 @@ jobs:
           const trace=[];
           const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('PI_BLOCK_LIFECYCLE',JSON.stringify(x));};
           try{
-            await page.goto(HUB+'/identity.html?naya_hold=1',{waitUntil:'domcontentloaded',timeout:60000});
-            await page.locator('#name').waitFor({state:'visible',timeout:30000});
-            await page.locator('#name').fill('Intelligent Block Lifecycle Proof '+token);
-            if(await page.locator('#alias').count()) await page.locator('#alias').fill(token);
-            await page.locator('#enter').waitFor({state:'visible',timeout:30000});
-            await page.locator('#enter').click({force:true});
-            let session=null;
-            for(let i=0;i<60;i++){session=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());if(session?.authenticated&&session?.access_token)break;await new Promise(r=>setTimeout(r,500));}
-            if(!session?.access_token)throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
+            await page.goto(HUB+'/?ibl=1',{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth?.establish,{timeout:30000});
+            const session=await page.evaluate(async({token})=>await window.NayaNETNameFirstAuth.establish({name:'Intelligent Block Lifecycle Proof '+token,alias:token}),{token});
+            if(!session?.authenticated||!session?.userId)throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
             mark('IDENTITY','PASS',{owner_id:session.userId});
 
             const capture=await page.evaluate(async({title,content,idem})=>{
