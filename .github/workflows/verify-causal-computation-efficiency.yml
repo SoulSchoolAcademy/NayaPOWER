@@ -33,6 +33,9 @@ jobs:
           assert p['avoided_work']['canonical_content_objects'] >= 1
           print('PASS — causal retained intelligence directly avoided canonical content work')
           PY
+      - name: Reconcile concurrent main changes before commit
+        run: |
+          git pull --rebase --autostash origin main
       - name: Commit durable benchmark evidence
         run: |
           git config user.name "github-actions[bot]"
