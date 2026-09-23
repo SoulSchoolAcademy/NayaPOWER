@@ -54,17 +54,11 @@ jobs:
             try{
               const hub=process.env.HUB_URL, run=process.env.RUN_IDENTITY;
               const alias=('piowner'+run+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
-              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
-              await page.locator('#name').fill('Project Intelligence Home Run');
-              await page.locator('#alias').fill(alias);
-              await page.locator('#enter').click();
-              let identity=null,session=null;
-              for(let i=0;i<60;i++){
-                identity=await page.evaluate(async()=>{try{return await window.NayaNETNameFirstAuth?.current?.()}catch{return null}});
-                session=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id,session:x}:null});
-                if(identity?.authenticated&&identity?.userId&&session?.userId)break;
-                await new Promise(r=>setTimeout(r,500));
-              }
+              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'domcontentloaded',timeout:60000});
+              const established=await page.evaluate(async({name,alias})=>window.NayaNETNameFirstAuth.establish({name,alias}),{name:'Project Intelligence Home Run',alias});
+              if(!established?.authenticated||!established?.userId)throw new Error('PRIVATE_PI_OWNER_IDENTITY_NOT_ESTABLISHED');
+              const identity=established;
+              const session=await page.evaluate(async()=>{const c=window.__NayaNETSupabaseClient;const x=c?(await c.auth.getSession()).data.session:null;return x?{userId:x.user.id,session:x}:null});
               if(!identity?.userId||!session?.userId)throw new Error('PRIVATE_PI_OWNER_SESSION_NOT_ESTABLISHED');
               if(identity.userId!==session.userId)throw new Error('PRIVATE_PI_OWNER_IDENTITY_SESSION_MISMATCH');
               fs.writeFileSync('.nayanet-owner-id',session.userId+'\n');
