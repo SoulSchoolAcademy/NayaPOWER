@@ -19,7 +19,7 @@
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
-    "observed_head": "30a08da31fc94f7a97bd2a9a37dccf505cf8e0e2",
+    "observed_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
     "reconciled_at": "2026-09-23T21:44:08.318Z"
   },
   "current_state": {
@@ -77,7 +77,7 @@
     "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE: reusable new understanding with no pre-existing source Intelligent Block; receipt 42-NAYANET-LEARNING-OUTPUT-DISPOSITION-RECEIPT-2026-09-23.md. Communication is now the single next readiness boundary."
+    "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE; COMMUNICATION is the single next readiness boundary."
   },
   "successor_prompt": {
     "prompt": "Resolve live main. LEARNING_OUTPUT is VERIFIED as PROMOTE through the canonical intelligence_commit path. Advance to exactly one boundary: COMMUNICATION. Determine whether the communication artifact is reusable intelligence or communication event/state, then promote or explicitly DECLINE_PROMOTION. Verify the boundary before advancing again.",
