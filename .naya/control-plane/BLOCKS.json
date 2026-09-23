@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval.",
+    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "next_actions": [
-      "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
+      "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -57,7 +57,7 @@
       "reload",
       "authorized continuation"
     ],
-    "next_action_reason": "The bounded Smart Note → verified learning → apply → governed decision → cold reuse chain is now fresh and independently persisted-state verified; the next open boundary is universal promotion across meaningful Naya outputs.",
+    "next_action_reason": "Priority #2 legacy cognition-event disposition is complete as HISTORICAL_ONLY; no database repair is warranted. The next open readiness boundary is universal meaningful-output promotion.",
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
