@@ -1,13 +1,7 @@
 name: Wave A canonical September 17 Hub browser acceptance
-# Post-release acceptance rerun: validate the already-deployed canonical shell.\n# PI-09 execution trigger: run against current live runtime.
+# Historical acceptance workflow; current canonical visual acceptance is owned by assistant-cloudflare-hub-release.yml.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/wave-a-authenticated-browser-acceptance.yml'
-      - 'NAYANET/HUB/index.html'
-      - 'NAYANET/HUB/public/hub-completeness.js'
   workflow_dispatch:
 
 permissions:
