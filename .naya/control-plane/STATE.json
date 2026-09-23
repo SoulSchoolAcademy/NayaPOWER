@@ -191,9 +191,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+  "single_next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
   "next_actions": [
-    "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -295,7 +295,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
     "status": "PROVEN"
   },
@@ -347,8 +347,8 @@
     "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "current_next_action": {
-    "action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
-    "reason": "COMMUNICATION is dispositioned as event/state; RELATIONSHIP is dispositioned as canonical relationship state; CONSEQUENTIAL_ACTION is the next representative semantic boundary.",
+    "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "reason": "CONSEQUENTIAL_ACTION is VERIFIED as DECLINE_PROMOTION because the examined Smart Mail send is a canonical action transaction with durable receipt/cognition lineage; GOVERNED_DECISION is next.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
@@ -415,10 +415,10 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "RELATIONSHIP classified and explicitly declined for Block promotion; CONSEQUENTIAL_ACTION is the next representative universal-output class."
+    "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",

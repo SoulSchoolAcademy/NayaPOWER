@@ -17,7 +17,7 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "block_next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
     "observed_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
     "reconciled_at": "2026-09-23T21:44:08.318Z"
@@ -71,16 +71,16 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "next_action": {
-    "action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "RELATIONSHIP is VERIFIED as DECLINE_PROMOTION; CONSEQUENTIAL_ACTION is now the single next readiness boundary."
+    "reason": "CONSEQUENTIAL_ACTION is VERIFIED as DECLINE_PROMOTION; GOVERNED_DECISION is now the single next boundary."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. RELATIONSHIP is VERIFIED as DECLINE_PROMOTION because the examined connection artifact is canonical relationship event/state, not reusable understanding. Advance to exactly one boundary: CONSEQUENTIAL_ACTION. Determine whether the action artifact is reusable intelligence or action event/state, then promote or explicitly DECLINE_PROMOTION. Verify the boundary before advancing again.",
+    "prompt": "Resolve live main. CONSEQUENTAL_ACTION is VERIFIED as DECLINE_PROMOTION because the examined Smart Mail send is canonical action event/state with durable receipt/cognition lineage. Advance to exactly one boundary: GOVERNED_DECISION. Determine whether the decision artifact is reusable intelligence or decision event/state, then promote or explicitly DECLINE_PROMOTION. Verify before advancing.",
     "do_not": "Do not redesign intelligence_commit. Do not use Smart Note as a universal shortcut. Do not create a second intelligence store. Do not start a second active front."
   },
   "playback": {

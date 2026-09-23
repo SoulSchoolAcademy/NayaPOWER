@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "next_actions": [
-      "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+      "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -92,7 +92,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Prove CONSEQUENTIAL_ACTION as the next representative universal-output class: determine whether a consequential action artifact is reusable intelligence or an action event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "completion": "P0-04 meaningful-output promotion is verified at defined owner/runtime scope: identity, authority, canonical ingress, provenance, validation, integration, checkpoint, Intelligent Block persistence, and fresh retrieval all passed.",
     "status": "PROVEN"
   },
