@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T18:59:30Z",
+  "generated_at": "2026-09-23T20:15:00Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "220b9ea2b786b238c06ff54a8a05330b90ea7437",
+    "live_head": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -72,10 +72,10 @@
     "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval."
   },
   "next_action": {
-    "action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval.",
-    "status": "AUTHORIZED_AFTER_PROOF",
+    "action": "Obtain fresh explicit production authorization for the single causal Supabase Edge Function repair at fa112deec15d68ab0b9796b70e5c3ae6cde7b143, deploy nayanet-compound-intelligence, then rerun the same P0-04 proof.",
+    "status": "BLOCKED_PENDING_PRODUCTION_AUTHORIZATION",
     "count": 1,
-    "reason": "P0-02 Intelligent Block lifecycle is fresh-proven at current-main/live-runtime scope by run 35906051544; the next open causal boundary is one bounded meaningful-output promotion proof."
+    "reason": "Fresh P0-04 run 35914547730 reached IDENTITY → AUTHORITY but failed at canonical ingress; independent endpoint probe returned 503 BOOT_ERROR. The smallest source repair is now committed but production deployment requires fresh explicit authorization."
   },
   "successor_prompt": {
     "prompt": "Resolve live main. Preserve the proven Smart Note receiver and Intelligent Block lifecycle. Then execute exactly one bounded P0-04 proof: submit one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, prove provenance → validation → integration → checkpoint → fresh retrieval, and do not claim arbitrary ChatGPT conversation capture.",
@@ -92,11 +92,11 @@
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
   },
   "execution_attempt": {
-    "status": "VERIFIED",
-    "claim_type": "SMART_NOTE_COMPOUNDING_LOOP",
-    "source_head": "833bf8f9473528b7d53ad17636679e0f766bb8ef",
-    "independent_verification": "PASS",
-    "prior_runtime_proof": "PROVEN",
-    "prior_workflow_run": 35893121151
+    "status": "FAILED_AT_CANONICAL_INGRESS",
+    "workflow_run": 35914547730,
+    "job_id": 107362601134,
+    "source_head": "547ec350d0a32f6fc58ac16440fea6e23ad25154",
+    "repair_commit": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
+    "proof_status": "OPEN"
   }
 }
