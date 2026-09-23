@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 type Space={id:string;name:string;purpose:string;visibility:string;created_at:string;owner_member_id?:string};
 export function SmartSpacesSurface(){
