@@ -3,7 +3,7 @@
   "session_id": "NAYA-20260922-VISUAL-PARITY-SEAM-07",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "72a78a292d47af3d66769d7988edcc7b375b8218",
+  "parent_head": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
   "authorized_action": "Normalize only the two proven non-visual runtime seams in the canonical Hub parity gate: feed anchor id and deferred command-station script loading.",
   "read_ack": {
     "all_required_sources": true,
@@ -43,7 +43,7 @@
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-22T23:59:08.478Z"
+    "at": "2026-09-23T00:00:30.645Z"
   },
   "successor_prompt": "Resolve live main. Verify the canonical release parity gate accepts only documented runtime seams, then execute the canonical Cloudflare #feed deployment and browser proof."
 }
