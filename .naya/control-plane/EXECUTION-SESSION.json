@@ -1,24 +1,23 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260923-CANONICAL-HUB-RELEASE-10",
+  "session_id": "NAYA-20260923-GAP-002-RELEASE-BRIDGE-01",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "439bb3a2f317430f261aa75b4d7f906aaeb58022",
-  "authorized_action": "Reconcile the stale execution-session parent to the current main head, then execute the canonical NayaNET Hub release and browser proof against NAYANET/HUB/index.html only. Do not use Welcome or historical Hub artifacts as the product surface.",
+  "parent_head": "b3451510ea65e4875a7b3323f23f970d98ab647b",
+  "authorized_action": "Release the current canonical Hub source after the Smart Feed runtime connection repair. Preserve the canonical visual surface; deploy the exact current main source; verify source/runtime parity, browser behavior, Smart Feed projection, and GAP-002 truth/provenance evidence. Do not use Welcome or historical Hub artifacts as the product surface.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
-      "README-FIRST.md",
-      ".naya/control-plane/BATON.json",
-      ".naya/control-plane/STATE.json",
-      ".naya/control-plane/BLOCKS.json",
-      ".naya/control-plane/MAP.json",
-      ".naya/control-plane/PROOF.json",
-      ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
-      ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
       "NAYANET/HUB/index.html",
-      "2026 09 17 NAYANET HUB.html",
-      ".github/workflows/assistant-cloudflare-hub-release.yml"
+      "NAYANET/HUB/src/app/HubRouter.tsx",
+      "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
+      "NAYANET/HUB/src/data/pis.ts",
+      "NAYANET/HUB/src/intelligence/cognition.ts",
+      "smart-feed.js",
+      ".github/workflows/assistant-cloudflare-hub-release.yml",
+      ".github/workflows/wave-a-live-browser-acceptance.yml",
+      ".naya/TEAM-NAYA/2026-09-22-HUB-READINESS-INVENTORY.md",
+      ".naya/TEAM-NAYA/2026-09-22-HUB-READINESS-SYSTEMS-UPDATE.md"
     ]
   },
   "execution_lease": {
@@ -29,9 +28,9 @@
   "action_result": {
     "verification": "PASS",
     "evidence": [
-      "current main release boundary is 439bb3a2f317430f261aa75b4d7f906aaeb58022",
-      "the execution session is anchored to that exact current main head before the release-only repair commit",
-      "the release validator will explicitly fetch the recorded parent before ancestry validation so shallow checkout cannot convert a valid continuity reference into UNKNOWN"
+      "canonical visual/browser proof is production-proven at commit 5f0a36cff1ead894e92376ece217f38d3632591a",
+      "current main repair commit b3451510ea65e4875a7b3323f23f970d98ab647b connects the canonical Hub feed to the persisted Smart Feed runtime",
+      "the automatic release for b345151 failed before deployment because the release validator requires HEAD to be a merge commit; this bridge makes b345151 the verified parent boundary for the next canonical release"
     ]
   },
   "record": {
@@ -45,7 +44,7 @@
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-23T02:30:00.000Z"
+    "at": "2026-09-23T03:00:00.000Z"
   },
-  "successor_prompt": "Execute the canonical Cloudflare Hub release from the exact current main boundary. Require exact live source parity, desktop/mobile browser baseline, canonical Hub visual surface, and Smart Feed mode interaction. Do not use Welcome. Do not change visual source merely to satisfy the gate."
+  "successor_prompt": "Merge this release bridge into main. The resulting merge commit must trigger the canonical Cloudflare Hub release. Verify exact source/live parity and then execute GAP-002 fresh Smart Note → Intelligent Block → Smart Feed → reload → retrieval → visible truth/provenance → authorized continuation proof."
 }
