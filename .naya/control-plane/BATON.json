@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "LIVE_AT_EXECUTION_TIME",
+  "generated_at": "2026-09-23T03:52:34.999Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "84efed4c7e2c29f98a22ff15de0e33a2eaf2f2b4",
+    "live_head": "feae2342be3fe9abf5a9950617920e11fd9aa1a8",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -72,7 +72,8 @@
   },
   "next_action": {
     "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
-    "status": "AUTHORIZED_AFTER_PROOF"
+    "status": "AUTHORIZED_AFTER_PROOF",
+    "count": 1
   },
   "successor_prompt": {
     "prompt": "Resolve live main. Confirm the Smart Note learning verifier repair is proven by a fresh run. Then execute the one current-main owner-bound Smart Note → verified learning → later-decision influence proof and independently verify the complete lineage.",
