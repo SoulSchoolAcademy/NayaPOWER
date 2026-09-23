@@ -59,7 +59,7 @@ jobs:
             if(!eventId)throw new Error('SMART_NOTE_EVENT_ID_MISSING');
             mark('SMART_NOTE','PASS',{event_id:eventId,receipt_id:capture?.receipt?.id||null});
 
-            const blockId='IB:'+eventId;
+            const blockId=eventId;
             const row=await page.evaluate(async({blockId})=>{
               const c=window.__NayaNETSupabaseClient;
               if(!c)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
