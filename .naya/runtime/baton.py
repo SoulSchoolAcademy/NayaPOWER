@@ -79,7 +79,7 @@ def build_baton() -> dict[str, Any]:
             "active_block_status": active["status"],
         },
         "current_intelligence": {
-            "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+            "canonical_source_map": "SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
             "continuous_flow": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
             "intelligent_block_protocol": "SUPERBRAIN/INTELLIGENT-BLOCK-PROTOCOL.md",
             "intelligence_distiller": "SUPERBRAIN/INTELLIGENCE-DISTILLER-PROTOCOL.md",
