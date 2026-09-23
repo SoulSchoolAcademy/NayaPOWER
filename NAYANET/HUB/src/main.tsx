@@ -23,7 +23,7 @@ import './styles/sparkling-shape-reactive.css';
 import './styles/hub-aaa-elevation-v1.css';
 const releaseCommit = import.meta.env.VITE_RELEASE_COMMIT || 'development';
 document.documentElement.dataset.nayanetRelease = releaseCommit;
-document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-REACT-CANONICAL';
+document.documentElement.dataset.nayanetCanonical = 'NAYANET-HUB-CANONICAL';
 // Naya Power release-probe marker: this line is intentionally behavior-neutral.
 // Its purpose is to force the canonical source → build → deploy → runtime proof chain.
 // V2 promotion is the sole production release authority.
