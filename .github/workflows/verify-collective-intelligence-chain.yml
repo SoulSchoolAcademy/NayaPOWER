@@ -37,8 +37,8 @@ jobs:
           set -euo pipefail
           node <<'NODE' | tee collective-chain-proof.json
           import { chromium } from 'playwright';
-          const crypto = require('node:crypto');
-          const fs = require('node:fs');
+          import crypto from 'node:crypto';
+          import fs from 'node:fs';
 
           const hub=process.env.HUB_URL, url=process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY, run=process.env.RUN_IDENTITY;
           const token='collective-chain-'+run+'-'+crypto.randomBytes(5).toString('hex');
