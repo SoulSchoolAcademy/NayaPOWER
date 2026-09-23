@@ -220,7 +220,7 @@ jobs:
                 leftRail:!!document.querySelector('.rail.left'),
                 ecosystem:!!document.querySelector('.ecosystem'),
                 rightRail:!!document.querySelector('.rail.right'),
-                capture:!!document.querySelector('[data-ws-note-save]'),
+                capture:!!document.querySelector('#wsNoteContent'),
                 bodyText:document.body.innerText
               }));
               console.log('CANONICAL_STATIC_HUB_PROBE',viewport.label,JSON.stringify({...probe,bodyText:probe.bodyText.slice(0,5000)}));
