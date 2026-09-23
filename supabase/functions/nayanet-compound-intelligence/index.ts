@@ -765,7 +765,6 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     sourceEvent=persisted.data;
   }
   const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
-  const learningClaim=String(body.learning_claim ?? content).trim();
   const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
   const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
   blockDigest[6] = (blockDigest[6] & 0x0f) | 0x50;
