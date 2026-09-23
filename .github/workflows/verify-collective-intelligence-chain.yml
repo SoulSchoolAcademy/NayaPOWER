@@ -134,13 +134,26 @@ jobs:
             const connectedEventId=connected.event?.event_id;
             if(!connectedEventId) throw new Error('CONNECT_EVENT_MISSING');
 
-            const reconciled=await compound(session,'reconcile',{
-              claims:[
-                {field:'continuation_rule',value:'restore current state before acting',source_kind:'CANONICAL_LESSON'},
-                {field:'continuation_rule',value:'start over without restoring state',source_kind:'CONFLICTING_FIXTURE'}
-              ]
+            const reconciled=await compound(session,'reconcile',{});
+            if(reconciled.status!=='TRANSPORT_PROVEN_RETRIEVAL_OPEN'||!reconciled.bridge?.persisted||!reconciled.bridge?.indexed||!reconciled.bridge?.projected) throw new Error('RECONCILIATION_NOT_PROVEN');
+
+            const conflicting=await compound(session,'understand',{
+              title:'Conflicting continuation interpretation '+run,
+              content:'Conflicting interpretation: restart from zero without restoring the canonical current state.',
+              tags:['collective-chain','conflict','reconciliation'],
+              parent_event_id:connectedEventId
             });
-            if(reconciled.status!=='RECONCILED_WITH_CONFLICTS'||reconciled.conflict_count<1) throw new Error('RECONCILIATION_NOT_PROVEN');
+            const conflictingEventId=conflicting.event?.event_id;
+            if(!conflictingEventId) throw new Error('CONFLICT_EVENT_MISSING');
+
+            const reconciledBlock=await compound(session,'supersede',{
+              superseded_event_id:conflictingEventId,
+              title:'Reconciled continuation interpretation '+run,
+              content:'Reconciled interpretation: restore the canonical current state first; restart only when the restored state proves continuation is not applicable.',
+              reason:'Resolve conflicting continuation interpretation against canonical lesson',
+              confidence:1
+            });
+            if(reconciledBlock.lineage?.supersedes!==conflictingEventId||!reconciledBlock.event?.event_id) throw new Error('SEMANTIC_RECONCILIATION_NOT_PROVEN');
 
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
@@ -192,6 +205,7 @@ jobs:
               evidence_refs:[
                 {kind:'initial_checkpoint',checkpoint_id:checkpoint1},
                 {kind:'learning_evidence',evidence_id:evidenceId},
+                {kind:'reconciled_interpretation',event_id:reconciledBlock.event.event_id,supersedes:conflictingEventId},
                 {kind:'replay',replay_id:replay.id},
                 {kind:'learning_apply',learner_state_version:applied.learning.learner_state_version},
                 {kind:'outcome',event_id:outcomeEventId,receipt_id:outcome.receipt?.id||outcome.receipt_id||null}
