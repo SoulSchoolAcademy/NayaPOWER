@@ -6,6 +6,9 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/verify-project-intelligence-smart-note-learning.yml'
+      - 'NAYANET/HUB/index.html'
+      - 'identity.html'
+      - 'assistant-runtime.js'
 
 permissions:
   contents: read
@@ -61,15 +64,19 @@ jobs:
             const browser=await chromium.launch({headless:true}), ctx=await browser.newContext(), page=await ctx.newPage();
             let ownerId=null,eventId=null,evidenceId=null,receiptId=null;
             try{
-              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
+              await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'domcontentloaded',timeout:60000});
+              await page.locator('#name').waitFor({state:'visible',timeout:30000});
               await page.locator('#name').fill('Project Intelligence Learning Boundary');
-              await page.locator('#alias').fill(alias);
-              await page.locator('#enter').click();
+              if (await page.locator('#alias').count()) await page.locator('#alias').fill(alias);
+              await page.locator('#enter').waitFor({state:'visible',timeout:30000});
+              await page.locator('#enter').click({force:true});
               for(let i=0;i<60;i++){const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());if(s?.authenticated&&s.userId)break;await new Promise(r=>setTimeout(r,500));}
               const session=await sessionFrom(page); ownerId=session.userId; mark('IDENTITY','PASS',{owner_id:ownerId,alias});
-              await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
-              await page.locator('.naya-intelligence-nav [data-page="notes"]').click();
-              await page.locator('#nayaIntelligenceWorkspace').waitFor({state:'attached',timeout:30000});
+              await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
+              await page.locator('.naya-intelligence-nav [data-page="today"]').click();
+              await page.locator('#nayaIntelligenceWorkspace').waitFor({state:'visible',timeout:30000});
+              await page.locator('[data-ws-action="open-notes"]').click();
+              await page.locator('[data-testid="capture-smart-note"]').waitFor({state:'visible',timeout:30000});
               const surface=await page.locator('#nayaIntelligenceWorkspace').evaluate(el=>({text:(el.textContent||'').slice(0,240),display:getComputedStyle(el).display,visibility:getComputedStyle(el).visibility,opacity:getComputedStyle(el).opacity,rect:el.getBoundingClientRect().toJSON(),captureCount:el.querySelectorAll('[data-testid="capture-smart-note"]').length,titleCount:el.querySelectorAll('[data-testid="smart-note-title"]').length}));
               mark('SMART_NOTES_SURFACE','OBSERVED',surface);
               await page.locator('[data-testid="capture-smart-note"]').waitFor({state:'visible',timeout:30000});
