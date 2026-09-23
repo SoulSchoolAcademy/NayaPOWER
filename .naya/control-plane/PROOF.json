@@ -1270,5 +1270,25 @@
     },
     "scope": "Fresh managed-runtime Dream → verified learning → later governed decision → durable traceability.",
     "interpretation": "Verified learning materially changed later decision context while authority remained unchanged; the decision receipt remained retrievable."
+  },
+  "p0_04_current_attempt_20260923": {
+    "status": "FAILED",
+    "claim_type": "P0-04_MEANINGFUL_OUTPUT_PROMOTION",
+    "workflow_run": 35914547730,
+    "job_id": 107362601134,
+    "source_head": "547ec350d0a32f6fc58ac16440fea6e23ad25154",
+    "trace": [
+      "IDENTITY PASS",
+      "AUTHORITY_PROBE OBSERVED",
+      "AUTHORITY PASS",
+      "CANONICAL_INGRESS FAILED"
+    ],
+    "first_deterministic_failure": "TypeError: Failed to fetch",
+    "independent_endpoint_probe": "503 Service Unavailable / sb-error-code BOOT_ERROR",
+    "deployed_function_version": 25,
+    "source_function_sha": "4247631e004254cbad25c1e10d387f837450416f",
+    "causal_repair_commit": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
+    "repair_scope": "Removed obsolete duplicate Intelligent Block materialization path; no schema/store/event/authority redesign.",
+    "verification": "OPEN_PENDING_FRESH_PRODUCTION_DEPLOYMENT_AUTHORIZATION"
   }
 }
