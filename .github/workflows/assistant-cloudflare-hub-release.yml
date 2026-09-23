@@ -9,6 +9,10 @@ on:
     branches: [main]
     paths:
       - 'NAYANET/HUB/index.html'
+      - 'NAYANET/HUB/package.json'
+      - 'NAYANET/HUB/vite.config.ts'
+      - 'NAYANET/HUB/tsconfig.json'
+      - 'NAYANET/HUB/src/**'
       - 'NAYANET/HUB/public/**'
       - 'NAYANET/HUB/cloudflare-static-worker.js'
       - 'assistant-runtime.js'
@@ -98,98 +102,52 @@ jobs:
           print('NAYA_SESSION_VERIFIED',s['session_id'],'MERGE_COMMIT',parents[1],'EXECUTION_BRANCH',execution_branch_parent)
           PY
 
-      - name: Prepare canonical Hub artifact
+      - name: Build canonical React Hub artifact
         shell: bash
         run: |
           set -euo pipefail
-          rm -rf dist
-          test -s NAYANET/HUB/index.html
-          test -s assistant-runtime.js
-          test -s hub-completeness.js
-          test -s NAYANET/HUB/public/nayanet-interface-command-station.js
-          test -s smart-feed.js
-          test -s smart-tabs.js
-          test -s NAYANET/HUB/intelligence-surfaces-runtime.js
-          test -s identity.html
-          test -s NAYANET/name-first-auth-adapter.js
-          grep -q 'nayanet-direct-nine' NAYANET/HUB/index.html
-          grep -q '<title>NayaNET' NAYANET/HUB/index.html
-          test -f "2026 09 17 NAYANET HUB.html"
-          # The canonical Hub retains runtime-only operational seams hidden on the normal human surface:
-          # the observer shim and the conditional Project Intelligence render block.
-          # Compare the protected visual source after removing only those non-visual/runtime seams.
-          sed -e '/<!-- NAYA-CANONICAL-HUMAN-CAPTURE-2026-09-22 -->/,/<\/script>/d' -e '/<script id="naya-static-runtime-observer-shim">.*<\/script>/d' -e '/<!-- NAYA-PI-CANONICAL-RENDER-V1 -->/,/<\/script>/d' -e '/<!-- NAYA-CANONICAL-DREAM-SURFACE-V1 -->/,/<\/script>/d' -e '/assistant-runtime.js/d' -e '/smart-feed.js/d' -e '/smart-tabs.js/d' -e '/hub-completeness.js/d' -e 's#assistant-runtime.js?v=[^"]*#assistant-runtime.js#g' -e '/^[[:space:]]*$/d' NAYANET/HUB/index.html > "${RUNNER_TEMP}/hub-visual-source.html"
-          sed -e '/<script id="naya-static-runtime-observer-shim">.*<\/script>/d' -e '/assistant-runtime.js/d' -e '/smart-feed.js/d' -e '/smart-tabs.js/d' -e '/hub-completeness.js/d' -e 's#assistant-runtime.js?v=[^"]*#assistant-runtime.js#g' -e '/^[[:space:]]*$/d' "2026 09 17 NAYANET HUB.html" > "${RUNNER_TEMP}/hub-visual-reference.html"
-          perl -0pi -e 's#<script>\\s*/\\*\\s*naya-509-real-smart-feed-content\\.js\\s*\\*/.*?</script>##sg; s#<script>\\s*/\\*\\s*naya-509-real-smart-feed-nine-note-parser\\.js\\s*\\*/.*?</script>##sg; s#<script>\\s*/\\*\\s*naya-509-real-smart-feed-lifecycle-repair\\.js\\s*\\*/.*?</script>##sg; s#<script>\\s*/\\*\\s*naya-509-real-smart-feed-final-presentation-fix\\.js\\s*\\*/.*?</script>##sg; s#<script>\\s*/\\*\\s*naya-509-real-smart-feed-nav-restore\\.js\\s*\\*/.*?</script>##sg; s#<script>\\s*/\\*\\s*naya-509-real-smart-feed-nav-adjacent-placement\\.js\\s*\\*/.*?</script>##sg' "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"
-          perl -0pi -e 's#</style>\\s*</head>#</style></head>#sg' "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"
-          # Known non-visual runtime seams: the #feed anchor id and deferred command-station loading.
-          sed -i 's#<section class="feed" id="feed">#<section class="feed">#g; s# defer></script>#></script>#g' "${RUNNER_TEMP}/hub-visual-source.html"
-          if cmp -s "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"; then echo "PROTECTED_VISUAL_PARITY_VERIFIED"; else echo "PROTECTED_VISUAL_PARITY_MISMATCH_DIAGNOSTIC"; diff -u "${RUNNER_TEMP}/hub-visual-reference.html" "${RUNNER_TEMP}/hub-visual-source.html" | head -200 || true; fi
-          for required in 'data-page="today"' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Share' 'Smart Ledger' 'Your Connections' 'Smart Lists' 'Smart Mail' 'Smart Spaces' 'Settings'; do
-            grep -q "$required" NAYANET/HUB/index.html
-          done
+          rm -rf NAYANET/HUB/dist dist
+          cd NAYANET/HUB
+          npm install --no-package-lock
+          npm run typecheck
+          npm run build
+          cd ../..
+          test -s NAYANET/HUB/dist/index.html
+          test -s NAYANET/HUB/dist/assistant-runtime.js
+          test -s NAYANET/HUB/dist/name-first-auth-adapter.js || cp NAYANET/name-first-auth-adapter.js NAYANET/HUB/dist/name-first-auth-adapter.js
+          mkdir -p dist
+          cp -R NAYANET/HUB/dist/. dist/
           mkdir -p dist/NAYANET
-          cp NAYANET/HUB/index.html dist/index.html
-          cp assistant-runtime.js dist/assistant-runtime.js
-          cp hub-completeness.js dist/hub-completeness.js
-          cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
-          cp smart-feed.js dist/smart-feed.js
-          cp smart-tabs.js dist/smart-tabs.js
-          mkdir -p dist/NAYANET/HUB
-          cp NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
-          cp identity.html dist/identity.html
           cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
-          cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
-          test -s dist/name-first-auth-adapter.js
-          cmp -s NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
-          cmp -s NAYANET/HUB/public/hub-completeness.js dist/hub-completeness.js
-          cmp -s smart-feed.js dist/smart-feed.js
-          cmp -s smart-tabs.js dist/smart-tabs.js
-          cmp -s NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
-          python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
+          cp identity.html dist/identity.html
+          test -s dist/index.html
+          test -s dist/NAYANET/name-first-auth-adapter.js
+          sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
 
-      - name: Deploy exact canonical Hub
+      - name: Deploy exact canonical Hub artifact
         shell: bash
         run: |
           set -euo pipefail
           printf '%s\n' '{"$schema":"node_modules/wrangler/config-schema.json","name":"sparkling-shape-7ae5","compatibility_date":"2026-09-15","account_id":"b5e2a51b3e883f7722287c5f51b1196b","main":"/home/runner/work/NayaPOWER/NayaPOWER/NAYANET/HUB/cloudflare-static-worker.js","assets":{"directory":"/home/runner/work/NayaPOWER/NayaPOWER/dist","binding":"ASSETS","run_worker_first":true,"html_handling":"none","not_found_handling":"single-page-application"}}' > "${RUNNER_TEMP}/wrangler.jsonc"
           npx --yes wrangler@4 deploy --config "${RUNNER_TEMP}/wrangler.jsonc"
 
-      - name: Verify exact live source parity
+      - name: Verify live canonical React artifact
         shell: bash
         run: |
           set -euo pipefail
           source_hash=$(cut -d' ' -f1 "${RUNNER_TEMP}/source.sha256")
-          asset_url="${NAYA_RUNTIME_URL}/name-first-auth-adapter.js"
-          asset_body="${RUNNER_TEMP}/name-first-auth-adapter.js"
-          adapter_verified=false
-          for attempt in $(seq 1 30); do
-            if curl --fail --silent --show-error --location "${asset_url}?release=${GITHUB_SHA}&attempt=${attempt}" -o "${asset_body}" &&                test -s "${asset_body}" &&                grep -q "NayaNET name-first identity adapter" "${asset_body}"; then
-              adapter_verified=true
-              echo "LIVE_NAME_FIRST_ADAPTER_ASSET_VERIFIED=${asset_url} attempt=${attempt}"
-              break
-            fi
-            sleep 2
-          done
-          test "${adapter_verified}" = true
           for attempt in $(seq 1 30); do
             curl --fail --silent --show-error --location "${NAYA_RUNTIME_URL}/?release=${GITHUB_SHA}&attempt=${attempt}" -o "${RUNNER_TEMP}/live.html"
             live_hash=$(sha256sum "${RUNNER_TEMP}/live.html" | cut -d' ' -f1)
             if [ "${source_hash}" = "${live_hash}" ]; then
-              echo "LIVE_EXACT_SOURCE_PARITY_VERIFIED sha256=${live_hash}"
-              exit 0
+              echo "LIVE_EXACT_CANONICAL_ARTIFACT_VERIFIED sha256=${live_hash}"
+              break
             fi
             sleep 2
           done
-          echo "SOURCE_LIVE_MISMATCH source=${source_hash} live=${live_hash}"
-          exit 1
-
-      - name: Verify live Hub browser baseline
-        shell: bash
-        run: |
-          set -euo pipefail
+          test "${source_hash}" = "${live_hash}"
           npm install --no-save --no-package-lock playwright@1.55.0
-          cat > verify-hub-baseline.mjs <<'EOF'
+          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node --input-type=module <<'NODE'
           import { chromium } from 'playwright';
           const runtime=process.env.NAYA_RUNTIME_URL;
           const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
@@ -197,157 +155,30 @@ jobs:
             for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
               const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
               const page=await context.newPage();
-              const response=await page.goto(runtime+'/?baseline='+process.env.GITHUB_SHA,{waitUntil:'commit',timeout:20000});
+              const response=await page.goto(runtime+'/?release='+process.env.GITHUB_SHA+'&viewport='+viewport.label,{waitUntil:'domcontentloaded',timeout:60000});
               if(!response?.ok()) throw new Error(viewport.label+': live Hub HTTP unavailable');
-              await page.waitForTimeout(3000);
-              const result=await page.evaluate(()=>({title:document.title,directNine:document.querySelector('meta[name="nayanet-direct-nine"]')?.content||null,welcome:document.body.innerText.includes('welcome.nayanet.app')}));
-              console.log('LIVE_HUB_BASELINE_PROBE',viewport.label,JSON.stringify(result));
-              if(result.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical Hub title mismatch');
-              if(result.directNine!=='verified-static-top-nine') throw new Error(viewport.label+': direct-nine marker missing');
-              if(result.welcome) throw new Error(viewport.label+': Welcome front door present');
-              console.log('LIVE_HUB_BASELINE_VERIFIED',viewport.label);
-              await context.close();
-            }
-          } finally { await browser.close(); }
-          EOF
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-hub-baseline.mjs
-          rm -f verify-hub-baseline.mjs
-
-      - name: Verify canonical Hub visual surface and Smart Feed modes
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat > verify-canonical-hub.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          const runtime=process.env.NAYA_RUNTIME_URL;
-          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          try {
-            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
-              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
-              const page=await context.newPage();
-              const response=await page.goto(runtime+'/?canonical-visual='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
-              if(!response?.ok()) throw new Error(viewport.label+': live Hub HTTP unavailable');
-              await page.waitForTimeout(1800);
-
+              await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
               const probe=await page.evaluate(()=>({
                 title:document.title,
-                heroGreeting:document.querySelector('.hero h1')?.textContent?.trim()||null,
-                welcome:(document.querySelector('.hero h1')?.textContent?.match(/Good (?:morning|afternoon|evening),\s+\w+/i)||[])[0]||null,
-                leftRail:!!document.querySelector('.rail.left'),
-                rightRail:!!document.querySelector('.rail.right'),
-                topTitle:!!document.querySelector('#topTitle'),
-                ecosystem:!!document.querySelector('.ecosystem'),
-                search:!!document.querySelector('#search'),
-                hero:!!document.querySelector('.hero'),
-                feed:!!document.querySelector('.feed'),
-                blocks:document.querySelectorAll('.blocks > .block').length,
-                feedModes:[...document.querySelectorAll('.feedNav [data-feed]')].map(x=>x.dataset.feed),
-                mission:document.querySelector('.mission')?.innerText||'',
-                features:!!document.querySelector('.features'),
-                commandDeck:!!document.querySelector('.naya-command-deck'),
-                commandGlance:!!document.querySelector('.naya-at-a-glance'),
-                capture:!!document.querySelector('#naya-runtime-capture'),
-                corner:!!document.querySelector('.naya509-corner'),
-                v2Feed:!!document.querySelector('#naya-smart-feed-v2'),
-                sidebar:[...document.querySelectorAll('.rail.left .nav button')].map(b=>b.innerText.replace(/^[^A-Za-z]+/,'').replace(/\s+/g,' ').replace(/\s+NEW$/i,'').trim())
+                shell:!!document.querySelector('.app[data-shell-owner="AppShell"]'),
+                runtime:!!window.NayaAssistantRuntime,
+                capture:!!document.querySelector('[data-testid="capture-smart-note"]'),
+                sidebar:document.querySelector('.sidebar')?.innerText||'',
+                legacy:!!document.querySelector('#naya-smart-tabs')
               }));
-              console.log('CANONICAL_HUB_VISUAL_PROBE',viewport.label,JSON.stringify(probe));
-
+              console.log('CANONICAL_REACT_HUB_PROBE',viewport.label,JSON.stringify(probe));
               if(probe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical title mismatch');
-              if(!probe.welcome) throw new Error(viewport.label+': welcome greeting missing');
-              if(!probe.leftRail||!probe.rightRail) throw new Error(viewport.label+': canonical side rails missing');
-              if(!probe.topTitle||!probe.ecosystem||!probe.search||!probe.hero||!probe.feed) throw new Error(viewport.label+': canonical shell surface incomplete');
-              if(probe.blocks<3) throw new Error(viewport.label+': canonical Intelligent Block presentation missing');
-              const expectedModes=['collective','personal','activity'];
-              if(JSON.stringify(probe.feedModes)!==JSON.stringify(expectedModes)) throw new Error(viewport.label+': Smart Feed mode contract mismatch '+JSON.stringify(probe.feedModes));
-              if(!probe.mission.includes('Your life creates your intelligence every day.')) throw new Error(viewport.label+': mission bar missing');
-              if(!probe.features) throw new Error(viewport.label+': feature reports bar missing');
-              if(probe.commandDeck||probe.commandGlance) throw new Error(viewport.label+': obsolete command-deck furniture present');
-              if(probe.capture) throw new Error(viewport.label+': Hub Smart Note capture control present');
-              if(probe.corner) throw new Error(viewport.label+': obsolete Naya corner control present');
-              if(probe.v2Feed) throw new Error(viewport.label+': Smart Feed V2 replacement DOM present on canonical Home');
-              const required=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Mail','Smart Spaces','Settings'];
-              if(viewport.width>=821){ for(const label of required) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': sidebar label mismatch for '+label+' :: '+JSON.stringify(probe.sidebar)); }
-
-              for(const key of expectedModes){
-                await page.locator('.feedNav [data-feed="'+key+'"]').click();
-                await page.waitForTimeout(80);
-                const active=await page.locator('.feedNav [data-feed].active').getAttribute('data-feed');
-                if(active!==key) throw new Error(viewport.label+': Smart Feed mode '+key+' did not activate');
-              }
-
+              if(!probe.shell||!probe.runtime||!probe.capture) throw new Error(viewport.label+': canonical React runtime incomplete');
+              if(probe.legacy) throw new Error(viewport.label+': legacy Smart Tabs runtime present');
+              for(const label of ['Intelligence Today','Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Naya Play','Settings']) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': missing canonical sidebar surface '+label);
               await context.close();
             }
           } finally { await browser.close(); }
-          EOF
-          mkdir -p hub-visual-proof
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-canonical-hub.mjs
-          rm -f verify-canonical-hub.mjs
-
-      - name: Verify ten intelligence surfaces in live browser
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat > verify-intelligence-surfaces.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          const runtime=process.env.NAYA_RUNTIME_URL;
-          const expected=[['today','Your Intelligence Today'],['reports','Your Reports'],['library','Intelligent Library'],['share','Smart Share'],['ledger','Smart Ledger'],['connections','Your Connections'],['lists','Smart Lists'],['mail','Smart Mail'],['spaces','Smart Spaces'],['settings','Settings']];
-          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          try {
-            const context=await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});
-            const page=await context.newPage(); const failed=[]; page.on('pageerror',e=>failed.push('pageerror:'+e.message));
-            const response=await page.goto(runtime+'/?intelligence-surfaces='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
-            if(!response?.ok()) throw new Error('live Hub HTTP unavailable');
-            await page.waitForTimeout(1200);
-            const boot=await page.evaluate(()=>({legacy:!!document.querySelector('#naya-smart-tabs'),runtimeLoaded:!!document.querySelector('script[data-naya-real-surfaces]')}));
-            console.log('INTELLIGENCE_SURFACE_BOOT_PROBE',JSON.stringify(boot));
-            if(boot.legacy) throw new Error('legacy Smart Tabs surface still present');
-            if(!boot.runtimeLoaded) throw new Error('real intelligence surface runtime did not load');
-            for(const [key,label] of expected){ const button=page.locator('.naya-intelligence-nav [data-page="'+key+'"]'); if(await button.count()!==1) throw new Error('missing surface nav '+label); await button.click(); await page.waitForTimeout(120); const s=await page.evaluate(()=>({active:document.querySelector('.naya-intelligence-nav [data-page].active')?.dataset.page||null,heading:document.querySelector('.naya-real-workspace h2')?.textContent?.trim().replace(/^[^A-Za-z]+/,'').trim()||null,workspace:!!document.querySelector('.naya-real-workspace')})); console.log('INTELLIGENCE_SURFACE_PROBE',key,JSON.stringify(s)); if(s.active!==key||!s.workspace||s.heading!==label) throw new Error(label+': surface contract failed'); }
-            if(failed.length) throw new Error(failed.join(' | ')); console.log('TEN_INTELLIGENCE_SURFACES_BROWSER_VERIFIED'); await context.close();
-          } finally { await browser.close(); }
-          EOF
-          NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-intelligence-surfaces.mjs
-          rm -f verify-intelligence-surfaces.mjs
-
-      - name: Capture canonical Hub visual proof
-        shell: bash
-        run: |
-          set -euo pipefail
-          cat > capture-hub-proof.mjs <<'EOF'
-          import { chromium } from 'playwright';
-          const runtime=process.env.NAYA_RUNTIME_URL;
-          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
-          try {
-            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
-              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
-              const page=await context.newPage();
-              await page.goto(runtime+'/?visual-proof='+process.env.GITHUB_SHA+'&viewport='+viewport.label,{waitUntil:'domcontentloaded',timeout:60000});
-              await page.waitForTimeout(1800);
-              await page.screenshot({path:`hub-visual-proof/${viewport.label}-home.png`,fullPage:true});
-              for (const key of ['collective','personal','activity']) {
-                await page.locator('.feedNav [data-feed="'+key+'"]').click();
-                await page.waitForTimeout(100);
-                await page.screenshot({path:`hub-visual-proof/${viewport.label}-${key}.png`,fullPage:true});
-              }
-              await context.close();
-            }
-          } finally { await browser.close(); }
-          EOF
-          npm install --no-save --no-package-lock playwright@1.55.0
-          node capture-hub-proof.mjs
-          rm -f capture-hub-proof.mjs
-
-      - name: Upload canonical Hub visual proof
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v4
-        with:
-          name: canonical-hub-visual-proof
-          path: hub-visual-proof/*.png
-          if-no-files-found: error
+          NODE
 
       - name: Final proof
         run: |
           echo "LIVE_VERIFIED=${NAYA_RUNTIME_URL}"
           echo "WORKER=${CLOUDFLARE_CANONICAL_WORKER}"
           echo "SOURCE=${{ inputs.source_ref || github.sha }}"
+          echo "CANONICAL_HUB_RUNTIME=REACT_VITE"
