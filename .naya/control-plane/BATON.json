@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T20:47:07Z",
+  "generated_at": "2026-09-23T21:44:08.318Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,13 +12,15 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "98fafd909db72fd2a981b923bcf418dc1cca2be8",
+    "live_head": "LIVE_AT_EXECUTION_TIME",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
-    "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
+    "block_next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
+    "observed_head": "30a08da31fc94f7a97bd2a9a37dccf505cf8e0e2",
+    "reconciled_at": "2026-09-23T21:44:08.318Z"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -69,17 +71,17 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "next_action": {
-    "action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "Priority #2 legacy cognition-event disposition is complete as HISTORICAL_ONLY; no database repair is warranted. This is the single next readiness boundary."
+    "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE: reusable new understanding with no pre-existing source Intelligent Block; receipt 42-NAYANET-LEARNING-OUTPUT-DISPOSITION-RECEIPT-2026-09-23.md. Communication is now the single next readiness boundary."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Priority #2 legacy cognition-event disposition is complete and HISTORICAL_ONLY. Advance to exactly one boundary: generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store. Verify the boundary before advancing again.",
-    "do_not": "Do not redesign the proven Smart Note/PIS path. Do not fabricate Smart Ledger linkage for the 88 legacy cognition events. Do not start a second active front."
+    "prompt": "Resolve live main. LEARNING_OUTPUT is VERIFIED as PROMOTE through the canonical intelligence_commit path. Advance to exactly one boundary: COMMUNICATION. Determine whether the communication artifact is reusable intelligence or communication event/state, then promote or explicitly DECLINE_PROMOTION. Verify the boundary before advancing again.",
+    "do_not": "Do not redesign intelligence_commit. Do not use Smart Note as a universal shortcut. Do not create a second intelligence store. Do not start a second active front."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
