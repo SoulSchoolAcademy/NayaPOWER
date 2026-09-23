@@ -1,0 +1,264 @@
+name: Verify Collective Intelligence Chain Lesson
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/nayanet-compound-intelligence/index.ts'
+      - 'supabase/functions/naya-learning-apply/index.ts'
+      - 'supabase/functions/naya-decision-context/index.ts'
+      - '.github/workflows/verify-collective-intelligence-chain.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  collective-chain:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: ${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute one real collective intelligence lesson
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' | tee collective-chain-proof.json
+          const { chromium } = require('playwright');
+          const crypto = require('node:crypto');
+          const fs = require('node:fs');
+
+          const hub=process.env.HUB_URL, url=process.env.SUPABASE_URL, key=process.env.SUPABASE_PUBLISHABLE_KEY, run=process.env.RUN_IDENTITY;
+          const token='collective-chain-'+run+'-'+crypto.randomBytes(5).toString('hex');
+          const lessonId='lesson-'+token;
+          const targetId='collective-chain-target-'+token;
+          const lessonTitle='Collective Intelligence Chain lesson '+run;
+          const lesson='When a verified project state has an explicit next action, a cold Naya should restore that state before acting; it should not invent a new authority or restart from zero.';
+          const browser=await chromium.launch({headless:true});
+          const context=await browser.newContext();
+          const page=await context.newPage();
+
+          async function setupIdentity(){
+            await page.goto(hub+'/',{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+            const established=await page.evaluate(async({run})=>{
+              const name='Collective Chain Proof '+run;
+              const alias=('collective'+run).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+              const identity=await window.NayaNETNameFirstAuth.establish({name,alias});
+              const client=window.__NayaNETSupabaseClient;
+              const session=client?(await client.auth.getSession()).data.session:null;
+              return {identity,session:session?{userId:session.user.id,access_token:session.access_token}:null};
+            },{run});
+            if(!established.identity?.authenticated||!established.session?.access_token) throw new Error('AUTH_NOT_ESTABLISHED');
+            return established.session;
+          }
+
+          async function compound(session,action,extra={}){
+            const idempotency_key='cc-'+run+'-'+action+'-'+crypto.randomBytes(5).toString('hex');
+            const response=await fetch(url+'/functions/v1/nayanet-compound-intelligence',{
+              method:'POST',
+              headers:{Authorization:'Bearer '+session.access_token,apikey:key,'Content-Type':'application/json','x-idempotency-key':idempotency_key},
+              body:JSON.stringify({action,idempotency_key,...extra})
+            });
+            const body=await response.json().catch(()=>({}));
+            if(response.status!==200||body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify({status:response.status,body}));
+            return body.result;
+          }
+
+          async function learningApply(session,evidenceId,replayId){
+            const response=await fetch(url+'/functions/v1/naya-learning-apply',{
+              method:'POST',
+              headers:{Authorization:'Bearer '+session.access_token,apikey:key,'Content-Type':'application/json'},
+              body:JSON.stringify({evidence_id:evidenceId,replay_id:replayId})
+            });
+            const body=await response.json().catch(()=>({}));
+            if(response.status!==200||body?.ok!==true) throw new Error('LEARNING_APPLY_FAILED:'+JSON.stringify({status:response.status,body}));
+            return body;
+          }
+
+          async function decision(session,targetId){
+            const response=await fetch(url+'/functions/v1/naya-decision-context',{
+              method:'POST',
+              headers:{Authorization:'Bearer '+session.access_token,apikey:key,'Content-Type':'application/json'},
+              body:JSON.stringify({target_id:targetId})
+            });
+            const body=await response.json().catch(()=>({}));
+            if(response.status!==200||body?.ok!==true) throw new Error('DECISION_CONTEXT_FAILED:'+JSON.stringify({status:response.status,body}));
+            return body;
+          }
+
+          (async()=>{
+            const session=await setupIdentity();
+
+            const captured=await compound(session,'intelligence_commit',{
+              idempotency_key:lessonId,
+              title:lessonTitle,
+              content:lesson,
+              category:'COLLECTIVE_INTELLIGENCE',
+              topic:'COLD_CONTINUATION',
+              tags:['collective-chain','lesson','cold-continuation'],
+              learning_claim:lesson,
+              target_id:targetId,
+              applicable_scope:'NayaNET project continuation',
+              authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              what_changed:'A verified continuation lesson was captured for later cold retrieval.',
+              next_use:'Use when restoring project state before consequential continuation.',
+              unknown:['Real-world usefulness outside the tested project scope remains unproven.']
+            });
+            const eventId=captured.source_event?.event_id;
+            const evidenceId=captured.learning?.evidence_id;
+            const checkpoint1=captured.checkpoint?.checkpoint_id;
+            if(!eventId||!evidenceId||!checkpoint1) throw new Error('INITIAL_INTELLIGENCE_COMMIT_INCOMPLETE');
+
+            const retrieved=await compound(session,'retrieve',{query:lessonTitle,limit:10});
+            if(!retrieved.items?.some(x=>x.event_id===eventId)) throw new Error('LESSON_RETRIEVAL_FAILED');
+
+            const connected=await compound(session,'understand',{
+              title:'Connected interpretation '+run,
+              content:'Connected lesson: restore canonical current state first; the lesson is applicable only when the restored project state matches the continuation scope.',
+              tags:['collective-chain','connect','applicability'],
+              parent_event_id:eventId
+            });
+            const connectedEventId=connected.event?.event_id;
+            if(!connectedEventId) throw new Error('CONNECT_EVENT_MISSING');
+
+            const reconciled=await compound(session,'reconcile',{
+              claims:[
+                {field:'continuation_rule',value:'restore current state before acting',source_kind:'CANONICAL_LESSON'},
+                {field:'continuation_rule',value:'start over without restoring state',source_kind:'CONFLICTING_FIXTURE'}
+              ]
+            });
+            if(reconciled.status!=='RECONCILED_WITH_CONFLICTS'||reconciled.conflict_count<1) throw new Error('RECONCILIATION_NOT_PROVEN');
+
+            const verifiedLearning=await compound(session,'learning_verify',{
+              evidence_id:evidenceId,
+              verification_method:'CONNECTED_RECONCILED_CONTROLLED_RUNTIME_PROOF',
+              observed_value:{run,lesson_event_id:eventId,connected_event_id:connectedEventId,reconciliation:'PASS'}
+            });
+            if(verifiedLearning.status!=='VERIFIED_LEARNING'||verifiedLearning.learning?.status!=='ACTIVE') throw new Error('LEARNING_NOT_VERIFIED');
+
+            const replay=await page.evaluate(async({eventId})=>window.NayaAssistantRuntime.dreamReplay({event_id:eventId,idempotency_key:'cc-replay-'+eventId}),{eventId});
+            if(!replay||replay.source_event_id!==eventId||replay.status!=='SIMULATED') throw new Error('REPLAY_NOT_VERIFIED');
+
+            const applied=await learningApply(session,evidenceId,replay.id);
+            if(!applied.learning?.learner_state_version) throw new Error('LEARNER_STATE_NOT_UPDATED');
+
+            const decisionBefore=await decision(session,targetId);
+            if(!decisionBefore.decision?.influenced||decisionBefore.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT') throw new Error('APPLICABILITY_BEHAVIOR_CHANGE_NOT_PROVEN:'+JSON.stringify(decisionBefore));
+            if(decisionBefore.decision.authority?.changed!==false||decisionBefore.decision.authority?.granted!==false) throw new Error('AUTHORITY_CHANGED');
+
+            const outcomeEventId='collective-outcome-'+token;
+            const outcome=await page.evaluate(async({outcomeEventId,targetId,decisionBefore,lessonEventId})=>window.NayaAssistantRuntime.record({
+              event_id:outcomeEventId,
+              title:'Collective Intelligence Chain verified outcome',
+              content:'Cold-governed decision context used the verified lesson for target '+targetId+'.',
+              source:'verify-collective-intelligence-chain',
+              actor:'naya',
+              tags:['collective-chain','outcome','verified'],
+              metadata:{
+                lesson_event_id:lessonEventId,
+                target_id:targetId,
+                decision:decisionBefore.decision.decision,
+                influenced:decisionBefore.decision.influenced,
+                authority:decisionBefore.decision.authority,
+                verification:'observed runtime decision context'
+              }
+            }),{outcomeEventId,targetId,decisionBefore,lessonEventId:eventId});
+            if(!outcome?.receipt) throw new Error('OUTCOME_RECEIPT_MISSING');
+            const freshOutcome=await page.evaluate(async({outcomeEventId})=>window.NayaAssistantRuntime.retrieve(outcomeEventId).then(x=>x[0]||null),{outcomeEventId});
+            if(!freshOutcome||freshOutcome.event_id!==outcomeEventId||freshOutcome.metadata?.influenced!==true) throw new Error('OUTCOME_VERIFICATION_FAILED');
+
+            const improved=await compound(session,'checkpoint',{
+              checkpoint_id:'checkpoint:'+lessonId+':outcome',
+              source_event_ids:[eventId,connectedEventId,outcomeEventId],
+              current_understanding:'The continuation lesson was connected to a reconciled interpretation, verified as active learning, retrieved in a fresh governed decision context, applied without authority change, and produced an observed verified outcome.',
+              title:'Improved checkpoint after verified collective lesson',
+              confidence:1,
+              tags:['collective-chain','checkpoint','improved'],
+              what_changed:'The initial lesson checkpoint was strengthened by verified applicability, behavior change, and an observed outcome.',
+              learned:'Verified lesson retrieval changed governed decision behavior without changing authority.',
+              evidence_refs:[
+                {kind:'initial_checkpoint',checkpoint_id:checkpoint1},
+                {kind:'learning_evidence',evidence_id:evidenceId},
+                {kind:'replay',replay_id:replay.id},
+                {kind:'learning_apply',learner_state_version:applied.learning.learner_state_version},
+                {kind:'outcome',event_id:outcomeEventId,receipt_id:outcome.receipt?.id||outcome.receipt_id||null}
+              ],
+              authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              applicable_scope:'NayaNET project continuation',
+              next_use:'A cold successor should restore this improved checkpoint and use the lesson when the applicability scope matches.',
+              successor_relevance:'Fresh Naya must retrieve the lesson, recognize applicability, act under unchanged authority, and verify outcome.'
+            });
+            if(improved.status!=='CHECKPOINT_VERIFIED'||improved.checkpoint?.event_id!=='checkpoint:'+lessonId+':outcome') throw new Error('IMPROVED_CHECKPOINT_NOT_PERSISTED');
+
+            const cold=await compound(session,'retrieve',{query:lessonTitle,limit:20});
+            if(!cold.items?.some(x=>x.event_id===eventId)) throw new Error('COLD_RETRIEVE_LESSON_MISSING');
+            if(!cold.items?.some(x=>x.event_id==='checkpoint:'+lessonId+':outcome')) throw new Error('COLD_RETRIEVE_IMPROVED_CHECKPOINT_MISSING');
+
+            const proof={
+              schema:'NAYANET_COLLECTIVE_INTELLIGENCE_CHAIN_PROOF_V1',
+              status:'PROVEN',
+              run_id:run,
+              source_head:process.env.GITHUB_SHA,
+              chain:{
+                lesson_event_id:eventId,
+                connected_event_id:connectedEventId,
+                initial_checkpoint_id:checkpoint1,
+                learning_evidence_id:evidenceId,
+                replay_id:replay.id,
+                learner_state_version:applied.learning.learner_state_version,
+                outcome_event_id:outcomeEventId,
+                improved_checkpoint_id:'checkpoint:'+lessonId+':outcome'
+              },
+              acceptance:{
+                lesson_captured:true,
+                connected:true,
+                reconciled:true,
+                integrated:true,
+                checkpointed:true,
+                cold_retrieved:true,
+                applicability_proven:true,
+                behavior_changed:true,
+                outcome_observed:true,
+                outcome_verified:true,
+                learning_updated:true,
+                improved_checkpoint_proven:true,
+                authority_unchanged:true
+              }
+            };
+            fs.writeFileSync('collective-chain-proof.json',JSON.stringify(proof,null,2));
+            console.log(JSON.stringify(proof,null,2));
+            await context.close(); await browser.close();
+          })().catch(async e=>{console.error(e);await context.close();await browser.close();process.exit(1)});
+          NODE
+
+      - name: Verify machine-readable proof
+        run: |
+          python - <<'PY'
+          import json
+          p=json.load(open('collective-chain-proof.json'))
+          assert p["status"]=="PROVEN",p
+          assert all(p["acceptance"].values()),p["acceptance"]
+          assert p["chain"]["initial_checkpoint_id"] != p["chain"]["improved_checkpoint_id"]
+          print("COLLECTIVE_INTELLIGENCE_CHAIN_PROOF=PASS")
+          PY
+
+      - name: Upload proof artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: collective-intelligence-chain-proof-${{ github.run_id }}
+          path: collective-chain-proof.json
+          if-no-files-found: ignore
