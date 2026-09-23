@@ -63,7 +63,8 @@
     "reason": "Human and machine context loss are treated as architectural risks. The repository must remind the Naya instead of relying on memory.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "first_feature": "Smart Share"
+    "first_feature": "Smart Share",
+    "canonical_hub_source_sha": "f7a5ad535403201d0d942319166c87affcc1d93d"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
