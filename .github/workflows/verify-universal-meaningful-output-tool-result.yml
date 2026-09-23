@@ -1,0 +1,124 @@
+name: Verify Universal Meaningful Output — Tool Result
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-meaningful-output-tool-result.yml'
+      - 'supabase/functions/nayanet-compound-intelligence/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tool-result:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 && npx playwright install --with-deps chromium
+      - name: Execute bounded tool-result promotion proof
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const hub=process.env.HUB_URL, head=process.env.GITHUB_SHA;
+          const token=('tool'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase();
+          const outputId='tool-result:'+token;
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('UMOA_TOOL_TRACE',JSON.stringify(x));};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            try{
+              mark('START','PASS',{source_head:head,output_class:'TOOL_RESULT_MEANINGFUL_OUTPUT'});
+              await page.goto(hub+'/identity.html?name='+encodeURIComponent('Tool Result Promotion Proof')+'&alias='+encodeURIComponent(token),{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForFunction(()=>!!document.querySelector('button'),{timeout:30000});
+              const established=await page.evaluate(async({name,alias})=>window.NayaNETNameFirstAuth.establish({name,alias}),{name:'Tool Result Promotion Proof',alias:token});
+              if(!established?.authenticated||!established?.userId)throw new Error('AUTHENTICATION_FAILED');
+              const ownerId=established.userId; mark('IDENTITY','PASS',{owner_id:ownerId});
+              await page.goto(hub+'/?umoa-tool='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              const init=await page.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!init?.authenticated||init.user_id!==ownerId)throw new Error('AUTHORITY_INIT_MISMATCH');
+              mark('AUTHORITY','PASS',{owner_id:ownerId,persistence:init.persistence});
+              const body={
+                action:'universal_meaningful_output',
+                output_id:outputId,output_version:1,event_at:new Date().toISOString(),
+                source_ref:outputId,source_type:'tool_result',
+                title:'Canonical resolver lesson '+process.env.GITHUB_RUN_ID,
+                content:'Use the existing canonical resolver instead of creating a parallel intelligence destination.',
+                meaning:'Prevents duplicate memory paths and preserves one authoritative intelligence system.',
+                materiality:'REUSABLE',proposed_use:'Apply the canonical resolver rule when routing future meaningful outputs.',
+                applicable_scope:'NayaNET intelligence routing only.',uncertainties:[],provenance_refs:[outputId],
+                evidence_state:'OBSERVED',privacy:'PRIVATE',requested_action:'ROUTE_IF_AUTHORIZED',
+                destination_class:'existing_intelligence',authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+                confidence:.8,category:'INTELLIGENCE',topic:'UNIVERSAL_MEANINGFUL_OUTPUT_ADAPTER',
+                tags:['universal-adapter','tool-result','bounded-proof'],next_use:'Apply the canonical resolver rule when routing future meaningful outputs.',
+                value_context:{human_value:'prevent duplicate memory paths',source_type:'tool_result',output_id:outputId}
+              };
+              const call=async()=>page.evaluate(async body=>{
+                const c=window.__NayaNETSupabaseClient;
+                const r=await c.functions.invoke('nayanet-compound-intelligence',{headers:{'x-idempotency-key':body.output_id},body});
+                return {data:r.data,error:r.error?String(r.error.message||r.error):null,status:r.error?Number(r.error.status||0):200};
+              },body);
+              const first=await call();
+              if(first.status!==200||first.data?.ok!==true)throw new Error('ADAPTER_FAILED:'+JSON.stringify(first));
+              const result=first.data.result;
+              const ids={event_id:result?.source_event?.event_id,checkpoint_id:result?.checkpoint?.checkpoint_id,learning_evidence_id:result?.learning?.evidence_id,index_id:result?.projection?.index?.id};
+              if(Object.values(ids).some(v=>!v))throw new Error('LINEAGE_IDS_MISSING:'+JSON.stringify(result));
+              mark('PROMOTION','PASS',{...ids,adapter:result.adapter,schema:result.schema});
+              const persisted=await page.evaluate(async({ids,ownerId})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const [event,index,learning,checkpoint]=await Promise.all([
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',ids.event_id).eq('user_id',ownerId).single(),
+                  c.from('nayanet_intelligence_index').select('*').eq('id',ids.index_id).eq('owner_id',ownerId).single(),
+                  c.from('learning_evidence').select('*').eq('id',ids.learning_evidence_id).eq('member_id',ownerId).single(),
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',ids.checkpoint_id).eq('user_id',ownerId).single()
+                ]);
+                const block=event.data?.id?await c.from('nayanet_intelligent_blocks').select('*').contains('source_event_ids',[event.data.id]).eq('owner_id',ownerId).maybeSingle():{data:null,error:{message:'SOURCE_EVENT_MISSING'}};
+                return {event:event.data,index:index.data,learning:learning.data,checkpoint:checkpoint.data,block:block.data,errors:{event:event.error?.message,index:index.error?.message,learning:learning.error?.message,checkpoint:checkpoint.error?.message,block:block.error?.message}};
+              },{ids,ownerId});
+              if(!persisted.event||!persisted.index||!persisted.learning||!persisted.checkpoint||!persisted.block)throw new Error('PERSISTED_CHAIN_INCOMPLETE:'+JSON.stringify(persisted.errors));
+              if(persisted.event.user_id!==ownerId||persisted.learning.member_id!==ownerId||persisted.block.owner_id!==ownerId)throw new Error('OWNER_SCOPE_BREACH');
+              mark('PERSISTENCE_BLOCK','PASS',{block_id:persisted.block.block_id,owner_id:ownerId,learning_status:persisted.learning.status});
+              const replay=await call();
+              if(replay.status!==200||replay.data?.ok!==true)throw new Error('REPLAY_FAILED:'+JSON.stringify(replay));
+              const replayIds={event_id:replay.data.result?.source_event?.event_id,checkpoint_id:replay.data.result?.checkpoint?.checkpoint_id};
+              if(replayIds.event_id!==ids.event_id||replayIds.checkpoint_id!==ids.checkpoint_id)throw new Error('IDEMPOTENCY_IDENTITY_CHANGED:'+JSON.stringify({first:ids,replay:replayIds}));
+              mark('IDEMPOTENCY','PASS',{event_id:ids.event_id,checkpoint_id:ids.checkpoint_id});
+              const fresh=await context.newPage();
+              await fresh.goto(hub+'/?umoa-tool-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              const freshInit=await fresh.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!freshInit?.authenticated||freshInit.user_id!==ownerId)throw new Error('FRESH_AUTHORITY_MISMATCH');
+              const retrieved=await fresh.evaluate(async ids=>{
+                const c=window.__NayaNETSupabaseClient;
+                const e=(await c.from('nayanet_cognition_events').select('*').eq('event_id',ids.event_id).single()).data;
+                const i=(await c.from('nayanet_intelligence_index').select('*').eq('id',ids.index_id).single()).data;
+                const l=(await c.from('learning_evidence').select('*').eq('id',ids.learning_evidence_id).single()).data;
+                const cp=(await c.from('nayanet_cognition_events').select('*').eq('event_id',ids.checkpoint_id).single()).data;
+                const b=e?.id?(await c.from('nayanet_intelligent_blocks').select('*').contains('source_event_ids',[e.id]).maybeSingle()).data:null;
+                return {event:e,index:i,learning:l,checkpoint:cp,block:b};
+              },ids);
+              if(!retrieved.event||!retrieved.index||!retrieved.learning||!retrieved.checkpoint||!retrieved.block)throw new Error('FRESH_RETRIEVAL_INCOMPLETE');
+              if(retrieved.event.user_id!==ownerId||retrieved.block.owner_id!==ownerId)throw new Error('FRESH_OWNER_SCOPE_BREACH');
+              mark('FRESH_RETRIEVAL','PASS',{event_id:ids.event_id,checkpoint_id:ids.checkpoint_id,block_id:retrieved.block.block_id,owner_id:ownerId});
+              fs.writeFileSync('umoa-tool-result-proof.json',JSON.stringify({schema:'NAYANET_UMOA_TOOL_RESULT_V1',status:'VERIFIED',source_head:head,output_id:outputId,owner_id:ownerId,...ids,trace},null,2)+'\\n');
+              await fresh.close();await context.close();await browser.close();
+            }catch(error){
+              fs.writeFileSync('umoa-tool-result-proof.json',JSON.stringify({schema:'NAYANET_UMOA_TOOL_RESULT_V1',status:'FAILED',source_head:head,error:String(error?.stack||error),trace},null,2)+'\\n');
+              throw error;
+            }
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: umoa-tool-result-proof
+          path: umoa-tool-result-proof.json
+          if-no-files-found: error
