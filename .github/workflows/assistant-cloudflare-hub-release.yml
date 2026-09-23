@@ -167,7 +167,7 @@ jobs:
           rm -rf dist
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/index.html dist/index.html
-          cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
+          cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp assistant-runtime.js dist/assistant-runtime.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
