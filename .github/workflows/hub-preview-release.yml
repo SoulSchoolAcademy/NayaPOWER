@@ -1,0 +1,105 @@
+name: NAYA — Canonical Hub Branch Preview
+
+on:
+  push:
+    branches:
+      - naya/hub-clean-canonical-runtime-20260923
+    paths:
+      - 'NAYANET/HUB/**'
+      - '.github/workflows/hub-preview-release.yml'
+
+concurrency:
+  group: nayanet-hub-branch-preview
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  CLOUDFLARE_ACCOUNT_ID: b5e2a51b3e883f7722287c5f51b1196b
+  PREVIEW_WORKER: nayanet-hub-canonical-proof
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+    defaults:
+      run:
+        working-directory: NAYANET/HUB
+    steps:
+      - name: Checkout exact branch
+        uses: actions/checkout@v4
+        with:
+          ref: naya/hub-clean-canonical-runtime-20260923
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: NAYANET/HUB/package-lock.json
+
+      - name: Install
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Build
+        run: npm run build
+
+      - name: Artifact parity
+        run: npm run verify:artifact
+
+      - name: Deploy isolated Cloudflare preview
+        run: |
+          set -euo pipefail
+          npx --yes wrangler@4 deploy --config wrangler.jsonc --name "${PREVIEW_WORKER}" | tee deploy.log
+          url="$(grep -Eo 'https://[A-Za-z0-9.-]+\\.workers\\.dev' deploy.log | tail -1)"
+          test -n "${url}"
+          echo "PREVIEW_URL=${url}" | tee preview.env
+          echo "PREVIEW_URL=${url}" >> "${GITHUB_STEP_SUMMARY}"
+          echo "SOURCE_COMMIT=${GITHUB_SHA}" >> "${GITHUB_STEP_SUMMARY}"
+
+      - name: Browser acceptance against preview
+        working-directory: .
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
+        run: |
+          set -euo pipefail
+          source NAYANET/HUB/preview.env
+          npm install --no-save --no-package-lock playwright@1.55.0
+          node <<'EOF'
+          const { chromium } = require('playwright');
+          (async () => {
+            const url = process.env.PREVIEW_URL;
+            const browser = await chromium.launch({headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+            try {
+              const page = await browser.newPage({viewport:{width:1440,height:1000}});
+              const response = await page.goto(url + '/?preview=' + process.env.GITHUB_SHA,{waitUntil:'networkidle',timeout:60000});
+              if (!response?.ok()) throw new Error('HTTP failure');
+              const probe = await page.evaluate(() => ({
+                title: document.title,
+                shell: !!document.querySelector('[data-shell-owner="AppShellV3"]'),
+                sidebar: !!document.querySelector('.sidebar'),
+                search: !!document.querySelector('.universal-search input'),
+                navItems: document.querySelectorAll('.nav-item').length,
+                feedTabs: document.querySelectorAll('.sfb-lenses [role="tab"]').length,
+                intelligentBlock: !!document.querySelector('[data-intelligent-block]'),
+                feedText: document.querySelector('.home')?.innerText.slice(0,2000) || ''
+              }));
+              console.log('CANONICAL_REACT_HUB_PROBE', JSON.stringify(probe));
+              if (probe.title !== 'NayaNET — Intelligent Hub') throw new Error('title mismatch');
+              if (!probe.shell || !probe.sidebar || !probe.search) throw new Error('canonical shell missing');
+              if (probe.navItems < 10) throw new Error('sidebar navigation incomplete');
+              if (probe.feedTabs < 3) throw new Error('Smart Feed lens controls missing');
+              if (!probe.intelligentBlock) throw new Error('Intelligent Block missing from runtime');
+              const nav = [...document.querySelectorAll('.nav-item')].map(x => ({label:x.textContent.trim(),route:x.getAttribute('aria-current')}));
+              console.log('CANONICAL_SIDEBAR', JSON.stringify(nav));
+            } finally {
+              await browser.close();
+            }
+          })();
+          EOF
