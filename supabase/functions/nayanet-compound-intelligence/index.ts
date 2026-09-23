@@ -310,14 +310,14 @@ async function projectIntelligence(client: any, userId: string, body: any) {
   if(existingError) throw existingError;
   let row:any=existing;
   if(row){
-    const {data,error}=await client.from("nayanet_intelligence_index").update({
+    const {data,error}=await admin.from("nayanet_intelligence_index").update({
       title:event.title,event_time:event.created_at,status:event.status,project_id:PROJECT,
       revision:Number(row.revision??0)+1,metadata:{...(event.metadata??{}),projection_source:event.event_id,projected_at:new Date().toISOString()}
     }).eq("id",row.id).select("*").single();
     if(error) throw error;
     row=data;
   } else {
-    const {data,error}=await client.from("nayanet_intelligence_index").insert({
+    const {data,error}=await admin.from("nayanet_intelligence_index").insert({
       owner_id:userId,source_table:"nayanet_cognition_events",source_id:sourceId,object_type:event.type,
       title:event.title,event_time:event.created_at,status:event.status,project_id:PROJECT,revision:1,
       metadata:{...(event.metadata??{}),projection_source:event.event_id,projected_at:new Date().toISOString()}
