@@ -179,6 +179,15 @@ function bind(){
    const action=e.target.closest('[data-sf-action]');if(action)await act(action);
  });
 }
+async function waitForIdentity(){
+ const auth=window.NayaNETNameFirstAuth;
+ if(!auth?.current)return null;
+ for(let i=0;i<60;i++){
+   try{const identity=await auth.current();if(identity?.authenticated&&identity?.userId)return identity}catch(_){}
+   await new Promise(r=>setTimeout(r,250));
+ }
+ return null;
+}
 async function boot(){
  const feedRoute=location.pathname==='/feed'||location.hash==='#feed';
  if(!feedRoute&&!document.documentElement.dataset.nayaExplicitSmartFeed)return;
@@ -186,6 +195,8 @@ async function boot(){
  if(document.documentElement.dataset[KEY]==='1')return;
  document.documentElement.dataset[KEY]='1';css();shell();bind();
  try{
+   const identity=await waitForIdentity();
+   if(!identity?.authenticated){status('BLOCKED · AUTHENTICATION REQUIRED. Private intelligence is not exposed.');return}
    const snap=window.NayaAssistantRuntime?.init?await window.NayaAssistantRuntime.init():null;
    if(!snap?.authenticated){status('BLOCKED · AUTHENTICATION REQUIRED. Private intelligence is not exposed.');return}
    await load(true);
