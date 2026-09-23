@@ -22,17 +22,17 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "38d757435e5fdf154cf41d61cade5495a9ec66b2",
-    "checkpoint_branch": "recovery/hub-g1g2-repair-2026-09-23-38d75743",
+    "main_observed_head": "d4d309a569970b8f0fe625234db82aad162126f5",
+    "checkpoint_branch": "recovery/hub-g3-repair-2026-09-23-d4d309a",
     "checkpoint_type": "CANONICAL_HUB_VERIFIED_REPAIR_ADVANCEMENT",
-    "previous_major_hub_checkpoint_commit": "5fd7760b8a66b5210338bf3b7908214227578b68",
-    "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
+    "previous_major_hub_checkpoint_commit": "38d757435e5fdf154cf41d61cade5495a9ec66b2",
+    "previous_major_hub_checkpoint_blob_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5",
     "recovery_entrypoint_blob_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5",
-    "advancement_reason": "Approve deployment of verified live-repair fixes on the canonical static Hub: G1 canonical Smart Notes 404 (PR #544) and G2 $ is not defined x3 (PR #545). Both proven deterministic with interception probe: 10 console errors to 0. Pure surgical repairs inside the frozen canonical entrypoint; no authority transfer, no architecture change, no visual surface change."
+    "advancement_reason": "Approve deployment of verified canonical-note rendering repair (G3) on the frozen canonical static Hub: SECTION_ALIASES now accepts the canonical heading IN A NUTSHELL (in addition to NUTSHELL) which the Smart Notes canonical source uses in all 9 notes. Proven with interception probe: canonical_boards 0 -> 9, 0 console errors, 0 bad requests; all 9 boards render full real content (9 layers each). Pure surgical repair inside the frozen canonical entrypoint; no authority transfer, no architecture change, no visual surface change."
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
-    "entrypoint_blob_sha_at_checkpoint": "93e52c552b59d846918c6e966df1ce79a7432fb5",
+    "entrypoint_blob_sha_at_checkpoint": "4faa324f71d651daa398c16cdc238bd63f4828f3",
     "implementation_authority": "NAYANET/HUB/index.html",
     "preserved_react_lane": "NAYANET/HUB/src/",
     "preserved_react_lane_status": "HISTORICAL_OR_ALTERNATE_IMPLEMENTATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
