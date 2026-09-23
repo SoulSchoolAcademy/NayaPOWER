@@ -17,6 +17,7 @@ PATHS = {
     "map": ROOT / ".naya/control-plane/MAP.json",
     "proof": ROOT / ".naya/control-plane/PROOF.json",
     "baton": ROOT / ".naya/control-plane/BATON.json",
+    "hub": ROOT / "NAYANET/HUB/index.html",
 }
 
 def live_head() -> str:
@@ -67,6 +68,7 @@ def build_baton() -> dict[str, Any]:
             "proof_status": proof.get("status"),
             "state_block": state.get("current_block"),
             "block_next_action": next_action,
+            "canonical_hub_source_sha": subprocess.check_output(["git","rev-parse","HEAD:NAYANET/HUB/index.html"],cwd=ROOT,text=True).strip(),
         },
         "current_state": {
             "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -158,6 +160,7 @@ def validate_baton(baton: dict[str, Any]) -> None:
     assert n["action"] == active["next_action"] == state["single_next_action"], "BATON_NEXT_ACTION_MISMATCH"
     assert n["source"] == ".naya/control-plane/BLOCKS.json", "BATON_NEXT_ACTION_SOURCE_MISMATCH"
     assert baton["source_snapshot"]["proof_status"] == proof.get("status"), "BATON_PROOF_STATUS_MISMATCH"
+    assert baton["source_snapshot"].get("canonical_hub_source_sha") == subprocess.check_output(["git","rev-parse","HEAD:NAYANET/HUB/index.html"],cwd=ROOT,text=True).strip(), "BATON_HUB_SOURCE_MISMATCH"
 
 def write_baton() -> dict[str, Any]:
     baton = build_baton()
