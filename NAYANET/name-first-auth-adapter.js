@@ -156,6 +156,7 @@
     const session = data.session;
     if (!session?.user?.id) return null;
     return {
+      access_token: session.access_token,
       userId: session.user.id,
       isAnonymous: !!session.user.is_anonymous,
       authenticated: true,
