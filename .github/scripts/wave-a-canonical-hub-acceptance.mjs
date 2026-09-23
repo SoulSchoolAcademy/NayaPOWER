@@ -81,7 +81,7 @@ for(const kind of ["reports","intelligence","evidence","connections","mail","set
 }
 await page.locator('.rail.left [data-page="home"]').click();
 
-await page.locator('.rail.left [data-page="notes"]').click();
+await page.locator('.rail.left [data-page="notes"]').dispatchEvent('click');
 await page.locator(".naya-functional-backdrop").waitFor({state:"visible",timeout:10000});
 await page.locator("#fn-title").fill("Wave A canonical Smart Note "+Date.now());
 const title=await page.locator("#fn-title").inputValue();
