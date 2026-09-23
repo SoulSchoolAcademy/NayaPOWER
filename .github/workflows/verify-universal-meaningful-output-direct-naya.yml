@@ -126,8 +126,8 @@ jobs:
               mark('PERSISTENCE_AND_BLOCK','PASS',{block_id:persisted.block.block_id,learning_status:persisted.learning.status,owner_id:ownerId});
               const fresh=await context.newPage();
               await fresh.goto(hub+'/?uai-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
-              await fresh.evaluate(()=>window.NayaAssistantRuntime?.init?.());
-              await fresh.waitForFunction(id=>{const s=window.NayaAssistantRuntime?.snapshot?.();return !!s?.authenticated&&s.user_id===id;},{timeout:30000},ownerId);
+              const freshInit=await fresh.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!freshInit?.authenticated||freshInit.user_id!==ownerId)throw new Error('FRESH_CANONICAL_SESSION_AUTHORITY_MISMATCH');
               const retrieved=await fresh.evaluate(async ids=>{
                 const c=window.__NayaNETSupabaseClient;
                 const e=(await c.from('nayanet_cognition_events').select('*').eq('event_id',ids.event_id).single()).data;
