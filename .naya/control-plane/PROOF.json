@@ -60,11 +60,11 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "ea5cd50b0e0bedf93d25fe30eeb4efba24f1d900",
+    "observed_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
     "observed_branch": "main",
     "runtime_parity": {
-      "status": "PRODUCTION_PROVEN",
-      "claim_type": "PRODUCTION",
+      "status": "STALE",
+      "claim_type": "HISTORICAL_PRODUCTION",
       "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
       "deployment_run_id": 35519856070,
       "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
@@ -88,7 +88,11 @@
         "Smart Feed canonical identity remained unchanged through Smart Share and reload",
         "Smart Feed durable action matrix restored after reload",
         "Smart Feed publication retrieval and unauthorized persistence blocking passed"
-      ]
+      ],
+      "stale_reason": "Current main canonical Hub source has changed after the recorded production deployment; exact live source parity has not been re-established for the current Hub source.",
+      "current_main_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
+      "current_hub_blob_sha": "c70c3574d7ba0c8e999df06f2aeb6574472eaf5f",
+      "required_next": "Authorized canonical Cloudflare release on exact current main, then exact live source parity and browser proof."
     },
     "authenticated_lifecycle": {
       "status": "VERIFIED",
@@ -657,7 +661,7 @@
   },
   "recording_commit": "cac2d01e0f9739c69f6c227ba84a4efce701431a",
   "fresh_validation_required": true,
-  "next_recording_requires_fresh_execution": false,
+  "next_recording_requires_fresh_execution": true,
   "readiness_evidence": {
     "runtime_parity": {
       "status": "PRODUCTION_PROVEN",
@@ -938,7 +942,7 @@
     ]
   },
   "interpretation": "Fresh Smart Note → verified learning → learning retrieval is now proven at current-main managed-runtime scope. The final workflow verifier failed only because its Node heredoc mixed require() with top-level await; independent Supabase verification confirmed the persisted learning/event lineage. The next causal frontier is current-main learning influence on a later governed decision.",
-  "current_repository_head": "86eb8293b2d46704f234aa82d889028e89b70857",
+  "current_repository_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1003,11 +1007,11 @@
     "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
   },
   "reconciliation": {
-    "date": "2026-09-21",
-    "live_main_after_recording": "c3b99e7fa1c13628dc059e66e4168fb171450908",
-    "pi01_home_run": 35638451543,
-    "control_plane_status": "RECONCILED",
-    "note": "PI-01 is now proven at the tested owner-bound production scope. Current operational frontier moves to measured computation efficiency."
+    "status": "RECONCILED",
+    "current_main_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
+    "canonical_hub_blob_sha": "c70c3574d7ba0c8e999df06f2aeb6574472eaf5f",
+    "runtime_parity": "STALE_UNTIL_CURRENT_RELEASE",
+    "reason": "Control-plane validator now fails closed on source divergence; historical runtime proof is retained as historical evidence, not current truth."
   },
   "compound_intelligence_12": {
     "status": "PROVEN",
