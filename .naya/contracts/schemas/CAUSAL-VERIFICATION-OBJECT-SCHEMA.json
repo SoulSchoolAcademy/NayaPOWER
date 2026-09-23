@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "nayanet://schemas/causal-verification-object/v1",
+  "title": "NayaPOWER Causal Verification Object",
+  "description": "A derived verification view that binds existing execution receipt, authority, evidence, verification, result, and learning records. It is not a new persistence store.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema","causal_id","intent","authority","permission","action","observation","evidence","verification","result","receipt","learning"],
+  "properties": {
+    "schema": {"const":"NAYAPOWER_CAUSAL_VERIFICATION_OBJECT_V1"},
+    "causal_id": {"type":"string","minLength":1},
+    "intent": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["action","expected_result"],
+      "properties":{"action":{"type":"string","minLength":1},"expected_result":{"type":"string","minLength":1}}
+    },
+    "authority": {
+      "type":"object",
+      "additionalProperties": true,
+      "required":["status"],
+      "properties":{"status":{"type":"string"},"grant_id":{"type":["string","null"]},"issuer_id":{"type":["string","null"]},"subject_id":{"type":["string","null"]},"source_event_id":{"type":["string","null"]}}
+    },
+    "permission": {
+      "type":"object",
+      "additionalProperties": true,
+      "required":["basis"],
+      "properties":{"basis":{"type":"string","minLength":1},"scope":{"type":["object","null"]},"actions":{"type":["array","null"]},"constraints":{"type":["object","null"]}}
+    },
+    "action": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["name"],
+      "properties":{"name":{"type":"string","minLength":1}}
+    },
+    "observation": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["result","status"],
+      "properties":{"result":{"type":"string","minLength":1},"status":{"type":"string","minLength":1}}
+    },
+    "evidence": {"type":"object","additionalProperties":false,"required":["refs"],"properties":{"refs":{"type":"array","items":{"type":"string"}}}},
+    "verification": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["status"],
+      "properties":{"status":{"type":"string","minLength":1},"receipt_id":{"type":["string","null"]},"method":{"type":["string","null"]}}
+    },
+    "result": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["status"],
+      "properties":{"status":{"type":"string","minLength":1},"success":{"type":"boolean"}}
+    },
+    "receipt": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["execution_receipt_id"],
+      "properties":{"execution_receipt_id":{"type":"string","minLength":1},"cognition_event_id":{"type":["string","null"]}}
+    },
+    "learning": {"type":"object","additionalProperties":false,"required":["refs"],"properties":{"refs":{"type":"array","items":{}}}},
+    "causal_status": {"enum":["VERIFIED","PARTIAL","REJECTED","BLOCKED"]},
+    "causal_gaps": {"type":"array","items":{"type":"string"}}
+  }
+}
