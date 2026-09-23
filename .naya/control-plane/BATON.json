@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T04:14:41.857Z",
+  "generated_at": "2026-09-23T04:17:49.557Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,13 +12,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "744508753901e6b37b346b4ce639c0179ff6b68c",
+    "live_head": "5106f0d5ead95a97089d4f36ead64357d97f6337",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
-    "canonical_hub_source_sha": "70fc15ae1e9a00c4441ecc6ce17054787e7290d3"
+    "canonical_hub_source_sha": "c70c3574d7ba0c8e999df06f2aeb6574472eaf5f"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
