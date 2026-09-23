@@ -27,7 +27,7 @@
     "checkpoint_type": "CANONICAL_HUB_RESTORATION_RECOVERY",
     "previous_major_hub_checkpoint_commit": "74884cb69badf54fee2bff0398a3f452c6c74384",
     "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
-    "recovery_entrypoint_blob_sha": "e9aa8cf8a61acd4375c51593dc925a7a1fa5f5bc"
+    "recovery_entrypoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
