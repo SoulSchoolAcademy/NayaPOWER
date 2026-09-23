@@ -1,0 +1,16 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"nayanet://schemas/verified-ai-action/v1",
+  "title":"NayaPOWER Verified AI Action V1",
+  "description":"Generalized contract over existing NayaPOWER execution, authority, evidence, verification, receipt and learning records.",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["schema","action_id","causal"],
+  "properties":{
+    "schema":{"const":"NAYAPOWER_VERIFIED_AI_ACTION_V1"},
+    "action_id":{"type":"string","minLength":1},
+    "causal":{
+      "$ref":"nayanet://schemas/causal-verification-object/v1"
+    }
+  }
+}
