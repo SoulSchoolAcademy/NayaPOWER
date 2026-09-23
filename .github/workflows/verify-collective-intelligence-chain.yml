@@ -146,14 +146,14 @@ jobs:
             const conflictingEventId=conflicting.event?.event_id;
             if(!conflictingEventId) throw new Error('CONFLICT_EVENT_MISSING');
 
-            const reconciledBlock=await compound(session,'supersede',{
-              superseded_event_id:conflictingEventId,
+            const resolved=await compound(session,'understand',{
               title:'Reconciled continuation interpretation '+run,
               content:'Reconciled interpretation: restore the canonical current state first; restart only when the restored state proves continuation is not applicable.',
-              reason:'Resolve conflicting continuation interpretation against canonical lesson',
-              confidence:1
+              tags:['collective-chain','reconciled','resolution'],
+              parent_event_id:conflictingEventId
             });
-            if(reconciledBlock.lineage?.supersedes!==conflictingEventId||!reconciledBlock.event?.event_id) throw new Error('SEMANTIC_RECONCILIATION_NOT_PROVEN');
+            const resolvedEventId=resolved.event?.event_id;
+            if(!resolvedEventId) throw new Error('SEMANTIC_RECONCILIATION_NOT_PROVEN');
 
             const verifiedLearning=await compound(session,'learning_verify',{
               evidence_id:evidenceId,
@@ -205,7 +205,7 @@ jobs:
               evidence_refs:[
                 {kind:'initial_checkpoint',checkpoint_id:checkpoint1},
                 {kind:'learning_evidence',evidence_id:evidenceId},
-                {kind:'reconciled_interpretation',event_id:reconciledBlock.event.event_id,supersedes:conflictingEventId},
+                {kind:'reconciled_interpretation',event_id:resolvedEventId,resolves_conflict_event_id:conflictingEventId},
                 {kind:'replay',replay_id:replay.id},
                 {kind:'learning_apply',learner_state_version:applied.learning.learner_state_version},
                 {kind:'outcome',event_id:outcomeEventId,receipt_id:outcome.receipt?.id||outcome.receipt_id||null}
