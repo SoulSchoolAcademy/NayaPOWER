@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T20:15:00Z",
+  "generated_at": "2026-09-23T20:27:00Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
+    "live_head": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -72,10 +72,10 @@
     "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval."
   },
   "next_action": {
-    "action": "Obtain fresh explicit production authorization for the single causal Supabase Edge Function repair at fa112deec15d68ab0b9796b70e5c3ae6cde7b143, deploy nayanet-compound-intelligence, then rerun the same P0-04 proof.",
-    "status": "BLOCKED_PENDING_PRODUCTION_AUTHORIZATION",
+    "action": "Resolve the fresh P0-04 canonical-ingress TypeError after IDENTITY → AUTHORITY on deployed nayanet-compound-intelligence v28. Inspect the live runtime response/logs for the exact first causal divergence, make exactly one smallest causal repair, deploy only that repair, then rerun P0-04 once.",
+    "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "Fresh P0-04 run 35914547730 reached IDENTITY → AUTHORITY but failed at canonical ingress; independent endpoint probe returned 503 BOOT_ERROR. The smallest source repair is now committed but production deployment requires fresh explicit authorization."
+    "reason": "The learning rung itself is now VERIFIED by run 35915387903, including learning_verify, active retrieval, decision influence, cold reuse, unchanged authority, and independent DB verification. The next P0-04 regression on main reached IDENTITY → AUTHORITY but failed at intelligence_commit with browser TypeError: Failed to fetch. Do not advance to unrelated gaps until the canonical promotion path is green again."
   },
   "successor_prompt": {
     "prompt": "Resolve live main. Preserve the proven Smart Note receiver and Intelligent Block lifecycle. Then execute exactly one bounded P0-04 proof: submit one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, prove provenance → validation → integration → checkpoint → fresh retrieval, and do not claim arbitrary ChatGPT conversation capture.",
@@ -93,10 +93,13 @@
   },
   "execution_attempt": {
     "status": "FAILED_AT_CANONICAL_INGRESS",
-    "workflow_run": 35914547730,
-    "job_id": 107362601134,
-    "source_head": "547ec350d0a32f6fc58ac16440fea6e23ad25154",
-    "repair_commit": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
+    "workflow_run": 35915882471,
+    "source_head": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
+    "deployed_function_version": 28,
+    "first_deterministic_failure": "CANONICAL_INGRESS",
+    "error": "TypeError: Failed to fetch",
+    "endpoint_health": "BOOT OK / invalid JWT correctly returns 401; authenticated P0-04 request still fails at ingress",
+    "repair_commit": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
     "proof_status": "OPEN"
   }
 }
