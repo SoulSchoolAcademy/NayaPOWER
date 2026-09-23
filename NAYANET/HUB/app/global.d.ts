@@ -1,8 +1,5 @@
 export {};
 
 declare global {
-  interface Window {
-    NayaAssistantRuntime?: any;
-    NayaNETNameFirstAuth?: any;
-  }
+  interface Window { NayaAssistantRuntime?: any; NayaNETNameFirstAuth?: any; }
 }
