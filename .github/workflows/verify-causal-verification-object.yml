@@ -1,0 +1,30 @@
+name: Verify Causal Verification Object
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/causal_verification.py'
+      - '.naya/contracts/schemas/CAUSAL-VERIFICATION-OBJECT-SCHEMA.json'
+      - 'tools/test_causal_verification_object.py'
+      - '.github/workflows/verify-causal-verification-object.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  causal-verification-object:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact main source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Execute Causal Verification Object proof
+        run: python tools/test_causal_verification_object.py
