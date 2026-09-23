@@ -23,8 +23,8 @@
   },
   "current_checkpoint": {
     "main_observed_head": "5fd7760b8a66b5210338bf3b7908214227578b68",
-    "checkpoint_branch": "recovery/hub-freeze-2026-09-23-f0b25adb",
-    "checkpoint_type": "PRE_RESTORATION_RECOVERY",
+    "checkpoint_branch": "recovery/hub-restored-2026-09-23-5fd7760b",
+    "checkpoint_type": "CANONICAL_HUB_RESTORATION_RECOVERY",
     "previous_major_hub_checkpoint_commit": "74884cb69badf54fee2bff0398a3f452c6c74384",
     "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
     "recovery_entrypoint_blob_sha": "e9aa8cf8a61acd4375c51593dc925a7a1fa5f5bc"
