@@ -18,6 +18,7 @@ on:
       - 'identity.html'
       - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
+      - '.naya/control-plane/EXECUTION-SESSION.json'
   workflow_dispatch:
     inputs:
       approval:
