@@ -180,19 +180,19 @@ function bind(){
  });
 }
 function canonicalHub(){return !!document.querySelector('meta[name="nayanet-direct-nine"]')&&!!document.querySelector('.feed .blocks');}
-function canonicalText(v){return String(v??'').replace(/\\s+/g,' ').trim();}
+function canonicalText(v){return String(v??'').replace(/\s+/g,' ').trim();}
 function canonicalValue(o,...ks){for(const k of ks){const v=o?.[k];if(v!==undefined&&v!==null&&canonicalText(v))return v}return '';}
 function canonicalLayerData(item){
  const ib=item?.metadata?.intelligent_block_v1||{}, identity=ib.identity||{}, truth=ib.truth||{}, authority=ib.authority||{}, context=ib.context||{}, life=ib.lifecycle||{}, value=ib.value||{}, integrity=ib.integrity||{};
  return [
-  ['SOURCE · PROVENANCE','Source: '+canonicalValue(item,'source','source_type')+'\\nEvent: '+canonicalValue(item,'event_id','id')],
-  ['TRUTH · VERIFICATION','State: '+canonicalValue(item,'verification_state','verification','status')+'\\nEvidence: '+canonicalValue(truth,'evidence_state','evidence')],
-  ['AUTHORITY','State: '+canonicalValue(authority,'state','status')+'\\nScope: '+canonicalValue(authority,'scope','reason')],
-  ['PRIVACY · CONTEXT','Visibility: '+canonicalValue(item,'visibility','sharing_state')+'\\nClassification: '+canonicalValue(item,'classification','type')],
-  ['LIFECYCLE','Stage: '+canonicalValue(life,'stage','status')+'\\nLineage: '+canonicalValue(life,'lineage','parent_event_id')],
-  ['VALUE','State: '+canonicalValue(value,'state','status')+'\\nConfidence: '+canonicalValue(item,'confidence')],
+  ['SOURCE · PROVENANCE','Source: '+canonicalValue(item,'source','source_type')+'\nEvent: '+canonicalValue(item,'event_id','id')],
+  ['TRUTH · VERIFICATION','State: '+canonicalValue(item,'verification_state','verification','status')+'\nEvidence: '+canonicalValue(truth,'evidence_state','evidence')],
+  ['AUTHORITY','State: '+canonicalValue(authority,'state','status')+'\nScope: '+canonicalValue(authority,'scope','reason')],
+  ['PRIVACY · CONTEXT','Visibility: '+canonicalValue(item,'visibility','sharing_state')+'\nClassification: '+canonicalValue(item,'classification','type')],
+  ['LIFECYCLE','Stage: '+canonicalValue(life,'stage','status')+'\nLineage: '+canonicalValue(life,'lineage','parent_event_id')],
+  ['VALUE','State: '+canonicalValue(value,'state','status')+'\nConfidence: '+canonicalValue(item,'confidence')],
   ['INTEGRITY','Content hash: '+canonicalValue(integrity,'content_hash','sha256')],
-  ['BLOCK · IDENTITY','Schema: '+canonicalValue(identity,'schema_version','schema')+'\\nEvent: '+canonicalValue(identity,'event_id') ]
+  ['BLOCK · IDENTITY','Schema: '+canonicalValue(identity,'schema_version','schema')+'\nEvent: '+canonicalValue(identity,'event_id') ]
  ];
 }
 function bindCanonicalHubNav(){
@@ -224,7 +224,7 @@ function renderCanonicalHub(items,stream){
  if(count)count.textContent=items.length+' LIVE · CANONICAL INTELLIGENCE';
  cards.forEach((card,i)=>{
    const item=items[i];
-   card.style.display=item?'block':'none';
+   card.style.setProperty('display',item?'block':'none','important');
    if(!item)return;
    const id=canonicalText(canonicalValue(item,'source_id','intelligence_id','id','event_id')||('canonical-'+i));
    card.dataset.intelligenceId=id;card.dataset.nayaFeed=stream;card.dataset.provenance='Canonical runtime';
