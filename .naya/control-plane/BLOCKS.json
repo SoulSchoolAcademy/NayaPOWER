@@ -91,8 +91,8 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
-    "completion": "Bounded Smart Note compounding and the current Intelligent Block lifecycle are fresh and independently persisted-state verified; lifecycle render/continuation/successor proof is run 35906051544.",
+    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "completion": "P0-04 meaningful-output promotion is verified at defined owner/runtime scope: identity, authority, canonical ingress, provenance, validation, integration, checkpoint, Intelligent Block persistence, and fresh retrieval all passed.",
     "status": "PROVEN"
   },
   "last_next_action_cycle": {
@@ -194,37 +194,13 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+  "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
   "current_attempt": {
-    "status": "PROVEN",
-    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_COMPOUNDING_LOOP",
-    "workflow_run": 35791868426,
-    "job_id": 106962015427,
-    "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
-    "owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-    "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-    "evidence_id": "06fefcfb-64d0-4c40-a1c3-f51491f04d0b",
-    "capture_receipt_id": "127a437a-8841-4699-b89c-e3da38be9a1d",
-    "runtime_observation": "Smart Note captured through canonical Hub; learning_candidate created; learning_verify promoted evidence to ACTIVE; learning_retrieve returned the exact ACTIVE evidence.",
-    "independent_verification": "PASS",
-    "independent_verification_source": "Supabase managed SQL read after workflow runtime",
-    "independently_verified": {
-      "learning_status": "ACTIVE",
-      "learning_member_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-      "learning_source_event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-      "event_owner_id": "c93298dc-9a17-42bc-bf84-433d00178116",
-      "event_project_id": "NayaNET",
-      "event_id": "0b644d37-1e3c-4de3-9e93-a72220dfe717",
-      "verification_method": "MANAGED_RUNTIME_SMART_NOTE_CAPTURE_AND_RETRIEVAL"
-    },
-    "workflow_harness_note": "Workflow job conclusion FAILED after the managed-runtime boundary completed because its independent-verification Node heredoc used require() with top-level await, producing ERR_AMBIGUOUS_MODULE_SYNTAX. This is proof-harness failure only; the persisted runtime result was independently verified outside the failed step.",
-    "causal_repairs": [
-      {
-        "defect": "Browser page.evaluate() failed to fetch the compound-intelligence Edge Function.",
-        "repair": "Moved managed-runtime Edge Function invocation to the GitHub runner's Node fetch while retaining the authenticated session token.",
-        "repair_source_commit": "76a54f5fd508595072d532ffe8b6fcad9374ff17"
-      }
-    ],
-    "final_truth_boundary": "The Smart Note → learning_candidate → learning_verify → learning_retrieve runtime boundary is PROVEN for this fresh owner and source scope. The workflow's final independent-verifier step is not itself passing and must not be described as a successful workflow job."
+    "status": "VERIFIED",
+    "workflow_run": 35913487739,
+    "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
+    "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
+    "causal_boundary": "intelligence_commit → canonical Intelligent Block materialization",
+    "next_action": "Generalize promotion across meaningful Naya outputs, beginning with an evidence-backed inventory of output surfaces and one universal adapter contract."
   }
 }
