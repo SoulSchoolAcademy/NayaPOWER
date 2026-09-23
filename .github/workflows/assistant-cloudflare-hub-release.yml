@@ -225,7 +225,8 @@ jobs:
 
               const probe=await page.evaluate(()=>({
                 title:document.title,
-                heroGreeting:document.querySelector('.hero h1')?.textContent?.trim()||null,\n                welcome:(document.querySelector('.hero h1')?.textContent?.match(/Good (?:morning|afternoon|evening),\\s+\\w+/i)||[])[0]||null,
+                heroGreeting:document.querySelector('.hero h1')?.textContent?.trim()||null,
+                welcome:(document.querySelector('.hero h1')?.textContent?.match(/Good (?:morning|afternoon|evening),\\s+\\w+/i)||[])[0]||null,
                 leftRail:!!document.querySelector('.rail.left'),
                 rightRail:!!document.querySelector('.rail.right'),
                 topTitle:!!document.querySelector('#topTitle'),
