@@ -591,6 +591,15 @@ async function supersede(client: any, userId: string, body: any) {
   const old = await client.from("nayanet_cognition_events").select("id,event_id,title,type,status,metadata").eq("id",oldId).eq("user_id",userId).single();
   if (old.error || !old.data) throw new Error("SUPERSEDED_EVENT_NOT_OWNED");
   if (!blockId) throw new Error("SUPERSEDED_BLOCK_ID_REQUIRED");
+  const requestedNewBlockId = String(body.new_block_id ?? "").trim();
+  if (requestedNewBlockId) {
+    const replay = await client.from("nayanet_intelligent_blocks").select("*").eq("block_id",requestedNewBlockId).eq("owner_id",userId).maybeSingle();
+    if (replay.error) throw replay.error;
+    if (replay.data) {
+      if (String(replay.data.provenance?.idempotency_key ?? "") !== idempotencyKey) throw new Error("SUPERSEDE_IDEMPOTENCY_KEY_MISMATCH");
+      return {event:null,receipt:null,replayed:true,lineage:{superseded_block_id:blockId,new_block_id:requestedNewBlockId},intelligent_block:replay.data};
+    }
+  }
   const oldBlock = await client.from("nayanet_intelligent_blocks").select("*").eq("block_id",blockId).eq("owner_id",userId).single();
   if (oldBlock.error || !oldBlock.data) throw new Error("SUPERSEDED_BLOCK_NOT_OWNED");
   const event = {
