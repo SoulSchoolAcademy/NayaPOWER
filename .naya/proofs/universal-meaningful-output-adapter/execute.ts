@@ -25,7 +25,7 @@ const input = {
 
 function commitBody() {
   return {
-    action: "intelligence_commit",
+    action: "universal_meaningful_output",
     idempotency_key: idempotencyKey,
     title: input.title,
     content: input.content,
