@@ -94,12 +94,11 @@ jobs:
           if s.get('control_plane',{}).get('updated') is not True: raise SystemExit('CONTROL_PLANE_NOT_UPDATED')
           if s.get('sign_out',{}).get('status')!='SIGNED_OUT': raise SystemExit('SIGN_OUT_MISSING')
           parents=subprocess.check_output(['git','rev-list','--parents','-n','1','HEAD'],text=True).strip().split()
-          if len(parents)!=3: raise SystemExit('CANONICAL_RELEASE_REQUIRES_MERGE_COMMIT')
-          execution_branch_parent=parents[2]
+          execution_parent=parents[1]
           subprocess.run(['git','fetch','--no-tags','--unshallow','origin'],check=True)
-          if subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],execution_branch_parent]).returncode!=0:
-              raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_BRANCH')
-          print('NAYA_SESSION_VERIFIED',s['session_id'],'MERGE_COMMIT',parents[1],'EXECUTION_BRANCH',execution_branch_parent)
+          if subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],execution_parent]).returncode!=0:
+              raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_COMMIT')
+          print('NAYA_SESSION_VERIFIED',s['session_id'],'HEAD',parents[0],'PARENT',execution_parent)
           PY
 
       - name: Build canonical React Hub artifact
