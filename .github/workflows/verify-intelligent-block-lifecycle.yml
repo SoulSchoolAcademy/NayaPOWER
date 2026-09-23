@@ -43,6 +43,7 @@ jobs:
           const browser=await chromium.launch({headless:true});
           const page=await browser.newPage({viewport:{width:1440,height:900}});
           const trace=[];
+          const sourceHead=process.env.GITHUB_SHA;
           const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('PI_BLOCK_LIFECYCLE',JSON.stringify(x));};
           try{
             await page.goto(HUB+'/?ibl=1',{waitUntil:'domcontentloaded',timeout:60000});
@@ -159,9 +160,9 @@ jobs:
             if(authority.status!==200||authority.body?.ok!==true||authority.body?.result?.status!=='AUTHORIZED')throw new Error('CONTINUATION_AUTHORITY_FAILED:'+JSON.stringify(authority));
             const grantId=authority.body.result.grant?.grant_id;
             if(!grantId)throw new Error('CONTINUATION_GRANT_ID_MISSING');
-            const continuation=await page.evaluate(async({grantId,parentEventId})=>{
+            const continuation=await page.evaluate(async({grantId,parentEventId,sourceHead})=>{
               const token=(await window.__NayaNETSupabaseClient.auth.getSession()).data?.session?.access_token;
-              const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({action:'continue_authorized',authority_grant_id:grantId,parent_event_id:parentEventId,outcome:'Cold successor continued from the verified superseding Intelligent Block.',source_head:process.env.GITHUB_SHA})});
+              const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({action:'continue_authorized',authority_grant_id:grantId,parent_event_id:parentEventId,outcome:'Cold successor continued from the verified superseding Intelligent Block.',source_head:sourceHead})});
               return {status:r.status,body:await r.json()};
             },{grantId,parentEventId:successorEventId});
             if(continuation.status!==200||continuation.body?.ok!==true||continuation.body?.result?.status!=='CONTINUATION_VERIFIED')throw new Error('CONTINUATION_FAILED:'+JSON.stringify(continuation));
@@ -169,11 +170,11 @@ jobs:
             if(!continuationEventId)throw new Error('CONTINUATION_EVENT_ID_MISSING');
             mark('CONTINUE','PASS',{parent_event_id:successorEventId,continuation_event_id:continuationEventId,grant_id:grantId});
 
-            const handoff=await page.evaluate(async({parentEventId,continuationEventId})=>{
+            const handoff=await page.evaluate(async({parentEventId,continuationEventId,sourceHead})=>{
               const token=(await window.__NayaNETSupabaseClient.auth.getSession()).data?.session?.access_token;
-              const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({action:'successor_handoff',parent_event_id:parentEventId,what_happened:'Verified Intelligent Block supersession lifecycle completed.',what_changed:'A successor block superseded the predecessor with preserved lineage.',learned:'Idempotent supersession preserves canonical identity and evidence lineage.',next_action:'Cold Naya retrieves the successor Block and continues from its verified state.',evidence_required:'Verify successor retrieval/render/continuation lineage.',source_head:process.env.GITHUB_SHA,continuation_event_id:continuationEventId})});
+              const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({action:'successor_handoff',parent_event_id:parentEventId,what_happened:'Verified Intelligent Block supersession lifecycle completed.',what_changed:'A successor block superseded the predecessor with preserved lineage.',learned:'Idempotent supersession preserves canonical identity and evidence lineage.',next_action:'Cold Naya retrieves the successor Block and continues from its verified state.',evidence_required:'Verify successor retrieval/render/continuation lineage.',source_head:sourceHead,continuation_event_id:continuationEventId})});
               return {status:r.status,body:await r.json()};
-            },{parentEventId:successorEventId,continuationEventId});
+            },{parentEventId:successorEventId,continuationEventId,sourceHead});
             if(handoff.status!==200||handoff.body?.ok!==true||!handoff.body?.result?.successor?.event_id)throw new Error('SUCCESSOR_HANDOFF_FAILED:'+JSON.stringify(handoff));
             mark('SUCCESSOR','PASS',{parent_event_id:successorEventId,successor_event_id:handoff.body.result.successor.event_id});
 
