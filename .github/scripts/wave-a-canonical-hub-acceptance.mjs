@@ -76,10 +76,10 @@ for(const kind of required){
   const button=page.locator('.rail.left [data-page="'+kind+'"]');
   await button.click({force:true});
   if(kind==="today") continue;
-  await page.locator(".naya-functional-backdrop").waitFor({state:"visible",timeout:10000});
-  const heading=await page.locator(".naya-functional-panel h2").textContent();
+  await page.locator(".nc-modal").waitFor({state:"visible",timeout:10000});
+  const heading=await page.locator(".nc-modal h2").textContent();
   navChecks[kind]=heading;
-  await page.locator(".naya-functional-panel [data-close]").click();
+  await page.locator(".nc-modal [data-nc-close]").click();
 }
 await page.locator('.rail.left [data-page="today"]').click({force:true});
 
