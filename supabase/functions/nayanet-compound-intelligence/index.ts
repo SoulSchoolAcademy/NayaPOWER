@@ -765,66 +765,6 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     sourceEvent=persisted.data;
   }
   const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
-  const blockExisting=await admin.from("nayanet_intelligent_blocks").select("*").contains("source_event_ids",[sourceEvent.id]).eq("owner_id",userId).maybeSingle();
-  if(blockExisting.error) throw blockExisting.error;
-  let intelligentBlock:any=blockExisting.data;
-  if(!intelligentBlock){
-    const blockId=crypto.randomUUID();
-    const blockContent={
-      identity:{object_id:"IB:"+blockId,event_id:eventId,version:1,namespace:"nayanet",schema_version:"NAYANET_INTELLIGENT_BLOCK_V1"},
-      meaning:{title,content,category,topic},
-      source_event:{id:sourceEvent.id,event_id:eventId,source:sourceEvent.source,source_hash:sourceEvent.source_hash},
-      lifecycle:{stage:"ACTIVE",created_at:sourceEvent.created_at,updated_at:new Date().toISOString()},
-      applicable_scope:body.applicable_scope ?? null,
-      authority_scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY"
-    };
-    const blockInserted=await admin.from("nayanet_intelligent_blocks").insert({
-      block_id:blockId,owner_id:userId,subject_id:category,title,block_type:"MEANINGFUL_OUTPUT",version:1,status:"ACTIVE",
-      understanding_state:"CANDIDATE",owner_scope:"PRIVATE",source_event_ids:[sourceEvent.id],
-      evidence_refs:[
-        {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
-        {kind:"source_event",event_id:eventId,source_id:sourceEvent.id},
-        {kind:"intelligence_index",index_id:projection.index?.id ?? null}
-      ],
-      provenance:{source:"nayanet-compound-intelligence",idempotency_key:idempotencyKey,canonical_event_id:eventId,source_event_id:sourceEvent.id},
-      value_context:{usefulness:"reusable understanding",confidence:Number.isFinite(Number(body.confidence)) ? Number(body.confidence) : 0.8},
-      applicable_scope:body.applicable_scope ?? {},content:blockContent,schema_version:"INTELLIGENT_BLOCK_V1"
-    }).select("*").single();
-    if(blockInserted.error) throw blockInserted.error;
-    intelligentBlock=blockInserted.data;
-  }
-  const learningClaim=String(body.learning_claim ?? content).trim();
-  const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
-    .eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
-  if(learningExisting.error) throw learningExisting.error;
-  let learning:any=learningExisting.data;
-  if(!learning){
-    const inserted=await client.from("learning_evidence").insert({
-      member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),
-      level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",claim:learningClaim.slice(0,2000),
-      observed_value:{category,topic,applicable_scope:body.applicable_scope ?? null},
-      verification_method:"PENDING_OUTCOME_VERIFICATION",source_event_id:eventId
-    }).select("*").single();
-    if(inserted.error) throw inserted.error;
-    learning=inserted.data;
-  }
-  const checkpoint=await checkpointIntelligence(client,userId,{
-    checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,
-    title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
-    tags:["intelligence","checkpoint","intelligent-block",category,topic],
-    what_changed:body.what_changed ?? "New intelligence was captured and integrated into the canonical intelligence index.",
-    learned:learningClaim,
-    evidence_refs:[
-      {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
-      {kind:"source_event",event_id:eventId},{kind:"intelligence_index",index_id:projection.index?.id ?? null}
-    ],
-    authority_scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",
-    unknown:Array.isArray(body.unknown) ? body.unknown : ["Outcome-based verification of future behavior remains required."],
-    applicable_scope:body.applicable_scope ?? null,
-    next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
-    successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
-    source_head:body.source_head ?? null
-  });
   const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
   const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
   blockDigest[6] = (blockDigest[6] & 0x0f) | 0x50;
