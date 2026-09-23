@@ -12,7 +12,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "5d2c69e6fc3e4e308c48e5cd3f4af728421d43a0",
+    "live_head": "98fafd909db72fd2a981b923bcf418dc1cca2be8",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
