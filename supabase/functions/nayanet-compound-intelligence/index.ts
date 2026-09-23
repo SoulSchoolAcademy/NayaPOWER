@@ -606,7 +606,7 @@ async function supersede(client: any, userId: string, body: any) {
   const evidenceRefs = Array.isArray(body.evidence_refs) ? body.evidence_refs : [{receipt_id:receipt?.id ?? receipt?.receipt_id ?? null, event_id:event.event_id}];
   const rpc = await client.rpc("nayanet_supersede_intelligent_block",{
     p_superseded_block_id:blockId,
-    p_new_block_id:crypto.randomUUID(),
+    p_new_block_id:String(body.new_block_id ?? crypto.randomUUID()),
     p_owner_id:userId,
     p_subject_id:body.subject_id ?? oldBlock.data.subject_id,
     p_title:body.title ?? ("Superseding "+oldBlock.data.title),
