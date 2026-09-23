@@ -725,6 +725,90 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
   };
 }
 
+async function commitIntelligence(client: any, userId: string, body: any) {
+  const idempotencyKey = String(body.idempotency_key ?? "").trim();
+  const content = String(body.content ?? "").trim();
+  if (!idempotencyKey) throw new Error("INTELLIGENCE_IDEMPOTENCY_KEY_REQUIRED");
+  if (!content) throw new Error("INTELLIGENCE_CONTENT_REQUIRED");
+  const eventId = "intelligence:" + idempotencyKey;
+  const checkpointId = "checkpoint:" + idempotencyKey;
+  const title = String(body.title ?? "Intelligent Block");
+  const category = String(body.category ?? "INTELLIGENCE");
+  const topic = String(body.topic ?? "GENERAL");
+  const tags = Array.isArray(body.tags) ? body.tags.map(String) : ["intelligence","intelligent-block","compounding"];
+  const existing = await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
+    .eq("event_id", eventId).eq("user_id", userId).eq("project_id", PROJECT).maybeSingle();
+  if (existing.error) throw existing.error;
+  let sourceEvent:any = existing.data;
+  let captureReceipt:any = null;
+  if (sourceEvent) {
+    if (String(sourceEvent.metadata?.idempotency_key ?? "") !== idempotencyKey || String(sourceEvent.content ?? "") !== content) {
+      throw new Error("INTELLIGENCE_IDENTITY_CONFLICT");
+    }
+  } else {
+    const event = {
+      event_id:eventId,type:"intelligent_block_capture",classification:"intelligent_block",title,content,
+      source:"nayanet-compound-intelligence",status:"active",actor:"naya",
+      confidence:Number.isFinite(Number(body.confidence)) ? Number(body.confidence) : 0.8,tags,
+      parent_event_id:body.parent_event_id ?? null,source_hash:"intelligence:"+idempotencyKey,
+      schema_version:"INTELLIGENT_BLOCK_V1",
+      metadata:{idempotency_key:idempotencyKey,category,topic,applicable_scope:body.applicable_scope ?? null,
+        limits:body.limits ?? null,human_teaching:body.human_teaching === true,captured_at:new Date().toISOString()}
+    };
+    captureReceipt=await record(client,event,"intelligence.capture",
+      "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
+      "Canonical Intelligent Block source event persisted.",
+      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}]);
+    const persisted=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
+      .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).single();
+    if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
+    sourceEvent=persisted.data;
+  }
+  const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
+  const learningClaim=String(body.learning_claim ?? content).trim();
+  const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
+    .eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
+  if(learningExisting.error) throw learningExisting.error;
+  let learning:any=learningExisting.data;
+  if(!learning){
+    const inserted=await client.from("learning_evidence").insert({
+      member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),
+      level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",claim:learningClaim.slice(0,2000),
+      observed_value:{category,topic,applicable_scope:body.applicable_scope ?? null},
+      verification_method:"PENDING_OUTCOME_VERIFICATION",source_event_id:eventId
+    }).select("*").single();
+    if(inserted.error) throw inserted.error;
+    learning=inserted.data;
+  }
+  const checkpoint=await checkpointIntelligence(client,userId,{
+    checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,
+    title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
+    tags:["intelligence","checkpoint","intelligent-block",category,topic],
+    what_changed:body.what_changed ?? "New intelligence was captured and integrated into the canonical intelligence index.",
+    learned:learningClaim,
+    evidence_refs:[
+      {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
+      {kind:"source_event",event_id:eventId},{kind:"intelligence_index",index_id:projection.index?.id ?? null}
+    ],
+    authority_scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",
+    unknown:Array.isArray(body.unknown) ? body.unknown : ["Outcome-based verification of future behavior remains required."],
+    applicable_scope:body.applicable_scope ?? null,
+    next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
+    successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
+    source_head:body.source_head ?? null
+  });
+  return {
+    schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
+    idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
+    learning:{status:learning.status,evidence_id:learning.id,target_id:learning.target_id},
+    checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,
+      checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,
+      receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null},
+    proof_boundary:"Capture + integration + checkpoint are persisted. Applicability, behavior change, outcome verification, and improvement remain required before the lesson is promoted to VERIFIED/WISDOM.",
+    rule:"One governed commit path; idempotent identity; no second intelligence store; private by default."
+  };
+}
+
 async function health(client: any, userId: string) {
   const [e,l,r,d,o] = await Promise.all([
     client.from("nayanet_cognition_events").select("id",{count:"exact",head:true}).eq("user_id",userId).eq("project_id",PROJECT),
@@ -773,6 +857,7 @@ Deno.serve(async (req) => {
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
       case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
+      case "intelligence_commit": result=await commitIntelligence(client,user.id,body); break;
       case "health": result=await health(client,user.id); break;
       case "dream": {
         const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
