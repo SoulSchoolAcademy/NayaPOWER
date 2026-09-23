@@ -583,19 +583,47 @@ async function share(client: any, userId: string, body: any) {
 
 async function supersede(client: any, userId: string, body: any) {
   const oldId = String(body.superseded_event_id ?? "").trim();
+  const blockId = String(body.superseded_block_id ?? "").trim();
   const content = String(body.content ?? "").trim();
+  const idempotencyKey = String(body.idempotency_key ?? "").trim();
   if (!oldId || !content) throw new Error("SUPERSEDED_EVENT_AND_CONTENT_REQUIRED");
-  const old = await client.from("nayanet_cognition_events").select("event_id").eq("id",oldId).eq("user_id",userId).single();
+  if (!idempotencyKey) throw new Error("SUPERSEDE_IDEMPOTENCY_KEY_REQUIRED");
+  const old = await client.from("nayanet_cognition_events").select("id,event_id,title,type,status,metadata").eq("id",oldId).eq("user_id",userId).single();
   if (old.error || !old.data) throw new Error("SUPERSEDED_EVENT_NOT_OWNED");
+  if (!blockId) throw new Error("SUPERSEDED_BLOCK_ID_REQUIRED");
+  const oldBlock = await client.from("nayanet_intelligent_blocks").select("*").eq("block_id",blockId).eq("owner_id",userId).single();
+  if (oldBlock.error || !oldBlock.data) throw new Error("SUPERSEDED_BLOCK_NOT_OWNED");
   const event = {
     event_id: "supersede:" + crypto.randomUUID(), type:"intelligence_revision", classification:"supersession",
     title:String(body.title ?? "Superseding intelligence"), content, source:"nayanet-compound-intelligence",
     status:"active", actor:"naya", confidence:Number(body.confidence ?? 1), tags:["intelligence","supersedes"],
     parent_event_id:old.data.event_id, source_hash:"supersede", schema_version:"1.0.0",
-    metadata:{supersedes:old.data.event_id, reason:String(body.reason ?? "New verified evidence")}
+    metadata:{supersedes:old.data.event_id, supersedes_block_id:blockId, reason:String(body.reason ?? "New verified evidence")}
   };
   const receipt=await record(client,event,"supersede_intelligence","New intelligence revision persisted","Superseding event persisted with explicit lineage.");
-  return {event,receipt,lineage:{supersedes:old.data.event_id}};
+  const newEvent = await client.from("nayanet_cognition_events").select("id,event_id").eq("event_id",event.event_id).eq("user_id",userId).single();
+  if (newEvent.error || !newEvent.data) throw new Error("SUPERSEDE_EVENT_PERSISTENCE_ID_NOT_FOUND");
+  const evidenceRefs = Array.isArray(body.evidence_refs) ? body.evidence_refs : [{receipt_id:receipt?.id ?? receipt?.receipt_id ?? null, event_id:event.event_id}];
+  const rpc = await client.rpc("nayanet_supersede_intelligent_block",{
+    p_superseded_block_id:blockId,
+    p_new_block_id:crypto.randomUUID(),
+    p_owner_id:userId,
+    p_subject_id:body.subject_id ?? oldBlock.data.subject_id,
+    p_title:body.title ?? ("Superseding "+oldBlock.data.title),
+    p_block_type:body.block_type ?? oldBlock.data.block_type,
+    p_understanding_state:body.verified===true && evidenceRefs.length>0 ? "VERIFIED" : "CANDIDATE",
+    p_owner_scope:body.owner_scope ?? oldBlock.data.owner_scope,
+    p_source_event_ids:[...(oldBlock.data.source_event_ids ?? []),newEvent.data.id],
+    p_evidence_refs:evidenceRefs,
+    p_provenance:{source:"nayanet-compound-intelligence",source_event_id:newEvent.data.id,reason:String(body.reason ?? "New verified evidence")},
+    p_value_context:body.value_context ?? oldBlock.data.value_context,
+    p_applicable_scope:body.applicable_scope ?? oldBlock.data.applicable_scope,
+    p_content:{...(oldBlock.data.content ?? {}),superseding_content:content},
+    p_schema_version:"INTELLIGENT_BLOCK_V1",
+    p_idempotency_key:idempotencyKey
+  });
+  if (rpc.error || !rpc.data) throw rpc.error ?? new Error("INTELLIGENT_BLOCK_SUPERSESSION_FAILED");
+  return {event,receipt,lineage:{supersedes:old.data.event_id,superseded_block_id:blockId,new_block_id:rpc.data.block_id},intelligent_block:rpc.data};
 }
 
 async function health(client: any, userId: string) {
