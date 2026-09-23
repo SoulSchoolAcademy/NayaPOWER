@@ -35,7 +35,7 @@
     "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "f76ed6d6de6805a752dc81113ded42e67b3b6f80"
+    "canonical_hub_source_sha": "f7a5ad535403201d0d942319166c87affcc1d93d"
   },
   "operational_truth_model": {
     "canonical_state": ".naya/control-plane/STATE.json",
@@ -405,8 +405,8 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile.",
-    "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
+    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "status": "AUTHORIZED_AFTER_PROOF"
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",
