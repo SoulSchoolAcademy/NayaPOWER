@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
+    "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "next_actions": [
-      "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession."
+      "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -197,7 +197,7 @@
   "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
   "current_attempt": {
     "status": "PROVEN",
-    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_LEARNING_RETRIEVAL",
+    "claim_type": "FRESH_MANAGED_RUNTIME_SMART_NOTE_COMPOUNDING_LOOP",
     "workflow_run": 35791868426,
     "job_id": 106962015427,
     "source_head": "86eb8293b2d46704f234aa82d889028e89b70857",
