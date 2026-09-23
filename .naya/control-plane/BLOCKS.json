@@ -36,7 +36,7 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval.",
     "next_actions": [
       "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
     ],
@@ -61,8 +61,8 @@
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
-      "completion": "One production Hub shell owner is established and its exact source/build/runtime identity is independently proven."
+      "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval. Do not claim arbitrary ChatGPT conversation capture.",
+      "completion": "One production Hub shell owner is established; the current Intelligent Block lifecycle is also proven through canonical render, authorized continuation, and successor handoff."
     },
     "completion": "HUMAN JOURNEY LIVE VERIFIED",
     "proof_receipt": ".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md"
@@ -92,7 +92,7 @@
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
     "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
-    "completion": "Bounded Smart Note → verified learning → apply → governed decision influence → cold reuse is fresh and independently persisted-state verified at run 35893121151; Intelligent Block lifecycle idempotent supersession is separately verified at run 35891432147.",
+    "completion": "Bounded Smart Note compounding and the current Intelligent Block lifecycle are fresh and independently persisted-state verified; lifecycle render/continuation/successor proof is run 35906051544.",
     "status": "PROVEN"
   },
   "last_next_action_cycle": {
