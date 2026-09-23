@@ -1298,9 +1298,7 @@
     "repair_scope": "Removed obsolete duplicate Intelligent Block materialization path; no schema/store/event/authority redesign.",
     "verification": "OPEN_PENDING_FRESH_PRODUCTION_DEPLOYMENT_AUTHORIZATION"
   },
-  "next_action": {
-    "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-    "status": "OPEN_ACTIVE_BOUNDARY",
+  "next_action": {"status": "BLOCKED",
     "count": 1,
     "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE through the canonical intelligence_commit path; receipt .naya/project-intelligence/42-NAYANET-LEARNING-OUTPUT-DISPOSITION-RECEIPT-2026-09-23.md. Communication is the single next readiness boundary."
   }
