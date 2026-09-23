@@ -91,7 +91,7 @@ jobs:
           parents=subprocess.check_output(['git','rev-list','--parents','-n','1','HEAD'],text=True).strip().split()
           if len(parents)!=3: raise SystemExit('CANONICAL_RELEASE_REQUIRES_MERGE_COMMIT')
           execution_branch_parent=parents[2]
-          subprocess.run(['git','fetch','--no-tags','origin',s['parent_head']],check=True)
+          subprocess.run(['git','fetch','--no-tags','--unshallow','origin'],check=True)
           if subprocess.run(['git','merge-base','--is-ancestor',s['parent_head'],execution_branch_parent]).returncode!=0:
               raise SystemExit('SESSION_PARENT_NOT_ANCESTOR_OF_EXECUTION_BRANCH')
           print('NAYA_SESSION_VERIFIED',s['session_id'],'MERGE_COMMIT',parents[1],'EXECUTION_BRANCH',execution_branch_parent)
