@@ -1,7 +1,7 @@
 # NayaPOWER — CURRENT FRONTIER / ZERO-ARCHAEOLOGY FACADE
 
 STATUS: CANONICAL NAVIGATION FACADE
-LAST_RECONCILED_HEAD: 0ea190e66afd33119defeef76560297eb7a8009a
+LAST_RECONCILED_HEAD: 6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e
 
 A cold Naya should not browse the issue inventory to decide what to do next.
 
@@ -18,7 +18,7 @@ SENDER = GitHub / SoulSchoolAcademy/NayaPOWER
 RECEIVER = NayaNET Intelligent Hub / NAYANET/HUB/index.html
 BRIDGE = Project Intelligence Bridge V1
 
-**NOW PROVEN:** current-head transport → persistence → index → projection → owner retrieval → canonical browser render → owner-bound ACK → fresh cold successor → 14-question restore with evidence metadata → exact lineage retrieval → authority grant → authorized continuation → successor receipt → four-gate consolidation.
+**PROVEN AT RECORDED SOURCE SCOPES:** transport → persistence → index → projection → owner retrieval → canonical browser render → owner-bound ACK → fresh cold successor → 14-question restore with evidence metadata → exact lineage retrieval → authority grant → authorized continuation → successor receipt → four-gate consolidation. Current main is newer than those proof source identities; do not generalize them to 6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e without fresh proof.
 
 ## LATEST VERIFIED COLD-SUCCESSOR RECEIPT
 
@@ -94,7 +94,7 @@ The remaining causal frontiers are:
 
 Do not create a second event store, universal mega-table, or competing intelligence authority.
 
-**Next responsible action:** P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval. Do not claim arbitrary ChatGPT conversation capture.
+**Next responsible action:** Prove COMMUNICATION as the next representative universal-output class, then record the semantic disposition and regenerate the successor baton.
 
 
 ## 2026-09-23 — P0-02 Intelligent Block lifecycle CLOSED
