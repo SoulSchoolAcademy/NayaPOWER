@@ -191,9 +191,9 @@
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
   "bottleneck": "Verify outcome quality/provenance/authority are not degraded after the qualified bounded computation-compounding measurement.",
-  "single_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+  "single_next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
   "next_actions": [
-    "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
+    "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -295,7 +295,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "completion": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden path PROVEN; next frontier is non-owner Project Intelligence retrieval isolation.",
     "status": "PROVEN"
   },
@@ -337,8 +337,8 @@
     }
   },
   "current_next_action": {
-    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
-    "reason": "Smart Note capture and verified learning are now proven at fresh current-main managed-runtime scope; the next unclosed compounding boundary is demonstrated influence on a later governed decision.",
+    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
+    "reason": "Fresh Dream → verified learning → later decision influence is now proven; the next open compounding boundary is the Intelligent Block lifecycle.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
@@ -405,7 +405,7 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "current_action_attempt": {
