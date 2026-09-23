@@ -16,6 +16,7 @@ on:
       - 'smart-feed.js'
       - 'smart-tabs.js'
       - 'NAYANET/HUB/intelligence-surfaces-runtime.js'
+      - 'NAYANET/HUB/intelligent-library-58.js'
       - 'identity.html'
       - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
@@ -110,6 +111,7 @@ jobs:
           test -s smart-feed.js
           test -s smart-tabs.js
           test -s NAYANET/HUB/intelligence-surfaces-runtime.js
+          test -s NAYANET/HUB/intelligent-library-58.js
           test -s identity.html
           test -s NAYANET/name-first-auth-adapter.js
           grep -q 'nayanet-direct-nine' NAYANET/HUB/index.html
@@ -137,6 +139,7 @@ jobs:
           cp smart-tabs.js dist/smart-tabs.js
           mkdir -p dist/NAYANET/HUB
           cp NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
+          cp NAYANET/HUB/intelligent-library-58.js dist/NAYANET/HUB/intelligent-library-58.js
           cp identity.html dist/identity.html
           cp NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/name-first-auth-adapter.js dist/name-first-auth-adapter.js
@@ -146,6 +149,7 @@ jobs:
           cmp -s smart-feed.js dist/smart-feed.js
           cmp -s smart-tabs.js dist/smart-tabs.js
           cmp -s NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
+          cmp -s NAYANET/HUB/intelligent-library-58.js dist/NAYANET/HUB/intelligent-library-58.js
           python3 -c "import hashlib; print(hashlib.sha256(open('dist/index.html','rb').read()).hexdigest())" | tee "${RUNNER_TEMP}/source.sha256"
 
       - name: Deploy exact canonical Hub
@@ -303,6 +307,7 @@ jobs:
             console.log('INTELLIGENCE_SURFACE_BOOT_PROBE',JSON.stringify(boot));
             if(boot.legacy) throw new Error('legacy Smart Tabs surface still present');
             if(!boot.runtimeLoaded) throw new Error('real intelligence surface runtime did not load');
+            if(!await page.locator('script[data-naya-library-58]').count()) throw new Error('58-domain Library runtime did not load');
             for(const [key,label] of expected){ const button=page.locator('.naya-intelligence-nav [data-page="'+key+'"]'); if(await button.count()!==1) throw new Error('missing surface nav '+label); await button.click(); await page.waitForTimeout(120); const s=await page.evaluate(()=>({active:document.querySelector('.naya-intelligence-nav [data-page].active')?.dataset.page||null,heading:document.querySelector('.naya-real-workspace h2')?.textContent?.trim().replace(/^[^A-Za-z]+/,'').trim()||null,workspace:!!document.querySelector('.naya-real-workspace')})); console.log('INTELLIGENCE_SURFACE_PROBE',key,JSON.stringify(s)); if(s.active!==key||!s.workspace||s.heading!==label) throw new Error(label+': surface contract failed'); }
             if(failed.length) throw new Error(failed.join(' | ')); console.log('TEN_INTELLIGENCE_SURFACES_BROWSER_VERIFIED'); await context.close();
           } finally { await browser.close(); }
