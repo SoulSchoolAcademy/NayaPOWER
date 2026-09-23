@@ -1018,7 +1018,7 @@
       "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
       "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
     },
-    "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block."
+    "next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
   },
   "compound_intelligence_12": {
     "status": "PROVEN",
@@ -1299,7 +1299,7 @@
     "verification": "OPEN_PENDING_FRESH_PRODUCTION_DEPLOYMENT_AUTHORIZATION"
   },
   "next_action": {
-    "action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "AUTHORIZED_AFTER_PROOF",
     "count": 1,
     "reason": "The 88-event legacy cognition cohort is dispositioned HISTORICAL_ONLY from canonical lineage/schema evidence; no database repair is warranted."
