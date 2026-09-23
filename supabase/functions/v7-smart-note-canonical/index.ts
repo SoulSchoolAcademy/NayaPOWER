@@ -184,6 +184,91 @@ Deno.serve(async(req)=>{
   const hubState={event_id:eventId,last_intelligence_event_at:now,smart_note_created:true,intelligent_block_created:true,intelligent_block_schema:"NAYANET_INTELLIGENT_BLOCK_V1",intelligent_block_hash:blockHash,feed_updated:true,canonical_collection:"Smart Notes",private_feed:true};
   const {data,error}=await supabase.rpc("v7_create_smart_note",{p_idempotency_key:idempotencyKey,p_user_id:user.id,p_human_note:canonicalHuman,p_naya_note:canonicalNaya,p_machine_note:machine,p_intelligent_feed:feed,p_intelligent_block:block,p_evidence:evidence,p_hub_state:hubState,p_subject:subject});
   if(error)throw error;
-  return json({ok:true,pipeline:"completed",canonical_event:true,collection:"Smart Notes",transaction:data});
+
+  // Every canonical Smart Note now enters the same governed learning/checkpoint boundary.
+  // The Smart Note transaction remains the single source event; the checkpoint is its
+  // provenance-bound cognitive state, not a second intelligence/event model.
+  const learningClaim = nutshell;
+  const learningLookup = await supabase.from("learning_evidence")
+    .select("id,status,claim,target_id")
+    .eq("member_id",user.id)
+    .eq("source_event_id",eventId)
+    .eq("claim",learningClaim)
+    .maybeSingle();
+  if(learningLookup.error)throw learningLookup.error;
+  let learning = learningLookup.data;
+  if(!learning){
+    const createdLearning = await supabase.from("learning_evidence").insert({
+      member_id:user.id,
+      target_id:"smart-note:"+eventId,
+      level:"E1_UNDERSTANDS",
+      provenance:"USER",
+      status:"CANDIDATE",
+      claim:learningClaim.slice(0,2000),
+      observed_value:{source:"v7-smart-note-canonical",event_id:eventId,subject},
+      verification_method:"PENDING_OUTCOME_VERIFICATION",
+      source_event_id:eventId
+    }).select("id,status,claim,target_id").single();
+    if(createdLearning.error)throw createdLearning.error;
+    learning=createdLearning.data;
+  }
+
+  const checkpointResponse = await fetch(
+    supabaseUrl + "/functions/v1/nayanet-compound-intelligence",
+    {
+      method:"POST",
+      headers:{
+        "Authorization":auth,
+        "apikey":supabaseAnonKey,
+        "Content-Type":"application/json",
+        "x-idempotency-key":"smart-note-checkpoint:"+eventId
+      },
+      body:JSON.stringify({
+        action:"checkpoint",
+        checkpoint_id:"smart-note-checkpoint:"+eventId,
+        source_event_ids:[eventId],
+        current_understanding:nutshell,
+        title:"Smart Note checkpoint: "+subject,
+        confidence:1,
+        tags:["smart-note","intelligent-block","checkpoint"],
+        what_changed:"Canonical Smart Note was captured, projected as an Intelligent Block, and entered the governed learning boundary.",
+        learned:learningClaim,
+        evidence_refs:[
+          {kind:"smart_note_receipt",receipt_id:evidence.receipt_id},
+          {kind:"source_event",event_id:eventId},
+          {kind:"intelligent_block_hash",sha256:blockHash},
+          {kind:"learning_evidence",evidence_id:learning.id}
+        ],
+        authority_scope:"PERSONAL_INTELLIGENCE_ONLY",
+        unknown:["Future applicability, behavior change, and outcome verification remain open."],
+        applicable_scope:body?.applicable_scope||null,
+        next_use:"Cold Naya retrieves this intelligence when the topic/context is relevant.",
+        successor_relevance:"Successor must restore the checkpoint, assess applicability, use it when valid, verify the outcome, and improve the next checkpoint.",
+        source_head:body?.source_head||null
+      })
+    }
+  );
+  const checkpointData = await checkpointResponse.json().catch(()=>({}));
+  if(!checkpointResponse.ok || !checkpointData?.ok){
+    throw new Error("SMART_NOTE_CHECKPOINT_FAILED:" + JSON.stringify(checkpointData));
+  }
+
+  const transactionWithIntelligence = {
+    ...data,
+    learning_evidence:{
+      id:learning.id,
+      status:learning.status,
+      claim:learning.claim,
+      target_id:learning.target_id
+    },
+    intelligence_checkpoint:checkpointData.result||null
+  };
+  return json({
+    ok:true,
+    pipeline:"completed",
+    canonical_event:true,
+    collection:"Smart Notes",
+    transaction:transactionWithIntelligence
+  });
  }catch(error){console.error(error);return json({ok:false,error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error)},500)}
 });
