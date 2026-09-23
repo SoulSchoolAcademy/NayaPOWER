@@ -413,9 +413,7 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": {
-    "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-    "status": "OPEN_ACTIVE_BOUNDARY",
+  "next_action": {"status": "BLOCKED",
     "count": 1,
     "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next."
   },
