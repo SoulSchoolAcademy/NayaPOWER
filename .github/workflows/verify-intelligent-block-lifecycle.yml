@@ -103,7 +103,7 @@ jobs:
             if(final.old.status!=='SUPERSEDED'||final.old.superseded_by_block_id!==newId)throw new Error('OLD_BLOCK_SUPERSESSION_LINEAGE_INVALID');
             if(final.new.status!=='ACTIVE'||final.new.supersedes_block_id!==blockId||Number(final.new.version)!==Number(final.old.version)+1)throw new Error('NEW_BLOCK_LINEAGE_INVALID');
             mark('VERIFY','PASS',{old_status:final.old.status,new_status:final.new.status,old_superseded_by:final.old.superseded_by_block_id,new_supersedes:final.new.supersedes_block_id,new_version:final.new.version});
-            fs.writeFileSync('intelligent-block-lifecycle-proof.json',JSON.stringify({schema:'NAYANET_INTELLIGENT_BLOCK_LIFECYCLE_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,owner_id:session.userId,old_block_id:eventId,new_block_id:newId,idempotency_key:idem,trace},null,2));
+            fs.writeFileSync('intelligent-block-lifecycle-proof.json',JSON.stringify({schema:'NAYANET_INTELLIGENT_BLOCK_LIFECYCLE_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,owner_id:session.userId,old_block_id:blockId,new_block_id:newId,idempotency_key:idem,trace},null,2));
           }finally{await browser.close();}
           NODE
           node intelligent-block-lifecycle-proof.mjs
