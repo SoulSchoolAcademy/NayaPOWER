@@ -8,6 +8,7 @@ on:
       - 'supabase/functions/nayanet-compound-intelligence/**'
       - 'assistant-runtime.js'
       - 'NAYANET/HUB/index.html'
+      - 'smart-feed.js'
   workflow_dispatch:
 
 jobs:
