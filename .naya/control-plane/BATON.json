@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T20:40:56Z",
+  "generated_at": "2026-09-23T20:47:07Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
+    "live_head": "5d2c69e6fc3e4e308c48e5cd3f4af728421d43a0",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval. Do not claim arbitrary ChatGPT conversation capture.",
+    "block_next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
   },
   "current_state": {
@@ -69,17 +69,17 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Advance to Priority #2: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, without deleting or fabricating backfill."
+    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
   },
   "next_action": {
-    "action": "Advance to Priority #2: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, without deleting or fabricating backfill.",
+    "action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "P0-04 canonical promotion is green again at the bounded acceptance scope. Fresh run 35915882471 passed IDENTITY, AUTHORITY, intelligence_commit, provenance/validation/integration/checkpoint, Intelligent Block, and fresh retrieval. Learning verification and later decision influence were separately proven by run 35915387903. The earlier ingress TypeError did not reproduce; Supabase logs show transient deployment/runtime 503 churn across versions 29/30 before stable version 31. No additional source-code repair was justified."
+    "reason": "Priority #2 legacy cognition-event disposition is complete as HISTORICAL_ONLY; no database repair is warranted. This is the single next readiness boundary."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. P0-04 is bounded-verified. Advance to Priority #2 only: derive the exact legacy cognition-event disposition cohort from canonical lineage/schema evidence, preserve all source history, make one causal repair only if evidence identifies one, and produce a bounded proof before advancing.",
-    "do_not": "Do not redesign the proven Smart Note/PIS path. Do not create a second intelligence store. Do not claim universal promotion from the bounded proof. Do not start a second active front."
+    "prompt": "Resolve live main. Priority #2 legacy cognition-event disposition is complete and HISTORICAL_ONLY. Advance to exactly one boundary: generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store. Verify the boundary before advancing again.",
+    "do_not": "Do not redesign the proven Smart Note/PIS path. Do not fabricate Smart Ledger linkage for the 88 legacy cognition events. Do not start a second active front."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -103,5 +103,11 @@
     "proof_status": "VERIFIED",
     "artifact_id": 10776170794,
     "receipt": ".naya/project-intelligence/41-NAYANET-P0-04-CANONICAL-INGRESS-RECOVERY-RECEIPT-2026-09-23.md"
+  },
+  "legacy_cognition_disposition": {
+    "cohort_size": 88,
+    "status": "HISTORICAL_ONLY",
+    "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md",
+    "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage."
   }
 }
