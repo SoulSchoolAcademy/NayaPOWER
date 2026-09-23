@@ -1,7 +1,7 @@
 {
   "schema": "nayanet-computation-efficiency-proof-v2",
   "status": "VERIFIED",
-  "source_head": "38d757435e5fdf154cf41d61cade5495a9ec66b2",
+  "source_head": "9fbbd7f98a1a9d54264fda2cf40c1f648c1095d5",
   "task": {
     "description": "Recover mission, active block, active block status, and exactly one canonical next action.",
     "hash_sha256": "f27ed3d518e54905775935bd997499fcd19319763145fc9194b5336798423348"
@@ -9,8 +9,8 @@
   "cycle_a": {
     "mode": "COLD",
     "content_objects_read": 4,
-    "context_bytes": 133646,
-    "wall_time_ms": 1.069984,
+    "context_bytes": 133657,
+    "wall_time_ms": 0.875654,
     "result": {
       "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
       "active_block": "HUMAN-JOURNEY-P2",
@@ -33,7 +33,7 @@
     "retained_objects_used": 1,
     "canonical_content_objects_read": 2,
     "context_bytes": 55326,
-    "wall_time_ms": 7.224018,
+    "wall_time_ms": 5.964333,
     "result": {
       "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
       "active_block": "HUMAN-JOURNEY-P2",
@@ -53,7 +53,7 @@
   "avoided_work": {
     "status": "COUNTERFACTUAL",
     "canonical_content_objects": 2,
-    "canonical_content_bytes": 78320,
+    "canonical_content_bytes": 78331,
     "basis": "Cycle A read and reconstructed from all four canonical objects; Cycle A then durably produced the retained artifact; Cycle B consumed it before reading only the mutable STATE/BLOCKS boundary and verified all four source blob identities unchanged.",
     "model_tokens": "NOT_CLAIMED",
     "semantic_duplicate_reasoning": "NOT_CLAIMED",
@@ -72,6 +72,6 @@
     "directly_observed_avoided_work": true,
     "verified_outcome_preserved": true
   },
-  "created_at": "2026-09-23T22:28:54.627926+00:00",
+  "created_at": "2026-09-23T22:31:17.745555+00:00",
   "next_action": "Record the causal benchmark result and leave one successor action."
 }

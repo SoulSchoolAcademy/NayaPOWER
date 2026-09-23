@@ -2,7 +2,7 @@
   "schema": "naya/computation-efficiency-retained-unit/v2",
   "status": "VERIFIED",
   "created_after": "CYCLE_A",
-  "source_head": "38d757435e5fdf154cf41d61cade5495a9ec66b2",
+  "source_head": "9fbbd7f98a1a9d54264fda2cf40c1f648c1095d5",
   "task_hash": "f27ed3d518e54905775935bd997499fcd19319763145fc9194b5336798423348",
   "retained_fields": {
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
@@ -11,7 +11,7 @@
   },
   "source_provenance": {
     ".naya/control-plane/BLOCKS.json": "fc456571b063484d6d0a6c7773b085c6e5abbaf3",
-    ".naya/control-plane/MAP.json": "36736c083dba3bba7f760a680872c0c6f3b61fab",
+    ".naya/control-plane/MAP.json": "eff902fa55fb25bc94a53f7e307457f3e5b45bcd",
     ".naya/control-plane/PROOF.json": "bfcb6134f395fe39576361f72783229e51ddf659",
     ".naya/control-plane/STATE.json": "1d917d5c4f7506a6f669df0a6eb8d80a1ec6d5f2"
   },
