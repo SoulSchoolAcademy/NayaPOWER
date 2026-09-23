@@ -68,7 +68,7 @@ jobs:
               return q.data;
             },{blockId});
             if(!row)throw new Error('INTELLIGENT_BLOCK_NOT_CREATED');
-            mark('BLOCK_CREATE','PASS',{block_id:row.block_id,version:row.version,status:row.status,understanding_state:row.understanding_state});
+            mark('BLOCK_CREATE','PASS',{block_id:row.block_id,version:row.version,status:row.status,block_status:row.status,understanding_state:row.understanding_state});
             const sourceEvent=await page.evaluate(async({eventId})=>{const c=window.__NayaNETSupabaseClient;if(!c)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');const q=await c.from('nayanet_cognition_events').select('id,event_id').eq('event_id',eventId).single();if(q.error)throw new Error('SOURCE_EVENT_QUERY_FAILED:'+JSON.stringify(q.error));return q.data;},{eventId});
             if(!sourceEvent?.id)throw new Error('SOURCE_EVENT_DB_ID_MISSING');
 
