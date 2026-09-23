@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 type Verification={valid:boolean;events:number;receipts:number;indexed:boolean;persistence?:{mode:string;status:string;last_sync_at?:string;last_write_at?:string;last_error?:string}};
 export function SettingsSurface(){
