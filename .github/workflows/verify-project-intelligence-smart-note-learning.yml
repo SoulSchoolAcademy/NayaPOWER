@@ -68,6 +68,8 @@ jobs:
               for(let i=0;i<60;i++){const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth?.current?.());if(s?.authenticated&&s.userId)break;await new Promise(r=>setTimeout(r,500));}
               const session=await sessionFrom(page); ownerId=session.userId; mark('IDENTITY','PASS',{owner_id:ownerId,alias});
               await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
+              await page.locator('.naya-intelligence-nav [data-page="notes"]').click();
+              await page.locator('[data-testid="capture-smart-note"]').waitFor({state:'visible',timeout:30000});
               await page.locator('[data-testid="capture-smart-note"]').click();
               await page.locator('[data-testid="smart-note-title"]').fill(title);
               await page.locator('[data-testid="smart-note-content"]').fill(content);
@@ -127,4 +129,4 @@ jobs:
             .pi-learning-verification-input.json
           if-no-files-found: ignore
 
-# trigger: fresh verification requested after canonical baton reconciliation 2026-09-22
+# repair: navigate canonical Hub to Smart Notes surface before capture control
