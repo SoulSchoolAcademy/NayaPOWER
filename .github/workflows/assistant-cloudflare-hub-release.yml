@@ -220,18 +220,20 @@ jobs:
                 leftRail:!!document.querySelector('.rail.left'),
                 ecosystem:!!document.querySelector('.ecosystem'),
                 rightRail:!!document.querySelector('.rail.right'),
-                capture:!!document.querySelector('#wsNoteContent'),
+                navButtons:document.querySelectorAll('.nav button').length,
                 bodyText:document.body.innerText
               }));
               console.log('CANONICAL_STATIC_HUB_PROBE',viewport.label,JSON.stringify({...probe,bodyText:probe.bodyText.slice(0,5000)}));
               if(probe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical title mismatch');
-              if(!probe.shell||!probe.leftRail||!probe.ecosystem||!probe.capture) throw new Error(viewport.label+': restored canonical Hub shell incomplete');
+              if(!probe.shell||!probe.leftRail||!probe.ecosystem||probe.navButtons<10) throw new Error(viewport.label+': restored canonical Hub shell incomplete');
               for(const label of ['Smart Feed','Your Intelligence Today','Your Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings']) if(!probe.bodyText.includes(label)) throw new Error(viewport.label+': missing canonical surface '+label);
-              await page.goto(runtime+'/?release='+process.env.GITHUB_SHA+'&viewport='+viewport.label,{waitUntil:'domcontentloaded',timeout:60000});
+              const todayButton=page.locator('[data-page="today"]');
+              if(await todayButton.count()===0) throw new Error(viewport.label+': Intelligence Today navigation missing');
+              await todayButton.click();
               await page.waitForTimeout(1000);
-              const today=await page.evaluate(()=>({todayButton:!!document.querySelector('[data-page="today"]'), room01:document.body.innerText.includes('YOUR INTELLIGENCE TODAY')||document.body.innerText.includes('Your Intelligence Today')}));
+              const today=await page.evaluate(()=>({room01:document.body.innerText.includes('YOUR INTELLIGENCE TODAY')||document.body.innerText.includes('Your Intelligence Today'), roomClass:!!document.querySelector('.room01')}));
               console.log('RESTORED_ROOM_01_PROBE',viewport.label,JSON.stringify(today));
-              if(!today.todayButton) throw new Error(viewport.label+': Intelligence Today navigation missing');
+              if(!today.room01&&!today.roomClass) throw new Error(viewport.label+': Intelligence Today did not open');
               await context.close();
             }
           } finally { await browser.close(); }
