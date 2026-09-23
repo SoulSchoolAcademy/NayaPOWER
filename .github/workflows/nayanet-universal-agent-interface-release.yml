@@ -149,8 +149,8 @@ jobs:
           test "${cold_status}" = "200"
           jq -r '.result.content[0].text' /tmp/mcp_cold.json > /tmp/mcp_cold_inner.json
           cat /tmp/mcp_cold_inner.json
-          jq -e '.status == "COLD_RESTORE_VERIFIED" and .question_count == 14 and .mandatory_pre_action == true' /tmp/mcp_cold_inner.json >/dev/null
-          for key in 1_WHO_ARE_WE 2_WHAT_ARE_WE_BUILDING 3_WHY_ARE_WE_BUILDING_IT 4_WHAT_DOES_SUCCESS_MEAN 5_WHAT_IS_TRUE_RIGHT_NOW 6_WHAT_HAS_ALREADY_BEEN_PROVEN 7_WHAT_IS_UNKNOWN 8_WHAT_AUTHORITY_EXISTS 9_WHAT_HAPPENED_PREVIOUSLY 10_WHAT_DID_WE_LEARN 11_WHAT_SHOULD_HAPPEN_NEXT 12_HOW_DO_I_PROVE_IT 13_WHERE_DO_I_RECORD_IT 14_HOW_DOES_THE_NEXT_NAYA_CONTINUE; do jq -e --arg k "$key" '.questions[$k] != null and .questions.QUESTION_METADATA.items[$k] != null' /tmp/mcp_cold_inner.json >/dev/null; done
+          jq -e '.result.status == "COLD_RESTORE_VERIFIED" and .result.question_count == 14 and .result.mandatory_pre_action == true' /tmp/mcp_cold_inner.json >/dev/null
+          for key in 1_WHO_ARE_WE 2_WHAT_ARE_WE_BUILDING 3_WHY_ARE_WE_BUILDING_IT 4_WHAT_DOES_SUCCESS_MEAN 5_WHAT_IS_TRUE_RIGHT_NOW 6_WHAT_HAS_ALREADY_BEEN_PROVEN 7_WHAT_IS_UNKNOWN 8_WHAT_AUTHORITY_EXISTS 9_WHAT_HAPPENED_PREVIOUSLY 10_WHAT_DID_WE_LEARN 11_WHAT_SHOULD_HAPPEN_NEXT 12_HOW_DO_I_PROVE_IT 13_WHERE_DO_I_RECORD_IT 14_HOW_DOES_THE_NEXT_NAYA_CONTINUE; do jq -e --arg k "$key" '.result.questions[$k] != null and .result.questions.QUESTION_METADATA.items[$k] != null' /tmp/mcp_cold_inner.json >/dev/null; done
           echo "MCP_14_QUESTION_COLD_RESTORE_VERIFIED"
           marker="UAI-MCP-PROOF-${GITHUB_RUN_ID}"
           understand_payload=$(jq -n --arg marker "$marker" '{jsonrpc:"2.0",id:3,method:"tools/call",params:{name:"nayanet_understand",arguments:{title:"Universal Agent Interface proof",content:$marker,confidence:1,tags:["uai-proof","production-boundary"]}}}')
