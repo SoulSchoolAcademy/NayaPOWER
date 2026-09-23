@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "python3 ../../scripts/build-smart-feed-projection.py && node -e \"require('fs').mkdirSync('public',{recursive:true});require('fs').mkdirSync('public/NAYANET',{recursive:true});require('fs').copyFileSync('index.html','public/__nayanet-canonical-hub');require('fs').copyFileSync('../../scripts/nayanet-cognitive-engine.js','public/nayanet-cognitive-engine.js');require('fs').copyFileSync('../../assistant-runtime.js','public/assistant-runtime.js');require('fs').copyFileSync('../../smart-feed.js','public/smart-feed.js');require('fs').copyFileSync('../../smart-tabs.js','public/smart-tabs.js');require('fs').copyFileSync('../name-first-auth-adapter.js','public/NAYANET/name-first-auth-adapter.js');require('fs').copyFileSync('../../identity.html','public/identity.html')\" && vite build",
-    "typecheck": "tsc --noEmit"
+    "build": "vite build",
+    "typecheck": "tsc --noEmit",
+    "verify:boundary": "node scripts/verify-boundary.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
