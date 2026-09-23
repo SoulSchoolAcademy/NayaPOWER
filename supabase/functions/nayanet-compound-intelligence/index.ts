@@ -635,6 +635,73 @@ async function supersede(client: any, userId: string, body: any) {
   return {event,receipt,lineage:{supersedes:old.data.event_id,superseded_block_id:blockId,new_block_id:rpc.data.block_id},intelligent_block:rpc.data};
 }
 
+async function checkpointIntelligence(client: any, userId: string, body: any) {
+  const checkpointId = String(body.checkpoint_id ?? ("checkpoint:" + crypto.randomUUID())).trim();
+  const sourceEventIds = Array.isArray(body.source_event_ids) ? body.source_event_ids.map(String).filter(Boolean) : [];
+  const understanding = String(body.current_understanding ?? "").trim();
+  if (!understanding) throw new Error("CURRENT_UNDERSTANDING_REQUIRED");
+  if (sourceEventIds.length === 0) throw new Error("SOURCE_EVENT_IDS_REQUIRED");
+
+  const source = await client.from("nayanet_cognition_events")
+    .select("id,event_id,title,content,status,confidence,metadata,created_at")
+    .in("event_id", sourceEventIds)
+    .eq("user_id", userId)
+    .eq("project_id", PROJECT);
+
+  if (source.error) throw source.error;
+  const found = new Set((source.data ?? []).map((x: any) => String(x.event_id)));
+  const missing = sourceEventIds.filter((id: string) => !found.has(id));
+  if (missing.length) throw new Error("CHECKPOINT_SOURCE_EVENT_NOT_FOUND:" + missing.join(","));
+
+  const event = {
+    event_id: checkpointId,
+    type: "intelligence_checkpoint",
+    classification: "cognitive_checkpoint",
+    title: String(body.title ?? "Naya cognitive checkpoint"),
+    content: understanding,
+    source: "nayanet-compound-intelligence",
+    status: "active",
+    actor: "naya",
+    confidence: Number.isFinite(Number(body.confidence)) ? Number(body.confidence) : 1,
+    tags: Array.isArray(body.tags) ? body.tags.map(String) : ["intelligence","checkpoint","compounding"],
+    parent_event_id: sourceEventIds[0] ?? null,
+    source_hash: "checkpoint:" + sourceEventIds.join("|"),
+    schema_version: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
+    metadata: {
+      checkpoint_id: checkpointId,
+      source_event_ids: sourceEventIds,
+      what_changed: body.what_changed ?? null,
+      learned: body.learned ?? null,
+      evidence_refs: Array.isArray(body.evidence_refs) ? body.evidence_refs : [],
+      authority_scope: body.authority_scope ?? null,
+      unknown: Array.isArray(body.unknown) ? body.unknown : [],
+      applicable_scope: body.applicable_scope ?? null,
+      next_use: body.next_use ?? null,
+      successor_relevance: body.successor_relevance ?? null,
+      source_head: body.source_head ?? null,
+      checkpointed_at: new Date().toISOString()
+    }
+  };
+
+  const receipt = await record(
+    client,
+    event,
+    "intelligence_checkpoint",
+    "Cognitive checkpoint persisted",
+    "Current understanding was checkpointed against provenance-bound source events.",
+    [{ type: "checkpoint", checkpoint_id: checkpointId, source_event_ids: sourceEventIds }]
+  );
+
+  return {
+    schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
+    status: "CHECKPOINT_VERIFIED",
+    checkpoint: event,
+    source_events: source.data ?? [],
+    receipt,
+    rule: "Checkpoint persistence does not by itself prove learning; later retrieval and behavior change are required."
+  };
+}
+
 async function health(client: any, userId: string) {
   const [e,l,r,d,o] = await Promise.all([
     client.from("nayanet_cognition_events").select("id",{count:"exact",head:true}).eq("user_id",userId).eq("project_id",PROJECT),
