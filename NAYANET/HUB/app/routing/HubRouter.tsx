@@ -6,7 +6,7 @@ import { SmartFeedBoard } from '../../intelligence/SmartFeedBoard';
 import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntelligence } from '../../intelligence/retrieval/pis';
 import type { IntelligentEvent } from '../../intelligence/types';
 import { routes } from './routes';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../identity/session';
 import { DreamSurface } from '../../features/learn/dream/DreamSurface';
 import { ReportsSurface } from '../../features/intelligence/reports/ReportsSurface';
 import { SmartShareSurface } from '../../features/connect/smart-share/SmartShareSurface';
