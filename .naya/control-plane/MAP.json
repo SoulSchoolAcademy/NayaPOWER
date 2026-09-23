@@ -6,7 +6,7 @@
   "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
   "north_star": "Set the intelligence foundation once so every Naya starts from a better state: maximum verified human value per unit of effort, with compounding intelligence and continuity.",
   "authority": {
-    "governing_standard": "SUPERBRAIN/NAYA-REPOSITORY-OPERATING-STANDARD.md",
+    "governing_standard": "SUPERBRAIN/CONTINUITY/NAYA-REPOSITORY-OPERATING-STANDARD.md",
     "boot_entry": "SUPERBRAIN/AI-BOOT/START-HERE.md",
     "current_state": ".naya/control-plane/STATE.json",
     "continuation_baton": ".naya/control-plane/BATON.json",
