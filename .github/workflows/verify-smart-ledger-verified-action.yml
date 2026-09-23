@@ -1,0 +1,27 @@
+name: Verify Smart Ledger Verified-Action Projection
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/smart_ledger_engine.py'
+      - '.naya/runtime/test_smart_ledger_engine.py'
+      - '.naya/contracts/SMART-LEDGER-EVENT-SCHEMA.json'
+      - '.naya/contracts/SMART-LEDGER-CCT-MACHINE-CONTRACT-V1.md'
+      - '.github/workflows/verify-smart-ledger-verified-action.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify Smart Ledger engine
+        run: python .naya/runtime/test_smart_ledger_engine.py
