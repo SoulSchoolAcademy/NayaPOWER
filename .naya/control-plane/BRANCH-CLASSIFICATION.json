@@ -1,0 +1,17 @@
+{
+  "$schema": "naya/control-plane/branch-classification/v1",
+  "status": "CANONICAL",
+  "canonical_current_branch": "main",
+  "rule": "Only main may supply current operational truth, active block, current next action, canonical Hub identity, or production readiness. Non-main branches are historical/proposal/experiment scope unless explicitly promoted by a main-branch control-plane record.",
+  "classes": {
+    "CURRENT": "main",
+    "PROTECTED": "main",
+    "DEFERRED": "non-main branch with an explicit future-boundary record",
+    "HISTORICAL": "merged/non-current branch or recorded prior execution source",
+    "REJECTED": "branch explicitly rejected by a main-branch record",
+    "ABANDONED": "branch explicitly abandoned by a main-branch record"
+  },
+  "proof_rule": "A proof sourced from a non-main branch is never current proof unless its claim scope explicitly names the branch and the main control plane records the promotion/acceptance.",
+  "cold_naya_rule": "A cold Naya must not inspect non-main branches to determine current truth; it reads main control-plane sources first.",
+  "source_of_truth": ".naya/control-plane/STATE.json"
+}
