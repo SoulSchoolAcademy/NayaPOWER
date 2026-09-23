@@ -111,13 +111,13 @@ jobs:
             const retrieved=await page.evaluate(async({blockId,newId,successorEventId})=>{
               const c=window.__NayaNETSupabaseClient;
               if(!c)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
-              const block=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).eq('owner_id',session.userId).single();
-              const event=await c.from('nayanet_cognition_events').select('id,event_id,parent_event_id,title,status,metadata').eq('event_id',successorEventId).eq('user_id',session.userId).single();
+              const block=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).eq('owner_id',ownerId).single();
+              const event=await c.from('nayanet_cognition_events').select('id,event_id,parent_event_id,title,status,metadata').eq('event_id',successorEventId).eq('user_id',ownerId).single();
               if(block.error)throw new Error('SUCCESSOR_BLOCK_RETRIEVE_FAILED:'+JSON.stringify(block.error));
               if(event.error)throw new Error('SUCCESSOR_EVENT_RETRIEVE_FAILED:'+JSON.stringify(event.error));
-              if(block.data?.block_id!==newId||block.data?.supersedes_block_id!==blockId||Number(block.data?.version)!==Number(block.data?.version))throw new Error('SUCCESSOR_BLOCK_IDENTITY_INVALID');
+              if(block.data?.block_id!==newId||block.data?.supersedes_block_id!==blockId||Number(block.data?.version)!==expectedVersion)throw new Error('SUCCESSOR_BLOCK_IDENTITY_INVALID');
               return {block:block.data,event:event.data};
-            },{blockId,newId,successorEventId});
+            },{blockId,newId,successorEventId,ownerId:session.userId,expectedVersion:Number(final.old.version)+1});
             if(retrieved.block.status!=='ACTIVE'||retrieved.block.supersedes_block_id!==blockId||!Array.isArray(retrieved.block.source_event_ids)||!retrieved.block.source_event_ids.includes(retrieved.event.id))throw new Error('SUCCESSOR_BLOCK_RETRIEVAL_LINEAGE_INVALID:'+JSON.stringify(retrieved));
             mark('RETRIEVE','PASS',{block_id:retrieved.block.block_id,event_id:retrieved.event.event_id,source_event_id:retrieved.event.id});
 
