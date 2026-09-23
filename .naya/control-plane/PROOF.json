@@ -652,7 +652,8 @@
         "canonical_block_projected": true,
         "smart_feed_event_id": "3ffe7940-1571-4918-b4e1-10f0681e42d1"
       }
-    }
+    },
+    "latest_learning_decision_proof": "dream_learning_later_decision_20260923"
   },
   "recording_commit": "cac2d01e0f9739c69f6c227ba84a4efce701431a",
   "fresh_validation_required": true,
@@ -1239,5 +1240,31 @@
       }
     ],
     "final_truth_boundary": "The Smart Note → learning_candidate → learning_verify → learning_retrieve runtime boundary is PROVEN for this fresh owner and source scope. The workflow's final independent-verifier step is not itself passing and must not be described as a successful workflow job."
+  },
+  "dream_learning_later_decision_20260923": {
+    "status": "VERIFIED",
+    "claim_type": "WHOLE_JOURNEY",
+    "workflow": ".github/workflows/verify-dream-learning-decision.yml",
+    "run_id": 35817331332,
+    "job_id": 107041557327,
+    "observed_head": "01538bfd1a46f0ef145f46760c2e73afe96e7209",
+    "evidence": {
+      "event_id": "dream-learning-proof-27ded832e20781f8",
+      "receipt_id": "7ad70860-49f2-466d-8a0b-8d35e61a5535",
+      "replay_id": "82c48e62-1acf-4e95-b0f6-1d17d25d01c8",
+      "evidence_id": "ca154a04-1566-4e33-88ff-0c6763ef2752",
+      "learner_state_version": 1,
+      "target_id": "dream-learning-target-27ded832e20781f8",
+      "later_decision_event_id": "decision-proof-27ded832e20781f8"
+    },
+    "decision": "USE_VERIFIED_LEARNING_CONTEXT",
+    "influenced": true,
+    "authority": {
+      "changed": false,
+      "granted": false,
+      "source": "existing governance boundary"
+    },
+    "scope": "Fresh managed-runtime Dream → verified learning → later governed decision → durable traceability.",
+    "interpretation": "Verified learning materially changed later decision context while authority remained unchanged; the decision receipt remained retrievable."
   }
 }
