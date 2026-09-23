@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-23T00:00:30.645Z",
-    "observed_head": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
+    "recorded_at": "2026-09-23T20:06:05.778Z",
+    "observed_head": "285c9207c777d1b491453dfea191ca171694378e",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -337,8 +337,8 @@
     }
   },
   "current_next_action": {
-    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
-    "reason": "Fresh Dream → verified learning → later decision influence is now proven; the next open compounding boundary is the Intelligent Block lifecycle.",
+    "action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "reason": "P0-04 meaningful-output promotion is now verified at defined owner/runtime scope; the next open boundary is universal promotion across meaningful Naya outputs.",
     "status": "AUTHORIZED_AFTER_PROOF"
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
@@ -428,5 +428,23 @@
     "causal_repair": "Moved Edge Function invocation from browser page.evaluate to managed runner Node fetch; exact runtime then passed.",
     "harness_failure": "Independent-verification Node heredoc failed with ERR_AMBIGUOUS_MODULE_SYNTAX after runtime proof completed.",
     "completed_at": "2026-09-22T22:22:54.836Z"
+  },
+  "current_attempt": {
+    "status": "VERIFIED",
+    "claim_type": "P0-04_MEANINGFUL_OUTPUT_PROMOTION",
+    "workflow_run": 35913487739,
+    "job_id": 107358971184,
+    "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
+    "edge_function": "nayanet-compound-intelligence",
+    "edge_function_version": 24,
+    "owner_id": "bf3a2d9f-99d5-41f5-ac99-14eba602a51a",
+    "event_id": "intelligence:p0-04-p00435913487739-334f0fe7ee",
+    "checkpoint_id": "checkpoint:p0-04-p00435913487739-334f0fe7ee",
+    "learning_evidence_id": "492ebef8-0f89-44bd-8d0d-544155e16963",
+    "index_id": "debbcedc-8f6c-4cf0-9495-b9905c35c846",
+    "intelligent_block_id": "55ce07d5-7518-49d1-b318-6c67b09b6ce2",
+    "fresh_retrieval": "PASS",
+    "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
+    "causal_repair": "Materialize the corresponding canonical Intelligent Block from the already-persisted intelligence_commit source event; no second store introduced."
   }
 }
