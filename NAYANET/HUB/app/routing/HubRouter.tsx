@@ -1,21 +1,21 @@
 import { useEffect, useMemo, useState } from 'react';
-import { AuthPanel } from '../identity/AuthPanel';
-import { SmartMailSurface } from './SmartMailSurface';
-import { FeatureSurface } from './FeatureSurface';
-import { SmartFeedBoard } from '../intelligence/SmartFeedBoard';
-import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
-import type { IntelligentEvent } from '../intelligence/types';
+import { AuthPanel } from '../../identity/AuthPanel';
+import { SmartMailSurface } from '../../features/connect/smart-mail/SmartMailSurface';
+import { FeatureSurface } from '../../features/proof/FeatureSurface';
+import { SmartFeedBoard } from '../../intelligence/SmartFeedBoard';
+import { loadPrimaryIntelligence, searchPrimaryIntelligence, sortPrimaryIntelligence } from '../../intelligence/retrieval/pis';
+import type { IntelligentEvent } from '../../intelligence/types';
 import { routes } from './routes';
 import { useIdentity } from '../identity/session';
-import { DreamSurface } from './DreamSurface';
-import { ReportsSurface } from './ReportsSurface';
-import { SmartShareSurface } from './SmartShareSurface';
-import { SmartListsSurface } from './SmartListsSurface';
-import { ConnectionsSurface } from './ConnectionsSurface';
-import { NayaPlaySurface } from './NayaPlaySurface';
-import { SmartSpacesSurface } from './SmartSpacesSurface';
-import { SettingsSurface } from './SettingsSurface';
-import { SmartNoteSurface } from './SmartNoteSurface';
+import { DreamSurface } from '../../features/learn/dream/DreamSurface';
+import { ReportsSurface } from '../../features/intelligence/reports/ReportsSurface';
+import { SmartShareSurface } from '../../features/connect/smart-share/SmartShareSurface';
+import { SmartListsSurface } from '../../features/connect/smart-lists/SmartListsSurface';
+import { ConnectionsSurface } from '../../features/connect/contacts/ConnectionsSurface';
+import { NayaPlaySurface } from '../../features/naya/play/NayaPlaySurface';
+import { SmartSpacesSurface } from '../../features/connect/smart-spaces/SmartSpacesSurface';
+import { SettingsSurface } from '../../features/system/settings/SettingsSurface';
+import { SmartNoteSurface } from '../../features/capture/smart-notes/SmartNoteSurface';
 
 function FeedView({ title, subtitle, library = false }: { title: string; subtitle: string; library?: boolean }) {
   const identity = useIdentity();
