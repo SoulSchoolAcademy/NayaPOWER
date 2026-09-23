@@ -138,6 +138,41 @@ def generate_smart_link(target_type: str, target_ref: str, *, access_class: str 
             "target_type": target_type, "target_ref": target_ref, "access_class": access_class,
             "label": f"Open verified {target_type.replace('_', ' ')}"}
 
+
+def record_verified_ai_action(verified_ai_action: dict, *, actor_ref: Optional[str] = None,
+                              previous: Optional[LedgerEvent] = None) -> LedgerEvent:
+    """Project an already-verified AI action into the existing Smart Ledger."""
+    if verified_ai_action.get("schema") != "NAYAPOWER_VERIFIED_AI_ACTION_V1":
+        raise ValueError("SMART_LEDGER_REQUIRES_VERIFIED_AI_ACTION_V1")
+    causal = verified_ai_action.get("causal") or {}
+    if causal.get("causal_status") != "VERIFIED":
+        raise ValueError("SMART_LEDGER_REQUIRES_VERIFIED_CAUSAL_STATUS")
+    receipt = causal.get("receipt") or {}
+    receipt_id = receipt.get("execution_receipt_id")
+    evidence = causal.get("evidence") or []
+    if not receipt_id:
+        raise ValueError("SMART_LEDGER_REQUIRES_EXECUTION_RECEIPT")
+    if not evidence:
+        raise ValueError("SMART_LEDGER_REQUIRES_CAUSAL_EVIDENCE")
+    action_id = verified_ai_action.get("action_id") or causal.get("causal_id")
+    if not action_id:
+        raise ValueError("SMART_LEDGER_REQUIRES_ACTION_ID")
+    event_id = f"ledger_{uuid4().hex}"
+    now = utc_now()
+    payload = {
+        "ledger_event_id": event_id, "schema_version": "1.0",
+        "event_type": "VERIFIED_AI_ACTION", "event_at": now, "created_at": now,
+        "actor_ref": actor_ref, "object_ref": f"verified-ai-action:{action_id}",
+        "parent_event_id": previous.ledger_event_id if previous else None,
+        "evidence_ref": f"execution-receipt:{receipt_id}",
+        "privacy_class": "protected" if actor_ref else "private", "status": "verified",
+    }
+    return LedgerEvent(
+        **payload, verification_receipt_ref=receipt_id,
+        integrity_hash=_hash_event(payload, previous.integrity_hash if previous else None),
+        previous_integrity_hash=previous.integrity_hash if previous else None,
+    )
+
 def run_vertical_slice(title: str, content: str, *, actor_ref: Optional[str] = None,
                       cumulative_points_before: int = 0) -> dict:
     note = create_smart_note(title, content)
