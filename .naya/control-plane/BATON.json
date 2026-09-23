@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T04:17:49.557Z",
+  "generated_at": "2026-09-23T18:59:30Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,13 +12,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "5106f0d5ead95a97089d4f36ead64357d97f6337",
+    "live_head": "220b9ea2b786b238c06ff54a8a05330b90ea7437",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
-    "canonical_hub_source_sha": "c70c3574d7ba0c8e999df06f2aeb6574472eaf5f"
+    "block_next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval. Do not claim arbitrary ChatGPT conversation capture.",
+    "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -69,16 +69,16 @@
     "status": "VERIFIED",
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
+    "next_action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval."
   },
   "next_action": {
-    "action": "Generalize the verified Smart Note compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "action": "P0-04 — prove one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, then verify provenance → validation → integration → checkpoint → fresh retrieval.",
     "status": "AUTHORIZED_AFTER_PROOF",
     "count": 1,
-    "reason": "The bounded Smart Note → verified learning → apply → governed decision → cold reuse chain is now fresh and production-runtime proven; the next open boundary is universal promotion across meaningful Naya outputs."
+    "reason": "P0-02 Intelligent Block lifecycle is fresh-proven at current-main/live-runtime scope by run 35906051544; the next open causal boundary is one bounded meaningful-output promotion proof."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Preserve the proven Smart Note compounding rung. Then identify the smallest causal boundary required to promote the same learned→integrated→checkpointed→reused behavior from Smart Notes to every meaningful Naya output without creating a second intelligence store.",
+    "prompt": "Resolve live main. Preserve the proven Smart Note receiver and Intelligent Block lifecycle. Then execute exactly one bounded P0-04 proof: submit one meaningful Naya output through the existing canonical intelligence_commit / Smart Note ingress, prove provenance → validation → integration → checkpoint → fresh retrieval, and do not claim arbitrary ChatGPT conversation capture.",
     "do_not": "Do not redesign the proven Smart Note/PIS path. Do not create a second intelligence store. Do not claim universal promotion from the bounded proof. Do not start a second active front."
   },
   "playback": {
