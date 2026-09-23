@@ -191,11 +191,8 @@ def validate_block(b):
 
 
 def canonical_hub_source_sha():
-    import re
-    text=HUB.read_text(encoding='utf-8',errors='replace')
-    m=re.search(r'<meta name="nayanet-source-commit" content="([0-9a-f]{40})"', text, re.I)
-    if not m: fail('canonical Hub has no nayanet-source-commit identity')
-    return m.group(1)
+    try: return git('rev-parse','HEAD:NAYANET/HUB/index.html')
+    except Exception: fail('canonical Hub source cannot be resolved from live Git HEAD')
 
 def extract_team_hub_sha():
     text=TEAM_NAYA_HUB_LOCK.read_text(encoding='utf-8',errors='replace')
