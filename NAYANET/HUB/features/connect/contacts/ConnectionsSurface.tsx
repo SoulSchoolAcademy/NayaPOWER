@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 type Connection={id:string;connected_member_id:string;status:string;source_type?:string;source_space_id?:string;created_at:string;updated_at:string};
 
