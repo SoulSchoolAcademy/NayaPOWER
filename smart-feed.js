@@ -228,7 +228,17 @@ function renderCanonicalHub(items,stream){
    if(!item)return;
    const id=canonicalText(canonicalValue(item,'source_id','intelligence_id','id','event_id')||('canonical-'+i));
    card.dataset.intelligenceId=id;card.dataset.nayaFeed=stream;card.dataset.provenance='Canonical runtime';
-   const h=card.querySelector('h3');if(h)h.textContent=canonicalText(canonicalValue(item,'title','name','event_type','event_id')||'Intelligence');
+   const ib=item?.metadata?.intelligent_block_v1||{},identity=ib.identity||{},truthData=ib.truth||{},authority=ib.authority||{},context=ib.context||{},life=ib.lifecycle||{},value=ib.value||{},integrity=ib.integrity||{};
+   const h=card.querySelector('h2,h3');if(h){h.textContent=canonicalText(canonicalValue(item,'title','name','event_type','event_id')||'Intelligence');if(h.tagName==='H3'){const h2=document.createElement('h2');h2.className=h.className;h2.innerHTML=h.innerHTML;h.replaceWith(h2);}}
+   card.setAttribute('data-event-id',canonicalText(canonicalValue(item,'event_id','id')||id));
+   card.setAttribute('data-intelligent-block-schema',canonicalText(canonicalValue(identity,'schema_version','schema')));
+   card.setAttribute('data-intelligent-block-event-id',canonicalText(canonicalValue(identity,'event_id')||canonicalValue(item,'event_id','id')||id));
+   card.setAttribute('data-intelligent-block-truth',canonicalText(canonicalValue(truthData,'state','status')||canonicalValue(item,'verification_state','verification','status')));
+   card.setAttribute('data-intelligent-block-authority',canonicalText(canonicalValue(authority,'state','status')));
+   card.setAttribute('data-intelligent-block-value',canonicalText(canonicalValue(value,'state','status')));
+   card.setAttribute('data-intelligent-block-privacy',canonicalText(canonicalValue(context,'visibility')||canonicalValue(item,'visibility','sharing_state')));
+   card.setAttribute('data-intelligent-block-lifecycle',canonicalText(canonicalValue(life,'stage','status')));
+   card.setAttribute('data-intelligent-block-hash',canonicalText(canonicalValue(integrity,'content_hash','sha256')));
    const meta=card.querySelector('.meta');if(meta)meta.innerHTML='<span>'+esc(stream.toUpperCase())+'</span><span>CANONICAL INTELLIGENCE</span><span>'+esc(canonicalValue(item,'source','source_type')||'NAYA RUNTIME')+'</span>';
    const truth=card.querySelector('.truth');if(truth)truth.textContent=canonicalText(canonicalValue(item,'verification_state','verification','status')||'UNKNOWN');
    const nutshell=card.querySelector('.nutshell p');if(nutshell)nutshell.textContent=canonicalText(canonicalValue(item,'content','summary','description')||'No content was returned by the canonical runtime.');
