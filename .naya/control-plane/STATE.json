@@ -8,7 +8,7 @@
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
     "recorded_at": "2026-09-23T20:15:00Z",
-    "observed_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
+    "observed_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -414,7 +414,7 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
     "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next."
