@@ -16,7 +16,7 @@ assert compound["evidence"]["cold_reuse"] is True
 assert compound["evidence"]["authority_changed"] is False
 assert compound["claim"].startswith("A meaningful Smart Note can become verified reusable learning")
 
-paired=proof["claim_evidence"]["controlled_paired_policy_experiment"]
+paired=proof["claim_evidence"]["RUNTIME"]["controlled_paired_policy_experiment"]
 assert paired["status"]=="VERIFIED_PROVEN"
 assert paired["real_observed_outcomes"] is True
 assert paired["cold_decision_influenced"] is True
