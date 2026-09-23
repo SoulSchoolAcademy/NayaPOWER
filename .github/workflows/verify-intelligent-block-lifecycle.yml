@@ -123,6 +123,16 @@ jobs:
             mark('RETRIEVE','PASS',{block_id:retrieved.block.block_id,event_id:retrieved.event.event_id,source_event_id:retrieved.event.id});
 
             await page.goto(HUB+'/?ibl=1',{waitUntil:'networkidle',timeout:60000});
+            const feedProbe=await page.evaluate(async({successorEventId})=>{
+              const rt=window.NayaAssistantRuntime;
+              if(!rt?.smartFeed)throw new Error('SMART_FEED_RUNTIME_UNAVAILABLE');
+              const data=await rt.smartFeed({stream:'personal',limit:50,before:null});
+              const item=(data?.items||[]).find(x=>String(x?.event_id||'')===String(successorEventId));
+              return {found:!!item,event_id:item?.event_id||null,has_intelligent_block:!!item?.intelligent_block,has_metadata_intelligent_block:!!item?.metadata?.intelligent_block_v1,intelligent_block:item?.intelligent_block||null};
+            },{successorEventId});
+            console.log('SMART_FEED_PAYLOAD_PROBE',JSON.stringify(feedProbe));
+            if(!feedProbe.found)throw new Error('SMART_FEED_SUCCESSOR_EVENT_NOT_FOUND:'+JSON.stringify(feedProbe));
+            if(!feedProbe.has_intelligent_block)throw new Error('SMART_FEED_INTELLIGENT_BLOCK_MISSING:'+JSON.stringify(feedProbe));
             await page.waitForSelector('[data-event-id="'+successorEventId+'"]',{timeout:30000});
             const rendered=await page.locator('[data-event-id="'+successorEventId+'"]').evaluate(node=>({
               eventId:node.getAttribute('data-event-id'),
