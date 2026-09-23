@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-23T20:06:22.932Z",
-    "observed_head": "7978c60ce985bfae2738cf1d85e08cd8c4ee6193",
+    "recorded_at": "2026-09-23T20:15:00Z",
+    "observed_head": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -294,10 +294,10 @@
   },
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
-    "priority": "P1",
-    "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
-    "completion": "GAP-001 canonical Hub shell/source/build/runtime ownership and human golden path PROVEN; next frontier is non-owner Project Intelligence retrieval isolation.",
-    "status": "PROVEN"
+    "priority": "P0",
+    "next_action": "Obtain fresh explicit production authorization for the single causal Supabase Edge Function repair at fa112deec15d68ab0b9796b70e5c3ae6cde7b143, deploy nayanet-compound-intelligence, then rerun the same P0-04 proof.",
+    "completion": "P0-04 universal meaningful-output promotion remains unproven.",
+    "status": "BLOCKED_PENDING_PRODUCTION_AUTHORIZATION"
   },
   "reconciliation": {
     "date": "2026-09-22",
@@ -430,21 +430,20 @@
     "completed_at": "2026-09-22T22:22:54.836Z"
   },
   "current_attempt": {
-    "status": "VERIFIED",
+    "status": "FAILED_AT_CANONICAL_INGRESS",
     "claim_type": "P0-04_MEANINGFUL_OUTPUT_PROMOTION",
-    "workflow_run": 35913487739,
-    "job_id": 107358971184,
-    "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
-    "edge_function": "nayanet-compound-intelligence",
-    "edge_function_version": 24,
-    "owner_id": "bf3a2d9f-99d5-41f5-ac99-14eba602a51a",
-    "event_id": "intelligence:p0-04-p00435913487739-334f0fe7ee",
-    "checkpoint_id": "checkpoint:p0-04-p00435913487739-334f0fe7ee",
-    "learning_evidence_id": "492ebef8-0f89-44bd-8d0d-544155e16963",
-    "index_id": "debbcedc-8f6c-4cf0-9495-b9905c35c846",
-    "intelligent_block_id": "55ce07d5-7518-49d1-b318-6c67b09b6ce2",
-    "fresh_retrieval": "PASS",
-    "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
-    "causal_repair": "Materialize the corresponding canonical Intelligent Block from the already-persisted intelligence_commit source event; no second store introduced."
+    "workflow_run": 35914547730,
+    "job_id": 107362601134,
+    "source_head": "547ec350d0a32f6fc58ac16440fea6e23ad25154",
+    "first_deterministic_failure": "CANONICAL_INGRESS",
+    "observed_error": "TypeError: Failed to fetch",
+    "independent_endpoint_probe": "503 BOOT_ERROR",
+    "deployed_edge_function_version": 25,
+    "source_function_sha": "4247631e004254cbad25c1e10d387f837450416f",
+    "causal_finding": "Deployed nayanet-compound-intelligence v25 has a duplicate Intelligent Block materialization path with a duplicate function-scope declaration; source currently contains both paths.",
+    "repair_commit": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
+    "repair": "Removed the obsolete duplicate Intelligent Block materialization path, retaining the deterministic canonical Block path.",
+    "proof_status": "NOT_VERIFIED_AFTER_REPAIR",
+    "deployment_authorization": "REQUIRED_FRESH_L3_PRODUCTION_AUTHORIZATION"
   }
 }
