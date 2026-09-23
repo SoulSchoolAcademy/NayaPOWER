@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 type Row = Record<string, unknown>;
 type WindowRuntime = {
   snapshot: () => { authenticated?: boolean; user_id?: string };
