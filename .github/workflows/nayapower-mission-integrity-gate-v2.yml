@@ -1,0 +1,28 @@
+name: NayaPOWER Mission Integrity Gate v2
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/**'
+      - '.naya/contracts/**'
+      - 'tools/test_causal_verification_object.py'
+      - 'tools/test_verified_ai_action.py'
+permissions: {contents: read}
+jobs:
+  integrity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: |
+          set -e
+          python .naya/runtime/verify_core_intelligence_reconciliation.py
+          python .naya/runtime/test_lineage_playback.py
+          python .naya/runtime/test_successor_packet.py
+          python .naya/runtime/test_sender_receiver_readiness.py
+          python .naya/runtime/test_smart_ledger_engine.py
+          python tools/test_causal_verification_object.py
+          python tools/test_verified_ai_action.py
