@@ -872,9 +872,13 @@ Deno.serve(async (req) => {
   const action=String(body.action||"restore").trim();
   try {
     const preActionExempt = new Set(["restore","cold_restore","retrieve","reconcile","health"]);
-    // UNIVERSAL_MEANINGFUL_OUTPUT_V1: one governed normalization/routing boundary.
-    // This delegates to the existing intelligence_commit rung; it creates no new store
-    // and never routes meaningful output through Smart Note implicitly.
+    if (!preActionExempt.has(action)) {
+      const gate = await coldRestore(client,user.id);
+      if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
+        throw new Error("PRE_ACTION_PROJECT_INTELLIGENCE_GATE_FAILED");
+      }
+    }
+    let result:any;
     if (action === "universal_meaningful_output") {
       const sourceType = String(body.source_type ?? "").trim();
       const privacy = String(body.privacy ?? "PRIVATE").trim();
@@ -910,52 +914,44 @@ Deno.serve(async (req) => {
       result.schema = "NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_V1";
       result.adapter = "UNIVERSAL_MEANINGFUL_OUTPUT_V1";
     } else {
-    if (!preActionExempt.has(action)) {
-      const gate = await coldRestore(client,user.id);
-      if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
-        throw new Error("PRE_ACTION_PROJECT_INTELLIGENCE_GATE_FAILED");
+      switch(action) {
+        case "restore": result=await restore(client,user.id); break;
+        case "cold_restore": result=await coldRestore(client,user.id); break;
+        case "retrieve": result=await retrieve(client,user.id,body); break;
+        case "reconcile": result=await reconcile(client,user.id,body); break;
+        case "understand": result=await understand(client,user.id,body); break;
+        case "learning_candidate": result=await learningCandidate(client,user.id,body); break;
+        case "learning_verify": result=await learningVerify(client,user.id,body); break;
+        case "learning_retrieve": result=await learningRetrieve(client,user.id,body); break;
+        case "project": result=await projectIntelligence(client,user.id,body); break;
+        case "ack": result=await ackBridge(client,user.id,body); break;
+        case "state_update": result=await stateUpdate(client,user.id,body); break;
+        case "successor_handoff": result=await successor(client,user.id,body); break;
+        case "issue_pi_authority": result=await issuePiAuthority(client,user.id,body); break;
+        case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
+        case "consolidate_pi_gates": result=await consolidatePiGates(client,user.id,body); break;
+        case "share": result=await share(client,user.id,body); break;
+        case "supersede": result=await supersede(client,user.id,body); break;
+        case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
+        case "intelligence_commit": result=await commitIntelligence(client,user.id,body); break;
+        case "health": result=await health(client,user.id); break;
+        case "dream": {
+          const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
+          const dreamHeaders:any = { "Authorization": req.headers.get("Authorization")!, "apikey": ANON, "Content-Type": "application/json" };
+          const dreamBody = { ...body, project_id: PROJECT, idempotency_key: body.idempotency_key ?? req.headers.get("x-idempotency-key") ?? ("compound-dream-" + crypto.randomUUID()) };
+          const dreamResponse = await fetch(dreamUrl, { method: "POST", headers: dreamHeaders, body: JSON.stringify(dreamBody) });
+          const dreamResult = await dreamResponse.json().catch(() => ({}));
+          if (!dreamResponse.ok || dreamResult?.ok !== true) throw new Error("DREAM_REPLAY_DELEGATE_FAILED:" + JSON.stringify(dreamResult));
+          result = { schema: "NAYANET_COMPOUND_DREAM_SEAM_V2", delegated: true, replay: dreamResult.replay, idempotent: dreamResult.idempotent === true };
+          break;
+        }
+        case "compound": {
+          const restored=await restore(client,user.id);
+          result={schema:"NAYANET_COMPOUND_INTELLIGENCE_CYCLE_V1",stages:["EXPERIENCE","CAPTURE","UNDERSTAND","RETAIN","RETRIEVE","DECIDE","ACT","VERIFY","LEARN","DREAM","APPLY","SUCCESSOR"],current_context:restored.YOU_ARE_HERE,next:"Use verified context to choose one authorized action, then persist outcome and successor context.",automation_boundary:"No silent authority escalation or unverified learning promotion."};
+          break;
+        }
+        default: throw new Error("UNKNOWN_ACTION");
       }
-    }
-    let result:any;
-    switch(action) {
-      case "restore": result=await restore(client,user.id); break;
-      case "cold_restore": result=await coldRestore(client,user.id); break;
-      case "retrieve": result=await retrieve(client,user.id,body); break;
-      case "reconcile": result=await reconcile(client,user.id); break;
-      case "understand": result=await understand(client,user.id,body); break;
-      case "learning_candidate": result=await learningCandidate(client,user.id,body); break;
-      case "learning_verify": result=await learningVerify(client,user.id,body); break;
-      case "learning_retrieve": result=await learningRetrieve(client,user.id,body); break;
-      case "project": result=await projectIntelligence(client,user.id,body); break;
-      case "ack": result=await ackBridge(client,user.id,body); break;
-      case "state_update": result=await stateUpdate(client,user.id,body); break;
-      case "successor_handoff": result=await successor(client,user.id,body); break;
-      case "issue_pi_authority": result=await issuePiAuthority(client,user.id,body); break;
-      case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
-      case "consolidate_pi_gates": result=await consolidatePiGates(client,user.id,body); break;
-      case "share": result=await share(client,user.id,body); break;
-      case "supersede": result=await supersede(client,user.id,body); break;
-      case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
-      case "intelligence_commit": result=await commitIntelligence(client,user.id,body); break;
-      case "universal_meaningful_output": break;
-      case "health": result=await health(client,user.id); break;
-      // universal_meaningful_output is handled by the bounded adapter pre-switch branch.
-      case "dream": {
-        const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
-        const dreamHeaders:any = { "Authorization": req.headers.get("Authorization")!, "apikey": ANON, "Content-Type": "application/json" };
-        const dreamBody = { ...body, project_id: PROJECT, idempotency_key: body.idempotency_key ?? req.headers.get("x-idempotency-key") ?? ("compound-dream-" + crypto.randomUUID()) };
-        const dreamResponse = await fetch(dreamUrl, { method: "POST", headers: dreamHeaders, body: JSON.stringify(dreamBody) });
-        const dreamResult = await dreamResponse.json().catch(() => ({}));
-        if (!dreamResponse.ok || dreamResult?.ok !== true) throw new Error("DREAM_REPLAY_DELEGATE_FAILED:" + JSON.stringify(dreamResult));
-        result = { schema: "NAYANET_COMPOUND_DREAM_SEAM_V2", delegated: true, replay: dreamResult.replay, idempotent: dreamResult.idempotent === true };
-        break;
-      }
-      case "compound": {
-        const restored=await restore(client,user.id);
-        result={schema:"NAYANET_COMPOUND_INTELLIGENCE_CYCLE_V1",stages:["EXPERIENCE","CAPTURE","UNDERSTAND","RETAIN","RETRIEVE","DECIDE","ACT","VERIFY","LEARN","DREAM","APPLY","SUCCESSOR"],current_context:restored.YOU_ARE_HERE,next:"Use verified context to choose one authorized action, then persist outcome and successor context.",automation_boundary:"No silent authority escalation or unverified learning promotion."};
-        break;
-      }
-      default: throw new Error("UNKNOWN_ACTION");
     }
     await logOp(client,user.id,action,"SUCCESS",body,result);
     return json({ok:true,action,result});
