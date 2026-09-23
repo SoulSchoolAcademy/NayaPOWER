@@ -1,5 +1,5 @@
 import { IdentityProvider } from '../identity/session';
-import { AppShellV3 } from './AppShellV3';
+import { AppShell } from './AppShellV3';
 import { HubRouter } from './HubRouter';
 
 export default function App() {
