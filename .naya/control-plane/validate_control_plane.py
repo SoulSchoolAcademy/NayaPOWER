@@ -187,12 +187,56 @@ def validate_block(b):
         if looks_like_repo_path(item): repo_path(item,'BLOCK evidence')
 
 
+def git_blob_sha(path):
+    data=path.read_bytes()
+    import hashlib
+    return hashlib.sha1((f'blob {len(data)}\\0').encode()+data).hexdigest()
+
+def extract_team_hub_sha():
+    text=TEAM_NAYA_HUB_LOCK.read_text(encoding='utf-8',errors='replace')
+    import re
+    m=re.search(r'protected source identity is:\\s*SHA: \\`([0-9a-f]{40})\\`', text, re.I|re.S)
+    if not m: fail('Team Naya Hub lock has no protected source SHA')
+    return m.group(1)
+
+def validate_baton_surface(ba,s,b,m,p):
+    active=b.get('active_block',{})
+    if ba.get('repository')!='SoulSchoolAcademy/NayaPOWER': fail('BATON repository is not canonical')
+    if ba.get('source_of_truth',{}).get('live_state')!='.naya/control-plane/STATE.json': fail('BATON live_state source mismatch')
+    if ba.get('source_of_truth',{}).get('active_block')!='.naya/control-plane/BLOCKS.json': fail('BATON active_block source mismatch')
+    if ba.get('source_of_truth',{}).get('mission_map')!='.naya/control-plane/MAP.json': fail('BATON mission_map source mismatch')
+    if ba.get('source_of_truth',{}).get('proof')!='.naya/control-plane/PROOF.json': fail('BATON proof source mismatch')
+    if ba.get('current_state',{}).get('active_block')!=active.get('id'): fail('BATON and BLOCK active block disagree')
+    if ba.get('current_state',{}).get('active_block_status')!=active.get('status'): fail('BATON and BLOCK status disagree')
+    if ba.get('next_action',{}).get('count')!=1: fail('BATON does not expose exactly one next action')
+    if ba.get('next_action',{}).get('action')!=active.get('next_action'): fail('BATON and BLOCK next action disagree')
+    if ba.get('source_snapshot',{}).get('state_block')!=active.get('id'): fail('BATON source snapshot block mismatch')
+    if ba.get('source_snapshot',{}).get('block_next_action')!=active.get('next_action'): fail('BATON source snapshot next action mismatch')
+    if ba.get('source_snapshot',{}).get('proof_status')!=p.get('status'): fail('BATON proof status mismatch')
+    baton_head=ba.get('source_snapshot',{}).get('live_head')
+    if baton_head and baton_head!='LIVE_AT_EXECUTION_TIME':
+        try: subprocess.check_call(['git','merge-base','--is-ancestor',baton_head,git('rev-parse','HEAD')],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+        except Exception: fail('BATON recorded live_head is not an ancestor of repository HEAD')
+
+def validate_hub_identity(s,m):
+    if not HUB.is_file(): fail('canonical Hub source missing')
+    actual=git_blob_sha(HUB)
+    state_sha=s.get('hub',{}).get('canonical_hub_source_sha') or s.get('hub_pre_execution_gate',{}).get('canonical_hub_source_sha')
+    map_sha=m.get('intelligent_hub',{}).get('canonical_hub_source_sha') or m.get('intelligent_hub_pre_execution',{}).get('canonical_hub_source_sha')
+    team_sha=extract_team_hub_sha()
+    if not state_sha or not map_sha: fail('control plane missing canonical Hub source SHA')
+    if not (state_sha==map_sha==team_sha==actual):
+        fail('CANONICAL_HUB_SOURCE_DIVERGENCE: actual='+actual+' STATE='+str(state_sha)+' MAP='+str(map_sha)+' TEAM_NAYA='+str(team_sha))
 def validate_cross_surface_coherence(m,s,b):
     active=b.get('active_block',{})
     if m.get('execution_map',{}).get('active_block')!=active.get('id'): fail('MAP and BLOCK active block disagree')
+    if m.get('execution_map',{}).get('next_action')!=active.get('next_action'): fail('MAP and BLOCK next actions disagree')
+    if m.get('next_action')!=active.get('next_action'): fail('MAP top-level next action disagrees with BLOCK')
     if s.get('current_block')!=active.get('id'): fail('STATE and BLOCK active block disagree')
+    if s.get('current_block_status')!=active.get('status'): fail('STATE and BLOCK status disagree')
     if s.get('single_next_action')!=active.get('next_action'): fail('STATE and BLOCK next actions disagree')
     if s.get('next_actions')!=[active.get('next_action')]: fail('STATE and BLOCK next_actions disagree')
+    if s.get('next_action')!=active.get('next_action'): fail('STATE legacy next_action disagrees with canonical next action')
     if s.get('next_action_count')!=active.get('next_action_count') or active.get('next_action_count')!=1: fail('STATE and BLOCK next-action cardinality disagree')
 
 
@@ -268,7 +312,7 @@ def validate_scenarios():
 
 
 def main():
-    reg,map_,state,blocks,proof,kernel,manifest=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST))
+    reg,map_,state,blocks,proof,kernel,manifest,baton=map(load,(REG,MAP,STATE,BLOCKS,PROOF,KERNEL,MANIFEST,BATON))
     validate_identity(reg)
     validate_manifest(manifest)
     validate_map(map_)
@@ -276,11 +320,13 @@ def main():
     head,branch=validate_state(state)
     validate_block(blocks)
     validate_cross_surface_coherence(map_,state,blocks)
+    validate_hub_identity(state,map_)
+    validate_baton_surface(baton,state,blocks,map_,proof)
     freshness=validate_proof(proof,head)
     validate_kernel(kernel)
     validate_kernel_self_test()
     validate_scenarios()
-    print(json.dumps({'status':'GREEN','control_loop':'MAP → STATE → BLOCK → PROOF','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','authority_map':'GREEN','single_constitution':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
+    print(json.dumps({'status':'GREEN','control_loop':'LIVE HEAD → STATE → BLOCKS → MAP → PROOF → BATON','governance_kernel':'GREEN','repository':'SoulSchoolAcademy/NayaPOWER','live_head':head,'live_branch':branch,'legacy_recorded_state':legacy_drift(head),'active_block':blocks['active_block']['id'],'identity_resolution':'GREEN','manifest_integrity':'GREEN','state_binding':'GREEN','cross_surface_coherence':'GREEN','authority_map':'GREEN','single_constitution':'GREEN','proof_contract':'GREEN','proof_freshness':freshness,'note':'Repository-level control-plane proof only; external provider and production runtime remain separate proof boundaries. Historical evidence is never promoted to current proof when HEAD differs.'},indent=2))
     return 0
 
 
