@@ -133,12 +133,11 @@ jobs:
               }
               const freshCtx=await browser.newContext({serviceWorkers:'block'}), fresh=await freshCtx.newPage();
               await fresh.goto(hub+'/?learning-output-fresh='+run,{waitUntil:'domcontentloaded',timeout:60000});
-              const freshRows=await fresh.evaluate(async({supabaseUrl,supabaseKey,evidenceId,eventId})=>{
-                const s=await window.__NayaNETSupabaseClient.auth.getSession(); const token=s.data.session.access_token;
-                const h={apikey:supabaseKey,Authorization:'Bearer '+token};
+              const freshRows=await fresh.evaluate(async({supabaseUrl,supabaseKey,evidenceId,eventId,accessToken})=>{
+                const h={apikey:supabaseKey,Authorization:'Bearer '+accessToken};
                 const get=async p=>{const r=await fetch(supabaseUrl+'/rest/v1/'+p,{headers:h});return {status:r.status,body:await r.json().catch(()=>null)}};
                 return {learning:await get('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id&id=eq.'+encodeURIComponent(evidenceId)),event:await get('nayanet_cognition_events?select=id,event_id,user_id&event_id=eq.'+encodeURIComponent(eventId))};
-              },{supabaseUrl,supabaseKey,evidenceId,eventId});
+              },{supabaseUrl,supabaseKey,evidenceId,eventId,accessToken:session.access_token});
               if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='ACTIVE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
               if(freshRows.event.status!==200||freshRows.event.body?.length!==1||freshRows.event.body[0].user_id!==ownerId)throw new Error('FRESH_EVENT_RETRIEVAL_FAILED');
               mark('FRESH_RETRIEVAL','PASS',{evidence_id:evidenceId,event_id:eventId,owner_id:ownerId});
