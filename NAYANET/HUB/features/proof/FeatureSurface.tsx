@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { supabase, useIdentity } from '../identity/session';
+import { supabase, useIdentity } from '../../../identity/session';
 
 type SurfaceKey='ledger'|'mail'|'spaces'|'lists'|'share'|'connections'|'reports'|'today';
 type Row=Record<string,unknown>;
