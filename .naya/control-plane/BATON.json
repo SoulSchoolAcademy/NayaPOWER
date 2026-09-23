@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T22:32:13.403864+00:00",
+  "generated_at": "2026-09-23T23:31:48+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "d0ccab0f074e9676c8cd076ff4be4c46f55ea362",
+    "live_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "block_next_action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
   },
   "current_state": {
@@ -68,11 +68,11 @@
   "next_action": {
     "count": 1,
     "status": "AUTHORIZED",
-    "action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "Derived automatically after verified next_action + handoff execution cycle.",
     "acceptance": [
-      "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+      "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
       "UNDERSTAND the current intelligence and activity projection.",
       "NAVIGATE across required Hub surfaces.",
       "SEARCH for existing intelligence.",
