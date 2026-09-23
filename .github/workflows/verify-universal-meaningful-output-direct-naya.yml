@@ -1,0 +1,155 @@
+name: Verify Universal Meaningful Output — Direct Naya Output
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-meaningful-output-direct-naya.yml'
+      - 'supabase/functions/nayanet-compound-intelligence/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  direct-naya-output:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPA_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPA_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute bounded direct-Naya promotion proof
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const hub=process.env.HUB_URL, head=process.env.GITHUB_SHA;
+          const token=('uai'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase();
+          const idem='direct-naya-'+token;
+          const output={
+            output_id:'direct-naya-output:'+token,
+            output_class:'DIRECT_NAYA_MEANINGFUL_OUTPUT',
+            project_id:'NayaNET',
+            owner_scope:{privacy:'PRIVATE_OWNER_SCOPE',owner_only:true},
+            source_ref:{runtime:'Naya',proof_run:process.env.GITHUB_RUN_ID,source_head:head},
+            occurred_at:new Date().toISOString(),
+            title:'Direct Naya meaningful output promotion proof '+process.env.GITHUB_RUN_ID,
+            content:'A direct Naya-generated meaningful understanding can enter the same governed promotion boundary as a Smart Note without creating a second intelligence store.',
+            meaning:'Direct Naya meaning is durable only when normalized, provenance-bound, owner-scoped, checkpointed, and retrievable through the canonical intelligence substrate.',
+            evidence_refs:[{kind:'proof_run',run_id:process.env.GITHUB_RUN_ID},{kind:'source_head',sha:head}],
+            provenance:{origin:'direct_naya',transformation:'universal_meaningful_output_adapter_v1'},
+            value_context:{human_value:'reduce repeated reconstruction by preserving reusable understanding',uncertainty:'future applicability and outcome remain unproven'},
+            applicable_scope:{project:'NayaNET',owner_only:true},
+            authority_ref:{scope:'PERSONAL_INTELLIGENCE_ONLY'},
+            idempotency_key:idem,
+            desired_understanding_state:'CAPTURED',
+            success_condition:'fresh owner context retrieves event, learning evidence, checkpoint, index and Intelligent Block with preserved owner scope',
+            unknowns:['Universal promotion across every output class remains unproven.','Behavior change and outcome verification remain unproven for this output.'],
+            next_use:'A cold Naya can retrieve this meaning when direct-Naya context is relevant.'
+          };
+          const required=['output_id','output_class','project_id','owner_scope','source_ref','occurred_at','title','content','meaning','evidence_refs','provenance','value_context','applicable_scope','authority_ref','idempotency_key','desired_understanding_state','success_condition','unknowns','next_use'];
+          const missing=required.filter(k=>output[k]===undefined||output[k]===null);
+          if(missing.length) throw new Error('ADAPTER_CONTRACT_MISSING:'+missing.join(','));
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('UAI_PROMOTION_TRACE',JSON.stringify(x));};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            try{
+              mark('START','PASS',{source_head:head,output_class:output.output_class});
+              await page.goto(hub+'/identity.html?name='+encodeURIComponent('Direct Naya Promotion Proof')+'&alias='+encodeURIComponent(token),{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForFunction(()=>!!document.querySelector('button'),{timeout:30000});
+              const established=await page.evaluate(async({name,alias})=>window.NayaNETNameFirstAuth.establish({name,alias}),{name:'Direct Naya Promotion Proof',alias:token});
+              if(!established?.authenticated||!established?.userId)throw new Error('AUTHENTICATION_FAILED');
+              const ownerId=established.userId;
+              mark('IDENTITY','PASS',{owner_id:ownerId});
+              await page.goto(hub+'/?uai='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              await page.evaluate(()=>window.NayaAssistantRuntime?.init?.());
+              await page.waitForFunction(id=>{const s=window.NayaAssistantRuntime?.snapshot?.();return !!s?.authenticated&&s.user_id===id;},{timeout:30000},ownerId);
+              const snap=await page.evaluate(()=>window.NayaAssistantRuntime.snapshot());
+              if(snap.user_id!==ownerId)throw new Error('OWNER_MISMATCH');
+              mark('AUTHORITY','PASS',{owner_id:ownerId,persistence:snap.persistence});
+              const body={
+                action:'intelligence_commit',
+                idempotency_key:output.idempotency_key,
+                title:output.title,
+                content:output.content,
+                category:'DIRECT_NAYA_MEANINGFUL_OUTPUT',
+                topic:'universal-promotion',
+                tags:['universal-promotion','direct-naya','meaningful-output'],
+                confidence:1,
+                learning_claim:output.meaning,
+                applicable_scope:output.applicable_scope,
+                authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+                unknown:output.unknowns,
+                next_use:output.next_use,
+                source_head:head,
+                value_context:output.value_context,
+                human_teaching:false
+              };
+              const commit=await page.evaluate(async body=>{
+                const c=window.__NayaNETSupabaseClient;
+                const {data,error}=await c.functions.invoke('nayanet-compound-intelligence',{headers:{'x-idempotency-key':body.idempotency_key},body});
+                return {data,error:error?String(error.message||error):null,status:error?Number(error.status||0):200};
+              },body);
+              if(commit.status!==200||commit.data?.ok!==true)throw new Error('PROMOTION_FAILED:'+JSON.stringify(commit));
+              const result=commit.data.result;
+              const ids={event_id:result?.source_event?.event_id,checkpoint_id:result?.checkpoint?.checkpoint_id,learning_evidence_id:result?.learning?.evidence_id,index_id:result?.projection?.index?.id};
+              if(Object.values(ids).some(v=>!v))throw new Error('PROMOTION_LINEAGE_IDS_MISSING:'+JSON.stringify(result));
+              mark('CANONICAL_PROMOTION','PASS',{...ids,output_class:output.output_class});
+              const persisted=await page.evaluate(async({ids,ownerId})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const [event,index,learning,checkpoint]=await Promise.all([
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',ids.event_id).eq('user_id',ownerId).single(),
+                  c.from('nayanet_intelligence_index').select('*').eq('id',ids.index_id).eq('owner_id',ownerId).single(),
+                  c.from('learning_evidence').select('*').eq('id',ids.learning_evidence_id).eq('member_id',ownerId).single(),
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',ids.checkpoint_id).eq('user_id',ownerId).single()
+                ]);
+                const block=event.data?.id?await c.from('nayanet_intelligent_blocks').select('*').contains('source_event_ids',[event.data.id]).eq('owner_id',ownerId).maybeSingle():{data:null,error:{message:'SOURCE_EVENT_MISSING'}};
+                return {event:event.data,index:index.data,learning:learning.data,checkpoint:checkpoint.data,block:block.data,errors:{event:event.error?.message,index:index.error?.message,learning:learning.error?.message,checkpoint:checkpoint.error?.message,block:block.error?.message}};
+              },{ids,ownerId});
+              if(!persisted.event||!persisted.index||!persisted.learning||!persisted.checkpoint||!persisted.block)throw new Error('PERSISTED_CHAIN_INCOMPLETE:'+JSON.stringify(persisted.errors));
+              if(persisted.event.user_id!==ownerId||persisted.learning.member_id!==ownerId||persisted.block.owner_id!==ownerId)throw new Error('OWNER_SCOPE_BREACH');
+              mark('PERSISTENCE_AND_BLOCK','PASS',{block_id:persisted.block.block_id,learning_status:persisted.learning.status,owner_id:ownerId});
+              const fresh=await context.newPage();
+              await fresh.goto(hub+'/uai-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              await fresh.evaluate(()=>window.NayaAssistantRuntime?.init?.());
+              await fresh.waitForFunction(id=>{const s=window.NayaAssistantRuntime?.snapshot?.();return !!s?.authenticated&&s.user_id===id;},{timeout:30000},ownerId);
+              const retrieved=await fresh.evaluate(async ids=>{
+                const c=window.__NayaNETSupabaseClient;
+                const e=(await c.from('nayanet_cognition_events').select('*').eq('event_id',ids.event_id).single()).data;
+                const l=(await c.from('learning_evidence').select('*').eq('id',ids.learning_evidence_id).single()).data;
+                const cp=(await c.from('nayanet_cognition_events').select('*').eq('event_id',ids.checkpoint_id).single()).data;
+                return {event:e,learning:l,checkpoint:cp};
+              },ids);
+              if(!retrieved.event||!retrieved.learning||!retrieved.checkpoint)throw new Error('FRESH_RETRIEVAL_MISSING');
+              mark('FRESH_RETRIEVAL','PASS',{event_id:ids.event_id,checkpoint_id:ids.checkpoint_id,learning_evidence_id:ids.learning_evidence_id,owner_id:ownerId});
+              const proof={schema:'NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_PROMOTION_DIRECT_NAYA_V1',status:'VERIFIED',source_head:head,output_class:output.output_class,owner_id:ownerId,output_id:output.output_id,...ids,trace};
+              fs.writeFileSync('universal-direct-naya-proof.json',JSON.stringify(proof,null,2)+'\\n');
+              console.log(JSON.stringify(proof));
+              await fresh.close(); await context.close(); await browser.close();
+            }catch(error){
+              fs.writeFileSync('universal-direct-naya-proof.json',JSON.stringify({schema:'NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_PROMOTION_DIRECT_NAYA_V1',status:'FAILED',source_head:head,output_class:output.output_class,error:String(error?.stack||error),trace},null,2)+'\\n');
+              throw error;
+            }
+          })().catch(error=>{console.error(error);process.exit(1)});
+          NODE
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-direct-naya-promotion-proof
+          path: universal-direct-naya-proof.json
+          if-no-files-found: error
