@@ -22,17 +22,17 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "d4d309a569970b8f0fe625234db82aad162126f5",
-    "checkpoint_branch": "recovery/hub-g3-repair-2026-09-23-d4d309a",
+    "main_observed_head": "8c6e94bf5791e58bbd6305fa2184a9f0db8e46e9",
+    "checkpoint_branch": "recovery/hub-g4-repair-2026-09-23-8c6e94bf",
     "checkpoint_type": "CANONICAL_HUB_VERIFIED_REPAIR_ADVANCEMENT",
-    "previous_major_hub_checkpoint_commit": "38d757435e5fdf154cf41d61cade5495a9ec66b2",
-    "previous_major_hub_checkpoint_blob_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5",
-    "recovery_entrypoint_blob_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5",
-    "advancement_reason": "Approve deployment of verified canonical-note rendering repair (G3) on the frozen canonical static Hub: SECTION_ALIASES now accepts the canonical heading IN A NUTSHELL (in addition to NUTSHELL) which the Smart Notes canonical source uses in all 9 notes. Proven with interception probe: canonical_boards 0 -> 9, 0 console errors, 0 bad requests; all 9 boards render full real content (9 layers each). Pure surgical repair inside the frozen canonical entrypoint; no authority transfer, no architecture change, no visual surface change."
+    "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
+    "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
+    "recovery_entrypoint_blob_sha": "0052036e5fe0e09e678a50e5e0552e8fa8c3b148",
+    "advancement_reason": "Approve deployment of verified functional-surface repair (G4) plus the current main identity-gate boundary (0052036e) on the frozen canonical static Hub: the NAYA-HUB-FUNCTIONAL-SURFACE-V1 IIFE contained a single-char syntax error (block:'start') with a malformed closing where a ) closed the object instead of }), which killed the entire functional-surface IIFE at load (workspace unmounted, all 9 rooms/surfaces dead, window.feed absent). Fixed to block:'start'})}} (verified: all 21/22 inline script blocks parse clean). Proven with browser anchor probe on the full new index with the identity auth adapter stubbed: identity AUTHENTICATED, auth gate auto-removes, workspace mounted with 10 nav pages (today/reports/library/share/ledger/connections/lists/mail/spaces/settings), 48 room elements including room01-head/room01-led/room-01-intelligence-today, 9 canonical boards, 3 feed buttons, 0 pageerrors. Pure surgical single-token repair inside the frozen canonical entrypoint; no authority transfer, no architecture change; the L976 feed() closing fix is the only diff vs main index."
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
-    "entrypoint_blob_sha_at_checkpoint": "4faa324f71d651daa398c16cdc238bd63f4828f3",
+    "entrypoint_blob_sha_at_checkpoint": "7b1126a014b3b27026a0360dbc1b8226a9be9f50",
     "implementation_authority": "NAYANET/HUB/index.html",
     "preserved_react_lane": "NAYANET/HUB/src/",
     "preserved_react_lane_status": "HISTORICAL_OR_ALTERNATE_IMPLEMENTATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
