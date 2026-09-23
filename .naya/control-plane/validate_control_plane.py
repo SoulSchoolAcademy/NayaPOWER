@@ -16,6 +16,7 @@ PROOF=ROOT/'.naya/control-plane/PROOF.json'
 BATON=ROOT/'.naya/control-plane/BATON.json'
 HUB=ROOT/'NAYANET/HUB/index.html'
 TEAM_NAYA_HUB_LOCK=ROOT/'.naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md'
+BRANCH_CLASSIFICATION=ROOT/'.naya/control-plane/BRANCH-CLASSIFICATION.json'
 KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'
 KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'
 LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
@@ -230,6 +231,15 @@ def validate_hub_identity(s,m):
     if not state_sha or not map_sha: fail('control plane missing canonical Hub source SHA')
     if not (state_sha==map_sha==team_sha==actual):
         fail('CANONICAL_HUB_SOURCE_DIVERGENCE: actual='+actual+' STATE='+str(state_sha)+' MAP='+str(map_sha)+' TEAM_NAYA='+str(team_sha))
+def validate_branch_classification():
+    d=load(BRANCH_CLASSIFICATION)
+    if d.get('status')!='CANONICAL': fail('branch classification is not canonical')
+    if d.get('canonical_current_branch')!='main': fail('canonical current branch is not main')
+    if 'Only main may supply current operational truth' not in d.get('rule',''): fail('branch current-truth rule missing')
+    if 'non-main branch' not in d.get('proof_rule',''): fail('non-main proof scope rule missing')
+    actual=git('branch','--show-current')
+    if actual and actual!='main': fail('validator executed on non-main branch')
+
 def validate_cross_surface_coherence(m,s,b):
     active=b.get('active_block',{})
     if m.get('execution_map',{}).get('active_block')!=active.get('id'): fail('MAP and BLOCK active block disagree')
@@ -322,6 +332,7 @@ def main():
     validate_authority_map(kernel)
     head,branch=validate_state(state)
     validate_block(blocks)
+    validate_branch_classification()
     validate_cross_surface_coherence(map_,state,blocks)
     validate_hub_identity(state,map_)
     validate_baton_surface(baton,state,blocks,map_,proof)
