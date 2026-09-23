@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T04:00:17.292Z",
+  "generated_at": "2026-09-23T04:13:40.131Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,12 +12,12 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "4e834f1c9eecb4fd8fd684fd206b005fc4634e2a",
+    "live_head": "61ce4a9285b4edff2da88d45186863dfc2763b5b",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "block_next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "canonical_hub_source_sha": "2d2978840140323fe5293285124783223bab4fd9"
   },
   "current_state": {
@@ -72,9 +72,10 @@
     "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "next_action": {
-    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
     "status": "AUTHORIZED_AFTER_PROOF",
-    "count": 1
+    "count": 1,
+    "reason": "Fresh Dream → verified learning → later decision influence is now proven; the next open compounding boundary is the Intelligent Block lifecycle."
   },
   "successor_prompt": {
     "prompt": "Resolve live main. Confirm the Smart Note learning verifier repair is proven by a fresh run. Then execute the one current-main owner-bound Smart Note → verified learning → later-decision influence proof and independently verify the complete lineage.",
