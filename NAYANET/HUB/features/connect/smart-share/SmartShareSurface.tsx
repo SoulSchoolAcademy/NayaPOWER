@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useIdentity } from '../identity/session';
-import { loadPrimaryIntelligence } from '../data/pis';
-import type { IntelligentEvent } from '../intelligence/types';
+import { useIdentity } from '../../../identity/session';
+import { loadPrimaryIntelligence } from '../../../intelligence/retrieval/pis';
+import type { IntelligentEvent } from '../../../intelligence/types';
 
 export function SmartShareSurface() {
   const identity = useIdentity();
