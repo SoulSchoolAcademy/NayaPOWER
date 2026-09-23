@@ -872,6 +872,44 @@ Deno.serve(async (req) => {
   const action=String(body.action||"restore").trim();
   try {
     const preActionExempt = new Set(["restore","cold_restore","retrieve","reconcile","health"]);
+    // UNIVERSAL_MEANINGFUL_OUTPUT_V1: one governed normalization/routing boundary.
+    // This delegates to the existing intelligence_commit rung; it creates no new store
+    // and never routes meaningful output through Smart Note implicitly.
+    if (action === "universal_meaningful_output") {
+      const sourceType = String(body.source_type ?? "").trim();
+      const privacy = String(body.privacy ?? "PRIVATE").trim();
+      const destinationClass = String(body.destination_class ?? "").trim();
+      const requestedAction = String(body.requested_action ?? "").trim();
+      if (!String(body.output_id ?? "").trim()) throw new Error("UNIVERSAL_OUTPUT_ID_REQUIRED");
+      if (!String(body.source_ref ?? "").trim()) throw new Error("UNIVERSAL_SOURCE_REF_REQUIRED");
+      if (!String(body.title ?? "").trim()) throw new Error("UNIVERSAL_TITLE_REQUIRED");
+      if (!String(body.content ?? "").trim()) throw new Error("UNIVERSAL_CONTENT_REQUIRED");
+      if (!["conversation","execution","tool_result","document","existing_intelligence","other"].includes(sourceType)) throw new Error("UNIVERSAL_SOURCE_TYPE_INVALID");
+      if (!["PRIVATE","SHARED_BY_CHOICE","COLLECTIVE_BY_CONSENT","PUBLIC_BY_DECISION"].includes(privacy)) throw new Error("UNIVERSAL_PRIVACY_INVALID");
+      if (!["knowledge","procedure","checklist","test","contract","architecture","mission_state","guardrail","existing_intelligence","other"].includes(destinationClass)) throw new Error("UNIVERSAL_DESTINATION_INVALID");
+      if (!["PROPOSE_ONLY","CAPTURE_IF_AUTHORIZED","ROUTE_IF_AUTHORIZED"].includes(requestedAction)) throw new Error("UNIVERSAL_REQUESTED_ACTION_INVALID");
+      if (privacy !== "PRIVATE" && !String(body.authority_ref ?? "").trim()) throw new Error("UNIVERSAL_AUTHORITY_REQUIRED");
+      if (destinationClass !== "existing_intelligence") throw new Error("UNIVERSAL_DESTINATION_NOT_IN_BOUNDED_PROOF");
+      if (requestedAction === "PROPOSE_ONLY") throw new Error("UNIVERSAL_PROPOSAL_ONLY_NOT_COMMITTABLE");
+      result = await commitIntelligence(client,user.id,{
+        ...body,
+        idempotency_key: String(body.output_id).trim(),
+        value_context: {
+          ...(body.value_context ?? {}),
+          universal_adapter: "UNIVERSAL_MEANINGFUL_OUTPUT_V1",
+          source_type: sourceType,
+          output_id: String(body.output_id).trim(),
+          output_version: Number(body.output_version ?? 1),
+          source_ref: String(body.source_ref).trim(),
+          provenance_refs: Array.isArray(body.provenance_refs) ? body.provenance_refs : [String(body.source_ref).trim()],
+          evidence_state: String(body.evidence_state ?? "OBSERVED"),
+          privacy,
+          destination_class: destinationClass
+        }
+      });
+      result.schema = "NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_V1";
+      result.adapter = "UNIVERSAL_MEANINGFUL_OUTPUT_V1";
+    } else {
     if (!preActionExempt.has(action)) {
       const gate = await coldRestore(client,user.id);
       if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
@@ -899,7 +937,9 @@ Deno.serve(async (req) => {
       case "supersede": result=await supersede(client,user.id,body); break;
       case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
       case "intelligence_commit": result=await commitIntelligence(client,user.id,body); break;
+      case "universal_meaningful_output": break;
       case "health": result=await health(client,user.id); break;
+      // universal_meaningful_output is handled by the bounded adapter pre-switch branch.
       case "dream": {
         const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
         const dreamHeaders:any = { "Authorization": req.headers.get("Authorization")!, "apikey": ANON, "Content-Type": "application/json" };
