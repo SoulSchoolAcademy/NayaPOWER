@@ -274,8 +274,45 @@ jobs:
             }
           } finally { await browser.close(); }
           EOF
+          mkdir -p hub-visual-proof
           NAYA_RUNTIME_URL="${NAYA_RUNTIME_URL}" GITHUB_SHA="${GITHUB_SHA}" node verify-canonical-hub.mjs
           rm -f verify-canonical-hub.mjs
+
+      - name: Capture canonical Hub visual proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > capture-hub-proof.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          const runtime=process.env.NAYA_RUNTIME_URL;
+          const browser=await chromium.launch({headless:true,executablePath:'/usr/bin/google-chrome',args:['--no-sandbox','--disable-dev-shm-usage']});
+          try {
+            for (const viewport of [{width:1440,height:1000,label:'desktop'},{width:390,height:844,label:'mobile'}]) {
+              const context=await browser.newContext({serviceWorkers:'block',viewport:{width:viewport.width,height:viewport.height}});
+              const page=await context.newPage();
+              await page.goto(runtime+'/?visual-proof='+process.env.GITHUB_SHA+'&viewport='+viewport.label,{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForTimeout(1800);
+              await page.screenshot({path:`hub-visual-proof/${viewport.label}-home.png`,fullPage:true});
+              for (const key of ['collective','personal','activity']) {
+                await page.locator('.feedNav [data-feed="'+key+'"]').click();
+                await page.waitForTimeout(100);
+                await page.screenshot({path:`hub-visual-proof/${viewport.label}-${key}.png`,fullPage:true});
+              }
+              await context.close();
+            }
+          } finally { await browser.close(); }
+          EOF
+          npm install --no-save --no-package-lock playwright@1.55.0
+          node capture-hub-proof.mjs
+          rm -f capture-hub-proof.mjs
+
+      - name: Upload canonical Hub visual proof
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-hub-visual-proof
+          path: hub-visual-proof/*.png
+          if-no-files-found: error
 
       - name: Final proof
         run: |
