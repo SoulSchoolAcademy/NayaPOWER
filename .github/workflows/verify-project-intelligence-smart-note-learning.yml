@@ -105,14 +105,10 @@ jobs:
               try{
                 await freshPage.goto(hub+'/?pi_cold_reuse='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
                 await freshPage.waitForFunction(()=>!!window.NayaNETNameFirstAuth?.current,{timeout:30000});
-                const cold=await freshPage.evaluate(async({accessToken,refreshToken,targetId})=>{
-                  const c=window.__NayaNETSupabaseClient;
-                  if(!c)throw new Error('COLD_SUPABASE_CLIENT_UNAVAILABLE');
-                  const set=await c.auth.setSession({access_token:accessToken,refresh_token:refreshToken});
-                  if(set.error)throw set.error;
+                const cold=await freshPage.evaluate(async({accessToken,targetId})=>{
                   const r=await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/naya-decision-context',{method:'POST',headers:{Authorization:'Bearer '+accessToken,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json'},body:JSON.stringify({target_id:targetId})});
                   return await r.json();
-                },{accessToken:session.access_token,refreshToken:(await page.evaluate(async()=>{const r=await window.__NayaNETSupabaseClient.auth.getSession();return r.data?.session?.refresh_token||null;})),targetId:eventId});
+                },{accessToken:session.access_token,targetId:eventId});
                 if(cold?.ok!==true||cold?.decision?.influenced!==true||cold?.decision?.decision!=='USE_VERIFIED_LEARNING_CONTEXT')throw new Error('COLD_NAYA_REUSE_FAILED:'+JSON.stringify(cold));
                 mark('COLD_REUSE','PASS',{target_id:eventId,decision:cold.decision.decision,influenced:cold.decision.influenced,learner_state_version:cold.learner_state_version});
               }finally{await fresh.close();}
