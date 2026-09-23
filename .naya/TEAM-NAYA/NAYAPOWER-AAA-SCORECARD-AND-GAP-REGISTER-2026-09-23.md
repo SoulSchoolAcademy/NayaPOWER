@@ -5,7 +5,7 @@ Target: 10/10 AAA for the intended release scope. 9.5 may be accepted only for a
 ## CURRENT SCORECARD
 | Area | Score | State | Evidence / reason | Critical gap |
 |---|---:|---|---|---|
-| Superbrain engine | 8.6/10 | VERIFIED CORE / OPEN COMPOUNDING | Intelligent Events, Blocks, learning evidence, learner state, Dream/replay, decision context, Smart Ledger, checkpoint, compound-intelligence runtime exist | Full lesson → cold applicability → behavior change → outcome → improved checkpoint is not yet proven |
+| Superbrain engine | 9.4/10 | FRESH COMPOUNDING CHAIN PROVEN / OPEN UNIVERSALIZATION | Intelligent Events, Blocks, learning evidence, learner state, Dream/replay, decision context, Smart Ledger, checkpoint, compound-intelligence runtime exist; fresh Collective Intelligence Chain proof passed run 35900094543 | Universal meaningful-output promotion and broader multi-lesson generalization remain open |
 | Setup / Control Plane | 9.2/10 | STRONG / RECONCILIATION NEEDED | STATE/BLOCKS/MAP/PROOF/BATON + cold 14-question contract + successor law exist | Some current documents still expose stale historical next-action wording; reconcile to one live frontier |
 | Canonical Hub | 9.5/10 | CURRENT RECEIVER SURFACE VERIFIED / WHOLE JOURNEY OPEN | Current-main Smart Feed renderer was exercised by fresh production receiver proof run 35898728927; canonical render, reload, fresh-context retrieval and Intelligent Block projection all passed | Full human golden path and exact release deployment parity remain to be reconsolidated |
 | Sender readiness | 7.8/10 | PARTIAL | Existing governed runtime/capability boundaries and Smart Door patterns exist | Need universal sender contract and explicit capability/authority manifest |
@@ -14,12 +14,12 @@ Target: 10/10 AAA for the intended release scope. 9.5 may be accepted only for a
 | Computational efficiency | 8.2/10 | MEASURED/OPEN | Controlled compounding experiments and measurement contracts exist | Final causal benchmark must use retained intelligence produced by Cycle A |
 | Production readiness | 8.8/10 | BOUNDED / FRESH RECEIVER PROOF | Current production receiver runtime passed fresh browser/database evidence at run 35898728927 | Canonical Cloudflare deployment parity for every claim-relevant Hub source path remains open |
 | Human UX / AAA | 8.0/10 | FOUNDATION / ACCEPTANCE OPEN | Canonical Hub has substantial visual system and current receiver proof validates the intelligence projection surface | Final AAA must test human-operable golden path, not feature count |
-| Overall mission readiness | 8.7/10 | NOT COMPLETE | Receiver boundary is now fresh-proven; major causal compounding and product closure remain open | Collective lesson, universal promotion, sender contract, parity, golden path, final adversarial gate |
+| Overall mission readiness | 9.0/10 | NOT COMPLETE | Receiver boundary and one full Collective Intelligence Chain lesson are now fresh-proven; product closure and universalization remain open | Universal promotion, sender contract, parity, golden path, final adversarial gate |
 
 ## 10 MAX-VALUE PRIORITIES — LIVE RECONCILIATION
 1. ~~P0 — Finish current Smart Note receiver proof.~~ **PROVEN — run 35898728927.**
 2. ~~P0 — Close Intelligent Block lifecycle CREATE → REPLAY/UPDATE → SUPERSEDE → VERIFY → RETRIEVE → RENDER → CONTINUE.~~ **PROVEN at recorded source scope — run 35891432147.**
-3. **P0 — Run one real lesson through the complete Collective Intelligence Chain and prove cold applicability + behavior change + outcome.**
+3. ~~P0 — Run one real lesson through the complete Collective Intelligence Chain and prove cold applicability + behavior change + outcome.~~ **PROVEN — run 35900094543.**
 4. **P0 — Generalize the canonical intelligence-commit boundary to every meaningful Naya output available inside NayaPOWER; explicitly separate this from arbitrary ChatGPT conversation capture.**
 5. **P0 — Prove the 14-question cold interface at current main and use its result as execution authorization.**
 6. **P1 — Establish one sender/receiver readiness contract for every Smart Door and prove representative capability classes.**
@@ -33,7 +33,7 @@ H1 — Universal capture: canonical Smart Note is automatically checkpointed, bu
 H2 — Reconciliation: DUPLICATE / CONFIRM / EXTEND / CORRECT / CONFLICT / SUPERSEDE / UNCERTAIN / LOW VALUE are defined; runtime proof must demonstrate them.
 H3 — Core Intelligence update: checkpoint persistence exists; complete current-integrated-state change proof remains open.
 H4 — Applicability: bounded cold retrieval exists; explicit restore → what changed → what applies → act proof remains open.
-H5 — Outcome learning: learning and later-decision proofs exist; exact lesson must show outcome verification followed by improved checkpoint.
+H5 — Outcome learning: **one full lesson is now proven through outcome verification → learning update → improved checkpoint; broader generalization remains open.**
 H6 — Block lifecycle: **PROVEN at recorded source scope**; current receiver proof additionally validates current Hub Block rendering/roundtrip projection.
 H7 — Control-plane conflict: STATE/MAP/BLOCKS/BATON have carried different frontier wording; reconcile to one current next action.
 H8 — Sender contract: capability → authority → scope → receiver → receipt → persistence → retrieval → evidence is not fully generalized.
@@ -61,3 +61,21 @@ H12 — Collective consent: private-by-default is bounded-proven; network-scale 
 No 100% claim until the intended release scope has zero critical UNKNOWN, no contradictory current next action, current source/deployment parity, complete representative human golden path, cold successor continuation, complete lesson compounding proof, sender/receiver evidence, and score ≥9.5 on every critical subsystem.
 
 ONE BRAIN. ONE CURRENT STATE. ONE NEXT ACTION. ONE EVIDENCE CHAIN. ONE TORCH.
+
+
+## FRESH P0-03 COLLECTIVE INTELLIGENCE CHAIN EVIDENCE
+- Workflow: .github/workflows/verify-collective-intelligence-chain.yml
+- Run: 35900094543
+- Job: 107313747140
+- Source HEAD: 07c1836512b705b0aa8b2a9dceaf0897711d676c
+- Lesson event: intelligence:lesson-collective-chain-35900094543-45fbb87359
+- Connected interpretation: understanding:63946bd1-4b6c-4e2e-8699-029d4f84ac60
+- Initial checkpoint: checkpoint:lesson-collective-chain-35900094543-45fbb87359
+- Learning evidence: 9631e8ed-3075-43df-904b-3a9e68dd87c4
+- Replay: 84faf1ae-7b73-4dab-8ee6-32d48dfa1468
+- Learner state version: 1
+- Verified outcome event: collective-outcome-collective-chain-35900094543-45fbb87359
+- Improved checkpoint: checkpoint:lesson-collective-chain-35900094543-45fbb87359:outcome
+- Acceptance: all 13 required checks PASS, including lesson capture, connect, reconcile, integrate, checkpoint, cold retrieval, applicability, behavior change, observed outcome, verified outcome, learning update, improved checkpoint, unchanged authority.
+- Causal repair discovered during proof: authenticated Intelligence Index projection writes were attempted through a client role with SELECT-only RLS policy. The canonical projection write was repaired to use the existing service-role admin boundary; the exact current function was deployed as Supabase Edge Function version 23 before the successful rerun.
+- Proof remains bounded to this representative lesson and tested runtime scope; it does not prove universal real-world learning quality.
