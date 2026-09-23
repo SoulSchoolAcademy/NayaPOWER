@@ -215,6 +215,7 @@ def validate_baton_surface(ba,s,b,m,p):
     if ba.get('source_snapshot',{}).get('state_block')!=active.get('id'): fail('BATON source snapshot block mismatch')
     if ba.get('source_snapshot',{}).get('block_next_action')!=active.get('next_action'): fail('BATON source snapshot next action mismatch')
     if ba.get('source_snapshot',{}).get('proof_status')!=p.get('status'): fail('BATON proof status mismatch')
+    if ba.get('source_snapshot',{}).get('canonical_hub_source_sha')!=canonical_hub_source_sha(): fail('BATON canonical Hub source mismatch')
     baton_head=ba.get('source_snapshot',{}).get('live_head')
     if baton_head and baton_head!='LIVE_AT_EXECUTION_TIME':
         try: subprocess.check_call(['git','merge-base','--is-ancestor',baton_head,git('rev-parse','HEAD')],cwd=ROOT,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
