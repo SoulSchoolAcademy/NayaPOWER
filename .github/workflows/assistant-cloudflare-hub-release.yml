@@ -169,12 +169,14 @@ jobs:
           cp NAYANET/HUB/index.html dist/index.html
           cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
           cp NAYANET/HUB/public/assistant-runtime.js dist/assistant-runtime.js
+cp NAYANET/HUB/intelligence-surfaces-runtime.js dist/NAYANET/HUB/intelligence-surfaces-runtime.js
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
           cp hub-completeness.js dist/hub-completeness.js
           test -s dist/index.html
           test -s dist/NAYANET/name-first-auth-adapter.js
           test -s dist/assistant-runtime.js
+test -s dist/NAYANET/HUB/intelligence-surfaces-runtime.js
           test -s dist/smart-feed.js
           test -s dist/smart-tabs.js
           test -s dist/hub-completeness.js
