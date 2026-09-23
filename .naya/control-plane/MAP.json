@@ -12,7 +12,7 @@
     "continuation_baton": ".naya/control-plane/BATON.json",
     "continuation_baton_contract": ".naya/control-plane/BATON-CONTRACT.md",
     "legacy_state_projection": ".naya/memory/STATE.json",
-    "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+    "canonical_source_map": "SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
     "constitutional_authority": ".naya/codex/11-RUNTIME-CONSTITUTION.md",
     "execution_issue": 66,
     "assessment_issue": 67,
@@ -36,7 +36,7 @@
     "runtime_transactional_state": "Application runtime/database authority where applicable",
     "evidence": "Execution receipts, CI artifacts, runtime/render/whole-journey evidence",
     "history": ".naya/memory/events/ and execution receipts",
-    "authority_navigation": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+    "authority_navigation": "SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
     "continuation_authority": ".naya/control-plane/BATON.json"
   },
   "operational_state_rule": "The control-plane STATE/BLOCK/MAP/PROOF surfaces form the canonical operational control plane. The BATON surface is the canonical continuation handoff assembled from those authorities and does not override their truth ownership. .naya/memory/STATE.json is a compatibility/history projection and cannot override or compete with live Git identity or control-plane state. Runtime proof freshness is claim-scope based: repository commits that do not modify the source paths used by a deployment/runtime claim do not invalidate that claim; the exact source-scope commit and deployment identity remain recorded.",
