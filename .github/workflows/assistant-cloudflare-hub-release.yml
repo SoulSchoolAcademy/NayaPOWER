@@ -20,8 +20,6 @@ on:
       - 'smart-feed.js'
       - 'smart-tabs.js'
       - 'NAYANET/HUB/intelligence-surfaces-runtime.js'
-      - 'identity.html'
-      - 'NAYANET/name-first-auth-adapter.js'
       - '.github/workflows/assistant-cloudflare-hub-release.yml'
       - '.naya/control-plane/EXECUTION-SESSION.json'
   workflow_dispatch:
@@ -118,7 +116,6 @@ jobs:
           cp -R NAYANET/HUB/dist/. dist/
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/public/NAYANET/name-first-auth-adapter.js dist/NAYANET/name-first-auth-adapter.js
-          cp identity.html dist/identity.html
           test -s dist/index.html
           test -s dist/NAYANET/name-first-auth-adapter.js
           sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
