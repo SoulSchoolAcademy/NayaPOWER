@@ -108,7 +108,7 @@ jobs:
             const successorEventId=first.body.result?.event?.event_id;
             if(!successorEventId)throw new Error('SUPERSESSION_EVENT_ID_MISSING');
 
-            const retrieved=await page.evaluate(async({blockId,newId,successorEventId})=>{
+            const retrieved=await page.evaluate(async({blockId,newId,successorEventId,ownerId,expectedVersion})=>{
               const c=window.__NayaNETSupabaseClient;
               if(!c)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
               const block=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).eq('owner_id',ownerId).single();
