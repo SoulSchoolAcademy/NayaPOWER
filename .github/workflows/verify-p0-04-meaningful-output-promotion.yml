@@ -64,13 +64,11 @@ jobs:
               const snap=await page.evaluate(()=>window.NayaAssistantRuntime.snapshot());
               if(!snap.authenticated||snap.user_id!==owner.userId)throw new Error('CANONICAL_SESSION_AUTHORITY_MISMATCH');
               mark('AUTHORITY','PASS',{owner_id:snap.user_id,persistence:snap.persistence});
-              const authToken=await page.evaluate(async()=>((await window.__NayaNETSupabaseClient.auth.getSession()).data?.session?.access_token)||null);
-              if(!authToken)throw new Error('OWNER_ACCESS_TOKEN_NOT_ESTABLISHED');
-
-              const commit=await page.evaluate(async({authToken,supa,key,body})=>{
-                const r=await fetch(supa+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+authToken,apikey:key,'Content-Type':'application/json','x-idempotency-key':body.idempotency_key},body:JSON.stringify(body)});
-                return {status:r.status,body:await r.json().catch(()=>({}))};
-              },{authToken,supa,key,body:{action:'intelligence_commit',idempotency_key:idem,title,content,category:'P0-04',topic:'meaningful-output-promotion',tags:['p0-04','meaningful-output','canonical-intelligence'],confidence:1,learning_claim:content,what_changed:'One meaningful Naya output entered the canonical intelligence commit path.',applicable_scope:{project:'NayaNET',owner_only:true},authority_scope:'PERSONAL_INTELLIGENCE_ONLY',unknown:['Future applicability and outcome-based behavior change remain open.'],next_use:'Fresh Naya retrieves this intelligence by its canonical event identity.',source_head:head}});
+              const commit=await page.evaluate(async({body})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const {data,error}=await c.functions.invoke('nayanet-compound-intelligence',{headers:{'x-idempotency-key':body.idempotency_key},body});
+                return {status:error?Number(error.status||0):200,body:data||{},error:error?String(error.message||error):null};
+              },{body:{action:'intelligence_commit',idempotency_key:idem,title,content,category:'P0-04',topic:'meaningful-output-promotion',tags:['p0-04','meaningful-output','canonical-intelligence'],confidence:1,learning_claim:content,what_changed:'One meaningful Naya output entered the canonical intelligence commit path.',applicable_scope:{project:'NayaNET',owner_only:true},authority_scope:'PERSONAL_INTELLIGENCE_ONLY',unknown:['Future applicability and outcome-based behavior change remain open.'],next_use:'Fresh Naya retrieves this intelligence by its canonical event identity.',source_head:head}});
               if(commit.status!==200||commit.body?.ok!==true)throw new Error('INTELLIGENCE_COMMIT_FAILED:'+JSON.stringify(commit));
               const result=commit.body.result;
               if(result?.status!=='CAPTURED_INTEGRATED_CHECKPOINTED')throw new Error('INTELLIGENCE_COMMIT_STATUS_INVALID:'+JSON.stringify(result));
