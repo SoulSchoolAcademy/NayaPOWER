@@ -942,7 +942,7 @@
     ]
   },
   "interpretation": "Fresh Smart Note → verified learning → learning retrieval is now proven at current-main managed-runtime scope. The final workflow verifier failed only because its Node heredoc mixed require() with top-level await; independent Supabase verification confirmed the persisted learning/event lineage. The next causal frontier is current-main learning influence on a later governed decision.",
-  "current_repository_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
+  "current_repository_head": "aff294aa679fba56beaf940534a05e5250df73c0",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
@@ -1007,11 +1007,18 @@
     "next_action": "Build and run the first production computation-efficiency benchmark: baseline cold reconstruction vs retained verified intelligence reuse."
   },
   "reconciliation": {
-    "status": "RECONCILED",
-    "current_main_head": "97f3a62eb9d161a294d824457c071f6e2a745071",
+    "status": "RECONCILED_HISTORICAL_DISPOSITION",
+    "current_main_head": "aff294aa679fba56beaf940534a05e5250df73c0",
     "canonical_hub_blob_sha": "c70c3574d7ba0c8e999df06f2aeb6574472eaf5f",
     "runtime_parity": "STALE_UNTIL_CURRENT_RELEASE",
-    "reason": "Control-plane validator now fails closed on source divergence; historical runtime proof is retained as historical evidence, not current truth."
+    "reason": "Control-plane validator now fails closed on source divergence; historical runtime proof is retained as historical evidence, not current truth.",
+    "legacy_cognition_disposition": {
+      "cohort_size": 88,
+      "status": "HISTORICAL_ONLY",
+      "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
+      "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
+    },
+    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
   },
   "compound_intelligence_12": {
     "status": "PROVEN",
@@ -1290,5 +1297,11 @@
     "causal_repair_commit": "fa112deec15d68ab0b9796b70e5c3ae6cde7b143",
     "repair_scope": "Removed obsolete duplicate Intelligent Block materialization path; no schema/store/event/authority redesign.",
     "verification": "OPEN_PENDING_FRESH_PRODUCTION_DEPLOYMENT_AUTHORIZATION"
+  },
+  "next_action": {
+    "action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "status": "AUTHORIZED_AFTER_PROOF",
+    "count": 1,
+    "reason": "The 88-event legacy cognition cohort is dispositioned HISTORICAL_ONLY from canonical lineage/schema evidence; no database repair is warranted."
   }
 }
