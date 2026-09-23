@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
     "next_actions": [
-      "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
+      "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -61,7 +61,7 @@
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+      "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
       "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
       "status": "PROVEN"
     },
@@ -92,7 +92,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+    "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
     "completion": "P0-04 meaningful-output promotion is verified at defined owner/runtime scope: identity, authority, canonical ingress, provenance, validation, integration, checkpoint, Intelligent Block persistence, and fresh retrieval all passed.",
     "status": "PROVEN"
   },
@@ -195,14 +195,14 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
+  "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block.",
   "current_attempt": {
     "status": "VERIFIED",
     "workflow_run": 35913487739,
     "source_head": "4787c4ed6f7205766ac6cf75a80e0eb14f09e850",
     "proof_receipt": ".naya/project-intelligence/40-NAYANET-P0-04-MEANINGFUL-OUTPUT-PROMOTION-RECEIPT-2026-09-23.md",
     "causal_boundary": "intelligence_commit → canonical Intelligent Block materialization",
-    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store."
+    "next_action": "Prove SMART_FEED_INTERACTION as the next representative universal-output class: canonical event + provenance/owner scope + Smart Ledger lineage + explicit semantic DECLINE_PROMOTION for the interaction event itself, then fresh authorized retrieval. Do not create a duplicate Intelligent Block."
   },
   "legacy_cognition_disposition": {
     "cohort_size": 88,
