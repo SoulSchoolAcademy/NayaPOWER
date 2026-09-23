@@ -191,7 +191,7 @@
     "artifact": 10720229874
   },
   "current_frontier": {
-    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "status": "PROVEN"
   },
   "non_owner_retrieval_boundary": {
@@ -223,10 +223,16 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
+  "next_action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
   "current_next_action": {
-    "action": "Close the Intelligent Block lifecycle proof at the smallest causal boundary, beginning with idempotent replay/update and supersession.",
+    "action": "Generalize the verified Smart Note/intelligence_commit compounding rung toward universal meaningful-output promotion without creating a second intelligence store.",
     "status": "AUTHORIZED_AFTER_PROOF",
-    "proof_scope": "Fresh Smart Note → learning candidate → verified ACTIVE learning → learning retrieval"
+    "proof_scope": "Verified bounded Smart Note/intelligence_commit promotion; legacy 88-event cohort dispositioned HISTORICAL_ONLY without database mutation."
+  },
+  "legacy_cognition_disposition": {
+    "cohort_size": 88,
+    "status": "HISTORICAL_ONLY",
+    "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
+    "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   }
 }
