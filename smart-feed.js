@@ -195,6 +195,24 @@ function canonicalLayerData(item){
   ['BLOCK · IDENTITY','Schema: '+canonicalValue(identity,'schema_version','schema')+'\\nEvent: '+canonicalValue(identity,'event_id') ]
  ];
 }
+function bindCanonicalHubNav(){
+ const nav=document.querySelector('.feedNav');if(!nav||nav.dataset.nayaCanonicalBound==='1')return;
+ nav.dataset.nayaCanonicalBound='1';
+ nav.querySelectorAll('button').forEach(b=>b.addEventListener('click',async()=>{
+   const stream=String(b.dataset.feed||'personal').toLowerCase();
+   const rt=window.NayaAssistantRuntime;if(!rt?.smartFeed)return;
+   nav.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));
+   const count=document.querySelector('#feedCount');if(count)count.textContent='RETRIEVING '+stream.toUpperCase()+' · CANONICAL INTELLIGENCE';
+   try{
+     const data=await rt.smartFeed({stream,limit:20,before:null});
+     renderCanonicalHub(list(data?.items),stream);
+     document.documentElement.dataset.nayaCanonicalSmartFeed='live';
+   }catch(e){
+     document.documentElement.dataset.nayaCanonicalSmartFeed='blocked';
+     if(count)count.textContent='CANONICAL FEED · BLOCKED';
+   }
+ }));
+}
 function renderCanonicalHub(items,stream){
  const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks');if(!blocks)return false;
  blocks.dataset.nayaRealRendering='1';
@@ -228,6 +246,7 @@ async function bootCanonicalHub(){
    const data=await rt.smartFeed({stream,limit:20,before:null});
    const items=list(data?.items);
    renderCanonicalHub(items,stream);
+   bindCanonicalHubNav();
    document.documentElement.dataset.nayaCanonicalSmartFeed='live';
    return true;
  }catch(e){
