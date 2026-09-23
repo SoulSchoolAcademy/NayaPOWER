@@ -749,6 +749,7 @@ Deno.serve(async (req) => {
       case "consolidate_pi_gates": result=await consolidatePiGates(client,user.id,body); break;
       case "share": result=await share(client,user.id,body); break;
       case "supersede": result=await supersede(client,user.id,body); break;
+      case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
       case "health": result=await health(client,user.id); break;
       case "dream": {
         const dreamUrl = `${URL}/functions/v1/naya-dream-replay`;
