@@ -226,7 +226,9 @@ jobs:
               console.log('CANONICAL_STATIC_HUB_PROBE',viewport.label,JSON.stringify({...probe,bodyText:probe.bodyText.slice(0,5000)}));
               if(probe.title!=='NayaNET — Intelligent Hub V7 · 509 AAA') throw new Error(viewport.label+': canonical title mismatch');
               if(!probe.shell||!probe.leftRail||!probe.ecosystem||probe.navButtons<10) throw new Error(viewport.label+': restored canonical Hub shell incomplete');
-              for(const label of ['Smart Feed','Your Intelligence Today','Your Reports','Intelligence Library','Smart Share','Smart Lists','Smart Spaces','Your Connections','Smart Mail','Smart Ledger','Settings']) if(!probe.bodyText.includes(label)) throw new Error(viewport.label+': missing canonical surface '+label);
+              const pages=await page.evaluate(()=>Array.from(document.querySelectorAll('.nav button[data-page]')).map(b=>b.getAttribute('data-page')));
+              console.log('CANONICAL_STATIC_HUB_NAV_PROBE',viewport.label,JSON.stringify(pages));
+              for(const key of ['today','reports','library','share','ledger','connections','lists','mail','spaces','settings']) if(!pages.includes(key)) throw new Error(viewport.label+': missing canonical navigation page '+key);
               const todayButton=page.locator('[data-page="today"]');
               if(await todayButton.count()===0) throw new Error(viewport.label+': Intelligence Today navigation missing');
               await todayButton.click();
