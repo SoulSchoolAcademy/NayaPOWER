@@ -1,0 +1,138 @@
+name: Verify P0-04 Meaningful Output Promotion
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-p0-04-meaningful-output-promotion.yml'
+      - 'supabase/functions/nayanet-compound-intelligence/**'
+      - 'NAYANET/HUB/public/assistant-runtime.js'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  p0-04:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPA_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPA_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute bounded P0-04 proof
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const hub=process.env.HUB_URL, supa=process.env.SUPA_URL, key=process.env.SUPA_KEY, head=process.env.GITHUB_SHA;
+          const token=('p004'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase();
+          const title='P0-04 Meaningful Output Proof '+process.env.GITHUB_RUN_ID;
+          const content='A meaningful Naya output can become durable intelligence through the canonical intelligence_commit path, retaining provenance, validation, integration, checkpoint lineage, and private owner scope.';
+          const idem='p0-04-'+token;
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('P0_04_TRACE',JSON.stringify(x));};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            try{
+              mark('START','PASS',{source_head:head});
+              await page.goto(hub+'/identity.html?name='+encodeURIComponent('P0-04 Meaningful Output Proof')+'&alias='+encodeURIComponent(token),{waitUntil:'networkidle',timeout:60000});
+              await page.getByRole('button',{name:'ENTER NAYANET'}).click();
+              await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+              await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
+              const owner=await page.evaluate(()=>window.NayaNETNameFirstAuth.current());
+              mark('IDENTITY','PASS',{owner_id:owner.userId});
+              await page.goto(hub+'/?p004='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+              const snap=await page.evaluate(()=>window.NayaAssistantRuntime.snapshot());
+              if(!snap.authenticated||snap.user_id!==owner.userId)throw new Error('CANONICAL_SESSION_AUTHORITY_MISMATCH');
+              mark('AUTHORITY','PASS',{owner_id:snap.user_id,persistence:snap.persistence});
+              const authToken=await page.evaluate(async()=>((await window.__NayaNETSupabaseClient.auth.getSession()).data?.session?.access_token)||null);
+              if(!authToken)throw new Error('OWNER_ACCESS_TOKEN_NOT_ESTABLISHED');
+
+              const commit=await page.evaluate(async({authToken,supa,key,body})=>{
+                const r=await fetch(supa+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+authToken,apikey:key,'Content-Type':'application/json','x-idempotency-key':body.idempotency_key},body:JSON.stringify(body)});
+                return {status:r.status,body:await r.json().catch(()=>({}))};
+              },{authToken,supa,key,body:{action:'intelligence_commit',idempotency_key:idem,title,content,category:'P0-04',topic:'meaningful-output-promotion',tags:['p0-04','meaningful-output','canonical-intelligence'],confidence:1,learning_claim:content,what_changed:'One meaningful Naya output entered the canonical intelligence commit path.',applicable_scope:{project:'NayaNET',owner_only:true},authority_scope:'PERSONAL_INTELLIGENCE_ONLY',unknown:['Future applicability and outcome-based behavior change remain open.'],next_use:'Fresh Naya retrieves this intelligence by its canonical event identity.',source_head:head}});
+              if(commit.status!==200||commit.body?.ok!==true)throw new Error('INTELLIGENCE_COMMIT_FAILED:'+JSON.stringify(commit));
+              const result=commit.body.result;
+              if(result?.status!=='CAPTURED_INTEGRATED_CHECKPOINTED')throw new Error('INTELLIGENCE_COMMIT_STATUS_INVALID:'+JSON.stringify(result));
+              const eventId=result?.source_event?.event_id;
+              const checkpointId=result?.checkpoint?.checkpoint_id;
+              const learningId=result?.learning?.evidence_id;
+              const indexId=result?.projection?.index?.id;
+              if(!eventId||!checkpointId||!learningId||!indexId)throw new Error('CANONICAL_COMMIT_LINEAGE_IDS_MISSING:'+JSON.stringify(result));
+              mark('CANONICAL_INGRESS','PASS',{api:'intelligence_commit',event_id:eventId,checkpoint_id:checkpointId,learning_evidence_id:learningId,index_id:indexId});
+
+              const persisted=await page.evaluate(async({eventId,indexId,learningId,checkpointId,ownerId})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const [event,index,learning,checkpoint,block]=await Promise.all([
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',eventId).eq('user_id',ownerId).single(),
+                  c.from('nayanet_intelligence_index').select('*').eq('id',indexId).eq('owner_id',ownerId).single(),
+                  c.from('learning_evidence').select('*').eq('id',learningId).eq('member_id',ownerId).single(),
+                  c.from('nayanet_cognition_events').select('*').eq('event_id',checkpointId).eq('user_id',ownerId).single(),
+                  c.from('nayanet_intelligent_blocks').select('*').eq('source_event_ids', 'cs.'+eventId).eq('owner_id',ownerId).maybeSingle()
+                ]);
+                return {event:event.data,index:index.data,learning:learning.data,checkpoint:checkpoint.data,block:block.data,errors:{event:event.error?.message,index:index.error?.message,learning:learning.error?.message,checkpoint:checkpoint.error?.message,block:block.error?.message}};
+              },{eventId,indexId,learningId,checkpointId,ownerId:snap.user_id});
+              if(!persisted.event)throw new Error('EVENT_PERSISTENCE_MISSING:'+JSON.stringify(persisted.errors));
+              if(!persisted.index)throw new Error('INTEGRATION_INDEX_MISSING:'+JSON.stringify(persisted.errors));
+              if(!persisted.learning)throw new Error('LEARNING_EVIDENCE_MISSING:'+JSON.stringify(persisted.errors));
+              if(!persisted.checkpoint)throw new Error('CHECKPOINT_PERSISTENCE_MISSING:'+JSON.stringify(persisted.errors));
+              mark('PROVENANCE_VALIDATION_INTEGRATION_CHECKPOINT','PASS',{
+                event_id:persisted.event.event_id,
+                owner_id:persisted.event.user_id,
+                source:persisted.event.source,
+                source_hash:persisted.event.source_hash,
+                schema_version:persisted.event.schema_version,
+                index_id:persisted.index.id,
+                learning_status:persisted.learning.status,
+                checkpoint_id:persisted.checkpoint.event_id,
+                privacy:persisted.event.metadata?.applicable_scope?.owner_only===true?'PRIVATE_OWNER_SCOPE':'UNSPECIFIED'
+              });
+              if(!persisted.block)throw new Error('INTELLIGENT_BLOCK_ROW_MISSING:'+JSON.stringify({event_id:eventId,index_id:indexId,checkpoint_id:checkpointId,learning_id:learningId,block_error:persisted.errors.block}));
+              mark('INTELLIGENT_BLOCK','PASS',{block_id:persisted.block.block_id,status:persisted.block.status,version:persisted.block.version});
+              
+              const fresh=await context.newPage();
+              await fresh.goto(hub+'/?p004=fresh-'+head,{waitUntil:'domcontentloaded',timeout:60000});
+              await fresh.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+              const freshResult=await fresh.evaluate(async({eventId,checkpointId,learningId})=>{
+                const rt=window.NayaAssistantRuntime;
+                const eventRows=await rt.retrieve(eventId);
+                const learning=await rt.listLearningEvidence();
+                const c=window.__NayaNETSupabaseClient;
+                const checkpoint=(await c.from('nayanet_cognition_events').select('*').eq('event_id',checkpointId).single()).data;
+                return {event:eventRows.find(x=>x.event_id===eventId)||null,learning:learning.find(x=>x.id===learningId)||null,checkpoint};
+              },{eventId,checkpointId,learningId});
+              if(!freshResult.event||!freshResult.learning||!freshResult.checkpoint)throw new Error('FRESH_RETRIEVAL_LINEAGE_MISSING:'+JSON.stringify(freshResult));
+              if(freshResult.event.user_id!==snap.user_id)throw new Error('FRESH_OWNER_MISMATCH');
+              mark('FRESH_RETRIEVAL','PASS',{event_id:eventId,checkpoint_id:checkpointId,learning_evidence_id:learningId,owner_id:freshResult.event.user_id});
+              const proof={schema:'NAYANET_P0_04_MEANINGFUL_OUTPUT_PROMOTION_V1',status:'VERIFIED',source_head:head,owner_id:snap.user_id,title,event_id:eventId,checkpoint_id:checkpointId,learning_evidence_id:learningId,index_id:indexId,trace};
+              fs.writeFileSync('p0-04-proof.json',JSON.stringify(proof,null,2)+'\n');
+              console.log(JSON.stringify(proof));
+              await fresh.close(); await context.close(); await browser.close();
+            }catch(error){
+              fs.writeFileSync('p0-04-proof.json',JSON.stringify({schema:'NAYANET_P0_04_MEANINGFUL_OUTPUT_PROMOTION_V1',status:'FAILED',source_head:head,error:String(error?.stack||error),trace},null,2)+'\n');
+              throw error;
+            }
+          })().catch(error=>{console.error(error);process.exit(1)});
+          NODE
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p0-04-meaningful-output-proof
+          path: p0-04-proof.json
+          if-no-files-found: error
