@@ -1,0 +1,98 @@
+name: Verify Universal Meaningful Output — Smart Feed Interaction
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-meaningful-output-smart-feed-interaction.yml'
+      - 'NAYANET/HUB/public/assistant-runtime.js'
+      - 'supabase/functions/naya-smart-feed/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smart-feed-interaction:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save --no-package-lock playwright@1.55.0 && npx playwright install --with-deps chromium
+      - name: Execute bounded interaction disposition proof
+        run: |
+          node <<'NODE'
+          const {chromium}=require('playwright');
+          const fs=require('node:fs');
+          const crypto=require('node:crypto');
+          const hub=process.env.HUB_URL, head=process.env.GITHUB_SHA;
+          const token=('interaction'+process.env.GITHUB_RUN_ID+'-'+crypto.randomBytes(5).toString('hex')).toLowerCase();
+          const sourceKey='interaction-source-'+token;
+          const trace=[];
+          const mark=(step,status,extra={})=>{const x={step,status,at:new Date().toISOString(),...extra};trace.push(x);console.log('UMOA_INTERACTION_TRACE',JSON.stringify(x));};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            try{
+              mark('START','PASS',{source_head:head,output_class:'SMART_FEED_INTERACTION'});
+              await page.goto(hub+'/identity.html?name='+encodeURIComponent('Smart Feed Interaction Proof')+'&alias='+encodeURIComponent(token),{waitUntil:'domcontentloaded',timeout:60000});
+              await page.waitForFunction(()=>!!document.querySelector('button'),{timeout:30000});
+              const established=await page.evaluate(async({name,alias})=>window.NayaNETNameFirstAuth.establish({name,alias}),{name:'Smart Feed Interaction Proof',alias:token});
+              if(!established?.authenticated||!established?.userId)throw new Error('AUTHENTICATION_FAILED');
+              const ownerId=established.userId; mark('IDENTITY','PASS',{owner_id:ownerId});
+              await page.goto(hub+'/?interaction='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              const init=await page.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!init?.authenticated||init.user_id!==ownerId)throw new Error('AUTHORITY_INIT_MISMATCH');
+              mark('AUTHORITY','PASS',{owner_id:ownerId,persistence:init.persistence});
+              const source=await page.evaluate(async({sourceKey,head})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const body={action:'intelligence_commit',idempotency_key:sourceKey,title:'Interaction source intelligence '+sourceKey,content:'This is a bounded intelligence object used to prove that interaction metadata remains event history rather than a duplicate intelligence block.',category:'TEST',topic:'smart-feed-interaction',tags:['interaction-proof'],confidence:1,learning_claim:'Interaction signals describe use of existing intelligence and do not themselves create new reusable understanding.',applicable_scope:{project:'NayaNET',owner_only:true},authority_scope:'PERSONAL_INTELLIGENCE_ONLY',unknown:['Outcome remains outside this interaction-class proof.'],next_use:'Use this object as the source of one authorized Smart Feed interaction.',source_head:head};
+                const r=await c.functions.invoke('nayanet-compound-intelligence',{headers:{'x-idempotency-key':sourceKey},body});
+                if(r.error)throw new Error(String(r.error.message||r.error));return r.data;
+              },{sourceKey,head});
+              const sourceEventId=source?.result?.source_event?.event_id;
+              if(!sourceEventId)throw new Error('SOURCE_EVENT_MISSING');
+              const sourceRow=await page.evaluate(async eventId=>{const c=window.__NayaNETSupabaseClient;const r=await c.from('nayanet_cognition_events').select('id,event_id,user_id').eq('event_id',eventId).eq('user_id',window.NayaAssistantRuntime.snapshot().user_id).single();if(r.error)throw r.error;return r.data;},sourceEventId);
+              mark('SOURCE','PASS',{event_id:sourceEventId,source_row_id:sourceRow.id});
+              const action=await page.evaluate(async sourceId=>window.NayaAssistantRuntime.smartFeedAction({action:'interact',interaction:'favorite',source_id:sourceId,stream:'personal'}),sourceRow.id);
+              if(!action?.ok||action.action!=='interact'||action.interaction!=='favorite')throw new Error('INTERACTION_ACTION_FAILED:'+JSON.stringify(action));
+              const interactionEventId=action?.receipt?.event_id||action?.receipt?.event?.event_id||('feed-interaction-favorite-'+sourceRow.id+'-'+ownerId);
+              mark('INTERACTION','PASS',{interaction:'favorite',source_id:sourceRow.id,interaction_event_id:interactionEventId});
+              const persisted=await page.evaluate(async({interactionEventId,ownerId})=>{
+                const c=window.__NayaNETSupabaseClient;
+                const e=(await c.from('nayanet_cognition_events').select('*').eq('event_id',interactionEventId).eq('user_id',ownerId).maybeSingle()).data;
+                if(!e)return {event:null,ledger:null,blocks:[],error:'INTERACTION_EVENT_NOT_FOUND'};
+                const ledger=(await c.from('nayanet_smart_ledger').select('*').eq('source_table','nayanet_cognition_events').eq('source_id',e.id).eq('owner_id',ownerId).maybeSingle()).data;
+                const blocks=(await c.from('nayanet_intelligent_blocks').select('block_id,source_event_ids,owner_id').eq('owner_id',ownerId).overlaps('source_event_ids',[e.id])).data||[];
+                return {event:e,ledger,blocks};
+              },{interactionEventId,ownerId});
+              if(!persisted.event)throw new Error(JSON.stringify(persisted));
+              if(!persisted.ledger)throw new Error('SMART_LEDGER_LINEAGE_MISSING');
+              if(persisted.blocks.length!==0)throw new Error('INTERACTION_WRONGFULLY_PROMOTED_TO_BLOCK:'+JSON.stringify(persisted.blocks));
+              const reason='DECLINE_PROMOTION: interaction metadata records a user signal about existing intelligence; it is not a new reusable understanding and must not create a duplicate Intelligent Block.';
+              mark('SEMANTIC_DISPOSITION','PASS',{decision:'DECLINE_PROMOTION',reason});
+              const fresh=await context.newPage();
+              await fresh.goto(hub+'/?interaction-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              const freshInit=await fresh.evaluate(async()=>window.NayaAssistantRuntime?.init?.());
+              if(!freshInit?.authenticated||freshInit.user_id!==ownerId)throw new Error('FRESH_AUTHORITY_MISMATCH');
+              const retrieved=await fresh.evaluate(async eventId=>{const c=window.__NayaNETSupabaseClient;const e=(await c.from('nayanet_cognition_events').select('*').eq('event_id',eventId).eq('user_id',window.NayaAssistantRuntime.snapshot().user_id).single()).data;const l=e?(await c.from('nayanet_smart_ledger').select('ledger_event_id,source_id,status,verification').eq('source_table','nayanet_cognition_events').eq('source_id',e.id).eq('owner_id',window.NayaAssistantRuntime.snapshot().user_id).maybeSingle()).data:null;return {event:e,ledger:l};},interactionEventId);
+              if(!retrieved.event||!retrieved.ledger)throw new Error('FRESH_INTERACTION_RETRIEVAL_MISSING');
+              mark('FRESH_RETRIEVAL','PASS',{interaction_event_id:interactionEventId,ledger_event_id:retrieved.ledger.ledger_event_id,owner_id:ownerId});
+              fs.writeFileSync('umoa-smart-feed-interaction-proof.json',JSON.stringify({schema:'NAYANET_UMOA_SMART_FEED_INTERACTION_V1',status:'VERIFIED',source_head:head,output_class:'SMART_FEED_INTERACTION',owner_id:ownerId,source_event_id:sourceEventId,interaction_event_id:interactionEventId,disposition:'DECLINE_PROMOTION',disposition_reason:reason,trace},null,2)+'\\n');
+              await fresh.close();await context.close();await browser.close();
+            }catch(error){
+              fs.writeFileSync('umoa-smart-feed-interaction-proof.json',JSON.stringify({schema:'NAYANET_UMOA_SMART_FEED_INTERACTION_V1',status:'FAILED',source_head:head,error:String(error?.stack||error),trace},null,2)+'\\n');
+              throw error;
+            }
+          })().catch(e=>{console.error(e);process.exit(1)});
+          NODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: umoa-smart-feed-interaction-proof
+          path: umoa-smart-feed-interaction-proof.json
+          if-no-files-found: error
