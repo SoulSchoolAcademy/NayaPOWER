@@ -152,7 +152,14 @@ jobs:
           NODE
       - name: Validate disposition receipt
         run: |
-          node -e "const p=require('./universal-learning-output-proof.json'); if(p.status!=='VERIFIED') throw Error('PROOF_NOT_VERIFIED'); if(p.disposition!=='DECLINE_PROMOTION') throw Error('DISPOSITION_NOT_DECLINE'); if(!p.existing_block_id) throw Error('CANONICAL_BLOCK_MISSING'); console.log(JSON.stringify(p,null,2));"
+          node <<'NODE'
+          const p=require('./universal-learning-output-proof.json');
+          if(p.status!=='VERIFIED') throw Error('PROOF_NOT_VERIFIED');
+          if(!['PROMOTE','DECLINE_PROMOTION'].includes(p.disposition)) throw Error('DISPOSITION_INVALID');
+          if(p.disposition==='PROMOTE' && (!p.existing_block_id || p.existing_block_count!==1)) throw Error('PROMOTION_RECEIPT_INVALID');
+          if(p.disposition==='DECLINE_PROMOTION' && !p.existing_block_id) throw Error('DECLINE_RECEIPT_INVALID');
+          console.log(JSON.stringify(p,null,2));
+          NODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:
