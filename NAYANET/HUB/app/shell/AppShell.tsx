@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 // Runtime proof checkpoint: navigation contract verified against canonical Hub acceptance.
 import type { ReactNode } from 'react';
-import { useIdentity } from '../identity/session';
-import { routes } from './routes';
+import { useIdentity } from '../../identity/session';
+import { routes } from '../routing/routes';
 
 type ShellProps={children:(path:string)=>ReactNode};
 type NavItem={name:string;route:string;icon:string};
