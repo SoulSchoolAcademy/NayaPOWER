@@ -59,7 +59,8 @@ jobs:
             if(!eventId)throw new Error('SMART_NOTE_EVENT_ID_MISSING');
             mark('SMART_NOTE','PASS',{event_id:eventId,receipt_id:capture?.receipt?.id||null});
 
-            const row=await page.evaluate(async({eventId})=>{
+            const blockId='IB:'+eventId;
+            const row=await page.evaluate(async({blockId})=>{
               const sb=window.supabase?.createClient?.('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue');
               if(!sb)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
               const s=await window.NayaNETNameFirstAuth.current();
@@ -67,14 +68,14 @@ jobs:
               const q=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',eventId).maybeSingle();
               if(q.error)throw q.error;
               return q.data;
-            },{eventId});
+            },{blockId});
             if(!row)throw new Error('INTELLIGENT_BLOCK_NOT_CREATED');
             mark('BLOCK_CREATE','PASS',{block_id:row.block_id,version:row.version,status:row.status,understanding_state:row.understanding_state});
 
             const callSupersede=async()=>{
               const s=await page.evaluate(async()=>await window.NayaNETNameFirstAuth.current());
               const response=await page.evaluate(async({token,body})=>await fetch('https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue','Content-Type':'application/json','x-idempotency-key':body.idempotency_key},body:JSON.stringify(body)}).then(async r=>({status:r.status,body:await r.json()})),{token:s.access_token,body:{
-                action:'supersede',superseded_event_id:eventId,superseded_block_id:eventId,new_block_id:newBlockId,idempotency_key:idem,
+                action:'supersede',superseded_event_id:eventId,superseded_block_id:blockId,new_block_id:newBlockId,idempotency_key:idem,
                 title:'Intelligent Block Lifecycle Proof — superseding revision',content:'The later verified revision supersedes the original block without changing ownership or authority.',
                 verified:true,evidence_refs:[{type:'runtime-proof',source_commit:process.env.GITHUB_SHA}],
                 reason:'Verified lifecycle proof of explicit supersession'
@@ -86,21 +87,21 @@ jobs:
             if(first.status!==200||first.body?.ok!==true)throw new Error('SUPERSESSION_FAILED:'+JSON.stringify(first));
             const newId=first.body.result?.intelligent_block?.block_id||first.body.result?.lineage?.new_block_id;
             if(newId!==newBlockId)throw new Error('SUCCESSOR_BLOCK_ID_MISMATCH');
-            mark('SUPERSEDE','PASS',{old_block_id:eventId,new_block_id:newId,replayed:false});
+            mark('SUPERSEDE','PASS',{old_block_id:blockId,new_block_id:newId,replayed:false});
 
             const replay=await callSupersede();
             if(replay.status!==200||replay.body?.ok!==true||replay.body?.result?.replayed!==true)throw new Error('SUPERSESSION_REPLAY_NOT_IDEMPOTENT:'+JSON.stringify(replay));
             mark('REPLAY','PASS',{new_block_id:newId,replayed:true});
 
-            const final=await page.evaluate(async({eventId,newId})=>{
+            const final=await page.evaluate(async({blockId,newId})=>{
               const s=await window.NayaNETNameFirstAuth.current();
               const c=window.supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{global:{headers:{Authorization:'Bearer '+s.access_token}}});
-              const a=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',eventId).single();
+              const a=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',blockId).single();
               const b=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).single();
               if(a.error)throw a.error;if(b.error)throw b.error;return {old:a.data,new:b.data};
             },{eventId,newId});
             if(final.old.status!=='SUPERSEDED'||final.old.superseded_by_block_id!==newId)throw new Error('OLD_BLOCK_SUPERSESSION_LINEAGE_INVALID');
-            if(final.new.status!=='ACTIVE'||final.new.supersedes_block_id!==eventId||Number(final.new.version)!==Number(final.old.version)+1)throw new Error('NEW_BLOCK_LINEAGE_INVALID');
+            if(final.new.status!=='ACTIVE'||final.new.supersedes_block_id!==blockId||Number(final.new.version)!==Number(final.old.version)+1)throw new Error('NEW_BLOCK_LINEAGE_INVALID');
             mark('VERIFY','PASS',{old_status:final.old.status,new_status:final.new.status,old_superseded_by:final.old.superseded_by_block_id,new_supersedes:final.new.supersedes_block_id,new_version:final.new.version});
             fs.writeFileSync('intelligent-block-lifecycle-proof.json',JSON.stringify({schema:'NAYANET_INTELLIGENT_BLOCK_LIFECYCLE_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,owner_id:session.userId,old_block_id:eventId,new_block_id:newId,idempotency_key:idem,trace},null,2));
           }finally{await browser.close();}
