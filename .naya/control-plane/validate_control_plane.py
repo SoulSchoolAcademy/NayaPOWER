@@ -21,7 +21,7 @@ KERNEL=ROOT/'.naya/control-plane/GOVERNANCE-KERNEL.json'
 KERNEL_IMPL=ROOT/'.naya/control-plane/governance_kernel.py'
 LEGACY_STATE=ROOT/'.naya/memory/STATE.json'
 MANIFEST=ROOT/'.naya/naya-context-manifest.json'
-SOURCE_MAP=ROOT/'SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md'
+SOURCE_MAP=ROOT/'SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md'
 CANONICAL_CONSTITUTION='.naya/codex/11-RUNTIME-CONSTITUTION.md'
 KNOWN_REPO_PATH_PREFIXES=('.naya/','.github/','SUPERBRAIN/','NAYANET/','scripts/','tests/','docs/')
 
@@ -60,7 +60,7 @@ def validate_authority_map(kernel):
     """Enforce one current constitution and an explicit source hierarchy."""
     repo_path(CANONICAL_CONSTITUTION,'canonical constitution')
     repo_path('SUPERBRAIN/AI-BOOT/START-HERE.md','canonical bootloader')
-    repo_path('SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md','canonical source map')
+    repo_path('SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md','canonical source map')
     text=SOURCE_MAP.read_text(encoding='utf-8')
     required=(
         'ONE CONSTITUTION. ONE CURRENT CONTROL PLANE. MANY SPECIALIZED RECORDS. ZERO AMBIGUOUS AUTHORITIES.',
