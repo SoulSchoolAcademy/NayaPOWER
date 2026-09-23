@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T00:00:30.645Z",
+  "generated_at": "LIVE_AT_EXECUTION_TIME",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,20 +12,20 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
+    "live_head": "84efed4c7e2c29f98a22ff15de0e33a2eaf2f2b4",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
-    "state_block": "CANONICAL-VISUAL-PARITY-SEAMS",
-    "block_next_action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile."
+    "state_block": "HUMAN-JOURNEY-P2",
+    "block_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
     "north_star": "Maximum verified human value per unit of effort, with compounding intelligence and continuity.",
     "active_program": "P0 - NAYA EXECUTION CONTINUITY + CANONICAL HUB AUTHORITY",
-    "active_block": "NAYA-CONTINUITY-HARDENING",
-    "active_block_status": "IN_PROGRESS"
+    "active_block": "HUMAN-JOURNEY-P2",
+    "active_block_status": "VERIFIED"
   },
   "current_intelligence": {
     "canonical_source_map": "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
@@ -58,24 +58,25 @@
       "Universal automatic Intelligence -> Activity -> Control Plane synchronization.",
       "Universal lineage/Playback runtime behavior.",
       "Automatic successor-prompt generation from every meaningful output.",
-      "Full intended-scope cold Naya independent continuation across all work."
+      "Full intended-scope cold Naya independent continuation across all work.",
+      "Fresh workflow success for Smart Note learning after the Node 22 verifier repair commit 5d03e1ae19e694499203823bc6c0966b1eb06660."
     ],
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
   "active_block": {
-    "id": "CANONICAL-VISUAL-PARITY-SEAMS",
-    "status": "IN_PROGRESS",
-    "priority": "P0",
-    "source": ".naya/control-plane/STATE.json",
-    "next_action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile."
+    "id": "HUMAN-JOURNEY-P2",
+    "status": "VERIFIED",
+    "priority": "P1",
+    "source": ".naya/control-plane/BLOCKS.json",
+    "next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result."
   },
   "next_action": {
-    "action": "Merge the visual-parity seam normalization, then execute the canonical Cloudflare #feed deployment and verify exact live source plus desktop/mobile.",
-    "status": "AUTHORIZED_AFTER_CONTINUITY_REPAIR"
+    "action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
+    "status": "AUTHORIZED_AFTER_PROOF"
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. Verify parity accepts only the two documented runtime seams. Then deploy canonical #feed and prove source/live/browser parity.",
-    "do_not": "Do not change Hub visual source to satisfy the parity gate. Do not revert functional #feed/defer seams."
+    "prompt": "Resolve live main. Confirm the Smart Note learning verifier repair is proven by a fresh run. Then execute the one current-main owner-bound Smart Note → verified learning → later-decision influence proof and independently verify the complete lineage.",
+    "do_not": "Do not treat the prior workflow harness failure as a successful workflow. Do not redesign the proven Smart Note/PIS path. Do not start a second active front."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -88,9 +89,11 @@
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
   },
   "execution_attempt": {
-    "status": "PROVEN",
-    "claim_type": "CONTINUITY_AND_CANONICAL_AUTHORITY_REPAIR",
-    "source_head": "2beb3a770387ae52d68a00afac61ac6b1d934b50",
-    "independent_verification": "PENDING_FRESH_EXECUTION"
+    "status": "REPAIR_COMMITTED_FRESH_VERIFICATION_PENDING",
+    "claim_type": "SMART_NOTE_LEARNING_PROOF_HARNESS",
+    "source_head": "5d03e1ae19e694499203823bc6c0966b1eb06660",
+    "independent_verification": "PENDING_FRESH_EXECUTION",
+    "prior_runtime_proof": "PROVEN_WITH_HARNESS_FAILURE",
+    "prior_workflow_run": 35791868426
   }
 }
