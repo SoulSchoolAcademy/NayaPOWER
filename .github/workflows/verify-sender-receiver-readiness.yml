@@ -1,0 +1,18 @@
+name: Verify Sender Receiver Readiness
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/sender_receiver_readiness.py'
+      - '.naya/runtime/test_sender_receiver_readiness.py'
+      - '.github/workflows/verify-sender-receiver-readiness.yml'
+permissions: {contents: read}
+jobs:
+  readiness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python .naya/runtime/test_sender_receiver_readiness.py
