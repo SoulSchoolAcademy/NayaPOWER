@@ -76,6 +76,7 @@ jobs:
         run: |
           set -euo pipefail
           test -s .naya/control-plane/HUB-PRESERVATION.json
+          git fetch --no-tags --unshallow origin 2>/dev/null || git fetch --no-tags origin main
           python - <<'PY'
           import json, subprocess
           from pathlib import Path
