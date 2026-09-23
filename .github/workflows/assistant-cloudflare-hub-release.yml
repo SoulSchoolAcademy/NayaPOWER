@@ -123,8 +123,9 @@ jobs:
           # Known non-visual runtime seams: the #feed anchor id and deferred command-station loading.
           sed -i 's#<section class="feed" id="feed">#<section class="feed">#g; s# defer></script>#></script>#g' "${RUNNER_TEMP}/hub-visual-source.html"
           if cmp -s "${RUNNER_TEMP}/hub-visual-source.html" "${RUNNER_TEMP}/hub-visual-reference.html"; then echo "PROTECTED_VISUAL_PARITY_VERIFIED"; else echo "PROTECTED_VISUAL_PARITY_MISMATCH_DIAGNOSTIC"; diff -u "${RUNNER_TEMP}/hub-visual-reference.html" "${RUNNER_TEMP}/hub-visual-source.html" | head -200 || true; fi
-          grep -q 'data-page="home"' NAYANET/HUB/index.html
-          grep -q 'Smart Notes' NAYANET/HUB/index.html
+          for required in 'data-page="today"' 'Your Intelligence Today' 'Your Reports' 'Intelligent Library' 'Smart Share' 'Smart Ledger' 'Your Connections' 'Smart Lists' 'Smart Mail' 'Smart Spaces' 'Settings'; do
+            grep -q "$required" NAYANET/HUB/index.html
+          done
           mkdir -p dist/NAYANET
           cp NAYANET/HUB/index.html dist/index.html
           cp assistant-runtime.js dist/assistant-runtime.js
@@ -260,7 +261,7 @@ jobs:
               if(probe.capture) throw new Error(viewport.label+': Hub Smart Note capture control present');
               if(probe.corner) throw new Error(viewport.label+': obsolete Naya corner control present');
               if(probe.v2Feed) throw new Error(viewport.label+': Smart Feed V2 replacement DOM present on canonical Home');
-              const required=['Home','Smart Notes','Reports','Intelligence Library','Collective','Evidence','Connections','Smart Mail','Settings'];
+              const required=['Your Intelligence Today','Your Reports','Intelligent Library','Smart Share','Smart Ledger','Your Connections','Smart Lists','Smart Mail','Smart Spaces','Settings'];
               if(viewport.width>=821){ for(const label of required) if(!probe.sidebar.includes(label)) throw new Error(viewport.label+': sidebar label mismatch for '+label+' :: '+JSON.stringify(probe.sidebar)); }
 
               for(const key of expectedModes){
