@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T21:44:08.318Z",
+  "generated_at": "2026-09-23T22:32:13.403864+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,15 +12,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "LIVE_AT_EXECUTION_TIME",
+    "live_head": "d0ccab0f074e9676c8cd076ff4be4c46f55ea362",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
-    "canonical_hub_source_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
-    "observed_head": "f615cc223412bc5b7ae6c3a3e571408e03eb1cb4",
-    "reconciled_at": "2026-09-23T21:44:08.318Z"
+    "block_next_action": "OPEN the canonical Hub in the real user-facing environment.",
+    "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -35,10 +33,7 @@
     "continuous_flow": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
     "intelligent_block_protocol": "SUPERBRAIN/INTELLIGENT-BLOCK-PROTOCOL.md",
     "intelligence_distiller": "SUPERBRAIN/INTELLIGENCE-DISTILLER-PROTOCOL.md",
-    "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md",
-    "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
-    "continuous_execution_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
-    "read_first": "README-FIRST.md"
+    "intelligence_organization": "SUPERBRAIN/INTELLIGENCE-ORGANIZATION-STANDARD.md"
   },
   "truth": {
     "proof_contract_status": "CANONICAL",
@@ -53,16 +48,14 @@
     "proven": [
       "Control-plane current-state/active-block/mission-map/proof contracts exist.",
       "Continuous Smart Flow and cold-Naya operating directive is canonical.",
-      "Next-action + handoff execution cycle exists and is machine-checkable.",
-      "Consolidated nine-dimension adversarial matrix is PROVEN at run 35787965745 with independent managed-runtime receipt verification."
+      "Next-action + handoff execution cycle exists and is machine-checkable."
     ],
     "unknown": [
       "Universal automatic Smart Note -> Intelligent Block transformation across every meaningful Naya output.",
       "Universal automatic Intelligence -> Activity -> Control Plane synchronization.",
       "Universal lineage/Playback runtime behavior.",
       "Automatic successor-prompt generation from every meaningful output.",
-      "Full intended-scope cold Naya independent continuation across all work.",
-      "Universal Smart Note → Intelligent Block promotion across every meaningful Naya output remains unproven."
+      "Full intended-scope cold Naya independent continuation across all work."
     ],
     "rule": "Evidence outranks assertion; UNKNOWN is not VERIFIED."
   },
@@ -70,18 +63,33 @@
     "id": "HUMAN-JOURNEY-P2",
     "status": "VERIFIED",
     "priority": "P1",
-    "source": ".naya/control-plane/BLOCKS.json",
-    "next_action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "source": ".naya/control-plane/BLOCKS.json"
   },
   "next_action": {
-    "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
-    "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
-    "reason": "CONSEQUENTIAL_ACTION is VERIFIED as DECLINE_PROMOTION; GOVERNED_DECISION is now the single next boundary."
+    "status": "AUTHORIZED",
+    "action": "OPEN the canonical Hub in the real user-facing environment.",
+    "source": ".naya/control-plane/BLOCKS.json",
+    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "acceptance": [
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
+    ],
+    "verification": "Independently observe the result, re-read canonical state, verify durable evidence, and leave exactly one successor action."
   },
   "successor_prompt": {
-    "prompt": "Resolve live main. CONSEQUENTAL_ACTION is VERIFIED as DECLINE_PROMOTION because the examined Smart Mail send is canonical action event/state with durable receipt/cognition lineage. Advance to exactly one boundary: GOVERNED_DECISION. Determine whether the decision artifact is reusable intelligence or decision event/state, then promote or explicitly DECLINE_PROMOTION. Verify before advancing.",
-    "do_not": "Do not redesign intelligence_commit. Do not use Smart Note as a universal shortcut. Do not create a second intelligence store. Do not start a second active front."
+    "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",
+    "prompt": "Restore live NayaPOWER state from the canonical baton, reconcile it against STATE + BLOCKS + MAP + PROOF, execute only the one authorized next action, independently verify the result, record what changed and what remains unknown, rebuild the baton, and leave exactly one executable successor action.",
+    "do_not": "Do not ask Shawn to reconstruct repository state that canonical sources provide. Do not create a competing next action. Do not convert UNKNOWN or recorded claims into proof."
   },
   "playback": {
     "current_default": "Latest applicable canonical intelligence/state.",
@@ -92,24 +100,5 @@
       "SUPERBRAIN/INTELLIGENT-BLOCKS/"
     ],
     "rule": "Replay history when needed; do not overwrite history merely because a newer state exists."
-  },
-  "execution_attempt": {
-    "status": "VERIFIED",
-    "workflow_run": 35915882471,
-    "job": 107372505645,
-    "source_head": "fe8af3d71082b00443e8e1e213ecb46e7427825e",
-    "deployed_function_version": 31,
-    "first_deterministic_failure": "CANONICAL_INGRESS",
-    "error": "Prior TypeError: Failed to fetch did not reproduce on fresh rerun; logs show transient 503 deployment/runtime churn before v31 stabilized.",
-    "recovery": "No arbitrary source repair; fresh rerun against stabilized production v31 passed.",
-    "proof_status": "VERIFIED",
-    "artifact_id": 10776170794,
-    "receipt": ".naya/project-intelligence/41-NAYANET-P0-04-CANONICAL-INGRESS-RECOVERY-RECEIPT-2026-09-23.md"
-  },
-  "legacy_cognition_disposition": {
-    "cohort_size": 88,
-    "status": "HISTORICAL_ONLY",
-    "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md",
-    "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage."
   }
 }

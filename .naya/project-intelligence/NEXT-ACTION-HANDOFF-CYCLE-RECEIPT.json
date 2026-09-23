@@ -13,30 +13,35 @@
     "schema": "naya/next-action-handoff/v1",
     "mission_id": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
     "source_of_truth": ".naya/control-plane/STATE.json + .naya/control-plane/BLOCKS.json",
-    "current_state": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
+    "current_state": "active_block=HUMAN-JOURNEY-P2; status=VERIFIED; priority=P1; current_head=LIVE_AT_EXECUTION_TIME",
     "next_action": {
-      "id": "COMPUTATION-EFFICIENCY-P1::NEXT",
+      "id": "HUMAN-JOURNEY-P2::NEXT",
       "actor": "Naya",
       "status": "AUTHORIZED",
-      "action": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
-      "objective": "Turn NayaPOWER's computational-compounding thesis into a measurable engineering property without sacrificing verified human value, provenance, authority, or verification.",
+      "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+      "objective": "Prove the complete human-facing NayaNET journey on the canonical Hub with direct behavioral evidence and no source/projection divergence.",
       "reason": "The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
       "constraints": [
-        "PI-01 whole-chain proof 35638451543 is production-proven at tested owner-bound scope",
         "canonical Hub",
+        "protected visual source",
         "governed authority",
         "privacy boundaries",
         "evidence discipline",
-        "no blind retries"
+        "no second intelligence store"
       ],
       "expected_result": "The selected action is executed, independently observed, verified, and replaced by a newly derived successor action.",
       "success_criteria": [
-        "Establish a baseline cold reconstruction workload with explicit resource measurements.",
-        "Run the same task with retained verified intelligence reuse.",
-        "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-        "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
-        "Verify outcome quality/provenance/authority are not degraded.",
-        "Record the result and leave one successor action."
+        "OPEN the canonical Hub in the real user-facing environment.",
+        "UNDERSTAND the current intelligence and activity projection.",
+        "NAVIGATE across required Hub surfaces.",
+        "SEARCH for existing intelligence.",
+        "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+        "SAVE it durably.",
+        "SEE the result in the canonical projection.",
+        "RELOAD and recover the same result.",
+        "FIND it again through authorized retrieval.",
+        "UNDERSTAND the evidence/provenance displayed with it.",
+        "CONTINUE with one authorized next action from the recovered state."
       ],
       "verification_method": "Re-read canonical control-plane state after execution and require a durable receipt plus a successor next action.",
       "evidence_required": [
@@ -50,8 +55,8 @@
     },
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
-      "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+      "context": "active_block=HUMAN-JOURNEY-P2; status=VERIFIED; priority=P1; current_head=LIVE_AT_EXECUTION_TIME",
+      "objective": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -68,12 +73,17 @@
       "successor_action": "Read the updated canonical control plane and execute the new single next action."
     },
     "success_condition": [
-      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
-      "Run the same task with retained verified intelligence reuse.",
-      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
-      "Verify outcome quality/provenance/authority are not degraded.",
-      "Record the result and leave one successor action."
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ],
     "evidence_required": [
       "canonical source state",
@@ -81,11 +91,11 @@
       "post-execution canonical state",
       "successor handoff"
     ],
-    "generated_at": "2026-09-22T18:53:36.962341+00:00",
-    "source_commit": "06849c42ccedc100111ec23e5075cabe1a7a8a6e"
+    "generated_at": "2026-09-23T22:32:13.332379+00:00",
+    "source_commit": "d0ccab0f074e9676c8cd076ff4be4c46f55ea362"
   },
   "execution": {
-    "action_id": "COMPUTATION-EFFICIENCY-P1::NEXT",
+    "action_id": "HUMAN-JOURNEY-P2::NEXT",
     "status": "EXECUTED",
     "actor": "Naya",
     "observation": "Canonical control-plane truth was consumed and the next_action + handoff contract was validated without creating a competing state machine."
@@ -108,13 +118,13 @@
     "updated_by": "next_action_handoff.py"
   },
   "new_next_action": {
-    "action": "Establish a baseline cold reconstruction workload with explicit resource measurements.",
+    "action": "OPEN the canonical Hub in the real user-facing environment.",
     "owner": "Naya",
     "source_of_truth": ".naya/control-plane/BLOCKS.json",
     "handoff": {
       "target_actor": "Naya successor / Team Naya",
-      "context": "active_block=COMPUTATION-EFFICIENCY-P1; status=ACTIVE; priority=P1; current_head=c262191dcdc16e6488a395778de6d9896e5c2097",
-      "objective": "Repair the paired benchmark so retained intelligence is causally produced by Cycle A, then rerun Cycle A → durable retained artifact → Cycle B and re-evaluate the counterfactual.",
+      "context": "active_block=HUMAN-JOURNEY-P2; status=VERIFIED; priority=P1; current_head=LIVE_AT_EXECUTION_TIME",
+      "objective": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
       "scope": [
         "canonical Project Intelligence",
         "canonical control plane",
@@ -131,14 +141,19 @@
       "successor_action": "Read the updated canonical control plane and execute the new single next action."
     },
     "success_condition": [
-      "Establish a baseline cold reconstruction workload with explicit resource measurements.",
-      "Run the same task with retained verified intelligence reuse.",
-      "Measure context, searches, duplicate reasoning, tool/model calls, tokens, latency, retries, human time, and verified outcome.",
-      "Calculate defensible avoided computation only where the counterfactual and applicability are evidenced.",
-      "Verify outcome quality/provenance/authority are not degraded.",
-      "Record the result and leave one successor action."
+      "OPEN the canonical Hub in the real user-facing environment.",
+      "UNDERSTAND the current intelligence and activity projection.",
+      "NAVIGATE across required Hub surfaces.",
+      "SEARCH for existing intelligence.",
+      "CREATE a new Smart Note / Intelligent Block through the real user flow.",
+      "SAVE it durably.",
+      "SEE the result in the canonical projection.",
+      "RELOAD and recover the same result.",
+      "FIND it again through authorized retrieval.",
+      "UNDERSTAND the evidence/provenance displayed with it.",
+      "CONTINUE with one authorized next action from the recovered state."
     ]
   },
-  "source_commit": "06849c42ccedc100111ec23e5075cabe1a7a8a6e",
-  "created_at": "2026-09-22T18:53:36.971758+00:00"
+  "source_commit": "d0ccab0f074e9676c8cd076ff4be4c46f55ea362",
+  "created_at": "2026-09-23T22:32:13.342671+00:00"
 }
