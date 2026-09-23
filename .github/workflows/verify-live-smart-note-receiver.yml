@@ -58,13 +58,19 @@ jobs:
           const content = 'One real Smart Note must cross the canonical receiver, persist, become an Intelligent Block, reach the Intelligence Feed, and remain attributable after reload.';
           const alias = ('receiver' + process.env.RUN_IDENTITY + '-' + crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
           async function setupIdentity(page, name, smartAlias) {
-            await page.goto(hub + '/identity.html?naya_hold=1', { waitUntil:'networkidle', timeout:60000 });
-            await page.locator('#name').fill(name); await page.locator('#alias').fill(smartAlias); await page.locator('#enter').click();
-            await page.waitForFunction(() => !!window.NayaNETNameFirstAuth, null, { timeout:10000 });
-            let established=null;
-            for(let attempt=0;attempt<60;attempt++){established=await page.evaluate(async()=>{try{return{identity:await window.NayaNETNameFirstAuth?.current?.(),status:document.getElementById('status')?.textContent||''}}catch(error){return{identity:null,status:document.getElementById('status')?.textContent||'',error:String(error?.message||error)}}});if(established.identity?.authenticated&&established.identity?.userId)break;await new Promise(r=>setTimeout(r,500))}
-            if(!established.identity?.authenticated||!established.identity?.userId)throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
-            return page.evaluate(async()=>{const identity=await window.NayaNETNameFirstAuth.current();const client=window.__NayaNETSupabaseClient;const session=client?(await client.auth.getSession()).data.session:null;return{identity,session:session?{userId:session.user.id,access_token:session.access_token}:null,adapterClient:Boolean(client)}});
+            // The canonical Hub is now the identity entry surface. Do not depend on the retired /identity.html route.
+            await page.goto(hub + '/', { waitUntil:'networkidle', timeout:60000 });
+            await page.waitForFunction(() => !!window.NayaNETNameFirstAuth, null, { timeout:30000 });
+            const established = await page.evaluate(async({name,alias}) => {
+              const identity = await window.NayaNETNameFirstAuth.establish({name,alias});
+              const client = window.__NayaNETSupabaseClient;
+              const session = client ? (await client.auth.getSession()).data.session : null;
+              return { identity, session: session ? {userId:session.user.id, access_token:session.access_token} : null, adapterClient:Boolean(client) };
+            }, {name,alias:smartAlias});
+            if(!established.identity?.authenticated||!established.identity?.userId||!established.session?.access_token) {
+              throw new Error('RECEIVER_AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
+            }
+            return established;
           }
           async function pageBCheckPrivacy({browser,supabaseUrl,supabaseKey,eventId}){const context=await browser.newContext();const page=await context.newPage();try{return await page.evaluate(async({supabaseUrl,supabaseKey,eventId})=>{const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');const client=sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:false,autoRefreshToken:false}});return await client.from('smart_note_events').select('id').eq('id',eventId).maybeSingle()},{supabaseUrl,supabaseKey,eventId})}finally{await context.close()}}
           async function callReceiver(session,payload){const response=await fetch(supabaseUrl+'/functions/v1/v7-smart-note-canonical',{method:'POST',headers:{'Authorization':'Bearer '+session.access_token,'apikey':supabaseKey,'Content-Type':'application/json','x-idempotency-key':payload.idempotency_key},body:JSON.stringify(payload)});return{status:response.status,body:await response.json().catch(()=>({}))}}
