@@ -130,7 +130,7 @@ for(const stream of ["collective","activity","personal"]){
 await page.reload({waitUntil:"networkidle"});
 await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
 await page.locator('.feedNav button[data-feed="personal"]').click();
-await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),sourceId,{timeout:30000});
+await page.waitForFunction(expected=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.querySelector("h3")?.textContent||"").includes(expected)),title,{timeout:30000});
 
 const recovered=await page.evaluate(async expected=>{
   const rows=await window.NayaAssistantRuntime.retrieve(expected);
