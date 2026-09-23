@@ -124,7 +124,7 @@ jobs:
               if(persisted.event.user_id!==ownerId||persisted.learning.member_id!==ownerId||persisted.block.owner_id!==ownerId)throw new Error('OWNER_SCOPE_BREACH');
               mark('PERSISTENCE_AND_BLOCK','PASS',{block_id:persisted.block.block_id,learning_status:persisted.learning.status,owner_id:ownerId});
               const fresh=await context.newPage();
-              await fresh.goto(hub+'/uai-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
+              await fresh.goto(hub+'/?uai-fresh='+head,{waitUntil:'domcontentloaded',timeout:60000});
               await fresh.evaluate(()=>window.NayaAssistantRuntime?.init?.());
               await fresh.waitForFunction(id=>{const s=window.NayaAssistantRuntime?.snapshot?.();return !!s?.authenticated&&s.user_id===id;},{timeout:30000},ownerId);
               const retrieved=await fresh.evaluate(async ids=>{
