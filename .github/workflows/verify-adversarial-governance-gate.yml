@@ -1,0 +1,21 @@
+name: Verify Adversarial Governance Gate
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/runtime/adversarial_governance_gate.py'
+      - '.naya/runtime/sender_receiver_readiness.py'
+      - '.naya/runtime/core_intelligence_reconciliation.py'
+      - '.naya/runtime/lineage_playback.py'
+      - '.naya/runtime/successor_packet.py'
+      - '.github/workflows/verify-adversarial-governance-gate.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  adversarial:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python .naya/runtime/adversarial_governance_gate.py
