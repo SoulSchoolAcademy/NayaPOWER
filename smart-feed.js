@@ -216,7 +216,7 @@ function bindCanonicalHubNav(){
 function renderCanonicalHub(items,stream){
  const root=document.querySelector('.feed'),blocks=root?.querySelector('.blocks')||document.querySelector('#blocks');if(!blocks)return false;
  blocks.dataset.nayaRealRendering='1';
- const cards=[...blocks.querySelectorAll('.block')]; const projected=[...items].sort((a,b)=>{const ai=a?.intelligent_block?1:0,bi=b?.intelligent_block?1:0;if(ai!==bi)return bi-ai;return new Date(b?.created_at||b?.occurred_at||0)-new Date(a?.created_at||a?.occurred_at||0)}).slice(0,cards.length);
+ const cards=[...blocks.querySelectorAll('[data-real-smart-note]')]; const preservedSignature=blocks.dataset.nayaRealSignature||cards.map((card,i)=>String(i+1)+':'+String(card.querySelector('h3')?.textContent||'').trim()).join('|'); const projected=[...items].sort((a,b)=>{const ai=a?.intelligent_block?1:0,bi=b?.intelligent_block?1:0;if(ai!==bi)return bi-ai;return new Date(b?.intelligent_block?.updated_at||b?.created_at||b?.occurred_at||0)-new Date(a?.intelligent_block?.updated_at||a?.created_at||a?.occurred_at||0)}).slice(0,cards.length);
  const count=document.querySelector('#feedCount'),title=document.querySelector('#feedTitle'),desc=document.querySelector('#feedDesc');
  const view=views[stream]||views.personal;
  if(title)title.textContent=view[0];
@@ -245,7 +245,7 @@ function renderCanonicalHub(items,stream){
    const layers=[...card.querySelectorAll('.layer')],data=canonicalLayerData(item);
    layers.forEach((layer,j)=>{const d=data[j];if(!d)return;const head=layer.querySelector('.layerHead b'),body=layer.querySelector('.layerBody');if(head)head.textContent=d[0];if(body)body.textContent=d[1];});
    const foot=card.querySelector('.blockFoot');if(foot)foot.innerHTML='<span>REAL INTELLIGENCE · SOURCE: CANONICAL SMART FEED</span><span>EVENT '+esc(canonicalValue(item,'event_id','id')||id)+'</span>';
- });
+ }); blocks.dataset.nayaRealSignature=preservedSignature; blocks.dataset.nayaRealRendering='0';
  return true;
 }
 async function bootCanonicalHub(){
