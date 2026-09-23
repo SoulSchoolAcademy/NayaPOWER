@@ -69,6 +69,9 @@ jobs:
               const session=await sessionFrom(page); ownerId=session.userId; mark('IDENTITY','PASS',{owner_id:ownerId,alias});
               await page.goto(hub+'/?pi_learning_run='+encodeURIComponent(run),{waitUntil:'networkidle',timeout:60000});
               await page.locator('.naya-intelligence-nav [data-page="notes"]').click();
+              await page.locator('#nayaIntelligenceWorkspace').waitFor({state:'attached',timeout:30000});
+              const surface=await page.locator('#nayaIntelligenceWorkspace').evaluate(el=>({text:(el.textContent||'').slice(0,240),display:getComputedStyle(el).display,visibility:getComputedStyle(el).visibility,opacity:getComputedStyle(el).opacity,rect:el.getBoundingClientRect().toJSON(),captureCount:el.querySelectorAll('[data-testid="capture-smart-note"]').length,titleCount:el.querySelectorAll('[data-testid="smart-note-title"]').length}));
+              mark('SMART_NOTES_SURFACE','OBSERVED',surface);
               await page.locator('[data-testid="capture-smart-note"]').waitFor({state:'visible',timeout:30000});
               await page.locator('[data-testid="capture-smart-note"]').click();
               await page.locator('[data-testid="smart-note-title"]').fill(title);
@@ -129,4 +132,4 @@ jobs:
             .pi-learning-verification-input.json
           if-no-files-found: ignore
 
-# repair: navigate canonical Hub to Smart Notes surface before capture control
+# diagnostic: observe canonical Smart Notes surface visibility before capture
