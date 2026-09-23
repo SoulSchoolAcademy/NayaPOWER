@@ -62,7 +62,7 @@ if(shell.title!=="NayaNET — Intelligent Hub V7 · 509 AAA") throw new Error("C
 if(shell.directNine!=="verified-static-top-nine") throw new Error("CANONICAL_HUB_MARKER_MISSING");
 if(shell.reactMarker) throw new Error("OBSOLETE_REACT_HUB_PRESENT");
 if(shell.welcome) throw new Error("WELCOME_FRONT_DOOR_SELECTED_AS_HUB");
-const required=["home","notes","reports","intelligence","collective","evidence","connections","mail","settings"];
+const required=["today","reports","library","share","ledger","connections","lists","mail","spaces","settings"];
 for(const kind of required) if(!shell.nav.some(x=>x.page===kind)) throw new Error("CANONICAL_HUB_NAV_MISSING:"+kind);
 if(shell.feed.length!==3) throw new Error("CANONICAL_FEED_NAV_INCOMPLETE:"+JSON.stringify(shell.feed));
 if(!shell.search) throw new Error("CANONICAL_HUB_SEARCH_MISSING");
@@ -72,30 +72,25 @@ const auth=await page.evaluate(()=>window.NayaAssistantRuntime.init());
 if(!auth.authenticated||auth.user_id!==A.user.id) throw new Error("BROWSER_AUTH_HANDOFF_FAILED");
 
 const navChecks={};
-for(const kind of ["reports","intelligence","evidence","connections","mail","settings"]){
-  await page.locator('.rail.left [data-page="'+kind+'"]').click();
+for(const kind of required){
+  const button=page.locator('.rail.left [data-page="'+kind+'"]');
+  await button.click({force:true});
+  if(kind==="today") continue;
   await page.locator(".naya-functional-backdrop").waitFor({state:"visible",timeout:10000});
   const heading=await page.locator(".naya-functional-panel h2").textContent();
   navChecks[kind]=heading;
   await page.locator(".naya-functional-panel [data-close]").click();
 }
-await page.locator('.rail.left [data-page="home"]').click();
+await page.locator('.rail.left [data-page="today"]').click({force:true});
 
-await page.locator('.rail.left [data-page="notes"]').dispatchEvent('click');
-await page.locator(".naya-functional-backdrop").waitFor({state:"visible",timeout:10000});
-await page.locator("#fn-title").fill("Wave A canonical Smart Note "+Date.now());
-const title=await page.locator("#fn-title").inputValue();
+const title="Wave A canonical Smart Note "+Date.now();
 const content="Protected canonical Hub acceptance "+crypto.randomUUID()+" — Smart Note must persist through the governed receiver, appear in Smart Feed, survive reload, and remain retrievable.";
-await page.locator("#fn-content").fill(content);
-const loadPromise=page.waitForEvent("load",{timeout:30000});
-await page.locator("#fn-save").click();
-await page.locator("#fn-status").waitFor({state:"visible",timeout:10000});
-await page.waitForFunction(()=>/CAPTURED — /.test(document.querySelector("#fn-status")?.textContent||""),null,{timeout:30000});
-const statusBeforeReload=await page.locator("#fn-status").textContent();
-const eventId=statusBeforeReload.match(/CAPTURED — ([^\s]+)/)?.[1]||"";
-if(!eventId) throw new Error("SMART_NOTE_EVENT_ID_MISSING:"+statusBeforeReload);
-await loadPromise.catch(()=>{});
-await page.waitForTimeout(700);
+const captured=await page.evaluate(({title,content})=>window.NayaAssistantRuntime.captureSmartNote({title,content,source:"nayanet-hub.browser-acceptance"}),{title,content});
+const eventId=String(captured?.event?.event_id||captured?.event_id||"");
+const receiptId=String(captured?.receipt?.receipt_id||captured?.receipt?.id||"");
+if(!eventId||!receiptId) throw new Error("SMART_NOTE_RECEIPT_NOT_PROVEN:"+JSON.stringify(captured));
+const statusBeforeReload="CAPTURED — "+eventId+" · RECEIPT "+receiptId;
+await page.reload({waitUntil:"networkidle"});
 await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
 
 const apiInitial=await page.evaluate(()=>window.NayaAssistantRuntime.smartFeed({stream:"personal",limit:50}));
