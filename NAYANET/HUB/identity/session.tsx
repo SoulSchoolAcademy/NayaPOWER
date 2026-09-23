@@ -1,7 +1,7 @@
 import type {ReactNode} from 'react';
 import {createContext,useContext,useEffect,useState} from 'react';
 import {createClient,type Session,type SupabaseClient} from '@supabase/supabase-js';
-import {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from '../config/supabase';
+import {SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY} from '../services/config/supabase';
 
 export type Identity={user_id:string;session_id:string;display_name:string;smart_name:string;smart_alias:string;permissions:string[];privacy_state:string;is_authenticated:boolean};
 function getSharedSupabaseClient():SupabaseClient{const globalClient=(window as typeof window & {__NayaNETSupabaseClient?:SupabaseClient}).__NayaNETSupabaseClient;if(globalClient)return globalClient;const client=createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true,storageKey:'nayanet.supabase.auth'}});(window as typeof window & {__NayaNETSupabaseClient?:SupabaseClient}).__NayaNETSupabaseClient=client;return client}
