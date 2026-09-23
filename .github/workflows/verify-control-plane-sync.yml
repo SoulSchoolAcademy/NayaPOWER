@@ -1,0 +1,20 @@
+name: Verify Control Plane Synchronization
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/control-plane/STATE.json'
+      - '.naya/control-plane/BLOCKS.json'
+      - '.naya/control-plane/BATON.json'
+      - '.naya/runtime/verify_control_plane_sync.py'
+      - '.github/workflows/verify-control-plane-sync.yml'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: python .naya/runtime/verify_control_plane_sync.py
