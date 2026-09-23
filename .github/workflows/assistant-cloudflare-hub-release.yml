@@ -113,8 +113,8 @@ jobs:
           if recovery_head != cp['main_observed_head']:
               raise SystemExit('RECOVERY_BRANCH_MOVED_FROM_RECORDED_CHECKPOINT')
           recovery_blob=subprocess.check_output(['git','rev-parse',cp['main_observed_head']+':NAYANET/HUB/index.html'],text=True).strip()
-          if recovery_blob != active_blob:
-              raise SystemExit('CURRENT_RECOVERY_ENTRYPOINT_MISMATCH')
+          if recovery_blob != cp.get('recovery_entrypoint_blob_sha'):
+              raise SystemExit('CURRENT_RECOVERY_ENTRYPOINT_BLOB_MISMATCH')
           historical_blob=subprocess.check_output(['git','rev-parse',cp['previous_major_hub_checkpoint_commit']+':NAYANET/HUB/index.html'],text=True).strip()
           if historical_blob != cp.get('previous_major_hub_checkpoint_blob_sha'):
               raise SystemExit('HISTORICAL_HUB_BLOB_MISMATCH')
