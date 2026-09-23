@@ -39,8 +39,8 @@ export function IntelligenceTodaySurface(){
   const latest=useMemo(()=>events.slice(0,9),[events]);
   const counts=useMemo(()=>({
     total:events.length,
-    personal:events.filter(e=>e.privacy?.visibility==='private'||e.context?.visibility==='private').length,
-    collective:events.filter(e=>e.privacy?.visibility!=='private'&&e.context?.visibility!=='private').length
+    personal:events.filter(e=>e.privacy?.visibility==='private'||e.privacy?.visibility==='private').length,
+    collective:events.filter(e=>e.privacy?.visibility!=='private'&&e.privacy?.visibility!=='private').length
   }),[events]);
 
   if(state==='loading')return <section className="today-room loading"><div className="today-orbit">✦</div><b>READING YOUR INTELLIGENCE</b><p>Loading the canonical intelligence source. Nothing synthetic is inserted while it loads.</p></section>;
@@ -78,7 +78,7 @@ export function IntelligenceTodaySurface(){
       <div className="today-section-head"><div><span className="today-kicker">02 · UNDERSTAND</span><h2>What is here today?</h2><p>Open any intelligence item for the complete Smart Feed experience: meaning, learning, evidence, provenance, application and action.</p></div></div>
       <div className="today-intelligence-grid">
         {latest.map((event,index)=><article key={event.event_id} className="today-intelligence-card" style={{'--today-tone':(['#9d75ff','#6675ff','#55b9ee','#55e39a','#d86cff','#e8c766'][index%6])} as CSSProperties}>
-          <div className="today-card-top"><span>{String(index+1).padStart(2,'0')}</span><small>{event.privacy?.visibility||event.context?.visibility||'VISIBLE'}</small></div>
+          <div className="today-card-top"><span>{String(index+1).padStart(2,'0')}</span><small>{event.privacy?.visibility||'VISIBLE'}</small></div>
           <h3>{event.source.label}</h3>
           <p>{excerpt(event).slice(0,280)}{excerpt(event).length>280?'…':''}</p>
           <button onClick={()=>navigate(routes.feed+'?event_id='+encodeURIComponent(event.event_id))}>OPEN INTELLIGENCE <span>→</span></button>
