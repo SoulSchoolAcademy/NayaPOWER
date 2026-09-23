@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 type Connection = { id: string; connected_member_id: string; status: string };
 type SmartList = { id: string; name: string; members: Array<{ connection_id: string }> };
