@@ -198,7 +198,7 @@ def git_blob_sha(path):
 def extract_team_hub_sha():
     text=TEAM_NAYA_HUB_LOCK.read_text(encoding='utf-8',errors='replace')
     import re
-    m=re.search(r'protected source identity is:\\s*SHA: \\`([0-9a-f]{40})\\`', text, re.I|re.S)
+    m=re.search(r'SHA: `([0-9a-f]{40})`', text, re.I)
     if not m: fail('Team Naya Hub lock has no protected source SHA')
     return m.group(1)
 
