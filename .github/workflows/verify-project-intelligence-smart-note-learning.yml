@@ -119,7 +119,6 @@ jobs:
                 mark('COLD_REUSE','PASS',{target_id:eventId,decision:cold.decision.decision,influenced:cold.decision.influenced,learner_state_version:cold.learner_state_version});
               }finally{await fresh.close();}
               fs.writeFileSync('.pi-learning-verification-input.json',JSON.stringify({ownerId,eventId,evidenceId,claim,receiptId,sourceHead:process.env.GITHUB_SHA},null,2));
-              }finally{}
             }finally{await ctx.close();await browser.close();}
             fs.writeFileSync('pi-smart-note-learning-proof.json',JSON.stringify({schema:'NAYANET_PI_SMART_NOTE_LEARNING_BOUNDARY_V1',status:'OBSERVED',run_id:run,source_head:process.env.GITHUB_SHA,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,trace},null,2));
           })().catch(e=>{console.error(e);process.exit(1)});
