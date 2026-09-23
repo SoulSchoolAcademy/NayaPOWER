@@ -26,7 +26,9 @@
     "checkpoint_type": "CURRENT_CANONICAL_SOURCE_RECOVERY",
     "previous_major_hub_checkpoint_commit": "74884cb69badf54fee2bff0398a3f452c6c74384",
     "previous_major_hub_checkpoint_path": "NAYANET/HUB/index.html",
-    "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
+    "previous_major_hub_checkpoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
+    "recovery_entrypoint_blob_sha": "e9aa8cf8a61acd4375c51593dc925a7a1fa5f5bc",
+    "note": "The current recovery checkpoint preserves the last static-Hub implementation before the React/Vite authority transfer. The active main entrypoint is intentionally different because the transfer is explicitly recorded below."
   },
   "active_architecture": {
     "entrypoint_mode": "REACT_VITE_BOOTSTRAP",
