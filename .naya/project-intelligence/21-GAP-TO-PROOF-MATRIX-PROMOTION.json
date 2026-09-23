@@ -1,0 +1,10 @@
+{
+  "schema": "naya/project-intelligence/matrix-promotion/v1",
+  "canonical_path": ".naya/project-intelligence/21-GAP-TO-PROOF-MATRIX.md",
+  "canonical_branch": "main",
+  "source_branch": "naya/live-project-intelligence-v1",
+  "source_sha": "8b0b68e15a351384571e8678f9068f59da4584f6",
+  "rule": "Only the copy on main is current. Branch copies are proposals/history and cannot override live control-plane truth.",
+  "authority": "LIVE GIT HEAD > CONTROL PLANE > DERIVED/HISTORICAL MATRIX",
+  "status": "CANONICAL"
+}
