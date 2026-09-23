@@ -36,7 +36,7 @@ jobs:
         run: |
           set -euo pipefail
           node <<'NODE' | tee collective-chain-proof.json
-          const { chromium } = require('playwright');
+          import { chromium } from 'playwright';
           const crypto = require('node:crypto');
           const fs = require('node:fs');
 
