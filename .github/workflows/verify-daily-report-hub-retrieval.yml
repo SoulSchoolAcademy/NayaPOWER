@@ -1,0 +1,53 @@
+name: Verify Canonical Daily Report Hub Retrieval
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYA/REPORTS/DAILY/**'
+      - 'NAYANET/HUB/cloudflare-static-worker.js'
+      - 'NAYANET/HUB/intelligence-surfaces-runtime.js'
+      - '.github/workflows/verify-daily-report-hub-retrieval.yml'
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify canonical report source
+        run: |
+          test -s NAYA/REPORTS/DAILY/2026/09/2026-09-22.md
+          grep -q 'Report ID: DIR-2026-09-22' NAYA/REPORTS/DAILY/2026/09/2026-09-22.md
+      - name: Verify live canonical report gateway
+        env:
+          HUB: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location "$HUB/api/reports/daily/2026-09-22" -o report.json
+          node <<'NODE'
+          const fs=require('fs');
+          const p=JSON.parse(fs.readFileSync('report.json','utf8'));
+          if(p.ok!==true) throw new Error('REPORT_GATEWAY_NOT_OK');
+          if(p.schema!=='NAYANET_DAILY_REPORT_RETRIEVAL_V1') throw new Error('SCHEMA_MISMATCH');
+          if(p.report_id!=='DIR-2026-09-22') throw new Error('REPORT_ID_MISMATCH');
+          if(p.report_type!=='DAILY'||p.report_date!=='2026-09-22') throw new Error('REPORT_DATE_OR_TYPE_MISMATCH');
+          if(p.source?.repository!=='SoulSchoolAcademy/NayaPOWER') throw new Error('REPOSITORY_MISMATCH');
+          if(p.source?.path!=='NAYA/REPORTS/DAILY/2026/09/2026-09-22.md') throw new Error('PATH_MISMATCH');
+          if(p.source?.ref!=='main') throw new Error('SOURCE_REF_NOT_MAIN');
+          if(!p.source?.blob_sha) throw new Error('BLOB_SHA_MISSING');
+          if(p.provenance?.authority!=='CANONICAL_MAIN') throw new Error('AUTHORITY_MISMATCH');
+          if(!p.provenance?.content_sha256) throw new Error('CONTENT_HASH_MISSING');
+          if(!p.content.includes('NayaNET — Daily Intelligence Report')) throw new Error('CONTENT_NOT_RETURNED');
+          console.log('DAILY_REPORT_GATEWAY_VERIFIED',JSON.stringify({
+            report_id:p.report_id,
+            source:p.source,
+            provenance:p.provenance
+          },null,2));
+          NODE
+      - name: Verify Hub Reports surface consumes gateway
+        run: |
+          grep -q "/api/reports/daily/" NAYANET/HUB/intelligence-surfaces-runtime.js
+          grep -q "await reports()" NAYANET/HUB/intelligence-surfaces-runtime.js
+          echo "REPORTS_SURFACE_RUNTIME_GATEWAY_BOUND"
