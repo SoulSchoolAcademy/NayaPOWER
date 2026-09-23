@@ -23,8 +23,8 @@ These states must not be inferred from one another.
 
 | # | Smart Door | Priority | Repository evidence | Current state | Boundary/proof gap | Next proof condition |
 |---:|---|---:|---|---|---|---|
-| 1 | MCP | 1 | `NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js`; release boundary; MCP initialize/tools/list/call contract | 🟠 **IMPLEMENTED / PUBLIC PROOF BLOCKED** | Deployed interface was not publicly resolvable at `nayanet-universal-agent-interface.workers.dev`; MCP authenticated lifecycle is therefore not end-to-end proven | Establish/verify authorized Cloudflare public route; then prove unauthorized initialize fails closed, authenticated initialize, tools/list, authenticated tools/call, persistence, receipt, fresh retrieval, verified outcome, cold successor |
-| 2 | REST / OpenAPI | 2 | `NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml`; same Worker boundary | 🟠 **IMPLEMENTED / PUBLIC PROOF BLOCKED** | Same public route/DNS boundary; authenticated REST lifecycle is not end-to-end proven | Same route repair; prove unauthorized REST fail-closed, authenticated restore/retrieve/understand, persistence, evidence/receipt, fresh retrieval and verified outcome |
+| 1 | MCP | 1 | `NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js`; release boundary; MCP initialize/tools/list/call contract | 🟢 **PROVEN AT CURRENT OWNER-BOUND PRODUCTION SCOPE** | Gate 1 proof run `35821213839` completed successfully after the live route became reachable; all MCP checks passed, including unauthorized fail-closed, authenticated initialize/tools/list, cold restore, persistence/receipt, retrieval and restore | Maintain freshness by rerunning the same proof after material runtime/route changes |
+| 2 | REST / OpenAPI | 2 | `NAYANET/UNIVERSAL-AGENT-INTERFACE/openapi.yaml`; same Worker boundary | 🟢 **PROVEN AT CURRENT OWNER-BOUND PRODUCTION SCOPE** | Gate 1 proof run `35821213839` completed successfully; public health, unauthorized REST fail-closed, authenticated REST cold-restore/understand/retrieve and canonical-path convergence all passed | Maintain freshness by rerunning the same proof after material runtime/route changes |
 | 3 | GitHub App | 3 | `NAYANET/EXECUTION-BRIDGE`; GitHub App Bridge specification; `nayanet-github-dispatch`; webhook adapter | 🟠 **PARTIALLY IMPLEMENTED** | Production App installation, production webhook wiring, identity/session boundary and full source→event→normalize→authorize→persist→project→verify chain are not proven | Prove an actual installed App delivery and authorized dispatch against the canonical event/receipt/projection chain |
 | 4 | Webhooks | 4 | `NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts` | 🟠 **IMPLEMENTED RECEIVER / PRODUCTION CHAIN UNPROVEN** | Receiver verifies `x-hub-signature-256` and `x-github-delivery`, but external GitHub App configuration and end-to-end production delivery are not proven | Deliver a real signed GitHub App webhook and prove exact-once canonical event persistence plus downstream verification/projection |
 | 5 | SDK | 5 | No canonical SDK implementation identified in the repository reconciliation | ⚪ **FUTURE** | No implementation/contract package established | Define SDK contract only when a concrete integration requirement exists; then implement against existing API/governance semantics |
@@ -88,11 +88,13 @@ The transport-specific mechanics may differ. The authority, governance, truth an
 
 ### Gate 1 — MCP / REST public route
 
-The current Universal Agent Interface release boundary explicitly records **NOT SHIPPED / BLOCKED AT PUBLIC RUNTIME ROUTE**. The deployment step passed, but the public Workers hostname did not resolve during verification.
+**CLOSED / PROVEN at the current owner-bound production scope.** The authorized Cloudflare route is now reachable, and proof run `35821213839` on main commit `ed58f7176b0d33b6b09558abe91cf26ba2f7448e` completed successfully.
 
-**Required action:** establish/verify the authorized Cloudflare public route. Do not redesign the interface, create a second runtime, or bypass the route boundary.
+The run established public health, unauthorized REST/MCP fail-closed behavior, authenticated MCP initialize/tools/list/call, 14-question cold restore, persistence/receipt/retrieval, authenticated REST cold-restore/understand/retrieve, and MCP/REST convergence on the same canonical Worker path.
 
-After route resolution, rerun the existing verification sequence rather than inventing a new test:
+The first run after route access exposed proof-harness envelope assumptions and an intermittent `JWT issued at future` Supabase clock-skew rejection. The smallest proof-harness corrections were made; the final proof was then rerun unchanged and passed. No second runtime or Cloudflare redesign was introduced.
+
+The existing verification sequence remains the canonical Gate 1 proof:
 
 1. health
 2. unauthorized REST fail-closed
@@ -107,7 +109,7 @@ After route resolution, rerun the existing verification sequence rather than inv
 11. verified outcome
 12. cold successor continuation
 
-**Control:** MCP and REST are not considered healthy merely because the Worker deployment succeeded.
+**Control:** MCP and REST are now considered proven only at the recorded owner-bound production scope of run `35821213839`; this does not generalize beyond that evidence scope.
 
 ### Gate 2 — GitHub App
 
@@ -184,11 +186,11 @@ The strongest existing 01–58 relationships are the domains covering:
 
 **Partially established doors:** GitHub App; broad Email/Messaging adapter family.
 
-**Blocked proof boundary:** MCP/REST public runtime exposure.
+**Closed proof boundary:** MCP/REST public runtime exposure, proven by run `35821213839` at owner-bound production scope.
 
 **Future doors:** SDK, A2A, MCP Apps/Embedded UI, Enterprise Identity, Private MCP Tunnel.
 
-**Next work:** prove the existing MCP/REST boundary with the existing runtime and route; then close GitHub App; then close Webhook production-chain proof.
+**Next work:** Gate 1 is closed. Move to Gate 2: prove the existing GitHub App production identity/event/authority/execution chain; then close Webhook production-chain proof.
 
 > **One brain. One governance. One truth model. Many doors.**
 >
