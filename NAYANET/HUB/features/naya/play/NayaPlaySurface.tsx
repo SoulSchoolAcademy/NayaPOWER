@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { useIdentity } from '../identity/session';
+import { useIdentity } from '../../../identity/session';
 
 type EventRow = Record<string, any>;
 
