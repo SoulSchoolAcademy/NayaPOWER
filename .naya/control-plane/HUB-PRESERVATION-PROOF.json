@@ -1,0 +1,46 @@
+{
+  "$schema": "naya/control-plane/hub-preservation-proof/v1",
+  "status": "PRODUCTION_PROVEN",
+  "verified_at": "2026-09-23T15:49:55Z",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "source_commit": "526174fc9f645eb4af73c0d7b79ead01b8c30416",
+  "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+  "workflow_run": 35884295556,
+  "workflow_run_number": 1035,
+  "job_id": 107260367487,
+  "canonical_hub": "NAYANET/HUB/index.html",
+  "active_entrypoint_blob_sha": "81fdf6dbd19cff7c29a79e2f19a15f6979209e34",
+  "current_recovery_checkpoint": {
+    "branch": "recovery/hub-freeze-2026-09-23-f0b25adb",
+    "commit": "f0b25adb031c7cfaa40dbb212dbcee5448c87bd6",
+    "hub_entrypoint_blob_sha": "e9aa8cf8a61acd4375c51593dc925a7a1fa5f5bc"
+  },
+  "historical_recovery_checkpoint": {
+    "commit": "74884cb69badf54fee2bff0398a3f452c6c74384",
+    "hub_entrypoint_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f"
+  },
+  "authority_transfer": {
+    "status": "EXPLICITLY_RECORDED",
+    "from": "historical static Hub implementation",
+    "to": "React/Vite canonical implementation lane",
+    "reason": "Architecture migration preserved through named recovery checkpoints and an explicit control-plane declaration."
+  },
+  "gate_results": {
+    "canonical_entrypoint_identified": true,
+    "preservation_manifest_active": true,
+    "additive_default_enforced": true,
+    "silent_authority_transfer_blocked": true,
+    "current_recovery_commit_reachable": true,
+    "current_recovery_branch_matches_recorded_commit": true,
+    "current_recovery_entrypoint_preserved": true,
+    "historical_checkpoint_reachable": true,
+    "historical_entrypoint_preserved": true,
+    "active_entrypoint_matches_recorded_active_sha": true,
+    "build_verified": true,
+    "deployment_verified": true,
+    "exact_source_live_parity_verified": true,
+    "browser_canonical_shell_verified": true,
+    "room_01_browser_render_verified": true
+  },
+  "truth_boundary": "This proves preservation checkpoints, explicit authority transfer, exact current active entrypoint identity, build/deploy/live parity, and canonical browser probes for this source commit. It does not claim the current React Hub is visually identical to the historical static implementation; visual equivalence remains a separate acceptance requirement."
+}
