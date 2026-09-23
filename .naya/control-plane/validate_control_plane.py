@@ -239,7 +239,7 @@ def validate_cross_surface_coherence(m,s,b):
     if s.get('current_block_status')!=active.get('status'): fail('STATE and BLOCK status disagree')
     if s.get('single_next_action')!=active.get('next_action'): fail('STATE and BLOCK next actions disagree')
     if s.get('next_actions')!=[active.get('next_action')]: fail('STATE and BLOCK next_actions disagree')
-    if s.get('next_action')!=active.get('next_action'): fail('STATE legacy next_action disagrees with canonical next action')
+    if s.get('next_action',{}).get('action')!=active.get('next_action'): fail('STATE legacy next_action disagrees with canonical next action')
     if s.get('next_action_count')!=active.get('next_action_count') or active.get('next_action_count')!=1: fail('STATE and BLOCK next-action cardinality disagree')
 
 
