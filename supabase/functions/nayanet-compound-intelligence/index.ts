@@ -619,6 +619,13 @@ Deno.serve(async (req) => {
   let body:any={}; try { body=await req.json(); } catch {}
   const action=String(body.action||"restore").trim();
   try {
+    const preActionExempt = new Set(["restore","cold_restore","retrieve","reconcile","health"]);
+    if (!preActionExempt.has(action)) {
+      const gate = await coldRestore(client,user.id);
+      if (gate.status !== "COLD_RESTORE_VERIFIED" || gate.mandatory_pre_action !== true || gate.question_count !== 14) {
+        throw new Error("PRE_ACTION_PROJECT_INTELLIGENCE_GATE_FAILED");
+      }
+    }
     let result:any;
     switch(action) {
       case "restore": result=await restore(client,user.id); break;
