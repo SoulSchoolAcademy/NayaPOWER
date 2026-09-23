@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import type { CSSProperties } from 'react';
 import type { IntelligentEvent } from '../intelligence/types';
 import { loadPrimaryIntelligence, sortPrimaryIntelligence } from '../data/pis';
 import { routes } from './routes';
@@ -76,7 +77,7 @@ export function IntelligenceTodaySurface(){
     <section className="today-section">
       <div className="today-section-head"><div><span className="today-kicker">02 · UNDERSTAND</span><h2>What is here today?</h2><p>Open any intelligence item for the complete Smart Feed experience: meaning, learning, evidence, provenance, application and action.</p></div></div>
       <div className="today-intelligence-grid">
-        {latest.map((event,index)=><article key={event.event_id} className="today-intelligence-card" style={{'--today-tone':(['#9d75ff','#6675ff','#55b9ee','#55e39a','#d86cff','#e8c766'][index%6])} as React.CSSProperties}>
+        {latest.map((event,index)=><article key={event.event_id} className="today-intelligence-card" style={{'--today-tone':(['#9d75ff','#6675ff','#55b9ee','#55e39a','#d86cff','#e8c766'][index%6])} as CSSProperties}>
           <div className="today-card-top"><span>{String(index+1).padStart(2,'0')}</span><small>{event.privacy?.visibility||event.context?.visibility||'VISIBLE'}</small></div>
           <h3>{event.source.label}</h3>
           <p>{excerpt(event).slice(0,280)}{excerpt(event).length>280?'…':''}</p>
