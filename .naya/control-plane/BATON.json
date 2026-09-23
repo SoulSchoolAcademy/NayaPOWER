@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T03:56:51.731Z",
+  "generated_at": "2026-09-23T04:00:17.292Z",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,13 +12,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "e92145953097984d2acaa344f374fcbced2ff6b5",
+    "live_head": "4e834f1c9eecb4fd8fd684fd206b005fc4634e2a",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Execute one fresh current-main owner-bound Smart Note → verified learning → later-decision influence proof, showing the newly learned evidence is retrieved and changes a governed decision outcome while authority remains unchanged, then independently verify the lineage and record the result.",
-    "canonical_hub_source_sha": "a53ca9cbc76e2b20fa27fdfa8f9be90a26a3ef7c"
+    "canonical_hub_source_sha": "2d2978840140323fe5293285124783223bab4fd9"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
