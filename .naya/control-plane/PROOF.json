@@ -60,7 +60,7 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
+    "observed_head": "7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d",
     "observed_branch": "main",
     "runtime_parity": {
       "status": "STALE",
@@ -90,7 +90,7 @@
         "Smart Feed publication retrieval and unauthorized persistence blocking passed"
       ],
       "stale_reason": "Current main canonical Hub source (cae18df2) is not the source identity of the recorded deployment proof; current live parity remains unproven until the canonical release is re-established.",
-      "current_main_head": "6c471ec3f5adf66ef84ec52bf89eaa233fbf0b9e",
+      "current_main_head": "7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d",
       "current_hub_blob_sha": "cae18df2baeda78a14c2e05e4aa534018343619f",
       "required_next": "Authorized canonical Cloudflare release on exact current main, then exact live source parity and browser proof."
     },
@@ -1018,7 +1018,7 @@
       "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
       "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
     },
-    "next_action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block."
+    "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
   },
   "compound_intelligence_12": {
     "status": "PROVEN",
@@ -1299,7 +1299,7 @@
     "verification": "OPEN_PENDING_FRESH_PRODUCTION_DEPLOYMENT_AUTHORIZATION"
   },
   "next_action": {
-    "action": "Prove COMMUNICATION as the next representative universal-output class: determine whether a communication artifact is reusable intelligence or a communication event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
     "reason": "LEARNING_OUTPUT is VERIFIED as PROMOTE through the canonical intelligence_commit path; receipt .naya/project-intelligence/42-NAYANET-LEARNING-OUTPUT-DISPOSITION-RECEIPT-2026-09-23.md. Communication is the single next readiness boundary."
