@@ -1,0 +1,39 @@
+{
+  "schema":"NAYANET_PI_SMART_NOTE_LEARNING_BOUNDARY_V1",
+  "status":"VERIFIED",
+  "workflow_run":35915387903,
+  "job_id":107365441693,
+  "source_head":"71b5de98a860fed2b27d1ae986be3e67e3c1d25a",
+  "runtime":"nayanet-compound-intelligence v26",
+  "source_runtime_sha":"22a73d50d71836a3e4a5de1392f9a03de10f3651",
+  "trace":{
+    "identity":"PASS",
+    "capture":"PASS",
+    "learning_candidate":"CANDIDATE",
+    "learning_verify":"ACTIVE",
+    "learning_retrieve":"PASS",
+    "learning_apply":"PASS",
+    "decision_influence":"PASS",
+    "cold_reuse":"PASS",
+    "independent_db_verify":"PASS"
+  },
+  "lineage":{
+    "owner_id":"dc5c4eea-52ad-4e09-8fbb-c7a8505944d9",
+    "event_id":"1ed40548-7359-4208-92a4-e99f0390d2b7",
+    "receipt_id":"f2c3282b-7333-499c-ba67-24dadcd6e3f6",
+    "learning_evidence_id":"3d736af3-cb73-43f1-83d5-2113ecf87762"
+  },
+  "decision":{
+    "decision":"USE_VERIFIED_LEARNING_CONTEXT",
+    "influenced":true,
+    "authority_changed":false,
+    "authority_granted":false,
+    "cold_reuse_influenced":true,
+    "learner_state_version":1
+  },
+  "honest_limits":[
+    "This proves the intelligence_commit/Smart Note learning rung at this tested owner/runtime scope.",
+    "It does not prove universal learning across every output class.",
+    "It does not prove universal behavior change or model quality."
+  ]
+}
