@@ -156,6 +156,8 @@ async function load(reset){
    const data=await rt.smartFeed({stream:state.stream,limit:20,before:reset?null:state.before});
    if(reset)state.items=[];
    const incoming=list(data?.items);
+   const probe=incoming.find(x=>String(x?.event_id||'')==='__P0_02_PROBE__');
+   if(typeof window.__nayaSmartFeedProbe==='function')window.__nayaSmartFeedProbe({items:incoming,probe});
    state.items.push(...incoming);state.before=pick(data,'next_before','nextBefore','cursor')||null;draw();
    status('LIVE · '+state.stream.toUpperCase()+' · '+state.items.length+' ITEM'+(state.items.length===1?'':'S')+' · CANONICAL RUNTIME');
  }catch(e){state.items=[];state.before=null;draw();status('BLOCKED / FAILED · '+(e?.message||e))}finally{state.loading=false}
