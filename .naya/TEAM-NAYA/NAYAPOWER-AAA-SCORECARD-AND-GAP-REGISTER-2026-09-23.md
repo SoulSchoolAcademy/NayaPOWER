@@ -7,18 +7,18 @@ Target: 10/10 AAA for the intended release scope. 9.5 may be accepted only for a
 |---|---:|---|---|---|
 | Superbrain engine | 9.4/10 | FRESH COMPOUNDING CHAIN PROVEN / OPEN UNIVERSALIZATION | Intelligent Events, Blocks, learning evidence, learner state, Dream/replay, decision context, Smart Ledger, checkpoint, compound-intelligence runtime exist; fresh Collective Intelligence Chain proof passed run 35900094543 | Universal meaningful-output promotion and broader multi-lesson generalization remain open |
 | Setup / Control Plane | 9.2/10 | STRONG / RECONCILIATION NEEDED | STATE/BLOCKS/MAP/PROOF/BATON + cold 14-question contract + successor law exist | Some current documents still expose stale historical next-action wording; reconcile to one live frontier |
-| Canonical Hub | 9.5/10 | CURRENT RECEIVER SURFACE VERIFIED / WHOLE JOURNEY OPEN | Current-main Smart Feed renderer was exercised by fresh production receiver proof run 35898728927; canonical render, reload, fresh-context retrieval and Intelligent Block projection all passed | Full human golden path and exact release deployment parity remain to be reconsolidated |
+| Canonical Hub | 9.1/10 | RECEIVER-PROVEN / LIFECYCLE RENDER OPEN | Fresh receiver run 35898728927 passes; current-main Intelligent Block lifecycle reaches RETRIEVE but current rerun 35900769397 fails at canonical Hub [data-event-id] render after reload | One causal Hub render/retrieval/session boundary remains open |
 | Sender readiness | 7.8/10 | PARTIAL | Existing governed runtime/capability boundaries and Smart Door patterns exist | Need universal sender contract and explicit capability/authority manifest |
 | Receiver readiness | 9.8/10 | FRESH PRODUCTION-PROVEN BOUNDED | Run 35898728927 passed all 17 receiver checks including auth, validation, persistence, index, Ledger, render, reload, fresh context, idempotency, wrong-owner, privacy, Intelligent Block roundtrip/projection | Scope is Smart Note receiver; universal receiver classes remain open |
 | Cold successor readiness | 8.5/10 | PROVEN CORE / BROAD SCOPE OPEN | Cold 14-question contract and baton mechanism exist; multiple cold continuation proofs exist | Full intended-scope independent continuation after universal promotion remains open |
 | Computational efficiency | 8.2/10 | MEASURED/OPEN | Controlled compounding experiments and measurement contracts exist | Final causal benchmark must use retained intelligence produced by Cycle A |
 | Production readiness | 8.8/10 | BOUNDED / FRESH RECEIVER PROOF | Current production receiver runtime passed fresh browser/database evidence at run 35898728927 | Canonical Cloudflare deployment parity for every claim-relevant Hub source path remains open |
 | Human UX / AAA | 8.0/10 | FOUNDATION / ACCEPTANCE OPEN | Canonical Hub has substantial visual system and current receiver proof validates the intelligence projection surface | Final AAA must test human-operable golden path, not feature count |
-| Overall mission readiness | 9.0/10 | NOT COMPLETE | Receiver boundary and one full Collective Intelligence Chain lesson are now fresh-proven; product closure and universalization remain open | Universal promotion, sender contract, parity, golden path, final adversarial gate |
+| Overall mission readiness | 8.9/10 | NOT COMPLETE | Receiver boundary and one full Collective Intelligence Chain lesson are fresh-proven; lifecycle render and product closure remain open | Repair lifecycle Hub render boundary, then P0-04 promotion, sender contract, parity, golden path, final adversarial gate |
 
 ## 10 MAX-VALUE PRIORITIES — LIVE RECONCILIATION
 1. ~~P0 — Finish current Smart Note receiver proof.~~ **PROVEN — run 35898728927.**
-2. ~~P0 — Close Intelligent Block lifecycle CREATE → REPLAY/UPDATE → SUPERSEDE → VERIFY → RETRIEVE → RENDER → CONTINUE.~~ **PROVEN at recorded source scope — run 35891432147.**
+2. **P0 — Refresh Intelligent Block lifecycle against current main and close CREATE → REPLAY/UPDATE → SUPERSEDE → VERIFY → RETRIEVE → RENDER → CONTINUE.** Current rerun 35900769397: CREATE/SUPERSEDE/REPLAY/VERIFY/RETRIEVE PASS; RENDER fails on [data-event-id].
 3. ~~P0 — Run one real lesson through the complete Collective Intelligence Chain and prove cold applicability + behavior change + outcome.~~ **PROVEN — run 35900094543.**
 4. **P0 — Generalize the canonical intelligence-commit boundary to every meaningful Naya output available inside NayaPOWER; explicitly separate this from arbitrary ChatGPT conversation capture.**
 5. **P0 — Prove the 14-question cold interface at current main and use its result as execution authorization.**
@@ -34,7 +34,7 @@ H2 — Reconciliation: DUPLICATE / CONFIRM / EXTEND / CORRECT / CONFLICT / SUPER
 H3 — Core Intelligence update: checkpoint persistence exists; complete current-integrated-state change proof remains open.
 H4 — Applicability: bounded cold retrieval exists; explicit restore → what changed → what applies → act proof remains open.
 H5 — Outcome learning: **one full lesson is now proven through outcome verification → learning update → improved checkpoint; broader generalization remains open.**
-H6 — Block lifecycle: **PROVEN at recorded source scope**; current receiver proof additionally validates current Hub Block rendering/roundtrip projection.
+H6 — Block lifecycle: **CURRENT RERUN OPEN**. Backend lifecycle and lineage pass, but current canonical Hub render selector for the superseding event fails after reload.
 H7 — Control-plane conflict: STATE/MAP/BLOCKS/BATON have carried different frontier wording; reconcile to one current next action.
 H8 — Sender contract: capability → authority → scope → receiver → receipt → persistence → retrieval → evidence is not fully generalized.
 H9 — Production parity freshness: current receiver runtime is fresh-proven, but full canonical Hub release parity across all claim-relevant source paths is not yet consolidated.
@@ -79,3 +79,15 @@ ONE BRAIN. ONE CURRENT STATE. ONE NEXT ACTION. ONE EVIDENCE CHAIN. ONE TORCH.
 - Acceptance: all 13 required checks PASS, including lesson capture, connect, reconcile, integrate, checkpoint, cold retrieval, applicability, behavior change, observed outcome, verified outcome, learning update, improved checkpoint, unchanged authority.
 - Causal repair discovered during proof: authenticated Intelligence Index projection writes were attempted through a client role with SELECT-only RLS policy. The canonical projection write was repaired to use the existing service-role admin boundary; the exact current function was deployed as Supabase Edge Function version 23 before the successful rerun.
 - Proof remains bounded to this representative lesson and tested runtime scope; it does not prove universal real-world learning quality.
+
+
+## CURRENT P0-02 FAILURE EVIDENCE
+- Run: 35900769397
+- Job: 107316088337
+- Source HEAD: 3efdd0cd620f621e23bae0e92e5d745e3f79fe2d
+- PASS before failure: IDENTITY, SMART_NOTE, BLOCK_CREATE, SUPERSEDE, REPLAY, VERIFY, RETRIEVE.
+- Deterministic first failing boundary: canonical Hub RENDER.
+- Selector: [data-event-id="supersede:2964f2dd-9721-4202-8c87-989c03b479df"]
+- Failure: Playwright timeout waiting for the superseding event to become visible.
+- The deployed naya-smart-feed backend returned HTTP 200 on the relevant request and is version 17; its Intelligent Block lineage lookup was repaired to use source_event_ids overlap, but the same lifecycle render proof still fails. Therefore do not declare the backend retrieval repair sufficient.
+- Production Hub static release remains a separate source/build/deploy parity boundary. The next repair must inspect the exact post-navigation Hub runtime/session + Smart Feed render path, then make one causal Hub-boundary repair and rerun this exact lifecycle proof.
