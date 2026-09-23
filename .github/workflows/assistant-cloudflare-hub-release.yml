@@ -105,6 +105,18 @@ jobs:
               raise SystemExit('RECOVERY_CHECKPOINT_COMMIT_NOT_REACHABLE')
           if not subprocess.run(['git','cat-file','-e',cp['previous_major_hub_checkpoint_commit']+'^{commit}'],capture_output=True).returncode==0:
               raise SystemExit('HISTORICAL_CHECKPOINT_COMMIT_NOT_REACHABLE')
+          active_blob=subprocess.check_output(['git','rev-parse','HEAD:NAYANET/HUB/index.html'],text=True).strip()
+          if active_blob != g.get('active_architecture',{}).get('entrypoint_blob_sha_at_checkpoint'):
+              raise SystemExit('CANONICAL_ENTRYPOINT_DRIFT_FROM_PRESERVED_CHECKPOINT')
+          subprocess.run(['git','fetch','--no-tags','origin','refs/heads/'+cp['checkpoint_branch']+':refs/remotes/origin/'+cp['checkpoint_branch']],check=True)
+          recovery_head=subprocess.check_output(['git','rev-parse','refs/remotes/origin/'+cp['checkpoint_branch']],text=True).strip()
+          if recovery_head != cp['main_observed_head']:
+              raise SystemExit('RECOVERY_BRANCH_MOVED_FROM_RECORDED_CHECKPOINT')
+          recovery_blob=subprocess.check_output(['git','rev-parse',cp['main_observed_head']+':NAYANET/HUB/index.html'],text=True).strip()
+          if recovery_blob != cp.get('previous_major_hub_checkpoint_blob_sha') and cp.get('main_observed_head') == cp.get('previous_major_hub_checkpoint_commit'):
+              raise SystemExit('RECOVERY_HUB_BLOB_MISMATCH')
+          print('PRESERVED_ENTRYPOINT_BLOB',active_blob)
+          print('RECOVERY_BRANCH_HEAD',recovery_head)
           print('HUB_PRESERVATION_GATE_VERIFIED')
           print('CANONICAL_ENTRYPOINT',c['human_facing_entrypoint'])
           print('IMPLEMENTATION_ROOT',c['implementation_root'])
