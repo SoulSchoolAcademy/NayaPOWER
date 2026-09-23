@@ -65,7 +65,7 @@ jobs:
               if(!sb)throw new Error('SUPABASE_CLIENT_UNAVAILABLE');
               const s=await window.NayaNETNameFirstAuth.current();
               const c=window.supabase.createClient('https://dahisasgpfvziswqvmvm.supabase.co','sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue',{global:{headers:{Authorization:'Bearer '+s.access_token}}});
-              const q=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',eventId).maybeSingle();
+              const q=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',blockId).maybeSingle();
               if(q.error)throw q.error;
               return q.data;
             },{blockId});
@@ -99,7 +99,7 @@ jobs:
               const a=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',blockId).single();
               const b=await c.from('nayanet_intelligent_blocks').select('*').eq('block_id',newId).single();
               if(a.error)throw a.error;if(b.error)throw b.error;return {old:a.data,new:b.data};
-            },{eventId,newId});
+            },{blockId,newId});
             if(final.old.status!=='SUPERSEDED'||final.old.superseded_by_block_id!==newId)throw new Error('OLD_BLOCK_SUPERSESSION_LINEAGE_INVALID');
             if(final.new.status!=='ACTIVE'||final.new.supersedes_block_id!==blockId||Number(final.new.version)!==Number(final.old.version)+1)throw new Error('NEW_BLOCK_LINEAGE_INVALID');
             mark('VERIFY','PASS',{old_status:final.old.status,new_status:final.new.status,old_superseded_by:final.old.superseded_by_block_id,new_supersedes:final.new.supersedes_block_id,new_version:final.new.version});
