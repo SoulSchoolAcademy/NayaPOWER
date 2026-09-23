@@ -806,6 +806,38 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     if (insertedBlock.error) throw insertedBlock.error;
     intelligentBlock=insertedBlock.data;
   }
+    const learningClaim=String(body.learning_claim ?? content).trim();
+  const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
+    .eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
+  if(learningExisting.error) throw learningExisting.error;
+  let learning:any=learningExisting.data;
+  if(!learning){
+    const inserted=await client.from("learning_evidence").insert({
+      member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),
+      level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",claim:learningClaim.slice(0,2000),
+      observed_value:{category,topic,applicable_scope:body.applicable_scope ?? null},
+      verification_method:"PENDING_OUTCOME_VERIFICATION",source_event_id:eventId
+    }).select("*").single();
+    if(inserted.error) throw inserted.error;
+    learning=inserted.data;
+  }
+  const checkpoint=await checkpointIntelligence(client,userId,{
+    checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,
+    title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
+    tags:["intelligence","checkpoint","intelligent-block",category,topic],
+    what_changed:body.what_changed ?? "New intelligence was captured and integrated into the canonical intelligence index.",
+    learned:learningClaim,
+    evidence_refs:[
+      {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
+      {kind:"source_event",event_id:eventId},{kind:"intelligence_index",index_id:projection.index?.id ?? null}
+    ],
+    authority_scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",
+    unknown:Array.isArray(body.unknown) ? body.unknown : ["Outcome-based verification of future behavior remains required."],
+    applicable_scope:body.applicable_scope ?? null,
+    next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
+    successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
+    source_head:body.source_head ?? null
+  });
   return {
     schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
     idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
