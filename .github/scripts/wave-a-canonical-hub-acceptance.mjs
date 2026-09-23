@@ -108,7 +108,7 @@ const sourceId=String(apiExact.source_id||apiExact.id||eventId);
 const personal=page.locator('.feedNav button[data-feed="personal"]');
 await personal.click();
 await page.waitForFunction(()=>document.documentElement.dataset.nayaCanonicalSmartFeed==="live",{timeout:30000});
-await page.waitForFunction(id=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.dataset.intelligenceId||"")===id),sourceId,{timeout:30000});
+await page.waitForFunction(expected=>[...document.querySelectorAll(".blocks .block")].some(b=>String(b.querySelector("h3")?.textContent||"").includes(expected)),title,{timeout:30000});
 
 const rendered=await page.locator('.blocks .block').filter({hasText:title}).first().evaluate(node=>({
   intelligenceId:node.dataset.intelligenceId||"",
