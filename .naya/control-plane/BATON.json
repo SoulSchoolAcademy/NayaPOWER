@@ -65,9 +65,7 @@
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json"
   },
-  "next_action": {
-    "count": 1,
-    "status": "AUTHORIZED",
+  "next_action": {"status": "BLOCKED",
     "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "Derived automatically after verified next_action + handoff execution cycle.",
