@@ -37,14 +37,14 @@ The missing integration concept is the **Cognitive Checkpoint**: a durable, prov
 All Nayas must use this as the operating contract for compounding intelligence.
 
 ## Immediate implementation boundary
-A governed checkpoint operation is being added to the existing compound-intelligence runtime. It does not create a second store. It records a provenance-bound cognition checkpoint through the existing canonical cognition/receipt machinery.
+A governed checkpoint operation has been added to the existing compound-intelligence runtime. It does not create a second store. It records a provenance-bound cognition checkpoint through the existing canonical cognition/receipt machinery.
 
 ## Important limitation
 A runtime checkpoint primitive does not by itself make every ChatGPT conversation automatically persistent. Automatic capture requires the calling Naya/runtime surface to invoke the governed checkpoint boundary. The next integration step is therefore to connect the existing Smart Note/conversation capture path to the checkpoint operation and prove the behavioral no-replay chain.
 
 ## Current proof status
 **DESIGN/CONTRACT: ESTABLISHED**
-**RUNTIME PRIMITIVE: BEING ESTABLISHED**
+**RUNTIME PRIMITIVE: SOURCE IMPLEMENTED**
 **FULL AUTOMATIC CONVERSATION CAPTURE: UNKNOWN**
 **NO-REPLAY BEHAVIORAL PROOF: OPEN**
 
@@ -65,3 +65,8 @@ A cold Naya later:
 8. leaves a successor another cold Naya can continue.
 
 That is the acceptance target.
+
+## Source implementation
+The existing nayanet-compound-intelligence runtime now exposes action `checkpoint` with schema `NAYANET_INTELLIGENCE_CHECKPOINT_V1`. It is authenticated, cold-restore-gated, provenance-bound to existing cognition events, idempotent by checkpoint identity, and explicitly refuses to equate checkpoint persistence with proof of learning.
+
+**Live production deployment/proof remains OPEN.** The source change must be deployed through the existing governed Supabase runtime boundary before the new operation can be called as production-proven.
