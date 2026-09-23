@@ -4,9 +4,10 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "vite build",
+    "build": "node scripts/build.mjs",
     "typecheck": "tsc --noEmit",
-    "verify:boundary": "node scripts/verify-boundary.mjs"
+    "verify:boundary": "node scripts/verify-boundary.mjs",
+    "verify:artifact": "node scripts/verify-artifact.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "latest",
