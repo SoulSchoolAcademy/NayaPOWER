@@ -55,25 +55,16 @@ jobs:
           };
 
           async function setupIdentity(page) {
-            await page.goto(hub + '/identity.html?naya_hold=1', {waitUntil:'networkidle', timeout:60000});
-            await page.locator('#name').fill('Compound Intelligence Proof');
-            await page.locator('#alias').fill(alias);
-            await page.locator('#enter').click();
-            let identity=null;
-            for(let i=0;i<60;i++){
-              identity=await page.evaluate(async()=>{
-                try{return await window.NayaNETNameFirstAuth?.current?.()}catch{return null}
-              });
-              if(identity?.authenticated && identity?.userId) break;
-              await new Promise(r=>setTimeout(r,500));
-            }
-            if(!identity?.authenticated||!identity.userId) throw new Error('AUTH_NOT_ESTABLISHED');
+            await page.goto(hub + '/identity.html?naya_hold=1', {waitUntil:'domcontentloaded', timeout:60000});
+            const established=await page.evaluate(async({name,alias})=>window.NayaNETNameFirstAuth.establish({name,alias}),{name:'Compound Intelligence Proof',alias});
+            if(!established?.authenticated||!established?.userId) throw new Error('AUTH_NOT_ESTABLISHED');
             const session=await page.evaluate(async()=>{
               const c=window.__NayaNETSupabaseClient;
               const s=c?(await c.auth.getSession()).data.session:null;
               return s?{userId:s.user.id,access_token:s.access_token}:null;
             });
             if(!session?.access_token) throw new Error('SESSION_TOKEN_NOT_AVAILABLE');
+            if(session.userId!==established.userId) throw new Error('IDENTITY_SESSION_MISMATCH');
             return session;
           }
 
