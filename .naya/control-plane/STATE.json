@@ -414,7 +414,7 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "action": "Prove GOVERNED_DECISION as the next representative universal-output class: determine whether a consequential decision artifact is reusable intelligence or a decision event/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, authority/consent, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
+    "action": "Prove LEARNING_OUTPUT as the next representative universal-output class: inspect whether the learning artifact is reusable new understanding or evidence/state, then promote through the canonical intelligence substrate or explicitly DECLINE_PROMOTION with a semantic reason. Preserve provenance, owner scope, lineage and fresh retrieval. Do not create a duplicate Intelligent Block.",
     "status": "OPEN_ACTIVE_BOUNDARY",
     "count": 1,
     "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next."
