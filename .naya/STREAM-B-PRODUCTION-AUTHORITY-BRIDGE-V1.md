@@ -52,11 +52,41 @@ The second route is closer to the intended contract, but it still does not verif
 
 ### Front #4 caller inventory result
 
-Repository-wide source inspection confirms the **database execution boundary is the two overloaded SQL signatures above**. The current GitHub connector code-search index did not return source-call-site matches for the function name, so application-level callers cannot honestly be declared exhaustively inventoried from the indexed source. That is a remaining prerequisite, not a guessed success.
+A **read-only production Supabase inspection** materially improved the caller graph.
 
-Therefore the exact verified caller graph is:
+The live database currently has exactly these two `nayanet_record_cognition_event` signatures:
 
-**caller(s) not exhaustively indexed → one of two SQL overloads → authority validation → cognition → receipt**
+- 6 arguments: `p_project_id, p_event, p_action, p_expected_result, p_observed_result, p_learning`
+- 7 arguments: the same six plus `p_execution_authorization jsonb`
+
+`pg_stat_statements` shows observed PostgREST execution traffic of **2,519 calls through the 6-argument signature and 54 calls through the 7-argument signature** in the retained statistics window. This is usage evidence, not a claim that every one of those calls was `intelligence.capture`.
+
+The live `pg_proc.prosrc` dependency scan identifies these database functions as callers of the 6-argument boundary:
+
+- `nayanet_add_connection_to_list`
+- `nayanet_create_smart_list`
+- `nayanet_join_space`
+- `nayanet_leave_space`
+- `nayanet_prepare_smart_mail_authorization`
+- `nayanet_remove_connection_from_list`
+- `nayanet_revoke_connection`
+- `nayanet_save_connection`
+- `nayanet_smart_note_receipt_to_execution_receipt`
+
+The live `nayanet-compound-intelligence` Edge Function is confirmed as a caller of the **7-argument** RPC and passes `p_execution_authorization` after separately calling `nayanet_validate_authority_grant`.
+
+Recent live `intelligence.capture` receipts also show two distinct historical/runtime shapes:
+
+1. recent governed proof receipts contain an `execution_authorization` object with `authority_id`, `decision_id`, `action_id`, `binding_hash`, `permission`, `governance_state`, and embedded grant data;
+2. older `intelligence.capture` receipts in the retained window exist with **null authority lineage**. Those records predate/reflect earlier implementation states and must not be used as proof of the current contract.
+
+Therefore the exact verified production graph is now:
+
+**PostgREST / DB callers → one of two SQL overloads → DB grant validation and persistence**
+
+with **`nayanet-compound-intelligence` → 7-arg overload** explicitly verified as an active Edge Function path.
+
+Application/Hub callers outside the database and the complete Edge Function caller set remain unverified; the GitHub code-search index did not return usable call-site matches. That gap must be closed before destructive overload removal.
 
 The unresolved caller inventory must be closed before deleting the legacy overload.
 
@@ -222,6 +252,6 @@ Current status:
 - Front #1: DESIGN COMPLETE / IMPLEMENTATION NOT VERIFIED
 - Front #2: EXISTING PORTABLE VERIFIER AVAILABLE / PRODUCTION WIRING NOT VERIFIED
 - Front #3: NOT CONVERGED
-- Front #4: PARTIAL — SQL boundary known, application caller inventory incomplete
+- Front #4: **PARTIAL → substantially reconstructed** — live SQL callers and the active `nayanet-compound-intelligence` 7-arg caller are verified; complete Edge Function/Hub caller inventory remains incomplete
 
 No live mutation, grant issuance, revocation, deployment, or credential provisioning occurred.
