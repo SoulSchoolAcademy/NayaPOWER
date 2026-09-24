@@ -53,6 +53,10 @@ COMPOUNDING
 | Verification | Truth, evidence, runtime and production proof |
 
 ### Core laws
+- **LEARN BY DEFAULT. SHARE WISDOM BY CONSENT. PROTECT IDENTITY BY DEFAULT. PUBLISH BY DECISION.**
+- An authorized Hub connection establishes participation consent; ordinary Smart Notes do not require per-event learning permission.
+- Useful wisdom may flow automatically into governed collective learning after participation consent; raw private intelligence and contributor identity remain private by default.
+- Hub/member visibility is not public visibility; public publication requires a separate user decision.
 - Capability does not create authority.
 - Unknown ≠ success.
 - Blocked ≠ pass.
@@ -82,6 +86,12 @@ Engineering infrastructure (`.github`, `supabase`, `tests`, and required build/r
 
 Only after that gate closes, resume the next deterministic product proof:
 **GAP-002 — Intelligent Block truth/provenance projection.**
+
+### Canonical participation protocol
+
+The full system contract is `.naya/protocol/NAYANET-INTELLIGENCE-PARTICIPATION-PRIVACY-PROTOCOL-V1.md`.
+
+**Connect → participate → learn automatically → filter/distill → contribute useful wisdom → protect identity → compound.** Different connection doors may exist for humans and AIs, but the governing participation, learning, privacy, and publication rules are the same.
 
 ### Authority
 The human remains the source of vision, values and legitimate authorization.
