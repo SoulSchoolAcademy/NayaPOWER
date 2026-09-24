@@ -1,0 +1,48 @@
+name: NAYA — UAI Authority Parity Live Proof
+
+on:
+  workflow_dispatch:
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Resolve runtime configuration
+        shell: bash
+        run: |
+          set -euo pipefail
+          SUPABASE_URL=$(sed -n "s/.*const URL='\\([^']*\\)'.*/\\1/p" NAYANET/HUB/public/assistant-runtime.js | head -n1)
+          SUPABASE_ANON_KEY=$(sed -n "s/.*KEY='\\([^']*\\)'.*/\\1/p" NAYANET/HUB/public/assistant-runtime.js | head -n1)
+          echo "SUPABASE_URL=$SUPABASE_URL" >> "$GITHUB_ENV"
+          echo "SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY" >> "$GITHUB_ENV"
+      - name: Live UAI authority proof
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=https://nayanet-universal-agent-interface.smartnetpodcast.workers.dev
+          auth_json=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json" -d '{}')
+          token=$(echo "$auth_json" | jq -r '.access_token // empty')
+          user=$(echo "$auth_json" | jq -r '.user.id // empty')
+          test -n "$token"; test -n "$user"
+          H=(-H "Authorization: Bearer $token" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json")
+          src=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d '{"action":"understand","title":"UAI authority proof","content":"UAI-AUTHORITY-SOURCE","confidence":1,"tags":["uai-authority-proof"]}')
+          event=$(echo "$src" | jq -r '.result.event.event_id'); test -n "$event"
+          grant=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d "$(jq -n --arg s "$user" --arg e "$event" '{action:"issue_pi_authority",subject_id:$s,source_event_id:$e,mission_id:"NayaNET",scope:{project_id:"NayaNET",target:"NayaNET"},actions:["intelligence_commit"],constraints:{mode:"uai-authority-parity-proof"},expires_at:"2099-01-01T00:00:00Z",evidence:{proof:"uai-live"}}')")
+          gid=$(echo "$grant" | jq -r '.result.grant.grant_id'); test -n "$gid"
+          BODY=$(jq -n --arg g "$gid" --arg i "uai-authority-$GITHUB_RUN_ID" '{authority_grant_id:$g,idempotency_key:$i,content:"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF",title:"UAI authority parity",category:"TEST",topic:"SMART_CONNECT",confidence:1,tags:["uai-authority-proof"],authority_scope:"PERSONAL_INTELLIGENCE_ONLY",target_id:"uai-external-door-proof"}')
+          code=$(curl --silent --show-error -o /tmp/positive.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); test "$code" = 200
+          event_id=$(jq -r '.result.result.event.event_id' /tmp/positive.json); checkpoint=$(jq -r '.result.result.checkpoint.checkpoint_id' /tmp/positive.json)
+          code=$(curl --silent --show-error -o /tmp/replay.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); test "$code" = 200
+          jq -e --arg e "$event_id" --arg c "$checkpoint" '.result.result.event.event_id==$e and .result.result.checkpoint.checkpoint_id==$c' /tmp/replay.json >/dev/null
+          code=$(curl --silent --show-error -o /tmp/retrieve.json -w '%{http_code}' -X POST "$BASE/v1/retrieve" "${H[@]}" -d '{"query":"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF","limit":5}'); test "$code" = 200
+          grep -q UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF /tmp/retrieve.json
+          other=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json" -d '{}')
+          other_token=$(echo "$other" | jq -r '.access_token // empty'); test -n "$other_token"
+          code=$(curl --silent --show-error -o /tmp/nonowner.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" -H "Authorization: Bearer $other_token" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json" -d "$BODY"); test "$code" = 400
+          grep -q AUTHORITY_REQUIRED /tmp/nonowner.json
+          code=$(curl --silent --show-error -o /tmp/revoke.json -w '%{http_code}' -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_revoke_authority_grant" "${H[@]}" -d "$(jq -n --arg g "$gid" '{p_grant_id:$g,p_evidence:{proof:"uai-live-authority-parity"}}')"); test "$code" = 200
+          AFTER=$(jq '.idempotency_key += "-after-revoke"' <<< "$BODY")
+          code=$(curl --silent --show-error -o /tmp/after.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$AFTER"); test "$code" = 400
+          grep -q GRANT_REVOKED /tmp/after.json
+          echo UAI_PRIVILEGED_AUTHORITY_OWNER_REPLAY_RETRIEVAL_NONOWNER_REVOCATION_VERIFIED
