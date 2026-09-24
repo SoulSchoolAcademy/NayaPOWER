@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import fs from "node:fs";
-import path from "node:path";
+import path from "node:path";`nimport { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 
-const root = process.cwd();
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const cp = path.join(root, ".naya", "control-plane");
 const files = ["MAP.json", "STATE.json", "BLOCKS.json", "PROOF.json", "BATON.json"];
 function readJson(name) { return JSON.parse(fs.readFileSync(path.join(cp, name), "utf8")); }
