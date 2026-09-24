@@ -31,6 +31,7 @@ jobs:
           process.stdout.write(j.user.id);
           EOF
           echo "OWNER_ID=$(cat /tmp/owner.txt)" >> "$GITHUB_ENV"
+          echo "NAYANET_OWNER_ID=$(cat /tmp/owner.txt)" >> "$GITHUB_ENV"
           echo "FRESH_OWNER_BOOTSTRAP=PASS"
       - name: Build envelope through existing adapter
         shell: bash
