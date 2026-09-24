@@ -1,7 +1,7 @@
-const { chromium } = require('playwright');
-const fs = require('node:fs');
-const crypto = require('node:crypto');
-const { spawnSync } = require('node:child_process');
+import { chromium } from 'playwright';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID;
 const alias=('envelopesender'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
 const title='Universal Envelope Hub Runtime Sender '+run;
