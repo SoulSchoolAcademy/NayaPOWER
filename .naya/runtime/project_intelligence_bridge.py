@@ -10,6 +10,8 @@ ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/runtime"))
 import project_intelligence_reconstruction as pir
 import next_action_handoff as nah
+from live_intelligent_block_source import load_live_intelligent_blocks
+from system54_current_truth import MIGRATION_REASON, resolve_system54
 CONTEXT=ROOT/".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
 STATE=ROOT/".naya/control-plane/STATE.json"
 BLOCK=ROOT/".naya/control-plane/BLOCKS.json"
@@ -27,13 +29,31 @@ def packet():
         raw=(ROOT/rel).read_bytes(); d=digest(raw)
         prov.append({"path":rel,"sha256":d,"bytes":len(raw)})
         intel.append({"object_id":"github:"+rel,"operation":"UPSERT","source_path":rel,"content_sha256":d,"content":raw.decode("utf-8")})
-    reconstruction=pir.build_current("NayaNET")
-    next_action_handoff=nah.build_contract()
     run_identity=os.environ.get("RUN_IDENTITY","").strip()
     if not run_identity: raise RuntimeError("RUN_IDENTITY_REQUIRED_FOR_FRESH_PROJECT_INTELLIGENCE")
     owner_id=os.environ.get("NAYANET_OWNER_ID","").strip()
     if not owner_id and Path(".nayanet-owner-id").exists(): owner_id=Path(".nayanet-owner-id").read_text(encoding="utf-8").strip()
     if not owner_id: raise RuntimeError("NAYANET_OWNER_ID_REQUIRED_FOR_PRIVATE_PROJECT_INTELLIGENCE")
+    legacy_reconstruction=pir.build_current("NayaNET")
+    blocks=load_live_intelligent_blocks(owner_id=owner_id)
+    canonical_system54=resolve_system54(
+        blocks,
+        lambda: legacy_reconstruction,
+        now=datetime.now(timezone.utc),
+        requested_scope="PRIVATE",
+        migration_reason=MIGRATION_REASON,
+    )
+    reconstruction={**legacy_reconstruction,
+        "current": canonical_system54["current"],
+        "resolution": {**legacy_reconstruction.get("resolution", {}), **canonical_system54["resolution"]},
+        "currentness": canonical_system54["currentness"],
+        "legacy_shadow": canonical_system54["legacy_shadow"],
+        "counts": {**legacy_reconstruction.get("counts", {}),
+            "current": canonical_system54["counts"]["current"],
+            "legacy_current": canonical_system54["counts"]["legacy_current"],
+        },
+    }
+    next_action_handoff=nah.build_contract()
     p={"protocol":"NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1","packet_type":"PROJECT_INTELLIGENCE","project_id":"NayaNET","owner_id":owner_id,"run_identity":run_identity,"sender":{"type":"github_repository","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"},"receiver":{"type":"nayanet_intelligent_hub","canonical_source":"NAYANET/HUB/index.html"},"source_ref":h,"created_at":now,"freshness":{"source_ref":h,"resolution":"LIVE"},"operating_context":json.loads(CONTEXT.read_text(encoding="utf-8")),"project_intelligence_reconstruction":reconstruction,"next_action_handoff":next_action_handoff,"intelligence":intel,"provenance":prov,"privacy":{"default_visibility":"PRIVATE"},"success_condition":"Receiver persists, indexes, projects, retrieves, renders, and acknowledges with preserved lineage.","evidence_required":["packet_id","project_id","source_ref","content_hash","receiver_transaction_id","receiver_event_id","receipt_id","persisted","indexed","projected","accepted_at"]}
     canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
     p["content_hash"]=digest(canonical); p["packet_id"]=str(uuid5(NAMESPACE_URL,"nayanet:project-intelligence:"+h+":"+run_identity+":"+p["content_hash"])); p["idempotency_key"]="nayanet-pi-"+h+"-"+p["content_hash"][:24]
