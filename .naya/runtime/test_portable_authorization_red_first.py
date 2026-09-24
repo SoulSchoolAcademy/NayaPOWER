@@ -90,7 +90,7 @@ def fresh_verify(artifact, registry_path, public_key, now):
     code = (
         "import json,sys;"
         "from pathlib import Path;"
-        "sys.path.insert(0,str(Path('.naya/runtime').resolve()));"
+        "sys.path.insert(0," + repr(str(RUNTIME)) + ");"
         "from universal_execution_gate import load_registry;"
         "from portable_authorization import verify_portable_authorization;"
         "artifact=json.load(open(sys.argv[1],encoding='utf-8'));"
