@@ -62,4 +62,6 @@ def load_live_intelligent_blocks(*, owner_id: str) -> list[dict[str, Any]]:
 
     if not isinstance(rows, list):
         raise RuntimeError("LIVE_INTELLIGENT_BLOCK_SOURCE_INVALID_RESPONSE")
+    if not rows:
+        raise RuntimeError("CANONICAL_SOURCE_EMPTY")
     return load_intelligent_blocks(rows)
