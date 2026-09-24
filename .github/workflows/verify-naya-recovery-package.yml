@@ -2,7 +2,7 @@ name: Verify NayaPOWER Recovery Package
 
 on:
   push:
-    branches: [main]
+    branches: ["**"]
     paths:
       - "scripts/naya_recovery_package.py"
       - "scripts/naya_recovery_package_inventory.json"
