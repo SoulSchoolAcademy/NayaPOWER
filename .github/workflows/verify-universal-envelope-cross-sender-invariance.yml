@@ -1,4 +1,4 @@
-name: NayaNET Universal Envelope — cross-sender contract invariance # rerun after RED repair
+name: NayaNET Universal Envelope — cross-sender contract invariance # rerun after Hub record repair
 
 on:
   workflow_dispatch:
