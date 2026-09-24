@@ -2,7 +2,7 @@
   "schema": "naya/computation-efficiency-retained-unit/v2",
   "status": "VERIFIED",
   "created_after": "CYCLE_A",
-  "source_head": "9fbbd7f98a1a9d54264fda2cf40c1f648c1095d5",
+  "source_head": "55e2838762199dbed367fc06a6f0e832fd393687",
   "task_hash": "f27ed3d518e54905775935bd997499fcd19319763145fc9194b5336798423348",
   "retained_fields": {
     "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
@@ -10,10 +10,10 @@
     "active_block_status": "VERIFIED"
   },
   "source_provenance": {
-    ".naya/control-plane/BLOCKS.json": "fc456571b063484d6d0a6c7773b085c6e5abbaf3",
-    ".naya/control-plane/MAP.json": "eff902fa55fb25bc94a53f7e307457f3e5b45bcd",
-    ".naya/control-plane/PROOF.json": "bfcb6134f395fe39576361f72783229e51ddf659",
-    ".naya/control-plane/STATE.json": "1d917d5c4f7506a6f669df0a6eb8d80a1ec6d5f2"
+    ".naya/control-plane/BLOCKS.json": "d3a80023c6775ead08e78918ac3d86a307b3c8a2",
+    ".naya/control-plane/MAP.json": "efebc6b73c20e7347a37b49b1c8d4fe9c8a0f1f3",
+    ".naya/control-plane/PROOF.json": "6f01893cbb68bc8e8c9952dbb1cbbb62c82d3369",
+    ".naya/control-plane/STATE.json": "37f3aeeb7fe63afd737a331c2c8bcae8f7e50a17"
   },
   "purpose": "Causal retained intelligence produced by Cycle A before Cycle B."
 }
