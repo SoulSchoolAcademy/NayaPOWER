@@ -179,18 +179,26 @@ jobs:
                   p_evidence:{method:'authenticated_controlled_proof',run}
                 });
               },{supabaseUrl,supabaseKey,token:session.access_token,sourceEventId:eventId,sourceId:sourceRow.data.id,userId:session.userId,run});
+              const sourceBlock=await page.evaluate(async({supabaseUrl,supabaseKey,token,eventId,userId})=>{
+                const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+                const c=sdk.createClient(supabaseUrl,supabaseKey,{global:{headers:{Authorization:'Bearer '+token}}});
+                const rows=await c.from('nayanet_intelligent_blocks').select('block_id,source_event_ids').eq('owner_id',userId).limit(100);
+                if(rows.error)return {error:rows.error};
+                const match=(rows.data||[]).find(x=>Array.isArray(x.source_event_ids)&&x.source_event_ids.includes(eventId));
+                return {data:match||null};
+              },{supabaseUrl,supabaseKey,token:session.access_token,eventId,userId:session.userId});
+              if(sourceBlock.error||!sourceBlock.data?.block_id) throw new Error('CANONICAL_SOURCE_BLOCK_NOT_FOUND:'+JSON.stringify(sourceBlock));
               if(grant.error||!grant.data?.grant_id) throw new Error('AUTHORITY_GRANT_ISSUE_FAILED:'+JSON.stringify(grant));
               mark('AUTHORITY_GRANT','PASS',{grant_id:grant.data.grant_id});
               const share=await call(page,session,'share',{source_event_id:sourceRow.data.id,authority_grant_id:grant.data.grant_id});
               if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share));
 
               const supersede=await call(page,session,'supersede',{
-                superseded_event_id:sourceRow.data.id,
+                superseded_event_id:sourceRow.data.id,`r`n                superseded_block_id:sourceBlock.data.block_id,
                 title:'Superseding Compound Intelligence proof interpretation',
-                content:'This is an explicit revision of the controlled proof interpretation; lineage must retain the prior event.',
+                content:'This is an explicit revision of the controlled proof interpretation; lineage must retain the prior event and Intelligent Block.',
                 reason:'Controlled successor revision test',
                 confidence:1
-              });
               if(supersede.lineage?.supersedes!==eventId) throw new Error('SUPERSESSION_LINEAGE_INVALID');
 
               const health=await call(page,session,'health');
