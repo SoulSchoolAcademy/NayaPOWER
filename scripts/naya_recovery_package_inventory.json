@@ -96,7 +96,7 @@
     "hub_path": "NAYANET/HUB/index.html",
     "sha_pointers": {
       ".naya/control-plane/STATE.json": [
-        "hub_pre_execution.canonical_hub_source_sha"
+        "hub_pre_execution_gate.canonical_hub_source_sha"
       ],
       ".naya/control-plane/MAP.json": [
         "canonical_hub_source_sha"
