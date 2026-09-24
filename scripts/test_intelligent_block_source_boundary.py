@@ -53,11 +53,8 @@ def main():
     normalized = load_intelligent_blocks(rows)
     assert [x["block_id"] for x in normalized] == [x["block_id"] for x in rows]
     assert rows == before, "SOURCE_BOUNDARY_MUTATED_INPUT"
-    assert set(normalized[0]) == {
-        "block_id", "subject_id", "status", "understanding_state",
-        "superseded_by_block_id", "truth", "time", "context",
-        "evidence", "provenance", "meaning",
-    }
+    assert set(normalized[0]) == set(rows[0])
+    assert normalized[0]["content"]["truth"]["state"] == "VERIFIED"
     print("REAL_BLOCK_SOURCE_BOUNDARY=PASS")
     print("READ_ONLY_INPUT_PRESERVED=PASS")
     print("NO_PERSISTENCE=PASS")
