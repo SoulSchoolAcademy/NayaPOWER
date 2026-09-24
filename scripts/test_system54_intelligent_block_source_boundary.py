@@ -14,6 +14,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from intelligent_block_source import load_intelligent_blocks
 from claim_currentness_v1 import resolve_currentness as resolve
+from project_intelligence_reconstruction import build_current
 
 
 REAL_BLOCKS = [
@@ -72,12 +73,18 @@ def main():
     # Adapt only the normalized canonical fields required by the already-proven
     # Claim Currentness V1 test contract. Do not call or modify the production
     # event resolver.
+    old = build_current("NayaNET")
     r = resolve(normalized, now, requested_scope="PRIVATE")
 
     assert r["resolution"] == "CURRENT"
     assert r["selected_block_id"] == "31aee463-eac9-4261-9e39-1c9b8f6f4cfd"
     assert r["excluded"]["f0cd77e4-44b3-44a9-bbbd-1f4b1accf633"] == "SUPERSEDED"
     assert r["excluded"]["97bc98f5-fb28-52bb-8c0d-3a1bfac8d396"] == "CANDIDATE_NOT_VERIFIED"
+    # Shadow comparison only: old event-derived output remains untouched.
+    assert len(old["current"]) == 0
+    print("OLD_EVENT_RESOLVER_CURRENT_COUNT=0")
+    print("CANONICAL_BLOCK_SHADOW_CURRENT_COUNT=1")
+    print("EXPECTED_AUTHORITY_DIVERGENCE=PASS")
 
     print("SYSTEM54_SHADOW_INTELLIGENT_BLOCK_SOURCE=PASS")
     print("REAL_PRODUCTION_BLOCKS_CONSUMED=PASS")
