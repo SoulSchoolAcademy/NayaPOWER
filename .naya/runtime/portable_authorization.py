@@ -434,6 +434,58 @@ def verify_portable_authorization(
     return (not reasons), tuple(dict.fromkeys(reasons))
 
 
+
+def portable_authorization_artifact_hash(artifact: Mapping[str, Any]) -> str:
+    """Deterministic SHA-256 identity of the exact portable artifact."""
+    if not isinstance(artifact, Mapping):
+        raise ValueError("artifact must be a mapping")
+    return hashlib.sha256(_canonical_json(dict(artifact)).encode("utf-8")).hexdigest()
+
+
+def portable_boundary_intelligence_commit(
+    *,
+    artifact: Any,
+    public_key_hex: str,
+    registry: Any,
+    commit_sha: str,
+    repository: str = DEFAULT_REPOSITORY,
+    now: Optional[str] = None,
+) -> BoundaryDecision:
+    """Runner-side INTELLIGENCE_COMMIT boundary: verify the exact portable credential.
+
+    This is a subordinate execution check, not a new authority system. The
+    UniversalExecutionGate remains the sole issuer.
+    """
+    if not repository:
+        return BOUNDARY_DECISION(False, "repository binding is required")
+    if not isinstance(commit_sha, str) or not commit_sha:
+        return BOUNDARY_DECISION(False, "exact source commit SHA is required")
+    if not isinstance(artifact, Mapping):
+        return BOUNDARY_DECISION(False, "portable authorization artifact is required")
+
+    ok, reasons = verify_portable_authorization(
+        artifact=artifact, public_key_hex=public_key_hex, registry=registry, now=now,
+    )
+    if not ok:
+        return BOUNDARY_DECISION(False, "portable verification failed: " + "; ".join(reasons))
+    authorization = artifact.get("authorization", {})
+    if authorization.get("action_type") != INTELLIGENCE_COMMIT_ACTION_TYPE:
+        return BOUNDARY_DECISION(False, "artifact action_type is not INTELLIGENCE_COMMIT")
+    if authorization.get("permission") != INTELLIGENCE_COMMIT_PERMISSION:
+        return BOUNDARY_DECISION(False, "artifact permission is not intelligence_commit")
+    if authorization.get("target") != INTELLIGENCE_COMMIT_TARGET:
+        return BOUNDARY_DECISION(False, "artifact target is not NayaNET")
+    if authorization.get("repository") != repository:
+        return BOUNDARY_DECISION(False, "artifact repository does not match the execution repository")
+    if authorization.get("commit_sha") != commit_sha:
+        return BOUNDARY_DECISION(False, "artifact source commit does not match the execution source")
+    return BOUNDARY_DECISION(
+        True,
+        "intelligence_commit authorized by a valid gate-issued portable authorization bound to the exact source",
+        approval_required_for=INTELLIGENCE_COMMIT_TARGET,
+    )
+
+
 def portable_boundary_release(
     *,
     artifact: Any,
