@@ -40,8 +40,8 @@ begin
  if v_row.id is null then raise exception 'SMART_CONNECT_PARTICIPATION_NOT_FOUND'; end if;
  return jsonb_build_object('schema','NAYANET_SMART_CONNECT_PARTICIPATION_V1','status','DISCONNECTED','participation',to_jsonb(v_row),'authority','UNCHANGED');
 end; $$;
-revoke all on function public.nayanet_smart_connect(text) from public; grant execute on function public.nayanet_smart_connect(text) to authenticated;
-revoke all on function public.nayanet_smart_disconnect(text) from public; grant execute on function public.nayanet_smart_disconnect(text) to authenticated;
+revoke all on function public.nayanet_smart_connect(text) from public, anon; grant execute on function public.nayanet_smart_connect(text) to authenticated;
+revoke all on function public.nayanet_smart_disconnect(text) from public, anon; grant execute on function public.nayanet_smart_disconnect(text) to authenticated;
 
 create table if not exists public.nayanet_collective_wisdom (
  id uuid primary key default gen_random_uuid(),
@@ -81,5 +81,5 @@ begin
  on conflict(source_event_id) do update set wisdom_claim=excluded.wisdom_claim,topic=excluded.topic,provenance=excluded.provenance returning * into v_row;
  return jsonb_build_object('schema','NAYANET_COLLECTIVE_WISDOM_V1','status','CONTRIBUTED','collective_wisdom_id',v_row.id,'source_event_id',v_row.source_event_id,'identity_visibility','private','source_visibility','derived_only','public_publication','separate');
 end; $$;
-revoke all on function public.nayanet_collective_wisdom_for_event(uuid,uuid,text,text,jsonb) from public;
+revoke all on function public.nayanet_collective_wisdom_for_event(uuid,uuid,text,text,jsonb) from public, anon, authenticated;
 grant execute on function public.nayanet_collective_wisdom_for_event(uuid,uuid,text,text,jsonb) to service_role;
