@@ -778,7 +778,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
       "Canonical Intelligent Block source event persisted.",
       [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}],
-      {authority_id:authorityGrantId,actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"});
+      body.execution_authorization ?? {authority_id:authorityGrantId,actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"});
     const persisted=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
       .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).single();
     if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
