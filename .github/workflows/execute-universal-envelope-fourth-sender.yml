@@ -1,0 +1,33 @@
+name: NayaNET Universal Envelope — fourth sender Smart Mail
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/execute-universal-envelope-fourth-sender.yml'
+      - 'scripts/verify-universal-envelope-fourth-sender.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      NAYA_EXISTING_SPACE_ID: ${{ secrets.NAYA_EXISTING_SPACE_ID }}
+      PROOF_PATH: universal-envelope-fourth-sender-proof.json
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - name: Execute fourth sender proof
+        run: node scripts/verify-universal-envelope-fourth-sender.mjs
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-envelope-fourth-sender-proof
+          path: universal-envelope-fourth-sender-proof.json
+          if-no-files-found: error
