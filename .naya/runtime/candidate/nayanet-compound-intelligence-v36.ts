@@ -119,7 +119,7 @@ async function sha256Hex(value: string): Promise<string> {
   return Array.from(new Uint8Array(digest), (b) => b.toString(16).padStart(2, "0")).join("");
 }
 
-function bindingHash(auth: ExecutionAuthorization): Promise<string> {
+export function executionBindingHash(auth: ExecutionAuthorization): Promise<string> {
   return sha256Hex([
     auth.authority_id,
     auth.decision_id,
@@ -234,7 +234,7 @@ export async function verifyPortableAuthorization(
   if (String(auth.registry_revision ?? "") !== await registryRevision(registry)) {
     return { allowed: false, code: "REGISTRY_REVISION_MISMATCH" };
   }
-  if (String(auth.binding_hash) !== await bindingHash(auth as ExecutionAuthorization)) {
+  if (String(auth.binding_hash) !== await executionBindingHash(auth as ExecutionAuthorization)) {
     return { allowed: false, code: "BINDING_HASH_MISMATCH" };
   }
 
