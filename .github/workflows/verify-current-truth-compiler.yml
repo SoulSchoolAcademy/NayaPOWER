@@ -1,0 +1,43 @@
+name: Verify Current-Truth Compiler
+
+on:
+  push:
+    branches:
+      - "naya3/system54-current-truth-compiler-20260923"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify compiler smoke test
+        run: node scripts/test-current-truth-compiler.mjs
+      - name: Generate current truth
+        run: node scripts/build-current-truth.mjs
+      - name: Verify generated artifact shape
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s CURRENT-TRUTH.md
+          grep -q "## Current State" CURRENT-TRUTH.md
+          grep -q "## Proven" CURRENT-TRUTH.md
+          grep -q "## Unknown / Blocked / Stale Signals" CURRENT-TRUTH.md
+          grep -q "## Current Authority" CURRENT-TRUTH.md
+          grep -q "## Current Mission / Next Action" CURRENT-TRUTH.md
+          grep -q "Live HEAD" CURRENT-TRUTH.md
+          grep -q "Single next action" CURRENT-TRUTH.md
+      - name: Verify deterministic freshness
+        run: node scripts/build-current-truth.mjs --check
+      - name: Upload generated artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-truth-compiler-${{ github.sha }}
+          path: CURRENT-TRUTH.md
+          if-no-files-found: error
