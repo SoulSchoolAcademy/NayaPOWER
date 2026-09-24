@@ -18,7 +18,7 @@ The simple idea is powerful:
 
 NayaNET is designed around the belief that humans can become wiser, more capable, and more effective by learning from one another's useful experiences.
 
-With explicit participation, a person's Smart Notes and learning can contribute to collective intelligence in an anonymous, privacy-conscious, automatically processed way.
+With an authorized participation connection, a person's Smart Notes and learning can contribute to collective intelligence in an identity-minimized, privacy-conscious, automatically processed way. Participation consent is established at connection; ordinary Smart Notes do not require per-event approval.
 
 NayaNET runs on **Collective Chain Technology (CCT)**: an architecture intended to connect individual intelligence into a growing chain of shared, verified, reusable intelligence.
 
@@ -102,7 +102,7 @@ I want to help humans and AIs learn from the useful intelligence we create toget
 
 When a human creates a Smart Note, the system can determine whether that learning is useful, whether it is already known, whether it conflicts with existing intelligence, and whether it can contribute to the collective.
 
-If the human has chosen to participate in Smart Share, the useful intelligence can be processed for collective learning without exposing the person's private Superbrain.
+If the human has connected through an authorized participation pathway, useful intelligence can be processed for collective learning without exposing the person's private Superbrain or identity by default.
 
 The goal is simple:
 
@@ -124,7 +124,7 @@ The collective object should contain reusable intelligence rather than unnecessa
 
 Important machine principles include:
 
-- explicit consent;
+- participation consent established by authorized connection;
 - identity minimization;
 - privacy by choice;
 - provenance;
@@ -228,7 +228,7 @@ A human should not need to manually manage the entire collective-learning proces
 
 The intended experience is:
 
-**MAKE A SMART NOTE → CHOOSE TO PARTICIPATE IN SMART SHARE → THE SYSTEM AUTOMATICALLY PROCESSES ELIGIBLE INTELLIGENCE → COLLECTIVE LEARNING GROWS**
+**CONNECT TO THE HUB → PARTICIPATION CONSENT → MAKE A SMART NOTE → THE SYSTEM AUTOMATICALLY PROCESSES ELIGIBLE INTELLIGENCE → COLLECTIVE LEARNING GROWS**
 
 The system can then:
 
@@ -378,11 +378,13 @@ The principle is:
 
 ## 17. AUTOMATIC COLLECTIVE LEARNING
 
-The intended experience is automatic once participation has been chosen.
+The intended experience is automatic once authorized network participation has been established.
 
 The human should not have to say:
 
 **"Naya, please manually send this lesson to the collective intelligence engine."**
+
+Connection to the Hub is the participation decision. The system should not re-ask for ordinary learning permission on every Smart Note.
 
 Instead, the system should recognize that a Smart Note is an intelligence event, process it through PIS/CIS/Adaptive Learning, and—when the user's Smart Share consent permits it—automatically determine whether eligible learning can contribute to the collective.
 
