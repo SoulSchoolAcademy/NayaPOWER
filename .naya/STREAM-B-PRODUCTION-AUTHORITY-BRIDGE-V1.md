@@ -1,6 +1,6 @@
 # 🔱 Stream B — Production Authority Bridge V1
 
-**Status:** DESIGN + FAIL-FIRST CONTRACT — 2026-09-24  
+**Status:** CANONICAL DB SEAM IMPLEMENTED IN REPO / EDGE CRYPTOGRAPHIC WIRING NOT YET VERIFIED — 2026-09-24  
 **Scope:** Fronts #1–#4 only  
 **Production mutation:** NONE
 
@@ -249,9 +249,10 @@ Before destructive overload removal:
 This document intentionally does **not** claim the bridge is implemented.
 
 Current status:
-- Front #1: DESIGN COMPLETE / IMPLEMENTATION NOT VERIFIED
-- Front #2: EXISTING PORTABLE VERIFIER AVAILABLE / PRODUCTION WIRING NOT VERIFIED
-- Front #3: NOT CONVERGED
-- Front #4: **PARTIAL → substantially reconstructed** — live SQL callers and the active `nayanet-compound-intelligence` 7-arg caller are verified; complete Edge Function/Hub caller inventory remains incomplete
+- Front #1: **IMPLEMENTED IN REPO CONTRACT** — production grant UUID is the runtime authority identity at the canonical DB seam; the seam rechecks live grant state.
+- Front #2: **PARTIAL** — existing portable verifier is proven in the Python runtime; the production Edge Function must still verify the Ed25519 artifact and requires a provisioned public verifier key.
+- Front #3: **IMPLEMENTED IN REPO** — one service-role-only `nayanet_canonical_intelligence_commit` persistence seam; both legacy cognition overloads now fail closed for `intelligence.capture`.
+- Front #4: **PARTIAL** — live SQL callers and the active `nayanet-compound-intelligence` 7-arg caller are verified; complete Edge Function/Hub caller inventory remains incomplete.
+- **External prerequisite:** provision `NAYANET_PORTABLE_AUTH_PUBLIC_KEY_HEX` in Supabase Edge Function secrets, then wire/deploy the verifier and migrate the active `intelligence_commit` caller to supply the signed portable artifact. No private key belongs in the repository or chat.
 
 No live mutation, grant issuance, revocation, deployment, or credential provisioning occurred.
