@@ -10,7 +10,9 @@ const authStart=source.indexOf("async function requireGovernedIntelligenceAuthor
 if(authStart<0)throw new Error("AUTH_GATE_NOT_FOUND");
 const healthStart=source.indexOf("async function health(",commitStart);
 if(helperStart<0||commitStart<0||healthStart<0||helperStart>commitStart)throw new Error("EXTRACTION_SEAM_NOT_FOUND");
-const extracted=source.slice(authStart,healthStart)+
+const extracted=source.slice(helperStart,commitStart)+
+"\nasync function requireGovernedIntelligenceAuthorization(){return globalThis.__auth;}\n"+
+source.slice(commitStart,healthStart)+
 "\nmodule.exports={verifyV36PortableArtifact,commitIntelligence};\n";
 const js=extracted.replace(/:\s*(unknown|string|any|Uint8Array|Promise<any>|Promise<string>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"").replace(/\)!/g,")");
 
@@ -39,7 +41,7 @@ const chain=(table)=>{let singleMode=null;const api={select(){return api},eq(){r
 const client={from(table){return chain(table)}};
 const admin={rpc:async(name,args)=>({data:grant,error:null}),from(table){return chain(table)}};
 
-const context={console,crypto,structuredClone,TextEncoder,Date,Buffer,module:{exports:{}},exports:{},Deno:{env:{get(k){return k==="NAYANET_PORTABLE_ISSUER_PUBLIC_KEY_HEX"?pubHex:undefined}}},admin,record:async()=>{recordCalls++;return{id:"fixture-receipt"}},projectIntelligence:async()=>({index:{id:"index-1"}}),checkpointIntelligence:async()=>({status:"CHECKPOINT_VERIFIED",checkpoint:{metadata:{checkpoint_id:"checkpoint:fixture"}},receipt:{id:"checkpoint-receipt"}}),requireGovernedIntelligenceAuthorization:async(client,userId,body)=>({ ...ordinary, authority_grant:grant })};
+const context={console,crypto,structuredClone,TextEncoder,Date,Buffer,module:{exports:{}},exports:{},__auth:ordinary,Deno:{env:{get(k){return k==="NAYANET_PORTABLE_ISSUER_PUBLIC_KEY_HEX"?pubHex:undefined}}},admin,record:async()=>{recordCalls++;return{id:"fixture-receipt"}},projectIntelligence:async()=>({index:{id:"index-1"}}),checkpointIntelligence:async()=>({status:"CHECKPOINT_VERIFIED",checkpoint:{metadata:{checkpoint_id:"checkpoint:fixture"}},receipt:{id:"checkpoint-receipt"}})};
 vm.runInNewContext(js,context,{filename:path});
 const fn=context.module.exports.commitIntelligence;
 if(typeof fn!=="function")throw new Error("COMMIT_FUNCTION_NOT_EXTRACTED");
