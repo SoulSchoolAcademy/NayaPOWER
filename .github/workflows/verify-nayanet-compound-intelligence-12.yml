@@ -201,6 +201,7 @@ jobs:
                 reason:'Controlled successor revision test',
                 confidence:1
               });
+              if(supersede.lineage?.supersedes!==eventId||supersede.lineage?.superseded_block_id!==sourceBlock.data.block_id) throw new Error('SUPERSESSION_LINEAGE_INVALID:'+JSON.stringify(supersede.lineage));
 
               const health=await call(page,session,'health');
               if(health.status!=='OBSERVED'||!Number.isInteger(health.counts?.operations)) throw new Error('HEALTH_INVALID');
