@@ -32,6 +32,7 @@ def build_contract():
     state=load(STATE); blocks=load(BLOCKS); active=blocks["active_block"]
     action=active.get("next_action")
     if not action: raise RuntimeError("CONTROL_PLANE_HAS_NO_SINGLE_NEXT_ACTION")
+    action_status=baton["next_action"]["status"]
     current=(f"active_block={active['id']}; status={active['status']}; "
              f"priority={active['priority']}; current_head={state['current_head'].get('value')}")
     success=active.get("acceptance") or [active.get("completion","Next action is executed and verified.")]
@@ -39,19 +40,19 @@ def build_contract():
       "schema":"naya/next-action-handoff/v1",
       "mission_id":state["mission"],
       "source_of_truth":".naya/control-plane/STATE.json + .naya/control-plane/BLOCKS.json",
-      "current_state":current,
-      "next_action":{
-        "id":f"{active['id']}::NEXT","actor":"Naya","status":"AUTHORIZED","action":action,
-        "objective":active["intent"],
-        "reason":"The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
-        "constraints":active.get("protected",[]),
-        "expected_result":"The selected action is executed, independently observed, verified, and replaced by a newly derived successor action.",
-        "success_criteria":success,
-        "verification_method":"Re-read canonical control-plane state after execution and require a durable receipt plus a successor next action.",
-        "evidence_required":["live git HEAD","execution result","verification result","durable receipt","new next action"],
-        "human_action_required":False
-      },
-      "handoff":{
+       "current_state":current,
+       "next_action":{
+         "id":f"{active['id']}::NEXT","actor":"Naya","status":action_status,"action":action,
+         "objective":active["intent"],
+         "reason":"The canonical active block exposes exactly one next action; the execution cycle consumes it rather than inventing a competing task.",
+         "constraints":active.get("protected",[]),
+         "expected_result":"The selected action is executed, independently observed, verified, and replaced by a newly derived successor action.",
+         "success_criteria":success,
+         "verification_method":"Re-read canonical control-plane state after execution and require a durable receipt plus a successor next action.",
+         "evidence_required":["live git HEAD","execution result","verification result","durable receipt","new next action"],
+         "human_action_required":action_status in {"RECOMMENDED","REQUESTED","BLOCKED"}
+       },
+       "handoff":{
         "target_actor":"Naya successor / Team Naya","context":current,"objective":action,
         "scope":["canonical Project Intelligence","canonical control plane","next_action/handoff continuity"],
         "inputs":[".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".naya/control-plane/MAP.json"],
@@ -78,6 +79,8 @@ def validate(c):
 def execute_cycle():
     before=build_contract(); validate(before)
     state=load(STATE); blocks=load(BLOCKS); load(MAP)
+    action_status=state.get("next_action", {}).get("status")
+    if action_status != "AUTHORIZED": raise RuntimeError("NEXT_ACTION_NOT_AUTHORIZED:" + str(action_status))
     if state["repository"]!="SoulSchoolAcademy/NayaPOWER": raise RuntimeError("CANONICAL_REPOSITORY_MISMATCH")
     if blocks["rules"].get("one_next_action") is not True: raise RuntimeError("ONE_NEXT_ACTION_LAW_NOT_ENABLED")
     if blocks["active_block"].get("next_action_count")!=1: raise RuntimeError("CONTROL_PLANE_NEXT_ACTION_COUNT_NOT_ONE")
