@@ -112,6 +112,9 @@ def _legacy_candidate_to_calculus(candidate: dict[str, Any]) -> CalculusCandidat
 def _govern_candidate(request: dict[str, Any], candidate: dict[str, Any]) -> Any:
     authority = _require_authority(request, candidate)
     evidence_state = candidate["evidence_state"]
+    # Fail closed: malformed or empty epistemic input can never become OBSERVED.
+    if not isinstance(evidence_state, str) or evidence_state not in EVIDENCE_RANK:
+        raise ValueError("candidate evidence_state must be a canonical non-empty evidence state")
     if evidence_state == "UNKNOWN":
         epistemic = frozenset({Epistemic.UNKNOWN})
         uncertainty = 10
