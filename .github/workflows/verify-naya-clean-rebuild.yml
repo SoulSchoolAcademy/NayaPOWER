@@ -1,0 +1,111 @@
+name: Verify NayaPOWER Clean Rebuild
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "scripts/naya_clean_rebuild.py"
+      - "scripts/build_repository_relationship_index.py"
+      - "tests/test_naya_clean_rebuild.py"
+      - ".github/workflows/verify-naya-clean-rebuild.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  clean-rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test clean rebuild mechanism
+        run: python tests/test_naya_clean_rebuild.py
+      - name: Create recovery input
+        run: |
+          python scripts/naya_recovery_package.py create \
+            --repository . \
+            --inventory scripts/naya_recovery_package_inventory.json \
+            --source-ref HEAD \
+            --output "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            | tee "${RUNNER_TEMP}/create-report.json"
+          python scripts/naya_recovery_package.py verify \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            | tee "${RUNNER_TEMP}/verify-report.json"
+      - name: Restore and rebuild twice
+        run: |
+          python scripts/naya_clean_rebuild.py \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            --workdir "${RUNNER_TEMP}/clean-rebuild" \
+            | tee "${RUNNER_TEMP}/clean-rebuild-report.json"
+      - name: Verify clean rebuild gate
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report=json.loads(Path(os.environ["RUNNER_TEMP"],"clean-rebuild-report.json").read_text(encoding="utf-8"))
+          assert report["status"]=="BLOCKED",report
+          assert report["local_deterministic_rebuild"]=="VERIFIED",report
+          assert report["deterministic_clean_rebuild_ready"] is False,report
+          assert all(report["hub_projection_inputs"].values()),report
+          assert len(report["pis_producers"])==2,report
+          codes={row["code"] for row in report["findings"]}
+          required={"DUPLICATE_PIS_PRODUCERS","PIS_TIMESTAMP_DRIFT","CURRENT_TRUTH_EMPTY","EXTERNAL_DATABASE_RESTORE_UNAVAILABLE"}
+          assert required <= codes,codes
+          receipt={
+            "schema":"naya-clean-rebuild-gate/v1",
+            "status":report["status"],
+            "local_deterministic_rebuild":report["local_deterministic_rebuild"],
+            "deterministic_clean_rebuild_ready":report["deterministic_clean_rebuild_ready"],
+            "failure_codes":sorted(codes),
+            "pis_producers":report["pis_producers"],
+            "pis_normalized_content_match":report["pis_normalized_content_match"],
+            "current_truth_counts":report["current_truth_counts"],
+            "source_commit":report["source_commit"],
+            "truth_boundary":report["truth_boundary"]
+          }
+          (Path(os.environ["RUNNER_TEMP"])/"clean-rebuild-gate.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+      - name: Prove require-ready fails closed
+        run: |
+          set +e
+          python scripts/naya_clean_rebuild.py \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            --workdir "${RUNNER_TEMP}/clean-rebuild-require-ready" \
+            --require-ready \
+            > "${RUNNER_TEMP}/clean-rebuild-require-ready.json"
+          code=$?
+          set -e
+          test "$code" -eq 2
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report=json.loads(Path(os.environ["RUNNER_TEMP"],"clean-rebuild-require-ready.json").read_text(encoding="utf-8"))
+          assert report["status"]=="BLOCKED",report
+          assert report["local_deterministic_rebuild"]=="VERIFIED",report
+          assert report["deterministic_clean_rebuild_ready"] is False,report
+          print("CLEAN_REBUILD_REQUIRE_READY_EXIT=2")
+          print("CLEAN_REBUILD_REQUIRE_READY=BLOCKED")
+          PY
+      - name: Publish clean rebuild proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-clean-rebuild-proof
+          path: |
+            ${{ runner.temp }}/naya-recovery-package.zip
+            ${{ runner.temp }}/create-report.json
+            ${{ runner.temp }}/verify-report.json
+            ${{ runner.temp }}/clean-rebuild-report.json
+            ${{ runner.temp }}/clean-rebuild-gate.json
+            ${{ runner.temp }}/clean-rebuild-require-ready.json
+          retention-days: 14
+          if-no-files-found: error

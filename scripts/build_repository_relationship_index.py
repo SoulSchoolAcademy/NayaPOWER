@@ -7,6 +7,7 @@ Derived projection only: never an authority source, event store, or memory syste
 from __future__ import annotations
 
 import json
+import os
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -14,6 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT_JSON = ROOT / ".naya/control-plane/RELATIONSHIP-INDEX.json"
 OUT_MD = ROOT / "SUPERBRAIN/NAYA-ACTIVITY/RELATIONSHIP-INDEX.md"
+DERIVED_OUTPUTS = {OUT_JSON.relative_to(ROOT).as_posix(), OUT_MD.relative_to(ROOT).as_posix()}
 SKIP = {".git", "node_modules", ".venv", "__pycache__"}
 EXTS = {".md", ".json", ".py", ".yml", ".yaml", ".html", ".ts", ".js"}
 
@@ -80,8 +82,11 @@ def timestamp_for(path: str) -> str | None:
 
 def existing_paths() -> set[str]:
     return {
-        rel(p) for p in ROOT.rglob("*")
-        if p.is_file() and not any(part in SKIP for part in p.parts)
+        path for path in (
+            rel(p) for p in ROOT.rglob("*")
+            if p.is_file() and not any(part in SKIP for part in p.parts)
+        )
+        if path not in DERIVED_OUTPUTS
     }
 
 def extract_refs(text: str, paths: set[str]) -> list[str]:
@@ -95,6 +100,13 @@ def extract_refs(text: str, paths: set[str]) -> list[str]:
         if len(name) >= 18 and name in text:
             refs.add(path)
     return sorted(refs)
+
+def generated_at_value() -> str:
+    source_date_epoch=os.environ.get("SOURCE_DATE_EPOCH")
+    if source_date_epoch:
+        return datetime.fromtimestamp(int(source_date_epoch),timezone.utc).replace(microsecond=0).isoformat()
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
 
 def main() -> None:
     paths = sorted(existing_paths())
@@ -137,7 +149,7 @@ def main() -> None:
     unique = {(e["from"], e["to"], e["relationship"]): e for e in edges}
     edges = [unique[key] for key in sorted(unique)]
 
-    generated_at = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    generated_at = generated_at_value()
     payload = {
         "schema": "NAYA_REPOSITORY_RELATIONSHIP_INDEX_V1",
         "generated_at": generated_at,
