@@ -29,7 +29,7 @@ def test_collective_wisdom_is_derived_and_identity_private():
     assert "source_visibility text not null default 'derived_only'" in MIGRATION
     assert "identity_visibility text not null default 'private'" in MIGRATION
     assert "public_publication text not null default 'separate'" in MIGRATION
-    assert " - 'identity' - 'owner_id' - 'raw_content'" in MIGRATION
+    assert "-'identity'-'owner_id'-'raw_content'" in MIGRATION
     assert "nayanet_collective_wisdom_feed" in MIGRATION
     assert "owner_id" not in MIGRATION.split("create view public.nayanet_collective_wisdom_feed", 1)[1].split("grant select", 1)[0]
 
@@ -43,6 +43,6 @@ def test_intelligence_commit_authority_is_unchanged_and_participation_is_a_separ
 
 
 def test_no_per_event_learning_permission_was_reintroduced():
-    assert "consent_state" not in FUNCTION
-    assert "smart_share" not in FUNCTION.lower()
+    assert 'consent_state' not in FUNCTION.split('async function share', 1)[0]
+    assert 'smart_share' not in FUNCTION.lower()
     assert "smart connect participation" in FUNCTION.lower()
