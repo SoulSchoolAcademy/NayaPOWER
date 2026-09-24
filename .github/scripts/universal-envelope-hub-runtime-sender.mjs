@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { buildNoMutationProof, classifySenderFailure, resolveProofMode, summarizeReceiverBridgeResponse, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
+import { buildColdReconstruction, buildNoMutationProof, classifySenderFailure, resolveProofMode, summarizeReceiverBridgeResponse, summarizeReceiverResponse, verifyCausalLineage, verifyExactReplay, verifyPersistenceRecord, verifyProjectionIndex, verifyRetrievedEvent } from './stream-e-failure-diagnostics.mjs';
 const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID||'LOCAL';
 const currentRef=process.env.GITHUB_REF||'UNPINNED_LOCAL';
 const eventName=process.env.GITHUB_EVENT_NAME||'LOCAL';
@@ -21,6 +21,7 @@ const note='Meaningful output emitted by the canonical NayaNET Hub runtime and n
 const trace=[];
 const mark=(step,extra={})=>{const row={step,at:new Date().toISOString(),...extra};trace.push(row);console.log('HUB_RUNTIME_SENDER_TRACE',JSON.stringify(row));};
 const request=async(url,options={})=>{const r=await fetch(url,options);const raw=await r.text();let body;try{body=JSON.parse(raw)}catch{body={raw}};return {status:r.status,body}};
+const requireVerified=(result,error)=>{if(result.status!=='VERIFIED')throw Error(error+':'+JSON.stringify(result.checks))};
 (async()=>{
   const browser=await chromium.launch({headless:true});
   const context=await browser.newContext({serviceWorkers:'block'});
@@ -48,6 +49,7 @@ const request=async(url,options={})=>{const r=await fetch(url,options);const raw
   const transactionId=String(capture?.transaction?.id||'');
   if(!eventId||!transactionId)throw Error('HUB_RUNTIME_CAPTURE_LINEAGE_MISSING');
   mark('MEANINGFUL_OUTPUT_EMITTED',{event_id:eventId,transaction_id:transactionId});
+  const correlationId='hub-runtime-correlation-'+run;
   const envelope={
     schema:'NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1',
     envelope_id:'hub-runtime:'+run,
@@ -57,11 +59,11 @@ const request=async(url,options={})=>{const r=await fetch(url,options);const raw
     occurred_at:new Date().toISOString(),received_at:new Date().toISOString(),
     output:{kind:'smart_note_capture',title,content:note,capture},
     meaningfulness:'MEANINGFUL',
-    provenance:{source_ref:'hub://'+new URL(hub).host+'/feed',source_event_id:eventId,source_id:transactionId},
+    provenance:{source_ref:'hub://'+new URL(hub).host+'/feed',source_event_id:eventId,source_id:transactionId,correlation_id:correlationId},
     epistemic:{status:'OBSERVED'},privacy:{visibility:'PRIVATE'},
     authority:{status:'CONTEXT_ONLY'},
-    context:{project:'NayaNET',surface:'Hub',runtime:'NayaAssistantRuntime',route:'/feed',proof_run:run},
-    idempotency_key:'hub-runtime-envelope-'+run
+    context:{project:'NayaNET',surface:'Hub',runtime:'NayaAssistantRuntime',route:'/feed',proof_run:run,correlation_id:correlationId},
+    idempotency_key:correlationId
   };
   fs.writeFileSync('/tmp/universal-envelope-hub-runtime.json',JSON.stringify(envelope,null,2));
   fs.writeFileSync('/tmp/hub-runtime-owner-id',runtime.user_id);
@@ -109,21 +111,31 @@ print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type'
   if(bridge.status!==200||bridge.body.status!=='COMPLETED'||!bridge.body.persisted||!bridge.body.indexed||!bridge.body.projected)throw Error('PRODUCTION_RECEIVER_FAILED');
   if(bridge.body.owner_id!==runtime.user_id)throw Error('OWNER_LINEAGE_MISMATCH');
   mark('PRODUCTION_RECEIVER_ACCEPTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
+  const persisted=await request(process.env.SUPABASE_URL+'/rest/v1/nayanet_project_intelligence_bridge?select=packet_id,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected&packet_id=eq.'+encodeURIComponent(bridge.body.packet_id),{headers:{apikey:process.env.SUPABASE_PUBLISHABLE_KEY,authorization:'Bearer '+runtime.session.access_token}});
+  const persistenceProof=verifyPersistenceRecord(bridge.body,persisted.body);
+  requireVerified(persistenceProof,'PERSISTENCE_RECONSTRUCTION_FAILED');
+  mark('INDEPENDENT_PERSISTENCE_RECONSTRUCTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
   const retrieved=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-retrieve',{method:'POST',headers:{authorization:'Bearer '+runtime.session.access_token,apikey:process.env.SUPABASE_PUBLISHABLE_KEY,'content-type':'application/json'},body:JSON.stringify({query:bridge.body.receiver_event_id})});
   if(retrieved.status!==200||!retrieved.body.ok||!retrieved.body.result?.events?.length)throw Error('INDEPENDENT_RETRIEVAL_FAILED');
   const ev=retrieved.body.result.events.find(x=>x.event_id===bridge.body.receiver_event_id); if(!ev)throw Error('RECEIVER_EVENT_NOT_RECONSTRUCTED');
-  const content=JSON.parse(ev.content), lineage=content.bridge||{}, intel=content.intelligence||[];
-  if(lineage.receiver_transaction_id!==bridge.body.receiver_transaction_id||lineage.receiver_event_id!==bridge.body.receiver_event_id||lineage.receipt_id!==bridge.body.receipt_id||ev.receipt_id!==bridge.body.receipt_id)throw Error('RECEIVER_LINEAGE_MISMATCH');
-  const universal=intel.find(x=>x.object_id==='envelope:'+envelope.envelope_id);
-  if(!universal||universal.content?.source?.type!=='nayanet_hub_runtime'||universal.content?.envelope_id!==envelope.envelope_id)throw Error('UNIVERSAL_SENDER_LINEAGE_NOT_PRESERVED');
+  const retrievalProof=verifyRetrievedEvent(bridge.body,ev,envelope.envelope_id);
+  requireVerified(retrievalProof,'INDEPENDENT_RETRIEVAL_RECONSTRUCTION_FAILED');
+  mark('INDEPENDENT_RETRIEVAL_RECONSTRUCTED',{receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
   const index=await request(process.env.SUPABASE_URL+'/rest/v1/nayanet_intelligence_index?select=id,owner_id&source_table=eq.nayanet_cognition_events&source_id=eq.'+encodeURIComponent(bridge.body.projection.cognition_event_id),{headers:{apikey:process.env.SUPABASE_PUBLISHABLE_KEY,authorization:'Bearer '+runtime.session.access_token}});
-  if(index.status!==200||!index.body.some(x=>x.id===bridge.body.projection.index_id&&x.owner_id===runtime.user_id))throw Error('INDEX_RECONSTRUCTION_FAILED');
-  mark('INDEPENDENT_RECONSTRUCTION',{receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,index_id:bridge.body.projection.index_id,envelope_id:envelope.envelope_id});
+  const projectionProof=verifyProjectionIndex(bridge.body,index.body,runtime.user_id);
+  requireVerified(projectionProof,'PROJECTION_INDEX_RECONSTRUCTION_FAILED');
+  mark('INDEPENDENT_PROJECTION_INDEX_RECONSTRUCTED',{receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,index_id:bridge.body.projection.index_id});
+  const smartNoteResponse=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_RESPONSE');
+  const causalProof=verifyCausalLineage({correlationId,envelope,smartNote:smartNoteResponse,bridge:bridge.body,retrievedEvent:ev});
+  requireVerified(causalProof,'CAUSAL_LINEAGE_RECONSTRUCTION_FAILED');
+  mark('CAUSAL_LINEAGE_RECONSTRUCTED',{correlation_id:correlationId,event_id:smartNoteResponse?.event_id,transaction_id:smartNoteResponse?.transaction_id,receipt_id:smartNoteResponse?.receipt_id,receiver_event_id:bridge.body.receiver_event_id,receiver_receipt_id:bridge.body.receipt_id});
   const replay=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oidc.value,'content-type':'application/json'},body:JSON.stringify(packet)});
   console.log('REPLAY='+JSON.stringify(replay.body));
-  if(replay.status!==200||replay.body.status!=='ACCEPTED'||replay.body.replay!==true||replay.body.receiver_event_id!==bridge.body.receiver_event_id||replay.body.receipt_id!==bridge.body.receipt_id)throw Error('EXACT_REPLAY_FAILED');
+  const replayProof=verifyExactReplay(bridge.body,replay.body);
+  requireVerified(replayProof,'EXACT_REPLAY_FAILED');
   mark('EXACT_REPLAY_VERIFIED');
-  const proof={schema:'NAYANET_UNIVERSAL_ENVELOPE_HUB_RUNTIME_SENDER_PROOF_V1',status:'VERIFIED',run_id:run,envelope_id:envelope.envelope_id,sender:{type:'nayanet_hub_runtime',runtime:'NayaAssistantRuntime',owner_id:runtime.user_id,source_event_id:eventId},receiver:{packet_id:bridge.body.packet_id,receiver_transaction_id:bridge.body.receiver_transaction_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,cognition_event_id:bridge.body.projection.cognition_event_id,index_id:bridge.body.projection.index_id},checks:{meaningful_output_emitted:'PASS',envelope_v1_validated:'PASS',existing_adapter:'PASS',existing_production_receiver:'PASS',sender_lineage_preserved:'PASS',independent_reconstruction:'PASS',exact_replay:'PASS'},truth_boundary:'Hub runtime is proven as a second sender into the same existing Project Intelligence Bridge; this does not prove every possible sender.'};
+  const proof={schema:'NAYANET_UNIVERSAL_ENVELOPE_HUB_RUNTIME_SENDER_PROOF_V1',status:'VERIFIED',run_id:run,envelope_id:envelope.envelope_id,correlation_id:correlationId,sender:{type:'nayanet_hub_runtime',runtime:'NayaAssistantRuntime',owner_id:runtime.user_id,source_event_id:eventId},receiver:{packet_id:bridge.body.packet_id,receiver_transaction_id:bridge.body.receiver_transaction_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,cognition_event_id:bridge.body.projection.cognition_event_id,index_id:bridge.body.projection.index_id},checks:{meaningful_output_emitted:'PASS',envelope_v1_validated:'PASS',existing_adapter:'PASS',existing_production_receiver:'PASS',independent_persistence:persistenceProof.status,projection_index:projectionProof.status,independent_retrieval:retrievalProof.status,causal_lineage:causalProof.status,exact_replay:replayProof.status},truth_boundary:'Hub runtime is proven as a second sender into the same existing Project Intelligence Bridge; this does not prove every possible sender.'};
+  proof.cold_reconstruction=buildColdReconstruction(proof,{repository:'SoulSchoolAcademy/NayaPOWER',mainRef:'refs/heads/main',hubBlob:process.env.HUB_BLOB_SHA||'UNAVAILABLE'});
   fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(proof,null,2)+'\n');
   console.log('CHAIN_RESULT='+JSON.stringify(proof));
   await context.close(); await browser.close();

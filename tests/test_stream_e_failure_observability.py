@@ -20,7 +20,7 @@ def test_current_source_authority_matches_static_hub_blob():
 
 def test_sender_trace_contract_is_redacted():
     source = SENDER.read_text(encoding="utf-8")
-    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "PRODUCTION_RECEIVER_AUTHORITY_GATE", "REF_NOT_AUTHORIZED", "resolveProofMode", "buildNoMutationProof", "NON_MAIN_NO_MUTATION", "GITHUB_REF", "GITHUB_EVENT_NAME", "GITHUB_HEAD_REF", "status:'PARTIAL'", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
+    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "PRODUCTION_RECEIVER_AUTHORITY_GATE", "REF_NOT_AUTHORIZED", "resolveProofMode", "buildNoMutationProof", "NON_MAIN_NO_MUTATION", "GITHUB_REF", "GITHUB_EVENT_NAME", "GITHUB_HEAD_REF", "verifyCausalLineage", "verifyPersistenceRecord", "verifyProjectionIndex", "verifyRetrievedEvent", "verifyExactReplay", "INDEPENDENT_PERSISTENCE_RECONSTRUCTED", "CAUSAL_LINEAGE_RECONSTRUCTED", "status:'PARTIAL'", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
         assert marker in source
 
 def test_non_main_preflight_precedes_browser_and_capture():
@@ -31,6 +31,19 @@ def test_non_main_preflight_precedes_browser_and_capture():
     assert preflight < browser < capture
     assert "process.exit(0)" in source
 
-def test_node_diagnostics_suite_passes():
+def test_main_only_authority_and_legacy_isolation_contracts():
+    bridge = (ROOT / "supabase/functions/nayanet-project-intelligence-bridge/index.ts").read_text(encoding="utf-8")
+    sender = SENDER.read_text(encoding="utf-8")
+    diagnostics = (ROOT / ".github/scripts/stream-e-failure-diagnostics.mjs").read_text(encoding="utf-8")
+    hub = (ROOT / "NAYANET/HUB/index.html").read_text(encoding="utf-8")
+    for marker in ("payload.ref", "refs/heads/main", "REPOSITORY_NOT_AUTHORIZED", "VISIBILITY_NOT_AUTHORIZED"):
+        assert marker in bridge
+    for marker in ("GITHUB_EVENT_NAME", "GITHUB_HEAD_REF", "NON_MAIN_NO_MUTATION"):
+        assert marker in sender
+    assert "MAIN_REF_PROOF" in diagnostics
+    assert "createClient" not in hub
+    assert "SUPABASE_URL" not in hub
+    assert "supabase.co" not in hub
+
     result = subprocess.run(["node", "--test", str(NODE_TEST)], cwd=ROOT, text=True, capture_output=True)
     assert result.returncode == 0, result.stdout + result.stderr

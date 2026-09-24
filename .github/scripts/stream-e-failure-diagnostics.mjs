@@ -30,6 +30,17 @@ export function buildNoMutationProof({ref='UNPINNED_LOCAL',eventName='',headRef=
     truth_boundary:'Non-main execution exits before browser launch, network activity, Smart Note capture, or production receiver calls.'
   };
 }
+export function buildColdReconstruction(proof,{repository='',mainRef='',hubBlob=''}={}){
+  const checks={
+    positive_proof:proof?.proof_mode==='MAIN_REF_PROOF'&&proof?.status==='VERIFIED',
+    persistence:proof?.checks?.independent_persistence==='VERIFIED',
+    projection_index:proof?.checks?.projection_index==='VERIFIED',
+    retrieval:proof?.checks?.independent_retrieval==='VERIFIED',
+    causal_lineage:proof?.checks?.causal_lineage==='VERIFIED',
+    replay:proof?.checks?.exact_replay==='VERIFIED'
+  };
+  return {schema:'NAYANET_STREAM_E_COLD_RECONSTRUCTION_V1',status:Object.values(checks).every(Boolean)?'VERIFIED':'NOT_VERIFIED',repository,main_ref:mainRef,hub_blob:hubBlob,source_proof_status:proof?.status||'UNAVAILABLE',source_proof_mode:proof?.proof_mode||'UNAVAILABLE',checks,missing:Object.entries(checks).filter(([,value])=>!value).map(([key])=>key)};
+}
 export function summarizeReceiverResponse(status,body,idempotencyKey=''){
   const value=body&&typeof body==='object'?body:{};
   return {
@@ -65,4 +76,43 @@ export function classifySenderFailure(error,responseTrace,receiverResponseTrace)
   if(code==='HUB_RUNTIME_CAPTURE_LINEAGE_MISSING')return {first_failure_boundary:'HUB_RUNTIME_CAPTURE_LINEAGE',partial_state:'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
   if(responseTrace)return {first_failure_boundary:'HUB_RUNTIME_RESPONSE_MAPPING',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
   return {first_failure_boundary:'UNKNOWN',partial_state:'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
+}
+const same=(actual,expected)=>actual!==undefined&&actual!==null&&String(actual)===String(expected);
+const parseContent=value=>{try{return value&&typeof value==='string'?JSON.parse(value):value||{}}catch{return {}}};
+const contract=(checks)=>({status:Object.values(checks).every(Boolean)?'VERIFIED':'NOT_VERIFIED',checks});
+export function verifyCausalLineage({correlationId,envelope,smartNote,bridge,retrievedEvent}={}){
+  const content=parseContent(retrievedEvent?.content);
+  const universal=(content.intelligence||[]).find(item=>item?.object_id==='envelope:'+envelope?.envelope_id);
+  const checks={
+    correlation_id_present:Boolean(correlationId),
+    envelope_correlation_matches:same(envelope?.context?.correlation_id,correlationId)&&same(envelope?.provenance?.correlation_id,correlationId),
+    smart_note_correlation_matches:same(smartNote?.correlation_id,correlationId),
+    smart_note_event_present:Boolean(smartNote?.event_id),
+    smart_note_transaction_present:Boolean(smartNote?.transaction_id),
+    smart_note_receipt_present:Boolean(smartNote?.receipt_id),
+    bridge_receiver_event_present:Boolean(bridge?.receiver_event_id),
+    bridge_receiver_transaction_present:Boolean(bridge?.receiver_transaction_id),
+    bridge_receipt_present:Boolean(bridge?.receipt_id),
+    retrieved_event_matches:same(retrievedEvent?.event_id,bridge?.receiver_event_id),
+    retrieved_receipt_matches:same(retrievedEvent?.receipt_id,bridge?.receipt_id),
+    retrieved_correlation_preserved:same(universal?.content?.context?.correlation_id,correlationId)
+  };
+  return contract(checks);
+}
+export function verifyPersistenceRecord(bridge,record){
+  const row=Array.isArray(record)?record[0]:record;
+  return contract({record_present:Boolean(row),packet_id:same(row?.packet_id,bridge?.packet_id),receiver_transaction_id:same(row?.receiver_transaction_id,bridge?.receiver_transaction_id),receiver_event_id:same(row?.receiver_event_id,bridge?.receiver_event_id),receipt_id:same(row?.receipt_id,bridge?.receipt_id),persisted:row?.persisted===true,indexed:row?.indexed===true,projected:row?.projected===true});
+}
+export function verifyProjectionIndex(bridge,rows,ownerId){
+  const row=Array.isArray(rows)?rows.find(item=>same(item?.id,bridge?.projection?.index_id)):rows;
+  return contract({index_present:Boolean(row),index_id:same(row?.id,bridge?.projection?.index_id),owner_id:same(row?.owner_id,ownerId)});
+}
+export function verifyRetrievedEvent(bridge,event,envelopeId){
+  const content=parseContent(event?.content);
+  const lineage=content.bridge||{};
+  const universal=(content.intelligence||[]).find(item=>item?.object_id==='envelope:'+envelopeId);
+  return contract({event_id:same(event?.event_id,bridge?.receiver_event_id),receipt_id:same(event?.receipt_id,bridge?.receipt_id),receiver_transaction_id:same(lineage.receiver_transaction_id,bridge?.receiver_transaction_id),receiver_event_id:same(lineage.receiver_event_id,bridge?.receiver_event_id),lineage_receipt_id:same(lineage.receipt_id,bridge?.receipt_id),universal_envelope:same(universal?.content?.envelope_id,envelopeId)});
+}
+export function verifyExactReplay(bridge,replay){
+  return contract({status:replay?.status==='ACCEPTED',replay:replay?.replay===true,receiver_event_id:same(replay?.receiver_event_id,bridge?.receiver_event_id),receipt_id:same(replay?.receipt_id,bridge?.receipt_id),receiver_transaction_id:same(replay?.receiver_transaction_id,bridge?.receiver_transaction_id)});
 }
