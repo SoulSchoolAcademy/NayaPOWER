@@ -18,6 +18,36 @@ HUMAN → HUB → GOVERNED CAPABILITY → NAYAPOWER → PERSISTENCE → RETRIEVA
 
 A selector or route passing is not proof of this complete causal chain.
 
+
+## 0A. Canonical 2026-09-24 room/process/block distinction
+
+The 2026-09-24 system-wide alignment supersedes older Hub taxonomy where it conflicts.
+
+**Human-facing Hub rooms/destinations:**
+1. Intelligence Today
+2. Feed
+3. Reports
+4. Intelligent Library
+5. Smart Connect
+6. Smart Mail
+7. Smart Lists
+8. Contacts
+9. Smart Spaces
+10. Smart Ledger
+11. Settings
+
+**Superbrain processes — not rooms:** Dream, learning, categorization, recall, replay/review, analysis, comprehension, pattern recognition, intelligence compounding, RSI/modular RSI, and application of learned intelligence.
+
+**Intelligent Block capabilities — not rooms:** Naya Play and other object-level actions.
+
+**Retired:** Smart Share as a Hub room. Any remaining `share` route/UI is legacy product surface and must not be treated as canonical Smart Connect.
+
+**Completion contract for every room:** UI → authenticated identity → governed runtime → real data → correct privacy → real action → persistence → verification → receipt. UI presence alone is not completion; unknown backend state must render as NOT VERIFIED.
+
+**Smart Connect doors:** GitHub App, MCP, REST/OpenAPI, Webhooks, SDK, A2A, MCP Apps. Participation through a door does not grant public identity, publication, private-data access, or unrestricted execution authority.
+
+**Canonical participation law:** LEARN BY DEFAULT. SHARE WISDOM BY CONSENT. PROTECT IDENTITY BY DEFAULT. PUBLISH BY DECISION.
+
 ## 1. Canonical surfaces inspected
 
 ### Protected visual reference
@@ -80,14 +110,14 @@ It does not prove visual fidelity, singular shell ownership, full create/save/re
 | Collective Intelligence | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Consent/privacy/current rendering proof open |
 | Activity Feed | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Automatic current-head synchronization open |
 | Reports | VERIFIED presence | VERIFIED route | N/A | N/A | N/A | UNKNOWN | UNKNOWN | PARTIAL | Content durability not in current acceptance |
-| Smart Share | VERIFIED | VERIFIED prior production proofs | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | Re-consolidate in current journey |
+| Smart Connect | NOT PRESENT in current canonical Hub | NOT IMPLEMENTED as canonical Hub room | RUNTIME SEAM EXISTS | PARTICIPATION PROOF EXISTS | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Canonical room/door integration missing |
 | Smart Lists | VERIFIED surface | VERIFIED surface | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Current acceptance is surface-only |
 | Smart Spaces | VERIFIED surface | VERIFIED surface | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Current acceptance is surface-only |
-| Contacts | VERIFIED surface | VERIFIED surface | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Current acceptance is surface-only |
+| Contacts | VERIFIED surface | VERIFIED surface | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Current surface is labeled `connections`; canonical Contacts contract requires reconciliation |
 | Smart Mail | VERIFIED surface | VERIFIED prior production proofs | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | Re-consolidate in current journey |
 | Smart Ledger | PARTIAL | PARTIAL | PARTIAL | VERIFIED backend history | VERIFIED | VERIFIED | PARTIAL | VERIFIED backend history | Human evidence projection open |
-| Dream / Learning | VERIFIED route | VERIFIED prior runtime proofs | VERIFIED prior | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | Preserve current canonical path |
-| Naya Play | VERIFIED surface | VERIFIED surface | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | PARTIAL | Command surface only |
+| Dream / Learning | PROCESS, not room | VERIFIED prior runtime proofs | VERIFIED prior | VERIFIED | VERIFIED | VERIFIED | VERIFIED | VERIFIED | Preserve Dream as Superbrain process; do not promote to sidebar room |
+| Naya Play | BLOCK/OBJECT CAPABILITY, not room | VERIFIED surface | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | UNKNOWN | PARTIAL | Keep as Intelligent Block capability; do not add Hub room |
 | Settings / identity | VERIFIED surface | VERIFIED surface | PARTIAL | PARTIAL | VERIFIED adapter history | VERIFIED | VERIFIED | PARTIAL | Consolidated evidence open |
 | Mobile/responsive | PARTIAL | PARTIAL | N/A | N/A | N/A | N/A | N/A | PARTIAL | Current visual geometry gate open |
 | Activity → Control Plane → Baton → successor | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | PARTIAL | Baton exists; universal automatic sync remains unknown |
@@ -165,6 +195,8 @@ If that requires searching old conversation, the continuity gate has failed.
 **ACTIVE BLOCK:** HUMAN-JOURNEY-P2
 
 **FIRST REPAIR:** GAP-001 — singular Hub shell/source/build/runtime ownership.
+
+**2026-09-24 taxonomy finding:** current canonical `NAYANET/HUB/index.html` exposes a `Smart Share` page and `Your Connections` page, but no `Smart Connect` or canonical `Contacts` page. It also contains no `Dream` or `Naya Play` Hub destination. This is correctly classified as a product-taxonomy mismatch, not evidence that Dream/Naya Play should become rooms.
 
 **DO NOT:** begin broad visual redesign or mass Smart Door work before this boundary is reconciled.
 
