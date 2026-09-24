@@ -37,9 +37,9 @@ jobs:
           BODY=$(jq -n --arg g "$gid" --arg i "uai-authority-$GITHUB_RUN_ID" '{authority_grant_id:$g,idempotency_key:$i,content:"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF",title:"UAI authority parity",category:"TEST",topic:"SMART_CONNECT",confidence:1,tags:["uai-authority-proof"],authority_scope:"PERSONAL_INTELLIGENCE_ONLY",target_id:"uai-external-door-proof"}')
           code=$(curl --silent --show-error -o /tmp/positive.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); echo "UAI_POSITIVE_STATUS=$code"; cat /tmp/positive.json; test "$code" = 200
           event_id=$(jq -r '.result.result.event.event_id' /tmp/positive.json); checkpoint=$(jq -r '.result.result.checkpoint.checkpoint_id' /tmp/positive.json)
-          code=$(curl --silent --show-error -o /tmp/replay.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); test "$code" = 200
+          code=$(curl --silent --show-error -o /tmp/replay.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); echo "UAI_REPLAY_STATUS=$code"; cat /tmp/replay.json; test "$code" = 200
           jq -e --arg e "$event_id" --arg c "$checkpoint" '.result.result.event.event_id==$e and .result.result.checkpoint.checkpoint_id==$c' /tmp/replay.json >/dev/null
-          code=$(curl --silent --show-error -o /tmp/retrieve.json -w '%{http_code}' -X POST "$BASE/v1/retrieve" "${H[@]}" -d '{"query":"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF","limit":5}'); test "$code" = 200
+          code=$(curl --silent --show-error -o /tmp/retrieve.json -w '%{http_code}' -X POST "$BASE/v1/retrieve" "${H[@]}" -d '{"query":"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF","limit":5}'); echo "UAI_RETRIEVE_STATUS=$code"; cat /tmp/retrieve.json; test "$code" = 200
           grep -q UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF /tmp/retrieve.json
           other=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json" -d '{}')
           other_token=$(echo "$other" | jq -r '.access_token // empty'); test -n "$other_token"
