@@ -808,6 +808,12 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     if(inserted.error) throw inserted.error;
     learning=inserted.data;
   }
+  const participation = await client.from("nayanet_smart_connect_participation")
+    .select("id,door,status,wisdom_sharing,identity_visibility,personal_intelligence,personal_activity,smart_spaces")
+    .eq("member_id",userId).eq("status","active").eq("wisdom_sharing","default").limit(1).maybeSingle();
+  if (participation.error) throw participation.error;
+  if (!participation.data) throw new Error("SMART_CONNECT_PARTICIPATION_REQUIRED");
+
   const checkpoint=await checkpointIntelligence(client,userId,{
     checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,
     title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
@@ -826,6 +832,21 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     source_head:body.source_head ?? null,
     authority_grant_id:authorityGrantId
   });
+  const collective = await admin.rpc("nayanet_collective_wisdom_for_event", {
+    p_source_event_id: sourceEvent.id,
+    p_owner_id: userId,
+    p_wisdom_claim: learningClaim,
+    p_topic: topic,
+    p_provenance: {
+      source_event_id: eventId,
+      checkpoint_id: checkpointId,
+      category,
+      topic,
+      epistemic_state: "CANDIDATE"
+    }
+  });
+  if (collective.error) throw collective.error;
+
   const existingBlock = await admin.from("nayanet_intelligent_blocks")
     .select("*").eq("block_id",blockId).eq("owner_id",userId).maybeSingle();
   if (existingBlock.error) throw existingBlock.error;
@@ -865,6 +886,8 @@ async function commitIntelligence(client: any, userId: string, body: any) {
   return {
     schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
     idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
+    participation:{door:participation.data.door,status:participation.data.status,wisdom_sharing:participation.data.wisdom_sharing,identity_visibility:participation.data.identity_visibility},
+    collective_wisdom:collective.data,
     learning:{status:learning.status,evidence_id:learning.id,target_id:learning.target_id},
     checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,
       checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,
@@ -872,6 +895,15 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     proof_boundary:"Capture + integration + checkpoint are persisted. Applicability, behavior change, outcome verification, and improvement remain required before the lesson is promoted to VERIFIED/WISDOM.",
     rule:"One governed commit path; idempotent identity; no second intelligence store; private by default."
   };
+}
+
+async function smartConnect(client: any, userId: string, body: any) {
+  const door = String(body.door ?? "").trim().toLowerCase();
+  const allowed = ["github_app","mcp","rest_openapi","webhooks","sdk","a2a","mcp_apps"];
+  if (!allowed.includes(door)) throw new Error("SMART_CONNECT_DOOR_INVALID");
+  const { data, error } = await client.rpc("nayanet_smart_connect", { p_door: door });
+  if (error) throw error;
+  return data;
 }
 
 async function health(client: any, userId: string) {
@@ -954,6 +986,7 @@ Deno.serve(async (req) => {
         case "issue_pi_authority": result=await issuePiAuthority(client,user.id,body); break;
         case "continue_authorized": result=await continueAuthorized(client,user.id,body); break;
         case "consolidate_pi_gates": result=await consolidatePiGates(client,user.id,body); break;
+        case "smart_connect": result=await smartConnect(client,user.id,body); break;
         case "share": result=await share(client,user.id,body); break;
         case "supersede": result=await supersede(client,user.id,body); break;
         case "checkpoint": result=await checkpointIntelligence(client,user.id,body); break;
