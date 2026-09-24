@@ -92,6 +92,7 @@ def make_fixture(tmp: Path):
     artifact = PORTABLE.issue_portable_authorization(
         execution_authorization=issued.authorization,
         registry=registry,
+        gate=gate,
         commit_sha="",
         private_key_hex=private_hex,
         now=NOW,
@@ -177,6 +178,7 @@ class TestStreamBCrossProcessIntelligenceAuthorization(unittest.TestCase):
             PORTABLE.issue_portable_authorization(
                 execution_authorization=auth,
                 registry=self.registry,
+                gate=GATE.UniversalExecutionGate(self.registry),
                 commit_sha="",
                 private_key_hex=PORTABLE.generate_keypair()[0],
                 now=NOW,
