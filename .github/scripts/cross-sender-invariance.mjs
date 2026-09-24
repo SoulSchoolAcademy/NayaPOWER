@@ -31,6 +31,7 @@ const shape=(e)=>{
     schema:e.schema,
     required,
     source_type:typeof e.source?.type,
+    source_type_value:e.source?.type,
     source_id:typeof e.source?.id,
     identity_actor_type:typeof e.identity?.actor_type,
     identity_actor_id:typeof e.identity?.actor_id,
@@ -157,8 +158,9 @@ try{
   }
   const shapes=senderResults.map(x=>JSON.stringify(x.observed_shape));
   const invariant=shapes.every(x=>x===shapes[0]);
-  const identities=senderResults.map(x=>x.observed_shape.source_type);
-  console.log('INVARIANCE_DEBUG='+JSON.stringify(senderResults));if(!invariant)throw Error('CROSS_SENDER_INVARIANCE_FAILED');
+  const identities=senderResults.map(x=>x.observed_shape.source_type_value);
+  console.log('INVARIANCE_DEBUG='+JSON.stringify(senderResults));
+  console.log('IDENTITIES_DISTINCT='+JSON.stringify(identities));if(!invariant)throw Error('CROSS_SENDER_INVARIANCE_FAILED');
   if(new Set(identities).size!==3)throw Error('SENDER_IDENTITIES_COLLAPSED');
   const proof={schema:'NAYANET_UNIVERSAL_ENVELOPE_CROSS_SENDER_INVARIANCE_PROOF_V1',status:'VERIFIED',run_id:RUN,equivalent_output:SAME_OUTPUT,sender_classes:senderResults.map(x=>x.sender),invariant_fields:['schema','required envelope fields','source identity shape','owner scope presence','meaningfulness','provenance shape','epistemic status','privacy visibility','authority status','idempotency presence'],sender_results:senderResults,cross_sender_invariants_identical:true,sender_identities_distinct:true,truth_boundary:'Three sender classes produced equivalent meaningful output, normalized to Universal Intelligence Envelope V1, and the existing production receiver observed identical required envelope invariants while preserving distinct sender identity. This proves cross-sender contract invariance for these three sender classes, not universal interoperability across every possible sender.'};
   fs.writeFileSync('universal-envelope-cross-sender-invariance-proof.json',JSON.stringify(proof,null,2)+'\n');
