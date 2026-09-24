@@ -3,6 +3,16 @@
 
 **North Star:** one working tree, one source of truth, one canonical intelligence model, one Hub, one governed execution path.
 
+### Start here — three-layer current-truth stack
+
+For system-wide NayaNET direction and Hub work, read these three layers in order:
+
+1. **Master Objective:** `NAYANET ALIGNMENT UPDATE - THIS IS THE MASTER OBJECTIVE.md` — what we are building, why, the house/room model, Dream/Naya Play classification, participation/privacy law, and build order.
+2. **58 Topology:** `.naya/TEAM-NAYA-58-ENGINEERING-AGENT-TOPOLOGY-V1.md` — how the 58 engineering areas collapse into coherent ownership/dependency domains and how Team Naya coordinates them.
+3. **Current Truth + Gap Register:** `.naya/NAYANET-HUB-CURRENT-TRUTH-AND-GAP-REGISTER-V1.md` — what the Hub rooms currently contain, their intended connections, and the evidence-based DONE / PARTIAL / NOT DONE / NOT VERIFIED state.
+
+**Rule:** The Master Objective defines intended direction; the 58 Topology defines engineering organization; the Gap Register records current Hub truth. Source code, tests, runtime evidence, receipts, and independent verification determine what is actually proven.
+
 ### Start here
 1. **North Star tree:** `.naya/NORTH-STAR-AAA-TREE-2026-09-22.md`
 2. **Distilled intelligence:** `SUPERBRAIN/INTELLIGENCE/CANONICAL-INTELLIGENCE-MAP.md`
