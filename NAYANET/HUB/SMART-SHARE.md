@@ -1,6 +1,6 @@
-# Smart Share
+# Smart Connect
 
-> **Participation is established at authorized Hub connection. Smart Share is for changing destination/scope and making selected intelligence public—not for approving every ordinary learning event.**
+> **Participation is established at authorized Hub connection. Smart Connect is for changing destination/scope and making selected intelligence public—not for approving every ordinary learning event.**
 
 **Purpose:** controlled movement from private intelligence to shared/collective/public scope.
 
