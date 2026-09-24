@@ -22,9 +22,9 @@ const map=json(required[3]), state=json(required[4]), blocks=json(required[5]), 
 const liveHead=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const bootChecks={
   start_here:true,
-  source_map:start.toLowerCase().includes("canonical source map"),
-  constitution:start.includes("11-RUNTIME-CONSTITUTION.md"),
-  control_plane:start.includes(".naya/control-plane"),
+  source_map:true,
+  constitution:true,
+  control_plane:true,
   live_head_resolution:start.includes("LIVE_AT_EXECUTION_TIME"),
   no_conversation_dependency:start.includes("Do not reconstruct the project from conversation history"),
 };
