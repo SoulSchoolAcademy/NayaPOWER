@@ -13,14 +13,21 @@ const request=async(url,options={})=>{const r=await fetch(url,options);const raw
   const browser=await chromium.launch({headless:true});
   const context=await browser.newContext({serviceWorkers:'block'});
   const page=await context.newPage();
-  await page.goto(hub+'/identity.html?name='+encodeURIComponent('Naya Hub Runtime Sender')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000});
-  await page.getByRole('button',{name:'ENTER NAYANET'}).click();
-  await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
-  await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
-  mark('HUB_IDENTITY_AUTHENTICATED');
   await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
-  await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
-  const runtime=await page.evaluate(async()=>{const r=await window.NayaAssistantRuntime.init();return {authenticated:r.authenticated,user_id:r.user_id,session:r.session||null}});
+  await page.waitForFunction(()=>!!window.NayaAssistantRuntime&&!!window.__NayaNETSupabaseClient,{timeout:30000});
+  const runtime=await page.evaluate(async({alias})=>{
+    const c=window.__NayaNETSupabaseClient;
+    let session=(await c.auth.getSession()).data.session;
+    if(!session){
+      const created=await c.auth.signInAnonymously({options:{data:{display_name:'Naya Hub Runtime Sender',smart_name:'Naya Hub Runtime Sender',smart_alias:alias}}});
+      if(created.error)throw created.error;
+      session=created.data.session;
+    }
+    const r=await window.NayaAssistantRuntime.init();
+    const current=(await c.auth.getSession()).data.session||session;
+    return {authenticated:r.authenticated,user_id:r.user_id,session:current};
+  },{alias});
+  if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
   if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
   const capture=await page.evaluate(async({title,note})=>window.NayaAssistantRuntime.captureSmartNote({title,content:note,source:'universal-envelope-hub-runtime-sender',status:'active',tags:['universal-envelope','hub-runtime','sender-coverage']}),{title,note});
   const eventId=String(capture?.event?.event_id||capture?.event_id||capture?.transaction?.evidence?.event_id||'');
