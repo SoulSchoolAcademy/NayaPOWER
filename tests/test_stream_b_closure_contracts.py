@@ -79,8 +79,10 @@ class TestStreamBClosureContracts(unittest.TestCase):
         master=read("NAYANET ALIGNMENT UPDATE - THIS IS THE MASTER OBJECTIVE.md")
         gap=read(".naya/NAYANET-HUB-CURRENT-TRUTH-AND-GAP-REGISTER-V1.md")
         combined=master+"\n"+gap
-        self.assertRegex(combined,r"Dream.*not.*room")
-        self.assertRegex(combined,r"Naya Play.*not.*room")
+        self.assertIn("Dream is a Superbrain process",combined)
+        self.assertIn("Dream is not a sidebar destination",combined)
+        self.assertIn("Naya Play is an Intelligent Block capability",combined)
+        self.assertIn("Naya Play is not a sidebar destination",combined)
         self.assertIn("Smart Connect",combined)
 
     def test_010_three_layer_source_of_truth_stack_is_present(self):
