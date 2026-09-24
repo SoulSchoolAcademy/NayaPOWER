@@ -209,7 +209,7 @@ jobs:
                 await page.waitForFunction((id)=>{
                   const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
                   const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
-                  const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(id)+'"]');
+                  const canonicalCard=document.querySelector('#blocks [data-event-id="'+CSS.escape(id)+'"]');
                   const feedCount=document.querySelector('#feedCount');
                   const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
                   if(v2Card) return !!v2Status && !/BLOCKED|ERROR/i.test(v2Status.textContent||'');
@@ -236,8 +236,8 @@ jobs:
                     v2_present:!!document.querySelector('#naya-smart-feed-v2'),
                     v2_status:document.querySelector('#naya-smart-feed-v2 #sf-status')?.textContent||null,
                     v2_cards:Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id]')).map(n=>n.getAttribute('data-event-id')),
-                    canonical_cards:Array.from(document.querySelectorAll('.feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),title:n.querySelector('h2')?.textContent||'',intelligenceId:n.getAttribute('data-intelligence-id')||''})),
-                    canonical_card_count:document.querySelectorAll('.feed .blocks [data-real-smart-note]').length,
+                    canonical_cards:Array.from(document.querySelectorAll('#blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),title:n.querySelector('h2')?.textContent||'',intelligenceId:n.getAttribute('data-intelligence-id')||''})),
+                    canonical_card_count:document.querySelectorAll('#blocks [data-real-smart-note]').length,
                     feed_payload:feed?{ok:feed.ok,stream:feed.stream,item_count:(feed.items||[]).length,event_ids:(feed.items||[]).map(x=>x.event_id),titles:(feed.items||[]).map(x=>String(x.title||'').slice(0,80)),has_receiver:(feed.items||[]).some(x=>x.event_id===id)}:null,
                     feed_error:feedError,
                     runtime_available:!!window.NayaAssistantRuntime,
@@ -250,9 +250,9 @@ jobs:
                 console.log('PI_RENDER_TIMEOUT_DIAGNOSTICS',JSON.stringify(diag));
                 throw waitError;
               }
-              const rendered=await page.evaluate(()=>Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id], .feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id')||n.getAttribute('data-intelligence-id')||'',title:n.querySelector('h2')?.textContent||'',surface:n.closest('#naya-smart-feed-v2')?'canonical-smart-feed-v2':'canonical-hub-blocks'})));
+              const rendered=await page.evaluate(()=>Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id], #blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id')||n.getAttribute('data-intelligence-id')||'',title:n.querySelector('h2')?.textContent||'',surface:n.closest('#naya-smart-feed-v2')?'canonical-smart-feed-v2':'canonical-hub-blocks'})));
               if(!rendered.some(x=>x.eventId===receiverEventId)) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
-              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:rendered.find(x=>x.eventId===receiverEventId)?.surface||'unknown',canonical_event_selector:'#naya-smart-feed-v2 .sf-card[data-event-id] | .feed .blocks [data-event-id]'});
+              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:rendered.find(x=>x.eventId===receiverEventId)?.surface||'unknown',canonical_event_selector:'#naya-smart-feed-v2 .sf-card[data-event-id] | #blocks [data-event-id]'});
 
               const ack=await compound(page,session,'ack',{
                 packet_id:bridge.packet_id,
