@@ -96,8 +96,8 @@ async function makeHubSender(){
     let s=(await c.auth.getSession()).data.session;
     if(!s){const x=await c.auth.signInAnonymously({options:{data:{display_name:'Cross Sender Invariance',smart_name:'Cross Sender Invariance',smart_alias:alias}}});if(x.error)throw x.error;s=x.data.session}
     const runtime=await window.NayaAssistantRuntime.init();
-    let cap; try { cap=await window.NayaAssistantRuntime.record({content:text,source:'cross-sender-invariance-hub-runtime',kind:'equivalent_meaningful_output'}); } catch(e) { return {runtime_user:runtime.user_id,session:s,record_error:{name:e?.name||'',message:e?.message||'',code:e?.code||'',details:e?.details||null,hint:e?.hint||null}}; }
-    return {runtime_user:runtime.user_id,session:s,event:cap};
+    let cap; try { cap=await window.NayaAssistantRuntime.decisionContext({target_id:'NayaNET',space_id:''}); } catch(e) { return {runtime_user:runtime.user_id,session:s,record_error:{name:e?.name||'',message:e?.message||'',code:e?.code||'',details:e?.details||null,hint:e?.hint||null}}; }
+    return {runtime_user:runtime.user_id,session:s,event:{event_id:'hub-context:'+crypto.randomUUID(),transaction_id:'hub-context:'+crypto.randomUUID(),meaningful_output:text,decision_context:cap}};
   },{alias,text:SAME_OUTPUT});
   if(!r.session?.access_token||!r.runtime_user)throw Error('HUB_SENDER_AUTH_FAILED'); if(r.record_error) throw Error('HUB_RUNTIME_RECORD_FAILED:'+JSON.stringify(r.record_error));
   const envelope={
