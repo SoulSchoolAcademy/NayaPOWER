@@ -61,7 +61,7 @@ class TestStreamBClosureContracts(unittest.TestCase):
         c=read("tests/test_universal_execution_gate.py")
         for marker in ("revoked","expired","wrong_actor","wrong_scope"):
             self.assertIn(marker,c)
-        self.assertIn("was not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
+        self.assertIn("execution authorization was not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
 
     def test_008_smart_connect_seven_doors_and_authority_separation(self):
         candidates=[
