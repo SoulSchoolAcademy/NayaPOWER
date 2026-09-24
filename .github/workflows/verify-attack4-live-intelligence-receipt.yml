@@ -132,6 +132,7 @@ jobs:
 
             const body = {
               action:'intelligence_commit',
+              authority_grant_id:grant.grant_id,
               idempotency_key:idem,
               title, content,
               category:'ATTACK4_LIVE',
