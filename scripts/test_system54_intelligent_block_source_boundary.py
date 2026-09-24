@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from intelligent_block_source import load_intelligent_blocks
-from test_claim_currentness_v1 import resolve
+from claim_currentness_v1 import resolve_currentness as resolve
 
 
 REAL_BLOCKS = [
