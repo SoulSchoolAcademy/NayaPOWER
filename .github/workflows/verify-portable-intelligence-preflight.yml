@@ -1,0 +1,207 @@
+name: Portable Intelligence Commit Preflight
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  portable-intelligence-preflight:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run non-live portable boundary preflight
+        env:
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          python - <<'PY'
+          import copy, hashlib, json, sys
+          from pathlib import Path
+          sys.path.insert(0, ".naya/runtime")
+          sys.path.insert(0, ".naya/governance")
+
+          from governance_kernel import Authority, AuthorityRegistry, DecisionObject, Epistemic, Risk, VerificationPlan
+          from portable_authorization import (
+              INTELLIGENCE_COMMIT_ACTION_TYPE,
+              INTELLIGENCE_COMMIT_PERMISSION,
+              INTELLIGENCE_COMMIT_TARGET,
+              generate_keypair,
+              issue_portable_authorization,
+              portable_authorization_artifact_hash,
+              portable_boundary_intelligence_commit,
+              verify_portable_authorization,
+          )
+          from universal_execution_gate import UniversalExecutionGate
+
+          NOW = "2026-01-01T00:00:00+00:00"
+          SHA = __import__("os").environ["SOURCE_SHA"]
+          REPO = "SoulSchoolAcademy/NayaPOWER"
+
+          authority = Authority(
+              authority_id="dry-run-authority",
+              principal_id="dry-run-actor",
+              purpose="portable intelligence commit preflight",
+              scope="NayaNET",
+              granted_actions=frozenset({INTELLIGENCE_COMMIT_PERMISSION}),
+              expires_at="2030-01-01T00:00:00+00:00",
+              revoked=False,
+          )
+          registry = AuthorityRegistry(authorities={authority.authority_id: authority})
+          decision = DecisionObject(
+              decision_id="dry-run-decision",
+              mission="portable intelligence commit preflight",
+              actor_id=authority.principal_id,
+              action=INTELLIGENCE_COMMIT_PERMISSION,
+              purpose=authority.purpose,
+              scope=authority.scope,
+              current_truth="Non-live verification target.",
+              gap="Portable attestation must be execution-relevant and reconstructable.",
+              evidence=("non-live preflight",),
+              epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}),
+              consequence="simulate one intelligence commit",
+              reversible=True,
+              risk=Risk(uncertainty=1, consequence=2, irreversibility=1),
+              alternatives=("do_not_execute",),
+              expected_value="reconstructable governed execution",
+              required_permission=INTELLIGENCE_COMMIT_PERMISSION,
+              verification=VerificationPlan(
+                  observation="simulated execution boundary and receipt",
+                  success_criteria="exact artifact hash reconstructs from receipt",
+              ),
+              necessary_power=frozenset({INTELLIGENCE_COMMIT_PERMISSION}),
+              requested_power=frozenset({INTELLIGENCE_COMMIT_PERMISSION}),
+          )
+          action = {
+              "action_id":"dry-run-action",
+              "action_type":INTELLIGENCE_COMMIT_ACTION_TYPE,
+              "target":INTELLIGENCE_COMMIT_TARGET,
+              "purpose":authority.purpose,
+              "scope":authority.scope,
+              "actor_id":authority.principal_id,
+              "permission":INTELLIGENCE_COMMIT_PERMISSION,
+              "decision_id":decision.decision_id,
+              "authority_id":authority.authority_id,
+          }
+
+          gate = UniversalExecutionGate(registry=registry)
+          issued = gate.authorize(authority=authority, decision=decision, action=action, now=NOW)
+          assert issued.allowed and issued.authorization, issued.reasons
+
+          private_key, public_key = generate_keypair()
+          artifact = issue_portable_authorization(
+              execution_authorization=issued.authorization,
+              registry=registry,
+              gate=gate,
+              commit_sha=SHA,
+              private_key_hex=private_key,
+              repository=REPO,
+              now=NOW,
+              expires_in_seconds=60,
+          )
+
+          artifact_hash = portable_authorization_artifact_hash(artifact)
+          Path("portable-authorization.json").write_text(json.dumps(artifact, indent=2), encoding="utf-8")
+          Path("portable-authorization.sha256").write_text(artifact_hash + "\n", encoding="utf-8")
+
+          # Fresh verifier process: no issuer object or _issued state crosses this boundary.
+          verify_code = """
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, '.naya/runtime')
+          sys.path.insert(0, '.naya/governance')
+          from portable_authorization import verify_portable_authorization
+          from universal_execution_gate import load_registry
+          artifact=json.loads(Path('portable-authorization.json').read_text())
+          registry=load_registry('dry-run-registry.json')
+          ok,reasons=verify_portable_authorization(
+              artifact=artifact,
+              public_key_hex=sys.argv[1],
+              registry=registry,
+              now='2026-01-01T00:00:30+00:00',
+          )
+          print(json.dumps({'ok':ok,'reasons':reasons}))
+          raise SystemExit(0 if ok else 1)
+          """
+          raw_registry = {"authorities":[{
+              "authority_id":authority.authority_id,
+              "principal_id":authority.principal_id,
+              "purpose":authority.purpose,
+              "scope":authority.scope,
+              "granted_actions":sorted(authority.granted_actions),
+              "expires_at":authority.expires_at,
+              "revoked":authority.revoked,
+          }]}
+          Path("dry-run-registry.json").write_text(json.dumps(raw_registry), encoding="utf-8")
+          import subprocess
+          fresh = subprocess.run([sys.executable, "-c", verify_code, public_key], text=True, capture_output=True)
+          assert fresh.returncode == 0, fresh.stdout + fresh.stderr
+
+          accepted = portable_boundary_intelligence_commit(
+              artifact=artifact, public_key_hex=public_key, registry=registry,
+              commit_sha=SHA, repository=REPO, now="2026-01-01T00:00:30+00:00",
+          )
+          assert accepted.allowed, accepted
+
+          # Complete fail-closed attack set against the same boundary.
+          attacks = [
+              ("missing", None),
+              ("malformed", {"not":"an authorization"}),
+              ("tampered-field", dict(artifact, authorization=dict(artifact["authorization"], target="evil"))),
+              ("tampered-signature", dict(artifact, signature="00"*64)),
+              ("wrong-target", dict(artifact, authorization=dict(artifact["authorization"], target="evil"))),
+              ("wrong-permission", dict(artifact, authorization=dict(artifact["authorization"], permission="repo_write"))),
+              ("wrong-source", artifact),
+              ("unsigned", {k:v for k,v in artifact.items() if k != "signature"}),
+          ]
+          results=[]
+          for name, candidate in attacks:
+              if name == "wrong-source":
+                  d = portable_boundary_intelligence_commit(
+                      artifact=candidate, public_key_hex=public_key, registry=registry,
+                      commit_sha="0"*40, repository=REPO, now="2026-01-01T00:00:30+00:00")
+              else:
+                  d = portable_boundary_intelligence_commit(
+                      artifact=candidate, public_key_hex=public_key, registry=registry,
+                      commit_sha=SHA, repository=REPO, now="2026-01-01T00:00:30+00:00")
+              assert not d.allowed, (name, d)
+              results.append(name + ":FAIL-CLOSED")
+
+          # Simulated receipt is immutable evidence only; NO production call is made.
+          receipt = {
+              "status":"SUCCESS",
+              "action":"intelligence_commit",
+              "artifact_hash":artifact_hash,
+              "execution_authorization":artifact["authorization"],
+          }
+          reconstructed_hash = portable_authorization_artifact_hash(artifact)
+          assert reconstructed_hash == receipt["artifact_hash"]
+          assert receipt["execution_authorization"] == artifact["authorization"]
+
+          proof = {
+              "schema":"NAYANET_PORTABLE_INTELLIGENCE_PREFLIGHT_V1",
+              "status":"PASS",
+              "live_mutation":"NONE",
+              "gate_issued":"PASS",
+              "fresh_process_verification":"PASS",
+              "execution_boundary":"PASS",
+              "artifact_hash_reconstruction":"PASS",
+              "attacks":results,
+              "source_sha":SHA,
+          }
+          Path("portable-intelligence-preflight-proof.json").write_text(json.dumps(proof, indent=2), encoding="utf-8")
+          print(json.dumps(proof, indent=2))
+          PY
+
+      - name: Upload non-live proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: portable-intelligence-preflight-proof-${{ github.run_id }}
+          path: |
+            portable-intelligence-preflight-proof.json
+            portable-authorization.json
+            portable-authorization.sha256
