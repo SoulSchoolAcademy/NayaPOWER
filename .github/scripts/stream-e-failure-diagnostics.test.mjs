@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {classifySenderFailure,formatRuntimeFailure,redactDiagnostic,summarizeReceiverResponse} from './stream-e-failure-diagnostics.mjs';
+import {classifySenderFailure,formatRuntimeFailure,redactDiagnostic,summarizeReceiverBridgeResponse,summarizeReceiverResponse} from './stream-e-failure-diagnostics.mjs';
 
 test('redacts credentials and bounds diagnostic text',()=>{
   const value=redactDiagnostic('authorization: Bearer secret-token\nnext');
@@ -16,6 +16,16 @@ test('summarizes receiver status, lineage, and fallback correlation',()=>{
 test('formats a receiver failure without discarding detail',()=>{
   const message=formatRuntimeFailure(422,{error:'SMART_NOTE_PIPELINE_FAILED',detail:'validation failed',correlation_id:'corr-1'},'smart-note-key');
   assert.match(message,/^SMART_NOTE_PIPELINE_FAILED\|status=422\|code=SMART_NOTE_PIPELINE_FAILED\|correlation=corr-1\|event=UNAVAILABLE\|receipt=UNAVAILABLE\|transaction=UNAVAILABLE\|detail=validation failed$/);
+});
+
+test('summarizes an authorization response without exposing the body',()=>{
+  const value=summarizeReceiverBridgeResponse(403,{status:'REJECTED',code:'REF_NOT_AUTHORIZED',detail:'private detail',packet:{secret:'hidden'}});
+  assert.deepEqual(value,{status:403,code:'REF_NOT_AUTHORIZED',detail:'private detail'});
+});
+
+test('classifies a receiver authorization refusal separately',()=>{
+  const value=classifySenderFailure(new Error('PRODUCTION_RECEIVER_AUTHORIZATION_FAILED'),{event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'},{status:403,code:'REF_NOT_AUTHORIZED'});
+  assert.deepEqual(value,{first_failure_boundary:'PRODUCTION_RECEIVER_AUTHORIZATION',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_RECEIVER_AUTHORIZATION_FAILED',receiver_code:'REF_NOT_AUTHORIZED'});
 });
 
 test('classifies a later production receiver failure as partial state',()=>{

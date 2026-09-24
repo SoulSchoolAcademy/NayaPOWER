@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { classifySenderFailure, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
+import { classifySenderFailure, summarizeReceiverBridgeResponse, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
 const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID;
 const alias=('envelopesender'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
 const title='Universal Envelope Hub Runtime Sender '+run;
@@ -86,7 +86,10 @@ print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type'
   const oidcReq=await fetch(process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge',{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
   const oidc=await oidcReq.json(); if(!oidcReq.ok||!oidc.value)throw Error('OIDC_TOKEN_FAILED');
   const bridge=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oidc.value,'content-type':'application/json'},body:JSON.stringify(packet)});
+  const bridgeTrace=summarizeReceiverBridgeResponse(bridge.status,bridge.body);
+  mark('PRODUCTION_RECEIVER_RESPONSE',bridgeTrace);
   console.log('BRIDGE='+JSON.stringify(bridge.body));
+  if(bridge.body?.code==='REF_NOT_AUTHORIZED')throw Error('PRODUCTION_RECEIVER_AUTHORIZATION_FAILED');
   if(bridge.status!==200||bridge.body.status!=='COMPLETED'||!bridge.body.persisted||!bridge.body.indexed||!bridge.body.projected)throw Error('PRODUCTION_RECEIVER_FAILED');
   if(bridge.body.owner_id!==runtime.user_id)throw Error('OWNER_LINEAGE_MISMATCH');
   mark('PRODUCTION_RECEIVER_ACCEPTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
@@ -108,4 +111,4 @@ print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type'
   fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(proof,null,2)+'\n');
   console.log('CHAIN_RESULT='+JSON.stringify(proof));
   await context.close(); await browser.close();
-})().catch(async error=>{await new Promise(resolve=>setTimeout(resolve,100));const requestTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_REQUEST')||null;const responseTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_RESPONSE')||null;const classification=classifySenderFailure(error,responseTrace);const artifact={status:'FAILED',error:String(error?.stack||error),...classification,correlation:{idempotency_key:requestTrace?.idempotency_key||'UNAVAILABLE',receiver_response:responseTrace},trace};fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(artifact,null,2)+'\n');console.error(error);process.exit(1)});
+})().catch(async error=>{await new Promise(resolve=>setTimeout(resolve,100));const requestTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_REQUEST')||null;const responseTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_RESPONSE')||null;const receiverResponseTrace=trace.find(row=>row.step==='PRODUCTION_RECEIVER_RESPONSE')||null;const classification=classifySenderFailure(error,responseTrace,receiverResponseTrace);const artifact={status:'FAILED',error:String(error?.stack||error),...classification,correlation:{idempotency_key:requestTrace?.idempotency_key||'UNAVAILABLE',receiver_response:responseTrace,production_receiver_response:receiverResponseTrace},trace};fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(artifact,null,2)+'\n');console.error(error);process.exit(1)});
