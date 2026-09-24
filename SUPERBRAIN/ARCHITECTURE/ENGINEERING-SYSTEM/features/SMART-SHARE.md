@@ -1,10 +1,10 @@
-# Smart Share — Engineering Specification
+# Smart Connect — Engineering Specification
 
 ## What / why
-Smart Share is the explicit consented sharing mechanism for eligible intelligence. It turns private intelligence into a deliberately scoped shared/public artifact only when the human and system authority rules permit it.
+Smart Connect is the explicit consented participation and wisdom contribution mechanism for eligible intelligence. It turns private intelligence into a deliberately scoped shared/public artifact only when the human and system authority rules permit it.
 
 ## Human interface
-A share action should answer: **WHAT am I sharing? WITH WHOM? AT WHAT SCOPE? WHAT WILL THEY SEE?** Provide recipient/scope preview, source/provenance visibility, confirmation for consequential sharing, success receipt and clear failure/denial.
+A share action should answer: **WHAT am I participation and wisdom contribution? WITH WHOM? AT WHAT SCOPE? WHAT WILL THEY SEE?** Provide recipient/scope preview, source/provenance visibility, confirmation for consequential participation and wisdom contribution, success receipt and clear failure/denial.
 
 Possible targets: individual, selected people, eligible connection group, Smart Space, collective/public scope where authorized. A single shared item never silently publishes its surrounding private context.
 
@@ -40,10 +40,10 @@ Share one private item to one authorized recipient; verify exact scope; prove no
 **DEFINED** by `.naya/13` and privacy/publication contracts; runtime state must be inspected.
 
 ## Gap / next action
-Map the existing sharing/publication runtime to this contract and prove item-level authorization plus explicit scope.
+Map the existing participation and wisdom contribution/publication runtime to this contract and prove item-level authorization plus explicit scope.
 
 ## Source authority
-`.naya/2026-09-11-NAYAPOWER-13-SMART-SHARE-SMART-NOTE.md`; `.naya/2026-09-11-16-35-NAYAPOWER-25-PRIVACY-BY-CHOICE-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md`.
+`.naya/2026-09-11-NAYAPOWER-13-SMART-CONNECT-SMART-NOTE.md`; `.naya/2026-09-11-16-35-NAYAPOWER-25-PRIVACY-BY-CHOICE-SMART-NOTE.md`; `.naya/2026-09-12-NAYAPOWER-46-IDENTITY-PRIVACY-PUBLICATION-CONTRACT.md`.
 
 
 ## COMPLETION CHECKLIST — 2026-09-19
@@ -61,4 +61,4 @@ Map the existing sharing/publication runtime to this contract and prove item-lev
 - [x] Dated activity record exists
 - [x] One next action recorded
 
-**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-SHARE.md).
+**Current state:** DEFINED. See [2026-09-19 activity](../ACTIVITY/2026/09/19/SMART-CONNECT.md).
