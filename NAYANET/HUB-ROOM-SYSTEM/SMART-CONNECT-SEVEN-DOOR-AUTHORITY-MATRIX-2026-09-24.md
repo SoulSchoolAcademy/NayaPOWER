@@ -353,3 +353,60 @@ The earlier statements that the receiver had no installation binding and no owne
 ### Single next action
 
 Configure GITHUB_WEBHOOK_SECRET through the authorized production secret-management boundary, then execute the live signed GitHub proof: bound owner positive → exact persistence → exact replay → fresh retrieval → non-owner/wrong-repository denial → source revocation denial → authority-separation proof.
+
+
+## 2026-09-24 P5 — Resolver runtime defect found and repaired
+
+### Independent integration audit finding
+
+The first production execution of the canonical owner resolver was intentionally exercised with an unbound installation/repository. The resolver failed with a PostgreSQL runtime error before it could return the expected missing-binding denial:
+
+`function min(uuid) does not exist`
+
+Root cause: the owner resolver used `min(sp.member_id)` even though PostgreSQL has no built-in `min(uuid)` aggregate.
+
+### Repair
+
+Production function `nayanet_resolve_github_webhook_owner(bigint,text)` was replaced through the authorized Supabase migration boundary to use `(array_agg(sp.member_id))[1]` while preserving the existing count-based ambiguity checks and service-role-only execution boundary.
+
+### Independent production verification
+
+- Unknown installation/repository now fails with the canonical `GITHUB_BINDING_NOT_FOUND` error instead of a SQL type error.
+- `service_role` execute privilege: TRUE.
+- `authenticated` execute privilege: FALSE.
+- Function remains `SECURITY DEFINER` with `search_path='public'`.
+- Production resolver definition read-back matches the repaired implementation.
+
+### Current sender boundary
+
+Production `nayanet_smart_connect_participation` currently contains **zero active GitHub App participation rows**. Repository inspection also found no caller of `nayanet_smart_connect_github_bind` and no production GitHub App installation/configuration identity in source.
+
+Therefore the remaining real-world sender chain has two external/configuration boundaries:
+
+1. production `GITHUB_WEBHOOK_SECRET` must be configured through the authorized secret-management/admin boundary;
+2. a real GitHub App must be installed and its installation + selected repository must be bound to the authenticated owner's existing `github_app` Smart Connect participation.
+
+Neither boundary is fabricated as complete.
+
+### Runtime parity
+
+- Current repository HEAD: `79c0eeacaaf023ea2e2fbad1bfa65957b52522c5`.
+- Webhook source SHA: `61a6fcce188cc617d35c6b06bd2444dde4c9b965`.
+- Deployed webhook version: `4`.
+- Deployed webhook digest: `36f89f5c9beadcf77298ee0ccf8705a8e836cbdd4813ef1c70282d40bd366072`.
+- Webhook source bytes exactly match deployed Edge Function source.
+- Hub source is unchanged from release head `e4bb2c20aec1e5d2811bf2030da7d4bb85365255` through current HEAD; release workflow `36065304937` succeeded and deployed the canonical Hub.
+- Current live Hub HTML SHA-256: `798b1fb67d5d88815b90be9523b0da778e802ffa86031e8eff2e69a218a46184`.
+- Current main `NAYANET/HUB/index.html` bytes produce the exact same SHA-256.
+
+### Hub receiver contract
+
+The live Smart Feed uses `window.NayaAssistantRuntime.smartFeed()`, which invokes the production `naya-smart-feed` Edge Function. The function requires authenticated user identity and scopes personal/activity retrieval to `user.id`; collective retrieval requires explicit published consent. The Hub therefore has a canonical retrieval path for the receiver output rather than inventing static intelligence.
+
+### Status
+
+**PARTIALLY VERIFIED — SOURCE/BUILD/RUNTIME PARITY IS VERIFIED; GITHUB SENDER LOOP REMAINS BLOCKED BY REAL EXTERNAL APP/SECRET CONFIGURATION.**
+
+### Single next action
+
+**Through the authorized external GitHub/Supabase administration boundary, install/configure the real GitHub App and production webhook secret, then create the authenticated owner's existing Smart Connect `github_app` participation binding for the selected repository; do not paste or expose any secret in chat.**
