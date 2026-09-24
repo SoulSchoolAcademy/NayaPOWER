@@ -1,6 +1,10 @@
 name: NayaNET Universal Envelope — third sender edge-function proof
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-envelope-third-sender.yml'
 permissions:
   contents: read
   id-token: write
