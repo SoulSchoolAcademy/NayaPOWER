@@ -1,0 +1,38 @@
+name: NayaNET Universal Envelope — cross-sender invariance execution
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  invariance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      RUN_IDENTITY: cross-sender-invariance-${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute invariance proof
+        run: node .github/scripts/cross-sender-invariance.mjs
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-envelope-cross-sender-invariance-proof-trigger4
+          path: universal-envelope-cross-sender-invariance-proof.json
+          if-no-files-found: error
