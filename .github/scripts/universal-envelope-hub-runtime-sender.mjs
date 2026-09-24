@@ -2,8 +2,19 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { classifySenderFailure, summarizeReceiverBridgeResponse, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
-const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID;
+import { buildNoMutationProof, classifySenderFailure, resolveProofMode, summarizeReceiverBridgeResponse, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
+const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID||'LOCAL';
+const currentRef=process.env.GITHUB_REF||'UNPINNED_LOCAL';
+const eventName=process.env.GITHUB_EVENT_NAME||'LOCAL';
+const headRef=process.env.GITHUB_HEAD_REF||'';
+const headSha=process.env.GITHUB_SHA||'UNAVAILABLE';
+const proofMode=resolveProofMode(currentRef,eventName,headRef);
+if(proofMode==='NON_MAIN_NO_MUTATION'){
+  const proof=buildNoMutationProof({ref:currentRef,eventName,headRef,headSha,runId:run});
+  fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(proof,null,2)+'\n');
+  console.log('NON_MAIN_NO_MUTATION',JSON.stringify(proof));
+  process.exit(0);
+}
 const alias=('envelopesender'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
 const title='Universal Envelope Hub Runtime Sender '+run;
 const note='Meaningful output emitted by the canonical NayaNET Hub runtime and normalized into Universal Intelligence Envelope V1 for the existing Project Intelligence Bridge.';

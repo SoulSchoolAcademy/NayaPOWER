@@ -20,8 +20,16 @@ def test_current_source_authority_matches_static_hub_blob():
 
 def test_sender_trace_contract_is_redacted():
     source = SENDER.read_text(encoding="utf-8")
-    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "PRODUCTION_RECEIVER_AUTHORITY_GATE", "REF_NOT_AUTHORIZED", "status:'PARTIAL'", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
+    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "PRODUCTION_RECEIVER_AUTHORITY_GATE", "REF_NOT_AUTHORIZED", "resolveProofMode", "buildNoMutationProof", "NON_MAIN_NO_MUTATION", "GITHUB_REF", "GITHUB_EVENT_NAME", "GITHUB_HEAD_REF", "status:'PARTIAL'", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
         assert marker in source
+
+def test_non_main_preflight_precedes_browser_and_capture():
+    source = SENDER.read_text(encoding="utf-8")
+    preflight = source.index("if(proofMode==='NON_MAIN_NO_MUTATION')")
+    browser = source.index("chromium.launch")
+    capture = source.index("captureSmartNote")
+    assert preflight < browser < capture
+    assert "process.exit(0)" in source
 
 def test_node_diagnostics_suite_passes():
     result = subprocess.run(["node", "--test", str(NODE_TEST)], cwd=ROOT, text=True, capture_output=True)

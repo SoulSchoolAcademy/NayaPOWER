@@ -2,6 +2,34 @@ const LIMIT=512;
 const redact=value=>String(value??'').replace(/(bearer|token|apikey|secret|password|authorization)\s*[:=]\s*(?:bearer\s+)?[^\s,;|]+/gi,'$1=[REDACTED]').replace(/\bbearer\s+[^\s,;|]+/gi,'bearer=[REDACTED]').replace(/\s+/g,' ').trim().slice(0,LIMIT)||'UNAVAILABLE';
 const pick=(...values)=>{for(const value of values){if(value!==undefined&&value!==null&&String(value).trim())return redact(value)}return 'UNAVAILABLE'};
 export function redactDiagnostic(value){return redact(value)}
+export function resolveProofMode(ref,eventName='',headRef=''){
+  const pullRequest=eventName==='pull_request'||eventName==='pull_request_target'||Boolean(headRef);
+  return String(ref||'UNPINNED_LOCAL')==='refs/heads/main'&&!pullRequest?'MAIN_REF_PROOF':'NON_MAIN_NO_MUTATION';
+}
+export function buildNoMutationProof({ref='UNPINNED_LOCAL',eventName='',headRef='',headSha='',runId='' }={}){
+  return {
+    schema:'NAYANET_UNIVERSAL_ENVELOPE_HUB_RUNTIME_SENDER_PROOF_V1',
+    status:'VERIFIED',
+    proof_mode:'NON_MAIN_NO_MUTATION',
+    ref:redact(ref),
+    event_name:redact(eventName),
+    head_ref:redact(headRef),
+    head_sha:redact(headSha),
+    run_id:redact(runId),
+    production_mutation:'NONE',
+    browser_launch:'NOT_STARTED',
+    network_activity:'NONE',
+    smart_note_capture:'NOT_RUN',
+    production_transaction:'NOT_CREATED',
+    production_receipt:'NOT_CREATED',
+    production_intelligence:'NOT_CREATED',
+    capture_request_count:0,
+    receiver_request_count:0,
+    main_only_receiver_policy:'PRESERVED',
+    trace:[],
+    truth_boundary:'Non-main execution exits before browser launch, network activity, Smart Note capture, or production receiver calls.'
+  };
+}
 export function summarizeReceiverResponse(status,body,idempotencyKey=''){
   const value=body&&typeof body==='object'?body:{};
   return {
