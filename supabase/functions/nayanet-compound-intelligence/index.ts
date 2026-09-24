@@ -784,7 +784,8 @@ async function commitIntelligence(client: any, userId: string, body: any) {
       schema_version:"INTELLIGENT_BLOCK_V1",
       metadata:{idempotency_key:idempotencyKey,category,topic,applicable_scope:body.applicable_scope ?? null,
         limits:body.limits ?? null,human_teaching:body.human_teaching === true,
-        evidence,epistemic_state:epistemicState,captured_at:new Date().toISOString()}
+        evidence:Array.isArray(body.evidence) ? body.evidence.map(String).filter(Boolean) : [],
+        epistemic_state:String(body.epistemic_state ?? "UNKNOWN"),captured_at:new Date().toISOString()}
     };
     captureReceipt=await record(client,event,"intelligence.capture",
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",

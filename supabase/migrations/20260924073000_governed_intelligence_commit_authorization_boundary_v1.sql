@@ -1,4 +1,4 @@
-[Reading 121 lines from start (total: 121 lines, 0 remaining)]
+﻿[Reading 121 lines from start (total: 121 lines, 0 remaining)]
 
 -- Govern the existing intelligence_commit persistence boundary with the existing authority grant model.
 -- No new store or authority model. Existing calls remain compatible because the new
@@ -122,24 +122,9 @@ $function$;
 grant execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb,jsonb) to authenticated;
 revoke execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb,jsonb) from anon, public;
 
-[executed on device: DESKTOP-OJ712N5 (97813f8c-e057-47af-82b6-89e3bc067f5c)]
--- Preserve the legacy six-argument call surface, but route it through the governed
--- seven-argument boundary so intelligence.capture cannot bypass authorization.
-create or replace function public.nayanet_record_cognition_event(
-  p_project_id text,
-  p_event jsonb,
-  p_action text default 'record_intelligence',
-  p_expected_result text default null,
-  p_observed_result text default null,
-  p_learning jsonb default '[]'::jsonb
-) returns jsonb
-language sql
-set search_path to 'public'
-as $function$
-  select public.nayanet_record_cognition_event(
-    p_project_id,p_event,p_action,p_expected_result,p_observed_result,p_learning,null::jsonb
-  );
-$function$;
 
-grant execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb) to authenticated;
-revoke execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb) from anon, public;
+-- Remove the legacy six-argument overload. Calls with six arguments resolve to the
+-- defaulted seventh parameter on the governed function, avoiding PostgREST ambiguity.
+drop function if exists public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb);
+
+
