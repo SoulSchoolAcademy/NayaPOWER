@@ -290,3 +290,66 @@ Then fail closed on missing, ambiguous, or revoked bindings and invoke the exist
 ### Single next action
 
 **Implement the smallest governed GitHub installation + repository → existing Smart Connect participation/member binding on the existing participation seam, with fail-closed missing/ambiguous/revoked resolution.**
+
+
+## 2026-09-24 P4 — GitHub owner-bound canonical persistence seam
+
+### Source/runtime change
+
+The inbound receiver at NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts now:
+
+1. verifies the existing GitHub HMAC signature before parsing/normalizing;
+2. extracts installation.id and repository.full_name;
+3. fails closed with BLOCKED_OWNER_BINDING when either binding key is missing/invalid;
+4. resolves the human owner through service-only nayanet_resolve_github_webhook_owner(installation_id, repository);
+5. fails closed when the binding is missing, ambiguous, inactive/revoked, or unresolved;
+6. passes the resolved owner into the existing seven-argument nayanet_record_cognition_event canonical persistence seam;
+7. the canonical seven-argument function independently re-resolves the same installation/repository binding and rejects an owner mismatch before persistence;
+8. replay protection remains in the canonical seven-argument path, returning the original event/state/receipt with replayed=true instead of creating a second receipt or advancing state.
+
+No second persistence store, connection store, authority model, or webhook backend was introduced.
+
+### Production deployment
+
+The updated Edge Function is ACTIVE, version 4 with deployment digest 36f89f5c9beadcf77298ee0ccf8705a8e836cbdd4813ef1c70282d40bd366072.
+
+The deployed source was independently read back and matches the repository source.
+
+The canonical seven-argument function was independently read back after the production migration and contains both owner-bound service-role handling and exact replay protection.
+
+### Independent live runtime verification
+
+A fresh POST probe reached production version 4 and returned:
+
+HTTP 503 — GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED — BLOCKED_EXTERNAL_CREDENTIAL
+
+This is the expected fail-closed boundary while the real production GitHub secret remains absent. The response proves the deployed runtime is active and still refuses to process an unsigned/unconfigured webhook before owner resolution or persistence.
+
+### Current truth
+
+- Owner binding implementation: PRODUCTION APPLIED / SOURCE + RUNTIME VERIFIED
+- Canonical owner-aware persistence seam: PRODUCTION APPLIED / READ-BACK VERIFIED
+- Missing/ambiguous/revoked binding fail-closed path: SOURCE + FUNCTION LOGIC VERIFIED; LIVE POSITIVE/NEGATIVE DELIVERY TEST NOT VERIFIED
+- Signed webhook positive ingress: BLOCKED_EXTERNAL_CREDENTIAL
+- Exact signed replay: NOT VERIFIED until the external secret is configured
+- Installation/repository isolation under live GitHub delivery: NOT VERIFIED
+- Webhook → execution authority separation: SOURCE-LEVEL PASS; LIVE NOT VERIFIED
+- No default/system owner fallback: VERIFIED BY SOURCE
+- No second authority/persistence model: VERIFIED BY SOURCE
+
+### Correction to earlier P1/P3 notes
+
+The earlier statements that the receiver had no installation binding and no owner-resolution seam are superseded by this P4 repair. The missing production secret remains an independent external credential boundary. The live signed delivery proof remains open.
+
+### Evidence
+
+- Webhook source commit: da74234e2a44bd0d3a3710ac4f06b84de4569644
+- Canonical owner-aware persistence migration commits: e61e1ff2c0d77f5af7386607459cfa91caf75114, f02038a6c32bf02d70785e88a798146872e8ca29
+- Production Edge Function: nayanet-github-webhook, version 4
+- Production deployment digest: 36f89f5c9beadcf77298ee0ccf8705a8e836cbdd4813ef1c70282d40bd366072
+- Independent runtime probe: HTTP 503 GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED
+- Production canonical function read-back: owner-aware service-role path + resolver revalidation + replay branch
+
+### Single next action
+
+Configure GITHUB_WEBHOOK_SECRET through the authorized production secret-management boundary, then execute the live signed GitHub proof: bound owner positive → exact persistence → exact replay → fresh retrieval → non-owner/wrong-repository denial → source revocation denial → authority-separation proof.
