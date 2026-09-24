@@ -132,6 +132,11 @@ jobs:
           retrieval=proof["retrieval"]
           state=json.loads(Path(".naya/control-plane/STATE.json").read_text())
           blocks=json.loads(Path(".naya/control-plane/BLOCKS.json").read_text())
+          cp_next=state.get("current_next_action")
+          active=blocks.get("active_block") if isinstance(blocks.get("active_block"),dict) else {}
+          canonical_next=(cp_next.get("next_action") if isinstance(cp_next,dict) else None) or active.get("next_action")
+          if not canonical_next:
+            raise SystemExit("COLD_SUCCESSOR_NO_CANONICAL_NEXT_ACTION")
           baton={
             "schema":"NAYANET_GOVERNED_INTELLIGENCE_SUCCESSOR_BATON_V1",
             "cold_successor":"fresh runtime; no conversational rescue",
@@ -158,7 +163,7 @@ jobs:
             },
             "unknown":["Outcome-based behavior improvement remains unverified.","This proof does not establish production Hub/browser parity."],
             "protected":["No second intelligence store.","Capability does not create authority.","UNKNOWN is not VERIFIED.","BLOCKED is not PASS."],
-            "next_action":"Use the persisted governed intelligence result in one fresh authorized successor action, then observe and verify the outcome before promotion."
+            "next_action":canonical_next
           }
           checks={
             "proof_status_verified":baton["current_truth"]["proof_status"]=="VERIFIED",
