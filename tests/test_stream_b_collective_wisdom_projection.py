@@ -12,6 +12,7 @@ def test_verified_learning_projection_contract():
     assert "v_learning.claim" in sql
     assert "v_source.id" in sql
     assert "verification_method" in sql
+    assert "set epistemic_state='VERIFIED'" in sql
     assert "execution authority and publication are not consulted" in sql
 
 def test_projection_provenance_excludes_identity_and_raw_content():
