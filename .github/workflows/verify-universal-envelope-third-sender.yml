@@ -1,0 +1,91 @@
+name: NayaNET Universal Envelope — third sender edge-function proof
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  third-sender:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: pi-understand-${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Third sender -> Envelope V1 -> existing production receiver
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, uuid, hashlib, urllib.request, urllib.error, datetime, sys
+          from pathlib import Path
+          B=os.environ["SUPABASE_URL"]; K=os.environ["SUPABASE_PUBLISHABLE_KEY"]; RUN=os.environ["RUN_IDENTITY"]
+          def post(path, body, token=None, extra=None):
+              headers={"apikey":K,"Content-Type":"application/json",**(extra or {})}
+              if token: headers["Authorization"]="Bearer "+token
+              req=urllib.request.Request(B+path,data=json.dumps(body,separators=(",",":")).encode(),headers=headers,method="POST")
+              try:
+                  with urllib.request.urlopen(req,timeout=60) as r:return r.status,json.loads(r.read())
+              except urllib.error.HTTPError as e:return e.code,json.loads(e.read())
+          s,a=post("/auth/v1/signup",{})
+          assert s==200 and a.get("access_token") and a.get("user",{}).get("id"), "FRESH_OWNER_AUTH_FAILED"
+          token=a["access_token"]; owner=a["user"]["id"]
+          title="Third Sender Universal Envelope Proof "+RUN
+          content="Meaningful output emitted by the NayaNET Project Intelligence Understand edge sender and normalized into Universal Intelligence Envelope V1."
+          ss,sb=post("/functions/v1/nayanet-pi-understand",{"title":title,"content":content,"confidence":1,"tags":["third-sender","universal-envelope","pi-understand"]},token)
+          assert ss==200 and sb.get("ok"), "THIRD_SENDER_FAILED:"+json.dumps(sb)
+          event=sb["result"]["event"]; receipt=sb["result"]["receipt"]
+          print("THIRD_SENDER_OUTPUT="+json.dumps({"sender":"nayanet-pi-understand","event_id":event["event_id"],"receipt":receipt},separators=(",",":")))
+          now=datetime.datetime.now(datetime.timezone.utc).isoformat()
+          envelope={"schema":"NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1","envelope_id":"third-sender:"+RUN,"source":{"type":"nayanet_pi_understand","id":"edge:nayanet-pi-understand"},"identity":{"actor_type":"naya_edge_function","actor_id":"nayanet-pi-understand"},"owner_scope":{"owner_id":owner,"project_id":"NayaNET"},"occurred_at":now,"received_at":now,"output":{"kind":"understanding","event":event,"sender_response":sb["result"]},"meaningfulness":"MEANINGFUL","provenance":{"source_ref":"supabase://functions/nayanet-pi-understand","source_event_id":event["event_id"],"source_id":event["event_id"]},"epistemic":{"status":"OBSERVED"},"privacy":{"visibility":"PRIVATE"},"authority":{"status":"CONTEXT_ONLY"},"context":{"project":"NayaNET","sender":"nayanet-pi-understand","runtime":"Supabase Edge Function","proof_run":RUN},"idempotency_key":"third-sender-envelope-"+RUN}
+          sys.path.insert(0,str(Path(".naya/runtime").resolve()))
+          from universal_intelligence_envelope import UniversalIntelligenceEnvelope
+          from project_intelligence_bridge import packet, accept_universal_envelope, validate
+          UniversalIntelligenceEnvelope.from_mapping(envelope)
+          os.environ["NAYANET_OWNER_ID"]=owner
+          p=accept_universal_envelope(envelope,packet())
+          p["sender"]={"type":"nayanet_pi_understand","repository":"SoulSchoolAcademy/NayaPOWER","ref":"main"}
+          p["source_ref"]="supabase://functions/nayanet-pi-understand/"+event["event_id"]
+          p["freshness"]={"source_ref":p["source_ref"],"resolution":"LIVE"}
+          p["idempotency_key"]=envelope["idempotency_key"]
+          canonical=json.dumps(p,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
+          p["content_hash"]=hashlib.sha256(canonical).hexdigest()
+          p["packet_id"]=str(uuid.uuid5(uuid.NAMESPACE_URL,"nayanet:project-intelligence:"+p["source_ref"]+":"+RUN+":"+p["content_hash"]))
+          e=validate(p); assert not e, "ADAPTED_PACKET_INVALID:"+json.dumps(e)
+          print("ENVELOPE_V1_ADAPTER=PASS")
+          q=urllib.request.Request(os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"]+"&audience=nayanet-project-intelligence-bridge",headers={"Authorization":"bearer "+os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
+          with urllib.request.urlopen(q,timeout=30) as r: oidc=json.loads(r.read())["value"]
+          rs,rb=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc})
+          print("RECEIVER="+json.dumps(rb,separators=(",",":")))
+          assert rs==200 and rb.get("status")=="COMPLETED" and rb.get("persisted") and rb.get("indexed") and rb.get("projected"), "PRODUCTION_RECEIVER_FAILED"
+          assert rb["owner_id"]==owner, "OWNER_LINEAGE_MISMATCH"
+          rr,rx=post("/functions/v1/nayanet-project-intelligence-retrieve",{"query":rb["receiver_event_id"]},token)
+          assert rr==200 and rx.get("ok") and rx.get("result",{}).get("events"), "INDEPENDENT_RETRIEVAL_FAILED"
+          ev=next((x for x in rx["result"]["events"] if x.get("event_id")==rb["receiver_event_id"]),None)
+          assert ev, "RECEIVER_EVENT_NOT_RECONSTRUCTED"
+          c=json.loads(ev["content"]); bridge=c.get("bridge",{}); intel=c.get("intelligence",[])
+          assert bridge.get("receiver_transaction_id")==rb["receiver_transaction_id"] and bridge.get("receiver_event_id")==rb["receiver_event_id"] and bridge.get("receipt_id")==rb["receipt_id"], "RECEIVER_LINEAGE_MISMATCH"
+          u=next((x for x in intel if x.get("object_id")=="envelope:"+envelope["envelope_id"]),None)
+          assert u and u.get("content",{}).get("source",{}).get("type")=="nayanet_pi_understand", "SENDER_LINEAGE_NOT_PRESERVED"
+          print("INDEPENDENT_RECONSTRUCTION=PASS")
+          rs2,rb2=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc})
+          assert rs2==200 and rb2.get("status")=="ACCEPTED" and rb2.get("replay") is True and rb2.get("receiver_transaction_id")==rb["receiver_transaction_id"] and rb2.get("receiver_event_id")==rb["receiver_event_id"] and rb2.get("receipt_id")==rb["receipt_id"], "EXACT_REPLAY_FAILED"
+          print("EXACT_REPLAY=PASS")
+          proof={"schema":"NAYANET_UNIVERSAL_ENVELOPE_THIRD_SENDER_PROOF_V1","status":"VERIFIED","run_id":RUN,"sender":{"type":"nayanet_pi_understand","event_id":event["event_id"],"receipt":receipt},"envelope_id":envelope["envelope_id"],"receiver":{"packet_id":rb["packet_id"],"receiver_transaction_id":rb["receiver_transaction_id"],"receiver_event_id":rb["receiver_event_id"],"receipt_id":rb["receipt_id"],"cognition_event_id":rb["projection"]["cognition_event_id"],"index_id":rb["projection"]["index_id"]},"checks":{"third_sender_output":"PASS","envelope_v1":"PASS","existing_adapter":"PASS","existing_production_receiver":"PASS","independent_reconstruction":"PASS","exact_replay":"PASS"},"truth_boundary":"A third sender class, nayanet-pi-understand, is proven through the same Universal Envelope V1 and existing Project Intelligence Bridge. The workflow is only the test harness; the sender is the deployed Supabase Edge Function."}
+          Path("universal-envelope-third-sender-proof.json").write_text(json.dumps(proof,indent=2)+"\n")
+          print("CHAIN_RESULT="+json.dumps(proof,separators=(",",":")))
+          PY
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-envelope-third-sender-proof
+          path: universal-envelope-third-sender-proof.json
+          if-no-files-found: error
