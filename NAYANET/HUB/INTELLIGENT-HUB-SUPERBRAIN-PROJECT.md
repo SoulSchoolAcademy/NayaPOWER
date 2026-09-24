@@ -60,7 +60,7 @@ A Smart Note is not merely a document. Once created, it becomes an intelligence 
 
 **Purpose:** Turn voluntarily shared knowledge and wisdom into collective intelligence.
 
-A person may explicitly consent to share a Smart Note or derived intelligence with the collective.
+An authorized connection to NayaNET establishes the participant's consent to participate in governed collective intelligence exchange. A person does **not** need to manually consent to every Smart Note or derived intelligence event.
 
 The shared object is separated from the person's identity in the collective presentation.
 
@@ -137,7 +137,7 @@ Canonical flow:
 
 A Smart Note can enter:
 
-`PERSONAL FEED → SPACE/LIBRARY → REPORTS → COLLECTIVE FEED (WITH CONSENT) → FUTURE INTELLIGENCE`
+`PERSONAL FEED → SPACE/LIBRARY → REPORTS → GOVERNED COLLECTIVE LEARNING (AFTER PARTICIPATION CONSENT) → COLLECTIVE FEED → FUTURE INTELLIGENCE`
 
 No renderer should fabricate intelligence that is not present in the underlying event/note model.
 
@@ -467,12 +467,12 @@ The Hub must preserve these boundaries:
 ### Personal Intelligence
 **PRIVATE**
 
-The person's intelligence remains theirs unless they explicitly choose otherwise.
+The person's intelligence remains private at the source. Connection to the Hub permits governed participation and member-level visibility; it does not make the intelligence public.
 
 ### Collective Intelligence
 **SHARED BY CONSENT**
 
-Only explicitly consented intelligence enters the collective. Identity is not exposed by default.
+Participation consent is established by the authorized connection. The system then automatically filters and distills useful intelligence for collective learning. Identity is not exposed by default.
 
 ### Activity
 **PRIVATE**
@@ -482,11 +482,13 @@ The person's work activity is not a public social feed.
 ### Public
 **BY DECISION**
 
-Nothing becomes public merely because it exists in a Smart Note, Personal Feed or Activity Feed.
+Nothing becomes public merely because it exists in a Smart Note, Personal Feed, Activity Feed, or Collective Intelligence Feed. Public publication requires a separate user decision.
 
-Canonical privacy law:
+Canonical privacy/participation law:
 
-> **Private by default • Shared by choice • Collective by consent • Public by decision.**
+> **LEARN BY DEFAULT. SHARE WISDOM BY CONSENT. PROTECT IDENTITY BY DEFAULT. PUBLISH BY DECISION.**
+
+For the full system contract, see `.naya/protocol/NAYANET-INTELLIGENCE-PARTICIPATION-PRIVACY-PROTOCOL-V1.md`.
 
 ---
 
@@ -598,7 +600,7 @@ Determine whether the highlights surface can be generated automatically and reli
 1. **Smart Notes are the star.**
 2. **The feeds are views over intelligence, not independent databases.**
 3. **Personal intelligence is private.**
-4. **Collective intelligence requires consent.**
+4. **Collective intelligence requires participation consent, then governed usefulness/trust/privacy filtering; per-event manual consent is not required.**
 5. **Identity is not exposed in collective intelligence by default.**
 6. **Activity is private continuity, not public social activity.**
 7. **Reports compound intelligence; they do not merely archive text.**

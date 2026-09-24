@@ -217,7 +217,7 @@ The Daily Report should not be the first moment learning occurs. It is a higher-
 
 ### Collective Intelligence
 
-With explicit Smart Share consent, generalized and appropriately verified learning can become a candidate contribution to collective intelligence without exposing private identity or private source material.
+With authorized network participation consent established by connection, generalized and appropriately verified learning can become a candidate contribution to collective intelligence without exposing private identity or private source material. Ordinary learning does not require per-event approval.
 
 Canonical relationship:
 
@@ -507,7 +507,7 @@ The V1 system should eventually prove all of the following:
 12. Confirm verified outcomes can reinforce, revise, or supersede learning.
 13. Confirm a processor failure does not destroy the Smart Note.
 14. Confirm retry/idempotency does not duplicate the learning effect.
-15. Confirm private learning does not leak into collective intelligence without explicit Smart Share consent.
+15. Confirm private source material and identity do not leak into collective intelligence; participation consent permits governed collective learning, while public publication remains a separate decision.
 16. Confirm temporal reports synthesize learning without becoming a second competing learning engine.
 
 ## 19. SUCCESS CONDITION
