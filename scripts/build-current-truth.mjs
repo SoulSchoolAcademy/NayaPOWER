@@ -39,7 +39,7 @@ function render() {
   const northStar=first(MAP.north_star, STATE.north_star);
   const activeBlock=first(BLOCKS.active_block?.id, STATE.current_block, MAP.execution_map?.active_block);
   const activeStatus=first(BLOCKS.active_block?.status, STATE.current_block_status);
-  const signals=collectSignals({STATE,MAP,BLOCKS,PROOF,BATON}).slice(0,20);
+  const signals = [['PROOF.current_evidence.runtime_parity.status', PROOF.current_evidence?.runtime_parity?.status], ['PROOF.current_evidence.runtime_parity.stale_reason', PROOF.current_evidence?.runtime_parity?.stale_reason], ['PROOF.current_evidence.desktop_commander', PROOF.current_evidence?.desktop_commander], ['MAP.current_frontier.status', MAP.current_frontier?.status], ['BLOCKS.active_block.status', BLOCKS.active_block?.status]].filter(([,v]) => typeof v === "string" && /(UNKNOWN|BLOCKED|FAILED|STALE|OPEN_PENDING|MISSING|REQUIRES)/i.test(v));
   const lines=[
     `# NayaPOWER - CURRENT TRUTH`,``,
     `> Generated from the canonical control plane at build time. This file is a derived cold-boot aid; it never overrides the constitution, control plane, or live runtime evidence.`,``,
