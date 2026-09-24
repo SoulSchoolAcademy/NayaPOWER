@@ -126,7 +126,7 @@ Important machine principles include:
 
 - participation consent established by authorized connection;
 - identity minimization;
-- privacy by choice;
+- privacy by default;
 - provenance;
 - deduplication;
 - contradiction handling;
@@ -386,7 +386,7 @@ The human should not have to say:
 
 Connection to the Hub is the participation decision. The system should not re-ask for ordinary learning permission on every Smart Note.
 
-Instead, the system should recognize that a Smart Note is an intelligence event, process it through PIS/CIS/Adaptive Learning, and—when the user's Smart Share consent permits it—automatically determine whether eligible learning can contribute to the collective.
+Instead, the system should recognize that a Smart Note is an intelligence event, process it through PIS/CIS/Adaptive Learning, and—when participation consent has been established by the authorized connection—automatically determine whether eligible learning can contribute to the collective.
 
 Automatic processing does not mean automatic acceptance.
 
