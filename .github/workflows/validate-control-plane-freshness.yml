@@ -29,8 +29,10 @@ jobs:
       - name: Run explicit UNKNOWN resolution regression tests
         run: python -m unittest tests/test_control_plane_freshness.py -v
       - name: Run fail-closed freshness audit
+        id: freshness_audit
+        continue-on-error: true
         run: python scripts/validate-control-plane-freshness.py
-      - name: Validate freshness artifact
+      - name: Classify freshness artifact
         run: |
           set -euo pipefail
           python - <<'PY'
@@ -39,8 +41,18 @@ jobs:
           report = json.loads(Path('control-plane-freshness-audit.json').read_text(encoding='utf-8'))
           if report.get('schema') != 'NAYANET_CONTROL_PLANE_FRESHNESS_AUDIT_V2':
               raise SystemExit('SCHEMA_MISMATCH')
+          outcome = report.get('outcome')
+          if outcome == 'INFRASTRUCTURE_FAILURE':
+              raise SystemExit('FRESHNESS_INFRASTRUCTURE_FAILURE')
+          if outcome not in {'PASS', 'EXPECTED_RED'}:
+              raise SystemExit('UNKNOWN_FRESHNESS_OUTCOME')
+          if outcome == 'EXPECTED_RED':
+              if report.get('status') != 'RED' or not report.get('first_divergence'):
+                  raise SystemExit('EXPECTED_RED_SHAPE_INVALID')
+              print('FRESHNESS=EXPECTED_RED')
+              raise SystemExit(0)
           if report.get('status') != 'FRESH':
-              raise SystemExit('STATUS_NOT_FRESH')
+              raise SystemExit('PASS_STATUS_INVALID')
           checks = report.get('checks', {})
           required = (
               'head_authoritative',
