@@ -196,6 +196,16 @@
     ]
   },
   "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+  "next_action_blocker": {
+    "status": "BLOCKED",
+    "boundary": "existing-member intelligence_commit authority",
+    "learning_evidence_id": "1112073e-08ee-407e-a47a-8b65b845f57b",
+    "required_capability": "legitimate authenticated owner session + valid in-scope authority grant",
+    "production_observed_grant_count": 0,
+    "production_observed_currently_usable_grant_count": 0,
+    "no_bypass": true,
+    "next_action": "Obtain legitimate owner session and issue minimum scoped intelligence_commit grant."
+  },
   "current_attempt": {
     "status": "VERIFIED",
     "workflow_run": 35913487739,
