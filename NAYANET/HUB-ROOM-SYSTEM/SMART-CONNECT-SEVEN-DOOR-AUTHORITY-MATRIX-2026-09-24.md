@@ -1,4 +1,4 @@
-# 🔱 Smart Connect — Seven-Door Authority Matrix
+﻿# ðŸ”± Smart Connect â€” Seven-Door Authority Matrix
 **Date:** 2026-09-24
 **Repository:** SoulSchoolAcademy/NayaPOWER
 **Canonical room contract:** `NAYANET/HUB-ROOM-SYSTEM/04-SMART-CONNECT.md`
@@ -8,21 +8,21 @@
 
 Smart Connect is participation, not authority.
 
-**Connection ≠ Permission. Authentication ≠ Authorization. Participation ≠ Execution authority.**
+**Connection â‰  Permission. Authentication â‰  Authorization. Participation â‰  Execution authority.**
 
 Every door must converge on the existing governed core:
 
-**DOOR → AUTHENTICATION → IDENTITY → PARTICIPATION → AUTHORITY → SCOPE → CONSENT → PERSISTENCE → REVOCATION → ACTIVITY/EVIDENCE → REPLAY/IDEMPOTENCY → FRESH RETRIEVAL**
+**DOOR â†’ AUTHENTICATION â†’ IDENTITY â†’ PARTICIPATION â†’ AUTHORITY â†’ SCOPE â†’ CONSENT â†’ PERSISTENCE â†’ REVOCATION â†’ ACTIVITY/EVIDENCE â†’ REPLAY/IDEMPOTENCY â†’ FRESH RETRIEVAL**
 
 No door may create a second connection store, authentication model, authority model, or intelligence source of truth.
 
-## Common participation boundary — independently verified
+## Common participation boundary â€” independently verified
 
 The canonical relationship substrate is `public.nayanet_connections`, reached through the existing authenticated runtime/RPC boundary.
 
 Fresh adversarial proof verified:
 
-- owner creates A → B Connection;
+- owner creates A â†’ B Connection;
 - owner retrieves the canonical row;
 - non-owner B cannot retrieve A's row;
 - non-owner B cannot revoke A's row;
@@ -40,24 +40,24 @@ This proves the **relationship/participation seam**, not the seven external tech
 
 | Door | Authentication | Participation / identity | Authority | Scope / consent | Persistence / evidence | Revocation | Replay / idempotency | Current truth |
 |---|---|---|---|---|---|---|---|---|
-| **GitHub App** | GitHub installation / app identity; exact mechanism must remain external to source | Repository/user installation participation; installation identity must remain distinct from human identity | Separate Naya authority grant + least-privilege GitHub installation/repository scope | Repository, installation, action scope; human consent must be explicit | GitHub observation + canonical Naya event/receipt; no GitHub source-of-truth substitution | App installation/token/repository permission revocation must block subsequent actions | Webhook/action replay must be idempotent by canonical event/idempotency identity | **PARTIAL** — repository authority exists; independent end-to-end production agent proof remains open |
-| **MCP** | MCP transport/session authentication | Agent/client identity participates through the same governed runtime | Server-side authority grant; tools/call must not infer permission from connection | Tool + project + target scope; explicit consent where required | Canonical event/receipt + fresh retrieval | Session/token/grant revocation must block calls | Request/idempotency key must prevent duplicate durable effects | **LIVE VERIFIED** — UAI run `36061300293` authenticated initialize → tools/list → cold restore → understand → retrieve → restore with canonical receipt/evidence; governed execution boundary additionally verified in Attack 4 run `36062784233` |
-| **REST/OpenAPI** | Authenticated API identity | API client participates through canonical API boundary | Same authority lifecycle as MCP; transport must not create a second authority model | Endpoint/action/target/project scope | Same canonical persistence and receipt chain as MCP | Credential/grant revocation must fail closed | Idempotency and replay behavior must match MCP semantics | **LIVE VERIFIED** — UAI run `36061300293` authenticated cold restore → understand → retrieve; run `36064087479` additionally proved governed intelligence_commit authority parity through the same canonical UAI adapter/runtime |
-| **Webhooks** | Signed/verified sender identity | External system becomes an event source, not an authority source; current receiver does not persist an explicit GitHub installation ID | Inbound event authenticity does not authorize downstream execution; receiver uses github_webhook_received, not intelligence.capture | Event/source scope; repository binding currently comes from repository.full_name and is not yet independently adversarially proven | Canonical nayanet_record_cognition_event → cognition event/project state/execution receipt; downstream projection is not invoked by the receiver | Secret/source registration revocation remains external and unverified | Cognition event has unique (user_id,project_id,event_id), but webhook's current six-argument RPC path still creates a fresh receipt/state update on replay; exact idempotency is NOT VERIFIED | **BLOCKED_EXTERNAL_CREDENTIAL** — deployed fail-closed receiver; positive signed delivery and exact replay remain unverified |
-| **SDK** | Application/client authentication | Embedded client participates through canonical SDK adapter | SDK delegates authority to governed runtime; local SDK capability must not become authority | App/project/user scope plus explicit action consent | Same canonical event/persistence/evidence path | App credential/grant revocation must block governed actions | SDK retries must be idempotent at canonical boundary | **DOCUMENTED / UNPROVEN** — adapter concept exists; independent production door proof remains open |
-| **A2A** | Agent identity/authentication | Agent participates as an external actor through governed adapter | Authority must be independently evaluated; agent relationship never implies execution permission | Agent/task/project/target scope | Canonical agent event + execution receipt + fresh retrieval | Agent credential/grant/task revocation must block subsequent actions | Message/task replay must preserve idempotent canonical outcome | **DOCUMENTED** — future channel; no broad-use production proof established |
-| **MCP Apps** | MCP app/session authentication | App participates through MCP capability boundary | Same server-side governed authority as MCP; app UI cannot grant itself permission | Tool/app/session/project scope + consent | Canonical MCP event/receipt path | Session/app/grant revocation must fail closed | UI retries and tool-call replay must converge on canonical idempotent effect | **DOCUMENTED / UNPROVEN** — defined door; independent production proof remains open |
+| **GitHub App** | GitHub installation / app identity; exact mechanism must remain external to source | Repository/user installation participation; installation identity must remain distinct from human identity | Separate Naya authority grant + least-privilege GitHub installation/repository scope | Repository, installation, action scope; human consent must be explicit | GitHub observation + canonical Naya event/receipt; no GitHub source-of-truth substitution | App installation/token/repository permission revocation must block subsequent actions | Webhook/action replay must be idempotent by canonical event/idempotency identity | **PARTIAL** â€” repository authority exists; independent end-to-end production agent proof remains open |
+| **MCP** | MCP transport/session authentication | Agent/client identity participates through the same governed runtime | Server-side authority grant; tools/call must not infer permission from connection | Tool + project + target scope; explicit consent where required | Canonical event/receipt + fresh retrieval | Session/token/grant revocation must block calls | Request/idempotency key must prevent duplicate durable effects | **LIVE VERIFIED** â€” UAI run `36061300293` authenticated initialize â†’ tools/list â†’ cold restore â†’ understand â†’ retrieve â†’ restore with canonical receipt/evidence; governed execution boundary additionally verified in Attack 4 run `36062784233` |
+| **REST/OpenAPI** | Authenticated API identity | API client participates through canonical API boundary | Same authority lifecycle as MCP; transport must not create a second authority model | Endpoint/action/target/project scope | Same canonical persistence and receipt chain as MCP | Credential/grant revocation must fail closed | Idempotency and replay behavior must match MCP semantics | **LIVE VERIFIED** â€” UAI run `36061300293` authenticated cold restore â†’ understand â†’ retrieve; run `36064087479` additionally proved governed intelligence_commit authority parity through the same canonical UAI adapter/runtime |
+| **Webhooks** | Signed/verified sender identity | External system becomes an event source, not an authority source; current receiver does not persist an explicit GitHub installation ID | Inbound event authenticity does not authorize downstream execution; receiver uses github_webhook_received, not intelligence.capture | Event/source scope; repository binding currently comes from repository.full_name and is not yet independently adversarially proven | Canonical nayanet_record_cognition_event â†’ cognition event/project state/execution receipt; downstream projection is not invoked by the receiver | Secret/source registration revocation remains external and unverified | Cognition event has unique (user_id,project_id,event_id); the six-argument replay path is now hardened to return the original event/state/receipt without creating a second receipt or advancing project state. Live webhook replay remains NOT VERIFIED until the external secret is configured | **BLOCKED_EXTERNAL_CREDENTIAL** â€” deployed fail-closed receiver; positive signed delivery and exact replay remain unverified |
+| **SDK** | Application/client authentication | Embedded client participates through canonical SDK adapter | SDK delegates authority to governed runtime; local SDK capability must not become authority | App/project/user scope plus explicit action consent | Same canonical event/persistence/evidence path | App credential/grant revocation must block governed actions | SDK retries must be idempotent at canonical boundary | **DOCUMENTED / UNPROVEN** â€” adapter concept exists; independent production door proof remains open |
+| **A2A** | Agent identity/authentication | Agent participates as an external actor through governed adapter | Authority must be independently evaluated; agent relationship never implies execution permission | Agent/task/project/target scope | Canonical agent event + execution receipt + fresh retrieval | Agent credential/grant/task revocation must block subsequent actions | Message/task replay must preserve idempotent canonical outcome | **DOCUMENTED** â€” future channel; no broad-use production proof established |
+| **MCP Apps** | MCP app/session authentication | App participates through MCP capability boundary | Same server-side governed authority as MCP; app UI cannot grant itself permission | Tool/app/session/project scope + consent | Canonical MCP event/receipt path | Session/app/grant revocation must fail closed | UI retries and tool-call replay must converge on canonical idempotent effect | **DOCUMENTED / UNPROVEN** â€” defined door; independent production proof remains open |
 
 ## Required proof sequence
 
 The seven doors are **not** seven separate brains or seven separate authorization systems.
 
-### Phase A — common relationship seam
+### Phase A â€” common relationship seam
 **VERIFIED**
 
 Owner/non-owner/revocation/replay proof is complete for the canonical relationship substrate.
 
-### Phase B — door convergence
+### Phase B â€” door convergence
 For each door, prove:
 
 1. unauthenticated request is rejected;
@@ -72,10 +72,10 @@ For each door, prove:
 10. non-owner / wrong-scope access is denied;
 11. evidence records actor, authority, decision, execution, persistence and receipt lineage.
 
-### Phase C — parity
+### Phase C â€” parity
 For MCP and REST/OpenAPI specifically, prove semantic parity:
 
-**same identity → same authority rules → same canonical object → same persistence → same receipt semantics → same fresh retrieval truth.**
+**same identity â†’ same authority rules â†’ same canonical object â†’ same persistence â†’ same receipt semantics â†’ same fresh retrieval truth.**
 
 ## Evidence boundary
 
@@ -87,7 +87,7 @@ The governed execution/authority proof is independently **VERIFIED** at run `360
 
 It proves:
 
-**fresh owner → existing envelope adapter → production bridge → persisted receiver transaction/event/receipt/index → independent retrieval → independent reconstruction → exact replay**
+**fresh owner â†’ existing envelope adapter â†’ production bridge â†’ persisted receiver transaction/event/receipt/index â†’ independent retrieval â†’ independent reconstruction â†’ exact replay**
 
 It does **not** by itself prove any of the seven Smart Connect doors.
 
@@ -99,22 +99,22 @@ The focused relationship proof proves the shared participation substrate and adv
 
 Required chain:
 
-**authenticated initialize → tools/call → authority decision → canonical persistence → fresh retrieval → verified outcome → revoke → denied reuse → exact replay semantics → REST parity**
+**authenticated initialize â†’ tools/call â†’ authority decision â†’ canonical persistence â†’ fresh retrieval â†’ verified outcome â†’ revoke â†’ denied reuse â†’ exact replay semantics â†’ REST parity**
 
 No new authority model. No second backend. No direct Hub-to-Supabase bypass.
 
 
-## 2026-09-24 live evidence — continuation after production bridge verification
+## 2026-09-24 live evidence â€” continuation after production bridge verification
 
 ### Production bridge boundary
 
 Run `36054810899` is **VERIFIED** on `main` commit `943192584c8829225d7ff4841e2140d5be004d9c`. The proof job independently verified fresh owner bootstrap, existing envelope adapter validation, production receiver transaction/event/receipt/index persistence, independent retrieval, lineage reconstruction, and exact replay with the same receiver transaction/event/receipt lineage.
 
-### Common relationship seam — live adversarial proof
+### Common relationship seam â€” live adversarial proof
 
 The canonical `nayanet_connections` boundary was exercised with two authenticated identities in a rollback-scoped production database transaction:
 
-- Owner A → B connection: `CONNECTED`.
+- Owner A â†’ B connection: `CONNECTED`.
 - Owner replay: `ALREADY_CONNECTED`.
 - Non-owner B revoke attempt: `CONNECTION_NOT_FOUND` / **BLOCKED**.
 - Owner A revoke: `REVOKED`.
@@ -142,21 +142,21 @@ The replay semantics above were the fail-first gap discovered during this contin
 
 ### Transport frontier
 
-`NAYANET/UNIVERSAL-AGENT-INTERFACE` is now **LIVE VERIFIED** at the authenticated transport/persistence/retrieval boundary by run `36061300293`. The existing release harness proved fail-closed unauthenticated REST/MCP, authenticated MCP initialization/tools, mandatory 14-question cold restore, MCP understand → receipt → retrieve, REST understand → receipt → retrieve, and same-canonical-path parity.
+`NAYANET/UNIVERSAL-AGENT-INTERFACE` is now **LIVE VERIFIED** at the authenticated transport/persistence/retrieval boundary by run `36061300293`. The existing release harness proved fail-closed unauthenticated REST/MCP, authenticated MCP initialization/tools, mandatory 14-question cold restore, MCP understand â†’ receipt â†’ retrieve, REST understand â†’ receipt â†’ retrieve, and same-canonical-path parity.
 
 ### Current next frontier
 
 **Attack external-door authority parity, not the already-proven core.** The governed core now proves owner-bound authority, non-owner/wrong-scope denial, participation/replay/revocation semantics, and receipt reconstruction. MCP + REST transport/persistence/retrieval are live verified, but the UAI public surface currently exposes safe intelligence actions rather than `intelligence_commit`. The next bounded frontier is to prove the same authority grant/deny/revoke/replay semantics through an existing external door without creating a second authority model or backend.
 
 
-## 2026-09-24 execution frontier — top 10 highest-value remaining items
+## 2026-09-24 execution frontier â€” top 10 highest-value remaining items
 
 1. **Unblock GitHub App/Webhook credential boundary.** Configure production `GITHUB_WEBHOOK_SECRET` through the external secret-management/admin surface; never place the secret in source or chat.
-2. **Live-prove GitHub webhook ingress.** Positive HMAC verification → canonical event persistence → exact delivery replay → one logical event → independent retrieval.
+2. **Live-prove GitHub webhook ingress.** Positive HMAC verification â†’ canonical event persistence â†’ exact delivery replay â†’ one logical event â†’ independent retrieval.
 3. **Prove webhook-to-authority separation.** A valid GitHub event must remain an event source, never implicit `intelligence_commit` authority; privileged execution must require an existing grant.
 4. **Prove webhook disable/revocation.** Disable/revoke the source registration and demonstrate subsequent signed deliveries are rejected or quarantined.
 5. **Prove GitHub App repository-scope isolation.** Authorized repository accepted; unauthorized repository rejected before private projection.
-6. **Prove GitHub App/Hub two-way mutation boundary.** Hub action → existing authority → canonical event → authorized GitHub mutation → GitHub observation → verification → Hub projection.
+6. **Prove GitHub App/Hub two-way mutation boundary.** Hub action â†’ existing authority â†’ canonical event â†’ authorized GitHub mutation â†’ GitHub observation â†’ verification â†’ Hub projection.
 7. **Audit SDK door.** Resolve whether an actual SDK adapter exists in production source; if absent, keep it DOCUMENTED/UNPROVEN rather than inventing an adapter.
 8. **Audit A2A door.** Resolve whether an actual A2A adapter exists; if absent, keep it DOCUMENTED/FUTURE and define the smallest production seam.
 9. **Audit MCP Apps door.** Determine whether the existing MCP surface is app-capable and prove that UI/session capability cannot grant authority.
@@ -164,10 +164,10 @@ The replay semantics above were the fail-first gap discovered during this contin
 
 ### Current live boundary
 
-- Universal Envelope production bridge: **VERIFIED** — run `36054810899`.
-- UAI MCP + REST transport/persistence/retrieval: **LIVE VERIFIED** — run `36061300293`.
-- UAI privileged authority parity: **LIVE VERIFIED** — run `36064087479`.
-- GitHub webhook function: **ACTIVE / BLOCKED_EXTERNAL_CREDENTIAL** — positive production proof cannot run because `GITHUB_WEBHOOK_SECRET` is not configured.
+- Universal Envelope production bridge: **VERIFIED** â€” run `36054810899`.
+- UAI MCP + REST transport/persistence/retrieval: **LIVE VERIFIED** â€” run `36061300293`.
+- UAI privileged authority parity: **LIVE VERIFIED** â€” run `36064087479`.
+- GitHub webhook function: **ACTIVE / BLOCKED_EXTERNAL_CREDENTIAL** â€” positive production proof cannot run because `GITHUB_WEBHOOK_SECRET` is not configured.
 - No evidence was found in the repository tree for a separate SDK, A2A, or MCP Apps implementation beyond the documented contracts; these remain **NOT VERIFIED**.
 
 ### Job holes identified
@@ -180,17 +180,17 @@ The replay semantics above were the fail-first gap discovered during this contin
 
 ### Evidence for this continuation
 
-- `36054810899` — production Universal Envelope bridge.
-- `36061300293` — UAI MCP/REST production transport/persistence/retrieval.
-- `36064087479` — UAI privileged authority owner/replay/retrieval/non-owner/revocation proof.
-- Direct production probe of `nayanet-github-webhook` — `503 GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED / BLOCKED_EXTERNAL_CREDENTIAL`.
+- `36054810899` â€” production Universal Envelope bridge.
+- `36061300293` â€” UAI MCP/REST production transport/persistence/retrieval.
+- `36064087479` â€” UAI privileged authority owner/replay/retrieval/non-owner/revocation proof.
+- Direct production probe of `nayanet-github-webhook` â€” `503 GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED / BLOCKED_EXTERNAL_CREDENTIAL`.
 
 ### Single next action
 
-**Configure `GITHUB_WEBHOOK_SECRET` in the production secret-management/admin boundary, then run the signed GitHub webhook positive → replay → persistence → retrieval → authority-separation proof.**
+**Configure `GITHUB_WEBHOOK_SECRET` in the production secret-management/admin boundary, then run the signed GitHub webhook positive â†’ replay â†’ persistence â†’ retrieval â†’ authority-separation proof.**
 
 
-## 2026-09-24 P1 — GitHub Webhook credential boundary and safe preflight
+## 2026-09-24 P1 â€” GitHub Webhook credential boundary and safe preflight
 
 **Status: BLOCKED_EXTERNAL_CREDENTIAL**
 
@@ -202,7 +202,7 @@ A fresh production probe at 2026-09-24T22:11:01Z returned HTTP 503 with GITHUB_W
 
 ### Safe call-graph findings
 
-GitHub POST → webhook Edge Function → method check → delivery/signature headers → GITHUB_WEBHOOK_SECRET check → HMAC-SHA256(raw body) → JSON parse → normalization → service-role canonical cognition RPC → cognition event + project state + execution receipt → response.
+GitHub POST â†’ webhook Edge Function â†’ method check â†’ delivery/signature headers â†’ GITHUB_WEBHOOK_SECRET check â†’ HMAC-SHA256(raw body) â†’ JSON parse â†’ normalization â†’ service-role canonical cognition RPC â†’ cognition event + project state + execution receipt â†’ response.
 
 No second inbound webhook implementation was found in repository source. The separate nayanet-github-dispatch function is outbound GitHub workflow dispatch, not an inbound webhook caller.
 
@@ -210,11 +210,11 @@ The receiver normalizes repository, actor, ref, commit SHA, delivery ID, source 
 
 ### Critical preflight replay finding
 
-The receiver uses the six-argument nayanet_record_cognition_event overload with action github_webhook_received. Production currently retains both six- and seven-argument overloads. The six-argument path de-duplicates the cognition row by (user_id, project_id, event_id) but still creates a new execution receipt and increments project cognition state on each replay. Therefore the required exact replay/idempotency property is NOT VERIFIED and has a concrete causal repair target. No repair is made in P1.
+The receiver uses the six-argument nayanet_record_cognition_event overload with action github_webhook_received. That overload now has canonical event-id replay protection. Production currently retains both six- and seven-argument overloads. The six-argument path de-duplicates the cognition row by (user_id, project_id, event_id) but still creates a new execution receipt and increments project cognition state on each replay. Therefore the required exact replay/idempotency property is NOT VERIFIED and has a concrete causal repair target. No repair is made in P1.
 
 ### Authority separation
 
-Source inspection shows the webhook does not call the intelligence.capture authority-required action and supplies no execution authorization object. This is source-level evidence for WEBHOOK EVENT ≠ EXECUTION AUTHORITY. Live authority-separation proof remains unverified until a signed production event can be accepted.
+Source inspection shows the webhook does not call the intelligence.capture authority-required action and supplies no execution authorization object. This is source-level evidence for WEBHOOK EVENT â‰  EXECUTION AUTHORITY. Live authority-separation proof remains unverified until a signed production event can be accepted.
 
 ### Adversarial preparation
 
@@ -232,7 +232,7 @@ Prepared, but not run in production: missing signature, wrong signature, altered
 **Run the controlled signed production GitHub webhook proof after the authorized operator has configured the real production secret.**
 
 
-## 2026-09-24 P2 — Canonical webhook replay/idempotency repair
+## 2026-09-24 P2 â€” Canonical webhook replay/idempotency repair
 
 ### What changed
 
@@ -260,4 +260,5 @@ The positive signed-production proof cannot yet cross the external `GITHUB_WEBHO
 
 ### Single next action
 
-**Configure `GITHUB_WEBHOOK_SECRET` in the authorized production secret-management/admin boundary, then execute the controlled signed webhook positive → exact replay → independent persistence/retrieval → authority-separation proof.**
+**Configure `GITHUB_WEBHOOK_SECRET` in the authorized production secret-management/admin boundary, then execute the controlled signed webhook positive â†’ exact replay â†’ independent persistence/retrieval â†’ authority-separation proof.**
+
