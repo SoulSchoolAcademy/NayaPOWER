@@ -66,6 +66,17 @@
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json"
   },
+  "evidence": [
+    {
+      "kind": "active_block_proof_receipt",
+      "source": ".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md"
+    },
+    {
+      "kind": "proof_current_evidence",
+      "source": ".naya/control-plane/PROOF.json",
+      "field": "current_evidence"
+    }
+  ],
   "next_action": {
     "count": 1,
     "status": "BLOCKED",

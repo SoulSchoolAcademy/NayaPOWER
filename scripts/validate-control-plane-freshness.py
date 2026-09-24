@@ -363,7 +363,15 @@ def validate_baton(root: Path, state: dict[str, Any], blocks: dict[str, Any], ma
     require(snapshot.get("state_status") == state.get("status"), "BATON_SNAPSHOT_STATE_STATUS_MISMATCH")
     require(snapshot.get("map_status") == map_data.get("status"), "BATON_SNAPSHOT_MAP_STATUS_MISMATCH")
     require(snapshot.get("proof_status") == proof.get("status"), "BATON_SNAPSHOT_PROOF_STATUS_MISMATCH")
-    require(isinstance(baton.get("evidence"), list) and bool(baton.get("evidence")), "BATON_EVIDENCE_MISSING")
+    evidence = baton.get("evidence")
+    require(isinstance(evidence, list) and bool(evidence), "BATON_EVIDENCE_MISSING")
+    for index, item in enumerate(evidence):
+        require(isinstance(item, dict) and isinstance(item.get("source"), str) and bool(item["source"].strip()), f"BATON_EVIDENCE_INVALID: {index}")
+        source = item["source"]
+        if not source.startswith(("http://", "https://")):
+            source_path = Path(source)
+            require(not source_path.is_absolute() and ".." not in source_path.parts, f"BATON_EVIDENCE_SOURCE_INVALID: {index}")
+            require((root / source_path).is_file(), f"BATON_EVIDENCE_SOURCE_MISSING: {index}")
     snapshot_head = snapshot.get("live_head")
     require(isinstance(snapshot_head, str) and commit_exists(root, snapshot_head), "BATON_SNAPSHOT_HEAD_INVALID")
     require(is_ancestor(root, snapshot_head, live_head), "BATON_SNAPSHOT_HEAD_NOT_ANCESTOR")

@@ -52,6 +52,13 @@ def build_baton() -> dict[str, Any]:
     mission = state["mission"]
     north_star = state.get("north_star")
     active_program = state.get("active_program", state.get("priority"))
+    evidence = []
+    if active.get("proof_receipt"):
+        evidence.append({"kind": "active_block_proof_receipt", "source": active["proof_receipt"]})
+    if proof.get("current_evidence"):
+        evidence.append({"kind": "proof_current_evidence", "source": ".naya/control-plane/PROOF.json", "field": "current_evidence"})
+    if not evidence:
+        raise RuntimeError("BATON_EVIDENCE_SOURCE_MISSING")
 
     baton = {
         "$schema": "naya/control-plane/baton/v1",
@@ -115,6 +122,7 @@ def build_baton() -> dict[str, Any]:
             "priority": active["priority"],
             "source": ".naya/control-plane/BLOCKS.json",
         },
+        "evidence": evidence,
         "next_action": {
             "count": 1,
             "status": action_status,
@@ -147,6 +155,15 @@ def validate_baton(baton: dict[str, Any]) -> None:
     assert baton.get("status") == "CANONICAL", "BATON_NOT_CANONICAL"
     assert baton.get("repository") == state.get("repository") == "SoulSchoolAcademy/NayaPOWER", "BATON_REPOSITORY_MISMATCH"
     assert baton.get("identity") == state.get("repository") == "SoulSchoolAcademy/NayaPOWER", "BATON_IDENTITY_MISMATCH"
+    evidence = baton.get("evidence")
+    assert isinstance(evidence, list) and evidence, "BATON_EVIDENCE_MISSING"
+    for item in evidence:
+        assert isinstance(item, dict) and isinstance(item.get("source"), str) and item["source"].strip(), "BATON_EVIDENCE_INVALID"
+        source = item["source"]
+        if not source.startswith(("http://", "https://")):
+            source_path = Path(source)
+            assert not source_path.is_absolute() and ".." not in source_path.parts, "BATON_EVIDENCE_SOURCE_INVALID"
+            assert (ROOT / source_path).is_file(), "BATON_EVIDENCE_SOURCE_MISSING"
     assert baton.get("source_of_truth", {}).get("live_state") == ".naya/control-plane/STATE.json"
     assert baton.get("source_of_truth", {}).get("active_block") == ".naya/control-plane/BLOCKS.json"
     assert baton.get("source_of_truth", {}).get("mission_map") == ".naya/control-plane/MAP.json"
