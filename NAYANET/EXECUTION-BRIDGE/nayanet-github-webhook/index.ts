@@ -1,4 +1,4 @@
-﻿import "jsr:@supabase/functions-js/edge-runtime.d.ts";
+import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const cors={"Access-Control-Allow-Origin":"*","Access-Control-Allow-Headers":"content-type,x-github-delivery,x-hub-signature-256","Access-Control-Allow-Methods":"POST,OPTIONS"};
@@ -33,7 +33,8 @@ function normalize(payload:any,delivery:string){
     received_at:new Date().toISOString(),
     correlation_id:"github:"+delivery,
     idempotency_key:"github:"+delivery,
-    authority:{source:"github_app",scope:repo},`r`n    provenance:{delivery_id:delivery,provider:"github",installation_id:payload?.installation?.id??null},
+    authority:{source:"github_app",scope:repo},
+    provenance:{delivery_id:delivery,provider:"github"},
     verification:{state:"SIGNED_WEBHOOK_VERIFIED"},
     processing_state:"RECEIVED",
     projection_targets:["Personal Intelligence","Activity","Intelligence Today"],
@@ -67,4 +68,3 @@ Deno.serve(async(req)=>{
   if(error)return json({ok:false,error:"CANONICAL_EVENT_PERSISTENCE_FAILED",detail:error.message,status:"PERSISTENCE_FAILED",event_id:event.event_id},502);
   return json({ok:true,status:"PERSISTED",event_id:event.event_id,delivery_id:delivery,repository:event.repository,commit_sha:event.commit_sha,transaction:data});
 });
-
