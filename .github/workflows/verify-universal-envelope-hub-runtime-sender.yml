@@ -1,0 +1,142 @@
+name: NayaNET Universal Envelope — Hub Runtime sender coverage proof
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/verify-universal-envelope-hub-runtime-sender.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  hub-runtime-sender:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      RUN_IDENTITY: hub-runtime-envelope-sender
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Hub runtime sender -> Envelope V1 -> existing production receiver
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const { chromium } = require('playwright');
+          const fs = require('node:fs');
+          const crypto = require('node:crypto');
+          const { spawnSync } = require('node:child_process');
+          const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID;
+          const alias=('envelopesender'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          const title='Universal Envelope Hub Runtime Sender '+run;
+          const note='Meaningful output emitted by the canonical NayaNET Hub runtime and normalized into Universal Intelligence Envelope V1 for the existing Project Intelligence Bridge.';
+          const trace=[];
+          const mark=(step,extra={})=>{const row={step,at:new Date().toISOString(),...extra};trace.push(row);console.log('HUB_RUNTIME_SENDER_TRACE',JSON.stringify(row));};
+          const request=async(url,options={})=>{const r=await fetch(url,options);const raw=await r.text();let body;try{body=JSON.parse(raw)}catch{body={raw}};return {status:r.status,body}};
+          (async()=>{
+            const browser=await chromium.launch({headless:true});
+            const context=await browser.newContext({serviceWorkers:'block'});
+            const page=await context.newPage();
+            await page.goto(hub+'/identity.html?name='+encodeURIComponent('Naya Hub Runtime Sender')+'&alias='+encodeURIComponent(alias),{waitUntil:'networkidle',timeout:60000});
+            await page.getByRole('button',{name:'ENTER NAYANET'}).click();
+            await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth,{timeout:30000});
+            await page.waitForFunction(async()=>{try{const x=await window.NayaNETNameFirstAuth.current();return !!x?.authenticated&&!!x?.userId}catch{return false}},{timeout:30000});
+            mark('HUB_IDENTITY_AUTHENTICATED');
+            await page.goto(hub+'/?naya_release='+process.env.GITHUB_SHA,{waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});
+            const runtime=await page.evaluate(async()=>{const r=await window.NayaAssistantRuntime.init();return {authenticated:r.authenticated,user_id:r.user_id,session:r.session||null}});
+            if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
+            const capture=await page.evaluate(async({title,note})=>window.NayaAssistantRuntime.captureSmartNote({title,content:note,source:'universal-envelope-hub-runtime-sender',status:'active',tags:['universal-envelope','hub-runtime','sender-coverage']}),{title,note});
+            const eventId=String(capture?.event?.event_id||capture?.event_id||capture?.transaction?.evidence?.event_id||'');
+            const transactionId=String(capture?.transaction?.id||'');
+            if(!eventId||!transactionId)throw Error('HUB_RUNTIME_CAPTURE_LINEAGE_MISSING');
+            mark('MEANINGFUL_OUTPUT_EMITTED',{event_id:eventId,transaction_id:transactionId});
+            const envelope={
+              schema:'NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1',
+              envelope_id:'hub-runtime:'+run,
+              source:{type:'nayanet_hub_runtime',id:'runtime:'+runtime.user_id},
+              identity:{actor_type:'naya_runtime',actor_id:'NayaAssistantRuntime'},
+              owner_scope:{owner_id:runtime.user_id,project_id:'NayaNET'},
+              occurred_at:new Date().toISOString(),received_at:new Date().toISOString(),
+              output:{kind:'smart_note_capture',title,content:note,capture},
+              meaningfulness:'MEANINGFUL',
+              provenance:{source_ref:'hub://'+new URL(hub).host+'/feed',source_event_id:eventId,source_id:transactionId},
+              epistemic:{status:'OBSERVED'},privacy:{visibility:'PRIVATE'},
+              authority:{status:'CONTEXT_ONLY'},
+              context:{project:'NayaNET',surface:'Hub',runtime:'NayaAssistantRuntime',route:'/feed',proof_run:run},
+              idempotency_key:'hub-runtime-envelope-'+run
+            };
+            fs.writeFileSync('/tmp/universal-envelope-hub-runtime.json',JSON.stringify(envelope,null,2));
+            fs.writeFileSync('/tmp/hub-runtime-owner-id',runtime.user_id);
+            const py=String.raw`
+import hashlib,json,os
+from pathlib import Path
+import sys
+sys.path.insert(0,str(Path('.naya/runtime').resolve()))
+from universal_intelligence_envelope import UniversalIntelligenceEnvelope
+from project_intelligence_bridge import packet,accept_universal_envelope,validate
+env=json.loads(Path('/tmp/universal-envelope-hub-runtime.json').read_text())
+os.environ['NAYANET_OWNER_ID']=Path('/tmp/hub-runtime-owner-id').read_text().strip()
+UniversalIntelligenceEnvelope.from_mapping(env)
+p=accept_universal_envelope(env,packet())
+p['sender']={'type':'nayanet_hub_runtime','repository':'SoulSchoolAcademy/NayaPOWER','runtime':'NayaAssistantRuntime'}
+p['source_ref']=env['provenance']['source_ref']
+p['created_at']=env['occurred_at']
+p['freshness']={'source_ref':p['source_ref'],'resolution':'LIVE'}
+p['idempotency_key']=env['idempotency_key']
+canonical=json.dumps(p,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
+p['content_hash']=hashlib.sha256(canonical).hexdigest()
+from uuid import NAMESPACE_URL,uuid5
+p['packet_id']=str(uuid5(NAMESPACE_URL,'nayanet:project-intelligence:'+p['source_ref']+':'+os.environ['RUN_IDENTITY']+':'+p['content_hash']))
+errors=validate(p)
+if errors: raise SystemExit('ADAPTED_PACKET_INVALID:'+json.dumps(errors))
+Path('/tmp/hub-runtime-packet.json').write_text(json.dumps(p,ensure_ascii=False,separators=(',',':')))
+print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type':p['sender']['type'],'packet_id':p['packet_id']}))
+`;
+            const pyResult=spawnSync('python',['-c',py],{encoding:'utf8',env:{...process.env,NAYANET_OWNER_ID:runtime.user_id}});
+            if(pyResult.status!==0)throw Error('PYTHON_ADAPTER_FAILED:'+pyResult.stdout+pyResult.stderr);
+            console.log('ENVELOPE_ADAPTER_PROOF='+pyResult.stdout.trim());
+            const packet=JSON.parse(fs.readFileSync('/tmp/hub-runtime-packet.json','utf8'));
+            const oidcReq=await fetch(process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge',{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
+            const oidc=await oidcReq.json(); if(!oidcReq.ok||!oidc.value)throw Error('OIDC_TOKEN_FAILED');
+            const bridge=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oidc.value,'content-type':'application/json'},body:JSON.stringify(packet)});
+            console.log('BRIDGE='+JSON.stringify(bridge.body));
+            if(bridge.status!==200||bridge.body.status!=='COMPLETED'||!bridge.body.persisted||!bridge.body.indexed||!bridge.body.projected)throw Error('PRODUCTION_RECEIVER_FAILED');
+            if(bridge.body.owner_id!==runtime.user_id)throw Error('OWNER_LINEAGE_MISMATCH');
+            mark('PRODUCTION_RECEIVER_ACCEPTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
+            const retrieved=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-retrieve',{method:'POST',headers:{authorization:'Bearer '+runtime.session.access_token,apikey:process.env.SUPABASE_PUBLISHABLE_KEY,'content-type':'application/json'},body:JSON.stringify({query:bridge.body.receiver_event_id})});
+            if(retrieved.status!==200||!retrieved.body.ok||!retrieved.body.result?.events?.length)throw Error('INDEPENDENT_RETRIEVAL_FAILED');
+            const ev=retrieved.body.result.events.find(x=>x.event_id===bridge.body.receiver_event_id); if(!ev)throw Error('RECEIVER_EVENT_NOT_RECONSTRUCTED');
+            const content=JSON.parse(ev.content), lineage=content.bridge||{}, intel=content.intelligence||[];
+            if(lineage.receiver_transaction_id!==bridge.body.receiver_transaction_id||lineage.receiver_event_id!==bridge.body.receiver_event_id||lineage.receipt_id!==bridge.body.receipt_id||ev.receipt_id!==bridge.body.receipt_id)throw Error('RECEIVER_LINEAGE_MISMATCH');
+            const universal=intel.find(x=>x.object_id==='envelope:'+envelope.envelope_id);
+            if(!universal||universal.content?.source?.type!=='nayanet_hub_runtime'||universal.content?.envelope_id!==envelope.envelope_id)throw Error('UNIVERSAL_SENDER_LINEAGE_NOT_PRESERVED');
+            const index=await request(process.env.SUPABASE_URL+'/rest/v1/nayanet_intelligence_index?select=id,owner_id&source_table=eq.nayanet_cognition_events&source_id=eq.'+encodeURIComponent(bridge.body.projection.cognition_event_id),{headers:{apikey:process.env.SUPABASE_PUBLISHABLE_KEY,authorization:'Bearer '+runtime.session.access_token}});
+            if(index.status!==200||!index.body.some(x=>x.id===bridge.body.projection.index_id&&x.owner_id===runtime.user_id))throw Error('INDEX_RECONSTRUCTION_FAILED');
+            mark('INDEPENDENT_RECONSTRUCTION',{receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,index_id:bridge.body.projection.index_id,envelope_id:envelope.envelope_id});
+            const replay=await request(process.env.SUPABASE_URL+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oidc.value,'content-type':'application/json'},body:JSON.stringify(packet)});
+            console.log('REPLAY='+JSON.stringify(replay.body));
+            if(replay.status!==200||replay.body.status!=='ACCEPTED'||replay.body.replay!==true||replay.body.receiver_event_id!==bridge.body.receiver_event_id||replay.body.receipt_id!==bridge.body.receipt_id)throw Error('EXACT_REPLAY_FAILED');
+            mark('EXACT_REPLAY_VERIFIED');
+            const proof={schema:'NAYANET_UNIVERSAL_ENVELOPE_HUB_RUNTIME_SENDER_PROOF_V1',status:'VERIFIED',run_id:run,envelope_id:envelope.envelope_id,sender:{type:'nayanet_hub_runtime',runtime:'NayaAssistantRuntime',owner_id:runtime.user_id,source_event_id:eventId},receiver:{packet_id:bridge.body.packet_id,receiver_transaction_id:bridge.body.receiver_transaction_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id,cognition_event_id:bridge.body.projection.cognition_event_id,index_id:bridge.body.projection.index_id},checks:{meaningful_output_emitted:'PASS',envelope_v1_validated:'PASS',existing_adapter:'PASS',existing_production_receiver:'PASS',sender_lineage_preserved:'PASS',independent_reconstruction:'PASS',exact_replay:'PASS'},truth_boundary:'Hub runtime is proven as a second sender into the same existing Project Intelligence Bridge; this does not prove every possible sender.'};
+            fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(proof,null,2)+'\n');
+            console.log('CHAIN_RESULT='+JSON.stringify(proof));
+            await context.close(); await browser.close();
+          })().catch(async error=>{fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify({status:'FAILED',error:String(error?.stack||error),trace},null,2)+'\n');console.error(error);process.exit(1)});
+          NODE
+      - name: Upload sender coverage proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: universal-envelope-hub-runtime-sender-proof
+          path: universal-envelope-hub-runtime-sender-proof.json
+          if-no-files-found: error
