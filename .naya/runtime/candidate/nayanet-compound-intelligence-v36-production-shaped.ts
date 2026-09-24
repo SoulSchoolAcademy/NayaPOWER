@@ -777,13 +777,11 @@ async function verifyV36PortableArtifact(artifact:any,artifactHash:string,actorI
 }
 
 async function commitIntelligence(client: any, userId: string, body: any) {
-  const executionAuthorization = body.execution_authorization;
-  if (!executionAuthorization) throw new Error("EXECUTION_AUTHORIZATION_REQUIRED");
+  const executionAuthorization = await requireGovernedIntelligenceAuthorization(client,userId,body);
   const expectedCommitSha = String(body.source_head ?? body.commit_sha ?? Deno.env.get("NAYANET_EXPECTED_SOURCE_SHA") ?? "").trim();
   if (!expectedCommitSha) throw new Error("SOURCE_COMMIT_REQUIRED");
   const portableEvidence = await verifyV36PortableArtifact(body.portable_authorization,body.portable_authorization_artifact_hash,userId,expectedCommitSha,executionAuthorization);
   const receiptAuthorization = {...executionAuthorization,portable_authorization:portableEvidence.portable_authorization,portable_authorization_artifact_hash:portableEvidence.portable_authorization_artifact_hash};
-  const executionAuthorization = await requireGovernedIntelligenceAuthorization(client,userId,body);
   const idempotencyKey = String(body.idempotency_key ?? "").trim();
   const content = String(body.content ?? "").trim();
   if (!idempotencyKey) throw new Error("INTELLIGENCE_IDEMPOTENCY_KEY_REQUIRED");
