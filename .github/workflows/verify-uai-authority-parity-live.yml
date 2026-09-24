@@ -35,7 +35,7 @@ jobs:
           grep -Eq 'CONNECTED|ALREADY_CONNECTED' /tmp/connect.json
           echo "UAI_MCP_PARTICIPATION_ESTABLISHED"
           BODY=$(jq -n --arg g "$gid" --arg i "uai-authority-$GITHUB_RUN_ID" '{authority_grant_id:$g,idempotency_key:$i,content:"UAI_EXTERNAL_DOOR_AUTHORITY_PARITY_PROOF",title:"UAI authority parity",category:"TEST",topic:"SMART_CONNECT",confidence:1,tags:["uai-authority-proof"],authority_scope:"PERSONAL_INTELLIGENCE_ONLY",target_id:"uai-external-door-proof"}')
-          code=$(curl --silent --show-error -o /tmp/positive.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); test "$code" = 200
+          code=$(curl --silent --show-error -o /tmp/positive.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); echo "UAI_POSITIVE_STATUS=$code"; cat /tmp/positive.json; test "$code" = 200
           event_id=$(jq -r '.result.result.event.event_id' /tmp/positive.json); checkpoint=$(jq -r '.result.result.checkpoint.checkpoint_id' /tmp/positive.json)
           code=$(curl --silent --show-error -o /tmp/replay.json -w '%{http_code}' -X POST "$BASE/v1/intelligence-commit" "${H[@]}" -d "$BODY"); test "$code" = 200
           jq -e --arg e "$event_id" --arg c "$checkpoint" '.result.result.event.event_id==$e and .result.result.checkpoint.checkpoint_id==$c' /tmp/replay.json >/dev/null
