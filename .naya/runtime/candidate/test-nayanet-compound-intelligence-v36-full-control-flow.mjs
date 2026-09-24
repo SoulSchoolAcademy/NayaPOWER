@@ -6,7 +6,7 @@ const path=".naya/runtime/candidate/nayanet-compound-intelligence-v36-production
 const source=readFileSync(path,"utf8");
 const helperStart=source.indexOf("/* ===== V36 NON-PRODUCTION PORTABLE INTELLIGENCE BOUNDARY ===== */");
 const commitStart=source.indexOf("async function commitIntelligence(client: any, userId: string, body: any) {");
-const authStart=source.indexOf("async function requireGovernedIntelligenceAuthorization(",helperStart);
+const authStart=source.indexOf("async function requireGovernedIntelligenceAuthorization");
 if(authStart<0)throw new Error("AUTH_GATE_NOT_FOUND");
 const healthStart=source.indexOf("async function health(",commitStart);
 if(helperStart<0||commitStart<0||healthStart<0||helperStart>commitStart)throw new Error("EXTRACTION_SEAM_NOT_FOUND");
