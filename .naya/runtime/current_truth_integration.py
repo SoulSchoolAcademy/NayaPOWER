@@ -90,14 +90,45 @@ def classify_items(reconstruction: dict[str, Any]) -> list[dict[str, Any]]:
     return rows
 
 
+def collect_head_values(value: Any, key: str | None = None) -> list[str]:
+    if isinstance(value, dict):
+        values: list[str] = []
+        for child_key, child_value in value.items():
+            if child_key in {"observed_head", "current_repository_head", "live_head", "current_main_head", "source_head"}:
+                if isinstance(child_value, str) and re.fullmatch(r"[0-9a-f]{40}", child_value):
+                    values.append(child_value)
+            values.extend(collect_head_values(child_value, child_key))
+        return values
+    if isinstance(value, list):
+        values = []
+        for child in value:
+            values.extend(collect_head_values(child, key))
+        return values
+    return []
+
+
 def source_snapshot(root: Path, name: str, path: str, head: str | None) -> dict[str, Any]:
-    value = load_json(root / path).get(name) if isinstance(load_json(root / path).get(name), dict) else {}
-    observed = value.get("observed_head") or value.get("current_repository_head") or value.get("live_head") or value.get("current_main_head")
+    data = load_json(root / path)
+    value = data.get(name) if name and isinstance(data.get(name), dict) else data
+    observed = None
+    if isinstance(value, dict):
+        observed = value.get("observed_head") or value.get("current_repository_head") or value.get("live_head") or value.get("current_main_head")
+    recorded_heads = sorted(set(collect_head_values(value)))
+    if observed:
+        matches = bool(head and observed == head)
+        currentness = "CURRENT" if matches else "STALE"
+    else:
+        matches = None
+        currentness = "CURRENTNESS_UNPROVEN"
     return {
         "path": path,
+        "section": name or "ROOT",
         "observed_head": observed,
-        "matches_live_head": bool(head and observed == head),
-        "authority": "SNAPSHOT_ONLY" if observed else "MISSING",
+        "recorded_heads": recorded_heads,
+        "live_head": head,
+        "matches_live_head": matches,
+        "authority": "SNAPSHOT_ONLY" if recorded_heads or observed else "MISSING",
+        "currentness": currentness,
     }
 
 
@@ -127,18 +158,25 @@ def build_receipt(root: Path = DEFAULT_ROOT, project_id: str = "NayaNET") -> dic
     runtime_parity = proof.get("current_evidence", {}).get("runtime_parity", {}) if isinstance(proof.get("current_evidence"), dict) else {}
     snapshots = [
         source_snapshot(root, "current_head", ".naya/control-plane/STATE.json", head),
+        source_snapshot(root, "", ".naya/control-plane/BLOCKS.json", head),
+        source_snapshot(root, "", ".naya/control-plane/MAP.json", head),
         source_snapshot(root, "current_evidence", ".naya/control-plane/PROOF.json", head),
         source_snapshot(root, "source_snapshot", ".naya/control-plane/BATON.json", head),
     ]
     if source_scope != "CANONICAL_MAIN":
-        status = "NOT_CURRENT_SOURCE_SCOPE"
+        truth_status = "NOT_CURRENT_SOURCE_SCOPE"
     elif current_count == 0 or next_action_status == "BLOCKED":
-        status = "BLOCKED"
+        truth_status = "BLOCKED"
     else:
-        status = "COMPLETE"
+        truth_status = "COMPLETE"
+    verification_status = "VERIFIED_MECHANISM" if reproducible else "BLOCKED"
+    reconstruction_status = first.get("resolution", {}).get("status")
     receipt = {
         "schema": RECEIPT_SCHEMA,
-        "status": status,
+        "verification_status": verification_status,
+        "verification_scope": "RECONSTRUCTION_RECEIPT_ONLY",
+        "truth_status": truth_status,
+        "reconstruction_status": reconstruction_status,
         "source_identity": {
             "project_id": project_id,
             "branch": branch,
@@ -194,6 +232,16 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
     errors = []
     if receipt.get("schema") != RECEIPT_SCHEMA:
         return ["receipt schema is invalid"]
+    if "status" in receipt:
+        errors.append("ambiguous top-level status field is forbidden")
+    if receipt.get("verification_status") != "VERIFIED_MECHANISM":
+        errors.append("receipt mechanism verification status is invalid")
+    if receipt.get("verification_scope") != "RECONSTRUCTION_RECEIPT_ONLY":
+        errors.append("receipt verification scope is invalid")
+    if receipt.get("truth_status") not in {"NOT_CURRENT_SOURCE_SCOPE", "BLOCKED", "COMPLETE"}:
+        errors.append("truth status is invalid")
+    if receipt.get("reconstruction_status") != "RECONSTRUCTED":
+        errors.append("reconstruction status is invalid")
     recorded = receipt.get("receipt_sha256")
     material = {key: value for key, value in receipt.items() if key != "receipt_sha256"}
     if recorded != digest_value(material):
@@ -204,6 +252,21 @@ def validate_receipt(receipt: dict[str, Any]) -> list[str]:
         errors.append("execution boundary was claimed")
     if receipt.get("source_identity", {}).get("recorded_heads_are_authoritative") is not False:
         errors.append("recorded snapshot authority boundary is invalid")
+    expected_paths = {
+        ".naya/control-plane/STATE.json",
+        ".naya/control-plane/BLOCKS.json",
+        ".naya/control-plane/MAP.json",
+        ".naya/control-plane/PROOF.json",
+        ".naya/control-plane/BATON.json",
+    }
+    snapshots = receipt.get("control_plane", {}).get("snapshots", [])
+    if {snapshot.get("path") for snapshot in snapshots} != expected_paths:
+        errors.append("control-plane snapshot matrix is incomplete")
+    for snapshot in snapshots:
+        if snapshot.get("authority") not in {"SNAPSHOT_ONLY", "MISSING"}:
+            errors.append("snapshot authority boundary is invalid")
+        if snapshot.get("currentness") not in {"CURRENT", "STALE", "CURRENTNESS_UNPROVEN"}:
+            errors.append("snapshot currentness is invalid")
     return errors
 
 

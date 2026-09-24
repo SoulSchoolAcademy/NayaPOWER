@@ -1,0 +1,75 @@
+name: Verify Systems 41-60 Truth Ledger
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "capabilities/system-truth-ledger.v1.json"
+      - "tests/test_system_truth_ledger.py"
+      - "SUPERBRAIN/MASTER-NOTES/SYSTEMS-41-60-TRUTH-LEDGER-2026-09-24.md"
+      - "60 SYSTEM UPDATES FOR NAYA,md"
+      - ".github/workflows/verify-system-truth-ledger.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  system-truth-ledger:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate ledger evidence
+        run: |
+          python -B -m py_compile tests/test_system_truth_ledger.py
+          python -B tests/test_system_truth_ledger.py
+      - name: Write ledger gate
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from collections import Counter
+          from pathlib import Path
+          ledger=json.loads(Path("capabilities/system-truth-ledger.v1.json").read_text(encoding="utf-8"))
+          rows=ledger["systems"]
+          numbers=[row["number"] for row in rows]
+          assert numbers == list(range(41,61)), numbers
+          counts=Counter(row["classification"] for row in rows)
+          by_number={row["number"]:row for row in rows}
+          assert by_number[47]["classification"] == "NOT_TESTED"
+          assert by_number[50]["title"] == "DISTRIBUTED NAYA"
+          assert by_number[60]["title"] == "THE ULTIMATE NAYAPOWER LOOP"
+          assert "VERIFIED_PRODUCTION" not in counts
+          gate={
+              "schema":"naya-system-truth-ledger-gate/v1",
+              "verification_status":"VERIFIED",
+              "truth_status":"NOT_COMPLETE",
+              "execution_status":"NOT_EXECUTED",
+              "system_count":len(rows),
+              "system_range":"41-60",
+              "classification_counts":dict(sorted(counts.items())),
+              "system_47_classification":by_number[47]["classification"],
+              "system_50_title":by_number[50]["title"],
+              "system_60_title":by_number[60]["title"],
+              "production_verified_count":sum(row["classification"] == "VERIFIED_PRODUCTION" for row in rows),
+              "truth_boundary":"This gate verifies completeness and evidence indexing only; it does not promote any system, execute authority, or claim current production truth."
+          }
+          target=Path(os.environ["RUNNER_TEMP"])/"system-truth-ledger-gate.json"
+          target.write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish ledger proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: system-truth-ledger-proof
+          path: |
+            capabilities/system-truth-ledger.v1.json
+            tests/test_system_truth_ledger.py
+            SUPERBRAIN/MASTER-NOTES/SYSTEMS-41-60-TRUTH-LEDGER-2026-09-24.md
+            ${{ runner.temp }}/system-truth-ledger-gate.json
+          retention-days: 14
+          if-no-files-found: error

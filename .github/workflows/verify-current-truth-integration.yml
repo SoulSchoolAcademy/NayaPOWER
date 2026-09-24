@@ -55,26 +55,33 @@ jobs:
           root=Path(os.environ["RUNNER_TEMP"])
           receipt=json.loads((root/"current-truth-integration-receipt.json").read_text(encoding="utf-8"))
           main_receipt=json.loads((root/"current-truth-main-receipt.json").read_text(encoding="utf-8"))
+          assert receipt["verification_status"]=="VERIFIED_MECHANISM",receipt
+          assert receipt["verification_scope"]=="RECONSTRUCTION_RECEIPT_ONLY",receipt
+          assert receipt["truth_status"]=="NOT_CURRENT_SOURCE_SCOPE",receipt
+          assert receipt["reconstruction_status"]=="RECONSTRUCTED",receipt
           assert receipt["reconstruction"]["reproducible"] is True,receipt
           assert receipt["reconstruction"]["counts"]["current"]==0,receipt
           assert receipt["reconstruction"]["counts"]["unknown"]==12,receipt
           assert receipt["control_plane"]["map_current_next_action_status"]=="BLOCKED",receipt
           assert receipt["canonical_execution_boundary"]["status"]=="NOT_EXECUTED",receipt
+          assert len(receipt["control_plane"]["snapshots"])==5,receipt
           assert main_receipt["source_identity"]["source_scope"]=="CANONICAL_MAIN",main_receipt
-          assert main_receipt["status"]=="BLOCKED",main_receipt
+          assert main_receipt["truth_status"]=="BLOCKED",main_receipt
+          assert main_receipt["reconstruction_status"]=="RECONSTRUCTED",main_receipt
           assert main_receipt["reconstruction"]["reproducible"] is True,main_receipt
           assert main_receipt["reconstruction"]["counts"]["current"]==0,main_receipt
           assert main_receipt["reconstruction"]["counts"]["unknown"]==12,main_receipt
           assert main_receipt["control_plane"]["map_current_next_action_status"]=="BLOCKED",main_receipt
+          assert len(main_receipt["control_plane"]["snapshots"])==5,main_receipt
           gate={
               "schema":"naya-current-truth-integration-gate/v1",
-              "status":"VERIFIED",
-              "receipt_status":receipt["status"],
+              "verification_status":"VERIFIED_MECHANISM",
+              "verification_scope":"RECONSTRUCTION_RECEIPT_ONLY",
+              "truth_status":main_receipt["truth_status"],
+              "reconstruction_status":main_receipt["reconstruction_status"],
+              "receipt_truth_status":receipt["truth_status"],
               "source_scope":receipt["source_identity"]["source_scope"],
               "main_source_scope":main_receipt["source_identity"]["source_scope"],
-              "main_receipt_status":main_receipt["status"],
-              "reconstruction_status":receipt["reconstruction"]["status"],
-              "reconstruction_reproducible":receipt["reconstruction"]["reproducible"],
               "main_reconstruction_sha256":main_receipt["reconstruction"]["sha256"],
               "current_count":main_receipt["reconstruction"]["counts"]["current"],
               "unknown_count":main_receipt["reconstruction"]["counts"]["unknown"],
@@ -82,6 +89,7 @@ jobs:
               "execution_boundary_status":main_receipt["canonical_execution_boundary"]["status"],
               "truth_boundary":main_receipt["truth_boundary"]
           }
+
           (root/"current-truth-integration-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print(json.dumps(gate,sort_keys=True))
           PY

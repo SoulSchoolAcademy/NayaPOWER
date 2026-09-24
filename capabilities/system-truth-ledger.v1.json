@@ -1,0 +1,884 @@
+{
+  "schema": "naya-system-truth-ledger/v1",
+  "issue": 554,
+  "canonical_numbering_source": "60 SYSTEM UPDATES FOR NAYA,md",
+  "audit": {
+    "audited_branch": "coda3/priority-1-truth-ledger-20260924",
+    "audited_head": "474222023a0b086e4142a5cc06202606fbb80059",
+    "canonical_main_observed": "17fa49402bc95748c1b95b3681ab6289645b6ce2",
+    "issue_sign_in": 5817842445,
+    "classification_vocabulary": [
+      "VERIFIED_MECHANISM",
+      "VERIFIED_PRODUCTION",
+      "BLOCKED",
+      "NOT_TESTED",
+      "UNKNOWN"
+    ],
+    "rules": [
+      "A bounded mechanism cannot be reported as full-system production verification.",
+      "A shared-lane artifact is recorded with its exact scope and does not become a dedicated-system receipt.",
+      "A mislabeled prior branch is preserved as evidence but cannot satisfy the canonical numbering requirement.",
+      "A repository receipt cannot promote a snapshot or current-intelligence claim."
+    ]
+  },
+  "systems": [
+    {
+      "number": 41,
+      "title": "HUMAN INTELLIGENCE DASHBOARD",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_PRODUCTION",
+      "production_status": "BLOCKED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "implementation_head": "8baf23b46df4e8dd9926d598b4271caac3294ce8",
+        "implementation_parent": "55ceee8a7f6709cedfe4cfef6c68d1477ab2492c",
+        "stronger_source_head": "ad2d2ba466fe60a3443611fb18dead428a57d800"
+      },
+      "local_tests": [
+        "npm run typecheck --prefix NAYANET/HUB: unavailable locally because tsc was not installed; CI installed dependencies and passed typecheck/build"
+      ],
+      "ci_runs": [
+        {
+          "run": 35881661773,
+          "job": 107251365389,
+          "conclusion": "PASS",
+          "scope": "build"
+        },
+        {
+          "run": 35944908213,
+          "job": 107460611329,
+          "conclusion": "PASS",
+          "scope": "production-release"
+        }
+      ],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": []
+      },
+      "blocker": "The production shell opens Room 01, but required dashboard categories remain unavailable or NOT VERIFIED, including daily comparison, learned events, priority, verified activity, and retention recommendation.",
+      "next_action": "Build and execute a complete canonical-summary acceptance for every required category, including authenticated production browser proof.",
+      "evidence_notes": [
+        "Live HTTP inspection returned 200 and exposed the release/source markers and Room 01 source.",
+        "No uploaded artifact exists."
+      ]
+    },
+    {
+      "number": 42,
+      "title": "HUMAN RECOGNITION LAYER",
+      "classification": "NOT_TESTED",
+      "mechanism_status": "NOT_TESTED",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {},
+      "local_tests": [],
+      "ci_runs": [],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": []
+      },
+      "blocker": "No executable privacy-scoped recognition projection or acceptance proves that created, discovered, experienced, learned, contributed, changed, and outcome records are visibly recognized without exposing private data.",
+      "next_action": "Create and execute one dedicated privacy-scoped Human Recognition acceptance with a retained artifact and production browser evidence.",
+      "evidence_notes": [
+        "No dedicated branch, test, CI run, artifact, or Issue #554 session was found."
+      ]
+    },
+    {
+      "number": 43,
+      "title": "COLLECTIVE INTELLIGENCE",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-43-collective-intelligence-20260924",
+      "head": "bf8e5d67e90256cfea2cdfb86f10adc4907d0394",
+      "base": "b6d1464aa3148429fb2fea5efddddfdeb96b719c",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B .naya/runtime/test_collective_intelligence.py: 11/11 PASS",
+        "python -B .naya/runtime/test_consent_revocation.py: 11/11 PASS",
+        "Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36019139149,
+          "job": 107699259892,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "collective-intelligence-proof",
+          "id": 10816340535,
+          "sha256": "f11ab9400f1a25effda261cae032de83d3682d84544bb106995ff0f35792d86b",
+          "independent_inspection": "Five stages PASS; one metadata-only PROPOSED record; no private content; publication false; persistence false; production NOT_TESTED."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816884763,
+        "sign_out": 5816928972,
+        "related_comment_ids": []
+      },
+      "blocker": "The gate is proposal-only; there is no authorized collective publication, canonical persistence, receiver retrieval, or production integration.",
+      "next_action": "Execute one authorized canonical publication from the proposal and verify receiver retrieval plus consent and revocation behavior.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 43 remains blocked."
+      ]
+    },
+    {
+      "number": 44,
+      "title": "CONSENT REVOCATION",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-44-consent-revocation-20260924",
+      "head": "b6d1464aa3148429fb2fea5efddddfdeb96b719c",
+      "base": "885dc74296060ed536fb152e7d54faf72840e97e",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B .naya/runtime/test_consent_revocation.py: 11/11 PASS",
+        "python -B .naya/runtime/test_derived_intelligence_revalidation.py: 14/14 PASS",
+        "Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36018715126,
+          "job": 107697811179,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "consent-revocation-proof",
+          "id": 10815373157,
+          "sha256": "af3db42725a1f243f666d0c4aec3d50eee3da35762241e75172ee9f2111bf72a",
+          "independent_inspection": "Six impacted types; original preserved; plan COMPLETE; persistence and canonical mutation false."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816815242,
+        "sign_out": 5816877422,
+        "related_comment_ids": []
+      },
+      "blocker": "The planner is proposal-only; canonical consent persistence, restriction, cache invalidation, embedding deletion, and downstream revalidation are not executed.",
+      "next_action": "Integrate one revocation with canonical consent and storage, then verify every downstream policy end to end.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 44 remains blocked."
+      ]
+    },
+    {
+      "number": 45,
+      "title": "DERIVED INTELLIGENCE",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-45-derived-intelligence-20260924",
+      "head": "d65b0c28b860c21f4a2b7fdcb9e889d3f0b57721",
+      "base": "46d8b5bf25cb211f19292e9410431394c22d6edf",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B .naya/runtime/test_derived_intelligence_revalidation.py: 14/14 PASS",
+        "Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36017659514,
+          "job": 107694212373,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "derived-intelligence-revalidation-proof",
+          "id": 10814873431,
+          "sha256": "ea4d65aced091a4348f6e26427eb323858190826ed34b39450b9f68782b56480",
+          "independent_inspection": "PLAN_ONLY; direct DERIVED-D and transitive DERIVED-E impact identified; mutation false; System 46 actions empty."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816437429,
+        "sign_out": 5816747487,
+        "related_comment_ids": []
+      },
+      "blocker": "The lineage/revalidation planner does not mutate canonical records or perform actual revalidation and fresh retrieval.",
+      "next_action": "Run one authorized dependency change through the planner into real canonical revalidation and fresh retrieval.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 45 remains blocked."
+      ]
+    },
+    {
+      "number": 46,
+      "title": "INTELLIGENCE INVALIDATION",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-46-intelligence-invalidation-20260924",
+      "head": "885dc74296060ed536fb152e7d54faf72840e97e",
+      "base": "d65b0c28b860c21f4a2b7fdcb9e889d3f0b57721",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B .naya/runtime/test_intelligence_invalidation.py: 12/12 PASS",
+        "python -B .naya/runtime/test_derived_intelligence_revalidation.py: 14/14 PASS",
+        "Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36018212809,
+          "job": 107696103449,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "intelligence-invalidation-proof",
+          "id": 10814929079,
+          "sha256": "bf7fd2f4b066d974028e3fc3a486e3f1c026c380c415215fcbc48a51071e0404",
+          "independent_inspection": "Four ordered receipts; DERIVED-D confirmed; DERIVED-E stale with candidate successor; history preserved; persistence and canonical mutation false."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816753989,
+        "sign_out": 5816805199,
+        "related_comment_ids": []
+      },
+      "blocker": "The transition engine is proposal-only; persistent invalidation, recalculation, and supersession are not executed.",
+      "next_action": "Execute one authorized persistent INVALIDATE to RECHECK to RECALCULATE to SUPERSEDE chain and verify fresh retrieval.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 46 remains blocked."
+      ]
+    },
+    {
+      "number": 47,
+      "title": "CAUSAL MODEL",
+      "classification": "NOT_TESTED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "adjacent_shared_branch": "naya3/system54-current-truth-20260923",
+        "adjacent_execution_head": "55e2838762199dbed367fc06a6f0e832fd393687",
+        "adjacent_execution_parent": "73f39f1e3459e54a80ac30b1e4f9fa4a8d17c70b",
+        "adjacent_baseline": "ad2d2ba466fe60a3443611fb18dead428a57d800",
+        "cvo_proof_commit": "c474581a4a202b146e737bc7707e97693d35edfc",
+        "efficiency_run_commit": "beae2a6b8a54bad2dd6e68d4d0d773b1a674a7f7"
+      },
+      "local_tests": [
+        "python -B tools/test_causal_verification_object.py: PASS causal verification object",
+        "Causal verification object compile and YAML parse: PASS",
+        "Efficiency benchmark not run locally because it writes tracked JSON files"
+      ],
+      "ci_runs": [
+        {
+          "run": 35954212483,
+          "job": 107488957916,
+          "conclusion": "PASS",
+          "scope": "adjacent CVO only"
+        },
+        {
+          "run": 35954238045,
+          "job": 107489032984,
+          "conclusion": "PASS",
+          "scope": "adjacent efficiency only"
+        }
+      ],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": []
+      },
+      "blocker": "No canonical relation taxonomy or executed test separates correlation, association, and causal claim; no rejection test prevents A-before-B from becoming A-caused-B, and no production integration exists.",
+      "next_action": "Add a dedicated fail-closed Causal Model contract and execute positive and negative tests for correlation, association, and causal claims.",
+      "evidence_notes": [
+        "The adjacent CVO and efficiency mechanisms do not prove canonical System 47.",
+        "An earlier Issue #554 summary called System 47 bounded-verified; direct evidence does not support that broader claim."
+      ]
+    },
+    {
+      "number": 48,
+      "title": "CAPABILITY REGISTRY",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-48-capability-registry-20260924",
+      "head": "52300d449a8f59089aa35e0b433755b73bc8d240",
+      "base": "720b1b5c68f54fa265707629576907de0a3ebf70",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B tests/test_capability_registry.py: 9/9 PASS",
+        "JSON/schema parse, Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36014975603,
+          "job": 107685041724,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "capability-registry-proof",
+          "id": 10813529425,
+          "sha256": "80869e1ffaf456efa4c89fb4679bc75b8e6846c3f130f6dac3e72baecb322579",
+          "independent_inspection": "36 capabilities, 23 compound actions, 7 exclusions; source presence is explicitly not verification."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816010009,
+        "sign_out": 5816373901,
+        "related_comment_ids": []
+      },
+      "blocker": "Runtime does not consume the registry as an authority-enforced dispatch surface; source presence does not prove runtime adoption.",
+      "next_action": "Perform explicitly authorized runtime integration and authority convergence for the registry.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 48 remains blocked."
+      ]
+    },
+    {
+      "number": 49,
+      "title": "UNIVERSAL SMART DOOR",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-49-universal-smart-door-20260924",
+      "head": "46d8b5bf25cb211f19292e9410431394c22d6edf",
+      "base": "52300d449a8f59089aa35e0b433755b73bc8d240",
+      "source_evidence": {},
+      "local_tests": [
+        "python -B tests/test_capability_registry.py: 9/9 PASS",
+        "python -B .naya/runtime/test_smart_door_lifecycle.py: 12/12 PASS",
+        "Schema parse, Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36015404343,
+          "job": 107686514099,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "smart-door-lifecycle-proof",
+          "id": 10813688696,
+          "sha256": "23186c605c45d1dfda810c79a43eea50500aa2bc087a8e7cdab083c0d129da5a",
+          "independent_inspection": "Nine ordered receipts with valid chain; adapter invoked false; authority minted false; runtime NOT_TESTED."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816383725,
+        "sign_out": 5816429945,
+        "related_comment_ids": []
+      },
+      "blocker": "No real adapter, governance-kernel binding, or production adoption exists.",
+      "next_action": "Integrate one explicitly scoped real adapter that emits all nine verifiable lifecycle receipts.",
+      "evidence_notes": [
+        "Mechanism proof is independent; full System 49 remains blocked."
+      ]
+    },
+    {
+      "number": 50,
+      "title": "DISTRIBUTED NAYA",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "mislabeled_branch": "coda3/system-60-distributed-naya-20260924",
+        "mislabeled_head": "95e0683fdd7ed337052c39a229d9dd992a295db0",
+        "mislabeled_base": "bf8e5d67e90256cfea2cdfb86f10adc4907d0394",
+        "classification": "MISLABELED_AS_SYSTEM_60"
+      },
+      "local_tests": [
+        "python -B .naya/runtime/test_distributed_naya.py: 9/9 PASS",
+        "Upstream System 43 tests: 11/11 PASS",
+        "Python compile, YAML parse, and diff check: PASS"
+      ],
+      "ci_runs": [
+        {
+          "run": 36019502796,
+          "job": 107700491856,
+          "conclusion": "PASS",
+          "scope": "relevant mechanism; prior label was System 60"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "distributed-naya-proof",
+          "id": 10815773117,
+          "sha256": "c0294566c34fc5d0dfd6c5018346c4877f6044f242fd8f8c83421a1765c4702f",
+          "independent_inspection": "Synthetic seven-dimension envelope; PLAN_ONLY; no network, payload, provider, or federation."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5816935094,
+        "sign_out": 5816983250,
+        "related_comment_ids": [],
+        "scope": "MISLABELED_SYSTEM_60_COMMENT_PAIR"
+      },
+      "blocker": "Canonical NAYA identity binding is not established, and no real cross-runtime transport or federation is executed.",
+      "next_action": "Establish the explicit NAYA binding contract, then execute one real cross-runtime transport proof.",
+      "evidence_notes": [
+        "The prior branch and comments are retained as relevant evidence but cannot satisfy canonical System 50 without a corrected receipt."
+      ]
+    },
+    {
+      "number": 51,
+      "title": "BACKUP / DISASTER RECOVERY",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-51-recovery-package-20260924",
+      "head": "ea2f38de4f6fc5a8dece49161104a7d9432ad589",
+      "base": "ad2d2ba466fe60a3443611fb18dead428a57d800",
+      "source_evidence": {
+        "additional_commits": [
+          "1ed89d3306bc36ad9e97b17f2b5d6ae32fe3f0f9",
+          "3ee2bb5032843858f66685409476954b125c47fd",
+          "18593d198bb4cc3e84e187e4106afde4479b1a49"
+        ]
+      },
+      "local_tests": [
+        "Synthetic round trip, deterministic bytes, tamper rejection, secret rejection, real package/restore integrity: PASS",
+        "Readiness check: exit 2"
+      ],
+      "ci_runs": [
+        {
+          "run": 36008858009,
+          "job": 107664007161,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "naya-recovery-package-proof",
+          "id": 10811637782,
+          "sha256": "b87a48f30a49ab1bf3e8b4c622e628f8ddc01c67fd017fdc778915acb63ef2db",
+          "independent_inspection": "Package and isolated restore VERIFIED; overall gate BLOCKED."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5815281738,
+        "sign_out": 5815477081,
+        "related_comment_ids": []
+      },
+      "blocker": "Three governed exports are missing, Hub pointer divergence remains, and a required JSON contract is invalid.",
+      "next_action": "Supply the governed exports and reconcile source/schema validity before claiming disaster recovery.",
+      "evidence_notes": [
+        "Package integrity is not full disaster-recovery proof."
+      ]
+    },
+    {
+      "number": 52,
+      "title": "REBUILDABILITY",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-52-clean-rebuild-20260924",
+      "head": "720b1b5c68f54fa265707629576907de0a3ebf70",
+      "base": "ea2f38de4f6fc5a8dece49161104a7d9432ad589",
+      "source_evidence": {
+        "additional_commits": [
+          "57dd2dcb",
+          "b0b20938"
+        ]
+      },
+      "local_tests": [
+        "python -B tests/test_naya_clean_rebuild.py: 4/4 PASS",
+        "A/B rebuild hashes match; Python compile, YAML parse, and diff check: PASS",
+        "Readiness check: exit 2"
+      ],
+      "ci_runs": [
+        {
+          "run": 36012033617,
+          "job": 107674909692,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "naya-clean-rebuild-proof",
+          "id": 10813008311,
+          "sha256": "64427bf2f8e15eb33a066f83e6a4462c70157ee21349da62f25b852380385d14",
+          "independent_inspection": "All five A/B hashes match; local rebuild verified; full readiness remains blocked."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5815485773,
+        "sign_out": 5816003465,
+        "related_comment_ids": [
+          5816281890
+        ]
+      },
+      "blocker": "Duplicate PIS producers, timestamp/content drift, current truth 0/12, and unavailable external database block full rebuildability.",
+      "next_action": "Obtain authority to select one canonical PIS producer and resolve timestamp/authority drift.",
+      "evidence_notes": [
+        "Deterministic local rebuild is verified; full System 52 remains blocked."
+      ]
+    },
+    {
+      "number": 53,
+      "title": "ARCHITECTURAL GARBAGE COLLECTION",
+      "classification": "VERIFIED_MECHANISM",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "shared_branch": "origin/naya3/system54-current-truth-20260923",
+        "shared_head": "f810702ee3c68848b0d29f05d2b620dce1f93d41",
+        "proof_head": "8a3b4c322f17d2ffca820af02d6395d97cb31bb8",
+        "shared_base": "ad2d2ba466fe60a3443611fb18dead428a57d800"
+      },
+      "local_tests": [
+        "Dedicated workflow verification recorded; no separate local receipt found"
+      ],
+      "ci_runs": [
+        {
+          "run": 35954371477,
+          "job": 107489445702,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "architectural-garbage-inventory-8a3b4c322f17d2ffca820af02d6395d97cb31bb8",
+          "id": 10789886493,
+          "sha256": "79997efb9d0dc61675e0aa4ba0aa7ce221b1ec57637ab50d98b29846f44a037b",
+          "independent_inspection": "2,533 files, three duplicate groups, PROPOSAL_ONLY, deletion false."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": [
+          5807544856
+        ]
+      },
+      "blocker": "No explicit authorization, archive, or recovery stage exists; deletion is intentionally not performed.",
+      "next_action": "Add explicit authorization and archive proof before any garbage-collection action; do not delete.",
+      "evidence_notes": [
+        "Shared-lane mechanism evidence is recorded separately from a dedicated System 53 receipt."
+      ]
+    },
+    {
+      "number": 54,
+      "title": "CURRENT-TRUTH COMPILER",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": "coda3/system-54-current-truth-gate-20260924",
+      "head": "a32eee9c3e341122f475364991fef8c4523d1c68",
+      "base": "ad2d2ba466fe60a3443611fb18dead428a57d800",
+      "source_evidence": {},
+      "local_tests": [
+        "Negative/positive semantic test and compile: PASS",
+        "Real corpus correctly failed with 12 events, 0 current, 12 unknown"
+      ],
+      "ci_runs": [
+        {
+          "run": 36020421349,
+          "job": 107703597150,
+          "conclusion": "PASS",
+          "scope": "latest main; false-green artifact"
+        },
+        {
+          "run": 36007343322,
+          "job": 107658819499,
+          "conclusion": "FAIL_EXPECTED",
+          "scope": "fail-closed gate"
+        },
+        {
+          "run": 35952598828,
+          "job": 107484132905,
+          "conclusion": "PASS",
+          "scope": "compiler"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "project-intelligence-current-truth",
+          "id": 10815809326,
+          "sha256": "eead588d8b4560c8ebef48b0079cc531874f5851a2673687dc28dcffdb293c60",
+          "independent_inspection": "Latest main artifact remains 0 current and 12 unknown; this is not a current-intelligence proof."
+        },
+        {
+          "name": "project-intelligence-current-truth",
+          "id": 10810504028,
+          "sha256": "0d67eeb93dcbff11c1e3e20d27176964fb59636b18cb883f0c44921d36fe7d58",
+          "independent_inspection": "Fail-closed gate records CURRENT_TRUTH_EMPTY."
+        },
+        {
+          "name": "current-truth-compiler-86c16addd6029c59021bc5d7ba8ddf99763170fd",
+          "id": 10788573954,
+          "sha256": "45f735db5a5198a4c100fd697a76b9dda4262f598fff10237338e3ba854ad55d",
+          "independent_inspection": "Compiler mechanism passed; corpus truth remains blocked."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": 5815215759,
+        "sign_out": 5815273652,
+        "related_comment_ids": []
+      },
+      "blocker": "The authoritative current corpus is unresolved: 12 events are unknown and none is current.",
+      "next_action": "Resolve status, authority, and evidence for the 12 unknown records and reconcile canonical current truth.",
+      "evidence_notes": [
+        "A passing main workflow is false-green because the artifact itself is empty of current truth."
+      ]
+    },
+    {
+      "number": 55,
+      "title": "COLD-NAYA BENCHMARK",
+      "classification": "VERIFIED_MECHANISM",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "shared_branch": "origin/naya3/system54-current-truth-20260923",
+        "shared_head": "f810702ee3c68848b0d29f05d2b620dce1f93d41",
+        "proof_head": "d3a3ebd19ee4ab2db94a7c9b6372c539caf5f6e7",
+        "shared_base": "ad2d2ba466fe60a3443611fb18dead428a57d800"
+      },
+      "local_tests": [
+        "Local benchmark reported PASS in the recorded shared-lane session"
+      ],
+      "ci_runs": [
+        {
+          "run": 35952804157,
+          "job": 107484740489,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "cold-naya-benchmark-d3a3ebd19ee4ab2db94a7c9b6372c539caf5f6e7",
+          "id": 10789396742,
+          "sha256": "94fa0bf8a655c9e05e2d0864263945b6192581f24ba653a3b10ee167171bfe3a",
+          "independent_inspection": "Eight canonical reads, zero conversation reads; reasoning and human continuation remain NOT_MEASURED."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": [
+          5807212148,
+          5807544856
+        ]
+      },
+      "blocker": "Fresh-Naya reasoning, task continuation, and human continuation are not measured.",
+      "next_action": "Execute the missing reasoning, task-continuation, and human-continuation measurements rather than promoting boot reconstruction.",
+      "evidence_notes": [
+        "Shared-lane mechanism evidence is not a dedicated System 55 receipt."
+      ]
+    },
+    {
+      "number": 56,
+      "title": "HUMAN TASK BENCHMARK",
+      "classification": "NOT_TESTED",
+      "mechanism_status": "NOT_TESTED",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {},
+      "local_tests": [],
+      "ci_runs": [],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": []
+      },
+      "blocker": "No representative task set or human-outcome measurements exist.",
+      "next_action": "Define representative tasks and run them while measuring actual human goal completion.",
+      "evidence_notes": [
+        "No branch, test, CI, artifact, or dedicated Issue #554 session was found."
+      ]
+    },
+    {
+      "number": 57,
+      "title": "THE HUB SHOULD BECOME THE PROJECTION OF INTELLIGENCE",
+      "classification": "VERIFIED_MECHANISM",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "shared_branch": "origin/naya3/system54-current-truth-20260923",
+        "shared_head": "f810702ee3c68848b0d29f05d2b620dce1f93d41",
+        "proof_head": "b9b1a750febab429697113e75cf4ff839da0300b",
+        "shared_base": "ad2d2ba466fe60a3443611fb18dead428a57d800"
+      },
+      "local_tests": [
+        "Dedicated projection workflow verification recorded; no separate local receipt found"
+      ],
+      "ci_runs": [
+        {
+          "run": 35952971520,
+          "job": 107485258112,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "hub-projection-invariant-b9b1a750febab429697113e75cf4ff839da0300b",
+          "id": 10789486827,
+          "sha256": "800e5df69017aab522bfd8687680aacba2aeb645495dda8aab944b564c17d0d8",
+          "independent_inspection": "SOURCE_ARCHITECTURE_BOUNDED; PIS-backed projections; zero direct Hub-app writes."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": [
+          5807544856
+        ]
+      },
+      "blocker": "No exact deployed source to intelligence to projection to action proof exists.",
+      "next_action": "Run the exact deployed source-to-intelligence-to-projection-to-action chain.",
+      "evidence_notes": [
+        "Shared-lane mechanism evidence is not a dedicated System 57 receipt."
+      ]
+    },
+    {
+      "number": 58,
+      "title": "ONE EXPERIENCE, MULTIPLE SURFACES",
+      "classification": "NOT_TESTED",
+      "mechanism_status": "NOT_TESTED",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "nearest_generic_source_head": "d4d309a569970b8f0fe625234db82aad162126f5"
+      },
+      "local_tests": [
+        "No exact complete desktop/mobile journey test found"
+      ],
+      "ci_runs": [
+        {
+          "run": 35929416819,
+          "job": 107412188699,
+          "conclusion": "FAIL",
+          "scope": "nearest generic surface test, not System 58"
+        }
+      ],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": []
+      },
+      "blocker": "The generic runner does not execute the complete 13-step journey on both viewports; the nearest run failed at competing-right-rail divergence.",
+      "next_action": "Run the exact 13-step journey on desktop and mobile as a release-blocking acceptance.",
+      "evidence_notes": [
+        "The nearest generic failure is retained as a non-System-58 signal, not as a System 58 receipt."
+      ]
+    },
+    {
+      "number": 59,
+      "title": "NAYA SHOULD EXPLAIN WHY",
+      "classification": "VERIFIED_MECHANISM",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "NOT_TESTED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "shared_branch": "origin/naya3/system54-current-truth-20260923",
+        "shared_head": "f810702ee3c68848b0d29f05d2b620dce1f93d41",
+        "proof_head": "11c3d436aa608cfabfaa689bbed5a4f061c7349a",
+        "shared_base": "ad2d2ba466fe60a3443611fb18dead428a57d800"
+      },
+      "local_tests": [
+        "No separate local receipt found"
+      ],
+      "ci_runs": [
+        {
+          "run": 35953146350,
+          "job": 107485779086,
+          "conclusion": "PASS"
+        }
+      ],
+      "artifacts": [],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": [
+          5807544856
+        ]
+      },
+      "blocker": "Build and typecheck passed, but no behavioral or production-browser proof exists and the workflow uploads no artifact.",
+      "next_action": "Deploy the exact head and verify the WHY NAYA explanation in production with retained evidence.",
+      "evidence_notes": [
+        "Passing build alone is not a production explanation receipt."
+      ]
+    },
+    {
+      "number": 60,
+      "title": "THE ULTIMATE NAYAPOWER LOOP",
+      "classification": "BLOCKED",
+      "mechanism_status": "VERIFIED_MECHANISM",
+      "production_status": "BLOCKED",
+      "dedicated_branch": null,
+      "head": null,
+      "base": null,
+      "source_evidence": {
+        "shared_branch": "origin/naya3/system54-current-truth-20260923",
+        "shared_head": "f810702ee3c68848b0d29f05d2b620dce1f93d41",
+        "proof_head": "04444d428c4c15300d99db5a0fc3e289f485df47",
+        "shared_base": "ad2d2ba466fe60a3443611fb18dead428a57d800",
+        "prior_mislabeled_system_60_branch": "coda3/system-60-distributed-naya-20260924"
+      },
+      "local_tests": [
+        "No canonical System 60 local receipt; production compound workflow stopped at first deterministic failure"
+      ],
+      "ci_runs": [
+        {
+          "run": 35954755412,
+          "job": 107490586245,
+          "conclusion": "FAIL",
+          "scope": "canonical shared compound loop"
+        }
+      ],
+      "artifacts": [
+        {
+          "name": "nayanet-compound-intelligence-12-proof-35954755412",
+          "id": 10789803496,
+          "sha256": "029c1e16ca3f723365c17676a3dee77a135a0255cb686ba742d6a81e578880dc",
+          "independent_inspection": "Artifact contains only seven PASS traces and stops with CANONICAL_SOURCE_BLOCK_NOT_FOUND; final proof JSON is absent."
+        }
+      ],
+      "issue_receipt": {
+        "sign_in": null,
+        "sign_out": null,
+        "related_comment_ids": [
+          5807544856
+        ],
+        "mislabeled_pair": {
+          "sign_in": 5816935094,
+          "sign_out": 5816983250,
+          "scope": "MISLABELED_SYSTEM_50_EVIDENCE"
+        }
+      },
+      "blocker": "Canonical event-to-Intelligent Block association is missing; the full Ultimate NayaPOWER Loop is not proven.",
+      "next_action": "Repair the canonical association and rerun the compound loop; do not supersede an arbitrary Block.",
+      "evidence_notes": [
+        "The prior distributed-Naya branch and comment pair are retained only as mislabeled System 50 evidence."
+      ]
+    }
+  ]
+}

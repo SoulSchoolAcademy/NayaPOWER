@@ -20,10 +20,13 @@ class CurrentTruthIntegrationTests(unittest.TestCase):
 
     def test_feature_branch_is_not_claimed_as_current_source(self) -> None:
         self.assertEqual(self.receipt["source_identity"]["source_scope"], "NON_MAIN_SOURCE_SCOPE")
-        self.assertEqual(self.receipt["status"], "NOT_CURRENT_SOURCE_SCOPE")
+        self.assertEqual(self.receipt["truth_status"], "NOT_CURRENT_SOURCE_SCOPE")
+        self.assertEqual(self.receipt["verification_status"], "VERIFIED_MECHANISM")
+        self.assertEqual(self.receipt["verification_scope"], "RECONSTRUCTION_RECEIPT_ONLY")
         self.assertFalse(self.receipt["source_identity"]["recorded_heads_are_authoritative"])
 
     def test_reconstruction_is_reproducible_and_truth_is_not_promoted(self) -> None:
+        self.assertEqual(self.receipt["reconstruction_status"], "RECONSTRUCTED")
         self.assertEqual(self.receipt["reconstruction"]["status"], "RECONSTRUCTED")
         self.assertTrue(self.receipt["reconstruction"]["reproducible"])
         self.assertEqual(self.receipt["reconstruction"]["counts"]["current"], 0)
@@ -41,6 +44,27 @@ class CurrentTruthIntegrationTests(unittest.TestCase):
         self.assertEqual(control["baton_next_action_status"], "BLOCKED")
         self.assertIn("intelligence_commit", control["next_action"])
         self.assertTrue(any(snapshot["matches_live_head"] is False for snapshot in control["snapshots"]))
+
+    def test_snapshot_matrix_reports_all_five_sources_without_authority_promotion(self) -> None:
+        snapshots = self.receipt["control_plane"]["snapshots"]
+        self.assertEqual(
+            {snapshot["path"] for snapshot in snapshots},
+            {
+                ".naya/control-plane/STATE.json",
+                ".naya/control-plane/BLOCKS.json",
+                ".naya/control-plane/MAP.json",
+                ".naya/control-plane/PROOF.json",
+                ".naya/control-plane/BATON.json",
+            },
+        )
+        self.assertTrue(all(snapshot["authority"] in {"SNAPSHOT_ONLY", "MISSING"} for snapshot in snapshots))
+        self.assertTrue(any(snapshot["currentness"] == "CURRENTNESS_UNPROVEN" for snapshot in snapshots))
+        self.assertTrue(any(snapshot["currentness"] == "STALE" for snapshot in snapshots))
+
+    def test_ambiguous_status_is_rejected(self) -> None:
+        tampered = copy.deepcopy(self.receipt)
+        tampered["status"] = "VERIFIED"
+        self.assertIn("ambiguous top-level status field is forbidden", MODULE.validate_receipt(tampered))
 
     def test_existing_execution_boundary_is_referenced_not_executed(self) -> None:
         boundary = self.receipt["canonical_execution_boundary"]
