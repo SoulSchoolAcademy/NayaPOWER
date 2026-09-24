@@ -5,6 +5,8 @@ on:
     paths:
       - "supabase/migrations/20260924130000_canonical_intelligence_commit_bridge_v1.sql"
       - "tests/test_stream_b_canonical_intelligence_commit_bridge.py"
+      - ".naya/runtime/production_authority_adapter.py"
+      - "tests/test_production_authority_adapter.py"
   pull_request:
     paths:
       - "supabase/migrations/20260924130000_canonical_intelligence_commit_bridge_v1.sql"
@@ -23,3 +25,4 @@ jobs:
         with:
           python-version: "3.11"
       - run: python tests/test_stream_b_canonical_intelligence_commit_bridge.py
+      - run: python tests/test_production_authority_adapter.py
