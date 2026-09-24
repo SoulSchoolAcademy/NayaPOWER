@@ -10,7 +10,7 @@ const healthStart=source.indexOf("async function health(",commitStart);
 if(helperStart<0||commitStart<0||healthStart<0||helperStart>commitStart)throw new Error("EXTRACTION_SEAM_NOT_FOUND");
 const extracted=source.slice(helperStart,healthStart)+
 "\nmodule.exports={verifyV36PortableArtifact,commitIntelligence};\n";
-const js=extracted.replace(/:\s*(unknown|string|any|Promise<[^>]+>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"");
+const js=extracted.replace(/:\s*(unknown|string|any|Promise<[^>]+>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"").replace(/\):\s*[A-Za-z0-9_<>\[\], ]+\s*\{/g,"){");
 
 const {publicKey,privateKey}=generateKeyPairSync("ed25519");
 const pubDer=publicKey.export({format:"der",type:"spki"});
