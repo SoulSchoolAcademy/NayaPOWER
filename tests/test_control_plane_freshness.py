@@ -123,6 +123,35 @@ class BatonIdentityTests(unittest.TestCase):
         baton = MODULE.load_json(ROOT / ".naya/control-plane/BATON.json")
         self.assertEqual(baton["identity"], baton["repository"])
 
+    def test_builder_emits_existing_evidence_pointers(self):
+        baton = BATON_MODULE.build_baton()
+        sources = [item["source"] for item in baton["evidence"]]
+        self.assertIn(".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md", sources)
+        self.assertIn(".naya/control-plane/PROOF.json", sources)
+
+    def test_committed_baton_contains_evidence_pointers(self):
+        baton = MODULE.load_json(ROOT / ".naya/control-plane/BATON.json")
+        self.assertTrue(baton["evidence"])
+        self.assertTrue(all(item.get("source") for item in baton["evidence"]))
+
+    def test_freshness_rejects_malformed_evidence(self):
+        baton = BATON_MODULE.build_baton()
+        baton["evidence"] = [{}]
+        with self.assertRaisesRegex(AssertionError, "BATON_EVIDENCE_INVALID"):
+            BATON_MODULE.validate_baton(baton)
+
+    def test_freshness_rejects_missing_evidence(self):
+        baton = BATON_MODULE.build_baton()
+        del baton["evidence"]
+        with self.assertRaisesRegex(AssertionError, "BATON_EVIDENCE_MISSING"):
+            BATON_MODULE.validate_baton(baton)
+
+    def test_freshness_rejects_missing_evidence_source(self):
+        baton = BATON_MODULE.build_baton()
+        baton["evidence"][0]["source"] = ".naya/control-plane/DOES-NOT-EXIST.json"
+        with self.assertRaisesRegex(AssertionError, "BATON_EVIDENCE_SOURCE_MISSING"):
+            BATON_MODULE.validate_baton(baton)
+
     def test_freshness_rejects_missing_identity(self):
         with self.assertRaisesRegex(MODULE.FreshnessError, "BATON_FIELD_MISSING: identity"):
             MODULE.validate_baton(ROOT, {}, {}, {}, {}, {}, self.head)
