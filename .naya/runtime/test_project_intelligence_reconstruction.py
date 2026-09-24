@@ -12,6 +12,10 @@ def main():
     new=ev("SE-NEW","Hub runtime","2026-09-21T10:00:00Z",summary="new",rel={"supersedes":["SE-OLD"]})
     stale=ev("SE-STALE","Old dependency","2026-09-19T10:00:00Z","STALE")
     hist=ev("SE-HIST","Old fact","2026-09-18T10:00:00Z","HISTORICAL")
+    activity=ev("SE-ACTIVITY","Completed execution","2026-09-21T09:00:00Z","VERIFIED_REPOSITORY_RECORD")
+    activity["event_type"]="activity"
+    activity["continuity"]={"execution_state":"COMPLETED"}
+    activity["verification"]={"status":"VERIFIED","evidence":["repository receipt"]}
     a=ev("SE-C1","Deployment target","2026-09-21T11:00:00Z",summary="A")
     b=ev("SE-C2","Deployment target","2026-09-21T12:00:00Z",summary="B")
     a["verification"]={"status":"VERIFIED","evidence":["live deployment receipt"],"canonical_url":"test"}
@@ -22,10 +26,10 @@ def main():
     c3["verification"]={"status":"VERIFIED","evidence":["receipt B"],"canonical_url":"test"}
     c=ev("SE-C3","Security policy","2026-09-21T13:00:00Z","CONFLICTED")
     denied=ev("SE-DENY","Deployment target","2026-09-21T14:00:00Z",summary="secret")
-    r=pir.reconstruct([old,new,stale,hist,a,b,c,c2,c3,denied],authorized_event_ids={"SE-OLD","SE-NEW","SE-STALE","SE-HIST","SE-C1","SE-C2","SE-C3","SE-C4","SE-C5"},current_state={"single_next_action":"continue-proof"},blocks={"active_block":{"id":"PI-CURRENT-TRUTH","next_action":"continue-proof"}})
+    r=pir.reconstruct([old,new,stale,hist,activity,a,b,c,c2,c3,denied],authorized_event_ids={"SE-OLD","SE-NEW","SE-STALE","SE-HIST","SE-ACTIVITY","SE-C1","SE-C2","SE-C3","SE-C4","SE-C5"},current_state={"single_next_action":"continue-proof"},blocks={"active_block":{"id":"PI-CURRENT-TRUTH","next_action":"continue-proof"}})
     assert {x["event_id"] for x in r["superseded"]}=={"SE-OLD"}
     assert {x["event_id"] for x in r["stale"]}=={"SE-STALE"}
-    assert {x["event_id"] for x in r["historical"]}=={"SE-HIST"}
+    assert {x["event_id"] for x in r["historical"]}=={"SE-HIST","SE-ACTIVITY"}
     assert {x["event_id"] for x in r["current"]}=={"SE-NEW","SE-C1"}
     assert {x["event_id"] for x in r["conflicted"]}=={"SE-C2","SE-C3","SE-C4","SE-C5"}
     assert "SE-DENY" not in json.dumps(r)
