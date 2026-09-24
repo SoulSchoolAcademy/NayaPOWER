@@ -3,6 +3,14 @@
 **Status:** PROPOSED / INTEGRATION MAP — NOT YET CANONICAL LAW
 **Purpose:** Reconcile the collective operating model with existing NayaPOWER authorities and define one non-duplicative execution path.
 
+## Participation + privacy invariant
+
+CCT collective exchange follows the canonical NayaNET participation contract in `.naya/protocol/NAYANET-INTELLIGENCE-PARTICIPATION-PRIVACY-PROTOCOL-V1.md`.
+
+**Authorized connection establishes participation consent. Learning is automatic by default. Useful wisdom may enter collective processing automatically after participation consent. Identity remains private by default. Public publication requires a separate decision.**
+
+CCT must never introduce a per-event manual consent queue for ordinary learning, and must never treat participation consent as permission to expose identity or private source material.
+
 ## North Star
 Every Naya should restore authoritative context, understand the human/project mission, select the highest-value next action, execute with clear instructions, verify the result, extract durable value, preserve governed intelligence, and leave the next Naya an immediately executable continuation.
 
@@ -35,7 +43,7 @@ This is an integration sequence, not a new universal law. Existing canonical law
 ## Boundary contracts
 
 ### 1. CCT → Superbrain
-CCT may provide only intelligence that satisfies its existing integrity, provenance, permission, and lifecycle rules. The Superbrain consumes it as governed context; it does not silently upgrade unverified material to truth.
+CCT may provide only intelligence that satisfies its existing integrity, provenance, privacy, participation, and lifecycle rules. Participation consent is inherited from the authorized connection/door; identity exposure is not. The Superbrain consumes it as governed context; it does not silently upgrade unverified material to truth.
 
 ### 2. Superbrain → Priority
 The Superbrain supplies authoritative context, current state, mission, constraints, available work, and relevant learning. The priority layer selects the highest-value next action according to the applicable project/execution rules.
