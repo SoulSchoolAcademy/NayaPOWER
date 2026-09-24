@@ -1,0 +1,120 @@
+name: Verify NayaPOWER Recovery Package
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "scripts/naya_recovery_package.py"
+      - "scripts/naya_recovery_package_inventory.json"
+      - "tests/test_naya_recovery_package.py"
+      - ".github/workflows/verify-naya-recovery-package.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  recovery-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test recovery package mechanism
+        run: python tests/test_naya_recovery_package.py
+      - name: Create canonical repository recovery package
+        run: |
+          python scripts/naya_recovery_package.py create \
+            --repository . \
+            --inventory scripts/naya_recovery_package_inventory.json \
+            --source-ref HEAD \
+            --output "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            | tee "${RUNNER_TEMP}/create-report.json"
+          python scripts/naya_recovery_package.py verify \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            | tee "${RUNNER_TEMP}/verify-report.json"
+      - name: Restore and verify isolated repository source
+        run: |
+          python scripts/naya_recovery_package.py restore \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            --destination "${RUNNER_TEMP}/restored-inspect" \
+            > "${RUNNER_TEMP}/restore-inspect.json"
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report=json.loads(Path(os.environ["RUNNER_TEMP"],"restore-inspect.json").read_text(encoding="utf-8"))
+          assert report["status"]=="BLOCKED",report
+          assert report["disaster_recovery_ready"] is False,report
+          assert report["package_verification"]["status"]=="VERIFIED",report
+          codes={row["code"] for row in report["failures"]}
+          assert "EXTERNAL_STATE_MISSING" in codes,codes
+          assert "CONTROL_PLANE_SOURCE_DIVERGENCE" in codes,codes
+          assert "REQUIRED_JSON_INVALID" in codes,codes
+          print("RECOVERY_RESTORE_SOURCE_INTEGRITY=VERIFIED")
+          print("RECOVERY_DISASTER_READINESS=BLOCKED")
+          print("RECOVERY_BLOCK_CODES="+",".join(sorted(codes)))
+          PY
+      - name: Prove require-ready fails closed
+        run: |
+          set +e
+          python scripts/naya_recovery_package.py restore \
+            --package "${RUNNER_TEMP}/naya-recovery-package.zip" \
+            --destination "${RUNNER_TEMP}/restored-require-ready" \
+            --require-ready \
+            > "${RUNNER_TEMP}/restore-require-ready.json"
+          code=$?
+          set -e
+          test "$code" -eq 2
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          report=json.loads(Path(os.environ["RUNNER_TEMP"],"restore-require-ready.json").read_text(encoding="utf-8"))
+          assert report["status"]=="BLOCKED",report
+          assert report["disaster_recovery_ready"] is False,report
+          print("RECOVERY_REQUIRE_READY_EXIT=2")
+          print("RECOVERY_REQUIRE_READY=BLOCKED")
+          PY
+      - name: Write recovery gate receipt
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          create=json.loads((root/"create-report.json").read_text(encoding="utf-8"))
+          verify=json.loads((root/"verify-report.json").read_text(encoding="utf-8"))
+          restore=json.loads((root/"restore-inspect.json").read_text(encoding="utf-8"))
+          receipt={
+            "schema":"naya-recovery-package-gate/v1",
+            "package_integrity":verify["status"],
+            "source_commit":verify["source_commit"],
+            "restore_integrity":"VERIFIED",
+            "disaster_recovery_ready":restore["disaster_recovery_ready"],
+            "status":restore["status"],
+            "failure_codes":sorted({row["code"] for row in restore["failures"]}),
+            "external_state":create["external_state"],
+            "truth_boundary":"Repository package mechanics are verified. Production intelligence recovery remains blocked until governed external exports are supplied and canonical source validation passes."
+          }
+          (root/"recovery-gate.json").write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+      - name: Publish recovery proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: naya-recovery-package-proof
+          path: |
+            ${{ runner.temp }}/naya-recovery-package.zip
+            ${{ runner.temp }}/create-report.json
+            ${{ runner.temp }}/verify-report.json
+            ${{ runner.temp }}/restore-inspect.json
+            ${{ runner.temp }}/restore-require-ready.json
+            ${{ runner.temp }}/recovery-gate.json
+          retention-days: 14
+          if-no-files-found: error

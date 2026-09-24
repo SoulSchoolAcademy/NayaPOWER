@@ -1,0 +1,133 @@
+{
+  "$schema": "naya/recovery-package-inventory/v1",
+  "schema": "naya-recovery-package-inventory/v1",
+  "status": "CANONICAL",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "required_components": [
+    {
+      "id": "source_identity",
+      "paths": [
+        "README.md",
+        "SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md",
+        "SUPERBRAIN/AI-BOOT/START-HERE.md",
+        ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json"
+      ]
+    },
+    {
+      "id": "control_plane",
+      "paths": [
+        ".naya/control-plane/MAP.json",
+        ".naya/control-plane/STATE.json",
+        ".naya/control-plane/BLOCKS.json",
+        ".naya/control-plane/PROOF.json",
+        ".naya/control-plane/BATON.json",
+        ".naya/naya-context-manifest.json"
+      ]
+    },
+    {
+      "id": "intelligence_contracts_and_schemas",
+      "paths": [
+        "contracts",
+        "intelligence",
+        "SUPERBRAIN/schemas"
+      ]
+    },
+    {
+      "id": "intelligence_events_and_indexes",
+      "paths": [
+        ".naya/memory/events",
+        ".naya/memory/notes",
+        ".naya/memory/INDEX.json"
+      ]
+    },
+    {
+      "id": "governance",
+      "paths": [
+        ".naya/codex",
+        ".naya/governance",
+        "docs/NAYA-VERSIONED-BACKUP-AND-EDITING-PROTOCOL.md"
+      ]
+    },
+    {
+      "id": "receipts_and_evidence",
+      "paths": [
+        "intelligence-receipts",
+        ".naya/project-intelligence",
+        "verification"
+      ]
+    },
+    {
+      "id": "database_and_runtime_source",
+      "paths": [
+        "supabase/migrations",
+        "supabase/functions"
+      ]
+    },
+    {
+      "id": "configuration_and_deployment_references",
+      "paths": [
+        "NAYANET/HUB/package.json",
+        "NAYANET/HUB/wrangler.jsonc",
+        "NAYANET/HUB/cloudflare-static-worker.js",
+        "docs/DEPLOYMENT-CONTRACT.md",
+        ".github/workflows/assistant-cloudflare-hub-release.yml"
+      ]
+    }
+  ],
+  "required_json": [
+    ".naya/control-plane/MAP.json",
+    ".naya/control-plane/STATE.json",
+    ".naya/control-plane/BLOCKS.json",
+    ".naya/control-plane/PROOF.json",
+    ".naya/control-plane/BATON.json",
+    ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
+    ".naya/naya-context-manifest.json",
+    "contracts/intelligent-block-v1.schema.json",
+    "intelligence/NayaIntelligenceEvent.schema.json",
+    "SUPERBRAIN/schemas/execution-state.schema.json"
+  ],
+  "required_python": [
+    ".naya/runtime/canonical_event_store.py",
+    ".naya/runtime/project_intelligence_reconstruction.py",
+    ".naya/runtime/restore_context.py",
+    "scripts/naya_recovery_package.py"
+  ],
+  "control_plane_identity": {
+    "hub_path": "NAYANET/HUB/index.html",
+    "sha_pointers": {
+      ".naya/control-plane/STATE.json": [
+        "hub_pre_execution.canonical_hub_source_sha"
+      ],
+      ".naya/control-plane/MAP.json": [
+        "canonical_hub_source_sha"
+      ]
+    }
+  },
+  "external_exports": [
+    {
+      "id": "supabase_schema",
+      "filename": "supabase-schema.sql",
+      "required": true
+    },
+    {
+      "id": "supabase_data",
+      "filename": "supabase-data.dump",
+      "required": true
+    },
+    {
+      "id": "external_runtime_metadata",
+      "filename": "external-runtime-metadata.json",
+      "required": true
+    }
+  ],
+  "external_policy": {
+    "secret_values_forbidden": true,
+    "forbidden_filename_tokens": [
+      "secret",
+      "credential",
+      "password",
+      "token",
+      ".env"
+    ]
+  }
+}
