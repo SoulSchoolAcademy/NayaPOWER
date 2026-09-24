@@ -1,19 +1,13 @@
-name: NayaNET Universal Envelope — Hub Runtime sender coverage proof
+name: hub-runtime-sender-proof
 
-on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/verify-universal-envelope-hub-runtime-sender.yml'
-      - '.github/scripts/universal-envelope-hub-runtime-sender.mjs'
-  workflow_dispatch:
+on: [push]
 
 permissions:
   contents: read
   id-token: write
 
 jobs:
-  hub-runtime-sender:
+  proof:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
