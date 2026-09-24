@@ -42,6 +42,11 @@ def build_baton() -> dict[str, Any]:
     if state.get("next_action_count") != 1 or active.get("next_action_count") != 1:
         raise RuntimeError("ONE_NEXT_ACTION_LAW_NOT_SATISFIED")
 
+    action_status = state.get("next_action", {}).get("status")
+    allowed_action_statuses = {"RECOMMENDED", "REQUESTED", "AUTHORIZED", "ATTEMPTED", "EXECUTED", "OBSERVED", "VERIFIED", "BLOCKED"}
+    if action_status not in allowed_action_statuses:
+        raise RuntimeError("NEXT_ACTION_STATUS_INVALID:" + str(action_status))
+
     next_action = active["next_action"]
     acceptance = active.get("acceptance") or [active.get("completion", "Next action is executed and verified.")]
     mission = state["mission"]
@@ -111,7 +116,7 @@ def build_baton() -> dict[str, Any]:
         },
         "next_action": {
             "count": 1,
-            "status": "AUTHORIZED",
+            "status": action_status,
             "action": next_action,
             "source": ".naya/control-plane/BLOCKS.json",
             "reason": active.get("next_action_reason") or "The canonical active block exposes exactly one next action.",
@@ -157,6 +162,7 @@ def validate_baton(baton: dict[str, Any]) -> None:
 
     n = baton["next_action"]
     assert n["count"] == 1, "BATON_NEXT_ACTION_COUNT_NOT_ONE"
+    assert n["status"] == state.get("next_action", {}).get("status"), "BATON_NEXT_ACTION_STATUS_MISMATCH"
     assert n["action"] == active["next_action"] == state["single_next_action"], "BATON_NEXT_ACTION_MISMATCH"
     assert n["source"] == ".naya/control-plane/BLOCKS.json", "BATON_NEXT_ACTION_SOURCE_MISMATCH"
     assert baton["source_snapshot"]["proof_status"] == proof.get("status"), "BATON_PROOF_STATUS_MISMATCH"

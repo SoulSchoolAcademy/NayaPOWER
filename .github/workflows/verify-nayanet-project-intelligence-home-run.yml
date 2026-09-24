@@ -201,13 +201,13 @@ jobs:
 
               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
               await page.waitForFunction((id)=>{
-                const card=document.querySelector('#naya-smart-feed .sf-card[data-event-id="'+CSS.escape(id)+'"]');
-                const status=document.querySelector('#naya-smart-feed #sf-state');
+                const card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
+                const status=document.querySelector('#naya-smart-feed-v2 #sf-status');
                 return !!card && !!status && !/BLOCKED|ERROR/i.test(status.textContent||'');
               },receiverEventId,{timeout:30000});
-              const rendered=await page.locator('#naya-smart-feed .sf-card[data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id'),title:n.querySelector('h2')?.textContent||'',surface:'canonical-smart-feed'})));
+              const rendered=await page.locator('#naya-smart-feed-v2 .sf-card[data-event-id]').evaluateAll(nodes=>nodes.map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id'),title:n.querySelector('h2')?.textContent||'',surface:'canonical-smart-feed'})));
               if(!rendered.some(x=>x.eventId===receiverEventId)) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
-              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:'#naya-smart-feed .sf-card',canonical_event_selector:'.sf-card[data-event-id]'});
+              mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:'#naya-smart-feed-v2 .sf-card',canonical_event_selector:'.sf-card[data-event-id]'});
 
               const ack=await compound(page,session,'ack',{
                 packet_id:bridge.packet_id,
