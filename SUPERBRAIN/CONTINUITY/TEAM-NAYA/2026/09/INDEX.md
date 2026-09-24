@@ -5,6 +5,7 @@
 ## Calendar
 
 - [September 19, 2026](./19/INDEX.md)
+- [September 24, 2026](./24/INDEX.md)
 
 **Navigation:** YEAR → MONTH → DAY → FEATURE → SESSION
 

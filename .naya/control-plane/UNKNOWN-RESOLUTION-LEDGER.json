@@ -1,0 +1,23 @@
+{
+  "$schema": "naya/control-plane/unknown-resolution-ledger/v1",
+  "status": "CANONICAL",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "authority": "Only records with an exact resolves_unknown identity and valid evidence may change an UNKNOWN state.",
+  "record_contract": {
+    "identity_field": "resolves_unknown",
+    "required_fields": [
+      "resolves_unknown",
+      "status",
+      "evidence"
+    ],
+    "statuses": [
+      "RESOLVED",
+      "SUPERSEDED",
+      "BLOCKED",
+      "STILL_UNKNOWN"
+    ],
+    "replacement_required_for": "SUPERSEDED",
+    "blocker_required_for": "BLOCKED"
+  },
+  "resolutions": []
+}
