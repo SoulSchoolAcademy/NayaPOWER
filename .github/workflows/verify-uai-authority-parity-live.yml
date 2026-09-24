@@ -28,8 +28,8 @@ jobs:
           H=(-H "Authorization: Bearer $token" -H "apikey: $SUPABASE_ANON_KEY" -H "Content-Type: application/json")
           src=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d '{"action":"understand","title":"UAI authority proof","content":"UAI-AUTHORITY-SOURCE","confidence":1,"tags":["uai-authority-proof"]}')
           event=$(echo "$src" | jq -r '.result.event.event_id'); test -n "$event"
-          grant=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d "$(jq -n --arg s "$user" --arg e "$event" '{action:"issue_pi_authority",subject_id:$s,source_event_id:$e,mission_id:"NayaNET",scope:{project_id:"NayaNET",target:"NayaNET"},actions:["intelligence_commit"],constraints:{mode:"uai-authority-parity-proof"},expires_at:"2099-01-01T00:00:00Z",evidence:{proof:"uai-live"}}')")
-          gid=$(echo "$grant" | jq -r '.result.grant.grant_id'); test -n "$gid"
+          grant=$(curl --silent --show-error -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" "${H[@]}" -d "$(jq -n --arg s "$user" --arg e "$event" --arg run "$GITHUB_RUN_ID" '{p_subject_id:$s,p_source_event_id:$e,p_mission_id:"UAI authority parity proof",p_scope:{project_id:"NayaNET",target:$s},p_actions:["intelligence_commit"],p_constraints:{mode:"uai-authority-parity-proof",no_external_side_effects:true},p_expires_at:"2099-01-01T00:00:00Z",p_evidence:{proof:"uai-live",run:$run}}')")
+          gid=$(echo "$grant" | jq -r '.grant_id'); test -n "$gid"
           connect_code=$(curl --silent --show-error -o /tmp/connect.json -w '%{http_code}' -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_smart_connect" "${H[@]}" -d '{"p_door":"mcp"}')
           test "$connect_code" = 200
           grep -Eq 'CONNECTED|ALREADY_CONNECTED' /tmp/connect.json
