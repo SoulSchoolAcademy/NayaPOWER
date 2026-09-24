@@ -10,7 +10,7 @@ const [sender,receiver]=await Promise.all([signup(),signup()]);
 if(!sender.body?.access_token||!sender.body?.user?.id||!receiver.body?.access_token||!receiver.body?.user?.id)throw Error('AUTH_BOOTSTRAP_FAILED');
 const sid=sender.body.user.id,rid=receiver.body.user.id,output='Equivalent meaningful output for the fourth-sender Universal Intelligence Envelope V1 invariance proof.',subject='Cross-Sender Invariance — Smart Mail';
 const browser=await chromium.launch({headless:true});
-const storage=session=>({cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify({currentSession:session})}]}]});
+const storage=session=>({cookies:[],origins:[{origin:new URL(runtime).origin,localStorage:[{name:'nayanet.supabase.auth',value:JSON.stringify(session)}]}]});
 async function pageFor(session,label){const ctx=await browser.newContext({storageState:storage(session),viewport:{width:1440,height:1000}}),page=await ctx.newPage();const r=await page.goto(runtime+'/?fourth_sender='+run+'-'+label,{waitUntil:'domcontentloaded',timeout:60000});if(r?.status()!==200)throw Error(label+'_HUB_NOT_200');await page.waitForFunction(()=>!!window.NayaAssistantRuntime,{timeout:30000});const s=await page.evaluate(async()=>window.NayaAssistantRuntime.init());if(!s.authenticated||s.user_id!==session.user.id)throw Error(label+'_AUTH_HANDOFF_FAILED');return{ctx,page}};
 const A=await pageFor(sender.body,'sender'),B=await pageFor(receiver.body,'receiver');
 await A.page.evaluate(s=>window.NayaAssistantRuntime.joinSpace(s),space);await B.page.evaluate(s=>window.NayaAssistantRuntime.joinSpace(s),space);
