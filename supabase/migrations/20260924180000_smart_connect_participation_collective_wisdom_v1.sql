@@ -21,7 +21,7 @@ drop policy if exists smart_connect_participation_owner_read on public.nayanet_s
 create policy smart_connect_participation_owner_read on public.nayanet_smart_connect_participation for select to authenticated using (member_id=(select auth.uid()));
 
 create or replace function public.nayanet_smart_connect(p_door text)
-returns jsonb language plpgsql security definer set search_path=public as $$
+returns jsonb language plpgsql security definer set search_path='' as $
 declare v_actor uuid:=auth.uid(); v_door text:=lower(trim(p_door)); v_row public.nayanet_smart_connect_participation;
 begin
  if v_actor is null then raise exception 'AUTH_REQUIRED'; end if;
@@ -32,7 +32,7 @@ begin
  return jsonb_build_object('schema','NAYANET_SMART_CONNECT_PARTICIPATION_V1','status','CONNECTED','participation',to_jsonb(v_row),'authority','UNCHANGED','publication','NOT_GRANTED','identity','PRIVATE_BY_DEFAULT','wisdom_sharing','DEFAULT');
 end; $$;
 create or replace function public.nayanet_smart_disconnect(p_door text)
-returns jsonb language plpgsql security definer set search_path=public as $$
+returns jsonb language plpgsql security definer set search_path='' as $
 declare v_actor uuid:=auth.uid(); v_door text:=lower(trim(p_door)); v_row public.nayanet_smart_connect_participation;
 begin
  if v_actor is null then raise exception 'AUTH_REQUIRED'; end if;
@@ -63,10 +63,14 @@ alter table public.nayanet_collective_wisdom enable row level security;
 revoke all on table public.nayanet_collective_wisdom from anon,authenticated;
 grant select on public.nayanet_collective_wisdom to authenticated;
 drop policy if exists collective_wisdom_member_read on public.nayanet_collective_wisdom;
-create policy collective_wisdom_member_read on public.nayanet_collective_wisdom for select to authenticated using(status='ACTIVE');
+revoke select on public.nayanet_collective_wisdom from authenticated;
+create view public.nayanet_collective_wisdom_feed with(security_invoker=true) as
+select id,source_event_id,wisdom_claim,topic,epistemic_state,status,identity_visibility,source_visibility,public_publication,created_at
+from public.nayanet_collective_wisdom where status='ACTIVE';
+grant select on public.nayanet_collective_wisdom_feed to authenticated;
 
 create or replace function public.nayanet_collective_wisdom_for_event(p_source_event_id uuid,p_owner_id uuid,p_wisdom_claim text,p_topic text,p_provenance jsonb)
-returns jsonb language plpgsql security definer set search_path=public as $$
+returns jsonb language plpgsql security definer set search_path='' as $
 declare v_participation boolean; v_row public.nayanet_collective_wisdom;
 begin
  select exists(select 1 from public.nayanet_smart_connect_participation where member_id=p_owner_id and status='active' and wisdom_sharing='default') into v_participation;
