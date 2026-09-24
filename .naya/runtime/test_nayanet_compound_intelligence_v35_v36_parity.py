@@ -51,7 +51,7 @@ assert "Do not add an authority issuer." in spec
 assert "only after every check passes, call the existing record() function." in spec
 
 # Ordering is the causal invariant: binding must precede persistence.
-binding_pos = contract.index("return {\n        "allowed": True")
+binding_pos = contract.index('"allowed": True')
 receipt_pos = spec.index("The record() call must receive")
 assert binding_pos >= 0 and receipt_pos >= 0
 
