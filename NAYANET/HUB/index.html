@@ -990,38 +990,5 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 <script>
 (()=>{'use strict';function bindRoom01(){document.querySelectorAll('[data-room01-ask]').forEach(b=>{if(b.dataset.bound)return;b.dataset.bound='1';b.addEventListener('click',()=>document.querySelector('.nayaCard [data-action="ask"]')?.click())})}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',bindRoom01,{once:true});else bindRoom01();setTimeout(bindRoom01,800)})();
 </script>
-<script id="nayanet-canonical-auth-gate">
-(()=>{'use strict';
-const ready=()=>window.NayaNETNameFirstAuth&&typeof window.NayaNETNameFirstAuth.establish==='function';
-const clean=v=>String(v||'').trim().replace(/\s+/g,' ').slice(0,120);
-const alias=v=>String(v||'').toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
-function inject(){
- if(document.getElementById('nayanet-auth-gate'))return;
- const style=document.createElement('style');style.id='nayanet-auth-gate-style';style.textContent='.nayanet-auth-gate{position:fixed;inset:0;z-index:5000;display:grid;place-items:center;padding:20px;background:radial-gradient(900px 600px at 50% 10%,#8b63ff18,transparent 65%),#050507}.nayanet-auth-card{width:min(560px,100%);padding:30px;border:2px solid #8b63ff66;border-radius:26px;background:linear-gradient(145deg,#15111d,#08080d);box-shadow:0 40px 110px #000f,inset 0 1px #fff5}.nayanet-auth-card .eyebrow{color:#b8b0c4;font-size:8px;font-weight:1000;letter-spacing:.18em}.nayanet-auth-card h1{margin:8px 0 10px;font-size:42px;line-height:.95;letter-spacing:-.06em}.nayanet-auth-card p{color:#aaa4b1;font-size:11px;line-height:1.6}.nayanet-auth-card form{display:grid;gap:10px;margin-top:20px}.nayanet-auth-card input{min-height:50px;border:2px solid #ffffff22;border-radius:13px;background:#07070a;color:#fff;padding:0 14px;outline:0}.nayanet-auth-card input:focus{border-color:#d86cff}.nayanet-auth-card button{min-height:52px;border:2px solid #55e39a99;border-radius:13px;background:linear-gradient(145deg,#11251a,#07100b);color:#d8ffe7;font-size:8px;font-weight:1000;letter-spacing:.1em}.nayanet-auth-status{min-height:18px;margin:12px 0 0;color:#ffb9c1;font-size:9px}.nayanet-auth-note{margin-top:14px;color:#77717e!important;font-size:8px!important}.nayanet-auth-hidden{display:none!important}@media(max-width:520px){.nayanet-auth-card{padding:22px}.nayanet-auth-card h1{font-size:36px}}';
- document.head.appendChild(style);
- const gate=document.createElement('section');gate.id='nayanet-auth-gate';gate.className='nayanet-auth-gate';gate.innerHTML='<div class="nayanet-auth-card"><span class="eyebrow">NAYANET IDENTITY</span><h1>Enter the Hub</h1><p>Use your name and NayaNET address. Your address is an application namespace — not an email address.</p><form><input id="nayanet-auth-name" autocomplete="name" maxlength="120" placeholder="What\'s your name?" required><input id="nayanet-auth-alias" autocomplete="username" maxlength="48" placeholder="Choose your NayaNET address" required><button type="submit">ENTER NAYANET</button></form><p id="nayanet-auth-status" class="nayanet-auth-status" role="status"></p><p class="nayanet-auth-note">Private by default · Shared by choice · Collective by consent · Public by decision</p></div>';
- document.body.appendChild(gate);
- const form=gate.querySelector('form'),nameInput=gate.querySelector('#nayanet-auth-name'),aliasInput=gate.querySelector('#nayanet-auth-alias'),status=gate.querySelector('#nayanet-auth-status');
- nameInput.value=localStorage.getItem('nayanet_smart_name')||'';aliasInput.value=localStorage.getItem('nayanet_smart_alias')||alias(nameInput.value);
- nameInput.addEventListener('input',()=>{if(!aliasInput.value||aliasInput.dataset.edited!=='1')aliasInput.value=alias(nameInput.value)});
- aliasInput.addEventListener('input',()=>{aliasInput.dataset.edited='1'});
- form.addEventListener('submit',async e=>{
-   e.preventDefault();status.textContent='Establishing your NayaNET identity…';form.querySelector('button').disabled=true;
-   try{
-     if(!ready())throw new Error('IDENTITY_ADAPTER_NOT_LOADED');
-     const result=await window.NayaNETNameFirstAuth.establish({name:clean(nameInput.value),alias:alias(aliasInput.value||nameInput.value)});
-     if(!result?.authenticated||!result?.userId)throw new Error('AUTH_SESSION_NOT_ESTABLISHED');
-     gate.remove();document.documentElement.dataset.nayanetIdentity='AUTHENTICATED';
-   }catch(err){status.textContent=err?.message||'Unable to establish your NayaNET identity.';form.querySelector('button').disabled=false}
- });
- window.addEventListener('nayanet:identity-established',()=>gate.remove());
-}
-async function start(){
- let attempts=0;while(!ready()&&attempts++<100)await new Promise(r=>setTimeout(r,50));
- inject();
- try{const current=await window.NayaNETNameFirstAuth.current();if(current?.authenticated){document.getElementById('nayanet-auth-gate')?.remove();document.documentElement.dataset.nayanetIdentity='AUTHENTICATED'}}catch{}
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
-})();
-</script></body>
+</body>
 </html>
