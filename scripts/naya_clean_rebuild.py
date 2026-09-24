@@ -151,8 +151,8 @@ def discover_pis_producers(source: Path) -> list[str]:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
-        assigns_output = re.search(r"(?m)^OUT\s*=.*pis-feed\.json", text)
-        writes_output = re.search(r"\bOUT\.write_(?:text|bytes)\s*\(", text)
+        assigns_output = re.search(r"(?m)^(?:OUT|OUTPUT)\s*=.*pis-feed\.json", text)
+        writes_output = re.search(r"\b(?:OUT|OUTPUT|output)\.write_(?:text|bytes)\s*\(", text)
         if assigns_output and writes_output:
             producers.append(path.relative_to(source).as_posix())
     return producers
