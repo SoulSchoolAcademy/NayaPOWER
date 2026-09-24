@@ -161,7 +161,7 @@ jobs:
             "next_action":"Use the persisted governed intelligence result in one fresh authorized successor action, then observe and verify the outcome before promotion."
           }
           checks={
-            "proof_status_verified":baton["proof_status"]=="VERIFIED",
+            "proof_status_verified":baton["current_truth"]["proof_status"]=="VERIFIED",
             "authority_active_at_execution":baton["authority"]["status_at_execution"]=="ACTIVE",
             "retrievable":baton["observed_intelligence"]["retrievable"] is True,
             "single_next_action":isinstance(baton["next_action"],str) and bool(baton["next_action"])
