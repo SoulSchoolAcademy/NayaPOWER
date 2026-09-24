@@ -742,138 +742,92 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
 }
 
 async function commitIntelligence(client: any, userId: string, body: any) {
-  const idempotencyKey = String(body.idempotency_key ?? "").trim();
-  const content = String(body.content ?? "").trim();
-  if (!idempotencyKey) throw new Error("INTELLIGENCE_IDEMPOTENCY_KEY_REQUIRED");
-  if (!content) throw new Error("INTELLIGENCE_CONTENT_REQUIRED");
-  const eventId = "intelligence:" + idempotencyKey;
-  const checkpointId = "checkpoint:" + idempotencyKey;
-  const title = String(body.title ?? "Intelligent Block");
-  const category = String(body.category ?? "INTELLIGENCE");
-  const topic = String(body.topic ?? "GENERAL");
-  const tags = Array.isArray(body.tags) ? body.tags.map(String) : ["intelligence","intelligent-block","compounding"];
-  const authorityGrantId = String(body.authority_grant_id ?? "").trim();
-  if (!authorityGrantId) throw new Error("AUTHORITY_GRANT_ID_REQUIRED");
-  await validateIntelligenceCommitAuthority(client, authorityGrantId);
-  const existing = await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
-    .eq("event_id", eventId).eq("user_id", userId).eq("project_id", PROJECT).maybeSingle();
-  if (existing.error) throw existing.error;
-  let sourceEvent:any = existing.data;
-  let captureReceipt:any = null;
-  if (sourceEvent) {
-    if (String(sourceEvent.metadata?.idempotency_key ?? "") !== idempotencyKey || String(sourceEvent.content ?? "") !== content) {
-      throw new Error("INTELLIGENCE_IDENTITY_CONFLICT");
-    }
-  } else {
-    const event = {
-      event_id:eventId,type:"intelligent_block_capture",classification:"intelligent_block",title,content,
+  const idempotencyKey=String(body.idempotency_key ?? "").trim(), content=String(body.content ?? "").trim();
+  if(!idempotencyKey) throw new Error("INTELLIGENCE_IDEMPOTENCY_KEY_REQUIRED");
+  if(!content) throw new Error("INTELLIGENCE_CONTENT_REQUIRED");
+
+  // Automatic intelligence flow. Deliberately not an execution-authority boundary.
+  const eventId="intelligence:"+idempotencyKey, checkpointId="checkpoint:"+idempotencyKey;
+  const title=String(body.title ?? "Intelligent Block"), category=String(body.category ?? "INTELLIGENCE"), topic=String(body.topic ?? "GENERAL");
+  const tags=Array.isArray(body.tags)?body.tags.map(String):["intelligence","intelligent-block","compounding"];
+  const existing=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
+    .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).maybeSingle();
+  if(existing.error) throw existing.error;
+  let sourceEvent:any=existing.data, captureReceipt:any=null;
+  if(sourceEvent){
+    if(String(sourceEvent.metadata?.idempotency_key ?? "")!==idempotencyKey || String(sourceEvent.content ?? "")!==content) throw new Error("INTELLIGENCE_IDENTITY_CONFLICT");
+  }else{
+    const event={event_id:eventId,type:"intelligent_block_capture",classification:"intelligent_block",title,content,
       source:"nayanet-compound-intelligence",status:"active",actor:"naya",
-      confidence:Number.isFinite(Number(body.confidence)) ? Number(body.confidence) : 0.8,tags,
-      parent_event_id:body.parent_event_id ?? null,source_hash:"intelligence:"+idempotencyKey,
-      schema_version:"INTELLIGENT_BLOCK_V1",
+      confidence:Number.isFinite(Number(body.confidence))?Number(body.confidence):0.8,tags,parent_event_id:body.parent_event_id ?? null,
+      source_hash:"intelligence:"+idempotencyKey,schema_version:"INTELLIGENT_BLOCK_V1",
       metadata:{idempotency_key:idempotencyKey,category,topic,applicable_scope:body.applicable_scope ?? null,
-        limits:body.limits ?? null,human_teaching:body.human_teaching === true,authority_grant_id:authorityGrantId,captured_at:new Date().toISOString()}
-    };
+        limits:body.limits ?? null,human_teaching:body.human_teaching===true,captured_at:new Date().toISOString(),
+        participation_policy:"LEARN_BY_DEFAULT_SHARE_WISDOM_BY_CONSENT_PROTECT_IDENTITY_BY_DEFAULT_PUBLISH_BY_DECISION"}};
     captureReceipt=await record(client,event,"intelligence.capture",
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
-      "Canonical Intelligent Block source event persisted.",
-      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}],
-      {authority_id:authorityGrantId,actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"});
+      "Canonical Intelligent Block source event persisted",
+      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}],null);
     const persisted=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
       .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).single();
     if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
     sourceEvent=persisted.data;
   }
-  await validateIntelligenceCommitAuthority(client, authorityGrantId);
   const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
-  const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
-  const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
-  blockDigest[6] = (blockDigest[6] & 0x0f) | 0x50;
-  blockDigest[8] = (blockDigest[8] & 0x3f) | 0x80;
-  const blockId = Array.from(blockDigest.slice(0,16)).map((v)=>v.toString(16).padStart(2,"0")).join("")
-    .replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/,"$1-$2-$3-$4-$5");
+  const blockSeed=new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
+  const blockDigest=new Uint8Array(await crypto.subtle.digest("SHA-256",blockSeed));
+  blockDigest[6]=(blockDigest[6]&0x0f)|0x50; blockDigest[8]=(blockDigest[8]&0x3f)|0x80;
+  const blockId=Array.from(blockDigest.slice(0,16)).map(v=>v.toString(16).padStart(2,"0")).join("").replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/,"$1-$2-$3-$4-$5");
   const learningClaim=String(body.learning_claim ?? content).trim();
-    const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId)
-    .eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
+  const learningExisting=await client.from("learning_evidence").select("*").eq("member_id",userId).eq("source_event_id",eventId).eq("claim",learningClaim).maybeSingle();
   if(learningExisting.error) throw learningExisting.error;
   let learning:any=learningExisting.data;
   if(!learning){
-    await validateIntelligenceCommitAuthority(client, authorityGrantId);
     const inserted=await client.from("learning_evidence").insert({
-      member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),
-      level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",claim:learningClaim.slice(0,2000),
-      observed_value:{category,topic,applicable_scope:body.applicable_scope ?? null},
+      member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",
+      claim:learningClaim.slice(0,2000),observed_value:{category,topic,applicable_scope:body.applicable_scope ?? null},
       verification_method:"PENDING_OUTCOME_VERIFICATION",source_event_id:eventId
     }).select("*").single();
-    if(inserted.error) throw inserted.error;
-    learning=inserted.data;
+    if(inserted.error) throw inserted.error; learning=inserted.data;
   }
   const checkpoint=await checkpointIntelligence(client,userId,{
-    checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,
-    title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
+    checkpoint_id:checkpointId,source_event_ids:[eventId],current_understanding:content,title:"Intelligent Block checkpoint: "+title,confidence:body.confidence,
     tags:["intelligence","checkpoint","intelligent-block",category,topic],
     what_changed:body.what_changed ?? "New intelligence was captured and integrated into the canonical intelligence index.",
     learned:learningClaim,
-    evidence_refs:[
-      {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
-      {kind:"source_event",event_id:eventId},{kind:"intelligence_index",index_id:projection.index?.id ?? null}
-    ],
-    authority_scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",
-    unknown:Array.isArray(body.unknown) ? body.unknown : ["Outcome-based verification of future behavior remains required."],
-    applicable_scope:body.applicable_scope ?? null,
-    next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
-    successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
-    source_head:body.source_head ?? null,
-    authority_grant_id:authorityGrantId
-  });
-  const existingBlock = await admin.from("nayanet_intelligent_blocks")
-    .select("*").eq("block_id",blockId).eq("owner_id",userId).maybeSingle();
-  if (existingBlock.error) throw existingBlock.error;
-  let intelligentBlock:any = existingBlock.data;
-  if (!intelligentBlock) {
-    await validateIntelligenceCommitAuthority(client, authorityGrantId);
-    const blockContent:any = {
+    evidence_refs:[{kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},{kind:"source_event",event_id:eventId},{kind:"intelligence_index",index_id:projection.index?.id ?? null}],
+    authority_scope:null,unknown:Array.isArray(body.unknown)?body.unknown:["Outcome-based verification of future behavior remains required."],
+    applicable_scope:body.applicable_scope ?? null,next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
+    successor_relevance:"Cold successor must restore this intelligence, recognize applicability, use it when valid, and verify the outcome.",
+    source_head:body.source_head ?? null,authority_grant_id:null});
+  const existingBlock=await admin.from("nayanet_intelligent_blocks").select("*").eq("block_id",blockId).eq("owner_id",userId).maybeSingle();
+  if(existingBlock.error) throw existingBlock.error;
+  let intelligentBlock:any=existingBlock.data;
+  if(!intelligentBlock){
+    const blockContent:any={
       identity:{object_id:"IB:"+blockId,event_id:eventId,version:1,namespace:"nayanet",schema_version:"NAYANET_INTELLIGENT_BLOCK_V1"},
       context:{project_id:PROJECT,category,topic,visibility:"PRIVATE",owner_id:userId},
       truth:{state:"CANDIDATE",status:"UNVERIFIED",source:"nayanet-compound-intelligence",confidence:Number(body.confidence ?? 0.8)},
-      authority:{state:"AUTHORIZED",scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",actor:userId},
+      authority:{state:"NOT_REQUIRED",reason:"AUTOMATIC_INTELLIGENCE_FLOW",actor:userId},
       value:{state:"CAPTURED",learning_claim:learningClaim,applicable_scope:body.applicable_scope ?? null},
       lifecycle:{stage:"CAPTURED_INTEGRATED_CHECKPOINTED",captured_at:new Date().toISOString(),checkpoint_id:checkpointId},
-      content:{title,content,category,topic,tags,what_changed:body.what_changed ?? null,next_use:body.next_use ?? null,successor_relevance:"Cold successor must restore this intelligence, recognize applicability, use it when valid, and verify the outcome."}
-    };
-    const blockHashBytes = new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(JSON.stringify(blockContent))));
-    blockContent.integrity={algorithm:"SHA-256",content_hash:Array.from(blockHashBytes).map((v)=>v.toString(16).padStart(2,"0")).join("")};
-    const insertedBlock = await admin.from("nayanet_intelligent_blocks").insert({
-      block_id:blockId,owner_id:userId,subject_id:String(body.target_id ?? topic),
-      title,block_type:category || "INTELLIGENCE",version:1,status:"ACTIVE",
+      content:{title,content,category,topic,tags,what_changed:body.what_changed ?? null,next_use:body.next_use ?? null,successor_relevance:"Cold successor must restore this intelligence, recognize applicability, use it when valid, and verify the outcome."}};
+    const blockHashBytes=new Uint8Array(await crypto.subtle.digest("SHA-256",new TextEncoder().encode(JSON.stringify(blockContent))));
+    blockContent.integrity={algorithm:"SHA-256",content_hash:Array.from(blockHashBytes).map(v=>v.toString(16).padStart(2,"0")).join("")};
+    const insertedBlock=await admin.from("nayanet_intelligent_blocks").insert({
+      block_id:blockId,owner_id:userId,subject_id:String(body.target_id ?? topic),title,block_type:category || "INTELLIGENCE",version:1,status:"ACTIVE",
       understanding_state:"CANDIDATE",owner_scope:"PRIVATE",source_event_ids:[sourceEvent.id],
-      evidence_refs:[
-        {kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},
-        {kind:"source_event",event_id:eventId,source_row_id:sourceEvent.id},
-        {kind:"intelligence_index",index_id:projection.index?.id ?? null},
-        {kind:"checkpoint",checkpoint_id:checkpointId,receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null}
-      ],
+      evidence_refs:[{kind:"capture_receipt",receipt_id:captureReceipt?.id ?? captureReceipt?.receipt_id ?? null},{kind:"source_event",event_id:eventId,source_row_id:sourceEvent.id},{kind:"intelligence_index",index_id:projection.index?.id ?? null},{kind:"checkpoint",checkpoint_id:checkpointId,receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null}],
       provenance:{source:"nayanet-compound-intelligence",idempotency_key:idempotencyKey,canonical_event_id:eventId,source_event_id:sourceEvent.id,checkpoint_id:checkpointId},
-      value_context:body.value_context ?? {learning_claim:learningClaim},
-      applicable_scope:body.applicable_scope ?? {},
-      content:blockContent,
-      schema_version:"INTELLIGENT_BLOCK_V1"
-    }).select("*").single();
-    if (insertedBlock.error) throw insertedBlock.error;
-    intelligentBlock=insertedBlock.data;
+      value_context:body.value_context ?? {learning_claim:learningClaim},applicable_scope:body.applicable_scope ?? {},content:blockContent,schema_version:"INTELLIGENT_BLOCK_V1"}).select("*").single();
+    if(insertedBlock.error) throw insertedBlock.error; intelligentBlock=insertedBlock.data;
   }
-  return {
-    schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
-    idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
+  return {schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
     learning:{status:learning.status,evidence_id:learning.id,target_id:learning.target_id},
-    checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,
-      checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,
-      receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null},
-    proof_boundary:"Capture + integration + checkpoint are persisted. Applicability, behavior change, outcome verification, and improvement remain required before the lesson is promoted to VERIFIED/WISDOM.",
-    rule:"One governed commit path; idempotent identity; no second intelligence store; private by default."
-  };
+    checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,receipt_id:checkpoint.receipt?.id ?? checkpoint.receipt?.receipt_id ?? null},
+    proof_boundary:"Capture + learning candidate + integration + checkpoint are automatic. Verification, applicability, behavior change, and improvement remain required before a lesson is promoted to VERIFIED/WISDOM.",
+    rule:"Automatic intelligence flow; participation/consent governs contribution; identity remains private by default; publication and consequential execution remain governed."};
 }
-
 async function health(client: any, userId: string) {
   const [e,l,r,d,o] = await Promise.all([
     client.from("nayanet_cognition_events").select("id",{count:"exact",head:true}).eq("user_id",userId).eq("project_id",PROJECT),
@@ -904,39 +858,27 @@ Deno.serve(async (req) => {
     }
     let result:any;
     if (action === "universal_meaningful_output") {
-      const sourceType = String(body.source_type ?? "").trim();
-      const privacy = String(body.privacy ?? "PRIVATE").trim();
-      const destinationClass = String(body.destination_class ?? "").trim();
-      const requestedAction = String(body.requested_action ?? "").trim();
-      if (!String(body.output_id ?? "").trim()) throw new Error("UNIVERSAL_OUTPUT_ID_REQUIRED");
-      if (!String(body.source_ref ?? "").trim()) throw new Error("UNIVERSAL_SOURCE_REF_REQUIRED");
-      if (!String(body.title ?? "").trim()) throw new Error("UNIVERSAL_TITLE_REQUIRED");
-      if (!String(body.content ?? "").trim()) throw new Error("UNIVERSAL_CONTENT_REQUIRED");
-      if (!["conversation","execution","tool_result","document","existing_intelligence","other"].includes(sourceType)) throw new Error("UNIVERSAL_SOURCE_TYPE_INVALID");
-      if (!["PRIVATE","SHARED_BY_CHOICE","COLLECTIVE_BY_CONSENT","PUBLIC_BY_DECISION"].includes(privacy)) throw new Error("UNIVERSAL_PRIVACY_INVALID");
-      if (!["knowledge","procedure","checklist","test","contract","architecture","mission_state","guardrail","existing_intelligence","other"].includes(destinationClass)) throw new Error("UNIVERSAL_DESTINATION_INVALID");
-      if (!["PROPOSE_ONLY","CAPTURE_IF_AUTHORIZED","ROUTE_IF_AUTHORIZED"].includes(requestedAction)) throw new Error("UNIVERSAL_REQUESTED_ACTION_INVALID");
-      if (privacy !== "PRIVATE" && !String(body.authority_ref ?? "").trim()) throw new Error("UNIVERSAL_AUTHORITY_REQUIRED");
-      if (destinationClass !== "existing_intelligence") throw new Error("UNIVERSAL_DESTINATION_NOT_IN_BOUNDED_PROOF");
-      if (requestedAction === "PROPOSE_ONLY") throw new Error("UNIVERSAL_PROPOSAL_ONLY_NOT_COMMITTABLE");
-      result = await commitIntelligence(client,user.id,{
-        ...body,
-        idempotency_key: String(body.output_id).trim(),
-        value_context: {
-          ...(body.value_context ?? {}),
-          universal_adapter: "UNIVERSAL_MEANINGFUL_OUTPUT_V1",
-          source_type: sourceType,
-          output_id: String(body.output_id).trim(),
-          output_version: Number(body.output_version ?? 1),
-          source_ref: String(body.source_ref).trim(),
-          provenance_refs: Array.isArray(body.provenance_refs) ? body.provenance_refs : [String(body.source_ref).trim()],
-          evidence_state: String(body.evidence_state ?? "OBSERVED"),
-          privacy,
-          destination_class: destinationClass
-        }
-      });
-      result.schema = "NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_V1";
-      result.adapter = "UNIVERSAL_MEANINGFUL_OUTPUT_V1";
+      const sourceType=String(body.source_type ?? "").trim(),privacy=String(body.privacy ?? "PRIVATE").trim();
+      const destinationClass=String(body.destination_class ?? "").trim(),requestedAction=String(body.requested_action ?? "").trim();
+      if(!String(body.output_id ?? "").trim()) throw new Error("UNIVERSAL_OUTPUT_ID_REQUIRED");
+      if(!String(body.source_ref ?? "").trim()) throw new Error("UNIVERSAL_SOURCE_REF_REQUIRED");
+      if(!String(body.title ?? "").trim()) throw new Error("UNIVERSAL_TITLE_REQUIRED");
+      if(!String(body.content ?? "").trim()) throw new Error("UNIVERSAL_CONTENT_REQUIRED");
+      if(!["conversation","execution","tool_result","document","existing_intelligence","other"].includes(sourceType)) throw new Error("UNIVERSAL_SOURCE_TYPE_INVALID");
+      if(!["PRIVATE","SHARED_BY_CHOICE","COLLECTIVE_BY_CONSENT","PUBLIC_BY_DECISION"].includes(privacy)) throw new Error("UNIVERSAL_PRIVACY_INVALID");
+      if(!["knowledge","procedure","checklist","test","contract","architecture","mission_state","guardrail","existing_intelligence","other"].includes(destinationClass)) throw new Error("UNIVERSAL_DESTINATION_INVALID");
+      if(!["PROPOSE_ONLY","CAPTURE_IF_AUTHORIZED","ROUTE_IF_AUTHORIZED"].includes(requestedAction)) throw new Error("UNIVERSAL_REQUESTED_ACTION_INVALID");
+      if(privacy!=="PRIVATE" && requestedAction==="PROPOSE_ONLY") throw new Error("UNIVERSAL_SHARED_OUTPUT_ACTION_REQUIRED");
+      if(destinationClass!=="existing_intelligence") throw new Error("UNIVERSAL_DESTINATION_NOT_IN_BOUNDED_PROOF");
+      if(requestedAction==="PROPOSE_ONLY") throw new Error("UNIVERSAL_PROPOSAL_ONLY_NOT_COMMITTABLE");
+      // Shared/collective knowledge follows participation consent, not execution authority.
+      result=await commitIntelligence(client,user.id,{...body,idempotency_key:String(body.output_id).trim(),
+        value_context:{...(body.value_context ?? {}),universal_adapter:"UNIVERSAL_MEANINGFUL_OUTPUT_V2",source_type:sourceType,
+          output_id:String(body.output_id).trim(),output_version:Number(body.output_version ?? 1),source_ref:String(body.source_ref).trim(),
+          provenance_refs:Array.isArray(body.provenance_refs)?body.provenance_refs:[String(body.source_ref).trim()],
+          evidence_state:String(body.evidence_state ?? "OBSERVED"),privacy,destination_class,
+          contribution_policy:"PARTICIPATION_CONSENT_NOT_EXECUTION_AUTHORITY"}});
+      result.schema="NAYANET_UNIVERSAL_MEANINGFUL_OUTPUT_V2";result.adapter="UNIVERSAL_MEANINGFUL_OUTPUT_V2";
     } else {
       switch(action) {
         case "restore": result=await restore(client,user.id); break;
