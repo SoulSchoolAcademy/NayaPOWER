@@ -61,9 +61,15 @@ begin
     v_provenance
   );
 
+  update public.nayanet_collective_wisdom
+  set epistemic_state='VERIFIED'
+  where id=(v_result->>'collective_wisdom_id')::uuid
+    and owner_id=auth.uid();
+
   return v_result || jsonb_build_object(
     'learning_id',v_learning.id,
-    'verification_status',v_learning.status
+    'verification_status',v_learning.status,
+    'epistemic_state','VERIFIED'
   );
 end;
 $function$;
