@@ -64,3 +64,16 @@ The v36 candidate must prove:
 request -> portable artifact hash -> signature verification -> existing authority validation -> ordinary authorization binding -> existing record() -> receipt evidence artifact/hash
 
 No production deployment or live intelligence_commit is part of this patch.
+
+
+## Frozen v35 seam anchors
+
+These exact strings were read from deployed v35 source and are retained as a parity manifest:
+
+- async function requireGovernedIntelligenceAuthorization(client: any, userId: string, body: any)
+- const auth = body.execution_authorization;
+- client.rpc("nayanet_validate_authority_grant"
+- async function commitIntelligence(client: any, userId: string, body: any)
+- captureReceipt=await record(client,event,"intelligence.capture"
+- p_execution_authorization: executionAuthorization
+- case "intelligence_commit": result=await commitIntelligence(client,user.id,body); break;
