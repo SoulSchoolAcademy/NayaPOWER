@@ -4,7 +4,7 @@ from pathlib import Path
 import sys
 import unittest
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / ".naya" / "runtime"
 sys.path.insert(0, str(RUNTIME))
 
@@ -63,9 +63,15 @@ class TestEpistemicBoundary(unittest.TestCase):
             result = self._result(state)
             self.assertTrue(result.allowed)
 
-    def test_unknown_like_missing_state_is_rejected_before_governance(self):
+    def test_malformed_epistemic_states_are_rejected_before_governance(self):
+        for state in ("", "NOT_A_STATE", None):
+            with self.subTest(state=state):
+                with self.assertRaises(ValueError):
+                    self._result(state)
+
+    def test_missing_epistemic_state_is_rejected_before_governance(self):
         with self.assertRaises(ValueError):
-            self._result("")
+            _govern_candidate(BASE_REQUEST, {**BASE_CANDIDATE})
 
 if __name__ == "__main__":
     raise SystemExit(unittest.main())
