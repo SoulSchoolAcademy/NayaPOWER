@@ -1,0 +1,25 @@
+name: Verify Stream B canonical intelligence commit bridge
+
+on:
+  push:
+    paths:
+      - "supabase/migrations/20260924130000_canonical_intelligence_commit_bridge_v1.sql"
+      - "tests/test_stream_b_canonical_intelligence_commit_bridge.py"
+  pull_request:
+    paths:
+      - "supabase/migrations/20260924130000_canonical_intelligence_commit_bridge_v1.sql"
+      - "tests/test_stream_b_canonical_intelligence_commit_bridge.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python tests/test_stream_b_canonical_intelligence_commit_bridge.py
