@@ -168,6 +168,14 @@ jobs:
             const ctx=await browser.newContext({storageState:'.nayanet-owner-state.json'});
             await ctx.addInitScript((session)=>{localStorage.setItem('nayanet.supabase.auth',JSON.stringify(session));},ownerSession);
             const page=await ctx.newPage();
+            const consoleMessages=[];
+            const pageErrors=[];
+            const requestFailures=[];
+            const responseFailures=[];
+            page.on('console',message=>consoleMessages.push({type:message.type(),text:message.text(),location:message.location()}));
+            page.on('pageerror',error=>pageErrors.push({name:error.name,message:error.message,stack:error.stack||null}));
+            page.on('requestfailed',request=>requestFailures.push({url:request.url(),method:request.method(),resource_type:request.resourceType(),failure:request.failure()?.errorText||null}));
+            page.on('response',response=>{if(response.status()>=400)responseFailures.push({url:response.url(),status:response.status(),status_text:response.statusText(),resource_type:response.request().resourceType()})});
             try{
               await page.goto(hub+'/identity.html?naya_hold=1',{waitUntil:'networkidle',timeout:60000});
               const session=await identity(page);
@@ -199,19 +207,90 @@ jobs:
               if(direct.error||!direct.data) throw new Error('RECEIVER_RETRIEVAL_FAILED:'+JSON.stringify(direct));
               mark('RETRIEVE','PASS',{event_id:direct.data.event_id,cognition_id:direct.data.id});
 
-              await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
-              await page.waitForFunction((id)=>{
-                const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
-                const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
-                const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(id)+'"]');
-                const feedCount=document.querySelector('#feedCount');
-                const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
-                if(v2Card) return !!v2Status && !/BLOCKED|ERROR/i.test(v2Status.textContent||'');
-                if(!canonicalCard||!feedCount) return false;
-                if(canonicalFlag==='blocked') return false;
-                return !/BLOCKED|ERROR/i.test(feedCount.textContent||'');
-              },receiverEventId,{timeout:30000});
-              const rendered=await page.evaluate(()=>Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id], .feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id')||n.getAttribute('data-intelligence-id')||'',title:n.querySelector('h2')?.textContent||'',surface:n.closest('#naya-smart-feed-v2')?'canonical-smart-feed-v2':'canonical-hub-blocks'})));
+               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
+               const renderWaitPredicate=(id)=>{
+                 const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
+                 const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
+                 const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(id)+'"]');
+                 const feedCount=document.querySelector('#feedCount');
+                 const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
+                 if(v2Card) return !!v2Status && !/BLOCKED|ERROR/i.test(v2Status.textContent||'');
+                 if(!canonicalCard||!feedCount) return false;
+                 if(canonicalFlag==='blocked') return false;
+                 return !/BLOCKED|ERROR/i.test(feedCount.textContent||'');
+               };
+               try{
+                 await page.waitForFunction(renderWaitPredicate,receiverEventId,{timeout:30000});
+               }catch(error){
+                 let domState={};
+                 try{
+                   domState=await page.evaluate(({expectedEventId})=>{
+                     const text=node=>node?.textContent?.replace(/\s+/g,' ').trim()||null;
+                     const v2=document.querySelector('#naya-smart-feed-v2');
+                     const v2Cards=Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card'));
+                     const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(expectedEventId)+'"]');
+                     const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
+                     const canonicalCards=Array.from(document.querySelectorAll('.feed .blocks [data-event-id]'));
+                     const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(expectedEventId)+'"]');
+                     const feedCount=document.querySelector('#feedCount');
+                     const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
+                     const checks={
+                       v2_card:!!v2Card,
+                       v2_status:!!v2Status,
+                       v2_status_not_blocked:!/BLOCKED|ERROR/i.test(v2Status?.textContent||''),
+                       canonical_card:!!canonicalCard,
+                       feed_count:!!feedCount,
+                       canonical_flag_not_blocked:canonicalFlag!=='blocked',
+                       feed_count_not_blocked:!/BLOCKED|ERROR/i.test(feedCount?.textContent||'')
+                     };
+                     const predicateResult=checks.v2_card?checks.v2_status&&checks.v2_status_not_blocked:checks.canonical_card&&checks.feed_count&&checks.canonical_flag_not_blocked&&checks.feed_count_not_blocked;
+                     return {
+                       page:{url:location.href,title:document.title,ready_state:document.readyState},
+                       dom:{
+                         v2_exists:!!v2,
+                         v2_card_count:v2Cards.length,
+                         v2_card_event_ids:v2Cards.map(node=>node.getAttribute('data-event-id')).filter(Boolean),
+                         expected_v2_card:!!v2Card,
+                         v2_status_exists:!!v2Status,
+                         v2_status_text:text(v2Status),
+                         canonical_card_count:canonicalCards.length,
+                         canonical_card_event_ids:canonicalCards.map(node=>node.getAttribute('data-event-id')).filter(Boolean),
+                         canonical_card_exists:!!canonicalCard,
+                         canonical_card_event_id:canonicalCard?.getAttribute('data-event-id')||null,
+                         feed_count_exists:!!feedCount,
+                         feed_count_text:text(feedCount),
+                         canonical_flag:canonicalFlag,
+                         body_text:document.body?.innerText?.slice(0,5000)||'',
+                         html:document.documentElement?.outerHTML?.slice(0,10000)||''
+                       },
+                       checks,
+                       predicate_result:predicateResult,
+                       false_checks:Object.entries(checks).filter(([,value])=>!value).map(([key])=>key),
+                       scripts:Array.from(document.scripts).map(script=>({src:script.src||null,type:script.type||null,async:!!script.async,defer:!!script.defer})),
+                       resources:performance.getEntriesByType('resource').slice(-200).map(resource=>({name:resource.name,initiator_type:resource.initiatorType,duration:resource.duration,transfer_size:resource.transferSize,encoded_body_size:resource.encodedBodySize}))
+                     };
+                   },{expectedEventId:receiverEventId});
+                 }catch(captureError){
+                   domState={capture_error:{name:captureError?.name||null,message:captureError?.message||String(captureError),stack:captureError?.stack||null}};
+                 }
+                 const diagnostics={
+                   schema:'NAYANET_PI_RENDER_TIMEOUT_DIAGNOSTICS_V1',
+                   captured_at:new Date().toISOString(),
+                   expected_event_id:receiverEventId,
+                   wait:{timeout_ms:30000,predicate_source:renderWaitPredicate.toString()},
+                   error:{name:error?.name||null,message:error?.message||String(error),stack:error?.stack||null},
+                   ...domState,
+                   console_messages:consoleMessages.slice(-200),
+                   console_errors:consoleMessages.filter(message=>message.type==='error').slice(-200),
+                   page_errors:pageErrors.slice(-200),
+                   request_failures:requestFailures.slice(-200),
+                   response_failures:responseFailures.slice(-200)
+                 };
+                 fs.writeFileSync('pi-render-timeout-diagnostics.json',JSON.stringify(diagnostics,null,2));
+                 console.error('PI_RENDER_TIMEOUT_DIAGNOSTICS',JSON.stringify(diagnostics));
+                 throw error;
+               }
+               const rendered=await page.evaluate(()=>Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id], .feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id')||n.getAttribute('data-intelligence-id')||'',title:n.querySelector('h2')?.textContent||'',surface:n.closest('#naya-smart-feed-v2')?'canonical-smart-feed-v2':'canonical-hub-blocks'})));
               if(!rendered.some(x=>x.eventId===receiverEventId)) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
               mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:rendered.find(x=>x.eventId===receiverEventId)?.surface||'unknown',canonical_event_selector:'#naya-smart-feed-v2 .sf-card[data-event-id] | .feed .blocks [data-event-id]'});
 
@@ -342,6 +421,29 @@ jobs:
           })().catch(e=>{console.error(e);process.exit(1)});
           NODE
 
+      - name: Verify render diagnostic artifact
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s pi-render-timeout-diagnostics.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('pi-render-timeout-diagnostics.json')
+          d=json.loads(p.read_text(encoding='utf-8'))
+          required=['schema','captured_at','expected_event_id','wait','page','dom','checks','predicate_result','false_checks','scripts','resources','console_messages','console_errors','page_errors','request_failures','response_failures']
+          missing=[key for key in required if key not in d]
+          if missing: raise SystemExit('DIAGNOSTIC_FIELDS_MISSING:'+','.join(missing))
+          dom_required=['v2_exists','v2_card_count','v2_card_event_ids','v2_status_exists','v2_status_text','canonical_card_count','canonical_card_event_ids','canonical_card_exists','feed_count_text','canonical_flag','body_text','html']
+          missing_dom=[key for key in dom_required if key not in d['dom']]
+          if missing_dom: raise SystemExit('DIAGNOSTIC_DOM_FIELDS_MISSING:'+','.join(missing_dom))
+          if d['schema']!='NAYANET_PI_RENDER_TIMEOUT_DIAGNOSTICS_V1': raise SystemExit('DIAGNOSTIC_SCHEMA_MISMATCH')
+          if d['predicate_result'] is not False: raise SystemExit('DIAGNOSTIC_PREDICATE_RESULT_NOT_FALSE')
+          if not d['wait'].get('predicate_source'): raise SystemExit('DIAGNOSTIC_PREDICATE_SOURCE_MISSING')
+          print('PI_RENDER_TIMEOUT_DIAGNOSTIC_ARTIFACT_VERIFIED')
+          PY
+
       - name: Upload home-run proof
         if: always()
         uses: actions/upload-artifact@v4
@@ -351,4 +453,4 @@ jobs:
             project-intelligence-home-run-packet.json
             project-intelligence-home-run-proof.json
             pi-render-timeout-diagnostics.json
-          if-no-files-found: ignore
+          if-no-files-found: error
