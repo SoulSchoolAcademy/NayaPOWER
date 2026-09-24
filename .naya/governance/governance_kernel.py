@@ -149,6 +149,7 @@ def resolve_authority(
     purpose: str,
     action: str,
     scope: str,
+    now: Optional[str] = None
 ) -> Authority:
     """Resolve exactly one registry grant and verify every binding fact."""
     if not authority_id:
@@ -164,6 +165,8 @@ def resolve_authority(
         raise RuntimeError("explicit authority resolution failed: scope does not match authority")
     if action not in authority.granted_actions:
         raise RuntimeError("explicit authority resolution failed: action is not granted")
+    if not authority.permits(actor_id=actor_id, action=action, scope=scope, now=now):
+        raise RuntimeError("explicit authority resolution failed: authority is revoked or expired")
     return authority
 
 
