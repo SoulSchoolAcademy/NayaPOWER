@@ -30,6 +30,26 @@ def main():
     assert {x["event_id"] for x in r["conflicted"]}=={"SE-C2","SE-C3","SE-C4","SE-C5"}
     assert "SE-DENY" not in json.dumps(r)
     assert r["next_action"]=="continue-proof"
+    gate=pir.validate_current_truth(r)
+    assert gate["status"]=="PASS",gate
+    no_events=json.loads(json.dumps(r));no_events["current"]=[];no_events["counts"].update(events=0,current=0)
+    assert pir.validate_current_truth(no_events)["failure_code"]=="CURRENT_TRUTH_EMPTY"
+    no_current=json.loads(json.dumps(r));no_current["current"]=[];no_current["counts"]["current"]=0
+    assert pir.validate_current_truth(no_current)["failure_code"]=="CURRENT_TRUTH_EMPTY"
+    for state in ("UNKNOWN","STALE","SUPERSEDED","BLOCKED"):
+        invalid=json.loads(json.dumps(r));invalid["current"]=invalid["current"][:1];invalid["counts"]["current"]=1;invalid["current"][0]["status"]=state
+        assert pir.validate_current_truth(invalid)["failure_code"]=="CURRENT_TRUTH_FORBIDDEN_STATE"
+    missing_authority=json.loads(json.dumps(r));missing_authority["current"]=missing_authority["current"][:1];missing_authority["counts"]["current"]=1;missing_authority["current"][0].pop("authority",None)
+    assert pir.validate_current_truth(missing_authority)["failure_code"]=="CURRENT_TRUTH_AUTHORITY_MISSING"
+    missing_evidence=json.loads(json.dumps(r));missing_evidence["current"]=missing_evidence["current"][:1];missing_evidence["counts"]["current"]=1;event_id=missing_evidence["current"][0]["event_id"];missing_evidence["current"][0]["verification"]={"status":"VERIFIED","evidence":[]}
+    for row in missing_evidence["evidence"]:
+        if row.get("event_id")==event_id:row["verification_evidence"]=[]
+    assert pir.validate_current_truth(missing_evidence)["failure_code"]=="CURRENT_TRUTH_EVIDENCE_MISSING"
+    missing_verification=json.loads(json.dumps(r));missing_verification["current"]=missing_verification["current"][:1];missing_verification["counts"]["current"]=1;event_id=missing_verification["current"][0]["event_id"];missing_verification["current"][0]["verification"]={"status":"UNKNOWN","evidence":["test"]}
+    for row in missing_verification["evidence"]:
+        if row.get("event_id")==event_id:row["verification_status"]="UNKNOWN"
+    assert pir.validate_current_truth(missing_verification)["failure_code"]=="CURRENT_TRUTH_VERIFICATION_NOT_CURRENT"
+    print("CURRENT_TRUTH_GATE_SEMANTICS=PASS")
     with tempfile.TemporaryDirectory() as td:
         p=Path(td)/"context.json";p.write_text(json.dumps(r),encoding="utf-8")
         child=subprocess.run([sys.executable,"-c","import json,sys;x=json.load(open(sys.argv[1]));assert x['resolution']['status']=='RECONSTRUCTED';assert 'SE-NEW' in {v['event_id'] for v in x['current']};assert x['next_action']=='continue-proof';print('COLD_NAYA_CONSUMPTION=PASS');print('COLD_SUCCESSOR_CONTINUATION=PASS')",str(p)],capture_output=True,text=True)

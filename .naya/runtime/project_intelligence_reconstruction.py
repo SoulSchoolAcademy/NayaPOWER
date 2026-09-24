@@ -101,6 +101,43 @@ def reconstruct(events:Iterable[dict[str,Any]],project_id="NayaNET",authorized_e
     for x in (current,historical,superseded_rows,stale,conflicted,unknown):x.sort(key=key,reverse=True)
     state=current_state or {};blk=(blocks or {}).get("active_block",{})
     return {"schema":"naya-power-project-intelligence/v1","project_id":project_id,"resolution":{"status":"RECONSTRUCTED","law":["AUTHORIZED_CANONICAL_EVENTS_ONLY","SUBJECT_FROM_EXISTING_EVENT_SUBJECT","EFFECTIVE_TIME_ORDERS_ONLY","EXPLICIT_SUPERSESSION_RESOLVES_LINEAGE","SUPERSEDED_AND_STALE_NEVER_CURRENT","UNRESOLVED_ACTIVE_COMPETING_CLAIMS_REMAIN_CONFLICTED","INSUFFICIENT_EVIDENCE_REMAINS_UNKNOWN","RECENCY_NEVER_PROVES_TRUTH"]},"current":current,"historical":historical,"superseded":superseded_rows,"stale":stale,"conflicted":conflicted,"unknown":unknown,"evidence":evidence,"causal_lineage":lineage,"project_state":state,"current_block":blk,"proof":proof or {},"control_map":control_map or {},"next_action":blk.get("next_action") or state.get("single_next_action"),"counts":{"events":len(rows),"current":len(current),"historical":len(historical),"superseded":len(superseded_rows),"stale":len(stale),"conflicted":len(conflicted),"unknown":len(unknown),"evidence":len(evidence),"causal_lineage":len(lineage)}}
+def validate_current_truth(result:dict[str,Any])->dict[str,Any]:
+    failures=[]
+    counts=result.get("counts") if isinstance(result,dict) else None
+    current=result.get("current") if isinstance(result,dict) else None
+    evidence=result.get("evidence") if isinstance(result,dict) else None
+    if not isinstance(result,dict) or not isinstance(counts,dict) or not isinstance(current,list) or not isinstance(evidence,list):
+        failures.append({"code":"CURRENT_TRUTH_CONTRACT_INVALID","event_id":None})
+    else:
+        try:
+            event_count=int(counts.get("events") or 0)
+        except (TypeError,ValueError):
+            event_count=0
+            failures.append({"code":"CURRENT_TRUTH_CONTRACT_INVALID","event_id":None,"field":"counts.events"})
+        if event_count<=0 or not current:
+            failures.append({"code":"CURRENT_TRUTH_EMPTY","event_id":None,"events":event_count,"current":len(current)})
+        evidence_by_id={str(row.get("event_id")):row for row in evidence if isinstance(row,dict) and row.get("event_id")}
+        forbidden={"UNKNOWN","UNVERIFIED","STALE","SUPERSEDED","BLOCKED","CONFLICTED","DISPUTED","RETRACTED"}
+        verified={"VERIFIED","LIVE_VERIFIED"}
+        for item in current:
+            if not isinstance(item,dict):
+                failures.append({"code":"CURRENT_TRUTH_CURRENT_ITEM_INVALID","event_id":None})
+                continue
+            event_id=str(item.get("event_id") or "")
+            state=str(item.get("status") or "UNKNOWN").upper()
+            if state in forbidden:
+                failures.append({"code":"CURRENT_TRUTH_FORBIDDEN_STATE","event_id":event_id,"state":state})
+            if not item.get("authority"):
+                failures.append({"code":"CURRENT_TRUTH_AUTHORITY_MISSING","event_id":event_id})
+            row=evidence_by_id.get(event_id,{})
+            verification=item.get("verification") if isinstance(item.get("verification"),dict) else {}
+            verification_status=str(row.get("verification_status") or verification.get("status") or "UNKNOWN").upper()
+            evidence_refs=row.get("verification_evidence") or verification.get("evidence") or []
+            if verification_status not in verified:
+                failures.append({"code":"CURRENT_TRUTH_VERIFICATION_NOT_CURRENT","event_id":event_id,"verification_status":verification_status})
+            if not evidence_refs:
+                failures.append({"code":"CURRENT_TRUTH_EVIDENCE_MISSING","event_id":event_id})
+    return {"schema":"naya-power-current-truth-gate/v1","status":"PASS" if not failures else "FAIL","failure_code":failures[0]["code"] if failures else None,"failure_count":len(failures),"failures":failures,"counts":counts if isinstance(counts,dict) else {}}
 def build_current(project_id="NayaNET"):
     return reconstruct(load_events(),project_id,current_state=json.loads(STATE.read_text()),control_map=json.loads(MAP.read_text()),blocks=json.loads(BLOCKS.read_text()),proof=json.loads(PROOF.read_text()))
 def main():
