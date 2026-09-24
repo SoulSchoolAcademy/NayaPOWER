@@ -1,0 +1,233 @@
+name: Attack 4 Live Intelligence Receipt Proof
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  live-intelligence-receipt:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute one governed live intelligence commit
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          cat > attack4-live-proof.mjs <<'NODE'
+          import { chromium } from 'playwright';
+          import { execFileSync } from 'node:child_process';
+          import fs from 'node:fs';
+          import crypto from 'node:crypto';
+
+          const HUB = 'https://sparkling-shape-7ae5.smartnetpodcast.workers.dev';
+          const SUPA = 'https://dahisasgpfvziswqvmvm.supabase.co';
+          const KEY = 'sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue';
+          const run = process.env.GITHUB_RUN_ID;
+          const token = 'a4live' + Date.now().toString(36);
+          const idem = 'attack4-live-' + run + '-' + token;
+          const title = 'Attack 4 live intelligence commit ' + run;
+          const content = 'Controlled live proof: one authorized intelligence commit must leave a reconstructable execution receipt.';
+          const sourceHead = process.env.GITHUB_SHA;
+          const trace = [];
+          const mark = (step, status, extra={}) => {
+            const x = {step,status,at:new Date().toISOString(),...extra};
+            trace.push(x);
+            console.log('ATTACK4_LIVE', JSON.stringify(x));
+          };
+
+          const browser = await chromium.launch({headless:true});
+          const page = await browser.newPage({viewport:{width:1440,height:900}});
+          try {
+            await page.goto(HUB + '/identity.html?name=' + encodeURIComponent('Attack 4 Live Proof') + '&alias=' + encodeURIComponent(token),
+              {waitUntil:'domcontentloaded',timeout:60000});
+            await page.waitForFunction(() => !!window.NayaNETNameFirstAuth?.establish, {timeout:30000});
+            const session = await page.evaluate(async ({token}) =>
+              await window.NayaNETNameFirstAuth.establish({name:'Attack 4 Live Proof',alias:token}), {token});
+            if (!session?.authenticated || !session?.userId) throw new Error('OWNER_SESSION_NOT_ESTABLISHED');
+            mark('ACTOR_IDENTITY','PASS',{actor_id:session.userId});
+
+            const accessToken = await page.evaluate(async () => {
+              const r = await window.__NayaNETSupabaseClient?.auth.getSession();
+              return r?.data?.session?.access_token || null;
+            });
+            if (!accessToken) throw new Error('OWNER_ACCESS_TOKEN_NOT_ESTABLISHED');
+
+            const headers = {Authorization:'Bearer '+accessToken, apikey:KEY, 'Content-Type':'application/json'};
+            const sourceEventId = 'attack4-authority-source-' + run;
+            const grantResponse = await page.evaluate(async ({SUPA,KEY,accessToken,session,sourceEventId,run}) => {
+              return await fetch(SUPA + '/rest/v1/rpc/nayanet_issue_authority_grant', {
+                method:'POST',
+                headers:{Authorization:'Bearer '+accessToken,apikey:KEY,'Content-Type':'application/json'},
+                body:JSON.stringify({
+                  p_subject_id:session.userId,
+                  p_source_event_id:sourceEventId,
+                  p_mission_id:'Attack 4 live intelligence receipt proof '+run,
+                  p_scope:{project_id:'NayaNET',target:session.userId},
+                  p_actions:['intelligence.commit'],
+                  p_constraints:{mode:'controlled-live-proof',no_external_side_effects:true},
+                  p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
+                  p_evidence:{proof:'attack4-live-execution-receipt',run}
+                })
+              }).then(async r=>({status:r.status,body:await r.json()}));
+            },{SUPA,KEY,accessToken,session,sourceEventId,run});
+            if (grantResponse.status !== 200 || !grantResponse.body?.grant_id) {
+              throw new Error('AUTHORITY_GRANT_ISSUE_FAILED:'+JSON.stringify(grantResponse));
+            }
+            const grant = grantResponse.body;
+            mark('AUTHORITY','PASS',{authority_id:grant.grant_id,issuer_id:grant.issuer_id,subject_id:grant.subject_id,scope:grant.scope,actions:grant.actions,expires_at:grant.expires_at});
+
+            fs.writeFileSync('live-grant.json', JSON.stringify({
+              authority_id:grant.grant_id, principal_id:grant.subject_id, purpose:grant.mission_id || grant.purpose || 'Attack 4 live intelligence receipt proof '+run,
+              scope:JSON.stringify(grant.scope,Object.keys(grant.scope||{}).sort()),
+              granted_actions:grant.actions, expires_at:grant.expires_at, revoked:false
+            }, null, 2));
+
+            const gateScript = [
+              'import json,sys',
+              'from pathlib import Path',
+              'sys.path.insert(0,str(Path(".naya/runtime").resolve()))',
+              'sys.path.insert(0,str(Path(".naya/governance").resolve()))',
+              'from universal_execution_gate import UniversalExecutionGate',
+              'from governance_kernel import Authority, AuthorityRegistry, DecisionObject, Epistemic, Risk, VerificationPlan',
+              'g=json.load(open("live-grant.json",encoding="utf-8"))',
+              'authority=Authority(authority_id=g["authority_id"],principal_id=g["principal_id"],purpose=g["purpose"],scope=g["scope"],granted_actions=frozenset(g["granted_actions"]),expires_at=g.get("expires_at"),revoked=False)',
+              'decision_id="attack4-live-decision:"+sys.argv[1]',
+              'action_id="attack4-live-action:"+sys.argv[1]',
+              'decision=DecisionObject(decision_id=decision_id,mission="Attack 4 live intelligence receipt proof",actor_id=authority.principal_id,action="intelligence.commit",purpose=authority.purpose,scope=authority.scope,current_truth="A live governed commit is the bounded verification target.",gap="ExecutionAuthorization must bind the live commit to the governed decision.",evidence=("Attack 4 source/test evidence", "live authority grant"),epistemic=frozenset({Epistemic.OBSERVED,Epistemic.VERIFIED}),consequence="persist one private intelligence record and receipt",reversible=True,risk=Risk(uncertainty=1,consequence=2,irreversibility=1),alternatives=("do_not_execute",),expected_value="reconstructable governed intelligence commit",required_permission="intelligence.commit",verification=VerificationPlan(observation="stored cognition event and execution receipt",success_criteria="receipt reconstructs actor, authority, decision, action, scope, governance, and committed intelligence"),necessary_power=frozenset({"intelligence.commit"}),requested_power=frozenset({"intelligence.commit"}))',
+              'gate=UniversalExecutionGate(registry=AuthorityRegistry(authorities={authority.authority_id:authority}))',
+              'action={"action_id":action_id,"action_type":"INTELLIGENCE_COMMIT","target":"NayaNET","purpose":authority.purpose,"scope":authority.scope,"actor_id":authority.principal_id,"permission":"intelligence.commit","decision_id":decision_id,"authority_id":authority.authority_id}',
+              'issued=gate.authorize(authority=authority,decision=decision,action=action)',
+              'assert issued.allowed and issued.authorization is not None, issued.reasons',
+              'a=issued.authorization',
+              'print(json.dumps({"authority_id":a.authority_id,"decision_id":a.decision_id,"action_id":a.action_id,"action_type":a.action_type,"target":a.target,"actor_id":a.actor_id,"scope":a.scope,"permission":a.permission,"governance_state":a.governance_state,"risk_tier":a.risk_tier,"validated_at":a.validated_at,"binding_hash":a.binding_hash}))'
+            ].join(';');
+            const executionAuthorization = JSON.parse(execFileSync('python', ['-c',gateScript,run], {encoding:'utf8'}).trim());
+            mark('EXECUTION_AUTHORIZATION','PASS',{
+              authority_id:executionAuthorization.authority_id,
+              decision_id:executionAuthorization.decision_id,
+              action_id:executionAuthorization.action_id,
+              action_type:executionAuthorization.action_type,
+              target:executionAuthorization.target,
+              actor_id:executionAuthorization.actor_id,
+              scope:executionAuthorization.scope,
+              permission:executionAuthorization.permission,
+              governance_state:executionAuthorization.governance_state,
+              binding_hash:executionAuthorization.binding_hash
+            });
+
+            const body = {
+              action:'intelligence_commit',
+              idempotency_key:idem,
+              title, content,
+              category:'ATTACK4_LIVE',
+              topic:'execution-receipt-reconstruction',
+              tags:['attack4','live','receipt'],
+              confidence:1,
+              epistemic_state:'VERIFIED',
+              evidence:['Attack 4 source/test evidence','live authority grant','gate-issued ExecutionAuthorization'],
+              learning_claim:content,
+              what_changed:'One live authorized intelligence commit was persisted for receipt reconstruction.',
+              applicable_scope:{project:'NayaNET',owner_only:true},
+              authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
+              unknown:['This single proof does not establish future behavioral improvement.'],
+              next_use:'Use the stored receipt lineage as the canonical reconstruction evidence.',
+              source_head:sourceHead,
+              execution_authorization:executionAuthorization
+            };
+            const commit = await page.evaluate(async ({SUPA,KEY,accessToken,body}) =>
+              await fetch(SUPA+'/functions/v1/nayanet-compound-intelligence',{
+                method:'POST',
+                headers:{Authorization:'Bearer '+accessToken,apikey:KEY,'Content-Type':'application/json','x-idempotency-key':body.idempotency_key},
+                body:JSON.stringify(body)
+              }).then(async r=>({status:r.status,body:await r.json()})), {SUPA,KEY,accessToken,body});
+            if (commit.status !== 200 || commit.body?.ok !== true) throw new Error('INTELLIGENCE_COMMIT_FAILED:'+JSON.stringify(commit));
+            const result = commit.body.result;
+            const eventId = result?.source_event?.event_id;
+            const blockId = result?.learning?.target_id;
+            if (!eventId) throw new Error('COMMIT_EVENT_ID_MISSING');
+            mark('INTELLIGENCE_COMMIT','PASS',{event_id:eventId,status:result.status,checkpoint_id:result?.checkpoint?.checkpoint_id,index_id:result?.projection?.index?.id});
+
+            const reconstructed = await page.evaluate(async ({SUPA,KEY,accessToken,eventId,actorId}) => {
+              const sdk = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
+              const c = sdk.createClient(SUPA,KEY,{global:{headers:{Authorization:'Bearer '+accessToken}}});
+              const eventQ = await c.from('nayanet_cognition_events')
+                .select('id,event_id,user_id,project_id,title,content,metadata,receipt_id,created_at')
+                .eq('event_id',eventId).eq('user_id',actorId).single();
+              if (eventQ.error) throw new Error('EVENT_RECONSTRUCTION_QUERY_FAILED:'+JSON.stringify(eventQ.error));
+              const e = eventQ.data;
+              const receiptQ = await c.from('nayanet_execution_receipts')
+                .select('id,revision,user_id,project_id,action,expected_result,observed_result,status,evidence,learning,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,authority_status_at_execution,authority_source_event_id,authority_validated_at,created_at')
+                .eq('id',e.receipt_id).eq('user_id',actorId).eq('project_id','NayaNET').single();
+              if (receiptQ.error) throw new Error('RECEIPT_RECONSTRUCTION_QUERY_FAILED:'+JSON.stringify(receiptQ.error));
+              const receipt = receiptQ.data;
+              const auth = receipt.evidence?.execution_authorization;
+              const binding = [auth?.authority_id,auth?.decision_id,auth?.action_id,auth?.action_type,auth?.target,auth?.actor_id,auth?.scope,auth?.permission].map(String).join('|');
+              const expectedHash = Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(binding)))).map(v=>v.toString(16).padStart(2,'0')).join('');
+              const checks = {
+                actor: e.user_id===actorId && auth?.actor_id===actorId,
+                authority: auth?.authority_id===receipt.authority_grant_id && auth?.authority_id===receipt.authority_grant_id,
+                decision: !!auth?.decision_id,
+                execution: auth?.action_id && auth?.action_type==='INTELLIGENCE_COMMIT' && auth?.permission==='intelligence.commit',
+                scope: !!auth?.scope,
+                governance: auth?.governance_state==='AUTHORIZED',
+                intelligence: e.event_id===eventId && !!e.content,
+                persistence: !!receipt.id && receipt.status==='SUCCESS',
+                receipt: receipt.evidence?.event_id===eventId,
+                binding_hash: expectedHash===auth?.binding_hash
+              };
+              for (const [k,v] of Object.entries(checks)) if (!v) throw new Error('RECONSTRUCTION_CHECK_FAILED:'+k+':'+JSON.stringify({event:e,receipt,checks}));
+              return {event:e,receipt,checks};
+            },{SUPA,KEY,accessToken,eventId,actorId:session.userId});
+
+            mark('RECEIPT_RECONSTRUCTION','PASS',{
+              receipt_id:reconstructed.receipt.id,
+              authority_grant_id:reconstructed.receipt.authority_grant_id,
+              authority_issuer_id:reconstructed.receipt.authority_issuer_id,
+              decision_id:reconstructed.receipt.evidence?.execution_authorization?.decision_id,
+              action_id:reconstructed.receipt.evidence?.execution_authorization?.action_id,
+              actor_id:reconstructed.receipt.evidence?.execution_authorization?.actor_id,
+              governance_state:reconstructed.receipt.evidence?.execution_authorization?.governance_state,
+              intelligence_event_id:reconstructed.event.event_id,
+              checks:reconstructed.checks
+            });
+
+            const proof = {
+              schema:'NAYANET_ATTACK4_LIVE_INTELLIGENCE_RECEIPT_PROOF_V1',
+              status:'PROVEN',
+              claim_scope:'one authenticated production Supabase intelligence_commit through canonical Hub session, followed by independent direct storage reconstruction',
+              run_id:run, source_head:sourceHead,
+              actor_id:session.userId,
+              authority_id:grant.grant_id,
+              execution_authorization:executionAuthorization,
+              event_id:eventId,
+              receipt_id:reconstructed.receipt.id,
+              receipt_revision:reconstructed.receipt.revision,
+              checks:reconstructed.checks,
+              trace
+            };
+            fs.writeFileSync('attack4-live-intelligence-receipt-proof.json',JSON.stringify(proof,null,2));
+            console.log('ATTACK4_LIVE_PROOF',JSON.stringify(proof));
+          } finally {
+            await browser.close();
+          }
+          NODE
+          node attack4-live-proof.mjs
+          cat attack4-live-intelligence-receipt-proof.json
+
+      - name: Upload durable proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: attack4-live-intelligence-receipt-proof-${{ github.run_id }}
+          path: attack4-live-intelligence-receipt-proof.json
