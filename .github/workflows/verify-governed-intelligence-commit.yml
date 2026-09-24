@@ -35,8 +35,12 @@ jobs:
           user=$(jq -r '.user.id' <<<"$auth")
           test -n "$token"; test -n "$user"
           echo "$token" >/tmp/token; echo "$user" >/tmp/user
+          source_id="governed-authority-source-$GITHUB_RUN_ID"
+          source_body=$(jq -n --arg id "$source_id" '{p_project_id:"NayaNET",p_event:{event_id:$id,type:"authority_source",classification:"authorization_evidence",title:"Governed intelligence proof authority source",content:"Fresh proof owner created an owned source event before issuing runtime authority.",source:"governed-intelligence-proof",status:"active",actor:"human",confidence:1,tags:["authority","proof"]},p_action:"authority.issue",p_expected_result:"Owned source event exists for authority issuance.",p_observed_result:"Owned source event persisted.",p_learning:[]}')
+          source_row=$(curl -sSf -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_record_cognition_event" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" -H "Content-Type: application/json" -d "$source_body")
+          test "$(jq -r '.event.event_id' <<<"$source_row")" = "$source_id"
           expires=$(python -c 'from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(minutes=8)).isoformat().replace("+00:00","Z"))')
-          grant=$(jq -n --arg subject "$user" --arg source "governed-intelligence-$GITHUB_RUN_ID" --arg expires "$expires" '{p_subject_id:$subject,p_source_event_id:$source,p_mission_id:"NayaNET governed intelligence commit proof",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{proof_run:$ENV.GITHUB_RUN_ID},p_expires_at:$expires,p_evidence:{proof_run:$ENV.GITHUB_RUN_ID}}')
+          grant=$(jq -n --arg subject "$user" --arg source "governed-intelligence-$GITHUB_RUN_ID" --arg expires "$expires" '{p_subject_id:$subject,p_source_event_id:$source_id,p_mission_id:"NayaNET governed intelligence commit proof",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{proof_run:$ENV.GITHUB_RUN_ID},p_expires_at:$expires,p_evidence:{proof_run:$ENV.GITHUB_RUN_ID}}')
           row=$(curl -sSf -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" -H "Content-Type: application/json" -d "$grant")
           echo "$row" >/tmp/grant
           test -n "$(jq -r '.grant_id' /tmp/grant)"
