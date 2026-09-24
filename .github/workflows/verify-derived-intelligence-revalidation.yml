@@ -1,0 +1,81 @@
+name: Verify Derived Intelligence Revalidation
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/derived_intelligence_revalidation.py"
+      - ".naya/runtime/test_derived_intelligence_revalidation.py"
+      - ".github/workflows/verify-derived-intelligence-revalidation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  derived-intelligence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate planner
+        run: python -m py_compile .naya/runtime/derived_intelligence_revalidation.py .naya/runtime/test_derived_intelligence_revalidation.py
+      - name: Verify dependency impact behavior
+        run: python .naya/runtime/test_derived_intelligence_revalidation.py
+      - name: Build independent revalidation plan
+        run: |
+          python - <<'PY'
+          import hashlib
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          script=Path(".naya/runtime/derived_intelligence_revalidation.py")
+          spec=importlib.util.spec_from_file_location("derived_intelligence_revalidation",script)
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          sha=lambda value: hashlib.sha256(value.encode("utf-8")).hexdigest()
+          records=[
+            {"event_id":"SOURCE-A","status":"VERIFIED","source_hash":sha("SOURCE-A-v1")},
+            {"event_id":"SOURCE-B","status":"VERIFIED","source_hash":sha("SOURCE-B-v1")},
+            {"event_id":"DERIVED-D","status":"SUPPORTED","relationships":{"source_events":["SOURCE-A","SOURCE-B"]}},
+            {"event_id":"DERIVED-E","status":"SUPPORTED","relationships":{"source_events":["DERIVED-D"]}}
+          ]
+          plan=module.plan_revalidation_impact(
+            [{"id":"SOURCE-A","before_hash":sha("SOURCE-A-v1"),"after_hash":sha("SOURCE-A-v2")}],
+            records,
+          )
+          assert plan["status"]=="COMPLETE",plan
+          assert plan["impacted_derived_intelligence_ids"]==["DERIVED-D","DERIVED-E"],plan
+          assert plan["system46_actions_invoked"]==[],plan
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"derived-intelligence-revalidation-plan.json").write_text(json.dumps(plan,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+            "schema":"naya-derived-intelligence-revalidation-gate/v1",
+            "status":"VERIFIED",
+            "mode":plan["mode"],
+            "plan_status":plan["status"],
+            "changed_source_count":len(plan["changed_sources"]),
+            "direct_and_transitive_candidates":plan["impacted_derived_intelligence_ids"],
+            "state_mutation":False,
+            "system46_actions_invoked":plan["system46_actions_invoked"],
+            "production_integration":"NOT_TESTED",
+            "truth_boundary":plan["truth_boundary"]
+          }
+          (root/"derived-intelligence-revalidation-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish derived intelligence proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: derived-intelligence-revalidation-proof
+          path: |
+            .naya/runtime/derived_intelligence_revalidation.py
+            .naya/runtime/test_derived_intelligence_revalidation.py
+            ${{ runner.temp }}/derived-intelligence-revalidation-plan.json
+            ${{ runner.temp }}/derived-intelligence-revalidation-gate.json
+          retention-days: 14
+          if-no-files-found: error
