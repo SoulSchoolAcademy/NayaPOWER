@@ -31,7 +31,7 @@ class TestStreamBClosureContracts(unittest.TestCase):
         self.assertIn("when new.status='FAILED' then 'FAILED'", c)
 
     def test_003_receipt_carries_authority_lineage(self):
-        c=read("supabase/migrations/20260919021000_smart_ledger_foundation_v1.sql")
+        c=read("supabase/migrations/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql")
         for field in ("authority_grant_id","authority_issuer_id","authority_scope","authority_actions","authority_constraints","authority_status_at_execution","authority_source_event_id","authority_validated_at"):
             self.assertIn(field,c)
         self.assertIn("'EXECUTION_RECEIPT'",c)
@@ -62,13 +62,12 @@ class TestStreamBClosureContracts(unittest.TestCase):
         c=read("tests/test_universal_execution_gate.py")
         for marker in ("revoked","expired","wrong_actor","wrong_scope","direct_controller_bypass"):
             self.assertIn(marker,c)
-        self.assertIn("not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
+        self.assertIn("was not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
 
     def test_008_smart_connect_seven_doors_and_authority_separation(self):
         candidates=[
             "NAYANET/HUB-ROOM-SYSTEM/04-SMART-CONNECT.md",
             ".naya/protocol/NAYANET-INTELLIGENCE-PARTICIPATION-PRIVACY-PROTOCOL-V1.md",
-            "supabase/migrations/20260924180000_smart_connect_participation_collective_wisdom_v1.sql",
         ]
         c="\n".join(read(p) for p in candidates)
         for door in ("GitHub App","MCP","REST/OpenAPI","Webhooks","SDK","A2A","MCP Apps"):
