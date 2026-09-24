@@ -53,7 +53,7 @@ begin
 end;
 $function$;
 revoke all on function public.nayanet_canonical_intelligence_capture(uuid,text,jsonb,text,text,jsonb) from public,anon,authenticated;
-grant execute on function public.nayanet_canonical_intelligence_capture(uuid,text,jsonb,text,text,text) to service_role;
+grant execute on function public.nayanet_canonical_intelligence_capture(uuid,text,jsonb,text,text,jsonb) to service_role;
 comment on function public.nayanet_canonical_intelligence_capture(uuid,text,jsonb,text,text,jsonb)
 is 'Automatic intelligence capture/persistence seam. It does not require execution authority. Connection/participation consent and privacy rules govern source inclusion; authority remains for consequential execution/publication boundaries.';
 
