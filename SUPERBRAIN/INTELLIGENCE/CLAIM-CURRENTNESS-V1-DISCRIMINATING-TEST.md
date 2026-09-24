@@ -93,7 +93,7 @@ Result: **PASS as a current candidate under the V1 contract**.
 
 Important: this is not inferred from recency. Its currentness is supported by verified truth, evidence/lineage, open validity, and explicit non-supersession.
 
-### 5. STALE / INVALID — HONESTLY UNAVAILABLE IN LIVE CORPUS
+### 5. CONTROLLED STALE / INVALID — PASS (NON-PERSISTENT FIXTURES)
 
 Production has:
 
@@ -106,9 +106,23 @@ Expected behavior under the contract is nevertheless deterministic:
 - expired `valid_until` → **NOT CURRENT** with `STALE_OR_EXPIRED`;
 - explicit invalid/rejected/conflicted state → **NOT CURRENT** or **AMBIGUOUS**, never promoted.
 
-Result: **CONTRACT CASE DEFINED; LIVE DATA CASE NOT PRESENT**.
+Controlled fixture result: **PASS**.
 
 No production row was mutated to manufacture a failure case.
+
+## Controlled adversarial proof
+
+A non-persistent Python contract harness was added at `scripts/test_claim_currentness_v1.py` and executed from the exact branch. It passed all seven cases:
+
+- expired verified claim → `NO_CURRENT_CLAIM`
+- conflicted verified claim → `NO_CURRENT_CLAIM`
+- two simultaneous materially different eligible claims → `AMBIGUOUS`, no selected Block
+- two same-meaning eligible claims → `CURRENT`, no false conflict
+- ACTIVE + CANDIDATE → `NO_CURRENT_CLAIM`
+- VERIFIED + superseded → `NO_CURRENT_CLAIM`
+- sole eligible VERIFIED claim → `CURRENT`
+
+The harness is non-persistent: it creates only in-memory fixtures and performs no Supabase writes.
 
 ## Result
 
@@ -126,7 +140,7 @@ And it explicitly refuses to manufacture stale/conflict evidence where the live 
 
 **DO NOT WIRE SYSTEM 54 YET.**
 
-The contract is now defined and the live discriminating cases pass, but the stale/invalid branch lacks a natural production fixture and the multiple-eligible-claims resolution still needs a controlled test fixture before implementation can safely consume the contract.
+The contract is now defined, real production distinctions pass, and the controlled stale/conflict + competing-claim adversarial cases pass. System 54 may now be considered for wiring, subject to wiring only against this contract and preserving the fail-closed behavior.
 
 No resolver rewrite was made.
 No new intelligence store was created.
