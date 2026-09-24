@@ -78,7 +78,7 @@ jobs:
                   p_source_event_id:sourceEventId,
                   p_mission_id:'Attack 4 live intelligence receipt proof '+run,
                   p_scope:{project_id:'NayaNET',target:session.userId},
-                  p_actions:['intelligence.commit'],
+                  p_actions:['intelligence_commit'],
                   p_constraints:{mode:'controlled-live-proof',no_external_side_effects:true},
                   p_expires_at:new Date(Date.now()+10*60*1000).toISOString(),
                   p_evidence:{proof:'attack4-live-execution-receipt',run}
@@ -182,7 +182,7 @@ jobs:
                 actor: e.user_id===actorId && auth?.actor_id===actorId,
                 authority: auth?.authority_id===receipt.authority_grant_id && auth?.authority_id===receipt.authority_grant_id,
                 decision: !!auth?.decision_id,
-                execution: auth?.action_id && auth?.action_type==='INTELLIGENCE_COMMIT' && auth?.permission==='intelligence.commit',
+                execution: auth?.action_id && auth?.action_type==='INTELLIGENCE_COMMIT' && auth?.permission==='intelligence_commit',
                 scope: !!auth?.scope,
                 governance: auth?.governance_state==='AUTHORIZED',
                 intelligence: e.event_id===eventId && !!e.content,
