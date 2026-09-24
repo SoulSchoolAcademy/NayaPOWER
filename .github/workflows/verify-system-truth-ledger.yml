@@ -62,14 +62,16 @@ jobs:
           target.write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print(json.dumps(gate,sort_keys=True))
           PY
+      - name: Stage ledger proof files
+        run: |
+          mkdir -p system-truth-ledger-artifact
+          cp capabilities/system-truth-ledger.v1.json tests/test_system_truth_ledger.py system-truth-ledger-artifact/
+          cp SUPERBRAIN/MASTER-NOTES/SYSTEMS-41-60-TRUTH-LEDGER-2026-09-24.md system-truth-ledger-artifact/
+          cp "${RUNNER_TEMP}/system-truth-ledger-gate.json" system-truth-ledger-artifact/
       - name: Publish ledger proof
         uses: actions/upload-artifact@v4
         with:
           name: system-truth-ledger-proof
-          path: |
-            capabilities/system-truth-ledger.v1.json
-            tests/test_system_truth_ledger.py
-            SUPERBRAIN/MASTER-NOTES/SYSTEMS-41-60-TRUTH-LEDGER-2026-09-24.md
-            ${{ runner.temp }}/system-truth-ledger-gate.json
+          path: system-truth-ledger-artifact
           retention-days: 14
           if-no-files-found: error

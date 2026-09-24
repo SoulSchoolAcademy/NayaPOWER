@@ -93,15 +93,17 @@ jobs:
           (root/"current-truth-integration-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
           print(json.dumps(gate,sort_keys=True))
           PY
+      - name: Stage current-truth proof files
+        run: |
+          mkdir -p current-truth-integration-artifact
+          cp .naya/runtime/current_truth_integration.py .naya/runtime/test_current_truth_integration.py current-truth-integration-artifact/
+          cp "${RUNNER_TEMP}/current-truth-integration-receipt.json" current-truth-integration-artifact/
+          cp "${RUNNER_TEMP}/current-truth-main-receipt.json" current-truth-integration-artifact/
+          cp "${RUNNER_TEMP}/current-truth-integration-gate.json" current-truth-integration-artifact/
       - name: Publish current-truth proof
         uses: actions/upload-artifact@v4
         with:
           name: current-truth-integration-proof
-          path: |
-            .naya/runtime/current_truth_integration.py
-            .naya/runtime/test_current_truth_integration.py
-            ${{ runner.temp }}/current-truth-integration-receipt.json
-            ${{ runner.temp }}/current-truth-main-receipt.json
-            ${{ runner.temp }}/current-truth-integration-gate.json
+          path: current-truth-integration-artifact
           retention-days: 14
           if-no-files-found: error
