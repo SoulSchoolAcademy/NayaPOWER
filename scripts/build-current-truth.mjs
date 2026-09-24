@@ -41,7 +41,7 @@ function render() {
   const activeStatus=first(BLOCKS.active_block?.status, STATE.current_block_status);
   const signals=collectSignals({STATE,MAP,BLOCKS,PROOF,BATON}).slice(0,20);
   const lines=[
-    "# NayaPOWER — CURRENT TRUTH","",
+    "# NayaPOWER - CURRENT TRUTH","",
     "> Generated from the canonical control plane at build time. This file is a derived cold-boot aid; it never overrides the constitution, control plane, or live runtime evidence.","",
     "- **Live branch:** `"+(git.branch||"DETACHED")+"`",
     "- **Live HEAD:** `"+git.head+"`",
