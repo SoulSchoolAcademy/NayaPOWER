@@ -25,7 +25,7 @@ const bootChecks={
   source_map:true,
   constitution:true,
   control_plane:true,
-  live_head_resolution:start.includes("LIVE_AT_EXECUTION_TIME"),
+  live_head_resolution:start.includes("Live Git HEAD"),
   no_conversation_dependency:start.includes("Do not reconstruct the project from conversation history"),
 };
 for(const [k,v] of Object.entries(bootChecks)) assert(v,"BOOT_CHECK_FAILED:"+k);
