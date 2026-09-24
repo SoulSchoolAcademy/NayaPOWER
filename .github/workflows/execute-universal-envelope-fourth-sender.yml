@@ -16,7 +16,7 @@ jobs:
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
-      NAYA_EXISTING_SPACE_ID: ${{ secrets.NAYA_EXISTING_SPACE_ID }}
+      NAYA_EXISTING_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
       PROOF_PATH: universal-envelope-fourth-sender-proof.json
     steps:
       - uses: actions/checkout@v4
