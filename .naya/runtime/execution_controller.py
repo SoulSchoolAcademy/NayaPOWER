@@ -121,6 +121,24 @@ def _verify_activity_event(event_id, claim_id, action_id, run_id=None, session_i
     return (not problems), problems
 
 
+def derive_epistemic_state(evidence: Any, verification: Any):
+    """Map execution evidence to canonical epistemic state without inflating certainty."""
+    import sys
+
+    if str(ROOT / ".naya" / "governance") not in sys.path:
+        sys.path.insert(0, str(ROOT / ".naya" / "governance"))
+    from governance_kernel import Epistemic
+
+    ev_status = str(evidence.get("result", "")).upper() if isinstance(evidence, dict) else ""
+    v_status = str(verification.get("status", "")).upper() if isinstance(verification, dict) else ""
+
+    if ev_status == "PASS" and v_status == "VERIFIED":
+        return Epistemic.VERIFIED
+    if ev_status == "PASS" and v_status == "OBSERVED":
+        return Epistemic.OBSERVED
+    return Epistemic.UNKNOWN
+
+
 def transition(target: str, **fields: Any) -> dict[str, Any]:
     # Transient boundary inputs: never persisted, never treated as authority
     # outside the credential check below.
@@ -208,6 +226,84 @@ def transition(target: str, **fields: Any) -> dict[str, Any]:
     elif target == "VERIFIED":
         require_fields(fields, ("evidence", "verification"))
         action_ctx = data.get("action") or {}
+
+        # --- Governance kernel gate: ensure epistemic + authority validation ---
+        import sys, json as _json
+        from pathlib import Path
+        ROOT = Path(__file__).resolve().parents[2]
+        sys.path.insert(0, str(ROOT / ".naya" / "governance"))
+        # Ensure runtime is on path so governance_kernel sub-modules are findable
+        sys.path.insert(0, str(ROOT / ".naya" / "runtime"))
+        from governance_kernel import evaluate, Epistemic, Authority, AuthorityRegistry, DecisionObject, Risk, load_authority_registry
+
+        # Build authority the same way the kernel does: load registry + resolve
+        authority_id = action_ctx.get("authority_id")
+        minimal_authority = None
+        if authority_id:
+            try:
+                registry = load_authority_registry(ROOT / ".naya" / "governance" / "authority-registry.json")
+                minimal_authority = registry.resolve(authority_id)
+                # Additional binding checks (principal_id, purpose, scope, granted_actions)
+                if (
+                    minimal_authority.principal_id != action_ctx.get("actor_id", "")
+                    or minimal_authority.purpose != action_ctx.get("purpose", "")
+                    or minimal_authority.scope != action_ctx.get("scope", "")
+                    or action_ctx.get("action_id", "") not in minimal_authority.granted_actions
+                ):
+                    minimal_authority = None
+            except Exception:
+                minimal_authority = None
+
+        # Epistemic truth is derived conservatively at the commit boundary.
+        # Missing, malformed, failed, or unavailable evidence is UNKNOWN, never
+        # OBSERVED. UNKNOWN is then rejected by the canonical governance kernel.
+        epistemic_state = derive_epistemic_state(fields.get("evidence"), fields.get("verification"))
+
+        # Build a DecisionObject from the execution state so the kernel can evaluate
+        risk = Risk(uncertainty=1, consequence=1, irreversibility=1)
+        decision = DecisionObject(
+            decision_id=action_ctx.get("decision_id", fields.get("activity_event_id", "UNKNOWN-MISSION")),
+            mission="governed execution commit",
+            actor_id=action_ctx.get("actor_id", data.get("actor_id", "unknown")),
+            action=action_ctx.get("action_id", "") or "execute",
+            purpose=action_ctx.get("purpose", "governed execution"),
+            scope=data.get("scope", ""),
+            current_truth=data.get("current_truth", "execution completed"),
+            gap="commit boundary governance gate",
+            evidence=tuple(fields.get("evidence", []) or []),
+            epistemic=frozenset({epistemic_state}),
+            consequence="governed execution",
+            reversible=True,
+            risk=risk,
+            alternatives=tuple(fields.get("alternatives", []) or []),
+            expected_value=data.get("expected_value", "verified outcome"),
+            required_permission=action_ctx.get("permission", ""),
+            verification=type("VerificationPlan", (), {
+                "complete": bool(vr.get("status")),
+                "observation": str(vr.get("observation", "VERIFIED completion")),
+                "success_criteria": str(vr.get("success_criteria", "VERIFIED completion")),
+                "stop_conditions": tuple(str(s) for s in vr.get("stop_conditions", ())) if isinstance(vr.get("stop_conditions"), (list, tuple)) else (),
+            })(),
+            necessary_power=frozenset(),
+            requested_power=frozenset(),
+        )
+
+        # Resolve authority through the canonical kernel and evaluate
+        if minimal_authority is not None:
+            try:
+                kernel_result = evaluate(decision, minimal_authority)
+                if not kernel_result.allowed:
+                    raise AssertionError(
+                        "commit denied by governance kernel: " + "; ".join(kernel_result.reasons)
+                    )
+            except RuntimeError as exc:
+                raise AssertionError("governance kernel evaluation failed: " + str(exc)) from exc
+        else:
+            # No authority could be resolved — fail closed
+            raise AssertionError(
+                "commit denied: unable to resolve authority through canonical grant validator"
+            )
+        # -----------------------------------------------------------
         claim_id = data.get("claim_id")
         action_id = action_ctx.get("action_id")
         run_id = data.get("run_id")
