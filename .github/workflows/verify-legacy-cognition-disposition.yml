@@ -1,0 +1,71 @@
+name: Verify Legacy Cognition Disposition (Priority 2)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/migrations/20260924000000_legacy_cognition_disposition_enum_v1.sql'
+      - 'supabase/migrations/20260924010000_legacy_cognition_disposition_classify_v1.sql'
+      - '.github/workflows/verify-legacy-cognition-disposition.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  disposition-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Execute read-only disposition audit
+        shell: bash
+        run: node scripts/verify-legacy-cognition-disposition.mjs
+
+      - name: Validate disposition audit artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('legacy-cognition-disposition-audit.json','utf8'));
+          if(p.schema!=='NAYANET_LEGACY_COGNITION_DISPOSITION_AUDIT_V1')throw new Error('SCHEMA_MISMATCH');
+          if(p.status!=='VERIFIED')throw new Error('STATUS_NOT_VERIFIED');
+          const a=p.audit;
+          if(a.cohort_total!==a.classified+a.unclassified)throw new Error('COUNT_INCONSISTENT');
+          if(a.cohort_fingerprint_sha256===a.cohort_fingerprint_sha256 && a.cohort_fingerprint_sha256.length!==64)throw new Error('FINGERPRINT_INVALID');
+          if(a.cohort_total===0)throw new Error('UNEXPECTED_EMPTY_COHORT');
+          // Verify no NEEDS_REVIEW groups exist (all automatically classified)
+          const needsReview = a.groups.find(g => g.disposition === 'NEEDS_REVIEW');
+          if(needsReview && needsReview.count > 0) {
+            console.log('WARNING: NEEDS_REVIEW group exists with count ' + needsReview.count);
+          }
+          console.log(JSON.stringify({
+            status: p.status,
+            schema: p.schema,
+            cohort_total: a.cohort_total,
+            classified: a.classified,
+            unclassified: a.unclassified,
+            complete: a.complete,
+            groups: a.groups
+          }, null, 2));
+          NODE
+
+      - name: Upload disposition audit artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: legacy-cognition-disposition-audit
+          path: legacy-cognition-disposition-audit.json
+          if-no-files-found: error
