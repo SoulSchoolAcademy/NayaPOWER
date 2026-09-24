@@ -37,14 +37,15 @@ async function logOp(client: any, userId: string, operation: string, status: str
   });
 }
 
-async function record(client: any, event: any, action: string, expected: string, observed: string, learning: any[] = []) {
+async function record(client: any, event: any, action: string, expected: string, observed: string, learning: any[] = [], executionAuthorization: any = null) {
   const { data, error } = await client.rpc("nayanet_record_cognition_event", {
     p_project_id: PROJECT,
     p_event: event,
     p_action: action,
     p_expected_result: expected,
     p_observed_result: observed,
-    p_learning: learning
+    p_learning: learning,
+    p_execution_authorization: executionAuthorization
   });
   if (error) throw error;
   return data;
@@ -725,7 +726,36 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
   };
 }
 
+async function requireGovernedIntelligenceAuthorization(client: any, userId: string, body: any) {
+  const auth = body.execution_authorization;
+  if (!auth || typeof auth !== "object") throw new Error("EXECUTION_AUTHORIZATION_REQUIRED");
+  const evidence = Array.isArray(body.evidence) ? body.evidence.map(String).filter(Boolean) : [];
+  const epistemicState = String(body.epistemic_state ?? "").trim().toUpperCase();
+  if (!evidence.length) throw new Error("EVIDENCE_REQUIRED");
+  if (!["OBSERVED","VERIFIED"].includes(epistemicState)) throw new Error("EPISTEMIC_STATE_NOT_EXECUTABLE:" + (epistemicState || "UNKNOWN"));
+  const required = ["authority_id","decision_id","action_id","action_type","target","actor_id","scope","permission","governance_state","binding_hash"];
+  const missing = required.filter((key) => String(auth[key] ?? "").trim() === "");
+  if (missing.length) throw new Error("EXECUTION_AUTHORIZATION_INCOMPLETE:" + missing.join(","));
+  if (String(auth.governance_state) !== "AUTHORIZED") throw new Error("EXECUTION_AUTHORIZATION_NOT_AUTHORIZED");
+  if (String(auth.actor_id) !== userId) throw new Error("EXECUTION_AUTHORIZATION_ACTOR_MISMATCH");
+  if (String(auth.action_type) !== "INTELLIGENCE_COMMIT") throw new Error("EXECUTION_AUTHORIZATION_ACTION_TYPE_MISMATCH");
+  if (String(auth.permission) !== "intelligence_commit") throw new Error("EXECUTION_AUTHORIZATION_PERMISSION_MISMATCH");
+  if (String(auth.target) !== PROJECT) throw new Error("EXECUTION_AUTHORIZATION_TARGET_MISMATCH");
+  const binding = [auth.authority_id,auth.decision_id,auth.action_id,auth.action_type,auth.target,auth.actor_id,auth.scope,auth.permission].map(String).join("|");
+  const digest = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(binding)));
+  const expectedBindingHash = Array.from(digest).map((v)=>v.toString(16).padStart(2,"0")).join("");
+  if (expectedBindingHash !== String(auth.binding_hash)) throw new Error("EXECUTION_AUTHORIZATION_BINDING_MISMATCH");
+  const { data: authority, error } = await client.rpc("nayanet_validate_authority_grant", {
+    p_grant_id: String(auth.authority_id), p_action: "intelligence_commit", p_target: PROJECT
+  });
+  if (error) throw error;
+  if (!authority || authority.status !== "AUTHORIZED") throw new Error("EXECUTION_AUTHORITY_BLOCKED:" + String(authority?.reason ?? "UNKNOWN"));
+  if (String(authority.subject_id) !== userId) throw new Error("EXECUTION_AUTHORITY_SUBJECT_MISMATCH");
+  return { ...auth, authority_grant: authority };
+}
+
 async function commitIntelligence(client: any, userId: string, body: any) {
+  const executionAuthorization = await requireGovernedIntelligenceAuthorization(client,userId,body);
   const idempotencyKey = String(body.idempotency_key ?? "").trim();
   const content = String(body.content ?? "").trim();
   if (!idempotencyKey) throw new Error("INTELLIGENCE_IDEMPOTENCY_KEY_REQUIRED");
@@ -753,12 +783,17 @@ async function commitIntelligence(client: any, userId: string, body: any) {
       parent_event_id:body.parent_event_id ?? null,source_hash:"intelligence:"+idempotencyKey,
       schema_version:"INTELLIGENT_BLOCK_V1",
       metadata:{idempotency_key:idempotencyKey,category,topic,applicable_scope:body.applicable_scope ?? null,
-        limits:body.limits ?? null,human_teaching:body.human_teaching === true,captured_at:new Date().toISOString()}
+        limits:body.limits ?? null,human_teaching:body.human_teaching === true,
+        evidence,epistemic_state:epistemicState,captured_at:new Date().toISOString()}
     };
     captureReceipt=await record(client,event,"intelligence.capture",
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
       "Canonical Intelligent Block source event persisted.",
-      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}]);
+      [
+        {type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey},
+        {type:"execution_authorization",authorization:executionAuthorization}
+      ],
+      executionAuthorization);
     const persisted=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
       .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).single();
     if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
@@ -811,7 +846,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     const blockContent:any = {
       identity:{object_id:"IB:"+blockId,event_id:eventId,version:1,namespace:"nayanet",schema_version:"NAYANET_INTELLIGENT_BLOCK_V1"},
       context:{project_id:PROJECT,category,topic,visibility:"PRIVATE",owner_id:userId},
-      truth:{state:"CANDIDATE",status:"UNVERIFIED",source:"nayanet-compound-intelligence",confidence:Number(body.confidence ?? 0.8)},
+      truth:{state:"CANDIDATE",status:"UNVERIFIED",source:"nayanet-compound-intelligence",confidence:Number(body.confidence ?? 0.8),epistemic_state:String(body.epistemic_state ?? "UNKNOWN")},
       authority:{state:"AUTHORIZED",scope:body.authority_scope ?? "PERSONAL_INTELLIGENCE_ONLY",actor:userId},
       value:{state:"CAPTURED",learning_claim:learningClaim,applicable_scope:body.applicable_scope ?? null},
       lifecycle:{stage:"CAPTURED_INTEGRATED_CHECKPOINTED",captured_at:new Date().toISOString(),checkpoint_id:checkpointId},
