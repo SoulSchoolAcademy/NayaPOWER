@@ -134,22 +134,27 @@ Deno.serve(async(req)=>{
   }
 
   if(stream==='collective'){
-    let q=admin.from('nayanet_intelligence_publications').select('id,intelligence_event_id,published_at,created_at').eq('status','published').eq('consent_state','explicit').order('published_at',{ascending:false}).limit(limit+1)
+    let q=admin.from('nayanet_intelligence_publications').select('id,published_at,created_at').eq('status','published').eq('consent_state','explicit').order('published_at',{ascending:false}).limit(limit+1)
     if(before) q=q.lt('published_at',before)
     const pubResult=await q
     if(pubResult.error) return json({ok:false,error:pubResult.error.message},400)
     const pubs=pubResult.data||[]
-    const ids=pubs.slice(0,limit).map((p:any)=>p.intelligence_event_id)
-    let events:any[]=[]
-    if(ids.length){
-      const eventResult=await admin.from('nayanet_cognition_events').select(fields).in('id',ids)
-      if(eventResult.error) return json({ok:false,error:eventResult.error.message},400)
-      events=eventResult.data||[]
-    }
-    const byId=new Map(events.map((e:any)=>[e.id,e]))
-    let items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
-    try{items=await attachLedger(items,null,true);items=await attachBlocks(items,true)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
-    return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null})
+    const items=pubs.slice(0,limit).map((p:any)=>({
+      id:'collective-publication:'+p.id,
+      publication_id:p.id,
+      stream:'collective',
+      source_id:null,
+      published_at:p.published_at,
+      visibility:'collective',
+      publisher_identity:'private-by-default',
+      title:'Collective wisdom pending safe derivation',
+      content:'NOT VERIFIED',
+      status:'NOT_VERIFIED',
+      available_actions:[],
+      source_event_id:null,
+      privacy_boundary:'derived-only'
+    }))
+    return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null,truth_boundary:'Collective feed does not expose raw cognition events until an independently verified derived-wisdom projection exists.'})
   }
   return json({ok:false,error:'INVALID_STREAM'},400)
 })
