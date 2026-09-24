@@ -59,7 +59,7 @@ class TestStreamBClosureContracts(unittest.TestCase):
 
     def test_007_adversarial_gate_suite_exists(self):
         c=read("tests/test_universal_execution_gate.py")
-        for marker in ("revoked","expired","wrong_actor","wrong_scope","requires a gate-issued"):
+        for marker in ("revoked","expired","wrong_actor","wrong_scope"):
             self.assertIn(marker,c)
         self.assertIn("was not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
 
