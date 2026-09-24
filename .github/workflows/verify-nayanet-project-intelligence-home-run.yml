@@ -199,18 +199,57 @@ jobs:
               if(direct.error||!direct.data) throw new Error('RECEIVER_RETRIEVAL_FAILED:'+JSON.stringify(direct));
               mark('RETRIEVE','PASS',{event_id:direct.data.event_id,cognition_id:direct.data.id});
 
+              const pageIssues=[];
+              page.on('pageerror',e=>pageIssues.push({type:'pageerror',text:String(e?.stack||e)}));
+              page.on('console',m=>{if(['error','warning'].includes(m.type()))pageIssues.push({type:'console',subtype:m.type(),text:m.text()})});
+              page.on('requestfailed',r=>pageIssues.push({type:'requestfailed',url:r.url(),failure:r.failure()?.errorText||''}));
+
               await page.goto(hub+'/feed?event_id='+encodeURIComponent(receiverEventId)+'&pi_home_run='+encodeURIComponent(run),{waitUntil:'domcontentloaded',timeout:60000});
-              await page.waitForFunction((id)=>{
-                const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
-                const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
-                const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(id)+'"]');
-                const feedCount=document.querySelector('#feedCount');
-                const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
-                if(v2Card) return !!v2Status && !/BLOCKED|ERROR/i.test(v2Status.textContent||'');
-                if(!canonicalCard||!feedCount) return false;
-                if(canonicalFlag==='blocked') return false;
-                return !/BLOCKED|ERROR/i.test(feedCount.textContent||'');
-              },receiverEventId,{timeout:30000});
+              try{
+                await page.waitForFunction((id)=>{
+                  const v2Card=document.querySelector('#naya-smart-feed-v2 .sf-card[data-event-id="'+CSS.escape(id)+'"]');
+                  const v2Status=document.querySelector('#naya-smart-feed-v2 #sf-status');
+                  const canonicalCard=document.querySelector('.feed .blocks [data-event-id="'+CSS.escape(id)+'"]');
+                  const feedCount=document.querySelector('#feedCount');
+                  const canonicalFlag=document.documentElement.getAttribute('data-naya-canonical-smart-feed');
+                  if(v2Card) return !!v2Status && !/BLOCKED|ERROR/i.test(v2Status.textContent||'');
+                  if(!canonicalCard||!feedCount) return false;
+                  if(canonicalFlag==='blocked') return false;
+                  return !/BLOCKED|ERROR/i.test(feedCount.textContent||'');
+                },receiverEventId,{timeout:30000});
+              }catch(waitError){
+                const diag=await page.evaluate(async(id)=>{
+                  const snap=window.NayaAssistantRuntime?.snapshot?.()||null;
+                  let feed=null,feedError=null;
+                  try{
+                    const rt=window.NayaAssistantRuntime;
+                    if(rt?.init) await rt.init();
+                    if(rt?.smartFeed) feed=await rt.smartFeed({stream:'personal',limit:20,before:null});
+                  }catch(e){feedError=String(e?.message||e)}
+                  return {
+                    url:location.href,
+                    readyState:document.readyState,
+                    receiver_event_id:id,
+                    auth:snap,
+                    canonical_flag:document.documentElement.getAttribute('data-naya-canonical-smart-feed'),
+                    feed_count_text:document.querySelector('#feedCount')?.textContent||null,
+                    v2_present:!!document.querySelector('#naya-smart-feed-v2'),
+                    v2_status:document.querySelector('#naya-smart-feed-v2 #sf-status')?.textContent||null,
+                    v2_cards:Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id]')).map(n=>n.getAttribute('data-event-id')),
+                    canonical_cards:Array.from(document.querySelectorAll('.feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),title:n.querySelector('h2')?.textContent||'',intelligenceId:n.getAttribute('data-intelligence-id')||''})),
+                    canonical_card_count:document.querySelectorAll('.feed .blocks [data-real-smart-note]').length,
+                    feed_payload:feed?{ok:feed.ok,stream:feed.stream,item_count:(feed.items||[]).length,event_ids:(feed.items||[]).map(x=>x.event_id),titles:(feed.items||[]).map(x=>String(x.title||'').slice(0,80)),has_receiver:(feed.items||[]).some(x=>x.event_id===id)}:null,
+                    feed_error:feedError,
+                    runtime_available:!!window.NayaAssistantRuntime,
+                    smart_feed_v2_available:!!window.NayaSmartFeedV2,
+                    script_urls:Array.from(document.scripts).map(s=>s.src).filter(Boolean)
+                  };
+                },receiverEventId);
+                diag.page_issues=pageIssues;
+                fs.writeFileSync('pi-render-timeout-diagnostics.json',JSON.stringify({at:new Date().toISOString(),run,receiverEventId,error:String(waitError),diag},null,2));
+                console.log('PI_RENDER_TIMEOUT_DIAGNOSTICS',JSON.stringify(diag));
+                throw waitError;
+              }
               const rendered=await page.evaluate(()=>Array.from(document.querySelectorAll('#naya-smart-feed-v2 .sf-card[data-event-id], .feed .blocks [data-event-id]')).map(n=>({eventId:n.getAttribute('data-event-id'),sourceId:n.getAttribute('data-sf-id')||n.getAttribute('data-intelligence-id')||'',title:n.querySelector('h2')?.textContent||'',surface:n.closest('#naya-smart-feed-v2')?'canonical-smart-feed-v2':'canonical-hub-blocks'})));
               if(!rendered.some(x=>x.eventId===receiverEventId)) throw new Error('RECEIVER_RENDER_FAILED:'+JSON.stringify({expected:receiverEventId,rendered}));
               mark('RENDER','PASS',{event_id:receiverEventId,route:'/feed',surface:rendered.find(x=>x.eventId===receiverEventId)?.surface||'unknown',canonical_event_selector:'#naya-smart-feed-v2 .sf-card[data-event-id] | .feed .blocks [data-event-id]'});
