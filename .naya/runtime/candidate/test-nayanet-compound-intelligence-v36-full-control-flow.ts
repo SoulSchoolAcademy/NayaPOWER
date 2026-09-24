@@ -1,6 +1,5 @@
 import { readFileSync } from "node:fs";
 import * as vm from "node:vm";
-import * as ts from "typescript";
 import { generateKeyPairSync, sign } from "node:crypto";
 
 const path=".naya/runtime/candidate/nayanet-compound-intelligence-v36-production-shaped.ts";
@@ -11,7 +10,7 @@ const healthStart=source.indexOf("async function health(",commitStart);
 if(helperStart<0||commitStart<0||healthStart<0||helperStart>commitStart)throw new Error("EXTRACTION_SEAM_NOT_FOUND");
 const extracted=source.slice(helperStart,healthStart)+
 "\nmodule.exports={verifyV36PortableArtifact,commitIntelligence};\n";
-const js=ts.transpileModule(extracted,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.CommonJS}}).outputText;
+const js=extracted.replace(/:\s*(unknown|string|any|Promise<[^>]+>)/g,"");
 
 const {publicKey,privateKey}=generateKeyPairSync("ed25519");
 const pubDer=publicKey.export({format:"der",type:"spki"});
