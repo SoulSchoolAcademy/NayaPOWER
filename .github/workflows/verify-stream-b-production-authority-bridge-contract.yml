@@ -1,0 +1,26 @@
+name: Verify Stream B production authority bridge contract
+
+on:
+  push:
+    paths:
+      - ".naya/STREAM-B-PRODUCTION-AUTHORITY-BRIDGE-V1.md"
+      - "tests/test_stream_b_production_authority_bridge_contract.py"
+      - "supabase/migrations/20260924100000_wire_authority_grant_into_intelligence_commit_v1.sql"
+      - "supabase/migrations/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql"
+  pull_request:
+    paths:
+      - ".naya/STREAM-B-PRODUCTION-AUTHORITY-BRIDGE-V1.md"
+      - "tests/test_stream_b_production_authority_bridge_contract.py"
+      - "supabase/migrations/20260924100000_wire_authority_grant_into_intelligence_commit_v1.sql"
+      - "supabase/migrations/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql"
+  workflow_dispatch:
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python tests/test_stream_b_production_authority_bridge_contract.py
