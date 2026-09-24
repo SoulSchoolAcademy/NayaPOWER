@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import { spawnSync } from 'node:child_process';
-import { summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
+import { classifySenderFailure, summarizeReceiverResponse } from './stream-e-failure-diagnostics.mjs';
 const hub=process.env.HUB_URL, run=process.env.GITHUB_RUN_ID;
 const alias=('envelopesender'+run+'-'+crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
 const title='Universal Envelope Hub Runtime Sender '+run;
@@ -108,4 +108,4 @@ print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type'
   fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(proof,null,2)+'\n');
   console.log('CHAIN_RESULT='+JSON.stringify(proof));
   await context.close(); await browser.close();
-})().catch(async error=>{await new Promise(resolve=>setTimeout(resolve,100));const requestTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_REQUEST')||null;const responseTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_RESPONSE')||null;const artifact={status:'FAILED',error:String(error?.stack||error),first_failure_boundary:responseTrace?'HUB_RUNTIME_RESPONSE_MAPPING':'UNKNOWN',partial_state:'UNDETERMINED',correlation:{idempotency_key:requestTrace?.idempotency_key||'UNAVAILABLE',receiver_response:responseTrace},downstream_reachability:'NOT_REACHED_BY_SENDER',trace};fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(artifact,null,2)+'\n');console.error(error);process.exit(1)});
+})().catch(async error=>{await new Promise(resolve=>setTimeout(resolve,100));const requestTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_REQUEST')||null;const responseTrace=trace.find(row=>row.step==='SMART_NOTE_RECEIVER_RESPONSE')||null;const classification=classifySenderFailure(error,responseTrace);const artifact={status:'FAILED',error:String(error?.stack||error),...classification,correlation:{idempotency_key:requestTrace?.idempotency_key||'UNAVAILABLE',receiver_response:responseTrace},trace};fs.writeFileSync('universal-envelope-hub-runtime-sender-proof.json',JSON.stringify(artifact,null,2)+'\n');console.error(error);process.exit(1)});
