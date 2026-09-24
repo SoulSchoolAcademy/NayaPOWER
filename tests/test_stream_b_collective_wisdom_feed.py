@@ -17,7 +17,7 @@ def test_collective_feed_preserves_identity_and_publication_boundaries():
     end = source.index("return json({ok:false,error:'INVALID_STREAM'}", start)
     body = source[start:end]
     assert "contributor_identity:'private-by-default'" in body
-    assert "identity_visibility:'private'" in body
-    assert "source_visibility:'derived_only'" in body
-    assert "public_publication:'separate'" in body
+    assert ".eq('identity_visibility','private')" in body
+    assert ".eq('source_visibility','derived_only')" in body
+    assert ".eq('public_publication','separate')" in body
     assert "owner_id" not in body
