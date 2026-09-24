@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - ".github/workflows/verify-project-intelligence-current-truth.yml"
       - ".naya/runtime/project_intelligence_reconstruction.py"
       - ".naya/runtime/test_project_intelligence_reconstruction.py"
       - ".naya/memory/events/**"
@@ -39,6 +40,19 @@ jobs:
           assert p["resolution"]["status"]=="RECONSTRUCTED"
           assert p["resolution"]["law"]
           assert p["next_action"]
+          counts=p["counts"]
+          assert counts["events"] > 0, "CURRENT_TRUTH_EMPTY: no project intelligence events were reconstructed"
+          assert counts["current"] > 0, f"CURRENT_TRUTH_EMPTY: events={counts['events']} current={counts['current']} unknown={counts['unknown']} conflicted={counts['conflicted']} stale={counts['stale']} superseded={counts['superseded']}"
+          forbidden_current={"UNKNOWN","STALE","SUPERSEDED","CONFLICTED","BLOCKED"}
+          for claim in p["current"]:
+              status=str(claim.get("status","UNKNOWN")).upper()
+              assert status not in forbidden_current, f"CURRENT_TRUTH_INVALID: current claim {claim.get('event_id')} has status {status}"
+              authority=claim.get("authority")
+              verification=claim.get("verification") or {}
+              evidence=verification.get("evidence") or []
+              assert authority, f"CURRENT_TRUTH_UNRESOLVED_AUTHORITY: {claim.get('event_id')}"
+              assert evidence, f"CURRENT_TRUTH_UNRESOLVED_EVIDENCE: {claim.get('event_id')}"
+          print("CURRENT_TRUTH_GATE=PASS")
           print("FULL_PROJECT_INTELLIGENCE_RECONSTRUCTION=PASS")
           print("CANONICAL_CURRENT_TRUTH_RESOLVER=PASS")
           print("COLD_NAYA_CONTEXT_GENERATED=PASS")
