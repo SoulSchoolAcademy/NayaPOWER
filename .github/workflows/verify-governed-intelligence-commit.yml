@@ -84,6 +84,7 @@ jobs:
           body=$(make_body "$idem")
           first=$(curl -sS -w '\n%{http_code}' -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$body")
           code=$(tail -n1 <<<"$first"); payload=$(sed '$d' <<<"$first")
+          echo "AUTHORIZED_RESPONSE=$(jq -c '{ok,error,result_status:.result.status}' <<<"$payload")"
           test "$code" = 200; test "$(jq -r '.ok' <<<"$payload")" = true
           event=$(jq -r '.result.source_event.event_id' <<<"$payload"); echo "$event" >/tmp/event
           test -n "$event"
