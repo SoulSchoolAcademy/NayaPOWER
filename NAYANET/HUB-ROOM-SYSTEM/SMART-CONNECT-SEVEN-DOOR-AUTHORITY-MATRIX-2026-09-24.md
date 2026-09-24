@@ -98,3 +98,48 @@ Required chain:
 **authenticated initialize → tools/call → authority decision → canonical persistence → fresh retrieval → verified outcome → revoke → denied reuse → exact replay semantics → REST parity**
 
 No new authority model. No second backend. No direct Hub-to-Supabase bypass.
+
+
+## 2026-09-24 live evidence — continuation after production bridge verification
+
+### Production bridge boundary
+
+Run `36054810899` is **VERIFIED** on `main` commit `943192584c8829225d7ff4841e2140d5be004d9c`. The proof job independently verified fresh owner bootstrap, existing envelope adapter validation, production receiver transaction/event/receipt/index persistence, independent retrieval, lineage reconstruction, and exact replay with the same receiver transaction/event/receipt lineage.
+
+### Common relationship seam — live adversarial proof
+
+The canonical `nayanet_connections` boundary was exercised with two authenticated identities in a rollback-scoped production database transaction:
+
+- Owner A → B connection: `CONNECTED`.
+- Owner replay: `ALREADY_CONNECTED`.
+- Non-owner B revoke attempt: `CONNECTION_NOT_FOUND` / **BLOCKED**.
+- Owner A revoke: `REVOKED`.
+- Owner replay revoke: `ALREADY_REVOKED`.
+- `nayanet_connections` RLS: owner retrieval visible; non-owner retrieval count `0`.
+- The canonical connection uniqueness constraint remains `(owner_member_id, connected_member_id)`.
+
+This proves the common relationship authority seam without creating a second relationship store.
+
+### Seven-door participation proof
+
+All seven canonical doors were exercised against the same `nayanet_smart_connect_participation` RPC/table boundary:
+
+| Door | First connect | Replay connect | Authority | Publication | Non-owner disconnect | First disconnect | Replay disconnect |
+|---|---|---|---|---|---|---|---|
+| GitHub App | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| MCP | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| REST/OpenAPI | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| Webhooks | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| SDK | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| A2A | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+| MCP Apps | CONNECTED | ALREADY_CONNECTED | UNCHANGED | NOT_GRANTED | BLOCKED | DISCONNECTED | ALREADY_DISCONNECTED |
+
+The replay semantics above were the fail-first gap discovered during this continuation: before the bounded repair, connect replay returned `CONNECTED` and disconnect replay returned `DISCONNECTED`. Migration `20260924143000_harden_smart_connect_participation_idempotency_v1.sql` changed only those replay semantics to explicit no-op results. It did not create a new authority model, table, backend, or connection store.
+
+### Transport frontier
+
+`NAYANET/UNIVERSAL-AGENT-INTERFACE` is source-defined as the canonical REST/OpenAPI + MCP adapter over `nayanet-compound-intelligence`. The source contract requires Bearer authentication and MCP `initialize → tools/list → tools/call`; consequential retrieve/understand actions force `cold_restore` first. **Current truth: source-implemented; authenticated live transport-to-receipt proof remains OPEN.**
+
+### Current next frontier
+
+Execute the first authenticated live Universal Agent Interface proof across **MCP + REST/OpenAPI parity** using the existing bearer identity and canonical runtime. Required chain: authentication → initialize/tools → cold restore → action → authority decision → canonical persistence/retrieval → receipt/evidence → revoke/denied reuse → exact replay. No new authority model or backend.
