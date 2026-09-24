@@ -119,8 +119,59 @@ jobs:
           echo "CAUSAL_PROOF_VERIFIED"
           jq -n --arg event "$event" --argjson eventrow "$eventrow" --argjson receipts "$receipts" --argjson retrieval "$retrieval" '{status:"VERIFIED",event_id:$event,event:$eventrow,receipts:$receipts,retrieval:$retrieval}' > governed-intelligence-proof.json
 
+      - name: Cold successor reconstructs durable state and leaves one baton
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          proof=json.loads(Path("governed-intelligence-proof.json").read_text())
+          receipts=proof["receipts"]
+          receipt=next(r for r in receipts if r.get("authority_grant_id") and r.get("action")=="intelligence.capture" and r.get("status")=="SUCCESS")
+          retrieval=proof["retrieval"]
+          state=json.loads(Path(".naya/control-plane/STATE.json").read_text())
+          blocks=json.loads(Path(".naya/control-plane/BLOCKS.json").read_text())
+          baton={
+            "schema":"NAYANET_GOVERNED_INTELLIGENCE_SUCCESSOR_BATON_V1",
+            "cold_successor":"fresh runtime; no conversational rescue",
+            "identity":{"project":"NayaNET","human_director":"Shawn Vibert","substrate":"NayaPOWER","operating_instance":"Naya"},
+            "mission":"Close the governed intelligence causal chain without bypassing authority.",
+            "current_truth":{
+              "proof_status":proof["status"],
+              "source_event_id":proof["event_id"],
+              "receipt_id":receipt["id"],
+              "retrieval_count":retrieval["result"]["count"],
+              "control_plane_state_status":state.get("status"),
+              "active_block":blocks.get("active_block") or blocks.get("current_block") or "PROJECT-INTELLIGENCE-PI-01"
+            },
+            "authority":{
+              "grant_id":receipt["authority_grant_id"],
+              "status_at_execution":receipt["authority_status_at_execution"],
+              "scope":receipt["authority_scope"],
+              "actions":receipt["authority_actions"]
+            },
+            "observed_intelligence":{
+              "event_id":proof["event_id"],
+              "receipt_id":receipt["id"],
+              "retrievable":retrieval["result"]["count"] >= 1
+            },
+            "unknown":["Outcome-based behavior improvement remains unverified.","This proof does not establish production Hub/browser parity."],
+            "protected":["No second intelligence store.","Capability does not create authority.","UNKNOWN is not VERIFIED.","BLOCKED is not PASS."],
+            "next_action":"Use the persisted governed intelligence result in one fresh authorized successor action, then observe and verify the outcome before promotion."
+          }
+          assert baton["proof_status"]=="VERIFIED"
+          assert baton["authority"]["status_at_execution"]=="ACTIVE"
+          assert baton["observed_intelligence"]["retrievable"] is True
+          assert isinstance(baton["next_action"],str) and baton["next_action"]
+          Path("successor-baton.json").write_text(json.dumps(baton,indent=2))
+          print(json.dumps({"status":"COLD_SUCCESSOR_RECONSTRUCTED","receipt_id":receipt["id"],"next_action":baton["next_action"]}))
+          PY
+
       - name: Upload proof artifact
         uses: actions/upload-artifact@v4
         with:
           name: governed-intelligence-commit-proof
-          path: governed-intelligence-proof.json
+          path: |
+            governed-intelligence-proof.json
+            successor-baton.json
