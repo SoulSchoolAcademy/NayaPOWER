@@ -1,0 +1,37 @@
+{
+  "$schema": "naya/governance/protected-state/v1",
+  "status": "CANONICAL",
+  "protocol": ".naya/governance/MONOTONIC-PROGRESS-PROTECTED-STATE-VERIFIED-CHECKPOINTS.md",
+  "baseline": {
+    "commit": "9bde83d80e7e32833ef52e1ed88f59d977094d1e",
+    "branch": "main",
+    "status": "KNOWN_GOOD_BASELINE_PENDING_FRESH_VERIFICATION"
+  },
+  "protected_paths": [
+    ".naya/codex/",
+    ".naya/control-plane/",
+    "SUPERBRAIN/AI-BOOT/",
+    "SUPERBRAIN/NAYAPOWER-CANONICAL-SOURCE-MAP.md"
+  ],
+  "protected_behavior": [
+    "existing approved UI/navigation behavior",
+    "existing public routes and interfaces",
+    "existing verified functionality",
+    "canonical authority hierarchy",
+    "fail-closed semantics",
+    "historical evidence integrity"
+  ],
+  "governed_change_required": true,
+  "required_declaration_markers": [
+    "NAYA-AUTHORIZED-CHANGE:",
+    "NAYA-BASELINE-IMPACT:"
+  ],
+  "rules": {
+    "protected_changes_default": "DENY",
+    "deletion_of_protected_path": "DENY",
+    "unauthorized_rename_of_protected_path": "DENY",
+    "force_push_baseline_rewrite": "DENY",
+    "checkpoint_must_remain_reachable": true,
+    "unknown_is_not_verified": true
+  }
+}
