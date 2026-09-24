@@ -1,0 +1,65 @@
+name: Control Plane Freshness Audit (Item 31)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/control-plane/**'
+      - 'scripts/validate-control-plane-freshness.py'
+      - 'tests/test_control_plane_freshness.py'
+      - '.github/workflows/validate-control-plane-freshness.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  freshness-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run explicit UNKNOWN resolution regression tests
+        run: python -m unittest tests/test_control_plane_freshness.py -v
+      - name: Run fail-closed freshness audit
+        run: python scripts/validate-control-plane-freshness.py
+      - name: Validate freshness artifact
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('control-plane-freshness-audit.json').read_text(encoding='utf-8'))
+          if report.get('schema') != 'NAYANET_CONTROL_PLANE_FRESHNESS_AUDIT_V2':
+              raise SystemExit('SCHEMA_MISMATCH')
+          if report.get('status') != 'FRESH':
+              raise SystemExit('STATUS_NOT_FRESH')
+          checks = report.get('checks', {})
+          required = (
+              'head_authoritative',
+              'active_block_coherence',
+              'active_block_status_coherence',
+              'next_action_coherence',
+              'unknown_identity_resolution_explicit',
+              'proof_commit_references_valid',
+              'baton_generated_from_current_state',
+              'canonical_hub_sha_coherence',
+          )
+          if any(checks.get(key) is not True for key in required):
+              raise SystemExit('REQUIRED_CHECK_NOT_TRUE')
+          print('FRESHNESS=PASS')
+          PY
+      - name: Upload freshness artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: control-plane-freshness-audit
+          path: control-plane-freshness-audit.json
+          if-no-files-found: error

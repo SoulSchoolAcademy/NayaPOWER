@@ -1,0 +1,69 @@
+{
+  "$schema": "naya/control-plane/unknown-registry/v1",
+  "status": "CANONICAL",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "authority": "Exact identity is established by this registry; textual similarity is not evidence of resolution.",
+  "resolution_ledger": ".naya/control-plane/UNKNOWN-RESOLUTION-LEDGER.json",
+  "entries": [
+    {
+      "id": "UNKNOWN-HUB-BRIDGE-RETRIEVAL",
+      "statement": "End-to-end Hub retrieval/render of bridge receipt remains open.",
+      "status": "UNKNOWN",
+      "introduced_by": {
+        "source": ".naya/control-plane/STATE.json",
+        "field": "unknown"
+      },
+      "evidence_required": [
+        "Authenticated browser retrieval of the exact bridge receipt",
+        "Visible canonical Hub render of the same receipt",
+        "Independent receipt and event identity verification"
+      ],
+      "resolution": null
+    },
+    {
+      "id": "UNKNOWN-COLD-BRIDGE-SUCCESSOR",
+      "statement": "Cold successor retrieval of exact bridge lineage through governed runtime remains open.",
+      "status": "UNKNOWN",
+      "introduced_by": {
+        "source": ".naya/control-plane/STATE.json",
+        "field": "unknown"
+      },
+      "evidence_required": [
+        "Fresh successor context without originating-session memory",
+        "Governed runtime retrieval of the exact bridge lineage",
+        "Independent lineage identity verification"
+      ],
+      "resolution": null
+    },
+    {
+      "id": "UNKNOWN-UNIVERSAL-COMPUTATION-SAVINGS",
+      "statement": "Universal real-world computation savings remain unmeasured.",
+      "status": "UNKNOWN",
+      "introduced_by": {
+        "source": ".naya/control-plane/STATE.json",
+        "field": "unknown"
+      },
+      "evidence_required": [
+        "Cross-scope baseline and counterfactual measurement",
+        "Verified outcome, provenance, and authority preservation",
+        "Explicit limits preventing bounded savings from being generalized"
+      ],
+      "resolution": null
+    },
+    {
+      "id": "UNKNOWN-UNIVERSAL-MODEL-LEARNING-QUALITY",
+      "statement": "Universal model/provider learning quality remains unproven.",
+      "status": "UNKNOWN",
+      "introduced_by": {
+        "source": ".naya/control-plane/STATE.json",
+        "field": "unknown"
+      },
+      "evidence_required": [
+        "Independent model and provider evaluation",
+        "Outcome-based quality evidence beyond retrieval or transport",
+        "Explicit scope limits preventing a bounded result from being generalized"
+      ],
+      "resolution": null
+    }
+  ]
+}
