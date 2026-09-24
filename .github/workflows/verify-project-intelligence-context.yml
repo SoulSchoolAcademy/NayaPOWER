@@ -1,0 +1,54 @@
+name: verify-project-intelligence-context
+
+on:
+  pull_request:
+    paths:
+      - "tools/project_intelligence.py"
+      - "tools/test_project_intelligence.py"
+      - ".naya/runtime/restore_context.py"
+      - ".naya/control-plane/**"
+      - ".naya/projects/CURRENT-PROJECT.md"
+      - "NAYAPOWER-ONE-SHOT.md"
+      - ".naya/one-shot/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  project-intelligence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python syntax
+        run: |
+          python -m py_compile tools/project_intelligence.py tools/test_project_intelligence.py .naya/runtime/restore_context.py
+
+      - name: Project Intelligence acceptance
+        run: python tools/test_project_intelligence.py
+
+      - name: Project Intelligence reconstruction
+        run: |
+          python tools/project_intelligence.py > /tmp/project-intelligence.json
+          python - <<'PY'
+          import json
+          p=json.load(open('/tmp/project-intelligence.json'))
+          required=[
+            "identity","mission","vision","purpose","north_star","goals",
+            "requirements","constraints","constitution","architecture",
+            "authority","canonical_sources","current_state","verified",
+            "failed","unknown","decisions","dependencies","learning",
+            "open_loops","definition_of_done","next_action","proof_target",
+            "team_handoff","cold_restore_answers","source_lineage"
+          ]
+          missing=[k for k in required if k not in p]
+          assert not missing, f"missing Project Intelligence fields: {missing}"
+          assert p["status"] == "REBUILDABLE_DERIVED_PROJECTION"
+          assert p["distillation_rule"]
+          assert p["team_handoff"]["assignment"] == p["next_action"]
+          print("PROJECT_INTELLIGENCE_SCHEMA=PASS")
+          print("PROJECT_INTELLIGENCE_RECONSTRUCTION=PASS")
+          print("PROJECT_INTELLIGENCE_NEXT_ACTION="+str(p["next_action"]))
+          PY
