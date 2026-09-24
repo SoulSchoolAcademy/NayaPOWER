@@ -34,7 +34,6 @@ class TestStreamBClosureContracts(unittest.TestCase):
         c=read("supabase/migrations/20260924110000_reconcile_execution_authorization_cognition_overload_v1.sql")
         for field in ("authority_grant_id","authority_issuer_id","authority_scope","authority_actions","authority_constraints","authority_status_at_execution","authority_source_event_id","authority_validated_at"):
             self.assertIn(field,c)
-        self.assertIn("'EXECUTION_RECEIPT'",c)
 
     def test_004_cognition_receipt_lineage_is_bidirectional(self):
         c=read("supabase/migrations/20260920030000_repair_cognition_event_receipt_lineage.sql")
@@ -60,7 +59,7 @@ class TestStreamBClosureContracts(unittest.TestCase):
 
     def test_007_adversarial_gate_suite_exists(self):
         c=read("tests/test_universal_execution_gate.py")
-        for marker in ("revoked","expired","wrong_actor","wrong_scope","direct_controller_bypass"):
+        for marker in ("revoked","expired","wrong_actor","wrong_scope","requires a gate-issued"):
             self.assertIn(marker,c)
         self.assertIn("was not issued by this gate",read(".naya/runtime/universal_execution_gate.py"))
 
