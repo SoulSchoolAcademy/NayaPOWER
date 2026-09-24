@@ -1,0 +1,23 @@
+name: Verify Why Naya Explanation
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "naya3/system54-current-truth-20260923"
+permissions:
+  contents: read
+jobs:
+  why-naya:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Hub dependencies
+        working-directory: NAYANET/HUB
+        run: npm ci
+      - name: Typecheck Hub
+        working-directory: NAYANET/HUB
+        run: npx tsc --noEmit
+      - name: Build Hub projection
+        working-directory: NAYANET/HUB
+        run: npx vite build
