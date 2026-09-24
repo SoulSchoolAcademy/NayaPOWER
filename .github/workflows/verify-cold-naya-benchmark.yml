@@ -1,0 +1,40 @@
+name: Verify Cold-Naya Benchmark
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "naya3/system54-current-truth-20260923"
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Smoke test
+        run: node scripts/test-cold-naya-benchmark.mjs
+      - name: Run cold-Naya boot benchmark
+        run: node scripts/cold-naya-benchmark.mjs
+      - name: Validate benchmark artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('cold-naya-benchmark.json','utf8'));
+          if(p.schema!=='NAYANET_COLD_NAYA_BOOT_BENCHMARK_V1') throw new Error('SCHEMA_MISMATCH');
+          if(p.status!=='VERIFIED') throw new Error('STATUS_NOT_VERIFIED');
+          if(p.archaeology.conversation_sources_read!==0) throw new Error('CONVERSATION_DEPENDENCY');
+          if(p.archaeology.canonical_sources_read!==p.archaeology.canonical_sources_required) throw new Error('INCOMPLETE_CANONICAL_RESTORE');
+          if(p.reconstruction.single_next_action!==true) throw new Error('NEXT_ACTION_NOT_RECONSTRUCTED');
+          if(p.human_reasoning_accuracy!=='NOT_MEASURED') throw new Error('OVERCLAIM_REASONING');
+          console.log(JSON.stringify(p,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cold-naya-benchmark-${{ github.sha }}
+          path: cold-naya-benchmark.json
+          if-no-files-found: error
