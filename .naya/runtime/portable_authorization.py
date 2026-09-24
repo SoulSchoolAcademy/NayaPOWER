@@ -92,6 +92,9 @@ RELEASE_ACTION_TYPES = BOUNDARY.RELEASE_ACTION_TYPES
 RELEASE_ENVIRONMENTS = BOUNDARY.RELEASE_ENVIRONMENTS
 REPO_MUTATION_ACTION_TYPES = BOUNDARY.REPO_MUTATION_ACTION_TYPES
 REPO_WRITE_PERMISSION = BOUNDARY.REPO_WRITE_PERMISSION
+INTELLIGENCE_COMMIT_ACTION_TYPE = "INTELLIGENCE_COMMIT"
+INTELLIGENCE_COMMIT_PERMISSION = "intelligence_commit"
+INTELLIGENCE_COMMIT_TARGET = "NayaNET"
 BOUNDARY_DECISION = BOUNDARY.BoundaryDecision
 DEPLOY_TARGET = BOUNDARY.deploy_target
 REPO_MUTATION_TARGET = BOUNDARY.repo_mutation_target
@@ -183,6 +186,7 @@ def issue_portable_authorization(
     *,
     execution_authorization: Any,
     registry: Any,
+    gate: Any,
     commit_sha: str,
     private_key_hex: str,
     repository: str = DEFAULT_REPOSITORY,
@@ -206,6 +210,11 @@ def issue_portable_authorization(
         raise ValueError("issued_at must be a valid ISO timestamp")
     if execution_authorization is None:
         raise ValueError("a gate-issued ExecutionAuthorization is required")
+    if gate is None:
+        raise ValueError("the UniversalExecutionGate that issued the authorization is required")
+    gate_ok, gate_reasons = gate.verify(execution_authorization, now=issued_at)
+    if not gate_ok:
+        raise ValueError("execution authorization was not issued by the supplied UniversalExecutionGate: " + "; ".join(gate_reasons))
     if execution_authorization.governance_state != GovernanceState.AUTHORIZED.value:
         raise ValueError("execution authorization is not AUTHORIZED")
     if int(expires_in_seconds) <= 0 or int(expires_in_seconds) > MAX_ARTIFACT_TTL_MINUTES * 60:
@@ -239,6 +248,15 @@ def issue_portable_authorization(
             raise ValueError("credential is not bound to this exact change-set")
         if execution_authorization.permission != REPO_WRITE_PERMISSION:
             raise ValueError("repo-mutation artifact requires the repo_write permission")
+        environment = deployment_surface = ""
+    elif action_type == INTELLIGENCE_COMMIT_ACTION_TYPE:
+        if commit_sha == "":
+            raise ValueError("intelligence-commit artifact requires the exact source commit SHA")
+        if execution_authorization.target != INTELLIGENCE_COMMIT_TARGET:
+            raise ValueError("credential is not bound to the canonical NayaNET intelligence target")
+        if execution_authorization.permission != INTELLIGENCE_COMMIT_PERMISSION:
+            raise ValueError("intelligence-commit artifact requires the intelligence_commit permission")
+        paths = []
         environment = deployment_surface = ""
     elif action_type in RELEASE_ACTION_TYPES:
         if environment not in RELEASE_ENVIRONMENTS:
@@ -545,6 +563,9 @@ __all__ = [
     "BOUNDARY_DECISION",
     "DEPLOY_PERMISSION",
     "REPO_WRITE_PERMISSION",
+    "INTELLIGENCE_COMMIT_ACTION_TYPE",
+    "INTELLIGENCE_COMMIT_PERMISSION",
+    "INTELLIGENCE_COMMIT_TARGET",
     "DEFAULT_REPOSITORY",
     "load_verifier_public_key",
     "generate_keypair",
