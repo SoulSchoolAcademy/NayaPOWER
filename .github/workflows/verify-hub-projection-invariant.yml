@@ -1,0 +1,33 @@
+name: Verify Hub Projection Invariant
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "naya3/system54-current-truth-20260923"
+permissions:
+  contents: read
+jobs:
+  projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Verify projection invariant
+        run: node scripts/verify-hub-projection-invariant.mjs
+      - name: Validate artifact
+        run: |
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const p=JSON.parse(fs.readFileSync('hub-projection-invariant.json','utf8'));
+          if(p.status!=='VERIFIED') throw new Error('STATUS_NOT_VERIFIED');
+          if(p.scope!=='SOURCE_ARCHITECTURE_BOUNDED') throw new Error('SCOPE_MISMATCH');
+          if(p.checks.hub_app_direct_write_count!==0) throw new Error('DIRECT_HUB_WRITE_DETECTED');
+          console.log(JSON.stringify(p,null,2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: hub-projection-invariant-${{ github.sha }}
+          path: hub-projection-invariant.json
+          if-no-files-found: error
