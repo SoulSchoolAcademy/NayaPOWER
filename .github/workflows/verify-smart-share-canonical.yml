@@ -131,8 +131,8 @@ jobs:
           if(root.welcome) throw Error('WELCOME_FRONT_DOOR_PRESENT_ON_CANONICAL_HUB');
 
           const sourceSelection=await ap.evaluate(async()=>{
-            const block=document.querySelector('.block[data-real-smart-note]')||document.querySelector('.block');
-            const title=String(block?.querySelector('h3')?.textContent||'').replace(/\\s+/g,' ').trim();
+            const blocks=[...document.querySelectorAll('.block')];
+            const block=blocks.find(b=>b.querySelector('[data-c4-kind="share-intel"]'))||blocks.find(b=>b.matches('.block[data-real-smart-note]'))||blocks[0];
             if(!title) throw new Error('SMART_SHARE_HUB_BLOCK_TITLE_MISSING');
             const created=await window.NayaAssistantRuntime.record({title,content:'Canonical Smart Share proof source bound to the protected Hub intelligence title.',source:'nayanet-smart-share-proof',type:'INSIGHT',classification:'observation',status:'active',tags:['smart-share','governed-proof','hub-source-binding']});
             const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:50,before:null});
