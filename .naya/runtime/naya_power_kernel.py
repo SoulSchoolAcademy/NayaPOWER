@@ -30,7 +30,7 @@ from governance_kernel import (  # noqa: E402
     load_authority_registry,
     resolve_authority,
 )
-from SUPERBRAIN.naya_power_decision_calculus import (  # noqa: E402
+from SUPERBRAIN.ARCHITECTURE.engineering.naya_power_decision_calculus import (  # noqa: E402
     Candidate as CalculusCandidate,
     EVIDENCE_RANK as CALCULUS_EVIDENCE_RANK,
     decision as calculate_decision,
