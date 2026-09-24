@@ -11,7 +11,7 @@ if(authStart<0)throw new Error("AUTH_GATE_NOT_FOUND");
 const healthStart=source.indexOf("async function health(",commitStart);
 if(helperStart<0||commitStart<0||healthStart<0||helperStart>commitStart)throw new Error("EXTRACTION_SEAM_NOT_FOUND");
 const extracted="const PROJECT=\"NayaNET\";\n"+source.slice(helperStart,commitStart)+
-"\nasync function requireGovernedIntelligenceAuthorization(){return globalThis.__auth;}\n"+
+"\nasync function requireGovernedIntelligenceAuthorization(client,userId,body){const a=body.execution_authorization;if(!a||a.actor_id!==userId)throw new Error("EXECUTION_AUTHORIZATION_REJECTED");return a;}\n"+
 source.slice(commitStart,healthStart)+
 "\nmodule.exports={verifyV36PortableArtifact,commitIntelligence};\n";
 const js=extracted.replace(/:\s*(unknown|string|any|Uint8Array|Promise<any>|Promise<string>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"").replace(".match(/../g)!"," .match(/../g)");
