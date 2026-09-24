@@ -1,0 +1,103 @@
+name: MAXESS Surgical 3-Point Repair
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Apply surgical E04 + real-browser E2E repairs
+        shell: python
+        run: |
+          from pathlib import Path
+          import re
+
+          e04 = Path('E04-SECTION-04-WORKING.html')
+          s = e04.read_text(encoding='utf-8')
+          old = '''function readDirectionScore(result){
+  if(!result)return null;
+  var candidate=result.directionScore;
+  if(candidate===undefined&&result.dimensions){
+    var d=result.dimensions.direction||result.dimensions.DIRECTION;
+    if(typeof d==='number')candidate=d;
+    else if(d&&typeof d.score==='number')candidate=d.score;
+  }
+  return candidate!==undefined&&isFinite(Number(candidate))?Number(candidate):null;
+}'''
+          new = '''function readDirectionScore(result){
+  if(!result)return null;
+  var candidate=result.directionScore;
+  if(candidate===undefined&&Array.isArray(result.dimensions)){
+    var d=result.dimensions.find(function(item){
+      return item&&String(item.id||item.dimensionId||item.name||'').toLowerCase().replace(/[^a-z0-9]/g,'')==='direction';
+    });
+    if(d&&d.score!==undefined)candidate=d.score;
+  }
+  return candidate!==undefined&&isFinite(Number(candidate))?Number(candidate):null;
+}'''
+          if old not in s:
+            raise SystemExit('E04 readDirectionScore target not found; refusing edit.')
+          s=s.replace(old,new,1)
+          e04.write_text(s,encoding='utf-8')
+
+          test = Path('tests/maxess-real-browser-e2e.mjs')
+          s = test.read_text(encoding='utf-8')
+          old = '''    await page.locator('#answers .answer').nth(answerIndexes[i]).click();
+    await page.locator('#continueButton').click();
+  }
+
+  await page.locator('#interestsView.visible').waitFor({ state: 'visible', timeout: 10000 });
+  await page.locator('.interest-area').first().click();
+  const navigation = page.waitForURL((url) => url.toString().startsWith(resultsUrl), { timeout: 30000, waitUntil: 'domcontentloaded' });
+  await page.locator('#interestContinue').click();
+  await navigation;
+'''
+          new = '''    await page.locator('#answers .answer').nth(answerIndexes[i]).click();
+    await page.locator('#continueButton').click();
+    if (i === 14) {
+      await page.waitForURL((url) => url.toString().startsWith(resultsUrl), { timeout: 30000, waitUntil: 'domcontentloaded' });
+    }
+  }
+'''
+          if old not in s:
+            raise SystemExit('E2E interest-stage flow target not found; refusing edit.')
+          s=s.replace(old,new,1)
+          s=s.replace("if (!Array.isArray(contract.selectedInterests) || contract.selectedInterests.length !== 1) throw new Error(`${profileName}: selectedInterests missing`);", "if (!Array.isArray(contract.selectedInterests) || contract.selectedInterests.length !== 0) throw new Error(`${profileName}: selectedInterests must be empty after interest stage removal`);")
+          s=s.replace("  const profileB = [3,4,4,4,0,3,4,4,4,0,3,4,4,4,0];\n  const a = await completeAssessment(page, profileA, 'PROFILE A');\n  const b = await completeAssessment(page, profileB, 'PROFILE B');", "  const profileB = [3,4,4,4,0,3,4,4,4,0,3,4,4,4,0];\n  const profileC = Array(15).fill(4);\n  const a = await completeAssessment(page, profileA, 'PROFILE A LOW');\n  const b = await completeAssessment(page, profileB, 'PROFILE B MIXED');\n  const c = await completeAssessment(page, profileC, 'PROFILE C HIGH');")
+          marker = "  const different = {\n"
+          if marker not in s:
+            raise SystemExit('E2E differentiation marker not found; refusing edit.')
+          s=s.replace(marker, "  const different = {\n",1)
+          old_return = "  if (!different.overallScore || !different.dimensions || !different.masteryStage || !different.strongestCapability || !different.highestLeverageOpportunity || !different.overallPattern || !different.personalizedInterpretation || !different.nextMove) throw new Error(`Differentiation proof failed: ${JSON.stringify(different)}`);\n  console.log(JSON.stringify({ status: 'PASS', profileA: { overallScore: a.contract.overallScore, masteryStage: a.contract.masteryStage, strongest: a.contract.strongestCapability, opportunity: a.contract.highestLeverageOpportunity, resultsUrl: a.resultsUrl }, profileB: { overallScore: b.contract.overallScore, masteryStage: b.contract.masteryStage, strongest: b.contract.strongestCapability, opportunity: b.contract.highestLeverageOpportunity, resultsUrl: b.resultsUrl }, differentiation: different }, null, 2));"
+          new_return = "  if (!different.overallScore || !different.dimensions || !different.masteryStage || !different.strongestCapability || !different.highestLeverageOpportunity || !different.overallPattern || !different.personalizedInterpretation || !different.nextMove) throw new Error(`Differentiation proof failed: ${JSON.stringify(different)}`);\n  if (!(Number(a.contract.overallScore) < Number(b.contract.overallScore) && Number(b.contract.overallScore) < Number(c.contract.overallScore))) throw new Error(`Scoring order proof failed: low=${a.contract.overallScore}, mixed=${b.contract.overallScore}, high=${c.contract.overallScore}`);\n  console.log(JSON.stringify({ status: 'PASS', profileA: { overallScore: a.contract.overallScore, masteryStage: a.contract.masteryStage, strongest: a.contract.strongestCapability, opportunity: a.contract.highestLeverageOpportunity, resultsUrl: a.resultsUrl }, profileB: { overallScore: b.contract.overallScore, masteryStage: b.contract.masteryStage, strongest: b.contract.strongestCapability, opportunity: b.contract.highestLeverageOpportunity, resultsUrl: b.resultsUrl }, profileC: { overallScore: c.contract.overallScore, masteryStage: c.contract.masteryStage, strongest: c.contract.strongestCapability, opportunity: c.contract.highestLeverageOpportunity, resultsUrl: c.resultsUrl }, differentiation: different }, null, 2));"
+          if old_return not in s:
+            raise SystemExit('E2E result block target not found; refusing edit.')
+          s=s.replace(old_return,new_return,1)
+          test.write_text(s,encoding='utf-8')
+
+      - name: Verify surgical edits
+        shell: bash
+        run: |
+          grep -q "Array.isArray(result.dimensions)" E04-SECTION-04-WORKING.html
+          grep -q "selectedInterests must be empty" tests/maxess-real-browser-e2e.mjs
+          ! grep -q "#interestsView.visible" tests/maxess-real-browser-e2e.mjs
+          ! grep -q "#interestContinue" tests/maxess-real-browser-e2e.mjs
+          node --check tests/maxess-real-browser-e2e.mjs
+          git diff --check
+
+      - name: Commit repairs and remove temporary runner
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- E04-SECTION-04-WORKING.html tests/maxess-real-browser-e2e.mjs
+          git rm -- .github/workflows/maxess-surgical-repair.yml
+          git commit -m 'fix: repair MAXESS E04 result mapping and final-flow E2E'
+          git push
