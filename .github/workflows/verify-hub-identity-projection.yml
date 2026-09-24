@@ -33,8 +33,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Run Hub identity and control-plane regression tests
-        run: python -m unittest tests/test_hub_identity_projection.py tests/test_control_plane_freshness.py -v
+      - name: Run Hub identity regression tests
+        run: python tests/test_hub_identity_projection.py -v
+      - name: Run control-plane freshness regression tests
+        run: python tests/test_control_plane_freshness.py -v
       - name: Resolve authority and validate committed projections
         run: python .naya/runtime/hub_identity_projection.py check --source-ref origin/main
       - name: Run full control-plane freshness audit

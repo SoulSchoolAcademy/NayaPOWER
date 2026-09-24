@@ -84,5 +84,11 @@
     "single_commit_boundary": true,
     "fail_closed": true,
     "protected_source_must_remain_unchanged": true
+  },
+  "file_hash": {
+    "algorithm": "sha256",
+    "encoding": "utf-8",
+    "newline_normalization": "LF",
+    "representation": "normalized_text_bytes"
   }
 }

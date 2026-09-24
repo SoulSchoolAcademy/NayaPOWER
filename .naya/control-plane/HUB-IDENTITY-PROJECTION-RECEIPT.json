@@ -3,14 +3,20 @@
   "status": "VERIFIED",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "source_ref": "origin/main",
-  "source_commit": "71dd24ba4cd363be4f338f1242bcc9c0ef5189c9",
+  "source_commit": "13d33c6f491a3172579b02412c7db7fb8867fd0a",
   "manifest_path": ".naya/control-plane/HUB-PRESERVATION.json",
   "manifest_blob": "64359fa7439cebfa6e4ec788f8ab5a35bbec9aba",
   "hub_path": "NAYANET/HUB/index.html",
   "hub_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
+  "file_hash": {
+    "algorithm": "sha256",
+    "encoding": "utf-8",
+    "newline_normalization": "LF",
+    "representation": "normalized_text_bytes"
+  },
   "contract_path": ".naya/contracts/HUB-IDENTITY-PROJECTION-V1.json",
   "generator": ".naya/runtime/hub_identity_projection.py",
-  "generated_at": "2026-09-24T16:48:33.355853+00:00",
+  "generated_at": "2026-09-24T16:51:45.859507+00:00",
   "destinations": [
     {
       "id": "STATE_HUB_PATH",
@@ -59,10 +65,10 @@
     }
   ],
   "file_sha256": {
-    ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md": "ca92b0f557d3f89c764ef62bd759ea84f8de0b2842031dd7bd789187e857ae63",
-    ".naya/control-plane/BATON.json": "45e265fb076f85642cc817f05a3e8781f9ebb2f9dfeca70f576c66bd47e3f654",
-    ".naya/control-plane/MAP.json": "ad1340011da77ebea9fd9d44236c314b23afaab599109ba832327ad5f85d7681",
-    ".naya/control-plane/STATE.json": "d82d199632f002fbc81274cd8d39e90dc5fb0442e608e55d267eb1c848cd6cff"
+    ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md": "91626404dc76f1a17720fcad2e4ea6486e6fdc6669c793b0251a574b64e1e29b",
+    ".naya/control-plane/BATON.json": "8d59b61d65da4f88206e02b213e97688782332189038d3f704fa9eb1b89f31e0",
+    ".naya/control-plane/MAP.json": "d894a5cd9e8a26ba1f1c387665079fde098ab4065997b98924fa926873893149",
+    ".naya/control-plane/STATE.json": "af0bf237b1e9c746e268f89c8e2a349b553444de562ed13dc2e8341f83ac64f9"
   },
   "protected_sources": [
     {

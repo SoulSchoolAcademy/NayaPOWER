@@ -2,6 +2,7 @@ import copy
 import importlib.util
 import json
 import subprocess
+import tempfile
 import unittest
 from unittest import mock
 from pathlib import Path
@@ -47,6 +48,28 @@ class HubIdentityProjectionTests(unittest.TestCase):
         self.assertEqual(self.authority["hub_sha"], expected)
         self.assertEqual(self.authority["hub_path"], "NAYANET/HUB/index.html")
         self.assertEqual(self.authority["manifest"]["status"], "ACTIVE")
+
+    def test_contract_declares_canonical_file_hash(self):
+        self.assertEqual(self.contract["file_hash"], MODULE.FILE_HASH_SEMANTICS)
+
+    def test_incomplete_receipt_fails(self):
+        receipt = MODULE.load_json(MODULE.RECEIPT_PATH)
+        del receipt["file_hash"]
+        with self.assertRaisesRegex(MODULE.ProjectionError, "PROJECTION_RECEIPT_HASH_SEMANTICS_MISMATCH"):
+            MODULE.validate_receipt(ROOT, self.authority, self.contract, receipt)
+
+    def test_altered_protected_source_fails(self):
+        real_git = MODULE.git
+
+        def altered_git(root, *args):
+            result = real_git(root, *args)
+            if args[:2] == ("rev-parse", f"HEAD:{self.authority['hub_path']}"):
+                return "0" * 40
+            return result
+
+        with mock.patch.object(MODULE, "git", side_effect=altered_git):
+            with self.assertRaisesRegex(MODULE.ProjectionError, "PROJECTED_HUB_SOURCE_CHANGED"):
+                MODULE.validate_projection(ROOT, self.authority, self.contract)
 
     def test_projection_updates_every_required_destination(self):
         projected = self.projected()
@@ -160,6 +183,14 @@ class HubIdentityProjectionTests(unittest.TestCase):
                 MODULE.apply_projection(ROOT, "origin/main")
         for path in paths:
             self.assertEqual(path.read_bytes(), before[path])
+
+    def test_file_hash_is_line_ending_independent(self):
+        with tempfile.TemporaryDirectory() as directory:
+            lf = Path(directory) / "lf.txt"
+            crlf = Path(directory) / "crlf.txt"
+            lf.write_bytes(b"one\ntwo\n")
+            crlf.write_bytes(b"one\r\ntwo\r\n")
+            self.assertEqual(MODULE.file_sha(lf), MODULE.file_sha(crlf))
 
     def test_baton_builder_accepts_explicit_source_identity(self):
         candidate = BATON.build_baton(
