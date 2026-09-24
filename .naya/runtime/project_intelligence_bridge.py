@@ -9,6 +9,7 @@ from uuid import NAMESPACE_URL, uuid5
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/runtime"))
 import project_intelligence_reconstruction as pir
+from universal_intelligence_envelope import UniversalIntelligenceEnvelope
 import next_action_handoff as nah
 CONTEXT=ROOT/".naya/project-intelligence/PROJECT-INTELLIGENCE-OPERATING-CONTEXT.json"
 STATE=ROOT/".naya/control-plane/STATE.json"
@@ -19,6 +20,27 @@ SOURCES=[".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".na
 
 def digest(b): return hashlib.sha256(b).hexdigest()
 def head(): return subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+
+def accept_universal_envelope(envelope: dict, packet_payload: dict) -> dict:
+    """Adapt one validated universal envelope into the existing bridge packet.
+
+    This is an adapter only. It does not persist, authorize, index, or create
+    another intelligence store. The existing bridge receiver remains the
+    consequential boundary.
+    """
+    parsed = UniversalIntelligenceEnvelope.from_mapping(envelope)
+    packet_copy = json.loads(json.dumps(packet_payload))
+    intelligence = list(packet_copy.get("intelligence") or [])
+    intelligence.append({
+        "object_id": "envelope:" + parsed.envelope_id,
+        "operation": "UPSERT",
+        "source_path": parsed.provenance.get("source_path") or parsed.provenance.get("source_id"),
+        "content_sha256": parsed.provenance.get("content_sha256"),
+        "content": parsed.receiver_payload(),
+    })
+    packet_copy["intelligence"] = intelligence
+    packet_copy["universal_envelope_ids"] = list(packet_copy.get("universal_envelope_ids") or []) + [parsed.envelope_id]
+    return packet_copy
 
 def packet():
     h=head(); now=subprocess.check_output(["git","show","-s","--format=%cI",h],cwd=ROOT,text=True).strip().replace("+00:00","Z")
