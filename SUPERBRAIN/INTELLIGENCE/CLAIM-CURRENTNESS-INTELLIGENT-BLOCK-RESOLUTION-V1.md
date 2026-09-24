@@ -43,7 +43,7 @@ Blocks with different subjects or incompatible applicable scope are not candidat
 A Block MAY resolve as **CURRENT** only when all required conditions hold:
 
 1. It is a canonical Intelligent Block.
-2. `understanding_state` is not `CANDIDATE`, `REJECTED`, or `SUPERSEDED`.
+2. Its lifecycle is not `SUPERSEDED` or otherwise explicitly invalid/rejected, and `understanding_state` is not `CANDIDATE` or `REJECTED`. (The live schema uses the top-level `status` for `SUPERSEDED`.)
 3. `content.truth.state == VERIFIED`.
 4. `content.truth.conflicts` is empty or absent.
 5. `superseded_by_block_id` is null.
@@ -52,7 +52,7 @@ A Block MAY resolve as **CURRENT** only when all required conditions hold:
    - `valid_until > evaluation_time` when present.
 7. Its applicable scope matches the requested context.
 8. It has source lineage (`source_event_ids`) and evidence/provenance sufficient to explain the claim.
-9. It is not explicitly invalidated by a later canonical relationship or lifecycle state.
+9. It is not explicitly invalidated by an existing canonical relationship or lifecycle state.
 
 The contract intentionally does **not** use `updated_at`, confidence, Activity status, or recency as proof of currentness.
 
@@ -61,7 +61,7 @@ The contract intentionally does **not** use `updated_at`, confidence, Activity s
 For the same subject/context:
 
 1. Exclude superseded, expired, invalid, conflicted, and ineligible Blocks.
-2. Prefer the Block that explicitly supersedes another eligible Block.
+2. Follow explicit successor/supersession lineage when it exists; a superseding successor is eligible only after the superseded predecessor is excluded.
 3. If more than one independent eligible Block remains and their claims are materially different, return **AMBIGUOUS/CONFLICTED** — never guess from recency.
 4. If multiple eligible Blocks carry the same meaning/version lineage, retain the canonical lineage and do not manufacture duplicates.
 5. If no eligible Block remains, return **NO_CURRENT_CLAIM**.
