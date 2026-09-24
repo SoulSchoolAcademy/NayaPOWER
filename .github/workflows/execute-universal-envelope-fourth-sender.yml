@@ -16,12 +16,17 @@ jobs:
     env:
       SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
       SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUNTIME_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
       NAYA_EXISTING_SPACE_ID: 04ee4dc8-bc73-47df-a1de-162570f6a56e
       PROOF_PATH: universal-envelope-fourth-sender-proof.json
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: 20}
+      - name: Install Playwright
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
       - name: Execute fourth sender proof
         run: node scripts/verify-universal-envelope-fourth-sender.mjs
       - name: Upload proof
