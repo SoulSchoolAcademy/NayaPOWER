@@ -1,0 +1,61 @@
+{
+  "schema": "NAYA_PROJECT_MANIFEST_V1",
+  "project_name": "Naya Project",
+  "repository": "SoulSchoolAcademy/NayaPOWER",
+  "mission": "Enable a fresh Naya to reconstruct, operate, verify, preserve, and continue NayaPOWER.",
+  "north_star": "HIGHEST RESPONSIBLE VERIFIED VALUE",
+  "protected_visual_source": "NAYANET/HUB/index.html",
+  "constitutional_rules": [
+    "CAPABILITY DOES NOT CREATE AUTHORITY",
+    "UNKNOWN != SUCCESS",
+    "BLOCKED != PASS",
+    "NO RETRY WITHOUT NEW INFORMATION",
+    "TRUTH OVER AGREEMENT",
+    "VERIFICATION OVER OPTIMISM",
+    "HUMAN AGENCY REMAINS PRIMARY"
+  ],
+  "source_model": [
+    "canonical events",
+    "smart notes",
+    "decisions",
+    "evidence",
+    "receipts",
+    "learning",
+    "rebuildable derived indexes",
+    "project intelligence projection"
+  ],
+  "required_layers": [
+    "human intent",
+    "governance",
+    "canonical intelligence",
+    "runtime",
+    "persistence",
+    "human operating surface",
+    "verification",
+    "continuity"
+  ],
+  "evidence_levels": [
+    "INTENDED",
+    "IMPLEMENTED",
+    "AUTHORIZED",
+    "EXECUTED",
+    "OBSERVED",
+    "VERIFIED",
+    "RUNTIME-PROVEN",
+    "PRODUCTION-PROVEN"
+  ],
+  "surface_classifications": [
+    "LIVE",
+    "PARTIAL",
+    "DEMO",
+    "STATIC",
+    "MISSING",
+    "BLOCKED"
+  ],
+  "cold_naya_test": {
+    "session_a": "INGEST -> UNDERSTAND -> PERSIST -> VERIFY",
+    "session_b": "FRESH RESTORE -> ACT -> VERIFY -> RECORD",
+    "session_c": "FRESH RESTORE -> DETECT CHANGE -> CONTINUE"
+  },
+  "completion_rule": "Never claim continuity until a fresh session reconstructs state from durable canonical context."
+}
