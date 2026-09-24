@@ -57,3 +57,15 @@ def test_no_claim_of_exhaustive_application_caller_inventory():
         encoding="utf-8"
     )
     assert "cannot honestly be declared exhaustively inventoried" in design
+
+
+def test_new_convergence_migration_fail_closes_legacy_six_argument_capture():
+    sql = _migration("20260924230000_converge_intelligence_capture_authority_v1.sql")
+    assert "CANONICAL_EXECUTION_AUTHORIZATION_REQUIRED" in sql
+    assert "p_action = 'intelligence.capture'" in sql
+    marker = "if p_action = 'intelligence.capture' then"
+    start = sql.index(marker)
+    end = sql.index("elsif v_authority_grant_id is not null then", start)
+    block = sql[start:end]
+    assert "nayanet_validate_authority_grant" not in block
+    assert "raise exception 'CANONICAL_EXECUTION_AUTHORIZATION_REQUIRED';" in block
