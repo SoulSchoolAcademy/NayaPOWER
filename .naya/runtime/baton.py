@@ -26,12 +26,14 @@ def live_head() -> str:
 def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
-def build_baton() -> dict[str, Any]:
+def build_baton(source_commit: str | None = None, hub_source_sha: str | None = None, generated_at: str | None = None) -> dict[str, Any]:
     state = load(PATHS["state"])
     blocks = load(PATHS["blocks"])
     map_data = load(PATHS["map"])
     proof = load(PATHS["proof"])
     active = blocks["active_block"]
+    snapshot_head = source_commit or live_head()
+    snapshot_hub_sha = hub_source_sha or subprocess.check_output(["git", "rev-parse", "HEAD:NAYANET/HUB/index.html"], cwd=ROOT, text=True).strip()
 
     if state.get("repository") != "SoulSchoolAcademy/NayaPOWER":
         raise RuntimeError("CANONICAL_REPOSITORY_MISMATCH")
@@ -65,7 +67,7 @@ def build_baton() -> dict[str, Any]:
         "status": "CANONICAL",
         "repository": state["repository"],
         "identity": state["repository"],
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at or datetime.now(timezone.utc).isoformat(),
         "source_of_truth": {
             "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
             "live_state": ".naya/control-plane/STATE.json",
@@ -75,13 +77,13 @@ def build_baton() -> dict[str, Any]:
             "history": "NAYA/ACTIVITY/ and execution receipts",
         },
         "source_snapshot": {
-            "live_head": live_head(),
+            "live_head": snapshot_head,
             "state_status": state.get("status"),
             "map_status": map_data.get("status"),
             "proof_status": proof.get("status"),
             "state_block": state.get("current_block"),
             "block_next_action": next_action,
-            "canonical_hub_source_sha": subprocess.check_output(["git","rev-parse","HEAD:NAYANET/HUB/index.html"],cwd=ROOT,text=True).strip(),
+            "canonical_hub_source_sha": snapshot_hub_sha,
         },
         "current_state": {
             "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -145,7 +147,7 @@ def build_baton() -> dict[str, Any]:
     }
     return baton
 
-def validate_baton(baton: dict[str, Any]) -> None:
+def validate_baton(baton: dict[str, Any], source_commit: str | None = None, hub_source_sha: str | None = None) -> None:
     state = load(PATHS["state"])
     blocks = load(PATHS["blocks"])
     map_data = load(PATHS["map"])
@@ -185,11 +187,14 @@ def validate_baton(baton: dict[str, Any]) -> None:
     assert n["action"] == active["next_action"] == state["single_next_action"], "BATON_NEXT_ACTION_MISMATCH"
     assert n["source"] == ".naya/control-plane/BLOCKS.json", "BATON_NEXT_ACTION_SOURCE_MISMATCH"
     assert baton["source_snapshot"]["proof_status"] == proof.get("status"), "BATON_PROOF_STATUS_MISMATCH"
-    assert baton["source_snapshot"].get("canonical_hub_source_sha") == subprocess.check_output(["git","rev-parse","HEAD:NAYANET/HUB/index.html"],cwd=ROOT,text=True).strip(), "BATON_HUB_SOURCE_MISMATCH"
+    if source_commit is not None:
+        assert baton["source_snapshot"].get("live_head") == source_commit, "BATON_SOURCE_COMMIT_MISMATCH"
+    expected_hub_sha = hub_source_sha or subprocess.check_output(["git","rev-parse","HEAD:NAYANET/HUB/index.html"],cwd=ROOT,text=True).strip()
+    assert baton["source_snapshot"].get("canonical_hub_source_sha") == expected_hub_sha, "BATON_HUB_SOURCE_MISMATCH"
 
-def write_baton() -> dict[str, Any]:
-    baton = build_baton()
-    validate_baton(baton)
+def write_baton(source_commit: str | None = None, hub_source_sha: str | None = None, generated_at: str | None = None, candidate: dict[str, Any] | None = None) -> dict[str, Any]:
+    baton = candidate or build_baton(source_commit=source_commit, hub_source_sha=hub_source_sha, generated_at=generated_at)
+    validate_baton(baton, source_commit=source_commit, hub_source_sha=hub_source_sha)
     PATHS["baton"].write_text(json.dumps(baton, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     return baton
 

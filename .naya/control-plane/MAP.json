@@ -24,7 +24,7 @@
     "intelligent_hub_north_star": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "intelligent_hub_visual_structural_contract": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
     "canonical_hub_path": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "ddffaf5a6ac5eccbca8d8a6c4b76ff26d3b70058"
+    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
@@ -64,7 +64,7 @@
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
     "first_feature": "Smart Share",
-    "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
+    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
@@ -224,7 +224,8 @@
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
   "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-  "current_next_action": {"status": "BLOCKED",
+  "current_next_action": {
+    "status": "BLOCKED",
     "proof_scope": "Verified bounded Smart Note/intelligence_commit promotion; legacy 88-event cohort dispositioned HISTORICAL_ONLY without database mutation."
   },
   "legacy_cognition_disposition": {
@@ -233,5 +234,5 @@
     "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
     "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   },
-  "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
+  "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
 }

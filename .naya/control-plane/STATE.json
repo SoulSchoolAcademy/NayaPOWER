@@ -35,7 +35,7 @@
     "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
+    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
   },
   "operational_truth_model": {
     "canonical_state": ".naya/control-plane/STATE.json",

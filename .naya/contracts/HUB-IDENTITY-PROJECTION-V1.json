@@ -1,0 +1,88 @@
+{
+  "$schema": "naya/hub-identity-projection/v1",
+  "status": "CANONICAL",
+  "authority": {
+    "manifest": ".naya/control-plane/HUB-PRESERVATION.json",
+    "hub_path": "NAYANET/HUB/index.html",
+    "source_ref": "origin/main"
+  },
+  "destinations": [
+    {
+      "id": "STATE_HUB_PATH",
+      "file": ".naya/control-plane/STATE.json",
+      "pointer": "/hub_pre_execution_gate/canonical_hub",
+      "value_kind": "hub_path",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "STATE_HUB_SHA",
+      "file": ".naya/control-plane/STATE.json",
+      "pointer": "/hub_pre_execution_gate/canonical_hub_source_sha",
+      "value_kind": "hub_sha",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "MAP_AUTHORITY_PATH",
+      "file": ".naya/control-plane/MAP.json",
+      "pointer": "/authority/canonical_hub_path",
+      "value_kind": "hub_path",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "MAP_AUTHORITY_SHA",
+      "file": ".naya/control-plane/MAP.json",
+      "pointer": "/authority/canonical_hub_source_sha",
+      "value_kind": "hub_sha",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "MAP_PRE_EXECUTION_PATH",
+      "file": ".naya/control-plane/MAP.json",
+      "pointer": "/intelligent_hub_pre_execution/canonical_hub",
+      "value_kind": "hub_path",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "MAP_PRE_EXECUTION_SHA",
+      "file": ".naya/control-plane/MAP.json",
+      "pointer": "/intelligent_hub_pre_execution/canonical_hub_source_sha",
+      "value_kind": "hub_sha",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "MAP_TOP_LEVEL_SHA",
+      "file": ".naya/control-plane/MAP.json",
+      "pointer": "/canonical_hub_source_sha",
+      "value_kind": "hub_sha",
+      "producer": "derived_projection"
+    },
+    {
+      "id": "BATON_HUB_SHA",
+      "file": ".naya/control-plane/BATON.json",
+      "pointer": "/source_snapshot/canonical_hub_source_sha",
+      "value_kind": "hub_sha",
+      "producer": "existing_baton_builder"
+    },
+    {
+      "id": "TEAM_NAYA_HUB_SHA",
+      "file": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
+      "marker": "SHA: `([0-9a-f]{40})`",
+      "value_kind": "hub_sha",
+      "producer": "derived_projection"
+    }
+  ],
+  "excluded_sources": [
+    "NAYANET/HUB/index.html",
+    ".naya/control-plane/HUB-PRESERVATION.json",
+    ".naya/control-plane/HUB-PRESERVATION-PROOF.json",
+    ".naya/control-plane/PROOF.json",
+    ".naya/TEAM-NAYA/00-CURRENT-HUB-FREEZE-POINT.md",
+    ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md"
+  ],
+  "receipt_path": ".naya/control-plane/HUB-IDENTITY-PROJECTION-RECEIPT.json",
+  "atomicity": {
+    "single_commit_boundary": true,
+    "fail_closed": true,
+    "protected_source_must_remain_unchanged": true
+  }
+}

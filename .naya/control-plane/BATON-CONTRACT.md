@@ -45,6 +45,8 @@ The top-level `identity` is the canonical repository identity and must equal `re
 
 The top-level `evidence` is a non-empty list of read-only pointers to existing canonical proof sources; it does not promote a source or replace its claim state.
 
+`source_snapshot.live_head` identifies the source commit used to derive the BATON projection, not necessarily the later commit that stores the BATON artifact. Freshness validation requires that source commit to remain an ancestor of live HEAD with no unaccounted source-surface changes after it.
+
 ## One-next-action law
 
 The baton MUST expose exactly one executable next action. A vague instruction such as “continue” is invalid.
