@@ -343,3 +343,38 @@ It defines:
 
 This specification is **subordinate to the current constitution, control plane, and specialized subsystem contracts**. It does not change the active Hub mission, create a competing Hub, create a competing intelligence database, or expand authority.
 
+
+
+## 7C. CODA IMPLEMENTATION BOOT + REFERENCE MATERIAL
+
+**`.naya/TEAM-NAYA/CODA-BOOT-ORIENTATION.md`** is the canonical operating contract for Coda, the implementation specialist / builder / closer.
+
+It does not create authority. It teaches a fresh Coda how to reconstruct authority from the existing constitution, control plane, specialized contracts, evidence, and current repository/runtime state.
+
+**`SUPERBRAIN/REFERENCE-MATERIAL-PROMOTION-PROTOCOL.md`** is the canonical lifecycle for long-form source material, including PDFs:
+
+```
+REFERENCE
+   ↓
+INSPECT
+   ↓
+EXTRACT
+   ↓
+NORMALIZE
+   ↓
+VERIFY
+   ↓
+CANONICALIZE
+   ↓
+PROMOTE (when semantically reusable)
+   ↓
+TRACE PROVENANCE
+```
+
+PDFs and other long-form documents are **reference material by default**. They do not become current operational truth, authorization, proof, or canonical intelligence merely by being stored.
+
+The preferred pattern is:
+
+**SOURCE DOCUMENT → VERIFIED EXTRACTION → CANONICAL INTELLIGENCE → PROVENANCE → FUTURE RETRIEVAL**
+
+This preserves deep source material while preventing a document pile from becoming an uncontrolled second memory system.
