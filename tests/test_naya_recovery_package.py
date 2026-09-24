@@ -35,12 +35,14 @@ def test_package_round_trip_is_deterministic_and_tamper_evident() -> None:
         (repository / "hub.html").write_text("<html>fixture</html>\n", encoding="utf-8")
         (repository / "schema.json").write_text('{"type":"object"}\n', encoding="utf-8")
         (repository / "runtime.py").write_text("VALUE = 'restored'\n", encoding="utf-8")
-        hub_sha = module.git_blob_sha(repository / "hub.html")
-        write_json(repository / "state.json", {"hub_sha": hub_sha})
         git(repository, "init")
         git(repository, "remote", "add", "origin", "https://example.invalid/NayaPOWER.git")
         git(repository, "add", ".")
         git(repository, "-c", "user.name=CODA 3", "-c", "user.email=coda3@example.invalid", "commit", "-m", "fixture")
+        hub_sha = git(repository, "rev-parse", "HEAD:hub.html")
+        write_json(repository / "state.json", {"hub_sha": hub_sha})
+        git(repository, "add", "state.json")
+        git(repository, "-c", "user.name=CODA 3", "-c", "user.email=coda3@example.invalid", "commit", "--amend", "--no-edit")
         inventory = {
             "schema": module.INVENTORY_SCHEMA,
             "required_components": [

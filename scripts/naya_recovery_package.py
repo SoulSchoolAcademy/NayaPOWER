@@ -182,7 +182,7 @@ def create_package(
     with tempfile.TemporaryDirectory() as temporary:
         stage = Path(temporary)
         source_archive = stage / "source.zip"
-        run_git(["archive", "--format=zip", f"--output={source_archive}", commit], repository)
+        run_git(["-c", "core.autocrlf=false", "-c", "core.eol=lf", "archive", "--format=zip", f"--output={source_archive}", commit], repository)
         inventory_copy = stage / "inventory.json"
         inventory_copy.write_bytes(inventory_bytes)
         external_checksums, missing_external = stage_external_files(external_paths, stage, inventory)
