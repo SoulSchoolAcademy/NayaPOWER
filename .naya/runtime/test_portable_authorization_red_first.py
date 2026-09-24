@@ -19,12 +19,11 @@ from portable_authorization import (
     INTELLIGENCE_COMMIT_ACTION_TYPE,
     INTELLIGENCE_COMMIT_PERMISSION,
     INTELLIGENCE_COMMIT_TARGET,
-    UniversalExecutionGate,
     issue_portable_authorization,
     generate_keypair,
     verify_portable_authorization,
 )
-from universal_execution_gate import ExecutionAuthorization
+from universal_execution_gate import ExecutionAuthorization, UniversalExecutionGate
 
 
 ISSUED_AT = "2026-01-01T00:00:00+00:00"
