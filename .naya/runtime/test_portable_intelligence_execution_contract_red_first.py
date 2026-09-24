@@ -104,7 +104,8 @@ def envelope(artifact, ordinary):
 
 
 def check(label, artifact, public, registry, ordinary, expected=True, now=NOW, sha=SHA):
-    env = envelope(artifact, ordinary)
+    ordinary_dict = {k: getattr(ordinary, k) for k in ("authority_id","decision_id","action_id","action_type","target","actor_id","scope","permission","governance_state","binding_hash")}
+    env = envelope(artifact, ordinary_dict)
     verified = portable_boundary_intelligence_commit(
         artifact=artifact,
         public_key_hex=public,
@@ -143,12 +144,12 @@ for label, bad, key, reg, _, when, sha in cases:
         env = envelope(artifact, ordinary)
         env.pop("portable_authorization")
         result = validate_execution_envelope(
-            envelope=env, expected_actor_id=ordinary["actor_id"],
+            envelope=env, expected_actor_id=ordinary_dict["actor_id"],
             expected_commit_sha=sha, expected_repository=REPO,
         )
         assert result["allowed"] is False, (label, result)
     else:
-        check(label, bad, key, reg, ordinary, False, when, sha)
+        check(label, bad, key, reg, ordinary_dict, False, when, sha)
 
 mutations = [
     ("tampered field", lambda x: x["authorization"].__setitem__("target", "evil")),
@@ -164,14 +165,14 @@ mutations = [
 for label, mutate in mutations:
     bad = copy.deepcopy(artifact)
     mutate(bad)
-    check(label, bad, public, registry, ordinary, False)
+    check(label, bad, public, registry, ordinary_dict, False)
 
-check("wrong issuer key", artifact, generate_keypair()[1], registry, ordinary, False)
+check("wrong issuer key", artifact, generate_keypair()[1], registry, ordinary_dict, False)
 unsigned = copy.deepcopy(artifact)
 unsigned.pop("signature")
-check("unsigned", unsigned, public, registry, ordinary, False)
-check("wrong source sha", artifact, public, registry, ordinary, False, sha="0" * 40)
-check("expired", artifact, public, registry, ordinary, False, now="2026-01-01T00:01:01+00:00")
+check("unsigned", unsigned, public, registry, ordinary_dict, False)
+check("wrong source sha", artifact, public, registry, ordinary_dict, False, sha="0" * 40)
+check("expired", artifact, public, registry, ordinary_dict, False, now="2026-01-01T00:01:01+00:00")
 
 revoked = Authority(
     authority_id=authority.authority_id,
@@ -183,15 +184,15 @@ revoked = Authority(
     revoked=True,
 )
 revoked_registry = AuthorityRegistry(authorities={authority.authority_id: revoked})
-check("revoked", artifact, public, revoked_registry, ordinary, False, now="2026-01-01T00:00:30+00:00")
-check("replay after expiry", artifact, public, registry, ordinary, False, now="2026-01-01T00:02:00+00:00")
+check("revoked", artifact, public, revoked_registry, ordinary_dict, False, now="2026-01-01T00:00:30+00:00")
+check("replay after expiry", artifact, public, registry, ordinary_dict, False, now="2026-01-01T00:02:00+00:00")
 
 identical_unsigned = copy.deepcopy(artifact)
 identical_unsigned.pop("signature")
-check("identical unsigned credential", identical_unsigned, public, registry, ordinary, False)
+check("identical unsigned credential", identical_unsigned, public, registry, ordinary_dict, False)
 
 # Legitimate request must pass, then its exact artifact must survive receipt persistence.
-check("legitimate credential", artifact, public, registry, ordinary, True)
+check("legitimate credential", artifact, public, registry, ordinary_dict, True)
 from portable_authorization import portable_authorization_artifact_hash
 artifact_hash = portable_authorization_artifact_hash(artifact)
 receipt = {
