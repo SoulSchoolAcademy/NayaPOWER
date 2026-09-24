@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / "NAYANET/HUB/public/assistant-runtime.js"
 SENDER = ROOT / ".github/scripts/universal-envelope-hub-runtime-sender.mjs"
 NODE_TEST = ROOT / ".github/scripts/stream-e-failure-diagnostics.test.mjs"
+RLS_MIGRATION = ROOT / "supabase/migrations/20260924221500_enable_project_intelligence_bridge_owner_read.sql"
 
 def test_runtime_preserves_receiver_diagnostics():
     source = RUNTIME.read_text(encoding="utf-8")
@@ -45,5 +46,14 @@ def test_main_only_authority_and_legacy_isolation_contracts():
     assert "SUPABASE_URL" not in hub
     assert "supabase.co" not in hub
 
+def test_project_intelligence_bridge_owner_read_policy_is_least_privilege():
+    source = RLS_MIGRATION.read_text(encoding="utf-8")
+    for marker in ("enable row level security", "for select", "to authenticated", "auth.uid()", "owner_id"):
+        assert marker in source
+    assert "for insert" not in source
+    assert "for update" not in source
+    assert "for delete" not in source
+
+def test_node_diagnostics_suite_passes():
     result = subprocess.run(["node", "--test", str(NODE_TEST)], cwd=ROOT, text=True, capture_output=True)
     assert result.returncode == 0, result.stdout + result.stderr
