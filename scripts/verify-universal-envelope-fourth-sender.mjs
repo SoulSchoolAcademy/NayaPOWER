@@ -9,8 +9,7 @@ const oidc=async()=>{const r=await fetch(process.env.ACTIONS_ID_TOKEN_REQUEST_UR
 const output='Equivalent meaningful output for the fourth-sender Universal Intelligence Envelope V1 invariance proof.';
 const sender=await signup(),receiver=await signup();if(!sender.body?.user?.id||!sender.body?.access_token)throw Error('SENDER_AUTH_FAILED');if(!receiver.body?.user?.id||!receiver.body?.access_token)throw Error('RECEIVER_AUTH_FAILED');
 const sid=sender.body.user.id,rid=receiver.body.user.id,sk='fourth-mail-'+run+'-'+crypto.randomUUID();
-for(const [t,id] of [[sender.body.access_token,sid],[receiver.body.access_token,rid]]){const j=await rpc(t,'nayanet_join_space',{p_space_id:space});if(j.status!==200)throw Error('SPACE_JOIN_FAILED');}
-for(const [t,a,b] of [[sender.body.access_token,sid,rid],[receiver.body.access_token,rid,sid]]){const j=await rpc(t,'nayanet_save_connection',{p_target_member_id:b,p_space_id:space});if(j.status!==200)throw Error('CONNECTION_FAILED');}
+// Smart Mail's governed send boundary requires recipient identity + explicit authority; connection/space membership is not an authority substitute and is not required for this fourth-sender attack.
 const grant=await rpc(sender.body.access_token,'nayanet_issue_authority_grant',{p_subject_id:sid,p_source_event_id:'human:smart-mail-send:'+sk,p_mission_id:'NayaNET-SMART-MAIL',p_scope:{target:rid,project_id:'NayaNET'},p_actions:['smart_mail_send'],p_constraints:{kind:'direct',no_model_authority:true},p_expires_at:null,p_evidence:{human_action:'explicit authenticated proof authorization',idempotency_key:sk},p_parent_authority:null});
 if(grant.status!==200||!grant.body?.grant_id)throw Error('AUTHORITY_GRANT_FAILED');
 const pre=await rpc(sender.body.access_token,'nayanet_validate_authority_grant',{p_grant_id:grant.body.grant_id,p_action:'smart_mail_send',p_target:rid});if(pre.status!==200||pre.body?.status!=='AUTHORIZED')throw Error('AUTHORITY_PREVALIDATION_FAILED');
