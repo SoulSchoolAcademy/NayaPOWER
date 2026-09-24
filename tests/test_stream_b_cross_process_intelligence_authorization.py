@@ -213,9 +213,9 @@ class TestStreamBCrossProcessIntelligenceAuthorization(unittest.TestCase):
 
     def test_009_revoked_authority_fails_in_fresh_process(self):
         registry,artifact,public_hex=make_fixture(Path(tempfile.mkdtemp()))
-        registry.authorities[artifact["authorization"]["authority_id"]].revoked=True
-        # AuthorityRegistry stores mutable Authority objects in this fixture;
-        # the verifier must consult current authority-of-record, not issuance memory.
+        aid=artifact["authorization"]["authority_id"]
+        registry.authorities[aid]=replace(registry.authorities[aid], revoked=True)
+        # The verifier must consult current authority-of-record, not issuance memory.
         ok,reasons=PORTABLE.verify_portable_authorization(
             artifact=artifact,public_key_hex=public_hex,registry=registry,now=NOW)
         self.assertFalse(ok)
