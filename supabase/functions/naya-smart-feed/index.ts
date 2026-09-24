@@ -134,22 +134,36 @@ Deno.serve(async(req)=>{
   }
 
   if(stream==='collective'){
-    let q=admin.from('nayanet_intelligence_publications').select('id,intelligence_event_id,published_at,created_at').eq('status','published').eq('consent_state','explicit').order('published_at',{ascending:false}).limit(limit+1)
-    if(before) q=q.lt('published_at',before)
-    const pubResult=await q
-    if(pubResult.error) return json({ok:false,error:pubResult.error.message},400)
-    const pubs=pubResult.data||[]
-    const ids=pubs.slice(0,limit).map((p:any)=>p.intelligence_event_id)
-    let events:any[]=[]
-    if(ids.length){
-      const eventResult=await admin.from('nayanet_cognition_events').select(fields).in('id',ids)
-      if(eventResult.error) return json({ok:false,error:eventResult.error.message},400)
-      events=eventResult.data||[]
-    }
-    const byId=new Map(events.map((e:any)=>[e.id,e]))
-    let items=pubs.slice(0,limit).map((p:any)=>{const e=byId.get(p.intelligence_event_id);if(!e)return null;return {...e,stream:'collective',source_id:e.id,publication_id:p.id,published_at:p.published_at,visibility:'collective',publisher_identity:'private-by-default',available_actions:['save','favorite','like','love']}}).filter(Boolean)
-    try{items=await attachLedger(items,null,true);items=await attachBlocks(items,true)}catch(error){return json({ok:false,error:String(error?.message||error)},500)}
-    return json({ok:true,stream,items,next_before:pubs.length>limit?pubs[limit-1].published_at:null})
+    // Collective Intelligence is the automatic wisdom projection, not publication.
+    // Publication remains the explicit /publish boundary above.
+    let q=admin.from('nayanet_collective_wisdom')
+      .select('id,wisdom_claim,topic,epistemic_state,status,identity_visibility,source_visibility,public_publication,created_at,provenance')
+      .eq('status','ACTIVE')
+      .eq('identity_visibility','private')
+      .eq('source_visibility','derived_only')
+      .eq('public_publication','separate')
+      .order('created_at',{ascending:false})
+      .limit(limit+1)
+    if(before) q=q.lt('created_at',before)
+    const wisdomResult=await q
+    if(wisdomResult.error) return json({ok:false,error:wisdomResult.error.message},400)
+    const rows=wisdomResult.data||[]
+    const items=rows.slice(0,limit).map((w:any)=>({
+      id:w.id,
+      stream:'collective',
+      wisdom_claim:w.wisdom_claim,
+      topic:w.topic,
+      epistemic_state:w.epistemic_state,
+      status:w.status,
+      visibility:'collective',
+      contributor_identity:'private-by-default',
+      source_visibility:w.source_visibility,
+      public_publication:w.public_publication,
+      created_at:w.created_at,
+      provenance:w.provenance,
+      available_actions:['save','favorite','like','love']
+    }))
+    return json({ok:true,stream,items,next_before:rows.length>limit?rows[limit-1].created_at:null})
   }
   return json({ok:false,error:'INVALID_STREAM'},400)
 })
