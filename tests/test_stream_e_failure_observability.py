@@ -20,7 +20,7 @@ def test_current_source_authority_matches_static_hub_blob():
 
 def test_sender_trace_contract_is_redacted():
     source = SENDER.read_text(encoding="utf-8")
-    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "REF_NOT_AUTHORIZED", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
+    for marker in ("SMART_NOTE_RECEIVER_REQUEST", "SMART_NOTE_RECEIVER_RESPONSE", "summarizeReceiverResponse", "summarizeReceiverBridgeResponse", "PRODUCTION_RECEIVER_RESPONSE", "PRODUCTION_RECEIVER_AUTHORITY_GATE", "REF_NOT_AUTHORIZED", "status:'PARTIAL'", "classifySenderFailure", "x-idempotency-key", "classification", "await new Promise"):
         assert marker in source
 
 def test_node_diagnostics_suite_passes():
