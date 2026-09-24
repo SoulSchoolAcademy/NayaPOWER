@@ -9,6 +9,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 import importlib.util
+import sys
 from typing import Any, Mapping
 
 
@@ -17,6 +18,7 @@ _spec = importlib.util.spec_from_file_location("naya_production_authority_kernel
 if _spec is None or _spec.loader is None:
     raise RuntimeError("canonical governance kernel cannot be loaded")
 _kernel = importlib.util.module_from_spec(_spec)
+sys.modules[_spec.name] = _kernel
 _spec.loader.exec_module(_kernel)
 
 Authority = _kernel.Authority
