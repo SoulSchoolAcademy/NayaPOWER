@@ -37,6 +37,19 @@ async function logOp(client: any, userId: string, operation: string, status: str
   });
 }
 
+async function validateIntelligenceCommitAuthority(client: any, authorityGrantId: string) {
+  const { data, error } = await client.rpc("nayanet_validate_authority_grant", {
+    p_grant_id: authorityGrantId,
+    p_action: "intelligence_commit",
+    p_target: PROJECT
+  });
+  if (error) throw error;
+  if (data?.status !== "AUTHORIZED") {
+    throw new Error("AUTHORITY_REQUIRED:" + String(data?.reason ?? "AUTHORIZATION_BLOCKED"));
+  }
+  return data;
+}
+
 async function record(client: any, event: any, action: string, expected: string, observed: string, learning: any[] = []) {
   const { data, error } = await client.rpc("nayanet_record_cognition_event", {
     p_project_id: PROJECT,
@@ -702,6 +715,7 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
       next_use: body.next_use ?? null,
       successor_relevance: body.successor_relevance ?? null,
       source_head: body.source_head ?? null,
+      authority_grant_id: body.authority_grant_id ?? null,
       checkpointed_at: new Date().toISOString()
     }
   };
@@ -736,6 +750,9 @@ async function commitIntelligence(client: any, userId: string, body: any) {
   const category = String(body.category ?? "INTELLIGENCE");
   const topic = String(body.topic ?? "GENERAL");
   const tags = Array.isArray(body.tags) ? body.tags.map(String) : ["intelligence","intelligent-block","compounding"];
+  const authorityGrantId = String(body.authority_grant_id ?? "").trim();
+  if (!authorityGrantId) throw new Error("AUTHORITY_GRANT_ID_REQUIRED");
+  await validateIntelligenceCommitAuthority(client, authorityGrantId);
   const existing = await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
     .eq("event_id", eventId).eq("user_id", userId).eq("project_id", PROJECT).maybeSingle();
   if (existing.error) throw existing.error;
@@ -753,7 +770,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
       parent_event_id:body.parent_event_id ?? null,source_hash:"intelligence:"+idempotencyKey,
       schema_version:"INTELLIGENT_BLOCK_V1",
       metadata:{idempotency_key:idempotencyKey,category,topic,applicable_scope:body.applicable_scope ?? null,
-        limits:body.limits ?? null,human_teaching:body.human_teaching === true,captured_at:new Date().toISOString()}
+        limits:body.limits ?? null,human_teaching:body.human_teaching === true,authority_grant_id:authorityGrantId,captured_at:new Date().toISOString()}
     };
     captureReceipt=await record(client,event,"intelligence.capture",
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
@@ -764,6 +781,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
     sourceEvent=persisted.data;
   }
+  await validateIntelligenceCommitAuthority(client, authorityGrantId);
   const projection=await projectIntelligence(client,userId,{source_event_id:sourceEvent.id});
   const blockSeed = new TextEncoder().encode("NayaNET:IntelligentBlockV1:"+userId+":"+idempotencyKey);
   const blockDigest = new Uint8Array(await crypto.subtle.digest("SHA-256", blockSeed));
@@ -777,6 +795,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
   if(learningExisting.error) throw learningExisting.error;
   let learning:any=learningExisting.data;
   if(!learning){
+    await validateIntelligenceCommitAuthority(client, authorityGrantId);
     const inserted=await client.from("learning_evidence").insert({
       member_id:userId,target_id:String(body.target_id ?? "intelligent-block:"+eventId),
       level:"E1_UNDERSTANDS",provenance:"USER",status:"CANDIDATE",claim:learningClaim.slice(0,2000),
@@ -801,13 +820,15 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     applicable_scope:body.applicable_scope ?? null,
     next_use:body.next_use ?? "Cold Naya retrieves this intelligence when the topic/context is relevant.",
     successor_relevance:"Cold successor must restore this checkpoint, recognize applicability, use it when valid, and verify the outcome.",
-    source_head:body.source_head ?? null
+    source_head:body.source_head ?? null,
+    authority_grant_id:authorityGrantId
   });
   const existingBlock = await admin.from("nayanet_intelligent_blocks")
     .select("*").eq("block_id",blockId).eq("owner_id",userId).maybeSingle();
   if (existingBlock.error) throw existingBlock.error;
   let intelligentBlock:any = existingBlock.data;
   if (!intelligentBlock) {
+    await validateIntelligenceCommitAuthority(client, authorityGrantId);
     const blockContent:any = {
       identity:{object_id:"IB:"+blockId,event_id:eventId,version:1,namespace:"nayanet",schema_version:"NAYANET_INTELLIGENT_BLOCK_V1"},
       context:{project_id:PROJECT,category,topic,visibility:"PRIVATE",owner_id:userId},
