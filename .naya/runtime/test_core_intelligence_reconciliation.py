@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 import importlib.util
 from pathlib import Path
+import sys
 import unittest
 
 P=Path(__file__).with_name("core_intelligence_reconciliation.py")
-S=importlib.util.spec_from_file_location("cir",P); M=importlib.util.module_from_spec(S); S.loader.exec_module(M)
+S=importlib.util.spec_from_file_location("cir",P); M=importlib.util.module_from_spec(S); sys.modules["cir"]=M; S.loader.exec_module(M)
 
 class ReconciliationTests(unittest.TestCase):
     def setUp(self):

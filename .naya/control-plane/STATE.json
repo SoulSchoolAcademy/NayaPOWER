@@ -35,7 +35,7 @@
     "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
+    "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
   },
   "operational_truth_model": {
     "canonical_state": ".naya/control-plane/STATE.json",
@@ -413,9 +413,11 @@
     "artifact_id": 10720229874,
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
-  "next_action": {"status": "BLOCKED",
+  "next_action": {
+    "status": "BLOCKED",
     "count": 1,
-    "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next."
+    "reason": "CONSEQUENTIAL_ACTION classified and explicitly declined for Block promotion; GOVERNED_DECISION is next.",
+    "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",

@@ -64,7 +64,7 @@
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
     "first_feature": "Smart Share",
-    "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
+    "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
@@ -233,5 +233,5 @@
     "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
     "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   },
-  "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
+  "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
 }

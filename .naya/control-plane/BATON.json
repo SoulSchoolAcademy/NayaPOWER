@@ -2,7 +2,7 @@
   "$schema": "naya/control-plane/baton/v1",
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-23T23:12:51Z",
+  "generated_at": "2026-09-24T00:27:43.887900+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -12,13 +12,13 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d",
+    "live_head": "550fad17cffedcb089cea5ee7533b52f7f6e0f2d",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-    "canonical_hub_source_sha": "93e52c552b59d846918c6e966df1ce79a7432fb5"
+    "canonical_hub_source_sha": "7b1126a014b3b27026a0360dbc1b8226a9be9f50"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
@@ -65,7 +65,9 @@
     "priority": "P1",
     "source": ".naya/control-plane/BLOCKS.json"
   },
-  "next_action": {"status": "BLOCKED",
+  "next_action": {
+    "count": 1,
+    "status": "AUTHORIZED",
     "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
     "source": ".naya/control-plane/BLOCKS.json",
     "reason": "Derived automatically after verified next_action + handoff execution cycle.",
