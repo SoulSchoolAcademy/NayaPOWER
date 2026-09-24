@@ -41,6 +41,10 @@ The baton does not outrank the sources it references.
 
 `identity`, `generated_at`, `source_of_truth`, `current_state`, `current_intelligence`, `truth`, `active_block`, `next_action`, `evidence`, `successor_prompt`, and `playback`.
 
+The top-level `identity` is the canonical repository identity and must equal `repository`.
+
+The top-level `evidence` is a non-empty list of read-only pointers to existing canonical proof sources; it does not promote a source or replace its claim state.
+
 ## One-next-action law
 
 The baton MUST expose exactly one executable next action. A vague instruction such as “continue” is invalid.
