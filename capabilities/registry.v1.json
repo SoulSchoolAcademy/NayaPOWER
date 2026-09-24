@@ -1,0 +1,814 @@
+{
+  "$schema": "./registry.v1.schema.json",
+  "schema": "NAYA_CAPABILITY_REGISTRY_V1",
+  "version": "1.0.0",
+  "authority_boundary": "This registry describes capabilities and their required authority. It does not grant authority, authenticate principals, authorize execution, or prove runtime or production readiness.",
+  "provenance": {
+    "canonical_spec": "60 SYSTEM UPDATES FOR NAYA,md#48",
+    "runtime_baseline_commit": "720b1b5c68f54fa265707629576907de0a3ebf70",
+    "inventory_method": "Static source parity over the current Project Intelligence dispatcher, Universal Agent Interface aliases, Supabase Edge Functions, and NayaNET Execution Bridge functions.",
+    "runtime_mutation": false
+  },
+  "capabilities": [
+    {
+      "id": "pi.restore",
+      "description": "Restore the authenticated user's canonical NayaNET Project Intelligence context.",
+      "inputs": ["Authenticated action=restore request", "Project=NayaNET"],
+      "outputs": ["Canonical Project Intelligence restore result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-restore/index.ts", "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js"],
+        "invocation": ["compound_action:restore", "edge_function:nayanet-pi-restore"],
+        "transport_aliases": ["uai:nayanet_restore", "rest:/v1/restore"],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.cold_restore",
+      "description": "Run the mandatory fourteen-question Project Intelligence cold-restore gate.",
+      "inputs": ["Authenticated action=cold_restore request", "Project=NayaNET"],
+      "outputs": ["Cold-restore gate result", "Current-context question set"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js"],
+        "invocation": ["compound_action:cold_restore"],
+        "transport_aliases": ["uai:nayanet_cold_restore", "rest:/v1/cold-restore"],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.retrieve",
+      "description": "Retrieve authorized canonical intelligence from Project Intelligence.",
+      "inputs": ["Authenticated action=retrieve request", "Query and optional retrieval bounds"],
+      "outputs": ["Authorized intelligence retrieval result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-retrieve/index.ts", "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js"],
+        "invocation": ["compound_action:retrieve", "edge_function:nayanet-pi-retrieve"],
+        "transport_aliases": ["uai:nayanet_retrieve", "rest:/v1/retrieve"],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.reconcile",
+      "description": "Reconcile canonical Project Intelligence records and expose unresolved differences.",
+      "inputs": ["Authenticated action=reconcile request", "Project=NayaNET"],
+      "outputs": ["Reconciliation result", "Remaining differences or failures"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-reconcile/index.ts"],
+        "invocation": ["compound_action:reconcile", "edge_function:nayanet-pi-reconcile"],
+        "transport_aliases": [],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.understand",
+      "description": "Advance understanding through the canonical Project Intelligence runtime.",
+      "inputs": ["Authenticated action=understand request", "Canonical intelligence context"],
+      "outputs": ["Understanding result", "Evidence or reasoning projection"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-understand/index.ts", "NAYANET/UNIVERSAL-AGENT-INTERFACE/worker.js"],
+        "invocation": ["compound_action:understand", "edge_function:nayanet-pi-understand"],
+        "transport_aliases": ["uai:nayanet_understand", "rest:/v1/understand"],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.learning_candidate",
+      "description": "Create or retrieve a governed Project Intelligence learning candidate.",
+      "inputs": ["Authenticated action=learning_candidate request", "Learning evidence or candidate source"],
+      "outputs": ["Learning candidate result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-learning-candidate/index.ts"],
+        "invocation": ["compound_action:learning_candidate", "edge_function:nayanet-pi-learning-candidate"],
+        "transport_aliases": [],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.learning_verify",
+      "description": "Verify a Project Intelligence learning candidate against governed evidence.",
+      "inputs": ["Authenticated action=learning_verify request", "Learning candidate identifier"],
+      "outputs": ["Learning verification result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-learning-verify/index.ts"],
+        "invocation": ["compound_action:learning_verify", "edge_function:nayanet-pi-learning-verify"],
+        "transport_aliases": [],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.learning_retrieve",
+      "description": "Retrieve authorized learning evidence and candidate state.",
+      "inputs": ["Authenticated action=learning_retrieve request", "Optional learning filters"],
+      "outputs": ["Authorized learning retrieval result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:learning_retrieve"],
+        "transport_aliases": [],
+        "notes": "Authentication is the only authority enforcement observed in the compound dispatcher."
+      }
+    },
+    {
+      "id": "pi.project",
+      "description": "Project canonical intelligence into a governed Project Intelligence surface.",
+      "inputs": ["Authenticated action=project request", "Canonical intelligence source"],
+      "outputs": ["Project Intelligence projection result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:project"],
+        "transport_aliases": [],
+        "notes": "Authentication is the only authority enforcement observed in the compound dispatcher."
+      }
+    },
+    {
+      "id": "pi.ack",
+      "description": "Acknowledge an owned Project Intelligence bridge projection.",
+      "inputs": ["Authenticated action=ack request", "Project Intelligence event identifier"],
+      "outputs": ["Acknowledgement result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:ack"],
+        "transport_aliases": [],
+        "notes": "Authentication is the only authority enforcement observed in the compound dispatcher."
+      }
+    },
+    {
+      "id": "pi.state_update",
+      "description": "Update governed Project Intelligence state through the compound runtime.",
+      "inputs": ["Authenticated action=state_update request", "Target state transition and evidence"],
+      "outputs": ["State update result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_GOVERNANCE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "state:explicit_target"],
+      "risk": "L3",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:state_update"],
+        "transport_aliases": [],
+        "notes": "The registry requires an explicit grant; the compound dispatcher currently exposes authentication only, so runtime enforcement remains a visible gap."
+      }
+    },
+    {
+      "id": "pi.successor_handoff",
+      "description": "Create a governed Project Intelligence successor handoff.",
+      "inputs": ["Authenticated action=successor_handoff request", "Successor context and continuation evidence"],
+      "outputs": ["Successor handoff result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-successor-handoff/index.ts"],
+        "invocation": ["compound_action:successor_handoff", "edge_function:nayanet-pi-successor-handoff"],
+        "transport_aliases": [],
+        "notes": "The wrapper is a transport alias and does not create a second semantic capability."
+      }
+    },
+    {
+      "id": "pi.issue_authority",
+      "description": "Issue a scoped Project Intelligence authority record through the compound runtime.",
+      "inputs": ["Authenticated action=issue_pi_authority request", "Authority purpose, action, target, and scope"],
+      "outputs": ["Project Intelligence authority result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_GOVERNANCE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "authority:explicit_target"],
+      "risk": "L3",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:issue_pi_authority"],
+        "transport_aliases": [],
+        "notes": "The registry requires explicit governance authority; the compound dispatcher currently exposes authentication only, so no runtime authority claim is made."
+      }
+    },
+    {
+      "id": "pi.continue_authorized",
+      "description": "Continue work only when the existing Project Intelligence authorization conditions hold.",
+      "inputs": ["Authenticated action=continue_authorized request", "Existing authorization and continuation target"],
+      "outputs": ["Authorized continuation result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXISTING_EXPLICIT_AUTHORIZATION"],
+      "allowed_scope": ["project:NayaNET", "continuation:explicit_target"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:continue_authorized"],
+        "transport_aliases": [],
+        "notes": "Existing authorization is the registry requirement; source-level authority enforcement must not be inferred from the action name."
+      }
+    },
+    {
+      "id": "pi.consolidate_gates",
+      "description": "Consolidate Project Intelligence gate state without inventing authority.",
+      "inputs": ["Authenticated action=consolidate_pi_gates request", "Gate and evidence state"],
+      "outputs": ["Consolidated gate result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:consolidate_pi_gates"],
+        "transport_aliases": [],
+        "notes": "Authentication is the only authority enforcement observed in the compound dispatcher."
+      }
+    },
+    {
+      "id": "pi.share",
+      "description": "Share an owned intelligence object through the compound runtime.",
+      "inputs": ["Authenticated action=share request", "Owned intelligence identifier and destination"],
+      "outputs": ["Sharing result", "Consent or publication state"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_SHARE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "intelligence:owned_source"],
+      "risk": "L3",
+      "reversibility": "IRREVERSIBLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-share/index.ts"],
+        "invocation": ["compound_action:share", "edge_function:nayanet-pi-share"],
+        "transport_aliases": [],
+        "notes": "The compound share path and the separately implemented smart_feed.publish path have different observed authority enforcement; neither is silently selected here."
+      }
+    },
+    {
+      "id": "pi.supersede",
+      "description": "Supersede one canonical intelligence record with a governed successor.",
+      "inputs": ["Authenticated action=supersede request", "Target and successor intelligence records"],
+      "outputs": ["Supersession result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_GOVERNANCE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "intelligence:explicit_lineage"],
+      "risk": "L3",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-supersede/index.ts"],
+        "invocation": ["compound_action:supersede", "edge_function:nayanet-pi-supersede"],
+        "transport_aliases": [],
+        "notes": "The registry requires explicit governance authority; the compound dispatcher currently exposes authentication only."
+      }
+    },
+    {
+      "id": "pi.checkpoint",
+      "description": "Persist a Project Intelligence execution checkpoint.",
+      "inputs": ["Authenticated action=checkpoint request", "Checkpoint evidence and continuation state"],
+      "outputs": ["Checkpoint result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:checkpoint"],
+        "transport_aliases": [],
+        "notes": "Authentication is the only authority enforcement observed in the compound dispatcher."
+      }
+    },
+    {
+      "id": "pi.commit_intelligence",
+      "description": "Commit an intelligence mutation through the governed compound persistence path.",
+      "inputs": ["Authenticated action=intelligence_commit request", "Structured intelligence mutation and evidence"],
+      "outputs": ["Intelligence commit receipt", "Canonical persistence result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_GOVERNANCE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "intelligence:explicit_target"],
+      "risk": "L3",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:intelligence_commit"],
+        "transport_aliases": [],
+        "notes": "The registry does not claim that source presence or a persistence receipt independently verifies an external outcome."
+      }
+    },
+    {
+      "id": "pi.health",
+      "description": "Read Project Intelligence runtime health.",
+      "inputs": ["Authenticated action=health request"],
+      "outputs": ["Project Intelligence health result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": false,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-health/index.ts"],
+        "invocation": ["compound_action:health", "edge_function:nayanet-pi-health"],
+        "transport_aliases": [],
+        "notes": "A health response is not proof that every capability is authorized, connected, or production-proven."
+      }
+    },
+    {
+      "id": "pi.dream",
+      "description": "Replay a governed dream through the compound runtime and direct replay adapter.",
+      "inputs": ["Authenticated action=dream request", "Optional replay source and idempotency key"],
+      "outputs": ["Dream replay result", "Receipt/value projection"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-dream/index.ts", "supabase/functions/naya-dream-replay/index.ts"],
+        "invocation": ["compound_action:dream", "edge_function:nayanet-pi-dream", "edge_function:naya-dream-replay"],
+        "transport_aliases": [],
+        "notes": "The compound and direct functions are adapters of one semantic dream replay capability."
+      }
+    },
+    {
+      "id": "pi.compound",
+      "description": "Return the canonical compound-intelligence cycle and restored operating context.",
+      "inputs": ["Authenticated action=compound request"],
+      "outputs": ["Compound cycle stages", "Current restored context", "Next authorized-action guidance"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts", "supabase/functions/nayanet-pi-compound/index.ts"],
+        "invocation": ["compound_action:compound", "edge_function:nayanet-pi-compound"],
+        "transport_aliases": [],
+        "notes": "The cycle response describes stages; it does not execute all stages or grant their authority."
+      }
+    },
+    {
+      "id": "pi.universal_meaningful_output",
+      "description": "Classify a meaningful output and route it to the bounded intelligence commit path.",
+      "inputs": ["Authenticated action=universal_meaningful_output request", "Output identity, source, title, content, privacy, destination class, and requested action"],
+      "outputs": ["Universal output receipt", "Bounded intelligence commit result"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_GOVERNANCE_AUTHORITY_GRANT"],
+      "allowed_scope": ["project:NayaNET", "intelligence:existing_destination"],
+      "risk": "L3",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-compound-intelligence/index.ts"],
+        "invocation": ["compound_action:universal_meaningful_output"],
+        "transport_aliases": [],
+        "notes": "The adapter requires explicit authority for non-private output in its contract; registry status does not claim complete grant enforcement."
+      }
+    },
+    {
+      "id": "smart_note.capture",
+      "description": "Capture and persist a canonical Smart Note, Intelligent Block, learning candidate, and checkpoint.",
+      "inputs": ["Authenticated Smart Note request", "Idempotency key and canonical note content"],
+      "outputs": ["Smart Note transaction result", "Persisted note", "Learning evidence", "Checkpoint result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project:NayaNET", "owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/v7-smart-note-canonical/index.ts"],
+        "invocation": ["edge_function:v7-smart-note-canonical"],
+        "transport_aliases": [],
+        "notes": "Authenticated owner capture is not represented as a general governance Authority Grant."
+      }
+    },
+    {
+      "id": "smart_feed.read",
+      "description": "Read authorized personal, activity, or collective Smart Feed projections.",
+      "inputs": ["Authenticated Smart Feed request", "Optional stream, limit, and before cursor"],
+      "outputs": ["Authorized Smart Feed items", "Ledger evidence projection"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["owner:authenticated_user", "stream:personal|activity|collective"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": false,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/naya-smart-feed/index.ts"],
+        "invocation": ["edge_action:naya-smart-feed:read"],
+        "transport_aliases": [],
+        "notes": "Read is the default action and does not create a separate backend function."
+      }
+    },
+    {
+      "id": "smart_feed.publish",
+      "description": "Publish an owned intelligence event to the Smart Feed after grant validation.",
+      "inputs": ["Authenticated publish request", "Owned source identifier and smart_feed_publish authority grant"],
+      "outputs": ["Publication record", "Authority validation result"],
+      "required_authority": ["AUTHENTICATED_USER", "SMART_FEED_PUBLISH_AUTHORITY_GRANT"],
+      "allowed_scope": ["intelligence:owned_source", "publication:explicit_target"],
+      "risk": "L3",
+      "reversibility": "IRREVERSIBLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "EXPLICIT_GRANT_VALIDATED",
+        "source_paths": ["supabase/functions/naya-smart-feed/index.ts"],
+        "invocation": ["edge_action:naya-smart-feed:publish"],
+        "transport_aliases": [],
+        "notes": "This direct action has stronger explicit-grant evidence than the compound share action and remains semantically distinct."
+      }
+    },
+    {
+      "id": "smart_feed.revoke",
+      "description": "Revoke an owned Smart Feed publication.",
+      "inputs": ["Authenticated revoke request", "Owned publication identifier"],
+      "outputs": ["Revoked publication record"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["publication:owned_target"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/naya-smart-feed/index.ts"],
+        "invocation": ["edge_action:naya-smart-feed:revoke"],
+        "transport_aliases": [],
+        "notes": "Owner scope is enforced directly by the Edge Function."
+      }
+    },
+    {
+      "id": "smart_feed.interact",
+      "description": "Record an authorized save, favorite, like, or love interaction with a Feed item.",
+      "inputs": ["Authenticated interact request", "Authorized source identifier and interaction type"],
+      "outputs": ["Idempotent interaction event", "Cognition receipt"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["feed_item:owned_or_explicitly_published"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/naya-smart-feed/index.ts"],
+        "invocation": ["edge_action:naya-smart-feed:interact"],
+        "transport_aliases": [],
+        "notes": "Published collective items are readable for interaction; private sources remain owner-scoped."
+      }
+    },
+    {
+      "id": "smart_mail.verify",
+      "description": "Verify a received Smart Mail outcome and create reusable learning evidence.",
+      "inputs": ["Authenticated verify request", "Message identifier"],
+      "outputs": ["Verified outcome", "Learning evidence", "Message verification metadata"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["mail_thread:authenticated_member"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/nayanet-smart-mail/index.ts"],
+        "invocation": ["edge_action:nayanet-smart-mail:verify"],
+        "transport_aliases": [],
+        "notes": "The receiver must be an authenticated thread member and links verification to the original execution receipt."
+      }
+    },
+    {
+      "id": "smart_mail.send",
+      "description": "Send an authorized Smart Mail message and persist an execution receipt.",
+      "inputs": ["Authenticated send request", "Recipient, body, idempotency key, and smart_mail_send authority grant"],
+      "outputs": ["Smart Mail transaction result", "Execution receipt", "Activity record when created"],
+      "required_authority": ["AUTHENTICATED_USER", "SMART_MAIL_SEND_AUTHORITY_GRANT"],
+      "allowed_scope": ["recipient:explicit_user", "project:explicit_project"],
+      "risk": "L3",
+      "reversibility": "IRREVERSIBLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "EXPLICIT_GRANT_VALIDATED",
+        "source_paths": ["supabase/functions/nayanet-smart-mail/index.ts"],
+        "invocation": ["edge_action:nayanet-smart-mail:send"],
+        "transport_aliases": [],
+        "notes": "The send path validates smart_mail_send before invoking the selected transaction RPC."
+      }
+    },
+    {
+      "id": "learning.apply",
+      "description": "Apply active or replayable learning evidence to an authenticated owner's cognition.",
+      "inputs": ["Authenticated learning request", "Learning evidence or replay selection"],
+      "outputs": ["Learner state", "Persisted cognition result"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["owner:authenticated_user"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/naya-learning-apply/index.ts"],
+        "invocation": ["edge_function:naya-learning-apply"],
+        "transport_aliases": [],
+        "notes": "Owner-scoped learning application does not create a general Authority Grant."
+      }
+    },
+    {
+      "id": "decision_context.retrieve",
+      "description": "Retrieve active learning evidence and replay projections for an authenticated decision context.",
+      "inputs": ["Authenticated decision-context request", "Optional target and learning filters"],
+      "outputs": ["Authorized decision context", "Learning evidence projection"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["owner:authenticated_user", "decision:explicit_target"],
+      "risk": "L1",
+      "reversibility": "READ_ONLY",
+      "receipt_required": false,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/naya-decision-context/index.ts"],
+        "invocation": ["edge_function:naya-decision-context"],
+        "transport_aliases": [],
+        "notes": "This is an owner-scoped read projection."
+      }
+    },
+    {
+      "id": "project_intelligence_bridge.receive",
+      "description": "Receive, validate, persist, and index a canonical Project Intelligence bridge packet.",
+      "inputs": ["Authenticated service request", "Canonical packet and idempotency key"],
+      "outputs": ["Canonical Project Intelligence event", "Indexed projection", "Idempotent persistence result"],
+      "required_authority": ["PROJECT_INTELLIGENCE_BRIDGE_AUTHENTICATION"],
+      "allowed_scope": ["project:NayaNET", "packet:explicit_source"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "AUTHENTICATION_ONLY",
+        "source_paths": ["supabase/functions/nayanet-project-intelligence-bridge/index.ts"],
+        "invocation": ["edge_function:nayanet-project-intelligence-bridge"],
+        "transport_aliases": [],
+        "notes": "The source authenticates the bridge caller; this registry does not claim a broader human Authority Grant."
+      }
+    },
+    {
+      "id": "project_intelligence_bridge.acknowledge",
+      "description": "Acknowledge an owned Project Intelligence projection after render evidence exists.",
+      "inputs": ["Authenticated acknowledgement request", "Owned Project Intelligence event identifier"],
+      "outputs": ["Acknowledgement result", "Updated owner projection"],
+      "required_authority": ["AUTHENTICATED_USER"],
+      "allowed_scope": ["project_intelligence:owned_target"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "OWNER_SCOPE_VALIDATED",
+        "source_paths": ["supabase/functions/nayanet-project-intelligence-ack/index.ts"],
+        "invocation": ["edge_function:nayanet-project-intelligence-ack"],
+        "transport_aliases": [],
+        "notes": "Owner and projection checks are performed before acknowledgement."
+      }
+    },
+    {
+      "id": "github.deploy_nayanet_hub",
+      "description": "Request the fixed canonical NayaNET Hub deployment workflow for an exact commit after explicit approval and grant validation.",
+      "inputs": ["Authenticated JWT", "Exact commit SHA", "Explicit approval", "Reason", "Authority grant", "Idempotency key"],
+      "outputs": ["GitHub workflow dispatch result", "Execution receipt"],
+      "required_authority": ["AUTHENTICATED_USER", "EXPLICIT_DEPLOYMENT_APPROVAL", "DEPLOY_NAYANET_HUB_CANONICAL_AUTHORITY_GRANT"],
+      "allowed_scope": ["repository:SoulSchoolAcademy/NayaPOWER", "workflow:assistant-cloudflare-hub-release.yml", "branch:main", "commit:exact_sha"],
+      "risk": "L3",
+      "reversibility": "IRREVERSIBLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "EXPLICIT_GRANT_VALIDATED",
+        "source_paths": ["NAYANET/EXECUTION-BRIDGE/nayanet-github-dispatch/index.ts"],
+        "invocation": ["edge_function:nayanet-github-dispatch"],
+        "transport_aliases": [],
+        "notes": "Implementation is registered for discoverability only; this change does not authorize or execute deployment."
+      }
+    },
+    {
+      "id": "github.webhook.receive",
+      "description": "Verify, normalize, and idempotently persist a signed GitHub webhook delivery.",
+      "inputs": ["GitHub delivery identifier", "GitHub HMAC signature", "Raw webhook body"],
+      "outputs": ["Canonical signed GitHub event", "Idempotent persistence transaction"],
+      "required_authority": ["GITHUB_WEBHOOK_HMAC_SECRET"],
+      "allowed_scope": ["repository:delivery_repository", "delivery:github_delivery_id"],
+      "risk": "L2",
+      "reversibility": "RECOVERABLE",
+      "receipt_required": true,
+      "verification_required": true,
+      "implementation": {
+        "status": "IMPLEMENTED",
+        "evidence_state": "IMPLEMENTED",
+        "authority_enforcement": "SIGNED_EXTERNAL_INPUT",
+        "source_paths": ["NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts"],
+        "invocation": ["edge_function:nayanet-github-webhook"],
+        "transport_aliases": [],
+        "notes": "The receiver is implemented; external GitHub App installation and production delivery remain unproven."
+      }
+    }
+  ],
+  "excluded_surfaces": [
+    {
+      "id": "hub.owner-ui-methods",
+      "classification": "OWNER_UI",
+      "reason": "Hub assistant methods mix owner UI operations, direct RPCs, projections, and at least one missing backend source; they are not silently promoted to canonical agent capabilities in v1.",
+      "source_paths": ["NAYANET/HUB/public/assistant-runtime.js", "NAYANET/HUB/index.html"]
+    },
+    {
+      "id": "hub.naya-smart-tabs-source-drift",
+      "classification": "SOURCE_DRIFT",
+      "reason": "The Hub calls naya-smart-tabs, but no matching Supabase Edge Function source exists on the registry baseline.",
+      "source_paths": ["NAYANET/HUB/public/assistant-runtime.js"]
+    },
+    {
+      "id": "repository.tools-and-proof-scripts",
+      "classification": "REPOSITORY_TOOLING",
+      "reason": "Root tools and proof scripts are maintenance or migration utilities, not runtime capabilities available to an authenticated agent.",
+      "source_paths": ["tools"]
+    },
+    {
+      "id": "superbrain.arbitrary-host-callables",
+      "classification": "SOURCE_DRIFT",
+      "reason": "HostExecutorBridge accepts host-supplied callables but does not establish stable capability IDs, authority, scope, or verification contracts for them.",
+      "source_paths": ["SUPERBRAIN/runtime/host_executor.py"]
+    },
+    {
+      "id": "pis.duplicate-producer-authority",
+      "classification": "UNRESOLVED_AUTHORITY",
+      "reason": "STATE and MAP name the primary builder while the Hub build invokes the smart-feed builder; the work queue requires human authority and forbids self-resolution.",
+      "source_paths": [".naya/control-plane/STATE.json", ".naya/control-plane/MAP.json", ".naya/execution/WORK-QUEUE.json", "NAYANET/HUB/package.json", "scripts/build-primary-intelligence-feed.py", "scripts/build-smart-feed-projection.py"]
+    },
+    {
+      "id": "system49.universal-smart-door-lifecycle",
+      "classification": "OUT_OF_SCOPE",
+      "reason": "System 48 records existing capabilities but does not implement the System 49 discover-request-authorize-execute-receive-verify-persist-index-learn lifecycle.",
+      "source_paths": ["60 SYSTEM UPDATES FOR NAYA,md"]
+    },
+    {
+      "id": "system50.distributed-naya-federation",
+      "classification": "OUT_OF_SCOPE",
+      "reason": "System 48 does not create System 50 local, cloud, mobile, web, provider, agent, or NayaNET federation.",
+      "source_paths": ["60 SYSTEM UPDATES FOR NAYA,md"]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+name: Verify Capability Registry
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "capabilities/**"
+      - "tests/test_capability_registry.py"
+      - ".github/workflows/verify-capability-registry.yml"
+      - "NAYANET/UNIVERSAL-AGENT-INTERFACE/**"
+      - "NAYANET/EXECUTION-BRIDGE/**"
+      - "supabase/functions/*/index.ts"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capability-registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate registry JSON
+        run: |
+          python -m json.tool capabilities/registry.v1.json > /dev/null
+          python -m json.tool capabilities/registry.v1.schema.json > /dev/null
+      - name: Verify capability source parity
+        run: python tests/test_capability_registry.py
+      - name: Write capability registry gate
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from collections import Counter
+          from pathlib import Path
+          registry=json.loads(Path("capabilities/registry.v1.json").read_text(encoding="utf-8"))
+          capabilities=registry["capabilities"]
+          receipt={
+            "schema":"naya-capability-registry-gate/v1",
+            "status":"VERIFIED",
+            "registry_schema":registry["schema"],
+            "registry_version":registry["version"],
+            "runtime_baseline_commit":registry["provenance"]["runtime_baseline_commit"],
+            "capability_count":len(capabilities),
+            "compound_action_count":sum(any(item.startswith("compound_action:") for item in row["implementation"]["invocation"]) for row in capabilities),
+            "risk_counts":dict(sorted(Counter(row["risk"] for row in capabilities).items())),
+            "authority_enforcement_counts":dict(sorted(Counter(row["implementation"]["authority_enforcement"] for row in capabilities).items())),
+            "excluded_surface_count":len(registry["excluded_surfaces"]),
+            "source_presence_is_not_verification":True,
+            "truth_boundary":"The registry explicitly describes current capability surfaces and authority requirements. It does not grant authority, change runtime dispatch, prove production readiness, implement System 49, or implement System 50."
+          }
+          target=Path(os.environ["RUNNER_TEMP"])/"capability-registry-gate.json"
+          target.write_text(json.dumps(receipt,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(receipt,sort_keys=True))
+          PY
+      - name: Publish capability registry proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: capability-registry-proof
+          path: |
+            capabilities/registry.v1.json
+            capabilities/registry.v1.schema.json
+            tests/test_capability_registry.py
+            ${{ runner.temp }}/capability-registry-gate.json
+          retention-days: 14
+          if-no-files-found: error
