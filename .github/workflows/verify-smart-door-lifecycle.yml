@@ -1,0 +1,88 @@
+name: Verify Universal Smart Door Lifecycle
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "scripts/smart_door_lifecycle.py"
+      - "capabilities/registry.v1.json"
+      - "capabilities/smart-door-lifecycle.v1.schema.json"
+      - "tests/test_capability_registry.py"
+      - "tests/test_smart_door_lifecycle.py"
+      - ".github/workflows/verify-smart-door-lifecycle.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smart-door-lifecycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate machine contracts
+        run: |
+          python -m json.tool capabilities/registry.v1.json > /dev/null
+          python -m json.tool capabilities/smart-door-lifecycle.v1.schema.json > /dev/null
+          python -m py_compile scripts/smart_door_lifecycle.py tests/test_smart_door_lifecycle.py
+      - name: Verify capability input registry
+        run: python tests/test_capability_registry.py
+      - name: Verify lifecycle fail-closed behavior
+        run: python tests/test_smart_door_lifecycle.py
+      - name: Build independent lifecycle receipt
+        run: |
+          python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          script=Path("scripts/smart_door_lifecycle.py")
+          spec=importlib.util.spec_from_file_location("smart_door_lifecycle",script)
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          run=module.SmartDoorRun("pi.retrieve","ci-request-49","ci-idempotency-49")
+          run.record_request({"query":"current truth"},["project:NayaNET","owner:authenticated_user"])
+          run.record_authorization("ci-authority-decision","a"*64,"ci-authorization-verifier")
+          run.record_execution("ci-executor","ci-execution-receipt","b"*64)
+          run.record_receive("ci-received-artifact","c"*64)
+          run.record_verification("ci-independent-verifier",["ci-evidence-record"],"d"*64)
+          run.record_persistence("ci-persistence-receipt","CREATED")
+          run.record_index("ci-index-receipt",["ci-canonical-event"])
+          run.record_learning("ci-learning-receipt","CANDIDATE_ONLY")
+          exported=run.complete_run()
+          errors=module.validate_run(exported)
+          assert not errors,errors
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"smart-door-run.json").write_text(json.dumps(exported,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+            "schema":"naya-smart-door-lifecycle-gate/v1",
+            "status":"VERIFIED",
+            "capability_id":exported["capability_id"],
+            "registry_version":exported["registry_version"],
+            "lifecycle":list(module.LIFECYCLE),
+            "receipt_count":len(exported["receipts"]),
+            "receipt_chain_valid":True,
+            "external_adapter_invoked":False,
+            "authority_minted":False,
+            "runtime_integration":"NOT_TESTED",
+            "truth_boundary":exported["truth_boundary"]
+          }
+          (root/"smart-door-lifecycle-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish Smart Door proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: smart-door-lifecycle-proof
+          path: |
+            scripts/smart_door_lifecycle.py
+            capabilities/smart-door-lifecycle.v1.schema.json
+            tests/test_smart_door_lifecycle.py
+            ${{ runner.temp }}/smart-door-run.json
+            ${{ runner.temp }}/smart-door-lifecycle-gate.json
+          retention-days: 14
+          if-no-files-found: error
