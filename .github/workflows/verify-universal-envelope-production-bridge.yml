@@ -20,6 +20,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Bootstrap fresh owner identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'EOF' > /tmp/auth.json
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY;
+          const r=await fetch(B+"/auth/v1/signup",{method:"POST",headers:{apikey:K,"content-type":"application/json"},body:"{}"});
+          const j=await r.json(); if(!r.ok||!j.access_token||!j.user?.id)throw Error("AUTH_FAILED");
+          console.log(JSON.stringify({owner:j.user.id,token:j.access_token}));
+          EOF
+          cat /tmp/auth.json
+          echo "OWNER_ID=$(node -e 'console.log(require("/tmp/auth.json").owner)')" >> "$GITHUB_ENV"
+          echo "USER_TOKEN=$(node -e 'console.log(require("/tmp/auth.json").token)')" >> "$GITHUB_ENV"
       - name: Build envelope through existing adapter
         shell: bash
         run: |
