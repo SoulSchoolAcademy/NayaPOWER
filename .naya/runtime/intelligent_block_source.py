@@ -1,45 +1,34 @@
 """Read-only source boundary for canonical Intelligent Blocks.
 
 This module does not persist, mutate, or resolve project events. It only
-normalizes already-canonical Intelligent Block rows into the minimal input
-shape required by the Claim Currentness V1 contract.
+validates and passes through the canonical Intelligent Block shape required by
+Claim Currentness V1. The canonical `content.*` fields remain nested exactly
+as persisted; no event-shaped translation is performed.
 """
 from __future__ import annotations
 from copy import deepcopy
 from typing import Any, Iterable
 
-
-REQUIRED_TOP_LEVEL = {"block_id", "subject_id", "status", "understanding_state"}
+REQUIRED_TOP_LEVEL = {"block_id", "subject_id", "status", "understanding_state", "content"}
 
 
 def normalize_intelligent_block(row: dict[str, Any]) -> dict[str, Any]:
     missing = REQUIRED_TOP_LEVEL - set(row)
     if missing:
         raise ValueError(f"INTELLIGENT_BLOCK_SOURCE_INVALID: missing={sorted(missing)}")
+    if not isinstance(row.get("content"), dict):
+        raise ValueError("INTELLIGENT_BLOCK_SOURCE_INVALID: content must be an object")
 
-    content = row.get("content") if isinstance(row.get("content"), dict) else {}
-    truth = content.get("truth") if isinstance(content.get("truth"), dict) else {}
-    time = content.get("time") if isinstance(content.get("time"), dict) else {}
-    context = content.get("context") if isinstance(content.get("context"), dict) else {}
-    evidence = content.get("evidence") if isinstance(content.get("evidence"), dict) else {}
-    provenance = content.get("provenance") if isinstance(content.get("provenance"), dict) else {}
+    content = row["content"]
+    for key in ("truth", "time", "context", "evidence", "provenance"):
+        if key in content and content[key] is not None and not isinstance(content[key], dict):
+            raise ValueError(f"INTELLIGENT_BLOCK_SOURCE_INVALID: content.{key} must be an object or null")
 
-    # Deliberately preserve only fields named by Claim Currentness V1.
-    return {
-        "block_id": str(row["block_id"]),
-        "subject_id": str(row["subject_id"]),
-        "status": str(row["status"]),
-        "understanding_state": str(row["understanding_state"]),
-        "superseded_by_block_id": row.get("superseded_by_block_id"),
-        "truth": deepcopy(truth),
-        "time": deepcopy(time),
-        "context": deepcopy(context),
-        "evidence": deepcopy(evidence),
-        "provenance": deepcopy(provenance),
-        "meaning": deepcopy(content.get("meaning") if isinstance(content.get("meaning"), dict) else {}),
-    }
+    # Read-only: return a deep copy of the canonical shape. No persistence,
+    # mutation, event conversion, or currentness decision occurs here.
+    return deepcopy(row)
 
 
 def load_intelligent_blocks(rows: Iterable[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Return a read-only normalized snapshot; never writes or mutates inputs."""
+    """Return a read-only canonical snapshot; never writes or mutates inputs."""
     return [normalize_intelligent_block(row) for row in rows]
