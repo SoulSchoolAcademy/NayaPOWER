@@ -1,0 +1,28 @@
+name: Stream B Closure Contract Regressions
+
+on:
+  push:
+    branches:
+      - "naya/stream-b-closure-suite-20260924"
+  pull_request:
+    paths:
+      - ".naya/runtime/**"
+      - ".naya/STREAM-B-GOVERNANCE-AUTHORITY-ACTION-PROOF-CLOSURE-REGISTER-V1.md"
+      - "NAYANET ALIGNMENT UPDATE - THIS IS THE MASTER OBJECTIVE.md"
+      - ".naya/NAYANET-HUB-CURRENT-TRUTH-AND-GAP-REGISTER-V1.md"
+      - "README.md"
+      - "supabase/migrations/**"
+      - "tests/test_stream_b_closure_contracts.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stream-b-closure-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run Stream B closure regressions
+        run: python tests/test_stream_b_closure_contracts.py
