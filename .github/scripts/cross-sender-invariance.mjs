@@ -96,8 +96,8 @@ async function makeHubSender(){
     let s=(await c.auth.getSession()).data.session;
     if(!s){const x=await c.auth.signInAnonymously({options:{data:{display_name:'Cross Sender Invariance',smart_name:'Cross Sender Invariance',smart_alias:alias}}});if(x.error)throw x.error;s=x.data.session}
     const runtime=await window.NayaAssistantRuntime.init();
-    const cap=await window.NayaAssistantRuntime.captureSmartNote({title:'Cross-Sender Invariance '+crypto.randomUUID(),content:text,source:'cross-sender-invariance',status:'active',tags:['cross-sender','invariance']});
-    return {runtime_user:runtime.user_id,session:s,event:cap?.event||cap};
+    const cap=await window.NayaAssistantRuntime.record({content:text,source:'cross-sender-invariance-hub-runtime',kind:'equivalent_meaningful_output'});
+    return {runtime_user:runtime.user_id,session:s,event:cap};
   },{alias,text:SAME_OUTPUT});
   if(!r.session?.access_token||!r.runtime_user)throw Error('HUB_SENDER_AUTH_FAILED');
   const envelope={
