@@ -97,6 +97,14 @@ jobs:
             const rendered=await page.locator('.smart-feed-board').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')})));
             if(!rendered.some(x=>x.event_id===eventId))throw new Error('EXACT_EVENT_NOT_RENDERED_IN_FEED:'+JSON.stringify({eventId,rendered}));
             mark('EXACT_EVENT_RENDERED',{eventId});
+            const activityTab=page.getByRole('tab',{name:'ACTIVITY FEED'});
+            await activityTab.waitFor({state:'visible',timeout:30000});
+            await activityTab.click();
+            await page.waitForFunction(()=>document.querySelector('.sfb-lens-note')?.textContent?.includes('ACTIVITY'),{timeout:30000});
+            const activityBoard=await page.locator('.smart-feed-board').evaluate(node=>({event_id:node.getAttribute('data-event-id'),lensNote:node.querySelector('.sfb-lens-note')?.textContent||''}));
+            if(activityBoard.event_id!==eventId)throw new Error('ACTIVITY_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,activityBoard}));
+            if(!activityBoard.lensNote.toUpperCase().includes('ACTIVITY'))throw new Error('ACTIVITY_LENS_NOT_ACTIVE:'+JSON.stringify(activityBoard));
+            mark('ACTIVITY_EXACT_EVENT_RENDERED',{eventId,activityBoard});
             await page.reload({waitUntil:'domcontentloaded',timeout:60000}); mark('FEED_RELOADED');
             await page.waitForSelector('[data-event-id="'+eventId+'"]',{timeout:30000});
             const restored=await page.locator('[data-event-id="'+eventId+'"]').evaluate(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-event-title')}));
