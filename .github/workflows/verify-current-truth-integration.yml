@@ -1,0 +1,99 @@
+name: Verify Current Truth Integration
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/current_truth_integration.py"
+      - ".naya/runtime/test_current_truth_integration.py"
+      - ".naya/runtime/project_intelligence_reconstruction.py"
+      - ".naya/control-plane/STATE.json"
+      - ".naya/control-plane/BLOCKS.json"
+      - ".naya/control-plane/MAP.json"
+      - ".naya/control-plane/PROOF.json"
+      - ".naya/control-plane/BATON.json"
+      - ".naya/memory/events/**"
+      - ".github/workflows/verify-current-truth-integration.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  current-truth-integration:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checkout canonical main for current-truth proof
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: canonical-main
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test current-truth integration
+        run: |
+          python -m py_compile .naya/runtime/current_truth_integration.py .naya/runtime/test_current_truth_integration.py
+          python .naya/runtime/test_current_truth_integration.py
+      - name: Build current-truth receipt
+        run: |
+          python .naya/runtime/current_truth_integration.py --out "${RUNNER_TEMP}/current-truth-integration-receipt.json" > "${RUNNER_TEMP}/current-truth-integration-stdout.json"
+      - name: Build canonical main receipt
+        run: |
+          python .naya/runtime/current_truth_integration.py --root canonical-main --out "${RUNNER_TEMP}/current-truth-main-receipt.json" > "${RUNNER_TEMP}/current-truth-main-stdout.json"
+      - name: Write current-truth gate
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          root=Path(os.environ["RUNNER_TEMP"])
+          receipt=json.loads((root/"current-truth-integration-receipt.json").read_text(encoding="utf-8"))
+          main_receipt=json.loads((root/"current-truth-main-receipt.json").read_text(encoding="utf-8"))
+          assert receipt["reconstruction"]["reproducible"] is True,receipt
+          assert receipt["reconstruction"]["counts"]["current"]==0,receipt
+          assert receipt["reconstruction"]["counts"]["unknown"]==12,receipt
+          assert receipt["control_plane"]["map_current_next_action_status"]=="BLOCKED",receipt
+          assert receipt["canonical_execution_boundary"]["status"]=="NOT_EXECUTED",receipt
+          assert main_receipt["source_identity"]["source_scope"]=="CANONICAL_MAIN",main_receipt
+          assert main_receipt["status"]=="BLOCKED",main_receipt
+          assert main_receipt["reconstruction"]["reproducible"] is True,main_receipt
+          assert main_receipt["reconstruction"]["counts"]["current"]==0,main_receipt
+          assert main_receipt["reconstruction"]["counts"]["unknown"]==12,main_receipt
+          assert main_receipt["control_plane"]["map_current_next_action_status"]=="BLOCKED",main_receipt
+          gate={
+              "schema":"naya-current-truth-integration-gate/v1",
+              "status":"VERIFIED",
+              "receipt_status":receipt["status"],
+              "source_scope":receipt["source_identity"]["source_scope"],
+              "main_source_scope":main_receipt["source_identity"]["source_scope"],
+              "main_receipt_status":main_receipt["status"],
+              "reconstruction_status":receipt["reconstruction"]["status"],
+              "reconstruction_reproducible":receipt["reconstruction"]["reproducible"],
+              "main_reconstruction_sha256":main_receipt["reconstruction"]["sha256"],
+              "current_count":main_receipt["reconstruction"]["counts"]["current"],
+              "unknown_count":main_receipt["reconstruction"]["counts"]["unknown"],
+              "control_plane_next_action_status":main_receipt["control_plane"]["map_current_next_action_status"],
+              "execution_boundary_status":main_receipt["canonical_execution_boundary"]["status"],
+              "truth_boundary":main_receipt["truth_boundary"]
+          }
+          (root/"current-truth-integration-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish current-truth proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: current-truth-integration-proof
+          path: |
+            .naya/runtime/current_truth_integration.py
+            .naya/runtime/test_current_truth_integration.py
+            ${{ runner.temp }}/current-truth-integration-receipt.json
+            ${{ runner.temp }}/current-truth-main-receipt.json
+            ${{ runner.temp }}/current-truth-integration-gate.json
+          retention-days: 14
+          if-no-files-found: error
