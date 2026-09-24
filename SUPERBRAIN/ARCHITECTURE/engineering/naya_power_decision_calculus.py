@@ -6,8 +6,7 @@ from dataclasses import dataclass
 from pathlib import Path
 import json
 
-ROOT = Path(__file__).resolve().parents[1]
-POLICY = ROOT / "SUPERBRAIN" / "naya_power_decision_calculus.json"
+POLICY = Path(__file__).with_suffix(".json")
 
 EVIDENCE_RANK = {name: i for i, name in enumerate(["UNKNOWN", "IMPLEMENTED", "TESTED", "VERIFIED", "RUNTIME-PROVEN", "PRODUCTION-PROVEN"])}
 

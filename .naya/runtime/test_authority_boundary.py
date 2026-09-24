@@ -15,6 +15,8 @@ for path in (RUNTIME, GOVERNANCE, ROOT):
 import execution_controller as ec
 import model_tool_gateway as gateway
 import naya_power_kernel as runtime_kernel
+from execution_preflight_gate import approved_preflight
+from universal_execution_gate import DecisionObject, Epistemic, Risk, UniversalExecutionGate, VerificationPlan, load_registry
 
 BASE_AUTHORITY = {"authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "purpose": "governed maintenance and verification of NayaPOWER", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
 
@@ -66,25 +68,81 @@ def _claimed(path: Path, *, reset: bool = False):
 
 def test_tool_gateway_requires_registry_authority_and_claim_binding():
     original_state = ec.STATE
+    original_sessions = (ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH)
     try:
         with tempfile.TemporaryDirectory() as tmp:
             state_path = Path(tmp) / "EXECUTION-STATE.json"
+            ec.SESSIONS_ROOT = Path(tmp) / "sessions"
+            ec.SESSIONS_INDEX_PATH = ec.SESSIONS_ROOT / "INDEX.json"
+            registry = load_registry()
+            authority = registry.resolve("HUMAN-SOULSCHOOLACADEMY-REPO-WRITE")
+            gate = UniversalExecutionGate(registry)
+            decision = DecisionObject(
+                decision_id="BOUNDARY-DECISION",
+                mission="prove runtime authority closure",
+                actor_id=authority.principal_id,
+                action="repo_write",
+                purpose=authority.purpose,
+                scope=authority.scope,
+                current_truth="repository mutation requested",
+                gap="gateway requires canonical gate-issued authorization",
+                evidence=("evidence:registry-grant",),
+                epistemic=frozenset({Epistemic.OBSERVED, Epistemic.VERIFIED}),
+                consequence="governed repository write",
+                reversible=True,
+                risk=Risk(uncertainty=1, consequence=2, irreversibility=1),
+                alternatives=("do_not_execute",),
+                expected_value="authorized bounded mutation",
+                required_permission="repo_write",
+                verification=VerificationPlan("post-write state", "verification passes", ("stop",)),
+                necessary_power=frozenset({"repo_write"}),
+                requested_power=frozenset({"repo_write"}),
+            )
+            action = {
+                "action_id": "ACT-BOUNDARY",
+                "action_type": "repository_write",
+                "target": "docs/Naya",
+                "purpose": authority.purpose,
+                "risk": "L2",
+                "protected_baseline": "head-1",
+                "observation_target": "changed file state",
+                "evidence_requirement": ["commit_sha"],
+                "verification_requirement": ["runtime_or_ci"],
+                "authority_id": authority.authority_id,
+                "decision_id": decision.decision_id,
+                "actor_id": decision.actor_id,
+                "scope": decision.scope,
+                "permission": decision.action,
+            }
+            issued = gate.authorize(authority=authority, decision=decision, action=action)
+            assert issued.allowed and issued.authorization is not None
             _claimed(state_path)
-            action = {"action_id": "ACT-BOUNDARY", "action_type": "repo_write", "target": "docs", "purpose": "governed maintenance and verification of NayaPOWER", "risk": "L3", "protected_baseline": "head-1", "observation_target": "files", "evidence_requirement": ["commit"], "verification_requirement": ["ci"], "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE", "actor_id": "SoulSchoolAcademy", "scope": "repo:SoulSchoolAcademy/NayaPOWER"}
-            result = gateway.authorize(action)
+            result = gateway.authorize(
+                action,
+                execution_authorization=issued.authorization,
+                gate=gate,
+                preflight=approved_preflight(),
+            )
             assert result["status"] == "AUTHORIZED", result
             assert result["authority_id"] == action["authority_id"]
             assert result["execution_status"] == "EXECUTING"
+
             _claimed(state_path, reset=True)
             forged = dict(action, authority_id="FABRICATED-AUTHORITY")
             try:
-                gateway.authorize(forged)
+                gateway.authorize(
+                    forged,
+                    execution_authorization=issued.authorization,
+                    gate=gate,
+                    preflight=approved_preflight(),
+                )
             except AssertionError as exc:
-                assert "unknown authority_id" in str(exc)
+                assert "authority_id does not match" in str(exc)
             else:
-                raise AssertionError("tool gateway accepted fabricated authority")
+                raise AssertionError("tool gateway accepted forged authority binding")
     finally:
         ec.STATE = original_state
+        ec.SESSIONS_ROOT, ec.SESSIONS_INDEX_PATH = original_sessions
 
 
 if __name__ == "__main__":

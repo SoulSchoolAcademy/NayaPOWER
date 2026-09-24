@@ -10,7 +10,12 @@ def base_request(candidates):
         "request_id": "CALCULUS-INTEGRATION-001",
         "mission": "Choose the highest responsible verified-value software action.",
         "context": {"project": "NayaPOWER", "mode": "decision-calculus-integration"},
-        "authority": {"actor": "test-harness", "scope": "runtime-evaluation"},
+        "authority": {
+            "authority_id": "HUMAN-SOULSCHOOLACADEMY-REPO-WRITE",
+            "actor_id": "SoulSchoolAcademy",
+            "purpose": "governed maintenance and verification of NayaPOWER",
+            "scope": "repo:SoulSchoolAcademy/NayaPOWER",
+        },
         "constitution_version": "1.0.0",
         "candidates": candidates,
     }
@@ -24,6 +29,7 @@ def candidate(cid, benefit, cost, risk, evidence="VERIFIED", reversible=True, bo
         "necessary_cost": cost,
         "risk_loss": risk,
         "authorization": "approved",
+        "required_permission": "repo_write",
         "boundary_violations": boundary or [],
         "evidence_state": evidence,
         "reversible": reversible,
@@ -59,7 +65,7 @@ def test_high_consequence_uncertainty_defers_before_execution():
     result = kernel.evaluate(base_request([risky]))
     assert result["decision"] == "ESCALATE", result
     assert result["selected_candidate"] is None
-    assert "deferred" in result["reason"].lower()
+    assert "material epistemic uncertainty" in " ".join(result["candidate_evaluations"][0]["reasons"]).lower()
 
 
 def main():
