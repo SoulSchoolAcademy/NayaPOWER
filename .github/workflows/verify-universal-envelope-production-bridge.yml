@@ -1,0 +1,98 @@
+name: NayaNET Universal Envelope production bridge proof
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: universal-envelope-production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build envelope through existing adapter
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, os, sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path(".naya/runtime").resolve()))
+          from universal_intelligence_envelope import UniversalIntelligenceEnvelope
+          from project_intelligence_bridge import packet, accept_universal_envelope, validate
+          p = packet()
+          run = os.environ["GITHUB_RUN_ID"]
+          raw = {
+            "schema": "NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1",
+            "envelope_id": "production:" + run,
+            "source": {"type": "github_actions", "id": "run:" + run},
+            "identity": {"actor_type": "naya", "actor_id": "github-actions"},
+            "owner_scope": {"owner_id": "pending", "project_id": "NayaNET"},
+            "occurred_at": p["created_at"],
+            "received_at": p["created_at"],
+            "output": {"content": "Universal Intelligence Envelope V1 production bridge proof " + run},
+            "meaningfulness": "MEANINGFUL",
+            "provenance": {"source_ref": p["source_ref"], "source_id": "run:" + run},
+            "epistemic": {"status": "OBSERVED"},
+            "privacy": {"visibility": "PRIVATE"},
+            "authority": {"status": "CONTEXT_ONLY"},
+            "context": {"project": "NayaNET", "proof_run": run},
+            "idempotency_key": "universal-envelope-production-" + run
+          }
+          UniversalIntelligenceEnvelope.from_mapping(raw)
+          adapted = accept_universal_envelope(raw, p)
+          errors = validate(adapted)
+          if errors:
+            raise SystemExit("ADAPTER_PACKET_INVALID:" + json.dumps(errors))
+          Path("/tmp/packet.json").write_text(json.dumps(adapted, ensure_ascii=False, separators=(",", ":")))
+          print("ENVELOPE_VALID=PASS")
+          print("ADAPTER=EXISTING_PROJECT_INTELLIGENCE_BRIDGE")
+          print("ENVELOPE_ID=" + raw["envelope_id"])
+          PY
+      - name: Production transaction, independent reconstruction, exact replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'EOF'
+          import fs from "node:fs";
+          const B=process.env.SUPABASE_URL,K=process.env.SUPABASE_PUBLISHABLE_KEY,R=process.env.GITHUB_RUN_ID;
+          const P=JSON.parse(fs.readFileSync("/tmp/packet.json","utf8"));
+          const H=t=>({apikey:K,authorization:"Bearer "+t,"content-type":"application/json"});
+          async function post(path,t,b){const r=await fetch(B+"/functions/v1/"+path,{method:"POST",headers:H(t),body:JSON.stringify(b)});const raw=await r.text();let j;try{j=JSON.parse(raw)}catch{j={raw}};return [r.status,j]}
+          const ar=await fetch(B+"/auth/v1/signup",{method:"POST",headers:{apikey:K,"content-type":"application/json"},body:"{}"}),a=await ar.json();
+          if(!ar.ok||!a.access_token)throw Error("AUTH_FAILED");
+          const userToken=a.access_token,owner=a.user.id;
+          P.owner_id=owner;
+          const envObj=P.intelligence.find(x=>x.content?.schema==="NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1")?.content;
+          if(!envObj)throw Error("ENVELOPE_NOT_ADAPTED");
+          envObj.owner_scope.owner_id=owner;
+          const oidc=await fetch(process.env.ACTIONS_ID_TOKEN_REQUEST_URL+"&audience=nayanet-project-intelligence-bridge",{headers:{Authorization:"bearer "+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
+          const oj=await oidc.json(); if(!oidc.ok||!oj.value)throw Error("OIDC_TOKEN_FAILED");
+          let [bs,b]=await post("nayanet-project-intelligence-bridge",oj.value,P);
+          console.log("BRIDGE="+JSON.stringify(b));
+          if(bs!==200||b.status!=="COMPLETED"||!b.persisted||!b.indexed||!b.projected)throw Error("BRIDGE_FAILED");
+          const [rs,rr]=await post("nayanet-project-intelligence-retrieve",userToken,{query:b.receiver_event_id});
+          if(rs!==200||!rr.ok||!rr.result?.events?.length)throw Error("RETRIEVE_FAILED");
+          const ev=rr.result.events.find(e=>e.event_id===b.receiver_event_id);
+          if(!ev)throw Error("EVENT_ID_NOT_RECONSTRUCTED");
+          const parsed=JSON.parse(ev.content);
+          if(parsed.bridge.receiver_transaction_id!==b.receiver_transaction_id||parsed.bridge.receiver_event_id!==b.receiver_event_id||parsed.bridge.receipt_id!==b.receipt_id||ev.receipt_id!==b.receipt_id)throw Error("LINEAGE_RECONSTRUCTION_FAILED");
+          const rest=await fetch(B+"/rest/v1/nayanet_intelligence_index?select=id,source_id,owner_id&source_id=eq."+encodeURIComponent(b.projection.cognition_event_id),{headers:{apikey:K,authorization:"Bearer "+userToken}});
+          const idx=await rest.json();
+          if(!rest.ok||!idx.some(x=>x.id===b.projection.index_id))throw Error("INDEX_RECONSTRUCTION_FAILED");
+          const [rbs,rb]=await post("nayanet-project-intelligence-bridge",oj.value,P);
+          console.log("REPLAY="+JSON.stringify(rb));
+          if(rbs!==200||rb.status!=="ACCEPTED"||rb.replay!==true||rb.receiver_transaction_id!==b.receiver_transaction_id||rb.receiver_event_id!==b.receiver_event_id||rb.receipt_id!==b.receipt_id)throw Error("EXACT_REPLAY_FAILED");
+          console.log("INDEPENDENT_RECONSTRUCTION="+JSON.stringify({receiver_transaction:b.receiver_transaction_id,receiver_event:b.receiver_event_id,receipt:b.receipt_id,index:b.projection.index_id,retrieval_event:ev.event_id,replay_same_lineage:true}));
+          console.log("CHAIN_RESULT="+JSON.stringify({schema:"NAYANET_UNIVERSAL_ENVELOPE_PRODUCTION_BRIDGE_PROOF_V1",run_id:R,envelope_id:envObj.envelope_id,receiver_transaction:true,receiver_event:true,receipt:true,index:true,retrieval:true,exact_replay:true,status:"VERIFIED"}));
+          EOF
