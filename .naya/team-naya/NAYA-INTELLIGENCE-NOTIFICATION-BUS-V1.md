@@ -73,9 +73,21 @@ A material event is not considered socially/systemically propagated until its de
 
 Delivery failure is not event failure; it is a delivery incident that remains visible and retryable.
 
-## Privacy
+## Participation, privacy, and notification
 
-Private events remain private. Shared events require consent/scope. Collective events expose only the minimum necessary identity/context.
+An authorized NayaNET connection establishes participation consent for governed intelligence exchange. Ordinary learning and collective-learning processing do not require a second manual permission event for each Smart Note.
+
+Notifications MUST preserve the distinction between:
+
+- **participation consent** — established by the authorized connection/door;
+- **learning** — automatic by default, subject to governance/evidence;
+- **collective contribution** — automatic after participation consent, subject to usefulness/trust/privacy filtering;
+- **identity visibility** — private by default;
+- **public publication** — separate explicit decision.
+
+Private Personal Intelligence and Activity may be projected to the authenticated member's Hub. That member visibility is not public visibility.
+
+Collective notifications expose useful wisdom with minimum necessary identity/context. A notification must never infer public identity disclosure merely because the source participated in the network.
 
 ## Human experience
 
