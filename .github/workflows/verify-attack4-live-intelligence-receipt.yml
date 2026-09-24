@@ -103,6 +103,7 @@ jobs:
               'sys.path.insert(0,str(Path(".naya/runtime").resolve()))',
               'sys.path.insert(0,str(Path(".naya/governance").resolve()))',
               'from universal_execution_gate import UniversalExecutionGate',
+              'from portable_authorization import issue_portable_authorization, generate_keypair',
               'from governance_kernel import Authority, AuthorityRegistry, DecisionObject, Epistemic, Risk, VerificationPlan',
               'g=json.load(open("live-grant.json",encoding="utf-8"))',
               'authority=Authority(authority_id=g["authority_id"],principal_id=g["principal_id"],purpose=g["purpose"],scope=g["scope"],granted_actions=frozenset(g["granted_actions"]),expires_at=g.get("expires_at"),revoked=False)',
@@ -114,9 +115,30 @@ jobs:
               'issued=gate.authorize(authority=authority,decision=decision,action=action)',
               'assert issued.allowed and issued.authorization is not None, issued.reasons',
               'a=issued.authorization',
+              'private_key,public_key=generate_keypair()',
+              'artifact=issue_portable_authorization(execution_authorization=a,registry=AuthorityRegistry(authorities={authority.authority_id:authority}),gate=gate,commit_sha=sys.argv[2],private_key_hex=private_key,repository="SoulSchoolAcademy/NayaPOWER",now=a.validated_at,expires_in_seconds=60)',
+              'json.dump(artifact,open("portable-authorization.json","w",encoding="utf-8"),indent=2)',
+              'open("portable-public-key.txt","w",encoding="utf-8").write(public_key)',
               'print(json.dumps({"authority_id":a.authority_id,"decision_id":a.decision_id,"action_id":a.action_id,"action_type":a.action_type,"target":a.target,"actor_id":a.actor_id,"scope":a.scope,"permission":a.permission,"governance_state":a.governance_state,"risk_tier":a.risk_tier,"validated_at":a.validated_at,"binding_hash":a.binding_hash}))'
             ].join(';');
-            const executionAuthorization = JSON.parse(execFileSync('python', ['-c',gateScript,run], {encoding:'utf8'}).trim());
+            const executionAuthorization = JSON.parse(execFileSync('python', ['-c',gateScript,run,sourceHead], {encoding:'utf8'}).trim());
+            const portableVerifyScript = [
+              'import json,sys',
+              'from pathlib import Path',
+              'sys.path.insert(0,str(Path(".naya/runtime").resolve()))',
+              'sys.path.insert(0,str(Path(".naya/governance").resolve()))',
+              'from universal_execution_gate import load_registry',
+              'from portable_authorization import verify_portable_authorization',
+              'artifact=json.load(open("portable-authorization.json",encoding="utf-8"))',
+              'registry=load_registry("live-grant.json")',
+              'public_key=Path("portable-public-key.txt").read_text(encoding="utf-8").strip()',
+              'ok,reasons=verify_portable_authorization(artifact=artifact,public_key_hex=public_key,registry=registry,now=artifact["authorization"]["issued_at"])',
+              'print(json.dumps({"ok":ok,"reasons":reasons}))',
+              'raise SystemExit(0 if ok else 1)'
+            ].join(';');
+            const portableVerification = JSON.parse(execFileSync('python', ['-c',portableVerifyScript], {encoding:'utf8'}).trim());
+            if (!portableVerification.ok) throw new Error('PORTABLE_AUTHORIZATION_FRESH_PROCESS_VERIFY_FAILED:'+JSON.stringify(portableVerification));
+            mark('PORTABLE_AUTHORIZATION_FRESH_PROCESS','PASS',{schema:'NAYANET_PORTABLE_AUTHORIZATION_V1'});
             mark('EXECUTION_AUTHORIZATION','PASS',{
               authority_id:executionAuthorization.authority_id,
               decision_id:executionAuthorization.decision_id,
