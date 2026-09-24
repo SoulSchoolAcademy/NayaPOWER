@@ -30,7 +30,7 @@ export function FeatureSurface({ kind }: { kind: 'ledger' | 'mail' | 'spaces' | 
   const load = async () => {
     setBusy(true); setError('');
     try {
-      const rt = runtime();
+      const rt: any = runtime();
       if (kind !== 'ledger') throw new Error('CANONICAL_RUNTIME_SURFACE_NOT_BOUND');
       const data = await rt.listSmartLedger();
       setRows(Array.isArray(data) ? data as Row[] : []);
