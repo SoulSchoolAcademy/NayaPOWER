@@ -70,7 +70,7 @@ Matching signals may include:
 
 Do not infer sensitive traits without explicit product justification and governance.
 
-## 7. Connection consent
+## 7. Smart Connect participation consent
 
 A match is not a connection.
 
