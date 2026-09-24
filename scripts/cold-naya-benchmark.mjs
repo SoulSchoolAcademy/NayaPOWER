@@ -26,7 +26,7 @@ const bootChecks={
   constitution:true,
   control_plane:true,
   live_head_resolution:start.includes("Live Git HEAD"),
-  no_conversation_dependency:start.includes("Do not reconstruct the project from conversation history"),
+  no_conversation_dependency:start.includes("conversation archaeology"),
 };
 for(const [k,v] of Object.entries(bootChecks)) assert(v,"BOOT_CHECK_FAILED:"+k);
 const actions=[
