@@ -16,6 +16,12 @@ CONTRACT_PATH = ROOT / ".naya/contracts/HUB-IDENTITY-PROJECTION-V1.json"
 RECEIPT_PATH = ROOT / ".naya/control-plane/HUB-IDENTITY-PROJECTION-RECEIPT.json"
 TEAM_LOCK_PATH = ROOT / ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md"
 TEAM_MARKER = r"SHA: `([0-9a-f]{40})`"
+FILE_HASH_SEMANTICS = {
+    "algorithm": "sha256",
+    "encoding": "utf-8",
+    "newline_normalization": "LF",
+    "representation": "normalized_text_bytes",
+}
 
 
 class ProjectionError(RuntimeError):
@@ -47,6 +53,7 @@ def load_json(path: Path) -> dict[str, Any]:
 def load_contract(root: Path = ROOT) -> dict[str, Any]:
     contract = load_json(root / ".naya/contracts/HUB-IDENTITY-PROJECTION-V1.json")
     require(contract.get("status") == "CANONICAL", "PROJECTION_CONTRACT_NOT_CANONICAL")
+    require(contract.get("file_hash") == FILE_HASH_SEMANTICS, "PROJECTION_HASH_SEMANTICS_INVALID")
     authority = contract.get("authority")
     destinations = contract.get("destinations")
     require(isinstance(authority, dict), "PROJECTION_AUTHORITY_MISSING")
@@ -238,7 +245,13 @@ def validate_projection(
 
 
 def file_sha(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    data = path.read_bytes()
+    try:
+        text = data.decode("utf-8")
+    except UnicodeDecodeError as exc:
+        raise ProjectionError(f"PROJECTION_TARGET_NOT_UTF8:{path}") from exc
+    normalized = text.replace("\r\n", "\n").replace("\r", "\n").encode("utf-8")
+    return hashlib.sha256(normalized).hexdigest()
 
 
 def normalized_baton(value: dict[str, Any]) -> dict[str, Any]:
@@ -270,6 +283,7 @@ def build_receipt(
         "manifest_blob": authority["manifest_blob"],
         "hub_path": authority["hub_path"],
         "hub_sha": authority["hub_sha"],
+        "file_hash": contract["file_hash"],
         "contract_path": ".naya/contracts/HUB-IDENTITY-PROJECTION-V1.json",
         "generator": ".naya/runtime/hub_identity_projection.py",
         "generated_at": generated_at,
@@ -288,6 +302,7 @@ def build_receipt(
 
 def validate_receipt(root: Path, authority: dict[str, Any], contract: dict[str, Any], receipt: dict[str, Any]) -> None:
     require(receipt.get("status") == "VERIFIED", "PROJECTION_RECEIPT_NOT_VERIFIED")
+    require(receipt.get("file_hash") == contract.get("file_hash"), "PROJECTION_RECEIPT_HASH_SEMANTICS_MISMATCH")
     require(receipt.get("hub_sha") == authority["hub_sha"], "PROJECTION_RECEIPT_HUB_SHA_MISMATCH")
     require(receipt.get("manifest_blob") == authority["manifest_blob"], "PROJECTION_RECEIPT_MANIFEST_MISMATCH")
     source_commit = receipt.get("source_commit")
