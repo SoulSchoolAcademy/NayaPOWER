@@ -45,9 +45,11 @@ jobs:
           assert by_number[60]["title"] == "THE ULTIMATE NAYAPOWER LOOP"
           assert "VERIFIED_PRODUCTION" not in counts
           gate={
-              "schema":"naya-system-truth-ledger-gate/v1",
-              "verification_status":"VERIFIED",
-              "truth_status":"NOT_COMPLETE",
+               "schema":"naya-system-truth-ledger-gate/v1",
+               "verification_status":"VERIFIED_MECHANISM",
+               "verification_scope":"EVIDENCE_INDEX_ONLY",
+               "truth_status":"NOT_COMPLETE",
+
               "execution_status":"NOT_EXECUTED",
               "system_count":len(rows),
               "system_range":"41-60",
