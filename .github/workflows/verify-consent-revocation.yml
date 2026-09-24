@@ -1,0 +1,102 @@
+name: Verify Consent Revocation
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/consent_revocation.py"
+      - ".naya/runtime/test_consent_revocation.py"
+      - ".github/workflows/verify-consent-revocation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  consent-revocation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate revocation runtime
+        run: python -m py_compile .naya/runtime/consent_revocation.py .naya/runtime/test_consent_revocation.py
+      - name: Verify System 45 lineage input
+        run: python .naya/runtime/test_derived_intelligence_revalidation.py
+      - name: Verify consent propagation behavior
+        run: python .naya/runtime/test_consent_revocation.py
+      - name: Build independent revocation plan
+        run: |
+          python - <<'PY'
+          import hashlib
+          import importlib.util
+          import json
+          import os
+          import sys
+          from pathlib import Path
+          runtime=Path(".naya/runtime").resolve()
+          sys.path.insert(0,str(runtime))
+          spec=importlib.util.spec_from_file_location("consent_revocation",runtime/"consent_revocation.py")
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          sha=lambda value: hashlib.sha256(value.encode("utf-8")).hexdigest()
+          revocation={
+              "revocation_id":"ci-revocation-44",
+              "authority_ref":"ci-consent-authority",
+              "revoked_by":"ci-owner",
+              "reason":"CI consent withdrawal",
+              "evidence_refs":["ci-consent-evidence"],
+              "idempotency_key":"ci-consent-revocation-44",
+              "sources":[{"intelligence_id":"ORIGINAL-A","previous_consent_sha256":sha("consent-granted"),"revoked_consent_sha256":sha("consent-revoked")}]
+          }
+          def record(event_id,kind,parents):
+              return {"event_id":event_id,"artifact_type":kind,"status":"ACTIVE","consent_state":"EXPLICIT","relationships":{"source_events":parents}}
+          records=[
+              record("ORIGINAL-A","ORIGINAL",[]),
+              record("DERIVED-D","DERIVED",["ORIGINAL-A"]),
+              record("SUMMARY-S","SUMMARY",["DERIVED-D"]),
+              record("COLLECTIVE-C","COLLECTIVE_INSIGHT",["SUMMARY-S"]),
+              record("CACHE-K","CACHE",["ORIGINAL-A"]),
+              record("EMBEDDING-V","EMBEDDING",["ORIGINAL-A"]),
+              record("DOWNSTREAM-X","DOWNSTREAM_CONCLUSION",["COLLECTIVE-C"])
+          ]
+          plan=module.plan_consent_revocation(revocation,records)
+          errors=module.validate_revocation_plan(plan)
+          assert not errors,errors
+          assert plan["status"]=="COMPLETE",plan
+          assert plan["impacted_artifacts"],plan
+          assert plan["original_preservation"]=="PRESERVE_OWNER_ORIGINAL",plan
+          assert plan["persistence_performed"] is False,plan
+          assert plan["canonical_records_modified"] is False,plan
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"consent-revocation-plan.json").write_text(json.dumps(plan,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+              "schema":"naya-consent-revocation-gate/v1",
+              "status":"VERIFIED",
+              "mode":plan["mode"],
+              "plan_status":plan["status"],
+              "revoked_source_count":len(plan["revocation"]["sources"]),
+              "impacted_artifact_count":len(plan["impacted_artifacts"]),
+              "artifact_types":sorted({item["artifact_type"] for item in plan["impacted_artifacts"]}),
+              "original_preservation":plan["original_preservation"],
+              "persistence_performed":plan["persistence_performed"],
+              "canonical_records_modified":plan["canonical_records_modified"],
+              "production_integration":"NOT_TESTED",
+              "truth_boundary":plan["truth_boundary"]
+          }
+          (root/"consent-revocation-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish consent revocation proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: consent-revocation-proof
+          path: |
+            .naya/runtime/consent_revocation.py
+            .naya/runtime/test_consent_revocation.py
+            ${{ runner.temp }}/consent-revocation-plan.json
+            ${{ runner.temp }}/consent-revocation-gate.json
+          retention-days: 14
+          if-no-files-found: error
