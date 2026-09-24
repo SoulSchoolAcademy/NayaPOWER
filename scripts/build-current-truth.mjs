@@ -67,14 +67,14 @@ function render() {
     "## Unknown / Blocked / Stale Signals",""
   ];
   if (signals.length) for (const [k,v] of signals) lines.push("- **"+k+":** "+v.replace(/\n/g," "));
-  else lines.push("- None detected by the compiler’s conservative signal scan.");
+  else lines.push("- None detected by the compiler's conservative signal scan.");
   lines.push("","## Current Authority","",
     "- **Constitution:** `"+(MAP.authority?.governing_standard||"UNKNOWN")+"`",
     "- **Current state:** `"+(MAP.authority?.current_state||"UNKNOWN")+"`",
     "- **Active block:** `"+(activeBlock||"UNKNOWN")+"`","",
     "## Current Mission / Next Action","",
     "- **Single next action:** "+(currentNext||"UNKNOWN"),
-    "- **Next-action conflict:** "+(nextActions.length>1?"DETECTED — multiple distinct control-plane next actions exist; do not treat this artifact as resolved authority.":"NOT DETECTED by the canonical surfaces inspected."),
+    "- **Next-action conflict:** "+(nextActions.length>1?"DETECTED - multiple distinct control-plane next actions exist; do not treat this artifact as resolved authority.":"NOT DETECTED by the canonical surfaces inspected."),
     "","## Compiler Integrity","",
     "- This artifact is derived, not authoritative.",
     "- Live git identity is resolved at generation time.",
