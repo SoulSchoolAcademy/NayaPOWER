@@ -1,6 +1,6 @@
 # 🔱 Stream B — Production Authority Bridge V1
 
-**Status:** DESIGN + FAIL-FIRST CONTRACT — 2026-09-24  
+**Status:** SOURCE REPAIR PREPARED + FAIL-FIRST CONTRACT — 2026-09-24  
 **Scope:** Fronts #1–#4 only  
 **Production mutation:** NONE
 
@@ -251,7 +251,12 @@ This document intentionally does **not** claim the bridge is implemented.
 Current status:
 - Front #1: DESIGN COMPLETE / IMPLEMENTATION NOT VERIFIED
 - Front #2: EXISTING PORTABLE VERIFIER AVAILABLE / PRODUCTION WIRING NOT VERIFIED
-- Front #3: NOT CONVERGED
+- Front #3: PARTIAL — legacy six-argument `intelligence.capture` path is now source-repaired to fail closed; seven-argument gate/portable provenance remains NOT VERIFIED
 - Front #4: **PARTIAL → substantially reconstructed** — live SQL callers and the active `nayanet-compound-intelligence` 7-arg caller are verified; complete Edge Function/Hub caller inventory remains incomplete
 
 No live mutation, grant issuance, revocation, deployment, or credential provisioning occurred.
+
+
+### Source repair prepared in this session
+
+Migration `20260924230000_converge_intelligence_capture_authority_v1.sql` changes only the six-argument overload's `intelligence.capture` branch: because that overload has no ExecutionAuthorization input, it now fails closed with `CANONICAL_EXECUTION_AUTHORIZATION_REQUIRED` instead of authorizing from caller metadata. Existing non-capture actions retain their established grant validation behavior. This is a source-level repair only; production application is NOT claimed. The seven-argument overload remains the canonical candidate but still requires provenance verification before the bridge can be considered converged.
