@@ -17,6 +17,8 @@ jobs:
       RUN_IDENTITY: hub-runtime-envelope-sender
     steps:
       - uses: actions/checkout@v4
+      - name: Run Stream E diagnostics regression
+        run: node --test .github/scripts/stream-e-failure-diagnostics.test.mjs
       - name: Install browser
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
