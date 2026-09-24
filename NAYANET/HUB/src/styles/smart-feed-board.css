@@ -58,3 +58,4 @@
 .smart-feed-board .sfb-picker-field select:focus{border-color:#b89cff;box-shadow:0 0 0 3px rgba(184,156,255,.12)}
 .smart-feed-board .sfb-picker-help{grid-column:1 / -1;color:#777789;font-size:9px;line-height:1.5}
 @media(max-width:620px){.smart-feed-board .sfb-connection-picker{grid-template-columns:1fr;margin:10px 12px}.smart-feed-board .sfb-picker-help{grid-column:auto}}
+.sfb-why-naya{margin:18px 0;padding:18px;border:1px solid rgba(139,66,255,.28);border-radius:16px;background:rgba(10,10,16,.45)}.sfb-why-intro{margin:6px 0 14px;opacity:.78}.sfb-why-item{display:grid;grid-template-columns:minmax(150px,24%) 1fr;gap:12px;padding:10px 0;border-top:1px solid rgba(255,255,255,.08)}.sfb-why-item b{font-size:11px;letter-spacing:.08em}.sfb-why-item span{line-height:1.45}
