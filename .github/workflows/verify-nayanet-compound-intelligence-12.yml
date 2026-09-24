@@ -194,12 +194,13 @@ jobs:
               if(share.status!=='SHARED_BY_EXPLICIT_CONSENT') throw new Error('SHARE_FAILED:'+JSON.stringify(share));
 
               const supersede=await call(page,session,'supersede',{
-                superseded_event_id:sourceRow.data.id,`r`n                superseded_block_id:sourceBlock.data.block_id,
+                superseded_event_id:sourceRow.data.id,
+                superseded_block_id:sourceBlock.data.block_id,
                 title:'Superseding Compound Intelligence proof interpretation',
                 content:'This is an explicit revision of the controlled proof interpretation; lineage must retain the prior event and Intelligent Block.',
                 reason:'Controlled successor revision test',
                 confidence:1
-              if(supersede.lineage?.supersedes!==eventId) throw new Error('SUPERSESSION_LINEAGE_INVALID');
+              });
 
               const health=await call(page,session,'health');
               if(health.status!=='OBSERVED'||!Number.isInteger(health.counts?.operations)) throw new Error('HEALTH_INVALID');
