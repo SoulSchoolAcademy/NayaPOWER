@@ -6,7 +6,7 @@ const text = (value: unknown) => value == null ? '' : String(value);
 const short = (value: string, max = 220) => value.length > max ? value.slice(0, max - 1) + '…' : value;
 
 function runtime() {
-  const rt = window.NayaAssistantRuntime;
+  const rt = (window as typeof window & { NayaAssistantRuntime?: any }).NayaAssistantRuntime;
   if (!rt) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE');
   if (!rt.snapshot?.()?.authenticated) throw new Error('AUTH_REQUIRED');
   return rt;
@@ -30,7 +30,7 @@ export function FeatureSurface({ kind }: { kind: 'ledger' | 'mail' | 'spaces' | 
   const load = async () => {
     setBusy(true); setError('');
     try {
-      const rt: any = runtime();
+      const rt = runtime();
       if (kind !== 'ledger') throw new Error('CANONICAL_RUNTIME_SURFACE_NOT_BOUND');
       const data = await rt.listSmartLedger();
       setRows(Array.isArray(data) ? data as Row[] : []);
