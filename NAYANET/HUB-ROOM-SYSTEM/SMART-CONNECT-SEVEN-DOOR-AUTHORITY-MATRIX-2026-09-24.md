@@ -230,3 +230,34 @@ Prepared, but not run in production: missing signature, wrong signature, altered
 ### Single next action
 
 **Run the controlled signed production GitHub webhook proof after the authorized operator has configured the real production secret.**
+
+
+## 2026-09-24 P2 — Canonical webhook replay/idempotency repair
+
+### What changed
+
+The highest-value unblocked causal hole identified during P1 was repaired in the existing canonical cognition persistence seam. Migration `20260924222644_harden_cognition_event_replay_idempotency_v1` changes the existing six-argument `nayanet_record_cognition_event` path so an existing `(user_id, project_id, event_id)` with its canonical receipt is treated as an exact replay: it returns the original event/state/receipt with `replayed=true`, without creating a second execution receipt or incrementing project cognition state.
+
+No second backend, event store, authority model, or webhook ingress was introduced.
+
+### Evidence
+
+- Repository commit: `7451968c14f9285a43b6a61dfe971e5630d3e564`
+- Production migration version: `20260924222644` / `harden_cognition_event_replay_idempotency_v1`
+- Production function definition independently read back after migration and contains the replay branch.
+- Existing cognition uniqueness remains `(user_id, project_id, event_id)`.
+
+### Truth status
+
+- Replay/idempotency implementation: **VERIFIED**
+- Production schema application: **VERIFIED**
+- Live signed GitHub replay proof: **NOT VERIFIED / BLOCKED_EXTERNAL_CREDENTIAL**
+- Current direct webhook probe still returns HTTP 503 `GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED` before signature processing.
+
+### Remaining causal hole
+
+The positive signed-production proof cannot yet cross the external `GITHUB_WEBHOOK_SECRET` boundary. The receiver also still does not persist an explicit GitHub installation ID, so installation-level isolation remains NOT VERIFIED.
+
+### Single next action
+
+**Configure `GITHUB_WEBHOOK_SECRET` in the authorized production secret-management/admin boundary, then execute the controlled signed webhook positive → exact replay → independent persistence/retrieval → authority-separation proof.**
