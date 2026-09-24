@@ -1,0 +1,84 @@
+name: Naya CLEAN V1 Tonight Target Repair
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, ready_for_review]
+    branches: [feat/aiscore-clean-v1]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.event.pull_request.head.ref == 'fix/aiscore-cleanv1-tonight' && github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Switch explicitly to PR head
+        shell: bash
+        run: |
+          git fetch origin "refs/heads/${{ github.event.pull_request.head.ref }}:refs/remotes/origin/${{ github.event.pull_request.head.ref }}"
+          git checkout --force "${{ github.event.pull_request.head.ref }}"
+
+      - name: Apply surgical repair
+        shell: python
+        run: |
+          from pathlib import Path
+          p=Path('AIScoreMAXESS-CLEAN-V1.html')
+          s=p.read_text(encoding='utf-8')
+          old='<div class="naya-presence"><div class="naya-portrait" aria-hidden="true"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%206.jpg" alt=""></div><div class="presence-orb" id="presenceOrb" aria-hidden="true"></div><div class="presence-copy"><strong>Naya</strong><span>Let me walk you through this.</span></div></div>'
+          new='<div class="naya-presence"><div class="naya-portrait" aria-hidden="true"><img src="https://raw.githubusercontent.com/SoulSchoolAcademy/MaxRESULTS/main/Naya%20Profile%206.jpg" alt=""></div><div class="presence-copy"><strong>Naya</strong><span>Let me walk you through this.</span></div></div>'
+          if old not in s: raise SystemExit('Expected Naya dialog structure not found.')
+          s=s.replace(old,new,1)
+          s=s.replace("$('presenceOrb').classList.toggle('playing',v);",'',1)
+          old_finish='function finishInterests(){finishAssessment()}'
+          if old_finish not in s: raise SystemExit('Expected interest completion function not found.')
+          s=s.replace(old_finish,"function finishInterests(){try{publish()}catch(e){console.error(e)}}",1)
+          old_url="location.assign('https://results.nayanet.app/#maxess-result='+payload);"
+          if old_url not in s: raise SystemExit('Expected .app Results URL not found.')
+          s=s.replace(old_url,"location.assign('https://results.nayanet.xyz/#maxess-result='+payload);",1)
+          old_complete='<div id="completeStage" class="complete hidden" aria-live="polite"><div class="complete-orb" aria-hidden="true"></div><h2>Your personal report is ready.</h2><p>I\'m sending your real assessment result to MAXESS Results now. Nothing is being invented or substituted.</p><button class="primary" id="continueToResults" type="button">Continue to My Report <span class="arrow">→</span></button></div>'
+          s=s.replace(old_complete,'',1)
+          marker='window.MAXESS_CLEAN_V1_TONIGHT_REPAIR_V1=true;'
+          if marker not in s: s=s.replace("window.NAYA_WELCOME_V1=true;","window.NAYA_WELCOME_V1=true;"+marker,1)
+          p.write_text(s,encoding='utf-8')
+      - name: Verify exact artifact
+        shell: bash
+        run: |
+          test -s 'AIScoreMAXESS-CLEAN-V1.html'
+          grep -q 'NAYA_IMAGE_AAA_V1' 'AIScoreMAXESS-CLEAN-V1.html'
+          grep -q 'MAXESS_RESULT_V1' 'AIScoreMAXESS-CLEAN-V1.html'
+          grep -q 'https://results.nayanet.xyz/#maxess-result=' 'AIScoreMAXESS-CLEAN-V1.html'
+          grep -q 'MAXESS_CLEAN_V1_TONIGHT_REPAIR_V1' 'AIScoreMAXESS-CLEAN-V1.html'
+          grep -q 'function finishInterests(){try{publish()}' 'AIScoreMAXESS-CLEAN-V1.html'
+          if grep -q 'id="presenceOrb"' 'AIScoreMAXESS-CLEAN-V1.html'; then exit 1; fi
+          if grep -q 'results.nayanet.app/#maxess-result=' 'AIScoreMAXESS-CLEAN-V1.html'; then exit 1; fi
+          if grep -q 'id="completeStage"' 'AIScoreMAXESS-CLEAN-V1.html'; then exit 1; fi
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          s=Path('AIScoreMAXESS-CLEAN-V1.html').read_text(encoding='utf-8')
+          scripts=re.findall(r'<script[^>]*>(.*?)</script>',s,re.S|re.I)
+          Path('/tmp/aiscore.js').write_text('\n'.join(scripts),encoding='utf-8')
+          print('bytes',len(s.encode()),'lines',len(s.splitlines()),'scripts',len(scripts))
+          PY
+          node --check /tmp/aiscore.js
+          git diff --check
+      - name: Commit repair and remove runners
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- 'AIScoreMAXESS-CLEAN-V1.html'
+          git rm -- '.github/workflows/naya-cleanv1-tonight-repair.yml' || true
+          git commit -m 'Repair CLEAN V1 Naya and Results transition'
+          git push origin HEAD:fix/aiscore-cleanv1-tonight
+          git checkout --force feat/aiscore-clean-v1
+          git pull --ff-only origin feat/aiscore-clean-v1
+          git rm -- '.github/workflows/naya-cleanv1-tonight-target.yml'
+          git commit -m 'Remove temporary CLEAN V1 target repair runner'
+          git push origin HEAD:feat/aiscore-clean-v1
