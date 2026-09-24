@@ -260,8 +260,18 @@ def issue_portable_authorization(
             raise ValueError("credential is not bound to this exact deploy target")
         if execution_authorization.permission != DEPLOY_PERMISSION:
             raise ValueError("release artifact requires the deploy_public_runtime permission")
+    elif action_type in INTELLIGENCE_COMMIT_ACTION_TYPES:
+        # Intelligence commit is portable only as the exact canonical NayaNET
+        # action. This extends the existing gate credential; it does not mint
+        # or create a second authority model.
+        if execution_authorization.target != INTELLIGENCE_COMMIT_TARGET:
+            raise ValueError("intelligence-commit artifact requires the canonical NayaNET target")
+        if execution_authorization.permission != INTELLIGENCE_COMMIT_PERMISSION:
+            raise ValueError("intelligence-commit artifact requires the intelligence_commit permission")
+        environment = deployment_surface = ""
+        paths = []
     else:
-        raise ValueError(f"action_type {action_type!r} is not a portable release or mutation action")
+        raise ValueError(f"action_type {action_type!r} is not a portable release, mutation, or intelligence-commit action")
 
     expires_at = (parsed + timedelta(seconds=int(expires_in_seconds))).isoformat()
     authorization = {
@@ -545,6 +555,9 @@ __all__ = [
     "BOUNDARY_DECISION",
     "DEPLOY_PERMISSION",
     "REPO_WRITE_PERMISSION",
+    "INTELLIGENCE_COMMIT_ACTION_TYPES",
+    "INTELLIGENCE_COMMIT_PERMISSION",
+    "INTELLIGENCE_COMMIT_TARGET",
     "DEFAULT_REPOSITORY",
     "load_verifier_public_key",
     "generate_keypair",
