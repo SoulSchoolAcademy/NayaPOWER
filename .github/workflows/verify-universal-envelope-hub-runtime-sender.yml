@@ -17,12 +17,17 @@ jobs:
       RUN_IDENTITY: hub-runtime-envelope-sender
     steps:
       - uses: actions/checkout@v4
+      - name: Run Stream E diagnostics regression
+        run: node --test .github/scripts/stream-e-failure-diagnostics.test.mjs
       - name: Install browser
         run: |
           npm install --no-save --no-package-lock playwright@1.55.0
           npx playwright install --with-deps chromium
       - name: Execute Hub runtime sender proof
         run: node .github/scripts/universal-envelope-hub-runtime-sender.mjs
+      - name: Verify non-main zero-mutation proof
+        if: ${{ github.ref != 'refs/heads/main' }}
+        run: node --input-type=module -e "import fs from 'node:fs'; const p=JSON.parse(fs.readFileSync('universal-envelope-hub-runtime-sender-proof.json','utf8')); if(p.proof_mode!=='NON_MAIN_NO_MUTATION'||p.production_mutation!=='NONE'||p.browser_launch!=='NOT_STARTED'||p.network_activity!=='NONE'||p.smart_note_capture!=='NOT_RUN'||p.production_transaction!=='NOT_CREATED'||p.production_receipt!=='NOT_CREATED'||p.production_intelligence!=='NOT_CREATED'||p.capture_request_count!==0||p.receiver_request_count!==0||p.trace.length!==0) process.exit(1)"
       - name: Upload sender coverage proof
         if: always()
         uses: actions/upload-artifact@v4
