@@ -57,6 +57,7 @@ def build_baton() -> dict[str, Any]:
         "$schema": "naya/control-plane/baton/v1",
         "status": "CANONICAL",
         "repository": state["repository"],
+        "identity": state["repository"],
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "source_of_truth": {
             "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
@@ -145,6 +146,7 @@ def validate_baton(baton: dict[str, Any]) -> None:
 
     assert baton.get("status") == "CANONICAL", "BATON_NOT_CANONICAL"
     assert baton.get("repository") == state.get("repository") == "SoulSchoolAcademy/NayaPOWER", "BATON_REPOSITORY_MISMATCH"
+    assert baton.get("identity") == state.get("repository") == "SoulSchoolAcademy/NayaPOWER", "BATON_IDENTITY_MISMATCH"
     assert baton.get("source_of_truth", {}).get("live_state") == ".naya/control-plane/STATE.json"
     assert baton.get("source_of_truth", {}).get("active_block") == ".naya/control-plane/BLOCKS.json"
     assert baton.get("source_of_truth", {}).get("mission_map") == ".naya/control-plane/MAP.json"

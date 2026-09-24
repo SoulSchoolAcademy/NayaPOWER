@@ -31,18 +31,24 @@ class FreshnessError(AssertionError):
     pass
 
 
+class InfrastructureError(Exception):
+    pass
+
+
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise FreshnessError(message)
 
 
 def load_json(path: Path) -> dict[str, Any]:
-    require(path.is_file(), f"MISSING: {path}")
+    if not path.is_file():
+        raise InfrastructureError(f"MISSING: {path}")
     try:
         value = json.loads(path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        raise FreshnessError(f"INVALID_JSON: {path}: {exc}") from exc
-    require(isinstance(value, dict), f"INVALID_ROOT: {path}")
+        raise InfrastructureError(f"INVALID_JSON: {path}: {exc}") from exc
+    if not isinstance(value, dict):
+        raise InfrastructureError(f"INVALID_ROOT: {path}")
     return value
 
 
@@ -55,7 +61,7 @@ def git(root: Path, *args: str, check: bool = True) -> str:
     )
     if check and result.returncode != 0:
         detail = result.stderr.strip() or result.stdout.strip()
-        raise FreshnessError(f"GIT_FAILED: git {' '.join(args)}: {detail}")
+        raise InfrastructureError(f"GIT_FAILED: git {' '.join(args)}: {detail}")
     return result.stdout.strip()
 
 
@@ -336,6 +342,7 @@ def validate_hub(root: Path, state: dict[str, Any], map_data: dict[str, Any], ba
 def validate_baton(root: Path, state: dict[str, Any], blocks: dict[str, Any], map_data: dict[str, Any], proof: dict[str, Any], baton: dict[str, Any], live_head: str) -> dict[str, Any]:
     for field in ("identity", "generated_at", "source_of_truth", "current_state", "current_intelligence", "truth", "active_block", "next_action", "evidence", "successor_prompt", "playback"):
         require(field in baton, f"BATON_FIELD_MISSING: {field}")
+    require(baton.get("identity") == state.get("repository") == "SoulSchoolAcademy/NayaPOWER", "BATON_IDENTITY_MISMATCH")
     source = baton.get("source_of_truth", {})
     expected_sources = {
         "live_state": ".naya/control-plane/STATE.json",
@@ -411,6 +418,7 @@ def validate_all(root: Path = ROOT) -> dict[str, Any]:
         "live_head": live_head,
         "live_branch": live_branch,
         "status": "FRESH",
+        "outcome": "PASS",
         "checks": {
             "head_authoritative": True,
             "active_block_coherence": True,
@@ -443,6 +451,7 @@ def failure_report(root: Path, error: Exception) -> dict[str, Any]:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "live_head": live_head,
         "status": "RED",
+        "outcome": "INFRASTRUCTURE_FAILURE" if isinstance(error, InfrastructureError) else "EXPECTED_RED",
         "first_divergence": str(error),
         "checks": {"freshness": False},
     }
