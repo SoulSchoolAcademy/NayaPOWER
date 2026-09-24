@@ -37,7 +37,7 @@ const chain=(table)=>{let singleMode=null;const api={select(){return api},eq(){r
 const client={from(table){return chain(table)}};
 const admin={rpc:async(name,args)=>({data:grant,error:null}),from(table){return chain(table)}};
 
-const context={console,crypto,structuredClone,TextEncoder,Date,Buffer,require,module:{exports:{}},exports:{},Deno:{env:{get(k){return k==="NAYANET_PORTABLE_ISSUER_PUBLIC_KEY_HEX"?pubHex:undefined}}},admin,record:async()=>{recordCalls++;return{id:"fixture-receipt"}},projectIntelligence:async()=>({index:{id:"index-1"}}),checkpointIntelligence:async()=>({status:"CHECKPOINT_VERIFIED",checkpoint:{metadata:{checkpoint_id:"checkpoint:fixture"}},receipt:{id:"checkpoint-receipt"}})};
+const context={console,crypto,structuredClone,TextEncoder,Date,Buffer,module:{exports:{}},exports:{},Deno:{env:{get(k){return k==="NAYANET_PORTABLE_ISSUER_PUBLIC_KEY_HEX"?pubHex:undefined}}},admin,record:async()=>{recordCalls++;return{id:"fixture-receipt"}},projectIntelligence:async()=>({index:{id:"index-1"}}),checkpointIntelligence:async()=>({status:"CHECKPOINT_VERIFIED",checkpoint:{metadata:{checkpoint_id:"checkpoint:fixture"}},receipt:{id:"checkpoint-receipt"}})};
 vm.runInNewContext(js,context,{filename:path});
 const fn=context.module.exports.commitIntelligence;
 if(typeof fn!=="function")throw new Error("COMMIT_FUNCTION_NOT_EXTRACTED");
