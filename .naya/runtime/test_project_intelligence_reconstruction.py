@@ -16,6 +16,7 @@ def main():
     activity["event_type"]="activity"
     activity["continuity"]={"execution_state":"COMPLETED"}
     activity["verification"]={"status":"VERIFIED","evidence":["repository receipt"]}
+    # Regression: VERIFIED evidence does not make an execution record CURRENT.
     a=ev("SE-C1","Deployment target","2026-09-21T11:00:00Z",summary="A")
     b=ev("SE-C2","Deployment target","2026-09-21T12:00:00Z",summary="B")
     a["verification"]={"status":"VERIFIED","evidence":["live deployment receipt"],"canonical_url":"test"}
@@ -30,6 +31,8 @@ def main():
     assert {x["event_id"] for x in r["superseded"]}=={"SE-OLD"}
     assert {x["event_id"] for x in r["stale"]}=={"SE-STALE"}
     assert {x["event_id"] for x in r["historical"]}=={"SE-HIST","SE-ACTIVITY"}
+    assert activity["verification"]["status"]=="VERIFIED"
+    assert "SE-ACTIVITY" not in {x["event_id"] for x in r["current"]}, "VERIFIED != CURRENT"
     assert {x["event_id"] for x in r["current"]}=={"SE-NEW","SE-C1"}
     assert {x["event_id"] for x in r["conflicted"]}=={"SE-C2","SE-C3","SE-C4","SE-C5"}
     assert "SE-DENY" not in json.dumps(r)
