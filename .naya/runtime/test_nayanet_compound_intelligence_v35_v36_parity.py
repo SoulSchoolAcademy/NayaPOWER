@@ -7,6 +7,9 @@ SPEC = Path(__file__).resolve().parent / "NAYANET_COMPOUND_INTELLIGENCE_V36_PORT
 CONTRACT = Path(__file__).resolve().parent / "portable_intelligence_execution_contract.py"
 
 # These anchors are the exact v35 execution seam inspected from the deployed function.
+V35_SOURCE_VERSION = "35"
+V35_SOURCE_SHA256 = "77940b934c2f1f0b8249c97b73f63ed782631407e62e81194813be6960d489cd"
+
 V35_ANCHORS = (
     "async function requireGovernedIntelligenceAuthorization(client: any, userId: string, body: any)",
     'const auth = body.execution_authorization;',
@@ -32,11 +35,13 @@ V36_REQUIREMENTS = (
 spec = SPEC.read_text(encoding="utf-8")
 contract = CONTRACT.read_text(encoding="utf-8")
 
+assert f"Production version: {V35_SOURCE_VERSION}" in spec
+assert f"Production source SHA-256: {V35_SOURCE_SHA256}" in spec
 for anchor in V35_ANCHORS:
-    # The deployed source is external to this repository; these anchors are
-    # recorded here so the parity test fails if the local v35 seam contract is
-    # changed without updating the inspected baseline.
-    assert anchor in spec, f"v35 anchor absent from v36 specification: {anchor}"
+    # The deployed source is external to this repository. The exact inspected
+    # seam is frozen as a manifest in the v36 specification; changing the
+    # deployed source version/hash requires an explicit parity update.
+    assert anchor in spec, f"inspected v35 seam anchor absent from v36 specification: {anchor}"
 
 for requirement in V36_REQUIREMENTS:
     assert requirement in contract, f"v36 contract requirement missing: {requirement}"
