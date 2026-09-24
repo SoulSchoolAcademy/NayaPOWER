@@ -1,0 +1,100 @@
+name: Verify Collective Intelligence Gate
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/collective_intelligence.py"
+      - ".naya/runtime/test_collective_intelligence.py"
+      - ".github/workflows/verify-collective-intelligence.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  collective-intelligence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate collective gate
+        run: python -m py_compile .naya/runtime/collective_intelligence.py .naya/runtime/test_collective_intelligence.py
+      - name: Verify System 44 consent input
+        run: python .naya/runtime/test_consent_revocation.py
+      - name: Verify collective eligibility behavior
+        run: python .naya/runtime/test_collective_intelligence.py
+      - name: Build independent collective proposal
+        run: |
+          python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          import sys
+          from pathlib import Path
+          runtime=Path(".naya/runtime").resolve()
+          sys.path.insert(0,str(runtime))
+          spec=importlib.util.spec_from_file_location("collective_intelligence",runtime/"collective_intelligence.py")
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          consent={
+              "schema":"NAYAPOWER_CONSENT_REVOCATION_PLAN_V1",
+              "mode":"PROPOSAL_ONLY",
+              "status":"COMPLETE",
+              "revocation_sha256":"a"*64,
+              "persistence_performed":False,
+              "impacted_artifacts":[],
+              "source_actions":[],
+              "unresolved":[]
+          }
+          item={
+              "intelligence_id":"PRIVATE-A",
+              "content":"private content must not be projected",
+              "visibility":"PRIVATE",
+              "source_ids":["SOURCE-A"],
+              "consent":{"state":"EXPLICIT","grant_id":"grant-1","scope":["COLLECTIVE"]},
+              "sharing_policy":{"state":"APPROVED","policy_ref":"policy-1","allowed_scopes":["COLLECTIVE"]},
+              "identity_policy":{"state":"VERIFIED","anonymization_verified":True,"identity_boundary":"aggregate-only","identity_policy_ref":"identity-policy-1","raw_owner_identity_exposed":False},
+              "source_authority":{"state":"VERIFIED","authority_ref":"authority-1"},
+              "contribution_provenance":[{"contribution_id":"contribution-1","source_ref":"SOURCE-A","provenance_hash":"b"*64}],
+              "revocation_state":"ACTIVE",
+              "usage_scope":"collective intelligence only"
+          }
+          plan=module.evaluate_collective_intelligence([item],consent)
+          errors=module.validate_collective_plan(plan)
+          assert not errors,errors
+          assert plan["status"]=="COMPLETE",plan
+          assert plan["eligible_item_ids"]==["PRIVATE-A"],plan
+          assert "private content must not be projected" not in json.dumps(plan["items"][0]["proposed_collective"])
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"collective-intelligence-plan.json").write_text(json.dumps(plan,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+              "schema":"naya-collective-intelligence-gate/v1",
+              "status":"VERIFIED",
+              "mode":plan["mode"],
+              "plan_status":plan["status"],
+              "pipeline":plan["pipeline"],
+              "eligible_item_ids":plan["eligible_item_ids"],
+              "proposal_status":plan["items"][0]["proposed_collective"]["status"],
+              "publication_performed":plan["publication_performed"],
+              "persistence_performed":plan["persistence_performed"],
+              "production_integration":"NOT_TESTED",
+              "truth_boundary":plan["truth_boundary"]
+          }
+          (root/"collective-intelligence-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish collective intelligence proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: collective-intelligence-proof
+          path: |
+            .naya/runtime/collective_intelligence.py
+            .naya/runtime/test_collective_intelligence.py
+            ${{ runner.temp }}/collective-intelligence-plan.json
+            ${{ runner.temp }}/collective-intelligence-gate.json
+          retention-days: 14
+          if-no-files-found: error
