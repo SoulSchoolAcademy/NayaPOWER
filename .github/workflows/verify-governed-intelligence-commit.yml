@@ -160,10 +160,15 @@ jobs:
             "protected":["No second intelligence store.","Capability does not create authority.","UNKNOWN is not VERIFIED.","BLOCKED is not PASS."],
             "next_action":"Use the persisted governed intelligence result in one fresh authorized successor action, then observe and verify the outcome before promotion."
           }
-          assert baton["proof_status"]=="VERIFIED"
-          assert baton["authority"]["status_at_execution"]=="ACTIVE"
-          assert baton["observed_intelligence"]["retrievable"] is True
-          assert isinstance(baton["next_action"],str) and baton["next_action"]
+          checks={
+            "proof_status_verified":baton["proof_status"]=="VERIFIED",
+            "authority_active_at_execution":baton["authority"]["status_at_execution"]=="ACTIVE",
+            "retrievable":baton["observed_intelligence"]["retrievable"] is True,
+            "single_next_action":isinstance(baton["next_action"],str) and bool(baton["next_action"])
+          }
+          print(json.dumps({"cold_successor_checks":checks,"current_truth":baton["current_truth"]}))
+          if not all(checks.values()):
+            raise SystemExit("COLD_SUCCESSOR_RECONSTRUCTION_FAILED:"+json.dumps(checks))
           Path("successor-baton.json").write_text(json.dumps(baton,indent=2))
           print(json.dumps({"status":"COLD_SUCCESSOR_RECONSTRUCTED","receipt_id":receipt["id"],"next_action":baton["next_action"]}))
           PY
