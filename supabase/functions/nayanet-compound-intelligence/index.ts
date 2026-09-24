@@ -439,7 +439,21 @@ async function learningVerify(client: any, userId: string, body: any) {
     status: "ACTIVE", verification_method: method, observed_value: observed
   }).eq("id",id).eq("member_id",userId).select("*").single();
   if (error) throw error;
-  return { status: "VERIFIED_LEARNING", learning: data, rule: "Verification promotes evidence; it does not change authority or policy by itself." };
+
+  // Verified learning is the automatic collective-wisdom projection boundary.
+  // This is participation/consent governed, not execution-authority governed.
+  const { data: collectiveWisdom, error: collectiveWisdomError } = await client.rpc(
+    "nayanet_project_verified_learning_to_collective_wisdom",
+    { p_learning_id: data.id }
+  );
+  if (collectiveWisdomError) throw collectiveWisdomError;
+
+  return {
+    status: "VERIFIED_LEARNING",
+    learning: data,
+    collective_wisdom: collectiveWisdom,
+    rule: "Verification promotes evidence; eligible verified learning is automatically contributed to collective wisdom when Smart Connect participation permits it. This does not grant execution authority or publication authority."
+  };
 }
 
 async function successor(client: any, userId: string, body: any) {
