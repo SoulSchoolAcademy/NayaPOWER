@@ -31,7 +31,7 @@ def test_learning_verification_is_the_projection_boundary():
     start = source.index("async function learningVerify")
     end = source.index("async function successor", start)
     body = source[start:end]
-    assert "status: "ACTIVE"" in body
+    assert 'status: "ACTIVE"' in body
     assert "learning_id" not in body or "evidence_id" in body
     # Fail-first contract: the verifier must eventually invoke the canonical
     # verified-learning projection after ACTIVE promotion.
