@@ -5,7 +5,7 @@ Read-only with respect to production: all authority and execution objects are
 temporary in-memory/test fixtures. No Supabase, Hub, Cloudflare, or production
 mutation is performed.
 
-The proof establishes that a fresh process can verify a gate-issued
+The proof establishes that a fresh process can independently verify a gate-issued
 ExecutionAuthorization for the exact intelligence_commit action without the
 issuer process's in-memory _issued set.
 """
