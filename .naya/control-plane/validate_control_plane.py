@@ -227,10 +227,11 @@ def validate_hub_identity(s,m):
     actual=canonical_hub_source_sha()
     state_sha=s.get('hub',{}).get('canonical_hub_source_sha') or s.get('hub_pre_execution_gate',{}).get('canonical_hub_source_sha')
     map_sha=m.get('intelligent_hub',{}).get('canonical_hub_source_sha') or m.get('intelligent_hub_pre_execution',{}).get('canonical_hub_source_sha')
+    map_authority_sha=m.get('authority',{}).get('canonical_hub_source_sha')
     team_sha=extract_team_hub_sha()
-    if not state_sha or not map_sha: fail('control plane missing canonical Hub source SHA')
-    if not (state_sha==map_sha==team_sha==actual):
-        fail('CANONICAL_HUB_SOURCE_DIVERGENCE: actual='+actual+' STATE='+str(state_sha)+' MAP='+str(map_sha)+' TEAM_NAYA='+str(team_sha))
+    if not state_sha or not map_sha or not map_authority_sha: fail('control plane missing canonical Hub source SHA')
+    if not (state_sha==map_authority_sha==map_sha==team_sha==actual):
+        fail('CANONICAL_HUB_SOURCE_DIVERGENCE: actual='+actual+' STATE='+str(state_sha)+' MAP_AUTHORITY='+str(map_authority_sha)+' MAP='+str(map_sha)+' TEAM_NAYA='+str(team_sha))
 def validate_branch_classification():
     d=load(BRANCH_CLASSIFICATION)
     if d.get('status')!='CANONICAL': fail('branch classification is not canonical')

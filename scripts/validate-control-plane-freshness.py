@@ -324,11 +324,13 @@ def validate_hub(root: Path, state: dict[str, Any], map_data: dict[str, Any], ba
     actual = git(root, "rev-parse", f"{live_head}:NAYANET/HUB/index.html")
     state_sha = state.get("hub_pre_execution_gate", {}).get("canonical_hub_source_sha") or state.get("hub", {}).get("canonical_hub_source_sha")
     map_sha = map_data.get("intelligent_hub_pre_execution", {}).get("canonical_hub_source_sha") or map_data.get("intelligent_hub", {}).get("canonical_hub_source_sha")
+    map_authority_sha = map_data.get("authority", {}).get("canonical_hub_source_sha")
     map_top_sha = map_data.get("canonical_hub_source_sha")
     baton_sha = baton.get("source_snapshot", {}).get("canonical_hub_source_sha")
     team_sha = extract_team_hub_sha(TEAM_HUB_LOCK_PATH.read_text(encoding="utf-8"))
     values = {
         "STATE": state_sha,
+        "MAP.authority": map_authority_sha,
         "MAP.pre_execution": map_sha,
         "MAP.top_level": map_top_sha,
         "BATON": baton_sha,
