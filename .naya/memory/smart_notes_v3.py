@@ -93,15 +93,17 @@ def normalize_targets(value):
     return [value]
 def validate_event(e,p):
     errors=[];parsed={}
-    if not EVENT_RE.match(str(e.get('event_id',''))):errors.append(f'{p}: invalid event_id')
+    try:display_path=p.relative_to(ROOT).as_posix()
+    except ValueError:display_path=str(p)
+    if not EVENT_RE.match(str(e.get('event_id',''))):errors.append(f'{display_path}: invalid event_id')
     for k in ('created_at','effective_at'):
         try:parsed[k]=parse_time(e[k])
-        except Exception as exc:errors.append(f'{p}: invalid {k}: {exc}')
-    if not isinstance(e.get('status'),str) or not e.get('status').strip():errors.append(f'{p}: invalid status')
-    if not reps(e):errors.append(f'{p}: missing representations')
-    if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):errors.append(f'{p}: missing source')
+        except Exception as exc:errors.append(f'{display_path}: invalid {k}: {exc}')
+    if not isinstance(e.get('status'),str) or not e.get('status').strip():errors.append(f'{display_path}: invalid status')
+    if not reps(e):errors.append(f'{display_path}: missing representations')
+    if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):errors.append(f'{display_path}: missing source')
     v=e.get('verification',{}) or {}
-    if v.get('status')=='VERIFIED' and not v.get('canonical_url'):errors.append(f'{p}: verified event missing canonical_url')
+    if v.get('status')=='VERIFIED' and not v.get('canonical_url'):errors.append(f'{display_path}: verified event missing canonical_url')
     dt=parsed.get('effective_at')
     if dt:
         raw=str(e.get('effective_at',''));bucket=e.get('time_bucket',{}) or {}
@@ -112,9 +114,9 @@ def validate_event(e,p):
             try:hour=relative.parts[3] if len(relative.parts)>=5 else '00'
             except Exception:hour=f'{dt:%H}'
         expected=f'{dt:%Y/%m/%d}/{int(hour):02d}/{e["event_id"]}.json' if len(relative.parts)>=5 else f'{dt:%Y/%m/%d}/{e["event_id"]}.json'
-        if str(relative)!=expected:errors.append(f'{p}: physical time bucket mismatch; expected {expected}')
+        if str(relative)!=expected:errors.append(f'{display_path}: physical time bucket mismatch; expected {expected}')
     for r in reps(e):
-        if r.get('id') and not NOTE_RE.match(str(r['id'])):errors.append(f'{p}: invalid representation id {r["id"]}')
+        if r.get('id') and not NOTE_RE.match(str(r['id'])):errors.append(f'{display_path}: invalid representation id {r["id"]}')
     return errors
 def validate():
     errors=[];ids={};loaded=load_events()

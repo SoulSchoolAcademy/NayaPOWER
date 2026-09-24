@@ -25,8 +25,9 @@ class CleanRebuildTests(unittest.TestCase):
             root = Path(temporary)
             scripts = root / "scripts"
             scripts.mkdir()
-            (scripts / "one.py").write_text('OUT = "NAYANET/HUB/public/intelligence/pis-feed.json"\n', encoding="utf-8")
-            (scripts / "two.py").write_text('TARGET = "pis-feed.json"\n', encoding="utf-8")
+            (scripts / "one.py").write_text('OUT = "NAYANET/HUB/public/intelligence/pis-feed.json"\nOUT.write_text("{}")\n', encoding="utf-8")
+            (scripts / "two.py").write_text('OUT = ROOT / "pis-feed.json"\nOUT.write_bytes(b"{}")\n', encoding="utf-8")
+            (scripts / "verify.py").write_text('TARGET = "pis-feed.json"\nprint(TARGET)\n', encoding="utf-8")
             (scripts / "unrelated.py").write_text("VALUE = 1\n", encoding="utf-8")
             self.assertEqual(MODULE.discover_pis_producers(root), ["scripts/one.py", "scripts/two.py"])
 

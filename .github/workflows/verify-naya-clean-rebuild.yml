@@ -6,6 +6,7 @@ on:
     paths:
       - "scripts/naya_clean_rebuild.py"
       - "scripts/build_repository_relationship_index.py"
+      - ".naya/memory/smart_notes_v3.py"
       - "tests/test_naya_clean_rebuild.py"
       - ".github/workflows/verify-naya-clean-rebuild.yml"
   workflow_dispatch:
@@ -56,7 +57,7 @@ jobs:
           assert all(report["hub_projection_inputs"].values()),report
           assert len(report["pis_producers"])==2,report
           codes={row["code"] for row in report["findings"]}
-          required={"DUPLICATE_PIS_PRODUCERS","PIS_TIMESTAMP_DRIFT","CURRENT_TRUTH_EMPTY","EXTERNAL_DATABASE_RESTORE_UNAVAILABLE"}
+          required={"DUPLICATE_PIS_PRODUCERS","PIS_TIMESTAMP_DRIFT","PIS_SELF_CONTENT_DRIFT","SMART_NOTES_VALIDATION_FAILED","CURRENT_TRUTH_EMPTY","EXTERNAL_DATABASE_RESTORE_UNAVAILABLE"}
           assert required <= codes,codes
           receipt={
             "schema":"naya-clean-rebuild-gate/v1",

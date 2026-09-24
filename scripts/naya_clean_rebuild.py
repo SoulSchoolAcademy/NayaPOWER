@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -64,9 +65,9 @@ def sha256_file(path: Path) -> str:
     return recovery.sha256_file(path)
 
 
-def run_checked(command: list[str], cwd: Path, env: dict[str, str] | None = None) -> subprocess.CompletedProcess[str]:
+def run_checked(command: list[str], cwd: Path, env: dict[str, str] | None = None, check: bool = True) -> subprocess.CompletedProcess[str]:
     result = subprocess.run(command, cwd=cwd, text=True, capture_output=True, env=env)
-    if result.returncode:
+    if check and result.returncode:
         raise RebuildError("COMMAND_FAILED:" + " ".join(command) + "\n" + result.stdout + "\n" + result.stderr)
     return result
 
@@ -90,7 +91,7 @@ def remove_derived_outputs(source: Path) -> list[str]:
 def rebuild_deterministic(source: Path, output: Path, source_date_epoch: int) -> dict[str, Any]:
     output.mkdir(parents=True, exist_ok=True)
     run_checked([sys.executable, ".naya/memory/smart_notes_v3.py", "index"], source)
-    run_checked([sys.executable, ".naya/memory/smart_notes_v3.py", "validate"], source)
+    validation = run_checked([sys.executable, ".naya/memory/smart_notes_v3.py", "validate"], source, check=False)
     current_truth = output / "current-truth.json"
     run_checked(
         [sys.executable, ".naya/runtime/project_intelligence_reconstruction.py", "--project", "NayaNET", "--out", str(current_truth)],
@@ -101,7 +102,11 @@ def rebuild_deterministic(source: Path, output: Path, source_date_epoch: int) ->
     run_checked([sys.executable, "scripts/build_repository_relationship_index.py"], source, env)
     files = {relative: sha256_file(source / relative) for relative in DETERMINISTIC_OUTPUTS}
     files["current-truth.json"] = sha256_file(current_truth)
-    return {"files": files, "current_truth": json.loads(current_truth.read_text(encoding="utf-8"))}
+    return {
+        "files": files,
+        "current_truth": json.loads(current_truth.read_text(encoding="utf-8")),
+        "smart_notes_validation_exit_code": validation.returncode,
+    }
 
 
 def normalize_pis(data: bytes) -> bytes:
@@ -146,7 +151,9 @@ def discover_pis_producers(source: Path) -> list[str]:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
-        if PIS_OUTPUT in text or "pis-feed.json" in text:
+        assigns_output = re.search(r"(?m)^OUT\s*=.*pis-feed\.json", text)
+        writes_output = re.search(r"\bOUT\.write_(?:text|bytes)\s*\(", text)
+        if assigns_output and writes_output:
             producers.append(path.relative_to(source).as_posix())
     return producers
 
@@ -194,16 +201,36 @@ def verify_clean_rebuild(package: Path, workdir: Path) -> dict[str, Any]:
     pis_smart_feed = run_pis_builder(source_b, PIS_BUILDERS[1], workdir / "pis-smart-feed")
     primary_raw_drift = pis_primary[0]["sha256"] != pis_primary[1]["sha256"]
     smart_feed_raw_drift = pis_smart_feed[0]["sha256"] != pis_smart_feed[1]["sha256"]
+    primary_normalized_stable = pis_primary[0]["normalized_sha256"] == pis_primary[1]["normalized_sha256"]
+    smart_feed_normalized_stable = pis_smart_feed[0]["normalized_sha256"] == pis_smart_feed[1]["normalized_sha256"]
     producer_content_match = pis_primary[0]["normalized_sha256"] == pis_smart_feed[0]["normalized_sha256"]
     hub_inputs = {relative: (source_a / relative).is_file() for relative in HUB_PROJECTION_INPUTS}
     current_truth = rebuilt_a["current_truth"]
+    validation_failures = [
+        exit_code
+        for exit_code in (
+            rebuilt_a["smart_notes_validation_exit_code"],
+            rebuilt_b["smart_notes_validation_exit_code"],
+        )
+        if exit_code != 0
+    ]
     findings = []
+    if validation_failures:
+        findings.append({"code": "SMART_NOTES_VALIDATION_FAILED", "exit_codes": validation_failures})
     if not deterministic:
         findings.append({"code": "DETERMINISTIC_OUTPUT_MISMATCH", "differences": differences})
     if len(producers) != 1:
         findings.append({"code": "DUPLICATE_PIS_PRODUCERS", "producers": producers})
     if primary_raw_drift or smart_feed_raw_drift:
         findings.append({"code": "PIS_TIMESTAMP_DRIFT", "primary": primary_raw_drift, "smart_feed": smart_feed_raw_drift})
+    if not primary_normalized_stable or not smart_feed_normalized_stable:
+        findings.append({
+            "code": "PIS_SELF_CONTENT_DRIFT",
+            "primary_normalized_stable": primary_normalized_stable,
+            "smart_feed_normalized_stable": smart_feed_normalized_stable,
+            "primary_normalized_sha256": [pis_primary[0]["normalized_sha256"], pis_primary[1]["normalized_sha256"]],
+            "smart_feed_normalized_sha256": [pis_smart_feed[0]["normalized_sha256"], pis_smart_feed[1]["normalized_sha256"]],
+        })
     if not producer_content_match:
         findings.append({"code": "PIS_PRODUCER_CONTENT_CONFLICT", "primary_normalized_sha256": pis_primary[0]["normalized_sha256"], "smart_feed_normalized_sha256": pis_smart_feed[0]["normalized_sha256"]})
     if int(current_truth.get("counts", {}).get("current") or 0) == 0:
@@ -223,9 +250,17 @@ def verify_clean_rebuild(package: Path, workdir: Path) -> dict[str, Any]:
         "removed_derived_outputs": {"A": first_removed, "B": second_removed},
         "deterministic_outputs": {"A": rebuilt_a["files"], "B": rebuilt_b["files"]},
         "current_truth_counts": current_truth.get("counts", {}),
+        "smart_notes_validation_exit_codes": {
+            "A": rebuilt_a["smart_notes_validation_exit_code"],
+            "B": rebuilt_b["smart_notes_validation_exit_code"],
+        },
         "pis_producers": producers,
         "pis_runs": {"primary": pis_primary, "smart_feed": pis_smart_feed},
         "pis_normalized_content_match": producer_content_match,
+        "pis_normalized_self_stable": {
+            "primary": primary_normalized_stable,
+            "smart_feed": smart_feed_normalized_stable,
+        },
         "hub_projection_inputs": hub_inputs,
         "external_database_restore": "BLOCKED",
         "findings": findings,
