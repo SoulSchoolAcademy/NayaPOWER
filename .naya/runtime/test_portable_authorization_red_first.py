@@ -13,6 +13,7 @@ from pathlib import Path
 
 RUNTIME = Path(__file__).resolve().parent
 sys.path.insert(0, str(RUNTIME))
+sys.path.insert(0, str(RUNTIME.parent / "governance"))
 
 from governance_kernel import Authority, AuthorityRegistry, DecisionObject, Epistemic, Risk, VerificationPlan
 from portable_authorization import (
