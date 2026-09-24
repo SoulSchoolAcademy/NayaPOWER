@@ -43,7 +43,7 @@ This proves the **relationship/participation seam**, not the seven external tech
 | **GitHub App** | GitHub installation / app identity; exact mechanism must remain external to source | Repository/user installation participation; installation identity must remain distinct from human identity | Separate Naya authority grant + least-privilege GitHub installation/repository scope | Repository, installation, action scope; human consent must be explicit | GitHub observation + canonical Naya event/receipt; no GitHub source-of-truth substitution | App installation/token/repository permission revocation must block subsequent actions | Webhook/action replay must be idempotent by canonical event/idempotency identity | **PARTIAL** — repository authority exists; independent end-to-end production agent proof remains open |
 | **MCP** | MCP transport/session authentication | Agent/client identity participates through the same governed runtime | Server-side authority grant; tools/call must not infer permission from connection | Tool + project + target scope; explicit consent where required | Canonical event/receipt + fresh retrieval | Session/token/grant revocation must block calls | Request/idempotency key must prevent duplicate durable effects | **LIVE VERIFIED** — UAI run `36061300293` authenticated initialize → tools/list → cold restore → understand → retrieve → restore with canonical receipt/evidence; governed execution boundary additionally verified in Attack 4 run `36062784233` |
 | **REST/OpenAPI** | Authenticated API identity | API client participates through canonical API boundary | Same authority lifecycle as MCP; transport must not create a second authority model | Endpoint/action/target/project scope | Same canonical persistence and receipt chain as MCP | Credential/grant revocation must fail closed | Idempotency and replay behavior must match MCP semantics | **LIVE VERIFIED** — UAI run `36061300293` authenticated cold restore → understand → retrieve; run `36064087479` additionally proved governed intelligence_commit authority parity through the same canonical UAI adapter/runtime |
-| **Webhooks** | Signed/verified sender identity | External system becomes an event source, not an authority source | Inbound event authenticity does not authorize downstream execution | Event/source scope; consent and authority evaluated before side effects | Canonical inbound event + receipt/provenance | Signing secret/source registration revocation must reject future events | Delivery replay must converge on one canonical event/effect | **DOCUMENTED / UNPROVEN** — transport contract exists; full governed production door proof remains open |
+| **Webhooks** | Signed/verified sender identity | External system becomes an event source, not an authority source; current receiver does not persist an explicit GitHub installation ID | Inbound event authenticity does not authorize downstream execution; receiver uses github_webhook_received, not intelligence.capture | Event/source scope; repository binding currently comes from repository.full_name and is not yet independently adversarially proven | Canonical nayanet_record_cognition_event → cognition event/project state/execution receipt; downstream projection is not invoked by the receiver | Secret/source registration revocation remains external and unverified | Cognition event has unique (user_id,project_id,event_id), but webhook's current six-argument RPC path still creates a fresh receipt/state update on replay; exact idempotency is NOT VERIFIED | **BLOCKED_EXTERNAL_CREDENTIAL** — deployed fail-closed receiver; positive signed delivery and exact replay remain unverified |
 | **SDK** | Application/client authentication | Embedded client participates through canonical SDK adapter | SDK delegates authority to governed runtime; local SDK capability must not become authority | App/project/user scope plus explicit action consent | Same canonical event/persistence/evidence path | App credential/grant revocation must block governed actions | SDK retries must be idempotent at canonical boundary | **DOCUMENTED / UNPROVEN** — adapter concept exists; independent production door proof remains open |
 | **A2A** | Agent identity/authentication | Agent participates as an external actor through governed adapter | Authority must be independently evaluated; agent relationship never implies execution permission | Agent/task/project/target scope | Canonical agent event + execution receipt + fresh retrieval | Agent credential/grant/task revocation must block subsequent actions | Message/task replay must preserve idempotent canonical outcome | **DOCUMENTED** — future channel; no broad-use production proof established |
 | **MCP Apps** | MCP app/session authentication | App participates through MCP capability boundary | Same server-side governed authority as MCP; app UI cannot grant itself permission | Tool/app/session/project scope + consent | Canonical MCP event/receipt path | Session/app/grant revocation must fail closed | UI retries and tool-call replay must converge on canonical idempotent effect | **DOCUMENTED / UNPROVEN** — defined door; independent production proof remains open |
@@ -188,3 +188,45 @@ The replay semantics above were the fail-first gap discovered during this contin
 ### Single next action
 
 **Configure `GITHUB_WEBHOOK_SECRET` in the production secret-management/admin boundary, then run the signed GitHub webhook positive → replay → persistence → retrieval → authority-separation proof.**
+
+
+## 2026-09-24 P1 — GitHub Webhook credential boundary and safe preflight
+
+**Status: BLOCKED_EXTERNAL_CREDENTIAL**
+
+### Production credential boundary
+
+The production Edge Function nayanet-github-webhook is ACTIVE, version 3, and its deployed digest is 081cc239fb9f6c662044ea13d3a56d4015baf0741d720b29bfbfa01bafa6349c. The repository source is NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts (blob cf00cb52b424783f37d25a2a89f031724b19543a).
+
+A fresh production probe at 2026-09-24T22:11:01Z returned HTTP 503 with GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED and BLOCKED_EXTERNAL_CREDENTIAL, before delivery/signature processing or persistence. The secret value was not requested or handled. The current permitted Supabase tool surface exposes deployment/source metadata but no secret-management read/write operation.
+
+### Safe call-graph findings
+
+GitHub POST → webhook Edge Function → method check → delivery/signature headers → GITHUB_WEBHOOK_SECRET check → HMAC-SHA256(raw body) → JSON parse → normalization → service-role canonical cognition RPC → cognition event + project state + execution receipt → response.
+
+No second inbound webhook implementation was found in repository source. The separate nayanet-github-dispatch function is outbound GitHub workflow dispatch, not an inbound webhook caller.
+
+The receiver normalizes repository, actor, ref, commit SHA, delivery ID, source system, correlation ID, and idempotency key. It does not currently persist an explicit GitHub installation ID. The authority object in the normalized event is source/scope metadata, not execution authority.
+
+### Critical preflight replay finding
+
+The receiver uses the six-argument nayanet_record_cognition_event overload with action github_webhook_received. Production currently retains both six- and seven-argument overloads. The six-argument path de-duplicates the cognition row by (user_id, project_id, event_id) but still creates a new execution receipt and increments project cognition state on each replay. Therefore the required exact replay/idempotency property is NOT VERIFIED and has a concrete causal repair target. No repair is made in P1.
+
+### Authority separation
+
+Source inspection shows the webhook does not call the intelligence.capture authority-required action and supplies no execution authorization object. This is source-level evidence for WEBHOOK EVENT ≠ EXECUTION AUTHORITY. Live authority-separation proof remains unverified until a signed production event can be accepted.
+
+### Adversarial preparation
+
+Prepared, but not run in production: missing signature, wrong signature, altered payload, wrong repository, wrong installation/source, revoked/disabled source, duplicate delivery, and authority-separation checks. No production mutation was executed for this preparation.
+
+### Durable evidence
+
+- P1 artifact: .naya/project-intelligence/GITHUB-WEBHOOK-P1-CREDENTIAL-BOUNDARY-2026-09-24.md
+- Main after evidence artifact: 1f4825405527f3e1a67b0a82aa7ec7ea14d0cde8
+- UAI privileged authority proof: 36064087479
+- UAI deployment: 36063359510
+
+### Single next action
+
+**Run the controlled signed production GitHub webhook proof after the authorized operator has configured the real production secret.**
