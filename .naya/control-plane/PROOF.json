@@ -73,6 +73,28 @@
       "scope": "canonical Hub source identity; intervening main commits did not modify NAYANET/HUB/index.html",
       "evidence_receipt": ".naya/project-intelligence/45-NAYANET-CANONICAL-PRODUCTION-PARITY-RECEIPT-2026-09-24.md"
     },
+    "existing_member_learning_output_authority_boundary": {
+      "status": "BLOCKED",
+      "claim_type": "RUNTIME_AUTHORITY",
+      "learning_evidence_id": "1112073e-08ee-407e-a47a-8b65b845f57b",
+      "owner_scope": "existing member owning the learning evidence",
+      "learning_status": "ACTIVE",
+      "required_action": "intelligence_commit",
+      "production_authority_grants_for_owner": {"grant_count":0,"active_count":0,"currently_usable_count":0},
+      "authority_seam_repair": {
+        "repository_prs": [587,588,589],
+        "migration": "20260924110000_wire_authority_grant_into_intelligence_commit_v1",
+        "migration_reconciliation": "20260924110000_reconcile_execution_authorization_cognition_overload_v1",
+        "edge_function": "nayanet-compound-intelligence",
+        "edge_function_version": 37,
+        "execution_authorization_contract": "p_execution_authorization",
+        "verification": "production DB function overload and deployed Edge Function inspected after deployment"
+      },
+      "block_reason": "No currently usable authority grant exists for the existing member; obtaining a legitimate authenticated owner session and issuing an in-scope grant is required before intelligence_commit.",
+      "truth_boundary": "No owner impersonation, synthetic grant, or fabricated promotion was performed.",
+      "evidence_receipt": ".naya/project-intelligence/46-S54-EXISTING-MEMBER-AUTHORITY-BOUNDARY-RECEIPT-2026-09-24.md",
+      "next_action": "Obtain the legitimate authenticated owner session, issue the minimum scoped intelligence_commit authority grant, then execute the exact candidate and independently verify event/index/provenance/receipt/retrieval."
+    },
     "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
     "observed_head": "7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d",
     "observed_branch": "main",
