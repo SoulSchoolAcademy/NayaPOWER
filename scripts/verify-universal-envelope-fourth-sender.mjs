@@ -11,7 +11,7 @@ const sender=await signup(),receiver=await signup();if(!sender.body?.user?.id||!
 const sid=sender.body.user.id,rid=receiver.body.user.id,sk='fourth-mail-'+run+'-'+crypto.randomUUID();
 // Smart Mail's governed send boundary requires recipient identity + explicit authority; connection/space membership is not an authority substitute and is not required for this fourth-sender attack.
 const grant=await rpc(sender.body.access_token,'nayanet_issue_authority_grant',{p_subject_id:sid,p_source_event_id:'human:smart-mail-send:'+sk,p_mission_id:'NayaNET-SMART-MAIL',p_scope:{target:rid,project_id:'NayaNET'},p_actions:['smart_mail_send'],p_constraints:{kind:'direct',no_model_authority:true},p_expires_at:null,p_evidence:{human_action:'explicit authenticated proof authorization',idempotency_key:sk},p_parent_authority:null});
-if(grant.status!==200||!grant.body?.grant_id)throw Error('AUTHORITY_GRANT_FAILED');
+if(grant.status!==200||!grant.body?.grant_id)throw Error('AUTHORITY_GRANT_FAILED:'+JSON.stringify(grant.body));
 const pre=await rpc(sender.body.access_token,'nayanet_validate_authority_grant',{p_grant_id:grant.body.grant_id,p_action:'smart_mail_send',p_target:rid});if(pre.status!==200||pre.body?.status!=='AUTHORIZED')throw Error('AUTHORITY_PREVALIDATION_FAILED');
 const sent=await fn(sender.body.access_token,'nayanet-smart-mail',{recipient_user_id:rid,body:output,subject:'Cross-Sender Invariance — Smart Mail',kind:'direct',idempotency_key:sk,project_id:'NayaNET',authority_grant_id:grant.body.grant_id});
 if(sent.status!==200||sent.body?.status!=='CREATED')throw Error('SMART_MAIL_SEND_FAILED:'+JSON.stringify(sent.body));const tx=sent.body;
