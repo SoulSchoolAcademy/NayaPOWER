@@ -14,7 +14,7 @@ const extracted=source.slice(helperStart,commitStart)+
 "\nasync function requireGovernedIntelligenceAuthorization(){return globalThis.__auth;}\n"+
 source.slice(commitStart,healthStart)+
 "\nmodule.exports={verifyV36PortableArtifact,commitIntelligence};\n";
-const js=extracted.replace(/:\s*(unknown|string|any|Uint8Array|Promise<any>|Promise<string>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"").replace(/\)!/g,")");
+const js=extracted.replace(/:\s*(unknown|string|any|Uint8Array|Promise<any>|Promise<string>)/g,"").replace(/\s+as\s+Record<string,unknown>/g,"").replace(/\s+as\s+any/g,"").replace(".match(/../g)!"," .match(/../g)");
 
 const {publicKey,privateKey}=generateKeyPairSync("ed25519");
 const pubDer=publicKey.export({format:"der",type:"spki"});
