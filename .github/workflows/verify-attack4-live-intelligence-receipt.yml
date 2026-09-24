@@ -65,7 +65,10 @@ jobs:
             if (!accessToken) throw new Error('OWNER_ACCESS_TOKEN_NOT_ESTABLISHED');
 
             const headers = {Authorization:'Bearer '+accessToken, apikey:KEY, 'Content-Type':'application/json'};
-            const sourceEventId = 'attack4-authority-source-' + run;
+            const capture = await page.evaluate(async ({title,content,idem}) => { const r=window.NayaAssistantRuntime; if(!r) throw new Error('ASSISTANT_RUNTIME_UNAVAILABLE'); return await r.captureSmartNote({title,content,source:'attack4-live-authority-source',idempotency_key:idem+'-source'}); }, {title:'Attack 4 authority source '+run,content:'Owned source event for the governed Attack 4 live authority grant.',idem});
+            const sourceEventId = String(capture?.event?.event_id || capture?.transaction?.evidence?.event_id || '');
+            if (!sourceEventId) throw new Error('AUTHORITY_SOURCE_EVENT_MISSING');
+            mark('AUTHORITY_SOURCE','PASS',{source_event_id:sourceEventId});
             const grantResponse = await page.evaluate(async ({SUPA,KEY,accessToken,session,sourceEventId,run}) => {
               return await fetch(SUPA + '/rest/v1/rpc/nayanet_issue_authority_grant', {
                 method:'POST',
