@@ -64,7 +64,7 @@ class TestEpistemicBoundary(unittest.TestCase):
             self.assertTrue(result.allowed)
 
     def test_unknown_like_missing_state_is_rejected_before_governance(self):
-        with self.assertRaises(KeyError):
+        with self.assertRaises(ValueError):
             self._result("")
 
 if __name__ == "__main__":
