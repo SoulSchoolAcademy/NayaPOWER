@@ -84,6 +84,12 @@ test('classifies a later production receiver failure as partial state',()=>{
   assert.deepEqual(value,{first_failure_boundary:'PRODUCTION_RECEIVER',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_PRODUCTION_RECEIVER_FAILED'});
 });
 
+test('classifies an independent persistence read failure without blaming the receiver',()=>{
+  const value=classifySenderFailure(new Error('PERSISTENCE_RECONSTRUCTION_FAILED'),{event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'});
+  assert.equal(value.first_failure_boundary,'INDEPENDENT_PERSISTENCE');
+  assert.equal(value.downstream_reachability,'REACHED_RECEIVER_BEFORE_INDEPENDENT_READ');
+});
+
 test('does not claim partial state without lineage identifiers',()=>{
   const value=classifySenderFailure(new Error('PRODUCTION_RECEIVER_FAILED'),{event_id:'UNAVAILABLE',receipt_id:'UNAVAILABLE',transaction_id:'UNAVAILABLE'});
   assert.equal(value.partial_state,'UNDETERMINED');
