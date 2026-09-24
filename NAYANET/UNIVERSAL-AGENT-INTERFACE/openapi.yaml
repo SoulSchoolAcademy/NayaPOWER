@@ -41,6 +41,33 @@ paths:
         '200': {description: Canonical retrieval result}
         '400': {description: Invalid request}
         '401': {description: Authentication required}
+  /v1/intelligence-commit:
+    post:
+      operationId: commitIntelligence
+      summary: Governed intelligence commit using an existing authority grant
+      description: Delegates consequential execution to the canonical governed runtime; participation never substitutes for authority.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [authority_grant_id, idempotency_key, content]
+              properties:
+                authority_grant_id: {type: string}
+                idempotency_key: {type: string}
+                content: {type: string}
+                title: {type: string}
+                category: {type: string}
+                topic: {type: string}
+                confidence: {type: number}
+                tags: {type: array, items: {type: string}}
+                authority_scope: {type: string}
+                target_id: {type: string}
+      responses:
+        '200': {description: Canonical governed intelligence commit result}
+        '400': {description: Authority, scope, participation, or validation rejection}
+        '401': {description: Authentication required}
   /v1/understand:
     post:
       operationId: advanceUnderstanding
