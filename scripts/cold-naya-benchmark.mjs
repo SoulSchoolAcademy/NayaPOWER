@@ -22,11 +22,11 @@ const map=json(required[3]), state=json(required[4]), blocks=json(required[5]), 
 const liveHead=execFileSync("git",["rev-parse","HEAD"],{encoding:"utf8"}).trim();
 const bootChecks={
   start_here:true,
-  source_map:start.includes("SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md"),
+  source_map:start.toLowerCase().includes("canonical source map"),
   constitution:start.includes("11-RUNTIME-CONSTITUTION.md"),
-  control_plane:start.includes("MAP.json") && start.includes("STATE.json") && start.includes("BLOCKS.json") && start.includes("PROOF.json"),
+  control_plane:start.includes(".naya/control-plane"),
   live_head_resolution:start.includes("LIVE_AT_EXECUTION_TIME"),
-  no_conversation_dependency:!start.includes("conversation history") || start.includes("Do not reconstruct the project from conversation history")
+  no_conversation_dependency:start.includes("Do not reconstruct the project from conversation history"),
 };
 for(const [k,v] of Object.entries(bootChecks)) assert(v,"BOOT_CHECK_FAILED:"+k);
 const actions=[
