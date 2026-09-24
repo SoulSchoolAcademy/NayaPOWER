@@ -1,0 +1,121 @@
+﻿name: Verify governed intelligence commit causal chain
+
+on:
+  workflow_dispatch:
+    inputs:
+      proof_ref:
+        description: "Git ref to execute the proof against"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  governed-intelligence-commit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      FUNCTION_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-compound-intelligence
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.proof_ref }}
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+
+      - name: Fresh identity and real authority grant
+        shell: bash
+        run: |
+          set -euo pipefail
+          auth=$(curl -sSf -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d '{}')
+          token=$(jq -r '.access_token' <<<"$auth")
+          user=$(jq -r '.user.id' <<<"$auth")
+          test -n "$token"; test -n "$user"
+          echo "$token" >/tmp/token; echo "$user" >/tmp/user
+          expires=$(python -c 'from datetime import datetime,timedelta,timezone; print((datetime.now(timezone.utc)+timedelta(minutes=8)).isoformat().replace("+00:00","Z"))')
+          grant=$(jq -n --arg subject "$user" --arg source "governed-intelligence-$GITHUB_RUN_ID" --arg expires "$expires" '{p_subject_id:$subject,p_source_event_id:$source,p_mission_id:"NayaNET governed intelligence commit proof",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{proof_run:$ENV.GITHUB_RUN_ID},p_expires_at:$expires,p_evidence:{proof_run:$ENV.GITHUB_RUN_ID}}')
+          row=$(curl -sSf -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" -H "Content-Type: application/json" -d "$grant")
+          echo "$row" >/tmp/grant
+          test -n "$(jq -r '.grant_id' /tmp/grant)"
+
+      - name: Issue real gate authorization
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json,os,sys
+          from pathlib import Path
+          sys.path.insert(0,".naya/runtime")
+          from universal_execution_gate import Authority,AuthorityRegistry,DecisionObject,Epistemic,Risk,UniversalExecutionGate,VerificationPlan
+          g=json.loads(Path("/tmp/grant").read_text()); uid=Path("/tmp/user").read_text().strip()
+          a=Authority(g["grant_id"],uid,g["mission_id"],"NayaNET",frozenset(g["actions"]),g.get("expires_at"),False)
+          gate=UniversalExecutionGate(AuthorityRegistry({a.authority_id:a}))
+          d=DecisionObject(
+            decision_id=f"GOVERNED-DECISION-{os.environ['GITHUB_RUN_ID']}",mission=g["mission_id"],actor_id=uid,
+            action="intelligence_commit",purpose=a.purpose,scope=a.scope,
+            current_truth="Fresh runtime grant exists.",gap="Prove governed intelligence persistence.",
+            evidence=("fresh authority grant","canonical UniversalExecutionGate"),epistemic=frozenset({Epistemic.OBSERVED}),
+            consequence="Persist one private intelligence result.",reversible=True,risk=Risk(1,1,1),
+            alternatives=("do_not_execute",),expected_value="Observe governed persistence.",
+            required_permission="intelligence_commit",
+            verification=VerificationPlan("query persisted lineage","event, receipt, learning and retrieval exist",("stop",)),
+            necessary_power=frozenset({"intelligence_commit"}),requested_power=frozenset({"intelligence_commit"}))
+          action={"action_id":f"GOVERNED-ACTION-{os.environ['GITHUB_RUN_ID']}","action_type":"INTELLIGENCE_COMMIT","target":"NayaNET","purpose":a.purpose,"scope":a.scope,"actor_id":uid,"permission":"intelligence_commit","decision_id":d.decision_id,"authority_id":a.authority_id}
+          out=gate.authorize(authority=a,decision=d,action=action)
+          assert out.allowed and out.authorization
+          Path("/tmp/execution_authorization.json").write_text(json.dumps(out.authorization.__dict__))
+          print(json.dumps({"status":"GATE_AUTHORIZED","authority_id":a.authority_id,"decision_id":d.decision_id,"action_id":action["action_id"],"binding_hash":out.authorization.binding_hash}))
+          PY
+
+      - name: Authorized commit, replay, revocation denial and persistence inspection
+        shell: bash
+        run: |
+          set -euo pipefail
+          token=$(cat /tmp/token); user=$(cat /tmp/user); auth=$(cat /tmp/execution_authorization.json)
+          idem="governed-intelligence-$GITHUB_RUN_ID"
+          make_body(){ jq -n --arg idem "$1" --argjson auth "$auth" --arg run "$GITHUB_RUN_ID" '{action:"intelligence_commit",idempotency_key:$idem,title:("Governed Intelligence Proof "+$run),content:"Observed governed intelligence persistence through the canonical commit boundary.",category:"CAUSAL_PROOF",topic:"governed-intelligence",confidence:1,learning_claim:"The governed commit boundary consumed gate authorization.",epistemic_state:"OBSERVED",evidence:["fresh runtime authority grant","canonical UniversalExecutionGate","managed runtime"],execution_authorization:$auth,unknown:["Outcome-based behavior change remains unverified."]}'; }
+          body=$(make_body "$idem")
+          first=$(curl -sS -w '\n%{http_code}' -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$body")
+          code=$(tail -n1 <<<"$first"); payload=$(sed '$d' <<<"$first")
+          test "$code" = 200; test "$(jq -r '.ok' <<<"$payload")" = true
+          event=$(jq -r '.result.source_event.event_id' <<<"$payload"); echo "$event" >/tmp/event
+          test -n "$event"
+          echo "AUTHORIZED_COMMIT_PASS event=$event"
+          replay=$(curl -sS -w '\n%{http_code}' -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$body")
+          rcode=$(tail -n1 <<<"$replay"); rpayload=$(sed '$d' <<<"$replay")
+          test "$rcode" = 200; test "$(jq -r '.ok' <<<"$rpayload")" = true; test "$(jq -r '.result.checkpoint.replayed' <<<"$rpayload")" = true
+          receipts_before=$(curl -sSf -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" "$SUPABASE_URL/rest/v1/nayanet_execution_receipts?select=id,action,status,evidence,authority_grant_id&user_id=eq.$user&project_id=eq.NayaNET")
+          echo "$receipts_before" >/tmp/receipts_before
+          echo "REPLAY_IDEMPOTENT_PASS receipts=$(jq length /tmp/receipts_before)"
+          grant_id=$(jq -r '.grant_id' /tmp/grant)
+          curl -sSf -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_revoke_authority_grant" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" -H "Content-Type: application/json" -d "$(jq -n --arg id "$grant_id" '{p_grant_id:$id,p_evidence:{proof_run:$ENV.GITHUB_RUN_ID}}')" >/tmp/revoked
+          denied=$(curl -sS -w '\n%{http_code}' -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$(make_body "governed-intelligence-denied-$GITHUB_RUN_ID")")
+          dcode=$(tail -n1 <<<"$denied"); dpayload=$(sed '$d' <<<"$denied")
+          test "$dcode" = 400; test "$(jq -r '.ok' <<<"$dpayload")" = false
+          event_after=$(curl -sSf -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" "$SUPABASE_URL/rest/v1/nayanet_cognition_events?select=id,event_id&user_id=eq.$user&project_id=eq.NayaNET")
+          test "$(jq --arg e "intelligence:governed-intelligence-denied-$GITHUB_RUN_ID" '[.[]|select(.event_id==$e)]|length' <<<"$event_after")" = 0
+          echo "DENIAL_ZERO_PERSISTENCE_PASS cognition=$(jq length <<<"$event_after")"
+
+      - name: Receipt provenance and fresh retrieval
+        shell: bash
+        run: |
+          set -euo pipefail
+          token=$(cat /tmp/token); user=$(cat /tmp/user); event=$(cat /tmp/event)
+          receipts=$(curl -sSf -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" "$SUPABASE_URL/rest/v1/nayanet_execution_receipts?select=id,action,status,evidence,authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_status_at_execution,authority_source_event_id&user_id=eq.$user&project_id=eq.NayaNET")
+          eventrow=$(curl -sSf -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $token" "$SUPABASE_URL/rest/v1/nayanet_cognition_events?select=id,event_id,metadata,receipt_id&user_id=eq.$user&project_id=eq.NayaNET&event_id=eq.$(python -c 'import urllib.parse; print(urllib.parse.quote(open("/tmp/event").read().strip(),safe=""))')")
+          retrieval=$(curl -sSf -X POST "$FUNCTION_URL" -H "Authorization: Bearer $token" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d "$(jq -n --arg q "Governed Intelligence Proof $GITHUB_RUN_ID" '{action:"retrieve",query:$q,limit:5}')")
+          test "$(jq -r '.ok' <<<"$retrieval")" = true
+          test "$(jq '.result.count' <<<"$retrieval")" -ge 1
+          test "$(jq '[.[]|select(.authority_grant_id != null and .action=="intelligence.capture" and .status=="SUCCESS")]|length' <<<"$receipts")" = 1
+          test "$(jq 'length' <<<"$eventrow")" = 1
+          echo "CAUSAL_PROOF_VERIFIED"
+          jq -n --arg event "$event" --argjson eventrow "$eventrow" --argjson receipts "$receipts" --argjson retrieval "$retrieval" '{status:"VERIFIED",event_id:$event,event:$eventrow,receipts:$receipts,retrieval:$retrieval}' > governed-intelligence-proof.json
+
+      - name: Upload proof artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: governed-intelligence-commit-proof
+          path: governed-intelligence-proof.json
