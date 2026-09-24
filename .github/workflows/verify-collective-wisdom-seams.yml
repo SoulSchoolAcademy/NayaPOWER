@@ -1,0 +1,27 @@
+name: Verify automatic collective wisdom seams
+
+on:
+  push:
+    branches:
+      - naya/collective-wisdom-feed-seam-20260924
+  pull_request:
+    paths:
+      - "supabase/functions/nayanet-compound-intelligence/index.ts"
+      - "supabase/functions/naya-smart-feed/index.ts"
+      - "supabase/migrations/*collective_wisdom_projection_v1.sql"
+      - "tests/test_stream_b_collective_wisdom_projection.py"
+      - "tests/test_stream_b_collective_wisdom_feed.py"
+      - ".github/workflows/verify-collective-wisdom-seams.yml"
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Run collective wisdom contract tests
+        run: python -m pytest -q tests/test_stream_b_collective_wisdom_projection.py tests/test_stream_b_collective_wisdom_feed.py
