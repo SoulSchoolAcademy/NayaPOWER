@@ -1,0 +1,111 @@
+name: Verify Intelligence Invalidation
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/intelligence_invalidation.py"
+      - ".naya/runtime/test_intelligence_invalidation.py"
+      - ".github/workflows/verify-intelligence-invalidation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  intelligence-invalidation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate transition runtime
+        run: python -m py_compile .naya/runtime/intelligence_invalidation.py .naya/runtime/test_intelligence_invalidation.py
+      - name: Verify System 45 input planner
+        run: python .naya/runtime/test_derived_intelligence_revalidation.py
+      - name: Verify System 46 fail-closed transitions
+        run: python .naya/runtime/test_intelligence_invalidation.py
+      - name: Build independent invalidation proposal
+        run: |
+          python - <<'PY'
+          import hashlib
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          runtime=Path(".naya/runtime")
+          def load(name,path):
+              spec=importlib.util.spec_from_file_location(name,path)
+              module=importlib.util.module_from_spec(spec)
+              spec.loader.exec_module(module)
+              return module
+          planner=load("derived_intelligence_revalidation",runtime/"derived_intelligence_revalidation.py")
+          invalidation=load("intelligence_invalidation",runtime/"intelligence_invalidation.py")
+          sha=lambda value: hashlib.sha256(value.encode("utf-8")).hexdigest()
+          lineage=[
+              {"event_id":"SOURCE-A","status":"VERIFIED","relationships":{"source_events":[]}},
+              {"event_id":"DERIVED-D","status":"SUPPORTED","relationships":{"source_events":["SOURCE-A"]}},
+              {"event_id":"DERIVED-E","status":"SUPPORTED","relationships":{"source_events":["DERIVED-D"]}}
+          ]
+          plan=planner.plan_revalidation_impact(
+              [{"id":"SOURCE-A","before_hash":sha("SOURCE-A-v1"),"after_hash":sha("SOURCE-A-v2")}],
+              lineage,
+          )
+          records={row["event_id"]:row for row in lineage if row["event_id"]!="SOURCE-A"}
+          run=invalidation.IntelligenceInvalidationRun(
+              plan,
+              records,
+              authority_ref="ci-authority-decision-46",
+              invalidator_id="ci-invalidator",
+              reason="CI foundational source correction",
+              evidence_refs=["ci-source-change-evidence"],
+              idempotency_key="ci-invalidation-batch-46",
+          )
+          run.invalidate()
+          run.recheck({
+              "DERIVED-D":{"outcome":"CONFIRMED","verifier_id":"ci-verifier","evidence_refs":["ci-recheck-d"],"verification_record_ref":"ci-verification-d"},
+              "DERIVED-E":{"outcome":"NEEDS_RECALCULATION","verifier_id":"ci-verifier","evidence_refs":["ci-recheck-e"],"verification_record_ref":"ci-verification-e"}
+          })
+          run.recalculate({
+              "DERIVED-E":{"calculation_id":"ci-calc-e","successor_content_sha256":sha("DERIVED-E-v2"),"derivation_receipt_ref":"ci-derivation-receipt","recalculator_id":"ci-recalculator","evidence_refs":["ci-recalculation-evidence"]}
+          })
+          run.supersede({
+              "DERIVED-E":{"authority_ref":"ci-authority-decision-46","evidence_refs":["ci-supersession-evidence"],"supersession_receipt_ref":"ci-supersession-receipt"}
+          })
+          batch=run.export()
+          errors=invalidation.validate_batch(batch)
+          assert not errors,errors
+          assert [receipt["action"] for receipt in batch["receipts"]]==list(invalidation.ACTIONS),batch
+          assert batch["persistence_performed"] is False,batch
+          assert batch["canonical_records_modified"] is False,batch
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"intelligence-invalidation-batch.json").write_text(json.dumps(batch,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+              "schema":"naya-intelligence-invalidation-gate/v1",
+              "status":"VERIFIED",
+              "mode":batch["mode"],
+              "batch_status":batch["status"],
+              "actions":[receipt["action"] for receipt in batch["receipts"]],
+              "receipt_chain_count":len(batch["receipts"]),
+              "history_preserved":True,
+              "persistence_performed":batch["persistence_performed"],
+              "canonical_records_modified":batch["canonical_records_modified"],
+              "production_integration":"NOT_TESTED",
+              "truth_boundary":batch["truth_boundary"]
+          }
+          (root/"intelligence-invalidation-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish invalidation proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: intelligence-invalidation-proof
+          path: |
+            .naya/runtime/intelligence_invalidation.py
+            .naya/runtime/test_intelligence_invalidation.py
+            ${{ runner.temp }}/intelligence-invalidation-batch.json
+            ${{ runner.temp }}/intelligence-invalidation-gate.json
+          retention-days: 14
+          if-no-files-found: error
