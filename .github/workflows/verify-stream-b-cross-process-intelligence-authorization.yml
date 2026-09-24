@@ -1,0 +1,26 @@
+name: Stream B Cross-Process Intelligence Authorization Proof
+
+on:
+  push:
+    branches:
+      - "naya/stream-b-cross-process-intelligence-auth-20260924"
+  pull_request:
+    paths:
+      - ".naya/runtime/portable_authorization.py"
+      - ".naya/runtime/universal_execution_gate.py"
+      - "tests/test_stream_b_cross_process_intelligence_authorization.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cross-process-authorization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install cryptography
+        run: python -m pip install cryptography
+      - name: Run fail-first cross-process proof
+        run: python tests/test_stream_b_cross_process_intelligence_authorization.py

@@ -92,6 +92,9 @@ RELEASE_ACTION_TYPES = BOUNDARY.RELEASE_ACTION_TYPES
 RELEASE_ENVIRONMENTS = BOUNDARY.RELEASE_ENVIRONMENTS
 REPO_MUTATION_ACTION_TYPES = BOUNDARY.REPO_MUTATION_ACTION_TYPES
 REPO_WRITE_PERMISSION = BOUNDARY.REPO_WRITE_PERMISSION
+INTELLIGENCE_COMMIT_ACTION_TYPES = frozenset({"INTELLIGENCE_COMMIT", "intelligence_commit"})
+INTELLIGENCE_COMMIT_PERMISSION = "intelligence_commit"
+INTELLIGENCE_COMMIT_TARGET = "NayaNET"
 BOUNDARY_DECISION = BOUNDARY.BoundaryDecision
 DEPLOY_TARGET = BOUNDARY.deploy_target
 REPO_MUTATION_TARGET = BOUNDARY.repo_mutation_target
@@ -183,6 +186,7 @@ def issue_portable_authorization(
     *,
     execution_authorization: Any,
     registry: Any,
+    gate: Any,
     commit_sha: str,
     private_key_hex: str,
     repository: str = DEFAULT_REPOSITORY,
@@ -206,6 +210,11 @@ def issue_portable_authorization(
         raise ValueError("issued_at must be a valid ISO timestamp")
     if execution_authorization is None:
         raise ValueError("a gate-issued ExecutionAuthorization is required")
+    if gate is None:
+        raise ValueError("the canonical UniversalExecutionGate is required to prove issuer provenance")
+    gate_ok, gate_reasons = gate.verify(execution_authorization, now=issued_at)
+    if not gate_ok:
+        raise ValueError("execution authorization was not issued by the supplied gate: " + "; ".join(gate_reasons))
     if execution_authorization.governance_state != GovernanceState.AUTHORIZED.value:
         raise ValueError("execution authorization is not AUTHORIZED")
     if int(expires_in_seconds) <= 0 or int(expires_in_seconds) > MAX_ARTIFACT_TTL_MINUTES * 60:
