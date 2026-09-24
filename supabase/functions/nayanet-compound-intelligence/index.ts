@@ -50,14 +50,15 @@ async function validateIntelligenceCommitAuthority(client: any, authorityGrantId
   return data;
 }
 
-async function record(client: any, event: any, action: string, expected: string, observed: string, learning: any[] = []) {
+async function record(client: any, event: any, action: string, expected: string, observed: string, learning: any[] = [], executionAuthorization: any = null) {
   const { data, error } = await client.rpc("nayanet_record_cognition_event", {
     p_project_id: PROJECT,
     p_event: event,
     p_action: action,
     p_expected_result: expected,
     p_observed_result: observed,
-    p_learning: learning
+    p_learning: learning,
+    p_execution_authorization: executionAuthorization
   });
   if (error) throw error;
   return data;
@@ -726,7 +727,8 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
     "intelligence_checkpoint",
     "Cognitive checkpoint persisted",
     "Current understanding was checkpointed against provenance-bound source events.",
-    [{ type: "checkpoint", checkpoint_id: checkpointId, source_event_ids: sourceEventIds }]
+    [{ type: "checkpoint", checkpoint_id: checkpointId, source_event_ids: sourceEventIds }],
+    body.authority_grant_id ? {authority_id:String(body.authority_grant_id),actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"} : null
   );
 
   return {
@@ -775,7 +777,8 @@ async function commitIntelligence(client: any, userId: string, body: any) {
     captureReceipt=await record(client,event,"intelligence.capture",
       "Meaningful intelligence captured as a provenance-bound Intelligent Block source event",
       "Canonical Intelligent Block source event persisted.",
-      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}]);
+      [{type:"intelligent_block_capture",event_id:eventId,idempotency_key:idempotencyKey}],
+      {authority_id:authorityGrantId,actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"});
     const persisted=await client.from("nayanet_cognition_events").select("id,event_id,title,content,metadata,created_at")
       .eq("event_id",eventId).eq("user_id",userId).eq("project_id",PROJECT).single();
     if(persisted.error || !persisted.data) throw new Error("INTELLIGENCE_CAPTURE_PERSISTENCE_NOT_FOUND");
