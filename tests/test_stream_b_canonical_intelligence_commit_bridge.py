@@ -1,70 +1,45 @@
-"""Stream B canonical intelligence_commit bridge contract.
+"""Stream B boundary contract: automatic intelligence vs governed execution.
 
-The database remains the persistence seam; cryptographic portable authorization
-is intentionally verified by the trusted Edge Function before the service-role
-RPC is reached. These tests lock the fail-closed boundaries in source.
+Automatic intelligence is not an execution action:
+- connection/participation consent controls whether wisdom contributes;
+- capture, learning, distillation, compounding and indexing flow automatically;
+- identity remains private by default;
+- publication and consequential execution retain their own explicit boundaries.
 """
 from pathlib import Path
-
 ROOT = Path(__file__).resolve().parents[1]
 M = ROOT / "supabase" / "migrations" / "20260924130000_canonical_intelligence_commit_bridge_v1.sql"
-
 
 def _sql() -> str:
     return M.read_text(encoding="utf-8")
 
-
-def test_canonical_seam_is_service_role_only():
+def test_intelligence_capture_is_not_authority_gated():
     sql = _sql()
-    assert "nayanet_canonical_intelligence_commit" in sql
-    assert "request.jwt.claim.role" in sql
-    assert "CANONICAL_INTELLIGENCE_COMMIT_SERVICE_ROLE_REQUIRED" in sql
-    assert "grant execute on function public.nayanet_canonical_intelligence_commit" in sql
-    assert "to service_role" in sql
+    assert "automatic-intelligence-flow-v1" in sql
+    assert "authority_required',false" in sql
+    assert "INTELLIGENCE_CAPTURE_REQUIRES_CANONICAL_VERIFIER" not in sql
+    assert "PORTABLE_AUTHORIZATION_REQUIRED" not in sql
 
-
-def test_legacy_six_arg_intelligence_capture_cannot_bypass():
+def test_capture_receipt_has_no_execution_authority_lineage():
     sql = _sql()
-    assert sql.count("INTELLIGENCE_CAPTURE_REQUIRES_CANONICAL_VERIFIER") >= 2
-    assert "p_event->'metadata'->>'authority_grant_id'" in sql
+    assert "case when p_action='intelligence.capture' then null" in sql
+    assert "execution_authorization',case when p_action='intelligence.capture' then null" in sql
 
-
-def test_canonical_seam_requires_portable_artifact_shape():
+def test_non_intelligence_execution_still_uses_authority_when_supplied():
     sql = _sql()
-    assert "naya/portable_authorization/v1" in sql
-    assert "PORTABLE_AUTHORIZATION_REQUIRED" in sql
-    assert "PORTABLE_ACTION_TYPE_MISMATCH" in sql
-    assert "PORTABLE_PERMISSION_MISMATCH" in sql
-    assert "PORTABLE_TARGET_MISMATCH" in sql
+    assert "nayanet_validate_authority_grant" in sql
+    assert "AUTHORITY_REQUIRED" in sql
+    assert "p_action <> 'intelligence.capture'" in sql
 
+def test_connection_participation_is_explicitly_distinct_from_authority():
+    sql = _sql().lower()
+    assert "automatic intelligence" in sql
+    assert "connection/participation consent" in sql
+    assert "consequential execution/publication boundaries" in sql
 
-def test_canonical_seam_rechecks_live_grant_after_portable_verification():
+def test_canonical_capture_seam_is_service_role_only_and_not_authority_based():
     sql = _sql()
-    for marker in (
-        "PRODUCTION_AUTHORITY_GRANT_NOT_ACTIVE",
-        "PRODUCTION_AUTHORITY_GRANT_EXPIRED",
-        "PRODUCTION_AUTHORITY_ACTION_NOT_GRANTED",
-        "PRODUCTION_AUTHORITY_TARGET_OUT_OF_SCOPE",
-        "EVENT_AUTHORITY_GRANT_MISMATCH",
-        "PORTABLE_ACTOR_GRANT_MISMATCH",
-        "PORTABLE_GRANT_ID_MISMATCH",
-    ):
-        assert marker in sql
-
-
-def test_receipt_records_same_authority_lineage_and_verification_boundary():
-    sql = _sql()
-    assert "'verification_boundary','nayanet-compound-intelligence:portable-ed25519-v1'" in sql
-    assert "v_grant.grant_id" in sql
-    assert "v_grant.issuer_id" in sql
-    assert "v_grant.source_event_id" in sql
-
-
-def test_persistence_happens_only_inside_canonical_seam():
-    sql = _sql()
-    seam_start = sql.index("create or replace function public.nayanet_canonical_intelligence_commit")
-    seam_end = sql.index("$function$;", seam_start)
-    seam = sql[seam_start:seam_end]
-    assert "insert into public.nayanet_cognition_events" in seam
-    assert "insert into public.nayanet_execution_receipts" in seam
-    assert "return jsonb_build_object" in seam
+    seam = sql.split("create or replace function public.nayanet_canonical_intelligence_capture",1)[1].split("create or replace function public.nayanet_record_cognition_event",1)[0]
+    assert "CANONICAL_INTELLIGENCE_CAPTURE_SERVICE_ROLE_REQUIRED" in seam
+    assert "grant execute" in seam and "to service_role" in seam
+    assert "nayanet_validate_authority_grant" not in seam
