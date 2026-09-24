@@ -1,4 +1,4 @@
-﻿-- Reconcile the production execution-authorization overload used by the canonical
+-- Reconcile the production execution-authorization overload used by the canonical
 -- intelligence.capture receipt boundary into repository source of truth.
 create or replace function public.nayanet_record_cognition_event(
   p_project_id text,
@@ -46,8 +46,7 @@ begin
 
   insert into public.nayanet_cognition_events(
     user_id,project_id,event_id,created_at,updated_at,type,classification,title,content,source,status,actor,confidence,tags,parent_event_id,source_hash,schema_version,receipt_id,metadata
-  )
-  values(
+  ) values(
     auth.uid(),p_project_id,p_event->>'event_id',coalesce((p_event->>'created_at')::timestamptz,now()),now(),
     coalesce(p_event->>'type','intelligence'),coalesce(p_event->>'classification','observation'),p_event->>'title',
     coalesce(p_event->>'content',''),coalesce(p_event->>'source','nayanet-hub'),coalesce(p_event->>'status','active'),
@@ -55,8 +54,7 @@ begin
     p_event->>'parent_event_id',coalesce(p_event->>'source_hash',''),coalesce(p_event->>'schema_version','1.0.0'),
     coalesce(p_event->>'receipt_id',''),coalesce(p_event->'metadata','{}'::jsonb)
   )
-  on conflict (user_id,project_id,event_id) do update
-    set updated_at=now(),status=excluded.status,metadata=excluded.metadata
+  on conflict (user_id,project_id,event_id) do update set updated_at=now(),status=excluded.status,metadata=excluded.metadata
   returning * into v_event;
 
   insert into public.nayanet_project_cognition_state(user_id,project_id,revision,state,status)
@@ -66,13 +64,11 @@ begin
   update public.nayanet_project_cognition_state
      set revision=revision+1,
          state=coalesce(state,'{}'::jsonb)||jsonb_build_object('last_event_id',v_event.event_id,'last_event_at',v_event.created_at),
-         status='IN_PROGRESS',
-         updated_at=now()
+         status='IN_PROGRESS',updated_at=now()
    where user_id=auth.uid() and project_id=p_project_id
    returning * into v_state;
 
-  select coalesce(max(revision),0)+1
-    into v_receipt_revision
+  select coalesce(max(revision),0)+1 into v_receipt_revision
     from public.nayanet_execution_receipts
    where user_id=auth.uid() and project_id=p_project_id;
 
@@ -80,15 +76,9 @@ begin
     user_id,project_id,revision,action,expected_result,observed_result,status,evidence,learning,
     authority_grant_id,authority_issuer_id,authority_scope,authority_actions,authority_constraints,
     authority_status_at_execution,authority_source_event_id,authority_validated_at
-  )
-  values(
+  ) values(
     auth.uid(),p_project_id,v_receipt_revision,p_action,p_expected_result,p_observed_result,'SUCCESS',
-    jsonb_build_object(
-      'event_id',v_event.event_id,
-      'source_hash',v_event.source_hash,
-      'created_at',v_event.created_at,
-      'execution_authorization',coalesce(p_execution_authorization,'null'::jsonb)
-    ),
+    jsonb_build_object('event_id',v_event.event_id,'source_hash',v_event.source_hash,'created_at',v_event.created_at,'execution_authorization',coalesce(p_execution_authorization,'null'::jsonb)),
     coalesce(p_learning,'[]'::jsonb),
     case when v_authority is null then null else (v_authority->>'grant_id')::uuid end,
     case when v_authority is null then null else (v_authority->>'issuer_id')::uuid end,
@@ -98,15 +88,11 @@ begin
     case when v_authority is null then null else v_authority->>'grant_status' end,
     case when v_authority is null then null else v_authority->>'source_event_id' end,
     case when v_authority is null then null else clock_timestamp() end
-  )
-  returning * into v_receipt;
+  ) returning * into v_receipt;
 
   update public.nayanet_cognition_events
-     set receipt_id=v_receipt.id::text,
-         updated_at=now()
-   where id=v_event.id
-     and user_id=auth.uid()
-     and project_id=p_project_id
+     set receipt_id=v_receipt.id::text,updated_at=now()
+   where id=v_event.id and user_id=auth.uid() and project_id=p_project_id
   returning * into v_event;
 
   return jsonb_build_object('event',to_jsonb(v_event),'state',to_jsonb(v_state),'receipt',to_jsonb(v_receipt));
@@ -114,4 +100,4 @@ end;
 $function$;
 
 grant execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb,jsonb) to authenticated;
-revoke execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb) from anon, public;
+revoke execute on function public.nayanet_record_cognition_event(text,jsonb,text,text,text,jsonb,jsonb) from anon, public;
