@@ -6,6 +6,8 @@
 **Status:** IMPLEMENTED — NOT VERIFIED
 **Branch:** `coda2/item31-control-plane-freshness`
 **Starting source:** `ad2d2ba466fe60a3443611fb18dead428a57d800` (`origin/main`)
+**Commit:** `08a3b1ebc146a7f18edf56cc742f25279d5d464e`
+**PR:** [#566](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/566)
 **Related issue:** [#554](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/554)
 
 ## Original problem
@@ -71,7 +73,7 @@ That mechanism was removed. The validator does not inspect statement text for si
 | Full audit on execution branch | RED | Expected: `NON_MAIN_CURRENT_AUTHORITY: coda2/item31-control-plane-freshness` |
 | Full audit with branch treated as main for isolated checking | RED | UNKNOWN gate passed; first remaining divergence was `BATON_FIELD_MISSING: identity` |
 
-No Item 31 CI run has been observed on `main`. The validator has not been promoted to `VERIFIED` or `FRESH` for the live control plane.
+No Item 31 CI run has been observed on `main`. PR #566 is open; its observed checks are unrelated failing Cloudflare Workers Builds, and the new workflow is not available for dispatch until the workflow exists on the default branch. The validator has not been promoted to `VERIFIED` or `FRESH` for the live control plane.
 
 ## Item 30 dependency boundary
 
