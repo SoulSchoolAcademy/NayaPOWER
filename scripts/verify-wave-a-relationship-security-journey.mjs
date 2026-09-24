@@ -50,7 +50,7 @@ const verify=(token,messageId)=>req(base+'/functions/v1/nayanet-smart-mail',{met
 await expectDenied(send(A.access_token,B.user.id,'This must be denied without explicit authority.','wavea-no-grant-'+project,null),'NO_GRANT');
 
 const grant=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({
- p_subject_id:A.user.id,p_source_event_id:'wavea-authority-'+project,p_mission_id:'NayaNET Wave A real relationship journey',
+ p_subject_id:A.user.id,p_source_event_id:ab.event_id,p_mission_id:'NayaNET Wave A real relationship journey',
  p_scope:{project_id:project,target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],
  p_constraints:{mode:'wave-a-proof',no_external_side_effects:false},p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
  p_evidence:{authorization_type:'explicit_wave_a_authorization',space_id:spaceId,connection_id:connA[0].id},p_parent_authority:null
@@ -99,7 +99,7 @@ if(!fresh.ok||fresh.decision?.influenced!==true||fresh.decision?.context?.eviden
 if(fresh.decision?.authority?.changed!==false) throw new Error('FRESH_NAYA_AUTHORITY_CHANGED');
 
 const successor=await req(base+'/rest/v1/rpc/nayanet_issue_authority_grant',{method:'POST',headers:h(A.access_token),body:JSON.stringify({
- p_subject_id:A.user.id,p_source_event_id:'wavea-successor-authority-'+project,p_mission_id:'NayaNET Wave A fresh-Naya continuation',
+ p_subject_id:A.user.id,p_source_event_id:first.cognition_event_id,p_mission_id:'NayaNET Wave A fresh-Naya continuation',
  p_scope:{project_id:project,target:B.user.id,space_id:spaceId},p_actions:['smart_mail_send'],
  p_constraints:{mode:'fresh-naya-continuation',requires_verified_learning:evidence[0].id},
  p_expires_at:new Date(Date.now()+15*60*1000).toISOString(),
@@ -131,3 +131,4 @@ console.log('INITIAL_RECEIPT_ID='+first.execution_receipt_id);
 console.log('INITIAL_COGNITION_EVENT_ID='+cognition[0].event_id);
 console.log('INITIAL_LEDGER_EVENT_ID='+ledger[0].ledger_event_id);
 console.log('CONTINUATION_MESSAGE_ID='+continuation.message_id);
+

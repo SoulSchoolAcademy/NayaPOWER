@@ -45,9 +45,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test -s assistant-runtime.js
-          SUPABASE_URL="$(sed -n "s/.*const URL='\\([^']*\\)'.*/\\1/p" assistant-runtime.js | head -n1)"
-          SUPABASE_ANON_KEY="$(sed -n "s/.*KEY='\\([^']*\\)'.*/\\1/p" assistant-runtime.js | head -n1)"
+          test -s NAYANET/HUB/public/assistant-runtime.js
+          SUPABASE_URL="$(sed -n "s/.*const URL='\\([^']*\\)'.*/\\1/p" NAYANET/HUB/public/assistant-runtime.js | head -n1)"
+          SUPABASE_ANON_KEY="$(sed -n "s/.*KEY='\\([^']*\\)'.*/\\1/p" NAYANET/HUB/public/assistant-runtime.js | head -n1)"
           test -n "${SUPABASE_URL}"
           test -n "${SUPABASE_ANON_KEY}"
           {
@@ -200,3 +200,4 @@ jobs:
           grep -q "UAI-REST-PROOF-" /tmp/rest_retrieve.json
           echo "REST_AUTHENTICATED_PERSISTENCE_AND_RETRIEVAL_VERIFIED"
           echo "UAI_MCP_AND_REST_SAME_CANONICAL_PATH_VERIFIED"
+
