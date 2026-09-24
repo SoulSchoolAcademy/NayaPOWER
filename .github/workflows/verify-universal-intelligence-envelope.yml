@@ -1,0 +1,95 @@
+name: Verify Universal Intelligence Envelope V1
+
+on:
+  push:
+    branches:
+      - "naya/universal-envelope-v1-20260924"
+    paths:
+      - ".naya/project-intelligence/UNIVERSAL-INTELLIGENCE-ENVELOPE-V1.md"
+      - ".naya/runtime/universal_intelligence_envelope.py"
+      - ".naya/runtime/test_universal_intelligence_envelope.py"
+      - ".github/workflows/verify-universal-intelligence-envelope.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  envelope:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fresh independent process — RED-first envelope attack
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -m py_compile .naya/runtime/universal_intelligence_envelope.py .naya/runtime/test_universal_intelligence_envelope.py
+          python .naya/runtime/test_universal_intelligence_envelope.py
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          sys.path.insert(0, str(Path(".naya/runtime").resolve()))
+          from universal_intelligence_envelope import UniversalIntelligenceEnvelope
+
+          base = {
+            "schema":"NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1",
+            "envelope_id":"ATTACK-001",
+            "source":{"type":"test","id":"source-001"},
+            "identity":{"actor_type":"naya","actor_id":"fresh-runner"},
+            "owner_scope":{"owner_id":"owner-001","project_id":"NayaNET"},
+            "occurred_at":"2026-09-24T16:00:00Z",
+            "received_at":"2026-09-24T16:00:01Z",
+            "output":{"content":"meaningful"},
+            "meaningfulness":"MEANINGFUL",
+            "provenance":{"source_id":"source-001"},
+            "epistemic":{"status":"OBSERVED"},
+            "privacy":{"visibility":"PRIVATE"},
+            "authority":{"status":"CONTEXT_ONLY"},
+            "context":{"project":"NayaNET"},
+            "idempotency_key":"ATTACK-001"
+          }
+
+          attacks = []
+          for label, mutate in [
+            ("missing_provenance", lambda x: x.update(provenance={})),
+            ("shared_by_consent_default", lambda x: x.update(privacy={"visibility":"SHARED_BY_CONSENT"})),
+            ("invalid_epistemic", lambda x: x.update(epistemic={"status":"VERIFIED_BUT_TRUST_ME"})),
+            ("missing_idempotency", lambda x: x.update(idempotency_key="")),
+          ]:
+            candidate = dict(base)
+            mutate(candidate)
+            try:
+              UniversalIntelligenceEnvelope.from_mapping(candidate)
+            except ValueError:
+              attacks.append(label + "=FAIL_CLOSED")
+            else:
+              raise SystemExit(label + "=UNEXPECTED_ACCEPT")
+
+          unknown = dict(base)
+          unknown["epistemic"] = {"status":"UNKNOWN"}
+          env = UniversalIntelligenceEnvelope.from_mapping(unknown)
+          assert env.epistemic["status"] == "UNKNOWN"
+          attacks.append("unknown_preserved=PASS")
+
+          print("RED_FIRST_ATTACKS=" + ",".join(attacks))
+          print("FRESH_PROCESS=PASS")
+          PY
+      - name: Receiver boundary inspection
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
+          test -f .naya/runtime/project_intelligence_bridge.py
+          grep -q "RECEIVER" .naya/project-intelligence/PROJECT-INTELLIGENCE-BRIDGE-CONTRACT-V1.md
+          grep -q "NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1" .naya/runtime/project_intelligence_bridge.py
+          if grep -Eq "supabase|nayanet_record_cognition_event|createClient|urllib.request" .naya/runtime/universal_intelligence_envelope.py; then
+            echo "ENVELOPE_MUST_NOT_OWN_PERSISTENCE=FAIL"
+            exit 1
+          fi
+          echo "ENVELOPE_OWNS_NO_PERSISTENCE=PASS"
+          echo "EXISTING_RECEIVER_CONTRACT_PRESENT=PASS"
