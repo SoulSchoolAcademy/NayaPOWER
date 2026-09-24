@@ -1,0 +1,92 @@
+name: Verify Distributed Naya Continuity
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".naya/runtime/distributed_naya.py"
+      - ".naya/runtime/test_distributed_naya.py"
+      - ".github/workflows/verify-distributed-naya.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  distributed-naya:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate continuity gate
+        run: python -m py_compile .naya/runtime/distributed_naya.py .naya/runtime/test_distributed_naya.py
+      - name: Verify System 43 collective input boundary
+        run: python .naya/runtime/test_collective_intelligence.py
+      - name: Verify continuity dimensions
+        run: python .naya/runtime/test_distributed_naya.py
+      - name: Build independent continuity plan
+        run: |
+          python - <<'PY'
+          import importlib.util
+          import json
+          import os
+          from pathlib import Path
+          script=Path(".naya/runtime/distributed_naya.py")
+          spec=importlib.util.spec_from_file_location("distributed_naya",script)
+          module=importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(module)
+          envelope={
+              "envelope_id":"ci-envelope-60",
+              "source_runtime":"LOCAL",
+              "target_runtime":"NAYANET",
+              "subject_identity":{"subject_id":"NAYA","binding_status":"VERIFIED","binding_ref":"ci-binding"},
+              "authority":{"state":"VERIFIED","authority_ref":"ci-authority"},
+              "memory":{"state":"VERIFIED","refs":["ci-memory-1"]},
+              "provenance":{"state":"VERIFIED","refs":["ci-provenance-1"],"payload_sha256":"a"*64},
+              "governance":{"state":"VERIFIED","policy_ref":"ci-governance"},
+              "continuity":{"state":"VERIFIED","receipt_ref":"ci-continuity-receipt","cursor":"ci-cursor"},
+              "consent":{"state":"ACTIVE","revocation_plan_status":"COMPLETE"},
+              "capability_registry_version":"1.0.0",
+              "smart_door_lifecycle_version":"1.0.0"
+          }
+          plan=module.plan_distributed_continuity(envelope)
+          errors=module.validate_continuity_plan(plan)
+          assert not errors,errors
+          assert plan["status"]=="COMPLETE",plan
+          assert plan["eligible_for_transport"] is True,plan
+          assert plan["network_transport_performed"] is False,plan
+          assert plan["payload_propagated"] is False,plan
+          root=Path(os.environ["RUNNER_TEMP"])
+          (root/"distributed-naya-plan.json").write_text(json.dumps(plan,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          gate={
+              "schema":"naya-distributed-naya-gate/v1",
+              "status":"VERIFIED",
+              "mode":plan["mode"],
+              "plan_status":plan["status"],
+              "source_runtime":plan["envelope"]["source_runtime"],
+              "target_runtime":plan["envelope"]["target_runtime"],
+              "required_dimensions":plan["required_dimensions"],
+              "eligible_for_transport":plan["eligible_for_transport"],
+              "network_transport_performed":plan["network_transport_performed"],
+              "payload_propagated":plan["payload_propagated"],
+              "federation_created":plan["federation_created"],
+              "production_integration":"NOT_TESTED",
+              "truth_boundary":plan["truth_boundary"]
+          }
+          (root/"distributed-naya-gate.json").write_text(json.dumps(gate,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+          print(json.dumps(gate,sort_keys=True))
+          PY
+      - name: Publish distributed Naya proof
+        uses: actions/upload-artifact@v4
+        with:
+          name: distributed-naya-proof
+          path: |
+            .naya/runtime/distributed_naya.py
+            .naya/runtime/test_distributed_naya.py
+            ${{ runner.temp }}/distributed-naya-plan.json
+            ${{ runner.temp }}/distributed-naya-gate.json
+          retention-days: 14
+          if-no-files-found: error
