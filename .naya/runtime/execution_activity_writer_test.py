@@ -2,6 +2,7 @@
 """Tests for the write-authorized execution-boundary Activity writer."""
 from __future__ import annotations
 
+import os
 import tempfile
 from pathlib import Path
 
@@ -32,7 +33,8 @@ def _event() -> tuple[dict, dict]:
 
 
 def main() -> int:
-    root = Path(tempfile.mkdtemp(prefix="activity-writer-test-"))
+    proof_root = os.environ.get("ACTIVITY_WRITER_PROOF_ROOT")
+    root = Path(proof_root) if proof_root else Path(tempfile.mkdtemp(prefix="activity-writer-test-"))
     event, execution = _event()
 
     result = write_execution_activity(
@@ -44,7 +46,13 @@ def main() -> int:
         activity_root=root,
     )
     assert result["status"] == "CREATED"
-    assert find_daily_activity(event["event_id"], activity_root=root) is not None
+    record = find_daily_activity(event["event_id"], activity_root=root)
+    assert record is not None
+    assert record.parent.name == "19"
+    assert record.parent.parent.name == "09"
+    assert record.parent.parent.parent.name == "2026"
+    assert record.parent.parent.parent.parent == root
+    assert "**EVENT:** `" + event["event_id"] + "`" in record.read_text(encoding="utf-8")
 
     replay = write_execution_activity(
         event=event,
