@@ -11,6 +11,9 @@ import smart_notes_v3 as brain
 class CanonicalIBRetrievalTests(unittest.TestCase):
     def test_registry_is_canonical_and_resolves_real_ib_projections_without_filename_search(self):
         objects = brain.load_canonical_ibs(root=ROOT)
+        registry = (ROOT / '.naya/memory/smart-notes/REGISTRY.json').read_text(encoding='utf-8')
+        self.assertIn('"identity_authority": "live canonical receiver only"', registry)
+        self.assertNotIn('identity_cursor', registry)
         self.assertEqual([obj["intelligent_block_id"] for obj in objects], ["IB-000001", "IB-000002"])
         self.assertTrue(all(obj["canonical"] for obj in objects))
         self.assertTrue(all(obj["path"].endswith("/smart-note.md") for obj in objects))
