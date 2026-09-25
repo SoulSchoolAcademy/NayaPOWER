@@ -58,6 +58,13 @@
       "authorized continuation"
     ],
     "next_action_reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "memory_rehabilitation": {
+      "status": "REPAIRED_VERIFICATION_PENDING",
+      "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
+      "identity_boundary": "live canonical receiver only",
+      "retrieval_boundary": "canonical IB registry -> authorized retrieve_canonical_ibs",
+      "remaining_gate": "focused tests on repaired HEAD"
+    },
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",

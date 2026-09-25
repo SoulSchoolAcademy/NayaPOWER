@@ -59,6 +59,19 @@
   "proof_authority": "Evidence outranks assertions; current authoritative sources outrank historical records.",
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
+    "brain_rehabilitation_2026_09_25": {
+      "status": "REPAIRED_VERIFICATION_PENDING",
+      "claim_type": "SOURCE_AND_ENFORCEMENT",
+      "source_head": "08d961c2e7b8a91f119234f1901f8b6518870dcf",
+      "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
+      "evidence": [
+        "Repository-side local IB allocator removed.",
+        "Receiver-assigned IB is now required before canonical Smart Note projection persistence.",
+        "Active memory machine-enforcement rejects local allocation, identity cursors, and legacy registry references.",
+        "Duplicate contract projections were demoted to non-authoritative status."
+      ],
+      "test_execution": "UNKNOWN"
+    },
     "canonical_production_parity": {
       "status": "PRODUCTION_PROVEN",
       "release_run": 36030289757,

@@ -73,6 +73,12 @@
   },
   "evidence": [
     {
+      "kind": "brain_rehabilitation_receipt",
+      "source": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
+      "status": "REPAIRED_VERIFICATION_PENDING",
+      "source_head": "08d961c2e7b8a91f119234f1901f8b6518870dcf"
+    },
+    {
       "kind": "active_block_proof_receipt",
       "source": ".naya/project-intelligence/2026-09-22-PI-HOME-RUN-RECEIPT-35789192530.md"
     },
