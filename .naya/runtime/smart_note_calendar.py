@@ -20,7 +20,7 @@ from calendar_projection import _utc_parts, safe_topic
 from smart_note_transaction import canonical_smart_note_path
 
 ROOT = Path(__file__).resolve().parents[2]
-SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
 
 REQUIRED_HEADINGS = (
     "IN A NUTSHELL",
@@ -44,13 +44,27 @@ def validate_smart_note(body: str) -> list[str]:
     return [heading for heading in REQUIRED_HEADINGS if f"## {heading}" not in body]
 
 
-def persist_smart_note(*, timestamp: str | None, topic: str, body: str, root: Path | None = None) -> dict[str, Any]:
+def persist_smart_note(
+    *,
+    timestamp: str | None,
+    topic: str,
+    body: str,
+    intelligent_block_id: str,
+    category: str = "system",
+    root: Path | None = None,
+) -> dict[str, Any]:
     missing = validate_smart_note(body)
     if missing:
         raise ValueError("Smart Note contract missing headings: " + ", ".join(missing))
     stamp = timestamp or datetime.now(timezone.utc).isoformat()
     destination_root = Path(root) if root else SMART_NOTES_ROOT
-    path = canonical_smart_note_path(stamp, topic, root=destination_root)
+    path = canonical_smart_note_path(
+        stamp,
+        topic,
+        category=category,
+        ib_id=intelligent_block_id,
+        root=destination_root,
+    )
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
         existing = path.read_text(encoding="utf-8")
