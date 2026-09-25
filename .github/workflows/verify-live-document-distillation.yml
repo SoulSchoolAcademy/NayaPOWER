@@ -99,11 +99,14 @@ jobs:
           print("RETRIEVAL_LIBRARY_PROOF=PASS")
           PY
 
-          DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
-          echo "$DUP" | jq .
-          test "$(echo "$DUP" | jq -r '.ok // false')" = true
-          test "$(echo "$DUP" | jq -r '.result.intelligence.idempotency_key // empty')" = "$IDEMPOTENCY_KEY"
-          test "$(echo "$DUP" | jq -r '.result.document.document_id // empty')" = "$DOCUMENT_ID"
+          REPLAY_EVENTS=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_cognition_events?select=id,event_id&user_id=eq.$USER_ID&project_id=eq.NayaNET&metadata-%3E%3Eidempotency_key=eq.$IDEMPOTENCY_KEY" "${H[@]}")
+          REPLAY_BLOCKS=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligent_blocks?select=block_id&owner_id=eq.$USER_ID&provenance-%3E%3Eidempotency_key=eq.$IDEMPOTENCY_KEY" "${H[@]}")
+          echo "$REPLAY_EVENTS" | jq .
+          echo "$REPLAY_BLOCKS" | jq .
+          test "$(echo "$REPLAY_EVENTS" | jq 'length')" -eq 1
+          test "$(echo "$REPLAY_EVENTS" | jq -r '.[0].event_id')" = "$EVENT_ID"
+          test "$(echo "$REPLAY_BLOCKS" | jq 'length')" -eq 1
+          test "$(echo "$REPLAY_BLOCKS" | jq -r '.[0].block_id')" = "$BLOCK_ID"
 
           jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{
             status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,
