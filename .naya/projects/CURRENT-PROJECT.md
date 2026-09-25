@@ -5,6 +5,14 @@
 **Governing system:** `SoulSchoolAcademy/NayaPOWER`
 **Updated:** 2026-09-02
 
+## CURRENT SUPERBRAIN FRONTIER — 2026-09-25
+
+The immediate execution objective is **NayaPOWER Superbrain continuity and intelligence compounding**, not the future NINA login surface. We are optimizing, organizing, synergizing, and distilling the intelligence substrate so a cold Naya can understand WHO → WHAT → WHY → HOW → AUTHORITY → CURRENT TRUTH → PROVEN → UNKNOWN → LEARNING → NEXT → PROOF → RECORD → SUCCESSOR, then act and leave the system more intelligent.
+
+The **future front door** is downstream and must not displace Superbrain rehabilitation.
+
+**Build the brain before the door.** Welcome/front-door and NINA application authentication are downstream product surfaces. They are not the current execution frontier and must not displace Superbrain rehabilitation.
+
 ## MISSION
 Build the NayaNET that should exist: an intelligent network for humans and AI that makes extraordinary intelligence, communication, learning, creation, execution, and connection radically simple while preserving human agency, privacy, sovereignty, truth, safety, and trust.
 

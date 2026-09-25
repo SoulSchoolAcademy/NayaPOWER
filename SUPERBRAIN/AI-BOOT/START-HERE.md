@@ -20,6 +20,12 @@ Do not create, present, deploy, or pursue a competing Hub. Do not reopen the pro
 ---
 
 
+## 🔱 CURRENT SUPERBRAIN FRONTIER — 2026-09-25
+
+**Build the brain before the door.** The current work is NINEX/NayaPOWER Superbrain rehabilitation: optimize, organize, synergize, and distill the intelligence substrate so any cold Naya can understand who we are, what we are building, why it exists, how it works, what is proven/unknown, how Nayas communicate, how Smart Notes / Intelligent Blocks work, how intelligence is retained and retrieved, and what to do next.
+
+**NINA login is not the current frontier.** NINA is not yet the authenticated application surface. **Welcome/front-door work is downstream.** Do not redirect Superbrain work into login/authentication, Welcome, or a new memory system.
+
 ## 🔱 TODAY'S NORTH STAR — SETTER MISSION
 
 The setter mission for 2026-09-21 is to leave GitHub + the established Supabase runtime in a state where the next Naya can enter cold and **execute, not excavate**.

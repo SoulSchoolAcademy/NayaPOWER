@@ -22,7 +22,6 @@ def verify():
     if retrieval.get("canonical_registry") != ".naya/memory/smart-notes/REGISTRY.json": errors.append("retrieval manifest does not name the canonical IB registry")
     if retrieval.get("event_lineage_store") != ".naya/memory/events/": errors.append("retrieval manifest does not isolate event lineage store")
     if (MEMORY/"note.schema.json").exists(): errors.append("legacy Smart Note v2 schema remains on the active memory surface")
-
     forbidden_identity_authority = ("_allocate_ib_id", "identity_cursor", "IB-ID-REGISTRY.json")
     for path in MEMORY.iterdir():
         if path.is_file() and not path.name.startswith("test_") and path.name != "verify_memory_surface.py":
@@ -37,6 +36,11 @@ def verify():
     for entry in registry.get("entries",[]):
         if not (ROOT/entry["path"]).is_file(): errors.append(f"registry entry missing: {entry['path']}")
         if not re.fullmatch(r"IB-[0-9]{6}",str(entry.get("intelligent_block_id",""))): errors.append(f"invalid IB identity: {entry.get('intelligent_block_id')}")
+    required=("owner","scope","project","permissions","authority","applicable_scope","learning_state","source_event_id")
+    for entry in registry.get("entries",[]):
+        missing=[field for field in required if entry.get(field) in (None, "", {})]
+        if missing:
+            errors.append("canonical registry authorization metadata incomplete for %s: %s; retrieval boundary remains UNKNOWN" % (entry.get("intelligent_block_id"), ",".join(missing)))
     return errors
 if __name__=="__main__":
     e=verify()
