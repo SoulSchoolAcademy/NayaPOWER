@@ -28,14 +28,15 @@ jobs:
           const H=t=>({apikey:K,authorization:'Bearer '+t,'content-type':'application/json'});
           async function post(p,t,b){const r=await fetch(B+'/functions/v1/'+p,{method:'POST',headers:H(t),body:JSON.stringify(b)});const x=await r.text();let j;try{j=JSON.parse(x)}catch{j={raw:x}};return [r.status,j]}
           const ar=await fetch(B+'/auth/v1/signup',{method:'POST',headers:{apikey:K,'content-type':'application/json'},body:'{}'}),a=await ar.json();
-          if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED'); const userToken=a.access_token;
+           if(!ar.ok||!a.access_token)throw Error('AUTH_FAILED'); const userToken=a.access_token;
+           const bindingResponse=await fetch(B+'/rest/v1/rpc/nayanet_issue_bridge_owner_binding',{method:'POST',headers:{apikey:K,authorization:'Bearer '+userToken,'content-type':'application/json'},body:JSON.stringify({p_repository:'SoulSchoolAcademy/NayaPOWER',p_workflow_ref:'SoulSchoolAcademy/NayaPOWER/.github/workflows/verify-consolidated-sender-receiver-chain-main.yml@refs/heads/main',p_run_id:R,p_expires_at:new Date(Date.now()+600000).toISOString()})}); const binding=await bindingResponse.json(); if(!bindingResponse.ok||!binding.owner_binding_token)throw Error('OWNER_BINDING_ISSUE_FAILED:'+JSON.stringify(binding));
           const packetId=crypto.randomUUID(), idem='consolidated-main-'+R, sourceRef='github://SoulSchoolAcademy/NayaPOWER/main/'+R;
           const payload={protocol:'NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1',packet_id:packetId,project_id:'NayaNET',source_ref:sourceRef,content_hash:'pending',operating_context:{project:'NayaNET',current_next_action:'Consolidated sender -> receiver -> persistence -> index -> projection -> retrieve -> render -> ACK'},intelligence:{statement:'Main sender consolidated proof '+R},provenance:{repository:'SoulSchoolAcademy/NayaPOWER',branch:'main',run_id:R},privacy:{default_visibility:'PRIVATE'},idempotency_key:idem,owner_id:a.user?.id,sender:{repository:'SoulSchoolAcademy/NayaPOWER'},receiver:{canonical_source:'NAYANET/HUB/index.html'},project_intelligence_reconstruction:{current:{mission:'Persistent Project Intelligence for NayaNET'}}};
           payload.content_hash=crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
           const oidcUrl=process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge';
           const oidc=await fetch(oidcUrl,{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
           const oj=await oidc.json(); if(!oidc.ok||!oj.value)throw Error('OIDC_TOKEN_FAILED');
-          const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'content-type':'application/json'},body:JSON.stringify(payload)});
+           const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'X-Naya-Owner-Binding':binding.owner_binding_token,'content-type':'application/json'},body:JSON.stringify(payload)});
           const bj=await br.json(); console.log('BRIDGE='+JSON.stringify(bj));
           if(br.status!==200||!['COMPLETED','ACCEPTED'].includes(bj.status))throw Error('SENDER_RECEIVER_FAILED');
           if(!bj.persisted||!bj.indexed||!bj.projected)throw Error('PERSIST_INDEX_PROJECT_FAILED');

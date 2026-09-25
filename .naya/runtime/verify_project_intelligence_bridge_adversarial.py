@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import json, os, urllib.request, urllib.error
-URL=os.environ['NAYANET_BRIDGE_URL']; TOKEN=os.environ['NAYANET_BRIDGE_TOKEN']
+URL=os.environ['NAYANET_BRIDGE_URL']; TOKEN=os.environ['NAYANET_BRIDGE_TOKEN']; OWNER_BINDING=os.environ['NAYANET_OWNER_BINDING_TOKEN']
 packet=json.load(open('project-intelligence-bridge-packet.json',encoding='utf-8'))
 def post(p, token):
-    req=urllib.request.Request(URL,data=json.dumps(p).encode(),method='POST',headers={'Authorization':'Bearer '+token,'Content-Type':'application/json'})
+    req=urllib.request.Request(URL,data=json.dumps(p).encode(),method='POST',headers={'Authorization':'Bearer '+token,'X-Naya-Owner-Binding':OWNER_BINDING,'Content-Type':'application/json'})
     try:
         with urllib.request.urlopen(req,timeout=30) as r: return r.status,json.loads(r.read().decode())
     except urllib.error.HTTPError as e: return e.code,json.loads(e.read().decode())
