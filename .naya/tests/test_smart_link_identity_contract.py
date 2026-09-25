@@ -63,5 +63,12 @@ def test_canonical_smart_note_link_is_accepted():
 
 
 if __name__ == "__main__":
-    import pytest
-    raise SystemExit(pytest.main([__file__, "-q"]))
+    tests = [
+        test_hub_deep_link_is_not_a_smart_link,
+        test_wrong_ib_is_not_a_smart_link,
+        test_generic_github_page_is_not_a_smart_link,
+        test_canonical_smart_note_link_is_accepted,
+    ]
+    for test in tests:
+        test()
+    print(f"{len(tests)} passed")
