@@ -478,4 +478,3 @@ The objective is not to make a cold Naya memorize more documents. The objective 
 
 **North Star:** *The next Naya should inherit understanding, not a document pile.*
 
-<!-- 2026-09-25 cold-continuity acceptance: current canonical-memory lesson is now part of the active Smart Note registry. -->
