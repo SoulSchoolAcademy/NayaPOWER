@@ -136,34 +136,33 @@ def validate_note(note: dict[str, Any]) -> None:
 
 def render_note(note: dict[str, Any]) -> str:
     evidence = "\n".join(f"- {item}" for item in note["evidence"])
+    stamp = str(note["timestamp"])
     return (
         "# SMART NOTE — " + note["topic"] + "\n\n"
-        "**Timestamp:** " + note["timestamp"] + "\n"
-        "**Smart Note ID:** `" + note["id"] + "`\n"
-        "**Status:** CANONICAL / TRANSACTIONALLY PROJECTED\n"
-        "**Type:** Durable intelligence / Intelligent Block\n"
-        "**Intelligent Block Schema:** `" + CANONICAL_SCHEMA + "`\n"
-        "**Parent:** NayaPOWER Superbrain\n\n"
+        "**Intelligent Block ID:** ``" + note["intelligent_block_id"] + "`\n"
+        "**Smart Note ID:** ``" + note["id"] + "`\n"
+        "**Schema:** ``" + CANONICAL_SCHEMA + "`\n"
+        "**Category:** " + str(note.get("category", "system")) + "\n"
+        "**Topic:** " + str(note["topic"]) + "\n\n"
         "## IN A NUTSHELL\n\n" + note["in_a_nutshell"] + "\n\n"
-        "## HUMAN NOTE\n\n" + note["human"] + "\n\n"
-        "## CHILD NOTE\n\n" + note["child"] + "\n\n"
-        "## GRANDMA NOTE\n\n" + note["grandma"] + "\n\n"
-        "## NAYA NOTE\n\n" + note["naya"] + "\n\n"
-        "## MACHINE NOTE\n\n" + note["machine"] + "\n\n"
-        "## LEARNING LESSON\n\n" + note["learning"] + "\n\n"
-        "## WHAT IT MEANS\n\n" + note["why_it_matters"] + "\n\n"
-        "## HOW IT CONNECTS\n\n" + note["how_it_connects"] + "\n\n"
-        "## HOW TO APPLY IT\n\n" + note["how_to_use"] + "\n\n"
-        "## WHAT" + chr(39) + "S IN IT FOR THEM / YOU / US\n\n" + note["value"] + "\n\n"
-        "## EVIDENCE / SMART LINKS\n\n" + evidence + "\n\n"
-        "## CURRENT STATE\n\n" + note["current_state"] + "\n\n"
-        "## ONE NEXT ACTION\n\n**" + note["next_action"] + "**\n\n"
-        "## TRANSACTION STATE\n\n"
-        "- Smart Note / Intelligent Block: **PERSISTED**\n"
-        "- CIS learning: **" + note["cis_status"] + "**\n"
-        "- PIS projection: **" + note["pis_status"] + "**\n"
-        "- Hub projection: **" + note["hub_status"] + "**\n"
-        "- Receipt: `" + note["receipt_id"] + "`\n"
+        "## DATE / TIME\n\n" + stamp + "\n\n"
+        "## WHAT\n\n" + str(note["what"]) + "\n\n"
+        "## WHY IT MATTERS\n\n" + note["why_it_matters"] + "\n\n"
+        "## HUMAN\n\n" + note["human"] + "\n\n"
+        "## CHILD\n\n" + note["child"] + "\n\n"
+        "## GRANDMA\n\n" + note["grandma"] + "\n\n"
+        "## NAYA\n\n" + note["naya"] + "\n\n"
+        "## MACHINE\n\n" + note["machine"] + "\n\n"
+        "## WHAT WE LEARNED\n\n" + note["learning"] + "\n\n"
+        "## CONNECTIONS\n\n" + note["how_it_connects"] + "\n\n"
+        "## HOW TO APPLY\n\n" + note["how_to_use"] + "\n\n"
+        "## WHAT IT ULTIMATELY MEANS\n\n" + note["ultimate_meaning"] + "\n\n"
+        "## WHAT" + chr(39) + "S IN IT FOR YOU / US\n\n" + note["value"] + "\n\n"
+        "## NEXT ACTION\n\n**" + note["next_action"] + "**\n\n"
+        "---\n\n"
+        "**Evidence / Smart Links**\n\n" + evidence + "\n\n"
+        "**Current State:** " + note["current_state"] + "\n"
+        "**Provenance:** Canonical Smart Note transaction boundary.\n"
     )
 
 def _load_cis() -> dict[str, Any]:
@@ -333,6 +332,8 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
         note["category"] = str(note.get("category") or "system")
         note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        note["what"] = str(note.get("what") or note["topic"])
+        note["ultimate_meaning"] = str(note.get("ultimate_meaning") or note["why_it_matters"])
 
         path = canonical_smart_note_path(
             stamp,
