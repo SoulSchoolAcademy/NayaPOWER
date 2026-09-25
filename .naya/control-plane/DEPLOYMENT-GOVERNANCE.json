@@ -1,8 +1,8 @@
 {
   "$schema": "naya/deployment-governance/v1",
   "status": "CANONICAL",
-  "version": "1.1.0",
-  "purpose": "Separate repository activity from publication. Vercel remains connected infrastructure, but deployment is an explicitly authorized side effect.",
+  "version": "1.2.0",
+  "purpose": "Separate repository activity from publication. Cloudflare is the canonical production publication boundary for the canonical Hub; deployment remains explicitly authorized and fail-closed.",
   "default": {
     "deployment": "DENY",
     "preview_deployment": "DENY",
@@ -16,7 +16,7 @@
       "exact commit SHA",
       "target environment",
       "authorized deployment surface",
-      "canonical Vercel project binding",
+      "canonical Cloudflare Worker binding",
       "verification evidence",
       "release reason",
       "authorized_by",
@@ -24,11 +24,17 @@
       "approval state"
     ]
   },
-  "canonical_release_workflow": ".github/workflows/authorized-vercel-release.yml",
-  "canonical_vercel_project": {
-    "project_id": "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK",
-    "project_name": "naya-power",
-    "organization_id": "team_RQnhoOb3bAXxMlcr67GFTu3Q"
+  "canonical_release_workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
+  "canonical_cloudflare": {
+    "account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+    "worker": "sparkling-shape-7ae5",
+    "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev"
+  },
+  "canonical_hub_source": "NAYANET/HUB/index.html",
+  "release_workflow_approval": {
+    "workflow_dispatch_required_input": "approval=EXPLICIT_APPROVAL_GRANTED",
+    "reason_required": true,
+    "source_ref_supported": true
   },
   "non_deploying_changes": [
     "documentation",
@@ -53,6 +59,11 @@
       "requires": "release_authorization.target_environment=production"
     }
   },
-  "bypass_prohibition": "No GitHub workflow, repository event, commit, branch push, pull request, note, document, or automation may invoke Vercel deployment outside the canonical release workflow and release authorization contract.",
-  "truth_rule": "CONNECTED != DEPLOYABLE; COMMITTED != RELEASED; VERIFIED != PRODUCTION_PROVEN; AUTHORIZED != SUCCESSFUL UNTIL DEPLOYMENT EVIDENCE EXISTS."
+  "bypass_prohibition": "No GitHub workflow, repository event, commit, branch push, pull request, note, document, or automation may invoke production deployment outside the canonical Cloudflare release workflow and release authorization contract.",
+  "truth_rule": "CONNECTED != DEPLOYABLE; COMMITTED != RELEASED; VERIFIED != PRODUCTION_PROVEN; AUTHORIZED != SUCCESSFUL UNTIL DEPLOYMENT EVIDENCE EXISTS.",
+  "legacy_vercel": {
+    "status": "NON_CANONICAL",
+    "project_name": "naya-power",
+    "reason": "Historical/connected infrastructure retained as history only; it is not the canonical Hub publication boundary for this execution frontier."
+  }
 }

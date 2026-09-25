@@ -1,50 +1,54 @@
 {
   "$schema": "naya/control-plane/execution-session/v1",
-  "session_id": "NAYA-20260923-GAP-002-RELEASE-BRIDGE-01",
+  "session_id": "NAYA-20260925-CANONICAL-HUB-DEEP-LINK-RELEASE-01",
   "naya_id": "Naya",
   "status": "CLOSED",
-  "parent_head": "069ea3084ffe2ad6aae032a42d536be6385e7322",
-  "authorized_action": "Ship and prove the current canonical Hub runtime batch: canonical Smart Feed connection, feed tab projection, legacy-renderer isolation, active sidebar runtime surfaces, cache-busted runtime assets, and browser acceptance. Preserve the canonical visual surface and do not introduce a competing Hub.",
+  "parent_head": "5ad379db882e87c4dc51d7e2381c9238d755cd6a",
+  "authorized_action": "Validate and prepare the governed production release boundary for the current canonical Hub deep-link source, preserving fail-closed deployment governance; do not claim production parity before deployment evidence exists.",
   "read_ack": {
     "all_required_sources": true,
     "sources": [
-      "NAYANET/HUB/index.html",
-      "NAYANET/HUB/src/app/HubRouter.tsx",
-      "NAYANET/HUB/src/intelligence/SmartFeedBoard.tsx",
-      "NAYANET/HUB/src/data/pis.ts",
-      "NAYANET/HUB/src/intelligence/cognition.ts",
-      "smart-feed.js",
+      ".naya/control-plane/STATE.json",
+      ".naya/control-plane/BLOCKS.json",
+      ".naya/control-plane/MAP.json",
+      ".naya/control-plane/PROOF.json",
+      ".naya/control-plane/BATON.json",
+      ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+      ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
       ".github/workflows/assistant-cloudflare-hub-release.yml",
-      ".github/workflows/wave-a-live-browser-acceptance.yml",
-      ".naya/TEAM-NAYA/2026-09-22-HUB-READINESS-INVENTORY.md",
-      ".naya/TEAM-NAYA/2026-09-22-HUB-READINESS-SYSTEMS-UPDATE.md"
+      ".naya/control-plane/DEPLOYMENT-GOVERNANCE.json",
+      "NAYANET/HUB/index.html",
+      "NAYANET/HUB/public/assistant-runtime.js"
     ]
   },
   "execution_lease": {
     "status": "ACQUIRED",
     "exclusive": true,
-    "scope": "NayaPOWER main continuity + canonical Hub release authority"
+    "scope": "NayaPOWER main continuity + canonical Hub Cloudflare production release boundary"
   },
   "action_result": {
     "verification": "PASS",
+    "scope": "PRE_DEPLOYMENT_GOVERNANCE_GATE",
     "evidence": [
-      "canonical visual/browser proof is production-proven at commit 5f0a36cff1ead894e92376ece217f38d3632591a",
-      "current main batch connects canonical Smart Feed, activates sidebar runtime surfaces, reconciles the control plane, and cache-busts both runtime assets",
-      "the prior direct-push release attempts were correctly rejected by the merge-boundary lease; the current merge parent is now the explicit release-session boundary"
+      "Current main source contains canonical Hub deep-link contract and owner-scoped Intelligent Block retrieval.",
+      "Focused deep-link regression suite recorded 20/20 PASS at the preceding current-main proof boundary.",
+      "Deployment verifier is bound to current canonical Hub blob SHA 6a61b2c775d4e4b7a04721606813ec0031870399.",
+      "Live production probe is intentionally NOT represented as a PASS: /hub?ib=IB-000752 returned HTTP 200 but merged deep-link markers were absent, proving the remaining production parity boundary."
     ]
   },
   "record": {
     "status": "COMPLETE",
-    "activity_path": "NAYA/ACTIVITY/2026/09/23.md"
+    "activity_path": "NAYA/ACTIVITY/2026/09/25.md"
   },
   "control_plane": {
     "updated": true,
     "state": ".naya/control-plane/STATE.json",
-    "baton": ".naya/control-plane/BATON.json"
+    "baton": ".naya/control-plane/BATON.json",
+    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
   },
   "sign_out": {
     "status": "SIGNED_OUT",
-    "at": "2026-09-23T03:00:00.000Z"
+    "at": "2026-09-25T06:23:00.000Z"
   },
-  "successor_prompt": "Merge-boundary release is now the current execution frontier. Verify exact source/live parity, then execute the fresh authenticated Smart Note → Smart Feed → reload → authorized retrieval proof and activate any remaining sidebar surfaces without changing the protected visual design."
+  "successor_prompt": "Restore current main; verify the release-gate artifacts; execute the explicitly authorized Cloudflare workflow against the exact current canonical Hub source; verify live source parity; then run the authenticated owner Smart Note → IB deep-link → provenance → reload → sender→receiver→Hub proof. Never claim production parity until the browser and source-identity checks pass."
 }
