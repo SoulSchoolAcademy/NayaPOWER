@@ -343,12 +343,14 @@ Deno.serve(async(req)=>{
     },
     intelligence_checkpoint:checkpoint
   };
+  const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id||transactionWithIntelligence?.intelligent_block?.identity?.object_id);
   return json({
     ok:true,
     pipeline:replayed?"replayed":"completed",
     canonical_event:true,
     collection:"Smart Notes",
     replayed,
+    intelligent_block_id:intelligentBlockId||null,
     transaction:transactionWithIntelligence
   });
 
