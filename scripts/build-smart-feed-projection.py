@@ -15,8 +15,8 @@ from typing import Any, Iterable
 ROOT = Path(__file__).resolve().parents[1]
 SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
 OUT = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
-HEADING_RE = re.compile(r"^##\\s+(.+?)\\s*$", re.M)
-META_RE = re.compile(r"^\\*\\*(.+?):\\*\\*\\s*(.+?)\\s*$", re.M)
+HEADING_RE = re.compile(r"^##\s+(.+?)\s*$", re.M)
+META_RE = re.compile(r"^\*\*(.+?):\*\*\s*(.+?)\s*$", re.M)
 
 
 def when() -> str:
