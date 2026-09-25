@@ -12,6 +12,14 @@
       "category": "system",
       "topic": "canonical-smart-note-system",
       "status": "CANONICAL_SYSTEM_UPDATE"
+    },
+    {
+      "intelligent_block_id": "IB-000002",
+      "path": ".naya/memory/smart-notes/2026/09/24/system/superbrain-scorecard/IB-000002/smart-note.md",
+      "date": "2026-09-24",
+      "category": "system",
+      "topic": "superbrain-scorecard",
+      "status": "CANONICAL"
     }
   ]
 }
