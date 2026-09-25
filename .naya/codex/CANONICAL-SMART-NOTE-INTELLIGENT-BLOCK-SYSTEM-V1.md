@@ -2,7 +2,7 @@
 
 **Status:** CANONICAL — RATIFIED BY HUMAN DIRECTOR 2026-09-24
 **Authority:** Specialized canonical subsystem contract under the NayaPOWER Constitution and Control Plane
-**Purpose:** Establish one law, one identity, one structure, one lifecycle, and one operating protocol for durable intelligence.
+**Purpose:** Establish one law, one identity, one structure, one lifecycle, and one operating protocol for durable intelligence.\n\n**Creation Gate:** `.naya/codex/NAYA-POWER-CANONICAL-INTELLIGENCE-BEFORE-CREATION-LAW.md` — resolve canonicality before creating new intelligence.
 
 ## 1. THE LAW
 
