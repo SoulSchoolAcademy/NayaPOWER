@@ -19,7 +19,8 @@ def test_one_canonical_contract_declares_one_smart_note_ib_object():
     text = CONTRACT.read_text(encoding="utf-8")
     assert "Smart Note" in text and "Intelligent Block (IB)" in text
     assert "Intelligent Block" in text and "V1" in text
-    positions = [text.index("## " + heading) for heading in CANONICAL_HEADINGS]
+    assert "## 4. CANONICAL HUMAN STRUCTURE" in text
+    positions = [text.index(f"{i}. {heading}") for i, heading in enumerate(CANONICAL_HEADINGS, start=1)]
     assert positions == sorted(positions)
     assert ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md" in text
 
