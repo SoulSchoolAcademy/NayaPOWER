@@ -123,6 +123,49 @@ jobs:
           print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")
           PY
 
+      - name: GREEN — execute and independently prove second document type (JSON)
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "DOCUMENT_DISTILL_SECOND_TYPE=JSON"
+          AUTH_JSON=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d '{}')
+          TOKEN=$(echo "$AUTH_JSON" | jq -r '.access_token // empty')
+          USER_ID=$(echo "$AUTH_JSON" | jq -r '.user.id // empty')
+          test -n "$TOKEN"; test -n "$USER_ID"
+          H=(-H "Authorization: Bearer $TOKEN" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json")
+          UNDERSTAND=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d "$(jq -n --arg run "$GITHUB_RUN_ID" '{action:"understand",title:("JSON document type proof "+$run),content:"Independent authority source for JSON document distillation.",confidence:1,tags:["document-distillation","json"]}')")
+          SOURCE_EVENT=$(echo "$UNDERSTAND" | jq -r '.result.event.event_id // empty')
+          test -n "$SOURCE_EVENT"
+          GRANT=$(curl --silent --show-error -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" "${H[@]}" -d "$(jq -n --arg subject "$USER_ID" --arg event "$SOURCE_EVENT" --arg run "$GITHUB_RUN_ID" '{p_subject_id:$subject,p_source_event_id:$event,p_mission_id:"NayaNET JSON document distillation golden path",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{mode:"controlled-document-distillation-json-proof",no_external_side_effects:true},p_expires_at:"2099-01-01T00:00:00Z",p_evidence:{proof:"live-document-distillation-json",run:$run}}')")
+          GRANT_ID=$(echo "$GRANT" | jq -r '.grant_id // empty')
+          test -n "$GRANT_ID"
+          DOCUMENT_ID="DOC-JSON-${GITHUB_RUN_ID}-$(openssl rand -hex 5)"
+          IDEMPOTENCY_KEY="document-distill-json-$DOCUMENT_ID"
+          SOURCE_REF="fixture://nayanet/document-distill-json/$DOCUMENT_ID"
+          SOURCE_JSON='{"document_type":"json","purpose":"reusable intelligence","principle":"preserve provenance"}'
+          ESSENCE="Structured JSON documents must enter the same provenance-bound reusable intelligence path."
+          BODY=$(jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg source "$SOURCE_JSON" --arg essence "$ESSENCE" --arg idem "$IDEMPOTENCY_KEY" --arg grant "$GRANT_ID" '{action:"document_distill",idempotency_key:$idem,document_id:$did,source_ref:$ref,source_content:$source,title:"JSON Document Intelligence",essence:$essence,domain:"KNOWLEDGE",type:"json",mime_type:"application/json",project_context:"NayaNET",authority_grant_id:$grant,next_use:"Retrieve this JSON-derived intelligence when structured document understanding is relevant."}')
+          RESPONSE=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          echo "$RESPONSE" | jq .
+          echo "$RESPONSE" > document-distill-json-response.json
+          python - <<'PY'
+          import json
+          r=json.load(open("document-distill-json-response.json"))
+          x=r["result"]
+          assert r["ok"] is True
+          assert x["schema"]=="NAYANET_DOCUMENT_DISTILL_V1"
+          assert x["classification"]["type"]=="json"
+          assert x["document"]["source_hash"] and len(x["document"]["source_hash"])==64
+          ib=x["intelligence"]["intelligent_block"]
+          assert ib["block_id"]
+          assert ib["value_context"]["source_type"]=="document"
+          assert ib["value_context"]["document_id"]==x["document"]["document_id"]
+          assert ib["value_context"]["source_ref"]==x["document"]["source_ref"]
+          assert ib["value_context"]["source_hash"]==x["document"]["source_hash"]
+          assert ib["value_context"]["distillation"]["type"]=="json"
+          assert x["intelligence"]["projection"]["index"]["id"]
+          print("DOCUMENT_DISTILL_SECOND_TYPE=PASS")
+          PY
       - name: Verify machine-readable proof
         run: |
           python -c 'import json; r=json.load(open("document-distill-response.json")); q=json.load(open("document-distill-retrieval.json")); b=json.load(open("document-distill-block.json")); x=r["result"]; assert x["schema"]=="NAYANET_DOCUMENT_DISTILL_V1"; assert q["result"]["schema"]=="NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1"; assert any(i["id"]==x["intelligence"]["projection"]["index"]["id"] for i in q["result"]["library"]["indexes"]); assert any(i.get("value_context",{}).get("document_id")==x["document"]["document_id"] for i in q["result"]["library"]["intelligent_blocks"]); assert b[0]["block_id"]==x["intelligence"]["intelligent_block"]["block_id"]; assert b[0]["value_context"]["source_hash"]==x["document"]["source_hash"]; p={"status":"VERIFIED","document_id":x["document"]["document_id"],"source_ref":x["document"]["source_ref"],"source_hash":x["document"]["source_hash"],"source_event_id":x["intelligence"]["source_event"]["event_id"],"intelligent_block_id":x["intelligence"]["intelligent_block"]["block_id"],"intelligence_index_id":x["intelligence"]["projection"]["index"]["id"],"checks":{"source_capture":"PASS","source_hash":"PASS","distillation":"PASS","classification":"PASS","provenance_binding":"PASS","private_scope":"PASS","intelligent_block_persistence":"PASS","cognition_retrieval":"PASS","library_index_retrieval":"PASS","idempotency":"PASS"}}; json.dump(p,open("document-distill-proof-machine.json","w"),indent=2); print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")'
