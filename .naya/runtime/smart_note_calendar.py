@@ -38,6 +38,8 @@ def validate_smart_note(body: str) -> list[str]:
 def _receiver_identity(receipt: dict[str, Any]) -> tuple[str, str]:
     if not isinstance(receipt, dict):
         raise ValueError("CANONICAL_RECEIVER_RECEIPT_REQUIRED")
+    if str(receipt.get("schema","")).strip() != "naya/smart-note-receiver-receipt/v1":
+        raise ValueError("CANONICAL_RECEIVER_RECEIPT_INVALID")
     if str(receipt.get("canonical_receiver","")).strip() != RECEIVER:
         raise ValueError("CANONICAL_RECEIVER_RECEIPT_INVALID")
     status = str(receipt.get("status") or receipt.get("pipeline") or "").strip().lower()
@@ -46,6 +48,12 @@ def _receiver_identity(receipt: dict[str, Any]) -> tuple[str, str]:
     ib_id = str(receipt.get("intelligent_block_id","")).strip()
     event_id = str(receipt.get("event_id") or receipt.get("source_event_id") or "").strip()
     transaction_id = str(receipt.get("transaction_id") or "").strip()
+    feed = receipt.get("feed_verification")
+    smart_link = receipt.get("smart_link")
+    if not isinstance(feed, dict) or feed.get("verified") is not True or str(feed.get("event_id") or "").strip() != event_id:
+        raise ValueError("CANONICAL_RECEIVER_RECEIPT_FEED_NOT_VERIFIED")
+    if not isinstance(smart_link, dict) or str(smart_link.get("intelligent_block_id") or "").strip() != ib_id or not str(smart_link.get("path") or "").strip():
+        raise ValueError("CANONICAL_RECEIVER_RECEIPT_SMART_LINK_INVALID")
     if not IB_ID_RE.fullmatch(ib_id):
         raise ValueError("CANONICAL_RECEIVER_RECEIPT_MISSING_RECEIVER_ISSUED_IB")
     if not event_id:
@@ -106,6 +114,7 @@ def persist_smart_note(*, timestamp: str | None, topic: str, body: str,
                      projection_path=path,timestamp=stamp,category=category,
                      topic=topic,event_id=event_id)
     return {"status":status,"path":str(path),"timestamp":stamp,"topic":safe_topic(topic),
-            "intelligent_block_id":ib_id,"source_event_id":event_id,"canonical_receiver":RECEIVER}
+            "intelligent_block_id":ib_id,"source_event_id":event_id,"canonical_receiver":RECEIVER,
+            "smart_link":receiver_receipt.get("smart_link"),"feed_verification":receiver_receipt.get("feed_verification")}
 
 __all__=["persist_smart_note","validate_smart_note","SMART_NOTES_ROOT"]
