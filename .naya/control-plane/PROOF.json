@@ -95,9 +95,10 @@
       "evidence_receipt": ".naya/project-intelligence/46-S54-EXISTING-MEMBER-AUTHORITY-BOUNDARY-RECEIPT-2026-09-24.md",
       "next_action": "Obtain the legitimate authenticated owner session, issue the minimum scoped intelligence_commit authority grant, then execute the exact candidate and independently verify event/index/provenance/receipt/retrieval."
     },
-    "classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
-    "observed_head": "7b1fe8d4a1392f22c67f2b7fed29789b89ceda1d",
-    "observed_branch": "main",
+"classification": "CURRENT_ASSISTANT_RUNTIME_AND_SUPERBRAIN_ENGINE",
+  "observed_head": "bbdae40e63dca93fcacf84cbd60d037ee3d29a5c",
+  "observed_branch": "main",
+  "current_repository_head": "bbdae40e63dca93fcacf84cbd60d037ee3d29a5c",
     "runtime_parity": {
       "status": "STALE",
       "claim_type": "HISTORICAL_PRODUCTION",
@@ -185,7 +186,6 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-"current_repository_head": "1d8bd2db611a5dc35662305bd353a7013c90d1f0",
   "continuous_intelligence_relay_automation": {
     "status": "VERIFIED",
     "claim_type": "RUNTIME",
@@ -1087,7 +1087,6 @@
     ]
   },
   "interpretation": "Fresh Smart Note → verified learning → learning retrieval is now proven at current-main managed-runtime scope. The final workflow verifier failed only because its Node heredoc mixed require() with top-level await; independent Supabase verification confirmed the persisted learning/event lineage. The next causal frontier is current-main learning influence on a later governed decision.",
-  "current_repository_head": "aff294aa679fba56beaf940534a05e5250df73c0",
   "hub_current_react_runtime": {
     "status": "PRODUCTION_PROVEN",
     "claim_type": "PRODUCTION",
