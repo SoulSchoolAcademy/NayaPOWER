@@ -9,6 +9,9 @@
   "boot_order": [
     "SUPERBRAIN/AI-BOOT/START-HERE.md",
     ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
+    ".naya/memory/BOOTSTRAP.md",
+    ".naya/memory/RETRIEVAL-MANIFEST.json",
+    ".naya/memory/smart-notes/REGISTRY.json",
     "SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
     "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md",
     "SUPERBRAIN/NAYA-ACTIVITY/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md",
@@ -19,7 +22,6 @@
     ".naya/control-plane/STATE.json",
     ".naya/control-plane/BLOCKS.json",
     ".naya/control-plane/PROOF.json",
-    ".naya/memory/NAYAPOWER-RUNTIME-BRIEFING.md",
     ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
     "README.md",
     ".naya/NAYA-CONTEXT-BOOT-PROTOCOL.md",
@@ -32,11 +34,6 @@
     ".naya/codex/11-RUNTIME-CONSTITUTION.md",
     ".naya/codex/12-RUNTIME-COMPLETENESS-LAWS.md",
     ".naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md",
-    ".naya/memory/BOOTSTRAP.md",
-    ".naya/memory/SN-20260827-080000-naya-to-naya-collective-intelligence.md",
-    ".naya/memory/STATE.json",
-    ".naya/memory/INDEX.json",
-    ".naya/memory/RETRIEVAL-MANIFEST.json",
     ".naya/projects/CURRENT-PROJECT.md",
     ".naya/runtime/RESTORE-CONTEXT-RUNTIME.md",
     ".naya/runtime/CLAIM-EVIDENCE-VERIFICATION.md",
@@ -179,6 +176,15 @@
     "nayapower_brain_map": {
       "canonical": ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
       "purpose": "Compact cognitive index mapping the 00–14 domains to the real authority layers; navigation only, not a second memory store or source of truth."
+    },
+    "canonical_memory": {
+      "brain_map": ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
+      "bootstrap": ".naya/memory/BOOTSTRAP.md",
+      "retrieval": ".naya/memory/RETRIEVAL-MANIFEST.json",
+      "registry": ".naya/memory/smart-notes/REGISTRY.json",
+      "event_lineage": ".naya/memory/events/",
+      "canonical_ib": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+      "legacy_archive": ".naya/memory/archive/legacy-pre-2026-09-25/"
     }
   },
   "task_routes": {
