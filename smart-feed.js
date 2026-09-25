@@ -257,6 +257,8 @@ async function bootCanonicalHub(){
    const data=await rt.smartFeed({stream,limit:20,before:null});
    const items=list(data?.items);
    for(let attempt=0;attempt<60;attempt+=1){
+     const parser=window.Naya509NineNoteParser;
+     if(typeof parser?.boot==='function'){try{parser.boot()}catch(_){}}
      const blocks=document.querySelector('.feed .blocks')||document.querySelector('#blocks');
      if(blocks?.querySelector('[data-real-smart-note]'))break;
      await new Promise(resolve=>setTimeout(resolve,50));
