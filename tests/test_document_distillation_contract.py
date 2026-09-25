@@ -48,3 +48,14 @@ def test_retrieve_exposes_canonical_library_projections():
         'nayanet_intelligent_blocks',
     ]:
         assert marker in compound, f"missing retrieval/library marker: {marker}"
+
+
+def test_document_distill_generalizes_to_second_document_type():
+    workflow = (ROOT / ".github/workflows/verify-live-document-distillation.yml").read_text(encoding="utf-8")
+    for marker in [
+        'DOCUMENT_DISTILL_SECOND_TYPE=JSON',
+        'type:"json"',
+        'application/json',
+        'document-distill-json',
+    ]:
+        assert marker in workflow, f"missing second document-type golden-path marker: {marker}"
