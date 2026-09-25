@@ -109,7 +109,7 @@ def test_repository_has_one_enforced_smart_note_write_boundary():
     violations = []
     for rel in executable:
         text = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
-        if rel != ".naya/runtime/smart_note_calendar.py" and "smart-notes" in text and "write_text" in text:
+        if rel not in {".naya/runtime/smart_note_calendar.py", ".naya/tests/test_smart_note_receiver_enforcement.py"} and "smart-notes" in text and "write_text" in text:
             violations.append(rel + ": smart-notes writer outside canonical projection boundary")
         if "SUPERBRAIN/SMART-NOTES" in text or "NAYANET/SMART-NOTES" in text:
             violations.append(rel + ": alternate Smart Note namespace")
