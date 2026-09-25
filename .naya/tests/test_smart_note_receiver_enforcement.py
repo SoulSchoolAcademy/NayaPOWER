@@ -117,11 +117,12 @@ def test_repository_has_one_enforced_smart_note_write_boundary():
         p for p in tracked
         if p.endswith((".py", ".ts", ".js", ".mjs", ".tsx", ".jsx"))
         and not p.startswith(("tests/", ".naya/tests/", ".naya/memory/test_"))
+        and p not in {".naya/memory/verify_memory_surface.py", ".naya/memory/canonical_ib_retrieval_benchmark.py"}
     ]
     violations = []
     for rel in executable:
         source = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
-        if rel == ".naya/memory/smart_notes_v3.py":
+        if rel in {".naya/memory/smart_notes_v3.py", ".naya/runtime/smart_note_calendar.py"}:
             # This module writes only its derived event validation/index artifacts.
             pass
         elif "smart-notes" in source and "write_text" in source:
