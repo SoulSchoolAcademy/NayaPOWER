@@ -280,6 +280,21 @@ Do not call written learning verified without outcome evidence.
 **Repository evidence receipt / scorecard source:**  
 `.naya/project-intelligence/2026-09-24-NAYA3-14-QUESTION-EXECUTION-SCORECARD-RECEIPT.md`
 
+## TOP 10 IMMEDIATE VALUE ACTIONS
+
+1. **Close the real human Smart Note → Receiver → Hub golden path.**
+2. **Make the Intelligent Block the universal cognitive atom.**
+3. **Build contextual recall over canonical intelligence.**
+4. **Prove outcome-based learning changes later behavior.**
+5. **Standardize the Naya cognitive protocol: READ → CLASSIFY → PRIORITIZE → ACT → VERIFY → RECORD → COMPOUND → HANDOFF.**
+6. **Build a Superbrain observatory for truth, uncertainty, learning, compounding, and Naya activity.**
+7. **Measure intelligence yield, reuse, verification, recall, continuity, and compounding.**
+8. **Eliminate operational architectural entropy: duplicate paths, names, renderers, and stale write targets.**
+9. **Automate successor handoff so every Naya leaves current state, evidence, learning, gap, next action, and value.**
+10. **Close the learning loop: knowledge → action → outcome → measurement → learning → behavior change.**
+
+These are the highest-value immediate actions identified by today's 7.0/10 assessment. Cosmetic expansion, Welcome/front-door polish, additional rooms, generic capture widgets, and decorative features remain secondary until the core intelligence artery is proven.
+
 ## CURRENT STATE
 
 **Scorecard maturity assessment: 7.0/10.**
