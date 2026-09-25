@@ -7,7 +7,7 @@
 **Branch:** `coda2/item31-control-plane-freshness-mainline-verification-20260925`
 **Starting source:** `fa82d32b67131c5cdaec441d0f0787a9921f8370` (`origin/main`)
 **Implementation:** PR [#566](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/566), merged as `b48aa8fd6fcc41660e22a99f357e4e2da8658c51`
-**Verification commit:** pending
+**Verification commit:** `0402d4be`
 **Related issue:** [#554](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/554)
 
 ## Original problem
