@@ -22,34 +22,24 @@ class RestoreContextTests(unittest.TestCase):
         self.assertRegex(result["head_sha"], r"^[0-9a-f]{40}$")
 
     def test_temporal_restore_selects_only_effective_memory(self):
-        notes = [
-            (Path("old.json"), {
-                "id": "SN-20260820-000000-old", "status": "ACTIVE",
-                "effective_at": "2026-08-20T00:00:00+00:00"
-            }),
-            (Path("new.json"), {
-                "id": "SN-20260825-000000-new", "status": "ACTIVE",
-                "effective_at": "2026-08-25T00:00:00+00:00"
-            }),
+        canonical = [
+            {"intelligent_block_id": "IB-OLD", "date": "2026-08-20", "status": "CANONICAL", "canonical": True, "content": "old"},
+            {"intelligent_block_id": "IB-NEW", "date": "2026-08-25", "status": "CANONICAL", "canonical": True, "content": "new"},
         ]
         target = datetime(2026, 8, 23, tzinfo=timezone.utc)
-        with patch.object(rc, "notes", return_value=notes):
-            snap = rc.memory_snapshot("", target, 10)
-        ids = [n["id"] for n in snap["selected"]]
-        self.assertIn("SN-20260820-000000-old", ids)
-        self.assertNotIn("SN-20260825-000000-new", ids)
+        with patch.object(rc, "retrieve_canonical_ibs", return_value=canonical):
+            snap = rc.memory_snapshot("", target, 10, principal_id="cold-naya", scope="system", project="NayaPOWER", principal_project="NayaPOWER")
+        ids = [n["intelligent_block_id"] for n in snap["selected"]]
+        self.assertIn("IB-OLD", ids)
+        self.assertNotIn("IB-NEW", ids)
 
     def test_superseded_memory_is_not_active_current_truth(self):
-        notes = [
-            (Path("old.json"), {
-                "id": "SN-20260820-000000-old", "status": "SUPERSEDED",
-                "effective_at": "2026-08-20T00:00:00+00:00",
-                "superseded_at": "2026-08-22T00:00:00+00:00"
-            })
+        canonical = [
+            {"intelligent_block_id": "IB-OLD", "date": "2026-08-20", "status": "SUPERSEDED", "canonical": True, "content": "old"},
         ]
-        with patch.object(rc, "notes", return_value=notes):
-            snap = rc.memory_snapshot("", None, 10)
-        self.assertEqual(snap["selected"], [])
+        with patch.object(rc, "retrieve_canonical_ibs", return_value=canonical):
+            snap = rc.memory_snapshot("", None, 10, principal_id="cold-naya", scope="system", project="NayaPOWER", principal_project="NayaPOWER")
+        self.assertEqual([x["intelligent_block_id"] for x in snap["selected"]], ["IB-OLD"])
 
     def test_checkpoint_contains_integrity_hash_without_writing_repo(self):
         result = rc.build_restore()
