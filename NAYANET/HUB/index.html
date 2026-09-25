@@ -1068,5 +1068,75 @@ window.addEventListener('naya-auth-ready',()=>boot());
 window.addEventListener('naya-auth-state',e=>{if(e.detail?.authenticated)boot()});
 })();
 </script>
+<script>
+/* naya-runtime-feed-projection-v1 */
+(()=>{'use strict';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const parseContent=v=>{if(!v)return{};if(typeof v==='object')return v;try{return JSON.parse(String(v))}catch{return{raw:String(v)}}};
+const text=v=>String(v??'').replace(/\s+/g,' ').trim();
+function renderItem(item){
+  const eventId=text(item?.event_id||item?.id); if(!eventId)return false;
+  if(document.querySelector('[data-runtime-event-id="'+CSS.escape(eventId)+'"]'))return false;
+  const metadata=item?.metadata&&typeof item.metadata==='object'?item.metadata:{};
+  const parsed=parseContent(item?.content);
+  const bridge=parsed?.bridge||{};
+  const statement=text(parsed?.intelligence?.statement||item?.intelligence?.statement||item?.title||parsed?.raw||'Runtime intelligence');
+  const sourceRef=text(metadata.source_ref||parsed?.source_ref||'');
+  const packetId=text(metadata.bridge_packet_id||bridge.packet_id||'');
+  const receiptId=text(item?.receipt_id||metadata.receipt_id||bridge.receipt_id||'');
+  const article=document.createElement('article');
+  article.className='block naya509-board naya-runtime-live naya-runtime-projection';
+  article.dataset.runtimeEventId=eventId;
+  article.dataset.eventId=eventId;
+  article.dataset.sourceEventId=eventId;
+  if(sourceRef)article.dataset.sourceRef=sourceRef;
+  if(packetId)article.dataset.packetId=packetId;
+  if(receiptId)article.dataset.receiptId=receiptId;
+  article.innerHTML='<div class="blockInner"><div class="blockTop"><div class="identity"><div class="glyph" aria-hidden="true">◈</div><div><h3></h3><div class="meta"><span>LIVE RUNTIME INTELLIGENCE</span><span>OWNER-SCOPED PROJECTION</span></div></div></div><div class="truth">PERSISTED · RUNTIME</div></div><div class="nutshell"><b>IN A NUTSHELL</b><p></p></div><div class="layers"><section class="layer"><div class="layerHead"><span class="dot"></span><b>NAYA NOTE</b><span class="state">RUNTIME PROJECTION</span></div><div class="layerBody"></div></section><section class="layer"><div class="layerHead"><span class="dot"></span><b>MACHINE NOTE</b><span class="state">PROVENANCE</span></div><div class="layerBody"><strong data-event></strong><br><span data-packet></span><br><span data-receipt></span><br><span data-source></span></div></section></div><div class="actions"><a class="action" data-runtime-canonical target="_self" rel="canonical">RUNTIME EVENT</a></div><div class="blockFoot"><span>LIVE COGNITION PROJECTION · CANONICAL SOURCE</span><span>OWNER-SCOPED</span></div></div>';
+  article.querySelector('h3').textContent=text(item?.title||'Runtime Intelligence');
+  article.querySelector('.nutshell p').textContent=statement;
+  article.querySelector('.layerBody').textContent=statement;
+  article.querySelector('[data-event]').textContent='Receiver Event ID: '+eventId;
+  article.querySelector('[data-packet]').textContent='Packet ID: '+(packetId||'not-present');
+  article.querySelector('[data-receipt]').textContent='Receipt ID: '+(receiptId||'not-present');
+  article.querySelector('[data-source]').textContent='Source: '+(sourceRef||item?.source||'canonical cognition event');
+  article.querySelector('[data-runtime-canonical]').href=new URL('/feed?event_id='+encodeURIComponent(eventId),location.origin).href;
+  return article;
+}
+async function render(){
+  const rt=window.NayaAssistantRuntime;
+  if(!rt?.snapshot?.().authenticated)return false;
+  const feed=await rt.smartFeed({stream:'personal',limit:100,before:null});
+  const items=Array.isArray(feed?.items)?feed.items:[];
+  const blocks=document.querySelector('.blocks');if(!blocks)return false;
+  const fragment=document.createDocumentFragment();let added=0;
+  for(const item of items){
+    const article=renderItem(item);if(article){fragment.append(article);added++}
+  }
+  if(added)blocks.prepend(fragment);
+  document.documentElement.dataset.nayaRuntimeFeedProjection='live';
+  document.documentElement.dataset.nayaRuntimeFeedProjectionCount=String(items.length);
+  return true;
+}
+async function boot(attempt=0){
+  try{
+    const rt=window.NayaAssistantRuntime;
+    if(!rt?.init){if(attempt<40)setTimeout(()=>boot(attempt+1),250);return false;}
+    await rt.init();
+    if(!rt.snapshot?.().authenticated){if(attempt<20)setTimeout(()=>boot(attempt+1),500);return false;}
+    return await render();
+  }catch(error){
+    document.documentElement.dataset.nayaRuntimeFeedProjection='error';
+    document.documentElement.dataset.nayaRuntimeFeedProjectionError=text(error?.message||error).slice(0,160);
+    console.error('NayaRuntimeFeedProjection',error);
+    return false;
+  }
+}
+window.NayaRuntimeFeedProjection={boot,render,version:'1.0.0'};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>boot(),{once:true});else boot();
+window.addEventListener('naya-auth-ready',()=>boot());
+window.addEventListener('naya-auth-state',e=>{if(e.detail?.authenticated)boot()});
+})();
+</script>
 </body>
 </html>
