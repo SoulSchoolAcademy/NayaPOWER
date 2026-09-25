@@ -9,7 +9,7 @@
 The Activity Feed is a dedicated, day-organized operational relay. It is not merely documentation about a relay.
 
 **Protocol:** [NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md](./NAYAPOWER-ACTIVITY-FEED-PROTOCOL.md)  
-**Today:** [2026-09-17.md](./DAILY/2026-09-17.md)  
+**Today:** [2026-09-25.md](./DAILY/2026-09-25.md)
 **Daily directory:** [DAILY/](./DAILY/)  
 **Validator:** [validate_activity_feed.py](./validate_activity_feed.py)  
 **P0 workflow:** [naya-power-adversarial-p0.yml](../../.github/workflows/naya-power-adversarial-p0.yml)  
