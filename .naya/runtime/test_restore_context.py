@@ -58,6 +58,41 @@ class RestoreContextTests(unittest.TestCase):
             payload = rc.checkpoint(result)["checkpoint"]
         self.assertEqual(len(payload["integrity_sha256"]), 64)
 
+    def test_memory_snapshot_uses_canonical_ib_retrieval_not_legacy_notes(self):
+        canonical = [
+            {
+                "intelligent_block_id": "IB-000001",
+                "canonical": True,
+                "date": "2026-09-24",
+                "status": "CANONICAL",
+                "content": "# SMART NOTE\\ncanonical intelligence",
+                "source": {"registry": ".naya/memory/smart-notes/REGISTRY.json", "intelligent_block_id": "IB-000001"},
+            }
+        ]
+        with patch.object(rc, "retrieve_canonical_ibs", return_value=canonical) as retrieve_mock:
+            snap = rc.memory_snapshot("canonical intelligence", None, 10, principal_id="cold-naya", scope="system", project="NayaPOWER", principal_project="NayaPOWER")
+        retrieve_mock.assert_called_once_with(
+            "canonical intelligence",
+            limit=30,
+            root=rc.ROOT,
+            principal_id="cold-naya",
+            scope="system",
+            project="NayaPOWER",
+            principal_project="NayaPOWER",
+            grants=(),
+        )
+        self.assertEqual([x["intelligent_block_id"] for x in snap["selected"]], ["IB-000001"])
+        self.assertEqual(snap["source"], "canonical_ib_registry")
+
+    def test_temporal_canonical_restore_does_not_use_event_lineage_as_memory(self):
+        canonical = [
+            {"intelligent_block_id": "IB-OLD", "canonical": True, "date": "2026-08-20", "status": "CANONICAL", "content": "old"},
+            {"intelligent_block_id": "IB-NEW", "canonical": True, "date": "2026-08-25", "status": "CANONICAL", "content": "new"},
+        ]
+        with patch.object(rc, "retrieve_canonical_ibs", return_value=canonical):
+            snap = rc.memory_snapshot("", datetime(2026, 8, 23, tzinfo=timezone.utc), 10, principal_id="cold-naya", scope="system", project="NayaPOWER", principal_project="NayaPOWER")
+        self.assertEqual([x["intelligent_block_id"] for x in snap["selected"]], ["IB-OLD"])
+
 
 if __name__ == "__main__":
     unittest.main()
