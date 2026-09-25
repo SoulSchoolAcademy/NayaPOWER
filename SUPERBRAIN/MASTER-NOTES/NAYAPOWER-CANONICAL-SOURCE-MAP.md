@@ -202,6 +202,24 @@ V1.1 does **not** become a second constitution. It is a governed extension under
 
 ---
 
+# 7B. CURRENT DISTILLED INTELLIGENCE SYNTHESIS
+
+`.naya/codex/NAYAPOWER-DISTILLED-CURRENT-INTELLIGENCE-2026-09-25.md` is the current derived synthesis of foundational NayaPOWER intelligence against the 2026-09-24 system-wide alignment.
+
+It is a **derived navigation/understanding aid, not a second constitution or control plane**.
+
+Its purpose is to reduce repeated explanation and document archaeology by preserving the common current understanding across the Smart Note/IB contract, Active Living Brain contract, Naya definition, 58-area topology, Hub alignment, and execution master plan.
+
+When it overlaps another source, the existing authority hierarchy remains controlling. Unique historical intelligence remains preserved in its original source; redundant operational wording should not be treated as a competing authority.
+
+The synthesis specifically preserves six cross-cutting operating laws:
+1. Reconcile before promoting new intelligence into current understanding.
+2. Keep current understanding distinct from historical state.
+3. Treat checkpoints as behavioral/retrieval contracts, not documents alone.
+4. Require learning to demonstrate changed future behavior when the claim warrants it.
+5. Distill to reduce repeated human explanation.
+6. Operate Naya in Lead Mode while preserving human authority.
+
 # 7A. NAYAPOWER INNOVATION RESEARCH
 
 The canonical research artifacts are:
