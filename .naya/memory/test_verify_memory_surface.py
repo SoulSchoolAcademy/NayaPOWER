@@ -12,3 +12,7 @@ def test_retrieval_manifest_names_canonical_ib_store():
     assert manifest["canonical_primary_store"] == ".naya/memory/smart-notes/"
     assert manifest["canonical_registry"] == ".naya/memory/smart-notes/REGISTRY.json"
     assert manifest["event_lineage_store"] == ".naya/memory/events/"
+
+def test_legacy_v2_schema_is_quarantined():
+    assert not (ROOT / ".naya/memory/note.schema.json").exists()
+    assert (ROOT / ".naya/memory/archive/legacy-pre-2026-09-25/note.schema.v2-legacy.json").exists()
