@@ -69,7 +69,9 @@ def fixture(tmp_path: Path) -> dict:
         "event_id": EVENT_ID,
         "effective_at": EFFECTIVE_AT,
         "representations": {
-            "shawn": {"id": "SN-20990101-120000-shawn", "canonical_event_id": EVENT_ID, "content": "Human decision", "smart_link": "https://example.test/shawn"},
+            "human": {"id": "SN-20990101-120000-human", "canonical_event_id": EVENT_ID, "content": "Human decision", "smart_link": "https://example.test/human"},
+            "child": {"id": "SN-20990101-120000-child", "canonical_event_id": EVENT_ID, "content": "Simple explanation", "smart_link": "https://example.test/child"},
+            "grandma": {"id": "SN-20990101-120000-grandma", "canonical_event_id": EVENT_ID, "content": "Practical explanation", "smart_link": "https://example.test/grandma"},
             "naya": {"id": "SN-20990101-120000-naya", "canonical_event_id": EVENT_ID, "content": "AI synthesis", "smart_link": "https://example.test/naya"},
             "machine": {"id": "SN-20990101-120000-machine", "canonical_event_id": EVENT_ID, "content": "Operational state", "smart_link": "https://example.test/machine"},
         },
@@ -153,10 +155,22 @@ def test_wrong_governance_permission_is_rejected(tmp_path):
     assert_reject(op, tmp_path, "authority does not permit")
 
 
-def test_missing_shawn_representation_is_rejected(tmp_path):
+def test_missing_human_representation_is_rejected(tmp_path):
     op = fixture(tmp_path)
-    del op["event"]["representations"]["shawn"]
-    assert_reject(op, tmp_path, "missing or empty shawn representation")
+    del op["event"]["representations"]["human"]
+    assert_reject(op, tmp_path, "missing or empty human representation")
+
+
+def test_missing_child_representation_is_rejected(tmp_path):
+    op = fixture(tmp_path)
+    del op["event"]["representations"]["child"]
+    assert_reject(op, tmp_path, "missing or empty child representation")
+
+
+def test_missing_grandma_representation_is_rejected(tmp_path):
+    op = fixture(tmp_path)
+    del op["event"]["representations"]["grandma"]
+    assert_reject(op, tmp_path, "missing or empty grandma representation")
 
 
 def test_missing_naya_representation_is_rejected(tmp_path):
@@ -229,5 +243,5 @@ def test_event_binding_and_distinct_ids_are_adversarially_checked(tmp_path):
     op["event"]["representations"]["naya"]["canonical_event_id"] = "SE-20990101-120000-other"
     assert_reject(op, tmp_path, "naya representation is not bound")
     op = fixture(tmp_path)
-    op["event"]["representations"]["machine"]["id"] = op["event"]["representations"]["shawn"]["id"]
+    op["event"]["representations"]["machine"]["id"] = op["event"]["representations"]["human"]["id"]
     assert_reject(op, tmp_path, "IDs must be distinct")
