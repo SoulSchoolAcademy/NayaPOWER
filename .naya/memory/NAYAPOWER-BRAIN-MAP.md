@@ -3,6 +3,10 @@
 **Status:** CANONICAL NAVIGATION / DISTILLED INTELLIGENCE INDEX  
 **Purpose:** Give a cold Naya one compact map of where the real intelligence lives, what each domain answers, and which authority must be read next.
 
+**Canonical doorway:** `SUPERBRAIN/AI-BOOT/START-HERE.md` → `SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md` → this Brain Map → `.naya/memory/BOOTSTRAP.md` → `SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md` → control plane → task-specific canonical contract.
+
+**Current-truth reconstruction:** `SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md` is the canonical derived reconstruction aid for current/historical/superseded/stale/conflicted/unknown/evidence/lineage views. It does not override live sources or the control plane.
+
 ## The architectural correction
 
 The **Brain is not another memory store**.
