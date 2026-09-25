@@ -67,6 +67,26 @@ jobs:
             await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/feed?event_id='+encodeURIComponent(receiverEventId)+'&stream=personal&sender_receiver='+R,{waitUntil:'networkidle',timeout:60000});
             await page.waitForFunction(()=>!!window.NayaAssistantRuntime?.snapshot?.().authenticated,{timeout:30000});
             const expectedStatement='Main sender consolidated proof '+R;
+            const feedProjection=await page.evaluate(async({receiverEventId,expectedStatement})=>{
+              const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:100,before:null});
+              const items=Array.isArray(feed?.items)?feed.items:[];
+              const exact=items.find(item=>String(item?.event_id||'')===receiverEventId);
+              return {
+                item_count:items.length,
+                receiver_event_present:!!exact,
+                receiver_item:exact?{
+                  event_id:exact.event_id,
+                  title:exact.title,
+                  source:exact.source,
+                  metadata:exact.metadata||null,
+                  content:String(exact.content||'').slice(0,4000),
+                  statement_present:String(exact.content||'').includes(expectedStatement)
+                }:null
+              };
+            },{receiverEventId,expectedStatement});
+            console.log('HUB_FEED_PROJECTION='+JSON.stringify(feedProjection));
+            if(!feedProjection.receiver_event_present) throw Error('RUNTIME_SMART_FEED_RECEIVER_EVENT_MISSING:'+JSON.stringify(feedProjection));
+
             await page.waitForFunction(({statement,eventId})=>{
               const body=(document.body.innerText||'');
               if(body.includes(statement)) return true;
