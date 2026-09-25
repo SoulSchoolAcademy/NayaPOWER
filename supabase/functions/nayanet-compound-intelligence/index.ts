@@ -21,6 +21,11 @@ const CANONICAL_HUB = "NAYANET/HUB/index.html";
 const GITHUB_REPO = "SoulSchoolAcademy/NayaPOWER";
 const GITHUB_REF = "main";
 
+async function sha256Hex(value:string):Promise<string>{
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
 async function auth(req: Request) {
   const authorization = req.headers.get("Authorization");
   if (!authorization?.startsWith("Bearer ")) throw new Error("AUTHORIZATION_REQUIRED");
@@ -954,7 +959,59 @@ Deno.serve(async (req) => {
       }
     }
     let result:any;
-    if (action === "universal_meaningful_output") {
+    if (action === "document_distill") {
+      const documentId = String(body.document_id ?? "").trim();
+      const sourceRef = String(body.source_ref ?? "").trim();
+      const sourceContent = String(body.source_content ?? "").trim();
+      const title = String(body.title ?? "").trim();
+      const essence = String(body.essence ?? "").trim();
+      const domain = String(body.domain ?? "").trim().toUpperCase();
+      const type = String(body.type ?? "").trim().toLowerCase();
+      const projectContext = String(body.project_context ?? PROJECT).trim();
+      const authorityGrantId = String(body.authority_grant_id ?? "").trim();
+      if (!documentId) throw new Error("DOCUMENT_ID_REQUIRED");
+      if (!sourceRef) throw new Error("DOCUMENT_SOURCE_REF_REQUIRED");
+      if (!sourceContent) throw new Error("DOCUMENT_SOURCE_CONTENT_REQUIRED");
+      if (!title) throw new Error("DOCUMENT_TITLE_REQUIRED");
+      if (!essence) throw new Error("DOCUMENT_ESSENCE_REQUIRED");
+      if (!domain) throw new Error("DOCUMENT_DOMAIN_REQUIRED");
+      if (!type) throw new Error("DOCUMENT_TYPE_REQUIRED");
+      if (!authorityGrantId) throw new Error("AUTHORITY_GRANT_ID_REQUIRED");
+      if (sourceContent.length > 2_000_000) throw new Error("DOCUMENT_SOURCE_TOO_LARGE");
+      const sourceHash = await sha256Hex(sourceContent);
+      const committed = await commitIntelligence(client,user.id,{
+        ...body,
+        idempotency_key: String(body.idempotency_key ?? ("document:"+documentId)),
+        title,
+        content: essence,
+        category: domain,
+        topic: type,
+        authority_grant_id: authorityGrantId,
+        source_head: body.source_head ?? null,
+        what_changed: "Document distilled into a provenance-bound reusable intelligence object.",
+        next_use: body.next_use ?? "Retrieve the distilled intelligence when the document topic is relevant.",
+        learning_claim: essence,
+        value_context: {
+          ...(body.value_context ?? {}),
+          adapter: "NAYANET_DOCUMENT_DISTILL_V1",
+          source_type: "document",
+          document_id: documentId,
+          source_ref: sourceRef,
+          source_hash: sourceHash,
+          source_content_length: sourceContent.length,
+          project_context: projectContext,
+          distillation: { essence, title, domain, type }
+        }
+      });
+      result = {
+        schema:"NAYANET_DOCUMENT_DISTILL_V1",
+        status:"CAPTURED_INTEGRATED_CHECKPOINTED",
+        document:{document_id:documentId,source_ref:sourceRef,source_hash:sourceHash,source_content_length:sourceContent.length},
+        classification:{domain,type,project_context:projectContext},
+        distillation:{title,essence},
+        intelligence:committed
+      };
+    } else if (action === "universal_meaningful_output") {
       const sourceType = String(body.source_type ?? "").trim();
       const privacy = String(body.privacy ?? "PRIVATE").trim();
       const destinationClass = String(body.destination_class ?? "").trim();
