@@ -51,6 +51,11 @@ def stable_payload(event: dict) -> dict:
         "aliases": sorted(norm(x) for x in list_values(event.get("aliases"))),
         "concepts": sorted(norm(x) for x in list_values(event.get("concepts"))),
         "representations": sorted(reps, key=lambda x: (x.get("representation") or "", x.get("summary") or "")),
+        "execution_identity": {
+            key: event.get("execution", {}).get(key)
+            for key in ("action_id", "run_id", "session_id", "claim_id", "decision_id")
+            if isinstance(event.get("execution"), dict) and event.get("execution", {}).get(key)
+        },
     }
 
 
