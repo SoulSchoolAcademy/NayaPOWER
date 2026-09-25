@@ -21,7 +21,9 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
+IB_REGISTRY_PATH = SMART_NOTES_ROOT / "REGISTRY.json"
+IB_ID_RE = re.compile(r"^IB-(\d{6})$")
 CIS_ROOT = ROOT / ".naya" / "memory" / "intelligence"
 CIS_PATH = CIS_ROOT / "CIS.json"
 RECEIPTS_ROOT = CIS_ROOT / "transactions"
@@ -52,12 +54,73 @@ def note_id(timestamp: str, topic: str) -> str:
     return f"SN-{stamp}-{slug(topic)}"
 
 
-def canonical_smart_note_path(timestamp: str, topic: str, root: Path | None = None) -> Path:
-    """Resolve a Smart Note through the canonical logical→physical namespace."""
+def _load_ib_registry(path: Path | None = None) -> dict[str, Any]:
+    registry_path = path or IB_REGISTRY_PATH
+    if not registry_path.exists():
+        return {
+            "$schema": "naya/smart-note-registry/v1",
+            "status": "CANONICAL",
+            "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+            "identity_rule": "One immutable IB identity per canonical intelligence object.",
+            "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+            "entries": [],
+        }
+    data = json.loads(registry_path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("entries", []), list):
+        raise ValueError("Smart Note IB registry is invalid")
+    return data
+
+
+def _allocate_ib_id() -> str:
+    registry = _load_ib_registry()
+    used = []
+    for row in registry.get("entries", []):
+        value = row.get("intelligent_block_id") if isinstance(row, dict) else None
+        match = IB_ID_RE.match(str(value or ""))
+        if match:
+            used.append(int(match.group(1)))
+    next_number = max(used, default=0) + 1
+    if next_number > 999999:
+        raise RuntimeError("Smart Note IB identity space exhausted")
+    return f"IB-{next_number:06d}"
+
+
+def _register_ib(note: dict[str, Any], path: Path) -> None:
+    registry = _load_ib_registry()
+    entries = registry.setdefault("entries", [])
+    ib_id = str(note["intelligent_block_id"])
+    existing = next((row for row in entries if isinstance(row, dict) and row.get("intelligent_block_id") == ib_id), None)
+    entry = {
+        "intelligent_block_id": ib_id,
+        "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+        "date": str(note["timestamp"])[:10],
+        "category": slug(str(note.get("category", "system"))).lower(),
+        "topic": slug(str(note["topic"])).lower(),
+        "status": "CANONICAL",
+    }
+    if existing is None:
+        entries.append(entry)
+    elif existing != entry:
+        raise RuntimeError(f"Smart Note IB registry conflict: {ib_id}")
+    entries.sort(key=lambda row: row.get("intelligent_block_id", ""))
+    _write_json(IB_REGISTRY_PATH, registry)
+
+
+def canonical_smart_note_path(
+    timestamp: str,
+    topic: str,
+    category: str = "system",
+    ib_id: str = "IB-000000",
+    root: Path | None = None,
+) -> Path:
+    """Resolve the ratified Smart Note V1 logical→physical namespace."""
     dt = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(timezone.utc)
-    filename = f"SN-{dt:%Y%m%d}-{slug(topic)}.md"
+    category_slug = slug(category).lower()
+    topic_slug = "-".join(slug(topic).lower().split("-")[:3]) or "smart-note"
+    if not IB_ID_RE.match(ib_id):
+        raise ValueError("canonical Smart Note requires immutable IB-XXXXXX identity")
     base = Path(root) if root is not None else SMART_NOTES_ROOT
-    return base / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / filename
+    return base / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / category_slug / topic_slug / ib_id / "smart-note.md"
 
 
 def validate_note(note: dict[str, Any]) -> None:
@@ -268,21 +331,29 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note = dict(note)
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
+        note["category"] = str(note.get("category") or "system")
+        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
 
-        path = canonical_smart_note_path(stamp, note["topic"])
+        path = canonical_smart_note_path(
+            stamp,
+            note["topic"],
+            category=note["category"],
+            ib_id=note["intelligent_block_id"],
+        )
         receipt_path = RECEIPTS_ROOT / f"SN-RCP-{note['id']}.json"
         if path.exists():
             existing = path.read_text(encoding="utf-8")
             if note["id"] not in existing:
                 raise RuntimeError(f"Smart Note path conflict: {path}")
 
-        snapshot = _snapshot_paths([path, CIS_PATH, PIS_PATH, receipt_path])
+        snapshot = _snapshot_paths([path, CIS_PATH, PIS_PATH, receipt_path, IB_REGISTRY_PATH])
         try:
             note["cis_status"] = "PENDING"
             note["pis_status"] = "PENDING"
             note["hub_status"] = "PENDING"
             note["receipt_id"] = f"SN-RCP-{note['id']}"
             persistence = _persist_and_verify(path, render_note(note), note["id"])
+            _register_ib(note, path)
 
             cis = apply_cis_learning(note)
             note["cis_status"] = cis["status"]
