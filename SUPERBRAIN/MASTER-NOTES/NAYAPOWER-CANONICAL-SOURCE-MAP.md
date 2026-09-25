@@ -159,9 +159,9 @@ These documents may define important specialized behavior, but they cannot silen
 
 # 6A. CURRENT SYSTEM-WIDE NAYANET ALIGNMENT — 2026-09-24
 
-The current product/build alignment is recorded in canonical Smart Note IB-000659:
+The current product/build alignment is recorded in canonical Smart Note LIVE-IB-PENDING:
 
-`.naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000659/smart-note.md`
+`2026-09-24 human-director System-Wide Alignment source (canonical Smart Note identity pending live receiver)`
 
 It defines the current NayaNET “Hub Is the House” model:
 
