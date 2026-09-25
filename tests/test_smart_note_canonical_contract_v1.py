@@ -39,7 +39,9 @@ def test_one_canonical_contract_declares_smart_note_equals_intelligent_block():
 
 def test_runtime_writer_uses_only_canonical_perspectives_and_schema():
     text = TX.read_text(encoding="utf-8")
-    assert '.naya" / "memory" / "notes"' in text
+    assert "LOCAL_SMART_NOTE_CREATION_DISABLED" in text
+    assert "v7-smart-note-canonical" in text
+    assert "def _allocate_ib_id" not in text
     assert "CANONICAL_SCHEMA = \"NAYANET_INTELLIGENT_BLOCK_V1\"" in text
     for heading in CANONICAL_HEADINGS:
         assert "## " + heading in text
