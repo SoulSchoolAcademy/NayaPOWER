@@ -22,17 +22,17 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "ad3e0118bdaf9086de3abcb5af68c263fdb66002",
-    "checkpoint_branch": "recovery/hub-entry-gate-removal-ad3e0118",
+    "main_observed_head": "61b46b711f1adc2a30a21b894049e82df719f7dc",
+    "checkpoint_branch": "recovery/hub-live-smart-note-comment-checkpoint-20260925",
     "checkpoint_type": "CANONICAL_HUB_VERIFIED_REPAIR_ADVANCEMENT",
     "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
     "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
-    "recovery_entrypoint_blob_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
-    "advancement_reason": "Advance checkpoint to the merged duplicate-entry-gate removal (PR #559, merge ad3e0118): deleted only script#nayanet-canonical-auth-gate (34 lines, fullscreen Enter-the-Hub overlay) from NAYANET/HUB/index.html so the Worker URL opens the Hub directly per WELCOME->IDENTITY->HUB. Identity capability untouched. Proven pre-deploy: local Chromium render of new blob shows gate element absent, Enter-the-Hub text absent, Hub content renders, 0 pageerrors; hub-quality CI PASS on PR #559. Deployment + live parity + post-merge browser proof remain open and are enforced by the release lane itself."
+    "recovery_entrypoint_blob_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c",
+    "advancement_reason": "Advance the preservation checkpoint to the current main source because the only NAYANET/HUB/index.html delta from the prior checkpoint is two comment-line changes documenting the canonical live Smart Note / Intelligent Block runtime projection. No executable Hub behavior changed; the canonical entrypoint remains the same static architecture and the live Smart Note pipeline is verified independently."
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
-    "entrypoint_blob_sha_at_checkpoint": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
+    "entrypoint_blob_sha_at_checkpoint": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c",
     "implementation_authority": "NAYANET/HUB/index.html",
     "preserved_react_lane": "NAYANET/HUB/src/",
     "preserved_react_lane_status": "HISTORICAL_OR_ALTERNATE_IMPLEMENTATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
