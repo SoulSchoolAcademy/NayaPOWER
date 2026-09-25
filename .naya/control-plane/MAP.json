@@ -24,7 +24,7 @@
     "intelligent_hub_north_star": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "intelligent_hub_visual_structural_contract": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
     "canonical_hub_path": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
+    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
@@ -64,7 +64,7 @@
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
     "first_feature": "Smart Share",
-    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
+    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
@@ -123,7 +123,7 @@
     ],
     "active_block": "HUMAN-JOURNEY-P2",
     "definition_of_done": "The canonical Hub completes OPEN → UNDERSTAND → NAVIGATE → SEARCH → CREATE → SAVE → SEE RESULT → RELOAD → FIND IT → UNDERSTAND EVIDENCE → CONTINUE with direct live behavioral evidence, durable result, provenance, and authorized continuation.",
-"next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
+"next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
   },
   "design_direction": {
     "product": "MAXIS/MAXESS",
@@ -191,7 +191,7 @@
     "artifact": 10720229874
   },
   "current_frontier": {
-    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
     "status": "BLOCKED"
   },
   "non_owner_retrieval_boundary": {
@@ -223,10 +223,10 @@
     "verifier_repair": "Separated non-owner runtime proof from owner-scoped bridge-table RLS; owner receipt independently verified outside non-owner identity.",
     "verifier": ".github/workflows/verify-non-owner-managed-retrieval.yml"
   },
-  "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+  "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
   "current_next_action": {
-    "status": "BLOCKED",
-    "proof_scope": "Verified bounded Smart Note/intelligence_commit promotion; legacy 88-event cohort dispositioned HISTORICAL_ONLY without database mutation."
+    "status": "ACTIVE",
+    "proof_scope": "P7 intelligence health GREEN; cold 14-question reconstruction PASS; baton successor reconstruction PASS. Behavioral successor execution remains the open boundary."
   },
   "legacy_cognition_disposition": {
     "cohort_size": 88,
@@ -234,5 +234,5 @@
     "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
     "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   },
-  "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
+  "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
 }

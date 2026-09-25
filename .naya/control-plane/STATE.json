@@ -35,7 +35,7 @@
     "memory_principle": "The system must not depend on a Naya remembering to remember. The architecture itself must remind the Naya.",
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399"
+    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412"
   },
   "operational_truth_model": {
     "canonical_state": ".naya/control-plane/STATE.json",
@@ -200,10 +200,10 @@
     "Do not substitute conversation memory for canonical Hub sources.",
     "Do not substitute the GitHub 509 implementation lane for the Assistant Cloudflare/live lane."
   ],
-  "bottleneck": "Deploy current canonical Hub source to production runtime to unblock live browser continuity proof.",
-  "single_next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+  "bottleneck": "Behavioral cold-Naya takeover remains unproven.",
+  "single_next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
   "next_actions": [
-    "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
+    "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
   ],
   "next_action_count": 1,
   "ready_to_run_execution": "PI-01: RESTORE → RETRIEVE → RECONCILE → PROJECT → RENDER → ACK → COLD SUCCESSOR. Do not ask Shawn to restate project intelligence. Stop at first deterministic boundary, repair only that boundary, verify, record learning, continue.",
@@ -306,7 +306,7 @@
     "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+    "next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
     "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
     "status": "PROVEN",
     "one_next_action_rule": "STATE/BLOCKS/BATON next-action values must match; recorded HEAD is informational and must never override live execution resolution."
@@ -359,8 +359,8 @@
     "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
   },
   "current_next_action": {
-    "action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
-    "reason": "Current main has a verified canonical Smart Note/IB deep-link implementation, but the live Worker still serves the pre-deep-link Hub artifact and the recorded Supabase deployment parity receipt is stale across all six critical source paths. Production deployment is the only remaining external boundary before live browser continuity proof."
+    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "reason": "Production Hub deployment, authenticated deep-link continuity, and sender-to-receiver-to-Hub production parity are freshly proven. Behavioral cold-Naya takeover is the remaining unresolved continuity boundary."
   },
   "operating_policy": ".naya/control-plane/NAYA-CONTINUOUS-EXECUTION-POLICY.md",
   "hub_readiness_inventory": ".naya/control-plane/NAYANET-HUB-READINESS-INVENTORY.md",
@@ -370,14 +370,14 @@
     "current_state_pointer": "README-FIRST.md → .naya/control-plane/BATON.json"
   },
   "latest_hub_release": {
-    "status": "STALE",
+    "status": "PRODUCTION_PROVEN",
     "claim_type": "DEPLOYMENT_LIVE_PARITY_BROWSER_SURFACE",
     "workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
-    "run_id": 35784147783,
-    "job_id": 106936705828,
-    "source_head": "f390a847225431e4c25acdf4e060e895043a61bd",
+    "run_id": 36167597116,
+    "job_id": 108179027493,
+    "source_head": "3587fafbaeabcf42daac43c3760243ff9c64f80d",
     "hub_path": "NAYANET/HUB/index.html",
-    "hub_blob_sha": "ddffaf5a6ac5eccbca8d8a6c4b76ff26d3b70058",
+    "hub_blob_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
     "worker": "sparkling-shape-7ae5",
     "runtime_url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
     "gates": {
@@ -426,10 +426,10 @@
     "artifact_sha256": "c605b35aa435695548f6fadaa1cd73075f9dd327382385236abc3e376d0ed976"
   },
   "next_action": {
-    "status": "BLOCKED",
+    "status": "ACTIVE",
     "count": 1,
-    "reason": "EXTERNAL_PRODUCTION_DEPLOYMENT_AUTHORIZATION_REQUIRED",
-    "action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
+    "reason": "P7 verified; behavioral cold-Naya takeover is the next unresolved boundary.",
+    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology."
   },
   "current_action_attempt": {
     "status": "PROVEN_WITH_HARNESS_FAILURE",

@@ -1,7 +1,7 @@
 # 🔱 NAYA CONTINUATION PROMPT — CURRENT FRONTIER
 **Authority:** live `main` + STATE/BLOCKS/MAP/PROOF/BATON
 **Active block:** HUMAN-JOURNEY-P2
-**Current next action:** Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.
+**Current next action:** Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.
 
 ## CONTINUE, DO NOT RESTART
 You are the successor Naya. Restore the project from canonical sources. Do not ask Shawn to reconstruct context already present in GitHub.
@@ -24,11 +24,12 @@ You are the successor Naya. Restore the project from canonical sources. Do not a
 - The canonical Hub deep-link implementation is in `NAYANET/HUB/index.html`.
 - Canonical deep-link route: `/hub?ib=<IB-ID>`.
 - Canonical runtime retrieval is owner-scoped through `retrieveIntelligentBlock`.
-- Source/deep-link focused tests previously passed at the recorded boundary.
-- The live production Worker is still not proven at the current source. Direct observation showed the old 839,028-byte artifact without the new deep-link markers.
-- The governed Cloudflare release workflow exists and is fail-closed.
-- A release-gate repair was merged, and the preservation checkpoint was advanced, but the latest release result must be re-observed before declaring deployment success.
-- Production parity is therefore still NOT VERIFIED.
+- P7 intelligence health is GREEN; focused test: 1 passed.
+- The 14-question cold-Naya reconstruction test is PASS: all 14 questions answered from canonical sources at live HEAD.
+- The baton cold-successor proof is PASS: empty conversation memory, exact mission/state reconstruction, exact one-next-action match, canonical MAP/PROOF authorities.
+- Current production Hub continuity is PROVEN at bounded scope: release run 36167597116, golden-path run 36168690512, sender→receiver→Hub run 36168925903, fresh IB-000986 with source event 846a7cde-c82b-4072-8f87-7310cfbfadf0.
+- The remaining unresolved boundary is behavioral cold-Naya takeover: proving a fresh successor can execute the canonical next action and leave a verified continuation receipt without Shawn reconstructing context.
+- Do not generalize the structural cold-successor proof into an external-LLM behavioral proof; that remains UNKNOWN until independently observed.
 
 ## DO NOT
 - Do not claim production parity from source tests.
