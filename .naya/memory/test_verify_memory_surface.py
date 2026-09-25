@@ -1,5 +1,6 @@
 from pathlib import Path
 import sys
+import json
 ROOT=Path(__file__).resolve().parents[2]
 sys.path.insert(0,str(ROOT/".naya/memory"))
 import verify_memory_surface
