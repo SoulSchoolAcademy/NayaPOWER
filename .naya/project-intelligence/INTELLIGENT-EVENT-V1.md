@@ -1,6 +1,8 @@
-# INTELLIGENT EVENT V1 — CANONICAL CONTRACT
+> **2026-09-25 RECONCILIATION:** The authoritative Smart Note / Intelligent Block contract is `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`. This project-intelligence document is preserved as a derived architecture projection and must not define a competing identity, registry, storage path, or lifecycle.
 
-STATUS: OFFICIAL NayaNET ARCHITECTURE
+# INTELLIGENT EVENT V1 — CANONICAL CONTRACT — DERIVED PROJECT PROJECTION
+
+STATUS: DERIVED PROJECT PROJECTION — NON-AUTHORITATIVE
 VERSION: V1
 EFFECTIVE: 2026-09-21
 
