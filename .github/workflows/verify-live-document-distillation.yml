@@ -73,6 +73,16 @@ jobs:
           echo "$RETRIEVED" | jq .
           echo "$RETRIEVED" > document-distill-retrieval.json
 
+          BLOCK=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligent_blocks?select=block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version&block_id=eq.$BLOCK_ID" "${H[@]}")
+          echo "$BLOCK" | jq .
+          echo "$BLOCK" > document-distill-block.json
+          test "$(echo "$BLOCK" | jq 'length')" -eq 1
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_type')" = document
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_hash')" = "$SOURCE_HASH"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.document_id')" = "$DOCUMENT_ID"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
+          test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
+
           INDEX_ID="$INDEX_ID" DOCUMENT_ID="$DOCUMENT_ID" ESSENCE="$ESSENCE" python - <<'PY'
           import json, os
           r=json.load(open("document-distill-retrieval.json",encoding="utf-8"))
