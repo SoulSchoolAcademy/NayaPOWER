@@ -5,25 +5,6 @@ name: NAYA — Canonical Assistant Cloudflare Hub Release
 # Current-main acceptance revalidation: deploy exact canonical source before human-surface proof.
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'NAYANET/HUB/index.html'
-      - 'NAYANET/HUB/package.json'
-      - 'NAYANET/HUB/vite.config.ts'
-      - 'NAYANET/HUB/tsconfig.json'
-      - 'NAYANET/HUB/src/**'
-      - 'NAYANET/HUB/public/**'
-      - 'NAYANET/HUB/cloudflare-static-worker.js'
-      - 'assistant-runtime.js'
-      - 'hub-completeness.js'
-      - 'smart-feed.js'
-      - 'smart-tabs.js'
-      - 'NAYANET/HUB/intelligence-surfaces-runtime.js'
-      - '.github/workflows/assistant-cloudflare-hub-release.yml'
-      - '.naya/control-plane/EXECUTION-SESSION.json'
-      - '.naya/control-plane/HUB-PRESERVATION.json'
-      - '.naya/control-plane/HUB-PRESERVATION-PROOF.json'
   workflow_dispatch:
     inputs:
       approval:
