@@ -1,0 +1,17 @@
+name: verify-memory-runtime-focused
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  memory-runtime:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Run canonical IB retrieval and Smart Brain v3 tests
+        run: python -m unittest tests/test_canonical_ib_retrieval.py .naya/memory/test_smart_brain_v3.py -v
