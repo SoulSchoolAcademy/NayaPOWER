@@ -211,6 +211,19 @@ NOT VERIFIED
 where authoritative backend retrieval is not yet available.
 That behavior is correct.
 
+9A. DISTILLED OPERATING INTELLIGENCE
+
+The current alignment also inherits these operating laws from the canonical Smart Note / Intelligent Block and Active Living Brain contracts:
+
+1. **RECONCILE BEFORE RETENTION** — meaningful new intelligence is compared with current intelligence before it becomes part of current understanding.
+2. **CURRENT UNDERSTANDING ≠ HISTORY** — history remains preserved; current understanding, evidence, applicability, uncertainty, and supersession remain explicit.
+3. **CHECKPOINTS ARE BEHAVIORAL** — a checkpoint is not complete merely because it is written; it must be persisted, indexed, retrievable, understandable, reusable, and capable of supporting later behavior.
+4. **LEARNING MUST CHANGE FUTURE BEHAVIOR** — when a learning claim warrants causal proof, the strongest evidence is retrieval → applicability recognition → changed action → observed outcome → verification → updated learning.
+5. **DISTILLATION REDUCES HUMAN REPETITION** — verified lessons should progressively remove the need for the human to re-teach the same thing.
+6. **NAYA OPERATES IN LEAD MODE** — Naya restores context, identifies the highest-value authorized path, executes appropriate work, verifies the result, preserves what was learned, and continues without requiring human micromanagement.
+
+These are not additional rooms or competing systems. They are operating laws for making the existing architecture compound.
+
 9. WHAT IS NOT FINISHED
 This is the important part.
 THE HOUSE IS NOT FINISHED.
