@@ -13,6 +13,11 @@ test('summarizes receiver status, lineage, and fallback correlation',()=>{
   assert.deepEqual(value,{status:500,ok:false,pipeline:'failed',error:'SMART_NOTE_PIPELINE_FAILED',detail:'database detail',correlation_id:'smart-note-key',event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1',learning_status:'CANDIDATE',checkpoint_status:'CHECKPOINT_VERIFIED'});
 });
 
+test('does not label a successful receiver response as failed',()=>{
+  const value=summarizeReceiverResponse(200,{ok:true,pipeline:'completed',event_id:'event-1'});
+  assert.equal(value.error,'NONE');
+});
+
 test('formats a receiver failure without discarding detail',()=>{
   const message=formatRuntimeFailure(422,{ok:false,pipeline:'failed',error:'SMART_NOTE_PIPELINE_FAILED',detail:'validation failed',correlation_id:'corr-1'},'smart-note-key');
   assert.match(message,/^SMART_NOTE_PIPELINE_FAILED\|status=422\|pipeline=failed\|code=SMART_NOTE_PIPELINE_FAILED\|correlation=corr-1\|event=UNAVAILABLE\|receipt=UNAVAILABLE\|transaction=UNAVAILABLE\|detail=validation failed$/);
@@ -55,7 +60,13 @@ test('builds a deterministic non-main proof with zero production mutation claims
 test('verifies independent persistence and projection lineage',()=>{
   const bridge={packet_id:'packet-1',receiver_transaction_id:'tx-1',receiver_event_id:'event-1',receipt_id:'receipt-1',projection:{index_id:'index-1'}};
   assert.equal(verifyPersistenceRecord(bridge,{packet_id:'packet-1',receiver_transaction_id:'tx-1',receiver_event_id:'event-1',receipt_id:'receipt-1',persisted:true,indexed:true,projected:true}).status,'VERIFIED');
+  assert.equal(verifyPersistenceRecord(bridge,[]).status,'NOT_VERIFIED');
   assert.equal(verifyProjectionIndex(bridge,[{id:'index-1',owner_id:'owner-1'}],'owner-1').status,'VERIFIED');
+});
+
+test('classifies a suffixed persistence reconstruction failure',()=>{
+  const value=classifySenderFailure(new Error('PERSISTENCE_RECONSTRUCTION_FAILED:{"record_present":false}'),{event_id:'event-1'},{status:200});
+  assert.deepEqual(value,{first_failure_boundary:'INDEPENDENT_PERSISTENCE',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_RECEIVER_ACCEPTED_PERSISTENCE_UNVERIFIED'});
 });
 
 test('verifies retrieval and full canonical correlation lineage',()=>{

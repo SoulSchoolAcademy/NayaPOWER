@@ -114,6 +114,7 @@ print(json.dumps({'status':'PASS','envelope_id':env['envelope_id'],'sender_type'
   if(bridge.body.owner_id!==runtime.user_id)throw Error('OWNER_LINEAGE_MISMATCH');
   mark('PRODUCTION_RECEIVER_ACCEPTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
   const persisted=await request(process.env.SUPABASE_URL+'/rest/v1/nayanet_project_intelligence_bridge?select=packet_id,receiver_transaction_id,receiver_event_id,receipt_id,persisted,indexed,projected&packet_id=eq.'+encodeURIComponent(bridge.body.packet_id),{headers:{apikey:process.env.SUPABASE_PUBLISHABLE_KEY,authorization:'Bearer '+runtime.session.access_token}});
+  mark('PERSISTENCE_QUERY',{status:persisted.status,rows:Array.isArray(persisted.body)?persisted.body.length:persisted.body&&typeof persisted.body==='object'?1:0});
   const persistenceProof=verifyPersistenceRecord(bridge.body,persisted.body);
   requireVerified(persistenceProof,'PERSISTENCE_RECONSTRUCTION_FAILED');
   mark('INDEPENDENT_PERSISTENCE_RECONSTRUCTED',{packet_id:bridge.body.packet_id,receiver_event_id:bridge.body.receiver_event_id,receipt_id:bridge.body.receipt_id});
