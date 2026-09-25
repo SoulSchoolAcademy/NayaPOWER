@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Canonical Smart Note -> governed learning -> PIS -> Hub transaction.
+"""Canonical Smart Note projection -> governed learning -> PIS -> Hub transaction.
 
-The Smart Note is the authoritative durable human-readable intelligence record.
-This module is the single transaction boundary that turns one canonical Smart
-Note into:
+The Intelligent Block is the canonical durable intelligence object. The Smart Note
+is its human-readable projection. This module persists a receiver-assigned IB
+projection and turns it into:
 1) a retained CIS learning record,
 2) a projected PIS event for the Intelligent Hub, and
 3) a durable transaction receipt.
@@ -63,28 +63,13 @@ def _load_ib_registry(path: Path | None = None) -> dict[str, Any]:
             "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
             "identity_rule": "One immutable IB identity per canonical intelligence object.",
             "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
-            "identity_cursor": 0,
+            "identity_authority": "live canonical receiver only",
             "entries": [],
         }
     data = json.loads(registry_path.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or not isinstance(data.get("entries", []), list):
         raise ValueError("Smart Note IB registry is invalid")
     return data
-
-
-def _allocate_ib_id() -> str:
-    registry = _load_ib_registry()
-    used = []
-    for row in registry.get("entries", []):
-        value = row.get("intelligent_block_id") if isinstance(row, dict) else None
-        match = IB_ID_RE.match(str(value or ""))
-        if match:
-            used.append(int(match.group(1)))
-    cursor = int(registry.get("identity_cursor", 0) or 0)
-    next_number = max(used + [cursor], default=0) + 1
-    if next_number > 999999:
-        raise RuntimeError("Smart Note IB identity space exhausted")
-    return f"IB-{next_number:06d}"
 
 
 def _register_ib(note: dict[str, Any], path: Path) -> None:
@@ -104,8 +89,6 @@ def _register_ib(note: dict[str, Any], path: Path) -> None:
         entries.append(entry)
     elif existing != entry:
         raise RuntimeError(f"Smart Note IB registry conflict: {ib_id}")
-    numeric = int(ib_id[3:])
-    registry["identity_cursor"] = max(int(registry.get("identity_cursor", 0) or 0), numeric)
     entries.sort(key=lambda row: row.get("intelligent_block_id", ""))
     _write_json(IB_REGISTRY_PATH, registry)
 
@@ -335,7 +318,9 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
         note["category"] = str(note.get("category") or "system")
-        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        if not note.get("intelligent_block_id"):
+            raise ValueError("live canonical receiver must supply intelligent_block_id")
+        note["intelligent_block_id"] = str(note["intelligent_block_id"])
         if not IB_ID_RE.match(note["intelligent_block_id"]):
             raise ValueError("invalid canonical intelligent_block_id")
         note["what"] = str(note.get("what") or note["topic"])

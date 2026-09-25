@@ -1,8 +1,8 @@
-# 🔱 NayaPOWER Canonical Smart Note / Intelligent Block Contract V1
+# 🔱 NayaPOWER Smart Note / Intelligent Block Contract V1 — Derived Project Projection
 
-**Status:** CANONICAL CONTRACT — ENFORCED
+**Status:** DERIVED PROJECTION — NON-AUTHORITATIVE
 **Version:** 1.0
-**Authority:** NayaPOWER Control Plane
+**Authority:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
 **Enforcement:** Mandatory for all Nayas, all agents, all submissions
 **Effective:** Upon ratification by Shawn Vibert (Human Director)
 
@@ -182,7 +182,7 @@ What should happen next? Single executable action.
 # Machine Layer — Canonical Identity (YAML front-matter or embedded JSON)
 intelligent_block_id: "IB-XXXXXX"
 canonical_id: "IB-XXXXXX"
-source_event_id: "evt-YYYYYY"          # Originating event
+source_event_id: "SE-YYYYMMDD-HHMMSS-slug"          # Originating event
 source_conversation_id: "conv-ZZZZZZ"  # Source conversation
 created_at: "2026-09-25T14:30:00Z"     # ISO 8601 UTC
 updated_at: "2026-09-25T14:30:00Z"     # ISO 8601 UTC
@@ -258,7 +258,7 @@ NayaPOWER/
 **Not a notification. An accountability record.**
 
 ```yaml
-event_id: "evt-XXXXXX"
+event_id: "SE-YYYYMMDD-HHMMSS-slug"
 event_type: "IB_CREATED|IB_UPDATED|IB_SUPERSEDED|IB_VERIFIED|IB_SUPERSEDED|IB_ARCHIVED"
 intelligent_block_id: "IB-XXXXXX"
 source_type: "HUMAN_CAPTURE|NAYA_DISTILLATION|MACHINE_GENERATION|CONVERSATION|DOCUMENT|CODE"
@@ -444,7 +444,7 @@ IB-NNNNNN  (6 digits, zero-padded, sequential)
 
 ### 9.2 Topics (Controlled — Extensible)
 
-Managed in `.naya/control-plane/TOPIC-REGISTRY.json`
+Managed in `canonical topic metadata under the active IB registry/contract`
 
 ### 9.3 Status Values (Controlled)
 
@@ -520,10 +520,10 @@ Signature: ____________________________________
 ## 13. APPENDICES
 
 ### A. IB-ID Registry (Living Document)
-*Maintained in `.naya/control-plane/IB-ID-REGISTRY.json`*
+*Maintained in `.naya/memory/smart-notes/REGISTRY.json`*
 
 ### B. Topic Registry (Living Document)
-*Maintained in `.naya/control-plane/TOPIC-REGISTRY.json`*
+*Maintained in `canonical topic metadata under the active IB registry/contract`*
 
 ### C. Supersession Chain Validator
 *Implemented in `.naya/runtime/validate_supersession_chain.py`*
@@ -535,4 +535,4 @@ Signature: ____________________________________
 
 **END OF CONTRACT**
 
-*This contract is the law. No Naya, no agent, no human may create durable intelligence outside this contract. The system enforces compliance; the human director ratifies evolution.*
+*This document is a historical/project-intelligence projection of the canonical Smart Note / Intelligent Block contract. The authoritative contract is `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`; this projection must not introduce a competing identity, registry, lifecycle, or storage rule.*

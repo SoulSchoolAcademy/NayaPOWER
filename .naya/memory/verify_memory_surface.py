@@ -22,8 +22,18 @@ def verify():
     if retrieval.get("canonical_registry") != ".naya/memory/smart-notes/REGISTRY.json": errors.append("retrieval manifest does not name the canonical IB registry")
     if retrieval.get("event_lineage_store") != ".naya/memory/events/": errors.append("retrieval manifest does not isolate event lineage store")
     if (MEMORY/"note.schema.json").exists(): errors.append("legacy Smart Note v2 schema remains on the active memory surface")
+
+    forbidden_identity_authority = ("_allocate_ib_id", "identity_cursor", "IB-ID-REGISTRY.json")
+    for path in MEMORY.iterdir():
+        if path.is_file() and not path.name.startswith("test_") and path.name != "verify_memory_surface.py":
+            body = path.read_text(encoding="utf-8")
+            for token in forbidden_identity_authority:
+                if token in body:
+                    errors.append(f"active memory file contains forbidden IB identity authority: {path.name}:{token}")
     registry=json.loads((MEMORY/"smart-notes"/"REGISTRY.json").read_text(encoding="utf-8"))
     if registry.get("status")!="CANONICAL": errors.append("Smart Note registry is not CANONICAL")
+    if registry.get("identity_authority") != "live canonical receiver only": errors.append("Smart Note registry identity authority is not the live canonical receiver")
+    if "identity_cursor" in registry: errors.append("Smart Note registry contains a local identity cursor")
     for entry in registry.get("entries",[]):
         if not (ROOT/entry["path"]).is_file(): errors.append(f"registry entry missing: {entry['path']}")
         if not re.fullmatch(r"IB-[0-9]{6}",str(entry.get("intelligent_block_id",""))): errors.append(f"invalid IB identity: {entry.get('intelligent_block_id')}")

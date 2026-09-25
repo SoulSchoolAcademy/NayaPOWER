@@ -2,7 +2,8 @@
 
 **Date:** 2026-09-25
 **Source HEAD:** bbdae40e63dca93fcacf84cbd60d037ee3d29a5c
-**Status:** CANONICAL ARCHAEOLOGY — PRE-CONTRACT RECONCILIATION
+**Status:** HISTORICAL ARCHAEOLOGY — PRE-FRESH-START BASELINE
+> **2026-09-25 RECONCILIATION:** This inventory is historical archaeology from before the fresh-start memory boundary. It is not an authority, not a live migration queue, and its candidate IB numbers must not be used for allocation. Current canonical intelligence is resolved only through `.naya/memory/smart-notes/REGISTRY.json` and the live canonical receiver.
 
 ---
 

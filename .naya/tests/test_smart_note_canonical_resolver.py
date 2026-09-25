@@ -80,6 +80,39 @@ def test_calendar_writer_uses_same_resolver():
         )
 
 
+
+def test_transaction_rejects_missing_receiver_assigned_ib_before_persistence():
+    note = {
+        "topic": "Receiver Identity Boundary",
+        "timestamp": "2026-09-25T18:00:00+00:00",
+        "in_a_nutshell": "test",
+        "human": "test",
+        "child": "test",
+        "grandma": "test",
+        "naya": "test",
+        "machine": "test",
+        "learning": "test",
+        "why_it_matters": "test",
+        "how_it_connects": "test",
+        "how_to_use": "test",
+        "value": "test",
+        "evidence": ["test"],
+        "current_state": "test",
+        "next_action": "test",
+    }
+    try:
+        module.execute(note)
+    except ValueError as exc:
+        assert str(exc) == "live canonical receiver must supply intelligent_block_id"
+    else:
+        raise AssertionError("transaction accepted missing receiver-assigned IB identity")
+
+
+def test_transaction_cannot_allocate_ib_identity_locally():
+    source = MODULE_PATH.read_text(encoding="utf-8")
+    assert "_allocate_ib_id" not in source
+    assert "live canonical receiver" in source.lower()
+
 if __name__ == "__main__":
     test_canonical_smart_note_path()
     test_resolver_has_one_physical_namespace()
