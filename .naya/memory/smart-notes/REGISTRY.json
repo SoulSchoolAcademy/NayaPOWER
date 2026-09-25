@@ -20,8 +20,16 @@
       "category": "system",
       "topic": "superbrain-scorecard",
       "status": "CANONICAL"
+    },
+    {
+      "intelligent_block_id": "IB-000650",
+      "path": ".naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000650/smart-note.md",
+      "date": "2026-09-24",
+      "category": "system",
+      "topic": "hub-house-alignment",
+      "status": "CANONICAL_SYSTEM_ALIGNMENT"
     }
   ],
   "identity_cursor": 649,
-  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks intelligent_block_id high-water mark verified 2026-09-24"
+  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks intelligent_block_id high-water mark verified 2026-09-24; repository Smart Note IB-000650 allocated from this cursor"
 }
