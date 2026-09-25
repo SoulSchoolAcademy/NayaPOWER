@@ -85,8 +85,42 @@ def test_after_accepts_only_completed_receiver_receipt():
         assert Path(result["path"]).is_file()
         print("AFTER_BRANCH=PASS (feed-verified receiver identity + lineage projected canonically)")
 
+
+
+def test_live_receiver_returns_feed_verified_smart_link_and_completion_receipt():
+    receiver = (ROOT / "supabase/functions/v7-smart-note-canonical/index.ts").read_text(encoding="utf-8")
+    required = [
+        'const feedVerification=await supabase.from("nayanet_cognition_events")',
+        'SMART_NOTE_FEED_VERIFICATION_FAILED',
+        'const smartLinkPath="/hub?ib="+encodeURIComponent(intelligentBlockId)',
+        'const completionReceipt=',
+        'schema:"naya/smart-note-receiver-receipt/v1"',
+        'transaction_id:canonicalTransactionId',
+        'feed_verification:feedVerificationReceipt',
+        'smart_link:smartLink',
+    ]
+    missing = [token for token in required if token not in receiver]
+    assert not missing, "live receiver contract missing: " + ", ".join(missing)
+
+
+def test_repository_has_one_enforced_smart_note_write_boundary():
+    tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
+    executable = [p for p in tracked if p.endswith((".py", ".ts", ".js", ".mjs", ".tsx", ".jsx"))]
+    violations = []
+    for rel in executable:
+        text = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
+        if rel != ".naya/runtime/smart_note_calendar.py" and "smart-notes" in text and "write_text" in text:
+            violations.append(rel + ": smart-notes writer outside canonical projection boundary")
+        if "SUPERBRAIN/SMART-NOTES" in text or "NAYANET/SMART-NOTES" in text:
+            violations.append(rel + ": alternate Smart Note namespace")
+        if "_allocate_ib_id" in text or "identity_cursor" in text:
+            violations.append(rel + ": local IB allocator marker")
+    assert not violations, "\n".join(violations)
+
 if __name__ == "__main__":
     test_before_main_bypasses_receiver()
     test_after_requires_receiver_receipt()
     test_after_accepts_only_completed_receiver_receipt()
+    test_live_receiver_returns_feed_verified_smart_link_and_completion_receipt()
+    test_repository_has_one_enforced_smart_note_write_boundary()
     print("SMART_NOTE_RECEIVER_ENFORCEMENT=PASS")
