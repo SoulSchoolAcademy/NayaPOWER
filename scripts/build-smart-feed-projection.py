@@ -115,16 +115,24 @@ def canonical_note_events(root: Path = SMART_NOTES_ROOT, repository_root: Path =
 
 
 def build_projection(*, extra_notes: Iterable[dict[str, Any]] | None = None, source_root: Path = ROOT, output: Path = OUT) -> dict[str, Any]:
+    """Project only canonical Smart Note / IB projections into the Hub feed.
+
+    This is a read-only projection. It does not create Smart Notes, allocate IBs,
+    or consult legacy Smart Note namespaces.
+    """
     source_root = Path(source_root)
-    source = source_root / "SMART FEED CONTENT"
-    legacy = legacy_events(source.read_text(encoding="utf-8"), when()) if source.exists() else []
-    notes = canonical_note_events(source_root / ".naya" / "memory" / "notes", source_root)
-    human_notes = canonical_note_events(source_root / "SUPERBRAIN" / "SMART-NOTES", source_root)
-    merged: dict[str, dict[str, Any]] = {e["event_id"]: e for e in legacy}
-    for event in notes + human_notes + list(extra_notes or []):
+    notes = canonical_note_events(source_root / ".naya" / "memory" / "smart-notes", source_root)
+    merged: dict[str, dict[str, Any]] = {e["event_id"]: e for e in notes}
+    for event in list(extra_notes or []):
         merged[event["event_id"]] = event
     events = sorted(merged.values(), key=lambda e: (e.get("created_at", ""), e["event_id"]), reverse=True)
-    payload = {"schema_version": "PIS-3.0", "generated_at": datetime.now(timezone.utc).isoformat(), "source": "github:canonical-smart-notes+smart-feed", "event_count": len(events), "events": events}
+    payload = {
+        "schema_version": "PIS-3.0",
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "source": "github:canonical-smart-notes",
+        "event_count": len(events),
+        "events": events,
+    }
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
