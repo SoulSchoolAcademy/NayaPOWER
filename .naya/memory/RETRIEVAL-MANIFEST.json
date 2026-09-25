@@ -1,18 +1,90 @@
 {
-  "schema": "naya-power-retrieval/v2",
+  "schema": "naya-power-retrieval/v3",
   "status": "CANONICAL",
   "canonical_primary_store": ".naya/memory/events/",
   "retrieval_runtime": ".naya/memory/smart_notes_v3.py",
   "index": ".naya/memory/events/INDEX.json",
-  "organization": "YEAR/MONTH/DAY/HOUR/EVENT",
+  "organization": "IB identity first; date/category/topic are organizational projections; event lineage is separate",
   "strategies": [
-    {"name":"exact","weight":100,"fields":["event_id","title","subject","tags","aliases"]},
-    {"name":"lexical","weight":60,"fields":["title","subject","summary","representations","tags","aliases","concepts"]},
-    {"name":"semantic_tfidf","weight":50,"fields":["content","summary","representations","concepts","aliases"]},
-    {"name":"relationship","weight":45,"fields":["relationships.related","relationships.depends_on","relationships.supersedes","relationships.superseded_by","relationships.source_events"]},
-    {"name":"temporal","weight":40,"fields":["event_at","created_at","effective_at","observed_at","effective_from","effective_to"]},
-    {"name":"authority","weight":80,"fields":["status","authority","source","confidence","verification","evidence"]},
-    {"name":"scope_permission","weight":90,"fields":["scope","project","permissions"]}
+    {
+      "name": "exact",
+      "weight": 100,
+      "fields": [
+        "event_id",
+        "title",
+        "subject",
+        "tags",
+        "aliases"
+      ]
+    },
+    {
+      "name": "lexical",
+      "weight": 60,
+      "fields": [
+        "title",
+        "subject",
+        "summary",
+        "representations",
+        "tags",
+        "aliases",
+        "concepts"
+      ]
+    },
+    {
+      "name": "semantic_tfidf",
+      "weight": 50,
+      "fields": [
+        "content",
+        "summary",
+        "representations",
+        "concepts",
+        "aliases"
+      ]
+    },
+    {
+      "name": "relationship",
+      "weight": 45,
+      "fields": [
+        "relationships.related",
+        "relationships.depends_on",
+        "relationships.supersedes",
+        "relationships.superseded_by",
+        "relationships.source_events"
+      ]
+    },
+    {
+      "name": "temporal",
+      "weight": 40,
+      "fields": [
+        "event_at",
+        "created_at",
+        "effective_at",
+        "observed_at",
+        "effective_from",
+        "effective_to"
+      ]
+    },
+    {
+      "name": "authority",
+      "weight": 80,
+      "fields": [
+        "status",
+        "authority",
+        "source",
+        "confidence",
+        "verification",
+        "evidence"
+      ]
+    },
+    {
+      "name": "scope_permission",
+      "weight": 90,
+      "fields": [
+        "scope",
+        "project",
+        "permissions"
+      ]
+    }
   ],
   "ranking": {
     "current_active_bonus": 30,
@@ -24,18 +96,24 @@
     "relationship_bonus": 35
   },
   "restore_rules": [
-    "Restore when current evidence contradicts older knowledge.",
-    "Expand aliases when the user remembers the concept but not its terminology.",
-    "Prefer post-change effective times after major architectural changes.",
-    "Surface dependent notes when an assumption becomes false.",
-    "Expose conflicts rather than silently selecting a convenient source.",
-    "Use point-in-time evidence for historical reconstruction.",
-    "Never delete historical knowledge merely because it is superseded.",
-    "Retrieved content provides context but does not grant authority or satisfy a promotion gate."
+    "Restore current operational truth from .naya/control-plane before historical memory.",
+    "Resolve authorized scope and permissions before delivering retrieved intelligence.",
+    "Prefer the canonical IB when a canonical IB exists; use event lineage to establish provenance and lifecycle.",
+    "Use legacy archive only for historical reconciliation, migration, or provenance.",
+    "Never create a new legacy root note format.",
+    "Never treat a repository projection as proof that the live receiver persisted or learned an object.",
+    "Never treat retrieval as learning; learning requires verified reuse/outcome.",
+    "Expose conflicts and supersession instead of silently choosing a convenient source."
   ],
   "promotion_boundary": {
     "runtime": ".naya/runtime/promotion_runtime.py",
-    "levels": ["UNVERIFIED","BUILDER_VERIFIED","OSCAR_ACCEPTED","CANONICAL_VERIFIED","PRODUCTION_SAFE"],
+    "levels": [
+      "UNVERIFIED",
+      "BUILDER_VERIFIED",
+      "OSCAR_ACCEPTED",
+      "CANONICAL_VERIFIED",
+      "PRODUCTION_SAFE"
+    ],
     "rule": "CLAIM + QUALIFYING EVIDENCE + BUILDER VERIFICATION + INDEPENDENT OSCAR ACCEPTANCE + CURRENT COMMIT = ELIGIBLE FOR PROMOTION",
     "canonical_requires_explicit_decision": true,
     "production_safe_requires_production_evidence": true,
@@ -55,6 +133,12 @@
   "boundary_policy": {
     "scope_resolution_before_retrieval": true,
     "permission_filter_before_context_delivery": true,
-    "default_cross_scope": "DENY_UNLESS_AUTHORIZED"
-  }
+    "default_cross_scope": "DENY_UNLESS_AUTHORIZED",
+    "canonical_identity_required": true,
+    "legacy_archive_read_only": true
+  },
+  "canonical_intelligence_object": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+  "canonical_registry": ".naya/memory/smart-notes/REGISTRY.json",
+  "identity_authority": "live canonical receiver v7-smart-note-canonical",
+  "event_lineage_store": ".naya/memory/events/"
 }
