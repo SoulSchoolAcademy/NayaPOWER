@@ -28,3 +28,9 @@ def test_enforcement_does_not_construct_ib_identity_from_event_id():
             if 'event_id' in names and any(isinstance(n, ast.Constant) and str(n.value).startswith('IB-') for n in ast.walk(node)):
                 forbidden.append(node.lineno)
     assert not forbidden, f'event lineage is being used to construct IB identity at lines {forbidden}'
+
+
+def test_enforcement_uses_canonical_smart_note_perspectives():
+    source = SOURCE.read_text(encoding="utf-8")
+    assert 'REQUIRED_REPRESENTATIONS = ("human", "child", "grandma", "naya", "machine")' in source
+    assert '("shawn", "naya", "machine")' not in source
