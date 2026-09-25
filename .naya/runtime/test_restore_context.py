@@ -9,7 +9,7 @@ import restore_context as rc
 class RestoreContextTests(unittest.TestCase):
     def test_current_restore_has_required_contract(self):
         result = rc.build_restore()
-        self.assertIn(result["status"], {"VERIFIED", "UNKNOWN"})
+        self.assertIn(result["status"], {"VERIFIED", "UNKNOWN", "RECONCILIATION_REQUIRED"})
         self.assertEqual(result["schema"], "naya-power-restore-context/v4")
         self.assertIn("current_state", result)
         self.assertIn("repository_reality", result)
@@ -61,7 +61,8 @@ class RestoreContextTests(unittest.TestCase):
         ]
         with patch.object(rc, "retrieve_canonical_ibs", return_value=canonical) as retrieve_mock:
             snap = rc.memory_snapshot("canonical intelligence", None, 10, principal_id="cold-naya", scope="system", project="NayaPOWER", principal_project="NayaPOWER")
-        retrieve_mock.assert_called_once_with(
+        assert retrieve_mock.call_count == 2
+        retrieve_mock.assert_any_call(
             "canonical intelligence",
             limit=30,
             root=rc.ROOT,

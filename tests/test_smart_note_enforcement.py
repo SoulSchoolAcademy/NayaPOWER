@@ -27,6 +27,7 @@ def governance_fixture() -> dict:
             "actor": "naya",
             "request": "capture Smart Note event",
             "purpose": "smart-note-capture",
+            "gap": "canonical Smart Note capture must cross the canonical receiver",
             "authority": {"authority_id": "AUTH-SMART-NOTE-001"},
             "scope": ["SoulSchoolAcademy/NayaPOWER/.naya/memory"],
             "boundaries": ["privacy-by-choice", "constitutional"],
@@ -63,7 +64,7 @@ def governance_fixture() -> dict:
 
 def fixture(tmp_path: Path) -> dict:
     event_dir = tmp_path / ".naya" / "memory" / "events" / "2099" / "01" / "01" / "12"
-    event_dir.mkdir(parents=True)
+    event_dir.mkdir(parents=True, exist_ok=True)
     event = {
         "event_id": EVENT_ID,
         "effective_at": EFFECTIVE_AT,
@@ -85,6 +86,11 @@ def fixture(tmp_path: Path) -> dict:
         "request_detected": True,
         "event_id": EVENT_ID,
         "event": event,
+        "intelligent_block": {
+            "intelligent_block_id": "IB-000001",
+            "schema_version": "NAYANET_INTELLIGENT_BLOCK_V1",
+            "source_event_ids": [EVENT_ID],
+        },
         "governance": governance_fixture(),
         "receipt": {
             "status": "VERIFIED",
@@ -123,6 +129,9 @@ def test_complete_operation_is_admitted():
         op = fixture(Path(d))
         result = enforce_smart_note_claim(op, root=Path(d))
         assert result["status"] == "VERIFIED"
+        assert result["intelligent_block_id"] == "IB-000001"
+        assert result["event_id"] == EVENT_ID
+        assert result["intelligent_block_id"] != result["event_id"]
         assert result["pis_propagation"] == "SEPARATE_EVIDENCE_REQUIRED"
 
 
@@ -135,13 +144,13 @@ def test_missing_governance_gate_is_rejected(tmp_path):
 def test_expired_governance_authority_is_rejected(tmp_path):
     op = fixture(tmp_path)
     op["governance"]["authority"]["expires_at"] = (datetime.now(timezone.utc) - timedelta(seconds=1)).isoformat()
-    assert_reject(op, tmp_path, "expired")
+    assert_reject(op, tmp_path, "authority does not permit")
 
 
 def test_wrong_governance_permission_is_rejected(tmp_path):
     op = fixture(tmp_path)
     op["governance"]["authority"]["permissions"] = ["memory.read"]
-    assert_reject(op, tmp_path, "required permission is not granted")
+    assert_reject(op, tmp_path, "authority does not permit")
 
 
 def test_missing_shawn_representation_is_rejected(tmp_path):

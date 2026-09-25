@@ -11,16 +11,17 @@ from __future__ import annotations
 import json
 import re
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-CONTROL_PLANE = Path(__file__).resolve().parents[1] / "control-plane"
-if str(CONTROL_PLANE) not in sys.path:
-    sys.path.insert(0, str(CONTROL_PLANE))
-from governance_kernel import GovernanceKernel, GovernanceViolation  # noqa: E402
+GOVERNANCE = Path(__file__).resolve().parents[1] / "governance"
+if str(GOVERNANCE) not in sys.path:
+    sys.path.insert(0, str(GOVERNANCE))
+from governance_kernel import Authority, DecisionObject, Epistemic, Risk, VerificationPlan, evaluate  # noqa: E402
 
 SMART_NOTE_REQUEST_RE = re.compile(
-    r"\b(?:smart\s+note|smart-note|naya\s+note|note\s+this|make\s+(?:a\s+)?note|note\s+it|lock\s+(?:this|it)\s+in)\b",
+    r"(?:\bsmart[- ]note\s+(?:this|it|that)\b|\bnaya\s+note\s+this\b|\bnote\s+this\b|\bmake\s+(?:a\s+)?note\b|\bnote\s+it\b|\block\s+(?:this|it)\s+in\b)",
     re.IGNORECASE,
 )
 EVENT_RE = re.compile(r"^SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+$")
@@ -80,8 +81,58 @@ def _validate_governance_gate(operation: dict[str, Any]) -> list[str]:
     if not isinstance(decision, dict) or not isinstance(authority, dict):
         return ["canonical governance decision/authority is incomplete"]
     try:
-        GovernanceKernel().gate(decision, authority)
-    except GovernanceViolation as exc:
+        permissions = frozenset(str(x) for x in authority.get("permissions", []) if str(x).strip())
+        scopes = authority.get("scope", [])
+        scope = str(scopes[0] if isinstance(scopes, list) and scopes else scopes or "").strip()
+        risk = decision.get("risk") if isinstance(decision.get("risk"), dict) else {}
+        verification = decision.get("verification_plan", [])
+        if isinstance(verification, str):
+            verification = [verification]
+        stop_conditions = decision.get("stop_conditions", [])
+        if isinstance(stop_conditions, str):
+            stop_conditions = [stop_conditions]
+        auth = Authority(
+            authority_id=str(authority.get("authority_id", "")),
+            principal_id=str(authority.get("holder") or authority.get("actor") or ""),
+            purpose=str(authority.get("purpose", "")),
+            scope=scope,
+            granted_actions=permissions,
+            expires_at=authority.get("expires_at"),
+            revoked=bool(authority.get("revoked_at")),
+        )
+        dec = DecisionObject(
+            decision_id=str(decision.get("decision_id", "SMART-NOTE")),
+            mission=str(decision.get("mission", "smart-note-capture")),
+            actor_id=str(decision.get("actor") or authority.get("holder") or ""),
+            action=str(decision.get("action") or decision.get("required_permission") or "smart_note_capture"),
+            purpose=str(decision.get("purpose", "smart-note-capture")),
+            scope=scope,
+            current_truth=str(decision.get("current_truth", "canonical Smart Note capture requested")),
+            gap=str(decision.get("gap") or "canonical Smart Note capture must cross the canonical receiver"),
+            evidence=tuple(str(x) for x in decision.get("evidence", []) if str(x).strip()),
+            epistemic=frozenset({Epistemic.OBSERVED}),
+            consequence=str(decision.get("consequence", "smart-note mutation")),
+            reversible=bool(decision.get("reversible", True)),
+            risk=Risk(
+                uncertainty=int(risk.get("uncertainty", decision.get("uncertainty", 1))),
+                consequence=int(risk.get("consequence", 1)),
+                irreversibility=int(risk.get("irreversibility", decision.get("reversibility", 1))),
+            ),
+            alternatives=tuple(str(x) for x in decision.get("alternatives", []) if str(x).strip()),
+            expected_value=str((decision.get("value") or {}).get("responsible", True)),
+            required_permission=str(decision.get("required_permission", "")),
+            verification=VerificationPlan(
+                observation=str(verification[0] if verification else "read back canonical intelligence"),
+                success_criteria=str(verification[1] if len(verification) > 1 else "canonical IB/event lineage verified"),
+                stop_conditions=tuple(str(x) for x in stop_conditions if str(x).strip()),
+            ),
+            necessary_power=permissions,
+            requested_power=permissions,
+        )
+        result = evaluate(dec, auth, now=datetime.now(timezone.utc).isoformat())
+        if not result.allowed:
+            return [f"canonical governance gate rejected Smart Note mutation: {reason}" for reason in result.reasons]
+    except Exception as exc:
         return [f"canonical governance gate rejected Smart Note mutation: {exc}"]
     return []
 
@@ -102,6 +153,18 @@ def validate_smart_note_operation(
         errors.append("Smart Note request was not detected")
 
     event_id = str(operation.get("event_id", ""))
+    intelligent_block = operation.get("intelligent_block")
+    if not isinstance(intelligent_block, dict):
+        errors.append("canonical Intelligent Block identity is missing")
+        intelligent_block = {}
+    ib_id = str(intelligent_block.get("intelligent_block_id", ""))
+    if not re.fullmatch(r"IB-[0-9]{6}", ib_id):
+        errors.append("invalid intelligent_block.intelligent_block_id")
+    source_event_ids = intelligent_block.get("source_event_ids", [])
+    if isinstance(source_event_ids, str):
+        source_event_ids = [source_event_ids]
+    if event_id and event_id not in source_event_ids:
+        errors.append("Intelligent Block provenance does not preserve the canonical event lineage")
     if not EVENT_RE.match(event_id):
         errors.append("invalid operation.event_id")
 
@@ -162,7 +225,7 @@ def validate_smart_note_operation(
                 errors.append("canonical event is not registered in events/INDEX.json")
             elif event_path is not None:
                 expected = str(event_path.relative_to(root / ".naya" / "memory" / "events"))
-                if match.get("path") != expected:
+                if Path(str(match.get("path", ""))).as_posix() != Path(expected).as_posix():
                     errors.append("INDEX registration path does not match canonical event path")
         except SmartNoteEnforcementError as exc:
             errors.append(str(exc))
@@ -216,6 +279,7 @@ def enforce_smart_note_claim(operation: dict[str, Any], *, root: Path | str, rep
     return {
         "status": "VERIFIED",
         "operation": "SMART_NOTE",
+        "intelligent_block_id": operation["intelligent_block"]["intelligent_block_id"],
         "event_id": operation["event_id"],
         "pis_propagation": "SEPARATE_EVIDENCE_REQUIRED",
         "receipt": operation["receipt"],

@@ -22,6 +22,8 @@ def parse_time(value):
     if dt.tzinfo is None: raise ValueError('timestamp must include timezone')
     return dt.astimezone(timezone.utc)
 def now(): return datetime.now(timezone.utc)
+def load_json(path):
+    return json.loads(Path(path).read_text(encoding='utf-8'))
 def run_git(*args):
     try:return subprocess.run(['git',*args],cwd=ROOT,text=True,capture_output=True,check=True).stdout.strip()
     except (OSError,subprocess.CalledProcessError):return None
