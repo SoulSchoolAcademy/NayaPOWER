@@ -1,7 +1,7 @@
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-CONTRACT = ROOT / ".naya" / "SMART-NOTE-CONTRACT-V1.md"
+CONTRACT = ROOT / ".naya" / "codex" / "CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md"
 TX = ROOT / ".naya" / "runtime" / "smart_note_transaction.py"
 CAL = ROOT / ".naya" / "runtime" / "smart_note_calendar.py"
 RECEIVER = ROOT / "supabase" / "functions" / "v7-smart-note-canonical" / "index.ts"
@@ -10,19 +10,20 @@ SURFACE = ROOT / "NAYANET" / "HUB" / "src" / "app" / "SmartNoteSurface.tsx"
 
 CANONICAL_HEADINGS = [
     "IN A NUTSHELL",
-    "HUMAN NOTE",
-    "CHILD NOTE",
-    "GRANDMA NOTE",
-    "NAYA NOTE",
-    "MACHINE NOTE",
-    "LEARNING LESSON",
-    "WHAT IT MEANS",
-    "HOW IT CONNECTS",
-    "HOW TO APPLY IT",
-    "WHAT'S IN IT FOR THEM / YOU / US",
-    "EVIDENCE / SMART LINKS",
-    "CURRENT STATE",
-    "ONE NEXT ACTION",
+    "DATE / TIME",
+    "WHAT",
+    "WHY IT MATTERS",
+    "HUMAN",
+    "CHILD",
+    "GRANDMA",
+    "NAYA",
+    "MACHINE",
+    "WHAT WE LEARNED",
+    "CONNECTIONS",
+    "HOW TO APPLY",
+    "WHAT IT ULTIMATELY MEANS",
+    "WHAT'S IN IT FOR YOU / US",
+    "NEXT ACTION",
 ]
 
 
@@ -33,7 +34,7 @@ def test_one_canonical_contract_declares_smart_note_equals_intelligent_block():
     positions = [text.index("## " + heading) for heading in CANONICAL_HEADINGS]
     assert positions == sorted(positions)
     assert "NayaPOWER/SMART-NOTES/YYYY/MM/DD/" in text
-    assert ".naya/memory/notes/YYYY/MM/DD/" in text
+    assert ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md" in text
 
 
 def test_runtime_writer_uses_only_canonical_perspectives_and_schema():
