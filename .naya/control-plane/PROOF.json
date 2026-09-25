@@ -60,9 +60,9 @@
   "freshness_rule": "Recorded runtime/policy evidence is CURRENT when the exact claim-relevant source paths match the deployed/tested source identity and the evidence artifact remains valid. Full repository HEAD equality is not required when the claim scope excludes unrelated control-plane or documentation changes; the source-scope identity must be recorded explicitly.",
   "current_evidence": {
     "brain_rehabilitation_2026_09_25": {
-      "status": "REPAIRED_VERIFICATION_PENDING",
+      "status": "VERIFIED_REPOSITORY_SCOPE_BEHAVIORAL_BOUNDARY_OPEN",
       "claim_type": "SOURCE_AND_ENFORCEMENT",
-      "source_head": "a9b2c5b5bdea487a0233f9f54c233dd351f3973f",
+      "source_head": "b490cb074f0917377bba73d3d6a5a3f80345595d",
       "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
       "evidence": [
         "Repository-side local IB allocator removed.",
@@ -71,7 +71,7 @@
         "Duplicate contract projections were demoted to non-authoritative status.",
         "Smart Note enforcement now requires the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE perspectives."
       ],
-      "test_execution": "UNKNOWN"
+      "test_execution": "VERIFIED_78_FOCUSED_TESTS"
     },
     "canonical_production_parity": {
       "status": "PRODUCTION_PROVEN",
