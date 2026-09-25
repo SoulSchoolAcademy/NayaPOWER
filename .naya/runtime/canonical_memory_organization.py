@@ -35,7 +35,7 @@ def audit(root: Path = ROOT) -> list[str]:
         missing = [h for h in HEADINGS if "## "+h not in text]
         if missing: errors.append("missing Smart Note headings in "+rel+": "+", ".join(missing))
         match = re.search(r"\*\*Intelligent Block ID:\*\*\s*(IB-\d{6})", text)
-        expected = rel.split("/")[8]
+        expected = rel.split("/")[9]
         if not match or match.group(1) != expected: errors.append("IB identity/path mismatch: "+rel)
     for path in (root / ".naya" / "memory").rglob("smart-note.md"):
         rel = path.relative_to(root).as_posix()
