@@ -668,14 +668,16 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
     if (existing.data.metadata?.checkpoint_id !== checkpointId || existingSources.join("|") !== sourceEventIds.join("|")) {
       throw new Error("CHECKPOINT_IDENTITY_CONFLICT");
     }
+    const existingReceiptId=String(existing.data.receipt_id||"").trim();
+    if(!existingReceiptId)throw new Error("CHECKPOINT_RECEIPT_MISSING");
     return {
       schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
       status: "CHECKPOINT_VERIFIED",
       replayed: true,
       checkpoint: existing.data,
       source_events: [],
-      receipt: null,
-      rule: "Checkpoint replay returns the original checkpoint identity."
+      receipt: {id:existingReceiptId,receipt_id:existingReceiptId},
+      rule: "Checkpoint replay returns the original checkpoint identity and receipt."
     };
   }
 
@@ -731,10 +733,11 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
     body.authority_grant_id ? {authority_id:String(body.authority_grant_id),actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"} : null
   );
 
+  const persistedCheckpoint=receipt?.event||event;
   return {
     schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
     status: "CHECKPOINT_VERIFIED",
-    checkpoint: event,
+    checkpoint: persistedCheckpoint,
     source_events: source.data ?? [],
     receipt,
     rule: "Checkpoint persistence does not by itself prove learning; later retrieval and behavior change are required."
