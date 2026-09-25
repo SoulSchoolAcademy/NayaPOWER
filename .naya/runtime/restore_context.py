@@ -79,7 +79,7 @@ def memory_snapshot(query,at,limit,principal_id=None,scope=None,project=None,pri
         target_date=at.date()
         candidates=[item for item in candidates if item.get('date') and item['date'] <= target_date.isoformat()]
     selected=candidates[:limit]
-    authorized=load_canonical_ibs(root=ROOT)
+    authorized=retrieve_canonical_ibs('', limit=10000, root=ROOT, principal_id=principal_id, scope=scope, project=project, principal_project=principal_project, grants=grants)
     if at is not None:
         authorized=[item for item in authorized if item.get('date') and item['date'] <= at.date().isoformat()]
     counts={}
