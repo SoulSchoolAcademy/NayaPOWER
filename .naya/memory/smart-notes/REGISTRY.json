@@ -21,5 +21,7 @@
       "topic": "superbrain-scorecard",
       "status": "CANONICAL"
     }
-  ]
+  ],
+  "identity_cursor": 649,
+  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks intelligent_block_id high-water mark verified 2026-09-24"
 }
