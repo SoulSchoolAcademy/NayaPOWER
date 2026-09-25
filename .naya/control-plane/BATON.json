@@ -19,7 +19,7 @@
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
     "block_next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
-    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
+    "canonical_hub_source_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c"
   },
   "current_state": {
     "rule": "Resolve live Git HEAD at execution time; STATE.json owns canonical operational current state.",
