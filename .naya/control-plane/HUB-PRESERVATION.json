@@ -22,13 +22,14 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "5ad379db882e87c4dc51d7e2381c9238d755cd6a",
+    "main_observed_head": "e293975b8e65d2648aa5b8633aaef7ae46e2442c",
     "checkpoint_branch": "main",
-    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_RELEASE_GATE_REPAIR",
+    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_RELEASE_GATE",
     "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
     "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
     "recovery_entrypoint_blob_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
-    "advancement_reason": "Restore the required preservation gate to current main so the governed Cloudflare release workflow can verify exact canonical Hub source identity before deployment. This records source authority only; live production parity remains unverified until the authorized deployment workflow completes and independent browser verification passes."
+    "advancement_reason": "Advance the preservation checkpoint to the live main commit after the governed release gate was restored. The canonical Hub source blob remains 6a61b2c775d4e4b7a04721606813ec0031870399; live production parity remains unverified until the release workflow completes and independent browser verification passes.",
+    "recorded_at": "2026-09-25T06:27:00.000Z"
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
