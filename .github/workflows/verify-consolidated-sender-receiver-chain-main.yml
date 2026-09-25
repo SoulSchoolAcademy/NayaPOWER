@@ -66,6 +66,13 @@ jobs:
             const receiverEventId = String(bj.receiver_event_id);
             await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/feed?event_id='+encodeURIComponent(receiverEventId)+'&stream=personal&sender_receiver='+R,{waitUntil:'networkidle',timeout:60000});
             await page.waitForFunction(()=>!!window.NayaAssistantRuntime?.snapshot?.().authenticated,{timeout:30000});
+            const browserSession=await page.evaluate(async({accessToken,refreshToken})=>{
+              const result=await window.__NayaNETSupabaseClient.auth.setSession({access_token:accessToken,refresh_token:refreshToken});
+              return {ok:!result.error,error:result.error?.message||null,authenticated:!!result.data?.session};
+            },{accessToken:a.access_token,refreshToken:a.refresh_token});
+            console.log('HUB_BROWSER_SESSION='+JSON.stringify(browserSession));
+            if(!browserSession.ok||!browserSession.authenticated)throw Error('HUB_BROWSER_SESSION_SET_FAILED:'+JSON.stringify(browserSession));
+            await page.evaluate(()=>window.NayaAssistantRuntime.init());
             const expectedStatement='Main sender consolidated proof '+R;
             const feedProjection=await page.evaluate(async({receiverEventId,expectedStatement})=>{
               const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:100,before:null});
