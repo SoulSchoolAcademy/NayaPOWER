@@ -102,7 +102,7 @@ jobs:
             await activityTab.waitFor({state:'visible',timeout:30000});
             await activityTab.click();
             await page.waitForFunction(()=>document.querySelector('.feedNav button[data-feed="activity"]')?.classList.contains('active'),{timeout:30000});
-            const activityBoard=await page.locator('.feed .blocks [data-event-id]').filter({has:page.locator('[data-event-id="'+eventId+'"]')}).first().evaluate(node=>({event_id:node.getAttribute('data-event-id'),lensNote:document.querySelector('.feedNav button[data-feed="activity"]')?.textContent||''})).catch(async()=>({event_id:await page.locator('.feed .blocks [data-event-id]').first().getAttribute('data-event-id'),lensNote:await page.locator('.feedNav button[data-feed="activity"]').textContent()}));
+            const activityBoard=await page.locator('.feed .blocks [data-event-id="'+eventId+'"]').first().evaluate(node=>({event_id:node.getAttribute('data-event-id'),lensNote:document.querySelector('.feedNav button[data-feed="activity"]')?.textContent||''}));
             if(activityBoard.event_id!==eventId)throw new Error('ACTIVITY_EVENT_ID_MISMATCH:'+JSON.stringify({eventId,activityBoard}));
             if(!activityBoard.lensNote.toUpperCase().includes('ACTIVITY'))throw new Error('ACTIVITY_LENS_NOT_ACTIVE:'+JSON.stringify(activityBoard));
             mark('ACTIVITY_EXACT_EVENT_RENDERED',{eventId,activityBoard});
