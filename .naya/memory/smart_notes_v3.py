@@ -164,10 +164,15 @@ def load_canonical_ibs(root=None):
             'category': entry.get('category'),
             'topic': entry.get('topic'),
             'status': entry.get('status', 'CANONICAL'),
+            'owner': entry.get('owner'),
+            'scope': entry.get('scope'),
+            'project': entry.get('project'),
+            'permissions': entry.get('permissions'),
             'content': path.read_text(encoding='utf-8'),
             'source': {
                 'registry': '.naya/memory/smart-notes/REGISTRY.json',
                 'intelligent_block_id': ib_id,
+                'provenance': {'source_event_id': entry.get('source_event_id')} if entry.get('source_event_id') else {},
             },
         })
     return objects
@@ -177,13 +182,38 @@ def _canonical_ib_text(obj):
         'intelligent_block_id', 'date', 'category', 'topic', 'status', 'content'
     ))
 
-def retrieve_canonical_ibs(query, limit=10, root=None):
-    """Retrieve canonical IBs by meaning; callers never need a projection filename."""
+def retrieve_canonical_ibs(
+    query,
+    limit=10,
+    root=None,
+    principal_id=None,
+    scope=None,
+    project=None,
+    principal_project=None,
+    grants=(),
+):
+    """Retrieve canonical IBs by meaning after a hard authorization boundary.
+
+    The registry is the identity/index authority. Authorization metadata is also
+    resolved from the registry entry; event lineage and retrieved content never
+    participate in authorization.
+    """
     q = expanded_tokens(query)
     if not q:
         return []
+    principal = Principal(
+        principal_id=principal_id or '',
+        scope=scope,
+        project=principal_project,
+        grants=frozenset(grants or ()),
+    )
+    request = AuthorizationRequest(principal=principal, scope=scope, project=project)
+    authorized = [
+        obj for obj in load_canonical_ibs(root=root)
+        if authorize(request, obj)
+    ]
     ranked = []
-    for obj in load_canonical_ibs(root=root):
+    for obj in authorized:
         doc = Counter(tokens(_canonical_ib_text(obj)))
         score = bm25(q, doc, {term: 1.0 for term in doc}, max(1.0, sum(doc.values())))
         query_terms = set(tokens(query))
