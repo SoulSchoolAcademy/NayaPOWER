@@ -23,3 +23,24 @@ def test_cold_restore_uses_canonical_ib_runtime():
     assert "from smart_notes_v3 import" in restore
     assert "memory_runtime" not in restore
     assert "retrieve_canonical_ibs(" in restore
+
+def test_active_memory_surface_cannot_reintroduce_local_ib_allocation_or_legacy_registry():
+    active_files = [
+        path for path in (ROOT / ".naya" / "memory").iterdir()
+        if path.is_file()
+    ]
+    forbidden = ("_allocate_ib_id", "identity_cursor", "IB-ID-REGISTRY.json")
+    violations = []
+    for path in active_files:
+        body = path.read_text(encoding="utf-8")
+        for token in forbidden:
+            if token in body:
+                violations.append(f"{path.name}:{token}")
+    assert not violations, "active memory surface contains forbidden identity authority: " + ", ".join(violations)
+
+
+def test_canonical_registry_declares_live_receiver_identity_authority():
+    registry = json.loads((ROOT / ".naya" / "memory" / "smart-notes" / "REGISTRY.json").read_text(encoding="utf-8"))
+    assert registry["identity_authority"] == "live canonical receiver only"
+    assert "identity_cursor" not in registry
+
