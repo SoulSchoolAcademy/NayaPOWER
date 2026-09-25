@@ -57,83 +57,76 @@ jobs:
 
           const { chromium } = await import('playwright');
           const browser = await chromium.launch({headless:true});
-          try {
-            const context = await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});
-            await context.addInitScript(({session})=>{
-              localStorage.setItem('nayanet.supabase.auth',JSON.stringify(session));
-            },{session:{access_token:a.access_token,refresh_token:a.refresh_token,user:a.user}});
-            const page = await context.newPage();
-            const receiverEventId = String(bj.receiver_event_id);
-            await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/feed?event_id='+encodeURIComponent(receiverEventId)+'&stream=personal&sender_receiver='+R,{waitUntil:'networkidle',timeout:60000});
-            await page.waitForFunction(()=>!!window.NayaAssistantRuntime?.snapshot?.().authenticated,{timeout:30000});
-            const browserSession=await page.evaluate(async({accessToken,refreshToken})=>{
-              const result=await window.__NayaNETSupabaseClient.auth.setSession({access_token:accessToken,refresh_token:refreshToken});
-              return {ok:!result.error,error:result.error?.message||null,authenticated:!!result.data?.session};
-            },{accessToken:a.access_token,refreshToken:a.refresh_token});
-            console.log('HUB_BROWSER_SESSION='+JSON.stringify(browserSession));
-            if(!browserSession.ok||!browserSession.authenticated)throw Error('HUB_BROWSER_SESSION_SET_FAILED:'+JSON.stringify(browserSession));
-            await page.evaluate(()=>window.NayaAssistantRuntime.init());
-            const expectedStatement='Main sender consolidated proof '+R;
-            const feedProjection=await page.evaluate(async({receiverEventId,expectedStatement})=>{
-              const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:100,before:null});
-              const items=Array.isArray(feed?.items)?feed.items:[];
-              const exact=items.find(item=>String(item?.event_id||'')===receiverEventId);
-              return {
-                item_count:items.length,
-                receiver_event_present:!!exact,
-                receiver_item:exact?{
-                  event_id:exact.event_id,
-                  title:exact.title,
-                  source:exact.source,
-                  metadata:exact.metadata||null,
-                  content:String(exact.content||'').slice(0,4000),
-                  statement_present:String(exact.content||'').includes(expectedStatement)
-                }:null
-              };
-            },{receiverEventId,expectedStatement});
-            console.log('HUB_FEED_PROJECTION='+JSON.stringify(feedProjection));
-            if(!feedProjection.receiver_event_present) throw Error('RUNTIME_SMART_FEED_RECEIVER_EVENT_MISSING:'+JSON.stringify(feedProjection));
+          const context = await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});
+          const page = await context.newPage();
 
-            await page.waitForFunction(({statement,eventId})=>{
-              const body=(document.body.innerText||'');
-              if(body.includes(statement)) return true;
-              const html=document.documentElement.outerHTML||'';
-              return html.includes(eventId);
-            },{statement:expectedStatement,eventId:receiverEventId},{timeout:30000});
-            const exact = await page.evaluate(({id,statement})=>{
-              const all=[...document.querySelectorAll('*')];
-              const textMatches=all.filter(x=>(x.innerText||'').includes(statement)).slice(-12).map(x=>({
-                tag:x.tagName,
-                id:x.id||null,
-                classes:typeof x.className==='string'?x.className:null,
-                text:(x.innerText||'').slice(0,1600),
-                attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}
-              }));
-              const eventMatches=all.filter(x=>[x.getAttribute('data-event-id'),x.getAttribute('data-source-event-id'),x.getAttribute('data-intelligence-id'),x.getAttribute('data-packet-id'),x.getAttribute('data-receipt-id')].includes(id)).map(x=>({
-                tag:x.tagName,
-                id:x.id||null,
-                classes:typeof x.className==='string'?x.className:null,
-                text:(x.innerText||'').slice(0,1600),
-                attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}
-              }));
-              return {
-                url:location.href,
-                statement,
-                receiver_event_id:id,
-                authenticated:!!window.NayaAssistantRuntime?.snapshot?.().authenticated,
-                statement_match_count:textMatches.length,
-                text_matches:textMatches,
-                event_identity_matches:eventMatches
-              };
-            },{id:receiverEventId,statement:expectedStatement});
-            if(!exact.authenticated) throw Error('EXACT_RENDER_AUTH_FAILED');
-            if(exact.statement_match_count<1) throw Error('EXACT_PACKET_RENDER_STATEMENT_NOT_FOUND:'+JSON.stringify(exact));
-            console.log('EXACT_PACKET_RENDER='+JSON.stringify(exact));
-            await context.close();
-          } finally {
-            await browser.close();
-          }
+          const alias=('sendergolden'+R+'-'+crypto.randomBytes(3).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
+          await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/?name='+encodeURIComponent('Naya Sender Golden')+'&alias='+encodeURIComponent(alias),{waitUntil:'domcontentloaded',timeout:60000});
+          await page.waitForFunction(()=>!!window.NayaNETNameFirstAuth?.establish,{timeout:30000});
+          const established=await page.evaluate(async({alias})=>window.NayaNETNameFirstAuth.establish({name:'Naya Sender Golden',alias}),{alias});
+          if(!established?.authenticated||!established?.userId)throw Error('BROWSER_NAME_FIRST_AUTH_FAILED');
+          const browserSession=await page.evaluate(async()=>{const {data,error}=await window.__NayaNETSupabaseClient.auth.getSession();return{session:data?.session||null,error:error?.message||null}});
+          if(browserSession.error||!browserSession.session?.access_token||!browserSession.session?.user?.id)throw Error('BROWSER_SESSION_UNAVAILABLE');
 
+          const bindingBrowser=await page.evaluate(async({runId})=>{
+            const c=window.__NayaNETSupabaseClient;
+            const r=await c.rpc('nayanet_issue_bridge_owner_binding',{
+              p_repository:'SoulSchoolAcademy/NayaPOWER',
+              p_workflow_ref:'SoulSchoolAcademy/NayaPOWER/.github/workflows/verify-consolidated-sender-receiver-chain-main.yml@refs/heads/main',
+              p_run_id:runId,
+              p_expires_at:new Date(Date.now()+600000).toISOString()
+            });
+            return{data:r.data,error:r.error?.message||null};
+          },{runId:R});
+          if(bindingBrowser.error||!bindingBrowser.data?.owner_binding_token)throw Error('OWNER_BINDING_BROWSER_FAILED:'+JSON.stringify(bindingBrowser));
+          const userId=browserSession.session.user.id;
+          console.log('BROWSER_OWNER_BOUND='+JSON.stringify({userId,alias,hasBinding:true}));
+
+          const packetId=crypto.randomUUID(), idem='consolidated-browser-owner-'+R, sourceRef='github://SoulSchoolAcademy/NayaPOWER/main/'+R;
+          const payload={protocol:'NAYANET_PROJECT_INTELLIGENCE_BRIDGE_V1',packet_id:packetId,project_id:'NayaNET',source_ref:sourceRef,content_hash:'pending',operating_context:{project:'NayaNET',current_next_action:'Consolidated sender -> receiver -> persistence -> index -> projection -> retrieve -> render -> ACK'},intelligence:{statement:'Main sender consolidated proof '+R},provenance:{repository:'SoulSchoolAcademy/NayaPOWER',branch:'main',run_id:R},privacy:{default_visibility:'PRIVATE'},idempotency_key:idem,owner_id:userId,sender:{repository:'SoulSchoolAcademy/NayaPOWER'},receiver:{canonical_source:'NAYANET/HUB/index.html'},project_intelligence_reconstruction:{current:{mission:'Persistent Project Intelligence for NayaNET'}}};
+          payload.content_hash=crypto.createHash('sha256').update(JSON.stringify(payload)).digest('hex');
+          const oidcUrl=process.env.ACTIONS_ID_TOKEN_REQUEST_URL+'&audience=nayanet-project-intelligence-bridge';
+          const oidc=await fetch(oidcUrl,{headers:{Authorization:'bearer '+process.env.ACTIONS_ID_TOKEN_REQUEST_TOKEN}});
+          const oj=await oidc.json(); if(!oidc.ok||!oj.value)throw Error('OIDC_TOKEN_FAILED');
+          const br=await fetch(B+'/functions/v1/nayanet-project-intelligence-bridge',{method:'POST',headers:{authorization:'Bearer '+oj.value,'X-Naya-Owner-Binding':bindingBrowser.data.owner_binding_token,'content-type':'application/json'},body:JSON.stringify(payload)});
+          const bj=await br.json(); console.log('BRIDGE='+JSON.stringify(bj));
+          if(br.status!==200||!['COMPLETED','ACCEPTED'].includes(bj.status))throw Error('SENDER_RECEIVER_FAILED');
+          if(!bj.persisted||!bj.indexed||!bj.projected)throw Error('PERSIST_INDEX_PROJECT_FAILED');
+
+          const [rs,rb]=await post('nayanet-project-intelligence-retrieve',browserSession.session.access_token,{query:bj.receiver_event_id});
+          console.log('RETRIEVE='+JSON.stringify(rb));
+          if(rs!==200||!rb.ok||!(rb.result?.events?.length))throw Error('RETRIEVAL_FAILED');
+
+          const expectedStatement='Main sender consolidated proof '+R;
+          const feedProjection=await page.evaluate(async({receiverEventId,expectedStatement})=>{
+            const feed=await window.NayaAssistantRuntime.smartFeed({stream:'personal',limit:100,before:null});
+            const items=Array.isArray(feed?.items)?feed.items:[];
+            const exact=items.find(item=>String(item?.event_id||'')===receiverEventId);
+            return {item_count:items.length,receiver_event_present:!!exact,receiver_item:exact?{event_id:exact.event_id,title:exact.title,source:exact.source,metadata:exact.metadata||null,content:String(exact.content||'').slice(0,4000),statement_present:String(exact.content||'').includes(expectedStatement)}:null};
+          },{receiverEventId:bj.receiver_event_id,expectedStatement});
+          console.log('HUB_FEED_PROJECTION='+JSON.stringify(feedProjection));
+          if(!feedProjection.receiver_event_present)throw Error('RUNTIME_SMART_FEED_RECEIVER_EVENT_MISSING:'+JSON.stringify(feedProjection));
+
+          await page.waitForFunction(({statement,eventId})=>{
+            const body=document.body.innerText||'';
+            return body.includes(statement)||(document.documentElement.outerHTML||'').includes(eventId);
+          },{statement:expectedStatement,eventId:bj.receiver_event_id},{timeout:30000});
+
+          const exact=await page.evaluate(({id,statement})=>{
+            const all=[...document.querySelectorAll('*')];
+            const textMatches=all.filter(x=>(x.innerText||'').includes(statement)).slice(-12).map(x=>({tag:x.tagName,id:x.id||null,classes:typeof x.className==='string'?x.className:null,text:(x.innerText||'').slice(0,1600),attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}}));
+            const identityMatches=all.filter(x=>[x.getAttribute('data-event-id'),x.getAttribute('data-source-event-id'),x.getAttribute('data-intelligence-id'),x.getAttribute('data-packet-id'),x.getAttribute('data-receipt-id')].includes(id)).map(x=>({tag:x.tagName,id:x.id||null,text:(x.innerText||'').slice(0,1600),attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}}));
+            return {url:location.href,receiver_event_id:id,authenticated:!!window.NayaAssistantRuntime?.snapshot?.().authenticated,statement_match_count:textMatches.length,text_matches:textMatches,identity_matches:identityMatches};
+          },{id:bj.receiver_event_id,statement:expectedStatement});
+          if(!exact.authenticated)throw Error('EXACT_RENDER_AUTH_FAILED');
+          if(exact.statement_match_count<1)throw Error('EXACT_PACKET_RENDER_STATEMENT_NOT_FOUND:'+JSON.stringify(exact));
+          console.log('EXACT_PACKET_RENDER='+JSON.stringify(exact));
+
+          const [as,ab]=await post('nayanet-project-intelligence-ack',browserSession.session.access_token,{packet_id:bj.packet_id,retrieved:true,rendered:true,retrieval_evidence:['retrieve:'+bj.receiver_event_id],render_evidence:['hub-browser-exact-statement-and-identity:'+bj.receiver_event_id]});
+          console.log('ACK='+JSON.stringify(ab));
+          if(as!==200||!ab.ok||ab.ack?.retrieved!==true||ab.ack?.rendered!==true)throw Error('ACK_FAILED');
+          await context.close();
+          await browser.close();
           console.log('CHAIN_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_SENDER_RECEIVER_CHAIN_PROOF_V1',run_id:R,sender:true,receiver:true,persisted:true,indexed:true,projected:true,retrieved:true,hub_render_surface_observed:true,acknowledged:true,exact_packet_render:'PROVEN',status:'PRODUCTION_PROVEN'}));
           EOF
           node chain.mjs
