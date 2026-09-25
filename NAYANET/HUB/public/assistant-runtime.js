@@ -195,11 +195,25 @@ window.addEventListener('load',async()=>{try{await init()}catch(e){state.persist
    if(!source)throw Error('APPLICATION_SOURCE_REQUIRED');
    return write('APPLY',source.event_id,`Application recorded for preserved intelligence: ${source.title||source.event_id}.\n${String(source.content||'').slice(0,1200)}`,{source_event_id:source.event_id,application_state:'REQUESTED'});
  }
- async function verify(sourceId){
-   const all=await events();const candidates=all.filter(e=>String(e?.metadata?.stage||'').toUpperCase()==='APPLY' || e.event_id===sourceId);
+ async function verify(sourceId, observedResult, evidenceRef){
+   const all=await events();
+   const candidates=all.filter(e=>String(e?.metadata?.stage||'').toUpperCase()==='APPLY' || e.event_id===sourceId);
    if(!candidates.length)throw Error('NO_APPLICATION_TO_VERIFY');
    const source=candidates[0];
-   return write('VERIFY',source.event_id,`Verification checkpoint recorded for application ${source.event_id}. The event is persisted in the canonical cognition boundary; downstream success must be established by observed evidence before being promoted beyond this checkpoint.`,{source_event_id:source.event_id,verification_state:'VERIFIED',evidence_state:'RUNTIME-PROVEN'});
+   const observed=String(observedResult||'').trim();
+   const evidence=String(evidenceRef||'').trim();
+   if(!observed)throw Error('OBSERVED_RESULT_REQUIRED');
+   if(!evidence)throw Error('INDEPENDENT_EVIDENCE_REF_REQUIRED');
+   return write('VERIFY',source.event_id,
+     `Outcome evidence recorded for application ${source.event_id}. Independent verification remains a separate acceptance boundary.`,
+     {
+       source_event_id:source.event_id,
+       expected_result:source.metadata?.expected_result||null,
+       observed_result:observed,
+       evidence_ref:evidence,
+       verification_state:'PENDING_INDEPENDENT_VERIFICATION',
+       evidence_state:'OBSERVED'
+     });
  }
  function style(){
    if(document.getElementById('naya-receiver-module-style'))return;
