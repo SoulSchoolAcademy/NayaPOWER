@@ -22,7 +22,7 @@ class SmartBrainV3Tests(unittest.TestCase):
 
     def test_hybrid_retrieval_returns_verified_context(self):
         events = [
-            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'permissions': {'access': 'PRIVATE'}, 'title': 'MAXESS scoring Continue terminal', 'summary': 'verified context', 'effective_at': '2026-09-09T10:00:00-07:00', 'status': 'ACTIVE', 'verification': {'status': 'VERIFIED'}, 'representations': [{'id': 'SN-20260909-100000-a', 'content': 'verified context'}]}),
+            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'owner_id': 'shawn', 'permissions': {'access': 'PRIVATE'}, 'title': 'MAXESS scoring Continue terminal', 'summary': 'verified context', 'effective_at': '2026-09-09T10:00:00-07:00', 'status': 'ACTIVE', 'verification': {'status': 'VERIFIED'}, 'representations': [{'id': 'SN-20260909-100000-a', 'content': 'verified context'}]}),
         ]
         original_load = brain.load_events
         try:
@@ -35,7 +35,7 @@ class SmartBrainV3Tests(unittest.TestCase):
 
     def test_alias_or_concept_retrieval(self):
         events = [
-            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'permissions': {'access': 'PRIVATE'}, 'title': 'Smart Brain Memory Architecture', 'summary': 'CIS continuity', 'effective_at': '2026-09-09T10:00:00-07:00', 'status': 'ACTIVE', 'representations': [{'id': 'SN-20260909-100001-a', 'content': 'memory architecture CIS'}]}),
+            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'owner_id': 'shawn', 'permissions': {'access': 'PRIVATE'}, 'title': 'Smart Brain Memory Architecture', 'summary': 'CIS continuity', 'effective_at': '2026-09-09T10:00:00-07:00', 'status': 'ACTIVE', 'representations': [{'id': 'SN-20260909-100001-a', 'content': 'memory architecture CIS'}]}),
         ]
         original_load = brain.load_events
         try:
@@ -49,7 +49,7 @@ class SmartBrainV3Tests(unittest.TestCase):
 
     def test_daily_report_is_source_linked(self):
         events = [
-            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'permissions': {'access': 'PRIVATE'}, 'title': 'Daily authorized event', 'effective_at': '2026-08-25T10:00:00-07:00', 'status': 'ACTIVE', 'representations': [{'id': 'SN-20260825-100000-a', 'content': 'lesson'}]}),
+            (Path('A.json'), {'event_id': 'A-1', 'scope': 'personal', 'project': 'A', 'owner_id': 'shawn', 'permissions': {'access': 'PRIVATE'}, 'title': 'Daily authorized event', 'effective_at': '2026-08-25T10:00:00-07:00', 'status': 'ACTIVE', 'representations': [{'id': 'SN-20260825-100000-a', 'content': 'lesson'}]}),
         ]
         original_load = brain.load_events
         try:

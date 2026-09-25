@@ -95,18 +95,15 @@ def authorize(request: AuthorizationRequest, event: Mapping) -> bool:
     if not principal_project:
         return False
 
-    grants = explicit_grants(event)
+    # Authority is supplied by the caller's authenticated principal, never by
+    # event lineage or event content. Event permissions describe stored visibility;
+    # they cannot mint authorization for the requesting principal.
+    grants = principal.grants
     same_scope = requested_scope == stored_scope
     same_project = principal_project == stored_project
-    principal_granted = principal_id in grants
-    principal_scope_granted = f"scope:{stored_scope}" in principal.grants
-    principal_project_granted = f"project:{stored_project}" in principal.grants
-    event_scope_granted = f"scope:{requested_scope}" in grants
-    event_project_granted = f"project:{stored_project}" in grants
-
-    explicit_scope_grant = principal_scope_granted or event_scope_granted
-    explicit_project_grant = principal_project_granted or event_project_granted
-    explicit_principal_grant = principal_granted
+    explicit_scope_grant = f"scope:{stored_scope}" in grants
+    explicit_project_grant = f"project:{stored_project}" in grants
+    explicit_principal_grant = principal_id in grants
 
     # A requested project must match the caller's identity project unless the
     # caller has an explicit grant for that project.
@@ -115,8 +112,12 @@ def authorize(request: AuthorizationRequest, event: Mapping) -> bool:
 
     scope_allowed = same_scope or explicit_scope_grant
     project_allowed = same_project or explicit_project_grant or explicit_principal_grant
+    owner_id = _norm(event.get("owner_id") or event.get("owner"))
+    owner_allowed = principal_id == owner_id or explicit_principal_grant
 
-    if access in (Access.PRIVATE, Access.SHARED, Access.PUBLIC):
+    if access == Access.PRIVATE:
+        return owner_allowed and scope_allowed and project_allowed
+    if access in (Access.SHARED, Access.PUBLIC):
         return scope_allowed and project_allowed
 
     return False

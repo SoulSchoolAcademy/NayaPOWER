@@ -170,6 +170,7 @@ def load_canonical_ibs(root=None):
             'permissions': entry.get('permissions'),
             'authority': entry.get('authority'),
             'applicable_scope': entry.get('applicable_scope'),
+            'learning_state': entry.get('learning_state'),
             'content': path.read_text(encoding='utf-8'),
             'source': {
                 'registry': '.naya/memory/smart-notes/REGISTRY.json',

@@ -1,4 +1,4 @@
-from pathlib import Path
+﻿from pathlib import Path
 import sys
 import unittest
 
@@ -42,7 +42,7 @@ class CanonicalIBRetrievalTests(unittest.TestCase):
 
     def test_authorized_owner_scope_retrieval_succeeds_and_preserves_identity_provenance(self):
         root = self._fixture_root(scope="personal", project="NayaNET", permissions={"access": "PRIVATE"}, content="canonical owner intelligence")
-        results = brain.retrieve_canonical_ibs("canonical owner intelligence", limit=5, root=root, principal_id="owner", scope="personal", project="NayaNET")
+        results = brain.retrieve_canonical_ibs("canonical owner intelligence", limit=5, root=root, principal_id="owner", scope="personal", project="NayaNET", principal_project="NayaNET")
         self.assertEqual(len(results), 1)
         self.assertEqual(results[0]["intelligent_block_id"], "IB-999999")
         self.assertEqual(results[0]["source"]["registry"], ".naya/memory/smart-notes/REGISTRY.json")
