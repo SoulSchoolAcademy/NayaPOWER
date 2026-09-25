@@ -27,11 +27,15 @@ CIS_PATH = CIS_ROOT / "CIS.json"
 RECEIPTS_ROOT = CIS_ROOT / "transactions"
 PIS_PATH = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
 
+# Canonical Smart Note / Intelligent Block human contract.
+# "grammar" remains accepted only as a legacy input field and is never emitted
+# as a canonical Smart Note perspective.
 REQUIRED = (
-    "in_a_nutshell", "child", "grammar", "human", "naya", "machine",
-    "learning", "why_it_matters", "how_to_use", "value", "evidence",
-    "current_state", "next_action",
+    "in_a_nutshell", "human", "child", "grandma", "naya", "machine",
+    "learning", "why_it_matters", "how_it_connects", "how_to_use", "value",
+    "evidence", "current_state", "next_action",
 )
+CANONICAL_SCHEMA = "NAYANET_INTELLIGENT_BLOCK_V1"
 
 
 def utc_now() -> str:
@@ -59,84 +63,45 @@ def canonical_smart_note_path(timestamp: str, topic: str, root: Path | None = No
 def validate_note(note: dict[str, Any]) -> None:
     missing = [k for k in REQUIRED if not str(note.get(k, "")).strip()]
     if missing:
-        raise ValueError("Smart Note missing required perspectives: " + ", ".join(missing))
+        raise ValueError("Canonical Smart Note contract missing: " + ", ".join(missing))
     if not isinstance(note["evidence"], list) or not note["evidence"]:
         raise ValueError("Smart Note requires at least one evidence item")
     if isinstance(note["next_action"], list):
         raise ValueError("Smart Note Next Action must be one executable action, not a list")
-
+    if not CANONICAL_SCHEMA:
+        raise ValueError("Canonical Smart Note Intelligent Block schema is unavailable")
 
 def render_note(note: dict[str, Any]) -> str:
     evidence = "\n".join(f"- {item}" for item in note["evidence"])
-    return f"""# SMART NOTE — {note["topic"]}
-
-**Timestamp:** {note["timestamp"]}
-**Smart Note ID:** `{note["id"]}`
-**Status:** CANONICAL / TRANSACTIONALLY PROJECTED
-**Type:** Durable intelligence
-**Parent:** NayaPOWER Superbrain
-
-## In a Nutshell
-
-{note["in_a_nutshell"]}
-
-## Child / Derived Note
-
-{note["child"]}
-
-## Grammar Note
-
-{note["grammar"]}
-
-## Human Note
-
-{note["human"]}
-
-## Naya Note
-
-{note["naya"]}
-
-## Machine Note
-
-{note["machine"]}
-
-## Learning Lesson / Adaptive Learning
-
-{note["learning"]}
-
-## Why It Matters
-
-{note["why_it_matters"]}
-
-## How to Use It
-
-{note["how_to_use"]}
-
-## What's In It For Me / You / Us
-
-{note["value"]}
-
-## Evidence / Smart Links
-
-{evidence}
-
-## Current State
-
-{note["current_state"]}
-
-## ONE Next Action
-
-**{note["next_action"]}**
-
-## Transaction State
-
-- Smart Note: **PERSISTED**
-- CIS learning: **{note["cis_status"]}**
-- PIS projection: **{note["pis_status"]}**
-- Hub projection: **{note["hub_status"]}**
-- Receipt: `{note["receipt_id"]}`
-"""
-
+    return (
+        "# SMART NOTE — " + note["topic"] + "\n\n"
+        "**Timestamp:** " + note["timestamp"] + "\n"
+        "**Smart Note ID:** `" + note["id"] + "`\n"
+        "**Status:** CANONICAL / TRANSACTIONALLY PROJECTED\n"
+        "**Type:** Durable intelligence / Intelligent Block\n"
+        "**Intelligent Block Schema:** `" + CANONICAL_SCHEMA + "`\n"
+        "**Parent:** NayaPOWER Superbrain\n\n"
+        "## IN A NUTSHELL\n\n" + note["in_a_nutshell"] + "\n\n"
+        "## HUMAN NOTE\n\n" + note["human"] + "\n\n"
+        "## CHILD NOTE\n\n" + note["child"] + "\n\n"
+        "## GRANDMA NOTE\n\n" + note["grandma"] + "\n\n"
+        "## NAYA NOTE\n\n" + note["naya"] + "\n\n"
+        "## MACHINE NOTE\n\n" + note["machine"] + "\n\n"
+        "## LEARNING LESSON\n\n" + note["learning"] + "\n\n"
+        "## WHAT IT MEANS\n\n" + note["why_it_matters"] + "\n\n"
+        "## HOW IT CONNECTS\n\n" + note["how_it_connects"] + "\n\n"
+        "## HOW TO APPLY IT\n\n" + note["how_to_use"] + "\n\n"
+        "## WHAT" + chr(39) + "S IN IT FOR THEM / YOU / US\n\n" + note["value"] + "\n\n"
+        "## EVIDENCE / SMART LINKS\n\n" + evidence + "\n\n"
+        "## CURRENT STATE\n\n" + note["current_state"] + "\n\n"
+        "## ONE NEXT ACTION\n\n**" + note["next_action"] + "**\n\n"
+        "## TRANSACTION STATE\n\n"
+        "- Smart Note / Intelligent Block: **PERSISTED**\n"
+        "- CIS learning: **" + note["cis_status"] + "**\n"
+        "- PIS projection: **" + note["pis_status"] + "**\n"
+        "- Hub projection: **" + note["hub_status"] + "**\n"
+        "- Receipt: `" + note["receipt_id"] + "`\n"
+    )
 
 def _load_cis() -> dict[str, Any]:
     if not CIS_PATH.exists():
