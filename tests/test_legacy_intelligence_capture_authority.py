@@ -13,7 +13,7 @@ class LegacyIntelligenceCaptureAuthorityTests(unittest.TestCase):
         self.assertIn("p_action text default 'record_intelligence'", SQL)
 
     def test_intelligence_capture_fails_closed_before_legacy_metadata_authority(self):
-        branch = SQL.split("if p_action = 'intelligence.capture' then", 1)[1].split("end if;", 1)[0]
+        branch = SQL.split("if p_action = 'intelligence.capture' then", 1)[1].split("elsif v_authority_grant_id is not null then", 1)[0]
         self.assertIn("CANONICAL_EXECUTION_AUTHORIZATION_REQUIRED", branch)
         self.assertNotIn("nayanet_validate_authority_grant", branch)
 
