@@ -27,8 +27,34 @@ def event_files():return sorted(EVENTS.rglob('SE-*.json')) if EVENTS.exists() el
 def load_event(p):
     try:return json.loads(p.read_text(encoding='utf-8')),None
     except Exception as e:return None,str(e)
+def _superseded_successor(e):
+    c=e.get("continuity",{}) or {}
+    h=c.get("handoff",{}) or {}
+    candidates=[]
+    if isinstance(h,dict): candidates.append(h.get("successor"))
+    candidates.append(c.get("next_execution_path"))
+    nex=e.get("next_execution")
+    if isinstance(nex,str): candidates.append(nex)
+    elif isinstance(nex,dict): candidates.append(nex.get("path"))
+    for raw in candidates:
+        if not raw:
+            continue
+        path=ROOT/str(raw)
+        if not path.is_file():
+            continue
+        try:
+            text=path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        match=re.search(r"(?im)^\s*status:\s*(SUPERSEDED|HISTORICAL|ARCHIVED)\s*$",text)
+        if match:
+            return True
+    return False
+
 def is_meaningful_execution(e,p):
     if parse_time(e.get('effective_at',e.get('created_at','')))<parse_time(p['effective_at']):return False
+    # A completed event whose durable successor has since been superseded is historical continuity evidence, not a current continuity obligation.
+    if _superseded_successor(e): return False
     if e.get('continuity_required') is True:return True
     t=str(e.get('event_type',e.get('type',''))).lower()
     if t in {str(x).lower() for x in p.get('meaningful_event_types',[])}:return True

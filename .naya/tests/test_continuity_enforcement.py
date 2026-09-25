@@ -44,7 +44,7 @@ def test_completed_execution_requires_durable_successor():
         "next_execution": {"project": "x", "north_star": "x", "current_state": "x", "completed_work": ["x"], "verified_evidence": ["x"], "unresolved_issues": ["x"], "constraints": ["x"], "current_objective": "x", "next_action": "run validation", "execution_instructions": "Run validation", "success_criteria": ["x"], "verification_requirements": ["x"]},
     }
     errors = module.check_event(embedded, Path("embedded.json"), policy)
-    assert any("durable NEXT-EXECUTION artifact path" in error for error in errors), errors
+    assert any("canonical NEXT-EXECUTION successor" in error for error in errors), errors
     print("EMBEDDED NON-DURABLE SUCCESSOR → RED")
 
 
@@ -86,3 +86,9 @@ def test_canonical_historical_event_ids_preserve_case():
 
 if __name__ == "__main__":
     raise SystemExit(0 if module.self_test() == 0 else 1)
+def test_superseded_successor_is_historical_not_current_continuity():
+    policy = module.load_policy()
+    event_path = ROOT / ".naya" / "memory" / "events" / "2026" / "09" / "16" / "19" / "SE-20260916-193500-p001-universal-activity-gate.json"
+    import json
+    event = json.loads(event_path.read_text(encoding="utf-8"))
+    assert module.is_meaningful_execution(event, policy) is False

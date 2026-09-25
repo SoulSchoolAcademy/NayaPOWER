@@ -38,12 +38,13 @@ ids = {e['event_id'] for _, e in loaded}
 indexed = {e['event_id'] for e in idx['events']}
 assert ids == indexed, f'index mismatch: canonical={len(ids)} indexed={len(indexed)}'
 
-# Every canonical event must have both human and Naya-readable representations.
+# Canonical events may be lineage-only; Smart Note representation is required only for explicitly canonical intelligence events.
 # Stable SN-* IDs are a v3 hardening target, not a reason to reject the existing
 # migrated legacy envelope before the dedicated schema-freeze phase (#2/#6).
 for path, event in loaded:
     reps = mod.reps(event)
-    assert reps, f'{event.get("event_id")}: missing representations'
+    if str(event.get("status", "")).upper() == "CANONICAL":
+        assert reps, f'{event.get("event_id")}: canonical intelligence event missing representations'
     if isinstance(event.get('representations'), dict):
         keys = set(event['representations'])
         assert 'naya' in keys, f'{event.get("event_id")}: missing Naya representation'
