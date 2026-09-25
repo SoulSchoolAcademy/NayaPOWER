@@ -344,7 +344,8 @@ Deno.serve(async(req)=>{
     },
     intelligence_checkpoint:checkpoint
   };
-  const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);\n  if(!/^IB-\\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
+  const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);
+  if(!/^IB-\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
    const repositoryProjection={
      status:"PENDING",
      rule:"Repository Smart Note projection MUST use the authoritative live intelligent_block_id returned by this receiver; repository code MUST NOT allocate or guess IB identities.",
