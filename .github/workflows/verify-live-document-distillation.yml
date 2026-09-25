@@ -88,6 +88,7 @@ jobs:
           echo "$RETRIEVED" | jq -e --arg did "$DOCUMENT_ID" '.result.result.library.intelligent_blocks | any(.value_context.source_type=="document" and .value_context.document_id==$did)' >/dev/null
 
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          echo "$DUP" | jq .
           test "$(echo "$DUP" | jq -r '.ok // false')" = true
           test "$(echo "$DUP" | jq -r '.result.intelligence.source_event.event_id // empty')" = "$EVENT_ID"
 
