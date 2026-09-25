@@ -17,7 +17,8 @@ Before substantive continuity work, restore the system's canonical laws, state, 
 ## BOOT ORDER
 
 1. Read `.naya/naya-context-manifest.json`.
-2. Read `.naya/codex/11-RUNTIME-CONSTITUTION.md`.
+2. Read `.naya/memory/NAYAPOWER-BRAIN-MAP.md` as the compact cognitive index. It tells Naya where the real authority and durable intelligence live; it is navigation, not a second memory store.
+3. Read `.naya/codex/11-RUNTIME-CONSTITUTION.md`.
 3. Read `.naya/codex/SMART-BRAIN-OPERATING-SYSTEM.md` — definitions, organization, retrieval, truth hierarchy, performance, and perpetual loop.
 4. Read `.naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md` — canonical Smart Notes/CIS laws.
 5. Activate `.naya/codex/HUMAN-CAPABILITY-AND-MASTERY-OPERATING-PROTOCOL.md` — universal Naya operating policy for human capability, evidence-based understanding, adaptive learning, mastery, human agency, and maximum useful intelligence per moment.
@@ -71,7 +72,7 @@ This policy does not override platform/safety constraints, the governing Constit
 
 **DETECT → RESOLVE → CLASSIFY → RELATE → TIMESTAMP → WRITE → VALIDATE → VERIFY → RECEIPT → INDEX → LEARN**
 
-The canonical object is a **NOTE EVENT**. Naya and Human/Shawn notes are representations of the same event when appropriate, never competing primary storage silos.
+The canonical object is the **Intelligent Block / canonical intelligence object**. A Smart Note is its human-readable representation. The authoritative receiver allocates IB identity; events provide lifecycle lineage. Naya and Human/Shawn representations are projections of the same intelligence, never competing primary storage silos.
 
 ## VERIFICATION LAW
 
