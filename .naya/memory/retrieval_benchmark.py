@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Deterministic retrieval benchmark for the dependency-free smart search path.
+"""Historical event-lineage compatibility benchmark for the dependency-free search path.
 
-The benchmark uses explicit relevance judgments for the current canonical corpus.
-It measures precision@5, recall@5, MRR, and token coverage. This is still not a
-semantic-vector benchmark; it is the baseline that a future vector adapter must
-beat rather than a claim that vectors already exist.
+This benchmark intentionally measures the preserved event corpus only. It is not
+the canonical Intelligent Block retrieval benchmark and must not be interpreted
+as runtime parity. Canonical IB retrieval is measured by the authorized retrieval
+contract tests.
 """
 from __future__ import annotations
 import json
@@ -83,7 +83,9 @@ def run() -> dict:
     n=len(results) or 1
     return {
         "schema_version":2,
-        "status":"BASELINE",
+        "status":"COMPATIBILITY_BASELINE",
+        "corpus_authority":"historical_event_lineage",
+        "canonical_intelligent_block_retrieval":False,
         "retrieval_engine":"exact+BM25+TFIDF+metadata+query-expansion+recency+authority+graph-rerank",
         "semantic_vector_engine":False,
         "case_count":len(results),
@@ -92,7 +94,7 @@ def run() -> dict:
         "mean_mrr":round(sum(x["mrr"] for x in results)/n,3),
         "mean_expected_token_coverage":round(sum(x["expected_token_coverage"] for x in results)/n,3),
         "cases":results,
-        "next_measurement":"Re-run this exact relevance-judged corpus after a real semantic/vector adapter is integrated; compare precision/recall/MRR and preserve the lexical fallback.",
+        "next_measurement":"Add a separate relevance-judged canonical IB retrieval benchmark; do not treat this historical event baseline as canonical runtime parity.",
     }
 
 
