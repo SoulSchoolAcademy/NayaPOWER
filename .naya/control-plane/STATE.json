@@ -7,8 +7,8 @@
     "source": "git:HEAD",
     "value": "LIVE_AT_EXECUTION_TIME",
     "resolution": "LIVE_AT_EXECUTION_TIME",
-    "recorded_at": "2026-09-25T06:09:21.316Z",
-    "observed_head": "772464d1111db32219bc73b7cfdd9b9c01b47424",
+    "recorded_at": "2026-09-25T06:12:45.000Z",
+    "observed_head": "3277ec4399e409668112ce506a60ab68c976cafb",
     "recorded_head_is_not_authoritative": true
   },
   "current_branch": {
@@ -303,6 +303,7 @@
     }
   },
   "current_frontier": {
+    "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
     "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
