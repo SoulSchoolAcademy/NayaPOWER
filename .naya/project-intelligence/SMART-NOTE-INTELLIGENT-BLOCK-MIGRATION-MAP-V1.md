@@ -1,10 +1,10 @@
 # 🔱 Smart Note / Intelligent Block Migration Map V1
 
-**Status:** CANONICAL MIGRATION PLAN
+**Status:** HISTORICAL MIGRATION PLAN — NON-EXECUTABLE
 > **2026-09-25 RECONCILIATION:** This migration map is historical planning material and is no longer an executable migration plan. Its target IB numbers and SUPERBRAIN storage destinations are historical proposals only. No new IB identity may be assigned from this document. Current canonical writes use the live receiver and `.naya/memory/smart-notes/` projection namespace.
 **Source Contract:** CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-CONTRACT-V1.md
 **Archaeology Source:** SMART-NOTE-INTELLIGENT-BLOCK-ARCHAEOLOGY-INVENTORY.md
-**Status:** READY FOR EXECUTION (pending contract ratification)
+**Status:** RETIRED — preserved for historical provenance
 
 ---
 
