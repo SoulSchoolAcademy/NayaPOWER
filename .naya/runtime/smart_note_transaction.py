@@ -33,8 +33,9 @@ PIS_PATH = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json
 # "grammar" remains accepted only as a legacy input field and is never emitted
 # as a canonical Smart Note perspective.
 REQUIRED = (
-    "in_a_nutshell", "human", "child", "grandma", "naya", "machine",
-    "learning", "why_it_matters", "how_it_connects", "how_to_use", "value",
+    "in_a_nutshell", "date_time", "what", "why_it_matters",
+    "human", "child", "grandma", "naya", "machine", "learning",
+    "how_it_connects", "how_to_use", "ultimate_meaning", "value",
     "evidence", "current_state", "next_action",
 )
 CANONICAL_SCHEMA = "NAYANET_INTELLIGENT_BLOCK_V1"
