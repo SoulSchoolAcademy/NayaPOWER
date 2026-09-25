@@ -921,6 +921,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
   return {
     schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
     idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
+    intelligent_block:intelligentBlock,
     learning:{status:learning.status,evidence_id:learning.id,target_id:learning.target_id},
     checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,
       checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,
