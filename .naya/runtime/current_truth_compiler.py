@@ -44,8 +44,7 @@ def _section(text: str, heading: str) -> str | None:
     if marker not in text:
         return None
     value = text.split(marker, 1)[1]
-    return value.split("
-## ", 1)[0].strip()
+    return value.split("\n## ", 1)[0].strip()
 
 
 def compile_current_truth() -> dict[str, Any]:
@@ -71,6 +70,9 @@ def compile_current_truth() -> dict[str, Any]:
             "human_director": "Shawn Vibert",
             "control_plane": ".naya/control-plane/",
             "live_repository": "git:HEAD",
+            "protected_boundaries": state.get("protected_boundaries") or [],
+            "operating_policy": state.get("operating_policy"),
+            "hub_read_first": state.get("hub_readiness_inventory"),
             "note": "This packet never overrides live source, control plane, runtime evidence, or human authority.",
         },
         "repository_reality": {
@@ -99,11 +101,6 @@ def compile_current_truth() -> dict[str, Any]:
         "blocked": blocked,
         "bottleneck": state.get("bottleneck"),
         "next": next_action,
-        "authority": {
-            "protected_boundaries": state.get("protected_boundaries") or [],
-            "operating_policy": state.get("operating_policy"),
-            "hub_read_first": state.get("hub_readiness_inventory"),
-        },
         "canonical_sources": {
             "brain_map": str(BRAIN_MAP.relative_to(ROOT)),
             "current_truth": str(CURRENT_TRUTH.relative_to(ROOT)),
