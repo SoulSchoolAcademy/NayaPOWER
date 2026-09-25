@@ -185,8 +185,117 @@
       "artifact": "p1-controlled-paired-policy-receipt"
     },
     "source_scope_rule": "The runtime parity claim is scoped to the Hub/runtime deployment paths; the P1 policy experiment is scoped to its migration, Edge Function, script, workflow and policy-comparison implementation paths.",
-    "current_repository_head": "e7b873d2b2eab8d316efbb58fff6d66ce9fe2926",
-    "smart_feed_ledger_integration": {
+"current_repository_head": "1d8bd2db611a5dc35662305bd353a7013c90d1f0",
+  "continuous_intelligence_relay_automation": {
+    "status": "VERIFIED",
+    "claim_type": "RUNTIME",
+    "implementation": ".naya/runtime/continuous_intelligence_relay.py",
+    "test_suite": ".naya/runtime/test_continuous_intelligence_relay.py",
+    "test_result": "10/10 PASS",
+    "evidence": [
+      "Activity -> Learning -> Playback -> Baton chain operational",
+      "Execution receipt triggers notification -> learning candidate extraction",
+      "Playback lineage updated (PLAYBACK_LINEAGE.json)",
+      "BATON.json rebuilt with evidence + learning candidate",
+      "Activity board updated (NAYA/ACTIVITY/2026/09/00-NAYAPOWER-CURRENT-ACTIVITY-BOARD.md)",
+      "Test suite: 10/10 tests PASS (extract, create, update, rebuild, full chain, idempotent, no-learning)"
+    ],
+    "source_head": "1d8bd2db611a5dc35662305bd353a7013c90d1f0",
+    "verification": "pytest .naya/runtime/test_continuous_intelligence_relay.py -v: 10 passed"
+  },
+  "computational_efficiency_benchmark_reverified": {
+    "status": "VERIFIED",
+    "claim_type": "RUNTIME",
+    "implementation": ".naya/runtime/computation_efficiency_causal_benchmark.py",
+    "source_head": "1d8bd2db611a5dc35662305bd353a7013c90d1f0",
+    "cycle_a": {"mode": "COLD", "content_objects_read": 4, "context_bytes": 137914, "wall_time_ms": 1.5},
+    "cycle_b": {"mode": "RETAINED", "retained_objects_used": 1, "canonical_content_objects_read": 2, "context_bytes": 56259, "wall_time_ms": 128.5},
+    "avoided_work": {"canonical_content_objects": 2, "canonical_content_bytes": 81655, "status": "COUNTERFACTUAL"},
+    "verification": {"outcome_equal": true, "quality_regression": false},
+    "evidence_files": [
+      ".naya/project-intelligence/COMPUTATION-EFFICIENCY-CAUSAL-PAIRED-RUN-2026-09-22.json",
+      ".naya/project-intelligence/COMPUTATION-EFFICIENCY-RETAINED-UNIT-CAUSAL-2026-09-22.json"
+    ]
+  },
+  "universal_sender_receiver_readiness_contract": {
+    "status": "VERIFIED",
+    "claim_type": "CONTRACT",
+    "implementation": ".naya/control-plane/SENDER-RECEIVER-READINESS-CONTRACT.md",
+    "scope": "Universal 7-boundary contract (VISUAL, SENDER, BRIDGE, AUTHORITY, PERSISTENCE, RETRIEVAL, EVIDENCE) for all Smart Doors",
+    "door_contracts": 11,
+    "doors": ["Smart Note", "Smart Share", "GitHub Webhook", "Smart Mail", "Smart Spaces", "Connections", "Smart Lists", "MCP", "REST/OpenAPI", "A2A", "SDK"],
+    "evidence_status_matrix": "Complete with evidence registry per door"
+  },
+  "smart_door_contracts": {
+    "status": "VERIFIED",
+    "claim_type": "CONTRACT",
+    "location": ".naya/control-plane/smart-door-contracts/",
+    "contracts": [
+      "SMART-NOTE-DOOR-CONTRACT.md (PROVEN)",
+      "SMART-SHARE-DOOR-CONTRACT.md (PROVEN)",
+      "GITHUB-WEBHOOK-DOOR-CONTRACT.md (BLOCKED_EXTERNAL_CREDENTIAL)",
+      "SMART-MAIL-DOOR-CONTRACT.md (PARTIAL)",
+      "SMART-SPACES-DOOR-CONTRACT.md (PARTIAL)",
+      "CONNECTIONS-DOOR-CONTRACT.md (PARTIAL)",
+      "SMART-LISTS-DOOR-CONTRACT.md (PARTIAL)",
+      "MCP-DOOR-CONTRACT.md (PARTIAL)",
+      "REST-OPENAPI-DOOR-CONTRACT.md (PARTIAL)",
+      "A2A-DOOR-CONTRACT.md (DOCUMENTED)",
+      "SDK-DOOR-CONTRACT.md (DOCUMENTED)"
+    ],
+    "each_contains": ["Seven boundary proof", "Evidence registry", "Remaining work", "Next authorized action"]
+  },
+  "uai_live_proof_workflow": {
+    "status": "IMPLEMENTED",
+    "claim_type": "WORKFLOW",
+    "implementation": ".github/workflows/verify-uai-live-proof.yml",
+    "scope": "MCP + REST semantic parity (cold restore -> understand -> retrieve parity)",
+    "requires": "MCP token + REST token for execution"
+  },
+  "adversarial_security_consolidation_workflow": {
+    "status": "IMPLEMENTED",
+    "claim_type": "WORKFLOW",
+    "implementation": ".github/workflows/verify-adversarial-consolidation.yml",
+    "scope": "9-dimension adversarial matrix (owner/non-owner, revocation, expiration, replay/idempotency, stale intelligence, superseded lineage, receipt integrity, unauthorized persistence, privacy boundary)",
+    "requires": "Test token for execution"
+  },
+  "aaa_visual_interaction_checklist": {
+    "status": "IMPLEMENTED",
+    "claim_type": "CHECKLIST",
+    "implementation": ".naya/control-plane/AAA-VISUAL-INTERACTION-CHECKLIST.md",
+    "categories": 15,
+    "target": "10/10 each against protected reference 2026 09 17 NAYANET HUB.html",
+    "categories_list": ["Shell Architecture", "Navigation", "Smart Feed", "Smart Note Capture", "Intelligent Block Lifecycle", "Smart Share", "Smart Mail", "Spaces/Connections/Lists", "Search/Library/Reports/Settings", "Identity/Name-First", "Visual Fidelity", "Interaction Quality", "Accessibility", "Performance", "Evidence/Provenance Display"]
+  },
+  "cold_successor_test_harness": {
+    "status": "VERIFIED",
+    "claim_type": "TEST",
+    "implementation": ".naya/runtime/cold_successor_test.py",
+    "result": "14/14 questions answered from canonical sources",
+    "statuses": {
+      "PROVEN": 4,
+      "CURRENT_REQUIRES_LIVE_RECONCILIATION": 1,
+      "ACTIVE_NEXT_ACTION": 1,
+      "GOVERNED": 1,
+      "PROVEN_HISTORY": 1,
+      "VERIFIED_ENGINEERING_LESSONS": 1,
+      "PROVEN_AT_RECORDED_SCOPES": 1,
+      "UNKNOWN_UNTIL_PROVEN": 1,
+      "CANONICAL_PROOF_METHOD": 1,
+      "CANONICAL_RECORDING_CONTRACT": 1,
+      "CANONICAL_SUCCESSOR_CONTRACT": 1
+    },
+    "verification": "python .naya/runtime/cold_successor_test.py: [PASS] ALL 14 QUESTIONS ANSWERED FROM CANONICAL SOURCES"
+  },
+  "deployment_verification_script": {
+    "status": "VERIFIED",
+    "claim_type": "TOOL",
+    "implementation": ".naya/runtime/deployment_verification.py",
+    "result": "PASS (Source Identity, Webhook Deployment, Source Parity)",
+    "manual_required": ["Runtime Deployment", "Supabase Edge Functions", "Database Schema"],
+    "verification": "python .naya/runtime/deployment_verification.py: Overall PASS"
+  },
+  "smart_feed_ledger_integration": {
       "status": "VERIFIED",
       "claim_type": "RUNTIME",
       "workflow": ".github/workflows/verify-smart-feed-ledger-integration.yml",

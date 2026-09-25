@@ -97,7 +97,7 @@ def extract_learning_from_event(event: dict) -> Optional[dict]:
     # Heuristics for learning-worthy events
     learning_indicators = [
         "learning" in observed.lower(),
-        "verified" in observed.lower() and "policy" in observed.lower(),
+        "verified" in observed.lower(),
         "improved" in observed.lower(),
         "discovered" in observed.lower(),
         "confirmed" in observed.lower(),
@@ -160,6 +160,8 @@ def rebuild_baton(event: dict, learning: Optional[dict] = None) -> None:
     
     # Update BATON.json with latest event and learning
     baton = cp["baton"]
+    if "source_snapshot" not in baton:
+        baton["source_snapshot"] = {}
     baton["source_snapshot"]["live_head"] = head
     baton["generated_at"] = datetime.now(timezone.utc).isoformat()
     
