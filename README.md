@@ -144,8 +144,9 @@ For system-wide NayaNET direction and Hub work, read these three layers in order
 **Rule:** The Master Objective defines intended direction; the 58 Topology defines engineering organization; the Gap Register records current Hub truth. Source code, tests, runtime evidence, receipts, and independent verification determine what is actually proven.
 
 ### Start here
-1. **North Star tree:** `.naya/NORTH-STAR-AAA-TREE-2026-09-22.md`
-2. **Distilled intelligence:** `SUPERBRAIN/INTELLIGENCE/CANONICAL-INTELLIGENCE-MAP.md`
+1. **Current distilled intelligence:** `.naya/codex/NAYAPOWER-DISTILLED-CURRENT-INTELLIGENCE-2026-09-25.md`
+2. **Canonical intelligence map:** `SUPERBRAIN/INTELLIGENCE/CANONICAL-INTELLIGENCE-MAP.md`
+3. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
 3. **Cold-Naya boot:** `SUPERBRAIN/AI-BOOT/`
 4. **Control plane:** `.naya/control-plane/`
 5. **Human-facing Hub:** `NAYANET/HUB/index.html`
@@ -222,10 +223,12 @@ NayaPOWER/
 Engineering infrastructure (`.github`, `supabase`, `tests`, and required build/runtime support) remains subordinate to this architecture.
 
 ### Current mission
-**Finish the North-Star reorganization and reconcile the active repository into this tree.**
+**Establish one canonical intelligence system and reconcile the historical corpus into it without losing provenance or valuable knowledge.**
 
-Only after that gate closes, resume the next deterministic product proof:
-**GAP-002 — Intelligent Block truth/provenance projection.**
+Immediate frontier:
+**INVENTORY → CLASSIFY → DISTILL → RECONCILE → CANONICALIZE → INDEX → LEARN → VERIFY → COMPOUND.**
+
+Do not create new competing Smart Note formats or blindly migrate historical documents into new IBs.
 
 ### Canonical participation protocol
 
