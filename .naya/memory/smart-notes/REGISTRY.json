@@ -20,16 +20,8 @@
       "category": "system",
       "topic": "superbrain-scorecard",
       "status": "CANONICAL"
-    },
-    {
-      "intelligent_block_id": "IB-000659",
-      "path": ".naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000659/smart-note.md",
-      "date": "2026-09-24",
-      "category": "system",
-      "topic": "hub-house-alignment",
-      "status": "CANONICAL_SYSTEM_ALIGNMENT"
     }
   ],
-  "identity_cursor": 658,
-  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks high-water mark observed at IB-000658 on 2026-09-24; repository Smart Note IB-000659 reserved as the next non-colliding canonical repository identity."
+  "identity_cursor": 659,
+  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks high-water mark observed at IB-000659 on 2026-09-24; repository Smart Note identity is not assigned until the live canonical receiver creates the corresponding event."
 }
