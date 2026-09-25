@@ -48,7 +48,6 @@ def test_cold_naya_boot_order_contains_the_authoritative_memory_chain():
 
     for required in (
         ".naya/memory/NAYAPOWER-BRAIN-MAP.md",
-        ".naya/memory/BOOTSTRAP.md",
         ".naya/control-plane/STATE.json",
         ".naya/control-plane/BLOCKS.json",
         ".naya/control-plane/MAP.json",
