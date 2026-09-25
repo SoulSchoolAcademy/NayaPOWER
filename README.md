@@ -143,14 +143,28 @@ For system-wide NayaNET direction and Hub work, read these three layers in order
 
 **Rule:** The Master Objective defines intended direction; the 58 Topology defines engineering organization; the Gap Register records current Hub truth. Source code, tests, runtime evidence, receipts, and independent verification determine what is actually proven.
 
-### Start here
+### Canonical cold-Naya doorway
+
+Do not excavate the repository. Enter through this sequence:
+
+1. **Bootloader:** `SUPERBRAIN/AI-BOOT/START-HERE.md`
+2. **Canonical source map:** `SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
+3. **Brain Map:** `.naya/memory/NAYAPOWER-BRAIN-MAP.md`
+4. **Bootstrap:** `.naya/memory/BOOTSTRAP.md`
+5. **Current truth:** `SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md`
+6. **Control plane:** `.naya/control-plane/STATE.json` → `BLOCKS.json` → `MAP.json` → `PROOF.json` → `BATON.json`
+7. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
+8. **Current execution directive:** `.naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md`
+
+This is the **minimum orientation path**. Specialized work may load deeper contracts through the source map and context manifest. Do not treat derived summaries, historical records, or product projections as replacements for the canonical authority chain.
+
+**Cold-Naya success condition:** understand WHO → WHY → WHAT → HOW → AUTHORITY → CURRENT TRUTH → PROVEN → UNKNOWN → NEXT before consequential work.
+
+### Core sources
 1. **Current distilled intelligence:** `.naya/codex/NAYAPOWER-DISTILLED-CURRENT-INTELLIGENCE-2026-09-25.md`
-2. **Canonical intelligence map:** `SUPERBRAIN/INTELLIGENCE/CANONICAL-INTELLIGENCE-MAP.md`
-3. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
-3. **Cold-Naya boot:** `SUPERBRAIN/AI-BOOT/`
-4. **Control plane:** `.naya/control-plane/`
-5. **Human-facing Hub:** `NAYANET/HUB/index.html`
-6. **Verification:** `verification/` and `tests/`
+2. **Canonical Smart Note / IB contract:** `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
+3. **Human-facing Hub:** `NAYANET/HUB/index.html`
+4. **Verification:** `verification/` and `tests/`
 
 ### The system
 ```
