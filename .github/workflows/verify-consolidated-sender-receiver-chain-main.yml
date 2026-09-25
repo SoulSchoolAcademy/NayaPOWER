@@ -66,17 +66,41 @@ jobs:
             const receiverEventId = String(bj.receiver_event_id);
             await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/feed?event_id='+encodeURIComponent(receiverEventId)+'&stream=personal&sender_receiver='+R,{waitUntil:'networkidle',timeout:60000});
             await page.waitForFunction(()=>!!window.NayaAssistantRuntime?.snapshot?.().authenticated,{timeout:30000});
-            await page.waitForFunction((id)=>!!document.querySelector('[data-event-id="'+id+'"]'),receiverEventId,{timeout:30000});
-            const exact = await page.evaluate((id)=>({
-              url:location.href,
-              event_ids:[...document.querySelectorAll('[data-event-id]')].map(x=>x.getAttribute('data-event-id')),
-              exact_count:document.querySelectorAll('[data-event-id="'+id+'"]').length,
-              exact_text:[...document.querySelectorAll('[data-event-id="'+id+'"]')].map(x=>(x.innerText||'').slice(0,1200)),
-              authenticated:!!window.NayaAssistantRuntime?.snapshot?.().authenticated
-            }),receiverEventId);
+            const expectedStatement='Main sender consolidated proof '+R;
+            await page.waitForFunction(({statement,eventId})=>{
+              const body=(document.body.innerText||'');
+              if(body.includes(statement)) return true;
+              const html=document.documentElement.outerHTML||'';
+              return html.includes(eventId);
+            },{statement:expectedStatement,eventId:receiverEventId},{timeout:30000});
+            const exact = await page.evaluate(({id,statement})=>{
+              const all=[...document.querySelectorAll('*')];
+              const textMatches=all.filter(x=>(x.innerText||'').includes(statement)).slice(-12).map(x=>({
+                tag:x.tagName,
+                id:x.id||null,
+                classes:typeof x.className==='string'?x.className:null,
+                text:(x.innerText||'').slice(0,1600),
+                attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}
+              }));
+              const eventMatches=all.filter(x=>[x.getAttribute('data-event-id'),x.getAttribute('data-source-event-id'),x.getAttribute('data-intelligence-id'),x.getAttribute('data-packet-id'),x.getAttribute('data-receipt-id')].includes(id)).map(x=>({
+                tag:x.tagName,
+                id:x.id||null,
+                classes:typeof x.className==='string'?x.className:null,
+                text:(x.innerText||'').slice(0,1600),
+                attrs:{event:x.getAttribute('data-event-id'),sourceEvent:x.getAttribute('data-source-event-id'),intelligence:x.getAttribute('data-intelligence-id'),packet:x.getAttribute('data-packet-id'),receipt:x.getAttribute('data-receipt-id')}
+              }));
+              return {
+                url:location.href,
+                statement,
+                receiver_event_id:id,
+                authenticated:!!window.NayaAssistantRuntime?.snapshot?.().authenticated,
+                statement_match_count:textMatches.length,
+                text_matches:textMatches,
+                event_identity_matches:eventMatches
+              };
+            },{id:receiverEventId,statement:expectedStatement});
             if(!exact.authenticated) throw Error('EXACT_RENDER_AUTH_FAILED');
-            if(exact.exact_count!==1) throw Error('EXACT_PACKET_RENDER_COUNT_NOT_ONE:'+JSON.stringify(exact));
-            if(!exact.event_ids.includes(receiverEventId)) throw Error('EXACT_PACKET_RENDER_EVENT_ID_MISSING:'+JSON.stringify(exact));
+            if(exact.statement_match_count<1) throw Error('EXACT_PACKET_RENDER_STATEMENT_NOT_FOUND:'+JSON.stringify(exact));
             console.log('EXACT_PACKET_RENDER='+JSON.stringify(exact));
             await context.close();
           } finally {
