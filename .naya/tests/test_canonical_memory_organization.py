@@ -46,6 +46,8 @@ def test_smart_note_outside_canonical_namespace_is_rejected():
         root = Path(tmp)
         path = root / "SUPERBRAIN/NIA-COMMUNICATION/2026/09/25/CHANNEL-CONSTITUTION.md"
         path.parent.mkdir(parents=True)
+        (root / ".naya/memory/smart-notes").mkdir(parents=True)
+        (root / ".naya/memory/smart-notes/REGISTRY.json").write_text('{"entries":[]}', encoding="utf-8")
         path.write_text(
             "# SMART NOTE — Channel Constitution\n\n"
             "**Intelligent Block ID:** IB-000999\n\n"
