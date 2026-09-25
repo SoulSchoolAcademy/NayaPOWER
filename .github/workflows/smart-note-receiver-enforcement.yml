@@ -12,6 +12,7 @@ on:
   push:
     branches:
       - "fix/canonical-smart-note-receiver-enforcement"
+  workflow_dispatch:
 
 jobs:
   enforcement:
