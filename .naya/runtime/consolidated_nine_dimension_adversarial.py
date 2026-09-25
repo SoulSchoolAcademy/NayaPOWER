@@ -49,7 +49,8 @@ def signup():
 
 def bridge(packet):
     token=os.environ["NAYANET_BRIDGE_TOKEN"]
-    req=urllib.request.Request(BRIDGE_URL,data=json.dumps(packet,separators=(",",":"),ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"Content-Type":"application/json"})
+    owner_binding=os.environ["NAYANET_OWNER_BINDING_TOKEN"]
+    req=urllib.request.Request(BRIDGE_URL,data=json.dumps(packet,separators=(",",":"),ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"X-Naya-Owner-Binding":owner_binding,"Content-Type":"application/json"})
     try:
         with urllib.request.urlopen(req,timeout=45) as r: return r.status,json.loads(r.read().decode())
     except urllib.error.HTTPError as e:

@@ -64,7 +64,8 @@ jobs:
               fs.writeFileSync('.nayanet-owner-id',session.userId+'\n');
               fs.writeFileSync('.nayanet-owner-session.json',JSON.stringify(session.session));
               await context.storageState({path:'.nayanet-owner-state.json'});
-              fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\n');
+               fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ACCESS_TOKEN='+session.session.access_token+'\n');
+               fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ID='+session.userId+'\n');
               fs.appendFileSync(process.env.GITHUB_ENV,'NAYANET_OWNER_ALIAS='+alias+'\n');
               await context.storageState({path:'owner-auth-state.json'});
               console.log('OWNER_BOUND=TRUE');

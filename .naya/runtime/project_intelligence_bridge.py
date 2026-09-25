@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Canonical Project Intelligence Bridge packet builder/validator."""
 from __future__ import annotations
-import argparse, hashlib, json, os, subprocess, sys, urllib.request
-from datetime import datetime, timezone
+import argparse, hashlib, json, os, subprocess, sys, urllib.error, urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from uuid import NAMESPACE_URL, uuid5
 
@@ -20,6 +20,30 @@ SOURCES=[".naya/control-plane/STATE.json",".naya/control-plane/BLOCKS.json",".na
 
 def digest(b): return hashlib.sha256(b).hexdigest()
 def head(): return subprocess.check_output(["git","rev-parse","HEAD"],cwd=ROOT,text=True).strip()
+
+def issue_owner_binding():
+    existing=os.environ.get("NAYANET_OWNER_BINDING_TOKEN","").strip()
+    if existing: return existing
+    base=(os.environ.get("SUPABASE_URL","") or os.environ.get("NAYANET_BRIDGE_AUTH_URL","")).rstrip("/")
+    key=os.environ.get("SUPABASE_PUBLISHABLE_KEY","") or os.environ.get("SUPABASE_ANON_KEY","")
+    owner_token=os.environ.get("NAYANET_OWNER_ACCESS_TOKEN","").strip()
+    if not owner_token and (ROOT/".nayanet-owner-session.json").exists():
+        try: owner_token=str(json.loads((ROOT/".nayanet-owner-session.json").read_text(encoding="utf-8")).get("access_token","")).strip()
+        except (OSError,ValueError): owner_token=""
+    workflow_ref=os.environ.get("GITHUB_WORKFLOW_REF","").strip()
+    run_id=os.environ.get("GITHUB_RUN_ID","").strip()
+    if not base or not key or not owner_token or not workflow_ref or not run_id: return ""
+    expires=(datetime.now(timezone.utc)+timedelta(minutes=10)).isoformat().replace("+00:00","Z")
+    body={"p_repository":"SoulSchoolAcademy/NayaPOWER","p_workflow_ref":workflow_ref,"p_run_id":run_id,"p_expires_at":expires}
+    request=urllib.request.Request(base+"/rest/v1/rpc/nayanet_issue_bridge_owner_binding",data=json.dumps(body).encode(),method="POST",headers={"apikey":key,"Authorization":"Bearer "+owner_token,"Content-Type":"application/json"})
+    try:
+        with urllib.request.urlopen(request,timeout=30) as response:
+            data=json.loads(response.read().decode())
+    except urllib.error.HTTPError as error:
+        raise RuntimeError("BRIDGE_OWNER_BINDING_ISSUE_FAILED:"+str(error.code)) from error
+    token=str(data.get("owner_binding_token","")).strip()
+    if not token: raise RuntimeError("BRIDGE_OWNER_BINDING_TOKEN_MISSING")
+    return token
 
 def accept_universal_envelope(envelope: dict, packet_payload: dict) -> dict:
     """Adapt one validated universal envelope into the existing bridge packet.
@@ -94,11 +118,11 @@ def main():
         if e: print(json.dumps({"status":"INVALID","errors":e},indent=2)); return 1
         (ROOT/a.out).write_text(json.dumps(p,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
         print(json.dumps({"status":"READY_TO_SEND","source_ref":p["source_ref"],"packet_id":p["packet_id"],"content_hash":p["content_hash"],"idempotency_key":p["idempotency_key"],"objects":len(p["intelligence"])},indent=2)); return 0
-    url=os.environ.get("NAYANET_BRIDGE_URL"); token=os.environ.get("NAYANET_BRIDGE_TOKEN")
-    if not url or not token: print("BRIDGE_SEND=BLOCKED: configure NAYANET_BRIDGE_URL and NAYANET_BRIDGE_TOKEN"); return 2
+    url=os.environ.get("NAYANET_BRIDGE_URL"); token=os.environ.get("NAYANET_BRIDGE_TOKEN"); owner_binding=issue_owner_binding()
+    if not url or not token or not owner_binding: print("BRIDGE_SEND=BLOCKED: configure NAYANET_BRIDGE_URL, NAYANET_BRIDGE_TOKEN, and owner binding inputs"); return 2
     q=json.loads((ROOT/a.packet).read_text(encoding="utf-8")); e=validate(q)
     if e: print(json.dumps({"status":"INVALID","errors":e},indent=2)); return 1
-    req=urllib.request.Request(url,data=json.dumps(q,separators=(",",":"),ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"Content-Type":"application/json","X-Naya-Project-Id":q["project_id"],"X-Naya-Source-Ref":q["source_ref"],"X-Naya-Idempotency-Key":q["idempotency_key"]})
+    req=urllib.request.Request(url,data=json.dumps(q,separators=(",",":"),ensure_ascii=False).encode(),method="POST",headers={"Authorization":"Bearer "+token,"Content-Type":"application/json","X-Naya-Owner-Binding":owner_binding,"X-Naya-Project-Id":q["project_id"],"X-Naya-Source-Ref":q["source_ref"],"X-Naya-Idempotency-Key":q["idempotency_key"]})
     try:
         with urllib.request.urlopen(req,timeout=60) as r: ack=json.loads(r.read().decode())
     except urllib.error.HTTPError as ex:

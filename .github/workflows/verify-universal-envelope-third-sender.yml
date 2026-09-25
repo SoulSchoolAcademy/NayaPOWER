@@ -40,7 +40,10 @@ jobs:
               except urllib.error.HTTPError as e:return e.code,json.loads(e.read())
           s,a=post("/auth/v1/signup",{})
           assert s==200 and a.get("access_token") and a.get("user",{}).get("id"), "FRESH_OWNER_AUTH_FAILED"
-          token=a["access_token"]; owner=a["user"]["id"]
+           token=a["access_token"]; owner=a["user"]["id"]
+           bs,ba=post("/rest/v1/rpc/nayanet_issue_bridge_owner_binding",{"p_repository":"SoulSchoolAcademy/NayaPOWER","p_workflow_ref":"SoulSchoolAcademy/NayaPOWER/.github/workflows/verify-universal-envelope-third-sender.yml@refs/heads/main","p_run_id":os.environ["GITHUB_RUN_ID"],"p_expires_at":(datetime.datetime.now(datetime.timezone.utc)+datetime.timedelta(minutes=10)).isoformat()},token)
+           assert bs==200 and ba.get("owner_binding_token"), "OWNER_BINDING_ISSUE_FAILED:"+json.dumps(ba)
+           owner_binding=ba["owner_binding_token"]
           title="Third Sender Universal Envelope Proof "+RUN
           content="Meaningful output emitted by the NayaNET Project Intelligence Understand edge sender and normalized into Universal Intelligence Envelope V1."
           ss,sb=post("/functions/v1/nayanet-pi-understand",{"title":title,"content":content,"confidence":1,"tags":["third-sender","universal-envelope","pi-understand"]},token)
@@ -66,7 +69,7 @@ jobs:
           print("ENVELOPE_V1_ADAPTER=PASS")
           q=urllib.request.Request(os.environ["ACTIONS_ID_TOKEN_REQUEST_URL"]+"&audience=nayanet-project-intelligence-bridge",headers={"Authorization":"bearer "+os.environ["ACTIONS_ID_TOKEN_REQUEST_TOKEN"]})
           with urllib.request.urlopen(q,timeout=30) as r: oidc=json.loads(r.read())["value"]
-          rs,rb=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc})
+          rs,rb=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc,"X-Naya-Owner-Binding":owner_binding})
           print("RECEIVER="+json.dumps(rb,separators=(",",":")))
           assert rs==200 and rb.get("status")=="COMPLETED" and rb.get("persisted") and rb.get("indexed") and rb.get("projected"), "PRODUCTION_RECEIVER_FAILED"
           assert rb["owner_id"]==owner, "OWNER_LINEAGE_MISMATCH"
@@ -79,7 +82,7 @@ jobs:
           u=next((x for x in intel if x.get("object_id")=="envelope:"+envelope["envelope_id"]),None)
           assert u and u.get("content",{}).get("source",{}).get("type")=="nayanet_pi_understand", "SENDER_LINEAGE_NOT_PRESERVED"
           print("INDEPENDENT_RECONSTRUCTION=PASS")
-          rs2,rb2=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc})
+          rs2,rb2=post("/functions/v1/nayanet-project-intelligence-bridge",p,extra={"Authorization":"Bearer "+oidc,"X-Naya-Owner-Binding":owner_binding})
           assert rs2==200 and rb2.get("status")=="ACCEPTED" and rb2.get("replay") is True and rb2.get("receiver_transaction_id")==rb["receiver_transaction_id"] and rb2.get("receiver_event_id")==rb["receiver_event_id"] and rb2.get("receipt_id")==rb["receipt_id"], "EXACT_REPLAY_FAILED"
           print("EXACT_REPLAY=PASS")
           proof={"schema":"NAYANET_UNIVERSAL_ENVELOPE_THIRD_SENDER_PROOF_V1","status":"VERIFIED","run_id":RUN,"sender":{"type":"nayanet_pi_understand","event_id":event["event_id"],"receipt":receipt},"envelope_id":envelope["envelope_id"],"receiver":{"packet_id":rb["packet_id"],"receiver_transaction_id":rb["receiver_transaction_id"],"receiver_event_id":rb["receiver_event_id"],"receipt_id":rb["receipt_id"],"cognition_event_id":rb["projection"]["cognition_event_id"],"index_id":rb["projection"]["index_id"]},"checks":{"third_sender_output":"PASS","envelope_v1":"PASS","existing_adapter":"PASS","existing_production_receiver":"PASS","independent_reconstruction":"PASS","exact_replay":"PASS"},"truth_boundary":"A third sender class, nayanet-pi-understand, is proven through the same Universal Envelope V1 and existing Project Intelligence Bridge. The workflow is only the test harness; the sender is the deployed Supabase Edge Function."}

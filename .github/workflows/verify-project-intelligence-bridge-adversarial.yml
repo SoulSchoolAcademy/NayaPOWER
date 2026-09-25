@@ -4,6 +4,8 @@ on:
   push:
     branches: [main]
     paths:
+      - 'supabase/functions/nayanet-project-intelligence-bridge/index.ts'
+      - 'supabase/migrations/20260925040000_bind_bridge_owner_to_oidc_workflow_v1.sql'
       - '.github/workflows/verify-project-intelligence-bridge-adversarial.yml'
 permissions:
   contents: read
@@ -26,8 +28,11 @@ jobs:
         shell: bash
         run: |
           owner=$(curl -sSf -X POST -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" "$SUPABASE_URL/auth/v1/signup" -d '{}')
-          owner_id=$(python -c 'import json,sys; print(json.load(sys.stdin)["user"]["id"])' <<< "$owner")
-          echo "NAYANET_OWNER_ID=$owner_id" >> "$GITHUB_ENV"
+           owner_id=$(python -c 'import json,sys; print(json.load(sys.stdin)["user"]["id"])' <<< "$owner")
+           owner_access_token=$(python -c 'import json,sys; print(json.load(sys.stdin)["access_token"])' <<< "$owner")
+           echo "::add-mask::$owner_access_token"
+           echo "NAYANET_OWNER_ACCESS_TOKEN=$owner_access_token" >> "$GITHUB_ENV"
+           echo "NAYANET_OWNER_ID=$owner_id" >> "$GITHUB_ENV"
           echo "RUN_IDENTITY=github-actions:${GITHUB_RUN_ID}:${GITHUB_SHA}" >> "$GITHUB_ENV"
       - name: Build packet
         run: python .naya/runtime/project_intelligence_bridge.py build --out project-intelligence-bridge-packet.json
@@ -36,7 +41,11 @@ jobs:
         shell: bash
         run: |
           token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
-          echo "token=$token" >> "$GITHUB_OUTPUT"
+           echo "token=$token" >> "$GITHUB_OUTPUT"
+           binding=$(curl -sSf -X POST "$NAYANET_BRIDGE_AUTH_URL/rest/v1/rpc/nayanet_issue_bridge_owner_binding" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $NAYANET_OWNER_ACCESS_TOKEN" -H "Content-Type: application/json" -d "$(jq -n --arg w "$GITHUB_WORKFLOW_REF" --arg r "$GITHUB_RUN_ID" --arg e "$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)" '{p_repository:"SoulSchoolAcademy/NayaPOWER",p_workflow_ref:$w,p_run_id:$r,p_expires_at:$e}')")
+           binding_token=$(echo "$binding" | python -c 'import json,sys; print(json.load(sys.stdin)["owner_binding_token"])')
+           echo "::add-mask::$binding_token"
+           echo "NAYANET_OWNER_BINDING_TOKEN=$binding_token" >> "$GITHUB_ENV"
       - name: Oscar adversarial bridge checks
         env:
           NAYANET_BRIDGE_URL: https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-project-intelligence-bridge
