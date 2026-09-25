@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Machine-testable enforcement for the canonical Smart Note operation.
+"""Machine-testable enforcement for the canonical Smart Note / Intelligent Block operation.
 
-This is deliberately a thin enforcement layer beside Smart Notes v3. It does
-not replace the Note Event architecture or rewrite historical events. New
-Smart Note claims can be admitted only when the complete evidence chain and
-the canonical NayaPOWER governance gate are present.
+This is a thin admission boundary beside Smart Notes v3. It does not replace
+the canonical event architecture or rewrite historical events. New Smart Note
+claims can be admitted only when the canonical IB identity, canonical human
+perspectives, evidence chain, lineage, and governance gate are present.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ SMART_NOTE_REQUEST_RE = re.compile(
 EVENT_RE = re.compile(r"^SE-[0-9]{8}-[0-9]{6}-[a-z0-9-]+$")
 COMMIT_RE = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
 
-REQUIRED_REPRESENTATIONS = ("shawn", "naya", "machine")
+REQUIRED_REPRESENTATIONS = ("human", "child", "grandma", "naya", "machine")
 REQUIRED_RECEIPT_LINKS = ("canonical_event_url", "index_url", "feed_url")
 
 
