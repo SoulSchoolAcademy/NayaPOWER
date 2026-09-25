@@ -344,6 +344,13 @@ Deno.serve(async(req)=>{
     intelligence_checkpoint:checkpoint
   };
   const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id||transactionWithIntelligence?.intelligent_block?.identity?.object_id);
+   const repositoryProjection={
+     status:"PENDING",
+     rule:"Repository Smart Note projection MUST use the authoritative live intelligent_block_id returned by this receiver; repository code MUST NOT allocate or guess IB identities.",
+     intelligent_block_id:intelligentBlockId||null,
+     source_event_id:eventId,
+     canonical_receiver:"v7-smart-note-canonical"
+   };
   return json({
     ok:true,
     pipeline:replayed?"replayed":"completed",
@@ -351,7 +358,8 @@ Deno.serve(async(req)=>{
     collection:"Smart Notes",
     replayed,
     intelligent_block_id:intelligentBlockId||null,
-    transaction:transactionWithIntelligence
+    transaction:transactionWithIntelligence,
+    repository_projection:repositoryProjection
   });
 
  }catch(error){console.error(error);return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error),event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)}
