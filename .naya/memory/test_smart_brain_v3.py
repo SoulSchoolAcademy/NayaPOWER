@@ -79,6 +79,19 @@ class SmartBrainV3Tests(unittest.TestCase):
         path = brain.EVENTS / '2026' / '09' / '16' / '19' / 'SE-20260916-193500-test-historical.json'
         self.assertEqual(brain.validate_event(event, path), [])
 
+    def test_historical_event_without_source_is_valid_lineage(self):
+        event = {
+            'event_id': 'SE-20260917-032003-test-historical',
+            'created_at': '2026-09-17T03:20:03+00:00',
+            'effective_at': '2026-09-17T03:20:03+00:00',
+            'status': 'VERIFIED_REPOSITORY_RECORD',
+            'activity_feed_projection': {'event_id': 'SE-20260917-032003-test-historical'},
+            'execution': {'action_id': 'ACT-TEST', 'claim_id': 'CL-TEST', 'decision_id': 'DEC-TEST'},
+            'receipt': {'receipt_id': 'RCP-TEST'},
+        }
+        path = brain.EVENTS / '2026' / '09' / '17' / '03' / 'SE-20260917-032003-test-historical.json'
+        self.assertEqual(brain.validate_event(event, path), [])
+
     def test_same_payload_from_distinct_execution_sessions_is_not_a_duplicate(self):
         base = {
             'event_id': 'SE-20260917-035241-test-a',
