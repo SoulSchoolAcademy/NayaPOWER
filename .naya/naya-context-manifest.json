@@ -68,10 +68,6 @@
       "canonical": ".naya/control-plane/PROOF.json",
       "purpose": "Canonical evidence/proof-state contract separating intended, implemented, verified, runtime-proven, production-proven, unknown, failed, and stale claims"
     },
-    "runtime_briefing": {
-      "canonical": ".naya/memory/NAYAPOWER-RUNTIME-BRIEFING.md",
-      "purpose": "Compact orientation projection; useful context but never a competing authority to the control plane"
-    },
     "running_feed": {
       "canonical": ".naya/SUPERBRAIN-COLLECTIVE-RUNNING-FEED.md",
       "purpose": "Chronological Superbrain orientation projection; never a competing authority"
@@ -116,18 +112,8 @@
     "memory": {
       "canonical": ".naya/memory/BOOTSTRAP.md"
     },
-    "memory_schema": {
-      "canonical": ".naya/memory/note.schema.json"
-    },
-    "memory_index": {
-      "canonical": ".naya/memory/INDEX.json"
-    },
     "retrieval": {
       "canonical": ".naya/memory/RETRIEVAL-MANIFEST.json"
-    },
-    "state": {
-      "canonical": ".naya/memory/STATE.json",
-      "purpose": "Compatibility/history projection only; canonical operational state is .naya/control-plane/STATE.json"
     },
     "restore": {
       "canonical": ".naya/runtime/RESTORE-CONTEXT-RUNTIME.md",
@@ -157,10 +143,6 @@
     "continuous_smart_flow": {
       "canonical": "SUPERBRAIN/MASTER-NOTES/SN-20260912-NAYAPOWER-CONTINUOUS-SMART-FLOW-AND-COLD-NAYA-RESTORE.md",
       "purpose": "Priority Zero operating law for cold-Naya restoration, coherent current truth, executable next action, transactional state update, and continuous torch flow"
-    },
-    "naya_to_naya_collective_intelligence": {
-      "canonical": ".naya/memory/SN-20260827-080000-naya-to-naya-collective-intelligence.md",
-      "purpose": "Canonical Naya-to-Naya operating practice: every meaningful Naya execution reads first, executes, verifies, reports durable value and evidence, teaches future Nayas, and leaves the Superbrain better than found"
     },
     "project_intelligence_cold_naya_boot": {
       "canonical": ".naya/project-intelligence/00-NAYANET-COLD-NAYA-BOOT.md",
@@ -196,7 +178,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -208,8 +189,7 @@
       "optimization_excellence",
       "human_capability_and_mastery",
       "continuous_smart_flow",
-      "memory",
-      "naya_to_naya_collective_intelligence"
+      "memory"
     ],
     "memory": [
       "continuous_project_execution_loop",
@@ -219,7 +199,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -232,9 +211,7 @@
       "human_capability_and_mastery",
       "continuous_smart_flow",
       "memory",
-      "memory_index",
-      "retrieval",
-      "naya_to_naya_collective_intelligence"
+      "retrieval"
     ],
     "restore": [
       "continuous_project_execution_loop",
@@ -244,7 +221,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -257,15 +233,12 @@
       "human_capability_and_mastery",
       "continuous_smart_flow",
       "memory",
-      "memory_index",
       "retrieval",
-      "state",
       "restore",
       "current_project",
       "checkpoints",
       "handoffs",
-      "successor_torch",
-      "naya_to_naya_collective_intelligence"
+      "successor_torch"
     ],
     "execution": [
       "continuous_project_execution_loop",
@@ -275,7 +248,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -288,8 +260,7 @@
       "human_capability_and_mastery",
       "continuous_smart_flow",
       "memory",
-      "evidence",
-      "naya_to_naya_collective_intelligence"
+      "evidence"
     ],
     "engineering": [
       "continuous_project_execution_loop",
@@ -299,7 +270,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -314,8 +284,7 @@
       "memory",
       "restore",
       "current_project",
-      "evidence",
-      "naya_to_naya_collective_intelligence"
+      "evidence"
     ],
     "evaluation": [
       "continuous_project_execution_loop",
@@ -325,7 +294,6 @@
       "control_plane_state",
       "control_plane_blocks",
       "control_plane_proof",
-      "runtime_briefing",
       "running_feed",
       "superbrain_continuity",
       "constitution",
@@ -340,8 +308,7 @@
       "naya_owns_torch",
       "optimization_excellence",
       "human_capability_and_mastery",
-      "continuous_smart_flow",
-      "naya_to_naya_collective_intelligence"
+      "continuous_smart_flow"
     ]
   },
   "context_states": [
@@ -414,7 +381,6 @@
     "maximum_useful_progress_per_execution": true,
     "preserve_working_architecture_before_polish": true,
     "honest_10_10_requires_evidence": true,
-    "cold_start_runtime_briefing_required": true,
     "cold_start_omission_is_red": true,
     "cold_start_inclusion_is_green_only_when_all_other_boot_gates_pass": true,
     "acknowledgement_without_action_is_unfulfilled": true,
@@ -435,7 +401,9 @@
     "substantive_execution_must_restore_understand_decide_execute_verify_record_learn_update_handoff_continue": true,
     "successor_must_inherit_verified_project_state_not_chat_history": true,
     "execution_baton_is_required_for_substantive_handoff": true,
-    "next_execution_prompt_is_required_for_substantive_handoff": true
+    "next_execution_prompt_is_required_for_substantive_handoff": true,
+    "cold_start_brain_bootstrap_required": true,
+    "cold_start_memory_manifest_required": true
   },
   "boot_routes": {}
 }
