@@ -344,6 +344,24 @@ Deno.serve(async(req)=>{
     },
     intelligence_checkpoint:checkpoint
   };
+  // Final runtime boundary: prove the canonical event is actually visible to the authenticated owner's Smart Feed before returning completion.
+  const feedVerification=await supabase.from("nayanet_cognition_events")
+    .select("id,event_id,user_id,project_id,status,created_at")
+    .eq("event_id",eventId)
+    .eq("user_id",user.id)
+    .eq("project_id","NayaNET")
+    .maybeSingle();
+  if(feedVerification.error)throw feedVerification.error;
+  if(!feedVerification.data)throw new Error("SMART_NOTE_FEED_VERIFICATION_FAILED");
+  const feedVerificationReceipt={
+    verified:true,
+    verified_at:new Date().toISOString(),
+    source_id:String(feedVerification.data.id),
+    event_id:String(feedVerification.data.event_id),
+    stream:"personal",
+    visibility:"private"
+  };
+
   const intelligentBlockId=normalizedText(transactionWithIntelligence?.intelligent_block?.identity?.intelligent_block_id);
   if(!/^IB-\d{6}$/.test(intelligentBlockId))throw new Error("SMART_NOTE_CANONICAL_IB_ID_INVALID");
    const repositoryProjection={
@@ -353,6 +371,25 @@ Deno.serve(async(req)=>{
      source_event_id:eventId,
      canonical_receiver:"v7-smart-note-canonical"
    };
+  const smartLinkPath="/hub?ib="+encodeURIComponent(intelligentBlockId);
+  const smartLink={
+    kind:"smart_feed_intelligent_block",
+    path:smartLinkPath,
+    intelligent_block_id:intelligentBlockId,
+    source_event_id:eventId,
+    target:"Smart Feed",
+    canonical:true
+  };
+  const completionReceipt={
+    schema:"naya/smart-note-receiver-receipt/v1",
+    canonical_receiver:"v7-smart-note-canonical",
+    status:replayed?"replayed":"completed",
+    intelligent_block_id:intelligentBlockId,
+    event_id:eventId,
+    transaction_id:canonicalTransactionId,
+    feed_verification:feedVerificationReceipt,
+    smart_link:smartLink
+  };
   return json({
     ok:true,
     pipeline:replayed?"replayed":"completed",
@@ -360,7 +397,11 @@ Deno.serve(async(req)=>{
     collection:"Smart Notes",
     replayed,
     intelligent_block_id:intelligentBlockId||null,
+    transaction_id:canonicalTransactionId,
     transaction:transactionWithIntelligence,
+    feed_verification:feedVerificationReceipt,
+    smart_link:smartLink,
+    completion_receipt:completionReceipt,
     repository_projection:repositoryProjection
   });
 
