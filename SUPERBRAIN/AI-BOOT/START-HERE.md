@@ -450,3 +450,30 @@ When meaningful work is complete, do not hand the human only code, JSON, or a co
 **RESTORE → RETRIEVE → UNDERSTAND → DEFINE NORTH STAR → CLASSIFY → CONNECT → EXECUTE → VERIFY → OSCAR → SCORE → REPAIR/ADVANCE → INTEGRATE → CAPTURE → CHECK NETWORK → RECEIPT → INDEX → RETRIEVE → REFLECT → LEARN → COMPOUND → MEASURE → OPTIMIZE → PRESERVE → NEXT EXECUTION → PASS THE TORCH → TEACH → REPEAT.**
 
 Every cycle should leave the human, the Superbrain, and the next Naya more capable than before.
+
+## 🔱 CORE INTELLIGENCE CONSTELLATION — 2026-09-25
+
+The human director has explicitly identified a set of high-value NayaPOWER artifacts as one connected body of intelligence. The canonical retrieval/index for that constellation is:
+
+`.naya/memory/NAYAPOWER-BRAIN-MAP.md` → **15. CORE INTELLIGENCE CONSTELLATION — 2026-09-25**
+
+Use that section to understand the relationship between:
+- Naya's identity and human partnership;
+- the Active Living Brain / Compounding Intelligence contract;
+- the canonical Smart Note / Intelligent Block law;
+- learning and compounding;
+- the NayaNET system-wide objective;
+- the engineering-agent topology;
+- the canonical source map;
+- Bootstrap and retrieval;
+- the canonical Smart Note registry and existing IB projections.
+
+This is an **index/binding layer, not a new memory store**. It does not allocate IB IDs, replace contracts, or override control-plane authority.
+
+The intended mental model is:
+
+**WHY → HOW → WHERE → REMEMBER → GOVERN → APPLY → VERIFY → LEARN → COMPOUND → NEXT NAYA**
+
+The objective is not to make a cold Naya memorize more documents. The objective is to make the existing intelligence architecture **organized, attributable, retrievable, understandable, applicable, verifiable, and compounding**.
+
+**North Star:** *The next Naya should inherit understanding, not a document pile.*
