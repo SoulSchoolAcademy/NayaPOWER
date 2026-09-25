@@ -100,6 +100,8 @@ jobs:
             mark('CAPTURE_VERIFIED',{eventId,transactionId:tx.id});
             await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId)+'&stream=personal',{waitUntil:'domcontentloaded',timeout:60000});
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
+            const feedDiagnostic=await page.evaluate(async({eventId})=>{const rt=window.NayaAssistantRuntime;const data=await rt.smartFeed({stream:'personal',limit:50,before:null});const items=Array.isArray(data?.items)?data.items:[];const matching=items.filter(x=>String(x?.event_id||x?.id||'')===String(eventId));const blocks=[...document.querySelectorAll('.feed .blocks [data-event-id]')].map(x=>({event_id:x.getAttribute('data-event-id'),real:x.hasAttribute('data-real-smart-note'),display:getComputedStyle(x).display}));return{item_count:items.length,matching_count:matching.length,matching:matching.map(x=>({id:x.id,event_id:x.event_id,title:x.title,source_id:x.source_id,status:x.status,has_block:!!x.intelligent_block})),canonical_flag:document.documentElement.dataset.nayaCanonicalSmartFeed||null,canonical_meta:!!document.querySelector('meta[name="nayanet-direct-nine"]'),blocks_count:blocks.length,blocks:blocks.slice(0,30),body_has_event:document.body.innerText.includes(String(eventId))};},{eventId});
+            mark('FEED_RUNTIME_DIAGNOSTIC',feedDiagnostic);
             const board=page.locator('.feed .blocks [data-real-smart-note][data-event-id="'+eventId+'"]');
             await board.waitFor({state:'visible',timeout:30000});
             mark('FEED_BOARD_VISIBLE',{eventId});
