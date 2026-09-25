@@ -112,7 +112,8 @@ jobs:
               if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='CANDIDATE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
               if(freshRows.event.status!==200||freshRows.event.body?.length!==1||freshRows.event.body[0].user_id!==ownerId)throw new Error('FRESH_EVENT_RETRIEVAL_FAILED');
               mark('FRESH_RETRIEVAL','PASS',{evidence_id:evidenceId,event_id:eventId,owner_id:ownerId});
-              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_CANDIDATE_PENDING_INDEPENDENT_OUTCOME',disposition:classification,disposition_reason:reason,existing_block_id:blockAfter[0]?.block_id||null,existing_block_count:blockAfter.length,trace};
+              const existingCanonicalBlock=blockBefore[0]||blockAfter[0]||null;
+              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_CANDIDATE_PENDING_INDEPENDENT_OUTCOME',disposition:classification,disposition_reason:reason,existing_block_id:existingCanonicalBlock?.block_id||null,existing_block_count:blockBefore.length,trace};
               fs.writeFileSync('universal-learning-output-proof.json',JSON.stringify(proof,null,2)+'\n');
               await fresh.close(); await freshCtx.close();
             }catch(e){
