@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Cold Successor Test Harness
 Tests the 14-question cold reconstruction contract for NayaNET.
