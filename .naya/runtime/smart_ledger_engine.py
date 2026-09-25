@@ -1,6 +1,11 @@
-"""Minimal deterministic Smart Ledger / CCT vertical slice V1.
+"""Legacy-compatibility Smart Ledger / CCT vertical slice V1.
 
-CREATE SMART NOTE -> CREATE LEDGER EVENT -> VERIFY -> VALUE -> POINTS -> LEVEL -> SMART LINK
+This module is a non-persistent compatibility/test engine. Its in-memory
+SmartNote dataclass is NOT the canonical Smart Note / Intelligent Block object.
+Canonical durable intelligence enters through the live receiver and the
+canonical IB projection/runtime.
+
+CREATE COMPATIBILITY NOTE -> CREATE LEDGER EVENT -> VERIFY -> VALUE -> POINTS -> LEVEL -> SMART LINK
 """
 from __future__ import annotations
 
@@ -69,6 +74,7 @@ def _hash_event(payload: dict, previous_hash: Optional[str]) -> str:
     return sha256(canonical.encode("utf-8")).hexdigest()
 
 def create_smart_note(title: str, content: str, *, note_id: Optional[str] = None) -> SmartNote:
+    """Create an in-memory compatibility note; never persist or allocate a canonical IB."""
     if not title.strip() or not content.strip():
         raise ValueError("A Smart Note requires a non-empty title and content.")
     return SmartNote(note_id or f"note_{uuid4().hex}", title.strip(), content.strip(), utc_now())
