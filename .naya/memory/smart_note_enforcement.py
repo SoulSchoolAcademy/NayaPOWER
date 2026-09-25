@@ -190,8 +190,8 @@ def validate_smart_note_operation(
         if not _nonempty(rep.get("smart_link")):
             errors.append(f"{name} representation missing Smart Link")
     rep_ids = [reps[n].get("id") for n in REQUIRED_REPRESENTATIONS if isinstance(reps.get(n), dict)]
-    if len(rep_ids) == 3 and len(set(rep_ids)) != 3:
-        errors.append("Shawn/Naya/Machine representation IDs must be distinct")
+    if len(rep_ids) == len(REQUIRED_REPRESENTATIONS) and len(set(rep_ids)) != len(rep_ids):
+        errors.append("canonical representation IDs must be distinct")
 
     effective_at = str(event.get("effective_at", ""))
     event_path = None
