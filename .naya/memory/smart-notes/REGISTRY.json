@@ -4,7 +4,28 @@
   "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
   "identity_rule": "One immutable IB identity per canonical intelligence object.",
   "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
-  "entries": [],
+  "entries": [
+    {
+      "intelligent_block_id": "IB-000003",
+      "path": ".naya/memory/smart-notes/2026/09/20/verification/wave-a-shell-acceptance/IB-000003/smart-note.md",
+      "date": "2026-09-20",
+      "category": "verification",
+      "topic": "wave-a-shell-acceptance",
+      "status": "DURABLE",
+      "owner": "48c40e43-8cca-4c6e-9427-d3bfd7d788db",
+      "scope": "PRIVATE",
+      "project": "NayaNET",
+      "permissions": {
+        "access": "PRIVATE"
+      },
+      "authority": null,
+      "applicable_scope": {
+        "privacy": "PRIVATE"
+      },
+      "learning_state": null,
+      "source_event_id": "b06846b3-49eb-45c1-8557-a986831f0d4c"
+    }
+  ],
   "archive_boundary_note": "IB-000001 and IB-000002 are preserved as historical repository-only projections. Live receiver evidence shows no receiver-backed records for either ID; the production receiver currently begins at IB-000003. They are excluded from the active canonical registry and cannot be retrieved as live Intelligent Blocks.",
   "identity_authority": "live canonical receiver only",
   "identity_allocation_rule": "The live canonical receiver allocates immutable IB IDs. Repository files, registry consumers, tests, scripts, and Nayas must never calculate, guess, increment, reserve, or assign an IB ID."
