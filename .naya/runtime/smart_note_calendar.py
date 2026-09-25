@@ -70,7 +70,8 @@ def _upsert_registry(*, registry_path: Path, ib_id: str, projection_path: Path,
     }
     if registry.get("status") != "CANONICAL":
         raise ValueError("CANONICAL_SMART_NOTE_REGISTRY_NOT_CANONICAL")
-    relative = projection_path.relative_to(registry_path.parents[3]).as_posix()
+    registry_root = registry_path.parent
+    relative = projection_path.relative_to(ROOT).as_posix() if registry_root == SMART_NOTES_ROOT else projection_path.relative_to(registry_root).as_posix()
     entries = registry.setdefault("entries", [])
     matches = [e for e in entries if isinstance(e,dict) and e.get("intelligent_block_id")==ib_id]
     for e in matches:
