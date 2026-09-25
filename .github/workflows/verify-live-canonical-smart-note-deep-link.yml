@@ -1,0 +1,35 @@
+name: Verify Live Canonical Smart Note Deep-Link Golden Path
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  golden-path:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 15
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+      - name: Execute golden path
+        run: |
+          mkdir -p .tmp-proof
+          PROOF_PATH=.tmp-proof/canonical-smart-note-deep-link-proof.json node .github/scripts/canonical-smart-note-deep-link.mjs
+      - name: Upload proof
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: canonical-smart-note-deep-link-golden-path
+          path: .tmp-proof/canonical-smart-note-deep-link-proof.json
+          if-no-files-found: warn
