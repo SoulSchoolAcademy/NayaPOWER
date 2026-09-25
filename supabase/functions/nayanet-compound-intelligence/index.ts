@@ -281,7 +281,31 @@ async function retrieve(client: any, userId: string, body: any) {
     .or("title.ilike.%"+q+"%,content.ilike.%"+q+"%,type.ilike.%"+q+"%,classification.ilike.%"+q+"%")
     .order("created_at", { ascending: false }).limit(limit);
   if (result.error) throw result.error;
-  return { schema: "NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1", query: q, count: result.data?.length ?? 0, items: result.data ?? [] };
+  const sourceIds = (result.data ?? []).map((row:any) => row.id).filter(Boolean);
+  const [indexResult, blockResult] = await Promise.all([
+    sourceIds.length
+      ? client.from("nayanet_intelligence_index")
+          .select("id,owner_id,source_table,source_id,object_type,title,status,project_id,revision,metadata,created_at,updated_at")
+          .eq("owner_id", userId).eq("source_table", "nayanet_cognition_events").in("source_id", sourceIds)
+      : Promise.resolve({data:[],error:null}),
+    sourceIds.length
+      ? client.from("nayanet_intelligent_blocks")
+          .select("block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version")
+          .eq("owner_id", userId).contains("source_event_ids", sourceIds)
+      : Promise.resolve({data:[],error:null})
+  ]);
+  if (indexResult.error) throw indexResult.error;
+  if (blockResult.error) throw blockResult.error;
+  return {
+    schema: "NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1",
+    query: q,
+    count: result.data?.length ?? 0,
+    items: result.data ?? [],
+    library: {
+      indexes: indexResult.data ?? [],
+      intelligent_blocks: blockResult.data ?? []
+    }
+  };
 }
 
 async function reconcile(client: any, userId: string) {
