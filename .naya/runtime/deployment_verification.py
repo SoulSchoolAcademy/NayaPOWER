@@ -72,16 +72,52 @@ class DeploymentVerifier:
         return actual_sha == expected
     
     def check_runtime_deployment(self) -> bool:
-        """Check Cloudflare Worker deployment status"""
-        # This would need Cloudflare API access
-        # For now, document the expected state
+        """Read-only probe of the live Hub for the canonical deep-link contract."""
+        import urllib.request
+        import urllib.error
+
+        required_markers = (
+            "NAYA-CANONICAL-IB-DEEP-LINK-V1",
+            "NayaHubDeepLink",
+            "retrieveIntelligentBlock",
+        )
+        status = None
+        body = ""
+        try:
+            req = urllib.request.Request(RUNTIME_URL, method="GET", headers={"Cache-Control":"no-cache"})
+            response = urllib.request.urlopen(req, timeout=10)
+            status = response.status
+            body = response.read().decode("utf-8", "replace")
+        except urllib.error.HTTPError as e:
+            status = e.code
+        except Exception as e:
+            self.results["checks"]["runtime_deployment"] = {
+                "worker": CLOUDFLARE_WORKER,
+                "url": RUNTIME_URL,
+                "status": "MANUAL_VERIFICATION_REQUIRED",
+                "reason": "LIVE_PROBE_ERROR",
+                "detail": str(e),
+                "required_markers": list(required_markers),
+            }
+            return False
+
+        markers = {marker: marker in body for marker in required_markers}
+        contract_present = status == 200 and all(markers.values())
+        reason = "LIVE_SOURCE_CONTRACT_PRESENT" if contract_present else (
+            "LIVE_SOURCE_MISSING_DEEP_LINK_CONTRACT" if status == 200 else "LIVE_HUB_HTTP_ERROR"
+        )
         self.results["checks"]["runtime_deployment"] = {
             "worker": CLOUDFLARE_WORKER,
             "url": RUNTIME_URL,
-            "status": "MANUAL_VERIFICATION_REQUIRED",
-            "note": "Verify via Cloudflare Dashboard: Worker deployed, version matches source"
+            "http_status": status,
+            "status": "PASS" if contract_present else "FAIL",
+            "reason": reason,
+            "required_markers": list(required_markers),
+            "markers": markers,
+            "source_length": len(body),
+            "note": "Read-only live source contract probe; it does not prove authenticated owner retrieval or browser reload continuity."
         }
-        return True  # Can't auto-verify without API
+        return contract_present
     
     def check_supabase_edge_functions(self) -> bool:
         """Check Supabase Edge Function versions"""
