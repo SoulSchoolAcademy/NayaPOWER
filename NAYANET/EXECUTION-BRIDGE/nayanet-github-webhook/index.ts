@@ -20,11 +20,13 @@ function normalize(payload:any,delivery:string){
   const repo=payload?.repository?.full_name||"";
   const sha=payload?.after||payload?.pull_request?.head?.sha||payload?.workflow_run?.head_sha||null;
   const eventType=String(payload?.action?payload?.action:"github.webhook");
+  const action=payload?.action||"webhook";
   return {
     event_id:"github:"+delivery,
     source_event_id:delivery,
     source_system:"github",
     event_type:eventType,
+    title:`GitHub ${action} on ${repo}`,
     repository:repo,
     ref:payload?.ref||payload?.pull_request?.base?.ref||payload?.workflow_run?.head_branch||null,
     commit_sha:sha,
