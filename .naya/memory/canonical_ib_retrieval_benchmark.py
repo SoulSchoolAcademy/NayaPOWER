@@ -1,4 +1,4 @@
-﻿"""Canonical IB retrieval benchmark; no persistence, no alternate authority."""
+"""Canonical IB retrieval benchmark; no persistence, no alternate authority."""
 import json
 import sys
 import tempfile
