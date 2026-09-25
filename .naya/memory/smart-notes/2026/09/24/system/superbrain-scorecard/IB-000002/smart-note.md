@@ -216,7 +216,7 @@ Largest remaining value gaps:
 - removal of competing historical write paths;
 - measurable intelligence compounding.
 
-**Truth state:** Source-level canonicalization is implemented and recorded. Production adoption of the newest source changes still requires independent live verification.
+**Truth state:** Source-level canonicalization is implemented and recorded. The production Smart Note identity boundary is now live: `nayanet_intelligent_blocks.intelligent_block_id` is NOT NULL, unique, format-checked as `IB-XXXXXX`, existing 647 runtime blocks are mapped to `IB-000003` through `IB-000649`, and Smart Note receiver version 13 is deployed. Full authenticated human capture/reload proof for this newest identity boundary remains the next live test.
 
 **END — IB-000002**
 
