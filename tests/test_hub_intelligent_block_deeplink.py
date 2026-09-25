@@ -31,6 +31,6 @@ def test_deep_link_uses_authenticated_runtime_and_preserves_identity_provenance(
     source = HUB.read_text(encoding="utf-8")
     assert "retrieveIntelligentBlock" in source
     assert "data-intelligence-id" in source
-    assert "data-event-id" in source
-    assert "data-source-event-id" in source
+    assert "dataset.eventId=sourceEventId" in source
+    assert "dataset.sourceEventId=sourceEventId" in source
     assert "owner_id" not in source
