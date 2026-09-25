@@ -21,6 +21,7 @@ def verify():
     if retrieval.get("canonical_primary_store") != ".naya/memory/smart-notes/": errors.append("retrieval manifest points canonical primary store away from Smart Note/IB projections")
     if retrieval.get("canonical_registry") != ".naya/memory/smart-notes/REGISTRY.json": errors.append("retrieval manifest does not name the canonical IB registry")
     if retrieval.get("event_lineage_store") != ".naya/memory/events/": errors.append("retrieval manifest does not isolate event lineage store")
+    if (MEMORY/"note.schema.json").exists(): errors.append("legacy Smart Note v2 schema remains on the active memory surface")
     registry=json.loads((MEMORY/"smart-notes"/"REGISTRY.json").read_text(encoding="utf-8"))
     if registry.get("status")!="CANONICAL": errors.append("Smart Note registry is not CANONICAL")
     for entry in registry.get("entries",[]):
