@@ -63,6 +63,8 @@ def test_smart_note_md_outside_canonical_namespace_is_rejected():
         root = Path(tmp)
         path = root / ".naya/memory/notes/2026/09/25/smart-note.md"
         path.parent.mkdir(parents=True)
+        (root / ".naya/memory/smart-notes").mkdir(parents=True)
+        (root / ".naya/memory/smart-notes/REGISTRY.json").write_text('{"entries":[]}', encoding="utf-8")
         path.write_text("# SMART NOTE\n", encoding="utf-8")
         errors = module.audit(root)
         assert any("smart-note.md outside canonical Smart Note root" in error for error in errors)
