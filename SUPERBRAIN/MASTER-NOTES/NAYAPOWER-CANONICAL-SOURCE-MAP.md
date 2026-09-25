@@ -155,6 +155,35 @@ These documents may define important specialized behavior, but they cannot silen
 
 ---
 
+
+
+# 6A. CURRENT SYSTEM-WIDE NAYANET ALIGNMENT — 2026-09-24
+
+The current product/build alignment is recorded in canonical Smart Note IB-000650:
+
+`.naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000650/smart-note.md`
+
+It defines the current NayaNET “Hub Is the House” model:
+
+- NayaPOWER / Superbrain = governed intelligence and control layer.
+- Intelligent Hub = the house and human-facing projection/action surface.
+- Hub rooms = Intelligence Today, Feed, Reports, Intelligent Library, Smart Connect, Smart Mail, Smart Lists, Contacts, Smart Spaces, Smart Ledger, Settings.
+- Dream = Superbrain process, not a Hub room.
+- Naya Play = Intelligent Block capability, not a Hub room.
+- Smart Connect = canonical connection/participation surface; Smart Share is retired.
+- Welcome + Identity = future front door; do not treat it as the current production application boundary.
+- UI presence is not runtime completion.
+- Documentation is not proof.
+- Capability does not create authority.
+- Participation does not create execution authority.
+- Private identity, intelligence, and activity remain protected by default.
+
+This alignment is a current **system-wide product/build source**, not a replacement for the constitution or machine control plane. Constitutional rules, live authoritative sources, and current control-plane state continue to outrank it where they govern the same question.
+
+The migration/reconciliation map is:
+
+`.naya/codex/SMART-NOTE-MIGRATION-MAP-2026-09-24.md`
+
 # 7. V1.1 VALUE ALIGNMENT PROTOCOL
 
 `SUPERBRAIN/NAYA-POWER-VALUE-ALIGNMENT-AND-CONSTITUTION-PROTOCOL-V1.1.md` is the **current constitutional extension/protocol for value alignment**.
