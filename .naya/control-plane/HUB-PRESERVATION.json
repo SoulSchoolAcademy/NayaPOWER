@@ -22,18 +22,18 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "e293975b8e65d2648aa5b8633aaef7ae46e2442c",
+    "main_observed_head": "fa67e1263a97c46247916396f5ed590e45864165",
     "checkpoint_branch": "main",
-    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_RELEASE_GATE",
+    "checkpoint_type": "CANONICAL_HUB_CURRENT_SOURCE",
     "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
     "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
-    "recovery_entrypoint_blob_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
-    "advancement_reason": "Advance the preservation checkpoint to the live main commit after the governed release gate was restored. The canonical Hub source blob remains 6a61b2c775d4e4b7a04721606813ec0031870399; live production parity remains unverified until the release workflow completes and independent browser verification passes.",
-    "recorded_at": "2026-09-25T06:27:00.000Z"
+    "recovery_entrypoint_blob_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
+    "advancement_reason": "Advance the preservation checkpoint to the current canonical Hub source after the live runtime projection change. The checkpoint intentionally follows the canonical source blob; the production release and browser parity gates remain independent proof requirements.",
+    "recorded_at": "2026-09-25T06:45:00.000Z"
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
-    "entrypoint_blob_sha_at_checkpoint": "6a61b2c775d4e4b7a04721606813ec0031870399",
+    "entrypoint_blob_sha_at_checkpoint": "0c2b9381deda6db5935afc55c508d97a965ae412",
     "implementation_authority": "NAYANET/HUB/index.html",
     "preserved_react_lane": "NAYANET/HUB/src/",
     "preserved_react_lane_status": "HISTORICAL_OR_ALTERNATE_IMPLEMENTATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
