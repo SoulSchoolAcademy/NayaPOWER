@@ -4,6 +4,8 @@
 **Authority:** Specialized canonical subsystem contract under the NayaPOWER Constitution and Control Plane
 **Purpose:** Establish one law, one identity, one structure, one lifecycle, and one operating protocol for durable intelligence.
 
+**Creation Gate:** `.naya/codex/NAYA-POWER-CANONICAL-INTELLIGENCE-BEFORE-CREATION-LAW.md` — resolve canonicality before creating new intelligence.
+
 ## 1. THE LAW
 
 Every meaningful piece of durable intelligence MUST enter NayaPOWER through the canonical Smart Note / Intelligent Block system.

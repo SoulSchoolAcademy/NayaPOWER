@@ -468,5 +468,27 @@
     "repair": "Removed the obsolete duplicate Intelligent Block materialization path, retaining the deterministic canonical Block path.",
     "proof_status": "NOT_VERIFIED_AFTER_REPAIR",
     "deployment_authorization": "REQUIRED_FRESH_L3_PRODUCTION_AUTHORIZATION"
+  },
+  "smart_note_canonicalization_20260925": {
+    "status": "IN_PROGRESS_BLOCKED_ON_EXECUTION",
+    "pr": 730,
+    "branch": "naya/smart-note-canonicalization-20260925",
+    "head_sha": "cdd5c08f0cb7c5014ca2411dd82a8c066d451098",
+    "law": ".naya/codex/NAYA-POWER-CANONICAL-INTELLIGENCE-BEFORE-CREATION-LAW.md",
+    "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+    "reconciliation": ".naya/project-intelligence/SMART-NOTE-CANONICALIZATION-RECONCILIATION-2026-09-25.md",
+    "defects_found": [
+      "local repository IB identity allocation",
+      "incomplete canonical human-section validation"
+    ],
+    "repairs_committed": true,
+    "focused_test": ".naya/runtime/test_smart_note_canonicalization.py",
+    "test_execution": "UNKNOWN",
+    "test_reason": "No online Remote Desktop execution device and no registered Codex execution environment; GitHub connector exposes no workflow dispatch action.",
+    "merge_status": "NOT_MERGED",
+    "merge_gate": "NOT_SATISFIED — focused test execution/CI evidence is not green",
+    "production_mutation": false,
+    "new_smart_note_created": false,
+    "next_action": "Execute the focused canonicalization test against commit cdd5c08f0cb7c5014ca2411dd82a8c066d451098; if RED repair first failure and rerun; if GREEN inspect final diff and merge PR #730, then begin lineage-first reconciliation of today's Smart Note population."
   }
 }

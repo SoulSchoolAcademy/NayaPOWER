@@ -33,8 +33,9 @@ PIS_PATH = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json
 # "grammar" remains accepted only as a legacy input field and is never emitted
 # as a canonical Smart Note perspective.
 REQUIRED = (
-    "in_a_nutshell", "human", "child", "grandma", "naya", "machine",
-    "learning", "why_it_matters", "how_it_connects", "how_to_use", "value",
+    "in_a_nutshell", "date_time", "what", "why_it_matters",
+    "human", "child", "grandma", "naya", "machine", "learning",
+    "how_it_connects", "how_to_use", "ultimate_meaning", "value",
     "evidence", "current_state", "next_action",
 )
 CANONICAL_SCHEMA = "NAYANET_INTELLIGENT_BLOCK_V1"
@@ -335,7 +336,9 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
         note["category"] = str(note.get("category") or "system")
-        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or "")
+        if not note["intelligent_block_id"]:
+            raise ValueError("canonical Smart Note projection requires receiver-issued intelligent_block_id")
         if not IB_ID_RE.match(note["intelligent_block_id"]):
             raise ValueError("invalid canonical intelligent_block_id")
         note["what"] = str(note.get("what") or note["topic"])
