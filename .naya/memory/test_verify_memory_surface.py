@@ -16,3 +16,10 @@ def test_retrieval_manifest_names_canonical_ib_store():
 def test_legacy_v2_schema_is_quarantined():
     assert not (ROOT / ".naya/memory/note.schema.json").exists()
     assert (ROOT / ".naya/memory/archive/legacy-pre-2026-09-25/note.schema.v2-legacy.json").exists()
+
+
+def test_cold_restore_uses_canonical_ib_runtime():
+    restore = (ROOT / ".naya" / "runtime" / "restore_context.py").read_text(encoding="utf-8")
+    assert "from smart_notes_v3 import" in restore
+    assert "memory_runtime" not in restore
+    assert "retrieve_canonical_ibs(" in restore
