@@ -128,7 +128,7 @@ If **NO**, do not end. Strengthen the handoff.
 
 For current NayaNET product/architecture alignment, read the human-director-approved September 24 “Hub Is the House” Smart Note:
 
-`.naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000650/smart-note.md`
+`.naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000659/smart-note.md`
 
 The canonical migration/reconciliation map is:
 
