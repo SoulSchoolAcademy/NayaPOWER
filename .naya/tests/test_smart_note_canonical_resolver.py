@@ -102,8 +102,8 @@ def test_transaction_rejects_missing_receiver_assigned_ib_before_persistence():
     }
     try:
         module.execute(note)
-    except ValueError as exc:
-        assert str(exc) == "live canonical receiver must supply intelligent_block_id"
+    except RuntimeError as exc:
+        assert str(exc).startswith("LOCAL_SMART_NOTE_CREATION_DISABLED: use v7-smart-note-canonical")
     else:
         raise AssertionError("transaction accepted missing receiver-assigned IB identity")
 
@@ -111,7 +111,8 @@ def test_transaction_rejects_missing_receiver_assigned_ib_before_persistence():
 def test_transaction_cannot_allocate_ib_identity_locally():
     source = MODULE_PATH.read_text(encoding="utf-8")
     assert "_allocate_ib_id" not in source
-    assert "live canonical receiver" in source.lower()
+    assert "v7-smart-note-canonical" in source
+    assert "identity_cursor" not in source
 
 if __name__ == "__main__":
     test_canonical_smart_note_path()
