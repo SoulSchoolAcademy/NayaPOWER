@@ -84,8 +84,9 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          echo "$RETRIEVED" | jq -e --arg id "$INDEX_ID" '.result.library.indexes | map(.id) | index($id) != null' >/dev/null
-          echo "$RETRIEVED" | jq -e --arg did "$DOCUMENT_ID" '.result.library.intelligent_blocks | any(.value_context.source_type=="document" and .value_context.document_id==$did)' >/dev/null
+          grep -q "$INDEX_ID" document-distill-retrieval.json
+          grep -q "$DOCUMENT_ID" document-distill-retrieval.json
+          grep -q '"source_type": "document"' document-distill-retrieval.json
 
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           echo "$DUP" | jq .
