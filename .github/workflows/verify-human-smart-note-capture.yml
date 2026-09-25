@@ -99,7 +99,7 @@ jobs:
             if(!eventId||!tx?.id)throw new Error('CANONICAL_CAPTURE_RESULT_INCOMPLETE');
             mark('CAPTURE_VERIFIED',{eventId,transactionId:tx.id});
             await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId)+'&stream=personal',{waitUntil:'domcontentloaded',timeout:60000});
-            const board=page.locator('#blocks [data-event-id="'+eventId+'"]');
+            const board=page.locator('#blocks [data-real-smart-note][data-event-id="'+eventId+'"]').first();
             await board.waitFor({state:'visible',timeout:30000}); mark('FEED_ROUTE_REACHED',{url:page.url(),surface:'canonical-hub-blocks'});
             const feedDiagnostic=await page.evaluate(async({eventId})=>{const rt=window.NayaAssistantRuntime;const data=await rt.smartFeed({stream:'personal',limit:50,before:null});const items=Array.isArray(data?.items)?data.items:[];const matching=items.filter(x=>String(x?.event_id||x?.id||'')===String(eventId));const blocks=[...document.querySelectorAll('#blocks [data-event-id]')].map(x=>({event_id:x.getAttribute('data-event-id'),real:x.hasAttribute('data-real-smart-note'),display:getComputedStyle(x).display}));return{item_count:items.length,matching_count:matching.length,matching:matching.map(x=>({id:x.id,event_id:x.event_id,title:x.title,source_id:x.source_id,status:x.status,has_block:!!x.intelligent_block})),canonical_flag:document.documentElement.dataset.nayaCanonicalSmartFeed||null,canonical_meta:!!document.querySelector('meta[name="nayanet-direct-nine"]'),blocks_count:blocks.length,blocks:blocks.slice(0,30),body_has_event:document.body.innerText.includes(String(eventId))};},{eventId});
             mark('FEED_RUNTIME_DIAGNOSTIC',feedDiagnostic);
@@ -109,11 +109,11 @@ jobs:
             await activityTab.waitFor({state:'visible',timeout:30000});
             await activityTab.click();
             await page.waitForFunction(()=>document.querySelector('.feedNav button[data-feed="activity"]')?.classList.contains('active'),{timeout:30000});
-            const activity=page.locator('#blocks [data-event-id="'+eventId+'"]');
+            const activity=page.locator('#blocks [data-real-smart-note][data-event-id="'+eventId+'"]').first();
             await activity.waitFor({state:'visible',timeout:30000});
             mark('ACTIVITY_EXACT_EVENT_PRESERVED',{eventId});
             await page.reload({waitUntil:'domcontentloaded',timeout:60000});
-            const restored=page.locator('#blocks [data-event-id="'+eventId+'"]');
+            const restored=page.locator('#blocks [data-real-smart-note][data-event-id="'+eventId+'"]').first();
             await restored.waitFor({state:'visible',timeout:30000});
             mark('RELOAD_EXACT_EVENT_PRESERVED',{eventId});
 
