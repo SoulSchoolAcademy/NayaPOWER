@@ -45,6 +45,8 @@ const requireVerified=(result,error)=>{if(result.status!=='VERIFIED')throw Error
   if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
   if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
   const capture=await page.evaluate(async({title,note})=>window.NayaAssistantRuntime.captureSmartNote({title,content:note,source:'universal-envelope-hub-runtime-sender',status:'active',tags:['universal-envelope','hub-runtime','sender-coverage']}),{title,note});
+  const capturePipeline=String(capture?.pipeline||'UNKNOWN');
+  if(capture?.ok!==true||capture?.error||!['completed','replayed'].includes(capturePipeline))throw Error('SMART_NOTE_RECEIVER_PIPELINE_FAILED|pipeline='+capturePipeline+'|ok='+String(capture?.ok??'UNAVAILABLE')+'|error='+String(capture?.error||'UNAVAILABLE'));
   const eventId=String(capture?.event?.event_id||capture?.event_id||capture?.transaction?.evidence?.event_id||'');
   const transactionId=String(capture?.transaction?.id||'');
   if(!eventId||!transactionId)throw Error('HUB_RUNTIME_CAPTURE_LINEAGE_MISSING');

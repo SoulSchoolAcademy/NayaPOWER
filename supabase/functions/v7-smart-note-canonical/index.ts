@@ -157,6 +157,7 @@ function buildIntelligentBlock(args:{
 Deno.serve(async(req)=>{
  if(req.method==="OPTIONS")return new Response("ok",{headers:cors});
  if(req.method!=="POST")return json({ok:false,error:"METHOD_NOT_ALLOWED"},405);
+ let canonicalEventId:string|null=null,canonicalReceiptId:string|null=null,canonicalTransactionId:string|null=null;
  try{
   const supabaseUrl=Deno.env.get("SUPABASE_URL"),supabaseAnonKey=Deno.env.get("SUPABASE_ANON_KEY");
   if(!supabaseUrl||!supabaseAnonKey)throw new Error("SUPABASE_RUNTIME_NOT_CONFIGURED");
@@ -166,7 +167,7 @@ Deno.serve(async(req)=>{
   const body=await req.json(),human=body?.human_note,naya=body?.naya_note,idempotencyKey=body?.idempotency_key||req.headers.get("x-idempotency-key");
   if(!idempotencyKey||typeof idempotencyKey!=="string")return json({ok:false,error:"SMART_NOTE_IDEMPOTENCY_KEY_REQUIRED"},400);
   if(!human||!naya)return json({ok:false,error:"HUMAN_AND_NAYA_NOTES_REQUIRED"},400);
-  const now=new Date().toISOString(),eventId=crypto.randomUUID();
+  const now=new Date().toISOString(),eventId=crypto.randomUUID();canonicalEventId=eventId;
   const canonicalHuman={...human,event_id:eventId};
   const canonicalNaya={...naya,event_id:eventId};
   const subject=String(body?.subject||human.subject||"Intelligent Note").trim()||"Intelligent Note";
@@ -181,10 +182,10 @@ Deno.serve(async(req)=>{
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
-  const evidence={receipt_id:crypto.randomUUID(),event_id:eventId,source,chain:["human_note","naya_note","machine_note","intelligence_feed","intelligent_block_v1"],verified_at:now,artifact_urls:artifactUrls,receipt_url:typeof body?.receipt_url==="string"?body.receipt_url:null,intelligent_block_v1:true,intelligent_block_hash:blockHash};
+  const evidence={receipt_id:crypto.randomUUID(),event_id:eventId,source,chain:["human_note","naya_note","machine_note","intelligence_feed","intelligent_block_v1"],verified_at:now,artifact_urls:artifactUrls,receipt_url:typeof body?.receipt_url==="string"?body.receipt_url:null,intelligent_block_v1:true,intelligent_block_hash:blockHash};canonicalReceiptId=evidence.receipt_id;
   const hubState={event_id:eventId,last_intelligence_event_at:now,smart_note_created:true,intelligent_block_created:true,intelligent_block_schema:"NAYANET_INTELLIGENT_BLOCK_V1",intelligent_block_hash:blockHash,feed_updated:true,canonical_collection:"Smart Notes",private_feed:true};
   const {data,error}=await supabase.rpc("v7_create_smart_note",{p_idempotency_key:idempotencyKey,p_user_id:user.id,p_human_note:canonicalHuman,p_naya_note:canonicalNaya,p_machine_note:machine,p_intelligent_feed:feed,p_intelligent_block:block,p_evidence:evidence,p_hub_state:hubState,p_subject:subject});
-  if(error)throw error;
+  if(error)throw error;canonicalTransactionId=String(data?.id||data?.transaction_id||"");
 
   // Idempotent replay must continue from the persisted canonical event identity.
   // The RPC is the transaction authority; a replay must never generate a fresh
@@ -287,5 +288,5 @@ Deno.serve(async(req)=>{
     collection:"Smart Notes",
     transaction:transactionWithIntelligence
   });
- }catch(error){console.error(error);return json({ok:false,error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error)},500)}
+ }catch(error){console.error(error);return json({ok:false,pipeline:"failed",error:"SMART_NOTE_PIPELINE_FAILED",detail:String(error),event_id:canonicalEventId,receipt_id:canonicalReceiptId,transaction_id:canonicalTransactionId},500)}
 });

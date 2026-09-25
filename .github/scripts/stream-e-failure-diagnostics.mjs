@@ -45,12 +45,16 @@ export function summarizeReceiverResponse(status,body,idempotencyKey=''){
   const value=body&&typeof body==='object'?body:{};
   return {
     status:Number.isFinite(Number(status))?Number(status):null,
+    ok:value.ok===true,
+    pipeline:pick(value.pipeline),
     error:pick(value.error,'SMART_NOTE_PIPELINE_FAILED'),
     detail:pick(value.detail),
     correlation_id:pick(value.correlation_id,value.request_id,value.trace_id,idempotencyKey),
     event_id:pick(value.event_id,value.transaction?.evidence?.event_id),
     receipt_id:pick(value.receipt_id,value.transaction?.evidence?.receipt_id),
-    transaction_id:pick(value.transaction_id,value.transaction?.id)
+    transaction_id:pick(value.transaction_id,value.transaction?.id),
+    learning_status:pick(value.transaction?.learning_evidence?.status),
+    checkpoint_status:pick(value.transaction?.intelligence_checkpoint?.status)
   };
 }
 export function summarizeReceiverBridgeResponse(status,body){
@@ -63,11 +67,12 @@ export function summarizeReceiverBridgeResponse(status,body){
 }
 export function formatRuntimeFailure(status,body,idempotencyKey=''){
   const value=summarizeReceiverResponse(status,body,idempotencyKey);
-  return `SMART_NOTE_PIPELINE_FAILED|status=${value.status??'UNKNOWN'}|code=${value.error}|correlation=${value.correlation_id}|event=${value.event_id}|receipt=${value.receipt_id}|transaction=${value.transaction_id}|detail=${value.detail}`;
+  return `SMART_NOTE_PIPELINE_FAILED|status=${value.status??'UNKNOWN'}|pipeline=${value.pipeline}|code=${value.error}|correlation=${value.correlation_id}|event=${value.event_id}|receipt=${value.receipt_id}|transaction=${value.transaction_id}|detail=${value.detail}`;
 }
 export function classifySenderFailure(error,responseTrace,receiverResponseTrace){
   const code=String(error?.message||error||'').split('\n')[0].trim();
   const hasLineage=Boolean(responseTrace&&responseTrace.event_id&&responseTrace.event_id!=='UNAVAILABLE');
+  if(code==='SMART_NOTE_RECEIVER_PIPELINE_FAILED')return {first_failure_boundary:'SMART_NOTE_RECEIVER_PIPELINE',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
   if(code==='PRODUCTION_RECEIVER_AUTHORIZATION_FAILED'||receiverResponseTrace?.code==='REF_NOT_AUTHORIZED')return {first_failure_boundary:'PRODUCTION_RECEIVER_AUTHORIZATION',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_AUTHORIZATION_FAILED',receiver_code:'REF_NOT_AUTHORIZED'};
   if(code==='PRODUCTION_RECEIVER_FAILED')return {first_failure_boundary:'PRODUCTION_RECEIVER',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_PRODUCTION_RECEIVER_FAILED'};
   if(code==='INDEPENDENT_RETRIEVAL_FAILED')return {first_failure_boundary:'INDEPENDENT_RETRIEVAL',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_FAILED'};
