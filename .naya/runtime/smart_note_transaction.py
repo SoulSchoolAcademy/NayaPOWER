@@ -63,6 +63,7 @@ def _load_ib_registry(path: Path | None = None) -> dict[str, Any]:
             "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
             "identity_rule": "One immutable IB identity per canonical intelligence object.",
             "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+            "identity_cursor": 0,
             "entries": [],
         }
     data = json.loads(registry_path.read_text(encoding="utf-8"))
@@ -79,7 +80,8 @@ def _allocate_ib_id() -> str:
         match = IB_ID_RE.match(str(value or ""))
         if match:
             used.append(int(match.group(1)))
-    next_number = max(used, default=0) + 1
+    cursor = int(registry.get("identity_cursor", 0) or 0)
+    next_number = max(used + [cursor], default=0) + 1
     if next_number > 999999:
         raise RuntimeError("Smart Note IB identity space exhausted")
     return f"IB-{next_number:06d}"
@@ -102,6 +104,8 @@ def _register_ib(note: dict[str, Any], path: Path) -> None:
         entries.append(entry)
     elif existing != entry:
         raise RuntimeError(f"Smart Note IB registry conflict: {ib_id}")
+    numeric = int(ib_id[3:])
+    registry["identity_cursor"] = max(int(registry.get("identity_cursor", 0) or 0), numeric)
     entries.sort(key=lambda row: row.get("intelligent_block_id", ""))
     _write_json(IB_REGISTRY_PATH, registry)
 
@@ -332,6 +336,8 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
         note["category"] = str(note.get("category") or "system")
         note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        if not IB_ID_RE.match(note["intelligent_block_id"]):
+            raise ValueError("invalid canonical intelligent_block_id")
         note["what"] = str(note.get("what") or note["topic"])
         note["ultimate_meaning"] = str(note.get("ultimate_meaning") or note["why_it_matters"])
 
