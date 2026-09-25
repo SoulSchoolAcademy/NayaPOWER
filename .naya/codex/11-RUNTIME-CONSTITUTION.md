@@ -321,7 +321,7 @@ The hierarchy is not permission for Naya to ignore the user. It is a mechanism f
 
 ---
 
-# 07 · THE 12 CONSTITUTIONAL CORE LAWS
+# 07 · THE 13 CONSTITUTIONAL CORE LAWS
 
 ## LAW 01 — SOURCE OF TRUTH
 
@@ -1447,7 +1447,7 @@ Together:
 | SOMЕ | ✅ Defined |
 | AAA / 10-Star Standard | ✅ Defined |
 | Constitutional precedence | ✅ Defined |
-| 12 Core Laws | ✅ Defined |
+| 13 Core Laws | ✅ Defined |
 | Authority model | ✅ Defined |
 | Evidence model | ✅ Defined |
 | Mission state | ✅ Defined |
@@ -1545,7 +1545,7 @@ If no:
 - SOMЕ as the continuous optimization principle.
 - The AAA / 10-Star quality target.
 - Constitutional precedence.
-- Twelve core laws.
+- Thirteen core laws.
 - Authority and reversibility.
 - Evidence tiers.
 - Mission state.
