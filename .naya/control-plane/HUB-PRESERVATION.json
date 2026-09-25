@@ -22,13 +22,13 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "a77a3e25c37beb2e28015f03d7d994b5c2d2cf15",
+    "main_observed_head": "9a4bd09cfb409fa5945f3bcd7834094d8a821bee",
     "checkpoint_branch": "main",
-    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_REPAIR",
+    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_RELEASE_GATE_REPAIR",
     "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
     "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
     "recovery_entrypoint_blob_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
-    "advancement_reason": "Advance the preservation checkpoint to the current main source because the canonical Hub now contains the authenticated owner-scoped Intelligent Block deep-link contract (/hub?ib=<IB-ID>) with exact source-event identity/provenance markers. Focused deep-link pytest is 4/4 PASS. This checkpoint records source authority only; live production parity remains blocked until the authorized production deployment is updated and independently verified."
+    "advancement_reason": "Restore the required preservation gate to current main so the governed Cloudflare release workflow can verify exact canonical Hub source identity before deployment. This records source authority only; live production parity remains unverified until the authorized deployment workflow completes and independent browser verification passes."
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
@@ -42,7 +42,7 @@
     "status": "RECORDED",
     "from": "React/Vite canonical implementation lane",
     "to": "historical static Hub implementation at NAYANET/HUB/index.html",
-    "reason": "User-directed restoration of the previously working canonical Hub surface from the preserved 74884cb checkpoint.",
+    "reason": "User-directed preservation of the working canonical static Hub surface.",
     "preservation_baseline": "74884cb69badf54fee2bff0398a3f452c6c74384",
     "recovery_baseline": "recovery/hub-visual-freeze-2026-09-23-74884cb6",
     "verification_requirement": "Static source/build/deploy/live/browser parity must pass before restoration is considered production-proven."
