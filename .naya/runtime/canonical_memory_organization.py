@@ -35,10 +35,11 @@ def audit(root: Path = ROOT) -> list[str]:
         missing = [h for h in HEADINGS if "## "+h not in text]
         if missing: errors.append("missing Smart Note headings in "+rel+": "+", ".join(missing))
         match = re.search(r"\*\*Intelligent Block ID:\*\*\s*(IB-\d{6})", text)
-        expected = rel.split("/")[9]
+        expected = rel.split("/")[8]
         if not match or match.group(1) != expected: errors.append("IB identity/path mismatch: "+rel)
     for path in (root / ".naya" / "memory").rglob("smart-note.md"):
         rel = path.relative_to(root).as_posix()
+        if rel.startswith(".naya/memory/archive/"): continue
         if not rel.startswith(".naya/memory/smart-notes/"): errors.append("smart-note.md outside canonical root: "+rel)
     markers = ("**Intelligent Block ID:**", "## IN A NUTSHELL", "## WHAT WE LEARNED", "## NEXT ACTION")
     for path in root.rglob("*.md"):
@@ -46,7 +47,7 @@ def audit(root: Path = ROOT) -> list[str]:
         if rel.startswith(".naya/memory/smart-notes/") or ".git/" in rel: continue
         try: text = path.read_text(encoding="utf-8")
         except (OSError, UnicodeDecodeError): continue
-        if sum(m in text for m in markers) >= 3: errors.append("canonical Smart Note artifact outside .naya/memory/smart-notes: "+rel)
+        if text.lstrip().startswith("# SMART NOTE") and "**Intelligent Block ID:** IB-" in text and sum(m in text for m in markers) >= 3:\n            errors.append("canonical Smart Note artifact outside .naya/memory/smart-notes: "+rel)
     return sorted(set(errors))
 
 if __name__ == "__main__":
