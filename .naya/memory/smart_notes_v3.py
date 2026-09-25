@@ -199,8 +199,6 @@ def retrieve_canonical_ibs(
     participate in authorization.
     """
     q = expanded_tokens(query)
-    if not q:
-        return []
     principal = Principal(
         principal_id=principal_id or '',
         scope=scope,
@@ -212,6 +210,10 @@ def retrieve_canonical_ibs(
         obj for obj in load_canonical_ibs(root=root)
         if authorize(request, obj)
     ]
+    if not q:
+        authorized.sort(key=lambda obj: (str(obj.get('date') or ''), obj['intelligent_block_id']), reverse=True)
+        return authorized[:max(0, limit)]
+
     ranked = []
     for obj in authorized:
         doc = Counter(tokens(_canonical_ib_text(obj)))
