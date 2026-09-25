@@ -65,9 +65,9 @@ def test_after_accepts_only_completed_receiver_receipt():
     receipt = {
         "canonical_receiver": "v7-smart-note-canonical",
         "status": "completed",
-        "intelligent_block_id": "IB-NEW001",
-        "event_id": "EV-NEW001",
-        "transaction_id": "TX-NEW001",
+        "intelligent_block_id": "IB-001025",
+        "event_id": "EV-001025",
+        "transaction_id": "TX-001025",
     }
     with tempfile.TemporaryDirectory() as raw:
         result = current.persist_smart_note(
