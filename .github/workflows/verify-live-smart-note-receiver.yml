@@ -115,3 +115,5 @@ jobs:
 # Execution-trigger marker: canonical Smart Note receiver trace requested from current main.
 
 # Re-run after canonical React Hub deployment so the human capture control is exercised against current live source.
+
+# 2026-09-25 canonical continuity acceptance trigger: execute the existing live receiver proof against current main.
