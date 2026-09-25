@@ -22,7 +22,7 @@
       "status": "CANONICAL"
     }
   ],
-  "identity_cursor": 659,
-  "identity_cursor_source": "Supabase public.nayanet_intelligent_blocks high-water mark observed at IB-000659 on 2026-09-24; repository Smart Note identity is not assigned until the live canonical receiver creates the corresponding event.",
-  "archive_boundary_note": "Registry restored to canonical active path on 2026-09-25 after fresh-start quarantine; historical noncanonical Smart Note projections remain archived."
+  "archive_boundary_note": "Registry restored to canonical active path on 2026-09-25 after fresh-start quarantine; historical noncanonical Smart Note projections remain archived.",
+  "identity_authority": "live canonical receiver only",
+  "identity_allocation_rule": "The live canonical receiver allocates immutable IB IDs. Repository files, registry consumers, tests, scripts, and Nayas must never calculate, guess, increment, reserve, or assign an IB ID."
 }
