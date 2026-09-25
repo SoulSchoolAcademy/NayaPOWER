@@ -84,7 +84,7 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          LIBRARY_INDEX_ID=$(echo "$RETRIEVED" | jq -r '.result.result.library.indexes[]?.id' | grep -Fx "$INDEX_ID" | head -n1)
+          LIBRARY_INDEX_ID=$(echo "$RETRIEVED" | jq -r --arg id "$INDEX_ID" '.result.result.library.indexes[]? | select(.id==$id) | .id' | head -n1)
           test "$LIBRARY_INDEX_ID" = "$INDEX_ID"
           test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.source_type // empty')" = document
           test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.document_id // empty')" = "$DOCUMENT_ID"
