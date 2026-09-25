@@ -1,0 +1,15 @@
+{
+  "lineage": [
+    {
+      "event_id": "execution-receipt:test-receipt-001",
+      "event_type": "EXECUTION_COMPLETED",
+      "source_receipt_id": "test-receipt-001",
+      "timestamp": "2026-09-25T01:28:45.098782+00:00",
+      "action": "test_intelligence_commit",
+      "status": "SUCCESS",
+      "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
+    }
+  ],
+  "latest_event_id": "execution-receipt:test-receipt-001",
+  "updated_at": "2026-09-25T01:28:45.098875+00:00"
+}

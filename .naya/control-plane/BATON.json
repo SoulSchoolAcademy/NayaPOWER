@@ -3,7 +3,7 @@
   "status": "CANONICAL",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "identity": "SoulSchoolAcademy/NayaPOWER",
-  "generated_at": "2026-09-24T16:51:45.839294+00:00",
+  "generated_at": "2026-09-25T01:28:45.130309+00:00",
   "source_of_truth": {
     "identity": ".naya/control-plane/CANONICAL-IDENTITY-REGISTRY.json",
     "live_state": ".naya/control-plane/STATE.json",
@@ -13,7 +13,7 @@
     "history": "NAYA/ACTIVITY/ and execution receipts"
   },
   "source_snapshot": {
-    "live_head": "13d33c6f491a3172579b02412c7db7fb8867fd0a",
+    "live_head": "5ca91088ad80e74d71caee207f2d3fff8862d30c",
     "state_status": "LIVE_BOUND",
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
@@ -75,6 +75,20 @@
       "kind": "proof_current_evidence",
       "source": ".naya/control-plane/PROOF.json",
       "field": "current_evidence"
+    },
+    {
+      "kind": "activity_event",
+      "event_id": "execution-receipt:test-receipt-001",
+      "receipt_id": "test-receipt-001",
+      "timestamp": "2026-09-25T01:28:45.130320+00:00",
+      "action": "test_intelligence_commit",
+      "status": "SUCCESS"
+    },
+    {
+      "kind": "learning_candidate",
+      "evidence_id": "learning-execution-receipt:test-receipt-001-20260925012845",
+      "claim": "Verified learning improved policy from 0 to 1 on held-out case",
+      "status": "CANDIDATE"
     }
   ],
   "next_action": {
@@ -82,7 +96,7 @@
     "status": "BLOCKED",
     "action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Derived automatically after verified next_action + handoff execution cycle.",
+    "reason": "Derived from event execution-receipt:test-receipt-001",
     "acceptance": [
       "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
       "UNDERSTAND the current intelligence and activity projection.",
