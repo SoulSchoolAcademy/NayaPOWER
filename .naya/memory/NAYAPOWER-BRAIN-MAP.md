@@ -46,6 +46,10 @@ If a map entry conflicts with a higher-authority current source, the higher-auth
 | **13 Execution & Outcomes** | What happens next? | There is one highest-value authorized executable action, followed by observation, proof, durable state update and successor continuation. | `.naya/control-plane/BLOCKS.json`, `.naya/NAYA-ACTION-DELIVERY-LAW.md` |
 | **14 Collective Intelligence** | How does intelligence connect across humans/Nayas? | Authorized intelligence can be connected across contexts while preserving identity, provenance, privacy, consent and authority. | `.naya/codex/SMART-NOTES-AND-CIS-CONSTITUTION.md`, `.naya/SUPERBRAIN-COLD-START-AND-CONTINUITY-CONTRACT.md` |
 
+## Fresh-start rule
+
+**As of 2026-09-25, this Brain Map is the only canonical cognitive index.** New durable intelligence must enter the canonical Smart Note / IB receiver and appear in the canonical hierarchy. Legacy memory remains available for historical reconciliation but is not a destination for new writes.
+
 ## The actual intelligence layers
 
 ### 1. Canonical intelligence
