@@ -84,9 +84,11 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          INDEX=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligence_index?select=id,source_table,source_id,object_type,title,status,metadata&source_table=eq.nayanet_cognition_events&source_id=eq.$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_cognition_events?select=id&event_id=eq.$EVENT_ID" "${H[@]}" | jq -r '.[0].id')" "${H[@]}")
+          INDEX=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligence_index?select=id,source_table,source_id,object_type,title,status,metadata&id=eq.$INDEX_ID" "${H[@]}")
           echo "$INDEX" | jq .
           test "$(echo "$INDEX" | jq 'length')" -ge 1
+          test "$(echo "$INDEX" | jq -r '.[0].id')" = "$INDEX_ID"
+          test "$(echo "$INDEX" | jq -r '.[0].source_table')" = "nayanet_cognition_events"
 
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           test "$(echo "$DUP" | jq -r '.ok // false')" = true
