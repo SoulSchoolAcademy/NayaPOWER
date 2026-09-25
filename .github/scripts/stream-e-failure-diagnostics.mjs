@@ -50,7 +50,7 @@ export function summarizeReceiverResponse(status,body,idempotencyKey=''){
     pipeline:pick(value.pipeline),
     error,
     detail:pick(value.detail),
-    correlation_id:pick(value.correlation_id,value.request_id,value.trace_id,idempotencyKey),
+    correlation_id:pick(value.correlation_id,value.request_id,value.trace_id,value.transaction?.evidence?.correlation_id,idempotencyKey),
     event_id:pick(value.event_id,value.transaction?.evidence?.event_id),
     receipt_id:pick(value.receipt_id,value.transaction?.evidence?.receipt_id),
     transaction_id:pick(value.transaction_id,value.transaction?.id),
