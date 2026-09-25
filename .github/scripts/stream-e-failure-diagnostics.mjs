@@ -43,11 +43,12 @@ export function buildColdReconstruction(proof,{repository='',mainRef='',hubBlob=
 }
 export function summarizeReceiverResponse(status,body,idempotencyKey=''){
   const value=body&&typeof body==='object'?body:{};
+  const error=value.error!==undefined&&value.error!==null&&String(value.error).trim()?pick(value.error):value.ok===true?'NONE':'SMART_NOTE_PIPELINE_FAILED';
   return {
     status:Number.isFinite(Number(status))?Number(status):null,
     ok:value.ok===true,
     pipeline:pick(value.pipeline),
-    error:pick(value.error,'SMART_NOTE_PIPELINE_FAILED'),
+    error,
     detail:pick(value.detail),
     correlation_id:pick(value.correlation_id,value.request_id,value.trace_id,idempotencyKey),
     event_id:pick(value.event_id,value.transaction?.evidence?.event_id),
@@ -71,14 +72,16 @@ export function formatRuntimeFailure(status,body,idempotencyKey=''){
 }
 export function classifySenderFailure(error,responseTrace,receiverResponseTrace){
   const code=String(error?.message||error||'').split('\n')[0].trim();
+  const stableCode=code.split(':',1)[0].trim();
   const hasLineage=Boolean(responseTrace&&responseTrace.event_id&&responseTrace.event_id!=='UNAVAILABLE');
-  if(code==='SMART_NOTE_RECEIVER_PIPELINE_FAILED')return {first_failure_boundary:'SMART_NOTE_RECEIVER_PIPELINE',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
-  if(code==='PRODUCTION_RECEIVER_AUTHORIZATION_FAILED'||receiverResponseTrace?.code==='REF_NOT_AUTHORIZED')return {first_failure_boundary:'PRODUCTION_RECEIVER_AUTHORIZATION',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_AUTHORIZATION_FAILED',receiver_code:'REF_NOT_AUTHORIZED'};
-  if(code==='PRODUCTION_RECEIVER_FAILED')return {first_failure_boundary:'PRODUCTION_RECEIVER',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_PRODUCTION_RECEIVER_FAILED'};
-  if(code==='INDEPENDENT_RETRIEVAL_FAILED')return {first_failure_boundary:'INDEPENDENT_RETRIEVAL',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_FAILED'};
-  if(code==='INDEX_RECONSTRUCTION_FAILED')return {first_failure_boundary:'INDEX_RECONSTRUCTION',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_FAILED'};
-  if(code==='EXACT_REPLAY_FAILED')return {first_failure_boundary:'EXACT_REPLAY',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_REPLAY_CHECK'};
-  if(code==='HUB_RUNTIME_CAPTURE_LINEAGE_MISSING')return {first_failure_boundary:'HUB_RUNTIME_CAPTURE_LINEAGE',partial_state:'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
+  if(stableCode==='SMART_NOTE_RECEIVER_PIPELINE_FAILED')return {first_failure_boundary:'SMART_NOTE_RECEIVER_PIPELINE',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
+  if(stableCode==='PERSISTENCE_RECONSTRUCTION_FAILED')return {first_failure_boundary:'INDEPENDENT_PERSISTENCE',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_ACCEPTED_PERSISTENCE_UNVERIFIED'};
+  if(stableCode==='PRODUCTION_RECEIVER_AUTHORIZATION_FAILED'||receiverResponseTrace?.code==='REF_NOT_AUTHORIZED')return {first_failure_boundary:'PRODUCTION_RECEIVER_AUTHORIZATION',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_AUTHORIZATION_FAILED',receiver_code:'REF_NOT_AUTHORIZED'};
+  if(stableCode==='PRODUCTION_RECEIVER_FAILED')return {first_failure_boundary:'PRODUCTION_RECEIVER',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_PRODUCTION_RECEIVER_FAILED'};
+  if(stableCode==='INDEPENDENT_RETRIEVAL_FAILED')return {first_failure_boundary:'INDEPENDENT_RETRIEVAL',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_FAILED'};
+  if(stableCode==='INDEX_RECONSTRUCTION_FAILED')return {first_failure_boundary:'INDEX_RECONSTRUCTION',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'REACHED_RECEIVER_FAILED'};
+  if(stableCode==='EXACT_REPLAY_FAILED')return {first_failure_boundary:'EXACT_REPLAY',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_REPLAY_CHECK'};
+  if(stableCode==='HUB_RUNTIME_CAPTURE_LINEAGE_MISSING')return {first_failure_boundary:'HUB_RUNTIME_CAPTURE_LINEAGE',partial_state:'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
   if(responseTrace)return {first_failure_boundary:'HUB_RUNTIME_RESPONSE_MAPPING',partial_state:hasLineage?'PARTIAL_STATE_OBSERVED':'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
   return {first_failure_boundary:'UNKNOWN',partial_state:'UNDETERMINED',downstream_reachability:'NOT_REACHED_BY_SENDER'};
 }
