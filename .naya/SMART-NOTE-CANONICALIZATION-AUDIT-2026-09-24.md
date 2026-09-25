@@ -95,7 +95,7 @@ Registry:
 ### HISTORICAL / LEGACY / COMPATIBILITY
 
 - `.naya/SUPERBRAIN/SMART-NOTES/`
-- `.naya/memory/smart-notes/`
+- `.naya/memory/notes/`
 - `.naya/project-intelligence/smart-notes/`
 - `NAYA/SMART-NOTES/`
 - `NAYANET/SMART-NOTES/`
@@ -232,23 +232,24 @@ The V1 contract removes ambiguity by mapping these into one canonical object and
 Every completed Smart Note MUST use:
 
 1. IN A NUTSHELL
-2. HUMAN NOTE
-3. CHILD NOTE
-4. GRANDMA NOTE
-5. NAYA NOTE
-6. MACHINE NOTE
-7. LEARNING LESSON
-8. WHAT IT MEANS
-9. HOW IT CONNECTS
-10. HOW TO APPLY IT
-11. WHAT'S IN IT FOR THEM / YOU / US
-12. EVIDENCE / SMART LINKS
-13. CURRENT STATE
-14. ONE NEXT ACTION
+2. DATE / TIME
+3. WHAT
+4. WHY IT MATTERS
+5. HUMAN
+6. CHILD
+7. GRANDMA
+8. NAYA
+9. MACHINE
+10. WHAT WE LEARNED
+11. CONNECTIONS
+12. HOW TO APPLY
+13. WHAT IT ULTIMATELY MEANS
+14. WHAT'S IN IT FOR YOU / US
+15. NEXT ACTION
 
 The section order is now defined only by:
 
-`.naya/SMART-NOTE-CONTRACT-V1.md`
+`.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
 
 Historical protocols remain readable but are subordinate.
 
@@ -261,14 +262,15 @@ CANONICAL EVENT
   event_id
       ↓
 INTELLIGENT BLOCK
-  identity.object_id = IB:<event_id>
+  intelligent_block_id = IB-XXXXXX
   schema_version = NAYANET_INTELLIGENT_BLOCK_V1
       ↓
 SMART NOTE HUMAN ADDRESS
-  .naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/SN-YYYYMMDD-<slug>.md
+  .naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md
       ↓
-DAY INDEX
-  .naya/memory/notes/YYYY/MM/DD/INDEX.md
+REGISTRY / DAY INDEX
+  .naya/memory/smart-notes/REGISTRY.json
+  .naya/memory/smart-notes/YYYY/MM/DD/INDEX.md
       ↓
 AUTHORIZED PROJECTIONS
   Hub / Feed / Activity / Reports / Library / Learning / Dream / API
@@ -312,9 +314,9 @@ remains as a project-intelligence evidence/receipt artifact. It is not itself th
 
 Create the official 2026-09-24 Superbrain Scorecard Smart Note under:
 
-`.naya/memory/notes/2026/09/24/`
+`.naya/memory/smart-notes/2026/09/24/system/superbrain-scorecard/IB-000002/smart-note.md`
 
-Then register it in that day's `INDEX.md` and announce it through the canonical Activity/Intelligent Feed projection.
+It is registered in `.naya/memory/smart-notes/REGISTRY.json` and the 2026-09-24 daily index, and announced through the canonical Intelligent Feed projection.
 
 ---
 
