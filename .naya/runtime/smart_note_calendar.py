@@ -24,19 +24,20 @@ SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
 
 REQUIRED_HEADINGS = (
     "IN A NUTSHELL",
-    "HUMAN NOTE",
-    "CHILD NOTE",
-    "GRANDMA NOTE",
-    "NAYA NOTE",
-    "MACHINE NOTE",
-    "LEARNING LESSON",
-    "WHAT IT MEANS",
-    "HOW IT CONNECTS",
-    "HOW TO APPLY IT",
-    "WHAT'S IN IT FOR THEM / YOU / US",
-    "EVIDENCE / SMART LINKS",
-    "CURRENT STATE",
-    "ONE NEXT ACTION",
+    "DATE / TIME",
+    "WHAT",
+    "WHY IT MATTERS",
+    "HUMAN",
+    "CHILD",
+    "GRANDMA",
+    "NAYA",
+    "MACHINE",
+    "WHAT WE LEARNED",
+    "CONNECTIONS",
+    "HOW TO APPLY",
+    "WHAT IT ULTIMATELY MEANS",
+    "WHAT'S IN IT FOR YOU / US",
+    "NEXT ACTION",
 )
 
 
