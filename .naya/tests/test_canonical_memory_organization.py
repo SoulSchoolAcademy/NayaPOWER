@@ -20,6 +20,11 @@ def test_valid_projection_is_accepted():
         root = Path(tmp)
         path = root / ".naya/memory/smart-notes/2026/09/25/system/channel-constitution/IB-000123/smart-note.md"
         path.parent.mkdir(parents=True)
+        registry = root / ".naya/memory/smart-notes/REGISTRY.json"
+        registry.write_text(
+            '{"entries":[{"intelligent_block_id":"IB-000123","path":".naya/memory/smart-notes/2026/09/25/system/channel-constitution/IB-000123/smart-note.md"}]}',
+            encoding="utf-8",
+        )
         path.write_text(
             "# SMART NOTE\n\n**Intelligent Block ID:** IB-000123\n\n"
             "## IN A NUTSHELL\n\nA canonical intelligence object.\n"
@@ -73,6 +78,11 @@ def test_canonical_projection_identity_is_read_from_ib_path_segment():
         root = Path(tmp)
         path = root / ".naya/memory/smart-notes/2026/09/25/system/channel-constitution/IB-000123/smart-note.md"
         path.parent.mkdir(parents=True)
+        registry = root / ".naya/memory/smart-notes/REGISTRY.json"
+        registry.write_text(
+            '{"entries":[{"intelligent_block_id":"IB-000123","path":".naya/memory/smart-notes/2026/09/25/system/channel-constitution/IB-000123/smart-note.md"}]}',
+            encoding="utf-8",
+        )
         path.write_text(
             "# SMART NOTE\n\n**Intelligent Block ID:** IB-000123\n\n"
             + "".join(f"## {h}\n\nvalue\n" for h in module.HEADINGS),
