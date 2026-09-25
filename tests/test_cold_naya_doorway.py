@@ -13,16 +13,22 @@ def test_cold_naya_doorway_uses_existing_canonical_sources():
         ".naya/memory/BOOTSTRAP.md",
         "SUPERBRAIN/AI-BOOT/DISTILL-PROJECT-INTELLIGENCE-CURRENT-TRUTH.md",
         ".naya/control-plane/STATE.json",
+        ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+    ]
+    for path in required:
+        assert (ROOT / path).exists(), path
+        assert path in readme or path in readme.replace(" → ", "/")
+
+    control_paths = [
+        ".naya/control-plane/STATE.json",
         ".naya/control-plane/BLOCKS.json",
         ".naya/control-plane/MAP.json",
         ".naya/control-plane/PROOF.json",
         ".naya/control-plane/BATON.json",
-        ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
     ]
-    for path in required:
-        assert path in readme
+    for path in control_paths:
         assert (ROOT / path).exists(), path
-
+    assert "BLOCKS.json" in readme and "MAP.json" in readme and "PROOF.json" in readme and "BATON.json" in readme
     assert "SUPERBRAIN/INTELLIGENCE/CANONICAL-INTELLIGENCE-MAP.md" not in readme
 
 

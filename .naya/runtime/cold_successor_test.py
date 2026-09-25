@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 Cold Successor Test Harness
 Tests the 14-question cold reconstruction contract for NayaNET.
@@ -129,7 +129,7 @@ class ColdSuccessorTest:
             "NayaNET mission and operating model",
             "project-intelligence-operating-context-v1",
             "reconcile live main at execution",
-            "execute only the active P0 block"
+            self.state.get("single_next_action", "")
         )
     
     def q3_why_are_we_building_it(self) -> Dict:
@@ -155,7 +155,7 @@ class ColdSuccessorTest:
             "HUMAN-JOURNEY-P2 acceptance",
             "PROJECT-INTELLIGENCE-PI-01",
             "live block reconciliation required",
-            "complete all acceptance boundaries"
+            self.blocks.get("active_block", {}).get("next_action") or self.state.get("single_next_action", "")
         )
     
     def q5_what_is_true_right_now(self) -> Dict:
@@ -249,7 +249,7 @@ class ColdSuccessorTest:
             "single-next-action contract",
             "PI-01-next-action",
             "live block state",
-            "execute exactly one highest-value authorized action"
+            self.state.get("single_next_action", "")
         )
     
     def q12_how_do_i_prove_it(self) -> Dict:
