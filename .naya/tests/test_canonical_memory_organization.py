@@ -80,3 +80,15 @@ def test_canonical_projection_identity_is_read_from_ib_path_segment():
         )
         errors = module.audit(root)
         assert errors == []
+
+
+def test_historical_archive_smart_note_is_not_treated_as_active_canonical_projection():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        path = root / ".naya/memory/archive/legacy-pre-2026-09-25/2026/09/24/system/canonical-superbrain/IB-000714/smart-note.md"
+        path.parent.mkdir(parents=True)
+        path.write_text("# Historical Smart Note\\n\\n**Intelligent Block ID:** IB-000714\\n", encoding="utf-8")
+        (root / ".naya/memory/smart-notes").mkdir(parents=True)
+        (root / ".naya/memory/smart-notes/REGISTRY.json").write_text('{"entries": []}', encoding="utf-8")
+        errors = module.audit(root)
+        assert not any("smart-note.md outside canonical Smart Note root" in error for error in errors)
