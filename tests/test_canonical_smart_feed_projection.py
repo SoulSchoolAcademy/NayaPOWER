@@ -24,7 +24,7 @@ def test_feed_projection_reads_only_registry_bound_canonical_smart_note():
             "## ONE NEXT ACTION\n\nRetrieve it.\n",
             encoding="utf-8",
         )
-        registry = note.parents[4] / "REGISTRY.json"
+        registry = note.parents[6] / "REGISTRY.json"
         registry.write_text(json.dumps({
             "$schema": "naya/smart-note-registry/v1",
             "status": "CANONICAL",
