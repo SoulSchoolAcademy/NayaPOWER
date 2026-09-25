@@ -1,6 +1,6 @@
 # NAYA POWER — SMART NOTE PROTOCOL
 
-**STATUS:** CANONICAL / MANDATORY
+**STATUS:** SUBORDINATE EXECUTION PROTOCOL — SEE `.naya/SMART-NOTE-CONTRACT-V1.md`
 **EFFECTIVE:** 2026-09-07
 **SCOPE:** Every Naya Power / NayaNET / Intelligent Hub Smart Note operation, consequential learning event, correction, discovery, decision, failure/repair, or explicit request to “note this” / “make a Smart Note.”
 
@@ -33,6 +33,10 @@ It is not an essay about the concept.
 It is not merely a GitHub markdown file.
 
 One Smart Note can contain multiple perspectives of the same event.
+
+### Perspective rule
+
+The canonical section order, storage, identity, and machine schema are defined exclusively by `.naya/SMART-NOTE-CONTRACT-V1.md`. The five perspective lenses below are preserved as conceptual views within that single object.
 
 ### Required five perspectives
 
