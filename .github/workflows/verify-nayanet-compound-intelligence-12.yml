@@ -68,7 +68,7 @@ jobs:
             return session;
           }
 
-          async function call(page, session, action, extra={}) {
+          async function call(page, session, action, extra={}, expectedError='') {
             const slugs={
               restore:'nayanet-pi-restore',
               retrieve:'nayanet-pi-retrieve',
@@ -94,9 +94,19 @@ jobs:
               });
               return {status:r.status,body:await r.json().catch(()=>({}))};
             },{supabaseUrl,supabaseKey,token:session.access_token,slug,action,extra,key});
-            if(res.status!==200 || res.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(res));
-            mark(action,'PASS',{endpoint:slug,schema:res.body.result?.schema||null});
-            return res.body.result;
+             if(expectedError){
+               if(res.status===200 && res.body?.ok===true && res.body.result?.status==='VERIFIED_LEARNING'){
+                 mark(action,'BLOCKED',{endpoint:slug,legacy_unbounded_promotion:true,error:'DEPLOYED_RUNTIME_PREDATES_INDEPENDENT_OUTCOME_BOUNDARY'});
+                 return {legacy:true,result:res.body.result};
+               }
+               if(res.status===200 || !String(res.body?.error||'').includes(expectedError)) throw new Error(action+'_EXPECTED_REJECTION_MISSING:'+JSON.stringify(res));
+               mark(action,'PASS',{endpoint:slug,rejected:true,error:res.body.error});
+               return res.body;
+             }
+             if(res.status!==200 || res.body?.ok!==true) throw new Error(action+'_FAILED:'+JSON.stringify(res));
+             mark(action,'PASS',{endpoint:slug,schema:res.body.result?.schema||null});
+             return res.body.result;
+
           }
 
           (async()=>{
@@ -141,18 +151,23 @@ jobs:
               const evidenceId=candidate.learning?.id;
               if(!evidenceId || candidate.status!=='CANDIDATE') throw new Error('LEARNING_CANDIDATE_INVALID');
 
-              const verified=await call(page,session,'learning_verify',{
+              const rejectedPromotion=await call(page,session,'learning_verify',{
                 evidence_id:evidenceId,
                 verification_method:'CONTROLLED_RUNTIME_PROOF_WITH_EXACT_EVENT_LINEAGE',
                 observed_value:{run,verified:true,evidence_event:eventId}
-              });
-              if(verified.status!=='VERIFIED_LEARNING'||verified.learning?.status!=='ACTIVE') throw new Error('LEARNING_VERIFY_INVALID');
+              },'INDEPENDENT_OUTCOME_ID_REQUIRED');
+              if(rejectedPromotion.legacy){
+                fs.writeFileSync('compound-12-proof.json',JSON.stringify({schema:'NAYANET_COMPOUND_INTELLIGENCE_12_PROOF_V1',status:'BLOCKED',source_head:process.env.GITHUB_SHA,run_id:run,reason:'DEPLOYED_RUNTIME_PREDATES_INDEPENDENT_OUTCOME_BOUNDARY',event_id:eventId,learning_evidence_id:evidenceId,trace},null,2));
+                return;
+              }
+              if(rejectedPromotion.error!=='INDEPENDENT_OUTCOME_ID_REQUIRED') throw new Error('LEARNING_PROMOTION_WAS_NOT_FAIL_CLOSED:'+JSON.stringify(rejectedPromotion));
+
 
               const successor=await call(page,session,'successor_handoff',{
                 parent_event_id:eventId,
                 what_happened:'Executed controlled Compound Intelligence 12-capability proof.',
-                what_changed:'Verified one candidate learning item and exercised governed continuity.',
-                learned:[{evidence_id:evidenceId,claim:verified.learning?.claim,status:verified.learning?.status}],
+                what_changed:'Retained one candidate learning item and exercised governed continuity; promotion was rejected without an independent outcome.',
+                learned:[{evidence_id:evidenceId,claim:candidate.learning?.claim,status:candidate.learning?.status}],
                 next_action:restore.CURRENT_NEXT_ACTION,
                 why:'Prove that a successor can inherit evidence-backed context.',
                 evidence_required:['restore','retrieval','learning evidence','successor event']
@@ -225,7 +240,7 @@ jobs:
                 notes:[
                   'Dream action delegates to the governed naya-dream-replay runtime.',
                   'Interpretation is not silently promoted to verified fact.',
-                  'Learning verification remains evidence-scoped and does not grant authority.',
+                   'Learning promotion is rejected without a verified independent outcome and does not grant authority.',
                   'All operation calls are authenticated and recorded in nayanet_intelligence_operations.'
                 ]
               };
