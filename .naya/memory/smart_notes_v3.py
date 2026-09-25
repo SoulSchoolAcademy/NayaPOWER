@@ -113,7 +113,7 @@ def validate_event(e,p):
             try:hour=relative.parts[3] if len(relative.parts)>=5 else '00'
             except Exception:hour=f'{dt:%H}'
         expected=f'{dt:%Y/%m/%d}/{int(hour):02d}/{e["event_id"]}.json' if len(relative.parts)>=5 else f'{dt:%Y/%m/%d}/{e["event_id"]}.json'
-        if str(relative)!=expected:errors.append(f'{p}: physical time bucket mismatch; expected {expected}')
+        if relative.as_posix()!=expected:errors.append(f'{p}: physical time bucket mismatch; expected {expected}')
     for r in reps(e):
         if r.get('id') and str(e.get('status','')).upper()=='CANONICAL' and not NOTE_RE.match(str(r['id'])):errors.append(f'{p}: invalid canonical representation id {r["id"]}')
     return errors
