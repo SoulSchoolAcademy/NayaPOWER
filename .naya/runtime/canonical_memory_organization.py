@@ -37,17 +37,20 @@ def audit(root: Path = ROOT) -> list[str]:
         match = re.search(r"\*\*Intelligent Block ID:\*\*\s*(IB-\d{6})", text)
         expected = rel.split("/")[8]
         if not match or match.group(1) != expected: errors.append("IB identity/path mismatch: "+rel)
-    for path in (root / ".naya" / "memory").rglob("smart-note.md"):
+    for path in root.rglob("smart-note.md"):
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(".naya/memory/archive/"): continue
-        if not rel.startswith(".naya/memory/smart-notes/"): errors.append("smart-note.md outside canonical root: "+rel)
-    markers = ("**Intelligent Block ID:**", "## IN A NUTSHELL", "## WHAT WE LEARNED", "## NEXT ACTION")
+        if rel.startswith(".naya/memory/archive/"):
+            continue
+        if not rel.startswith(".naya/memory/smart-notes/"):
+            errors.append("smart-note.md outside canonical root: "+rel)
     for path in root.rglob("*.md"):
         rel = path.relative_to(root).as_posix()
-        if rel.startswith(".naya/memory/smart-notes/") or ".git/" in rel: continue
-        try: text = path.read_text(encoding="utf-8")
-        except (OSError, UnicodeDecodeError): continue
-        if text.lstrip().startswith("# SMART NOTE") and "**Intelligent Block ID:** IB-" in text and sum(m in text for m in markers) >= 0:
+        if rel.startswith(".naya/memory/smart-notes/") or rel.startswith(".naya/memory/archive/") or ".git/" in rel: continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (OSError, UnicodeDecodeError):
+            continue
+        if text.lstrip().startswith("# SMART NOTE") and "**Intelligent Block ID:** IB-" in text:
             errors.append("canonical Smart Note artifact outside .naya/memory/smart-notes: "+rel)
     return sorted(set(errors))
 
