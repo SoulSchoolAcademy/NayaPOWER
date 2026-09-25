@@ -335,7 +335,7 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
         note["category"] = str(note.get("category") or "system")
-        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or "")\n        if not note["intelligent_block_id"]:\n            raise ValueError("canonical Smart Note projection requires receiver-issued intelligent_block_id")
         if not IB_ID_RE.match(note["intelligent_block_id"]):
             raise ValueError("invalid canonical intelligent_block_id")
         note["what"] = str(note.get("what") or note["topic"])
