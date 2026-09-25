@@ -1,0 +1,25 @@
+name: Verify GitHub Webhook Owner-Bound Contract
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts'
+      - 'supabase/migrations/20260924230000_harden_github_app_owner_binding_v1.sql'
+      - 'supabase/migrations/20260924233100_repair_github_webhook_owner_aware_canonical_replay_v1.sql'
+      - '.naya/runtime/test_github_webhook_owner_bound_contract.py'
+      - '.github/workflows/verify-github-webhook-owner-bound-contract.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python .naya/runtime/test_github_webhook_owner_bound_contract.py
