@@ -148,6 +148,8 @@ jobs:
           RESPONSE=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           echo "$RESPONSE" | jq .
           echo "$RESPONSE" > document-distill-json-response.json
+          RETRIEVED_JSON=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-pi-retrieve" "${H[@]}" -d "$(jq -n --arg q "$ESSENCE" '{query:$q,limit:10}')")
+          echo "$RETRIEVED_JSON" | jq . > document-distill-json-retrieval.json
           python - <<'PY'
           import json
           r=json.load(open("document-distill-json-response.json"))
@@ -158,6 +160,10 @@ jobs:
           assert x["document"]["source_hash"] and len(x["document"]["source_hash"])==64
           ib=x["intelligence"]["intelligent_block"]
           assert ib["block_id"]
+          retrieved=json.load(open("document-distill-json-retrieval.json"))["result"]
+          assert retrieved["schema"]=="NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1"
+          assert any(i.get("value_context",{}).get("document_id")==x["document"]["document_id"] for i in retrieved["library"]["intelligent_blocks"])
+          assert any(i["id"]==x["intelligence"]["projection"]["index"]["id"] for i in retrieved["library"]["indexes"])
           assert ib["value_context"]["source_type"]=="document"
           assert ib["value_context"]["document_id"]==x["document"]["document_id"]
           assert ib["value_context"]["source_ref"]==x["document"]["source_ref"]
