@@ -85,6 +85,9 @@ def test_after_accepts_only_completed_receiver_receipt():
         expected = Path(raw) / "smart-notes" / "2026" / "09" / "25" / "system" / "after-enforcement" / "IB-001025" / "smart-note.md"
         assert Path(result["path"]) == expected
         assert expected.is_file()
+        rendered = expected.read_text(encoding="utf-8")
+        assert "**Intelligent Block ID:** IB-001025" in rendered
+        assert "**Source Event ID:** EV-001025" in rendered
         registry = __import__("json").loads((Path(raw) / "smart-notes" / "REGISTRY.json").read_text(encoding="utf-8"))
         assert registry["entries"][0]["path"] == "2026/09/25/system/after-enforcement/IB-001025/smart-note.md"
         print("AFTER_BRANCH=PASS (feed-verified receiver identity + lineage projected canonically)")
