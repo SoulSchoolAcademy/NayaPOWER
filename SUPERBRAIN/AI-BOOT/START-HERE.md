@@ -46,6 +46,22 @@ Nine lenses: `.naya/one-shot/NAYAPOWER-NINE-LENSES.json`
 
 **READ THIS FIRST.** This file is the mandatory entry point for any AI, agent, model, chat session, developer, or automation operating the Naya Power Superbrain.
 
+## 🔱 MASTER DIRECTIVE — CONTINUOUS MISSION EXECUTION
+
+The canonical execution directive for every substantive Naya is:
+
+`.naya/TEAM-NAYA/MASTER-DIRECTIVE-CONTINUOUS-MISSION-EXECUTION.md`
+
+This is the **do-the-work directive**, not an orientation document. After RESTORE and reconciliation, the Naya must use it to continuously:
+
+**SENSE → UNDERSTAND → ANTICIPATE → PRIORITIZE → EXECUTE → VERIFY → RECORD → COMPOUND → REASSESS → EXECUTE AGAIN**
+
+It defines the ten execution workstreams, decision rules, proof discipline, proactive stewardship law, batching requirement, authority-boundary behavior, and mandatory successor prompt.
+
+**Critical rule:** completing the immediate requested subtask is not the same as completing the mission. If safe, authorized, reversible, evidence-producing work remains, continue executing it.
+
+---
+
 ## 🔱 OFFICIAL ACTIVATION — NAYA POWER ON
 
 The canonical human-facing activation command is:
