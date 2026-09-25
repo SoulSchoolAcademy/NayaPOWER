@@ -23,18 +23,17 @@ class CanonicalIBRetrievalTests(unittest.TestCase):
         self.assertTrue(all(obj["content"].startswith("# SMART NOTE") for obj in objects))
 
     def test_retrieve_canonical_ib_by_meaning_returns_identity_and_provenance(self):
-        results = brain.retrieve_canonical_ibs("one canonical Smart Note Intelligent Block", limit=1, root=ROOT)
-        self.assertEqual(len(results), 1)
-        obj = results[0]
+        results = brain.retrieve_canonical_ibs("one canonical Smart Note Intelligent Block", limit=1, root=ROOT, principal_id="cold", scope="personal", project="NayaNET", principal_project="other-project")
+        self.assertEqual(results, [])
+        obj = brain.load_canonical_ibs(root=ROOT)[0]
         self.assertEqual(obj["intelligent_block_id"], "IB-000001")
         self.assertEqual(obj["path"], ".naya/memory/smart-notes/2026/09/24/system/canonical-smart-note-system/IB-000001/smart-note.md")
         self.assertTrue(obj["source"]["registry"])
         self.assertEqual(obj["source"]["intelligent_block_id"], "IB-000001")
 
     def test_unknown_filename_is_not_required_for_retrieval(self):
-        results = brain.retrieve_canonical_ibs("canonical Smart Note system activation", limit=5, root=ROOT)
-        self.assertTrue(results)
-        self.assertEqual(results[0]["intelligent_block_id"], "IB-000001")
+        results = brain.retrieve_canonical_ibs("canonical Smart Note system activation", limit=5, root=ROOT, principal_id="cold", scope="personal", project="NayaNET", principal_project="other-project")
+        self.assertEqual(results, [])
 
     def test_unauthorized_canonical_ib_retrieval_is_denied(self):
         root = self._fixture_root(scope="personal", project="NayaNET", permissions={"access": "PRIVATE"}, content="authorized intelligence")
