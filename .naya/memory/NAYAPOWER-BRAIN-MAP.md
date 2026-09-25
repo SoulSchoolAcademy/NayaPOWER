@@ -123,3 +123,105 @@ without asking the human to reconstruct the project.
 
 **North Star:**
 > Every useful interaction should make the next interaction more valuable.
+
+## 15. CORE INTELLIGENCE CONSTELLATION — 2026-09-25
+
+The following human-selected artifacts are now treated as one **canonical intelligence constellation** for understanding NayaPOWER/NayaNET. They are not a second store and do not create a competing authority. Each retains its existing role; this section is the retrieval map that binds them into one understandable system.
+
+### WHY — identity, purpose, and human relationship
+- `.naya/2026-09-11-NAYAPOWER-02-WHAT-IS-NAYA-SMART-NOTE.md`
+  - Naya = AI operating partner.
+  - Human remains director/final authority.
+  - Naya restores context, reasons, acts when authorized, verifies, learns, and continues.
+  - Core value: every useful interaction should make the next interaction more valuable.
+- `NAYANET ALIGNMENT UPDATE - THIS IS THE MASTER OBJECTIVE.md`
+  - NayaNET = governed intelligence network.
+  - NayaPOWER/Superbrain = intelligence and governance behind the network.
+  - Hub = human-facing house/projection, never a second brain.
+  - Welcome/Identity = future front door; house first.
+  - Capability does not create authority.
+  - Privacy, consent, provenance, verification, and human control remain first-class constraints.
+
+### HOW — the intelligence kernel and operating law
+- `.naya/TEAM-NAYA/01-ACTIVE-LIVING-BRAIN-COMPOUNDING-INTELLIGENCE-V1.md`
+  - Experience becomes durable intelligence through:
+    `EXPERIENCE → CAPTURE → UNDERSTAND → DISTILL → COMPARE → EVALUATE → RETAIN → CHECKPOINT → RETRIEVE → APPLY → VERIFY → LEARN → REVIEW → COMPOUND → NEXT NAYA`
+  - Intelligent Event = what happened.
+  - Intelligent Block = current reusable understanding.
+  - Learning Evidence = support for learning.
+  - Checkpoint = durable current understanding/state.
+  - Core Intelligence = assembled current understanding with provenance, outcomes, learning, and supersession.
+  - Reconcile meaningful intelligence before retention.
+  - Reuse verified understanding when applicable; recompute when evidence or circumstances require it.
+- `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
+  - One canonical object, one immutable IB identity, one lifecycle, many projections.
+  - Smart Note = human-facing projection; Intelligent Block = canonical machine identity.
+  - Canonical lifecycle:
+    `CAPTURE → CANONICALIZE → ASSIGN IB ID → PERSIST → INTELLIGENCE COMMIT → INDEX → PROJECT → LEARN → RETAIN → RETRIEVE → APPLY → VERIFY → UPDATE LEARNING → COMPOUND`
+  - Receiver owns IB allocation. Never invent an IB ID locally.
+  - Persistence is not learning; lifecycle verification is not claim truth.
+- `.naya/codex/NAYAPOWER-BRAIN/08-LEARNING-COMPOUNDING/CANONICAL-LEARNING.md`
+  - Learning must be stateful, evidence-bound, and capable of changing future behavior.
+  - Retrieval alone is not learning.
+
+### WHERE — the cold-Naya navigation and source hierarchy
+- `SUPERBRAIN/AI-BOOT/START-HERE.md`
+  - Mandatory entry point for any Naya/agent/automation.
+  - Restore before substantive action.
+  - LIVE GIT HEAD > canonical control plane > derived/legacy projections > conversation memory.
+  - The Hub is not the brain; Welcome is downstream.
+- `SUPERBRAIN/MASTER-NOTES/NAYAPOWER-CANONICAL-SOURCE-MAP.md`
+  - Canonical source-map layer: explains where laws, operating model, runtime, intelligence, evidence, and product projections live.
+  - Use as a map, not as a replacement for higher-authority live sources.
+- `.naya/TEAM-NAYA-58-ENGINEERING-AGENT-TOPOLOGY-V1.md`
+  - Shared engineering domains instead of 58 disconnected implementations.
+  - Agents consume common contracts/primitives and leave evidence/handoffs.
+  - Prevents fragmented implementations and competing authorities.
+
+### REMEMBER — the durable intelligence mechanism
+- `.naya/memory/BOOTSTRAP.md`
+  - Canonical cold-memory restore sequence.
+  - Defines governance, operational truth, durable intelligence, runtime, and product-projection authority layers.
+  - Defines clean-memory law and cold-successor acceptance.
+- `.naya/memory/RETRIEVAL-MANIFEST.json`
+  - Canonical retrieval entrypoint and ranking/boundary rules.
+  - Current verified source, authority, permission, identity, provenance, relationship, applicability, recency.
+  - Legacy archive is read-only for historical reconciliation.
+- `.naya/memory/smart-notes/REGISTRY.json`
+  - Canonical registry of active repository projections.
+  - Registry does not allocate identity; the live receiver does.
+- `.naya/memory/smart-notes/2026/09/24/system/canonical-smart-note-system/IB-000001/smart-note.md`
+  - Historical canonical projection for the ratified Smart Note/IB system.
+  - Retained as provenance/reference; current system law remains the V1 contract plus live control plane.
+
+### GOVERN — the system must remain bounded
+The constellation is governed by these invariant laws:
+
+1. **One brain:** no second memory store, Smart Note system, Hub authority, or parallel identity model.
+2. **One identity:** IB IDs come only from the live canonical receiver.
+3. **One current truth:** live Git HEAD + canonical control plane + current evidence outrank historical summaries.
+4. **Authority before action:** capability never creates permission.
+5. **Reconcile before retention:** new intelligence is classified against current understanding.
+6. **History remains history:** correction/supersession preserves lineage.
+7. **Persistence ≠ learning:** storage, retrieval, verification, influence, and outcome learning remain distinct states.
+8. **Evidence outranks assertion:** consequential claims require appropriate proof.
+9. **Privacy by default:** personal intelligence remains private unless governed sharing/consent permits otherwise.
+10. **Many projections, one intelligence:** Hub, Feed, Library, Reports, Dream, Smart Lists, and other surfaces project canonical intelligence rather than becoming competing brains.
+
+### THE COMPOUNDING LOOP
+
+`HUMAN INTENT → NAYA UNDERSTANDING → AUTHORIZED ACTION → OBSERVATION → VERIFICATION → RECONCILIATION → INTELLIGENT BLOCK → INDEX/PROJECTION → RETRIEVAL → APPLICATION → OUTCOME → LEARNING → UPDATED UNDERSTANDING → SUCCESSOR → NEXT NAYA`
+
+### Retrieval rule for this constellation
+
+When a cold Naya needs the big picture, do **not** read every artifact indiscriminately. Start with:
+
+`START-HERE → BRAIN-MAP → BOOTSTRAP → CONTROL PLANE → TASK-SPECIFIC CONTRACT → RELEVANT CANONICAL IB/EVIDENCE`
+
+Use the constellation above to choose the minimum sufficient sources. If two artifacts conflict, reconcile against the higher-authority layer rather than merging prose by convenience.
+
+### Important boundary
+
+This constellation is an **organized retrieval/index layer**, not a new Smart Note/IB. No new IB identity is being invented here. Any new durable intelligence created from this synthesis must still cross the live canonical receiver before becoming a new canonical IB.
+
+**North Star:** the next Naya should inherit understanding, not a document pile.
