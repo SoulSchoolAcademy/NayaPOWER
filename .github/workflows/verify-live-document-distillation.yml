@@ -102,7 +102,8 @@ jobs:
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           echo "$DUP" | jq .
           test "$(echo "$DUP" | jq -r '.ok // false')" = true
-          test "$(echo "$DUP" | jq -r '.result.intelligence.source_event.event_id // empty')" = "$EVENT_ID"
+          test "$(echo "$DUP" | jq -r '.result.intelligence.idempotency_key // empty')" = "$IDEMPOTENCY_KEY"
+          test "$(echo "$DUP" | jq -r '.result.document.document_id // empty')" = "$DOCUMENT_ID"
 
           jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{
             status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,
