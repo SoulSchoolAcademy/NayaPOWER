@@ -38,13 +38,15 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          node .github/scripts/canonical-smart-note-deep-link.mjs      - name: Upload golden-path proof
+          node .github/scripts/canonical-smart-note-deep-link.mjs
+
+      - name: Upload golden-path proof
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: canonical-hub-smart-note-golden-path-proof
           path: |
-            canonical-hub-smart-note-golden-path-proof.json
+            canonical-smart-note-deep-link-proof.json
             golden-path-after-capture.png
             golden-path-after-reload.png
           if-no-files-found: warn
