@@ -1,0 +1,33 @@
+name: Verify Canonical Intelligence Organization
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.naya/memory/**'
+      - '.naya/runtime/canonical_memory_organization.py'
+      - '.naya/tests/test_canonical_memory_organization.py'
+      - '.github/workflows/verify-canonical-intelligence-organization.yml'
+  pull_request:
+    paths:
+      - '.naya/memory/**'
+      - '.naya/runtime/canonical_memory_organization.py'
+      - '.naya/tests/test_canonical_memory_organization.py'
+      - '.github/workflows/verify-canonical-intelligence-organization.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  canonical-intelligence-organization:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fail closed on noncanonical Smart Note organization
+        run: python .naya/runtime/canonical_memory_organization.py
+      - name: Run canonical organization regression tests
+        run: python .naya/tests/test_canonical_memory_organization.py
