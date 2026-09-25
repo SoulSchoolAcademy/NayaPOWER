@@ -1032,7 +1032,8 @@ Deno.serve(async (req) => {
     return json({ok:true,action,result});
   } catch(e) {
     const detail=String(e?.message||e);
-    try { await logOp(client,user.id,action,"FAILED",body,{error:detail}); } catch {}
-    return json({ok:false,action,error:detail},400);
+    const errorCode=detail.split(':',1)[0]||'COMPOUND_INTELLIGENCE_ERROR';
+    try { await logOp(client,user.id,action,"FAILED",body,{error:detail,error_code:errorCode}); } catch {}
+    return json({ok:false,action,error:detail,error_code:errorCode,truth_status:errorCode.startsWith('AUTHORITY')?'BLOCKED':'FAILED'},400);
   }
 });
