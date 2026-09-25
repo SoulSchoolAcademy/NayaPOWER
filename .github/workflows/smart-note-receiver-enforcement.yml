@@ -1,0 +1,19 @@
+name: Smart Note Receiver Enforcement
+
+on:
+  pull_request:
+    paths:
+      - ".naya/runtime/smart_note_calendar.py"
+      - ".naya/tests/test_smart_note_canonical_resolver.py"
+      - ".naya/tests/test_smart_note_receiver_enforcement.py"
+      - ".github/workflows/smart-note-receiver-enforcement.yml"
+
+jobs:
+  enforcement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch main for failing-before comparison
+        run: git fetch --no-tags origin main:refs/remotes/origin/main
+      - name: Run failing-before/fixed-after enforcement proof
+        run: python .naya/tests/test_smart_note_receiver_enforcement.py
