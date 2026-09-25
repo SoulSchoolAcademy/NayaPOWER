@@ -92,7 +92,7 @@ jobs:
             const pisTrace={network:pisNetwork,mapping:pisMapped};
             mark('PIS_BROWSER_BOUNDARY_TRACE',pisTrace);
             mark('PIS_CANONICAL_INDEX_BOUNDARY','verified independently by live receiver proof run 35774056720');
-            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId),{waitUntil:'domcontentloaded',timeout:60000});
+            await page.goto(hub+'/feed?event_id='+encodeURIComponent(eventId)+'&stream=personal',{waitUntil:'domcontentloaded',timeout:60000});
             await page.waitForURL(/\/feed(?:\?|$)/,{timeout:30000}); mark('FEED_ROUTE_REACHED');
             await page.waitForSelector('.feed .blocks [data-event-id]',{timeout:30000}); mark('FEED_BOARD_VISIBLE');
             const rendered=await page.locator('.feed .blocks [data-event-id]').evaluateAll(nodes=>nodes.map(n=>({event_id:n.getAttribute('data-event-id'),title:n.getAttribute('data-intelligence-id')})));
