@@ -19,21 +19,18 @@ def test_canonical_receiver_is_the_only_application_ingress():
     assert not re.search(r"nextval\(['\"]nayanet_smart_note_ib_identity_seq", runtime)
 
 
-def test_database_is_the_canonical_ib_identity_allocator():
+def test_database_boundary_does_not_allocate_repository_ib_identity_locally():
     migrations = sorted((ROOT / "supabase/migrations").glob("*.sql"))
     matching = []
     for path in migrations:
         text = path.read_text(encoding="utf-8")
-        if "nayanet_intelligent_blocks" in text and "nayanet_smart_note_ib_identity_seq" in text:
+        if "nayanet_intelligent_blocks" in text and "nayanet_upsert_intelligent_block_from_smart_note" in text:
             matching.append((path.name, text))
 
-    assert matching, "canonical IB identity sequence is not declared in migrations"
-    assert any(
-        "intelligent_block_id" in text
-        and "default" in text.lower()
-        and "nayanet_smart_note_ib_identity_seq" in text
-        for _, text in matching
-    )
+    assert matching, "canonical Intelligent Block persistence boundary is not declared in migrations"
+    for _, text in matching:
+        assert "nextval('nayanet_smart_note_ib_identity_seq'" not in text
+        assert not re.search(r"['"]IB-[0-9]{6}['"]", text)
 
 
 def test_repository_registry_contains_only_canonical_ib_projection_records():
