@@ -80,6 +80,11 @@ def test_calendar_writer_uses_same_resolver():
         )
 
 
+def test_transaction_cannot_allocate_ib_identity_locally():
+    source = MODULE_PATH.read_text(encoding="utf-8")
+    assert "_allocate_ib_id" not in source
+    assert "live canonical receiver" in source.lower()
+
 if __name__ == "__main__":
     test_canonical_smart_note_path()
     test_resolver_has_one_physical_namespace()
