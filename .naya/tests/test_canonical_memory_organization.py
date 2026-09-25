@@ -66,3 +66,17 @@ if __name__ == "__main__":
     test_smart_note_outside_canonical_namespace_is_rejected()
     test_smart_note_md_outside_canonical_namespace_is_rejected()
     print("PASS — canonical Smart Note filesystem boundary regression GREEN")
+
+
+def test_canonical_projection_identity_is_read_from_ib_path_segment():
+    with tempfile.TemporaryDirectory() as tmp:
+        root = Path(tmp)
+        path = root / ".naya/memory/smart-notes/2026/09/25/system/channel-constitution/IB-000123/smart-note.md"
+        path.parent.mkdir(parents=True)
+        path.write_text(
+            "# SMART NOTE\n\n**Intelligent Block ID:** IB-000123\n\n"
+            + "".join(f"## {h}\n\nvalue\n" for h in module.HEADINGS),
+            encoding="utf-8",
+        )
+        errors = module.audit(root)
+        assert errors == []
