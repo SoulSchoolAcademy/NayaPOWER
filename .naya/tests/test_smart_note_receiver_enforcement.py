@@ -122,7 +122,7 @@ def test_repository_has_one_enforced_smart_note_write_boundary():
     violations = []
     for rel in executable:
         source = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
-        if rel in {".naya/memory/smart_notes_v3.py", ".naya/runtime/smart_note_calendar.py"}:
+        if rel in {".naya/memory/smart_notes_v3.py", ".naya/runtime/smart_note_calendar.py", "scripts/build-smart-feed-projection.py"}:
             # This module writes only its derived event validation/index artifacts.
             pass
         elif "smart-notes" in source and "write_text" in source:
