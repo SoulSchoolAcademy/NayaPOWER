@@ -1,4 +1,5 @@
 import importlib.util
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,7 +18,7 @@ class FakeResponse:
 
 def test_runtime_deployment_fails_when_live_hub_lacks_canonical_deep_link(monkeypatch):
     module = load_verifier()
-    monkeypatch.setattr(module.urllib.request, "urlopen", lambda *args, **kwargs: FakeResponse())
+    monkeypatch.setattr(urllib.request, "urlopen", lambda *args, **kwargs: FakeResponse())
     verifier = module.DeploymentVerifier()
     assert verifier.check_runtime_deployment() is False
     assert verifier.results["checks"]["runtime_deployment"]["status"] == "FAIL"
