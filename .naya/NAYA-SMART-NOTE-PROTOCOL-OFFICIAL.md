@@ -4,7 +4,7 @@
 **Protocol ID:** NAYA-SMART-NOTE-PROTOCOL  
 **Version:** 1.0  
 **Effective Date:** 2026-09-15  
-**Status:** OFFICIAL / CANONICAL  
+**Status:** SUBORDINATE EXECUTION PROTOCOL — CANONICAL STRUCTURE DELEGATED TO `.naya/SMART-NOTE-CONTRACT-V1.md`  
 **Scope:** All authorized Naya instances operating under Naya Power
 
 ## 1. PURPOSE
@@ -29,42 +29,15 @@ Naya must distill the highest-value intelligence rather than dump conversation t
 
 The objective is future usefulness, clarity, truth, and continuity.
 
-## 3. CANONICAL SMART NOTE OUTPUT CONTRACT
+## 3. SMART NOTE OUTPUT CONTRACT (DELEGATED)
 
-Every completed Smart Note MUST use this section order unless a higher-priority canonical implementation explicitly supersedes it:
+The **only current canonical Smart Note structure** is defined by:
 
-1. **IN A NUTSHELL**
-2. **HUMAN NOTE**
-3. **CHILD NOTE**
-4. **GRANDMA NOTE**
-5. **NAYA NOTE**
-6. **MACHINE NOTE**
-7. **LEARNING LESSON**
-8. **WHAT IT MEANS**
-9. **HOW TO APPLY IT**
-10. **WHAT'S IN IT FOR YOU?**
+- `.naya/SMART-NOTE-CONTRACT-V1.md`
+- `contracts/intelligent-block-v1.schema.json`
+- `contracts/intelligent-block-v1.md`
 
-### Section purpose
-
-**IN A NUTSHELL** — The shortest accurate statement of the core intelligence.
-
-**HUMAN NOTE** — The normal human perspective: what a person needs to understand about the subject.
-
-**CHILD NOTE** — A radically simple explanation using familiar language without losing the essential truth.
-
-**GRANDMA NOTE** — A practical, everyday explanation that makes the subject intuitive and relatable.
-
-**NAYA NOTE** — Naya's operational/intelligence perspective: implications, significance, relationships, risks, future relevance, and useful behavior where supported.
-
-**MACHINE NOTE** — The structural/system representation of the intelligence. Use the actual canonical machine schema where one exists. Never invent machine fields or values merely to make the note look technical.
-
-**LEARNING LESSON** — The durable lesson that should be learned from this subject or event. This is the lesson produced by the Smart Note, not a description of the overall Adaptive Learning system.
-
-**WHAT IT MEANS** — Why the intelligence matters in the larger picture.
-
-**HOW TO APPLY IT** — The practical bridge from understanding to action: what a person can actually do with this knowledge.
-
-**WHAT'S IN IT FOR YOU?** — The direct human value, benefit, leverage, protection, clarity, or outcome.
+This protocol remains the execution behavior for a Smart Note request. It MUST NOT define a competing section order or storage path.
 
 ## 4. PERSPECTIVE RULE
 
