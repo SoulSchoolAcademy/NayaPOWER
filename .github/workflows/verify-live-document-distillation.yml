@@ -99,10 +99,7 @@ jobs:
           print("RETRIEVAL_LIBRARY_PROOF=PASS")
           PY
 
-          jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{
-            status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,
-            checks:{source_capture:"PASS",source_hash:"PASS",distillation:"PASS",classification:"PASS",provenance_binding:"PASS",private_scope:"PASS",intelligent_block_persistence:"PASS",cognition_retrieval:"PASS",library_index_retrieval:"PASS",idempotency:"PASS"}
-          }' | tee document-distill-proof-machine.json
+          echo "DOCUMENT_DISTILL_CORE_PATH=PASS"
 
       - name: Verify machine-readable proof
         run: |
@@ -115,4 +112,15 @@ jobs:
           assert p["source_event_id"] and p["intelligent_block_id"] and p["intelligence_index_id"]
           print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")
           print(json.dumps(p,sort_keys=True))
+          PY
+      - name: Verify machine-readable proof
+        run: |
+          jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,checks:{source_capture:"PASS",source_hash:"PASS",distillation:"PASS",classification:"PASS",provenance_binding:"PASS",private_scope:"PASS",intelligent_block_persistence:"PASS",cognition_retrieval:"PASS",library_index_retrieval:"PASS",idempotency:"PASS"}}' | tee document-distill-proof-machine.json
+          python - <<'PY'
+          import json
+          p=json.load(open("document-distill-proof-machine.json",encoding="utf-8"))
+          assert p["status"]=="VERIFIED"
+          assert all(v=="PASS" for v in p["checks"].values())
+          assert len(p["source_hash"])==64
+          print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")
           PY
