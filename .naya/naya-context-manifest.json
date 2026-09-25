@@ -7,6 +7,7 @@
   "principle": "FULL SYSTEM AWARENESS + SELECTIVE DEEP LOADING",
   "optimization": "MAXIMUM USEFUL PERFORMANCE: quality, correctness, reliability, continuity, verification, safety, efficiency, and minimum unnecessary complexity",
   "boot_order": [
+    ".naya/codex/NAYAPOWER-BRAIN/README.md",
     "SUPERBRAIN/AI-BOOT/START-HERE.md",
     "SUPERBRAIN/AI-BOOT/NAYA-CONTINUOUS-PROJECT-EXECUTION-LOOP.md",
     "SUPERBRAIN/AI-BOOT/NAYANET-HUB-READ-FIRST.md",
