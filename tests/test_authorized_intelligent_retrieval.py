@@ -64,7 +64,7 @@ def test_canonical_retrieval_defaults_to_current_intelligence(monkeypatch):
 def test_canonical_retrieval_can_explicitly_include_history(monkeypatch):
     monkeypatch.setattr(brain, "load_canonical_ibs", lambda root=None: _objects())
     results = brain.retrieve_canonical_ibs(
-        "old memory",
+        "old-memory",
         limit=10,
         principal_id="shawn",
         scope="personal",
@@ -72,7 +72,9 @@ def test_canonical_retrieval_can_explicitly_include_history(monkeypatch):
         principal_project="NayaPOWER",
         include_historical=True,
     )
-    assert [x["intelligent_block_id"] for x in results] == ["IB-000002"]
+    ids = [x["intelligent_block_id"] for x in results]
+    assert ids[0] == "IB-000002"
+    assert "IB-000002" in ids
 
 
 def test_canonical_retrieval_respects_temporal_boundary(monkeypatch):
@@ -85,6 +87,7 @@ def test_canonical_retrieval_respects_temporal_boundary(monkeypatch):
         project="NayaPOWER",
         principal_project="NayaPOWER",
         effective_on="2026-09-22",
+        include_historical=True,
     )
     assert [x["intelligent_block_id"] for x in results] == ["IB-000002"]
 

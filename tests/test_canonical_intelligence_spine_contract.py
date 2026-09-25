@@ -30,7 +30,7 @@ def test_database_boundary_does_not_allocate_repository_ib_identity_locally():
     assert matching, "canonical Intelligent Block persistence boundary is not declared in migrations"
     for _, text in matching:
         assert "nextval('nayanet_smart_note_ib_identity_seq'" not in text
-        assert not re.search(r"['"]IB-[0-9]{6}['"]", text)
+        assert not re.search(r"[\'\"]IB-[0-9]{6}[\'\"]", text)
 
 
 def test_repository_registry_contains_only_canonical_ib_projection_records():

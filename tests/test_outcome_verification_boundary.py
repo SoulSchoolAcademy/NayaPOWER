@@ -5,7 +5,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_runtime_verify_cannot_claim_verified_without_observed_outcome_and_evidence():
     source = (ROOT / "NAYANET/HUB/public/assistant-runtime.js").read_text(encoding="utf-8")
-    start = source.index("async function verify(sourceId)")
+    start = source.index("async function verify(sourceId, observedResult, evidenceRef)")
     end = source.index("function style()", start)
     verify = source[start:end]
 
