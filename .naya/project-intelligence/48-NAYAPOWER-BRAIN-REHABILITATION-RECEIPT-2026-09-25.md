@@ -1,7 +1,7 @@
 # NayaPOWER Brain Rehabilitation Receipt — 2026-09-25
 
-**Status:** REPAIRED / VERIFICATION PENDING
-**Latest main HEAD at receipt update:** `a9b2c5b5bdea487a0233f9f54c233dd351f3973f`
+**Status:** VERIFIED REPOSITORY SCOPE / BEHAVIORAL BOUNDARY OPEN
+**Latest verified main HEAD:** `b490cb074f0917377bba73d3d6a5a3f80345595d`
 **Initial repair source HEAD:** `08d961c2e7b8a91f119234f1901f8b6518870dcf`
 **Scope:** `.naya/memory/` canonical-memory boundary and related Smart Note / Intelligent Block runtime contracts.
 
@@ -48,7 +48,14 @@
   - registry must declare live receiver identity authority.
 
 ### Repository CI
-**NOT EXECUTED against the repaired HEAD in this execution environment.** The connected GitHub surface exposed the workflows and prior run results, but no independent local/Codex execution environment was available and the main-push workflow results for the repaired merge were not observable at receipt time.
+**EXECUTED against current main on DESKTOP-OJ712N5.** The repository was checked out at exact HEAD `b490cb074f0917377bba73d3d6a5a3f80345595d` in a clean detached worktree.
+
+Current verification executed:
+- Focused canonical memory/IB/cold-start suite: **78 passed, 0 failed**.
+- Canonical IB retrieval benchmark: **PASS**; authorized owner 1, unauthorized same-project 0, cross-project 0, forged-event 0, forged-content 0; selected `IB-000978`; identity/provenance preserved; learning distinct from authorization; current distinct from history.
+- `cold_start_activation.py`: **VERIFIED** at repository scope after removing the legacy `.naya/memory/STATE.json` dependency.
+- `validate_control_plane.py`: **GREEN** at repository scope.
+- `git diff --check`: **PASS**.
 
 Prior run observed before this repair:
 - `verify-canonical-ib-retrieval` on prior HEAD `1a3e8dab645df38fd6daa439f9af035b6442953d`: SUCCESS.
@@ -58,9 +65,9 @@ Those prior results do **not** prove the repaired HEAD.
 
 ## Remaining contradictions / UNKNOWNs
 
-1. Full executable test suite for the repaired HEAD remains UNKNOWN.
+1. Full repository-wide executable test suite remains UNKNOWN; the focused canonical suite is now verified at current main.
 2. Full semantic classification of every one of the 154 runtime files remains UNKNOWN; the canonical restore/retrieval/Smart Note paths and the identified high-risk compatibility modules were inspected.
-3. The Smart Note enforcement representation boundary is now aligned to the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE contract; executable verification of that repaired HEAD remains UNKNOWN.
+3. The Smart Note enforcement representation boundary is now aligned to the canonical HUMAN/CHILD/GRANDMA/NAYA/MACHINE contract and is included in the 78-test focused pass.
 4. Production receiver/database registry versus repository registry parity remains UNKNOWN; repository registry is a projection/index, not authority.
 5. Positive owner-authenticated production retrieval/deep-link/reload proof for the real production IB remains blocked until the legitimate owner session is available.
 6. Behavioral cold-Naya takeover remains UNKNOWN; structural cold-successor proof does not establish independent fresh-LLM behavior.
