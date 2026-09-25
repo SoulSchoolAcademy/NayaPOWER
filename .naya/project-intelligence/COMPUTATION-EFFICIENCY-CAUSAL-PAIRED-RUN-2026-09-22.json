@@ -1,7 +1,7 @@
 {
   "schema": "nayanet-computation-efficiency-proof-v2",
   "status": "VERIFIED",
-  "source_head": "bbdae40e63dca93fcacf84cbd60d037ee3d29a5c",
+  "source_head": "5ff7eb50260b0a0c87a27f27dd2f0b6e220eaf70",
   "task": {
     "description": "Recover mission, active block, active block status, and exactly one canonical next action.",
     "hash_sha256": "f27ed3d518e54905775935bd997499fcd19319763145fc9194b5336798423348"
@@ -9,13 +9,13 @@
   "cycle_a": {
     "mode": "COLD",
     "content_objects_read": 4,
-    "context_bytes": 147007,
-    "wall_time_ms": 1.1323,
+    "context_bytes": 148066,
+    "wall_time_ms": 1.1881,
     "result": {
       "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
       "active_block": "HUMAN-JOURNEY-P2",
       "active_block_status": "VERIFIED",
-      "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+      "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender\u2192receiver\u2192Hub production parity proof against the same exact deployed source identity.",
       "next_action_count": 1
     }
   },
@@ -32,13 +32,13 @@
     "mode": "RETAINED",
     "retained_objects_used": 1,
     "canonical_content_objects_read": 2,
-    "context_bytes": 59503,
-    "wall_time_ms": 109.5872,
+    "context_bytes": 60606,
+    "wall_time_ms": 109.8919,
     "result": {
       "mission": "Make it dramatically easier for an ordinary human with a meaningful vision to accomplish extraordinary things with AI without becoming an AI project manager.",
       "active_block": "HUMAN-JOURNEY-P2",
       "active_block_status": "VERIFIED",
-      "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+      "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender\u2192receiver\u2192Hub production parity proof against the same exact deployed source identity.",
       "next_action_count": 1
     },
     "revalidated": [
@@ -53,7 +53,7 @@
   "avoided_work": {
     "status": "COUNTERFACTUAL",
     "canonical_content_objects": 2,
-    "canonical_content_bytes": 87504,
+    "canonical_content_bytes": 87460,
     "basis": "Cycle A read and reconstructed from all four canonical objects; Cycle A then durably produced the retained artifact; Cycle B consumed it before reading only the mutable STATE/BLOCKS boundary and verified all four source blob identities unchanged.",
     "model_tokens": "NOT_CLAIMED",
     "semantic_duplicate_reasoning": "NOT_CLAIMED",
@@ -72,6 +72,6 @@
     "directly_observed_avoided_work": true,
     "verified_outcome_preserved": true
   },
-  "created_at": "2026-09-25T05:44:12.863792+00:00",
+  "created_at": "2026-09-25T06:30:00.627615+00:00",
   "next_action": "Record the causal benchmark result and leave one successor action."
 }

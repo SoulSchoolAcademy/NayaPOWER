@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-09-25T06:29:51.353411+00:00",
+  "source_head": "5ff7eb50260b0a0c87a27f27dd2f0b6e220eaf70",
+  "checks": {
+    "source_identity": {
+      "expected_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
+      "actual_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
+      "match": true,
+      "status": "PASS"
+    },
+    "runtime_deployment": {
+      "worker": "sparkling-shape-7ae5",
+      "url": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev",
+      "http_status": 403,
+      "status": "FAIL",
+      "reason": "LIVE_HUB_HTTP_ERROR",
+      "required_markers": [
+        "NAYA-CANONICAL-IB-DEEP-LINK-V1",
+        "NayaHubDeepLink",
+        "retrieveIntelligentBlock"
+      ],
+      "markers": {
+        "NAYA-CANONICAL-IB-DEEP-LINK-V1": false,
+        "NayaHubDeepLink": false,
+        "retrieveIntelligentBlock": false
+      },
+      "source_length": 0,
+      "note": "Read-only live source contract probe; it does not prove authenticated owner retrieval or browser reload continuity."
+    },
+    "supabase_functions": {
+      "project": "dahisasgpfvziswqvmvm",
+      "region": "ca-central-1",
+      "functions": [
+        "nayanet-github-webhook",
+        "naya-smart-feed",
+        "nayanet-compound-intelligence",
+        "nayanet-project-intelligence-bridge",
+        "v7-smart-note-canonical",
+        "nayanet-smart-mail"
+      ],
+      "status": "MANUAL_VERIFICATION_REQUIRED",
+      "note": "Verify via Supabase Dashboard: Functions deployed, versions current"
+    },
+    "database_schema": {
+      "project": "dahisasgpfvziswqvmvm",
+      "critical_tables": [
+        "nayanet_cognition_events",
+        "nayanet_execution_receipts",
+        "nayanet_project_cognition_state",
+        "nayanet_intelligence_index",
+        "nayanet_smart_ledger",
+        "nayanet_intelligent_blocks",
+        "nayanet_smart_connect_participation",
+        "nayanet_authority_grants",
+        "nayanet_intelligence_notifications",
+        "learning_evidence"
+      ],
+      "critical_functions": [
+        "nayanet_record_cognition_event",
+        "nayanet_resolve_github_webhook_owner",
+        "nayanet_smart_connect_github_bind",
+        "nayanet_issue_authority_grant",
+        "nayanet_validate_authority_grant"
+      ],
+      "status": "MANUAL_VERIFICATION_REQUIRED",
+      "note": "Verify via Supabase SQL Editor: tables and functions exist"
+    },
+    "webhook_deployment": {
+      "url": "https://dahisasgpfvziswqvmvm.supabase.co/functions/v1/nayanet-github-webhook",
+      "expected_status": 503,
+      "actual_status": 503,
+      "match": true,
+      "status": "PASS",
+      "note": "Should fail closed with GITHUB_WEBHOOK_SECRET_NOT_CONFIGURED"
+    },
+    "source_parity": {
+      "critical_paths": {
+        "NAYANET/HUB/index.html": "6a61b2c775d4e4b7a04721606813ec0031870399",
+        "NAYANET/EXECUTION-BRIDGE/nayanet-github-webhook/index.ts": "4d34eb233682b62cf4e40a53e2890bf78fab4ef9",
+        "supabase/functions/naya-smart-feed/index.ts": "b137b4634ec4e3070290bd9da839f576c4c6957d",
+        "supabase/functions/nayanet-compound-intelligence/index.ts": "169e2195759b4c989f1148cedcbbe07087b2584a",
+        "supabase/functions/nayanet-project-intelligence-bridge/index.ts": "ea9c24516c1cd65a8dc39371791a6c2febb84323",
+        "supabase/functions/v7-smart-note-canonical/index.ts": "004914249b9dc286dcb5e6da7228b0fee0fd2005"
+      },
+      "all_found": true,
+      "status": "PASS"
+    }
+  },
+  "overall": "FAIL",
+  "summary": {
+    "total_checks": 6,
+    "passed": 3,
+    "failed": 1,
+    "errors": 0,
+    "manual_required": 2
+  }
+}
