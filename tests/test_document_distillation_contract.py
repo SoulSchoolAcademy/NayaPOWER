@@ -36,3 +36,15 @@ def test_document_distill_binds_source_hash_and_classification_to_commit():
         assert marker in source, f"missing provenance/classification binding: {marker}"
 
 print("DOCUMENT_DISTILL_CONTRACT: PASS")
+
+
+def test_retrieve_exposes_canonical_library_projections():
+    compound = (ROOT / "supabase/functions/nayanet-compound-intelligence/index.ts").read_text(encoding="utf-8")
+    for marker in [
+        'library: {',
+        'indexes: indexResult.data ?? []',
+        'intelligent_blocks: blockResult.data ?? []',
+        'nayanet_intelligence_index',
+        'nayanet_intelligent_blocks',
+    ]:
+        assert marker in compound, f"missing retrieval/library marker: {marker}"

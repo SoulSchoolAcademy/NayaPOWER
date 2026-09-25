@@ -84,11 +84,10 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-          INDEX=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligence_index?select=id,source_table,source_id,object_type,title,status,metadata&id=eq.$INDEX_ID" "${H[@]}")
-          echo "$INDEX" | jq .
-          test "$(echo "$INDEX" | jq 'length')" -ge 1
-          test "$(echo "$INDEX" | jq -r '.[0].id')" = "$INDEX_ID"
-          test "$(echo "$INDEX" | jq -r '.[0].source_table')" = "nayanet_cognition_events"
+          LIBRARY_INDEX_ID=$(echo "$RETRIEVED" | jq -r --arg id "$INDEX_ID" '.result.result.library.indexes[]? | select(.id==$id) | .id' | head -n1)
+          test "$LIBRARY_INDEX_ID" = "$INDEX_ID"
+          test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.source_type // empty')" = document
+          test "$(echo "$RETRIEVED" | jq -r '.result.result.library.intelligent_blocks[0].value_context.document_id // empty')" = "$DOCUMENT_ID"
 
           DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
           test "$(echo "$DUP" | jq -r '.ok // false')" = true
