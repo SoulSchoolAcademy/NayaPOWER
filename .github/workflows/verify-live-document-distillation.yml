@@ -98,7 +98,7 @@ jobs:
           assert row["value_context"]["document_id"]==x["document"]["document_id"]
           assert row["value_context"]["source_hash"]==x["document"]["source_hash"]
           assert row["value_context"]["source_ref"]==x["document"]["source_ref"]
-          assert row["content"]["content"]==x["document"]["essence"]
+          assert row["content"]["content"]==ib["content"]["content"]
           q=retrieval["result"]
           assert q["schema"]=="NAYANET_PROJECT_INTELLIGENCE_RETRIEVE_V1"
           assert any(i["id"]==x["intelligence"]["projection"]["index"]["id"] for i in q["library"]["indexes"])
