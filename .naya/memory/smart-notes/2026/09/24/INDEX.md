@@ -10,7 +10,7 @@
 |---|---|---|---|
 | [IB-000001](./system/canonical-smart-note-system/IB-000001/smart-note.md) | Canonical Smart Note System | system | CANONICAL |
 | [IB-000002](./system/superbrain-scorecard/IB-000002/smart-note.md) | NayaNET Superbrain Daily Scorecard | system | CANONICAL |
-| [IB-000659](./system/hub-house-alignment/IB-000659/smart-note.md) | Hub Is the House Alignment | system | CANONICAL |
+| — | Hub Is the House Alignment | system | CANONICAL-READY / LIVE ID PENDING |
 
 ## Daily retrieval rule
 
