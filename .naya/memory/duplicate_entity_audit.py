@@ -88,6 +88,23 @@ def jaccard(a: set[str], b: set[str]) -> float:
 
 
 def classify(a: dict, b: dict) -> dict:
+    execution_a = a.get("execution") if isinstance(a.get("execution"), dict) else {}
+    execution_b = b.get("execution") if isinstance(b.get("execution"), dict) else {}
+    identity_keys = ("action_id", "run_id", "session_id", "claim_id", "decision_id")
+    distinct_execution = any(
+        execution_a.get(key) and execution_b.get(key) and execution_a.get(key) != execution_b.get(key)
+        for key in identity_keys
+    )
+    if distinct_execution:
+        return {
+            "a": a["event_id"],
+            "b": b["event_id"],
+            "decision": "DISTINCT",
+            "confidence": 1.0,
+            "entity_overlap": 0.0,
+            "lexical_similarity": 0.0,
+            "time_distance_hours": None,
+        }
     fp_same = fingerprint(a) == fingerprint(b)
     keys_a, keys_b = entity_keys(a), entity_keys(b)
     entity_overlap = len(keys_a & keys_b) / max(1, min(len(keys_a), len(keys_b)))
