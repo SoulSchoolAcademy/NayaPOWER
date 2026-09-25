@@ -36,6 +36,14 @@
       "category": "system",
       "topic": "canonical-memory-organization",
       "status": "CANONICAL"
+    },
+    {
+      "intelligent_block_id": "IB-001061",
+      "path": ".naya/memory/smart-notes/2026/09/25/system/nayapower-daily-scorecard/IB-001061/smart-note.md",
+      "date": "2026-09-25",
+      "category": "system",
+      "topic": "nayapower-daily-scorecard",
+      "status": "CANONICAL"
     }
   ],
   "archive_boundary_note": "Registry restored to canonical active path on 2026-09-25 after fresh-start quarantine; historical noncanonical Smart Note projections remain archived.",
