@@ -21,7 +21,7 @@
     "block_next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
     "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
-    "observed_head": "9a4bd09cfb409fa5945f3bcd7834094d8a821bee",
+    "observed_head": "d1d1b1efd08e0f00ff49da515baa1926f511d502",
     "live_head_resolution": "Resolve git HEAD at execution time; observed_head is a non-authoritative snapshot.",
     "continuation_prompt": ".naya/operations/NAYA-CONTINUATION-PROMPT-2026-09-25.md"
   },
