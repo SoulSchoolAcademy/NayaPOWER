@@ -67,15 +67,15 @@
     "proof_result": "PROVEN"
   },
   "memory_rehabilitation": {
-    "status": "REPAIRED_VERIFICATION_PENDING",
+    "status": "VERIFIED_REPOSITORY_SCOPE_BEHAVIORAL_BOUNDARY_OPEN",
     "receipt": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
-    "source_head": "a9b2c5b5bdea487a0233f9f54c233dd351f3973f",
+    "source_head": "b490cb074f0917377bba73d3d6a5a3f80345595d",
     "canonical_memory_store": ".naya/memory/smart-notes/",
     "canonical_registry": ".naya/memory/smart-notes/REGISTRY.json",
     "identity_authority": "live canonical receiver only",
     "canonical_retrieval": ".naya/memory/smart_notes_v3.py::retrieve_canonical_ibs",
     "local_ib_allocation": "FORBIDDEN_AND_MACHINE_ENFORCED",
-    "test_execution": "UNKNOWN"
+    "test_execution": "VERIFIED_78_FOCUSED_TESTS"
   },
   "known": [
     "The control plane resolves live main at execution time and does not treat recorded HEAD as authoritative.",
