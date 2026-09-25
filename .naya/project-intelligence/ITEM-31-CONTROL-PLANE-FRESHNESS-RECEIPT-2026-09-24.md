@@ -1,13 +1,13 @@
 # NayaPOWER — Item 31 Control-Plane Freshness Receipt
 
-**Date:** 2026-09-24
+**Date:** 2026-09-25
 **Item:** 31
 **Title:** Control-plane freshness with explicit UNKNOWN identity resolution
-**Status:** IMPLEMENTED — NOT VERIFIED
-**Branch:** `coda2/item31-control-plane-freshness`
-**Starting source:** `ad2d2ba466fe60a3443611fb18dead428a57d800` (`origin/main`)
-**Commit:** `08a3b1ebc146a7f18edf56cc742f25279d5d464e`
-**PR:** [#566](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/566)
+**Status:** CANDIDATE VERIFIED — MAINLINE MERGE/CI PENDING
+**Branch:** `coda2/item31-control-plane-freshness-mainline-verification-20260925`
+**Starting source:** `fa82d32b67131c5cdaec441d0f0787a9921f8370` (`origin/main`)
+**Implementation:** PR [#566](https://github.com/SoulSchoolAcademy/NayaPOWER/pull/566), merged as `b48aa8fd6fcc41660e22a99f357e4e2da8658c51`
+**Verification commit:** pending
 **Related issue:** [#554](https://github.com/SoulSchoolAcademy/NayaPOWER/issues/554)
 
 ## Original problem
@@ -63,40 +63,43 @@ That mechanism was removed. The validator does not inspect statement text for si
 | Check | Result | Evidence |
 |---|---|---|
 | Python syntax | PASS | `python -m py_compile scripts/validate-control-plane-freshness.py tests/test_control_plane_freshness.py` |
-| Explicit UNKNOWN regression suite | PASS | 5/5 tests in `tests/test_control_plane_freshness.py` |
-| Case A: unrelated `learning` text | PASS | Does not resolve the model/provider UNKNOWN |
-| Case B: exact proof reference | PASS | Resolves only when the UNKNOWN is removed from the active list and valid evidence is supplied |
+| Explicit UNKNOWN regression suite | PASS | 15/15 tests in `tests/test_control_plane_freshness.py` |
+| Case A: unrelated `learning` text | PASS | Does not resolve `UNKNOWN-UNIVERSAL-MODEL-LEARNING-QUALITY` |
+| Case B: exact proof reference | PASS | Resolves only with exact `resolves_unknown` identity, valid evidence, and current source commit |
 | Case C: partial related text | PASS | Does not resolve |
 | Case D: stale proof | PASS | Rejected; no resolution promotion |
 | Case E: explicit replacement | PASS | `SUPERSEDED` resolves only with replacement metadata and valid source commit |
-| Registry/STATE exact coverage | PASS | 4 registry entries exactly match 4 current STATE UNKNOWN statements |
-| Full audit on execution branch | RED | Expected: `NON_MAIN_CURRENT_AUTHORITY: coda2/item31-control-plane-freshness` |
-| Full audit with branch treated as main for isolated checking | RED | UNKNOWN gate passed; first remaining divergence was `BATON_FIELD_MISSING: identity` |
+| Registry/STATE exact coverage | PASS | 4 registry entries exactly match 4 current `STATE.unknown` statements |
+| Pre-repair full audit on clean `origin/main` clone | RED | `BATON_SOURCE_SNAPSHOT_STALE`; the committed BATON predated later control-plane changes |
+| Canonical BATON rebuild | PASS | `python .naya/runtime/baton.py build-and-validate` |
+| Post-repair full audit on clean `origin/main` clone | FRESH | `status: FRESH`, `outcome: PASS`, all required checks true, `still_unknown_count: 4`, `unknown_resolution_count: 0` |
+| Canonical BATON validator | PASS | `python .naya/runtime/baton.py validate` |
+| Git diff whitespace check | PASS | `git diff --check` |
+| Mainline CI run | NOT OBSERVED | The local clean-clone audit passed; no post-merge GitHub Actions run for this candidate has been observed |
 
-No Item 31 CI run has been observed on `main`. PR #566 is open; its observed checks are unrelated failing Cloudflare Workers Builds, and the new workflow is not available for dispatch until the workflow exists on the default branch. The validator has not been promoted to `VERIFIED` or `FRESH` for the live control plane.
+The explicit identity model therefore passes the requested false-positive cases and the full local main-source audit. The four UNKNOWNs remain listed as `UNKNOWN`; no textual overlap, unrelated known statement, partial evidence, or stale proof promoted one.
 
 ## Item 30 dependency boundary
 
 Item 30 remains `IMPLEMENTED — PENDING_DEPLOYMENT_VERIFICATION`:
 
 - PR #562 is OPEN and unmerged.
-- The Item 30 workflow is absent from `main`.
-- Both migration paths are absent from `main`.
-- A direct production RPC probe returned HTTP `404` / `PGRST202` for `nayanet_legacy_cognition_disposition_audit`.
+- The Item 30 workflow and both migration paths are absent from `main`.
+- The current unauthenticated RPC probe returned HTTP `401`; that auth boundary does not prove the function is deployed, and no service-role or owner-authenticated audit was performed.
 - The release authorization artifact remains a template and deployment governance defaults to `DENY`.
 
-Therefore no 88-event classification, fingerprint, audit, artifact, or Item 30 control-plane closure is claimed.
+Therefore no 88-event classification, fingerprint, audit result, artifact preservation, or Item 30 control-plane closure is claimed.
 
 ## Remaining UNKNOWNs and blockers
 
 - All four registered UNKNOWNs remain `UNKNOWN` by explicit policy.
 - Item 30 deployment authorization, migration application, workflow execution, and independent audit remain pending.
-- The live control plane currently has a separate baton/Hub freshness boundary that must be reconciled after authorized proof, not hidden by this implementation.
+- This candidate has a passing clean-clone `origin/main` audit, but its BATON update and receipt still require merge and an observed post-merge CI run before canonical Item 31 closure.
 
 ## Exact successor action
 
-Obtain explicit authorization for PR #562 deployment, merge it, apply both Supabase migrations, run the main Item 30 workflow, and independently verify the exact 88-event cohort, fingerprint `58fc76519416537537a4fd6ffaf051041ab90164aecbe60410223222cb90ec8e`, `complete: true`, and the preserved artifact before updating any control-plane closure state.
+Obtain explicit authorization for PR #562 deployment, merge it, apply both Supabase migrations, run the main Item 30 workflow, and independently verify the exact 88-event cohort, fingerprint `58fc76519416537537a4fd6ffaf051041ab90164aecbe60410223222cb90ec8e`, `complete: true`, and the preserved artifact before updating any Item 30 control-plane closure state.
 
 ## Authority boundary
 
-This receipt proves implementation and local regression behavior only. It does not prove production deployment, production classification, current-main CI passage, or control-plane freshness.
+This receipt proves the explicit UNKNOWN resolution model, the canonical BATON rebuild, and a passing audit against a clean clone of the recorded `origin/main` source. It does not prove production deployment, production classification, merged-main CI passage, or production freshness.
