@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[2]; NAYA=ROOT/'.naya'; MEMORY=NAYA/'memory
 CONTROL_STATE_PATH=NAYA/'control-plane/STATE.json'; CONTROL_MAP_PATH=NAYA/'control-plane/MAP.json'; CONTROL_BLOCK_PATH=NAYA/'control-plane/BLOCKS.json'; CONTROL_PROOF_PATH=NAYA/'control-plane/PROOF.json'; LEGACY_STATE_PATH=MEMORY/'STATE.json'
 MANIFEST_PATH=NAYA/'naya-context-manifest.json'; BRIEFING_PATH=MEMORY/'NAYAPOWER-RUNTIME-BRIEFING.md'; FEED_PATH=NAYA/'INTELLIGENT-FEED.md'; PROJECT_PATH=NAYA/'projects'/'CURRENT-PROJECT.md'; START_PATH=ROOT/'SUPERBRAIN/AI-BOOT/START-HERE.md'; CHECKPOINT_DIR=NAYA/'checkpoints'; HANDOFF_DIR=NAYA/'handoffs'
 sys.path.insert(0,str(MEMORY))
-from memory_runtime import load_json, notes, retrieve, validate  # noqa: E402
+from smart_notes_v3 import load_canonical_ibs, retrieve_canonical_ibs, validate  # noqa: E402
 ISO_Z_RE=re.compile(r'Z$'); GENERATED_STATUS_RE=re.compile(r'^\?\? \.naya/(?:memory|runtime)/__pycache__/')
 
 def parse_time(value):
@@ -64,19 +64,46 @@ def note_is_visible(note,at):
     if status=='STALE' and at is None:return False
     if at is None:return status not in {'SUPERSEDED','STALE'}
     effective=parse_time(note.get('effective_at')); return not (effective and effective>at) and not (note.get('superseded_at') and parse_time(note['superseded_at'])<=at)
-def memory_snapshot(query,at,limit):
-    visible=[note for _,note in notes() if '__parse_error__' not in note and note_is_visible(note,at)]
-    if query:
-        ranked=[(score,n) for score,n in retrieve(query,max(limit*3,10)) if n in visible]; ranked.sort(key=lambda x:(-x[0],x[1].get('effective_at',''),x[1].get('id',''))); selected=[n for _,n in ranked[:limit]]
-    else:selected=sorted(visible,key=lambda n:(n.get('effective_at',''),n.get('id','')),reverse=True)[:limit]
+def memory_snapshot(query,at,limit,principal_id=None,scope=None,project=None,principal_project=None,grants=()):
+    candidates=retrieve_canonical_ibs(
+        query,
+        limit=max(limit*3,10),
+        root=ROOT,
+        principal_id=principal_id,
+        scope=scope,
+        project=project,
+        principal_project=principal_project,
+        grants=grants,
+    )
+    if at is not None:
+        target_date=at.date()
+        candidates=[item for item in candidates if item.get('date') and item['date'] <= target_date.isoformat()]
+    selected=candidates[:limit]
+    authorized=retrieve_canonical_ibs('', limit=10000, root=ROOT, principal_id=principal_id, scope=scope, project=project, principal_project=principal_project, grants=grants)
+    if at is not None:
+        authorized=[item for item in authorized if item.get('date') and item['date'] <= at.date().isoformat()]
     counts={}
-    for n in visible:counts[n.get('status','UNKNOWN')]=counts.get(n.get('status','UNKNOWN'),0)+1
-    return {'count_visible':len(visible),'counts_by_status':counts,'conflicts':[n.get('id') for n in visible if n.get('status')=='CONFLICTED'],'selected':selected}
+    for item in authorized:
+        status=str(item.get('status') or 'UNKNOWN')
+        counts[status]=counts.get(status,0)+1
+    return {
+        'source':'canonical_ib_registry',
+        'count_visible':len(authorized),
+        'counts_by_status':counts,
+        'conflicts':[item.get('intelligent_block_id') for item in authorized if item.get('status')=='CONFLICTED'],
+        'selected':selected,
+    }
+
 def stale_memory():
     out=[]
-    for path,note in notes():
-        if '__parse_error__' in note:out.append({'path':str(path),'reason':'parse_error'})
-        elif note.get('status') in {'STALE','CONFLICTED','SUPERSEDED'}:out.append({'id':note.get('id'),'title':note.get('title'),'status':note.get('status'),'path':str(path)})
+    for item in load_canonical_ibs(root=ROOT):
+        if item.get('status') in {'STALE','CONFLICTED','SUPERSEDED'}:
+            out.append({
+                'id':item.get('intelligent_block_id'),
+                'title':item.get('topic'),
+                'status':item.get('status'),
+                'path':item.get('path'),
+            })
     return out
 def proof_target(project_text,state):
     section=extract_section(project_text,'NEXT EXECUTION')
@@ -92,8 +119,8 @@ def orientation_snapshot(repo,state):
         if section:next_actions.append({'source':label,'text':section})
     if state.get('single_next_action'):next_actions.insert(0,{'source':'control-plane STATE','text':state['single_next_action']})
     return {'canonical_identity':'SoulSchoolAcademy/NayaPOWER','observed_head':actual,'state_declared_head':state.get('current_head',{}).get('source'),'projections':projections,'mismatches':sorted(set(mismatches)),'contradictions':contradictions,'next_actions':next_actions,'latest_handoff':latest_handoff()}
-def build_restore(query='',at=None,limit=10):
-    target=parse_time(at); state=load_state(); legacy=load_legacy_state(); manifest=load_manifest(); structural_errors=validate(); repo=repository_reality(target); orientation=orientation_snapshot(repo,state) if not target else {'historical':True}; project_text=read_text(PROJECT_PATH); memory=memory_snapshot(query,target,limit); reconciliation_required=bool(orientation.get('contradictions') or orientation.get('mismatches')) if not target else False; status='RECONCILIATION_REQUIRED' if reconciliation_required else ('VERIFIED' if not structural_errors and repo['available'] else 'UNKNOWN'); block=state.get('current_block'); next_action=state.get('single_next_action'); unknown=state.get('unknown',[])
+def build_restore(query='',at=None,limit=10,principal_id=None,scope=None,project=None,principal_project=None,grants=()):
+    target=parse_time(at); state=load_state(); legacy=load_legacy_state(); manifest=load_manifest(); structural_errors=validate(); repo=repository_reality(target); orientation=orientation_snapshot(repo,state) if not target else {'historical':True}; project_text=read_text(PROJECT_PATH); memory=memory_snapshot(query,target,limit,principal_id,scope,project,principal_project,grants); reconciliation_required=bool(orientation.get('contradictions') or orientation.get('mismatches')) if not target else False; status='RECONCILIATION_REQUIRED' if reconciliation_required else ('VERIFIED' if not structural_errors and repo['available'] else 'UNKNOWN'); block=state.get('current_block'); next_action=state.get('single_next_action'); unknown=state.get('unknown',[])
     return {'schema':'naya-power-restore-context/v4','status':status,'generated_at':now().isoformat(),'mode':'RESTORE-TIME' if target else 'RESTORE-STANDARD','requested_at':target.isoformat() if target else None,'authority':manifest.get('authority_rules',{}),'current_state':state,'legacy_state_projection':legacy,'repository_reality':repo,'orientation':orientation,'memory':memory,'stale_or_superseded':stale_memory(),'validation':{'passed':not structural_errors,'errors':structural_errors},'mission':state.get('mission'),'north_star':state.get('north_star'),'protected':state.get('protected',[]),'known':state.get('verified_evidence',{}).get('known',[]),'unknown':unknown,'what_changed':state.get('verified_evidence',{}).get('known',[]),'what_is_unfinished':unknown,'current_project':{'active_block':block,'status':state.get('current_block_status'),'priority':state.get('priority'),'target_state':state.get('bottleneck')},'active_block':block,'next_best_action':next_action,'proof_target':proof_target(project_text,state),'latest_handoff':orientation.get('latest_handoff'),'reconciliation':{'required':reconciliation_required,'reasons':orientation.get('contradictions',[])+orientation.get('mismatches',[])},'operational_state_authority':str(CONTROL_STATE_PATH.relative_to(ROOT)),'active_block_authority':str(CONTROL_BLOCK_PATH.relative_to(ROOT)),'proof_authority':str(CONTROL_PROOF_PATH.relative_to(ROOT))}
 def canonical_json(data):return json.dumps(data,sort_keys=True,separators=(',',':'),ensure_ascii=False)
 def write_artifact(directory,prefix,payload):
@@ -103,7 +130,7 @@ def checkpoint(restore):
 def handoff(restore):
     payload={'schema':'naya-power-handoff/v4','created_at':now().isoformat(),'mission':restore['mission'],'north_star':restore['north_star'],'current_state':restore['current_state'],'active_block':restore['active_block'],'what_changed':restore['what_changed'],'verified':restore['status']=='VERIFIED','unknown':restore['unknown'],'protected_elements':restore['protected'],'repository':restore['repository_reality'],'orientation':restore['orientation'],'memory_conflicts':restore['memory']['conflicts'],'next_best_action':restore['next_best_action'],'proof_target':restore['proof_target'],'reconciliation':restore['reconciliation'],'operational_state_authority':restore['operational_state_authority']}; path=write_artifact(HANDOFF_DIR,'handoff',payload); return {'path':str(path.relative_to(ROOT)),'handoff':payload}
 def main():
-    ap=argparse.ArgumentParser(description='NayaPOWER Superbrain Restore Context runtime'); sub=ap.add_subparsers(dest='command',required=True); r=sub.add_parser('restore'); r.add_argument('query',nargs='?',default=''); r.add_argument('--at'); r.add_argument('--limit',type=int,default=10); r.add_argument('--pretty',action='store_true'); c=sub.add_parser('checkpoint'); c.add_argument('query',nargs='?',default=''); c.add_argument('--at'); h=sub.add_parser('handoff'); h.add_argument('query',nargs='?',default=''); h.add_argument('--at'); args=ap.parse_args(); result=build_restore(args.query,args.at,getattr(args,'limit',10))
+    ap=argparse.ArgumentParser(description='NayaPOWER Superbrain Restore Context runtime'); sub=ap.add_subparsers(dest='command',required=True); r=sub.add_parser('restore'); r.add_argument('query',nargs='?',default=''); r.add_argument('--at'); r.add_argument('--limit',type=int,default=10); r.add_argument('--principal-id'); r.add_argument('--scope'); r.add_argument('--project'); r.add_argument('--principal-project'); r.add_argument('--grant',action='append',default=[]); r.add_argument('--pretty',action='store_true'); c=sub.add_parser('checkpoint'); c.add_argument('query',nargs='?',default=''); c.add_argument('--at'); h=sub.add_parser('handoff'); h.add_argument('query',nargs='?',default=''); h.add_argument('--at'); args=ap.parse_args(); result=build_restore(args.query,args.at,getattr(args,'limit',10),args.principal_id,args.scope,args.project,args.principal_project,args.grant)
     if args.command=='restore': print(json.dumps(result,indent=2 if args.pretty else None,ensure_ascii=False)); return 0 if result['status']=='VERIFIED' else 2
     artifact=checkpoint(result) if args.command=='checkpoint' else handoff(result); print(json.dumps(artifact,indent=2,ensure_ascii=False)); return 0 if result['status']=='VERIFIED' else 2
 if __name__=='__main__': raise SystemExit(main())
