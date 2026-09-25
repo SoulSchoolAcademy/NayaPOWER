@@ -35,7 +35,7 @@ def test_before_main_bypasses_receiver():
             timestamp="2026-09-25T18:00:00+00:00",
             topic="Before Enforcement",
             body=body,
-            intelligent_block_id="IB-OLD001",
+            intelligent_block_id="IB-000002",
             root=Path(raw) / "smart-notes",
         )
         assert Path(result["path"]).is_file()
