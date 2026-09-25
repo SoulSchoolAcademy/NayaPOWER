@@ -93,15 +93,22 @@ def persist_smart_note(*, timestamp: str | None, topic: str, body: str,
         raise ValueError("Smart Note contract missing headings: " + ", ".join(missing))
     ib_id, event_id = _receiver_identity(receiver_receipt)
     stamp = timestamp or datetime.now(timezone.utc).isoformat()
+    identity_line = re.search(r"\*\*Intelligent Block ID:\*\*\s*(IB-\d{6})", body)
+    if identity_line and identity_line.group(1) != ib_id:
+        raise ValueError("SMART_NOTE_BODY_IB_ID_MISMATCH")
+    canonical_body = body.rstrip()
+    if not identity_line:
+        canonical_body += f"\n\n**Intelligent Block ID:** {ib_id}\n**Source Event ID:** {event_id}"
+    canonical_body += "\n"
     destination_root = Path(root) if root else SMART_NOTES_ROOT
     path = canonical_smart_note_path(stamp, topic, category=category, ib_id=ib_id, root=destination_root)
     path.parent.mkdir(parents=True, exist_ok=True)
     if path.exists():
-        if path.read_text(encoding="utf-8") != body:
+        if path.read_text(encoding="utf-8") != canonical_body:
             raise ValueError(f"Smart Note projection conflict: {path}")
         status = "REPLAY"
     else:
-        path.write_text(body.rstrip()+"\n",encoding="utf-8")
+        path.write_text(canonical_body,encoding="utf-8")
         status = "CREATED"
     day_index = path.parent / "INDEX.md"
     link = path.name
