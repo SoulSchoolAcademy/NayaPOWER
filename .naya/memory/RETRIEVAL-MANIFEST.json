@@ -3,9 +3,21 @@
   "status": "CANONICAL",
   "canonical_primary_store": ".naya/memory/smart-notes/",
   "retrieval_runtime": ".naya/memory/smart_notes_v3.py",
-  "index": ".naya/memory/events/INDEX.json",
+  "index": ".naya/memory/smart-notes/REGISTRY.json",
   "organization": "IB identity first; the registry resolves canonical projections; date/category/topic are organizational metadata; event lineage is separate",
   "strategies": [
+    {
+      "name": "canonical_ib_registry",
+      "weight": 100,
+      "fields": [
+        "intelligent_block_id",
+        "topic",
+        "category",
+        "date",
+        "status",
+        "canonical_projection_content"
+      ]
+    },
     {
       "name": "exact",
       "weight": 100,
@@ -141,5 +153,7 @@
   "canonical_registry": ".naya/memory/smart-notes/REGISTRY.json",
   "identity_authority": "live canonical receiver v7-smart-note-canonical",
   "event_lineage_store": ".naya/memory/events/",
-  "canonical_projection_root": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md"
+  "canonical_projection_root": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+  "lineage_index": ".naya/memory/events/INDEX.json",
+  "canonical_retrieval_entrypoint": "smart_notes_v3.retrieve_canonical_ibs(query, limit, root)"
 }
