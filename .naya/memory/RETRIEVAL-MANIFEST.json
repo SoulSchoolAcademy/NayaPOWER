@@ -1,10 +1,10 @@
 {
   "schema": "naya-power-retrieval/v3",
   "status": "CANONICAL",
-  "canonical_primary_store": ".naya/memory/events/",
+  "canonical_primary_store": ".naya/memory/smart-notes/",
   "retrieval_runtime": ".naya/memory/smart_notes_v3.py",
   "index": ".naya/memory/events/INDEX.json",
-  "organization": "IB identity first; date/category/topic are organizational projections; event lineage is separate",
+  "organization": "IB identity first; the registry resolves canonical projections; date/category/topic are organizational metadata; event lineage is separate",
   "strategies": [
     {
       "name": "exact",
@@ -98,7 +98,7 @@
   "restore_rules": [
     "Restore current operational truth from .naya/control-plane before historical memory.",
     "Resolve authorized scope and permissions before delivering retrieved intelligence.",
-    "Prefer the canonical IB when a canonical IB exists; use event lineage to establish provenance and lifecycle.",
+    "Prefer the canonical IB from the registry when canonical intelligence exists; use event lineage only to establish provenance and lifecycle.",
     "Use legacy archive only for historical reconciliation, migration, or provenance.",
     "Never create a new legacy root note format.",
     "Never treat a repository projection as proof that the live receiver persisted or learned an object.",
@@ -140,5 +140,6 @@
   "canonical_intelligence_object": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
   "canonical_registry": ".naya/memory/smart-notes/REGISTRY.json",
   "identity_authority": "live canonical receiver v7-smart-note-canonical",
-  "event_lineage_store": ".naya/memory/events/"
+  "event_lineage_store": ".naya/memory/events/",
+  "canonical_projection_root": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md"
 }
