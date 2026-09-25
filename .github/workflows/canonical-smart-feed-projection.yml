@@ -1,0 +1,19 @@
+name: Canonical Smart Feed Projection
+
+on:
+  pull_request:
+    paths:
+      - "scripts/build-smart-feed-projection.py"
+      - "tests/test_canonical_smart_feed_projection.py"
+      - ".github/workflows/canonical-smart-feed-projection.yml"
+  push:
+    branches:
+      - "fix/canonical-feed-parser-identity"
+  workflow_dispatch:
+
+jobs:
+  canonical-feed:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python tests/test_canonical_smart_feed_projection.py
