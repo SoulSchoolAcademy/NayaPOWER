@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Naya Power Smart Brain v3.
 
-Canonical source: chronological Note Events under .naya/memory/events.
-The runtime deliberately tolerates the v2 event envelope while enforcing the
-v3 retrieval and CIS model. Canonical event JSON remains the source of truth.
-Derived indexes and validation diagnostics are reproducible artifacts.
+Canonical intelligence source: the canonical Smart Note / Intelligent Block registry and
+its immutable IB projections under .naya/memory/smart-notes/. Event JSON under
+.naya/memory/events/ is lineage/evidence, not a competing intelligence store.
+The runtime retains event retrieval for lineage/reporting compatibility while
+canonical IB retrieval is the primary durable-intelligence path.
 
 Retrieval is intentionally dependency-free: authorization, exact matching,
 BM25 lexical ranking, TF-IDF cosine similarity, metadata filtering, query
@@ -137,7 +138,7 @@ def build_index():
         if e.get('__parse_error__'):continue
         rows.append({'event_id':e['event_id'],'path':str(p.relative_to(EVENTS)),'subject':e.get('subject',''),'type':e.get('type') or e.get('event_type',''),'tags':e.get('tags',[]) or []})
     rows.sort(key=lambda x:(x['path'],x['event_id']));data={'version':'3.0.0','status':'CANONICAL','organization':'YEAR/MONTH/DAY/HOUR/EVENT','event_count':len(rows),'events':rows};INDEX.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8');return data
-def expanded_tokens(query):
+def load_canonical_ibs(root=None):\n    """Load canonical IB projections through the registry, never by filename discovery."""\n    root = Path(root) if root is not None else ROOT\n    registry_path = root / '.naya' / 'memory' / 'smart-notes' / 'REGISTRY.json'\n    registry = json.loads(registry_path.read_text(encoding='utf-8'))\n    if registry.get('status') != 'CANONICAL':\n        raise ValueError('canonical Smart Note registry is not CANONICAL')\n    objects = []\n    for entry in registry.get('entries', []):\n        ib_id = str(entry.get('intelligent_block_id', ''))\n        if not re.fullmatch(r'IB-[0-9]{6}', ib_id):\n            raise ValueError(f'invalid canonical IB identity: {ib_id}')\n        rel = str(entry.get('path', ''))\n        if not rel.startswith('.naya/memory/smart-notes/') or not rel.endswith('/smart-note.md'):\n            raise ValueError(f'non-canonical IB projection path: {rel}')\n        path = root / rel\n        if not path.is_file():\n            raise FileNotFoundError(f'canonical IB projection missing: {rel}')\n        objects.append({\n            'intelligent_block_id': ib_id, 'canonical': True, 'path': rel,\n            'date': entry.get('date'), 'category': entry.get('category'),\n            'topic': entry.get('topic'), 'status': entry.get('status', 'CANONICAL'),\n            'content': path.read_text(encoding='utf-8'),\n            'source': {'registry': '.naya/memory/smart-notes/REGISTRY.json', 'intelligent_block_id': ib_id},\n        })\n    return objects\n\ndef _canonical_ib_text(obj):\n    return ' '.join(str(obj.get(k) or '') for k in ('intelligent_block_id','date','category','topic','status','content'))\n\ndef retrieve_canonical_ibs(query, limit=10, root=None):\n    """Retrieve canonical IBs by meaning; callers never need a projection filename."""\n    q = expanded_tokens(query)\n    if not q:\n        return []\n    ranked = []\n    for obj in load_canonical_ibs(root=root):\n        doc = Counter(tokens(_canonical_ib_text(obj)))\n        score = bm25(q, doc, {term: 1.0 for term in doc}, max(1.0, sum(doc.values())))\n        query_terms = set(tokens(query))\n        score += len(query_terms & set(tokens(str(obj.get('topic') or '')))) * 60\n        score += len(query_terms & set(tokens(str(obj.get('category') or '')))) * 35\n        if query.strip().lower() in _canonical_ib_text(obj).lower():\n            score += 120\n        if score > 0:\n            ranked.append((score, obj))\n    ranked.sort(key=lambda row: (-row[0], row[1]['intelligent_block_id']))\n    return [obj for _, obj in ranked[:max(0, limit)]]\ndef expanded_tokens(query):
     base=tokens(query);expanded=list(base)
     for token in base:expanded.extend(sorted(QUERY_EXPANSIONS.get(token,set())))
     return expanded
