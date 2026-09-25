@@ -43,8 +43,11 @@ jobs:
             const key='learning-output-'+run+'-'+action+'-'+crypto.randomBytes(4).toString('hex');
             const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
             const out={status:r.status,body:await r.json().catch(()=>({}))};
-            if(out.status!==200||out.body?.ok!==true)throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
-            return out.body.result;
+            // learning_verify is intentionally fail-closed when no independent outcome exists.
+            // Preserve its non-2xx response so the proof can assert the governed rejection rather than
+            // treating an expected safety refusal as a test-helper failure.
+            if(action!=='learning_verify' && (out.status!==200||out.body?.ok!==true))throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
+            return action==='learning_verify' ? out : out.body.result;
           }
           (async()=>{
             const browser=await chromium.launch({headless:true}), ctx=await browser.newContext({serviceWorkers:'block'}), page=await ctx.newPage();
@@ -85,7 +88,7 @@ jobs:
               if(before.status!==200||before.body?.length!==1)throw new Error('SOURCE_EVENT_READ_FAILED:'+JSON.stringify(before));
               const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
               if(blockQ.status!==200)throw new Error('BLOCK_READ_FAILED:'+JSON.stringify(blockQ));
-              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
               const learningQ=await db('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&member_id=eq.'+encodeURIComponent(ownerId)+'&id=eq.'+encodeURIComponent(evidenceId));
               if(learningQ.status!==200||learningQ.body?.length!==1)throw new Error('LEARNING_READ_FAILED:'+JSON.stringify(learningQ));
               const learning=learningQ.body[0];
@@ -95,7 +98,7 @@ jobs:
               reason='LEARNING_OUTPUT_IS_REUSABLE_CANDIDATE_BUT_PROMOTION_IS_BLOCKED_UNTIL_AN_INDEPENDENT_VERIFIED_OUTCOME_EXISTS';
               mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId});
               const blockQ2=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
-              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
               if(blockAfter.length!==blockBefore.length)throw new Error('PENDING_LEARNING_MUTATED_BLOCK_COUNT');
               if(blockAfter[0]?.block_id!==blockBefore[0]?.block_id)throw new Error('PENDING_LEARNING_CHANGED_BLOCK_ID');
               mark('NO_UNAUTHORIZED_PROMOTION','PASS',{existing_block_count_before:blockBefore.length,existing_block_count_after:blockAfter.length,block_id:blockAfter[0]?.block_id||null});
@@ -109,7 +112,8 @@ jobs:
               if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='CANDIDATE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
               if(freshRows.event.status!==200||freshRows.event.body?.length!==1||freshRows.event.body[0].user_id!==ownerId)throw new Error('FRESH_EVENT_RETRIEVAL_FAILED');
               mark('FRESH_RETRIEVAL','PASS',{evidence_id:evidenceId,event_id:eventId,owner_id:ownerId});
-              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_CANDIDATE_PENDING_INDEPENDENT_OUTCOME',disposition:classification,disposition_reason:reason,existing_block_id:blockAfter[0]?.block_id||null,existing_block_count:blockAfter.length,trace};
+              const existingCanonicalBlock=blockBefore[0]||blockAfter[0]||null;
+              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_CANDIDATE_PENDING_INDEPENDENT_OUTCOME',disposition:classification,disposition_reason:reason,existing_block_id:existingCanonicalBlock?.block_id||null,existing_block_count:blockBefore.length,trace};
               fs.writeFileSync('universal-learning-output-proof.json',JSON.stringify(proof,null,2)+'\n');
               await fresh.close(); await freshCtx.close();
             }catch(e){
