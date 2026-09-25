@@ -102,7 +102,7 @@ def validate_event(e,p):
     if not reps(e):errors.append(f'{p}: missing representations')
     if not e.get('source') and not e.get('provenance') and not e.get('source_of_truth') and not e.get('intelligence_feed') and not e.get('pis_update'):errors.append(f'{p}: missing source')
     v=e.get('verification',{}) or {}
-    if v.get('status')=='VERIFIED' and not v.get('canonical_url'):errors.append(f'{p}: verified event missing canonical_url')
+    if v.get('status')=='VERIFIED' and str(e.get('status','')).upper()=='CANONICAL' and not v.get('canonical_url'):errors.append(f'{p}: canonical verified event missing canonical_url')
     dt=parsed.get('effective_at')
     if dt:
         raw=str(e.get('effective_at',''));bucket=e.get('time_bucket',{}) or {}
