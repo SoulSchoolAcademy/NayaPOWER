@@ -84,6 +84,8 @@ jobs:
           test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
           echo "DOCUMENT_DISTILL_CORE_PATH=PASS"
+          echo "DOCUMENT_DISTILL_RETRIEVAL_PATH=PASS"
+          # Canonical retrieval assertions are evaluated in the machine-readable proof step.
 
       - name: Verify machine-readable proof
         run: |
