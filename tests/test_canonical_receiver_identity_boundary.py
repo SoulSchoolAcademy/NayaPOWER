@@ -13,4 +13,4 @@ def test_receiver_does_not_construct_or_accept_a_competing_ib_identity():
 
 def test_receiver_returns_only_canonical_ib_identity_format():
     source = RECEIVER.read_text(encoding="utf-8")
-    assert re.search(r'intelligentBlockId[^\\n]*\\^IB-\\\\d\\{6\\}', source)
+    assert 'if(!/^IB-\\d{6}$/.test(intelligentBlockId))' in source
