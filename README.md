@@ -6,6 +6,17 @@ Before creating, reading, updating, migrating, testing, documenting, or projecti
 
 `.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
 
+## 🔴 ZERO-AMBIGUITY SMART LINK LAW
+
+**Canonical contract:** `.naya/codex/NAYA-LINK-IDENTITY-AND-EVIDENCE-CONTRACT-V1.md`
+
+> **SMART LINK = DIRECT GITHUB LINK TO THE CANONICAL HUMAN-READABLE `smart-note.md` ARTIFACT.**
+
+A Hub/runtime URL such as `/hub?ib=IB-XXXXXX` is a **Hub Deep Link**, never a Smart Link. An evidence, event, workflow, commit, PR, or transaction URL is an **Evidence/Provenance Link**, not the Smart Note Smart Link.
+
+Before using the words **Smart Link**, verify that the URL lands on `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`, that the file exists on the reported canonical branch, and that it contains the same IB ID. If the projection does not exist, report **SMART LINK: PENDING**. Never substitute a runtime URL.
+
+
 ## The 25 canonical intelligence laws
 
 1. Every durable intelligence input enters through one governed receiver.
