@@ -17,6 +17,10 @@ def verify():
     if any(LEGACY_ROOT.match(p.name) for p in MEMORY.iterdir() if p.is_file()):
         errors.append("legacy note family remains at active memory root")
     if (ROOT/".naya"/"codex"/"NAYAPOWER-BRAIN").exists(): errors.append("obsolete codex Brain taxonomy still exists")
+    retrieval=json.loads((MEMORY/"RETRIEVAL-MANIFEST.json").read_text(encoding="utf-8"))
+    if retrieval.get("canonical_primary_store") != ".naya/memory/smart-notes/": errors.append("retrieval manifest points canonical primary store away from Smart Note/IB projections")
+    if retrieval.get("canonical_registry") != ".naya/memory/smart-notes/REGISTRY.json": errors.append("retrieval manifest does not name the canonical IB registry")
+    if retrieval.get("event_lineage_store") != ".naya/memory/events/": errors.append("retrieval manifest does not isolate event lineage store")
     registry=json.loads((MEMORY/"smart-notes"/"REGISTRY.json").read_text(encoding="utf-8"))
     if registry.get("status")!="CANONICAL": errors.append("Smart Note registry is not CANONICAL")
     for entry in registry.get("entries",[]):
