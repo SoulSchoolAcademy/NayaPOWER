@@ -9,13 +9,13 @@ test('redacts credentials and bounds diagnostic text',()=>{
 });
 
 test('summarizes receiver status, lineage, and fallback correlation',()=>{
-  const value=summarizeReceiverResponse(500,{error:'SMART_NOTE_PIPELINE_FAILED',detail:'database detail',event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'},'smart-note-key');
-  assert.deepEqual(value,{status:500,error:'SMART_NOTE_PIPELINE_FAILED',detail:'database detail',correlation_id:'smart-note-key',event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'});
+  const value=summarizeReceiverResponse(500,{ok:false,pipeline:'failed',error:'SMART_NOTE_PIPELINE_FAILED',detail:'database detail',event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1',transaction:{learning_evidence:{status:'CANDIDATE'},intelligence_checkpoint:{status:'CHECKPOINT_VERIFIED'}}},'smart-note-key');
+  assert.deepEqual(value,{status:500,ok:false,pipeline:'failed',error:'SMART_NOTE_PIPELINE_FAILED',detail:'database detail',correlation_id:'smart-note-key',event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1',learning_status:'CANDIDATE',checkpoint_status:'CHECKPOINT_VERIFIED'});
 });
 
 test('formats a receiver failure without discarding detail',()=>{
-  const message=formatRuntimeFailure(422,{error:'SMART_NOTE_PIPELINE_FAILED',detail:'validation failed',correlation_id:'corr-1'},'smart-note-key');
-  assert.match(message,/^SMART_NOTE_PIPELINE_FAILED\|status=422\|code=SMART_NOTE_PIPELINE_FAILED\|correlation=corr-1\|event=UNAVAILABLE\|receipt=UNAVAILABLE\|transaction=UNAVAILABLE\|detail=validation failed$/);
+  const message=formatRuntimeFailure(422,{ok:false,pipeline:'failed',error:'SMART_NOTE_PIPELINE_FAILED',detail:'validation failed',correlation_id:'corr-1'},'smart-note-key');
+  assert.match(message,/^SMART_NOTE_PIPELINE_FAILED\|status=422\|pipeline=failed\|code=SMART_NOTE_PIPELINE_FAILED\|correlation=corr-1\|event=UNAVAILABLE\|receipt=UNAVAILABLE\|transaction=UNAVAILABLE\|detail=validation failed$/);
 });
 
 test('summarizes an authorization response without exposing the body',()=>{
@@ -82,6 +82,11 @@ test('does not reconstruct a positive cold successor from a no-mutation proof',(
 test('classifies a later production receiver failure as partial state',()=>{
   const value=classifySenderFailure(new Error('PRODUCTION_RECEIVER_FAILED'),{event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'});
   assert.deepEqual(value,{first_failure_boundary:'PRODUCTION_RECEIVER',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'REACHED_PRODUCTION_RECEIVER_FAILED'});
+});
+
+test('classifies a failed receiver pipeline before downstream bridge work',()=>{
+  const value=classifySenderFailure(new Error('SMART_NOTE_RECEIVER_PIPELINE_FAILED'),{event_id:'event-1',receipt_id:'receipt-1',transaction_id:'transaction-1'});
+  assert.deepEqual(value,{first_failure_boundary:'SMART_NOTE_RECEIVER_PIPELINE',partial_state:'PARTIAL_STATE_OBSERVED',downstream_reachability:'NOT_REACHED_BY_SENDER'});
 });
 
 test('does not claim partial state without lineage identifiers',()=>{
