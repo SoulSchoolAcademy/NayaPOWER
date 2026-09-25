@@ -36,9 +36,9 @@
       "cold successor continuation"
     ],
     "target_state": "HUMAN_JOURNEY_LIVE_VERIFIED",
-    "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "next_actions": [
-      "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval."
+      "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
     ],
     "next_action_count": 1,
     "predecessor": "COMPUTATION-EFFICIENCY-P1",
@@ -61,7 +61,7 @@
     "current_frontier": {
       "active_block": "HUMAN-JOURNEY-P2",
       "priority": "P1",
-      "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+      "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
       "completion": "Priority #2 legacy cognition-event disposition is HISTORICAL_ONLY; no database repair is warranted.",
       "status": "PROVEN"
     },
@@ -92,7 +92,7 @@
   "current_frontier": {
     "active_block": "HUMAN-JOURNEY-P2",
     "priority": "P1",
-    "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
     "completion": "P0-04 meaningful-output promotion is verified at defined owner/runtime scope: identity, authority, canonical ingress, provenance, validation, integration, checkpoint, Intelligent Block persistence, and fresh retrieval all passed.",
     "status": "PROVEN"
   },
@@ -195,16 +195,13 @@
       "privacy boundary"
     ]
   },
-  "next_action": "Obtain an authorized runtime session for the existing member owning learning evidence 1112073e-08ee-407e-a47a-8b65b845f57b, then execute that exact LEARNING_OUTPUT candidate through the canonical intelligence_commit path and independently verify canonical intelligence event, index projection, provenance linkage, no duplicate destination, receipt/cognition lineage, and fresh retrieval.",
+  "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
   "next_action_blocker": {
     "status": "BLOCKED",
-    "boundary": "existing-member intelligence_commit authority",
-    "learning_evidence_id": "1112073e-08ee-407e-a47a-8b65b845f57b",
-    "required_capability": "legitimate authenticated owner session + valid in-scope authority grant",
-    "production_observed_grant_count": 0,
-    "production_observed_currently_usable_grant_count": 0,
+    "boundary": "external production deployment authorization",
+    "required_capability": "authorized deployment of current canonical Hub source and then authorized owner session for live browser proof",
     "no_bypass": true,
-    "next_action": "Obtain legitimate owner session and issue minimum scoped intelligence_commit grant."
+    "next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity."
   },
   "current_attempt": {
     "status": "VERIFIED",
