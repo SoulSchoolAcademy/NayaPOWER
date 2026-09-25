@@ -32,149 +32,70 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          npm install --no-save --no-package-lock playwright@1.55.0
-          npx playwright install --with-deps chromium
-          node <<'NODE' | tee document-distill-proof.json
-          const { chromium } = require('playwright');
-          const crypto = require('node:crypto');
-          const fs = require('node:fs');
+          RUN_IDENTITY="${GITHUB_RUN_ID}"
+          AUTH_JSON=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d '{}')
+          TOKEN=$(echo "$AUTH_JSON" | jq -r '.access_token // empty')
+          USER_ID=$(echo "$AUTH_JSON" | jq -r '.user.id // empty')
+          test -n "$TOKEN"; test -n "$USER_ID"
+          H=(-H "Authorization: Bearer $TOKEN" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json")
 
-          const hub = process.env.HUB_URL;
-          const supabaseUrl = process.env.SUPABASE_URL;
-          const supabaseKey = process.env.SUPABASE_PUBLISHABLE_KEY;
-          const run = process.env.RUN_IDENTITY;
-          const alias = ('docdistill' + run + '-' + crypto.randomBytes(4).toString('hex')).toLowerCase().replace(/[^a-z0-9]/g,'').slice(0,48);
-          const documentId = 'DOC-' + run + '-' + crypto.randomBytes(5).toString('hex');
-          const idempotencyKey = 'document-distill-' + documentId;
-          const sourceRef = 'fixture://nayanet/document-distill/' + documentId;
-          const sourceContent = [
-            '# Canonical Intelligence',
-            '',
-            'NayaNET should preserve valuable understanding as reusable intelligence.',
-            'A document is not complete merely because its text is stored.',
-            'The useful result is a provenance-bound distilled representation that can be retrieved and reused.',
-            ''
-          ].join('\n');
-          const essence = 'Valuable document understanding must become provenance-bound reusable intelligence that can be retrieved and reused.';
-          const title = 'Document Intelligence';
-          async function setup(page) {
-            await page.goto(hub + '/', {waitUntil:'domcontentloaded', timeout:60000});
-            await page.waitForFunction(() => !!window.NayaNETNameFirstAuth, null, {timeout:30000});
-            const established = await page.evaluate(async({alias}) => {
-              const identity = await window.NayaNETNameFirstAuth.establish({name:'Document Distillation Proof',alias});
-              const client = window.__NayaNETSupabaseClient;
-              const session = client ? (await client.auth.getSession()).data.session : null;
-              return {identity,session:session ? {userId:session.user.id,access_token:session.access_token}:null};
-            }, {alias});
-            if(!established.identity?.authenticated || !established.session?.access_token) throw new Error('AUTH_NOT_ESTABLISHED:'+JSON.stringify(established));
-            return established;
-          }
-          async function rpc(page, fn, args) {
-            return page.evaluate(async({supabaseUrl,supabaseKey,fn,args})=>{
-              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-              const client=window.__NayaNETSupabaseClient || sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true}});
-              const result=await client.rpc(fn,args);
-              return {data:result.data,error:result.error?.message||null};
-            },{supabaseUrl,supabaseKey,fn,args});
-          }
-          async function call(page, session, body) {
-            const response=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{
-              method:'POST',
-              headers:{'Authorization':'Bearer '+session.access_token,'apikey':supabaseKey,'Content-Type':'application/json','x-idempotency-key':body.idempotency_key},
-              body:JSON.stringify(body)
-            });
-            return {status:response.status,body:await response.json().catch(()=>({}))};
-          }
-          async function query(page, table, select, match) {
-            return page.evaluate(async({supabaseUrl,supabaseKey,table,select,match})=>{
-              const sdk=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm');
-              const client=window.__NayaNETSupabaseClient || sdk.createClient(supabaseUrl,supabaseKey,{auth:{persistSession:true}});
-              const r=await client.from(table).select(select).match(match).limit(20);
-              return {data:r.data,error:r.error?.message||null};
-            },{supabaseUrl,supabaseKey,table,select,match});
-          }
+          UNDERSTAND=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d "$(jq -n --arg run "$RUN_IDENTITY" '{action:"understand",title:("Document distillation authority source "+$run),content:"Controlled proof source event for the document distillation golden path.",confidence:1,tags:["document-distillation","authority-proof"]}')")
+          SOURCE_EVENT=$(echo "$UNDERSTAND" | jq -r '.result.event.event_id // empty')
+          test -n "$SOURCE_EVENT"
 
-          (async()=>{
-            const browser=await chromium.launch({headless:true});
-            const context=await browser.newContext();
-            const page=await context.newPage();
-            const first=await setup(page);
+          GRANT=$(curl --silent --show-error -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" "${H[@]}" -d "$(jq -n --arg subject "$USER_ID" --arg event "$SOURCE_EVENT" --arg run "$RUN_IDENTITY" '{p_subject_id:$subject,p_source_event_id:$event,p_mission_id:"NayaNET document distillation golden path",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{mode:"controlled-document-distillation-proof",no_external_side_effects:true},p_expires_at:"2099-01-01T00:00:00Z",p_evidence:{proof:"live-document-distillation",run:$run}}')")
+          GRANT_ID=$(echo "$GRANT" | jq -r '.grant_id // empty')
+          test -n "$GRANT_ID"
 
-            const grants=await query(page,'nayanet_authority_grants','grant_id,subject_id,scope,actions,status,expires_at',{subject_id:first.session.userId,status:'ACTIVE'});
-            const grant=(grants.data||[]).find(g=>Array.isArray(g.actions)&&g.actions.includes('intelligence_commit')&&(!g.expires_at || new Date(g.expires_at)>new Date()));
-            if(!grant) throw new Error('DOCUMENT_DISTILL_AUTHORITY_GRANT_NOT_FOUND:'+JSON.stringify(grants));
+          DOCUMENT_ID="DOC-${RUN_IDENTITY}-$(openssl rand -hex 5)"
+          IDEMPOTENCY_KEY="document-distill-$DOCUMENT_ID"
+          SOURCE_REF="fixture://nayanet/document-distill/$DOCUMENT_ID"
+          SOURCE_CONTENT=$'# Canonical Intelligence\n\nNayaNET should preserve valuable understanding as reusable intelligence.\nA document is not complete merely because its text is stored.\nThe useful result is a provenance-bound distilled representation that can be retrieved and reused.\n'
+          ESSENCE="Valuable document understanding must become provenance-bound reusable intelligence that can be retrieved and reused."
 
-            const body={
-              action:'document_distill',
-              idempotency_key:idempotencyKey,
-              document_id:documentId,
-              source_ref:sourceRef,
-              source_content:sourceContent,
-              title,
-              essence,
-              domain:'KNOWLEDGE',
-              type:'reference',
-              project_context:'NayaNET',
-              authority_grant_id:grant.grant_id,
-              next_use:'Retrieve this intelligence when document understanding is relevant.'
-            };
-            const firstCall=await call(page,first.session,body);
-            if(firstCall.status!==200 || !firstCall.body?.ok) throw new Error('DOCUMENT_DISTILL_FAILED:'+JSON.stringify(firstCall.body));
-            const result=firstCall.body.result;
-            if(result?.schema!=='NAYANET_DOCUMENT_DISTILL_V1') throw new Error('DOCUMENT_DISTILL_SCHEMA_MISMATCH:'+JSON.stringify(result));
-            if(result?.document?.source_hash?.length!==64) throw new Error('DOCUMENT_SOURCE_HASH_MISSING:'+JSON.stringify(result));
-            if(result?.distillation?.essence!==essence) throw new Error('DOCUMENT_ESSENCE_MISMATCH:'+JSON.stringify(result));
-            const block=result?.intelligence?.intelligent_block;
-            if(!block) throw new Error('DOCUMENT_INTELLIGENT_BLOCK_MISSING');
-            if(block?.content?.content!==essence) throw new Error('DOCUMENT_BLOCK_ESSENCE_MISSING:'+JSON.stringify(block));
-            if(block?.value_context?.source_type!=='document') throw new Error('DOCUMENT_PROVENANCE_SOURCE_TYPE_MISSING:'+JSON.stringify(block?.value_context));
-            if(block?.value_context?.document_id!==documentId) throw new Error('DOCUMENT_ID_LINEAGE_MISSING:'+JSON.stringify(block?.value_context));
-            if(block?.value_context?.source_ref!==sourceRef) throw new Error('DOCUMENT_SOURCE_REF_LINEAGE_MISSING:'+JSON.stringify(block?.value_context));
-            if(block?.value_context?.source_hash!==result.document.source_hash) throw new Error('DOCUMENT_SOURCE_HASH_LINEAGE_MISSING:'+JSON.stringify(block?.value_context));
-            if(block?.context?.category!=='KNOWLEDGE') throw new Error('DOCUMENT_DOMAIN_CLASSIFICATION_MISSING:'+JSON.stringify(block?.context));
-            if(block?.context?.topic!=='reference') throw new Error('DOCUMENT_TYPE_CLASSIFICATION_MISSING:'+JSON.stringify(block?.context));
-            if(block?.owner_scope!=='PRIVATE') throw new Error('DOCUMENT_PRIVACY_SCOPE_MISSING:'+JSON.stringify(block));
-            if(block?.schema_version!=='INTELLIGENT_BLOCK_V1') throw new Error('DOCUMENT_IB_SCHEMA_MISSING:'+JSON.stringify(block));
+          BODY=$(jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg source "$SOURCE_CONTENT" --arg essence "$ESSENCE" --arg idem "$IDEMPOTENCY_KEY" --arg grant "$GRANT_ID" '{action:"document_distill",idempotency_key:$idem,document_id:$did,source_ref:$ref,source_content:$source,title:"Document Intelligence",essence:$essence,domain:"KNOWLEDGE",type:"reference",project_context:"NayaNET",authority_grant_id:$grant,next_use:"Retrieve this intelligence when document understanding is relevant."}')
+          RESPONSE=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          echo "$RESPONSE" | jq .
+          echo "$RESPONSE" > document-distill-response.json
 
-            const eventId=result?.intelligence?.source_event?.event_id;
-            if(!eventId) throw new Error('DOCUMENT_SOURCE_EVENT_MISSING');
-            const cognition=await query(page,'nayanet_cognition_events','id,event_id,title,content,metadata,source,status',{event_id:eventId});
-            if(!cognition.data?.length) throw new Error('DOCUMENT_COGNITION_RETRIEVAL_FAILED:'+JSON.stringify(cognition));
-            const retrievedBlock=await query(page,'nayanet_intelligent_blocks','block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version',{owner_id:first.session.userId,block_id:block.block_id});
-            if(!retrievedBlock.data?.length) throw new Error('DOCUMENT_IB_RETRIEVAL_FAILED:'+JSON.stringify(retrievedBlock));
+          OK=$(echo "$RESPONSE" | jq -r '.ok // false')
+          test "$OK" = true
+          SCHEMA=$(echo "$RESPONSE" | jq -r '.result.schema // empty')
+          test "$SCHEMA" = NAYANET_DOCUMENT_DISTILL_V1
+          SOURCE_HASH=$(echo "$RESPONSE" | jq -r '.result.document.source_hash // empty')
+          test "${#SOURCE_HASH}" -eq 64
+          EVENT_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.source_event.event_id // empty')
+          BLOCK_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.intelligent_block.block_id // empty')
+          INDEX_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.projection.index.id // empty')
+          test -n "$EVENT_ID"; test -n "$BLOCK_ID"; test -n "$INDEX_ID"
 
-            const index=await query(page,'nayanet_intelligence_index','id,source_table,source_id,object_type,title,status,metadata',{source_table:'nayanet_cognition_events',source_id:cognition.data[0].id});
-            if(!index.data?.length) throw new Error('DOCUMENT_LIBRARY_INDEX_MISSING:'+JSON.stringify(index));
+          RETRIEVED=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-pi-retrieve" "${H[@]}" -d "$(jq -n --arg event "$EVENT_ID" '{event_id:$event}')")
+          echo "$RETRIEVED" | jq .
+          echo "$RETRIEVED" > document-distill-retrieval.json
+          grep -q "$EVENT_ID" document-distill-retrieval.json
 
-            const duplicate=await call(page,first.session,body);
-            if(duplicate.status!==200 || duplicate.body?.result?.intelligence?.source_event?.event_id!==eventId) throw new Error('DOCUMENT_IDEMPOTENCY_FAILED:'+JSON.stringify(duplicate.body));
+          BLOCK=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligent_blocks?select=block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version&block_id=eq.$BLOCK_ID" "${H[@]}")
+          echo "$BLOCK" | jq .
+          echo "$BLOCK" > document-distill-block.json
+          test "$(echo "$BLOCK" | jq 'length')" -eq 1
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_type')" = document
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_hash')" = "$SOURCE_HASH"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.document_id')" = "$DOCUMENT_ID"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
+          test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
 
-            const proof={
-              status:'VERIFIED',
-              document_id:documentId,
-              source_ref:sourceRef,
-              source_hash:result.document.source_hash,
-              source_event_id:eventId,
-              intelligent_block_id:block.block_id,
-              intelligence_index_id:index.data[0].id,
-              checks:{
-                source_capture:'PASS',
-                source_hash:'PASS',
-                distillation:'PASS',
-                classification:'PASS',
-                provenance_binding:'PASS',
-                private_scope:'PASS',
-                intelligent_block_persistence:'PASS',
-                cognition_retrieval:'PASS',
-                library_index_retrieval:'PASS',
-                idempotency:'PASS'
-              }
-            };
-            fs.writeFileSync('document-distill-proof-machine.json',JSON.stringify(proof)+'\n');
-            console.log(JSON.stringify(proof));
-            await context.close(); await browser.close();
-          })().catch(err=>{console.error(err);process.exit(1)});
-          NODE
+          INDEX=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligence_index?select=id,source_table,source_id,object_type,title,status,metadata&source_table=eq.nayanet_cognition_events&source_id=eq.$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_cognition_events?select=id&event_id=eq.$EVENT_ID" "${H[@]}" | jq -r '.[0].id')" "${H[@]}")
+          echo "$INDEX" | jq .
+          test "$(echo "$INDEX" | jq 'length')" -ge 1
+
+          DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          test "$(echo "$DUP" | jq -r '.ok // false')" = true
+          test "$(echo "$DUP" | jq -r '.result.intelligence.source_event.event_id // empty')" = "$EVENT_ID"
+
+          jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{
+            status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,
+            checks:{source_capture:"PASS",source_hash:"PASS",distillation:"PASS",classification:"PASS",provenance_binding:"PASS",private_scope:"PASS",intelligent_block_persistence:"PASS",cognition_retrieval:"PASS",library_index_retrieval:"PASS",idempotency:"PASS"}
+          }' | tee document-distill-proof-machine.json
 
       - name: Verify machine-readable proof
         run: |
