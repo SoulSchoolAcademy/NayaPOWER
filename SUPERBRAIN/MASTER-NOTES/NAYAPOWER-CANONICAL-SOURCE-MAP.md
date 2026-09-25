@@ -155,6 +155,35 @@ These documents may define important specialized behavior, but they cannot silen
 
 ---
 
+
+
+# 6A. CURRENT SYSTEM-WIDE NAYANET ALIGNMENT — 2026-09-24
+
+The current product/build alignment is recorded in canonical Smart Note LIVE-IB-PENDING:
+
+`2026-09-24 human-director System-Wide Alignment source (canonical Smart Note identity pending live receiver)`
+
+It defines the current NayaNET “Hub Is the House” model:
+
+- NayaPOWER / Superbrain = governed intelligence and control layer.
+- Intelligent Hub = the house and human-facing projection/action surface.
+- Hub rooms = Intelligence Today, Feed, Reports, Intelligent Library, Smart Connect, Smart Mail, Smart Lists, Contacts, Smart Spaces, Smart Ledger, Settings.
+- Dream = Superbrain process, not a Hub room.
+- Naya Play = Intelligent Block capability, not a Hub room.
+- Smart Connect = canonical connection/participation surface; Smart Share is retired.
+- Welcome + Identity = future front door; do not treat it as the current production application boundary.
+- UI presence is not runtime completion.
+- Documentation is not proof.
+- Capability does not create authority.
+- Participation does not create execution authority.
+- Private identity, intelligence, and activity remain protected by default.
+
+This alignment is a current **system-wide product/build source**, not a replacement for the constitution or machine control plane. Constitutional rules, live authoritative sources, and current control-plane state continue to outrank it where they govern the same question.
+
+The migration/reconciliation map is:
+
+`.naya/codex/SMART-NOTE-MIGRATION-MAP-2026-09-24.md`
+
 # 7. V1.1 VALUE ALIGNMENT PROTOCOL
 
 `SUPERBRAIN/NAYA-POWER-VALUE-ALIGNMENT-AND-CONSTITUTION-PROTOCOL-V1.1.md` is the **current constitutional extension/protocol for value alignment**.
@@ -172,6 +201,24 @@ Its five explicit primitives are:
 V1.1 does **not** become a second constitution. It is a governed extension under the constitutional authority.
 
 ---
+
+# 7B. CURRENT DISTILLED INTELLIGENCE SYNTHESIS
+
+`.naya/codex/NAYAPOWER-DISTILLED-CURRENT-INTELLIGENCE-2026-09-25.md` is the current derived synthesis of foundational NayaPOWER intelligence against the 2026-09-24 system-wide alignment.
+
+It is a **derived navigation/understanding aid, not a second constitution or control plane**.
+
+Its purpose is to reduce repeated explanation and document archaeology by preserving the common current understanding across the Smart Note/IB contract, Active Living Brain contract, Naya definition, 58-area topology, Hub alignment, and execution master plan.
+
+When it overlaps another source, the existing authority hierarchy remains controlling. Unique historical intelligence remains preserved in its original source; redundant operational wording should not be treated as a competing authority.
+
+The synthesis specifically preserves six cross-cutting operating laws:
+1. Reconcile before promoting new intelligence into current understanding.
+2. Keep current understanding distinct from historical state.
+3. Treat checkpoints as behavioral/retrieval contracts, not documents alone.
+4. Require learning to demonstrate changed future behavior when the claim warrants it.
+5. Distill to reduce repeated human explanation.
+6. Operate Naya in Lead Mode while preserving human authority.
 
 # 7A. NAYAPOWER INNOVATION RESEARCH
 

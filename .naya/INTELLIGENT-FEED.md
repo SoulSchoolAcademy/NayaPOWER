@@ -166,3 +166,25 @@ And the canonical execution test remains:
 > **The Current State Feed exists to make the present obvious.**
 
 **WHAT CHANGED → WHAT MATTERS → WHAT WAS LEARNED → WHAT IS VERIFIED → WHAT REMAINS → WHAT HAPPENS NEXT.**
+
+
+## 2026-09-24 — CANONICAL SMART NOTE + SUPERBRAIN SCORECARD
+
+**New official intelligence:** `SN-20260924-superbrain-scorecard`
+
+**What changed:** The repository now has one governing Smart Note contract: **SMART NOTE = INTELLIGENT BLOCK**. New Smart Notes resolve to `.naya/memory/notes/YYYY/MM/DD/` under the logical namespace `NayaPOWER/SMART-NOTES/YYYY/MM/DD/`.
+
+**Current score:** **7.0/10 engineering maturity** (user-provided scorecard; not a scientific intelligence measure).
+
+**What Nayas must know:** The old Smart Note folders and section dialects are historical/compatibility/projection layers. Do not create new notes there. Use the V1 contract and resolver.
+
+**Immediate frontier:** Independently LIVE VERIFY one real human Smart Note → canonical receiver → persistence → Intelligent Block → Feed → Activity → reload chain. Use the first deterministic failure as the next bounded repair target.
+
+**Top value direction:** close the golden path, make Intelligent Block the universal atom, improve contextual recall, prove outcome-based learning, standardize Naya cognition/handoff, observe/measure compounding, and remove operational ambiguity.
+
+**Canonical links:**
+- `.naya/SMART-NOTE-CONTRACT-V1.md`
+- `.naya/SMART-NOTE-CANONICALIZATION-AUDIT-2026-09-24.md`
+- `.naya/memory/notes/2026/09/24/SN-20260924-superbrain-scorecard.md`
+
+**Successor instruction:** Restore this Smart Note and the canonicalization audit before making any new Smart Note. Do not recreate a competing location or format.

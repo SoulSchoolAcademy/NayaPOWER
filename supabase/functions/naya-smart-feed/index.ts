@@ -32,17 +32,18 @@ Deno.serve(async(req)=>{
     const validation=await userSupabase.rpc('nayanet_validate_authority_grant',{p_grant_id:authorityGrantId,p_action:'smart_feed_publish',p_target:sourceId})
     if(validation.error) return json({ok:false,error:'AUTHORITY_VALIDATION_FAILED',detail:validation.error.message},403)
     if(validation.data?.status!=='AUTHORIZED') return json({ok:false,error:'AUTHORITY_NOT_AUTHORIZED',detail:validation.data?.reason||'BLOCKED'},403)
-    const result=await userSupabase.from('nayanet_intelligence_publications').upsert({intelligence_event_id:sourceId,owner_id:user.id,status:'published',consent_state:'explicit',published_at:new Date().toISOString()},{onConflict:'intelligence_event_id'}).select('*').single()
+    const result=await userSupabase.rpc('nayanet_publish_intelligence',{p_intelligence_event_id:sourceId,p_authority_grant_id:authorityGrantId,p_consent_state:'explicit'})
     if(result.error) return json({ok:false,error:result.error.message},400)
-    return json({ok:true,action:'publish',publication:result.data,authority:{grant_id:authorityGrantId,status:validation.data.status,validated_at:new Date().toISOString()}})
+    if(result.data?.status!=='SHARED_BY_EXPLICIT_CONSENT'||!result.data?.publication) return json({ok:false,error:'PUBLICATION_NOT_PERSISTED'},400)
+    return json({ok:true,action:'publish',...result.data,authority:{grant_id:authorityGrantId,status:validation.data.status,validated_at:new Date().toISOString()}})
   }
 
   if(action==='revoke'){
     const publicationId=String(body.publication_id||'')
     if(!publicationId) return json({ok:false,error:'PUBLICATION_ID_REQUIRED'},400)
-    const result=await userSupabase.from('nayanet_intelligence_publications').update({status:'revoked',updated_at:new Date().toISOString()}).eq('id',publicationId).eq('owner_id',user.id).select('*').single()
-    if(result.error||!result.data) return json({ok:false,error:result.error?.message||'NOT_FOUND'},403)
-    return json({ok:true,action:'revoke',publication:result.data})
+    const result=await userSupabase.rpc('nayanet_revoke_intelligence_publication',{p_publication_id:publicationId})
+    if(result.error||!result.data?.publication) return json({ok:false,error:result.error?.message||'NOT_FOUND'},403)
+    return json({ok:true,action:'revoke',...result.data})
   }
 
   if(action==='interact'){

@@ -42,8 +42,12 @@ jobs:
         shell: bash
         run: |
           token=$(curl -sSf -H "Authorization: bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=nayanet-project-intelligence-bridge" | python -c 'import json,sys; print(json.load(sys.stdin)["value"])')
-          echo "::add-mask::$token"
-          echo "NAYANET_BRIDGE_TOKEN=$token" >> "$GITHUB_ENV"
+           echo "::add-mask::$token"
+           echo "NAYANET_BRIDGE_TOKEN=$token" >> "$GITHUB_ENV"
+           binding=$(curl -sSf -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_bridge_owner_binding" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Authorization: Bearer $OWNER_TOKEN" -H "Content-Type: application/json" -d "$(jq -n --arg w "$GITHUB_WORKFLOW_REF" --arg r "$GITHUB_RUN_ID" --arg e "$(date -u -d '+10 minutes' +%Y-%m-%dT%H:%M:%SZ)" '{p_repository:"SoulSchoolAcademy/NayaPOWER",p_workflow_ref:$w,p_run_id:$r,p_expires_at:$e}')")
+           binding_token=$(echo "$binding" | python -c 'import json,sys; print(json.load(sys.stdin)["owner_binding_token"])')
+           echo "::add-mask::$binding_token"
+           echo "NAYANET_OWNER_BINDING_TOKEN=$binding_token" >> "$GITHUB_ENV"
       - name: Execute all nine dimensions
         run: python .naya/runtime/consolidated_nine_dimension_adversarial.py
       - name: Independently verify every managed-runtime receipt

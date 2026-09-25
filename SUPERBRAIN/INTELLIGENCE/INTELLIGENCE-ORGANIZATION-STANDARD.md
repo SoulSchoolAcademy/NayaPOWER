@@ -64,9 +64,9 @@ Example tags: `nayanet`, `nayapower`, `architecture`, `channels`, `mcp`, `rest`,
 
 Every canonical Intelligent Block gets a stable identity independent of its title.
 
-Recommended identity: `IB-YYYYMMDD-NNN`
+Canonical identity: `IB-XXXXXX`
 
-Example: `IB-20260922-001`
+Examples: `IB-000001`, `IB-000002`
 
 The identifier is permanent identity. Titles may be corrected for clarity without breaking references.
 
@@ -80,8 +80,8 @@ Every block must record machine-readable time:
 
 Canonical ordering uses UTC timestamps. Date folders are navigation; timestamp fields remain authoritative.
 
-Recommended storage:
-`SUPERBRAIN/INTELLIGENT-BLOCKS/YYYY/MM/DD/<domain>/<block-id>-<slug>.md`
+Canonical storage:
+`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
 
 ## 7. CONTROLLED TAXONOMY
 

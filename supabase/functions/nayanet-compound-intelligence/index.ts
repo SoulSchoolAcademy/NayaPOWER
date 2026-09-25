@@ -21,6 +21,11 @@ const CANONICAL_HUB = "NAYANET/HUB/index.html";
 const GITHUB_REPO = "SoulSchoolAcademy/NayaPOWER";
 const GITHUB_REF = "main";
 
+async function sha256Hex(value:string):Promise<string>{
+  const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));
+  return [...new Uint8Array(digest)].map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
 async function auth(req: Request) {
   const authorization = req.headers.get("Authorization");
   if (!authorization?.startsWith("Bearer ")) throw new Error("AUTHORIZATION_REQUIRED");
@@ -428,18 +433,50 @@ async function learningCandidate(client: any, userId: string, body: any) {
 async function learningVerify(client: any, userId: string, body: any) {
   const id = String(body.evidence_id ?? "").trim();
   const method = String(body.verification_method ?? "").trim();
+  const outcomeId = String(body.outcome_id ?? "").trim();
   const evidenceRefs = Array.isArray(body.evidence_refs) ? body.evidence_refs : [];
   if (!id || !method) throw new Error("EVIDENCE_ID_AND_VERIFICATION_METHOD_REQUIRED");
+  if (!outcomeId) throw new Error("INDEPENDENT_OUTCOME_ID_REQUIRED");
   if (evidenceRefs.length === 0 && !body.observed_value) throw new Error("VERIFICATION_EVIDENCE_REQUIRED");
   const { data: evidence, error: readError } = await client.from("learning_evidence").select("*").eq("id",id).eq("member_id",userId).single();
   if (readError || !evidence) throw new Error("LEARNING_EVIDENCE_NOT_FOUND");
   if (evidence.status !== "CANDIDATE" && evidence.status !== "ACTIVE") throw new Error("LEARNING_EVIDENCE_NOT_PROMOTABLE");
-  const observed = body.observed_value ?? evidence.observed_value;
+  const sourceEventId = String(body.source_event_id ?? evidence.source_event_id ?? "").trim();
+  if (!sourceEventId || sourceEventId !== String(evidence.source_event_id ?? "").trim()) throw new Error("LEARNING_SOURCE_EVENT_LINEAGE_REQUIRED");
+  const { data: outcome, error: outcomeError } = await client.from("nayanet_execution_outcomes")
+    .select("outcome_id,receipt_id,user_id,project_id,verified,verified_value,verifier_id,verification_method,evidence")
+    .eq("outcome_id", outcomeId)
+    .eq("user_id", userId)
+    .eq("project_id", PROJECT)
+    .eq("verified", true)
+    .maybeSingle();
+  if (outcomeError || !outcome) throw new Error("INDEPENDENT_OUTCOME_NOT_FOUND_OR_UNVERIFIED");
+  if (String(outcome.verifier_id) === userId) throw new Error("OUTCOME_VERIFIER_MUST_BE_INDEPENDENT");
+  if (!outcome.evidence || typeof outcome.evidence !== "object" || Object.keys(outcome.evidence).length === 0) throw new Error("INDEPENDENT_OUTCOME_EVIDENCE_REQUIRED");
+  if (!Number.isFinite(Number(outcome.verified_value))) throw new Error("INDEPENDENT_OUTCOME_VALUE_REQUIRED");
+  const receiptId = String(body.receipt_id ?? evidence.observed_value?.receipt_id ?? "").trim();
+  if (!receiptId || receiptId !== String(outcome.receipt_id)) throw new Error("OUTCOME_RECEIPT_LINEAGE_MISMATCH");
+  if (evidence.status === "ACTIVE") {
+    if (String(evidence.observed_value?.outcome_id ?? "") !== String(outcome.outcome_id)) throw new Error("LEARNING_ALREADY_PROMOTED_WITH_DIFFERENT_OUTCOME");
+    return { status: "VERIFIED_LEARNING", learning: evidence, outcome, rule: "Verification is idempotent for the same independent outcome; it does not change authority or policy by itself." };
+  }
+  const suppliedObserved = body.observed_value && typeof body.observed_value === "object" && !Array.isArray(body.observed_value) ? body.observed_value : {};
+  const observed = {
+    ...suppliedObserved,
+    outcome_id: String(outcome.outcome_id),
+    receipt_id: String(outcome.receipt_id),
+    source_event_id: sourceEventId,
+    verified: true,
+    verified_value: Number(outcome.verified_value),
+    outcome_verification_method: String(outcome.verification_method ?? "INDEPENDENT_OUTCOME"),
+    independent_outcome: true,
+    evidence_refs
+  };
   const { data, error } = await client.from("learning_evidence").update({
-    status: "ACTIVE", verification_method: method, observed_value: observed
-  }).eq("id",id).eq("member_id",userId).select("*").single();
+    status: "ACTIVE", verification_method: String(outcome.verification_method ?? method), observed_value: observed
+  }).eq("id",id).eq("member_id",userId).eq("status", "CANDIDATE").select("*").single();
   if (error) throw error;
-  return { status: "VERIFIED_LEARNING", learning: data, rule: "Verification promotes evidence; it does not change authority or policy by itself." };
+  return { status: "VERIFIED_LEARNING", learning: data, outcome, rule: "Only a verified independent outcome can promote evidence; it does not change authority or policy by itself." };
 }
 
 async function successor(client: any, userId: string, body: any) {
@@ -582,17 +619,21 @@ async function consolidatePiGates(client: any, userId: string, body: any) {
   return {schema:"NAYANET_PROJECT_INTELLIGENCE_GATE_CONSOLIDATION_V1",status:"PI_GATES_CONSOLIDATED",event,receipt,flags,source_head:sourceHead,proof_run_id:proofRunId};
 }
 
-async function share(client: any, userId: string, body: any) {
+async function share(client: any, _userId: string, body: any) {
   const sourceId = String(body.source_event_id ?? "").trim();
+  const authorityGrantId = String(body.authority_grant_id ?? "").trim();
+  const consentState = String(body.consent_state ?? "").trim();
   if (!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
-  const own = await client.from("nayanet_cognition_events").select("id,event_id,title,content").eq("id",sourceId).eq("user_id",userId).single();
-  if (own.error || !own.data) throw new Error("SOURCE_NOT_OWNED");
-  const result = await client.from("nayanet_intelligence_publications").upsert({
-    intelligence_event_id: sourceId, owner_id: userId, status: "published",
-    consent_state: "explicit", published_at: new Date().toISOString(), updated_at: new Date().toISOString()
-  },{onConflict:"intelligence_event_id"}).select("*").single();
+  if (!authorityGrantId) throw new Error("PUBLISH_AUTHORITY_REQUIRED");
+  if (consentState !== "explicit") throw new Error("EXPLICIT_CONSENT_REQUIRED");
+  const result = await client.rpc("nayanet_publish_intelligence", {
+    p_intelligence_event_id: sourceId,
+    p_authority_grant_id: authorityGrantId,
+    p_consent_state: consentState
+  });
   if (result.error) throw result.error;
-  return { status:"SHARED_BY_EXPLICIT_CONSENT", publication:result.data };
+  if (result.data?.status !== "SHARED_BY_EXPLICIT_CONSENT" || !result.data?.publication) throw new Error("PUBLICATION_NOT_PERSISTED");
+  return result.data;
 }
 
 async function supersede(client: any, userId: string, body: any) {
@@ -668,14 +709,16 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
     if (existing.data.metadata?.checkpoint_id !== checkpointId || existingSources.join("|") !== sourceEventIds.join("|")) {
       throw new Error("CHECKPOINT_IDENTITY_CONFLICT");
     }
+    const existingReceiptId=String(existing.data.receipt_id||"").trim();
+    if(!existingReceiptId)throw new Error("CHECKPOINT_RECEIPT_MISSING");
     return {
       schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
       status: "CHECKPOINT_VERIFIED",
       replayed: true,
       checkpoint: existing.data,
       source_events: [],
-      receipt: null,
-      rule: "Checkpoint replay returns the original checkpoint identity."
+      receipt: {id:existingReceiptId,receipt_id:existingReceiptId},
+      rule: "Checkpoint replay returns the original checkpoint identity and receipt."
     };
   }
 
@@ -731,12 +774,25 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
     body.authority_grant_id ? {authority_id:String(body.authority_grant_id),actor_id:userId,permission:"intelligence_commit",governance_state:"AUTHORIZED"} : null
   );
 
+  const persistedCheckpoint=receipt?.event||event;
+  // Re-read the authoritative cognition-event row because the RPC response
+  // does not guarantee receipt_id on the returned event payload.
+  const persistedReceipt=await client.from("nayanet_cognition_events")
+    .select("id,event_id,receipt_id")
+    .eq("event_id",checkpointId)
+    .eq("user_id",userId)
+    .eq("project_id",PROJECT)
+    .single();
+  if(persistedReceipt.error) throw persistedReceipt.error;
+  const checkpointReceiptId=String(persistedReceipt.data?.receipt_id||"").trim();
+  if(!checkpointReceiptId) throw new Error("CHECKPOINT_RECEIPT_MISSING");
+  const authoritativeCheckpoint={...persistedCheckpoint,receipt_id:checkpointReceiptId};
   return {
     schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
     status: "CHECKPOINT_VERIFIED",
-    checkpoint: event,
+    checkpoint: authoritativeCheckpoint,
     source_events: source.data ?? [],
-    receipt,
+    receipt: {id:checkpointReceiptId,receipt_id:checkpointReceiptId},
     rule: "Checkpoint persistence does not by itself prove learning; later retrieval and behavior change are required."
   };
 }
@@ -865,6 +921,7 @@ async function commitIntelligence(client: any, userId: string, body: any) {
   return {
     schema:"NAYANET_INTELLIGENCE_COMMIT_V1",status:"CAPTURED_INTEGRATED_CHECKPOINTED",
     idempotency_key:idempotencyKey,source_event:sourceEvent,projection,
+    intelligent_block:intelligentBlock,
     learning:{status:learning.status,evidence_id:learning.id,target_id:learning.target_id},
     checkpoint:{status:checkpoint.status,replayed:checkpoint.replayed===true,
       checkpoint_id:checkpoint.checkpoint?.metadata?.checkpoint_id ?? checkpointId,
@@ -903,7 +960,59 @@ Deno.serve(async (req) => {
       }
     }
     let result:any;
-    if (action === "universal_meaningful_output") {
+    if (action === "document_distill") {
+      const documentId = String(body.document_id ?? "").trim();
+      const sourceRef = String(body.source_ref ?? "").trim();
+      const sourceContent = String(body.source_content ?? "").trim();
+      const title = String(body.title ?? "").trim();
+      const essence = String(body.essence ?? "").trim();
+      const domain = String(body.domain ?? "").trim().toUpperCase();
+      const type = String(body.type ?? "").trim().toLowerCase();
+      const projectContext = String(body.project_context ?? PROJECT).trim();
+      const authorityGrantId = String(body.authority_grant_id ?? "").trim();
+      if (!documentId) throw new Error("DOCUMENT_ID_REQUIRED");
+      if (!sourceRef) throw new Error("DOCUMENT_SOURCE_REF_REQUIRED");
+      if (!sourceContent) throw new Error("DOCUMENT_SOURCE_CONTENT_REQUIRED");
+      if (!title) throw new Error("DOCUMENT_TITLE_REQUIRED");
+      if (!essence) throw new Error("DOCUMENT_ESSENCE_REQUIRED");
+      if (!domain) throw new Error("DOCUMENT_DOMAIN_REQUIRED");
+      if (!type) throw new Error("DOCUMENT_TYPE_REQUIRED");
+      if (!authorityGrantId) throw new Error("AUTHORITY_GRANT_ID_REQUIRED");
+      if (sourceContent.length > 2_000_000) throw new Error("DOCUMENT_SOURCE_TOO_LARGE");
+      const sourceHash = await sha256Hex(sourceContent);
+      const committed = await commitIntelligence(client,user.id,{
+        ...body,
+        idempotency_key: String(body.idempotency_key ?? ("document:"+documentId)),
+        title,
+        content: essence,
+        category: domain,
+        topic: type,
+        authority_grant_id: authorityGrantId,
+        source_head: body.source_head ?? null,
+        what_changed: "Document distilled into a provenance-bound reusable intelligence object.",
+        next_use: body.next_use ?? "Retrieve the distilled intelligence when the document topic is relevant.",
+        learning_claim: essence,
+        value_context: {
+          ...(body.value_context ?? {}),
+          adapter: "NAYANET_DOCUMENT_DISTILL_V1",
+          source_type: "document",
+          document_id: documentId,
+          source_ref: sourceRef,
+          source_hash: sourceHash,
+          source_content_length: sourceContent.length,
+          project_context: projectContext,
+          distillation: { essence, title, domain, type }
+        }
+      });
+      result = {
+        schema:"NAYANET_DOCUMENT_DISTILL_V1",
+        status:"CAPTURED_INTEGRATED_CHECKPOINTED",
+        document:{document_id:documentId,source_ref:sourceRef,source_hash:sourceHash,source_content_length:sourceContent.length},
+        classification:{domain,type,project_context:projectContext},
+        distillation:{title,essence},
+        intelligence:committed
+      };
+    } else if (action === "universal_meaningful_output") {
       const sourceType = String(body.source_type ?? "").trim();
       const privacy = String(body.privacy ?? "PRIVATE").trim();
       const destinationClass = String(body.destination_class ?? "").trim();
@@ -981,7 +1090,8 @@ Deno.serve(async (req) => {
     return json({ok:true,action,result});
   } catch(e) {
     const detail=String(e?.message||e);
-    try { await logOp(client,user.id,action,"FAILED",body,{error:detail}); } catch {}
-    return json({ok:false,action,error:detail},400);
+    const errorCode=detail.split(':',1)[0]||'COMPOUND_INTELLIGENCE_ERROR';
+    try { await logOp(client,user.id,action,"FAILED",body,{error:detail,error_code:errorCode}); } catch {}
+    return json({ok:false,action,error:detail,error_code:errorCode,truth_status:errorCode.startsWith('AUTHORITY')?'BLOCKED':'FAILED'},400);
   }
 });

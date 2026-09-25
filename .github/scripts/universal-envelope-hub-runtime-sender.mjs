@@ -44,14 +44,14 @@ const requireVerified=(result,error)=>{if(result.status!=='VERIFIED')throw Error
   },{alias});
   if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
   if(!runtime.authenticated||!runtime.user_id||!runtime.session?.access_token)throw Error('HUB_RUNTIME_SESSION_NOT_ESTABLISHED');
-  const capture=await page.evaluate(async({title,note})=>window.NayaAssistantRuntime.captureSmartNote({title,content:note,source:'universal-envelope-hub-runtime-sender',status:'active',tags:['universal-envelope','hub-runtime','sender-coverage']}),{title,note});
+  const correlationId='hub-runtime-correlation-'+run;
+  const capture=await page.evaluate(async({title,note,correlationId})=>window.NayaAssistantRuntime.captureSmartNote({title,content:note,source:'universal-envelope-hub-runtime-sender',correlation_id:correlationId,status:'active',tags:['universal-envelope','hub-runtime','sender-coverage']}),{title,note,correlationId});
   const capturePipeline=String(capture?.pipeline||'UNKNOWN');
   if(capture?.ok!==true||capture?.error||!['completed','replayed'].includes(capturePipeline))throw Error('SMART_NOTE_RECEIVER_PIPELINE_FAILED|pipeline='+capturePipeline+'|ok='+String(capture?.ok??'UNAVAILABLE')+'|error='+String(capture?.error||'UNAVAILABLE'));
   const eventId=String(capture?.event?.event_id||capture?.event_id||capture?.transaction?.evidence?.event_id||'');
   const transactionId=String(capture?.transaction?.id||'');
   if(!eventId||!transactionId)throw Error('HUB_RUNTIME_CAPTURE_LINEAGE_MISSING');
   mark('MEANINGFUL_OUTPUT_EMITTED',{event_id:eventId,transaction_id:transactionId});
-  const correlationId='hub-runtime-correlation-'+run;
   const envelope={
     schema:'NAYANET_UNIVERSAL_INTELLIGENCE_ENVELOPE_V1',
     envelope_id:'hub-runtime:'+run,

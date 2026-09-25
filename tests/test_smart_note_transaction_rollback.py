@@ -5,8 +5,8 @@ ROOT=Path(__file__).resolve().parents[1]
 TX=ROOT/".naya/runtime/smart_note_transaction.py"
 
 NOTE={
-"topic":"Rollback Proof","in_a_nutshell":"x","child":"x","grammar":"x","human":"x","naya":"x","machine":"x",
-"learning":"x","why_it_matters":"x","how_to_use":"x","value":"x","evidence":["rollback-test"],
+"topic":"Rollback Proof","in_a_nutshell":"x","human":"x","child":"x","grandma":"x","naya":"x","machine":"x",
+"learning":"x","why_it_matters":"x","how_it_connects":"x","how_to_use":"x","value":"x","evidence":["rollback-test"],
 "current_state":"before","next_action":"retry safely"
 }
 
@@ -18,7 +18,7 @@ def load():
 def test_transaction_rolls_back_partial_writes(tmp_path):
     mod=load()
     mod.ROOT=tmp_path
-    mod.SMART_NOTES_ROOT=tmp_path/"SUPERBRAIN/SMART-NOTES"
+    mod.SMART_NOTES_ROOT=tmp_path/".naya/memory/notes"
     mod.CIS_ROOT=tmp_path/".naya/memory/intelligence"
     mod.CIS_PATH=mod.CIS_ROOT/"CIS.json"
     mod.RECEIPTS_ROOT=mod.CIS_ROOT/"transactions"
@@ -32,6 +32,6 @@ def test_transaction_rolls_back_partial_writes(tmp_path):
         assert "simulated projection failure" in str(exc)
     else:
         raise AssertionError("failure was not surfaced")
-    assert not list((tmp_path/"SUPERBRAIN/SMART-NOTES").rglob("*.md"))
+    assert not list((tmp_path/".naya/memory/notes").rglob("*.md"))
     assert not (tmp_path/".naya/memory/intelligence/CIS.json").exists()
     assert not (tmp_path/"NAYANET/HUB/public/intelligence/pis-feed.json").exists()

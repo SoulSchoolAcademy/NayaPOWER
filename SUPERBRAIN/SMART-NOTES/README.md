@@ -1,74 +1,39 @@
-# NayaPOWER Smart Notes
+# NayaPOWER Smart Notes — LEGACY PROJECTION / REDIRECT
 
-## Canonical organization
+**Status:** HISTORICAL / COMPATIBILITY ONLY  
+**Current canonical contract:** [`.naya/SMART-NOTE-CONTRACT-V1.md`](../../.naya/SMART-NOTE-CONTRACT-V1.md)  
+**Current canonical physical storage:** `.naya/memory/notes/YYYY/MM/DD/`
 
-Smart Notes are organized as a calendar tree so any Naya can navigate by **year → month → day → timestamp/topic**.
+This directory is preserved because older Smart Note artifacts and documentation exist here.
 
-```text
-SUPERBRAIN/
-└── SMART-NOTES/
-    ├── README.md
-    └── YYYY/
-        └── MM/
-            └── DD/
-                ├── INDEX.md
-                ├── YYYY-MM-DDTHH-MM-SSZ__TOPIC.md
-                ├── YYYY-MM-DDTHH-MM-SSZ__TOPIC.md
-                └── ...
-```
+**Do not create new canonical Smart Notes here.**
 
-Example:
+## Current rule
 
-```text
-SMART-NOTES/2026/09/17/
-├── INDEX.md
-└── 2026-09-17T16-04-43Z__NAYAPOWER-CONTINUITY-NORTH-STAR.md
-```
+> **SMART NOTE = INTELLIGENT BLOCK.**
 
-## Why this is canonical
+The canonical human-readable structure, identity, storage resolver, machine schema, creation pipeline, retrieval rules, and projection rules live in:
 
-- **Year** answers when.
-- **Month** groups the work chronologically.
-- **Day** contains the complete day's Smart Notes.
-- **Timestamped filename** gives exact order and prevents ambiguous same-day naming.
-- **Topic** makes subject search obvious.
-- **INDEX.md** gives a human- and machine-readable daily map.
+- `.naya/SMART-NOTE-CONTRACT-V1.md`
+- `contracts/intelligent-block-v1.md`
+- `contracts/intelligent-block-v1.schema.json`
+- `SUPERBRAIN/CONTINUITY/NAYA-REPOSITORY-OPERATING-STANDARD.md §19.1`
 
-A new Smart Note does **not** go into a flat root directory and does **not** go into `.naya/` merely because `.naya/` contains runtime storage.
+The historical files under this directory remain readable for provenance and migration. They are not a second source of truth.
 
-`.naya/` is the machine/runtime control plane. `SUPERBRAIN/SMART-NOTES/` is the canonical human-readable Smart Note projection.
+## Legacy mapping
 
-## Required Smart Note contract
+`SUPERBRAIN/SMART-NOTES/**` → historical Smart Note projection  
+`.naya/memory/notes/YYYY/MM/DD/**` → current canonical Smart Note repository artifact  
+`.naya/memory/events/**` → canonical event/provenance layer, not Smart Note storage  
+Hub / Feed / Reports / Learning / Dream → authorized downstream projections or uses
 
-Every meaningful Smart Note must contain, as applicable:
+## Migration rule
 
-1. Parent / Grandma — inherited source intelligence.
-2. Human — human observation, decision, value, need.
-3. Naya — synthesis and reasoning.
-4. Machine — implementation/runtime evidence.
-5. Child / Derived — downstream intelligence/artifacts.
-6. What happened.
-7. What we learned.
-8. Why it matters.
-9. How to use it.
-10. What's in it for me / you / us.
-11. Evidence and canonical Smart Links.
-12. Current state.
-13. Exactly one Next Action.
-14. Successor handoff.
+Do not mass-delete historical files.
 
-## Naming rule
+When a historical Smart Note is needed in current retrieval:
 
-`YYYY-MM-DDTHH-MM-SSZ__TOPIC.md`
+**IDENTIFY → CLASSIFY → PRESERVE → LINK → RECONCILE → VERIFY**
 
-Use UTC for canonical timestamps. Keep the topic concise, searchable, and stable.
-
-## Daily rule
-
-All Smart Notes created on the same calendar day belong in that day's folder. The daily `INDEX.md` lists them chronologically and provides topic/status/action pointers.
-
-## Continuity rule
-
-A Smart Note is not a dead document. It must be traceable to Activity/evidence and must either point to the current state/next action or explicitly state why no continuation is required.
-
-**Canonical path rule: SMART-NOTES → YEAR → MONTH → DAY → TIMESTAMPED NOTE.**
+The current system must never write a new Smart Note to this legacy directory.

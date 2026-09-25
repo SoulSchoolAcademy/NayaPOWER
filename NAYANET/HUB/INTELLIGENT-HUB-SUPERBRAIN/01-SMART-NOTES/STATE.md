@@ -1,6 +1,6 @@
 # Smart Notes — Current State
 
-**State:** IMPLEMENTATION SLICE — FOUR HARD GATES RECONCILED
+**State:** ACTIVE PROJECTION — CANONICAL SMART NOTE CONTRACT V1
 **Last updated:** 2026-09-17
 
 ## Verified now
@@ -8,7 +8,7 @@
 - Part `01-SMART-NOTES` exists in the canonical project map.
 - Living feature contract exists.
 - Existing Smart Note transaction runtime is the canonical persistence boundary.
-- Canonical Smart Notes are persisted under `SUPERBRAIN/SMART-NOTES` and read back byte-for-byte after write before downstream projection proceeds.
+- Canonical Smart Notes are persisted under `.naya/memory/notes/YYYY/MM/DD/` and read back byte-for-byte after write before downstream projection proceeds.
 - CIS learning and PIS projection remain downstream of the canonical Smart Note record.
 - Canonical Smart Note PIS events preserve the Smart Note timestamp for `created_at` and `updated_at`.
 - Canonical Smart Note PIS events carry explicit source ID and canonical source path provenance.
@@ -46,3 +46,8 @@ This is a surgical reconciliation of existing implementation. No new Smart Note 
 ## Next action
 
 Run the updated Smart Note transaction verifier and inspect the resulting proof; then verify the live Hub consumes the canonical event privacy/provenance fields unchanged.
+
+
+## Canonicalization correction — 2026-09-24
+
+The earlier `SUPERBRAIN/SMART-NOTES` persistence statement is historical and is no longer authoritative. Current Smart Note storage is governed by `SUPERBRAIN/CONTINUITY/NAYA-REPOSITORY-OPERATING-STANDARD.md §19.1` and `.naya/SMART-NOTE-CONTRACT-V1.md`.

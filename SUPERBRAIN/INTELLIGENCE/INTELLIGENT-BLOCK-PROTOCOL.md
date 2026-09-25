@@ -4,7 +4,7 @@
 **SYSTEM:** NayaNET / NayaPOWER  
 **EFFECTIVE:** 2026-09-22
 
-> **SMART NOTE = THE HUMAN INPUT EXPERIENCE. INTELLIGENT BLOCK = THE CANONICAL INTELLIGENCE OBJECT.**
+> **SMART NOTE = INTELLIGENT BLOCK.** Smart Note is the human-friendly name; Intelligent Block is the canonical machine identity/object.
 
 ## 1. THE TERMINOLOGY IS NOW OFFICIAL
 
@@ -278,10 +278,10 @@ Hub
 
 ## 9. OFFICIAL DIRECTORY
 
-The canonical repository home for durable Intelligent Blocks is:
+The canonical repository home for Smart Note / Intelligent Block artifacts is:
 
 ```
-SUPERBRAIN/INTELLIGENT-BLOCKS/
+`.naya/memory/smart-notes/
 ```
 
 Blocks should be organized by date and category as the collection grows.
@@ -294,7 +294,9 @@ SUPERBRAIN/INTELLIGENT-BLOCKS/
     MM/
       DD/
         <category>/
-          IB-YYYYMMDD-###-<slug>.md
+          <topic>/
+            IB-XXXXXX/
+              smart-note.md
 ```
 
 The block identity remains stable even if a human-facing projection moves.
@@ -305,23 +307,17 @@ Existing historical Smart Notes and Intel Block material remain valid historical
 
 ## 10. SMART NOTE IS NOT DELETED
 
-The term **Smart Note** remains useful.
-
-It describes:
-
-> **the simple human action of capturing something worth remembering.**
-
-The system then turns that input into an Intelligent Block.
+The term **Smart Note** remains the simple human-facing name for the canonical Intelligent Block.
 
 Therefore:
 
-```
+```text
 "Make a Smart Note"
         =
-"Capture intelligence and create an Intelligent Block."
+"Create/update one canonical Intelligent Block."
 ```
 
-This preserves the friendly human language while giving the machine architecture a precise object.
+The object is the same. The name is optimized for humans; the IB identity is optimized for machines.
 
 ## 11. BLOCK-TO-BLOCK COMPOUNDING
 

@@ -23,6 +23,21 @@ Read these in order:
 
 **Do not search `.naya/` for the Team Naya operating rules. They are deliberately surfaced here.**
 
+## CANONICAL SMART NOTE / INTELLIGENT BLOCK GATE
+
+Before creating, updating, retrieving, migrating, testing, or documenting a Smart Note, read:
+
+**`.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`**
+
+It is the sole Smart Note authority.
+
+> **SMART NOTE = INTELLIGENT BLOCK**
+
+Canonical identity: `IB-XXXXXX`  
+Canonical storage: `.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
+
+Legacy Smart Note locations are history, compatibility, migration, or projection only. Do not invent another format, folder, or identity.
+
 ## BEFORE YOU ACT
 
 You must know:

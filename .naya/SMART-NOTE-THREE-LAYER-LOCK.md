@@ -1,11 +1,13 @@
 # NAYA POWER — SMART NOTE THREE-LAYER LOCK
 
-**Status:** CANONICAL / LOCKED  
+**Status:** HISTORICAL / SUBORDINATE COMPATIBILITY LOCK  
 **Locked:** 2026-09-01  
 **Scope:** NayaNET / Naya Power / Naya Power Player + Intelligent Hub experience and all consequential work on it.  
 **Authority:** This lock supplements `NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md` and exists to make Smart Note continuity explicit and non-forgettable.
 
 ---
+
+> **Current authority:** `.naya/SMART-NOTE-CONTRACT-V1.md`. The Shawn/Naya/Machine three-layer model is a compatibility view inside one Smart Note / Intelligent Block; it is not a separate storage model or competing contract.
 
 ## 1. THE SMART NOTE LAW
 

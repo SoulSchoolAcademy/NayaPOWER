@@ -64,7 +64,7 @@ def test_main_only_authority_and_legacy_isolation_contracts():
     sender = SENDER.read_text(encoding="utf-8")
     diagnostics = (ROOT / ".github/scripts/stream-e-failure-diagnostics.mjs").read_text(encoding="utf-8")
     hub = (ROOT / "NAYANET/HUB/index.html").read_text(encoding="utf-8")
-    for marker in ("payload.ref", "refs/heads/main", "REPOSITORY_NOT_AUTHORIZED", "VISIBILITY_NOT_AUTHORIZED"):
+    for marker in ("oidc.ref", "refs/heads/main", "REPOSITORY_NOT_AUTHORIZED", "VISIBILITY_NOT_AUTHORIZED"):
         assert marker in bridge
     for marker in ("GITHUB_EVENT_NAME", "GITHUB_HEAD_REF", "NON_MAIN_NO_MUTATION"):
         assert marker in sender

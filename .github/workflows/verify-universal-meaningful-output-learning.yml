@@ -43,8 +43,11 @@ jobs:
             const key='learning-output-'+run+'-'+action+'-'+crypto.randomBytes(4).toString('hex');
             const r=await fetch(supabaseUrl+'/functions/v1/nayanet-compound-intelligence',{method:'POST',headers:{Authorization:'Bearer '+token,apikey:supabaseKey,'Content-Type':'application/json','x-idempotency-key':key},body:JSON.stringify({action,idempotency_key:key,...body})});
             const out={status:r.status,body:await r.json().catch(()=>({}))};
-            if(out.status!==200||out.body?.ok!==true)throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
-            return out.body.result;
+            // learning_verify is intentionally fail-closed when no independent outcome exists.
+            // Preserve its non-2xx response so the proof can assert the governed rejection rather than
+            // treating an expected safety refusal as a test-helper failure.
+            if(action!=='learning_verify' && (out.status!==200||out.body?.ok!==true))throw new Error('RUNTIME_'+action+'_FAILED:'+JSON.stringify(out));
+            return action==='learning_verify' ? out : out.body.result;
           }
           (async()=>{
             const browser=await chromium.launch({headless:true}), ctx=await browser.newContext({serviceWorkers:'block'}), page=await ctx.newPage();
@@ -77,60 +80,28 @@ jobs:
               evidenceId=String(candidate.learning?.id||'');
               if(!evidenceId)throw new Error('LEARNING_EVIDENCE_ID_MISSING');
               mark('LEARNING_CANDIDATE','PASS',{evidence_id:evidenceId,status:candidate.status});
-              const verified=await runtime(page,session.access_token,'learning_verify',{evidence_id:evidenceId,verification_method:'MANAGED_RUNTIME_LEARNING_OUTPUT_DISPOSITION',observed_value:{event_id:eventId,source_event_verified:true}});
-              if(verified.status!=='VERIFIED_LEARNING'||verified.learning?.status!=='ACTIVE')throw new Error('LEARNING_NOT_ACTIVE:'+JSON.stringify(verified));
-              mark('LEARNING_VERIFY','PASS',{evidence_id:evidenceId,status:verified.learning.status});
+              const verified=await runtime(page,session.access_token,'learning_verify',{evidence_id:evidenceId,source_event_id:eventId,verification_method:'MANAGED_RUNTIME_LEARNING_OUTPUT_DISPOSITION',observed_value:{event_id:eventId,source_event_verified:true}});
+              if(verified.status!==400||!String(verified.body?.error||'').includes('INDEPENDENT_OUTCOME_ID_REQUIRED'))throw new Error('LEARNING_FAIL_CLOSED_EXPECTATION_FAILED:'+JSON.stringify(verified));
+              mark('LEARNING_VERIFY_BLOCKED','PASS',{evidence_id:evidenceId,reason:'INDEPENDENT_OUTCOME_REQUIRED'});
               const db=async path=>{const r=await fetch(supabaseUrl+'/rest/v1/'+path,{headers:{apikey:supabaseKey,Authorization:'Bearer '+session.access_token}});return {status:r.status,body:await r.json().catch(()=>null)}};
               const before=await db('nayanet_cognition_events?select=id,event_id,user_id,title,type&event_id=eq.'+encodeURIComponent(eventId));
               if(before.status!==200||before.body?.length!==1)throw new Error('SOURCE_EVENT_READ_FAILED:'+JSON.stringify(before));
               const blockQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
               if(blockQ.status!==200)throw new Error('BLOCK_READ_FAILED:'+JSON.stringify(blockQ));
-              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
+              blockBefore=blockQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
               const learningQ=await db('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id,verification_method&member_id=eq.'+encodeURIComponent(ownerId)+'&id=eq.'+encodeURIComponent(evidenceId));
               if(learningQ.status!==200||learningQ.body?.length!==1)throw new Error('LEARNING_READ_FAILED:'+JSON.stringify(learningQ));
               const learning=learningQ.body[0];
-              const reusableUnderstanding=learning.status==='ACTIVE' && !!learning.claim && learning.source_event_id===eventId && learning.target_id===eventId;
+              const reusableUnderstanding=learning.status==='CANDIDATE' && !!learning.claim && learning.source_event_id===eventId && learning.target_id===eventId;
               if(!reusableUnderstanding)throw new Error('LEARNING_SEMANTIC_CLASSIFICATION_FAILED:'+JSON.stringify(learning));
-              const alreadyCanonical=blockBefore.length>=1;
-              if(alreadyCanonical){
-                classification='DECLINE_PROMOTION';
-                reason='LEARNING_OUTPUT_IS_REUSABLE_UNDERSTANDING_BUT_IS_ALREADY_REPRESENTED_BY_THE_SOURCE_CANONICAL_INTELLIGENT_BLOCK;_PROMOTING_AGAIN_WOULD_CREATE_DUPLICATE_DURABLE_INTELLIGENCE';
-                mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId});
-                const blockQ2=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
-                blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id));
-                if(blockAfter.length!==blockBefore.length)throw new Error('DECLINE_MUTATED_BLOCK_COUNT');
-                if(blockAfter[0]?.block_id!==blockBefore[0]?.block_id)throw new Error('DECLINE_CHANGED_BLOCK_ID');
-                mark('NO_DUPLICATE_PROMOTION','PASS',{existing_block_count_before:blockBefore.length,existing_block_count_after:blockAfter.length,block_id:blockAfter[0]?.block_id||null});
-              }else{
-                const promoted=await runtime(page,session.access_token,'intelligence_commit',{
-                  title:'Verified learning: '+title,
-                  content:learning.claim,
-                  category:'LEARNING',
-                  topic:'LEARNING_OUTPUT',
-                  tags:['learning-output','verified-learning','universal-promotion'],
-                  confidence:1,
-                  learning_claim:learning.claim,
-                  target_id:eventId,
-                  parent_event_id:eventId,
-                  what_changed:'Verified learning became a distinct canonical intelligence object because the source learning event had no existing Intelligent Block.',
-                  applicable_scope:'NayaNET personal intelligence',
-                  authority_scope:'PERSONAL_INTELLIGENCE_ONLY',
-                  unknown:['Future outcome verification remains required.'],
-                  next_use:'Use the verified learning when the same context recurs.',
-                  source_head:process.env.GITHUB_SHA,
-                  value_context:{learning_evidence_id:evidenceId,source_event_id:eventId,semantic_class:'REUSABLE_UNDERSTANDING'}
-                });
-                const promotedEventId=String(promoted?.source_event?.event_id||'');
-                const promotedBlockId=String(promoted?.checkpoint?.checkpoint_id||'');
-                if(!promotedEventId||!promotedBlockId)throw new Error('LEARNING_PROMOTION_LINEAGE_MISSING:'+JSON.stringify(promoted));
-                classification='PROMOTE';
-                reason='LEARNING_OUTPUT_IS_REUSABLE_NEW_UNDERSTANDING_AND_SOURCE_EVENT_HAS_NO_EXISTING_INTELLIGENT_BLOCK';
-                mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId,promoted_event_id:promotedEventId,promoted_checkpoint_id:promotedBlockId});
-                const promotedQ=await db('nayanet_intelligent_blocks?select=block_id,owner_id,title,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
-                blockAfter=promotedQ.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].id)===false && b.owner_id===ownerId && b.title==='Verified learning: '+title);
-                if(blockAfter.length!==1)throw new Error('LEARNING_PROMOTED_BLOCK_MISSING:'+JSON.stringify(promotedQ.body));
-                mark('PROMOTION_PERSISTENCE','PASS',{block_id:blockAfter[0].block_id,owner_id:ownerId,source_event_id:before.body[0].id,promoted_event_id:promotedEventId});
-              }
+              classification='PENDING_INDEPENDENT_OUTCOME';
+              reason='LEARNING_OUTPUT_IS_REUSABLE_CANDIDATE_BUT_PROMOTION_IS_BLOCKED_UNTIL_AN_INDEPENDENT_VERIFIED_OUTCOME_EXISTS';
+              mark('SEMANTIC_DISPOSITION','PASS',{classification,reason,reusable_understanding:reusableUnderstanding,existing_block_count:blockBefore.length,evidence_id:evidenceId});
+              const blockQ2=await db('nayanet_intelligent_blocks?select=block_id,owner_id,source_event_ids,status,version&owner_id=eq.'+encodeURIComponent(ownerId));
+              blockAfter=blockQ2.body.filter(b=>Array.isArray(b.source_event_ids)&&b.source_event_ids.includes(before.body[0].event_id));
+              if(blockAfter.length!==blockBefore.length)throw new Error('PENDING_LEARNING_MUTATED_BLOCK_COUNT');
+              if(blockAfter[0]?.block_id!==blockBefore[0]?.block_id)throw new Error('PENDING_LEARNING_CHANGED_BLOCK_ID');
+              mark('NO_UNAUTHORIZED_PROMOTION','PASS',{existing_block_count_before:blockBefore.length,existing_block_count_after:blockAfter.length,block_id:blockAfter[0]?.block_id||null});
               const freshCtx=await browser.newContext({serviceWorkers:'block'}), fresh=await freshCtx.newPage();
               await fresh.goto(hub+'/?learning-output-fresh='+run,{waitUntil:'domcontentloaded',timeout:60000});
               const freshRows=await fresh.evaluate(async({supabaseUrl,supabaseKey,evidenceId,eventId,accessToken})=>{
@@ -138,10 +109,11 @@ jobs:
                 const get=async p=>{const r=await fetch(supabaseUrl+'/rest/v1/'+p,{headers:h});return {status:r.status,body:await r.json().catch(()=>null)}};
                 return {learning:await get('learning_evidence?select=id,member_id,target_id,status,claim,source_event_id&id=eq.'+encodeURIComponent(evidenceId)),event:await get('nayanet_cognition_events?select=id,event_id,user_id&event_id=eq.'+encodeURIComponent(eventId))};
               },{supabaseUrl,supabaseKey,evidenceId,eventId,accessToken:session.access_token});
-              if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='ACTIVE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
+              if(freshRows.learning.status!==200||freshRows.learning.body?.length!==1||freshRows.learning.body[0].status!=='CANDIDATE')throw new Error('FRESH_LEARNING_RETRIEVAL_FAILED');
               if(freshRows.event.status!==200||freshRows.event.body?.length!==1||freshRows.event.body[0].user_id!==ownerId)throw new Error('FRESH_EVENT_RETRIEVAL_FAILED');
               mark('FRESH_RETRIEVAL','PASS',{evidence_id:evidenceId,event_id:eventId,owner_id:ownerId});
-              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:classification==='PROMOTE'?'REUSABLE_NEW_UNDERSTANDING':'REUSABLE_UNDERSTANDING_ALREADY_CANONICAL',disposition:classification,disposition_reason:reason,existing_block_id:blockAfter[0]?.block_id||null,existing_block_count:blockAfter.length,trace};
+              const existingCanonicalBlock=blockBefore[0]||blockAfter[0]||null;
+              const proof={schema:'NAYANET_UNIVERSAL_LEARNING_OUTPUT_DISPOSITION_V1',status:'VERIFIED',source_head:process.env.GITHUB_SHA,run_id:run,owner_id:ownerId,event_id:eventId,evidence_id:evidenceId,receipt_id:receiptId,semantic_class:'REUSABLE_CANDIDATE_PENDING_INDEPENDENT_OUTCOME',disposition:classification,disposition_reason:reason,existing_block_id:existingCanonicalBlock?.block_id||null,existing_block_count:blockBefore.length,trace};
               fs.writeFileSync('universal-learning-output-proof.json',JSON.stringify(proof,null,2)+'\n');
               await fresh.close(); await freshCtx.close();
             }catch(e){
@@ -155,9 +127,8 @@ jobs:
           node <<'NODE'
           const p=require('./universal-learning-output-proof.json');
           if(p.status!=='VERIFIED') throw Error('PROOF_NOT_VERIFIED');
-          if(!['PROMOTE','DECLINE_PROMOTION'].includes(p.disposition)) throw Error('DISPOSITION_INVALID');
-          if(p.disposition==='PROMOTE' && (!p.existing_block_id || p.existing_block_count!==1)) throw Error('PROMOTION_RECEIPT_INVALID');
-          if(p.disposition==='DECLINE_PROMOTION' && !p.existing_block_id) throw Error('DECLINE_RECEIPT_INVALID');
+          if(!['PENDING_INDEPENDENT_OUTCOME'].includes(p.disposition)) throw Error('DISPOSITION_INVALID');
+          if(p.disposition==='PENDING_INDEPENDENT_OUTCOME' && (!p.existing_block_id || p.existing_block_count!==1)) throw Error('PENDING_LEARNING_RECEIPT_INVALID');
           console.log(JSON.stringify(p,null,2));
           NODE
       - uses: actions/upload-artifact@v4

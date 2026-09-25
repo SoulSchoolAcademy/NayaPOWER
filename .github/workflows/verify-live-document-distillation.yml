@@ -1,0 +1,113 @@
+name: Verify Live Document Distillation Golden Path
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'supabase/functions/nayanet-compound-intelligence/index.ts'
+      - 'tests/test_document_distillation_contract.py'
+      - '.github/workflows/verify-live-document-distillation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  document-distill:
+    runs-on: ubuntu-latest
+    environment: assistant-cloudflare-production
+    timeout-minutes: 20
+    env:
+      HUB_URL: https://sparkling-shape-7ae5.smartnetpodcast.workers.dev
+      SUPABASE_URL: https://dahisasgpfvziswqvmvm.supabase.co
+      SUPABASE_PUBLISHABLE_KEY: sb_publishable_oQFKOYFuJ9bT-E9QkJUb4g_lAUyInue
+      RUN_IDENTITY: ${{ github.run_id }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: RED — contract test
+        run: python tests/test_document_distillation_contract.py
+
+      - name: GREEN — execute live document distillation
+        shell: bash
+        run: |
+          set -euo pipefail
+          RUN_IDENTITY="${GITHUB_RUN_ID}"
+          AUTH_JSON=$(curl --silent --show-error -X POST "$SUPABASE_URL/auth/v1/signup" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json" -d '{}')
+          TOKEN=$(echo "$AUTH_JSON" | jq -r '.access_token // empty')
+          USER_ID=$(echo "$AUTH_JSON" | jq -r '.user.id // empty')
+          test -n "$TOKEN"; test -n "$USER_ID"
+          H=(-H "Authorization: Bearer $TOKEN" -H "apikey: $SUPABASE_PUBLISHABLE_KEY" -H "Content-Type: application/json")
+
+          UNDERSTAND=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -d "$(jq -n --arg run "$RUN_IDENTITY" '{action:"understand",title:("Document distillation authority source "+$run),content:"Controlled proof source event for the document distillation golden path.",confidence:1,tags:["document-distillation","authority-proof"]}')")
+          SOURCE_EVENT=$(echo "$UNDERSTAND" | jq -r '.result.event.event_id // empty')
+          test -n "$SOURCE_EVENT"
+
+          GRANT=$(curl --silent --show-error -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" "${H[@]}" -d "$(jq -n --arg subject "$USER_ID" --arg event "$SOURCE_EVENT" --arg run "$RUN_IDENTITY" '{p_subject_id:$subject,p_source_event_id:$event,p_mission_id:"NayaNET document distillation golden path",p_scope:{project_id:"NayaNET",target:"NayaNET"},p_actions:["intelligence_commit"],p_constraints:{mode:"controlled-document-distillation-proof",no_external_side_effects:true},p_expires_at:"2099-01-01T00:00:00Z",p_evidence:{proof:"live-document-distillation",run:$run}}')")
+          GRANT_ID=$(echo "$GRANT" | jq -r '.grant_id // empty')
+          test -n "$GRANT_ID"
+
+          DOCUMENT_ID="DOC-${RUN_IDENTITY}-$(openssl rand -hex 5)"
+          IDEMPOTENCY_KEY="document-distill-$DOCUMENT_ID"
+          SOURCE_REF="fixture://nayanet/document-distill/$DOCUMENT_ID"
+          SOURCE_CONTENT=$'# Canonical Intelligence\n\nNayaNET should preserve valuable understanding as reusable intelligence.\nA document is not complete merely because its text is stored.\nThe useful result is a provenance-bound distilled representation that can be retrieved and reused.\n'
+          ESSENCE="Valuable document understanding must become provenance-bound reusable intelligence that can be retrieved and reused."
+
+          BODY=$(jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg source "$SOURCE_CONTENT" --arg essence "$ESSENCE" --arg idem "$IDEMPOTENCY_KEY" --arg grant "$GRANT_ID" '{action:"document_distill",idempotency_key:$idem,document_id:$did,source_ref:$ref,source_content:$source,title:"Document Intelligence",essence:$essence,domain:"KNOWLEDGE",type:"reference",project_context:"NayaNET",authority_grant_id:$grant,next_use:"Retrieve this intelligence when document understanding is relevant."}')
+          RESPONSE=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          echo "$RESPONSE" | jq .
+          echo "$RESPONSE" > document-distill-response.json
+
+          OK=$(echo "$RESPONSE" | jq -r '.ok // false')
+          test "$OK" = true
+          SCHEMA=$(echo "$RESPONSE" | jq -r '.result.schema // empty')
+          test "$SCHEMA" = NAYANET_DOCUMENT_DISTILL_V1
+          SOURCE_HASH=$(echo "$RESPONSE" | jq -r '.result.document.source_hash // empty')
+          test "${#SOURCE_HASH}" -eq 64
+          EVENT_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.source_event.event_id // empty')
+          BLOCK_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.intelligent_block.block_id // empty')
+          INDEX_ID=$(echo "$RESPONSE" | jq -r '.result.intelligence.projection.index.id // empty')
+          test -n "$EVENT_ID"; test -n "$BLOCK_ID"; test -n "$INDEX_ID"
+
+          RETRIEVED=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-pi-retrieve" "${H[@]}" -d "$(jq -n --arg q "$ESSENCE" '{query:$q,limit:10}')")
+          echo "$RETRIEVED" | jq .
+          echo "$RETRIEVED" > document-distill-retrieval.json
+          grep -q "$EVENT_ID" document-distill-retrieval.json
+
+          BLOCK=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligent_blocks?select=block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version&block_id=eq.$BLOCK_ID" "${H[@]}")
+          echo "$BLOCK" | jq .
+          echo "$BLOCK" > document-distill-block.json
+          test "$(echo "$BLOCK" | jq 'length')" -eq 1
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_type')" = document
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_hash')" = "$SOURCE_HASH"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.document_id')" = "$DOCUMENT_ID"
+          test "$(echo "$BLOCK" | jq -r '.[0].value_context.source_ref')" = "$SOURCE_REF"
+          test "$(echo "$BLOCK" | jq -r '.[0].content.content')" = "$ESSENCE"
+
+          INDEX=$(curl --silent --show-error "$SUPABASE_URL/rest/v1/nayanet_intelligence_index?select=id,source_table,source_id,object_type,title,status,metadata&id=eq.$INDEX_ID" "${H[@]}")
+          echo "$INDEX" | jq .
+          test "$(echo "$INDEX" | jq 'length')" -ge 1
+          test "$(echo "$INDEX" | jq -r '.[0].id')" = "$INDEX_ID"
+          test "$(echo "$INDEX" | jq -r '.[0].source_table')" = "nayanet_cognition_events"
+
+          DUP=$(curl --silent --show-error -X POST "$SUPABASE_URL/functions/v1/nayanet-compound-intelligence" "${H[@]}" -H "x-idempotency-key: $IDEMPOTENCY_KEY" -d "$BODY")
+          test "$(echo "$DUP" | jq -r '.ok // false')" = true
+          test "$(echo "$DUP" | jq -r '.result.intelligence.source_event.event_id // empty')" = "$EVENT_ID"
+
+          jq -n --arg did "$DOCUMENT_ID" --arg ref "$SOURCE_REF" --arg hash "$SOURCE_HASH" --arg event "$EVENT_ID" --arg block "$BLOCK_ID" --arg index "$INDEX_ID" '{
+            status:"VERIFIED",document_id:$did,source_ref:$ref,source_hash:$hash,source_event_id:$event,intelligent_block_id:$block,intelligence_index_id:$index,
+            checks:{source_capture:"PASS",source_hash:"PASS",distillation:"PASS",classification:"PASS",provenance_binding:"PASS",private_scope:"PASS",intelligent_block_persistence:"PASS",cognition_retrieval:"PASS",library_index_retrieval:"PASS",idempotency:"PASS"}
+          }' | tee document-distill-proof-machine.json
+
+      - name: Verify machine-readable proof
+        run: |
+          python - <<'PY'
+          import json
+          p=json.loads(open("document-distill-proof-machine.json",encoding="utf-8").read())
+          assert p["status"]=="VERIFIED",p
+          assert all(v=="PASS" for v in p["checks"].values()),p
+          assert p["source_hash"] and len(p["source_hash"])==64
+          assert p["source_event_id"] and p["intelligent_block_id"] and p["intelligence_index_id"]
+          print("LIVE_DOCUMENT_DISTILL_GOLDEN_PATH=PASS")
+          print(json.dumps(p,sort_keys=True))
+          PY

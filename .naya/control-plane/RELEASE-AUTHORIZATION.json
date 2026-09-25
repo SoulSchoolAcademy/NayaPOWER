@@ -1,14 +1,16 @@
 {
   "$schema": "naya/release-authorization/v1",
   "status": "TEMPLATE",
-  "version": "1.0.0",
-  "purpose": "Machine-readable authorization required before any NayaPOWER deployment is permitted.",
+  "version": "1.1.0",
+  "purpose": "Machine-readable authorization required before any NayaPOWER production deployment is permitted.",
   "release_id": "REPLACE_WITH_UNIQUE_RELEASE_ID",
   "repository": "SoulSchoolAcademy/NayaPOWER",
   "commit_sha": "REQUIRED_EXACT_COMMIT_SHA",
   "target_environment": "preview|production",
-  "deployment_surface": "vercel",
-  "vercel_project_id": "prj_cHa9gwrtscCW8JuMDjcvw6DafaOK",
+  "deployment_surface": "cloudflare",
+  "cloudflare_account_id": "b5e2a51b3e883f7722287c5f51b1196b",
+  "cloudflare_worker": "sparkling-shape-7ae5",
+  "release_workflow": ".github/workflows/assistant-cloudflare-hub-release.yml",
   "release_reason": "REQUIRED",
   "verification": {
     "status": "PASS_REQUIRED",
@@ -17,5 +19,5 @@
   "authorized_by": "REQUIRED",
   "authorized_at": "REQUIRED_TIMEZONE_AWARE_TIMESTAMP",
   "approval": "EXPLICIT_APPROVAL_REQUIRED",
-  "notes": "A template is not authorization. A release record must be complete, exact, evidence-backed, explicitly approved, and bound to the canonical Vercel project before deployment execution."
+  "notes": "A template is not authorization. A release record must be complete, exact, evidence-backed, explicitly approved, and bound to the canonical Cloudflare Worker before deployment execution."
 }

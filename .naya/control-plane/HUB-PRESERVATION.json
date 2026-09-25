@@ -22,17 +22,18 @@
     "historical_evidence_rule": "Historical Hub implementations remain recoverable evidence and must never be treated as disposable working files."
   },
   "current_checkpoint": {
-    "main_observed_head": "ad3e0118bdaf9086de3abcb5af68c263fdb66002",
-    "checkpoint_branch": "recovery/hub-entry-gate-removal-ad3e0118",
-    "checkpoint_type": "CANONICAL_HUB_VERIFIED_REPAIR_ADVANCEMENT",
+    "main_observed_head": "e293975b8e65d2648aa5b8633aaef7ae46e2442c",
+    "checkpoint_branch": "main",
+    "checkpoint_type": "CANONICAL_HUB_DEEP_LINK_RELEASE_GATE",
     "previous_major_hub_checkpoint_commit": "ad0c078111a7d156ee0001eb4bf88981b639aef2",
     "previous_major_hub_checkpoint_blob_sha": "4faa324f71d651daa398c16cdc238bd63f4828f3",
-    "recovery_entrypoint_blob_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
-    "advancement_reason": "Advance checkpoint to the merged duplicate-entry-gate removal (PR #559, merge ad3e0118): deleted only script#nayanet-canonical-auth-gate (34 lines, fullscreen Enter-the-Hub overlay) from NAYANET/HUB/index.html so the Worker URL opens the Hub directly per WELCOME->IDENTITY->HUB. Identity capability untouched. Proven pre-deploy: local Chromium render of new blob shows gate element absent, Enter-the-Hub text absent, Hub content renders, 0 pageerrors; hub-quality CI PASS on PR #559. Deployment + live parity + post-merge browser proof remain open and are enforced by the release lane itself."
+    "recovery_entrypoint_blob_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
+    "advancement_reason": "Advance the preservation checkpoint to the live main commit after the governed release gate was restored. The canonical Hub source blob remains 6a61b2c775d4e4b7a04721606813ec0031870399; live production parity remains unverified until the release workflow completes and independent browser verification passes.",
+    "recorded_at": "2026-09-25T06:27:00.000Z"
   },
   "active_architecture": {
     "entrypoint_mode": "STATIC_CANONICAL_HUB",
-    "entrypoint_blob_sha_at_checkpoint": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
+    "entrypoint_blob_sha_at_checkpoint": "6a61b2c775d4e4b7a04721606813ec0031870399",
     "implementation_authority": "NAYANET/HUB/index.html",
     "preserved_react_lane": "NAYANET/HUB/src/",
     "preserved_react_lane_status": "HISTORICAL_OR_ALTERNATE_IMPLEMENTATION; NOT_ACTIVE_RUNTIME_AUTHORITY"
@@ -42,7 +43,7 @@
     "status": "RECORDED",
     "from": "React/Vite canonical implementation lane",
     "to": "historical static Hub implementation at NAYANET/HUB/index.html",
-    "reason": "User-directed restoration of the previously working canonical Hub surface from the preserved 74884cb checkpoint.",
+    "reason": "User-directed preservation of the working canonical static Hub surface.",
     "preservation_baseline": "74884cb69badf54fee2bff0398a3f452c6c74384",
     "recovery_baseline": "recovery/hub-visual-freeze-2026-09-23-74884cb6",
     "verification_requirement": "Static source/build/deploy/live/browser parity must pass before restoration is considered production-proven."

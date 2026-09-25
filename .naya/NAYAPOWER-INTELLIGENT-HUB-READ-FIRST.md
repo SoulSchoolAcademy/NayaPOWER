@@ -191,8 +191,8 @@ Every Hub feature must be understood according to where it participates in this 
 # 6. THE CORE OBJECT MODEL
 
 ```text
-SMART NOTE = INTELLIGENCE OBJECT
-INTELLIGENT BLOCK = HUMAN PRESENTATION OF THAT OBJECT
+> **SMART NOTE = INTELLIGENT BLOCK**
+Smart Note is the human-friendly name; Intelligent Block is the canonical machine identity/object.
 SMART BOARD = LARGER INTELLIGENCE PRESENTATION / WORKSPACE SURFACE
 SMART FEED = LIVING STREAM OF INTELLIGENT BLOCKS
 SMART LIST = PERSONAL ORGANIZATION OF INTELLIGENCE
@@ -206,7 +206,7 @@ SEARCH = INTELLIGENCE RETRIEVAL
 PIS = PRIMARY INTELLIGENCE SYSTEM / LIVING INTELLIGENCE PROJECTION
 ```
 
-One Smart Note may have many projections while retaining one identity and provenance chain.
+One Smart Note / Intelligent Block may have many projections while retaining the immutable IB identity and provenance chain.
 
 Never create disconnected copies merely because the intelligence appears in another surface.
 

@@ -66,7 +66,7 @@
       "release_source_head": "13d33c6f491a3172579b02412c7db7fb8867fd0a",
       "current_main_head_at_reconciliation": "acf998c0baa27c38833d0acd8db5908cf9dd04d1",
       "canonical_hub_path": "NAYANET/HUB/index.html",
-      "canonical_hub_blob_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7",
+      "canonical_hub_blob_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c",
       "deployed_artifact_sha256": "798b1fb67d5d88815b90be9523b0da778e802ffa86031e8eff2e69a218a46184",
       "worker": "sparkling-shape-7ae5",
       "browser_proof": "PASS",

@@ -457,78 +457,161 @@ Reusable learning goes to the correct durable home:
 
 One fact should have one authoritative home whenever possible.
 
-## 19.1 CANONICAL SMART NOTE RESOLVER / PATH CONTRACT
+## 19.1 CANONICAL SMART NOTE / INTELLIGENT BLOCK RESOLVER
 
-Smart Notes have **one canonical storage resolver**. Every Naya, runtime operation, migration, test, and documentation reference MUST resolve Smart Notes through this rule. Do not invent alternate Smart Note directories.
+The canonical Smart Note system is defined by the human-director-ratified contract:
+
+`.naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md`
+
+> **SMART NOTE = INTELLIGENT BLOCK**
+
+Every Naya, runtime operation, migration, test, retrieval path, and documentation reference MUST use that contract. Do not invent another Smart Note contract, identity, or storage system.
+
+### Canonical identity
+
+`IB-000001`, `IB-000002`, `IB-000003`, …
+
+The immutable **IB-XXXXXX** is the canonical semantic identity.
 
 ### Canonical logical namespace
 
 `NayaPOWER/SMART-NOTES/YYYY/MM/DD/`
 
-This is the stable human-facing/cognitive namespace for Smart Notes.
+### Canonical physical repository
 
-### Canonical repository storage
+`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
 
-`.naya/memory/notes/YYYY/MM/DD/`
+### Canonical registry
 
-This is the current authoritative physical repository location for the Smart Note artifacts represented by the logical namespace above.
+`.naya/memory/smart-notes/REGISTRY.json`
+
+The registry provides the durable human-readable identity → path mapping.
 
 ### Resolver
 
-Given a valid Smart Note event date:
+Given date, category, topic, and IB identity:
 
 ```text
-YEAR  = YYYY
-MONTH = MM
-DAY   = DD
-
-logical_path  = NayaPOWER/SMART-NOTES/YYYY/MM/DD/
-physical_path = .naya/memory/notes/YYYY/MM/DD/
+YYYY
+ ↓
+MM
+ ↓
+DD
+ ↓
+category
+ ↓
+topic
+ ↓
+IB-XXXXXX
+ ↓
+smart-note.md
 ```
 
-The physical resolver MUST be deterministic:
+The implementation resolver is:
 
-```text
-Smart Note date → .naya/memory/notes/YYYY/MM/DD/
-```
+`.naya/runtime/smart_note_transaction.py::canonical_smart_note_path`
 
-### Canonical filename
+The path is organization and retrieval metadata. The IB identity is permanent.
 
-New durable Smart Note files SHOULD use:
+### Canonical human structure
 
-`SN-YYYYMMDD-[short-human-readable-slug].md`
+Every Smart Note MUST use this order:
 
-Example:
-
-`SN-20260919-day-wisdom.md`
+1. IN A NUTSHELL
+2. DATE / TIME
+3. WHAT
+4. WHY IT MATTERS
+5. HUMAN
+6. CHILD
+7. GRANDMA
+8. NAYA
+9. MACHINE
+10. WHAT WE LEARNED
+11. CONNECTIONS
+12. HOW TO APPLY
+13. WHAT IT ULTIMATELY MEANS
+14. WHAT'S IN IT FOR YOU / US
+15. NEXT ACTION
 
 ### Hard rule
 
-The following are **not** alternate canonical Smart Note homes:
+The following are **not** current canonical Smart Note write targets:
 
 - `.naya/SUPERBRAIN/SMART-NOTES/`
-- `.naya/notes/`
-- `.naya/memory/events/`
+- `.naya/memory/notes/`
+- `.naya/memory/events/` — canonical event/provenance layer, not the human Smart Note home
+- `.naya/project-intelligence/smart-notes/`
+- `NAYA/SMART-NOTES/`
+- `NAYANET/SMART-NOTES/`
+- `SUPERBRAIN/SMART-NOTES/`
+- `SUPERBRAIN/CONTINUITY/**/SMART-NOTES/`
+- `SUPERBRAIN/INTELLIGENCE/**/SMART-NOTES/`
+- `docs/smart-notes/`
+- feature-local Smart Note folders
 - any newly invented Smart Note directory
 
-Historical/legacy artifacts may exist elsewhere, but they MUST NOT be treated as the current canonical Smart Note location. If a legacy artifact is encountered, preserve history and resolve the current canonical note through the resolver above.
+Historical artifacts in those locations remain readable for provenance, migration, audit, and learning history. They do not become alternate authorities.
 
-### One-resolver requirement
+### One-object rule
 
-All Smart Note create, read, update, list, migration, retrieval, test, and documentation operations MUST use the same resolver. No caller may substitute a different physical path because another document, model, or prior conversation suggested one.
+The canonical Smart Note / Intelligent Block may be projected into:
 
-A Smart Note's metadata MAY expose both:
+**Intelligence Event → PIS / Index → Activity → Smart Feed → Hub → Library → Reports → Learning → Dream / Replay → Naya context**
 
-- `canonical_path: NayaPOWER/SMART-NOTES/YYYY/MM/DD`
-- `repository_path: .naya/memory/notes/YYYY/MM/DD/<filename>.md`
+Those are projections or uses of the same intelligence, not second Smart Note stores.
 
-These are two representations of the **same canonical location**, not two competing storage systems.
+### Creation rule
 
-### Governance consequence
+When a human or Naya says:
 
-If two Smart Note locations appear to exist, **STOP → identify the first divergence → preserve the historical artifact → reconcile to this resolver → verify references/retrieval → continue**.
+> **“Make a Smart Note.”**
 
-**One Smart Note → one canonical resolver → one authoritative repository artifact.**
+the system MUST:
+
+`RESTORE → DISTILL → CHECK EXISTING INTELLIGENCE → ASSIGN/REUSE IB ID → PERSIST → COMMIT INTELLIGENCE EVENT → INDEX → PROJECT → VERIFY → RETURN SMART LINK → ONE NEXT ACTION`
+
+No caller may bypass the canonical resolver or create an arbitrary file.
+
+### Retrieval rule
+
+Retrieval MUST search canonical intelligence by:
+
+- IB identity;
+- event/source identity;
+- date;
+- category;
+- topic;
+- relationships;
+- authorization;
+- truth/verification state;
+- current/superseded state.
+
+Repository-wide filesystem search across legacy folders is a migration/audit tool, not the canonical retrieval strategy.
+
+### Duplicate / update rule
+
+Before creating a new IB:
+
+**CHECK EXISTING → DISTINGUISH NEW / UPDATE / CORRECTION / REFINEMENT / CONTRADICTION / DUPLICATE → CREATE OR UPDATE**
+
+Do not create duplicate canonical intelligence merely because the same intelligence appears in another project, conversation, or projection.
+
+### Migration law
+
+If legacy Smart Note artifacts are found:
+
+**IDENTIFY → CLASSIFY → PRESERVE → LINK → RECONCILE → VERIFY**
+
+Historical files are not deleted merely for cleanliness.
+
+### Truth boundary
+
+`CAPTURED ≠ PERSISTED ≠ INDEXED ≠ RETRIEVED ≠ LEARNED ≠ APPLIED ≠ VERIFIED`
+
+A Smart Note file existing does not, by itself, prove learning or end-to-end runtime success.
+
+**One Smart Note → one canonical resolver → one immutable IB identity → one authoritative artifact → many projections.**
+
 
 ## 20. NAYA SIGNATURE / EXECUTION RECEIPT
 

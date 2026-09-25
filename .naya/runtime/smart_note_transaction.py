@@ -21,17 +21,23 @@ from pathlib import Path
 from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "notes"
+SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
+IB_REGISTRY_PATH = SMART_NOTES_ROOT / "REGISTRY.json"
+IB_ID_RE = re.compile(r"^IB-(\d{6})$")
 CIS_ROOT = ROOT / ".naya" / "memory" / "intelligence"
 CIS_PATH = CIS_ROOT / "CIS.json"
 RECEIPTS_ROOT = CIS_ROOT / "transactions"
 PIS_PATH = ROOT / "NAYANET" / "HUB" / "public" / "intelligence" / "pis-feed.json"
 
+# Canonical Smart Note / Intelligent Block human contract.
+# "grammar" remains accepted only as a legacy input field and is never emitted
+# as a canonical Smart Note perspective.
 REQUIRED = (
-    "in_a_nutshell", "child", "grammar", "human", "naya", "machine",
-    "learning", "why_it_matters", "how_to_use", "value", "evidence",
-    "current_state", "next_action",
+    "in_a_nutshell", "human", "child", "grandma", "naya", "machine",
+    "learning", "why_it_matters", "how_it_connects", "how_to_use", "value",
+    "evidence", "current_state", "next_action",
 )
+CANONICAL_SCHEMA = "NAYANET_INTELLIGENT_BLOCK_V1"
 
 
 def utc_now() -> str:
@@ -48,95 +54,120 @@ def note_id(timestamp: str, topic: str) -> str:
     return f"SN-{stamp}-{slug(topic)}"
 
 
-def canonical_smart_note_path(timestamp: str, topic: str, root: Path | None = None) -> Path:
-    """Resolve a Smart Note through the canonical logical→physical namespace."""
+def _load_ib_registry(path: Path | None = None) -> dict[str, Any]:
+    registry_path = path or IB_REGISTRY_PATH
+    if not registry_path.exists():
+        return {
+            "$schema": "naya/smart-note-registry/v1",
+            "status": "CANONICAL",
+            "contract": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+            "identity_rule": "One immutable IB identity per canonical intelligence object.",
+            "path_rule": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+            "identity_cursor": 0,
+            "entries": [],
+        }
+    data = json.loads(registry_path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict) or not isinstance(data.get("entries", []), list):
+        raise ValueError("Smart Note IB registry is invalid")
+    return data
+
+
+def _allocate_ib_id() -> str:
+    registry = _load_ib_registry()
+    used = []
+    for row in registry.get("entries", []):
+        value = row.get("intelligent_block_id") if isinstance(row, dict) else None
+        match = IB_ID_RE.match(str(value or ""))
+        if match:
+            used.append(int(match.group(1)))
+    cursor = int(registry.get("identity_cursor", 0) or 0)
+    next_number = max(used + [cursor], default=0) + 1
+    if next_number > 999999:
+        raise RuntimeError("Smart Note IB identity space exhausted")
+    return f"IB-{next_number:06d}"
+
+
+def _register_ib(note: dict[str, Any], path: Path) -> None:
+    registry = _load_ib_registry()
+    entries = registry.setdefault("entries", [])
+    ib_id = str(note["intelligent_block_id"])
+    existing = next((row for row in entries if isinstance(row, dict) and row.get("intelligent_block_id") == ib_id), None)
+    entry = {
+        "intelligent_block_id": ib_id,
+        "path": str(path.relative_to(ROOT)).replace("\\", "/"),
+        "date": str(note["timestamp"])[:10],
+        "category": slug(str(note.get("category", "system"))).lower(),
+        "topic": slug(str(note["topic"])).lower(),
+        "status": "CANONICAL",
+    }
+    if existing is None:
+        entries.append(entry)
+    elif existing != entry:
+        raise RuntimeError(f"Smart Note IB registry conflict: {ib_id}")
+    numeric = int(ib_id[3:])
+    registry["identity_cursor"] = max(int(registry.get("identity_cursor", 0) or 0), numeric)
+    entries.sort(key=lambda row: row.get("intelligent_block_id", ""))
+    _write_json(IB_REGISTRY_PATH, registry)
+
+
+def canonical_smart_note_path(
+    timestamp: str,
+    topic: str,
+    category: str = "system",
+    ib_id: str = "IB-000000",
+    root: Path | None = None,
+) -> Path:
+    """Resolve the ratified Smart Note V1 logical→physical namespace."""
     dt = datetime.fromisoformat(timestamp.replace("Z", "+00:00")).astimezone(timezone.utc)
-    filename = f"SN-{dt:%Y%m%d}-{slug(topic)}.md"
+    category_slug = slug(category).lower()
+    topic_slug = "-".join(slug(topic).lower().split("-")[:3]) or "smart-note"
+    if not IB_ID_RE.match(ib_id):
+        raise ValueError("canonical Smart Note requires immutable IB-XXXXXX identity")
     base = Path(root) if root is not None else SMART_NOTES_ROOT
-    return base / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / filename
+    return base / f"{dt:%Y}" / f"{dt:%m}" / f"{dt:%d}" / category_slug / topic_slug / ib_id / "smart-note.md"
 
 
 def validate_note(note: dict[str, Any]) -> None:
     missing = [k for k in REQUIRED if not str(note.get(k, "")).strip()]
     if missing:
-        raise ValueError("Smart Note missing required perspectives: " + ", ".join(missing))
+        raise ValueError("Canonical Smart Note contract missing: " + ", ".join(missing))
     if not isinstance(note["evidence"], list) or not note["evidence"]:
         raise ValueError("Smart Note requires at least one evidence item")
     if isinstance(note["next_action"], list):
         raise ValueError("Smart Note Next Action must be one executable action, not a list")
-
+    if not CANONICAL_SCHEMA:
+        raise ValueError("Canonical Smart Note Intelligent Block schema is unavailable")
 
 def render_note(note: dict[str, Any]) -> str:
     evidence = "\n".join(f"- {item}" for item in note["evidence"])
-    return f"""# SMART NOTE — {note["topic"]}
-
-**Timestamp:** {note["timestamp"]}
-**Smart Note ID:** `{note["id"]}`
-**Status:** CANONICAL / TRANSACTIONALLY PROJECTED
-**Type:** Durable intelligence
-**Parent:** NayaPOWER Superbrain
-
-## In a Nutshell
-
-{note["in_a_nutshell"]}
-
-## Child / Derived Note
-
-{note["child"]}
-
-## Grammar Note
-
-{note["grammar"]}
-
-## Human Note
-
-{note["human"]}
-
-## Naya Note
-
-{note["naya"]}
-
-## Machine Note
-
-{note["machine"]}
-
-## Learning Lesson / Adaptive Learning
-
-{note["learning"]}
-
-## Why It Matters
-
-{note["why_it_matters"]}
-
-## How to Use It
-
-{note["how_to_use"]}
-
-## What's In It For Me / You / Us
-
-{note["value"]}
-
-## Evidence / Smart Links
-
-{evidence}
-
-## Current State
-
-{note["current_state"]}
-
-## ONE Next Action
-
-**{note["next_action"]}**
-
-## Transaction State
-
-- Smart Note: **PERSISTED**
-- CIS learning: **{note["cis_status"]}**
-- PIS projection: **{note["pis_status"]}**
-- Hub projection: **{note["hub_status"]}**
-- Receipt: `{note["receipt_id"]}`
-"""
-
+    stamp = str(note["timestamp"])
+    return (
+        "# SMART NOTE — " + note["topic"] + "\n\n"
+        "**Intelligent Block ID:** ``" + note["intelligent_block_id"] + "`\n"
+        "**Smart Note ID:** ``" + note["id"] + "`\n"
+        "**Schema:** ``" + CANONICAL_SCHEMA + "`\n"
+        "**Category:** " + str(note.get("category", "system")) + "\n"
+        "**Topic:** " + str(note["topic"]) + "\n\n"
+        "## IN A NUTSHELL\n\n" + note["in_a_nutshell"] + "\n\n"
+        "## DATE / TIME\n\n" + stamp + "\n\n"
+        "## WHAT\n\n" + str(note["what"]) + "\n\n"
+        "## WHY IT MATTERS\n\n" + note["why_it_matters"] + "\n\n"
+        "## HUMAN\n\n" + note["human"] + "\n\n"
+        "## CHILD\n\n" + note["child"] + "\n\n"
+        "## GRANDMA\n\n" + note["grandma"] + "\n\n"
+        "## NAYA\n\n" + note["naya"] + "\n\n"
+        "## MACHINE\n\n" + note["machine"] + "\n\n"
+        "## WHAT WE LEARNED\n\n" + note["learning"] + "\n\n"
+        "## CONNECTIONS\n\n" + note["how_it_connects"] + "\n\n"
+        "## HOW TO APPLY\n\n" + note["how_to_use"] + "\n\n"
+        "## WHAT IT ULTIMATELY MEANS\n\n" + note["ultimate_meaning"] + "\n\n"
+        "## WHAT" + chr(39) + "S IN IT FOR YOU / US\n\n" + note["value"] + "\n\n"
+        "## NEXT ACTION\n\n**" + note["next_action"] + "**\n\n"
+        "---\n\n"
+        "**Evidence / Smart Links**\n\n" + evidence + "\n\n"
+        "**Current State:** " + note["current_state"] + "\n"
+        "**Provenance:** Canonical Smart Note transaction boundary.\n"
+    )
 
 def _load_cis() -> dict[str, Any]:
     if not CIS_PATH.exists():
@@ -303,21 +334,33 @@ def execute(note: dict[str, Any]) -> dict[str, Any]:
         note = dict(note)
         note["timestamp"] = stamp
         note["id"] = str(note.get("id") or note_id(stamp, note["topic"]))
+        note["category"] = str(note.get("category") or "system")
+        note["intelligent_block_id"] = str(note.get("intelligent_block_id") or _allocate_ib_id())
+        if not IB_ID_RE.match(note["intelligent_block_id"]):
+            raise ValueError("invalid canonical intelligent_block_id")
+        note["what"] = str(note.get("what") or note["topic"])
+        note["ultimate_meaning"] = str(note.get("ultimate_meaning") or note["why_it_matters"])
 
-        path = canonical_smart_note_path(stamp, note["topic"])
+        path = canonical_smart_note_path(
+            stamp,
+            note["topic"],
+            category=note["category"],
+            ib_id=note["intelligent_block_id"],
+        )
         receipt_path = RECEIPTS_ROOT / f"SN-RCP-{note['id']}.json"
         if path.exists():
             existing = path.read_text(encoding="utf-8")
             if note["id"] not in existing:
                 raise RuntimeError(f"Smart Note path conflict: {path}")
 
-        snapshot = _snapshot_paths([path, CIS_PATH, PIS_PATH, receipt_path])
+        snapshot = _snapshot_paths([path, CIS_PATH, PIS_PATH, receipt_path, IB_REGISTRY_PATH])
         try:
             note["cis_status"] = "PENDING"
             note["pis_status"] = "PENDING"
             note["hub_status"] = "PENDING"
             note["receipt_id"] = f"SN-RCP-{note['id']}"
             persistence = _persist_and_verify(path, render_note(note), note["id"])
+            _register_ib(note, path)
 
             cis = apply_cis_learning(note)
             note["cis_status"] = cis["status"]

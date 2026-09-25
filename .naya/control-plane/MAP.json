@@ -24,7 +24,7 @@
     "intelligent_hub_north_star": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "intelligent_hub_visual_structural_contract": ".naya/contracts/NAYANET-HUB-VISUAL-STRUCTURAL-CONTRACT.md",
     "canonical_hub_path": "NAYANET/HUB/index.html",
-    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
+    "canonical_hub_source_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c"
   },
   "truth_owners": {
     "source": "GitHub repository and commit history",
@@ -64,7 +64,7 @@
     "north_star_lock": ".naya/TEAM-NAYA/00-NAYANET-HUB-NORTH-STAR-MISSION-LOCK.md",
     "canonical_hub": "NAYANET/HUB/index.html",
     "first_feature": "Smart Share",
-    "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
+    "canonical_hub_source_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c"
   },
   "protected": [
     "NayaPOWER constitutional and governing laws",
@@ -234,5 +234,5 @@
     "rule": "Preserve original cognition rows; no Smart Ledger backfill, deletion, rewrite, or fabricated linkage.",
     "evidence_receipt": ".naya/project-intelligence/LEGACY-COGNITION-DISPOSITION-RECEIPT-2026-09-23.md"
   },
-  "canonical_hub_source_sha": "eb825f34caecdb925bd3d7fe6a4390ce072025d7"
+  "canonical_hub_source_sha": "de4e4ba60f608a0082c5c3eaedf5549bacc84f7c"
 }

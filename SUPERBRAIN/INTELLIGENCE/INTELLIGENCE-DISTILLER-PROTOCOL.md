@@ -203,20 +203,21 @@ Intelligence is organized by **date + category + stable identity**, not by one e
 Canonical durable location:
 
 ```
-SUPERBRAIN/
-  INTELLIGENT-BLOCKS/
-    YYYY/
-      MM/
-        DD/
-          <domain>/
-            IB-YYYYMMDD-NNN-<slug>.md
+.naya/memory/smart-notes/
+  YYYY/
+    MM/
+      DD/
+        <category>/
+          <topic>/
+            IB-XXXXXX/
+              smart-note.md
 ```
 
 Example:
 
 ```
 SUPERBRAIN/INTELLIGENT-BLOCKS/2026/09/22/architecture/
-IB-20260922-002-INTELLIGENCE-DISTILLATION-PROTOCOL.md
+IB-XXXXXX/smart-note.md
 ```
 
 The stable block ID is the permanent identity.

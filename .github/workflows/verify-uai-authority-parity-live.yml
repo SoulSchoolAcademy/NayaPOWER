@@ -30,7 +30,7 @@ jobs:
           event=$(echo "$src" | jq -r '.result.event.event_id'); test -n "$event"
           grant=$(curl --silent --show-error -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_issue_authority_grant" "${H[@]}" -d "$(jq -n --arg s "$user" --arg e "$event" --arg run "$GITHUB_RUN_ID" '{p_subject_id:$s,p_source_event_id:$e,p_mission_id:"UAI authority parity proof",p_scope:{project_id:"NayaNET",target:$s},p_actions:["intelligence_commit"],p_constraints:{mode:"uai-authority-parity-proof",no_external_side_effects:true},p_expires_at:"2099-01-01T00:00:00Z",p_evidence:{proof:"uai-live",run:$run}}')")
           gid=$(echo "$grant" | jq -r '.grant_id'); test -n "$gid"
-          connect_code=$(curl --silent --show-error -o /tmp/connect.json -w '%{http_code}' -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_smart_connect" "${H[@]}" -d '{"p_door":"mcp"}')
+          connect_code=$(curl --silent --show-error -o /tmp/connect.json -w '%{http_code}' -X POST "$SUPABASE_URL/rest/v1/rpc/nayanet_smart_connect" "${H[@]}" -d '{"p_door":"mcp","p_consent_state":"explicit"}')
           test "$connect_code" = 200
           grep -Eq 'CONNECTED|ALREADY_CONNECTED' /tmp/connect.json
           echo "UAI_MCP_PARTICIPATION_ESTABLISHED"

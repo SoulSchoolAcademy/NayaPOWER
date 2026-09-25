@@ -1,0 +1,44 @@
+{
+  "schema": "NAYANET_SMART_NOTE_DEEP_LINK_PRODUCTION_PARITY_RECEIPT_V1",
+  "observed_at": "2026-09-25T06:07:41.272Z",
+  "source_head": "5e5b78cea9030b44f7bb76848d7f737f4e47c1aa",
+  "canonical_route": "/hub?ib=<intelligent_block_id>",
+  "target_example": {
+    "intelligent_block_id": "IB-000752",
+    "source_event_id": "527cec33-bacb-4bf8-ba5a-1dc0c46732c4",
+    "canonical_url": "/hub?ib=IB-000752"
+  },
+  "source_verification": {
+    "focused_pytest": "4/4 PASS on exact current main",
+    "tdd_contract": "13/13 PASS before merge"
+  },
+  "persisted_inventory": {
+    "utc_day": "2026-09-25",
+    "rows": 259,
+    "distinct_intelligent_blocks": 259,
+    "manifest": "NAYANET/HUB/CANONICAL-SMART-NOTE-DEEP-LINK-MANIFEST-2026-09-25.json"
+  },
+  "live_probe": {
+    "worker": "https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/",
+    "http_status": 200,
+    "hub_source_length": 839028,
+    "deep_link_markers_present": false
+  },
+  "deployment_parity": {
+    "status": "BLOCKED_EXTERNAL_DEPLOYMENT",
+    "recorded_proof_source_head": "1d8bd2db611a5dc35662305bd353a7013c90d1f0",
+    "mismatched_critical_files": 6,
+    "rule": "Do not claim live deep-link verification until the deployed Hub artifact contains the merged canonical deep-link runtime contract."
+  },
+  "required_live_proof": [
+    "Deploy current canonical Hub source containing NayaHubDeepLink + retrieveIntelligentBlock",
+    "Use an authorized authenticated owner session",
+    "Resolve one freshly captured Smart Note to its canonical Intelligent Block ID",
+    "Navigate to /hub?ib=<IB-ID>",
+    "Verify exact data-intelligence-id, source event identity, and provenance",
+    "Reload the same URL",
+    "Verify the same IB and source event identity survive reload",
+    "Run the same proof for sender→receiver→Hub and record production parity"
+  ],
+  "authority_boundary": "Production deployment/credentials are not assumed authorized; do not bypass."
+}

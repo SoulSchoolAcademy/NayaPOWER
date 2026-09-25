@@ -1,8 +1,23 @@
 # 01 — Smart Notes
 
-**Role:** Canonical structured intelligence record.
-**Status:** CONTRACTED — active definition exists in `CONTRACT.md`.
+**Role:** Projection of canonical Intelligent Block / Smart Note objects.  
+**Current authority:** `.naya/SMART-NOTE-CONTRACT-V1.md`
 
-This part defines how a human or Naya turns meaningful knowledge, decisions, discoveries, instructions, evidence, or lessons into durable Smart Notes that can enter the Superbrain, be connected, shared by consent, and compound over time.
+> **SMART NOTE = INTELLIGENT BLOCK.**
 
-See `CONTRACT.md`, `ACTIVITY.md`, and `STATE.md` for the living feature record.
+The Hub does not own a separate Smart Note database or definition.
+
+Canonical human-readable storage:
+`.naya/memory/notes/YYYY/MM/DD/`
+
+Canonical machine schema:
+`NAYANET_INTELLIGENT_BLOCK_V1`
+
+The Hub receives canonical intelligence and renders it progressively for human understanding and action.
+
+See:
+- `.naya/SMART-NOTE-CONTRACT-V1.md`
+- `contracts/intelligent-block-v1.md`
+- `contracts/intelligent-block-v1.schema.json`
+- `CONTRACT.md`
+- `STATE.md`

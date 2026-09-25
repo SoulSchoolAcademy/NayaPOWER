@@ -5,9 +5,10 @@
   "purpose": "Governed, machine-readable proposal boundary allowing an AI agent to recognize potentially valuable intelligence and request Smart Note capture without creating a second memory or authority system.",
   "architectural_principle": "AI recognition may initiate a proposal; existing NayaPOWER governance decides authority, privacy, truth state, persistence, projection, and consequential use.",
   "canonical_storage": {
-    "resolver": ".naya/memory/notes/YYYY/MM/DD/",
+    "resolver": ".naya/runtime/smart_note_transaction.py::canonical_smart_note_path",
     "logical_namespace": "NayaPOWER/SMART-NOTES/YYYY/MM/DD/",
-    "filename_pattern": "SN-YYYYMMDD-[short-human-readable-slug].md",
+    "repository_path": ".naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md",
+    "filename": "smart-note.md",
     "rule": "A proposal never creates an alternate Smart Note directory or competing memory store."
   },
   "relationship_to_existing_system": {
@@ -89,10 +90,11 @@
     "requested_action": "PROPOSE_ONLY|CAPTURE_IF_AUTHORIZED"
   },
   "derived_fields": {
-    "canonical_path": "must be computed by the existing Smart Note resolver; agent must not supply an alternate physical directory",
-    "smart_note_id": "assigned only when canonical capture occurs",
+    "canonical_path": "must be computed by the ratified Smart Note V1 resolver; agent must not supply an alternate physical directory",
+    "smart_note_id": "compatibility/display alias only; canonical identity is intelligent_block_id",
     "primary_event_id": "assigned by the existing Primary Intelligence System",
-    "verification_receipt_ref": "assigned only by the existing verification/evidence path"
+    "verification_receipt_ref": "assigned only by the existing verification/evidence path",
+    "intelligent_block_id": "assigned by the canonical Smart Note identity allocator"
   },
   "hard_rules": [
     "A proposal is not a Smart Note.",
@@ -133,8 +135,9 @@
   "capture_binding": {
     "when": "ACCEPT_CAPTURE",
     "required_sequence": [
-      "resolve canonical path",
-      "create canonical Smart Note",
+      "resolve canonical category/topic/path",
+      "assign or reuse immutable intelligent_block_id",
+      "create canonical Smart Note / Intelligent Block",
       "preserve proposal_id in provenance",
       "emit/use existing Smart Note event identity",
       "ingest through existing PIS boundary",
@@ -230,5 +233,12 @@
     "automatic_ai_recognition": "NOT_YET_PROVEN",
     "governed_capture_binding": "NOT_YET_PROVEN",
     "second_memory_system": "FORBIDDEN"
+  },
+  "canonical_authority": ".naya/codex/CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md",
+  "canonical_identity": {
+    "field": "intelligent_block_id",
+    "pattern": "IB-XXXXXX",
+    "immutable": true,
+    "registry": ".naya/memory/smart-notes/REGISTRY.json"
   }
 }
