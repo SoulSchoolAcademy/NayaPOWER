@@ -410,3 +410,16 @@ The live Smart Feed uses `window.NayaAssistantRuntime.smartFeed()`, which invoke
 ### Single next action
 
 **Through the authorized external GitHub/Supabase administration boundary, install/configure the real GitHub App and production webhook secret, then create the authenticated owner's existing Smart Connect `github_app` participation binding for the selected repository; do not paste or expose any secret in chat.**
+
+
+## HUMAN HUB CAPTURE → FEED → ACTIVITY → RELOAD LIVE PROOF — 2026-09-25
+
+- **Proof run:** `36083729232` — SUCCESS
+- **Main at proof:** `2a8dacae060df2db877625ea5f438908a6de6922`
+- **Production Hub release consumed:** `36082877757` — SUCCESS, main `154ba49f2e844fc5cda06f676b80f75e0a33a74b` (runtime artifacts unchanged by subsequent proof-only commits)
+- **Exact event:** `1541b573-8838-42d7-a326-6bc767a55e61`
+- **Transaction:** `471a5b07-2b68-4e0b-a900-ab08e538396d`
+- **Trace:** authenticated human → canonical Hub shell → Smart Note capture → canonical receiver result → exact event identity → canonical Feed runtime retrieval → exact real `#blocks` event card → Activity exact event preserved → reload exact event preserved.
+- **Final status:** `VERIFIED` / independently LIVE VERIFIED.
+- **Proof-harness repairs consumed:** PR #678 runtime Feed rehydration; PR #687 canonical `#blocks` surface binding; PR #689 checkpoint/runtime duplicate disambiguation.
+- **No authority bypass:** existing authenticated runtime and canonical persistence/retrieval path were used.
