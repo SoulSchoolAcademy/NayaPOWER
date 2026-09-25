@@ -75,8 +75,8 @@
     {
       "kind": "brain_rehabilitation_receipt",
       "source": ".naya/project-intelligence/48-NAYAPOWER-BRAIN-REHABILITATION-RECEIPT-2026-09-25.md",
-      "status": "REPAIRED_VERIFICATION_PENDING",
-      "source_head": "a9b2c5b5bdea487a0233f9f54c233dd351f3973f"
+      "status": "VERIFIED_REPOSITORY_SCOPE_BEHAVIORAL_BOUNDARY_OPEN",
+      "source_head": "b490cb074f0917377bba73d3d6a5a3f80345595d"
     },
     {
       "kind": "active_block_proof_receipt",
