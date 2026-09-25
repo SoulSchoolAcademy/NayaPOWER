@@ -45,7 +45,7 @@ def build_baton(source_commit: str | None = None, hub_source_sha: str | None = N
         raise RuntimeError("ONE_NEXT_ACTION_LAW_NOT_SATISFIED")
 
     action_status = state.get("next_action", {}).get("status")
-    allowed_action_statuses = {"RECOMMENDED", "REQUESTED", "AUTHORIZED", "ATTEMPTED", "EXECUTED", "OBSERVED", "VERIFIED", "BLOCKED"}
+    allowed_action_statuses = {"ACTIVE", "RECOMMENDED", "REQUESTED", "AUTHORIZED", "ATTEMPTED", "EXECUTED", "OBSERVED", "VERIFIED", "BLOCKED"}
     if action_status not in allowed_action_statuses:
         raise RuntimeError("NEXT_ACTION_STATUS_INVALID:" + str(action_status))
 
