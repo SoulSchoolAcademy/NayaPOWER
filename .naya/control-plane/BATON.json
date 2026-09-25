@@ -18,8 +18,8 @@
     "map_status": "CANONICAL",
     "proof_status": "CANONICAL",
     "state_block": "HUMAN-JOURNEY-P2",
-    "block_next_action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
-    "canonical_hub_source_sha": "6a61b2c775d4e4b7a04721606813ec0031870399",
+    "block_next_action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
+    "canonical_hub_source_sha": "0c2b9381deda6db5935afc55c508d97a965ae412",
     "continuous_execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
     "observed_head": "d1d1b1efd08e0f00ff49da515baa1926f511d502",
     "live_head_resolution": "Resolve git HEAD at execution time; observed_head is a non-authoritative snapshot.",
@@ -101,18 +101,17 @@
   "next_action": {
     "count": 1,
     "execution_prompt": ".naya/operations/NAYA-CONTINUOUS-EXECUTION-PROMPT-2026-09-25.md",
-    "status": "BLOCKED",
-    "action": "Deploy the current canonical Hub source to the authorized production runtime, then use an authenticated owner session to prove /hub?ib=<fresh persisted Intelligent Block ID> retrieves the exact IB and source-event provenance through navigation and reload; after that rerun the sender→receiver→Hub production parity proof against the same exact deployed source identity.",
+    "status": "ACTIVE",
+    "action": "Execute the behavioral cold-Naya takeover certification against current main, then independently prove a fresh successor can continue from canonical sources without conversational archaeology.",
     "source": ".naya/control-plane/BLOCKS.json",
-    "reason": "Current main has a verified canonical Smart Note/IB deep-link implementation, but the live Worker still serves the pre-deep-link Hub artifact and the recorded Supabase deployment parity receipt is stale across all six critical source paths. Production deployment is the only remaining external boundary before live browser continuity proof.",
+    "reason": "Production Hub continuity is freshly proven; behavioral cold-Naya takeover is the next unresolved boundary.",
     "acceptance": [
-      "Deploy current canonical Hub source to the authorized production runtime.",
-      "Navigate to /hub?ib=<fresh persisted Intelligent Block ID> with an authenticated owner session.",
-      "Verify exact Intelligent Block identity, source event identity, and provenance.",
-      "Reload and verify the same identity/provenance survives.",
-      "Rerun sender→receiver→Hub production parity against the same deployed source identity."
+      "Restore current main from canonical sources without conversational memory.",
+      "Answer the 14 cold-Naya questions with evidence-bound current values.",
+      "Execute the canonical next action without Shawn reconstructing context.",
+      "Leave a runnable successor with exactly one next action."
     ],
-    "verification": "Independent browser observation plus source/deployment identity parity and fresh retrieval."
+    "verification": "Independent fresh-context behavioral observation plus repository evidence and successor continuation receipt."
   },
   "successor_prompt": {
     "rule": "Read the canonical baton and referenced control-plane sources before consequential execution.",

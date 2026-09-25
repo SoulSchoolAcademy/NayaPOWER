@@ -17,7 +17,7 @@ ROOT = Path(__file__).resolve().parents[2]
 
 # Canonical configuration
 CANONICAL_HUB_SOURCE = "NAYANET/HUB/index.html"
-CANONICAL_HUB_SOURCE_SHA = "6a61b2c775d4e4b7a04721606813ec0031870399"
+CANONICAL_HUB_SOURCE_SHA = "0c2b9381deda6db5935afc55c508d97a965ae412"
 CLOUDFLARE_WORKER = "sparkling-shape-7ae5"
 RUNTIME_URL = f"https://{CLOUDFLARE_WORKER}.smartnetpodcast.workers.dev"
 SUPABASE_URL = "https://dahisasgpfvziswqvmvm.supabase.co"
