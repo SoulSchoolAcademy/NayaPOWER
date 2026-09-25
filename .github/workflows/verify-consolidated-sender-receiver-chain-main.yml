@@ -19,6 +19,11 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: {node-version: 20}
+      - name: Install browser for exact Hub packet render proof
+        run: |
+          npm install --no-save --no-package-lock playwright@1.55.0
+          npx playwright install --with-deps chromium
+
       - name: Prove main sender to receiver to persistence to retrieve to ACK
         shell: bash
         run: |
@@ -49,6 +54,35 @@ jobs:
           const [as,ab]=await post('nayanet-project-intelligence-ack',userToken,{packet_id:bj.packet_id,retrieved:true,rendered:true,retrieval_evidence:['retrieve:'+bj.receiver_event_id],render_evidence:['hub-runtime-http-200-canonical-nayanet-surface']});
           console.log('ACK='+JSON.stringify(ab));
           if(as!==200||!ab.ok||ab.ack?.retrieved!==true||ab.ack?.rendered!==true)throw Error('ACK_FAILED');
-          console.log('CHAIN_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_SENDER_RECEIVER_CHAIN_PROOF_V1',run_id:R,sender:true,receiver:true,persisted:true,indexed:true,projected:true,retrieved:true,hub_render_surface_observed:true,acknowledged:true,exact_packet_render:'NOT_SEPARATELY_PROVEN',status:'VERIFIED_WITH_RENDER_SCOPE'}));
+
+          const { chromium } = await import('playwright');
+          const browser = await chromium.launch({headless:true});
+          try {
+            const context = await browser.newContext({serviceWorkers:'block',viewport:{width:1440,height:1000}});
+            await context.addInitScript(({session})=>{
+              localStorage.setItem('nayanet.supabase.auth',JSON.stringify(session));
+            },{session:{access_token:a.access_token,refresh_token:a.refresh_token,user:a.user}});
+            const page = await context.newPage();
+            const receiverEventId = String(bj.receiver_event_id);
+            await page.goto('https://sparkling-shape-7ae5.smartnetpodcast.workers.dev/feed?event_id='+encodeURIComponent(receiverEventId)+'&stream=personal&sender_receiver='+R,{waitUntil:'networkidle',timeout:60000});
+            await page.waitForFunction(()=>!!window.NayaAssistantRuntime?.snapshot?.().authenticated,{timeout:30000});
+            await page.waitForFunction((id)=>!!document.querySelector('[data-event-id="'+id+'"]'),receiverEventId,{timeout:30000});
+            const exact = await page.evaluate((id)=>({
+              url:location.href,
+              event_ids:[...document.querySelectorAll('[data-event-id]')].map(x=>x.getAttribute('data-event-id')),
+              exact_count:document.querySelectorAll('[data-event-id="'+id+'"]').length,
+              exact_text:[...document.querySelectorAll('[data-event-id="'+id+'"]')].map(x=>(x.innerText||'').slice(0,1200)),
+              authenticated:!!window.NayaAssistantRuntime?.snapshot?.().authenticated
+            }),receiverEventId);
+            if(!exact.authenticated) throw Error('EXACT_RENDER_AUTH_FAILED');
+            if(exact.exact_count!==1) throw Error('EXACT_PACKET_RENDER_COUNT_NOT_ONE:'+JSON.stringify(exact));
+            if(!exact.event_ids.includes(receiverEventId)) throw Error('EXACT_PACKET_RENDER_EVENT_ID_MISSING:'+JSON.stringify(exact));
+            console.log('EXACT_PACKET_RENDER='+JSON.stringify(exact));
+            await context.close();
+          } finally {
+            await browser.close();
+          }
+
+          console.log('CHAIN_RESULT='+JSON.stringify({schema:'NAYANET_CONSOLIDATED_SENDER_RECEIVER_CHAIN_PROOF_V1',run_id:R,sender:true,receiver:true,persisted:true,indexed:true,projected:true,retrieved:true,hub_render_surface_observed:true,acknowledged:true,exact_packet_render:'PROVEN',status:'PRODUCTION_PROVEN'}));
           EOF
           node chain.mjs
