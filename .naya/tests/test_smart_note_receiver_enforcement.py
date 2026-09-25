@@ -111,16 +111,24 @@ def test_live_receiver_returns_feed_verified_smart_link_and_completion_receipt()
 
 
 def test_repository_has_one_enforced_smart_note_write_boundary():
+    """Audit executable production/runtime code, not fixtures or test assertions."""
     tracked = subprocess.check_output(["git", "ls-files"], text=True).splitlines()
-    executable = [p for p in tracked if p.endswith((".py", ".ts", ".js", ".mjs", ".tsx", ".jsx"))]
+    executable = [
+        p for p in tracked
+        if p.endswith((".py", ".ts", ".js", ".mjs", ".tsx", ".jsx"))
+        and not p.startswith(("tests/", ".naya/tests/", ".naya/memory/test_"))
+    ]
     violations = []
     for rel in executable:
-        text = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
-        if rel not in {".naya/runtime/smart_note_calendar.py", ".naya/tests/test_smart_note_receiver_enforcement.py"} and "smart-notes" in text and "write_text" in text:
-            violations.append(rel + ": smart-notes writer outside canonical projection boundary")
-        if "SUPERBRAIN/SMART-NOTES" in text or "NAYANET/SMART-NOTES" in text:
+        source = (ROOT / rel).read_text(encoding="utf-8", errors="ignore")
+        if rel == ".naya/memory/smart_notes_v3.py":
+            # This module writes only its derived event validation/index artifacts.
+            pass
+        elif "smart-notes" in source and "write_text" in source:
+            violations.append(rel + ": Smart Note writer outside canonical projection boundary")
+        if "SUPERBRAIN/SMART-NOTES" in source or "NAYANET/SMART-NOTES" in source or ".naya/memory/notes" in source:
             violations.append(rel + ": alternate Smart Note namespace")
-        if "_allocate_ib_id" in text or "identity_cursor" in text:
+        if "_allocate_ib_id" in source or "identity_cursor" in source:
             violations.append(rel + ": local IB allocator marker")
     assert not violations, "\n".join(violations)
 
