@@ -191,12 +191,16 @@ def retrieve_canonical_ibs(
     project=None,
     principal_project=None,
     grants=(),
+    include_historical=False,
+    effective_on=None,
+    applicable_scope=None,
+    authority=None,
 ):
-    """Retrieve canonical IBs by meaning after a hard authorization boundary.
+    """Retrieve canonical IBs after a hard authorization boundary.
 
-    The registry is the identity/index authority. Authorization metadata is also
-    resolved from the registry entry; event lineage and retrieved content never
-    participate in authorization.
+    Identity is resolved by the canonical registry. Authorization is evaluated
+    before ranking or content delivery. Current retrieval excludes superseded
+    and stale records by default; historical reconstruction is explicit.
     """
     q = expanded_tokens(query)
     principal = Principal(
@@ -210,12 +214,33 @@ def retrieve_canonical_ibs(
         obj for obj in load_canonical_ibs(root=root)
         if authorize(request, obj)
     ]
+
+    target_date = None
+    if effective_on:
+        target_date = str(effective_on)[:10]
+
+    filtered = []
+    for obj in authorized:
+        status = str(obj.get('status') or 'CANONICAL').upper()
+        if not include_historical and status in {'SUPERSEDED', 'STALE'}:
+            continue
+        if target_date and str(obj.get('date') or '') > target_date:
+            continue
+        if authority and str(obj.get('authority') or '').lower() != str(authority).lower():
+            continue
+        if applicable_scope:
+            raw = obj.get('applicable_scope')
+            haystack = json.dumps(raw, ensure_ascii=False).lower()
+            if str(applicable_scope).lower() not in haystack:
+                continue
+        filtered.append(obj)
+
     if not q:
-        authorized.sort(key=lambda obj: (str(obj.get('date') or ''), obj['intelligent_block_id']), reverse=True)
-        return authorized[:max(0, limit)]
+        filtered.sort(key=lambda obj: (str(obj.get('date') or ''), obj['intelligent_block_id']), reverse=True)
+        return filtered[:max(0, limit)]
 
     ranked = []
-    for obj in authorized:
+    for obj in filtered:
         doc = Counter(tokens(_canonical_ib_text(obj)))
         score = bm25(q, doc, {term: 1.0 for term in doc}, max(1.0, sum(doc.values())))
         query_terms = set(tokens(query))
