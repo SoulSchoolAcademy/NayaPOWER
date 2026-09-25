@@ -249,3 +249,5 @@ jobs:
           echo "WORKER=${CLOUDFLARE_CANONICAL_WORKER}"
           echo "SOURCE=${{ inputs.source_ref || github.sha }}"
           echo "CANONICAL_HUB_RUNTIME=STATIC_CANONICAL_HUB"
+
+# CURRENT-MAIN-RELEASE-REVALIDATION-TRIGGER-2026-09-25
