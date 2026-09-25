@@ -583,16 +583,7 @@ async function consolidatePiGates(client: any, userId: string, body: any) {
 }
 
 async function share(client: any, userId: string, body: any) {
-  const sourceId = String(body.source_event_id ?? "").trim();
-  if (!sourceId) throw new Error("SOURCE_EVENT_ID_REQUIRED");
-  const own = await client.from("nayanet_cognition_events").select("id,event_id,title,content").eq("id",sourceId).eq("user_id",userId).single();
-  if (own.error || !own.data) throw new Error("SOURCE_NOT_OWNED");
-  const result = await client.from("nayanet_intelligence_publications").upsert({
-    intelligence_event_id: sourceId, owner_id: userId, status: "published",
-    consent_state: "explicit", published_at: new Date().toISOString(), updated_at: new Date().toISOString()
-  },{onConflict:"intelligence_event_id"}).select("*").single();
-  if (result.error) throw result.error;
-  return { status:"SHARED_BY_EXPLICIT_CONSENT", publication:result.data };
+  throw new Error("SMART_SHARE_RETIRED_USE_SMART_CONNECT_DERIVED_PUBLICATION");
 }
 
 async function supersede(client: any, userId: string, body: any) {
