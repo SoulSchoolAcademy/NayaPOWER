@@ -770,12 +770,24 @@ async function checkpointIntelligence(client: any, userId: string, body: any) {
   );
 
   const persistedCheckpoint=receipt?.event||event;
+  // Re-read the authoritative cognition-event row because the RPC response
+  // does not guarantee receipt_id on the returned event payload.
+  const persistedReceipt=await client.from("nayanet_cognition_events")
+    .select("id,event_id,receipt_id")
+    .eq("event_id",checkpointId)
+    .eq("user_id",userId)
+    .eq("project_id",PROJECT)
+    .single();
+  if(persistedReceipt.error) throw persistedReceipt.error;
+  const checkpointReceiptId=String(persistedReceipt.data?.receipt_id||"").trim();
+  if(!checkpointReceiptId) throw new Error("CHECKPOINT_RECEIPT_MISSING");
+  const authoritativeCheckpoint={...persistedCheckpoint,receipt_id:checkpointReceiptId};
   return {
     schema: "NAYANET_INTELLIGENCE_CHECKPOINT_V1",
     status: "CHECKPOINT_VERIFIED",
-    checkpoint: persistedCheckpoint,
+    checkpoint: authoritativeCheckpoint,
     source_events: source.data ?? [],
-    receipt,
+    receipt: {id:checkpointReceiptId,receipt_id:checkpointReceiptId},
     rule: "Checkpoint persistence does not by itself prove learning; later retrieval and behavior change are required."
   };
 }
