@@ -124,6 +124,31 @@ If **NO**, do not end. Strengthen the handoff.
 
 **NO ORPHAN NAYAS. NO DEAD-END EXECUTIONS. NO EXPLANATION-ONLY EXITS. DO THE WORK. PROVE THE WORK. RECORD THE WORK. WRITE THE NEXT EXECUTION. PASS THE TORCH. CONTINUE.**
 
+## 🔱 CURRENT SYSTEM-WIDE ALIGNMENT — 2026-09-24
+
+For current NayaNET product/architecture alignment, read the human-director-approved September 24 “Hub Is the House” Smart Note:
+
+`.naya/memory/smart-notes/2026/09/24/system/hub-house-alignment/IB-000650/smart-note.md`
+
+The canonical migration/reconciliation map is:
+
+`.naya/codex/SMART-NOTE-MIGRATION-MAP-2026-09-24.md`
+
+Current alignment rules include:
+
+- NayaPOWER = governed intelligence/control layer.
+- Intelligent Hub = the house / human-facing projection and action surface.
+- Hub rooms are real capabilities, not decorative UI.
+- Smart Connect is canonical; Smart Share is retired.
+- Dream is a Superbrain process, not a Hub room.
+- Naya Play is an Intelligent Block capability, not a Hub room.
+- Welcome + Identity are the future front door; the house is built first.
+- UI presence, documentation, or backend existence do not equal runtime proof.
+- Capability does not create authority.
+- Private intelligence, activity, and identity remain protected by default.
+
+The September 24 alignment is the current system-wide product/build reconciliation target, subject to higher constitutional, control-plane, and live-evidence authority.
+
 ## 🔱 CANONICAL SMART NOTE / INTELLIGENT BLOCK LAW — MANDATORY
 
 Every Naya operating on NayaPOWER MUST use the canonical Smart Note / Intelligent Block system for durable intelligence.
