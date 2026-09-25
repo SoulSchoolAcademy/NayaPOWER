@@ -173,6 +173,7 @@ jobs:
           cp smart-feed.js dist/smart-feed.js
           cp smart-tabs.js dist/smart-tabs.js
           cp hub-completeness.js dist/hub-completeness.js
+          cp NAYANET/HUB/public/nayanet-interface-command-station.js dist/nayanet-interface-command-station.js
           test -s dist/index.html
           test -s dist/NAYANET/name-first-auth-adapter.js
           test -s dist/assistant-runtime.js
@@ -180,6 +181,7 @@ jobs:
           test -s dist/smart-feed.js
           test -s dist/smart-tabs.js
           test -s dist/hub-completeness.js
+          test -s dist/nayanet-interface-command-station.js
           sha256sum dist/index.html | tee "${RUNNER_TEMP}/source.sha256"
 
       - name: Deploy exact canonical Hub artifact
