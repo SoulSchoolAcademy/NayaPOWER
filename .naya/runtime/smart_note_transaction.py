@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 SMART_NOTES_ROOT = ROOT / ".naya" / "memory" / "smart-notes"
-IB_ID_RE = re.compile(r"^IB-d{6}$")
+IB_ID_RE = re.compile(r"^IB-\d{6}$")
 
 
 def slug(value: str) -> str:
