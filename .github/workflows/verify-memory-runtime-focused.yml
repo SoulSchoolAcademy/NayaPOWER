@@ -13,6 +13,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Diagnose existing event validation and duplicate audit
+        run: |
+          python .naya/memory/smart_notes_v3.py validate || true
+          python .naya/memory/duplicate_entity_audit.py || true
       - name: Run canonical IB retrieval and Smart Brain v3 tests
         run: |
           python -m unittest tests.test_canonical_ib_retrieval -v
