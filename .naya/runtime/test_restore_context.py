@@ -10,7 +10,7 @@ class RestoreContextTests(unittest.TestCase):
     def test_current_restore_has_required_contract(self):
         result = rc.build_restore()
         self.assertIn(result["status"], {"VERIFIED", "UNKNOWN"})
-        self.assertEqual(result["schema"], "naya-power-restore-context/v1")
+        self.assertEqual(result["schema"], "naya-power-restore-context/v4")
         self.assertIn("current_state", result)
         self.assertIn("repository_reality", result)
         self.assertIn("memory", result)
