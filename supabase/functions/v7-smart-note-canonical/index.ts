@@ -34,6 +34,13 @@ function buildIntelligentBlock(args:{
   machine:Record<string,unknown>;
   source:string;
   idempotencyKey:string;
+  childText:string;
+  grandmaText:string;
+  learningText:string;
+  meaningText:string;
+  connectsText:string;
+  applyText:string;
+  valueText:string;
 }){
   return {
     identity:{
@@ -58,7 +65,26 @@ function buildIntelligentBlock(args:{
       human:args.humanText,
       naya:args.nayaText,
       machine:JSON.stringify(args.machine),
-      simple:args.simpleText
+      simple:args.childText
+    },
+    perspectives:{
+      human:args.humanText,
+      child:args.childText,
+      grandma:args.grandmaText,
+      naya:args.nayaText,
+      machine:JSON.stringify(args.machine),
+      learning:args.learningText,
+      meaning:args.meaningText,
+      connections:args.connectsText,
+      application:args.applyText,
+      value:args.valueText
+    },
+    distillation:{
+      method:"canonical-smart-note-v1",
+      source_count:1,
+      preserved:["human meaning","Naya interpretation","required perspectives","provenance","evidence","current state","next action"],
+      removed_as_redundant:[],
+      compression_notes:"One coherent intelligence event is represented once; perspectives are projections of the same meaning."
     },
     actors:{
       creator:args.userId,
@@ -97,14 +123,14 @@ function buildIntelligentBlock(args:{
       derived_from:[]
     },
     evidence:{
-      evidence_state:"VERIFIED",
+      evidence_state:"OBSERVED",
       evidence_refs:[args.eventId],
-      verification:"Canonical Smart Note verification completed.",
-      verification_method:"verify_smart_note"
+      verification:"Persistence and lineage were verified; content truth remains bound to its source and evidence.",
+      verification_method:"canonical_smart_note_persistence_and_lineage"
     },
     truth:{
-      state:"VERIFIED",
-      confidence:1,
+      state:"SUPPORTED",
+      confidence:0,
       conflicts:[]
     },
     authority:{
@@ -114,13 +140,20 @@ function buildIntelligentBlock(args:{
     },
     relationships:[],
     value:{
-      state:"UNKNOWN"
+      state:"POTENTIAL",
+      benefit:0,
+      harm:0,
+      cost:0,
+      risk:0,
+      effort:0,
+      relevance:0,
+      responsible_value:0
     },
     action:{
-      action:"capture_smart_note",
+      action:args.applyText,
       method:"v7-smart-note-canonical",
       authorization_basis:"authenticated owner",
-      expected_result:"verified Smart Note with portable Intelligent Block"
+      expected_result:"canonical Smart Note / Intelligent Block is retrievable and reusable"
     },
     outcome:{
       state:"UNKNOWN",
@@ -129,19 +162,19 @@ function buildIntelligentBlock(args:{
       unexpected_effects:[]
     },
     learning:{
-      what_changed:null,
-      lesson:null,
+      what_changed:args.learningText,
+      lesson:args.learningText,
       reusable_rule:null,
-      evidence_basis:[],
-      applicability:null
+      evidence_basis:[args.eventId],
+      applicability:"Pending future application and outcome verification."
     },
     successor:{
       type:"NEXT_ACTION",
       target:"retrieve_and_verify",
-      reason:"The canonical next step is to retrieve the event and verify semantic round-trip integrity."
+      reason:args.applyText
     },
     lifecycle:{
-      stage:"VERIFIED",
+      stage:"DISTILLED",
       captured_at:args.now,
       verified_at:args.now,
       updated_at:args.now
@@ -182,11 +215,17 @@ Deno.serve(async(req)=>{
   const humanText=String(human.text||human.content||"").trim();
   const nayaText=String(naya.text||naya.content||naya.summary||"").trim();
   const nutshell=typeof body?.in_a_nutshell==="string"&&body.in_a_nutshell.trim()?body.in_a_nutshell.trim():(naya.summary||naya.text||human.text||"Smart Note captured and interpreted.");
-  const childGrandma=typeof body?.child_grandma==="string"&&body.child_grandma.trim()?body.child_grandma.trim():`In simple words: ${nutshell}`;
+  const childText=String(body?.child_note||body?.child||("In simple words: "+nutshell)).trim();
+  const grandmaText=String(body?.grandma_note||body?.grandma||("In practical everyday terms: "+nutshell)).trim();
+  const learningText=String(body?.learning_lesson||body?.learning||"Learning candidate: preserve this intelligence and test its future usefulness.").trim();
+  const meaningText=String(body?.what_it_means||body?.meaning||"This turns meaningful human input into reusable intelligence that can be retrieved and applied later.").trim();
+  const connectsText=String(body?.how_it_connects||body?.connections||"Connect this Smart Note to its source event, related intelligence, learning evidence, Feed/Hub projections, and successor work.").trim();
+  const applyText=String(body?.how_to_apply||body?.how_to_use||"Retrieve this intelligence when relevant, apply it within authority, and verify the outcome.").trim();
+  const valueText=String(body?.value||"Preserves important intelligence so future Nayas and the human do not have to reconstruct it from conversation.").trim();
   const source=String(body?.source||"naya_conversation");
   const machine={event_id:eventId,schema:"nayanet.smart_note.machine.v2",occurred_at:now,source,type:human.type||"insight",actor:user.id,human_note_id:canonicalHuman.id||null,normalized_text:humanText,idempotency_key:idempotencyKey};
   const feed={event_id:eventId,kind:"smart_note.created",occurred_at:now,status:"verified",source,type:machine.type,summary:nutshell};
-  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childGrandma,machine,source,idempotencyKey});
+  const blockBase=buildIntelligentBlock({eventId,now,userId:user.id,subject,humanText,nayaText,nutshell,simpleText:childText,childText,grandmaText,learningText,meaningText,connectsText,applyText,valueText,machine,source,idempotencyKey});
   const blockHash=await sha256Hex(blockBase);
   const block={...blockBase,integrity:{algorithm:"SHA-256",content_hash:blockHash}};
   const artifactUrls=body?.artifact_urls&&typeof body.artifact_urls==="object"?body.artifact_urls:{};
