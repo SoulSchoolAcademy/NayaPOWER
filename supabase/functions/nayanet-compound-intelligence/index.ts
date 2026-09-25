@@ -289,9 +289,16 @@ async function retrieve(client: any, userId: string, body: any) {
           .eq("owner_id", userId).eq("source_table", "nayanet_cognition_events").in("source_id", sourceIds)
       : Promise.resolve({data:[],error:null}),
     sourceIds.length
-      ? client.from("nayanet_intelligent_blocks")
-          .select("block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version")
-          .eq("owner_id", userId).contains("source_event_ids", sourceIds)
+      ? Promise.all(sourceIds.map((sourceId:string) =>
+          client.from("nayanet_intelligent_blocks")
+            .select("block_id,title,block_type,status,understanding_state,owner_scope,source_event_ids,provenance,value_context,content,schema_version")
+            .eq("owner_id", userId).contains("source_event_ids", [sourceId])
+        )).then(results => ({
+          data: results.flatMap((r:any) => r.data ?? []).filter((row:any, i:number, rows:any[]) =>
+            rows.findIndex((candidate:any) => candidate.block_id === row.block_id) === i
+          ),
+          error: results.find((r:any) => r.error)?.error ?? null
+        }))
       : Promise.resolve({data:[],error:null})
   ]);
   if (indexResult.error) throw indexResult.error;
