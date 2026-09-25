@@ -10,18 +10,20 @@ NAYA = ROOT / '.naya'
 LAW = NAYA / 'NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md'
 OPT = NAYA / 'codex' / 'NAYA-OPTIMIZATION-AND-EXCELLENCE-LAW.md'
 MANIFEST = NAYA / 'naya-context-manifest.json'
-SCHEMA = NAYA / 'memory' / 'note.schema.json'
+SMART_CONTRACT = NAYA / 'codex' / 'CANONICAL-SMART-NOTE-INTELLIGENT-BLOCK-SYSTEM-V1.md'
+REGISTRY = NAYA / 'memory' / 'smart-notes' / 'REGISTRY.json'
 ACTION = NAYA / 'NAYA-ACTION-DELIVERY-LAW.md'
 BOOT = NAYA / 'NAYA-CONTEXT-BOOT-PROTOCOL.md'
 RESTORE = NAYA / 'runtime' / 'RESTORE-CONTEXT-RUNTIME.md'
 
-for path in (LAW, OPT, MANIFEST, SCHEMA, ACTION, BOOT, RESTORE):
+for path in (LAW, OPT, MANIFEST, SMART_CONTRACT, REGISTRY, ACTION, BOOT, RESTORE):
     assert path.exists(), f'missing governance artifact: {path.relative_to(ROOT)}'
 
 law = LAW.read_text(encoding='utf-8')
 opt = OPT.read_text(encoding='utf-8')
 manifest = json.loads(MANIFEST.read_text(encoding='utf-8'))
-schema = json.loads(SCHEMA.read_text(encoding='utf-8'))
+contract = SMART_CONTRACT.read_text(encoding='utf-8')
+registry = json.loads(REGISTRY.read_text(encoding='utf-8'))
 
 def contains(text: str, phrase: str, label: str) -> None:
     assert phrase in text, f'{label}: missing required phrase: {phrase}'
@@ -35,7 +37,7 @@ contains(opt, 'MAXIMIZE WITHIN BOUNDS', 'optimization law')
 contains(opt, 'OSCAR CHALLENGE', 'optimization law')
 contains(opt, 'NO FALSE 10/10', 'optimization law')
 contains(ACTION.read_text(encoding='utf-8'), 'NO “NOW WHAT?”', 'action delivery law')
-contains(RESTORE.read_text(encoding='utf-8'), 'next best action', 'restore runtime')
+contains(RESTORE.read_text(encoding='utf-8'), 'NEXT BEST ACTION', 'restore runtime')
 
 assert manifest['subjects']['execution_continuity']['canonical'] == '.naya/NAYA-EXECUTION-CONTINUITY-AND-LEARNING-LAW.md'
 assert manifest['subjects']['execution_continuity']['purpose']
@@ -53,11 +55,13 @@ assert rules['maximum_useful_progress_per_execution'] is True
 assert rules['preserve_working_architecture_before_polish'] is True
 assert rules['honest_10_10_requires_evidence'] is True
 
-props = schema['properties']
-assert 'what_we_learned' in props
-assert 'next_best_action' in props
-assert 'verification' in props
-assert props['type']['enum'] and 'handoff' in props['type']['enum']
+assert not (NAYA / 'memory' / 'note.schema.json').exists()
+assert (NAYA / 'memory' / 'archive' / 'legacy-pre-2026-09-25' / 'note.schema.v2-legacy.json').exists()
+contains(contract, '**Smart Note** is the human-facing name.', 'canonical Smart Note / IB contract')
+contains(contract, '**Intelligent Block (IB)** is the canonical machine identity and intelligence object.', 'canonical Smart Note / IB contract')
+contains(contract, 'live canonical receiver', 'canonical Smart Note / IB identity authority')
+assert registry['status'] == 'CANONICAL'
+assert registry['identity_authority'] == 'live canonical receiver only'
 
 print('PASS — continuity + optimization governance is wired and regression-protected')
 print('optimization_law=present')

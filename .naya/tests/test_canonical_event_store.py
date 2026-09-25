@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """Regression tests for the canonical/idempotent event-write boundary."""
 from __future__ import annotations
 import importlib.util
@@ -63,9 +63,15 @@ def main() -> int:
         else:
             raise AssertionError('deliberate invalid event_id must fail visibly')
 
-    print('PASS — canonical event-write regression GREEN')
+    print('PASS â€” canonical event-write regression GREEN')
     print('positive=create,replay; deliberate_failures=conflict,invalid_id')
     return 0
 
 if __name__ == '__main__':
     raise SystemExit(main())
+
+def test_canonical_event_store_does_not_depend_on_quarantined_memory_policy():
+    source=(ROOT / '.naya/runtime/canonical_event_store.py').read_text(encoding='utf-8')
+    assert 'CONTINUITY-ENFORCEMENT-POLICY.json' not in source
+    assert '_post_policy_meaningful' not in source
+    assert '_enforce_project_contract' not in source

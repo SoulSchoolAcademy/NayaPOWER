@@ -28,22 +28,6 @@ def _candidate_path(events_root:Path,event_id:str,effective_at:str)->Path:
     if not EVENT_RE.match(event_id):raise ValueError(f"invalid event_id: {event_id}")
     from datetime import datetime
     dt=datetime.fromisoformat(effective_at.replace("Z","+00:00")); return events_root/f"{dt:%Y/%m/%d/%H}/{event_id}.json"
-def _post_policy_meaningful(event:dict[str,Any])->bool:
-    policy_path=Path(__file__).resolve().parents[1]/'memory'/'CONTINUITY-ENFORCEMENT-POLICY.json'
-    if not policy_path.exists():return False
-    policy=json.loads(policy_path.read_text(encoding='utf-8')); effective=str(event.get('effective_at',''))
-    if not effective or effective < str(policy.get('effective_at','')):return False
-    if event.get('continuity_required') is True:return True
-    typ=str(event.get('event_type',event.get('type',''))).lower()
-    if typ in {str(x).lower() for x in policy.get('meaningful_event_types',[])}:return True
-    tags={str(x).lower() for x in (event.get('tags') or [])}; return bool(tags.intersection({str(x).lower() for x in policy.get('meaningful_tags',[])}))
-def _enforce_project_contract(event:dict[str,Any],events_root:Path,index_path:Path)->None:
-    if not _post_policy_meaningful(event):return
-    from project_execution_contract import validate_event
-    memory=Path(__file__).resolve().parents[1]/'memory'; project_path=memory/'projects'/'CURRENT-DAILY-PROJECT.json'; policy_path=memory/'CONTINUITY-ENFORCEMENT-POLICY.json'
-    if not project_path.exists():raise ValueError('meaningful event requires CURRENT-DAILY-PROJECT.json')
-    project=json.loads(project_path.read_text(encoding='utf-8')); policy=json.loads(policy_path.read_text(encoding='utf-8')); errors=validate_event(event,project,policy)
-    if errors:raise ValueError('canonical event contract rejected: '+'; '.join(errors))
 def _rebuild_canonical_index(events_root:Path,index_path:Path)->None:
     rows=[]
     for p in sorted(events_root.rglob('SE-*.json')):
@@ -55,7 +39,7 @@ def _rebuild_canonical_index(events_root:Path,index_path:Path)->None:
     index_path.write_text(json.dumps(data,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
 def create_or_replay(event:dict[str,Any],events_root:Path,index_path:Path)->dict[str,Any]:
     event=json.loads(canonical_json(event)); event_id=str(event.get('event_id','')); path=_candidate_path(events_root,event_id,str(event['effective_at'])); key=idempotency_key(event); fingerprint=content_fingerprint(event)
-    _enforce_project_contract(event,events_root,index_path); path.parent.mkdir(parents=True,exist_ok=True); index_path.parent.mkdir(parents=True,exist_ok=True)
+    path.parent.mkdir(parents=True,exist_ok=True); index_path.parent.mkdir(parents=True,exist_ok=True)
     if path.exists():
         existing=json.loads(path.read_text(encoding='utf-8'))
         if content_fingerprint(existing)==fingerprint:
