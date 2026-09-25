@@ -78,23 +78,19 @@ The full tree contains these major Smart Note storage families:
 
 ### CURRENT CANONICAL
 
-`.naya/memory/notes/YYYY/MM/DD/`
+`.naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/smart-note.md`
 
 Logical namespace:
 
 `NayaPOWER/SMART-NOTES/YYYY/MM/DD/`
 
-Resolver:
+Identity:
 
-`Smart Note date → .naya/memory/notes/YYYY/MM/DD/`
+`IB-XXXXXX`
 
-Filename:
+Registry:
 
-`SN-YYYYMMDD-[short-human-readable-slug].md`
-
-Daily index:
-
-`INDEX.md`
+`.naya/memory/smart-notes/REGISTRY.json`
 
 ### HISTORICAL / LEGACY / COMPATIBILITY
 
@@ -269,7 +265,7 @@ INTELLIGENT BLOCK
   schema_version = NAYANET_INTELLIGENT_BLOCK_V1
       ↓
 SMART NOTE HUMAN ADDRESS
-  .naya/memory/notes/YYYY/MM/DD/SN-YYYYMMDD-<slug>.md
+  .naya/memory/smart-notes/YYYY/MM/DD/category/topic/IB-XXXXXX/SN-YYYYMMDD-<slug>.md
       ↓
 DAY INDEX
   .naya/memory/notes/YYYY/MM/DD/INDEX.md
